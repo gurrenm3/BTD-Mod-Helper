@@ -84,12 +84,8 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = array[i];
                 try
                 {
-                    if (item is TCast)
+                    if (item.TryCast<TCast>() != null)
                         return true;
-
-                    // old method of checking. Will remove once confirmed working
-                    /*if (item.TryCast<TCast>() != null)
-                        return true;*/
                 }
                 catch (Exception) { }
             }
@@ -202,12 +198,8 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < array.Length; i++)
             {
                 TSource item = array[i];
-                if (item is null || !(item is TCast))
+                if (item is null || item.TryCast<TCast>() == null)
                     continue;
-
-                // old method of checking. Will remove once confirmed working
-                /*if (item is null || item.TryCast<TCast>() == null)
-                    continue;*/
 
                 arrayList.RemoveAt(i - numRemoved);
                 numRemoved++;

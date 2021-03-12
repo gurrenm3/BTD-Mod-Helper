@@ -37,7 +37,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static FactoryFactory GetMainFactory(this InGame inGame)
         {
-            return inGame.bridge?.simulation?.factory;
+            return inGame.bridge.simulation.factory;
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static GameModel GetGameModel(this InGame inGame)
         {
-            return inGame.bridge?.GameSimulation?.model;
+            return inGame.bridge.GameSimulation.model;
         }
 
         public static string GetSavePath(this InGame inGame)
@@ -58,7 +58,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Simulation GetSimulation(this InGame inGame)
         {
-            return inGame.bridge?.simulation;
+            return inGame.bridge.simulation;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Map GetMap(this InGame inGame)
         {
-            return inGame.bridge?.simulation?.Map;
+            return inGame.bridge.simulation.Map;
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="index">Index of the cash manager. Default is 0</param>
         public static CashManager GetCashManager(this InGame inGame, int index = 0)
         {
-            return inGame.bridge?.simulation?.cashManagers?.entries[index]?.value;
+            return inGame.bridge.simulation.cashManagers.entries[index].value;
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace BTD_Mod_Helper.Extensions
 
         public static void SetRound(this InGame inGame, int round)
         {
-            inGame.bridge?.simulation?.map?.spawner?.SetRound(round);
+            inGame.bridge.simulation.map.spawner.SetRound(round);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The type of items you want</typeparam>
         public static SizedList<T> GetAllObjectsOfType<T>(this InGame inGame) where T : RootObject, new()
         {
-            Factory<T> factory = inGame.bridge?.simulation?.factory.GetFactory<T>();
+            Factory<T> factory = inGame.bridge.simulation.factory.GetFactory<T>();
             return factory.all;
         }
 

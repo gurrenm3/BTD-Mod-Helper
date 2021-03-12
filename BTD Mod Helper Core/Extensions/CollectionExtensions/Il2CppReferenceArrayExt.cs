@@ -88,10 +88,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            // old method of checking. Will remove once confirmed working
-            //try { TSource result = referenceArray.First(item => item.TryCast<TCast>() != null); }
-
-            try { TSource result = referenceArray.First(item => item is TCast); }
+            try { TSource result = referenceArray.First(item => item.TryCast<TCast>() != null); }
             catch (Exception) { return false; }
 
             return true;
@@ -147,10 +144,7 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
                 return null;
 
-            // old method of checking. Will remove once confirmed working
-            //TSource result = referenceArray.FirstOrDefault(item => item.TryCast<TCast>() != null);
-
-            TSource result = referenceArray.FirstOrDefault(item => item is TCast);
+            TSource result = referenceArray.FirstOrDefault(item => item.TryCast<TCast>() != null);
             return result.TryCast<TCast>();
         }
 
@@ -212,12 +206,8 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < referenceArray.Count; i++)
             {
                 TSource item = referenceArray[i];
-                if (item is null || !(item is TCast))
+                if (item is null || item.TryCast<TCast>() == null)
                     continue;
-
-                // old method of checking. Will remove once confirmed working
-                /*if (item is null || item.TryCast<TCast>() == null)
-                    continue;*/
 
                 arrayList.RemoveAt(i - numRemoved);
                 numRemoved++;

@@ -8,7 +8,6 @@ using System.Reflection;
 using UnityEngine;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
-using Assets.Scripts.Models.Towers;
 
 namespace BTD_Mod_Helper
 {
@@ -33,11 +32,7 @@ namespace BTD_Mod_Helper
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                var towers = Game.instance.model.towers;
-                if (towers[0] is TowerModel towerModel)
-                {
-                    MelonLogger.Log(towerModel.name);
-                }
+
             }
 
             foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))

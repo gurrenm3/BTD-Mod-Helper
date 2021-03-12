@@ -39,6 +39,14 @@ namespace BTD_Mod_Helper.Extensions
 #endif
         }
 
+        //possibly bugged. Will come back to later
+        /*public static void Spawn(this BloonModel bloonModel)
+        {
+            var spawner = InGame.instance.GetMap().spawner;
+            spawner.Emit(bloonModel, 0, 0, new Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator>(),
+                new Il2CppSystem.Collections.Generic.List<BehaviorMutator>());
+        }*/
+
 
         /// <summary>
         /// Create a BloonEmissionModel from this BloonModel
@@ -55,7 +63,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
-            var bloonSims = InGame.instance?.GetUnityToSim()?.GetAllBloons();
+            Il2CppSystem.Collections.Generic.List<BloonToSimulation> bloonSims = InGame.instance?.GetUnityToSim()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
                 return null;
 

@@ -11,12 +11,9 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static bool IsHero(this TowerDetailsModel towerDetailsModel)
         {
-            return towerDetailsModel is HeroDetailsModel;
-
-            // old method of checking. Will remove once confirmed working
-            /*HeroDetailsModel heroDetailsModel = towerDetailsModel.TryCast<HeroDetailsModel>();
+            HeroDetailsModel heroDetailsModel = towerDetailsModel.TryCast<HeroDetailsModel>();
             bool isHero = heroDetailsModel != null;
-            return isHero;*/
+            return isHero;
         }
 
         /// <summary>
