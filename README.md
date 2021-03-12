@@ -1,4 +1,4 @@
-# BTD-Mod-Helper
+# BTD Mod Helper
 A powerful and easy to use API for modding BTD6, BATTD, and other Ninja Kiwi games. It was created with the successes and failures of previous APIs in mind so it's significantly easier to use.
 
 ## How to use it
