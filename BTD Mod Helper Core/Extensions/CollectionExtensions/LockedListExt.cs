@@ -82,8 +82,12 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = lockList[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
+                    if (item is TCast)
                         return true;
+
+                    // old method of checking. Will remove once confirmed working
+                    /*if (item.TryCast<TCast>() != null)
+                        return true;*/
                 }
                 catch (Exception) { }
             }
@@ -91,13 +95,6 @@ namespace BTD_Mod_Helper.Extensions
             return false;
         }
 
-
-        // Might be removed
-        /*public static LockList<T> AddTo<T>(this LockList<T> lockList, T objectToAdd) where T : Il2CppSystem.Object
-        {
-            lockList.Add(objectToAdd);
-            return lockList;
-        }*/
 
         public static LockList<TSource> AddTo<TSource, TCast>(this LockList<TSource> lockList, TCast objectToAdd)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
@@ -121,8 +118,12 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = lockList[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
-                        return item.TryCast<TCast>();
+                    if (item is TCast castItem)
+                        return castItem;
+
+                    // old method of checking. Will remove once confirmed working
+                    /*if (item.TryCast<TCast>() != null)
+                        return item.TryCast<TCast>();*/
                 }
                 catch (Exception) { }
             }
@@ -142,9 +143,13 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = lockList[i];
                 try
                 {
-                    TCast tryCast = item.TryCast<TCast>();
+                    if (item is TCast castItem)
+                        list.Add(castItem);
+
+                    // old method of checking. Will remove once confirmed working
+                    /*TCast tryCast = item.TryCast<TCast>();
                     if (tryCast != null)
-                        list.Add(tryCast);
+                        list.Add(tryCast);*/
                 }
                 catch (Exception) { }
             }
@@ -196,8 +201,12 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < lockList.Count; i++)
             {
                 TSource item = lockList[i];
-                if (item is null || item.TryCast<TCast>() == null)
+                if (item is null || !(item is TCast))
                     continue;
+                
+                // old method of checking. Will remove once confirmed working
+                /*if (item is null || item.TryCast<TCast>() == null)
+                    continue;*/
 
                 arrayList.RemoveAt(i - numRemoved);
                 numRemoved++;

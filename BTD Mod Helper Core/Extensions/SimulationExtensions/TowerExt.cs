@@ -34,7 +34,7 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             return towerSims.FirstOrDefault(sim => sim.tower == tower);
 #elif BloonsAT
-            var enumerator = towerSims.GetEnumerator().Cast<Il2CppSystem.Collections.IEnumerator>();
+            var enumerator = towerSims.GetEnumeratorCollections();
             while (enumerator.MoveNext())
             {
                 var item = enumerator.Current.Cast<TowerToSimulation>();

@@ -94,8 +94,12 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = sizedList[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
+                    if (item is TCast)
                         return true;
+
+                    // old method of checking. Will remove once confirmed working
+                    /*if (item.TryCast<TCast>() != null)
+                        return true;*/
                 }
                 catch (Exception) { }
             }
@@ -104,16 +108,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
 
-        // Might be removed. Need to see if normal Add works
-        /*public static SizedList<T> AddTo<T>(this SizedList<T> sizedList, T objectToAdd) where T : Il2CppSystem.Object
-        {
-            if (sizedList is null)
-                sizedList = new SizedList<T>();
-
-            var list = sizedList.ToList();
-            list.Add(objectToAdd);
-            return list.ToSizedList();
-        }*/
+        
 
         public static TCast GetItemOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TCast : Il2CppSystem.Object
             where TSource : Il2CppSystem.Object
@@ -126,8 +121,12 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = sizedList[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
-                        return item.TryCast<TCast>();
+                    if (item is TCast castItem)
+                        return castItem;
+                    
+                    // old method of checking. Will remove once confirmed working
+                    /*if (item.TryCast<TCast>() != null)
+                        return item.TryCast<TCast>();*/
                 }
                 catch (Exception) { }
             }
@@ -147,9 +146,13 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = sizedList[i];
                 try
                 {
-                    TCast tryCast = item.TryCast<TCast>();
+                    if (item is TCast castItem)
+                        list.Add(castItem);
+
+                    // old method of checking. Will remove once confirmed working
+                    /*TCast tryCast = item.TryCast<TCast>();
                     if (tryCast != null)
-                        list.Add(tryCast);
+                        list.Add(tryCast);*/
                 }
                 catch (Exception) { }
             }
@@ -201,8 +204,12 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < sizedList.Count; i++)
             {
                 TSource item = sizedList[i];
-                if (item is null || item.TryCast<TCast>() == null)
+                if (item is null || !(item is TCast))
                     continue;
+
+                // old method of checking. Will remove once confirmed working
+                /*if (item is null || item.TryCast<TCast>() == null)
+                    continue;*/
 
                 arrayList.RemoveAt(i - numRemoved);
                 numRemoved++;

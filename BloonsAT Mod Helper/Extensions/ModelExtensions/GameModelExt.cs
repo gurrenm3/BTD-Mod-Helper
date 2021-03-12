@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Create a BloonEmissionModel from a bloon's name
         /// </summary>
-        /// <param name="bloonName">Name of bloon. Example: "Red"</param>
+        /// <param name="baseType">Type of bloon. Example: "Red"</param>
         /// <param name="number">Number of Bloons in this emission</param>
         /// <param name="spacing">Space between each bloon in this emission</param>
         public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissions(this GameModel model, BloonBaseType baseType, int number, float spacing)
@@ -47,7 +47,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Create a single BloonEmission
         /// </summary>
-        /// <param name="bloonName">Name of this bloon. Example: "Red"</param>
+        /// <param name="baseType">Type of this bloon. Example: "Red"</param>
         /// <param name="time">Time the bloon should be spawned</param>
         public static BloonEmissionModel CreateBloonEmission(this GameModel model, BloonBaseType baseType, int time)
         {
