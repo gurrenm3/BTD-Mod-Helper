@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>bdae3217-fcba-4247-8809-fd7e2d637bd6</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>BTD_Mod_Helper_Core</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Guard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ButtonOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\CheckboxOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\InputOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModOptionsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\SliderOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGameMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\SessionData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\SpriteRegister.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\AttackModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\BloonModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\EntityBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\ProjectileModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\TowerModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\WeaponModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\ArrayExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppGenericIEnumerableExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\GameExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\Il2CppGenericIEnumerable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\IEnumerableExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppIEnumeratorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppGenericsExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppReferenceArrayExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\ListExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\LockedListExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Il2CppSystemExtensions\Il2CppSystemObjectExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\InGameExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\Il2CppIEnumerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\Il2CppGenerics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\Il2CppReferenceArray.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\LockedList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\AbilityModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\AttackModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\BloonModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\ModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\ProjectileModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\TowerModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\EntityExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\SpawnerExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\TowerExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\ActionExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ButtonClickedEventExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ButtonExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ComponentExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\GameObjectExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ImageExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Texture2DExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Vector3Ext.cs" />
+  </ItemGroup>
+</Project>
