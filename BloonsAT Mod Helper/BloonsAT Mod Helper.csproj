@@ -31,6 +31,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\BloonsAT - Release\BloonsAT Mod Helper.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MelonLoader.ModHandler">
