@@ -1,5 +1,5 @@
 # BTD-Mod-Helper
-A powerful and easy to use API for BTD6 and BATTD modding. It was created with the successes and failures of previous APIs in mind so it's significantly easier to use.
+A powerful and easy to use API for modding BTD6, BATTD, and other Ninja Kiwi games. It was created with the successes and failures of previous APIs in mind so it's significantly easier to use.
 
 ## How to use it
 Like other API, download/clone it. In your mod's Visual Studio project add a reference to `BloonsTD6 Mod Helper.dll` or `BloonsAT Mod Helper.dll` depending on your game. Then at the top of each file in your project, add `using BTD_Mod_Helper.Extensions;`. Thats it. Each file that has this line at the top will have complete access to all of the features added by the API. This API is built using extension methods, which means it's created to work along side the game's own code. So just make your mods like normal and you'll see the new features pop up in Visual Studio Intellisense. As a side note, make sure the mod is in your game's Mods folder. It needs to be run like a mod
