@@ -21,6 +21,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\BloonsTD6 - Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsTD6 - Release|AnyCPU'">
     <OutputPath>bin\BloonsTD6 - Release\</OutputPath>
