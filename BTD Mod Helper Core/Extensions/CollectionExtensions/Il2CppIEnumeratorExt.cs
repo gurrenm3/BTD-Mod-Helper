@@ -32,7 +32,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
 
-        public static List<Il2CppSystem.Object> ToSystemList(this IEnumerator enumerator)
+        public static List<Il2CppSystem.Object> ToList(this IEnumerator enumerator)
         {
             List<Il2CppSystem.Object> newList = new List<Il2CppSystem.Object>();
             while (enumerator.MoveNext())

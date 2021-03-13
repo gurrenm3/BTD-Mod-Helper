@@ -48,7 +48,7 @@ namespace BTD_Mod_Helper.Extensions
             return il2CppList;
         }
 
-        public static System.Collections.Generic.List<T> ToSystemList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
+        public static System.Collections.Generic.List<T> ToList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
         {
             System.Collections.Generic.List<T> list = new System.Collections.Generic.List<T>();
 

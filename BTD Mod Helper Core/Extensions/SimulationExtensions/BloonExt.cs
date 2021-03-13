@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static BloonToSimulation GetBloonToSim(this Bloon bloon)
         {
-            return InGame.instance.GetUnityToSim().GetAllBloons().FirstOrDefault(b => b.id == bloon.Id);
+            return InGame.instance.GetUnityToSimulation().GetAllBloons().FirstOrDefault(b => b.id == bloon.Id);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerToSimulation GetTowerSim(this Tower tower)
         {
-            var towerSims = InGame.instance?.GetUnityToSim()?.GetAllTowers();
+            var towerSims = InGame.instance?.GetUnityToSimulation()?.GetAllTowers();
 
 #if BloonsTD6
             return towerSims.FirstOrDefault(sim => sim.tower == tower);

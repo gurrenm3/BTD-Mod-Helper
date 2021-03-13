@@ -33,7 +33,7 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators = new Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator>();
             Il2CppSystem.Collections.Generic.List<BehaviorMutator> nonChargedMutators = new Il2CppSystem.Collections.Generic.List<BehaviorMutator>();
-            spawner.Emit(bloonModel, InGame.instance.GetUnityToSim().GetCurrentRound(), 0, chargedMutators, nonChargedMutators);
+            spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation().GetCurrentRound(), 0, chargedMutators, nonChargedMutators);
 #elif BloonsAT
             spawner.Emit(bloonModel);
 #endif
@@ -63,11 +63,11 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
-            Il2CppSystem.Collections.Generic.List<BloonToSimulation> bloonSims = InGame.instance?.GetUnityToSim()?.GetAllBloons();
+            Il2CppSystem.Collections.Generic.List<BloonToSimulation> bloonSims = InGame.instance?.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
                 return null;
 
-            List<BloonToSimulation> results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToSystemList();
+            List<BloonToSimulation> results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
             return results;
         }
 

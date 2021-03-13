@@ -104,7 +104,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<TowerModel> GetTowerListForTowerType(this Game game, string towerSet)
         {
-            return Helpers.GetTowerListForTowerType(towerSet).ToSystemList();
+            return Helpers.GetTowerListForTowerType(towerSet).ToList();
         }
 
         /// <summary>

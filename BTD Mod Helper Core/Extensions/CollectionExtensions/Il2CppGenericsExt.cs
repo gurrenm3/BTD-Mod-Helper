@@ -7,10 +7,7 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class Il2CppGenericsExt
     {
-        /// <summary>
-        /// Not tested
-        /// </summary>
-        public static System.Collections.Generic.List<T> ToSystemList<T>(this List<T> il2CppList)
+        public static System.Collections.Generic.List<T> ToList<T>(this List<T> il2CppList)
         {
             System.Collections.Generic.List<T> newList = new System.Collections.Generic.List<T>();
             foreach (T item in il2CppList)
@@ -19,9 +16,6 @@ namespace BTD_Mod_Helper.Extensions
             return newList;
         }
 
-        /// <summary>
-        /// Not tested
-        /// </summary>
         public static T[] ToArray<T>(this List<T> il2CppList)
         {
             T[] newArray = new T[] { };

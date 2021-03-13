@@ -32,7 +32,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Simulation GetSimulation(this InGame inGame)
         {
-            return inGame.GetUnityToSim()?.simulation;
+            return inGame.GetUnityToSimulation()?.simulation;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace BTD_Mod_Helper.Extensions
 
         public static List<TowerToSimulation> GetTowerSims(this InGame inGame)
         {
-            return inGame.GetUnityToSim()?.GetAllTowers()?.ToSystemList();
+            return inGame.GetUnityToSimulation()?.GetAllTowers()?.ToList();
         }
 
         public static List<Bloon> GetBloons(this InGame inGame)
@@ -73,7 +73,7 @@ namespace BTD_Mod_Helper.Extensions
 
         public static List<BloonToSimulation> GetBloonSims(this InGame inGame)
         {
-            return inGame.GetUnityToSim()?.GetAllBloons()?.ToSystemList();
+            return inGame.GetUnityToSimulation()?.GetAllBloons()?.ToList();
         }
 
         public static List<Projectile> GetProjectiles(this InGame inGame)
@@ -92,14 +92,14 @@ namespace BTD_Mod_Helper.Extensions
         public static List<AbilityToSimulation> GetAbilities(this InGame inGame)
         {
 #if BloonsTD6
-            return inGame.GetUnityToSim()?.GetAllAbilities(true)?.ToSystemList();
+            return inGame.GetUnityToSimulation()?.GetAllAbilities(true)?.ToList();
 #elif BloonsAT
-            return inGame.GetUnityToSim()?.GetAllAbilities()?.ToSystemList();
+            return inGame.GetUnityToSimulation()?.GetAllAbilities()?.ToList();
 #endif
         }
 
 
-        public static UnityToSimulation GetUnityToSim(this InGame inGame)
+        public static UnityToSimulation GetUnityToSimulation(this InGame inGame)
         {
 #if BloonsTD6
             return inGame.bridge;

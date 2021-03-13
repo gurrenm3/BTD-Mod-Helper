@@ -195,17 +195,17 @@ namespace BTD_Mod_Helper.Extensions
 
         public static void SpawnBloons(this InGame inGame, System.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.GetUnityToSim().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSim().GetCurrentRound(), 0);
+            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
         public static void SpawnBloons(this InGame inGame, List<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.GetUnityToSim().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSim().GetCurrentRound(), 0);
+            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
         public static void SpawnBloons(this InGame inGame, Il2CppReferenceArray<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.GetUnityToSim().SpawnBloons(bloonEmissionModels, inGame.GetUnityToSim().GetCurrentRound(), 0);
+            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels, inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
         public static void SpawnBloons(this InGame inGame, int round)
