@@ -82,7 +82,7 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = lockList[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
+                    if (item.IsType<TCast>())
                         return true;
                 }
                 catch (Exception) { }
@@ -136,20 +136,19 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(lockList))
                 return null;
 
-            List<TCast> list = new List<TCast>();
+            List<TCast> results = new List<TCast>();
             for (int i = 0; i < lockList.Count; i++)
             {
                 TSource item = lockList[i];
                 try
                 {
-                    TCast tryCast = item.TryCast<TCast>();
-                    if (tryCast != null)
-                        list.Add(tryCast);
+                    if (item.IsType(out TCast tryCast))
+                        results.Add(tryCast);
                 }
                 catch (Exception) { }
             }
 
-            return list;
+            return results;
         }
 
 
@@ -196,7 +195,7 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < lockList.Count; i++)
             {
                 TSource item = lockList[i];
-                if (item is null || item.TryCast<TCast>() == null)
+                if (item is null || !item.IsType<TCast>())
                     continue;
 
                 arrayList.RemoveAt(i - numRemoved);

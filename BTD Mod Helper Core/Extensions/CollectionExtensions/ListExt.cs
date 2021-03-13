@@ -75,7 +75,7 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = list[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
+                    if (item.IsType<TCast>())
                         return true;
                 }
                 catch (Exception) { }
@@ -129,8 +129,7 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = list[i];
                 try
                 {
-                    TCast tryCast = item.TryCast<TCast>();
-                    if (tryCast != null)
+                    if (item.IsType(out TCast tryCast))
                         results.Add(tryCast);
                 }
                 catch (Exception) { }
@@ -180,7 +179,7 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < list.Count; i++)
             {
                 TSource item = list[i];
-                if (item is null || item.TryCast<TCast>() == null)
+                if (item is null || !item.IsType<TCast>())
                     continue;
 
                 newList.RemoveAt(i - numRemoved);

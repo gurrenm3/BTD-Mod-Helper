@@ -8,6 +8,7 @@ using System.Reflection;
 using UnityEngine;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
+using Assets.Scripts.Models.Towers.Behaviors.Attack;
 
 namespace BTD_Mod_Helper
 {
@@ -32,7 +33,7 @@ namespace BTD_Mod_Helper
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-
+                
             }
 
             foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))

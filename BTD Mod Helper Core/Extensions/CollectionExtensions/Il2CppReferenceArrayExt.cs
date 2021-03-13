@@ -88,7 +88,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            try { TSource result = referenceArray.First(item => item.TryCast<TCast>() != null); }
+            try { TSource result = referenceArray.First(item => item.IsType<TCast>()); }
             catch (Exception) { return false; }
 
             return true;
@@ -155,13 +155,14 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
                 return null;
 
-            IEnumerable<TSource> results = referenceArray.Where(item => item.TryCast<TCast>() != null);
+            List<TCast> results = new List<TCast>();
+            foreach (var item in referenceArray)
+            {
+                if (item.IsType(out TCast tryCast))
+                    results.Add(tryCast);
+            }
 
-            List<TCast> newArray = new List<TCast>();
-            foreach (TSource item in results)
-                newArray.Add(item.TryCast<TCast>());
-
-            return newArray;
+            return results;
         }
 
         public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
@@ -206,7 +207,10 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < referenceArray.Count; i++)
             {
                 TSource item = referenceArray[i];
-                if (item is null || item.TryCast<TCast>() == null)
+                if (item is null || !item.IsType<TCast>())
+                        continue;
+
+                if (item is null || !item.IsType<TCast>())
                     continue;
 
                 arrayList.RemoveAt(i - numRemoved);

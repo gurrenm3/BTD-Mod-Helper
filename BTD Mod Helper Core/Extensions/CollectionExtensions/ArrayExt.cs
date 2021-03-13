@@ -84,7 +84,7 @@ namespace BTD_Mod_Helper.Extensions
                 TSource item = array[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
+                    if (item.IsType<TCast>())
                         return true;
                 }
                 catch (Exception) { }
@@ -142,7 +142,7 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(array))
                 return null;
 
-            TSource result = array.FirstOrDefault(item => item.TryCast<TCast>() != null);
+            TSource result = array.FirstOrDefault(item => item.IsType<TCast>());
             return result.TryCast<TCast>();
         }
 
@@ -198,7 +198,7 @@ namespace BTD_Mod_Helper.Extensions
             for (int i = 0; i < array.Length; i++)
             {
                 TSource item = array[i];
-                if (item is null || item.TryCast<TCast>() == null)
+                if (item is null || !item.IsType<TCast>())
                     continue;
 
                 arrayList.RemoveAt(i - numRemoved);
