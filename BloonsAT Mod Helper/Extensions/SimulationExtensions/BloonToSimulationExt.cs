@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions
     {
         public static BloonModel GetBaseModel(this BloonToSimulation bloonToSim)
         {
-            return Game.instance.model.GetBloon(bloonToSim.Def.GetBaseID());
+            return Game.instance?.model?.GetBloon(bloonToSim.Def.GetBaseID());
         }
     }
 }

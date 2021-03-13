@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class Il2CppGenericIEnumerableExt
     {
-        public static Il2CppSystem.Collections.IEnumerator GetCollectionsEnumerator<T>(this IEnumerable<T> enumerable)
+        public static Il2CppSystem.Collections.IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.GetEnumerator().Cast<Il2CppSystem.Collections.IEnumerator>();
         }
@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Extensions
         public static int Count<T>(this IEnumerable<T> enumerable)
         {
             int length = 0;
-            var enumerator = enumerable.GetCollectionsEnumerator();
+            var enumerator = enumerable.GetEnumeratorCollections();
             while (enumerator.MoveNext())
                 length++;
 
@@ -25,7 +25,7 @@ namespace BTD_Mod_Helper.Extensions
         public static Il2CppSystem.Object GetItem<T>(this IEnumerable<T> enumerable, int index)
         {
             int i = 0;
-            var enumerator = enumerable.GetCollectionsEnumerator();
+            var enumerator = enumerable.GetEnumeratorCollections();
             while (enumerator.MoveNext())
             {
                 if (i == index)
@@ -41,7 +41,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             List<T> il2CppList = new List<T>();
 
-            var enumerator = enumerable.GetCollectionsEnumerator();
+            var enumerator = enumerable.GetEnumeratorCollections();
             while (enumerator.MoveNext())
                 il2CppList.Add(enumerator.Current.Cast<T>());
 
@@ -52,7 +52,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             System.Collections.Generic.List<T> list = new System.Collections.Generic.List<T>();
 
-            var enumerator = enumerable.GetCollectionsEnumerator();
+            var enumerator = enumerable.GetEnumeratorCollections();
             while (enumerator.MoveNext())
                 list.Add(enumerator.Current.Cast<T>());
 
@@ -64,7 +64,7 @@ namespace BTD_Mod_Helper.Extensions
             Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(enumerable.Count());
 
             int i = 0;
-            var enumerator = enumerable.GetCollectionsEnumerator();
+            var enumerator = enumerable.GetEnumeratorCollections();
             while (enumerator.MoveNext())
             {
                 il2cppArray[i] = enumerator.Current.Cast<T>();
@@ -80,7 +80,7 @@ namespace BTD_Mod_Helper.Extensions
         public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
         {
             LockList<T> lockList = new LockList<T>();
-            var enumerator = enumerable.GetCollectionsEnumerator();
+            var enumerator = enumerable.GetEnumeratorCollections();
             while (enumerator.MoveNext())
                 lockList.Add(enumerator.Current.Cast<T>());
 

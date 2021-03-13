@@ -64,8 +64,7 @@ namespace BTD_Mod_Helper.Extensions
                 }
                 if (projectileField != null)
                 {
-                    var projectileModel = projectileField.GetValue(behavior).Cast<ProjectileModel>();
-                    if (projectileModel != null)
+                    if (projectileField.GetValue(behavior).IsType(out ProjectileModel projectileModel))
                     {
                         allProjectiles.Add(projectileModel);
                         allProjectiles.AddRange(GetSubProjectiles(projectileModel.behaviors));

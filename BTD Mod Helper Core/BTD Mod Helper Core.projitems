@@ -47,10 +47,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\ModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\ProjectileModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\TowerModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\BloonExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\EntityExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\SpawnerExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\TowerExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\TowerToSimulationExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\ActionExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ButtonClickedEventExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ButtonExt.cs" />

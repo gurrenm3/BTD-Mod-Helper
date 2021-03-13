@@ -32,27 +32,11 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the Profile for the player. Contains different info than Btd6Player data
-        /// </summary>
-        public static ProfileModel GetPlayerProfile(this Game game)
-        {
-            return game.PlayerService?.Player?.Data;
-        }
-
-        /// <summary>
         /// Get the Btd6Player data for the player. Contains different info than PlayerProfile
         /// </summary>
         public static AdventureTimePlayer GetAdventureTimePlayer(this Game game)
         {
-            return game.PlayerService?.Player;
-        }
-
-        /// <summary>
-        /// Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
-        /// </summary>
-        public static LiNKAccount GetPlayerLiNKAccount(this Game game)
-        {
-            return game.PlayerService?.Player?.LiNKAccount;
+            return game.GetPlayerService()?.Player;
         }
 
         /// <summary>

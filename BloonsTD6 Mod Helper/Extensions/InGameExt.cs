@@ -31,42 +31,9 @@ namespace BTD_Mod_Helper.Extensions
             return ui;
         }
 
-
-        /// <summary>
-        /// Get the main Factory that creates and manages all other Factories
-        /// </summary>
-        public static FactoryFactory GetMainFactory(this InGame inGame)
-        {
-            return inGame.bridge.simulation.factory;
-        }
-
-        /// <summary>
-        /// The Game.model that is being used for this InGame.instance
-        /// </summary>
-        public static GameModel GetGameModel(this InGame inGame)
-        {
-            return inGame.bridge.GameSimulation.model;
-        }
-
         public static string GetSavePath(this InGame inGame)
         {
             return InGame.savePath;
-        }
-
-        /// <summary>
-        /// Get the current Simulation for this InGame session
-        /// </summary>
-        public static Simulation GetSimulation(this InGame inGame)
-        {
-            return inGame.bridge.simulation;
-        }
-
-        /// <summary>
-        /// Get the current Map
-        /// </summary>
-        public static Map GetMap(this InGame inGame)
-        {
-            return inGame.bridge.simulation.Map;
         }
 
         /// <summary>
@@ -107,7 +74,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="index">Index of the cash manager. Default is 0</param>
         public static CashManager GetCashManager(this InGame inGame, int index = 0)
         {
-            return inGame.bridge.simulation.cashManagers.entries[index].value;
+            return inGame.GetSimulation()?.cashManagers?.entries[index]?.value;
         }
 
         /// <summary>
@@ -141,7 +108,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static double GetHealth(this InGame inGame)
         {
-            return inGame.bridge.simulation.health.Value;
+            return inGame.GetSimulation().health.Value;
         }
 
         /// <summary>
@@ -150,7 +117,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="amount">Amount of health to add</param>
         public static void AddHealth(this InGame inGame, double amount)
         {
-            inGame.bridge.simulation.health.Value += amount;
+            inGame.GetSimulation().health.Value += amount;
         }
 
         /// <summary>
@@ -159,7 +126,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="amount">Value to set health to</param>
         public static void SetHealth(this InGame inGame, double amount)
         {
-            inGame.bridge.simulation.health.Value = amount;
+            inGame.GetSimulation().health.Value = amount;
         }
 
         /// <summary>
@@ -167,7 +134,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static double GetMaxHealth(this InGame inGame)
         {
-            return inGame.bridge.simulation.maxHealth.Value;
+            return inGame.GetSimulation().maxHealth.Value;
         }
 
         /// <summary>
@@ -176,7 +143,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="amount">Amount to add to the player's max health</param>
         public static void AddMaxHealth(this InGame inGame, double amount)
         {
-            inGame.bridge.simulation.maxHealth.Value += amount;
+            inGame.GetSimulation().maxHealth.Value += amount;
         }
 
         /// <summary>
@@ -185,7 +152,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="amount">Value to set max health to</param>
         public static void SetMaxHealth(this InGame inGame, double amount)
         {
-            inGame.bridge.simulation.maxHealth.Value = amount;
+            inGame.GetSimulation().maxHealth.Value = amount;
         }
 
         /// <summary>
@@ -194,14 +161,6 @@ namespace BTD_Mod_Helper.Extensions
         public static System.Collections.Generic.Dictionary<string, int> GetPoppedBloons(this InGame inGame)
         {
             return SessionData.PoppedBloons;
-        }
-
-        /// <summary>
-        /// Get the current TowerManager for this game session
-        /// </summary>
-        public static TowerManager GetTowerManager(this InGame inGame)
-        {
-            return inGame.bridge.simulation.towerManager;
         }
 
         //not using this one because it doesn't seem to work. May check back later
@@ -225,17 +184,7 @@ namespace BTD_Mod_Helper.Extensions
 
         public static void SetRound(this InGame inGame, int round)
         {
-            inGame.bridge.simulation.map.spawner.SetRound(round);
-        }
-
-        /// <summary>
-        /// Gets all objects of type T. Does this by returning all objects created by the Factory of type T
-        /// </summary>
-        /// <typeparam name="T">The type of items you want</typeparam>
-        public static SizedList<T> GetAllObjectsOfType<T>(this InGame inGame) where T : RootObject, new()
-        {
-            Factory<T> factory = inGame.bridge.simulation.factory.GetFactory<T>();
-            return factory.all;
+            inGame.GetMap().spawner.SetRound(round);
         }
 
         public static void SpawnBloons(this InGame inGame, string bloonName, int number, float spacing)
@@ -246,17 +195,17 @@ namespace BTD_Mod_Helper.Extensions
 
         public static void SpawnBloons(this InGame inGame, System.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.bridge.SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.bridge.GetCurrentRound(), 0);
+            inGame.GetUnityToSim().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSim().GetCurrentRound(), 0);
         }
 
         public static void SpawnBloons(this InGame inGame, List<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.bridge.SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.bridge.GetCurrentRound(), 0);
+            inGame.GetUnityToSim().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSim().GetCurrentRound(), 0);
         }
 
         public static void SpawnBloons(this InGame inGame, Il2CppReferenceArray<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.bridge.SpawnBloons(bloonEmissionModels, inGame.bridge.GetCurrentRound(), 0);
+            inGame.GetUnityToSim().SpawnBloons(bloonEmissionModels, inGame.GetUnityToSim().GetCurrentRound(), 0);
         }
 
         public static void SpawnBloons(this InGame inGame, int round)
@@ -265,7 +214,7 @@ namespace BTD_Mod_Helper.Extensions
 
             int index = (round < 100) ? round - 1 : round - 100;
             Il2CppReferenceArray<BloonEmissionModel> emissions = (round < 100) ? model.GetRoundSet().rounds[index].emissions : model.freeplayGroups[index].bloonEmissions;
-            InGame.instance.SpawnBloons(emissions);
+            inGame.SpawnBloons(emissions);
         }
     }
 }

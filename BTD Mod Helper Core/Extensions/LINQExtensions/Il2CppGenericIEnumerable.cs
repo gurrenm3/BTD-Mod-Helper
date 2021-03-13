@@ -6,7 +6,7 @@ namespace BTD_Mod_Helper.Extensions
     {
         public static bool Any<T>(this IEnumerable<T> source) where T : Il2CppSystem.Object
         {
-            while (source.GetCollectionsEnumerator().MoveNext())
+            while (source.GetEnumeratorCollections().MoveNext())
                 return true;
 
             return false;

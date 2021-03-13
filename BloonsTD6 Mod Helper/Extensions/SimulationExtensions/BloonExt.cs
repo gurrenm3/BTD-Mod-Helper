@@ -1,13 +1,11 @@
 ﻿using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.UI_New.InGame;
 using System.Runtime.InteropServices;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class BloonExt
+    public static partial class BloonExt
     {
         /// <summary>
         /// Set bloon to be camo or not. Will change bloonModel to camo version if it exists
@@ -56,7 +54,7 @@ namespace BTD_Mod_Helper.Extensions
             if (bloonId.Contains("Regrow") && removeRegrow)
                 bloonId = bloonId.Replace("Regrow", "");
 
-            BloonModel newBloonModel = Game.instance.model.GetBloonModel(bloonId);
+            BloonModel newBloonModel = Game.instance.model.GetBloon(bloonId);
             bloon.bloonModel = newBloonModel;
             bloon.UpdateDisplay();
         }
@@ -72,21 +70,13 @@ namespace BTD_Mod_Helper.Extensions
             Assets.Scripts.Models.GameModel model = Game.instance.model;
             BloonModel bloonModel = bloon.bloonModel;
 
-            string camoText = (setCamo && model.GetBloonModel(bloonModel.baseId + "Camo") != null) ? "Camo" : "";
-            string fortifiedText = (setFortified && model.GetBloonModel(bloonModel.baseId + "Fortified") != null) ? "Fortified" : "";
-            string regrowText = (setRegrow && model.GetBloonModel(bloonModel.baseId + "Regrow") != null) ? "Regrow" : "";
+            string camoText = (setCamo && model.GetBloon(bloonModel.baseId + "Camo") != null) ? "Camo" : "";
+            string fortifiedText = (setFortified && model.GetBloon(bloonModel.baseId + "Fortified") != null) ? "Fortified" : "";
+            string regrowText = (setRegrow && model.GetBloon(bloonModel.baseId + "Regrow") != null) ? "Regrow" : "";
 
             string newBloonID = bloonModel.baseId + regrowText + fortifiedText + camoText;
-            bloon.bloonModel = Game.instance.model.GetBloonModel(newBloonID);
+            bloon.bloonModel = Game.instance.model.GetBloon(newBloonID);
             bloon.UpdateDisplay();
-        }
-
-        /// <summary>
-        /// Get the BloonToSimulation for this specific Bloon
-        /// </summary>
-        public static BloonToSimulation GetBloonToSim(this Bloon bloon)
-        {
-            return InGame.Bridge.GetAllBloons().FirstOrDefault(b => b.id == bloon.Id);
         }
     }
 }

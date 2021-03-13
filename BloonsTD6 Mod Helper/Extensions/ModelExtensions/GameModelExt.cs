@@ -59,15 +59,6 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get a BloonModel from the bloon's name
-        /// </summary>
-        /// <param name="bloonName">Name of bloon. Example: "Red"</param>
-        public static BloonModel GetBloonModel(this GameModel model, string bloonName)
-        {
-            return model.bloons?.FirstOrDefault(bloon => bloon.name == bloonName);
-        }
-
-        /// <summary>
         /// Get all TowerModels with a specific base id
         /// </summary>
         /// <param name="towerBaseId">The base id all towers should share. Example: "DartMonkey"</param>
