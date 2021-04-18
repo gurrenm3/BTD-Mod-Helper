@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Models.Towers;
@@ -208,10 +209,10 @@ namespace BTD_Mod_Helper
         /// 
         /// Equivalent to a HarmonyPostFix on Bloon.Damaged
         /// </summary>
-        public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Il2CppStringArray types,
-            Projectile projectile, bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect,
-            Tower tower, Il2CppStringArray ignoreImmunityForBloonTypes, bool ignoreNonTargetable = false,
-            bool blockSpawnChildren = false, bool canDestroyProjectile = true)
+        public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile, 
+            bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower, 
+            [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true, 
+            bool ignoreNonTargetable = false, bool blockSpawnChildren = false)
         {
         }
 

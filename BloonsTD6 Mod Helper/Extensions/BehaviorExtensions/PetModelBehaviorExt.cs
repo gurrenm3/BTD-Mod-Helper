@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Models;
-using Assets.Scripts.Models.Pets;
+using Assets.Scripts.Models.Towers.Pets;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions

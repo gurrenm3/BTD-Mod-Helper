@@ -127,7 +127,8 @@ namespace BTD_Mod_Helper.Extensions
         public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time,
            Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators, Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
         {
-            return new BloonEmissionModel("", time, bloonName, chargedMutators, behaviorMutators);
+            //return new BloonEmissionModel("", time, bloonName, chargedMutators, behaviorMutators); // removed in update 25.0
+            return new BloonEmissionModel("", time, bloonName);
         }
 
         public static BloonGroupModel CreateBloonGroup(this GameModel model, string bloonName, float startTime, float spacing, int count)

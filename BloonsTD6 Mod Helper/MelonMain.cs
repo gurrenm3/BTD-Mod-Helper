@@ -6,29 +6,58 @@ using MelonLoader;
 using System;
 using System.Reflection;
 using UnityEngine;
-using BTD_Mod_Helper.Extensions;
-using System.IO;
-using Assets.Scripts.Models.Towers.Behaviors.Attack;
+using Assets.Scripts.Unity.UI_New.Popups;
+using BTD_Mod_Helper_Core.Api.Updater;
+using System.Diagnostics;
 
 namespace BTD_Mod_Helper
 {
     internal class MelonMain : MelonMod
     {
         internal static string modDir = $"{Environment.CurrentDirectory}\\Mods\\{Assembly.GetExecutingAssembly().GetName().Name}";
-        public static string coopMessageCode = "BTD6_ModHelper";
+
+        public const string githubReleaseURL = "https://api.github.com/repos/gurrenm3/BloonsTD6-Mod-Helper/releases";
+        public const string coopMessageCode = "BTD6_ModHelper";
+        public const string currentVersion = "1.0.0";
 
         private bool useModOptionsDEBUG = false;
         private ModOptionsMenu modOptionsUI;
 
-        public override void OnApplicationStart()
+        bool isUpdateAvailable = false;
+        bool finishedCheckingForUpdates = false;
+
+
+        public override async void OnApplicationStart()
         {
-            MelonLogger.Log("Mod has finished loading");
+            MelonLogger.Msg("Mod has finished loading");
+
+            MelonLogger.Msg("Checking for updates...");
+            var updater = new UpdateChecker(githubReleaseURL);
+            var releaseInfo = await updater.GetLatestReleaseAsync();
+            isUpdateAvailable = updater.IsUpdate(Info.Version, releaseInfo);
+            finishedCheckingForUpdates = true;
+            MelonLogger.Msg("Finished checking for updates.");
         }
+
 
         public override void OnUpdate()
         {
             if (Game.instance is null)
                 return;
+
+            if (finishedCheckingForUpdates && isUpdateAvailable && PopupScreen.instance != null)
+            {
+                string latestVersionUrl = "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
+                MelonLogger.Msg("An update is available for this mod.");
+                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "An Update is Available!",
+                    $"An update is available for the mod \"{Info.Name}\". Would you like to be taken to the download page?\n\n" +
+                    $"NOTE: Some mods may not work if you aren't using the latest version of this mod",
+                    new Action(() => { Process.Start(latestVersionUrl); }), "YES", new Action(() => { }),
+                    "Not now", Popup.TransitionAnim.Update, instantClose:true);
+
+                finishedCheckingForUpdates = false;
+                isUpdateAvailable = false;
+            }
 
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))

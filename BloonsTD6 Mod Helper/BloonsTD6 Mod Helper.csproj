@@ -22,6 +22,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <DocumentationFile>bin\BloonsTD6 - Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsTD6 - Release|AnyCPU'">
     <OutputPath>bin\BloonsTD6 - Release\</OutputPath>
@@ -32,12 +33,9 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <DocumentationFile>bin\BloonsTD6 - Release\BloonsTD6 Mod Helper.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MelonLoader.ModHandler">
-      <HintPath>..\Dependencies\Shared\MelonLoader.ModHandler.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Dependencies\BloonsTD6\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -49,6 +47,9 @@
     <Reference Include="Il2CppSystem">
       <HintPath>..\\Dependencies\BloonsTD6\Il2CppSystem.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>..\Dependencies\Shared\MelonLoader.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\\Dependencies\BloonsTD6\Newtonsoft.Json.dll</HintPath>
@@ -72,6 +73,10 @@
     </Reference>
     <Reference Include="UnhollowerRuntimeLib">
       <HintPath>..\\Dependencies\BloonsTD6\UnhollowerRuntimeLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>..\\Dependencies\BloonsTD6\Unity.ResourceManager.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
@@ -156,6 +161,7 @@
     <Compile Include="Extensions\ModelExtensions\ProjectileModelExt.cs" />
     <Compile Include="Extensions\NkAssetExtensions\NK_TextMeshProUGUIExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\EntityExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\MapExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\SelectableObjectExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\UnityToSimulationExty.cs" />
     <Compile Include="Extensions\SimulationExtensions\BloonExt.cs" />
@@ -164,9 +170,9 @@
     <Compile Include="Extensions\ModelExtensions\TowerDetailsModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\TowerModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\UpgradeModelExt.cs" />
+    <Compile Include="Extensions\UnityExtensions\PopupScreenExt.cs" />
     <Compile Include="MelonMain.cs" />
-    <Compile Include="Patches\Bloons\Bloon_Damage.cs" />
-    <Compile Include="Patches\Bloons\Bloon_Damage2.cs" />
+    <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
     <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
@@ -210,6 +216,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SessionData.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

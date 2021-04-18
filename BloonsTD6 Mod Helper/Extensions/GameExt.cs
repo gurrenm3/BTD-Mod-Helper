@@ -12,6 +12,7 @@ using Assets.Scripts.Unity.UI_New.Popups;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using NinjaKiwi.LiNK;
+using NinjaKiwi.NKMulti;
 using System.Collections.Generic;
 using UnhollowerBaseLib;
 
@@ -19,6 +20,11 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+        public static NKMultiGameInterface GetNkGameInterface(this Game game)
+        {
+            return SessionData.nkGI;
+        }
+
         /// <summary>
         /// Get the Unity Display Factory that manages on screen sprites. This Factory is different from other Factories in the game
         /// </summary>

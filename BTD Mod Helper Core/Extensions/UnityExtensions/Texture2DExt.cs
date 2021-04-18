@@ -70,7 +70,16 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
         public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit)
         {
-            return Sprite.Create(texture2D, new Rect(0f, 0f, texture2D.width, texture2D.height), new Vector2(), pixelsPerUnit);
+            return texture2D.CreateSpriteFromTexture(pixelsPerUnit, new Vector2(0.5f, 0.5f));
+        }
+
+        /// <summary>
+        /// Create a Sprite from this Texture2D
+        /// </summary>
+        /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
+        public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit, Vector2 pivot)
+        {
+            return Sprite.Create(texture2D, new Rect(0f, 0f, texture2D.width, texture2D.height), pivot, pixelsPerUnit);
         }
     }
 }

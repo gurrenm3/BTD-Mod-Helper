@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="message">Message to send</param>
         public static void SendMessage(this NKMultiGameInterface nkGI, Message message)
         {
-            Game.instance.nkGI.relayConnection.Writer.Write(message);
+            nkGI.relayConnection.Writer.Write(message);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (message.Code != Chat_Message.chatCoopCode)
                 return null;
-            string json = Game.instance.nkGI.ReadMessage<string>(message.bytes);
+            string json = nkGI.ReadMessage<string>(message.bytes);
             Chat_Message deserialized = Game.instance.GetJsonSerializer().DeserializeJson<Chat_Message>(json);
             return deserialized;
         }

@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="roundSet">New Round Set Model to use</param>
         public static void SetRoundSet(this UnityToSimulation unityToSimulation, RoundSetModel roundSet)
         {
-            Api.SessionData.RoundSet = roundSet;
+            SessionData.RoundSet = roundSet;
         }
     }
 }

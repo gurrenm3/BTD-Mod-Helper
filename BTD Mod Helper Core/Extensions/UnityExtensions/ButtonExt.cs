@@ -5,12 +5,12 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static class ButtonExt
     {
-        public static void AddOnClick(this Button button, funcDelegate funcToExecute)
+        public static void AddOnClick(this Button button, Function funcToExecute)
         {
             button.onClick.AddListener(funcToExecute);
         }
 
-        public static void SetOnClick(this Button button, funcDelegate funcToExecute)
+        public static void SetOnClick(this Button button, Function funcToExecute)
         {
             button.onClick.SetListener(funcToExecute);
         }

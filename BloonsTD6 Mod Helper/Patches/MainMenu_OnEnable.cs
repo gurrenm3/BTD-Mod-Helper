@@ -19,6 +19,7 @@ namespace BTD_Mod_Helper.Patches
 
         private static void ResetSessionData()
         {
+            SessionData.nkGI = null;
             SessionData.PoppedBloons = new Dictionary<string, int>();
             SessionData.RoundSet = null;
             SessionData.IsInPublicCoop = false;

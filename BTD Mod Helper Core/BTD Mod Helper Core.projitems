@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Api\Guard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ButtonOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\CheckboxOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\InputOption.cs" />
@@ -17,7 +18,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\SliderOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGameMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\SessionData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\GithubReleaseSchema.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateChecker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SessionData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\SpriteRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\AttackModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\BloonModelBehaviorExt.cs" />
@@ -27,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\WeaponModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\ArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppGenericIEnumerableExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Function.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\GameExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\Il2CppGenericIEnumerable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\IEnumerableExt.cs" />
@@ -50,16 +54,24 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\BloonExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\EntityExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\MapExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\SpawnerExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\TowerExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\TowerToSimulationExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\ActionExt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ButtonClickedEventExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\ButtonClickedEventExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ButtonExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ComponentExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\InputFieldOnValueChanged.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\SliderEventExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\GameObjectExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ImageExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\InputFieldExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\InputFieldSubmitEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\SpriteExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Texture2DExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\ToggleEventExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ToggleExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Vector3Ext.cs" />
   </ItemGroup>
 </Project>

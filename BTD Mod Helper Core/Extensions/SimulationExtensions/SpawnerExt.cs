@@ -18,7 +18,8 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators = new Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator>();
             Il2CppSystem.Collections.Generic.List<BehaviorMutator> nonChargedMutators = new Il2CppSystem.Collections.Generic.List<BehaviorMutator>();
-            spawner.Emit(bloonModel, InGame.Bridge.GetCurrentRound(), 0, chargedMutators, nonChargedMutators);
+            //spawner.Emit(bloonModel, InGame.Bridge.GetCurrentRound(), 0, chargedMutators, nonChargedMutators); // removed in update 25.0
+            spawner.Emit(bloonModel, InGame.Bridge.GetCurrentRound(), 0);
 #elif BloonsAT
             var emissionModel = new BloonEmissionModel(bloonType: bloonModel.baseType);
             spawner.Emit(emissionModel);
