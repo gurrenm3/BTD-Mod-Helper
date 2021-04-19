@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper
 
         public const string githubReleaseURL = "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases";
         public const string coopMessageCode = "BTD6_ModHelper";
-        public const string currentVersion = "1.0.0";
+        public const string currentVersion = "1.0.1";
 
         private bool useModOptionsDEBUG = false;
         private ModOptionsMenu modOptionsUI;
