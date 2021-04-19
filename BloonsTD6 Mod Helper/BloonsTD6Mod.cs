@@ -25,6 +25,21 @@ namespace BTD_Mod_Helper
     public abstract class BloonsTD6Mod : MelonMod
     {
         /// <summary>
+        /// Github API URL used to check if this mod is up to date.
+        ///
+        ///     For example: "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases"
+        /// </summary>
+        public virtual string GithubReleaseURL => "";
+        
+        
+        /// <summary>
+        /// Link that people should be prompted to go to when this mod is out of date.
+        ///
+        ///     For example: "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest"
+        /// </summary>
+        public virtual string LatestURL => "";
+        
+        /// <summary>
         /// Adds a TowerModel to the official list of TowerModels being used by the game
         ///
         /// Equivalent to calling Game.instance.model.AddTowerToGame(...)

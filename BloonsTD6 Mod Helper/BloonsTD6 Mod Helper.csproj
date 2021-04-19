@@ -44,6 +44,10 @@
       <HintPath>..\\Dependencies\BloonsTD6\Il2Cppmscorlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>..\\Dependencies\BloonsTD6\mscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Il2CppSystem">
       <HintPath>..\\Dependencies\BloonsTD6\Il2CppSystem.dll</HintPath>
       <Private>False</Private>
