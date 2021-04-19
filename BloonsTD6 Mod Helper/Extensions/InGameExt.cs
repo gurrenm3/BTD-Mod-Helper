@@ -21,6 +21,11 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class InGameExt
     {
+        /// <summary>
+        /// Get the game object that owns all InGame UI elements
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <returns></returns>
         public static GameObject GetInGameUI(this InGame inGame)
         {
             Scene scene = SceneManager.GetSceneByName("InGameUi");
@@ -31,6 +36,11 @@ namespace BTD_Mod_Helper.Extensions
             return ui;
         }
 
+        /// <summary>
+        /// Get the save path for the game (I think?)
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <returns></returns>
         public static string GetSavePath(this InGame inGame)
         {
             return InGame.savePath;
@@ -175,39 +185,74 @@ namespace BTD_Mod_Helper.Extensions
         }
 
 
-
+        // This has been removed so it can be tested further.
         /*public static void GetMapDimensions(this InGame inGame, out Vector2 topLeft, out Vector2 bottomRight)
         {
             topLeft = new Vector2(-149.9228f, -115.2562f);
             bottomRight = new Vector2(150.0713f, 115.4701f);
         }*/
 
+        /// <summary>
+        /// Set the current round
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <param name="round"></param>
         public static void SetRound(this InGame inGame, int round)
         {
             inGame.GetMap().spawner.SetRound(round);
         }
 
+        /// <summary>
+        /// Spawn bloons in game
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <param name="bloonName"></param>
+        /// <param name="number"></param>
+        /// <param name="spacing"></param>
         public static void SpawnBloons(this InGame inGame, string bloonName, int number, float spacing)
         {
             Il2CppReferenceArray<BloonEmissionModel> bloonEmissionModels = Game.instance.model.CreateBloonEmissions(bloonName, number, spacing).ToIl2CppReferenceArray();
             inGame.SpawnBloons(bloonEmissionModels);
         }
 
+        /// <summary>
+        /// Spawn bloons in game
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <param name="bloonEmissionModels"></param>
         public static void SpawnBloons(this InGame inGame, System.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
         {
             inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
+
+        /// <summary>
+        /// Spawn bloons in game
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <param name="bloonEmissionModels"></param>
         public static void SpawnBloons(this InGame inGame, List<BloonEmissionModel> bloonEmissionModels)
         {
             inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
+
+        /// <summary>
+        /// Spawn bloons in game
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <param name="bloonEmissionModels"></param>
         public static void SpawnBloons(this InGame inGame, Il2CppReferenceArray<BloonEmissionModel> bloonEmissionModels)
         {
             inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels, inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
+
+        /// <summary>
+        /// Spawn bloons in game
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <param name="round"></param>
         public static void SpawnBloons(this InGame inGame, int round)
         {
             GameModel model = inGame.GetGameModel();

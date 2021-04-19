@@ -23,6 +23,11 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+        /// <summary>
+        /// Get nkGI for the current session. Will be null if not in multiplayer game or lobby
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         public static NKMultiGameInterface GetNkGI(this Game game)
         {
             return SessionData.nkGI;
