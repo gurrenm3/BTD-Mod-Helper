@@ -16,9 +16,9 @@ namespace BTD_Mod_Helper
     {
         internal static string modDir = $"{Environment.CurrentDirectory}\\Mods\\{Assembly.GetExecutingAssembly().GetName().Name}";
 
-        public const string githubReleaseURL = "https://api.github.com/repos/gurrenm3/BloonsTD6-Mod-Helper/releases";
+        public const string githubReleaseURL = "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases";
         public const string coopMessageCode = "BTD6_ModHelper";
-        public const string currentVersion = "1.0.1";
+        public const string currentVersion = "1.0.0";
 
         private bool useModOptionsDEBUG = false;
         private ModOptionsMenu modOptionsUI;
