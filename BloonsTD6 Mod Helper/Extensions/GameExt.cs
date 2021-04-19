@@ -14,33 +14,15 @@ using BTD_Mod_Helper.Api;
 using NinjaKiwi.LiNK;
 using NinjaKiwi.NKMulti;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnhollowerBaseLib;
+using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
-        /// <summary>
-        /// Unimplemented
-        /// </summary>
-        /// <param name="game"></param>
-        /// <param name="action"></param>
-        public static void ScheduleTask(this Game game, Action action) => game.ScheduleTask(action, 1);
-
-
-        /// <summary>
-        /// Unimplimented
-        /// </summary>
-        /// <param name="game"></param>
-        /// <param name="action"></param>
-        /// <param name="numWaitFrames"></param>
-        public static void ScheduleTask(this Game game, Action action, int numWaitFrames)
-        {
-
-        }
-
-
         public static NKMultiGameInterface GetNkGI(this Game game)
         {
             return SessionData.nkGI;

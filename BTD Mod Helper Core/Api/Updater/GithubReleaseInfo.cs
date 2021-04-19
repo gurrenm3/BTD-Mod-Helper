@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace BTD_Mod_Helper_Core.Api.Updater
+namespace BTD_Mod_Helper.Api.Updater
 {
     public partial class GithubReleaseInfo
     {

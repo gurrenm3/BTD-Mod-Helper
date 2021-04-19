@@ -7,7 +7,7 @@ using System;
 using System.Reflection;
 using UnityEngine;
 using Assets.Scripts.Unity.UI_New.Popups;
-using BTD_Mod_Helper_Core.Api.Updater;
+using BTD_Mod_Helper.Api.Updater;
 using System.Diagnostics;
 
 namespace BTD_Mod_Helper
@@ -38,7 +38,6 @@ namespace BTD_Mod_Helper
             finishedCheckingForUpdates = true;
             MelonLogger.Msg("Finished checking for updates.");
         }
-
 
         public override void OnUpdate()
         {

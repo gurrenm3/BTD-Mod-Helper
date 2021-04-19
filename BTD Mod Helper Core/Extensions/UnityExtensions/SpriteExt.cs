@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BTD_Mod_Helper_Core.Extensions.UnityExtensions
+namespace BTD_Mod_Helper.Extensions.UnityExtensions
 {
     public static class SpriteExt
     {

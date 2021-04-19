@@ -5,6 +5,10 @@ using BTD_Mod_Helper.Api;
 
 
 using System.Runtime.InteropServices;
+using System;
+using System.Collections;
+using UnityEngine;
+using BTD_Mod_Helper.Api.Enums;
 
 #if BloonsTD6
 using NinjaKiwi.LiNK;
@@ -16,6 +20,48 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+        public static void ScheduleTask(this Game game, IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
+
+        /// <summary>
+        /// Schedule a task to execute later on. By default will wait until the end of this current frame
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="action">The action you want to execute once it's time to run your task</param>
+        public static void ScheduleTask(this Game game, Action action) => game.ScheduleTask(action, ScheduleType.WaitForFrames, 0);
+
+        /// <summary>
+        /// Schedule a task to execute later on
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="action">The action you want to execute once it's time to run your task</param>
+        /// <param name="scheduleType">How you want to wait for your task</param>
+        /// <param name="amountToWait">The amount you want to wait</param>
+        public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait)
+        {
+            MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait));
+        }
+
+        private static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait)
+        {
+            switch (scheduleType)
+            {
+                case ScheduleType.WaitForSeconds:
+                    yield return new WaitForSeconds(amountToWait);
+                    break;
+                case ScheduleType.WaitForFrames:
+                    int count = 0;
+                    while (amountToWait >= count)
+                    {
+                        yield return new WaitForEndOfFrame();
+                        count++;
+                    }
+                    break;
+            }
+
+            action?.Invoke();
+        }
+
+
         /// <summary>
         /// Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
         /// </summary>

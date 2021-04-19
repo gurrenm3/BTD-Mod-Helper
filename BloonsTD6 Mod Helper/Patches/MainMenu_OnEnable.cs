@@ -1,7 +1,9 @@
-﻿using Assets.Scripts.Unity.UI_New.Main;
+﻿using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api;
 using Harmony;
 using System.Collections.Generic;
+using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Patches
 {
@@ -14,7 +16,6 @@ namespace BTD_Mod_Helper.Patches
             ResetSessionData();
             
             MelonMain.DoPatchMethods(mod => mod.OnMainMenu());
-            
         }
 
         private static void ResetSessionData()

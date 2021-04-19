@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace BTD_Mod_Helper_Core.Api.Updater
+namespace BTD_Mod_Helper.Api.Updater
 {
     public class UpdateChecker
     {
