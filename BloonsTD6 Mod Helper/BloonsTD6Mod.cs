@@ -33,6 +33,19 @@ namespace BTD_Mod_Helper
         
         
         /// <summary>
+        /// As an alternative to a GithubReleaseURL, a direct link to a web-hosted version of the .cs file that
+        /// has the "MelonInfo" attribute with the version of your mod
+        ///
+        ///     
+        ///     For example: "https://raw.githubusercontent.com/doombubbles/BTD6-Mods/main/MegaKnowledge/Main.cs"
+        ///
+        ///     because the file contains
+        ///     [assembly: MelonInfo(typeof(MegaKnowledge.Main), "Mega Knowledge", "1.0.1", "doombubbles")]
+        /// </summary>
+        public virtual string MelonInfoCsURL => "";
+        
+        
+        /// <summary>
         /// Link that people should be prompted to go to when this mod is out of date.
         ///
         ///     For example: "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest"

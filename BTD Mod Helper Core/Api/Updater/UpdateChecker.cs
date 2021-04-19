@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BTD_Mod_Helper.Api.Updater
 {
     public class UpdateChecker
     {
+        private const string MelonInfoRegex = "MelonInfo\\(.*\"([\\d|\\.]+)\".*\\)";
+        private const string DefaultVersion = "1.0.0";
+        
+        
         private static HttpClient client = null;
         public string ReleaseURL { get; set; }
 
@@ -39,6 +44,17 @@ namespace BTD_Mod_Helper.Api.Updater
             var releaseJson = await client.GetStringAsync(url);
             return GithubReleaseInfo.FromJson(releaseJson);
         }
+        
+        public async Task<string> GetMelonInfoAsync(string url)
+        {
+            var plainTextCS = await client.GetStringAsync(url);
+
+            var match = Regex.Match(plainTextCS, MelonInfoRegex);
+
+            return match.Success ? match.Value : DefaultVersion;
+        }
+        
+        public async Task<string> GetMelonInfoAsync() => await GetMelonInfoAsync(ReleaseURL);
 
 
         public async Task<GithubReleaseInfo> GetLatestReleaseAsync() => GetLatestReleaseAsync(ReleaseURL).Result;
