@@ -8,6 +8,12 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.Default.props" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.props" />
   <PropertyGroup />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Plugin - Debug|AnyCPU' ">
+    <OutputPath>bin\Plugin - Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Plugin - Release|AnyCPU' ">
+    <OutputPath>bin\Plugin - Release\</OutputPath>
+  </PropertyGroup>
   <Import Project="BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
 </Project>

@@ -13,6 +13,8 @@ namespace BTD_Mod_Helper.Api.Updater
 {
     internal class UpdateHandler
     {
+        public static bool updatedMods;
+        
         internal static void SaveModUpdateInfo(string dir)
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>())
@@ -64,21 +66,9 @@ namespace BTD_Mod_Helper.Api.Updater
                 {
                     try
                     {
-                        var isUpdate = false;
-                        if (updateInfo.GithubReleaseURL != "")
-                        {
-                            var updater = new UpdateChecker(updateInfo.GithubReleaseURL);
-                            var releaseInfo = await updater.GetLatestReleaseAsync();
-                            isUpdate = updater.IsUpdate(updateInfo.CurrentVersion, releaseInfo);
-                        }
-                        else if (updateInfo.MelonInfoCsURL != "")
-                        {
-                            var updater = new UpdateChecker(updateInfo.MelonInfoCsURL);
-                            var version = await updater.GetMelonInfoAsync();
-                            isUpdate = updater.IsUpdate(updateInfo.CurrentVersion, version);
-                        }
+                        var updater = new UpdaterHttp(updateInfo);
 
-                        if (isUpdate)
+                        if (await updater.IsUpdate())
                         {
                             lock (modsNeedingUpdates)
                             {
@@ -96,7 +86,7 @@ namespace BTD_Mod_Helper.Api.Updater
         }
 
 
-        internal static void AnnounceUpdates(BloonsTD6Mod thisMod, List<UpdateInfo> modsNeedingUpdates)
+        internal static void AnnounceUpdates(List<UpdateInfo> modsNeedingUpdates, string modDir)
         {
             if (modsNeedingUpdates.Any())
             {
@@ -104,18 +94,26 @@ namespace BTD_Mod_Helper.Api.Updater
                 {
                     foreach (var updateInfo in modsNeedingUpdates)
                     {
-                        var message =
-                            $"An update is available for the mod \"{updateInfo.Name}\". Would you like to be taken to the download page?";
-
-                        if (updateInfo.Name == thisMod.Info.Name)
+                        Action actionNo = null;
+                        var no = "Not now";
+                        string message;
+                        if (MelonHandler.Mods.Any(mod => mod.Info.Name == updateInfo.Name))
                         {
-                            message +=
-                                "\n\nNOTE: Some other mods may not work if you aren't using the latest version of this mod";
+                            message = $"Your version \"{updateInfo.CurrentVersion}\" of \"{updateInfo.Name}\" is now out of date. " +
+                                      "Would you like to download the new version? (requires restart)";
+                        }
+                        else
+                        {
+                            message = $"An updated version of {updateInfo.Name}, which you previously used, is now available. " +
+                                      "Would you like to download the new version and enable it? (requires restart)";
+                            no = "No, forget this mod";
+                            actionNo = () => 
+                                File.Delete($"{modDir}\\UpdateInfo\\{updateInfo.Name}.json");
                         }
 
                         PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "An Update is Available!",
-                            message, new Action(() => UpdateMod(updateInfo)), "YES", null,
-                            "Not now", Popup.TransitionAnim.Update, instantClose: true);
+                            message, new Action(() => UpdateMod(updateInfo, modDir)), "YES", actionNo,
+                            no, Popup.TransitionAnim.Update, instantClose: true);
                     }
 
                     modsNeedingUpdates.Clear();
@@ -123,11 +121,24 @@ namespace BTD_Mod_Helper.Api.Updater
             }
         }
 
-
-        private static void UpdateMod(UpdateInfo updateInfo)
+        private static async Task UpdateMod(UpdateInfo updateInfo, string modDir)
         {
-            //Just linking them for now
-            Process.Start(updateInfo.LatestURL);
+            var updater = new UpdaterHttp(updateInfo);
+            try
+            {
+                if (await updater.Download(modDir))
+                {
+                    MelonLogger.Msg($"Successfully downloaded new version of {updateInfo.Name}");
+                    updatedMods = true;
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Warning(e.ToString());
+            }
+
+            MelonLogger.Warning($"Failed to download mod {updateInfo.Name}");
         }
     }
 }

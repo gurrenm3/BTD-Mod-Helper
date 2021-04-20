@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsAT Mod Helper", "Bloo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{12189163-C07D-423C-9006-978E944D7409}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto Updater Plugin", "Auto Updater Plugin\Auto Updater Plugin.csproj", "{EDAF783E-98B0-49FC-9BD8-DD18652A050B}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		BTD Mod Helper Core\BTD Mod Helper Core.projitems*{12189163-c07d-423c-9006-978e944d7409}*SharedItemsImports = 4
@@ -20,22 +22,42 @@ Global
 		BloonsAT - Release|Any CPU = BloonsAT - Release|Any CPU
 		BloonsTD6 - Debug|Any CPU = BloonsTD6 - Debug|Any CPU
 		BloonsTD6 - Release|Any CPU = BloonsTD6 - Release|Any CPU
+		Plugin - Debug|Any CPU = Plugin - Debug|Any CPU
+		Plugin - Release|Any CPU = Plugin - Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Debug|Any CPU.ActiveCfg = BloonsAT - Debug|Any CPU
-		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Debug|Any CPU.Build.0 = BloonsAT - Debug|Any CPU
 		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Release|Any CPU.ActiveCfg = BloonsAT - Debug|Any CPU
 		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Release|Any CPU.Build.0 = BloonsAT - Debug|Any CPU
 		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsTD6 - Debug|Any CPU.ActiveCfg = BloonsAT - Debug|Any CPU
 		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsTD6 - Debug|Any CPU.Build.0 = BloonsAT - Debug|Any CPU
 		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsTD6 - Release|Any CPU.ActiveCfg = BloonsAT - Debug|Any CPU
 		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsTD6 - Release|Any CPU.Build.0 = BloonsAT - Debug|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.Plugin - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.Plugin - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.Plugin - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.Plugin - Release|Any CPU.Build.0 = Plugin - Release|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.BloonsAT - Debug|Any CPU.ActiveCfg = BloonsTD6 - Debug|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.BloonsAT - Release|Any CPU.ActiveCfg = BloonsTD6 - Debug|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Debug|Any CPU.ActiveCfg = BloonsTD6 - Debug|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Debug|Any CPU.Build.0 = BloonsTD6 - Debug|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Release|Any CPU.ActiveCfg = BloonsTD6 - Release|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Release|Any CPU.Build.0 = BloonsTD6 - Release|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.BloonsAT - Debug|Any CPU.Build.0 = BloonsTD6 - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.Plugin - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.Plugin - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.Plugin - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.Plugin - Release|Any CPU.Build.0 = Plugin - Release|Any CPU
+		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.BloonsTD6 - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
+		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.BloonsTD6 - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
+		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
+		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
+		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Release|Any CPU.Build.0 = Plugin - Release|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.Plugin - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.Plugin - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.Plugin - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.Plugin - Release|Any CPU.Build.0 = Plugin - Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

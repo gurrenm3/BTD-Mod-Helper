@@ -13,15 +13,19 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Assets.Main.Scenes;
+using Assets.Scripts.Unity.Menu;
+using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper
 {
     internal class MelonMain : BloonsTD6Mod
     {
-        internal static string modDir = $"{Environment.CurrentDirectory}\\Mods\\{Assembly.GetExecutingAssembly().GetName().Name}";
+        internal static string modDir =
+            $"{Environment.CurrentDirectory}\\Mods\\{Assembly.GetExecutingAssembly().GetName().Name}";
 
         public const string coopMessageCode = "BTD6_ModHelper";
-        public const string currentVersion = "1.0.1";
+        public const string currentVersion = "1.0.2";
 
         private bool useModOptionsDEBUG = false;
         private ModOptionsMenu modOptionsUI;
@@ -41,7 +45,7 @@ namespace BTD_Mod_Helper
             {
                 Directory.CreateDirectory(updateDir);
             }
-            
+
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
@@ -54,7 +58,7 @@ namespace BTD_Mod_Helper
 
             if (PopupScreen.instance != null)
             {
-                UpdateHandler.AnnounceUpdates(this, modsNeedingUpdates);
+                UpdateHandler.AnnounceUpdates(modsNeedingUpdates, modDir);
             }
 
             // used to test new api methods
@@ -88,6 +92,18 @@ namespace BTD_Mod_Helper
                 modOptionsUI = new ModOptionsMenu();
 
             NotificationMgr.CheckForNotifications();
+        }
+
+        public override void OnMainMenu()
+        {
+            if (UpdateHandler.updatedMods && PopupScreen.instance != null)
+            {
+                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
+                    "You've downloaded new updates for mods, but still need to restart your game to apply them.\n" +
+                    "\nWould you like to do that now?", new Action(() => MenuManager.instance.QuitGame()),
+                    "Yes, quit the game", null, "Not now", Popup.TransitionAnim.Update);
+                UpdateHandler.updatedMods = false;
+            }
         }
 
 

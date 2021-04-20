@@ -1,24 +1,23 @@
-﻿using BTD_Mod_Helper;
-using MelonLoader;
+﻿using MelonLoader;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BloonsTD6_Mod_Helper")]
+[assembly: AssemblyTitle("Auto Updater Plugin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BloonsTD6_Mod_Helper")]
+[assembly: AssemblyProduct("Auto Updater Plugin")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", MelonMain.currentVersion, "Gurrenm4, Doombubbles, and BowDown097")]
+[assembly: MelonInfo(typeof(Auto_Updater_Plugin.MelonMain), "BloonsTD6 Mod Helper Auto Updater", "1.0.0", "Doombubbles, Gurrenm4")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
-[assembly: AssemblyVersion(MelonMain.currentVersion)]
-[assembly: AssemblyFileVersion(MelonMain.currentVersion)]
+[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

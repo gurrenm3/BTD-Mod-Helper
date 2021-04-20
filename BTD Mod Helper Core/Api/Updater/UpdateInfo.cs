@@ -2,7 +2,7 @@
 
 namespace BTD_Mod_Helper.Api.Updater
 {
-    internal class UpdateInfo
+    public class UpdateInfo
     {
         [JsonProperty] internal string Name { get; set; }
 
@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Api.Updater
         {
         }
 
-        public UpdateInfo(BloonsTD6Mod mod)
+        public UpdateInfo(BloonsMod mod)
         {
             GithubReleaseURL = mod.GithubReleaseURL;
             MelonInfoCsURL = mod.MelonInfoCsURL;
