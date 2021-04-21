@@ -13,6 +13,8 @@ namespace BTD_Mod_Helper.Api.Updater
         [JsonProperty] internal string LatestURL { get; set; }
 
         [JsonProperty] internal string CurrentVersion { get; set; }
+        
+        [JsonProperty] internal string Location { get; set; }
 
         public UpdateInfo()
         {
@@ -25,6 +27,7 @@ namespace BTD_Mod_Helper.Api.Updater
             LatestURL = mod.LatestURL;
             Name = mod.Info.Name;
             CurrentVersion = mod.Info.Version;
+            Location = mod.Location;
         }
     }
 }

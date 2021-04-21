@@ -113,7 +113,7 @@ namespace BTD_Mod_Helper.Api.Updater
 
                         PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "An Update is Available!",
                             message, new Action(async () => await UpdateMod(updateInfo)), "YES", actionNo,
-                            no, Popup.TransitionAnim.Update, instantClose: true);
+                            no, Popup.TransitionAnim.Scale);
                     }
 
                     modsNeedingUpdates.Clear();

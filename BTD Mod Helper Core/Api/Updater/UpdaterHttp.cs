@@ -150,6 +150,12 @@ namespace BTD_Mod_Helper.Api.Updater
                 return false;
             }
 
+
+            if (!string.IsNullOrEmpty(updateInfo.Location))
+            {
+                File.Delete(updateInfo.Location);
+            }
+            
             var fileName = downloadURL.Substring(downloadURL.LastIndexOf("/", StringComparison.Ordinal));
             if (fileName.Contains("?"))
             {

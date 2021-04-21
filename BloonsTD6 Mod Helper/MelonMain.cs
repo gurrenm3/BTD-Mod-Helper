@@ -25,14 +25,12 @@ namespace BTD_Mod_Helper
         internal static readonly string modDir =
             $"{Environment.CurrentDirectory}\\Mods\\{Assembly.GetExecutingAssembly().GetName().Name}";
 
-        internal static readonly string AutoUpdaterPath = Path.Combine(MelonHandler.PluginsDirectory, "Auto Updater Plugin.dll");
-        internal static string autoUpdaterUrl = "";
         internal static readonly string ModSettingsDir = Path.Combine(modDir, "Mod Settings");
         
         public const string coopMessageCode = "BTD6_ModHelper";
         public const string currentVersion = "1.0.2";
 
-        private bool useModOptionsDEBUG = true;
+        private bool useModOptionsDEBUG = false;
         private ModOptionsMenu modOptionsUI;
 
         private readonly List<UpdateInfo> modsNeedingUpdates = new List<UpdateInfo>();
