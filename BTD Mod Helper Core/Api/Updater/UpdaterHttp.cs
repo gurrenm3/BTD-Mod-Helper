@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -154,15 +155,18 @@ namespace BTD_Mod_Helper.Api.Updater
             {
                 fileName = fileName.Substring(0, fileName.IndexOf("?", StringComparison.Ordinal));
             }
-            
+
             var response = await client.GetAsync(downloadURL);
-            if (!Directory.Exists($"{modDir}\\New Mods"))
-            {
-                Directory.CreateDirectory($"{modDir}\\New Mods");
-            }
-            using (var fs = new FileStream($"{modDir}\\New Mods\\{fileName}", FileMode.Create))
+            var newFile = $"{modDir}\\{fileName}";
+            using (var fs = new FileStream(newFile, FileMode.Create))
             {
                 await response.Content.CopyToAsync(fs);
+            }
+
+            if (fileName.EndsWith(".zip"))
+            {
+                ZipFile.ExtractToDirectory(newFile, modDir);
+                File.Delete(newFile);
             }
 
             return true;

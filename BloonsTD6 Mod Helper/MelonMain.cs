@@ -16,18 +16,23 @@ using System.Threading.Tasks;
 using Assets.Main.Scenes;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
+using Newtonsoft.Json;
 
 namespace BTD_Mod_Helper
 {
     internal class MelonMain : BloonsTD6Mod
     {
-        internal static string modDir =
+        internal static readonly string modDir =
             $"{Environment.CurrentDirectory}\\Mods\\{Assembly.GetExecutingAssembly().GetName().Name}";
 
+        internal static readonly string AutoUpdaterPath = Path.Combine(MelonHandler.PluginsDirectory, "Auto Updater Plugin.dll");
+        internal static string autoUpdaterUrl = "";
+        internal static readonly string ModSettingsDir = Path.Combine(modDir, "Mod Settings");
+        
         public const string coopMessageCode = "BTD6_ModHelper";
         public const string currentVersion = "1.0.2";
 
-        private bool useModOptionsDEBUG = false;
+        private bool useModOptionsDEBUG = true;
         private ModOptionsMenu modOptionsUI;
 
         private readonly List<UpdateInfo> modsNeedingUpdates = new List<UpdateInfo>();
@@ -49,6 +54,9 @@ namespace BTD_Mod_Helper
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
+                
+            ModSettingsHandler.InitializeModSettings(ModSettingsDir);
+            ModSettingsHandler.LoadModSettings(ModSettingsDir);
         }
 
         public override void OnUpdate()
@@ -104,6 +112,11 @@ namespace BTD_Mod_Helper
                     "Yes, quit the game", null, "Not now", Popup.TransitionAnim.Update);
                 UpdateHandler.updatedMods = false;
             }
+            
+            //TODO: with only external changing, settings should load when going to the main menu
+            //TODO: with in game changing, settings should save when going to the main menu
+            //ModSettingsHandler.SaveModSettings(modSettingsDir);
+            ModSettingsHandler.LoadModSettings(ModSettingsDir);
         }
 
 

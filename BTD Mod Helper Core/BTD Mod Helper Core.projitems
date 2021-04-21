@@ -15,7 +15,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ButtonOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\CheckboxOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\InputOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModOptionsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModSettingBool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModSettingDouble.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModSettingEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModSettingInt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModSettingsHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\ModSettingString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\SliderOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGameMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />

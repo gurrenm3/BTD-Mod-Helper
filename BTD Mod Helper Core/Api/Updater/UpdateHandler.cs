@@ -112,7 +112,7 @@ namespace BTD_Mod_Helper.Api.Updater
                         }
 
                         PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "An Update is Available!",
-                            message, new Action(() => UpdateMod(updateInfo, modDir)), "YES", actionNo,
+                            message, new Action(async () => await UpdateMod(updateInfo)), "YES", actionNo,
                             no, Popup.TransitionAnim.Update, instantClose: true);
                     }
 
@@ -121,12 +121,12 @@ namespace BTD_Mod_Helper.Api.Updater
             }
         }
 
-        private static async Task UpdateMod(UpdateInfo updateInfo, string modDir)
+        private static async Task UpdateMod(UpdateInfo updateInfo)
         {
             var updater = new UpdaterHttp(updateInfo);
             try
             {
-                if (await updater.Download(modDir))
+                if (await updater.Download($"{Environment.CurrentDirectory}\\Mods"))
                 {
                     MelonLogger.Msg($"Successfully downloaded new version of {updateInfo.Name}");
                     updatedMods = true;

@@ -71,6 +71,7 @@
       <HintPath>..\\Dependencies\BloonsTD6\System.Drawing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="UnhollowerBaseLib">
       <HintPath>..\\Dependencies\BloonsTD6\UnhollowerBaseLib.dll</HintPath>
       <Private>False</Private>

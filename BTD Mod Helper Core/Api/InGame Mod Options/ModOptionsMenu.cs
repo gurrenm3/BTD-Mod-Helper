@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Main;
+using MelonLoader;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.InGame_Mod_Options
@@ -30,11 +32,22 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
             modList = instantiatedUI.transform.Find("ModOptions/ModList ScrollRect/ModList Container").GetComponent<GameObject>();
             optionsList = instantiatedUI.transform.Find("ModOptions/ModOptions ScrollRect/ModOptions Container").GetComponent<GameObject>();
             uiElementsContainer = instantiatedUI.transform.Find("ModOptions/UI Elements").GetComponent<GameObject>();
+            
+            
+            foreach (var bloonsMod in MelonHandler.Mods.OfType<BloonsMod>())
+            {
+                if (!bloonsMod.ModSettings.Any()) continue;
 
+                foreach (var modSetting in bloonsMod.ModSettings.Values)
+                {
+                    var modOption = modSetting.ConstructModOption(instantiatedUI);
+                }
+            }
+            
             var button = new ButtonOption(instantiatedUI);
-            var slider = new SliderOption(instantiatedUI);
-            var checkbox = new CheckboxOption(instantiatedUI);
-            var input = new InputOption(instantiatedUI);
+            //var slider = new SliderOption(instantiatedUI);
+            //var checkbox = new CheckboxOption(instantiatedUI);
+            //var input = new InputOption(instantiatedUI);
         }
     }
 }

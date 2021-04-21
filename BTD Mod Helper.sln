@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsAT Mod Helper", "Bloo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{12189163-C07D-423C-9006-978E944D7409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto Updater Plugin", "Auto Updater Plugin\Auto Updater Plugin.csproj", "{EDAF783E-98B0-49FC-9BD8-DD18652A050B}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		BTD Mod Helper Core\BTD Mod Helper Core.projitems*{12189163-c07d-423c-9006-978e944d7409}*SharedItemsImports = 4
@@ -48,12 +46,6 @@ Global
 		{12189163-C07D-423C-9006-978E944D7409}.Plugin - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.Plugin - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
 		{12189163-C07D-423C-9006-978E944D7409}.Plugin - Release|Any CPU.Build.0 = Plugin - Release|Any CPU
-		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.BloonsTD6 - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
-		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.BloonsTD6 - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
-		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
-		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
-		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
-		{EDAF783E-98B0-49FC-9BD8-DD18652A050B}.Plugin - Release|Any CPU.Build.0 = Plugin - Release|Any CPU
 		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.Plugin - Debug|Any CPU.ActiveCfg = Plugin - Debug|Any CPU
 		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.Plugin - Debug|Any CPU.Build.0 = Plugin - Debug|Any CPU
 		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.Plugin - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
