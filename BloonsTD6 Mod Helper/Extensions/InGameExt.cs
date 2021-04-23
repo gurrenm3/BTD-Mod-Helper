@@ -47,38 +47,6 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Checks if Player is in a game mode that would get them flagged if using mods
-        /// </summary>
-        public static bool CanGetFlagged(this InGame inGame)
-        {
-            return (inGame.IsInRace() || inGame.IsInPublicCoop() || inGame.IsInOdyssey());
-        }
-
-        /// <summary>
-        /// Returns if Player is in a race
-        /// </summary>
-        public static bool IsInRace(this InGame inGame)
-        {
-            return SessionData.IsInRace;
-        }
-
-        /// <summary>
-        /// Returns if Player is in a public co-op match
-        /// </summary>
-        public static bool IsInPublicCoop(this InGame inGame)
-        {
-            return SessionData.IsInPublicCoop;
-        }
-
-        /// <summary>
-        /// Returns if Player is in a Odyssey game
-        /// </summary>
-        public static bool IsInOdyssey(this InGame inGame)
-        {
-            return SessionData.IsInOdyssey;
-        }
-
-        /// <summary>
         /// Get the Cash Manager for the current game
         /// </summary>
         /// <param name="index">Index of the cash manager. Default is 0</param>

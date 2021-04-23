@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper
         internal static readonly string ModSettingsDir = Path.Combine(modDir, "Mod Settings");
         
         public const string coopMessageCode = "BTD6_ModHelper";
-        public const string currentVersion = "1.0.2";
+        public const string currentVersion = "1.0.1";
 
         private bool useModOptionsDEBUG = false;
         private ModOptionsMenu modOptionsUI;

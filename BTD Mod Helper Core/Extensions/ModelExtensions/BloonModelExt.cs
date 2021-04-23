@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Get the number position of this bloon from the list of all bloons
         /// </summary>
-        public static int? GetIndex(this BloonModel bloonModel)
+        public static int GetIndex(this BloonModel bloonModel)
         {
             Il2CppReferenceArray<BloonModel> allBloons = Game.instance?.model?.bloons;
             return allBloons.FindIndex(bloon => bloon.name == bloonModel.name);

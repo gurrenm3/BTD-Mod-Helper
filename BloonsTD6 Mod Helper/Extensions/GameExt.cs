@@ -24,6 +24,38 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class GameExt
     {
         /// <summary>
+        /// Checks if Player is in a game mode that would get them flagged if using mods
+        /// </summary>
+        public static bool CanGetFlagged(this Game inGame)
+        {
+            return (inGame.IsInRace() || inGame.IsInPublicCoop() || inGame.IsInOdyssey());
+        }
+
+        /// <summary>
+        /// Returns if Player is in a race
+        /// </summary>
+        public static bool IsInRace(this Game inGame)
+        {
+            return SessionData.IsInRace;
+        }
+
+        /// <summary>
+        /// Returns if Player is in a public co-op match
+        /// </summary>
+        public static bool IsInPublicCoop(this Game inGame)
+        {
+            return SessionData.IsInPublicCoop;
+        }
+
+        /// <summary>
+        /// Returns if Player is in a Odyssey game
+        /// </summary>
+        public static bool IsInOdyssey(this Game inGame)
+        {
+            return SessionData.IsInOdyssey;
+        }
+
+        /// <summary>
         /// Get nkGI for the current session. Will be null if not in multiplayer game or lobby
         /// </summary>
         /// <param name="game"></param>
@@ -54,7 +86,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static JsonSerializer GetJsonSerializer(this Game game)
         {
-            return new JsonSerializer();
+            return JsonSerializer.instance;
         }
 
         /// <summary>
