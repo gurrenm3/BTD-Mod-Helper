@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -7,7 +8,9 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Updater
 {
@@ -41,8 +44,24 @@ namespace BTD_Mod_Helper.Api.Updater
 
         public async Task<List<GithubReleaseInfo>> GetReleaseInfoAsync(string url)
         {
-            var releaseJson = await client.GetStringAsync(url);
-            return GithubReleaseInfo.FromJson(releaseJson);
+            var tries = 0;
+            while (tries < 3)
+            {
+                try
+                {
+                    var releaseJson = await client.GetStringAsync(url);
+                    return GithubReleaseInfo.FromJson(releaseJson);
+                }
+                catch (Exception e)
+                {
+                    Thread.Sleep(1000);
+                    e.ToString();
+                }
+                
+                tries++;
+            }
+
+            throw new HttpRequestException("Failed to retrieve release info");
         }
         
         public async Task<string> GetMelonInfoAsync(string url)
@@ -134,6 +153,14 @@ namespace BTD_Mod_Helper.Api.Updater
 
         public async Task<bool> Download(string modDir)
         {
+            if (updateInfo.Name == "BloonsTD6 Mod Helper")
+            {
+                Process.Start(updateInfo.LatestURL);
+                MelonLogger.Msg("For the moment, the mod helper can't directly update itself");
+                return false;
+            }
+            
+            
             string downloadURL;
             if (updateInfo.GithubReleaseURL != "")
             {
@@ -153,7 +180,14 @@ namespace BTD_Mod_Helper.Api.Updater
 
             if (!string.IsNullOrEmpty(updateInfo.Location))
             {
-                File.Delete(updateInfo.Location);
+                try
+                {
+                    File.Delete(updateInfo.Location);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
             
             var fileName = downloadURL.Substring(downloadURL.LastIndexOf("/", StringComparison.Ordinal));
