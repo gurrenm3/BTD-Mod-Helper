@@ -9,14 +9,9 @@ using System.Reflection;
 using UnityEngine;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.Updater;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using Assets.Main.Scenes;
 using Assets.Scripts.Unity.Menu;
-using BTD_Mod_Helper.Extensions;
-using Newtonsoft.Json;
 
 namespace BTD_Mod_Helper
 {
@@ -28,7 +23,7 @@ namespace BTD_Mod_Helper
         internal static readonly string ModSettingsDir = Path.Combine(modDir, "Mod Settings");
         
         public const string coopMessageCode = "BTD6_ModHelper";
-        public const string currentVersion = "1.0.1";
+        public const string currentVersion = "1.0.3";
 
         private bool useModOptionsDEBUG = false;
         private ModOptionsMenu modOptionsUI;

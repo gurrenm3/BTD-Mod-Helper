@@ -5,9 +5,9 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using UnityEngine.PlayerLoop;
 
 namespace BTD_Mod_Helper.Api.Updater
 {
@@ -169,9 +169,27 @@ namespace BTD_Mod_Helper.Api.Updater
                 await response.Content.CopyToAsync(fs);
             }
 
+            var helperDir = $"{modDir}\\{Assembly.GetExecutingAssembly().GetName().Name}";
             if (fileName.EndsWith(".zip"))
             {
-                ZipFile.ExtractToDirectory(newFile, modDir);
+                var zipTemp = $"{helperDir}\\Zip Temp";
+                if (Directory.Exists(zipTemp))
+                {
+                    Directory.Delete(zipTemp, true);
+                }
+                Directory.CreateDirectory(zipTemp);
+                ZipFile.ExtractToDirectory(newFile, zipTemp);
+                foreach (var enumerateFile in Directory.EnumerateFiles(zipTemp))
+                {
+                    var name = Path.GetFileName(enumerateFile);
+                    var targetFile = Path.Combine(modDir, name);
+                    if (File.Exists(targetFile))
+                    {
+                        File.Delete(targetFile);
+                    }
+                    File.Copy(enumerateFile, targetFile);
+                    File.Delete(enumerateFile);
+                }
                 File.Delete(newFile);
             }
 

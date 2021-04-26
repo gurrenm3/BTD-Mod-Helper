@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Simulation.Bloons;
@@ -12,6 +13,7 @@ using Assets.Scripts.Simulation.Towers.Projectiles;
 using Assets.Scripts.Simulation.Towers.Weapons;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Extensions;
+using Il2CppSystem.Collections.Generic;
 using MelonLoader;
 using NinjaKiwi.NKMulti;
 using UnhollowerBaseLib;
@@ -60,6 +62,16 @@ namespace BTD_Mod_Helper
         /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
         /// </summary>
         public virtual void OnNewGameModel(GameModel result)
+        {
+            
+        }
+        
+        /// <summary>
+        /// Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers
+        /// 
+        /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+        /// </summary>
+        public virtual void OnNewGameModel(GameModel result, List<ModModel> mods)
         {
             
         }
