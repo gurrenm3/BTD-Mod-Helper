@@ -167,6 +167,7 @@
     <Compile Include="Extensions\NkAssetExtensions\NK_TextMeshProUGUIExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\EntityExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\MapExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\TowerExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\ProjectileExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\SelectableObjectExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\UnityToSimulationExty.cs" />
