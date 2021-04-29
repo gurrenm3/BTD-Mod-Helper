@@ -32,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdaterHttp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BloonsMod.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\ProjectileExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SessionData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\SpriteRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\AttackModelBehaviorExt.cs" />

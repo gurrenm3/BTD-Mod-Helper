@@ -1,0 +1,30 @@
+﻿using Assets.Scripts.Simulation.Bloons;
+using Assets.Scripts.Simulation.Display;
+using Assets.Scripts.Simulation.Towers.Projectiles;
+using Assets.Scripts.Unity.Bridge;
+using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Unity.UI_New.InGame;
+
+namespace BTD_Mod_Helper.Extensions
+{
+    public static partial class ProjectileExt
+    {
+        /// <summary>
+        /// Get the DisplayNode for this Projectile
+        /// </summary>
+        /// <returns></returns>
+        public static DisplayNode GetDisplayNode(this Projectile projectile)
+        {
+            return projectile.Node;
+        }
+
+        /// <summary>
+        /// Get the UnityDisplayNode for this Projectile. Is apart of DisplayNode. Needed to modify sprites
+        /// </summary>
+        /// <returns></returns>
+        public static UnityDisplayNode GetUnityDisplayNode(this Projectile projectile)
+        {
+            return projectile.GetDisplayNode()?.graphic;
+        }
+    }
+}

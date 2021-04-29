@@ -115,13 +115,12 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The type of items you want</typeparam>
         public static List<T> GetAllObjectsOfType<T>(this InGame inGame) where T : RootObject, new()
         {
-            var factory = inGame.GetMainFactory().GetFactory<T>();
+            var factory = inGame.GetMainFactory()?.GetFactory<T>();
 #if BloonsTD6
-            return factory.all.ToList();
+            return factory?.all?.ToList();
 #elif BloonsAT
-            return factory.active.ToList();
+            return factory?.active?.ToList();
 #endif
-
         }
     }
 }

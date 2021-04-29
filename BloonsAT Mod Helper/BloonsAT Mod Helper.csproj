@@ -137,6 +137,8 @@
     <Compile Include="Extensions\InGameExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\ModelExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\ProjectileExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\UnityToSimulationExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\EntityExt.cs" />
     <Compile Include="MelonMain.cs" />
