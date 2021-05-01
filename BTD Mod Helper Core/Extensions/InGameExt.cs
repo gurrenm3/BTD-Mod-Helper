@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Simulation.Track;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Models;
+using System.Linq;
 
 #if BloonsTD6
 using Assets.Scripts.Simulation.Towers.Projectiles;
@@ -68,12 +69,12 @@ namespace BTD_Mod_Helper.Extensions
 
         public static List<Bloon> GetBloons(this InGame inGame)
         {
-            return inGame.GetAllObjectsOfType<Bloon>();
+            return SessionData.bloonTracker.currentBloons.Values.ToList();
         }
 
         public static List<BloonToSimulation> GetBloonSims(this InGame inGame)
         {
-            return inGame.GetUnityToSimulation()?.GetAllBloons()?.ToList();
+            return SessionData.bloonTracker.currentBloonToSims.Values.ToList();
         }
 
         public static List<Projectile> GetProjectiles(this InGame inGame)

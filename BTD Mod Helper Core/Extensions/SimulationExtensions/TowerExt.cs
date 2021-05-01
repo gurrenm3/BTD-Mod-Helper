@@ -8,7 +8,7 @@ using Assets.Scripts.Unity.UI_New.InGame;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class TowerExt
+    public static partial class TowerExt
     {
         /// <summary>
         /// Change TowerModel to a different one. Will update display

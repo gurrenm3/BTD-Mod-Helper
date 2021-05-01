@@ -34,7 +34,25 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static BloonToSimulation GetBloonToSim(this Bloon bloon)
         {
-            return InGame.instance.GetUnityToSimulation().GetAllBloons().FirstOrDefault(b => b.id == bloon.Id);
+            // It seems like this method creates a BloonToSimulation for all bloons everytime it's called, so it might not be necessary
+            //return InGame.instance?.GetUnityToSimulation()?.GetAllBloons()?.FirstOrDefault(b => b.id == bloon.Id);
+
+            //
+            // This method doesn't need to be this long but it doesn't hurt to have extra checks
+            //
+
+            var bloonSim = SessionData.bloonTracker.GetBloonToSim(bloon.Id);
+            if (bloonSim is null && bloon.bloonModel is null) // if bloon.bloonModel is null then the bloon hasn't been initialized yet so continuing is pointless
+                return null;
+
+            var currentPos = bloon.Position?.ToUnity();
+            if (currentPos is null) currentPos = new UnityEngine.Vector3();
+
+            if (bloonSim is null)
+                return new BloonToSimulation(InGame.instance.GetUnityToSimulation(), bloon.Id, currentPos.Value, bloon.bloonModel);
+
+            bloonSim.position = currentPos.Value; // Updating position isn't necessary but it helps with accuracy
+            return bloonSim;
         }
     }
 }

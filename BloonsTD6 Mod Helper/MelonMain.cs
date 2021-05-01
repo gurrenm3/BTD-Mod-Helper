@@ -12,6 +12,8 @@ using BTD_Mod_Helper.Api.Updater;
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
+using Assets.Scripts.Simulation.Bloons;
+using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper
 {
@@ -60,7 +62,7 @@ namespace BTD_Mod_Helper
             if (PopupScreen.instance != null)
             {
                 UpdateHandler.AnnounceUpdates(modsNeedingUpdates, modDir);
-            }
+            }            
 
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -87,7 +89,6 @@ namespace BTD_Mod_Helper
 
             if (InGame.instance is null)
                 return;
-
 
             if (useModOptionsDEBUG && modOptionsUI is null)
                 modOptionsUI = new ModOptionsMenu();

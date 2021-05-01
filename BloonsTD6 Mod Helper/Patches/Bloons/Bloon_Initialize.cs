@@ -8,7 +8,7 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.Bloons
 {
-    [HarmonyPatch(typeof(Bloon), nameof(Bloon.Initialise))]
+    /*[HarmonyPatch(typeof(Bloon), nameof(Bloon.Initialise))]
     internal class Bloon_Initialize
     {
 
@@ -17,5 +17,5 @@ namespace BTD_Mod_Helper.Patches.Bloons
         {
             MelonMain.DoPatchMethods(mod => mod.OnBloonCreated(__instance));
         }
-    }
+    }*/
 }

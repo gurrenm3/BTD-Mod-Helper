@@ -32,7 +32,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Bloon GetSimBloon(this BloonToSimulation bloonToSim)
         {
-            return InGame.instance.GetAllObjectsOfType<Bloon>().ToList().FirstOrDefault(b => b.Id == bloonToSim.id);
+            return SessionData.bloonTracker.GetBloon(bloonToSim.id);
         }
     }
 }
