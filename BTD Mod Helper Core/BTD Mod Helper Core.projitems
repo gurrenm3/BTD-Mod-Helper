@@ -33,7 +33,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdaterHttp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BloonsMod.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\HarmonyExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\ArrayExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\ProjectileExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\TypeExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\Bloons\BloonToSimulation_Ctor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\Bloons\Bloon_OnDestroy.cs" />

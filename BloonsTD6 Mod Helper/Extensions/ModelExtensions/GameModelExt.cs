@@ -2,6 +2,7 @@
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using Assets.Scripts.Models.Towers.Projectiles;
@@ -17,7 +18,7 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class GameModelExt
+    public static partial class GameModelExt
     {
         /// <summary>
         /// Add a TowerModel to the game.
@@ -215,6 +216,24 @@ namespace BTD_Mod_Helper.Extensions
         public static List<TowerModel> GetTowerModelsWithAbilities(this GameModel model)
         {
             return model.towers.Where(t => t.GetAbilites() != null).ToList();
+        }
+
+        public static void AddUpgrade(this GameModel model, UpgradeModel upgradeModel)
+        {
+            model.upgrades = model.upgrades.AddTo(upgradeModel);
+            model.upgradesByName.Add(upgradeModel.name, upgradeModel);
+        }
+
+        public static void AddUpgrades(this GameModel model, List<UpgradeModel> upgradeModels)
+        {
+            model.upgrades = model.upgrades.AddTo(upgradeModels);
+            upgradeModels.ForEach(upgrade => model.upgradesByName.Add(upgrade.name, upgrade));
+        }
+
+        public static void AddUpgrades(this GameModel model, UpgradeModel[] upgradeModels)
+        {
+            model.upgrades = model.upgrades.AddTo(upgradeModels);
+            System.Array.ForEach(upgradeModels, upgrade => model.upgradesByName.Add(upgrade.name, upgrade));
         }
     }
 }
