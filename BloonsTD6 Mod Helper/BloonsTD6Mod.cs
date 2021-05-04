@@ -46,7 +46,7 @@ namespace BTD_Mod_Helper
         /// <summary>
         /// Acts on a Network message that's been sent to the client
         ///
-        /// Use Game.instance.nkGI.ReadMessage<YOUR_CLASS_NAME>(message) to get back the same object/class you sent.
+        /// Use Game.instance.GetNKgI().ReadMessage<YOUR_CLASS_NAME>(message) to get back the same object/class you sent.
         ///
         /// If this is one of your messages and you're consuming and acting on it, return true.
         /// Otherwise, return false. Seriously.
