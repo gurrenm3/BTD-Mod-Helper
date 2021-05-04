@@ -36,9 +36,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MelonLoader.ModHandler">
-      <HintPath>..\Dependencies\Shared\MelonLoader.ModHandler.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="MelonLoader">
+      <HintPath>..\Dependencies\Shared\MelonLoader.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Dependencies\BloonsAT\Assembly-CSharp.dll</HintPath>
