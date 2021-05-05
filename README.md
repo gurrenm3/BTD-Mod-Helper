@@ -19,6 +19,7 @@ Like other API, download/clone it. In your mod's Visual Studio project add a ref
   - Custom linq extensions for easier manipluation
   - More
 - Support for custom textures/sprites/3d models
+- Many extensions to allow for "Cross-Game compatibility". This means you can make your mod for one game and it will work for another with little to no extra work
 
 For BTD6:
 - Fully custom bloon sets (not possible in vanila BTD6), BloonBuilder (easier time creating custom bloon types), Json Serializer, and other useful features
