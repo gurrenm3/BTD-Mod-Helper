@@ -1,14 +1,20 @@
-﻿using Assets.Scripts.Simulation.Bloons;
-using Assets.Scripts.Simulation.Display;
-using Assets.Scripts.Simulation.Towers.Projectiles;
-using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.Display;
+﻿using Assets.Scripts.Simulation.Factory;
 using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Simulation.Towers.Projectiles;
+using Assets.Scripts.Simulation.Towers.Projectiles.Behaviors;
 
 namespace BTD_Mod_Helper.Extensions
 {
     public static partial class ProjectileExt
     {
-        
+        /// <summary>
+        /// (Cross-Game compatible) Return the Factory that creates Projectiles
+        /// </summary>
+        /// <param name="projectile"></param>
+        /// <returns></returns>
+        public static Factory<Projectile> GetFactory(this Projectile projectile)
+        {
+            return InGame.instance.GetFactory<Projectile>();
+        }
     }
 }

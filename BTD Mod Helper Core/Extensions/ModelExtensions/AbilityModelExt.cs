@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions
     public static class AbilityModelExt
     {
         /// <summary>
-        /// Get the all AbilityToSimulation with this AbilityModel
+        /// (Cross-Game compatible) Get the all AbilityToSimulation with this AbilityModel
         /// </summary>
         /// <param name="abiltyModel"></param>
         /// <returns></returns>

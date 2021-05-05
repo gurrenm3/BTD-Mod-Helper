@@ -1,21 +1,30 @@
 ﻿using System;
+using Assets.Scripts.Models;
 using Assets.Scripts.Simulation.Bloons;
-using Assets.Scripts.Simulation.Towers;
-using Assets.Scripts.Simulation.Towers.Projectiles;
-using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Extensions;
 using Harmony;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.Bloons
 {
-    /*[HarmonyPatch(typeof(Bloon), nameof(Bloon.Initialise))]
+    [HarmonyPatch(typeof(Bloon), nameof(Bloon.Initialise))]
     internal class Bloon_Initialize
     {
+
+        [HarmonyPrefix]
+        internal static bool Prefix(Bloon __instance, Model modelToUse)
+        {
+            SessionData.bloonTracker.TrackBloon(__instance);
+
+            // Creating new BloonToSimulation will automatically start Tracking BloonSim via the Constructor
+            __instance.CreateBloonToSim();
+            return true;
+        }
 
         [HarmonyPostfix]
         internal static void Postfix(Bloon __instance)
         {
             MelonMain.DoPatchMethods(mod => mod.OnBloonCreated(__instance));
         }
-    }*/
+    }
 }

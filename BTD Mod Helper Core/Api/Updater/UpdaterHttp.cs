@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using MelonLoader;
+//using MelonLoader.ICSharpCode.SharpZipLib.Zip;
 
 namespace BTD_Mod_Helper.Api.Updater
 {
@@ -197,7 +198,7 @@ namespace BTD_Mod_Helper.Api.Updater
             }
 
             var response = await client.GetAsync(downloadURL);
-            var newFile = $"{modDir}\\{fileName}";
+            string newFile = $"{modDir}\\{fileName}";
             using (var fs = new FileStream(newFile, FileMode.Create))
             {
                 await response.Content.CopyToAsync(fs);
@@ -213,6 +214,7 @@ namespace BTD_Mod_Helper.Api.Updater
                 }
                 Directory.CreateDirectory(zipTemp);
                 ZipFile.ExtractToDirectory(newFile, zipTemp);
+
                 foreach (var enumerateFile in Directory.EnumerateFiles(zipTemp))
                 {
                     var name = Path.GetFileName(enumerateFile);

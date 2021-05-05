@@ -7,16 +7,8 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class GameModelExt
+    public static partial class GameModelExt
     {
-        /// <summary>
-        /// Get the instance of the API's BloonModelBuilder. Used to create custom bloon types and add them to the game
-        /// </summary>
-        public static BloonModelBuilder GetBloonModelBuilder(this GameModel model)
-        {
-            return BloonModelBuilder.Instance;
-        }
-
         /// <summary>
         /// Create a BloonEmissionModel from a bloonModel
         /// </summary>

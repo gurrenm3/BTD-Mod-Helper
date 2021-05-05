@@ -7,6 +7,12 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class IEnumerableExt
     {
+        /// <summary>
+        /// (Cross-Game compatible) Return as Il2CppSystem.List
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable)
         {
             Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
@@ -16,6 +22,12 @@ namespace BTD_Mod_Helper.Extensions
             return il2CppList;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return as Il2CppReferenceArray
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
         {
             Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(enumerable.Count());
@@ -27,7 +39,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not Tested
+        /// (Cross-Game compatible) Return as LockList
         /// </summary>
         public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable)
         {
@@ -40,7 +52,12 @@ namespace BTD_Mod_Helper.Extensions
 
 
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return as a duplicate IEnumerable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static IEnumerable<T> Duplicate<T>(this IEnumerable<T> enumerable)
         {
             List<T> test = new List<T>();
@@ -50,6 +67,13 @@ namespace BTD_Mod_Helper.Extensions
             return test.AsEnumerable();
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return as a duplicate IEnumerable of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static IEnumerable<TCast> DuplicateAs<TSource, TCast>(this IEnumerable<TSource> enumerable)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {

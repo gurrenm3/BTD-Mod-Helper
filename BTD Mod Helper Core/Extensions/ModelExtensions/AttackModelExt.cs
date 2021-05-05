@@ -19,7 +19,7 @@ namespace BTD_Mod_Helper.Extensions
     public static class AttackModelExt
     {
         /// <summary>
-        /// Add a weapon to this Attack Model
+        /// (Cross-Game compatible) Add a weapon to this Attack Model
         /// </summary>
         /// <param name="weaponToAdd">Weapon to add</param>
         public static void AddWeapon(this AttackModel attackModel, WeaponModel weaponToAdd) =>
@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper.Extensions
 
         // Thanks to doombubbles for creating this
         /// <summary>
-        /// Recursively get all ProjectileModels for this attack model and all of it's weapons
+        /// (Cross-Game compatible) Recursively get all ProjectileModels for this attack model and all of it's weapons
         /// </summary>
         /// <param name="attackModel"></param>
         /// <returns></returns>

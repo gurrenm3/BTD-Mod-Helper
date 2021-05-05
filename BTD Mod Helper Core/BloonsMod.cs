@@ -6,10 +6,11 @@ using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api.InGame_Mod_Options;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
+using UnityEngine;
 
 namespace BTD_Mod_Helper
 {
-    public abstract class BloonsMod : MelonMod
+    public abstract class BloonsMod : Main
     {
         internal Dictionary<string, ModSetting> ModSettings;
 
@@ -42,6 +43,40 @@ namespace BTD_Mod_Helper
         public virtual string LatestURL => "";
 
 
+
+        #region Input Hooks
+
+        /// <summary>
+        /// Called on the frame that a key starts being held
+        ///
+        /// Equivalent to a HarmonyPostFix on Input.GetKeyDown
+        /// </summary>
+        public virtual void OnKeyDown(KeyCode keyCode)
+        {
+        }
+
+        /// <summary>
+        /// Called on the frame that a key stops being held
+        ///
+        /// Equivalent to a HarmonyPostFix on Input.GetKeyUp
+        /// </summary>
+        public virtual void OnKeyUp(KeyCode keyCode)
+        {
+        }
+
+        /// <summary>
+        /// Called every frame that a key is being held 
+        ///
+        /// Equivalent to a HarmonyPostFix on Input.GetKey
+        /// </summary>
+        public virtual void OnKeyHeld(KeyCode keyCode)
+        {
+        }
+
+        #endregion
+
+
+
         public static int CostForDifficulty(int cost, string difficulty)
         {
             switch (difficulty)
@@ -61,44 +96,6 @@ namespace BTD_Mod_Helper
         {
             var price = cost * multiplier;
             return (int) (5 * Math.Round(price / 5));
-        }
-
-        public static int CostForDifficulty(int cost, Il2CppSystem.Collections.Generic.List<ModModel> mods)
-        {
-            var mult = 1f;
-            foreach (var gameModelMod in mods)
-            {
-                if (gameModelMod.mutatorMods != null)
-                {
-                    foreach (var mutatorModModel in gameModelMod.mutatorMods)
-                    {
-                        if (mutatorModModel != null && mutatorModModel.IsType<GlobalCostModModel>())
-                        {
-                            var mod = mutatorModModel.Cast<GlobalCostModModel>();
-                            mult = mod.multiplier;
-                        }
-                    }
-                }
-            }
-
-            return CostForDifficulty(cost, mult);
-        }
-
-        public static int CostForDifficulty(int cost, GameModel gameModel)
-        {
-            var difficulty = $"{gameModel.difficultyId}";
-            if (string.IsNullOrEmpty(difficulty))
-            {
-                MelonLogger.Warning("Difficulty cannot be determined at this stage of creating the GameModel");
-                MelonLogger.Warning("Use the list of ModModels to find the difficulty instead");
-            }
-
-            return CostForDifficulty(cost, gameModel.difficultyId);
-        }
-
-        public static int CostForDifficulty(int cost, InGame inGame)
-        {
-            return CostForDifficulty(cost, inGame.SelectedDifficulty);
         }
     }
 }

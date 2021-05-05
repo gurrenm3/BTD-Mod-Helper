@@ -7,13 +7,14 @@ using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
 using UnhollowerBaseLib;
+using System;
 
 namespace BTD_Mod_Helper.Extensions
 {
     public static class BloonModelExt
     {
         /// <summary>
-        /// Get the number position of this bloon from the list of all bloons
+        /// (Cross-Game compatible) Return the number position of this bloon from the list of all bloons (Game.instance.model.bloons)
         /// </summary>
         public static int GetIndex(this BloonModel bloonModel)
         {
@@ -22,7 +23,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Spawn this BloonModel on the map right now
+        /// (Cross-Game compatible) Spawn this BloonModel on the map right now
         /// </summary>
         public static void SpawnBloonModel(this BloonModel bloonModel)
         {
@@ -34,24 +35,13 @@ namespace BTD_Mod_Helper.Extensions
             Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators = new Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator>();
             Il2CppSystem.Collections.Generic.List<BehaviorMutator> nonChargedMutators = new Il2CppSystem.Collections.Generic.List<BehaviorMutator>();
             spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation().GetCurrentRound(), 0);
-
-            //spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation().GetCurrentRound(), 0, chargedMutators, nonChargedMutators); // removed in update 25.0
 #elif BloonsAT
             spawner.Emit(bloonModel);
 #endif
         }
 
-        //possibly bugged. Will come back to later
-        /*public static void Spawn(this BloonModel bloonModel)
-        {
-            var spawner = InGame.instance.GetMap().spawner;
-            spawner.Emit(bloonModel, 0, 0, new Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator>(),
-                new Il2CppSystem.Collections.Generic.List<BehaviorMutator>());
-        }*/
-
-
         /// <summary>
-        /// Create a BloonEmissionModel from this BloonModel
+        /// (Cross-Game compatible) Create a BloonEmissionModel from this BloonModel
         /// </summary>
         /// <param name="count">Number of bloons in this emission model</param>
         /// <param name="spacing">Space between each bloon in this emission model</param>
@@ -61,8 +51,9 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all BloonToSimulations with this BloonModel
+        /// This is Obsolete, use GetAllBloonToSim instead. (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
         /// </summary>
+        [Obsolete]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
             Il2CppSystem.Collections.Generic.List<BloonToSimulation> bloonSims = InGame.instance?.GetUnityToSimulation()?.GetAllBloons();
@@ -73,6 +64,24 @@ namespace BTD_Mod_Helper.Extensions
             return results;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
+        /// </summary>
+        public static List<BloonToSimulation> GetAllBloonToSim(this BloonModel bloonModel)
+        {
+            Il2CppSystem.Collections.Generic.List<BloonToSimulation> bloonSims = InGame.instance?.GetUnityToSimulation()?.GetAllBloons();
+            if (bloonSims is null || !bloonSims.Any())
+                return null;
+
+            List<BloonToSimulation> results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
+            return results;
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Return the Base ID of this BloonModel
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <returns></returns>
         public static string GetBaseID(this BloonModel bloonModel)
         {
 #if BloonsTD6

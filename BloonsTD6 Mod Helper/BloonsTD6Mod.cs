@@ -11,6 +11,7 @@ using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Simulation.Towers.Projectiles;
 using Assets.Scripts.Simulation.Towers.Weapons;
+using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Extensions;
 using Il2CppSystem.Collections.Generic;
@@ -88,9 +89,7 @@ namespace BTD_Mod_Helper
         public virtual void OnMainMenu()
         {
         }
-        
-        
-        
+
         /// <summary>
         /// Called right after a match ends in victory
         /// 
@@ -98,9 +97,9 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnVictory()
         {
-            
+
         }
-        
+
         /// <summary>
         /// Called right after a match is started up (restart included it seems like)
         /// 
@@ -108,9 +107,9 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnMatchStart()
         {
-            
+
         }
-        
+
         /// <summary>
         /// Called when a match is restarted
         /// 
@@ -118,20 +117,20 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnRestart(bool removeSave)
         {
-            
+
         }
-        
+
         /// <summary>
         /// Called right after a game ends in victory
         /// 
-        /// Equivalent to a HarmonyPostFix on InGame.OnVictory
+        /// Equivalent to a HarmonyPostFix on TimeManager.SetFastForward
         /// </summary>
         public virtual void OnFastForwardChanged(bool newValue)
         {
-            
+
         }
-        
-        
+
+
         /// <summary>
         /// Called right after the game finishes loading everything
         /// 
@@ -139,41 +138,12 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnTitleScreen()
         {
-            
+
         }
 
         #endregion
-        
-        #region Input Hooks
 
-        /// <summary>
-        /// Called on the frame that a key starts being held
-        ///
-        /// Equivalent to a HarmonyPostFix on Input.GetKeyDown
-        /// </summary>
-        public virtual void OnKeyDown(KeyCode keyCode)
-        {
-        }
 
-        /// <summary>
-        /// Called on the frame that a key stops being held
-        ///
-        /// Equivalent to a HarmonyPostFix on Input.GetKeyUp
-        /// </summary>
-        public virtual void OnKeyUp(KeyCode keyCode)
-        {
-        }
-
-        /// <summary>
-        /// Called every frame that a key is being held 
-        ///
-        /// Equivalent to a HarmonyPostFix on Input.GetKey
-        /// </summary>
-        public virtual void OnKeyHeld(KeyCode keyCode)
-        {
-        }
-
-        #endregion
 
         #region Bloon Hooks
 
@@ -235,9 +205,10 @@ namespace BTD_Mod_Helper
         /// 
         /// Equivalent to a HarmonyPostFix on Bloon.Damaged
         /// </summary>
-        public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, bool ignoreNonTargetable = false)
+        // this was removed because it was removed in BTD6 version 25
+        /*public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, bool ignoreNonTargetable = false)
         {
-        }
+        }*/
 
         #endregion
 
@@ -439,6 +410,45 @@ namespace BTD_Mod_Helper
         }
 
         #endregion
-        
+
+
+
+        public static int CostForDifficulty(int cost, List<ModModel> mods)
+        {
+            var mult = 1f;
+            foreach (var gameModelMod in mods)
+            {
+                if (gameModelMod.mutatorMods != null)
+                {
+                    foreach (var mutatorModModel in gameModelMod.mutatorMods)
+                    {
+                        if (mutatorModModel != null && mutatorModModel.IsType<GlobalCostModModel>())
+                        {
+                            var mod = mutatorModModel.Cast<GlobalCostModModel>();
+                            mult = mod.multiplier;
+                        }
+                    }
+                }
+            }
+
+            return CostForDifficulty(cost, mult);
+        }
+
+        public static int CostForDifficulty(int cost, GameModel gameModel)
+        {
+            var difficulty = $"{gameModel.difficultyId}";
+            if (string.IsNullOrEmpty(difficulty))
+            {
+                MelonLogger.Warning("Difficulty cannot be determined at this stage of creating the GameModel");
+                MelonLogger.Warning("Use the list of ModModels to find the difficulty instead");
+            }
+
+            return CostForDifficulty(cost, gameModel.difficultyId);
+        }
+
+        public static int CostForDifficulty(int cost, InGame inGame)
+        {
+            return CostForDifficulty(cost, inGame.SelectedDifficulty);
+        }
     }
 }

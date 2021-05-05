@@ -3,6 +3,7 @@ using Assets.Scripts.Unity.Bridge;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api
 {
@@ -13,16 +14,16 @@ namespace BTD_Mod_Helper.Api
 
         public void TrackBloon(Bloon bloon)
         {
-            if (currentBloons.ContainsKey(bloon.Id))
+            if (currentBloons.ContainsKey(bloon.GetId()))
             {
-                currentBloons[bloon.Id] = bloon;
+                currentBloons[bloon.GetId()] = bloon;
                 return;
             }
 
-            currentBloons.Add(bloon.Id, bloon);
+            currentBloons.Add(bloon.GetId(), bloon);
         }
 
-        public void StopTrackingBloon(Bloon bloon) => StopTrackingBloon(bloon.Id);
+        public void StopTrackingBloon(Bloon bloon) => StopTrackingBloon(bloon.GetId());
 
         public void StopTrackingBloon(int id)
         {
@@ -38,17 +39,17 @@ namespace BTD_Mod_Helper.Api
 
         public void TrackBloonToSim(BloonToSimulation bloon)
         {
-            if (currentBloonToSims.ContainsKey(bloon.id))
+            if (currentBloonToSims.ContainsKey(bloon.GetId()))
             {
-                currentBloonToSims[bloon.id] = bloon;
+                currentBloonToSims[bloon.GetId()] = bloon;
                 return;
             }
 
-            currentBloonToSims.Add(bloon.id, bloon);
+            currentBloonToSims.Add(bloon.GetId(), bloon);
         }
 
 
-        public void StopTrackingBloonToSim(BloonToSimulation bloon) => StopTrackingBloonToSim(bloon.id);
+        public void StopTrackingBloonToSim(BloonToSimulation bloon) => StopTrackingBloonToSim(bloon.GetId());
 
         public void StopTrackingBloonToSim(int id)
         {

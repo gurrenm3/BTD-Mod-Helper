@@ -25,33 +25,33 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all TowerDetailModels that share a base id with this towerModel
+        /// Return all TowerDetailModels that share a base id with this towerModel
         /// </summary>
         public static TowerDetailsModel GetTowerDetailsModel(this TowerModel towerModel)
         {
-            return Game.instance?.model?.GetAllTowerDetails()?.FirstOrDefault(tower => tower.towerId == towerModel.baseId);
+            return Game.instance?.model?.GetAllTowerDetails()?.FirstOrDefault(tower => tower.towerId == towerModel.GetBaseId());
         }
 
         /// <summary>
-        /// Get the TowerPurchaseButton for this TowerModel.
+        /// Return the TowerPurchaseButton for this TowerModel.
         /// </summary>
         public static TowerPurchaseButton GetTowerPurchaseButton(this TowerModel towerModel)
         {
-            return ShopMenu.instance.GetTowerButtonFromBaseId(towerModel.baseId);
+            return ShopMenu.instance.GetTowerButtonFromBaseId(towerModel.GetBaseId());
         }
 
         /// <summary>
-        /// Get the number position of this TowerModel in the list of all tower models
+        /// Return the number position of this TowerModel in the list of all tower models
         /// </summary>
         public static int? GetIndex(this TowerModel towerModel)
         {
             List<TowerDetailsModel> allTowers = Game.instance.model.towerSet.ToList();
-            TowerDetailsModel detail = allTowers.FirstOrDefault(towerDetail => towerDetail.towerId == towerModel.baseId);
+            TowerDetailsModel detail = allTowers.FirstOrDefault(towerDetail => towerDetail.towerId == towerModel.GetBaseId());
             return allTowers.IndexOf(detail);
         }
 
         /// <summary>
-        /// Get the current upgrade level of a specific path
+        /// Return the current upgrade level of a specific path
         /// </summary>
         /// <param name="path">What tier of upgrade is currently applied to tower</param>
         public static int GetUpgradeLevel(this TowerModel towerModel, int path)
@@ -64,7 +64,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static bool? IsHeroUnlocked(this TowerModel towerModel)
         {
-            return Game.instance?.GetBtd6Player()?.HasUnlockedHero(towerModel.baseId);
+            return Game.instance?.GetBtd6Player()?.HasUnlockedHero(towerModel.GetBaseId());
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all UpgradeModels that are currently applied to this TowerModel
+        /// Return all UpgradeModels that are currently applied to this TowerModel
         /// </summary>
         public static List<UpgradeModel> GetAppliedUpgrades(this TowerModel towerModel)
         {
@@ -122,7 +122,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the UpgradeModel for a specific upgrade path/tier
+        /// Return the UpgradeModel for a specific upgrade path/tier
         /// </summary>
         /// <param name="path"></param>
         /// <param name="tier"></param>
@@ -135,7 +135,8 @@ namespace BTD_Mod_Helper.Extensions
             int tier2 = (path == 1) ? tier : 0;
             int tier3 = (path == 2) ? tier : 0;
 
-            TowerModel tempTower = Game.instance?.model?.GetTower(towerModel.baseId, tier1, tier2, tier3);
+            
+            TowerModel tempTower = Game.instance?.model?.GetTower(towerModel.GetBaseId(), tier1, tier2, tier3);
             if (tempTower is null)
                 return null;
 
@@ -147,7 +148,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// If this TowerModel is a Hero, get the HeroModel behavior
+        /// If this TowerModel is a Hero, return the HeroModel behavior
         /// </summary>
         /// <param name="towerModel"></param>
         /// <returns></returns>

@@ -110,10 +110,10 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
             {
                 writer.Formatting = Formatting.Indented;
                 writer.WriteStartObject();
-                foreach (var (name, setting) in mod.ModSettings)
+                foreach (var item in mod.ModSettings)
                 {
-                    writer.WritePropertyName(name);
-                    writer.WriteValue(setting.GetValue());
+                    writer.WritePropertyName(item.Key);
+                    writer.WriteValue(item.Value.GetValue());
                 }
                 writer.WriteEndObject();
             }

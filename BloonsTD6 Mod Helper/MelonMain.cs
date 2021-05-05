@@ -19,39 +19,15 @@ namespace BTD_Mod_Helper
 {
     internal class MelonMain : BloonsTD6Mod
     {
-        internal static readonly string modDir =
-            $"{Environment.CurrentDirectory}\\Mods\\{Assembly.GetExecutingAssembly().GetName().Name}";
-
-        internal static readonly string ModSettingsDir = Path.Combine(modDir, "Mod Settings");
-        
         public const string coopMessageCode = "BTD6_ModHelper";
         public const string currentVersion = "1.0.3";
-
-        private bool useModOptionsDEBUG = false;
-        private ModOptionsMenu modOptionsUI;
-
-        private readonly List<UpdateInfo> modsNeedingUpdates = new List<UpdateInfo>();
 
         public override string GithubReleaseURL => "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases";
         public override string LatestURL => "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
 
         public override void OnApplicationStart()
         {
-            MelonLogger.Msg("Mod has finished loading");
-            MelonLogger.Msg("Checking for updates...");
-
-            var updateDir = modDir + "\\UpdateInfo";
-            if (!Directory.Exists(updateDir))
-            {
-                Directory.CreateDirectory(updateDir);
-            }
-
-            UpdateHandler.SaveModUpdateInfo(updateDir);
-            var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
-            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
-                
-            ModSettingsHandler.InitializeModSettings(ModSettingsDir);
-            ModSettingsHandler.LoadModSettings(ModSettingsDir);
+            
         }
 
         public override void OnUpdate()
@@ -69,31 +45,8 @@ namespace BTD_Mod_Helper
             {
             }
 
-            foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
-            {
-                if (Input.GetKeyDown(key))
-                {
-                    DoPatchMethods(mod => mod.OnKeyDown(key));
-                }
-
-                if (Input.GetKeyUp(key))
-                {
-                    DoPatchMethods(mod => mod.OnKeyUp(key));
-                }
-
-                if (Input.GetKey(key))
-                {
-                    DoPatchMethods(mod => mod.OnKeyHeld(key));
-                }
-            }
-
             if (InGame.instance is null)
                 return;
-
-            if (useModOptionsDEBUG && modOptionsUI is null)
-                modOptionsUI = new ModOptionsMenu();
-
-            NotificationMgr.CheckForNotifications();
         }
 
         public override void OnMainMenu()
@@ -113,13 +66,6 @@ namespace BTD_Mod_Helper
             ModSettingsHandler.LoadModSettings(ModSettingsDir);
         }
 
-
-        public static void DoPatchMethods(Action<BloonsTD6Mod> action)
-        {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>())
-            {
-                action.Invoke(mod);
-            }
-        }
+        public static void DoPatchMethods(Action<BloonsTD6Mod> action) => DoPatchMethods<BloonsTD6Mod>(action);
     }
 }

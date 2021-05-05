@@ -38,9 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\ProjectileExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\TypeExt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Patches\Bloons\BloonToSimulation_Ctor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Patches\Bloons\Bloon_Initialize.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Patches\Bloons\Bloon_OnDestroy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SessionData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\SpriteRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\AttackModelBehaviorExt.cs" />
@@ -94,5 +92,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\ToggleEventExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ToggleExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Vector3Ext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Patches\" />
   </ItemGroup>
 </Project>

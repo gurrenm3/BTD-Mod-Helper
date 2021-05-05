@@ -2,7 +2,7 @@
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class InputFieldExt
+    public static partial class InputFieldExt
     {
         public static void AddSubmitEvent(this InputField inputField, InputFieldSubmitEvent.Function funcToExecute)
         {

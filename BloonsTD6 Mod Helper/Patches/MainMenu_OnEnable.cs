@@ -26,6 +26,7 @@ namespace BTD_Mod_Helper.Patches
             SessionData.IsInPublicCoop = false;
             SessionData.IsInRace = false;
             SessionData.IsInOdyssey = false;
+            SessionData.bloonTracker = null;
         }
     }
 }

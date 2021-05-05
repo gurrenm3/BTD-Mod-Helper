@@ -11,7 +11,8 @@ namespace BTD_Mod_Helper.Patches.Towers
         [HarmonyPostfix]
         internal static void Postfix(Tower __instance, Entity target, Model modelToUse)
         {
-            __instance.display = __instance.entity.displayBehaviorCache;
+            __instance.display = __instance.entity.displayBehaviorCache; // This is a bugfix
+
             MelonMain.DoPatchMethods(mod => mod.OnTowerCreated(__instance, target, modelToUse));
         }
     }

@@ -71,6 +71,7 @@
       <HintPath>..\\Dependencies\BloonsTD6\System.Drawing.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="UnhollowerBaseLib">
       <HintPath>..\\Dependencies\BloonsTD6\UnhollowerBaseLib.dll</HintPath>
@@ -179,11 +180,12 @@
     <Compile Include="Extensions\ModelExtensions\UpgradeModelExt.cs" />
     <Compile Include="Extensions\UnityExtensions\PopupScreenExt.cs" />
     <Compile Include="MelonMain.cs" />
+    <Compile Include="Patches\Bloons\BloonToSimulation_Ctor.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
-    <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
     <Compile Include="Patches\Bloons\Bloon_Degrade.cs" />
+    <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
     <Compile Include="Patches\CoopQuickMatchScreen_Open.cs" />
     <Compile Include="Patches\GameModel_CreateModded.cs" />
     <Compile Include="Patches\GameModel_GetRoundSet.cs" />

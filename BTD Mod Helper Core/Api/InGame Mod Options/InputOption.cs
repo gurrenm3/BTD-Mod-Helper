@@ -28,6 +28,7 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
             inputField = parentGO.transform.Find("ModOptions/UI Elements/TextInputOption/InputField").GetComponent<InputField>();
 
             title.text = modSetting.GetName();
+            
             inputField.SetText(modSetting.GetValue().ToString());
 
             buttonText.text = "Reset";

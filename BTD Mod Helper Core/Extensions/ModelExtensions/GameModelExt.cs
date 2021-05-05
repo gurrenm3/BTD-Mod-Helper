@@ -1,7 +1,16 @@
-﻿namespace BTD_Mod_Helper.Extensions
+﻿using Assets.Scripts.Models;
+using BTD_Mod_Helper.Api.Builders;
+
+namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameModelExt
     {
-        
+        /// <summary>
+        /// (Cross-Game compatible) Return the instance of the API's BloonModelBuilder. Used to create custom bloon types and add them to the game
+        /// </summary>
+        public static BloonModelBuilder GetBloonModelBuilder(this GameModel model)
+        {
+            return BloonModelBuilder.Instance;
+        }
     }
 }

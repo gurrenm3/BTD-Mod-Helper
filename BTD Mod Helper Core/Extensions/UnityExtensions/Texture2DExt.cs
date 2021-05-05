@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions
     public static class Texture2DExt
     {
         /// <summary>
-        /// Create Texture2D from a unity Color. Texture will only be this color
+        /// (Cross-Game compatible) Create Texture2D from a unity Color. Texture will only be this color
         /// </summary>
         /// <param name="color">Color to make new texture</param>
         public static Texture2D CreateFromColor(this Texture2D texture2D, UnityEngine.Color color)
@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Save Texture2D as a png to file.
+        /// (Cross-Game compatible) Save Texture2D as a png to file.
         /// </summary>
         /// <param name="filePath">File path to save texture to</param>
         public static void SaveToPNG(this Texture2D texture, string filePath)
@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Create Texture2D from a file on local PC
+        /// (Cross-Game compatible) Create Texture2D from a file on local PC
         /// </summary>
         /// <param name="filePath">path of file on PC</param>
         public static Texture2D LoadFromFile(this Texture2D texture, string filePath)
@@ -41,7 +41,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Create Texture2D from a visual studio Project Resource. Requires adding image as a resource to project
+        /// (Cross-Game compatible) Create Texture2D from a visual studio Project Resource. Requires adding image as a resource to project
         /// </summary>
         /// <param name="manager">The resource manager for your current project</param>
         /// <param name="resourceName">The name of your image, as it is in the resource manager</param>
@@ -54,7 +54,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Create Texture2D from an existing bitmap
+        /// (Cross-Game compatible) Create Texture2D from an existing bitmap
         /// </summary>
         /// <param name="bitmapImage">bitmap to create Texture2D from</param>
         public static Texture2D CreateFromBitmap(this Texture2D texture2D, Bitmap bitmapImage)
@@ -65,7 +65,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Create a Sprite from this Texture2D
+        /// (Cross-Game compatible) Create a Sprite from this Texture2D
         /// </summary>
         /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
         public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit)
@@ -74,7 +74,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Create a Sprite from this Texture2D
+        /// (Cross-Game compatible) Create a Sprite from this Texture2D
         /// </summary>
         /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
         public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit, Vector2 pivot)

@@ -7,11 +7,23 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class Il2CppGenericIEnumerableExt
     {
+        /// <summary>
+        /// (Cross-Game compatible) Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as IEnumerable.GetEnumerator()
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static Il2CppSystem.Collections.IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.GetEnumerator().Cast<Il2CppSystem.Collections.IEnumerator>();
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Get the total number of elements
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static int Count<T>(this IEnumerable<T> enumerable)
         {
             int length = 0;
@@ -22,6 +34,13 @@ namespace BTD_Mod_Helper.Extensions
             return length;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return the Item at a specific index
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public static Il2CppSystem.Object GetItem<T>(this IEnumerable<T> enumerable, int index)
         {
             int i = 0;
@@ -36,7 +55,12 @@ namespace BTD_Mod_Helper.Extensions
             return null;
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return as Il2CppSystem.List
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
         {
             List<T> il2CppList = new List<T>();
@@ -48,6 +72,12 @@ namespace BTD_Mod_Helper.Extensions
             return il2CppList;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return as System.List
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static System.Collections.Generic.List<T> ToList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
         {
             System.Collections.Generic.List<T> list = new System.Collections.Generic.List<T>();
@@ -59,6 +89,12 @@ namespace BTD_Mod_Helper.Extensions
             return list;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return as Il2CppReferenceArray
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
         {
             Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(enumerable.Count());
@@ -75,7 +111,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not Tested
+        /// (Cross-Game compatible) Return as LockList
         /// </summary>
         public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
         {

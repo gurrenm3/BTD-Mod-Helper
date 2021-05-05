@@ -17,7 +17,7 @@ namespace BTD_Mod_Helper.Api.Updater
         
         internal static void SaveModUpdateInfo(string dir)
         {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>())
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
             {
                 try
                 {
@@ -111,9 +111,11 @@ namespace BTD_Mod_Helper.Api.Updater
                                 File.Delete($"{modDir}\\UpdateInfo\\{updateInfo.Name}.json");
                         }
 
+#if BloonsTD6
                         PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "An Update is Available!",
                             message, new Action(async () => await UpdateMod(updateInfo)), "YES", actionNo,
                             no, Popup.TransitionAnim.Scale);
+#endif
                     }
 
                     modsNeedingUpdates.Clear();

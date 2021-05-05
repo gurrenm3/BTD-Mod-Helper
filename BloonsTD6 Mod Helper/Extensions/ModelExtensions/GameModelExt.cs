@@ -34,15 +34,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the instance of the API's BloonModelBuilder. Used to create custom bloon types and add them to the game
-        /// </summary>
-        public static BloonModelBuilder GetBloonModelBuilder(this GameModel model)
-        {
-            return BloonModelBuilder.Instance;
-        }
-
-        /// <summary>
-        /// Get all TowerDetailModels
+        /// Return all TowerDetailModels
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<TowerDetailsModel> GetAllTowerDetails(this GameModel model)
         {
@@ -50,7 +42,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all ShopTowerDetailModels
+        /// Return all ShopTowerDetailModels
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<ShopTowerDetailsModel> GetAllShopTowerDetails(this GameModel model)
         {
@@ -60,7 +52,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all TowerModels with a specific base id
+        /// Return all TowerModels with a specific base id
         /// </summary>
         /// <param name="towerBaseId">The base id all towers should share. Example: "DartMonkey"</param>
         public static List<TowerModel> GetTowerModels(this GameModel model, string towerBaseId)
@@ -69,7 +61,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get TowerModel from it's TowerType and it's upgrades
+        /// Return TowerModel from it's TowerType and it's upgrades
         /// </summary>
         /// <param name="towerType">Type of tower you want</param>
         /// <param name="path1">Number of upgrades in first path</param>
@@ -139,7 +131,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all AttackModels from every TowerModel in the game
+        /// Return all AttackModels from every TowerModel in the game
         /// </summary>
         public static List<AttackModel> GetAllAttackModels(this GameModel model)
         {
@@ -157,7 +149,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all WeaponModels from every AttackModel in the game
+        /// Return all WeaponModels from every AttackModel in the game
         /// </summary>
         public static List<WeaponModel> GetAllWeaponModels(this GameModel model)
         {
@@ -175,7 +167,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all ProjectileModels from every TowerModel in the game
+        /// Return all ProjectileModels from every TowerModel in the game
         /// </summary>
         public static List<ProjectileModel> GetAllProjectileModels(this GameModel model)
         {
@@ -189,7 +181,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all AbilityModels from every TowerModel in the game
+        /// Return all AbilityModels from every TowerModel in the game
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -209,7 +201,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get all TowerModels that have at least one AbilityModel
+        /// Return all TowerModels that have at least one AbilityModel
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

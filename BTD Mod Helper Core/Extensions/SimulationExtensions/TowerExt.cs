@@ -3,15 +3,15 @@ using Assets.Scripts.Simulation.Display;
 using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Unity.Display.Animation;
 using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Simulation.Factory;
 
 namespace BTD_Mod_Helper.Extensions
 {
     public static partial class TowerExt
     {
         /// <summary>
-        /// Change TowerModel to a different one. Will update display
+        /// (Cross-Game compatible) Change TowerModel to a different one. Will update display
         /// </summary>
         /// <param name="towerModel">TowerModel to change to</param>
         public static void SetTowerModel(this Tower tower, TowerModel towerModel)
@@ -20,7 +20,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the DisplayNode for this Tower
+        /// (Cross-Game compatible) Return the DisplayNode for this Tower
         /// </summary>
         /// <returns></returns>
         public static DisplayNode GetDisplayNode(this Tower tower)
@@ -29,7 +29,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
+        /// (Cross-Game compatible) Return the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
         /// </summary>
         /// <returns></returns>
         public static UnityDisplayNode GetUnityDisplayNode(this Tower tower)
@@ -38,7 +38,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Sell this tower
+        /// (Cross-Game compatible) Sell this tower
         /// </summary>
         public static void SellTower(this Tower tower)
         {
@@ -46,7 +46,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the TowerToSimulation for this specific Tower
+        /// (Cross-Game compatible) Return the TowerToSimulation for this specific Tower
         /// </summary>
         public static TowerToSimulation GetTowerSim(this Tower tower)
         {
@@ -65,8 +65,16 @@ namespace BTD_Mod_Helper.Extensions
 
             return null;
 #endif
+        }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return the Factory that creates Towers
+        /// </summary>
+        /// <param name="tower"></param>
+        /// <returns></returns>
+        public static Factory<Tower> GetFactory(this Tower tower)
+        {
+            return InGame.instance.GetFactory<Tower>();
         }
     }
 }

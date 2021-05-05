@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class ListExt
     {
         /// <summary>
-        /// Not tested
+        /// (Cross-Game compatible) Return as Il2CppSystem.List
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this List<T> list)
         {
@@ -20,7 +20,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Confirmed working
+        /// (Cross-Game compatible) Return as Il2CppReferenceArray
         /// </summary>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this List<T> list) where T : Il2CppSystem.Object
         {
@@ -33,7 +33,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not Tested
+        /// (Cross-Game compatible) Return as LockList
         /// </summary>
         public static LockList<T> ToLockList<T>(this List<T> list)
         {
@@ -44,7 +44,12 @@ namespace BTD_Mod_Helper.Extensions
             return lockList;
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return a duplicate of this
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static List<T> Duplicate<T>(this List<T> list)
         {
             List<T> newList = new List<T>();
@@ -54,6 +59,13 @@ namespace BTD_Mod_Helper.Extensions
             return newList;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return a duplicate of this as type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static List<TCast> DuplicateAs<TSource, TCast>(this List<TSource> list)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
@@ -66,7 +78,13 @@ namespace BTD_Mod_Helper.Extensions
 
 
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Check if this has any items of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type you're checking for</typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static bool HasItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
@@ -84,18 +102,13 @@ namespace BTD_Mod_Helper.Extensions
             return false;
         }
 
-
-        // Will be removed if regular List.Add works with Il2CppSystem.Object
-        /*public static List<T> AddTo<T>(this List<T> list, T objectToAdd) where T : Il2CppSystem.Object
-        {
-            if (list is null)
-                list = new List<T>();
-
-            list.Add(objectToAdd);
-            return list;
-        }*/
-
-
+        /// <summary>
+        /// (Cross-Game compatible) Return the first item of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want</typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static TCast GetItemOfType<TSource, TCast>(this List<TSource> list) where TCast : Il2CppSystem.Object
             where TSource : Il2CppSystem.Object
         {
@@ -116,6 +129,13 @@ namespace BTD_Mod_Helper.Extensions
             return null;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return all Items of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Items you want</typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static List<TCast> GetItemsOfType<TSource, TCast>(this List<TSource> list)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
@@ -138,6 +158,13 @@ namespace BTD_Mod_Helper.Extensions
             return results;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static List<TSource> RemoveItemOfType<TSource, TCast>(this List<TSource> list)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
@@ -146,7 +173,14 @@ namespace BTD_Mod_Helper.Extensions
             return RemoveItem(list, item);
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
+        /// <param name="list"></param>
+        /// <param name="itemToRemove">The specific Item to remove</param>
+        /// <returns></returns>
         public static List<TSource> RemoveItem<TSource, TCast>(this List<TSource> list, TCast itemToRemove)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
@@ -167,7 +201,13 @@ namespace BTD_Mod_Helper.Extensions
             return newList;
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return this with all Items of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static List<TSource> RemoveItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {

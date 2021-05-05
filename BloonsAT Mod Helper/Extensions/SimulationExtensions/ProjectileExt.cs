@@ -11,12 +11,6 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class ProjectileExt
     {
-        /// <summary>
-        /// Get the ProjectileToSimulation for this specific Projectile
-        /// </summary>
-        /*public static ProjectileToSimulation GetProjectileToSim(this Projectile projectile)
-        {
-            return InGame.instance.GetUnityToSimulation().().FirstOrDefault(b => b.id == bloon.Id);
-        }*/
+        
     }
 }

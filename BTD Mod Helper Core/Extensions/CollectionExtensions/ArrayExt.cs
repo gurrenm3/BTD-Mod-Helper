@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class ArrayExt
     {
         /// <summary>
-        /// Not Tested
+        /// (Cross-Game compatible) Return as Il2CppSystem.List
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] array) where T : Il2CppSystem.Object
         {
@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not Tested
+        /// (Cross-Game compatible) Return as Il2CppReferenceArray
         /// </summary>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array) where T : Il2CppSystem.Object
         {
@@ -34,7 +34,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not Tested
+        /// (Cross-Game compatible) Return as LockList
         /// </summary>
         public static LockList<T> ToLockList<T>(this T[] array)
         {
@@ -45,7 +45,12 @@ namespace BTD_Mod_Helper.Extensions
             return lockList;
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return a duplicate of this Array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static T[] Duplicate<T>(this T[] array)
         {
             T[] newArray = new T[] { };
@@ -58,6 +63,13 @@ namespace BTD_Mod_Helper.Extensions
             return newArray;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return a duplicate of this array as type TCast
+        /// </summary>
+        /// <typeparam name="TSource">The original Array Type</typeparam>
+        /// <typeparam name="TCast">The Cast type</typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static TCast[] DuplicateAs<TSource, TCast>(this TSource[] array)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
@@ -71,29 +83,13 @@ namespace BTD_Mod_Helper.Extensions
             return newArray;
         }
 
-
-
-
-
-        public static bool HasItemsOfType<TSource, TCast>(this TSource[] array) where TSource : Il2CppSystem.Object
-            where TCast : Il2CppSystem.Object
-        {
-            // Doing this the ugly way to guarantee no errors. Had a couple of bizarre errors in testing when using LINQ
-            for (int i = 0; i < array.Length; i++)
-            {
-                TSource item = array[i];
-                try
-                {
-                    if (item.IsType<TCast>())
-                        return true;
-                }
-                catch (Exception) { }
-            }
-
-            return false;
-        }
-
-
+        /// <summary>
+        /// (Cross-Game compatible) Return this with an Item added to it
+        /// </summary>
+        /// <typeparam name="T">The Type of the Item you want to add</typeparam>
+        /// <param name="array"></param>
+        /// <param name="objectToAdd">Item to add to this</param>
+        /// <returns></returns>
         public static T[] AddTo<T>(this T[] array, T objectToAdd) where T : Il2CppSystem.Object
         {
             if (array is null)
@@ -104,6 +100,13 @@ namespace BTD_Mod_Helper.Extensions
             return list.ToArray();
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with Items added to it
+        /// </summary>
+        /// <typeparam name="T">The Type of the Items you want to add</typeparam>
+        /// <param name="array"></param>
+        /// <param name="objectsToAdd">Items you want to add</param>
+        /// <returns></returns>
         public static T[] AddTo<T>(this T[] array, T[] objectsToAdd) where T : Il2CppSystem.Object
         {
             if (array is null)
@@ -124,18 +127,51 @@ namespace BTD_Mod_Helper.Extensions
             return newReference;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with Items added to it
+        /// </summary>
+        /// <typeparam name="T">The Type of the Items you want to add</typeparam>
+        /// <param name="array"></param>
+        /// <param name="objectsToAdd">Items you want to add</param>
+        /// <returns></returns>
         public static T[] AddTo<T>(this T[] array, List<T> objectsToAdd) where T : Il2CppSystem.Object
         {
             return array.AddTo(objectsToAdd.ToArray());
         }
 
 
+        /// <summary>
+        /// (Cross-Game compatible) Check if this has any items of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type you're checking for</typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        public static bool HasItemsOfType<TSource, TCast>(this TSource[] array) where TSource : Il2CppSystem.Object
+            where TCast : Il2CppSystem.Object
+        {
+            // Doing this the ugly way to guarantee no errors. Had a couple of bizarre errors in testing when using LINQ
+            for (int i = 0; i < array.Length; i++)
+            {
+                TSource item = array[i];
+                try
+                {
+                    if (item.IsType<TCast>())
+                        return true;
+                }
+                catch (Exception) { }
+            }
 
+            return false;
+        }
 
-
-
-
-
+        /// <summary>
+        /// (Cross-Game compatible) Return the first Item of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want</typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static TCast GetItemOfType<TSource, TCast>(this TSource[] array) where TCast : Il2CppSystem.Object
             where TSource : Il2CppSystem.Object
         {
@@ -146,6 +182,13 @@ namespace BTD_Mod_Helper.Extensions
             return result.TryCast<TCast>();
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return all Items of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Items you want</typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static List<TCast> GetItemsOfType<TSource, TCast>(this TSource[] array)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
@@ -156,6 +199,13 @@ namespace BTD_Mod_Helper.Extensions
             return results.DuplicateAs<TSource, TCast>().ToList();
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static TSource[] RemoveItemOfType<TSource, TCast>(this TSource[] array)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
@@ -164,7 +214,14 @@ namespace BTD_Mod_Helper.Extensions
             return RemoveItem(array, behavior);
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
+        /// <param name="array"></param>
+        /// <param name="itemToRemove">The specific Item to remove</param>
+        /// <returns></returns>
         public static TSource[] RemoveItem<TSource, TCast>(this TSource[] array, TCast itemToRemove)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
@@ -186,7 +243,13 @@ namespace BTD_Mod_Helper.Extensions
             return arrayList.ToArray();
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return this with all Items of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static TSource[] RemoveItemsOfType<TSource, TCast>(this TSource[] array) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {

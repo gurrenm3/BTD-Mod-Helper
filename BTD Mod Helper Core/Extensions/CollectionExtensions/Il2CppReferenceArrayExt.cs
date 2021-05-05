@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class Il2CppReferenceArrayExt
     {
         /// <summary>
-        /// Confirmed working
+        /// (Cross-Game compatible) Return as System.List
         /// </summary>
         public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
         {
@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not tested
+        /// (Cross-Game compatible) Return as Il2CppSystem.List
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Il2CppReferenceArray<T> referenceArray)
             where T : Il2CppSystem.Object
@@ -34,7 +34,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not tested
+        /// (Cross-Game compatible) Return as a System.Array
         /// </summary>
         public static T[] ToArray<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
         {
@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Not Tested
+        /// (Cross-Game compatible) Return as LockList
         /// </summary>
         public static LockList<T> ToLockList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
         {
@@ -60,6 +60,12 @@ namespace BTD_Mod_Helper.Extensions
             return lockList;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return a duplicate of this
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<T> Duplicate<T>(this Il2CppReferenceArray<T> list) where T : Il2CppSystem.Object
         {
             List<T> newList = new List<T>();
@@ -69,6 +75,13 @@ namespace BTD_Mod_Helper.Extensions
             return newList.ToIl2CppReferenceArray();
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return a duplicate of this as type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<TCast> DuplicateAs<TSource, TCast>(this Il2CppReferenceArray<TSource> list)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
@@ -80,23 +93,13 @@ namespace BTD_Mod_Helper.Extensions
         }
 
 
-
-
-
-
-        public static bool HasItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
-            where TSource : Il2CppSystem.Object
-            where TCast : Il2CppSystem.Object
-        {
-            try { TSource result = referenceArray.First(item => item.IsType<TCast>()); }
-            catch (Exception) { return false; }
-
-            return true;
-        }
-
-
-
-
+        /// <summary>
+        /// (Cross-Game compatible) Return this with an additional Item added to it
+        /// </summary>
+        /// <typeparam name="T">The Type of the Item to add</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <param name="objectToAdd">Item to add</param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, T objectToAdd) where T : Il2CppSystem.Object
         {
             if (referenceArray is null)
@@ -111,6 +114,13 @@ namespace BTD_Mod_Helper.Extensions
             return newRef;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with additional Items added to it
+        /// </summary>
+        /// <typeparam name="T">The Type of the Items to add</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <param name="objectsToAdd">Items to add</param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, Il2CppReferenceArray<T> objectsToAdd) where T : Il2CppSystem.Object
         {
             if (referenceArray is null)
@@ -131,12 +141,43 @@ namespace BTD_Mod_Helper.Extensions
             return newReference;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with additional Items added to it
+        /// </summary>
+        /// <typeparam name="T">The Type of the Items to add</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <param name="objectsToAdd">Items to add</param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, List<T> objectsToAdd) where T : Il2CppSystem.Object
         {
             return referenceArray.AddTo(objectsToAdd.ToIl2CppReferenceArray());
         }
 
 
+        /// <summary>
+        /// (Cross-Game compatible) Check if this has any items of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type you're checking for</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <returns></returns>
+        public static bool HasItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
+            where TSource : Il2CppSystem.Object
+            where TCast : Il2CppSystem.Object
+        {
+            try { TSource result = referenceArray.First(item => item.IsType<TCast>()); }
+            catch (Exception) { return false; }
+
+            return true;
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Return the first item of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <returns></returns>
         public static TCast GetItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
             where TCast : Il2CppSystem.Object
             where TSource : Il2CppSystem.Object
@@ -148,6 +189,13 @@ namespace BTD_Mod_Helper.Extensions
             return result.TryCast<TCast>();
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return all Items of type TCast
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Items you want</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <returns></returns>
         public static List<TCast> GetItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
@@ -165,6 +213,13 @@ namespace BTD_Mod_Helper.Extensions
             return results;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
@@ -173,6 +228,14 @@ namespace BTD_Mod_Helper.Extensions
             return RemoveItem(referenceArray, behavior);
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <param name="itemToRemove">The specific Item to remove</param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<TSource> RemoveItem<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray, TCast itemToRemove)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
@@ -194,7 +257,13 @@ namespace BTD_Mod_Helper.Extensions
             return arrayList.ToIl2CppReferenceArray();
         }
 
-
+        /// <summary>
+        /// (Cross-Game compatible) Return this with all Items of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <returns></returns>
         public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
