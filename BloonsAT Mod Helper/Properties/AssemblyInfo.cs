@@ -1,4 +1,5 @@
-﻿using MelonLoader;
+﻿using BTD_Mod_Helper;
+using MelonLoader;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -14,11 +15,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: MelonInfo(typeof(BTD_Mod_Helper.MelonMain), "BloonsAT_Mod_Helper", "1.0.0", "Gurrenm4")]
+[assembly: MelonInfo(typeof(MelonMain), "BloonsAT Mod Helper", MelonMain.currentVersion, "Gurrenm4")]
 [assembly: MelonGame("Ninja Kiwi", "Bloons Adventure Time TD")]
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion(MelonMain.currentVersion)]
+[assembly: AssemblyFileVersion(MelonMain.currentVersion)]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

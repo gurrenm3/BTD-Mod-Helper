@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="game"></param>
         /// <param name="action">The action you want to execute once it's time to run your task</param>
-        public static void ScheduleTask(this Game game, Action action) => game.ScheduleTask(action, ScheduleType.WaitForFrames, 0);
+        public static void ScheduleTask(this Game game, Action action, Func<bool> predicate = null) => game.ScheduleTask(action, ScheduleType.WaitForFrames, 0, predicate);
 
         /// <summary>
         /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine
@@ -40,12 +40,13 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="action">The action you want to execute once it's time to run your task</param>
         /// <param name="scheduleType">How you want to wait for your task</param>
         /// <param name="amountToWait">The amount you want to wait</param>
-        public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait)
+        public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait , Func<bool> predicate = null)
         {
-            MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait));
+            MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, predicate));
         }
 
-        private static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait)
+        //private static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait)
+        private static IEnumerator WaiterCoroutine(Action action, ScheduleType scheduleType, int amountToWait)
         {
             switch (scheduleType)
             {
@@ -61,9 +62,30 @@ namespace BTD_Mod_Helper.Extensions
                     }
                     break;
             }
-
-            action?.Invoke();
         }
+
+
+        private static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait, Func<bool> predicate  = null)
+        {
+            if (predicate is null)
+            {
+                yield return WaiterCoroutine(action, scheduleType, amountToWait);
+            }
+            else
+            {
+                while (!predicate.Invoke())
+                {
+                    yield return WaiterCoroutine(action, scheduleType, amountToWait);
+                }
+            }
+
+            action.Invoke();
+        }
+
+
+
+
+
 
 
         /// <summary>

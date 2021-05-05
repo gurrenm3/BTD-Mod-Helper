@@ -53,10 +53,7 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
 
         internal static void LoadModSettings(string modSettingsDir)
         {
-            if (!Directory.Exists(modSettingsDir))
-            {
-                Directory.CreateDirectory(modSettingsDir);
-            }
+            Directory.CreateDirectory(modSettingsDir);
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
             {
                 try

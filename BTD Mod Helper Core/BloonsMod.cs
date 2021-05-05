@@ -7,11 +7,13 @@ using BTD_Mod_Helper.Api.InGame_Mod_Options;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
+using System.Reflection;
 
 namespace BTD_Mod_Helper
 {
-    public abstract class BloonsMod : Main
+    public abstract class BloonsMod : MelonMod
     {
+
         internal Dictionary<string, ModSetting> ModSettings;
 
         /// <summary>

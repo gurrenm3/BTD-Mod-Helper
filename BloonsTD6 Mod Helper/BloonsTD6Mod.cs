@@ -28,7 +28,6 @@ namespace BTD_Mod_Helper
     public abstract class BloonsTD6Mod : BloonsMod
     {
         
-        
         /// <summary>
         /// Adds a TowerModel to the official list of TowerModels being used by the game
         ///
@@ -56,7 +55,17 @@ namespace BTD_Mod_Helper
         {
             return false;
         }
-        
+
+        /// <summary>
+        /// Called when a new GameModel is loaded.
+        /// 
+        /// Equivalent to a HarmonyPostFix on GameModelLoader_Load
+        /// </summary>
+        public virtual void OnGameModelLoaded(GameModel result)
+        {
+
+        }
+
         /// <summary>
         /// Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers
         /// 
