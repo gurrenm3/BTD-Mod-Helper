@@ -4,12 +4,26 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.InGame_Mod_Options;
 using MelonLoader;
 using System;
+using System.Reflection;
 using UnityEngine;
 using BTD_Mod_Helper.Api.Updater;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
 using System.Collections.Generic;
+using Assets.Scripts.Unity.Bridge;
+using Assets.Scripts.Simulation.Towers;
+using Assets.Scripts.Simulation.Behaviors;
 using System.Linq;
+using Assets.Scripts.Unity.UI_New.Popups;
+using Assets.Scripts.Unity.UI;
+using Assets.Scripts.Unity.UI_New;
+using UnhollowerBaseLib;
+using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Unity.Towers;
+using Assets.Scripts.Unity.Player;
+using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Utils;
+using Assets.Scripts.Unity.UI.Frontend.CharacterLoadout;
 
 namespace BTD_Mod_Helper
 {
@@ -48,7 +62,7 @@ namespace BTD_Mod_Helper
 
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
+            {           
             }
 
             if (Game.instance is null)

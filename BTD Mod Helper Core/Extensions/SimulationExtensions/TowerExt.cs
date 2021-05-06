@@ -5,6 +5,7 @@ using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Simulation.Factory;
+using System;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -42,13 +43,36 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static void SellTower(this Tower tower)
         {
-            InGame.instance.SellTower(tower.GetTowerSim());
+            InGame.instance.SellTower(tower.GetTowerToSim());
+        }
+
+        /// <summary>
+        /// This is Obsolete. Use GetTowerToSim instead. (Cross-Game compatible) Return the TowerToSimulation for this specific Tower
+        /// </summary>
+        [Obsolete]
+        public static TowerToSimulation GetTowerSim(this Tower tower)
+        {
+            var towerSims = InGame.instance?.GetUnityToSimulation()?.GetAllTowers();
+
+#if BloonsTD6
+            return towerSims.FirstOrDefault(sim => sim.tower == tower);
+#elif BloonsAT
+            var enumerator = towerSims.GetEnumeratorCollections();
+            while (enumerator.MoveNext())
+            {
+                var item = enumerator.Current.Cast<TowerToSimulation>();
+                if (item.id == tower.Id)
+                    return item;
+            }
+
+            return null;
+#endif
         }
 
         /// <summary>
         /// (Cross-Game compatible) Return the TowerToSimulation for this specific Tower
         /// </summary>
-        public static TowerToSimulation GetTowerSim(this Tower tower)
+        public static TowerToSimulation GetTowerToSim(this Tower tower)
         {
             var towerSims = InGame.instance?.GetUnityToSimulation()?.GetAllTowers();
 

@@ -23,18 +23,19 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+
         /// <summary>
         /// Checks if Player is in a game mode that would get them flagged if using mods
         /// </summary>
-        public static bool CanGetFlagged(this Game inGame)
+        public static bool CanGetFlagged(this Game game)
         {
-            return (inGame.IsInRace() || inGame.IsInPublicCoop() || inGame.IsInOdyssey());
+            return (game.IsInRace() || game.IsInPublicCoop() || game.IsInOdyssey());
         }
 
         /// <summary>
         /// Returns if Player is in a race
         /// </summary>
-        public static bool IsInRace(this Game inGame)
+        public static bool IsInRace(this Game game)
         {
             return SessionData.IsInRace;
         }
@@ -42,7 +43,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Returns if Player is in a public co-op match
         /// </summary>
-        public static bool IsInPublicCoop(this Game inGame)
+        public static bool IsInPublicCoop(this Game game)
         {
             return SessionData.IsInPublicCoop;
         }
@@ -50,7 +51,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Returns if Player is in a Odyssey game
         /// </summary>
-        public static bool IsInOdyssey(this Game inGame)
+        public static bool IsInOdyssey(this Game game)
         {
             return SessionData.IsInOdyssey;
         }

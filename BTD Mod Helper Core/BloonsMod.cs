@@ -17,6 +17,14 @@ namespace BTD_Mod_Helper
         internal Dictionary<string, ModSetting> ModSettings;
 
         /// <summary>
+        /// Setting this to true will prevent your BloonsMod hooks from executing if the player could get flagged for using mods at that time.
+        /// 
+        /// For example, using mods in public co-op
+        /// </summary>
+        public virtual bool CheatMod => true;
+
+
+        /// <summary>
         /// Github API URL used to check if this mod is up to date.
         ///
         ///     For example: "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases"

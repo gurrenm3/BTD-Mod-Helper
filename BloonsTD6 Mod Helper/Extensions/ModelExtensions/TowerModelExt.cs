@@ -156,5 +156,20 @@ namespace BTD_Mod_Helper.Extensions
         {
             return towerModel.GetBehavior<HeroModel>();
         }
+
+        /// <summary>
+        /// Make a new TowerModel based off of this one
+        /// </summary>
+        /// <param name="towerModel"></param>
+        /// <param name="copyName">The new name for this TowerModel</param>
+        /// <returns></returns>
+        public static TowerModel MakeCopy(this TowerModel towerModel, string copyName)
+        {
+            var duplicate = towerModel.Duplicate();
+            duplicate.baseId = copyName;
+            duplicate.name = copyName;
+            duplicate._name = copyName;
+            return duplicate;
+        }
     }
 }

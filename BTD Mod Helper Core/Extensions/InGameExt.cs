@@ -68,10 +68,15 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Get every Tower that has been created through the Tower Factory
         /// </summary>
         /// <param name="inGame"></param>
+        /// <param name="name">Optionally only get Towers whose TowerModel name is this paramater</param>
         /// <returns></returns>
-        public static List<Tower> GetTowers(this InGame inGame)
+        public static List<Tower> GetTowers(this InGame inGame, string name = null)
         {
-            return inGame.GetAllObjectsOfType<Tower>();
+            var towers = inGame.GetAllObjectsOfType<Tower>();
+            if (!string.IsNullOrEmpty(name))
+                towers = towers?.FindAll(tower => tower.towerModel.name == name);
+
+            return towers;
         }
 
         /// <summary>
@@ -89,10 +94,15 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Get all TowerToSimulations
         /// </summary>
         /// <param name="inGame"></param>
+        /// /// <param name="name">Optionally only get Towers whose TowerModel name is this paramater</param>
         /// <returns></returns>
-        public static List<TowerToSimulation> GetAllTowerToSim(this InGame inGame)
+        public static List<TowerToSimulation> GetAllTowerToSim(this InGame inGame, string name = null)
         {
-            return inGame.GetUnityToSimulation()?.GetAllTowers()?.ToList();
+            var towerToSims = inGame.GetUnityToSimulation()?.GetAllTowers()?.ToList();
+            if (!string.IsNullOrEmpty(name))
+                towerToSims = towerToSims?.FindAll(tower => tower.Def.name == name);
+
+            return towerToSims;
         }
 
 
@@ -186,6 +196,16 @@ namespace BTD_Mod_Helper.Extensions
 #elif BloonsAT
             return factory?.active?.ToList();
 #endif
+        }
+
+        public static void SellTowers(this InGame inGame, List<Tower> towers)
+        {
+            towers.ForEach(tower => inGame.SellTower(tower));
+        }
+
+        public static void SellTower(this InGame inGame, Tower tower)
+        {
+            inGame.SellTower(tower.GetTowerToSim());
         }
     }
 }

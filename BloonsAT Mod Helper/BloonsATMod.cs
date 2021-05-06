@@ -13,6 +13,7 @@ using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Simulation;
+using Assets.Scripts.Models.Profile;
 
 namespace BTD_Mod_Helper
 {
@@ -21,6 +22,12 @@ namespace BTD_Mod_Helper
     /// </summary>
     public abstract class BloonsATMod : BloonsMod
     {
+        #region Misc Hooks
+
+
+
+        #endregion
+
         #region Menu Hooks
 
         /// <summary>
@@ -47,10 +54,10 @@ namespace BTD_Mod_Helper
         /// 
         /// Equivalent to a HarmonyPostFix on InGame.StartMatch
         /// </summary>
-        public virtual void OnMatchStart()
+        /*public virtual void OnMatchStart() // Removed because I couldn't find a good method for this
         {
 
-        }
+        }*/
 
         /// <summary>
         /// Called when a match is restarted
@@ -84,8 +91,6 @@ namespace BTD_Mod_Helper
         }
 
         #endregion
-
-
 
         #region Bloon Hooks
 

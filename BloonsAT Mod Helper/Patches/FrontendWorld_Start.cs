@@ -21,6 +21,8 @@ namespace BTD_Mod_Helper.Patches
             SessionData.PoppedBloons = new Dictionary<string, int>();
             SessionData.RoundSet = null;
             SessionData.bloonTracker = null;
+
+            Api.SessionData.instance = new Api.SessionData();
         }
     }
 }

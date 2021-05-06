@@ -14,7 +14,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static string GetModName(this BloonsMod bloonsMod)
         {
-            return bloonsMod.Assembly.GetName().Name;
+            return bloonsMod?.Assembly?.GetName()?.Name;
         }
 
         /// <summary>

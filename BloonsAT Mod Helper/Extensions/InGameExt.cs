@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.Models.Rounds;
+using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Simulation.Factory;
 using Assets.Scripts.Simulation.Input;
@@ -125,6 +126,16 @@ namespace BTD_Mod_Helper.Extensions
         public static List<TowerInventoryEntry> GetTowerInventory(this InGame inGame)
         {
             return inGame.GetSimulation().GetTowerInventory();
+        }
+
+        /// <summary>
+        /// Get the TowerModels for all of the Towers in your Party. Includes Minions and Allies
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <returns></returns>
+        public static System.Collections.Generic.List<TowerModel> GetPartyTowerModels(this InGame inGame)
+        {
+            return Api.SessionData.instance.inGameTowerModels;
         }
     }
 }

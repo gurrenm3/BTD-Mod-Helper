@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class TowerModelExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Get the name of the BaseTower
+        /// (Cross-Game compatible) Get the name of the BaseTower. Will be different from this TowerModel's name if this TowerModel isn't a BaseTower
         /// </summary>
         /// <param name="towerModel"></param>
         /// <returns></returns>
@@ -64,7 +64,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<TowerToSimulation> GetAllTowerToSim(this TowerModel towerModel)
         {
             var towers = InGame.instance?.GetAllTowerToSim();
-            var desiredTowers = towers.Where(towerSim => towerSim.GetTower().towerModel.name == towerModel.name).ToList();
+            var desiredTowers = towers.Where(towerSim => towerSim.Def.name == towerModel.name).ToList();
             return desiredTowers;
         }
 
@@ -171,6 +171,12 @@ namespace BTD_Mod_Helper.Extensions
             }
 
             return allProjectiles;
+        }
+
+        public static void SellAll(this TowerModel towerModel)
+        {
+            var towers = InGame.instance.GetTowers(towerModel.name);
+            
         }
     }
 }

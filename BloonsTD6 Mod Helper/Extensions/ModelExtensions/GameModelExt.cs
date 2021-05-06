@@ -227,5 +227,10 @@ namespace BTD_Mod_Helper.Extensions
             model.upgrades = model.upgrades.AddTo(upgradeModels);
             System.Array.ForEach(upgradeModels, upgrade => model.upgradesByName.Add(upgrade.name, upgrade));
         }
+
+        public static TowerDetailsModel GetTowerDetails(this GameModel model, string towerDetailsName)
+        {
+            return model.towerSet.FirstOrDefault(tower => tower.towerId == towerDetailsName);
+        }
     }
 }

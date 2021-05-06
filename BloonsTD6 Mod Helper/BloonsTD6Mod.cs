@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper
     /// </summary>
     public abstract class BloonsTD6Mod : BloonsMod
     {
-        
+
         /// <summary>
         /// Adds a TowerModel to the official list of TowerModels being used by the game
         ///
@@ -54,6 +54,17 @@ namespace BTD_Mod_Helper
         public virtual bool ActOnMessage(Message message)
         {
             return false;
+        }
+
+
+        /// <summary>
+        /// Called when the player's ProfileModel is loaded.
+        /// 
+        /// Equivalent to a HarmonyPostFix on ProfileModel_Validate
+        /// </summary>
+        public virtual void OnProfileLoaded(ProfileModel result)
+        {
+
         }
 
         /// <summary>

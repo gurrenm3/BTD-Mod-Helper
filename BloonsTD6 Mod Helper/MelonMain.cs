@@ -50,9 +50,14 @@ namespace BTD_Mod_Helper
         {
             KeyCodeHooks();
 
+            
+
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                MelonLogger.Msg("IsChallengeEditor: " + InGame.instance.IsChallengeEditor);
+                MelonLogger.Msg("IsDailyChallengeMode: " + InGame.instance.IsDailyChallengeMode);
+
             }
 
             if (Game.instance is null)
@@ -102,13 +107,12 @@ namespace BTD_Mod_Helper
             ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
         }
 
-        public static void DoPatchMethods(Action<BloonsTD6Mod> action) => DoPatchMethods<BloonsTD6Mod>(action);
-
-        public static void DoPatchMethods<T>(Action<T> action) where T : BloonsMod
+        public static void DoPatchMethods(Action<BloonsTD6Mod> action)
         {
-            foreach (var mod in MelonHandler.Mods.OfType<T>())
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>())
             {
-                action.Invoke(mod);
+                if (!mod.CheatMod || !Game.instance.CanGetFlagged())
+                    action.Invoke(mod);
             }
         }
     }

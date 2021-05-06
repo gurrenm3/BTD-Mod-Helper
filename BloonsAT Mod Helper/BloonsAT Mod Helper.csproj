@@ -132,13 +132,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\Builders\BloonModelBuilder.cs" />
+    <Compile Include="Api\SessionData.cs" />
     <Compile Include="BloonsATMod.cs" />
+    <Compile Include="Extensions\AdventureTimePlayerExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
     <Compile Include="Extensions\GameExt.cs" />
     <Compile Include="Extensions\InGameExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\ModelExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\TowerModelExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\ProjectileExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\UnityToSimulationExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
@@ -150,10 +153,11 @@
     <Compile Include="Patches\Bloon\Bloon_Leaked.cs" />
     <Compile Include="Patches\Bloon\Bloon_OnDestroy_Patch.cs" />
     <Compile Include="Patches\Bloon\Bloon_Damage.cs" />
+    <Compile Include="Patches\TowerHelper_CreateTower.cs" />
+    <Compile Include="Patches\Towers\TowerHelper_CreateTowerInGame.cs" />
     <Compile Include="Patches\FrontendWorld_Start.cs" />
     <Compile Include="Patches\InGame\InGame_ShowLevelCompleteScreen.cs" />
     <Compile Include="Patches\InGame\InGame_Restart.cs" />
-    <Compile Include="Patches\InGame\InGame_StartMatch.cs" />
     <Compile Include="Patches\InGame\TimeManager_SetFastForward.cs" />
     <Compile Include="Patches\InGame\TitleScreen_Start.cs" />
     <Compile Include="Patches\Projectiles\Projectile_Initialise.cs" />

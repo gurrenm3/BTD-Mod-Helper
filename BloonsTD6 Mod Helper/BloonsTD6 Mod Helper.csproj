@@ -197,6 +197,7 @@
     <Compile Include="Patches\NKMultiConnection_Receive.cs" />
     <Compile Include="Patches\NKMultiGameInterface_Update.cs" />
     <Compile Include="Patches\OdysseyEventScreen_Update.cs" />
+    <Compile Include="Patches\ProfileModel_Validate.cs" />
     <Compile Include="Patches\Projectiles\Projectile_Initialise.cs" />
     <Compile Include="Patches\Projectiles\Projectile_UpdatedModel.cs" />
     <Compile Include="Patches\ResourceLoader_LoadSpriteFromSpriteReferenceAsync.cs" />

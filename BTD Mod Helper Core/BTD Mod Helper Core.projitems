@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGame Mod Options\SliderOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGameMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\TaskScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\GithubReleaseInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateHandler.cs" />
@@ -35,9 +36,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)BloonsMod.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BloonsModExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\HarmonyExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Il2CppSystemExtensions\Il2CppSystemDictionaryExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\ArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\ProjectileExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DictionaryExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\TypeExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModHelperData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SessionData.cs" />
