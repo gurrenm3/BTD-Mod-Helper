@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
 using System;
+using Assets.Scripts.Unity.Display;
 
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
@@ -31,7 +32,7 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             return towerModel.baseId;
 #elif BloonsAT
-            return towerModel.baseType.ToString();
+            return towerModel.towerParentId;
 #endif
         }
 
@@ -173,10 +174,37 @@ namespace BTD_Mod_Helper.Extensions
             return allProjectiles;
         }
 
+        /// <summary>
+        /// (Cross-Game compatible) Sell every tower that uses this TowerModel
+        /// </summary>
+        /// <param name="towerModel"></param>
         public static void SellAll(this TowerModel towerModel)
         {
             var towers = InGame.instance.GetTowers(towerModel.name);
-            
+            towers.ForEach(tower => InGame.instance.SellTower(tower));
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Get the TowerId of this TowerModel. Equivalent to towerModel.name
+        /// </summary>
+        /// <param name="towerModel"></param>
+        /// <returns></returns>
+        public static string GetTowerId(this TowerModel towerModel)
+        {
+            return towerModel.name;
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Duplicate this TowerModel with a unique name. Very useful for making custom TowerModels
+        /// </summary>
+        /// <param name="towerModel"></param>
+        /// <param name="newTowerId">Set's the new towerId of this copy. By default the baseId will be set to this as well</param>
+        /// <returns></returns>
+        internal static TowerModel MakeCopyInternal(TowerModel towerModel, string newTowerId)
+        {
+            var duplicate = towerModel.Duplicate();
+            duplicate.name = newTowerId;
+            return duplicate;
         }
     }
 }

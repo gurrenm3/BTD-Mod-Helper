@@ -44,6 +44,9 @@
       <HintPath>..\\Dependencies\BloonsTD6\Il2Cppmscorlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>..\Dependencies\BloonsTD6\Il2CppSystem.Core.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>..\\Dependencies\BloonsTD6\mscorlib.dll</HintPath>
       <Private>False</Private>
@@ -166,6 +169,7 @@
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\ProjectileModelExt.cs" />
     <Compile Include="Extensions\NkAssetExtensions\NK_TextMeshProUGUIExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\ProfileModelExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\EntityExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\MapExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\TowerExt.cs" />
@@ -187,11 +191,11 @@
     <Compile Include="Patches\Bloons\Bloon_Degrade.cs" />
     <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
     <Compile Include="Patches\CoopQuickMatchScreen_Open.cs" />
-    <Compile Include="Patches\GameModelLoader_Load.cs" />
     <Compile Include="Patches\GameModel_CreateModded.cs" />
     <Compile Include="Patches\GameModel_GetRoundSet.cs" />
     <Compile Include="Patches\InGame_Restart.cs" />
     <Compile Include="Patches\InGame_StartMatch.cs" />
+    <Compile Include="Patches\InputManager_PrimeTower.cs" />
     <Compile Include="Patches\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\MainMenu_OnEnable.cs" />
     <Compile Include="Patches\NKMultiConnection_Receive.cs" />
@@ -243,6 +247,7 @@
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y
+copy "$(TargetDir)$(ProjectName).xml" "F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

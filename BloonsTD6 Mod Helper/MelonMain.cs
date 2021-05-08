@@ -44,19 +44,18 @@ namespace BTD_Mod_Helper
             string settingsDir = this.GetModSettingsDir(createIfNotExists: true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
+
+            Schedule_GameModel_Loaded();
         }
 
         public override void OnUpdate()
         {
             KeyCodeHooks();
 
-            
-
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                MelonLogger.Msg("IsChallengeEditor: " + InGame.instance.IsChallengeEditor);
-                MelonLogger.Msg("IsDailyChallengeMode: " + InGame.instance.IsDailyChallengeMode);
+                
 
             }
 
@@ -105,7 +104,27 @@ namespace BTD_Mod_Helper
             //TODO: with in game changing, settings should save when going to the main menu
             //ModSettingsHandler.SaveModSettings(modSettingsDir);
             ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
+
+            if (!scheduledInGamePatch)
+                Schedule_InGame_Loaded();
         }
+
+        private void Schedule_GameModel_Loaded()
+        {
+            TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnGameModelLoaded(Game.instance.model)); },
+            waitCondition: () => { return Game.instance?.model != null; });
+        }
+
+        bool scheduledInGamePatch = false;
+        private void Schedule_InGame_Loaded()
+        {
+            scheduledInGamePatch = true;
+            TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnInGameLoaded(InGame.instance)); },
+            waitCondition: () => { return InGame.instance?.GetSimulation() != null; });
+        }
+
+        public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
+
 
         public static void DoPatchMethods(Action<BloonsTD6Mod> action)
         {

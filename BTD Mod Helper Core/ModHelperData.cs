@@ -3,5 +3,6 @@
     public static class ModHelperData
     {
         public const string currentVersion = "1.0.3";
+
     }
 }

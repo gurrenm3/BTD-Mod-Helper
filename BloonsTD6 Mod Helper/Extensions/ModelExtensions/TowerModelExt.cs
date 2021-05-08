@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models.Towers;
+﻿using Assets.Scripts.Models;
+using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
@@ -7,6 +8,7 @@ using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
+using Harmony;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,7 +31,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerDetailsModel GetTowerDetailsModel(this TowerModel towerModel)
         {
-            return Game.instance?.model?.GetAllTowerDetails()?.FirstOrDefault(tower => tower.towerId == towerModel.GetBaseId());
+            string baseId = towerModel.GetBaseId();
+            return Game.instance?.model?.GetAllTowerDetails()?.FirstOrDefault(details => details.towerId == baseId);
         }
 
         /// <summary>
@@ -43,11 +46,10 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Return the number position of this TowerModel in the list of all tower models
         /// </summary>
-        public static int? GetIndex(this TowerModel towerModel)
+        public static int GetIndex(this TowerModel towerModel)
         {
-            List<TowerDetailsModel> allTowers = Game.instance.model.towerSet.ToList();
-            TowerDetailsModel detail = allTowers.FirstOrDefault(towerDetail => towerDetail.towerId == towerModel.GetBaseId());
-            return allTowers.IndexOf(detail);
+            var index = Game.instance?.model?.towers?.IndexOf(towerModel);
+            return index.HasValue ? index.Value : -1;
         }
 
         /// <summary>
@@ -158,18 +160,67 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Make a new TowerModel based off of this one
+        /// Duplicate this TowerModel with a unique name. Very useful for making custom TowerModels
         /// </summary>
         /// <param name="towerModel"></param>
-        /// <param name="copyName">The new name for this TowerModel</param>
+        /// <param name="newTowerId">Set's the new towerId of this copy. By default the baseId will be set to this as well</param>
+        /// <param name="newBaseId">Specify a new baseId. Set this if you want a baseId other than the newTowerId</param>
         /// <returns></returns>
-        public static TowerModel MakeCopy(this TowerModel towerModel, string copyName)
+        public static TowerModel MakeCopy(this TowerModel towerModel, string newTowerId, bool addToGame = false, string newBaseId = null)
         {
-            var duplicate = towerModel.Duplicate();
-            duplicate.baseId = copyName;
-            duplicate.name = copyName;
-            duplicate._name = copyName;
+            var duplicate = MakeCopyInternal(towerModel, newTowerId);
+            duplicate.baseId = string.IsNullOrEmpty(newBaseId) ? newTowerId : newBaseId;
+            if (addToGame) Game.instance.model.AddTowerToGame(duplicate);
+
             return duplicate;
+        }
+
+        /// <summary>
+        /// Check if this tower has speficif upgrade tiers
+        /// </summary>
+        /// <param name="towerModel"></param>
+        /// <param name="tier1"></param>
+        /// <param name="tier2"></param>
+        /// <param name="tier3"></param>
+        /// <returns></returns>
+        public static bool HasTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0)
+        {
+            return (towerModel.tiers[0] == tier1) && (towerModel.tiers[1] == tier2) && (towerModel.tiers[2] == tier3);
+        }
+
+
+        public static void SetTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0, bool addToTowerName = false)
+        {
+            towerModel.tiers = new UnhollowerBaseLib.Il2CppStructArray<int>(3);
+            towerModel.tiers[0] = tier1;
+            towerModel.tiers[1] = tier2;
+            towerModel.tiers[2] = tier3;
+
+            if (addToTowerName)
+                towerModel.AddTiersToName();
+        }
+
+
+        public static void AddTiersToName(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0)
+        {
+            towerModel.name = string.Concat(towerModel.baseId, "-", tier1, tier2, tier3);
+        }
+
+        public static void AddTiersToName(this TowerModel towerModel)
+        {
+            var tiers = towerModel.tiers;
+            if (tiers is null)
+            {
+                towerModel.AddTiersToName(0, 0, 0);
+            }
+            else
+            {
+                int tier1 = tiers.Count >= 1 ? tiers[0] : 0;
+                int tier2 = tiers.Count >= 2 ? tiers[1] : 0;
+                int tier3 = tiers.Count >= 3 ? tiers[2] : 0;
+
+                towerModel.AddTiersToName(tier1, tier2, tier3);
+            }
         }
     }
 }

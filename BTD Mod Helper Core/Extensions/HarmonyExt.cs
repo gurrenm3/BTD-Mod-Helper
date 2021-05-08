@@ -18,6 +18,11 @@ namespace BTD_Mod_Helper.Extensions
             var methodInfo = classToPatch.GetMethod(methodToPatch);
             harmonyInstance.Patch(methodInfo, prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
         }
+        public static void PatchPrefix(this HarmonyInstance harmonyInstance, Type classToPatch, string methodToPatch, int methodOverloadIndex, Type myPatchClass, string myPatchMethod)
+        {
+            var methodInfo = classToPatch.GetMethods(methodToPatch)[methodOverloadIndex];
+            harmonyInstance.Patch(methodInfo, prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
+        }
         public static void PatchPrefix(this HarmonyInstance harmonyInstance, MethodInfo methodToPatch, Type myPatchClass, string myPatchMethod)
         {
             harmonyInstance.Patch(methodToPatch, prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
@@ -37,6 +42,11 @@ namespace BTD_Mod_Helper.Extensions
         public static void PatchPostfix(this HarmonyInstance harmonyInstance, Type classToPatch, string methodToPatch, Type myPatchClass, string myPatchMethod)
         {
             var methodInfo = classToPatch.GetMethod(methodToPatch);
+            harmonyInstance.Patch(methodInfo, postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
+        }
+        public static void PatchPostfix(this HarmonyInstance harmonyInstance, Type classToPatch, string methodToPatch, int methodOverloadIndex, Type myPatchClass, string myPatchMethod)
+        {
+            var methodInfo = classToPatch.GetMethods(methodToPatch)[methodOverloadIndex];
             harmonyInstance.Patch(methodInfo, postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
         }
         public static void PatchPostfix(this HarmonyInstance harmonyInstance, MethodInfo methodToPatch, Type myPatchClass, string myPatchMethod)

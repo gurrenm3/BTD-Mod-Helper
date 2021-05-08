@@ -14,11 +14,10 @@ namespace BTD_Mod_Helper.Patches.Towers
         {
             if (__instance._display is null) // This is a bugfix for BTD6. Untested but may also be a bug in BATTD
             {
-                var behavior = __instance.entity.GetBehavior<DisplayBehavior>();
-                if (behavior != null)
-                    __instance._display = behavior;
+                __instance._display = __instance.entity.GetBehavior<DisplayBehavior>();
             }
             
+
             MelonMain.DoPatchMethods(mod => mod.OnTowerCreated(__instance, target, modelToUse));
         }
     }

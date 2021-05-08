@@ -19,6 +19,8 @@ using MelonLoader;
 using NinjaKiwi.NKMulti;
 using UnhollowerBaseLib;
 using UnityEngine;
+using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
 
 namespace BTD_Mod_Helper
 {
@@ -68,11 +70,17 @@ namespace BTD_Mod_Helper
         }
 
         /// <summary>
-        /// Called when a new GameModel is loaded.
-        /// 
-        /// Equivalent to a HarmonyPostFix on GameModelLoader_Load
+        /// Called when InGame.instance.UnityToSimulation.Simulation is not null
         /// </summary>
-        public virtual void OnGameModelLoaded(GameModel result)
+        public virtual void OnInGameLoaded(InGame inGame)
+        {
+
+        }
+
+        /// <summary>
+        /// Called when Game.instance.model is not null
+        /// </summary>
+        public virtual void OnGameModelLoaded(GameModel model)
         {
 
         }
@@ -163,8 +171,6 @@ namespace BTD_Mod_Helper
 
         #endregion
 
-
-
         #region Bloon Hooks
 
         /// <summary>
@@ -235,6 +241,15 @@ namespace BTD_Mod_Helper
         #region Tower Hooks
 
         /// <summary>
+        /// Called right before a Tower's 3D graphics are initialized
+        /// 
+        /// Equivalent to a HarmonyPreFix on InputManager.CreateTowerGraphicsAsync
+        /// </summary>
+        public virtual void OnTowerGraphicsCreated(InputManager inputManager, TowerModel towerModel, List<UnityDisplayNode> placementGraphics)
+        {
+        }
+
+        /// <summary>
         /// Called right after a Tower is initialized
         /// 
         /// Equivalent to a HarmonyPostFix on Tower.Initialise
@@ -242,7 +257,7 @@ namespace BTD_Mod_Helper
         public virtual void OnTowerCreated(Tower tower, Entity target, Model modelToUse)
         {
         }
-        
+
         /// <summary>
         /// Called right after a Tower is destroyed
         /// 

@@ -153,7 +153,6 @@
     <Compile Include="Patches\Bloon\Bloon_Leaked.cs" />
     <Compile Include="Patches\Bloon\Bloon_OnDestroy_Patch.cs" />
     <Compile Include="Patches\Bloon\Bloon_Damage.cs" />
-    <Compile Include="Patches\TowerHelper_CreateTower.cs" />
     <Compile Include="Patches\Towers\TowerHelper_CreateTowerInGame.cs" />
     <Compile Include="Patches\FrontendWorld_Start.cs" />
     <Compile Include="Patches\InGame\InGame_ShowLevelCompleteScreen.cs" />
@@ -197,6 +196,7 @@
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "F:\Program Files (x86)\Steam\steamapps\common\Bloons Adventure Time TD\Mods" /y</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "F:\Program Files (x86)\Steam\steamapps\common\Bloons Adventure Time TD\Mods" /y
+copy "$(TargetDir)$(ProjectName).xml" "F:\Program Files (x86)\Steam\steamapps\common\Bloons Adventure Time TD\Mods" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

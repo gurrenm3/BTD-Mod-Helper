@@ -10,16 +10,26 @@ using Assets.Scripts.Models.Towers.Weapons;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Objects;
-using BTD_Mod_Helper.Api.Builders;
-using BTD_Mod_Helper.Patches;
 using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
+using System;
 
 namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameModelExt
     {
+
+        public static bool DoesTowerModelExist(this GameModel model, string towerId)
+        {
+            return model.towers.Any(item => item.name.Contains(towerId));
+        }
+
+        public static bool DoesTowerDetailsExist(this GameModel model, string towerId)
+        {
+            return model.towerSet.Any(item => item.name.Contains(towerId));
+        }
+
         /// <summary>
         /// Add a TowerModel to the game.
         /// </summary>
@@ -30,7 +40,12 @@ namespace BTD_Mod_Helper.Extensions
             model.towers = model.towers.AddTo(towerModel);
 
             if (towerDetailsModel != null)
-                model.towerSet = model.towerSet.AddTo(towerDetailsModel);
+                model.AddTowerToGame(towerDetailsModel);
+        }
+
+        public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel)
+        {
+            model.towerSet = model.towerSet.AddTo(towerDetailsModel);
         }
 
         /// <summary>
@@ -38,7 +53,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<TowerDetailsModel> GetAllTowerDetails(this GameModel model)
         {
-            return TowerInventory_Init.allTowers;
+            return model.towerSet.ToIl2CppList();
         }
 
         /// <summary>
@@ -61,16 +76,18 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Return TowerModel from it's TowerType and it's upgrades
+        /// Get a TowerModel from model.towers.
+        /// NOTE: model.GetTower cannot get custom towers so use this method instead
         /// </summary>
-        /// <param name="towerType">Type of tower you want</param>
-        /// <param name="path1">Number of upgrades in first path</param>
-        /// <param name="path2">Number of upgrades in second path</param>
-        /// <param name="path3">Number of upgrades in third path</param>
+        /// <param name="model"></param>
+        /// <param name="towerId"></param>
+        /// <param name="path1"></param>
+        /// <param name="path2"></param>
+        /// <param name="path3"></param>
         /// <returns></returns>
-        public static TowerModel GetTowerModel(this GameModel model, TowerType towerType, int path1 = 0, int path2 = 0, int path3 = 0)
+        public static TowerModel GetTowerModel(this GameModel model, string towerId, int path1 = 0, int path2 = 0, int path3 = 0)
         {
-            return model.GetTower(towerType.ToString(), path1, path2, path3);
+            return model.towers.FirstOrDefault(t => t.name.Contains(towerId) && t.HasTiers(path1, path2, path3));
         }
 
         /// <summary>

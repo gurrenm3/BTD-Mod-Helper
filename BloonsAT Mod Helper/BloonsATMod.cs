@@ -14,6 +14,7 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Models.Profile;
+using Assets.Scripts.Unity.UI_New.InGame;
 
 namespace BTD_Mod_Helper
 {
@@ -24,6 +25,21 @@ namespace BTD_Mod_Helper
     {
         #region Misc Hooks
 
+        /// <summary>
+        /// Called when InGame.instance.UnityToSimulation.Simulation is not null
+        /// </summary>
+        public virtual void OnInGameLoaded(InGame inGame)
+        {
+
+        }
+
+        /// <summary>
+        /// Called when Game.instance.model is not null
+        /// </summary>
+        public virtual void OnGameModelLoaded(GameModel model)
+        {
+
+        }
 
 
         #endregion

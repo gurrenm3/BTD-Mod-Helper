@@ -54,6 +54,8 @@ namespace BTD_Mod_Helper
             string settingsDir = this.GetModSettingsDir(createIfNotExists: true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
+            
+            Schedule_GameModel_Loaded();
         }
 
         public override void OnUpdate()
@@ -62,7 +64,7 @@ namespace BTD_Mod_Helper
 
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
-            {           
+            {      
             }
 
             if (Game.instance is null)
@@ -112,13 +114,32 @@ namespace BTD_Mod_Helper
             //TODO: with in game changing, settings should save when going to the main menu
             //ModSettingsHandler.SaveModSettings(modSettingsDir);
             ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
+
+            if (!scheduledInGamePatch)
+                Schedule_InGame_Loaded();
         }
 
-        public static void DoPatchMethods(Action<BloonsATMod> action) => DoPatchMethods<BloonsATMod>(action);
-
-        public static void DoPatchMethods<T>(Action<T> action) where T : BloonsMod
+        private void Schedule_GameModel_Loaded()
         {
-            foreach (var mod in MelonHandler.Mods.OfType<T>())
+            TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnGameModelLoaded(Game.instance.model)); },
+            waitCondition: () => { return Game.instance?.model != null; });
+        }
+
+
+        bool scheduledInGamePatch = false;
+        private void Schedule_InGame_Loaded()
+        {
+            scheduledInGamePatch = true;
+            TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnInGameLoaded(InGame.instance)); },
+            waitCondition: () => { return InGame.instance?.GetSimulation() != null; });
+        }
+
+        public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
+
+
+        public static void DoPatchMethods(Action<BloonsATMod> action)
+        {
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsATMod>())
             {
                 action.Invoke(mod);
             }

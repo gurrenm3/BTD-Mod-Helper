@@ -42,6 +42,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\ProjectileExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DictionaryExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\TypeExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\RendererExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModHelperData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SessionData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\SpriteRegister.cs" />

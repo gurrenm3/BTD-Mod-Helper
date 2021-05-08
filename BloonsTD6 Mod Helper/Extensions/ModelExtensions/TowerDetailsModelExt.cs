@@ -33,6 +33,26 @@ namespace BTD_Mod_Helper.Extensions
             return towerDetailsModel.TryCast<ShopTowerDetailsModel>();
         }
 
+        public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, bool addToGame =false)
+        {
+            var duplicate = towerDetailsModel.Duplicate();
+            duplicate.towerId = newName;
+            duplicate.SetName(newName);
+            if (addToGame) Game.instance.model.AddTowerToGame(towerDetailsModel);
+
+            return duplicate;
+        }
+
+        /// <summary>
+        /// Sets the name of this TowerDetailsModel, following the naming convention of ofther TowerDetailModels.
+        /// Example, using "NewMonkey" will set the name to "TowerDetailsModel_NewMonkey"
+        /// </summary>
+        /// <param name="towerDetailsModel"></param>
+        /// <param name="newName"></param>
+        public static void SetName(this TowerDetailsModel towerDetailsModel, string newName)
+        {
+            towerDetailsModel.name = string.Concat(towerDetailsModel.GetIl2CppType().Name, "_", newName);
+        }
 
         //needs more work
         /*public static bool HasPlayerUnlocked(this TowerDetailsModel towerDetailsModel)
