@@ -54,7 +54,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public ModOptionsMenu()
         {
             modOptionsWindow = CanvasGO.GetComponentInChildrenByName<RectTransform>("ModOptions");
+#if BloonsTD6
             var scene = SceneManager.GetSceneByName("SettingsUI");
+#elif BloonsAT
+            var scene = SceneManager.GetSceneByName("UI-Settings");
+#endif
             var rootGameObjects = scene.GetRootGameObjects();
             var mainMenuCanvas = rootGameObjects[0];
             instantiatedUI = GameObject.Instantiate(modOptionsWindow.gameObject, mainMenuCanvas.transform);

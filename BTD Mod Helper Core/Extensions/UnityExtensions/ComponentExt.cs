@@ -39,15 +39,5 @@ namespace BTD_Mod_Helper.Extensions
         {
             component.GetComponent<RectTransform>().localScale = new Vector3(0, 0);
         }
-
-        /// <summary>
-        /// (Cross-Game compatible) Return whether or not this Component's scale is set to zero (not visible)
-        /// </summary>
-        /// <param name="component"></param>
-        public static bool IsVisible(this Component component)
-        {
-            var scale = component.GetComponent<RectTransform>().localScale;
-            return (scale.x != 0) && (scale.y != 0);
-        }
     }
 }

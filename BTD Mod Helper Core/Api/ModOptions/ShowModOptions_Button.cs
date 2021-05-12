@@ -24,7 +24,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         public void Init()
         {
+#if BloonsTD6
             var scene = SceneManager.GetSceneByName("SettingsUI");
+#elif BloonsAT
+            var scene = SceneManager.GetSceneByName("UI-Settings");
+#endif
             var rootGameObjects = scene.GetRootGameObjects();
             settingsUI_Canvas = rootGameObjects[0];
 

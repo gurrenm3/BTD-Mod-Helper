@@ -26,9 +26,6 @@ namespace BTD_Mod_Helper
         public const string coopMessageCode = "BTD6_ModHelper";
         public const string currentVersion = ModHelperData.currentVersion;
 
-        private bool useModOptionsDEBUG = true;
-        private ModOptionsMenu modOptionsUI;
-
 
         public override void OnApplicationStart()
         {
@@ -64,7 +61,6 @@ namespace BTD_Mod_Helper
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                modOptionsUI = new ModOptionsMenu();
             }
 
             if (Game.instance is null)
@@ -75,9 +71,6 @@ namespace BTD_Mod_Helper
 
             if (InGame.instance is null)
                 return;
-
-            /*if (useModOptionsDEBUG && modOptionsUI is null)
-                modOptionsUI = new ModOptionsMenu();*/
 
             NotificationMgr.CheckForNotifications();
         }

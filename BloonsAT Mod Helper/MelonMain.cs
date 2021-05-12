@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.InGame_Mod_Options;
+using BTD_Mod_Helper.Api.ModOptions;
 using MelonLoader;
 using System;
 using System.Reflection;
@@ -35,9 +35,6 @@ namespace BTD_Mod_Helper
 
         public const string currentVersion = ModHelperData.currentVersion;
 
-        private bool useModOptionsDEBUG = false;
-        private ModOptionsMenu modOptionsUI;
-
 
         public override void OnApplicationStart()
         {
@@ -56,6 +53,12 @@ namespace BTD_Mod_Helper
             ModSettingsHandler.LoadModSettings(settingsDir);
             
             Schedule_GameModel_Loaded();
+            Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.OnShow), typeof(MelonMain), nameof(MelonMain.SettingsPatch));
+        }
+
+        public static void SettingsPatch()
+        {
+            //new ShowModOptions_Button().Init(); // this is commented out for now because it's not working
         }
 
         public override void OnUpdate()
@@ -77,9 +80,6 @@ namespace BTD_Mod_Helper
 
             if (InGame.instance is null)
                 return;
-
-            if (useModOptionsDEBUG && modOptionsUI is null)
-                modOptionsUI = new ModOptionsMenu();
 
             NotificationMgr.CheckForNotifications();
         }

@@ -20,9 +20,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public SharedOption(GameObject parentGO, string gameObjectName) : this (parentGO)
         {
             rectTransform = parent.GetComponentInChildrenByName<RectTransform>(gameObjectName);
-
-            if (rectTransform.IsVisible())
-                rectTransform.Hide();
+            rectTransform.Hide();
 
             var go = rectTransform.gameObject;
             var modOptionsContainer = parentGO.GetComponentInChildrenByName<RectTransform>("ModOptions Container");
