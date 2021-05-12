@@ -245,7 +245,7 @@ namespace BTD_Mod_Helper
         /// 
         /// Equivalent to a HarmonyPreFix on InputManager.CreateTowerGraphicsAsync
         /// </summary>
-        public virtual void OnTowerGraphicsCreated(InputManager inputManager, TowerModel towerModel, List<UnityDisplayNode> placementGraphics)
+        public virtual void OnTowerGraphicsCreated(TowerModel towerModel, List<UnityDisplayNode> placementGraphics)
         {
         }
 

@@ -1,8 +1,7 @@
-﻿
-using System;
+﻿using System;
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Api.InGame_Mod_Options
+namespace BTD_Mod_Helper.Api.ModOptions
 {
     public class ModSettingEnum<T> : ModSetting<T> where T : Enum
     {
@@ -37,6 +36,11 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
         
 
         public override ModOption ConstructModOption(GameObject parent)
+        {
+            throw new NotImplementedException(); //TODO DropDownOption
+        }
+
+        public override SharedOption ConstructModOption2(GameObject parent)
         {
             throw new NotImplementedException(); //TODO DropDownOption
         }

@@ -40,12 +40,7 @@ namespace BTD_Mod_Helper.Extensions
             model.towers = model.towers.AddTo(towerModel);
 
             if (towerDetailsModel != null)
-                model.AddTowerToGame(towerDetailsModel);
-        }
-
-        public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel)
-        {
-            model.towerSet = model.towerSet.AddTo(towerDetailsModel);
+                model.towerSet = model.towerSet.AddTo(towerDetailsModel);
         }
 
         /// <summary>

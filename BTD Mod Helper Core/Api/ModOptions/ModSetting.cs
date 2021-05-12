@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Api.InGame_Mod_Options
+namespace BTD_Mod_Helper.Api.ModOptions
 {
     public abstract class ModSetting<T> : ModSetting
     {
@@ -48,6 +48,8 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
         }
 
         public abstract ModOption ConstructModOption(GameObject parent);
+
+        public abstract SharedOption ConstructModOption2(GameObject parent);
     }
 
     public interface ModSetting
@@ -63,5 +65,7 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
         void SetName(string name);
 
         ModOption ConstructModOption(GameObject parent);
+
+        SharedOption ConstructModOption2(GameObject parent);
     }
 }

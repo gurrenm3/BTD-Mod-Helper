@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BTD_Mod_Helper.Api.InGame_Mod_Options
+namespace BTD_Mod_Helper.Api.ModOptions
 {
     public class ModSettingInt : ModSetting<long> //it's a long because of JSON parsing
     {
@@ -24,7 +24,13 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
 
         public override ModOption ConstructModOption(GameObject parent)
         {
-            return isSlider ? (ModOption) new SliderOption(parent, this) : new InputOption(parent, this);
+            return null;
+            //return isSlider ? (ModOption) new SliderOption(parent, this) : new InputOption(parent, this);
+        }
+
+        public override SharedOption ConstructModOption2(GameObject parent)
+        {
+            return isSlider ? (SharedOption)new SliderOption(parent, this) : new InputOption(parent, this);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BTD_Mod_Helper.Api.InGame_Mod_Options
+﻿namespace BTD_Mod_Helper.Api.ModOptions
 {
     public interface ModOption
     {

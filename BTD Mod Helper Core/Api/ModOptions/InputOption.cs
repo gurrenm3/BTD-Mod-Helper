@@ -2,33 +2,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.Api.InGame_Mod_Options
+namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class InputOption : ModOption
+    public class InputOption : SharedOption
     {
-        private GameObject parent;
-
-        public GameObject gameObject;
-        public Text title;
         public Button button;
         public Text buttonText;
         public InputField inputField;
 
         private readonly ModSetting modSetting;
 
-        private InputOption(GameObject parentGO, ModSetting modSetting)
+        private InputOption(GameObject parentGO, ModSetting modSetting) : base(parentGO, modSetting, "TextInputOption")
         {
-            parent = parentGO;
-            this.modSetting = modSetting;
-            gameObject = parentGO.transform.Find("ModOptions/UI Elements/ButtonOption").GetComponent<GameObject>();
+            button = instantiatedGameObject.transform.Find("Button").GetComponent<Button>();
+            buttonText = instantiatedGameObject.transform.Find("Button/Text").GetComponent<Text>();
+            inputField = instantiatedGameObject.transform.Find("InputField").GetComponent<InputField>();
 
-            title = parentGO.transform.Find("ModOptions/UI Elements/TextInputOption/OptionBase/Name").GetComponent<Text>();
-            button = parentGO.transform.Find("ModOptions/UI Elements/TextInputOption/Button").GetComponent<Button>();
-            buttonText = parentGO.transform.Find("ModOptions/UI Elements/TextInputOption/Button/Text").GetComponent<Text>();
-            inputField = parentGO.transform.Find("ModOptions/UI Elements/TextInputOption/InputField").GetComponent<InputField>();
-
-            title.text = modSetting.GetName();
-            
             inputField.SetText(modSetting.GetValue().ToString());
 
             buttonText.text = "Reset";
@@ -77,9 +66,9 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
             });
         }
 
-        public ModSetting GetModSetting()
+        internal static RectTransform GetOriginalAsset(GameObject parentGO)
         {
-            return modSetting;
+            return GetOriginalAsset(parentGO, "TextInputOption");
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity.UI_New.InGame;
-using BTD_Mod_Helper.Api.InGame_Mod_Options;
+using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;

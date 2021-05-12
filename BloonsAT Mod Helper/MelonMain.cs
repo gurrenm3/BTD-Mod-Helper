@@ -64,7 +64,8 @@ namespace BTD_Mod_Helper
 
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
-            {      
+            {
+                
             }
 
             if (Game.instance is null)

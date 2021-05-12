@@ -38,7 +38,9 @@ namespace BTD_Mod_Helper.Extensions
             var duplicate = towerDetailsModel.Duplicate();
             duplicate.towerId = newName;
             duplicate.SetName(newName);
-            if (addToGame) Game.instance.model.AddTowerToGame(towerDetailsModel);
+            
+            if (addToGame) 
+                Game.instance.model.towerSet = Game.instance.model.towerSet.AddTo(towerDetailsModel);
 
             return duplicate;
         }

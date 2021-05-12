@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.Api.InGame_Mod_Options
+namespace BTD_Mod_Helper.Api.ModOptions
 {
     public class ModSettingString : ModSetting<string>
     {
@@ -22,6 +22,12 @@ namespace BTD_Mod_Helper.Api.InGame_Mod_Options
         }
 
         public override ModOption ConstructModOption(GameObject parent)
+        {
+            return null;
+            //return new InputOption(parent, this);
+        }
+
+        public override SharedOption ConstructModOption2(GameObject parent)
         {
             return new InputOption(parent, this);
         }
