@@ -30,7 +30,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\SliderOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGameMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\TaskScheduler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTower.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModUpgrade.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\GithubReleaseInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateHandler.cs" />
@@ -100,8 +104,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\ToggleEventExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ToggleExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Vector3Ext.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Patches\" />
   </ItemGroup>
 </Project>

@@ -8,14 +8,19 @@ using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
 using System.Reflection;
+using BTD_Mod_Helper.Api;
 
 namespace BTD_Mod_Helper
 {
     public abstract class BloonsMod : MelonMod
     {
-
         internal Dictionary<string, ModSetting> ModSettings;
-
+        
+        /// <summary>
+        /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods
+        /// </summary>
+        public virtual string IDPrefix => Assembly.GetName().Name + "-";
+        
         /// <summary>
         /// Setting this to true will prevent your BloonsMod hooks from executing if the player could get flagged for using mods at that time.
         /// 
@@ -84,8 +89,6 @@ namespace BTD_Mod_Helper
         }
 
         #endregion
-
-
 
         public static int CostForDifficulty(int cost, string difficulty)
         {

@@ -270,5 +270,17 @@ namespace BTD_Mod_Helper.Extensions
 
             return arrayList.ToArray();
         }
+
+        /// <summary>
+        /// A string with all array elements printed together with no spaces
+        ///
+        /// Useful for the suffix for Tower IDS like DartMonkey-230
+        /// </summary>
+        /// <param name="arr">The array</param>
+        /// <returns></returns>
+        public static string Printed(this int[] arr)
+        {
+            return arr.Aggregate("", (current, i) => current + i);
+        }
     }
 }

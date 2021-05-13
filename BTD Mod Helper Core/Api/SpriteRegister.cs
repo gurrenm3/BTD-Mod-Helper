@@ -1,7 +1,9 @@
 ﻿using BTD_Mod_Helper.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Resources;
 using UnityEngine;
@@ -82,6 +84,23 @@ namespace BTD_Mod_Helper.Api
             Texture2D pngTexture = TextureFromLink(path, url);
             guid = path;
             register.Add(guid, Sprite.Create(pngTexture, new Rect(0.0f, 0.0f, pngTexture.width, pngTexture.height), pivot));
+        }
+
+        
+        internal static void LoadEmbeddedTextures(BloonsMod mod)
+        {
+            foreach (var name in mod.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("png")))
+            {
+                var memoryStream = new MemoryStream();
+                if (mod.Assembly.GetManifestResourceStream(name) is Stream stream)
+                {
+                    stream.CopyTo(memoryStream);
+                    var pngTexture = new Texture2D(2, 2);
+                    ImageConversion.LoadImage(pngTexture, memoryStream.ToArray());
+                    var guid = mod.IDPrefix + name.Split('.').Reverse().Skip(1).Take(1);
+                    register.Add(guid, Sprite.Create(pngTexture, new Rect(0.0f, 0.0f, pngTexture.width, pngTexture.height), default));
+                }
+            }
         }
     }
 }

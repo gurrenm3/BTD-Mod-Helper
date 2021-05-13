@@ -13,7 +13,7 @@ using Assets.Scripts.Simulation.Objects;
 using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
-using System;
+using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -38,6 +38,8 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddTowerToGame(this GameModel model, TowerModel towerModel, TowerDetailsModel towerDetailsModel = null)
         {
             model.towers = model.towers.AddTo(towerModel);
+
+            ModTowerHandler.TowerCache[towerModel.name] = towerModel;
 
             if (towerDetailsModel != null)
                 model.towerSet = model.towerSet.AddTo(towerDetailsModel);
