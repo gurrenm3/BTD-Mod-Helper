@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <DocumentationFile>bin\BloonsTD6 - Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsTD6 - Release|AnyCPU'">
     <OutputPath>bin\BloonsTD6 - Release\</OutputPath>

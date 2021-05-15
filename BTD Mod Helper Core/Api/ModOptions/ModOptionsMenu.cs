@@ -63,8 +63,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
             var mainMenuCanvas = rootGameObjects[0];
             instantiatedUI = GameObject.Instantiate(modOptionsWindow.gameObject, mainMenuCanvas.transform);
 
-            instantiatedUI.transform.localScale = new Vector3(2, 2);
-
             modList = instantiatedUI.GetComponentInChildrenByName<RectTransform>("ModList Container");
             optionsList = instantiatedUI.GetComponentInChildrenByName<RectTransform>("ModOptions Container");
             uiElementsContainer = instantiatedUI.GetComponentInChildrenByName<RectTransform>("UI Elements");
@@ -101,7 +99,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 var modSetting = bloonsMod.ModSettings.ElementAt(i).Value;
                 var modOption = modSetting.ConstructModOption2(instantiatedUI.gameObject);
 
-                var yCoord = ButtonOption.GetOriginalAsset(instantiatedUI).position.y - (i * 100);
+                var yCoord = ButtonOption.GetOriginalAsset(instantiatedUI).position.y - (i * 65);
                 modOption.SetLocation(yCoord);
             }
         }
@@ -115,7 +113,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             button.GetComponentInChildren<Text>().text = bloonsMod.GetModName();
 
             var height = button.GetComponent<RectTransform>().rect.height;
-            item.gameObject.transform.position = new Vector3(item.gameObject.transform.position.x, item.gameObject.transform.position.y - (index * height));
+            item.gameObject.transform.position = new Vector3(item.gameObject.transform.position.x, item.gameObject.transform.position.y - (index * 65)); //(index * height));
             item.Show();
         }
 
