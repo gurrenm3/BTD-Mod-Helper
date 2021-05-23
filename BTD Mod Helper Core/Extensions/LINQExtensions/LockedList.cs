@@ -119,5 +119,59 @@ namespace BTD_Mod_Helper.Extensions
             }
             return false;
         }
+
+
+        /// <summary>
+        /// (Cross-Game compatible) Return the last item in the collection
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static T Last<T>(this LockList<T> source)
+        {
+            return source[source.Count - 1];
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Return the last item in the collection that meets the condition, or return default
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static T LastOrDefault<T>(this LockList<T> source, Func<T, bool> predicate)
+        {
+            T last = default;
+            for (int i = 0; i < source.Count; i++)
+            {
+                T item = source[i];
+                if (predicate(item))
+                    last = item;
+            }
+
+            return last;
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Return the first element in the collection
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static T First<T>(this LockList<T> source)
+        {
+            return source[0];
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Return the first element in the collection, or return default if it's null
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static T FirstOrDefault<T>(this LockList<T> source)
+        {
+            return source[0] == null ? default : source[0];
+        }
     }
 }

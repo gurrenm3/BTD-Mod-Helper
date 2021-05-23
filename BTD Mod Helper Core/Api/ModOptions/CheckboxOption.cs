@@ -5,7 +5,7 @@ using System;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class CheckboxOption : SharedOption
+    internal class CheckboxOption : SharedOption
     {
         public Toggle checkbox;
         public Text checkboxText;

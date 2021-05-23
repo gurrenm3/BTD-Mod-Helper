@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Assets.Scripts.Unity;
+#if BloonsTD6
 using Assets.Scripts.Models.Towers.Upgrades;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Towers;
+#elif BloonsAT
+
+#endif
+using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 
 namespace BTD_Mod_Helper.Api
@@ -43,9 +49,10 @@ namespace BTD_Mod_Helper.Api
         /// <returns>A new SpriteReference</returns>
         public static SpriteReference GetSpriteReference<T>(string name) where T : BloonsMod
         {
-            return new SpriteReference(GetTextureGUID<T>(name));
+            return Game.instance?.CreateSpriteReference(GetTextureGUID<T>(name));
+            // return new SpriteReference(GetTextureGUID<T>(name)); // previous method. Changed to support BATTD
         }
-        
+
         /// <summary>
         /// Gets a sprite reference by name for a specific mod
         /// </summary>
@@ -54,7 +61,8 @@ namespace BTD_Mod_Helper.Api
         /// <returns>A new SpriteReference</returns>
         public static SpriteReference GetSpriteReference(BloonsMod mod, string name)
         {
-            return new SpriteReference(GetTextureGUID(mod, name));
+            return Game.instance?.CreateSpriteReference(GetTextureGUID(mod, name));
+            // return new SpriteReference(GetTextureGUID(mod, name)); // previous method. Changed to support BATTD
         }
 
         /// <summary>
@@ -78,7 +86,8 @@ namespace BTD_Mod_Helper.Api
         {
             return mod == null ? default : mod.IDPrefix + name;
         }
-        
+
+#if BloonsTD6
         /// <summary>
         /// Gets the internal tower name/id for a ModTower
         /// </summary>
@@ -106,7 +115,8 @@ namespace BTD_Mod_Helper.Api
         {
             return GetInstance<T>().Id;
         }
-        
+
+#endif
         
         /// <summary>
         /// Gets the official instance of a particular ModLoadable or BloonsMod based on its type

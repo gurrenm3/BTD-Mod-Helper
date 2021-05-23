@@ -11,7 +11,6 @@ using BTD_Mod_Helper.Api.Updater;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
-using Assets.Scripts.Models;
 using System.IO;
 using Assets.Scripts.Unity.UI_New.Settings;
 

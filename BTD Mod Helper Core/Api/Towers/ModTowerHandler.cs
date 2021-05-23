@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if BloonsTD6
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -139,3 +140,4 @@ namespace BTD_Mod_Helper.Api.Towers
         }
     }
 }
+#endif

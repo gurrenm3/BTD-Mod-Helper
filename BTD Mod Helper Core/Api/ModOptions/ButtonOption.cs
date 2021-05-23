@@ -5,7 +5,7 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class ButtonOption : SharedOption
+    internal class ButtonOption : SharedOption
     {
         public Button button;
         public Text buttonText;

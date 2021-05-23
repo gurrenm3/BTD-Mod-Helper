@@ -11,14 +11,15 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPrefix]
         internal static bool Prefix(Bloon __instance, Model modelToUse)
         {
-            SessionData.bloonTracker.TrackBloon(__instance);
-            __instance.CreateBloonToSim(); // Creating new BloonToSimulation will automatically start Tracking BloonSim via the Constructor
             return true;
         }
 
         [HarmonyPostfix]
         internal static void Postfix(Bloon __instance)
         {
+            SessionData.bloonTracker.TrackBloon(__instance);
+            __instance.CreateBloonToSim(); // Creating new BloonToSimulation will automatically start Tracking BloonSim via the Constructor
+
             MelonMain.DoPatchMethods(mod =>
             {
                 mod.OnBloonCreated(__instance);

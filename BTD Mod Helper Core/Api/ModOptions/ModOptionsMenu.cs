@@ -14,7 +14,7 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class ModOptionsMenu
+    internal class ModOptionsMenu
     {
         private static AssetBundle assetBundle;
         public static AssetBundle AssetBundle

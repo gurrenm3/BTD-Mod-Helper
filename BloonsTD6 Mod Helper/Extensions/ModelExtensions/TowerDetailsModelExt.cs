@@ -6,6 +6,21 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static class TowerDetailsModelExt
     {
+        public static int GetIndex(this TowerDetailsModel towerDetailsModel)
+        {
+            var towers = Game.instance.model.towerSet;
+            if (towers is null)
+                return -1;
+
+            for (int i = 0; i < towers.Count; i++)
+            {
+                if (towers[i].name == towerDetailsModel.name)
+                    return i;
+            }
+
+            return -1;
+        }
+
         /// <summary>
         /// Returns if this TowerDetailModel is actually for a Hero
         /// </summary>
@@ -33,14 +48,20 @@ namespace BTD_Mod_Helper.Extensions
             return towerDetailsModel.TryCast<ShopTowerDetailsModel>();
         }
 
-        public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, bool addToGame =false)
+        public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, bool addToGame = false)
+        {
+            return towerDetailsModel.MakeCopy(newName, towerDetailsModel.towerIndex, addToGame);
+        }
+
+        public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, int newTowerIndex, bool addToGame =false)
         {
             var duplicate = towerDetailsModel.Duplicate();
             duplicate.towerId = newName;
             duplicate.SetName(newName);
-            
-            if (addToGame) 
-                Game.instance.model.towerSet = Game.instance.model.towerSet.AddTo(towerDetailsModel);
+            duplicate.towerIndex = newTowerIndex;
+
+            if (addToGame)
+                Game.instance.model.AddTowerToGame(duplicate);
 
             return duplicate;
         }

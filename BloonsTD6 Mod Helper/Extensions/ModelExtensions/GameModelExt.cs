@@ -42,7 +42,14 @@ namespace BTD_Mod_Helper.Extensions
             ModTowerHandler.TowerCache[towerModel.name] = towerModel;
 
             if (towerDetailsModel != null)
-                model.towerSet = model.towerSet.AddTo(towerDetailsModel);
+            {
+                model.AddTowerToGame(towerDetailsModel);
+            }
+        }
+
+        public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel)
+        {
+            model.towerSet = model.towerSet.AddTo(towerDetailsModel);
         }
 
         /// <summary>

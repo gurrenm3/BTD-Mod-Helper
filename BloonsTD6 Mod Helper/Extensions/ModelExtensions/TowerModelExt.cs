@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Models;
+using Assets.Scripts.Models.Skins;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Upgrades;
@@ -48,8 +49,19 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static int GetIndex(this TowerModel towerModel)
         {
-            var index = Game.instance?.model?.towers?.IndexOf(towerModel);
-            return index.HasValue ? index.Value : -1;
+            //var index = Game.instance?.model?.towers?.IndexOf(towerModel); //old
+
+            var towers = Game.instance.model.towers;
+            if (towers is null)
+                return -1;
+
+            for (int i = 0; i < towers.Count; i++)
+            {
+                if (towers[i].name == towerModel.name)
+                    return i;
+            }
+
+            return -1;
         }
 
         /// <summary>

@@ -10,6 +10,8 @@ using Assets.Scripts.Simulation;
 using Assets.Scripts.Models;
 using System.Linq;
 using System;
+using BTD_Mod_Helper.Api.Enums;
+using Assets.Scripts.Models.Types;
 
 #if BloonsTD6
 using Assets.Scripts.Simulation.Towers.Projectiles;
@@ -206,6 +208,21 @@ namespace BTD_Mod_Helper.Extensions
         public static void SellTower(this InGame inGame, Tower tower)
         {
             inGame.SellTower(tower.GetTowerToSim());
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns the difficulty of this game
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <returns></returns>
+        public static Difficulty GetDifficulty(this InGame inGame)
+        {
+#if BloonsTD6
+            return (Difficulty)Enum.Parse(typeof(Difficulty), inGame.SelectedDifficulty);
+#elif BloonsAT
+            var difficulty = inGame.Simulation.GetDifficulty();
+            return (Difficulty)Enum.Parse(typeof(Difficulty), difficulty.ToString());
+#endif
         }
     }
 }

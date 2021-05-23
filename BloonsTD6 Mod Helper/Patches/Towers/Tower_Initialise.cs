@@ -27,6 +27,7 @@ namespace BTD_Mod_Helper.Patches.Towers
 
 
             MelonMain.DoPatchMethods(mod => mod.OnTowerCreated(__instance, target, modelToUse));
+            MelonMain.DoPatchMethods(mod => mod.OnTowerModelChanged(__instance, modelToUse));
         }
     }
 }

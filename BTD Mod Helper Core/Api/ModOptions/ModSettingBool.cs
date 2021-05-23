@@ -4,7 +4,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
 {
     public class ModSettingBool : ModSetting<bool>
     {
-        private bool value { get; set; }
         public bool isButton;
 
         public ModSettingBool(bool value) : base(value)

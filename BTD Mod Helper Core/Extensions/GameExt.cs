@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using BTD_Mod_Helper.Api.Enums;
+using Assets.Scripts.Utils;
 
 #if BloonsTD6
 using NinjaKiwi.LiNK;
@@ -19,6 +20,23 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+        /// <summary>
+        /// (Cross-Game compatible) Returns a new SpriteReference that uses the given guid
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="guid"></param>
+        /// <returns></returns>
+        public static SpriteReference CreateSpriteReference(this Game game, string guid)
+        {
+#if BloonsTD6
+            return new SpriteReference(guid);
+#elif BloonsAT
+            var reference = new SpriteReference();
+            reference.guid = guid;
+            return reference;
+#endif
+        }
+
         /// <summary>
         /// (Cross-Game compatible) Returns whether or not the player's account is currently flagged/hackerpooled
         /// </summary>

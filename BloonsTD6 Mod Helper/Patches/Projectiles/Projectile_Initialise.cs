@@ -1,8 +1,6 @@
-﻿
-using Assets.Scripts.Models;
+﻿using Assets.Scripts.Models;
 using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Simulation.Towers.Projectiles;
-using Assets.Scripts.Simulation.Towers.Weapons;
 using Harmony;
 
 namespace BTD_Mod_Helper.Patches.Projectiles
@@ -14,12 +12,7 @@ namespace BTD_Mod_Helper.Patches.Projectiles
         internal static void Postfix(Projectile __instance, Entity target, Model modelToUse)
         {
             MelonMain.DoPatchMethods(mod => mod.OnProjectileCreated(__instance, target, modelToUse));
+            MelonMain.DoPatchMethods(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
         }
     }
-
-
-
-
-
-
 }

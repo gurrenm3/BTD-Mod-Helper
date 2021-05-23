@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class InputOption : SharedOption
+    internal class InputOption : SharedOption
     {
         public Button button;
         public Text buttonText;

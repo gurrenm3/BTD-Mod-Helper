@@ -1,11 +1,13 @@
-﻿using System;
+﻿#if BloonsTD6
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
+
+using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
@@ -65,7 +67,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <returns>The 0-0-0 TowerModel for this Tower</returns>
         internal TowerModel GetTowerModel()
         {
-            if (towerModel == null)
+            /*if (towerModel == null)
             {
                 towerModel = !string.IsNullOrEmpty(BaseTower)
                     ? Game.instance.model.GetTowerFromId(BaseTower).MakeCopy(Id)
@@ -103,7 +105,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 CreateTowerModel(towerModel);
             }
 
-            return towerModel;
+            return towerModel;*/
+            return null;
         }
 
         /// <summary>
@@ -133,3 +136,4 @@ namespace BTD_Mod_Helper.Api.Towers
         
     }
 }
+#endif

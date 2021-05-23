@@ -4,7 +4,7 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class SliderOption : SharedOption
+    internal class SliderOption : SharedOption
     {
         public Slider slider;
         public Image fill;

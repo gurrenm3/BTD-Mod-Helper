@@ -21,6 +21,7 @@ using UnhollowerBaseLib;
 using UnityEngine;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
+using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 
 namespace BTD_Mod_Helper
 {
@@ -404,8 +405,27 @@ namespace BTD_Mod_Helper
 
         #endregion
 
-        #region Weapon/Projectile Hooks
-        
+        #region Weapon/Projectile/Attack Hooks
+
+        /// <summary>
+        /// Called right after an Attack is created
+        ///
+        /// Equivalent to a HarmonyPostFix on Attack.Initialise
+        /// </summary>
+        public virtual void OnAttackCreated(Attack attack, Entity entity, Model modelToUse)
+        {
+        }
+
+
+        /// <summary>
+        /// Called right after a Tower's Attack is changed for any reason (creation, upgrading, etc.)
+        ///
+        /// Equivalent to a HarmonyPostFix on Attack.UpdatedModel
+        /// </summary>
+        public virtual void OnAttackModelChanged(Attack attack, Model newModel)
+        {
+        }
+
         /// <summary>
         /// Called right after a Weapon is created
         ///
@@ -417,7 +437,7 @@ namespace BTD_Mod_Helper
 
         
         /// <summary>
-        /// Called right after a Tower's TowerModel is changed for any reason (creation, upgrading, etc.)
+        /// Called right after a Tower's WeaponModel is changed for any reason (creation, upgrading, etc.)
         ///
         /// Equivalent to a HarmonyPostFix on Weapon.UpdatedModel
         /// </summary>

@@ -5,8 +5,7 @@ using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Simulation.Track;
 using Assets.Scripts.Simulation.Factory;
-
-
+using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -63,14 +62,24 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static BloonToSimulation CreateBloonToSim(this Bloon bloon)
         {
-            var currentPos = bloon.Position?.ToUnity();
-            if (currentPos is null) currentPos = new UnityEngine.Vector3();
+            Vector3 currentPos = new Vector3();
+            if(bloon.Position?.ToUnity() != null)
+            {
+                currentPos = bloon.Position.ToUnity();
+            }
 
             var sim = InGame.instance.GetUnityToSimulation();
 #if BloonsTD6
-            return new BloonToSimulation(sim, bloon.GetId(), currentPos.Value, bloon.bloonModel);
+            return new BloonToSimulation(sim, bloon.GetId(), currentPos, bloon.bloonModel);
 #elif BloonsAT
-            return new BloonToSimulation(sim, bloon.Id, currentPos.Value, bloon.distanceTraveled, bloon.DistanceToEndOfPath, bloon.bloonModel);
+            try
+            {
+                return new BloonToSimulation(sim, bloon.Id, currentPos, bloon.distanceTraveled, bloon.DistanceToEndOfPath, bloon.bloonModel);
+            }
+            catch (System.Exception) 
+            {
+                return new BloonToSimulation(sim, bloon.Id, currentPos, 0, 0, bloon.bloonModel);
+            }
 #endif
         }
 

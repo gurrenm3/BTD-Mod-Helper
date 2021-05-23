@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿#if BloonsTD6
+using System.Text.RegularExpressions;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Utils;
@@ -43,3 +44,4 @@ namespace BTD_Mod_Helper.Api.Towers
         
     }
 }
+#endif

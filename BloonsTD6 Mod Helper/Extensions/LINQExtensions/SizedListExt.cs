@@ -1,38 +1,56 @@
-﻿using Il2CppSystem.Collections.Generic;
+﻿using Assets.Scripts.Utils;
+using NinjaKiwi.LiNK.Errors;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class Il2CppGenerics
+    public static partial class SizedListExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Return the first element that matches the predicate
+        /// Performs the specified action on each element
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="action">Action to preform on each element</param>
+        public static void ForEach<T>(this SizedList<T> source, Action<T> action)
+        {
+            for (int i = 0; i < source.Count; i++)
+                action.Invoke(source[i]);
+        }
+
+        /// <summary>
+        /// Return the first element that matches the predicate
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static T First<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+        public static T First<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            foreach (T item in source)
+            for (int i = 0; i < source.Count; i++)
             {
+                T item = source[i];
                 if (predicate(item))
                     return item;
             }
+
             throw new NullReferenceException();
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first element that matches the predicate, or return default
+        /// Return the first element that matches the predicate, or return default
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static T FirstOrDefault<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+        public static T FirstOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            foreach (T item in source)
+            for (int i = 0; i < source.Count; i++)
             {
+                T item = source[i];
                 if (predicate(item))
                     return item;
             }
@@ -40,17 +58,18 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return all elements that match the predicate
+        /// Return all elements that match the predicate
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static List<T> Where<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+        public static List<T> Where<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
             List<T> result = new List<T>();
-            foreach (T item in source)
+            for (int i = 0; i < source.Count; i++)
             {
+                T item = source[i];
                 if (predicate(item))
                     result.Add(item);
             }
@@ -58,13 +77,13 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the index of the element that matches the predicate
+        /// Return the index of the element that matches the predicate
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static int FindIndex<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+        public static int FindIndex<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
             for (int i = 0; i < source.Count; i++)
             {
@@ -76,53 +95,52 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return whether or not there are any elements in this
+        /// Return whether or not there are any elements in this
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static bool Any<T>(this List<T> source) where T : Il2CppSystem.Object
+        public static bool Any<T>(this SizedList<T> source) where T : Il2CppSystem.Object
         {
             return source.Count > 0;
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+        /// Return whether or not there are any elements in this that match the predicate
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static bool Any<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+        public static bool Any<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            foreach (var item in source)
+            for (int i = 0; i < source.Count; i++)
             {
-                if (predicate(item))
+                if (predicate(source[i]))
                     return true;
             }
             return false;
         }
 
-
         /// <summary>
-        /// (Cross-Game compatible) Return the last item in the collection
+        /// Return the last item in the collection
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static T Last<T>(this List<T> source)
+        public static T Last<T>(this SizedList<T> source)
         {
-            return source[source.Count - 1];
+            return source[source.Count -1];
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the last item in the collection that meets the condition, or return default
+        /// Return the last item in the collection that meets the condition, or return default
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static T LastOrDefault<T>(this List<T> source, Func<T, bool> predicate)
+        public static T LastOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate)
         {
             T last = default;
             for (int i = 0; i < source.Count; i++)
@@ -131,28 +149,28 @@ namespace BTD_Mod_Helper.Extensions
                 if (predicate(item))
                     last = item;
             }
-
+            
             return last;
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first element in the collection
+        /// Return the first element in the collection
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static T First<T>(this List<T> source)
+        public static T First<T>(this SizedList<T> source)
         {
             return source[0];
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first element in the collection, or return default if it's null
+        /// Return the first element in the collection, or return default if it's null
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static T FirstOrDefault<T>(this List<T> source)
+        public static T FirstOrDefault<T>(this SizedList<T> source)
         {
             return source[0] == null ? default : source[0];
         }
