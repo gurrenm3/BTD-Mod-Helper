@@ -194,6 +194,7 @@
     <Compile Include="MelonMain.cs" />
     <Compile Include="Patches\Bloons\BloonToSimulation_Ctor.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
+    <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
     <Compile Include="Patches\Bloons\Bloon_Degrade.cs" />

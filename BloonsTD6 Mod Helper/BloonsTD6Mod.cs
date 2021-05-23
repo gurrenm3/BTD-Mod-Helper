@@ -205,6 +205,15 @@ namespace BTD_Mod_Helper
         {
         }
 
+        /// <summary>
+        /// Called right after a Bloon's BloonModel is updated
+        /// 
+        /// Equivalent to a HarmonyPostFix on Bloon.UpdatedModel
+        /// </summary>
+        public virtual void OnBloonModelUpdated(Bloon bloon, Model model)
+        {
+        }
+
 
         /// <summary>
         /// Called right after a Bloon is destroyed
