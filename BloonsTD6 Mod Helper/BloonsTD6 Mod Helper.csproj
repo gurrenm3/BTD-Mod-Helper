@@ -207,6 +207,7 @@
     <Compile Include="Patches\InputManager_PrimeTower.cs" />
     <Compile Include="Patches\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\MainMenu_OnEnable.cs" />
+    <Compile Include="Patches\Model_IsEqual.cs" />
     <Compile Include="Patches\NKMultiConnection_Receive.cs" />
     <Compile Include="Patches\NKMultiGameInterface_Update.cs" />
     <Compile Include="Patches\OdysseyEventScreen_Update.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
     <Compile Include="Patches\Weapons\Attack_UpdatedModel.cs" />
     <Compile Include="Patches\Weapons\Attack_Initialise.cs" />
+    <Compile Include="Patches\UpgradeScreen_UpdateUi.cs" />
     <Compile Include="Patches\Weapons\Weapon_Initialise.cs" />
     <Compile Include="Patches\Weapons\Weapon_UpdatedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

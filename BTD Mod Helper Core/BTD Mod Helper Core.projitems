@@ -32,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\InGameMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ResourceHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\TaskScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTower.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerHandler.cs" />

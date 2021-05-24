@@ -12,7 +12,9 @@ using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
+using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
+using Assets.Scripts.Utils;
 
 namespace BTD_Mod_Helper
 {
@@ -60,6 +62,7 @@ namespace BTD_Mod_Helper
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().tower.towerModel);
             }
 
             if (Game.instance is null)
@@ -72,6 +75,15 @@ namespace BTD_Mod_Helper
                 return;
 
             NotificationMgr.CheckForNotifications();
+            
+            
+            foreach (var (guid, sprite) in SpriteRegister.register)
+            {
+                if (sprite == null)
+                {
+                    MelonLogger.Msg($"{guid}'s sprite is now null");
+                }
+            }
         }
 
         private void KeyCodeHooks()

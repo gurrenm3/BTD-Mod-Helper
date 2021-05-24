@@ -1,15 +1,11 @@
 ﻿#if BloonsTD6
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models;
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Towers.Upgrades;
-
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using UnhollowerBaseLib;
 
@@ -25,6 +21,8 @@ namespace BTD_Mod_Helper.Api.Towers
         internal readonly ModUpgrade[,] upgrades;
         
         public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
+        public virtual string Portrait => Name + "_Portrait";
+        public virtual string Icon => Name + "_Icon";
 
         protected const string PRIMARY = "Primary";
         protected const string MAGIC = "Magic";
@@ -67,16 +65,21 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <returns>The 0-0-0 TowerModel for this Tower</returns>
         internal TowerModel GetTowerModel()
         {
-            /*if (towerModel == null)
+            if (towerModel == null)
             {
                 towerModel = !string.IsNullOrEmpty(BaseTower)
                     ? Game.instance.model.GetTowerFromId(BaseTower).MakeCopy(Id)
                     : new TowerModel(Id, Id);
-
+                towerModel.name = Id;
+                
                 towerModel.appliedUpgrades = new Il2CppStringArray(0);
                 towerModel.upgrades = new Il2CppReferenceArray<UpgradePathModel>(0);
                 towerModel.towerSet = TowerSet;
                 towerModel.cost = Cost;
+                towerModel.dontDisplayUpgrades = false;
+
+                    towerModel.tier = 0;
+                towerModel.tiers = new[] {0, 0, 0};
 
                 foreach (var defaultMod in DefaultMods)
                 {
@@ -90,23 +93,23 @@ namespace BTD_Mod_Helper.Api.Towers
                         }
                     }
                 }
+                
                 towerModel.GetDescendants<Model>().ForEach(model =>
                 {
                     model.name = model.name.Replace(BaseTower, Name);
                     model._name = model._name.Replace(BaseTower, Name);
                 });
             
-            
-                //towerModel.portrait = ;
-                //towerModel.icon = ;
+                towerModel.instaIcon = GetSpriteReference(mod, Icon);
+                towerModel.portrait = GetSpriteReference(mod, Portrait);
+                towerModel.icon = GetSpriteReference(mod, Icon);
                 //towerModel.display = ;
                 //towerModel.GetBehavior<DisplayModel>().display = 
                 
                 CreateTowerModel(towerModel);
             }
 
-            return towerModel;*/
-            return null;
+            return towerModel;
         }
 
         /// <summary>
@@ -124,7 +127,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     {
                         var tiers = new[] {i, j, k};
                         var sorted = tiers.OrderBy(num => -num).ToArray();
-                        if (sorted[0] <= 5 && sorted[1] <= 2 && sorted[3] == 0)
+                        if (sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0)
                         {
                             results.Add(tiers);
                         }

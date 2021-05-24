@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Assets.Scripts.Models;
 using Assets.Scripts.Unity;
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Upgrades;
@@ -58,11 +59,11 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="name">The file name of your texture, without the extension</param>
-        /// <returns>A new SpriteReference</returns>
+        /// <returns>A new SpriteReference, or null if there's no resource</returns>
         public static SpriteReference GetSpriteReference(BloonsMod mod, string name)
         {
-            return Game.instance?.CreateSpriteReference(GetTextureGUID(mod, name));
-            // return new SpriteReference(GetTextureGUID(mod, name)); // previous method. Changed to support BATTD
+            var guid = GetTextureGUID(mod, name);
+            return !ResourceHandler.resources.ContainsKey(guid) ? null : Game.instance.CreateSpriteReference(guid);
         }
 
         /// <summary>

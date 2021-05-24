@@ -1,10 +1,16 @@
-﻿using Assets.Scripts.Utils;
+﻿using System;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using Harmony;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using BTD_Mod_Helper.Extensions;
+using MelonLoader;
+using NinjaKiwi.Players.Files;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Patches
 {
@@ -14,10 +20,21 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(ref SpriteReference reference, ref Image image)
         {
-            if (reference is null || image is null || !SpriteRegister.register.Any())
+            if (reference is null || image is null)
                 return;
 
-            string guid = reference.GUID;
+            var guid = reference.GUID;
+
+            if (ResourceHandler.resources.GetValueOrDefault(guid) is byte[] bytes)
+            {
+                var texture = new Texture2D(2, 2);
+                ImageConversion.LoadImage(texture, bytes);
+                texture.filterMode = FilterMode.Point;
+                image.canvasRenderer.SetTexture(texture);
+                image.sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), default);
+                return;
+            }
+            
             KeyValuePair<string, Sprite>? entryAtRef = SpriteRegister.register.Where(e => e.Key == guid).Select(e => (KeyValuePair<string, Sprite>?)e).FirstOrDefault();
             if (entryAtRef.HasValue)
             {

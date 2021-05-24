@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
 using BTD_Mod_Helper.Api.Towers;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -39,6 +40,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             model.towers = model.towers.AddTo(towerModel);
 
+            MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
             ModTowerHandler.TowerCache[towerModel.name] = towerModel;
 
             if (towerDetailsModel != null)

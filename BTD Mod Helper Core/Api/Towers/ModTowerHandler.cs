@@ -2,22 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
+using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.Localization;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using Harmony;
 using MelonLoader;
-using UnityEngine;
-using Resources = BTD_Mod_Helper.Properties.Resources;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
-    public class ModTowerHandler
+    internal class ModTowerHandler
     {
-        internal static readonly IEnumerable<ModTower> ModTowers = new HashSet<ModTower>();
-        internal static readonly IEnumerable<ModUpgrade> ModUpgrades = new HashSet<ModUpgrade>();
+        internal static readonly List<ModTower> ModTowers = new List<ModTower>();
+        internal static readonly List<ModUpgrade> ModUpgrades = new List<ModUpgrade>();
         
         internal static readonly Dictionary<string, TowerModel> TowerCache = new Dictionary<string, TowerModel>();
         
@@ -25,80 +25,70 @@ namespace BTD_Mod_Helper.Api.Towers
         {
             var modUpgrades = GetModUpgrades(mod);
             var modTowers = GetModTowers(mod);
-
+            
             foreach (var modUpgrade in modUpgrades)
             {
+                LocalizationManager.instance.textTable[modUpgrade.Id] = modUpgrade.DisplayName;
+                LocalizationManager.instance.textTable[modUpgrade.Id + " Description"] = modUpgrade.Description;
                 Game.instance.model.AddUpgrade(modUpgrade.GetUpgradeModel());
-                modUpgrade.Tower.upgrades[modUpgrade.Path, modUpgrade.Tier] = modUpgrade;
+                modUpgrade.Tower.upgrades[modUpgrade.Path, modUpgrade.Tier - 1] = modUpgrade;
                 ModUpgrades.Add(modUpgrade);
             }
 
             foreach (var modTower in modTowers)
             {
-                AddAllTowerModels(modTower);
+                LocalizationManager.instance.textTable[modTower.Id] = modTower.DisplayName;
+                LocalizationManager.instance.textTable[modTower.Id + " Description"] = modTower.Description;
+                AddTower(modTower);
                 ModTowers.Add(modTower);
             }
         }
 
-
-        internal static IEnumerable<ModUpgrade> GetModUpgrades(BloonsMod mod)
+        internal static object Create(Type type, BloonsMod mod)
         {
-            return mod.GetType().Assembly.GetTypes()
-                .Where(type => !type.IsAbstract && type.IsPublic && type.IsSubclassOf(typeof(ModUpgrade)))
-                .Where(type => type.GetConstructor(Type.EmptyTypes) != null)
-                .Select(type =>
-                {
-                    if (!ModContent.Instances.ContainsKey(type))
-                    {
-                        var upgrade = (ModUpgrade) Activator.CreateInstance(type);
-                        upgrade.mod = mod;
-                        ModContent.Instances[type] = upgrade;
-                    }
+            if (!ModContent.Instances.ContainsKey(type))
+            {
+                var instance = (ModContent) Activator.CreateInstance(type);
+                instance.mod = mod;
+                ModContent.Instances[type] = instance;
+            }
                     
-                    return (ModUpgrade) ModContent.Instances[type];
-                });
+            return ModContent.Instances[type];
         }
 
-        internal static IEnumerable<ModTower> GetModTowers(BloonsMod mod)
+        internal static List<ModUpgrade> GetModUpgrades(BloonsMod mod)
         {
-            return mod.GetType().Assembly.GetTypes()
-                .Where(type => !type.IsAbstract && type.IsPublic && type.IsSubclassOf(typeof(ModTower)))
-                .Where(type => type.GetConstructor(Type.EmptyTypes) != null)
-                .Select(type =>
-                {
-                    if (!ModContent.Instances.ContainsKey(type))
-                    {
-                        var tower = (ModTower) Activator.CreateInstance(type);
-                        tower.mod = mod;
-                        ModContent.Instances[type] = tower;
-                    }
-                    
-                    return (ModTower) ModContent.Instances[type];
-                });
+            return mod.Assembly.GetTypes()
+                .Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ModUpgrade)))
+                .Select(type => (ModUpgrade) Create(type, mod)).ToList();
+        }
+
+        internal static List<ModTower> GetModTowers(BloonsMod mod)
+        {
+            return mod.Assembly.GetTypes()
+                .Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ModTower)))
+                .Select(type => (ModTower) Create(type, mod)).ToList();
         }
 
         internal static TowerModel CreateTowerModel(ModTower modTower, int[] tiers)
         {
-            var towerModel = modTower.GetTowerModel();
-
+            var towerModel = modTower.GetTowerModel().Duplicate();
             towerModel.tiers = tiers;
             towerModel.tier = tiers.Max();
+            
             if (tiers.Sum() > 0)
             {
                 towerModel.AddTiersToName();
             }
-
+            
             // add the names to applied upgrades
-            foreach (var modUpgrade in modTower.upgrades)
-            {
-                if (tiers[modUpgrade.Path] >= modUpgrade.Tier)
-                {
-                    towerModel.appliedUpgrades = towerModel.appliedUpgrades.Add(modUpgrade.Id).ToArray();
-                }
-            }
+            towerModel.appliedUpgrades = modTower.upgrades.Cast<ModUpgrade>()
+                .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
+                .Select(modUpgrade => modUpgrade.Id)
+                .ToArray();
 
             // add the upgrade path models
-            for (var i = 0; i < modTower.tierMaxes.Length; i++)
+            for (var i = 0; i <= 2; i++)
             {
                 var tierMax = modTower.tierMaxes[i];
                 if (tiers[i] < tierMax)
@@ -107,7 +97,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     newTiers[i]++;
                     if (newTiers.Min() == 0) // no triple cross-pathed towers (yet...)
                     {
-                        var modUpgrade = modTower.upgrades[i, tiers[i] + 1];
+                        var modUpgrade = modTower.upgrades[i, newTiers[i] - 1];
 
                         var upgradePathModel = new UpgradePathModel(modUpgrade.Id,
                             $"{towerModel.baseId}-{newTiers.Printed()}", newTiers.Count(t => t > 0), newTiers.Max());
@@ -115,28 +105,65 @@ namespace BTD_Mod_Helper.Api.Towers
                     }
                 }
             }
-            
-            // actually apply the upgrades
-            foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
-                .OrderByDescending(modUpgrade => modUpgrade.Priority)
-                .ThenBy(modUpgrade => 6 * modUpgrade.Path + modUpgrade.Tier))
+
+            // set the tower's portrait
+            var portraitUpgrade = modTower.upgrades.Cast<ModUpgrade>()
+                .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
+                .OrderByDescending(modUpgrade => modUpgrade.Tier)
+                .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
+                .ThenBy(modUpgrade => modUpgrade.Path)
+                .FirstOrDefault();
+            if (portraitUpgrade != null)
             {
-                if (tiers[modUpgrade.Path] >= modUpgrade.Tier)
+                var sprite = ModContent.GetSpriteReference(modTower.mod, portraitUpgrade.Portrait);
+                if (sprite != null)
                 {
-                    modUpgrade.ApplyUpgrade(towerModel);
+                    towerModel.portrait = sprite;
                 }
             }
+            
+            // set the tower's display model
 
+            // actually apply the upgrades
+            foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
+                .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
+                .OrderByDescending(modUpgrade => modUpgrade.Priority)
+                .ThenBy(modUpgrade => modUpgrade.Path)
+                .ThenBy(modUpgrade => modUpgrade.Tier))
+            {
+                modUpgrade.ApplyUpgrade(towerModel);
+            }
+
+            FileIOUtil.SaveObject($"Towers\\{towerModel.name}.json", towerModel);
             return towerModel;
         }
 
-        internal static void AddAllTowerModels(ModTower modTower)
+        internal static void AddTower(ModTower modTower)
         {
             foreach (var tiers in modTower.TowerTiers())
             {
                 var towerModel = CreateTowerModel(modTower, tiers);
                 Game.instance.model.AddTowerToGame(towerModel);
             }
+
+            var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
+
+            var towerSet = Game.instance.model.towerSet.ToList();
+            var lastOfSet = towerSet.LastOrDefault(tdm =>
+                Game.instance.model.GetTowerFromId(tdm.towerId).towerSet == modTower.TowerSet);
+            var index = towerSet.Count;
+            if (lastOfSet != default)
+            {
+                index = towerSet.IndexOf(lastOfSet) + 1;
+            }
+            towerSet.Insert(index, shopTowerDetailsModel);
+            
+            for (var i = 0; i < towerSet.Count; i++)
+            {
+                towerSet[i].towerIndex = i;
+            }
+
+            Game.instance.model.towerSet = towerSet.ToArray();
         }
     }
 }
