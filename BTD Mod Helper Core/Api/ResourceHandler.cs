@@ -37,7 +37,6 @@ namespace BTD_Mod_Helper.Api
                     
                 }
             }
-        }
-        
+        }        
     }
 }

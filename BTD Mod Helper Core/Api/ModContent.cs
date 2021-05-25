@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Assets.Scripts.Models;
 using Assets.Scripts.Unity;
+using BTD_Mod_Helper.Api;
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Upgrades;
 using BTD_Mod_Helper.Api.Towers;
@@ -50,7 +51,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns>A new SpriteReference</returns>
         public static SpriteReference GetSpriteReference<T>(string name) where T : BloonsMod
         {
-            return Game.instance?.CreateSpriteReference(GetTextureGUID<T>(name));
+            return CreateSpriteReference(GetTextureGUID<T>(name));
             // return new SpriteReference(GetTextureGUID<T>(name)); // previous method. Changed to support BATTD
         }
 
@@ -63,7 +64,23 @@ namespace BTD_Mod_Helper.Api
         public static SpriteReference GetSpriteReference(BloonsMod mod, string name)
         {
             var guid = GetTextureGUID(mod, name);
-            return !ResourceHandler.resources.ContainsKey(guid) ? null : Game.instance.CreateSpriteReference(guid);
+            return ResourceHandler.resources.ContainsKey(guid) ? null : CreateSpriteReference(guid);
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns a new SpriteReference that uses the given guid
+        /// </summary>
+        /// <param name="guid">The guid that you'd like to assign to the SpriteReference</param>
+        /// <returns></returns>
+        public static SpriteReference CreateSpriteReference(string guid)
+        {
+#if BloonsTD6
+            return new SpriteReference(guid);
+#elif BloonsAT
+            var reference = new SpriteReference();
+            reference.guid = guid;
+            return reference;
+#endif
         }
 
         /// <summary>

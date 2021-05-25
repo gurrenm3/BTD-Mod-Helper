@@ -28,13 +28,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static SpriteReference CreateSpriteReference(this Game game, string guid)
         {
-#if BloonsTD6
-            return new SpriteReference(guid);
-#elif BloonsAT
-            var reference = new SpriteReference();
-            reference.guid = guid;
-            return reference;
-#endif
+            return ModContent.CreateSpriteReference(guid);
         }
 
         /// <summary>
