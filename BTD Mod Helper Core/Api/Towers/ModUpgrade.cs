@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Api.Towers
     {
         private UpgradeModel upgradeModel;
 
-        private static SpriteReference DefaultIcon => new SpriteReference("aa0cb2e090ae15a478243899824ad4b1");
+        private static SpriteReference DefaultIcon => CreateSpriteReference("aa0cb2e090ae15a478243899824ad4b1");
         
         /// <summary>
         /// Path ID for the Top path

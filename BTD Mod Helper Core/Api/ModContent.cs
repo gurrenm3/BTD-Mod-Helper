@@ -64,7 +64,11 @@ namespace BTD_Mod_Helper.Api
         public static SpriteReference GetSpriteReference(BloonsMod mod, string name)
         {
             var guid = GetTextureGUID(mod, name);
-            return ResourceHandler.resources.ContainsKey(guid) ? null : CreateSpriteReference(guid);
+            if (ResourceHandler.resources.ContainsKey(guid))
+            {
+                return CreateSpriteReference(guid);
+            }
+            return null;
         }
 
         /// <summary>

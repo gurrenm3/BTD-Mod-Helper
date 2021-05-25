@@ -12,6 +12,7 @@ using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Objects;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Unity;
 using UnhollowerBaseLib;
 using BTD_Mod_Helper.Api.Towers;
 using MelonLoader;
@@ -39,19 +40,58 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddTowerToGame(this GameModel model, TowerModel towerModel, TowerDetailsModel towerDetailsModel = null)
         {
             model.towers = model.towers.AddTo(towerModel);
-
-            MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
+            model.AddChildDependant(towerModel);
+            
             ModTowerHandler.TowerCache[towerModel.name] = towerModel;
 
             if (towerDetailsModel != null)
             {
-                model.AddTowerToGame(towerDetailsModel);
+                model.AddTowerToGame(towerDetailsModel, towerModel.towerSet);
             }
+
+            MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
         }
 
         public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel)
         {
             model.towerSet = model.towerSet.AddTo(towerDetailsModel);
+            AddTowerToGame(model, towerDetailsModel, "");
+        }
+
+        /// <summary>
+        /// Adds a TowerDetailsModel to the GameModel's TowerSet, taking into account what set of towers it's a part of
+        /// For example, a new custom Primary tower would be added right at the end of the primary towers,
+        /// and right before the start of the military towers
+        /// </summary>
+        /// <param name="model">The GameModel</param>
+        /// <param name="towerDetailsModel">The TowerDetailsModel to be added</param>
+        /// <param name="set">The TowerSet of the tower to be added</param>
+        public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel, string set)
+        {
+            if (string.IsNullOrEmpty(set))
+            {
+                model.towerSet = model.towerSet.AddTo(towerDetailsModel);
+            }
+
+            var towerSet = model.towerSet.ToList();
+            var lastOfSet = towerSet.LastOrDefault(tdm => model.GetTowerFromId(tdm.towerId).towerSet == set);
+            var index = towerSet.Count;
+            if (lastOfSet != default)
+            {
+                index = towerSet.IndexOf(lastOfSet) + 1;
+            }
+            towerSet.Insert(index, towerDetailsModel);
+            
+            for (var i = 0; i < towerSet.Count; i++)
+            {
+                towerSet[i].towerIndex = i;
+            }
+
+            model.towerSet = towerSet.ToArray();
+
+            var towerList = Game.towers.ToList();
+            towerList.Insert(index, towerDetailsModel.towerId);
+            Game.towers = towerList.ToArray();
         }
 
         /// <summary>
@@ -237,6 +277,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             model.upgrades = model.upgrades.AddTo(upgradeModel);
             model.upgradesByName.Add(upgradeModel.name, upgradeModel);
+            model.AddChildDependant(upgradeModel);
         }
 
         public static void AddUpgrades(this GameModel model, List<UpgradeModel> upgradeModels)

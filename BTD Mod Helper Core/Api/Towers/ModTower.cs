@@ -49,21 +49,22 @@ namespace BTD_Mod_Helper.Api.Towers
         }
 
         /// <summary>
-        ///
-        /// Things like the TowerModel's name, cost, and upgrades are already taken care of before this point
+        /// Implemented by a ModTower to modify the base tower model before applying any/all ModUpgrades
+        /// 
+        /// Things like the TowerModel's name, cost, tier, and upgrades are already taken care of before this point
         /// </summary>
-        /// <param name="baseTowerModel"></param>
-        protected abstract void CreateTowerModel(TowerModel baseTowerModel);
+        /// <param name="towerModel"></param>
+        public abstract void ModifyBaseTowerModel(TowerModel towerModel);
         
         /// <summary>
         /// Gets the base 0-0-0 TowerModel for this Tower
         /// 
         /// Starts with the <see cref="BaseTower"/>, modifies its default properties as needed,
-        /// then calls <see cref="CreateTowerModel"/> on it.
+        /// then calls <see cref="ModifyBaseTowerModel"/> on it.
         /// 
         /// </summary>
         /// <returns>The 0-0-0 TowerModel for this Tower</returns>
-        internal TowerModel GetTowerModel()
+        internal TowerModel GetBaseTowerModel()
         {
             if (towerModel == null)
             {
@@ -105,8 +106,6 @@ namespace BTD_Mod_Helper.Api.Towers
                 towerModel.icon = GetSpriteReference(mod, Icon);
                 //towerModel.display = ;
                 //towerModel.GetBehavior<DisplayModel>().display = 
-                
-                CreateTowerModel(towerModel);
             }
 
             return towerModel;

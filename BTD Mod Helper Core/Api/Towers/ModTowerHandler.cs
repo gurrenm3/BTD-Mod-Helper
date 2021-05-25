@@ -72,7 +72,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal static TowerModel CreateTowerModel(ModTower modTower, int[] tiers)
         {
-            var towerModel = modTower.GetTowerModel().Duplicate();
+            var towerModel = modTower.GetBaseTowerModel().Duplicate();
             towerModel.tiers = tiers;
             towerModel.tier = tiers.Max();
             
@@ -80,7 +80,7 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 towerModel.AddTiersToName();
             }
-            
+
             // add the names to applied upgrades
             towerModel.appliedUpgrades = modTower.upgrades.Cast<ModUpgrade>()
                 .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
@@ -124,6 +124,10 @@ namespace BTD_Mod_Helper.Api.Towers
             
             // set the tower's display model
 
+            
+            
+            modTower.ModifyBaseTowerModel(towerModel);
+            
             // actually apply the upgrades
             foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
                 .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
@@ -148,22 +152,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
             var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
 
-            var towerSet = Game.instance.model.towerSet.ToList();
-            var lastOfSet = towerSet.LastOrDefault(tdm =>
-                Game.instance.model.GetTowerFromId(tdm.towerId).towerSet == modTower.TowerSet);
-            var index = towerSet.Count;
-            if (lastOfSet != default)
-            {
-                index = towerSet.IndexOf(lastOfSet) + 1;
-            }
-            towerSet.Insert(index, shopTowerDetailsModel);
-            
-            for (var i = 0; i < towerSet.Count; i++)
-            {
-                towerSet[i].towerIndex = i;
-            }
-
-            Game.instance.model.towerSet = towerSet.ToArray();
+            Game.instance.model.AddTowerToGame(shopTowerDetailsModel, modTower.TowerSet);
         }
     }
 }

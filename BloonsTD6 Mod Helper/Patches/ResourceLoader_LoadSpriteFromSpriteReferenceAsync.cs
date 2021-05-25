@@ -27,9 +27,8 @@ namespace BTD_Mod_Helper.Patches
 
             if (ResourceHandler.resources.GetValueOrDefault(guid) is byte[] bytes)
             {
-                var texture = new Texture2D(2, 2);
+                var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -1};
                 ImageConversion.LoadImage(texture, bytes);
-                texture.filterMode = FilterMode.Point;
                 image.canvasRenderer.SetTexture(texture);
                 image.sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), default);
                 return;
