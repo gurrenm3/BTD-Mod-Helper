@@ -25,7 +25,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T GetBehavior<T>(this Entity entity) where T : Model
         {
-            return entity.behaviors.GetItemOfType<RootBehavior, T>();
+            return entity.behaviors.First(behavior => behavior.IsType<T>()).Cast<T>();
         }
 
         /// <summary>

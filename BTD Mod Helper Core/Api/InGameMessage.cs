@@ -15,8 +15,8 @@ namespace BTD_Mod_Helper.Api
         public Color TitleColor = Color.white;
         public string Body;
         public Color BodyColor = Color.white;
-        public Vector2? BodyPosition;
-        public Vector2? BodySize;
+        //public Vector2? BodyPosition;
+        //public Vector2? BodySize;
     }
 
     internal class NkhMsg

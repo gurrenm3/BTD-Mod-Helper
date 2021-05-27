@@ -15,7 +15,7 @@ using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Updater
 {
-    public class UpdaterHttp
+    internal class UpdaterHttp
     {
         private const string MelonInfoRegex = "MelonInfo\\(.*\"([\\d|\\.]+)\".*\\)";
         private const string DefaultVersion = "1.0.0";
@@ -35,7 +35,7 @@ namespace BTD_Mod_Helper.Api.Updater
         }
 
 
-        private HttpClient CreateHttpClient()
+        private static HttpClient CreateHttpClient()
         {
             client = new HttpClient();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -43,7 +43,7 @@ namespace BTD_Mod_Helper.Api.Updater
             return client;
         }
 
-        public async Task<List<GithubReleaseInfo>> GetReleaseInfoAsync(string url)
+        internal async Task<List<GithubReleaseInfo>> GetReleaseInfoAsync(string url)
         {
             var tries = 0;
             while (tries < 3)
@@ -53,10 +53,9 @@ namespace BTD_Mod_Helper.Api.Updater
                     var releaseJson = await client.GetStringAsync(url);
                     return GithubReleaseInfo.FromJson(releaseJson);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Thread.Sleep(1000);
-                    e.ToString();
                 }
                 
                 tries++;
@@ -65,7 +64,7 @@ namespace BTD_Mod_Helper.Api.Updater
             throw new HttpRequestException("Failed to retrieve release info");
         }
         
-        public async Task<string> GetMelonInfoAsync(string url)
+        internal async Task<string> GetMelonInfoAsync(string url)
         {
             var plainTextCS = await client.GetStringAsync(url);
 
@@ -74,14 +73,14 @@ namespace BTD_Mod_Helper.Api.Updater
             return match.Success ? match.Value : DefaultVersion;
         }
         
-        public async Task<string> GetMelonInfoAsync() => await GetMelonInfoAsync(updateInfo.MelonInfoCsURL);
+        internal async Task<string> GetMelonInfoAsync() => await GetMelonInfoAsync(updateInfo.MelonInfoCsURL);
 
 
-        public async Task<GithubReleaseInfo> GetLatestReleaseAsync() => GetLatestReleaseAsync(updateInfo.GithubReleaseURL).Result;
+        public Task<GithubReleaseInfo> GetLatestReleaseAsync() => Task.FromResult(GetLatestReleaseAsync(updateInfo.GithubReleaseURL).Result);
 
-        public async Task<GithubReleaseInfo> GetLatestReleaseAsync(string url)
+        public Task<GithubReleaseInfo> GetLatestReleaseAsync(string url)
         {
-            return GetReleaseInfoAsync(url).Result[0];
+            return Task.FromResult(GetReleaseInfoAsync(url).Result[0]);
         }
 
         public async Task<bool> IsUpdate()
@@ -113,26 +112,26 @@ namespace BTD_Mod_Helper.Api.Updater
 
             CleanVersionStrings(ref currentVersion, ref latestVersion);
 
-            Int32.TryParse(currentVersion, out int currentVersionNum);
-            Int32.TryParse(latestVersion, out int latestVersionNum);
+            int.TryParse(currentVersion, out int currentVersionNum);
+            int.TryParse(latestVersion, out int latestVersionNum);
 
             return latestVersionNum > currentVersionNum;
         }
         
-        private void CleanVersionStrings(ref string string1, ref string string2)
+        private static void CleanVersionStrings(ref string string1, ref string string2)
         {
             RemoveAllNonNumeric(ref string1);
             RemoveAllNonNumeric(ref string2);
             MakeLengthEven(ref string1, ref string2);
         }
 
-        private void RemoveAllNonNumeric(ref string str)
+        private static void RemoveAllNonNumeric(ref string str)
         {
             string cleanedStr = "";
             for (int i = 0; i < str.Length; i++)
             {
                 var currentLetter = str[i].ToString();
-                bool isNumber = Int32.TryParse(currentLetter, out int num);
+                bool isNumber = Int32.TryParse(currentLetter, out _);
                 if (isNumber)
                     cleanedStr += currentLetter;
             }
@@ -140,7 +139,7 @@ namespace BTD_Mod_Helper.Api.Updater
             str = cleanedStr;
         }
 
-        private void MakeLengthEven(ref string string1, ref string string2)
+        private static void MakeLengthEven(ref string string1, ref string string2)
         {
             while (string1.Length != string2.Length)
             {
@@ -198,7 +197,7 @@ namespace BTD_Mod_Helper.Api.Updater
             }
 
             var response = await client.GetAsync(downloadURL);
-            string newFile = $"{modDir}\\{fileName}";
+            var newFile = $"{modDir}\\{fileName}";
             using (var fs = new FileStream(newFile, FileMode.Create))
             {
                 await response.Content.CopyToAsync(fs);

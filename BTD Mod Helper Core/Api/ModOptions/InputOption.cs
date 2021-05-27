@@ -10,8 +10,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public Text buttonText;
         public InputField inputField;
 
-        private readonly ModSetting modSetting;
-
         private InputOption(GameObject parentGO, ModSetting modSetting) : base(parentGO, modSetting, "TextInputOption")
         {
             button = instantiatedGameObject.transform.Find("Button").GetComponent<Button>();

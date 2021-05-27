@@ -7,17 +7,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
     public class SharedOption
     {
         private readonly ModSetting modSetting;
-        public GameObject instantiatedGameObject;
-        public RectTransform rectTransform;
-        protected GameObject parent;
-        public Text title;
+        internal GameObject instantiatedGameObject;
+        internal RectTransform rectTransform;
+        internal GameObject parent;
+        internal Text title;
 
-        public SharedOption(GameObject parentGO)
+        internal SharedOption(GameObject parentGO)
         {
             parent = parentGO;
         }
 
-        public SharedOption(GameObject parentGO, string gameObjectName) : this (parentGO)
+        internal SharedOption(GameObject parentGO, string gameObjectName) : this (parentGO)
         {
             rectTransform = parent.GetComponentInChildrenByName<RectTransform>(gameObjectName);
             rectTransform.Hide();
@@ -25,29 +25,29 @@ namespace BTD_Mod_Helper.Api.ModOptions
             var go = rectTransform.gameObject;
             var modOptionsContainer = parentGO.GetComponentInChildrenByName<RectTransform>("ModOptions Container");
 
-            instantiatedGameObject = GameObject.Instantiate(go, modOptionsContainer);
+            instantiatedGameObject = Object.Instantiate(go, modOptionsContainer);
             title = instantiatedGameObject.transform.Find("OptionBase/Name").GetComponent<Text>();
             
             instantiatedGameObject.Show();
         }
 
-        public SharedOption(GameObject parentGO, ModSetting modSetting, string gameObjectName) : this(parentGO, gameObjectName)
+        internal SharedOption(GameObject parentGO, ModSetting modSetting, string gameObjectName) : this(parentGO, gameObjectName)
         {
             this.modSetting = modSetting;
             title.text = modSetting.GetName();
         }
 
-        public void Show()
+        internal void Show()
         {
             instantiatedGameObject.Show();
         }
 
-        public void Hide()
+        internal void Hide()
         {
             instantiatedGameObject.Hide();
         }
 
-        public ModSetting GetModSetting()
+        internal virtual ModSetting GetModSetting()
         {
             return modSetting;
         }

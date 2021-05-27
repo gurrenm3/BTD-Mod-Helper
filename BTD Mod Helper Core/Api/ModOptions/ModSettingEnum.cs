@@ -19,7 +19,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return modSettingEnum.value;
         }
 
-        public override void SetValue(object value)
+        public override void SetValue(object val)
         {
             base.SetValue(Enum.Parse(typeof(T), value.ToString()));
         }

@@ -231,7 +231,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            TCast behavior = GetItemOfType<TSource, TCast>(lockList);
+            var behavior = lockList.First(o => o.IsType<TCast>()).Cast<TCast>();
             return RemoveItem(lockList, behavior);
         }
 

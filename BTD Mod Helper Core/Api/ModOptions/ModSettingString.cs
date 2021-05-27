@@ -3,6 +3,10 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public class ModSettingString : ModSetting<string>
     {
         internal InputField.CharacterValidation validation;

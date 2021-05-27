@@ -17,10 +17,7 @@ using BTD_Mod_Helper.Extensions;
 using Il2CppSystem.Collections.Generic;
 using MelonLoader;
 using NinjaKiwi.NKMulti;
-using UnhollowerBaseLib;
-using UnityEngine;
 using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 
 namespace BTD_Mod_Helper
@@ -49,7 +46,7 @@ namespace BTD_Mod_Helper
         /// <summary>
         /// Acts on a Network message that's been sent to the client
         ///
-        /// Use Game.instance.GetNKgI().ReadMessage<YOUR_CLASS_NAME>(message) to get back the same object/class you sent.
+        /// Use Game.instance.GetNKgI().ReadMessage&lt;YOUR_CLASS_NAME&gt;(message) to get back the same object/class you sent.
         ///
         /// If this is one of your messages and you're consuming and acting on it, return true.
         /// Otherwise, return false. Seriously.
@@ -235,16 +232,18 @@ namespace BTD_Mod_Helper
             bool ignoreNonTargetable = false, bool blockSpawnChildren = false)
         {
         }
-
+        
+        /*
         /// <summary>
         /// Called right after a Bloon is damaged
         /// 
         /// Equivalent to a HarmonyPostFix on Bloon.Damaged
         /// </summary>
         // this was removed because it was removed in BTD6 version 25
-        /*public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, bool ignoreNonTargetable = false)
+        public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, bool ignoreNonTargetable = false)
         {
-        }*/
+        }
+        */
 
         #endregion
 
@@ -476,7 +475,13 @@ namespace BTD_Mod_Helper
         #endregion
 
 
-
+        /// <summary>
+        /// Gets a modified cost for a given set of ModModels that are used to setup a match
+        /// Somewhere deep within those mods is likely to be a Cost modifier, and this will find and apply that
+        /// </summary>
+        /// <param name="cost">The default cost</param>
+        /// <param name="mods">The mods that the match is using</param>
+        /// <returns>The modified cost</returns>
         public static int CostForDifficulty(int cost, List<ModModel> mods)
         {
             var mult = 1f;
@@ -498,6 +503,12 @@ namespace BTD_Mod_Helper
             return CostForDifficulty(cost, mult);
         }
 
+        /// <summary>
+        /// Gets a modified cost for a given GameModel's difficulty
+        /// </summary>
+        /// <param name="cost">The default cost</param>
+        /// <param name="gameModel">The current GameModel</param>
+        /// <returns>The modified cost</returns>
         public static int CostForDifficulty(int cost, GameModel gameModel)
         {
             var difficulty = $"{gameModel.difficultyId}";
@@ -510,6 +521,12 @@ namespace BTD_Mod_Helper
             return CostForDifficulty(cost, gameModel.difficultyId);
         }
 
+        /// <summary>
+        /// Gets a modified cost for a given instance of InGame
+        /// </summary>
+        /// <param name="cost">The default cost</param>
+        /// <param name="inGame">Current instance of InGame</param>
+        /// <returns>The modified cost</returns>
         public static int CostForDifficulty(int cost, InGame inGame)
         {
             return CostForDifficulty(cost, inGame.SelectedDifficulty);

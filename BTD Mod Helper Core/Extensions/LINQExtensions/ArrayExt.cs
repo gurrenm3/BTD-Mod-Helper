@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="array"></param>
-        /// <param name="match"> The Predicate<T> delegate that defines the conditions of the elements to search for.</param>
+        /// <param name="match"> The Predicate delegate that defines the conditions of the elements to search for.</param>
         /// <returns></returns>
         public static T[] FindAll<T>(this T[] array, Predicate<T> match)
         {

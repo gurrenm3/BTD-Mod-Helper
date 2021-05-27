@@ -14,13 +14,14 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         public CheckboxOption(GameObject parentGO, ModSettingBool modSettingBool) : base(parentGO, modSettingBool, "CheckboxOption")
         {
+            this.modSettingBool = modSettingBool;
             checkbox = instantiatedGameObject.transform.Find("Checkbox1").GetComponent<Toggle>();
             checkboxText = instantiatedGameObject.transform.Find("Checkbox1/Label").GetComponent<Text>();
 
             checkbox.AddOnValueChanged(value => modSettingBool.SetValue(value));
         }
 
-        public ModSetting GetModSetting()
+        internal override ModSetting GetModSetting()
         {
             return modSettingBool;
         }
