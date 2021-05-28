@@ -22,6 +22,15 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class InGameExt
     {
         /// <summary>
+        /// Custom API method that changes the game's round set to a custom RoundSetModel.
+        /// </summary>
+        /// <param name="roundSet">New Round Set Model to use</param>
+        public static void SetRoundSet(this InGame inGame, RoundSetModel roundSet)
+        {
+            SessionData.RoundSet = roundSet;
+        }
+
+        /// <summary>
         /// Get the game object that owns all InGame UI elements
         /// </summary>
         /// <param name="inGame"></param>
