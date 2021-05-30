@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Patches
                 __instance.unlockedTowers.Add(modTower.Id);
             }
             
-            foreach (var modUpgrade in ModTowerHandler.ModUpgrades
+            foreach (var modUpgrade in ModUpgradeHandler.ModUpgrades
                 .Where(modUpgrade => !__instance.acquiredUpgrades.Contains(modUpgrade.Id)))
             {
                 __instance.acquiredUpgrades.Add(modUpgrade.Id);

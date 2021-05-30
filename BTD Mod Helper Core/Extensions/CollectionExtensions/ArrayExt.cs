@@ -273,7 +273,7 @@ namespace BTD_Mod_Helper.Extensions
 
         /// <summary>
         /// A string with all array elements printed together with no spaces
-        ///
+        /// <br/>
         /// Useful for the suffix for Tower IDS like DartMonkey-230
         /// </summary>
         /// <param name="arr">The array</param>
@@ -281,6 +281,29 @@ namespace BTD_Mod_Helper.Extensions
         public static string Printed(this int[] arr)
         {
             return arr.Aggregate("", (current, i) => current + i);
+        }
+        
+        /// <summary>
+        /// Returns the index of the highest tier, then the middle, then the lowest
+        /// <br/>
+        /// Breaks ties by Middle Path >> Top Path >> Bottom Path
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static int[] Order(this int[] arr)
+        {
+            var order = new[] {0, 1, 2};
+            return order.OrderByDescending(i => arr[i]).ThenByDescending(i => i % 2).ThenBy(i => i).ToArray();
+        }
+
+        /// <summary>
+        /// Returns whether an int array is a valid set of tiers for a Tower
+        /// </summary>
+        /// <param name="tiers"></param>
+        /// <returns></returns>
+        public static bool IsValid(this int[] tiers)
+        {
+            return tiers.Length == 3 && tiers.Max() <= 5 && tiers.Min() == 0 && tiers.OrderBy(i => i).ToArray()[1] <= 2;
         }
     }
 }

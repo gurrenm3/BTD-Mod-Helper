@@ -200,6 +200,7 @@
     <Compile Include="Patches\Bloons\Bloon_Degrade.cs" />
     <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
     <Compile Include="Patches\CoopQuickMatchScreen_Open.cs" />
+    <Compile Include="Patches\Factory_FindAndSetupPrototypeAsync.cs" />
     <Compile Include="Patches\GameModel_CreateModded.cs" />
     <Compile Include="Patches\GameModel_GetRoundSet.cs" />
     <Compile Include="Patches\InGame_Restart.cs" />

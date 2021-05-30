@@ -2,7 +2,7 @@
 {
     public static class ModHelperData
     {
-        public const string currentVersion = "1.0.3";
+        public const string currentVersion = "2.0.0";
 
     }
 }

@@ -25,12 +25,11 @@ namespace BTD_Mod_Helper.Patches
 
             var guid = reference.GUID;
 
-            if (ResourceHandler.resources.GetValueOrDefault(guid) is byte[] bytes)
+            if (ResourceHandler.GetSprite(guid) is Sprite spr)
             {
-                var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -1};
-                ImageConversion.LoadImage(texture, bytes);
-                image.canvasRenderer.SetTexture(texture);
-                image.sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), default);
+                spr.texture.mipMapBias = -1;
+                image.canvasRenderer.SetTexture(spr.texture);
+                image.sprite = spr;
                 return;
             }
             

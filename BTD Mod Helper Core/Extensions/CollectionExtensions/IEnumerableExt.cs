@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Utils;
+﻿using System;
+using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
@@ -82,6 +83,41 @@ namespace BTD_Mod_Helper.Extensions
                 test.Add(item.TryCast<TCast>());
 
             return test.AsEnumerable();
+        }
+        
+        
+        // Thanks to Dmitry Bychenko on StackOverflow for this
+        public static T ArgMax<T, K>(this IEnumerable<T> source, 
+            Func<T, K> map = null, 
+            IComparer<K> comparer = null) {
+            if (ReferenceEquals(null, source))
+                throw new ArgumentNullException(nameof(source));
+
+            T result = default(T);
+            K maxKey = default(K);
+            Boolean first = true;
+
+            if (null == comparer)
+                comparer = System.Collections.Generic.Comparer<K>.Default;
+
+            if (null == map)
+            {
+                map = arg => (K)(object)arg;
+            }
+            
+            foreach (var item in source) {
+                K key = map(item);
+
+                if (first || comparer.Compare(key, maxKey) > 0) {
+                    first = false;
+                    maxKey = key;
+                    result = item;
+                }
+            }
+
+            if (!first)
+                return result;
+            throw new ArgumentException("Can't compute ArgMax on empty sequence.", "source");
         }
     }
 }

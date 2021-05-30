@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Extensions
                 model.AddTowerToGame(towerDetailsModel, towerModel.towerSet);
             }
 
-            MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
+            // MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
         }
 
         public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel)

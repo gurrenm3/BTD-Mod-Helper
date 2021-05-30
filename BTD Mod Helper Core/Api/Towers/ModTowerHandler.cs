@@ -2,71 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
+using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Localization;
-using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
-using Harmony;
 using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
-    internal class ModTowerHandler
+    internal static class ModTowerHandler
     {
         internal static readonly List<ModTower> ModTowers = new List<ModTower>();
-        internal static readonly List<ModUpgrade> ModUpgrades = new List<ModUpgrade>();
         
         internal static readonly Dictionary<string, TowerModel> TowerCache = new Dictionary<string, TowerModel>();
-        
-        internal static void LoadTowersAndUpgrades(BloonsMod mod)
+
+        internal static readonly Dictionary<string, float> Tower2DScales = new Dictionary<string, float>();
+
+        internal static void LoadTowers(List<ModTower> modTowers)
         {
-            var modUpgrades = GetModUpgrades(mod);
-            var modTowers = GetModTowers(mod);
-            
-            foreach (var modUpgrade in modUpgrades)
-            {
-                UpgradeModel upgradeModel;
-                try
-                {
-                    upgradeModel = modUpgrade.GetUpgradeModel();
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error("Failed to create UpgradeModel for ModUpgrade " + modUpgrade.Name);
-                    MelonLogger.Error(e);
-                    continue;
-                }
-
-                try
-                {
-                    modUpgrade.Tower.upgrades[modUpgrade.Path, modUpgrade.Tier - 1] = modUpgrade;
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error("Failed to assign ModUpgrade " + modUpgrade.Name + " to ModTower's upgrades");
-                    MelonLogger.Error(e);
-                    MelonLogger.Error("Double check that the Tower loaded and all Path and Tier values are correct");
-                    continue;
-                }
-
-                try
-                {
-                    Game.instance.model.AddUpgrade(upgradeModel);
-                    LocalizationManager.instance.textTable[modUpgrade.Id] = modUpgrade.DisplayName;
-                    LocalizationManager.instance.textTable[modUpgrade.Id + " Description"] = modUpgrade.Description;
-                    ModUpgrades.Add(modUpgrade);
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error("General error in loading ModUpgrade " + modUpgrade.Name);
-                    MelonLogger.Error(e);
-                }
-                
-            }
-
             foreach (var modTower in modTowers)
             {
                 try
@@ -91,44 +49,6 @@ namespace BTD_Mod_Helper.Api.Towers
                     MelonLogger.Error(e);
                 }
             }
-        }
-
-        internal static object Create(Type type, BloonsMod mod)
-        {
-            try
-            {
-                if (!ModContent.Instances.ContainsKey(type))
-                {
-                    var instance = (ModContent) Activator.CreateInstance(type);
-                    instance.mod = mod;
-                    ModContent.Instances[type] = instance;
-                }
-                    
-                return ModContent.Instances[type];
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error("Failed to instantiate " + type.Name);
-                MelonLogger.Error(e);
-                MelonLogger.Error("Did you mess with the constructor?");
-                return null;
-            }
-        }
-
-        internal static List<ModUpgrade> GetModUpgrades(BloonsMod mod)
-        {
-            return mod.Assembly.GetTypes()
-                .Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ModUpgrade)))
-                .Select(type => (ModUpgrade) Create(type, mod))
-                .Where(upgrade => upgrade != null).ToList();
-        }
-
-        internal static List<ModTower> GetModTowers(BloonsMod mod)
-        {
-            return mod.Assembly.GetTypes()
-                .Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ModTower)))
-                .Select(type => (ModTower) Create(type, mod))
-                .Where(tower => tower != null).ToList();
         }
 
         internal static TowerModel CreateTowerModel(ModTower modTower, int[] tiers)
@@ -175,7 +95,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     {
                         var newTiers = tiers.Duplicate();
                         newTiers[i]++;
-                        if (newTiers.Min() == 0) // no triple cross-pathed towers (yet...)
+                        if (newTiers.IsValid()) // no triple cross-pathed towers (yet...)
                         {
                             var modUpgrade = modTower.upgrades[i, newTiers[i] - 1];
 
@@ -217,15 +137,53 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             
             // set the tower's display model
+            
+            
+            if (modTower.Use2DModel)
+            {
+                try
+                {
+                    var name = modTower.Get2DTexture(tiers);
+                    var guid = ModContent.GetTextureGUID(modTower.mod, name);
+                    towerModel.display = guid;
+                    towerModel.GetBehavior<DisplayModel>().display = guid;
+                    towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
+                    Tower2DScales[guid] = modTower.PixelsPerUnit;
+                }
+                catch (Exception)
+                {
+                    MelonLogger.Error($"Failed to load 2d display for TowerModel {towerModel.name}");
+                    throw;
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (modTower.displays.Where(modTowerDisplay => modTowerDisplay.UseForTower(tiers))
+                        .OrderByDescending(modTowerDisplay => modTowerDisplay.Id)
+                        .FirstOrDefault() is ModTowerDisplay display)
+                    {
+                        display.Apply(towerModel);
+                    }
+                }
+                catch (Exception)
+                {
+                    MelonLogger.Error($"Failed to load ModTowerDisplay for TowerModel {towerModel.name}");
+                    throw;
+                }
+            }
+            
+            
 
-
+            // do their base tower modifications
             try
             {
                 modTower.ModifyBaseTowerModel(towerModel);
             }
             catch (Exception)
             {
-                MelonLogger.Error("Failed to modify TowerModel ");
+                MelonLogger.Error($"Failed to modify TowerModel {towerModel.name}");
                 throw;
             }
             

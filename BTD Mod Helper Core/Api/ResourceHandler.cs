@@ -37,6 +37,28 @@ namespace BTD_Mod_Helper.Api
                     
                 }
             }
-        }        
+        }
+
+        internal static Texture2D GetTexture(string guid)
+        {
+            if (resources.GetValueOrDefault(guid) is byte[] bytes)
+            {
+                var texture = new Texture2D(2, 2) { filterMode = FilterMode.Bilinear };
+                ImageConversion.LoadImage(texture, bytes);
+                return texture;
+            }
+
+            return null;
+        }
+
+        internal static Sprite GetSprite(string guid)
+        {
+            if (GetTexture(guid) is Texture2D texture)
+            {
+                return Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            }
+
+            return null;
+        }
     }
 }

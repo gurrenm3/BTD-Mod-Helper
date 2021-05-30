@@ -36,9 +36,9 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <summary>
         /// The file name without extension for the Portrait for this upgrade
         ///
-        /// By default is the same file name as the tower followed by _Portrait
+        /// By default is the same file name as the tower followed by -Portrait
         /// </summary>
-        public virtual string Portrait => Name + "_Portrait";
+        public virtual string Portrait => Name + "-Portrait";
         
         /// <summary>
         /// The file name without extension for the Icon for this upgrade
@@ -46,9 +46,9 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The Tower follows the default Bloons method of picking a Portrait: choose the highest tier upgrade, and if
         /// there's a tie, choose Mid > Top > Bot (for whatever reason)
         ///
-        /// By default is the same file name as the tower followed by _Icon
+        /// By default is the same file name as the tower followed by -Icon
         /// </summary>
-        public virtual string Icon => Name + "_Icon";
+        public virtual string Icon => Name + "-Icon";
         
         /// <summary>
         /// Custom priority to make this upgrade applied sooner (increased priority) or later (decreased priority)
@@ -117,11 +117,12 @@ namespace BTD_Mod_Helper.Api.Towers
 
 
     /// <summary>
-    /// 
+    /// A convenient generic class for specifying the ModTower that this ModUpgrade is for
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class ModUpgrade<T> : ModUpgrade where T : ModTower
     {
+        /// <inheritdoc />
         public override ModTower Tower => GetInstance<T>();
     }
 }
