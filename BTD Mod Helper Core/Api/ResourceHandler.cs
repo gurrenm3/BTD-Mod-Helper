@@ -51,11 +51,11 @@ namespace BTD_Mod_Helper.Api
             return null;
         }
 
-        internal static Sprite GetSprite(string guid)
+        internal static Sprite GetSprite(string guid, float pixelsPerUnit = 10)
         {
             if (GetTexture(guid) is Texture2D texture)
             {
-                return Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                return Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f), pixelsPerUnit);
             }
 
             return null;

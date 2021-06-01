@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Extensions;
 
@@ -22,14 +23,17 @@ namespace BTD_Mod_Helper.Api.Display
         /// <returns>If the Tower should have this display</returns>
         public abstract bool UseForTower(int[] tiers);
 
+
         /// <summary>
-        /// Applies this ModTowerDisplay to a given TowerModel
+        /// Alters the UnityDisplayNode that was copied from the one used by <see cref="BaseDisplay"/>
+        /// <br/>
+        /// By default, this will change the main texture of the first SkinnedMeshRenderer of the node to that of a
+        /// png with the same name as the class
         /// </summary>
-        /// <param name="towerModel"></param>
-        public void Apply(TowerModel towerModel)
+        /// <param name="node">The UnityDisplayNode</param>
+        public override void ModifyDisplayNode(UnityDisplayNode node)
         {
-            towerModel.display = Id;
-            Apply(towerModel.GetBehavior<DisplayModel>());
+            SetMeshTexture(node, Name);
         }
     }
     

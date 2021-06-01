@@ -46,7 +46,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <summary>
         /// For 2D towers, the ratio between pixels and display units. Higher number -> smaller tower.
         /// </summary>
-        public virtual float PixelsPerUnit => 5f;
+        public virtual float PixelsPerUnit => 10f;
 
         protected const string PRIMARY = "Primary";
         protected const string MAGIC = "Magic";

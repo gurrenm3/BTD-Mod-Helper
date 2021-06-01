@@ -1,7 +1,8 @@
 ﻿using Assets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
 using System.Linq;
-
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Display;
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Simulation.Towers.Projectiles;
@@ -30,6 +31,15 @@ namespace BTD_Mod_Helper.Extensions
         {
             var projectileSims = InGame.instance?.GetProjectiles();
             return projectileSims.Where(projectile => projectile.projectileModel.name == projectileModel.name).ToList();
+        }
+
+        /// <summary>
+        /// Applies a given ModDisplay to this ProjectileModel
+        /// </summary>
+        /// <typeparam name="T">The type of ModDisplay</typeparam>
+        public static void ApplyDisplay<T>(this ProjectileModel projectileModel) where T : ModDisplay
+        {
+            ModContent.GetInstance<T>().Apply(projectileModel);
         }
     }
 }

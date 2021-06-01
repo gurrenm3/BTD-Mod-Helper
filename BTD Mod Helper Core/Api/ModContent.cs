@@ -262,15 +262,16 @@ namespace BTD_Mod_Helper.Api
         {
             return GetTexture(GetInstance<T>(), fileName);
         }
-        
+
         /// <summary>
         /// Constructs a Texture2D for a given texture name within this mid
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension</param>
+        /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
         /// <returns>A Texture2D</returns>
-        protected Sprite GetSprite(string fileName)
+        protected Sprite GetSprite(string fileName, float pixelsPerUnit = 10f)
         {
-            return ResourceHandler.GetSprite(GetTextureGUID(mod, fileName));
+            return ResourceHandler.GetSprite(GetTextureGUID(mod, fileName), pixelsPerUnit);
         }
 
         public static string GetDisplayGUID<T>() where T : ModDisplay

@@ -9,7 +9,8 @@ using System.Linq;
 using UnhollowerBaseLib;
 using System;
 using Assets.Scripts.Unity.Display;
-
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Display;
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Weapons;
@@ -205,6 +206,15 @@ namespace BTD_Mod_Helper.Extensions
             var duplicate = towerModel.Duplicate();
             duplicate.name = newTowerId;
             return duplicate;
+        }
+        
+        /// <summary>
+        /// Applies a given ModDisplay to this TowerModel
+        /// </summary>
+        /// <typeparam name="T">The type of ModDisplay</typeparam>
+        public static void ApplyDisplay<T>(this TowerModel towerModel) where T : ModDisplay
+        {
+            ModContent.GetInstance<T>().Apply(towerModel);
         }
     }
 }
