@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.Scripts.Unity.Display;
 using MelonLoader;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ namespace BTD_Mod_Helper.Api
     internal class ResourceHandler
     {
         internal static Dictionary<string, byte[]> resources = new Dictionary<string, byte[]>();
+        
+        public static readonly Dictionary<string, UnityDisplayNode> Prefabs =
+            new Dictionary<string, UnityDisplayNode>();
             
         internal static void LoadEmbeddedTextures(BloonsMod mod)
         {

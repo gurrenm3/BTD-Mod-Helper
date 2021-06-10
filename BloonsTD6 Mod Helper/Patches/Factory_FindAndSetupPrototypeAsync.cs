@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
@@ -17,15 +18,13 @@ namespace BTD_Mod_Helper.Patches
     [HarmonyPatch(typeof(Factory), nameof(Factory.FindAndSetupPrototypeAsync))]
     internal class Factory_FindAndSetupPrototypeAsync
     {
-        private static readonly Dictionary<string, UnityDisplayNode> prefabs =
-            new Dictionary<string, UnityDisplayNode>();
 
         [HarmonyPrefix]
         internal static bool Prefix(Factory __instance, string objectId, Action<UnityDisplayNode> onComplete)
         {
-            if (prefabs.ContainsKey(objectId))
+            if (ResourceHandler.Prefabs.ContainsKey(objectId) && !ResourceHandler.Prefabs[objectId].isDestroyed)
             {
-                onComplete.Invoke(prefabs[objectId]);
+                onComplete.Invoke(ResourceHandler.Prefabs[objectId]);
                 return false;
             }
 
@@ -48,7 +47,8 @@ namespace BTD_Mod_Helper.Patches
                                 new Vector2(0.5f, 0.5f), scale, 0, SpriteMeshType.Tight);
                             udn.towerPlacementPreCalcOffset = new Vector3(0, 2f, 0);
                             onComplete.Invoke(udn);
-                            prefabs[objectId] = udn;
+                            ResourceHandler.Prefabs[objectId] = udn;
+                            //__instance.active.Add(udn);
                         }
                     ));
                 return false;
@@ -75,7 +75,8 @@ namespace BTD_Mod_Helper.Patches
                             }
 
                             onComplete.Invoke(udn);
-                            prefabs[objectId] = udn;
+                            ResourceHandler.Prefabs[objectId] = udn;
+                            //__instance.active.Add(udn);
                         }));
                     return false;
                 }
