@@ -31,33 +31,5 @@ namespace BTD_Mod_Helper.Extensions
             button.bg.overrideSprite = sprite;
             button.bg.sprite = sprite;
         }
-
-        /// <summary>
-        /// Set the background image of this button
-        /// </summary>
-        /// <param name="button"></param>
-        /// <param name="texture2D"></param>
-        /// <param name="requiredTowerBaseId">Only change the background if the button shares this baseId</param>
-        public static void SetBackground(this StandardTowerPurchaseButton button, Texture2D texture2D, string requiredTowerBaseId)
-        {
-            if (button.baseTowerModel.GetBaseId().Contains(requiredTowerBaseId))
-            {
-                button.SetBackground(texture2D);
-            }
-        }
-
-        /// <summary>
-        /// Set the background image of this button
-        /// </summary>
-        /// <param name="button"></param>
-        /// <param name="sprite"></param>
-        /// <param name="requiredTowerBaseId">Only change the background if the button shares this baseId</param>
-        public static void SetBackground(this StandardTowerPurchaseButton button, Sprite sprite, string requiredTowerBaseId)
-        {
-            if (button.baseTowerModel.GetBaseId().Contains(requiredTowerBaseId))
-            {
-                button.SetBackground(sprite);
-            }
-        }
     }
 }
