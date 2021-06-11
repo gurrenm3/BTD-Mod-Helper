@@ -14,12 +14,10 @@ namespace BTD_Mod_Helper.Extensions
         public static void SetBackground(this StandardTowerPurchaseButton button, Texture2D texture2D)
         {
             button.bg = button.gameObject.GetComponent<Image>();
-            button.bg.overrideSprite.SetTexture(texture2D);
-            button.bg.sprite.SetTexture(texture2D);
+            var sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2 (0.5f, 0.5f), 100f, 0u, SpriteMeshType.Tight);
 
-            //button.icon.sprite.SetTexture(texture2D);
-            //button.icon.overrideSprite.SetTexture(texture2D);
-            //button.UpdateIcon();
+            button.bg.overrideSprite = sprite;
+            button.bg.sprite = sprite;
         }
 
         /// <summary>
@@ -32,10 +30,34 @@ namespace BTD_Mod_Helper.Extensions
             button.bg = button.gameObject.GetComponent<Image>();
             button.bg.overrideSprite = sprite;
             button.bg.sprite = sprite;
+        }
 
-            //button.icon.sprite = sprite;
-            //button.icon.overrideSprite = sprite;
-            //button.UpdateIcon();
+        /// <summary>
+        /// Set the background image of this button
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="texture2D"></param>
+        /// <param name="requiredTowerBaseId">Only change the background if the button shares this baseId</param>
+        public static void SetBackground(this StandardTowerPurchaseButton button, Texture2D texture2D, string requiredTowerBaseId)
+        {
+            if (button.baseTowerModel.GetBaseId().Contains(requiredTowerBaseId))
+            {
+                button.SetBackground(texture2D);
+            }
+        }
+
+        /// <summary>
+        /// Set the background image of this button
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="sprite"></param>
+        /// <param name="requiredTowerBaseId">Only change the background if the button shares this baseId</param>
+        public static void SetBackground(this StandardTowerPurchaseButton button, Sprite sprite, string requiredTowerBaseId)
+        {
+            if (button.baseTowerModel.GetBaseId().Contains(requiredTowerBaseId))
+            {
+                button.SetBackground(sprite);
+            }
         }
     }
 }
