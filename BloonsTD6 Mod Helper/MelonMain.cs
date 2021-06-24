@@ -12,9 +12,14 @@ using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
+using Assets.Scripts.Models;
 using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
+using Assets.Scripts.Unity.Utils;
 using Assets.Scripts.Utils;
+using UnityEngine.EventSystems;
+using UnityEngine.U2D;
+using UnityEngine.UI;
 
 namespace BTD_Mod_Helper
 {
@@ -26,7 +31,6 @@ namespace BTD_Mod_Helper
 
         public const string coopMessageCode = "BTD6_ModHelper";
         public const string currentVersion = ModHelperData.currentVersion;
-
 
         public override void OnApplicationStart()
         {
@@ -40,13 +44,13 @@ namespace BTD_Mod_Helper
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
 
-            string settingsDir = this.GetModSettingsDir(createIfNotExists: true);
+            string settingsDir = this.GetModSettingsDir(true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
 
             Schedule_GameModel_Loaded();
 
-            Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain), nameof(MelonMain.SettingsPatch));
+            Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain), nameof(SettingsPatch));
         }
 
         public static void SettingsPatch()
@@ -77,13 +81,13 @@ namespace BTD_Mod_Helper
             NotificationMgr.CheckForNotifications();
             
             
-            foreach (var (guid, sprite) in SpriteRegister.register)
+            /*foreach (var (guid, sprite) in SpriteRegister.register)
             {
                 if (sprite == null)
                 {
                     MelonLogger.Msg($"{guid}'s sprite is now null");
                 }
-            }
+            }*/
         }
 
         private void KeyCodeHooks()
@@ -114,8 +118,8 @@ namespace BTD_Mod_Helper
             
             //TODO: with only external changing, settings should load when going to the main menu
             //TODO: with in game changing, settings should save when going to the main menu
-            //ModSettingsHandler.SaveModSettings(modSettingsDir);
-            ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
+            ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
+            //ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
             
 
             if (!scheduledInGamePatch)

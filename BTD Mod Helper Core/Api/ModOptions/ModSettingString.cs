@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
@@ -9,8 +10,26 @@ namespace BTD_Mod_Helper.Api.ModOptions
     /// </summary>
     public class ModSettingString : ModSetting<string>
     {
-        internal InputField.CharacterValidation validation;
+        /// <summary>
+        /// Allow all characters
+        /// </summary>
+        public static readonly string None = InputField.CharacterValidation.None.ToString();
+        /// <summary>
+        /// Allow only alphanumeric characters
+        /// </summary>
+        public static readonly string Alphanumeric = InputField.CharacterValidation.Alphanumeric.ToString();
+        /// <summary>
+        /// Allow only valid decimals
+        /// </summary>
+        public static readonly string Decimal = InputField.CharacterValidation.Decimal.ToString();
+        /// <summary>
+        /// Allow only valid integers
+        /// </summary>
+        public static readonly string Integer = InputField.CharacterValidation.Integer.ToString();
         
+        public string validation;
+
+        /// <inheritdoc />
         public ModSettingString(string value) : base(value)
         {
         }
@@ -25,15 +44,22 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return modSettingString.value;
         }
 
+        /// <inheritdoc />
         public override ModOption ConstructModOption(GameObject parent)
         {
             return null;
             //return new InputOption(parent, this);
         }
 
+        /// <inheritdoc />
         public override SharedOption ConstructModOption2(GameObject parent)
         {
             return new InputOption(parent, this);
+        }
+
+        public InputField.CharacterValidation GetValidation()
+        {
+            return Enum.TryParse(validation, out InputField.CharacterValidation val) ? val : InputField.CharacterValidation.None;
         }
     }
 }

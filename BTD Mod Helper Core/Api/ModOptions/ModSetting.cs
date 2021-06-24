@@ -11,7 +11,13 @@ namespace BTD_Mod_Helper.Api.ModOptions
     {
         internal T value;
         private readonly T defaultValue;
-        private string displayName;
+        
+        /// <summary>
+        /// The display name for the mod setting.
+        /// <br/>
+        /// Needs to be public to allow for object initializing
+        /// </summary>
+        public string displayName;
 
         /// <summary>
         /// Constructs a new ModSetting for the given value

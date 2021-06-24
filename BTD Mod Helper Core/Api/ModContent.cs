@@ -214,22 +214,22 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
         /// </summary>
-        /// <param name="fileName">The file name of your texture, without the extension</param>
+        /// <param name="name">The file name of your texture, without the extension</param>
         /// <typeparam name="T">Your mod's main BloonsMod extending class</typeparam>
         /// <returns>The texture's GUID</returns>
-        public static string GetTextureGUID<T>(string fileName) where T : BloonsMod
+        public static string GetTextureGUID<T>(string name) where T : BloonsMod
         {
-            return GetTextureGUID(GetInstance<T>(), fileName);
+            return GetTextureGUID(GetInstance<T>(), name);
         }
 
         /// <summary>
         /// Gets a texture's GUID by name for this mod
         /// </summary>
-        /// <param name="fileName">The file name of your texture, without the extension</param>
+        /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
-        public string GetTextureGUID(string fileName)
+        public string GetTextureGUID(string name)
         {
-            return GetTextureGUID(mod, fileName);
+            return GetTextureGUID(mod, name);
         }
 
         /// <summary>
@@ -262,16 +262,38 @@ namespace BTD_Mod_Helper.Api
         {
             return GetTexture(GetInstance<T>(), fileName);
         }
+        
+        /// <summary>
+        /// Constructs a Sprite for a given texture name within a given mod
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
+        /// <returns>A Sprite</returns>
+        public static Sprite GetSprite(BloonsMod mod, string name, float pixelsPerUnit = 10f)
+        {
+            return ResourceHandler.GetSprite(GetTextureGUID(mod, name), pixelsPerUnit);
+        }
 
         /// <summary>
-        /// Constructs a Texture2D for a given texture name within this mid
+        /// Constructs a Sprite for a given texture name within this mod
         /// </summary>
-        /// <param name="fileName">The file name of your texture, without the extension</param>
+        /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
-        /// <returns>A Texture2D</returns>
-        protected Sprite GetSprite(string fileName, float pixelsPerUnit = 10f)
+        /// <returns>A Sprite</returns>
+        protected Sprite GetSprite(string name, float pixelsPerUnit = 10f)
         {
-            return ResourceHandler.GetSprite(GetTextureGUID(mod, fileName), pixelsPerUnit);
+            return GetSprite(mod, name, pixelsPerUnit);
+        }
+
+        /// <summary>
+        /// Constructs a Sprite for a given texture name within a given mod
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
+        /// <returns>A Sprite</returns>
+        public static Sprite GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod
+        {
+            return GetSprite(GetInstance<T>(), name, pixelsPerUnit);
         }
 
         public static string GetDisplayGUID<T>() where T : ModDisplay

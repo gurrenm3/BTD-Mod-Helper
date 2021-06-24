@@ -26,24 +26,25 @@ namespace BTD_Mod_Helper.Api.ModOptions
             slider.minValue = (long) modSettingInt.minValue;
             slider.maxValue = (long) modSettingInt.maxValue;
             
-            slider.onValueChanged.AddListener(value => 
+            slider.onValueChanged.AddListener(value =>
             {
-                modSettingInt.SetValue((long)value);
-                sliderValueText.text = value.ToString();
+                var l = (long) value;
+                modSettingInt.SetValue(l);
+                sliderValueText.text = l.ToString();
             });
         }
         
         public SliderOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
         {
             slider.value = (float) modSettingDouble.value;
-            sliderValueText.text = modSettingDouble.value.ToString("C2");
+            sliderValueText.text = modSettingDouble.value.ToString("F");
             slider.minValue = (float) modSettingDouble.minValue;
             slider.maxValue = (float) modSettingDouble.maxValue;
             
             slider.onValueChanged.AddListener(value => 
             {
                 modSettingDouble.SetValue((double)value);
-                sliderValueText.text = value.ToString("C2");
+                sliderValueText.text = value.ToString("F");
             });
         }
 

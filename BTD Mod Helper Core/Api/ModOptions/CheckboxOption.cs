@@ -18,6 +18,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             checkbox = instantiatedGameObject.transform.Find("Checkbox1").GetComponent<Toggle>();
             checkboxText = instantiatedGameObject.transform.Find("Checkbox1/Label").GetComponent<Text>();
 
+            checkbox.Set(modSettingBool);
             checkbox.AddOnValueChanged(value => modSettingBool.SetValue(value));
         }
 

@@ -1,8 +1,10 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Resources;
 using UnityEngine;
+using Graphics = UnityEngine.Graphics;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -23,11 +25,35 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Save Texture2D as a png to file.
         /// </summary>
+        /// <param name="texture"></param>
         /// <param name="filePath">File path to save texture to</param>
         public static void SaveToPNG(this Texture2D texture, string filePath)
         {
             byte[] bytes = ImageConversion.EncodeToPNG(texture).ToArray();
             File.Create(filePath).Write(bytes, 0, bytes.Length);
+        }
+        
+        public static void TrySaveToPNG(this Texture texture, string filePath)
+        {
+            try
+            {
+                RenderTexture tmp = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default, RenderTextureReadWrite.Linear);
+                Graphics.Blit(texture, tmp);
+                RenderTexture previous = RenderTexture.active;
+                RenderTexture.active = tmp;
+                Texture2D myTexture2D = new Texture2D(texture.width, texture.height);
+                myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
+                myTexture2D.Apply();
+                RenderTexture.active = previous;
+                RenderTexture.ReleaseTemporary(tmp);
+                var bytes = ImageConversion.EncodeToPNG(myTexture2D);
+                File.WriteAllBytes(filePath, bytes);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         /// <summary>

@@ -61,7 +61,7 @@ namespace BTD_Mod_Helper.Extensions
             duplicate.towerIndex = newTowerIndex;
 
             if (addToGame)
-                Game.instance.model.AddTowerToGame(duplicate);
+                Game.instance.model.AddTowerDetails(duplicate);
 
             return duplicate;
         }

@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
+using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
@@ -48,17 +49,52 @@ namespace BTD_Mod_Helper.Api.Towers
         /// </summary>
         public virtual float PixelsPerUnit => 10f;
 
+        /// <summary>
+        /// The string to use for the Primary tower set
+        /// </summary>
         protected const string PRIMARY = "Primary";
+        /// <summary>
+        /// The string to use for the Magic tower set
+        /// </summary>
         protected const string MAGIC = "Magic";
+        /// <summary>
+        /// The string to use for the Military tower set
+        /// </summary>
         protected const string MILITARY = "Military";
+        /// <summary>
+        /// The string to use for the Support tower set
+        /// </summary>
         protected const string SUPPORT = "Support";
 
+        /// <summary>
+        /// The family of Monkeys that your Tower should be put in.
+        /// <br/>
+        /// For now, just use one of the default constants provided of PRIMARY, MILITARY, MAGIC, or SUPPORT.
+        /// </summary>
         public abstract string TowerSet { get; }
+        /// <summary>
+        /// The id of the default BTD Tower that your Tower is going to be copied from by default.
+        /// </summary>
         public abstract string BaseTower { get; }
+        /// <summary>
+        /// The in game cost of this tower (on Medium difficulty)
+        /// </summary>
         public abstract int Cost { get; }
+        /// <summary>
+        /// The number of upgrades the tower has in it's 1st / top path
+        /// </summary>
         public abstract int TopPathUpgrades { get; }
+        /// <summary>
+        /// The number of upgrades the tower has in it's 2nd / middle path
+        /// </summary>
         public abstract int MiddlePathUpgrades { get; }
+        /// <summary>
+        /// The number of upgrades the tower has in it's 3rd / bottom path
+        /// </summary>
         public abstract int BottomPathUpgrades { get; }
+        /// <summary>
+        /// The in game description of the Tower
+        /// </summary>
         public abstract string Description { get; }
         
         /// <summary>
@@ -201,6 +237,25 @@ namespace BTD_Mod_Helper.Api.Towers
             }
 
             return Name;
+        }
+
+        /// <summary>
+        /// When adding this tower to the shop, gets the index at which to add the tower relative to the existing ones.
+        /// <br/>
+        /// By default, the tower will be put at the end of the TowerSet category that it's in.
+        /// </summary>
+        /// <param name="towerSet"></param>
+        /// <returns></returns>
+        public virtual int GetTowerIndex(List<TowerDetailsModel> towerSet)
+        {
+            var index = towerSet.Count;
+            var lastOfSet = towerSet.LastOrDefault(tdm => Game.instance.model.GetTowerFromId(tdm.towerId).towerSet == TowerSet);
+            if (lastOfSet != default)
+            {
+                index = towerSet.IndexOf(lastOfSet) + 1;
+            }
+
+            return index;
         }
         
     }

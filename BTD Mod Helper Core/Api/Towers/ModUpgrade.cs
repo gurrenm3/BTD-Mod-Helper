@@ -91,8 +91,8 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The default ordering of upgrade application is to do the Top path upgrades in ascending order, then the
         /// middle path and finally the bottom path. This can be changed using <see cref="Priority"/>.
         /// </summary>
-        /// <param name="tower"></param>
-        public abstract void ApplyUpgrade(TowerModel tower);
+        /// <param name="towerModel"></param>
+        public abstract void ApplyUpgrade(TowerModel towerModel);
 
 
 

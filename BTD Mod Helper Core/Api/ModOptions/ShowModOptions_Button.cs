@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using BTD_Mod_Helper.Extensions;
 using BTD_Mod_Helper.Patches;
 using MelonLoader;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -31,17 +32,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
 #endif
             var rootGameObjects = scene.GetRootGameObjects();
             settingsUI_Canvas = rootGameObjects[0];
-
             optionsButton = ModOptionsMenu.CanvasGO.transform.Find("ModOptionsButton/Button").GetComponent<Button>();
 
-            instantiatedButton = GameObject.Instantiate(optionsButton, settingsUI_Canvas.transform);
+            instantiatedButton = Object.Instantiate(optionsButton, settingsUI_Canvas.transform);
             instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
             var screenSizePanel = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("ScreenSizePanel");
             var updateButton = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("UpdateButton");
 
-            instantiatedButton.transform.position = new Vector3(screenSizePanel.position.x + 25, updateButton.position.y + 25);
-            instantiatedButton.transform.localScale = new Vector3(3, 3);
+            var transform = instantiatedButton.transform;
+            transform.position = new Vector3(screenSizePanel.position.x + 25, updateButton.position.y + 25);
+            transform.localScale = new Vector3(3, 3);
         }
 
         public void OptionButtonClicked()

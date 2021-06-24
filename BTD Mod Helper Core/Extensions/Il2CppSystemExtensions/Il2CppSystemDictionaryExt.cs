@@ -24,5 +24,20 @@ namespace BTD_Mod_Helper.Extensions
 
             return values;
         }
+
+
+        /// <summary>
+        /// Deconstruct method of IL2CPP KeyValuePairs
+        /// </summary>
+        /// <param name="kvp"></param>
+        /// <param name="k"></param>
+        /// <param name="v"></param>
+        /// <typeparam name="K"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        public static void Deconstruct<K, V>(this KeyValuePair<K, V> kvp, out K k, out V v)
+        {
+            k = kvp.key;
+            v = kvp.value;
+        }
     }
 }

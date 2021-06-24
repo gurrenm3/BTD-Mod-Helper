@@ -3,7 +3,7 @@ using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
-using BTD_Mod_Helper.Api.Towers;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using UnityEngine;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
@@ -18,9 +18,36 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// The display id for RoadSpikes
         /// </summary>
-        protected const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
-        
-        
+        public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
+        public const string EtienneRoombaCat = "Assets/Monkeys/Etienne/Graphics/Pets/Roomba/PetRoombaDisplay.prefab";
+        public const string PatFustyPenguinPet = "Assets/Monkeys/PatFusty/Graphics/Pets/Penguin/PetPenguinDisplay.prefab";
+        public const string GwendolinFirefoxPet = "Assets/Monkeys/Gwendolin/Graphics/Pets/Fox/PetFoxDisplay.prefab";
+        public const string QuincyDadPet = "Assets/Monkeys/Quincy/Graphics/Pets/DadofQuincy/DadofQuincyDisplay.prefab";
+        public const string EziliFrogPet = "Assets/Monkeys/Ezili/Graphics/Pets/Frog/PetFrogDisplay.prefab";
+        public const string ObynGhostWolfPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Wolf/PetWolfDisplay.prefab";
+        public const string BrickellParrotPet = "Assets/Monkeys/AdmiralBrickell/Graphics/Pets/Parrot/PetParrotDisplay.prefab";
+        public const string ObynBunnyPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Bunny/PetBunnyDisplay.prefab";
+        public const string SaudaCranePet = "Assets/Monkeys/Sauda/Graphics/Pets/Crane/PetCraneDisplay.prefab";
+        public const string SuperMonkeyBatPet = "Assets/Monkeys/SuperMonkey/Graphics/Pets/Bat/SuperMonkeyBatDisplay.prefab";
+        public const string MonkeySubDuckPet = "Assets/Monkeys/MonkeySub/Graphics/Pets/RubberDuck/PetRubberDuckDisplay.prefab";
+        public const string MonkeyVillageElfPet = "Assets/Monkeys/MonkeyVillage/graphics/Pets/Elf/PetElfDisplay.prefab";
+        public const string NinjaMonkeyKiwiPet = "Assets/Monkeys/NinjaMonkey/Graphics/Pets/Kiwi/NinjaMonkeyKiwiDisplay.prefab";
+        public const string BananaFarmChickenPet = "Assets/Monkeys/BananaFarm/Graphics/Pets/Chicken/PetChickenDisplay.prefab";
+        public const string BananaFarmer = "Assets/Powers/Graphics/PlaceableItemBananaFarmer.prefab";
+        public const string GrimFarmer = "Assets/Powers/Graphics/Cosmetics/PlaceableItemBananaFarmerHalloween.prefab";
+        public const string CashDrop = "c737ade5badc75d49b97ac44e123430c";
+        public const string CoffinDrop = "Assets/Powers/Graphics/Cosmetics/CoffinDrop.prefab";
+        public const string MOABMine = "Assets/Powers/Graphics/PlaceableItemMine.prefab";
+        public const string BaubleMine = "Assets/Powers/Graphics/Cosmetics/PlaceableItemMoabMineBauble.prefab";
+        public const string RetroTechBot = "Assets/Powers/Graphics/Cosmetics/PlaceableItemTechBotRetro.prefab";
+        public const string PortableLake = "Assets/Powers/Graphics/PlaceableItemPool.prefab";
+        public const string Pontoon = "Assets/Powers/Graphics/PlaceableItemPontoon.prefab";
+        public const string IcebergPontoon = "Assets/Powers/Graphics/Cosmetics/PlaceableItemPontoonIceberg.prefab";
+        public const string PortableLavaLake = "Assets/Powers/Graphics/Cosmetics/PlaceableItemLavaLake.prefab";
+        public const string TrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGodMonkey.prefab";
+        public const string VengefulTrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGod555Monkey.prefab";
+        public const string VengefulSunAvatar = "Assets/Monkeys/SuperMonkey/Graphics/SunAvatarTurret555.prefab";
+
         /// <summary>
         /// The GUID of the display to copy this ModDisplay off of
         /// </summary>
@@ -50,6 +77,20 @@ namespace BTD_Mod_Helper.Api.Display
         protected void Set2DTexture(UnityDisplayNode node, string textureName)
         {
             node.GetRenderer<SpriteRenderer>().sprite = GetSprite(textureName, PixelsPerUnit);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="path"></param>
+        protected void SaveMeshTexture(UnityDisplayNode node, string path = null)
+        {
+            if (path == null)
+            {
+                path = FileIOUtil.GetSandboxPath() + node.name + ".png";
+            }
+            node.GetRenderer<SkinnedMeshRenderer>().material.mainTexture.TrySaveToPNG(path);
         }
 
         /// <summary>

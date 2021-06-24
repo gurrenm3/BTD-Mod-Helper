@@ -22,10 +22,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
             button.AddOnClick(() => modSetting.SetValue(modSetting.GetDefaultValue()));
         }
         
-        public InputOption(GameObject parentGO, ModSettingString modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
+        public InputOption(GameObject parentGO, ModSettingString modSettingString) : this(parentGO, (ModSetting)modSettingString)
         {
-            inputField.characterValidation = modSettingInt.validation;
-            inputField.AddSubmitEvent(modSettingInt.SetValue);
+            inputField.characterValidation = modSettingString.GetValidation();
+            inputField.AddSubmitEvent(modSettingString.SetValue);
         }
         
         public InputOption(GameObject parentGO, ModSettingInt modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
@@ -33,13 +33,13 @@ namespace BTD_Mod_Helper.Api.ModOptions
             inputField.characterValidation = InputField.CharacterValidation.Integer;
             inputField.AddSubmitEvent(value =>
             {
-                var i = int.Parse(value);
+                var i = long.Parse(value);
                 if (modSettingInt.maxValue.HasValue && i > modSettingInt.maxValue.Value)
                 {
-                    i = (int) modSettingInt.maxValue.Value;
+                    i = modSettingInt.maxValue.Value;
                 } else if (modSettingInt.minValue.HasValue && i < modSettingInt.minValue.Value)
                 {
-                    i = (int) modSettingInt.minValue.Value;
+                    i = modSettingInt.minValue.Value;
                 }
                 inputField.SetText(i.ToString());
                 modSettingInt.SetValue(i);

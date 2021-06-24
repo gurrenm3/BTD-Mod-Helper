@@ -28,8 +28,7 @@ namespace BTD_Mod_Helper.Patches
             if (ResourceHandler.GetSprite(guid) is Sprite spr)
             {
                 spr.texture.mipMapBias = -1;
-                image.canvasRenderer.SetTexture(spr.texture);
-                image.sprite = spr;
+                image.SetSprite(spr);
                 return;
             }
             

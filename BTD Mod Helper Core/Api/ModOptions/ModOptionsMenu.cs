@@ -34,7 +34,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             get 
             {
-                if (canvasGo is null)
+                if (canvasGo == null || canvasGo.transform == null)
                     canvasGo = AssetBundle.LoadAsset("Canvas").Cast<GameObject>();
                 return canvasGo; 
             }
@@ -70,17 +70,18 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             HideOriginalAssets(instantiatedUI);
 
-            for (int i = 0; i < MelonHandler.Mods.OfType<BloonsMod>().Count(); i++)
+            var mods = MelonHandler.Mods.OfType<BloonsMod>().Where(mod => mod.ModSettings.Any()).ToList();
+            
+            for (var i = 0; i < mods.Count; i++)
             {
-                var bloonsMod = MelonHandler.Mods.OfType<BloonsMod>().ElementAt(i);
-                if (!bloonsMod.ModSettings.Any()) continue;
-
+                var bloonsMod = mods.ElementAt(i);
                 PopulateModListItems(bloonsMod, i);
             }
         }
 
         private void PopulateModOptions(BloonsMod bloonsMod)
         {
+            optionsList.anchoredPosition = new Vector2(optionsList.anchoredPosition.x, 0);
             var options = optionsList.GetComponentsInChildren<Transform>();
             if (options.Any(option => option.name != "ModOptions Container"))
             {
@@ -94,26 +95,29 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 }
             }
 
-            for (int i = 0; i < bloonsMod.ModSettings.Values.Count; i++)
+            var count = bloonsMod.ModSettings.Values.Count;
+            for (var i = 0; i < count; i++)
             {
                 var modSetting = bloonsMod.ModSettings.ElementAt(i).Value;
                 var modOption = modSetting.ConstructModOption2(instantiatedUI.gameObject);
 
-                var yCoord = ButtonOption.GetOriginalAsset(instantiatedUI).position.y - (i * 65);
+                var yCoord = ButtonOption.GetOriginalAsset(instantiatedUI).position.y - (i * 100);
                 modOption.SetLocation(yCoord);
             }
+
+            // increase size of scroll height
+            optionsList.sizeDelta = new Vector2(0, 100 * count * 5);
         }
 
         private void PopulateModListItems(BloonsMod bloonsMod, int index)
         {
             var item = GameObject.Instantiate(modListItem, modList);
-
+            
             var button = item.GetComponentInChildren<Button>();
             button.onClick.AddListener(() => PopulateModOptions(bloonsMod));
             button.GetComponentInChildren<Text>().text = bloonsMod.GetModName();
 
-            var height = button.GetComponent<RectTransform>().rect.height;
-            item.gameObject.transform.position = new Vector3(item.gameObject.transform.position.x, item.gameObject.transform.position.y - (index * 65)); //(index * height));
+            item.gameObject.transform.position -= new Vector3(0, index * 65);
             item.Show();
         }
 

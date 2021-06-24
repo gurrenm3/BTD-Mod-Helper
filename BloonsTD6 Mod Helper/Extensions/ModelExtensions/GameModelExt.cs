@@ -46,48 +46,69 @@ namespace BTD_Mod_Helper.Extensions
 
             if (towerDetailsModel != null)
             {
-                model.AddTowerToGame(towerDetailsModel, towerModel.towerSet);
+                model.AddTowerDetails(towerDetailsModel, towerModel.towerSet);
             }
 
             // MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
         }
 
-        public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel)
+        /// <summary>
+        /// Adds a tower 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="towerDetailsModel"></param>
+        public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel)
         {
-            model.towerSet = model.towerSet.AddTo(towerDetailsModel);
-            AddTowerToGame(model, towerDetailsModel, "");
+            AddTowerDetails(model, towerDetailsModel, "");
         }
 
         /// <summary>
         /// Adds a TowerDetailsModel to the GameModel's TowerSet, taking into account what set of towers it's a part of
+        /// <br/>
         /// For example, a new custom Primary tower would be added right at the end of the primary towers,
         /// and right before the start of the military towers
         /// </summary>
         /// <param name="model">The GameModel</param>
         /// <param name="towerDetailsModel">The TowerDetailsModel to be added</param>
         /// <param name="set">The TowerSet of the tower to be added</param>
-        public static void AddTowerToGame(this GameModel model, TowerDetailsModel towerDetailsModel, string set)
+        public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel, string set)
         {
-            if (string.IsNullOrEmpty(set))
-            {
-                model.towerSet = model.towerSet.AddTo(towerDetailsModel);
-            }
-
             var towerSet = model.towerSet.ToList();
-            var lastOfSet = towerSet.LastOrDefault(tdm => model.GetTowerFromId(tdm.towerId).towerSet == set);
             var index = towerSet.Count;
-            if (lastOfSet != default)
+            if (!string.IsNullOrEmpty(set))
             {
-                index = towerSet.IndexOf(lastOfSet) + 1;
+                var lastOfSet = towerSet.LastOrDefault(tdm => model.GetTowerFromId(tdm.towerId).towerSet == set);
+                if (lastOfSet != default)
+                {
+                    index = towerSet.IndexOf(lastOfSet) + 1;
+                }
+            }
+            AddTowerDetails(model, towerDetailsModel, index);
+        }
+
+        /// <summary>
+        /// Adds a TowerDetailsModel to the GameModel's TowerSet at a particular index
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="towerDetailsModel"></param>
+        /// <param name="index"></param>
+        public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel, int index)
+        {
+            var towerSet = model.towerSet.ToList();
+            if (index < 0)
+            {
+                index = 0;
+            } else if (index > towerSet.Count)
+            {
+                index = towerSet.Count;
             }
             towerSet.Insert(index, towerDetailsModel);
-            
-            for (var i = 0; i < towerSet.Count; i++)
-            {
-                towerSet[i].towerIndex = i;
-            }
-
             model.towerSet = towerSet.ToArray();
+            
+            for (var i = 0; i < model.towerSet.Count; i++)
+            {
+                model.towerSet[i].towerIndex = i;
+            }
 
             var towerList = Game.towers.ToList();
             towerList.Insert(index, towerDetailsModel.towerId);

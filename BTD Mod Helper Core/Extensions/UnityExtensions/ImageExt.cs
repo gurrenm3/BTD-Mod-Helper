@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Assets.Scripts.Utils;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,17 +25,19 @@ namespace BTD_Mod_Helper.Extensions
                 texture = image.sprite.texture;
             }
             
-            RenderTexture tmp = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default, RenderTextureReadWrite.Linear);
-            Graphics.Blit(texture, tmp);
-            RenderTexture previous = RenderTexture.active;
-            RenderTexture.active = tmp;
-            Texture2D myTexture2D = new Texture2D(texture.width, texture.height);
-            myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
-            myTexture2D.Apply();
-            RenderTexture.active = previous;
-            RenderTexture.ReleaseTemporary(tmp);
-            var bytes = ImageConversion.EncodeToPNG(myTexture2D);
-            File.WriteAllBytes(filePath, bytes);
+            texture.TrySaveToPNG(filePath);
+        }
+
+        
+        public static void SetSprite(this Image image, Sprite sprite)
+        {
+            image.canvasRenderer.SetTexture(sprite.texture);
+            image.sprite = sprite;
+        }
+
+        public static void SetSprite(this Image image, SpriteReference spriteReference)
+        {
+            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
         }
     }
 }

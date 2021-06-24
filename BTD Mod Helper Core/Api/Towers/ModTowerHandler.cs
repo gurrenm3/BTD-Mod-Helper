@@ -250,7 +250,8 @@ namespace BTD_Mod_Helper.Api.Towers
             try
             {
                 var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
-                Game.instance.model.AddTowerToGame(shopTowerDetailsModel, modTower.TowerSet);
+                var index = modTower.GetTowerIndex(Game.instance.model.towerSet.ToList());
+                Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
             }
             catch (Exception e)
             {
