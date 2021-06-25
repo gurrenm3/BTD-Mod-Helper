@@ -17,6 +17,7 @@ using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
 using Assets.Scripts.Unity.Utils;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Enums;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D;
 using UnityEngine.UI;
@@ -53,9 +54,11 @@ namespace BTD_Mod_Helper
             Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain), nameof(SettingsPatch));
         }
 
+        internal static ShowModOptions_Button modsButton;
+        
         public static void SettingsPatch()
         {
-            ShowModOptions_Button modsButton = new ShowModOptions_Button();
+            modsButton = new ShowModOptions_Button();
             modsButton.Init();
         }
 
@@ -116,8 +119,8 @@ namespace BTD_Mod_Helper
                 UpdateHandler.updatedMods = false;
             }
             
-            //TODO: with only external changing, settings should load when going to the main menu
-            //TODO: with in game changing, settings should save when going to the main menu
+            // with only external changing, settings should load when going to the main menu
+            // with in game changing, settings should save when going to the main menu
             ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
             //ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
             

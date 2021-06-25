@@ -40,7 +40,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             }
             set { canvasGo = value; }
         }
-
+        
 
         internal RectTransform modOptionsWindow;
         private GameObject instantiatedUI;
@@ -50,6 +50,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
         private RectTransform uiElementsContainer;
         
         private RectTransform modListItem;
+
+        private Button doneButton;
 
         public ModOptionsMenu()
         {
@@ -67,7 +69,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
             optionsList = instantiatedUI.GetComponentInChildrenByName<RectTransform>("ModOptions Container");
             uiElementsContainer = instantiatedUI.GetComponentInChildrenByName<RectTransform>("UI Elements");
             modListItem = instantiatedUI.GetComponentInChildrenByName<RectTransform>("ModList Item");
-
+            
+            
             HideOriginalAssets(instantiatedUI);
 
             var mods = MelonHandler.Mods.OfType<BloonsMod>().Where(mod => mod.ModSettings.Any()).ToList();
@@ -77,6 +80,16 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 var bloonsMod = mods.ElementAt(i);
                 PopulateModListItems(bloonsMod, i);
             }
+            
+            
+            doneButton = instantiatedUI.GetComponentInChildrenByName<Button>("DoneButton");
+            
+            doneButton.AddOnClick(() =>
+            {
+                GameObject.Destroy(instantiatedUI);
+                MelonMain.modsButton.instantiatedButton.gameObject.SetActive(true);
+                ModSettingsHandler.SaveModSettings(ModContent.GetInstance<MelonMain>().GetModSettingsDir());
+            });
         }
 
         private void PopulateModOptions(BloonsMod bloonsMod)
@@ -115,7 +128,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             
             var button = item.GetComponentInChildren<Button>();
             button.onClick.AddListener(() => PopulateModOptions(bloonsMod));
-            button.GetComponentInChildren<Text>().text = bloonsMod.GetModName();
+            button.GetComponentInChildren<Text>().text = bloonsMod.Info.Name;
 
             item.gameObject.transform.position -= new Vector3(0, index * 65);
             item.Show();

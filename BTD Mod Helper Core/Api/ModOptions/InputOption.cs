@@ -19,7 +19,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
             inputField.SetText(modSetting.GetValue().ToString());
 
             buttonText.text = "Reset";
-            button.AddOnClick(() => modSetting.SetValue(modSetting.GetDefaultValue()));
+            button.AddOnClick(() =>
+            {
+                inputField.SetText(modSetting.GetDefaultValue().ToString());
+            });
         }
         
         public InputOption(GameObject parentGO, ModSettingString modSettingString) : this(parentGO, (ModSetting)modSettingString)
@@ -31,7 +34,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public InputOption(GameObject parentGO, ModSettingInt modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
         {
             inputField.characterValidation = InputField.CharacterValidation.Integer;
-            inputField.AddSubmitEvent(value =>
+            inputField.AddOnValueChangedEvent(value =>
             {
                 var i = long.Parse(value);
                 if (modSettingInt.maxValue.HasValue && i > modSettingInt.maxValue.Value)
@@ -49,7 +52,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public InputOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
         {
             inputField.characterValidation = InputField.CharacterValidation.Decimal;
-            inputField.AddSubmitEvent(value =>
+            inputField.AddOnValueChangedEvent(value =>
             {
                 var d = double.Parse(value);
                 if (modSettingDouble.maxValue.HasValue && d > modSettingDouble.maxValue.Value)

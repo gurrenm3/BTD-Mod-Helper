@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 714612715
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: modoptions.bundle
+      Dependencies: {}

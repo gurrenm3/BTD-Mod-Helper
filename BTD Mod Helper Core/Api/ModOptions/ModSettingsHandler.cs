@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using Harmony;
 using MelonLoader;
 using Newtonsoft.Json;
@@ -30,7 +31,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                         mod.ModSettings[field.Name] = modSetting;
                         if (modSetting.GetName() == default)
                         {
-                            modSetting.SetName(field.Name);
+                            modSetting.SetName(Regex.Replace(field.Name, "(\\B[A-Z])", " $1"));
                         }
                     }
                 }

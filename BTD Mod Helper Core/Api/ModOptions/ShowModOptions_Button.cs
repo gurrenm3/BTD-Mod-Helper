@@ -34,14 +34,16 @@ namespace BTD_Mod_Helper.Api.ModOptions
             settingsUI_Canvas = rootGameObjects[0];
             optionsButton = ModOptionsMenu.CanvasGO.transform.Find("ModOptionsButton/Button").GetComponent<Button>();
 
-            instantiatedButton = Object.Instantiate(optionsButton, settingsUI_Canvas.transform);
-            instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
             var screenSizePanel = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("ScreenSizePanel");
             var updateButton = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("UpdateButton");
+            
+            
+            instantiatedButton = Object.Instantiate(optionsButton, updateButton.transform);
+            instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
-            var transform = instantiatedButton.transform;
-            transform.position = new Vector3(screenSizePanel.position.x + 25, updateButton.position.y + 25);
+            var transform = instantiatedButton.transform.Cast<RectTransform>();
+            transform.Translate(new Vector3(screenSizePanel.position.x + 150, 50), updateButton.transform);
             transform.localScale = new Vector3(3, 3);
         }
 
@@ -49,7 +51,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             modOptionsMenu = new ModOptionsMenu();
             instantiatedButton.gameObject.SetActive(false);
-            GameObject.Destroy(instantiatedButton.gameObject);
         }
     }
 }
