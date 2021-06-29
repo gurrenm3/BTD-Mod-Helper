@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models.GenericBehaviors;
+﻿using System.Threading.Tasks;
+using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Unity;
@@ -70,6 +71,16 @@ namespace BTD_Mod_Helper.Api.Display
         }
         
         /// <summary>
+        /// Sets the mesh texture to that of a named png
+        /// </summary>
+        /// <param name="node">The UnityDisplayNode</param>
+        /// <param name="textureName">The name of the texture, without .png</param>
+        protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index)
+        {
+            node.GetRenderers<SkinnedMeshRenderer>()[index].SetMainTexture(GetTexture(textureName));
+        }
+        
+        /// <summary>
         /// Sets the sprite texture to that of a named png
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
@@ -77,20 +88,6 @@ namespace BTD_Mod_Helper.Api.Display
         protected void Set2DTexture(UnityDisplayNode node, string textureName)
         {
             node.GetRenderer<SpriteRenderer>().sprite = GetSprite(textureName, PixelsPerUnit);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="path"></param>
-        protected void SaveMeshTexture(UnityDisplayNode node, string path = null)
-        {
-            if (path == null)
-            {
-                path = FileIOUtil.GetSandboxPath() + node.name + ".png";
-            }
-            node.GetRenderer<SkinnedMeshRenderer>().material.mainTexture.TrySaveToPNG(path);
         }
 
         /// <summary>

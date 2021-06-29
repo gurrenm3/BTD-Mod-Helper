@@ -24,21 +24,23 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddBehavior<T>(this EmissionModel model, T behavior) where T : EmissionBehaviorModel
         {
             model.behaviors = model.behaviors.AddTo(behavior);
+            model.AddChildDependant(behavior);
         }
 
         public static void RemoveBehavior<T>(this EmissionModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemOfType<EmissionBehaviorModel, T>();
+            model.behaviors = model.behaviors.RemoveItemOfType<EmissionBehaviorModel, T>(model);
         }
 
         public static void RemoveBehavior<T>(this EmissionModel model, T behavior) where T : Model
         {
             model.behaviors = model.behaviors.RemoveItem(behavior);
+            model.RemoveChildDependant(behavior);
         }
 
         public static void RemoveBehaviors<T>(this EmissionModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemsOfType<EmissionBehaviorModel, T>();
+            model.behaviors = model.behaviors.RemoveItemsOfType<EmissionBehaviorModel, T>(model);
         }
     }
 }

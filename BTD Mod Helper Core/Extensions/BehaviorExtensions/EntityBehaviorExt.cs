@@ -47,7 +47,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="behavior"></param>
         public static void AddBehavior<T>(this Entity entity, T behavior) where T : Model
         {
-            entity.behaviors = entity.behaviors.AddTo<RootBehavior, T>(behavior);
+            entity.behaviors = entity.behaviors.AddTo(behavior);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="behavior"></param>
         public static void RemoveBehavior<T>(this Entity entity, T behavior) where T : Model
         {
-            entity.behaviors = entity.behaviors.RemoveItem<RootBehavior, T>(behavior);
+            entity.behaviors = entity.behaviors.RemoveItem(behavior);
         }
 
         /// <summary>

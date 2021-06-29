@@ -193,8 +193,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
                     .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
                     .OrderByDescending(modUpgrade => modUpgrade.Priority)
-                    .ThenBy(modUpgrade => modUpgrade.Path)
-                    .ThenBy(modUpgrade => modUpgrade.Tier))
+                    .ThenBy(modUpgrade => modUpgrade.Tier)
+                    .ThenBy(modUpgrade => modUpgrade.Path))
                 {
                     try
                     {

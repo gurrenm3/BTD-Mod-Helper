@@ -25,16 +25,18 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : BloonBehaviorModel
         {
             model.behaviors = model.behaviors.AddTo(behavior);
+            model.AddChildDependant(behavior);
         }
 
         public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemOfType<BloonBehaviorModel, T>();
+            model.behaviors = model.behaviors.RemoveItemOfType<BloonBehaviorModel, T>(model);
         }
 
         public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : Model
         {
             model.behaviors = model.behaviors.RemoveItem(behavior);
+            model.RemoveChildDependant(behavior);
         }
 
         public static void RemoveBehaviors<T>(this AddBehaviorToBloonModel model) where T : Model

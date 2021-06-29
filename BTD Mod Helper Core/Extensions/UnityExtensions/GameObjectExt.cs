@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using MelonLoader;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
@@ -38,6 +39,33 @@ namespace BTD_Mod_Helper.Extensions
         public static void Hide(this GameObject gameObject)
         {
             gameObject.GetComponent<RectTransform>().localScale = new Vector3(0, 0);
+        }
+
+        public static void Destroy(this GameObject gameObject)
+        {
+            Object.Destroy(gameObject);
+        }
+        
+        public static void RecursivelyLog(this GameObject gameObject, int depth = 0)
+        {
+            var str = gameObject.name;
+            for (int i = 0; i < depth; i++)
+            {
+                str = "|  " + str;
+            }
+
+            str += " (";
+            foreach (var component in gameObject.GetComponents<Component>())
+            {
+                str += " " + component.GetIl2CppType().Name;
+            }
+
+            str += ")";
+            MelonLogger.Msg(str);
+            for (int i = 0; i < gameObject.transform.childCount; i++)
+            {
+                RecursivelyLog(gameObject.transform.GetChild(i).gameObject, depth + 1);
+            }
         }
     }
 }

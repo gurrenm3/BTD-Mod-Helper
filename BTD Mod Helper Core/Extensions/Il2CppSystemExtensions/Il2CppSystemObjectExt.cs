@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">Type to check</typeparam>
         public static bool IsType<T>(this Object instance) where T : Object
         {
-            return instance.TryCast<T>() != null;
+            return instance?.TryCast<T>() != null;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">Type to check</typeparam>
         public static bool IsType<T>(this Object instance, out T castObject) where T : Object
         {
-            castObject = instance.TryCast<T>();
+            castObject = instance?.TryCast<T>();
             return castObject != null;
         }
     }

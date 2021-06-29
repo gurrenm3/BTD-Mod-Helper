@@ -84,12 +84,12 @@ namespace BTD_Mod_Helper.Api.Towers
 
         /// <summary>
         /// Apply the effects that this upgrade has onto a TowerModel
-        /// 
+        /// <br/>
         /// The TowerModel's tier(s), applied upgrades and other info will already be correct, so this is mostly about
         /// changing the TowerModel's behavior
-        ///
-        /// The default ordering of upgrade application is to do the Top path upgrades in ascending order, then the
-        /// middle path and finally the bottom path. This can be changed using <see cref="Priority"/>.
+        /// <br/>
+        /// The default ordering of upgrade application is to do them in ascending order of tier, doing Top then Mid
+        /// then Bot at each tier. This can be changed using <see cref="Priority"/>.
         /// </summary>
         /// <param name="towerModel"></param>
         public abstract void ApplyUpgrade(TowerModel towerModel);

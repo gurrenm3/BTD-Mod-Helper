@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models;
+﻿using System;
+using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +26,12 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddWeapon(this AttackModel attackModel, WeaponModel weaponToAdd) =>
             attackModel.weapons = attackModel.weapons.AddTo(weaponToAdd);
 
-        // Thanks to doombubbles for creating this
         /// <summary>
         /// (Cross-Game compatible) Recursively get all ProjectileModels for this attack model and all of it's weapons
         /// </summary>
         /// <param name="attackModel"></param>
         /// <returns></returns>
+        [Obsolete("Use GetDescendants<ProjectileModel>() instead")]
         public static List<ProjectileModel> GetAllProjectiles(this AttackModel attackModel)
         {
             List<ProjectileModel> allProjectiles = new List<ProjectileModel>();

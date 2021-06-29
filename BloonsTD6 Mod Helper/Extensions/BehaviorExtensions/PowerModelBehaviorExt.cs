@@ -24,21 +24,23 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddBehavior<T>(this PowerModel model, T behavior) where T : PowerBehaviorModel
         {
             model.behaviors = model.behaviors.AddTo(behavior);
+            model.AddChildDependant(behavior);
         }
 
         public static void RemoveBehavior<T>(this PowerModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemOfType<PowerBehaviorModel, T>();
+            model.behaviors = model.behaviors.RemoveItemOfType<PowerBehaviorModel, T>(model);
         }
 
         public static void RemoveBehavior<T>(this PowerModel model, T behavior) where T : Model
         {
             model.behaviors = model.behaviors.RemoveItem(behavior);
+            model.RemoveChildDependant(behavior);
         }
 
         public static void RemoveBehaviors<T>(this PowerModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemsOfType<PowerBehaviorModel, T>();
+            model.behaviors = model.behaviors.RemoveItemsOfType<PowerBehaviorModel, T>(model);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models;
+﻿using System;
+using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Models.Towers;
@@ -41,7 +42,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             model.towers = model.towers.AddTo(towerModel);
             model.AddChildDependant(towerModel);
-            
+
             ModTowerHandler.TowerCache[towerModel.name] = towerModel;
 
             if (towerDetailsModel != null)

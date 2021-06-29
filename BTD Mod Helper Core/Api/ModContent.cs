@@ -60,14 +60,13 @@ namespace BTD_Mod_Helper.Api
             try
             {
                 ResourceHandler.LoadEmbeddedTextures(mod);
+                ResourceHandler.LoadEmbeddedBundles(mod);
             }
             catch (Exception e)
             {
                 MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
                 MelonLogger.Error(e);
-            }
-                            
-                            
+            }    
                             
             var modDisplays = GetModContent<ModDisplay>(mod);
             var modUpgrades = GetModContent<ModUpgrade>(mod);
@@ -164,6 +163,16 @@ namespace BTD_Mod_Helper.Api
         public static SpriteReference GetSpriteReference<T>(string name) where T : BloonsMod
         {
             return CreateSpriteReference(GetTextureGUID<T>(name));
+        }
+        
+        /// <summary>
+        /// Gets a sprite reference by name for this mod
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <returns>A new SpriteReference</returns>
+        public SpriteReference GetSpriteReference(string name)
+        {
+            return CreateSpriteReference(GetTextureGUID(name));
         }
 
         /// <summary>

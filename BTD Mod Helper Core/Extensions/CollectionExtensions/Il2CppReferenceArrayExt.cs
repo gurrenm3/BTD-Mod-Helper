@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Models;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
@@ -234,6 +235,23 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
         /// <param name="referenceArray"></param>
+        /// <param name="removeChildFrom">Model to remove the child dependents from</param>
+        /// <returns></returns>
+        public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
+            where TSource : Il2CppSystem.Object
+            where TCast : Model
+        {
+            TCast behavior = GetItemOfType<TSource, TCast>(referenceArray);
+            removeChildFrom.RemoveChildDependant(behavior);
+            return RemoveItem(referenceArray, behavior);
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
+        /// <param name="referenceArray"></param>
         /// <param name="itemToRemove">The specific Item to remove</param>
         /// <returns></returns>
         public static Il2CppReferenceArray<TSource> RemoveItem<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray, TCast itemToRemove)
@@ -279,11 +297,39 @@ namespace BTD_Mod_Helper.Extensions
                 if (item is null || !item.IsType<TCast>())
                         continue;
 
-                if (item is null || !item.IsType<TCast>())
+                arrayList.RemoveAt(i - numRemoved);
+                numRemoved++;
+            }
+
+            return arrayList.ToIl2CppReferenceArray();
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Return this with all Items of type TCast removed
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>
+        /// <param name="referenceArray"></param>
+        /// <param name="removeChildFrom">Model to remove the child dependents from</param>
+        /// <returns></returns>
+        public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
+            where TSource : Il2CppSystem.Object
+            where TCast : Model
+        {
+            if (!HasItemsOfType<TSource, TCast>(referenceArray))
+                return referenceArray;
+
+            int numRemoved = 0;
+            List<TSource> arrayList = referenceArray.ToList();
+            for (int i = 0; i < referenceArray.Count; i++)
+            {
+                TSource item = referenceArray[i];
+                if (item is null || !item.IsType<TCast>(out var model))
                     continue;
 
                 arrayList.RemoveAt(i - numRemoved);
                 numRemoved++;
+                removeChildFrom.RemoveChildDependant(model);
             }
 
             return arrayList.ToIl2CppReferenceArray();

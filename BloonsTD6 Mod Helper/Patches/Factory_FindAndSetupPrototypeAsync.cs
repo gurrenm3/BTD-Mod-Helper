@@ -73,9 +73,11 @@ namespace BTD_Mod_Helper.Patches
                                 MelonLogger.Error($"Failed to modify DisplayNode for {modDisplay.Name}");
                                 MelonLogger.Error(e);
                             }
+
                             udn.RecalculateGenericRenderers();
 
                             onComplete.Invoke(udn);
+
                             ResourceHandler.Prefabs[objectId] = udn;
                             //__instance.active.Add(udn);
                         }));

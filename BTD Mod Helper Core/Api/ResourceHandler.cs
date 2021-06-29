@@ -7,12 +7,14 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Api
 {
-    internal class ResourceHandler
+    public class ResourceHandler
     {
         internal static Dictionary<string, byte[]> resources = new Dictionary<string, byte[]>();
         
         public static readonly Dictionary<string, UnityDisplayNode> Prefabs =
             new Dictionary<string, UnityDisplayNode>();
+
+        public static readonly Dictionary<string, AssetBundle> bundles = new Dictionary<string, AssetBundle>();
             
         internal static void LoadEmbeddedTextures(BloonsMod mod)
         {
@@ -38,7 +40,8 @@ namespace BTD_Mod_Helper.Api
                 {
                     stream.CopyTo(memoryStream);
                     var bundle = AssetBundle.LoadFromMemory(memoryStream.ToArray());
-                    
+                    var guid = mod.IDPrefix + bundle.name;
+                    bundles[guid] = bundle;
                 }
             }
         }

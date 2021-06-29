@@ -13,14 +13,17 @@ using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
 using Assets.Scripts.Models;
+using Assets.Scripts.Unity.Towers;
 using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
 using Assets.Scripts.Unity.Utils;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Patches.Towers;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper
 {
@@ -54,6 +57,7 @@ namespace BTD_Mod_Helper
             Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain), nameof(SettingsPatch));
         }
 
+        
         internal static ShowModOptions_Button modsButton;
         
         public static void SettingsPatch()
@@ -69,7 +73,7 @@ namespace BTD_Mod_Helper
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().tower.towerModel);
+                //FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().tower.towerModel);
             }
 
             if (Game.instance is null)

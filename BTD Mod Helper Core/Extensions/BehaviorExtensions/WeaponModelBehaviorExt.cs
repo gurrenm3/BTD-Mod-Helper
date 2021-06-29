@@ -49,6 +49,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddBehavior<T>(this WeaponModel model, T behavior) where T : WeaponBehaviorModel
         {
             model.behaviors = model.behaviors.AddTo(behavior);
+            model.AddChildDependant(behavior);
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="model"></param>
         public static void RemoveBehavior<T>(this WeaponModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemOfType<WeaponBehaviorModel, T>();
+            model.behaviors = model.behaviors.RemoveItemOfType<WeaponBehaviorModel, T>(model);
         }
 
         /// <summary>
@@ -70,6 +71,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void RemoveBehavior<T>(this WeaponModel model, T behavior) where T : Model
         {
             model.behaviors = model.behaviors.RemoveItem(behavior);
+            model.RemoveChildDependant(behavior);
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="model"></param>
         public static void RemoveBehaviors<T>(this WeaponModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemsOfType<WeaponBehaviorModel, T>();
+            model.behaviors = model.behaviors.RemoveItemsOfType<WeaponBehaviorModel, T>(model);
         }
     }
 }

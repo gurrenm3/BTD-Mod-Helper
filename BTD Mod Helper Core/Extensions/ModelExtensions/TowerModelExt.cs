@@ -164,6 +164,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return every ProjectileModels this TowerModel has
         /// </summary>
+        [Obsolete("Use GetDescendants<ProjectileModel>() instead")]
         public static List<ProjectileModel> GetAllProjectiles(this TowerModel towerModel)
         {
             List<ProjectileModel> allProjectiles = new List<ProjectileModel>();

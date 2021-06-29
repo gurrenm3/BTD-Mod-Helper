@@ -110,6 +110,40 @@ namespace BTD_Mod_Helper.Api.Updater
             if (string.IsNullOrEmpty(currentVersion) || string.IsNullOrEmpty(latestVersion))
                 throw new ArgumentNullException();
 
+            var currentParts = Regex.Split(Regex.Replace(currentVersion, @"\D", "."), @"\.+");
+            var latestParts = Regex.Split(Regex.Replace(latestVersion, @"\D", "."), @"\.+");
+
+            
+            var length = Math.Max(currentParts.Length, latestParts.Length);
+            
+            for(var i = 0; i < length; i++)
+            {
+                int thisPart = 0, thatPart = 0;
+
+                if (i < currentParts.Length)
+                {
+                    int.TryParse(currentParts[i], out thisPart);
+                }
+                
+                if (i < latestParts.Length)
+                {
+                    int.TryParse(latestParts[i], out thatPart);
+                }
+                
+                if(thisPart < thatPart)
+                    return true;
+                if(thisPart > thatPart)
+                    return false;
+            }
+
+            return false;
+        }
+        
+        public bool IsUpdateOld(string currentVersion, string latestVersion)
+        {
+            if (string.IsNullOrEmpty(currentVersion) || string.IsNullOrEmpty(latestVersion))
+                throw new ArgumentNullException();
+
             CleanVersionStrings(ref currentVersion, ref latestVersion);
 
             int.TryParse(currentVersion, out int currentVersionNum);
