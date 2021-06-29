@@ -12,18 +12,7 @@ using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
-using Assets.Scripts.Models;
-using Assets.Scripts.Unity.Towers;
-using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
-using Assets.Scripts.Unity.Utils;
-using Assets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Patches.Towers;
-using UnityEngine.EventSystems;
-using UnityEngine.U2D;
-using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper
 {
@@ -123,12 +112,9 @@ namespace BTD_Mod_Helper
                 UpdateHandler.updatedMods = false;
             }
             
-            // with only external changing, settings should load when going to the main menu
-            // with in game changing, settings should save when going to the main menu
             ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
-            //ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
-            
 
+            
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();
         }

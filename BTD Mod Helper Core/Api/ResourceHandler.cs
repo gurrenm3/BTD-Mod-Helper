@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Api
 {
-    public class ResourceHandler
+    internal class ResourceHandler
     {
         internal static Dictionary<string, byte[]> resources = new Dictionary<string, byte[]>();
         

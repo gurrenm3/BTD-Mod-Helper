@@ -60,7 +60,7 @@ namespace BTD_Mod_Helper.Api
             try
             {
                 ResourceHandler.LoadEmbeddedTextures(mod);
-                ResourceHandler.LoadEmbeddedBundles(mod);
+                //ResourceHandler.LoadEmbeddedBundles(mod);
             }
             catch (Exception e)
             {
