@@ -23,6 +23,8 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal static readonly Dictionary<string, float> Tower2DScales = new Dictionary<string, float>();
 
+        internal static readonly Dictionary<string, ModTower> ModTowersCache = new Dictionary<string, ModTower>();
+
         internal static void LoadTowers(List<ModTower> modTowers)
         {
             foreach (var modTower in modTowers)
@@ -239,6 +241,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 try
                 {
                     Game.instance.model.AddTowerToGame(towerModel);
+                    ModTowersCache[towerModel.name] = modTower;
                 }
                 catch (Exception e)
                 {

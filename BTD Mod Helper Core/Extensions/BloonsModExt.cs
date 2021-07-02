@@ -58,7 +58,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static string GetModSettingsDir(this BloonsMod bloonsMod, bool createIfNotExists = true)
         {
-            var path = Path.Combine(bloonsMod.GetModSettingsDir(), "Mod Settings");
+            var path = bloonsMod.GetModSettingsDir();
             if (createIfNotExists) Directory.CreateDirectory(path);
             return path;
         }

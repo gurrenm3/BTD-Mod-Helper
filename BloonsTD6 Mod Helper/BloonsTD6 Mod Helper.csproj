@@ -236,6 +236,8 @@
     <Compile Include="Patches\Towers\Tower_SetSaveData.cs" />
     <Compile Include="Patches\Towers\Tower_UnHighlight.cs" />
     <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
+    <Compile Include="Patches\UpgradeScreen_PopulatePath.cs" />
+    <Compile Include="Patches\UpgradeScreen_UpdateUi.cs" />
     <Compile Include="Patches\Weapons\Attack_UpdatedModel.cs" />
     <Compile Include="Patches\Weapons\Attack_Initialise.cs" />
     <Compile Include="Patches\Weapons\Weapon_Initialise.cs" />

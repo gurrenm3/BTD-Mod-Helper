@@ -79,6 +79,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void AddCash(this InGame inGame, double amount)
         {
             inGame.GetCashManager().cash.Value += amount;
+            InGame.instance.bridge.OnCashChangedSim(); 
         }
 
         /// <summary>
@@ -88,6 +89,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void SetCash(this InGame inGame, double amount)
         {
             inGame.GetCashManager().cash.Value = amount;
+            InGame.instance.bridge.OnCashChangedSim(); 
         }
 
         /// <summary>

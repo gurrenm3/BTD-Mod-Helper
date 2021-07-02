@@ -11,6 +11,7 @@ using System;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Api.Towers;
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Weapons;
@@ -216,6 +217,28 @@ namespace BTD_Mod_Helper.Extensions
         public static void ApplyDisplay<T>(this TowerModel towerModel) where T : ModDisplay
         {
             ModContent.GetInstance<T>().Apply(towerModel);
+        }
+
+        /// <summary>
+        /// Gets the ModTower associated with this TowerModel
+        /// <br/>
+        /// If there is no associated ModTower, returns null
+        /// </summary>
+        /// <returns></returns>
+        public static ModTower GetModTower(this TowerModel towerModel)
+        {
+            return ModTowerHandler.ModTowersCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
+        }
+        
+        /// <summary>
+        /// Gets the specific ModTower associated with this TowerModel
+        /// <br/>
+        /// If there is no associated ModTower, returns null
+        /// </summary>
+        /// <returns></returns>
+        public static T GetModTower<T>(this TowerModel towerModel) where T : ModTower
+        {
+            return (T) GetModTower(towerModel);
         }
     }
 }
