@@ -1,4 +1,6 @@
 # BTD Mod Helper
+![total downloads](https://img.shields.io/github/downloads/gurrenm3/BTD-Mod-Helper/total "total downloads for API")
+
 A powerful and easy to use API for modding BTD6, BATTD, and other Ninja Kiwi games. It was created with the successes and failures of previous APIs in mind so it's significantly easier to use.
 
 ## How to use it
