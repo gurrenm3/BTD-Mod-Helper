@@ -4,6 +4,7 @@ using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Display
 {
+#if BloonsTD6
     internal static class ModDisplayHandler
     {
         internal static readonly Dictionary<string, ModDisplay> ModDisplays = new Dictionary<string, ModDisplay>();
@@ -30,4 +31,5 @@ namespace BTD_Mod_Helper.Api.Display
             }
         }
     }
+#endif
 }

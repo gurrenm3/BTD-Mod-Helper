@@ -33,6 +33,7 @@ namespace BTD_Mod_Helper.Extensions
             return projectileSims.Where(projectile => projectile.projectileModel.name == projectileModel.name).ToList();
         }
 
+#if BloonsTD6
         /// <summary>
         /// Applies a given ModDisplay to this ProjectileModel
         /// </summary>
@@ -41,5 +42,6 @@ namespace BTD_Mod_Helper.Extensions
         {
             ModContent.GetInstance<T>().Apply(projectileModel);
         }
+#endif
     }
 }

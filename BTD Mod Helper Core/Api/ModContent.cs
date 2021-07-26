@@ -18,6 +18,7 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Api
 {
+#if BloonsTD6
     /// <summary>
     /// ModContent serves two major purposes:
     ///     <br/>
@@ -386,4 +387,5 @@ namespace BTD_Mod_Helper.Api
             return !Instances.ContainsKey(type) ? default : Instances[type];
         }
     }
+#endif
 }

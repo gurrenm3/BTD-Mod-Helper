@@ -1,7 +1,13 @@
 ﻿using System.Threading.Tasks;
+#if BloonsTD6
 using Assets.Scripts.Models.GenericBehaviors;
+#endif
+#if BloonsAT
+using Assets.Scripts.Models.Display;
+#endif
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
+using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Utils;
@@ -11,6 +17,7 @@ using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
 
 namespace BTD_Mod_Helper.Api.Display
 {
+#if BloonsTD6
     /// <summary>
     /// A custom Display that is a copy of an existing Display that can be modified
     /// </summary>
@@ -173,4 +180,5 @@ namespace BTD_Mod_Helper.Api.Display
             return udn;
         }
     }
+#endif
 }

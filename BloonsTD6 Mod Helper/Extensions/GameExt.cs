@@ -3,7 +3,6 @@ using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Localization;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.Player;
 using Assets.Scripts.Unity.UI_New;
@@ -11,6 +10,7 @@ using Assets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Assets.Scripts.Unity.UI_New.Popups;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
+using NinjaKiwi.Common;
 using NinjaKiwi.LiNK;
 using NinjaKiwi.NKMulti;
 using System;
@@ -127,7 +127,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static LocalizationManager GetLocalizationManager(this Game game)
         {
-            return LocalizationManager.instance;
+            return LocalizationManager.Instance;
         }
 
         /// <summary>

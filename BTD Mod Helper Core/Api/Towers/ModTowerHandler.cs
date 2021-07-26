@@ -8,7 +8,6 @@ using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Localization;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
@@ -41,8 +40,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 
                 try
                 {
-                    LocalizationManager.instance.textTable[modTower.Id] = modTower.DisplayName;
-                    LocalizationManager.instance.textTable[modTower.Id + " Description"] = modTower.Description;
+                    Game.instance.GetLocalizationManager().textTable[modTower.Id] = modTower.DisplayName;
+                    Game.instance.GetLocalizationManager().textTable[modTower.Id + " Description"] = modTower.Description;
                     ModTowers.Add(modTower);
                 }
                 catch (Exception e)
@@ -100,10 +99,13 @@ namespace BTD_Mod_Helper.Api.Towers
                         if (newTiers.IsValid()) // no triple cross-pathed towers (yet...)
                         {
                             var modUpgrade = modTower.upgrades[i, newTiers[i] - 1];
+                            var upgradePathModel = new UpgradePathModel(modUpgrade.Id, 
+                                $"{towerModel.baseId}-{newTiers.Printed()}");
 
-                            var upgradePathModel = new UpgradePathModel(modUpgrade.Id,
+                            // the commented code below was broken in update 27.0
+                            /*var upgradePathModel = new UpgradePathModel(modUpgrade.Id,
                                 $"{towerModel.baseId}-{newTiers.Printed()}", newTiers.Count(t => t > 0), newTiers.Max());
-                            towerModel.upgrades = towerModel.upgrades.AddTo(upgradePathModel);
+                            towerModel.upgrades = towerModel.upgrades.AddTo(upgradePathModel);*/
                         }
                     }
                 }

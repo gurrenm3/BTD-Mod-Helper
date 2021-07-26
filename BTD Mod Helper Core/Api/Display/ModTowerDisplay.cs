@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models.GenericBehaviors;
+﻿#if BloonsTD6
+using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
@@ -47,3 +48,4 @@ namespace BTD_Mod_Helper.Api.Display
         public override ModTower Tower => GetInstance<T>();
     }
 }
+#endif

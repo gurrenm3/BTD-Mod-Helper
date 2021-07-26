@@ -39,7 +39,6 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Dependencies\BloonsTD6\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
       <HintPath>..\\Dependencies\BloonsTD6\Il2Cppmscorlib.dll</HintPath>
@@ -191,6 +190,7 @@
     <Compile Include="Extensions\ModelExtensions\UpgradeModelExt.cs" />
     <Compile Include="Extensions\StandardTowerPurchaseButtonExt.cs" />
     <Compile Include="Extensions\UnityExtensions\PopupScreenExt.cs" />
+    <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="MelonMain.cs" />
     <Compile Include="Patches\Bloons\BloonToSimulation_Ctor.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
@@ -221,8 +221,8 @@
     <Compile Include="Patches\InGame_OnVictory.cs" />
     <Compile Include="Patches\Sim\Simulation_AddCash.cs" />
     <Compile Include="Patches\Sim\Simulation_OnDefeat.cs" />
-    <Compile Include="Patches\Sim\Simulation_OnRoundEnd.cs" />
-    <Compile Include="Patches\Sim\Simulation_OnRoundStart.cs" />
+    <Compile Include="Patches\Sim\Simulation_RoundEnd.cs" />
+    <Compile Include="Patches\Sim\Simulation_RoundStart.cs" />
     <Compile Include="Patches\Sim\Simulation_RemoveCash.cs" />
     <Compile Include="Patches\TimeManager_SetFastForward.cs" />
     <Compile Include="Patches\TitleScreen_Start.cs" />

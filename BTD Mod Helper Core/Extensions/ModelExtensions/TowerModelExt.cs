@@ -11,8 +11,8 @@ using System;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Towers;
 #if BloonsTD6
+using BTD_Mod_Helper.Api.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Weapons;
 #elif BloonsAT
@@ -209,7 +209,9 @@ namespace BTD_Mod_Helper.Extensions
             duplicate.name = newTowerId;
             return duplicate;
         }
-        
+
+#if BloonsTD6
+
         /// <summary>
         /// Applies a given ModDisplay to this TowerModel
         /// </summary>
@@ -240,5 +242,6 @@ namespace BTD_Mod_Helper.Extensions
         {
             return (T) GetModTower(towerModel);
         }
+#endif
     }
 }

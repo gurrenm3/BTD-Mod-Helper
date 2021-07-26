@@ -1,8 +1,8 @@
-﻿using System;
+﻿#if BloonsTD6
+using System;
 using System.Collections.Generic;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Localization;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 
@@ -46,8 +46,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 try
                 {
                     Game.instance.model.AddUpgrade(upgradeModel);
-                    LocalizationManager.instance.textTable[modUpgrade.Id] = modUpgrade.DisplayName;
-                    LocalizationManager.instance.textTable[modUpgrade.Id + " Description"] = modUpgrade.Description;
+                    Game.instance.GetLocalizationManager().textTable[modUpgrade.Id] = modUpgrade.DisplayName;
+                    Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Description"] = modUpgrade.Description;
                     ModUpgrades.Add(modUpgrade);
                 }
                 catch (Exception e)
@@ -59,3 +59,4 @@ namespace BTD_Mod_Helper.Api.Towers
         }
     }
 }
+#endif
