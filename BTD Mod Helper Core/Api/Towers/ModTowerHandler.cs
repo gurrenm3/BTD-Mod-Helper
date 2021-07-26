@@ -101,6 +101,7 @@ namespace BTD_Mod_Helper.Api.Towers
                             var modUpgrade = modTower.upgrades[i, newTiers[i] - 1];
                             var upgradePathModel = new UpgradePathModel(modUpgrade.Id, 
                                 $"{towerModel.baseId}-{newTiers.Printed()}");
+                            towerModel.upgrades = towerModel.upgrades.AddTo(upgradePathModel);
 
                             // the commented code below was broken in update 27.0
                             /*var upgradePathModel = new UpgradePathModel(modUpgrade.Id,
