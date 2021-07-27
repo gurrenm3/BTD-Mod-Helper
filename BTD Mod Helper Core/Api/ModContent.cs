@@ -18,7 +18,6 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Api
 {
-#if BloonsTD6
     /// <summary>
     /// ModContent serves two major purposes:
     ///     <br/>
@@ -56,6 +55,7 @@ namespace BTD_Mod_Helper.Api
             yield return this;
         }
 
+#if BloonsTD6
         internal static void LoadAllModContent(BloonsMod mod)
         {
             try
@@ -103,6 +103,7 @@ namespace BTD_Mod_Helper.Api
                 MelonLogger.Error(e);
             }
         }
+#endif
         
         internal static List<T> GetModContent<T>(BloonsMod mod) where T : ModContent
         {
@@ -306,12 +307,12 @@ namespace BTD_Mod_Helper.Api
             return GetSprite(GetInstance<T>(), name, pixelsPerUnit);
         }
 
+#if BloonsTD6
         public static string GetDisplayGUID<T>() where T : ModDisplay
         {
             return GetInstance<T>().Id;
         }
 
-#if BloonsTD6
         /// <summary>
         /// Gets the internal tower name/id for a ModTower
         /// </summary>
@@ -341,6 +342,19 @@ namespace BTD_Mod_Helper.Api
             return GetInstance<T>().Id;
         }
 
+         /// <summary>
+        /// For ModContent that loads with multiple instances, get all instances of them
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> GetInstances<T>() where T : ModContent
+        {
+            if (Instances.GetValueOrDefault(typeof(T)) is List<ModContent> instances)
+            {
+                return instances.Select(content => (T) content).ToList();
+            }
+            return default;
+        }
 #endif
 
         /// <summary>
@@ -364,20 +378,6 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// For ModContent that loads with multiple instances, get all instances of them
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static List<T> GetInstances<T>() where T : ModContent
-        {
-            if (Instances.GetValueOrDefault(typeof(T)) is List<ModContent> instances)
-            {
-                return instances.Select(content => (T) content).ToList();
-            }
-            return default;
-        }
-
-        /// <summary>
         /// Gets the official instance of a particular ModLoadable or BloonsMod based on its type
         /// </summary>
         /// <param name="type">The type to get the instance of</param>
@@ -387,5 +387,4 @@ namespace BTD_Mod_Helper.Api
             return !Instances.ContainsKey(type) ? default : Instances[type];
         }
     }
-#endif
 }

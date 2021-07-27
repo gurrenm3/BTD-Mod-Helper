@@ -189,7 +189,9 @@
     <Compile Include="Extensions\ModelExtensions\TowerModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\UpgradeModelExt.cs" />
     <Compile Include="Extensions\StandardTowerPurchaseButtonExt.cs" />
+    <Compile Include="Extensions\UnityExtensions\ImageExt.cs" />
     <Compile Include="Extensions\UnityExtensions\PopupScreenExt.cs" />
+    <Compile Include="Extensions\UnityExtensions\RendererExt.cs" />
     <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="MelonMain.cs" />
     <Compile Include="Patches\Bloons\BloonToSimulation_Ctor.cs" />

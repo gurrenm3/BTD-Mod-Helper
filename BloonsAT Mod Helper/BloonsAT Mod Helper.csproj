@@ -137,6 +137,7 @@
     <Compile Include="Extensions\AdventureTimePlayerExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
+    <Compile Include="Extensions\CollectionExt.cs" />
     <Compile Include="Extensions\GameExt.cs" />
     <Compile Include="Extensions\InGameExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
@@ -192,7 +193,6 @@
     <None Include="Resources\ingame_popup.bundle" />
     <None Include="Resources\modoptions.bundle" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -16,6 +16,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 {
     internal class ModOptionsMenu
     {
+        #if BloonsTD6
         private static AssetBundle assetBundle;
         public static AssetBundle AssetBundle
         {
@@ -58,7 +59,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modOptionsWindow = CanvasGO.GetComponentInChildrenByName<RectTransform>("ModOptions");
 #if BloonsTD6
             var scene = SceneManager.GetSceneByName("SettingsUI");
-#elif BloonsAT
+#elif BloonsAT // Keep this so we can add support for BloonsAT in the future
             var scene = SceneManager.GetSceneByName("UI-Settings");
 #endif
             var rootGameObjects = scene.GetRootGameObjects();
@@ -142,5 +143,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
             CheckboxOption.GetOriginalAsset(parent).Hide();
             modListItem.Hide();
         }
+#endif
     }
 }

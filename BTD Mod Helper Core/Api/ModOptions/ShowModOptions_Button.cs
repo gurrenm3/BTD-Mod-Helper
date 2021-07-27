@@ -13,6 +13,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 {
     internal class ShowModOptions_Button
     {
+#if BloonsTD6
         public ModOptionsMenu modOptionsMenu;
         public static GameObject settingsUI_Canvas;
         public Button instantiatedButton;
@@ -52,5 +53,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modOptionsMenu = new ModOptionsMenu();
             instantiatedButton.gameObject.SetActive(false);
         }
+#endif
     }
 }

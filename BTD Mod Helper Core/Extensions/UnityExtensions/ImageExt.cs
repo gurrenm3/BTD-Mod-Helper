@@ -1,15 +1,12 @@
-﻿using System.IO;
-using Assets.Scripts.Utils;
-using MelonLoader;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class ImageExt
+    public static partial class ImageExt
     {
         /// <summary>
-        /// Saves an image as a PNG files
+        /// (Cross-Game compatible) Saves an image as a PNG files
         /// Coded in a robust manner that should work for all images, including those with multiple sprites on them being used
         /// </summary>
         /// <param name="filePath">Absolute file path on the machine to save the file to</param>
@@ -28,16 +25,15 @@ namespace BTD_Mod_Helper.Extensions
             texture.TrySaveToPNG(filePath);
         }
 
-        
+        /// <summary>
+        /// (Cross-Game compatible) Set the sprite for this image
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="sprite">Sprite to change image to</param>
         public static void SetSprite(this Image image, Sprite sprite)
         {
             image.canvasRenderer.SetTexture(sprite.texture);
             image.sprite = sprite;
-        }
-
-        public static void SetSprite(this Image image, SpriteReference spriteReference)
-        {
-            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
         }
     }
 }
