@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models.Towers;
+﻿using System.Linq;
+using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.Upgrade;
@@ -29,12 +30,15 @@ namespace BTD_Mod_Helper.Patches
                     var upgradeDetails = pathUpgrades[i];
                     upgradeDetails.SetUpgrade(tower.baseId, upgradeModel, emptyAbilities, pathIndex, portrait);
                     upgradeDetails.gameObject.SetActive(false);
+                }
 
-                    var array = new[] {0, 0, 0};
-                    array[pathIndex] = i + 1;
-
-                    var arrow = __instance.transform.GetComponentFromChildrenByName<RectTransform>($"Arrow{array.Printed()}");
-                    arrow.gameObject.Hide();
+                if (maxPathTier < 5)
+                {
+                    var bgLines = __instance.transform.GetComponentFromChildrenByName<RectTransform>($"{pathIndex + 1}");
+                    bgLines.GetComponentsInChildren<CanvasRenderer>().Do(renderer =>
+                    {
+                        renderer.SetAlpha(0);
+                    });
                 }
             }
         }

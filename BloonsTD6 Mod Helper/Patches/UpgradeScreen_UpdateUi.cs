@@ -12,10 +12,13 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPrefix]
         internal static void Prefix(UpgradeScreen __instance)
         {
-            var bgArrows = __instance.GetComponentFromChildrenByName<RectTransform>("BGArrows");
-            foreach (var arrow in bgArrows.GetComponentsInChildren<CanvasRenderer>())
+            for (var i = 1; i <= 3; i++)
             {
-                arrow.gameObject.Show();
+                var bgLines = __instance.transform.GetComponentFromChildrenByName<RectTransform>(i.ToString());
+                bgLines.GetComponentsInChildren<CanvasRenderer>().Do(renderer =>
+                {
+                    renderer.SetAlpha(1);
+                });
             }
         }
         

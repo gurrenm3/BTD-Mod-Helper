@@ -119,11 +119,9 @@ namespace BTD_Mod_Helper.Extensions
             var skinnedMeshRenderer = unityDisplayNode.GetRenderer<SkinnedMeshRenderer>();
             if (!alreadyUnbound)
             {
+                // Unbind the mesh so we can change it without affecting the original
                 skinnedMeshRenderer.UnbindMesh();
             }
-
-            // Unbind the mesh so we can change it without affecting the original
-            skinnedMeshRenderer.UnbindMesh();
 
             // Get the bone index that controls the Boomerang
             var boomerang = skinnedMeshRenderer.GetBoneIndex(boneName);
