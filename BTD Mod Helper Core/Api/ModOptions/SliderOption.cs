@@ -6,55 +6,81 @@ using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    internal class SliderOption : SharedOption
+    public class SliderOption : SharedOption
     {
-        public Slider slider;
-        public Image fill;
-        public Image handle;
-        public Text sliderValueText;
-        public Button button;
-        public Text buttonText;
+        /// <summary>
+        /// The actual slider for this option
+        /// </summary>
+        public Slider Slider { get; set; }
+
+        /// <summary>
+        /// The image to show for parts of the slider that are filled/have value
+        /// </summary>
+        public Image Fill { get; set; }
+
+        /// <summary>
+        /// The image to show for the slider handle, if you want it to be visible
+        /// </summary>
+        public Image Handle { get; set; }
+
+        /// <summary>
+        /// The Text in the middle of the slider that shows the current value
+        /// </summary>
+        public Text SliderValueText { get; set; }
+
+        /// <summary>
+        /// The Reset button. Can be used for other things if desired
+        /// </summary>
+        public Button Button { get; set; }
+
+        /// <summary>
+        /// The text for the Reset Button
+        /// </summary>
+        public Text ButtonText { get; set; }
+
 
         private SliderOption(GameObject parentGO, ModSetting modSetting) :  base(parentGO, modSetting, "SliderOption")
         {
-            slider = instantiatedGameObject.transform.Find("Slider").GetComponent<Slider>();
-            fill = instantiatedGameObject.transform.Find("Slider/Fill Area/Fill").GetComponent<Image>();
-            handle = instantiatedGameObject.transform.Find("Slider/Handle Slide Area/Handle").GetComponent<Image>();
-            sliderValueText = instantiatedGameObject.transform.Find("Slider/SliderValue").GetComponent<Text>();
+            Slider = instantiatedGameObject.transform.Find("Slider").GetComponent<Slider>();
+            Fill = instantiatedGameObject.transform.Find("Slider/Fill Area/Fill").GetComponent<Image>();
+            Handle = instantiatedGameObject.transform.Find("Slider/Handle Slide Area/Handle").GetComponent<Image>();
+            SliderValueText = instantiatedGameObject.transform.Find("Slider/SliderValue").GetComponent<Text>();
             
-            button = instantiatedGameObject.transform.Find("Button").GetComponent<Button>();
-            buttonText = instantiatedGameObject.transform.Find("Button/Text").GetComponent<Text>();
+            Button = instantiatedGameObject.transform.Find("Button").GetComponent<Button>();
+            ButtonText = instantiatedGameObject.transform.Find("Button/Text").GetComponent<Text>();
             
-            buttonText.text = "Reset";
-            button.AddOnClick(() => slider.Set(Convert.ToSingle(modSetting.GetDefaultValue())));
+            ButtonText.text = "Reset";
+            Button.AddOnClick(() => Slider.Set(Convert.ToSingle(modSetting.GetDefaultValue())));
         }
 
-        public SliderOption(GameObject parentGO, ModSettingInt modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
+        internal SliderOption(GameObject parentGO, ModSettingInt modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
         {
-            slider.value = modSettingInt.value;
-            sliderValueText.text = modSettingInt.value.ToString();
-            slider.minValue = (long) modSettingInt.minValue;
-            slider.maxValue = (long) modSettingInt.maxValue;
+            Slider.value = modSettingInt.value;
+            SliderValueText.text = modSettingInt.value.ToString();
+            Slider.minValue = (long) modSettingInt.minValue;
+            Slider.maxValue = (long) modSettingInt.maxValue;
             
-            slider.onValueChanged.AddListener(value =>
+            Slider.onValueChanged.AddListener(value =>
             {
                 var l = (long) value;
                 modSettingInt.SetValue(l);
-                sliderValueText.text = l.ToString();
+                SliderValueText.text = l.ToString();
             });
+            modSettingInt.OnInitialized.InvokeAll(this);
         }
-        
-        public SliderOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
+
+        internal SliderOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
         {
-            slider.value = (float) modSettingDouble.value;
-            sliderValueText.text = modSettingDouble.value.ToString("F");
-            slider.minValue = (float) modSettingDouble.minValue;
-            slider.maxValue = (float) modSettingDouble.maxValue;
-            slider.onValueChanged.AddListener(value => 
+            Slider.value = (float) modSettingDouble.value;
+            SliderValueText.text = modSettingDouble.value.ToString("F");
+            Slider.minValue = (float) modSettingDouble.minValue;
+            Slider.maxValue = (float) modSettingDouble.maxValue;
+            Slider.onValueChanged.AddListener(value => 
             {
                 modSettingDouble.SetValue((double)value);
-                sliderValueText.text = value.ToString("F");
+                SliderValueText.text = value.ToString("F");
             });
+            modSettingDouble.OnInitialized.InvokeAll(this);
         }
 
         internal static RectTransform GetOriginalAsset(GameObject parentGO)

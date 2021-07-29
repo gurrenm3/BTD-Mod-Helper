@@ -57,7 +57,23 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual string LatestURL => "";
 
+        #region API Hooks
 
+        /// <summary>
+        /// Called whenever the Mod Options Menu gets opened, after it finishes initializing
+        /// </summary>
+        public virtual void OnModOptionsOpened()
+        {
+        }
+
+        /// <summary>
+        /// Called when the Mod Options Menu gets closed
+        /// </summary>
+        /*public virtual void OnModOptionsClosed() // not implemented for now
+        {
+        }*/
+
+        #endregion
 
         #region Input Hooks
 

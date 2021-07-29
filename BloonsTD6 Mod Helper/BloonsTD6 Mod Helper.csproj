@@ -207,6 +207,8 @@
     <Compile Include="Patches\Factory_Flush.cs" />
     <Compile Include="Patches\GameModel_CreateModded.cs" />
     <Compile Include="Patches\GameModel_GetRoundSet.cs" />
+    <Compile Include="Patches\FileSaveStrategy_Choose.cs" />
+    <Compile Include="Patches\InGame_Quit.cs" />
     <Compile Include="Patches\InGame_Restart.cs" />
     <Compile Include="Patches\InGame_StartMatch.cs" />
     <Compile Include="Patches\InputManager_PrimeTower.cs" />

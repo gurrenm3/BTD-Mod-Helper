@@ -11,18 +11,37 @@ using Assets.Scripts.Unity.UI_New.Popups;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using NinjaKiwi.Common;
-using NinjaKiwi.LiNK;
 using NinjaKiwi.NKMulti;
-using System;
-using System.Collections;
+using NinjaKiwi.Players.Files.SaveStrategies;
 using System.Collections.Generic;
 using UnhollowerBaseLib;
-using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+        /// <summary>
+        /// Returns the directory where the Player's Profile.save file is located.
+        /// Not set until after reaching the Main Menu for the first time
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
+        public static string GetSaveDirectory(this Game game)
+        {
+            return SessionData.saveDirectory;
+        }
+
+        /// <summary>
+        /// Makes a save of Player.Save at the specified path
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="savePath">Path to save to</param>
+        public static void SavePlayerData(this Game game, string savePath)
+        {
+            var backup = SessionData.playerSaveStrategy.MemberwiseClone().Cast<TimedBackupStrategy>();
+            backup.FilePath = savePath;
+            backup.CreateBackup();
+        }
 
         /// <summary>
         /// Checks if Player is in a game mode that would get them flagged if using mods

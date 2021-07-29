@@ -3,13 +3,13 @@ using HarmonyLib;
 
 namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPatch(typeof(InGame), nameof(InGame.ToggleFastForward))]
-    internal class TimeManager_SetFastForward
+    [HarmonyPatch(typeof(InGame), nameof(InGame.Quit))]
+    internal class InGame_Quit
     {
         [HarmonyPostfix]
         internal static void Postfix()
         {
-            MelonMain.DoPatchMethods(mod => mod.OnFastForwardChanged());
+            MelonMain.DoPatchMethods(mod => mod.OnMatchEnd());
         }
     }
 }

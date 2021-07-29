@@ -178,6 +178,17 @@ namespace BTD_Mod_Helper
 
         }
 
+
+        /// <summary>
+        /// Called when the player returns to the MainMenu from a match
+        /// <br/>
+        /// Equivalent to a HarmonyPostFix on InGame.Quit
+        /// </summary>
+        public virtual void OnMatchEnd()
+        {
+
+        }
+
         #endregion
 
         #region Bloon Hooks

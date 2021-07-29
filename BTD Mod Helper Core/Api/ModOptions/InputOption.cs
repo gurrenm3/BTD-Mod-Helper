@@ -4,37 +4,50 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    internal class InputOption : SharedOption
+    public class InputOption : SharedOption
     {
-        public Button button;
-        public Text buttonText;
-        public InputField inputField;
+        /// <summary>
+        /// The Reset button. Can be used for other things if desired
+        /// </summary>
+        public Button Button { get; set; }
+
+        /// <summary>
+        /// The Text for the Reset button
+        /// </summary>
+        public Text ButtonText { get; set; }
+
+        /// <summary>
+        /// The input field where the user types
+        /// </summary>
+        public InputField InputField { get; set; }
+
 
         private InputOption(GameObject parentGO, ModSetting modSetting) : base(parentGO, modSetting, "TextInputOption")
         {
-            button = instantiatedGameObject.transform.Find("Button").GetComponent<Button>();
-            buttonText = instantiatedGameObject.transform.Find("Button/Text").GetComponent<Text>();
-            inputField = instantiatedGameObject.transform.Find("InputField").GetComponent<InputField>();
+            Button = instantiatedGameObject.transform.Find("Button").GetComponent<Button>();
+            ButtonText = instantiatedGameObject.transform.Find("Button/Text").GetComponent<Text>();
+            InputField = instantiatedGameObject.transform.Find("InputField").GetComponent<InputField>();
 
-            inputField.SetText(modSetting.GetValue().ToString());
+            InputField.SetText(modSetting.GetValue().ToString());
 
-            buttonText.text = "Reset";
-            button.AddOnClick(() =>
+            ButtonText.text = "Reset";
+            Button.AddOnClick(() =>
             {
-                inputField.SetText(modSetting.GetDefaultValue().ToString());
+                InputField.SetText(modSetting.GetDefaultValue().ToString());
             });
         }
         
-        public InputOption(GameObject parentGO, ModSettingString modSettingString) : this(parentGO, (ModSetting)modSettingString)
+        internal InputOption(GameObject parentGO, ModSettingString modSettingString) : this(parentGO, (ModSetting)modSettingString)
         {
-            inputField.characterValidation = modSettingString.GetValidation();
-            inputField.AddSubmitEvent(modSettingString.SetValue);
+            InputField.characterValidation = modSettingString.GetValidation();
+            InputField.AddSubmitEvent(modSettingString.SetValue);
+            modSettingString.OnInitialized.InvokeAll(this);
         }
-        
-        public InputOption(GameObject parentGO, ModSettingInt modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
+
+        internal InputOption(GameObject parentGO, ModSettingInt modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
         {
-            inputField.characterValidation = InputField.CharacterValidation.Integer;
-            inputField.AddOnValueChangedEvent(value =>
+            InputField.characterValidation = InputField.CharacterValidation.Integer;
+            InputField.AddOnValueChangedEvent(value =>
             {
                 var i = long.Parse(value);
                 if (modSettingInt.maxValue.HasValue && i > modSettingInt.maxValue.Value)
@@ -44,15 +57,16 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 {
                     i = modSettingInt.minValue.Value;
                 }
-                inputField.SetText(i.ToString());
+                InputField.SetText(i.ToString());
                 modSettingInt.SetValue(i);
             });
+            modSettingInt.OnInitialized.InvokeAll(this);
         }
-        
-        public InputOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
+
+        internal InputOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
         {
-            inputField.characterValidation = InputField.CharacterValidation.Decimal;
-            inputField.AddOnValueChangedEvent(value =>
+            InputField.characterValidation = InputField.CharacterValidation.Decimal;
+            InputField.AddOnValueChangedEvent(value =>
             {
                 var d = double.Parse(value);
                 if (modSettingDouble.maxValue.HasValue && d > modSettingDouble.maxValue.Value)
@@ -62,9 +76,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 {
                     d = (int) modSettingDouble.minValue.Value;
                 }
-                inputField.SetText(d.ToString());
+                InputField.SetText(d.ToString());
                 modSettingDouble.SetValue(d);
             });
+            modSettingDouble.OnInitialized.InvokeAll(this);
         }
 
         internal static RectTransform GetOriginalAsset(GameObject parentGO)

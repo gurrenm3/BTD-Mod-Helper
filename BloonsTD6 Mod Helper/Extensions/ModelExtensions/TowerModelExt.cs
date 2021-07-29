@@ -9,7 +9,7 @@ using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
-using Harmony;
+using HarmonyLib;
 using System.Collections.Generic;
 using System.Linq;
 

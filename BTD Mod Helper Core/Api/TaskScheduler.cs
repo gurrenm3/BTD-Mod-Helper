@@ -53,6 +53,9 @@ namespace BTD_Mod_Helper.Api
             {
                 while (!waitContition.Invoke())
                 {
+                    if (AppDomain.CurrentDomain == null)
+                        break;
+
                     yield return WaiterCoroutine(scheduleType, amountToWait);
                 }
             }
@@ -71,10 +74,19 @@ namespace BTD_Mod_Helper.Api
             switch (scheduleType)
             {
                 case ScheduleType.WaitForSeconds:
-                    yield return new WaitForSeconds(amountToWait);
+                    int count = 0;
+                    while (amountToWait >= count)
+                    {
+                        if (AppDomain.CurrentDomain == null)
+                            break;
+
+                        yield return new WaitForSeconds(1);
+                        count++;
+                    }
+                    
                     break;
                 case ScheduleType.WaitForFrames:
-                    int count = 0;
+                    count = 0;
                     while (amountToWait >= count)
                     {
                         yield return new WaitForEndOfFrame();

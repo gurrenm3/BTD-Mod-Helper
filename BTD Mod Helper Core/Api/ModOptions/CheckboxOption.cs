@@ -5,21 +5,29 @@ using System;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    internal class CheckboxOption : SharedOption
+    public class CheckboxOption : SharedOption
     {
-        public Toggle checkbox;
-        public Text checkboxText;
+        /// <summary>
+        /// The actual CheckBox associated with this option
+        /// </summary>
+        public Toggle Checkbox { get; private set; }
+
+        /// <summary>
+        /// The Text for the Checkbox
+        /// </summary>
+        public Text CheckboxText;
 
         private readonly ModSettingBool modSettingBool;
 
-        public CheckboxOption(GameObject parentGO, ModSettingBool modSettingBool) : base(parentGO, modSettingBool, "CheckboxOption")
+        internal CheckboxOption(GameObject parentGO, ModSettingBool modSettingBool) : base(parentGO, modSettingBool, "CheckboxOption")
         {
             this.modSettingBool = modSettingBool;
-            checkbox = instantiatedGameObject.transform.Find("Checkbox1").GetComponent<Toggle>();
-            checkboxText = instantiatedGameObject.transform.Find("Checkbox1/Label").GetComponent<Text>();
+            Checkbox = instantiatedGameObject.transform.Find("Checkbox1").GetComponent<Toggle>();
+            CheckboxText = instantiatedGameObject.transform.Find("Checkbox1/Label").GetComponent<Text>();
 
-            checkbox.Set(modSettingBool);
-            checkbox.AddOnValueChanged(value => modSettingBool.SetValue(value));
+            Checkbox.Set(modSettingBool);
+            Checkbox.AddOnValueChanged(value => modSettingBool.SetValue(value));
+            modSettingBool.OnInitialized.InvokeAll(this);
         }
 
         internal override ModSetting GetModSetting()

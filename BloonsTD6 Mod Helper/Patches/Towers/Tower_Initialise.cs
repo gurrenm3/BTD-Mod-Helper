@@ -3,7 +3,7 @@ using Assets.Scripts.Simulation.Behaviors;
 using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Simulation.Towers;
 using BTD_Mod_Helper.Extensions;
-using Harmony;
+using HarmonyLib;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Patches.Towers

@@ -1,5 +1,9 @@
-﻿using MelonLoader;
+﻿
+using MelonLoader;
+using System.Collections.Generic;
 using UnityEngine;
+using BTD_Mod_Helper.Extensions;
+using System;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -18,6 +22,16 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// Needs to be public to allow for object initializing
         /// </summary>
         public string displayName;
+
+        /// <summary>
+        /// Actions to call when the value changes
+        /// </summary>
+        public List<Action<T>> OnValueChanged { get; set; } = new List<Action<T>>();
+
+        /// <summary>
+        /// Actions to call when this OptionUI element is initialized
+        /// </summary>
+        public List<Action<SharedOption>> OnInitialized { get; set; } = new List<Action<SharedOption>>();
 
         /// <summary>
         /// Constructs a new ModSetting for the given value
@@ -47,6 +61,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             if (val is T v)
             {
                 value = v;
+                OnValueChanged.InvokeAll(v);
             }
             else
             {
