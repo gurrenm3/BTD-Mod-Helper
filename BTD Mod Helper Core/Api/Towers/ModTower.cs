@@ -7,6 +7,7 @@ using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
 using UnhollowerBaseLib;
@@ -38,6 +39,16 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The Icon for the Tower's purchase button
         /// </summary>
         public virtual string Icon => Name + "-Icon";
+
+        /// <summary>
+        /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
+        /// </summary>
+        public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+        
+        /// <summary>
+        /// If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
+        /// </summary>
+        public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
         
         /// <summary>
         /// Whether this Tower should display 2-dimensionally, and search for png images
@@ -163,10 +174,10 @@ namespace BTD_Mod_Helper.Api.Towers
                     model.name = model.name.Replace(BaseTower, Name);
                     model._name = model._name.Replace(BaseTower, Name);
                 });
-            
-                towerModel.instaIcon = GetSpriteReference(mod, Icon);
-                towerModel.portrait = GetSpriteReference(mod, Portrait);
-                towerModel.icon = GetSpriteReference(mod, Icon);
+
+                towerModel.instaIcon = IconReference;
+                towerModel.portrait = PortraitReference;
+                towerModel.icon = IconReference;
                 //towerModel.display = ;
                 //towerModel.GetBehavior<DisplayModel>().display = 
             }

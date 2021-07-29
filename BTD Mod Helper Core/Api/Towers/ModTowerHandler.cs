@@ -128,7 +128,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     .FirstOrDefault();
                 if (portraitUpgrade != null)
                 {
-                    var sprite = ModContent.GetSpriteReference(modTower.mod, portraitUpgrade.Portrait);
+                    var sprite = portraitUpgrade.PortraitReference;
                     if (sprite != null)
                     {
                         towerModel.portrait = sprite;
