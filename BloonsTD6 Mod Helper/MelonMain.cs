@@ -113,7 +113,6 @@ namespace BTD_Mod_Helper
             }
             
             ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
-
             
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();

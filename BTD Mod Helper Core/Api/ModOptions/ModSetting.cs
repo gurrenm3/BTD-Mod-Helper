@@ -24,7 +24,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public string displayName;
 
         /// <summary>
-        /// Actions to call when the value changes
+        /// Actions to call when the value changes. NOTE: Only works when using SetValue to change the value
         /// </summary>
         public List<Action<T>> OnValueChanged { get; set; } = new List<Action<T>>();
 
