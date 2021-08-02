@@ -35,17 +35,16 @@ namespace BTD_Mod_Helper.Api.ModOptions
             settingsUI_Canvas = rootGameObjects[0];
             optionsButton = ModOptionsMenu.CanvasGO.transform.Find("ModOptionsButton/Button").GetComponent<Button>();
 
-
-            var screenSizePanel = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("ScreenSizePanel");
-            var updateButton = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("UpdateButton");
+            var twitchButton = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("TwitchButton");
             
             
-            instantiatedButton = Object.Instantiate(optionsButton, updateButton.transform);
+            instantiatedButton = Object.Instantiate(optionsButton, twitchButton.transform);
             instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
             var transform = instantiatedButton.transform.Cast<RectTransform>();
-            transform.Translate(new Vector3(screenSizePanel.position.x + 150, 50), updateButton.transform);
-            transform.localScale = new Vector3(3, 3);
+            
+            transform.Translate(new Vector3(-150, 0), twitchButton.transform);
+            transform.localScale = new Vector3(2.5f, 2.5f);
         }
 
         public void OptionButtonClicked()
