@@ -27,6 +27,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
             //button.AddOnClick(buttonPressed); //you can also add OnClick events using this BTD6 Mod Helper extension
             
             modSetting.OnInitialized.InvokeAll(this);
+            
+            Button.AddOnClick(() => modSetting.SetValue(!modSetting.value));
         }
 
         //This is an example of how to setup button events, using the buttonClick code above.

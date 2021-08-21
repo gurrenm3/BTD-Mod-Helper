@@ -6,6 +6,7 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 #if BloonsTD6
+using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
 using BTD_Mod_Helper.Api.Towers;
 #elif BloonsAT
@@ -330,6 +331,19 @@ namespace BTD_Mod_Helper.Api
             }
 
             return id;
+        }
+
+        /// <summary>
+        /// Gets the TowerModel for a ModTower at a specific tier level
+        /// </summary>
+        /// <param name="top">The top path tier</param>
+        /// <param name="mid">The middle path tier</param>
+        /// <param name="bot">The bottom path tier</param>
+        /// <typeparam name="T">The ModTower type</typeparam>
+        /// <returns>The tower name/id</returns>
+        public static TowerModel GetTowerModel<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
+        {
+            return Game.instance.model.GetTowerFromId(TowerID<T>(top, mid, bot));
         }
 
         /// <summary>

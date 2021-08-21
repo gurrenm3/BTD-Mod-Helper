@@ -49,7 +49,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
             InputField.characterValidation = InputField.CharacterValidation.Integer;
             InputField.AddOnValueChangedEvent(value =>
             {
-                var i = long.Parse(value);
+                if (!long.TryParse(value, out var i))
+                {
+                    i = 0;
+                }
                 if (modSettingInt.maxValue.HasValue && i > modSettingInt.maxValue.Value)
                 {
                     i = modSettingInt.maxValue.Value;
@@ -68,7 +71,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
             InputField.characterValidation = InputField.CharacterValidation.Decimal;
             InputField.AddOnValueChangedEvent(value =>
             {
-                var d = double.Parse(value);
+                if (!double.TryParse(value, out var d))
+                {
+                    d = 0;
+                }
                 if (modSettingDouble.maxValue.HasValue && d > modSettingDouble.maxValue.Value)
                 {
                     d = (int) modSettingDouble.maxValue.Value;

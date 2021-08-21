@@ -61,6 +61,11 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual float PixelsPerUnit => 10f;
 
         /// <summary>
+        /// Makes this Tower not actually add itself to the shop, useful for making subtowers
+        /// </summary>
+        public virtual bool DontAddToShop => false;
+
+        /// <summary>
         /// The string to use for the Primary tower set
         /// </summary>
         protected const string PRIMARY = "Primary";
