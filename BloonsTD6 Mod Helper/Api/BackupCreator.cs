@@ -25,7 +25,7 @@ namespace BTD_Mod_Helper.Api
 
         public void CreateBackup()
         {
-            MelonLoader.MelonLogger.Msg("Creating Backup...");
+            MelonLoader.MelonLogger.Msg("Creating Profile Backup...");
             string originalPath = $"{Game.instance.GetSaveDirectory()}\\Profile.save";
 
             string time = DateTime.Now.ToString().Replace("/", "-").Replace(":", ".");

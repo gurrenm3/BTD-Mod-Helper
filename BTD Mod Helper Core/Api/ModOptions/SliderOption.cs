@@ -104,17 +104,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
         internal SliderOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
         {
             Slider.value = (float) modSettingDouble.value;
-            InputField.text = modSettingDouble.value.ToString("F");
+            InputField.text = modSettingDouble.value.ToString("");
             Slider.minValue = (float) modSettingDouble.minValue;
             Slider.maxValue = (float) modSettingDouble.maxValue;
             
             Slider.onValueChanged.AddListener(value =>
             {
-                var l = (double) value;
-                modSettingDouble.SetValue(l);
-                if (double.TryParse(InputField.text, out var num) && Math.Abs(num - l) > .001)
+                var d = (double) value;
+                modSettingDouble.SetValue(d);
+                if (double.TryParse(InputField.text, out var num) && Math.Abs(num - d) > .001)
                 {
-                    InputField.SetText(l.ToString("F"));
+                    InputField.SetText($"{Math.Round(d, 5):0.#####}");
                 }
             });
             

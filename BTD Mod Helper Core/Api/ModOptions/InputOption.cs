@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Extensions;
+using Il2CppSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,27 +29,30 @@ namespace BTD_Mod_Helper.Api.ModOptions
             ButtonText = instantiatedGameObject.transform.Find("Button/Text").GetComponent<Text>();
             InputField = instantiatedGameObject.transform.Find("InputField").GetComponent<InputField>();
 
-            InputField.SetText(modSetting.GetValue().ToString());
-
             ButtonText.text = "Reset";
-            Button.AddOnClick(() =>
-            {
-                InputField.SetText(modSetting.GetDefaultValue().ToString());
-            });
         }
         
         internal InputOption(GameObject parentGO, ModSettingString modSettingString) : this(parentGO, (ModSetting)modSettingString)
         {
+            InputField.SetText(modSettingString.GetValue().ToString());
+            
             InputField.characterValidation = modSettingString.GetValidation();
             InputField.AddSubmitEvent(modSettingString.SetValue);
             modSettingString.OnInitialized.InvokeAll(this);
+            Button.AddOnClick(() =>
+            {
+                InputField.SetText(modSettingString.GetDefaultValue().ToString());
+            });
         }
 
         internal InputOption(GameObject parentGO, ModSettingInt modSettingInt) : this(parentGO, (ModSetting)modSettingInt)
         {
+            InputField.SetText(modSettingInt.GetValue().ToString());
+            
             InputField.characterValidation = InputField.CharacterValidation.Integer;
             InputField.AddOnValueChangedEvent(value =>
             {
+                //InputField.SetText(value);
                 if (!long.TryParse(value, out var i))
                 {
                     i = 0;
@@ -60,17 +64,23 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 {
                     i = modSettingInt.minValue.Value;
                 }
-                InputField.SetText(i.ToString());
                 modSettingInt.SetValue(i);
             });
             modSettingInt.OnInitialized.InvokeAll(this);
+            Button.AddOnClick(() =>
+            {
+                InputField.SetText(modSettingInt.GetDefaultValue().ToString());
+            });
         }
 
         internal InputOption(GameObject parentGO, ModSettingDouble modSettingDouble) : this(parentGO, (ModSetting)modSettingDouble)
         {
+            InputField.SetText($"{Math.Round((double)modSettingDouble.GetValue(), 5):0.#####}");
+            
             InputField.characterValidation = InputField.CharacterValidation.Decimal;
             InputField.AddOnValueChangedEvent(value =>
             {
+                //InputField.SetText(value);
                 if (!double.TryParse(value, out var d))
                 {
                     d = 0;
@@ -82,10 +92,13 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 {
                     d = (int) modSettingDouble.minValue.Value;
                 }
-                InputField.SetText(d.ToString());
                 modSettingDouble.SetValue(d);
             });
             modSettingDouble.OnInitialized.InvokeAll(this);
+            Button.AddOnClick(() =>
+            {
+                InputField.SetText($"{Math.Round((double)modSettingDouble.GetDefaultValue(), 5):0.#####}");
+            });
         }
 
         internal static RectTransform GetOriginalAsset(GameObject parentGO)
