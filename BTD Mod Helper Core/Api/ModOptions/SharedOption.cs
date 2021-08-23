@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class SharedOption
+    public class SharedOption : ModOption
     {
         private readonly ModSetting modSetting;
         internal GameObject instantiatedGameObject;
@@ -47,7 +47,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             instantiatedGameObject.Hide();
         }
 
-        internal virtual ModSetting GetModSetting()
+        public virtual ModSetting GetModSetting()
         {
             return modSetting;
         }

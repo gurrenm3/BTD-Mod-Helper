@@ -482,6 +482,14 @@ namespace BTD_Mod_Helper
         {
         }
 
+        /// <summary>
+        /// Called when all of the existing GameObjects within a match are destroyed
+        /// </summary>
+        public virtual void OnGameObjectsReset()
+        {
+            
+        }
+
         #endregion
 
 

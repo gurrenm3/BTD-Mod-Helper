@@ -84,9 +84,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         /// <inheritdoc />
         public abstract ModOption ConstructModOption(GameObject parent);
-
-        /// <inheritdoc />
-        public abstract SharedOption ConstructModOption2(GameObject parent);
     }
 
     
@@ -132,11 +129,5 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <param name="parent">The parent GameObject to attach to</param>
         /// <returns>The constructed ModOption</returns>
         ModOption ConstructModOption(GameObject parent);
-
-        /// <summary>
-        /// Constructs a visual SharedModOption for this ModSetting
-        /// </summary>
-        /// <param name="parent">The parent GameObject to attach to</param>
-        SharedOption ConstructModOption2(GameObject parent);
     }
 }

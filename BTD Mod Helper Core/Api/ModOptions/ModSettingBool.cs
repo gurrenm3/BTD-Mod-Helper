@@ -30,13 +30,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         public override ModOption ConstructModOption(GameObject parent)
         {
-            return null;
-            //return isButton ? (ModOption) new ButtonOption(parent, this) : new CheckboxOption(parent, this);
-        }
-
-        public override SharedOption ConstructModOption2(GameObject parent)
-        {
-            return (isButton || IsButton) ? (SharedOption) new ButtonOption(parent, this) : new CheckboxOption(parent, this);
+            return isButton || IsButton ? (SharedOption) new ButtonOption(parent, this) : new CheckboxOption(parent, this);
         }
     }
 }

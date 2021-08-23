@@ -47,13 +47,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <inheritdoc />
         public override ModOption ConstructModOption(GameObject parent)
         {
-            return null;
-            //return new InputOption(parent, this);
-        }
-
-        /// <inheritdoc />
-        public override SharedOption ConstructModOption2(GameObject parent)
-        {
             return new InputOption(parent, this);
         }
 

@@ -12,7 +12,9 @@ using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
+using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
+using Assets.Scripts.Utils;
 
 namespace BTD_Mod_Helper
 {
@@ -62,7 +64,7 @@ namespace BTD_Mod_Helper
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                //FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().tower.towerModel);
+                FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().tower.towerModel);
             }
 
             if (Game.instance is null)
@@ -101,7 +103,7 @@ namespace BTD_Mod_Helper
             }
         }
 
-        public override void OnMainMenu()
+        public override void OnTitleScreen()
         {
             if (UpdateHandler.updatedMods && PopupScreen.instance != null)
             {
@@ -116,6 +118,42 @@ namespace BTD_Mod_Helper
             
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();
+
+            // Useful, shouldn't be intrusive
+            if (Input.GetKey(KeyCode.ScrollLock))
+            {
+                MelonLogger.Msg("Dumping Towers to local files");
+                foreach (var tower in Game.instance.model.towers)
+                {
+                    try
+                    {
+                        var path = "Towers/" + tower.baseId + "/" + tower.name + ".json";
+                        FileIOUtil.SaveObject(path, tower);
+                        MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error(e.Message);
+                        // ignored
+                    }
+                }
+                
+                MelonLogger.Msg("Dumping Upgrades to local files");
+                foreach (var upgrade in Game.instance.model.upgrades)
+                {
+                    try
+                    {
+                        var path = "Upgrades/" + upgrade.name + ".json";
+                        FileIOUtil.SaveObject(path, upgrade);
+                        MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error(e.Message);
+                        // ignored
+                    }
+                }
+            }
         }
 
         private void Schedule_GameModel_Loaded()
