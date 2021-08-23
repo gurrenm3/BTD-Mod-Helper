@@ -151,6 +151,7 @@
     <Compile Include="Api\Builders\BloonModelBuilder.cs" />
     <Compile Include="Api\Coop\Chat_Message.cs" />
     <Compile Include="Api\Coop\MessageUtils.cs" />
+    <Compile Include="AutoSave.cs" />
     <Compile Include="BloonsTD6Mod.cs" />
     <Compile Include="BTD6 UI\MainMenuUI.cs" />
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
@@ -197,11 +198,11 @@
     <Compile Include="MelonMain.cs" />
     <Compile Include="Patches\Bloons\BloonToSimulation_Ctor.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
-    <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
+    <Compile Include="Patches\Bloons\Bloon_Degrade.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
-    <Compile Include="Patches\Bloons\Bloon_Degrade.cs" />
     <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
+    <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
     <Compile Include="Patches\CoopQuickMatchScreen_Open.cs" />
     <Compile Include="Patches\Factory_DestroyAllActive.cs" />
     <Compile Include="Patches\Factory_FindAndSetupPrototypeAsync.cs" />
@@ -265,11 +266,10 @@
     <None Include="Resources\ingame_popup.bundle" />
     <None Include="Resources\modoptions.bundle" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y
-copy "$(TargetDir)$(ProjectName).xml" "F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y</PostBuildEvent>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y </PostBuildEvent>
   </PropertyGroup>
 </Project>

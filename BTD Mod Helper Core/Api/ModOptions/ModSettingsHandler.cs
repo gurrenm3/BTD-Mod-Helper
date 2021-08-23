@@ -46,7 +46,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     var fileName = $"{modSettingsDir}\\{mod.Info.Name}.json";
                     if (!File.Exists(fileName))
                     {
-                        MelonLogger.Msg("saving new file");
                         SaveModSettings(mod, modSettingsDir);
                     }
                 }
