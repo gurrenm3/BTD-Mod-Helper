@@ -8,13 +8,13 @@ public class CreateAssetBundles
     static void BuildAllAssetBundles()
     {
         string assetBundleDirectory = "Assets/AssetBundles";
-        if (!Directory.Exists(assetBundleDirectory))
-        {
-            Directory.CreateDirectory(assetBundleDirectory);
-        }
+        Directory.Delete(assetBundleDirectory, true);
+        Directory.CreateDirectory(assetBundleDirectory);
         BuildPipeline.BuildAssetBundles(assetBundleDirectory,
                                         BuildAssetBundleOptions.None,
                                         BuildTarget.StandaloneWindows);
+
+        File.Copy(assetBundleDirectory + "/modoptions.bundle", "../BloonsTD6 Mod Helper/Resources/modoptions.bundle", true);
     }
 }
 #endif

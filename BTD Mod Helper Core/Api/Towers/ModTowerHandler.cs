@@ -26,18 +26,38 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal static void LoadTowers(List<ModTower> modTowers)
         {
+            var towerModels = new Dictionary<ModTower, List<TowerModel>>();
             foreach (var modTower in modTowers)
             {
                 try
                 {
-                    AddTower(modTower);
+                    towerModels[modTower] = AddTower(modTower);
                 }
                 catch (Exception e)
                 {
                     MelonLogger.Error("Failed to add the ModTower " + modTower.Name + " to the game");
                     MelonLogger.Error(e);
                 }
-                
+            }
+
+            foreach (var modTower in modTowers)
+            {
+                try
+                {
+                    foreach (var towerModel in towerModels[modTower])
+                    {
+                        FinalizeTowerModel(modTower, towerModel);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Failed to finalize ModTower " + modTower.Name);
+                    MelonLogger.Error(e);
+                }
+            }
+            
+            foreach (var modTower in modTowers)
+            {
                 try
                 {
                     Game.instance.GetLocalizationManager().textTable[modTower.Id] = modTower.DisplayName;
@@ -50,8 +70,49 @@ namespace BTD_Mod_Helper.Api.Towers
                     MelonLogger.Error(e);
                 }
             }
+            
         }
 
+        internal static void FinalizeTowerModel(ModTower modTower, TowerModel towerModel)
+        {
+            // do their base tower modifications
+            try
+            {
+                modTower.ModifyBaseTowerModel(towerModel);
+            }
+            catch (Exception)
+            {
+                MelonLogger.Error($"Failed to modify TowerModel {towerModel.name}");
+                throw;
+            }
+            
+            // actually apply the upgrades
+            try
+            {
+                foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
+                    .Where(modUpgrade => modUpgrade != null && towerModel.tiers[modUpgrade.Path] >= modUpgrade.Tier)
+                    .OrderByDescending(modUpgrade => modUpgrade.Priority)
+                    .ThenBy(modUpgrade => modUpgrade.Tier)
+                    .ThenBy(modUpgrade => modUpgrade.Path))
+                {
+                    try
+                    {
+                        modUpgrade.ApplyUpgrade(towerModel);
+                    }
+                    catch (Exception)
+                    {
+                        MelonLogger.Error($"Failed to apply ModUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
+                        throw;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MelonLogger.Error($"Failed to apply upgrades for TowerModel {towerModel.name}");
+                throw;
+            }
+        }
+        
         internal static TowerModel CreateTowerModel(ModTower modTower, int[] tiers)
         {
             TowerModel towerModel;
@@ -89,6 +150,7 @@ namespace BTD_Mod_Helper.Api.Towers
             // add the upgrade path models
             try
             {
+                var modTowerTiers = modTower.TowerTiers().ToList();
                 for (var i = 0; i <= 2; i++)
                 {
                     var tierMax = modTower.tierMaxes[i];
@@ -96,7 +158,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     {
                         var newTiers = tiers.Duplicate();
                         newTiers[i]++;
-                        if (newTiers.IsValid()) // no triple cross-pathed towers (yet...)
+                        if (modTowerTiers.Any(t => t.SequenceEqual(newTiers)))
                         {
                             var modUpgrade = modTower.upgrades[i, newTiers[i] - 1];
                             var upgradePathModel = new UpgradePathModel(modUpgrade.Id, 
@@ -179,50 +241,11 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
             }
             
-            
-
-            // do their base tower modifications
-            try
-            {
-                modTower.ModifyBaseTowerModel(towerModel);
-            }
-            catch (Exception)
-            {
-                MelonLogger.Error($"Failed to modify TowerModel {towerModel.name}");
-                throw;
-            }
-            
-            // actually apply the upgrades
-            try
-            {
-                foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
-                    .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
-                    .OrderByDescending(modUpgrade => modUpgrade.Priority)
-                    .ThenBy(modUpgrade => modUpgrade.Tier)
-                    .ThenBy(modUpgrade => modUpgrade.Path))
-                {
-                    try
-                    {
-                        modUpgrade.ApplyUpgrade(towerModel);
-                    }
-                    catch (Exception)
-                    {
-                        MelonLogger.Error($"Failed to apply ModUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
-                        throw;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MelonLogger.Error($"Failed to apply upgrades for TowerModel {towerModel.name}");
-                throw;
-            }
-
             //FileIOUtil.SaveObject($"Towers\\{towerModel.name}.json", towerModel);
             return towerModel;
         }
 
-        internal static void AddTower(ModTower modTower)
+        internal static List<TowerModel> AddTower(ModTower modTower)
         {
             var towerModels = new List<TowerModel>();
             foreach (var tiers in modTower.TowerTiers())
@@ -253,21 +276,26 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
             }
 
-            try
+            if (!modTower.DontAddToShop)
             {
-                var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
-                var index = modTower.GetTowerIndex(Game.instance.model.towerSet.ToList());
-                if (index >= 0)
+                try
                 {
-                    Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
+                    var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
+                    var index = modTower.GetTowerIndex(Game.instance.model.towerSet.ToList());
+                    if (index >= 0)
+                    {
+                        Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error($"Failed to add ModTower {modTower.Name} to the shop");
+                    MelonLogger.Error(e);
+                    throw;
                 }
             }
-            catch (Exception e)
-            {
-                MelonLogger.Error($"Failed to add ModTower {modTower.Name} to the shop");
-                MelonLogger.Error(e);
-                throw;
-            }
+
+            return towerModels;
         }
     }
 }

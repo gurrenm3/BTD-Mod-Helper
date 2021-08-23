@@ -24,12 +24,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         public override ModOption ConstructModOption(GameObject parent)
         {
-            return null;
-            //return isSlider ? (ModOption) new SliderOption(parent, this) : new InputOption(parent, this);
-        }
-
-        public override SharedOption ConstructModOption2(GameObject parent)
-        {
             return isSlider ? (SharedOption)new SliderOption(parent, this) : new InputOption(parent, this);
         }
     }

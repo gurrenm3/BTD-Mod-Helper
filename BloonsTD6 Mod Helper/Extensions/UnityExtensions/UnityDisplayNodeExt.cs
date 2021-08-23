@@ -50,7 +50,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Saves the texture used for this node's mesh renderer 
         /// <br/>
-        /// By default, this saves to local files, aka the "Local" shortcut in your main BloonsTD6 directory
+        /// By default, this saves to local files, aka "C:\Users\...\AppData\LocalLow\Ninja Kiwi\BloonsTD6"
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="path">Optional path to save to instead</param>
@@ -66,7 +66,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Saves the texture used for this node's mesh renderer 
         /// <br/>
-        /// By default, this saves to local files, aka the "Local" shortcut in your main BloonsTD6 directory
+        /// By default, this saves to local files, aka "C:\Users\...\AppData\LocalLow\Ninja Kiwi\BloonsTD6"
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="path">Optional path to save to instead</param>

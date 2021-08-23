@@ -34,13 +34,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return base.GetDefaultValue().ToString();
         }
         
-
         public override ModOption ConstructModOption(GameObject parent)
-        {
-            throw new NotImplementedException(); //TODO DropDownOption
-        }
-
-        public override SharedOption ConstructModOption2(GameObject parent)
         {
             throw new NotImplementedException(); //TODO DropDownOption
         }

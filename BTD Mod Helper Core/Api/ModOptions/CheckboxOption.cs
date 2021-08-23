@@ -30,7 +30,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modSettingBool.OnInitialized.InvokeAll(this);
         }
 
-        internal override ModSetting GetModSetting()
+        public override ModSetting GetModSetting()
         {
             return modSettingBool;
         }
