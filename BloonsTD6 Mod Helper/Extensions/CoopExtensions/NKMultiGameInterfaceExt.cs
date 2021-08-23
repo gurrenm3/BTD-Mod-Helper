@@ -26,6 +26,9 @@ namespace BTD_Mod_Helper.Extensions
         {
             Message message = MessageUtils.CreateMessage(objectToSend, code);
 
+            var str = Il2CppSystem.Text.Encoding.Default.GetString(message.bytes);
+            MelonLoader.MelonLogger.Msg($"str: {str}");
+
             if (peerId.HasValue && peerId != null)
                 nkGI.SendToPeer(peerId.Value, message);
             else
@@ -41,6 +44,10 @@ namespace BTD_Mod_Helper.Extensions
         public static void SendMessage(this NKMultiGameInterface nkGI, Il2CppSystem.String objectToSend, byte? peerId = null, string code = "")
         {
             Message message = MessageUtils.CreateMessage(objectToSend, code);
+
+            var str = Il2CppSystem.Text.Encoding.Default.GetString(message.bytes);
+            MelonLoader.MelonLogger.Msg($"str: {str}");
+
             if (peerId.HasValue && peerId != null)
                 nkGI.SendToPeer(peerId.Value, message);
             else

@@ -16,7 +16,14 @@ namespace BTD_Mod_Helper.Api.Coop
 
         public Chat_Message(Il2CppStructArray<byte> messageBytes)
         {
-            throw new System.Exception("This code was broken in BTD6 update 27.0");
+            var json = Il2CppSystem.Text.Encoding.Default.GetString(messageBytes);
+            Chat_Message message = Read(json);
+            PeerID = message.PeerID;
+            Sender = message.Sender;
+            Message = message.Message;
+            IsPrivateMessage = message.IsPrivateMessage;
+
+            //throw new System.Exception("This code was broken in BTD6 update 27.0");
             // commented code below broke in update 27.0
             //string json = SerialisationUtil.Deserialise<string>(messageBytes);
 

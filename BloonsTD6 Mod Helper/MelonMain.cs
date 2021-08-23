@@ -13,6 +13,7 @@ using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
 using Assets.Scripts.Unity.UI_New.Settings;
+using System.Diagnostics;
 
 namespace BTD_Mod_Helper
 {
@@ -46,9 +47,9 @@ namespace BTD_Mod_Helper
             Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain), nameof(SettingsPatch));
         }
 
-        
+
         internal static ShowModOptions_Button modsButton;
-        
+
         public static void SettingsPatch()
         {
             modsButton = new ShowModOptions_Button();
@@ -75,8 +76,8 @@ namespace BTD_Mod_Helper
                 return;
 
             NotificationMgr.CheckForNotifications();
-            
-            
+
+
             /*foreach (var (guid, sprite) in SpriteRegister.register)
             {
                 if (sprite == null)
@@ -111,11 +112,13 @@ namespace BTD_Mod_Helper
                     "Yes, quit the game", null, "Not now", Popup.TransitionAnim.Update);
                 UpdateHandler.updatedMods = false;
             }
-            
+
             ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
-            
+
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();
+
+            InitAutosave();
         }
 
         private void Schedule_GameModel_Loaded()
@@ -134,7 +137,6 @@ namespace BTD_Mod_Helper
 
         public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
 
-
         public static void DoPatchMethods(Action<BloonsTD6Mod> action)
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>())
@@ -143,5 +145,83 @@ namespace BTD_Mod_Helper
                     action.Invoke(mod);
             }
         }
+
+
+
+
+        #region Autosave Methods
+
+        public ModSettingBool openBackupDir = new ModSettingBool(true);
+        public ModSettingBool openSaveDir = new ModSettingBool(true);
+        public ModSettingString autosavePath = new ModSettingString("");
+        public ModSettingInt timeBetweenBackup = new ModSettingInt(30);
+        public ModSettingInt maxSavedBackups = new ModSettingInt(10);
+        BackupCreator backup;
+        bool autosaveInit;
+
+        public void InitAutosave()
+        {
+            if (autosaveInit)
+                return;
+
+            InitAutosaveSettings();
+            backup = new BackupCreator(autosavePath, maxSavedBackups);
+            ScheduleAutosave();
+            autosaveInit = true;
+        }
+
+        public override void OnMatchEnd() => backup.CreateBackup();
+
+
+        void InitAutosaveSettings()
+        {
+            openBackupDir.IsButton = true;
+            openBackupDir.SetName("Open Backup Directory");
+            openBackupDir.OnInitialized.Add((option) => InitOpenDirButton(option, autosavePath));
+
+            openSaveDir.IsButton = true;
+            openSaveDir.SetName("Open Save Directory");
+            openSaveDir.OnInitialized.Add((option) => InitOpenDirButton(option, Game.instance.GetSaveDirectory()));
+
+            timeBetweenBackup.SetName("Minutes Between Each Backup");
+            maxSavedBackups.SetName("Max Saved Backups");
+            maxSavedBackups.OnValueChanged.Add((newMax) => backup.SetMaxBackups(newMax));
+
+            if (string.IsNullOrEmpty(autosavePath))
+            {
+                string autosaveDir = this.GetModDirectory() + "\\Autosave";
+                Directory.CreateDirectory(autosaveDir);
+                autosavePath.SetValue(autosaveDir);
+            }
+            autosavePath.SetName("Backup Directory");
+            autosavePath.OnValueChanged.Add((newPath) =>
+            {
+                if (!string.IsNullOrEmpty(newPath))
+                {
+                    Directory.CreateDirectory(newPath);
+                    backup.MoveBackupDir(newPath);
+                }
+            });
+        }
+
+        void ScheduleAutosave()
+        {
+            const int secondsPerMinute = 60;
+            TaskScheduler.ScheduleTask(() =>
+            {
+                backup.CreateBackup();
+                ScheduleAutosave();
+            },
+            Api.Enums.ScheduleType.WaitForSeconds, timeBetweenBackup * secondsPerMinute);
+        }
+
+        void InitOpenDirButton(SharedOption option, string dir)
+        {
+            var button = (ButtonOption)option;
+            button.ButtonText.text = "Open";
+            button.Button.onClick.AddListener(() => Process.Start(dir));
+        }
+
+        #endregion
     }
 }
