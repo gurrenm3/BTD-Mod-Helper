@@ -47,8 +47,11 @@ namespace BTD_Mod_Helper
             Schedule_GameModel_Loaded();
 
             Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain), nameof(SettingsPatch));
-            
-            AutoSave.InitAutosave(settingsDir);
+        }
+
+        public override void OnMainMenu()
+        {
+            AutoSave.InitAutosave(this.GetModSettingsDir(true));
         }
 
 
@@ -80,7 +83,6 @@ namespace BTD_Mod_Helper
                 return;
 
             NotificationMgr.CheckForNotifications();
-            
         }
 
         private void KeyCodeHooks()

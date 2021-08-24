@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
@@ -16,6 +17,7 @@ namespace BTD_Mod_Helper
     {
         internal static BackupCreator backup;
         internal static bool autosaveInit;
+        internal static string profileSaveDir;
 
         internal static void InitAutosave(string settingsDir)
         {
@@ -32,8 +34,14 @@ namespace BTD_Mod_Helper
 
         private static void InitAutosaveSettings(string settingsDir)
         {
+            string saveDir = Game.instance.GetSaveDirectory();
+            if (!string.IsNullOrEmpty(saveDir))
+                openSaveDir.OnInitialized.Add((option) => InitOpenDirButton(option, saveDir));
+            else
+                openSaveDir.OnValueChanged.Add((value) =>
+                        PopupScreen.instance.ShowOkPopup("Can't open Save directory because it wasn't found"));
+
             openBackupDir.OnInitialized.Add((option) => InitOpenDirButton(option, autosavePath));
-            openSaveDir.OnInitialized.Add((option) => InitOpenDirButton(option, Game.instance.GetSaveDirectory()));
             maxSavedBackups.OnValueChanged.Add((newMax) => backup.SetMaxBackups(newMax));
 
             if (string.IsNullOrEmpty(autosavePath))

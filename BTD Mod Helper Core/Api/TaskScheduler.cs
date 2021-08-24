@@ -32,7 +32,17 @@ namespace BTD_Mod_Helper.Api
         /// /// <param name="waitCondition">Wait for this to be true before executing task</param>
         public static void ScheduleTask(Action action, ScheduleType scheduleType, int amountToWait, Func<bool> waitCondition = null)
         {
-            MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, waitCondition));
+            try
+            {
+                MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, waitCondition));
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("trampoline"))
+                    MelonLoader.MelonLogger.Warning("Notice: Melonloader Coroutine had a trampoline error." +
+                        " This shouldn't have any impact on the mod.");
+            }
         }
 
         /// <summary>
@@ -80,7 +90,7 @@ namespace BTD_Mod_Helper.Api
                         if (AppDomain.CurrentDomain == null)
                             break;
 
-                        yield return new WaitForSeconds(1);
+                        yield return new WaitForSecondsRealtime(1);
                         count++;
                     }
                     

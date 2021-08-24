@@ -1,5 +1,4 @@
-﻿
-using MelonLoader;
+﻿using MelonLoader;
 using System.Collections.Generic;
 using UnityEngine;
 using BTD_Mod_Helper.Extensions;
@@ -8,7 +7,7 @@ using System;
 namespace BTD_Mod_Helper.Api.ModOptions
 {
     /// <summary>
-    /// Class for keeping track of a variable for a Mod that can be changed in game via the Mod Setings menu
+    /// (Cross-Game compatible) Class for keeping track of a variable for a Mod that can be changed in game via the Mod Setings menu
     /// </summary>
     /// <typeparam name="T">The type that this ModSetting holds</typeparam>
     public abstract class ModSetting<T> : ModSetting

@@ -25,8 +25,16 @@ namespace BTD_Mod_Helper.Api
 
         public void CreateBackup()
         {
+            MelonLoader.MelonLogger.Msg("Attempting to backup Profile...");
+            string saveDir = Game.instance.GetSaveDirectory();
+            if (string.IsNullOrEmpty(saveDir))
+            {
+                MelonLoader.MelonLogger.Error("Unable to backup Profile. Save directory not found");
+                return;
+            }
+
             MelonLoader.MelonLogger.Msg("Creating Profile Backup...");
-            string originalPath = $"{Game.instance.GetSaveDirectory()}\\Profile.save";
+            string originalPath = $"{saveDir}\\Profile.save";
 
             string time = DateTime.Now.ToString().Replace("/", "-").Replace(":", ".");
             string copyPath = $"{_backupDir}\\Profile_{time}.Save";
@@ -38,6 +46,13 @@ namespace BTD_Mod_Helper.Api
 
         public void MoveBackupDir(string newBackupDir)
         {
+            if (string.IsNullOrEmpty(_backupDir) || string.IsNullOrEmpty(newBackupDir))
+            {
+                MelonLoader.MelonLogger.Error("Can't move Autosave directory because either" +
+                    " the old backup dir or new backup dir was not valid");
+                return;
+            }
+
             var files = GetAllBackups();
             foreach (var file in files)
                 File.Move(file.FullName, $"{newBackupDir}\\{file.Name}.{file.Extension}");
