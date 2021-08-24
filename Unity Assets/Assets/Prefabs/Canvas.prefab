@@ -1989,7 +1989,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 9211777767829268437}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3953,7 +3953,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 125}
+  m_Spacing: {x: 0, y: 150}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1 &9211777767733274783
