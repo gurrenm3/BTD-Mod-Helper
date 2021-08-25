@@ -70,7 +70,7 @@ namespace BTD_Mod_Helper.Api.Updater
 
             var match = Regex.Match(plainTextCS, MelonInfoRegex);
 
-            return match.Success ? match.Value : DefaultVersion;
+            return match.Success && match.Groups.Count > 1 ? match.Groups[1].Value : DefaultVersion;
         }
         
         internal async Task<string> GetMelonInfoAsync() => await GetMelonInfoAsync(updateInfo.MelonInfoCsURL);
@@ -94,6 +94,7 @@ namespace BTD_Mod_Helper.Api.Updater
             if (updateInfo.MelonInfoCsURL != "")
             {
                 var version = await GetMelonInfoAsync();
+                MelonLogger.Msg(version);
                 return IsUpdate(updateInfo.CurrentVersion, version);
             }
 
