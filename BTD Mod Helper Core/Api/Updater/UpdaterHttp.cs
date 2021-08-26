@@ -94,7 +94,6 @@ namespace BTD_Mod_Helper.Api.Updater
             if (updateInfo.MelonInfoCsURL != "")
             {
                 var version = await GetMelonInfoAsync();
-                MelonLogger.Msg(version);
                 return IsUpdate(updateInfo.CurrentVersion, version);
             }
 

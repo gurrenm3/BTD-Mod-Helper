@@ -16,6 +16,8 @@ using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
+using System.Globalization;
+using Assets.Scripts.Models;
 
 namespace BTD_Mod_Helper
 {
@@ -46,7 +48,21 @@ namespace BTD_Mod_Helper
 
             Schedule_GameModel_Loaded();
 
-            Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain), nameof(SettingsPatch));
+            Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain),
+                nameof(SettingsPatch));
+        }
+
+        public override void OnGameModelLoaded(GameModel model)
+        {
+            /* Save for now, useful for when they add new upgrades
+             Game.instance.model.upgrades.ForEach(upgrade =>
+            {
+                var textInfo = new CultureInfo("en-US", false).TextInfo;
+                var p = textInfo.ToTitleCase(upgrade.name.Replace(".", " ")).Replace(" ", "").Replace("+", "I")
+                    .Replace("Buccaneer-", "").Replace("-", "").Replace("'", "").Replace(":", "");
+                MelonLogger.Msg($"public const string {p} = \"{upgrade.name}\";");
+            });
+            */
         }
 
         public override void OnMainMenu()
@@ -120,15 +136,16 @@ namespace BTD_Mod_Helper
         private void Schedule_GameModel_Loaded()
         {
             TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnGameModelLoaded(Game.instance.model)); },
-            () => Game.instance?.model != null);
+                () => Game.instance?.model != null);
         }
 
         bool scheduledInGamePatch = false;
+
         private void Schedule_InGame_Loaded()
         {
             scheduledInGamePatch = true;
             TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnInGameLoaded(InGame.instance)); },
-            () => InGame.instance?.GetSimulation() != null);
+                () => InGame.instance?.GetSimulation() != null);
         }
 
         public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
@@ -160,12 +177,12 @@ namespace BTD_Mod_Helper
         {
             displayName = "Backup Directory"
         };
-        
+
         public static ModSettingInt timeBetweenBackup = new ModSettingInt(30)
         {
             displayName = "Minutes Between Each Backup"
         };
-        
+
         public static ModSettingInt maxSavedBackups = new ModSettingInt(10)
         {
             displayName = "Max Saved Backups"
