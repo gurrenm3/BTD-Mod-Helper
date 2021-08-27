@@ -265,11 +265,11 @@
     <None Include="Resources\ingame_popup.bundle" />
     <None Include="Resources\modoptions.bundle" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="bloonstd6.props"/>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y
-copy "$(TargetDir)$(ProjectName).xml" "F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6\Mods" /y</PostBuildEvent>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "$(BloonsTD6)\Mods" /y &amp;&amp; copy "$(TargetDir)$(TargetName).xml" "$(BloonsTD6)\Mods" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
