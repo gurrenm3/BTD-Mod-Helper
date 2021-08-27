@@ -241,7 +241,6 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
             }
             
-            //FileIOUtil.SaveObject($"Towers\\{towerModel.name}.json", towerModel);
             return towerModel;
         }
 

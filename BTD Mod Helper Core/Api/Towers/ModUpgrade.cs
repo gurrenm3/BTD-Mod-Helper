@@ -117,8 +117,6 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 upgradeModel = new UpgradeModel(Id, Cost, 0, IconReference ?? DefaultIcon, 
                     Path, Tier - 1, 0, "", "");
-                
-                FileIOUtil.SaveObject($"Upgrades\\{upgradeModel.name}.json", upgradeModel);
             }
 
             return upgradeModel;

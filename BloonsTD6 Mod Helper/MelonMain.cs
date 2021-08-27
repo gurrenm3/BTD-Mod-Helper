@@ -65,11 +65,23 @@ namespace BTD_Mod_Helper
             */
         }
 
-        public override void OnMainMenu()
+        private static ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
-            AutoSave.InitAutosave(this.GetModSettingsDir(true));
-        }
+            displayName = "Open Local Files Directory",
+            IsButton = true
+        };
 
+        private static ModSettingBool ExportTowerJSONs = new ModSettingBool(false)
+        {
+            displayName = "Export Tower JSONs",
+            IsButton = true
+        };
+
+        private static ModSettingBool ExportUpgradeJSONs = new ModSettingBool(false)
+        {
+            displayName = "Export Upgrade JSONs",
+            IsButton = true
+        };
 
         internal static ShowModOptions_Button modsButton;
 
@@ -131,6 +143,66 @@ namespace BTD_Mod_Helper
 
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();
+            
+            AutoSave.InitAutosave(this.GetModSettingsDir(true));
+
+            OpenLocalDirectory.OnInitialized.Add(option =>
+            {
+                var buttonOption = (ButtonOption)option;
+                buttonOption.ButtonText.text = "Open";
+                buttonOption.Button.AddOnClick(() => Process.Start(FileIOUtil.sandboxRoot));
+            });
+
+            ExportTowerJSONs.OnInitialized.Add(option =>
+            {
+                var buttonOption = (ButtonOption)option;
+                buttonOption.ButtonText.text = "Export";
+                buttonOption.Button.AddOnClick(() =>
+                {
+                    MelonLogger.Msg("Dumping Towers to local files");
+                    foreach (var tower in Game.instance.model.towers)
+                    {
+                        var path = "Towers/" + tower.baseId + "/" + tower.name + ".json";
+                        try
+                        {
+                            FileIOUtil.SaveObject(path, tower);
+                            MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+                        }
+                        catch (Exception)
+                        {
+                            MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+                        }
+                    }
+
+                    PopupScreen.instance.ShowOkPopup($"Finished exporting towers to {FileIOUtil.sandboxRoot + "Towers"}");
+                });
+            });
+            
+            ExportUpgradeJSONs.OnInitialized.Add(option =>
+            {
+                var buttonOption = (ButtonOption)option;
+                buttonOption.ButtonText.text = "Export";
+                buttonOption.Button.AddOnClick(() =>
+                {
+                    MelonLogger.Msg("Exporting Upgrades to local files");
+                    foreach (var upgrade in Game.instance.model.upgrades)
+                    {
+                        var path = "Upgrades/" + upgrade.name + ".json";
+                        try
+                        {
+                            FileIOUtil.SaveObject(path, upgrade);
+                            MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+                        }
+                        catch (Exception)
+                        {
+                            MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+                        }
+                    }
+
+                    PopupScreen.instance.ShowOkPopup(
+                        $"Finished exporting upgrades to {FileIOUtil.sandboxRoot + "Upgrades"}");
+                });
+            });
         }
 
         private void Schedule_GameModel_Loaded()
