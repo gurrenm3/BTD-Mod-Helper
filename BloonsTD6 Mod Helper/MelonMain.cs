@@ -91,6 +91,8 @@ namespace BTD_Mod_Helper
             modsButton.Init();
         }
 
+        private static bool afterTitleScreen;
+
         public override void OnUpdate()
         {
             KeyCodeHooks();
@@ -103,8 +105,8 @@ namespace BTD_Mod_Helper
 
             if (Game.instance is null)
                 return;
-
-            if (PopupScreen.instance != null)
+            
+            if (PopupScreen.instance != null && afterTitleScreen)
                 UpdateHandler.AnnounceUpdates(modsNeedingUpdates, this.GetModDirectory());
 
             if (InGame.instance is null)
@@ -130,15 +132,6 @@ namespace BTD_Mod_Helper
 
         public override void OnTitleScreen()
         {
-            if (UpdateHandler.updatedMods && PopupScreen.instance != null)
-            {
-                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
-                    "You've downloaded new updates for mods, but still need to restart your game to apply them.\n" +
-                    "\nWould you like to do that now?", new Action(() => MenuManager.instance.QuitGame()),
-                    "Yes, quit the game", null, "Not now", Popup.TransitionAnim.Update);
-                UpdateHandler.updatedMods = false;
-            }
-
             ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
 
             if (!scheduledInGamePatch)
@@ -203,6 +196,8 @@ namespace BTD_Mod_Helper
                         $"Finished exporting upgrades to {FileIOUtil.sandboxRoot + "Upgrades"}");
                 });
             });
+
+            afterTitleScreen = true;
         }
 
         private void Schedule_GameModel_Loaded()
@@ -228,6 +223,18 @@ namespace BTD_Mod_Helper
             {
                 if (!mod.CheatMod || !Game.instance.CanGetFlagged())
                     action.Invoke(mod);
+            }
+        }
+
+        public override void OnMainMenu()
+        {
+            if (UpdateHandler.updatedMods && PopupScreen.instance != null)
+            {
+                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
+                    "You've downloaded new updates for mods, but still need to restart your game to apply them.\n" +
+                    "\nWould you like to do that now?", new Action(() => MenuManager.instance.QuitGame()),
+                    "Yes, quit the game", null, "Not now", Popup.TransitionAnim.Update);
+                UpdateHandler.updatedMods = false;
             }
         }
 
