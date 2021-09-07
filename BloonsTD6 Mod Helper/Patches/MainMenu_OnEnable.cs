@@ -7,7 +7,7 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.OnEnable))]
+    [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Open))]
     internal class MainMenu_OnEnable
     {
         [HarmonyPostfix]

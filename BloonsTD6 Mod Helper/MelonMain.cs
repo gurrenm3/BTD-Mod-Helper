@@ -40,6 +40,7 @@ namespace BTD_Mod_Helper
 
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
+            
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
 
             var settingsDir = this.GetModSettingsDir(true);
@@ -98,10 +99,10 @@ namespace BTD_Mod_Helper
             KeyCodeHooks();
 
             // used to test new api methods
-            /*if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().tower.towerModel);
-            }*/
+                FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().Def);
+            }
 
             if (Game.instance is null)
                 return;

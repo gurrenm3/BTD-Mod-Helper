@@ -18,7 +18,6 @@ namespace BTD_Mod_Helper.Patches
     [HarmonyPatch(typeof(Factory), nameof(Factory.FindAndSetupPrototypeAsync))]
     internal class Factory_FindAndSetupPrototypeAsync
     {
-
         [HarmonyPrefix]
         internal static bool Prefix(Factory __instance, string objectId, Action<UnityDisplayNode> onComplete)
         {
@@ -58,29 +57,27 @@ namespace BTD_Mod_Helper.Patches
             {
                 try
                 {
-                    __instance.FindAndSetupPrototypeAsync(modDisplay.BaseDisplay,
-                        new System.Action<UnityDisplayNode>(node =>
-                        {
-                            var udn = Object.Instantiate(node, __instance.PrototypeRoot);
-                            udn.name = objectId + "(Clone)";
-                            udn.RecalculateGenericRenderers();
-                            try
+                    if (modDisplay is ICustomDisplay customDisplay)
+                    {
+                        var assetBundle = ModContent.GetBundle(modDisplay.mod, customDisplay.AssetBundleName);
+                        var udn = Object.Instantiate(assetBundle.LoadAsset(customDisplay.PrefabName).Cast<GameObject>(),
+                            __instance.PrototypeRoot).AddComponent<UnityDisplayNode>();
+                        udn.Active = false;
+                        udn.transform.position = new Vector3(-3000, 0);
+                        var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
+                        udn.genericRenderers[0].SetMaterial(material);
+                        SetupUDN(udn, modDisplay, onComplete);
+                    }
+                    else
+                    {
+                        __instance.FindAndSetupPrototypeAsync(modDisplay.BaseDisplay,
+                            new System.Action<UnityDisplayNode>(node =>
                             {
-                                modDisplay.ModifyDisplayNode(udn);
-                            }
-                            catch (Exception e)
-                            {
-                                MelonLogger.Error($"Failed to modify DisplayNode for {modDisplay.Name}");
-                                MelonLogger.Error(e);
-                            }
+                                var udn = Object.Instantiate(node, __instance.PrototypeRoot);
+                                SetupUDN(udn, modDisplay, onComplete);
+                            }));
+                    }
 
-                            udn.RecalculateGenericRenderers();
-
-                            onComplete.Invoke(udn);
-
-                            ResourceHandler.Prefabs[objectId] = udn;
-                            //__instance.active.Add(udn);
-                        }));
                     return false;
                 }
                 catch (Exception e)
@@ -91,6 +88,27 @@ namespace BTD_Mod_Helper.Patches
             }
 
             return true;
+        }
+
+        private static void SetupUDN(UnityDisplayNode udn, ModDisplay modDisplay, Action<UnityDisplayNode> onComplete)
+        {
+            udn.name = modDisplay.Id + "(Clone)";
+            udn.RecalculateGenericRenderers();
+            try
+            {
+                modDisplay.ModifyDisplayNode(udn);
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"Failed to modify DisplayNode for {modDisplay.Name}");
+                MelonLogger.Error(e);
+            }
+
+            udn.RecalculateGenericRenderers();
+
+            onComplete.Invoke(udn);
+
+            ResourceHandler.Prefabs[modDisplay.Id] = udn;
         }
     }
 }

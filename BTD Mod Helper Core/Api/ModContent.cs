@@ -62,7 +62,7 @@ namespace BTD_Mod_Helper.Api
             try
             {
                 ResourceHandler.LoadEmbeddedTextures(mod);
-                //ResourceHandler.LoadEmbeddedBundles(mod);
+                ResourceHandler.LoadEmbeddedBundles(mod);
             }
             catch (Exception e)
             {
@@ -388,6 +388,8 @@ namespace BTD_Mod_Helper.Api
                 return MelonHandler.Mods.OfType<T>().FirstOrDefault();
             }
 
+            MelonLogger.Warning("Can't call GetInstance<T>() on type that is not ModContent or BloonsMod");
+
             return default;
         }
 
@@ -399,6 +401,41 @@ namespace BTD_Mod_Helper.Api
         public static object GetInstance(Type type)
         {
             return !Instances.ContainsKey(type) ? default : Instances[type];
+        }
+
+
+        public static AssetBundle GetBundle(BloonsMod mod, string name)
+        {
+            if (ResourceHandler.Bundles.TryGetValue(mod.IDPrefix + name, out var bundle))
+            {
+                return bundle;
+            }
+
+            MelonLogger.Error($"Couldn't find bundle with name \"{name}\"");
+            var bundles = ResourceHandler.Bundles.Keys.Where(s => s.StartsWith(mod.IDPrefix)).ToList();
+            if (bundles.Count == 0)
+            {
+                MelonLogger.Error($"In fact, {mod.GetModName()} doesn't have any bundles loaded. Did you forget to include them as an Embedded Resource?");
+            }
+            else
+            {
+                MelonLogger.Msg($"The bundles that we did find in {mod.GetModName()} have the names:");
+                foreach (var s in bundles)
+                {
+                    MelonLogger.Error($"    {s.Replace(mod.IDPrefix, "")}");
+                }
+            }
+            return null;
+        }
+
+        public static AssetBundle GetBundle<T>(string name) where T : BloonsMod
+        {
+            return GetBundle(GetInstance<T>(), name);
+        }
+        
+        protected AssetBundle GetBundle(string name)
+        {
+            return GetBundle(mod, name);
         }
     }
 }

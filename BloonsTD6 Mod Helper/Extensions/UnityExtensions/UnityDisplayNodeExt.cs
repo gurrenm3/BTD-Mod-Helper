@@ -48,19 +48,38 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Saves the texture used for this node's mesh renderer 
-        /// <br/>
-        /// By default, this saves to local files, aka "C:\Users\...\AppData\LocalLow\Ninja Kiwi\BloonsTD6"
+        /// Gets all renderers that are of type SkinnedMeshRenderer or MeshRenderer
         /// </summary>
-        /// <param name="node">The UnityDisplayNode</param>
-        /// <param name="path">Optional path to save to instead</param>
-        public static void SaveMeshTexture(this UnityDisplayNode node, string path = null)
+        /// <param name="node"></param>
+        /// <param name="recalculate"></param>
+        /// <returns></returns>
+        public static List<Renderer> GetMeshRenderers(this UnityDisplayNode node, bool recalculate = true)
         {
-            if (path == null)
+            if (node.genericRenderers == null)
             {
-                path = FileIOUtil.GetSandboxPath() + node.name + ".png";
+                return new List<Renderer>();
             }
-            node.GetRenderer<SkinnedMeshRenderer>().material.mainTexture.TrySaveToPNG(path);
+
+            if (recalculate && node.genericRenderers[0] == null)
+            {
+                node.RecalculateGenericRenderers();
+            }
+
+            return node.genericRenderers.Where(nodeGenericRenderer =>
+                    nodeGenericRenderer.IsType<SkinnedMeshRenderer>() || nodeGenericRenderer.IsType<MeshRenderer>())
+                .ToList();
+        }
+
+        /// <summary>
+        /// Gets the first (or an indexed) SkinnedMeshRenderer/MeshRenderer
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="index"></param>
+        /// <param name="recalculate"></param>
+        /// <returns></returns>
+        public static Renderer GetMeshRenderer(this UnityDisplayNode node, int index = 0, bool recalculate = true)
+        {
+            return node.GetMeshRenderers()[index];
         }
 
         /// <summary>
@@ -69,14 +88,28 @@ namespace BTD_Mod_Helper.Extensions
         /// By default, this saves to local files, aka "C:\Users\...\AppData\LocalLow\Ninja Kiwi\BloonsTD6"
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
+        /// <param name="index"></param>
         /// <param name="path">Optional path to save to instead</param>
-        public static void SaveMeshTexture(this UnityDisplayNode node, int index, string path = null)
+        public static void SaveMeshTexture(this UnityDisplayNode node, int index = 0, string path = null)
         {
             if (path == null)
             {
                 path = FileIOUtil.GetSandboxPath() + node.name + index + ".png";
             }
-            node.GetRenderers<SkinnedMeshRenderer>()[index].material.mainTexture.TrySaveToPNG(path);
+            
+            var meshRenderers = node.GetMeshRenderers();
+            if (meshRenderers.Count == 0)
+            {
+                MelonLogger.Error("Can't save mesh texture because the node doesn't have any MeshRenderers or SkinnedMeshRenderers, you might want to call node.PrintInfo()");
+            }
+            else if (meshRenderers.Count <= index)
+            {
+                MelonLogger.Error($"The node doesn't have {index} total mesh renderers, you might want to call node.PrintInfo()");
+            }
+            else
+            {
+                meshRenderers[index].material.mainTexture.TrySaveToPNG(path);
+            }
         }
 
         /// <summary>
@@ -114,7 +147,8 @@ namespace BTD_Mod_Helper.Extensions
             MelonLogger.Msg(new string('-', start.Length));
         }
 
-        public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string boneName, bool alreadyUnbound = false)
+        public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string boneName,
+            bool alreadyUnbound = false)
         {
             var skinnedMeshRenderer = unityDisplayNode.GetRenderer<SkinnedMeshRenderer>();
             if (!alreadyUnbound)

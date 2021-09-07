@@ -71,20 +71,27 @@ namespace BTD_Mod_Helper.Extensions
             return desiredTowers;
         }
 
+        
+        [Obsolete("Typo, just here for compatibility reasons")]
+        public static List<AbilityModel> GetAbilities(this TowerModel towerModel)
+        {
+            return towerModel.GetBehaviors<AbilityModel>();
+        }
+        
         /// <summary>
         /// (Cross-Game compatible) Return all AbilityModel behaviors from this tower, if it has any
         /// </summary>
         public static List<AbilityModel> GetAbilites(this TowerModel towerModel)
         {
-            return towerModel.GetBehaviors<AbilityModel>();
+            return towerModel.GetAbilities();
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return a specific Ability of the tower. By default will get the first ability
+        /// (Cross-Game compatible) Return the first ability on the tower
         /// </summary>
         public static AbilityModel GetAbility(this TowerModel towerModel)
         {
-            return towerModel.GetAbilites().FirstOrDefault();
+            return towerModel.GetAbilities().FirstOrDefault();
         }
 
         /// <summary>
@@ -93,7 +100,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="index">Index of the ability you want.</param>
         public static AbilityModel GetAbility(this TowerModel towerModel, int index)
         {
-            return towerModel.GetAbilites()[index];
+            return towerModel.GetAbilities()[index];
         }
 
         /// <summary>

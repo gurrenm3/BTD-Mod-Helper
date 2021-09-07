@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Unity.Display;
-using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
 
@@ -15,19 +14,21 @@ namespace BTD_Mod_Helper.Api
         public static readonly Dictionary<string, UnityDisplayNode> Prefabs =
             new Dictionary<string, UnityDisplayNode>();
 
-        public static readonly Dictionary<string, AssetBundle> bundles = new Dictionary<string, AssetBundle>();
+        public static readonly Dictionary<string, AssetBundle> Bundles = new Dictionary<string, AssetBundle>();
             
         internal static void LoadEmbeddedTextures(BloonsMod mod)
         {
             foreach (var name in mod.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("png")))
             {
-                var memoryStream = new MemoryStream();
-                if (mod.Assembly.GetManifestResourceStream(name) is Stream stream)
+                using (var memoryStream = new MemoryStream())
                 {
-                    stream.CopyTo(memoryStream);
-                    var split = name.Split('.');
-                    var guid = mod.IDPrefix + split[split.Length - 2];
-                    resources[guid] = memoryStream.ToArray();
+                    if (mod.Assembly.GetManifestResourceStream(name) is Stream stream)
+                    {
+                        stream.CopyTo(memoryStream);
+                        var split = name.Split('.');
+                        var guid = mod.IDPrefix + split[split.Length - 2];
+                        resources[guid] = memoryStream.ToArray();
+                    }
                 }
             }
         }
@@ -41,8 +42,28 @@ namespace BTD_Mod_Helper.Api
                 {
                     stream.CopyTo(memoryStream);
                     var bundle = AssetBundle.LoadFromMemory(memoryStream.ToArray());
-                    var guid = mod.IDPrefix + bundle.name;
-                    bundles[guid] = bundle;
+                    var guid = mod.IDPrefix;
+                    if (bundle == null)
+                    {
+                        MelonLogger.Msg($"The bundle {name} is null!");
+                        continue;
+                    }
+
+                    if (string.IsNullOrEmpty(bundle.name))
+                    {
+                        MelonLogger.Msg($"The bundle {name} has no name!");
+                        continue;
+                    }
+                    if (bundle.name.EndsWith(".bundle"))
+                    {
+                        guid += bundle.name.Substring(0, bundle.name.LastIndexOf("."));
+                    }
+                    else
+                    {
+                        guid += bundle.name;
+                    }
+                    Bundles[guid] = bundle;
+                    // MelonLogger.Msg("Successfully loaded bundle " + guid);
                 }
             }
         }

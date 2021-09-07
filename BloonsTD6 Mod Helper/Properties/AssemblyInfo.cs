@@ -1,4 +1,5 @@
-﻿using BTD_Mod_Helper;
+﻿using System;
+using BTD_Mod_Helper;
 using MelonLoader;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -16,6 +17,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", MelonMain.currentVersion, "Gurrenm4, Doombubbles, and BowDown097")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
+[assembly: MelonColor(ConsoleColor.Blue)]
+[assembly: MelonPriority(-1000)]
 
 [assembly: AssemblyVersion(MelonMain.currentVersion)]
 [assembly: AssemblyFileVersion(MelonMain.currentVersion)]

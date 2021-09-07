@@ -267,7 +267,7 @@
   </ItemGroup>
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="bloonstd6.props"/>
+  <Import Project="bloonstd6.props" />
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
     <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "$(BloonsTD6)\Mods" /y &amp;&amp; copy "$(TargetDir)$(TargetName).xml" "$(BloonsTD6)\Mods" /y</PostBuildEvent>

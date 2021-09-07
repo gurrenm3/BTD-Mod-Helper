@@ -1,4 +1,5 @@
-﻿using Object = Il2CppSystem.Object;
+﻿using Il2CppSystem;
+using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -34,6 +35,21 @@ namespace BTD_Mod_Helper.Extensions
         {
             castObject = instance?.TryCast<T>();
             return castObject != null;
+        }
+        
+        public static Object ToIl2Cpp(this float f)
+        {
+            return new Single { m_value = f }.BoxIl2CppObject();
+        }
+        
+        public static Object ToIl2Cpp(this int i)
+        {
+            return new Int32 { m_value = i }.BoxIl2CppObject();
+        }
+        
+        public static Object ToIl2Cpp(this bool b)
+        {
+            return new Boolean { m_value = b }.BoxIl2CppObject();
         }
     }
 }

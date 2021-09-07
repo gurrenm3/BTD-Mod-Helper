@@ -74,7 +74,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="textureName">The name of the texture, without .png</param>
         protected void SetMeshTexture(UnityDisplayNode node, string textureName)
         {
-            node.GetRenderer<SkinnedMeshRenderer>().SetMainTexture(GetTexture(textureName));
+            node.GetMeshRenderer().SetMainTexture(GetTexture(textureName));
         }
         
         /// <summary>
@@ -84,7 +84,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="textureName">The name of the texture, without .png</param>
         protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index)
         {
-            node.GetRenderers<SkinnedMeshRenderer>()[index].SetMainTexture(GetTexture(textureName));
+            node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName));
         }
         
         /// <summary>
@@ -168,7 +168,7 @@ namespace BTD_Mod_Helper.Api.Display
         }
         
         /// <summary>
-        /// 
+        /// Gets a UnityDisplayNode for a different guid
         /// </summary>
         /// <param name="guid"></param>
         /// <returns></returns>

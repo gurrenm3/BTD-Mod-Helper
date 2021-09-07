@@ -35,6 +35,9 @@ namespace BTD_Mod_Helper.Extensions
 
         /// <summary>
         /// Add a TowerModel to the game.
+        /// <br/>
+        /// Using this method is preferable than modifying the GameModel's towers list manually, as this does more things
+        /// to more fully integrate the tower within the game
         /// </summary>
         /// <param name="towerModel">TowerModel to add</param>
         /// <param name="towerDetailsModel">Optionally add a TowerDetailsModel for your towerModel</param>
@@ -52,6 +55,34 @@ namespace BTD_Mod_Helper.Extensions
 
             // MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
         }
+        
+        /// <summary>
+        /// Add multiple TowerModels to the game more efficiently than calling the single method repeatedly.
+        /// </summary>
+        public static void AddTowersToGame(this GameModel model, IEnumerable<TowerModel> towerModels)
+        {
+            var array = towerModels.ToArray();
+            var towersLength = model.towers.Length;
+            var newArray = new Il2CppReferenceArray<TowerModel>(towersLength + array.Length);
+            for (var i = 0; i < towersLength; i++)
+            {
+                newArray[i] = model.towers[i];
+            }
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                newArray[i + towersLength] = array[i];
+            }
+
+            model.towers = newArray;
+            
+            foreach (var towerModel in array)
+            {
+                model.AddChildDependant(towerModel);
+                ModTowerHandler.TowerCache[towerModel.name] = towerModel;
+            }
+        }
+        
 
         /// <summary>
         /// Adds a tower 
@@ -277,7 +308,7 @@ namespace BTD_Mod_Helper.Extensions
 
             foreach (TowerModel tower in towers)
             {
-                List<AbilityModel> abilities = tower.GetAbilites();
+                List<AbilityModel> abilities = tower.GetAbilities();
                 if (abilities != null && abilities.Any())
                     abilityModels.AddRange(abilities);
             }
@@ -292,7 +323,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<TowerModel> GetTowerModelsWithAbilities(this GameModel model)
         {
-            return model.towers.Where(t => t.GetAbilites() != null).ToList();
+            return model.towers.Where(t => t.GetAbilities() != null).ToList();
         }
 
         public static void AddUpgrade(this GameModel model, UpgradeModel upgradeModel)

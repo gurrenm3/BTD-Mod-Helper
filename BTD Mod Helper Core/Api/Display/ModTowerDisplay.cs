@@ -39,7 +39,7 @@ namespace BTD_Mod_Helper.Api.Display
     }
     
     /// <summary>
-    /// A convenient generic class for 
+    /// A convenient generic class for applying a ModTowerDisplay to a ModTower
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class ModTowerDisplay<T> : ModTowerDisplay where T : ModTower

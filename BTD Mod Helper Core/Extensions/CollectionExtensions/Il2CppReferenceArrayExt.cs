@@ -201,10 +201,10 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
+            var results = new List<TCast>();
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
-                return null;
+                return results;
 
-            List<TCast> results = new List<TCast>();
             foreach (var item in referenceArray)
             {
                 if (item.IsType(out TCast tryCast))
