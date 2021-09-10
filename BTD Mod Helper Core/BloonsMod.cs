@@ -65,11 +65,11 @@ namespace BTD_Mod_Helper
         public virtual void OnModOptionsOpened()
         {
         }
-
+        /*
         /// <summary>
         /// Called when the Mod Options Menu gets closed
         /// </summary>
-        /*public virtual void OnModOptionsClosed() // not implemented for now
+        public virtual void OnModOptionsClosed() // not implemented for now
         {
         }*/
 

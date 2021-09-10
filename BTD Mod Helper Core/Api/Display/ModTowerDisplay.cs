@@ -8,7 +8,7 @@ using BTD_Mod_Helper.Extensions;
 namespace BTD_Mod_Helper.Api.Display
 {
     /// <summary>
-    /// A ModDisplay that will specifically be used as the main display for a ModTower
+    /// A ModDisplay that will automatically apply to a ModTower for specific tiers
     /// </summary>
     public abstract class ModTowerDisplay : ModDisplay
     {

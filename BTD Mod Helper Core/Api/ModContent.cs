@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Assets.Scripts.Models;
 using Assets.Scripts.Unity;
-using BTD_Mod_Helper.Api;
 #if BloonsTD6
 using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.Towers.Upgrades;
 using BTD_Mod_Helper.Api.Towers;
 #elif BloonsAT
 #endif
@@ -274,10 +270,11 @@ namespace BTD_Mod_Helper.Api
         {
             return GetTexture(GetInstance<T>(), fileName);
         }
-        
+
         /// <summary>
         /// Constructs a Sprite for a given texture name within a given mod
         /// </summary>
+        /// <param name="mod"></param>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
         /// <returns>A Sprite</returns>
@@ -309,6 +306,11 @@ namespace BTD_Mod_Helper.Api
         }
 
 #if BloonsTD6
+        /// <summary>
+        /// Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static string GetDisplayGUID<T>() where T : ModDisplay
         {
             return GetInstance<T>().Id;
@@ -403,7 +405,11 @@ namespace BTD_Mod_Helper.Api
             return !Instances.ContainsKey(type) ? default : Instances[type];
         }
 
-
+        /// <summary>
+        /// Gets a bundle from a mod with the specified name (no file extension)
+        /// </summary>
+        /// <param name="mod"></param>
+        /// <param name="name"></param>
         public static AssetBundle GetBundle(BloonsMod mod, string name)
         {
             if (ResourceHandler.Bundles.TryGetValue(mod.IDPrefix + name, out var bundle))
@@ -427,12 +433,20 @@ namespace BTD_Mod_Helper.Api
             }
             return null;
         }
-
+        
+        /// <summary>
+        /// Gets a bundle from the mod T with the specified name (no file extension)
+        /// </summary>
+        /// <param name="name"></param>
         public static AssetBundle GetBundle<T>(string name) where T : BloonsMod
         {
             return GetBundle(GetInstance<T>(), name);
         }
         
+        /// <summary>
+        /// Gets a bundle from your mod with the specified name (no file extension)
+        /// </summary>
+        /// <param name="name"></param>
         protected AssetBundle GetBundle(string name)
         {
             return GetBundle(mod, name);
