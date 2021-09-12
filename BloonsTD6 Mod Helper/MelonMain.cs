@@ -49,7 +49,8 @@ namespace BTD_Mod_Helper
 
             Schedule_GameModel_Loaded();
 
-            Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain),
+
+            HarmonyInstance.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain),
                 nameof(SettingsPatch));
         }
 

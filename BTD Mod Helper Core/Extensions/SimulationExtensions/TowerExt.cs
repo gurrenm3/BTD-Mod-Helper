@@ -6,6 +6,7 @@ using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Simulation.Factory;
 using System;
+using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -52,21 +53,8 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete]
         public static TowerToSimulation GetTowerSim(this Tower tower)
         {
-            var towerSims = InGame.instance?.GetUnityToSimulation()?.GetAllTowers();
-
-#if BloonsTD6
-            return towerSims.FirstOrDefault(sim => sim.tower == tower);
-#elif BloonsAT
-            var enumerator = towerSims.GetEnumeratorCollections();
-            while (enumerator.MoveNext())
-            {
-                var item = enumerator.Current.Cast<TowerToSimulation>();
-                if (item.id == tower.Id)
-                    return item;
-            }
-
-            return null;
-#endif
+            var towerSims = InGame.instance?.GetAllTowerToSim();
+            return towerSims.FirstOrDefault(sim => sim.GetTower().Equals(tower));
         }
 
         /// <summary>
@@ -74,21 +62,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerToSimulation GetTowerToSim(this Tower tower)
         {
-            var towerSims = InGame.instance?.GetUnityToSimulation()?.GetAllTowers();
-
-#if BloonsTD6
-            return towerSims.FirstOrDefault(sim => sim.tower == tower);
-#elif BloonsAT
-            var enumerator = towerSims.GetEnumeratorCollections();
-            while (enumerator.MoveNext())
-            {
-                var item = enumerator.Current.Cast<TowerToSimulation>();
-                if (item.id == tower.Id)
-                    return item;
-            }
-
-            return null;
-#endif
+            var towerSims = InGame.instance?.GetAllTowerToSim();
+            return towerSims.FirstOrDefault(sim => sim.GetTower().Equals(tower));
         }
 
         /// <summary>
