@@ -35,16 +35,20 @@ namespace BTD_Mod_Helper.Extensions
                 };
         
         /// <summary>
-        /// (Cross-Game compatable) Return how much cash this bloon would give if popped completely
+        /// (Cross-Game compatable) Return how much cash this bloon would give if popped by <paramref name="layersPopped"/> number of layers
         /// </summary>
-        public static int GetTotalCash(this BloonModel bloonModel)
+        /// <param name="layersPopped">How many layers of bloons to pop, ignoring layer health. If less than 0, calculates for the entire bloon</param>
+        public static int GetTotalCash(this BloonModel bloonModel, int layersPopped = -1)
         {
-            if (!cash.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
+            if (layersPopped == 0) return 0;
+
+            int bloonCash = 1;
+            if (layersPopped > -1 && !cash.TryGetValue(bloonModel.GetBaseID(), out bloonCash))
             {
                 bloonCash = 1;
                 foreach (BloonModel child in bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation()))
                 {
-                    bloonCash += child.GetTotalCash();
+                    bloonCash += child.GetTotalCash(layersPopped-1);
                 }
             }
 
