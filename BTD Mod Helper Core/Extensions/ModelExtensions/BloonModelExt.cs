@@ -42,8 +42,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (layersPopped == 0) return 0;
 
-            int bloonCash = 1;
-            if (layersPopped > -1 && !cash.TryGetValue(bloonModel.GetBaseID(), out bloonCash))
+            if (layersPopped >= 0 || !cash.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
             {
                 bloonCash = 1;
                 foreach (BloonModel child in bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation()))
