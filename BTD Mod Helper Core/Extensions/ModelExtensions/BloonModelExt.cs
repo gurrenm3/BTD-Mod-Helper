@@ -23,14 +23,15 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (layersPopped == 0) return 0;
 
-            if (layersPopped >= 0 || !cash.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
+            var children = bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation());
+            if ((layersPopped >= 0) || !cash.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
             {
                 bloonCash = 1;
-                foreach (BloonModel child in bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation()))
+                foreach (BloonModel child in children)
                 {
-                    bloonCash += child.GetTotalCash(layersPopped-1);
+                    bloonCash += child.GetTotalCash(layersPopped - 1);
                 }
-                cash.Add(bloonModel.GetBaseID(), bloonCash);
+                if (layersPopped < 0) { cash.Add(bloonModel.GetBaseID(), bloonCash); }
             }
 
             return bloonCash;
