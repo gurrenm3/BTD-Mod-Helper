@@ -13,6 +13,44 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static class BloonModelExt
     {
+        private static readonly System.Collections.Generic.IDictionary<string, int> cash = new System.Collections.Generic.Dictionary<string, int>
+                {
+                    {"Red", 1},
+                    {"Blue", 2},
+                    {"Green", 3},
+                    {"Yellow", 4},
+                    {"Pink", 5},
+                    {"Purple", 11},
+                    {"White", 11},
+                    {"Black", 11},
+                    {"Zebra", 23},
+                    {"Lead", 23},
+                    {"Rainbow", 47},
+                    {"Ceramic", 95},
+                    {"Moab", 381},
+                    {"Bfb", 1525},
+                    {"Zomg", 6101},
+                    {"Ddt", 381},
+                    {"Bad", 13346}
+                };
+        
+        /// <summary>
+        /// (Cross-Game compatable) Return how much cash this bloon would give if popped completely
+        /// </summary>
+        public static int GetTotalCash(this BloonModel bloonModel)
+        {
+            if (!cash.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
+            {
+                bloonCash = 1;
+                foreach (BloonModel child in bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation()))
+                {
+                    bloonCash += child.GetTotalCash();
+                }
+            }
+
+            return bloonCash;
+        }
+        
         /// <summary>
         /// (Cross-Game compatible) Return the number position of this bloon from the list of all bloons (Game.instance.model.bloons)
         /// </summary>
