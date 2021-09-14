@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using System.Linq;
 using Assets.Main.Scenes;
@@ -18,6 +19,8 @@ namespace BTD_Mod_Helper.Patches
                 ModContent.LoadAllModContent(mod);
             }
             
+            BloonModelExt.cashValues.Clear();
+
             MelonMain.DoPatchMethods(mod => mod.OnTitleScreen());
         }
     }
