@@ -39,7 +39,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             // This method doesn't need to be this long but it doesn't hurt to have extra checks
 
-            var bloonSim = SessionData.bloonTracker.GetBloonToSim(bloon.GetId());
+            var bloonSim = SessionData.Instance.bloonTracker.GetBloonToSim(bloon.GetId());
             if (bloonSim is null && bloon.bloonModel is null) // if bloon.bloonModel is null then the bloon hasn't been initialized yet so continuing is pointless
                 return null;
 

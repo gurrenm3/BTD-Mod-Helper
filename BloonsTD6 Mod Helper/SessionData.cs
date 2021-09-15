@@ -1,13 +1,46 @@
-﻿using Assets.Scripts.Unity.Bridge;
-using NinjaKiwi.NKMulti;
+﻿using NinjaKiwi.NKMulti;
 using NinjaKiwi.Players.Files;
 
 namespace BTD_Mod_Helper
 {
-    public static partial class SessionData
+    /// <summary>
+    /// This class is used in the API to store data about the current state of the game,
+    /// like whether or not the player is in a Public Coop game
+    /// </summary>
+    public partial class SessionData
     {
-        public static FileSaveStrategy playerSaveStrategy;
-        public static string saveDirectory;
-        public static NKMultiGameInterface nkGI;
+        /// <summary>
+        /// If the player is in Coop, this value represents whether it's a 
+        /// Public Coop match or not
+        /// </summary>
+        public bool IsInPublicCoop { get; set; } = false;
+
+        /// <summary>
+        /// If the player is in a game, are they in a Odyssey game
+        /// </summary>
+        public bool IsInOdyssey { get; set; } = false;
+
+        /// <summary>
+        /// If the player is in a game, is it a Race game
+        /// </summary>
+        public bool IsInRace { get; set; } = false;
+
+        /// <summary>
+        /// The directory of the save file. 
+        /// Gets set when <see cref="FileSaveStrategy.Choose(string, NinjaKiwi.Players.SaveStrategy)"/>
+        /// tries to load the Player Save
+        /// </summary>
+        public string SaveDirectory { get; set; }
+
+        /// <summary>
+        /// The instance of <see cref="FileSaveStrategy"/> that is used to load the Player save.
+        /// </summary>
+        public FileSaveStrategy PlayerSaveStrategy { get; set; }
+
+        /// <summary>
+        /// The instance of <see cref="NKMultiGameInterface"/> that is used during a 
+        /// multiplayer game
+        /// </summary>
+        public NKMultiGameInterface NkGI { get; set; }
     }
 }

@@ -27,6 +27,14 @@ namespace BTD_Mod_Helper.Extensions
             attackModel.weapons = attackModel.weapons.AddTo(weaponToAdd);
 
         /// <summary>
+        /// (Cross-Game compatible) Remove a weapon from this Attack Model
+        /// </summary>
+        /// <param name="attackModel"></param>
+        /// <param name="weaponToRemove"></param>
+        public static void RemoveWeapon(this AttackModel attackModel, WeaponModel weaponToRemove) =>
+            attackModel.weapons = attackModel.weapons.RemoveItem(weaponToRemove);
+
+        /// <summary>
         /// (Cross-Game compatible) Recursively get all ProjectileModels for this attack model and all of it's weapons
         /// </summary>
         /// <param name="attackModel"></param>

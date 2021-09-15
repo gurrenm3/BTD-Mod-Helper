@@ -18,12 +18,12 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(FileSaveStrategy __result, string path, SaveStrategy type)
         {
-            if (!string.IsNullOrEmpty(SessionData.saveDirectory) || !path.ToLower().EndsWith("profile.save"))
+            if (!string.IsNullOrEmpty(SessionData.Instance.SaveDirectory) || !path.ToLower().EndsWith("profile.save"))
                 return;
 
             FileInfo fileInfo = new FileInfo(path);
-            SessionData.saveDirectory = fileInfo.Directory.FullName;
-            SessionData.playerSaveStrategy = __result;
+            SessionData.Instance.SaveDirectory = fileInfo.Directory.FullName;
+            SessionData.Instance.PlayerSaveStrategy = __result;
         }
     }
 }

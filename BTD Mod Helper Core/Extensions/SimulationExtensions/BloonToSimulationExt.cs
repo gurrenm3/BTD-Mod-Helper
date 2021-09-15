@@ -34,7 +34,7 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete]
         public static Bloon GetSimBloon(this BloonToSimulation bloonToSim)
         {
-            return SessionData.bloonTracker.GetBloon(bloonToSim.GetId());
+            return SessionData.Instance.bloonTracker.GetBloon(bloonToSim.GetId());
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Bloon GetBloon(this BloonToSimulation bloonToSim)
         {
-            return SessionData.bloonTracker.GetBloon(bloonToSim.GetId());
+            return SessionData.Instance.bloonTracker.GetBloon(bloonToSim.GetId());
         }
 
         /// <summary>

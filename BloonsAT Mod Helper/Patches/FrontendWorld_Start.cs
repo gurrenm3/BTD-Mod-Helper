@@ -18,11 +18,7 @@ namespace BTD_Mod_Helper.Patches
 
         private static void ResetSessionData()
         {
-            SessionData.PoppedBloons = new Dictionary<string, int>();
-            SessionData.RoundSet = null;
-            SessionData.bloonTracker = new Api.BloonTracker();
-
-            Api.SessionData.instance = new Api.SessionData();
+            SessionData.Reset();
         }
     }
 }

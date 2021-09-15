@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="roundSet">New Round Set Model to use</param>
         public static void SetRoundSet(this InGame inGame, RoundSetModel roundSet)
         {
-            SessionData.RoundSet = roundSet;
+            SessionData.Instance.RoundSet = roundSet;
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static System.Collections.Generic.Dictionary<string, int> GetPoppedBloons(this InGame inGame)
         {
-            return SessionData.PoppedBloons;
+            return SessionData.Instance.PoppedBloons;
         }
 
         //not using this one because it doesn't seem to work. May check back later

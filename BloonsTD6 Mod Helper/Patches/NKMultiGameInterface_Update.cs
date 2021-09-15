@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(ref NKMultiGameInterface __instance)
         {
-            SessionData.nkGI = __instance;
+            SessionData.Instance.NkGI = __instance;
         }
     }
 }

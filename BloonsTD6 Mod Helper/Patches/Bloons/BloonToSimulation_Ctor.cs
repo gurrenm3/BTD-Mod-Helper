@@ -14,7 +14,7 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPostfix]
         internal static void Postfix(BloonToSimulation __instance, int id)
         {
-            SessionData.bloonTracker.TrackBloonToSim(__instance);
+            SessionData.Instance.bloonTracker.TrackBloonToSim(__instance);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix()
         {
-            SessionData.IsInRace = true;
+            SessionData.Instance.IsInRace = true;
         }
     }
 }

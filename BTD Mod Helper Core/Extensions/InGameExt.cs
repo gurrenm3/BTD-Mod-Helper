@@ -115,7 +115,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<Bloon> GetBloons(this InGame inGame)
         {
-            return SessionData.bloonTracker.currentBloons.Values.ToList();
+            return SessionData.Instance.bloonTracker.currentBloons.Values.ToList();
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete]
         public static List<BloonToSimulation> GetBloonSims(this InGame inGame)
         {
-            return SessionData.bloonTracker.currentBloonToSims.Values.ToList();
+            return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<BloonToSimulation> GetAllBloonToSim(this InGame inGame)
         {
-            return SessionData.bloonTracker.currentBloonToSims.Values.ToList();
+            return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
         }
 
         /// <summary>

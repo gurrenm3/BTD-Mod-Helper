@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static string GetSaveDirectory(this Game game)
         {
-            return SessionData.saveDirectory;
+            return SessionData.Instance.SaveDirectory;
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="savePath">Path to save to</param>
         public static void SavePlayerData(this Game game, string savePath)
         {
-            var backup = SessionData.playerSaveStrategy.MemberwiseClone().Cast<TimedBackupStrategy>();
+            var backup = SessionData.Instance.PlayerSaveStrategy.MemberwiseClone().Cast<TimedBackupStrategy>();
             backup.FilePath = savePath;
             backup.CreateBackup();
         }
@@ -56,7 +56,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static bool IsInRace(this Game game)
         {
-            return SessionData.IsInRace;
+            return SessionData.Instance.IsInRace;
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static bool IsInPublicCoop(this Game game)
         {
-            return SessionData.IsInPublicCoop;
+            return SessionData.Instance.IsInPublicCoop;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static bool IsInOdyssey(this Game game)
         {
-            return SessionData.IsInOdyssey;
+            return SessionData.Instance.IsInOdyssey;
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static NKMultiGameInterface GetNkGI(this Game game)
         {
-            return SessionData.nkGI;
+            return SessionData.Instance.NkGI;
         }
 
         /// <summary>

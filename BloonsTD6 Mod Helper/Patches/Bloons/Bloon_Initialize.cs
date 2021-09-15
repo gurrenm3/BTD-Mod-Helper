@@ -19,7 +19,7 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPostfix]
         internal static void Postfix(Bloon __instance, Model modelToUse)
         {
-            SessionData.bloonTracker.TrackBloon(__instance);
+            SessionData.Instance.bloonTracker.TrackBloon(__instance);
             // Creating new BloonToSimulation will automatically start Tracking BloonSim via the Constructor
             __instance.CreateBloonToSim();
 

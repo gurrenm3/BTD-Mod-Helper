@@ -11,9 +11,9 @@ namespace BTD_Mod_Helper.Patches
         internal static void Postfix()
         {
             // Setting only if false because this method is called constantly when screen is open
-            if (!SessionData.IsInOdyssey)
+            if (!SessionData.Instance.IsInOdyssey)
             {
-                SessionData.IsInOdyssey = true;
+                SessionData.Instance.IsInOdyssey = true;
             }
         }
     }

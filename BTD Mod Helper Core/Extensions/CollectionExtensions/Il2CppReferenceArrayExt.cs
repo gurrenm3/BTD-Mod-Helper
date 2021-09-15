@@ -10,6 +10,30 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class Il2CppReferenceArrayExt
     {
         /// <summary>
+        /// Returns an empty <see cref="Il2CppReferenceArray{T}"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="referenceArray"></param>
+        /// <returns></returns>
+        public static Il2CppReferenceArray<T> Empty<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
+        {
+            return new Il2CppReferenceArray<T>(0);
+        }
+
+        /// <summary>
+        /// Sets all elements in the <see cref="Il2CppReferenceArray{T}"/> to the default value of each element type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="referenceArray"></param>
+        public static void Clear<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
+        {
+            for (int i = 0; i < referenceArray.Length; i++)
+            {
+                referenceArray[i] = default;
+            }
+        }
+
+        /// <summary>
         /// (Cross-Game compatible) Return as System.List
         /// </summary>
         public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object

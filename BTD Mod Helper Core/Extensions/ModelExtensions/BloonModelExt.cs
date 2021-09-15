@@ -11,10 +11,8 @@ using System;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class BloonModelExt
-    {
-        public static readonly System.Collections.Generic.IDictionary<string, int> cash = new System.Collections.Generic.Dictionary<string, int>();
-        
+    public static partial class BloonModelExt
+    {        
         /// <summary>
         /// (Cross-Game compatable) Return how much cash this bloon would give if popped by <paramref name="layersPopped"/> number of layers
         /// </summary>
@@ -23,15 +21,16 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (layersPopped == 0) return 0;
 
+            var cashValue = SessionData.Instance.bloonPopValue;
             var children = bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation());
-            if ((layersPopped >= 0) || !cash.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
+            if ((layersPopped >= 0) || !cashValue.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
             {
                 bloonCash = 1;
                 foreach (BloonModel child in children)
                 {
                     bloonCash += child.GetTotalCash(layersPopped - 1);
                 }
-                if (layersPopped < 0) { cash.Add(bloonModel.GetBaseID(), bloonCash); }
+                if (layersPopped < 0) { cashValue.Add(bloonModel.GetBaseID(), bloonCash); }
             }
 
             return bloonCash;

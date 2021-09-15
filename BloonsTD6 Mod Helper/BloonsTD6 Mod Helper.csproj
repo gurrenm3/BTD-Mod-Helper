@@ -175,6 +175,8 @@
     <Compile Include="Extensions\CoopExtensions\NKMultiGameInterfaceExt.cs" />
     <Compile Include="Extensions\LINQExtensions\SizedListExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\KnowledgeModelExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\KnowledgeSetModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\ProjectileModelExt.cs" />
     <Compile Include="Extensions\NkAssetExtensions\NK_TextMeshProUGUIExt.cs" />
     <Compile Include="Extensions\ModelExtensions\ProfileModelExt.cs" />

@@ -18,8 +18,6 @@ namespace BTD_Mod_Helper.Patches
             {
                 ModContent.LoadAllModContent(mod);
             }
-            
-            BloonModelExt.cashValues.Clear();
 
             MelonMain.DoPatchMethods(mod => mod.OnTitleScreen());
         }

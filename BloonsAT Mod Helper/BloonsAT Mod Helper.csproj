@@ -140,6 +140,7 @@
     <Compile Include="Extensions\CollectionExt.cs" />
     <Compile Include="Extensions\GameExt.cs" />
     <Compile Include="Extensions\InGameExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\BloonModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\ModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\TowerModelExt.cs" />

@@ -22,12 +22,26 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameModelExt
     {
-
+        /// <summary>
+        /// Returns whether or not any TowerModels in <see cref="GameModel.towers"/> have <paramref name="towerId"/>
+        /// in it's name
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="towerId"></param>
+        /// <returns></returns>
         public static bool DoesTowerModelExist(this GameModel model, string towerId)
         {
             return model.towers.Any(item => item.name.Contains(towerId));
         }
 
+        /// <summary>
+        /// Returns whether or not any TowerDetailsModels in <see cref="GameModel.towerSet"/> have <paramref name="towerId"/>
+        /// in it's name
+        /// </summary>
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="towerId"></param>
+        /// <returns></returns>
         public static bool DoesTowerDetailsExist(this GameModel model, string towerId)
         {
             return model.towerSet.Any(item => item.name.Contains(towerId));
@@ -345,9 +359,27 @@ namespace BTD_Mod_Helper.Extensions
             System.Array.ForEach(upgradeModels, upgrade => model.upgradesByName.Add(upgrade.name, upgrade));
         }
 
+        /// <summary>
+        /// Returns the first TowerDetailsModel in <see cref="GameModel.towerSet"/> that has a towerId of
+        /// <paramref name="towerDetailsName"/>
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="towerDetailsName">The <see cref="TowerDetailsModel.towerId"/> you are searching for</param>
+        /// <returns>The first TowerDetailsModel found, otherwise returns null</returns>
         public static TowerDetailsModel GetTowerDetails(this GameModel model, string towerDetailsName)
         {
             return model.towerSet.FirstOrDefault(tower => tower.towerId == towerDetailsName);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="set"></param>
+        /// <returns>The total cost of the KnowledgeSet if <paramref name="set"/> is valid, otherwise returns -1</returns>
+        /*public static int GetKnowledgeSetTotal(this GameModel model, string set)
+        {
+
+        }*/
     }
 }

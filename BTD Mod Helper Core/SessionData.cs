@@ -4,14 +4,26 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper
 {
-    public static partial class SessionData
+    public partial class SessionData
     {
-        public static bool IsInPublicCoop { get; set; } = false;
-        public static bool IsInOdyssey { get; set; } = false;
-        public static bool IsInRace { get; set; } = false;
+        public static SessionData Instance { get; set; } = new SessionData();
 
-        internal static BloonTracker bloonTracker = new BloonTracker();
-        public static RoundSetModel RoundSet { get; set; }
-        public static Dictionary<string, int> PoppedBloons { get; set; } = new Dictionary<string, int>();
+
+        internal BloonTracker bloonTracker = new BloonTracker();
+        public RoundSetModel RoundSet { get; set; }
+        public Dictionary<string, int> PoppedBloons { get; set; } = new Dictionary<string, int>();
+        
+        /// <summary>
+        /// How much cash each bloon is worth when completely popped
+        /// </summary>
+        public readonly Dictionary<string, int> bloonPopValue = new Dictionary<string, int>();
+
+        /// <summary>
+        /// Resets all the values in SessionData
+        /// </summary>
+        public static void Reset()
+        {
+            Instance = new SessionData();
+        }
     }
 }

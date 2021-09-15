@@ -11,8 +11,8 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(ref RoundSetModel __result)
         {
-            if (SessionData.RoundSet != null)
-                __result = SessionData.RoundSet;
+            if (SessionData.Instance.RoundSet != null)
+                __result = SessionData.Instance.RoundSet;
         }
     }
 }
