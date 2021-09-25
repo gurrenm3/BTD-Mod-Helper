@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper
         /// <summary>
         /// How much cash each bloon is worth when completely popped
         /// </summary>
-        public readonly Dictionary<string, int> bloonPopValue = new Dictionary<string, int>();
+        public readonly Dictionary<string, int> bloonPopValues = new Dictionary<string, int>();
 
         /// <summary>
         /// Resets all the values in SessionData

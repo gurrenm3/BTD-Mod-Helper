@@ -1,6 +1,9 @@
 ﻿using Assets.Scripts.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
@@ -74,6 +77,59 @@ namespace BTD_Mod_Helper.Extensions
                 newList.Add(item.TryCast<TCast>());
 
             return newList;
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Save a list to file
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">The list you want to save</param>
+        /// <param name="filePath">The FilePath you want to save it to</param>
+        /// <returns>returns true if successful, false if it fails</returns>
+        public static bool SaveToFile<T>(this List<T> list, string filePath)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(list);
+                File.WriteAllText(filePath, json);
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Load a List from a FilePath
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="filePath">FilePath of the saved List</param>
+        /// <returns>The loaded List if successful, otherwise default value</returns>
+        public static T LoadFromFile<T>(this List<T> list, string filePath)
+        {
+            return list.LoadFromFile(filePath, out bool success);
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Load a List from a FilePath
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="filePath">FilePath of the saved List</param>
+        /// <param name="success">Will be true if the List was successfully loaded, otherwise will be false</param>
+        /// <returns>The loaded List if successful, otherwise default value</returns>
+        public static T LoadFromFile<T>(this List<T> list, string filePath, out bool success)
+        {
+            success = false;
+            string json = File.ReadAllText(filePath);
+            if (string.IsNullOrEmpty(json)) return default;
+
+            try
+            {
+                var loadedObject = (T)JsonConvert.DeserializeObject(json);
+                success = true;
+                return loadedObject;
+            }
+            catch (Exception) { return default; }
         }
 
 

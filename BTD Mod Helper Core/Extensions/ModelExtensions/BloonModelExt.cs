@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (layersPopped == 0) return 0;
 
-            var cashValue = SessionData.Instance.bloonPopValue;
+            var cashValue = SessionData.Instance.bloonPopValues;
             var children = bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation());
             if ((layersPopped >= 0) || !cashValue.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
             {
