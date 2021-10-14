@@ -10,6 +10,7 @@ namespace BTD_Mod_Helper.Patches.Bloons
         internal static bool Prefix(Bloon __instance)
         {
             bool result = true;
+            SessionData.Instance.LeakedBloons.Add(__instance);
             MelonMain.DoPatchMethods(mod => result &= mod.PreBloonLeaked(__instance));
             return result;
         }

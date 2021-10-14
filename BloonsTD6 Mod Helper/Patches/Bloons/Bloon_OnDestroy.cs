@@ -10,8 +10,8 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPrefix]
         internal static bool Prefix(Bloon __instance)
         {
-            //SessionData.bloonTracker.StopTrackingBloon(__instance.GetId());
-            //SessionData.bloonTracker.StopTrackingBloonToSim(__instance.GetId());
+            SessionData.Instance.bloonTracker.StopTrackingBloon(__instance.GetId());
+            SessionData.Instance.bloonTracker.StopTrackingBloonToSim(__instance.GetId());
             return true;
         }
 
@@ -19,6 +19,9 @@ namespace BTD_Mod_Helper.Patches.Bloons
         internal static void Postfix(Bloon __instance)
         {
             MelonMain.DoPatchMethods(mod => { mod.OnBloonDestroy(__instance); });
+
+            if (__instance.WasBloonPopped())
+                MelonMain.DoPatchMethods(mod => { mod.OnBloonPopped(__instance); });
         }
     }
 }

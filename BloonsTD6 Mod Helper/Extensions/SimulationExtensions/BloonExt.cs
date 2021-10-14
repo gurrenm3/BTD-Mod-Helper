@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Simulation.Bloons;
+using Assets.Scripts.Simulation.Towers.Projectiles;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
 using System.Runtime.InteropServices;
@@ -8,6 +9,30 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class BloonExt
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bloon"></param>
+        /// <param name="projectile"></param>
+        /// <returns></returns>
+        public static bool WillPopBloon(this Bloon bloon, Projectile projectile)
+        {
+            return bloon.WillPopBloon(projectile.projectileModel.GetDamageModel());
+        }
+
+        /// <summary>
+        /// Returns whether or not the bloon was popped rather than leaked.
+        /// </summary>
+        /// <param name="bloon"></param>
+        /// <returns>True if it was popped, false if it was leaked or not destroyed yet</returns>
+        public static bool WasBloonPopped(this Bloon bloon)
+        {
+            //bloon.will
+            bool leakedBloon = SessionData.Instance.LeakedBloons.Contains(bloon);
+            bool destroyedBloon = SessionData.Instance.DestroyedBloons.Contains(bloon);
+            return destroyedBloon && !leakedBloon;
+        }
+
         /// <summary>
         /// Set bloon to be camo or not. Will change bloonModel to camo version if it exists
         /// </summary>

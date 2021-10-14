@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Towers;
 using HarmonyLib;
 
 namespace BTD_Mod_Helper.Patches.Sim
@@ -11,6 +10,8 @@ namespace BTD_Mod_Helper.Patches.Sim
         internal static void Postfix()
         {
             MelonMain.DoPatchMethods(mod => mod.OnRoundEnd());
+            SessionData.Instance.LeakedBloons.Clear();
+            SessionData.Instance.DestroyedBloons.Clear();
         }
     }
 }

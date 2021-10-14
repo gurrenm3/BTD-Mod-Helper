@@ -9,9 +9,9 @@ namespace BTD_Mod_Helper.Patches
     internal class InGame_Restart
     {
         [HarmonyPostfix]
-        internal static void Postfix(bool removeSave)
+        internal static void Postfix()
         {
-            MelonMain.DoPatchMethods(mod => mod.OnRestart(removeSave));
+            MelonMain.DoPatchMethods(mod => mod.OnRestart());
         }
     }
 }

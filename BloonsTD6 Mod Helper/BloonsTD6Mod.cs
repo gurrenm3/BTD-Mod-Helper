@@ -152,7 +152,7 @@ namespace BTD_Mod_Helper
         /// <br/>
         /// Equivalent to a HarmonyPostFix on InGame.Restart
         /// </summary>
-        public virtual void OnRestart(bool removeSave)
+        public virtual void OnRestart()
         {
 
         }
@@ -242,7 +242,15 @@ namespace BTD_Mod_Helper
         public virtual void OnBloonDestroy(Bloon bloon)
         {
         }
-        
+
+        /// <summary>
+        /// Called right after a Bloon is destroyed, but only when it's popped and not leaked
+        /// </summary>
+        /// <param name="bloon"></param>
+        public virtual void OnBloonPopped(Bloon bloon)
+        {
+        }
+
         /// <summary>
         /// Called right after a Bloon is damaged
         /// <br/>

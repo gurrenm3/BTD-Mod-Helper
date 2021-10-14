@@ -227,7 +227,7 @@
     <Compile Include="Patches\ResourceLoader_LoadSpriteFromSpriteReferenceAsync.cs" />
     <Compile Include="Patches\InGame_OnVictory.cs" />
     <Compile Include="Patches\Sim\Simulation_AddCash.cs" />
-    <Compile Include="Patches\Sim\Simulation_OnDefeat.cs" />
+    <Compile Include="Patches\Sim\UnityToSimulation_Lose.cs" />
     <Compile Include="Patches\Sim\Simulation_RoundEnd.cs" />
     <Compile Include="Patches\Sim\Simulation_RoundStart.cs" />
     <Compile Include="Patches\Sim\Simulation_RemoveCash.cs" />

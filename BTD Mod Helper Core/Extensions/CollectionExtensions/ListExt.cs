@@ -85,7 +85,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list you want to save</param>
         /// <param name="filePath">The FilePath you want to save it to</param>
-        /// <returns>returns true if successful, false if it fails</returns>
+        /// <returns>True if successful, false if it fails</returns>
         public static bool SaveToFile<T>(this List<T> list, string filePath)
         {
             try

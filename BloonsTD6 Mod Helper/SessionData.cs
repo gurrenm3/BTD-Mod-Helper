@@ -1,5 +1,7 @@
-﻿using NinjaKiwi.NKMulti;
+﻿using Assets.Scripts.Simulation.Bloons;
+using NinjaKiwi.NKMulti;
 using NinjaKiwi.Players.Files;
+using System.Collections.Generic;
 
 namespace BTD_Mod_Helper
 {
@@ -9,6 +11,17 @@ namespace BTD_Mod_Helper
     /// </summary>
     public partial class SessionData
     {
+        /// <summary>
+        /// Contains all the Bloons that were leaked during this round
+        /// Used to track which bloons were popped and which leaked
+        /// </summary>
+        public List<Bloon> LeakedBloons { get; set; } = new List<Bloon>();
+
+        /// <summary>
+        /// Contains all the Bloons that were destroyed during this round
+        /// </summary>
+        public List<Bloon> DestroyedBloons { get; set; } = new List<Bloon>();
+
         /// <summary>
         /// If the player is in Coop, this value represents whether it's a 
         /// Public Coop match or not

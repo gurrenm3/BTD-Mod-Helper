@@ -46,14 +46,14 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the save path for the game (I think?)
+        /// Get the save path for the game (I think?).  Broken on update 28.0
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
-        public static string GetSavePath(this InGame inGame)
+        /*public static string GetSavePath(this InGame inGame)
         {
-            return InGame.savePath;
-        }
+            return Game.save;
+        }*/
 
         /// <summary>
         /// Get the Cash Manager for the current game
