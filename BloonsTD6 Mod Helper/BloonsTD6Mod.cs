@@ -20,6 +20,7 @@ using MelonLoader;
 using NinjaKiwi.NKMulti;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
+using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
 
 namespace BTD_Mod_Helper
 {
@@ -434,6 +435,14 @@ namespace BTD_Mod_Helper
         #region Weapon/Projectile/Attack Hooks
 
         /// <summary>
+        /// Called when a ability is cast
+        /// <br/>
+        /// Equivalent to a HarmonyPostFix on Ability.Activate
+        /// </summary>
+        public virtual void OnAbilityCast(Ability ability){
+        }
+
+        /// <summary>
         /// Called right after an Attack is created
         /// <br/>
         /// Equivalent to a HarmonyPostFix on Attack.Initialise
@@ -461,7 +470,14 @@ namespace BTD_Mod_Helper
         {
         }
 
-        
+        /// <summary>
+        /// Called when a weapon fires
+        /// <br/>
+        /// Equivalent to a HarmonyPostFix on Weapon.SpawnDart
+        /// </summary>
+        public virtual void OnWeaponFire(Weapon weapon){
+        }
+
         /// <summary>
         /// Called right after a Tower's WeaponModel is changed for any reason (creation, upgrading, etc.)
         /// <br/>
