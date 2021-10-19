@@ -128,7 +128,7 @@ namespace BTD_Mod_Helper.Api.Updater
             var updater = new UpdaterHttp(updateInfo);
             try
             {
-                if (await updater.Download($"{Environment.CurrentDirectory}\\Mods"))
+                if (await updater.Download($"{MelonHandler.ModsDirectory}"))
                 {
                     MelonLogger.Msg($"Successfully downloaded new version of {updateInfo.Name}");
                     updatedMods = true;
