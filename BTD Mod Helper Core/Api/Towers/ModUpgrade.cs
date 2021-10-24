@@ -31,14 +31,14 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <summary>
         /// The actual name that should be displayed for the tower
         /// </summary>
-        public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
+        public virtual string DisplayName => Regex.Replace(GetType().Name, "(\\B[A-Z])", " $1");
         
         /// <summary>
         /// The file name without extension for the Portrait for this upgrade
         /// <br/>
         /// By default is the same file name as the tower followed by -Portrait
         /// </summary>
-        public virtual string Portrait => Name + "-Portrait";
+        public virtual string Portrait => GetType().Name + "-Portrait";
         
         /// <summary>
         /// The file name without extension for the Icon for this upgrade
@@ -48,7 +48,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <br/>
         /// By default is the same file name as the tower followed by -Icon
         /// </summary>
-        public virtual string Icon => Name + "-Icon";
+        public virtual string Icon => GetType().Name + "-Icon";
         
         /// <summary>
         /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
@@ -87,7 +87,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The tower that this is an upgrade for
         /// </summary>
         public abstract ModTower Tower { get; }
-        
+
         /// <summary>
         /// The description of this upgrade
         /// </summary>

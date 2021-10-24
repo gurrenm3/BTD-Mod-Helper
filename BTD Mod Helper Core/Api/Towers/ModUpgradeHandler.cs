@@ -31,16 +31,24 @@ namespace BTD_Mod_Helper.Api.Towers
                     continue;
                 }
 
-                try
+                if (modUpgrade is ModParagonUpgrade modParagonUpgrade)
                 {
-                    modUpgrade.Tower.upgrades[modUpgrade.Path, modUpgrade.Tier - 1] = modUpgrade;
+                    modUpgrade.Tower.paragonUpgrade = modParagonUpgrade;
                 }
-                catch (Exception e)
+                else
                 {
-                    MelonLogger.Error("Failed to assign ModUpgrade " + modUpgrade.Name + " to ModTower's upgrades");
-                    MelonLogger.Error(e);
-                    MelonLogger.Error("Double check that the Tower loaded and all Path and Tier values are correct");
-                    continue;
+                    try
+                    {
+                        modUpgrade.Tower.upgrades[modUpgrade.Path, modUpgrade.Tier - 1] = modUpgrade;
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error("Failed to assign ModUpgrade " + modUpgrade.Name + " to ModTower's upgrades");
+                        MelonLogger.Error(e);
+                        MelonLogger.Error(
+                            "Double check that the Tower loaded and all Path and Tier values are correct");
+                        continue;
+                    }
                 }
 
                 try

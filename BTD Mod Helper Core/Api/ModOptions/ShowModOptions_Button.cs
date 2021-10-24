@@ -36,20 +36,13 @@ namespace BTD_Mod_Helper.Api.ModOptions
             settingsUI_Canvas = rootGameObjects[0];
             optionsButton = ModOptionsMenu.CanvasGO.transform.Find("ModOptionsButton/Button").GetComponent<Button>();
 
-            var twitchButton = settingsUI_Canvas.GetComponentInChildrenByName<RectTransform>("TwitchButton");
-            
-            twitchButton.name="ModOptionsButton";
-            instantiatedButton = Object.Instantiate(optionsButton, twitchButton.transform);
+            var twitchPosition = settingsUI_Canvas.GetComponentInChildrenByName<TwitchSettingsButton>("TwitchButton");
+            instantiatedButton = Object.Instantiate(optionsButton, twitchPosition.transform);
             instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
             var transform = instantiatedButton.transform.Cast<RectTransform>();
-
-            transform.Translate(new Vector3(-150, 0), twitchButton.transform);
+            transform.Translate(new Vector3(-150, 0), twitchPosition.transform);
             transform.localScale = new Vector3(2.5f, 2.5f);
-            #if BloonsTD6
-            transform.position=new Vector3(1520,-5,0);
-            settingsUI_Canvas.GetComponentInChildrenByName<NonDrawingGraphic>("ClickBlock").gameObject.Destroy();
-            #endif
         }
 
         public void OptionButtonClicked()

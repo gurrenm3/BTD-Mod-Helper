@@ -1,9 +1,6 @@
 ﻿#if BloonsTD6
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.Display
 {
@@ -26,7 +23,24 @@ namespace BTD_Mod_Helper.Api.Display
 
 
         /// <summary>
-        /// Alters the UnityDisplayNode that was copied from the one used by <see cref="BaseDisplay"/>
+        /// A number between 0 and 4 (inclusive) representing which set of paragon degrees this display applies to
+        /// <br/>
+        /// 0: Degree 1 - 20
+        /// <br/>
+        /// 1: Degree 21 - 40
+        /// <br/>
+        /// 2: Degree 41 - 60
+        /// <br/>
+        /// 3: Degree 61 - 80
+        /// <br/>
+        /// 4: Degree 81 - 100
+        /// <br/>
+        /// If you don't have one for every index, then the next highest one will be used
+        /// </summary>
+        public virtual int ParagonDisplayIndex => -1;
+
+        /// <summary>
+        /// Alters the UnityDisplayNode that was copied from the one used by <see cref="ModDisplay.BaseDisplay"/>
         /// <br/>
         /// By default, this will change the main texture of the first SkinnedMeshRenderer of the node to that of a
         /// png with the same name as the class
@@ -36,8 +50,23 @@ namespace BTD_Mod_Helper.Api.Display
         {
             SetMeshTexture(node, Name);
         }
+
+        /// <summary>
+        /// If the tower tiers make it count as a Paragon
+        /// </summary>
+        /// <param name="tiers"></param>
+        /// <returns></returns>
+        protected bool IsParagon(int[] tiers)
+        {
+            return tiers[0] == 6;
+        }
+
+        /// <summary>
+        /// Number of different Paragon displays that are used by default
+        /// </summary>
+        protected int TotalParagonDisplays = 5;
     }
-    
+
     /// <summary>
     /// A convenient generic class for applying a ModTowerDisplay to a ModTower
     /// </summary>

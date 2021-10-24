@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
@@ -101,6 +99,21 @@ namespace BTD_Mod_Helper.Patches
             catch (Exception e)
             {
                 MelonLogger.Error($"Failed to modify DisplayNode for {modDisplay.Name}");
+                MelonLogger.Error(e);
+            }
+
+            try
+            {
+                if (modDisplay is ModTowerDisplay modTowerDisplay &&
+                    (modTowerDisplay.Scale < 1f || modTowerDisplay.Scale > 1f))
+                {
+                    udn.transform.GetChild(0).transform.localScale = new Vector3(modTowerDisplay.Scale,
+                        modTowerDisplay.Scale, modTowerDisplay.Scale);
+                }
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"Failed to change scale for {modDisplay.Name}");
                 MelonLogger.Error(e);
             }
 

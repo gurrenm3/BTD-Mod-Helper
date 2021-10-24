@@ -19,42 +19,53 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModTower : ModContent
     {
-        private static readonly string[] DefaultMods = {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
+        private static readonly string[] DefaultMods =
+            { "GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining" };
 
         private TowerModel towerModel;
-        
+
         internal readonly int[] tierMaxes;
         internal readonly ModUpgrade[,] upgrades;
         internal readonly List<ModTowerDisplay> displays = new List<ModTowerDisplay>();
-        
+        internal ModParagonUpgrade paragonUpgrade;
+
+        internal bool ShouldCreateParagon =>
+            ParagonMode != ParagonMode.None &&
+            TopPathUpgrades == 5 &&
+            MiddlePathUpgrades == 5 &&
+            BottomPathUpgrades == 5 &&
+            paragonUpgrade != null;
+
         /// <summary>
         /// The name that will be actually displayed for the tower in game
         /// </summary>
         public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
+
         /// <summary>
         /// The Portrait for the 0-0-0 tower
         /// </summary>
-        public virtual string Portrait => Name + "-Portrait";
+        public virtual string Portrait => GetType().Name + "-Portrait";
+
         /// <summary>
         /// The Icon for the Tower's purchase button
         /// </summary>
-        public virtual string Icon => Name + "-Icon";
+        public virtual string Icon => GetType().Name + "-Icon";
 
         /// <summary>
         /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
         /// </summary>
         public virtual SpriteReference IconReference => GetSpriteReference(Icon);
-        
+
         /// <summary>
         /// If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
         /// </summary>
         public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
-        
+
         /// <summary>
         /// Whether this Tower should display 2-dimensionally, and search for png images
         /// </summary>
         public virtual bool Use2DModel => false;
-        
+
         /// <summary>
         /// For 2D towers, the ratio between pixels and display units. Higher number -> smaller tower.
         /// </summary>
@@ -66,17 +77,25 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual bool DontAddToShop => false;
 
         /// <summary>
+        /// Defines whether / how this ModTower has a Paragon
+        /// </summary>
+        public virtual ParagonMode ParagonMode => ParagonMode.None;
+
+        /// <summary>
         /// The string to use for the Primary tower set
         /// </summary>
         protected const string PRIMARY = "Primary";
+
         /// <summary>
         /// The string to use for the Magic tower set
         /// </summary>
         protected const string MAGIC = "Magic";
+
         /// <summary>
         /// The string to use for the Military tower set
         /// </summary>
         protected const string MILITARY = "Military";
+
         /// <summary>
         /// The string to use for the Support tower set
         /// </summary>
@@ -88,31 +107,37 @@ namespace BTD_Mod_Helper.Api.Towers
         /// For now, just use one of the default constants provided of PRIMARY, MILITARY, MAGIC, or SUPPORT.
         /// </summary>
         public abstract string TowerSet { get; }
+
         /// <summary>
         /// The id of the default BTD Tower that your Tower is going to be copied from by default.
         /// </summary>
         public abstract string BaseTower { get; }
+
         /// <summary>
         /// The in game cost of this tower (on Medium difficulty)
         /// </summary>
         public abstract int Cost { get; }
+
         /// <summary>
         /// The number of upgrades the tower has in it's 1st / top path
         /// </summary>
         public abstract int TopPathUpgrades { get; }
+
         /// <summary>
         /// The number of upgrades the tower has in it's 2nd / middle path
         /// </summary>
         public abstract int MiddlePathUpgrades { get; }
+
         /// <summary>
         /// The number of upgrades the tower has in it's 3rd / bottom path
         /// </summary>
         public abstract int BottomPathUpgrades { get; }
+
         /// <summary>
         /// The in game description of the Tower
         /// </summary>
         public abstract string Description { get; }
-        
+
         /// <summary>
         /// Constructor for ModTower, used implicitly by ModContent.Create
         /// </summary>
@@ -123,7 +148,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal void Init(out ModUpgrade[,] u, out int[] t)
         {
-            t = new[] {TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades};
+            t = new[] { TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades };
             u = new ModUpgrade[3, t.Max()];
         }
 
@@ -134,7 +159,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// </summary>
         /// <param name="towerModel">The Base Tower Model</param>
         public abstract void ModifyBaseTowerModel(TowerModel towerModel);
-        
+
         /// <summary>
         /// Gets the base 0-0-0 TowerModel for this Tower
         /// <br/>
@@ -151,15 +176,15 @@ namespace BTD_Mod_Helper.Api.Towers
                     ? Game.instance.model.GetTowerFromId(BaseTower).MakeCopy(Id)
                     : new TowerModel(Id, Id);
                 towerModel.name = Id;
-                
+
                 towerModel.appliedUpgrades = new Il2CppStringArray(0);
                 towerModel.upgrades = new Il2CppReferenceArray<UpgradePathModel>(0);
                 towerModel.towerSet = TowerSet;
                 towerModel.cost = Cost;
                 towerModel.dontDisplayUpgrades = false;
 
-                    towerModel.tier = 0;
-                towerModel.tiers = new[] {0, 0, 0};
+                towerModel.tier = 0;
+                towerModel.tiers = new[] { 0, 0, 0 };
 
                 foreach (var defaultMod in DefaultMods)
                 {
@@ -173,7 +198,7 @@ namespace BTD_Mod_Helper.Api.Towers
                         }
                     }
                 }
-                
+
                 towerModel.GetDescendants<Model>().ForEach(model =>
                 {
                     model.name = model.name.Replace(BaseTower, Name);
@@ -203,7 +228,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 {
                     for (var k = 0; k <= BottomPathUpgrades; k++)
                     {
-                        var tiers = new[] {i, j, k};
+                        var tiers = new[] { i, j, k };
                         var sorted = tiers.OrderBy(num => -num).ToArray();
                         if (sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0)
                         {
@@ -212,6 +237,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     }
                 }
             }
+
             return results;
         }
 
@@ -237,6 +263,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 {
                     break;
                 }
+
                 var printed = tiers.Printed().ToCharArray();
                 for (var j = 0; j < 3; j++)
                 {
@@ -245,6 +272,7 @@ namespace BTD_Mod_Helper.Api.Towers
                         printed[j] = 'X';
                     }
                 }
+
                 name = $"{Name}-{printed}";
                 if (ResourceHandler.resources.ContainsKey(GetTextureGUID(name)))
                 {
@@ -265,7 +293,8 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual int GetTowerIndex(List<TowerDetailsModel> towerSet)
         {
             var index = towerSet.Count;
-            var lastOfSet = towerSet.LastOrDefault(tdm => Game.instance.model.GetTowerFromId(tdm.towerId).towerSet == TowerSet);
+            var lastOfSet =
+                towerSet.LastOrDefault(tdm => Game.instance.model.GetTowerFromId(tdm.towerId).towerSet == TowerSet);
             if (lastOfSet != default)
             {
                 index = towerSet.IndexOf(lastOfSet) + 1;
@@ -273,7 +302,27 @@ namespace BTD_Mod_Helper.Api.Towers
 
             return index;
         }
-        
+    }
+
+    /// <summary>
+    /// Defines the Paragon behavior for a ModTower
+    /// </summary>
+    public enum ParagonMode
+    {
+        /// <summary>
+        /// Don't generate a Paragon
+        /// </summary>
+        None,
+
+        /// <summary>
+        /// Generate a Paragon by applying the ModParagonUpgrade to the 000 version of the tower
+        /// </summary>
+        Base000,
+
+        /// <summary>
+        /// Generate a Paragon by applying the ModParagonUpgrade to the 555 version of the tower
+        /// </summary>
+        Base555,
     }
 }
 #endif
