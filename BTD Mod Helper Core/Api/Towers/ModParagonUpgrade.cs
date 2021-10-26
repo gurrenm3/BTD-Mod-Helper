@@ -46,10 +46,8 @@ namespace BTD_Mod_Helper.Api.Towers
         /// </summary>
         public virtual bool RemoveAbilities => true;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+
+        /// <inheritdoc />
         public override UpgradeModel GetUpgradeModel()
         {
             var model = base.GetUpgradeModel();

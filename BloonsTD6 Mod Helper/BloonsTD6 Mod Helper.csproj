@@ -151,6 +151,7 @@
     <Compile Include="Api\Builders\BloonModelBuilder.cs" />
     <Compile Include="Api\Coop\Chat_Message.cs" />
     <Compile Include="Api\Coop\MessageUtils.cs" />
+    <Compile Include="Api\ModdedMonkeySelectMenu.cs" />
     <Compile Include="AutoSave.cs" />
     <Compile Include="BloonsTD6Mod.cs" />
     <Compile Include="BTD6 UI\MainMenuUI.cs" />

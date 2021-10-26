@@ -7,6 +7,7 @@ using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
+using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
@@ -65,6 +66,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 try
                 {
                     Game.instance.GetLocalizationManager().textTable[modTower.Id] = modTower.DisplayName;
+                    Game.instance.GetLocalizationManager().textTable[modTower.Id + "s"] = modTower.DisplayNamePlural;
                     Game.instance.GetLocalizationManager().textTable[modTower.Id + " Description"] =
                         modTower.Description;
                     ModTowers.Add(modTower);

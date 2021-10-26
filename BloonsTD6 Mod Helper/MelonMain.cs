@@ -234,8 +234,12 @@ namespace BTD_Mod_Helper
             {
                 PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
                     "You've downloaded new updates for mods, but still need to restart your game to apply them.\n" +
-                    "\nWould you like to do that now?", new Action(() => MenuManager.instance.QuitGame()),
-                    "Yes, quit the game", null, "Not now", Popup.TransitionAnim.Update);
+                    "\nWould you like to do that now?", new Action(() =>
+                    {
+                        MelonLogger.Msg("Quitting the game");
+                        MenuManager.instance.QuitGame();
+                    }),
+                    "Yes, quit the game", new Action(() => { }), "Not now", Popup.TransitionAnim.Update);
                 UpdateHandler.updatedMods = false;
             }
         }

@@ -56,6 +56,14 @@ namespace BTD_Mod_Helper.Api.Towers
                     Game.instance.model.AddUpgrade(upgradeModel);
                     Game.instance.GetLocalizationManager().textTable[modUpgrade.Id] = modUpgrade.DisplayName;
                     Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Description"] = modUpgrade.Description;
+                    Game.instance.GetLocalizationManager().textTable[modUpgrade.DisplayName + " Description"] = modUpgrade.Description;
+
+                    if (modUpgrade.NeedsConfirmation)
+                    {
+                        Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Title"] = modUpgrade.ConfirmationTitle;
+                        Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Body"] = modUpgrade.ConfirmationBody;
+                    }
+                    
                     ModUpgrades.Add(modUpgrade);
                 }
                 catch (Exception e)

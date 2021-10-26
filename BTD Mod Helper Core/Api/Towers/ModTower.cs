@@ -42,6 +42,11 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
 
         /// <summary>
+        /// The name that will actually be display when referring to multiple of the tower
+        /// </summary>
+        public virtual string DisplayNamePlural => DisplayName + "s";
+
+        /// <summary>
         /// The Portrait for the 0-0-0 tower
         /// </summary>
         public virtual string Portrait => GetType().Name + "-Portrait";

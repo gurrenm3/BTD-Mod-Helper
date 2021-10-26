@@ -68,6 +68,21 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual int Priority => 0;
 
         /// <summary>
+        /// Whether this upgrade requires a confirmation popup
+        /// </summary>
+        public virtual bool NeedsConfirmation => false;
+        
+        /// <summary>
+        /// The title for the confirmation popup, if needed
+        /// </summary>
+        public virtual string ConfirmationTitle => null;
+        
+        /// <summary>
+        /// The body text for the confirmation popup, if needed
+        /// </summary>
+        public virtual string ConfirmationBody => null;
+
+        /// <summary>
         /// The upgrade path
         /// Use <see cref="TOP"/>, <see cref="MIDDLE"/>, <see cref="BOTTOM"/>
         /// </summary>
@@ -116,7 +131,7 @@ namespace BTD_Mod_Helper.Api.Towers
             if (upgradeModel == null)
             {
                 upgradeModel = new UpgradeModel(Id, Cost, 0, IconReference ?? DefaultIcon, 
-                    Path, Tier - 1, 0, "", "");
+                    Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
             }
 
             return upgradeModel;
