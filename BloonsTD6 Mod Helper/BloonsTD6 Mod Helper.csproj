@@ -124,6 +124,9 @@
       <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.JSONSerializeModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Dependencies\BloonsTD6\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>

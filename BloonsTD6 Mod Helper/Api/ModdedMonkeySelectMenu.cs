@@ -3,14 +3,25 @@ using System.Linq;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.Main;
+using Assets.Scripts.Unity.UI_New.Main.MapSelect;
 using Assets.Scripts.Unity.UI_New.Main.MonkeySelect;
+using Assets.Scripts.Utils;
 using HarmonyLib;
+using Il2CppSystem;
+using MelonLoader;
+using UnhollowerBaseLib;
+using UnhollowerRuntimeLib;
+using UnityEngine;
+using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api
 {
     internal class ModdedMonkeySelectMenu
     {
         private static MonkeySelectMenu menu;
+        private static bool reOpening;
+        private static string currentTowerSet;
 
         private static readonly Dictionary<string, int> Offsets = new Dictionary<string, int>();
 
@@ -23,14 +34,16 @@ namespace BTD_Mod_Helper.Api
         private static readonly Dictionary<string, List<TowerDetailsModel>> TowersInSets =
             new Dictionary<string, List<TowerDetailsModel>>();
 
-        private static readonly Dictionary<string, int> StartIndices = new Dictionary<string, int>();
-
-        private static string currentTowerSet;
-
+        // Total amount of towers in each set rounded up to the nearest multiple of 8
         private static readonly Dictionary<string, int> TotalSpotses = new Dictionary<string, int>();
-
         private static int TotalSpots => TotalSpotses[currentTowerSet];
 
+
+        /// <summary>
+        /// Update the currentTowerSet tracker, and change the state if need be
+        /// </summary>
+        /// <param name="__instance"></param>
+        /// <param name="offset"></param>
         internal static void UpdateTowerSet(MonkeySelectMenu __instance, int offset = 0)
         {
             var newTowerSet = menu.TowerSets[menu.currentSet];
@@ -47,6 +60,8 @@ namespace BTD_Mod_Helper.Api
 
         /// <summary>
         /// Changes the order of the TowerDetails in the GameModel
+        /// <br/>
+        /// Their order in the GameModel is what determines their order in the screen
         /// </summary>
         internal static void UpdateGameModel(string set = "")
         {
@@ -56,17 +71,21 @@ namespace BTD_Mod_Helper.Api
             }
 
             var model = Game.instance.model;
-            foreach (var details in TowersInSets[set])
+            for (var index = 0; index < TowersInSets[set].Count; index++)
             {
+                var details = TowersInSets[set][index];
                 model.RemoveChildDependant(details);
 
-                if (details.towerIndex >= Offsets[set] + StartIndices[set])
+                if (index >= Offsets[set])
                 {
                     model.AddChildDependant(details);
                 }
             }
         }
 
+        /// <summary>
+        /// Put the GameModel's TowerDetails ordering back to normal
+        /// </summary>
         internal static void ResetGameModel()
         {
             var model = Game.instance.model;
@@ -110,7 +129,9 @@ namespace BTD_Mod_Helper.Api
             menu.buttonLeft.m_OnClick.RemoveAllListeners();
             menu.buttonRight.m_OnClick.RemoveAllListeners();
 
+            reOpening = true;
             menu.Open(currentTowerSet);
+            reOpening = false;
         }
 
         public static bool ItComesAfter(string it, string maybeAfter)
@@ -141,10 +162,13 @@ namespace BTD_Mod_Helper.Api
                         Offsets[set] = 0;
                         TowersInSets[set] = model.towerSet.Where(details =>
                             model.GetTowerFromId(details.towerId).towerSet == set).ToList();
-                        StartIndices[set] = TowersInSets[set].First(details =>
-                            model.GetTowerFromId(details.towerId).towerSet == set).towerIndex;
                         TotalSpotses[set] = ((TowersInSets[set].Count - 1) / 8 + 1) * 8;
                     }
+                }
+
+                if (!reOpening)
+                {
+                    CreatePips(__instance);
                 }
             }
 
@@ -153,9 +177,21 @@ namespace BTD_Mod_Helper.Api
             {
                 menu = __instance;
                 UpdateTowerSet(__instance);
+                UpdatePips();
             }
         }
 
+        /// <summary>
+        /// Possible inputs:
+        /// <br/>
+        /// towerSet=null swipeGesture=false (reOpening=false) - When opening the MonkeySelectMenu from the Main Menu
+        /// <br/>
+        /// towerSet=not null swipeGesture=true (reOpening=false) - When swiping or clicking the left/right buttons
+        /// <br/>
+        /// towerSet=not null swipeGesture=false (reOpening=false) - When clicking the MonkeyGroupButtons, also the initial call to Open()
+        /// <br/>
+        /// towerSet=not null swipeGesture=false (reOpening=true) - Called during our calls to Open() to change the buttons
+        /// </summary>
         [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.SwitchTowerSet))]
         internal class MonkeySelectMenu_SwitchTowerSet
         {
@@ -195,6 +231,11 @@ namespace BTD_Mod_Helper.Api
                         }
                     }
                 }
+                else if (!reOpening)
+                {
+                    // Like on the maps screen, clicking your current MonkeyGroupButton should cycle the set
+                    Cycle(Offset + 8);
+                }
 
                 return true;
             }
@@ -203,6 +244,7 @@ namespace BTD_Mod_Helper.Api
             internal static void Postfix(MonkeySelectMenu __instance, string towerSet, bool swipeGesture, int __state)
             {
                 UpdateTowerSet(__instance, __state);
+                UpdatePips();
             }
         }
 
@@ -213,7 +255,7 @@ namespace BTD_Mod_Helper.Api
             internal static bool Prefix(MonkeyGroupButton __instance)
             {
                 // Don't re-initialize the MonkeyGroupButtons while we're reloading
-                return menu == null;
+                return !reOpening;
             }
         }
 
@@ -224,6 +266,122 @@ namespace BTD_Mod_Helper.Api
             internal static void Postfix(MainMenu __instance)
             {
                 ResetGameModel();
+            }
+        }
+
+        [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.Close))]
+        internal class MonkeySelectMenu_Close
+        {
+            [HarmonyPrefix]
+            internal static bool Prefix(MonkeySelectMenu __instance)
+            {
+                DestroyPips();
+                return true;
+            }
+        }
+
+
+
+        private static int TotalPages => TotalSpotses.Values.Sum() / 8;
+
+        private static int CurrentPage => (TotalSpotses.Values.Take(menu.currentSet).Sum() + Offset) / 8;
+
+        internal static GameObject pipHolder;
+        internal static List<GameObject> pips = new List<GameObject>();
+
+        internal const int PipCenterX = 800;
+        internal const int PipY = 175;
+        internal const int PipSpacing = 40;
+
+        internal static void UpdatePips()
+        {
+            for (var index = 0; index < pips.Count; index++)
+            {
+                var pip = pips[index];
+                if (index == CurrentPage)
+                {
+                    pip.GetComponent<MapPip>().Activate();
+                }
+                else
+                {
+                    pip.GetComponent<MapPip>().Deactivate();
+                }
+            }
+        }
+        
+        internal static void CreatePips(MonkeySelectMenu __instance)
+        {
+            DestroyPips();
+
+            pipHolder = new GameObject("PipHolder",
+                new Il2CppReferenceArray<Type>(new[] { Il2CppType.Of<RectTransform>() }))
+            {
+                transform = { parent = __instance.transform}
+            };
+            var gridLayoutGroup = pipHolder.AddComponent<GridLayoutGroup>();
+            gridLayoutGroup.cellSize = new Vector2(64, 64);
+            gridLayoutGroup.spacing = new Vector2(25, 0);
+            gridLayoutGroup.startAxis = GridLayoutGroup.Axis.Horizontal;
+            gridLayoutGroup.childAlignment = TextAnchor.MiddleCenter;
+            gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+            gridLayoutGroup.constraintCount = 1;
+            gridLayoutGroup.startCorner = GridLayoutGroup.Corner.UpperLeft;
+
+            var scale = __instance.monkeyGroupButtons.First().transform.lossyScale;
+            var monkeyGroupButtonsPos = __instance.monkeyGroupButtons.First().transform.parent.position;
+
+            pipHolder.transform.position = monkeyGroupButtonsPos + new Vector3(0, 125, 0) * scale.x;
+            pipHolder.transform.localScale = new Vector3(1, 1, 1);
+
+            for (var i = 0; i < TotalPages; i++)
+            {
+                pips.Add(CreatePip(pipHolder.transform));
+            }
+        }
+
+        internal static GameObject CreatePip(Transform parent)
+        {
+            var pip = new GameObject("CustomPip",
+                new Il2CppReferenceArray<Type>(new[] { Il2CppType.Of<RectTransform>() }))
+            {
+                transform =
+                {
+                    parent = parent
+                }
+            };
+
+            var canvasRenderer = pip.AddComponent<CanvasRenderer>();
+            canvasRenderer.cullTransparentMesh = false;
+            var image = pip.AddComponent<Image>();
+            var mapPip = pip.AddComponent<MapPip>();
+            mapPip.activatedSprite = new SpriteReference("Ui[PagePipOn]");
+            mapPip.deactivatedSprite = new SpriteReference("Ui[PagePipOff]");
+            mapPip.pipImage = image;
+            pip.AddComponent<SpriteReleaser>();
+            var layoutElement = pip.AddComponent<LayoutElement>();
+            layoutElement.preferredHeight = 64;
+            layoutElement.preferredWidth = 64;
+            layoutElement.useGUILayout = true;
+
+            mapPip.Deactivate();
+
+            pip.transform.localScale = new Vector3(1, 1, 1);
+
+            return pip;
+        }
+
+        internal static void DestroyPips()
+        {
+            foreach (var gameObject in pips)
+            {
+                Object.Destroy(gameObject);
+            }
+            pips.Clear();
+
+            if (pipHolder != null)
+            {
+                Object.Destroy(pipHolder);
+                pipHolder = null;
             }
         }
     }
