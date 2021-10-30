@@ -13,7 +13,8 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public static class ModUpgradeHandler
     {
-        internal static readonly List<ModUpgrade> ModUpgrades = new List<ModUpgrade>();
+        // Cache of UpgradeModel.name => ModUpgrade
+        internal static readonly Dictionary<string, ModUpgrade> ModUpgradeCache = new Dictionary<string, ModUpgrade>();
 
         internal static void LoadUpgrades(List<ModUpgrade> modUpgrades)
         {
@@ -63,8 +64,8 @@ namespace BTD_Mod_Helper.Api.Towers
                         Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Title"] = modUpgrade.ConfirmationTitle;
                         Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Body"] = modUpgrade.ConfirmationBody;
                     }
-                    
-                    ModUpgrades.Add(modUpgrade);
+
+                    ModUpgradeCache[upgradeModel.name] = modUpgrade;
                 }
                 catch (Exception e)
                 {

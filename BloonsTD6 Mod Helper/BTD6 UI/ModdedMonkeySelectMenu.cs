@@ -6,6 +6,9 @@ using Assets.Scripts.Unity.UI_New.Main;
 using Assets.Scripts.Unity.UI_New.Main.MapSelect;
 using Assets.Scripts.Unity.UI_New.Main.MonkeySelect;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using Il2CppSystem;
 using MelonLoader;
@@ -15,7 +18,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace BTD_Mod_Helper.Api
+namespace BTD_Mod_Helper.BTD6_UI
 {
     internal class ModdedMonkeySelectMenu
     {
@@ -153,9 +156,21 @@ namespace BTD_Mod_Helper.Api
             [HarmonyPrefix]
             internal static void Prefix(MonkeySelectMenu __instance, Il2CppSystem.Object data)
             {
+                if (!reOpening)
+                {
+                    var towerSets = new List<string>(__instance.TowerSets);
+                    foreach (var modTowerSet in ModContent.GetInstances<ModTowerSet>())
+                    {
+                        var towerSetIndex = modTowerSet.GetTowerSetIndex(towerSets);
+                        towerSets.Insert(towerSetIndex, modTowerSet.Id);
+                    }
+                    __instance.TowerSets = towerSets.ToArray();
+                }
+                
                 if (data == null)
                 {
                     menu = null;
+
                     var model = Game.instance.model;
                     foreach (var set in __instance.TowerSets)
                     {
@@ -169,6 +184,7 @@ namespace BTD_Mod_Helper.Api
                 if (!reOpening)
                 {
                     CreatePips(__instance);
+                    CreateCustomButtons(__instance);
                 }
             }
 
@@ -276,11 +292,10 @@ namespace BTD_Mod_Helper.Api
             internal static bool Prefix(MonkeySelectMenu __instance)
             {
                 DestroyPips();
+                DestroyCustomButtons();
                 return true;
             }
         }
-
-
 
         private static int TotalPages => TotalSpotses.Values.Sum() / 8;
 
@@ -289,9 +304,8 @@ namespace BTD_Mod_Helper.Api
         internal static GameObject pipHolder;
         internal static List<GameObject> pips = new List<GameObject>();
 
-        internal const int PipCenterX = 800;
-        internal const int PipY = 175;
-        internal const int PipSpacing = 40;
+        internal static Dictionary<ModTowerSet, GameObject> customMonkeyGroupButtons =
+            new Dictionary<ModTowerSet, GameObject>();
 
         internal static void UpdatePips()
         {
@@ -308,7 +322,7 @@ namespace BTD_Mod_Helper.Api
                 }
             }
         }
-        
+
         internal static void CreatePips(MonkeySelectMenu __instance)
         {
             DestroyPips();
@@ -316,7 +330,7 @@ namespace BTD_Mod_Helper.Api
             pipHolder = new GameObject("PipHolder",
                 new Il2CppReferenceArray<Type>(new[] { Il2CppType.Of<RectTransform>() }))
             {
-                transform = { parent = __instance.transform}
+                transform = { parent = __instance.transform }
             };
             var gridLayoutGroup = pipHolder.AddComponent<GridLayoutGroup>();
             gridLayoutGroup.cellSize = new Vector2(64, 64);
@@ -370,12 +384,43 @@ namespace BTD_Mod_Helper.Api
             return pip;
         }
 
+        internal static void CreateCustomButtons(MonkeySelectMenu __instance)
+        {
+            DestroyCustomButtons();
+            
+            var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
+            var horizontalLayoutGroup = __instance.monkeyGroupButtons[0].GetComponentInParent<HorizontalLayoutGroup>();
+            foreach (var modTowerSet in ModContent.GetInstances<ModTowerSet>())
+            {
+                horizontalLayoutGroup.enabled = true;
+                var index = modTowerSet.GetTowerSetIndex(monkeyGroupButtons.Select(b => b.groupName).ToList());
+                var groupButton = CreateMonkeyGroupButton(__instance, modTowerSet);
+                groupButton.transform.SetSiblingIndex(index);
+                customMonkeyGroupButtons[modTowerSet] = groupButton;
+                monkeyGroupButtons.Insert(index, groupButton.GetComponent<MonkeyGroupButton>());
+            }
+            __instance.monkeyGroupButtons = monkeyGroupButtons.ToArray();
+        }
+
+        internal static GameObject CreateMonkeyGroupButton(MonkeySelectMenu instance, ModTowerSet modTowerSet)
+        {
+            var primary = instance.monkeyGroupButtons.First(button => button.groupName == "Primary");
+            var groupButton = Object.Instantiate(primary.gameObject, primary.transform.parent);
+            var monkeyGroupButton = groupButton.GetComponent<MonkeyGroupButton>();
+            monkeyGroupButton.groupName = modTowerSet.Id;
+            groupButton.name = modTowerSet.Id;
+            groupButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = modTowerSet.Id;
+            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ButtonReference, monkeyGroupButton.icon);
+            return groupButton;
+        }
+
         internal static void DestroyPips()
         {
             foreach (var gameObject in pips)
             {
                 Object.Destroy(gameObject);
             }
+
             pips.Clear();
 
             if (pipHolder != null)
@@ -383,6 +428,16 @@ namespace BTD_Mod_Helper.Api
                 Object.Destroy(pipHolder);
                 pipHolder = null;
             }
+        }
+
+        internal static void DestroyCustomButtons()
+        {
+            foreach (var gameObject in customMonkeyGroupButtons.Values)
+            {
+                Object.Destroy(gameObject);
+            }
+
+            customMonkeyGroupButtons.Clear();
         }
     }
 }

@@ -21,13 +21,13 @@ namespace BTD_Mod_Helper.Api.Towers
 {
     internal static class ModTowerHandler
     {
-        internal static readonly List<ModTower> ModTowers = new List<ModTower>();
-
+        // Cache of all added TowerModel.name => TowerModel
         internal static readonly Dictionary<string, TowerModel> TowerCache = new Dictionary<string, TowerModel>();
 
         internal static readonly Dictionary<string, float> Tower2DScales = new Dictionary<string, float>();
 
-        internal static readonly Dictionary<string, ModTower> ModTowersCache = new Dictionary<string, ModTower>();
+        // Cache of TowerModel.name => ModTower 
+        internal static readonly Dictionary<string, ModTower> ModTowerCache = new Dictionary<string, ModTower>();
 
         internal static void LoadTowers(List<ModTower> modTowers)
         {
@@ -61,15 +61,40 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
             }
 
-            foreach (var modTower in modTowers)
+            foreach (var modTower in modTowers.OrderBy(tower => tower.Order))
             {
                 try
                 {
+                    // Finalize the addition of the ModTower to the game
                     Game.instance.GetLocalizationManager().textTable[modTower.Id] = modTower.DisplayName;
                     Game.instance.GetLocalizationManager().textTable[modTower.Id + "s"] = modTower.DisplayNamePlural;
                     Game.instance.GetLocalizationManager().textTable[modTower.Id + " Description"] =
                         modTower.Description;
-                    ModTowers.Add(modTower);
+                    
+                    if (!modTower.DontAddToShop)
+                    {
+                        try
+                        {
+                            var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
+                            var index = modTower.GetTowerIndex(Game.instance.model.towerSet.ToList());
+                            if (index >= 0)
+                            {
+                                Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            MelonLogger.Error($"Failed to add ModTower {modTower.Name} to the shop");
+                            MelonLogger.Error(e);
+                            throw;
+                        }
+                    }
+
+                    if (modTower.ModTowerSet != null)
+                    {
+                        modTower.ModTowerSet.towers.Add(modTower);
+                    }
+                    
                 }
                 catch (Exception e)
                 {
@@ -114,31 +139,12 @@ namespace BTD_Mod_Helper.Api.Towers
                 try
                 {
                     Game.instance.model.AddTowerToGame(towerModel);
-                    ModTowersCache[towerModel.name] = modTower;
+                    ModTowerCache[towerModel.name] = modTower;
                 }
                 catch (Exception e)
                 {
                     MelonLogger.Error($"Failed to add TowerModel {towerModel.name} to the game");
                     MelonLogger.Error(e);
-                }
-            }
-
-            if (!modTower.DontAddToShop)
-            {
-                try
-                {
-                    var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
-                    var index = modTower.GetTowerIndex(Game.instance.model.towerSet.ToList());
-                    if (index >= 0)
-                    {
-                        Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
-                    }
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error($"Failed to add ModTower {modTower.Name} to the shop");
-                    MelonLogger.Error(e);
-                    throw;
                 }
             }
 

@@ -1,4 +1,5 @@
 ﻿#if BloonsTD6
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -28,6 +29,7 @@ namespace BTD_Mod_Helper.Api.Towers
         internal readonly ModUpgrade[,] upgrades;
         internal readonly List<ModTowerDisplay> displays = new List<ModTowerDisplay>();
         internal ModParagonUpgrade paragonUpgrade;
+        internal virtual ModTowerSet ModTowerSet => null;
 
         internal bool ShouldCreateParagon =>
             ParagonMode != ParagonMode.None &&
@@ -85,6 +87,11 @@ namespace BTD_Mod_Helper.Api.Towers
         /// Defines whether / how this ModTower has a Paragon
         /// </summary>
         public virtual ParagonMode ParagonMode => ParagonMode.None;
+        
+        /// <summary>
+        /// Customized order in which to add this ModTower in the shop in relation to others added by your mod
+        /// </summary>
+        public virtual int Order => 0;
 
         /// <summary>
         /// The string to use for the Primary tower set
@@ -297,15 +304,41 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <returns></returns>
         public virtual int GetTowerIndex(List<TowerDetailsModel> towerSet)
         {
-            var index = towerSet.Count;
-            var lastOfSet =
-                towerSet.LastOrDefault(tdm => Game.instance.model.GetTowerFromId(tdm.towerId).towerSet == TowerSet);
-            if (lastOfSet != default)
+            if (towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is TowerDetailsModel tower)
             {
-                index = towerSet.IndexOf(lastOfSet) + 1;
+                return tower.towerIndex + 1;
             }
 
-            return index;
+            return towerSet.Count;
+        }
+    }
+
+    /// <summary>
+    /// A convenient generic class for specifying the ModTowerSet that a ModTower uses
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class ModTower<T> : ModTower where T : ModTowerSet
+    {
+        internal override ModTowerSet ModTowerSet => GetInstance<T>();
+
+        /// <summary>
+        /// The custom tower set that this ModTower uses
+        /// </summary>
+        public override string TowerSet => TowerSet<T>();
+
+        /// <summary>
+        /// New default positioning of a ModTower when it has a ModTowerSet
+        /// </summary>
+        /// <param name="towerSet"></param>
+        /// <returns></returns>
+        public override int GetTowerIndex(List<TowerDetailsModel> towerSet)
+        {
+            if (towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is TowerDetailsModel tower)
+            {
+                return tower.towerIndex + 1;
+            }
+            var modTowerSet = GetInstance<T>();
+            return modTowerSet.GetTowerStartIndex(towerSet);
         }
     }
 

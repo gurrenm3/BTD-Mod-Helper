@@ -236,7 +236,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static ModTower GetModTower(this TowerModel towerModel)
         {
-            return ModTowerHandler.ModTowersCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
+            return ModTowerHandler.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
         }
         
         /// <summary>

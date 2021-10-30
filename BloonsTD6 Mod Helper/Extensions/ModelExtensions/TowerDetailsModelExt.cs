@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models.TowerSets;
+﻿using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
 
@@ -94,5 +95,11 @@ namespace BTD_Mod_Helper.Extensions
             //var details = Game.instance?.GetTowerDetailModels().TryCast<Il2CppSystem.Collections.Generic.List<TowerDetailsModel>>();
             InGame.instance?.GetTowerInventory(1).SetTowerMaxes(details);
         }*/
+
+        public static TowerModel GetTower(this TowerDetailsModel towerDetailsModel)
+        {
+            return Game.instance.model.GetTowerWithName(towerDetailsModel.towerId);
+        }
+        
     }
 }

@@ -69,6 +69,7 @@ namespace BTD_Mod_Helper.Api
             var modDisplays = GetModContent<ModDisplay>(mod);
             var modUpgrades = GetModContent<ModUpgrade>(mod);
             var modTowers = GetModContent<ModTower>(mod);
+            var modTowerSets = GetModContent<ModTowerSet>(mod);
                             
             try
             {
@@ -96,9 +97,20 @@ namespace BTD_Mod_Helper.Api
             }
             catch (Exception e)
             {
-                MelonLogger.Error("Critical failure when loading Upgrades for mod " + mod.Info.Name);
+                MelonLogger.Error("Critical failure when loading Towers for mod " + mod.Info.Name);
                 MelonLogger.Error(e);
             }
+            
+            try
+            {
+                ModTowerSetHandler.LoadTowerSets(modTowerSets);
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error("Critical failure when loading Tower Sets for mod " + mod.Info.Name);
+                MelonLogger.Error(e);
+            }
+            
         }
 #endif
         
@@ -169,7 +181,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>A new SpriteReference</returns>
-        public SpriteReference GetSpriteReference(string name)
+        protected SpriteReference GetSpriteReference(string name)
         {
             return CreateSpriteReference(GetTextureGUID(name));
         }
@@ -357,24 +369,34 @@ namespace BTD_Mod_Helper.Api
         {
             return GetInstance<T>().Id;
         }
+        
+        /// <summary>
+        /// Gets the internal tower set id for a given TowerSet
+        /// </summary>
+        /// <typeparam name="T">The ModUpgrade type</typeparam>
+        /// <returns>The upgrade name/id</returns>
+        public static string TowerSet<T>() where T : ModTowerSet
+        {
+            return GetInstance<T>().Id;
+        }
 
          /// <summary>
-        /// For ModContent that loads with multiple instances, get all instances of them
+        /// Gets all loaded ModContent objects that are T or a subclass of T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static List<T> GetInstances<T>() where T : ModContent
-        {
-            if (Instances.GetValueOrDefault(typeof(T)) is List<ModContent> instances)
-            {
-                return instances.Select(content => (T) content).ToList();
-            }
-            return default;
+         {
+             return Instances.Where(pair => typeof(T).IsAssignableFrom(pair.Key))
+                 .SelectMany(pair => pair.Value)
+                 .Cast<T>()
+                 .ToList();
         }
+        
 #endif
 
         /// <summary>
-        /// Gets the official instance of a particular ModContent or BloonsMod based on its type
+        /// Gets the singleton instance of a particular ModContent or BloonsMod based on its type
         /// </summary>
         /// <typeparam name="T">The type to get the instance of</typeparam>
         /// <returns>The official instance of it</returns>

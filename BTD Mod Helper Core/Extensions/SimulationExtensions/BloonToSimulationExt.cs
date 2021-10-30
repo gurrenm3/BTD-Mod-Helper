@@ -29,15 +29,6 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// This is Obsolete, use GetBloon instead. (Cross-Game compatible) Return the Simulation Bloon for this specific BloonToSimulation. Returns object of class Bloon
-        /// </summary>
-        [Obsolete]
-        public static Bloon GetSimBloon(this BloonToSimulation bloonToSim)
-        {
-            return SessionData.Instance.bloonTracker.GetBloon(bloonToSim.GetId());
-        }
-
-        /// <summary>
         /// (Cross-Game compatible) Return the Simulation Bloon for this specific BloonToSimulation. Returns object of class Bloon
         /// </summary>
         public static Bloon GetBloon(this BloonToSimulation bloonToSim)

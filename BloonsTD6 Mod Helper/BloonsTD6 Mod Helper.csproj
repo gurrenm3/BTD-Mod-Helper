@@ -154,11 +154,11 @@
     <Compile Include="Api\Builders\BloonModelBuilder.cs" />
     <Compile Include="Api\Coop\Chat_Message.cs" />
     <Compile Include="Api\Coop\MessageUtils.cs" />
-    <Compile Include="Api\ModdedMonkeySelectMenu.cs" />
     <Compile Include="AutoSave.cs" />
     <Compile Include="BloonsTD6Mod.cs" />
     <Compile Include="BTD6 UI\MainMenuUI.cs" />
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
+    <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
     <Compile Include="BTD6 UI\TitleScreenUI.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
@@ -230,6 +230,7 @@
     <Compile Include="Patches\Projectiles\Projectile_UpdatedModel.cs" />
     <Compile Include="Patches\ResourceLoader_LoadSpriteFromSpriteReferenceAsync.cs" />
     <Compile Include="Patches\InGame_OnVictory.cs" />
+    <Compile Include="Patches\SelectedUpgrade_UpdateButtonState.cs" />
     <Compile Include="Patches\Sim\Simulation_AddCash.cs" />
     <Compile Include="Patches\Sim\UnityToSimulation_Lose.cs" />
     <Compile Include="Patches\Sim\Simulation_RoundEnd.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Patches\TimeManager_SetFastForward.cs" />
     <Compile Include="Patches\TitleScreen_Start.cs" />
     <Compile Include="Patches\TowerInventory_Init.cs" />
+    <Compile Include="Patches\TowerSetBgSprites_GetSprite.cs" />
     <Compile Include="Patches\Towers\TowerManager_UpgradeTower.cs" />
     <Compile Include="Patches\Towers\Tower_Destroy.cs" />
     <Compile Include="Patches\Towers\Tower_GetSaveData.cs" />

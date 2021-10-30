@@ -24,6 +24,7 @@ namespace BTD_Mod_Helper
             if (autosaveInit)
                 return;
 
+            MelonLogger.Msg("Starting to initiate profile AutoSaving...");
             InitAutosaveSettings(settingsDir);
             backup = new BackupCreator(autosavePath, maxSavedBackups);
             ScheduleAutosave();
