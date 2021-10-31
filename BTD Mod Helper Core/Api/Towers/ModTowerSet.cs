@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models.TowerSets;
+using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 
@@ -105,6 +106,15 @@ namespace BTD_Mod_Helper.Api.Towers
             var start = GetTowerSetIndex(towerSetChunks.Select(tuple => tuple.Item1).ToList());
 
             return towerSetChunks.Take(start).Sum(tuple => tuple.Item2);
+        }
+
+        /// <summary>
+        /// No loading multiple instances of a ModTowerSet
+        /// </summary>
+        /// <returns></returns>
+        public sealed override IEnumerable<ModContent> Load()
+        {
+            return base.Load();
         }
     }
 }

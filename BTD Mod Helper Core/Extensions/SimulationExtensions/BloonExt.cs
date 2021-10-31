@@ -33,26 +33,12 @@ namespace BTD_Mod_Helper.Extensions
 
 
         /// <summary>
-        /// (Cross-Game compatible) Return the existing BloonToSimulation for this specific Bloon. If it doesn't exist one will be created and stored
+        /// (Cross-Game compatible) Return the existing BloonToSimulation for this specific Bloon.
         /// </summary>
         public static BloonToSimulation GetBloonToSim(this Bloon bloon)
         {
-            // This method doesn't need to be this long but it doesn't hurt to have extra checks
-
-            var bloonSim = SessionData.Instance.bloonTracker.GetBloonToSim(bloon.GetId());
-            if (bloonSim is null && bloon.bloonModel is null) // if bloon.bloonModel is null then the bloon hasn't been initialized yet so continuing is pointless
-                return null;
-
-            var currentPos = bloon.Position?.ToUnity();
-            if (currentPos is null) currentPos = new UnityEngine.Vector3();
-
-            if (bloonSim is null)
-            {
-                return bloon.CreateBloonToSim();
-            }
-
-            bloonSim.position = currentPos.Value; // Updating position isn't necessary but it helps with accuracy
-            return bloonSim;
+            var allBloons = InGame.instance?.GetUnityToSimulation().GetAllBloons();
+            return allBloons?.FirstOrDefault(simulation => simulation.GetBloon() == bloon);
         }
 
         /// <summary>

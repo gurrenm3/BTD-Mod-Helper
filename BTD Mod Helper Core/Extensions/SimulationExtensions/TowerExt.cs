@@ -63,7 +63,7 @@ namespace BTD_Mod_Helper.Extensions
         public static TowerToSimulation GetTowerToSim(this Tower tower)
         {
             var towerSims = InGame.instance?.GetAllTowerToSim();
-            return towerSims.FirstOrDefault(sim => sim.GetTower().Equals(tower));
+            return towerSims?.FirstOrDefault(sim => sim.GetTower().Equals(tower));
         }
 
         /// <summary>
