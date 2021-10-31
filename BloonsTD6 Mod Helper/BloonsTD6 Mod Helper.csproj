@@ -202,7 +202,6 @@
     <Compile Include="Extensions\UnityExtensions\RendererExt.cs" />
     <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="MelonMain.cs" />
-    <Compile Include="Patches\Bloons\BloonToSimulation_Ctor.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
     <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
@@ -236,6 +235,7 @@
     <Compile Include="Patches\Sim\Simulation_RoundEnd.cs" />
     <Compile Include="Patches\Sim\Simulation_RoundStart.cs" />
     <Compile Include="Patches\Sim\Simulation_RemoveCash.cs" />
+    <Compile Include="Patches\StandardTowerPurchaseButtonPatches.cs" />
     <Compile Include="Patches\TimeManager_SetFastForward.cs" />
     <Compile Include="Patches\TitleScreen_Start.cs" />
     <Compile Include="Patches\TowerInventory_Init.cs" />
@@ -249,6 +249,7 @@
     <Compile Include="Patches\Towers\Tower_SetSaveData.cs" />
     <Compile Include="Patches\Towers\Tower_UnHighlight.cs" />
     <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
+    <Compile Include="Patches\TSMThemeDefault_TowerInfoChanged.cs" />
     <Compile Include="Patches\UpgradeScreen_PopulatePath.cs" />
     <Compile Include="Patches\UpgradeScreen_UpdateUi.cs" />
     <Compile Include="Patches\Weapons\Ability_Cast.cs" />

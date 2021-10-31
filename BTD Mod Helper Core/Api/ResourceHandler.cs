@@ -68,23 +68,38 @@ namespace BTD_Mod_Helper.Api
             }
         }
 
+        internal static readonly Dictionary<string, Texture2D> TextureCache = new Dictionary<string, Texture2D>();
+        
         internal static Texture2D GetTexture(string guid)
         {
+            if (TextureCache.TryGetValue(guid, out var texture2d) && texture2d != null)
+            {
+                return texture2d;
+            }
+
             if (resources.GetValueOrDefault(guid) is byte[] bytes)
             {
                 var texture = new Texture2D(2, 2) { filterMode = FilterMode.Bilinear, mipMapBias = 0};
                 ImageConversion.LoadImage(texture, bytes);
+                TextureCache[guid] = texture;
                 return texture;
             }
 
             return null;
         }
 
+        internal static readonly Dictionary<string, Sprite> SpriteCache = new Dictionary<string, Sprite>();
+
         internal static Sprite GetSprite(string guid, float pixelsPerUnit = 10)
         {
+            if (SpriteCache.TryGetValue(guid, out var sprite) && sprite != null)
+            {
+                return sprite;
+            }
+            
             if (GetTexture(guid) is Texture2D texture)
             {
-                return Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f), pixelsPerUnit);
+                return SpriteCache[guid] = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f), pixelsPerUnit);
             }
 
             return null;

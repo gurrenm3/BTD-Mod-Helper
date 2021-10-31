@@ -123,7 +123,7 @@ namespace BTD_Mod_Helper.Extensions
             var index = towerSet.Count;
             if (!string.IsNullOrEmpty(set))
             {
-                var lastOfSet = towerSet.LastOrDefault(tdm => model.GetTowerFromId(tdm.towerId).towerSet == set);
+                var lastOfSet = towerSet.LastOrDefault(tdm => tdm.GetTower().towerSet == set);
                 if (lastOfSet != default)
                 {
                     index = towerSet.IndexOf(lastOfSet) + 1;

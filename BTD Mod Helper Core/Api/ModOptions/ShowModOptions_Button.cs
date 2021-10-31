@@ -36,12 +36,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
             settingsUI_Canvas = rootGameObjects[0];
             optionsButton = ModOptionsMenu.CanvasGO.transform.Find("ModOptionsButton/Button").GetComponent<Button>();
 
-            var twitchPosition = settingsUI_Canvas.GetComponentInChildrenByName<TwitchSettingsButton>("TwitchButton");
-            instantiatedButton = Object.Instantiate(optionsButton, twitchPosition.transform);
+            var twitchPosition = settingsUI_Canvas.GetComponentInChildrenByName<TwitchSettingsButton>("TwitchButton").transform;
+            instantiatedButton = Object.Instantiate(optionsButton, twitchPosition);
             instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
             var transform = instantiatedButton.transform.Cast<RectTransform>();
-            transform.Translate(new Vector3(-150, 0), twitchPosition.transform);
+            transform.Translate(new Vector3(-400, 0) * twitchPosition.lossyScale.x, transform);
             transform.localScale = new Vector3(2.5f, 2.5f);
         }
 

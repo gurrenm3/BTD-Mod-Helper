@@ -288,12 +288,11 @@ namespace BTD_Mod_Helper.BTD6_UI
         [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.Close))]
         internal class MonkeySelectMenu_Close
         {
-            [HarmonyPrefix]
-            internal static bool Prefix(MonkeySelectMenu __instance)
+            [HarmonyPostfix]
+            internal static void Postfix(MonkeySelectMenu __instance)
             {
                 DestroyPips();
                 DestroyCustomButtons();
-                return true;
             }
         }
 

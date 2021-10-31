@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
@@ -15,21 +15,49 @@ namespace BTD_Mod_Helper.Api.Towers
     {
         internal readonly List<ModTower> towers = new List<ModTower>();
 
+        /// <summary>
+        /// Name of .png file for the background for towers in the Monkeys menu and the in game shop
+        /// </summary>
         public virtual string Container => GetType().Name + "-Container";
 
+        /// <summary>
+        /// SpriteReference for the container
+        /// </summary>
         public virtual SpriteReference ContainerReference => GetSpriteReference(Container);
-        
+
+        /// <summary>
+        /// Name of .png file for the background used for non-paragon upgrades in the Upgrade screen
+        /// </summary>
         public virtual string ContainerLarge => GetType().Name + "-ContainerLarge";
 
+        /// <summary>
+        /// SpriteReference for the large container
+        /// </summary>
         public virtual SpriteReference ContainerLargeReference => GetSpriteReference(ContainerLarge);
-        
+
+        /// <summary>
+        /// Name of .png file for the group button used in the Monkeys menu
+        /// </summary>
         public virtual string Button => GetType().Name + "-Button";
-        
+
+        /// <summary>
+        /// SpriteReference for the button
+        /// </summary>
         public virtual SpriteReference ButtonReference => GetSpriteReference(Button);
 
-        public virtual string Icon => GetType().Name + "-Icon";
+        /// <summary>
+        /// Name of .png file for the background for in game portraits
+        /// </summary>
+        public virtual string Portrait => GetType().Name + "-Portrait";
+
+        /// <summary>
+        /// SpriteReference for the portrait
+        /// </summary>
+        public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
         
-        public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+        /*public virtual string Icon => GetType().Name + "-Icon";
+        This is in the game for each tower set, but haven't seen a place where it'd need to be used for custom ones
+        public virtual SpriteReference IconReference => GetSpriteReference(Icon);*/
 
         /// <summary>
         /// The name that will be actually displayed for the Tower Set in game
@@ -46,7 +74,7 @@ namespace BTD_Mod_Helper.Api.Towers
         {
             return towerSets.Count;
         }
-        
+
         /// <summary>
         /// The position to start placing ModTowers of this ModTowerSet in relation to other towers
         /// <br/>
@@ -57,22 +85,22 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <returns></returns>
         public virtual int GetTowerStartIndex(List<TowerDetailsModel> towerSet)
         {
-            var towerSets = towerSet.Select(model => Game.instance.model.GetTowerWithName(model.towerId).towerSet);
+            var towerSets = towerSet.Select(model => model.GetTower().towerSet);
 
             // Group the towers into chunks of the same tower set
             var towerSetChunks = new List<Tuple<string, int>>();
             foreach (var set in towerSets)
             {
-                if (towerSetChunks.Last() is Tuple<string, int> last && last.Item1 == set)
+                if (towerSetChunks.LastOrDefault() is Tuple<string, int> last && last.Item1 == set)
                 {
-                    towerSetChunks[-1] = new Tuple<string, int>(set, last.Item2 + 1);
+                    towerSetChunks[towerSetChunks.Count - 1] = new Tuple<string, int>(set, last.Item2 + 1);
                 }
                 else
                 {
                     towerSetChunks.Add(new Tuple<string, int>(set, 1));
                 }
             }
-            
+
             // Get the tower set index in relation to the chunks
             var start = GetTowerSetIndex(towerSetChunks.Select(tuple => tuple.Item1).ToList());
 

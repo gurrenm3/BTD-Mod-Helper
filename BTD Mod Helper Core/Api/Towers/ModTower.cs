@@ -11,6 +11,7 @@ using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
+using MelonLoader;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers
@@ -309,7 +310,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 return tower.towerIndex + 1;
             }
 
-            return towerSet.Count;
+            return ModTowerSet?.GetTowerStartIndex(towerSet) ?? towerSet.Count;
         }
     }
 
@@ -324,22 +325,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <summary>
         /// The custom tower set that this ModTower uses
         /// </summary>
-        public override string TowerSet => TowerSet<T>();
-
-        /// <summary>
-        /// New default positioning of a ModTower when it has a ModTowerSet
-        /// </summary>
-        /// <param name="towerSet"></param>
-        /// <returns></returns>
-        public override int GetTowerIndex(List<TowerDetailsModel> towerSet)
-        {
-            if (towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is TowerDetailsModel tower)
-            {
-                return tower.towerIndex + 1;
-            }
-            var modTowerSet = GetInstance<T>();
-            return modTowerSet.GetTowerStartIndex(towerSet);
-        }
+        public sealed override string TowerSet => TowerSet<T>();
     }
 
     /// <summary>
