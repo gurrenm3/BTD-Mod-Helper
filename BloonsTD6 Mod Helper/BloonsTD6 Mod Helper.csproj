@@ -184,6 +184,7 @@
     <Compile Include="Extensions\ModelExtensions\ProjectileModelExt.cs" />
     <Compile Include="Extensions\NkAssetExtensions\NK_TextMeshProUGUIExt.cs" />
     <Compile Include="Extensions\ModelExtensions\ProfileModelExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\EntityExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\MapExt.cs" />
     <Compile Include="Extensions\SimulationExtensions\TowerExt.cs" />

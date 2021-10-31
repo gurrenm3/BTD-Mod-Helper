@@ -115,7 +115,11 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<Bloon> GetBloons(this InGame inGame)
         {
-            return SessionData.Instance.bloonTracker.currentBloons.Values.ToList();
+#if BloonsTD6
+            return inGame.GetFactory<Bloon>().all.ToList();
+#elif BloonsAT
+            return inGame.GetSimulation().bloonManager.GetBloons().ToList();
+#endif
         }
 
         /// <summary>
@@ -126,7 +130,8 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete]
         public static List<BloonToSimulation> GetBloonSims(this InGame inGame)
         {
-            return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
+            //return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
+            return inGame.GetUnityToSimulation().GetAllBloons().ToList();
         }
 
         /// <summary>
@@ -136,7 +141,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<BloonToSimulation> GetAllBloonToSim(this InGame inGame)
         {
-            return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
+            //return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
+            return inGame.GetUnityToSimulation().GetAllBloons().ToList();
         }
 
         /// <summary>

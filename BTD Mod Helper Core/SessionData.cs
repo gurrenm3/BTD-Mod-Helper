@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper
         public static SessionData Instance { get; set; } = new SessionData();
 
 
-        internal BloonTracker bloonTracker = new BloonTracker();
+        //internal BloonTracker bloonTracker = new BloonTracker();
         public RoundSetModel RoundSet { get; set; }
         public Dictionary<string, int> PoppedBloons { get; set; } = new Dictionary<string, int>();
         

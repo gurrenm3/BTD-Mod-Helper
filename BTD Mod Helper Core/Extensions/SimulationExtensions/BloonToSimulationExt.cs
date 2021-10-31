@@ -11,32 +11,6 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class BloonToSimulationExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Return the DisplayNode for this bloon
-        /// </summary>
-        /// <returns></returns>
-        public static DisplayNode GetDisplayNode(this BloonToSimulation bloonToSim)
-        {
-            return bloonToSim.GetBloon().GetDisplayNode();
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
-        /// </summary>
-        /// <returns></returns>
-        public static UnityDisplayNode GetUnityDisplayNode(this BloonToSimulation bloonToSim)
-        {
-            return bloonToSim.GetBloon().GetUnityDisplayNode();
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Return the Simulation Bloon for this specific BloonToSimulation. Returns object of class Bloon
-        /// </summary>
-        public static Bloon GetBloon(this BloonToSimulation bloonToSim)
-        {
-            return SessionData.Instance.bloonTracker.GetBloon(bloonToSim.GetId());
-        }
-
-        /// <summary>
         /// (Cross-Game compatible) Return the Id of this BloonToSimulation
         /// </summary>
         /// <param name="bloonToSim"></param>
@@ -48,20 +22,6 @@ namespace BTD_Mod_Helper.Extensions
 #elif BloonsAT
             return (int)bloonToSim.id;
 #endif
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Return the total distance this BloonToSim has travelled
-        /// </summary>
-        /// <param name="bloonToSim"></param>
-        /// <returns></returns>
-        public static float GetDistanceTravelled(this BloonToSimulation bloonToSim)
-        {
-            var distance = bloonToSim.GetBloon().distanceTraveled;
-#if BloonsAT
-            bloonToSim.distanceTravelled = distance;
-#endif
-            return distance;
         }
     }
 }
