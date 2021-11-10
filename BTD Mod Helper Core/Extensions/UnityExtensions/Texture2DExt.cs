@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Resources;
@@ -64,30 +63,6 @@ namespace BTD_Mod_Helper.Extensions
         {
             ImageConversion.LoadImage(texture, File.ReadAllBytes(filePath));
             return texture;
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Create Texture2D from a visual studio Project Resource. Requires adding image as a resource to project
-        /// </summary>
-        /// <param name="manager">The resource manager for your current project</param>
-        /// <param name="resourceName">The name of your image, as it is in the resource manager</param>
-        public static Texture2D CreateFromProjResource(this Texture2D texture2D, ResourceManager manager, string resourceName)
-        {
-            object resource = manager.GetObject(resourceName);
-            object resourceBytes = new ImageConverter().ConvertTo(resource, typeof(byte[]));
-            ImageConversion.LoadImage(texture2D, (byte[])resourceBytes);
-            return texture2D;
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Create Texture2D from an existing bitmap
-        /// </summary>
-        /// <param name="bitmapImage">bitmap to create Texture2D from</param>
-        public static Texture2D CreateFromBitmap(this Texture2D texture2D, Bitmap bitmapImage)
-        {
-            object resourceBytes = new ImageConverter().ConvertTo(bitmapImage, typeof(byte[]));
-            ImageConversion.LoadImage(texture2D, (byte[])resourceBytes);
-            return texture2D;
         }
 
         /// <summary>

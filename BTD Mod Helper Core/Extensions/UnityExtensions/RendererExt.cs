@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Unity.Display;
 using Il2CppSystem;
 using UnhollowerBaseLib;
 using UnityEngine;
@@ -95,7 +96,7 @@ namespace BTD_Mod_Helper.Extensions
             var trianglesAsVectors = new List<int[]>();
             for (var i = 0; i < triangles.Count; i += 3)
             {
-                trianglesAsVectors.Add(new[] {triangles[i], triangles[i + 1], triangles[i + 2]});
+                trianglesAsVectors.Add(new[] { triangles[i], triangles[i + 1], triangles[i + 2] });
             }
 
             return trianglesAsVectors;

@@ -17,12 +17,12 @@ using UnhollowerBaseLib;
 namespace BTD_Mod_Helper.Api.Towers
 {
     /// <summary>
-    /// 
+    /// Class representing a custom Tower being added by a mod
     /// </summary>
     public abstract class ModTower : ModContent
     {
-        private static readonly string[] DefaultMods =
-            { "GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining" };
+        internal virtual string[] DefaultMods =>
+            new []{ "GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining" };
 
         private TowerModel towerModel;
 
@@ -31,6 +31,7 @@ namespace BTD_Mod_Helper.Api.Towers
         internal readonly List<ModTowerDisplay> displays = new List<ModTowerDisplay>();
         internal ModParagonUpgrade paragonUpgrade;
         internal virtual ModTowerSet ModTowerSet => null;
+        internal virtual int UpgradePaths => 3;
 
         internal bool ShouldCreateParagon =>
             ParagonMode != ParagonMode.None &&
@@ -162,7 +163,7 @@ namespace BTD_Mod_Helper.Api.Towers
         internal void Init(out ModUpgrade[,] u, out int[] t)
         {
             t = new[] { TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades };
-            u = new ModUpgrade[3, t.Max()];
+            u = new ModUpgrade[UpgradePaths, t.Max()];
         }
 
         /// <summary>
@@ -181,7 +182,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// 
         /// </summary>
         /// <returns>The 0-0-0 TowerModel for this Tower</returns>
-        internal TowerModel GetBaseTowerModel()
+        internal virtual TowerModel GetBaseTowerModel()
         {
             if (towerModel == null)
             {
@@ -195,6 +196,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 towerModel.towerSet = TowerSet;
                 towerModel.cost = Cost;
                 towerModel.dontDisplayUpgrades = false;
+                towerModel.powerName = null;
 
                 towerModel.tier = 0;
                 towerModel.tiers = new[] { 0, 0, 0 };
@@ -226,6 +228,16 @@ namespace BTD_Mod_Helper.Api.Towers
             }
 
             return towerModel;
+        }
+        
+        internal virtual string TowerId(int[] tiers)
+        {
+            var id = Id;
+            if (tiers.Sum() > 0)
+            {
+                id += "-" + tiers.Printed();
+            }
+            return id;
         }
 
         /// <summary>

@@ -168,5 +168,11 @@ namespace BTD_Mod_Helper.Extensions
             triangles.RemoveAll(triangle => triangle.Any(v => badVertices[v]));
             skinnedMeshRenderer.SetTriangles(triangles);
         }
+        
+        public static Transform GetBone(this UnityDisplayNode unityDisplayNode, string boneName)
+        {
+            return unityDisplayNode.gameObject.GetComponentInChildrenByName<Transform>(boneName);
+        }
+        
     }
 }

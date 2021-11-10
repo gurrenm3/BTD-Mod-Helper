@@ -97,6 +97,12 @@ namespace BTD_Mod_Helper.BTD6_UI
                 model.RemoveChildDependant(details);
                 model.AddChildDependant(details);
             }
+            
+            foreach (var details in model.heroSet)
+            {
+                model.RemoveChildDependant(details);
+                model.AddChildDependant(details);
+            }
         }
 
         /// <summary>

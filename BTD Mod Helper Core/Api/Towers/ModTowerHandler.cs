@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models;
+using Assets.Scripts.Models.Audio;
 using Assets.Scripts.Models.GenericBehaviors;
+using Assets.Scripts.Models.Skins;
+using Assets.Scripts.Models.Skins.Behaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
@@ -12,6 +15,7 @@ using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
@@ -70,31 +74,39 @@ namespace BTD_Mod_Helper.Api.Towers
                     Game.instance.GetLocalizationManager().textTable[modTower.Id + "s"] = modTower.DisplayNamePlural;
                     Game.instance.GetLocalizationManager().textTable[modTower.Id + " Description"] =
                         modTower.Description;
-                    
+
                     if (!modTower.DontAddToShop)
                     {
                         try
                         {
-                            var shopTowerDetailsModel = new ShopTowerDetailsModel(modTower.Id, -1, 5, 5, 5, -1, 0, null);
                             var index = modTower.GetTowerIndex(Game.instance.model.towerSet.ToList());
                             if (index >= 0)
                             {
+                                var shopTowerDetailsModel =
+                                    new ShopTowerDetailsModel(modTower.Id, index, 5, 5, 5, -1, 0, null);
                                 Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             MelonLogger.Error($"Failed to add ModTower {modTower.Name} to the shop");
-                            MelonLogger.Error(e);
+                            throw;
+                        }
+                    }
+                    else if (modTower is ModHero modHero)
+                    {
+                        try
+                        {
+                            FinalizeHero(modTower, modHero);
+                        }
+                        catch (Exception)
+                        {
+                            MelonLogger.Error($"Failed to add ModHero {modHero.Name} to the heroes set");
                             throw;
                         }
                     }
 
-                    if (modTower.ModTowerSet != null)
-                    {
-                        modTower.ModTowerSet.towers.Add(modTower);
-                    }
-                    
+                    modTower.ModTowerSet?.towers.Add(modTower);
                 }
                 catch (Exception e)
                 {
@@ -159,11 +171,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 towerModel = modTower.GetBaseTowerModel().Duplicate();
                 towerModel.tiers = tiers;
                 towerModel.tier = tiers.Max();
-
-                if (tiers.Sum() > 0)
-                {
-                    towerModel.AddTiersToName();
-                }
+                towerModel.name = modTower.TowerId(tiers);
             }
             catch (Exception)
             {
@@ -189,24 +197,23 @@ namespace BTD_Mod_Helper.Api.Towers
             try
             {
                 var modTowerTiers = modTower.TowerTiers().ToList();
-                for (var i = 0; i <= 2; i++)
+                for (var i = 0; i < modTower.UpgradePaths; i++)
                 {
                     var tierMax = modTower.tierMaxes[i];
                     if (tiers[i] < tierMax)
                     {
                         var newTiers = tiers.Duplicate();
                         newTiers[i]++;
+                        if (modTower is ModHero && tiers.Sum() == 0)
+                        {
+                            newTiers[i]++; // level 1 heroes are classified as tier 0 for whatever reason
+                        }
+
                         if (modTowerTiers.Any(t => t.SequenceEqual(newTiers)))
                         {
                             var modUpgrade = modTower.upgrades[i, newTiers[i] - 1];
-                            var upgradePathModel = new UpgradePathModel(modUpgrade.Id,
-                                $"{towerModel.baseId}-{newTiers.Printed()}");
+                            var upgradePathModel = new UpgradePathModel(modUpgrade.Id, modTower.TowerId(newTiers));
                             towerModel.upgrades = towerModel.upgrades.AddTo(upgradePathModel);
-
-                            // the commented code below was broken in update 27.0
-                            /*var upgradePathModel = new UpgradePathModel(modUpgrade.Id,
-                                $"{towerModel.baseId}-{newTiers.Printed()}", newTiers.Count(t => t > 0), newTiers.Max());
-                            towerModel.upgrades = towerModel.upgrades.AddTo(upgradePathModel);*/
                         }
                     }
                 }
@@ -236,7 +243,8 @@ namespace BTD_Mod_Helper.Api.Towers
             try
             {
                 var portraitUpgrade = modTower.upgrades.Cast<ModUpgrade>()
-                    .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
+                    .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier &&
+                                         modUpgrade.PortraitReference != null)
                     .OrderByDescending(modUpgrade => modUpgrade.Tier)
                     .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
                     .ThenBy(modUpgrade => modUpgrade.Path)
@@ -296,7 +304,7 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 towerModel.portrait = sprite;
             }
-            
+
             return towerModel;
         }
 
@@ -420,6 +428,34 @@ namespace BTD_Mod_Helper.Api.Towers
                         $"Failed to apply ModParagonUpgrade {modTower.paragonUpgrade.Name} to TowerModel {towerModel.name}");
                     throw;
                 }
+            }
+        }
+
+        internal static void FinalizeHero(ModTower modTower, ModHero modHero)
+        {
+            Game.instance.GetLocalizationManager().textTable[modTower.Id + " Short Description"] =
+                modHero.Title;
+            Game.instance.GetLocalizationManager().textTable[modTower.Id + " Level 1 Description"] =
+                modHero.Level1Description;
+
+            var index = modHero.GetHeroIndex(Game.instance.model.heroSet
+                .Select(model => model.Cast<HeroDetailsModel>()).ToList());
+            if (index >= 0)
+            {
+                var heroDetailsModel =
+                    new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, null, false);
+                Game.instance.model.AddHeroDetails(heroDetailsModel, index);
+
+                var skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.Id,
+                    modHero.Id + " Short Description", modHero.Id + " Description", 0, true,
+                    new Il2CppReferenceArray<SwapTowerSpriteModel>(0),
+                    new Il2CppReferenceArray<SwapTowerGraphicModel>(0),
+                    new Il2CppReferenceArray<SwapTowerSoundModel>(0), "Quincy",
+                    new Il2CppReferenceArray<SpriteReference>(new[] { modHero.PortraitReference }),
+                    new Il2CppStringArray(0),
+                    SoundModel.blank, SoundModel.blank);
+
+                Game.instance.model.skins = Game.instance.model.skins.AddTo(skinModel);
             }
         }
     }

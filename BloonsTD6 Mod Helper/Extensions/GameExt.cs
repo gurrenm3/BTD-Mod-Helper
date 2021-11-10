@@ -94,14 +94,6 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Gets the Sprite Register. Can be used to add custom sprites
-        /// </summary>
-        public static SpriteRegister GetSpriteRegister(this Game game)
-        {
-            return SpriteRegister.Instance;
-        }
-
-        /// <summary>
         /// Gets a Json Serializer. Not necessary but can be useful
         /// </summary>
         public static JsonSerializer GetJsonSerializer(this Game game)

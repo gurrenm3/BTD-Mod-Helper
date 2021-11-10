@@ -18,6 +18,7 @@ using Assets.Scripts.Utils;
 using System.Diagnostics;
 using System.Globalization;
 using Assets.Scripts.Models;
+using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 
 namespace BTD_Mod_Helper
 {
@@ -102,7 +103,14 @@ namespace BTD_Mod_Helper
             // used to test new api methods
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                FileIOUtil.SaveObject("selected_tower.json", TowerSelectionMenu.instance.GetSelectedTower().Def);
+                var tower = TowerSelectionMenu.instance.GetSelectedTower();
+                tower.tower.towerBehaviors.ToList().ForEach(behavior =>
+                {
+                    MelonLogger.Msg(behavior.model.name);
+                });
+                FileIOUtil.SaveObject("selected_tower.json", tower.Def);
+                
+                tower.Abilities.Clear();
             }
 
             if (Game.instance is null)
@@ -129,6 +137,21 @@ namespace BTD_Mod_Helper
 
                 if (Input.GetKey(key))
                     DoPatchMethods(mod => mod.OnKeyHeld(key));
+            }
+        }
+        
+        public override void OnKeyDown(KeyCode keyCode)
+        {
+            if (keyCode == KeyCode.End)
+            {
+                var displayFactory = Game.instance.GetDisplayFactory();
+                
+                MelonLogger.Msg("Pool: ");
+                foreach (var (objectId, list) in displayFactory.pool)
+                {
+                    MelonLogger.Msg(objectId + " " + list.Count);
+                }
+                MelonLogger.Msg("");
             }
         }
 

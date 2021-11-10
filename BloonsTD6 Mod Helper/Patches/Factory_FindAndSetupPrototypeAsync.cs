@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Unity.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
@@ -17,8 +18,10 @@ namespace BTD_Mod_Helper.Patches
     internal class Factory_FindAndSetupPrototypeAsync
     {
         [HarmonyPrefix]
-        internal static bool Prefix(Factory __instance, string objectId, Action<UnityDisplayNode> onComplete)
+        internal static bool Prefix(Factory __instance, ref string objectId, ref Action<UnityDisplayNode> onComplete)
         {
+            var id = objectId;
+            var action = onComplete;
             if (ResourceHandler.Prefabs.ContainsKey(objectId) && !ResourceHandler.Prefabs[objectId].isDestroyed)
             {
                 onComplete.Invoke(ResourceHandler.Prefabs[objectId]);
@@ -28,27 +31,27 @@ namespace BTD_Mod_Helper.Patches
             if (ResourceHandler.resources.GetValueOrDefault(objectId) is byte[] bytes &&
                 ModTowerHandler.Tower2DScales.ContainsKey(objectId))
             {
-                __instance.FindAndSetupPrototypeAsync("9dccc16d26c1c8a45b129e2a8cbd17ba", // road spikes
-                    new System.Action<UnityDisplayNode>(node =>
-                        {
-                            var udn = Object.Instantiate(node, __instance.PrototypeRoot);
-                            udn.name = objectId + "(Clone)";
-                            var texture = new Texture2D(2, 2);
-                            ImageConversion.LoadImage(texture, bytes);
-                            udn.isSprite = true;
-                            udn.RecalculateGenericRenderers();
-                            var spriteRenderer = udn.genericRenderers.GetItemOfType<Renderer, SpriteRenderer>();
-                            var scale = ModTowerHandler.Tower2DScales.GetValueOrDefault(objectId, 5f);
-                            spriteRenderer.sprite = Sprite.Create(texture,
-                                new Rect(0, 0, texture.width, texture.height),
-                                new Vector2(0.5f, 0.5f), scale, 0, SpriteMeshType.Tight);
-                            udn.towerPlacementPreCalcOffset = new Vector3(0, 2f, 0);
-                            onComplete.Invoke(udn);
-                            ResourceHandler.Prefabs[objectId] = udn;
-                            //__instance.active.Add(udn);
-                        }
-                    ));
-                return false;
+                objectId = "9dccc16d26c1c8a45b129e2a8cbd17ba";
+                onComplete = new System.Action<UnityDisplayNode>(node =>
+                    {
+                        var udn = Object.Instantiate(node, __instance.PrototypeRoot);
+                        udn.name = id + "(Clone)";
+                        var texture = new Texture2D(2, 2);
+                        ImageConversion.LoadImage(texture, bytes);
+                        udn.isSprite = true;
+                        udn.RecalculateGenericRenderers();
+                        var spriteRenderer = udn.genericRenderers.GetItemOfType<Renderer, SpriteRenderer>();
+                        var scale = ModTowerHandler.Tower2DScales.GetValueOrDefault(id, 5f);
+                        spriteRenderer.sprite = Sprite.Create(texture,
+                            new Rect(0, 0, texture.width, texture.height),
+                            new Vector2(0.5f, 0.5f), scale, 0, SpriteMeshType.Tight);
+                        udn.towerPlacementPreCalcOffset = new Vector3(0, 2f, 0);
+                        action.Invoke(udn);
+                        ResourceHandler.Prefabs[id] = udn;
+                        //__instance.active.Add(udn);
+                    }
+                );
+                return true;
             }
 
             if (ModDisplayHandler.ModDisplays.GetValueOrDefault(objectId) is ModDisplay modDisplay)
@@ -65,18 +68,15 @@ namespace BTD_Mod_Helper.Patches
                         var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
                         udn.genericRenderers[0].SetMaterial(material);
                         SetupUDN(udn, modDisplay, onComplete);
-                    }
-                    else
-                    {
-                        __instance.FindAndSetupPrototypeAsync(modDisplay.BaseDisplay,
-                            new System.Action<UnityDisplayNode>(node =>
-                            {
-                                var udn = Object.Instantiate(node, __instance.PrototypeRoot);
-                                SetupUDN(udn, modDisplay, onComplete);
-                            }));
+                        return false;
                     }
 
-                    return false;
+                    objectId = modDisplay.BaseDisplay;
+                    onComplete = new System.Action<UnityDisplayNode>(node =>
+                    {
+                        var udn = Object.Instantiate(node, __instance.PrototypeRoot);
+                        SetupUDN(udn, modDisplay, action);
+                    });
                 }
                 catch (Exception e)
                 {

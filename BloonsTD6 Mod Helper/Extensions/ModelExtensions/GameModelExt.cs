@@ -160,6 +160,40 @@ namespace BTD_Mod_Helper.Extensions
             towerList.Insert(index, towerDetailsModel.towerId);
             Game.towers = towerList.ToArray();
         }
+        
+        /// <summary>
+        /// Adds a HeroDetailsModel to the GameModel's HeroSet at a particular index
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="heroDetailsModel"></param>
+        /// <param name="index"></param>
+        public static void AddHeroDetails(this GameModel model, HeroDetailsModel heroDetailsModel, int index)
+        {
+            var heroSet = model.heroSet.ToList();
+            if (index < 0)
+            {
+                index = 0;
+            } else if (index > heroSet.Count)
+            {
+                index = heroSet.Count;
+            }
+            heroSet.Insert(index, heroDetailsModel);
+            model.heroSet = heroSet.ToArray();
+            
+            for (var i = 0; i < model.heroSet.Count; i++)
+            {
+                model.heroSet[i].towerIndex = i;
+            }
+
+            
+            var towersIndex = index + model.towerSet.Count;
+            if (towersIndex <= Game.towers.Count)
+            {
+                var towerList = Game.towers.ToList();
+                towerList.Insert(towersIndex, heroDetailsModel.towerId);
+                Game.towers = towerList.ToArray();
+            }
+        }
 
         /// <summary>
         /// Return all TowerDetailModels

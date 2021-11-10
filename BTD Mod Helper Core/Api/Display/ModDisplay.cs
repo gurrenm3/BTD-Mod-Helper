@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 #if BloonsTD6
+using System;
 using Assets.Scripts.Models.GenericBehaviors;
 #endif
 #if BloonsAT
@@ -12,7 +13,9 @@ using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
+using MelonLoader;
 using UnityEngine;
+using Task = Il2CppSystem.Threading.Tasks.Task;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
 
 namespace BTD_Mod_Helper.Api.Display
@@ -27,20 +30,37 @@ namespace BTD_Mod_Helper.Api.Display
         /// The display id for RoadSpikes
         /// </summary>
         public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
+
         public const string EtienneRoombaCat = "Assets/Monkeys/Etienne/Graphics/Pets/Roomba/PetRoombaDisplay.prefab";
-        public const string PatFustyPenguinPet = "Assets/Monkeys/PatFusty/Graphics/Pets/Penguin/PetPenguinDisplay.prefab";
+
+        public const string PatFustyPenguinPet =
+            "Assets/Monkeys/PatFusty/Graphics/Pets/Penguin/PetPenguinDisplay.prefab";
+
         public const string GwendolinFirefoxPet = "Assets/Monkeys/Gwendolin/Graphics/Pets/Fox/PetFoxDisplay.prefab";
         public const string QuincyDadPet = "Assets/Monkeys/Quincy/Graphics/Pets/DadofQuincy/DadofQuincyDisplay.prefab";
         public const string EziliFrogPet = "Assets/Monkeys/Ezili/Graphics/Pets/Frog/PetFrogDisplay.prefab";
         public const string ObynGhostWolfPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Wolf/PetWolfDisplay.prefab";
-        public const string BrickellParrotPet = "Assets/Monkeys/AdmiralBrickell/Graphics/Pets/Parrot/PetParrotDisplay.prefab";
+
+        public const string BrickellParrotPet =
+            "Assets/Monkeys/AdmiralBrickell/Graphics/Pets/Parrot/PetParrotDisplay.prefab";
+
         public const string ObynBunnyPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Bunny/PetBunnyDisplay.prefab";
         public const string SaudaCranePet = "Assets/Monkeys/Sauda/Graphics/Pets/Crane/PetCraneDisplay.prefab";
-        public const string SuperMonkeyBatPet = "Assets/Monkeys/SuperMonkey/Graphics/Pets/Bat/SuperMonkeyBatDisplay.prefab";
-        public const string MonkeySubDuckPet = "Assets/Monkeys/MonkeySub/Graphics/Pets/RubberDuck/PetRubberDuckDisplay.prefab";
+
+        public const string SuperMonkeyBatPet =
+            "Assets/Monkeys/SuperMonkey/Graphics/Pets/Bat/SuperMonkeyBatDisplay.prefab";
+
+        public const string MonkeySubDuckPet =
+            "Assets/Monkeys/MonkeySub/Graphics/Pets/RubberDuck/PetRubberDuckDisplay.prefab";
+
         public const string MonkeyVillageElfPet = "Assets/Monkeys/MonkeyVillage/graphics/Pets/Elf/PetElfDisplay.prefab";
-        public const string NinjaMonkeyKiwiPet = "Assets/Monkeys/NinjaMonkey/Graphics/Pets/Kiwi/NinjaMonkeyKiwiDisplay.prefab";
-        public const string BananaFarmChickenPet = "Assets/Monkeys/BananaFarm/Graphics/Pets/Chicken/PetChickenDisplay.prefab";
+
+        public const string NinjaMonkeyKiwiPet =
+            "Assets/Monkeys/NinjaMonkey/Graphics/Pets/Kiwi/NinjaMonkeyKiwiDisplay.prefab";
+
+        public const string BananaFarmChickenPet =
+            "Assets/Monkeys/BananaFarm/Graphics/Pets/Chicken/PetChickenDisplay.prefab";
+
         public const string BananaFarmer = "Assets/Powers/Graphics/PlaceableItemBananaFarmer.prefab";
         public const string GrimFarmer = "Assets/Powers/Graphics/Cosmetics/PlaceableItemBananaFarmerHalloween.prefab";
         public const string CashDrop = "c737ade5badc75d49b97ac44e123430c";
@@ -76,7 +96,7 @@ namespace BTD_Mod_Helper.Api.Display
         {
             node.GetMeshRenderer().SetMainTexture(GetTexture(textureName));
         }
-        
+
         /// <summary>
         /// Sets the mesh texture to that of a named png
         /// </summary>
@@ -86,7 +106,7 @@ namespace BTD_Mod_Helper.Api.Display
         {
             node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName));
         }
-        
+
         /// <summary>
         /// Sets the sprite texture to that of a named png
         /// </summary>
@@ -111,7 +131,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// How many pixels in a sprite texture should be equal to one unit
         /// </summary>
         public virtual float PixelsPerUnit => 10f;
-        
+
         /// <summary>
         /// Gets a new DisplayModel based on this ModDisplay
         /// </summary>
@@ -131,8 +151,8 @@ namespace BTD_Mod_Helper.Api.Display
             displayModel.positionOffset = PositionOffset;
             displayModel.scale = Scale;
         }
-        
-        
+
+
         /// <summary>
         /// Applies this ModDisplay to a given TowerModel
         /// </summary>
@@ -166,18 +186,20 @@ namespace BTD_Mod_Helper.Api.Display
         {
             return Game.instance.model.GetTower(tower, top, mid, bot).display;
         }
-        
+
         /// <summary>
         /// Gets a UnityDisplayNode for a different guid
         /// </summary>
         /// <param name="guid"></param>
         /// <returns></returns>
-        protected UnityDisplayNode GetNode(string guid)
+        protected void UseNode(string guid, Action<UnityDisplayNode> action)
         {
-            UnityDisplayNode udn = null;
-            Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(guid, 
-                new System.Action<UnityDisplayNode>(node => udn = node));
-            return udn;
+            Game.instance.GetDisplayFactory().CreateAsync(guid, new Action<UnityDisplayNode>((udn) =>
+            {
+                udn.RecalculateGenericRenderers();
+                action(udn);
+                udn.RecalculateGenericRenderers();
+            }));
         }
     }
 #endif

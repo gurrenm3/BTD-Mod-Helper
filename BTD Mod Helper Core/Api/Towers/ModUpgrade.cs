@@ -83,6 +83,11 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual string ConfirmationBody => null;
 
         /// <summary>
+        /// Xp Cost for the upgrade. Meaningless usually because custom heroes automatically are automatically unlocked.
+        /// </summary>
+        public virtual int XpCost => 0;
+
+        /// <summary>
         /// The upgrade path
         /// Use <see cref="TOP"/>, <see cref="MIDDLE"/>, <see cref="BOTTOM"/>
         /// </summary>
@@ -130,13 +135,12 @@ namespace BTD_Mod_Helper.Api.Towers
         {
             if (upgradeModel == null)
             {
-                upgradeModel = new UpgradeModel(Id, Cost, 0, IconReference ?? DefaultIcon, 
+                upgradeModel = new UpgradeModel(Id, Cost, XpCost, IconReference ?? DefaultIcon, 
                     Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
             }
 
             return upgradeModel;
         }
-        
     }
 
 

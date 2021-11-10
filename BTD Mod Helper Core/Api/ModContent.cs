@@ -338,13 +338,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns>The tower name/id</returns>
         public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
         {
-            var id = GetInstance<T>().Id;
-            if (top + mid + bot > 0)
-            {
-                id += $"-{top}{mid}{bot}";
-            }
-
-            return id;
+            return GetInstance<T>().TowerId(new[] {top, mid, bot});
         }
 
         /// <summary>

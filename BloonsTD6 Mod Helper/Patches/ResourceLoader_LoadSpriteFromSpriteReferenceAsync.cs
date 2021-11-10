@@ -32,7 +32,7 @@ namespace BTD_Mod_Helper.Patches
                 return;
             }
             
-            KeyValuePair<string, Sprite>? entryAtRef = SpriteRegister.register.Where(e => e.Key == guid).Select(e => (KeyValuePair<string, Sprite>?)e).FirstOrDefault();
+            /*KeyValuePair<string, Sprite>? entryAtRef = SpriteRegister.register.Where(e => e.Key == guid).Select(e => (KeyValuePair<string, Sprite>?)e).FirstOrDefault();
             if (entryAtRef.HasValue)
             {
                 Sprite sprite = entryAtRef.Value.Value;
@@ -43,7 +43,7 @@ namespace BTD_Mod_Helper.Patches
                 }
                 image.canvasRenderer.SetTexture(sprite.texture);
                 image.sprite = sprite;
-            }
+            }*/
         }
     }
 }
