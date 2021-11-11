@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.Globalization;
 using Assets.Scripts.Models;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
+using NinjaKiwi.Common;
 
 namespace BTD_Mod_Helper
 {
@@ -144,14 +145,10 @@ namespace BTD_Mod_Helper
         {
             if (keyCode == KeyCode.End)
             {
-                var displayFactory = Game.instance.GetDisplayFactory();
-                
-                MelonLogger.Msg("Pool: ");
-                foreach (var (objectId, list) in displayFactory.pool)
+                foreach (var (key, description) in LocalizationManager.Instance.textTable)
                 {
-                    MelonLogger.Msg(objectId + " " + list.Count);
+                    MelonLogger.Msg(key + "    " + description);
                 }
-                MelonLogger.Msg("");
             }
         }
 

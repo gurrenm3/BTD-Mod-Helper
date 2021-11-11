@@ -149,6 +149,7 @@
     <Compile Include="Api\Builders\BloonModelBuilder.cs" />
     <Compile Include="Api\Coop\Chat_Message.cs" />
     <Compile Include="Api\Coop\MessageUtils.cs" />
+    <Compile Include="Api\ProfileManagement.cs" />
     <Compile Include="AutoSave.cs" />
     <Compile Include="BloonsTD6Mod.cs" />
     <Compile Include="BTD6 UI\MainMenuUI.cs" />
@@ -203,7 +204,8 @@
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
     <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
-    <Compile Include="Patches\Btd6Player_IsParagonUpgradeAvailable.cs" />
+    <Compile Include="Patches\BTD6Player_FlushSave.cs" />
+    <Compile Include="Patches\BTD6Player_ForceSaveNow.cs" />
     <Compile Include="Patches\CoopQuickMatchScreen_Open.cs" />
     <Compile Include="Patches\InputManager_CreateTowerGraphicsAsync.cs" />
     <Compile Include="Patches\Factory_DestroyAllActive.cs" />

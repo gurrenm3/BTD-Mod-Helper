@@ -1,7 +1,10 @@
 ﻿using System.Linq;
 using Assets.Scripts.Models.Profile;
+using Assets.Scripts.Unity;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using MelonLoader;
 
@@ -10,6 +13,13 @@ namespace BTD_Mod_Helper.Patches
     [HarmonyPatch(typeof(ProfileModel), nameof(ProfileModel.Validate))]
     internal class ProfileModel_Validate
     {
+        [HarmonyPrefix]
+        internal static void Prefix(ProfileModel __instance)
+        {
+            ProfileManagement.CleanPastProfile(__instance);
+        }
+        
+        
         [HarmonyPostfix]
         internal static void Postfix(ProfileModel __instance)
         {
