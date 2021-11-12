@@ -36,17 +36,13 @@ namespace BTD_Mod_Helper.Api
             var baseTypeAttribute = type.BaseType?.GetCustomAttribute<RegisterInIl2CppAttribute>();
             if (baseTypeAttribute != null)
             {
-                Register(type.BaseType!, baseTypeAttribute.Interfaces);
+                Register(type.BaseType, baseTypeAttribute.Interfaces);
             }
-
-            if (ClassInjector.IsTypeRegisteredInIl2Cpp(type))
-            {
-                return;
-            }
+            
 
             try
             {
-                ClassInjector.RegisterTypeInIl2CppWithInterfaces(type, true, interfaces);
+                ClassInjector.RegisterTypeInIl2Cpp(type);
             }
             catch (Exception e)
             {

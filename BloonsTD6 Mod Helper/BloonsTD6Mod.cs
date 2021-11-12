@@ -29,7 +29,6 @@ namespace BTD_Mod_Helper
     /// </summary>
     public abstract class BloonsTD6Mod : BloonsMod
     {
-
         /// <summary>
         /// Adds a TowerModel to the official list of TowerModels being used by the game
         /// <br/>
@@ -42,7 +41,7 @@ namespace BTD_Mod_Helper
             Game.instance.model.AddTowerToGame(newTowerModel, towerDetailsModel);
         }
 
-        
+
         #region Misc Hooks
 
         /// <summary>
@@ -66,7 +65,22 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnProfileLoaded(ProfileModel result)
         {
+        }
 
+        /// <summary>
+        /// Perform actions on a profile right before the Mod Helper cleans it. If you see that the Mod Helper cleans
+        /// past profile data from your mod on startup, it should be removed here.
+        /// </summary>
+        public virtual void PreCleanProfile(ProfileModel profile)
+        {
+        }
+
+        /// <summary>
+        /// If you removed any data in PreCleanProfile, you may want to add it back here, or just call <see cref="OnProfileLoaded"/>
+        /// again on the profile.
+        /// </summary>
+        public virtual void PostCleanProfile(ProfileModel profile)
+        {
         }
 
         /// <summary>
@@ -74,7 +88,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnInGameLoaded(InGame inGame)
         {
-
         }
 
         /// <summary>
@@ -82,7 +95,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnGameModelLoaded(GameModel model)
         {
-
         }
 
         /// <summary>
@@ -92,7 +104,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnNewGameModel(GameModel result)
         {
-            
         }
 
         /// <summary>
@@ -100,11 +111,11 @@ namespace BTD_Mod_Helper
         /// </summary>
         /// <param name="towerInventory"></param>
         /// <param name="allTowersInTheGame"></param>
-        public virtual void OnTowerInventoryInitialized(TowerInventory towerInventory, List<TowerDetailsModel> allTowersInTheGame)
+        public virtual void OnTowerInventoryInitialized(TowerInventory towerInventory,
+            List<TowerDetailsModel> allTowersInTheGame)
         {
-            
         }
-        
+
         /// <summary>
         /// Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers
         /// <br/>
@@ -112,11 +123,10 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnNewGameModel(GameModel result, List<ModModel> mods)
         {
-            
         }
 
         #endregion
-        
+
         #region Menu Hooks
 
         /// <summary>
@@ -135,7 +145,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnVictory()
         {
-
         }
 
         /// <summary>
@@ -145,7 +154,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnMatchStart()
         {
-
         }
 
         /// <summary>
@@ -155,7 +163,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnRestart()
         {
-
         }
 
         /// <summary>
@@ -165,7 +172,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnFastForwardChanged(bool newValue)
         {
-
         }
 
 
@@ -176,7 +182,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnTitleScreen()
         {
-
         }
 
 
@@ -187,7 +192,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnMatchEnd()
         {
-
         }
 
         #endregion
@@ -257,13 +261,13 @@ namespace BTD_Mod_Helper
         /// <br/>
         /// Equivalent to a HarmonyPostFix on Bloon.Damaged
         /// </summary>
-        public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile, 
-            bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower, 
-            [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true, 
+        public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile,
+            bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower,
+            [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true,
             bool ignoreNonTargetable = false, bool blockSpawnChildren = false)
         {
         }
-        
+
         /*
         /// <summary>
         /// Called right after a Bloon is damaged
@@ -306,7 +310,7 @@ namespace BTD_Mod_Helper
         public virtual void OnTowerDestroyed(Tower tower)
         {
         }
-        
+
         /// <summary>
         /// Called right after a Tower is sold
         /// <br/>
@@ -315,7 +319,7 @@ namespace BTD_Mod_Helper
         public virtual void OnTowerSold(Tower tower, float amount)
         {
         }
-        
+
         /// <summary>
         /// Called right after a Tower is selected by the player
         /// <br/>
@@ -333,14 +337,14 @@ namespace BTD_Mod_Helper
         public virtual void OnTowerDeselected(Tower tower)
         {
         }
-        
+
         /// <summary>
         /// Called right after a Tower is upgraded
         /// </summary>
         public virtual void OnTowerUpgraded(Tower tower, String upgradeName, TowerModel newBaseTowerModel)
         {
         }
-        
+
         /// <summary>
         /// Called right after a Tower's TowerModel is changed for any reason (creation, upgrading, etc.)
         /// <br/>
@@ -349,7 +353,7 @@ namespace BTD_Mod_Helper
         public virtual void OnTowerModelChanged(Tower tower, Model newModel)
         {
         }
-        
+
         /// <summary>
         /// Called at the end of each round when a Tower's data is saved
         /// <br/>
@@ -359,9 +363,8 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnTowerSaved(Tower tower, TowerSaveDataModel saveData)
         {
-            
         }
-        
+
         /// <summary>
         /// Called when you load a save file and a Tower's save data get loaded for the tower
         /// <br/>
@@ -371,9 +374,8 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnTowerLoaded(Tower tower, TowerSaveDataModel saveData)
         {
-            
         }
-        
+
         #endregion
 
         #region Simulation Hooks
@@ -387,19 +389,18 @@ namespace BTD_Mod_Helper
         public virtual void OnCashAdded(double amount, Simulation.CashType from,
             int cashIndex, Simulation.CashSource source, Tower tower)
         {
-            
         }
-        
+
         /// <summary>
         /// Called right after Cash is removed in a game
         /// <br/>
         /// Equivalent to a HarmonyPostFix on Simulation.RemoveCash
         /// </summary>
-        public virtual void OnCashRemoved(double amount, Simulation.CashType from, int cashIndex, Simulation.CashSource source)
+        public virtual void OnCashRemoved(double amount, Simulation.CashType from, int cashIndex,
+            Simulation.CashSource source)
         {
-            
         }
-        
+
         /// <summary>
         /// Called right after a round starts
         /// <br/>
@@ -407,9 +408,8 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnRoundStart()
         {
-            
         }
-        
+
         /// <summary>
         /// Called right after a round starts
         /// <br/>
@@ -417,9 +417,8 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnRoundEnd()
         {
-            
         }
-        
+
         /// <summary>
         /// Called right after a match ends in defeat
         /// <br/>
@@ -427,7 +426,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnDefeat()
         {
-            
         }
 
         #endregion
@@ -439,7 +437,8 @@ namespace BTD_Mod_Helper
         /// <br/>
         /// Equivalent to a HarmonyPostFix on Ability.Activate
         /// </summary>
-        public virtual void OnAbilityCast(Ability ability){
+        public virtual void OnAbilityCast(Ability ability)
+        {
         }
 
         /// <summary>
@@ -475,7 +474,8 @@ namespace BTD_Mod_Helper
         /// <br/>
         /// Equivalent to a HarmonyPostFix on Weapon.SpawnDart
         /// </summary>
-        public virtual void OnWeaponFire(Weapon weapon){
+        public virtual void OnWeaponFire(Weapon weapon)
+        {
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace BTD_Mod_Helper
         public virtual void OnWeaponModelChanged(Weapon weapon, Model newModel)
         {
         }
-        
+
         /// <summary>
         /// Called right after a Projectile is created
         /// <br/>
@@ -496,7 +496,7 @@ namespace BTD_Mod_Helper
         {
         }
 
-        
+
         /// <summary>
         /// Called right after a Tower's TowerModel is changed for any reason (creation, upgrading, etc.)
         /// <br/>
@@ -511,7 +511,6 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual void OnGameObjectsReset()
         {
-            
         }
 
         #endregion
