@@ -18,6 +18,12 @@ namespace BTD_Mod_Helper.Api.Towers
         public override string Name => $"{Tower.Name} Paragon";
 
         /// <summary>
+        /// Override the ID to not have the prefix. It's necessary to work, and there's not a good way for
+        /// different paragon mods to coexist anyway
+        /// </summary>
+        protected internal override string ID => Tower is ModVanillaParagon ? Name : base.ID;
+
+        /// <summary>
         /// No changing of ModParagonUpgrade path
         /// </summary>
         public sealed override int Path => -1;

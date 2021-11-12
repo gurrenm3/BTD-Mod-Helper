@@ -33,8 +33,12 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// The id that this ModContent will be given; a combination of the Mod's prefix and the name
         /// </summary>
-        public string Id => mod.IDPrefix + Name;
+        public string Id => ID;
 
+        /// <summary>
+        /// Backing property for ID that's only able to be overrided internally
+        /// </summary>
+        protected internal virtual string ID => mod.IDPrefix + Name;
         
         /// <summary>
         /// The BloonsMod that this content was added by

@@ -279,7 +279,12 @@ namespace BTD_Mod_Helper.Api.Towers
                     towerModel = CreateTowerModel(modTower, new[] { 5, 5, 5 });
                     break;
                 default:
-                    // This shouldn't be happening
+                    if (modTower is ModVanillaParagon)
+                    {
+                        towerModel = modTower.GetBaseTowerModel();
+                        break;
+                    }
+
                     return null;
             }
 
@@ -292,10 +297,19 @@ namespace BTD_Mod_Helper.Api.Towers
 
             // Real paragons just use the top path applied upgrades it seems
             towerModel.appliedUpgrades = new Il2CppStringArray(6);
-            for (var i = 0; i < 5; i++)
+            if (modTower is ModVanillaParagon)
             {
-                towerModel.appliedUpgrades[i] = modTower.upgrades[0, i].Id;
+                Game.instance.model.GetTower(towerModel.baseId, 5).appliedUpgrades
+                    .CopyTo(towerModel.appliedUpgrades, 0);
             }
+            else
+            {
+                for (var i = 0; i < 5; i++)
+                {
+                    towerModel.appliedUpgrades[i] = modTower.upgrades[0, i].Id;
+                }
+            }
+
 
             towerModel.appliedUpgrades[5] = modTower.paragonUpgrade.Id;
 

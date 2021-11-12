@@ -3,6 +3,7 @@ using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using System.Linq;
 using Assets.Main.Scenes;
+using BTD_Mod_Helper.Api.Towers;
 using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches
@@ -20,6 +21,11 @@ namespace BTD_Mod_Helper.Patches
             }
 
             MelonMain.DoPatchMethods(mod => mod.OnTitleScreen());
+            
+            foreach (var modParagonTower in ModContent.GetInstances<ModVanillaParagon>())
+            {
+                modParagonTower.AddUpgradesToRealTowers();
+            }
         }
     }
 }

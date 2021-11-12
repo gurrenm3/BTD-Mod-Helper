@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Api.Towers
     public abstract class ModTower : ModContent
     {
         internal virtual string[] DefaultMods =>
-            new []{ "GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining" };
+            new[] { "GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining" };
 
         private TowerModel towerModel;
 
@@ -30,15 +30,13 @@ namespace BTD_Mod_Helper.Api.Towers
         internal readonly ModUpgrade[,] upgrades;
         internal readonly List<ModTowerDisplay> displays = new List<ModTowerDisplay>();
         internal ModParagonUpgrade paragonUpgrade;
+        internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
         internal virtual ModTowerSet ModTowerSet => null;
         internal virtual int UpgradePaths => 3;
 
-        internal bool ShouldCreateParagon =>
-            ParagonMode != ParagonMode.None &&
-            TopPathUpgrades == 5 &&
-            MiddlePathUpgrades == 5 &&
-            BottomPathUpgrades == 5 &&
-            paragonUpgrade != null;
+        internal bool ShouldCreateParagon => 
+            paragonUpgrade != null && (TopPathUpgrades == 5 && MiddlePathUpgrades == 5 && BottomPathUpgrades == 5
+                && ParagonMode != ParagonMode.None || this is ModVanillaParagon);
 
         /// <summary>
         /// The name that will be actually displayed for the tower in game
@@ -89,7 +87,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// Defines whether / how this ModTower has a Paragon
         /// </summary>
         public virtual ParagonMode ParagonMode => ParagonMode.None;
-        
+
         /// <summary>
         /// Customized order in which to add this ModTower in the shop in relation to others added by your mod
         /// </summary>
@@ -187,7 +185,7 @@ namespace BTD_Mod_Helper.Api.Towers
             if (towerModel == null)
             {
                 towerModel = !string.IsNullOrEmpty(BaseTower)
-                    ? Game.instance.model.GetTowerFromId(BaseTower).MakeCopy(Id)
+                    ? BaseTowerModel.MakeCopy(Id)
                     : new TowerModel(Id, Id);
                 towerModel.name = Id;
 
@@ -229,7 +227,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
             return towerModel;
         }
-        
+
         internal virtual string TowerId(int[] tiers)
         {
             var id = Id;
@@ -237,6 +235,7 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 id += "-" + tiers.Printed();
             }
+
             return id;
         }
 
