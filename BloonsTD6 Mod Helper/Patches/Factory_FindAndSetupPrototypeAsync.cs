@@ -104,11 +104,10 @@ namespace BTD_Mod_Helper.Patches
 
             try
             {
-                if (modDisplay is ModTowerDisplay modTowerDisplay &&
-                    (modTowerDisplay.Scale < 1f || modTowerDisplay.Scale > 1f))
+                if (modDisplay.Scale < 1f || modDisplay.Scale > 1f)
                 {
-                    udn.transform.GetChild(0).transform.localScale = new Vector3(modTowerDisplay.Scale,
-                        modTowerDisplay.Scale, modTowerDisplay.Scale);
+                    udn.transform.GetChild(0).transform.localScale = new Vector3(modDisplay.Scale,
+                        modDisplay.Scale, modDisplay.Scale);
                 }
             }
             catch (Exception e)

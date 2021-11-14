@@ -297,8 +297,8 @@ namespace BTD_Mod_Helper.BTD6_UI
             [HarmonyPostfix]
             internal static void Postfix(MonkeySelectMenu __instance)
             {
-                DestroyPips();
-                DestroyCustomButtons();
+                //DestroyPips();
+                //DestroyCustomButtons();
             }
         }
 

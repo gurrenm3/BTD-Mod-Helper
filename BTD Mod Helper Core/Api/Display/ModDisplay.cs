@@ -194,7 +194,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <returns></returns>
         protected void UseNode(string guid, Action<UnityDisplayNode> action)
         {
-            Game.instance.GetDisplayFactory().CreateAsync(guid, new Action<UnityDisplayNode>((udn) =>
+            Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(guid, new Action<UnityDisplayNode>((udn) =>
             {
                 udn.RecalculateGenericRenderers();
                 action(udn);

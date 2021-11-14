@@ -22,18 +22,6 @@ namespace BTD_Mod_Helper.Patches
                     __instance.abilityPanels[i].gameObject.SetActive(i < modHero.Abilities);
                 }
             }
-            else
-            {
-                foreach (var heroUpgrade in __instance.heroUpgrades)
-                {
-                    heroUpgrade.gameObject.SetActive(true);
-                }
-
-                foreach (var abilityPanel in __instance.abilityPanels)
-                {
-                    abilityPanel.gameObject.SetActive(true);
-                }
-            }
         }
     }
 

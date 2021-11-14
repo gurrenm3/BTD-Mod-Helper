@@ -55,14 +55,28 @@ namespace BTD_Mod_Helper.Api.Towers
                 try
                 {
                     Game.instance.model.AddUpgrade(upgradeModel);
-                    Game.instance.GetLocalizationManager().textTable[modUpgrade.Id] = modUpgrade.DisplayName;
-                    Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Description"] = modUpgrade.Description;
-                    Game.instance.GetLocalizationManager().textTable[modUpgrade.DisplayName + " Description"] = modUpgrade.Description;
+                    var localizationManager = Game.instance.GetLocalizationManager();
+                    localizationManager.textTable[modUpgrade.Id] = modUpgrade.DisplayName;
+                    localizationManager.textTable[modUpgrade.Id + " Description"] = modUpgrade.Description;
+                    localizationManager.textTable[modUpgrade.DisplayName + " Description"] = modUpgrade.Description;
 
                     if (modUpgrade.NeedsConfirmation)
                     {
-                        Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Title"] = modUpgrade.ConfirmationTitle;
-                        Game.instance.GetLocalizationManager().textTable[modUpgrade.Id + " Body"] = modUpgrade.ConfirmationBody;
+                        localizationManager.textTable[modUpgrade.Id + " Title"] = modUpgrade.ConfirmationTitle;
+                        localizationManager.textTable[modUpgrade.Id + " Body"] = modUpgrade.ConfirmationBody;
+                    }
+
+                    if (modUpgrade is ModHeroLevel modHeroLevel)
+                    {
+                        if (modHeroLevel.AbilityName != null)
+                        {
+                            localizationManager.textTable[modHeroLevel.AbilityName + " Ability"] = modHeroLevel.AbilityName;
+                        }
+                        
+                        if (modHeroLevel.AbilityDescription != null)
+                        {
+                            localizationManager.textTable[modHeroLevel.AbilityName + " Ability Description"] = modHeroLevel.AbilityDescription;
+                        }
                     }
 
                     ModUpgradeCache[upgradeModel.name] = modUpgrade;

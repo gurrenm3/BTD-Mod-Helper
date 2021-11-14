@@ -69,6 +69,9 @@ namespace BTD_Mod_Helper
             */
         }
 
+        public static ModSettingBool CleanProfile = true;
+
+
         private static ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
             displayName = "Open Local Files Directory",
@@ -244,7 +247,16 @@ namespace BTD_Mod_Helper
             foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>())
             {
                 if (!mod.CheatMod || !Game.instance.CanGetFlagged())
-                    action.Invoke(mod);
+                {
+                    try
+                    {
+                        action.Invoke(mod);
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error(e);
+                    }
+                }
             }
         }
 

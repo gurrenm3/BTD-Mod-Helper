@@ -48,12 +48,12 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <summary>
         /// The upgrade's tier is the hero's level.
         /// </summary>
-        public override int Tier => Level;
+        public sealed override int Tier => Level;
 
         /// <summary>
         /// Hero upgrades have no cost
         /// </summary>
-        public override int Cost => 0;
+        public sealed override int Cost => 0;
 
         /// <summary>
         /// How much XP the hero needs to get to go from the previous level to this level.
@@ -70,7 +70,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <summary>
         /// All hero upgrades count as top path
         /// </summary>
-        public override int Path => TOP;
+        public sealed override int Path => TOP;
 
         /// <summary>
         /// What level this 
@@ -81,6 +81,16 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The tower that this is an upgrade for
         /// </summary>
         public abstract ModHero Hero { get; }
+
+        /// <summary>
+        /// DisplayName field of the AbilityModel added at this level, if any
+        /// </summary>
+        public virtual string AbilityName => null;
+        
+        /// <summary>
+        /// Description of the ability added at this level, if any
+        /// </summary>
+        public virtual string AbilityDescription => null;
     }
 
     /// <summary>

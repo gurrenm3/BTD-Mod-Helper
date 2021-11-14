@@ -18,7 +18,9 @@ namespace BTD_Mod_Helper.Api
 
         private static readonly HashSet<string> UnlockedTowers = new HashSet<string>();
         private static readonly Dictionary<string, KonFuze> TowersPlacedByBaseName = new Dictionary<string, KonFuze>();
-        private static readonly Dictionary<string, KonFuze_NoShuffle> TowerXp = new Dictionary<string, KonFuze_NoShuffle>();
+
+        private static readonly Dictionary<string, KonFuze_NoShuffle> TowerXp =
+            new Dictionary<string, KonFuze_NoShuffle>();
 
         private static readonly HashSet<string> AcquiredUpgrades = new HashSet<string>();
 
@@ -40,10 +42,10 @@ namespace BTD_Mod_Helper.Api
             IReadOnlyCollection<string> upgrades, IReadOnlyCollection<string> heroes, bool current)
         {
             MelonMain.DoPatchMethods(mod => mod.PreCleanProfile(profile));
-            
+
             CleanHashSet(profile.unlockedTowers, Clean("unlockedTower", towers, current), UnlockedTowers);
             CleanDictionary(profile.analyticsKonFuze.towersPlacedByBaseName,
-                Clean("towerPlacedByBaseName", towers, current), TowersPlacedByBaseName);
+                Clean("towerPlacedByBaseName", towers.Concat(heroes).ToList(), current), TowersPlacedByBaseName);
             CleanDictionary(profile.towerXp, Clean("towerXp", towers, current), TowerXp);
 
             CleanHashSet(profile.acquiredUpgrades, Clean("acquiredUpgrade", upgrades, current), AcquiredUpgrades);
@@ -80,7 +82,8 @@ namespace BTD_Mod_Helper.Api
                 return false;
             }));
 
-            CleanDictionary(profile.instaTowers, Clean("instaTowers", towers, current), new Dictionary<string, Il2CppSystem.Collections.Generic.List<InstaTowerModel>>());
+            CleanDictionary(profile.instaTowers, Clean("instaTowers", towers, current),
+                new Dictionary<string, Il2CppSystem.Collections.Generic.List<InstaTowerModel>>());
 
             primaryHero = null;
             if (Clean("primaryHero", heroes, current)(profile.primaryHero))
@@ -88,10 +91,37 @@ namespace BTD_Mod_Helper.Api
                 primaryHero = profile.primaryHero;
                 profile.primaryHero = "Quincy";
             }
+
+            foreach (var (name, map) in profile.savedMaps)
+            {
+                if (map != null)
+                {
+                    if (Clean($"{name} primaryHero", heroes, current)(map.primaryHero))
+                    {
+                        map.primaryHero = "Quincy";
+                    }
+
+                    foreach (var (id, player) in map.players)
+                    {
+                        if (player != null)
+                        {
+                            if (Clean($"{id} primaryHero", heroes, current)(player.hero))
+                            {
+                                player.hero = "Quincy";
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         internal static void CleanPastProfile(ProfileModel profile)
         {
+            if (!MelonMain.CleanProfile)
+            {
+                return;
+            }
+
             FileIOUtil.SaveObject("profile.json", profile);
             MelonLogger.Msg("Cleaning past profile");
 
@@ -104,6 +134,11 @@ namespace BTD_Mod_Helper.Api
 
         internal static void CleanCurrentProfile(ProfileModel profile)
         {
+            if (!MelonMain.CleanProfile)
+            {
+                return;
+            }
+
             MelonLogger.Msg("Cleaning current profile");
 
             var towers = ModContent.GetInstances<ModTower>().Select(tower => tower.Id).ToList();
@@ -115,53 +150,66 @@ namespace BTD_Mod_Helper.Api
 
         internal static void UnCleanProfile(ProfileModel profile)
         {
+            if (!MelonMain.CleanProfile)
+            {
+                return;
+            }
+
             foreach (var unlockedTower in UnlockedTowers)
             {
                 profile.unlockedTowers.Add(unlockedTower);
             }
+
             foreach (var (name, tower) in TowersPlacedByBaseName)
             {
                 profile.analyticsKonFuze.towersPlacedByBaseName.Add(name, tower);
             }
+
             foreach (var (tower, xp) in TowerXp)
             {
                 profile.towerXp.Add(tower, xp);
             }
-            
+
             foreach (var acquiredUpgrade in AcquiredUpgrades)
             {
                 profile.acquiredUpgrades.Add(acquiredUpgrade);
             }
-            
+
             foreach (var unlockedHero in UnlockedHeroes)
             {
                 profile.unlockedHeroes.Add(unlockedHero);
             }
+
             foreach (var seenUnlockedNotification in SeenUnlockedNotification)
             {
                 profile.seenUnlockedNotification.Add(seenUnlockedNotification);
             }
+
             foreach (var seenUnlockedHero in SeenUnlockedHeroes)
             {
                 profile.seenUnlockedHeroes.Add(seenUnlockedHero);
             }
+
             foreach (var seenNewHeroNotification in SeenNewHeroNotification)
             {
                 profile.seenNewHeroNotification.Add(seenNewHeroNotification);
             }
+
             foreach (var (name, hero) in HeroesPlacedByName)
             {
                 profile.analyticsKonFuze.heroesPlacedByName.Add(name, hero);
             }
+
             foreach (var (name, level) in HeroLevelsByName)
             {
                 profile.analyticsKonFuze.heroLevelsByName.Add(name, level);
             }
+
             foreach (var (name, skinData) in SelectedTowerSkinData)
             {
                 profile.selectedTowerSkinData.Add(name, skinData);
             }
-            
+
             foreach (var seenEvent in SeenEvents)
             {
                 profile.seenEvents.Add(seenEvent);
@@ -171,10 +219,10 @@ namespace BTD_Mod_Helper.Api
             {
                 profile.primaryHero = primaryHero;
             }
-            
+
             MelonMain.DoPatchMethods(mod => mod.PostCleanProfile(profile));
         }
-        
+
         private static Func<string, bool> Clean(string name, IReadOnlyCollection<string> things, bool current)
         {
             return thing =>
