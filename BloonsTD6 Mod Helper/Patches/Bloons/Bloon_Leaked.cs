@@ -11,14 +11,14 @@ namespace BTD_Mod_Helper.Patches.Bloons
         {
             bool result = true;
             SessionData.Instance.LeakedBloons.Add(__instance);
-            MelonMain.DoPatchMethods(mod => result &= mod.PreBloonLeaked(__instance));
+            MelonMain.PerformHook(mod => result &= mod.PreBloonLeaked(__instance));
             return result;
         }
 
         [HarmonyPostfix]
         internal static void Postfix(Bloon __instance)
         {
-            MelonMain.DoPatchMethods(mod => mod.PostBloonLeaked(__instance));
+            MelonMain.PerformHook(mod => mod.PostBloonLeaked(__instance));
         }
     }
 }

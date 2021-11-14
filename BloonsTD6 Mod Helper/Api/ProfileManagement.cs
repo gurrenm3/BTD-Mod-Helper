@@ -41,7 +41,7 @@ namespace BTD_Mod_Helper.Api
         private static void CleanProfile(ProfileModel profile, IReadOnlyCollection<string> towers,
             IReadOnlyCollection<string> upgrades, IReadOnlyCollection<string> heroes, bool current)
         {
-            MelonMain.DoPatchMethods(mod => mod.PreCleanProfile(profile));
+            MelonMain.PerformHook(mod => mod.PreCleanProfile(profile));
 
             CleanHashSet(profile.unlockedTowers, Clean("unlockedTower", towers, current), UnlockedTowers);
             CleanDictionary(profile.analyticsKonFuze.towersPlacedByBaseName,
@@ -220,7 +220,7 @@ namespace BTD_Mod_Helper.Api
                 profile.primaryHero = primaryHero;
             }
 
-            MelonMain.DoPatchMethods(mod => mod.PostCleanProfile(profile));
+            MelonMain.PerformHook(mod => mod.PostCleanProfile(profile));
         }
 
         private static Func<string, bool> Clean(string name, IReadOnlyCollection<string> things, bool current)

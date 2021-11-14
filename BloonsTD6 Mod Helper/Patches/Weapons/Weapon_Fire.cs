@@ -6,7 +6,7 @@ namespace BTD_Mod_Helper.Patches.Weapons {
     public static class SpawnDart_Patch{
         [HarmonyPostfix]
         public static void Postfix(Weapon __instance){
-            MelonMain.DoPatchMethods(mod=>mod.OnWeaponFire(__instance));
+            MelonMain.PerformHook(mod=>mod.OnWeaponFire(__instance));
         }
     }
 }

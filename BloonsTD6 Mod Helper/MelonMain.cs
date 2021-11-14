@@ -134,13 +134,13 @@ namespace BTD_Mod_Helper
             foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
             {
                 if (Input.GetKeyDown(key))
-                    DoPatchMethods(mod => mod.OnKeyDown(key));
+                    PerformHook(mod => mod.OnKeyDown(key));
 
                 if (Input.GetKeyUp(key))
-                    DoPatchMethods(mod => mod.OnKeyUp(key));
+                    PerformHook(mod => mod.OnKeyUp(key));
 
                 if (Input.GetKey(key))
-                    DoPatchMethods(mod => mod.OnKeyHeld(key));
+                    PerformHook(mod => mod.OnKeyHeld(key));
             }
         }
         
@@ -227,7 +227,7 @@ namespace BTD_Mod_Helper
 
         private void Schedule_GameModel_Loaded()
         {
-            TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnGameModelLoaded(Game.instance.model)); },
+            TaskScheduler.ScheduleTask(() => { PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)); },
                 () => Game.instance?.model != null);
         }
 
@@ -236,15 +236,15 @@ namespace BTD_Mod_Helper
         private void Schedule_InGame_Loaded()
         {
             scheduledInGamePatch = true;
-            TaskScheduler.ScheduleTask(() => { DoPatchMethods(mod => mod.OnInGameLoaded(InGame.instance)); },
+            TaskScheduler.ScheduleTask(() => { PerformHook(mod => mod.OnInGameLoaded(InGame.instance)); },
                 () => InGame.instance?.GetSimulation() != null);
         }
 
         public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
 
-        public static void DoPatchMethods(Action<BloonsTD6Mod> action)
+        public static void PerformHook(Action<BloonsTD6Mod> action)
         {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>())
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>().OrderByDescending(mod => mod.Priority))
             {
                 if (!mod.CheatMod || !Game.instance.CanGetFlagged())
                 {

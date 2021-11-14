@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Patches.Towers
         [HarmonyPostfix]
         internal static void Postfix(Tower __instance)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnTowerDestroyed(__instance));
+            MelonMain.PerformHook(mod => mod.OnTowerDestroyed(__instance));
         }
     }
 

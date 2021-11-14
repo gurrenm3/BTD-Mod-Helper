@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Patches.Towers
         [HarmonyPostfix]
         internal static void Postfix(Tower __instance, TowerSaveDataModel __result)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnTowerSaved(__instance, __result));
+            MelonMain.PerformHook(mod => mod.OnTowerSaved(__instance, __result));
         }
     }
 

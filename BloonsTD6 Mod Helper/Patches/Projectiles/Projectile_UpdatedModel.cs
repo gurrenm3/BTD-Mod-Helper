@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Patches.Projectiles
         [HarmonyPostfix]
         internal static void Postfix(Projectile __instance, Model modelToUse)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
+            MelonMain.PerformHook(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
         }
     }
 }

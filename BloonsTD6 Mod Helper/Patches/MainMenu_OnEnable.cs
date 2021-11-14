@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Patches
         {
             ResetSessionData();
 
-            MelonMain.DoPatchMethods(mod => mod.OnMainMenu());
+            MelonMain.PerformHook(mod => mod.OnMainMenu());
         }
 
         private static void ResetSessionData()

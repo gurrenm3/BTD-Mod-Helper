@@ -95,7 +95,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 ModSettingsHandler.SaveModSettings(ModContent.GetInstance<MelonMain>().GetModSettingsDir());
             });
 
-            MelonMain.DoPatchMethods(mod => mod.OnModOptionsOpened());
+            MelonMain.PerformHook(mod => mod.OnModOptionsOpened());
         }
 
         private void PopulateModOptions(BloonsMod bloonsMod)

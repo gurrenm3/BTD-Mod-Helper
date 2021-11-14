@@ -15,12 +15,12 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPriority(Priority.High)]
         internal static void Postfix()
         {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
             {
                 ModContent.LoadAllModContent(mod);
             }
 
-            MelonMain.DoPatchMethods(mod => mod.OnTitleScreen());
+            MelonMain.PerformHook(mod => mod.OnTitleScreen());
             
             foreach (var modParagonTower in ModContent.GetInstances<ModVanillaParagon>())
             {

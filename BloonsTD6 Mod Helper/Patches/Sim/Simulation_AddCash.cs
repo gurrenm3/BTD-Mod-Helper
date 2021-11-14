@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Patches.Sim
         internal static void Postfix(double c, Simulation.CashType from, int cashIndex, Simulation.CashSource source,
             Tower tower)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnCashAdded(c, from, cashIndex, source, tower));
+            MelonMain.PerformHook(mod => mod.OnCashAdded(c, from, cashIndex, source, tower));
         }
     }
 }

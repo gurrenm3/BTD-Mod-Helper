@@ -17,7 +17,7 @@ namespace BTD_Mod_Helper.Patches
             towerInventory = __instance;
             allTowers = allTowersInTheGame;
 
-            MelonMain.DoPatchMethods(mod => mod.OnTowerInventoryInitialized(towerInventory, allTowers));
+            MelonMain.PerformHook(mod => mod.OnTowerInventoryInitialized(towerInventory, allTowers));
             return true;
         }
     }

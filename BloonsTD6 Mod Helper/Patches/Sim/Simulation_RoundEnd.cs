@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Patches.Sim
         [HarmonyPostfix]
         internal static void Postfix()
         {
-            MelonMain.DoPatchMethods(mod => mod.OnRoundEnd());
+            MelonMain.PerformHook(mod => mod.OnRoundEnd());
             SessionData.Instance.LeakedBloons.Clear();
             SessionData.Instance.DestroyedBloons.Clear();
         }

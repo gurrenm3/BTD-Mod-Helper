@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Patches.Weapons
         [HarmonyPostfix]
         internal static void Postfix(Weapon __instance, Model modelToUse)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnWeaponModelChanged(__instance, modelToUse));
+            MelonMain.PerformHook(mod => mod.OnWeaponModelChanged(__instance, modelToUse));
         }
     }
 }

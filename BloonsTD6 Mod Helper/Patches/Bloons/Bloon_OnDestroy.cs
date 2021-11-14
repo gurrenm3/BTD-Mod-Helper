@@ -19,10 +19,10 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPostfix]
         internal static void Postfix(Bloon __instance)
         {
-            MelonMain.DoPatchMethods(mod => { mod.OnBloonDestroy(__instance); });
+            MelonMain.PerformHook(mod => { mod.OnBloonDestroy(__instance); });
 
             if (__instance.WasBloonPopped())
-                MelonMain.DoPatchMethods(mod => { mod.OnBloonPopped(__instance); });
+                MelonMain.PerformHook(mod => { mod.OnBloonPopped(__instance); });
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Patches
             {
                 var message = messageQueue.Dequeue();
                 bool consumed = false;
-                MelonMain.DoPatchMethods(mod =>
+                MelonMain.PerformHook(mod =>
                 {
                     consumed |= mod.ActOnMessage(message);
                 });

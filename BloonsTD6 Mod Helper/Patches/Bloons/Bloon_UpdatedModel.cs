@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPostfix]
         internal static void Postfix(Bloon __instance, Model modelToUse)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnBloonModelUpdated(__instance, modelToUse));
+            MelonMain.PerformHook(mod => mod.OnBloonModelUpdated(__instance, modelToUse));
         }
     }
 }

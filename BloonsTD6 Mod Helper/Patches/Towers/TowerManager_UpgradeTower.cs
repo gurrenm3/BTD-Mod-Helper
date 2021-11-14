@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Patches.Towers
         {
             if (__state != null)
             {
-                MelonMain.DoPatchMethods(mod => mod.OnTowerUpgraded(tower, __state, def));
+                MelonMain.PerformHook(mod => mod.OnTowerUpgraded(tower, __state, def));
             }
         }
     }

@@ -43,8 +43,8 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(GameModel result, List<ModModel> mods)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnNewGameModel(result, mods));
-            MelonMain.DoPatchMethods(mod => mod.OnNewGameModel(result));
+            MelonMain.PerformHook(mod => mod.OnNewGameModel(result, mods));
+            MelonMain.PerformHook(mod => mod.OnNewGameModel(result));
         }
     }
 }

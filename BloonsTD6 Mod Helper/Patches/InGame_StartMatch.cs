@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(InGame __instance)
         {
-            MelonMain.DoPatchMethods(mod => mod.OnMatchStart());
+            MelonMain.PerformHook(mod => mod.OnMatchStart());
         }
     }
 }

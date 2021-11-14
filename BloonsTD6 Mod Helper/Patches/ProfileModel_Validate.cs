@@ -42,7 +42,7 @@ namespace BTD_Mod_Helper.Patches
                 __instance.seenNewHeroNotification.Add(modHero.Id);
             }
             
-            MelonMain.DoPatchMethods(mod => mod.OnProfileLoaded(__instance));
+            MelonMain.PerformHook(mod => mod.OnProfileLoaded(__instance));
         }
     }
 }

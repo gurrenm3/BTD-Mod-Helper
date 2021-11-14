@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix()
         {
-            MelonMain.DoPatchMethods(mod => mod.OnRestart());
+            MelonMain.PerformHook(mod => mod.OnRestart());
         }
     }
 }

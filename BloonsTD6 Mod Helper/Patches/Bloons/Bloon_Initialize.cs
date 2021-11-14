@@ -24,8 +24,8 @@ namespace BTD_Mod_Helper.Patches.Bloons
             // Creating new BloonToSimulation will automatically start Tracking BloonSim via the Constructor
             //__instance.CreateBloonToSim();
 
-            MelonMain.DoPatchMethods(mod => mod.OnBloonCreated(__instance));
-            MelonMain.DoPatchMethods(mod => mod.OnBloonModelUpdated(__instance, modelToUse));
+            MelonMain.PerformHook(mod => mod.OnBloonCreated(__instance));
+            MelonMain.PerformHook(mod => mod.OnBloonModelUpdated(__instance, modelToUse));
         }
     }
 }
