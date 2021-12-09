@@ -123,7 +123,7 @@ namespace BTD_Mod_Helper.Api
             }
 
             FileIOUtil.SaveObject("profile.json", profile);
-            MelonLogger.Msg("Cleaning past profile");
+            // MelonLogger.Msg("Cleaning past profile");
 
             var towers = Game.instance.model.towerSet.Select(model => model.towerId).ToList();
             var upgrades = Game.instance.model.upgrades.Select(model => model.name).ToList();
@@ -139,7 +139,7 @@ namespace BTD_Mod_Helper.Api
                 return;
             }
 
-            MelonLogger.Msg("Cleaning current profile");
+            // MelonLogger.Msg("Cleaning current profile");
 
             var towers = ModContent.GetInstances<ModTower>().Select(tower => tower.Id).ToList();
             var upgrades = ModContent.GetInstances<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();

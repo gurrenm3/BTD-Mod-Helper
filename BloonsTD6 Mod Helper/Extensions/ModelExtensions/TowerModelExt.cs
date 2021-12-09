@@ -23,8 +23,9 @@ namespace BTD_Mod_Helper.Extensions
         public static void SetMaxAmount(this TowerModel towerModel, int max)
         {
             towerModel.GetTowerDetailsModel().towerCount = max;
-            Il2CppSystem.Collections.Generic.List<TowerDetailsModel> details = Game.instance?.model.GetAllTowerDetails();
-            InGame.instance.GetTowerInventory().SetTowerMaxes(details);
+            var details = Game.instance?.model.towerSet;
+            InGame.instance.GetTowerInventory()
+                .SetTowerMaxes(details.Cast<Il2CppSystem.Collections.Generic.IEnumerable<TowerDetailsModel>>());
         }
 
         /// <summary>
@@ -149,14 +150,15 @@ namespace BTD_Mod_Helper.Extensions
             int tier2 = (path == 1) ? tier : 0;
             int tier3 = (path == 2) ? tier : 0;
 
-            
+
             TowerModel tempTower = Game.instance?.model?.GetTower(towerModel.GetBaseId(), tier1, tier2, tier3);
             if (tempTower is null)
                 return null;
 
             const int offset = 1;
             List<UpgradeModel> appliedUpgrades = tempTower.GetAppliedUpgrades();
-            UpgradeModel results = appliedUpgrades.FirstOrDefault(model => model.path == path && model.tier == (tier - offset));
+            UpgradeModel results =
+                appliedUpgrades.FirstOrDefault(model => model.path == path && model.tier == (tier - offset));
 
             return null;
         }
@@ -178,7 +180,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="newTowerId">Set's the new towerId of this copy. By default the baseId will be set to this as well</param>
         /// <param name="newBaseId">Specify a new baseId. Set this if you want a baseId other than the newTowerId</param>
         /// <returns></returns>
-        public static TowerModel MakeCopy(this TowerModel towerModel, string newTowerId, bool addToGame = false, string newBaseId = null)
+        public static TowerModel MakeCopy(this TowerModel towerModel, string newTowerId, bool addToGame = false,
+            string newBaseId = null)
         {
             var duplicate = MakeCopyInternal(towerModel, newTowerId);
             duplicate.baseId = string.IsNullOrEmpty(newBaseId) ? newTowerId : newBaseId;
@@ -201,7 +204,8 @@ namespace BTD_Mod_Helper.Extensions
         }
 
 
-        public static void SetTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0, bool addToTowerName = false)
+        public static void SetTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0,
+            bool addToTowerName = false)
         {
             towerModel.tiers = new UnhollowerBaseLib.Il2CppStructArray<int>(3);
             towerModel.tiers[0] = tier1;

@@ -5,13 +5,13 @@ using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPatch(typeof(Btd6Player), nameof(Btd6Player.FlushSave))]
-    internal class Btd6Player_FlushSave
+    [HarmonyPatch(typeof(Btd6Player), nameof(Btd6Player.Save))]
+    internal class Btd6Player_Save
     {
         [HarmonyPrefix]
         internal static bool Prefix(Btd6Player __instance, ref bool __state)
         {
-            __state = __instance.isPendingSave;
+            __state = __instance.IsPendingSave;
             if (__state)
             {
                 ProfileManagement.CleanCurrentProfile(__instance.Data);

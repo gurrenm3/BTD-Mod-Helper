@@ -5,8 +5,8 @@ using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPatch(typeof(Btd6Player), nameof(Btd6Player.ForceSaveNow))]
-    internal class Btd6Player_ForceSaveNow
+    [HarmonyPatch(typeof(Btd6Player), nameof(Btd6Player.SaveNow))]
+    internal class Btd6Player_SaveNow
     {
         [HarmonyPrefix]
         internal static bool Prefix(Btd6Player __instance)
