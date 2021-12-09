@@ -1,8 +1,7 @@
 ﻿using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Unity;
-using System;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions.ModelExtensions
 {
     public static class ProfileModelExt
     {

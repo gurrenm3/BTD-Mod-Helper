@@ -3,12 +3,16 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Models.GenericBehaviors;
+using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Extensions.ModelExtensions;
 
 
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Weapons;
 using Assets.Scripts.Unity;
+
 #elif BloonsAT
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Models.Towers.Weapons.Behaviors;
@@ -17,11 +21,15 @@ using Assets.Scripts.Models.Towers.Weapons.Behaviors;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for AttackModels
+    /// </summary>
     public static class AttackModelExt
     {
         /// <summary>
         /// (Cross-Game compatible) Add a weapon to this Attack Model
         /// </summary>
+        /// <param name="attackModel"></param>
         /// <param name="weaponToAdd">Weapon to add</param>
         public static void AddWeapon(this AttackModel attackModel, WeaponModel weaponToAdd) =>
             attackModel.weapons = attackModel.weapons.AddTo(weaponToAdd);
@@ -50,8 +58,10 @@ namespace BTD_Mod_Helper.Extensions
                     allProjectiles.Add(weaponModel.projectile);
                     allProjectiles.AddRange(GetSubProjectiles(weaponModel.projectile.behaviors));
                 }
+
                 allProjectiles.AddRange(GetSubProjectiles(weaponModel.behaviors));
             }
+
             allProjectiles.AddRange(GetSubProjectiles(attackModel.behaviors)); //this is new
             return allProjectiles;
         }
@@ -71,6 +81,7 @@ namespace BTD_Mod_Helper.Extensions
                 {
                     projectileField = behavior.GetIl2CppType().GetField("projectileModel");
                 }
+
                 if (projectileField != null)
                 {
                     if (projectileField.GetValue(behavior).IsType(out ProjectileModel projectileModel))
@@ -80,7 +91,25 @@ namespace BTD_Mod_Helper.Extensions
                     }
                 }
             }
+
             return allProjectiles;
+        }
+
+        /// <summary>
+        /// Applies the given ModDisplay to the index'th (or first) DisplayModel in the behaviors of the AttackModel.
+        /// <br/>
+        /// If there are no DisplayModels, then this does nothing
+        /// </summary>
+        /// <param name="attackModel"></param>
+        /// <param name="index"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void ApplyDisplay<T>(this AttackModel attackModel, int index = 0) where T : ModDisplay
+        {
+            var displayModels = attackModel.GetBehaviors<DisplayModel>();
+            if (displayModels.Count > 0 && index >= 0 && index < displayModels.Count)
+            {
+                displayModels[index].ApplyDisplay<T>();
+            }
         }
     }
 }

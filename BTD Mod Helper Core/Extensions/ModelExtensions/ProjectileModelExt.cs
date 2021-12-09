@@ -14,6 +14,9 @@ using Assets.Scripts.Simulation.Towers.Projectiles.Behaviors;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for ProjectileModels
+    /// </summary>
     public static partial class ProjectileModelExt
     {
         /// <summary>

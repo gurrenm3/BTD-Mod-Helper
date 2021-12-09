@@ -13,9 +13,9 @@ namespace BTD_Mod_Helper.Api.Towers
     public abstract class ModParagonUpgrade : ModUpgrade
     {
         /// <summary>
-        /// Specifically use the paragon upgrade naming scheme
+        /// Specifically use the paragon upgrade naming scheme. No overriding because that apparently causes issues.
         /// </summary>
-        public override string Name => $"{Tower.Name} Paragon";
+        public sealed override string Name => $"{Tower.Name} Paragon";
 
         /// <summary>
         /// Override the ID to not have the prefix. It's necessary to work, and there's not a good way for
