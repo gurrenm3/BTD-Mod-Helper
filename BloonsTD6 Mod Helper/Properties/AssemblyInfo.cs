@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", MelonMain.currentVersion, "Gurrenm4, Doombubbles, and BowDown097")]
+[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", MelonMain.currentVersion, "Gurrenm4 and Doombubbles")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonColor(ConsoleColor.Blue)]
 [assembly: MelonPriority(-1000)]
