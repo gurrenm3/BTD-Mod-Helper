@@ -16,9 +16,7 @@ using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Settings;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
-using System.Globalization;
 using Assets.Scripts.Models;
-using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 using NinjaKiwi.Common;
 
 namespace BTD_Mod_Helper
@@ -34,7 +32,24 @@ namespace BTD_Mod_Helper
 
         public override void OnApplicationStart()
         {
+            CheckModsForUpdates();
+
+            var settingsDir = this.GetModSettingsDir(true);
+            ModSettingsHandler.InitializeModSettings(settingsDir);
+            ModSettingsHandler.LoadModSettings(settingsDir);
+
+            ModMonoBehavior.LoadAllModMonoBehaviors();
+
+            Schedule_GameModel_Loaded();
+
+            HarmonyInstance.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain),
+                nameof(SettingsPatch));
+
             MelonLogger.Msg("Mod has finished loading");
+        }
+
+        private void CheckModsForUpdates()
+        {
             MelonLogger.Msg("Checking for updates...");
 
             var updateDir = this.GetModDirectory() + "\\UpdateInfo";
@@ -42,22 +57,14 @@ namespace BTD_Mod_Helper
 
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
-            
+
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
-
-            var settingsDir = this.GetModSettingsDir(true);
-            ModSettingsHandler.InitializeModSettings(settingsDir);
-            ModSettingsHandler.LoadModSettings(settingsDir);
-
-            Schedule_GameModel_Loaded();
-
-
-            HarmonyInstance.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain),
-                nameof(SettingsPatch));
         }
 
         public override void OnGameModelLoaded(GameModel model)
         {
+            
+
             /* Save for now, useful for when they add new upgrades
              Game.instance.model.upgrades.ForEach(upgrade =>
             {

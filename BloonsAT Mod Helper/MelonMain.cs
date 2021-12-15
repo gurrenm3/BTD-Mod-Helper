@@ -38,8 +38,11 @@ namespace BTD_Mod_Helper
             string settingsDir = this.GetModSettingsDir(createIfNotExists: true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
-            
+
+            ModMonoBehavior.LoadAllModMonoBehaviors();
+
             Schedule_GameModel_Loaded();
+
             Harmony.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.OnShow), typeof(MelonMain), nameof(MelonMain.SettingsPatch));
         }
 
