@@ -33,6 +33,7 @@ namespace BTD_Mod_Helper.Api.Towers
         internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
         internal virtual ModTowerSet ModTowerSet => null;
         internal virtual int UpgradePaths => 3;
+        internal UpgradeModel dummyUpgrade;
 
         internal bool ShouldCreateParagon => 
             paragonUpgrade != null && (TopPathUpgrades == 5 && MiddlePathUpgrades == 5 && BottomPathUpgrades == 5

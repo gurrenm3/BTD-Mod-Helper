@@ -160,6 +160,9 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
             }
 
+            modTower.dummyUpgrade = new UpgradeModel(modTower.Id, modTower.Cost, 0, modTower.PortraitReference, 0, 0, 0, "", "");
+            Game.instance.model.AddUpgrade(modTower.dummyUpgrade);
+
             return towerModels;
         }
 
@@ -243,7 +246,8 @@ namespace BTD_Mod_Helper.Api.Towers
             try
             {
                 var portraitUpgrade = modTower.upgrades.Cast<ModUpgrade>()
-                    .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier &&
+                    .Where(modUpgrade => modUpgrade != null &&
+                                         tiers[modUpgrade.Path] >= modUpgrade.Tier &&
                                          modUpgrade.PortraitReference != null)
                     .OrderByDescending(modUpgrade => modUpgrade.Tier)
                     .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
@@ -273,10 +277,10 @@ namespace BTD_Mod_Helper.Api.Towers
             switch (modTower.ParagonMode)
             {
                 case ParagonMode.Base000:
-                    towerModel = CreateTowerModel(modTower, new[] { 0, 0, 0 });
+                    towerModel = CreateTowerModel(modTower, new[] {0, 0, 0});
                     break;
                 case ParagonMode.Base555:
-                    towerModel = CreateTowerModel(modTower, new[] { 5, 5, 5 });
+                    towerModel = CreateTowerModel(modTower, new[] {5, 5, 5});
                     break;
                 default:
                     if (modTower is ModVanillaParagon)
@@ -339,10 +343,11 @@ namespace BTD_Mod_Helper.Api.Towers
             try
             {
                 foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
-                    .Where(modUpgrade => modUpgrade != null && towerModel.tiers[modUpgrade.Path] >= modUpgrade.Tier)
-                    .OrderByDescending(modUpgrade => modUpgrade.Priority)
-                    .ThenBy(modUpgrade => modUpgrade.Tier)
-                    .ThenBy(modUpgrade => modUpgrade.Path))
+                             .Where(modUpgrade =>
+                                 modUpgrade != null && towerModel.tiers[modUpgrade.Path] >= modUpgrade.Tier)
+                             .OrderByDescending(modUpgrade => modUpgrade.Priority)
+                             .ThenBy(modUpgrade => modUpgrade.Tier)
+                             .ThenBy(modUpgrade => modUpgrade.Path))
                 {
                     try
                     {
@@ -364,7 +369,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
             if (modTower.ShouldCreateParagon && towerModel.isParagon)
             {
-                towerModel.tiers = new[] { 6, 0, 0 };
+                towerModel.tiers = new[] {6, 0, 0};
             }
 
             // set the tower's display model
@@ -390,9 +395,9 @@ namespace BTD_Mod_Helper.Api.Towers
                 try
                 {
                     if (modTower.displays.Where(display =>
-                            display.UseForTower(towerModel.tiers) && display.ParagonDisplayIndex <= 0)
-                        .OrderByDescending(display => display.Id)
-                        .FirstOrDefault() is ModTowerDisplay modTowerDisplay)
+                                display.UseForTower(towerModel.tiers) && display.ParagonDisplayIndex <= 0)
+                            .OrderByDescending(display => display.Id)
+                            .FirstOrDefault() is ModTowerDisplay modTowerDisplay)
                     {
                         modTowerDisplay.Apply(towerModel);
                     }
@@ -465,7 +470,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     new Il2CppReferenceArray<SwapTowerSpriteModel>(0),
                     new Il2CppReferenceArray<SwapTowerGraphicModel>(0),
                     new Il2CppReferenceArray<SwapTowerSoundModel>(0), "Quincy",
-                    new Il2CppReferenceArray<SpriteReference>(new[] { modHero.PortraitReference }),
+                    new Il2CppReferenceArray<SpriteReference>(new[] {modHero.PortraitReference}),
                     new Il2CppStringArray(0),
                     SoundModel.blank, SoundModel.blank);
 

@@ -77,6 +77,11 @@ namespace BTD_Mod_Helper.Api.Towers
         }
 
         /// <summary>
+        /// Whether this Tower Set should still be allowed to appear in Primary Only, Military Only, Magic Only
+        /// </summary>
+        public virtual bool AllowInRestrictedModes => false;
+
+        /// <summary>
         /// The position to start placing ModTowers of this ModTowerSet in relation to other towers
         /// <br/>
         /// By default, will determine the position based on GetTowerSetIndex

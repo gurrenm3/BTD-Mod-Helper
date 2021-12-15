@@ -244,6 +244,8 @@
     <Compile Include="Patches\TitleScreen_Start.cs" />
     <Compile Include="Patches\TowerInventory_Init.cs" />
     <Compile Include="Patches\TowerSetBgSprites_GetSprite.cs" />
+    <Compile Include="Patches\Towers\ParagonTower_GetDegreeMutator.cs" />
+    <Compile Include="Patches\Towers\ParagonTower_UpdateDegree.cs" />
     <Compile Include="Patches\Towers\TowerManager_UpgradeTower.cs" />
     <Compile Include="Patches\Towers\Tower_Destroy.cs" />
     <Compile Include="Patches\Towers\Tower_GetSaveData.cs" />
@@ -254,6 +256,7 @@
     <Compile Include="Patches\Towers\Tower_UnHighlight.cs" />
     <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
     <Compile Include="Patches\TSMThemeDefault_TowerInfoChanged.cs" />
+    <Compile Include="Patches\UpgradeScreen_Open.cs" />
     <Compile Include="Patches\UpgradeScreen_PopulatePath.cs" />
     <Compile Include="Patches\UpgradeScreen_UpdateUi.cs" />
     <Compile Include="Patches\Weapons\Ability_Cast.cs" />

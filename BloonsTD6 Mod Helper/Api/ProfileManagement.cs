@@ -14,7 +14,7 @@ namespace BTD_Mod_Helper.Api
 {
     internal class ProfileManagement
     {
-        private static readonly string[] ParagonEvents = { "ParagonPanelViewed", "ParagonUpgradeAvailable" };
+        private static readonly string[] ParagonEvents = {"ParagonPanelViewed", "ParagonUpgradeAvailable"};
 
         private static readonly HashSet<string> UnlockedTowers = new HashSet<string>();
         private static readonly Dictionary<string, KonFuze> TowersPlacedByBaseName = new Dictionary<string, KonFuze>();
@@ -34,7 +34,8 @@ namespace BTD_Mod_Helper.Api
         private static readonly HashSet<string> SeenEvents = new HashSet<string>();
 
         private static string primaryHero;
-
+        private static Dictionary<string, string> mapPrimaryHeroes = new Dictionary<string, string>();
+        private static Dictionary<(string, int), string> mapPlayerHeroes = new Dictionary<(string, int), string>();
 
         private static readonly Dictionary<string, string> SelectedTowerSkinData = new Dictionary<string, string>();
 
@@ -92,12 +93,15 @@ namespace BTD_Mod_Helper.Api
                 profile.primaryHero = "Quincy";
             }
 
+            mapPrimaryHeroes.Clear();
+            mapPlayerHeroes.Clear();
             foreach (var (name, map) in profile.savedMaps)
             {
                 if (map != null)
                 {
                     if (Clean($"{name} primaryHero", heroes, current)(map.primaryHero))
                     {
+                        mapPrimaryHeroes[name] = map.primaryHero;
                         map.primaryHero = "Quincy";
                     }
 
@@ -107,6 +111,7 @@ namespace BTD_Mod_Helper.Api
                         {
                             if (Clean($"{id} primaryHero", heroes, current)(player.hero))
                             {
+                                mapPlayerHeroes[(name, id)] = player.hero;
                                 player.hero = "Quincy";
                             }
                         }
@@ -220,6 +225,27 @@ namespace BTD_Mod_Helper.Api
                 profile.primaryHero = primaryHero;
             }
 
+            foreach (var (map, hero) in mapPrimaryHeroes)
+            {
+                if (profile.savedMaps.ContainsKey(map))
+                {
+                    profile.savedMaps[map].primaryHero = hero;
+                }
+            }
+
+            foreach (var ((map, player), hero) in mapPlayerHeroes)
+            {
+                if (profile.savedMaps.ContainsKey(map))
+                {
+                    var mapSaveDataModel = profile.savedMaps[map];
+                    if (mapSaveDataModel.players.ContainsKey(player))
+                    {
+                        mapSaveDataModel.players[player].hero = hero;
+                    }
+                }
+
+            }
+
             MelonMain.PerformHook(mod => mod.PostCleanProfile(profile));
         }
 
@@ -227,6 +253,11 @@ namespace BTD_Mod_Helper.Api
         {
             return thing =>
             {
+                if (string.IsNullOrEmpty(thing))
+                {
+                    return false;
+                }
+
                 var shouldRemove = current ? things.Contains(thing) : !things.Contains(thing);
                 if (shouldRemove && !current)
                 {

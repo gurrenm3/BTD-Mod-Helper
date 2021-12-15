@@ -24,7 +24,7 @@ namespace BTD_Mod_Helper.Patches
                 var portrait = modTower.PortraitReference;
                 var maxPathTier = modTower.tierMaxes[pathIndex];
                 var emptyAbilities = new List<AbilityModel>().Cast<ICollection<AbilityModel>>();
-                var upgradeModel = Game.instance.model.GetUpgrade("Faster Throwing");  // random real upgrade to internally use
+                var upgradeModel = modTower.dummyUpgrade;
                 for (var i = maxPathTier; i < 5; i++)
                 {
                     var upgradeDetails = pathUpgrades[i];

@@ -2,6 +2,7 @@
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Upgrades;
+using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Extensions;
 
@@ -51,6 +52,28 @@ namespace BTD_Mod_Helper.Api.Towers
         /// By default, remove any abilities from the Paragon tower
         /// </summary>
         public virtual bool RemoveAbilities => true;
+
+        /// <summary>
+        /// Modify the PowerDegreeMutator of the Paragon
+        /// </summary>
+        /// <param name="powerDegreeMutator"></param>
+        /// <param name="investment"></param>
+        /// <param name="degree"></param>
+        public virtual void ModifyPowerDegreeMutator(ParagonTowerModel.PowerDegreeMutator powerDegreeMutator,
+            float investment, int degree)
+        {
+            
+        }
+        
+        /// <summary>
+        /// Method to modify the Simulation Tower once its Degree has been set
+        /// </summary>
+        /// <param name="tower"></param>
+        /// <param name="degree"></param>
+        public virtual void OnDegreeSet(Tower tower, int degree)
+        {
+            
+        }
 
 
         /// <inheritdoc />
