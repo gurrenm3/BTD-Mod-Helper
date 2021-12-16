@@ -1,8 +1,7 @@
 using Assets.Scripts.Models.Towers.Knowledge;
 using Assets.Scripts.Unity;
-using BTD_Mod_Helper.Extensions;
 
-namespace BloonsTD6_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions
 {
 	public static class KnowledgeModelExt
 	{

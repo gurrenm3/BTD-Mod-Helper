@@ -18,6 +18,7 @@ using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Models;
 using NinjaKiwi.Common;
+using NinjaKiwi.NKMulti;
 
 namespace BTD_Mod_Helper
 {
@@ -32,7 +33,17 @@ namespace BTD_Mod_Helper
 
         public override void OnApplicationStart()
         {
-            CheckModsForUpdates();
+            MelonLogger.Msg("Checking for updates...");
+
+            var updateDir = this.GetModDirectory() + "\\UpdateInfo";
+            Directory.CreateDirectory(updateDir);
+
+            UpdateHandler.SaveModUpdateInfo(updateDir);
+            var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
+
+            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
+
+            //CheckModsForUpdates();
 
             var settingsDir = this.GetModSettingsDir(true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
@@ -50,7 +61,7 @@ namespace BTD_Mod_Helper
 
         private void CheckModsForUpdates()
         {
-            MelonLogger.Msg("Checking for updates...");
+            /*MelonLogger.Msg("Checking for updates...");
 
             var updateDir = this.GetModDirectory() + "\\UpdateInfo";
             Directory.CreateDirectory(updateDir);
@@ -58,7 +69,7 @@ namespace BTD_Mod_Helper
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
 
-            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
+            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);*/
         }
 
         public override void OnGameModelLoaded(GameModel model)
@@ -126,6 +137,12 @@ namespace BTD_Mod_Helper
 
             if (Game.instance is null)
                 return;
+
+            if (Game.isModdedClient.value == true)
+            {
+                Game.isModdedClient.value = false;
+                MelonLogger.Msg("Not modded now");
+            }
             
             if (PopupScreen.instance != null && afterTitleScreen)
                 UpdateHandler.AnnounceUpdates(modsNeedingUpdates, this.GetModDirectory());

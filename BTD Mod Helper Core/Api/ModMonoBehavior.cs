@@ -14,6 +14,11 @@ namespace BTD_Mod_Helper.Api
     public class ModMonoBehavior : MonoBehaviour
     {
         /// <summary>
+        /// Used to track whether all of the mono behaviors have already been loaded.
+        /// </summary>
+        private static bool customBehaviorsLoaded = false;
+
+        /// <summary>
         /// Required base constructor needed to load custom MonoBehaviors.
         /// </summary>
         /// <param name="ptr"></param>
@@ -24,6 +29,8 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         internal static void LoadAllModMonoBehaviors()
         {
+            if(customBehaviorsLoaded) return;
+
             foreach (var mod in MelonHandler.Mods)
             {
                 var types = mod?.Assembly?.GetTypes()?.Where(type => type.IsSubclassOf(typeof(ModMonoBehavior)));
@@ -35,6 +42,7 @@ namespace BTD_Mod_Helper.Api
                     ClassInjector.RegisterTypeInIl2Cpp(customBehavior);
                 }
             }
+            customBehaviorsLoaded = true;
         }
     }
 }

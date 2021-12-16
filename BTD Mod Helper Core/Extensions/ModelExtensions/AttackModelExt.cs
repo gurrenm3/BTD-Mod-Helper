@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.GenericBehaviors;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Extensions.ModelExtensions;
 
 
 #if BloonsTD6
