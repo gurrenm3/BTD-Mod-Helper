@@ -137,12 +137,6 @@ namespace BTD_Mod_Helper
 
             if (Game.instance is null)
                 return;
-
-            if (Game.isModdedClient.value == true)
-            {
-                Game.isModdedClient.value = false;
-                MelonLogger.Msg("Not modded now");
-            }
             
             if (PopupScreen.instance != null && afterTitleScreen)
                 UpdateHandler.AnnounceUpdates(modsNeedingUpdates, this.GetModDirectory());
