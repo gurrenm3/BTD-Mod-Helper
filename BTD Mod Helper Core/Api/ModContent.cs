@@ -471,5 +471,15 @@ namespace BTD_Mod_Helper.Api
         {
             return GetBundle(mod, name);
         }
+
+        /// <summary>
+        /// Gets a BloonsMod by its name, or returns null if none are loaded with that name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static BloonsMod GetMod(string name)
+        {
+            return MelonHandler.Mods.OfType<BloonsMod>().FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
+        }
     }
 }
