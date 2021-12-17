@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Assets.Scripts.Unity;
 #if BloonsTD6
 using Assets.Scripts.Models.Towers;
@@ -10,6 +11,7 @@ using BTD_Mod_Helper.Api.Towers;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
 
@@ -23,7 +25,7 @@ namespace BTD_Mod_Helper.Api
     ///     <br/>
     ///     2. It is a utility class with methods to access instances of those classes and other resources
     /// </summary>
-    public class ModContent
+    public abstract class ModContent
     {
         /// <summary>
         /// The name that will be at the end of the ID for this ModContent, by default the class name
@@ -39,13 +41,14 @@ namespace BTD_Mod_Helper.Api
         /// Backing property for ID that's only able to be overrided internally
         /// </summary>
         protected internal virtual string ID => mod.IDPrefix + Name;
-        
+
         /// <summary>
         /// The BloonsMod that this content was added by
         /// </summary>
         public BloonsMod mod;
 
-        internal static readonly Dictionary<Type, List<ModContent>> Instances = new Dictionary<Type, List<ModContent>>();
+        internal static readonly Dictionary<Type, List<ModContent>>
+            Instances = new Dictionary<Type, List<ModContent>>();
 
         /// <summary>
         /// Used for when you want to programmatically create multiple instances of a given ModContent
@@ -56,84 +59,81 @@ namespace BTD_Mod_Helper.Api
             yield return this;
         }
 
+        /// <summary>
+        /// Registers this ModContent into the game
+        /// </summary>
+        protected abstract void Register();
+
+        /// <summary>
+        /// Used to allow some ModContent to Register before or after others
+        /// </summary>
+        protected virtual float RegistrationPriority => 5f;
+
+
+        /// <summary>
+        /// Making things happen after the initial Registration phase of all ModContent
+        /// </summary>
+        internal virtual void PostRegister()
+        {
+        }
+
 #if BloonsTD6
-        internal static void LoadAllModContent(BloonsMod mod)
+        internal static void LoadModContent(BloonsMod mod)
         {
-            try
-            {
-                ResourceHandler.LoadEmbeddedTextures(mod);
-                ResourceHandler.LoadEmbeddedBundles(mod);
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
-                MelonLogger.Error(e);
-            }    
-                            
-            var modDisplays = GetModContent<ModDisplay>(mod);
-            var modUpgrades = GetModContent<ModUpgrade>(mod);
-            var modTowers = GetModContent<ModTower>(mod);
-            var modTowerSets = GetModContent<ModTowerSet>(mod);
-                            
-            try
-            {
-                ModDisplayHandler.LoadModDisplays(modDisplays);
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error("Critical failure when loading Displays for mod " + mod.Info.Name);
-                MelonLogger.Error(e);
-            }
-                            
-            try
-            {
-                ModUpgradeHandler.LoadUpgrades(modUpgrades);
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error("Critical failure when loading Upgrades for mod " + mod.Info.Name);
-                MelonLogger.Error(e);
-            }
-            
-            try
-            {
-                ModTowerHandler.LoadTowers(modTowers);
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error("Critical failure when loading Towers for mod " + mod.Info.Name);
-                MelonLogger.Error(e);
-            }
-            
-            try
-            {
-                ModTowerSetHandler.LoadTowerSets(modTowerSets);
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error("Critical failure when loading Tower Sets for mod " + mod.Info.Name);
-                MelonLogger.Error(e);
-            }
-            
-        }
-#endif
-        
-        internal static List<T> GetModContent<T>(BloonsMod mod) where T : ModContent
-        {
-            return mod.Assembly.GetTypes()
-                .Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(T)))
-                .SelectMany(type => Create<T>(type, mod))
+            mod.Content = mod.Assembly
+                .GetValidTypes()
+                .Where(CanLoadType)
+                .SelectMany(type => Create(type, mod))
                 .Where(content => content != null)
-                .Select(content => (T) content).ToList();
-        }
+                .OrderBy(content => content.RegistrationPriority)
+                .ToList();
 
-        internal static List<ModContent> Create<T>(Type type, BloonsMod mod) where T : ModContent
-        {
-            if (!typeof(T).IsAssignableFrom(type))
+            foreach (var modContent in mod.Content)
             {
-                throw new ArgumentException("Wrong type to create");
+                try
+                {
+                    modContent.Register();
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error($"Failed to register {modContent.Name}");
+                    MelonLogger.Error(e);
+                }
             }
 
+            foreach (var modContent in mod.Content)
+            {
+                try
+                {
+                    modContent.PostRegister();
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error($"Failed to post register {modContent.Name}");
+                    MelonLogger.Error(e);
+                }
+            }
+        }
+
+        internal static bool CanLoadType(Type type) =>
+            !type.IsAbstract &&
+            !type.ContainsGenericParameters &&
+            typeof(ModContent).IsAssignableFrom(type) &&
+            type.GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
+                null, Type.EmptyTypes, null) !=
+            null;
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="mod"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        internal static IEnumerable<ModContent> Create(Type type, BloonsMod mod)
+        {
             try
             {
                 if (!Instances.ContainsKey(type))
@@ -149,6 +149,7 @@ namespace BTD_Mod_Helper.Api
                         MelonLogger.Error("A zero argument constructor is REQUIRED for all ModContent classes");
                         throw;
                     }
+
                     var instances = instance.Load().ToList();
                     foreach (var modContent in instances)
                     {
@@ -162,10 +163,9 @@ namespace BTD_Mod_Helper.Api
             }
             catch (Exception e)
             {
-                MelonLogger.Error("Failed to instantiate " + type.Name);
+                MelonLogger.Error("Failed to load " + type.Name);
                 MelonLogger.Error(e);
-                MelonLogger.Error("Did you mess with the constructor?");
-                return new List<ModContent>();
+                return Array.Empty<ModContent>();
             }
         }
 
@@ -179,7 +179,7 @@ namespace BTD_Mod_Helper.Api
         {
             return CreateSpriteReference(GetTextureGUID<T>(name));
         }
-        
+
         /// <summary>
         /// Gets a sprite reference by name for this mod
         /// </summary>
@@ -223,7 +223,7 @@ namespace BTD_Mod_Helper.Api
 #endif
         }
 
-        
+
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
         /// </summary>
@@ -234,7 +234,7 @@ namespace BTD_Mod_Helper.Api
         {
             return mod == null ? default : mod.IDPrefix + fileName;
         }
-        
+
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
         /// </summary>
@@ -276,7 +276,7 @@ namespace BTD_Mod_Helper.Api
         {
             return GetTexture(mod, fileName);
         }
-        
+
         /// <summary>
         /// Constructs a Texture2D for a given texture name within a mod
         /// </summary>
@@ -367,7 +367,7 @@ namespace BTD_Mod_Helper.Api
         {
             return GetInstance<T>().Id;
         }
-        
+
         /// <summary>
         /// Gets the internal tower set id for a given TowerSet
         /// </summary>
@@ -378,19 +378,19 @@ namespace BTD_Mod_Helper.Api
             return GetInstance<T>().Id;
         }
 
-         /// <summary>
+        /// <summary>
         /// Gets all loaded ModContent objects that are T or a subclass of T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static List<T> GetInstances<T>() where T : ModContent
-         {
-             return Instances.Where(pair => typeof(T).IsAssignableFrom(pair.Key))
-                 .SelectMany(pair => pair.Value)
-                 .Cast<T>()
-                 .ToList();
+        {
+            return Instances.Where(pair => typeof(T).IsAssignableFrom(pair.Key))
+                .SelectMany(pair => pair.Value)
+                .Cast<T>()
+                .ToList();
         }
-        
+
 #endif
 
         /// <summary>
@@ -400,9 +400,14 @@ namespace BTD_Mod_Helper.Api
         /// <returns>The official instance of it</returns>
         public static T GetInstance<T>()
         {
-            if (typeof(T).IsSubclassOf(typeof(ModContent)) && Instances.ContainsKey(typeof(T)))
+            if (typeof(T).IsSubclassOf(typeof(ModContent)))
             {
-                return (T) (object) Instances[typeof(T)][0];
+                if (Instances.ContainsKey(typeof(T)))
+                {
+                    return (T) (object) Instances[typeof(T)][0];
+                }
+
+                return default;
             }
 
             if (typeof(T).IsSubclassOf(typeof(BloonsMod)))
@@ -422,7 +427,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns>The official instance of it</returns>
         public static object GetInstance(Type type)
         {
-            return !Instances.ContainsKey(type) ? default : Instances[type];
+            return !Instances.ContainsKey(type) ? default : Instances[type][0];
         }
 
         /// <summary>
@@ -441,7 +446,8 @@ namespace BTD_Mod_Helper.Api
             var bundles = ResourceHandler.Bundles.Keys.Where(s => s.StartsWith(mod.IDPrefix)).ToList();
             if (bundles.Count == 0)
             {
-                MelonLogger.Error($"In fact, {mod.GetModName()} doesn't have any bundles loaded. Did you forget to include them as an Embedded Resource?");
+                MelonLogger.Error(
+                    $"In fact, {mod.GetModName()} doesn't have any bundles loaded. Did you forget to include them as an Embedded Resource?");
             }
             else
             {
@@ -451,9 +457,10 @@ namespace BTD_Mod_Helper.Api
                     MelonLogger.Error($"    {s.Replace(mod.IDPrefix, "")}");
                 }
             }
+
             return null;
         }
-        
+
         /// <summary>
         /// Gets a bundle from the mod T with the specified name (no file extension)
         /// </summary>
@@ -462,7 +469,7 @@ namespace BTD_Mod_Helper.Api
         {
             return GetBundle(GetInstance<T>(), name);
         }
-        
+
         /// <summary>
         /// Gets a bundle from your mod with the specified name (no file extension)
         /// </summary>

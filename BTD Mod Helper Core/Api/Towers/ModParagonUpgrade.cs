@@ -13,6 +13,11 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModParagonUpgrade : ModUpgrade
     {
+        internal override void PostRegister()
+        {
+            Tower.paragonUpgrade = this;
+        }
+
         /// <summary>
         /// Specifically use the paragon upgrade naming scheme. No overriding because that apparently causes issues.
         /// </summary>

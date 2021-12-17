@@ -60,7 +60,7 @@ namespace BTD_Mod_Helper.Extensions
             model.towers = model.towers.AddTo(towerModel);
             model.AddChildDependant(towerModel);
 
-            ModTowerHandler.TowerCache[towerModel.name] = towerModel;
+            ModTowerHelper.TowerCache[towerModel.name] = towerModel;
 
             if (towerDetailsModel != null)
             {
@@ -93,7 +93,7 @@ namespace BTD_Mod_Helper.Extensions
             foreach (var towerModel in array)
             {
                 model.AddChildDependant(towerModel);
-                ModTowerHandler.TowerCache[towerModel.name] = towerModel;
+                ModTowerHelper.TowerCache[towerModel.name] = towerModel;
             }
         }
         

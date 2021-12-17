@@ -1,7 +1,9 @@
 ﻿#if BloonsTD6
+using System;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Display
 {
@@ -10,6 +12,20 @@ namespace BTD_Mod_Helper.Api.Display
     /// </summary>
     public abstract class ModTowerDisplay : ModDisplay
     {
+        internal override void PostRegister()
+        {
+            try
+            {
+                Tower.displays.Add(this);
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error(
+                    $"Failed to assign ModTowerDisplay {Name} to ModTower {Tower.Name}");
+                MelonLogger.Error(e);
+            }
+        }
+
         /// <summary>
         /// The ModTower that this ModDisplay is used for
         /// </summary>

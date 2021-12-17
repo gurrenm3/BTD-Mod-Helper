@@ -23,7 +23,7 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
-    internal static class ModTowerHandler
+    internal static class ModTowerHelper
     {
         // Cache of all added TowerModel.name => TowerModel
         internal static readonly Dictionary<string, TowerModel> TowerCache = new Dictionary<string, TowerModel>();
@@ -32,89 +32,6 @@ namespace BTD_Mod_Helper.Api.Towers
 
         // Cache of TowerModel.name => ModTower 
         internal static readonly Dictionary<string, ModTower> ModTowerCache = new Dictionary<string, ModTower>();
-
-        internal static void LoadTowers(List<ModTower> modTowers)
-        {
-            var towerModels = new Dictionary<ModTower, List<TowerModel>>();
-            foreach (var modTower in modTowers)
-            {
-                try
-                {
-                    towerModels[modTower] = AddTower(modTower);
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error("Failed to add the ModTower " + modTower.Name + " to the game");
-                    MelonLogger.Error(e);
-                }
-            }
-
-            foreach (var modTower in modTowers)
-            {
-                try
-                {
-                    foreach (var towerModel in towerModels[modTower])
-                    {
-                        FinalizeTowerModel(modTower, towerModel);
-                    }
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error("Failed to finalize ModTower " + modTower.Name);
-                    MelonLogger.Error(e);
-                }
-            }
-
-            foreach (var modTower in modTowers.OrderBy(tower => tower.Order))
-            {
-                try
-                {
-                    // Finalize the addition of the ModTower to the game
-                    Game.instance.GetLocalizationManager().textTable[modTower.Id] = modTower.DisplayName;
-                    Game.instance.GetLocalizationManager().textTable[modTower.Id + "s"] = modTower.DisplayNamePlural;
-                    Game.instance.GetLocalizationManager().textTable[modTower.Id + " Description"] =
-                        modTower.Description;
-
-                    if (!modTower.DontAddToShop)
-                    {
-                        try
-                        {
-                            var index = modTower.GetTowerIndex(Game.instance.model.towerSet.ToList());
-                            if (index >= 0)
-                            {
-                                var shopTowerDetailsModel =
-                                    new ShopTowerDetailsModel(modTower.Id, index, 5, 5, 5, -1, 0, null);
-                                Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
-                            }
-                        }
-                        catch (Exception)
-                        {
-                            MelonLogger.Error($"Failed to add ModTower {modTower.Name} to the shop");
-                            throw;
-                        }
-                    }
-                    else if (modTower is ModHero modHero)
-                    {
-                        try
-                        {
-                            FinalizeHero(modTower, modHero);
-                        }
-                        catch (Exception)
-                        {
-                            MelonLogger.Error($"Failed to add ModHero {modHero.Name} to the heroes set");
-                            throw;
-                        }
-                    }
-
-                    modTower.ModTowerSet?.towers.Add(modTower);
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error("General error in loading ModTower " + modTower.Name);
-                    MelonLogger.Error(e);
-                }
-            }
-        }
 
         internal static List<TowerModel> AddTower(ModTower modTower)
         {
@@ -160,7 +77,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
             }
 
-            modTower.dummyUpgrade = new UpgradeModel(modTower.Id, modTower.Cost, 0, modTower.PortraitReference, 0, 0, 0, "", "");
+            modTower.dummyUpgrade =
+                new UpgradeModel(modTower.Id, modTower.Cost, 0, modTower.PortraitReference, 0, 0, 0, "", "");
             Game.instance.model.AddUpgrade(modTower.dummyUpgrade);
 
             return towerModels;
@@ -171,7 +89,7 @@ namespace BTD_Mod_Helper.Api.Towers
             TowerModel towerModel;
             try
             {
-                towerModel = modTower.GetBaseTowerModel().Duplicate();
+                towerModel = modTower.GetDefaultTowerModel().Duplicate();
                 towerModel.tiers = tiers;
                 towerModel.tier = tiers.Max();
                 towerModel.name = modTower.TowerId(tiers);
@@ -199,7 +117,9 @@ namespace BTD_Mod_Helper.Api.Towers
             // add the upgrade path models
             try
             {
-                var modTowerTiers = modTower.TowerTiers().ToList();
+                var towerTiers = modTower.TowerTiers();
+                
+                var modTowerTiers = towerTiers.ToList();
                 for (var i = 0; i < modTower.UpgradePaths; i++)
                 {
                     var tierMax = modTower.tierMaxes[i];
@@ -273,24 +193,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal static TowerModel CreateParagonModel(ModTower modTower)
         {
-            TowerModel towerModel;
-            switch (modTower.ParagonMode)
-            {
-                case ParagonMode.Base000:
-                    towerModel = CreateTowerModel(modTower, new[] {0, 0, 0});
-                    break;
-                case ParagonMode.Base555:
-                    towerModel = CreateTowerModel(modTower, new[] {5, 5, 5});
-                    break;
-                default:
-                    if (modTower is ModVanillaParagon)
-                    {
-                        towerModel = modTower.GetBaseTowerModel();
-                        break;
-                    }
-
-                    return null;
-            }
+            var towerModel = modTower.GetBaseParagonModel();
 
             towerModel.tier = 6;
             towerModel.isParagon = true;
@@ -298,23 +201,6 @@ namespace BTD_Mod_Helper.Api.Towers
             towerModel.paragonUpgrade = null;
             towerModel.name = $"{towerModel.baseId}-Paragon";
             towerModel.isBakable = false;
-
-            // Real paragons just use the top path applied upgrades it seems
-            towerModel.appliedUpgrades = new Il2CppStringArray(6);
-            if (modTower is ModVanillaParagon)
-            {
-                Game.instance.model.GetTower(towerModel.baseId, 5).appliedUpgrades
-                    .CopyTo(towerModel.appliedUpgrades, 0);
-            }
-            else
-            {
-                for (var i = 0; i < 5; i++)
-                {
-                    towerModel.appliedUpgrades[i] = modTower.upgrades[0, i].Id;
-                }
-            }
-
-
             towerModel.appliedUpgrades[5] = modTower.paragonUpgrade.Id;
 
             var sprite = modTower.paragonUpgrade.PortraitReference;
@@ -450,11 +336,11 @@ namespace BTD_Mod_Helper.Api.Towers
             }
         }
 
-        internal static void FinalizeHero(ModTower modTower, ModHero modHero)
+        internal static void FinalizeHero(ModHero modHero)
         {
-            Game.instance.GetLocalizationManager().textTable[modTower.Id + " Short Description"] =
+            Game.instance.GetLocalizationManager().textTable[modHero.Id + " Short Description"] =
                 modHero.Title;
-            Game.instance.GetLocalizationManager().textTable[modTower.Id + " Level 1 Description"] =
+            Game.instance.GetLocalizationManager().textTable[modHero.Id + " Level 1 Description"] =
                 modHero.Level1Description;
 
             var index = modHero.GetHeroIndex(Game.instance.model.heroSet

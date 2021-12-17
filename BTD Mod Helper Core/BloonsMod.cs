@@ -12,8 +12,16 @@ using BTD_Mod_Helper.Api;
 
 namespace BTD_Mod_Helper
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BloonsMod : MelonMod
     {
+        /// <summary>
+        /// All ModContent in ths mod
+        /// </summary>
+        public IReadOnlyList<ModContent> Content { get; internal set; }
+
         internal Dictionary<string, ModSetting> ModSettings;
         
         /// <summary>

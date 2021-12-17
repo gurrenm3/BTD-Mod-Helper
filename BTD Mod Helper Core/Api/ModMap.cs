@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MelonLoader;
 
 namespace BTD_Mod_Helper.Api
 {
-    public class ModMap
+    /// <summary>
+    /// 
+    /// </summary>
+    public abstract class ModMap : ModContent
     {
-
+        /// <inheritdoc />
+        protected sealed override void Register()
+        {
+            MelonLogger.Msg($"Registered ModMap {Name}");
+        }
     }
 }

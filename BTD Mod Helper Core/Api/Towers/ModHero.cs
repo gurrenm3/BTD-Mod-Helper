@@ -13,6 +13,12 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModHero : ModTower
     {
+        internal override void PostRegister()
+        {
+            base.PostRegister();
+            ModTowerHelper.FinalizeHero(this);
+        }
+
         internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
         {
             "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands", 
@@ -74,9 +80,9 @@ namespace BTD_Mod_Helper.Api.Towers
             }
         }
 
-        internal override TowerModel GetBaseTowerModel()
+        internal override TowerModel GetDefaultTowerModel()
         {
-            var baseTowerModel = base.GetBaseTowerModel();
+            var baseTowerModel = base.GetDefaultTowerModel();
             if (!baseTowerModel.HasBehavior<HeroModel>())
             {
                 // Unrelated to the actual XpRatio weirdly enough
