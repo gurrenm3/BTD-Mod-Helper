@@ -399,7 +399,7 @@ namespace BTD_Mod_Helper.Api.Towers
                             .OrderByDescending(display => display.Id)
                             .FirstOrDefault() is ModTowerDisplay modTowerDisplay)
                     {
-                        modTowerDisplay.Apply(towerModel);
+                        modTowerDisplay.ApplyToTower(towerModel);
                     }
                 }
                 catch (Exception)
