@@ -24,6 +24,16 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class InGameExt
     {
         /// <summary>
+        /// (Cross-Game compatible) Returns whether or not the player is currently in a game.
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <returns></returns>
+        public static bool IsInGame(this InGame inGame)
+        {
+            return inGame.GetSimulation() != null;
+        }
+
+        /// <summary>
         /// (Cross-Game compatible) Get the current Map
         /// </summary>
         public static Map GetMap(this InGame inGame)
