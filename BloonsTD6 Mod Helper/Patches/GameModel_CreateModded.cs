@@ -3,11 +3,9 @@ using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
-using MelonLoader;
 using UnhollowerRuntimeLib;
 
 namespace BTD_Mod_Helper.Patches

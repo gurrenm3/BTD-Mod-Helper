@@ -242,7 +242,6 @@
     <Compile Include="Patches\StandardTowerPurchaseButtonPatches.cs" />
     <Compile Include="Patches\TimeManager_SetFastForward.cs" />
     <Compile Include="Patches\TitleScreen_Start.cs" />
-    <Compile Include="Patches\TowerInventory_Init.cs" />
     <Compile Include="Patches\TowerSetBgSprites_GetSprite.cs" />
     <Compile Include="Patches\Towers\ParagonTower_GetDegreeMutator.cs" />
     <Compile Include="Patches\Towers\ParagonTower_UpdateDegree.cs" />

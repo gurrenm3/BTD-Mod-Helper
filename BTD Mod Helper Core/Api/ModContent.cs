@@ -379,11 +379,21 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets all loaded ModContent objects that are T or a subclass of T
+        /// Gets all loaded ModContent objects that are of type T 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static List<T> GetInstances<T>() where T : ModContent
+        {
+            return !Instances.ContainsKey(typeof(T)) ? null : Instances[typeof(T)].Cast<T>().ToList();
+        }
+
+        /// <summary>
+        /// Gets all loaded ModContent objects that are T or a subclass of T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> GetContent<T>() where T : ModContent
         {
             return Instances.Where(pair => typeof(T).IsAssignableFrom(pair.Key))
                 .SelectMany(pair => pair.Value)

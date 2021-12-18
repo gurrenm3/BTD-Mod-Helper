@@ -146,9 +146,9 @@ namespace BTD_Mod_Helper.Api
 
             // MelonLogger.Msg("Cleaning current profile");
 
-            var towers = ModContent.GetInstances<ModTower>().Select(tower => tower.Id).ToList();
-            var upgrades = ModContent.GetInstances<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();
-            var heroes = ModContent.GetInstances<ModHero>().Select(hero => hero.Id).ToList();
+            var towers = ModContent.GetContent<ModTower>().Select(tower => tower.Id).ToList();
+            var upgrades = ModContent.GetContent<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();
+            var heroes = ModContent.GetContent<ModHero>().Select(hero => hero.Id).ToList();
 
             CleanProfile(profile, towers, upgrades, heroes, true);
         }

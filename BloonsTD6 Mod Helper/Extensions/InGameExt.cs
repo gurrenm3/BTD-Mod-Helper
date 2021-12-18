@@ -12,6 +12,7 @@ using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Patches;
 using Il2CppSystem.Collections.Generic;
+using MelonLoader;
 using UnhollowerBaseLib;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -152,15 +153,12 @@ namespace BTD_Mod_Helper.Extensions
             return SessionData.Instance.PoppedBloons;
         }
 
-        //not using this one because it doesn't seem to work. May check back later
-        //public static TowerInventory GetTowerInventory(this InGame inGame, int index) => inGame.bridge.simulation.GetTowerInventory(index);
-
         /// <summary>
         /// Get the current instance of TowerInventory being used in this game session
         /// </summary>
         public static TowerInventory GetTowerInventory(this InGame inGame)
         {
-            return TowerInventory_Init.towerInventory;
+            return inGame.bridge.simulation.GetTowerInventory(inGame.bridge.GetInputId());
         }
 
 

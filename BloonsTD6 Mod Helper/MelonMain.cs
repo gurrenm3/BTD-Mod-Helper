@@ -166,9 +166,9 @@ namespace BTD_Mod_Helper
         {
             if (keyCode == KeyCode.End)
             {
-                foreach (var (key, description) in LocalizationManager.Instance.textTable)
+                foreach (var (k, v) in InGame.instance.GetTowerInventory().towerCounts)
                 {
-                    MelonLogger.Msg(key + "    " + description);
+                    MelonLogger.Msg($"{k}      {v}");
                 }
             }
         }
