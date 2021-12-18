@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Patches
             ref ModDisplay __state)
         {
             __state = null;
-            if (ModDisplayHandler.ModDisplays.GetValueOrDefault(__instance.display) is ModDisplay display
+            if (ModDisplay.Cache.GetValueOrDefault(__instance.display) is ModDisplay display
                 && !(ResourceHandler.Prefabs.ContainsKey(__instance.display) &&
                      !ResourceHandler.Prefabs[__instance.display].isDestroyed))
             {

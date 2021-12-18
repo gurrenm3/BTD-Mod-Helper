@@ -1,6 +1,8 @@
 ﻿using System;
 using Assets.Scripts.Models.Towers.Upgrades;
+using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
@@ -9,6 +11,19 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModHeroLevel : ModUpgrade
     {
+        internal override void PostRegister()
+        {
+            if (AbilityName != null)
+            {
+                Game.instance.GetLocalizationManager().textTable[AbilityName + " Ability"] = AbilityName;
+            }
+
+            if (AbilityDescription != null)
+            {
+                Game.instance.GetLocalizationManager().textTable[AbilityName + " Ability Description"] = AbilityDescription;
+            }
+        }
+
         /// <summary>
         /// Internal naming scheme for hero levels
         /// </summary>

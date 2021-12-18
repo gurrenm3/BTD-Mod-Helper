@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 
@@ -12,8 +12,22 @@ namespace BTD_Mod_Helper.Api.Towers
     /// <summary>
     /// A custom collection of ModTowers
     /// </summary>
-    public class ModTowerSet : ModContent
+    public abstract class ModTowerSet : ModContent
     {
+        internal static readonly Dictionary<string, ModTowerSet> Cache = new Dictionary<string, ModTowerSet>();
+        
+        /// <summary>
+        /// ModTowerSets register fourth
+        /// </summary>
+        protected sealed override float RegistrationPriority => 4;
+        
+        /// <inheritdoc />
+        protected sealed override void Register()
+        {
+            Game.instance.GetLocalizationManager().textTable[Id] = DisplayName;
+            Cache[Id] = this;
+        }
+
         internal readonly List<ModTower> towers = new List<ModTower>();
 
         /// <summary>

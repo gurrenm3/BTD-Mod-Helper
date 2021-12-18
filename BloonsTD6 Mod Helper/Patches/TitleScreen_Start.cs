@@ -1,4 +1,5 @@
-﻿using BTD_Mod_Helper.Api;
+﻿using System;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using System.Linq;
@@ -19,7 +20,18 @@ namespace BTD_Mod_Helper.Patches
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
             {
-                ModContent.LoadAllModContent(mod);
+                try
+                {
+                    ResourceHandler.LoadEmbeddedTextures(mod);
+                    ResourceHandler.LoadEmbeddedBundles(mod);
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    MelonLogger.Error(e);
+                }    
+                
+                ModContent.LoadModContent(mod);
             }
 
             MelonMain.PerformHook(mod => mod.OnTitleScreen());

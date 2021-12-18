@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static ModUpgrade GetModUpgrade(this UpgradeModel upgradeModel)
         {
-            return ModUpgradeHandler.ModUpgradeCache.TryGetValue(upgradeModel.name, out var modUpgrade) ? modUpgrade : null;
+            return ModUpgrade.Cache.TryGetValue(upgradeModel.name, out var modUpgrade) ? modUpgrade : null;
         }
     }
 }

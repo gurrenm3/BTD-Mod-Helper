@@ -33,7 +33,7 @@ namespace BTD_Mod_Helper.Api
 
             foreach (var mod in MelonHandler.Mods)
             {
-                var types = mod?.Assembly?.GetTypes()?.Where(type => type.IsSubclassOf(typeof(ModMonoBehavior)));
+                var types = mod?.Assembly?.GetValidTypes()?.Where(type => type.IsSubclassOf(typeof(ModMonoBehavior)));
                 if (types != null && !types.Any())
                     continue;
 

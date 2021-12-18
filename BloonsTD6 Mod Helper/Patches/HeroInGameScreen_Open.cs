@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(HeroInGameScreen __instance)
         {
-            if (ModTowerHandler.ModTowerCache.TryGetValue(__instance.heroId, out var tower) && tower is ModHero modHero)
+            if (ModTowerHelper.ModTowerCache.TryGetValue(__instance.heroId, out var tower) && tower is ModHero modHero)
             {
                 for (var i = 0; i < __instance.heroUpgrades.Length; i++)
                 {

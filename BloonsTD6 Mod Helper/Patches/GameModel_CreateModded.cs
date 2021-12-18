@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Patches
                 };
             }
             var dictionary = Game.instance.model.searchCache[Il2CppType.Of<TowerModel>()];
-            foreach (var (key, value) in ModTowerHandler.TowerCache)
+            foreach (var (key, value) in ModTowerHelper.TowerCache)
             {
                 if (!dictionary.ContainsKey(key))
                 {
