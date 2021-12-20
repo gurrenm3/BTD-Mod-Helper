@@ -126,13 +126,7 @@ namespace BTD_Mod_Helper
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 var tower = TowerSelectionMenu.instance.GetSelectedTower();
-                tower.tower.towerBehaviors.ToList().ForEach(behavior =>
-                {
-                    MelonLogger.Msg(behavior.model.name);
-                });
                 FileIOUtil.SaveObject("selected_tower.json", tower.Def);
-                
-                tower.Abilities.Clear();
             }
 
             if (Game.instance is null)
@@ -166,10 +160,7 @@ namespace BTD_Mod_Helper
         {
             if (keyCode == KeyCode.End)
             {
-                foreach (var (k, v) in InGame.instance.GetTowerInventory().towerCounts)
-                {
-                    MelonLogger.Msg($"{k}      {v}");
-                }
+                FileIOUtil.SaveObject("dcm.json", InGame.instance.dcm);
             }
         }
 

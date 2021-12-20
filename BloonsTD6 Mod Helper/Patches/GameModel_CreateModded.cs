@@ -1,7 +1,9 @@
-﻿using Assets.Scripts.Models;
+﻿using System.Linq;
+using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 using HarmonyLib;
 using Il2CppSystem;
@@ -23,6 +25,7 @@ namespace BTD_Mod_Helper.Patches
                     [Il2CppType.Of<TowerModel>()] = new Dictionary<string, Model>()
                 };
             }
+
             var dictionary = Game.instance.model.searchCache[Il2CppType.Of<TowerModel>()];
             foreach (var (key, value) in ModTowerHelper.TowerCache)
             {
@@ -31,18 +34,26 @@ namespace BTD_Mod_Helper.Patches
                     dictionary[key] = value;
                 }
             }
-            
+
 
             return true;
         }
 
 
-        
         [HarmonyPostfix]
         internal static void Postfix(GameModel result, List<ModModel> mods)
         {
             MelonMain.PerformHook(mod => mod.OnNewGameModel(result, mods));
             MelonMain.PerformHook(mod => mod.OnNewGameModel(result));
+
+            foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>()
+                         .Where(content => !content.AffectBaseGameModel))
+            {
+                foreach (var affectedTower in modVanillaContent.GetAffectedTowers(result))
+                {
+                    modVanillaContent.Apply(affectedTower);
+                }
+            }
         }
     }
 }

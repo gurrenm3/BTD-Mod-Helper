@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
@@ -60,7 +61,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     throw;
                 }
             }
-            
+
             ModTowerSet?.towers.Add(this);
         }
 
@@ -80,9 +81,9 @@ namespace BTD_Mod_Helper.Api.Towers
         internal virtual bool ShouldCreateParagon =>
             paragonUpgrade != null &&
             TopPathUpgrades == 5 &&
-             MiddlePathUpgrades == 5 &&
-             BottomPathUpgrades == 5 &&
-             ParagonMode != ParagonMode.None;
+            MiddlePathUpgrades == 5 &&
+            BottomPathUpgrades == 5 &&
+            ParagonMode != ParagonMode.None;
 
         /// <summary>
         /// The name that will be actually displayed for the tower in game
@@ -243,18 +244,9 @@ namespace BTD_Mod_Helper.Api.Towers
             towerModel.tier = 0;
             towerModel.tiers = new[] {0, 0, 0};
 
-            foreach (var defaultMod in DefaultMods)
-            {
-                for (var i = 0; i < towerModel.mods.Count; i++)
-                {
-                    var model = towerModel.mods[i];
-                    if (model.name != defaultMod)
-                    {
-                        towerModel.mods = towerModel.mods.RemoveItem(model);
-                        break;
-                    }
-                }
-            }
+            towerModel.mods = DefaultMods
+                .Select(s => new ApplyModModel($"{Id}Upgrades", s, ""))
+                .ToArray();
 
             towerModel.GetDescendants<Model>().ForEach(model =>
             {
@@ -364,7 +356,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
             return ModTowerSet?.GetTowerStartIndex(towerSet) ?? towerSet.Count;
         }
-    
+
         internal virtual TowerModel GetBaseParagonModel()
         {
             TowerModel towerModel;
@@ -374,13 +366,13 @@ namespace BTD_Mod_Helper.Api.Towers
                     towerModel = ModTowerHelper.CreateTowerModel(this, new[] {0, 0, 0});
                     break;
                 case ParagonMode.Base555:
-                    towerModel =  ModTowerHelper.CreateTowerModel(this, new[] {5, 5, 5});
+                    towerModel = ModTowerHelper.CreateTowerModel(this, new[] {5, 5, 5});
                     break;
                 case ParagonMode.None:
                 default:
                     return null;
             }
-            
+
             for (var i = 0; i < 5; i++)
             {
                 towerModel.appliedUpgrades[i] = upgrades[0, i].Id;

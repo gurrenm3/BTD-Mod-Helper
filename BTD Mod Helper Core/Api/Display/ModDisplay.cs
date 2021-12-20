@@ -168,6 +168,11 @@ namespace BTD_Mod_Helper.Api.Display
             }));
         }
 
+        /// <summary>
+        /// If you modify the unity Object and not just the DisplayNode attached to it, then set this to true
+        /// </summary>
+        public virtual bool ModifiesUnityObject => false;
+
 
         #region Misc Display Ids
 

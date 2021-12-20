@@ -226,17 +226,22 @@ namespace BTD_Mod_Helper.Api
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
+        /// <br/>
+        /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
         public static string GetTextureGUID(BloonsMod mod, string fileName)
         {
-            return mod == null ? default : mod.IDPrefix + fileName;
+            var guid = mod?.IDPrefix + fileName;
+            return ResourceHandler.resources.ContainsKey(guid) ? guid : default;
         }
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
+        /// <br/>
+        /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <typeparam name="T">Your mod's main BloonsMod extending class</typeparam>
@@ -248,6 +253,8 @@ namespace BTD_Mod_Helper.Api
 
         /// <summary>
         /// Gets a texture's GUID by name for this mod
+        /// <br/>
+        /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>

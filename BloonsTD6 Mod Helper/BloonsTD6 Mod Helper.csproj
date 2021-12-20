@@ -208,7 +208,7 @@
     <Compile Include="Patches\Btd6Player_Save.cs" />
     <Compile Include="Patches\Btd6Player_SaveNow.cs" />
     <Compile Include="Patches\CoopQuickMatchScreen_Open.cs" />
-    <Compile Include="Patches\InputManager_CreateTowerGraphicsAsync.cs" />
+    <Compile Include="Patches\Factory_CreateAsync.cs" />
     <Compile Include="Patches\Factory_DestroyAllActive.cs" />
     <Compile Include="Patches\Factory_FindAndSetupPrototypeAsync.cs" />
     <Compile Include="Patches\Factory_Flush.cs" />

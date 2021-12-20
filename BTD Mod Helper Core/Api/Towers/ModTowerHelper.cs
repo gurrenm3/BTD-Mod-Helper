@@ -168,7 +168,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 var portraitUpgrade = modTower.upgrades.Cast<ModUpgrade>()
                     .Where(modUpgrade => modUpgrade != null &&
                                          tiers[modUpgrade.Path] >= modUpgrade.Tier &&
-                                         modUpgrade.PortraitReference != null)
+                                         modUpgrade.PortraitReference)
                     .OrderByDescending(modUpgrade => modUpgrade.Tier)
                     .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
                     .ThenBy(modUpgrade => modUpgrade.Path)

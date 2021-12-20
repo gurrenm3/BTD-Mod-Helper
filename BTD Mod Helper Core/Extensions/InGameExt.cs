@@ -12,6 +12,7 @@ using System.Linq;
 using System;
 using BTD_Mod_Helper.Api.Enums;
 using Assets.Scripts.Models.Types;
+using BTD_Mod_Helper.Extensions.CollectionExtensions;
 
 #if BloonsTD6
 using Assets.Scripts.Simulation.Towers.Projectiles;

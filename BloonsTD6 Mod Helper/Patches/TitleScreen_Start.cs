@@ -6,6 +6,7 @@ using System.Linq;
 using Assets.Main.Scenes;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api.Towers;
 using MelonLoader;
 
@@ -24,14 +25,13 @@ namespace BTD_Mod_Helper.Patches
                 {
                     ResourceHandler.LoadEmbeddedTextures(mod);
                     ResourceHandler.LoadEmbeddedBundles(mod);
+                    ModContent.LoadModContent(mod);
                 }
                 catch (Exception e)
                 {
                     MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
                     MelonLogger.Error(e);
-                }    
-                
-                ModContent.LoadModContent(mod);
+                }
             }
 
             MelonMain.PerformHook(mod => mod.OnTitleScreen());
@@ -53,6 +53,7 @@ namespace BTD_Mod_Helper.Patches
                     modelMod.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
                 }
             }
+            
         }
     }
 }
