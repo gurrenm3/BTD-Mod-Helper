@@ -1,7 +1,6 @@
 using Assets.Scripts.Unity.UI_New.Upgrade;
 using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
-using MelonLoader;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Patches

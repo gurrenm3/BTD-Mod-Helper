@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {

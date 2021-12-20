@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using static BTD_Mod_Helper.Extensions.ButtonClickedEventExt;
 
 namespace BTD_Mod_Helper.Extensions
 {

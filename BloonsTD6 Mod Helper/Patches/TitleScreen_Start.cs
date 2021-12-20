@@ -6,7 +6,6 @@ using System.Linq;
 using Assets.Main.Scenes;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api.Towers;
 using MelonLoader;
 

@@ -1,12 +1,8 @@
 ﻿using System.Linq;
 using Assets.Scripts.Models.Profile;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches
 {

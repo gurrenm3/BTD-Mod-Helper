@@ -3,7 +3,6 @@ using System.Linq;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api;
 using HarmonyLib;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches
 {

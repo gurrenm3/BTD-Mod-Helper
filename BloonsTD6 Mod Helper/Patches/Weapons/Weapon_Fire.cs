@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Simulation.Towers.Weapons;
+﻿using Assets.Scripts.Simulation.Towers.Weapons;
 using HarmonyLib;
 
 namespace BTD_Mod_Helper.Patches.Weapons

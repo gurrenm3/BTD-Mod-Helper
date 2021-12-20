@@ -8,8 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
 using System;
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 #if BloonsTD6

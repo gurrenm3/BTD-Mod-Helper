@@ -1,14 +1,6 @@
 ﻿using Assets.Scripts.Models;
-using Assets.Scripts.Simulation.Factory;
-using Assets.Scripts.Simulation.Objects;
-using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Simulation.Towers;
-using Assets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
-using MelonLoader;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.Towers
 {

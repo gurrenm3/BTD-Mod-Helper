@@ -17,8 +17,6 @@ using Assets.Scripts.Unity.UI_New.Settings;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Models;
-using NinjaKiwi.Common;
-using NinjaKiwi.NKMulti;
 
 namespace BTD_Mod_Helper
 {

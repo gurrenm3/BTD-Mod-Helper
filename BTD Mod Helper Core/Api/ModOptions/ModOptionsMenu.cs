@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Unity.UI_New;
-using Assets.Scripts.Unity.UI_New.Popups;
+﻿using System.Linq;
 using BTD_Mod_Helper.Extensions;
-using BTD_Mod_Helper.Patches;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.SceneManagement;

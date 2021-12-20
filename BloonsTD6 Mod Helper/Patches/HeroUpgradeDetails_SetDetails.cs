@@ -1,10 +1,7 @@
 ﻿using System.Linq;
-using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.Main.HeroSelect;
 using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
-using MelonLoader;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches
