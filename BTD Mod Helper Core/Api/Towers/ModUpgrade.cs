@@ -37,21 +37,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 return;
             }
 
-            if (Path >= 0 && Path < 3 && Tower.tierMaxes[Path] >= Tier)
-            {
-                try
-                {
-                    Tower.upgrades[Path, Tier - 1] = this;
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
-                    MelonLogger.Error(e);
-                    MelonLogger.Error(
-                        "Double check that the Tower loaded and all Path and Tier values are correct");
-                    return;
-                }
-            }
+
+            AssignToModTower();
 
             try
             {
@@ -73,6 +60,31 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 MelonLogger.Error("General error in loading ModUpgrade " + Name);
                 MelonLogger.Error(e);
+            }
+        }
+
+        internal virtual void AssignToModTower()
+        {
+            if (Path >= 0 && Path < 3 && Tower.tierMaxes[Path] >= Tier)
+            {
+                try
+                {
+                    Tower.upgrades[Path, Tier - 1] = this;
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
+                    MelonLogger.Error(e);
+                    MelonLogger.Error(
+                        "Double check that the Tower loaded and all Path and Tier values are correct");
+                    throw;
+                }
+            }
+            else
+            {
+                MelonLogger.Warning("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
+                MelonLogger.Warning(
+                    "Double check that the Tower loaded and all Path and Tier values are correct");
             }
         }
 
