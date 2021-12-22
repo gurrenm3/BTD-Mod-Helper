@@ -49,8 +49,6 @@ namespace BTD_Mod_Helper
 
 
             Schedule_GameModel_Loaded();
-            
-            ModMonoBehavior.LoadAllModMonoBehaviors();
 
             MelonLogger.Msg("Mod has finished loading");
         }

@@ -8,12 +8,12 @@ namespace BTD_Mod_Helper.Patches.UI
     /// This is a benign patch that helps fix unexpected issues with changing upgrade restrictions
     /// </summary>
     [HarmonyPatch(typeof(TowerSelectionMenu), nameof(TowerSelectionMenu.UpgradeTower), typeof(UpgradeModel), typeof(int), typeof(float))]
-    internal class TowerSelectionMenu_UpdateTower
+    internal class TowerSelectionMenu_UpgradeTower
     {
         [HarmonyPostfix]
         internal static void Postfix(TowerSelectionMenu __instance)
         {
-            TowerSelectionMenu.instance.SelectionChanged(TowerSelectionMenu.instance.selectedTower);
+            __instance.InitUpgradeButtons();
         }
     }
 }
