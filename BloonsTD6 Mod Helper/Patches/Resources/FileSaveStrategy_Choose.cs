@@ -1,9 +1,9 @@
-﻿using HarmonyLib;
-using System.IO;
+﻿using System.IO;
+using HarmonyLib;
 using NinjaKiwi.Players;
 using NinjaKiwi.Players.Files;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.Resources
 {
     [HarmonyPatch(typeof(FileSaveStrategy), nameof(FileSaveStrategy.Choose))]
     internal class FileSaveStrategy_Choose

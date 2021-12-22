@@ -45,10 +45,12 @@ namespace BTD_Mod_Helper
             var settingsDir = this.GetModSettingsDir(true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
+            MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
 
-            ModMonoBehavior.LoadAllModMonoBehaviors();
 
             Schedule_GameModel_Loaded();
+            
+            ModMonoBehavior.LoadAllModMonoBehaviors();
 
             MelonLogger.Msg("Mod has finished loading");
         }
@@ -68,7 +70,7 @@ namespace BTD_Mod_Helper
 
         public static ModSettingBool CleanProfile = true;
 
-        public static ModSettingBool DisableModdedClientPopup = false;
+        private static ModSettingBool AutoHideModdedClientPopup = false;
         
         private static ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
@@ -127,7 +129,6 @@ namespace BTD_Mod_Helper
         
         public override void OnTitleScreen()
         {
-            MainMenu.hasSeenModderWarning = DisableModdedClientPopup.value;
             ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
 
             if (!scheduledInGamePatch)
@@ -202,7 +203,7 @@ namespace BTD_Mod_Helper
                 () => Game.instance?.model != null);
         }
 
-        bool scheduledInGamePatch = false;
+        bool scheduledInGamePatch;
 
         private void Schedule_InGame_Loaded()
         {

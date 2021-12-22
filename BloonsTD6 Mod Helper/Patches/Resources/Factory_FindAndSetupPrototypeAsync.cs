@@ -11,7 +11,7 @@ using UnityEngine;
 using Exception = System.Exception;
 using Object = UnityEngine.Object;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.Resources
 {
     [HarmonyPatch(typeof(Factory), nameof(Factory.FindAndSetupPrototypeAsync))]
     internal class Factory_FindAndSetupPrototypeAsync

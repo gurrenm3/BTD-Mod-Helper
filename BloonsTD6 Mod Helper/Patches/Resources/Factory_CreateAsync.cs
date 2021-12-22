@@ -5,7 +5,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.Resources
 {
     [HarmonyPatch(typeof(Factory), nameof(Factory.CreateAsync))]
     internal static class Factory_CreateAsync

@@ -5,7 +5,7 @@ using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.Resources
 {
     [HarmonyPatch(typeof(ResourceLoader), nameof(ResourceLoader.LoadSpriteFromSpriteReferenceAsync))]
     internal class ResourceLoader_LoadSpriteFromSpriteReferenceAsync
