@@ -373,6 +373,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     return null;
             }
 
+            towerModel.appliedUpgrades = new Il2CppStringArray(6);
             for (var i = 0; i < 5; i++)
             {
                 towerModel.appliedUpgrades[i] = upgrades[0, i].Id;
