@@ -255,7 +255,7 @@
     <Compile Include="Patches\UI\StandardTowerPurchaseButtonPatches.cs" />
     <Compile Include="Patches\UI\TitleScreen_Start.cs" />
     <Compile Include="Patches\UI\TowerSelectionMenu_IsUpgradePathClosed.cs" />
-    <Compile Include="Patches\UI\TowerSelectionMenu_UpdateTower.cs" />
+    <Compile Include="Patches\UI\TowerSelectionMenu_UpgradeTower.cs" />
     <Compile Include="Patches\UI\TowerSetBgSprites_GetSprite.cs" />
     <Compile Include="Patches\UI\TSMThemeDefault_TowerInfoChanged.cs" />
     <Compile Include="Patches\UI\UpgradeScreen_Open.cs" />
