@@ -3,7 +3,7 @@ using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.UI
 {
     [HarmonyPatch(typeof(UpgradeScreen), nameof(UpgradeScreen.UpdateUi))]
     internal class UpgradeScreen_UpdateUi

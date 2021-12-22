@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Unity.UI_New.Odyssey;
 using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.UI
 {
     [HarmonyPatch(typeof(OdysseyEventScreen), nameof(OdysseyEventScreen.Update))]
     internal class OdysseyEventScreen_Update
