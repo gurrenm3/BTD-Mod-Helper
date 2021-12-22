@@ -17,6 +17,7 @@ using Assets.Scripts.Unity.UI_New.Settings;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Models;
+using Assets.Scripts.Unity.UI_New.Main;
 
 namespace BTD_Mod_Helper
 {
@@ -87,7 +88,8 @@ namespace BTD_Mod_Helper
 
         public static ModSettingBool CleanProfile = true;
 
-
+        public static ModSettingBool DisableModdedClientPopup = false;
+        
         private static ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
             displayName = "Open Local Files Directory",
@@ -105,6 +107,8 @@ namespace BTD_Mod_Helper
             displayName = "Export Upgrade JSONs",
             IsButton = true
         };
+
+
 
         internal static ShowModOptions_Button modsButton;
 
@@ -164,6 +168,7 @@ namespace BTD_Mod_Helper
 
         public override void OnTitleScreen()
         {
+            MainMenu.hasSeenModderWarning = DisableModdedClientPopup.value;
             ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
 
             if (!scheduledInGamePatch)
