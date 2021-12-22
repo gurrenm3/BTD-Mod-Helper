@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Unity.Player;
 using BTD_Mod_Helper.Api;
 using HarmonyLib;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches
 {

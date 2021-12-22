@@ -1,10 +1,7 @@
 ﻿using System.Linq;
-using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.Main.HeroSelect;
 using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
-using MelonLoader;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches
@@ -28,7 +25,7 @@ namespace BTD_Mod_Helper.Patches
             }
 
             var nameMaterial = newHeroSprites[0].heroNameMaterial;
-            if (ModTowerHandler.ModTowerCache.TryGetValue(heroIdToUse, out var tower) && tower is ModHero modHero &&
+            if (ModTowerHelper.ModTowerCache.TryGetValue(heroIdToUse, out var tower) && tower is ModHero modHero &&
                 heroSprites.FirstOrDefault(material => material.name == modHero.NameStyle) is HeroFontMaterial materal)
             {
                 nameMaterial = materal.heroNameMaterial;
@@ -46,7 +43,7 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(HeroUpgradeDetails __instance, string heroIdToUse)
         {
-            if (ModTowerHandler.ModTowerCache.TryGetValue(heroIdToUse, out var tower) && tower is ModHero modHero)
+            if (ModTowerHelper.ModTowerCache.TryGetValue(heroIdToUse, out var tower) && tower is ModHero modHero)
             {
                 for (var i = 0; i < __instance.heroUpgrades.Length; i++)
                 {

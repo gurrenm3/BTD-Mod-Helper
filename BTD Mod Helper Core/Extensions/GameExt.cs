@@ -6,9 +6,10 @@ using Assets.Scripts.Models;
 using System.Runtime.InteropServices;
 using System;
 using System.Collections;
-using UnityEngine;
 using BTD_Mod_Helper.Api.Enums;
 using Assets.Scripts.Utils;
+using Assets.Scripts.Unity.Map;
+using Assets.Scripts.Unity.UI_New;
 
 #if BloonsTD6
 using NinjaKiwi.LiNK;
@@ -20,6 +21,20 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+        /// <summary>
+        /// (Cross-Game compatible) Returns the instance of the Map Loader.
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
+        public static MapLoader GetMapLoader(this Game game)
+        {
+#if BloonsTD6
+            return UI.instance?.mapLoader;
+#elif BloonsAT
+            return game.MapLoader;
+#endif
+        }
+
         /// <summary>
         /// (Cross-Game compatible) Returns a new SpriteReference that uses the given guid
         /// </summary>

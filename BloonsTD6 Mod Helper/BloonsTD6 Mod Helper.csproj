@@ -208,7 +208,7 @@
     <Compile Include="Patches\Btd6Player_Save.cs" />
     <Compile Include="Patches\Btd6Player_SaveNow.cs" />
     <Compile Include="Patches\CoopQuickMatchScreen_Open.cs" />
-    <Compile Include="Patches\InputManager_CreateTowerGraphicsAsync.cs" />
+    <Compile Include="Patches\Factory_CreateAsync.cs" />
     <Compile Include="Patches\Factory_DestroyAllActive.cs" />
     <Compile Include="Patches\Factory_FindAndSetupPrototypeAsync.cs" />
     <Compile Include="Patches\Factory_Flush.cs" />
@@ -242,7 +242,6 @@
     <Compile Include="Patches\StandardTowerPurchaseButtonPatches.cs" />
     <Compile Include="Patches\TimeManager_SetFastForward.cs" />
     <Compile Include="Patches\TitleScreen_Start.cs" />
-    <Compile Include="Patches\TowerInventory_Init.cs" />
     <Compile Include="Patches\TowerSetBgSprites_GetSprite.cs" />
     <Compile Include="Patches\Towers\ParagonTower_GetDegreeMutator.cs" />
     <Compile Include="Patches\Towers\ParagonTower_UpdateDegree.cs" />

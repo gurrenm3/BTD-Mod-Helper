@@ -1,10 +1,5 @@
-﻿using System;
-using Assets.Scripts.Simulation.Bloons;
-using Assets.Scripts.Simulation.Towers;
-using Assets.Scripts.Simulation.Towers.Projectiles;
-using BTD_Mod_Helper.Api;
+﻿using Assets.Scripts.Simulation.Bloons;
 using HarmonyLib;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.Bloons
 {

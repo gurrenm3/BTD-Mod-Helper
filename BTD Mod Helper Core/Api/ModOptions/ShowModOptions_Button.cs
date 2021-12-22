@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using BTD_Mod_Helper.Extensions;
-using BTD_Mod_Helper.Patches;
-using MelonLoader;
 using Object = UnityEngine.Object;
-using UnityEngine.UI.Extensions;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {

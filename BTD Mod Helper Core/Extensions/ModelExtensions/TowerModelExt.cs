@@ -8,8 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
 using System;
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 #if BloonsTD6
@@ -237,7 +235,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static ModTower GetModTower(this TowerModel towerModel)
         {
-            return ModTowerHandler.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
+            return ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
         }
         
         /// <summary>

@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-#if BloonsTD6
+﻿#if BloonsTD6
 using System;
+using System.Collections.Generic;
 using Assets.Scripts.Models.GenericBehaviors;
 #endif
 #if BloonsAT
@@ -8,14 +8,10 @@ using Assets.Scripts.Models.Display;
 #endif
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 using UnityEngine;
-using Task = Il2CppSystem.Threading.Tasks.Task;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
 
 namespace BTD_Mod_Helper.Api.Display
@@ -26,55 +22,19 @@ namespace BTD_Mod_Helper.Api.Display
     /// </summary>
     public abstract class ModDisplay : ModContent
     {
+        internal static readonly Dictionary<string, ModDisplay> Cache = new Dictionary<string, ModDisplay>();
+
         /// <summary>
-        /// The display id for RoadSpikes
+        /// ModDisplays register first
         /// </summary>
-        public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
+        protected sealed override float RegistrationPriority => 1;
+        
+        /// <inheritdoc />
+        protected sealed override void Register()
+        {
+            Cache[Id] = this;
+        }
 
-        public const string EtienneRoombaCat = "Assets/Monkeys/Etienne/Graphics/Pets/Roomba/PetRoombaDisplay.prefab";
-
-        public const string PatFustyPenguinPet =
-            "Assets/Monkeys/PatFusty/Graphics/Pets/Penguin/PetPenguinDisplay.prefab";
-
-        public const string GwendolinFirefoxPet = "Assets/Monkeys/Gwendolin/Graphics/Pets/Fox/PetFoxDisplay.prefab";
-        public const string QuincyDadPet = "Assets/Monkeys/Quincy/Graphics/Pets/DadofQuincy/DadofQuincyDisplay.prefab";
-        public const string EziliFrogPet = "Assets/Monkeys/Ezili/Graphics/Pets/Frog/PetFrogDisplay.prefab";
-        public const string ObynGhostWolfPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Wolf/PetWolfDisplay.prefab";
-
-        public const string BrickellParrotPet =
-            "Assets/Monkeys/AdmiralBrickell/Graphics/Pets/Parrot/PetParrotDisplay.prefab";
-
-        public const string ObynBunnyPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Bunny/PetBunnyDisplay.prefab";
-        public const string SaudaCranePet = "Assets/Monkeys/Sauda/Graphics/Pets/Crane/PetCraneDisplay.prefab";
-
-        public const string SuperMonkeyBatPet =
-            "Assets/Monkeys/SuperMonkey/Graphics/Pets/Bat/SuperMonkeyBatDisplay.prefab";
-
-        public const string MonkeySubDuckPet =
-            "Assets/Monkeys/MonkeySub/Graphics/Pets/RubberDuck/PetRubberDuckDisplay.prefab";
-
-        public const string MonkeyVillageElfPet = "Assets/Monkeys/MonkeyVillage/graphics/Pets/Elf/PetElfDisplay.prefab";
-
-        public const string NinjaMonkeyKiwiPet =
-            "Assets/Monkeys/NinjaMonkey/Graphics/Pets/Kiwi/NinjaMonkeyKiwiDisplay.prefab";
-
-        public const string BananaFarmChickenPet =
-            "Assets/Monkeys/BananaFarm/Graphics/Pets/Chicken/PetChickenDisplay.prefab";
-
-        public const string BananaFarmer = "Assets/Powers/Graphics/PlaceableItemBananaFarmer.prefab";
-        public const string GrimFarmer = "Assets/Powers/Graphics/Cosmetics/PlaceableItemBananaFarmerHalloween.prefab";
-        public const string CashDrop = "c737ade5badc75d49b97ac44e123430c";
-        public const string CoffinDrop = "Assets/Powers/Graphics/Cosmetics/CoffinDrop.prefab";
-        public const string MOABMine = "Assets/Powers/Graphics/PlaceableItemMine.prefab";
-        public const string BaubleMine = "Assets/Powers/Graphics/Cosmetics/PlaceableItemMoabMineBauble.prefab";
-        public const string RetroTechBot = "Assets/Powers/Graphics/Cosmetics/PlaceableItemTechBotRetro.prefab";
-        public const string PortableLake = "Assets/Powers/Graphics/PlaceableItemPool.prefab";
-        public const string Pontoon = "Assets/Powers/Graphics/PlaceableItemPontoon.prefab";
-        public const string IcebergPontoon = "Assets/Powers/Graphics/Cosmetics/PlaceableItemPontoonIceberg.prefab";
-        public const string PortableLavaLake = "Assets/Powers/Graphics/Cosmetics/PlaceableItemLavaLake.prefab";
-        public const string TrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGodMonkey.prefab";
-        public const string VengefulTrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGod555Monkey.prefab";
-        public const string VengefulSunAvatar = "Assets/Monkeys/SuperMonkey/Graphics/SunAvatarTurret555.prefab";
 
         /// <summary>
         /// The GUID of the display to copy this ModDisplay off of
@@ -201,6 +161,66 @@ namespace BTD_Mod_Helper.Api.Display
                 udn.RecalculateGenericRenderers();
             }));
         }
+
+        /// <summary>
+        /// If you modify the unity Object and not just the DisplayNode attached to it, then set this to true
+        /// </summary>
+        public virtual bool ModifiesUnityObject => false;
+
+
+        #region Misc Display Ids
+
+        /// <summary>
+        /// The display id for RoadSpikes
+        /// </summary>
+        public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
+
+        public const string EtienneRoombaCat = "Assets/Monkeys/Etienne/Graphics/Pets/Roomba/PetRoombaDisplay.prefab";
+
+        public const string PatFustyPenguinPet =
+            "Assets/Monkeys/PatFusty/Graphics/Pets/Penguin/PetPenguinDisplay.prefab";
+
+        public const string GwendolinFirefoxPet = "Assets/Monkeys/Gwendolin/Graphics/Pets/Fox/PetFoxDisplay.prefab";
+        public const string QuincyDadPet = "Assets/Monkeys/Quincy/Graphics/Pets/DadofQuincy/DadofQuincyDisplay.prefab";
+        public const string EziliFrogPet = "Assets/Monkeys/Ezili/Graphics/Pets/Frog/PetFrogDisplay.prefab";
+        public const string ObynGhostWolfPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Wolf/PetWolfDisplay.prefab";
+
+        public const string BrickellParrotPet =
+            "Assets/Monkeys/AdmiralBrickell/Graphics/Pets/Parrot/PetParrotDisplay.prefab";
+
+        public const string ObynBunnyPet = "Assets/Monkeys/ObynGreenfoot/Graphics/Pets/Bunny/PetBunnyDisplay.prefab";
+        public const string SaudaCranePet = "Assets/Monkeys/Sauda/Graphics/Pets/Crane/PetCraneDisplay.prefab";
+
+        public const string SuperMonkeyBatPet =
+            "Assets/Monkeys/SuperMonkey/Graphics/Pets/Bat/SuperMonkeyBatDisplay.prefab";
+
+        public const string MonkeySubDuckPet =
+            "Assets/Monkeys/MonkeySub/Graphics/Pets/RubberDuck/PetRubberDuckDisplay.prefab";
+
+        public const string MonkeyVillageElfPet = "Assets/Monkeys/MonkeyVillage/graphics/Pets/Elf/PetElfDisplay.prefab";
+
+        public const string NinjaMonkeyKiwiPet =
+            "Assets/Monkeys/NinjaMonkey/Graphics/Pets/Kiwi/NinjaMonkeyKiwiDisplay.prefab";
+
+        public const string BananaFarmChickenPet =
+            "Assets/Monkeys/BananaFarm/Graphics/Pets/Chicken/PetChickenDisplay.prefab";
+
+        public const string BananaFarmer = "Assets/Powers/Graphics/PlaceableItemBananaFarmer.prefab";
+        public const string GrimFarmer = "Assets/Powers/Graphics/Cosmetics/PlaceableItemBananaFarmerHalloween.prefab";
+        public const string CashDrop = "c737ade5badc75d49b97ac44e123430c";
+        public const string CoffinDrop = "Assets/Powers/Graphics/Cosmetics/CoffinDrop.prefab";
+        public const string MOABMine = "Assets/Powers/Graphics/PlaceableItemMine.prefab";
+        public const string BaubleMine = "Assets/Powers/Graphics/Cosmetics/PlaceableItemMoabMineBauble.prefab";
+        public const string RetroTechBot = "Assets/Powers/Graphics/Cosmetics/PlaceableItemTechBotRetro.prefab";
+        public const string PortableLake = "Assets/Powers/Graphics/PlaceableItemPool.prefab";
+        public const string Pontoon = "Assets/Powers/Graphics/PlaceableItemPontoon.prefab";
+        public const string IcebergPontoon = "Assets/Powers/Graphics/Cosmetics/PlaceableItemPontoonIceberg.prefab";
+        public const string PortableLavaLake = "Assets/Powers/Graphics/Cosmetics/PlaceableItemLavaLake.prefab";
+        public const string TrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGodMonkey.prefab";
+        public const string VengefulTrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGod555Monkey.prefab";
+        public const string VengefulSunAvatar = "Assets/Monkeys/SuperMonkey/Graphics/SunAvatarTurret555.prefab";
+
+        #endregion
     }
 #endif
 }

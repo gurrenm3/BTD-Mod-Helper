@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Models;
+﻿using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Models.Towers;
@@ -16,7 +15,6 @@ using System.Linq;
 using Assets.Scripts.Unity;
 using UnhollowerBaseLib;
 using BTD_Mod_Helper.Api.Towers;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -60,7 +58,7 @@ namespace BTD_Mod_Helper.Extensions
             model.towers = model.towers.AddTo(towerModel);
             model.AddChildDependant(towerModel);
 
-            ModTowerHandler.TowerCache[towerModel.name] = towerModel;
+            ModTowerHelper.TowerCache[towerModel.name] = towerModel;
 
             if (towerDetailsModel != null)
             {
@@ -93,7 +91,7 @@ namespace BTD_Mod_Helper.Extensions
             foreach (var towerModel in array)
             {
                 model.AddChildDependant(towerModel);
-                ModTowerHandler.TowerCache[towerModel.name] = towerModel;
+                ModTowerHelper.TowerCache[towerModel.name] = towerModel;
             }
         }
         

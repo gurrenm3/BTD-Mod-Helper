@@ -1,9 +1,8 @@
 ﻿using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Towers.Projectiles;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 
-namespace BTD_Mod_Helper.Extensions.ModelExtensions
+namespace BTD_Mod_Helper.Extensions
 {
     /// <summary>
     /// Extensions for DisplayModel

@@ -1,8 +1,13 @@
 ﻿#if BloonsTD6
+using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
+using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Extensions;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
@@ -11,6 +16,78 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModUpgrade : ModContent
     {
+        internal static readonly Dictionary<string, ModUpgrade> Cache = new Dictionary<string, ModUpgrade>();
+
+        /// <summary>
+        /// ModUpgrades register second
+        /// </summary>
+        protected sealed override float RegistrationPriority => 2;
+        
+        /// <inheritdoc />
+        protected sealed override void Register()
+        {
+            try
+            {
+                upgradeModel = GetUpgradeModel();
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error("Failed to create UpgradeModel for ModUpgrade " + Name);
+                MelonLogger.Error(e);
+                return;
+            }
+
+
+            AssignToModTower();
+
+            try
+            {
+                Game.instance.model.AddUpgrade(upgradeModel);
+                var localizationManager = Game.instance.GetLocalizationManager();
+                localizationManager.textTable[Id] = DisplayName;
+                localizationManager.textTable[Id + " Description"] = Description;
+                localizationManager.textTable[DisplayName + " Description"] = Description;
+
+                if (NeedsConfirmation)
+                {
+                    localizationManager.textTable[Id + " Title"] = ConfirmationTitle;
+                    localizationManager.textTable[Id + " Body"] = ConfirmationBody;
+                }
+                
+                Cache[upgradeModel.name] = this;
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error("General error in loading ModUpgrade " + Name);
+                MelonLogger.Error(e);
+            }
+        }
+
+        internal virtual void AssignToModTower()
+        {
+            if (Path >= 0 && Path < 3 && Tower.tierMaxes[Path] >= Tier)
+            {
+                try
+                {
+                    Tower.upgrades[Path, Tier - 1] = this;
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
+                    MelonLogger.Error(e);
+                    MelonLogger.Error(
+                        "Double check that the Tower loaded and all Path and Tier values are correct");
+                    throw;
+                }
+            }
+            else
+            {
+                MelonLogger.Warning("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
+                MelonLogger.Warning(
+                    "Double check that the Tower loaded and all Path and Tier values are correct");
+            }
+        }
+
         private UpgradeModel upgradeModel;
 
         private static SpriteReference DefaultIcon => CreateSpriteReference("aa0cb2e090ae15a478243899824ad4b1");

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Unity.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
@@ -29,7 +28,7 @@ namespace BTD_Mod_Helper.Patches
             }
 
             if (ResourceHandler.resources.GetValueOrDefault(objectId) is byte[] bytes &&
-                ModTowerHandler.Tower2DScales.ContainsKey(objectId))
+                ModTowerHelper.Tower2DScales.ContainsKey(objectId))
             {
                 objectId = "9dccc16d26c1c8a45b129e2a8cbd17ba";
                 onComplete = new System.Action<UnityDisplayNode>(node =>
@@ -41,7 +40,7 @@ namespace BTD_Mod_Helper.Patches
                         udn.isSprite = true;
                         udn.RecalculateGenericRenderers();
                         var spriteRenderer = udn.genericRenderers.GetItemOfType<Renderer, SpriteRenderer>();
-                        var scale = ModTowerHandler.Tower2DScales.GetValueOrDefault(id, 5f);
+                        var scale = ModTowerHelper.Tower2DScales.GetValueOrDefault(id, 5f);
                         spriteRenderer.sprite = Sprite.Create(texture,
                             new Rect(0, 0, texture.width, texture.height),
                             new Vector2(0.5f, 0.5f), scale, 0, SpriteMeshType.Tight);
@@ -54,7 +53,7 @@ namespace BTD_Mod_Helper.Patches
                 return true;
             }
 
-            if (ModDisplayHandler.ModDisplays.GetValueOrDefault(objectId) is ModDisplay modDisplay)
+            if (ModDisplay.Cache.GetValueOrDefault(objectId) is ModDisplay modDisplay)
             {
                 try
                 {

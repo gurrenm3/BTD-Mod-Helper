@@ -8,10 +8,8 @@ using Assets.Scripts.Unity.UI_New.Main.MonkeySelect;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using Il2CppSystem;
-using MelonLoader;
 using UnhollowerBaseLib;
 using UnhollowerRuntimeLib;
 using UnityEngine;
@@ -165,7 +163,7 @@ namespace BTD_Mod_Helper.BTD6_UI
                 if (!reOpening)
                 {
                     var towerSets = new List<string>(__instance.TowerSets);
-                    foreach (var modTowerSet in ModContent.GetInstances<ModTowerSet>())
+                    foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
                     {
                         var towerSetIndex = modTowerSet.GetTowerSetIndex(towerSets);
                         towerSets.Insert(towerSetIndex, modTowerSet.Id);
@@ -395,7 +393,7 @@ namespace BTD_Mod_Helper.BTD6_UI
             
             var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
             var horizontalLayoutGroup = __instance.monkeyGroupButtons[0].GetComponentInParent<HorizontalLayoutGroup>();
-            foreach (var modTowerSet in ModContent.GetInstances<ModTowerSet>())
+            foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
             {
                 horizontalLayoutGroup.enabled = true;
                 var index = modTowerSet.GetTowerSetIndex(monkeyGroupButtons.Select(b => b.groupName).ToList());

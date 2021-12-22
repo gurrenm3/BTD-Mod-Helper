@@ -8,10 +8,8 @@ using System.Collections.Generic;
 using Assets.Scripts.Simulation.Track;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Models;
-using System.Linq;
 using System;
 using BTD_Mod_Helper.Api.Enums;
-using Assets.Scripts.Models.Types;
 
 #if BloonsTD6
 using Assets.Scripts.Simulation.Towers.Projectiles;
@@ -23,6 +21,16 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class InGameExt
     {
+        /// <summary>
+        /// (Cross-Game compatible) Returns whether or not the player is currently in a game.
+        /// </summary>
+        /// <param name="inGame"></param>
+        /// <returns></returns>
+        public static bool IsInGame(this InGame inGame)
+        {
+            return inGame.GetSimulation() != null;
+        }
+
         /// <summary>
         /// (Cross-Game compatible) Get the current Map
         /// </summary>

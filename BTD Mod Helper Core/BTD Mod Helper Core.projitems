@@ -9,11 +9,11 @@
     <Import_RootNamespace>BTD_Mod_Helper</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Custom Monobehaviors\CustomComponentTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModMonoBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ICustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplayHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\Difficulty.cs" />
@@ -22,15 +22,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Guard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Custom Monobehaviors\RegisterInIl2CppAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModHero.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModHeroLevel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModVanillaContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModVanillaParagon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModParagonUpgrade.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTower.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerSet.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerSetHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModUpgrade.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ButtonOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\CheckboxOption.cs" />
@@ -51,7 +50,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ResourceHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\TaskScheduler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModUpgradeHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModVanillaTower.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModVanillaUpgrade.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\GithubReleaseInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateHandler.cs" />

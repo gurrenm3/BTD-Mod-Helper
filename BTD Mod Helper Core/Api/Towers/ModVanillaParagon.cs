@@ -6,6 +6,7 @@ using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
@@ -17,6 +18,8 @@ namespace BTD_Mod_Helper.Api.Towers
         internal sealed override ModTowerSet ModTowerSet => base.ModTowerSet;
 
         internal sealed override int UpgradePaths => 0;
+
+        internal override bool ShouldCreateParagon => true;
 
         /// <summary>
         /// No paragons in shop
@@ -119,13 +122,12 @@ namespace BTD_Mod_Helper.Api.Towers
         /// </summary>
         public override string Name => BaseTowerModel.baseId;
 
-        internal override TowerModel GetBaseTowerModel()
+        internal override TowerModel GetDefaultTowerModel()
         {
-            var baseTowerModel = base.GetBaseTowerModel();
+            var baseTowerModel = base.GetDefaultTowerModel();
             baseTowerModel.baseId = BaseTowerModel.baseId;
             return baseTowerModel;
         }
-
 
         internal void AddUpgradesToRealTowers()
         {
@@ -134,6 +136,15 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 towerModel.paragonUpgrade = new UpgradePathModel(paragonUpgrade.Id, $"{towerModel.baseId}-Paragon");
             }
+        }
+
+        internal override TowerModel GetBaseParagonModel()
+        {
+            var towerModel = GetDefaultTowerModel();
+            towerModel.appliedUpgrades = new Il2CppStringArray(6);
+            Game.instance.model.GetTower(towerModel.baseId, 5).appliedUpgrades
+                .CopyTo(towerModel.appliedUpgrades, 0);
+            return towerModel;
         }
     }
 }

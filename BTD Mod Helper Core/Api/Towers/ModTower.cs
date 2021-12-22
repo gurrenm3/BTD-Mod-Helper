@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
@@ -21,11 +22,53 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModTower : ModContent
     {
+        /// <inheritdoc />
+        protected sealed override void Register()
+        {
+            towerModels = ModTowerHelper.AddTower(this);
+        }
+
+        /// <summary>
+        /// ModTowers register third
+        /// </summary>
+        protected sealed override float RegistrationPriority => 3;
+
+        internal override void PostRegister()
+        {
+            foreach (var towerModel in towerModels)
+            {
+                ModTowerHelper.FinalizeTowerModel(this, towerModel);
+            }
+
+            Game.instance.GetLocalizationManager().textTable[Id] = DisplayName;
+            Game.instance.GetLocalizationManager().textTable[Id + "s"] = DisplayNamePlural;
+            Game.instance.GetLocalizationManager().textTable[Id + " Description"] = Description;
+
+            if (!DontAddToShop)
+            {
+                try
+                {
+                    var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
+                    if (index >= 0)
+                    {
+                        var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, -1, 0, null);
+                        Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
+                    }
+                }
+                catch (Exception)
+                {
+                    MelonLogger.Error($"Failed to add ModTower {Name} to the shop");
+                    throw;
+                }
+            }
+
+            ModTowerSet?.towers.Add(this);
+        }
+
         internal virtual string[] DefaultMods =>
-            new[] { "GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining" };
+            new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
 
-        private TowerModel towerModel;
-
+        internal List<TowerModel> towerModels;
         internal readonly int[] tierMaxes;
         internal readonly ModUpgrade[,] upgrades;
         internal readonly List<ModTowerDisplay> displays = new List<ModTowerDisplay>();
@@ -35,9 +78,12 @@ namespace BTD_Mod_Helper.Api.Towers
         internal virtual int UpgradePaths => 3;
         internal UpgradeModel dummyUpgrade;
 
-        internal bool ShouldCreateParagon => 
-            paragonUpgrade != null && (TopPathUpgrades == 5 && MiddlePathUpgrades == 5 && BottomPathUpgrades == 5
-                && ParagonMode != ParagonMode.None || this is ModVanillaParagon);
+        internal virtual bool ShouldCreateParagon =>
+            paragonUpgrade != null &&
+            TopPathUpgrades == 5 &&
+            MiddlePathUpgrades == 5 &&
+            BottomPathUpgrades == 5 &&
+            ParagonMode != ParagonMode.None;
 
         /// <summary>
         /// The name that will be actually displayed for the tower in game
@@ -161,7 +207,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal void Init(out ModUpgrade[,] u, out int[] t)
         {
-            t = new[] { TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades };
+            t = new[] {TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades};
             u = new ModUpgrade[UpgradePaths, t.Max()];
         }
 
@@ -181,50 +227,36 @@ namespace BTD_Mod_Helper.Api.Towers
         /// 
         /// </summary>
         /// <returns>The 0-0-0 TowerModel for this Tower</returns>
-        internal virtual TowerModel GetBaseTowerModel()
+        internal virtual TowerModel GetDefaultTowerModel()
         {
-            if (towerModel == null)
+            var towerModel = !string.IsNullOrEmpty(BaseTower)
+                ? BaseTowerModel.MakeCopy(Id)
+                : new TowerModel(Id, Id);
+            towerModel.name = Id;
+
+            towerModel.appliedUpgrades = new Il2CppStringArray(0);
+            towerModel.upgrades = new Il2CppReferenceArray<UpgradePathModel>(0);
+            towerModel.towerSet = TowerSet;
+            towerModel.cost = Cost;
+            towerModel.dontDisplayUpgrades = false;
+            towerModel.powerName = null;
+
+            towerModel.tier = 0;
+            towerModel.tiers = new[] {0, 0, 0};
+
+            towerModel.mods = DefaultMods
+                .Select(s => new ApplyModModel($"{Id}Upgrades", s, ""))
+                .ToArray();
+
+            towerModel.GetDescendants<Model>().ForEach(model =>
             {
-                towerModel = !string.IsNullOrEmpty(BaseTower)
-                    ? BaseTowerModel.MakeCopy(Id)
-                    : new TowerModel(Id, Id);
-                towerModel.name = Id;
+                model.name = model.name.Replace(BaseTower, Name);
+                model._name = model._name.Replace(BaseTower, Name);
+            });
 
-                towerModel.appliedUpgrades = new Il2CppStringArray(0);
-                towerModel.upgrades = new Il2CppReferenceArray<UpgradePathModel>(0);
-                towerModel.towerSet = TowerSet;
-                towerModel.cost = Cost;
-                towerModel.dontDisplayUpgrades = false;
-                towerModel.powerName = null;
-
-                towerModel.tier = 0;
-                towerModel.tiers = new[] { 0, 0, 0 };
-
-                foreach (var defaultMod in DefaultMods)
-                {
-                    for (var i = 0; i < towerModel.mods.Count; i++)
-                    {
-                        var model = towerModel.mods[i];
-                        if (model.name != defaultMod)
-                        {
-                            towerModel.mods = towerModel.mods.RemoveItem(model);
-                            break;
-                        }
-                    }
-                }
-
-                towerModel.GetDescendants<Model>().ForEach(model =>
-                {
-                    model.name = model.name.Replace(BaseTower, Name);
-                    model._name = model._name.Replace(BaseTower, Name);
-                });
-
-                towerModel.instaIcon = IconReference;
-                towerModel.portrait = PortraitReference;
-                towerModel.icon = IconReference;
-                //towerModel.display = ;
-                //towerModel.GetBehavior<DisplayModel>().display = 
-            }
+            towerModel.instaIcon = IconReference;
+            towerModel.portrait = PortraitReference;
+            towerModel.icon = IconReference;
 
             return towerModel;
         }
@@ -253,7 +285,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 {
                     for (var k = 0; k <= BottomPathUpgrades; k++)
                     {
-                        var tiers = new[] { i, j, k };
+                        var tiers = new[] {i, j, k};
                         var sorted = tiers.OrderBy(num => -num).ToArray();
                         if (sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0)
                         {
@@ -323,6 +355,30 @@ namespace BTD_Mod_Helper.Api.Towers
             }
 
             return ModTowerSet?.GetTowerStartIndex(towerSet) ?? towerSet.Count;
+        }
+
+        internal virtual TowerModel GetBaseParagonModel()
+        {
+            TowerModel towerModel;
+            switch (ParagonMode)
+            {
+                case ParagonMode.Base000:
+                    towerModel = ModTowerHelper.CreateTowerModel(this, new[] {0, 0, 0});
+                    break;
+                case ParagonMode.Base555:
+                    towerModel = ModTowerHelper.CreateTowerModel(this, new[] {5, 5, 5});
+                    break;
+                case ParagonMode.None:
+                default:
+                    return null;
+            }
+
+            for (var i = 0; i < 5; i++)
+            {
+                towerModel.appliedUpgrades[i] = upgrades[0, i].Id;
+            }
+
+            return towerModel;
         }
     }
 

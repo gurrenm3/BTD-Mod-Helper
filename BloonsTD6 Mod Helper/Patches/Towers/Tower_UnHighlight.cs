@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Simulation.Objects;
-using Assets.Scripts.Simulation.Towers;
+﻿using Assets.Scripts.Simulation.Towers;
 using HarmonyLib;
 
 namespace BTD_Mod_Helper.Patches.Towers

@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers.Mods;
-using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
-using System.Reflection;
 using BTD_Mod_Helper.Api;
 
 namespace BTD_Mod_Helper
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BloonsMod : MelonMod
     {
+        /// <summary>
+        /// All ModContent in ths mod
+        /// </summary>
+        public IReadOnlyList<ModContent> Content { get; internal set; }
+
         internal Dictionary<string, ModSetting> ModSettings;
         
         /// <summary>
@@ -56,6 +59,23 @@ namespace BTD_Mod_Helper
         ///     For example: "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest"
         /// </summary>
         public virtual string LatestURL => "";
+
+
+        /// <summary>
+        /// Allows you to define ways for other mods to interact with this mod. Other mods could do:
+        /// <code>
+        /// ModContent.GetMod("YourModName")?.Call("YourOperationName", ...);
+        /// </code>
+        /// to execute functionality here.
+        /// <br/>
+        /// </summary>
+        /// <param name="operation">A string for the name of the operation that another mods wants to call</param>
+        /// <param name="parameters">The parameters that another mod has provided</param>
+        /// <returns>A possible result of this call</returns>
+        public virtual object Call(string operation, params object[] parameters)
+        {
+            return null;
+        }
 
         #region API Hooks
 

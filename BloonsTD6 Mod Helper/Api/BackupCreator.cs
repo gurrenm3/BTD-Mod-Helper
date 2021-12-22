@@ -29,7 +29,7 @@ namespace BTD_Mod_Helper.Api
             string saveDir = Game.instance.GetSaveDirectory();
             if (string.IsNullOrEmpty(saveDir))
             {
-                MelonLoader.MelonLogger.Error("Unable to backup Profile. Save directory not found");
+                //MelonLoader.MelonLogger.Error("Unable to backup Profile. Save directory not found");
                 return;
             }
 

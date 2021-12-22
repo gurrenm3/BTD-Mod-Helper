@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions

@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Player;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Extensions;
-using HarmonyLib;
 using MelonLoader;
 
 namespace BTD_Mod_Helper.Api
@@ -146,9 +144,9 @@ namespace BTD_Mod_Helper.Api
 
             // MelonLogger.Msg("Cleaning current profile");
 
-            var towers = ModContent.GetInstances<ModTower>().Select(tower => tower.Id).ToList();
-            var upgrades = ModContent.GetInstances<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();
-            var heroes = ModContent.GetInstances<ModHero>().Select(hero => hero.Id).ToList();
+            var towers = ModContent.GetContent<ModTower>().Select(tower => tower.Id).ToList();
+            var upgrades = ModContent.GetContent<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();
+            var heroes = ModContent.GetContent<ModHero>().Select(hero => hero.Id).ToList();
 
             CleanProfile(profile, towers, upgrades, heroes, true);
         }

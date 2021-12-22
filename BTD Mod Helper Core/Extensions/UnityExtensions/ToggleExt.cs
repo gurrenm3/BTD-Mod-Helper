@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Extensions
 {

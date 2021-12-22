@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
+﻿using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
 using HarmonyLib;
 namespace BTD_Mod_Helper.Patches.Weapons {
     [HarmonyPatch(typeof(Ability),nameof(Ability.Activate))]

@@ -2,7 +2,6 @@
 using System.IO;
 using NinjaKiwi.Players;
 using NinjaKiwi.Players.Files;
-using NinjaKiwi.Players.Files.SaveStrategies;
 
 namespace BTD_Mod_Helper.Patches
 {

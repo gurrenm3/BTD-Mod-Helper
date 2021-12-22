@@ -1,4 +1,5 @@
-﻿using BTD_Mod_Helper.Api;
+﻿using System;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using System.Linq;
@@ -19,12 +20,22 @@ namespace BTD_Mod_Helper.Patches
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
             {
-                ModContent.LoadAllModContent(mod);
+                try
+                {
+                    ResourceHandler.LoadEmbeddedTextures(mod);
+                    ResourceHandler.LoadEmbeddedBundles(mod);
+                    ModContent.LoadModContent(mod);
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    MelonLogger.Error(e);
+                }
             }
 
             MelonMain.PerformHook(mod => mod.OnTitleScreen());
 
-            foreach (var modParagonTower in ModContent.GetInstances<ModVanillaParagon>())
+            foreach (var modParagonTower in ModContent.GetContent<ModVanillaParagon>())
             {
                 modParagonTower.AddUpgradesToRealTowers();
             }
@@ -35,12 +46,13 @@ namespace BTD_Mod_Helper.Patches
                 if (modelMod.name.EndsWith("Only"))
                 {
                     var mutatorModModels = modelMod.mutatorMods.ToList();
-                    mutatorModModels.AddRange(ModContent.GetInstances<ModTowerSet>()
+                    mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
                         .Where(set => !set.AllowInRestrictedModes)
                         .Select(set => new LockTowerSetModModel(modelMod.name, set.Id)));
                     modelMod.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
                 }
             }
+            
         }
     }
 }
