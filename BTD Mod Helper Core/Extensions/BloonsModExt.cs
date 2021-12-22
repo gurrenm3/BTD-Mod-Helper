@@ -24,7 +24,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static string GetModDirectory(this BloonsMod bloonsMod)
         {
-            return $"{Environment.CurrentDirectory}\\Mods\\{bloonsMod.GetModName()}";
+            return MelonLoader.MelonHandler.ModsDirectory+"\\"+bloonsMod.GetModName();
         }
 
         /// <summary>
