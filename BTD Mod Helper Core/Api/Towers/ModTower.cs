@@ -20,18 +20,18 @@ namespace BTD_Mod_Helper.Api.Towers
     /// <summary>
     /// Class representing a custom Tower being added by a mod
     /// </summary>
-    public abstract class ModTower : ModContent
+    public abstract class ModTower : NamedModContent
     {
+        /// <summary>
+        /// ModTowers register third
+        /// </summary>
+        protected sealed override float RegistrationPriority => 3;
+        
         /// <inheritdoc />
         protected sealed override void Register()
         {
             towerModels = ModTowerHelper.AddTower(this);
         }
-
-        /// <summary>
-        /// ModTowers register third
-        /// </summary>
-        protected sealed override float RegistrationPriority => 3;
 
         internal override void PostRegister()
         {
@@ -39,10 +39,6 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 ModTowerHelper.FinalizeTowerModel(this, towerModel);
             }
-
-            Game.instance.GetLocalizationManager().textTable[Id] = DisplayName;
-            Game.instance.GetLocalizationManager().textTable[Id + "s"] = DisplayNamePlural;
-            Game.instance.GetLocalizationManager().textTable[Id + " Description"] = Description;
 
             if (!DontAddToShop)
             {
@@ -84,16 +80,6 @@ namespace BTD_Mod_Helper.Api.Towers
             MiddlePathUpgrades == 5 &&
             BottomPathUpgrades == 5 &&
             ParagonMode != ParagonMode.None;
-
-        /// <summary>
-        /// The name that will be actually displayed for the tower in game
-        /// </summary>
-        public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
-
-        /// <summary>
-        /// The name that will actually be display when referring to multiple of the tower
-        /// </summary>
-        public virtual string DisplayNamePlural => DisplayName + "s";
 
         /// <summary>
         /// The Portrait for the 0-0-0 tower
@@ -191,11 +177,6 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The number of upgrades the tower has in it's 3rd / bottom path
         /// </summary>
         public abstract int BottomPathUpgrades { get; }
-
-        /// <summary>
-        /// The in game description of the Tower
-        /// </summary>
-        public abstract string Description { get; }
 
         /// <summary>
         /// Constructor for ModTower, used implicitly by ModContent.Create

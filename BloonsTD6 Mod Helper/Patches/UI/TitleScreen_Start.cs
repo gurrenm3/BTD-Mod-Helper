@@ -18,20 +18,18 @@ namespace BTD_Mod_Helper.Patches.UI
         [HarmonyPriority(Priority.High)]
         internal static void Postfix()
         {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
+            /*foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
             {
                 try
                 {
-                    ResourceHandler.LoadEmbeddedTextures(mod);
-                    ResourceHandler.LoadEmbeddedBundles(mod);
-                    ModContent.LoadModContent(mod);
+                    ModContent.RegisterModContent(mod);
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    MelonLogger.Error("Critical failure when registering content for mod " + mod.Info.Name);
                     MelonLogger.Error(e);
                 }
-            }
+            }*/
 
             MelonMain.PerformHook(mod => mod.OnTitleScreen());
 

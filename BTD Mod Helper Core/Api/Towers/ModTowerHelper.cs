@@ -336,11 +336,6 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal static void FinalizeHero(ModHero modHero)
         {
-            Game.instance.GetLocalizationManager().textTable[modHero.Id + " Short Description"] =
-                modHero.Title;
-            Game.instance.GetLocalizationManager().textTable[modHero.Id + " Level 1 Description"] =
-                modHero.Level1Description;
-
             var index = modHero.GetHeroIndex(Game.instance.model.heroSet
                 .Select(model => model.Cast<HeroDetailsModel>()).ToList());
             if (index >= 0)

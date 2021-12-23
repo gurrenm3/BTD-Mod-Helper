@@ -30,18 +30,16 @@ namespace BTD_Mod_Helper
 
         public override void OnApplicationStart()
         {
+            // Mod Updating
             MelonLogger.Msg("Checking for updates...");
-
             var updateDir = this.GetModDirectory() + "\\UpdateInfo";
             Directory.CreateDirectory(updateDir);
-
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
-
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
 
-            //CheckModsForUpdates();
-
+            
+            // Mod Settings
             var settingsDir = this.GetModSettingsDir(true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
@@ -51,6 +49,22 @@ namespace BTD_Mod_Helper
             Schedule_GameModel_Loaded();
 
             MelonLogger.Msg("Mod has finished loading");
+            
+            // Load Content from other mods
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
+            {
+                try
+                {
+                    ResourceHandler.LoadEmbeddedTextures(mod);
+                    ResourceHandler.LoadEmbeddedBundles(mod);
+                    ModContent.LoadModContent(mod);
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    MelonLogger.Error(e);
+                }
+            }
         }
 
         public override void OnGameModelLoaded(GameModel model)

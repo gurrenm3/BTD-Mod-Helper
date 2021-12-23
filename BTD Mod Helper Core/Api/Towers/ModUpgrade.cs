@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Api.Towers
     /// <summary>
     /// A class used to create an Upgrade for a Tower
     /// </summary>
-    public abstract class ModUpgrade : ModContent
+    public abstract class ModUpgrade : NamedModContent
     {
         internal static readonly Dictionary<string, ModUpgrade> Cache = new Dictionary<string, ModUpgrade>();
 
@@ -23,6 +23,17 @@ namespace BTD_Mod_Helper.Api.Towers
         /// ModUpgrades register second
         /// </summary>
         protected sealed override float RegistrationPriority => 2;
+
+        /// <inheritdoc />
+        public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
+        {
+            base.RegisterText(textTable);
+            if (NeedsConfirmation)
+            {
+                textTable[Id + " Title"] = ConfirmationTitle;
+                textTable[Id + " Body"] = ConfirmationBody;
+            }
+        }
 
         /// <inheritdoc />
         protected sealed override void Register()
@@ -44,17 +55,6 @@ namespace BTD_Mod_Helper.Api.Towers
             try
             {
                 Game.instance.model.AddUpgrade(upgradeModel);
-                var localizationManager = Game.instance.GetLocalizationManager();
-                localizationManager.textTable[Id] = DisplayName;
-                localizationManager.textTable[Id + " Description"] = Description;
-                localizationManager.textTable[DisplayName + " Description"] = Description;
-
-                if (NeedsConfirmation)
-                {
-                    localizationManager.textTable[Id + " Title"] = ConfirmationTitle;
-                    localizationManager.textTable[Id + " Body"] = ConfirmationBody;
-                }
-
                 Cache[upgradeModel.name] = this;
             }
             catch (Exception e)
@@ -107,11 +107,6 @@ namespace BTD_Mod_Helper.Api.Towers
         /// Path ID for the Bottom path
         /// </summary>
         protected const int BOTTOM = 2;
-
-        /// <summary>
-        /// The actual name that should be displayed for the tower
-        /// </summary>
-        public virtual string DisplayName => Regex.Replace(GetType().Name, "(\\B[A-Z])", " $1");
 
         /// <summary>
         /// The file name without extension for the Portrait for this upgrade
@@ -187,11 +182,6 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The tower that this is an upgrade for
         /// </summary>
         public abstract ModTower Tower { get; }
-
-        /// <summary>
-        /// The description of this upgrade
-        /// </summary>
-        public abstract string Description { get; }
 
         /// <summary>
         /// Apply the effects that this upgrade has onto a TowerModel

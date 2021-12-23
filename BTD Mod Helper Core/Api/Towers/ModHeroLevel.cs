@@ -1,24 +1,27 @@
-﻿using Assets.Scripts.Unity;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
     /// <summary>
-    /// Class representing a 
+    /// Class representing the UpgradeModel and changes for a particular Level for a ModHero
     /// </summary>
     public abstract class ModHeroLevel : ModUpgrade
     {
-        internal override void PostRegister()
+        /// <inheritdoc />
+        public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
         {
+            base.RegisterText(textTable);
             if (AbilityName != null)
             {
-                Game.instance.GetLocalizationManager().textTable[AbilityName + " Ability"] = AbilityName;
+                textTable[AbilityName + " Ability"] = AbilityName;
             }
 
             if (AbilityDescription != null)
             {
-                Game.instance.GetLocalizationManager().textTable[AbilityName + " Ability Description"] = AbilityDescription;
+                textTable[AbilityName + " Ability Description"] = AbilityDescription;
             }
         }
 

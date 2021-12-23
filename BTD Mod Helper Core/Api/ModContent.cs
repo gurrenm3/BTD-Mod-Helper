@@ -76,7 +76,6 @@ namespace BTD_Mod_Helper.Api
         {
         }
 
-#if BloonsTD6
         internal static void LoadModContent(BloonsMod mod)
         {
             mod.Content = mod.Assembly
@@ -86,7 +85,10 @@ namespace BTD_Mod_Helper.Api
                 .Where(content => content != null)
                 .OrderBy(content => content.RegistrationPriority)
                 .ToList();
+        }
 
+        internal static void RegisterModContent(BloonsMod mod)
+        {
             foreach (var modContent in mod.Content)
             {
                 try
@@ -121,7 +123,6 @@ namespace BTD_Mod_Helper.Api
             type.GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
                 null, Type.EmptyTypes, null) !=
             null;
-#endif
 
         /// <summary>
         /// 
