@@ -6,7 +6,7 @@ using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.UI
 {
     [HarmonyPatch(typeof(TSMThemeDefault), nameof(TSMThemeDefault.TowerInfoChanged))]
     internal class TSMThemeDefault_TowerInfoChanged

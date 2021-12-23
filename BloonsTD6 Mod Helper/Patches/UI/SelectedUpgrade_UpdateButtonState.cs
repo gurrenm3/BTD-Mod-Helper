@@ -4,7 +4,7 @@ using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.UI
 {
     [HarmonyPatch(typeof(SelectedUpgrade), nameof(SelectedUpgrade.UpdateButtonState))]
     internal class SelectedUpgrade_UpdateButtonState

@@ -1,15 +1,15 @@
 ﻿using System;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Extensions;
-using HarmonyLib;
 using System.Linq;
 using Assets.Main.Scenes;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
 using MelonLoader;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.UI
 {
     [HarmonyPatch(typeof(TitleScreen), nameof(TitleScreen.Start))]
     internal class TitleScreen_Start

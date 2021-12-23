@@ -4,10 +4,10 @@ using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api;
 using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.Resources
 {
-    [HarmonyPatch(typeof(Factory), nameof(Factory.DestroyAllActive))]
-    internal class Factory_DestroyAllActive
+    [HarmonyPatch(typeof(Factory), nameof(Factory.Flush))]
+    internal class Factory_Flush
     {
         [HarmonyPostfix]
         internal static void Postfix(Factory __instance)
@@ -26,8 +26,9 @@ namespace BTD_Mod_Helper.Patches
             }
             
             MelonMain.PerformHook(mod => mod.OnGameObjectsReset());
-            
+
             ResourceHandler.Prefabs.Clear();
         }
     }
+
 }

@@ -309,7 +309,7 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual string Get2DTexture(int[] tiers)
         {
             var name = $"{Name}-{tiers.Printed()}";
-            if (ResourceHandler.resources.ContainsKey(GetTextureGUID(name)))
+            if (GetTextureGUID(name) != null)
             {
                 return name;
             }
@@ -331,7 +331,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
 
                 name = $"{Name}-{printed}";
-                if (ResourceHandler.resources.ContainsKey(GetTextureGUID(name)))
+                if (GetTextureGUID(name) != null)
                 {
                     return name;
                 }
@@ -373,6 +373,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     return null;
             }
 
+            towerModel.appliedUpgrades = new Il2CppStringArray(6);
             for (var i = 0; i < 5; i++)
             {
                 towerModel.appliedUpgrades[i] = upgrades[0, i].Id;

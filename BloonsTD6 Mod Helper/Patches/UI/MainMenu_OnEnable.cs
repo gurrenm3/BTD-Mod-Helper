@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
 using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches.UI
 {
     [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Open))]
     internal class MainMenu_OnEnable
