@@ -230,6 +230,7 @@
     <Compile Include="Patches\Resources\LoadGameModelAsync_MoveNext.cs" />
     <Compile Include="Patches\Resources\LocalizationManger_LoadTableAsync.cs" />
     <Compile Include="Patches\Resources\ResourceLoader_LoadSpriteFromSpriteReferenceAsync.cs" />
+    <Compile Include="Patches\Resources\Task_EnumerateAction.cs" />
     <Compile Include="Patches\Sim\Simulation_AddCash.cs" />
     <Compile Include="Patches\Sim\UnityToSimulation_Lose.cs" />
     <Compile Include="Patches\Sim\Simulation_RoundEnd.cs" />

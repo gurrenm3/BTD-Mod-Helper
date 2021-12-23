@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using MelonLoader;
@@ -16,9 +17,8 @@ namespace BTD_Mod_Helper
         /// <summary>
         /// Registers ModContent from other mods
         /// </summary>
-        public override void Perform()
+        public override IEnumerator Coroutine()
         {
-            MelonLogger.Msg("Registering ModContent...");
             foreach (var bloonsMod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(bloonsMod => bloonsMod.Priority))
             {
                 try
@@ -30,6 +30,8 @@ namespace BTD_Mod_Helper
                     MelonLogger.Error("Critical failure when registering content for mod " + bloonsMod.Info.Name);
                     MelonLogger.Error(e);
                 }
+                
+                yield return null;
             }
         }
     }
