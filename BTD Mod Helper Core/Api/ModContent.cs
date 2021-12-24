@@ -63,6 +63,8 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         protected abstract void Register();
 
+        internal void TestRegister() => Register();
+
         /// <summary>
         /// Used to allow some ModContent to Register before or after others
         /// </summary>
@@ -149,6 +151,8 @@ namespace BTD_Mod_Helper.Api
                         MelonLogger.Error("A zero argument constructor is REQUIRED for all ModContent classes");
                         throw;
                     }
+
+                    instance.mod = mod;
 
                     var instances = instance.Load().ToList();
                     foreach (var modContent in instances)

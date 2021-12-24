@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\UpgradeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Guard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModByteLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModLoadTask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\NamedModContent.cs" />

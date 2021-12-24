@@ -111,6 +111,8 @@ namespace BTD_Mod_Helper
         public override void OnUpdate()
         {
             KeyCodeHooks();
+            
+            ModByteLoader.OnUpdate();
 
             if (Game.instance is null)
                 return;

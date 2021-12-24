@@ -7,10 +7,12 @@ using MelonLoader;
 
 namespace BTD_Mod_Helper.Api
 {
+    /// <summary>
+    /// Class for a Coroutine style task that runs during the BTD6 loading screen
+    /// </summary>
     public abstract class ModLoadTask : NamedModContent
     {
-        internal static Dictionary<int, ModLoadTask> Cache =
-            new Dictionary<int, ModLoadTask>();
+        internal static Dictionary<int, ModLoadTask> Cache = new Dictionary<int, ModLoadTask>();
 
         public sealed override string DisplayNamePlural { get; }
         public sealed override string Description { get; }
@@ -19,6 +21,10 @@ namespace BTD_Mod_Helper.Api
 
         //public abstract void Perform();
 
+        /// <summary>
+        /// Coroutine style function
+        /// </summary>
+        /// <returns></returns>
         public abstract IEnumerator Coroutine();
 
         /// <inheritdoc />

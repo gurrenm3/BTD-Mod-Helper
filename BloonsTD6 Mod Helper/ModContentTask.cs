@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 
 namespace BTD_Mod_Helper
@@ -19,16 +20,35 @@ namespace BTD_Mod_Helper
         /// </summary>
         public override IEnumerator Coroutine()
         {
-            foreach (var bloonsMod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(bloonsMod => bloonsMod.Priority))
+            foreach (var bloonsMod in MelonHandler.Mods.OfType<BloonsMod>().OrderBy(bloonsMod => bloonsMod.Priority))
             {
-                try
+                foreach (var modContent in mod.Content)
                 {
-                    RegisterModContent(bloonsMod);
+                    try
+                    {
+                        modContent.TestRegister();
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error($"Failed to register {modContent.Name}");
+                        MelonLogger.Error(e);
+                    }
+
+                    yield return null;
                 }
-                catch (Exception e)
+
+                foreach (var modContent in mod.Content)
                 {
-                    MelonLogger.Error("Critical failure when registering content for mod " + bloonsMod.Info.Name);
-                    MelonLogger.Error(e);
+                    try
+                    {
+                        modContent.PostRegister();
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error($"Failed to post register {modContent.Name}");
+                        MelonLogger.Error(e);
+                    }
+                    yield return null;
                 }
                 
                 yield return null;
