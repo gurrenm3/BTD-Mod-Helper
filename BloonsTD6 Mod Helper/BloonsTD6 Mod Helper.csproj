@@ -224,6 +224,7 @@
     <Compile Include="Patches\InputManager_PrimeTower.cs" />
     <Compile Include="Patches\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\MainMenu_OnEnable.cs" />
+    <Compile Include="Patches\MapLoader_Load.cs" />
     <Compile Include="Patches\Model_IsEqual.cs" />
     <Compile Include="Patches\NKMultiConnection_Receive.cs" />
     <Compile Include="Patches\NKMultiGameInterface_Update.cs" />

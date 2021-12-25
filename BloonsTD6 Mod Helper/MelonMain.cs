@@ -19,6 +19,8 @@ using System.Diagnostics;
 using Assets.Scripts.Models;
 using NinjaKiwi.Common;
 using NinjaKiwi.NKMulti;
+using Assets.Scripts.Models.Map;
+using UnhollowerRuntimeLib;
 
 namespace BTD_Mod_Helper
 {
@@ -34,6 +36,7 @@ namespace BTD_Mod_Helper
         public override void OnApplicationStart()
         {
             MelonLogger.Msg("Checking for updates...");
+            ClassInjector.RegisterTypeInIl2Cpp<CustomMonoBehavior>();
 
             var updateDir = this.GetModDirectory() + "\\UpdateInfo";
             Directory.CreateDirectory(updateDir);
@@ -57,6 +60,12 @@ namespace BTD_Mod_Helper
                 nameof(SettingsPatch));
 
             MelonLogger.Msg("Mod has finished loading");
+        }
+
+        public override void OnMapModelLoaded(ref MapModel mapModel)
+        {
+            MelonLogger.Msg("Hello From OnMapModelLoaded. The map loaded was: " + mapModel.mapName);
+            
         }
 
         private void CheckModsForUpdates()
@@ -170,6 +179,11 @@ namespace BTD_Mod_Helper
                 {
                     MelonLogger.Msg(key + "    " + description);
                 }
+            }
+
+            if (keyCode == KeyCode.UpArrow)
+            {
+                // Can be used for testing stuff
             }
         }
 

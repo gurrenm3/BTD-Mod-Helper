@@ -21,6 +21,7 @@ using NinjaKiwi.NKMulti;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
+using Assets.Scripts.Models.Map;
 
 namespace BTD_Mod_Helper
 {
@@ -55,6 +56,14 @@ namespace BTD_Mod_Helper
         public virtual bool ActOnMessage(Message message)
         {
             return false;
+        }
+
+        /// <summary>
+        /// Called when a map model is loaded by the game. Equivelant to MapLoader.Load.
+        /// </summary>
+        /// <param name="mapModel">The map that was just loaded. It is passed by reference to allow for modifications.</param>
+        public virtual void OnMapModelLoaded(ref MapModel mapModel)
+        {
         }
 
 
