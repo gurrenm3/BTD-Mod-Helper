@@ -2,9 +2,6 @@
 using Assets.Scripts.Unity.Map;
 using HarmonyLib;
 using BTD_Mod_Helper.Extensions;
-using Assets.Scripts.Simulation;
-using Assets.Scripts.Models;
-using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Patches
 {

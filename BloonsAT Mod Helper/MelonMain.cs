@@ -39,7 +39,7 @@ namespace BTD_Mod_Helper
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
 
-            ModMonoBehavior.LoadAllModMonoBehaviors();
+            //ModMonoBehavior.LoadAllModMonoBehaviors();
 
             Schedule_GameModel_Loaded();
 

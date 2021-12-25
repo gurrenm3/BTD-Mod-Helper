@@ -213,8 +213,6 @@
     <Compile Include="Patches\InGame_StartMatch.cs" />
     <Compile Include="Patches\InputManager_PrimeTower.cs" />
     <Compile Include="Patches\Main_GetInitialLoadTasks.cs" />
-    <Compile Include="Patches\MainMenuEventPanel_OpenRaceEventScreen.cs" />
-    <Compile Include="Patches\MainMenu_OnEnable.cs" />
     <Compile Include="Patches\MapLoader_Load.cs" />
     <Compile Include="Patches\Model_IsEqual.cs" />
     <Compile Include="Patches\Player\Btd6Player_Save.cs" />

@@ -35,20 +35,17 @@ namespace BTD_Mod_Helper
         public override void OnApplicationStart()
         {
             // Mod Updating
-            MelonLogger.Msg("Checking for updates...");
+            CheckModsForUpdates();
 
-            var updateDir = this.GetModDirectory() + "\\UpdateInfo";
-            Directory.CreateDirectory(updateDir);
-            UpdateHandler.SaveModUpdateInfo(updateDir);
-            var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
-            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
-
-            
             // Mod Settings
             var settingsDir = this.GetModSettingsDir(true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
             MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
+
+            // Register all custom mono behaviors
+            var customMonoBehaviors = RegisterInIl2CppAttribute.FindTypesToRegister();
+            RegisterInIl2CppAttribute.RegisterAllTypes(customMonoBehaviors);
 
 
             Schedule_GameModel_Loaded();
@@ -58,15 +55,13 @@ namespace BTD_Mod_Helper
 
         private void CheckModsForUpdates()
         {
-            /*MelonLogger.Msg("Checking for updates...");
+            MelonLogger.Msg("Checking for updates...");
 
             var updateDir = this.GetModDirectory() + "\\UpdateInfo";
             Directory.CreateDirectory(updateDir);
-
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
-
-            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);*/
+            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
         }
 
         public override void OnGameModelLoaded(GameModel model)
@@ -151,6 +146,11 @@ namespace BTD_Mod_Helper
                 {
                     MelonLogger.Msg(key + "    " + description);
                 }
+            }
+
+            if (keyCode == KeyCode.UpArrow)
+            {
+                // useful for testing
             }
         }
 
