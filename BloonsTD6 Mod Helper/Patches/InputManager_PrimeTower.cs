@@ -1,10 +1,6 @@
-﻿using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
+﻿using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api;
 using HarmonyLib;
-using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Patches
 {

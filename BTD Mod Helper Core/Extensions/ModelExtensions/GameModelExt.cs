@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Models;
-using Assets.Scripts.Models.Bloons;
 using BTD_Mod_Helper.Api.Builders;
 
 namespace BTD_Mod_Helper.Extensions

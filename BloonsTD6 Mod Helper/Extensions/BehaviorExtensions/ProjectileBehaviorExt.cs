@@ -1,7 +1,4 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers.Behaviors.Attack;
-using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
-using Assets.Scripts.Simulation.Towers.Projectiles;
+﻿using Assets.Scripts.Simulation.Towers.Projectiles;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using HarmonyLib;
 
 namespace BTD_Mod_Helper.Extensions

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Assets.Scripts.Unity.Display;
-using Il2CppSystem;
 using UnhollowerBaseLib;
 using UnityEngine;
-using UnityEngine.Rendering;
-using ArgumentException = System.ArgumentException;
-using Array = Il2CppSystem.Array;
 using Object = UnityEngine.Object;
 using Tuple = System.Tuple<int, int, int>;
-using Int32 = Il2CppSystem.Int32;
 
 namespace BTD_Mod_Helper.Extensions
 {

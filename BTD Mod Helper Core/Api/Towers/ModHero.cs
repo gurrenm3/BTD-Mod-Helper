@@ -19,6 +19,14 @@ namespace BTD_Mod_Helper.Api.Towers
             ModTowerHelper.FinalizeHero(this);
         }
 
+        public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
+        {
+            base.RegisterText(textTable);
+            
+            textTable[Id + " Short Description"] = Title;
+            textTable[Id + " Level 1 Description"] = Level1Description;
+        }
+
         internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
         {
             "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands", 

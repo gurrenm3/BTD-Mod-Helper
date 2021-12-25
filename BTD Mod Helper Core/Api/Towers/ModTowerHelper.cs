@@ -8,9 +8,7 @@ using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Skins;
 using Assets.Scripts.Models.Skins.Behaviors;
 using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
@@ -168,7 +166,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 var portraitUpgrade = modTower.upgrades.Cast<ModUpgrade>()
                     .Where(modUpgrade => modUpgrade != null &&
                                          tiers[modUpgrade.Path] >= modUpgrade.Tier &&
-                                         modUpgrade.PortraitReference != null)
+                                         modUpgrade.PortraitReference)
                     .OrderByDescending(modUpgrade => modUpgrade.Tier)
                     .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
                     .ThenBy(modUpgrade => modUpgrade.Path)
@@ -338,11 +336,6 @@ namespace BTD_Mod_Helper.Api.Towers
 
         internal static void FinalizeHero(ModHero modHero)
         {
-            Game.instance.GetLocalizationManager().textTable[modHero.Id + " Short Description"] =
-                modHero.Title;
-            Game.instance.GetLocalizationManager().textTable[modHero.Id + " Level 1 Description"] =
-                modHero.Level1Description;
-
             var index = modHero.GetHeroIndex(Game.instance.model.heroSet
                 .Select(model => model.Cast<HeroDetailsModel>()).ToList());
             if (index >= 0)

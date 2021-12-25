@@ -1,11 +1,8 @@
 ﻿using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Utils;
 using MelonLoader;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions

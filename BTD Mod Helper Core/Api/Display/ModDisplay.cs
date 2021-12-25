@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-#if BloonsTD6
+﻿#if BloonsTD6
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Models.GenericBehaviors;
@@ -9,14 +8,10 @@ using Assets.Scripts.Models.Display;
 #endif
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 using UnityEngine;
-using Task = Il2CppSystem.Threading.Tasks.Task;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
 
 namespace BTD_Mod_Helper.Api.Display
@@ -166,6 +161,11 @@ namespace BTD_Mod_Helper.Api.Display
                 udn.RecalculateGenericRenderers();
             }));
         }
+
+        /// <summary>
+        /// If you modify the unity Object and not just the DisplayNode attached to it, then set this to true
+        /// </summary>
+        public virtual bool ModifiesUnityObject => false;
 
 
         #region Misc Display Ids

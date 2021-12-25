@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Resources;
 using UnityEngine;
 using Graphics = UnityEngine.Graphics;
 

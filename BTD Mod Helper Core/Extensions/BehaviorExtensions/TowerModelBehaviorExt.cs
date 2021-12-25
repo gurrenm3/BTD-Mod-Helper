@@ -62,7 +62,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Remove the first Behavior of type T
+        /// (Cross-Game compatible) Removes a specific behavior from a tower
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         /// <param name="model"></param>

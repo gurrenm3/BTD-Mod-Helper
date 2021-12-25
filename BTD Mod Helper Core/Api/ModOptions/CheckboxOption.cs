@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using BTD_Mod_Helper.Extensions;
-using System;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {

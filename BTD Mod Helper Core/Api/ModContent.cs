@@ -11,7 +11,6 @@ using BTD_Mod_Helper.Api.Towers;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
-using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
 
@@ -64,6 +63,8 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         protected abstract void Register();
 
+        internal void TestRegister() => Register();
+
         /// <summary>
         /// Used to allow some ModContent to Register before or after others
         /// </summary>
@@ -77,7 +78,6 @@ namespace BTD_Mod_Helper.Api
         {
         }
 
-#if BloonsTD6
         internal static void LoadModContent(BloonsMod mod)
         {
             mod.Content = mod.Assembly
@@ -87,7 +87,10 @@ namespace BTD_Mod_Helper.Api
                 .Where(content => content != null)
                 .OrderBy(content => content.RegistrationPriority)
                 .ToList();
+        }
 
+        internal static void RegisterModContent(BloonsMod mod)
+        {
             foreach (var modContent in mod.Content)
             {
                 try
@@ -122,7 +125,6 @@ namespace BTD_Mod_Helper.Api
             type.GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
                 null, Type.EmptyTypes, null) !=
             null;
-#endif
 
         /// <summary>
         /// 
@@ -149,6 +151,8 @@ namespace BTD_Mod_Helper.Api
                         MelonLogger.Error("A zero argument constructor is REQUIRED for all ModContent classes");
                         throw;
                     }
+
+                    instance.mod = mod;
 
                     var instances = instance.Load().ToList();
                     foreach (var modContent in instances)
@@ -226,17 +230,22 @@ namespace BTD_Mod_Helper.Api
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
+        /// <br/>
+        /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
         public static string GetTextureGUID(BloonsMod mod, string fileName)
         {
-            return mod == null ? default : mod.IDPrefix + fileName;
+            var guid = mod?.IDPrefix + fileName;
+            return ResourceHandler.resources.ContainsKey(guid) ? guid : default;
         }
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
+        /// <br/>
+        /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <typeparam name="T">Your mod's main BloonsMod extending class</typeparam>
@@ -248,6 +257,8 @@ namespace BTD_Mod_Helper.Api
 
         /// <summary>
         /// Gets a texture's GUID by name for this mod
+        /// <br/>
+        /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
@@ -379,11 +390,21 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets all loaded ModContent objects that are T or a subclass of T
+        /// Gets all loaded ModContent objects that are of type T 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static List<T> GetInstances<T>() where T : ModContent
+        {
+            return !Instances.ContainsKey(typeof(T)) ? null : Instances[typeof(T)].Cast<T>().ToList();
+        }
+
+        /// <summary>
+        /// Gets all loaded ModContent objects that are T or a subclass of T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> GetContent<T>() where T : ModContent
         {
             return Instances.Where(pair => typeof(T).IsAssignableFrom(pair.Key))
                 .SelectMany(pair => pair.Value)

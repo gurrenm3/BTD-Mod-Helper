@@ -12,11 +12,10 @@ using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using System.IO;
-using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
-using Assets.Scripts.Unity.UI_New.Settings;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Models;
+using Assets.Scripts.Unity.UI_New.Main;
 using NinjaKiwi.Common;
 using NinjaKiwi.NKMulti;
 using Assets.Scripts.Models.Map;
@@ -35,37 +34,26 @@ namespace BTD_Mod_Helper
 
         public override void OnApplicationStart()
         {
+            // Mod Updating
             MelonLogger.Msg("Checking for updates...");
-            ClassInjector.RegisterTypeInIl2Cpp<CustomMonoBehavior>();
 
             var updateDir = this.GetModDirectory() + "\\UpdateInfo";
             Directory.CreateDirectory(updateDir);
-
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
-
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
 
-            //CheckModsForUpdates();
-
+            
+            // Mod Settings
             var settingsDir = this.GetModSettingsDir(true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
+            MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
 
-            ModMonoBehavior.LoadAllModMonoBehaviors();
 
             Schedule_GameModel_Loaded();
 
-            HarmonyInstance.PatchPostfix(typeof(SettingsScreen), nameof(SettingsScreen.Open), typeof(MelonMain),
-                nameof(SettingsPatch));
-
             MelonLogger.Msg("Mod has finished loading");
-        }
-
-        public override void OnMapModelLoaded(ref MapModel mapModel)
-        {
-            MelonLogger.Msg("Hello From OnMapModelLoaded. The map loaded was: " + mapModel.mapName);
-            
         }
 
         private void CheckModsForUpdates()
@@ -83,8 +71,6 @@ namespace BTD_Mod_Helper
 
         public override void OnGameModelLoaded(GameModel model)
         {
-            
-
             /* Save for now, useful for when they add new upgrades
              Game.instance.model.upgrades.ForEach(upgrade =>
             {
@@ -98,7 +84,8 @@ namespace BTD_Mod_Helper
 
         public static ModSettingBool CleanProfile = true;
 
-
+        private static ModSettingBool AutoHideModdedClientPopup = false;
+        
         private static ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
             displayName = "Open Local Files Directory",
@@ -117,32 +104,17 @@ namespace BTD_Mod_Helper
             IsButton = true
         };
 
-        internal static ShowModOptions_Button modsButton;
 
-        public static void SettingsPatch()
-        {
-            modsButton = new ShowModOptions_Button();
-            modsButton.Init();
-        }
+
+        internal static ShowModOptions_Button modsButton;
 
         private static bool afterTitleScreen;
 
         public override void OnUpdate()
         {
             KeyCodeHooks();
-
-            // used to test new api methods
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                var tower = TowerSelectionMenu.instance.GetSelectedTower();
-                tower.tower.towerBehaviors.ToList().ForEach(behavior =>
-                {
-                    MelonLogger.Msg(behavior.model.name);
-                });
-                FileIOUtil.SaveObject("selected_tower.json", tower.Def);
-                
-                tower.Abilities.Clear();
-            }
+            
+            ModByteLoader.OnUpdate();
 
             if (Game.instance is null)
                 return;
@@ -156,7 +128,7 @@ namespace BTD_Mod_Helper
             NotificationMgr.CheckForNotifications();
         }
 
-        private void KeyCodeHooks()
+        private static void KeyCodeHooks()
         {
             foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
             {
@@ -179,11 +151,6 @@ namespace BTD_Mod_Helper
                 {
                     MelonLogger.Msg(key + "    " + description);
                 }
-            }
-
-            if (keyCode == KeyCode.UpArrow)
-            {
-                // Can be used for testing stuff
             }
         }
 
@@ -263,7 +230,7 @@ namespace BTD_Mod_Helper
                 () => Game.instance?.model != null);
         }
 
-        bool scheduledInGamePatch = false;
+        bool scheduledInGamePatch;
 
         private void Schedule_InGame_Loaded()
         {

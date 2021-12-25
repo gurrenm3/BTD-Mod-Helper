@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
-using Assets.Scripts.Utils;
 using MelonLoader;
 using Newtonsoft.Json;
 

@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Models.PowerSets;
-using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;

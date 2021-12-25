@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
@@ -19,18 +20,18 @@ namespace BTD_Mod_Helper.Api.Towers
     /// <summary>
     /// Class representing a custom Tower being added by a mod
     /// </summary>
-    public abstract class ModTower : ModContent
+    public abstract class ModTower : NamedModContent
     {
+        /// <summary>
+        /// ModTowers register third
+        /// </summary>
+        protected sealed override float RegistrationPriority => 3;
+        
         /// <inheritdoc />
         protected sealed override void Register()
         {
             towerModels = ModTowerHelper.AddTower(this);
         }
-
-        /// <summary>
-        /// ModTowers register third
-        /// </summary>
-        protected sealed override float RegistrationPriority => 3;
 
         internal override void PostRegister()
         {
@@ -38,10 +39,6 @@ namespace BTD_Mod_Helper.Api.Towers
             {
                 ModTowerHelper.FinalizeTowerModel(this, towerModel);
             }
-
-            Game.instance.GetLocalizationManager().textTable[Id] = DisplayName;
-            Game.instance.GetLocalizationManager().textTable[Id + "s"] = DisplayNamePlural;
-            Game.instance.GetLocalizationManager().textTable[Id + " Description"] = Description;
 
             if (!DontAddToShop)
             {
@@ -60,7 +57,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     throw;
                 }
             }
-            
+
             ModTowerSet?.towers.Add(this);
         }
 
@@ -80,19 +77,9 @@ namespace BTD_Mod_Helper.Api.Towers
         internal virtual bool ShouldCreateParagon =>
             paragonUpgrade != null &&
             TopPathUpgrades == 5 &&
-             MiddlePathUpgrades == 5 &&
-             BottomPathUpgrades == 5 &&
-             ParagonMode != ParagonMode.None;
-
-        /// <summary>
-        /// The name that will be actually displayed for the tower in game
-        /// </summary>
-        public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
-
-        /// <summary>
-        /// The name that will actually be display when referring to multiple of the tower
-        /// </summary>
-        public virtual string DisplayNamePlural => DisplayName + "s";
+            MiddlePathUpgrades == 5 &&
+            BottomPathUpgrades == 5 &&
+            ParagonMode != ParagonMode.None;
 
         /// <summary>
         /// The Portrait for the 0-0-0 tower
@@ -192,11 +179,6 @@ namespace BTD_Mod_Helper.Api.Towers
         public abstract int BottomPathUpgrades { get; }
 
         /// <summary>
-        /// The in game description of the Tower
-        /// </summary>
-        public abstract string Description { get; }
-
-        /// <summary>
         /// Constructor for ModTower, used implicitly by ModContent.Create
         /// </summary>
         protected ModTower()
@@ -243,18 +225,9 @@ namespace BTD_Mod_Helper.Api.Towers
             towerModel.tier = 0;
             towerModel.tiers = new[] {0, 0, 0};
 
-            foreach (var defaultMod in DefaultMods)
-            {
-                for (var i = 0; i < towerModel.mods.Count; i++)
-                {
-                    var model = towerModel.mods[i];
-                    if (model.name != defaultMod)
-                    {
-                        towerModel.mods = towerModel.mods.RemoveItem(model);
-                        break;
-                    }
-                }
-            }
+            towerModel.mods = DefaultMods
+                .Select(s => new ApplyModModel($"{Id}Upgrades", s, ""))
+                .ToArray();
 
             towerModel.GetDescendants<Model>().ForEach(model =>
             {
@@ -317,7 +290,7 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual string Get2DTexture(int[] tiers)
         {
             var name = $"{Name}-{tiers.Printed()}";
-            if (ResourceHandler.resources.ContainsKey(GetTextureGUID(name)))
+            if (GetTextureGUID(name) != null)
             {
                 return name;
             }
@@ -339,7 +312,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
 
                 name = $"{Name}-{printed}";
-                if (ResourceHandler.resources.ContainsKey(GetTextureGUID(name)))
+                if (GetTextureGUID(name) != null)
                 {
                     return name;
                 }
@@ -364,7 +337,7 @@ namespace BTD_Mod_Helper.Api.Towers
 
             return ModTowerSet?.GetTowerStartIndex(towerSet) ?? towerSet.Count;
         }
-    
+
         internal virtual TowerModel GetBaseParagonModel()
         {
             TowerModel towerModel;
@@ -374,13 +347,14 @@ namespace BTD_Mod_Helper.Api.Towers
                     towerModel = ModTowerHelper.CreateTowerModel(this, new[] {0, 0, 0});
                     break;
                 case ParagonMode.Base555:
-                    towerModel =  ModTowerHelper.CreateTowerModel(this, new[] {5, 5, 5});
+                    towerModel = ModTowerHelper.CreateTowerModel(this, new[] {5, 5, 5});
                     break;
                 case ParagonMode.None:
                 default:
                     return null;
             }
-            
+
+            towerModel.appliedUpgrades = new Il2CppStringArray(6);
             for (var i = 0; i < 5; i++)
             {
                 towerModel.appliedUpgrades[i] = upgrades[0, i].Id;

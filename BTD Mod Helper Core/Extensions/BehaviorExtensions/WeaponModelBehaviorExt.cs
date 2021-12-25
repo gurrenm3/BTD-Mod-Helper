@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Weapons;
-using Assets.Scripts.Models.Towers.Weapons.Behaviors;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions

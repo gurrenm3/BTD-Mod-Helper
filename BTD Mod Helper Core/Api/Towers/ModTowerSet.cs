@@ -12,21 +12,30 @@ namespace BTD_Mod_Helper.Api.Towers
     /// <summary>
     /// A custom collection of ModTowers
     /// </summary>
-    public abstract class ModTowerSet : ModContent
+    public abstract class ModTowerSet : NamedModContent
     {
         internal static readonly Dictionary<string, ModTowerSet> Cache = new Dictionary<string, ModTowerSet>();
-        
+
         /// <summary>
         /// ModTowerSets register fourth
         /// </summary>
         protected sealed override float RegistrationPriority => 4;
-        
+
         /// <inheritdoc />
         protected sealed override void Register()
         {
-            Game.instance.GetLocalizationManager().textTable[Id] = DisplayName;
             Cache[Id] = this;
         }
+        
+        /// <summary>
+        /// Unused
+        /// </summary>
+        public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+
+        /// <summary>
+        /// Unused
+        /// </summary>
+        public sealed override string Description => base.Description;
 
         internal readonly List<ModTower> towers = new List<ModTower>();
 
@@ -69,15 +78,10 @@ namespace BTD_Mod_Helper.Api.Towers
         /// SpriteReference for the portrait
         /// </summary>
         public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
-        
+
         /*public virtual string Icon => GetType().Name + "-Icon";
         This is in the game for each tower set, but haven't seen a place where it'd need to be used for custom ones
         public virtual SpriteReference IconReference => GetSpriteReference(Icon);*/
-
-        /// <summary>
-        /// The name that will be actually displayed for the Tower Set in game
-        /// </summary>
-        public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
 
         /// <summary>
         /// Where to place this ModTowerSet in relation to other towerSets. By default at the end.

@@ -1,6 +1,4 @@
-﻿using System;
-using Il2CppSystem.Collections.Generic;
-using System.Text;
+﻿using Il2CppSystem.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {

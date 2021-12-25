@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Models.Profile;
-using Assets.Scripts.Simulation.Objects;
+﻿using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Simulation.Towers;
 using HarmonyLib;
 

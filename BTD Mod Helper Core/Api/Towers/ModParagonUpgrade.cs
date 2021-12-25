@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Extensions;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
@@ -13,9 +15,18 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModParagonUpgrade : ModUpgrade
     {
-        internal override void PostRegister()
+        internal override void AssignToModTower()
         {
-            Tower.paragonUpgrade = this;
+            try
+            {
+                Tower.paragonUpgrade = this;
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Warning("Failed to assign ModParagonUpgrade " + Name + $" to ModTower {Tower.Name}");
+                MelonLogger.Error(e);
+                throw;
+            }
         }
 
         /// <summary>
