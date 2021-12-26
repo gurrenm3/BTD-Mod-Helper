@@ -120,7 +120,7 @@ namespace BTD_Mod_Helper.Api
 
         internal static void CleanPastProfile(ProfileModel profile)
         {
-            if (!MelonMain.CleanProfile)
+            if (!MelonMain.CleanProfile || profile == null)
             {
                 return;
             }
@@ -137,7 +137,7 @@ namespace BTD_Mod_Helper.Api
 
         internal static void CleanCurrentProfile(ProfileModel profile)
         {
-            if (!MelonMain.CleanProfile)
+            if (!MelonMain.CleanProfile || profile == null)
             {
                 return;
             }
@@ -153,7 +153,7 @@ namespace BTD_Mod_Helper.Api
 
         internal static void UnCleanProfile(ProfileModel profile)
         {
-            if (!MelonMain.CleanProfile)
+            if (!MelonMain.CleanProfile || profile == null)
             {
                 return;
             }
