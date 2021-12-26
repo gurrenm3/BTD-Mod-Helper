@@ -42,7 +42,7 @@ namespace BTD_Mod_Helper.Api.Towers
         public abstract void Apply(TowerModel towerModel);
 
         /// <inheritdoc />
-        protected sealed override void Register()
+        public sealed override void Register()
         {
             if (AffectBaseGameModel)
             {

@@ -22,11 +22,12 @@ namespace BTD_Mod_Helper
         {
             foreach (var bloonsMod in MelonHandler.Mods.OfType<BloonsMod>().OrderBy(bloonsMod => bloonsMod.Priority))
             {
-                foreach (var modContent in mod.Content)
+                foreach (var modContent in bloonsMod.Content)
                 {
                     try
                     {
-                        modContent.TestRegister();
+                        modContent.Register();
+                        modContent.PostRegister();
                     }
                     catch (Exception e)
                     {
@@ -37,7 +38,7 @@ namespace BTD_Mod_Helper
                     yield return null;
                 }
 
-                foreach (var modContent in mod.Content)
+                /*foreach (var modContent in bloonsMod.Content)
                 {
                     try
                     {
@@ -49,7 +50,7 @@ namespace BTD_Mod_Helper
                         MelonLogger.Error(e);
                     }
                     yield return null;
-                }
+                }*/
                 
                 yield return null;
             }

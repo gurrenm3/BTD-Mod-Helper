@@ -61,9 +61,7 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// Registers this ModContent into the game
         /// </summary>
-        protected abstract void Register();
-
-        internal void TestRegister() => Register();
+        public abstract void Register();
 
         /// <summary>
         /// Used to allow some ModContent to Register before or after others

@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Api.Towers
         protected sealed override float RegistrationPriority => 4;
 
         /// <inheritdoc />
-        protected sealed override void Register()
+        public sealed override void Register()
         {
             Cache[Id] = this;
         }

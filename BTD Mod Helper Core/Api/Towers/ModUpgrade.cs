@@ -36,7 +36,7 @@ namespace BTD_Mod_Helper.Api.Towers
         }
 
         /// <inheritdoc />
-        protected sealed override void Register()
+        public sealed override void Register()
         {
             try
             {

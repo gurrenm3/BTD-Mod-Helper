@@ -15,6 +15,7 @@ using System.IO;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Models;
+using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Unity.UI_New.Main;
 using NinjaKiwi.Common;
 using NinjaKiwi.NKMulti;
@@ -51,6 +52,22 @@ namespace BTD_Mod_Helper
             Schedule_GameModel_Loaded();
 
             MelonLogger.Msg("Mod has finished loading");
+
+            // Load Content from other mods
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
+            {
+                try
+                {
+                    ResourceHandler.LoadEmbeddedTextures(mod);
+                    ResourceHandler.LoadEmbeddedBundles(mod);
+                    ModContent.LoadModContent(mod);
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    MelonLogger.Error(e);
+                }
+            }
         }
 
         private void CheckModsForUpdates()
@@ -80,25 +97,18 @@ namespace BTD_Mod_Helper
         public static ModSettingBool CleanProfile = true;
 
         private static ModSettingBool AutoHideModdedClientPopup = false;
-        
+
         private static ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
             displayName = "Open Local Files Directory",
             IsButton = true
         };
 
-        private static ModSettingBool ExportTowerJSONs = new ModSettingBool(false)
+        private static ModSettingBool ExportGameModel = new ModSettingBool(false)
         {
-            displayName = "Export Tower JSONs",
+            displayName = "Export Game Model",
             IsButton = true
         };
-
-        private static ModSettingBool ExportUpgradeJSONs = new ModSettingBool(false)
-        {
-            displayName = "Export Upgrade JSONs",
-            IsButton = true
-        };
-
 
 
         internal static ShowModOptions_Button modsButton;
@@ -108,12 +118,12 @@ namespace BTD_Mod_Helper
         public override void OnUpdate()
         {
             KeyCodeHooks();
-            
+
             ModByteLoader.OnUpdate();
 
             if (Game.instance is null)
                 return;
-            
+
             if (PopupScreen.instance != null && afterTitleScreen)
                 UpdateHandler.AnnounceUpdates(modsNeedingUpdates, this.GetModDirectory());
 
@@ -137,7 +147,7 @@ namespace BTD_Mod_Helper
                     PerformHook(mod => mod.OnKeyHeld(key));
             }
         }
-        
+
         public override void OnKeyDown(KeyCode keyCode)
         {
             if (keyCode == KeyCode.End)
@@ -160,69 +170,104 @@ namespace BTD_Mod_Helper
 
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();
-            
+
             AutoSave.InitAutosave(this.GetModSettingsDir(true));
 
             OpenLocalDirectory.OnInitialized.Add(option =>
             {
-                var buttonOption = (ButtonOption)option;
+                var buttonOption = (ButtonOption) option;
                 buttonOption.ButtonText.text = "Open";
                 buttonOption.Button.AddOnClick(() => Process.Start(FileIOUtil.sandboxRoot));
             });
 
-            ExportTowerJSONs.OnInitialized.Add(option =>
+            ExportGameModel.OnInitialized.Add(option =>
             {
-                var buttonOption = (ButtonOption)option;
+                var buttonOption = (ButtonOption) option;
                 buttonOption.ButtonText.text = "Export";
                 buttonOption.Button.AddOnClick(() =>
                 {
-                    MelonLogger.Msg("Dumping Towers to local files");
+                    MelonLogger.Msg("Exporting Towers to local files");
                     foreach (var tower in Game.instance.model.towers)
                     {
-                        var path = "Towers/" + tower.baseId + "/" + tower.name + ".json";
-                        try
-                        {
-                            FileIOUtil.SaveObject(path, tower);
-                            MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
-                        }
-                        catch (Exception)
-                        {
-                            MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
-                        }
+                        Export(tower, $"Towers/{tower.baseId}/{tower.name}.json");
                     }
 
-                    PopupScreen.instance.ShowOkPopup($"Finished exporting towers to {FileIOUtil.sandboxRoot + "Towers"}");
-                });
-            });
-            
-            ExportUpgradeJSONs.OnInitialized.Add(option =>
-            {
-                var buttonOption = (ButtonOption)option;
-                buttonOption.ButtonText.text = "Export";
-                buttonOption.Button.AddOnClick(() =>
-                {
                     MelonLogger.Msg("Exporting Upgrades to local files");
                     foreach (var upgrade in Game.instance.model.upgrades)
                     {
-                        var path = "Upgrades/" + upgrade.name + ".json";
-                        try
+                        Export(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json");
+                    }
+
+                    MelonLogger.Msg("Exporting Bloons to local files");
+                    foreach (var bloon in Game.instance.model.bloons)
+                    {
+                        Export(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json");
+                    }
+
+                    MelonLogger.Msg("Exporting Monkey Knowledge to local files");
+                    foreach (var knowledgeSet in Game.instance.model.knowledgeSets)
+                    {
+                        foreach (var knowledgeTierModel in knowledgeSet.tiers)
                         {
-                            FileIOUtil.SaveObject(path, upgrade);
-                            MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
-                        }
-                        catch (Exception)
-                        {
-                            MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+                            foreach (var knowledgeLevelModel in knowledgeTierModel.levels)
+                            {
+                                foreach (var knowledgeModel in knowledgeLevelModel.items)
+                                {
+                                    Export(knowledgeModel,
+                                        $"Knowledge/{knowledgeSet.name}/{knowledgeLevelModel.name}/{knowledgeModel.name}.json");
+                                }
+                            }
                         }
                     }
 
+                    MelonLogger.Msg("Exporting Powers to local files");
+                    foreach (var model in Game.instance.model.powers)
+                    {
+                        Export(model, $"Powers/{model.name}.json");
+                    }
+
+                    MelonLogger.Msg("Exporting Mods to local files");
+                    foreach (var model in Game.instance.model.mods)
+                    {
+                        Export(model, $"Mods/{model.name}.json");
+                    }
+
+                    MelonLogger.Msg("Exporting Skins to local files");
+                    foreach (var model in Game.instance.model.skins)
+                    {
+                        Export(model, $"Skins/{model.towerBaseId}/{model.name}.json");
+                    }
+                    
+                    MelonLogger.Msg("Exporting Rounds to local files");
+                    foreach (var roundSet in Game.instance.model.roundSets)
+                    {
+                        for (var i = 0; i < roundSet.rounds.Count; i++)
+                        {
+                            Export(roundSet.rounds[i], $"Rounds/{roundSet.name}/{i + 1}.json");
+                        }
+                    }
+                    
                     PopupScreen.instance.ShowOkPopup(
-                        $"Finished exporting upgrades to {FileIOUtil.sandboxRoot + "Upgrades"}");
+                        $"Finished exporting Game Model to {FileIOUtil.sandboxRoot}");
                 });
             });
 
             afterTitleScreen = true;
         }
+
+        private static void Export(Model bloon, string path)
+        {
+            try
+            {
+                FileIOUtil.SaveObject(path, bloon);
+                MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+            }
+            catch (Exception)
+            {
+                MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+            }
+        }
+
 
         private void Schedule_GameModel_Loaded()
         {
