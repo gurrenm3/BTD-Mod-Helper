@@ -2,6 +2,7 @@
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Models.GenericBehaviors;
 using BTD_Mod_Helper.Api.Display;
 
@@ -102,7 +103,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T"></typeparam>
         public static void ApplyDisplay<T>(this AttackModel attackModel, int index = 0) where T : ModDisplay
         {
-            var displayModels = attackModel.GetBehaviors<DisplayModel>();
+            var displayModels = attackModel.GetBehaviors<DisplayModel>().ToList();
             if (displayModels.Count > 0 && index >= 0 && index < displayModels.Count)
             {
                 displayModels[index].ApplyDisplay<T>();

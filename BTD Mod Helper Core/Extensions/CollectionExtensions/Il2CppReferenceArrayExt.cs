@@ -15,7 +15,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="referenceArray"></param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<T> Empty<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
+        public static Il2CppReferenceArray<T> Empty<T>(this Il2CppReferenceArray<T> referenceArray)
+            where T : Il2CppSystem.Object
         {
             return new Il2CppReferenceArray<T>(0);
         }
@@ -38,17 +39,14 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
         {
-            List<T> newList = new List<T>();
-            foreach (T item in referenceArray)
-                newList.Add(item);
-
-            return newList;
+            return new List<T>(referenceArray);
         }
 
         /// <summary>
         /// (Cross-Game compatible) Return as Il2CppSystem.List
         /// </summary>
-        public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Il2CppReferenceArray<T> referenceArray)
+        public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(
+            this Il2CppReferenceArray<T> referenceArray)
             where T : Il2CppSystem.Object
         {
             Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
@@ -63,20 +61,14 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static T[] ToArray<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
         {
-            T[] newArray = new T[] { };
-            foreach (T item in referenceArray)
-            {
-                Array.Resize(ref newArray, newArray.Length + 1);
-                newArray[newArray.Length - 1] = item;
-            }
-
-            return newArray;
+            return referenceArray;
         }
 
         /// <summary>
         /// (Cross-Game compatible) Return as LockList
         /// </summary>
-        public static LockList<T> ToLockList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
+        public static LockList<T> ToLockList<T>(this Il2CppReferenceArray<T> referenceArray)
+            where T : Il2CppSystem.Object
         {
             LockList<T> lockList = new LockList<T>();
             foreach (T item in referenceArray)
@@ -91,7 +83,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<T> Duplicate<T>(this Il2CppReferenceArray<T> list) where T : Il2CppSystem.Object
+        public static Il2CppReferenceArray<T> Duplicate<T>(this Il2CppReferenceArray<T> list)
+            where T : Il2CppSystem.Object
         {
             List<T> newList = new List<T>();
             foreach (T item in list)
@@ -110,13 +103,8 @@ namespace BTD_Mod_Helper.Extensions
         public static Il2CppReferenceArray<TCast> DuplicateAs<TSource, TCast>(this Il2CppReferenceArray<TSource> list)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            List<TCast> newList = new List<TCast>();
-            foreach (TSource item in list)
-                newList.Add(item.TryCast<TCast>());
-
-            return newList.ToIl2CppReferenceArray();
+            return list.CastAll<TSource, TCast>().ToIl2CppReferenceArray();
         }
-
 
         /// <summary>
         /// (Cross-Game compatible) Return this with an additional Item added to it
@@ -125,7 +113,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="referenceArray"></param>
         /// <param name="objectToAdd">Item to add</param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, T objectToAdd) where T : Il2CppSystem.Object
+        public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, T objectToAdd)
+            where T : Il2CppSystem.Object
         {
             if (referenceArray is null)
                 referenceArray = new Il2CppReferenceArray<T>(0);
@@ -146,7 +135,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="referenceArray"></param>
         /// <param name="objectsToAdd">Items to add</param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, Il2CppReferenceArray<T> objectsToAdd) where T : Il2CppSystem.Object
+        public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray,
+            Il2CppReferenceArray<T> objectsToAdd) where T : Il2CppSystem.Object
         {
             if (referenceArray is null)
                 referenceArray = new Il2CppReferenceArray<T>(0);
@@ -173,7 +163,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="referenceArray"></param>
         /// <param name="objectsToAdd">Items to add</param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, List<T> objectsToAdd) where T : Il2CppSystem.Object
+        public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray,
+            List<T> objectsToAdd) where T : Il2CppSystem.Object
         {
             return referenceArray.AddTo(objectsToAdd.ToIl2CppReferenceArray());
         }
@@ -190,8 +181,14 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            try { TSource result = referenceArray.First(item => item.IsType<TCast>()); }
-            catch (Exception) { return false; }
+            try
+            {
+                TSource result = referenceArray.First(item => item.IsType<TCast>());
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
             return true;
         }
@@ -245,7 +242,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
         /// <param name="referenceArray"></param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
+        public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(
+            this Il2CppReferenceArray<TSource> referenceArray)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
@@ -261,7 +259,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="referenceArray"></param>
         /// <param name="removeChildFrom">Model to remove the child dependents from</param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
+        public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(
+            this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
             where TSource : Il2CppSystem.Object
             where TCast : Model
         {
@@ -278,7 +277,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="referenceArray"></param>
         /// <param name="itemToRemove">The specific Item to remove</param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<TSource> RemoveItem<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray, TCast itemToRemove)
+        public static Il2CppReferenceArray<TSource> RemoveItem<TSource, TCast>(
+            this Il2CppReferenceArray<TSource> referenceArray, TCast itemToRemove)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
@@ -306,7 +306,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>
         /// <param name="referenceArray"></param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
+        public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(
+            this Il2CppReferenceArray<TSource> referenceArray)
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
@@ -319,7 +320,7 @@ namespace BTD_Mod_Helper.Extensions
             {
                 TSource item = referenceArray[i];
                 if (item is null || !item.IsType<TCast>())
-                        continue;
+                    continue;
 
                 arrayList.RemoveAt(i - numRemoved);
                 numRemoved++;
@@ -336,7 +337,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="referenceArray"></param>
         /// <param name="removeChildFrom">Model to remove the child dependents from</param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
+        public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(
+            this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
             where TSource : Il2CppSystem.Object
             where TCast : Model
         {

@@ -69,20 +69,14 @@ namespace BTD_Mod_Helper.Extensions
             var desiredTowers = towers.Where(towerSim => towerSim.Def.name == towerModel.name).ToList();
             return desiredTowers;
         }
-
         
-        [Obsolete("Typo, just here for compatibility reasons")]
-        public static List<AbilityModel> GetAbilities(this TowerModel towerModel)
-        {
-            return towerModel.GetBehaviors<AbilityModel>();
-        }
         
         /// <summary>
         /// (Cross-Game compatible) Return all AbilityModel behaviors from this tower, if it has any
         /// </summary>
-        public static List<AbilityModel> GetAbilites(this TowerModel towerModel)
+        public static List<AbilityModel> GetAbilities(this TowerModel towerModel)
         {
-            return towerModel.GetAbilities();
+            return towerModel.GetBehaviors<AbilityModel>().ToList();
         }
 
         /// <summary>
@@ -107,7 +101,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<AttackModel> GetAttackModels(this TowerModel towerModel)
         {
-            return towerModel.GetBehaviors<AttackModel>();
+            return towerModel.GetBehaviors<AttackModel>().ToList();
         }
 
         /// <summary>
@@ -116,6 +110,14 @@ namespace BTD_Mod_Helper.Extensions
         public static AttackModel GetAttackModel(this TowerModel towerModel)
         {
             return towerModel.GetAttackModels().FirstOrDefault();
+        }
+        
+        /// <summary>
+        /// (Cross-Game compatible) Return the first AttackModel whose name contains the given string
+        /// </summary>
+        public static AttackModel GetAttackModel(this TowerModel towerModel, string nameContains)
+        {
+            return towerModel.GetAttackModels().FirstOrDefault(model => model.name.Contains(nameContains));
         }
 
         /// <summary>
@@ -165,22 +167,6 @@ namespace BTD_Mod_Helper.Extensions
         public static WeaponModel GetWeapon(this TowerModel towerModel)
         {
             return towerModel.GetWeapons().FirstOrDefault();
-        }
-
-        // Thanks to doombubbles for creating this
-        /// <summary>
-        /// (Cross-Game compatible) Return every ProjectileModels this TowerModel has
-        /// </summary>
-        [Obsolete("Use GetDescendants<ProjectileModel>() instead")]
-        public static List<ProjectileModel> GetAllProjectiles(this TowerModel towerModel)
-        {
-            List<ProjectileModel> allProjectiles = new List<ProjectileModel>();
-            foreach (AttackModel attackModel in towerModel.GetAttackModels())
-            {
-                allProjectiles.AddRange(attackModel.GetAllProjectiles());
-            }
-
-            return allProjectiles;
         }
 
         /// <summary>
@@ -247,6 +233,20 @@ namespace BTD_Mod_Helper.Extensions
         public static T GetModTower<T>(this TowerModel towerModel) where T : ModTower
         {
             return (T) GetModTower(towerModel);
+        }
+
+        /// <summary>
+        /// Increase the range of a tower and all its attacks by the given amount
+        /// </summary>
+        /// <param name="towerModel"></param>
+        /// <param name="rangeIncrease"></param>
+        public static void IncreaseRange(this TowerModel towerModel, float rangeIncrease)
+        {
+            towerModel.range += rangeIncrease;
+            foreach (var attackModel in towerModel.GetAttackModels())
+            {
+                attackModel.range += rangeIncrease;
+            }
         }
 #endif
     }

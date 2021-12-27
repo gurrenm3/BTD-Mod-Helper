@@ -20,6 +20,7 @@ using Assets.Scripts.Unity.UI_New.Main;
 using NinjaKiwi.Common;
 using NinjaKiwi.NKMulti;
 using Assets.Scripts.Models.Map;
+using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using UnhollowerRuntimeLib;
 
 namespace BTD_Mod_Helper
@@ -79,6 +80,7 @@ namespace BTD_Mod_Helper
             UpdateHandler.SaveModUpdateInfo(updateDir);
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
+            MelonLogger.Msg("Done checking for updates");
         }
 
         public override void OnGameModelLoaded(GameModel model)
@@ -152,15 +154,12 @@ namespace BTD_Mod_Helper
         {
             if (keyCode == KeyCode.End)
             {
-                foreach (var (key, description) in LocalizationManager.Instance.textTable)
-                {
-                    MelonLogger.Msg(key + "    " + description);
-                }
+                
             }
 
             if (keyCode == KeyCode.UpArrow)
             {
-                // useful for testing
+                Export(TowerSelectionMenu.instance?.selectedTower?.Def, "selected_tower.json");
             }
         }
 
@@ -255,11 +254,11 @@ namespace BTD_Mod_Helper
             afterTitleScreen = true;
         }
 
-        private static void Export(Model bloon, string path)
+        private static void Export(Model model, string path)
         {
             try
             {
-                FileIOUtil.SaveObject(path, bloon);
+                FileIOUtil.SaveObject(path, model);
                 MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
             }
             catch (Exception)

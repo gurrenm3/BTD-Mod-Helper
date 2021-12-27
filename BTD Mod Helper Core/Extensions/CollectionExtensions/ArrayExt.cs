@@ -189,14 +189,10 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="TCast">The Type of the Items you want</typeparam>
         /// <param name="array"></param>
         /// <returns></returns>
-        public static List<TCast> GetItemsOfType<TSource, TCast>(this TSource[] array)
+        public static IEnumerable<TCast> GetItemsOfType<TSource, TCast>(this TSource[] array)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            if (!HasItemsOfType<TSource, TCast>(array))
-                return null;
-
-            IEnumerable<TSource> results = array.Where(item => item.TryCast<TCast>() != null);
-            return results.DuplicateAs<TSource, TCast>().ToList();
+            return array.Select(o => o.TryCast<TCast>()).Where(o => o != null);
         }
 
         /// <summary>

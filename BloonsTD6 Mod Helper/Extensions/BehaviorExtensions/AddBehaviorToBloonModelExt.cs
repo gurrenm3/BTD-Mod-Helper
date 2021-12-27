@@ -2,6 +2,7 @@
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -9,39 +10,37 @@ namespace BTD_Mod_Helper.Extensions
     {
         public static bool HasBehavior<T>(this AddBehaviorToBloonModel model) where T : Model
         {
-            return model.behaviors.HasItemsOfType<BloonBehaviorModel, T>();
+            return ModelBehaviorExt.HasBehavior<T>(model);
         }
 
         public static T GetBehavior<T>(this AddBehaviorToBloonModel model) where T : Model
         {
-            return model.behaviors.GetItemOfType<BloonBehaviorModel, T>();
+            return ModelBehaviorExt.GetBehavior<T>(model);
         }
 
         public static List<T> GetBehaviors<T>(this AddBehaviorToBloonModel model) where T : Model
         {
-            return model.behaviors.GetItemsOfType<BloonBehaviorModel, T>();
+            return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
         }
 
         public static void AddBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : BloonBehaviorModel
         {
-            model.behaviors = model.behaviors.AddTo(behavior);
-            model.AddChildDependant(behavior);
+            ModelBehaviorExt.AddBehavior(model, behavior);
         }
 
         public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemOfType<BloonBehaviorModel, T>(model);
+            ModelBehaviorExt.RemoveBehavior<T>(model);
         }
 
         public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItem(behavior);
-            model.RemoveChildDependant(behavior);
+            ModelBehaviorExt.RemoveBehavior(model, behavior);
         }
 
         public static void RemoveBehaviors<T>(this AddBehaviorToBloonModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemsOfType<BloonBehaviorModel, T>();
+            ModelBehaviorExt.RemoveBehaviors<T>(model);
         }
     }
 }

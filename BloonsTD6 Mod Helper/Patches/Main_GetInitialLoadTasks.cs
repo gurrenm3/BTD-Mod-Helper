@@ -13,6 +13,12 @@ namespace BTD_Mod_Helper.Patches
     [HarmonyPatch(typeof(Main), nameof(Main.GetInitialLoadTasks))]
     internal static class Main_GetInitialLoadTasks
     {
+        /// <summary>
+        /// I noticed that if any tasks are added after the vanilla final task of loading the GameModel, then aren't run.
+        /// But, since most tasks we want to add need to deal with the GameModel, I added in a custom task to load the
+        /// GameModel that can precede our tasks. Then, the real GameModel load task happens, but I've patched it to
+        /// not re-load a new GameModel and instead just return the same one that's already been modified.
+        /// </summary>
         internal const string CustomGameModelLoadName = "Pre-Preparing Darts...";
 
         [HarmonyPostfix]

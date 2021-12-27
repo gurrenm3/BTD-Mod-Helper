@@ -46,7 +46,7 @@ namespace BTD_Mod_Helper.Api
 
 
         /// <inheritdoc />
-        public sealed override void Register()
+        public override void Register()
         {
         }
 

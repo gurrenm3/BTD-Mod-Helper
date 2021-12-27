@@ -8,7 +8,10 @@ using BTD_Mod_Helper.Api.Towers;
 using HarmonyLib;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
+using MelonLoader;
 using UnhollowerRuntimeLib;
+using Console = System.Console;
+using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Patches
 {
@@ -51,7 +54,15 @@ namespace BTD_Mod_Helper.Patches
             {
                 foreach (var affectedTower in modVanillaContent.GetAffectedTowers(result))
                 {
-                    modVanillaContent.Apply(affectedTower);
+                    try
+                    {
+                        modVanillaContent.Apply(affectedTower);
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error($"Failed to apply {modVanillaContent.Name}");
+                        MelonLogger.Error(e);
+                    }
                 }
             }
         }

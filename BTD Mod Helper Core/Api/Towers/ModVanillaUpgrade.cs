@@ -51,7 +51,7 @@ namespace BTD_Mod_Helper.Api.Towers
             
         }
 
-        internal override IEnumerable<TowerModel> GetAffectedTowers(GameModel gameModel)
+        public override IEnumerable<TowerModel> GetAffectedTowers(GameModel gameModel)
         {
             return gameModel.towers.Where(model => model.appliedUpgrades.Contains(UpgradeId));
         }

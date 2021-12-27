@@ -10,7 +10,12 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModVanillaContent : ModContent
     {
-        internal abstract IEnumerable<TowerModel> GetAffectedTowers(GameModel gameModel);
+        /// <summary>
+        /// Gets the TowerModels that this will affect in the GameModel
+        /// </summary>
+        /// <param name="gameModel"></param>
+        /// <returns></returns>
+        public abstract IEnumerable<TowerModel> GetAffectedTowers(GameModel gameModel);
         
         /// <summary>
         /// Whether this should only modify the Towers In-Game, or also affect the default GameModel outside a game
@@ -42,7 +47,7 @@ namespace BTD_Mod_Helper.Api.Towers
         public abstract void Apply(TowerModel towerModel);
 
         /// <inheritdoc />
-        public sealed override void Register()
+        public override void Register()
         {
             if (AffectBaseGameModel)
             {

@@ -2,11 +2,16 @@
 using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using System.Linq;
+using MelonLoader;
 using UnhollowerBaseLib;
+using UnhollowerRuntimeLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static partial class IEnumerableExt
+    /// <summary>
+    /// Extensions for the normal System IEnumerable class
+    /// </summary>
+    public static class IEnumerableExt
     {
         /// <summary>
         /// (Cross-Game compatible) Return as Il2CppSystem.List
@@ -16,9 +21,11 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable)
         {
-            Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
-            for (int i = 0; i < enumerable.Count(); i++)
-                il2CppList.Add(enumerable.ElementAt(i));
+            var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+            foreach (var t in enumerable)
+            {
+                il2CppList.Add(t);
+            }
 
             return il2CppList;
         }
@@ -29,14 +36,10 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="enumerable"></param>
         /// <returns></returns>
-        public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
+        public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this IEnumerable<T> enumerable)
+            where T : Il2CppSystem.Object
         {
-            Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(enumerable.Count());
-
-            for (int i = 0; i < enumerable.Count(); i++)
-                il2cppArray[i] = enumerable.ElementAt(i);
-
-            return il2cppArray;
+            return enumerable as T[] ?? enumerable.ToArray();
         }
 
         /// <summary>
@@ -44,52 +47,48 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable)
         {
-            LockList<T> lockList = new LockList<T>();
-            for (int i = 0; i < enumerable.Count(); i++)
-                lockList.Add(enumerable.ElementAt(i));
+            var lockList = new LockList<T>();
+            foreach (var t in enumerable)
+            {
+                lockList.Add(t);
+            }
 
             return lockList;
         }
 
-
-
         /// <summary>
-        /// (Cross-Game compatible) Return as a duplicate IEnumerable
+        /// Casts a reference array to an IEnumerable of a different Il2cpptype.
+        /// <br/>
+        /// Objects that aren't of the specified type will end up as null in the result
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="enumerable"></param>
-        /// <returns></returns>
-        public static IEnumerable<T> Duplicate<T>(this IEnumerable<T> enumerable)
-        {
-            List<T> test = new List<T>();
-            foreach (T item in enumerable)
-                test.Add(item);
-
-            return test.AsEnumerable();
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Return as a duplicate IEnumerable of type TCast
-        /// </summary>
+        /// <param name="list"></param>
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TCast"></typeparam>
-        /// <param name="enumerable"></param>
         /// <returns></returns>
-        public static IEnumerable<TCast> DuplicateAs<TSource, TCast>(this IEnumerable<TSource> enumerable)
+        public static IEnumerable<TCast> CastAll<TSource, TCast>(this IEnumerable<TSource> list)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            List<TCast> test = new List<TCast>();
-            foreach (TSource item in enumerable)
-                test.Add(item.TryCast<TCast>());
+            return list?.Select(m =>
+            {
+                if (m is null) return null;
 
-            return test.AsEnumerable();
+                var tryCast = m.TryCast<TCast>();
+                if (tryCast == null)
+                {
+                    MelonLogger.Warning(
+                        $"Couldn't cast type {m.GetIl2CppType().Name} to {Il2CppType.Of<TCast>().Name}");
+                }
+
+                return tryCast;
+            });
         }
-        
-        
+
+
         // Thanks to Dmitry Bychenko on StackOverflow for this
-        public static T ArgMax<T, K>(this IEnumerable<T> source, 
-            Func<T, K> map = null, 
-            IComparer<K> comparer = null) {
+        public static T ArgMax<T, K>(this IEnumerable<T> source,
+            Func<T, K> map = null,
+            IComparer<K> comparer = null)
+        {
             if (ReferenceEquals(null, source))
                 throw new ArgumentNullException(nameof(source));
 
@@ -102,13 +101,15 @@ namespace BTD_Mod_Helper.Extensions
 
             if (null == map)
             {
-                map = arg => (K)(object)arg;
+                map = arg => (K) (object) arg;
             }
-            
-            foreach (var item in source) {
+
+            foreach (var item in source)
+            {
                 K key = map(item);
 
-                if (first || comparer.Compare(key, maxKey) > 0) {
+                if (first || comparer.Compare(key, maxKey) > 0)
+                {
                     first = false;
                     maxKey = key;
                     result = item;

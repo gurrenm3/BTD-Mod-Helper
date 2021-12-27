@@ -30,7 +30,7 @@ namespace BTD_Mod_Helper.Api.Display
         protected sealed override float RegistrationPriority => 1;
         
         /// <inheritdoc />
-        public sealed override void Register()
+        public override void Register()
         {
             Cache[Id] = this;
         }

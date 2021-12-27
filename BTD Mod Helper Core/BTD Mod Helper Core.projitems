@@ -59,6 +59,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdaterHttp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BloonsMod.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\AttackModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\BloonModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\ModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\ProjectileModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\TowerModelBehaviorExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\WeaponModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BloonsModExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\HarmonyExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Il2CppSystemExtensions\Il2CppSystemDelegateExxt.cs" />
@@ -75,12 +81,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModHelperData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SessionData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\AttackModelBehaviorExt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\BloonModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\EntityBehaviorExt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\ProjectileModelBehaviorExt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\TowerModelBehaviorExt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\WeaponModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\ArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppGenericIEnumerableExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Function.cs" />

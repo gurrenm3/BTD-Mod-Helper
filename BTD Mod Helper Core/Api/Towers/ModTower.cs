@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Api.Towers
         protected sealed override float RegistrationPriority => 3;
         
         /// <inheritdoc />
-        public sealed override void Register()
+        public override void Register()
         {
             towerModels = ModTowerHelper.AddTower(this);
         }

@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Api
         public abstract IEnumerator Coroutine();
 
         /// <inheritdoc />
-        public sealed override void Register()
+        public override void Register()
         {
             // nothing here since registering happens after TitleScreen, so ModLoadTasks should already be finished
         }

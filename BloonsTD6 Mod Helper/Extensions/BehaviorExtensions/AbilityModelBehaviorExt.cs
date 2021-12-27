@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -8,39 +9,37 @@ namespace BTD_Mod_Helper.Extensions
     {
         public static bool HasBehavior<T>(this AbilityModel model) where T : Model
         {
-            return model.behaviors.HasItemsOfType<Model, T>();
+            return ModelBehaviorExt.HasBehavior<T>(model);
         }
 
         public static T GetBehavior<T>(this AbilityModel model) where T : Model
         {
-            return model.behaviors.GetItemOfType<Model, T>();
+            return ModelBehaviorExt.GetBehavior<T>(model);
         }
 
         public static List<T> GetBehaviors<T>(this AbilityModel model) where T : Model
         {
-            return model.behaviors.GetItemsOfType<Model, T>();
+            return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
         }
 
         public static void AddBehavior<T>(this AbilityModel model, T behavior) where T : Model
         {
-            model.behaviors = model.behaviors.AddTo(behavior);
-            model.AddChildDependant(behavior);
+            ModelBehaviorExt.AddBehavior(model, behavior);
         }
 
         public static void RemoveBehavior<T>(this AbilityModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemOfType<Model, T>(model);
+            ModelBehaviorExt.RemoveBehavior<T>(model);
         }
 
         public static void RemoveBehavior<T>(this AbilityModel model, T behavior) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItem(behavior);
-            model.RemoveChildDependant(behavior);
+            ModelBehaviorExt.RemoveBehavior(model, behavior);
         }
 
         public static void RemoveBehaviors<T>(this AbilityModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemsOfType<Model, T>(model);
+            ModelBehaviorExt.RemoveBehaviors<T>(model);
         }
     }
 }

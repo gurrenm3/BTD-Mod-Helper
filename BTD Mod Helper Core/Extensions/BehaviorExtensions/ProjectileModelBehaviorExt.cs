@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
@@ -19,7 +20,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static bool HasBehavior<T>(this ProjectileModel model) where T : Model
         {
-            return model.behaviors.HasItemsOfType<Model, T>();
+            return ModelBehaviorExt.HasBehavior<T>(model);
         }
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T GetBehavior<T>(this ProjectileModel model) where T : Model
         {
-            return model.behaviors.GetItemOfType<Model, T>();
+            return ModelBehaviorExt.GetBehavior<T>(model);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<T> GetBehaviors<T>(this ProjectileModel model) where T : Model
         {
-            return model.behaviors.GetItemsOfType<Model, T>();
+            return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
         }
 
         /// <summary>
@@ -52,8 +53,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="behavior"></param>
         public static void AddBehavior<T>(this ProjectileModel model, T behavior) where T : Model
         {
-            model.behaviors = model.behaviors.AddTo(behavior);
-            model.AddChildDependant(behavior);
+            ModelBehaviorExt.AddBehavior(model, behavior);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="model"></param>
         public static void RemoveBehavior<T>(this ProjectileModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemOfType<Model, T>(model);
+            ModelBehaviorExt.RemoveBehavior<T>(model);
         }
 
         /// <summary>
@@ -74,8 +74,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="behavior"></param>
         public static void RemoveBehavior<T>(this ProjectileModel model, T behavior) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItem(behavior);
-            model.RemoveChildDependant(behavior);
+            ModelBehaviorExt.RemoveBehavior(model, behavior);
         }
 
         /// <summary>
@@ -85,7 +84,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="model"></param>
         public static void RemoveBehaviors<T>(this ProjectileModel model) where T : Model
         {
-            model.behaviors = model.behaviors.RemoveItemsOfType<Model, T>(model);
+            ModelBehaviorExt.RemoveBehaviors<T>(model);
         }
     }
 }

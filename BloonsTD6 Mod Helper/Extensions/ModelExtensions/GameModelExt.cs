@@ -337,7 +337,7 @@ namespace BTD_Mod_Helper.Extensions
             Il2CppReferenceArray<TowerModel> towerModels = model.towers;
 
             foreach (TowerModel towerModel in towerModels)
-                projectileModels.AddRange(towerModel.GetAllProjectiles());
+                projectileModels.AddRange(towerModel.GetDescendants<ProjectileModel>().ToList());
 
             return projectileModels;
         }

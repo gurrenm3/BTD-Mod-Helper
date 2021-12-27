@@ -159,12 +159,12 @@
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\BloonBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\WeaponBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\ProjectileBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\AttackBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\EmissionModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\PetModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\PowerModelBehaviorExt.cs" />
+    <Compile Include="Extensions\BehaviorExtensions\WeaponBehaviorExt.cs" />
+    <Compile Include="Extensions\BehaviorExtensions\ProjectileBehaviorExt.cs" />
+    <Compile Include="Extensions\BehaviorExtensions\AttackBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\TowerBehaviorExt.cs" />
     <Compile Include="Extensions\CollectionExtensions\ArrayExt.cs" />
     <Compile Include="Extensions\CollectionExtensions\Il2CppGenericsExt.cs" />
