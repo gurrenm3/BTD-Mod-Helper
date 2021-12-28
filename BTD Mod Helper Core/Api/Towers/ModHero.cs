@@ -13,12 +13,14 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModHero : ModTower
     {
-        internal override void PostRegister()
+        /// <inheritdoc />
+        public override void Register()
         {
-            base.PostRegister();
+            base.Register();
             ModTowerHelper.FinalizeHero(this);
         }
 
+        /// <inheritdoc />
         public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
         {
             base.RegisterText(textTable);

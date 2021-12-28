@@ -20,8 +20,11 @@ namespace BTD_Mod_Helper.Api.Towers
         /// </summary>
         public abstract string UpgradeId { get; }
 
-        internal override void PostRegister()
+        /// <inheritdoc />
+        public override void Register()
         {
+            base.Register();
+            
             var upgradeModel = Game.instance.model.GetUpgrade(UpgradeId);
             
             if (!string.IsNullOrEmpty(DisplayName))

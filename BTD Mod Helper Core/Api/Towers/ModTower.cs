@@ -31,10 +31,7 @@ namespace BTD_Mod_Helper.Api.Towers
         public override void Register()
         {
             towerModels = ModTowerHelper.AddTower(this);
-        }
-
-        internal override void PostRegister()
-        {
+            
             foreach (var towerModel in towerModels)
             {
                 ModTowerHelper.FinalizeTowerModel(this, towerModel);

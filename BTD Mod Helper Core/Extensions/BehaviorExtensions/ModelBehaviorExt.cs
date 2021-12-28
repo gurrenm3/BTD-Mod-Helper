@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper.Extensions
     /// <summary>
     /// Extensions for dealing with the behaviors of Models
     /// </summary>
-    public static class ModelBehaviorExt
+    internal static class ModelBehaviorExt
     {
         /// <summary>
         /// Gets the behaviors of a model. If the model does not have a behaviors field, then this returns null.
@@ -166,7 +166,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static T GetBehavior<T>(this Model model) where T : Model
         {
-            return model.GetBehaviors<T>().FirstOrDefault();
+            return model.GetBehaviors<T>()?.FirstOrDefault();
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace BTD_Mod_Helper.Extensions
             var behaviors = model.GetBehaviors();
             if (behaviors != null)
             {
-                model.SetBehaviors(behaviors.Where(b => b.IsType<T>()));
+                model.SetBehaviors(behaviors.Where(b => !b.IsType<T>()));
             }
         }
     }

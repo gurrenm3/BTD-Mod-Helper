@@ -12,8 +12,10 @@ namespace BTD_Mod_Helper.Api.Display
     /// </summary>
     public abstract class ModTowerDisplay : ModDisplay
     {
-        internal override void PostRegister()
+        /// <inheritdoc />
+        public override void Register()
         {
+            base.Register();
             try
             {
                 Tower.displays.Add(this);

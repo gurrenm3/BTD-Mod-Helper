@@ -67,14 +67,7 @@ namespace BTD_Mod_Helper.Api
         /// Used to allow some ModContent to Register before or after others
         /// </summary>
         protected virtual float RegistrationPriority => 5f;
-
-
-        /// <summary>
-        /// Making things happen after the initial Registration phase of all ModContent
-        /// </summary>
-        internal virtual void PostRegister()
-        {
-        }
+        
 
         internal static void LoadModContent(BloonsMod mod)
         {
@@ -98,19 +91,6 @@ namespace BTD_Mod_Helper.Api
                 catch (Exception e)
                 {
                     MelonLogger.Error($"Failed to register {modContent.Name}");
-                    MelonLogger.Error(e);
-                }
-            }
-
-            foreach (var modContent in mod.Content)
-            {
-                try
-                {
-                    modContent.PostRegister();
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error($"Failed to post register {modContent.Name}");
                     MelonLogger.Error(e);
                 }
             }

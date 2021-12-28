@@ -27,7 +27,6 @@ namespace BTD_Mod_Helper
                     try
                     {
                         modContent.Register();
-                        modContent.PostRegister();
                     }
                     catch (Exception e)
                     {

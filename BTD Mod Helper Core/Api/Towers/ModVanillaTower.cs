@@ -30,8 +30,11 @@ namespace BTD_Mod_Helper.Api.Towers
         /// </summary>
         public virtual string TowerSet => null;
 
-        internal override void PostRegister()
+        /// <inheritdoc />
+        public override void Register()
         {
+            base.Register();
+            
             var affectedTowers = GetAffectedTowers(Game.instance.model).ToList();
             if (!string.IsNullOrEmpty(TowerSet))
             {
