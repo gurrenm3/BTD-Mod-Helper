@@ -10,6 +10,9 @@ namespace BTD_Mod_Helper.Api.Towers
     /// </summary>
     public abstract class ModVanillaContent : ModContent
     {
+        /// <inheritdoc />
+        public sealed override int RegisterPerFrame => AffectBaseGameModel ? 1 : 3;
+        
         /// <summary>
         /// Gets the TowerModels that this will affect in the GameModel
         /// </summary>

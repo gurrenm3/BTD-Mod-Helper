@@ -26,8 +26,15 @@ namespace BTD_Mod_Helper
         /// </summary>
         public override IEnumerator Coroutine()
         {
+            var current = 0f;
             foreach (var modContent in mod.Content)
             {
+                current += 1f / modContent.RegisterPerFrame;
+                if (current >= 1f)
+                {
+                    current = 0;
+                    yield return null;
+                }
                 try
                 {
                     modContent.Register();
@@ -38,7 +45,6 @@ namespace BTD_Mod_Helper
                     MelonLogger.Error(e);
                 }
 
-                yield return null;
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Bloons.Behaviors;
 using Assets.Scripts.Models.GenericBehaviors;
@@ -8,6 +9,7 @@ using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Bloons
 {
@@ -17,13 +19,31 @@ namespace BTD_Mod_Helper.Api.Bloons
     public abstract class ModBloon : NamedModContent
     {
         internal static readonly Dictionary<string, BloonModel> BloonCache = new Dictionary<string, BloonModel>();
+        
+        /// <inheritdoc />
+        public sealed override int RegisterPerFrame => 3;
+        
+        /// <summary>
+        /// ModBloons with a BaseModBloon need to register after their base
+        /// </summary>
+        protected override float RegistrationPriority => (BaseModBloon?.RegistrationPriority ?? 5) + 1;
 
         /// <inheritdoc />
         public override void Register()
         {
-            var bloonModel = GetDefaultBloonModel();
-            
+            bloonModel = GetDefaultBloonModel();
+
             ModifyBaseBloonModel(bloonModel);
+
+            displays.FirstOrDefault(display => display.Damage == 0)?.Apply(bloonModel);
+            var damageDisplays = displays
+                .Where(display => display.Damage > 0)
+                .OrderBy(display => display.Damage)
+                .ToList();
+            if (damageDisplays.Any())
+            {
+                ApplyDamageStates(bloonModel, damageDisplays.Select(display => display.Id).ToList());
+            }
 
             Game.instance.model.bloons = Game.instance.model.bloons.AddTo(bloonModel);
             Game.instance.model.AddChildDependant(bloonModel);
@@ -31,6 +51,15 @@ namespace BTD_Mod_Helper.Api.Bloons
             BloonCache[bloonModel.name] = bloonModel;
         }
 
+        internal virtual ModBloon BaseModBloon => null;
+        internal readonly List<ModBloonDisplay> displays = new List<ModBloonDisplay>();
+        internal BloonModel bloonModel;
+
+
+        /// <inheritdoc />
+        public override string Name => KeepBaseId
+            ? GameModelUtil.ConstructBloonId(BaseModBloon?.Name ?? BaseBloon, Camo, Regrow, Fortified)
+            : base.Name;
 
         /// <summary>
         /// The Bloon in the game that this should copy from as a base. Use BloonType.[Name]
@@ -45,9 +74,9 @@ namespace BTD_Mod_Helper.Api.Bloons
 
 
         /// <summary>
-        /// Set this to false if you're making another version of the BaseBloon, like a Fortified Red Bloon
+        /// Set this to true if you're making another version of the BaseBloon, like a Fortified Red Bloon
         /// </summary>
-        public virtual bool IsSeparateFromBase => true;
+        public virtual bool KeepBaseId => false;
 
         /// <summary>
         /// The Icon for the Bloon within the UI, by default looking for the same name as the file
@@ -85,7 +114,7 @@ namespace BTD_Mod_Helper.Api.Bloons
         public virtual bool Camo => false;
 
         /// <summary>
-        /// How many different DamageStates does this Bloon have
+        /// The list of displays to use as DamageStates for this Bloon
         /// </summary>
         public virtual IEnumerable<string> DamageStates => null;
 
@@ -93,7 +122,7 @@ namespace BTD_Mod_Helper.Api.Bloons
         /// Whether this Bloon should use its Icon as its display
         /// </summary>
         public virtual bool UseIconAsDisplay => !BaseBloonModel.isMoab;
-        
+
         /// <summary>
         /// For 2D bloons, the ratio between pixels and display units. Higher number -> smaller Bloon.
         /// </summary>
@@ -104,85 +133,104 @@ namespace BTD_Mod_Helper.Api.Bloons
 
         internal virtual BloonModel GetDefaultBloonModel()
         {
-            var bloonModel = BaseBloonModel.Duplicate();
-            if (IsSeparateFromBase)
+            var model = BaseBloonModel.Duplicate();
+            model.RemoveTag(model.baseId);
+            if (BaseModBloon != null)
             {
-                bloonModel.baseId = bloonModel.id = bloonModel.name = Id;
-            }
-            else
-            {
-                bloonModel.id = bloonModel.name = bloonModel.baseId +
-                                                  (Regrow ? "Regrow" : "") +
-                                                  (Fortified ? "Fortified" : "") +
-                                                  (Camo ? "Camo" : "");
+                model.baseId = BaseModBloon.Id;
             }
 
-            bloonModel.icon = IconReference;
+            model.id = model.name = Id;
+            if (!KeepBaseId)
+            {
+                model.baseId = Id;
+            }
 
-            var tags = bloonModel.tags.ToList();
+            model.AddTag(model.baseId);
+
+            model.icon = IconReference;
+
             if (Fortified)
             {
-                if (!tags.Contains(BloonTag.Fortified))
-                {
-                    tags.Add(BloonTag.Fortified);
-                }
-
-                bloonModel.isFortified = true;
+                model.isFortified = true;
+                model.AddTag(BloonTag.Fortified);
             }
 
             if (Regrow)
             {
-                if (!tags.Contains(BloonTag.Regrow))
+                if (!model.HasBehavior<GrowModel>())
                 {
-                    tags.Add(BloonTag.Regrow);
+                    model.AddBehavior(new GrowModel("GrowModel_", RegrowRate, RegrowsTo));
                 }
 
-                if (!bloonModel.HasBehavior<GrowModel>())
-                {
-                    bloonModel.AddBehavior(new GrowModel("GrowModel_", RegrowRate, RegrowsTo));
-                }
-
-                bloonModel.isGrow = true;
+                model.isGrow = true;
+                model.AddTag(BloonTag.Regrow);
             }
 
             if (Camo)
             {
-                if (!tags.Contains(BloonTag.Camo))
-                {
-                    tags.Add(BloonTag.Camo);
-                }
-
-                bloonModel.isCamo = true;
+                model.isCamo = true;
+                model.AddTag(BloonTag.Camo);
             }
-
-            bloonModel.tags = tags.ToArray();
 
             if (DamageStates != null)
             {
-                bloonModel.RemoveBehaviors<DamageStateModel>();
-
-                var count = DamageStates.Count();
-                var i = 1f;
-                foreach (var damageState in DamageStates)
-                {
-                    bloonModel.AddBehavior(new DamageStateModel($"DamageStateModel_damage_state_{i}",
-                        damageState, 1 - i / count));
-                    i++;
-                }
+                ApplyDamageStates(model, DamageStates.ToList());
             }
 
             if (UseIconAsDisplay)
             {
-                var guid = IconReference.GUID;
-                bloonModel.display = bloonModel.GetBehavior<DisplayModel>().display = guid;
-                ResourceHandler.ScalesFor2dModels[guid] = PixelsPerUnit;
+                var guid = GetTextureGUID(Icon);
+                if (guid != null)
+                {
+                    model.display = model.GetBehavior<DisplayModel>().display = guid;
+                    ResourceHandler.ScalesFor2dModels[guid] = PixelsPerUnit;
+                }
+                else
+                {
+                    MelonLogger.Msg($"Couldn't find icon {Icon}");
+                }
             }
 
-            return bloonModel;
+            return model;
+        }
+
+        internal void ApplyDamageStates(BloonModel model, List<string> damageStates)
+        {
+            model.RemoveBehaviors<DamageStateModel>();
+            var displayStates = new List<DamageStateModel>();
+
+            var count = damageStates.Count + 1;
+            var i = 1f;
+            foreach (var damageState in damageStates)
+            {
+                displayStates.Insert(0, new DamageStateModel($"DamageStateModel_damage_state_{i}",
+                    damageState, 1 - i / count));
+                i++;
+            }
+
+            model.damageDisplayStates = displayStates.ToIl2CppReferenceArray();
+            foreach (var damageStateModel in displayStates)
+            {
+                model.AddBehavior(damageStateModel);
+            }
         }
     }
 
-    public abstract class ModBloon<TDisplay> : ModBloon where TDisplay : ModDisplay
+    /// <summary>
+    /// Class for a ModBloon which has a different ModBloon as its base
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class ModBloon<T> : ModBloon where T : ModBloon
     {
+        /// <inheritdoc />
+        public override bool KeepBaseId => true;
+
+        /// <summary>
+        /// The BaseBloon is the same as its base's
+        /// </summary>
+        public override string BaseBloon => BloonID<T>();
+
+        internal override ModBloon BaseModBloon => GetInstance<T>();
     }
 }

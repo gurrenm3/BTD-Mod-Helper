@@ -93,13 +93,12 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Number of different Paragon displays that are used by default
         /// </summary>
-        protected int TotalParagonDisplays = 5;
+        protected const int TotalParagonDisplays = 5;
     }
 
     /// <summary>
     /// A convenient generic class for applying a ModTowerDisplay to a ModTower
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public abstract class ModTowerDisplay<T> : ModTowerDisplay where T : ModTower
     {
         /// <inheritdoc />

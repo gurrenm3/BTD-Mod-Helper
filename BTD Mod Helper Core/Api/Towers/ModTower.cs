@@ -28,6 +28,9 @@ namespace BTD_Mod_Helper.Api.Towers
         protected sealed override float RegistrationPriority => 3;
         
         /// <inheritdoc />
+        public sealed override int RegisterPerFrame => 1;
+        
+        /// <inheritdoc />
         public override void Register()
         {
             towerModels = ModTowerHelper.AddTower(this);

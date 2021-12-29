@@ -9,6 +9,7 @@ using BTD_Mod_Helper.Api.Towers;
 #elif BloonsAT
 #endif
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
@@ -68,6 +69,12 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         protected virtual float RegistrationPriority => 5f;
         
+        
+        /// <summary>
+        /// How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
+        /// </summary>
+        public virtual int RegisterPerFrame => 1;
+        
 
         internal static void LoadModContent(BloonsMod mod)
         {
@@ -78,22 +85,6 @@ namespace BTD_Mod_Helper.Api
                 .Where(content => content != null)
                 .OrderBy(content => content.RegistrationPriority)
                 .ToList();
-        }
-
-        internal static void RegisterModContent(BloonsMod mod)
-        {
-            foreach (var modContent in mod.Content)
-            {
-                try
-                {
-                    modContent.Register();
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error($"Failed to register {modContent.Name}");
-                    MelonLogger.Error(e);
-                }
-            }
         }
 
         internal static bool CanLoadType(Type type) =>
@@ -486,6 +477,17 @@ namespace BTD_Mod_Helper.Api
         public static BloonsMod GetMod(string name)
         {
             return MelonHandler.Mods.OfType<BloonsMod>().FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
+        }
+
+
+        /// <summary>
+        /// Gets the ID for the given ModBloon
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static string BloonID<T>() where T : ModBloon
+        {
+            return GetInstance<T>().Id;
         }
     }
 }

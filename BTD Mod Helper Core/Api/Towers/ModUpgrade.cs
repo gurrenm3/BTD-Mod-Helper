@@ -19,6 +19,10 @@ namespace BTD_Mod_Helper.Api.Towers
     {
         internal static readonly Dictionary<string, ModUpgrade> Cache = new Dictionary<string, ModUpgrade>();
 
+        
+        /// <inheritdoc />
+        public sealed override int RegisterPerFrame => 2;
+        
         /// <summary>
         /// ModUpgrades register second
         /// </summary>

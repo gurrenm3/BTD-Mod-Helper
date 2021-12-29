@@ -46,6 +46,9 @@ namespace BTD_Mod_Helper.Api
 
 
         /// <inheritdoc />
+        public sealed override int RegisterPerFrame => 999;
+
+        /// <inheritdoc />
         public override void Register()
         {
         }

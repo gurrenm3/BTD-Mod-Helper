@@ -29,7 +29,10 @@ namespace BTD_Mod_Helper.Api.Display
         /// ModDisplays register first
         /// </summary>
         protected sealed override float RegistrationPriority => 1;
-        
+
+        /// <inheritdoc />
+        public sealed override int RegisterPerFrame => 100;
+
         /// <inheritdoc />
         public override void Register()
         {

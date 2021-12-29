@@ -27,6 +27,10 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public abstract IEnumerator Coroutine();
 
+        
+        /// <inheritdoc />
+        public sealed override int RegisterPerFrame => 999;
+        
         /// <inheritdoc />
         public override void Register()
         {
