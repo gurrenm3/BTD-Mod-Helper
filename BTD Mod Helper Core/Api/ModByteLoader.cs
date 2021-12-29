@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Api
     /// </summary>
     public abstract class ModByteLoader : ModContent
     {
-        private static bool loadedAllBytes;
+        internal static bool loadedAllBytes;
 
         private static Task currentLoadTask;
 
@@ -60,10 +60,20 @@ namespace BTD_Mod_Helper.Api
                 {
                     currentLoadTask = modByteLoader.LoadTask = Task.Run(new Action(() =>
                     {
-                        MelonLogger.Msg($"Beginning to load {modByteLoader.Name}");
-                        modByteLoader.OnBytesLoaded();
-                        modByteLoader.Loaded = true;
-                        MelonLogger.Msg($"Finished loading {modByteLoader.Name}");
+                        try
+                        {
+                            modByteLoader.OnBytesLoaded();
+                            MelonLogger.Msg($"{modByteLoader.Name} finished loading bytes");
+                        }
+                        catch (Exception e)
+                        {
+                            MelonLogger.Error($"{modByteLoader.Name} failed loading bytes");
+                            MelonLogger.Error(e);
+                        }
+                        finally
+                        {
+                            modByteLoader.Loaded = true;
+                        }
                     }));
                 }
                 else

@@ -256,7 +256,7 @@ namespace BTD_Mod_Helper.Extensions
             var behaviors = model.GetBehaviors();
             if (behaviors != null)
             {
-                model.SetBehaviors(behaviors.Where(b => b != behavior), false);
+                model.SetBehaviors(behaviors.Where(b => b?.Equals(behavior) != true), false);
                 model.RemoveChildDependant(behavior);
             }
         }

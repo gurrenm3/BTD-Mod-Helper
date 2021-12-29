@@ -26,8 +26,6 @@ namespace BTD_Mod_Helper.Api.Towers
         // Cache of all added TowerModel.name => TowerModel
         internal static readonly Dictionary<string, TowerModel> TowerCache = new Dictionary<string, TowerModel>();
 
-        internal static readonly Dictionary<string, float> Tower2DScales = new Dictionary<string, float>();
-
         // Cache of TowerModel.name => ModTower 
         internal static readonly Dictionary<string, ModTower> ModTowerCache = new Dictionary<string, ModTower>();
 
@@ -266,7 +264,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     towerModel.display = guid;
                     towerModel.GetBehavior<DisplayModel>().display = guid;
                     towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
-                    Tower2DScales[guid] = modTower.PixelsPerUnit;
+                    ResourceHandler.ScalesFor2dModels[guid] = modTower.PixelsPerUnit;
                 }
                 catch (Exception)
                 {

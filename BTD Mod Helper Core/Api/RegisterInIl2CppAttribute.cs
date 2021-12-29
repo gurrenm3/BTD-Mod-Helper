@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper.Api
 
             foreach (var mod in MelonHandler.Mods)
             {
-                var types = mod.Assembly.GetTypes();
+                var types = mod.Assembly.GetValidTypes();
                 foreach (var type in types)
                 {
                     var attribute = type.GetCustomAttribute<RegisterInIl2CppAttribute>();
@@ -52,6 +52,7 @@ namespace BTD_Mod_Helper.Api
                     continue;
 
                 ClassInjector.RegisterTypeInIl2Cpp(itemToRegister);
+                
                 registeredTypes.Add(itemToRegister);
             }
         }

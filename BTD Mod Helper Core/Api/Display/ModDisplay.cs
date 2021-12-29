@@ -6,6 +6,7 @@ using Assets.Scripts.Models.GenericBehaviors;
 #if BloonsAT
 using Assets.Scripts.Models.Display;
 #endif
+using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Unity;
@@ -104,7 +105,6 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Applies this ModDisplay to a given DisplayModel
         /// </summary>
-        /// <param name="displayModel"></param>
         public void Apply(DisplayModel displayModel)
         {
             displayModel.display = Id;
@@ -116,7 +116,6 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Applies this ModDisplay to a given TowerModel
         /// </summary>
-        /// <param name="towerModel"></param>
         public void Apply(TowerModel towerModel)
         {
             towerModel.display = Id;
@@ -127,12 +126,21 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Applies this ModDisplay to a given ProjectileModel
         /// </summary>
-        /// <param name="projectileModel"></param>
         public void Apply(ProjectileModel projectileModel)
         {
             projectileModel.display = Id;
             Apply(projectileModel.GetBehavior<DisplayModel>());
         }
+        
+        /// <summary>
+        /// Applies this ModDisplay to a given BloonModel
+        /// </summary>
+        public void Apply(BloonModel bloonModel)
+        {
+            bloonModel.display = Id;
+            Apply(bloonModel.GetBehavior<DisplayModel>());
+        }
+
 
         /// <summary>
         /// Gets the Display for a given tower, optionally for the given tiers

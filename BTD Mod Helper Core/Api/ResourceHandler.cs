@@ -15,6 +15,9 @@ namespace BTD_Mod_Helper.Api
             new Dictionary<string, UnityDisplayNode>();
 
         public static readonly Dictionary<string, AssetBundle> Bundles = new Dictionary<string, AssetBundle>();
+        
+        
+        internal static readonly Dictionary<string, float> ScalesFor2dModels = new Dictionary<string, float>();
             
         internal static void LoadEmbeddedTextures(BloonsMod mod)
         {

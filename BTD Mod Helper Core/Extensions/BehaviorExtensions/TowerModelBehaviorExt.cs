@@ -19,6 +19,18 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
+        /// (Cross-Game compatible) Check if this has a specific Behavior
+        /// </summary>
+        /// <typeparam name="T">The Behavior you're checking for</typeparam>
+        /// <param name="model"></param>
+        /// <param name="behavior"></param>
+        /// <returns></returns>
+        public static bool HasBehavior<T>(this TowerModel model, out T behavior) where T : Model
+        {
+            return ModelBehaviorExt.HasBehavior(model, out behavior);
+        }
+
+        /// <summary>
         /// (Cross-Game compatible) Return the first Behavior of type T
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>

@@ -10,10 +10,10 @@ namespace BTD_Mod_Helper
     /// <summary>
     /// Initial task to register ModContent from other mods
     /// </summary>
-    internal class ModContentTask : ModLoadTask
+    internal class ByteWaitTask : ModLoadTask
     {
         /// <inheritdoc />
-        public override string DisplayName => $"Registering ModContent for {mod.Info.Name}...";
+        public override string DisplayName => "Waiting for ByteLoaders...";
 
         /// <summary>
         /// Don't load this like a normal task
@@ -26,19 +26,9 @@ namespace BTD_Mod_Helper
         /// </summary>
         public override IEnumerator Coroutine()
         {
-            foreach (var modContent in mod.Content)
+            while (!ModByteLoader.loadedAllBytes)
             {
-                try
-                {
-                    modContent.Register();
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Error($"Failed to register {modContent.Name}");
-                    MelonLogger.Error(e);
-                }
-
-                yield return null;
+                yield return true;
             }
         }
     }

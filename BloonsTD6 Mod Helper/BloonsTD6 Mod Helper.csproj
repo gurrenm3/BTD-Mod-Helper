@@ -156,6 +156,7 @@
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
     <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
     <Compile Include="BTD6 UI\TitleScreenUI.cs" />
+    <Compile Include="ByteWaitTask.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\BloonBehaviorExt.cs" />

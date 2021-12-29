@@ -47,7 +47,14 @@ namespace BTD_Mod_Helper
 
             // Register all custom mono behaviors
             var customMonoBehaviors = RegisterInIl2CppAttribute.FindTypesToRegister();
-            RegisterInIl2CppAttribute.RegisterAllTypes(customMonoBehaviors);
+            try
+            {
+                RegisterInIl2CppAttribute.RegisterAllTypes(customMonoBehaviors);
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error(e);
+            }
 
 
             Schedule_GameModel_Loaded();
@@ -197,10 +204,26 @@ namespace BTD_Mod_Helper
                         Export(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json");
                     }
 
+                    var bloonTags = new HashSet<string>();
+                    
                     MelonLogger.Msg("Exporting Bloons to local files");
                     foreach (var bloon in Game.instance.model.bloons)
                     {
                         Export(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json");
+                        if (bloon.tags != null)
+                        {
+                            foreach (var bloonTag in bloon.tags)
+                            {
+                                bloonTags.Add(bloonTag);
+                            }
+                        }
+                    }
+                    using (var stream = new StreamWriter(FileIOUtil.sandboxRoot + "/BloonTag.cs"))
+                    {
+                        foreach (var bloonTag in bloonTags)
+                        {
+                            stream.WriteLine($"public const string {bloonTag} = \"{bloonTag}\";");
+                        }
                     }
 
                     MelonLogger.Msg("Exporting Monkey Knowledge to local files");
@@ -266,7 +289,6 @@ namespace BTD_Mod_Helper
                 MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
             }
         }
-
 
         private void Schedule_GameModel_Loaded()
         {

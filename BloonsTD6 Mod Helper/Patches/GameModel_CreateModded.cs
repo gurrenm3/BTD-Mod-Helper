@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using Assets.Scripts.Models;
+using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Towers;
 using HarmonyLib;
 using Il2CppSystem;
@@ -25,16 +27,26 @@ namespace BTD_Mod_Helper.Patches
             {
                 Game.instance.model.searchCache = new Dictionary<Type, Dictionary<string, Model>>
                 {
-                    [Il2CppType.Of<TowerModel>()] = new Dictionary<string, Model>()
+                    [Il2CppType.Of<TowerModel>()] = new Dictionary<string, Model>(),
+                    [Il2CppType.Of<BloonModel>()] = new Dictionary<string, Model>()
                 };
             }
 
-            var dictionary = Game.instance.model.searchCache[Il2CppType.Of<TowerModel>()];
+            var towerCache = Game.instance.model.searchCache[Il2CppType.Of<TowerModel>()];
             foreach (var (key, value) in ModTowerHelper.TowerCache)
             {
-                if (!dictionary.ContainsKey(key))
+                if (!towerCache.ContainsKey(key))
                 {
-                    dictionary[key] = value;
+                    towerCache[key] = value;
+                }
+            }
+            
+            var bloonCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
+            foreach (var (key, value) in ModBloon.BloonCache)
+            {
+                if (!bloonCache.ContainsKey(key))
+                {
+                    bloonCache[key] = value;
                 }
             }
 

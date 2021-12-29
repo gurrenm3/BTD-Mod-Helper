@@ -8,6 +8,8 @@ using Assets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
 using UnhollowerBaseLib;
 using System;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Display;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -112,6 +114,16 @@ namespace BTD_Mod_Helper.Extensions
 #elif BloonsAT
             return bloonModel.baseType.ToString();
 #endif
+        }
+        
+        
+        /// <summary>
+        /// Applies a given ModDisplay to this TowerModel
+        /// </summary>
+        /// <typeparam name="T">The type of ModDisplay</typeparam>
+        public static void ApplyDisplay<T>(this BloonModel bloonModel) where T : ModDisplay
+        {
+            ModContent.GetInstance<T>().Apply(bloonModel);
         }
     }
 }

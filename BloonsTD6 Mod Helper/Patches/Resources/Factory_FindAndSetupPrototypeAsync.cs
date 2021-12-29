@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Patches.Resources
             }
 
             if (ResourceHandler.resources.GetValueOrDefault(objectId) is byte[] bytes &&
-                ModTowerHelper.Tower2DScales.ContainsKey(objectId))
+                ResourceHandler.ScalesFor2dModels.ContainsKey(objectId))
             {
                 objectId = "9dccc16d26c1c8a45b129e2a8cbd17ba";
                 onComplete = new System.Action<UnityDisplayNode>(node =>
@@ -40,14 +40,13 @@ namespace BTD_Mod_Helper.Patches.Resources
                         udn.isSprite = true;
                         udn.RecalculateGenericRenderers();
                         var spriteRenderer = udn.genericRenderers.GetItemOfType<Renderer, SpriteRenderer>();
-                        var scale = ModTowerHelper.Tower2DScales.GetValueOrDefault(id, 5f);
+                        var scale = ResourceHandler.ScalesFor2dModels.GetValueOrDefault(id, 10f);
                         spriteRenderer.sprite = Sprite.Create(texture,
                             new Rect(0, 0, texture.width, texture.height),
                             new Vector2(0.5f, 0.5f), scale, 0, SpriteMeshType.Tight);
                         udn.towerPlacementPreCalcOffset = new Vector3(0, 2f, 0);
                         action.Invoke(udn);
                         ResourceHandler.Prefabs[id] = udn;
-                        //__instance.active.Add(udn);
                     }
                 );
                 return true;
