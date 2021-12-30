@@ -246,6 +246,26 @@ namespace BTD_Mod_Helper.Extensions
         {
             bloonModel.ReplaceInChildren(ModContent.BloonID<TOld>(), ModContent.BloonID<TNew>());
         }
+        
+        /// <summary>
+        /// Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <param name="change"></param>
+        public static string FindChangedBloonId(this BloonModel bloonModel, Action<BloonModel> change)
+        {
+            var bloon = bloonModel.Duplicate();
+
+            change(bloon);
+
+            return Game.instance.model.bloons
+                .Where(model =>
+                    model.baseId == bloon.baseId &&
+                    model.isCamo == bloon.isCamo &&
+                    model.isGrow == bloon.isGrow &&
+                    model.isFortified == bloon.isFortified)
+                .Select(model => model.id).FirstOrDefault();
+        }
 
         private static void MakeChildrenSomething(this BloonModel bloonModel, Action<BloonModel> effect)
         {
@@ -253,18 +273,7 @@ namespace BTD_Mod_Helper.Extensions
             for (var i = 0; i < spawnChildrenModel.children.Count; i++)
             {
                 var current = spawnChildrenModel.children[i];
-                var bloon = Game.instance.model.GetBloon(current).Duplicate();
-
-                effect(bloon);
-
-                var newBloon = Game.instance.model.bloons
-                    .Where(model =>
-                        model.baseId == bloon.baseId &&
-                        model.isCamo == bloon.isCamo &&
-                        model.isGrow == bloon.isGrow &&
-                        model.isFortified == bloon.isFortified)
-                    .Select(model => model.id).FirstOrDefault();
-                
+                var newBloon = Game.instance.model.GetBloon(current).FindChangedBloonId(effect);
                 if (newBloon != null)
                 {
                     spawnChildrenModel.children[i] = newBloon;

@@ -212,6 +212,7 @@
     <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
     <Compile Include="Patches\GameModel_CreateModded.cs" />
     <Compile Include="Patches\GameModel_GetRoundSet.cs" />
+    <Compile Include="Patches\InGame_GetRoundHint.cs" />
     <Compile Include="Patches\InGame_Quit.cs" />
     <Compile Include="Patches\InGame_Restart.cs" />
     <Compile Include="Patches\InGame_StartMatch.cs" />

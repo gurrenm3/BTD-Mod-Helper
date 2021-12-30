@@ -68,13 +68,13 @@ namespace BTD_Mod_Helper.Api
         /// Used to allow some ModContent to Register before or after others
         /// </summary>
         protected virtual float RegistrationPriority => 5f;
-        
-        
+
+
         /// <summary>
         /// How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
         /// </summary>
         public virtual int RegisterPerFrame => 1;
-        
+
 
         internal static void LoadModContent(BloonsMod mod)
         {
@@ -194,6 +194,25 @@ namespace BTD_Mod_Helper.Api
             reference.guid = guid;
             return reference;
 #endif
+        }
+
+        /// <summary>
+        /// Creates a Sprite reference from the unsigned ints that can be found for a Sprite in AssetStudio
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static SpriteReference CreateSpriteReference(params uint[] data)
+        {
+            var bytes = new byte[16];
+            for (var i = 0; i < 4; i++)
+            {
+                BitConverter.GetBytes(data[i]).CopyTo(bytes, i * 4);
+            }
+
+            var hexPairs = BitConverter.ToString(bytes).Split('-');
+            var guid = string.Concat(hexPairs.Select(s => new string(s.Reverse().ToArray())));
+
+            return CreateSpriteReference(guid.ToLower());
         }
 
 

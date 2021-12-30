@@ -18,8 +18,8 @@ namespace BTD_Mod_Helper.Api.Scenarios
         public abstract string Difficulty { get; }
 
         /// <summary>
-        /// The existing GameMode to use as a base. Use GameModeType.[name]
-        /// If this empty or null, then an empty base will be used
+        /// The id of the existing GameMode to use as a base. Use GameModeType.[name]
+        /// If this GameModeType.None, empty, or null, then an empty base will be used
         /// </summary>
         public abstract string BaseGameMode { get; }
 
@@ -48,8 +48,8 @@ namespace BTD_Mod_Helper.Api.Scenarios
         /// <inheritdoc />
         public override void Register()
         {
-            model = CreateGameModeModel();
-            
+            model = GetDefaultGameModeModel();
+
             ModifyBaseGameModeModel(model);
 
             Game.instance.model.mods = Game.instance.model.mods.AddTo(model);
@@ -57,21 +57,26 @@ namespace BTD_Mod_Helper.Api.Scenarios
         }
 
         internal ModModel model;
-        
-        internal ModModel BaseModModel => string.IsNullOrEmpty(BaseGameMode)
-            ? new ModModel(Id, null, new Il2CppReferenceArray<MutatorModModel>(0), PreApplies)
-            : Game.instance.model.GetModModel(BaseGameMode).Duplicate();
 
-        internal ModModel CreateGameModeModel()
+        internal ModModel GetDefaultGameModeModel()
         {
-            var modModel = BaseModModel;
-            modModel.toggles = new[] {Id};
-            modModel.preApplies = PreApplies;
-            
-            foreach (var mutator in modModel.mutatorMods)
+            ModModel modModel;
+            if (string.IsNullOrEmpty(BaseGameMode))
             {
-                mutator.name = mutator.name = mutator.name.Replace(modModel.name, Id);
+                modModel = new ModModel(Id, new[] {Id}, new Il2CppReferenceArray<MutatorModModel>(0), PreApplies);
             }
+            else
+            {
+                modModel = Game.instance.model.GetModModel(BaseGameMode).Duplicate();
+                modModel.toggles = new[] {Id};
+                modModel.preApplies = PreApplies;
+                
+                foreach (var mutator in modModel.mutatorMods)
+                {
+                    mutator.name = mutator.name = mutator.name.Replace(modModel.name, Id);
+                }
+            }
+
             modModel.name = modModel._name = Id;
 
             return modModel;

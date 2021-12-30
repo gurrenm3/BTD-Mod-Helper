@@ -27,5 +27,6 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string DeflationCashPlayers3 = "DeflationCashPlayers3";
         public const string DeflationCashPlayers4 = "DeflationCashPlayers4";
         public const string DailyChallenge = "DailyChallenge";
+        public const string None = "";
     }
 }

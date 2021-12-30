@@ -2,6 +2,9 @@
 using System.Linq;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Mods;
+using Assets.Scripts.Unity.Towers.Mods;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Bloons;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
@@ -149,6 +152,15 @@ namespace BTD_Mod_Helper.Extensions
                     return false;
                 }).ToArray();
             }
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Makes this GameMode use the given RoundSet
+        /// </summary>
+        public static void UseRoundSet<T>(this ModModel model) where T : ModRoundSet
+        {
+            model.RemoveMutators<BloonSetModModel>();
+            model.AddMutator(new BloonSetModModel("BloonSetModModel_", ModContent.GetInstance<T>().Id));
         }
     }
 }
