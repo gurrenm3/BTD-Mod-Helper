@@ -35,7 +35,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
             var transform = instantiatedButton.transform.Cast<RectTransform>();
-            transform.Translate(new Vector3(-400, 0) * twitchPosition.lossyScale.x, transform);
+            transform.TranslateScaled(new Vector3(-400, 0));
             transform.localScale = new Vector3(2.5f, 2.5f);
         }
 

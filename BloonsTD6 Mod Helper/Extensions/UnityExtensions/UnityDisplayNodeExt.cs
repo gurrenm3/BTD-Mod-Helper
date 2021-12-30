@@ -3,6 +3,7 @@ using Assets.Scripts.Utils;
 using MelonLoader;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Components;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
@@ -93,15 +94,17 @@ namespace BTD_Mod_Helper.Extensions
             {
                 path = FileIOUtil.GetSandboxPath() + node.name + index + ".png";
             }
-            
+
             var meshRenderers = node.GetMeshRenderers();
             if (meshRenderers.Count == 0)
             {
-                MelonLogger.Error("Can't save mesh texture because the node doesn't have any MeshRenderers or SkinnedMeshRenderers, you might want to call node.PrintInfo()");
+                MelonLogger.Error(
+                    "Can't save mesh texture because the node doesn't have any MeshRenderers or SkinnedMeshRenderers, you might want to call node.PrintInfo()");
             }
             else if (meshRenderers.Count <= index)
             {
-                MelonLogger.Error($"The node doesn't have {index} total mesh renderers, you might want to call node.PrintInfo()");
+                MelonLogger.Error(
+                    $"The node doesn't have {index} total mesh renderers, you might want to call node.PrintInfo()");
             }
             else
             {
@@ -147,29 +150,13 @@ namespace BTD_Mod_Helper.Extensions
         public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string boneName,
             bool alreadyUnbound = false)
         {
-            var skinnedMeshRenderer = unityDisplayNode.GetRenderer<SkinnedMeshRenderer>();
-            if (!alreadyUnbound)
-            {
-                // Unbind the mesh so we can change it without affecting the original
-                skinnedMeshRenderer.UnbindMesh();
-            }
-
-            // Get the bone index that controls the Boomerang
-            var boomerang = skinnedMeshRenderer.GetBoneIndex(boneName);
-
-            // Get all vertices that the bone controls
-            var badVertices = skinnedMeshRenderer.GetVerticesConnectedToBoneArray(boomerang);
-
-            // Remove all triangles that contain any of those vertices
-            var triangles = skinnedMeshRenderer.GetTrianglesAsArrays();
-            triangles.RemoveAll(triangle => triangle.Any(v => badVertices[v]));
-            skinnedMeshRenderer.SetTriangles(triangles);
+            var bone = unityDisplayNode.GetBone(boneName);
+            bone.gameObject.AddComponent<ScaleOverrideZero>();
         }
-        
+
         public static Transform GetBone(this UnityDisplayNode unityDisplayNode, string boneName)
         {
             return unityDisplayNode.gameObject.GetComponentInChildrenByName<Transform>(boneName);
         }
-        
     }
 }

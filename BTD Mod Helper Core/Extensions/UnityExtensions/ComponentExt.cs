@@ -39,5 +39,18 @@ namespace BTD_Mod_Helper.Extensions
         {
             component.GetComponent<RectTransform>().localScale = new Vector3(0, 0);
         }
+
+        /// <summary>
+        /// (Cross-Game compatible) Translates this component scaled with it's "lossyScale", making it move the same
+        /// amount regardless of screen resolution
+        /// </summary>
+        /// <param name="component"></param>
+        /// <param name="translation"></param>
+        public static void TranslateScaled(this Component component, Vector3 translation)
+        {
+            var transform = component.transform;
+            var scale = transform.lossyScale.x;
+            transform.Translate(translation * scale);
+        }
     }
 }

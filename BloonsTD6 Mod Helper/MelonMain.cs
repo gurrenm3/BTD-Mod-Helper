@@ -45,18 +45,6 @@ namespace BTD_Mod_Helper
             ModSettingsHandler.LoadModSettings(settingsDir);
             MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
 
-            // Register all custom mono behaviors
-            var customMonoBehaviors = RegisterInIl2CppAttribute.FindTypesToRegister();
-            try
-            {
-                RegisterInIl2CppAttribute.RegisterAllTypes(customMonoBehaviors);
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error(e);
-            }
-
-
             Schedule_GameModel_Loaded();
 
             MelonLogger.Msg("Mod has finished loading");
@@ -161,7 +149,6 @@ namespace BTD_Mod_Helper
         {
             if (keyCode == KeyCode.End)
             {
-                
             }
 
             if (keyCode == KeyCode.UpArrow)
@@ -204,27 +191,12 @@ namespace BTD_Mod_Helper
                         Export(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json");
                     }
 
-                    var bloonTags = new HashSet<string>();
-                    
                     MelonLogger.Msg("Exporting Bloons to local files");
                     foreach (var bloon in Game.instance.model.bloons)
                     {
                         Export(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json");
-                        if (bloon.tags != null)
-                        {
-                            foreach (var bloonTag in bloon.tags)
-                            {
-                                bloonTags.Add(bloonTag);
-                            }
-                        }
                     }
-                    using (var stream = new StreamWriter(FileIOUtil.sandboxRoot + "/BloonTag.cs"))
-                    {
-                        foreach (var bloonTag in bloonTags)
-                        {
-                            stream.WriteLine($"public const string {bloonTag} = \"{bloonTag}\";");
-                        }
-                    }
+
 
                     MelonLogger.Msg("Exporting Monkey Knowledge to local files");
                     foreach (var knowledgeSet in Game.instance.model.knowledgeSets)
@@ -241,6 +213,7 @@ namespace BTD_Mod_Helper
                             }
                         }
                     }
+
 
                     MelonLogger.Msg("Exporting Powers to local files");
                     foreach (var model in Game.instance.model.powers)
@@ -259,7 +232,7 @@ namespace BTD_Mod_Helper
                     {
                         Export(model, $"Skins/{model.towerBaseId}/{model.name}.json");
                     }
-                    
+
                     MelonLogger.Msg("Exporting Rounds to local files");
                     foreach (var roundSet in Game.instance.model.roundSets)
                     {
@@ -268,11 +241,25 @@ namespace BTD_Mod_Helper
                             Export(roundSet.rounds[i], $"Rounds/{roundSet.name}/{i + 1}.json");
                         }
                     }
-                    
+
                     PopupScreen.instance.ShowOkPopup(
                         $"Finished exporting Game Model to {FileIOUtil.sandboxRoot}");
                 });
             });
+
+
+            foreach (var gameMode in Game.instance.model.mods)
+            {
+                if (gameMode.mutatorMods == null) continue;
+                foreach (var mutatorMod in gameMode.mutatorMods)
+                {
+                    var typeName = mutatorMod.GetIl2CppType().Name;
+                    if (!mutatorMod.name.StartsWith(typeName))
+                    {
+                        mutatorMod.name = mutatorMod._name = typeName + "_" + mutatorMod.name;
+                    }
+                }
+            }
 
             afterTitleScreen = true;
         }

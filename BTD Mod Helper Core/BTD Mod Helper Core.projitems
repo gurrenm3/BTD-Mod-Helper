@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModBloon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModRound.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModRoundSet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ICustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModBloonDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModCustomDisplay.cs" />
@@ -19,15 +21,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\BloonTag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\BloonType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\Difficulty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\GameModeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\ScheduleType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\UpgradeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Guard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\MatchScale.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ScaleOverrideZero.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModByteLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Scenarios\ModGameMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModLoadTask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\NamedModContent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\RegisterInIl2CppAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModHero.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModHeroLevel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModVanillaContent.cs" />
@@ -75,6 +80,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Il2CppSystemExtensions\Il2CppSystemDictionaryExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\ArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\GameModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\ModModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\ProjectileExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DictionaryExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DirectoryInfoExt.cs" />

@@ -67,5 +67,17 @@ namespace BTD_Mod_Helper.Extensions
                 RecursivelyLog(gameObject.transform.GetChild(i).gameObject, depth + 1);
             }
         }
+        
+        /// <summary>
+        /// (Cross-Game compatible) Translates this GameObject scaled with it's "lossyScale", making it move the same
+        /// amount regardless of screen resolution
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="translation"></param>
+        public static void TranslateScaled(this GameObject gameObject, Vector3 translation)
+        {
+            var transform = gameObject.transform;
+            transform.TranslateScaled(translation);
+        }
     }
 }

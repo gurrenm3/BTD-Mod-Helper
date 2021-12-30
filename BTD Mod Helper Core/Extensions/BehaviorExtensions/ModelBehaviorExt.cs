@@ -166,7 +166,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static T GetBehavior<T>(this Model model) where T : Model
         {
-            return model.GetBehaviors<T>()?.FirstOrDefault();
+            return model.GetBehaviors()?.FirstOrDefault(m => m.IsType<T>())?.Cast<T>();
         }
 
         /// <summary>

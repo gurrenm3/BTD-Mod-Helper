@@ -88,6 +88,9 @@
       <HintPath>..\\Dependencies\BloonsTD6\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Dependencies\BloonsTD6\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.AssetBundleModule.dll</HintPath>
       <Private>False</Private>
@@ -256,6 +259,7 @@
     <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
     <Compile Include="Patches\UI\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\UI\MainMenu_OnEnable.cs" />
+    <Compile Include="Patches\UI\ModeScreen_Open.cs" />
     <Compile Include="Patches\UI\OdysseyEventScreen_Update.cs" />
     <Compile Include="Patches\UI\SelectedUpgrade_UpdateButtonState.cs" />
     <Compile Include="Patches\UI\SettingsScreen_Open.cs" />
