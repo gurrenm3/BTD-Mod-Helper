@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Mods;
-using Assets.Scripts.Unity.Towers.Mods;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {

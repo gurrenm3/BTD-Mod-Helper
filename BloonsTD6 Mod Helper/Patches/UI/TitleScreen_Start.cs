@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Assets.Main.Scenes;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
@@ -7,7 +6,6 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches.UI
 {
@@ -31,7 +29,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 }
             }*/
 
-            MelonMain.PerformHook(mod => mod.OnTitleScreen());
+            ModHelper.PerformHook(mod => mod.OnTitleScreen());
 
             foreach (var modParagonTower in ModContent.GetContent<ModVanillaParagon>())
             {

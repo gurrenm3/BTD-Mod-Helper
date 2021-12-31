@@ -11,8 +11,8 @@ namespace BTD_Mod_Helper.Patches.Weapons
         [HarmonyPostfix]
         internal static void Postfix(Attack __instance, Entity targetLocal, Model modelToUse)
         {
-            MelonMain.PerformHook(mod => mod.OnAttackCreated(__instance, targetLocal, modelToUse));
-            MelonMain.PerformHook(mod => mod.OnAttackModelChanged(__instance, modelToUse));
+            ModHelper.PerformHook(mod => mod.OnAttackCreated(__instance, targetLocal, modelToUse));
+            ModHelper.PerformHook(mod => mod.OnAttackModelChanged(__instance, modelToUse));
         }
     }
 }

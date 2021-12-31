@@ -1,7 +1,6 @@
 ﻿#if BloonsTD6
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Simulation.Towers;

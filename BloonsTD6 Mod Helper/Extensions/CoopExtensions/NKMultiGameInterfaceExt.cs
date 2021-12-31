@@ -24,7 +24,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
         public static void SendMessage<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") where T : Il2CppSystem.Object
         {
-            Message message = MessageUtils.CreateMessage(objectToSend, code);
+            var message = MessageUtils.CreateMessage(objectToSend, code);
 
             var str = Il2CppSystem.Text.Encoding.Default.GetString(message.bytes);
             MelonLoader.MelonLogger.Msg($"str: {str}");
@@ -43,7 +43,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
         public static void SendMessage(this NKMultiGameInterface nkGI, Il2CppSystem.String objectToSend, byte? peerId = null, string code = "")
         {
-            Message message = MessageUtils.CreateMessage(objectToSend, code);
+            var message = MessageUtils.CreateMessage(objectToSend, code);
 
             var str = Il2CppSystem.Text.Encoding.Default.GetString(message.bytes);
             MelonLoader.MelonLogger.Msg($"str: {str}");
@@ -83,7 +83,7 @@ namespace BTD_Mod_Helper.Extensions
             if (message.Code != Chat_Message.chatCoopCode)
                 return null;
             string json = nkGI.ReadMessage<string>(message.bytes);
-            Chat_Message deserialized = Game.instance.GetJsonSerializer().DeserializeJson<Chat_Message>(json);
+            var deserialized = Game.instance.GetJsonSerializer().DeserializeJson<Chat_Message>(json);
             return deserialized;
         }
     }

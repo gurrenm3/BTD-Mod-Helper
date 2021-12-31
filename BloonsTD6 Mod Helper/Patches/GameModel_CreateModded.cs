@@ -57,8 +57,8 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(GameModel result, List<ModModel> mods)
         {
-            MelonMain.PerformHook(mod => mod.OnNewGameModel(result, mods));
-            MelonMain.PerformHook(mod => mod.OnNewGameModel(result));
+            ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));
+            ModHelper.PerformHook(mod => mod.OnNewGameModel(result));
 
             foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>()
                          .Where(content => !content.AffectBaseGameModel && content.ShouldApply))

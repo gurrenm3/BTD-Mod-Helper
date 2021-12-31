@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api;
-using MelonLoader;
 
 namespace BTD_Mod_Helper
 {

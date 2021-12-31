@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Models.Towers.Upgrades;
-using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
+﻿using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Extensions;
 using HarmonyLib;

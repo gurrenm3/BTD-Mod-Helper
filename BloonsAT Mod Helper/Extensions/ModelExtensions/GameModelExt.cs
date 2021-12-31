@@ -28,9 +28,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="spacing">Space between each bloon in this emission</param>
         public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissions(this GameModel model, BloonBaseType baseType, int number, float spacing)
         {
-            List<BloonEmissionModel> bloonEmissionModels = new List<BloonEmissionModel>();
+            var bloonEmissionModels = new List<BloonEmissionModel>();
 
-            for (int i = 0; i < number; i++)
+            for (var i = 0; i < number; i++)
                 bloonEmissionModels.Add(model.CreateBloonEmission(baseType, time: (int)spacing * i));
 
             return bloonEmissionModels.ToIl2CppReferenceArray();

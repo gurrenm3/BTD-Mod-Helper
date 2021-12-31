@@ -63,7 +63,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<T> Where<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            List<T> result = new List<T>();
+            var result = new List<T>();
             while (source.MoveNext())
             {
                 var item = source.Current.Cast<T>();
@@ -82,7 +82,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static int FindIndex<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            int i = 0;
+            var i = 0;
             while (source.MoveNext())
             {
                 if (predicate(source.Current.Cast<T>()))

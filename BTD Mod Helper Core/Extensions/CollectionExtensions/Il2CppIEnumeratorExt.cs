@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static int Count(this IEnumerator enumerator)
         {
-            int length = 0;
+            var length = 0;
 
             while (enumerator.MoveNext())
                 length++;
@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static Il2CppSystem.Object GetItem(this IEnumerator enumerator, int index)
         {
-            int i = 0;
+            var i = 0;
             while (enumerator.MoveNext())
             {
                 if (i == index)
@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<Il2CppSystem.Object> ToList(this IEnumerator enumerator)
         {
-            List<Il2CppSystem.Object> newList = new List<Il2CppSystem.Object>();
+            var newList = new List<Il2CppSystem.Object>();
             while (enumerator.MoveNext())
                 newList.Add(enumerator.Current);
 
@@ -61,7 +61,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object> ToIl2CppList(this IEnumerator enumerator)
         {
-            Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object> il2CppList = 
+            var il2CppList = 
                 new Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object>();
 
             while (enumerator.MoveNext())
@@ -75,10 +75,10 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Il2CppReferenceArray<Il2CppSystem.Object> ToIl2CppReferenceArray(this IEnumerator enumerator)
         {
-            Il2CppReferenceArray<Il2CppSystem.Object> il2cppArray = 
+            var il2cppArray = 
             new Il2CppReferenceArray<Il2CppSystem.Object>(enumerator.Count());
 
-            int i = 0;
+            var i = 0;
             while (enumerator.MoveNext())
             {
                 il2cppArray[i] = enumerator.Current;
@@ -94,7 +94,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static LockList<Il2CppSystem.Object> ToLockList(this IEnumerator enumerator)
         {
-            LockList<Il2CppSystem.Object> lockList = new LockList<Il2CppSystem.Object>();
+            var lockList = new LockList<Il2CppSystem.Object>();
             while (enumerator.MoveNext())
                 lockList.Add(enumerator.Current);
 

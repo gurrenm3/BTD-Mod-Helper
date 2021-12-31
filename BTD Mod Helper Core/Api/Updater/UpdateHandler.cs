@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
+using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using Newtonsoft.Json;
 
@@ -12,7 +13,7 @@ namespace BTD_Mod_Helper.Api.Updater
     internal class UpdateHandler
     {
         public static bool updatedMods;
-        
+
         internal static void SaveModUpdateInfo(string dir)
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
@@ -97,15 +98,17 @@ namespace BTD_Mod_Helper.Api.Updater
                         string message;
                         if (MelonHandler.Mods.Any(mod => mod.Info.Name == updateInfo.Name))
                         {
-                            message = $"Your version \"{updateInfo.CurrentVersion}\" of \"{updateInfo.Name}\" is now out of date. " +
-                                      "Would you like to download the new version? (requires restart)";
+                            message =
+                                $"Your version \"{updateInfo.CurrentVersion}\" of \"{updateInfo.Name}\" is now out of date. " +
+                                "Would you like to download the new version? (requires restart)";
                         }
                         else
                         {
-                            message = $"An updated version of {updateInfo.Name}, which you previously used, is now available. " +
-                                      "Would you like to download the new version and enable it? (requires restart)";
+                            message =
+                                $"An updated version of {updateInfo.Name}, which you previously used, is now available. " +
+                                "Would you like to download the new version and enable it? (requires restart)";
                             no = "No, forget this mod";
-                            actionNo = () => 
+                            actionNo = () =>
                                 File.Delete($"{modDir}\\UpdateInfo\\{updateInfo.Name}.json");
                         }
 
@@ -139,6 +142,18 @@ namespace BTD_Mod_Helper.Api.Updater
             }
 
             MelonLogger.Warning($"Failed to download mod {updateInfo.Name}");
+        }
+
+        public static void CheckModsForUpdates()
+        {
+            MelonLogger.Msg("Checking for updates...");
+
+            var updateDir = ModContent.GetInstance<MelonMain>().GetModDirectory() + "\\UpdateInfo";
+            Directory.CreateDirectory(updateDir);
+            SaveModUpdateInfo(updateDir);
+            var allUpdateInfo = LoadAllUpdateInfo(updateDir);
+            CheckForUpdates(allUpdateInfo, MelonMain.ModsNeedingUpdates);
+            MelonLogger.Msg("Done checking for updates");
         }
     }
 }

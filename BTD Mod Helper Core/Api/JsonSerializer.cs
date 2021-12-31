@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Api
 
         public string SerializeJson<T>(T objectToSerialize, bool shouldIndent = true, bool ignoreNulls = false)
         {
-            JsonSerializerSettings settings = new JsonSerializerSettings
+            var settings = new JsonSerializerSettings
             {
                 NullValueHandling = ignoreNulls ? NullValueHandling.Ignore : NullValueHandling.Include
             };
@@ -24,7 +24,7 @@ namespace BTD_Mod_Helper.Api
 
         public string SerializeJson<T>(T objectToSerialize, JsonSerializerSettings serializerSettings, bool shouldIndent = true)
         {
-            Formatting formatting = shouldIndent ? Formatting.Indented : Formatting.None;
+            var formatting = shouldIndent ? Formatting.Indented : Formatting.None;
             return JsonConvert.SerializeObject(objectToSerialize, formatting, serializerSettings);
         }
 
@@ -51,13 +51,13 @@ namespace BTD_Mod_Helper.Api
         /// <param name="filePath">Location of the file</param>
         public T LoadFromFile<T>(string filePath) where T : class
         {
-            string json = ReadTextFromFile(filePath);
+            var json = ReadTextFromFile(filePath);
             return (string.IsNullOrEmpty(json)) ? null : DeserializeJson<T>(json);
         }
 
         public T Il2CppLoadFromFile<T>(string filePath) where T : class
         {
-            string json = ReadTextFromFile(filePath);
+            var json = ReadTextFromFile(filePath);
             return (string.IsNullOrEmpty(json)) ? null : Il2CppDeserializeJson<T>(json);
         }
 
@@ -66,7 +66,7 @@ namespace BTD_Mod_Helper.Api
             if (!IsPathValid(filePath))
                 return null;
 
-            string text = File.ReadAllText(filePath);
+            var text = File.ReadAllText(filePath);
             if (string.IsNullOrEmpty(text))
                 return null;
 
@@ -95,10 +95,10 @@ namespace BTD_Mod_Helper.Api
             Guard.ThrowIfStringIsNull(savePath, "Can't save file, save path is null");
             CreateDirIfNotFound(savePath);
 
-            bool keepOriginal = !overwriteExisting;
-            StreamWriter serialize = new StreamWriter(savePath, keepOriginal);
+            var keepOriginal = !overwriteExisting;
+            var serialize = new StreamWriter(savePath, keepOriginal);
 
-            string json = SerializeJson(jsonObject, shouldIndent, ignoreNulls);
+            var json = SerializeJson(jsonObject, shouldIndent, ignoreNulls);
             serialize.Write(json);
             serialize.Close();
         }
@@ -109,10 +109,10 @@ namespace BTD_Mod_Helper.Api
             Guard.ThrowIfStringIsNull(savePath, "Can't save file, save path is null");
             CreateDirIfNotFound(savePath);
 
-            bool keepOriginal = !overwriteExisting;
-            StreamWriter serialize = new StreamWriter(savePath, keepOriginal);
+            var keepOriginal = !overwriteExisting;
+            var serialize = new StreamWriter(savePath, keepOriginal);
 
-            string json = SerializeJson(jsonObject, serializerSettings, shouldIndent);
+            var json = SerializeJson(jsonObject, serializerSettings, shouldIndent);
             serialize.Write(json);
             serialize.Close();
         }
@@ -125,10 +125,10 @@ namespace BTD_Mod_Helper.Api
             Guard.ThrowIfStringIsNull(savePath, "Can't save file, save path is null");
             CreateDirIfNotFound(savePath);
 
-            bool keepOriginal = !overwriteExisting;
-            StreamWriter serialize = new StreamWriter(savePath, keepOriginal);
+            var keepOriginal = !overwriteExisting;
+            var serialize = new StreamWriter(savePath, keepOriginal);
 
-            string json = Il2CppSerializeJson(jsonObject, shouldIndent);
+            var json = Il2CppSerializeJson(jsonObject, shouldIndent);
             serialize.Write(json);
             serialize.Close();
         }
@@ -136,7 +136,7 @@ namespace BTD_Mod_Helper.Api
 
         private void CreateDirIfNotFound(string dir)
         {
-            FileInfo f = new FileInfo(dir);
+            var f = new FileInfo(dir);
             Directory.CreateDirectory(f.Directory.FullName);
         }
     }

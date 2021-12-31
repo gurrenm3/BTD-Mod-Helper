@@ -146,8 +146,8 @@ namespace BTD_Mod_Helper.Api.Updater
 
             CleanVersionStrings(ref currentVersion, ref latestVersion);
 
-            int.TryParse(currentVersion, out int currentVersionNum);
-            int.TryParse(latestVersion, out int latestVersionNum);
+            int.TryParse(currentVersion, out var currentVersionNum);
+            int.TryParse(latestVersion, out var latestVersionNum);
 
             return latestVersionNum > currentVersionNum;
         }
@@ -161,11 +161,11 @@ namespace BTD_Mod_Helper.Api.Updater
 
         private static void RemoveAllNonNumeric(ref string str)
         {
-            string cleanedStr = "";
-            for (int i = 0; i < str.Length; i++)
+            var cleanedStr = "";
+            for (var i = 0; i < str.Length; i++)
             {
                 var currentLetter = str[i].ToString();
-                bool isNumber = Int32.TryParse(currentLetter, out _);
+                var isNumber = Int32.TryParse(currentLetter, out _);
                 if (isNumber)
                     cleanedStr += currentLetter;
             }
@@ -177,7 +177,7 @@ namespace BTD_Mod_Helper.Api.Updater
         {
             while (string1.Length != string2.Length)
             {
-                bool isString1Bigger = string1.Length > string2.Length;
+                var isString1Bigger = string1.Length > string2.Length;
 
                 string1 += isString1Bigger ? "" : "0";
                 string2 += isString1Bigger ? "0" : "";

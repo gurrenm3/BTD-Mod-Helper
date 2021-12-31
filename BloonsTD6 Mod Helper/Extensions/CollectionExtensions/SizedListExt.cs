@@ -9,8 +9,8 @@ namespace BTD_Mod_Helper.Extensions
     {
         public static List<T> ToList<T>(this SizedList<T> sizedList)
         {
-            List<T> newList = new List<T>();
-            for (int i = 0; i < sizedList.count; i++)
+            var newList = new List<T>();
+            for (var i = 0; i < sizedList.count; i++)
                 newList.Add(sizedList[i]);
 
             return newList;
@@ -18,8 +18,8 @@ namespace BTD_Mod_Helper.Extensions
 
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this SizedList<T> sizedList)
         {
-            Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
-            for (int i = 0; i < sizedList.count; i++)
+            var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+            for (var i = 0; i < sizedList.count; i++)
                 il2CppList.Add(sizedList[i]);
 
             return il2CppList;
@@ -27,10 +27,10 @@ namespace BTD_Mod_Helper.Extensions
 
         public static T[] ToArray<T>(this SizedList<T> sizedList)
         {
-            T[] newArray = new T[] { };
-            for (int i = 0; i < sizedList.count; i++)
+            var newArray = new T[] { };
+            for (var i = 0; i < sizedList.count; i++)
             {
-                T item = sizedList[i];
+                var item = sizedList[i];
                 Array.Resize(ref newArray, newArray.Length + 1);
                 newArray[newArray.Length - 1] = item;
             }
@@ -40,9 +40,9 @@ namespace BTD_Mod_Helper.Extensions
 
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this SizedList<T> sizedList) where T : Il2CppSystem.Object
         {
-            Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(sizedList.Count);
+            var il2cppArray = new Il2CppReferenceArray<T>(sizedList.Count);
 
-            for (int i = 0; i < sizedList.Count; i++)
+            for (var i = 0; i < sizedList.Count; i++)
                 il2cppArray[i] = sizedList[i];
 
             return il2cppArray;
@@ -53,8 +53,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static LockList<T> ToLockList<T>(this SizedList<T> sizedList)
         {
-            LockList<T> lockList = new LockList<T>();
-            for (int i = 0; i < sizedList.count; i++)
+            var lockList = new LockList<T>();
+            for (var i = 0; i < sizedList.count; i++)
                 lockList.Add(sizedList[i]);
 
             return lockList;
@@ -63,8 +63,8 @@ namespace BTD_Mod_Helper.Extensions
 
         public static SizedList<T> Duplicate<T>(this SizedList<T> list)
         {
-            SizedList<T> newList = new SizedList<T>();
-            for (int i = 0; i < list.count; i++)
+            var newList = new SizedList<T>();
+            for (var i = 0; i < list.count; i++)
                 newList.Add(list[i]);
 
             return newList;
@@ -73,8 +73,8 @@ namespace BTD_Mod_Helper.Extensions
         public static SizedList<TCast> DuplicateAs<TSource, TCast>(this SizedList<TSource> list)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            SizedList<TCast> newList = new SizedList<TCast>();
-            for (int i = 0; i < list.count; i++)
+            var newList = new SizedList<TCast>();
+            for (var i = 0; i < list.count; i++)
                 newList.Add(list[i].TryCast<TCast>());
 
             return newList;
@@ -89,9 +89,9 @@ namespace BTD_Mod_Helper.Extensions
         public static bool HasItemsOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            for (int i = 0; i < sizedList.count; i++)
+            for (var i = 0; i < sizedList.count; i++)
             {
-                TSource item = sizedList[i];
+                var item = sizedList[i];
                 try
                 {
                     if (item.IsType<TCast>())
@@ -121,9 +121,9 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(sizedList))
                 return null;
 
-            for (int i = 0; i < sizedList.count; i++)
+            for (var i = 0; i < sizedList.count; i++)
             {
-                TSource item = sizedList[i];
+                var item = sizedList[i];
                 try
                 {
                     if (item.TryCast<TCast>() != null)
@@ -141,10 +141,10 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(sizedList))
                 return null;
 
-            List<TCast> results = new List<TCast>();
-            for (int i = 0; i < sizedList.count; i++)
+            var results = new List<TCast>();
+            for (var i = 0; i < sizedList.count; i++)
             {
-                TSource item = sizedList[i];
+                var item = sizedList[i];
                 try
                 {
                     if (item.IsType(out TCast tryCast))
@@ -161,7 +161,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            TCast behavior = GetItemOfType<TSource, TCast>(sizedList);
+            var behavior = GetItemOfType<TSource, TCast>(sizedList);
             return RemoveItem(sizedList, behavior);
         }
 
@@ -172,11 +172,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(sizedList))
                 return sizedList;
 
-            List<TSource> arrayList = sizedList.ToList();
+            var arrayList = sizedList.ToList();
 
-            for (int i = 0; i < sizedList.Count; i++)
+            for (var i = 0; i < sizedList.Count; i++)
             {
-                TSource item = sizedList[i];
+                var item = sizedList[i];
                 if (item is null || !item.Equals(itemToRemove.TryCast<TCast>()))
                     continue;
 
@@ -195,11 +195,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(sizedList))
                 return sizedList;
 
-            int numRemoved = 0;
-            List<TSource> arrayList = sizedList.ToList();
-            for (int i = 0; i < sizedList.Count; i++)
+            var numRemoved = 0;
+            var arrayList = sizedList.ToList();
+            for (var i = 0; i < sizedList.Count; i++)
             {
-                TSource item = sizedList[i];
+                var item = sizedList[i];
                 if (item is null || !item.IsType<TCast>())
                     continue;
 

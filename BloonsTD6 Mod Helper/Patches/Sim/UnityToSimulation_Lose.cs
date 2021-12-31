@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Patches.Sim
         [HarmonyPostfix]
         internal static void Postfix()
         {
-            MelonMain.PerformHook(mod => mod.OnDefeat());
+            ModHelper.PerformHook(mod => mod.OnDefeat());
         }
     }
 }

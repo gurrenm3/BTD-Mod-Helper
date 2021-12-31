@@ -14,8 +14,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this List<T> list)
         {
-            Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
-            foreach (T item in list)
+            var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+            foreach (var item in list)
                 il2CppList.Add(item);
 
             return il2CppList;
@@ -26,9 +26,9 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this List<T> list) where T : Il2CppSystem.Object
         {
-            Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(list.Count);
+            var il2cppArray = new Il2CppReferenceArray<T>(list.Count);
 
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
                 il2cppArray[i] = list[i];
 
             return il2cppArray;
@@ -39,8 +39,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static LockList<T> ToLockList<T>(this List<T> list)
         {
-            LockList<T> lockList = new LockList<T>();
-            foreach (T item in list)
+            var lockList = new LockList<T>();
+            foreach (var item in list)
                 lockList.Add(item);
 
             return lockList;
@@ -54,8 +54,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<T> Duplicate<T>(this List<T> list)
         {
-            List<T> newList = new List<T>();
-            foreach (T item in list)
+            var newList = new List<T>();
+            foreach (var item in list)
                 newList.Add(item);
 
             return newList;
@@ -71,8 +71,8 @@ namespace BTD_Mod_Helper.Extensions
         public static List<TCast> DuplicateAs<TSource, TCast>(this List<TSource> list)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            List<TCast> newList = new List<TCast>();
-            foreach (TSource item in list)
+            var newList = new List<TCast>();
+            foreach (var item in list)
                 newList.Add(item.TryCast<TCast>());
 
             return newList;
@@ -89,7 +89,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             try
             {
-                string json = JsonConvert.SerializeObject(list);
+                var json = JsonConvert.SerializeObject(list);
                 File.WriteAllText(filePath, json);
                 return true;
             }
@@ -119,7 +119,7 @@ namespace BTD_Mod_Helper.Extensions
         public static T LoadFromFile<T>(this List<T> list, string filePath, out bool success)
         {
             success = false;
-            string json = File.ReadAllText(filePath);
+            var json = File.ReadAllText(filePath);
             if (string.IsNullOrEmpty(json)) return default;
 
             try
@@ -143,9 +143,9 @@ namespace BTD_Mod_Helper.Extensions
         public static bool HasItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
-                TSource item = list[i];
+                var item = list[i];
                 try
                 {
                     if (item.IsType<TCast>())
@@ -170,9 +170,9 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(list))
                 return null;
 
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
-                TSource item = list[i];
+                var item = list[i];
                 try
                 {
                     if (item.TryCast<TCast>() != null)
@@ -198,10 +198,10 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(list))
                 return null;
 
-            List<TCast> results = new List<TCast>();
-            for (int i = 0; i < list.Count; i++)
+            var results = new List<TCast>();
+            for (var i = 0; i < list.Count; i++)
             {
-                TSource item = list[i];
+                var item = list[i];
                 try
                 {
                     if (item.IsType(out TCast tryCast))
@@ -224,7 +224,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            TCast item = GetItemOfType<TSource, TCast>(list);
+            var item = GetItemOfType<TSource, TCast>(list);
             return RemoveItem(list, item);
         }
 
@@ -242,10 +242,10 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(list))
                 return list;
 
-            List<TSource> newList = list;
-            for (int i = 0; i < list.Count; i++)
+            var newList = list;
+            for (var i = 0; i < list.Count; i++)
             {
-                TSource item = list[i];
+                var item = list[i];
                 if (item is null || !item.Equals(itemToRemove.TryCast<TCast>()))
                     continue;
 
@@ -269,11 +269,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(list))
                 return list;
 
-            List<TSource> newList = list;
-            int numRemoved = 0;
-            for (int i = 0; i < list.Count; i++)
+            var newList = list;
+            var numRemoved = 0;
+            for (var i = 0; i < list.Count; i++)
             {
-                TSource item = list[i];
+                var item = list[i];
                 if (item is null || !item.IsType<TCast>())
                     continue;
 

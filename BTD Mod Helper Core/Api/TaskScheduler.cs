@@ -84,7 +84,7 @@ namespace BTD_Mod_Helper.Api
             switch (scheduleType)
             {
                 case ScheduleType.WaitForSeconds:
-                    int count = 0;
+                    var count = 0;
                     while (amountToWait >= count)
                     {
                         if (AppDomain.CurrentDomain == null)

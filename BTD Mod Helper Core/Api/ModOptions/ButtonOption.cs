@@ -30,12 +30,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
             Button.AddOnClick(() => modSetting.SetValue(!modSetting.value));
         }
 
-        //This is an example of how to setup button events, using the buttonClick code above.
-        private void buttonPressed()
-        {
-            
-        }
-
         internal static RectTransform GetOriginalAsset(GameObject parentGO)
         {
             return GetOriginalAsset(parentGO, "ButtonOption");

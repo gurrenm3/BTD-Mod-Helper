@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
-using BTD_Mod_Helper.Extensions;
+﻿using Assets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Towers
 {

@@ -20,7 +20,7 @@ namespace BTD_Mod_Helper
         public override string LatestURL => "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
         internal readonly List<UpdateInfo> modsNeedingUpdates = new List<UpdateInfo>();
 
-        public const string currentVersion = ModHelperData.currentVersion;
+        public const string currentVersion = ModHelper.CurrentVersion;
 
 
         public override void OnApplicationStart()
@@ -35,7 +35,7 @@ namespace BTD_Mod_Helper
             var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
 
-            string settingsDir = this.GetModSettingsDir(createIfNotExists: true);
+            var settingsDir = this.GetModSettingsDir(createIfNotExists: true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
 

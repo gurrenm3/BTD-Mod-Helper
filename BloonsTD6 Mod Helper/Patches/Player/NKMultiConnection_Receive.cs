@@ -13,11 +13,11 @@ namespace BTD_Mod_Helper.Patches
             if (messageQueue == null || messageQueue.Count == 0)
                 return;
             
-            for (int i = 0; i < messageQueue.Count; i++)
+            for (var i = 0; i < messageQueue.Count; i++)
             {
                 var message = messageQueue.Dequeue();
-                bool consumed = false;
-                MelonMain.PerformHook(mod =>
+                var consumed = false;
+                ModHelper.PerformHook(mod =>
                 {
                     consumed |= mod.ActOnMessage(message);
                 });

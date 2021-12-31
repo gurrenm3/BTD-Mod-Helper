@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity;
 
 namespace BTD_Mod_Helper.Api.Towers

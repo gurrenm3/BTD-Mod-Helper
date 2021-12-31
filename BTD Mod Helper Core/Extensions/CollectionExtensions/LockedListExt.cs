@@ -15,8 +15,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<T> ToList<T>(this LockList<T> lockList)
         {
-            List<T> newList = new List<T>();
-            for (int i = 0; i < lockList.Count; i++)
+            var newList = new List<T>();
+            for (var i = 0; i < lockList.Count; i++)
                 newList.Add(lockList[i]);
 
             return newList;
@@ -30,8 +30,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this LockList<T> lockList)
         {
-            Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
-            for (int i = 0; i < lockList.Count; i++)
+            var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+            for (var i = 0; i < lockList.Count; i++)
                 il2CppList.Add(lockList[i]);
 
             return il2CppList;
@@ -45,10 +45,10 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T[] ToArray<T>(this LockList<T> lockList)
         {
-            T[] newArray = new T[] { };
-            for (int i = 0; i < lockList.Count; i++)
+            var newArray = new T[] { };
+            for (var i = 0; i < lockList.Count; i++)
             {
-                T item = lockList[i];
+                var item = lockList[i];
                 Array.Resize(ref newArray, newArray.Length + 1);
                 newArray[newArray.Length - 1] = item;
             }
@@ -64,9 +64,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this LockList<T> lockList) where T : Il2CppSystem.Object
         {
-            Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(lockList.Count);
+            var il2cppArray = new Il2CppReferenceArray<T>(lockList.Count);
 
-            for (int i = 0; i < lockList.Count; i++)
+            for (var i = 0; i < lockList.Count; i++)
                 il2cppArray[i] = lockList[i];
 
             return il2cppArray;
@@ -80,8 +80,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static LockList<T> Duplicate<T>(this LockList<T> list)
         {
-            LockList<T> newList = new LockList<T>();
-            for (int i = 0; i < list.Count; i++)
+            var newList = new LockList<T>();
+            for (var i = 0; i < list.Count; i++)
                 newList.Add(list[i]);
 
             return newList;
@@ -97,8 +97,8 @@ namespace BTD_Mod_Helper.Extensions
         public static LockList<TCast> DuplicateAs<TSource, TCast>(this LockList<TSource> list)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            LockList<TCast> newList = new LockList<TCast>();
-            for (int i = 0; i < list.Count; i++)
+            var newList = new LockList<TCast>();
+            for (var i = 0; i < list.Count; i++)
                 newList.Add(list[i].TryCast<TCast>());
 
             return newList;
@@ -135,9 +135,9 @@ namespace BTD_Mod_Helper.Extensions
         public static bool HasItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            for (int i = 0; i < lockList.Count; i++)
+            for (var i = 0; i < lockList.Count; i++)
             {
-                TSource item = lockList[i];
+                var item = lockList[i];
                 try
                 {
                     if (item.IsType<TCast>())
@@ -192,7 +192,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<TCast> GetItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            List<TCast> result = new List<TCast>();
+            var result = new List<TCast>();
             lockList.ForEach(item => 
             {
                 if (item.IsType(out TCast cast))
@@ -248,11 +248,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(lockList))
                 return lockList;
 
-            List<TSource> arrayList = lockList.ToList();
+            var arrayList = lockList.ToList();
 
-            for (int i = 0; i < lockList.Count; i++)
+            for (var i = 0; i < lockList.Count; i++)
             {
-                TSource item = lockList[i];
+                var item = lockList[i];
                 if (item is null || !item.Equals(itemToRemove.TryCast<TCast>()))
                     continue;
 
@@ -277,11 +277,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(lockList))
                 return lockList;
 
-            int numRemoved = 0;
-            List<TSource> arrayList = lockList.ToList();
-            for (int i = 0; i < lockList.Count; i++)
+            var numRemoved = 0;
+            var arrayList = lockList.ToList();
+            for (var i = 0; i < lockList.Count; i++)
             {
-                TSource item = lockList[i];
+                var item = lockList[i];
                 if (item is null || !item.IsType<TCast>())
                     continue;
 

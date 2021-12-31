@@ -10,8 +10,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static SizedList<T> ToSizedList<T>(this List<T> list)
         {
-            SizedList<T> sizedList = new SizedList<T>();
-            foreach (T item in list)
+            var sizedList = new SizedList<T>();
+            foreach (var item in list)
                 sizedList.Add(item);
 
             return sizedList;

@@ -20,7 +20,7 @@ namespace BTD_Mod_Helper.Patches.Resources
             if (!string.IsNullOrEmpty(SessionData.Instance.SaveDirectory) || !path.ToLower().EndsWith("profile.save"))
                 return;
 
-            FileInfo fileInfo = new FileInfo(path);
+            var fileInfo = new FileInfo(path);
             SessionData.Instance.SaveDirectory = fileInfo.Directory.FullName;
             SessionData.Instance.PlayerSaveStrategy = __result;
         }

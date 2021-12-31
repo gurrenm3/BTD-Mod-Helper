@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
@@ -16,10 +14,7 @@ using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Models.Towers.Props;
 using Assets.Scripts.Models.Towers.Weapons;
-using Assets.Scripts.Simulation.Objects;
-using Il2CppSystem.Linq;
 using MelonLoader;
-using UnhollowerBaseLib;
 using Enumerable = System.Linq.Enumerable;
 
 namespace BTD_Mod_Helper.Extensions

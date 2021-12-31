@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Api
     ///     <br/>
     ///     2. It is a utility class with methods to access instances of those classes and other resources
     /// </summary>
-    public abstract class ModContent
+    public abstract class ModContent : IModContent
     {
         /// <summary>
         /// The name that will be at the end of the ID for this ModContent, by default the class name
@@ -48,9 +48,6 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public BloonsMod mod;
 
-        internal static readonly Dictionary<Type, List<ModContent>>
-            Instances = new Dictionary<Type, List<ModContent>>();
-
         /// <summary>
         /// Used for when you want to programmatically create multiple instances of a given ModContent
         /// </summary>
@@ -70,7 +67,6 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         protected virtual float RegistrationPriority => 5f;
 
-
         /// <summary>
         /// How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
         /// </summary>
@@ -82,58 +78,57 @@ namespace BTD_Mod_Helper.Api
             mod.Content = mod.Assembly
                 .GetValidTypes()
                 .Where(CanLoadType)
-                .SelectMany(type => Create(type, mod))
+                .SelectMany(type => CreateInstances(type, mod))
                 .Where(content => content != null)
                 .OrderBy(content => content.RegistrationPriority)
                 .ToList();
         }
 
-        internal static bool CanLoadType(Type type) =>
+        private const BindingFlags ConstructorFlags = BindingFlags.Instance |
+                                                      BindingFlags.Public |
+                                                      BindingFlags.NonPublic;
+
+        private static bool CanLoadType(Type type) =>
             !type.IsAbstract &&
             !type.ContainsGenericParameters &&
             typeof(ModContent).IsAssignableFrom(type) &&
-            type.GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
-                null, Type.EmptyTypes, null) !=
-            null;
+            type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) != null;
 
         /// <summary>
-        /// 
+        /// Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
         /// </summary>
         /// <param name="type"></param>
         /// <param name="mod"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        internal static IEnumerable<ModContent> Create(Type type, BloonsMod mod)
+        private static IEnumerable<ModContent> CreateInstances(Type type, BloonsMod mod)
         {
             try
             {
-                if (!Instances.ContainsKey(type))
+                ModContent instance;
+                try
                 {
-                    ModContent instance;
-                    try
-                    {
-                        instance = (ModContent) Activator.CreateInstance(type);
-                    }
-                    catch (Exception)
-                    {
-                        MelonLogger.Error($"Error creating default {type.Name}");
-                        MelonLogger.Error("A zero argument constructor is REQUIRED for all ModContent classes");
-                        throw;
-                    }
-
-                    instance.mod = mod;
-
-                    var instances = instance.Load().ToList();
-                    foreach (var modContent in instances)
-                    {
-                        modContent.mod = mod;
-                    }
-
-                    Instances[type] = instances;
+                    instance = (ModContent) Activator.CreateInstance(type);
+                }
+                catch (Exception)
+                {
+                    MelonLogger.Error($"Error creating default {type.Name}");
+                    MelonLogger.Error("A zero argument constructor is REQUIRED for all ModContent classes");
+                    throw;
                 }
 
-                return Instances[type];
+                instance.mod = mod;
+
+                var instances = instance.Load().ToList();
+                foreach (var modContent in instances)
+                {
+                    modContent.mod = mod;
+                }
+
+                ModContentInstances.SetInstances(type, instances);
+
+                return instances;
             }
             catch (Exception e)
             {
@@ -385,7 +380,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public static List<T> GetInstances<T>() where T : ModContent
         {
-            return !Instances.ContainsKey(typeof(T)) ? null : Instances[typeof(T)].Cast<T>().ToList();
+            return ModContentInstance<T>.Instances;
         }
 
         /// <summary>
@@ -395,7 +390,8 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public static List<T> GetContent<T>() where T : ModContent
         {
-            return Instances.Where(pair => typeof(T).IsAssignableFrom(pair.Key))
+            return ModContentInstances.Instances
+                .Where(pair => typeof(T).IsAssignableFrom(pair.Key))
                 .SelectMany(pair => pair.Value)
                 .Cast<T>()
                 .ToList();
@@ -407,37 +403,26 @@ namespace BTD_Mod_Helper.Api
         /// Gets the singleton instance of a particular ModContent or BloonsMod based on its type
         /// </summary>
         /// <typeparam name="T">The type to get the instance of</typeparam>
-        /// <returns>The official instance of it</returns>
-        public static T GetInstance<T>()
+        /// <returns>The singleton instance of it</returns>
+        public static T GetInstance<T>() where T : IModContent
         {
-            if (typeof(T).IsSubclassOf(typeof(ModContent)))
+            var instance = ModContentInstance<T>.Instance;
+            if (instance == null)
             {
-                if (Instances.ContainsKey(typeof(T)))
-                {
-                    return (T) (object) Instances[typeof(T)][0];
-                }
-
-                return default;
+                MelonLogger.Msg($"The instance was null for {typeof(T).Name}");
             }
 
-            if (typeof(T).IsSubclassOf(typeof(BloonsMod)))
-            {
-                return MelonHandler.Mods.OfType<T>().FirstOrDefault();
-            }
-
-            MelonLogger.Warning("Can't call GetInstance<T>() on type that is not ModContent or BloonsMod");
-
-            return default;
+            return instance;
         }
 
         /// <summary>
-        /// Gets the official instance of a particular ModLoadable or BloonsMod based on its type
+        /// Gets the official instance of a particular ModContent or BloonsMod based on its type
         /// </summary>
         /// <param name="type">The type to get the instance of</param>
         /// <returns>The official instance of it</returns>
-        public static object GetInstance(Type type)
+        public static IModContent GetInstance(Type type)
         {
-            return !Instances.ContainsKey(type) ? default : Instances[type][0];
+            return ModContentInstances.Instances.TryGetValue(type, out var instance) ? instance[0] : default;
         }
 
         /// <summary>
@@ -509,7 +494,7 @@ namespace BTD_Mod_Helper.Api
         {
             return GetInstance<T>().Id;
         }
-        
+
         /// <summary>
         /// Gets the ID for the given ModGameMode
         /// </summary>
@@ -519,7 +504,7 @@ namespace BTD_Mod_Helper.Api
         {
             return GetInstance<T>().Id;
         }
-        
+
         /// <summary>
         /// Gets the ID for the given ModRoundSet
         /// </summary>

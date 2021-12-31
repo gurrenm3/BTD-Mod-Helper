@@ -25,7 +25,7 @@ namespace BTD_Mod_Helper.Patches.Resources
                 }
             }
             
-            MelonMain.PerformHook(mod => mod.OnGameObjectsReset());
+            ModHelper.PerformHook(mod => mod.OnGameObjectsReset());
             
             ResourceHandler.Prefabs.Clear();
         }

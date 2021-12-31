@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="action">Action to preform on each element</param>
         public static void ForEach<T>(this T[] array, Action<T> action)
         {
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
                 action.Invoke(array[i]);
         }
 

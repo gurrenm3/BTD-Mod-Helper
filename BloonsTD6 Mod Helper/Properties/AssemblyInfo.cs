@@ -15,13 +15,13 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", MelonMain.currentVersion, "Gurrenm4 and Doombubbles")]
+[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", MelonMain.CurrentVersion, "Gurrenm4 and Doombubbles")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonColor(ConsoleColor.Blue)]
 [assembly: MelonPriority(-1000)]
 
-[assembly: AssemblyVersion(MelonMain.currentVersion)]
-[assembly: AssemblyFileVersion(MelonMain.currentVersion)]
+[assembly: AssemblyVersion(MelonMain.CurrentVersion)]
+[assembly: AssemblyFileVersion(MelonMain.CurrentVersion)]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

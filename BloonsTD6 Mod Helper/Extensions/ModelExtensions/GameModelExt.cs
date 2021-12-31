@@ -53,7 +53,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="towerModel">TowerModel to add</param>
         /// <param name="towerDetailsModel">Optionally add a TowerDetailsModel for your towerModel</param>
-        public static void AddTowerToGame(this GameModel model, TowerModel towerModel, TowerDetailsModel towerDetailsModel = null)
+        public static void AddTowerToGame(this GameModel model, TowerModel towerModel,
+            TowerDetailsModel towerDetailsModel = null)
         {
             model.towers = model.towers.AddTo(towerModel);
             model.AddChildDependant(towerModel);
@@ -67,7 +68,7 @@ namespace BTD_Mod_Helper.Extensions
 
             // MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
         }
-        
+
         /// <summary>
         /// Add multiple TowerModels to the game more efficiently than calling the single method repeatedly.
         /// </summary>
@@ -87,14 +88,14 @@ namespace BTD_Mod_Helper.Extensions
             }
 
             model.towers = newArray;
-            
+
             foreach (var towerModel in array)
             {
                 model.AddChildDependant(towerModel);
                 ModTowerHelper.TowerCache[towerModel.name] = towerModel;
             }
         }
-        
+
 
         /// <summary>
         /// Adds a tower 
@@ -127,6 +128,7 @@ namespace BTD_Mod_Helper.Extensions
                     index = towerSet.IndexOf(lastOfSet) + 1;
                 }
             }
+
             AddTowerDetails(model, towerDetailsModel, index);
         }
 
@@ -142,13 +144,15 @@ namespace BTD_Mod_Helper.Extensions
             if (index < 0)
             {
                 index = 0;
-            } else if (index > towerSet.Count)
+            }
+            else if (index > towerSet.Count)
             {
                 index = towerSet.Count;
             }
+
             towerSet.Insert(index, towerDetailsModel);
             model.towerSet = towerSet.ToArray();
-            
+
             for (var i = 0; i < model.towerSet.Count; i++)
             {
                 model.towerSet[i].towerIndex = i;
@@ -158,7 +162,7 @@ namespace BTD_Mod_Helper.Extensions
             towerList.Insert(index, towerDetailsModel.towerId);
             Game.towers = towerList.ToArray();
         }
-        
+
         /// <summary>
         /// Adds a HeroDetailsModel to the GameModel's HeroSet at a particular index
         /// </summary>
@@ -171,19 +175,21 @@ namespace BTD_Mod_Helper.Extensions
             if (index < 0)
             {
                 index = 0;
-            } else if (index > heroSet.Count)
+            }
+            else if (index > heroSet.Count)
             {
                 index = heroSet.Count;
             }
+
             heroSet.Insert(index, heroDetailsModel);
             model.heroSet = heroSet.ToArray();
-            
+
             for (var i = 0; i < model.heroSet.Count; i++)
             {
                 model.heroSet[i].towerIndex = i;
             }
 
-            
+
             var towersIndex = index + model.towerSet.Count;
             if (towersIndex <= Game.towers.Count)
             {
@@ -204,10 +210,11 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Return all ShopTowerDetailModels
         /// </summary>
-        public static Il2CppSystem.Collections.Generic.List<ShopTowerDetailsModel> GetAllShopTowerDetails(this GameModel model)
+        public static Il2CppSystem.Collections.Generic.List<ShopTowerDetailsModel> GetAllShopTowerDetails(
+            this GameModel model)
         {
-            Il2CppSystem.Collections.Generic.List<TowerDetailsModel> towerDetails = model.GetAllTowerDetails();
-            Il2CppSystem.Collections.Generic.List<TowerDetailsModel> results = towerDetails.Where(detail => detail.GetShopTowerDetails() != null);
+            var towerDetails = model.GetAllTowerDetails();
+            var results = towerDetails.Where(detail => detail.GetShopTowerDetails() != null);
             return results.DuplicateAs<TowerDetailsModel, ShopTowerDetailsModel>();
         }
 
@@ -230,7 +237,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="path2"></param>
         /// <param name="path3"></param>
         /// <returns></returns>
-        public static TowerModel GetTowerModel(this GameModel model, string towerId, int path1 = 0, int path2 = 0, int path3 = 0)
+        public static TowerModel GetTowerModel(this GameModel model, string towerId, int path1 = 0, int path2 = 0,
+            int path3 = 0)
         {
             return model.towers.FirstOrDefault(t => t.name.Contains(towerId) && t.HasTiers(path1, path2, path3));
         }
@@ -241,7 +249,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="bloonModel">The bloon model that these bloons should be</param>
         /// <param name="number">Number of Bloons in this emission</param>
         /// <param name="spacing">Space between each bloon in this emission</param>
-        public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissions(this GameModel model, BloonModel bloonModel, int number, float spacing)
+        public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissions(this GameModel model,
+            BloonModel bloonModel, int number, float spacing)
         {
             return model.CreateBloonEmissions(bloonModel.name, number, spacing);
         }
@@ -252,11 +261,12 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="bloonName">Name of bloon. Example: "Red"</param>
         /// <param name="number">Number of Bloons in this emission</param>
         /// <param name="spacing">Space between each bloon in this emission</param>
-        public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissions(this GameModel model, string bloonName, int number, float spacing)
+        public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissions(this GameModel model,
+            string bloonName, int number, float spacing)
         {
-            List<BloonEmissionModel> bloonEmissionModels = new List<BloonEmissionModel>();
+            var bloonEmissionModels = new List<BloonEmissionModel>();
 
-            for (int i = 0; i < number; i++)
+            for (var i = 0; i < number; i++)
                 bloonEmissionModels.Add(model.CreateBloonEmission(bloonName, time: spacing * i));
 
             return bloonEmissionModels.ToIl2CppReferenceArray();
@@ -280,15 +290,20 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="chargedMutators"></param>
         /// <param name="behaviorMutators"></param>
         public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time,
-           Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators, Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
+            Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators,
+            Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
         {
             //return new BloonEmissionModel("", time, bloonName, chargedMutators, behaviorMutators); // removed in update 25.0
             return new BloonEmissionModel("", time, bloonName);
         }
 
-        public static BloonGroupModel CreateBloonGroup(this GameModel model, string bloonName, float startTime, float spacing, int count)
+        /// <summary>
+        /// Creates a BloonGroup
+        /// </summary>
+        public static BloonGroupModel CreateBloonGroup(this GameModel model, string bloonName, float startTime,
+            float spacing, int count)
         {
-            float endTime = startTime + (spacing * count);
+            var endTime = startTime + (spacing * count);
             return new BloonGroupModel("", bloonName, startTime, endTime, count);
         }
 
@@ -297,12 +312,12 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<AttackModel> GetAllAttackModels(this GameModel model)
         {
-            List<AttackModel> attackModels = new List<AttackModel>();
-            Il2CppReferenceArray<TowerModel> towers = model.towers;
+            var attackModels = new List<AttackModel>();
+            var towers = model.towers;
 
-            foreach (TowerModel tower in towers)
+            foreach (var tower in towers)
             {
-                List<AttackModel> attacks = tower.GetAttackModels();
+                var attacks = tower.GetAttackModels();
                 if (attacks != null && attacks.Any())
                     attackModels.AddRange(attacks);
             }
@@ -315,12 +330,12 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<WeaponModel> GetAllWeaponModels(this GameModel model)
         {
-            List<WeaponModel> weaponModels = new List<WeaponModel>();
+            var weaponModels = new List<WeaponModel>();
             List<AttackModel> attackModels = model.GetAllAttackModels();
 
-            foreach (AttackModel attackModel in attackModels)
+            foreach (var attackModel in attackModels)
             {
-                Il2CppReferenceArray<WeaponModel> weapons = attackModel.weapons;
+                var weapons = attackModel.weapons;
                 if (weapons != null && weapons.Any())
                     weaponModels.AddRange(weapons);
             }
@@ -332,15 +347,7 @@ namespace BTD_Mod_Helper.Extensions
         /// Return all ProjectileModels from every TowerModel in the game
         /// </summary>
         public static List<ProjectileModel> GetAllProjectileModels(this GameModel model)
-        {
-            List<ProjectileModel> projectileModels = new List<ProjectileModel>();
-            Il2CppReferenceArray<TowerModel> towerModels = model.towers;
-
-            foreach (TowerModel towerModel in towerModels)
-                projectileModels.AddRange(towerModel.GetDescendants<ProjectileModel>().ToList());
-
-            return projectileModels;
-        }
+            => model.towers.SelectMany(towerModel => towerModel.GetDescendants<ProjectileModel>().ToList()).ToList();
 
         /// <summary>
         /// Return all AbilityModels from every TowerModel in the game
@@ -348,19 +355,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="model"></param>
         /// <returns></returns>
         public static List<AbilityModel> GetAllAbilityModels(this GameModel model)
-        {
-            List<AbilityModel> abilityModels = new List<AbilityModel>();
-            Il2CppReferenceArray<TowerModel> towers = model.towers;
-
-            foreach (TowerModel tower in towers)
-            {
-                List<AbilityModel> abilities = tower.GetAbilities();
-                if (abilities != null && abilities.Any())
-                    abilityModels.AddRange(abilities);
-            }
-
-            return abilityModels;
-        }
+            => model.towers.SelectMany(towerModel => towerModel.GetDescendants<AbilityModel>().ToList()).ToList();
 
         /// <summary>
         /// Return all TowerModels that have at least one AbilityModel
@@ -372,6 +367,9 @@ namespace BTD_Mod_Helper.Extensions
             return model.towers.Where(t => t.GetAbilities() != null).ToList();
         }
 
+        /// <summary>
+        /// Fully adds an UpgradeModel to the GameModel
+        /// </summary>
         public static void AddUpgrade(this GameModel model, UpgradeModel upgradeModel)
         {
             model.upgrades = model.upgrades.AddTo(upgradeModel);
@@ -379,12 +377,18 @@ namespace BTD_Mod_Helper.Extensions
             model.AddChildDependant(upgradeModel);
         }
 
+        /// <summary>
+        /// Fully adds multiple UpgradeModels to the GameModel
+        /// </summary>
         public static void AddUpgrades(this GameModel model, List<UpgradeModel> upgradeModels)
         {
             model.upgrades = model.upgrades.AddTo(upgradeModels);
             upgradeModels.ForEach(upgrade => model.upgradesByName.Add(upgrade.name, upgrade));
         }
 
+        /// <summary>
+        /// Fully adds multiple UpgradeModels to the GameModel
+        /// </summary>
         public static void AddUpgrades(this GameModel model, UpgradeModel[] upgradeModels)
         {
             model.upgrades = model.upgrades.AddTo(upgradeModels);

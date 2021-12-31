@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
+using Resources = BTD_Mod_Helper.Properties.Resources;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -18,7 +19,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             get
             {
                 if (assetBundle is null)
-                    assetBundle = AssetBundle.LoadFromMemory(Properties.Resources.modoptions);
+                    assetBundle = AssetBundle.LoadFromMemory(Resources.modoptions);
                 return assetBundle;
             }
             set { assetBundle = value; }
@@ -84,11 +85,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
             doneButton.AddOnClick(() =>
             {
                 Object.Destroy(instantiatedUI);
-                MelonMain.modsButton.instantiatedButton.gameObject.SetActive(true);
-                ModSettingsHandler.SaveModSettings(ModContent.GetInstance<MelonMain>().GetModSettingsDir());
+                modsButton.instantiatedButton.gameObject.SetActive(true);
+                ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir());
             });
 
-            MelonMain.PerformHook(mod => mod.OnModOptionsOpened());
+            ModHelper.PerformHook(mod => mod.OnModOptionsOpened());
         }
 
         private void PopulateModOptions(BloonsMod bloonsMod)
@@ -134,5 +135,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modListItem.Hide();
         }
 #endif
+        internal static ShowModOptions_Button modsButton;
     }
 }

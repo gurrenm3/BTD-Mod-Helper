@@ -39,7 +39,7 @@ namespace BTD_Mod_Helper.Patches
                 __instance.seenNewHeroNotification.Add(modHero.Id);
             }
             
-            MelonMain.PerformHook(mod => mod.OnProfileLoaded(__instance));
+            ModHelper.PerformHook(mod => mod.OnProfileLoaded(__instance));
         }
     }
 }

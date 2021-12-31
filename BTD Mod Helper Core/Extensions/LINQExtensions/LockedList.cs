@@ -14,7 +14,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="action">Action to preform on each element</param>
         public static void ForEach<T>(this LockList<T> source, Action<T> action)
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
                 action.Invoke(source[i]);
         }
 
@@ -27,9 +27,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T First<T>(this LockList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
             {
-                T item = source[i];
+                var item = source[i];
                 if (predicate(item))
                     return item;
             }
@@ -46,9 +46,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T FirstOrDefault<T>(this LockList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
             {
-                T item = source[i];
+                var item = source[i];
                 if (predicate(item))
                     return item;
             }
@@ -64,10 +64,10 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<T> Where<T>(this LockList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            List<T> result = new List<T>();
-            for (int i = 0; i < source.Count; i++)
+            var result = new List<T>();
+            for (var i = 0; i < source.Count; i++)
             {
-                T item = source[i];
+                var item = source[i];
                 if (predicate(item))
                     result.Add(item);
             }
@@ -83,7 +83,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static int FindIndex<T>(this LockList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
             {
                 if (predicate(source[i]))
                     return i;
@@ -112,7 +112,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static bool Any<T>(this LockList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
             {
                 if (predicate(source[i]))
                     return true;
@@ -142,9 +142,9 @@ namespace BTD_Mod_Helper.Extensions
         public static T LastOrDefault<T>(this LockList<T> source, Func<T, bool> predicate)
         {
             T last = default;
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
             {
-                T item = source[i];
+                var item = source[i];
                 if (predicate(item))
                     last = item;
             }

@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Patches.Weapons
         [HarmonyPostfix]
         public static void Postfix(Weapon __instance)
         {
-            MelonMain.PerformHook(mod => mod.OnWeaponFire(__instance));
+            ModHelper.PerformHook(mod => mod.OnWeaponFire(__instance));
         }
     }
 }

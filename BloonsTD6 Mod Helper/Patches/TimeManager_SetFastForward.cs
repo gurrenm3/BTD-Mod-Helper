@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPostfix]
         internal static void Postfix(bool value)
         {
-            MelonMain.PerformHook(mod => mod.OnFastForwardChanged(value));
+            ModHelper.PerformHook(mod => mod.OnFastForwardChanged(value));
         }
     }
 

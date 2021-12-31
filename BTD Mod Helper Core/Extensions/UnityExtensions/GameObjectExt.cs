@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void RecursivelyLog(this GameObject gameObject, int depth = 0)
         {
             var str = gameObject.name;
-            for (int i = 0; i < depth; i++)
+            for (var i = 0; i < depth; i++)
             {
                 str = "|  " + str;
             }
@@ -62,7 +62,7 @@ namespace BTD_Mod_Helper.Extensions
 
             str += ")";
             MelonLogger.Msg(str);
-            for (int i = 0; i < gameObject.transform.childCount; i++)
+            for (var i = 0; i < gameObject.transform.childCount; i++)
             {
                 RecursivelyLog(gameObject.transform.GetChild(i).gameObject, depth + 1);
             }

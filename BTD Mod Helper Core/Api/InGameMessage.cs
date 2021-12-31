@@ -48,11 +48,11 @@ namespace BTD_Mod_Helper.Api
             // Initialize game object stuff
             //======
 
-            Scene popups = SceneManager.GetSceneByName("Popups");
-            Scene mainMenuWorld = SceneManager.GetSceneByName("MainMenuWorld");
-            Scene globalScene = SceneManager.GetSceneByName("Global");
-            Scene commonForeground = SceneManager.GetSceneByName("CommonForegroundUI");
-            Scene mainMenuUI = SceneManager.GetSceneByName("MainMenuUi");
+            var popups = SceneManager.GetSceneByName("Popups");
+            var mainMenuWorld = SceneManager.GetSceneByName("MainMenuWorld");
+            var globalScene = SceneManager.GetSceneByName("Global");
+            var commonForeground = SceneManager.GetSceneByName("CommonForegroundUI");
+            var mainMenuUI = SceneManager.GetSceneByName("MainMenuUi");
 
 
             /*img = canvas.transform.Find("Image").GetComponent<Image>();
@@ -87,16 +87,16 @@ namespace BTD_Mod_Helper.Api
             body.color = currentMsg.NkhText.BodyColor;
 
             //set pos so elements are positioned correctly
-            int windowHeight = Screen.height;
+            var windowHeight = Screen.height;
             //MelonLogger.Log(windowHeight.ToString());
 
-            float test1 = (windowHeight / 8) * 1.155f;
+            var test1 = (windowHeight / 8) * 1.155f;
             //var spaceBetweenSlots = 110 * slot;
             //var spaceBetweenSlots = 135* slot;
-            float spaceBetweenSlots = test1 * slot;
+            var spaceBetweenSlots = test1 * slot;
 
 
-            Vector3 pos = img.transform.position;
+            var pos = img.transform.position;
             pos.x = -defaultWidth;
             pos.y -= spaceBetweenSlots + 55;
             pos.z = 955;       //might get rid of this later. Setting ui to be very high up so it won't get put under other stuff. Game camera is at about 995
@@ -150,7 +150,7 @@ namespace BTD_Mod_Helper.Api
             if (Time.time < nextMsgRunTime)
                 return;
 
-            float amtToAdd = 18.5f;
+            var amtToAdd = 18.5f;
             if ((img.transform.position.x + amtToAdd) >= maxX)
             {
                 Slide(maxX);
@@ -179,7 +179,7 @@ namespace BTD_Mod_Helper.Api
             if (Time.time < nextMsgRunTime)
                 return;
 
-            float amtToSubtract = 6.5f;
+            var amtToSubtract = 6.5f;
             if (img.transform.position.x - amtToSubtract <= -defaultWidth)
             {
                 Slide(-defaultWidth);
@@ -237,11 +237,11 @@ namespace BTD_Mod_Helper.Api
         public static Queue<NkhMsg> notificationQueue = new Queue<NkhMsg>();
         public static void AddNotification(NkhMsg msg)
         {
-            Scene globalScene = SceneManager.GetSceneByName("Global");
+            var globalScene = SceneManager.GetSceneByName("Global");
             if (!globalScene.IsValid())
                 return;
 
-            Transform game = globalScene.GetRootGameObjects()[0].transform.Find("Game");
+            var game = globalScene.GetRootGameObjects()[0].transform.Find("Game");
             if (game is null)
                 return;
 
@@ -255,11 +255,11 @@ namespace BTD_Mod_Helper.Api
             lock (notifications)
             {
 
-                int slot = 0;
-                for (int i = 0; i < maxMessagesAtOnce; i++)  //this terrible looking code gets first availible slot for message. prevents overlapping msgs
+                var slot = 0;
+                for (var i = 0; i < maxMessagesAtOnce; i++)  //this terrible looking code gets first availible slot for message. prevents overlapping msgs
                 {
-                    bool skip = false;
-                    foreach (Notification item in notifications)
+                    var skip = false;
+                    foreach (var item in notifications)
                     {
                         if (item.slot == i)
                         {
@@ -275,7 +275,7 @@ namespace BTD_Mod_Helper.Api
                     break;
                 }
 
-                Notification notification = new Notification(slot, msg);
+                var notification = new Notification(slot, msg);
                 notifications.Add(notification);
             }
         }

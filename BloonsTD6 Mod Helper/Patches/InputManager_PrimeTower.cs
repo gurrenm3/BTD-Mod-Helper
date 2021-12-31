@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Patches
             if (InGame.instance == null)
                 return;
 
-            TaskScheduler.ScheduleTask(() => { MelonMain.PerformHook(mod => mod.OnTowerGraphicsCreated(__instance.placementModel, __instance.placementGraphics)); }, waitCondition: () =>
+            TaskScheduler.ScheduleTask(() => { ModHelper.PerformHook(mod => mod.OnTowerGraphicsCreated(__instance.placementModel, __instance.placementGraphics)); }, waitCondition: () =>
             { return __instance.placementGraphics?.Count > 0; });
         }
     }

@@ -29,11 +29,11 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static GameObject GetInGameUI(this InGame inGame)
         {
-            Scene scene = SceneManager.GetSceneByName("InGameUi");
-            Il2CppReferenceArray<GameObject> rootGameObjects = scene.GetRootGameObjects();
+            var scene = SceneManager.GetSceneByName("InGameUi");
+            var rootGameObjects = scene.GetRootGameObjects();
 
             const int uiIndex = 1;
-            GameObject ui = rootGameObjects[uiIndex];
+            var ui = rootGameObjects[uiIndex];
             return ui;
         }
 
@@ -179,7 +179,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="spacing"></param>
         public static void SpawnBloons(this InGame inGame, string bloonName, int number, float spacing)
         {
-            Il2CppReferenceArray<BloonEmissionModel> bloonEmissionModels = Game.instance.model.CreateBloonEmissions(bloonName, number, spacing).ToIl2CppReferenceArray();
+            var bloonEmissionModels = Game.instance.model.CreateBloonEmissions(bloonName, number, spacing).ToIl2CppReferenceArray();
             inGame.SpawnBloons(bloonEmissionModels);
         }
 
@@ -223,10 +223,10 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="round"></param>
         public static void SpawnBloons(this InGame inGame, int round)
         {
-            GameModel model = inGame.GetGameModel();
+            var model = inGame.GetGameModel();
 
-            int index = (round < 100) ? round - 1 : round - 100;
-            Il2CppReferenceArray<BloonEmissionModel> emissions = (round < 100) ? model.GetRoundSet().rounds[index].emissions : model.freeplayGroups[index].bloonEmissions;
+            var index = (round < 100) ? round - 1 : round - 100;
+            var emissions = (round < 100) ? model.GetRoundSet().rounds[index].emissions : model.freeplayGroups[index].bloonEmissions;
             inGame.SpawnBloons(emissions);
         }
     }

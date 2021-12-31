@@ -8,9 +8,9 @@ using BTD_Mod_Helper.Api;
 namespace BTD_Mod_Helper
 {
     /// <summary>
-    /// 
+    /// Expanded version of MelonMod to suit the needs of Bloons games and the Mod Helper
     /// </summary>
-    public abstract class BloonsMod : MelonMod
+    public abstract class BloonsMod : MelonMod, IModContent
     {
         /// <summary>
         /// All ModContent in ths mod

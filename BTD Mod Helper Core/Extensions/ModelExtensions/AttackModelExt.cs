@@ -48,7 +48,7 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete("Use GetDescendants<ProjectileModel>() instead")]
         public static List<ProjectileModel> GetAllProjectiles(this AttackModel attackModel)
         {
-            List<ProjectileModel> allProjectiles = new List<ProjectileModel>();
+            var allProjectiles = new List<ProjectileModel>();
             foreach (var weaponModel in attackModel.weapons)
             {
                 if (weaponModel.projectile != null)
@@ -67,7 +67,7 @@ namespace BTD_Mod_Helper.Extensions
 
         private static List<ProjectileModel> GetSubProjectiles(IEnumerable<Model> behaviors)
         {
-            List<ProjectileModel> allProjectiles = new List<ProjectileModel>();
+            var allProjectiles = new List<ProjectileModel>();
 
             if (behaviors is null)
                 return allProjectiles;

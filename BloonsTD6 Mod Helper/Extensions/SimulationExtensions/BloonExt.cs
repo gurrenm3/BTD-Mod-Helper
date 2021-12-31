@@ -27,8 +27,8 @@ namespace BTD_Mod_Helper.Extensions
         public static bool WasBloonPopped(this Bloon bloon)
         {
             //bloon.will
-            bool leakedBloon = SessionData.Instance.LeakedBloons.Contains(bloon);
-            bool destroyedBloon = SessionData.Instance.DestroyedBloons.Contains(bloon);
+            var leakedBloon = SessionData.Instance.LeakedBloons.Contains(bloon);
+            var destroyedBloon = SessionData.Instance.DestroyedBloons.Contains(bloon);
             return destroyedBloon && !leakedBloon;
         }
 
@@ -38,7 +38,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="isCamo">Should bloon be camo</param>
         public static void SetCamo(this Bloon bloon, bool isCamo)
         {
-            BloonModel bloonModel = bloon.bloonModel;
+            var bloonModel = bloon.bloonModel;
             bloon.SetBloonStatus(isCamo, bloonModel.isFortified, bloonModel.isGrow);
         }
 
@@ -48,7 +48,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="isFortified">Should bloon be fortified</param>
         public static void SetFortified(this Bloon bloon, bool isFortified)
         {
-            BloonModel bloonModel = bloon.bloonModel;
+            var bloonModel = bloon.bloonModel;
             bloon.SetBloonStatus(bloonModel.isCamo, isFortified, bloonModel.isGrow);
         }
 
@@ -58,7 +58,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="isRegrow">Should bloon be regrow</param>
         public static void SetRegrow(this Bloon bloon, bool isRegrow)
         {
-            BloonModel bloonModel = bloon.bloonModel;
+            var bloonModel = bloon.bloonModel;
             bloon.SetBloonStatus(bloonModel.isCamo, bloonModel.isFortified, isRegrow);
         }
 
@@ -70,7 +70,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="removeRegrow">Should remove regrow if present?</param>
         public static void RemoveBloonStatus(this Bloon bloon, bool removeCamo, bool removeFortify, bool removeRegrow)
         {
-            string bloonId = bloon.bloonModel.id;
+            var bloonId = bloon.bloonModel.id;
 
             if (bloonId.Contains("Camo") && removeCamo)
                 bloonId = bloonId.Replace("Camo", "");
@@ -79,7 +79,7 @@ namespace BTD_Mod_Helper.Extensions
             if (bloonId.Contains("Regrow") && removeRegrow)
                 bloonId = bloonId.Replace("Regrow", "");
 
-            BloonModel newBloonModel = Game.instance.model.GetBloon(bloonId);
+            var newBloonModel = Game.instance.model.GetBloon(bloonId);
             bloon.bloonModel = newBloonModel;
             bloon.UpdateDisplay();
         }
@@ -92,14 +92,14 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="setRegrow">Should have regrow?</param>
         public static void SetBloonStatus(this Bloon bloon, [Optional] bool setCamo, [Optional] bool setFortified, [Optional] bool setRegrow)
         {
-            Assets.Scripts.Models.GameModel model = Game.instance.model;
-            BloonModel bloonModel = bloon.bloonModel;
+            var model = Game.instance.model;
+            var bloonModel = bloon.bloonModel;
 
-            string camoText = (setCamo && model.GetBloon(bloonModel.baseId + "Camo") != null) ? "Camo" : "";
-            string fortifiedText = (setFortified && model.GetBloon(bloonModel.baseId + "Fortified") != null) ? "Fortified" : "";
-            string regrowText = (setRegrow && model.GetBloon(bloonModel.baseId + "Regrow") != null) ? "Regrow" : "";
+            var camoText = (setCamo && model.GetBloon(bloonModel.baseId + "Camo") != null) ? "Camo" : "";
+            var fortifiedText = (setFortified && model.GetBloon(bloonModel.baseId + "Fortified") != null) ? "Fortified" : "";
+            var regrowText = (setRegrow && model.GetBloon(bloonModel.baseId + "Regrow") != null) ? "Regrow" : "";
 
-            string newBloonID = bloonModel.baseId + regrowText + fortifiedText + camoText;
+            var newBloonID = bloonModel.baseId + regrowText + fortifiedText + camoText;
             bloon.bloonModel = Game.instance.model.GetBloon(newBloonID);
             bloon.UpdateDisplay();
         }

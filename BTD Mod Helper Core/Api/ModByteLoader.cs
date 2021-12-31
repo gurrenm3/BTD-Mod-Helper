@@ -131,7 +131,6 @@ namespace BTD_Mod_Helper.Api
         /// <param name="model">The model that you want to be able to be statically loaded from bytes</param>
         /// <param name="loaderFilePath">The absolute file path on your system where the .cs Loader file should end up</param>
         /// <param name="bytesFilePath">The absolute file path on your system where the bytes file should end up</param>
-        /// <typeparam name="T"></typeparam>
         public static void Generate<T>(T model, string loaderFilePath, string bytesFilePath) where T : Object
         {
             var unconvertedLoader = $"{FileIOUtil.sandboxRoot}UnconvertedLoader.cs";

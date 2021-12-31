@@ -47,7 +47,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static BloonToSimulation CreateBloonToSim(this Bloon bloon)
         {
-            Vector3 currentPos = new Vector3();
+            var currentPos = new Vector3();
             if(bloon.Position?.ToUnity() != null)
             {
                 currentPos = bloon.Position.ToUnity();

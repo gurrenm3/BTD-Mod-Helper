@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using NinjaKiwi.Common;
+﻿using System.Text.RegularExpressions;
 
 namespace BTD_Mod_Helper.Api
 {

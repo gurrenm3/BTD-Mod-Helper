@@ -92,9 +92,9 @@ namespace BTD_Mod_Helper.Extensions
             if (ReferenceEquals(null, source))
                 throw new ArgumentNullException(nameof(source));
 
-            T result = default(T);
-            K maxKey = default(K);
-            Boolean first = true;
+            var result = default(T);
+            var maxKey = default(K);
+            var first = true;
 
             if (null == comparer)
                 comparer = System.Collections.Generic.Comparer<K>.Default;
@@ -106,7 +106,7 @@ namespace BTD_Mod_Helper.Extensions
 
             foreach (var item in source)
             {
-                K key = map(item);
+                var key = map(item);
 
                 if (first || comparer.Compare(key, maxKey) > 0)
                 {

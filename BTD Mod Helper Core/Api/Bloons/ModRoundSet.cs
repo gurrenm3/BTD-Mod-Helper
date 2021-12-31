@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Data.Rounds;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;

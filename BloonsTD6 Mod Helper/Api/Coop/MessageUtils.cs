@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Api.Coop
         {
             var json = JsonConvert.SerializeObject(objectToSend);
             var serialize = Il2CppSystem.Text.Encoding.Default.GetBytes(json);
-            code = string.IsNullOrEmpty(code) ? MelonMain.coopMessageCode : code;
+            code = string.IsNullOrEmpty(code) ? MelonMain.CoopMessageCode : code;
             return new Message(code, serialize);
 
             //throw new System.Exception("This code was broken in BTD6 update 27.0");

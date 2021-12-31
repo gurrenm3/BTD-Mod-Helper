@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Patches
                 if (mapModel == null)
                     MelonLoader.MelonLogger.Msg("Map Model is null");
 
-                MelonMain.PerformHook((mod) => mod.OnMapModelLoaded(ref mapModel));
+                ModHelper.PerformHook((mod) => mod.OnMapModelLoaded(ref mapModel));
                 originalCallback.Invoke(mapModel);
             });
 

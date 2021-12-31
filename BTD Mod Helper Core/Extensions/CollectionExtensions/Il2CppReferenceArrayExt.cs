@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="referenceArray"></param>
         public static void Clear<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < referenceArray.Length; i++)
+            for (var i = 0; i < referenceArray.Length; i++)
             {
                 referenceArray[i] = default;
             }
@@ -49,8 +49,8 @@ namespace BTD_Mod_Helper.Extensions
             this Il2CppReferenceArray<T> referenceArray)
             where T : Il2CppSystem.Object
         {
-            Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
-            foreach (T item in referenceArray)
+            var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+            foreach (var item in referenceArray)
                 il2CppList.Add(item);
 
             return il2CppList;
@@ -70,8 +70,8 @@ namespace BTD_Mod_Helper.Extensions
         public static LockList<T> ToLockList<T>(this Il2CppReferenceArray<T> referenceArray)
             where T : Il2CppSystem.Object
         {
-            LockList<T> lockList = new LockList<T>();
-            foreach (T item in referenceArray)
+            var lockList = new LockList<T>();
+            foreach (var item in referenceArray)
                 lockList.Add(item);
 
             return lockList;
@@ -86,8 +86,8 @@ namespace BTD_Mod_Helper.Extensions
         public static Il2CppReferenceArray<T> Duplicate<T>(this Il2CppReferenceArray<T> list)
             where T : Il2CppSystem.Object
         {
-            List<T> newList = new List<T>();
-            foreach (T item in list)
+            var newList = new List<T>();
+            foreach (var item in list)
                 newList.Add(item);
 
             return newList.ToIl2CppReferenceArray();
@@ -119,8 +119,8 @@ namespace BTD_Mod_Helper.Extensions
             if (referenceArray is null)
                 referenceArray = new Il2CppReferenceArray<T>(0);
 
-            Il2CppReferenceArray<T> newRef = new Il2CppReferenceArray<T>(referenceArray.Count + 1);
-            for (int i = 0; i < referenceArray.Count; i++)
+            var newRef = new Il2CppReferenceArray<T>(referenceArray.Count + 1);
+            for (var i = 0; i < referenceArray.Count; i++)
                 newRef[i] = referenceArray[i];
 
             newRef[newRef.Length - 1] = objectToAdd;
@@ -141,15 +141,15 @@ namespace BTD_Mod_Helper.Extensions
             if (referenceArray is null)
                 referenceArray = new Il2CppReferenceArray<T>(0);
 
-            int size = referenceArray.Count + objectsToAdd.Count;
-            Il2CppReferenceArray<T> newReference = new Il2CppReferenceArray<T>(size);
+            var size = referenceArray.Count + objectsToAdd.Count;
+            var newReference = new Il2CppReferenceArray<T>(size);
 
-            List<T> tempList = new List<T>(referenceArray);
+            var tempList = new List<T>(referenceArray);
             tempList.AddRange(objectsToAdd);
 
-            for (int i = 0; i < tempList.Count; i++)
+            for (var i = 0; i < tempList.Count; i++)
             {
-                T item = tempList[i];
+                var item = tempList[i];
                 newReference[i] = item;
             }
 
@@ -183,7 +183,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             try
             {
-                TSource result = referenceArray.First(item => item.IsType<TCast>());
+                var result = referenceArray.First(item => item.IsType<TCast>());
             }
             catch (Exception)
             {
@@ -207,7 +207,7 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
                 return null;
 
-            TSource result = referenceArray.FirstOrDefault(item => item.TryCast<TCast>() != null);
+            var result = referenceArray.FirstOrDefault(item => item.TryCast<TCast>() != null);
             return result.TryCast<TCast>();
         }
 
@@ -247,7 +247,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            TCast behavior = GetItemOfType<TSource, TCast>(referenceArray);
+            var behavior = GetItemOfType<TSource, TCast>(referenceArray);
             return RemoveItem(referenceArray, behavior);
         }
 
@@ -264,7 +264,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Model
         {
-            TCast behavior = GetItemOfType<TSource, TCast>(referenceArray);
+            var behavior = GetItemOfType<TSource, TCast>(referenceArray);
             removeChildFrom.RemoveChildDependant(behavior);
             return RemoveItem(referenceArray, behavior);
         }
@@ -284,11 +284,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
                 return referenceArray;
 
-            List<TSource> arrayList = referenceArray.ToList();
+            var arrayList = referenceArray.ToList();
 
-            for (int i = 0; i < referenceArray.Count; i++)
+            for (var i = 0; i < referenceArray.Count; i++)
             {
-                TSource item = referenceArray[i];
+                var item = referenceArray[i];
                 if (item is null || !item.Equals(itemToRemove.TryCast<TCast>()))
                     continue;
 
@@ -314,11 +314,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
                 return referenceArray;
 
-            int numRemoved = 0;
-            List<TSource> arrayList = referenceArray.ToList();
-            for (int i = 0; i < referenceArray.Count; i++)
+            var numRemoved = 0;
+            var arrayList = referenceArray.ToList();
+            for (var i = 0; i < referenceArray.Count; i++)
             {
-                TSource item = referenceArray[i];
+                var item = referenceArray[i];
                 if (item is null || !item.IsType<TCast>())
                     continue;
 
@@ -345,11 +345,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(referenceArray))
                 return referenceArray;
 
-            int numRemoved = 0;
-            List<TSource> arrayList = referenceArray.ToList();
-            for (int i = 0; i < referenceArray.Count; i++)
+            var numRemoved = 0;
+            var arrayList = referenceArray.ToList();
+            for (var i = 0; i < referenceArray.Count; i++)
             {
-                TSource item = referenceArray[i];
+                var item = referenceArray[i];
                 if (item is null || !item.IsType<TCast>(out var model))
                     continue;
 

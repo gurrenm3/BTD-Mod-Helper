@@ -148,7 +148,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="title">Message title. Will be mod name by default</param>
         public static void ShowMessage(this Game game, string message, float displayTime, [Optional] string title)
         {
-            NkhMsg msg = new NkhMsg
+            var msg = new NkhMsg
             {
                 MsgShowTime = displayTime,
                 NkhText = new NkhText

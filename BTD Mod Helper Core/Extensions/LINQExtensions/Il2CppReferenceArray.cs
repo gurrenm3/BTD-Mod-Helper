@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="action">Action to preform on each element</param>
         public static void ForEach<T>(this Il2CppReferenceArray<T> source, Action<T> action) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
                 action.Invoke(source[i]);
         }
 
@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static int FindIndex<T>(this Il2CppReferenceArray<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
             {
                 if (predicate(source[i]))
                     return i;
@@ -55,7 +55,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static bool Any<T>(this Il2CppReferenceArray<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            for (int i = 0; i < source.Count; i++)
+            for (var i = 0; i < source.Count; i++)
             {
                 if (predicate(source[i]))
                     return true;

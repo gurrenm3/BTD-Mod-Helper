@@ -35,7 +35,7 @@ namespace BTD_Mod_Helper
 
         private static void InitAutosaveSettings(string settingsDir)
         {
-            string saveDir = Game.instance.GetSaveDirectory();
+            var saveDir = Game.instance.GetSaveDirectory();
             if (!string.IsNullOrEmpty(saveDir))
                 openSaveDir.OnInitialized.Add((option) => InitOpenDirButton(option, saveDir));
             else

@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Unity.Tasks;
-using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Api
 {

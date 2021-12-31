@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<TValue> GetValues<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs)
         {
-            List<TValue> values = new List<TValue>();
+            var values = new List<TValue>();
             var enumerator = keyValuePairs.Values.GetEnumerator();
             while (enumerator.MoveNext())
             {

@@ -21,8 +21,8 @@ namespace BTD_Mod_Helper.Api.Builders
 
         public BloonModel Create(string name, BloonModel baseModel = null)
         {
-            BloonModel model = (baseModel is null) ? Game.instance.model.GetBloon("Red") : baseModel;
-            BloonModel bloonModel = model.Clone().Cast<BloonModel>();
+            var model = (baseModel is null) ? Game.instance.model.GetBloon("Red") : baseModel;
+            var bloonModel = model.Clone().Cast<BloonModel>();
             bloonModel.name = name;
             bloonModel.id = name;
 

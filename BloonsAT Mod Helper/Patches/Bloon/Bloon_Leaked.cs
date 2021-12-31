@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPrefix]
         internal static bool Prefix(Bloon __instance)
         {
-            bool result = true;
+            var result = true;
             MelonMain.DoPatchMethods(mod => result &= mod.PreBloonLeaked(__instance));
             return result;
         }

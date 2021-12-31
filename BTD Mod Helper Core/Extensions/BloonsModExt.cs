@@ -33,7 +33,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists = true)
         {
-            string path = $"{Environment.CurrentDirectory}\\Mods\\{bloonsMod.GetModName()}";
+            var path = $"{Environment.CurrentDirectory}\\Mods\\{bloonsMod.GetModName()}";
             if (createIfNotExists) Directory.CreateDirectory(path);
             return path;
         }
@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get's the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+        /// (Cross-Game compatible) Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
         /// </summary>
         /// <param name="bloonsMod"></param>
         /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>

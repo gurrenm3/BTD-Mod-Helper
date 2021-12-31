@@ -24,8 +24,8 @@ namespace BTD_Mod_Helper.Patches.Towers
             // end of bugfix
 
 
-            MelonMain.PerformHook(mod => mod.OnTowerCreated(__instance, target, modelToUse));
-            MelonMain.PerformHook(mod => mod.OnTowerModelChanged(__instance, modelToUse));
+            ModHelper.PerformHook(mod => mod.OnTowerCreated(__instance, target, modelToUse));
+            ModHelper.PerformHook(mod => mod.OnTowerModelChanged(__instance, modelToUse));
         }
     }
 }

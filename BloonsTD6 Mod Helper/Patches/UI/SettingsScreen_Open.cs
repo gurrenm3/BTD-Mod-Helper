@@ -10,8 +10,8 @@ namespace BTD_Mod_Helper.Patches.UI
         [HarmonyPostfix]
         private static void Postfix()
         {
-            MelonMain.modsButton = new ShowModOptions_Button();
-            MelonMain.modsButton.Init();
+            ModOptionsMenu.modsButton = new ShowModOptions_Button();
+            ModOptionsMenu.modsButton.Init();
         }
     }
 }

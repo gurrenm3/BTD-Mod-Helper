@@ -13,8 +13,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] array) where T : Il2CppSystem.Object
         {
-            Il2CppSystem.Collections.Generic.List<T> il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
-            foreach (T item in array)
+            var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+            foreach (var item in array)
                 il2CppList.Add(item);
 
             return il2CppList;
@@ -25,9 +25,9 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array) where T : Il2CppSystem.Object
         {
-            Il2CppReferenceArray<T> il2cppArray = new Il2CppReferenceArray<T>(array.Length);
+            var il2cppArray = new Il2CppReferenceArray<T>(array.Length);
 
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
                 il2cppArray[i] = array[i];
 
             return il2cppArray;
@@ -38,8 +38,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static LockList<T> ToLockList<T>(this T[] array)
         {
-            LockList<T> lockList = new LockList<T>();
-            foreach (T item in array)
+            var lockList = new LockList<T>();
+            foreach (var item in array)
                 lockList.Add(item);
 
             return lockList;
@@ -53,8 +53,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T[] Duplicate<T>(this T[] array)
         {
-            T[] newArray = new T[] { };
-            foreach (T item in array)
+            var newArray = new T[] { };
+            foreach (var item in array)
             {
                 Array.Resize(ref newArray, newArray.Length + 1);
                 newArray[newArray.Length - 1] = item;
@@ -73,8 +73,8 @@ namespace BTD_Mod_Helper.Extensions
         public static TCast[] DuplicateAs<TSource, TCast>(this TSource[] array)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            TCast[] newArray = new TCast[] { };
-            foreach (TSource item in array)
+            var newArray = new TCast[] { };
+            foreach (var item in array)
             {
                 Array.Resize(ref newArray, newArray.Length + 1);
                 newArray[newArray.Length - 1] = item.TryCast<TCast>();
@@ -95,7 +95,7 @@ namespace BTD_Mod_Helper.Extensions
             if (array is null)
                 array = new T[0];
 
-            List<T> list = array.ToList();
+            var list = array.ToList();
             list.Add(objectToAdd);
             return list.ToArray();
         }
@@ -112,15 +112,15 @@ namespace BTD_Mod_Helper.Extensions
             if (array is null)
                 array = new T[0];
 
-            int size = array.Length + objectsToAdd.Length;
-            T[] newReference = new T[size];
+            var size = array.Length + objectsToAdd.Length;
+            var newReference = new T[size];
 
-            List<T> tempList = new List<T>(array);
+            var tempList = new List<T>(array);
             tempList.AddRange(objectsToAdd);
 
-            for (int i = 0; i < tempList.Count; i++)
+            for (var i = 0; i < tempList.Count; i++)
             {
-                T item = tempList[i];
+                var item = tempList[i];
                 newReference[i] = item;
             }
 
@@ -151,9 +151,9 @@ namespace BTD_Mod_Helper.Extensions
             where TCast : Il2CppSystem.Object
         {
             // Doing this the ugly way to guarantee no errors. Had a couple of bizarre errors in testing when using LINQ
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
-                TSource item = array[i];
+                var item = array[i];
                 try
                 {
                     if (item.IsType<TCast>())
@@ -178,7 +178,7 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(array))
                 return null;
 
-            TSource result = array.FirstOrDefault(item => item.IsType<TCast>());
+            var result = array.FirstOrDefault(item => item.IsType<TCast>());
             return result.TryCast<TCast>();
         }
 
@@ -206,7 +206,7 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            TCast behavior = GetItemOfType<TSource, TCast>(array);
+            var behavior = GetItemOfType<TSource, TCast>(array);
             return RemoveItem(array, behavior);
         }
 
@@ -224,11 +224,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(array))
                 return array;
 
-            List<TSource> arrayList = array.ToList();
+            var arrayList = array.ToList();
 
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
-                TSource item = array[i];
+                var item = array[i];
                 if (item is null || !item.Equals(itemToRemove.TryCast<TCast>()))
                     continue;
 
@@ -252,11 +252,11 @@ namespace BTD_Mod_Helper.Extensions
             if (!HasItemsOfType<TSource, TCast>(array))
                 return array;
 
-            int numRemoved = 0;
-            List<TSource> arrayList = array.ToList();
-            for (int i = 0; i < array.Length; i++)
+            var numRemoved = 0;
+            var arrayList = array.ToList();
+            for (var i = 0; i < array.Length; i++)
             {
-                TSource item = array[i];
+                var item = array[i];
                 if (item is null || !item.IsType<TCast>())
                     continue;
 

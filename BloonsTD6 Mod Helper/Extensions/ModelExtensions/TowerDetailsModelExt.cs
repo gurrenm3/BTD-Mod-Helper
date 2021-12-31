@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions
             if (towers is null)
                 return -1;
 
-            for (int i = 0; i < towers.Count; i++)
+            for (var i = 0; i < towers.Count; i++)
             {
                 if (towers[i].name == towerDetailsModel.name)
                     return i;
@@ -27,8 +27,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static bool IsHero(this TowerDetailsModel towerDetailsModel)
         {
-            HeroDetailsModel heroDetailsModel = towerDetailsModel.TryCast<HeroDetailsModel>();
-            bool isHero = heroDetailsModel != null;
+            var heroDetailsModel = towerDetailsModel.TryCast<HeroDetailsModel>();
+            var isHero = heroDetailsModel != null;
             return isHero;
         }
 
@@ -37,7 +37,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerPurchaseButton GetTowerPurchaseButton(this TowerDetailsModel towerDetailsModel)
         {
-            Assets.Scripts.Models.Towers.TowerModel towerModel = Game.instance.model.GetTower(towerDetailsModel.towerId);
+            var towerModel = Game.instance.model.GetTower(towerDetailsModel.towerId);
             return towerModel.GetTowerPurchaseButton();
         }
 

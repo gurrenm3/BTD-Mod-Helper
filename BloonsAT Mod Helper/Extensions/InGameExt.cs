@@ -22,11 +22,11 @@ namespace BTD_Mod_Helper.Extensions
     {
         public static GameObject GetInGameUI(this InGame inGame)
         {
-            Scene scene = SceneManager.GetSceneByName("InGameUi");
-            Il2CppReferenceArray<GameObject> rootGameObjects = scene.GetRootGameObjects();
+            var scene = SceneManager.GetSceneByName("InGameUi");
+            var rootGameObjects = scene.GetRootGameObjects();
 
             const int uiIndex = 1;
-            GameObject ui = rootGameObjects[uiIndex];
+            var ui = rootGameObjects[uiIndex];
             return ui;
         }
 

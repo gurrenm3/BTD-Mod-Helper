@@ -12,7 +12,6 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 #if BloonsTD6
 using BTD_Mod_Helper.Api.Towers;
-using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Weapons;
 #elif BloonsAT
 using Assets.Scripts.Models.Towers.Weapons.Behaviors;
@@ -134,17 +133,17 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<WeaponModel> GetWeapons(this TowerModel towerModel)
         {
-            List<AttackModel> attackModels = towerModel.GetAttackModels();
+            var attackModels = towerModel.GetAttackModels();
             if (attackModels is null)
                 return null;
 
             if (!attackModels.Any())
                 return new List<WeaponModel>();
 
-            List<WeaponModel> weaponModels = new List<WeaponModel>();
-            foreach (AttackModel attackModel in attackModels)
+            var weaponModels = new List<WeaponModel>();
+            foreach (var attackModel in attackModels)
             {
-                Il2CppReferenceArray<WeaponModel> weapons = attackModel.weapons;
+                var weapons = attackModel.weapons;
                 if (weapons != null)
                     weaponModels.AddRange(weapons);
             }

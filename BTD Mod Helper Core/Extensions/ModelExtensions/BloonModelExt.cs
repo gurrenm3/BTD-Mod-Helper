@@ -10,11 +10,9 @@ using UnhollowerBaseLib;
 using System;
 using System.Linq;
 using Assets.Scripts.Models.Bloons.Behaviors;
-using Assets.Scripts.Unity.Bloons.Behaviors;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -30,10 +28,10 @@ namespace BTD_Mod_Helper.Extensions
 
             var cashValue = SessionData.Instance.bloonPopValues;
             var children = bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation());
-            if ((layersPopped >= 0) || !cashValue.TryGetValue(bloonModel.GetBaseID(), out int bloonCash))
+            if ((layersPopped >= 0) || !cashValue.TryGetValue(bloonModel.GetBaseID(), out var bloonCash))
             {
                 bloonCash = 1;
-                foreach (BloonModel child in children)
+                foreach (var child in children)
                 {
                     bloonCash += child.GetTotalCash(layersPopped - 1);
                 }
@@ -52,7 +50,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static int GetIndex(this BloonModel bloonModel)
         {
-            Il2CppReferenceArray<BloonModel> allBloons = Game.instance?.model?.bloons;
+            var allBloons = Game.instance?.model?.bloons;
             return allBloons.FindIndex(bloon => bloon.name == bloonModel.name);
         }
 
@@ -61,7 +59,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static void SpawnBloonModel(this BloonModel bloonModel)
         {
-            Assets.Scripts.Simulation.Track.Spawner spawner = InGame.instance?.GetMap()?.spawner;
+            var spawner = InGame.instance?.GetMap()?.spawner;
             if (spawner is null)
                 return;
 
@@ -93,12 +91,12 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
-            Il2CppSystem.Collections.Generic.List<BloonToSimulation> bloonSims =
+            var bloonSims =
                 InGame.instance?.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
                 return null;
 
-            List<BloonToSimulation> results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
+            var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
             return results;
         }
 
@@ -107,12 +105,12 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<BloonToSimulation> GetAllBloonToSim(this BloonModel bloonModel)
         {
-            Il2CppSystem.Collections.Generic.List<BloonToSimulation> bloonSims =
+            var bloonSims =
                 InGame.instance?.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
                 return null;
 
-            List<BloonToSimulation> results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
+            var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
             return results;
         }
 

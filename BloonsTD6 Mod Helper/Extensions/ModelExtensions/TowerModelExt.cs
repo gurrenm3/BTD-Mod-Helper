@@ -29,7 +29,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerDetailsModel GetTowerDetailsModel(this TowerModel towerModel)
         {
-            string baseId = towerModel.GetBaseId();
+            var baseId = towerModel.GetBaseId();
             return Game.instance?.model?.GetAllTowerDetails()?.FirstOrDefault(details => details.towerId == baseId);
         }
 
@@ -52,7 +52,7 @@ namespace BTD_Mod_Helper.Extensions
             if (towers is null)
                 return -1;
 
-            for (int i = 0; i < towers.Count; i++)
+            for (var i = 0; i < towers.Count; i++)
             {
                 if (towers[i].name == towerModel.name)
                     return i;
@@ -124,9 +124,9 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<UpgradeModel> GetAppliedUpgrades(this TowerModel towerModel)
         {
-            List<UpgradeModel> appliedUpgrades = new List<UpgradeModel>();
+            var appliedUpgrades = new List<UpgradeModel>();
 
-            foreach (string upgrade in towerModel.appliedUpgrades)
+            foreach (var upgrade in towerModel.appliedUpgrades)
                 appliedUpgrades.Add(Game.instance?.model?.upgradesByName[upgrade]);
 
             return appliedUpgrades;
@@ -142,18 +142,18 @@ namespace BTD_Mod_Helper.Extensions
             if (path < 0 || tier < 0)
                 return null;
 
-            int tier1 = (path == 0) ? tier : 0;
-            int tier2 = (path == 1) ? tier : 0;
-            int tier3 = (path == 2) ? tier : 0;
+            var tier1 = (path == 0) ? tier : 0;
+            var tier2 = (path == 1) ? tier : 0;
+            var tier3 = (path == 2) ? tier : 0;
 
 
-            TowerModel tempTower = Game.instance?.model?.GetTower(towerModel.GetBaseId(), tier1, tier2, tier3);
+            var tempTower = Game.instance?.model?.GetTower(towerModel.GetBaseId(), tier1, tier2, tier3);
             if (tempTower is null)
                 return null;
 
             const int offset = 1;
             List<UpgradeModel> appliedUpgrades = tempTower.GetAppliedUpgrades();
-            UpgradeModel results =
+            var results =
                 appliedUpgrades.FirstOrDefault(model => model.path == path && model.tier == (tier - offset));
 
             return null;
@@ -227,9 +227,9 @@ namespace BTD_Mod_Helper.Extensions
             }
             else
             {
-                int tier1 = tiers.Count >= 1 ? tiers[0] : 0;
-                int tier2 = tiers.Count >= 2 ? tiers[1] : 0;
-                int tier3 = tiers.Count >= 3 ? tiers[2] : 0;
+                var tier1 = tiers.Count >= 1 ? tiers[0] : 0;
+                var tier2 = tiers.Count >= 2 ? tiers[1] : 0;
+                var tier3 = tiers.Count >= 3 ? tiers[2] : 0;
 
                 towerModel.AddTiersToName(tier1, tier2, tier3);
             }

@@ -210,7 +210,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="amount">Amount to add</param>
         public static void AddMonkeyMoney(this Game game, double amount)
         {
-            KonFuze monkeyMoney = game.GetPlayerProfile()?.monkeyMoney;
+            var monkeyMoney = game.GetPlayerProfile()?.monkeyMoney;
             if (monkeyMoney != null)
                 monkeyMoney.Value += amount;
         }
@@ -221,7 +221,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="amount">Value to set Monkey Money to</param>
         public static void SetMonkeyMoney(this Game game, double amount)
         {
-            KonFuze monkeyMoney = game.GetPlayerProfile()?.monkeyMoney;
+            var monkeyMoney = game.GetPlayerProfile()?.monkeyMoney;
             if (monkeyMoney != null)
                 monkeyMoney.Value = amount;
         }
