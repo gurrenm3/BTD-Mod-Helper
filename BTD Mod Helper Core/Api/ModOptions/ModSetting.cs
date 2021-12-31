@@ -30,7 +30,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Actions to call when this OptionUI element is initialized
         /// </summary>
-        public List<Action<SharedOption>> OnInitialized { get; set; } = new List<Action<SharedOption>>();
+        public List<Action<ModOption>> OnInitialized { get; set; } = new List<Action<ModOption>>();
 
         /// <summary>
         /// Constructs a new ModSetting for the given value
@@ -64,7 +64,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             }
             else
             {
-                MelonLogger.Warning($"Error: ModSetting type mismatch between {typeof(T).Name} and {val.GetType().Name}");
+                ModHelper.Warning($"Error: ModSetting type mismatch between {typeof(T).Name} and {val.GetType().Name}");
             }
         }
 

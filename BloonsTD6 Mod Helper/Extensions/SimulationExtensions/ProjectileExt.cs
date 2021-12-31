@@ -4,6 +4,9 @@ using Assets.Scripts.Unity.Display;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Projectiles
+    /// </summary>
     public static partial class ProjectileExt
     {
         /// <summary>

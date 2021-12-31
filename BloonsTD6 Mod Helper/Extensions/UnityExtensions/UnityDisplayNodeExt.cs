@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Utils;
-using MelonLoader;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Components;
@@ -8,6 +7,9 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for UnityDisplayNodes
+    /// </summary>
     public static partial class UnityDisplayNodeExt
     {
         /// <summary>
@@ -98,12 +100,12 @@ namespace BTD_Mod_Helper.Extensions
             var meshRenderers = node.GetMeshRenderers();
             if (meshRenderers.Count == 0)
             {
-                MelonLogger.Error(
+                ModHelper.Error(
                     "Can't save mesh texture because the node doesn't have any MeshRenderers or SkinnedMeshRenderers, you might want to call node.PrintInfo()");
             }
             else if (meshRenderers.Count <= index)
             {
-                MelonLogger.Error(
+                ModHelper.Error(
                     $"The node doesn't have {index} total mesh renderers, you might want to call node.PrintInfo()");
             }
             else
@@ -121,39 +123,44 @@ namespace BTD_Mod_Helper.Extensions
         public static void PrintInfo(this UnityDisplayNode node)
         {
             var start = $"-------------Information about UnityDisplayNode {node.name}-------------";
-            MelonLogger.Msg(start);
+            ModHelper.Log(start);
 
-            MelonLogger.Msg("Generic Renderers:");
+            ModHelper.Log("Generic Renderers:");
             for (var i = 0; i < node.genericRenderers.Count; i++)
             {
                 var renderer = node.genericRenderers[i];
-                MelonLogger.Msg($"   {i}. {renderer.name} ({renderer.GetIl2CppType().Name})");
+                ModHelper.Log($"   {i}. {renderer.name} ({renderer.GetIl2CppType().Name})");
             }
 
-            MelonLogger.Msg("");
+            ModHelper.Log("");
 
-            MelonLogger.Msg("Generic Render Layers:");
+            ModHelper.Log("Generic Render Layers:");
             for (var i = 0; i < node.genericRendererLayers.Count; i++)
             {
                 var layer = node.genericRendererLayers[i];
-                MelonLogger.Msg($"   {i}. {layer}");
+                ModHelper.Log($"   {i}. {layer}");
             }
 
-            MelonLogger.Msg("");
+            ModHelper.Log("");
 
-            MelonLogger.Msg("Component Hierarchy:");
+            ModHelper.Log("Component Hierarchy:");
             node.gameObject.RecursivelyLog();
 
-            MelonLogger.Msg(new string('-', start.Length));
+            ModHelper.Log(new string('-', start.Length));
         }
 
-        public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string boneName,
-            bool alreadyUnbound = false)
+        /// <summary>
+        /// Removes (hides) a given bone
+        /// </summary>
+        public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string boneName, bool alreadyUnbound = false)
         {
             var bone = unityDisplayNode.GetBone(boneName);
             bone.gameObject.AddComponent<ScaleOverrideZero>();
         }
 
+        /// <summary>
+        /// Gets the transform associated with the given bone
+        /// </summary>
         public static Transform GetBone(this UnityDisplayNode unityDisplayNode, string boneName)
         {
             return unityDisplayNode.gameObject.GetComponentInChildrenByName<Transform>(boneName);

@@ -29,8 +29,8 @@ namespace BTD_Mod_Helper.Api.Updater
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Warning($"Encountered exception trying to save {mod.Info.Name} update info:");
-                    MelonLogger.Warning(e.ToString());
+                    ModHelper.Warning($"Encountered exception trying to save {mod.Info.Name} update info:");
+                    ModHelper.Warning(e.ToString());
                 }
             }
         }
@@ -48,8 +48,8 @@ namespace BTD_Mod_Helper.Api.Updater
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Warning($"Encountered exception trying to load {file} update info:");
-                    MelonLogger.Warning(e.ToString());
+                    ModHelper.Warning($"Encountered exception trying to load {file} update info:");
+                    ModHelper.Warning(e.ToString());
                 }
             }
 
@@ -77,8 +77,8 @@ namespace BTD_Mod_Helper.Api.Updater
                     }
                     catch (Exception e)
                     {
-                        MelonLogger.Warning($"Encountered exception trying to check {updateInfo.Name} for updates: ");
-                        MelonLogger.Warning(e.ToString());
+                        ModHelper.Warning($"Encountered exception trying to check {updateInfo.Name} for updates: ");
+                        ModHelper.Warning(e.ToString());
                     }
                 }
             );
@@ -131,29 +131,29 @@ namespace BTD_Mod_Helper.Api.Updater
             {
                 if (await updater.Download($"{Environment.CurrentDirectory}\\Mods"))
                 {
-                    MelonLogger.Msg($"Successfully downloaded new version of {updateInfo.Name}");
+                    ModHelper.Log($"Successfully downloaded new version of {updateInfo.Name}");
                     updatedMods = true;
                     return;
                 }
             }
             catch (Exception e)
             {
-                MelonLogger.Warning(e.ToString());
+                ModHelper.Warning(e.ToString());
             }
 
-            MelonLogger.Warning($"Failed to download mod {updateInfo.Name}");
+            ModHelper.Warning($"Failed to download mod {updateInfo.Name}");
         }
 
         public static void CheckModsForUpdates()
         {
-            MelonLogger.Msg("Checking for updates...");
+            ModHelper.Log("Checking for updates...");
 
             var updateDir = ModContent.GetInstance<MelonMain>().GetModDirectory() + "\\UpdateInfo";
             Directory.CreateDirectory(updateDir);
             SaveModUpdateInfo(updateDir);
             var allUpdateInfo = LoadAllUpdateInfo(updateDir);
             CheckForUpdates(allUpdateInfo, MelonMain.ModsNeedingUpdates);
-            MelonLogger.Msg("Done checking for updates");
+            ModHelper.Log("Done checking for updates");
         }
     }
 }

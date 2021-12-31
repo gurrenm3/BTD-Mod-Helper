@@ -3,6 +3,9 @@ using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Il2cpp objects
+    /// </summary>
     public static class Il2CppSystemObjectExt
     {
         /// <summary>
@@ -37,16 +40,25 @@ namespace BTD_Mod_Helper.Extensions
             return castObject != null;
         }
         
+        /// <summary>
+        /// Box a float into an Il2cpp object
+        /// </summary>
         public static Object ToIl2Cpp(this float f)
         {
             return new Single { m_value = f }.BoxIl2CppObject();
         }
         
+        /// <summary>
+        /// Box a int into an Il2cpp object
+        /// </summary>
         public static Object ToIl2Cpp(this int i)
         {
             return new Int32 { m_value = i }.BoxIl2CppObject();
         }
         
+        /// <summary>
+        /// Box a bool into an Il2cpp object
+        /// </summary>
         public static Object ToIl2Cpp(this bool b)
         {
             return new Boolean { m_value = b }.BoxIl2CppObject();

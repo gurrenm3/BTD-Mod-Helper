@@ -4,6 +4,9 @@ using Assets.Scripts.Unity.Display;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Entities
+    /// </summary>
     public static partial class EntityExt
     {
         /// <summary>

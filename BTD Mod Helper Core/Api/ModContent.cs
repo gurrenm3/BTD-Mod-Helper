@@ -97,11 +97,6 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="mod"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
         private static IEnumerable<ModContent> CreateInstances(Type type, BloonsMod mod)
         {
             try
@@ -113,8 +108,8 @@ namespace BTD_Mod_Helper.Api
                 }
                 catch (Exception)
                 {
-                    MelonLogger.Error($"Error creating default {type.Name}");
-                    MelonLogger.Error("A zero argument constructor is REQUIRED for all ModContent classes");
+                    ModHelper.Error($"Error creating default {type.Name}");
+                    ModHelper.Error("A zero argument constructor is REQUIRED for all ModContent classes");
                     throw;
                 }
 
@@ -132,8 +127,8 @@ namespace BTD_Mod_Helper.Api
             }
             catch (Exception e)
             {
-                MelonLogger.Error("Failed to load " + type.Name);
-                MelonLogger.Error(e);
+                ModHelper.Error("Failed to load " + type.Name);
+                ModHelper.Error(e);
                 return Array.Empty<ModContent>();
             }
         }
@@ -409,7 +404,7 @@ namespace BTD_Mod_Helper.Api
             var instance = ModContentInstance<T>.Instance;
             if (instance == null)
             {
-                MelonLogger.Msg($"The instance was null for {typeof(T).Name}");
+                ModHelper.Log($"The instance was null for {typeof(T).Name}");
             }
 
             return instance;
@@ -437,19 +432,19 @@ namespace BTD_Mod_Helper.Api
                 return bundle;
             }
 
-            MelonLogger.Error($"Couldn't find bundle with name \"{name}\"");
+            ModHelper.Error($"Couldn't find bundle with name \"{name}\"");
             var bundles = ResourceHandler.Bundles.Keys.Where(s => s.StartsWith(mod.IDPrefix)).ToList();
             if (bundles.Count == 0)
             {
-                MelonLogger.Error(
+                ModHelper.Error(
                     $"In fact, {mod.GetModName()} doesn't have any bundles loaded. Did you forget to include them as an Embedded Resource?");
             }
             else
             {
-                MelonLogger.Msg($"The bundles that we did find in {mod.GetModName()} have the names:");
+                ModHelper.Log($"The bundles that we did find in {mod.GetModName()} have the names:");
                 foreach (var s in bundles)
                 {
-                    MelonLogger.Error($"    {s.Replace(mod.IDPrefix, "")}");
+                    ModHelper.Error($"    {s.Replace(mod.IDPrefix, "")}");
                 }
             }
 

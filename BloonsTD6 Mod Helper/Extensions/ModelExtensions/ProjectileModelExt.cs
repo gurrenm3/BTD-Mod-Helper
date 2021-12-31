@@ -7,6 +7,9 @@ namespace BTD_Mod_Helper.Extensions
 {
     public static partial class ProjectileModelExt
     {
+        /// <summary>
+        /// Returns whether a projectile is able to hit Camo bloons
+        /// </summary>
         public static bool CanHitCamo(this ProjectileModel projectileModel)
         {
             var projectileFilterModel = projectileModel.GetBehavior<ProjectileFilterModel>();
@@ -20,6 +23,9 @@ namespace BTD_Mod_Helper.Extensions
             return true;
         }
 
+        /// <summary>
+        /// Makes a projectile model able to see Camo or not
+        /// </summary>]
         public static void SetHitCamo(this ProjectileModel projectileModel, bool canHitCamo)
         {
             var projectileFilterModel = projectileModel.GetBehavior<ProjectileFilterModel>();

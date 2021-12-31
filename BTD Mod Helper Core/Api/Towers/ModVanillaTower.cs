@@ -80,6 +80,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
         }
 
+        /// <inheritdoc />
         public override IEnumerable<TowerModel> GetAffected(GameModel gameModel)
         {
             return gameModel.GetTowersWithBaseId(TowerId);

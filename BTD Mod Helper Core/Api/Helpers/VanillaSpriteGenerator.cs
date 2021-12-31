@@ -23,7 +23,7 @@ namespace BTD_Mod_Helper.Api.Helpers
         {
             if (!Directory.Exists(folder))
             {
-                MelonLogger.Error($"No directory {folder}");
+                ModHelper.Error($"No directory {folder}");
                 return;
             }
 

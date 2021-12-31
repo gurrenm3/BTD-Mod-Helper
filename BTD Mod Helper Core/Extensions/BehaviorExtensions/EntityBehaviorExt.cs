@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Behavior extensions for Entities
+    /// </summary>
     public static class EntityBehaviorExt
     {
         /// <summary>

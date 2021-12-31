@@ -9,7 +9,6 @@ using Assets.Scripts.Simulation.Track;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Models;
 using System;
-using BTD_Mod_Helper.Api.Enums;
 
 #if BloonsTD6
 using Assets.Scripts.Simulation.Towers.Projectiles;
@@ -19,6 +18,9 @@ using Assets.Scripts.Simulation.Towers.Projectiles.Behaviors;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for the InGame class
+    /// </summary>
     public static partial class InGameExt
     {
         /// <summary>
@@ -214,29 +216,20 @@ namespace BTD_Mod_Helper.Extensions
 #endif
         }
 
+        /// <summary>
+        /// Sells multiple towers
+        /// </summary>
         public static void SellTowers(this InGame inGame, List<Tower> towers)
         {
             towers.ForEach(tower => inGame.SellTower(tower));
         }
 
+        /// <summary>
+        /// Sells a tower
+        /// </summary>
         public static void SellTower(this InGame inGame, Tower tower)
         {
             inGame.SellTower(tower.GetTowerToSim());
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Returns the difficulty of this game
-        /// </summary>
-        /// <param name="inGame"></param>
-        /// <returns></returns>
-        public static Difficulty GetDifficulty(this InGame inGame)
-        {
-#if BloonsTD6
-            return (Difficulty)Enum.Parse(typeof(Difficulty), inGame.SelectedDifficulty);
-#elif BloonsAT
-            var difficulty = inGame.Simulation.GetDifficulty();
-            return (Difficulty)Enum.Parse(typeof(Difficulty), difficulty.ToString());
-#endif
         }
     }
 }

@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Behavior extensions for BloonModels
+    /// </summary>
     public static class BloonModelBehaviorExt
     {
         /// <summary>

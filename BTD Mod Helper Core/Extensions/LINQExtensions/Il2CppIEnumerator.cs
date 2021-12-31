@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for il2cpp ienumerators
+    /// </summary>
     public static class Il2CppIEnumerator
     {
         /// <summary>
@@ -91,20 +94,6 @@ namespace BTD_Mod_Helper.Extensions
             }
 
             return -1;
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Return whether or not there are any elements in this
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static bool Any<T>(this IEnumerator source)
-        {
-            while (source.MoveNext())
-                return true;
-
-            return false;
         }
 
         /// <summary>

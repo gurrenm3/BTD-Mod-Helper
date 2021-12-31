@@ -10,6 +10,9 @@ using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Behavior Extensions for ProjectileModels
+    /// </summary>
     public static class ProjectileModelBehaviorExt
     {
         /// <summary>

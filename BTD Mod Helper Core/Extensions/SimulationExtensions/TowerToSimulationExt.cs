@@ -6,6 +6,9 @@ using System;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for TowerToSimulation
+    /// </summary>
     public static class TowerToSimulationExt
     {
         /// <summary>

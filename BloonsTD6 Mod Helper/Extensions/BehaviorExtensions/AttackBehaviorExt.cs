@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Behavior extensions for attacks
+    /// </summary>
     public static class AttackBehaviorExt
     {
         /// <summary>

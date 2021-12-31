@@ -40,8 +40,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error($"Failed to create {tiers.Printed()} TowerModel for ModTower {modTower.Name}");
-                    MelonLogger.Error(e);
+                    ModHelper.Error($"Failed to create {tiers.Printed()} TowerModel for ModTower {modTower.Name}");
+                    ModHelper.Error(e);
                     throw;
                 }
             }
@@ -54,8 +54,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Msg($"Failed to create Paragon for {modTower.DisplayName}");
-                    MelonLogger.Error(e);
+                    ModHelper.Log($"Failed to create Paragon for {modTower.DisplayName}");
+                    ModHelper.Error(e);
                 }
             }
 
@@ -68,8 +68,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error($"Failed to add TowerModel {towerModel.name} to the game");
-                    MelonLogger.Error(e);
+                    ModHelper.Error($"Failed to add TowerModel {towerModel.name} to the game");
+                    ModHelper.Error(e);
                 }
             }
 
@@ -92,7 +92,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception)
             {
-                MelonLogger.Error($"Failed to get base TowerModel for ModTower {modTower.Name}");
+                ModHelper.Error($"Failed to get base TowerModel for ModTower {modTower.Name}");
                 throw;
             }
 
@@ -106,7 +106,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception)
             {
-                MelonLogger.Error($"Failed to add appliedUpgrades info to TowerModel {towerModel.name}");
+                ModHelper.Error($"Failed to add appliedUpgrades info to TowerModel {towerModel.name}");
                 throw;
             }
 
@@ -139,7 +139,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception)
             {
-                MelonLogger.Error($"Failed to add the UpgradePathModels for TowerModel {towerModel.name}");
+                ModHelper.Error($"Failed to add the UpgradePathModels for TowerModel {towerModel.name}");
                 throw;
             }
 
@@ -154,7 +154,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception)
             {
-                MelonLogger.Error($"Failed to add the Paragon Upgrade for TowerModel {towerModel.name}");
+                ModHelper.Error($"Failed to add the Paragon Upgrade for TowerModel {towerModel.name}");
                 throw;
             }
 
@@ -180,7 +180,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception)
             {
-                MelonLogger.Error($"Failed to set the Portrait of TowerModel {towerModel.name}");
+                ModHelper.Error($"Failed to set the Portrait of TowerModel {towerModel.name}");
                 throw;
             }
 
@@ -217,7 +217,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception)
             {
-                MelonLogger.Error($"Failed to modify TowerModel {towerModel.name}");
+                ModHelper.Error($"Failed to modify TowerModel {towerModel.name}");
                 throw;
             }
 
@@ -237,7 +237,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     }
                     catch (Exception)
                     {
-                        MelonLogger.Error(
+                        ModHelper.Error(
                             $"Failed to apply ModUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
                         throw;
                     }
@@ -245,7 +245,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception)
             {
-                MelonLogger.Error($"Failed to apply upgrades for TowerModel {towerModel.name}");
+                ModHelper.Error($"Failed to apply upgrades for TowerModel {towerModel.name}");
                 throw;
             }
 
@@ -268,7 +268,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception)
                 {
-                    MelonLogger.Error($"Failed to load 2d display for TowerModel {towerModel.name}");
+                    ModHelper.Error($"Failed to load 2d display for TowerModel {towerModel.name}");
                     throw;
                 }
             }
@@ -286,7 +286,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception)
                 {
-                    MelonLogger.Error($"Failed to load ModTowerDisplay for TowerModel {towerModel.name}");
+                    ModHelper.Error($"Failed to load ModTowerDisplay for TowerModel {towerModel.name}");
                     throw;
                 }
             }
@@ -325,7 +325,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception)
                 {
-                    MelonLogger.Error(
+                    ModHelper.Error(
                         $"Failed to apply ModParagonUpgrade {modTower.paragonUpgrade.Name} to TowerModel {towerModel.name}");
                     throw;
                 }

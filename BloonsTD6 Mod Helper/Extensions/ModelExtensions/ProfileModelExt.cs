@@ -3,6 +3,9 @@ using Assets.Scripts.Unity;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for ProfileModels
+    /// </summary>
     public static class ProfileModelExt
     {
         /// <summary>

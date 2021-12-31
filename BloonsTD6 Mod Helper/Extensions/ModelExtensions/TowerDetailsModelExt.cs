@@ -5,8 +5,14 @@ using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for TowerDetailsModels
+    /// </summary>
     public static class TowerDetailsModelExt
     {
+        /// <summary>
+        /// Gets the index of this TowerDetailsModel within the GameModel
+        /// </summary>
         public static int GetIndex(this TowerDetailsModel towerDetailsModel)
         {
             var towers = Game.instance.model.towerSet;
@@ -49,11 +55,17 @@ namespace BTD_Mod_Helper.Extensions
             return towerDetailsModel.TryCast<ShopTowerDetailsModel>();
         }
 
+        /// <summary>
+        /// Makes a copy of this TowerDetailsModel with a new name
+        /// </summary>
         public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, bool addToGame = false)
         {
             return towerDetailsModel.MakeCopy(newName, towerDetailsModel.towerIndex, addToGame);
         }
 
+        /// <summary>
+        /// Makes a copy of this TowerDetailsModel with a new name and index
+        /// </summary>
         public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, int newTowerIndex, bool addToGame =false)
         {
             var duplicate = towerDetailsModel.Duplicate();
@@ -96,6 +108,9 @@ namespace BTD_Mod_Helper.Extensions
             InGame.instance?.GetTowerInventory(1).SetTowerMaxes(details);
         }*/
 
+        /// <summary>
+        /// Gets the TowerModel for this TowerDetailsModel
+        /// </summary>
         public static TowerModel GetTower(this TowerDetailsModel towerDetailsModel)
         {
             return Game.instance.model.GetTowerWithName(towerDetailsModel.towerId);

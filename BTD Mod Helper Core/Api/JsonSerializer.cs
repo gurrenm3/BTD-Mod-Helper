@@ -4,46 +4,63 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Api
 {
+    /// <summary>
+    /// Class for serializing and deserializing JSON files
+    /// </summary>
     public class JsonSerializer
     {
+        /// <summary>
+        /// Singleton instance for this class
+        /// </summary>
         public static JsonSerializer instance = new JsonSerializer();
 
+        /// <summary>
+        /// Serialize a il2cpp object
+        /// </summary>
         public string Il2CppSerializeJson<T>(T il2cppObject, bool shouldIndent = true) where T : Il2CppSystem.Object
         {
             return JsonUtility.ToJson(il2cppObject, shouldIndent);
         }
 
+        /// <summary>
+        /// Serialize a non-il2cpp object
+        /// </summary>
         public string SerializeJson<T>(T objectToSerialize, bool shouldIndent = true, bool ignoreNulls = false)
         {
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = ignoreNulls ? NullValueHandling.Ignore : NullValueHandling.Include
             };
-            return SerializeJson(objectToSerialize, settings, shouldIndent: shouldIndent);
+            return SerializeJson(objectToSerialize, settings, shouldIndent);
         }
 
+        /// <summary>
+        /// Serialize a non-il2cpp object
+        /// </summary>
         public string SerializeJson<T>(T objectToSerialize, JsonSerializerSettings serializerSettings, bool shouldIndent = true)
         {
             var formatting = shouldIndent ? Formatting.Indented : Formatting.None;
             return JsonConvert.SerializeObject(objectToSerialize, formatting, serializerSettings);
         }
+        
 
-
-
-
+        /// <summary>
+        /// Deserialize an Il2cpp object
+        /// </summary>
         public T Il2CppDeserializeJson<T>(string text)
         {
             return JsonUtility.FromJson<T>(text);
         }
 
+        /// <summary>
+        /// Deserialize a non-Il2cpp object
+        /// </summary>
         public T DeserializeJson<T>(string text)
         {
             return JsonConvert.DeserializeObject<T>(text);
         }
 
-
-
-
+        
         /// <summary>
         /// Create an instance of a class from file
         /// </summary>
@@ -54,7 +71,12 @@ namespace BTD_Mod_Helper.Api
             var json = ReadTextFromFile(filePath);
             return (string.IsNullOrEmpty(json)) ? null : DeserializeJson<T>(json);
         }
-
+        
+        /// <summary>
+        /// Create an instance of an il2cpp class from file
+        /// </summary>
+        /// <typeparam name="T">The type to load</typeparam>
+        /// <param name="filePath">Location of the file</param>
         public T Il2CppLoadFromFile<T>(string filePath) where T : class
         {
             var json = ReadTextFromFile(filePath);
@@ -80,15 +102,15 @@ namespace BTD_Mod_Helper.Api
         }
 
 
-
-
         /// <summary>
         /// Save an instance of a class to file
         /// </summary>
         /// <typeparam name="T">Type of class to save</typeparam>
         /// <param name="jsonObject">Object to save. Must be of Type T</param>
         /// <param name="savePath">Location to save file to</param>
+        /// <param name="ignoreNulls">Whether nulls should be ignored</param>
         /// <param name="overwriteExisting">Overwrite the file if it already exists</param>
+        /// <param name="shouldIndent">Whether it should be indented</param>
         public void SaveToFile<T>(T jsonObject, string savePath, bool shouldIndent = true, bool ignoreNulls = false
             , bool overwriteExisting = true)
         {
@@ -103,6 +125,7 @@ namespace BTD_Mod_Helper.Api
             serialize.Close();
         }
 
+        /// <inheritdoc cref="SaveToFile{T}(T,string,bool,bool,bool)"/>
         public void SaveToFile<T>(T jsonObject, string savePath, JsonSerializerSettings serializerSettings
             , bool shouldIndent = true, bool overwriteExisting = true)
         {
@@ -118,7 +141,7 @@ namespace BTD_Mod_Helper.Api
         }
 
 
-
+        /// <inheritdoc cref="SaveToFile{T}(T,string,bool,bool,bool)"/>
         public void Il2CppSaveToFile<T>(T jsonObject, string savePath, bool shouldIndent = true, bool overwriteExisting = true)
             where T : Il2CppSystem.Object
         {
@@ -137,7 +160,10 @@ namespace BTD_Mod_Helper.Api
         private void CreateDirIfNotFound(string dir)
         {
             var f = new FileInfo(dir);
-            Directory.CreateDirectory(f.Directory.FullName);
+            if (f.Directory != null)
+            {
+                Directory.CreateDirectory(f.Directory.FullName);
+            }
         }
     }
 }

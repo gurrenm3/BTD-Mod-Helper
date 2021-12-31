@@ -5,6 +5,9 @@ using System.Reflection;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for FileInfo
+    /// </summary>
     public static class FileInfoExt
     {
         /// <summary>
@@ -19,7 +22,7 @@ namespace BTD_Mod_Helper.Extensions
             {
                 if (ex.Message.Contains("HRESULT: 0x80131515"))
                 {
-                    MelonLogger.Msg($"The file you tried accessing is blocked. Please Unblock \"{fileInfo.FullName}\" to continue." +
+                    ModHelper.Log($"The file you tried accessing is blocked. Please Unblock \"{fileInfo.FullName}\" to continue." +
                         $"\n\nYou can do this by Right-Clicking on the file, clicking Properties, and then making sure that " +
                         $"\"Unblock\" is checked.");
                 }

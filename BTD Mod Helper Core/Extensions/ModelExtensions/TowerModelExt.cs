@@ -89,6 +89,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return a specific Ability of the tower.
         /// </summary>
+        /// <param name="towerModel">the TowerModel</param>
         /// <param name="index">Index of the ability you want.</param>
         public static AbilityModel GetAbility(this TowerModel towerModel, int index)
         {
@@ -122,6 +123,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return one of the AttackModels from this TowerModel. By default will give the first AttackModel
         /// </summary>
+        /// <param name="towerModel">The TowerModel</param>
         /// <param name="index">Index of the AttackModel you want</param>
         public static AttackModel GetAttackModel(this TowerModel towerModel, int index)
         {
@@ -154,6 +156,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return one of the WeaponModels this TowerModel has. By default will return the first one
         /// </summary>
+        /// <param name="towerModel">The TowerModel</param>
         /// <param name="index">Index of WeaponModel that you want</param>
         public static WeaponModel GetWeapon(this TowerModel towerModel, int index)
         {

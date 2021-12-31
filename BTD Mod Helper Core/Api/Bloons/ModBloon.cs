@@ -3,7 +3,9 @@ using System.Linq;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Bloons.Behaviors;
+#if BloonsTD6
 using Assets.Scripts.Models.GenericBehaviors;
+#endif
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
@@ -193,7 +195,7 @@ namespace BTD_Mod_Helper.Api.Bloons
                 }
                 else
                 {
-                    MelonLogger.Msg($"Couldn't find icon {Icon}");
+                    ModHelper.Log($"Couldn't find icon {Icon}");
                 }
             }
 

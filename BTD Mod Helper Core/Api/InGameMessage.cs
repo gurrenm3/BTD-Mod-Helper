@@ -88,7 +88,7 @@ namespace BTD_Mod_Helper.Api
 
             //set pos so elements are positioned correctly
             var windowHeight = Screen.height;
-            //MelonLogger.Log(windowHeight.ToString());
+            //ModHelper.Log(windowHeight.ToString());
 
             var test1 = (windowHeight / 8) * 1.155f;
             //var spaceBetweenSlots = 110 * slot;

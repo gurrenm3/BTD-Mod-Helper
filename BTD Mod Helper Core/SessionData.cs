@@ -5,11 +5,17 @@ namespace BTD_Mod_Helper
 {
     public partial class SessionData
     {
+        /// <summary>
+        /// Singleton instance of SessionData
+        /// </summary>
         public static SessionData Instance { get; set; } = new SessionData();
 
 
         //internal BloonTracker bloonTracker = new BloonTracker();
-        public RoundSetModel RoundSet { get; set; }
+        
+        /// <summary>
+        /// Keeping track of popped bloons
+        /// </summary>
         public Dictionary<string, int> PoppedBloons { get; set; } = new Dictionary<string, int>();
         
         /// <summary>

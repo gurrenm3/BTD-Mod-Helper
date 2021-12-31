@@ -125,26 +125,5 @@ namespace BTD_Mod_Helper
         }
 
         #endregion
-
-        public static int CostForDifficulty(int cost, string difficulty)
-        {
-            switch (difficulty)
-            {
-                case "Easy":
-                    return CostForDifficulty(cost, .85f);
-                case "Hard":
-                    return CostForDifficulty(cost, 1.08f);
-                case "Impoppable":
-                    return CostForDifficulty(cost, 1.2f);
-                default:
-                    return cost;
-            }
-        }
-
-        public static int CostForDifficulty(int cost, float multiplier)
-        {
-            var price = cost * multiplier;
-            return (int) (5 * Math.Round(price / 5));
-        }
     }
 }

@@ -11,6 +11,9 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for TowerModels
+    /// </summary>
     public static partial class TowerModelExt
     {
         /// <summary>
@@ -19,7 +22,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void SetMaxAmount(this TowerModel towerModel, int max)
         {
             towerModel.GetTowerDetailsModel().towerCount = max;
-            var details = Game.instance?.model.towerSet;
+            var details = Game.instance.model.towerSet;
             InGame.instance.GetTowerInventory()
                 .SetTowerMaxes(details.Cast<Il2CppSystem.Collections.Generic.IEnumerable<TowerDetailsModel>>());
         }
@@ -30,7 +33,7 @@ namespace BTD_Mod_Helper.Extensions
         public static TowerDetailsModel GetTowerDetailsModel(this TowerModel towerModel)
         {
             var baseId = towerModel.GetBaseId();
-            return Game.instance?.model?.GetAllTowerDetails()?.FirstOrDefault(details => details.towerId == baseId);
+            return Game.instance.model?.GetAllTowerDetails()?.FirstOrDefault(details => details.towerId == baseId);
         }
 
         /// <summary>
@@ -64,6 +67,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Return the current upgrade level of a specific path
         /// </summary>
+        /// <param name="towerModel">the TowerModel</param>
         /// <param name="path">What tier of upgrade is currently applied to tower</param>
         public static int GetUpgradeLevel(this TowerModel towerModel, int path)
         {
@@ -75,35 +79,35 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static bool? IsHeroUnlocked(this TowerModel towerModel)
         {
-            return Game.instance?.GetBtd6Player()?.HasUnlockedHero(towerModel.GetBaseId());
+            return Game.instance.GetBtd6Player()?.HasUnlockedHero(towerModel.GetBaseId());
         }
 
         /// <summary>
         /// Has a specific upgrade for this TowerModel been unlocked already?
         /// </summary>
+        /// <param name="towerModel">the TowerModel</param>
         /// <param name="path">Upgrade path</param>
         /// <param name="tier">Tier of upgrade</param>
         public static bool? IsUpgradeUnlocked(this TowerModel towerModel, int path, int tier)
         {
-            UpgradeModel upgradeModel = towerModel.GetUpgrade(path, tier);
-            return Game.instance?.GetBtd6Player()?.HasUpgrade(upgradeModel?.name);
+            var upgradeModel = towerModel.GetUpgrade(path, tier);
+            return Game.instance.GetBtd6Player()?.HasUpgrade(upgradeModel?.name);
         }
 
         /// <summary>
         /// Check if a specific upgrade path is being used/ has any upgrades applied to it
         /// </summary>
+        /// <param name="towerModel">the TowerModel</param>
         /// <param name="path">Upgrade path to check</param>
         public static bool IsUpgradePathUsed(this TowerModel towerModel, int path)
         {
-            UpgradeModel result = towerModel.GetAppliedUpgrades().FirstOrDefault(upgrade => upgrade.path == path);
+            var result = towerModel.GetAppliedUpgrades().FirstOrDefault(upgrade => upgrade.path == path);
             return result != null;
         }
 
         /// <summary>
         /// Check if an upgrade has been applied
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="tier"></param>
         public static bool HasUpgrade(this TowerModel towerModel, int path, int tier)
         {
             return HasUpgrade(towerModel, towerModel.GetUpgrade(path, tier));
@@ -112,8 +116,6 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Check if an upgrade has been applied
         /// </summary>
-        /// <param name="upgradeModel"></param>
-        /// <returns></returns>
         public static bool HasUpgrade(this TowerModel towerModel, UpgradeModel upgradeModel)
         {
             return towerModel.GetAppliedUpgrades().Contains(upgradeModel);
@@ -124,19 +126,12 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<UpgradeModel> GetAppliedUpgrades(this TowerModel towerModel)
         {
-            var appliedUpgrades = new List<UpgradeModel>();
-
-            foreach (var upgrade in towerModel.appliedUpgrades)
-                appliedUpgrades.Add(Game.instance?.model?.upgradesByName[upgrade]);
-
-            return appliedUpgrades;
+            return towerModel.appliedUpgrades.Select(upgrade => Game.instance.model.GetUpgrade(upgrade)).ToList();
         }
 
         /// <summary>
         /// Return the UpgradeModel for a specific upgrade path/tier
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="tier"></param>
         public static UpgradeModel GetUpgrade(this TowerModel towerModel, int path, int tier)
         {
             if (path < 0 || tier < 0)
@@ -147,23 +142,21 @@ namespace BTD_Mod_Helper.Extensions
             var tier3 = (path == 2) ? tier : 0;
 
 
-            var tempTower = Game.instance?.model?.GetTower(towerModel.GetBaseId(), tier1, tier2, tier3);
+            var tempTower = Game.instance.model?.GetTower(towerModel.GetBaseId(), tier1, tier2, tier3);
             if (tempTower is null)
                 return null;
 
             const int offset = 1;
-            List<UpgradeModel> appliedUpgrades = tempTower.GetAppliedUpgrades();
+            var appliedUpgrades = tempTower.GetAppliedUpgrades();
             var results =
                 appliedUpgrades.FirstOrDefault(model => model.path == path && model.tier == (tier - offset));
 
-            return null;
+            return results;
         }
 
         /// <summary>
         /// If this TowerModel is a Hero, return the HeroModel behavior
         /// </summary>
-        /// <param name="towerModel"></param>
-        /// <returns></returns>
         public static HeroModel GetHeroModel(this TowerModel towerModel)
         {
             return towerModel.GetBehavior<HeroModel>();
@@ -174,6 +167,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="towerModel"></param>
         /// <param name="newTowerId">Set's the new towerId of this copy. By default the baseId will be set to this as well</param>
+        /// <param name="addToGame"></param>
         /// <param name="newBaseId">Specify a new baseId. Set this if you want a baseId other than the newTowerId</param>
         /// <returns></returns>
         public static TowerModel MakeCopy(this TowerModel towerModel, string newTowerId, bool addToGame = false,
@@ -200,24 +194,36 @@ namespace BTD_Mod_Helper.Extensions
         }
 
 
+        /// <summary>
+        /// Sets a TowerModel's tiers
+        /// </summary>
         public static void SetTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0,
             bool addToTowerName = false)
         {
-            towerModel.tiers = new UnhollowerBaseLib.Il2CppStructArray<int>(3);
-            towerModel.tiers[0] = tier1;
-            towerModel.tiers[1] = tier2;
-            towerModel.tiers[2] = tier3;
+            towerModel.tiers = new UnhollowerBaseLib.Il2CppStructArray<int>(3)
+            {
+                [0] = tier1,
+                [1] = tier2,
+                [2] = tier3
+            };
 
             if (addToTowerName)
                 towerModel.AddTiersToName();
         }
 
 
-        public static void AddTiersToName(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0)
+        /// <summary>
+        /// Format's the tower's name with its tiers
+        /// </summary>
+        public static void AddTiersToName(this TowerModel towerModel, int tier1, int tier2, int tier3)
         {
             towerModel.name = string.Concat(towerModel.baseId, "-", tier1, tier2, tier3);
         }
 
+
+        /// <summary>
+        /// Format's the tower's name with its tiers
+        /// </summary>
         public static void AddTiersToName(this TowerModel towerModel)
         {
             var tiers = towerModel.tiers;

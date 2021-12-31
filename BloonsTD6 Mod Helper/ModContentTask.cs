@@ -41,8 +41,8 @@ namespace BTD_Mod_Helper
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error($"Failed to register {modContent.Name}");
-                    MelonLogger.Error(e);
+                    ModHelper.Error($"Failed to register {modContent.Name}");
+                    ModHelper.Error(e);
                 }
 
             }

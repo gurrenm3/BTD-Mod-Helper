@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Type
+    /// </summary>
     public static class TypeExt
     {
         /// <summary>

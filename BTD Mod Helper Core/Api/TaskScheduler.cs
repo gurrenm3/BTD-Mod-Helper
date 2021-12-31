@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Api
 {
+    /// <summary>
+    /// Class for scheduling Tasks using MelonCoroutines
+    /// </summary>
     public static class TaskScheduler
     {
         /// <summary>
@@ -40,7 +43,7 @@ namespace BTD_Mod_Helper.Api
             catch (Exception ex)
             {
                 if (ex.Message.Contains("trampoline"))
-                    MelonLoader.MelonLogger.Warning("Notice: Melonloader Coroutine had a trampoline error." +
+                    ModHelper.Warning("Notice: Melonloader Coroutine had a trampoline error." +
                         " This shouldn't have any impact on the mod.");
             }
         }
@@ -63,9 +66,6 @@ namespace BTD_Mod_Helper.Api
             {
                 while (!waitContition.Invoke())
                 {
-                    if (AppDomain.CurrentDomain == null)
-                        break;
-
                     yield return WaiterCoroutine(scheduleType, amountToWait);
                 }
             }
@@ -87,9 +87,6 @@ namespace BTD_Mod_Helper.Api
                     var count = 0;
                     while (amountToWait >= count)
                     {
-                        if (AppDomain.CurrentDomain == null)
-                            break;
-
                         yield return new WaitForSecondsRealtime(1);
                         count++;
                     }

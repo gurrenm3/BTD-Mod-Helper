@@ -1,7 +1,5 @@
 ﻿using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Rounds;
-using Assets.Scripts.Simulation.Bloons;
-using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.UI_New.InGame;
@@ -16,18 +14,22 @@ using BTD_Mod_Helper.Api.Display;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static class BloonModelExt
+    /// <summary>
+    /// Extensions for BloonModels
+    /// </summary>
+    public static partial class BloonModelExt
     {
         /// <summary>
         /// (Cross-Game compatable) Return how much cash this bloon would give if popped by <paramref name="layersPopped"/> number of layers
         /// </summary>
+        /// <param name="bloonModel"></param>
         /// <param name="layersPopped">How many layers of bloons to pop, ignoring layer health. If less than 0, calculates for the entire bloon</param>
         public static int GetTotalCash(this BloonModel bloonModel, int layersPopped = -1)
         {
-            if (layersPopped == 0) return 0;
+            if (layersPopped == 0 || InGame.instance == null) return 0;
 
             var cashValue = SessionData.Instance.bloonPopValues;
-            var children = bloonModel.GetChildBloonModels(InGame.instance?.GetSimulation());
+            var children = bloonModel.GetChildBloonModels(InGame.instance.GetSimulation());
             if ((layersPopped >= 0) || !cashValue.TryGetValue(bloonModel.GetBaseID(), out var bloonCash))
             {
                 bloonCash = 1;
@@ -50,7 +52,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static int GetIndex(this BloonModel bloonModel)
         {
-            var allBloons = Game.instance?.model?.bloons;
+            var allBloons = Game.instance.model.bloons;
             return allBloons.FindIndex(bloon => bloon.name == bloonModel.name);
         }
 
@@ -59,15 +61,11 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static void SpawnBloonModel(this BloonModel bloonModel)
         {
-            var spawner = InGame.instance?.GetMap()?.spawner;
-            if (spawner is null)
+            if (InGame.instance == null)
                 return;
+            var spawner = InGame.instance.GetMap().spawner;
 
 #if BloonsTD6
-            Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators =
-                new Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator>();
-            Il2CppSystem.Collections.Generic.List<BehaviorMutator> nonChargedMutators =
-                new Il2CppSystem.Collections.Generic.List<BehaviorMutator>();
             spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation().GetCurrentRound(), 0);
 #elif BloonsAT
             spawner.Emit(bloonModel);
@@ -77,12 +75,13 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Create a BloonEmissionModel from this BloonModel
         /// </summary>
+        /// <param name="bloonModel"></param>
         /// <param name="count">Number of bloons in this emission model</param>
         /// <param name="spacing">Space between each bloon in this emission model</param>
         public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissionModel(this BloonModel bloonModel,
             int count, int spacing)
         {
-            return Game.instance?.model?.CreateBloonEmissions(bloonModel, count, spacing);
+            return Game.instance.model.CreateBloonEmissions(bloonModel, count, spacing);
         }
 
         /// <summary>
@@ -91,8 +90,12 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
-            var bloonSims =
-                InGame.instance?.GetUnityToSimulation()?.GetAllBloons();
+            if (InGame.instance == null)
+            {
+                return null;
+            }
+
+            var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
                 return null;
 
@@ -105,8 +108,11 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<BloonToSimulation> GetAllBloonToSim(this BloonModel bloonModel)
         {
-            var bloonSims =
-                InGame.instance?.GetUnityToSimulation()?.GetAllBloons();
+            if (InGame.instance == null)
+            {
+                return null;
+            }
+            var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
                 return null;
 
@@ -288,8 +294,6 @@ namespace BTD_Mod_Helper.Extensions
                     growModel.growToId = newBloon;
                 }
             }
-            
-            
         }
 
         /// <summary>

@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Behavior extensions for TowerModels
+    /// </summary>
     public static class TowerModelBehaviorExt
     {
         /// <summary>

@@ -22,9 +22,9 @@ namespace BTD_Mod_Helper.Api.Display
             }
             catch (Exception e)
             {
-                MelonLogger.Error(
+                ModHelper.Error(
                     $"Failed to assign ModTowerDisplay {Name} to ModTower {Tower.Name}");
-                MelonLogger.Error(e);
+                ModHelper.Error(e);
             }
         }
 

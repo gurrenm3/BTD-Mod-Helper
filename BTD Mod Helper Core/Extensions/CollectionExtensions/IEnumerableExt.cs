@@ -2,7 +2,6 @@
 using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using System.Linq;
-using MelonLoader;
 using UnhollowerBaseLib;
 using UnhollowerRuntimeLib;
 
@@ -75,7 +74,7 @@ namespace BTD_Mod_Helper.Extensions
                 var tryCast = m.TryCast<TCast>();
                 if (tryCast == null)
                 {
-                    MelonLogger.Warning(
+                    ModHelper.Warning(
                         $"Couldn't cast type {m.GetIl2CppType().Name} to {Il2CppType.Of<TCast>().Name}");
                 }
 
@@ -85,6 +84,9 @@ namespace BTD_Mod_Helper.Extensions
 
 
         // Thanks to Dmitry Bychenko on StackOverflow for this
+        /// <summary>
+        /// Returns the argument that maximizes the given value
+        /// </summary>
         public static T ArgMax<T, K>(this IEnumerable<T> source,
             Func<T, K> map = null,
             IComparer<K> comparer = null)
@@ -118,7 +120,7 @@ namespace BTD_Mod_Helper.Extensions
 
             if (!first)
                 return result;
-            throw new ArgumentException("Can't compute ArgMax on empty sequence.", "source");
+            throw new ArgumentException(@"Can't compute ArgMax on empty sequence.", nameof(source));
         }
         
         /// <summary>

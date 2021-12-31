@@ -43,7 +43,7 @@ namespace BTD_Mod_Helper
 
             Schedule_GameModel_Loaded();
 
-            MelonLogger.Msg("Mod has finished loading");
+            ModHelper.Log("Mod has finished loading");
 
             // Load Content from other mods
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
@@ -57,8 +57,8 @@ namespace BTD_Mod_Helper
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
-                    MelonLogger.Error(e);
+                    ModHelper.Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    ModHelper.Error(e);
                 }
             }
         }
@@ -173,7 +173,7 @@ namespace BTD_Mod_Helper
                     "You've downloaded new updates for mods, but still need to restart your game to apply them.\n" +
                     "\nWould you like to do that now?", new Action(() =>
                     {
-                        MelonLogger.Msg("Quitting the game");
+                        ModHelper.Log("Quitting the game");
                         MenuManager.instance.QuitGame();
                     }),
                     "Yes, quit the game", new Action(() => { }), "Not now", Popup.TransitionAnim.Update);

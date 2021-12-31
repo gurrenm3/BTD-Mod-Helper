@@ -3,6 +3,9 @@ using Assets.Scripts.Unity.Display.Animation;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Towers
+    /// </summary>
     public static partial class TowerExt
     {
         /// <summary>

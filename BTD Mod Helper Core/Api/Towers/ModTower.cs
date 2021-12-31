@@ -52,7 +52,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception)
                 {
-                    MelonLogger.Error($"Failed to add ModTower {Name} to the shop");
+                    ModHelper.Error($"Failed to add ModTower {Name} to the shop");
                     throw;
                 }
             }

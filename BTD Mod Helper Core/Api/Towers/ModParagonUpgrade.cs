@@ -23,8 +23,8 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception e)
             {
-                MelonLogger.Warning("Failed to assign ModParagonUpgrade " + Name + $" to ModTower {Tower.Name}");
-                MelonLogger.Error(e);
+                ModHelper.Warning("Failed to assign ModParagonUpgrade " + Name + $" to ModTower {Tower.Name}");
+                ModHelper.Error(e);
                 throw;
             }
         }

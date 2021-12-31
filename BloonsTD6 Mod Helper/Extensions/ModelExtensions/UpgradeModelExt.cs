@@ -4,6 +4,9 @@ using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for UpgradeModels
+    /// </summary>
     public static class UpgradeModelExt
     {
         /// <summary>

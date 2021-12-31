@@ -24,8 +24,8 @@ namespace BTD_Mod_Helper.Patches.Resources
                     }
                     catch (Exception e)
                     {
-                        MelonLogger.Msg($"Failed to register text for {namedModContent}");
-                        MelonLogger.Error(e);
+                        ModHelper.Log($"Failed to register text for {namedModContent}");
+                        ModHelper.Error(e);
                     }
                 }
             }

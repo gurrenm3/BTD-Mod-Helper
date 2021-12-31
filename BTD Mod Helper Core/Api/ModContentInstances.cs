@@ -39,7 +39,7 @@ namespace BTD_Mod_Helper.Api
             }
             else
             {
-                MelonLogger.Error($"Tried to add content instances of type {type.Name} that wasn't valid");
+                ModHelper.Error($"Tried to add content instances of type {type.Name} that wasn't valid");
             }
         }
     }

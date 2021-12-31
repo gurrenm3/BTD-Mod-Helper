@@ -190,7 +190,7 @@ namespace BTD_Mod_Helper.Api.Updater
             if (updateInfo.Name == "BloonsTD6 Mod Helper")
             {
                 Process.Start(updateInfo.LatestURL);
-                MelonLogger.Msg("For the moment, the mod helper can't directly update itself");
+                ModHelper.Log("For the moment, the mod helper can't directly update itself");
                 return false;
             }
             

@@ -36,8 +36,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Warning($"Error initializing ModSettings for {mod.Info.Name}");
-                    MelonLogger.Warning(e);
+                    ModHelper.Warning($"Error initializing ModSettings for {mod.Info.Name}");
+                    ModHelper.Warning(e);
                 }
 
                 if (mod.ModSettings.Any())
@@ -78,8 +78,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
                                         }
                                         catch (Exception e)
                                         {
-                                            MelonLogger.Warning($"Error loading ModSetting {name} of mod {mod.Info.Name}");
-                                            MelonLogger.Warning(e);
+                                            ModHelper.Warning($"Error loading ModSetting {name} of mod {mod.Info.Name}");
+                                            ModHelper.Warning(e);
                                         }
                                     }
                                 }
@@ -89,8 +89,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Warning($"Error loading ModSettings for {mod.Info.Name}");
-                    MelonLogger.Warning(e);
+                    ModHelper.Warning($"Error loading ModSettings for {mod.Info.Name}");
+                    ModHelper.Warning(e);
                 }
             }
         }

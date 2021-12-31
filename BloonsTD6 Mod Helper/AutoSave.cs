@@ -17,20 +17,20 @@ namespace BTD_Mod_Helper
     {
         internal static BackupCreator backup;
         internal static bool autosaveInit;
-        internal static string profileSaveDir;
+        // internal static string profileSaveDir;
 
         internal static void InitAutosave(string settingsDir)
         {
             if (autosaveInit)
                 return;
 
-            MelonLogger.Msg("Starting to initiate profile AutoSaving...");
+            ModHelper.Log("Starting to initiate profile AutoSaving...");
             InitAutosaveSettings(settingsDir);
             backup = new BackupCreator(autosavePath, maxSavedBackups);
             ScheduleAutosave();
             autosaveInit = true;
 
-            MelonLogger.Msg("Successfully initiated profile AutoSaving");
+            ModHelper.Log("Successfully initiated profile AutoSaving");
         }
 
         private static void InitAutosaveSettings(string settingsDir)
@@ -72,7 +72,7 @@ namespace BTD_Mod_Helper
                 Api.Enums.ScheduleType.WaitForSeconds, timeBetweenBackup * secondsPerMinute);
         }
 
-        private static void InitOpenDirButton(SharedOption option, string dir)
+        private static void InitOpenDirButton(ModOption option, string dir)
         {
             var button = (ButtonOption)option;
             button.ButtonText.text = "Open";

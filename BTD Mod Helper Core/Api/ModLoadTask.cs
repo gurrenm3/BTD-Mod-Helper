@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+#if BloonsTD6
 using Assets.Scripts.Unity.Tasks;
 
 namespace BTD_Mod_Helper.Api
@@ -10,10 +11,13 @@ namespace BTD_Mod_Helper.Api
     /// </summary>
     public abstract class ModLoadTask : NamedModContent
     {
-        internal static Dictionary<int, ModLoadTask> Cache = new Dictionary<int, ModLoadTask>();
+        internal static readonly Dictionary<int, ModLoadTask> Cache = new Dictionary<int, ModLoadTask>();
 
-        public sealed override string DisplayNamePlural { get; }
-        public sealed override string Description { get; }
+        /// <inheritdoc />
+        public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+
+        /// <inheritdoc />
+        public sealed override string Description => base.DisplayNamePlural;
 
         internal IEnumerator iEnumerator;
 
@@ -25,10 +29,10 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public abstract IEnumerator Coroutine();
 
-        
+
         /// <inheritdoc />
         public sealed override int RegisterPerFrame => 999;
-        
+
         /// <inheritdoc />
         public override void Register()
         {
@@ -43,3 +47,4 @@ namespace BTD_Mod_Helper.Api
         }
     }
 }
+#endif

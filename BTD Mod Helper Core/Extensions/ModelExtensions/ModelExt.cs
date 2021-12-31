@@ -2,6 +2,9 @@
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Models
+    /// </summary>
     public static partial class ModelExt
     {
         /// <summary>

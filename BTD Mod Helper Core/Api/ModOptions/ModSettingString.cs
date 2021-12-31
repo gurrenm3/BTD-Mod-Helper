@@ -6,7 +6,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 {
     
     /// <summary>
-    /// 
+    /// ModSetting for a string value
     /// </summary>
     public class ModSettingString : ModSetting<string>
     {
@@ -27,6 +27,9 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// </summary>
         public static readonly string Integer = InputField.CharacterValidation.Integer.ToString();
         
+        /// <summary>
+        /// InputField validation, use one of the ModSettingString.[thing] constants 
+        /// </summary>
         public string validation;
 
         /// <inheritdoc />
@@ -34,11 +37,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
         }
 
+        /// <summary>
+        /// Constructs a new ModSetting with the given value as default
+        /// </summary>
         public static implicit operator ModSettingString(string value)
         {
             return new ModSettingString(value);
         }
 
+        /// <summary>
+        /// Gets the current value out of a ModSetting
+        /// </summary>
         public static implicit operator string(ModSettingString modSettingString)
         {
             return modSettingString.value;
@@ -50,6 +59,9 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return new InputOption(parent, this);
         }
 
+        /// <summary>
+        /// Gets the current Validation option
+        /// </summary>
         public InputField.CharacterValidation GetValidation()
         {
             return Enum.TryParse(validation, out InputField.CharacterValidation val) ? val : InputField.CharacterValidation.None;

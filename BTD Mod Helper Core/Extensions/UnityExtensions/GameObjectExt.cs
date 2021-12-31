@@ -4,8 +4,14 @@ using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for GameObjects
+    /// </summary>
     public static class GameObjectExt
     {
+        /// <summary>
+        /// Finds a component with the given path and type
+        /// </summary>
         public static T GetComponent<T>(this GameObject gameObject, string componentPath)
         {
             return gameObject.transform.Find(componentPath).GetComponent<T>();
@@ -41,11 +47,18 @@ namespace BTD_Mod_Helper.Extensions
             gameObject.GetComponent<RectTransform>().localScale = new Vector3(0, 0);
         }
 
+        /// <summary>
+        /// Destroys this GameObject
+        /// </summary>
+        /// <param name="gameObject"></param>
         public static void Destroy(this GameObject gameObject)
         {
             Object.Destroy(gameObject);
         }
         
+        /// <summary>
+        /// Logs a GameObject's hierarchy recursively
+        /// </summary>
         public static void RecursivelyLog(this GameObject gameObject, int depth = 0)
         {
             var str = gameObject.name;
@@ -61,7 +74,7 @@ namespace BTD_Mod_Helper.Extensions
             }
 
             str += ")";
-            MelonLogger.Msg(str);
+            ModHelper.Log(str);
             for (var i = 0; i < gameObject.transform.childCount; i++)
             {
                 RecursivelyLog(gameObject.transform.GetChild(i).gameObject, depth + 1);

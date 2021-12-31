@@ -133,6 +133,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
         /// </summary>
+        /// <param name="game">the Game instance</param>
         /// <param name="message">Message body</param>
         /// <param name="title">Message title. Will be mod name by default</param>
         public static void ShowMessage(this Game game, string message, [Optional] string title)
@@ -143,6 +144,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
         /// </summary>
+        /// <param name="game">the Game instance</param>
         /// <param name="message">Message body</param>
         /// <param name="displayTime">Time to show message on screen</param>
         /// <param name="title">Message title. Will be mod name by default</param>

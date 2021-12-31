@@ -2,6 +2,9 @@
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for system LockedLists
+    /// </summary>
     public static partial class LockedListExt
     {
         /// <summary>

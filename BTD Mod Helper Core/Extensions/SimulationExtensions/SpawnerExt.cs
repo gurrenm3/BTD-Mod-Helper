@@ -11,6 +11,9 @@ using Assets.Scripts.Models.Rounds;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Spawners
+    /// </summary>
     public static class SpawnerExt
     {
         /// <summary>
@@ -21,8 +24,6 @@ namespace BTD_Mod_Helper.Extensions
         public static void Emit(this Spawner spawner, BloonModel bloonModel)
         {
 #if BloonsTD6
-            var chargedMutators = new Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator>();
-            var nonChargedMutators = new Il2CppSystem.Collections.Generic.List<BehaviorMutator>();
             spawner.Emit(bloonModel, InGame.Bridge.GetCurrentRound(), 0);
 #elif BloonsAT
             var emissionModel = new BloonEmissionModel(bloonType: bloonModel.baseType);

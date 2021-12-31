@@ -3,6 +3,9 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Il2cpp delegates
+    /// </summary>
     public static class Il2CppSystemDelegateExxt
     {
         /// <summary>

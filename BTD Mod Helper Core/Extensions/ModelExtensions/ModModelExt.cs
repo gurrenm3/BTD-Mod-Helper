@@ -6,6 +6,7 @@ using BTD_Mod_Helper.Api.Bloons;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    #if BloonsTD6
     /// <summary>
     /// Extensions for the ModModel (GameMode) class
     /// </summary>
@@ -160,4 +161,6 @@ namespace BTD_Mod_Helper.Extensions
             model.AddMutator(new BloonSetModModel("BloonSetModModel_", ModContent.GetInstance<T>().Id));
         }
     }
+    
+    #endif
 }

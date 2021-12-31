@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for LockedLists
+    /// </summary>
     public static class LockedList
     {
         /// <summary>

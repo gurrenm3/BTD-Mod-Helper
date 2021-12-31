@@ -6,8 +6,14 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.BTD6_UI
 {
+    /// <summary>
+    /// Class to access the Title Screen UI
+    /// </summary>
     public static class TitleScreenUI
     {
+        /// <summary>
+        /// Gets the Scene if on the Title Screen menu
+        /// </summary>=
         public static Scene? GetScene()
         {
             try
@@ -16,13 +22,12 @@ namespace BTD_Mod_Helper.BTD6_UI
             { return null; }
         }
 
+        /// <summary>
+        /// Gets the Canvas for the TitleScreenUI, or null
+        /// </summary>
         public static Canvas GetCanvas()
         {
-            var scene = GetScene();
-            if (!scene.HasValue)
-                return null;
-
-            var sceneObjects = scene.Value.GetRootGameObjects();
+            var sceneObjects = GetScene()?.GetRootGameObjects();
             if (sceneObjects is null || sceneObjects.Count == 0)
                 return null;
 
@@ -31,6 +36,9 @@ namespace BTD_Mod_Helper.BTD6_UI
             return canvas.GetComponent<Canvas>();
         }
 
+        /// <summary>
+        /// Gets the Intermediate Button if on the Map Select Menu, or null
+        /// </summary>
         public static Button GetStartButton()
         {
             return GetCanvas()?.GetComponent<Button>("ScreenBoxer/TitleScreen/Start");

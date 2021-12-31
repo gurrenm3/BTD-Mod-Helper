@@ -68,7 +68,7 @@ namespace BTD_Mod_Helper.Extensions
                 return addModel5.behaviors.CastAll<WeaponBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
 #endif
 
-            MelonLogger.Warning($"Type {model.GetIl2CppType().Name} does not have behaviors");
+            ModHelper.Warning($"Type {model.GetIl2CppType().Name} does not have behaviors");
 
             return null;
         }

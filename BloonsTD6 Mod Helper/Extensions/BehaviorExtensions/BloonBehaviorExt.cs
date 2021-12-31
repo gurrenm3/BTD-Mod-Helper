@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for getting bloon behaviors
+    /// </summary>
     public static class BloonBehaviorExt
     {
         /// <summary>

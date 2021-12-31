@@ -77,8 +77,8 @@ namespace BTD_Mod_Helper.Patches.Resources
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error($"Failed to load display for {modDisplay.Name}");
-                    MelonLogger.Error(e);
+                    ModHelper.Error($"Failed to load display for {modDisplay.Name}");
+                    ModHelper.Error(e);
                 }
             }
 
@@ -95,8 +95,8 @@ namespace BTD_Mod_Helper.Patches.Resources
             }
             catch (Exception e)
             {
-                MelonLogger.Error($"Failed to modify DisplayNode for {modDisplay.Name}");
-                MelonLogger.Error(e);
+                ModHelper.Error($"Failed to modify DisplayNode for {modDisplay.Name}");
+                ModHelper.Error(e);
             }
 
             try
@@ -109,8 +109,8 @@ namespace BTD_Mod_Helper.Patches.Resources
             }
             catch (Exception e)
             {
-                MelonLogger.Error($"Failed to change scale for {modDisplay.Name}");
-                MelonLogger.Error(e);
+                ModHelper.Error($"Failed to change scale for {modDisplay.Name}");
+                ModHelper.Error(e);
             }
 
             udn.RecalculateGenericRenderers();

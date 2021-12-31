@@ -13,6 +13,9 @@ namespace BTD_Mod_Helper.Api.Bloons
     /// </summary>
     public abstract class ModRoundSet : NamedModContent
     {
+        /// <summary>
+        /// RoundSets register Bloons and before GameModes
+        /// </summary>
         protected override float RegistrationPriority => 9;
 
         /// <inheritdoc />

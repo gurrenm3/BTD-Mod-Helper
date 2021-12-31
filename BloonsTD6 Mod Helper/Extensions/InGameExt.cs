@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Models;
+﻿using System.Linq;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Simulation.Input;
 using Assets.Scripts.Unity;
@@ -16,10 +16,19 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Custom API method that changes the game's round set to a custom RoundSetModel.
         /// </summary>
+        /// <param name="inGame"></param>
         /// <param name="roundSet">New Round Set Model to use</param>
         public static void SetRoundSet(this InGame inGame, RoundSetModel roundSet)
         {
-            SessionData.Instance.RoundSet = roundSet;
+            var name = inGame.GetGameModel().roundSets.FirstOrDefault(model => model.name == roundSet.name)?.name;
+            if (name != null)
+            {
+                inGame.GetGameModel().bloonSet = name;
+            }
+            else
+            {
+                ModHelper.Warning("Round set was not in the GameModel");
+            }
         }
 
         /// <summary>
@@ -38,18 +47,9 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the save path for the game (I think?).  Broken on update 28.0
-        /// </summary>
-        /// <param name="inGame"></param>
-        /// <returns></returns>
-        /*public static string GetSavePath(this InGame inGame)
-        {
-            return Game.save;
-        }*/
-
-        /// <summary>
         /// Get the Cash Manager for the current game
         /// </summary>
+        /// <param name="inGame">InGame instance</param>
         /// <param name="index">Index of the cash manager. Default is 0</param>
         public static CashManager GetCashManager(this InGame inGame, int index = 0)
         {
@@ -67,21 +67,23 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Add cash to the Player's wallet
         /// </summary>
+        /// <param name="inGame">InGame instance</param>
         /// <param name="amount">Amount of cash to add to player wallet</param>
         public static void AddCash(this InGame inGame, double amount)
         {
             inGame.GetCashManager().cash.Value += amount;
-            InGame.instance.bridge.OnCashChangedSim(); 
+            InGame.instance.bridge.OnCashChangedSim();
         }
 
         /// <summary>
         /// Set the Player's cash to a specific amount
         /// </summary>
+        /// <param name="inGame">InGame instance</param>
         /// <param name="amount">Value to set cash to</param>
         public static void SetCash(this InGame inGame, double amount)
         {
             inGame.GetCashManager().cash.Value = amount;
-            InGame.instance.bridge.OnCashChangedSim(); 
+            InGame.instance.bridge.OnCashChangedSim();
         }
 
         /// <summary>
@@ -95,6 +97,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Add health to the players current health
         /// </summary>
+        /// <param name="inGame">InGame instance</param>
         /// <param name="amount">Amount of health to add</param>
         public static void AddHealth(this InGame inGame, double amount)
         {
@@ -104,6 +107,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Set player's health to specific amount
         /// </summary>
+        /// <param name="inGame">InGame instance</param>
         /// <param name="amount">Value to set health to</param>
         public static void SetHealth(this InGame inGame, double amount)
         {
@@ -121,6 +125,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Add to the player's max health
         /// </summary>
+        /// <param name="inGame">InGame instance</param>
         /// <param name="amount">Amount to add to the player's max health</param>
         public static void AddMaxHealth(this InGame inGame, double amount)
         {
@@ -130,6 +135,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Set the player's maximum health to a new value
         /// </summary>
+        /// <param name="inGame">InGame instance</param>
         /// <param name="amount">Value to set max health to</param>
         public static void SetMaxHealth(this InGame inGame, double amount)
         {
@@ -179,7 +185,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="spacing"></param>
         public static void SpawnBloons(this InGame inGame, string bloonName, int number, float spacing)
         {
-            var bloonEmissionModels = Game.instance.model.CreateBloonEmissions(bloonName, number, spacing).ToIl2CppReferenceArray();
+            var bloonEmissionModels = Game.instance.model.CreateBloonEmissions(bloonName, number, spacing)
+                .ToIl2CppReferenceArray();
             inGame.SpawnBloons(bloonEmissionModels);
         }
 
@@ -188,9 +195,11 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="inGame"></param>
         /// <param name="bloonEmissionModels"></param>
-        public static void SpawnBloons(this InGame inGame, System.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
+        public static void SpawnBloons(this InGame inGame,
+            System.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSimulation().GetCurrentRound(), 0);
+            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
+                inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
 
@@ -201,7 +210,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="bloonEmissionModels"></param>
         public static void SpawnBloons(this InGame inGame, List<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(), inGame.GetUnityToSimulation().GetCurrentRound(), 0);
+            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
+                inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
 
@@ -212,7 +222,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="bloonEmissionModels"></param>
         public static void SpawnBloons(this InGame inGame, Il2CppReferenceArray<BloonEmissionModel> bloonEmissionModels)
         {
-            inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels, inGame.GetUnityToSimulation().GetCurrentRound(), 0);
+            inGame.GetUnityToSimulation()
+                .SpawnBloons(bloonEmissionModels, inGame.GetUnityToSimulation().GetCurrentRound(), 0);
         }
 
 
@@ -226,7 +237,9 @@ namespace BTD_Mod_Helper.Extensions
             var model = inGame.GetGameModel();
 
             var index = (round < 100) ? round - 1 : round - 100;
-            var emissions = (round < 100) ? model.GetRoundSet().rounds[index].emissions : model.freeplayGroups[index].bloonEmissions;
+            var emissions = (round < 100)
+                ? model.GetRoundSet().rounds[index].emissions
+                : model.freeplayGroups[index].bloonEmissions;
             inGame.SpawnBloons(emissions);
         }
     }

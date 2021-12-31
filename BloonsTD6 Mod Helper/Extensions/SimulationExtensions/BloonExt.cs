@@ -6,6 +6,9 @@ using System.Runtime.InteropServices;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Bloons
+    /// </summary>
     public static partial class BloonExt
     {
         /// <summary>
@@ -35,6 +38,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Set bloon to be camo or not. Will change bloonModel to camo version if it exists
         /// </summary>
+        /// <param name="bloon">the Bloon</param>
         /// <param name="isCamo">Should bloon be camo</param>
         public static void SetCamo(this Bloon bloon, bool isCamo)
         {
@@ -45,6 +49,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Set bloon to be fortified or not. Will change bloonModel to fortified version if it exists
         /// </summary>
+        /// <param name="bloon">the Bloon</param>
         /// <param name="isFortified">Should bloon be fortified</param>
         public static void SetFortified(this Bloon bloon, bool isFortified)
         {
@@ -55,6 +60,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Set bloon to be regrow or not. Will change bloonModel to regrow version if it exists
         /// </summary>
+        /// <param name="bloon">the Bloon</param>
         /// <param name="isRegrow">Should bloon be regrow</param>
         public static void SetRegrow(this Bloon bloon, bool isRegrow)
         {
@@ -65,6 +71,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Remove current statuses from bloon
         /// </summary>
+        /// <param name="bloon">the Bloon</param>
         /// <param name="removeCamo">Should remove camo if present?</param>
         /// <param name="removeFortify">Should remove fortify if present?</param>
         /// <param name="removeRegrow">Should remove regrow if present?</param>
@@ -87,6 +94,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Set the statuses of the bloon. Will change bloonModel if one exists with these statuses
         /// </summary>
+        /// <param name="bloon">the Bloon</param>
         /// <param name="setCamo">Should have camo?</param>
         /// <param name="setFortified">Should have fortify?</param>
         /// <param name="setRegrow">Should have regrow?</param>

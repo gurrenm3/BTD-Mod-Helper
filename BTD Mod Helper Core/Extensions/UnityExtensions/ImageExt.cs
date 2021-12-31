@@ -14,6 +14,7 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Saves an image as a PNG files
         /// Coded in a robust manner that should work for all images, including those with multiple sprites on them being used
         /// </summary>
+        /// <param name="image"></param>
         /// <param name="filePath">Absolute file path on the machine to save the file to</param>
         public static void SaveToPNG(this Image image, string filePath)
         {
@@ -54,8 +55,6 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Sets the sprite of this image to one with the given name in the named sprite atlas
         /// </summary>
-        /// <param name="image"></param>
-        /// <param name="spriteReference"></param>
         public static void SetSpriteFromAtlas(this Image image, string atlas, string spriteName)
         {
             AtlasLateBinding.Instance.OnAtlasRequested(atlas, new Action<SpriteAtlas>(spriteAtlas =>
@@ -63,7 +62,7 @@ namespace BTD_Mod_Helper.Extensions
                 var sprite = spriteAtlas.GetSprite(spriteName);
                 if (sprite == null)
                 {
-                    MelonLogger.Warning($"Couldn't find sprite {spriteName} in atlas {atlas}");
+                    ModHelper.Warning($"Couldn't find sprite {spriteName} in atlas {atlas}");
                 }
                 image.SetSprite(sprite);
             }));

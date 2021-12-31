@@ -2,7 +2,6 @@
 using Assets.Scripts.Models;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Helpers
 {
@@ -11,28 +10,31 @@ namespace BTD_Mod_Helper.Api.Helpers
     /// </summary>
     public static class GameModelExporter
     {
+        /// <summary>
+        /// Exports every bit of GameModel and GameData info of note to the local folder
+        /// </summary>
         public static void ExportAll()
         {
-            MelonLogger.Msg("Exporting Towers to local files");
+            ModHelper.Log("Exporting Towers to local files");
             foreach (var tower in Game.instance.model.towers)
             {
                 Export(tower, $"Towers/{tower.baseId}/{tower.name}.json");
             }
 
-            MelonLogger.Msg("Exporting Upgrades to local files");
+            ModHelper.Log("Exporting Upgrades to local files");
             foreach (var upgrade in Game.instance.model.upgrades)
             {
                 Export(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json");
             }
 
-            MelonLogger.Msg("Exporting Bloons to local files");
+            ModHelper.Log("Exporting Bloons to local files");
             foreach (var bloon in Game.instance.model.bloons)
             {
                 Export(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json");
             }
 
 
-            MelonLogger.Msg("Exporting Monkey Knowledge to local files");
+            ModHelper.Log("Exporting Monkey Knowledge to local files");
             foreach (var knowledgeSet in Game.instance.model.knowledgeSets)
             {
                 foreach (var knowledgeTierModel in knowledgeSet.tiers)
@@ -49,25 +51,25 @@ namespace BTD_Mod_Helper.Api.Helpers
             }
 
 
-            MelonLogger.Msg("Exporting Powers to local files");
+            ModHelper.Log("Exporting Powers to local files");
             foreach (var model in Game.instance.model.powers)
             {
                 Export(model, $"Powers/{model.name}.json");
             }
 
-            MelonLogger.Msg("Exporting Mods to local files");
+            ModHelper.Log("Exporting Mods to local files");
             foreach (var model in Game.instance.model.mods)
             {
                 Export(model, $"Mods/{model.name}.json");
             }
 
-            MelonLogger.Msg("Exporting Skins to local files");
+            ModHelper.Log("Exporting Skins to local files");
             foreach (var model in Game.instance.model.skins)
             {
                 Export(model, $"Skins/{model.towerBaseId}/{model.name}.json");
             }
 
-            MelonLogger.Msg("Exporting Rounds to local files");
+            ModHelper.Log("Exporting Rounds to local files");
             foreach (var roundSet in Game.instance.model.roundSets)
             {
                 for (var i = 0; i < roundSet.rounds.Count; i++)
@@ -77,17 +79,19 @@ namespace BTD_Mod_Helper.Api.Helpers
             }
         }
 
-
+        /// <summary>
+        /// Tries to save a specific Model and logs doing so
+        /// </summary>
         public static void Export(Model model, string path)
         {
             try
             {
                 FileIOUtil.SaveObject(path, model);
-                MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+                ModHelper.Log("Saving " + FileIOUtil.sandboxRoot + path);
             }
             catch (Exception)
             {
-                MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+                ModHelper.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
             }
         }
 

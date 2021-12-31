@@ -47,8 +47,8 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception e)
             {
-                MelonLogger.Error("Failed to create UpgradeModel for ModUpgrade " + Name);
-                MelonLogger.Error(e);
+                ModHelper.Error("Failed to create UpgradeModel for ModUpgrade " + Name);
+                ModHelper.Error(e);
                 return;
             }
 
@@ -62,8 +62,8 @@ namespace BTD_Mod_Helper.Api.Towers
             }
             catch (Exception e)
             {
-                MelonLogger.Error("General error in loading ModUpgrade " + Name);
-                MelonLogger.Error(e);
+                ModHelper.Error("General error in loading ModUpgrade " + Name);
+                ModHelper.Error(e);
             }
         }
 
@@ -77,17 +77,17 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
-                    MelonLogger.Error(e);
-                    MelonLogger.Error(
+                    ModHelper.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
+                    ModHelper.Error(e);
+                    ModHelper.Error(
                         "Double check that the Tower loaded and all Path and Tier values are correct");
                     throw;
                 }
             }
             else
             {
-                MelonLogger.Warning("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
-                MelonLogger.Warning(
+                ModHelper.Warning("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
+                ModHelper.Warning(
                     "Double check that the Tower loaded and all Path and Tier values are correct");
             }
         }

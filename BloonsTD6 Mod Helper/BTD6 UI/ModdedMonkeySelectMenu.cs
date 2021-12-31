@@ -106,7 +106,6 @@ namespace BTD_Mod_Helper.BTD6_UI
         /// <summary>
         /// Change the MonkeySelectButtons on the current page
         /// </summary>
-        /// <param name="delta"></param>
         internal static void Cycle(int offset)
         {
             if (menu != null)

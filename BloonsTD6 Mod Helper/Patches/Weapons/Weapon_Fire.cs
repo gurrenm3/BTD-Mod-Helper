@@ -4,7 +4,7 @@ using HarmonyLib;
 namespace BTD_Mod_Helper.Patches.Weapons
 {
     [HarmonyPatch(typeof(Weapon), nameof(Weapon.SpawnDart))]
-    public static class SpawnDart_Patch
+    internal static class Weapon_Fire
     {
         [HarmonyPostfix]
         public static void Postfix(Weapon __instance)

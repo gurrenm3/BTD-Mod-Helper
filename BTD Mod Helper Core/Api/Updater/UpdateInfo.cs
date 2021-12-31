@@ -2,7 +2,7 @@
 
 namespace BTD_Mod_Helper.Api.Updater
 {
-    public class UpdateInfo
+    internal class UpdateInfo
     {
         [JsonProperty] internal string Name { get; set; }
 

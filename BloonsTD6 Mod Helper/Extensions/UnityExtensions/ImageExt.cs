@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Images
+    /// </summary>
     public static partial class ImageExt
     {
         /// <summary>

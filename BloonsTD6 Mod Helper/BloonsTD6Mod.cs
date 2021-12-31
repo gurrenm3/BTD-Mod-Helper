@@ -22,6 +22,7 @@ using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
 using Assets.Scripts.Models.Map;
+using BTD_Mod_Helper.Api.Helpers;
 
 namespace BTD_Mod_Helper
 {
@@ -523,63 +524,5 @@ namespace BTD_Mod_Helper
         }
 
         #endregion
-
-
-        /// <summary>
-        /// Gets a modified cost for a given set of ModModels that are used to setup a match
-        /// Somewhere deep within those mods is likely to be a Cost modifier, and this will find and apply that
-        /// </summary>
-        /// <param name="cost">The default cost</param>
-        /// <param name="mods">The mods that the match is using</param>
-        /// <returns>The modified cost</returns>
-        public static int CostForDifficulty(int cost, List<ModModel> mods)
-        {
-            var mult = 1f;
-            foreach (var gameModelMod in mods)
-            {
-                if (gameModelMod.mutatorMods != null)
-                {
-                    foreach (var mutatorModModel in gameModelMod.mutatorMods)
-                    {
-                        if (mutatorModModel != null && mutatorModModel.IsType<GlobalCostModModel>())
-                        {
-                            var mod = mutatorModModel.Cast<GlobalCostModModel>();
-                            mult = mod.multiplier;
-                        }
-                    }
-                }
-            }
-
-            return CostForDifficulty(cost, mult);
-        }
-
-        /// <summary>
-        /// Gets a modified cost for a given GameModel's difficulty
-        /// </summary>
-        /// <param name="cost">The default cost</param>
-        /// <param name="gameModel">The current GameModel</param>
-        /// <returns>The modified cost</returns>
-        public static int CostForDifficulty(int cost, GameModel gameModel)
-        {
-            var difficulty = $"{gameModel.difficultyId}";
-            if (string.IsNullOrEmpty(difficulty))
-            {
-                MelonLogger.Warning("Difficulty cannot be determined at this stage of creating the GameModel");
-                MelonLogger.Warning("Use the list of ModModels to find the difficulty instead");
-            }
-
-            return CostForDifficulty(cost, gameModel.difficultyId);
-        }
-
-        /// <summary>
-        /// Gets a modified cost for a given instance of InGame
-        /// </summary>
-        /// <param name="cost">The default cost</param>
-        /// <param name="inGame">Current instance of InGame</param>
-        /// <returns>The modified cost</returns>
-        public static int CostForDifficulty(int cost, InGame inGame)
-        {
-            return CostForDifficulty(cost, inGame.SelectedDifficulty);
-        }
     }
 }

@@ -3,16 +3,17 @@ using System.IO;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for BloonsMods (for some reason lol)
+    /// </summary>
     public static class BloonsModExt
     {
         /// <summary>
         /// (Cross-Game compatible) Get the name of this mod from it's dll name
         /// </summary>
-        /// <param name="bloonsMod"></param>
-        /// <returns></returns>
         public static string GetModName(this BloonsMod bloonsMod)
         {
-            return bloonsMod?.Assembly?.GetName()?.Name;
+            return bloonsMod?.Assembly?.GetName().Name;
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="bloonsMod"></param>
         /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
         /// <returns></returns>
-        public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists = true)
+        public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists)
         {
             var path = $"{Environment.CurrentDirectory}\\Mods\\{bloonsMod.GetModName()}";
             if (createIfNotExists) Directory.CreateDirectory(path);
@@ -54,7 +55,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="bloonsMod"></param>
         /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
         /// <returns></returns>
-        public static string GetModSettingsDir(this BloonsMod bloonsMod, bool createIfNotExists = true)
+        public static string GetModSettingsDir(this BloonsMod bloonsMod, bool createIfNotExists)
         {
             var path = bloonsMod.GetModSettingsDir();
             if (createIfNotExists) Directory.CreateDirectory(path);

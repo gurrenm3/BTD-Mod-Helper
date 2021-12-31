@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Patches
             loadedCallback = new System.Action<MapModel>((mapModel) =>
             {
                 if (mapModel == null)
-                    MelonLoader.MelonLogger.Msg("Map Model is null");
+                    ModHelper.Log("Map Model is null");
 
                 ModHelper.PerformHook((mod) => mod.OnMapModelLoaded(ref mapModel));
                 originalCallback.Invoke(mapModel);
@@ -25,10 +25,4 @@ namespace BTD_Mod_Helper.Patches
             return true;
         }
     }
-
-
-
-    /// ==============================================================================
-    /// 
-
 }

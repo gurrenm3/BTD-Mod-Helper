@@ -3,6 +3,9 @@ using System;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for il2cpp lists 
+    /// </summary>
     public static class Il2CppGenerics
     {
         /// <summary>

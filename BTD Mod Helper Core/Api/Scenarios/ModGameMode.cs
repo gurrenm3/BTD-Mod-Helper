@@ -7,11 +7,18 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Scenarios
 {
+    /// <summary>
+    /// Class for a custom GameMode that will be added to the modes screen when starting a new match
+    /// </summary>
     public abstract class ModGameMode : NamedModContent
     {
+        /// <summary>
+        /// Registers after Round Sets
+        /// </summary>
         protected override float RegistrationPriority => 10;
-        
-        public sealed override string DisplayNamePlural { get; }
+
+        /// <inheritdoc />
+        public sealed override string DisplayNamePlural => base.DisplayNamePlural;
 
         /// <summary>
         /// Where this Mode should show up within the Mode Select screen. Use DifficultyType.[name]
@@ -39,11 +46,15 @@ namespace BTD_Mod_Helper.Api.Scenarios
         /// </summary>
         public virtual SpriteReference IconReference => GetSpriteReference(Icon);
 
+        /// <inheritdoc />
         public override void RegisterText(Dictionary<string, string> textTable)
         {
             textTable["Mode " + Id] = DisplayName;
         }
 
+        /// <summary>
+        /// Implemented by a ModGameMode to modify the base game mode, for instance by adding or removing mutator mods
+        /// </summary>
         public abstract void ModifyBaseGameModeModel(ModModel gameModeModel);
 
         /// <inheritdoc />

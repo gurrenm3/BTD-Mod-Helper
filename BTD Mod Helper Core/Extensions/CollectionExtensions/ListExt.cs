@@ -105,7 +105,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns>The loaded List if successful, otherwise default value</returns>
         public static T LoadFromFile<T>(this List<T> list, string filePath)
         {
-            return list.LoadFromFile(filePath, out bool success);
+            return list.LoadFromFile(filePath, out var success);
         }
 
         /// <summary>

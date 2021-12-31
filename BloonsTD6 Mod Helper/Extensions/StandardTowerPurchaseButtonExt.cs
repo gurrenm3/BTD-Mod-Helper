@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for StandardTowerPurchaseButtons
+    /// </summary>
     public static class StandardTowerPurchaseButtonExt
     {
         /// <summary>

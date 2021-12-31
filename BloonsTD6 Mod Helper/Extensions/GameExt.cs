@@ -17,6 +17,9 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Game
+    /// </summary>
     public static partial class GameExt
     {
         /// <summary>
@@ -207,6 +210,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Add Monkey Money to player's total Monkey Money
         /// </summary>
+        /// <param name="game">the Game instance</param>
         /// <param name="amount">Amount to add</param>
         public static void AddMonkeyMoney(this Game game, double amount)
         {
@@ -218,6 +222,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Set player's Monkey Money amount
         /// </summary>
+        /// <param name="game">the Game instance</param>
         /// <param name="amount">Value to set Monkey Money to</param>
         public static void SetMonkeyMoney(this Game game, double amount)
         {

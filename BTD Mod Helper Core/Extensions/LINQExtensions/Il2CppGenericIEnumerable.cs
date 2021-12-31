@@ -3,7 +3,10 @@ using Il2CppSystem.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static partial class Il2CppGenericIEnumerable
+    /// <summary>
+    /// Extensions for Il2cpp Ienumerables
+    /// </summary>
+    public static class Il2CppGenericIEnumerable
     {
         /// <summary>
         /// (Cross-Game compatible) Performs the specified action on each element

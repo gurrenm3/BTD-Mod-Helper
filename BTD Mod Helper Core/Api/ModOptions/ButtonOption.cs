@@ -4,7 +4,10 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class ButtonOption : SharedOption
+    /// <summary>
+    /// Visual option component of a ModSettingBool with IsButton = true
+    /// </summary>
+    public class ButtonOption : ModOption
     {
         /// <summary>
         /// The actual Button for this option

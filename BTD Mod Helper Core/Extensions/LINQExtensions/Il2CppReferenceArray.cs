@@ -3,6 +3,9 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for il2cpp reference arrays
+    /// </summary>
     public static class Il2CppReferenceArray
     {
         /// <summary>

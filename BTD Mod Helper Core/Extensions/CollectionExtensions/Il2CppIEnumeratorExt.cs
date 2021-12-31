@@ -6,6 +6,9 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Il2cpp Ienumerators
+    /// </summary>
     public static class Il2CppIEnumeratorExt
     {
         /// <summary>

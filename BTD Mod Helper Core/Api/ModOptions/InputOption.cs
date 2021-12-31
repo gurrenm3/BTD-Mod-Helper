@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class InputOption : SharedOption
+    /// <summary>
+    /// Visual option for ModSettings where you input values
+    /// </summary>
+    public class InputOption : ModOption
     {
         /// <summary>
         /// The Reset button. Can be used for other things if desired

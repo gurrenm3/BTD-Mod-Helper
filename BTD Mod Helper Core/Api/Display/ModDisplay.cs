@@ -66,6 +66,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="textureName">The name of the texture, without .png</param>
+        /// <param name="index">The index to set at</param>
         protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index)
         {
             node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName));
@@ -134,7 +135,7 @@ namespace BTD_Mod_Helper.Api.Display
             projectileModel.display = Id;
             Apply(projectileModel.GetBehavior<DisplayModel>());
         }
-        
+
         /// <summary>
         /// Applies this ModDisplay to a given BloonModel
         /// </summary>
@@ -161,8 +162,8 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Gets a UnityDisplayNode for a different guid
         /// </summary>
-        /// <param name="guid"></param>
-        /// <returns></returns>
+        /// <param name="guid">The asset reference guid to get the node from</param>
+        /// <param name="action">What to do with the node</param>
         protected void UseNode(string guid, Action<UnityDisplayNode> action)
         {
             Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(guid, new Action<UnityDisplayNode>((udn) =>
@@ -185,7 +186,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// The display id for RoadSpikes
         /// </summary>
         public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
-
+#pragma warning disable CS1591
         public const string EtienneRoombaCat = "Assets/Monkeys/Etienne/Graphics/Pets/Roomba/PetRoombaDisplay.prefab";
 
         public const string PatFustyPenguinPet =
@@ -230,6 +231,8 @@ namespace BTD_Mod_Helper.Api.Display
         public const string TrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGodMonkey.prefab";
         public const string VengefulTrueSunGod = "Assets/Monkeys/SuperMonkey/Graphics/TrueSunGod555Monkey.prefab";
         public const string VengefulSunAvatar = "Assets/Monkeys/SuperMonkey/Graphics/SunAvatarTurret555.prefab";
+
+#pragma warning restore CS1591
 
         #endregion
     }

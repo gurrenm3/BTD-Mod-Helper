@@ -3,8 +3,14 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Component
+    /// </summary>
     public static class ComponentExt
     {
+        /// <summary>
+        /// Finds the component with the given path and type
+        /// </summary>
         public static T GetComponent<T>(this Component component, string componentPath)
         {
             return component.transform.Find(componentPath).GetComponent<T>();

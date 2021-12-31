@@ -3,6 +3,9 @@ using System.IO;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for DirectoryInfo
+    /// </summary>
     public static class DirectoryInfoExt
     {
         /// <summary>

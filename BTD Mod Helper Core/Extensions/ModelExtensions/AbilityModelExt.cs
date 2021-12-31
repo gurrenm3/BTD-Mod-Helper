@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for AbilityModels
+    /// </summary>
     public static class AbilityModelExt
     {
         /// <summary>
@@ -15,7 +18,11 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<AbilityToSimulation> GetAbilitySims(this AbilityModel abiltyModel)
         {
-            var abilities = InGame.instance?.GetAbilities();
+            if (InGame.instance == null)
+            {
+                return new List<AbilityToSimulation>();
+            }
+            var abilities = InGame.instance.GetAbilities();
             return abilities.Where(sim => sim.ability.abilityModel.IsEqual(abiltyModel)).ToList();
         }
     }

@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace BTD_Mod_Helper.Api.Updater
 {
-    public partial class GithubReleaseInfo
+    internal partial class GithubReleaseInfo
     {
         [JsonProperty("url")]
         public Uri Url { get; set; }
@@ -63,7 +63,7 @@ namespace BTD_Mod_Helper.Api.Updater
         public string Body { get; set; }
     }
 
-    public partial class Asset
+    internal class Asset
     {
         [JsonProperty("url")]
         public Uri Url { get; set; }
@@ -105,7 +105,7 @@ namespace BTD_Mod_Helper.Api.Updater
         public Uri BrowserDownloadUrl { get; set; }
     }
 
-    public partial class Author
+    internal class Author
     {
         [JsonProperty("login")]
         public string Login { get; set; }
@@ -162,12 +162,12 @@ namespace BTD_Mod_Helper.Api.Updater
         public bool SiteAdmin { get; set; }
     }
 
-    public partial class GithubReleaseInfo
+    internal partial class GithubReleaseInfo
     {
         public static List<GithubReleaseInfo> FromJson(string json) => JsonConvert.DeserializeObject<List<GithubReleaseInfo>>(json, Converter.Settings);
     }
 
-    public static class Serialize
+    internal static class Serialize
     {
         public static string ToJson(this List<GithubReleaseInfo> self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }

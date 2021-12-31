@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for system Lists
+    /// </summary>
     public static partial class ListExt
     {
         /// <summary>

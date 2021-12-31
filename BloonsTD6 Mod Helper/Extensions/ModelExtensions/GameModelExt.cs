@@ -36,7 +36,6 @@ namespace BTD_Mod_Helper.Extensions
         /// Returns whether or not any TowerDetailsModels in <see cref="GameModel.towerSet"/> have <paramref name="towerId"/>
         /// in it's name
         /// </summary>
-        /// </summary>
         /// <param name="model"></param>
         /// <param name="towerId"></param>
         /// <returns></returns>
@@ -51,6 +50,7 @@ namespace BTD_Mod_Helper.Extensions
         /// Using this method is preferable than modifying the GameModel's towers list manually, as this does more things
         /// to more fully integrate the tower within the game
         /// </summary>
+        /// <param name="model">the GameModel instance</param>
         /// <param name="towerModel">TowerModel to add</param>
         /// <param name="towerDetailsModel">Optionally add a TowerDetailsModel for your towerModel</param>
         public static void AddTowerToGame(this GameModel model, TowerModel towerModel,
@@ -66,7 +66,7 @@ namespace BTD_Mod_Helper.Extensions
                 model.AddTowerDetails(towerDetailsModel, towerModel.towerSet);
             }
 
-            // MelonLogger.Msg($"Added towerModel {towerModel.name} to the game");
+            // ModHelper.Msg($"Added towerModel {towerModel.name} to the game");
         }
 
         /// <summary>
@@ -221,6 +221,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Return all TowerModels with a specific base id
         /// </summary>
+        /// <param name="model">the GameModel instance</param>
         /// <param name="towerBaseId">The base id all towers should share. Example: "DartMonkey"</param>
         public static List<TowerModel> GetTowerModels(this GameModel model, string towerBaseId)
         {
@@ -246,6 +247,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Create a BloonEmissionModel from a bloonModel
         /// </summary>
+        /// <param name="model">the GameModel instance</param>
         /// <param name="bloonModel">The bloon model that these bloons should be</param>
         /// <param name="number">Number of Bloons in this emission</param>
         /// <param name="spacing">Space between each bloon in this emission</param>
@@ -258,6 +260,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Create a BloonEmissionModel from a bloon's name
         /// </summary>
+        /// <param name="model">the GameModel instance</param>
         /// <param name="bloonName">Name of bloon. Example: "Red"</param>
         /// <param name="number">Number of Bloons in this emission</param>
         /// <param name="spacing">Space between each bloon in this emission</param>
@@ -275,6 +278,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Create a single BloonEmission
         /// </summary>
+        /// <param name="model">the GameModel instance</param>
         /// <param name="bloonName">Name of this bloon. Example: "Red"</param>
         /// <param name="time">Time the bloon should be spawned</param>
         public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time)
@@ -285,6 +289,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Create a single BloonEmission
         /// </summary>
+        /// <param name="model">the GameModel instance</param>
         /// <param name="bloonName">Name of this bloon. Example: "Red"</param>
         /// <param name="time">Time the bloon should be spawned</param>
         /// <param name="chargedMutators"></param>
@@ -331,7 +336,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<WeaponModel> GetAllWeaponModels(this GameModel model)
         {
             var weaponModels = new List<WeaponModel>();
-            List<AttackModel> attackModels = model.GetAllAttackModels();
+            var attackModels = model.GetAllAttackModels();
 
             foreach (var attackModel in attackModels)
             {
@@ -406,16 +411,5 @@ namespace BTD_Mod_Helper.Extensions
         {
             return model.towerSet.FirstOrDefault(tower => tower.towerId == towerDetailsName);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="set"></param>
-        /// <returns>The total cost of the KnowledgeSet if <paramref name="set"/> is valid, otherwise returns -1</returns>
-        /*public static int GetKnowledgeSetTotal(this GameModel model, string set)
-        {
-
-        }*/
     }
 }

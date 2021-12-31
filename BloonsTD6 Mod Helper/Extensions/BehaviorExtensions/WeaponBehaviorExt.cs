@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Behavior extensions for Weapons
+    /// </summary>
     public static class WeaponBehaviorExt
     {
         /// <summary>

@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for KnowledgeSetModels
+    /// </summary>
     public static class KnowledgeSetModelExt
     {
         /// <summary>

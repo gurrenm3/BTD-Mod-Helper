@@ -5,7 +5,10 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class SliderOption : SharedOption
+    /// <summary>
+    /// Visual component for a ModSettingInt or ModSettingDouble with IsSlider = true
+    /// </summary>
+    public class SliderOption : ModOption
     {
         /// <summary>
         /// The actual slider for this option
@@ -59,8 +62,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             Slider.value = modSettingInt.value;
             InputField.text = modSettingInt.value.ToString();
-            Slider.minValue = (long) modSettingInt.minValue;
-            Slider.maxValue = (long) modSettingInt.maxValue;
+            Slider.minValue = modSettingInt.minValue ?? 1;
+            Slider.maxValue = modSettingInt.maxValue ?? 0;
             
             Slider.onValueChanged.AddListener(value =>
             {
@@ -103,8 +106,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             Slider.value = (float) modSettingDouble.value;
             InputField.text = modSettingDouble.value.ToString("");
-            Slider.minValue = (float) modSettingDouble.minValue;
-            Slider.maxValue = (float) modSettingDouble.maxValue;
+            Slider.minValue = (float) (modSettingDouble.minValue ?? 0);
+            Slider.maxValue = (float) (modSettingDouble.maxValue ?? 1);
             
             Slider.onValueChanged.AddListener(value =>
             {

@@ -24,8 +24,8 @@ namespace BTD_Mod_Helper.Patches.UI
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Error("Critical failure when registering content for mod " + mod.Info.Name);
-                    MelonLogger.Error(e);
+                    ModHelper.Error("Critical failure when registering content for mod " + mod.Info.Name);
+                    ModHelper.Error(e);
                 }
             }*/
 

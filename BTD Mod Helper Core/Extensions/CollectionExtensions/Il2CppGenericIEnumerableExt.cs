@@ -4,7 +4,10 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
-    public static partial class Il2CppGenericIEnumerableExt
+    /// <summary>
+    /// Extensions for il2cpp ienumerables 
+    /// </summary>
+    public static class Il2CppGenericIEnumerableExt
     {
         /// <summary>
         /// (Cross-Game compatible) Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as IEnumerable.GetEnumerator()

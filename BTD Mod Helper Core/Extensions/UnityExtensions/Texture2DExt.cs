@@ -6,18 +6,22 @@ using Graphics = UnityEngine.Graphics;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Texture2Ds
+    /// </summary>
     public static class Texture2DExt
     {
         /// <summary>
         /// (Cross-Game compatible) Create Texture2D from a unity Color. Texture will only be this color
         /// </summary>
+        /// <param name="texture2D"></param>
         /// <param name="color">Color to make new texture</param>
-        public static Texture2D CreateFromColor(this Texture2D texture2D, UnityEngine.Color color)
+        public static Texture2D CreateFromColor(this Texture2D texture2D, Color color)
         {
-            texture2D = new Texture2D(1, 1);
-            texture2D.SetPixel(0, 0, color);
-            texture2D.Apply();
-            return texture2D;
+            var texture = new Texture2D(1, 1);
+            texture.SetPixel(0, 0, color);
+            texture.Apply();
+            return texture;
         }
 
         /// <summary>
@@ -31,6 +35,9 @@ namespace BTD_Mod_Helper.Extensions
             File.Create(filePath).Write(bytes, 0, bytes.Length);
         }
         
+        /// <summary>
+        /// Attempts to save a Texture to a png at the given filePath, even if it isn't marked as readable
+        /// </summary>
         public static void TrySaveToPNG(this Texture texture, string filePath)
         {
             try
@@ -57,6 +64,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Create Texture2D from a file on local PC
         /// </summary>
+        /// <param name="texture"></param>
         /// <param name="filePath">path of file on PC</param>
         public static Texture2D LoadFromFile(this Texture2D texture, string filePath)
         {
@@ -67,6 +75,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Create a Sprite from this Texture2D
         /// </summary>
+        /// <param name="texture2D"></param>
         /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
         public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit)
         {
@@ -76,7 +85,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Create a Sprite from this Texture2D
         /// </summary>
+        /// <param name="texture2D"></param>
         /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
+        /// <param name="pivot"></param>
         public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit, Vector2 pivot)
         {
             return Sprite.Create(texture2D, new Rect(0f, 0f, texture2D.width, texture2D.height), pivot, pixelsPerUnit);

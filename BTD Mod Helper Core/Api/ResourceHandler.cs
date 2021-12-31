@@ -48,13 +48,13 @@ namespace BTD_Mod_Helper.Api
                     var guid = mod.IDPrefix;
                     if (bundle == null)
                     {
-                        MelonLogger.Msg($"The bundle {name} is null!");
+                        ModHelper.Log($"The bundle {name} is null!");
                         continue;
                     }
 
                     if (string.IsNullOrEmpty(bundle.name))
                     {
-                        MelonLogger.Msg($"The bundle {name} has no name!");
+                        ModHelper.Log($"The bundle {name} has no name!");
                         continue;
                     }
                     if (bundle.name.EndsWith(".bundle"))
@@ -66,7 +66,7 @@ namespace BTD_Mod_Helper.Api
                         guid += bundle.name;
                     }
                     Bundles[guid] = bundle;
-                    // MelonLogger.Msg("Successfully loaded bundle " + guid);
+                    // ModHelper.Msg("Successfully loaded bundle " + guid);
                 }
             }
         }

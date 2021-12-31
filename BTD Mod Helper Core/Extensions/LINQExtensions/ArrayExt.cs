@@ -2,6 +2,9 @@
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for Arrays
+    /// </summary>
     public static partial class ArrayExt
     {
         /// <summary>

@@ -24,6 +24,53 @@ namespace BTD_Mod_Helper
             ModByteLoader.Generate(model, loaderFilePath, bytesFilePath);
         }
 
+        /// <summary>
+        /// Logs a message from the specified Mod's LoggerInstance
+        /// </summary>
+        public static void Log<T>(object obj) where T : BloonsMod
+        {
+            ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
+        }
+
+        /// <summary>
+        /// Logs an error from the specified Mod's LoggerInstance
+        /// </summary>
+        public static void Error<T>(object obj) where T : BloonsMod
+        {
+            ModContent.GetInstance<T>().LoggerInstance.Error(obj);
+        }
+
+        /// <summary>
+        /// Logs a warning from the specified Mod's LoggerInstance
+        /// </summary>
+        public static void Warning<T>(object obj) where T : BloonsMod
+        {
+            ModContent.GetInstance<T>().LoggerInstance.Warning(obj);
+        }
+
+        /// <summary>
+        /// Logs a message from the Mod Helper's LoggerInstance
+        /// </summary>
+        internal static void Log(object obj)
+        {
+            Main.LoggerInstance.Msg(obj);
+        }
+
+        /// <summary>
+        /// Logs an error from the Mod Helper's LoggerInstance
+        /// </summary>
+        internal static void Error(object obj)
+        {
+            Main.LoggerInstance.Error(obj);
+        }
+
+        /// <summary>
+        /// Logs a warning from the Mod Helper's LoggerInstance
+        /// </summary>
+        internal static void Warning(object obj)
+        {
+            Main.LoggerInstance.Warning(obj);
+        }
 
         internal static BloonsMod Main => ModContent.GetInstance<MelonMain>();
 
@@ -39,7 +86,7 @@ namespace BTD_Mod_Helper
                     }
                     catch (Exception e)
                     {
-                        MelonLogger.Error(e);
+                        mod.LoggerInstance.Error(e);
                     }
                 }
             }

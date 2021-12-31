@@ -15,6 +15,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Change TowerModel to a different one. Will update display
         /// </summary>
+        /// <param name="tower">The Simulation Tower</param>
         /// <param name="towerModel">TowerModel to change to</param>
         public static void SetTowerModel(this Tower tower, TowerModel towerModel)
         {

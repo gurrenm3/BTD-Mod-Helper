@@ -5,6 +5,9 @@ using Assets.Scripts.Unity.Display;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for the BloonToSimulation
+    /// </summary>
     public static partial class BloonToSimulationExt
     {
         /// <summary>

@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Behavior extensions for WeaponModels
+    /// </summary>
     public static class WeaponModelBehaviorExt
     {
         /// <summary>

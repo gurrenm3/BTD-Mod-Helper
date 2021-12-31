@@ -5,6 +5,9 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for generic il2cpp lists
+    /// </summary>
     public static partial class Il2CppGenericsExt
     {
         /// <summary>
@@ -120,7 +123,10 @@ namespace BTD_Mod_Helper.Extensions
                     if (item.IsType<TCast>())
                         return true;
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
 
             return false;
@@ -147,7 +153,10 @@ namespace BTD_Mod_Helper.Extensions
                     if (item.TryCast<TCast>() != null)
                         return item.TryCast<TCast>();
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
 
             return null;
@@ -175,7 +184,10 @@ namespace BTD_Mod_Helper.Extensions
                     if (item.IsType(out TCast tryCast))
                         results.Add(tryCast);
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
 
             return results;

@@ -2,9 +2,9 @@
 using System.Linq;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
-using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
+using Assets.Scripts.Models.TowerSets;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
@@ -116,8 +116,14 @@ namespace BTD_Mod_Helper.Api.Towers
         /// </summary>
         public virtual string NameStyle => TowerType.Ezili;
 
+        /// <summary>
+        /// The png name of the Button icon for this hero in the UI, by default Name-Button
+        /// </summary>
         public virtual string Button => GetType().Name + "-Button";
 
+        /// <summary>
+        /// The exact sprite reference used for the button
+        /// </summary>
         public virtual SpriteReference ButtonReference => GetSpriteReference(Button);
 
         /// <summary>

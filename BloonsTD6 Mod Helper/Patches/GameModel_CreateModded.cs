@@ -72,8 +72,8 @@ namespace BTD_Mod_Helper.Patches
                     }
                     catch (Exception e)
                     {
-                        MelonLogger.Error($"Failed to apply {modVanillaContent.Name}");
-                        MelonLogger.Error(e);
+                        ModHelper.Error($"Failed to apply {modVanillaContent.Name}");
+                        ModHelper.Error(e);
                     }
                 }
             }

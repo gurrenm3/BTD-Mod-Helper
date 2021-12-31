@@ -4,7 +4,10 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
-    public class CheckboxOption : SharedOption
+    /// <summary>
+    /// Visual option component for a ModSettingBool with IsButton = false
+    /// </summary>
+    public class CheckboxOption : ModOption
     {
         /// <summary>
         /// The actual CheckBox associated with this option
@@ -29,6 +32,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modSettingBool.OnInitialized.InvokeAll(this);
         }
 
+        /// <inheritdoc />
         public override ModSetting GetModSetting()
         {
             return modSettingBool;

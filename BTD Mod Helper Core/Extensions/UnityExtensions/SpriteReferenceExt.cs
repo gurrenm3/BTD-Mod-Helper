@@ -2,6 +2,9 @@
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extensions for SpriteReferences
+    /// </summary>
     public static class SpriteReferenceExt
     {
         /// <summary>
