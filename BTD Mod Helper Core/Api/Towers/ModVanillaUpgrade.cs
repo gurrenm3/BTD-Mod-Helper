@@ -11,8 +11,13 @@ namespace BTD_Mod_Helper.Api.Towers
     /// <summary>
     /// ModContent class for modifying all TowerModels that have a given upgrade applied to them
     /// </summary>
-    public abstract class ModVanillaUpgrade : ModVanillaContent
+    public abstract class ModVanillaUpgrade : ModVanillaContent<TowerModel>
     {
+        /// <summary>
+        /// Changes the base cost
+        /// </summary>
+        public virtual int Cost => -1;
+        
         /// <summary>
         /// The id of the Upgrade that this should modify all TowerModels that use
         /// <br/>
@@ -54,7 +59,8 @@ namespace BTD_Mod_Helper.Api.Towers
             
         }
 
-        public override IEnumerable<TowerModel> GetAffectedTowers(GameModel gameModel)
+        /// <inheritdoc />
+        public override IEnumerable<TowerModel> GetAffected(GameModel gameModel)
         {
             return gameModel.towers.Where(model => model.appliedUpgrades.Contains(UpgradeId));
         }

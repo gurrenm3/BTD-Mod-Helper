@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModBloon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModRoundSet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModVanillaBloon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ICustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModBloonDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModCustomDisplay.cs" />

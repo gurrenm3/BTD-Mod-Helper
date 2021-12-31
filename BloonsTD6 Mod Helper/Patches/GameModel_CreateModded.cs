@@ -12,7 +12,6 @@ using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
 using MelonLoader;
 using UnhollowerRuntimeLib;
-using Console = System.Console;
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Patches
@@ -62,13 +61,14 @@ namespace BTD_Mod_Helper.Patches
             MelonMain.PerformHook(mod => mod.OnNewGameModel(result));
 
             foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>()
-                         .Where(content => !content.AffectBaseGameModel))
+                         .Where(content => !content.AffectBaseGameModel && content.ShouldApply))
             {
-                foreach (var affectedTower in modVanillaContent.GetAffectedTowers(result))
+                foreach (var affectedTower in modVanillaContent.GetAffectedModels(result))
                 {
                     try
                     {
                         modVanillaContent.Apply(affectedTower);
+                        modVanillaContent.Apply(affectedTower, result);
                     }
                     catch (Exception e)
                     {

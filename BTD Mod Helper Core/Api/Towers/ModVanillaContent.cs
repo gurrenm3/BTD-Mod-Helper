@@ -6,30 +6,26 @@ using Assets.Scripts.Unity;
 namespace BTD_Mod_Helper.Api.Towers
 {
     /// <summary>
-    /// ModContent Class for modifying a certain set of vanilla towers
+    /// Class for changing Vanilla content within the game
     /// </summary>
     public abstract class ModVanillaContent : ModContent
     {
+        /// <summary>
+        /// Whether this should only modify the Towers In-Game, or also affect the default GameModel outside a game
+        /// </summary>
+        public virtual bool AffectBaseGameModel => false;
+        
         /// <inheritdoc />
         public sealed override int RegisterPerFrame => AffectBaseGameModel ? 1 : 3;
+        
         
         /// <summary>
         /// Gets the TowerModels that this will affect in the GameModel
         /// </summary>
         /// <param name="gameModel"></param>
         /// <returns></returns>
-        public abstract IEnumerable<TowerModel> GetAffectedTowers(GameModel gameModel);
+        public abstract IEnumerable<Model> GetAffectedModels(GameModel gameModel);
         
-        /// <summary>
-        /// Whether this should only modify the Towers In-Game, or also affect the default GameModel outside a game
-        /// </summary>
-        public virtual bool AffectBaseGameModel => false;
-
-        /// <summary>
-        /// Changes the base cost
-        /// </summary>
-        public virtual int Cost => -1;
-
         /// <inheritdoc />
         public sealed override string Name => base.Name;
 
@@ -44,21 +40,84 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual string Description => null;
 
         /// <summary>
-        /// Applies the modifications to the TowerModel
+        /// Applies the modifications to the vanilla content
         /// </summary>
-        /// <param name="towerModel"></param>
-        public abstract void Apply(TowerModel towerModel);
+        internal virtual void Apply(Model model)
+        {
+            
+        }
+        
+        /// <summary>
+        /// Applies the modifications to the vanilla content
+        /// </summary>
+        internal virtual void Apply(Model model, GameModel gameModel)
+        {
+            
+        }
+
+        /// <summary>
+        /// Whether this should apply or not. Useful for ModSettings
+        /// </summary>
+        public virtual bool ShouldApply => true;
 
         /// <inheritdoc />
         public override void Register()
         {
-            if (AffectBaseGameModel)
+            if (AffectBaseGameModel && ShouldApply)
             {
-                foreach (var affectedTower in GetAffectedTowers(Game.instance.model))
+                var gameModel = Game.instance.model;
+                foreach (var affectedModel in GetAffectedModels(gameModel))
                 {
-                    Apply(affectedTower);
+                    Apply(affectedModel);
+                    Apply(affectedModel, gameModel);
                 }
             }
         }
+    }
+    
+    /// <summary>
+    /// ModContent Class for modifying a certain set of vanilla towers
+    /// </summary>
+    public abstract class ModVanillaContent<T> : ModVanillaContent where T : Model
+    {
+        /// <inheritdoc />
+        public sealed override IEnumerable<Model> GetAffectedModels(GameModel gameModel)
+        {
+            return GetAffected(gameModel);
+        }
+
+        /// <inheritdoc />
+        internal override void Apply(Model model)
+        {
+            Apply(model.Cast<T>());
+        }
+        
+        /// <inheritdoc />
+        internal override void Apply(Model model, GameModel gameModel)
+        {
+            Apply(model.Cast<T>(), gameModel);
+        }
+
+        /// <summary>
+        /// Gets the TowerModels that this will affect in the GameModel
+        /// </summary>
+        public abstract IEnumerable<T> GetAffected(GameModel gameModel);
+
+        /// <summary>
+        /// Applies the modifications to the vanilla content
+        /// </summary>
+        public virtual void Apply(T model)
+        {
+            
+        }
+        
+        /// <summary>
+        /// Applies the modifications to the vanilla content
+        /// </summary>
+        public virtual void Apply(T model, GameModel gameModel)
+        {
+            
+        }
+
     }
 }

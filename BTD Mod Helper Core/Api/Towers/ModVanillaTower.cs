@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Api.Towers
     /// <summary>
     /// ModContent class for modifying all TowerModels for a given Tower
     /// </summary>
-    public abstract class ModVanillaTower : ModVanillaContent
+    public abstract class ModVanillaTower : ModVanillaContent<TowerModel>
     {
         /// <summary>
         /// The base id of the Tower that this should modify all TowerModels of
@@ -29,13 +29,18 @@ namespace BTD_Mod_Helper.Api.Towers
         /// Change the TowerSet that this tower is part of. Also handles moving its place within the shop.
         /// </summary>
         public virtual string TowerSet => null;
+        
+        /// <summary>
+        /// Changes the base cost
+        /// </summary>
+        public virtual int Cost => -1;
 
         /// <inheritdoc />
         public override void Register()
         {
             base.Register();
             
-            var affectedTowers = GetAffectedTowers(Game.instance.model).ToList();
+            var affectedTowers = GetAffected(Game.instance.model).ToList();
             if (!string.IsNullOrEmpty(TowerSet))
             {
                 foreach (var affectedTower in affectedTowers)
@@ -75,7 +80,7 @@ namespace BTD_Mod_Helper.Api.Towers
             }
         }
 
-        public override IEnumerable<TowerModel> GetAffectedTowers(GameModel gameModel)
+        public override IEnumerable<TowerModel> GetAffected(GameModel gameModel)
         {
             return gameModel.GetTowersWithBaseId(TowerId);
         }
