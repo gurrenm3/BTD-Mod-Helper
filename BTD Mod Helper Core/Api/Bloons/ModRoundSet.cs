@@ -3,6 +3,7 @@ using System.Linq;
 using Assets.Scripts.Data.Rounds;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using UnhollowerBaseLib;
 
@@ -13,6 +14,8 @@ namespace BTD_Mod_Helper.Api.Bloons
     /// </summary>
     public abstract class ModRoundSet : NamedModContent
     {
+        protected override float RegistrationPriority => 9;
+
         /// <inheritdoc />
         public override void Register()
         {
@@ -85,7 +88,21 @@ namespace BTD_Mod_Helper.Api.Bloons
         protected List<RoundModel> BaseRounds =>
             Game.instance.model.roundSets.FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ??
             new List<RoundModel>();
+        
+        /// <summary>
+        /// The Icon for the Button for this RoundSet within the UI, by default looking for the same name as the file
+        /// </summary>
+        public virtual string Icon => GetType().Name;
 
+        /// <summary>
+        /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
+        /// </summary>
+        public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+
+        /// <summary>
+        /// Whether this Round set should show up in the menu allowing you to use any RoundSet for any GameMode
+        /// </summary>
+        public virtual bool AddToOverrideMenu => true;
 
         /// <summary>
         /// Called to modify any/all rounds from 1 to <see cref="DefinedRounds"/>

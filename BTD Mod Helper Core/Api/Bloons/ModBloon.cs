@@ -18,11 +18,13 @@ namespace BTD_Mod_Helper.Api.Bloons
     /// </summary>
     public abstract class ModBloon : NamedModContent
     {
-        internal static readonly Dictionary<string, BloonModel> BloonCache = new Dictionary<string, BloonModel>();
-        
+        internal static readonly Dictionary<string, ModBloon> Cache = new Dictionary<string, ModBloon>();
+
+        internal static readonly Dictionary<string, BloonModel> BloonModelCache = new Dictionary<string, BloonModel>();
+
         /// <inheritdoc />
         public sealed override int RegisterPerFrame => 3;
-        
+
         /// <summary>
         /// ModBloons with a BaseModBloon need to register after their base
         /// </summary>
@@ -34,6 +36,7 @@ namespace BTD_Mod_Helper.Api.Bloons
             bloonModel = GetDefaultBloonModel();
 
             ModifyBaseBloonModel(bloonModel);
+            bloonModel.updateChildBloonModels = true;
 
             displays.FirstOrDefault(display => display.Damage == 0)?.Apply(bloonModel);
             var damageDisplays = displays
@@ -48,7 +51,8 @@ namespace BTD_Mod_Helper.Api.Bloons
             Game.instance.model.bloons = Game.instance.model.bloons.AddTo(bloonModel);
             Game.instance.model.AddChildDependant(bloonModel);
             Game.instance.model.bloonsByName[bloonModel.name] = bloonModel;
-            BloonCache[bloonModel.name] = bloonModel;
+            BloonModelCache[bloonModel.name] = bloonModel;
+            Cache[bloonModel.name] = this;
         }
 
         internal virtual ModBloon BaseModBloon => null;
@@ -57,9 +61,10 @@ namespace BTD_Mod_Helper.Api.Bloons
 
 
         /// <inheritdoc />
-        public override string Name => KeepBaseId
-            ? GameModelUtil.ConstructBloonId(BaseModBloon?.Name ?? BaseBloon, Camo, Regrow, Fortified)
-            : base.Name;
+        protected internal override string ID => KeepBaseId
+            ? GameModelUtil.ConstructBloonId(BaseBloon
+                .Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", ""), Camo, Regrow, Fortified)
+            : base.ID;
 
         /// <summary>
         /// The Bloon in the game that this should copy from as a base. Use BloonType.[Name]
@@ -150,15 +155,15 @@ namespace BTD_Mod_Helper.Api.Bloons
 
             model.icon = IconReference;
 
-            if (Fortified)
+            if (Fortified && !model.isFortified)
             {
                 model.isFortified = true;
                 model.AddTag(BloonTag.Fortified);
             }
 
-            if (Regrow)
+            if (Regrow && !model.isGrow)
             {
-                if (!model.HasBehavior<GrowModel>())
+                if (!model.HasBehavior<GrowModel>() && RegrowsTo != null)
                 {
                     model.AddBehavior(new GrowModel("GrowModel_", RegrowRate, RegrowsTo));
                 }
@@ -167,7 +172,7 @@ namespace BTD_Mod_Helper.Api.Bloons
                 model.AddTag(BloonTag.Regrow);
             }
 
-            if (Camo)
+            if (Camo && !model.isCamo)
             {
                 model.isCamo = true;
                 model.AddTag(BloonTag.Camo);

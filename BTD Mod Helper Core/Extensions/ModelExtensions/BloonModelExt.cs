@@ -14,6 +14,7 @@ using Assets.Scripts.Unity.Bloons.Behaviors;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -246,7 +247,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             bloonModel.ReplaceInChildren(ModContent.BloonID<TOld>(), ModContent.BloonID<TNew>());
         }
-        
+
         /// <summary>
         /// Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
         /// </summary>
@@ -279,6 +280,18 @@ namespace BTD_Mod_Helper.Extensions
                     spawnChildrenModel.children[i] = newBloon;
                 }
             }
+
+            var growModel = bloonModel.GetBehavior<GrowModel>();
+            if (!string.IsNullOrEmpty(growModel?.growToId))
+            {
+                var newBloon = Game.instance.model.GetBloon(growModel.growToId).FindChangedBloonId(effect);
+                if (newBloon != null)
+                {
+                    growModel.growToId = newBloon;
+                }
+            }
+            
+            
         }
 
         /// <summary>
@@ -288,7 +301,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             bloonModel.MakeChildrenSomething(model => model.isCamo = true);
         }
-        
+
         /// <summary>
         /// Makes all children of this Bloon Regrow, if they can have it
         /// </summary>
@@ -296,7 +309,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             bloonModel.MakeChildrenSomething(model => model.isGrow = true);
         }
-        
+
         /// <summary>
         /// Makes all children of this Bloon Fortified, if they can have it
         /// </summary>
@@ -332,6 +345,26 @@ namespace BTD_Mod_Helper.Extensions
                     bloonModel.tags = tags.ToArray();
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets the ModBloon associated with this BloonModel
+        /// <br/>
+        /// If there is no associated ModBloon, returns null
+        /// </summary>
+        public static ModBloon GetModBloon(this BloonModel bloonModel)
+        {
+            return ModBloon.Cache.TryGetValue(bloonModel.name, out var modBloon) ? modBloon : null;
+        }
+
+        /// <summary>
+        /// Gets the BloonModel for this group
+        /// </summary>
+        /// <param name="bloonGroupModel"></param>
+        /// <returns></returns>
+        public static BloonModel GetBloonModel(this BloonGroupModel bloonGroupModel)
+        {
+            return Game.instance.model.GetBloon(bloonGroupModel.bloon);
         }
     }
 }

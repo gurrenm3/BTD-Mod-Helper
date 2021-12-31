@@ -120,5 +120,19 @@ namespace BTD_Mod_Helper.Extensions
                 return result;
             throw new ArgumentException("Can't compute ArgMax on empty sequence.", "source");
         }
+        
+        /// <summary>
+        /// Deconstruct IGrouping to list
+        /// </summary>
+        /// <param name="grouping"></param>
+        /// <param name="k"></param>
+        /// <param name="v"></param>
+        /// <typeparam name="K"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        public static void Deconstruct<K, V>(this IGrouping<K, V> grouping, out K k, out List<V> v)
+        {
+            k = grouping.Key;
+            v = grouping.ToList();
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace BTD_Mod_Helper.Patches
             }
             
             var bloonCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
-            foreach (var (key, value) in ModBloon.BloonCache)
+            foreach (var (key, value) in ModBloon.BloonModelCache)
             {
                 if (!bloonCache.ContainsKey(key))
                 {

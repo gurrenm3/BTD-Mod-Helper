@@ -10,6 +10,8 @@ namespace BTD_Mod_Helper.Api.Scenarios
 {
     public abstract class ModGameMode : NamedModContent
     {
+        protected override float RegistrationPriority => 10;
+        
         public sealed override string DisplayNamePlural { get; }
 
         /// <summary>

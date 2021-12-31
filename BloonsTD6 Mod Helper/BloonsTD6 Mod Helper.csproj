@@ -157,6 +157,7 @@
     <Compile Include="BloonsTD6Mod.cs" />
     <Compile Include="BTD6 UI\MainMenuUI.cs" />
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
+    <Compile Include="BTD6 UI\ModdedModeMenu.cs" />
     <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
     <Compile Include="BTD6 UI\TitleScreenUI.cs" />
     <Compile Include="ByteWaitTask.cs" />
@@ -260,7 +261,6 @@
     <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
     <Compile Include="Patches\UI\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\UI\MainMenu_OnEnable.cs" />
-    <Compile Include="Patches\UI\ModeScreen_Open.cs" />
     <Compile Include="Patches\UI\OdysseyEventScreen_Update.cs" />
     <Compile Include="Patches\UI\SelectedUpgrade_UpdateButtonState.cs" />
     <Compile Include="Patches\UI\SettingsScreen_Open.cs" />

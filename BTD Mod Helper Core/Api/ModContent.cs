@@ -11,6 +11,7 @@ using BTD_Mod_Helper.Api.Towers;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
@@ -505,6 +506,26 @@ namespace BTD_Mod_Helper.Api
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static string BloonID<T>() where T : ModBloon
+        {
+            return GetInstance<T>().Id;
+        }
+        
+        /// <summary>
+        /// Gets the ID for the given ModGameMode
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static string GameModeId<T>() where T : ModGameMode
+        {
+            return GetInstance<T>().Id;
+        }
+        
+        /// <summary>
+        /// Gets the ID for the given ModRoundSet
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static string RoundSetId<T>() where T : ModRoundSet
         {
             return GetInstance<T>().Id;
         }
