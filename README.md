@@ -18,7 +18,7 @@ Like other API, download/clone it. In your mod's Visual Studio project add a ref
 
 **NEW WITH VERSION 2.0**
 
--   A fully featured custom Tower system that makes adding new Towers vastly easier
+-   [A fully featured custom Tower system](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Tower) that makes adding new Towers vastly easier
     -   `ModTower` for adding Towers
     -   `ModUpgrade` for adding Upgrades
     -   `ModDisplay` for adding Displays
@@ -35,7 +35,7 @@ Like other API, download/clone it. In your mod's Visual Studio project add a ref
     -   Same for Abilities and projectiles
     -   Can get every created instance from a model. Ex: Can get every `Tower`/`TowerToSimulation` from a specific `TowerModel`. Applies to everything in this list
 -   Massive amounts of support added for Behaviors. Can easily look for, add, and remove behaviors from nearly everything that has "behaviors"
--   Added extension methods for Arrays, `System.List`s, `Il2CppSystem.List`s, `LockList`s, `SizedList`s, `IEnumerable`s, and `Il2CppReferenceArray`s
+-   Added [extension methods](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Array-extension-methods) for Arrays, `System.List`, `Il2CppSystem.List`, `LockList`, `SizedList`, `IEnumerable`, and `Il2CppReferenceArray`
     -   Can convert between all of them, duplicate/clone, and change the "Type" that the collection is.
     -   New support for getting items, adding items, and removing items
     -   Custom linq extensions for easier manipluation
@@ -60,7 +60,7 @@ This mod wouldn't be possible without all of the contributions from the communit
 
 ## Future plans
 
-The API already has a lot of features added, however it's no where near done. My goal is to make this a universal mod helper for all of Ninja Kiwi's unity games, so there's still a ton of work ahead. Also, the Mod Helper was recently redone to allow support for BTD Battles 2 when it's released.
+The API already has a lot of features added, however it's nowhere near done. My goal is to make this a universal mod helper for all of Ninja Kiwi's Unity games, so there's still a ton of work ahead. Also, the Mod Helper was recently redone to allow support for BTD Battles 2 when it's released.
 
 ## Contact
 
