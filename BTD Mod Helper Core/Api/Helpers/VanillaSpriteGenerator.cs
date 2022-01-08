@@ -52,13 +52,15 @@ namespace BTD_Mod_Helper.Api.Helpers
         internal static string GetLine(string file)
         {
             string name = null;
+            string originalName = null;
             using (var spriteDump = new StreamReader(file))
             {
                 while (spriteDump.ReadLine() is string line)
                 {
                     if (line.Contains("string m_Name"))
                     {
-                        name = FixName(line.Split('"')[1]);
+                        originalName = line.Split('"')[1];
+                        name = FixName(originalName);
                     }
 
                     if (line.Contains("GUID first"))
@@ -67,8 +69,23 @@ namespace BTD_Mod_Helper.Api.Helpers
                         for (var i = 0; i < 4; i++)
                         {
                             var intLine = spriteDump.ReadLine();
-                            var intString = intLine.Split('=')[1].Trim();
-                            ints[i] = uint.Parse(intString);
+                            var intString = intLine?.Split('=')[1].Trim();
+                            ints[i] = uint.Parse(intString ?? "");
+                        }
+
+                        for (var i = 0; i < 3; i++)
+                        {
+                            spriteDump.ReadLine();
+                        }
+
+                        var atlasLine = spriteDump.ReadLine();
+                        if (atlasLine?.Contains("1") == true)
+                        {
+                            spriteDump.ReadLine();
+                            var atlas = spriteDump.ReadLine()?.Split('"')[1];
+
+                            return
+                                $"{Tab}{Tab}public static SpriteReference {name} => new SpriteReference(\"{atlas}[{originalName}]\");";
                         }
 
                         var spriteReference = ModContent.CreateSpriteReference(ints);

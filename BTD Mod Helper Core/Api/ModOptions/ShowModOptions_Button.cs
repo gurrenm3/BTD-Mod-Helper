@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.BTD6_UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using BTD_Mod_Helper.Extensions;
@@ -16,33 +19,42 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         public ShowModOptions_Button()
         {
-            
         }
 
         public void Init()
         {
-            #if BloonsTD6
+#if BloonsTD6
             var scene = SceneManager.GetSceneByName("SettingsUI");
-            #elif BloonsAT
+#elif BloonsAT
             var scene = SceneManager.GetSceneByName("UI-Settings");
-            #endif
+#endif
             var rootGameObjects = scene.GetRootGameObjects();
             settingsUI_Canvas = rootGameObjects[0];
             optionsButton = ModOptionsMenu.CanvasGO.transform.Find("ModOptionsButton/Button").GetComponent<Button>();
 
-            var twitchPosition = settingsUI_Canvas.GetComponentInChildrenByName<TwitchSettingsButton>("TwitchButton").transform;
-            instantiatedButton = Object.Instantiate(optionsButton, twitchPosition);
+            var twitch = settingsUI_Canvas.GetComponentInChildren<TwitchSettingsButton>().transform;
+            var newObject = Object.Instantiate(twitch.gameObject, settingsUI_Canvas.transform);
+
+            newObject.RemoveComponent<TwitchSettingsButton>();
+            instantiatedButton = newObject.GetComponentInChildren<Button>();
+
+            newObject.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = "Mod Options";
+            newObject.GetComponentInChildrenByName<Image>("Panel")
+                .SetSprite(ModContent.GetSpriteReference<MelonMain>("ModSettings"));
+            newObject.GetComponentInChildrenByName<Image>("Image").Destroy();
+
             instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
-            var transform = instantiatedButton.transform.Cast<RectTransform>();
-            transform.TranslateScaled(new Vector3(-400, 0));
-            transform.localScale = new Vector3(2.5f, 2.5f);
+            var matchPosition = newObject.AddComponent<MatchPosition>();
+            matchPosition.transformToCopy = twitch;
+            matchPosition.offset = new Vector3(-400, 0, 0);
         }
 
         public void OptionButtonClicked()
         {
-            modOptionsMenu = new ModOptionsMenu();
-            instantiatedButton.gameObject.SetActive(false);
+            //modOptionsMenu = new ModOptionsMenu();
+            //instantiatedButton.gameObject.SetActive(false);
+            ModGameMenu.Open<ModHelperMenu>("Test");
         }
 #endif
     }

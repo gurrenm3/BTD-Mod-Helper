@@ -15,6 +15,8 @@ using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.BTD6_UI;
+using JetBrains.Annotations;
 
 namespace BTD_Mod_Helper
 {
@@ -22,10 +24,6 @@ namespace BTD_Mod_Helper
     {
         public override string GithubReleaseURL => "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases";
         public override string LatestURL => "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
-        internal static readonly List<UpdateInfo> ModsNeedingUpdates = new List<UpdateInfo>();
-
-        public const string CoopMessageCode = "BTD6_ModHelper";
-        public const string CurrentVersion = ModHelper.CurrentVersion;
 
         public override void OnApplicationStart()
         {
@@ -46,21 +44,7 @@ namespace BTD_Mod_Helper
             ModHelper.Log("Mod has finished loading");
 
             // Load Content from other mods
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
-            {
-                try
-                {
-                    ModContentInstances.SetInstance(mod.GetType(), mod);
-                    ResourceHandler.LoadEmbeddedTextures(mod);
-                    ResourceHandler.LoadEmbeddedBundles(mod);
-                    ModContent.LoadModContent(mod);
-                }
-                catch (Exception e)
-                {
-                    ModHelper.Error("Critical failure when loading resources for mod " + mod.Info.Name);
-                    ModHelper.Error(e);
-                }
-            }
+            ModHelper.LoadAllMods();
         }
 
 
@@ -102,7 +86,7 @@ namespace BTD_Mod_Helper
                 return;
 
             if (PopupScreen.instance != null && afterTitleScreen)
-                UpdateHandler.AnnounceUpdates(ModsNeedingUpdates, this.GetModDirectory());
+                UpdateHandler.AnnounceUpdates(UpdateHandler.ModsNeedingUpdates, this.GetModDirectory());
 
             if (InGame.instance is null)
                 return;
@@ -150,7 +134,8 @@ namespace BTD_Mod_Helper
 
         private void Schedule_GameModel_Loaded()
         {
-            TaskScheduler.ScheduleTask(() => { ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)); },
+            TaskScheduler.ScheduleTask(
+                () => { ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)); },
                 () => Game.instance?.model != null);
         }
 

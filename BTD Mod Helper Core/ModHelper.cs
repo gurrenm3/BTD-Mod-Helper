@@ -2,14 +2,13 @@
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Extensions;
-using Il2CppSystem;
 using MelonLoader;
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper
 {
     /// <summary>
-    /// Catch-all class for non-extension static methods that modders would find useful
+    /// Catch-all class for non-extension static methods
     /// </summary>
     public static class ModHelper
     {
@@ -17,11 +16,24 @@ namespace BTD_Mod_Helper
         /// The current version of the Mod. GitHub Release tags must match this exactly.
         /// </summary>
         public const string CurrentVersion = "3.0.0";
-
-        /// <inheritdoc cref="ModByteLoader.Generate{T}"/>
-        public static void GenerateByteLoader<T>(T model, string loaderFilePath, string bytesFilePath) where T : Object
+        
+        internal static void LoadAllMods()
         {
-            ModByteLoader.Generate(model, loaderFilePath, bytesFilePath);
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
+            {
+                try
+                {
+                    ModContentInstances.SetInstance(mod.GetType(), mod);
+                    ResourceHandler.LoadEmbeddedTextures(mod);
+                    ResourceHandler.LoadEmbeddedBundles(mod);
+                    ModContent.LoadModContent(mod);
+                }
+                catch (Exception e)
+                {
+                    Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    Error(e);
+                }
+            }
         }
 
         /// <summary>
@@ -31,6 +43,15 @@ namespace BTD_Mod_Helper
         {
             ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
         }
+        
+        /// <summary>
+        /// Logs a message from the specified Mod's LoggerInstance
+        /// </summary>
+        public static void Msg<T>(object obj) where T : BloonsMod
+        {
+            ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
+        }
+
 
         /// <summary>
         /// Logs an error from the specified Mod's LoggerInstance
@@ -52,6 +73,14 @@ namespace BTD_Mod_Helper
         /// Logs a message from the Mod Helper's LoggerInstance
         /// </summary>
         internal static void Log(object obj)
+        {
+            Main.LoggerInstance.Msg(obj);
+        }
+        
+        /// <summary>
+        /// Logs a message from the Mod Helper's LoggerInstance
+        /// </summary>
+        internal static void Msg(object obj)
         {
             Main.LoggerInstance.Msg(obj);
         }

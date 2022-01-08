@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Scripts.Unity.Utils;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Enums;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -51,7 +52,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
         }
-        
+
         /// <summary>
         /// Sets the sprite of this image to one with the given name in the named sprite atlas
         /// </summary>

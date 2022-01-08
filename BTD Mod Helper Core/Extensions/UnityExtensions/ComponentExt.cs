@@ -58,5 +58,13 @@ namespace BTD_Mod_Helper.Extensions
             var scale = transform.lossyScale.x;
             transform.Translate(translation * scale);
         }
+        
+        /// <summary>
+        /// Destroys this Component
+        /// </summary>
+        public static void Destroy(this Component component)
+        {
+            Object.Destroy(component);
+        }
     }
 }

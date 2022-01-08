@@ -92,5 +92,14 @@ namespace BTD_Mod_Helper.Extensions
             var transform = gameObject.transform;
             transform.TranslateScaled(translation);
         }
+        
+        /// <summary>
+        /// Removes a Component from a GameObject by destroying it
+        /// </summary>
+        /// <param name="gameObject"></param>
+        public static void RemoveComponent<T>(this GameObject gameObject) where T : Component
+        {
+            gameObject.GetComponent<T>().Destroy();
+        }
     }
 }

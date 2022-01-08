@@ -16,15 +16,9 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         public static AssetBundle AssetBundle
         {
-            get
-            {
-                if (assetBundle is null)
-                    assetBundle = AssetBundle.LoadFromMemory(Resources.modoptions);
-                return assetBundle;
-            }
-            set { assetBundle = value; }
+            get => assetBundle ? assetBundle : (assetBundle = AssetBundle.LoadFromMemory(Resources.modoptions));
+            set => assetBundle = value;
         }
-
 
         private static GameObject canvasGo;
 
@@ -36,7 +30,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     canvasGo = AssetBundle.LoadAsset("Canvas").Cast<GameObject>();
                 return canvasGo;
             }
-            set { canvasGo = value; }
+            set => canvasGo = value;
         }
 
 
@@ -51,43 +45,42 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         private Button doneButton;
 
-        public ModOptionsMenu()
+        public ModOptionsMenu(Transform parent = null)
         {
-            modOptionsWindow = CanvasGO.GetComponentInChildrenByName<RectTransform>("ModOptions");
+            if (parent == null)
+            {
 #if BloonsTD6
-            var scene = SceneManager.GetSceneByName("SettingsUI");
+                var scene = SceneManager.GetSceneByName("ExtraSettingsUI");
 #elif BloonsAT // Keep this so we can add support for BloonsAT in the future
             var scene = SceneManager.GetSceneByName("UI-Settings");
 #endif
-            var rootGameObjects = scene.GetRootGameObjects();
-            var mainMenuCanvas = rootGameObjects[0];
-            instantiatedUI = Object.Instantiate(modOptionsWindow.gameObject, mainMenuCanvas.transform);
+                var rootGameObjects = scene.GetRootGameObjects();
+                var mainMenuCanvas = rootGameObjects[0];
+                parent = mainMenuCanvas.transform;
+            }
+
+            modOptionsWindow = CanvasGO.GetComponentInChildrenByName<RectTransform>("ModOptions");
+
+            instantiatedUI = Object.Instantiate(modOptionsWindow.gameObject, parent);
 
             modList = instantiatedUI.GetComponentInChildrenByName<RectTransform>("ModList Container");
             optionsList = instantiatedUI.GetComponentInChildrenByName<RectTransform>("ModOptions Container");
             uiElementsContainer = instantiatedUI.GetComponentInChildrenByName<RectTransform>("UI Elements");
             modListItem = instantiatedUI.GetComponentInChildrenByName<RectTransform>("ModList Item");
 
-
             HideOriginalAssets(instantiatedUI);
 
             var mods = MelonHandler.Mods.OfType<BloonsMod>().Where(mod => mod.ModSettings.Any()).ToList();
 
-            for (var i = 0; i < mods.Count; i++)
+            foreach (var bloonsMod in mods)
             {
-                var bloonsMod = mods.ElementAt(i);
-                PopulateModListItems(bloonsMod, i);
+                PopulateModListItems(bloonsMod);
             }
 
 
             doneButton = instantiatedUI.GetComponentInChildrenByName<Button>("DoneButton");
 
-            doneButton.AddOnClick(() =>
-            {
-                Object.Destroy(instantiatedUI);
-                modsButton.instantiatedButton.gameObject.SetActive(true);
-                ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir());
-            });
+            doneButton.gameObject.SetActive(false);
 
             ModHelper.PerformHook(mod => mod.OnModOptionsOpened());
         }
@@ -115,7 +108,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             }
         }
 
-        private void PopulateModListItems(BloonsMod bloonsMod, int index)
+        private void PopulateModListItems(BloonsMod bloonsMod)
         {
             var item = Object.Instantiate(modListItem, modList);
 

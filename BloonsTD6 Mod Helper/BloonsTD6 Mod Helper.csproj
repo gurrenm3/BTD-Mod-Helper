@@ -148,16 +148,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AutoSave.cs" />
     <Compile Include="Api\BackupCreator.cs" />
+    <Compile Include="Api\ByteWaitTask.cs" />
+    <Compile Include="Api\ModContentTask.cs" />
     <Compile Include="Api\ProfileManagement.cs" />
-    <Compile Include="AutoSave.cs" />
+    <Compile Include="Api\SessionData.cs" />
     <Compile Include="BloonsTD6Mod.cs" />
     <Compile Include="BTD6 UI\MainMenuUI.cs" />
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
     <Compile Include="BTD6 UI\ModdedModeMenu.cs" />
     <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
+    <Compile Include="BTD6 UI\ModHelperMenu.cs" />
     <Compile Include="BTD6 UI\TitleScreenUI.cs" />
-    <Compile Include="ByteWaitTask.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\BloonBehaviorExt.cs" />
@@ -201,7 +204,6 @@
     <Compile Include="Extensions\UnityExtensions\RendererExt.cs" />
     <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="MelonMain.cs" />
-    <Compile Include="ModContentTask.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
     <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
@@ -251,11 +253,13 @@
     <Compile Include="Patches\Towers\Tower_UnHighlight.cs" />
     <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
     <Compile Include="Patches\UI\CoopQuickMatchScreen_Open.cs" />
+    <Compile Include="Patches\UI\ExtraSettingsScreen_Open.cs" />
     <Compile Include="Patches\UI\HeroButton_Init.cs" />
     <Compile Include="Patches\UI\HeroInGameScreen_Open.cs" />
     <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
     <Compile Include="Patches\UI\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\UI\MainMenu_OnEnable.cs" />
+    <Compile Include="Patches\UI\MenuManager_OpenMenu.cs" />
     <Compile Include="Patches\UI\OdysseyEventScreen_Update.cs" />
     <Compile Include="Patches\UI\SelectedUpgrade_UpdateButtonState.cs" />
     <Compile Include="Patches\UI\SettingsScreen_Open.cs" />
@@ -280,7 +284,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SessionData.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -291,6 +294,9 @@
   <ItemGroup>
     <None Include="Resources\ingame_popup.bundle" />
     <None Include="Resources\modoptions.bundle" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ModSettings.png" />
   </ItemGroup>
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -152,8 +152,10 @@ namespace BTD_Mod_Helper.Api.Updater
             Directory.CreateDirectory(updateDir);
             SaveModUpdateInfo(updateDir);
             var allUpdateInfo = LoadAllUpdateInfo(updateDir);
-            CheckForUpdates(allUpdateInfo, MelonMain.ModsNeedingUpdates);
+            CheckForUpdates(allUpdateInfo, ModsNeedingUpdates);
             ModHelper.Log("Done checking for updates");
         }
+
+        internal static readonly List<UpdateInfo> ModsNeedingUpdates = new List<UpdateInfo>();
     }
 }
