@@ -2,6 +2,7 @@
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using MelonLoader;
+using NinjaKiwi.Common;
 using UnhollowerRuntimeLib;
 using UnityEngine;
 
@@ -190,6 +191,11 @@ namespace BTD_Mod_Helper.Extensions
             SpriteReference backgroundSprite = null)
         {
             return gameObject.AddModHelperComponent(ModHelperPanel.Create(rect, objectName, backgroundSprite));
+        }
+
+        public static void DestroyAllChildren(this GameObject gameObject)
+        {
+            TransformExtensions.DestroyAllChildren(gameObject.transform);
         }
     }
 }

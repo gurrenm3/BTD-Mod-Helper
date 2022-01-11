@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Api.Helpers
             }
         }
 
-        internal static string GetLine(string file)
+        private static string GetLine(string file)
         {
             string name = null;
             string originalName = null;
@@ -99,7 +99,7 @@ namespace BTD_Mod_Helper.Api.Helpers
             return $"{Tab}{Tab}// Failed to find GUID for {name ?? file}";
         }
 
-        internal static string FixName(string name)
+        private static string FixName(string name)
         {
             if (Regex.Match(name, @"^\d\d\d-").Success)
             {
@@ -109,6 +109,11 @@ namespace BTD_Mod_Helper.Api.Helpers
             if (name.Contains("#"))
             {
                 name = string.Concat(name.Split('#')[0].Trim());
+            }
+
+            if (Regex.IsMatch(name, @"^\d.+"))
+            {
+                name = "The" + name;
             }
 
             name = Regex.Replace(name, @"[^A-Za-z0-9_]", "");

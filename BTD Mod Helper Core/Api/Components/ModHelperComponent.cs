@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Utils;
+using Il2CppSystem.Collections.Generic;
 using MelonLoader;
 using TMPro;
 using UnityEngine;
@@ -101,6 +102,13 @@ namespace BTD_Mod_Helper.Api.Components
             return Add(ModHelperImage.Create(rect, sprite, objectName));
         }
 
+        /// <inheritdoc cref="ModHelperDropdown.Create"/>
+        public ModHelperDropdown AddDropdown(Rect rect, List<TMP_Dropdown.OptionData> options,
+            string objectName = "ModHelperDropdown", SpriteReference background = null, float labelFontSize = 42f)
+        {
+            return Add(ModHelperDropdown.Create(rect, options, objectName, background, labelFontSize));
+        }
+
         internal static T Create<T>(Rect rect, string objectName = "ModHelperComponent") where T : ModHelperComponent
         {
             var newGameObject = new GameObject(objectName, new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
@@ -114,7 +122,7 @@ namespace BTD_Mod_Helper.Api.Components
 
             return modHelperComponent;
         }
-
+        
         private void Update()
         {
             if (!Initialized)

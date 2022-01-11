@@ -8,6 +8,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using NinjaKiwi.Common;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,11 +16,11 @@ namespace BTD_Mod_Helper.BTD6_UI
 {
     public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     {
-        private const int MenuWidth = 4000;
+        private const int MenuWidth = 3500;
         private const int MenuHeight = 2000;
 
         private const int ModsListWidth = 1500;
-        private const int ModsListHeight = 2000;
+        private const int ModInfoWidth = 1900;
 
         private const int ModsScrollWidth = 1400;
         private const int ModsScrollHeight = 1700;
@@ -33,6 +34,12 @@ namespace BTD_Mod_Helper.BTD6_UI
         private const int ModNameSize = 69;
         private const int UpdateOffset = 75;
 
+        private static readonly string[] SortOptions =
+        {
+            "Priority",
+            "Alphabetical"
+        };
+
         public override bool OnMenuOpened(ExtraSettingsScreen gameMenu)
         {
             CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>().SetText("Mods");
@@ -43,7 +50,8 @@ namespace BTD_Mod_Helper.BTD6_UI
 
             var modsMenu = panel.AddModHelperPanel(new Rect(0, 0, MenuWidth, MenuHeight), "ModsMenu");
 
-            var modsList = modsMenu.AddPanel(new Rect(-MenuWidth / 4f, 0, ModsListWidth, ModsListHeight),
+            var modsList = modsMenu.AddPanel(
+                new Rect((MenuWidth - ModsListWidth) / -2f, 0, ModsListWidth, MenuHeight),
                 "ModsList", VanillaSprites.MainBGPanelBlue);
 
             var scrollPanel = modsList.AddScrollPanel(new Rect(0, ModsScrollOffset, ModsScrollWidth, ModsScrollHeight),
@@ -59,6 +67,13 @@ namespace BTD_Mod_Helper.BTD6_UI
             {
                 scrollPanel.AddScrollContent(CreateModPanel(melonMod));
             }
+
+            var modInfo = modsMenu.AddPanel(new Rect((MenuWidth - ModInfoWidth) / 2f, 0, ModInfoWidth, MenuHeight),
+                "ModInfo", VanillaSprites.MainBGPanelBlue);
+
+            modInfo.AddDropdown(new Rect(0, 0, 400, 100),
+                SortOptions.Select(s => new TMP_Dropdown.OptionData(s)).ToIl2CppList(),
+                "ModHelperDropdown", VanillaSprites.BlueInsertPanel);
 
             return false;
         }

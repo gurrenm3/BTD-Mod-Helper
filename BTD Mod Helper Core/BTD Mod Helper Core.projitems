@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchScale.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperComponent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperDropdown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperScrollPanel.cs" />
