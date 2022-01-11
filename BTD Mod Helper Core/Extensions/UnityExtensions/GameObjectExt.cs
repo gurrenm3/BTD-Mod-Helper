@@ -1,5 +1,8 @@
 ﻿using System.Linq;
+using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Components;
 using MelonLoader;
+using UnhollowerRuntimeLib;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
@@ -24,9 +27,11 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="gameObject"></param>
         /// <param name="componentName"></param>
         /// <returns></returns>
-        public static T GetComponentInChildrenByName<T>(this GameObject gameObject, string componentName) where T : Component
+        public static T GetComponentInChildrenByName<T>(this GameObject gameObject, string componentName)
+            where T : Component
         {
-            return gameObject.transform.GetComponentsInChildren<T>().FirstOrDefault(component => component.name == componentName);
+            return gameObject.transform.GetComponentsInChildren<T>()
+                .FirstOrDefault(component => component.name == componentName);
         }
 
         /// <summary>
@@ -55,7 +60,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             Object.Destroy(gameObject);
         }
-        
+
         /// <summary>
         /// Logs a GameObject's hierarchy recursively
         /// </summary>
@@ -80,7 +85,7 @@ namespace BTD_Mod_Helper.Extensions
                 RecursivelyLog(gameObject.transform.GetChild(i).gameObject, depth + 1);
             }
         }
-        
+
         /// <summary>
         /// (Cross-Game compatible) Translates this GameObject scaled with it's "lossyScale", making it move the same
         /// amount regardless of screen resolution
@@ -92,7 +97,7 @@ namespace BTD_Mod_Helper.Extensions
             var transform = gameObject.transform;
             transform.TranslateScaled(translation);
         }
-        
+
         /// <summary>
         /// Removes a Component from a GameObject by destroying it
         /// </summary>
@@ -100,6 +105,24 @@ namespace BTD_Mod_Helper.Extensions
         public static void RemoveComponent<T>(this GameObject gameObject) where T : Component
         {
             gameObject.GetComponent<T>().Destroy();
+        }
+
+        /// <summary>
+        /// Adds the ModHelperComponent to a parent Transform, returning the ModHelperComponent
+        /// <br/>
+        /// (This is an extension method just so that we can return the type generically)
+        /// </summary>
+        public static T AddTo<T>(this T modHelperComponent, Transform parent) where T : ModHelperComponent
+        {
+            modHelperComponent.transform.parent = parent;
+            return modHelperComponent;
+        }
+
+        public static ModHelperPanel AddPanel(this GameObject gameObject, Rect rect,
+            string objectName = "ModHelperPanel", SpriteReference backgroundSprite = null)
+        {
+            return ModHelperPanel.Create(rect, objectName, backgroundSprite).AddTo(gameObject.transform)
+                .AddTo(gameObject.transform);
         }
     }
 }

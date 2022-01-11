@@ -14,6 +14,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModVanillaBloon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchScale.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperComponent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperScrollPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ScaleOverrideZero.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ICustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModBloonDisplay.cs" />
