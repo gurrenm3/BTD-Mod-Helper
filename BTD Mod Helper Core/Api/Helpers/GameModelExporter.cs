@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Data;
 using Assets.Scripts.Models;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
@@ -77,16 +78,23 @@ namespace BTD_Mod_Helper.Api.Helpers
                     Export(roundSet.rounds[i], $"Rounds/{roundSet.name}/{i + 1}.json");
                 }
             }
+            
+            ModHelper.Log("Exporting maps to local files");
+            foreach (var mapSetMap in GameData.Instance.mapSet.maps)
+            {
+                Export(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json");
+            }
+            
         }
 
         /// <summary>
         /// Tries to save a specific Model and logs doing so
         /// </summary>
-        public static void Export(Model model, string path)
+        public static void Export(Il2CppSystem.Object data, string path)
         {
             try
             {
-                FileIOUtil.SaveObject(path, model);
+                FileIOUtil.SaveObject(path, data);
                 ModHelper.Log("Saving " + FileIOUtil.sandboxRoot + path);
             }
             catch (Exception)

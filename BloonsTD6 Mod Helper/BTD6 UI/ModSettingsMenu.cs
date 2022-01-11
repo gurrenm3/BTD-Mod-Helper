@@ -9,7 +9,7 @@ using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.BTD6_UI
 {
-    internal class ModHelperMenu : ModGameMenu
+    internal class ModSettingsMenu : ModGameMenu
     {
         public override string BaseMenu => MenuName<ExtraSettingsScreen>();
 
@@ -22,8 +22,6 @@ namespace BTD_Mod_Helper.BTD6_UI
             }
 
             ModOptionsMenu.modsButton.modOptionsMenu = new ModOptionsMenu(panel);
-
-            ModHelper.Msg($"The data is {data?.ToString()}");
 
             return false;
         }

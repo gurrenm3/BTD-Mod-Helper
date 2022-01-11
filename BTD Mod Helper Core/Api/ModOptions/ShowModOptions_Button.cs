@@ -45,7 +45,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             instantiatedButton.onClick.AddListener(OptionButtonClicked);
 
-            var matchPosition = newObject.AddComponent<MatchPosition>();
+            var matchPosition = newObject.AddComponent<MatchLocalPosition>();
             matchPosition.transformToCopy = twitch;
             matchPosition.offset = new Vector3(-400, 0, 0);
         }
@@ -54,7 +54,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             //modOptionsMenu = new ModOptionsMenu();
             //instantiatedButton.gameObject.SetActive(false);
-            ModGameMenu.Open<ModHelperMenu>("Test");
+            ModGameMenu.Open<ModSettingsMenu>("Test");
         }
 #endif
     }

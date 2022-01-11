@@ -2,22 +2,22 @@
 using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
-using MelonLoader;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.Updater;
-using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
+using Assets.Scripts.SocialSharing;
 using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.BTD6_UI;
-using JetBrains.Annotations;
+using Octokit;
+using TMPro;
 using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper
@@ -30,6 +30,16 @@ namespace BTD_Mod_Helper
         public override void OnApplicationStart()
         {
             ModContentInstances.SetInstance(GetType(), this);
+            
+            try
+            {
+                ModHelperHttp.Init();
+                ModHelperGithub.Init();
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
 
             // Mod Updating
             UpdateHandler.CheckModsForUpdates();
@@ -48,7 +58,6 @@ namespace BTD_Mod_Helper
             // Load Content from other mods
             ModHelper.LoadAllMods();
         }
-
 
         public static readonly ModSettingBool CleanProfile = true;
 

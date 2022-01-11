@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using BTD_Mod_Helper.Api;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -61,5 +63,9 @@ namespace BTD_Mod_Helper.Extensions
             if (createIfNotExists) Directory.CreateDirectory(path);
             return path;
         }
+
+        internal static ModHelperData GetModHelperData(this MelonMod mod) => ModHelperData.GetModHelperData(mod);
+
+        internal static string GetModHelperData(this MelonMod mod, string name) => ModHelperData.GetModHelperData(mod, name);
     }
 }

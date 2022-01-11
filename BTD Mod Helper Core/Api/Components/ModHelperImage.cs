@@ -30,8 +30,19 @@ namespace BTD_Mod_Helper.Api.Components
         /// <param name="rect">The position and size</param>
         /// <param name="sprite">The sprite to display</param>
         /// <param name="objectName">The Unity name of the object</param>
-        /// <returns></returns>
+        /// <returns>The created ModHelperImage</returns>
         public static ModHelperImage Create(Rect rect, SpriteReference sprite, string objectName = "ModHelperImage")
+        {
+            var modHelperImage = ModHelperComponent.Create<ModHelperImage>(rect, objectName);
+
+            var image = modHelperImage.Image = modHelperImage.AddComponent<Image>();
+            image.SetSprite(sprite);
+
+            return modHelperImage;
+        }
+        
+        /// <inheritdoc cref="Create(UnityEngine.Rect,Assets.Scripts.Utils.SpriteReference,string)"/>
+        public static ModHelperImage Create(Rect rect, Sprite sprite, string objectName = "ModHelperImage")
         {
             var modHelperImage = ModHelperComponent.Create<ModHelperImage>(rect, objectName);
 

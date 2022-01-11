@@ -56,6 +56,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Sets the sprite of this image to one with the given name in the named sprite atlas
         /// </summary>
+        [Obsolete("Use SetSprite with a VanillaSpriteReference instead")]
         public static void SetSpriteFromAtlas(this Image image, string atlas, string spriteName)
         {
             AtlasLateBinding.Instance.OnAtlasRequested(atlas, new Action<SpriteAtlas>(spriteAtlas =>

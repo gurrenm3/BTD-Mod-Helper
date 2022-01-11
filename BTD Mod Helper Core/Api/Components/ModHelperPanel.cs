@@ -14,17 +14,6 @@ namespace BTD_Mod_Helper.Api.Components
     [RegisterTypeInIl2Cpp(false)]
     public class ModHelperPanel : ModHelperComponent
     {
-        public static SpriteReference Blue => VanillaSprites.MainBGPanelBlue;
-        public static SpriteReference Grey => VanillaSprites.MainBGPanelGrey;
-        public static SpriteReference Gold => VanillaSprites.MainBGPanelYellow;
-        public static SpriteReference Hematite => VanillaSprites.MainBgPanelHematite;
-        public static SpriteReference BlueNotches => VanillaSprites.MainBGPanelBlueNotches;
-        public static SpriteReference BlueInset => VanillaSprites.BlueInsertPanel;
-        public static SpriteReference BrownInset => VanillaSprites.BrownInsertPanel;
-        public static SpriteReference GoldInset => VanillaSprites.GoldInsertRibbon;
-        public static SpriteReference WhiteInset => VanillaSprites.InsertPanelWhiteRound;
-        public static SpriteReference BlueInsetRound => VanillaSprites.BlueInsertPanelRound;
-
         /// <summary>
         /// The background image
         /// </summary>
@@ -36,9 +25,9 @@ namespace BTD_Mod_Helper.Api.Components
         }
 
         /// <summary>
-        /// 
+        /// Creates a new ModHelperPanel
         /// </summary>
-        /// <param name="rect">The position and size</param>
+        /// <param name="rect">The position (offset of child center from parent center) and size</param>
         /// <param name="objectName">The Unity name of the object</param>
         /// <param name="backgroundSprite">The panel's background sprite</param>
         /// <returns>The created ModHelperPanel</returns>
@@ -53,9 +42,12 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var modHelperPanel = ModHelperComponent.Create<T>(rect, objectName);
 
-            modHelperPanel.Background = modHelperPanel.AddComponent<Image>();
-            modHelperPanel.Background.type = Image.Type.Sliced;
-            modHelperPanel.Background.SetSprite(backgroundSprite ?? Blue);
+            if (backgroundSprite != null)
+            {
+                modHelperPanel.Background = modHelperPanel.AddComponent<Image>();
+                modHelperPanel.Background.type = Image.Type.Sliced;
+                modHelperPanel.Background.SetSprite(backgroundSprite);
+            }
 
             return modHelperPanel;
         }

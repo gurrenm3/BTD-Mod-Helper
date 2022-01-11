@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Unity;
-using BTD_Mod_Helper.Extensions;
-using MelonLoader;
+﻿using MelonLoader;
 
 namespace BTD_Mod_Helper.Api
 {

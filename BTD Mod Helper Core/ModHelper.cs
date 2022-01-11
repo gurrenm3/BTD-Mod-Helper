@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Extensions;
@@ -32,6 +33,18 @@ namespace BTD_Mod_Helper
                 {
                     Error("Critical failure when loading resources for mod " + mod.Info.Name);
                     Error(e);
+                }
+            }
+
+            foreach (var melonMod in MelonHandler.Mods)
+            {
+                try
+                {
+                    ModHelperData.Load(melonMod);
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Warning(e);
                 }
             }
         }

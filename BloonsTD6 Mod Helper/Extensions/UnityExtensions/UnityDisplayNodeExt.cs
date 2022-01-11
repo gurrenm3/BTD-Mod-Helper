@@ -155,7 +155,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string boneName, bool alreadyUnbound = false)
         {
             var bone = unityDisplayNode.GetBone(boneName);
-            bone.gameObject.AddComponent<ScaleOverrideZero>();
+            bone.gameObject.AddComponent<ScaleOverride>();
         }
 
         /// <summary>

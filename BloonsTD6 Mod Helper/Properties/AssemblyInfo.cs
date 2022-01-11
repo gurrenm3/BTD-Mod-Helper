@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonColor(ConsoleColor.Blue)]
 [assembly: MelonPriority(-1000)]
+[assembly: AssemblyInformationalVersion(ModHelper.CurrentVersion)]
 
 [assembly: AssemblyVersion(ModHelper.CurrentVersion)]
 [assembly: AssemblyFileVersion(ModHelper.CurrentVersion)]

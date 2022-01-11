@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Api.Components
     /// Component to make this transform continuously match the scale of another transform
     /// </summary>
     [RegisterTypeInIl2Cpp(false)]
-    public class MatchPosition : MonoBehaviour
+    public class MatchLocalPosition : MonoBehaviour
     {
         /// <summary>
         /// Other transform to constantly copy the scale from
@@ -19,15 +19,22 @@ namespace BTD_Mod_Helper.Api.Components
         /// Offset from the transform to stay
         /// </summary>
         public Vector3 offset;
+        
+        /// <summary>
+        /// Scale for the original local position
+        /// </summary>
+        public Vector3 scale = Vector3.one;
 
         /// <inheritdoc />
-        public MatchPosition(IntPtr ptr) : base(ptr)
+        public MatchLocalPosition(IntPtr ptr) : base(ptr)
         {
         }
 
         private void LateUpdate()
         {
-            transform.localPosition = transformToCopy.localPosition + offset;
+            var copy = transformToCopy.localPosition;
+            transform.localPosition = new Vector3(copy.x * scale.x + offset.x, copy.y * scale.y + offset.y,
+                copy.z * scale.z + offset.z);
         }
     }
 }

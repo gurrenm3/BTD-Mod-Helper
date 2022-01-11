@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Target Name="ILRepacker_Debug" AfterTargets="Build" Condition="'$(Configuration)' == 'BloonsTD6 - Debug'">
+		<ItemGroup>
+			<AssemblyFile Include="$(TargetDir)$(TargetName).dll" />
+		</ItemGroup>
+		<ItemGroup>
+			<InputAssemblies Include="@(AssemblyFile)" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'" />
+		</ItemGroup>
+		<ItemGroup>
+			<LibraryPaths Include="$(SolutionDir)Dependencies\Shared"/>
+			<LibraryPaths Include="$(SolutionDir)Dependencies\BloonsTD6"/>
+		</ItemGroup>
+		<ILRepack
+			Parallel="true"
+			DebugInfo="true"
+			InputAssemblies="@(InputAssemblies)"
+			TargetKind="Dll"
+			OutputFile="@(AssemblyFile)"
+			Internalize="true"
+			LibraryPath="@(LibraryPaths)"
+		/>
+
+
+		<Exec Command="copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(BloonsTD6)\Mods&quot; /y &amp;&amp; copy &quot;$(TargetDir)$(TargetName).xml&quot; &quot;$(BloonsTD6)\Mods&quot; /y"/>
+    </Target>
+	
+	<Target Name="ILRepacker_Release" AfterTargets="Build" Condition="'$(Configuration)' == 'BloonsTD6 - Release'">
+		<ItemGroup>
+			<AssemblyFile Include="$(OutputPath)$(AssemblyName).dll" />
+		</ItemGroup>
+		<ItemGroup>
+			<InputAssemblies Include="@(AssemblyFile)" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'" />
+		</ItemGroup>
+		<ILRepack
+			Parallel="true"
+			DebugInfo="false"
+			InputAssemblies="@(InputAssemblies)"
+			TargetKind="Dll"
+			OutputFile="@(AssemblyFile)"
+		/>
+    </Target>
+	
+	<Target Name="Cleanup" AfterTargets="ILRepack">
+		<ItemGroup>
+			<FilesToDelete Include="$(OutputPath)Octokit.dll" />
+		</ItemGroup>
+		<Delete Files="@(FilesToDelete)" />
+    </Target>
+</Project>

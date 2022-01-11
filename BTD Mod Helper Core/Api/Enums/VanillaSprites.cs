@@ -1836,6 +1836,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public static SpriteReference NoticeBtn => new SpriteReference("Ui[NoticeBtn]");
         public static SpriteReference NotificationYellow => new SpriteReference("Ui[NotificationYellow]");
         public static SpriteReference NotifyBlue => new SpriteReference("Ui[NotifyBlue]");
+        public static SpriteReference NotifyRed => new SpriteReference("Ui[NotifyRed]");
         public static SpriteReference NotLackingCriticalInformation => ModContent.CreateSpriteReference("9db122d8d7b9083439c796519a48f481");
         public static SpriteReference ObynBunnyPetIcon => ModContent.CreateSpriteReference("4007670464693364c98eb35d8a545268");
         public static SpriteReference ObynGreenFoot => ModContent.CreateSpriteReference("a4eb9aac3d881d1489316044b1538bfc");

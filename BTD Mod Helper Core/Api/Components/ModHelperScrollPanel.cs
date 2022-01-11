@@ -48,15 +48,16 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// Adds a child to the ScrollContent of this panel
         /// </summary>
-        public void AddScrollContent(Transform child)
+        public void AddScrollContent(ModHelperComponent child)
         {
-            child.parent = ScrollContent.transform;
+            child.AddTo(ScrollContent.transform);
+            child.AddLayoutElement();
         }
 
         /// <summary>
         /// Creates a new ModHelperScrollPanel
         /// </summary>
-        /// <param name="rect">The position and size</param>
+        /// <param name="rect">The position (offset of child center from parent center) and size</param>
         /// <param name="axis">The axis that it scrolls in, or null for both directions</param>
         /// <param name="objectName">The Unity name of the object</param>
         /// <param name="backgroundSprite">The panel's background sprite</param>
@@ -70,36 +71,42 @@ namespace BTD_Mod_Helper.Api.Components
 
             var scrollContent = newPanel.ScrollContent = new GameObject("ScrollContent", new[]
                 {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
+            scrollContent.transform.parent = newPanel;
 
             scrollRect.content = scrollContent.transform.Cast<RectTransform>();
             scrollRect.viewport = newPanel.RectTransform;
             scrollRect.scrollSensitivity = 100;
-            scrollRect.normalizedPosition = new Vector2(0, 1);
 
             newPanel.Mask = newPanel.AddComponent<Mask>();
 
             if (axis != null)
             {
-                HorizontalOrVerticalLayoutGroup layoutGroup;
                 var contentSizeFitter = newPanel.ContentSizeFitter = scrollContent.AddComponent<ContentSizeFitter>();
+                contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+                contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
                 if (axis == RectTransform.Axis.Horizontal)
                 {
-                    scrollRect.horizontal = true;
-                    layoutGroup = newPanel.LayoutGroup = scrollContent.AddComponent<HorizontalLayoutGroup>();
-                    contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+                    scrollRect.vertical = false;
+                    newPanel.LayoutGroup = newPanel.LayoutGroup = scrollContent.AddComponent<HorizontalLayoutGroup>();
                 }
                 else
                 {
-                    scrollRect.vertical = true;
-                    layoutGroup = newPanel.LayoutGroup = scrollContent.AddComponent<VerticalLayoutGroup>();
-                    contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+                    scrollRect.horizontal = false;
+                    newPanel.LayoutGroup = newPanel.LayoutGroup = scrollContent.AddComponent<VerticalLayoutGroup>();
                 }
 
-                layoutGroup.spacing = spacing;
+                newPanel.LayoutGroup.spacing = spacing;
             }
 
 
             return newPanel;
         }
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+            ScrollRect.normalizedPosition = Vector2.one;
+        }
     }
+    
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace BTD_Mod_Helper.Patches.UI
 {
     [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Open))]
-    internal class MainMenu_OnEnable
+    internal class MainMenu_Open
     {
         [HarmonyPostfix]
         internal static void Postfix()
@@ -17,8 +17,14 @@ namespace BTD_Mod_Helper.Patches.UI
             var monkeysButton = MainMenuUI.GetMonkeysButton()?.gameObject;
             if (monkeysButton != null)
             {
+                ModHelperText.luckiestGuy = monkeysButton.GetComponentInChildren<NK_TextMeshProUGUI>().font;
+            }
+
+            var exitButton = MainMenuUI.GetExitButton()?.gameObject;
+            if (exitButton != null)
+            {
                 ModHelperButton.GlobalButtonAnimation =
-                    monkeysButton.GetComponent<Animator>().runtimeAnimatorController;
+                    exitButton.GetComponent<Animator>().runtimeAnimatorController;
             }
 
             ModHelper.PerformHook(mod => mod.OnMainMenu());

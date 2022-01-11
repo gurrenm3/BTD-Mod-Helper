@@ -5,6 +5,7 @@ using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using Assets.Scripts.Unity.UI_New.Main.PowersSelect;
 using Assets.Scripts.Unity.UI_New.Settings;
+using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Extensions;
 using UnhollowerRuntimeLib;
 using Object = Il2CppSystem.Object;
@@ -16,10 +17,7 @@ namespace BTD_Mod_Helper.Api
     /// </summary>
     public abstract class ModGameMenu : ModContent
     {
-        /// <summary>
-        /// There should be a better way to do this
-        /// </summary>
-        internal static readonly Stack<Action> GameMenuCloses = new Stack<Action>();
+        internal static readonly Dictionary<string, ModGameMenu> Cache = new Dictionary<string, ModGameMenu>();
 
         /// <summary>
         /// The string name of the in game menu to copy from
@@ -30,6 +28,7 @@ namespace BTD_Mod_Helper.Api
         /// <inheritdoc />
         public override void Register()
         {
+            Cache[Id] = this;
         }
 
 
@@ -46,6 +45,13 @@ namespace BTD_Mod_Helper.Api
         public virtual void OnMenuClosed(GameMenu gameMenu)
         {
         }
+        
+        /// <summary>
+        /// Runs every time that your custom menu updates
+        /// </summary>
+        public virtual void OnMenuUpdate(GameMenu gameMenu)
+        {
+        }
 
 
         /// <summary>
@@ -56,11 +62,10 @@ namespace BTD_Mod_Helper.Api
         protected static string MenuName<T>() where T : GameMenu
         {
             var type = Il2CppType.Of<T>();
-            if (type == Il2CppType.Of<ExtraSettingsScreen>()) return "ExtraSettingsUI";
+            
             if (type == Il2CppType.Of<PowersSelectScreen>()) return "PowerSelectUI";
-            if (type == Il2CppType.Of<SettingsScreen>()) return "SettingsUI";
 
-            return "";
+            return type.Name.Replace("Screen", "UI");
         }
 
         internal static bool CheckOpen(GameMenu gameMenu, Object data, out Object outData)
@@ -69,9 +74,9 @@ namespace BTD_Mod_Helper.Api
                 data.IsType(out ModMenuData menuData) &&
                 GetContent<ModGameMenu>().FirstOrDefault(menu => menu.Id == menuData.id) is ModGameMenu modGameMenu)
             {
-                GameMenuCloses.Pop(); // MenuManager_OpenMenu.Postfix happens first, lets replace it
-                GameMenuCloses.Push(() => modGameMenu.OnMenuClosed(MenuManager.instance.GetCurrentMenu()));
                 outData = menuData.baseData;
+                var tracker = gameMenu.gameObject.AddComponent<ModGameMenuTracker>();
+                tracker.modGameMenuId = modGameMenu.Id;
                 return modGameMenu.OnMenuOpened(gameMenu, menuData.modData);
             }
             outData = data;
@@ -114,11 +119,23 @@ namespace BTD_Mod_Helper.Api
         /// <inheritdoc />
         public sealed override void OnMenuClosed(GameMenu gameMenu)
         {
-            OnMenuOpened(gameMenu.Cast<T>());
+            OnMenuClosed(gameMenu.Cast<T>());
         }
 
         /// <inheritdoc cref="OnMenuClosed(Assets.Scripts.Unity.Menu.GameMenu)" />
         public virtual void OnMenuClosed(T gameMenu)
+        {
+        }
+        
+        /// <inheritdoc/>
+        public sealed override void OnMenuUpdate(GameMenu gameMenu)
+        {
+            OnMenuUpdate(gameMenu.Cast<T>());
+        }
+        
+        
+        /// <inheritdoc cref="OnMenuUpdate(Assets.Scripts.Unity.Menu.GameMenu)"/>
+        public virtual void OnMenuUpdate(T gameMenu)
         {
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.ModOptions;
 using MelonLoader;
 using UnityEngine;
@@ -37,6 +38,7 @@ namespace BTD_Mod_Helper
         ///
         ///     For example: "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases"
         /// </summary>
+        [Obsolete("Switch to using ModHelperData (wiki page)")]
         public virtual string GithubReleaseURL => "";
 
 
@@ -50,6 +52,7 @@ namespace BTD_Mod_Helper
         ///     because the file contains
         ///     [assembly: MelonInfo(typeof(MegaKnowledge.Main), "Mega Knowledge", "1.0.1", "doombubbles")]
         /// </summary>
+        [Obsolete("Switch to using ModHelperData (wiki page)")]
         public virtual string MelonInfoCsURL => "";
 
 
@@ -58,8 +61,8 @@ namespace BTD_Mod_Helper
         ///
         ///     For example: "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest"
         /// </summary>
+        [Obsolete("Switch to using ModHelperData (wiki page)")]
         public virtual string LatestURL => "";
-
 
         /// <summary>
         /// Allows you to define ways for other mods to interact with this mod. Other mods could do:

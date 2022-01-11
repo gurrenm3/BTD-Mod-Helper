@@ -58,6 +58,12 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="gameObject"></param>
         public static void Destroy(this GameObject gameObject)
         {
+            if (gameObject == null)
+            {
+                ModHelper.Warning("Tried to destroy null game object");
+                return;
+            }
+
             Object.Destroy(gameObject);
         }
 
@@ -101,10 +107,60 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Removes a Component from a GameObject by destroying it
         /// </summary>
-        /// <param name="gameObject"></param>
         public static void RemoveComponent<T>(this GameObject gameObject) where T : Component
         {
-            gameObject.GetComponent<T>().Destroy();
+            gameObject.GetComponent<T>()?.Destroy();
+        }
+
+        /// <summary>
+        /// Returns whether a component of the given type exists on a game object
+        /// </summary>
+        public static bool HasComponent<T>(this GameObject gameObject) where T : Component
+        {
+            return gameObject.GetComponent<T>() != null;
+        }
+
+        /// <summary>
+        /// Returns whether a component of the given type exists on a game object, and puts it in the out param
+        /// </summary>
+        public static bool HasComponent<T>(this GameObject gameObject, out T component) where T : Component
+        {
+            component = gameObject.GetComponent<T>();
+            return component != null;
+        }
+
+        /// <summary>
+        /// Instantiate a clone of the GameObject keeping the same parent
+        /// </summary>
+        public static T Duplicate<T>(this T gameObject) where T : Object
+        {
+            if (gameObject == null)
+            {
+                ModHelper.Warning("Tried to duplicate a null Unity Object");
+                return null;
+            }
+
+            return Object.Instantiate(gameObject);
+        }
+
+        /// <summary>
+        /// Instantiate a clone of the GameObject with the new transform as parent 
+        /// </summary>
+        public static T Duplicate<T>(this T gameObject, Transform parent) where T : Object
+        {
+            if (gameObject == null)
+            {
+                ModHelper.Warning("Tried to duplicate a null Unity Object");
+                return null;
+            }
+
+            return Object.Instantiate(gameObject, parent);
+        }
+
+        public static Transform FindDeepChild(this GameObject gameObject, string name)
+        {
+            // ReSharper disable once InvokeAsExtensionMethod
+            return UnityHelpers.FindDeepChild(gameObject.transform, name);
         }
 
         /// <summary>
@@ -114,15 +170,26 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static T AddTo<T>(this T modHelperComponent, Transform parent) where T : ModHelperComponent
         {
-            modHelperComponent.transform.parent = parent;
+            return parent.gameObject.AddModHelperComponent(modHelperComponent);
+        }
+
+        /// <summary>
+        /// Adds the ModHelperComponent to a parent GameObject, returning the ModHelperComponent
+        /// <br/>
+        /// (This is an extension method just so that we can return the type generically)
+        /// </summary>
+        public static T AddModHelperComponent<T>(this GameObject gameObject, T modHelperComponent)
+            where T : ModHelperComponent
+        {
+            modHelperComponent.transform.parent = gameObject.transform;
             return modHelperComponent;
         }
 
-        public static ModHelperPanel AddPanel(this GameObject gameObject, Rect rect,
-            string objectName = "ModHelperPanel", SpriteReference backgroundSprite = null)
+        /// <inheritdoc cref="ModHelperComponent.AddPanel"/>
+        public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Rect rect, string objectName = "ModHelperPanel",
+            SpriteReference backgroundSprite = null)
         {
-            return ModHelperPanel.Create(rect, objectName, backgroundSprite).AddTo(gameObject.transform)
-                .AddTo(gameObject.transform);
+            return gameObject.AddModHelperComponent(ModHelperPanel.Create(rect, objectName, backgroundSprite));
         }
     }
 }

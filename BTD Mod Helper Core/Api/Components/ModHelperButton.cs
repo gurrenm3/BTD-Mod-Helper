@@ -4,6 +4,7 @@ using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.UI;
+using Action = Il2CppSystem.Action;
 
 namespace BTD_Mod_Helper.Api.Components
 {
@@ -36,16 +37,18 @@ namespace BTD_Mod_Helper.Api.Components
             string objectName = "ModHelperButton")
         {
             var modHelperButton = ModHelperComponent.Create<ModHelperButton>(rect, objectName);
-
-            var button = modHelperButton.Button = modHelperButton.AddComponent<Button>();
-            if (onClick != null)
-            {
-                button.onClick.AddListener(onClick);
-            }
-
+            
             var image = modHelperButton.Image = modHelperButton.AddComponent<Image>();
             image.type = Image.Type.Sliced;
             image.SetSprite(sprite);
+            
+            var button = modHelperButton.Button = modHelperButton.AddComponent<Button>();
+            if (onClick != null)
+            {
+                button.onClick.AddListener(onClick.Invoke);
+            }
+
+            button.transition = Selectable.Transition.Animation;
 
             var animator = modHelperButton.AddComponent<Animator>();
             animator.runtimeAnimatorController = GlobalButtonAnimation;
