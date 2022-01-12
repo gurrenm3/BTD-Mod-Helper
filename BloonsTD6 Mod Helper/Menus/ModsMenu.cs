@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Assets.Scripts.Unity.UI_New;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using BTD_Mod_Helper.Api;
@@ -10,12 +9,18 @@ using MelonLoader;
 using NinjaKiwi.Common;
 using TMPro;
 using UnityEngine;
+using Object = Il2CppSystem.Object;
 using Random = UnityEngine.Random;
 
-namespace BTD_Mod_Helper.BTD6_UI
+namespace BTD_Mod_Helper.Menus
 {
+    /// <summary>
+    /// The ModGameMenu for the screen showing current mods
+    /// </summary>
     public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     {
+        private const int Padding = 50;
+        
         private const int MenuWidth = 3500;
         private const int MenuHeight = 2000;
 
@@ -25,7 +30,6 @@ namespace BTD_Mod_Helper.BTD6_UI
         private const int ModsScrollWidth = 1400;
         private const int ModsScrollHeight = 1700;
         private const int ModsScrollOffset = -100;
-        private const int ModsScrollSpacing = 100;
 
         private const int ModPanelHeight = 200;
         private const int ModIconSize = 250;
@@ -40,13 +44,14 @@ namespace BTD_Mod_Helper.BTD6_UI
             "Alphabetical"
         };
 
-        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu)
+        /// <inheritdoc />
+        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu, Object data)
         {
             CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>().SetText("Mods");
 
             var panelTransform = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
-            TransformExtensions.DestroyAllChildren(panelTransform);
             var panel = panelTransform.gameObject;
+            panel.DestroyAllChildren();
 
             var modsMenu = panel.AddModHelperPanel(new Rect(0, 0, MenuWidth, MenuHeight), "ModsMenu");
 
@@ -55,12 +60,12 @@ namespace BTD_Mod_Helper.BTD6_UI
                 "ModsList", VanillaSprites.MainBGPanelBlue);
 
             var scrollPanel = modsList.AddScrollPanel(new Rect(0, ModsScrollOffset, ModsScrollWidth, ModsScrollHeight),
-                RectTransform.Axis.Vertical, "ModListScroll", VanillaSprites.BlueInsertPanel, ModsScrollSpacing);
+                RectTransform.Axis.Vertical, "ModListScroll", VanillaSprites.BlueInsertPanelRound, Padding);
 
             scrollPanel.LayoutGroup.padding = new RectOffset
             {
-                top = ModsScrollSpacing / 2, bottom = ModsScrollSpacing / 2,
-                left = ModsScrollSpacing / 2, right = ModsScrollSpacing / 2
+                top = Padding, bottom = Padding,
+                left = Padding, right = Padding
             };
 
             foreach (var melonMod in MelonHandler.Mods)
@@ -73,28 +78,29 @@ namespace BTD_Mod_Helper.BTD6_UI
 
             modInfo.AddDropdown(new Rect(0, 0, 400, 100),
                 SortOptions.Select(s => new TMP_Dropdown.OptionData(s)).ToIl2CppList(),
-                "ModHelperDropdown", VanillaSprites.BlueInsertPanel);
+                "ModHelperDropdown", VanillaSprites.BlueInsertPanelRound);
 
             return false;
         }
 
 
+        /// <summary>
+        /// Create the visual representation of a mod in the mods list
+        /// </summary>
         public static ModHelperComponent CreateModPanel(MelonMod mod)
         {
             var background = VanillaSprites.MainBGPanelBlue;
 
-            if (mod == null)
-                background = VanillaSprites.MainBGPanelGrey;
-            else if (mod == GetInstance<MelonMain>())
+            if (mod == GetInstance<MelonMain>())
                 background = VanillaSprites.MainBGPanelYellow;
             else if (mod.Games.Any(attribute => attribute.Universal))
                 background = VanillaSprites.MainBgPanelHematite;
             else if (!(mod is BloonsMod)) background = VanillaSprites.MainBGPanelBlueNotches;
 
-            var panel = ModHelperButton.Create(new Rect(0, 0, ModsScrollWidth - ModsScrollSpacing, ModPanelHeight),
+            var panel = ModHelperButton.Create(new Rect(0, 0, ModsScrollWidth - Padding * 2, ModPanelHeight),
                 background, null, mod.Info.Name);
 
-            const float offset = (ModsScrollWidth - ModsScrollSpacing) / 2f - ModsScrollSpacing;
+            const float offset = ModsScrollWidth / 2f - Padding * 3;
 
             if (mod.GetModHelperData()?.IconBytes is byte[] bytes)
             {

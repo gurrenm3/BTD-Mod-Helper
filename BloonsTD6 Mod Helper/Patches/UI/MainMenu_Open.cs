@@ -23,7 +23,7 @@ namespace BTD_Mod_Helper.Patches.UI
             var exitButton = MainMenuUI.GetExitButton()?.gameObject;
             if (exitButton != null)
             {
-                ModHelperButton.GlobalButtonAnimation =
+                ModHelperButton.globalButtonAnimation =
                     exitButton.GetComponent<Animator>().runtimeAnimatorController;
             }
 

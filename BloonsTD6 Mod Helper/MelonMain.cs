@@ -24,13 +24,15 @@ namespace BTD_Mod_Helper
 {
     internal class MelonMain : BloonsTD6Mod
     {
+#pragma warning disable CS0672
         public override string GithubReleaseURL => "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases";
         public override string LatestURL => "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
+#pragma warning restore CS0672
 
         public override void OnApplicationStart()
         {
             ModContentInstances.SetInstance(GetType(), this);
-            
+
             try
             {
                 ModHelperHttp.Init();

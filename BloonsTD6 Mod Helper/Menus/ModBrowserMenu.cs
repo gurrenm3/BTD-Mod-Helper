@@ -2,29 +2,28 @@
 using Assets.Scripts.Unity.UI_New;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Extensions;
 using Il2CppSystem.Threading.Tasks;
-using MelonLoader;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-namespace BTD_Mod_Helper.BTD6_UI
+namespace BTD_Mod_Helper.Menus
 {
     internal class ModBrowserMenu : ModGameMenu<ExtraSettingsScreen>
     {
-        private static bool repopulated;
+        private static bool modsNeedRefreshing;
         
-        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu)
+        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu, Il2CppSystem.Object data)
         {
             var panel = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
             for (var i = 0; i < panel.childCount; i++)
             {
-                panel.GetChild(i).gameObject.SetActive(false);
+                panel.GetChild(i).gameObject.Destroy();
             }
 
-            var heading = CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>();
-            heading.SetText("Mod Browser");
+            CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>().SetText("Mod Browser");
+            
             
             
             if (ModBrowser.Mods == null)
@@ -33,39 +32,38 @@ namespace BTD_Mod_Helper.BTD6_UI
                 Task.Run(new Action(async () =>
                 {
                     await ModBrowser.PopulateMods();
-                    repopulated = true;
+                    modsNeedRefreshing = true;
                 }));
                 return false;
             }
             
-            DoThings(gameMenu);
+            PopulateModPanels(gameMenu);
             
             return false;
         }
 
         public override void OnMenuUpdate(ExtraSettingsScreen gameMenu)
         {
-            if (repopulated)
+            if (modsNeedRefreshing)
             {
-                DoThings(gameMenu);
-                repopulated = false;
+                PopulateModPanels(gameMenu);
+                modsNeedRefreshing = false;
             }
         }
 
 
-        public static void DoThings(ExtraSettingsScreen gameMenu)
+        public static void PopulateModPanels(ExtraSettingsScreen gameMenu)
         {
             var panel = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
-            var copyFrom = panel.GetChild(0).gameObject;
+            
+        }
 
-            foreach (var modBrowserMod in ModBrowser.Mods)
-            {
-                var newThing = Object.Instantiate(copyFrom, panel);
+        public static ModHelperComponent CreateModPanel(ModHelperData modHelperData)
+        {
+            var panel = ModHelperPanel.Create(new Rect(0, 0, 2500, 200));
 
-                newThing.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = modBrowserMod.Name;
-                
-                newThing.SetActive(true);
-            }
+
+            return panel;
         }
     }
 }

@@ -14,9 +14,19 @@ namespace BTD_Mod_Helper.Api.Components
     [RegisterTypeInIl2Cpp(false)]
     public class ModHelperButton : ModHelperComponent
     {
-        public static RuntimeAnimatorController GlobalButtonAnimation;
+        /// <summary>
+        /// Button animation for shrinking a bit while pressing
+        /// </summary>
+        public static RuntimeAnimatorController globalButtonAnimation;
         
+        /// <summary>
+        /// The displayed image of the button
+        /// </summary>
         public Image Image { get; private set; }
+        
+        /// <summary>
+        /// The actual button component
+        /// </summary>
         public Button Button { get; private set; }
 
         /// <inheritdoc />
@@ -51,7 +61,7 @@ namespace BTD_Mod_Helper.Api.Components
             button.transition = Selectable.Transition.Animation;
 
             var animator = modHelperButton.AddComponent<Animator>();
-            animator.runtimeAnimatorController = GlobalButtonAnimation;
+            animator.runtimeAnimatorController = globalButtonAnimation;
 
             return modHelperButton;
         }

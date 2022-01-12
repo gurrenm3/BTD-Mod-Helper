@@ -20,7 +20,9 @@ namespace BTD_Mod_Helper.Api.Updater
             {
                 try
                 {
+#pragma warning disable CS0618
                     if (mod.LatestURL != "" && (mod.GithubReleaseURL != "" || mod.MelonInfoCsURL != ""))
+#pragma warning restore CS0618
                     {
                         var info = new UpdateInfo(mod);
                         var serializedInfo = JsonConvert.SerializeObject(info, Formatting.Indented);

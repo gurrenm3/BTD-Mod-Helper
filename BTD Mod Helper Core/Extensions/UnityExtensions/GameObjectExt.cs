@@ -158,12 +158,6 @@ namespace BTD_Mod_Helper.Extensions
             return Object.Instantiate(gameObject, parent);
         }
 
-        public static Transform FindDeepChild(this GameObject gameObject, string name)
-        {
-            // ReSharper disable once InvokeAsExtensionMethod
-            return UnityHelpers.FindDeepChild(gameObject.transform, name);
-        }
-
         /// <summary>
         /// Adds the ModHelperComponent to a parent Transform, returning the ModHelperComponent
         /// <br/>
@@ -195,6 +189,7 @@ namespace BTD_Mod_Helper.Extensions
 
         public static void DestroyAllChildren(this GameObject gameObject)
         {
+            // ReSharper disable once InvokeAsExtensionMethod
             TransformExtensions.DestroyAllChildren(gameObject.transform);
         }
     }

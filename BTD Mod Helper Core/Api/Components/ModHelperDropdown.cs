@@ -22,12 +22,24 @@ namespace BTD_Mod_Helper.Api.Components
         /// </summary>
         public Image Background { get; private set; }
 
+        /// <summary>
+        /// The Text which shows the currently selected value
+        /// </summary>
         public ModHelperText Text { get; private set; }
 
+        /// <summary>
+        /// The component which handles the dropdown
+        /// </summary>
         public TMP_Dropdown Dropdown { get; private set; }
 
+        /// <summary>
+        /// The Arrow image
+        /// </summary>
         public ModHelperImage Arrow { get; private set; }
-        
+
+        /// <summary>
+        /// The template object for the window of the dropdown
+        /// </summary>
         public GameObject Template { get; private set; }
 
         /// <inheritdoc />
@@ -36,6 +48,15 @@ namespace BTD_Mod_Helper.Api.Components
         }
 
 
+        /// <summary>
+        /// Creates a new ModHelperDropdown
+        /// </summary>
+        /// <param name="rect">The position and size</param>
+        /// <param name="options">The list of options</param>
+        /// <param name="objectName">The Unity name of the object</param>
+        /// <param name="background">The background image</param>
+        /// <param name="labelFontSize">Text size of label</param>
+        /// <returns>The created ModHelperDropdown</returns>
         public static ModHelperDropdown Create(Rect rect, List<TMP_Dropdown.OptionData> options,
             string objectName = "ModHelperDropdown", SpriteReference background = null, float labelFontSize = 42f)
         {
@@ -58,7 +79,8 @@ namespace BTD_Mod_Helper.Api.Components
 
             dropdown.options = options;
 
-            
+            var template = modHelperDropdown.Template =
+                new GameObject("Template", new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
 
             return modHelperDropdown;
         }

@@ -163,9 +163,6 @@
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
     <Compile Include="BTD6 UI\ModdedModeMenu.cs" />
     <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
-    <Compile Include="BTD6 UI\ModSettingsMenu.cs" />
-    <Compile Include="BTD6 UI\ModBrowserMenu.cs" />
-    <Compile Include="BTD6 UI\ModsMenu.cs" />
     <Compile Include="BTD6 UI\TitleScreenUI.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
@@ -210,6 +207,9 @@
     <Compile Include="Extensions\UnityExtensions\RendererExt.cs" />
     <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="MelonMain.cs" />
+    <Compile Include="Menus\ModBrowserMenu.cs" />
+    <Compile Include="Menus\ModSettingsMenu.cs" />
+    <Compile Include="Menus\ModsMenu.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
     <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
@@ -322,13 +322,5 @@
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="bloonstd6.props" />
-  <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets'))" />
-  </Target>
-  
   
 </Project>

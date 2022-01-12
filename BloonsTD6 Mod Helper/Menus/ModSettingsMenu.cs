@@ -1,19 +1,15 @@
-﻿using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Unity.UI_New.ChallengeEditor;
+﻿using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
 
-namespace BTD_Mod_Helper.BTD6_UI
+namespace BTD_Mod_Helper.Menus
 {
-    internal class ModSettingsMenu : ModGameMenu
+    internal class ModSettingsMenu : ModGameMenu<ExtraSettingsScreen>
     {
-        public override string BaseMenu => MenuName<ExtraSettingsScreen>();
-
-        public override bool OnMenuOpened(GameMenu gameMenu, Object data)
+        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu, Object data)
         {
             var panel = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
             for (var i = 0; i < panel.childCount; i++)
@@ -26,7 +22,8 @@ namespace BTD_Mod_Helper.BTD6_UI
             return false;
         }
 
-        public override void OnMenuClosed(GameMenu gameMenu)
+
+        public override void OnMenuClosed(ExtraSettingsScreen gameMenu)
         {
             ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir());
             ModHelper.Msg("Successfully saved mod settings");

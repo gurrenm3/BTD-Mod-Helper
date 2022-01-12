@@ -28,6 +28,9 @@ namespace BTD_Mod_Helper.Api.Components
         /// </summary>
         public RectTransform RectTransform => transform.Cast<RectTransform>();
 
+        /// <summary>
+        /// The LayoutElement component, if this has been assigned one
+        /// </summary>
         public LayoutElement LayoutElement { get; private set; }
 
         /// <inheritdoc />

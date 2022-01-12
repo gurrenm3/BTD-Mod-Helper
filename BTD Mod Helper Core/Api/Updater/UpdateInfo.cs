@@ -22,9 +22,11 @@ namespace BTD_Mod_Helper.Api.Updater
 
         public UpdateInfo(BloonsMod mod)
         {
+#pragma warning disable CS0618
             GithubReleaseURL = mod.GithubReleaseURL;
             MelonInfoCsURL = mod.MelonInfoCsURL;
             LatestURL = mod.LatestURL;
+#pragma warning restore CS0618
             Name = mod.Info.Name;
             CurrentVersion = mod.Info.Version;
             Location = mod.Location;

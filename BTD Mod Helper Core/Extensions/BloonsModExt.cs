@@ -65,7 +65,5 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         internal static ModHelperData GetModHelperData(this MelonMod mod) => ModHelperData.GetModHelperData(mod);
-
-        internal static string GetModHelperData(this MelonMod mod, string name) => ModHelperData.GetModHelperData(mod, name);
     }
 }

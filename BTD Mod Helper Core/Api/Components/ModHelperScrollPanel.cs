@@ -74,6 +74,7 @@ namespace BTD_Mod_Helper.Api.Components
             scrollContent.transform.parent = newPanel;
 
             scrollRect.content = scrollContent.transform.Cast<RectTransform>();
+            scrollRect.content.pivot = new Vector2(0.5f, 1);
             scrollRect.viewport = newPanel.RectTransform;
             scrollRect.scrollSensitivity = 100;
 
@@ -102,6 +103,7 @@ namespace BTD_Mod_Helper.Api.Components
             return newPanel;
         }
 
+        /// <inheritdoc />
         protected override void Initialize()
         {
             base.Initialize();

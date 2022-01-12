@@ -9,8 +9,7 @@ namespace BTD_Mod_Helper.Api.ModMenu
     {
         public const string Topic = "btd6-modding";
 
-        public static List<ModBrowserMod> Mods { get; private set; }
-        
+        public static List<ModHelperData> Mods { get; private set; }
         
 
         public static async Task PopulateMods()
@@ -23,12 +22,12 @@ namespace BTD_Mod_Helper.Api.ModMenu
 
             var mods = searchRepositoryResult.Items
                 .OrderBy(repo => repo.CreatedAt)
-                .Select(repo => new ModBrowserMod(repo))
+                .Select(repo => new ModHelperData(repo))
                 .ToArray();
 
             ModHelper.Msg("finished getting mods");
 
-            Task.WhenAll(mods.Select(mod => mod.GetModHelperData())).Wait();
+            Task.WhenAll(mods.Select(data => data.LoadModHelperData())).Wait();
 
             Mods = mods/*.Where(mod => mod.Valid)*/.ToList();
             

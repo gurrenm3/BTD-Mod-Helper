@@ -109,11 +109,11 @@ namespace BTD_Mod_Helper.Api
         /// <inheritdoc />
         public sealed override bool OnMenuOpened(GameMenu gameMenu, Object data)
         {
-            return OnMenuOpened(gameMenu.Cast<T>());
+            return OnMenuOpened(gameMenu.Cast<T>(), data);
         }
 
         /// <inheritdoc cref="OnMenuOpened(Assets.Scripts.Unity.Menu.GameMenu,Il2CppSystem.Object)" />
-        public abstract bool OnMenuOpened(T gameMenu);
+        public abstract bool OnMenuOpened(T gameMenu, Object data);
 
 
         /// <inheritdoc />

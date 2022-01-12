@@ -9,8 +9,14 @@ namespace BTD_Mod_Helper.Api.ModMenu
     /// </summary>
     public class ModHelperHttp
     {
+        /// <summary>
+        /// The HttpClient instance
+        /// </summary>
         public static HttpClient Client { get; private set; }
 
+        /// <summary>
+        /// Initializes the HttpClient
+        /// </summary>
         public static void Init()
         {
             Client = new HttpClient();
