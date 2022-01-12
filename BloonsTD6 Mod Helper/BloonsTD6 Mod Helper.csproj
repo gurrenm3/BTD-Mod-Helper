@@ -84,6 +84,9 @@
       <HintPath>..\\Dependencies\BloonsTD6\UnhollowerRuntimeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Dependencies\BloonsTD6\Unity.Addressables.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ResourceManager">
       <HintPath>..\\Dependencies\BloonsTD6\Unity.ResourceManager.dll</HintPath>
       <Private>False</Private>

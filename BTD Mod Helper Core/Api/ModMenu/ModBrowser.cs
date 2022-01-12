@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper.Api.ModMenu
 
             ModHelper.Msg("finished getting mods");
 
-            Task.WhenAll(mods.Select(data => data.LoadModHelperData())).Wait();
+            Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
 
             Mods = mods/*.Where(mod => mod.Valid)*/.ToList();
             

@@ -20,6 +20,11 @@ namespace BTD_Mod_Helper.Api.Components
         public static RuntimeAnimatorController globalButtonAnimation;
         
         /// <summary>
+        /// Button animation for rising up a bit
+        /// </summary>
+        public static RuntimeAnimatorController globalTabAnimation;
+        
+        /// <summary>
         /// The displayed image of the button
         /// </summary>
         public Image Image { get; private set; }

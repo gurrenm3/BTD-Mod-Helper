@@ -76,9 +76,9 @@ namespace BTD_Mod_Helper.Menus
             var modInfo = modsMenu.AddPanel(new Rect((MenuWidth - ModInfoWidth) / 2f, 0, ModInfoWidth, MenuHeight),
                 "ModInfo", VanillaSprites.MainBGPanelBlue);
 
-            modInfo.AddDropdown(new Rect(0, 0, 400, 100),
+            modInfo.AddDropdown(new Rect(0, 0, 1000, 150),
                 SortOptions.Select(s => new TMP_Dropdown.OptionData(s)).ToIl2CppList(),
-                "ModHelperDropdown", VanillaSprites.BlueInsertPanelRound);
+                500, "ModHelperDropdown", VanillaSprites.BlueInsertPanelRound, 69f);
 
             return false;
         }

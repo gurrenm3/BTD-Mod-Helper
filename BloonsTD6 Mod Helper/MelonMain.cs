@@ -16,8 +16,13 @@ using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.BTD6_UI;
+using Il2CppSystem.Collections;
 using Octokit;
 using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper
@@ -89,6 +94,8 @@ namespace BTD_Mod_Helper
 
         private static bool afterTitleScreen;
 
+        private AsyncOperation operation;
+        
         public override void OnUpdate()
         {
             KeyCodeHooks();
@@ -118,6 +125,7 @@ namespace BTD_Mod_Helper
                 if (Input.GetKey(key)) ModHelper.PerformHook(mod => mod.OnKeyHeld(key));
             }
         }
+        
 
         public override void OnTitleScreen()
         {

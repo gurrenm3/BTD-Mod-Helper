@@ -176,7 +176,7 @@ namespace BTD_Mod_Helper.Extensions
         public static T AddModHelperComponent<T>(this GameObject gameObject, T modHelperComponent)
             where T : ModHelperComponent
         {
-            modHelperComponent.transform.parent = gameObject.transform;
+            modHelperComponent.SetParent(gameObject.transform);
             return modHelperComponent;
         }
 
@@ -191,6 +191,14 @@ namespace BTD_Mod_Helper.Extensions
         {
             // ReSharper disable once InvokeAsExtensionMethod
             TransformExtensions.DestroyAllChildren(gameObject.transform);
+        }
+
+        public static void Deconstruct(this Rect rect, out float x, out float y, out float width, out float height)
+        {
+            x = rect.x;
+            y = rect.y;
+            width = rect.width;
+            height = rect.height;
         }
     }
 }

@@ -4,31 +4,28 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using Assets.Scripts.Unity.Tasks;
+using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
 using MelonLoader;
 using Octokit;
-using Task = System.Threading.Tasks.Task;
 
 namespace BTD_Mod_Helper.Api
 {
+    /// <summary>
+    /// Class representing all the data ModHelper can utilize about a mod as separate from the MelonMod / .dll itself.
+    /// <br/>
+    /// This is used for getting mod information from its GitHub repo, for getting information about enabled mods even
+    /// if they don't want to have Mod Helper as a dependency, and keeping track of info about disabled mods.
+    /// </summary>
     internal class ModHelperData
     {
-        private const string DefaultIcon = "Icon.png";
-        private const string ModHelperDataName = "ModHelperData.cs";
+        /// <summary>
+        /// The ModHelperData objects for currently enabled mods
+        /// </summary>
         private static readonly Dictionary<MelonMod, ModHelperData> Data = new Dictionary<MelonMod, ModHelperData>();
 
-        public byte[] IconBytes { get; private set; }
-
-        public string Version { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string Icon { get; private set; }
-        public string DllName { get; private set; }
-        public string RepoName { get; private set; }
-        public string RepoOwner { get; private set; }
-
-        public Repository Repository { get; private set; }
+        private const string DefaultIcon = "Icon.png";
+        private const string ModHelperDataName = "ModHelperData.cs";
 
         private const string VersionRegex = "string Version = \"([.0-9]+)\";\n";
         private const string NameRegex = "string Name = \"(.+)\";\n";
@@ -38,7 +35,10 @@ namespace BTD_Mod_Helper.Api
         private const string RepoNameRegex = "string RepoName = \"(.+)\";\n";
         private const string RepoOwnerRegex = "string RepoOwner = \"(.+)\";\n";
 
-        public static readonly Dictionary<string, Action<ModHelperData, string>> Setters;
+        /// <summary>
+        /// Reflection happens way faster with this set up
+        /// </summary>
+        private static readonly Dictionary<string, Action<ModHelperData, string>> Setters;
 
         static ModHelperData()
         {
@@ -68,15 +68,36 @@ namespace BTD_Mod_Helper.Api
             Repository = repository;
         }
 
+        public byte[] IconBytes { get; private set; }
+        public bool HasNoIcon { get; private set; }
+
+        public string Version { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public string Icon { get; private set; }
+        public string DllName { get; private set; }
+        public string RepoName { get; private set; }
+        public string RepoOwner { get; private set; }
+
+        public Repository Repository { get; }
+        public bool FailedToGetRepoData { get; private set; }
+
         private string GetContentURL(string name)
         {
             return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Repository.DefaultBranch}/{name}";
         }
-        
-        public async Task LoadModHelperData()
+
+        public async Task LoadDataFromRepoAsync()
         {
-            var modHelperData = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataName));
-            ReadValuesFromString(modHelperData);
+            try
+            {
+                var data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataName));
+                ReadValuesFromString(data);
+            }
+            catch (Exception)
+            {
+                FailedToGetRepoData = true;
+            }
         }
 
         public void ReadValuesFromString(string data)
@@ -90,6 +111,27 @@ namespace BTD_Mod_Helper.Api
             if (Regex.Match(data, RepoOwnerRegex) is Match repoOwnerMatch) RepoOwner = repoOwnerMatch.Groups[0].Value;
         }
 
+        public async Task LoadIconFromRepoAsync()
+        {
+            try
+            {
+                IconBytes = await ModHelperHttp.Client.GetByteArrayAsync(GetContentURL(Icon ?? DefaultIcon));
+                if (IconBytes == null || IconBytes.Length == 0)
+                {
+                    HasNoIcon = true;
+                }
+            }
+            catch (Exception)
+            {
+                HasNoIcon = true;
+            }
+        }
+
+        public bool IsAlreadyInstalled()
+        {
+            return Data.Values.Any(data => data.RepoName == RepoName && data.RepoOwner == RepoOwner);
+        }
+        
         public static void Load(MelonMod mod)
         {
             var modHelperData = new ModHelperData();
@@ -110,22 +152,25 @@ namespace BTD_Mod_Helper.Api
             var resource = mod.Assembly
                 .GetManifestResourceNames()
                 .FirstOrDefault(s => s.EndsWith(assemblyPath));
-            if (resource != null)
+            if (resource != null && mod.Assembly.GetManifestResourceStream(resource) is Stream stream)
             {
                 using (var memoryStream = new MemoryStream())
                 {
-                    if (mod.Assembly.GetManifestResourceStream(resource) is Stream stream)
-                    {
-                        stream.CopyTo(memoryStream);
-                        modHelperData.IconBytes = memoryStream.ToArray();
-                    }
+                    stream.CopyTo(memoryStream);
+                    modHelperData.IconBytes = memoryStream.ToArray();
                 }
+            }
+            else
+            {
+                modHelperData.HasNoIcon = true;
             }
 
             Data[mod] = modHelperData;
         }
 
-        public static ModHelperData GetModHelperData(MelonMod mod) => Data.TryGetValue(mod, out var data) ? data : null;
-
+        public static ModHelperData GetModHelperData(MelonMod mod)
+        {
+            return Data.TryGetValue(mod, out var data) ? data : null;
+        }
     }
 }

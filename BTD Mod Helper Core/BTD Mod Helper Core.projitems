@@ -50,7 +50,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModHelperData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModHelperGithub.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModMenu\ModBrowser.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModMenu\ModBrowserMod.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModMenu\ModHelperHttp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModMenu\ModsButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Scenarios\ModGameMode.cs" />

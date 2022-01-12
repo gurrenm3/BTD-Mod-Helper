@@ -17,14 +17,10 @@ namespace BTD_Mod_Helper.Api.Components
     {
         private Vector3 initialPosition;
         private Vector2 initialSize;
+        public bool shouldDisable;
 
         /// <summary>
-        /// Whether <see cref="Initialize"/> has been called yet
-        /// </summary>
-        public bool Initialized { get; private set; }
-
-        /// <summary>
-        /// The RrectTransform for this Game Object
+        /// The RectTransform for this GameObject
         /// </summary>
         public RectTransform RectTransform => transform.Cast<RectTransform>();
 
@@ -38,12 +34,20 @@ namespace BTD_Mod_Helper.Api.Components
         {
         }
 
+        public void SetParent(Transform parent)
+        {
+            var t = transform;
+            t.parent = parent;
+            t.localPosition = initialPosition;
+            t.localScale = Vector3.one;
+        }
+        
         /// <summary>
         /// Adds another ModHelperComponent as a child of this, returning the child
         /// </summary>
         public T Add<T>(T child) where T : ModHelperComponent
         {
-            child.transform.parent = transform;
+            child.SetParent(transform);
             return child;
         }
 
@@ -106,10 +110,10 @@ namespace BTD_Mod_Helper.Api.Components
         }
 
         /// <inheritdoc cref="ModHelperDropdown.Create"/>
-        public ModHelperDropdown AddDropdown(Rect rect, List<TMP_Dropdown.OptionData> options,
+        public ModHelperDropdown AddDropdown(Rect rect, List<TMP_Dropdown.OptionData> options, float windowHeight,
             string objectName = "ModHelperDropdown", SpriteReference background = null, float labelFontSize = 42f)
         {
-            return Add(ModHelperDropdown.Create(rect, options, objectName, background, labelFontSize));
+            return Add(ModHelperDropdown.Create(rect, options, windowHeight, objectName, background, labelFontSize));
         }
 
         internal static T Create<T>(Rect rect, string objectName = "ModHelperComponent") where T : ModHelperComponent
@@ -122,18 +126,17 @@ namespace BTD_Mod_Helper.Api.Components
 
             modHelperComponent.initialSize = rectTransform.sizeDelta = new Vector2(rect.width, rect.height);
             modHelperComponent.initialPosition = rectTransform.localPosition = new Vector3(rect.x, rect.y);
-
+            
             return modHelperComponent;
         }
-        
+
         private void Update()
         {
-            if (!Initialized)
+            if (shouldDisable)
             {
-                Initialize();
+                shouldDisable = false;
+                gameObject.SetActive(false);
             }
-
-            Initialized = true;
         }
 
         /// <summary>
