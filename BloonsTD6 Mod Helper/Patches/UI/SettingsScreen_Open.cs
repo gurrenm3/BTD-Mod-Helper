@@ -9,12 +9,6 @@ namespace BTD_Mod_Helper.Patches.UI
     internal static class SettingsScreen_Open
     {
         [HarmonyPostfix]
-        private static bool Prefix(SettingsScreen __instance, ref Il2CppSystem.Object menuData)
-        {
-            return ModGameMenu.CheckOpen(__instance, menuData, out menuData);
-        }
-
-        [HarmonyPostfix]
         private static void Postfix()
         {
             ModOptionsMenu.modsButton = new ShowModOptions_Button();

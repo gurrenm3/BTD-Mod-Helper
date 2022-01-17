@@ -55,7 +55,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             //modOptionsMenu = new ModOptionsMenu();
             //instantiatedButton.gameObject.SetActive(false);
-            ModGameMenu.Open<ModSettingsMenu>("Test");
+            ModGameMenu.Open<OldModSettingsMenu>("Test");
         }
 #endif
     }

@@ -1,9 +1,11 @@
 ﻿using System;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Extensions;
 using Il2CppSystem.Collections.Generic;
 using MelonLoader;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Action = Il2CppSystem.Action;
 
@@ -15,9 +17,10 @@ namespace BTD_Mod_Helper.Api.Components
     [RegisterTypeInIl2Cpp(false)]
     public class ModHelperComponent : MonoBehaviour
     {
-        private Vector3 initialPosition;
-        private Vector2 initialSize;
+        public Info Info { get; protected set; }
         public bool shouldDisable;
+
+        public ModHelperComponent Parent { get; private set; }
 
         /// <summary>
         /// The RectTransform for this GameObject
@@ -27,7 +30,13 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The LayoutElement component, if this has been assigned one
         /// </summary>
-        public LayoutElement LayoutElement { get; private set; }
+        public LayoutElement LayoutElement { get; protected set; }
+
+        /// <summary>
+        /// The LayoutGroup component, if this has been assigned one
+        /// </summary>
+        public HorizontalOrVerticalLayoutGroup LayoutGroup { get; protected set; }
+
 
         /// <inheritdoc />
         public ModHelperComponent(IntPtr ptr) : base(ptr)
@@ -38,16 +47,27 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var t = transform;
             t.parent = parent;
-            t.localPosition = initialPosition;
-            t.localScale = Vector3.one;
+            SetTransformProperties();
         }
-        
+
+        public void SetParent(ModHelperComponent parent)
+        {
+            Parent = parent;
+
+            if (parent.LayoutGroup != null)
+            {
+                AddLayoutElement();
+            }
+
+            SetParent(parent.transform);
+        }
+
         /// <summary>
         /// Adds another ModHelperComponent as a child of this, returning the child
         /// </summary>
         public T Add<T>(T child) where T : ModHelperComponent
         {
-            child.SetParent(transform);
+            child.SetParent(this);
             return child;
         }
 
@@ -62,72 +82,88 @@ namespace BTD_Mod_Helper.Api.Components
         /// </summary>
         public LayoutElement AddLayoutElement()
         {
-            LayoutElement = AddComponent<LayoutElement>();
-            LayoutElement.minHeight = LayoutElement.preferredHeight = initialSize.y;
-            LayoutElement.minWidth = LayoutElement.preferredWidth = initialSize.x;
+            if (LayoutElement == null)
+            {
+                LayoutElement = AddComponent<LayoutElement>();
+            }
+
+            LayoutElement.minWidth = LayoutElement.preferredWidth = Info.SizeDelta.x;
+            LayoutElement.minHeight = LayoutElement.preferredHeight = Info.SizeDelta.y;
+            LayoutElement.flexibleWidth = Info.FlexWidth;
+            LayoutElement.flexibleHeight = Info.FlexHeight;
 
             return LayoutElement;
         }
 
         /// <inheritdoc cref="ModHelperPanel.Create"/>
-        public ModHelperPanel AddPanel(Rect rect, string objectName = "ModHelperPanel",
-            SpriteReference backgroundSprite = null)
+        public ModHelperPanel AddPanel(Info info, SpriteReference backgroundSprite = null,
+            RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
         {
-            return Add(ModHelperPanel.Create(rect, objectName, backgroundSprite));
+            return Add(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing, padding));
         }
 
-        /// <inheritdoc cref="ModHelperScrollPanel.Create(UnityEngine.Rect,System.Nullable{UnityEngine.RectTransform.Axis},string,Assets.Scripts.Utils.SpriteReference,float)"/>
-        public ModHelperScrollPanel AddScrollPanel(Rect rect, RectTransform.Axis? axis,
-            string objectName = "ModHelperPanel", SpriteReference backgroundSprite = null, float spacing = 0)
+        /// <inheritdoc cref="ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable{UnityEngine.RectTransform.Axis},Assets.Scripts.Utils.SpriteReference,float,int)"/>
+        public ModHelperScrollPanel AddScrollPanel(Info info, RectTransform.Axis? axis,
+            SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
         {
-            return Add(ModHelperScrollPanel.Create(rect, axis, objectName, backgroundSprite, spacing));
+            return Add(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing, padding));
         }
 
         /// <inheritdoc cref="ModHelperText.Create"/>
-        public ModHelperText AddText(Rect rect, string text, float fontSize = 42,
-            TextAlignmentOptions align = TextAlignmentOptions.Center, string objectName = "ModHelperText")
+        public ModHelperText AddText(Info info, string text, float fontSize = 42,
+            TextAlignmentOptions align = TextAlignmentOptions.Midline)
         {
-            return Add(ModHelperText.Create(rect, text, fontSize, align, objectName));
+            return Add(ModHelperText.Create(info, text, fontSize, align));
         }
 
         /// <inheritdoc cref="ModHelperButton.Create"/>
-        public ModHelperButton AddButton(Rect rect, SpriteReference sprite, Action onClick,
-            string objectName = "ModHelperButton")
+        public ModHelperButton AddButton(Info info, SpriteReference sprite, Action onClick)
         {
-            return Add(ModHelperButton.Create(rect, sprite, onClick, objectName));
+            return Add(ModHelperButton.Create(info, sprite, onClick));
         }
 
-        /// <inheritdoc cref="ModHelperImage.Create(UnityEngine.Rect,Assets.Scripts.Utils.SpriteReference,string)"/>
-        public ModHelperImage AddImage(Rect rect, SpriteReference sprite, string objectName = "ModHelperImage")
+        /// <inheritdoc cref="ModHelperImage.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)"/>
+        public ModHelperImage AddImage(Info info, SpriteReference sprite)
         {
-            return Add(ModHelperImage.Create(rect, sprite, objectName));
+            return Add(ModHelperImage.Create(info, sprite));
         }
-        
-        /// <inheritdoc cref="ModHelperImage.Create(UnityEngine.Rect,Assets.Scripts.Utils.SpriteReference,string)"/>
-        public ModHelperImage AddImage(Rect rect, Sprite sprite, string objectName = "ModHelperImage")
+
+        /// <inheritdoc cref="ModHelperImage.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)"/>
+        public ModHelperImage AddImage(Info info, Sprite sprite)
         {
-            return Add(ModHelperImage.Create(rect, sprite, objectName));
+            return Add(ModHelperImage.Create(info, sprite));
         }
 
         /// <inheritdoc cref="ModHelperDropdown.Create"/>
-        public ModHelperDropdown AddDropdown(Rect rect, List<TMP_Dropdown.OptionData> options, float windowHeight,
-            string objectName = "ModHelperDropdown", SpriteReference background = null, float labelFontSize = 42f)
+        public ModHelperDropdown AddDropdown(Info info, List<string> options, float windowHeight,
+            UnityAction<int> onValueChanged,
+            SpriteReference background = null, float labelFontSize = 42f)
         {
-            return Add(ModHelperDropdown.Create(rect, options, windowHeight, objectName, background, labelFontSize));
+            return Add(ModHelperDropdown.Create(info, options, windowHeight, onValueChanged, background,
+                labelFontSize));
         }
 
-        internal static T Create<T>(Rect rect, string objectName = "ModHelperComponent") where T : ModHelperComponent
+        internal static T Create<T>(Info info) where T : ModHelperComponent
         {
-            var newGameObject = new GameObject(objectName, new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
+            var newGameObject = new GameObject(info.Name, new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
             var modHelperComponent = newGameObject.AddComponent<T>();
-            var rectTransform = newGameObject.transform.Cast<RectTransform>();
-            rectTransform.anchorMax = rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-            rectTransform.localScale = Vector3.one;
+            modHelperComponent.Info = info;
+            modHelperComponent.SetTransformProperties();
 
-            modHelperComponent.initialSize = rectTransform.sizeDelta = new Vector2(rect.width, rect.height);
-            modHelperComponent.initialPosition = rectTransform.localPosition = new Vector3(rect.x, rect.y);
-            
             return modHelperComponent;
+        }
+
+        /// <summary>
+        /// Sets the properties of the RectTransform based on the Info object
+        /// </summary>
+        protected void SetTransformProperties()
+        {
+            RectTransform.anchorMax = Info.AnchorMax;
+            RectTransform.anchorMin = Info.AnchorMin;
+            RectTransform.localScale = Info.Scale;
+            RectTransform.sizeDelta = Info.SizeDelta;
+            RectTransform.localPosition = Info.Position;
+            RectTransform.anchoredPosition = Info.Position;
         }
 
         private void Update()
@@ -137,16 +173,6 @@ namespace BTD_Mod_Helper.Api.Components
                 shouldDisable = false;
                 gameObject.SetActive(false);
             }
-        }
-
-        /// <summary>
-        /// Performs one-time tasks on the first frame after this is created
-        /// </summary>
-        protected virtual void Initialize()
-        {
-            var t = transform;
-            t.localScale = Vector3.one;
-            t.localPosition = initialPosition;
         }
 
         /// <summary>

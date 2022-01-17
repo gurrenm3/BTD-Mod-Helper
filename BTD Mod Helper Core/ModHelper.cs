@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using System.Linq;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
@@ -13,10 +13,18 @@ namespace BTD_Mod_Helper
     /// </summary>
     public static class ModHelper
     {
-        /// <summary>
-        /// The current version of the Mod. GitHub Release tags must match this exactly.
-        /// </summary>
-        public const string CurrentVersion = "3.0.0";
+        #region ModHelperData for the Mod Helper
+        internal const string Version = "3.0.0";
+        internal const string RepoOwner = "gurrenm3";
+        internal const string RepoName = "BTD-Mod-Helper";
+        internal const bool ManualDownload = true;
+        internal const string Description = "The mod that is allowing you to see this screen right now :P";
+        #endregion
+
+        public static string DisabledModsDirectory => Path.Combine(MelonHandler.ModsDirectory, "Disabled");
+        public static string ModHelperDirectory => ModContent.GetInstance<MelonMain>().GetModDirectory();
+        internal static string ZipTempDirectory => Path.Combine(ModHelperDirectory, "Zip Temp");
+        internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
         
         internal static void LoadAllMods()
         {
@@ -44,7 +52,7 @@ namespace BTD_Mod_Helper
                 }
                 catch (Exception e)
                 {
-                    ModHelper.Warning(e);
+                    Warning(e);
                 }
             }
         }

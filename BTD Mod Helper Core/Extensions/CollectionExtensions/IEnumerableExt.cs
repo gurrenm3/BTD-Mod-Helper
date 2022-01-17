@@ -136,5 +136,11 @@ namespace BTD_Mod_Helper.Extensions
             k = grouping.Key;
             v = grouping.ToList();
         }
+
+        /// <inheritdoc cref="string.Concat(object)"/>
+        public static string ConcatString(this IEnumerable<string> enumerable, string separator = "")
+        {
+            return string.Join(separator, enumerable);
+        }
     }
 }

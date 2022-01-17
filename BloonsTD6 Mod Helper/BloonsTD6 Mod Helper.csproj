@@ -102,6 +102,9 @@
       <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.AssetBundleModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Dependencies\BloonsTD6\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
@@ -212,6 +215,7 @@
     <Compile Include="MelonMain.cs" />
     <Compile Include="Menus\ModBrowserMenu.cs" />
     <Compile Include="Menus\ModSettingsMenu.cs" />
+    <Compile Include="Menus\OldModSettingsMenu.cs" />
     <Compile Include="Menus\ModsMenu.cs" />
     <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
     <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
@@ -262,7 +266,6 @@
     <Compile Include="Patches\Towers\Tower_UnHighlight.cs" />
     <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
     <Compile Include="Patches\UI\CoopQuickMatchScreen_Open.cs" />
-    <Compile Include="Patches\UI\ExtraSettingsScreen_Open.cs" />
     <Compile Include="Patches\UI\HeroButton_Init.cs" />
     <Compile Include="Patches\UI\HeroInGameScreen_Open.cs" />
     <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
@@ -274,6 +277,7 @@
     <Compile Include="Patches\UI\SelectedUpgrade_UpdateButtonState.cs" />
     <Compile Include="Patches\UI\SettingsScreen_Open.cs" />
     <Compile Include="Patches\UI\StandardTowerPurchaseButtonPatches.cs" />
+    <Compile Include="Patches\UI\LayoutGroupPatches.cs" />
     <Compile Include="Patches\UI\TitleScreen_Start.cs" />
     <Compile Include="Patches\UI\TowerSelectionMenu_IsUpgradePathClosed.cs" />
     <Compile Include="Patches\UI\TowerSelectionMenu_UpgradeTower.cs" />

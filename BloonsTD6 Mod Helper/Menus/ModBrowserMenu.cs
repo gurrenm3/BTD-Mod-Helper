@@ -22,18 +22,13 @@ namespace BTD_Mod_Helper.Menus
                 panel.GetChild(i).gameObject.Destroy();
             }
 
-            CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>().SetText("Mod Browser");
+            CommonForegroundHeader.SetText("Mod Browser");
             
             
             
-            if (ModBrowser.Mods == null)
+            if (ModHelperGithub.Mods == null)
             {
                 // ReSharper disable once AsyncVoidLambda
-                Task.Run(new Action(async () =>
-                {
-                    await ModBrowser.PopulateMods();
-                    modsNeedRefreshing = true;
-                }));
                 return false;
             }
             
@@ -60,7 +55,7 @@ namespace BTD_Mod_Helper.Menus
 
         public static ModHelperComponent CreateModPanel(ModHelperData modHelperData)
         {
-            var panel = ModHelperPanel.Create(new Rect(0, 0, 2500, 200));
+            var panel = ModHelperPanel.Create(new Info("ModPanel", 0, 0, 2500, 200));
 
 
             return panel;

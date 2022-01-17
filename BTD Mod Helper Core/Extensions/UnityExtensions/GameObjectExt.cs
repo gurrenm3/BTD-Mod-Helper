@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         public static T GetComponentInChildrenByName<T>(this GameObject gameObject, string componentName)
             where T : Component
         {
-            return gameObject.transform.GetComponentsInChildren<T>()
+            return gameObject.transform.GetComponentsInChildren<T>(true)
                 .FirstOrDefault(component => component.name == componentName);
         }
 
@@ -173,6 +173,18 @@ namespace BTD_Mod_Helper.Extensions
         /// <br/>
         /// (This is an extension method just so that we can return the type generically)
         /// </summary>
+        public static T AddModHelperComponent<T>(this ModHelperComponent parentComponent, T modHelperComponent)
+            where T : ModHelperComponent
+        {
+            modHelperComponent.SetParent(parentComponent);
+            return modHelperComponent;
+        }
+        
+        /// <summary>
+        /// Adds the ModHelperComponent to a parent GameObject, returning the ModHelperComponent
+        /// <br/>
+        /// (This is an extension method just so that we can return the type generically)
+        /// </summary>
         public static T AddModHelperComponent<T>(this GameObject gameObject, T modHelperComponent)
             where T : ModHelperComponent
         {
@@ -181,24 +193,19 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <inheritdoc cref="ModHelperComponent.AddPanel"/>
-        public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Rect rect, string objectName = "ModHelperPanel",
-            SpriteReference backgroundSprite = null)
+        public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Info info,
+            SpriteReference backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50, int padding = 0)
         {
-            return gameObject.AddModHelperComponent(ModHelperPanel.Create(rect, objectName, backgroundSprite));
+            return gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing, padding));
         }
 
+        /// <summary>
+        /// Destroys all children of a game object
+        /// </summary>
         public static void DestroyAllChildren(this GameObject gameObject)
         {
             // ReSharper disable once InvokeAsExtensionMethod
             TransformExtensions.DestroyAllChildren(gameObject.transform);
-        }
-
-        public static void Deconstruct(this Rect rect, out float x, out float y, out float width, out float height)
-        {
-            x = rect.x;
-            y = rect.y;
-            width = rect.width;
-            height = rect.height;
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
@@ -15,20 +17,15 @@ namespace BTD_Mod_Helper.Api.Components
     public class ModHelperButton : ModHelperComponent
     {
         /// <summary>
-        /// Button animation for shrinking a bit while pressing
+        /// The aspect ratio of LongBtn sprites, since they aren't sliced for some reason lol
         /// </summary>
-        public static RuntimeAnimatorController globalButtonAnimation;
-        
-        /// <summary>
-        /// Button animation for rising up a bit
-        /// </summary>
-        public static RuntimeAnimatorController globalTabAnimation;
+        public const float LongBtnRatio = 2.81f;
         
         /// <summary>
         /// The displayed image of the button
         /// </summary>
         public Image Image { get; private set; }
-        
+
         /// <summary>
         /// The actual button component
         /// </summary>
@@ -39,24 +36,22 @@ namespace BTD_Mod_Helper.Api.Components
         {
         }
 
-        
+
         /// <summary>
         /// Creates a new ModHelperButton
         /// </summary>
-        /// <param name="rect">The position and size</param>
+        /// <param name="info">The name/position/size info</param>
         /// <param name="sprite">The button's visuals</param>
         /// <param name="onClick">What should happen when the button is clicked</param>
-        /// <param name="objectName">The Unity name of the object</param>
         /// <returns></returns>
-        public static ModHelperButton Create(Rect rect, SpriteReference sprite, Action onClick,
-            string objectName = "ModHelperButton")
+        public static ModHelperButton Create(Info info, SpriteReference sprite, Action onClick)
         {
-            var modHelperButton = ModHelperComponent.Create<ModHelperButton>(rect, objectName);
-            
+            var modHelperButton = ModHelperComponent.Create<ModHelperButton>(info);
+
             var image = modHelperButton.Image = modHelperButton.AddComponent<Image>();
             image.type = Image.Type.Sliced;
             image.SetSprite(sprite);
-            
+
             var button = modHelperButton.Button = modHelperButton.AddComponent<Button>();
             if (onClick != null)
             {
@@ -66,7 +61,7 @@ namespace BTD_Mod_Helper.Api.Components
             button.transition = Selectable.Transition.Animation;
 
             var animator = modHelperButton.AddComponent<Animator>();
-            animator.runtimeAnimatorController = globalButtonAnimation;
+            animator.runtimeAnimatorController = Animations.ButtonAnimation;
 
             return modHelperButton;
         }

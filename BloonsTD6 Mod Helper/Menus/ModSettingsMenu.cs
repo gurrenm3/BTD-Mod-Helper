@@ -1,32 +1,37 @@
-﻿using Assets.Scripts.Unity.UI_New.ChallengeEditor;
+﻿using System.Linq;
+using Assets.Scripts.Unity.UI_New.Settings;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
-using UnityEngine;
+using MelonLoader;
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Menus
 {
-    internal class ModSettingsMenu : ModGameMenu<ExtraSettingsScreen>
+    internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     {
-        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu, Object data)
+        private BloonsMod bloonsMod;
+        
+        public override bool OnMenuOpened(HotkeysScreen gameMenu, Object data)
         {
-            var panel = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
-            for (var i = 0; i < panel.childCount; i++)
-            {
-                panel.GetChild(i).gameObject.Destroy();
-            }
+            var gameObject = gameMenu.gameObject;
+            gameObject.DestroyAllChildren();
 
-            ModOptionsMenu.modsButton.modOptionsMenu = new ModOptionsMenu(panel);
+            bloonsMod = MelonHandler.Mods.OfType<BloonsMod>().First(m => m.IDPrefix == data?.ToString());
+            CommonForegroundHeader.SetText(bloonsMod.Info.Name);
 
             return false;
         }
 
-
-        public override void OnMenuClosed(ExtraSettingsScreen gameMenu)
+        public override void OnMenuClosed(HotkeysScreen gameMenu)
         {
             ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir());
             ModHelper.Msg("Successfully saved mod settings");
+        }
+
+        public static void Open(BloonsMod bloonsMod)
+        {
+            ModGameMenu.Open<ModSettingsMenu>(bloonsMod.IDPrefix);
         }
     }
 }

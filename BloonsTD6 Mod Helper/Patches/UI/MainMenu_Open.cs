@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.BTD6_UI;
 using HarmonyLib;
@@ -23,8 +24,7 @@ namespace BTD_Mod_Helper.Patches.UI
             var exitButton = MainMenuUI.GetExitButton()?.gameObject;
             if (exitButton != null)
             {
-                ModHelperButton.globalButtonAnimation =
-                    exitButton.GetComponent<Animator>().runtimeAnimatorController;
+                Animations.ButtonAnimation = exitButton.GetComponent<Animator>().runtimeAnimatorController;
             }
 
             ModHelper.PerformHook(mod => mod.OnMainMenu());

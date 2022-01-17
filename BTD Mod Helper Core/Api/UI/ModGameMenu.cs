@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts;
 using Assets.Scripts.Unity.Menu;
+using Assets.Scripts.Unity.UI_New;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using Assets.Scripts.Unity.UI_New.Main.PowersSelect;
 using Assets.Scripts.Unity.UI_New.Settings;
@@ -18,6 +20,9 @@ namespace BTD_Mod_Helper.Api
     public abstract class ModGameMenu : ModContent
     {
         internal static readonly Dictionary<string, ModGameMenu> Cache = new Dictionary<string, ModGameMenu>();
+
+        protected NK_TextMeshProUGUI CommonForegroundHeader =>
+            CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>();
 
         /// <summary>
         /// The string name of the in game menu to copy from
@@ -45,7 +50,7 @@ namespace BTD_Mod_Helper.Api
         public virtual void OnMenuClosed(GameMenu gameMenu)
         {
         }
-        
+
         /// <summary>
         /// Runs every time that your custom menu updates
         /// </summary>
@@ -61,11 +66,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         protected static string MenuName<T>() where T : GameMenu
         {
-            var type = Il2CppType.Of<T>();
-            
-            if (type == Il2CppType.Of<PowersSelectScreen>()) return "PowerSelectUI";
-
-            return type.Name.Replace("Screen", "UI");
+            return Types.TryGetValue(typeof(T), out var info) ? info.name : typeof(T).Name.Replace("Screen", "UI");
         }
 
         internal static bool CheckOpen(GameMenu gameMenu, Object data, out Object outData)
@@ -77,8 +78,11 @@ namespace BTD_Mod_Helper.Api
                 outData = menuData.baseData;
                 var tracker = gameMenu.gameObject.AddComponent<ModGameMenuTracker>();
                 tracker.modGameMenuId = modGameMenu.Id;
+                
+                gameMenu.enabled = false;
                 return modGameMenu.OnMenuOpened(gameMenu, menuData.modData);
             }
+
             outData = data;
             return true;
         }
@@ -95,6 +99,42 @@ namespace BTD_Mod_Helper.Api
             var modGameMenu = GetInstance<T>();
 
             MenuManager.instance.OpenMenu(modGameMenu.BaseMenu, new ModMenuData(modGameMenu.Id, data, baseData));
+        }
+
+        internal static readonly Dictionary<Type, (string name, string data)> Types =
+            new Dictionary<Type, (string name, string data)>
+            {
+                {typeof(ExtraSettingsScreen), (SceneNames.ExtraSettingsUI, "menuData")},
+                {typeof(SettingsScreen), (SceneNames.SettingsUI, "menuData")},
+                {typeof(PowersSelectScreen), (SceneNames.PowersSelectUI, "data")},
+                //{typeof(TwitchSettingsUI), ("TwitchSettingsUI", "data")},
+                {typeof(HotkeysScreen), (SceneNames.HotkeysUI, "menuData")}
+            };
+
+        internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony)
+        {
+            foreach (var (type, (_, data)) in Types)
+            {
+                try
+                {
+                    harmony.PatchPrefix(type, "Open", typeof(ModGameMenu), "Patch_" + data);
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Warning($"Failed to apply Open patch for {type.Name}");
+                    ModHelper.Warning(e);
+                }
+            }
+        }
+
+        private static bool Patch_data(GameMenu __instance, ref Object data)
+        {
+            return CheckOpen(__instance, data, out data);
+        }
+
+        private static bool Patch_menuData(GameMenu __instance, ref Object menuData)
+        {
+            return CheckOpen(__instance, menuData, out menuData);
         }
     }
 
@@ -126,14 +166,14 @@ namespace BTD_Mod_Helper.Api
         public virtual void OnMenuClosed(T gameMenu)
         {
         }
-        
+
         /// <inheritdoc/>
         public sealed override void OnMenuUpdate(GameMenu gameMenu)
         {
             OnMenuUpdate(gameMenu.Cast<T>());
         }
-        
-        
+
+
         /// <inheritdoc cref="OnMenuUpdate(Assets.Scripts.Unity.Menu.GameMenu)"/>
         public virtual void OnMenuUpdate(T gameMenu)
         {

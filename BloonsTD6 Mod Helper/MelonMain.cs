@@ -10,6 +10,7 @@ using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Assets.Scripts.SocialSharing;
 using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api.Components;
@@ -24,6 +25,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
+using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 namespace BTD_Mod_Helper
 {
@@ -60,10 +62,14 @@ namespace BTD_Mod_Helper
 
             Schedule_GameModel_Loaded();
 
-            ModHelper.Log("Mod has finished loading");
-
             // Load Content from other mods
             ModHelper.LoadAllMods();
+
+            ModGameMenu.PatchAllTheOpens(HarmonyInstance);
+
+            Task.Run(ModHelperGithub.PopulateMods);
+
+            ModHelper.Log("Mod has finished loading");
         }
 
         public static readonly ModSettingBool CleanProfile = true;
@@ -94,8 +100,6 @@ namespace BTD_Mod_Helper
 
         private static bool afterTitleScreen;
 
-        private AsyncOperation operation;
-        
         public override void OnUpdate()
         {
             KeyCodeHooks();
@@ -125,7 +129,7 @@ namespace BTD_Mod_Helper
                 if (Input.GetKey(key)) ModHelper.PerformHook(mod => mod.OnKeyHeld(key));
             }
         }
-        
+
 
         public override void OnTitleScreen()
         {

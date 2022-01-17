@@ -94,10 +94,10 @@ namespace BTD_Mod_Helper.Api.Updater
             return IsUpdate(currentVersion, latestReleaseInfo?.TagName);
         }
 
-        public bool IsUpdate(string currentVersion, string latestVersion)
+        public static bool IsUpdate(string currentVersion, string latestVersion)
         {
             if (string.IsNullOrEmpty(currentVersion) || string.IsNullOrEmpty(latestVersion))
-                throw new ArgumentNullException();
+                return false;
 
             var currentParts = Regex.Split(Regex.Replace(currentVersion, @"\D", "."), @"\.+");
             var latestParts = Regex.Split(Regex.Replace(latestVersion, @"\D", "."), @"\.+");

@@ -1,6 +1,5 @@
 ﻿using System;
 using Assets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
@@ -27,26 +26,52 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// Creates a new ModHelperPanel
         /// </summary>
-        /// <param name="rect">The position (offset of child center from parent center) and size</param>
-        /// <param name="objectName">The Unity name of the object</param>
+        /// <param name="info">The name/position/size info</param>
         /// <param name="backgroundSprite">The panel's background sprite</param>
+        /// <param name="layoutAxis">If present, creates this panel with a Horizontal/Vertical layout group</param>
+        /// <param name="spacing">The layout group's spacing</param>
+        /// <param name="padding">The layout group's padding</param>
         /// <returns>The created ModHelperPanel</returns>
-        public static ModHelperPanel Create(Rect rect, string objectName = "ModHelperPanel",
-            SpriteReference backgroundSprite = null)
+        public static ModHelperPanel Create(Info info, SpriteReference backgroundSprite = null,
+            RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
         {
-            return Create<ModHelperPanel>(rect, objectName, backgroundSprite);
+            return Create<ModHelperPanel>(info, backgroundSprite, layoutAxis, spacing, padding);
         }
 
-        internal static T Create<T>(Rect rect, string objectName = "ModHelperPanel",
-            SpriteReference backgroundSprite = null) where T : ModHelperPanel
+        internal static T Create<T>(Info info, SpriteReference backgroundSprite = null,
+            RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
+            where T : ModHelperPanel
         {
-            var modHelperPanel = ModHelperComponent.Create<T>(rect, objectName);
+            var modHelperPanel = ModHelperComponent.Create<T>(info);
 
             if (backgroundSprite != null)
             {
                 modHelperPanel.Background = modHelperPanel.AddComponent<Image>();
                 modHelperPanel.Background.type = Image.Type.Sliced;
                 modHelperPanel.Background.SetSprite(backgroundSprite);
+            }
+
+            if (layoutAxis != null)
+            {
+                if (layoutAxis == RectTransform.Axis.Horizontal)
+                {
+                    modHelperPanel.LayoutGroup = modHelperPanel.AddComponent<HorizontalLayoutGroup>();
+                    modHelperPanel.LayoutGroup.childAlignment = TextAnchor.MiddleLeft;
+                }
+                else
+                {
+                    modHelperPanel.LayoutGroup = modHelperPanel.AddComponent<VerticalLayoutGroup>();
+                    modHelperPanel.LayoutGroup.childAlignment = TextAnchor.UpperCenter;
+                }
+
+                modHelperPanel.LayoutGroup.spacing = spacing;
+                modHelperPanel.LayoutGroup.childForceExpandHeight = false;
+                modHelperPanel.LayoutGroup.childForceExpandWidth = false;
+
+                if (padding > 0)
+                {
+                    modHelperPanel.LayoutGroup.SetPadding(padding);
+                }
             }
 
             return modHelperPanel;

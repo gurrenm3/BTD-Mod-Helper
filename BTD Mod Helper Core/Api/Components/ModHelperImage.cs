@@ -27,27 +27,32 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// Creates a new ModHelperImage
         /// </summary>
-        /// <param name="rect">The position and size</param>
+        /// <param name="info">The name/position/size info</param>
         /// <param name="sprite">The sprite to display</param>
-        /// <param name="objectName">The Unity name of the object</param>
         /// <returns>The created ModHelperImage</returns>
-        public static ModHelperImage Create(Rect rect, SpriteReference sprite, string objectName = "ModHelperImage")
+        public static ModHelperImage Create(Info info, SpriteReference sprite)
         {
-            var modHelperImage = ModHelperComponent.Create<ModHelperImage>(rect, objectName);
+            var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
 
             var image = modHelperImage.Image = modHelperImage.AddComponent<Image>();
-            image.SetSprite(sprite);
+            if (sprite != null)
+            {
+                image.SetSprite(sprite);
+            }
 
             return modHelperImage;
         }
         
-        /// <inheritdoc cref="Create(UnityEngine.Rect,Assets.Scripts.Utils.SpriteReference,string)"/>
-        public static ModHelperImage Create(Rect rect, Sprite sprite, string objectName = "ModHelperImage")
+        /// <inheritdoc cref="Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)"/>
+        public static ModHelperImage Create(Info info, Sprite sprite)
         {
-            var modHelperImage = ModHelperComponent.Create<ModHelperImage>(rect, objectName);
+            var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
 
             var image = modHelperImage.Image = modHelperImage.AddComponent<Image>();
-            image.SetSprite(sprite);
+            if (sprite != null)
+            {
+                image.SetSprite(sprite);
+            }
 
             return modHelperImage;
         }
