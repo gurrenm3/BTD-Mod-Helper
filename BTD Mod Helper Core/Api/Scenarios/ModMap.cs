@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Api
     /// <summary>
     /// Class for creating custom Maps easier. 
     /// </summary>
-    public abstract class ModMap : ModContent
+    public abstract class ModMap : NamedModContent
     {
         /// <summary>
         /// The name of this map.
