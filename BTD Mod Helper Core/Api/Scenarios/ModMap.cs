@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// The <see cref="MapModel"/> associated with this modded map.
         /// </summary>
-        public MapModel Map { get => (map == null) ? map = CreateMapModel() : map; }
+        public MapModel Map { get => (map == null) ? map = GetMapModel() : map; }
         private MapModel map;
 
 
@@ -42,6 +42,25 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <returns></returns>
         protected abstract MapModel CreateMapModel();
+
+        private MapModel GetMapModel()
+        {
+            if (map != null)
+                return map;
+
+            var model = CreateMapModel();
+            bool isCreated = model != null && RegisterInGame(model);
+            return isCreated ? model : null;
+        }
+
+        /// <summary>
+        /// Registers the map into BTD6
+        /// </summary>
+        /// <returns>True if successful, otherwise false.</returns>
+        private bool RegisterInGame(MapModel model)
+        {
+            return false;
+        }
 
         /// <summary>
         /// <inheritdoc/>
