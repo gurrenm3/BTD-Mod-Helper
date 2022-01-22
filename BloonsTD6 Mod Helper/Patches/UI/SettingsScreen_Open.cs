@@ -11,8 +11,6 @@ namespace BTD_Mod_Helper.Patches.UI
         [HarmonyPostfix]
         private static void Postfix()
         {
-            ModOptionsMenu.modsButton = new ShowModOptions_Button();
-            ModOptionsMenu.modsButton.Init();
         }
     }
 }

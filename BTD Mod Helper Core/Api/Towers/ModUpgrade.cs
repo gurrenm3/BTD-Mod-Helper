@@ -136,7 +136,7 @@ namespace BTD_Mod_Helper.Api.Towers
         /// <summary>
         /// If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
         /// </summary>
-        public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
+        public virtual SpriteReference PortraitReference => GetSpriteReferenceOrNull(Portrait);
 
 
         /// <summary>

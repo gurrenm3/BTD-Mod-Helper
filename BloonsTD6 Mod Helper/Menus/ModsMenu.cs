@@ -51,6 +51,7 @@ namespace BTD_Mod_Helper.Menus
         private static Dictionary<ModHelperData, ModHelperComponent> modPanels =
             new Dictionary<ModHelperData, ModHelperComponent>();
 
+        private static ModHelperScrollPanel modsList;
         private static ModHelperData selectedMod;
         private static ModHelperPanel selectedModPanel;
         private static ModHelperText selectedModName;
@@ -64,6 +65,8 @@ namespace BTD_Mod_Helper.Menus
         private static ModHelperButton updateAllButton;
         private static ModHelperImage selectedModIcon;
 
+        private static bool loadedAllMods;
+
         private static readonly string[] SortOptions =
         {
             "All Mods",
@@ -75,6 +78,7 @@ namespace BTD_Mod_Helper.Menus
         /// <inheritdoc />
         public override bool OnMenuOpened(ExtraSettingsScreen gameMenu, Object data)
         {
+            loadedAllMods = false;
             CommonForegroundHeader.SetText("Mods");
 
             var panelTransform = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
@@ -84,12 +88,36 @@ namespace BTD_Mod_Helper.Menus
             var modsMenu = panel.AddModHelperPanel(new Info("ModsMenu", width: MenuWidth, height: MenuHeight));
 
             CreateLeftMenu(modsMenu);
+
             CreateRightMenu(modsMenu);
 
             SetSelectedMod(GetInstance<MelonMain>().GetModHelperData());
             Refresh();
 
             return false;
+        }
+
+        /// <inheritdoc />
+        public override void OnMenuUpdate(ExtraSettingsScreen gameMenu)
+        {
+            if (loadedAllMods)
+            {
+                return;
+            }
+
+            var (data, _) = modPanels.FirstOrDefault(pair => pair.Value == null);
+            if (data != null)
+            {
+                var panel = CreateModPanel(data, data.Mod);
+                modPanels[data] = panel;
+                modsList.AddScrollContent(panel);
+                RefreshModPanel(data, panel);
+            }
+            else
+            {
+                Refresh();
+                loadedAllMods = true;
+            }
         }
 
         internal static void SetSelectedMod(ModHelperData modSelected)
@@ -179,17 +207,15 @@ namespace BTD_Mod_Helper.Menus
                 new Info("UpdateAllText", anchorMin: Vector2.zero, anchorMax: Vector2.one), "Update All", FontSmall
             );
 
-            var scrollPanel = leftMenu.AddScrollPanel(
+            modsList = leftMenu.AddScrollPanel(
                 new Info("ModListScroll", flex: 1), RectTransform.Axis.Vertical,
                 VanillaSprites.BlueInsertPanelRound, Padding, Padding
             );
 
             modPanels = new Dictionary<ModHelperData, ModHelperComponent>();
-            foreach (var (melonMod, modHelperData) in ModHelperData.Cache)
+            foreach (var modHelperData in ModHelperData.Data)
             {
-                var modPanel = CreateModPanel(modHelperData, melonMod);
-                scrollPanel.AddScrollContent(modPanel);
-                modPanels[modHelperData] = modPanel;
+                modPanels[modHelperData] = null;
             }
         }
 
@@ -202,15 +228,7 @@ namespace BTD_Mod_Helper.Menus
                     continue;
                 }
 
-                var transform = panel.transform;
-                transform.Find("RestartRequired").gameObject.SetActive(modHelperData.RestartRequired);
-
-                var updateAvailable = modHelperData.UpdateAvailable;
-                transform.Find("VersionText").GetComponent<NK_TextMeshProUGUI>().color =
-                    UpdaterHttp.IsUpdate(modHelperData.Version, modHelperData.RepoVersion) ? Color.red : Color.white;
-                transform.Find("UpdateButton").gameObject.SetActive(updateAvailable);
-
-                transform.Find("Icon").gameObject.SetActive(!modHelperData.HasNoIcon);
+                RefreshModPanel(modHelperData, panel);
             }
 
             if (updateAllButton != null)
@@ -220,6 +238,19 @@ namespace BTD_Mod_Helper.Menus
             }
 
             SetSelectedMod(selectedMod);
+        }
+
+        internal static void RefreshModPanel(ModHelperData modHelperData, ModHelperComponent panel)
+        {
+            var transform = panel.transform;
+            transform.Find("RestartRequired").gameObject.SetActive(modHelperData.RestartRequired);
+
+            var updateAvailable = modHelperData.UpdateAvailable;
+            transform.Find("VersionText").GetComponent<NK_TextMeshProUGUI>().color =
+                UpdaterHttp.IsUpdate(modHelperData.Version, modHelperData.RepoVersion) ? Color.red : Color.white;
+            transform.Find("UpdateButton").gameObject.SetActive(updateAvailable);
+
+            transform.Find("Icon").gameObject.SetActive(!modHelperData.HasNoIcon);
         }
 
         /// <summary>
@@ -347,11 +378,12 @@ namespace BTD_Mod_Helper.Menus
 
             selectedModDescription = ModHelperText.Create(
                 new Info("DescriptionText", width: RightMenuWidth - Padding * 4),
-                DefaultDescription, FontMedium, TextAlignmentOptions.TopLeft
+                DefaultDescription, FontSmall, TextAlignmentOptions.TopLeft
             );
             descriptionPanel.AddScrollContent(selectedModDescription);
             selectedModDescription.LayoutElement.preferredHeight = -1;
             selectedModDescription.Text.enableAutoSizing = true;
+            selectedModDescription.Text.lineSpacing = 50;
 
             var buttonsRow = selectedModPanel.AddPanel(new Info("ButtonRow", height: ModPanelHeight, flexWidth: 1));
 
@@ -367,6 +399,15 @@ namespace BTD_Mod_Helper.Menus
             selectedModDisableButton.AddText(
                 new Info("ButtonText", anchorMin: Vector2.zero, anchorMax: Vector2.one), "Disable", FontLarge
             );
+
+            selectedModEnableButton = buttonsRow.AddButton(
+                new Info("EnabledButton", height: ModPanelHeight, width: ModPanelHeight * ModHelperButton.LongBtnRatio),
+                VanillaSprites.GreenBtnLong, new Action(() => { })
+            );
+            selectedModEnableButton.AddText(
+                new Info("ButtonText", anchorMin: Vector2.zero, anchorMax: Vector2.one), "Enable", FontLarge
+            );
+            selectedModEnableButton.gameObject.active = false;
 
             selectedModSettingsButton = buttonsRow.AddButton(
                 new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight,

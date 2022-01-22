@@ -17,8 +17,6 @@ namespace BTD_Mod_Helper.Menus
                 panel.GetChild(i).gameObject.Destroy();
             }
 
-            ModOptionsMenu.modsButton.modOptionsMenu = new ModOptionsMenu(panel);
-
             return false;
         }
 

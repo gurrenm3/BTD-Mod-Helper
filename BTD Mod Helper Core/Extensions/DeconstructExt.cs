@@ -8,6 +8,9 @@ namespace BTD_Mod_Helper.Extensions
     public static class DeconstructExt
     {
         
+        /// <summary>
+        /// Deconstruct a rectangle
+        /// </summary>
         public static void Deconstruct(this Rect rect, out float x, out float y, out float width, out float height)
         {
             x = rect.x;

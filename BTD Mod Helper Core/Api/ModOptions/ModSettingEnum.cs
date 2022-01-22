@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Linq;
+using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Extensions;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.ModOptions
@@ -9,6 +13,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
     /// <typeparam name="T">The Enum in question</typeparam>
     public class ModSettingEnum<T> : ModSetting<T> where T : Enum
     {
+        /// <summary>
+        /// Action to modify the ModHelperDropdown after it's created
+        /// </summary>
+        public Action<ModHelperDropdown> modifyDropdown;
+
         /// <inheritdoc />
         public ModSettingEnum(T value) : base(value)
         {
@@ -31,28 +40,29 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public override void SetValue(object val)
+        public override ModHelperComponent CreateComponent()
         {
-            base.SetValue(Enum.Parse(typeof(T), value.ToString()));
-        }
+            var option = CreateBaseOption();
 
-        /// <inheritdoc />
-        public override object GetValue()
-        {
-            return base.GetValue().ToString();
-        }
+            var dropdown = option.AddDropdown(
+                new Info("Dropdown", -50, 0, 1000, 150), Enum.GetNames(typeof(T)).ToIl2CppList(), 500,
+                new Action<int>(i =>
+                {
+                    var e = (T) Enum.GetValues(typeof(T)).GetValue(i);
+                    SetValue(e);
+                    onValueChanged?.Invoke(e);
+                }), VanillaSprites.BlueInsertPanelRound, 80f
+            );
 
-        /// <inheritdoc />
-        public override object GetDefaultValue()
-        {
-            return base.GetDefaultValue().ToString();
-        }
 
-        /// <inheritdoc />
-        public override ModOption ConstructModOption(GameObject parent)
-        {
-             //TODO DropDownOption
-             return null;
+            option.SetResetAction(new Action(() =>
+            {
+                dropdown.Dropdown.SetValue(Enum.GetValues(typeof(T)).Cast<T>().ToList().IndexOf(defaultValue));
+            }));
+
+            modifyDropdown?.Invoke(dropdown);
+
+            return option;
         }
     }
 }

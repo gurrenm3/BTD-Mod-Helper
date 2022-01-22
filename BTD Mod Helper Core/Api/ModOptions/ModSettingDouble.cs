@@ -1,26 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
     /// <summary>
     /// ModSetting for a decimal value
     /// </summary>
-    public class ModSettingDouble : ModSetting<double>
+    public class ModSettingDouble : ModSettingNumber<double>
     {
         /// <summary>
-        /// The lowest allowed value, or null for unbounded
+        /// Step size to use for slider, or how much to round the input
         /// </summary>
-        public double? minValue;
-
-        /// <summary>
-        /// The largest allowed value, or null for unbounded
-        /// </summary>
-        public double? maxValue;
-
-        /// <summary>
-        /// Whether this displays as a slider
-        /// </summary>
-        public bool isSlider;
+        public float stepSize = .01f;
 
         /// <inheritdoc />
         public ModSettingDouble(double value) : base(value)
@@ -44,9 +35,22 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public override ModOption ConstructModOption(GameObject parent)
-        {
-            return isSlider ? (ModOption) new SliderOption(parent, this) : new InputOption(parent, this);
-        }
+        protected override string ToString(double input) => 
+            Math.Round(Math.Round(input / stepSize) * stepSize, 3).ToString();
+
+        /// <inheritdoc />
+        protected override double FromString(string s) => double.TryParse(s, out var result) ? result : 0;
+
+        /// <inheritdoc />
+        protected override TMP_InputField.CharacterValidation Validation => TMP_InputField.CharacterValidation.Decimal;
+
+        /// <inheritdoc />
+        protected override float ToFloat(double input) => (float) input;
+
+        /// <inheritdoc />
+        protected override double FromFloat(float f) => f;
+
+        /// <inheritdoc />
+        protected override float StepSize => stepSize;
     }
 }

@@ -41,7 +41,11 @@ namespace BTD_Mod_Helper.Api.Helpers
 
                 foreach (var file in files)
                 {
-                    vanillaSpritesFile.WriteLine(GetLine(file));
+                    var line = GetLine(file);
+                    if (line != null)
+                    {
+                        vanillaSpritesFile.WriteLine(line);
+                    }
                 }
 
                 vanillaSpritesFile.WriteLine($"{Tab}}}");

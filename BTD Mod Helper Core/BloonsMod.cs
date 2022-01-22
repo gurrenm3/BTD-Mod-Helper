@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper
         /// </summary>
         public IReadOnlyList<ModContent> Content { get; internal set; }
 
-        internal Dictionary<string, ModSetting> ModSettings;
+        internal Dictionary<string, IModSetting> ModSettings;
         
         /// <summary>
         /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods

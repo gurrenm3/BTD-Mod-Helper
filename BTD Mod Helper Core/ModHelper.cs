@@ -21,7 +21,13 @@ namespace BTD_Mod_Helper
         internal const string Description = "The mod that is allowing you to see this screen right now :P";
         #endregion
 
+        /// <summary>
+        /// Directory for where disabled mods are stored
+        /// </summary>
         public static string DisabledModsDirectory => Path.Combine(MelonHandler.ModsDirectory, "Disabled");
+        /// <summary>
+        /// Directory where the Mod Helper stores most of its extra info
+        /// </summary>
         public static string ModHelperDirectory => ModContent.GetInstance<MelonMain>().GetModDirectory();
         internal static string ZipTempDirectory => Path.Combine(ModHelperDirectory, "Zip Temp");
         internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");

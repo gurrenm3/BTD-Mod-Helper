@@ -104,7 +104,7 @@ namespace BTD_Mod_Helper.Api.Components
                     RectTransform.Axis.Vertical, VanillaSprites.UISprite);
             template.Background.color = new Color(0.262f, 0.435f, 0.658f);
             dropdown.template = template;
-            template.shouldDisable = true;
+            template.disableNextFrame = true;
 
             var item = modHelperDropdown.TemplateItem =
                 ModHelperPanel.Create(new Info("Item", width: width, height: height));

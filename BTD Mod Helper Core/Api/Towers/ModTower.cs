@@ -289,7 +289,7 @@ namespace BTD_Mod_Helper.Api.Towers
         public virtual string Get2DTexture(int[] tiers)
         {
             var name = $"{Name}-{tiers.Printed()}";
-            if (GetTextureGUID(name) != null)
+            if (TextureExists(name))
             {
                 return name;
             }
@@ -311,7 +311,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 }
 
                 name = $"{Name}-{printed}";
-                if (GetTextureGUID(name) != null)
+                if (TextureExists(name))
                 {
                     return name;
                 }

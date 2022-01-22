@@ -179,7 +179,7 @@ namespace BTD_Mod_Helper.Extensions
             modHelperComponent.SetParent(parentComponent);
             return modHelperComponent;
         }
-        
+
         /// <summary>
         /// Adds the ModHelperComponent to a parent GameObject, returning the ModHelperComponent
         /// <br/>
@@ -194,9 +194,20 @@ namespace BTD_Mod_Helper.Extensions
 
         /// <inheritdoc cref="ModHelperComponent.AddPanel"/>
         public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Info info,
-            SpriteReference backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50, int padding = 0)
+            SpriteReference backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
+            int padding = 0)
         {
-            return gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing, padding));
+            return gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing,
+                padding));
+        }
+
+        /// <inheritdoc cref="ModHelperComponent.AddScrollPanel"/>
+        public static ModHelperScrollPanel AddModHelperScrollPanel(this GameObject gameObject, Info info,
+            RectTransform.Axis? axis,
+            SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
+        {
+            return gameObject.AddModHelperComponent(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing,
+                padding));
         }
 
         /// <summary>

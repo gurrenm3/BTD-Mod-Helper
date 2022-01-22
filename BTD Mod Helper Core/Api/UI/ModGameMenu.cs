@@ -21,6 +21,9 @@ namespace BTD_Mod_Helper.Api
     {
         internal static readonly Dictionary<string, ModGameMenu> Cache = new Dictionary<string, ModGameMenu>();
 
+        /// <summary>
+        /// The text of the Header component that's on many UI screens, might be null
+        /// </summary>
         protected NK_TextMeshProUGUI CommonForegroundHeader =>
             CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>();
 

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.ModMenu;
-using BTD_Mod_Helper.Extensions;
 using BTD_Mod_Helper.Menus;
 using MelonLoader;
 using Octokit;
@@ -61,7 +60,7 @@ namespace BTD_Mod_Helper.Api
 
             foreach (var modHelperData in Mods)
             {
-                ModHelper.Msg($"Found mod {modHelperData.Name} v{modHelperData.Version}");
+                ModHelper.Msg($"Found mod {modHelperData.Name} v{modHelperData.Version} with description: \"{modHelperData.Description}\"");
             }
 
             UpdateRateLimit();

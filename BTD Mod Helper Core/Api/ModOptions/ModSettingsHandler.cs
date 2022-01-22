@@ -19,14 +19,14 @@ namespace BTD_Mod_Helper.Api.ModOptions
             }
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
             {
-                mod.ModSettings = new Dictionary<string, ModSetting>();
+                mod.ModSettings = new Dictionary<string, IModSetting>();
                 try
                 {
                     foreach (var field in mod.GetType()
                         .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
-                        .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
+                        .Where(field => typeof(IModSetting).IsAssignableFrom(field.FieldType)))
                     {
-                        var modSetting = (ModSetting) field.GetValue(mod);
+                        var modSetting = (IModSetting) field.GetValue(mod);
                         mod.ModSettings[field.Name] = modSetting;
                         if (modSetting.GetName() == default)
                         {
@@ -123,6 +123,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 if (!mod.ModSettings.Any()) continue;
                 SaveModSettings(mod, modSettingsDir);
             }
+            ModHelper.Msg("Successfully saved mod settings");
         }
         
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using System.Linq;
@@ -122,7 +123,7 @@ namespace BTD_Mod_Helper.Extensions
                 return result;
             throw new ArgumentException(@"Can't compute ArgMax on empty sequence.", nameof(source));
         }
-        
+
         /// <summary>
         /// Deconstruct IGrouping to list
         /// </summary>
@@ -135,12 +136,6 @@ namespace BTD_Mod_Helper.Extensions
         {
             k = grouping.Key;
             v = grouping.ToList();
-        }
-
-        /// <inheritdoc cref="string.Concat(object)"/>
-        public static string ConcatString(this IEnumerable<string> enumerable, string separator = "")
-        {
-            return string.Join(separator, enumerable);
         }
     }
 }

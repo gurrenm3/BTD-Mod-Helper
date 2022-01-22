@@ -28,6 +28,14 @@ namespace BTD_Mod_Helper.Api.Components
         }
 
         /// <summary>
+        /// Sets the text of this text to the given text
+        /// </summary>
+        public void SetText(string text)
+        {
+            Text.SetText(text);
+        }
+
+        /// <summary>
         /// Creates a new ModHelperText
         /// </summary>
         /// <param name="info">The name/position/size info</param>

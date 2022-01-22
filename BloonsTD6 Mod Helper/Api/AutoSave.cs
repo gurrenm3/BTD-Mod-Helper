@@ -2,13 +2,10 @@
 using System.IO;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.Popups;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 using static BTD_Mod_Helper.MelonMain;
 
-namespace BTD_Mod_Helper
+namespace BTD_Mod_Helper.Api
 {
     /// <summary>
     /// Implements the features of the AutoSave mod
@@ -26,7 +23,7 @@ namespace BTD_Mod_Helper
 
             ModHelper.Log("Starting to initiate profile AutoSaving...");
             InitAutosaveSettings(settingsDir);
-            backup = new BackupCreator(autosavePath, maxSavedBackups);
+            backup = new BackupCreator(AutosavePath, MaxSavedBackups);
             ScheduleAutosave();
             autosaveInit = true;
 
@@ -35,30 +32,12 @@ namespace BTD_Mod_Helper
 
         private static void InitAutosaveSettings(string settingsDir)
         {
-            var saveDir = Game.instance.GetSaveDirectory();
-            if (!string.IsNullOrEmpty(saveDir))
-                openSaveDir.OnInitialized.Add((option) => InitOpenDirButton(option, saveDir));
-            else
-                openSaveDir.OnValueChanged.Add((value) =>
-                        PopupScreen.instance.ShowOkPopup("Can't open Save directory because it wasn't found"));
-
-            openBackupDir.OnInitialized.Add((option) => InitOpenDirButton(option, autosavePath));
-            maxSavedBackups.OnValueChanged.Add((newMax) => backup.SetMaxBackups(newMax));
-
-            if (string.IsNullOrEmpty(autosavePath))
+            if (string.IsNullOrEmpty(AutosavePath))
             {
                 var autosaveDir = settingsDir + "\\Autosave";
                 Directory.CreateDirectory(autosaveDir);
-                autosavePath.SetValue(autosaveDir);
+                AutosavePath.SetValue(autosaveDir);
             }
-            autosavePath.OnValueChanged.Add((newPath) =>
-            {
-                if (!string.IsNullOrEmpty(newPath))
-                {
-                    Directory.CreateDirectory(newPath);
-                    backup.MoveBackupDir(newPath);
-                }
-            });
         }
 
         private static void ScheduleAutosave()
@@ -69,14 +48,41 @@ namespace BTD_Mod_Helper
                     backup.CreateBackup();
                     ScheduleAutosave();
                 },
-                Api.Enums.ScheduleType.WaitForSeconds, timeBetweenBackup * secondsPerMinute);
+                Api.Enums.ScheduleType.WaitForSeconds, TimeBetweenBackup * secondsPerMinute);
+        }
+        
+        internal static void OpenAutoSaveDir()
+        {
+            var saveDirectory = Game.instance.GetSaveDirectory();
+            if (string.IsNullOrEmpty(saveDirectory) || !Directory.Exists(saveDirectory))
+            {
+                PopupScreen.instance.ShowOkPopup("Can't open Save directory because it wasn't found");
+            }
+            else
+            {
+                Process.Start(saveDirectory);
+            }
         }
 
-        private static void InitOpenDirButton(ModOption option, string dir)
+        internal static void OpenBackupDir()
         {
-            var button = (ButtonOption)option;
-            button.ButtonText.text = "Open";
-            button.Button.onClick.AddListener(() => Process.Start(dir));
+            if (string.IsNullOrEmpty(AutosavePath) || !Directory.Exists(AutosavePath))
+            {
+                PopupScreen.instance.ShowOkPopup("Can't open Backup directory because it wasn't found");
+            }
+            else
+            {
+                Process.Start(AutosavePath);
+            }
+        }
+
+        internal static void SetAutosaveDirectory(string newPath)
+        {
+            if (!string.IsNullOrEmpty(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+                backup.MoveBackupDir(newPath);
+            }
         }
     }
 }

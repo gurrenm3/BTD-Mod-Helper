@@ -2,6 +2,9 @@
 
 namespace BTD_Mod_Helper.Api
 {
+    /// <summary>
+    /// Class to statically store RuntimeAnimationControllers for different animations
+    /// </summary>
     public static class Animations
     {
         /// <summary>
@@ -14,6 +17,9 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public static RuntimeAnimatorController TabAnimation  { get; internal set; }
         
+        /// <summary>
+        /// Animation for popping upwards
+        /// </summary>
         public static RuntimeAnimatorController PopUpwards { get; internal set; }
     }
 }

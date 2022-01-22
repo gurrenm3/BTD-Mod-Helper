@@ -1,27 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
     /// <summary>
     /// ModSetting for int values
     /// </summary>
-    public class ModSettingInt : ModSetting<long> //it's a long because of JSON parsing
+    public class ModSettingInt : ModSettingNumber<long> //it's a long because of JSON parsing
     {
-        /// <summary>
-        /// The lowest allowed value, or null for unbounded
-        /// </summary>
-        public long? minValue;
-        
-        /// <summary>
-        /// The largest allowed value, or null for unbounded
-        /// </summary>
-        public long? maxValue;
-        
-        /// <summary>
-        /// Whether this displays as a slider
-        /// </summary>
-        public bool isSlider;
-
         /// <inheritdoc />
         public ModSettingInt(int value) : base(value)
         {
@@ -44,9 +30,18 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public override ModOption ConstructModOption(GameObject parent)
-        {
-            return isSlider ? (ModOption)new SliderOption(parent, this) : new InputOption(parent, this);
-        }
+        protected override string ToString(long input) => input.ToString();
+
+        /// <inheritdoc />
+        protected override long FromString(string s) => int.TryParse(s, out var result) ? result : 0;
+
+        /// <inheritdoc />
+        protected override TMP_InputField.CharacterValidation Validation => TMP_InputField.CharacterValidation.Integer;
+
+        /// <inheritdoc />
+        protected override float ToFloat(long input) => input;
+        
+        /// <inheritdoc />
+        protected override long FromFloat(float f) => (long) Math.Round(f);
     }
 }

@@ -76,25 +76,23 @@ namespace BTD_Mod_Helper
 
         private static readonly ModSettingBool AutoHideModdedClientPopup = false;
 
-        private static readonly ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
+        private static readonly ModSettingButton OpenLocalDirectory = new ModSettingButton
         {
             displayName = "Open Local Files Directory",
-            IsButton = true,
-            OnButtonPressed = _ => Process.Start(FileIOUtil.sandboxRoot),
-            ButtonText = "Open"
+            action = () => Process.Start(FileIOUtil.sandboxRoot),
+            buttonText = "Open"
         };
 
-        private static readonly ModSettingBool ExportGameModel = new ModSettingBool(false)
+        private static readonly ModSettingButton ExportGameModel = new ModSettingButton
         {
             displayName = "Export Game Model",
-            IsButton = true,
-            OnButtonPressed = _ =>
+            action = () =>
             {
                 GameModelExporter.ExportAll();
                 PopupScreen.instance.ShowOkPopup(
                     $"Finished exporting Game Model to {FileIOUtil.sandboxRoot}");
             },
-            ButtonText = "Export"
+            buttonText = "Export"
         };
 
 
@@ -193,31 +191,33 @@ namespace BTD_Mod_Helper
 
         #region Autosave
 
-        public static ModSettingBool openBackupDir = new ModSettingBool(true)
+        public static readonly ModSettingButton OpenBackupDir = new ModSettingButton(AutoSave.OpenBackupDir)
         {
-            IsButton = true,
-            displayName = "Open Backup Directory"
+            displayName = "Open Backup Directory",
+            buttonText = "Open"
         };
 
-        public static ModSettingBool openSaveDir = new ModSettingBool(true)
+        public static readonly ModSettingButton OpenSaveDir = new ModSettingButton(AutoSave.OpenAutoSaveDir)
         {
-            IsButton = true,
-            displayName = "Open Save Directory"
+            displayName = "Open Save Directory",
+            buttonText = "Open"
         };
 
-        public static ModSettingString autosavePath = new ModSettingString("")
+        public static readonly ModSettingString AutosavePath = new ModSettingString("")
         {
-            displayName = "Backup Directory"
+            displayName = "Backup Directory",
+            onValueChanged = AutoSave.SetAutosaveDirectory
         };
 
-        public static ModSettingInt timeBetweenBackup = new ModSettingInt(30)
+        public static readonly ModSettingInt TimeBetweenBackup = new ModSettingInt(30)
         {
             displayName = "Minutes Between Each Backup"
         };
 
-        public static ModSettingInt maxSavedBackups = new ModSettingInt(10)
+        public static readonly ModSettingInt MaxSavedBackups = new ModSettingInt(10)
         {
-            displayName = "Max Saved Backups"
+            displayName = "Max Saved Backups",
+            onValueChanged = max => AutoSave.backup.SetMaxBackups(max)
         };
 
         public override void OnMatchEnd() => AutoSave.backup.CreateBackup();

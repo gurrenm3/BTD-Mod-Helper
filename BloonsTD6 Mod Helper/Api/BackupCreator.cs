@@ -55,7 +55,17 @@ namespace BTD_Mod_Helper.Api
 
             var files = GetAllBackups();
             foreach (var file in files)
-                File.Move(file.FullName, $"{newBackupDir}\\{file.Name}.{file.Extension}");
+            {
+                var destFileName = $"{newBackupDir}\\{file.Name}.{file.Extension}";
+                try
+                {
+                    File.Move(file.FullName, destFileName);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
 
             _backupDir = newBackupDir;
         }

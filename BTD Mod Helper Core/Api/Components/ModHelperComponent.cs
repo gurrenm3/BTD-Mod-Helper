@@ -17,9 +17,24 @@ namespace BTD_Mod_Helper.Api.Components
     [RegisterTypeInIl2Cpp(false)]
     public class ModHelperComponent : MonoBehaviour
     {
+        /// <summary>
+        /// The Info object that this was defined with, determining its initial name, position and size
+        /// </summary>
         public Info Info { get; protected set; }
-        public bool shouldDisable;
 
+        /// <summary>
+        /// Bool for if this should disable itself on the next frame
+        /// </summary>
+        public bool disableNextFrame;
+        
+        /// <summary>
+        /// Bool for if this should enable itself on the next frame
+        /// </summary>
+        public bool enableNextFrame;
+
+        /// <summary>
+        /// The ModHelperComponent that this is a child of, if any
+        /// </summary>
         public ModHelperComponent Parent { get; private set; }
 
         /// <summary>
@@ -43,6 +58,9 @@ namespace BTD_Mod_Helper.Api.Components
         {
         }
 
+        /// <summary>
+        /// Sets a particular transform to be the parent of this
+        /// </summary>
         public void SetParent(Transform parent)
         {
             var t = transform;
@@ -50,6 +68,9 @@ namespace BTD_Mod_Helper.Api.Components
             SetTransformProperties();
         }
 
+        /// <summary>
+        /// Sets a particular ModHelperComponent to be the parent of this
+        /// </summary>
         public void SetParent(ModHelperComponent parent)
         {
             Parent = parent;
@@ -143,6 +164,32 @@ namespace BTD_Mod_Helper.Api.Components
                 labelFontSize));
         }
 
+        /// <inheritdoc cref="ModHelperSlider.Create"/>
+        public ModHelperSlider AddSlider(Info info, float defaultValue, float minValue, float maxValue,
+            float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
+            Il2CppSystem.Func<float, string> getLabel = null)
+        {
+            return Add(ModHelperSlider.Create(info, defaultValue, minValue, maxValue, stepSize, handleSize,
+                onValueChanged, fontSize, getLabel));
+        }
+
+        /// <inheritdoc cref="ModHelperCheckbox.Create"/>
+        public ModHelperCheckbox AddCheckbox(Info info, bool defaultValue, SpriteReference background, 
+            UnityAction<bool> onValueChanged = null, SpriteReference checkImage = null, int padding = 20)
+        {
+            return Add(ModHelperCheckbox.Create(info, defaultValue, background, onValueChanged, checkImage, padding));
+        }
+
+        /// <inheritdoc cref="ModHelperInputField.Create"/>
+        public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
+            UnityAction<string> onValueChanged = null, float fontSize = 42,
+            TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
+            TextAlignmentOptions align = TextAlignmentOptions.Midline, int padding = 20)
+        {
+            return Add(ModHelperInputField.Create(info, defaultValue, background, onValueChanged, fontSize, validation, align,
+                padding));
+        }
+
         internal static T Create<T>(Info info) where T : ModHelperComponent
         {
             var newGameObject = new GameObject(info.Name, new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
@@ -168,11 +215,21 @@ namespace BTD_Mod_Helper.Api.Components
 
         private void Update()
         {
-            if (shouldDisable)
+            if (disableNextFrame)
             {
-                shouldDisable = false;
+                disableNextFrame = false;
                 gameObject.SetActive(false);
             }
+            
+            OnUpdate();
+        }
+
+        /// <summary>
+        /// Unity Component Update
+        /// </summary>
+        protected virtual void OnUpdate()
+        {
+            
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System;
+using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
@@ -10,25 +11,15 @@ namespace BTD_Mod_Helper.Api.ModOptions
     /// </summary>
     public class ModSettingBool : ModSetting<bool>
     {
+        /// <summary>
+        /// Action to modify the ModHelperCheckbox after it's created
+        /// </summary>
+        public Action<ModHelperCheckbox> modifyCheckbox;
+        
         /// <inheritdoc />
         public ModSettingBool(bool value) : base(value)
         {
         }
-
-        /// <summary>
-        /// Should the UI for this be a button? If not it will be a Checkbox
-        /// </summary>
-        public bool IsButton { get; set; }
-
-        /// <summary>
-        /// If this is a button, then what action should be performed if you click it.
-        /// </summary>
-        public Action<Button> OnButtonPressed { get; set; }
-
-        /// <summary>
-        /// If this is a Button, then the text on the Button will be changed from "" to this
-        /// </summary>
-        public string ButtonText { get; set; }
 
         /// <summary>
         /// Create a new ModSetting bool with the given value as default
@@ -48,22 +39,22 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return modSettingBool.value;
         }
 
-
         /// <inheritdoc />
-        public override ModOption ConstructModOption(GameObject parent)
+        public override ModHelperComponent CreateComponent()
         {
-            if (IsButton)
-            {
-                var modOption = new ButtonOption(parent, this);
-                if (OnButtonPressed != null)
+            var option = CreateBaseOption();
+
+            var checkbox = option.AddCheckbox(
+                new Info("Checkbox", 0, 0, 200, 200), value, VanillaSprites.BlueInsertPanelRound,
+                new Action<bool>(enabled =>
                 {
-                    modOption.Button.AddOnClick(() => OnButtonPressed(modOption.Button));
-                }
-
-                return modOption;
-            }
-
-            return new CheckboxOption(parent, this);
+                    SetValue(enabled);
+                    onValueChanged?.Invoke(enabled);
+                })
+            );
+            option.SetResetAction(new Action(() => checkbox.SetChecked(defaultValue)));
+            modifyCheckbox?.Invoke(checkbox);
+            return option;
         }
     }
 }

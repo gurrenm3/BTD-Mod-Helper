@@ -16,11 +16,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchLocalPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchScale.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperCheckbox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperComponent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperDropdown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperInputField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperScrollPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperSlider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModGameMenuTracker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ScaleOverride.cs" />
@@ -51,6 +55,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContentInstances.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModHelperGithub.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\IModSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingNumber.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModsMenu\ModBrowser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModsMenu\ModHelperHttp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModsMenu\ModsButton.cs" />
@@ -67,10 +74,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTowerSet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModUpgrade.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ButtonOption.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\CheckboxOption.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\InputOption.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModOptionsMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingBool.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingDouble.cs" />
@@ -78,9 +81,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingInt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingsHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingString.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModOption.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ShowModOptions_Button.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\SliderOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\TaskScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModVanillaTower.cs" />

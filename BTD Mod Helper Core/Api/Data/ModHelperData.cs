@@ -7,6 +7,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.Updater;
+using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
 using MelonLoader;
 using Octokit;
 using UnityEngine;
@@ -36,7 +38,7 @@ namespace BTD_Mod_Helper.Api
 
         private const string VersionRegex = "string Version =\\s*\"([.0-9]+)\";\n";
         private const string NameRegex = "string Name =\\s*\"(.+)\";\n";
-        private const string DescRegex = "string Description =\\s*\"(.+)\";\n";
+        private const string DescRegex = "string Description =(?:[\\s+]*\"(.+)\")+;\n";
         private const string IconRegex = "string Icon =\\s*\"(.+)\\.png\";\n";
         private const string DllRegex = "string DllName =\\s*\"(.+)\\.dll\";\n";
         private const string RepoNameRegex = "string RepoName =\\s*\"(.+)\";\n";
@@ -164,7 +166,7 @@ namespace BTD_Mod_Helper.Api
             if (Regex.Match(data, NameRegex) is Match nameMatch && nameMatch.Success)
                 Name = nameMatch.Groups[1].Value;
             if (Regex.Match(data, DescRegex) is Match descMatch && descMatch.Success)
-                Description = descMatch.Groups[1].Value;
+                Description = descMatch.Groups[1].Captures.Cast<Capture>().Select(c => c.Value).Join(delimiter: "");
             if (Regex.Match(data, IconRegex) is Match iconMatch && iconMatch.Success)
                 Icon = iconMatch.Groups[1].Value;
             if (Regex.Match(data, DllRegex) is Match dllMatch && dllMatch.Success)
@@ -180,7 +182,7 @@ namespace BTD_Mod_Helper.Api
             if (Regex.Match(data, AuthorRegex) is Match authorMatch && authorMatch.Success)
                 Author = authorMatch.Groups[1].Value;
         }
-
+        
         public static ModHelperData GetModHelperData(MelonMod mod)
         {
             return Cache.TryGetValue(mod, out var data) ? data : null;

@@ -187,9 +187,9 @@ namespace BTD_Mod_Helper.Api.Bloons
 
             if (UseIconAsDisplay)
             {
-                var guid = GetTextureGUID(Icon);
-                if (guid != null)
+                if (TextureExists(mod, Icon))
                 {
+                    var guid = GetTextureGUID(Icon);
                     model.display = model.GetBehavior<DisplayModel>().display = guid;
                     ResourceHandler.ScalesFor2dModels[guid] = PixelsPerUnit;
                 }

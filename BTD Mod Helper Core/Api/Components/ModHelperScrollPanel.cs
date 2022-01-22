@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Scripts.Utils;
 using MelonLoader;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,6 +72,7 @@ namespace BTD_Mod_Helper.Api.Components
                         axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
                         axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)), null, axis, spacing, padding);
             scrollContent.transform.parent = newPanel;
+            scrollContent.AddComponent<NK_TextMeshProUGUI>();  // so that everywhere in the content window is draggable
 
             scrollRect.content = scrollContent.RectTransform;
             scrollRect.content.pivot = new Vector2(0.5f, 1);

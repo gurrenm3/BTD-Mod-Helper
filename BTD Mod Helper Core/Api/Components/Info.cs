@@ -74,13 +74,14 @@ namespace BTD_Mod_Helper.Api.Components
         /// <param name="scale">The local scale field to initialize width</param>
         /// <param name="anchor">Sets both anchorMin and anchorMax to be this value</param>
         /// <param name="flex">Sets both flexWidth and flexHeight to be this value</param>
+        /// <param name="size">Sets both width and height to be this value</param>
         public Info(string name, float x = 0f, float y = 0f, float width = 0f, float height = 0f, int flexWidth = -1,
             int flexHeight = -1, Vector2? anchorMin = null, Vector2? anchorMax = null, Vector3? scale = null,
-            Vector2? anchor = null, int? flex = null)
+            Vector2? anchor = null, int? flex = null, float? size = null)
         {
             Name = name;
             Position = new Vector2(x, y);
-            SizeDelta = new Vector2(width, height);
+            SizeDelta = new Vector2(size ?? width, size ?? height);
             FlexWidth = flex ?? flexWidth;
             FlexHeight = flex ?? flexHeight;
             AnchorMin = anchorMin ?? anchor ?? new Vector2(0.5f, 0.5f);

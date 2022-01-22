@@ -159,16 +159,45 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="name">The file name of your texture, without the extension</param>
-        /// <returns>A new SpriteReference, or null if there's no resource</returns>
+        /// <returns>A new SpriteReference</returns>
         public static SpriteReference GetSpriteReference(BloonsMod mod, string name)
         {
-            var guid = GetTextureGUID(mod, name);
-            if (ResourceHandler.resources.ContainsKey(guid))
-            {
-                return CreateSpriteReference(guid);
-            }
+            return CreateSpriteReference(GetTextureGUID(mod, name));
+        }
+        
+        /// <summary>
+        /// Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been
+        /// loaded instead of an invalid SpriteReference
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <typeparam name="T">Your mod's main BloonsMod extending class</typeparam>
+        /// <returns>A new SpriteReference</returns>
+        public static SpriteReference GetSpriteReferenceOrNull<T>(string name) where T : BloonsMod
+        {
+            return GetSpriteReferenceOrNull(GetInstance<T>(), name);
+        }
 
-            return null;
+        /// <summary>
+        /// Gets a sprite reference by name for this mod, returning null if the texture hasn't currently been
+        /// loaded instead of an invalid SpriteReference
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <returns>A new SpriteReference</returns>
+        protected SpriteReference GetSpriteReferenceOrNull(string name)
+        {
+            return GetSpriteReferenceOrNull(mod, name);
+        }
+
+        /// <summary>
+        /// Gets a sprite reference by name for a specific mod,returning null if the texture hasn't currently been
+        /// loaded instead of an invalid SpriteReference
+        /// </summary>
+        /// <param name="mod">The BloonsMod that the texture is from</param>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <returns>A new SpriteReference</returns>
+        public static SpriteReference GetSpriteReferenceOrNull(BloonsMod mod, string name)
+        {
+            return TextureExists(mod, name) ? GetSpriteReference(mod, name) : null;
         }
 
         /// <summary>
@@ -188,7 +217,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Creates a Sprite reference from the unsigned ints that can be found for a Sprite in AssetStudio
+        /// Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -209,16 +238,13 @@ namespace BTD_Mod_Helper.Api
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
-        /// <br/>
-        /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
         public static string GetTextureGUID(BloonsMod mod, string fileName)
         {
-            var guid = mod?.IDPrefix + fileName;
-            return ResourceHandler.resources.ContainsKey(guid) ? guid : default;
+            return mod.IDPrefix + fileName;
         }
 
         /// <summary>
@@ -231,7 +257,8 @@ namespace BTD_Mod_Helper.Api
         /// <returns>The texture's GUID</returns>
         public static string GetTextureGUID<T>(string name) where T : BloonsMod
         {
-            return GetTextureGUID(GetInstance<T>(), name);
+            var mod = GetInstance<T>();
+            return mod != null ? GetTextureGUID(mod, name) : typeof(T).Assembly.GetName().Name + "-" + name;
         }
 
         /// <summary>
@@ -244,6 +271,37 @@ namespace BTD_Mod_Helper.Api
         public string GetTextureGUID(string name)
         {
             return GetTextureGUID(mod, name);
+        }
+        
+        
+
+        /// <summary>
+        /// Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
+        /// </summary>
+        /// <param name="bloonsMod">The mod to look in</param>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        public static bool TextureExists(BloonsMod bloonsMod, string name)
+        {
+            return ResourceHandler.resources.ContainsKey(GetTextureGUID(bloonsMod, name));
+        }
+
+        /// <summary>
+        /// Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <typeparam name="T">The mod to look in</typeparam>
+        public static bool TextureExists<T>(string name) where T : BloonsMod
+        {
+            return TextureExists(GetInstance<T>(), name);
+        }
+
+        /// <summary>
+        /// Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        protected bool TextureExists(string name)
+        {
+            return TextureExists(mod, name);
         }
 
         /// <summary>
@@ -402,9 +460,9 @@ namespace BTD_Mod_Helper.Api
         public static T GetInstance<T>() where T : IModContent
         {
             var instance = ModContentInstance<T>.Instance;
-            if (instance == null)
+            if (instance == null && typeof(MelonMod).IsAssignableFrom(typeof(T)))
             {
-                ModHelper.Log($"The instance was null for {typeof(T).Name}");
+                instance = MelonHandler.Mods.OfType<T>().FirstOrDefault();
             }
 
             return instance;
