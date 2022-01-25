@@ -2,6 +2,7 @@
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using TMPro;
+using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -14,7 +15,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// Action to modify the ModHelperInputField after it's created
         /// </summary>
         public Action<ModHelperInputField> modifyInput;
-        
+
         /// <summary>
         /// Allow all characters
         /// </summary>
@@ -70,19 +71,19 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 : TMP_InputField.CharacterValidation.None;
 
         /// <inheritdoc />
-        public override ModHelperComponent CreateComponent()
+        public override ModHelperOption CreateComponent()
         {
             var option = CreateBaseOption();
 
-            var input = option.AddInputField(
-                new Info("Input", 0, 0, 1500, 150), value, VanillaSprites.BlueInsertPanelRound,
+            var input = option.BottomRow.AddInputField(
+                new Info("Input", width: 1500, height: 150), value, VanillaSprites.BlueInsertPanelRound,
                 new Action<string>(s =>
                 {
                     SetValue(s);
-                    onValueChanged.Invoke(s);
+                    onValueChanged?.Invoke(s);
                 }), 80f, Validation
             );
-            
+
             option.SetResetAction(new Action(() => input.SetText(defaultValue)));
             modifyInput?.Invoke(input);
             return option;

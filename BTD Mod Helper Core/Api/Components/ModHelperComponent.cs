@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Api.Components
         /// Bool for if this should disable itself on the next frame
         /// </summary>
         public bool disableNextFrame;
-        
+
         /// <summary>
         /// Bool for if this should enable itself on the next frame
         /// </summary>
@@ -65,7 +65,7 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var t = transform;
             t.parent = parent;
-            SetTransformProperties();
+            Info.Apply(RectTransform);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace BTD_Mod_Helper.Api.Components
         {
             Parent = parent;
 
-            if (parent.LayoutGroup != null)
+            if (parent.LayoutGroup != null && !gameObject.HasComponent<ContentSizeFitter>())
             {
                 AddLayoutElement();
             }
@@ -114,6 +114,24 @@ namespace BTD_Mod_Helper.Api.Components
             LayoutElement.flexibleHeight = Info.FlexHeight;
 
             return LayoutElement;
+        }
+
+        /// <summary>
+        /// Adds and returns a ContentSizeFitter with the given properties
+        /// </summary>
+        public ContentSizeFitter FitContent(ContentSizeFitter.FitMode horizontal = ContentSizeFitter.FitMode.Unconstrained,
+            ContentSizeFitter.FitMode vertical = ContentSizeFitter.FitMode.Unconstrained)
+        {
+            var contentSizeFitter = AddComponent<ContentSizeFitter>();
+            contentSizeFitter.horizontalFit = horizontal;
+            contentSizeFitter.verticalFit = vertical;
+
+            if (LayoutElement != null)
+            {
+                LayoutElement.enabled = false;
+            }
+
+            return contentSizeFitter;
         }
 
         /// <inheritdoc cref="ModHelperPanel.Create"/>
@@ -167,14 +185,14 @@ namespace BTD_Mod_Helper.Api.Components
         /// <inheritdoc cref="ModHelperSlider.Create"/>
         public ModHelperSlider AddSlider(Info info, float defaultValue, float minValue, float maxValue,
             float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
-            Il2CppSystem.Func<float, string> getLabel = null)
+            string labelSuffix = "")
         {
             return Add(ModHelperSlider.Create(info, defaultValue, minValue, maxValue, stepSize, handleSize,
-                onValueChanged, fontSize, getLabel));
+                onValueChanged, fontSize, labelSuffix));
         }
 
         /// <inheritdoc cref="ModHelperCheckbox.Create"/>
-        public ModHelperCheckbox AddCheckbox(Info info, bool defaultValue, SpriteReference background, 
+        public ModHelperCheckbox AddCheckbox(Info info, bool defaultValue, SpriteReference background,
             UnityAction<bool> onValueChanged = null, SpriteReference checkImage = null, int padding = 20)
         {
             return Add(ModHelperCheckbox.Create(info, defaultValue, background, onValueChanged, checkImage, padding));
@@ -186,7 +204,8 @@ namespace BTD_Mod_Helper.Api.Components
             TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
             TextAlignmentOptions align = TextAlignmentOptions.Midline, int padding = 20)
         {
-            return Add(ModHelperInputField.Create(info, defaultValue, background, onValueChanged, fontSize, validation, align,
+            return Add(ModHelperInputField.Create(info, defaultValue, background, onValueChanged, fontSize, validation,
+                align,
                 padding));
         }
 
@@ -195,22 +214,9 @@ namespace BTD_Mod_Helper.Api.Components
             var newGameObject = new GameObject(info.Name, new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
             var modHelperComponent = newGameObject.AddComponent<T>();
             modHelperComponent.Info = info;
-            modHelperComponent.SetTransformProperties();
+            info.Apply(modHelperComponent);
 
             return modHelperComponent;
-        }
-
-        /// <summary>
-        /// Sets the properties of the RectTransform based on the Info object
-        /// </summary>
-        protected void SetTransformProperties()
-        {
-            RectTransform.anchorMax = Info.AnchorMax;
-            RectTransform.anchorMin = Info.AnchorMin;
-            RectTransform.localScale = Info.Scale;
-            RectTransform.sizeDelta = Info.SizeDelta;
-            RectTransform.localPosition = Info.Position;
-            RectTransform.anchoredPosition = Info.Position;
         }
 
         private void Update()
@@ -220,7 +226,7 @@ namespace BTD_Mod_Helper.Api.Components
                 disableNextFrame = false;
                 gameObject.SetActive(false);
             }
-            
+
             OnUpdate();
         }
 
@@ -229,7 +235,6 @@ namespace BTD_Mod_Helper.Api.Components
         /// </summary>
         protected virtual void OnUpdate()
         {
-            
         }
 
         /// <summary>

@@ -95,7 +95,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             }
         }
 
-        private static void SaveModSettings(BloonsMod mod, string modSettingsDir)
+        private static void SaveModSettings(BloonsMod mod, string modSettingsDir, bool initialSave = false)
         {
             if (!Directory.Exists(modSettingsDir))
             {
@@ -111,17 +111,29 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 {
                     writer.WritePropertyName(item.Key);
                     writer.WriteValue(item.Value.GetValue());
+                    if (!initialSave)
+                    {
+                        try
+                        {
+                            item.Value?.OnSave();
+                        }
+                        catch (Exception e)
+                        {
+                            ModHelper.Warning($"Failed onSave action for setting {item.Key}");
+                            ModHelper.Warning(e);
+                        }
+                    }
                 }
                 writer.WriteEndObject();
             }
         }
 
-        internal static void SaveModSettings(string modSettingsDir)
+        internal static void SaveModSettings(string modSettingsDir, bool initialSave = false)
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
             {
                 if (!mod.ModSettings.Any()) continue;
-                SaveModSettings(mod, modSettingsDir);
+                SaveModSettings(mod, modSettingsDir, initialSave);
             }
             ModHelper.Msg("Successfully saved mod settings");
         }

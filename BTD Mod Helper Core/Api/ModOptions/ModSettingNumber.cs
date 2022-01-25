@@ -8,23 +8,23 @@ namespace BTD_Mod_Helper.Api.ModOptions
 {
     /// <summary>
     /// ModSetting class for a number, implying it can have a min/max value, and be an input or a slider
-    /// </summary>
-    public abstract class ModSettingNumber<T> : ModSetting<T> where T : unmanaged
+    /// </summary> 
+    public abstract class ModSettingNumber<T> : ModSetting<T> where T : unmanaged, IComparable<T>
     {
         /// <summary>
         /// The lowest allowed value, or null for unbounded
         /// </summary>
-        public T? minValue;
+        public T? min;
 
         /// <summary>
         /// The largest allowed value, or null for unbounded
         /// </summary>
-        public T? maxValue;
+        public T? max;
 
         /// <summary>
         /// Whether this displays as a slider
         /// </summary>
-        public bool isSlider;
+        public bool slider;
 
         /// <summary>
         /// Action to modify the ModHelperSlider after it's created
@@ -71,41 +71,59 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// </summary>
         protected abstract T FromFloat(float f);
 
+        private T Clamp(T v)
+        {
+            if (min != null && v.CompareTo(min.Value) < 0)
+            {
+                return min.Value;
+            }
+
+            if (max != null && v.CompareTo(max.Value) > 0)
+            {
+                return max.Value;
+            }
+
+            return v;
+        }
+
         /// <inheritdoc />
-        public override ModHelperComponent CreateComponent()
+        public override ModHelperOption CreateComponent()
         {
             var option = CreateBaseOption();
 
 
-            if (isSlider && minValue != null && maxValue != null)
+            if (slider && min != null && max != null)
             {
                 // ReSharper disable twice PossibleInvalidOperationException
-                var slider = option.AddSlider(
-                    new Info("Slider", 0, -50f, 1500, 100), ToFloat(defaultValue),
-                    ToFloat(minValue.Value), ToFloat(maxValue.Value), StepSize, new Vector2(150, 150),
+                var sliderComponent = option.BottomRow.AddSlider(
+                    new Info("Slider", width: 1500, height: 100), ToFloat(defaultValue),
+                    ToFloat(min.Value), ToFloat(max.Value), StepSize, new Vector2(150, 150),
                     new Action<float>(f =>
                     {
-                        var v = FromFloat(f);
+                        var v = Clamp(FromFloat(f));
                         SetValue(v);
                         onValueChanged?.Invoke(v);
-                    }), 80f, new Func<float, string>(f => ToString(FromFloat(f)))
+                    }), 80f
                 );
 
-                option.SetResetAction(new Action(() => slider.SetCurrentValue(ToFloat(defaultValue))));
-                modifySlider?.Invoke(slider);
+                var labelPosition = sliderComponent.Label.RectTransform.localPosition;
+                labelPosition.y *= -1;
+                sliderComponent.Label.RectTransform.localPosition = labelPosition;
+
+                option.SetResetAction(new Action(() => sliderComponent.SetCurrentValue(ToFloat(defaultValue))));
+                modifySlider?.Invoke(sliderComponent);
             }
             else
             {
-                var input = option.AddInputField(
-                    new Info("Input", 0, 0, 500, 150), ToString(value), VanillaSprites.BlueInsertPanelRound,
+                var input = option.BottomRow.AddInputField(
+                    new Info("Input", width: 500, height: 150), ToString(value), VanillaSprites.BlueInsertPanelRound,
                     new Action<string>(s =>
                     {
-                        var v = FromString(s);
+                        var v = Clamp(FromString(s));
                         SetValue(v);
                         onValueChanged?.Invoke(v);
                     }), 80f, Validation
                 );
-
                 option.SetResetAction(new Action(() => input.SetText(ToString(defaultValue))));
                 modifyInput?.Invoke(input);
             }

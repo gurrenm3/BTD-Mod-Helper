@@ -38,7 +38,8 @@ namespace BTD_Mod_Helper.Api.Components
             return Create<ModHelperPanel>(info, backgroundSprite, layoutAxis, spacing, padding);
         }
 
-        internal static T Create<T>(Info info, SpriteReference backgroundSprite = null,
+        /// <inheritdoc cref="Create"/>
+        protected static T Create<T>(Info info, SpriteReference backgroundSprite = null,
             RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
             where T : ModHelperPanel
         {

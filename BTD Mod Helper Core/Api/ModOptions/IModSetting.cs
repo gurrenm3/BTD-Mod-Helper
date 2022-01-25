@@ -41,7 +41,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Constructs a visual ModHelperComponent for this ModSetting
         /// </summary>
-        /// <returns>The constructed ModHelperComponent</returns>
-        ModHelperComponent CreateComponent();
+        /// <returns>The created ModHelperComponent</returns>
+        ModHelperOption CreateComponent();
+
+        /// <summary>
+        /// Perform the onSave action
+        /// </summary>
+        void OnSave();
+
+        /// <summary>
+        /// Gets the category that this is a part of, or null
+        /// </summary>
+        ModSettingCategory GetCategory();
     }
 }

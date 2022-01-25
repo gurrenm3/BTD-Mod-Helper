@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Reflection;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Extensions;
@@ -14,24 +15,29 @@ namespace BTD_Mod_Helper
     public static class ModHelper
     {
         #region ModHelperData for the Mod Helper
+
         internal const string Version = "3.0.0";
         internal const string RepoOwner = "gurrenm3";
         internal const string RepoName = "BTD-Mod-Helper";
         internal const bool ManualDownload = true;
         internal const string Description = "The mod that is allowing you to see this screen right now :P";
+
         #endregion
 
         /// <summary>
         /// Directory for where disabled mods are stored
         /// </summary>
         public static string DisabledModsDirectory => Path.Combine(MelonHandler.ModsDirectory, "Disabled");
+
         /// <summary>
         /// Directory where the Mod Helper stores most of its extra info
         /// </summary>
-        public static string ModHelperDirectory => ModContent.GetInstance<MelonMain>().GetModDirectory();
+        public static string ModHelperDirectory =>
+            Path.Combine(MelonHandler.ModsDirectory, Assembly.GetExecutingAssembly().GetName().Name);
+
         internal static string ZipTempDirectory => Path.Combine(ModHelperDirectory, "Zip Temp");
         internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
-        
+
         internal static void LoadAllMods()
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
@@ -63,6 +69,8 @@ namespace BTD_Mod_Helper
             }
         }
 
+        #region Console Messages
+
         /// <summary>
         /// Logs a message from the specified Mod's LoggerInstance
         /// </summary>
@@ -70,7 +78,7 @@ namespace BTD_Mod_Helper
         {
             ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
         }
-        
+
         /// <summary>
         /// Logs a message from the specified Mod's LoggerInstance
         /// </summary>
@@ -103,7 +111,7 @@ namespace BTD_Mod_Helper
         {
             Main.LoggerInstance.Msg(obj);
         }
-        
+
         /// <summary>
         /// Logs a message from the Mod Helper's LoggerInstance
         /// </summary>
@@ -127,6 +135,8 @@ namespace BTD_Mod_Helper
         {
             Main.LoggerInstance.Warning(obj);
         }
+
+        #endregion
 
         internal static BloonsMod Main => ModContent.GetInstance<MelonMain>();
 

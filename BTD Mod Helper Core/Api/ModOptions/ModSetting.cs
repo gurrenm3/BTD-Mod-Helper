@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 
@@ -11,7 +12,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
     public abstract class ModSetting<T> : IModSetting
     {
         internal T value;
-        internal readonly T defaultValue;
+        internal T defaultValue;
 
         /// <summary>
         /// The exact name displayed for this mod setting. If unset, will use the variable name.
@@ -29,14 +30,31 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public SpriteReference icon;
 
         /// <summary>
-        /// Action to call when the value changes. NOTE: is no longer applies to manual calls to SetValue
+        /// Action to call when the value changes. NOTE: this no longer applies to manual calls to SetValue
         /// </summary>
         public Action<T> onValueChanged;
+        
+        /// <summary>
+        /// Action to call when the value is saved, i.e. once they actually close the menu
+        /// </summary>
+        public Action<T> onSave;
 
         /// <summary>
         /// Action to modify the ModHelperOption after it's created
         /// </summary>
         public Action<ModHelperOption> modifyOption;
+
+        /// <summary>
+        /// The category that this is part of, or null
+        /// </summary>
+        public ModSettingCategory category;
+        
+        
+        /// <summary>
+        /// Old onValueChanged. 
+        /// </summary>
+        [Obsolete("Use onSave or onValueChanged instead")]
+        public List<Action<T>> OnValueChanged { get; set; } = new List<Action<T>>();
 
         /// <summary>
         /// Constructs a new ModSetting for the given value
@@ -88,7 +106,13 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public abstract ModHelperComponent CreateComponent();
+        public abstract ModHelperOption CreateComponent();
+
+        /// <inheritdoc />
+        public void OnSave()
+        {
+            onSave?.Invoke(value);
+        }
 
         /// <summary>
         /// Creates a base ModHelperOption component based on the name, description and icon of this
@@ -99,5 +123,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modifyOption?.Invoke(modHelperOption);
             return modHelperOption;
         }
+
+        /// <inheritdoc />
+        public ModSettingCategory GetCategory() => category;
     }
 }

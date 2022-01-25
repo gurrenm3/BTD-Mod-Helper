@@ -64,7 +64,7 @@ namespace BTD_Mod_Helper.Api.Components
             var scrollRect = newPanel.ScrollRect = newPanel.AddComponent<ScrollRect>();
 
             var scrollContent = newPanel.ScrollContent = newPanel.AddPanel(
-                new Info("ScrollContent", 0, 
+                new Info("ScrollContent",
                     anchorMin: new Vector2(
                         axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
                         axis == RectTransform.Axis.Horizontal ? 0 : 0.5f),

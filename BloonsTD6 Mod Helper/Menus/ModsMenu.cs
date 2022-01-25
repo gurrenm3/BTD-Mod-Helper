@@ -91,7 +91,7 @@ namespace BTD_Mod_Helper.Menus
 
             CreateRightMenu(modsMenu);
 
-            SetSelectedMod(GetInstance<MelonMain>().GetModHelperData());
+            SetSelectedMod(ModHelper.Main.GetModHelperData());
             Refresh();
 
             return false;
@@ -384,6 +384,7 @@ namespace BTD_Mod_Helper.Menus
             selectedModDescription.LayoutElement.preferredHeight = -1;
             selectedModDescription.Text.enableAutoSizing = true;
             selectedModDescription.Text.lineSpacing = 50;
+            selectedModDescription.Text.fontStyle = FontStyles.SmallCaps;
 
             var buttonsRow = selectedModPanel.AddPanel(new Info("ButtonRow", height: ModPanelHeight, flexWidth: 1));
 

@@ -74,11 +74,11 @@ namespace BTD_Mod_Helper.Api.Components
         /// <param name="handleSize">The height and width of the pip</param>
         /// <param name="onValueChanged">Action should happen when the slider changes value, or null</param>
         /// <param name="fontSize">The size of the label text</param>
-        /// <param name="getLabel">Function to apply to the value in order to get the label, like adding a '%', or null for default</param>
+        /// <param name="labelSuffix">String to add to the end of the label, e.g. "%"</param>
         /// <returns></returns>
         public static ModHelperSlider Create(Info info, float defaultValue, float minValue, float maxValue,
             float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
-            Il2CppSystem.Func<float, string> getLabel = null)
+            string labelSuffix = "")
         {
             var modHelperSlider = ModHelperComponent.Create<ModHelperSlider>(info);
             var slider = modHelperSlider.Slider = modHelperSlider.AddComponent<Slider>();
@@ -99,7 +99,8 @@ namespace BTD_Mod_Helper.Api.Components
             background.Background.color = new Color(.219f, .125f, .058f);
 
             var fillPanel = modHelperSlider.AddPanel(
-                new Info("FillPanel", width: info.Height / -4f, height: info.Height / -4f, anchorMin: Vector2.zero, anchorMax: Vector2.one)
+                new Info("FillPanel", width: info.Height / -4f, height: info.Height / -4f, anchorMin: Vector2.zero,
+                    anchorMax: Vector2.one)
             );
 
             var fill = modHelperSlider.Fill = fillPanel.AddPanel(
@@ -109,8 +110,10 @@ namespace BTD_Mod_Helper.Api.Components
             slider.fillRect = fill;
             slider.m_FillContainerRect = fillPanel;
 
+            var anchorPos = (defaultValue - minValue) / (maxValue - minValue);
+            
             modHelperSlider.DefaultNotch = modHelperSlider.AddImage(
-                new Info("DefaultNotch", 0, 0, 64, 136), VanillaSprites.SliderMarker
+                new Info("DefaultNotch", width: 64, height: 136, anchor: new Vector2(anchorPos, 0.5f)), VanillaSprites.SliderMarker
             );
 
             var handleContainer = modHelperSlider.AddPanel(
@@ -125,17 +128,18 @@ namespace BTD_Mod_Helper.Api.Components
             slider.m_HandleContainerRect = handleContainer;
 
             var label = modHelperSlider.Label = pip.AddText(
-                new Info("Value", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2), "", fontSize
+                new Info("Value", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2), 
+                defaultValue.ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize
             );
 
-            
+
             slider.onValueChanged.AddListener(new Action<float>(value =>
             {
                 var realValue = value / modHelperSlider.scaleFactor;
-                label.SetText(getLabel != null ? getLabel.Invoke(realValue) : realValue.ToString(CultureInfo.InvariantCulture));
+                label.SetText(realValue.ToString(CultureInfo.InvariantCulture) + labelSuffix);
                 onValueChanged?.Invoke(realValue);
             }));
-            
+
             modHelperSlider.SetCurrentValue(defaultValue);
 
             return modHelperSlider;

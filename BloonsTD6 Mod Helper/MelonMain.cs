@@ -10,21 +10,12 @@ using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Extensions;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
-using Assets.Scripts.SocialSharing;
 using Assets.Scripts.Unity.UI_New.Main;
-using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
-using BTD_Mod_Helper.BTD6_UI;
-using Il2CppSystem.Collections;
-using Octokit;
 using TMPro;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
-using UnityEngine.SceneManagement;
-using Object = UnityEngine.Object;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 namespace BTD_Mod_Helper
@@ -70,6 +61,11 @@ namespace BTD_Mod_Helper
             Task.Run(ModHelperGithub.PopulateMods);
 
             ModHelper.Log("Mod has finished loading");
+
+            /*VanillaSpriteGenerator.GenerateVanillaSprites(
+                @"C:\Users\jpgale\Documents\Coding\BTD-Mod-Helper\BloonsTD6 Mod Helper\Api\Enums\VanillaSprites.cs",
+                @"C:\Users\jpgale\Pictures\Dump\Sprites"
+            );*/
         }
 
         public static readonly ModSettingBool CleanProfile = true;
@@ -131,7 +127,7 @@ namespace BTD_Mod_Helper
 
         public override void OnTitleScreen()
         {
-            ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
+            ModSettingsHandler.SaveModSettings(this.GetModSettingsDir(), true);
 
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();
@@ -191,33 +187,41 @@ namespace BTD_Mod_Helper
 
         #region Autosave
 
+        public static readonly ModSettingCategory AutoSaveCategory = "Auto Save Settings";
+
         public static readonly ModSettingButton OpenBackupDir = new ModSettingButton(AutoSave.OpenBackupDir)
         {
             displayName = "Open Backup Directory",
-            buttonText = "Open"
+            buttonText = "Open",
+            category = AutoSaveCategory
         };
 
         public static readonly ModSettingButton OpenSaveDir = new ModSettingButton(AutoSave.OpenAutoSaveDir)
         {
             displayName = "Open Save Directory",
-            buttonText = "Open"
+            buttonText = "Open",
+            category = AutoSaveCategory
         };
 
-        public static readonly ModSettingString AutosavePath = new ModSettingString("")
+        public static readonly ModSettingString AutosavePath = new ModSettingString(Path.Combine(ModHelper.ModHelperDirectory, "Mod Settings"))
         {
             displayName = "Backup Directory",
-            onValueChanged = AutoSave.SetAutosaveDirectory
+            onSave = AutoSave.SetAutosaveDirectory,
+            category = AutoSaveCategory,
+            modifyInput = inputField => inputField.Text.Text.fontSize = 50
         };
 
         public static readonly ModSettingInt TimeBetweenBackup = new ModSettingInt(30)
         {
-            displayName = "Minutes Between Each Backup"
+            displayName = "Minutes Between Each Backup",
+            category = AutoSaveCategory
         };
 
         public static readonly ModSettingInt MaxSavedBackups = new ModSettingInt(10)
         {
             displayName = "Max Saved Backups",
-            onValueChanged = max => AutoSave.backup.SetMaxBackups(max)
+            onSave = max => AutoSave.backup.SetMaxBackups(max),
+            category = AutoSaveCategory
         };
 
         public override void OnMatchEnd() => AutoSave.backup.CreateBackup();

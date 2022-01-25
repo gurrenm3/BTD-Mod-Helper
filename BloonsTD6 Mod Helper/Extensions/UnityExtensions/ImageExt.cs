@@ -16,6 +16,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void SetSprite(this Image image, SpriteReference spriteReference)
         {
             ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
+            image.enabled = true;
         }
     }
 }

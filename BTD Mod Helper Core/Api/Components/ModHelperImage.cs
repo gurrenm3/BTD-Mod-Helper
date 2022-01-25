@@ -39,6 +39,10 @@ namespace BTD_Mod_Helper.Api.Components
             {
                 image.SetSprite(sprite);
             }
+            else
+            {
+                image.enabled = false;
+            }
 
             return modHelperImage;
         }

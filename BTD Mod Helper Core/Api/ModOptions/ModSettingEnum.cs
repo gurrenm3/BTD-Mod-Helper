@@ -40,12 +40,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public override ModHelperComponent CreateComponent()
+        public override ModHelperOption CreateComponent()
         {
             var option = CreateBaseOption();
 
-            var dropdown = option.AddDropdown(
-                new Info("Dropdown", -50, 0, 1000, 150), Enum.GetNames(typeof(T)).ToIl2CppList(), 500,
+            var dropdown = option.BottomRow.AddDropdown(
+                new Info("Dropdown", width: 1000, height: 150), Enum.GetNames(typeof(T)).ToIl2CppList(), 500,
                 new Action<int>(i =>
                 {
                     var e = (T) Enum.GetValues(typeof(T)).GetValue(i);

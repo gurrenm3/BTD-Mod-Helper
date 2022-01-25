@@ -8,6 +8,24 @@ namespace BTD_Mod_Helper.Api.ModOptions
     /// </summary>
     public class ModSettingInt : ModSettingNumber<long> //it's a long because of JSON parsing
     {
+        /// <summary>
+        /// Old way of doing min
+        /// </summary>
+        [Obsolete("Use min instead")]
+        public long? minValue;
+        
+        /// <summary>
+        /// Old way of doing max
+        /// </summary>
+        [Obsolete("Use max instead")]
+        public long? maxValue;
+        
+        /// <summary>
+        /// Old way of doing slider
+        /// </summary>
+        [Obsolete("Use slider instead")]
+        public bool isSlider;
+        
         /// <inheritdoc />
         public ModSettingInt(int value) : base(value)
         {

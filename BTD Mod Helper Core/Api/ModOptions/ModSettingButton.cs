@@ -44,12 +44,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public override ModHelperComponent CreateComponent()
+        public override ModHelperOption CreateComponent()
         {
             var option = CreateBaseOption();
 
-            var button = option.AddButton(
-                new Info("Button", 0, 0, 562, 200), buttonSprite, new Action(() =>
+            var button = option.BottomRow.AddButton(
+                new Info("Button", width: 562, height: 200), buttonSprite, new Action(() =>
                 {
                     SetValue(value + 1);
                     action?.Invoke();

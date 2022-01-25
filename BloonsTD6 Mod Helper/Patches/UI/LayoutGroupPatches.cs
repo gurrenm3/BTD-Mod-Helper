@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 if (__instance.GetComponent<ModHelperPanel>() != null)
                 {
                     var layoutElement = __instance.GetComponent<LayoutElement>();
-                    if (layoutElement != null)
+                    if (layoutElement.enabled && layoutElement.enabled)
                     {
                         __result = layoutElement.flexibleHeight;
                     }
@@ -35,7 +35,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 if (__instance.GetComponent<ModHelperPanel>() != null)
                 {
                     var layoutElement = __instance.GetComponent<LayoutElement>();
-                    if (layoutElement != null)
+                    if (layoutElement != null && layoutElement.enabled)
                     {
                         __result = layoutElement.flexibleWidth;
                     }
@@ -52,7 +52,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 if (__instance.GetComponent<ModHelperPanel>() != null)
                 {
                     var layoutElement = __instance.GetComponent<LayoutElement>();
-                    if (layoutElement != null)
+                    if (layoutElement != null && layoutElement.enabled)
                     {
                         __result = layoutElement.preferredHeight;
                     }
@@ -69,7 +69,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 if (__instance.GetComponent<ModHelperPanel>() != null)
                 {
                     var layoutElement = __instance.GetComponent<LayoutElement>();
-                    if (layoutElement != null)
+                    if (layoutElement != null && layoutElement.enabled)
                     {
                         __result = layoutElement.preferredWidth;
                     }
@@ -86,7 +86,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 if (__instance.GetComponent<ModHelperPanel>() != null)
                 {
                     var layoutElement = __instance.GetComponent<LayoutElement>();
-                    if (layoutElement != null)
+                    if (layoutElement != null && layoutElement.enabled)
                     {
                         __result = layoutElement.minHeight;
                     }
@@ -103,7 +103,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 if (__instance.GetComponent<ModHelperPanel>() != null)
                 {
                     var layoutElement = __instance.GetComponent<LayoutElement>();
-                    if (layoutElement != null)
+                    if (layoutElement != null && layoutElement.enabled)
                     {
                         __result = layoutElement.minWidth;
                     }

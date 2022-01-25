@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Helpers
 {
@@ -11,7 +10,9 @@ namespace BTD_Mod_Helper.Api.Helpers
     {
         private const string Tab = "    ";
 
-        internal static readonly HashSet<string> Names = new HashSet<string>();
+        // Sum names map to multiple Sprites. Keep them sorted by their guid so that they'll always be given the same number
+        internal static readonly Dictionary<string, SortedSet<string>> SpriteReferences =
+            new Dictionary<string, SortedSet<string>>();
 
         /// <summary>
         /// Generate the VanillaSprites.cs file
@@ -28,6 +29,18 @@ namespace BTD_Mod_Helper.Api.Helpers
             }
 
             var files = Directory.GetFiles(folder);
+            foreach (var file in files)
+            {
+                if (ParseFile(file, out var name, out var guid))
+                {
+                    if (!SpriteReferences.ContainsKey(name))
+                    {
+                        SpriteReferences[name] = new SortedSet<string>();
+                    }
+
+                    SpriteReferences[name].Add(guid);
+                }
+            }
 
             using (var vanillaSpritesFile = new StreamWriter(vanillaSpritesCs))
             {
@@ -39,23 +52,30 @@ namespace BTD_Mod_Helper.Api.Helpers
                 vanillaSpritesFile.WriteLine($"{Tab}public static class VanillaSprites");
                 vanillaSpritesFile.WriteLine($"{Tab}{{");
 
-                foreach (var file in files)
+                foreach (var (name, guids) in SpriteReferences)
                 {
-                    var line = GetLine(file);
-                    if (line != null)
+                    var i = 1;
+                    foreach (var guid in guids)
                     {
-                        vanillaSpritesFile.WriteLine(line);
+                        var realName = name + (i > 1 ? i.ToString() : "");
+                        vanillaSpritesFile.WriteLine(
+                            $"{Tab}{Tab}public static SpriteReference {realName} => ModContent.CreateSpriteReference(\"{guid}\");"
+                        );
+                        i++;
                     }
                 }
 
                 vanillaSpritesFile.WriteLine($"{Tab}}}");
                 vanillaSpritesFile.WriteLine("}");
             }
+
+            SpriteReferences.Clear();
         }
 
-        private static string GetLine(string file)
+        private static bool ParseFile(string file, out string name, out string guid)
         {
-            string name = null;
+            name = "";
+            guid = "";
             string originalName = null;
             using (var spriteDump = new StreamReader(file))
             {
@@ -67,7 +87,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                         name = FixName(originalName);
                     }
 
-                    if (line.Contains("GUID first"))
+                    if (line.Contains("GUID first") && !string.IsNullOrEmpty(name))
                     {
                         var ints = new uint[4];
                         for (var i = 0; i < 4; i++)
@@ -88,19 +108,20 @@ namespace BTD_Mod_Helper.Api.Helpers
                             spriteDump.ReadLine();
                             var atlas = spriteDump.ReadLine()?.Split('"')[1];
 
-                            return
-                                $"{Tab}{Tab}public static SpriteReference {name} => new SpriteReference(\"{atlas}[{originalName}]\");";
+                            guid = $"{atlas}[{originalName}]";
+                            return true;
                         }
 
                         var spriteReference = ModContent.CreateSpriteReference(ints);
 
-                        return
-                            $"{Tab}{Tab}public static SpriteReference {name} => ModContent.CreateSpriteReference(\"{spriteReference.GetGUID()}\");";
+                        guid = spriteReference.GetGUID();
+
+                        return true;
                     }
                 }
             }
 
-            return $"{Tab}{Tab}// Failed to find GUID for {name ?? file}";
+            return false;
         }
 
         private static string FixName(string name)
@@ -121,22 +142,6 @@ namespace BTD_Mod_Helper.Api.Helpers
             }
 
             name = Regex.Replace(name, @"[^A-Za-z0-9_]", "");
-
-            if (!Names.Contains(name))
-            {
-                Names.Add(name);
-            }
-            else
-            {
-                var i = 2;
-                while (Names.Contains(name + i))
-                {
-                    i++;
-                }
-
-                name += i;
-                Names.Add(name);
-            }
 
             return name;
         }

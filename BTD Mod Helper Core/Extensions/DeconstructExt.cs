@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -7,7 +8,6 @@ namespace BTD_Mod_Helper.Extensions
     /// </summary>
     public static class DeconstructExt
     {
-        
         /// <summary>
         /// Deconstruct a rectangle
         /// </summary>
@@ -20,12 +20,21 @@ namespace BTD_Mod_Helper.Extensions
         }
         
         /// <summary>
-        /// For some reason the Unity deconstruct isn't accessible in all places
+        /// For some reason the normal deconstruct isn't accessible in all places?
         /// </summary>
         public static void Deconstruct(this Vector2 vector2, out float x, out float y)
         {
             x = vector2.x;
             y = vector2.y;
+        }
+        
+        /// <summary>
+        /// For some reason the normal deconstruct isn't accessible in all places?
+        /// </summary>
+        public static void Deconstruct<T1, T2>(this KeyValuePair<T1, T2> kvp, out T1 t1, out T2 t2)
+        {
+            t1 = kvp.Key;
+            t2 = kvp.Value;
         }
     }
 }

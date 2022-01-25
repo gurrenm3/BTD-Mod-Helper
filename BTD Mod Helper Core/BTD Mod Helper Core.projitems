@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchLocalPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchScale.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperCategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperCheckbox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperComponent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\ModHelperDropdown.cs" />
@@ -42,7 +43,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\RoundSetType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\ScheduleType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\UpgradeType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\VanillaSprites.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\CostHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\GameModelExporter.cs" />
@@ -57,6 +57,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModHelperGithub.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\IModSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingCategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingNumber.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModsMenu\ModBrowser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModsMenu\ModHelperHttp.cs" />

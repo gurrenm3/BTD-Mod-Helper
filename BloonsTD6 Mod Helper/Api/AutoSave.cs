@@ -37,6 +37,7 @@ namespace BTD_Mod_Helper.Api
                 var autosaveDir = settingsDir + "\\Autosave";
                 Directory.CreateDirectory(autosaveDir);
                 AutosavePath.SetValue(autosaveDir);
+                AutosavePath.defaultValue = autosaveDir;
             }
         }
 

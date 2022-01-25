@@ -1,0 +1,38 @@
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <BloonsTD6>C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6</BloonsTD6>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Microsoft.CSharp"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\MelonLoader.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\Assembly-CSharp.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\Il2Cppmscorlib.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\Il2CppSystem.Core.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\mscorlib.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\Il2CppSystem.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\Newtonsoft.Json.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\NinjaKiwi.Common.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\NinjaKiwi.LiNK.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnhollowerBaseLib.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnhollowerRuntimeLib.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\Unity.ResourceManager.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\Unity.TextMeshPro.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.AnimationModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.AssetBundleModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.AudioModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.CoreModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.Il2CppAssetBundleManager.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.Il2CppImageConversionManager.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.ImageConversionModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.TextRenderingModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.UI.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.UIElementsModule.dll" />
+        <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.UIModule.dll" />
+    </ItemGroup>
+    <PropertyGroup Condition="'$(CustomPostBuild)' == ''">
+        <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "$(BloonsTD6)\Mods" /y</PostBuildEvent>
+    </PropertyGroup>
+</Project>

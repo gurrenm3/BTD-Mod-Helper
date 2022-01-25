@@ -9,6 +9,24 @@ namespace BTD_Mod_Helper.Api.ModOptions
     public class ModSettingDouble : ModSettingNumber<double>
     {
         /// <summary>
+        /// Old way of doing min
+        /// </summary>
+        [Obsolete("Use min instead")]
+        public double? minValue;
+        
+        /// <summary>
+        /// Old way of doing max
+        /// </summary>
+        [Obsolete("Use max instead")]
+        public double? maxValue;
+        
+        /// <summary>
+        /// Old way of doing slider
+        /// </summary>
+        [Obsolete("Use slider instead")]
+        public bool isSlider;
+        
+        /// <summary>
         /// Step size to use for slider, or how much to round the input
         /// </summary>
         public float stepSize = .01f;
@@ -32,6 +50,14 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public static implicit operator double(ModSettingDouble modSettingDouble)
         {
             return modSettingDouble.value;
+        }
+        
+        /// <summary>
+        /// Gets the current value out of a ModSetting
+        /// </summary>
+        public static implicit operator float(ModSettingDouble modSettingDouble)
+        {
+            return (float) modSettingDouble.value;
         }
 
         /// <inheritdoc />
