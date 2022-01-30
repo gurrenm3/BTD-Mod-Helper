@@ -1,6 +1,4 @@
 ﻿using System;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
@@ -20,16 +18,16 @@ namespace BTD_Mod_Helper.Api.Components
         /// The aspect ratio of LongBtn sprites, since they aren't sliced for some reason lol
         /// </summary>
         public const float LongBtnRatio = 2.81f;
-        
+
         /// <summary>
         /// The displayed image of the button
         /// </summary>
-        public Image Image { get; private set; }
+        public Image Image => GetComponent<Image>();
 
         /// <summary>
         /// The actual button component
         /// </summary>
-        public Button Button { get; private set; }
+        public Button Button => GetComponent<Button>();
 
         /// <inheritdoc />
         public ModHelperButton(IntPtr ptr) : base(ptr)
@@ -48,11 +46,11 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var modHelperButton = ModHelperComponent.Create<ModHelperButton>(info);
 
-            var image = modHelperButton.Image = modHelperButton.AddComponent<Image>();
+            var image = modHelperButton.AddComponent<Image>();
             image.type = Image.Type.Sliced;
             image.SetSprite(sprite);
 
-            var button = modHelperButton.Button = modHelperButton.AddComponent<Button>();
+            var button = modHelperButton.AddComponent<Button>();
             if (onClick != null)
             {
                 button.onClick.AddListener(onClick.Invoke);
@@ -61,7 +59,7 @@ namespace BTD_Mod_Helper.Api.Components
             button.transition = Selectable.Transition.Animation;
 
             var animator = modHelperButton.AddComponent<Animator>();
-            animator.runtimeAnimatorController = Animations.ButtonAnimation;
+            animator.runtimeAnimatorController = Animations.GlobalButtonAnimation;
 
             return modHelperButton;
         }

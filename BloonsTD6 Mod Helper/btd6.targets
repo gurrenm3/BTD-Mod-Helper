@@ -32,7 +32,10 @@
         <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.UIElementsModule.dll" />
         <Reference Include="$(BloonsTD6)\MelonLoader\Managed\UnityEngine.UIModule.dll" />
     </ItemGroup>
-    <PropertyGroup Condition="'$(CustomPostBuild)' == ''">
-        <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "$(BloonsTD6)\Mods" /y</PostBuildEvent>
-    </PropertyGroup>
+    <Target Name="MoveDllToMods" AfterTargets="Build" Condition="Exists('$(TargetDir)$(TargetName).dll')">
+        <Exec Command="copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(BloonsTD6)\Mods&quot; /y"/>
+    </Target>
+    <Target Name="MoveXmlToMods" AfterTargets="Build" Condition="Exists('$(TargetDir)$(TargetName).xml')">
+        <Exec Command="copy &quot;$(TargetDir)$(TargetName).xml&quot; &quot;$(BloonsTD6)\Mods&quot; /y"/>
+    </Target>
 </Project>

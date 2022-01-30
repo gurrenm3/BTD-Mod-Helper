@@ -2,6 +2,7 @@
 using Assets.Scripts.Unity.UI_New.Main;
 using Assets.Scripts.Unity.UI_New.Main.Home;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
@@ -10,7 +11,7 @@ using MelonLoader;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.Api.ModMenu
+namespace BTD_Mod_Helper.BTD6_UI
 {
     internal static class ModsButton
     {
@@ -35,7 +36,7 @@ namespace BTD_Mod_Helper.Api.ModMenu
             modsButton.GetComponentInChildren<Button>().SetOnClick(() => ModGameMenu.Open<ModsMenu>());
 
             var indicator = modsButton.GetComponentInChildrenByName<RectTransform>("ParagonAvailable");
-            indicator.gameObject.SetActive(ModHelperData.Data.Any(data => data.UpdateAvailable));
+            indicator.gameObject.SetActive(ModHelperData.All.Any(data => data.UpdateAvailable));
             indicator.Find("Glow").GetComponent<Image>().color = Color.green;
             indicator.Find("Icon").GetComponent<Image>().SetSprite(VanillaSprites.UpgradeBtn);
 

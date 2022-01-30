@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 if (__instance.GetComponent<ModHelperPanel>() != null)
                 {
                     var layoutElement = __instance.GetComponent<LayoutElement>();
-                    if (layoutElement.enabled && layoutElement.enabled)
+                    if (layoutElement != null && layoutElement.enabled)
                     {
                         __result = layoutElement.flexibleHeight;
                     }

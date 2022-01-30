@@ -4,7 +4,6 @@ namespace BTD_Mod_Helper.Api
 {
     internal class BlatantFavoritism
     {
-
         public static Color32 GetColor(string repoOwner)
         {
             switch (repoOwner)

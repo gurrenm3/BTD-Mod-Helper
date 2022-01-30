@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
+using Assets.Scripts.Unity.Audio;
+using Assets.Scripts.Unity.CollectionEvent;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New;
+using Assets.Scripts.Unity.UI_New.Achievements;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
+using Assets.Scripts.Unity.UI_New.Coop;
+using Assets.Scripts.Unity.UI_New.GameEvents;
+using Assets.Scripts.Unity.UI_New.HeroInGame;
+using Assets.Scripts.Unity.UI_New.LevelUp;
 using Assets.Scripts.Unity.UI_New.Main.PowersSelect;
 using Assets.Scripts.Unity.UI_New.Settings;
 using BTD_Mod_Helper.Api.Components;
@@ -32,6 +39,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public abstract string BaseMenu { get; }
 
+        public bool IsOpen { get; internal set; }
 
         /// <inheritdoc />
         public override void Register()
@@ -42,7 +50,7 @@ namespace BTD_Mod_Helper.Api
 
         /// <summary>
         /// Runs right as your custom menu is being opened, with the optional data argument that can be passed into
-        /// <see cref="Open{T}"/>
+        /// <see cref="Open{T}(Il2CppSystem.Object,Il2CppSystem.Object)"/>
         /// </summary>
         /// <returns>Whether to run the base menu's OnOpen code</returns>
         public abstract bool OnMenuOpened(GameMenu gameMenu, Object data);
@@ -100,10 +108,10 @@ namespace BTD_Mod_Helper.Api
         public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu
         {
             var modGameMenu = GetInstance<T>();
-
+            modGameMenu.IsOpen = true;
             MenuManager.instance.OpenMenu(modGameMenu.BaseMenu, new ModMenuData(modGameMenu.Id, data, baseData));
         }
-
+        
         internal static readonly Dictionary<Type, (string name, string data)> Types =
             new Dictionary<Type, (string name, string data)>
             {
@@ -111,7 +119,15 @@ namespace BTD_Mod_Helper.Api
                 {typeof(SettingsScreen), (SceneNames.SettingsUI, "menuData")},
                 {typeof(PowersSelectScreen), (SceneNames.PowersSelectUI, "data")},
                 //{typeof(TwitchSettingsUI), ("TwitchSettingsUI", "data")},
-                {typeof(HotkeysScreen), (SceneNames.HotkeysUI, "menuData")}
+                {typeof(HotkeysScreen), (SceneNames.HotkeysUI, "menuData")},
+                {typeof(JukeBoxScreen), (SceneNames.JukeboxUI, "data")},
+                {typeof(CollectionEventUI), (SceneNames.CollectionEventUI, "data")},
+                {typeof(AchievementsScreen), (SceneNames.AchievementsUI, "data")},
+                {typeof(PlaySocialScreen), (SceneNames.PlaySocial, "data")},
+                {typeof(GameEventsScreen), (SceneNames.GameEventsUI, "data")},
+                {typeof(HeroInGameScreen), (SceneNames.HeroInGameUI, "data")},
+                {typeof(LevelUpScreen), (SceneNames.LevelUpUI, "data")},
+                {typeof(ContentBrowser), (SceneNames.ContentBrowser, "data")}
             };
 
         internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony)

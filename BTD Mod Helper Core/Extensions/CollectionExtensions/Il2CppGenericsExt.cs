@@ -52,12 +52,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this List<T> il2CppList) where T : Il2CppSystem.Object
         {
-            var il2cppArray = new Il2CppReferenceArray<T>(il2CppList.Count);
-
-            for (var i = 0; i < il2CppList.Count; i++)
-                il2cppArray[i] = il2CppList[i];
-
-            return il2cppArray;
+            return new Il2CppReferenceArray<T>(il2CppList.ToArray());
         }
 
         /// <summary>
@@ -115,21 +110,7 @@ namespace BTD_Mod_Helper.Extensions
         public static bool HasItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            for (var i = 0; i < list.Count; i++)
-            {
-                TSource item = list[i];
-                try
-                {
-                    if (item.IsType<TCast>())
-                        return true;
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
-
-            return false;
+            return list.Any(o => o.IsType<TCast>());
         }
 
         /// <summary>
@@ -142,24 +123,7 @@ namespace BTD_Mod_Helper.Extensions
         public static TCast GetItemOfType<TSource, TCast>(this List<TSource> list) where TCast : Il2CppSystem.Object
             where TSource : Il2CppSystem.Object
         {
-            if (!HasItemsOfType<TSource, TCast>(list))
-                return null;
-
-            for (var i = 0; i < list.Count; i++)
-            {
-                TSource item = list[i];
-                try
-                {
-                    if (item.TryCast<TCast>() != null)
-                        return item.TryCast<TCast>();
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
-
-            return null;
+            return list.First(o => o.IsType<TCast>()).Cast<TCast>();
         }
 
         /// <summary>
@@ -172,25 +136,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<TCast> GetItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            if (!HasItemsOfType<TSource, TCast>(list))
-                return null;
-
-            var results = new List<TCast>();
-            for (var i = 0; i < list.Count; i++)
-            {
-                TSource item = list[i];
-                try
-                {
-                    if (item.IsType(out TCast tryCast))
-                        results.Add(tryCast);
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
-
-            return results;
+            return list.DuplicateAs<TSource, TCast>().Where(o => o != null);
         }
 
         /// <summary>
@@ -219,20 +165,12 @@ namespace BTD_Mod_Helper.Extensions
         public static List<TSource> RemoveItem<TSource, TCast>(this List<TSource> list, TCast itemToRemove)
             where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
         {
-            if (!HasItemsOfType<TSource, TCast>(list))
-                return list;
-
-            var newList = list;
-            for (var i = 0; i < list.Count; i++)
+            var itemOfType = itemToRemove ?? list.GetItemOfType<TSource, TCast>();
+            if (itemOfType != null)
             {
-                TSource item = list[i];
-                if (item is null || !item.Equals(itemToRemove.TryCast<TCast>()))
-                    continue;
-
-                newList.RemoveAt(i);
-                break;
+                list.Remove(itemOfType.Cast<TSource>());
             }
-            return newList;
+            return list;
         }
 
         /// <summary>
@@ -246,22 +184,8 @@ namespace BTD_Mod_Helper.Extensions
             where TSource : Il2CppSystem.Object
             where TCast : Il2CppSystem.Object
         {
-            if (!HasItemsOfType<TSource, TCast>(list))
-                return list;
-
-            var newList = list;
-            var numRemoved = 0;
-            for (var i = 0; i < list.Count; i++)
-            {
-                TSource item = list[i];
-                if (item is null || !item.IsType<TCast>())
-                    continue;
-
-                newList.RemoveAt(i - numRemoved);
-                numRemoved++;
-            }
-
-            return newList;
+            list.RemoveAll(new Func<TSource, bool>(item => item.IsType<TCast>()));
+            return list;
         }
     }
 }

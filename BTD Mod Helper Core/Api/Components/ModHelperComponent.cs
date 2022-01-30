@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Action = Il2CppSystem.Action;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api.Components
 {
@@ -20,7 +21,7 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The Info object that this was defined with, determining its initial name, position and size
         /// </summary>
-        public Info Info { get; protected set; }
+        public Info initialInfo;
 
         /// <summary>
         /// Bool for if this should disable itself on the next frame
@@ -35,7 +36,7 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The ModHelperComponent that this is a child of, if any
         /// </summary>
-        public ModHelperComponent Parent { get; private set; }
+        public ModHelperComponent parent;
 
         /// <summary>
         /// The RectTransform for this GameObject
@@ -45,13 +46,12 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The LayoutElement component, if this has been assigned one
         /// </summary>
-        public LayoutElement LayoutElement { get; protected set; }
+        public LayoutElement LayoutElement => GetComponent<LayoutElement>();
 
         /// <summary>
         /// The LayoutGroup component, if this has been assigned one
         /// </summary>
-        public HorizontalOrVerticalLayoutGroup LayoutGroup { get; protected set; }
-
+        public HorizontalOrVerticalLayoutGroup LayoutGroup => GetComponent<HorizontalOrVerticalLayoutGroup>();
 
         /// <inheritdoc />
         public ModHelperComponent(IntPtr ptr) : base(ptr)
@@ -61,26 +61,26 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// Sets a particular transform to be the parent of this
         /// </summary>
-        public void SetParent(Transform parent)
+        public void SetParent(Transform newParent)
         {
             var t = transform;
-            t.parent = parent;
-            Info.Apply(RectTransform);
+            t.parent = newParent;
+            initialInfo.Apply(RectTransform);
         }
 
         /// <summary>
         /// Sets a particular ModHelperComponent to be the parent of this
         /// </summary>
-        public void SetParent(ModHelperComponent parent)
+        public void SetParent(ModHelperComponent newParent)
         {
-            Parent = parent;
+            this.parent = newParent;
 
-            if (parent.LayoutGroup != null && !gameObject.HasComponent<ContentSizeFitter>())
+            if (newParent.LayoutGroup != null && !gameObject.HasComponent<ContentSizeFitter>())
             {
                 AddLayoutElement();
             }
 
-            SetParent(parent.transform);
+            SetParent(newParent.transform);
         }
 
         /// <summary>
@@ -105,13 +105,13 @@ namespace BTD_Mod_Helper.Api.Components
         {
             if (LayoutElement == null)
             {
-                LayoutElement = AddComponent<LayoutElement>();
+                AddComponent<LayoutElement>();
             }
 
-            LayoutElement.minWidth = LayoutElement.preferredWidth = Info.SizeDelta.x;
-            LayoutElement.minHeight = LayoutElement.preferredHeight = Info.SizeDelta.y;
-            LayoutElement.flexibleWidth = Info.FlexWidth;
-            LayoutElement.flexibleHeight = Info.FlexHeight;
+            LayoutElement.minWidth = LayoutElement.preferredWidth = initialInfo.SizeDelta.x;
+            LayoutElement.minHeight = LayoutElement.preferredHeight = initialInfo.SizeDelta.y;
+            LayoutElement.flexibleWidth = initialInfo.FlexWidth;
+            LayoutElement.flexibleHeight = initialInfo.FlexHeight;
 
             return LayoutElement;
         }
@@ -119,7 +119,8 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// Adds and returns a ContentSizeFitter with the given properties
         /// </summary>
-        public ContentSizeFitter FitContent(ContentSizeFitter.FitMode horizontal = ContentSizeFitter.FitMode.Unconstrained,
+        public ContentSizeFitter FitContent(
+            ContentSizeFitter.FitMode horizontal = ContentSizeFitter.FitMode.Unconstrained,
             ContentSizeFitter.FitMode vertical = ContentSizeFitter.FitMode.Unconstrained)
         {
             var contentSizeFitter = AddComponent<ContentSizeFitter>();
@@ -132,6 +133,22 @@ namespace BTD_Mod_Helper.Api.Components
             }
 
             return contentSizeFitter;
+        }
+
+        /// <summary>
+        /// Gets a descendent component with the given name
+        /// </summary>
+        public T GetDescendent<T>(string s) where T : Component
+        {
+            return gameObject.GetComponentInChildrenByName<T>(s);
+        }
+
+        /// <summary>
+        /// Sets whether or not this is active
+        /// </summary>
+        public void SetActive(bool active)
+        {
+            gameObject.SetActive(active);
         }
 
         /// <inheritdoc cref="ModHelperPanel.Create"/>
@@ -213,10 +230,19 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var newGameObject = new GameObject(info.Name, new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
             var modHelperComponent = newGameObject.AddComponent<T>();
-            modHelperComponent.Info = info;
+            modHelperComponent.initialInfo = info;
             info.Apply(modHelperComponent);
 
             return modHelperComponent;
+        }
+
+        /// <summary>
+        /// Applies the properties of an info struct to this
+        /// </summary>
+        public void SetInfo(Info newInfo)
+        {
+            initialInfo = newInfo;
+            newInfo.Apply(this);
         }
 
         private void Update()
@@ -251,6 +277,51 @@ namespace BTD_Mod_Helper.Api.Components
         public static implicit operator RectTransform(ModHelperComponent component)
         {
             return component.RectTransform;
+        }
+    }
+
+    /// <summary>
+    /// Extensions for mod helper components, for using generics and based on restricts for il2cpp objects
+    /// </summary>
+    public static class ModHelperComponentExt
+    {
+        /// <summary>
+        /// Adds the ModHelperComponent to a parent Transform, returning the ModHelperComponent
+        /// <br/>
+        /// (This is an extension method just so that we can return the type generically)
+        /// </summary>
+        public static T AddTo<T>(this T modHelperComponent, Transform parent) where T : ModHelperComponent
+        {
+            return parent.gameObject.AddModHelperComponent(modHelperComponent);
+        }
+
+
+        /// <summary>
+        /// Adds the ModHelperComponent to a parent GameObject, returning the ModHelperComponent
+        /// <br/>
+        /// (This is an extension method just so that we can return the type generically)
+        /// </summary>
+        public static T AddModHelperComponent<T>(this ModHelperComponent parentComponent, T modHelperComponent)
+            where T : ModHelperComponent
+        {
+            modHelperComponent.SetParent(parentComponent);
+            return modHelperComponent;
+        }
+
+
+        /// <summary>
+        /// Creates a copy of this ModHelperComponent with the same parent
+        /// </summary>
+        /// <param name="component">this</param>
+        /// <param name="name">Its new name</param>
+        public static T Duplicate<T>(this T component, string name) where T : ModHelperComponent
+        {
+            var gameObject = Object.Instantiate(component.gameObject, component.transform.parent);
+            var newComponent = gameObject.GetComponent<T>();
+            gameObject.name = name;
+
+            newComponent.SetInfo(component.initialInfo.Duplicate(name));
+            return newComponent;
         }
     }
 }

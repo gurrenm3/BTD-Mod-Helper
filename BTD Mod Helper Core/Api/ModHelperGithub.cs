@@ -6,8 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.ModMenu;
-using BTD_Mod_Helper.Menus;
 using MelonLoader;
+using Newtonsoft.Json;
 using Octokit;
 
 namespace BTD_Mod_Helper.Api
@@ -27,6 +27,13 @@ namespace BTD_Mod_Helper.Api
             "Please try again at a later time, and if it still doesn't work, contact the mod developer.";
 
         public static List<ModHelperData> Mods { get; private set; } = new List<ModHelperData>();
+
+        // Will be moved to checking from a json file within the mod helper repo
+        public static readonly HashSet<string> VerifiedModders = new HashSet<string>
+        {
+            "doombubbles",
+            "gurrenm3"
+        };
 
         public static GitHubClient Client { get; private set; }
 
@@ -60,13 +67,37 @@ namespace BTD_Mod_Helper.Api
 
             foreach (var modHelperData in Mods)
             {
-                ModHelper.Msg($"Found mod {modHelperData.Name} v{modHelperData.Version} with description: \"{modHelperData.Description}\"");
+                ModHelper.Msg(
+                    $"Found mod {modHelperData.Name} v{modHelperData.Version} with description: \"{modHelperData.Description}\"");
             }
 
             UpdateRateLimit();
         }
 
-        public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false)
+        public static async Task GetVerifiedModders()
+        {
+            try
+            {
+                var result = await ModHelperHttp.Client.GetStringAsync("");
+                var strings = JsonConvert.DeserializeObject<string[]>(result);
+                if (strings != null)
+                {
+                    foreach (var s in strings)
+                    {
+                        ModHelper.Msg($"Found verified modder {s}");
+                        VerifiedModders.Add(s);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning("Failed to get verified modders list");
+                ModHelper.Warning(e);
+            }
+        }
+
+        public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false,
+            Action<string> callback = null)
         {
             var latestRelease = mod.LatestRelease ?? await mod.GetLatestRelease();
             if (latestRelease == null)
@@ -75,41 +106,48 @@ namespace BTD_Mod_Helper.Api
                 return;
             }
 
-            // ReSharper disable once AsyncVoidLambda
-            var action = new Action(async () =>
+            var action = new Action(() =>
             {
-                try
+                Task.Run(async () =>
                 {
-                    var success = await DownloadRelease(mod, latestRelease);
-                    if (success)
+                    try
                     {
-                        return;
-                    }
-                }
-                catch (Exception e)
-                {
-                    ModHelper.Warning(e);
-                }
+                        var resultFile = await DownloadRelease(mod, latestRelease);
+                        if (resultFile != null)
+                        {
+                            if (callback != null && !string.IsNullOrWhiteSpace(resultFile))
+                            {
+                                callback(resultFile);
+                            }
 
-                PopupScreen.instance.ShowOkPopup($"Failed to download asset. {Sorry}");
+                            return;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ModHelper.Warning(e);
+                    }
+
+                    PopupScreen.instance.ShowOkPopup($"Failed to download asset. {Sorry}");
+                });
             });
 
             if (bypassPopup)
             {
-                await Task.Run(action);
+                action.Invoke();
             }
             else
             {
                 PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
-                    $"Do you want to download\n{mod.Name} {mod.RepoVersion}?",
-                    "Release Message:\n\"" + latestRelease.Body + "\"",
+                    $"Do you want to download\n{mod.Name} v{mod.RepoVersion}?",
+                    "Latest Release Message:\n\"" + latestRelease.Body + "\"",
                     action, "Yes", null, "No", Popup.TransitionAnim.Scale);
             }
 
             UpdateRateLimit();
         }
 
-        public static async Task<bool> DownloadRelease(ModHelperData mod, Release release)
+        public static async Task<string> DownloadRelease(ModHelperData mod, Release release)
         {
             try
             {
@@ -119,7 +157,7 @@ namespace BTD_Mod_Helper.Api
                 if (mod.ManualDownload)
                 {
                     Process.Start(releaseAsset.BrowserDownloadUrl);
-                    return true;
+                    return "";
                 }
 
                 return await DownloadAsset(mod, releaseAsset);
@@ -127,17 +165,18 @@ namespace BTD_Mod_Helper.Api
             catch (Exception e)
             {
                 ModHelper.Warning(e);
-                return false;
+                return null;
             }
         }
 
-        public static async Task<bool> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
+        public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
         {
             var name = mod.DllName ?? releaseAsset.Name;
             if (name == null || !name.EndsWith(".dll"))
             {
                 name = $"{mod.Mod.Assembly.GetName().Name}.dll";
             }
+
             var filePath = Path.Combine(MelonHandler.ModsDirectory, name);
             var oldModsFilePath = Path.Combine(ModHelper.OldModsDirectory, name);
 
@@ -188,11 +227,10 @@ namespace BTD_Mod_Helper.Api
 
                 if (success)
                 {
-                    PopupScreen.instance.ShowOkPopup($"Successfully downloaded {name}");
-                    mod.RestartRequired = true;
-                    ModsMenu.Refresh();
-
-                    return true;
+                    PopupScreen.instance.ShowOkPopup(
+                        $"Successfully downloaded {name}\nRemember to restart to apply the changes!");
+                    mod.SetVersion(mod.RepoVersion);
+                    return filePath;
                 }
             }
             catch (Exception e)
@@ -206,7 +244,7 @@ namespace BTD_Mod_Helper.Api
                 ModHelper.Msg($"Loading backup from {oldModsFilePath}");
             }
 
-            return false;
+            return null;
         }
 
 

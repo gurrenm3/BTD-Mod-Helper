@@ -39,5 +39,13 @@ namespace BTD_Mod_Helper.Api.Components
                 modGameMenu.OnMenuUpdate(gameMenu);
             }
         }
+
+        private void OnDestroy()
+        {
+            if (ModGameMenu.Cache.TryGetValue(modGameMenuId ?? "", out var modGameMenu))
+            {
+                modGameMenu.IsOpen = false;
+            }
+        }
     }
 }

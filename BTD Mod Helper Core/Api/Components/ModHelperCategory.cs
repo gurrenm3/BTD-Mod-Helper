@@ -18,12 +18,12 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The panel that holds all the mod settings
         /// </summary>
-        public ModHelperPanel CategoryContent { get; private set; }
+        public ModHelperPanel CategoryContent => GetDescendent<ModHelperPanel>("CategoryContent");
 
         /// <summary>
         /// Whether the category is hidden or not
         /// </summary>
-        public bool Collapsed { get; private set; }
+        public bool collapsed;
 
         /// <inheritdoc />
         public ModHelperCategory(IntPtr ptr) : base(ptr)
@@ -40,14 +40,14 @@ namespace BTD_Mod_Helper.Api.Components
         public static ModHelperCategory Create(string displayName, bool collapsed, SpriteReference icon = null)
         {
             var category = Create<ModHelperCategory>(displayName, "", icon);
-            category.Collapsed = collapsed;
+            category.collapsed = collapsed;
             category.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
 
             category.BottomRow.gameObject.active = false;
 
             category.Name.Text.fontStyle = FontStyles.Underline;
 
-            var content = category.CategoryContent = category.AddPanel(
+            var content = category.AddPanel(
                 new Info("CategoryContent", anchorMin: new Vector2(0, 0.5f), anchorMax: new Vector2(1, 0.5f)), null,
                 RectTransform.Axis.Vertical, 150
             );
@@ -55,16 +55,16 @@ namespace BTD_Mod_Helper.Api.Components
 
             var action = new Action<bool>(collapse =>
             {
-                category.Collapsed = collapse;
+                category.collapsed = collapse;
                 content.gameObject.active = !collapse;
-                var localScale = category.InfoButton.Parent.RectTransform.localScale;
-                localScale.y = category.Collapsed ? -1 : 1;
-                category.InfoButton.Parent.RectTransform.localScale = localScale;
+                var localScale = category.InfoButton.parent.RectTransform.localScale;
+                localScale.y = category.collapsed ? -1 : 1;
+                category.InfoButton.parent.RectTransform.localScale = localScale;
             });
             action(collapsed);
 
             category.InfoButton.Image.SetSprite(VanillaSprites.ArrowHideBtn);
-            category.InfoButton.Button.AddOnClick(() => action(!category.Collapsed));
+            category.InfoButton.Button.AddOnClick(() => action(!category.collapsed));
 
             return category;
         }

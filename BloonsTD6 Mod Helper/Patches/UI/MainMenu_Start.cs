@@ -1,12 +1,6 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
-using Assets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Components;
-using BTD_Mod_Helper.Api.ModMenu;
-using BTD_Mod_Helper.Extensions;
+using BTD_Mod_Helper.BTD6_UI;
 using HarmonyLib;
-using MelonLoader;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Patches.UI
 {

@@ -159,28 +159,6 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Adds the ModHelperComponent to a parent Transform, returning the ModHelperComponent
-        /// <br/>
-        /// (This is an extension method just so that we can return the type generically)
-        /// </summary>
-        public static T AddTo<T>(this T modHelperComponent, Transform parent) where T : ModHelperComponent
-        {
-            return parent.gameObject.AddModHelperComponent(modHelperComponent);
-        }
-
-        /// <summary>
-        /// Adds the ModHelperComponent to a parent GameObject, returning the ModHelperComponent
-        /// <br/>
-        /// (This is an extension method just so that we can return the type generically)
-        /// </summary>
-        public static T AddModHelperComponent<T>(this ModHelperComponent parentComponent, T modHelperComponent)
-            where T : ModHelperComponent
-        {
-            modHelperComponent.SetParent(parentComponent);
-            return modHelperComponent;
-        }
-
-        /// <summary>
         /// Adds the ModHelperComponent to a parent GameObject, returning the ModHelperComponent
         /// <br/>
         /// (This is an extension method just so that we can return the type generically)

@@ -89,7 +89,7 @@ namespace BTD_Mod_Helper.Api.Components
                 new Info(displayName, width: PanelWidth, height: PanelHeight)
             );
 
-            modHelperOption.LayoutGroup = modHelperOption.AddComponent<VerticalLayoutGroup>();
+            modHelperOption.AddComponent<VerticalLayoutGroup>();
             modHelperOption.LayoutGroup.childAlignment = TextAnchor.UpperCenter;
             modHelperOption.LayoutGroup.childForceExpandHeight = false;
             modHelperOption.LayoutGroup.childForceExpandWidth = false;

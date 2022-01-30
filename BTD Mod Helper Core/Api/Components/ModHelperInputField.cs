@@ -18,12 +18,12 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The InputField component
         /// </summary>
-        public NK_TextMeshProInputField InputField { get; private set; }
+        public NK_TextMeshProInputField InputField => GetComponent<NK_TextMeshProInputField>();
 
         /// <summary>
         /// The Text ModHelperComponent
         /// </summary>
-        public ModHelperText Text { get; private set; }
+        public ModHelperText Text => GetDescendent<ModHelperText>("Text");
 
         /// <summary>
         /// Gets the current value of the InputField
@@ -70,14 +70,13 @@ namespace BTD_Mod_Helper.Api.Components
 
             var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", anchorMin: Vector2.zero, anchorMax: Vector2.one));
 
-            var text = modHelperInputField.Text = textViewPort.AddText(
+            var text = textViewPort.AddText(
                 new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one, width: padding * -2),
                 defaultValue, fontSize, align
             );
 
 
-            var inputField = modHelperInputField.InputField =
-                modHelperInputField.AddComponent<NK_TextMeshProInputField>();
+            var inputField = modHelperInputField.AddComponent<NK_TextMeshProInputField>();
             inputField.characterValidation = validation;
             inputField.textComponent = text.Text;
             inputField.textViewport = textViewPort;

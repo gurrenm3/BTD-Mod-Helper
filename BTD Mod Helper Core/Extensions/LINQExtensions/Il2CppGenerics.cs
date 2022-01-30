@@ -1,5 +1,6 @@
 ﻿using Il2CppSystem.Collections.Generic;
 using System;
+using Il2CppSystem.Linq;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -17,12 +18,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T First<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            foreach (var item in source)
-            {
-                if (predicate(item))
-                    return item;
-            }
-            throw new NullReferenceException();
+            return Enumerable.First(source.Cast<IEnumerable<T>>(), predicate);
         }
 
         /// <summary>
@@ -34,12 +30,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T FirstOrDefault<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            foreach (var item in source)
-            {
-                if (predicate(item))
-                    return item;
-            }
-            return default;
+            return source.Cast<IEnumerable<T>>().FirstOrDefault(predicate);
         }
 
         /// <summary>
@@ -51,13 +42,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<T> Where<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            var result = new List<T>();
-            foreach (var item in source)
-            {
-                if (predicate(item))
-                    result.Add(item);
-            }
-            return result;
+            return Enumerable.Where(source.Cast<IEnumerable<T>>(), predicate).ToIl2CppList();
         }
 
         /// <summary>
@@ -69,13 +54,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static int FindIndex<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            for (var i = 0; i < source.Count; i++)
-            {
-                if (predicate(source[i]))
-                    return i;
-            }
-
-            return -1;
+            return source.FindIndex(predicate);
         }
 
         /// <summary>
@@ -115,7 +94,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T Last<T>(this List<T> source)
         {
-            return source[source.Count - 1];
+            return Enumerable.Last(source.Cast<IEnumerable<T>>());
         }
 
         /// <summary>
@@ -127,15 +106,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T LastOrDefault<T>(this List<T> source, Func<T, bool> predicate)
         {
-            T last = default;
-            for (var i = 0; i < source.Count; i++)
-            {
-                T item = source[i];
-                if (predicate(item))
-                    last = item;
-            }
-
-            return last;
+            return Enumerable.LastOrDefault(Enumerable.Where(source.Cast<IEnumerable<T>>(), predicate));
         }
 
         /// <summary>
@@ -146,7 +117,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T First<T>(this List<T> source)
         {
-            return source[0];
+            return Enumerable.First(source.Cast<IEnumerable<T>>());
         }
 
         /// <summary>
@@ -157,7 +128,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T FirstOrDefault<T>(this List<T> source)
         {
-            return source[0] == null ? default : source[0];
+            return Enumerable.FirstOrDefault(source.Cast<IEnumerable<T>>());
         }
     }
 }

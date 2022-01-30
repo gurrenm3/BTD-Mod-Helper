@@ -18,12 +18,12 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The Toggle component
         /// </summary>
-        public Toggle Toggle { get; private set; }
+        public Toggle Toggle => GetComponent<Toggle>();
 
         /// <summary>
         /// The ModHelperImage for the Checkmark
         /// </summary>
-        public ModHelperImage Check { get; private set; }
+        public ModHelperImage Check => GetDescendent<ModHelperImage>("Check");
 
         /// <summary>
         /// Whether it is currently checked or not
@@ -64,12 +64,12 @@ namespace BTD_Mod_Helper.Api.Components
             backgroundImage.type = Image.Type.Sliced;
             backgroundImage.SetSprite(background);
             
-            var check = modHelperCheckbox.Check = modHelperCheckbox.AddImage(
+            var check  = modHelperCheckbox.AddImage(
                 new Info("Check", anchorMin: Vector2.zero, anchorMax: Vector2.one, width: padding * -2,
                     height: padding * -2), checkImage ?? VanillaSprites.TickGreenIcon
             );
 
-            var toggle = modHelperCheckbox.Toggle = modHelperCheckbox.AddComponent<Toggle>();
+            var toggle = modHelperCheckbox.AddComponent<Toggle>();
             toggle.graphic = check.Image;
             if (onValueChanged != null)
             {

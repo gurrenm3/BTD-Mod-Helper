@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using Assets.Scripts.Unity.Utils;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
 using MelonLoader;
 using UnityEngine;
@@ -19,17 +17,17 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The actual Slider component
         /// </summary>
-        public Slider Slider { get; private set; }
+        public Slider Slider => GetComponent<Slider>();
 
         /// <summary>
         /// The panel that's the filled up bar part of the slider
         /// </summary>
-        public ModHelperPanel Fill { get; private set; }
+        public ModHelperPanel Fill => GetDescendent<ModHelperPanel>("Fill");
 
         /// <summary>
         /// The Default value, not scaled to anything
         /// </summary>
-        public float DefaultValue { get; private set; }
+        public float defaultValue;
 
         /// <summary>
         /// The real current value, scaled by the appropriate scale factor
@@ -39,12 +37,12 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The image showing where the default value is on the slider
         /// </summary>
-        public ModHelperImage DefaultNotch { get; private set; }
+        public ModHelperImage DefaultNotch => GetDescendent<ModHelperImage>("DefaultNotch");
 
         /// <summary>
         /// The text that's on the notch of the slider
         /// </summary>
-        public ModHelperText Label { get; private set; }
+        public ModHelperText Label => GetDescendent<ModHelperText>("Label");
 
         private float scaleFactor = 1;
 
@@ -81,7 +79,7 @@ namespace BTD_Mod_Helper.Api.Components
             string labelSuffix = "")
         {
             var modHelperSlider = ModHelperComponent.Create<ModHelperSlider>(info);
-            var slider = modHelperSlider.Slider = modHelperSlider.AddComponent<Slider>();
+            var slider = modHelperSlider.AddComponent<Slider>();
             slider.direction = Slider.Direction.LeftToRight;
 
             if (stepSize > 0)
@@ -90,7 +88,7 @@ namespace BTD_Mod_Helper.Api.Components
                 slider.wholeNumbers = true;
             }
 
-            modHelperSlider.DefaultValue = defaultValue;
+            modHelperSlider.defaultValue = defaultValue;
             slider.minValue = minValue * modHelperSlider.scaleFactor;
             slider.maxValue = maxValue * modHelperSlider.scaleFactor;
             var background = modHelperSlider.AddPanel(
@@ -103,7 +101,7 @@ namespace BTD_Mod_Helper.Api.Components
                     anchorMax: Vector2.one)
             );
 
-            var fill = modHelperSlider.Fill = fillPanel.AddPanel(
+            var fill = fillPanel.AddPanel(
                 new Info("Fill", anchorMin: Vector2.zero, anchorMax: Vector2.one), VanillaSprites.SmallSquareWhite
             );
             fill.Background.color = new Color(.5f, 1, 0);
@@ -111,9 +109,10 @@ namespace BTD_Mod_Helper.Api.Components
             slider.m_FillContainerRect = fillPanel;
 
             var anchorPos = (defaultValue - minValue) / (maxValue - minValue);
-            
-            modHelperSlider.DefaultNotch = modHelperSlider.AddImage(
-                new Info("DefaultNotch", width: 64, height: 136, anchor: new Vector2(anchorPos, 0.5f)), VanillaSprites.SliderMarker
+
+            modHelperSlider.AddImage(
+                new Info("DefaultNotch", width: 64, height: 136, anchor: new Vector2(anchorPos, 0.5f)),
+                VanillaSprites.SliderMarker
             );
 
             var handleContainer = modHelperSlider.AddPanel(
@@ -127,8 +126,8 @@ namespace BTD_Mod_Helper.Api.Components
             slider.handleRect = pip;
             slider.m_HandleContainerRect = handleContainer;
 
-            var label = modHelperSlider.Label = pip.AddText(
-                new Info("Value", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2), 
+            var label = pip.AddText(
+                new Info("Label", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2),
                 defaultValue.ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize
             );
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Utils;
 using MelonLoader;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,17 +16,17 @@ namespace BTD_Mod_Helper.Api.Components
         /// The ScrollContent object. This is the object that the children are actually part of,
         /// and is what actually moves up and down when scrolling.
         /// </summary>
-        public ModHelperPanel ScrollContent { get; private set; }
+        public ModHelperPanel ScrollContent => GetDescendent<ModHelperPanel>("ScrollContent");
 
         /// <summary>
         /// The ScrollRect component which controls many aspects of scrolling
         /// </summary>
-        public ScrollRect ScrollRect { get; private set; }
+        public ScrollRect ScrollRect => GetComponent<ScrollRect>();
 
         /// <summary>
         /// The Mask component which prevents overflow of rendering outside the scroll area
         /// </summary>
-        public Mask Mask { get; private set; }
+        public Mask Mask => GetComponent<Mask>();
 
         /// <summary>
         /// The ContentSizeFitter component which makes sure that the ScrollContent
@@ -61,9 +60,9 @@ namespace BTD_Mod_Helper.Api.Components
             SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
         {
             var newPanel = Create<ModHelperScrollPanel>(info, backgroundSprite);
-            var scrollRect = newPanel.ScrollRect = newPanel.AddComponent<ScrollRect>();
+            var scrollRect = newPanel.AddComponent<ScrollRect>();
 
-            var scrollContent = newPanel.ScrollContent = newPanel.AddPanel(
+            var scrollContent = newPanel.AddPanel(
                 new Info("ScrollContent",
                     anchorMin: new Vector2(
                         axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
@@ -72,14 +71,14 @@ namespace BTD_Mod_Helper.Api.Components
                         axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
                         axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)), null, axis, spacing, padding);
             scrollContent.transform.parent = newPanel;
-            scrollContent.AddComponent<NK_TextMeshProUGUI>();  // so that everywhere in the content window is draggable
+            scrollContent.AddComponent<NK_TextMeshProUGUI>(); // so that everywhere in the content window is draggable
 
             scrollRect.content = scrollContent.RectTransform;
             scrollRect.content.pivot = new Vector2(0.5f, 1);
             scrollRect.viewport = newPanel.RectTransform;
             scrollRect.scrollSensitivity = 100;
 
-            newPanel.Mask = newPanel.AddComponent<Mask>();
+            newPanel.AddComponent<Mask>();
 
             if (axis != null)
             {

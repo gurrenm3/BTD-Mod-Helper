@@ -12,14 +12,9 @@ namespace BTD_Mod_Helper.Api.Components
     public class ModHelperText : ModHelperComponent
     {
         /// <summary>
-        /// Default BTD6 font
-        /// </summary>
-        public static TMP_FontAsset luckiestGuy;
-
-        /// <summary>
         /// The component that handles the Text rendering
         /// </summary>
-        public NK_TextMeshProUGUI Text { get; private set; }
+        public NK_TextMeshProUGUI Text => GetComponent<NK_TextMeshProUGUI>();
 
 
         /// <inheritdoc />
@@ -48,12 +43,12 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var modHelperText = ModHelperComponent.Create<ModHelperText>(info);
 
-            var textMesh = modHelperText.Text = modHelperText.AddComponent<NK_TextMeshProUGUI>();
+            var textMesh = modHelperText.AddComponent<NK_TextMeshProUGUI>();
 
             textMesh.SetText(text);
             textMesh.alignment = align;
             textMesh.fontSize = fontSize;
-            textMesh.font = luckiestGuy;
+            textMesh.font = Fonts.Btd6FontTitle;
             textMesh.overflowMode = TextOverflowModes.Ellipsis;
             textMesh.lineSpacing = fontSize / 2;
 

@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The background image
         /// </summary>
-        public Image Background { get; private set; }
+        public Image Background => GetComponent<Image>();
 
         /// <inheritdoc />
         public ModHelperPanel(IntPtr ptr) : base(ptr)
@@ -47,21 +47,21 @@ namespace BTD_Mod_Helper.Api.Components
 
             if (backgroundSprite != null)
             {
-                modHelperPanel.Background = modHelperPanel.AddComponent<Image>();
-                modHelperPanel.Background.type = Image.Type.Sliced;
-                modHelperPanel.Background.SetSprite(backgroundSprite);
+                var background = modHelperPanel.AddComponent<Image>();
+                background.type = Image.Type.Sliced;
+                background.SetSprite(backgroundSprite);
             }
 
             if (layoutAxis != null)
             {
                 if (layoutAxis == RectTransform.Axis.Horizontal)
                 {
-                    modHelperPanel.LayoutGroup = modHelperPanel.AddComponent<HorizontalLayoutGroup>();
+                    modHelperPanel.AddComponent<HorizontalLayoutGroup>();
                     modHelperPanel.LayoutGroup.childAlignment = TextAnchor.MiddleLeft;
                 }
                 else
                 {
-                    modHelperPanel.LayoutGroup = modHelperPanel.AddComponent<VerticalLayoutGroup>();
+                    modHelperPanel.AddComponent<VerticalLayoutGroup>();
                     modHelperPanel.LayoutGroup.childAlignment = TextAnchor.UpperCenter;
                 }
 

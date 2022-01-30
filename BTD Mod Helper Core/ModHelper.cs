@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Extensions;
@@ -37,6 +39,7 @@ namespace BTD_Mod_Helper
 
         internal static string ZipTempDirectory => Path.Combine(ModHelperDirectory, "Zip Temp");
         internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
+        internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
 
         internal static void LoadAllMods()
         {
@@ -55,18 +58,7 @@ namespace BTD_Mod_Helper
                     Error(e);
                 }
             }
-
-            foreach (var melonMod in MelonHandler.Mods)
-            {
-                try
-                {
-                    ModHelperData.Load(melonMod);
-                }
-                catch (Exception e)
-                {
-                    Warning(e);
-                }
-            }
+            ModHelperData.LoadAll();
         }
 
         #region Console Messages

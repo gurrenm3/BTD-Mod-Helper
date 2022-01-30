@@ -47,10 +47,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <PropertyGroup>
-    <CustomPostBuild>true</CustomPostBuild>
-  </PropertyGroup>
-  <Import Project="btd6.targets" />
+  <!--So that you can override the C: specific targets without changing the one that gets included in git-->
+  <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" /> 
+  <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
   <ItemGroup>
     <Compile Include="Api\AutoSave.cs" />
     <Compile Include="Api\BackupCreator.cs" />
@@ -64,6 +63,7 @@
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
     <Compile Include="BTD6 UI\ModdedModeMenu.cs" />
     <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
+    <Compile Include="BTD6 UI\ModsButton.cs" />
     <Compile Include="BTD6 UI\TitleScreenUI.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
@@ -161,6 +161,7 @@
     <Compile Include="Patches\Towers\Tower_UnHighlight.cs" />
     <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
     <Compile Include="Patches\UI\CoopQuickMatchScreen_Open.cs" />
+    <Compile Include="Patches\UI\GameMenu_PlayCloseAnimation.cs" />
     <Compile Include="Patches\UI\HeroButton_Init.cs" />
     <Compile Include="Patches\UI\HeroInGameScreen_Open.cs" />
     <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
@@ -206,7 +207,7 @@
       <Version>2.0.18.2</Version>
     </PackageReference>
     <PackageReference Include="Octokit">
-      <Version>0.50.0.0</Version>
+      <Version>0.50.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +225,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="btd6.targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DownloadBtn.png" />
   </ItemGroup>
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

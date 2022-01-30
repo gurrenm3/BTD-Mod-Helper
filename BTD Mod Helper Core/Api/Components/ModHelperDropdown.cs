@@ -21,32 +21,32 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The Image being displayed
         /// </summary>
-        public Image Background { get; private set; }
+        public Image Background => GetComponent<Image>();
 
         /// <summary>
         /// The Text which shows the currently selected value
         /// </summary>
-        public ModHelperText Text { get; private set; }
+        public ModHelperText Text => GetDescendent<ModHelperText>("DropdownText");
 
         /// <summary>
         /// The component which handles the dropdown
         /// </summary>
-        public TMP_Dropdown Dropdown { get; private set; }
+        public TMP_Dropdown Dropdown => GetComponent<TMP_Dropdown>();
 
         /// <summary>
         /// The Arrow image
         /// </summary>
-        public ModHelperImage Arrow { get; private set; }
+        public ModHelperImage Arrow => GetDescendent<ModHelperImage>("Arrow");
 
         /// <summary>
         /// The template object for the window of the dropdown
         /// </summary>
-        public ModHelperScrollPanel TemplatePanel { get; private set; }
+        public ModHelperScrollPanel TemplatePanel => GetDescendent<ModHelperScrollPanel>("Template");
 
         /// <summary>
         /// The default item in the template
         /// </summary>
-        public ModHelperPanel TemplateItem { get; private set; }
+        public ModHelperPanel TemplateItem => TemplatePanel.GetDescendent<ModHelperPanel>("Item");
 
         /// <inheritdoc />
         public ModHelperDropdown(IntPtr ptr) : base(ptr)
@@ -74,10 +74,10 @@ namespace BTD_Mod_Helper.Api.Components
 
             var modHelperDropdown = ModHelperComponent.Create<ModHelperDropdown>(info);
 
-            var text = modHelperDropdown.Text = modHelperDropdown.AddText(
+            var text = modHelperDropdown.AddText(
                 new Info("DropdownText", anchorMin: Vector2.zero, anchorMax: Vector2.one), "", labelFontSize);
 
-            var dropdown = modHelperDropdown.Dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
+            var dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
             dropdown.captionText = text.Text;
             dropdown.ClearOptions();
             dropdown.AddOptions(options);
@@ -89,24 +89,24 @@ namespace BTD_Mod_Helper.Api.Components
 
             if (background != null)
             {
-                var image = dropdown.image = modHelperDropdown.Background = modHelperDropdown.AddComponent<Image>();
+                var image = dropdown.image = modHelperDropdown.AddComponent<Image>();
                 image.SetSprite(background);
                 image.type = Image.Type.Sliced;
             }
 
-            modHelperDropdown.Arrow = modHelperDropdown.AddImage(
-                new Info("Arrow", -64, 0, 64, 40, anchor: new Vector2(1, 0.5f)), VanillaSprites.MonkeyKnowledgeArrow);
+            modHelperDropdown.AddImage(
+                new Info("Arrow", -64, 0, 64, 40, anchor: new Vector2(1, 0.5f)), VanillaSprites.MonkeyKnowledgeArrow
+            );
 
 
-            var template = modHelperDropdown.TemplatePanel =
-                modHelperDropdown.AddScrollPanel(
+            var template = modHelperDropdown.AddScrollPanel(
                     new Info("Template", 0, height / -2 - realHeight / 2, width, realHeight),
                     RectTransform.Axis.Vertical, VanillaSprites.UISprite);
             template.Background.color = new Color(0.262f, 0.435f, 0.658f);
             dropdown.template = template;
             template.disableNextFrame = true;
 
-            var item = modHelperDropdown.TemplateItem =
+            var item =
                 ModHelperPanel.Create(new Info("Item", width: width, height: height));
             var toggle = item.AddComponent<Toggle>();
             toggle.transition = (Selectable.Transition) Toggle.ToggleTransition.Fade;

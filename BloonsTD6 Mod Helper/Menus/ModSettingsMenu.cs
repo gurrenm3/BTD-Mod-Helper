@@ -13,8 +13,15 @@ namespace BTD_Mod_Helper.Menus
     {
         private BloonsMod bloonsMod;
 
+        private Animator animator;
+
+        private CanvasGroup canvasGroup;
+
+        private bool closing = false;
+
         public override bool OnMenuOpened(HotkeysScreen gameMenu, Object data)
         {
+            closing = false;
             var gameObject = gameMenu.gameObject;
             gameObject.DestroyAllChildren();
 
@@ -25,7 +32,13 @@ namespace BTD_Mod_Helper.Menus
                 new Info("ScrollPanel", anchorMin: Vector2.zero, anchorMax: Vector2.one),
                 RectTransform.Axis.Vertical, null, 150, 300
             );
-
+            
+            animator = scrollPanel.AddComponent<Animator>();
+            animator.runtimeAnimatorController = Animations.PopupAnim;
+            animator.speed = .65f;
+            animator.Rebind();
+            
+            canvasGroup = scrollPanel.AddComponent<CanvasGroup>();
 
             foreach (var (category, modSettings) in bloonsMod.ModSettings.Values
                          .GroupBy(setting => setting.GetCategory())
@@ -38,7 +51,7 @@ namespace BTD_Mod_Helper.Menus
                     scrollPanel.AddScrollContent(categoryOption);
                     content = categoryOption.CategoryContent;
                 }
-                
+
                 foreach (var modSetting in modSettings)
                 {
                     var modHelperOption = modSetting.CreateComponent();
@@ -54,8 +67,18 @@ namespace BTD_Mod_Helper.Menus
             return false;
         }
 
+        public override void OnMenuUpdate(HotkeysScreen gameMenu)
+        {
+            if (closing)
+            {
+                canvasGroup.alpha -= .07f;
+            }
+        }
+
         public override void OnMenuClosed(HotkeysScreen gameMenu)
         {
+            closing = true;
+            animator.Play("PopupSlideOut");
             // Task.Run(() => ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir()));
         }
 

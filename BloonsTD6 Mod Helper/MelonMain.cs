@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
-using TMPro;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 namespace BTD_Mod_Helper
@@ -59,7 +58,8 @@ namespace BTD_Mod_Helper
             ModGameMenu.PatchAllTheOpens(HarmonyInstance);
 
             Task.Run(ModHelperGithub.PopulateMods);
-
+            // Task.Run(ModHelperGithub.GetVerifiedModders);
+            
             ModHelper.Log("Mod has finished loading");
 
             /*VanillaSpriteGenerator.GenerateVanillaSprites(
@@ -123,7 +123,6 @@ namespace BTD_Mod_Helper
                 if (Input.GetKey(key)) ModHelper.PerformHook(mod => mod.OnKeyHeld(key));
             }
         }
-
 
         public override void OnTitleScreen()
         {

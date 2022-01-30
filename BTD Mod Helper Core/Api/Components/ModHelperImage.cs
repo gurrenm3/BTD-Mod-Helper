@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// The Image being displayed
         /// </summary>
-        public Image Image { get; private set; }
+        public Image Image => GetComponent<Image>();
 
         /// <inheritdoc />
         public ModHelperImage(IntPtr ptr) : base(ptr)
@@ -34,7 +34,7 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
 
-            var image = modHelperImage.Image = modHelperImage.AddComponent<Image>();
+            var image = modHelperImage.AddComponent<Image>();
             if (sprite != null)
             {
                 image.SetSprite(sprite);
@@ -52,7 +52,7 @@ namespace BTD_Mod_Helper.Api.Components
         {
             var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
 
-            var image = modHelperImage.Image = modHelperImage.AddComponent<Image>();
+            var image = modHelperImage.AddComponent<Image>();
             if (sprite != null)
             {
                 image.SetSprite(sprite);
