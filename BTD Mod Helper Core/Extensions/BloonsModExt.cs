@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-﻿using System;
-=======
+
 ﻿using MelonLoader;
 using System;
 using System.Collections.Generic;
->>>>>>> eb8b52930ea24a638f09912fd859da1e02a5931d
 using System.IO;
 
 namespace BTD_Mod_Helper.Extensions
@@ -28,11 +25,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static string GetModDirectory(this BloonsMod bloonsMod)
         {
-<<<<<<< HEAD
-            return MelonLoader.MelonHandler.ModsDirectory+"\\"+bloonsMod.GetModName();
-=======
-            return $"{MelonHandler.ModsDirectory}\\{bloonsMod.GetModName()}";
->>>>>>> eb8b52930ea24a638f09912fd859da1e02a5931d
+            return MelonHandler.ModsDirectory+"\\"+bloonsMod.GetModName();
         }
 
         /// <summary>
