@@ -43,6 +43,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// Action to modify the ModHelperOption after it's created
         /// </summary>
         public Action<ModHelperOption> modifyOption;
+        
+        
+        /// <summary>
+        /// Will only save the result and run onSave if this custom function validates the value
+        /// </summary>
+        public Func<T, bool> customValidation;
 
         /// <summary>
         /// The category that this is part of, or null
@@ -110,9 +116,14 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public abstract ModHelperOption CreateComponent();
 
         /// <inheritdoc />
-        public void OnSave()
+        public bool OnSave()
         {
+            if (customValidation != null && !customValidation(value))
+            {
+                return false;
+            }
             onSave?.Invoke(value);
+            return true;
         }
 
         /// <summary>

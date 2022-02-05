@@ -178,6 +178,11 @@ namespace BTD_Mod_Helper.Api.Towers
         public abstract int BottomPathUpgrades { get; }
 
         /// <summary>
+        /// Whether to always make this tower be included in challenges / Bosses / Odysseys etc
+        /// </summary>
+        public virtual bool AlwaysIncludeInChallenge => true;
+
+        /// <summary>
         /// Constructor for ModTower, used implicitly by ModContent.Create
         /// </summary>
         protected ModTower()

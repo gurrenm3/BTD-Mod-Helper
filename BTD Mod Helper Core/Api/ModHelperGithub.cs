@@ -19,7 +19,7 @@ namespace BTD_Mod_Helper.Api
         private const string Topic = "btd6-mod";
         private const string ProductName = "btd-mod-helper";
         private const string VerifiedModdersURL = "";
-
+        
         private const string DllContentType = "application/x-msdownload";
         private const string ZipContentType = "application/zip";
         private const string ZipContentType2 = "application/x-zip-compressed";
@@ -71,7 +71,7 @@ namespace BTD_Mod_Helper.Api
         {
             try
             {
-                var result = await ModHelperHttp.Client.GetStringAsync("");
+                var result = await ModHelperHttp.Client.GetStringAsync(VerifiedModdersURL);
                 var strings = JsonConvert.DeserializeObject<string[]>(result);
                 if (strings != null)
                 {

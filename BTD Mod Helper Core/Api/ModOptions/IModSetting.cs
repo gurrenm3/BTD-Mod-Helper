@@ -45,9 +45,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
         ModHelperOption CreateComponent();
 
         /// <summary>
-        /// Perform the onSave action
+        /// Validates the current value using the customValidation function, if there is one.
+        /// If there were no issues, performs the onSave action
         /// </summary>
-        void OnSave();
+        bool OnSave();
 
         /// <summary>
         /// Gets the category that this is a part of, or null

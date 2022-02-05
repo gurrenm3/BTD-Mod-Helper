@@ -140,13 +140,9 @@ namespace BTD_Mod_Helper.Api
             var resource = mod.Assembly
                 .GetManifestResourceNames()
                 .FirstOrDefault(s => s.EndsWith(assemblyPath));
-            if (resource != null && mod.Assembly.GetManifestResourceStream(resource) is Stream stream)
+            if (resource != null)
             {
-                using (var memoryStream = new MemoryStream())
-                {
-                    stream.CopyTo(memoryStream);
-                    IconBytes = memoryStream.ToArray();
-                }
+                IconBytes = mod.Assembly.GetManifestResourceStream(resource).GetByteArray();
             }
             else
             {
@@ -529,14 +525,7 @@ namespace BTD_Mod_Helper.Api
                                         file.Name.Replace(".dll", ".png"));
                                     if (File.Exists(iconFile))
                                     {
-                                        using (var fs2 = new FileStream(iconFile, FileMode.Open))
-                                        {
-                                            using (var memory = new MemoryStream())
-                                            {
-                                                await fs2.CopyToAsync(memory);
-                                                data.IconBytes = memory.ToArray();
-                                            }
-                                        }
+                                        data.IconBytes = new FileStream(iconFile, FileMode.Open).GetByteArray();
                                     }
                                     else
                                     {

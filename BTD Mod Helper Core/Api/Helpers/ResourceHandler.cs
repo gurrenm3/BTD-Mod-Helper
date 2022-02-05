@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Unity.Display;
-using MelonLoader;
+using BTD_Mod_Helper.Extensions;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api
@@ -24,19 +24,17 @@ namespace BTD_Mod_Helper.Api
             mod.Resources = new Dictionary<string, byte[]>();
             foreach (var fileName in mod.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("png")))
             {
-                using (var memoryStream = new MemoryStream())
+                var resource = mod.Assembly.GetManifestResourceStream(fileName).GetByteArray();
+                if (resource == null)
                 {
-                    if (mod.Assembly.GetManifestResourceStream(fileName) is Stream stream)
-                    {
-                        stream.CopyTo(memoryStream);
-                        var split = fileName.Split('.');
-                        var name = split[split.Length - 2];
-                        var guid = mod.IDPrefix + name;
-                        var resource = memoryStream.ToArray();
-                        Resources[guid] = resource;
-                        mod.Resources[name] = resource;
-                    }
+                    continue;
                 }
+
+                var split = fileName.Split('.');
+                var name = split[split.Length - 2];
+                var guid = mod.IDPrefix + name;
+                Resources[guid] = resource;
+                mod.Resources[name] = resource;
             }
         }
 
@@ -44,38 +42,36 @@ namespace BTD_Mod_Helper.Api
         {
             foreach (var name in mod.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
             {
-                using (var memoryStream = new MemoryStream())
+                var bytes = mod.Assembly.GetManifestResourceStream(name).GetByteArray();
+                if (bytes == null)
                 {
-                    if (mod.Assembly.GetManifestResourceStream(name) is Stream stream)
-                    {
-                        stream.CopyTo(memoryStream);
-                        var bundle = AssetBundle.LoadFromMemory(memoryStream.ToArray());
-                        var guid = mod.IDPrefix;
-                        if (bundle == null)
-                        {
-                            ModHelper.Log($"The bundle {name} is null!");
-                            continue;
-                        }
-
-                        if (string.IsNullOrEmpty(bundle.name))
-                        {
-                            ModHelper.Log($"The bundle {name} has no name!");
-                            continue;
-                        }
-
-                        if (bundle.name.EndsWith(".bundle"))
-                        {
-                            guid += bundle.name.Substring(0, bundle.name.LastIndexOf("."));
-                        }
-                        else
-                        {
-                            guid += bundle.name;
-                        }
-
-                        Bundles[guid] = bundle;
-                        // ModHelper.Msg("Successfully loaded bundle " + guid);
-                    }
+                    continue;
                 }
+                var bundle = AssetBundle.LoadFromMemory(bytes);
+                var guid = mod.IDPrefix;
+                if (bundle == null)
+                {
+                    ModHelper.Log($"The bundle {name} is null!");
+                    continue;
+                }
+
+                if (string.IsNullOrEmpty(bundle.name))
+                {
+                    ModHelper.Log($"The bundle {name} has no name!");
+                    continue;
+                }
+
+                if (bundle.name.EndsWith(".bundle"))
+                {
+                    guid += bundle.name.Substring(0, bundle.name.LastIndexOf(".", StringComparison.Ordinal));
+                }
+                else
+                {
+                    guid += bundle.name;
+                }
+
+                Bundles[guid] = bundle;
+                // ModHelper.Msg("Successfully loaded bundle " + guid);
             }
         }
 

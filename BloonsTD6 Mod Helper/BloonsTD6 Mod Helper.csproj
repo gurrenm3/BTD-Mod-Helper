@@ -118,6 +118,7 @@
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
     <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
+    <Compile Include="Patches\DailyChallengeModel_Clone.cs" />
     <Compile Include="Patches\GameModel_CreateModded.cs" />
     <Compile Include="Patches\InGame_GetRoundHint.cs" />
     <Compile Include="Patches\InGame_Quit.cs" />
@@ -176,6 +177,7 @@
     <Compile Include="Patches\UI\StandardTowerPurchaseButtonPatches.cs" />
     <Compile Include="Patches\UI\LayoutGroupPatches.cs" />
     <Compile Include="Patches\UI\TitleScreen_Start.cs" />
+    <Compile Include="Patches\UI\TowerImageLoader_GetBgSprite.cs" />
     <Compile Include="Patches\UI\TowerSelectionMenu_IsUpgradePathClosed.cs" />
     <Compile Include="Patches\UI\TowerSelectionMenu_UpgradeTower.cs" />
     <Compile Include="Patches\UI\TowerSetBgSprites_GetSprite.cs" />

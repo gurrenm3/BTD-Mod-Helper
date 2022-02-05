@@ -109,20 +109,27 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 writer.WriteStartObject();
                 foreach (var (key, modSetting) in mod.ModSettings)
                 {
-                    writer.WritePropertyName(key);
-                    writer.WriteValue(modSetting.GetValue());
                     if (!initialSave)
                     {
                         try
                         {
-                            modSetting?.OnSave();
+                            if (modSetting?.OnSave() == true)
+                            {
+                                writer.WritePropertyName(key);
+                                writer.WriteValue(modSetting.GetValue());
+                            }
                         }
                         catch (Exception e)
                         {
                             ModHelper.Warning($"Failed onSave action for setting {key}");
                             ModHelper.Warning(e);
                         }
-                        modSetting.SetComponent(null);
+                        modSetting?.SetComponent(null);
+                    }
+                    else
+                    {
+                        writer.WritePropertyName(key);
+                        writer.WriteValue(modSetting.GetValue());
                     }
                 }
                 writer.WriteEndObject();

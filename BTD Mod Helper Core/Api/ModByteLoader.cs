@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Api
         internal static bool loadedAllBytes;
 
         private static Task currentLoadTask;
-        
+
         /// <summary>
         /// The array of object that NinjaKiwi programmed the loader to utilize
         /// </summary>
@@ -72,7 +72,7 @@ namespace BTD_Mod_Helper.Api
                         {
                             modByteLoader.OnBytesLoaded();
                             ModHelper.Log($"{modByteLoader.Name} finished loading bytes");
-                            
+
                             // Free up the memory
                             modByteLoader.m = null;
                             modByteLoader.Bytes = null;
@@ -103,18 +103,11 @@ namespace BTD_Mod_Helper.Api
         {
             var streamName = mod.Assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(BytesFileName));
 
-            if (streamName != null && mod.Assembly.GetManifestResourceStream(streamName) is Stream stream)
-            {
-                using (var memoryStream = new MemoryStream())
-                {
-                    stream.CopyTo(memoryStream);
-                    Bytes = memoryStream.ToArray();
-                }
-            }
-            else
+            Bytes = mod.Assembly.GetManifestResourceStream(streamName).GetByteArray();
+            if (Bytes == null)
             {
                 ModHelper.Warning($"Couldn't find bytes file {BytesFileName} in Assembly {mod.GetModName()}. " +
-                                    "Did you forget to include it as an embedded resource?");
+                                  "Did you forget to include it as an embedded resource?");
             }
 
             yield return this;

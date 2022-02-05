@@ -39,8 +39,14 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// InputField validation, use one of the ModSettingString.[thing] constants 
         /// </summary>
+        [Obsolete("Use characterValidation instead")]
         public string validation;
 
+        /// <summary>
+        /// Validation for the input field, determining which characters are allowed
+        /// </summary>
+        public TMP_InputField.CharacterValidation characterValidation;
+        
         /// <inheritdoc />
         public ModSettingString(string value) : base(value)
         {
@@ -62,14 +68,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return modSettingString.value;
         }
 
-        /// <summary>
-        /// Gets the current Validation option
-        /// </summary>
-        public TMP_InputField.CharacterValidation Validation =>
-            Enum.TryParse(validation, out TMP_InputField.CharacterValidation val)
-                ? val
-                : TMP_InputField.CharacterValidation.None;
-
         /// <inheritdoc />
         public override ModHelperOption CreateComponent()
         {
@@ -81,7 +79,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 {
                     SetValue(s);
                     onValueChanged?.Invoke(s);
-                }), 80f, Validation
+                }), 80f, characterValidation
             );
 
             option.SetResetAction(new Action(() => input.SetText(defaultValue)));

@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
-using HarmonyLib;
 using MelonLoader;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
@@ -61,6 +60,18 @@ namespace BTD_Mod_Helper
 
             Task.Run(ModHelperGithub.PopulateMods);
             // Task.Run(ModHelperGithub.GetVerifiedModders);
+            
+            if (Directory.Exists(ModSourcesFolder))
+            {
+                try
+                {
+                    CreateTargetsFile(ModSourcesFolder);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
 
             ModHelper.Log("Mod has finished loading");
 
@@ -80,13 +91,16 @@ namespace BTD_Mod_Helper
 
         private static readonly ModSettingBool AutoHideModdedClientPopup = false;
 
+        private static readonly ModSettingCategory ModMaking = "Mod Making";
+
         private static readonly ModSettingButton OpenLocalDirectory = new ModSettingButton
         {
             displayName = "Open Local Files Directory",
             action = () => Process.Start(FileIOUtil.sandboxRoot),
             buttonText = "Open",
             description =
-                "This is the 'Sandbox Root' directory that many vanilla and modded services use to dump files into."
+                "This is the 'Sandbox Root' directory that many vanilla and modded services use to dump files into.",
+            category = ModMaking
         };
 
         private static readonly ModSettingButton ExportGameModel = new ModSettingButton
@@ -101,9 +115,19 @@ namespace BTD_Mod_Helper
                 PopupScreen.instance.ShowOkPopup(
                     $"Finished exporting Game Model to {FileIOUtil.sandboxRoot}");
             },
-            buttonText = "Export"
+            buttonText = "Export",
+            category = ModMaking
         };
 
+        private static readonly ModSettingString ModSourcesFolder =
+            new ModSettingString(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "BTD6 Mods"))
+            {
+                category = ModMaking,
+                description = "The folder where you keep the source codes for Mods",
+                customValidation = Directory.Exists,
+                onSave = CreateTargetsFile
+            };
 
         private static bool afterTitleScreen;
 
@@ -125,6 +149,21 @@ namespace BTD_Mod_Helper
             NotificationMgr.CheckForNotifications();
         }
 
+        public static void CreateTargetsFile(string path)
+        {
+            var targets = Path.Combine(path, "btd6.targets");
+            using (var fs = new StreamWriter(targets))
+            using (var stream =
+                   ModHelper.Main.Assembly.GetManifestResourceStream("BTD_Mod_Helper.btd6.targets"))
+            using (var reader = new StreamReader(stream))
+            {
+                var text = reader.ReadToEnd().Replace(
+                    @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",
+                    MelonUtils.GameDirectory);
+                fs.Write(text);
+            }
+        }
+        
         private static void KeyCodeHooks()
         {
             foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
