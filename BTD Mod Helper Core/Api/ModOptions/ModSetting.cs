@@ -48,8 +48,9 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// The category that this is part of, or null
         /// </summary>
         public ModSettingCategory category;
-        
-        
+
+        internal ModHelperOption currentOption;
+
         /// <summary>
         /// Old onValueChanged. 
         /// </summary>
@@ -126,5 +127,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         /// <inheritdoc />
         public ModSettingCategory GetCategory() => category;
+
+        /// <inheritdoc />
+        public ModHelperOption GetComponent()
+        {
+            return currentOption;
+        }
+
+        /// <inheritdoc />
+        public void SetComponent(ModHelperOption component)
+        {
+            currentOption = component;
+        }
     }
 }

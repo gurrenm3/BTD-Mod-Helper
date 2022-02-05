@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.ModOptions;
 using MelonLoader;
 using UnityEngine;
@@ -18,8 +17,16 @@ namespace BTD_Mod_Helper
         /// </summary>
         public IReadOnlyList<ModContent> Content { get; internal set; }
 
-        internal Dictionary<string, IModSetting> ModSettings;
-        
+        /// <summary>
+        /// The settings in this mod organized by name
+        /// </summary>
+        public Dictionary<string, IModSetting> ModSettings { get; internal set; }
+
+        /// <summary>
+        /// The embedded resources of this mod
+        /// </summary>
+        public Dictionary<string, byte[]> Resources { get; internal set; }
+
         /// <summary>
         /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods
         /// </summary>

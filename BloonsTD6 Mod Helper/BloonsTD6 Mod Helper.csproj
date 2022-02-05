@@ -56,6 +56,7 @@
     <Compile Include="Api\ByteWaitTask.cs" />
     <Compile Include="Api\Enums\VanillaSprites.cs" />
     <Compile Include="Api\ModContentTask.cs" />
+    <Compile Include="Api\PreLoadResourcesTask.cs" />
     <Compile Include="Api\ProfileManagement.cs" />
     <Compile Include="Api\SessionData.cs" />
     <Compile Include="BloonsTD6Mod.cs" />

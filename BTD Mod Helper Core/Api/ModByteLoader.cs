@@ -21,6 +21,11 @@ namespace BTD_Mod_Helper.Api
         internal static bool loadedAllBytes;
 
         private static Task currentLoadTask;
+        
+        /// <summary>
+        /// The array of object that NinjaKiwi programmed the loader to utilize
+        /// </summary>
+        protected object[] m;
 
         /// <summary>
         /// Whether the Result has been Loaded yet
@@ -67,6 +72,10 @@ namespace BTD_Mod_Helper.Api
                         {
                             modByteLoader.OnBytesLoaded();
                             ModHelper.Log($"{modByteLoader.Name} finished loading bytes");
+                            
+                            // Free up the memory
+                            modByteLoader.m = null;
+                            modByteLoader.Bytes = null;
                         }
                         catch (Exception e)
                         {
@@ -96,9 +105,11 @@ namespace BTD_Mod_Helper.Api
 
             if (streamName != null && mod.Assembly.GetManifestResourceStream(streamName) is Stream stream)
             {
-                var memoryStream = new MemoryStream();
-                stream.CopyTo(memoryStream);
-                Bytes = memoryStream.ToArray();
+                using (var memoryStream = new MemoryStream())
+                {
+                    stream.CopyTo(memoryStream);
+                    Bytes = memoryStream.ToArray();
+                }
             }
             else
             {
@@ -218,7 +229,7 @@ namespace BTD_Mod_Helper.Api
 
                 loader = loader.Replace("\tpublic", "\tprotected override");
                 loader = loader.Replace("object[] m;",
-                    $"protected override string BytesFileName => \"{bytesFileName}\";\n\tobject[] m;");
+                    $"protected override string BytesFileName => \"{bytesFileName}\";");
 
                 foreach (var reference in References)
                 {

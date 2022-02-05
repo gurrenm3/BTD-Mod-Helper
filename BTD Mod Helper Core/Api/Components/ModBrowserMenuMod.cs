@@ -143,11 +143,11 @@ namespace BTD_Mod_Helper.Api.Components
                 var success = await modHelperData.LoadIconFromRepoAsync();
                 if (success)
                 {
-                    mod.iconAction = new System.Action(() =>
+                    mod.iconAction = () =>
                     {
                         mod.IconPanel.SetActive(true);
                         mod.Icon.Image.SetSprite(modHelperData.GetIcon());
-                    });
+                    };
                 }
             });
 

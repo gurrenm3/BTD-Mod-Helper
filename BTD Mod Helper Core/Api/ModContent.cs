@@ -282,7 +282,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         public static bool TextureExists(BloonsMod bloonsMod, string name)
         {
-            return ResourceHandler.resources.ContainsKey(GetTextureGUID(bloonsMod, name));
+            return ResourceHandler.Resources.ContainsKey(GetTextureGUID(bloonsMod, name));
         }
 
         /// <summary>
@@ -534,7 +534,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public static BloonsMod GetMod(string name)
         {
-            return MelonHandler.Mods.OfType<BloonsMod>().FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
+            return ModHelper.Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
         }
 
 

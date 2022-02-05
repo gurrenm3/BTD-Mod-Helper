@@ -28,8 +28,9 @@ namespace BTD_Mod_Helper.Patches
             tasks.Remove(gameModelLoad);
             tasks.Add(new Task(CustomGameModelLoadName, Main.__c.__9__47_8).Cast<ITask>());
             tasks.Add(new ByteWaitTask().CreateTask());
+            tasks.Add(new PreLoadResourcesTask().CreateTask());
 
-            tasks.AddRange(MelonHandler.Mods.OfType<BloonsMod>()
+            tasks.AddRange(ModHelper.Mods
                 .Where(mod => mod.Content.Count > 0)
                 .OrderBy(mod => mod.Priority)
                 .Select(mod => new ModContentTask {mod = mod})

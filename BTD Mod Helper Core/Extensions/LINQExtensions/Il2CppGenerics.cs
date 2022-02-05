@@ -30,7 +30,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static T FirstOrDefault<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
         {
-            return source.Cast<IEnumerable<T>>().FirstOrDefault(predicate);
+            return Enumerable.FirstOrDefault(source.Cast<IEnumerable<T>>(), predicate);
         }
 
         /// <summary>

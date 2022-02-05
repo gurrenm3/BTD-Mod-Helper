@@ -7,10 +7,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.Updater;
+using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using MelonLoader;
 using Octokit;
 using UnityEngine;
+using FileMode = System.IO.FileMode;
 
 namespace BTD_Mod_Helper.Api
 {
@@ -24,7 +26,7 @@ namespace BTD_Mod_Helper.Api
     {
         private const string ModHelperDataName = "ModHelperData.cs";
         private const string ModHelperDataName2 = "ModHelperData.txt";
-        protected const string DefaultIcon = "Icon.png";
+        private const string DefaultIcon = "Icon.png";
 
         private const string VersionRegex = "\\bVersion\\s*=\\s*\"([.0-9]+)\";?[\n\r]+";
         private const string NameRegex = "\\bName\\s*=\\s*\"(.+)\";?[\n\r]+";
@@ -54,6 +56,7 @@ namespace BTD_Mod_Helper.Api
 
         private static readonly Dictionary<string, MethodInfo> Setters;
         private static readonly Dictionary<string, MethodInfo> Getters;
+        private Sprite icon;
 
         /// <summary>
         /// Statically gets the Setters and Getters for easier accessing of the serialized fields
@@ -153,9 +156,10 @@ namespace BTD_Mod_Helper.Api
 
         internal static IEnumerable<ModHelperData> All => Active.Concat(Inactive);
 
-        protected byte[] IconBytes { get; private protected set; }
-        internal bool HasNoIcon { get; private protected set; }
+        internal byte[] IconBytes { get; private set; }
+        internal bool HasNoIcon { get; private set; }
 
+        // These public properties are the serialized ones
         public string Version { get; protected set; }
         public string Name { get; protected set; }
         public string Description { get; protected set; }
@@ -196,62 +200,40 @@ namespace BTD_Mod_Helper.Api
         internal bool UpdateAvailable =>
             !RestartRequired && RepoDataSuccess && RepoVersion != null && UpdaterHttp.IsUpdate(Version, RepoVersion);
 
-        public void ReadValuesFromString(string data)
+        private void ReadValuesFromString(string data)
         {
-            if (Regex.Match(data, VersionRegex) is Match versionMatch && versionMatch.Success)
-            {
-                Version = versionMatch.Groups[1].Value;
-            }
-
-            if (Regex.Match(data, NameRegex) is Match nameMatch && nameMatch.Success)
-            {
-                Name = nameMatch.Groups[1].Value;
-            }
-
-            if (Regex.Match(data, DescRegex) is Match descMatch && descMatch.Success)
-            {
-                Description = descMatch.Groups[1].Captures.Cast<Capture>().Select(c => c.Value).Join(delimiter: "");
-            }
-
-            if (Regex.Match(data, IconRegex) is Match iconMatch && iconMatch.Success)
-            {
-                Icon = iconMatch.Groups[1].Value;
-            }
-
-            if (Regex.Match(data, DllRegex) is Match dllMatch && dllMatch.Success)
-            {
-                DllName = dllMatch.Groups[1].Value;
-            }
-
-            if (Regex.Match(data, RepoNameRegex) is Match repoNameMatch && repoNameMatch.Success)
-            {
-                RepoName = repoNameMatch.Groups[1].Value;
-            }
-
-            if (Regex.Match(data, RepoOwnerRegex) is Match repoOwnerMatch && repoOwnerMatch.Success)
-            {
-                RepoOwner = repoOwnerMatch.Groups[1].Value;
-            }
-
-            if (Regex.Match(data, ManualDownloadRegex) is Match manualDownloadMatch && manualDownloadMatch.Success)
-            {
-                ManualDownload = bool.Parse(manualDownloadMatch.Groups[1].Value);
-            }
-
-            if (Regex.Match(data, ZipRegex) is Match zipMatch && zipMatch.Success)
-            {
-                ZipName = zipMatch.Groups[1].Value;
-            }
-
-            if (Regex.Match(data, AuthorRegex) is Match authorMatch && authorMatch.Success)
-            {
-                Author = authorMatch.Groups[1].Value;
-            }
+            Version = GetRegexMatch<string>(data, VersionRegex);
+            Name = GetRegexMatch<string>(data, NameRegex);
+            Description = GetRegexMatch<string>(data, DescRegex, true);
+            Icon = GetRegexMatch<string>(data, IconRegex);
+            DllName = GetRegexMatch<string>(data, DllRegex);
+            RepoName = GetRegexMatch<string>(data, RepoNameRegex);
+            RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex);
+            ManualDownload = GetRegexMatch<bool>(data, ManualDownloadRegex);
+            ZipName = GetRegexMatch<string>(data, ZipRegex);
+            Author = GetRegexMatch<string>(data, AuthorRegex);
         }
 
-        public static ModHelperData GetModHelperData(MelonMod mod)
+        private static T GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
         {
-            return Cache.TryGetValue(mod, out var data) ? data : null;
+            if (Regex.Match(data, regex) is Match match && match.Success)
+            {
+                var matchGroup = match.Groups[1];
+                var result = allowMultiline
+                    ? matchGroup.Captures.Cast<Capture>().Select(c => c.Value).Join(delimiter: "")
+                    : matchGroup.Value;
+                if (typeof(T) == typeof(string))
+                {
+                    return (T) (object) result;
+                }
+
+                if (typeof(T) == typeof(bool))
+                {
+                    return (T) (object) (bool.TryParse(result, out var b) ? b : default);
+                }
+            }
+
+            return default;
         }
 
         public static void Load(MelonMod mod)
@@ -299,7 +281,7 @@ namespace BTD_Mod_Helper.Api
 
                 ReadValuesFromString(data);
 
-                if (HasRequiredData())
+                if (HasRequiredRepoData())
                 {
                     RepoDataSuccess = true;
                     RepoVersion = Version;
@@ -319,7 +301,7 @@ namespace BTD_Mod_Helper.Api
             }
         }
 
-        public bool HasRequiredData()
+        public bool HasRequiredRepoData()
         {
             return Version != null && RepoName != null && RepoOwner != null;
         }
@@ -344,6 +326,17 @@ namespace BTD_Mod_Helper.Api
 
         public async Task<bool> LoadIconFromRepoAsync()
         {
+            // Don't fetch an icon that we've already got
+            // This does mean that icon changes won't be seen in the Mod Browser until you download the new version, but that's ok
+            if (ModInstalledLocally(out var local))
+            {
+                IconBytes = local.IconBytes;
+                HasNoIcon = local.HasNoIcon;
+                return !HasNoIcon;
+            }
+
+            // As a precaution against trolls, only Verified Modders can have their icons shown in the Mod Browser
+            // This may or may not expand to Verified Modders being the only ones with mods in the browser allowed
             if (HasNoIcon || !ModHelperGithub.VerifiedModders.Contains(RepoOwner))
             {
                 return false;
@@ -366,25 +359,30 @@ namespace BTD_Mod_Helper.Api
 
         public bool ModInstalledLocally(out ModHelperData modHelperData)
         {
-            modHelperData =
-                Cache.Values.FirstOrDefault(data => data.RepoName == RepoName && data.RepoOwner == RepoOwner);
+            modHelperData = All.FirstOrDefault(data => data.RepoName != null &&
+                                                       data.RepoName == RepoName &&
+                                                       data.RepoOwner == RepoOwner &&
+                                                       data.RepoOwner != null ||
+                                                       data.DllName != null &&
+                                                       data.DllName == DllName);
             return modHelperData != null;
-        }
-
-        public bool ModInstalledLocally()
-        {
-            return Cache.Values.Any(data =>
-                data.RepoName == RepoName && data.RepoOwner == RepoOwner || data.DllName == DllName);
         }
 
         public Sprite GetIcon()
         {
+            if (icon != null)
+            {
+                return icon;
+            }
+
             if (IconBytes != null)
             {
                 var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -1};
                 ImageConversion.LoadImage(texture, IconBytes);
                 var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
                     new Vector2(0.5f, 0.5f), 10f);
+                sprite.name = Name;
+                icon = sprite;
                 return sprite;
             }
 
@@ -450,6 +448,10 @@ namespace BTD_Mod_Helper.Api
                 }
 
                 SaveToFile(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".txt")));
+                if (GetIcon() is Sprite sprite)
+                {
+                    sprite.texture.TrySaveToPNG(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".png")));
+                }
 
                 FilePath = newFilePath;
                 return true;
@@ -521,8 +523,26 @@ namespace BTD_Mod_Helper.Api
                                 var data = new ModHelperData();
                                 data.ReadValuesFromString(contents);
 
-                                if (!data.ModInstalledLocally())
+                                if (!data.ModInstalledLocally(out _))
                                 {
+                                    var iconFile = Path.Combine(ModHelper.DataDirectory,
+                                        file.Name.Replace(".dll", ".png"));
+                                    if (File.Exists(iconFile))
+                                    {
+                                        using (var fs2 = new FileStream(iconFile, FileMode.Open))
+                                        {
+                                            using (var memory = new MemoryStream())
+                                            {
+                                                await fs2.CopyToAsync(memory);
+                                                data.IconBytes = memory.ToArray();
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        data.HasNoIcon = true;
+                                    }
+
                                     data.SetFilePath(file.FullName);
                                     Inactive.Add(data);
                                     ModHelper.Msg($"Found disabled mod {file.FullName}");

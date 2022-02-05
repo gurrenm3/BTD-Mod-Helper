@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -41,9 +42,14 @@ namespace BTD_Mod_Helper
         internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
         internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
 
+        /// <summary>
+        /// Active mods that use ModHelper functionality
+        /// </summary>
+        public static IEnumerable<BloonsMod> Mods => MelonHandler.Mods.OfType<BloonsMod>();
+
         internal static void LoadAllMods()
         {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
+            foreach (var mod in ModHelper.Mods.OrderByDescending(mod => mod.Priority))
             {
                 try
                 {
@@ -58,6 +64,7 @@ namespace BTD_Mod_Helper
                     Error(e);
                 }
             }
+
             ModHelperData.LoadAll();
         }
 

@@ -78,6 +78,22 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return modSettingBool.value;
         }
 
+        private Action<bool, ModHelperButton> currentAction;
+
+        /// <inheritdoc />
+        public override void SetValue(object val)
+        {
+            base.SetValue(val);
+            if (currentOption)
+            {
+                var butt = currentOption.GetDescendent<ModHelperButton>("Button");
+                if (butt)
+                {
+                    currentAction?.Invoke((bool) val, butt);
+                }
+            }
+        }
+
         /// <inheritdoc />
         public override ModHelperOption CreateComponent()
         {
@@ -88,25 +104,32 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 var buttonComponent = option.BottomRow.AddButton(
                     new Info("Button", width: 562, height: 200), value ? enabledButton : disabledButton, null
                 );
-                var text = buttonComponent.AddText(
+                buttonComponent.AddText(
                     new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one),
                     value ? enabledText : disabledText, 80f
                 );
 
-                var action = new Action<bool>(newValue =>
+                currentAction = (newValue, butt) =>
                 {
-                    SetValue(newValue);
-                    buttonComponent.Image.SetSprite(value ? enabledButton : disabledButton);
-                    text.SetText(value ? enabledText : disabledText);
-                    onValueChanged?.Invoke(newValue);
-                });
+                    if (butt != null)
+                    {
+                        butt.Image.SetSprite(value ? enabledButton : disabledButton);
+                        butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(value ? enabledText : disabledText);
+                        onValueChanged?.Invoke(newValue);
+                    }
+                };
                 buttonComponent.Button.onClick.AddListener(new Action(() =>
                 {
-                    action(!value);
+                    currentAction(!value, buttonComponent);
+                    SetValue(!value);
                     MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 }));
                 
-                option.SetResetAction(new Action(() => action(defaultValue)));
+                option.SetResetAction(new Action(() =>
+                {
+                    currentAction(defaultValue, buttonComponent);
+                    SetValue(defaultValue);
+                }));
                 modifyButton?.Invoke(buttonComponent);
             }
             else

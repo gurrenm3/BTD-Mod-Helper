@@ -53,5 +53,15 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// Gets the category that this is a part of, or null
         /// </summary>
         ModSettingCategory GetCategory();
+
+        /// <summary>
+        /// Gets the current ModHelperComponent for this setting. Will be null if outside the settings menu
+        /// </summary>
+        ModHelperOption GetComponent();
+        
+        /// <summary>
+        /// Sets the currently created component
+        /// </summary>
+        void SetComponent(ModHelperOption component);
     }
 }

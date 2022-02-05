@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
+using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
+using MelonLoader;
 using TMPro;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
@@ -22,7 +27,7 @@ namespace BTD_Mod_Helper.Menus
         internal const int Padding = 50;
 
         internal const int MenuWidth = 3600;
-        internal const int MenuHeight = 1800;
+        internal const int MenuHeight = 1900;
 
         internal const int LeftMenuWidth = 1750;
         internal const int RightMenuWidth = 1750;
@@ -46,7 +51,6 @@ namespace BTD_Mod_Helper.Menus
             new Dictionary<ModHelperData, ModsMenuMod>();
 
         private static ModHelperScrollPanel modsList;
-        private static ModHelperData selectedMod;
         private static ModHelperPanel selectedModPanel;
         private static ModHelperText selectedModName;
         private static ModHelperText selectedModAuthor;
@@ -60,10 +64,13 @@ namespace BTD_Mod_Helper.Menus
         private static ModHelperImage selectedModIcon;
         private static ModsMenuMod modTemplate;
         private static int currentSort;
+        private static ModHelperPanel restartButton;
 
         private static Animator bottomGroupAnimator;
 
         private static bool loadedAllMods;
+        
+        private static ModHelperData selectedMod;
 
         private static readonly string[] SortOptions =
         {
@@ -87,15 +94,19 @@ namespace BTD_Mod_Helper.Menus
 
             CreateLeftMenu(modsMenu);
             CreateRightMenu(modsMenu);
-            CreateBottomButtons(gameMenu);
+            CreateExtraButtons(gameMenu);
 
-            SetSelectedMod(ModHelper.Main.GetModHelperData());
+            if (selectedMod == null)
+            {
+                selectedMod = ModHelper.Main.GetModHelperData();
+            }
+            SetSelectedMod(selectedMod);
             Refresh();
 
             return false;
         }
 
-        private void CreateBottomButtons(ExtraSettingsScreen gameMenu)
+        private static void CreateExtraButtons(ExtraSettingsScreen gameMenu)
         {
             var bottomButtonGroup = gameMenu.gameObject.AddModHelperPanel(
                 new Info("BottomButtonGroup", height: 400, anchorMin: Vector2.zero, anchorMax: new Vector2(1, 0),
@@ -116,6 +127,34 @@ namespace BTD_Mod_Helper.Menus
             );
             modBrowserButton.AddText(
                 new Info("Text", 0, -200, 500, 100), "Browse Mods", 60f
+            );
+
+            restartButton = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 
+                350, 350, anchor: Vector2.one, pivot: Vector2.one));
+            restartButton.AddButton(new Info("Restart", anchorMin: Vector2.zero, anchorMax: Vector2.one),
+                VanillaSprites.RestartBtn,
+                new Action(() =>
+                {
+                    PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
+                        "Changes you've made will require restarting the game to take effect. " +
+                        "Would you like to do that now?", new Action(() =>
+                        {
+                            var info = new ProcessStartInfo
+                            {
+                                Arguments = "/C ping 127.0.0.1 -n 3 && \"" +
+                                            MelonUtils.GetApplicationPath() +
+                                            "\" " +
+                                            Environment.GetCommandLineArgs().Join(delimiter: " "),
+                                WindowStyle = ProcessWindowStyle.Hidden,
+                                CreateNoWindow = true,
+                                FileName = "cmd.exe"
+                            };
+                            Process.Start(info);
+                            MenuManager.instance.QuitGame();
+                        }), "Yes", null, "No", Popup.TransitionAnim.Scale);
+                }));
+            restartButton.AddText(
+                new Info("Text", 0, -200, 500, 100), "Restart", FontMedium
             );
         }
 
@@ -187,7 +226,7 @@ namespace BTD_Mod_Helper.Menus
             selectedModEnableButton.SetActive(!modSelected.Enabled);
         }
 
-        internal static void SortMods(int selectedIndex)
+        private static void SortMods(int selectedIndex)
         {
             currentSort = selectedIndex;
             foreach (var (modHelperData, modPanel) in modPanels)
@@ -260,10 +299,9 @@ namespace BTD_Mod_Helper.Menus
             {
                 modPanels[modHelperData] = null;
             }
-            
         }
 
-        internal static void Refresh()
+        private static void Refresh()
         {
             foreach (var (modHelperData, panel) in modPanels)
             {
@@ -281,6 +319,8 @@ namespace BTD_Mod_Helper.Menus
                     pair.Key.UpdateAvailable && pair.Value != null && pair.Value.gameObject.active));
             }
 
+            restartButton.SetActive(ModHelperData.All.Any(data => data.RestartRequired));
+            
             SetSelectedMod(selectedMod);
         }
 
@@ -353,7 +393,7 @@ namespace BTD_Mod_Helper.Menus
 
             selectedModIcon = buttonsRow.AddImage(
                 new Info("ModIcon", ModIconSize / 2f, 0, ModIconSize, ModIconSize, anchor: new Vector2(0, 0.5f)),
-                VanillaSprites.InfoIcon
+                GetSprite<MelonMain>("Icon")
             );
 
             selectedModDisableButton = buttonsRow.AddButton(

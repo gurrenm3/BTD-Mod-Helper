@@ -14,10 +14,11 @@ namespace BTD_Mod_Helper.Api
 {
     internal static class ModHelperGithub
     {
-        public const string Topic = "btd6-mod";
-
         public const string RawUserContent = "https://raw.githubusercontent.com";
-        public const string ProductName = "btd-mod-helper";
+        
+        private const string Topic = "btd6-mod";
+        private const string ProductName = "btd-mod-helper";
+        private const string VerifiedModdersURL = "";
 
         private const string DllContentType = "application/x-msdownload";
         private const string ZipContentType = "application/zip";
@@ -62,15 +63,7 @@ namespace BTD_Mod_Helper.Api
             Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
 
             Mods = mods.Where(mod => mod.RepoDataSuccess).ToList();
-
-            ModHelper.Msg("finished getting mod helper data");
-
-            foreach (var modHelperData in Mods)
-            {
-                ModHelper.Msg(
-                    $"Found mod {modHelperData.Name} v{modHelperData.Version} with description: \"{modHelperData.Description}\"");
-            }
-
+            
             UpdateRateLimit();
         }
 
@@ -177,19 +170,19 @@ namespace BTD_Mod_Helper.Api
                 name = $"{mod.Mod.Assembly.GetName().Name}.dll";
             }
 
-            var filePath = Path.Combine(MelonHandler.ModsDirectory, name);
+            var downloadFilePath = Path.Combine(MelonHandler.ModsDirectory, name);
             var oldModsFilePath = Path.Combine(ModHelper.OldModsDirectory, name);
 
             try
             {
-                if (File.Exists(filePath))
+                if (mod.FilePath != null && File.Exists(mod.FilePath))
                 {
                     if (!Directory.Exists(ModHelper.OldModsDirectory))
                     {
                         Directory.CreateDirectory(ModHelper.OldModsDirectory);
                     }
 
-                    File.Copy(filePath, oldModsFilePath, true);
+                    File.Copy(mod.FilePath, oldModsFilePath, true);
                     ModHelper.Msg($"Backing up to {oldModsFilePath}");
                 }
 
@@ -200,7 +193,7 @@ namespace BTD_Mod_Helper.Api
                         throw new ArgumentException(
                             $"Won't download release asset with content type {releaseAsset.ContentType}");
                     case DllContentType:
-                        success = await ModHelperHttp.DownloadFile(releaseAsset.BrowserDownloadUrl, filePath);
+                        success = await ModHelperHttp.DownloadFile(releaseAsset.BrowserDownloadUrl, downloadFilePath);
                         break;
                     case ZipContentType:
                     case ZipContentType2:
@@ -210,7 +203,7 @@ namespace BTD_Mod_Helper.Api
                             try
                             {
                                 var dll = zippedFiles.First(s => s.EndsWith(name));
-                                File.Copy(dll, filePath, true);
+                                File.Copy(dll, downloadFilePath, true);
                                 success = true;
                             }
                             catch (InvalidOperationException)
@@ -230,7 +223,7 @@ namespace BTD_Mod_Helper.Api
                     PopupScreen.instance.ShowOkPopup(
                         $"Successfully downloaded {name}\nRemember to restart to apply the changes!");
                     mod.SetVersion(mod.RepoVersion);
-                    return filePath;
+                    return downloadFilePath;
                 }
             }
             catch (Exception e)
@@ -240,7 +233,7 @@ namespace BTD_Mod_Helper.Api
 
             if (File.Exists(oldModsFilePath))
             {
-                File.Copy(oldModsFilePath, filePath, true);
+                File.Copy(oldModsFilePath, downloadFilePath, true);
                 ModHelper.Msg($"Loading backup from {oldModsFilePath}");
             }
 

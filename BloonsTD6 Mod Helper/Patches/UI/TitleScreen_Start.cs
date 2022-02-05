@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Patches.UI
         [HarmonyPriority(Priority.High)]
         internal static void Postfix()
         {
-            /*foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
+            /*foreach (var mod in ModHelper.Mods.OrderByDescending(mod => mod.Priority))
             {
                 try
                 {

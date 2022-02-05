@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
+using HarmonyLib;
+using MelonLoader;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 namespace BTD_Mod_Helper
@@ -59,7 +61,7 @@ namespace BTD_Mod_Helper
 
             Task.Run(ModHelperGithub.PopulateMods);
             // Task.Run(ModHelperGithub.GetVerifiedModders);
-            
+
             ModHelper.Log("Mod has finished loading");
 
             /*VanillaSpriteGenerator.GenerateVanillaSprites(
@@ -68,7 +70,13 @@ namespace BTD_Mod_Helper
             );*/
         }
 
-        public static readonly ModSettingBool CleanProfile = true;
+        public static readonly ModSettingBool CleanProfile = new ModSettingBool(true)
+        {
+            description =
+                "Automatically removes modded information from your profile before the data gets synced to the " +
+                "Ninja Kiwi servers. NOTE: This is for very specific information relating to custom content implemented " +
+                "using the Mod Helper. This does not broadly prevent hacker pooling or mods messing up your profile in other ways."
+        };
 
         private static readonly ModSettingBool AutoHideModdedClientPopup = false;
 
@@ -76,12 +84,17 @@ namespace BTD_Mod_Helper
         {
             displayName = "Open Local Files Directory",
             action = () => Process.Start(FileIOUtil.sandboxRoot),
-            buttonText = "Open"
+            buttonText = "Open",
+            description =
+                "This is the 'Sandbox Root' directory that many vanilla and modded services use to dump files into."
         };
 
         private static readonly ModSettingButton ExportGameModel = new ModSettingButton
         {
-            displayName = "Export Game Model",
+            displayName = "Export Game Data",
+            description =
+                "Exports much of the games data to json files that you can view. Helpful for understanding how " +
+                "vanilla content was implemented by Ninja Kiwi.",
             action = () =>
             {
                 GameModelExporter.ExportAll();
@@ -202,13 +215,14 @@ namespace BTD_Mod_Helper
             category = AutoSaveCategory
         };
 
-        public static readonly ModSettingString AutosavePath = new ModSettingString(Path.Combine(ModHelper.ModHelperDirectory, "Mod Settings"))
-        {
-            displayName = "Backup Directory",
-            onSave = AutoSave.SetAutosaveDirectory,
-            category = AutoSaveCategory,
-            modifyInput = inputField => inputField.Text.Text.fontSize = 50
-        };
+        public static readonly ModSettingString AutosavePath =
+            new ModSettingString(Path.Combine(ModHelper.ModHelperDirectory, "Mod Settings"))
+            {
+                displayName = "Backup Directory",
+                onSave = AutoSave.SetAutosaveDirectory,
+                category = AutoSaveCategory,
+                modifyInput = inputField => inputField.Text.Text.fontSize = 50
+            };
 
         public static readonly ModSettingInt TimeBetweenBackup = new ModSettingInt(30)
         {

@@ -39,6 +39,9 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public abstract string BaseMenu { get; }
 
+        /// <summary>
+        /// Whether this Menu is open or not
+        /// </summary>
         public bool IsOpen { get; internal set; }
 
         /// <inheritdoc />

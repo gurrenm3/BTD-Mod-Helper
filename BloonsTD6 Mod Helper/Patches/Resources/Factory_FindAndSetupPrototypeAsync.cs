@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Patches.Resources
                 return false;
             }
 
-            if (ResourceHandler.resources.GetValueOrDefault(objectId) is byte[] bytes &&
+            if (ResourceHandler.Resources.GetValueOrDefault(objectId) is byte[] bytes &&
                 ResourceHandler.ScalesFor2dModels.ContainsKey(objectId))
             {
                 objectId = "9dccc16d26c1c8a45b129e2a8cbd17ba";

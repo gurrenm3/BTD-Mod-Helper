@@ -17,7 +17,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             {
                 Directory.CreateDirectory(modSettingsDir);
             }
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
+            foreach (var mod in ModHelper.Mods)
             {
                 mod.ModSettings = new Dictionary<string, IModSetting>();
                 try
@@ -54,7 +54,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         internal static void LoadModSettings(string modSettingsDir)
         {
             Directory.CreateDirectory(modSettingsDir);
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
+            foreach (var mod in ModHelper.Mods)
             {
                 try
                 {
@@ -107,21 +107,22 @@ namespace BTD_Mod_Helper.Api.ModOptions
             {
                 writer.Formatting = Formatting.Indented;
                 writer.WriteStartObject();
-                foreach (var item in mod.ModSettings)
+                foreach (var (key, modSetting) in mod.ModSettings)
                 {
-                    writer.WritePropertyName(item.Key);
-                    writer.WriteValue(item.Value.GetValue());
+                    writer.WritePropertyName(key);
+                    writer.WriteValue(modSetting.GetValue());
                     if (!initialSave)
                     {
                         try
                         {
-                            item.Value?.OnSave();
+                            modSetting?.OnSave();
                         }
                         catch (Exception e)
                         {
-                            ModHelper.Warning($"Failed onSave action for setting {item.Key}");
+                            ModHelper.Warning($"Failed onSave action for setting {key}");
                             ModHelper.Warning(e);
                         }
+                        modSetting.SetComponent(null);
                     }
                 }
                 writer.WriteEndObject();
@@ -130,7 +131,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
         internal static void SaveModSettings(string modSettingsDir, bool initialSave = false)
         {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
+            foreach (var mod in ModHelper.Mods)
             {
                 if (!mod.ModSettings.Any()) continue;
                 SaveModSettings(mod, modSettingsDir, initialSave);

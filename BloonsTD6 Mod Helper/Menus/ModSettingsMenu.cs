@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Settings;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
@@ -25,7 +27,7 @@ namespace BTD_Mod_Helper.Menus
             var gameObject = gameMenu.gameObject;
             gameObject.DestroyAllChildren();
 
-            bloonsMod = MelonHandler.Mods.OfType<BloonsMod>().First(m => m.IDPrefix == data?.ToString());
+            bloonsMod = ModHelper.Mods.First(m => m.IDPrefix == data?.ToString());
             CommonForegroundHeader.SetText(bloonsMod.Info.Name);
 
             var scrollPanel = gameObject.AddModHelperScrollPanel(
@@ -55,6 +57,7 @@ namespace BTD_Mod_Helper.Menus
                 foreach (var modSetting in modSettings)
                 {
                     var modHelperOption = modSetting.CreateComponent();
+                    modSetting.SetComponent(modHelperOption);
                     if (modHelperOption.ResetButton.gameObject.active)
                     {
                         modHelperOption.BottomRow.AddPanel(new Info("Empty", size: ModHelperOption.ResetSize));
@@ -79,7 +82,7 @@ namespace BTD_Mod_Helper.Menus
         {
             closing = true;
             animator.Play("PopupSlideOut");
-            // Task.Run(() => ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir()));
+            Task.Run(() => ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir()));
         }
 
         public static void Open(BloonsMod bloonsMod)

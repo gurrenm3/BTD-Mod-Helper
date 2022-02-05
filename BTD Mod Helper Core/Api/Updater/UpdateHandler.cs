@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Api.Updater
 
         internal static void SaveModUpdateInfo(string dir)
         {
-            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
+            foreach (var mod in ModHelper.Mods)
             {
                 try
                 {

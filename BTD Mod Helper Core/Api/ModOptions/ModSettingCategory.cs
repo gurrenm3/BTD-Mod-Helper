@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Utils;
+﻿using System;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -26,6 +27,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// Whether this category is currently collapsed / hiding its elements
         /// </summary>
         public bool collapsed = true;
+        
+        /// <summary>
+        /// Action to modify the ModHelperCategory after it's created
+        /// </summary>
+        public Action<ModHelperCategory> modifyCategory;
 
         /// <summary>
         /// Creates a new ModSettingCategory with the given displayName
@@ -41,7 +47,9 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <returns></returns>
         public ModHelperCategory Create()
         {
-            return ModHelperCategory.Create(displayName, collapsed, icon);
+            var modHelperCategory = ModHelperCategory.Create(displayName, collapsed, icon);
+            modifyCategory?.Invoke(modHelperCategory);
+            return modHelperCategory;
         }
 
         /// <summary>

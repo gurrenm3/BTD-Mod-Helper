@@ -64,6 +64,7 @@ namespace BTD_Mod_Helper.Extensions
             return path;
         }
 
-        internal static ModHelperData GetModHelperData(this MelonMod mod) => ModHelperData.GetModHelperData(mod);
+        internal static ModHelperData GetModHelperData(this MelonMod mod) =>
+            ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
     }
 }
