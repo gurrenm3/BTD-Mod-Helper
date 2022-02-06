@@ -20,7 +20,7 @@ namespace BTD_Mod_Helper
         /// <summary>
         /// The settings in this mod organized by name
         /// </summary>
-        public Dictionary<string, IModSetting> ModSettings { get; internal set; }
+        public Dictionary<string, ModSetting> ModSettings { get; internal set; }
 
         /// <summary>
         /// The embedded resources of this mod

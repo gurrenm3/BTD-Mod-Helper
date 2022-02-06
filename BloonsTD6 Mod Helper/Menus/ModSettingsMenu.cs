@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.Settings;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
@@ -43,7 +44,7 @@ namespace BTD_Mod_Helper.Menus
             canvasGroup = scrollPanel.AddComponent<CanvasGroup>();
 
             foreach (var (category, modSettings) in bloonsMod.ModSettings.Values
-                         .GroupBy(setting => setting.GetCategory())
+                         .GroupBy(setting => setting.category)
                          .OrderBy(kvp => kvp.Key?.order ?? 0))
             {
                 var content = scrollPanel.ScrollContent;
@@ -57,7 +58,7 @@ namespace BTD_Mod_Helper.Menus
                 foreach (var modSetting in modSettings)
                 {
                     var modHelperOption = modSetting.CreateComponent();
-                    modSetting.SetComponent(modHelperOption);
+                    modSetting.currentOption = modHelperOption;
                     if (modHelperOption.ResetButton.gameObject.active)
                     {
                         modHelperOption.BottomRow.AddPanel(new Info("Empty", size: ModHelperOption.ResetSize));
@@ -67,7 +68,7 @@ namespace BTD_Mod_Helper.Menus
                 }
             }
 
-            return false;
+            return true;
         }
 
         public override void OnMenuUpdate(HotkeysScreen gameMenu)

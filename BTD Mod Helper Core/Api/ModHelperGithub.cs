@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Api
         
         private const string Topic = "btd6-mod";
         private const string ProductName = "btd-mod-helper";
-        private const string VerifiedModdersURL = "";
+        private const string VerifiedModdersURL = "https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/3.0_Features/verified_modders.json";
         
         private const string DllContentType = "application/x-msdownload";
         private const string ZipContentType = "application/zip";
@@ -30,11 +30,7 @@ namespace BTD_Mod_Helper.Api
         public static List<ModHelperData> Mods { get; private set; } = new List<ModHelperData>();
 
         // Will be moved to checking from a json file within the mod helper repo
-        public static readonly HashSet<string> VerifiedModders = new HashSet<string>
-        {
-            "doombubbles",
-            "gurrenm3"
-        };
+        public static readonly HashSet<string> VerifiedModders = new HashSet<string>();
 
         public static GitHubClient Client { get; private set; }
 

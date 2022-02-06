@@ -87,7 +87,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public override ModHelperOption CreateComponent()
+        internal override ModHelperOption CreateComponent()
         {
             var option = CreateBaseOption();
 

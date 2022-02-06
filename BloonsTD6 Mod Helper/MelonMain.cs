@@ -59,7 +59,7 @@ namespace BTD_Mod_Helper
             ModGameMenu.PatchAllTheOpens(HarmonyInstance);
 
             Task.Run(ModHelperGithub.PopulateMods);
-            // Task.Run(ModHelperGithub.GetVerifiedModders);
+            Task.Run(ModHelperGithub.GetVerifiedModders);
             
             if (Directory.Exists(ModSourcesFolder))
             {

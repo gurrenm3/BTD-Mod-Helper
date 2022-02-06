@@ -9,53 +9,27 @@ namespace BTD_Mod_Helper.Api.ModOptions
     /// (Cross-Game compatible) Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu
     /// </summary>
     /// <typeparam name="T">The type that this ModSetting holds</typeparam>
-    public abstract class ModSetting<T> : IModSetting
+    public abstract class ModSetting<T> : ModSetting
     {
         internal T value;
         internal T defaultValue;
 
         /// <summary>
-        /// The exact name displayed for this mod setting. If unset, will use the variable name.
-        /// </summary>
-        public string displayName;
-
-        /// <summary>
-        /// The description / explanation of this mod setting
-        /// </summary>
-        public string description;
-
-        /// <summary>
-        /// Icon to display alongside the setting
-        /// </summary>
-        public SpriteReference icon;
-
-        /// <summary>
         /// Action to call when the value changes. NOTE: this no longer applies to manual calls to SetValue
         /// </summary>
         public Action<T> onValueChanged;
-        
+
         /// <summary>
         /// Action to call when the value is saved, i.e. once they actually close the menu
         /// </summary>
         public Action<T> onSave;
 
-        /// <summary>
-        /// Action to modify the ModHelperOption after it's created
-        /// </summary>
-        public Action<ModHelperOption> modifyOption;
-        
-        
+
         /// <summary>
         /// Will only save the result and run onSave if this custom function validates the value
         /// </summary>
         public Func<T, bool> customValidation;
 
-        /// <summary>
-        /// The category that this is part of, or null
-        /// </summary>
-        public ModSettingCategory category;
-
-        internal ModHelperOption currentOption;
 
         /// <summary>
         /// Old onValueChanged. 
@@ -74,19 +48,19 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public virtual object GetValue()
+        public override object GetValue()
         {
             return value;
         }
 
         /// <inheritdoc />
-        public virtual object GetDefaultValue()
+        public override object GetDefaultValue()
         {
             return defaultValue;
         }
 
         /// <inheritdoc />
-        public virtual void SetValue(object val)
+        public override void SetValue(object val)
         {
             if (val is T v)
             {
@@ -101,27 +75,13 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        public string GetName()
-        {
-            return displayName;
-        }
-
-        /// <inheritdoc />
-        public void SetName(string name)
-        {
-            displayName = name;
-        }
-
-        /// <inheritdoc />
-        public abstract ModHelperOption CreateComponent();
-
-        /// <inheritdoc />
-        public bool OnSave()
+        internal override bool OnSave()
         {
             if (customValidation != null && !customValidation(value))
             {
                 return false;
             }
+
             onSave?.Invoke(value);
             return true;
         }
@@ -135,20 +95,73 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modifyOption?.Invoke(modHelperOption);
             return modHelperOption;
         }
+    }
 
-        /// <inheritdoc />
-        public ModSettingCategory GetCategory() => category;
+    /// <summary>
+    /// Base class for a ModSetting without the generics
+    /// </summary>
+    public abstract class ModSetting
+    {
+        /// <summary>
+        /// The exact name displayed for this mod setting. If unset, will use the variable name.
+        /// </summary>
+        public string displayName;
+        
+        /// <summary>
+        /// The description / explanation of this mod setting
+        /// </summary>
+        public string description;
 
-        /// <inheritdoc />
-        public ModHelperOption GetComponent()
-        {
-            return currentOption;
-        }
+        /// <summary>
+        /// Icon to display alongside the setting
+        /// </summary>
+        public SpriteReference icon;
+        
+        /// <summary>
+        /// Action to modify the ModHelperOption after it's created
+        /// </summary>
+        public Action<ModHelperOption> modifyOption;
+        
+        /// <summary>
+        /// The category that this is part of, or null
+        /// </summary>
+        public ModSettingCategory category;
 
-        /// <inheritdoc />
-        public void SetComponent(ModHelperOption component)
-        {
-            currentOption = component;
-        }
+        /// <summary>
+        /// Indicates to players that the effects of changing this setting will only take place after a restart
+        /// </summary>
+        public bool requiresRestart;
+
+        internal ModHelperOption currentOption;
+        
+        /// <summary>
+        /// Gets the current value that this ModSetting holds
+        /// </summary>
+        /// <returns>The value</returns>
+        public abstract object GetValue();
+
+        /// <summary>
+        /// Gets the default value for this ModSetting
+        /// </summary>
+        /// <returns>The default value</returns>
+        public abstract object GetDefaultValue();
+
+        /// <summary>
+        /// Sets the current value of this ModSetting
+        /// </summary>
+        /// <param name="val">The new value</param>
+        public abstract void SetValue(object val);
+
+        /// <summary>
+        /// Constructs a visual ModHelperComponent for this ModSetting
+        /// </summary>
+        /// <returns>The created ModHelperComponent</returns>
+        internal abstract ModHelperOption CreateComponent();
+
+        /// <summary>
+        /// Validates the current value using the customValidation function, if there is one.
+        /// If there were no issues, performs the onSave action
+        /// </summary>
+        internal abstract bool OnSave();
     }
 }

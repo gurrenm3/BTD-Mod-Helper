@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using Newtonsoft.Json;
 
@@ -19,18 +20,18 @@ namespace BTD_Mod_Helper.Api.ModOptions
             }
             foreach (var mod in ModHelper.Mods)
             {
-                mod.ModSettings = new Dictionary<string, IModSetting>();
+                mod.ModSettings = new Dictionary<string, ModSetting>();
                 try
                 {
                     foreach (var field in mod.GetType()
                         .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
-                        .Where(field => typeof(IModSetting).IsAssignableFrom(field.FieldType)))
+                        .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
                     {
-                        var modSetting = (IModSetting) field.GetValue(mod);
+                        var modSetting = (ModSetting) field.GetValue(mod);
                         mod.ModSettings[field.Name] = modSetting;
-                        if (modSetting.GetName() == default)
+                        if (modSetting.displayName == default)
                         {
-                            modSetting.SetName(Regex.Replace(field.Name, "(\\B[A-Z])", " $1"));
+                            modSetting.displayName = Regex.Replace(field.Name, "(\\B[A-Z])", " $1");
                         }
                     }
                 }
@@ -58,7 +59,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             {
                 try
                 {
-                    var fileName = $"{modSettingsDir}\\{mod.Info.Name}.json";
+                    var fileName = $"{modSettingsDir}\\{mod.GetModName()}.json";
                     if (File.Exists(fileName))
                     {
                         using (var file = File.OpenText(fileName))
@@ -101,7 +102,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             {
                 Directory.CreateDirectory(modSettingsDir);
             }
-            var fileName = $"{modSettingsDir}\\{mod.Info.Name}.json";
+            var fileName = $"{modSettingsDir}\\{mod.GetModName()}.json";
             using (var file = File.CreateText(fileName))
             using (var writer = new JsonTextWriter(file))
             {
@@ -113,7 +114,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     {
                         try
                         {
-                            if (modSetting?.OnSave() == true)
+                            if (modSetting.OnSave())
                             {
                                 writer.WritePropertyName(key);
                                 writer.WriteValue(modSetting.GetValue());
@@ -124,7 +125,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                             ModHelper.Warning($"Failed onSave action for setting {key}");
                             ModHelper.Warning(e);
                         }
-                        modSetting?.SetComponent(null);
+                        modSetting.currentOption = null;
                     }
                     else
                     {

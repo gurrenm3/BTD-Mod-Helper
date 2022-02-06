@@ -93,8 +93,7 @@ namespace BTD_Mod_Helper.Api
                 var tracker = gameMenu.gameObject.AddComponent<ModGameMenuTracker>();
                 tracker.modGameMenuId = modGameMenu.Id;
                 
-                gameMenu.enabled = false;
-                return modGameMenu.OnMenuOpened(gameMenu, menuData.modData);
+                return gameMenu.enabled = modGameMenu.OnMenuOpened(gameMenu, menuData.modData);
             }
 
             outData = data;
