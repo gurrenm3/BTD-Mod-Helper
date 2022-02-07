@@ -21,10 +21,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public ModSettingHotkey(KeyCode key, HotkeyModifier modifier = HotkeyModifier.None)
             : base(key.GetPath() + "-" + modifier)
         {
-            hotKey = new HotKey(modifier, key.GetPath())
-            {
-                name = displayName
-            };
+            hotKey = new HotKey(modifier, key.GetPath());
         }
 
         /// <inheritdoc />

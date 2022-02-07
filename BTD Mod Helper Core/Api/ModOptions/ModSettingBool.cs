@@ -115,7 +115,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     {
                         butt.Image.SetSprite(value ? enabledButton : disabledButton);
                         butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(value ? enabledText : disabledText);
-                        onValueChanged?.Invoke(newValue);
                     }
                 };
                 buttonComponent.Button.onClick.AddListener(new Action(() =>
@@ -139,7 +138,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     new Action<bool>(enabled =>
                     {
                         SetValue(enabled);
-                        onValueChanged?.Invoke(enabled);
                         MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
                     })
                 );

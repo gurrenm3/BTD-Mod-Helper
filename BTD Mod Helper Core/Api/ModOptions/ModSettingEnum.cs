@@ -45,12 +45,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             var dropdown = option.BottomRow.AddDropdown(
                 new Info("Dropdown", width: 1000, height: 150), Enum.GetNames(typeof(T)).ToIl2CppList(), 500,
-                new Action<int>(i =>
-                {
-                    var e = (T) Enum.GetValues(typeof(T)).GetValue(i);
-                    SetValue(e);
-                    onValueChanged?.Invoke(e);
-                }), VanillaSprites.BlueInsertPanelRound, 80f
+                new Action<int>(i => SetValue((T) Enum.GetValues(typeof(T)).GetValue(i))),
+                VanillaSprites.BlueInsertPanelRound, 80f
             );
 
 

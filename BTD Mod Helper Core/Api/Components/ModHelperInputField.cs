@@ -55,15 +55,16 @@ namespace BTD_Mod_Helper.Api.Components
         /// <param name="fontSize">The size of the displayed text</param>
         /// <param name="validation">The type of validation used on user input</param>
         /// <param name="align">The alignment of the text</param>
-        /// <param name="padding">The padding added to the left and right of the text within the field</param>
         /// <returns>The created ModHelperInputField</returns>
         public static ModHelperInputField Create(Info info, string defaultValue, SpriteReference background,
             UnityAction<string> onValueChanged = null, float fontSize = 42,
             TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
-            TextAlignmentOptions align = TextAlignmentOptions.Midline, int padding = 20)
+            TextAlignmentOptions align = TextAlignmentOptions.Midline)
         {
             var modHelperInputField = ModHelperComponent.Create<ModHelperInputField>(info);
-
+            modHelperInputField.AddComponent<Mask>();
+            
+            
             var backgroundImage = modHelperInputField.AddComponent<Image>();
             backgroundImage.type = Image.Type.Sliced;
             backgroundImage.SetSprite(background);
@@ -71,15 +72,18 @@ namespace BTD_Mod_Helper.Api.Components
             var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", anchorMin: Vector2.zero, anchorMax: Vector2.one));
 
             var text = textViewPort.AddText(
-                new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one, width: padding * -2),
+                new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one),
                 defaultValue, fontSize, align
             );
+            text.Text.overflowMode = TextOverflowModes.Masking;
+            text.Text.font = Fonts.Btd6FontBody;
 
 
             var inputField = modHelperInputField.AddComponent<NK_TextMeshProInputField>();
             inputField.characterValidation = validation;
             inputField.textComponent = text.Text;
             inputField.textViewport = textViewPort;
+            inputField.caretWidth = 5;
 
             if (onValueChanged != null)
             {

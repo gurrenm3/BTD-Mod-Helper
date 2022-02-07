@@ -40,6 +40,19 @@ namespace BTD_Mod_Helper.Extensions
             return castObject != null;
         }
         
+        /// <inheritdoc cref="IsType{T}(Il2CppSystem.Object)"/>
+        public static bool Is<T>(this Object instance) where T : Object
+        {
+            return instance?.TryCast<T>() != null;
+        }
+        
+        /// <inheritdoc cref="IsType{T}(Il2CppSystem.Object,out T)"/>
+        public static bool Is<T>(this Object instance, out T castObject) where T : Object
+        {
+            castObject = instance?.TryCast<T>();
+            return castObject != null;
+        }
+        
         /// <summary>
         /// Box a float into an Il2cpp object
         /// </summary>

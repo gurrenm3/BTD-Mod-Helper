@@ -196,5 +196,22 @@ namespace BTD_Mod_Helper.Extensions
             // ReSharper disable once InvokeAsExtensionMethod
             TransformExtensions.DestroyAllChildren(gameObject.transform);
         }
+
+        /// <summary>
+        /// Used to null check unity objects without bypassing the lifecycle
+        /// </summary>
+        public static T Exists<T>(this T obj) where T : Object
+        {
+            return obj == null ? null : obj;
+        }
+        
+        /// <summary>
+        /// Used to null check unity objects without bypassing the lifecycle
+        /// </summary>
+        public static bool Exists<T>(this T obj, out T result) where T : Object
+        {
+            result = obj;
+            return obj != null;
+        }
     }
 }

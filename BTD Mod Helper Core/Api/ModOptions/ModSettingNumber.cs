@@ -98,12 +98,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 var sliderComponent = option.BottomRow.AddSlider(
                     new Info("Slider", width: 1500, height: 100), ToFloat(defaultValue),
                     ToFloat(min.Value), ToFloat(max.Value), StepSize, new Vector2(150, 150),
-                    new Action<float>(f =>
-                    {
-                        var v = Clamp(FromFloat(f));
-                        SetValue(v);
-                        onValueChanged?.Invoke(v);
-                    }), 80f
+                    new Action<float>(f => SetValue(Clamp(FromFloat(f)))), 80f
                 );
 
                 var labelPosition = sliderComponent.Label.RectTransform.localPosition;
@@ -117,12 +112,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             {
                 var input = option.BottomRow.AddInputField(
                     new Info("Input", width: 500, height: 150), ToString(value), VanillaSprites.BlueInsertPanelRound,
-                    new Action<string>(s =>
-                    {
-                        var v = Clamp(FromString(s));
-                        SetValue(v);
-                        onValueChanged?.Invoke(v);
-                    }), 80f, Validation
+                    new Action<string>(s => SetValue(Clamp(FromString(s)))), 80f, Validation
                 );
                 option.SetResetAction(new Action(() => input.SetText(ToString(defaultValue))));
                 modifyInput?.Invoke(input);

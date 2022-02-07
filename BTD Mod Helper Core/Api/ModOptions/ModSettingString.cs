@@ -75,11 +75,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             var input = option.BottomRow.AddInputField(
                 new Info("Input", width: 1500, height: 150), value, VanillaSprites.BlueInsertPanelRound,
-                new Action<string>(s =>
-                {
-                    SetValue(s);
-                    onValueChanged?.Invoke(s);
-                }), 80f, characterValidation
+                new Action<string>(SetValue), 80f, characterValidation
             );
 
             option.SetResetAction(new Action(() => input.SetText(defaultValue)));

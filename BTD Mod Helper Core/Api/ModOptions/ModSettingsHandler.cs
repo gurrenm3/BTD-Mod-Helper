@@ -4,28 +4,30 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 using Newtonsoft.Json;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
     internal class ModSettingsHandler
     {
-        internal static void InitializeModSettings(string modSettingsDir)
+        internal static void InitializeModSettings()
         {
-            if (!Directory.Exists(modSettingsDir))
+            if (!Directory.Exists(ModHelper.ModSettingsDirectory))
             {
-                Directory.CreateDirectory(modSettingsDir);
+                Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
             }
+
             foreach (var mod in ModHelper.Mods)
             {
                 mod.ModSettings = new Dictionary<string, ModSetting>();
                 try
                 {
                     foreach (var field in mod.GetType()
-                        .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
-                        .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
+                                 .GetFields(BindingFlags.Public |
+                                            BindingFlags.NonPublic |
+                                            BindingFlags.Instance |
+                                            BindingFlags.Static)
+                                 .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
                     {
                         var modSetting = (ModSetting) field.GetValue(mod);
                         mod.ModSettings[field.Name] = modSetting;
@@ -43,23 +45,22 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
                 if (mod.ModSettings.Any())
                 {
-                    var fileName = $"{modSettingsDir}\\{mod.Info.Name}.json";
+                    var fileName = mod.SettingsFilePath;
                     if (!File.Exists(fileName))
                     {
-                        SaveModSettings(mod, modSettingsDir);
+                        SaveModSettings(mod);
                     }
                 }
             }
         }
 
-        internal static void LoadModSettings(string modSettingsDir)
+        internal static void LoadModSettings()
         {
-            Directory.CreateDirectory(modSettingsDir);
             foreach (var mod in ModHelper.Mods)
             {
                 try
                 {
-                    var fileName = $"{modSettingsDir}\\{mod.GetModName()}.json";
+                    var fileName = mod.SettingsFilePath;
                     if (File.Exists(fileName))
                     {
                         using (var file = File.OpenText(fileName))
@@ -75,11 +76,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
                                         reader.Read();
                                         try
                                         {
-                                            mod.ModSettings[name].SetValue(reader.Value);
+                                            mod.ModSettings[name].Load(reader.Value);
                                         }
                                         catch (Exception e)
                                         {
-                                            ModHelper.Warning($"Error loading ModSetting {name} of mod {mod.Info.Name}");
+                                            ModHelper.Warning(
+                                                $"Error loading ModSetting {name} of mod {mod.Info.Name}");
                                             ModHelper.Warning(e);
                                         }
                                     }
@@ -96,13 +98,14 @@ namespace BTD_Mod_Helper.Api.ModOptions
             }
         }
 
-        private static void SaveModSettings(BloonsMod mod, string modSettingsDir, bool initialSave = false)
+        private static void SaveModSettings(BloonsMod mod, bool initialSave = false)
         {
-            if (!Directory.Exists(modSettingsDir))
+            if (!Directory.Exists(ModHelper.ModSettingsDirectory))
             {
-                Directory.CreateDirectory(modSettingsDir);
+                Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
             }
-            var fileName = $"{modSettingsDir}\\{mod.GetModName()}.json";
+
+            var fileName = mod.SettingsFilePath;
             using (var file = File.CreateText(fileName))
             using (var writer = new JsonTextWriter(file))
             {
@@ -125,6 +128,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                             ModHelper.Warning($"Failed onSave action for setting {key}");
                             ModHelper.Warning(e);
                         }
+
                         modSetting.currentOption = null;
                     }
                     else
@@ -133,19 +137,20 @@ namespace BTD_Mod_Helper.Api.ModOptions
                         writer.WriteValue(modSetting.GetValue());
                     }
                 }
+
                 writer.WriteEndObject();
             }
         }
 
-        internal static void SaveModSettings(string modSettingsDir, bool initialSave = false)
+        internal static void SaveModSettings(bool initialSave = false)
         {
             foreach (var mod in ModHelper.Mods)
             {
                 if (!mod.ModSettings.Any()) continue;
-                SaveModSettings(mod, modSettingsDir, initialSave);
+                SaveModSettings(mod, initialSave);
             }
+
             ModHelper.Msg("Successfully saved mod settings");
         }
-        
     }
 }

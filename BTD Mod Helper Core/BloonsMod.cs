@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using BTD_Mod_Helper.Api.ModOptions;
 using MelonLoader;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace BTD_Mod_Helper
         /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods
         /// </summary>
         public virtual string IDPrefix => Assembly.GetName().Name + "-";
-        
+
         /// <summary>
         /// Setting this to true will prevent your BloonsMod hooks from executing if the player could get flagged for using mods at that time.
         /// 
@@ -39,6 +40,15 @@ namespace BTD_Mod_Helper
         /// </summary>
         public virtual bool CheatMod => true;
 
+        internal string SettingsFilePath
+        {
+            get
+            {
+                var oldPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{Info.Name}.json");
+                var newPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{Assembly.GetName().Name}.json");
+                return File.Exists(oldPath) ? oldPath : newPath;
+            }
+        }
 
         /// <summary>
         /// Github API URL used to check if this mod is up to date.

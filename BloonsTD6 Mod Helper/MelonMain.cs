@@ -45,11 +45,12 @@ namespace BTD_Mod_Helper
             UpdateHandler.CheckModsForUpdates();
 
             // Mod Settings
-            var settingsDir = this.GetModSettingsDir(true);
-            ModSettingsHandler.InitializeModSettings(settingsDir);
-            ModSettingsHandler.LoadModSettings(settingsDir);
+            ModSettingsHandler.InitializeModSettings();
+            ModSettingsHandler.LoadModSettings();
 
-            MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
+            // MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
+
+            
 
             Schedule_GameModel_Loaded();
 
@@ -178,7 +179,7 @@ namespace BTD_Mod_Helper
 
         public override void OnTitleScreen()
         {
-            ModSettingsHandler.SaveModSettings(this.GetModSettingsDir(), true);
+            ModSettingsHandler.SaveModSettings(true);
 
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();
@@ -259,8 +260,7 @@ namespace BTD_Mod_Helper
             {
                 displayName = "Backup Directory",
                 onSave = AutoSave.SetAutosaveDirectory,
-                category = AutoSaveCategory,
-                modifyInput = inputField => inputField.Text.Text.fontSize = 50
+                category = AutoSaveCategory
             };
 
         public static readonly ModSettingInt TimeBetweenBackup = new ModSettingInt(30)

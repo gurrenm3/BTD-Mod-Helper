@@ -219,11 +219,10 @@ namespace BTD_Mod_Helper.Api.Components
         public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
             UnityAction<string> onValueChanged = null, float fontSize = 42,
             TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
-            TextAlignmentOptions align = TextAlignmentOptions.Midline, int padding = 20)
+            TextAlignmentOptions align = TextAlignmentOptions.Midline)
         {
             return Add(ModHelperInputField.Create(info, defaultValue, background, onValueChanged, fontSize, validation,
-                align,
-                padding));
+                align));
         }
 
         internal static T Create<T>(Info info) where T : ModHelperComponent

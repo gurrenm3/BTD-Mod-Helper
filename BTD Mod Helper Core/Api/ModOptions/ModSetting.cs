@@ -13,9 +13,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
     {
         internal T value;
         internal T defaultValue;
+        internal T lastSavedValue;
 
         /// <summary>
-        /// Action to call when the value changes. NOTE: this no longer applies to manual calls to SetValue
+        /// Action to call when the value changes.
         /// </summary>
         public Action<T> onValueChanged;
 
@@ -43,8 +44,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <param name="value"></param>
         protected ModSetting(T value)
         {
-            this.value = value;
-            defaultValue = value;
+            this.value = defaultValue = lastSavedValue = value;
         }
 
         /// <inheritdoc />
@@ -65,7 +65,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             if (val is T v)
             {
                 value = v;
-                // onValueChanged?.Invoke(v);
+                onValueChanged?.Invoke(v);
             }
             else
             {
@@ -79,9 +79,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             if (customValidation != null && !customValidation(value))
             {
+                value = lastSavedValue;
                 return false;
             }
 
+            lastSavedValue = value;
             onSave?.Invoke(value);
             return true;
         }
@@ -95,6 +97,20 @@ namespace BTD_Mod_Helper.Api.ModOptions
             modifyOption?.Invoke(modHelperOption);
             return modHelperOption;
         }
+
+        internal override void Load(object val)
+        {
+            if (val is T v)
+            {
+                value = v;
+                lastSavedValue = value;
+            }
+            else
+            {
+                ModHelper.Warning(
+                    $"Error: ModSetting type mismatch between {typeof(T).Name} and {val.GetType().Name} for {displayName}");
+            }
+        }
     }
 
     /// <summary>
@@ -106,7 +122,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// The exact name displayed for this mod setting. If unset, will use the variable name.
         /// </summary>
         public string displayName;
-        
+
         /// <summary>
         /// The description / explanation of this mod setting
         /// </summary>
@@ -116,12 +132,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// Icon to display alongside the setting
         /// </summary>
         public SpriteReference icon;
-        
+
         /// <summary>
         /// Action to modify the ModHelperOption after it's created
         /// </summary>
         public Action<ModHelperOption> modifyOption;
-        
+
         /// <summary>
         /// The category that this is part of, or null
         /// </summary>
@@ -133,7 +149,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public bool requiresRestart;
 
         internal ModHelperOption currentOption;
-        
+
         /// <summary>
         /// Gets the current value that this ModSetting holds
         /// </summary>
@@ -163,5 +179,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// If there were no issues, performs the onSave action
         /// </summary>
         internal abstract bool OnSave();
+
+        internal abstract void Load(object value);
     }
 }

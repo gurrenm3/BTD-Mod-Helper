@@ -27,20 +27,21 @@ namespace BTD_Mod_Helper
 
         #endregion
 
-        /// <summary>
-        /// Directory for where disabled mods are stored
-        /// </summary>
-        public static string DisabledModsDirectory => Path.Combine(MelonHandler.ModsDirectory, "Disabled");
 
         /// <summary>
         /// Directory where the Mod Helper stores most of its extra info
         /// </summary>
         public static string ModHelperDirectory =>
             Path.Combine(MelonHandler.ModsDirectory, Assembly.GetExecutingAssembly().GetName().Name);
-
+        
+        /// <summary>
+        /// Directory for where disabled mods are stored
+        /// </summary>
+        public static string DisabledModsDirectory => Path.Combine(MelonHandler.ModsDirectory, "Disabled");
         internal static string ZipTempDirectory => Path.Combine(ModHelperDirectory, "Zip Temp");
         internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
         internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
+        internal static string ModSettingsDirectory => Path.Combine(ModHelperDirectory, "Mod Settings");
 
         /// <summary>
         /// Active mods that use ModHelper functionality

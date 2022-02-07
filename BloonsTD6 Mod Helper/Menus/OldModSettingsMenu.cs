@@ -23,7 +23,7 @@ namespace BTD_Mod_Helper.Menus
 
         public override void OnMenuClosed(ExtraSettingsScreen gameMenu)
         {
-            ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir());
+            ModSettingsHandler.SaveModSettings();
             ModHelper.Msg("Successfully saved mod settings");
         }
     }

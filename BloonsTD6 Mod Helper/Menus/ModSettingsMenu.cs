@@ -83,7 +83,7 @@ namespace BTD_Mod_Helper.Menus
         {
             closing = true;
             animator.Play("PopupSlideOut");
-            Task.Run(() => ModSettingsHandler.SaveModSettings(ModHelper.Main.GetModSettingsDir()));
+            Task.Run(() => ModSettingsHandler.SaveModSettings());
         }
 
         public static void Open(BloonsMod bloonsMod)
