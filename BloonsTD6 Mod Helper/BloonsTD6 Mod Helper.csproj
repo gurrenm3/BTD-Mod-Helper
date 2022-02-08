@@ -290,6 +290,6 @@
   <Import Project="bloonstd6.props" />
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "$(BloonsTD6)\Mods" /y &amp;&amp; copy "$(TargetDir)$(TargetName).xml" "$(BloonsTD6)\Mods" /y</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "D:\Steam\steamapps\common\BloonsTD6\Mods\$(TargetFileName)" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

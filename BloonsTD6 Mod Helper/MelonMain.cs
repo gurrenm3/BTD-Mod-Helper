@@ -88,7 +88,7 @@ namespace BTD_Mod_Helper
             IsButton = true
         };
 
-
+        private static ModSettingString ExportPath = FileIOUtil.sandboxRoot;
 
         internal static ShowModOptions_Button modsButton;
 
@@ -148,6 +148,11 @@ namespace BTD_Mod_Helper
                 buttonOption.Button.AddOnClick(() =>
                 {
                     MelonLogger.Msg("Dumping Towers to local files");
+                    MelonLogger.Msg(FileIOUtil.sandboxRoot);
+                    if(ExportPath!=FileIOUtil.sandboxRoot){
+                        FileIOUtil.sandboxRoot = ExportPath;
+                    }
+                    MelonLogger.Msg(FileIOUtil.sandboxRoot);
                     foreach (var tower in Game.instance.model.towers)
                     {
                         var path = "Towers/" + tower.baseId + "/" + tower.name + ".json";
@@ -173,6 +178,9 @@ namespace BTD_Mod_Helper
                 buttonOption.Button.AddOnClick(() =>
                 {
                     MelonLogger.Msg("Exporting Upgrades to local files");
+                    if(ExportPath!=FileIOUtil.sandboxRoot){
+                        FileIOUtil.sandboxRoot = ExportPath;
+                    }
                     foreach (var upgrade in Game.instance.model.upgrades)
                     {
                         var path = "Upgrades/" + upgrade.name + ".json";
