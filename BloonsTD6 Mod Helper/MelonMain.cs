@@ -15,7 +15,6 @@ using System.IO;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Models;
-using Assets.Scripts.Unity.UI_New.Main;
 
 namespace BTD_Mod_Helper
 {
@@ -45,12 +44,12 @@ namespace BTD_Mod_Helper
             var settingsDir = this.GetModSettingsDir(true);
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
-            MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
 
 
             Schedule_GameModel_Loaded();
 
             MelonLogger.Msg("Mod has finished loading");
+            
         }
 
         public override void OnGameModelLoaded(GameModel model)
@@ -66,29 +65,29 @@ namespace BTD_Mod_Helper
             */
         }
 
-        public static ModSettingBool CleanProfile = true;
+        public static readonly ModSettingBool CleanProfile = true;
 
-        private static ModSettingBool AutoHideModdedClientPopup = false;
+        private static readonly ModSettingBool AutoHideModdedClientPopup = false;
         
-        private static ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
+        private static readonly ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
             displayName = "Open Local Files Directory",
             IsButton = true
         };
 
-        private static ModSettingBool ExportTowerJSONs = new ModSettingBool(false)
+        private static readonly ModSettingBool ExportTowerJSONs = new ModSettingBool(false)
         {
             displayName = "Export Tower JSONs",
             IsButton = true
         };
 
-        private static ModSettingBool ExportUpgradeJSONs = new ModSettingBool(false)
+        private static readonly ModSettingBool ExportUpgradeJSONs = new ModSettingBool(false)
         {
             displayName = "Export Upgrade JSONs",
             IsButton = true
         };
 
-        private static ModSettingString ExportPath = FileIOUtil.sandboxRoot;
+        private static readonly ModSettingString ExportPath = ""; // Gets set to the FileIOUtil path after that gets initialized
 
         internal static ShowModOptions_Button modsButton;
 
@@ -100,9 +99,12 @@ namespace BTD_Mod_Helper
 
             if (Game.instance is null)
                 return;
-            
+
             if (PopupScreen.instance != null && afterTitleScreen)
+            {
                 UpdateHandler.AnnounceUpdates(modsNeedingUpdates, this.GetModDirectory());
+                PopupScreen.instance.hasSeenModderWarning = AutoHideModdedClientPopup;
+            }
 
             if (InGame.instance is null)
                 return;
@@ -149,7 +151,7 @@ namespace BTD_Mod_Helper
                 {
                     MelonLogger.Msg("Dumping Towers to local files");
                     MelonLogger.Msg(FileIOUtil.sandboxRoot);
-                    if(ExportPath!=FileIOUtil.sandboxRoot){
+                    if(ExportPath != FileIOUtil.sandboxRoot){
                         FileIOUtil.sandboxRoot = ExportPath;
                     }
                     MelonLogger.Msg(FileIOUtil.sandboxRoot);
@@ -199,6 +201,12 @@ namespace BTD_Mod_Helper
                         $"Finished exporting upgrades to {FileIOUtil.sandboxRoot + "Upgrades"}");
                 });
             });
+            
+            ExportPath.defaultValue = FileIOUtil.sandboxRoot;
+            if (ExportPath == "")
+            {
+                ExportPath.value = FileIOUtil.sandboxRoot;
+            }
 
             afterTitleScreen = true;
         }

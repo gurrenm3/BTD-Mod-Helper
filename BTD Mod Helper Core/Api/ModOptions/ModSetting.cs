@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
     public abstract class ModSetting<T> : ModSetting
     {
         internal T value;
-        private readonly T defaultValue;
+        internal T defaultValue;
         
         /// <summary>
         /// The display name for the mod setting.

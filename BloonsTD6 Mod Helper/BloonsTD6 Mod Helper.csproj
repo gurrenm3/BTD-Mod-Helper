@@ -37,106 +37,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\Dependencies\BloonsTD6\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2Cppmscorlib">
-      <HintPath>..\\Dependencies\BloonsTD6\Il2Cppmscorlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Core">
-      <HintPath>..\Dependencies\BloonsTD6\Il2CppSystem.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="mscorlib">
-      <HintPath>..\\Dependencies\BloonsTD6\mscorlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem">
-      <HintPath>..\\Dependencies\BloonsTD6\Il2CppSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MelonLoader">
-      <HintPath>..\Dependencies\Shared\MelonLoader.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\\Dependencies\BloonsTD6\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NinjaKiwi.Common">
-      <HintPath>..\\Dependencies\BloonsTD6\NinjaKiwi.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NinjaKiwi.LiNK">
-      <HintPath>..\\Dependencies\BloonsTD6\NinjaKiwi.LiNK.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="UnhollowerBaseLib">
-      <HintPath>..\\Dependencies\BloonsTD6\UnhollowerBaseLib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnhollowerRuntimeLib">
-      <HintPath>..\\Dependencies\BloonsTD6\UnhollowerRuntimeLib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.ResourceManager">
-      <HintPath>..\\Dependencies\BloonsTD6\Unity.ResourceManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\\Dependencies\BloonsTD6\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.AssetBundleModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Il2CppAssetBundleManager">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.InputLegacyModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Il2CppImageConversionManager">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.Il2CppImageConversionManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.ImageConversionModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.JSONSerializeModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Dependencies\BloonsTD6\UnityEngine.TextRenderingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.UIElementsModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\\Dependencies\BloonsTD6\UnityEngine.UIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -144,6 +47,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
+  <!--So that you can override the C: specific targets without changing the one that gets included in git-->
+  <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
+  <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
   <ItemGroup>
     <Compile Include="Api\BackupCreator.cs" />
     <Compile Include="Api\Builders\BloonModelBuilder.cs" />
@@ -285,11 +191,9 @@
     <None Include="Resources\ingame_popup.bundle" />
     <None Include="Resources\modoptions.bundle" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="btd6.targets" />
+  </ItemGroup>
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="bloonstd6.props" />
-  <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "D:\Steam\steamapps\common\BloonsTD6\Mods\$(TargetFileName)" /y</PostBuildEvent>
-  </PropertyGroup>
 </Project>
