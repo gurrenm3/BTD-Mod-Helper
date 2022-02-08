@@ -79,6 +79,7 @@
     <Compile Include="Extensions\CollectionExtensions\LockedListExt.cs" />
     <Compile Include="Extensions\CollectionExtensions\SizedListExt.cs" />
     <Compile Include="Extensions\CoopExtensions\NKMultiGameInterfaceExt.cs" />
+    <Compile Include="Extensions\DisplayNodeExtensions\DumpNodeExt.cs" />
     <Compile Include="Extensions\LINQExtensions\SizedListExt.cs" />
     <Compile Include="Extensions\ModelExtensions\DisplayModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />

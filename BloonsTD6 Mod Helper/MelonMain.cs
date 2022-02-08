@@ -180,9 +180,6 @@ namespace BTD_Mod_Helper
                 buttonOption.Button.AddOnClick(() =>
                 {
                     MelonLogger.Msg("Exporting Upgrades to local files");
-                    if(ExportPath!=FileIOUtil.sandboxRoot){
-                        FileIOUtil.sandboxRoot = ExportPath;
-                    }
                     foreach (var upgrade in Game.instance.model.upgrades)
                     {
                         var path = "Upgrades/" + upgrade.name + ".json";
@@ -206,6 +203,10 @@ namespace BTD_Mod_Helper
             if (ExportPath == "")
             {
                 ExportPath.value = FileIOUtil.sandboxRoot;
+            }
+            else
+            {
+                FileIOUtil.sandboxRoot = ExportPath.value;
             }
 
             afterTitleScreen = true;
