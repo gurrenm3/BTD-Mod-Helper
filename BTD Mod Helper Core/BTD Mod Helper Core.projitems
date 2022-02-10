@@ -9,6 +9,7 @@
     <Import_RootNamespace>BTD_Mod_Helper</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Api\BetrayingNinjaKiwi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ICustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay.cs" />

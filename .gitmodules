@@ -1,0 +1,3 @@
+[submodule "BloonsTD6 Mod Helper/Patches/ModdedClientChecking"]
+	path = BloonsTD6 Mod Helper/Patches/ModdedClientChecking
+	url = https://github.com/doombubbles/ModdedClientChecking.git

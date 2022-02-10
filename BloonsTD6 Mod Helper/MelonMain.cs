@@ -45,7 +45,6 @@ namespace BTD_Mod_Helper
             ModSettingsHandler.InitializeModSettings(settingsDir);
             ModSettingsHandler.LoadModSettings(settingsDir);
 
-
             Schedule_GameModel_Loaded();
 
             MelonLogger.Msg("Mod has finished loading");
