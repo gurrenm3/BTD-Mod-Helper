@@ -125,7 +125,6 @@ namespace BTD_Mod_Helper.Api
                 return;
             }
 
-            FileIOUtil.SaveObject("profile.json", profile);
             // MelonLogger.Msg("Cleaning past profile");
 
             var towers = Game.instance.model.towerSet.Select(model => model.towerId).ToList();
@@ -133,6 +132,8 @@ namespace BTD_Mod_Helper.Api
             var heroes = Game.instance.model.heroSet.Select(model => model.towerId).ToList();
 
             CleanProfile(profile, towers, upgrades, heroes, false);
+            
+            FileIOUtil.SaveObject("profile.json", profile);
         }
 
         internal static void CleanCurrentProfile(ProfileModel profile)
