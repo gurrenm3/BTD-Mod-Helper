@@ -42,7 +42,6 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="recalculate">Whether to recalculate renderers</param>
-        /// <typeparam name="T">The type of Renderer you're looking for</typeparam>
         /// <returns></returns>
         public static List<Renderer> GetRenderers(this UnityDisplayNode node, bool recalculate = true)
         {

@@ -3,6 +3,9 @@ using System;
 
 namespace BTD_Mod_Helper.Extensions
 {
+    /// <summary>
+    /// Extension methods for <see cref="GrowModel"/>.
+    /// </summary>
     public static class GrowModelExt
     {
         /// <summary>

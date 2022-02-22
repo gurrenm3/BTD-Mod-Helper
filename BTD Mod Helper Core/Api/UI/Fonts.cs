@@ -18,10 +18,15 @@ namespace BTD_Mod_Helper.Api
         {
             if (FontsByName.Count == 0)
             {
-                foreach (TMP_FontAsset runtimeAnimatorController in Resources.FindObjectsOfTypeAll(Il2CppType.Of<TMP_FontAsset>()))
+#if BloonsTD6
+                var fontAssets = Resources.FindObjectsOfTypeAll<TMP_FontAsset>();
+#elif BloonsAT
+                var fontAssets = Resources.FindObjectsOfTypeAll(Il2CppType.Of<TMP_FontAsset>());
+#endif
+                foreach (TMP_FontAsset fontAsset in fontAssets)
                 {
-                    FontsByName[runtimeAnimatorController.name] = runtimeAnimatorController;
-                    ModHelper.Msg("Font: " + runtimeAnimatorController.name);
+                    FontsByName[fontAsset.name] = fontAsset;
+                    ModHelper.Msg("Font: " + fontAsset.name);
                 }
             }
         }

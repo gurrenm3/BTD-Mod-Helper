@@ -79,8 +79,7 @@
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="UnhollowerBaseLib">
-      <HintPath>..\\Dependencies\BloonsAT\UnhollowerBaseLib.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\Repos\C#\Bloons Projects\BTD Mod Helper\Dependencies\BloonsAT\UnhollowerBaseLib.dll</HintPath>
     </Reference>
     <Reference Include="UnhollowerRuntimeLib">
       <HintPath>..\\Dependencies\BloonsAT\UnhollowerRuntimeLib.dll</HintPath>

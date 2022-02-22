@@ -22,7 +22,12 @@ namespace BTD_Mod_Helper.Api
         {
             if (AnimationsByName.Count == 0)
             {
+
+#if BloonsTD6
+                var animationControllers = Resources.FindObjectsOfTypeAll<RuntimeAnimatorController>();
+#elif BloonsAT
                 var animationControllers = Resources.FindObjectsOfTypeAll(Il2CppType.Of<RuntimeAnimatorController>());
+#endif
                 foreach (RuntimeAnimatorController runtimeAnimatorController in animationControllers)
                 {
                     AnimationsByName[runtimeAnimatorController.name] = runtimeAnimatorController;

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace BTD_Mod_Helper
 {
+    /// <summary>
+    /// This class stores info about the current session of the game. It's used to track data from
+    /// when the game starts to when it's closed.
+    /// </summary>
     public partial class SessionData
     {
         /// <summary>
