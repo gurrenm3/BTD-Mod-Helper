@@ -15,6 +15,14 @@ namespace BTD_Mod_Helper.Api
         public abstract new string Name { get; }
 
         /// <summary>
+        /// The name of the Image file that would be the actual map. By default
+        /// this will be set to be the same as <see cref="Name"/>. Change this
+        /// if your map has a different file name than the name of the map itself.
+        /// <br/><br/>Example: Castle.png
+        /// </summary>
+        protected string MapImageName { get; }
+
+        /// <summary>
         /// The difficulty of this map.
         /// </summary>
         public abstract MapDifficulty Difficulty { get; }
@@ -31,6 +39,9 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public ModMap()
         {
+            if (string.IsNullOrEmpty(MapImageName))
+                MapImageName = Name;
+
             // Line below is for reference to see what parameters are needed for a MapModel
             //var mapModel = new MapModel("", null, null, null, null, null, null, 3, null, null, 4); 
         }

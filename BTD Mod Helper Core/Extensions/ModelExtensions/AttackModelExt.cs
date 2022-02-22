@@ -3,17 +3,16 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models.GenericBehaviors;
 using BTD_Mod_Helper.Api.Display;
-
 
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Weapons;
-
+using Assets.Scripts.Models.GenericBehaviors;
 #elif BloonsAT
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Models.Towers.Weapons.Behaviors;
+using Assets.Scripts.Models.Display;
 #endif
 
 
@@ -106,6 +105,7 @@ namespace BTD_Mod_Helper.Extensions
             var displayModels = attackModel.GetBehaviors<DisplayModel>().ToList();
             if (displayModels.Count > 0 && index >= 0 && index < displayModels.Count)
             {
+                var display = displayModels[index];
                 displayModels[index].ApplyDisplay<T>();
             }
         }

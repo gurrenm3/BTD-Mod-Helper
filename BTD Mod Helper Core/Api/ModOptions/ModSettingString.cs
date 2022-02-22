@@ -11,10 +11,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
     /// </summary>
     public class ModSettingString : ModSetting<string>
     {
+#if BloonsTD6
         /// <summary>
         /// Action to modify the ModHelperInputField after it's created
         /// </summary>
         public Action<ModHelperInputField> modifyInput;
+#endif
 
         /// <summary>
         /// Allow all characters
@@ -73,6 +75,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             var option = CreateBaseOption();
 
+#if BloonsTD6
             var input = option.BottomRow.AddInputField(
                 new Info("Input", width: 1500, height: 150), value, VanillaSprites.BlueInsertPanelRound,
                 new Action<string>(SetValue), 80f, characterValidation
@@ -80,6 +83,9 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             option.SetResetAction(new Action(() => input.SetText(defaultValue)));
             modifyInput?.Invoke(input);
+#elif BloonsAT
+            throw new NotImplementedException(); // Need to get the class ModHelperInputField working for BloonsAT
+#endif
             return option;
         }
     }

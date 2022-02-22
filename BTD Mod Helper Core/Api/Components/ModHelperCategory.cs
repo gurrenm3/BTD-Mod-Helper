@@ -45,7 +45,11 @@ namespace BTD_Mod_Helper.Api.Components
 
             category.BottomRow.gameObject.active = false;
 
+#if BloonsTD6
             category.Name.Text.fontStyle = FontStyles.Underline;
+#elif BloonsAT
+            throw new NotImplementedException(); // need to get "category.Name" working for BloonsAT
+#endif
 
             var content = category.AddPanel(
                 new Info("CategoryContent", anchorMin: new Vector2(0, 0.5f), anchorMax: new Vector2(1, 0.5f)), null,
@@ -63,7 +67,12 @@ namespace BTD_Mod_Helper.Api.Components
             });
             action(collapsed);
 
+#if BloonsTD6
             category.InfoButton.Image.SetSprite(VanillaSprites.ArrowHideBtn);
+#elif BloonsAT
+            //category.InfoButton.Image.SetSprite(VanillaSprites.ArrowHideBtn); this won't work
+            throw new NotImplementedException(); // figure out how to get VanillaSprites for BloonsAT
+#endif
             category.InfoButton.Button.AddOnClick(() => action(!category.collapsed));
 
             return category;

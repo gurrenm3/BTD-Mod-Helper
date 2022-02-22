@@ -165,12 +165,14 @@ namespace BTD_Mod_Helper.Api.Components
             return Add(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing, padding));
         }
 
+#if BloonsTD6
         /// <inheritdoc cref="ModHelperText.Create"/>
         public ModHelperText AddText(Info info, string text, float fontSize = 42,
             TextAlignmentOptions align = TextAlignmentOptions.Midline)
         {
             return Add(ModHelperText.Create(info, text, fontSize, align));
         }
+#endif
 
         /// <inheritdoc cref="ModHelperButton.Create"/>
         public ModHelperButton AddButton(Info info, SpriteReference sprite, Action onClick)
@@ -199,6 +201,7 @@ namespace BTD_Mod_Helper.Api.Components
                 labelFontSize));
         }
 
+#if BloonsTD6
         /// <inheritdoc cref="ModHelperSlider.Create"/>
         public ModHelperSlider AddSlider(Info info, float defaultValue, float minValue, float maxValue,
             float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
@@ -207,6 +210,7 @@ namespace BTD_Mod_Helper.Api.Components
             return Add(ModHelperSlider.Create(info, defaultValue, minValue, maxValue, stepSize, handleSize,
                 onValueChanged, fontSize, labelSuffix));
         }
+#endif
 
         /// <inheritdoc cref="ModHelperCheckbox.Create"/>
         public ModHelperCheckbox AddCheckbox(Info info, bool defaultValue, SpriteReference background,
@@ -215,6 +219,7 @@ namespace BTD_Mod_Helper.Api.Components
             return Add(ModHelperCheckbox.Create(info, defaultValue, background, onValueChanged, checkImage, padding));
         }
 
+#if BloonsTD6
         /// <inheritdoc cref="ModHelperInputField.Create"/>
         public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
             UnityAction<string> onValueChanged = null, float fontSize = 42,
@@ -224,6 +229,7 @@ namespace BTD_Mod_Helper.Api.Components
             return Add(ModHelperInputField.Create(info, defaultValue, background, onValueChanged, fontSize, validation,
                 align));
         }
+#endif
 
         internal static T Create<T>(Info info) where T : ModHelperComponent
         {

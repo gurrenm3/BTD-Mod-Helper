@@ -1,5 +1,4 @@
-﻿#if BloonsTD6
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
@@ -7,7 +6,6 @@ using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Towers
 {
@@ -231,4 +229,3 @@ namespace BTD_Mod_Helper.Api.Towers
         public override ModTower Tower => GetInstance<T>();
     }
 }
-#endif

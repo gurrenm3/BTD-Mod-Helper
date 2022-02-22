@@ -11,6 +11,14 @@ using Assets.Scripts.Models.Bloons.Behaviors;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Api.Enums;
+
+#if BloonsTD6
+using Assets.Scripts.Models.GenericBehaviors;
+#elif BloonsAT
+using Assets.Scripts.Models.Display;
+#endif
+
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -85,7 +93,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// This is Obsolete, use GetAllBloonToSim instead. (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
+        /// (Cross-Game compatible) This is Obsolete, use GetAllBloonToSim instead. (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
         /// </summary>
         [Obsolete]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
@@ -121,6 +129,33 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
+        /// (Cross-Game compatible) Set the Display GUID for this BloonModel.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <param name="guid"></param>
+        public static void SetDisplayGUID(this BloonModel bloonModel, string guid)
+        {
+#if BloonsTD6
+            bloonModel.display = guid;
+#endif
+            bloonModel.GetBehavior<DisplayModel>().display = guid;
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns the Display GUID for this BloonModel.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <returns></returns>
+        public static string GetDisplayGUID(this BloonModel bloonModel)
+        {
+#if BloonsTD6
+            return bloonModel.display;
+#elif BloonsAT
+            return bloonModel.GetBehavior<DisplayModel>().display;
+#endif
+        }
+
+        /// <summary>
         /// (Cross-Game compatible) Return the Base ID of this BloonModel
         /// </summary>
         /// <param name="bloonModel"></param>
@@ -135,7 +170,153 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Applies a given ModDisplay to this TowerModel
+        /// (Cross-Game compatible) Returns whether or not this BloonModel is a Camo bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <returns></returns>
+        public static bool IsCamoBloon(this BloonModel bloonModel)
+        {
+#if BloonsTD6
+            return bloonModel.isCamo;
+#elif BloonsAT
+            return bloonModel.IsCamo;
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Set whether or not this BloonModel is a Camo bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <param name="isCamo"></param>
+        public static void SetCamo(this BloonModel bloonModel, bool isCamo)
+        {
+#if BloonsTD6
+            bloonModel.isCamo = isCamo;
+            bloonModel.AddTag(BloonTag.Camo);
+#elif BloonsAT
+            bloonModel.IsCamo = isCamo;
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns whether or not this BloonModel is a Regrow bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <returns></returns>
+        public static bool IsRegrowBloon(this BloonModel bloonModel)
+        {
+#if BloonsTD6
+            return bloonModel.isGrow;
+#elif BloonsAT
+            return bloonModel.IsRegrow;
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Set whether or not this BloonModel is a Regrow bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <param name="isRegrow"></param>
+        private static void SetRegrowBool(this BloonModel bloonModel, bool isRegrow)
+        {
+#if BloonsTD6
+            bloonModel.isGrow = isRegrow;
+            bloonModel.AddTag(BloonTag.Regrow);
+#elif BloonsAT
+            bloonModel.IsRegrow.cachedObject = isRegrow; // this is untested and may not work.
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Adds the Regrow behavior to this BloonModel and sets what 
+        /// Bloon it Regrows into.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <param name="regrowsTo">The ID of the BloonModel that this should regrow into.</param>
+        /// <param name="regrowRate">The rate at which this regrows.</param>
+        public static void SetRegrow(this BloonModel bloonModel, string regrowsTo, float regrowRate = 3)
+        {
+            bloonModel.SetRegrowBool(true);
+
+            if (!bloonModel.HasBehavior<GrowModel>(out var growModel))
+            {
+                growModel = BloonModelUtils.CreateGrowModel(regrowsTo, regrowRate);
+                bloonModel.AddBehavior(growModel);
+            }
+
+            growModel.SetRegrowBloon(regrowsTo, regrowRate);
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Removes the Regrow behavior from this BloonModel.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        public static void RemoveRegrow(this BloonModel bloonModel)
+        {
+            bloonModel.SetRegrowBool(false);
+            bloonModel.RemoveBehavior<GrowModel>();
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns whether or not this BloonModel is a Fortified bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <returns></returns>
+        public static bool IsFortifiedBloon(this BloonModel bloonModel)
+        {
+#if BloonsTD6
+            return bloonModel.isFortified;
+#elif BloonsAT
+            return bloonModel.IsFortified;
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Set whether or not this BloonModel is a Fortified bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <param name="isFortified"></param>
+        public static void SetFortified(this BloonModel bloonModel, bool isFortified)
+        {
+#if BloonsTD6
+            bloonModel.isFortified = isFortified;
+            bloonModel.AddTag(BloonTag.Fortified);
+#elif BloonsAT
+            bloonModel._IsFortified_k__BackingField = isFortified;
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns whether or not this BloonModel is an MOAB-Class bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <returns></returns>
+        public static bool IsMoabBloon(this BloonModel bloonModel)
+        {
+#if BloonsTD6
+            return bloonModel.isMoab;
+#elif BloonsAT
+            return bloonModel.IsMoab;
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Set whether or not this BloonModel is a Fortified bloon.
+        /// </summary>
+        /// <param name="bloonModel"></param>
+        /// <param name="isMoabBloon"></param>
+        public static void SetMoab(this BloonModel bloonModel, bool isMoabBloon)
+        {
+#if BloonsTD6
+            bloonModel.isMoab = isMoabBloon;
+            bloonModel.AddTag(BloonTag.Moab);
+#elif BloonsAT
+            bloonModel.IsMoab.cachedObject = isMoabBloon;
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Applies a given ModDisplay to this TowerModel
         /// </summary>
         /// <typeparam name="T">The type of ModDisplay</typeparam>
         public static void ApplyDisplay<T>(this BloonModel bloonModel) where T : ModDisplay
@@ -144,7 +325,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Adds a child to be spawned from the Bloon
+        /// (Cross-Game compatible) Adds a child to be spawned from the Bloon
         /// </summary>
         public static void AddToChildren<T>(this BloonModel bloonModel, int amount = 1) where T : ModBloon
         {
@@ -152,7 +333,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Gets the SpawnChildrenModel for the bloon, and optionally creates one if it doesn't exist
+        /// (Cross-Game compatible) Gets the SpawnChildrenModel for the bloon, and optionally creates one if it doesn't exist
         /// </summary>
         public static SpawnChildrenModel GetSpawnChildrenModel(this BloonModel bloonModel, bool addIfNotExists = false)
         {
@@ -167,7 +348,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Adds a child to be spawned from the Bloon
+        /// (Cross-Game compatible) Adds a child to be spawned from the Bloon
         /// </summary>
         public static void AddToChildren(this BloonModel bloonModel, string id, int amount = 1)
         {
@@ -182,7 +363,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Removes all spawned children from this BloonModel
+        /// (Cross-Game compatible) Removes all spawned children from this BloonModel
         /// </summary>
         public static void RemoveAllChildren(this BloonModel bloonModel)
         {
@@ -194,7 +375,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Removes up to amount of the given Bloon from the spawned children
+        /// (Cross-Game compatible) Removes up to amount of the given Bloon from the spawned children
         /// </summary>
         public static void RemoveFromChildren(this BloonModel bloonModel, string id, int amount = 1)
         {
@@ -215,7 +396,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Replaces all spawned child Bloons with the given id with the given ModBloon
+        /// (Cross-Game compatible) Replaces all spawned child Bloons with the given id with the given ModBloon
         /// </summary>
         public static void ReplaceInChildren(this BloonModel bloonModel, string oldId, string newId)
         {
@@ -234,7 +415,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Replaces all spawned child Bloons that have id oldId with the given ModBloon
+        /// (Cross-Game compatible) Replaces all spawned child Bloons that have id oldId with the given ModBloon
         /// </summary>
         public static void ReplaceInChildren<T>(this BloonModel bloonModel, string oldId) where T : ModBloon
         {
@@ -242,7 +423,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Replaces all spawned child Bloons of the first ModBloon type with the second ModBloon type
+        /// (Cross-Game compatible) Replaces all spawned child Bloons of the first ModBloon type with the second ModBloon type
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="id"></param>
@@ -253,7 +434,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
+        /// (Cross-Game compatible) Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="change"></param>
@@ -265,10 +446,10 @@ namespace BTD_Mod_Helper.Extensions
 
             return Game.instance.model.bloons
                 .Where(model =>
-                    model.baseId == bloon.baseId &&
-                    model.isCamo == bloon.isCamo &&
-                    model.isGrow == bloon.isGrow &&
-                    model.isFortified == bloon.isFortified)
+                    model.GetBaseID() == bloon.GetBaseID() &&
+                    model.IsCamoBloon() == bloon.IsCamoBloon() &&
+                    model.IsRegrowBloon() == bloon.IsRegrowBloon() &&
+                    model.IsFortifiedBloon() == bloon.IsFortifiedBloon())
                 .Select(model => model.id).FirstOrDefault();
         }
 
@@ -286,6 +467,7 @@ namespace BTD_Mod_Helper.Extensions
             }
 
             var growModel = bloonModel.GetBehavior<GrowModel>();
+#if BloonsTD6
             if (!string.IsNullOrEmpty(growModel?.growToId))
             {
                 var newBloon = Game.instance.model.GetBloon(growModel.growToId).FindChangedBloonId(effect);
@@ -294,79 +476,46 @@ namespace BTD_Mod_Helper.Extensions
                     growModel.growToId = newBloon;
                 }
             }
+#elif BloonsAT
+            // need to implement for BATTD.
+            // Need to figure out how to check for "growModel.growToId" in BATTD
+            throw new NotImplementedException(); 
+#endif
+
         }
 
         /// <summary>
-        /// Makes all children of this Bloon Camo, if they can have it
+        /// (Cross-Game compatible) Makes all children of this Bloon Camo, if they can have it
         /// </summary>
         public static void MakeChildrenCamo(this BloonModel bloonModel)
         {
-            bloonModel.MakeChildrenSomething(model => model.isCamo = true);
+            bloonModel.MakeChildrenSomething(model => model.SetCamo(true));
         }
 
         /// <summary>
-        /// Makes all children of this Bloon Regrow, if they can have it
+        /// (Cross-Game compatible) Makes all children of this Bloon Regrow, if they can have it
         /// </summary>
         public static void MakeChildrenRegrow(this BloonModel bloonModel)
         {
-            bloonModel.MakeChildrenSomething(model => model.isGrow = true);
+            bloonModel.MakeChildrenSomething(model => model.SetRegrowBool(true));
         }
 
         /// <summary>
-        /// Makes all children of this Bloon Fortified, if they can have it
+        /// (Cross-Game compatible) Makes all children of this Bloon Fortified, if they can have it
         /// </summary>
         public static void MakeChildrenFortified(this BloonModel bloonModel)
         {
-            bloonModel.MakeChildrenSomething(model => model.isFortified = true);
+            bloonModel.MakeChildrenSomething(model => model.SetFortified(true));
         }
 
         /// <summary>
-        /// Adds a tag to the BloonModel, if it doesn't already exist
-        /// </summary>
-        public static void AddTag(this BloonModel bloonModel, string tag)
-        {
-            var tags = bloonModel.tags?.ToList() ?? new List<string>();
-            if (!tags.Contains(tag))
-            {
-                tags.Add(tag);
-                bloonModel.tags = tags.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Removes a tag from the BloonModel, if it exists
-        /// </summary>
-        public static void RemoveTag(this BloonModel bloonModel, string tag)
-        {
-            if (bloonModel.tags != null)
-            {
-                var tags = bloonModel.tags.ToList();
-                if (tags.Contains(tag))
-                {
-                    tags.Remove(tag);
-                    bloonModel.tags = tags.ToArray();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the ModBloon associated with this BloonModel
+        /// (Cross-Game compatible) Gets the ModBloon associated with this BloonModel
         /// <br/>
         /// If there is no associated ModBloon, returns null
         /// </summary>
         public static ModBloon GetModBloon(this BloonModel bloonModel)
         {
             return ModBloon.Cache.TryGetValue(bloonModel.name, out var modBloon) ? modBloon : null;
-        }
-
-        /// <summary>
-        /// Gets the BloonModel for this group
-        /// </summary>
-        /// <param name="bloonGroupModel"></param>
-        /// <returns></returns>
-        public static BloonModel GetBloonModel(this BloonGroupModel bloonGroupModel)
-        {
-            return Game.instance.model.GetBloon(bloonGroupModel.bloon);
         }
     }
 }

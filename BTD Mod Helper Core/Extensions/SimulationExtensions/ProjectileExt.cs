@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Simulation.Factory;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Simulation.Towers.Projectiles;
+using Assets.Scripts.Simulation.Towers.Projectiles.Behaviors;
 
 namespace BTD_Mod_Helper.Extensions
 {

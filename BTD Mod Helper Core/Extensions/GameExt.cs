@@ -13,8 +13,10 @@ using Assets.Scripts.Unity.UI_New;
 
 #if BloonsTD6
 using NinjaKiwi.LiNK;
+using NinjaKiwi.Common;
 #elif BloonsAT
 using Ninjakiwi.LiNK;
+using Assets.Scripts.Unity.Localization;
 #endif
 
 namespace BTD_Mod_Helper.Extensions
@@ -58,6 +60,18 @@ namespace BTD_Mod_Helper.Extensions
             return hackerStatus.genrl || hackerStatus.ledrbrd;
 #elif BloonsAT
             return game.GetAdventureTimePlayer().HasStatusFlags();
+#endif
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Get the instance of LocalizationManager
+        /// </summary>
+        public static LocalizationManager GetLocalizationManager(this Game game)
+        {
+#if BloonsTD6
+            return LocalizationManager.Instance;
+#elif BloonsAT
+            return game.localizationManager;
 #endif
         }
 

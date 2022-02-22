@@ -63,11 +63,16 @@ namespace BTD_Mod_Helper.Api.Components
             var backgroundImage = modHelperCheckbox.AddComponent<Image>();
             backgroundImage.type = Image.Type.Sliced;
             backgroundImage.SetSprite(background);
-            
-            var check  = modHelperCheckbox.AddImage(
+
+            ModHelperImage check = null;
+#if BloonsTD6
+            check = modHelperCheckbox.AddImage(
                 new Info("Check", anchorMin: Vector2.zero, anchorMax: Vector2.one, width: padding * -2,
-                    height: padding * -2), checkImage ?? VanillaSprites.TickGreenIcon
-            );
+                    height: padding * -2), checkImage ?? VanillaSprites.TickGreenIcon);
+#elif BloonsAT
+            // need to figure out how to get "VanillaSprites.TickGreenIcon" for BloonsAT
+            throw new NotImplementedException(); 
+#endif
 
             var toggle = modHelperCheckbox.AddComponent<Toggle>();
             toggle.graphic = check.Image;

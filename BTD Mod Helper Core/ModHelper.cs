@@ -144,7 +144,13 @@ namespace BTD_Mod_Helper
         {
             foreach (var mod in MelonHandler.Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
             {
-                if (!mod.CheatMod || !Game.instance.CanGetFlagged())
+                bool canPerformHook = false;
+#if BloonsTD6
+                canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
+#elif BloonsAT
+                canPerformHook = !mod.CheatMod;
+#endif
+                if (canPerformHook)
                 {
                     try
                     {

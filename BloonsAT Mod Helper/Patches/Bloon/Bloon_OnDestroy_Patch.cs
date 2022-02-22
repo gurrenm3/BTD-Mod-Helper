@@ -10,8 +10,6 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPrefix]
         internal static bool Prefix(Bloon __instance)
         {
-            SessionData.bloonTracker.StopTrackingBloon(__instance.GetId());
-            SessionData.bloonTracker.StopTrackingBloonToSim(__instance.GetId());
             return true;
         }
 

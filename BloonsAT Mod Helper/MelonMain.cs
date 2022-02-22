@@ -20,9 +20,6 @@ namespace BTD_Mod_Helper
         public override string LatestURL => "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
         internal readonly List<UpdateInfo> modsNeedingUpdates = new List<UpdateInfo>();
 
-        public const string currentVersion = ModHelper.CurrentVersion;
-
-
         public override void OnApplicationStart()
         {
             MelonLogger.Msg("Mod has finished loading");
@@ -36,8 +33,8 @@ namespace BTD_Mod_Helper
             UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
 
             var settingsDir = this.GetModSettingsDir(createIfNotExists: true);
-            ModSettingsHandler.InitializeModSettings(settingsDir);
-            ModSettingsHandler.LoadModSettings(settingsDir);
+            ModSettingsHandler.InitializeModSettings();
+            ModSettingsHandler.LoadModSettings();
 
             
 
@@ -103,7 +100,7 @@ namespace BTD_Mod_Helper
             //TODO: with only external changing, settings should load when going to the main menu
             //TODO: with in game changing, settings should save when going to the main menu
             //ModSettingsHandler.SaveModSettings(modSettingsDir);
-            ModSettingsHandler.LoadModSettings(this.GetModSettingsDir());
+            ModSettingsHandler.LoadModSettings();
 
             if (!scheduledInGamePatch)
                 Schedule_InGame_Loaded();

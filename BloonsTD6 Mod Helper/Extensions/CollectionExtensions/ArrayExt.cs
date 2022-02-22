@@ -3,12 +3,12 @@ using Assets.Scripts.Utils;
 using UnhollowerBaseLib;
 using UnhollowerBaseLib.Runtime;
 
-namespace BTD_Mod_Helper.Extensions.CollectionExtensions
+namespace BTD_Mod_Helper.Extensions
 {
     /// <summary>
     /// Extensions for arrays
     /// </summary>
-    public static class ArrayExt
+    public static partial class ArrayExt
     {
         /// <summary>
         /// Not Tested

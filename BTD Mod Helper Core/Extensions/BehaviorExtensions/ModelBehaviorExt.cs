@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models;
+using MelonLoader;
+using Enumerable = System.Linq.Enumerable;
+
+#if BloonsTD6
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Powers;
 using Assets.Scripts.Models.Towers;
@@ -14,8 +18,8 @@ using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Assets.Scripts.Models.Towers.Props;
 using Assets.Scripts.Models.Towers.Weapons;
-using MelonLoader;
-using Enumerable = System.Linq.Enumerable;
+#endif
+
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -210,8 +214,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         public static void RemoveBehavior<T>(this Model model) where T : Model
         {
-            var behavior = model.GetBehavior<T>();
-            if (behavior != null)
+            if (model.HasBehavior(out T behavior))
             {
                 model.RemoveBehavior(behavior);
             }

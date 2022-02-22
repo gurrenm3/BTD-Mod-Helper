@@ -136,14 +136,6 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// Get the instance of LocalizationManager
-        /// </summary>
-        public static LocalizationManager GetLocalizationManager(this Game game)
-        {
-            return LocalizationManager.Instance;
-        }
-
-        /// <summary>
         /// Get the instance of MenuManager
         /// </summary>
         public static MenuManager GetMenuManager(this Game game)

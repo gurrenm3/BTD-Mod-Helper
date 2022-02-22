@@ -1,24 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Bloons.Behaviors;
-#if BloonsTD6
-using Assets.Scripts.Models.GenericBehaviors;
-#endif
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 
 namespace BTD_Mod_Helper.Api.Bloons
 {
     /// <summary>
     /// Class for adding in a new Bloon to the game
     /// </summary>
-    public abstract class ModBloon : NamedModContent
+    public abstract partial class ModBloon : NamedModContent
     {
         internal static readonly Dictionary<string, ModBloon> Cache = new Dictionary<string, ModBloon>();
 
@@ -38,7 +32,9 @@ namespace BTD_Mod_Helper.Api.Bloons
             bloonModel = GetDefaultBloonModel();
 
             ModifyBaseBloonModel(bloonModel);
+#if BloonsTD6
             bloonModel.updateChildBloonModels = true;
+#endif
 
             displays.FirstOrDefault(display => display.Damage == 0)?.Apply(bloonModel);
             var damageDisplays = displays
@@ -64,8 +60,7 @@ namespace BTD_Mod_Helper.Api.Bloons
 
         /// <inheritdoc />
         protected internal override string ID => KeepBaseId
-            ? GameModelUtil.ConstructBloonId(BaseBloon
-                .Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", ""), Camo, Regrow, Fortified)
+            ? BloonModelUtils.ConstructBloonId(BaseBloon, Camo, Regrow, Fortified)
             : base.ID;
 
         /// <summary>
@@ -111,6 +106,11 @@ namespace BTD_Mod_Helper.Api.Bloons
         public virtual string RegrowsTo => null;
 
         /// <summary>
+        /// Whether this Bloon should use its Icon as its display
+        /// </summary>
+        public virtual bool UseIconAsDisplay => !BaseBloonModel.IsMoabBloon();
+
+        /// <summary>
         /// The regrow rate
         /// </summary>
         public virtual float RegrowRate => 3;
@@ -126,11 +126,6 @@ namespace BTD_Mod_Helper.Api.Bloons
         public virtual IEnumerable<string> DamageStates => null;
 
         /// <summary>
-        /// Whether this Bloon should use its Icon as its display
-        /// </summary>
-        public virtual bool UseIconAsDisplay => !BaseBloonModel.isMoab;
-
-        /// <summary>
         /// For 2D bloons, the ratio between pixels and display units. Higher number -> smaller Bloon.
         /// </summary>
         public virtual float PixelsPerUnit => 10f;
@@ -141,43 +136,34 @@ namespace BTD_Mod_Helper.Api.Bloons
         internal virtual BloonModel GetDefaultBloonModel()
         {
             var model = BaseBloonModel.Duplicate();
-            model.RemoveTag(model.baseId);
+
+#if BloonsTD6
+            model.icon = IconReference;
+            model.RemoveTag(model.GetBaseID());
+
             if (BaseModBloon != null)
             {
                 model.baseId = BaseModBloon.Id;
-            }
-
-            model.id = model.name = Id;
+            }            
             if (!KeepBaseId)
             {
                 model.baseId = Id;
             }
 
             model.AddTag(model.baseId);
+#endif
 
-            model.icon = IconReference;
+            model.id = model.name = Id;
+            model.SetCamo(Camo);
+            model.SetFortified(Fortified);
 
-            if (Fortified && !model.isFortified)
+            if (Regrow && !string.IsNullOrEmpty(RegrowsTo))
             {
-                model.isFortified = true;
-                model.AddTag(BloonTag.Fortified);
+                model.SetRegrow(RegrowsTo, RegrowRate);
             }
-
-            if (Regrow && !model.isGrow)
+            if (!Regrow)
             {
-                if (!model.HasBehavior<GrowModel>() && RegrowsTo != null)
-                {
-                    model.AddBehavior(new GrowModel("GrowModel_", RegrowRate, RegrowsTo));
-                }
-
-                model.isGrow = true;
-                model.AddTag(BloonTag.Regrow);
-            }
-
-            if (Camo && !model.isCamo)
-            {
-                model.isCamo = true;
-                model.AddTag(BloonTag.Camo);
+                model.RemoveRegrow();
             }
 
             if (DamageStates != null)
@@ -190,7 +176,7 @@ namespace BTD_Mod_Helper.Api.Bloons
                 if (TextureExists(mod, Icon))
                 {
                     var guid = GetTextureGUID(Icon);
-                    model.display = model.GetBehavior<DisplayModel>().display = guid;
+                    model.SetDisplayGUID(guid);
                     ResourceHandler.ScalesFor2dModels[guid] = PixelsPerUnit;
                 }
                 else
@@ -216,7 +202,9 @@ namespace BTD_Mod_Helper.Api.Bloons
                 i++;
             }
 
+#if BloonsTD6
             model.damageDisplayStates = displayStates.ToIl2CppReferenceArray();
+#endif
             foreach (var damageStateModel in displayStates)
             {
                 model.AddBehavior(damageStateModel);

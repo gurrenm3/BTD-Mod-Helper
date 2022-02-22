@@ -1,4 +1,8 @@
-﻿using Assets.Scripts.Models.GenericBehaviors;
+﻿#if BloonsTD6
+using Assets.Scripts.Models.GenericBehaviors;
+#elif BloonsAT
+using Assets.Scripts.Models.Display;
+#endif
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 

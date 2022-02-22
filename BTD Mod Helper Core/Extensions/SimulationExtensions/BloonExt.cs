@@ -29,17 +29,6 @@ namespace BTD_Mod_Helper.Extensions
             return bloon.GetDisplayNode()?.graphic;
         }
 
-
-
-        /// <summary>
-        /// (Cross-Game compatible) Return the existing BloonToSimulation for this specific Bloon.
-        /// </summary>
-        public static BloonToSimulation GetBloonToSim(this Bloon bloon)
-        {
-            var allBloons = InGame.instance?.GetUnityToSimulation().GetAllBloons();
-            return allBloons?.FirstOrDefault(simulation => simulation.GetBloon() == bloon);
-        }
-
         /// <summary>
         /// (Cross-Game compatible) Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically destroyed when this Bloon is destroyed
         /// </summary>

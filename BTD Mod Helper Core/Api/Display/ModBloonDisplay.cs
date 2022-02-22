@@ -50,7 +50,7 @@ namespace BTD_Mod_Helper.Api.Display
             var bloonModel = Game.instance.model.GetBloon(bloonId);
             if (damagedAmount == 0)
             {
-                return bloonModel.display;
+                return bloonModel.GetDisplayGUID();
             }
 
             var damageStateModels = bloonModel.GetBehaviors<DamageStateModel>()

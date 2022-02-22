@@ -71,8 +71,12 @@ namespace BTD_Mod_Helper.Api.Components
                         axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
                         axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)), null, axis, spacing, padding);
             scrollContent.transform.parent = newPanel;
-            scrollContent.AddComponent<NK_TextMeshProUGUI>(); // so that everywhere in the content window is draggable
 
+#if BloonsTD6
+            scrollContent.AddComponent<NK_TextMeshProUGUI>(); // so that everywhere in the content window is draggable
+#elif BloonsAT
+            throw new NotImplementedException("Need to figure out the equivellant of NK_TextMeshProUGUI for BloonsAT");
+#endif
             scrollRect.content = scrollContent.RectTransform;
             scrollRect.content.pivot = new Vector2(0.5f, 1);
             scrollRect.viewport = newPanel.RectTransform;

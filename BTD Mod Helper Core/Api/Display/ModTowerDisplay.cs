@@ -1,5 +1,4 @@
-﻿#if BloonsTD6
-using System;
+﻿using System;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
@@ -10,7 +9,7 @@ namespace BTD_Mod_Helper.Api.Display
     /// <summary>
     /// A ModDisplay that will automatically apply to a ModTower for specific tiers
     /// </summary>
-    public abstract class ModTowerDisplay : ModDisplay
+    public abstract partial class ModTowerDisplay : ModDisplay
     {
         /// <inheritdoc />
         public override void Register()
@@ -105,4 +104,3 @@ namespace BTD_Mod_Helper.Api.Display
         public override ModTower Tower => GetInstance<T>();
     }
 }
-#endif

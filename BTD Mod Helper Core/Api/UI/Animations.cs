@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnhollowerRuntimeLib;
 using UnityEngine;
 #pragma warning disable CS1591
 
@@ -9,6 +10,11 @@ namespace BTD_Mod_Helper.Api
     /// </summary>
     public static class Animations
     {
+        public static RuntimeAnimatorController GlobalButtonAnimation => Get("GlobalButtonAnimation");
+        public static RuntimeAnimatorController TabAnimation => Get("GlobalTabAnimation");
+        public static RuntimeAnimatorController GlowPulse => Get("GlowPulse");
+        public static RuntimeAnimatorController PopupAnim => Get("PopupAnim");
+
         private static readonly Dictionary<string, RuntimeAnimatorController> AnimationsByName =
             new Dictionary<string, RuntimeAnimatorController>();
 
@@ -16,7 +22,8 @@ namespace BTD_Mod_Helper.Api
         {
             if (AnimationsByName.Count == 0)
             {
-                foreach (var runtimeAnimatorController in Resources.FindObjectsOfTypeAll<RuntimeAnimatorController>())
+                var animationControllers = Resources.FindObjectsOfTypeAll(Il2CppType.Of<RuntimeAnimatorController>());
+                foreach (RuntimeAnimatorController runtimeAnimatorController in animationControllers)
                 {
                     AnimationsByName[runtimeAnimatorController.name] = runtimeAnimatorController;
                     ModHelper.Msg("Animation: " + runtimeAnimatorController.name);
@@ -32,11 +39,5 @@ namespace BTD_Mod_Helper.Api
             return AnimationsByName.TryGetValue(name, out var anim) ? anim : null;
         }
 
-#if BloonsTD6
-        public static RuntimeAnimatorController GlobalButtonAnimation => Get("GlobalButtonAnimation");
-        public static RuntimeAnimatorController TabAnimation => Get("GlobalTabAnimation");
-        public static RuntimeAnimatorController GlowPulse => Get("GlowPulse");
-        public static RuntimeAnimatorController PopupAnim => Get("PopupAnim");
-#endif
     }
 }

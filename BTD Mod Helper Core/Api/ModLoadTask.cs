@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-#if BloonsTD6
-using Assets.Scripts.Unity.Tasks;
 
 namespace BTD_Mod_Helper.Api
 {
     /// <summary>
     /// Class for a Coroutine style task that runs during the BTD6 loading screen
     /// </summary>
-    public abstract class ModLoadTask : NamedModContent
+    public abstract partial class ModLoadTask : NamedModContent
     {
         internal static readonly Dictionary<int, ModLoadTask> Cache = new Dictionary<int, ModLoadTask>();
 
@@ -38,13 +36,5 @@ namespace BTD_Mod_Helper.Api
         {
             // nothing here since registering happens after TitleScreen, so ModLoadTasks should already be finished
         }
-
-        internal ITask CreateTask()
-        {
-            var action = (Il2CppSystem.Action) new Action(() => { });
-            Cache[action.GetHashCode()] = this;
-            return new Task(DisplayName, action).Cast<ITask>();
-        }
     }
 }
-#endif

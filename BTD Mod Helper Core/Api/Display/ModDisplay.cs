@@ -1,27 +1,25 @@
-﻿#if BloonsTD6
-using System;
-using System.Collections.Generic;
-using Assets.Scripts.Models.GenericBehaviors;
-#endif
-#if BloonsAT
-using Assets.Scripts.Models.Display;
-#endif
-using Assets.Scripts.Models.Bloons;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.Towers.Projectiles;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Display;
-using BTD_Mod_Helper.Extensions;
-using UnityEngine;
+﻿using Assets.Scripts.Unity.Display;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
+using System.Collections.Generic;
+using Assets.Scripts.Models.Bloons;
+using BTD_Mod_Helper.Extensions;
+using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Simulation.SMath;
+
+#if BloonsTD6
+using Assets.Scripts.Models.GenericBehaviors;
+using Assets.Scripts.Models.Towers.Projectiles;
+#elif BloonsAT
+using Assets.Scripts.Models.Display;
+using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
+#endif
 
 namespace BTD_Mod_Helper.Api.Display
 {
-#if BloonsTD6
     /// <summary>
     /// A custom Display that is a copy of an existing Display that can be modified
     /// </summary>
-    public abstract class ModDisplay : ModContent
+    public abstract partial class ModDisplay : ModContent
     {
         internal static readonly Dictionary<string, ModDisplay> Cache = new Dictionary<string, ModDisplay>();
 
@@ -52,40 +50,9 @@ namespace BTD_Mod_Helper.Api.Display
         public abstract void ModifyDisplayNode(UnityDisplayNode node);
 
         /// <summary>
-        /// Sets the mesh texture to that of a named png
-        /// </summary>
-        /// <param name="node">The UnityDisplayNode</param>
-        /// <param name="textureName">The name of the texture, without .png</param>
-        protected void SetMeshTexture(UnityDisplayNode node, string textureName)
-        {
-            node.GetMeshRenderer().SetMainTexture(GetTexture(textureName));
-        }
-
-        /// <summary>
-        /// Sets the mesh texture to that of a named png
-        /// </summary>
-        /// <param name="node">The UnityDisplayNode</param>
-        /// <param name="textureName">The name of the texture, without .png</param>
-        /// <param name="index">The index to set at</param>
-        protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index)
-        {
-            node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName));
-        }
-
-        /// <summary>
-        /// Sets the sprite texture to that of a named png
-        /// </summary>
-        /// <param name="node">The UnityDisplayNode</param>
-        /// <param name="textureName">The name of the texture, without .png</param>
-        protected void Set2DTexture(UnityDisplayNode node, string textureName)
-        {
-            node.GetRenderer<SpriteRenderer>().sprite = GetSprite(textureName, PixelsPerUnit);
-        }
-
-        /// <summary>
         /// The position offset to render the display at (z axis is up toward camera)
         /// </summary>
-        public virtual Vector3 PositionOffset => Vector3.zero;
+        public virtual Vector3 PositionOffset => new Vector3(0,0,0);
 
         /// <summary>
         /// The scale to render the display at
@@ -98,89 +65,76 @@ namespace BTD_Mod_Helper.Api.Display
         public virtual float PixelsPerUnit => 10f;
 
         /// <summary>
-        /// Gets a new DisplayModel based on this ModDisplay
-        /// </summary>
-        /// <returns></returns>
-        public DisplayModel GetDisplayModel()
-        {
-            return new DisplayModel($"DisplayModel_{Name}", Id, 0, PositionOffset, Scale);
-        }
-
-        /// <summary>
-        /// Applies this ModDisplay to a given DisplayModel
-        /// </summary>
-        public void Apply(DisplayModel displayModel)
-        {
-            displayModel.display = Id;
-            displayModel.positionOffset = PositionOffset;
-            displayModel.scale = Scale;
-        }
-
-
-        /// <summary>
-        /// Applies this ModDisplay to a given TowerModel
-        /// </summary>
-        public void Apply(TowerModel towerModel)
-        {
-            towerModel.display = Id;
-            Apply(towerModel.GetBehavior<DisplayModel>());
-        }
-
-
-        /// <summary>
-        /// Applies this ModDisplay to a given ProjectileModel
-        /// </summary>
-        public void Apply(ProjectileModel projectileModel)
-        {
-            projectileModel.display = Id;
-            Apply(projectileModel.GetBehavior<DisplayModel>());
-        }
-
-        /// <summary>
-        /// Applies this ModDisplay to a given BloonModel
-        /// </summary>
-        public void Apply(BloonModel bloonModel)
-        {
-            bloonModel.display = Id;
-            Apply(bloonModel.GetBehavior<DisplayModel>());
-        }
-
-
-        /// <summary>
-        /// Gets the Display for a given tower, optionally for the given tiers
-        /// </summary>
-        /// <param name="tower">The tower base id</param>
-        /// <param name="top">Path 1 tier</param>
-        /// <param name="mid">Path 2 tier</param>
-        /// <param name="bot">Path 3 tier</param>
-        /// <returns>The display GUID</returns>
-        protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0)
-        {
-            return Game.instance.model.GetTower(tower, top, mid, bot).display;
-        }
-
-        /// <summary>
-        /// Gets a UnityDisplayNode for a different guid
-        /// </summary>
-        /// <param name="guid">The asset reference guid to get the node from</param>
-        /// <param name="action">What to do with the node</param>
-        protected void UseNode(string guid, Action<UnityDisplayNode> action)
-        {
-            Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(guid, new Action<UnityDisplayNode>((udn) =>
-            {
-                udn.RecalculateGenericRenderers();
-                action(udn);
-                udn.RecalculateGenericRenderers();
-            }));
-        }
-
-        /// <summary>
         /// If you modify the unity Object and not just the DisplayNode attached to it, then set this to true
         /// </summary>
         public virtual bool ModifiesUnityObject => false;
 
+        /// <summary>
+        /// (Cross-Game compatible) Sets the mesh texture to that of a named png
+        /// </summary>
+        /// <param name="node">The UnityDisplayNode</param>
+        /// <param name="textureName">The name of the texture, without .png</param>
+        protected void SetMeshTexture(UnityDisplayNode node, string textureName)
+        {
+            node.GetMeshRenderer().SetMainTexture(GetTexture(textureName));
+        }
 
-        #region Misc Display Ids
+        /// <summary>
+        /// (Cross-Game compatible) Sets the mesh texture to that of a named png
+        /// </summary>
+        /// <param name="node">The UnityDisplayNode</param>
+        /// <param name="textureName">The name of the texture, without .png</param>
+        /// <param name="index">The index to set at</param>
+        protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index)
+        {
+            node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName));
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Applies this ModDisplay to a given BloonModel
+        /// </summary>
+        public void Apply(BloonModel bloonModel)
+        {
+            bloonModel.SetDisplayGUID(Id);
+            Apply(bloonModel.GetBehavior<DisplayModel>());
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Applies this ModDisplay to a given TowerModel
+        /// </summary>
+        public void Apply(TowerModel towerModel)
+        {
+#if BloonsTD6
+            towerModel.display = Id;
+#endif
+            Apply(towerModel.GetBehavior<DisplayModel>());
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Applies this ModDisplay to a given ProjectileModel
+        /// </summary>
+        public void Apply(ProjectileModel projectileModel)
+        {
+#if BloonsTD6
+            projectileModel.display = Id;
+#endif
+            Apply(projectileModel.GetBehavior<DisplayModel>());
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Applies this ModDisplay to a given DisplayModel
+        /// </summary>
+        public void Apply(DisplayModel displayModel)
+        {
+            displayModel.display = Id;
+#if BloonsTD6
+            displayModel.positionOffset = PositionOffset;
+            displayModel.scale = Scale;
+#endif
+        }
+
+
+#region Misc Display Ids
 
         /// <summary>
         /// The display id for RoadSpikes
@@ -234,7 +188,6 @@ namespace BTD_Mod_Helper.Api.Display
 
 #pragma warning restore CS1591
 
-        #endregion
+#endregion
     }
-#endif
 }

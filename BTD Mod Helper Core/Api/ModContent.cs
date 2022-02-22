@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Assets.Scripts.Unity;
-#if BloonsTD6
-using Assets.Scripts.Models.Towers;
-using BTD_Mod_Helper.Api.Towers;
-#elif BloonsAT
-#endif
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using UnityEngine;
+#if BloonsTD6
+using BTD_Mod_Helper.Api.Scenarios;
+#endif
 
 namespace BTD_Mod_Helper.Api
 {
@@ -26,30 +22,30 @@ namespace BTD_Mod_Helper.Api
     ///     <br/>
     ///     2. It is a utility class with methods to access instances of those classes and other resources
     /// </summary>
-    public abstract class ModContent : IModContent
+    public abstract partial class ModContent : IModContent
     {
         /// <summary>
-        /// The name that will be at the end of the ID for this ModContent, by default the class name
+        /// (Cross-Game compatible) The name that will be at the end of the ID for this ModContent, by default the class name
         /// </summary>
         public virtual string Name => GetType().Name;
 
         /// <summary>
-        /// The id that this ModContent will be given; a combination of the Mod's prefix and the name
+        /// (Cross-Game compatible) The id that this ModContent will be given; a combination of the Mod's prefix and the name
         /// </summary>
         public string Id => ID;
 
         /// <summary>
-        /// Backing property for ID that's only able to be overrided internally
+        /// (Cross-Game compatible) Backing property for ID that's only able to be overrided internally
         /// </summary>
         protected internal virtual string ID => mod.IDPrefix + Name;
 
         /// <summary>
-        /// The BloonsMod that this content was added by
+        /// (Cross-Game compatible) The BloonsMod that this content was added by
         /// </summary>
         public BloonsMod mod;
 
         /// <summary>
-        /// Used for when you want to programmatically create multiple instances of a given ModContent
+        /// (Cross-Game compatible) Used for when you want to programmatically create multiple instances of a given ModContent
         /// </summary>
         /// <returns></returns>
         public virtual IEnumerable<ModContent> Load()
@@ -58,17 +54,17 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Registers this ModContent into the game
+        /// (Cross-Game compatible) Registers this ModContent into the game
         /// </summary>
         public abstract void Register();
 
         /// <summary>
-        /// Used to allow some ModContent to Register before or after others
+        /// (Cross-Game compatible) Used to allow some ModContent to Register before or after others
         /// </summary>
         protected virtual float RegistrationPriority => 5f;
 
         /// <summary>
-        /// How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
+        /// (Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
         /// </summary>
         public virtual int RegisterPerFrame => 1;
 
@@ -95,7 +91,7 @@ namespace BTD_Mod_Helper.Api
             type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) != null;
 
         /// <summary>
-        /// Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
+        /// (Cross-Game compatible) Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
         /// </summary>
         private static IEnumerable<ModContent> CreateInstances(Type type, BloonsMod mod)
         {
@@ -134,7 +130,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a sprite reference by name for a specific mod
+        /// (Cross-Game compatible) Gets a sprite reference by name for a specific mod
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <typeparam name="T">Your mod's main BloonsMod extending class</typeparam>
@@ -145,7 +141,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a sprite reference by name for this mod
+        /// (Cross-Game compatible) Gets a sprite reference by name for this mod
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>A new SpriteReference</returns>
@@ -155,7 +151,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a sprite reference by name for a specific mod
+        /// (Cross-Game compatible) Gets a sprite reference by name for a specific mod
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="name">The file name of your texture, without the extension</param>
@@ -164,9 +160,9 @@ namespace BTD_Mod_Helper.Api
         {
             return CreateSpriteReference(GetTextureGUID(mod, name));
         }
-        
+
         /// <summary>
-        /// Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been
+        /// (Cross-Game compatible) Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been
         /// loaded instead of an invalid SpriteReference
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
@@ -178,7 +174,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a sprite reference by name for this mod, returning null if the texture hasn't currently been
+        /// (Cross-Game compatible) Gets a sprite reference by name for this mod, returning null if the texture hasn't currently been
         /// loaded instead of an invalid SpriteReference
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
@@ -189,7 +185,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a sprite reference by name for a specific mod,returning null if the texture hasn't currently been
+        /// (Cross-Game compatible) Gets a sprite reference by name for a specific mod,returning null if the texture hasn't currently been
         /// loaded instead of an invalid SpriteReference
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
@@ -217,7 +213,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
+        /// (Cross-Game compatible) Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -237,7 +233,7 @@ namespace BTD_Mod_Helper.Api
 
 
         /// <summary>
-        /// Gets a texture's GUID by name for a specific mod
+        /// (Cross-Game compatible) Gets a texture's GUID by name for a specific mod
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
@@ -248,7 +244,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a texture's GUID by name for a specific mod
+        /// (Cross-Game compatible) Gets a texture's GUID by name for a specific mod
         /// <br/>
         /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
@@ -262,7 +258,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a texture's GUID by name for this mod
+        /// (Cross-Game compatible) Gets a texture's GUID by name for this mod
         /// <br/>
         /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
@@ -272,11 +268,11 @@ namespace BTD_Mod_Helper.Api
         {
             return GetTextureGUID(mod, name);
         }
-        
-        
+
+
 
         /// <summary>
-        /// Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
+        /// (Cross-Game compatible) Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
         /// </summary>
         /// <param name="bloonsMod">The mod to look in</param>
         /// <param name="name">The file name of your texture, without the extension</param>
@@ -286,7 +282,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
+        /// (Cross-Game compatible) Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <typeparam name="T">The mod to look in</typeparam>
@@ -296,7 +292,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
+        /// (Cross-Game compatible) Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         protected bool TextureExists(string name)
@@ -305,7 +301,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Constructs a Texture2D for a given texture name within a mod
+        /// (Cross-Game compatible) Constructs a Texture2D for a given texture name within a mod
         /// </summary>
         /// <param name="bloonsMod">The mod that adds this texture</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
@@ -316,7 +312,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Constructs a Texture2D for a given texture name within this mod
+        /// (Cross-Game compatible) Constructs a Texture2D for a given texture name within this mod
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
@@ -326,7 +322,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Constructs a Texture2D for a given texture name within a mod
+        /// (Cross-Game compatible) Constructs a Texture2D for a given texture name within a mod
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
@@ -336,7 +332,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Constructs a Sprite for a given texture name within a given mod
+        /// (Cross-Game compatible) Constructs a Sprite for a given texture name within a given mod
         /// </summary>
         /// <param name="mod"></param>
         /// <param name="name">The file name of your texture, without the extension</param>
@@ -348,7 +344,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Constructs a Sprite for a given texture name within this mod
+        /// (Cross-Game compatible) Constructs a Sprite for a given texture name within this mod
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
@@ -359,7 +355,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Constructs a Sprite for a given texture name within a given mod
+        /// (Cross-Game compatible) Constructs a Sprite for a given texture name within a given mod
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
@@ -369,91 +365,8 @@ namespace BTD_Mod_Helper.Api
             return GetSprite(GetInstance<T>(), name, pixelsPerUnit);
         }
 
-#if BloonsTD6
         /// <summary>
-        /// Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static string GetDisplayGUID<T>() where T : ModDisplay
-        {
-            return GetInstance<T>().Id;
-        }
-
-        /// <summary>
-        /// Gets the internal tower name/id for a ModTower
-        /// </summary>
-        /// <param name="top">The top path tier</param>
-        /// <param name="mid">The middle path tier</param>
-        /// <param name="bot">The bottom path tier</param>
-        /// <typeparam name="T">The ModTower type</typeparam>
-        /// <returns>The tower name/id</returns>
-        public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
-        {
-            return GetInstance<T>().TowerId(new[] {top, mid, bot});
-        }
-
-        /// <summary>
-        /// Gets the TowerModel for a ModTower at a specific tier level
-        /// </summary>
-        /// <param name="top">The top path tier</param>
-        /// <param name="mid">The middle path tier</param>
-        /// <param name="bot">The bottom path tier</param>
-        /// <typeparam name="T">The ModTower type</typeparam>
-        /// <returns>The tower name/id</returns>
-        public static TowerModel GetTowerModel<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
-        {
-            return Game.instance.model.GetTowerFromId(TowerID<T>(top, mid, bot));
-        }
-
-        /// <summary>
-        /// Gets the internal upgrade name/id for a ModUpgrade
-        /// </summary>
-        /// <typeparam name="T">The ModUpgrade type</typeparam>
-        /// <returns>The upgrade name/id</returns>
-        public static string UpgradeID<T>() where T : ModUpgrade
-        {
-            return GetInstance<T>().Id;
-        }
-
-        /// <summary>
-        /// Gets the internal tower set id for a given TowerSet
-        /// </summary>
-        /// <typeparam name="T">The ModUpgrade type</typeparam>
-        /// <returns>The upgrade name/id</returns>
-        public static string TowerSet<T>() where T : ModTowerSet
-        {
-            return GetInstance<T>().Id;
-        }
-
-        /// <summary>
-        /// Gets all loaded ModContent objects that are of type T 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static List<T> GetInstances<T>() where T : ModContent
-        {
-            return ModContentInstance<T>.Instances;
-        }
-
-        /// <summary>
-        /// Gets all loaded ModContent objects that are T or a subclass of T
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static List<T> GetContent<T>() where T : ModContent
-        {
-            return ModContentInstances.Instances
-                .Where(pair => typeof(T).IsAssignableFrom(pair.Key))
-                .SelectMany(pair => pair.Value)
-                .Cast<T>()
-                .ToList();
-        }
-
-#endif
-
-        /// <summary>
-        /// Gets the singleton instance of a particular ModContent or BloonsMod based on its type
+        /// (Cross-Game compatible) Gets the singleton instance of a particular ModContent or BloonsMod based on its type
         /// </summary>
         /// <typeparam name="T">The type to get the instance of</typeparam>
         /// <returns>The singleton instance of it</returns>
@@ -469,7 +382,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets the official instance of a particular ModContent or BloonsMod based on its type
+        /// (Cross-Game compatible) Gets the official instance of a particular ModContent or BloonsMod based on its type
         /// </summary>
         /// <param name="type">The type to get the instance of</param>
         /// <returns>The official instance of it</returns>
@@ -479,7 +392,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a bundle from a mod with the specified name (no file extension)
+        /// (Cross-Game compatible) Gets a bundle from a mod with the specified name (no file extension)
         /// </summary>
         /// <param name="mod"></param>
         /// <param name="name"></param>
@@ -510,7 +423,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a bundle from the mod T with the specified name (no file extension)
+        /// (Cross-Game compatible) Gets a bundle from the mod T with the specified name (no file extension)
         /// </summary>
         /// <param name="name"></param>
         public static AssetBundle GetBundle<T>(string name) where T : BloonsMod
@@ -519,7 +432,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a bundle from your mod with the specified name (no file extension)
+        /// (Cross-Game compatible) Gets a bundle from your mod with the specified name (no file extension)
         /// </summary>
         /// <param name="name"></param>
         protected AssetBundle GetBundle(string name)
@@ -528,7 +441,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a BloonsMod by its name, or returns null if none are loaded with that name
+        /// (Cross-Game compatible) Gets a BloonsMod by its name, or returns null if none are loaded with that name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -539,7 +452,7 @@ namespace BTD_Mod_Helper.Api
 
 
         /// <summary>
-        /// Gets the ID for the given ModBloon
+        /// (Cross-Game compatible) Gets the ID for the given ModBloon
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -549,23 +462,37 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets the ID for the given ModGameMode
+        /// (Cross-Game compatible) Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static string GameModeId<T>() where T : ModGameMode
+        public static string GetDisplayGUID<T>() where T : ModDisplay
         {
             return GetInstance<T>().Id;
         }
 
         /// <summary>
-        /// Gets the ID for the given ModRoundSet
+        /// (Cross-Game compatible) Gets all loaded ModContent objects that are T or a subclass of T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static string RoundSetId<T>() where T : ModRoundSet
+        public static List<T> GetContent<T>() where T : ModContent
         {
-            return GetInstance<T>().Id;
+            return ModContentInstances.Instances
+                .Where(pair => typeof(T).IsAssignableFrom(pair.Key))
+                .SelectMany(pair => pair.Value)
+                .Cast<T>()
+                .ToList();
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Gets all loaded ModContent objects that are of type T 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> GetInstances<T>() where T : ModContent
+        {
+            return ModContentInstance<T>.Instances;
         }
     }
 }

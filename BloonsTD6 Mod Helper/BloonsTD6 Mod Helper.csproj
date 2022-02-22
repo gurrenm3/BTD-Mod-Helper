@@ -48,17 +48,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <!--So that you can override the C: specific targets without changing the one that gets included in git-->
-  <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" /> 
+  <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
   <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
   <ItemGroup>
     <Compile Include="Api\AutoSave.cs" />
     <Compile Include="Api\BackupCreator.cs" />
+    <Compile Include="Api\Bloons\ModRoundSet.cs" />
     <Compile Include="Api\ByteWaitTask.cs" />
+    <Compile Include="Api\Components\ModBrowserMenuMod.cs" />
+    <Compile Include="Api\Components\ModGameMenuTracker.cs" />
+    <Compile Include="Api\Components\ModHelperInputField.cs" />
+    <Compile Include="Api\Components\ModHelperSlider.cs" />
+    <Compile Include="Api\Components\ModHelperText.cs" />
+    <Compile Include="Api\Components\ModsMenuMod.cs" />
+    <Compile Include="Api\Display\ModDisplay.cs" />
     <Compile Include="Api\Enums\VanillaSprites.cs" />
+    <Compile Include="Api\Helpers\CostHelper.cs" />
+    <Compile Include="Api\Helpers\GameModelExporter.cs" />
+    <Compile Include="Api\ModByteLoader.cs" />
+    <Compile Include="Api\ModContent.cs" />
     <Compile Include="Api\ModContentTask.cs" />
+    <Compile Include="Api\ModLoadTask.cs" />
+    <Compile Include="Api\ModOptions\ModSettingHotkey.cs" />
     <Compile Include="Api\PreLoadResourcesTask.cs" />
     <Compile Include="Api\ProfileManagement.cs" />
+    <Compile Include="Api\Scenarios\ModGameMode.cs" />
+    <Compile Include="Api\Scenarios\ModMap.cs" />
     <Compile Include="Api\SessionData.cs" />
+    <Compile Include="Api\Towers\ModHero.cs" />
+    <Compile Include="Api\Towers\ModHeroLevel.cs" />
+    <Compile Include="Api\Towers\ModParagonUpgrade.cs" />
+    <Compile Include="Api\Towers\ModTower.cs" />
+    <Compile Include="Api\Towers\ModTowerHelper.cs" />
+    <Compile Include="Api\Towers\ModTowerSet.cs" />
+    <Compile Include="Api\Towers\ModUpgrade.cs" />
+    <Compile Include="Api\Towers\ModVanillaParagon.cs" />
+    <Compile Include="Api\Towers\ModVanillaTower.cs" />
+    <Compile Include="Api\Towers\ModVanillaUpgrade.cs" />
+    <Compile Include="Api\UI\ModGameMenu.cs" />
     <Compile Include="BloonsTD6Mod.cs" />
     <Compile Include="BTD6 UI\MainMenuUI.cs" />
     <Compile Include="BTD6 UI\MapSelectUI.cs" />
@@ -66,6 +93,8 @@
     <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
     <Compile Include="BTD6 UI\ModsButton.cs" />
     <Compile Include="BTD6 UI\TitleScreenUI.cs" />
+    <Compile Include="Extensions\ModelExtensions\RoundModelExt.cs" />
+    <Compile Include="Extensions\UnityExtensions\AudioClipExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
     <Compile Include="Extensions\BehaviorExtensions\BloonBehaviorExt.cs" />
@@ -83,7 +112,7 @@
     <Compile Include="Extensions\CollectionExtensions\LockedListExt.cs" />
     <Compile Include="Extensions\CollectionExtensions\SizedListExt.cs" />
     <Compile Include="Extensions\LINQExtensions\SizedListExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\DisplayModelExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\BloonModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\KnowledgeModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\KnowledgeSetModelExt.cs" />
@@ -107,7 +136,6 @@
     <Compile Include="Extensions\UnityExtensions\ImageExt.cs" />
     <Compile Include="Extensions\UnityExtensions\PopupScreenExt.cs" />
     <Compile Include="Extensions\UnityExtensions\RendererExt.cs" />
-    <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="MelonMain.cs" />
     <Compile Include="Menus\ModBrowserMenu.cs" />
     <Compile Include="Menus\ModSettingsMenu.cs" />
@@ -232,7 +260,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\DownloadBtn.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  
 </Project>

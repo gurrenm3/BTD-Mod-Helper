@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if BloonsTD6
+using System;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
@@ -149,3 +150,4 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
     }
 }
+#endif

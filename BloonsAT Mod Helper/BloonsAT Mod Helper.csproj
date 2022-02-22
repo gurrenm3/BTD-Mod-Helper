@@ -36,6 +36,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>..\Dependencies\BloonsAT\Il2CppSystem.Core.dll</HintPath>
+    </Reference>
     <Reference Include="MelonLoader">
       <HintPath>..\Dependencies\Shared\MelonLoader.dll</HintPath>
     </Reference>
@@ -63,6 +66,12 @@
       <HintPath>..\\Dependencies\BloonsAT\NinjaKiwi.LiNK.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="NK-Unity-Libs">
+      <HintPath>..\Dependencies\BloonsAT\NK-Unity-Libs.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit, Version=0.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.50.0\lib\net46\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing">
       <HintPath>..\\Dependencies\BloonsAT\System.Drawing.dll</HintPath>
       <Private>False</Private>
@@ -81,9 +90,15 @@
       <HintPath>..\\Dependencies\BloonsAT\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\Dependencies\BloonsAT\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>..\\Dependencies\BloonsAT\UnityEngine.AssetBundleModule.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\Dependencies\BloonsAT\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\\Dependencies\BloonsAT\UnityEngine.CoreModule.dll</HintPath>
@@ -105,9 +120,18 @@
       <HintPath>..\\Dependencies\BloonsAT\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\Dependencies\BloonsAT\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
       <HintPath>..\\Dependencies\BloonsAT\UnityEngine.JSONSerializeModule.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreModule">
+      <HintPath>..\Dependencies\BloonsAT\UnityEngine.TextCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\Dependencies\BloonsAT\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\\Dependencies\BloonsAT\UnityEngine.UI.dll</HintPath>
@@ -132,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\Builders\BloonModelBuilder.cs" />
+    <Compile Include="Api\Display\ModDisplay.cs" />
     <Compile Include="Api\SessionData.cs" />
     <Compile Include="BloonsATMod.cs" />
     <Compile Include="Extensions\AdventureTimePlayerExt.cs" />
@@ -191,8 +216,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\ingame_popup.bundle" />
     <None Include="Resources\modoptions.bundle" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Api\Towers\" />
   </ItemGroup>
   <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

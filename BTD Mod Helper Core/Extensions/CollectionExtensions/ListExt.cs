@@ -175,8 +175,8 @@ namespace BTD_Mod_Helper.Extensions
                 var item = list[i];
                 try
                 {
-                    if (item.TryCast<TCast>() != null)
-                        return item.TryCast<TCast>();
+                    if (item.IsType(out TCast tryCast))
+                        return tryCast;
                 }
                 catch (Exception) { }
             }

@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Api
                 case "doombubbles":
                     return new Color32(200, 0, 255, 255);
                 case "gurrenm3":
-                    return new Color32(255, 215, 0, 255);
+                    return new Color32(200, 150, 255, 255);
                 default:
                     return Color.white;
             }

@@ -1,6 +1,6 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <BloonsTD6>C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6</BloonsTD6>
+        <BloonsTD6>F:\Program Files (x86)\Steam\steamapps\common\BloonsTD6</BloonsTD6>
         <ManagedFolder>$(BloonsTD6)\MelonLoader\Managed</ManagedFolder>
     </PropertyGroup>
     <ItemGroup>

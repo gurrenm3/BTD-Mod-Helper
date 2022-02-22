@@ -26,6 +26,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// </summary>
         public bool slider;
 
+#if BloonsTD6
         /// <summary>
         /// Action to modify the ModHelperSlider after it's created
         /// </summary>
@@ -35,6 +36,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// Action to modify the ModHelperInputField after it's created
         /// </summary>
         public Action<ModHelperInputField> modifyInput;
+#endif
 
         /// <summary>
         /// Step Size for the slider 
@@ -91,7 +93,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             var option = CreateBaseOption();
 
-
+#if BloonsTD6
             if (slider && min != null && max != null)
             {
                 // ReSharper disable twice PossibleInvalidOperationException
@@ -117,6 +119,9 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 option.SetResetAction(new Action(() => input.SetText(ToString(defaultValue))));
                 modifyInput?.Invoke(input);
             }
+#elif BloonsAT
+            throw new NotImplementedException(); // need to get ModHelperSlider and ModHelperInputField working for BloonsAT
+#endif
 
             return option;
         }

@@ -91,7 +91,11 @@ namespace BTD_Mod_Helper.Api
             var latestRelease = mod.LatestRelease ?? await mod.GetLatestRelease();
             if (latestRelease == null)
             {
-                PopupScreen.instance.ShowOkPopup($"Failed to get latest release from the GitHub API. {Sorry}");
+                string errorMessage = $"Failed to get latest release from the GitHub API. {Sorry}";
+                ModHelper.Error(errorMessage);
+#if BloonsTD6
+                PopupScreen.instance.ShowOkPopup(errorMessage);
+#endif
                 return;
             }
 
@@ -117,7 +121,12 @@ namespace BTD_Mod_Helper.Api
                         ModHelper.Warning(e);
                     }
 
-                    PopupScreen.instance.ShowOkPopup($"Failed to download asset. {Sorry}");
+                    string errorMessage = $"Failed to download asset. {Sorry}";
+                    ModHelper.Error(errorMessage);
+#if BloonsTD6
+                PopupScreen.instance.ShowOkPopup(errorMessage);
+#endif
+
                 });
             });
 
@@ -127,10 +136,15 @@ namespace BTD_Mod_Helper.Api
             }
             else
             {
+#if BloonsTD6
                 PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
                     $"Do you want to download\n{mod.Name} v{mod.RepoVersion}?",
                     "Latest Release Message:\n\"" + latestRelease.Body + "\"",
                     action, "Yes", null, "No", Popup.TransitionAnim.Scale);
+#elif BloonsAT
+                throw new NotImplementedException(); // need to figure out how to do popups in BloonsAT
+#endif
+
             }
 
             UpdateRateLimit();
@@ -216,8 +230,12 @@ namespace BTD_Mod_Helper.Api
 
                 if (success)
                 {
-                    PopupScreen.instance.ShowOkPopup(
-                        $"Successfully downloaded {name}\nRemember to restart to apply the changes!");
+                    string message = $"Successfully downloaded {name}\nRemember to restart to apply the changes!";
+                    ModHelper.Log(message);
+#if BloonsTD6
+
+                    PopupScreen.instance.ShowOkPopup(message);
+#endif
                     mod.SetVersion(mod.RepoVersion);
                     return downloadFilePath;
                 }

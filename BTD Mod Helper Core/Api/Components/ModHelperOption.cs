@@ -23,10 +23,12 @@ namespace BTD_Mod_Helper.Api.Components
         internal const int IconSize = 250;
         internal const int ResetSize = 150;
 
+#if BloonsTD6
         /// <summary>
         /// The displayed name for this setting
         /// </summary>
         public ModHelperText Name { get; private set; }
+#endif
 
         /// <summary>
         /// The button that resets this setting
@@ -107,15 +109,17 @@ namespace BTD_Mod_Helper.Api.Components
                 modHelperOption.Icon = iconPanel.AddImage(new Info("Icon", size: RowHeight), icon);
             }
 
+#if BloonsTD6
             var text = modHelperOption.Name = topRow.AddText(
-                new Info("Name", height: TextHeight), displayName, 80f
-            );
+            new Info("Name", height: TextHeight), displayName, 80f);
             text.FitContent(ContentSizeFitter.FitMode.PreferredSize);
-
-
+#elif BloonsAT
+            throw new NotImplementedException(); // need to figure out how to get ModHelperText class working for BloonsAT
+#endif
             var infoPanel = topRow.AddPanel(new Info("InfoPanel", size: RowHeight));
             if (description != null)
             {
+#if BloonsTD6
                 modHelperOption.InfoButton = infoPanel.AddButton(
                     new Info("Info", size: TextHeight),
                     VanillaSprites.InfoBtn2,
@@ -123,17 +127,27 @@ namespace BTD_Mod_Helper.Api.Components
                         ? null
                         : new Action(() => { PopupScreen.instance.ShowOkPopup(description); })
                 );
+#elif BloonsAT
+                // need to figure out how to get the VanillaSprites mentioned above to work with BloonsAT
+                throw new NotImplementedException();
+#endif
             }
 
             var bottomRow = modHelperOption.BottomRow = modHelperOption.AddPanel(
                 new Info("BottomRow", height: RowHeight, flexWidth: 1), null, RectTransform.Axis.Horizontal, 100
             );
             bottomRow.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
+#if BloonsTD6
             bottomRow.LayoutGroup.reverseArrangement = true;
 
+            // Below is what needs to be ported to BloonsAT
             modHelperOption.ResetButton = bottomRow.AddButton(
                 new Info("Reset", size: ResetSize), VanillaSprites.RestartBtn, null
             );
+#elif BloonsAT
+            throw new NotImplementedException(); // need to get VanillaSprite mentioned above for BloonsAT
+#endif
+
 
             return modHelperOption;
         }

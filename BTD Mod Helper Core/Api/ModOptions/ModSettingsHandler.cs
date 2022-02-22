@@ -111,8 +111,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
             {
                 writer.Formatting = Formatting.Indented;
                 writer.WriteStartObject();
-                foreach (var (key, modSetting) in mod.ModSettings)
+
+                foreach (var item in mod.ModSettings)
                 {
+                    var key = item.Key;
+                    var modSetting = item.Value;
                     if (!initialSave)
                     {
                         try

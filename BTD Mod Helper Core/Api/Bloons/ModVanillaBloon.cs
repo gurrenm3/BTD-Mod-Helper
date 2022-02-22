@@ -3,6 +3,7 @@ using System.Linq;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.Bloons
 {
@@ -31,7 +32,7 @@ namespace BTD_Mod_Helper.Api.Bloons
         {
             if (MatchBaseId)
             {
-                foreach (var bloonModel in gameModel.bloons.Where(model => model.baseId == BloonId))
+                foreach (var bloonModel in gameModel.bloons.Where(model => model.GetBaseID() == BloonId))
                 {
                     yield return bloonModel;
                 }

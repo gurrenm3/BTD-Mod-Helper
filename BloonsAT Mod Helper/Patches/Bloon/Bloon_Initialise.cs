@@ -17,9 +17,6 @@ namespace BTD_Mod_Helper.Patches.Bloons
         [HarmonyPostfix]
         internal static void Postfix(Bloon __instance)
         {
-            SessionData.bloonTracker.TrackBloon(__instance);
-            __instance.CreateBloonToSim(); // Creating new BloonToSimulation will automatically start Tracking BloonSim via the Constructor
-
             MelonMain.DoPatchMethods(mod =>
             {
                 mod.OnBloonCreated(__instance);

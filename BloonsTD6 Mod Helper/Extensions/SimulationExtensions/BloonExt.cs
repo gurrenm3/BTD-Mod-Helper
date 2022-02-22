@@ -1,7 +1,8 @@
-﻿using Assets.Scripts.Models.Bloons;
-using Assets.Scripts.Simulation.Bloons;
+﻿using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Towers.Projectiles;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.Bridge;
+using Assets.Scripts.Unity.UI_New.InGame;
 using System.Runtime.InteropServices;
 
 namespace BTD_Mod_Helper.Extensions
@@ -11,6 +12,15 @@ namespace BTD_Mod_Helper.Extensions
     /// </summary>
     public static partial class BloonExt
     {
+        /// <summary>
+        /// (Cross-Game compatible) Return the existing BloonToSimulation for this specific Bloon.
+        /// </summary>
+        public static BloonToSimulation GetBloonToSim(this Bloon bloon)
+        {
+            var allBloons = InGame.instance?.GetUnityToSimulation().GetAllBloons();
+            return allBloons?.FirstOrDefault(simulation => simulation.GetBloon() == bloon);
+        }
+
         /// <summary>
         /// 
         /// </summary>

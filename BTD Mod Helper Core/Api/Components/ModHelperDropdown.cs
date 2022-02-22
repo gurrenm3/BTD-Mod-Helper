@@ -23,10 +23,12 @@ namespace BTD_Mod_Helper.Api.Components
         /// </summary>
         public Image Background => GetComponent<Image>();
 
+#if BloonsTD6
         /// <summary>
         /// The Text which shows the currently selected value
         /// </summary>
         public ModHelperText Text => GetDescendent<ModHelperText>("DropdownText");
+#endif
 
         /// <summary>
         /// The component which handles the dropdown
@@ -74,11 +76,16 @@ namespace BTD_Mod_Helper.Api.Components
 
             var modHelperDropdown = ModHelperComponent.Create<ModHelperDropdown>(info);
 
+            TMP_Dropdown dropdown = null;
+#if BloonsTD6
             var text = modHelperDropdown.AddText(
                 new Info("DropdownText", anchorMin: Vector2.zero, anchorMax: Vector2.one), "", labelFontSize);
 
-            var dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
+            dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
             dropdown.captionText = text.Text;
+#elif BloonsAT
+            throw new NotImplementedException(); // need to get ModHelperText working for BloonsAT
+#endif
             dropdown.ClearOptions();
             dropdown.AddOptions(options);
 
@@ -94,14 +101,20 @@ namespace BTD_Mod_Helper.Api.Components
                 image.type = Image.Type.Sliced;
             }
 
+            ModHelperScrollPanel template = null;
+#if BloonsTD6
             modHelperDropdown.AddImage(
                 new Info("Arrow", -64, 0, 64, 40, anchor: new Vector2(1, 0.5f)), VanillaSprites.MonkeyKnowledgeArrow
             );
 
-
-            var template = modHelperDropdown.AddScrollPanel(
+            template = modHelperDropdown.AddScrollPanel(
                     new Info("Template", 0, height / -2 - realHeight / 2, width, realHeight),
                     RectTransform.Axis.Vertical, VanillaSprites.UISprite);
+#elif BloonsAT
+            // Need to figure out how to get the Vanilla Sprites mentioned above for BloonsAT
+            throw new NotImplementedException();
+#endif
+
             template.Background.color = new Color(0.262f, 0.435f, 0.658f);
             dropdown.template = template;
             template.disableNextFrame = true;
@@ -119,9 +132,11 @@ namespace BTD_Mod_Helper.Api.Components
             var selectedImage = toggle.graphic = itemSelected.AddComponent<Image>();
             selectedImage.color = new Color(0.591f, 1, 0);
 
+#if BloonsTD6
             var itemLabel = item.AddText(new Info("ItemLabel", width: width, height: height), "", labelFontSize);
 
             dropdown.itemText = itemLabel.Text;
+#endif
 
             template.AddScrollContent(item);
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TMPro;
+using UnhollowerRuntimeLib;
 using UnityEngine;
 #pragma warning disable CS1591
 
@@ -17,7 +18,7 @@ namespace BTD_Mod_Helper.Api
         {
             if (FontsByName.Count == 0)
             {
-                foreach (var runtimeAnimatorController in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
+                foreach (TMP_FontAsset runtimeAnimatorController in Resources.FindObjectsOfTypeAll(Il2CppType.Of<TMP_FontAsset>()))
                 {
                     FontsByName[runtimeAnimatorController.name] = runtimeAnimatorController;
                     ModHelper.Msg("Font: " + runtimeAnimatorController.name);
