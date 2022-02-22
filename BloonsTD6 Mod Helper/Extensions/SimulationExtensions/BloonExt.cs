@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class BloonExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Return the existing BloonToSimulation for this specific Bloon.
+        /// Return the existing BloonToSimulation for this specific Bloon.
         /// </summary>
         public static BloonToSimulation GetBloonToSim(this Bloon bloon)
         {
