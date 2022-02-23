@@ -494,5 +494,26 @@ namespace BTD_Mod_Helper.Api
         {
             return ModContentInstance<T>.Instances;
         }
+
+        /// <summary>
+        /// (Cross-Game compatible) Gets all loaded ModContent objects that have a base type of T 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> GetInstancesWithBaseType<T>() where T : ModContent
+        {
+            List<T> instances = new List<T>();
+            foreach (var modContent in ModContentInstances.Instances)
+            {
+                if (modContent.Key.BaseType != typeof(T))
+                    continue;
+
+                foreach (T item in modContent.Value)
+                {
+                    instances.Add(item);
+                }
+            }
+            return instances;
+        }
     }
 }

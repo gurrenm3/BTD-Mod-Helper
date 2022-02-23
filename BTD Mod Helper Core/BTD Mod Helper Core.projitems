@@ -88,6 +88,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\TowerModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\WeaponModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BloonsModExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppStringArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DeconstructExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\DisplayModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\HarmonyExt.cs" />

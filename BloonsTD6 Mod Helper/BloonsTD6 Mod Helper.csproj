@@ -65,6 +65,7 @@
     <Compile Include="Api\Enums\VanillaSprites.cs" />
     <Compile Include="Api\Helpers\CostHelper.cs" />
     <Compile Include="Api\Helpers\GameModelExporter.cs" />
+    <Compile Include="Api\Helpers\MapHelper.cs" />
     <Compile Include="Api\ModByteLoader.cs" />
     <Compile Include="Api\ModContent.cs" />
     <Compile Include="Api\ModContentTask.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Api\ProfileManagement.cs" />
     <Compile Include="Api\Scenarios\ModGameMode.cs" />
     <Compile Include="Api\Scenarios\ModMap.cs" />
+    <Compile Include="Api\Scenarios\TestMap.cs" />
     <Compile Include="Api\SessionData.cs" />
     <Compile Include="Api\Towers\ModHero.cs" />
     <Compile Include="Api\Towers\ModHeroLevel.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Patches\Resources\ResourceLoader_LoadSpriteFromSpriteReferenceAsync.cs" />
     <Compile Include="Patches\Resources\Task_EnumerateAction.cs" />
     <Compile Include="Patches\Sim\Simulation_AddCash.cs" />
+    <Compile Include="Patches\Sim\UnityToSimulation_InitMap.cs" />
     <Compile Include="Patches\Sim\UnityToSimulation_Lose.cs" />
     <Compile Include="Patches\Sim\Simulation_RoundEnd.cs" />
     <Compile Include="Patches\Sim\Simulation_RoundStart.cs" />

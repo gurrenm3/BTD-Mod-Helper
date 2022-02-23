@@ -1,6 +1,16 @@
-﻿using Assets.Scripts.Data.MapSets;
+﻿using Assets.Scripts.Data;
+using Assets.Scripts.Data.MapSets;
 using Assets.Scripts.Models.Map;
+using Assets.Scripts.Models.Map.Spawners;
+using Assets.Scripts.Simulation.SMath;
+using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Extensions;
 using MelonLoader;
+using System.Collections.Generic;
+using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api
 {
@@ -9,10 +19,7 @@ namespace BTD_Mod_Helper.Api
     /// </summary>
     public abstract class ModMap : NamedModContent
     {
-        /// <summary>
-        /// The name of this map.
-        /// </summary>
-        public abstract new string Name { get; }
+        private static List<string> customMapNames = new List<string>();
 
         /// <summary>
         /// The name of the Image file that would be the actual map. By default
@@ -20,7 +27,17 @@ namespace BTD_Mod_Helper.Api
         /// if your map has a different file name than the name of the map itself.
         /// <br/><br/>Example: Castle.png
         /// </summary>
-        protected string MapImageName { get; }
+        protected virtual string MapImageName { get; }
+
+        /// <summary>
+        /// The name of this map.
+        /// </summary>
+        public abstract new string Name { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public abstract SpriteReference MapSprite { get; }
 
         /// <summary>
         /// The difficulty of this map.
@@ -28,10 +45,24 @@ namespace BTD_Mod_Helper.Api
         public abstract MapDifficulty Difficulty { get; }
 
         /// <summary>
-        /// The <see cref="MapModel"/> associated with this modded map.
+        /// 
         /// </summary>
-        public MapModel Map { get => (map == null) ? map = GetMapModel() : map; }
-        private MapModel map;
+        public virtual CoopDivision CoopDivision { get; } = CoopDivision.DEFAULT;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string MapMusic { get; } = "MusicBTD5JazzA";
+
+        public virtual bool AutoUnlockMap { get; } = true;
+
+        public virtual float MapWideBloonSpeed { get; } = 1;
+
+
+
+        internal List<AreaModel> areaModels = new List<AreaModel>();
+        internal List<PathModel> paths = new List<PathModel>();
+        internal PathSpawnerModel spawner;
 
 
         /// <summary>
@@ -39,38 +70,32 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public ModMap()
         {
+            customMapNames.Add(Name);
+
             if (string.IsNullOrEmpty(MapImageName))
                 MapImageName = Name;
 
-            // Line below is for reference to see what parameters are needed for a MapModel
-            //var mapModel = new MapModel("", null, null, null, null, null, null, 3, null, null, 4); 
+            spawner = new PathSpawnerModel("", 
+                new SplitterModel("", new Il2CppStringArray(0)), 
+                new SplitterModel("", new Il2CppStringArray(0)));
         }
 
         /// <summary>
-        /// Used this to create the actual MapModel for this map. It will automatically
-        /// be called the first time <see cref="Map"/> is accessed and the result will be
-        /// cached.
+        /// Get's the map details for this map. Override this method if you want extra customization.
         /// </summary>
         /// <returns></returns>
-        protected abstract MapModel CreateMapModel();
-
-        private MapModel GetMapModel()
+        protected virtual MapDetails GetMapDetails()
         {
-            if (map != null)
-                return map;
-
-            var model = CreateMapModel();
-            bool isCreated = model != null && RegisterInGame(model);
-            return isCreated ? model : null;
-        }
-
-        /// <summary>
-        /// Registers the map into BTD6
-        /// </summary>
-        /// <returns>True if successful, otherwise false.</returns>
-        private bool RegisterInGame(MapModel model)
-        {
-            return false;
+            return new MapDetails()
+            {
+                id = Name,
+                isBrowserOnly = false,
+                isDebug = false,
+                difficulty = Difficulty,
+                coopMapDivisionType = CoopDivision,
+                mapMusic = MapMusic,
+                mapSprite = MapSprite
+            };
         }
 
         /// <summary>
@@ -78,7 +103,57 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public sealed override void Register()
         {
+            GameData.Instance.mapSet.Maps.items = 
+                GameData.Instance.mapSet.Maps.items.AddTo(GetMapDetails());
+
+            if (AutoUnlockMap)
+            {
+                Game.instance.ScheduleTask(
+                    () => Game.instance.GetBtd6Player().UnlockMap(Name),
+                    () => Game.instance.GetBtd6Player() != null);
+            }
+
             MelonLogger.Msg($"Registered ModMap {Name}");
+        }
+
+        /// <summary>
+        /// Use this to add a path to your map.
+        /// </summary>
+        /// <param name="points"></param>
+        /// <returns></returns>
+        protected PathModel AddPath(List<Vector2> points)
+        {
+            string pathName = $"Path{paths.Count}"; // Should we start at Path0 or Path1?
+            var pathModel = MapHelper.CreatePathModel(pathName, points);
+            paths.Add(pathModel);
+            spawner.forwardSplitter.paths = spawner.forwardSplitter.paths.AddTo(pathName);
+            spawner.reverseSplitter.paths = spawner.reverseSplitter.paths.AddTo(pathName);
+            return pathModel;
+        }
+
+        /// <summary>
+        /// Add an area model to this path.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="points"></param>
+        /// <returns></returns>
+        protected AreaModel AddAreaModel(AreaType type, List<Vector2> points)
+        {
+            string areaName = $"AreaModel{areaModels.Count}"; // others called it lol instead of AreaModel
+            var polygon = new Polygon(points.ToIl2CppList());
+            var areaModel = new AreaModel(areaName, polygon, 100, type, 0);
+            areaModels.Add(areaModel);
+            return areaModel;
+        }
+
+        /// <summary>
+        /// Returns whether or not a map is a custom map, based off of it's name.
+        /// </summary>
+        /// <param name="mapName"></param>
+        /// <returns></returns>
+        public static bool IsCustomMap(string mapName)
+        {
+            return customMapNames.Contains(mapName);
         }
     }
 }

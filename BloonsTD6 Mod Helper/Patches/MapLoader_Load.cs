@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Models.Map;
 using Assets.Scripts.Unity.Map;
 using HarmonyLib;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Patches
@@ -9,18 +10,26 @@ namespace BTD_Mod_Helper.Patches
     internal class MapLoader_Load
     {
         [HarmonyPrefix]
-        internal static bool Prefix(MapLoader __instance, ref string map, ref Il2CppSystem.Action<MapModel> loadedCallback)
+        internal static bool Prefix(ref string map, ref Il2CppSystem.Action<MapModel> loadedCallback)
         {
-            //map = "My Custom Map"; // using this line to test when map is invalid
-            var originalCallback = loadedCallback.Duplicate<Il2CppSystem.Action<MapModel>>();
-            loadedCallback = new System.Action<MapModel>((mapModel) =>
-            {
-                if (mapModel == null)
-                    ModHelper.Log("Map Model is null");
+            if (!ModMap.IsCustomMap(map))
+                return true;
 
-                ModHelper.PerformHook((mod) => mod.OnMapModelLoaded(ref mapModel));
-                originalCallback.Invoke(mapModel);
+            var modMap = ModContent.GetModMap(map);
+            loadedCallback += new System.Action<MapModel>((mapModel) =>
+            {
+                mapModel.name = modMap.Name;
+                mapModel.mapName = modMap.Name;
+                mapModel.mapDifficulty = (int)modMap.Difficulty;
+                mapModel.mapWideBloonSpeed = modMap.MapWideBloonSpeed;
+                mapModel.areas = modMap.areaModels.ToArray();
+
+                // These still crash when being set here.
+                /*mapModel.spawner = modMap.spawner;
+                mapModel.paths = modMap.paths.ToArray();*/
             });
+
+            map = "MuddyPuddles";
 
             return true;
         }

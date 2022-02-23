@@ -3,11 +3,23 @@ using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BTD_Mod_Helper.Api
 {
     public abstract partial class ModContent
     {
+        /// <summary>
+        /// Returns a ModMap based on it's name.
+        /// </summary>
+        /// <param name="mapName"></param>
+        /// <returns></returns>
+        public static ModMap GetModMap(string mapName)
+        {            
+            return GetInstancesWithBaseType<ModMap>()?.FirstOrDefault(map => map.Name == mapName);
+        }
+
         /// <summary>
         /// Gets the ID for the given ModGameMode
         /// </summary>
