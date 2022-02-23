@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Data.MapSets;
 using Assets.Scripts.Models.Map;
 using Assets.Scripts.Simulation.SMath;
-using Assets.Scripts.Utils;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Api.Scenarios

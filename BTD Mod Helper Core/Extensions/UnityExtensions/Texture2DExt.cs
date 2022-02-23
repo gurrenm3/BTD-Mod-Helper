@@ -12,6 +12,21 @@ namespace BTD_Mod_Helper.Extensions
     public static class Texture2DExt
     {
         /// <summary>
+        /// (Cross-Game compatible) Returns a new Image made out of this Texture.
+        /// </summary>
+        /// <param name="texture2D"></param>
+        /// <returns></returns>
+        public static System.Drawing.Image ToImage(this Texture2D texture2D)
+        {
+            var textureBytes = ImageConversion.EncodeToPNG(texture2D);
+            using (var stream = new MemoryStream(textureBytes))
+            {
+                var image = System.Drawing.Image.FromStream(stream);
+                return image;
+            }
+        }
+
+        /// <summary>
         /// (Cross-Game compatible) Create Texture2D from a unity Color. Texture will only be this color
         /// </summary>
         /// <param name="texture2D"></param>

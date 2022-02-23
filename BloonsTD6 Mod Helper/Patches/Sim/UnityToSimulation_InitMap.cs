@@ -27,6 +27,11 @@ namespace BTD_Mod_Helper.Patches.Sim
                         ob.transform.position = new Vector3(1000, 1000, 1000);
             }
 
+            if (modMap.EnableRain)
+            {
+                // TODO
+            }
+
             if (GameObject.Find("Rain"))
                 GameObject.Find("Rain").active = false;
 

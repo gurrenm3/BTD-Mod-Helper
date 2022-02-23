@@ -103,6 +103,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DictionaryExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DirectoryInfoExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\FileInfoExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\ImageExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\StreamExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\TypeExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\KeyCodeExt.cs" />

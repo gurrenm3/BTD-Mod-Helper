@@ -61,9 +61,11 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// Set to true if you want this map to be unlocked by default.
         /// </summary>
-        public virtual bool AutoUnlockMap { get; } = true;
+        protected virtual bool AutoUnlockMap { get; } = true;
 
         public virtual float MapWideBloonSpeed { get; } = 1;
+
+        public virtual bool EnableRain { get; set; }
 
 
         internal List<AreaModel> areaModels = new List<AreaModel>();
@@ -114,9 +116,7 @@ namespace BTD_Mod_Helper.Api
             }
 
             MapSprite = GetSpriteReference(MapImageName);
-
-            var mapTexture = GetTexture(MapImageName);
-            MapTexture = MapHelper.ResizeForGame(mapTexture);
+            MapTexture = MapHelper.ResizeForGame(GetTexture(MapImageName));
             MelonLogger.Msg($"Registered Map: {Name}");
         }
 
