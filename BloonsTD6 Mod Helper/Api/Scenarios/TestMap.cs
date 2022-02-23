@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Api.Scenarios
     {
         public override string Name => "Test Map";
         public override MapDifficulty Difficulty => MapDifficulty.Beginner;
-        public override SpriteReference MapSprite => GetSpriteReference<MelonMain>(Name);
+        protected override string MapImageName => "Minecraft TopDown";
 
         public TestMap()
         {

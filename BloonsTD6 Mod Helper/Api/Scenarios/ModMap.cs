@@ -1,17 +1,15 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Data.MapSets;
 using Assets.Scripts.Models.Map;
-using Assets.Scripts.Models.Map.Spawners;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using System.Collections.Generic;
-using System.Linq;
-using UnhollowerBaseLib;
+using UnityEngine;
+using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
 
 namespace BTD_Mod_Helper.Api
 {
@@ -38,7 +36,12 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// 
         /// </summary>
-        public abstract SpriteReference MapSprite { get; }
+        public virtual SpriteReference MapSprite { get; protected set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual Texture2D MapTexture { get; protected set; }
 
         /// <summary>
         /// The difficulty of this map.
@@ -53,8 +56,11 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// 
         /// </summary>
-        public virtual string MapMusic { get; } = "MusicBTD5JazzA";
+        public virtual string MapMusic { get; set; } = "MusicBTD5JazzA";
 
+        /// <summary>
+        /// Set to true if you want this map to be unlocked by default.
+        /// </summary>
         public virtual bool AutoUnlockMap { get; } = true;
 
         public virtual float MapWideBloonSpeed { get; } = 1;
@@ -107,7 +113,11 @@ namespace BTD_Mod_Helper.Api
                     () => Game.instance.GetBtd6Player() != null);
             }
 
-            MelonLogger.Msg($"Registered ModMap {Name}");
+            MapSprite = GetSpriteReference(MapImageName);
+
+            var mapTexture = GetTexture(MapImageName);
+            MapTexture = MapHelper.ResizeForGame(mapTexture);
+            MelonLogger.Msg($"Registered Map: {Name}");
         }
 
         /// <summary>
@@ -117,8 +127,6 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         protected PathModel AddPath(List<Vector2> points)
         {
-            //string pathName = $"PathModel_Path";
-            //pathName += paths.Count > 0 ? $" {paths.Count + 1}" : "";
             string pathName = $"Path{paths.Count + 1}";
             var pathModel = MapHelper.CreatePathModel(pathName, points);
             paths.Add(pathModel);

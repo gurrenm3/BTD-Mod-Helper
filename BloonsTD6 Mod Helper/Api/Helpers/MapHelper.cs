@@ -1,8 +1,15 @@
 ﻿using Assets.Scripts.Models.Map;
 using Assets.Scripts.Models.Map.Spawners;
-using Assets.Scripts.Simulation.SMath;
-using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
+using UnityEngine;
+using Random = System.Random;
+using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
+using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
+
 
 namespace BTD_Mod_Helper.Api.Helpers
 {
@@ -103,6 +110,72 @@ namespace BTD_Mod_Helper.Api.Helpers
                 pathNames[i] = (paths[i].pathId);
 
             return new PathSpawnerModel("", new SplitterModel("", pathNames), new SplitterModel("", pathNames));
+        }
+
+        public static Texture2D ResizeForGame(Texture2D texture2D)
+        {
+            byte[] filedata = Resize(ImageConversion.EncodeToPNG(texture2D), 1652, 1064);
+            float divx = 2;
+            float divy = 1.21f;
+            int marginx = 450;
+            int marginy = 890;
+            Bitmap old = new Bitmap(Image.FromStream(new MemoryStream(filedata)));
+            Bitmap newImage = new Bitmap(old.Width + marginx, old.Height + marginy);
+            using (var graphics = System.Drawing.Graphics.FromImage(newImage))
+            {
+                int x = (int)((newImage.Width - old.Width) / divx);
+                int y = (int)((newImage.Height - old.Height) / divy);
+                graphics.DrawImage(old, x, y);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    newImage.Save(ms, ImageFormat.Png);
+                    filedata = ms.ToArray();
+                }
+            }
+            ImageConversion.LoadImage(texture2D, filedata);
+            return texture2D;
+        }
+
+
+        private static byte[] Resize(byte[] data, int width, int height)
+        {
+            using (var stream = new MemoryStream(data))
+            {
+                var image = Image.FromStream(stream);
+
+                Bitmap b = ResizeImage(image, width, height);
+
+                using (var thumbnailStream = new MemoryStream())
+                {
+                    b.Save(thumbnailStream, ImageFormat.Png);
+                    return thumbnailStream.ToArray();
+                }
+            }
+        }
+
+        private static Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = System.Drawing.Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
         }
     }
 }
