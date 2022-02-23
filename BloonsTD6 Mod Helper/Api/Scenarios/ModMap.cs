@@ -10,6 +10,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using System.Collections.Generic;
+using System.Linq;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api
@@ -59,11 +60,8 @@ namespace BTD_Mod_Helper.Api
         public virtual float MapWideBloonSpeed { get; } = 1;
 
 
-
         internal List<AreaModel> areaModels = new List<AreaModel>();
         internal List<PathModel> paths = new List<PathModel>();
-        internal PathSpawnerModel spawner;
-
 
         /// <summary>
         /// Creates an instance of this <see cref="ModMap"/>.
@@ -74,10 +72,6 @@ namespace BTD_Mod_Helper.Api
 
             if (string.IsNullOrEmpty(MapImageName))
                 MapImageName = Name;
-
-            spawner = new PathSpawnerModel("", 
-                new SplitterModel("", new Il2CppStringArray(0)), 
-                new SplitterModel("", new Il2CppStringArray(0)));
         }
 
         /// <summary>
@@ -123,11 +117,11 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         protected PathModel AddPath(List<Vector2> points)
         {
-            string pathName = $"Path{paths.Count}"; // Should we start at Path0 or Path1?
+            //string pathName = $"PathModel_Path";
+            //pathName += paths.Count > 0 ? $" {paths.Count + 1}" : "";
+            string pathName = $"Path{paths.Count + 1}";
             var pathModel = MapHelper.CreatePathModel(pathName, points);
             paths.Add(pathModel);
-            spawner.forwardSplitter.paths = spawner.forwardSplitter.paths.AddTo(pathName);
-            spawner.reverseSplitter.paths = spawner.reverseSplitter.paths.AddTo(pathName);
             return pathModel;
         }
 

@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Models.Map;
 using Assets.Scripts.Unity.Bridge;
 using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 
 namespace BTD_Mod_Helper.Patches.Sim
@@ -16,10 +15,6 @@ namespace BTD_Mod_Helper.Patches.Sim
                 return true;
 
             var modMap = ModContent.GetModMap(map.mapName);
-
-            // these crash for some reason. Gives an IndexOutOfBounds of array exception 
-            /*map.spawner = modMap.spawner;
-            map.paths = modMap.paths.ToArray();*/
 
             return true;
         }

@@ -2,7 +2,7 @@
 using Assets.Scripts.Unity.Map;
 using HarmonyLib;
 using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Extensions;
+using BTD_Mod_Helper.Api.Helpers;
 
 namespace BTD_Mod_Helper.Patches
 {
@@ -18,15 +18,12 @@ namespace BTD_Mod_Helper.Patches
             var modMap = ModContent.GetModMap(map);
             loadedCallback += new System.Action<MapModel>((mapModel) =>
             {
-                mapModel.name = modMap.Name;
                 mapModel.mapName = modMap.Name;
                 mapModel.mapDifficulty = (int)modMap.Difficulty;
                 mapModel.mapWideBloonSpeed = modMap.MapWideBloonSpeed;
                 mapModel.areas = modMap.areaModels.ToArray();
-
-                // These still crash when being set here.
-                /*mapModel.spawner = modMap.spawner;
-                mapModel.paths = modMap.paths.ToArray();*/
+                mapModel.paths = modMap.paths.ToArray();
+                mapModel.spawner = MapHelper.CreateSpawner(mapModel.paths);
             });
 
             map = "MuddyPuddles";

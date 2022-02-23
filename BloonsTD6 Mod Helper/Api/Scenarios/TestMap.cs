@@ -16,44 +16,8 @@ namespace BTD_Mod_Helper.Api.Scenarios
         {
             AddPath(new List<Vector2>()
             {
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-            });
-
-            AddPath(new List<Vector2>()
-            {
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-            });
-
-            AddPath(new List<Vector2>()
-            {
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-                new Vector2(10, 5),
-            });
-
-            AddPath(new List<Vector2>()
-            {
-                new Vector2(10, 10),
-                new Vector2(10, 10),
-                new Vector2(10, 10),
-                new Vector2(10, 10),
-                new Vector2(10, 10),
-                new Vector2(10, 10),
-                new Vector2(10, 10),
-                new Vector2(10, 10),
+                new Vector2(-48.70371f, -113.0834f),
+                new Vector2(-45.00001f, 23.85197f)
             });
 
             AddAreaModel(AreaType.water, new List<Vector2>()

@@ -1,11 +1,8 @@
 ﻿using Assets.Scripts.Models.Map;
+using Assets.Scripts.Models.Map.Spawners;
 using Assets.Scripts.Simulation.SMath;
-using BTD_Mod_Helper.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BTD_Mod_Helper.Api.Helpers
 {
@@ -65,7 +62,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 moabScale = 1,
                 moabsInvulnerable = false,
                 bloonsInvulnerable = false,
-                id = rand.NextDouble().ToString(),
+                id = rand.NextDouble().ToString()
             };
         }
 
@@ -92,6 +89,20 @@ namespace BTD_Mod_Helper.Api.Helpers
         {
             var pathModel = new PathModel(pathName, points.ToArray(), true, false, new Vector3(), new Vector3(), null, null);
             return pathModel;
+        }
+
+        /// <summary>
+        /// Create a SpawnerModel based off of an array of paths
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <returns></returns>
+        public static PathSpawnerModel CreateSpawner(PathModel[] paths)
+        {
+            string[] pathNames = new string[paths.Length];
+            for (int i = 0; i < paths.Length; i++)
+                pathNames[i] = (paths[i].pathId);
+
+            return new PathSpawnerModel("", new SplitterModel("", pathNames), new SplitterModel("", pathNames));
         }
     }
 }
