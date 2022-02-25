@@ -138,9 +138,11 @@ namespace BTD_Mod_Helper.Api.Components
         /// <summary>
         /// Gets a descendent component with the given name
         /// </summary>
-        public T GetDescendent<T>(string s) where T : Component
+        public T GetDescendent<T>(string s = "") where T : Component
         {
-            return gameObject.GetComponentInChildrenByName<T>(s);
+            return string.IsNullOrEmpty(s)
+                ? gameObject.GetComponentInChildren<T>()
+                : gameObject.GetComponentInChildrenByName<T>(s);
         }
 
         /// <summary>
