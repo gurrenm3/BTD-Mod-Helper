@@ -340,3 +340,4 @@ ASALocalRun/
 healthchecksdb
 
 **/bloonstd6.props
+**/btd6.targets
