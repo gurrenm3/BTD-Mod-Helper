@@ -48,10 +48,6 @@ namespace BTD_Mod_Helper
             ModSettingsHandler.InitializeModSettings();
             ModSettingsHandler.LoadModSettings();
 
-            // MainMenu.hasSeenModderWarning = AutoHideModdedClientPopup;
-
-            
-
             Schedule_GameModel_Loaded();
 
             // Load Content from other mods
@@ -61,17 +57,14 @@ namespace BTD_Mod_Helper
 
             Task.Run(ModHelperGithub.PopulateMods);
             Task.Run(ModHelperGithub.GetVerifiedModders);
-            
-            if (Directory.Exists(ModSourcesFolder))
+
+            try
             {
-                try
-                {
-                    CreateTargetsFile(ModSourcesFolder);
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
+                CreateTargetsFile(ModSourcesFolder);
+            }
+            catch (Exception)
+            {
+                // ignored
             }
 
             ModHelper.Log("Mod has finished loading");
@@ -120,8 +113,8 @@ namespace BTD_Mod_Helper
             category = ModMaking
         };
 
-        private static readonly ModSettingString ModSourcesFolder =
-            new ModSettingString(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+        private static readonly ModSettingFolder ModSourcesFolder =
+            new ModSettingFolder(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 "BTD6 Mods"))
             {
                 category = ModMaking,
@@ -152,6 +145,18 @@ namespace BTD_Mod_Helper
 
         public static void CreateTargetsFile(string path)
         {
+            if (!Directory.Exists(path))
+            {
+                try
+                {
+                    Directory.CreateDirectory(path);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+
             var targets = Path.Combine(path, "btd6.targets");
             using (var fs = new StreamWriter(targets))
             using (var stream =
@@ -164,7 +169,7 @@ namespace BTD_Mod_Helper
                 fs.Write(text);
             }
         }
-        
+
         private static void KeyCodeHooks()
         {
             foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
@@ -255,8 +260,8 @@ namespace BTD_Mod_Helper
             category = AutoSaveCategory
         };
 
-        public static readonly ModSettingString AutosavePath =
-            new ModSettingString(Path.Combine(ModHelper.ModHelperDirectory, "Mod Settings"))
+        public static readonly ModSettingFolder AutosavePath =
+            new ModSettingFolder(Path.Combine(ModHelper.ModHelperDirectory, "Mod Settings"))
             {
                 displayName = "Backup Directory",
                 onSave = AutoSave.SetAutosaveDirectory,

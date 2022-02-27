@@ -53,6 +53,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModHelperHttp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingFolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingNumber.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModLoadTask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\NamedModContent.cs" />
@@ -159,8 +161,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Events\ToggleEventExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\ToggleExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UnityExtensions\Vector3Ext.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Api\Scenarios\" />
   </ItemGroup>
 </Project>

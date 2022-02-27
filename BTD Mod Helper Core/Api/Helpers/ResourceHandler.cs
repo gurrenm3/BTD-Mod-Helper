@@ -22,7 +22,8 @@ namespace BTD_Mod_Helper.Api
         internal static void LoadEmbeddedTextures(BloonsMod mod)
         {
             mod.Resources = new Dictionary<string, byte[]>();
-            foreach (var fileName in mod.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("png")))
+            foreach (var fileName in mod.Assembly.GetManifestResourceNames()
+                         .Where(s => s.EndsWith("png") || s.EndsWith("jpg")))
             {
                 var resource = mod.Assembly.GetManifestResourceStream(fileName).GetByteArray();
                 if (resource == null)
@@ -47,6 +48,7 @@ namespace BTD_Mod_Helper.Api
                 {
                     continue;
                 }
+
                 var bundle = AssetBundle.LoadFromMemory(bytes);
                 var guid = mod.IDPrefix;
                 if (bundle == null)
@@ -79,7 +81,7 @@ namespace BTD_Mod_Helper.Api
 
         internal static Texture2D CreateTexture(string guid)
         {
-            if (Resources.GetValueOrDefault(guid) is byte[] bytes)
+            if (Resources.TryGetValue(guid, out var bytes))
             {
                 var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = 0};
                 ImageConversion.LoadImage(texture, bytes);
@@ -97,7 +99,7 @@ namespace BTD_Mod_Helper.Api
                 return texture2d;
             }
 
-            if (Resources.GetValueOrDefault(guid) is byte[] bytes)
+            if (Resources.TryGetValue(guid, out var bytes))
             {
                 var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = 0};
                 ImageConversion.LoadImage(texture, bytes);

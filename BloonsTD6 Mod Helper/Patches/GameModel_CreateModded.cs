@@ -7,6 +7,7 @@ using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
