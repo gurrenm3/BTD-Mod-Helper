@@ -4,6 +4,7 @@ using BTD_Mod_Helper.Extensions;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = System.Random;
 using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
@@ -117,7 +118,13 @@ namespace BTD_Mod_Helper.Api.Helpers
             int marginx = 450;
             int marginy = 890;
 
-            var old = texture2D.ToImage().Resize(1652, 1064);
+            //var dup = texture2D.Duplicate();
+
+
+            //TextureScale.Bilinear(dup, marginx, marginy);
+
+            // this is slow AF. Trying something else.
+            /*var old = texture2D.ToImage().Resize(1652, 1064);
             Bitmap newImage = new Bitmap(old.Width + marginx, old.Height + marginy);
 
             using (var graphics = System.Drawing.Graphics.FromImage(newImage))
@@ -126,8 +133,8 @@ namespace BTD_Mod_Helper.Api.Helpers
                 int y = (int)((newImage.Height - old.Height) / divy);
                 graphics.DrawImage(old, x, y);
                 ImageConversion.LoadImage(texture2D, newImage.GetBytes());
-            }
-            
+            }*/
+
             return texture2D;
         }
     }

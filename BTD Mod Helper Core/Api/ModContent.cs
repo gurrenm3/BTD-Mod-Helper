@@ -332,6 +332,39 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
+        /// (Cross-Game compatible) Returns the Bytes associated with a texture.
+        /// </summary>
+        /// <param name="fileName">The file name of your texture, without the extension.</param>
+        /// <returns>The bytes associated with the texture.</returns>
+        protected byte[] GetTextureBytes(string fileName)
+        {
+            return GetTextureBytes(mod, fileName);
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns the Bytes associated with a texture.
+        /// </summary>
+        /// <param name="bloonsMod">The mod that adds this texture.</param>
+        /// <param name="fileName">The file name of your texture, without the extension.</param>
+        /// <returns>The bytes associated with the texture.</returns>
+        public static byte[] GetTextureBytes(BloonsMod bloonsMod, string fileName)
+        {
+            {
+                return ResourceHandler.GetTextureBytes(GetTextureGUID(bloonsMod, fileName));
+            }
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns the Bytes associated with a texture.
+        /// </summary>
+        /// <param name="fileName">The file name of your texture, without the extension.</param>
+        /// <returns>The bytes associated with the texture.</returns>
+        public static byte[] GetTextureBytes<T>(string fileName) where T : BloonsMod
+        {
+            return GetTextureBytes(GetInstance<T>(), fileName);
+        }
+
+        /// <summary>
         /// (Cross-Game compatible) Constructs a Sprite for a given texture name within a given mod
         /// </summary>
         /// <param name="mod"></param>

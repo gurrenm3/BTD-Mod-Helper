@@ -34,16 +34,6 @@ namespace BTD_Mod_Helper.Api
         public abstract new string Name { get; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public virtual SpriteReference MapSprite { get; protected set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual Texture2D MapTexture { get; protected set; }
-
-        /// <summary>
         /// The difficulty of this map.
         /// </summary>
         public abstract MapDifficulty Difficulty { get; }
@@ -65,11 +55,16 @@ namespace BTD_Mod_Helper.Api
 
         public virtual float MapWideBloonSpeed { get; } = 1;
 
-        public virtual bool EnableRain { get; set; }
+        /// <summary>
+        /// Set to true if you want Rain enabled in this map.
+        /// </summary>
+        public bool EnableRain { get; set; }
 
 
         internal List<AreaModel> areaModels = new List<AreaModel>();
         internal List<PathModel> paths = new List<PathModel>();
+        private SpriteReference mapSprite;
+        private Texture2D mapTexture;
 
         /// <summary>
         /// Creates an instance of this <see cref="ModMap"/>.
@@ -96,7 +91,7 @@ namespace BTD_Mod_Helper.Api
                 difficulty = Difficulty,
                 coopMapDivisionType = CoopDivision,
                 mapMusic = MapMusic,
-                mapSprite = MapSprite
+                mapSprite = mapSprite
             };
         }
 
@@ -115,13 +110,32 @@ namespace BTD_Mod_Helper.Api
                     () => Game.instance.GetBtd6Player() != null);
             }
 
-            MapSprite = GetSpriteReference(MapImageName);
-            MapTexture = MapHelper.ResizeForGame(GetTexture(MapImageName));
+            mapSprite = GetSpriteReference(MapImageName);
+            
             MelonLogger.Msg($"Registered Map: {Name}");
         }
 
         /// <summary>
-        /// Use this to add a path to your map.
+        /// Returns the sprite reference of this map.
+        /// </summary>
+        /// <returns></returns>
+        public virtual SpriteReference GetSpriteReference()
+        {
+            return mapSprite;
+        }
+
+        /// <summary>
+        /// Returns the texture of this map. The first time it's loaded it will automatically resize to fit the game.
+        /// </summary>
+        /// <returns></returns>
+        public virtual Texture2D GetTexture()
+        {
+            return mapTexture != null ? mapTexture : mapTexture = GetTexture(MapImageName); // returns unresized version of texture;
+            //return mapTexture != null ? mapTexture : mapTexture = MapHelper.ResizeForGame();
+        }
+
+        /// <summary>
+        /// Use this to add a path to your map. 
         /// </summary>
         /// <param name="points"></param>
         /// <returns></returns>
@@ -146,6 +160,16 @@ namespace BTD_Mod_Helper.Api
             var areaModel = new AreaModel(areaName, polygon, 100, type, 0);
             areaModels.Add(areaModel);
             return areaModel;
+        }
+
+        internal byte[] GetMapBytes()
+        {
+            return ResourceHandler.GetTextureBytes(GetMapGUID());
+        }
+
+        internal string GetMapGUID()
+        {
+            return GetTextureGUID(MapImageName);
         }
 
         /// <summary>
