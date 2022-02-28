@@ -137,5 +137,13 @@ namespace BTD_Mod_Helper.Extensions
             k = grouping.Key;
             v = grouping.ToList();
         }
+        
+        /// <summary>
+        /// Repeats each element in the sequence n times, keeping the same order of elements
+        /// </summary>
+        public static IEnumerable<T> Repeat<T>(this IEnumerable<T> enumerable, int n)
+        {
+            return enumerable.SelectMany(t => Enumerable.Repeat(t, n));
+        }
     }
 }

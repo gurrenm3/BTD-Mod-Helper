@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Patches.UI
             if (current != null && current.gameObject.HasComponent(out ModGameMenuTracker tracker)
                 && ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
             {
-                modGameMenu.OnMenuClosed(current);
+                modGameMenu.OnMenuClosed();
             }
         }
     }

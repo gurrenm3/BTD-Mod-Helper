@@ -170,7 +170,7 @@ namespace BTD_Mod_Helper.Api.Components
 #if BloonsTD6
         /// <inheritdoc cref="ModHelperText.Create"/>
         public ModHelperText AddText(Info info, string text, float fontSize = 42,
-            TextAlignmentOptions align = TextAlignmentOptions.Midline)
+            TextAlignmentOptions align = TextAlignmentOptions.Capline)
         {
             return Add(ModHelperText.Create(info, text, fontSize, align));
         }
@@ -226,10 +226,10 @@ namespace BTD_Mod_Helper.Api.Components
         public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
             UnityAction<string> onValueChanged = null, float fontSize = 42,
             TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
-            TextAlignmentOptions align = TextAlignmentOptions.Midline)
+            TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
         {
             return Add(ModHelperInputField.Create(info, defaultValue, background, onValueChanged, fontSize, validation,
-                align));
+                align, placeholder, padding));
         }
 #endif
 

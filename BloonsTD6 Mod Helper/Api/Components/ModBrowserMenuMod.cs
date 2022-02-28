@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
 using BTD_Mod_Helper.Menus;
@@ -74,7 +75,7 @@ namespace BTD_Mod_Helper.Api.Components
             );
 
             panel.AddText(new Info("Name", height: ModsMenu.ModNameHeight, flexWidth: 3), "Name",
-                ModsMenu.FontMedium, TextAlignmentOptions.MidlineLeft);
+                ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
 
             panel.AddText(new Info("Author", height: ModsMenu.ModNameHeight, flexWidth: 3), "Author",
                 ModsMenu.FontMedium);
@@ -88,7 +89,7 @@ namespace BTD_Mod_Helper.Api.Components
             stars.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
             stars.AddButton(new Info("Star", size: 100), VanillaSprites.Star, null);
             stars.AddText(new Info("StarCount", height: ModsMenu.ModNameHeight, flexWidth: 1), "0", ModsMenu.FontMedium,
-                TextAlignmentOptions.MidlineLeft);
+                TextAlignmentOptions.CaplineLeft);
 
 
             panel.AddButton(new Info("Info", size: 150), VanillaSprites.InfoBtn2, null);
@@ -131,7 +132,11 @@ namespace BTD_Mod_Helper.Api.Components
             mod.Homepage.Button.SetOnClick(() =>
                 Process.Start($"https://github.com/{modHelperData.RepoOwner}/{modHelperData.RepoName}#readme"));
             mod.Description.SetText(modHelperData.Description);
-            mod.Info.Button.SetOnClick(() => mod.SetDescriptionShowing(!mod.descriptionShowing));
+            mod.Info.Button.SetOnClick(() =>
+            {
+                mod.SetDescriptionShowing(!mod.descriptionShowing);
+                MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
+            });
             mod.IconPanel.SetActive(false);
             mod.Name.SetText(modHelperData.Name);
             mod.Version.SetText("v" + modHelperData.Version);
@@ -184,6 +189,8 @@ namespace BTD_Mod_Helper.Api.Components
             mod.Star.Button.SetOnClick(() =>
                 Process.Start($"https://www.github.com/{modHelperData.RepoOwner}/{modHelperData.RepoName}/stargazers"));
 
+            mod.SetDescriptionShowing(false);
+            
             mod.SetActive(true);
         }
     }

@@ -9,9 +9,9 @@ namespace BTD_Mod_Helper.Menus
 {
     internal class OldModSettingsMenu : ModGameMenu<ExtraSettingsScreen>
     {
-        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu, Object data)
+        public override bool OnMenuOpened(Object data)
         {
-            var panel = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
+            var panel = GameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
             for (var i = 0; i < panel.childCount; i++)
             {
                 panel.GetChild(i).gameObject.Destroy();
@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Menus
         }
 
 
-        public override void OnMenuClosed(ExtraSettingsScreen gameMenu)
+        public override void OnMenuClosed()
         {
             ModSettingsHandler.SaveModSettings();
             ModHelper.Msg("Successfully saved mod settings");

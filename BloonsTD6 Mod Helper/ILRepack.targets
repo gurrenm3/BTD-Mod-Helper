@@ -8,10 +8,11 @@
 			<InputAssemblies Include="@(AssemblyFile)" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'" />
 		</ItemGroup>
 		<ItemGroup>
-			<LibraryPaths Include="$(SolutionDir)Dependencies\Shared"/>
-			<LibraryPaths Include="$(SolutionDir)Dependencies\BloonsTD6"/>
+			<LibraryPaths Include="$(BloonsTD6)\MelonLoader"/>
+			<LibraryPaths Include="$(BloonsTD6)\MelonLoader\Managed"/>
 		</ItemGroup>
 		<ILRepack
 			Parallel="true"
@@ -32,7 +33,14 @@
 			<InputAssemblies Include="@(AssemblyFile)" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'" />
 		</ItemGroup>
+		
+		<ItemGroup>
+			<LibraryPaths Include="$(BloonsTD6)\MelonLoader"/>
+			<LibraryPaths Include="$(BloonsTD6)\MelonLoader\Managed"/>
+		</ItemGroup>
+		
 		<ILRepack
 			Parallel="true"
 			DebugInfo="false"
@@ -42,10 +50,12 @@
 		/>
     </Target>
 	
-	<Target Name="Cleanup" AfterTargets="ILRepack">
+	<!--<Target Name="Cleanup" AfterTargets="ILRepack">
 		<ItemGroup>
+			<FilesToDelete Include="$(OutputPath)Octokit.dll" />
+			<FilesToDelete Include="$(OutputPath)Octokit.dll" />
 			<FilesToDelete Include="$(OutputPath)Octokit.dll" />
 		</ItemGroup>
 		<Delete Files="@(FilesToDelete)" />
-    </Target>
+    </Target>-->
 </Project>

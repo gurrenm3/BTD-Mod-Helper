@@ -81,12 +81,12 @@ namespace BTD_Mod_Helper.Menus
         };
 
         /// <inheritdoc />
-        public override bool OnMenuOpened(ExtraSettingsScreen gameMenu, Object data)
+        public override bool OnMenuOpened(Object data)
         {
             loadedAllMods = false;
             CommonForegroundHeader.SetText("Mods");
 
-            var panelTransform = gameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
+            var panelTransform = GameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
             var panel = panelTransform.gameObject;
             panel.DestroyAllChildren();
 
@@ -94,7 +94,7 @@ namespace BTD_Mod_Helper.Menus
 
             CreateLeftMenu(modsMenu);
             CreateRightMenu(modsMenu);
-            CreateExtraButtons(gameMenu);
+            CreateExtraButtons(GameMenu);
 
             if (selectedMod == null)
             {
@@ -159,7 +159,7 @@ namespace BTD_Mod_Helper.Menus
         }
 
         /// <inheritdoc />
-        public override void OnMenuUpdate(ExtraSettingsScreen gameMenu)
+        public override void OnMenuUpdate()
         {
             if (loadedAllMods)
             {
@@ -189,7 +189,7 @@ namespace BTD_Mod_Helper.Menus
         }
 
         /// <inheritdoc />
-        public override void OnMenuClosed(ExtraSettingsScreen gameMenu)
+        public override void OnMenuClosed()
         {
             bottomGroupAnimator.Play("PopupSlideOut");
 

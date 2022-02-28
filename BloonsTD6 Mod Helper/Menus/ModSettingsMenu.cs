@@ -22,10 +22,10 @@ namespace BTD_Mod_Helper.Menus
 
         private bool closing = false;
 
-        public override bool OnMenuOpened(HotkeysScreen gameMenu, Object data)
+        public override bool OnMenuOpened(Object data)
         {
             closing = false;
-            var gameObject = gameMenu.gameObject;
+            var gameObject = GameMenu.gameObject;
             gameObject.DestroyAllChildren();
 
             bloonsMod = ModHelper.Mods.First(m => m.IDPrefix == data?.ToString());
@@ -71,7 +71,7 @@ namespace BTD_Mod_Helper.Menus
             return true;
         }
 
-        public override void OnMenuUpdate(HotkeysScreen gameMenu)
+        public override void OnMenuUpdate()
         {
             if (closing)
             {
@@ -79,7 +79,7 @@ namespace BTD_Mod_Helper.Menus
             }
         }
 
-        public override void OnMenuClosed(HotkeysScreen gameMenu)
+        public override void OnMenuClosed()
         {
             closing = true;
             animator.Play("PopupSlideOut");
