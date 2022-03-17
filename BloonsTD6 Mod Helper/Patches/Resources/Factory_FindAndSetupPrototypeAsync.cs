@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper.Patches.Resources
                 return false;
             }
 
-            if (ResourceHandler.resources.GetValueOrDefault(objectId) is byte[] bytes &&
+            if (ResourceHandler.resources.TryGetValue(objectId, out byte[] bytes) &&
                 ModTowerHelper.Tower2DScales.ContainsKey(objectId))
             {
                 objectId = "9dccc16d26c1c8a45b129e2a8cbd17ba";
@@ -40,7 +40,7 @@ namespace BTD_Mod_Helper.Patches.Resources
                         udn.isSprite = true;
                         udn.RecalculateGenericRenderers();
                         var spriteRenderer = udn.genericRenderers.GetItemOfType<Renderer, SpriteRenderer>();
-                        var scale = ModTowerHelper.Tower2DScales.GetValueOrDefault(id, 5f);
+                        var scale = ModTowerHelper.Tower2DScales.TryGetValue(id, out var s) ? s : 5f;
                         spriteRenderer.sprite = Sprite.Create(texture,
                             new Rect(0, 0, texture.width, texture.height),
                             new Vector2(0.5f, 0.5f), scale, 0, SpriteMeshType.Tight);
@@ -53,7 +53,7 @@ namespace BTD_Mod_Helper.Patches.Resources
                 return true;
             }
 
-            if (ModDisplay.Cache.GetValueOrDefault(objectId) is ModDisplay modDisplay)
+            if (ModDisplay.Cache.TryGetValue(objectId, out ModDisplay modDisplay))
             {
                 try
                 {

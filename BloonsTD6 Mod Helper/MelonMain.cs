@@ -64,6 +64,9 @@ namespace BTD_Mod_Helper
             */
         }
 
+        
+        public static readonly ModSettingBool BypassSavingRestrictions = true;
+
         public static readonly ModSettingBool CleanProfile = true;
 
         private static readonly ModSettingBool AutoHideModdedClientPopup = false;

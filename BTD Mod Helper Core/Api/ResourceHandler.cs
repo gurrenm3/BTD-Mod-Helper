@@ -77,7 +77,7 @@ namespace BTD_Mod_Helper.Api
                 return texture2d;
             }
 
-            if (resources.GetValueOrDefault(guid) is byte[] bytes)
+            if (resources.TryGetValue(guid, out byte[] bytes))
             {
                 var texture = new Texture2D(2, 2) { filterMode = FilterMode.Bilinear, mipMapBias = 0};
                 ImageConversion.LoadImage(texture, bytes);

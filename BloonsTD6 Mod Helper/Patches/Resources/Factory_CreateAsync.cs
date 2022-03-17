@@ -13,10 +13,9 @@ namespace BTD_Mod_Helper.Patches.Resources
         [HarmonyPrefix]
         private static bool Prefix(string objectId, ref Il2CppSystem.Action<UnityDisplayNode> onComplete)
         {
-            if (ModDisplay.Cache.GetValueOrDefault(objectId) is ModDisplay modDisplay &&
+            if (ModDisplay.Cache.TryGetValue(objectId, out var modDisplay) &&
                 modDisplay.ModifiesUnityObject &&
-                !(ResourceHandler.Prefabs.ContainsKey(objectId) &&
-                  !ResourceHandler.Prefabs[objectId].isDestroyed))
+                !(ResourceHandler.Prefabs.ContainsKey(objectId) && !ResourceHandler.Prefabs[objectId].isDestroyed))
             {
                 var complete = onComplete;
                 onComplete = new Action<UnityDisplayNode>(node =>
