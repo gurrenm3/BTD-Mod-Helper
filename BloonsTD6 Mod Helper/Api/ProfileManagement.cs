@@ -99,11 +99,11 @@ namespace BTD_Mod_Helper.Api
             {
                 if (map != null)
                 {
-                    if (Clean($"{name} primaryHero", heroes, current)(map.primaryHero))
+                    /*if (Clean($"{name} primaryHero", heroes, current)(map.primaryHero))
                     {
                         MapPrimaryHeroes[name] = map.primaryHero;
                         map.primaryHero = "Quincy";
-                    }
+                    }*/
 
                     foreach (var (id, player) in map.players)
                     {
@@ -226,13 +226,13 @@ namespace BTD_Mod_Helper.Api
                 profile.primaryHero = primaryHero;
             }
 
-            foreach (var (map, hero) in MapPrimaryHeroes)
+            /*foreach (var (map, hero) in MapPrimaryHeroes)
             {
                 if (profile.savedMaps.ContainsKey(map))
                 {
                     profile.savedMaps[map].primaryHero = hero;
                 }
-            }
+            }*/
 
             foreach (var ((map, player), hero) in MapPlayerHeroes)
             {

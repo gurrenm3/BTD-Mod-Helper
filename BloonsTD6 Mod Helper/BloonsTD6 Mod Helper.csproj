@@ -154,6 +154,7 @@
     <Compile Include="Patches\UI\CoopQuickMatchScreen_Open.cs" />
     <Compile Include="Patches\UI\HeroButton_Init.cs" />
     <Compile Include="Patches\UI\HeroInGameScreen_Open.cs" />
+    <Compile Include="Patches\UI\HeroSprites_GetFontMaterialRef.cs" />
     <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
     <Compile Include="Patches\UI\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\UI\MainMenu_OnEnable.cs" />

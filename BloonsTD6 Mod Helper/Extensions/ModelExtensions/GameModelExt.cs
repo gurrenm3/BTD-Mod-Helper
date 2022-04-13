@@ -154,9 +154,9 @@ namespace BTD_Mod_Helper.Extensions
                 model.towerSet[i].towerIndex = i;
             }
 
-            var towerList = Game.towers.ToList();
+            var towerList = TowerType.towers.ToList();
             towerList.Insert(index, towerDetailsModel.towerId);
-            Game.towers = towerList.ToArray();
+            TowerType.towers = towerList.ToArray();
         }
         
         /// <summary>
@@ -185,11 +185,11 @@ namespace BTD_Mod_Helper.Extensions
 
             
             var towersIndex = index + model.towerSet.Count;
-            if (towersIndex <= Game.towers.Count)
+            if (towersIndex <= TowerType.towers.Count)
             {
-                var towerList = Game.towers.ToList();
+                var towerList = TowerType.towers.ToList();
                 towerList.Insert(towersIndex, heroDetailsModel.towerId);
-                Game.towers = towerList.ToArray();
+                TowerType.towers = towerList.ToArray();
             }
         }
 

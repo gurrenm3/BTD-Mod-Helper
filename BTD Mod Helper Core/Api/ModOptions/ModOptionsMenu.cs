@@ -70,7 +70,8 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             HideOriginalAssets(instantiatedUI);
 
-            var mods = MelonHandler.Mods.OfType<BloonsMod>().Where(mod => mod.ModSettings.Any()).ToList();
+            var mods = MelonHandler.Mods.OfType<BloonsMod>()
+                .Where(mod => mod.ModSettings != null && mod.ModSettings.Any()).ToList();
 
             for (var i = 0; i < mods.Count; i++)
             {
