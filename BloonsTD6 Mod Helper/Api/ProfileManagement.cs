@@ -34,8 +34,7 @@ namespace BTD_Mod_Helper.Api
         private static string primaryHero;
         private static readonly Dictionary<string, string> MapPrimaryHeroes = new Dictionary<string, string>();
 
-        private static readonly Dictionary<(string, int), string> MapPlayerHeroes =
-            new Dictionary<(string, int), string>();
+        private static readonly Dictionary<(string, int), string> MapPlayerHeroes = new Dictionary<(string, int), string>();
 
         private static readonly Dictionary<string, string> SelectedTowerSkinData = new Dictionary<string, string>();
 
@@ -45,7 +44,7 @@ namespace BTD_Mod_Helper.Api
             MelonMain.PerformHook(mod => mod.PreCleanProfile(profile));
 
             CleanHashSet(profile.unlockedTowers, Clean("unlockedTower", towers, current), UnlockedTowers);
-            CleanDictionary(profile.analyticsKonFuze.towersPlacedByBaseName,
+            CleanDictionary(profile.analyticsKonFuze?.towersPlacedByBaseName,
                 Clean("towerPlacedByBaseName", towers.Concat(heroes).ToList(), current), TowersPlacedByBaseName);
             CleanDictionary(profile.towerXp, Clean("towerXp", towers, current), TowerXp);
 
@@ -59,13 +58,13 @@ namespace BTD_Mod_Helper.Api
                 SeenNewHeroNotification);
             CleanDictionary(profile.selectedTowerSkinData, Clean("selectedTowerSkinData", heroes, current),
                 SelectedTowerSkinData);
-            CleanDictionary(profile.analyticsKonFuze.heroesPlacedByName, Clean("heroPlacedByName", heroes, current),
+            CleanDictionary(profile.analyticsKonFuze?.heroesPlacedByName, Clean("heroPlacedByName", heroes, current),
                 HeroesPlacedByName);
-            CleanDictionary(profile.analyticsKonFuze.heroLevelsByName, Clean("heroLevelsByName", heroes, current),
+            CleanDictionary(profile.analyticsKonFuze?.heroLevelsByName, Clean("heroLevelsByName", heroes, current),
                 HeroLevelsByName);
 
             SeenEvents.Clear();
-            profile.seenEvents.RemoveWhere(new Func<string, bool>(s =>
+            profile.seenEvents?.RemoveWhere(new Func<string, bool>(s =>
             {
                 foreach (var paragonEvent in ParagonEvents)
                 {
@@ -236,7 +235,7 @@ namespace BTD_Mod_Helper.Api
 
             foreach (var ((map, player), hero) in MapPlayerHeroes)
             {
-                if (profile.savedMaps.ContainsKey(map))
+                if (profile.savedMaps?.ContainsKey(map) == true)
                 {
                     var mapSaveDataModel = profile.savedMaps[map];
                     if (mapSaveDataModel.players.ContainsKey(player))
@@ -253,7 +252,7 @@ namespace BTD_Mod_Helper.Api
         {
             return thing =>
             {
-                if (string.IsNullOrEmpty(thing))
+                if (string.IsNullOrEmpty(thing) || things == null)
                 {
                     return false;
                 }
@@ -272,6 +271,10 @@ namespace BTD_Mod_Helper.Api
             Func<string, bool> clean, HashSet<string> storage)
         {
             storage.Clear();
+            if (hashSet == null)
+            {
+                return;
+            }
 
             foreach (var thing in hashSet)
             {
@@ -291,6 +294,11 @@ namespace BTD_Mod_Helper.Api
             Func<string, bool> clean, Dictionary<string, T> storage)
         {
             storage.Clear();
+            if (dictionary == null)
+            {
+                return;
+            }
+            
             foreach (var (thing, value) in dictionary)
             {
                 if (clean(thing))
