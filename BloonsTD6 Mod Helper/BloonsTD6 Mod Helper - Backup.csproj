@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Configurations>BTD6_Debug;BTD6_Release</Configurations>
+	<DefineConstants>BloonsTD6;TRACE</DefineConstants>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<Using Remove="System" />
+		<Using Remove="System.Threading" />
+		<Using Remove="System.Threading.Tasks" />
+		<Using Remove="System.Collections.Generic" />
+	</ItemGroup>
+
+  <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
+
+  <!--So that you can override the C: specific targets without changing the one that gets included in git-->
+  <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
+  <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
+  <ItemGroup>
+    <EmbeddedResource Remove="Resources\DownloadBtn.png" />
+    <EmbeddedResource Remove="Resources\Minecraft TopDown.png" />
+    <EmbeddedResource Remove="Resources\ModsBtn.png" />
+    <EmbeddedResource Remove="Resources\ModSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Octokit" Version="0.50.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\ingame_popup.bundle">
+      <CustomToolNamespace></CustomToolNamespace>
+    </None>
+  </ItemGroup>
+</Project>
