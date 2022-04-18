@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsAT Mod Helper", "BloonsAT Mod Helper\BloonsAT Mod Helper.csproj", "{0F171C3D-7633-4595-9ACB-5E222CF2C80C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{45CB0AF9-EB5F-4D6A-846C-830DD4F60B49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\Shared Project.projitems*{45cb0af9-eb5f-4d6a-846c-830dd4f60b49}*SharedItemsImports = 13
+		Shared\Shared Project.projitems*{a413c535-12b4-4c27-bab1-2ade24ac03e7}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		BATTD_Debug|Any CPU = BATTD_Debug|Any CPU
+		BATTD_Release|Any CPU = BATTD_Release|Any CPU
+		BTD6_Debug|Any CPU = BTD6_Debug|Any CPU
+		BTD6_Release|Any CPU = BTD6_Release|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.BATTD_Debug|Any CPU.ActiveCfg = BATTD_Debug|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.BATTD_Debug|Any CPU.Build.0 = BATTD_Debug|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.BATTD_Release|Any CPU.ActiveCfg = BATTD_Release|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.BATTD_Release|Any CPU.Build.0 = BATTD_Release|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.BTD6_Debug|Any CPU.ActiveCfg = BATTD_Debug|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.BTD6_Release|Any CPU.ActiveCfg = BATTD_Release|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F171C3D-7633-4595-9ACB-5E222CF2C80C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.BATTD_Debug|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.BATTD_Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.BTD6_Debug|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.BTD6_Debug|Any CPU.Build.0 = BTD6_Debug|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.BTD6_Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.BTD6_Release|Any CPU.Build.0 = BTD6_Release|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A413C535-12B4-4C27-BAB1-2ADE24AC03E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9EA78EC1-475B-4A4E-93DC-40F93636F7E5}
+	EndGlobalSection
+EndGlobal

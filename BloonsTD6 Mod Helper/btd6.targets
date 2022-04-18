@@ -4,14 +4,14 @@
         <ManagedFolder>$(BloonsTD6)\MelonLoader\Managed</ManagedFolder>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="$(BloonsTD6)\MelonLoader\MelonLoader.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\0Harmony.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\MelonLoader.dll"/>
+		<Reference Include="$(BloonsTD6)\MelonLoader\net6\Newtonsoft.Json.dll" />
+		<Reference Include="$(BloonsTD6)\MelonLoader\net6\System.Drawing.Common.dll" />
         <Reference Include="$(ManagedFolder)\Assembly-CSharp.dll" />
         <Reference Include="$(ManagedFolder)\Il2Cppmscorlib.dll" />
         <Reference Include="$(ManagedFolder)\Il2CppSystem.Core.dll" />
-        <Reference Include="$(ManagedFolder)\mscorlib.dll" />
         <Reference Include="$(ManagedFolder)\Il2CppSystem.dll" />
-        <Reference Include="$(ManagedFolder)\Newtonsoft.Json.dll" />
         <Reference Include="$(ManagedFolder)\NinjaKiwi.Common.dll" />
         <Reference Include="$(ManagedFolder)\NinjaKiwi.LiNK.dll" />
         <Reference Include="$(ManagedFolder)\UnhollowerBaseLib.dll" />

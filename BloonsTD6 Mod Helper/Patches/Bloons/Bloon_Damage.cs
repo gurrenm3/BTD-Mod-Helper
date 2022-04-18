@@ -2,8 +2,6 @@
 using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Simulation.Towers.Projectiles;
-using BTD_Mod_Helper.Api;
-using Harmony;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.Bloons
@@ -20,12 +18,12 @@ namespace BTD_Mod_Helper.Patches.Bloons
             Tower tower, Il2CppStringArray ignoreImmunityForBloonTypes, bool ignoreNonTargetable = false,
             bool blockSpawnChildren = false, bool canDestroyProjectile = true)
         {
-            MelonMain.DoPatchMethods(mod =>
+            /*MelonMain.DoPatchMethods(mod =>
             {
                 mod.PostBloonDamaged(__instance, totalAmount, types, projectile, distributeToChildren,
                     overrideDistributeBlocker, createEffect, tower, ignoreImmunityForBloonTypes,
                     ignoreNonTargetable, blockSpawnChildren, canDestroyProjectile);
-            });
+            });*/
         }
     }
 }

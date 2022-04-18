@@ -4,7 +4,7 @@ using HarmonyLib;
 namespace BTD_Mod_Helper.Patches.Bloons
 {
     [HarmonyPatch(typeof(Bloon), nameof(Bloon.Damage))]
-    internal class Bloon_Damage
+    internal class Bloon_Damage2
     {
 
         /*[HarmonyPostfix]
