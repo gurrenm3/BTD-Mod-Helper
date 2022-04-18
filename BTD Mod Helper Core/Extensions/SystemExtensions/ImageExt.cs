@@ -20,10 +20,21 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static byte[] GetBytes(this Image image)
         {
-            using (var thumbnailStream = new MemoryStream())
+            return image.GetBytes(ImageFormat.Png);
+        }
+
+        /// <summary>
+        /// (Cross-Game compatible) Returns the Bytes of this Image.
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this Image image, ImageFormat format)
+        {
+            using (var imageStream = new MemoryStream())
             {
-                image.Save(thumbnailStream, ImageFormat.Png);
-                return thumbnailStream.ToArray();
+                image.Save(imageStream, format);
+                return imageStream.ToArray();
             }
         }
 

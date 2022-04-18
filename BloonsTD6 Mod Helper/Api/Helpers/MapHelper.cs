@@ -124,6 +124,7 @@ namespace BTD_Mod_Helper.Api.Helpers
             //TextureScale.Bilinear(dup, marginx, marginy);
 
             // this is slow AF. Trying something else.
+            var old = texture2D.ToImage().Resize(1652, 1064);
             /*var old = texture2D.ToImage().Resize(1652, 1064);
             Bitmap newImage = new Bitmap(old.Width + marginx, old.Height + marginy);
 

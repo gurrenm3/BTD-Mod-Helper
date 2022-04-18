@@ -112,10 +112,8 @@ namespace BTD_Mod_Helper.Api
 
         internal static byte[] GetTextureBytes(string guid)
         {
-            if (Resources.GetValueOrDefault(guid) is byte[] bytes)
-                return bytes;
-
-            return null;
+            Resources.TryGetValue(guid, out byte[] bytes);
+            return bytes;
         }
 
         internal static readonly Dictionary<string, Sprite> SpriteCache = new Dictionary<string, Sprite>();
