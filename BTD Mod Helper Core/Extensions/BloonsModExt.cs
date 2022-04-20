@@ -1,4 +1,4 @@
-﻿using System;
+using MelonLoader;
 using System.IO;
 using BTD_Mod_Helper.Api;
 using MelonLoader;
@@ -36,7 +36,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists)
         {
-            var path = $"{Environment.CurrentDirectory}\\Mods\\{bloonsMod.GetModName()}";
+            var path = $"{MelonHandler.ModsDirectory}\\{bloonsMod.GetModName()}";
             if (createIfNotExists) Directory.CreateDirectory(path);
             return path;
         }

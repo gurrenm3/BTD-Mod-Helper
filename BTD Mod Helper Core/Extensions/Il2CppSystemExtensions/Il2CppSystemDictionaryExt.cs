@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             return keyValuePairs.entries.Select(entry => entry.value).ToIl2CppList();
         }
-
+        
 
         /// <summary>
         /// Deconstruct method of IL2CPP KeyValuePairs

@@ -32,8 +32,9 @@ namespace BTD_Mod_Helper.Api
         private static readonly HashSet<string> SeenEvents = new HashSet<string>();
 
         private static string primaryHero;
-        private static Dictionary<string, string> mapPrimaryHeroes = new Dictionary<string, string>();
-        private static Dictionary<(string, int), string> mapPlayerHeroes = new Dictionary<(string, int), string>();
+        private static readonly Dictionary<string, string> MapPrimaryHeroes = new Dictionary<string, string>();
+
+        private static readonly Dictionary<(string, int), string> MapPlayerHeroes = new Dictionary<(string, int), string>();
 
         private static readonly Dictionary<string, string> SelectedTowerSkinData = new Dictionary<string, string>();
 
@@ -43,7 +44,7 @@ namespace BTD_Mod_Helper.Api
             ModHelper.PerformHook(mod => mod.PreCleanProfile(profile));
 
             CleanHashSet(profile.unlockedTowers, Clean("unlockedTower", towers, current), UnlockedTowers);
-            CleanDictionary(profile.analyticsKonFuze.towersPlacedByBaseName,
+            CleanDictionary(profile.analyticsKonFuze?.towersPlacedByBaseName,
                 Clean("towerPlacedByBaseName", towers.Concat(heroes).ToList(), current), TowersPlacedByBaseName);
             CleanDictionary(profile.towerXp, Clean("towerXp", towers, current), TowerXp);
 
@@ -57,13 +58,13 @@ namespace BTD_Mod_Helper.Api
                 SeenNewHeroNotification);
             CleanDictionary(profile.selectedTowerSkinData, Clean("selectedTowerSkinData", heroes, current),
                 SelectedTowerSkinData);
-            CleanDictionary(profile.analyticsKonFuze.heroesPlacedByName, Clean("heroPlacedByName", heroes, current),
+            CleanDictionary(profile.analyticsKonFuze?.heroesPlacedByName, Clean("heroPlacedByName", heroes, current),
                 HeroesPlacedByName);
-            CleanDictionary(profile.analyticsKonFuze.heroLevelsByName, Clean("heroLevelsByName", heroes, current),
+            CleanDictionary(profile.analyticsKonFuze?.heroLevelsByName, Clean("heroLevelsByName", heroes, current),
                 HeroLevelsByName);
 
             SeenEvents.Clear();
-            profile.seenEvents.RemoveWhere(new Func<string, bool>(s =>
+            profile.seenEvents?.RemoveWhere(new Func<string, bool>(s =>
             {
                 foreach (var paragonEvent in ParagonEvents)
                 {
@@ -91,17 +92,17 @@ namespace BTD_Mod_Helper.Api
                 profile.primaryHero = "Quincy";
             }
 
-            mapPrimaryHeroes.Clear();
-            mapPlayerHeroes.Clear();
+            MapPrimaryHeroes.Clear();
+            MapPlayerHeroes.Clear();
             foreach (var (name, map) in profile.savedMaps)
             {
                 if (map != null)
                 {
-                    if (Clean($"{name} primaryHero", heroes, current)(map.primaryHero))
+                    /*if (Clean($"{name} primaryHero", heroes, current)(map.primaryHero))
                     {
-                        mapPrimaryHeroes[name] = map.primaryHero;
+                        MapPrimaryHeroes[name] = map.primaryHero;
                         map.primaryHero = "Quincy";
-                    }
+                    }*/
 
                     foreach (var (id, player) in map.players)
                     {
@@ -109,7 +110,7 @@ namespace BTD_Mod_Helper.Api
                         {
                             if (Clean($"{id} primaryHero", heroes, current)(player.hero))
                             {
-                                mapPlayerHeroes[(name, id)] = player.hero;
+                                MapPlayerHeroes[(name, id)] = player.hero;
                                 player.hero = "Quincy";
                             }
                         }
@@ -125,7 +126,6 @@ namespace BTD_Mod_Helper.Api
                 return;
             }
 
-            FileIOUtil.SaveObject("profile.json", profile);
             // ModHelper.Msg("Cleaning past profile");
 
             var towers = Game.instance.model.towerSet.Select(model => model.towerId).ToList();
@@ -133,6 +133,8 @@ namespace BTD_Mod_Helper.Api
             var heroes = Game.instance.model.heroSet.Select(model => model.towerId).ToList();
 
             CleanProfile(profile, towers, upgrades, heroes, false);
+
+            // FileIOUtil.SaveObject("profile.json", profile);
         }
 
         internal static void CleanCurrentProfile(ProfileModel profile)
@@ -223,17 +225,17 @@ namespace BTD_Mod_Helper.Api
                 profile.primaryHero = primaryHero;
             }
 
-            foreach (var (map, hero) in mapPrimaryHeroes)
+            /*foreach (var (map, hero) in MapPrimaryHeroes)
             {
                 if (profile.savedMaps.ContainsKey(map))
                 {
                     profile.savedMaps[map].primaryHero = hero;
                 }
-            }
+            }*/
 
-            foreach (var ((map, player), hero) in mapPlayerHeroes)
+            foreach (var ((map, player), hero) in MapPlayerHeroes)
             {
-                if (profile.savedMaps.ContainsKey(map))
+                if (profile.savedMaps?.ContainsKey(map) == true)
                 {
                     var mapSaveDataModel = profile.savedMaps[map];
                     if (mapSaveDataModel.players.ContainsKey(player))
@@ -241,7 +243,6 @@ namespace BTD_Mod_Helper.Api
                         mapSaveDataModel.players[player].hero = hero;
                     }
                 }
-
             }
 
             ModHelper.PerformHook(mod => mod.PostCleanProfile(profile));
@@ -251,7 +252,7 @@ namespace BTD_Mod_Helper.Api
         {
             return thing =>
             {
-                if (string.IsNullOrEmpty(thing))
+                if (string.IsNullOrEmpty(thing) || things == null)
                 {
                     return false;
                 }
@@ -270,6 +271,10 @@ namespace BTD_Mod_Helper.Api
             Func<string, bool> clean, HashSet<string> storage)
         {
             storage.Clear();
+            if (hashSet == null)
+            {
+                return;
+            }
 
             foreach (var thing in hashSet)
             {
@@ -289,6 +294,11 @@ namespace BTD_Mod_Helper.Api
             Func<string, bool> clean, Dictionary<string, T> storage)
         {
             storage.Clear();
+            if (dictionary == null)
+            {
+                return;
+            }
+            
             foreach (var (thing, value) in dictionary)
             {
                 if (clean(thing))

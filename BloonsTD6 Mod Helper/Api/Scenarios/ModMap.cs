@@ -8,6 +8,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using System.Collections.Generic;
+using UnhollowerBaseLib;
 using UnityEngine;
 using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
 
@@ -157,7 +158,7 @@ namespace BTD_Mod_Helper.Api
         {
             string areaName = $"AreaModel{areaModels.Count}"; // others called it lol instead of AreaModel
             var polygon = new Polygon(points.ToIl2CppList());
-            var areaModel = new AreaModel(areaName, polygon, 100, type, 0);
+            var areaModel = new AreaModel(areaName, polygon, new Il2CppReferenceArray<Polygon>(0), 100, type, 0); // TODO is an empty holes array correct?
             areaModels.Add(areaModel);
             return areaModel;
         }

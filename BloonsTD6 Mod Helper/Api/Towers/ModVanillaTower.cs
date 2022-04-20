@@ -27,9 +27,9 @@ namespace BTD_Mod_Helper.Api.Towers
                 towerSet.Remove(towerDetailsModel);
                 Game.instance.model.towerSet = towerSet.ToArray();
 
-                var towers = Game.towers.ToList();
+                var towers = TowerType.towers.ToList();
                 towers.RemoveAll(s => s == TowerId);
-                Game.towers = towers.ToArray();
+                TowerType.towers = towers.ToArray();
 
                 Game.instance.model.AddTowerDetails(towerDetailsModel, TowerSet);
             }

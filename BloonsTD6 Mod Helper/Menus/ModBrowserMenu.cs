@@ -104,7 +104,7 @@ namespace BTD_Mod_Helper.Menus
             );
 
             topArea.AddDropdown(new Info("Sorting", width: 1000, height: 150),
-                SortingMethods.Select(method => method.ToString().SpacedPascalCase()).ToIl2CppList(), 600,
+                SortingMethods.Select(method => method.ToString()).ToIl2CppList(), 600,
                 new Action<int>(i =>
                 {
                     sortingMethod = SortingMethods[i];

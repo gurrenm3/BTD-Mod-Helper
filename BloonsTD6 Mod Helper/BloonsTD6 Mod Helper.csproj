@@ -114,6 +114,7 @@
     <Compile Include="Extensions\CollectionExtensions\ListExt.cs" />
     <Compile Include="Extensions\CollectionExtensions\LockedListExt.cs" />
     <Compile Include="Extensions\CollectionExtensions\SizedListExt.cs" />
+    <Compile Include="Extensions\DisplayNodeExtensions\DumpNodeExt.cs" />
     <Compile Include="Extensions\LINQExtensions\SizedListExt.cs" />
     <Compile Include="Extensions\ModelExtensions\BloonModelExt.cs" />
     <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Patches\Main_GetInitialLoadTasks.cs" />
     <Compile Include="Patches\Maps\MapInfoPane_Init.cs" />
     <Compile Include="Patches\Maps\MapLoader_Load.cs" />
+    <Compile Include="Patches\ModdedClientChecking\**\*.cs" />
     <Compile Include="Patches\Model_IsEqual.cs" />
     <Compile Include="Patches\Player\Btd6Player_Save.cs" />
     <Compile Include="Patches\Player\Btd6Player_SaveNow.cs" />
@@ -199,6 +201,7 @@
     <Compile Include="Patches\UI\GameMenu_PlayCloseAnimation.cs" />
     <Compile Include="Patches\UI\HeroButton_Init.cs" />
     <Compile Include="Patches\UI\HeroInGameScreen_Open.cs" />
+    <Compile Include="Patches\UI\HeroSprites_GetFontMaterialRef.cs" />
     <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
     <Compile Include="Patches\UI\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\UI\MainMenu_Open.cs" />

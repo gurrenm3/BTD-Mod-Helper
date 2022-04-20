@@ -75,6 +75,14 @@ namespace BTD_Mod_Helper
             );*/
         }
 
+        public static readonly ModSettingBool BypassSavingRestrictions = new ModSettingBool(true)
+        {
+            description =
+                "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
+                "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
+                "So, this setting overrides that restriction and will allow progress to be saved once more."
+        };
+
         public static readonly ModSettingBool CleanProfile = new ModSettingBool(true)
         {
             description =

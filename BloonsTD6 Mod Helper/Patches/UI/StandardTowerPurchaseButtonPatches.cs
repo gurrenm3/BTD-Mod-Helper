@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Patches.UI
         [HarmonyPostfix]
         internal static void Postfix(StandardTowerPurchaseButton __instance, ref SpriteReference __result)
         {
-            if (__instance.baseTowerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
+            if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
             {
                 __result = modTowerSet.ContainerReference;
             }
@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Patches.UI
         [HarmonyPostfix]
         internal static void Postfix(StandardTowerPurchaseButton __instance)
         {
-            if (__instance.baseTowerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
+            if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
             {
                 ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ContainerReference, __instance.GetComponent<Image>());
             }

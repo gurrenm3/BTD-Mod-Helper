@@ -6,6 +6,7 @@
     <ItemGroup>
         <Reference Include="Microsoft.CSharp"/>
         <Reference Include="$(BloonsTD6)\MelonLoader\MelonLoader.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\0Harmony.dll"/>
         <Reference Include="$(ManagedFolder)\Assembly-CSharp.dll" />
         <Reference Include="$(ManagedFolder)\Il2Cppmscorlib.dll" />
         <Reference Include="$(ManagedFolder)\Il2CppSystem.Core.dll" />
