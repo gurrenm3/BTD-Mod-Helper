@@ -349,7 +349,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, null, false);
                 Game.instance.model.AddHeroDetails(heroDetailsModel, index);
 
-                var skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.ButtonReference,
+                var skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.SquareReference,
                     modHero.Id, modHero.Id + " Short Description", modHero.Id + " Description", 0, true,
                     new Il2CppReferenceArray<SwapTowerSpriteModel>(0),
                     new Il2CppReferenceArray<SwapTowerGraphicModel>(0),

@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Guard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\MoreAccessTools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModHero.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModHeroLevel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModVanillaContent.cs" />
