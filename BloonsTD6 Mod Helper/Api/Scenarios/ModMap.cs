@@ -6,10 +6,9 @@ using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Extensions;
-using Il2CppSystem.IO;
 using MelonLoader;
 using System.Collections.Generic;
-using System.Drawing;
+using UnhollowerBaseLib;
 using UnityEngine;
 using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
 
@@ -113,73 +112,9 @@ namespace BTD_Mod_Helper.Api
             }
 
             mapSprite = GetSpriteReference(MapImageName);
-
-            TryResizeMapImages(); // testing
-
-
+            
             MelonLogger.Msg($"Registered Map: {Name}");
         }
-
-        public void TryResizeMapImages()
-        {
-            // Solution 1:
-            /*var bytes = GetTextureBytes(MapImageName);
-            
-            using (var stream = new System.IO.MemoryStream(bytes))
-            {
-                var mapBitmap = new Bitmap(stream);
-                var resizedMap = mapBitmap.Resize(450, 890);
-
-                mapTexture = new Texture2D(2, 2);
-                bool imageLoaded = ImageConversion.LoadImage(mapTexture, resizedMap.GetBytes());
-            } */
-
-
-
-            // Solution 2:
-            /*var texture = GetTexture(MapImageName);
-            ModHelper.Log($"texture == null: {texture == null}");
-            ScaleTexture(texture, 450, 450);*/
-
-
-            // Solution 3:
-            /*var texture = GetTexture(MapImageName);
-            int targetWidth = 400;
-            int targetHeight = 300;
-
-            RenderTexture rt = RenderTexture.GetTemporary(targetWidth, targetHeight, 0, RenderTextureFormat.ARGB32);
-            UnityEngine.Graphics.Blit(texture, rt);
-            texture.Resize(targetWidth, targetHeight);
-            RenderTexture active = RenderTexture.active;
-            RenderTexture.active = rt;
-            texture.ReadPixels(new Rect(0, 0, targetWidth, targetHeight), 0, 0);
-            texture.Apply(false, true);
-            RenderTexture.active = active;
-            RenderTexture.ReleaseTemporary(rt);*/
-
-
-            // Solution 4:
-            /*var texture = GetTexture(MapImageName);
-            TextureScaler.scale(texture, 400, 400);*/
-        }
-
-        private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
-        {
-            Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
-            float incX = (1.0f / (float)targetWidth);
-            float incY = (1.0f / (float)targetHeight);
-            for (int i = 0; i < result.height; ++i)
-            {
-                for (int j = 0; j < result.width; ++j)
-                {
-                    UnityEngine.Color newColor = source.GetPixelBilinear((float)j / (float)result.width, (float)i / (float)result.height);
-                    result.SetPixel(j, i, newColor);
-                }
-            }
-            result.Apply();
-            return result;
-        }
-
 
         /// <summary>
         /// Returns the sprite reference of this map.
@@ -196,9 +131,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public virtual Texture2D GetTexture()
         {
-            return GetTexture(MapImageName);
-            //return mapTexture;
-            //return mapTexture != null ? mapTexture : mapTexture = GetTexture(MapImageName); // returns unresized version of texture;
+            return mapTexture != null ? mapTexture : mapTexture = GetTexture(MapImageName); // returns unresized version of texture;
             //return mapTexture != null ? mapTexture : mapTexture = MapHelper.ResizeForGame();
         }
 
@@ -225,15 +158,14 @@ namespace BTD_Mod_Helper.Api
         {
             string areaName = $"AreaModel{areaModels.Count}"; // others called it lol instead of AreaModel
             var polygon = new Polygon(points.ToIl2CppList());
-            var areaModel = new AreaModel(areaName, polygon, 100, type, 0);
+            var areaModel = new AreaModel(areaName, polygon, new Il2CppReferenceArray<Polygon>(0), 100, type, 0); // TODO is an empty holes array correct?
             areaModels.Add(areaModel);
             return areaModel;
         }
 
         internal byte[] GetMapBytes()
         {
-            //return ResourceHandler.GetTextureBytes(GetMapGUID());
-            return GetTextureBytes(MapImageName);
+            return ResourceHandler.GetTextureBytes(GetMapGUID());
         }
 
         internal string GetMapGUID()

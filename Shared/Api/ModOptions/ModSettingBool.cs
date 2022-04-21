@@ -4,6 +4,7 @@ using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Extensions;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.ModOptions

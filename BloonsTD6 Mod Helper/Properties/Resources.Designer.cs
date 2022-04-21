@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BloonsTD6_Mod_Helper.Properties {
+namespace BTD_Mod_Helper.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace BloonsTD6_Mod_Helper.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BloonsTD6_Mod_Helper.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BTD_Mod_Helper.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -81,61 +81,11 @@ namespace BloonsTD6_Mod_Helper.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Minecraft_TopDown {
-            get {
-                object obj = ResourceManager.GetObject("Minecraft TopDown", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] modoptions {
             get {
                 object obj = ResourceManager.GetObject("modoptions", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] modoptions___all_set_active_false {
-            get {
-                object obj = ResourceManager.GetObject("modoptions - all set active false", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] modoptions___original {
-            get {
-                object obj = ResourceManager.GetObject("modoptions - original", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] modoptions_Pre_CheckBoxResize {
-            get {
-                object obj = ResourceManager.GetObject("modoptions-Pre-CheckBoxResize", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] modoptions_Pre_Resize {
-            get {
-                object obj = ResourceManager.GetObject("modoptions-Pre-Resize", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Windows.Forms;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using Ookii.Dialogs.WinForms;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-/*using System.Windows.Forms;
-using Ookii.Dialogs.WinForms;*/
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -22,7 +21,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <inheritdoc />
         public ModSettingFile(string value) : base(value)
         {
-            
         }
         
         /// <summary>
@@ -57,7 +55,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             var option = CreateBaseOption();
 
 #if BloonsTD6
-            /*var button = option.BottomRow.AddButton(
+            var button = option.BottomRow.AddButton(
                 new Info("Input", width: 1500, height: 150), VanillaSprites.BlueInsertPanelRound,
                 new Action(() =>
                 {
@@ -81,7 +79,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             var text = button.AddText(new Info("FileText", anchorMin: Vector2.zero, anchorMax: Vector2.one), value);
 
-            option.SetResetAction(new Action(() => text.SetText(defaultValue)));*/
+            option.SetResetAction(new Action(() => text.SetText(defaultValue)));
 #endif
 
             return option;

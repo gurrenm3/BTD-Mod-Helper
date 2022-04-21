@@ -456,13 +456,16 @@ namespace BTD_Mod_Helper.Extensions
         private static void MakeChildrenSomething(this BloonModel bloonModel, Action<BloonModel> effect)
         {
             var spawnChildrenModel = bloonModel.GetSpawnChildrenModel();
-            for (var i = 0; i < spawnChildrenModel.children.Count; i++)
+            if (spawnChildrenModel?.children != null)
             {
-                var current = spawnChildrenModel.children[i];
-                var newBloon = Game.instance.model.GetBloon(current).FindChangedBloonId(effect);
-                if (newBloon != null)
+                for (var i = 0; i < spawnChildrenModel.children.Count; i++)
                 {
-                    spawnChildrenModel.children[i] = newBloon;
+                    var current = spawnChildrenModel.children[i];
+                    var newBloon = Game.instance.model.GetBloon(current).FindChangedBloonId(effect);
+                    if (newBloon != null)
+                    {
+                        spawnChildrenModel.children[i] = newBloon;
+                    }
                 }
             }
 

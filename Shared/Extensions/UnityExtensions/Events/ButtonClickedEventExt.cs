@@ -21,6 +21,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static void SetListener(this ButtonClickedEvent clickEvent, Function funcToExecute)
         {
+            clickEvent.RemoveAllListeners();
             clickEvent.RemoveAllPersistantCalls();
             clickEvent.AddListener(funcToExecute);
         }

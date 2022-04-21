@@ -39,7 +39,7 @@ namespace BTD_Mod_Helper.Api
         public Notification(int slot, NkhMsg msg)
         {
             if (assetBundle == null)
-                assetBundle = AssetBundle.LoadFromMemory(BloonsTD6_Mod_Helper.Properties.Resources.ingame_popup);
+                assetBundle = AssetBundle.LoadFromMemory(Properties.Resources.ingame_popup);
             if (canvas == null)
                 canvas = assetBundle.LoadAsset("Canvas").Cast<GameObject>();
 

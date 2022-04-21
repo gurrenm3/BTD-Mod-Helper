@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Assets.Main.Scenes;
+using Assets.Scripts.Data;
+using Assets.Scripts.Data.Global;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
@@ -46,6 +49,25 @@ namespace BTD_Mod_Helper.Patches.UI
                         .Where(set => !set.AllowInRestrictedModes)
                         .Select(set => new LockTowerSetModModel(modelMod.name, set.Id)));
                     modelMod.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
+                }
+            }
+            
+            foreach (var modHero in ModContent.GetContent<ModHero>())
+            {
+                try
+                {
+                    var heroSprites = GameData.Instance.heroSprites;
+                    heroSprites.heroSprite.Add(new HeroSprite
+                    {
+                        heroId = modHero.Id,
+                        heroFontMaterial = heroSprites.GetFontMaterialRef(modHero.NameStyle),
+                        backgroundBanner = heroSprites.GetBannerRef(modHero.GlowStyle),
+                        backgroundColourTintOverride = heroSprites.GetBannerColourTintRef(modHero.BackgroundStyle)
+                    });
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Error(e);
                 }
             }
             

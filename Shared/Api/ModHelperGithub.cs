@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.ModMenu;
+using BTD_Mod_Helper.Extensions;
 using MelonLoader;
 using Newtonsoft.Json;
 using Octokit;
@@ -15,11 +16,13 @@ namespace BTD_Mod_Helper.Api
     internal static class ModHelperGithub
     {
         public const string RawUserContent = "https://raw.githubusercontent.com";
-        
+
         private const string Topic = "btd6-mod";
         private const string ProductName = "btd-mod-helper";
-        private const string VerifiedModdersURL = "https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/3.0_Features/verified_modders.json";
-        
+
+        private const string VerifiedModdersURL =
+            "https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/3.0_Features/verified_modders.json";
+
         private const string DllContentType = "application/x-msdownload";
         private const string ZipContentType = "application/zip";
         private const string ZipContentType2 = "application/x-zip-compressed";
@@ -58,8 +61,8 @@ namespace BTD_Mod_Helper.Api
 
             Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
 
-            Mods = mods.Where(mod => mod.RepoDataSuccess).ToList();
-            
+            Mods = mods.Where(mod => mod.RepoDataSuccess).Repeat(7).ToList();
+
             UpdateRateLimit();
         }
 
@@ -124,9 +127,8 @@ namespace BTD_Mod_Helper.Api
                     string errorMessage = $"Failed to download asset. {Sorry}";
                     ModHelper.Error(errorMessage);
 #if BloonsTD6
-                PopupScreen.instance.ShowOkPopup(errorMessage);
+                    PopupScreen.instance.ShowOkPopup(errorMessage);
 #endif
-
                 });
             });
 
@@ -144,7 +146,6 @@ namespace BTD_Mod_Helper.Api
 #elif BloonsAT
                 throw new NotImplementedException(); // need to figure out how to do popups in BloonsAT
 #endif
-
             }
 
             UpdateRateLimit();

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Assets.Scripts.Unity.UI_New.HeroInGame;
 using Assets.Scripts.Unity.UI_New.Main.HeroSelect;
 using BTD_Mod_Helper.Api.Towers;
 using HarmonyLib;
@@ -12,7 +13,7 @@ namespace BTD_Mod_Helper.Patches.UI
         [HarmonyPrefix]
         internal static void Prefix(HeroUpgradeDetails __instance, string heroIdToUse)
         {
-            var heroSprites = __instance.heroSprites;
+            /*var heroSprites = __instance.heroSprites;
             var newHeroSprites = new Il2CppReferenceArray<HeroFontMaterial>(heroSprites.Length + 1);
             for (var i = 0; i < heroSprites.Count; i++)
             {
@@ -37,7 +38,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 heroNameMaterial = nameMaterial
             };
 
-            __instance.heroSprites = newHeroSprites;
+            __instance.heroSprites = newHeroSprites;*/
         }
 
         [HarmonyPostfix]
@@ -50,10 +51,11 @@ namespace BTD_Mod_Helper.Patches.UI
                     __instance.heroUpgrades[i].gameObject.SetActive(i < modHero.MaxLevel);
                 }
 
-                for (var i = 0; i < __instance.abilityPanels.Length; i++)
+                // TODO unity explorer ability panels
+                /*for (var i = 0; i < __instance.abilityPanels.Length; i++)
                 {
                     __instance.abilityPanels[i].gameObject.SetActive(i < modHero.Abilities);
-                }
+                }*/
             }
         }
     }

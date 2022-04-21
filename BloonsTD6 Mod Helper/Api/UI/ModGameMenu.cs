@@ -50,25 +50,29 @@ namespace BTD_Mod_Helper.Api
             Cache[Id] = this;
         }
 
+        /// <summary>
+        /// The current GameMenu
+        /// </summary>
+        public GameMenu GameMenu { get; private set; }
 
         /// <summary>
         /// Runs right as your custom menu is being opened, with the optional data argument that can be passed into
         /// <see cref="Open{T}(Il2CppSystem.Object,Il2CppSystem.Object)"/>
         /// </summary>
         /// <returns>Whether to run the base menu's OnOpen code</returns>
-        public abstract bool OnMenuOpened(GameMenu gameMenu, Object data);
+        public abstract bool OnMenuOpened(Object data);
 
         /// <summary>
         /// Runs right as your custom menu is being closed
         /// </summary>
-        public virtual void OnMenuClosed(GameMenu gameMenu)
+        public virtual void OnMenuClosed()
         {
         }
 
         /// <summary>
         /// Runs every time that your custom menu updates
         /// </summary>
-        public virtual void OnMenuUpdate(GameMenu gameMenu)
+        public virtual void OnMenuUpdate()
         {
         }
 
@@ -92,8 +96,9 @@ namespace BTD_Mod_Helper.Api
                 outData = menuData.baseData;
                 var tracker = gameMenu.gameObject.AddComponent<ModGameMenuTracker>();
                 tracker.modGameMenuId = modGameMenu.Id;
-                
-                return gameMenu.enabled = modGameMenu.OnMenuOpened(gameMenu, menuData.modData);
+
+                modGameMenu.GameMenu = gameMenu;
+                return gameMenu.enabled = modGameMenu.OnMenuOpened(menuData.modData);
             }
 
             outData = data;
@@ -167,37 +172,7 @@ namespace BTD_Mod_Helper.Api
         /// <inheritdoc />
         public override string BaseMenu => MenuName<T>();
 
-        /// <inheritdoc />
-        public sealed override bool OnMenuOpened(GameMenu gameMenu, Object data)
-        {
-            return OnMenuOpened(gameMenu.Cast<T>(), data);
-        }
-
-        /// <inheritdoc cref="OnMenuOpened(Assets.Scripts.Unity.Menu.GameMenu,Il2CppSystem.Object)" />
-        public abstract bool OnMenuOpened(T gameMenu, Object data);
-
-
-        /// <inheritdoc />
-        public sealed override void OnMenuClosed(GameMenu gameMenu)
-        {
-            OnMenuClosed(gameMenu.Cast<T>());
-        }
-
-        /// <inheritdoc cref="OnMenuClosed(Assets.Scripts.Unity.Menu.GameMenu)" />
-        public virtual void OnMenuClosed(T gameMenu)
-        {
-        }
-
-        /// <inheritdoc/>
-        public sealed override void OnMenuUpdate(GameMenu gameMenu)
-        {
-            OnMenuUpdate(gameMenu.Cast<T>());
-        }
-
-
-        /// <inheritdoc cref="OnMenuUpdate(Assets.Scripts.Unity.Menu.GameMenu)"/>
-        public virtual void OnMenuUpdate(T gameMenu)
-        {
-        }
+        /// <inheritdoc cref="ModGameMenu.GameMenu"/>
+        public new T GameMenu => base.GameMenu.Cast<T>();
     }
 }

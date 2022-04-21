@@ -36,7 +36,7 @@ namespace BTD_Mod_Helper.Api.Components
 
             if (ModGameMenu.Cache.TryGetValue(modGameMenuId ?? "", out var modGameMenu))
             {
-                modGameMenu.OnMenuUpdate(gameMenu);
+                modGameMenu.OnMenuUpdate();
             }
         }
 

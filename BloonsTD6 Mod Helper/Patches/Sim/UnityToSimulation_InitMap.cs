@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Models.Map;
 using Assets.Scripts.Unity.Bridge;
 using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Helpers;
 using HarmonyLib;
 using System.Linq;
 using UnityEngine;
@@ -48,10 +47,7 @@ namespace BTD_Mod_Helper.Patches.Sim
 
             // set the map texture
             var mapRenderer = GameObject.Find("MuddyPuddlesTerrain").GetComponent<Renderer>();
-
-            var mapTexture = modMap.GetTexture();
-            TextureScaler.scaled(mapTexture, 500, 500);
-            mapRenderer.material.mainTexture = mapTexture;
+            mapRenderer.material.mainTexture = modMap.GetTexture();
 
             return true;
         }

@@ -6,7 +6,7 @@ using BTD_Mod_Helper.Api.Helpers;
 
 namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPatch(typeof(MapLoader), nameof(MapLoader.Load))]
+    /*[HarmonyPatch(typeof(MapLoader), nameof(MapLoader.Load))] TODO FIX THIS PATCH
     internal class MapLoader_Load
     {
         [HarmonyPrefix]
@@ -36,5 +36,5 @@ namespace BTD_Mod_Helper.Patches
 
             return true;
         }
-    }
+    }*/
 }

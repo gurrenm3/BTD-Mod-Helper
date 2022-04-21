@@ -1,202 +1,54 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{12189163-C07D-423C-9006-978E944D7409}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>BTD_Mod_Helper</RootNamespace>
-    <AssemblyName>BloonsTD6 Mod Helper</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<Configurations>BTD6_Debug;BTD6_Release</Configurations>
+	<DefineConstants>BloonsTD6;TRACE</DefineConstants>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsTD6 - Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\BloonsTD6 - Debug\</OutputPath>
-    <DefineConstants>BloonsTD6;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <DocumentationFile>obj\BloonsTD6 - Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsTD6 - Release|AnyCPU'">
-    <OutputPath>bin\BloonsTD6 - Release\</OutputPath>
-    <DefineConstants>BloonsTD6;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <DocumentationFile>bin\BloonsTD6 - Release\BloonsTD6 Mod Helper.xml</DocumentationFile>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <!--So that you can override the C: specific targets without changing the one that gets included in git-->
-  <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
-  <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
-  <ItemGroup>
-    <Compile Include="Api\BackupCreator.cs" />
-    <Compile Include="Api\Builders\BloonModelBuilder.cs" />
-    <Compile Include="Api\Coop\Chat_Message.cs" />
-    <Compile Include="Api\Coop\MessageUtils.cs" />
-    <Compile Include="Api\ProfileManagement.cs" />
-    <Compile Include="AutoSave.cs" />
-    <Compile Include="BloonsTD6Mod.cs" />
-    <Compile Include="BTD6 UI\MainMenuUI.cs" />
-    <Compile Include="BTD6 UI\MapSelectUI.cs" />
-    <Compile Include="BTD6 UI\ModdedMonkeySelectMenu.cs" />
-    <Compile Include="BTD6 UI\TitleScreenUI.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\BloonBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\WeaponBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\ProjectileBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\AttackBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\EmissionModelBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\PetModelBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\PowerModelBehaviorExt.cs" />
-    <Compile Include="Extensions\BehaviorExtensions\TowerBehaviorExt.cs" />
-    <Compile Include="Extensions\CollectionExtensions\ArrayExt.cs" />
-    <Compile Include="Extensions\CollectionExtensions\Il2CppGenericsExt.cs" />
-    <Compile Include="Extensions\CollectionExtensions\Il2CppReferenceArrayExt.cs" />
-    <Compile Include="Extensions\CollectionExtensions\ListExt.cs" />
-    <Compile Include="Extensions\CollectionExtensions\LockedListExt.cs" />
-    <Compile Include="Extensions\CollectionExtensions\SizedListExt.cs" />
-    <Compile Include="Extensions\CoopExtensions\NKMultiGameInterfaceExt.cs" />
-    <Compile Include="Extensions\DisplayNodeExtensions\DumpNodeExt.cs" />
-    <Compile Include="Extensions\LINQExtensions\SizedListExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\DisplayModelExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\KnowledgeModelExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\KnowledgeSetModelExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\ProjectileModelExt.cs" />
-    <Compile Include="Extensions\NkAssetExtensions\NK_TextMeshProUGUIExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\ProfileModelExt.cs" />
-    <Compile Include="Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
-    <Compile Include="Extensions\SimulationExtensions\EntityExt.cs" />
-    <Compile Include="Extensions\SimulationExtensions\MapExt.cs" />
-    <Compile Include="Extensions\SimulationExtensions\TowerExt.cs" />
-    <Compile Include="Extensions\SimulationExtensions\ProjectileExt.cs" />
-    <Compile Include="Extensions\SimulationExtensions\SelectableObjectExt.cs" />
-    <Compile Include="Extensions\SimulationExtensions\UnityToSimulationExty.cs" />
-    <Compile Include="Extensions\SimulationExtensions\BloonExt.cs" />
-    <Compile Include="Extensions\GameExt.cs" />
-    <Compile Include="Extensions\InGameExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\TowerDetailsModelExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\TowerModelExt.cs" />
-    <Compile Include="Extensions\ModelExtensions\UpgradeModelExt.cs" />
-    <Compile Include="Extensions\StandardTowerPurchaseButtonExt.cs" />
-    <Compile Include="Extensions\UnityExtensions\ImageExt.cs" />
-    <Compile Include="Extensions\UnityExtensions\PopupScreenExt.cs" />
-    <Compile Include="Extensions\UnityExtensions\RendererExt.cs" />
-    <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
-    <Compile Include="MelonMain.cs" />
-    <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
-    <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
-    <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
-    <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
-    <Compile Include="Patches\Bloons\Bloon_OnDestroy.cs" />
-    <Compile Include="Patches\GameModel_CreateModded.cs" />
-    <Compile Include="Patches\GameModel_GetRoundSet.cs" />
-    <Compile Include="Patches\InGame_Quit.cs" />
-    <Compile Include="Patches\InGame_Restart.cs" />
-    <Compile Include="Patches\InGame_StartMatch.cs" />
-    <Compile Include="Patches\InputManager_PrimeTower.cs" />
-    <Compile Include="Patches\ModdedClientChecking\**\*.cs" />
-    <Compile Include="Patches\Model_IsEqual.cs" />
-    <Compile Include="Patches\Player\Btd6Player_Save.cs" />
-    <Compile Include="Patches\Player\Btd6Player_SaveNow.cs" />
-    <Compile Include="Patches\Player\NKMultiConnection_Receive.cs" />
-    <Compile Include="Patches\Player\NKMultiGameInterface_Update.cs" />
-    <Compile Include="Patches\Player\ProfileModel_Validate.cs" />
-    <Compile Include="Patches\Projectiles\Projectile_Initialise.cs" />
-    <Compile Include="Patches\Projectiles\Projectile_UpdatedModel.cs" />
-    <Compile Include="Patches\InGame_OnVictory.cs" />
-    <Compile Include="Patches\Resources\Factory_CreateAsync.cs" />
-    <Compile Include="Patches\Resources\Factory_DestroyAllActive.cs" />
-    <Compile Include="Patches\Resources\Factory_FindAndSetupPrototypeAsync.cs" />
-    <Compile Include="Patches\Resources\Factory_Flush.cs" />
-    <Compile Include="Patches\Resources\FileSaveStrategy_Choose.cs" />
-    <Compile Include="Patches\Resources\ResourceLoader_LoadSpriteFromSpriteReferenceAsync.cs" />
-    <Compile Include="Patches\Sim\Simulation_AddCash.cs" />
-    <Compile Include="Patches\Sim\UnityToSimulation_Lose.cs" />
-    <Compile Include="Patches\Sim\Simulation_RoundEnd.cs" />
-    <Compile Include="Patches\Sim\Simulation_RoundStart.cs" />
-    <Compile Include="Patches\Sim\Simulation_RemoveCash.cs" />
-    <Compile Include="Patches\TimeManager_SetFastForward.cs" />
-    <Compile Include="Patches\Towers\ParagonTower_GetDegreeMutator.cs" />
-    <Compile Include="Patches\Towers\ParagonTower_UpdateDegree.cs" />
-    <Compile Include="Patches\Towers\TowerManager_UpgradeTower.cs" />
-    <Compile Include="Patches\Towers\Tower_Destroy.cs" />
-    <Compile Include="Patches\Towers\Tower_GetSaveData.cs" />
-    <Compile Include="Patches\Towers\Tower_Highlight.cs" />
-    <Compile Include="Patches\Towers\Tower_Initialise.cs" />
-    <Compile Include="Patches\Towers\Tower_OnSold.cs" />
-    <Compile Include="Patches\Towers\Tower_SetSaveData.cs" />
-    <Compile Include="Patches\Towers\Tower_UnHighlight.cs" />
-    <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
-    <Compile Include="Patches\UI\CoopQuickMatchScreen_Open.cs" />
-    <Compile Include="Patches\UI\HeroButton_Init.cs" />
-    <Compile Include="Patches\UI\HeroInGameScreen_Open.cs" />
-    <Compile Include="Patches\UI\HeroSprites_GetFontMaterialRef.cs" />
-    <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
-    <Compile Include="Patches\UI\MainMenuEventPanel_OpenRaceEventScreen.cs" />
-    <Compile Include="Patches\UI\MainMenu_OnEnable.cs" />
-    <Compile Include="Patches\UI\OdysseyEventScreen_Update.cs" />
-    <Compile Include="Patches\UI\SelectedUpgrade_UpdateButtonState.cs" />
-    <Compile Include="Patches\UI\SettingsScreen_Open.cs" />
-    <Compile Include="Patches\UI\StandardTowerPurchaseButtonPatches.cs" />
-    <Compile Include="Patches\UI\TitleScreen_Start.cs" />
-    <Compile Include="Patches\UI\TowerSelectionMenu_IsUpgradePathClosed.cs" />
-    <Compile Include="Patches\UI\TowerSelectionMenu_UpgradeTower.cs" />
-    <Compile Include="Patches\UI\TowerSetBgSprites_GetSprite.cs" />
-    <Compile Include="Patches\UI\TSMThemeDefault_TowerInfoChanged.cs" />
-    <Compile Include="Patches\UI\UpgradeScreen_Open.cs" />
-    <Compile Include="Patches\UI\UpgradeScreen_PopulatePath.cs" />
-    <Compile Include="Patches\UI\UpgradeScreen_UpdateUi.cs" />
-    <Compile Include="Patches\Weapons\Ability_Cast.cs" />
-    <Compile Include="Patches\Weapons\Attack_UpdatedModel.cs" />
-    <Compile Include="Patches\Weapons\Attack_Initialise.cs" />
-    <Compile Include="Patches\Weapons\Weapon_Fire.cs" />
-    <Compile Include="Patches\Weapons\Weapon_Initialise.cs" />
-    <Compile Include="Patches\Weapons\Weapon_UpdatedModel.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="SessionData.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ingame_popup.bundle" />
-    <None Include="Resources\modoptions.bundle" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="btd6.targets" />
-  </ItemGroup>
-  <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+	<ItemGroup>
+		<Using Remove="System" />
+		<Using Remove="System.IO" />
+		<Using Remove="System.Linq" />
+		<Using Remove="System.Net.Http" />
+		<Using Remove="System.Threading" />
+		<Using Remove="System.Threading.Tasks" />
+		<Using Remove="System.Collections.Generic" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="FuzzySharp" Version="2.0.2" />
+	  <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+	  <PackageReference Include="Octokit" Version="0.50.0" />
+	  <PackageReference Include="Ookii.Dialogs.WinForms" Version="4.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
+
+	<!--So that you can override the C: specific targets without changing the one that gets included in git-->
+	<Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
+	<Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
+	<ItemGroup>
+	  <EmbeddedResource Remove="Resources\DownloadBtn.png" />
+	  <EmbeddedResource Remove="Resources\ModsBtn.png" />
+	  <EmbeddedResource Remove="Resources\ModSettings.png" />
+	</ItemGroup>
 </Project>

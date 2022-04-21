@@ -43,7 +43,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\CostHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\Guard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ResourceHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\TextureScaler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\VanillaSpriteGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\VanillaTypeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\IModContent.cs" />
@@ -66,6 +65,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingNumber.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingsHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModOptions\ModSettingString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\MoreAccessTools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\NamedModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\TaskScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Towers\ModTower.cs" />

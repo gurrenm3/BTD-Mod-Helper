@@ -55,24 +55,27 @@ namespace BTD_Mod_Helper.Api.Components
         /// <param name="fontSize">The size of the displayed text</param>
         /// <param name="validation">The type of validation used on user input</param>
         /// <param name="align">The alignment of the text</param>
+        /// <param name="placeholder"></param>
+        /// <param name="padding"></param>
         /// <returns>The created ModHelperInputField</returns>
         public static ModHelperInputField Create(Info info, string defaultValue, SpriteReference background,
             UnityAction<string> onValueChanged = null, float fontSize = 42,
             TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
-            TextAlignmentOptions align = TextAlignmentOptions.Midline)
+            TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
         {
             var modHelperInputField = ModHelperComponent.Create<ModHelperInputField>(info);
             modHelperInputField.AddComponent<Mask>();
-            
-            
+
+
             var backgroundImage = modHelperInputField.AddComponent<Image>();
             backgroundImage.type = Image.Type.Sliced;
             backgroundImage.SetSprite(background);
 
-            var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", anchorMin: Vector2.zero, anchorMax: Vector2.one));
+            var textViewPort =
+                modHelperInputField.AddPanel(new Info("TextViewport", anchorMin: Vector2.zero, anchorMax: Vector2.one));
 
             var text = textViewPort.AddText(
-                new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one),
+                new Info("Text", width: padding * -2, anchorMin: Vector2.zero, anchorMax: Vector2.one),
                 defaultValue, fontSize, align
             );
             text.Text.overflowMode = TextOverflowModes.Masking;
@@ -85,6 +88,18 @@ namespace BTD_Mod_Helper.Api.Components
             inputField.textViewport = textViewPort;
             inputField.caretWidth = 5;
 
+            if (placeholder != null)
+            {
+                var placeholderText = textViewPort.AddText(
+                    new Info("Placeholder", width: padding * -2, anchorMin: Vector2.zero, anchorMax: Vector2.one),
+                    placeholder, fontSize, align
+                );
+                placeholderText.Text.overflowMode = TextOverflowModes.Masking;
+                placeholderText.Text.font = Fonts.Btd6FontBody;
+                inputField.placeholder = placeholderText.Text;
+                placeholderText.Text.color = new Color(1, 1, 1, .5f);
+            }
+
             if (onValueChanged != null)
             {
                 inputField.onValueChanged.AddListener(onValueChanged);
@@ -93,7 +108,7 @@ namespace BTD_Mod_Helper.Api.Components
             inputField.SetText(defaultValue);
 
             inputField.enabled = false;
-            
+
             return modHelperInputField;
         }
 

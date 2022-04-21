@@ -15,8 +15,7 @@ namespace BTD_Mod_Helper.Patches.Resources
         {
             if (ModDisplay.Cache.TryGetValue(objectId, out var modDisplay) &&
                 modDisplay.ModifiesUnityObject &&
-                !(ResourceHandler.Prefabs.ContainsKey(objectId) &&
-                  !ResourceHandler.Prefabs[objectId].isDestroyed))
+                !(ResourceHandler.Prefabs.ContainsKey(objectId) && !ResourceHandler.Prefabs[objectId].isDestroyed))
             {
                 var complete = onComplete;
                 onComplete = new Action<UnityDisplayNode>(node =>

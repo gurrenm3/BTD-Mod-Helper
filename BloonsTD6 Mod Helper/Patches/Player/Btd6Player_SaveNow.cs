@@ -10,14 +10,20 @@ namespace BTD_Mod_Helper.Patches
         [HarmonyPrefix]
         internal static bool Prefix(Btd6Player __instance)
         {
-            ProfileManagement.CleanCurrentProfile(__instance.Data);
+            if (__instance.Data?.HasCompletedTutorial == true)
+            {
+                ProfileManagement.CleanCurrentProfile(__instance.Data);
+            }
             return true;
         }
 
         [HarmonyPostfix]
         internal static void Postfix(Btd6Player __instance)
         {
-            ProfileManagement.UnCleanProfile(__instance.Data);
+            if (__instance.Data?.HasCompletedTutorial == true)
+            {
+                ProfileManagement.UnCleanProfile(__instance.Data);
+            }
         }
 
     }

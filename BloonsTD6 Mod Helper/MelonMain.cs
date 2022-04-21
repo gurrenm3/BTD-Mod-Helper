@@ -1,25 +1,22 @@
 ﻿using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Unity.UI_New.Popups;
-using Assets.Scripts.Utils;
-using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.ModOptions;
+using System;
+using UnityEngine;
+using Assets.Scripts.Unity.UI_New.Popups;
+using BTD_Mod_Helper.Api.Updater;
+using Assets.Scripts.Unity.Menu;
+using BTD_Mod_Helper.Extensions;
+using Assets.Scripts.Utils;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
+using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
-using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.Api.Updater;
-using System;
-using System.Diagnostics;
-using System.Reflection;
-using System.Threading.Tasks;
-using UnityEngine;
+using MelonLoader;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
-
-[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", ModHelper.Version, "Gurrenm4 and doombubbles")]
-[assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
-[assembly: MelonColor(ConsoleColor.Blue)]
-[assembly: MelonPriority(-1000)]
 
 namespace BTD_Mod_Helper
 {
@@ -77,6 +74,14 @@ namespace BTD_Mod_Helper
                 @"C:\Users\jpgale\Pictures\Dump\Sprites"
             );*/
         }
+
+        public static readonly ModSettingBool BypassSavingRestrictions = new ModSettingBool(true)
+        {
+            description =
+                "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
+                "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
+                "So, this setting overrides that restriction and will allow progress to be saved once more."
+        };
 
         public static readonly ModSettingBool CleanProfile = new ModSettingBool(true)
         {

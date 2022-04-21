@@ -3,7 +3,7 @@
 namespace BTD_Mod_Helper.Extensions
 {
     /// <summary>
-    /// Extensions for Vector3s
+    /// Extensions for Vectors
     /// </summary>
     public static class Vector3Ext
     {

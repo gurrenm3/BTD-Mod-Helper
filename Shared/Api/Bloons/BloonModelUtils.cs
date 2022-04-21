@@ -1,6 +1,5 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Models.Bloons.Behaviors;
-using System;
+﻿using Assets.Scripts.Models.Bloons.Behaviors;
+using Assets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Bloons
 {
@@ -21,13 +20,10 @@ namespace BTD_Mod_Helper.Api.Bloons
         {
             string baseName = bloonName.Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", "");
 #if BloonsTD6
-            string camoText = camo ? "Camo" : "";
-            string regrowText = regrow ? "Regrow" : "";
-            string fortifiedText = fortified ? "Fortified" : "";
-            return $"{baseName}{camoText}{regrowText}{fortifiedText}";
-            //return GameModelUtil.ConstructBloonId(baseName, camo, regrow, fortified);
+            return BloonTypeUtility.BloonType(baseName, camo, regrow, fortified);
 #elif BloonsAT
             throw new NotImplementedException();
+            return GameModelUtil.ConstructBloonId(baseName, camo, regrow, fortified);
 #endif
         }
 
@@ -40,7 +36,7 @@ namespace BTD_Mod_Helper.Api.Bloons
         public static GrowModel CreateGrowModel(string regrowsTo, float regrowRate)
         {
 #if BloonsTD6
-            return new GrowModel("GrowModel_", regrowRate, regrowsTo, "");
+            return new GrowModel("GrowModel_", regrowRate, regrowsTo, null);
 #elif BloonsAT
             return new GrowModel($"GrowModel_{regrowsTo}", regrowRate);
 #endif

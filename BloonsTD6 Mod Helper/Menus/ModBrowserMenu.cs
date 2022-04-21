@@ -1,83 +1,263 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Unity.UI_New;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
-using Assets.Scripts.Unity.UI_New.Coop;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
-using BTD_Mod_Helper.Api.ModMenu;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
-using Il2CppSystem.Threading.Tasks;
+using FuzzySharp.SimilarityRatio;
+using FuzzySharp.SimilarityRatio.Scorer;
+using FuzzySharp.SimilarityRatio.Scorer.Composite;
+using MonoMod.Utils;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Menus
 {
     internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     {
+        private const int ModsPerPage = 10;
+        private const int SearchCutoff = 50;
+        private const int TypingCooldown = 30;
+
         private static bool modsNeedRefreshing;
 
-        private static ModBrowserMenuMod template;
+        private static readonly List<SortingMethod> SortingMethods =
+            Enum.GetValues(typeof(SortingMethod)).Cast<SortingMethod>().ToList();
 
-        public override bool OnMenuOpened(ContentBrowser gameMenu, Il2CppSystem.Object data)
+
+        private readonly ModBrowserMenuMod[] mods = new ModBrowserMenuMod[ModsPerPage];
+
+        private readonly IRatioScorer scorer = ScorerCache.Get<WeightedRatioScorer>();
+
+        private IList<ModHelperData> currentMods;
+        private int currentPage;
+        private string currentSearch = "";
+
+        private SortingMethod sortingMethod = SortingMethod.Popularity;
+
+        private int typingCooldown;
+
+
+        private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
+
+        public override bool OnMenuOpened(Object data)
         {
-            gameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("Title").SetText("Mod Browser");
-            gameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("SearchPlaceholder")
-                .SetText("Search");
+            ModifyExistingElements();
+            AddNewElements();
 
-            gameMenu.GetComponentFromChildrenByName<RectTransform>("Tabs").gameObject.active = false;
-            gameMenu.GetComponentFromChildrenByName<RectTransform>("CreateBtn").gameObject.active = false;
-
-            var verticalLayoutGroup = gameMenu.scrollRect.content.GetComponent<VerticalLayoutGroup>();
-            verticalLayoutGroup.SetPadding(50);
-            verticalLayoutGroup.spacing = 50;
-            verticalLayoutGroup.childControlWidth = true;
-            verticalLayoutGroup.childControlHeight = true;
-
-            template = gameMenu.scrollRect.content.gameObject.AddModHelperComponent(ModBrowserMenuMod.CreateTemplate());
-            //template.AddLayoutElement();
-
-            gameMenu.searchingImg.gameObject.SetActive(true);
-            
             if (ModHelperGithub.Mods == null)
             {
-                // ReSharper disable once AsyncVoidLambda
                 modsNeedRefreshing = true;
                 return false;
             }
 
-            PopulateModPanels(gameMenu);
+            currentMods = ModHelperGithub.Mods;
+            UpdateModList();
 
             return false;
         }
 
-        public override void OnMenuUpdate(ContentBrowser gameMenu)
+        public void ModifyExistingElements()
         {
-            if (modsNeedRefreshing && ModHelperGithub.Mods != null)
+            GameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("Title").SetText("Mod Browser");
+
+            GameMenu.GetComponentFromChildrenByName<RectTransform>("TopBar").gameObject.active = false;
+            GameMenu.GetComponentFromChildrenByName<RectTransform>("Tabs").gameObject.active = false;
+
+            var verticalLayoutGroup = GameMenu.scrollRect.content.GetComponent<VerticalLayoutGroup>();
+            verticalLayoutGroup.SetPadding(50);
+            verticalLayoutGroup.spacing = 50;
+            verticalLayoutGroup.childControlWidth = true;
+            verticalLayoutGroup.childControlHeight = true;
+            GameMenu.scrollRect.rectTransform.sizeDelta += new Vector2(0, 200);
+            GameMenu.scrollRect.rectTransform.localPosition += new Vector3(0, 100, 0);
+
+            GameMenu.searchingImg.gameObject.SetActive(true);
+
+            GameMenu.refreshBtn.SetOnClick(RefreshMods);
+            GameMenu.firstPageBtn.SetOnClick(() => SetPage(0));
+            GameMenu.previousPageBtn.SetOnClick(() => SetPage(currentPage - 1));
+            GameMenu.nextPageBtn.SetOnClick(() => SetPage(currentPage + 1));
+            GameMenu.lastPageBtn.SetOnClick(() => SetPage(TotalPages - 1));
+        }
+
+        public void AddNewElements()
+        {
+            var template =
+                GameMenu.scrollRect.content.gameObject.AddModHelperComponent(ModBrowserMenuMod.CreateTemplate());
+            for (var i = 0; i < ModsPerPage; i++)
             {
-                PopulateModPanels(gameMenu);
+                var newMod = mods[i] = template.Duplicate($"Mod {i}");
+                newMod.AddTo(GameMenu.scrollRect.content);
+                newMod.SetActive(false);
+            }
+
+            var topArea = GameMenu.transform.GetChild(0).gameObject.AddModHelperPanel(
+                new Info("TopArea", 0, -325, anchorMin: new Vector2(0, 1), anchorMax: new Vector2(1, 1),
+                    pivot: new Vector2(0.5f, 1), height: 200), layoutAxis: RectTransform.Axis.Horizontal, padding: 50
+            );
+
+            topArea.AddDropdown(new Info("Sorting", width: 1000, height: 150),
+                SortingMethods.Select(method => method.ToString()).ToIl2CppList(), 600,
+                new Action<int>(i =>
+                {
+                    sortingMethod = SortingMethods[i];
+                    RecalculateCurrentMods();
+                }), VanillaSprites.BlueInsertPanelRound, 80f);
+
+            topArea.AddPanel(new Info("Filler 1", flex: 1));
+
+            topArea.AddInputField(new Info("Searching", width: 1500, height: 150), currentSearch,
+                VanillaSprites.BlueInsertPanelRound, new Action<string>(
+                    s =>
+                    {
+                        currentSearch = s;
+                        typingCooldown = TypingCooldown;
+                    }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft, "Search...",
+                50);
+
+            topArea.AddPanel(new Info("Filler 2", flex: 1));
+
+            var toggles = topArea.AddPanel(new Info("Toggles", width: 1000, height: 150));
+        }
+
+        public override void OnMenuUpdate()
+        {
+            if (currentMods == null)
+            {
+                currentMods = ModHelperGithub.Mods;
+            }
+
+            if (modsNeedRefreshing && currentMods != null)
+            {
+                UpdateModList();
                 modsNeedRefreshing = false;
             }
-        }
 
-        public static void PopulateModPanels(ContentBrowser gameMenu)
-        {
-            foreach (var modHelperData in ModHelperGithub.Mods)
+            if (typingCooldown > 0)
             {
-                var newMod = template.Duplicate(modHelperData.Name);
-                newMod.SetMod(modHelperData);
-                newMod.AddTo(gameMenu.scrollRect.content);
+                typingCooldown--;
+                if (typingCooldown == 0)
+                {
+                    RecalculateCurrentMods();
+                }
             }
-            gameMenu.searchingImg.gameObject.SetActive(false);
-            gameMenu.requiresInternetObj.SetActive(false);
         }
 
-        public static ModHelperComponent CreateModPanel(ModHelperData modHelperData)
+        private void RecalculateCurrentMods()
         {
-            var panel = ModHelperPanel.Create(new Info("ModPanel", 0, 0, 2500, 200));
+            Task.Run(() =>
+            {
+                ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
+                var filteredMods = ModHelperGithub.Mods
+                    .Where(data => string.IsNullOrEmpty(currentSearch) ||
+                                   scorer.Score(currentSearch.ToLower(), data.Name.ToLower()) >= SearchCutoff ||
+                                   scorer.Score(currentSearch.ToLower(), data.RepoOwner.ToLower()) >= SearchCutoff);
+
+                switch (sortingMethod)
+                {
+                    case SortingMethod.Popularity:
+                        filteredMods = filteredMods.OrderByDescending(data => data.Repository.StargazersCount);
+                        break;
+                    case SortingMethod.Alphabetical:
+                        filteredMods = filteredMods.OrderBy(data => data.Name);
+                        break;
+                    case SortingMethod.RecentlyUpdated:
+                        filteredMods = filteredMods.OrderByDescending(data => data.Repository.UpdatedAt);
+                        break;
+                    case SortingMethod.New:
+                        filteredMods = filteredMods.OrderByDescending(data => data.Repository.CreatedAt);
+                        break;
+                }
+
+                currentMods = filteredMods.ToList();
+                modsNeedRefreshing = true;
+            });
+        }
+
+        private void UpdateModList()
+        {
+            var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
+            var i = 0;
+            foreach (var modHelperData in pageMods)
+            {
+                mods[i].SetMod(modHelperData);
+                i++;
+            }
+
+            while (i < ModsPerPage)
+            {
+                mods[i].SetActive(false);
+                i++;
+            }
 
 
-            return panel;
+            GameMenu.searchingImg.gameObject.SetActive(false);
+            GameMenu.requiresInternetObj.SetActive(false);
+
+            UpdatePagination();
+        }
+
+        private void UpdatePagination()
+        {
+            GameMenu.refreshBtn.interactable = true;
+
+            GameMenu.firstPageBtn.interactable = TotalPages >= 2 && currentPage > 0;
+            GameMenu.previousPageBtn.interactable = TotalPages >= 2 && currentPage > 0;
+
+            GameMenu.nextPageBtn.interactable = TotalPages >= 2 && currentPage < TotalPages - 1;
+            GameMenu.lastPageBtn.interactable = TotalPages >= 2 && currentPage < TotalPages - 1;
+
+            GameMenu.totalPages = TotalPages;
+            GameMenu.SetCurrentPage(currentPage + 1);
+        }
+
+        private void SetPage(int page)
+        {
+            currentPage = page;
+            if (currentPage < 0)
+            {
+                currentPage = 0;
+            }
+
+            if (currentPage > TotalPages - 1)
+            {
+                currentPage = TotalPages - 1;
+            }
+
+            UpdateModList();
+
+            MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
+        }
+
+        private void RefreshMods()
+        {
+            GameMenu.refreshBtn.interactable = false;
+            GameMenu.searchingImg.gameObject.SetActive(true);
+            foreach (var menuMod in mods)
+            {
+                menuMod.SetActive(false);
+            }
+
+            Task.Run(async () =>
+            {
+                await ModHelperGithub.PopulateMods();
+                RecalculateCurrentMods();
+            });
+        }
+
+        private enum SortingMethod
+        {
+            Popularity,
+            RecentlyUpdated,
+            New,
+            Alphabetical
         }
     }
 }

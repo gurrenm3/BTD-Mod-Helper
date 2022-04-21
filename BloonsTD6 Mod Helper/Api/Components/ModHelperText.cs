@@ -39,7 +39,7 @@ namespace BTD_Mod_Helper.Api.Components
         /// <param name="align">Alignment of text</param>
         /// <returns>The created ModHelperText</returns>
         public static ModHelperText Create(Info info, string text, float fontSize = 42,
-            TextAlignmentOptions align = TextAlignmentOptions.Midline)
+            TextAlignmentOptions align = TextAlignmentOptions.Capline)
         {
             var modHelperText = ModHelperComponent.Create<ModHelperText>(info);
 

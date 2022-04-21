@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Patches
             var tasks = __result.Tasks.Cast<Il2CppReferenceArray<ITask>>().ToList();
             var gameModelLoad = tasks.Last();
             tasks.Remove(gameModelLoad);
-            tasks.Add(new Task(CustomGameModelLoadName, Main.__c.__9__47_8).Cast<ITask>());
+            tasks.Add(new Task(CustomGameModelLoadName, Main.__c.__9__46_8).Cast<ITask>()); // The last of the Assets_Main_Main___c$$_GetInitialLoadTasks_...
             tasks.Add(new ByteWaitTask().CreateTask());
             tasks.Add(new PreLoadResourcesTask().CreateTask());
 
