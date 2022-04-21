@@ -10,14 +10,20 @@ namespace BTD_Mod_Helper.Api.Helpers
     {
         private const string Tab = "    ";
 
-        // Sum names map to multiple Sprites. Keep them sorted by their guid so that they'll always be given the same number
+        // Some names map to multiple Sprites. Keep them sorted by their guid so that they'll always be given the same number
         internal static readonly Dictionary<string, SortedSet<string>> SpriteReferences =
             new Dictionary<string, SortedSet<string>>();
 
         /// <summary>
         /// Generate the VanillaSprites.cs file
         /// <br/>
-        /// To get the necessary files, open "...\BloonsTD6\BloonsTD6_Data\StreamingAssets\aa\StandaloneWindows64\Full\asset_references_assets_all_[...].bundle"
+        /// To get the necessary files, from the "...\BloonsTD6\BloonsTD6_Data\StreamingAssets\aa\StandaloneWindows64\Full\" folder, choose:
+        /// <list type="">
+        ///     <item>asset_references_assets_all_[...].bundle</item>
+        ///     <item>asset_references_assets_all_[...].bundle</item>
+        ///     <item>initial_loading_ui_scenes_all_all_[...].bundle</item>
+        ///     <item>sprite_atlases_assets_all_[...].bundle</item>
+        /// </list>
         /// in Asset Studio. Then, select all assets of type Sprite, and in the menu do Export -> Dump -> Selected assets
         /// </summary>
         internal static void GenerateVanillaSprites(string vanillaSpritesCs, string folder)
