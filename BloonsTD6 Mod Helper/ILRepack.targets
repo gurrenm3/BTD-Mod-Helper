@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Target Name="ILRepacker_Debug" AfterTargets="Build" BeforeTargets="MoveDllToMods" Condition="'$(Configuration)' == 'BloonsTD6 - Debug'">
+	<Target Name="ILRepacker_Debug" AfterTargets="Build" BeforeTargets="MoveDllToMods">
 		<ItemGroup>
 			<AssemblyFile Include="$(TargetDir)$(TargetName).dll" />
 		</ItemGroup>
@@ -15,7 +15,7 @@
 		</ItemGroup>
 		<ILRepack
 			Parallel="true"
-			DebugInfo="true"
+			DebugInfo="false"
 			InputAssemblies="@(InputAssemblies)"
 			TargetKind="Dll"
 			OutputFile="@(AssemblyFile)"
@@ -23,24 +23,6 @@
 			LibraryPath="@(LibraryPaths)"
 		/>
 	</Target>
-	
-	<Target Name="ILRepacker_Release" AfterTargets="Build" BeforeTargets="MoveDllToMods" Condition="'$(Configuration)' == 'BloonsTD6 - Release'">
-		<ItemGroup>
-			<AssemblyFile Include="$(OutputPath)$(AssemblyName).dll" />
-		</ItemGroup>
-		<ItemGroup>
-			<InputAssemblies Include="@(AssemblyFile)" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'" />
-		</ItemGroup>
-		<ILRepack
-			Parallel="true"
-			DebugInfo="false"
-			InputAssemblies="@(InputAssemblies)"
-			TargetKind="Dll"
-			OutputFile="@(AssemblyFile)"
-		/>
-    </Target>
 	
 	<Target Name="Cleanup" AfterTargets="ILRepack">
 		<ItemGroup>
