@@ -51,18 +51,18 @@ namespace BTD_Mod_Helper.Patches.UI
                     modelMod.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
                 }
             }
-
+            
             foreach (var modHero in ModContent.GetContent<ModHero>())
             {
                 try
                 {
-                    var baseHeroSprite = GameData.Instance.heroSprites.GetHeroSpriteDetails(modHero.NameStyle);
-                    GameData.Instance.heroSprites.heroSprite.Add(new HeroSprite
+                    var heroSprites = GameData.Instance.heroSprites;
+                    heroSprites.heroSprite.Add(new HeroSprite
                     {
                         heroId = modHero.Id,
-                        heroFontMaterial = baseHeroSprite.heroFontMaterial,
-                        backgroundBanner = baseHeroSprite.backgroundBanner,
-                        backgroundColourTintOverride = baseHeroSprite.backgroundColourTintOverride
+                        heroFontMaterial = heroSprites.GetFontMaterialRef(modHero.NameStyle),
+                        backgroundBanner = heroSprites.GetBannerRef(modHero.GlowStyle),
+                        backgroundColourTintOverride = heroSprites.GetBannerColourTintRef(modHero.BackgroundStyle)
                     });
                 }
                 catch (Exception e)
@@ -70,6 +70,7 @@ namespace BTD_Mod_Helper.Patches.UI
                     ModHelper.Error(e);
                 }
             }
+            
         }
     }
 }

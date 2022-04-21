@@ -115,6 +115,16 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The other hero that has the same colored name in the Heroes menu as you want to use
         /// </summary>
         public virtual string NameStyle => TowerType.Ezili;
+        
+        /// <summary>
+        /// The other hero that has the same glow color in the Heroes menu as you want to use
+        /// </summary>
+        public virtual string GlowStyle => TowerType.Ezili;
+        
+        /// <summary>
+        /// The other hero that has the same background color in the Heroes menu as you want to use
+        /// </summary>
+        public virtual string BackgroundStyle => TowerType.Ezili;
 
         /// <summary>
         /// The png name of the Button icon for this hero in the UI, by default Name-Button
@@ -125,6 +135,13 @@ namespace BTD_Mod_Helper.Api.Towers
         /// The exact sprite reference used for the button
         /// </summary>
         public virtual SpriteReference ButtonReference => GetSpriteReference(Button);
+        
+        /// <summary>
+        /// The name of the png to try to find for the new hero select screen button
+        /// </summary>
+        public virtual string Square => GetType().Name + "-Square";
+
+        public virtual SpriteReference SquareReference => GetSpriteReference(Square);
 
         /// <summary>
         /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels

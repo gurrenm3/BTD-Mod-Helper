@@ -48,6 +48,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\IModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModByteLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\MoreAccessTools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContentInstances.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModHelperGithub.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModHelperHttp.cs" />
