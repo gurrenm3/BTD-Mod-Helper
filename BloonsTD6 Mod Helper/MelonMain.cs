@@ -17,6 +17,10 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using MelonLoader;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
+using BTD_Mod_Helper;
+
+[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", ModHelper.Version, "Gurrenm4 and Doombubbles")]
+[assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
 namespace BTD_Mod_Helper
 {
