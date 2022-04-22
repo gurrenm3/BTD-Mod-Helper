@@ -85,13 +85,6 @@ namespace BTD_Mod_Helper.Api.Bloons
         public abstract int DefinedRounds { get; }
 
         /// <summary>
-        /// The Base Rounds included in the RoundSet specified by BaseRoundSet
-        /// </summary>
-        protected List<RoundModel> BaseRounds =>
-            Game.instance.model.roundSets.FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ??
-            new List<RoundModel>();
-        
-        /// <summary>
         /// The Icon for the Button for this RoundSet within the UI, by default looking for the same name as the file
         /// </summary>
         public virtual string Icon => GetType().Name;
@@ -164,10 +157,12 @@ namespace BTD_Mod_Helper.Api.Bloons
         {
             var roundSetModel = new RoundSetModel(Id, new Il2CppReferenceArray<RoundModel>(DefinedRounds));
 
+            var baseRounds = Game.instance.model.roundSets
+                .FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ?? new List<RoundModel>();
             for (var i = 0; i < DefinedRounds; i++)
             {
-                roundSetModel.rounds[i] = i < BaseRounds.Count
-                    ? BaseRounds[i].Duplicate()
+                roundSetModel.rounds[i] = i < baseRounds.Count
+                    ? baseRounds[i].Duplicate()
                     : new RoundModel("RoundModel_", new Il2CppReferenceArray<BloonGroupModel>(0));
                 roundSetModel.rounds[i].emissions_ = null;
             }

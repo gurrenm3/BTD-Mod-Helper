@@ -139,6 +139,7 @@ namespace BTD_Mod_Helper.Menus
                         "Changes you've made will require restarting the game to take effect. " +
                         "Would you like to do that now?", new Action(() =>
                         {
+                            // TODO LINUX COMPATIBLE RESTART
                             var info = new ProcessStartInfo
                             {
                                 Arguments = "/C ping 127.0.0.1 -n 3 && \"" +
