@@ -1,9 +1,13 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.IO;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using Ookii.Dialogs.WinForms;
+using BTD_Mod_Helper.Api.Helpers;
+using NativeFileDialogSharp;
 using UnityEngine;
+using UnityEngine.IO;
+using Action = System.Action;
+using File = System.IO.File;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -60,18 +64,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 new Info("Input", width: 1500, height: 150), VanillaSprites.BlueInsertPanelRound,
                 new Action(() =>
                 {
-                    using (var dialog = new VistaFolderBrowserDialog())
+                    FileDialogHelper.PrepareNativeDlls();
+                    
+                    var dialog = Dialog.FolderPicker(lastSavedValue);
+                    if (dialog?.IsOk == true)
                     {
-                        
-                        dialog.Description = @"Select a folder";
-                        dialog.SelectedPath = lastSavedValue;
-                        dialog.ShowNewFolderButton = false;
-                        dialog.RootFolder = Environment.SpecialFolder.MyComputer;
-                        var dialogResult = dialog.ShowDialog();
-                        if (dialogResult == DialogResult.OK)
-                        {
-                            SetValue(dialog.SelectedPath);
-                        }
+                        SetValue(dialog.Path);
                     }
                 })
             );

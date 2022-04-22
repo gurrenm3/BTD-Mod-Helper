@@ -8,7 +8,7 @@ using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.Bloons
 {
-    [HarmonyPatch(typeof(Bloon), nameof(Bloon.Damage), typeof(float), typeof(Il2CppStringArray), typeof(Projectile),
+    /*[HarmonyPatch(typeof(Bloon), nameof(Bloon.Damage), typeof(float), typeof(Il2CppStringArray), typeof(Projectile),
         typeof(bool), typeof(bool), typeof(bool), typeof(Tower), typeof(bool), typeof(Il2CppStringArray),
         typeof(bool), typeof(bool))]
     internal class Bloon_Damage
@@ -27,5 +27,5 @@ namespace BTD_Mod_Helper.Patches.Bloons
                     ignoreNonTargetable, blockSpawnChildren, canDestroyProjectile);
             });
         }
-    }
+    }*/
 }

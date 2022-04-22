@@ -135,6 +135,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\TowerExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SimulationExtensions\TowerToSimulationExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\ActionExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\AssemblyExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DictionaryExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\DirectoryInfoExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemExtensions\FileInfoExt.cs" />

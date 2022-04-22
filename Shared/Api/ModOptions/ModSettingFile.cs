@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.IO;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using Ookii.Dialogs.WinForms;
-using TMPro;
+using BTD_Mod_Helper.Api.Helpers;
+using NativeFileDialogSharp;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -59,19 +59,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 new Info("Input", width: 1500, height: 150), VanillaSprites.BlueInsertPanelRound,
                 new Action(() =>
                 {
-                    using (var dialog = new VistaOpenFileDialog())
+                    FileDialogHelper.PrepareNativeDlls();
+                    
+                    var dialog = Dialog.FileOpen(filter, value);
+                    if (dialog?.IsOk == true)
                     {
-                        dialog.CheckFileExists = true;
-                        dialog.CheckPathExists = true;
-                        dialog.Multiselect = false;
-                        dialog.Title = @"Select a file";
-                        dialog.FileName = value;
-                        dialog.Filter = filter;
-                        var dialogResult = dialog.ShowDialog();
-                        if (dialogResult == DialogResult.OK)
-                        {
-                            SetValue(dialog.FileName);
-                        }
+                        SetValue(dialog.Path);
                     }
                 })
             );

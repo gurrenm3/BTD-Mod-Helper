@@ -8,6 +8,8 @@
 			<InputAssemblies Include="@(AssemblyFile)" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NativeFileDialogSharp'" />
 		</ItemGroup>
 		<ItemGroup>
 			<LibraryPaths Include="$(SolutionDir)Dependencies\Shared"/>

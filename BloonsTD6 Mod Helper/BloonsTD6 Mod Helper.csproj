@@ -10,25 +10,24 @@
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
-
     <ItemGroup>
-        <Using Remove="System"/>
-        <Using Remove="System.IO"/>
-        <Using Remove="System.Linq"/>
-        <Using Remove="System.Net.Http"/>
-        <Using Remove="System.Threading"/>
-        <Using Remove="System.Threading.Tasks"/>
-        <Using Remove="System.Collections.Generic"/>
+        <Using Remove="System" />
+        <Using Remove="System.IO" />
+        <Using Remove="System.Linq" />
+        <Using Remove="System.Net.Http" />
+        <Using Remove="System.Threading" />
+        <Using Remove="System.Threading.Tasks" />
+        <Using Remove="System.Collections.Generic" />
     </ItemGroup>
 
     <ItemGroup>
-        <!--<PackageReference Include="System.Resources.Extensions" Version="5.0.0" />-->
-        <PackageReference Include="FuzzySharp" Version="2.0.2"/>
-        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18"/>
-        <PackageReference Include="Octokit" Version="0.50.0"/>
-        <PackageReference Include="Ookii.Dialogs.WinForms" Version="4.0.0"/>
+        <PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
+        <PackageReference Include="FuzzySharp" Version="2.0.2" />
+        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" />
+        <PackageReference Include="Octokit" Version="0.50.0" />
+        <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" />
     </ItemGroup>
-
+    
     <ItemGroup>
         <Compile Update="Properties\Resources.Designer.cs">
             <DesignTime>True</DesignTime>
@@ -42,16 +41,15 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
+        <EmbeddedResource Include="nfd.dll" />
+        <EmbeddedResource Include="nfd_x86.dll" />
+        <EmbeddedResource Include="btd6.targets" />
     </ItemGroup>
 
-    <Import Project="..\Shared\Shared Project.projitems" Label="Shared"/>
+    <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
 
     <!--So that you can override the C: specific targets without changing the one that gets included in git-->
-    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets"/>
-    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>
-    <ItemGroup>
-        <EmbeddedResource Remove="Resources\DownloadBtn.png"/>
-        <EmbeddedResource Remove="Resources\ModsBtn.png"/>
-        <EmbeddedResource Remove="Resources\ModSettings.png"/>
-    </ItemGroup>
+    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
+    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
+    
 </Project>
