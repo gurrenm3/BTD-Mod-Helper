@@ -1,30 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnhollowerBaseLib;
+﻿using UnhollowerBaseLib;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extension methods for Il2CppStringArrays
+/// </summary>
+public static class Il2CppStringArrayExt
 {
     /// <summary>
-    /// Extension methods for Il2CppStringArrays
+    /// (Cross-Game compatible) Return this with an Item added to it
     /// </summary>
-    public static class Il2CppStringArrayExt
+    /// <param name="array"></param>
+    /// <param name="itemToAdd"></param>
+    /// <returns></returns>
+    public static Il2CppStringArray AddTo(this Il2CppStringArray array, string itemToAdd)
     {
-        /// <summary>
-        /// (Cross-Game compatible) Return this with an Item added to it
-        /// </summary>
-        /// <param name="array"></param>
-        /// <param name="itemToAdd"></param>
-        /// <returns></returns>
-        public static Il2CppStringArray AddTo(this Il2CppStringArray array, string itemToAdd)
+        var newArray = new Il2CppStringArray(array.Length + 1);
+        for (int i = 0; i < array.Length; i++)
         {
-            var newArray = new Il2CppStringArray(array.Length + 1);
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            newArray[newArray.Length - 1] = itemToAdd;
-            return newArray;
+            newArray[i] = array[i];
         }
+        newArray[newArray.Length - 1] = itemToAdd;
+        return newArray;
     }
 }

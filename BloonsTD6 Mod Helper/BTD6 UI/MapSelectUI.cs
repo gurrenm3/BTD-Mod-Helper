@@ -2,79 +2,76 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using BTD_Mod_Helper.Extensions; 
 
-namespace BTD_Mod_Helper.BTD6_UI
+namespace BTD_Mod_Helper.BTD6_UI;
+
+/// <summary>
+/// Class to access the game's Map Select UI
+/// </summary>
+public static class MapSelectUI
 {
     /// <summary>
-    /// Class to access the game's Map Select UI
+    /// Gets the Scene if on the Map Select menu
     /// </summary>
-    public static class MapSelectUI
+    public static Scene? GetScene()
     {
-        /// <summary>
-        /// Gets the Scene if on the Map Select menu
-        /// </summary>
-        public static Scene? GetScene()
-        {
-            try
-            { return SceneManager.GetSceneByName("MapSelectUI"); }
-            catch (ArgumentException)
-            { return null; }
-        }
+        try
+        { return SceneManager.GetSceneByName("MapSelectUI"); }
+        catch (ArgumentException)
+        { return null; }
+    }
 
-        /// <summary>
-        /// Gets the Canvas for the MapSelectUI, or null
-        /// </summary>
-        public static Canvas GetCanvas()
-        {
-            var sceneObjects = GetScene()?.GetRootGameObjects();
-            if (sceneObjects is null || sceneObjects.Count == 0)
-                return null;
+    /// <summary>
+    /// Gets the Canvas for the MapSelectUI, or null
+    /// </summary>
+    public static Canvas? GetCanvas()
+    {
+        var sceneObjects = GetScene()?.GetRootGameObjects();
+        if (sceneObjects is null || sceneObjects.Count == 0)
+            return null;
 
-            const int canvasIndex = 0;
-            var canvas = sceneObjects[canvasIndex];
-            return canvas.GetComponent<Canvas>();
-        }
+        const int canvasIndex = 0;
+        var canvas = sceneObjects[canvasIndex];
+        return canvas.GetComponent<Canvas>();
+    }
 
-        /// <summary>
-        /// Gets the Beginner Button if on the Map Select Menu, or null
-        /// </summary>
-        public static Toggle GetBeginnerButton()
-        {
-            
-            return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/BeginnerBtn");
-        }
+    /// <summary>
+    /// Gets the Beginner Button if on the Map Select Menu, or null
+    /// </summary>
+    public static Toggle? GetBeginnerButton()
+    {
+        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/BeginnerBtn");
+    }
 
-        /// <summary>
-        /// Gets the Intermediate Button if on the Map Select Menu, or null
-        /// </summary>
-        public static Toggle GetIntermediateButton()
-        {
-            return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/IntermediateBtn");
-        }
+    /// <summary>
+    /// Gets the Intermediate Button if on the Map Select Menu, or null
+    /// </summary>
+    public static Toggle? GetIntermediateButton()
+    {
+        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/IntermediateBtn");
+    }
 
-        /// <summary>
-        /// Gets the Advanced Button if on the Map Select Menu, or null
-        /// </summary>
-        public static Toggle GetAdvancedButton()
-        {
-            return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/AdvancedBtn");
-        }
+    /// <summary>
+    /// Gets the Advanced Button if on the Map Select Menu, or null
+    /// </summary>
+    public static Toggle? GetAdvancedButton()
+    {
+        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/AdvancedBtn");
+    }
 
-        /// <summary>
-        /// Gets the Expert Button if on the Map Select Menu, or null
-        /// </summary>
-        public static Toggle GetExpertButton()
-        {
-            return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExpertBtn");
-        }
+    /// <summary>
+    /// Gets the Expert Button if on the Map Select Menu, or null
+    /// </summary>
+    public static Toggle? GetExpertButton()
+    {
+        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExpertBtn");
+    }
 
-        /// <summary>
-        /// Gets the Extreme Button if on the Map Select Menu, or null
-        /// </summary>
-        public static Toggle GetExtremeButton()
-        {
-            return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExtremeBtn");
-        }
+    /// <summary>
+    /// Gets the Extreme Button if on the Map Select Menu, or null
+    /// </summary>
+    public static Toggle? GetExtremeButton()
+    {
+        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExtremeBtn");
     }
 }

@@ -1,21 +1,20 @@
 ﻿using Assets.Scripts.Unity.UI_New.Popups;
 using TMPro;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for PopupScreen
+/// </summary>
+public static class PopupScreenExt
 {
     /// <summary>
-    /// Extensions for PopupScreen
+    /// Gets the InputField of the ActivePopup, or null
     /// </summary>
-    public static class PopupScreenExt
+    /// <param name="popupScreen"></param>
+    /// <returns></returns>
+    public static TMP_InputField? GetTMP_InputField(this PopupScreen popupScreen)
     {
-        /// <summary>
-        /// Gets the InputField of the ActivePopup, or null
-        /// </summary>
-        /// <param name="popupScreen"></param>
-        /// <returns></returns>
-        public static TMP_InputField GetTMP_InputField(this PopupScreen popupScreen)
-        {
-            return popupScreen.GetFirstActivePopup()?.GetComponentInChildren<TMP_InputField>();
-        }
+        return popupScreen.GetFirstActivePopup()?.GetComponentInChildren<TMP_InputField>();
     }
 }

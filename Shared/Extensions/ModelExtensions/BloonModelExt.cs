@@ -71,10 +71,10 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (InGame.instance == null)
                 return;
-            var spawner = InGame.instance.GetMap().spawner;
+            var spawner = InGame.instance.GetMap()!.spawner;
 
 #if BloonsTD6
-            spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation().GetCurrentRound(), 0);
+            spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation()!.GetCurrentRound(), 0);
 #elif BloonsAT
             spawner.Emit(bloonModel);
 #endif
@@ -96,7 +96,7 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) This is Obsolete, use GetAllBloonToSim instead. (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
         /// </summary>
         [Obsolete]
-        public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
+        public static List<BloonToSimulation>? GetBloonSims(this BloonModel bloonModel)
         {
             if (InGame.instance == null)
             {
@@ -114,7 +114,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
         /// </summary>
-        public static List<BloonToSimulation> GetAllBloonToSim(this BloonModel bloonModel)
+        public static List<BloonToSimulation>? GetAllBloonToSim(this BloonModel bloonModel)
         {
             if (InGame.instance == null)
             {
@@ -138,7 +138,7 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             bloonModel.display = guid;
 #endif
-            bloonModel.GetBehavior<DisplayModel>().display = guid;
+            bloonModel.GetBehavior<DisplayModel>()!.display = guid;
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace BTD_Mod_Helper.Extensions
                 bloonModel.AddBehavior(spawnChild);
             }
 
-            return spawnChild;
+            return spawnChild!;
         }
 
         /// <summary>
@@ -438,7 +438,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="change"></param>
-        public static string FindChangedBloonId(this BloonModel bloonModel, Action<BloonModel> change)
+        public static string? FindChangedBloonId(this BloonModel bloonModel, Action<BloonModel> change)
         {
             var bloon = bloonModel.Duplicate();
 
@@ -516,7 +516,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <br/>
         /// If there is no associated ModBloon, returns null
         /// </summary>
-        public static ModBloon GetModBloon(this BloonModel bloonModel)
+        public static ModBloon? GetModBloon(this BloonModel bloonModel)
         {
             return ModBloon.Cache.TryGetValue(bloonModel.name, out var modBloon) ? modBloon : null;
         }

@@ -79,10 +79,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\UI\Fonts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\UI\InGameMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\UI\ModMenuData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\GithubReleaseInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdateInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Updater\UpdaterHttp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BloonsMod.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\AttackModelBehaviorExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorExtensions\BloonModelBehaviorExt.cs" />

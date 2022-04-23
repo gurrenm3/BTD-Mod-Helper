@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models;
-using MelonLoader;
 using Enumerable = System.Linq.Enumerable;
 
 #if BloonsTD6
@@ -74,7 +73,7 @@ namespace BTD_Mod_Helper.Extensions
 
             ModHelper.Warning($"Type {model.GetIl2CppType().Name} does not have behaviors");
 
-            return null;
+            return null!;
         }
 
         /// <summary>
@@ -155,7 +154,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you're checking for</typeparam>
         public static bool HasBehavior<T>(this Model model, out T behavior) where T : Model
         {
-            behavior = model.GetBehavior<T>();
+            behavior = model.GetBehavior<T>()!;
             return behavior != null;
         }
 
@@ -163,25 +162,25 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Return the first Behavior of type T, or null if there isn't one
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T GetBehavior<T>(this Model model) where T : Model
+        public static T? GetBehavior<T>(this Model model) where T : Model
         {
-            return model.GetBehaviors()?.FirstOrDefault(m => m.IsType<T>())?.Cast<T>();
+            return model.GetBehaviors().FirstOrDefault(m => m.IsType<T>())?.Cast<T>();
         }
 
         /// <summary>
         /// (Cross-Game compatible) Return the index'th Behavior of type T, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T GetBehavior<T>(this Model model, int index) where T : Model
+        public static T? GetBehavior<T>(this Model model, int index) where T : Model
         {
-            return model.GetBehaviors<T>()?.Skip(index).FirstOrDefault();
+            return model.GetBehaviors<T>().Skip(index).FirstOrDefault();
         }
 
         /// <summary>
         /// (Cross-Game compatible) Return the first Behavior of type T whose name contains the given string, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T GetBehavior<T>(this Model model, string nameContains) where T : Model
+        public static T? GetBehavior<T>(this Model model, string nameContains) where T : Model
         {
             return model.GetBehaviors<T>()?.FirstOrDefault(m => m.name.Contains(nameContains));
         }
@@ -192,7 +191,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static IEnumerable<T> GetBehaviors<T>(this Model model) where T : Model
         {
-            return model.GetBehaviors().Select(b => b?.TryCast<T>()).Where(b => b != null);
+            return model.GetBehaviors().Select(b => b?.TryCast<T>()).Where(b => b != null)!;
         }
 
         /// <summary>

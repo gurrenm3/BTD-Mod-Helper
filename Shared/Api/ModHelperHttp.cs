@@ -7,92 +7,91 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace BTD_Mod_Helper.Api.ModMenu
+namespace BTD_Mod_Helper.Api.ModMenu;
+
+/// <summary>
+/// Http client used by the mod helper
+/// </summary>
+public class ModHelperHttp
 {
     /// <summary>
-    /// Http client used by the mod helper
+    /// The HttpClient instance
     /// </summary>
-    public class ModHelperHttp
+    public static HttpClient Client { get; private set; } = null!;
+
+    /// <summary>
+    /// Initializes the HttpClient
+    /// </summary>
+    public static void Init()
     {
-        /// <summary>
-        /// The HttpClient instance
-        /// </summary>
-        public static HttpClient Client { get; private set; }
+        Client = new HttpClient();
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        Client.DefaultRequestHeaders.Add("user-agent",
+            " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+        Client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+    }
 
-        /// <summary>
-        /// Initializes the HttpClient
-        /// </summary>
-        public static void Init()
+    /// <summary>
+    /// Asynchronously downloads from a url to the given file path, returning whether the operation was successful
+    /// </summary>
+    /// <param name="url">URL to download from</param>
+    /// <param name="filePath">File path for the resulting file</param>
+    /// <returns>Whether it was sucessful</returns>
+    public static async Task<bool> DownloadFile(string url, string filePath)
+    {
+        try
         {
-            Client = new HttpClient();
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            Client.DefaultRequestHeaders.Add("user-agent",
-                " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-            Client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-        }
-
-        /// <summary>
-        /// Asynchronously downloads from a url to the given file path, returning whether the operation was successful
-        /// </summary>
-        /// <param name="url">URL to download from</param>
-        /// <param name="filePath">File path for the resulting file</param>
-        /// <returns>Whether it was sucessful</returns>
-        public static async Task<bool> DownloadFile(string url, string filePath)
-        {
-            try
+            var response = await Client.GetAsync(url);
+            using (var fs = new FileStream(filePath, FileMode.Create))
             {
-                var response = await Client.GetAsync(url);
-                using (var fs = new FileStream(filePath, FileMode.Create))
-                {
-                    await response.Content.CopyToAsync(fs);
-                }
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                ModHelper.Warning(e);
+                await response.Content.CopyToAsync(fs);
             }
 
-            return false;
+            return true;
         }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+        return false;
+    }
 
         
-        /// <summary>
-        /// Downloads and extracts the contents of a zip file into the Zip Temp directory, returning the file paths
-        /// of the extracted files
-        /// </summary>
-        /// <param name="url">URL to download from</param>
-        /// <param name="zipName">Name of the temporary zip file (will still be deleted at the end)</param>
-        /// <returns>Enumeration of extracted file paths, or null</returns>
-        public static async Task<IEnumerable<string>> DownloadZip(string url, string zipName = "temp.zip")
+    /// <summary>
+    /// Downloads and extracts the contents of a zip file into the Zip Temp directory, returning the file paths
+    /// of the extracted files
+    /// </summary>
+    /// <param name="url">URL to download from</param>
+    /// <param name="zipName">Name of the temporary zip file (will still be deleted at the end)</param>
+    /// <returns>Enumeration of extracted file paths, or null</returns>
+    public static async Task<IEnumerable<string>?> DownloadZip(string url, string zipName = "temp.zip")
+    {
+        try
         {
-            try
+            var zipTempDir = ModHelper.ZipTempDirectory;
+            if (Directory.Exists(zipTempDir))
             {
-                var zipTempDir = ModHelper.ZipTempDirectory;
-                if (Directory.Exists(zipTempDir))
-                {
-                    Directory.Delete(zipTempDir, true);
-                }
-
-                Directory.CreateDirectory(zipTempDir);
-
-                var zipFilePath = Path.Combine(zipTempDir, zipName);
-                await DownloadFile(url, zipFilePath);
-
-
-                ZipFile.ExtractToDirectory(zipFilePath, zipTempDir);
-                File.Delete(zipFilePath);
-
-                return Directory.EnumerateFiles(zipTempDir);
-            }
-            catch (Exception e)
-            {
-                ModHelper.Warning(e);
+                Directory.Delete(zipTempDir, true);
             }
 
-            return null;
+            Directory.CreateDirectory(zipTempDir);
+
+            var zipFilePath = Path.Combine(zipTempDir, zipName);
+            await DownloadFile(url, zipFilePath);
+
+
+            ZipFile.ExtractToDirectory(zipFilePath, zipTempDir);
+            File.Delete(zipFilePath);
+
+            return Directory.EnumerateFiles(zipTempDir);
         }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+        return null;
     }
 }

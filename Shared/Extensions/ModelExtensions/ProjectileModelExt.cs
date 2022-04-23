@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Get the DamageModel behavior from the list of behaviors
         /// </summary>
-        public static DamageModel GetDamageModel(this ProjectileModel projectileModel)
+        public static DamageModel? GetDamageModel(this ProjectileModel projectileModel)
         {
             return projectileModel.GetBehavior<DamageModel>();
         }
@@ -32,8 +32,8 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static List<Projectile> GetProjectileSims(this ProjectileModel projectileModel)
         {
-            var projectileSims = InGame.instance?.GetProjectiles();
-            return projectileSims.Where(projectile => projectile.projectileModel.name == projectileModel.name).ToList();
+            var projectileSims = InGame.instance.GetProjectiles();
+            return projectileSims?.Where(projectile => projectile.projectileModel.name == projectileModel.name).ToList() ?? new List<Projectile>();
         }
 
 #if BloonsTD6

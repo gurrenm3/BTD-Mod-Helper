@@ -3,104 +3,103 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Api
+namespace BTD_Mod_Helper.Api;
+
+/// <summary>
+/// Class for scheduling Tasks using MelonCoroutines
+/// </summary>
+public static class TaskScheduler
 {
     /// <summary>
-    /// Class for scheduling Tasks using MelonCoroutines
+    /// (Cross-Game compatible) Schedule a task to execute right now as a Coroutine
     /// </summary>
-    public static class TaskScheduler
+    /// <param name="iEnumerator"></param>
+    public static void ScheduleTask(IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
+
+    /// <summary>
+    /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
+    /// </summary>
+    /// <param name="action">The action you want to execute once it's time to run your task</param>
+    /// <param name="waitCondition">Wait for this to be true before executing task</param>
+    public static void ScheduleTask(Action action, Func<bool>? waitCondition = null)
     {
-        /// <summary>
-        /// (Cross-Game compatible) Schedule a task to execute right now as a Coroutine
-        /// </summary>
-        /// <param name="iEnumerator"></param>
-        public static void ScheduleTask(IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
+        ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
+    }
 
-        /// <summary>
-        /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
-        /// </summary>
-        /// <param name="action">The action you want to execute once it's time to run your task</param>
-        /// <param name="waitCondition">Wait for this to be true before executing task</param>
-        public static void ScheduleTask(Action action, Func<bool> waitCondition = null)
+    /// <summary>
+    /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine
+    /// </summary>
+    /// <param name="action">The action you want to execute once it's time to run your task</param>
+    /// <param name="scheduleType">How you want to wait for your task</param>
+    /// <param name="amountToWait">The amount you want to wait</param>
+    /// /// <param name="waitCondition">Wait for this to be true before executing task</param>
+    public static void ScheduleTask(Action action, ScheduleType scheduleType, int amountToWait, Func<bool>? waitCondition = null)
+    {
+        try
         {
-            ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
+            MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, waitCondition));
+
         }
-
-        /// <summary>
-        /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine
-        /// </summary>
-        /// <param name="action">The action you want to execute once it's time to run your task</param>
-        /// <param name="scheduleType">How you want to wait for your task</param>
-        /// <param name="amountToWait">The amount you want to wait</param>
-        /// /// <param name="waitCondition">Wait for this to be true before executing task</param>
-        public static void ScheduleTask(Action action, ScheduleType scheduleType, int amountToWait, Func<bool> waitCondition = null)
+        catch (Exception ex)
         {
-            try
-            {
-                MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, waitCondition));
-
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("trampoline"))
-                    ModHelper.Warning("Notice: Melonloader Coroutine had a trampoline error." +
-                        " This shouldn't have any impact on the mod.");
-            }
+            if (ex.Message.Contains("trampoline"))
+                ModHelper.Warning("Notice: Melonloader Coroutine had a trampoline error." +
+                                  " This shouldn't have any impact on the mod.");
         }
+    }
 
-        /// <summary>
-        /// Will wait for amountToWait before executing your Action. If a waitCondition is specified it will continue waiting amountToWait until waitCondition is true
-        /// </summary>
-        /// <param name="action"></param>
-        /// <param name="scheduleType"></param>
-        /// <param name="amountToWait"></param>
-        /// <param name="waitContition"></param>
-        /// <returns></returns>
-        internal static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait, Func<bool> waitContition = null)
+    /// <summary>
+    /// Will wait for amountToWait before executing your Action. If a waitCondition is specified it will continue waiting amountToWait until waitCondition is true
+    /// </summary>
+    /// <param name="action"></param>
+    /// <param name="scheduleType"></param>
+    /// <param name="amountToWait"></param>
+    /// <param name="waitCondition"></param>
+    /// <returns></returns>
+    internal static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait, Func<bool>? waitCondition = null)
+    {
+        if (waitCondition is null)
         {
-            if (waitContition is null)
+            yield return WaiterCoroutine(scheduleType, amountToWait);
+        }
+        else
+        {
+            while (!waitCondition.Invoke())
             {
                 yield return WaiterCoroutine(scheduleType, amountToWait);
             }
-            else
-            {
-                while (!waitContition.Invoke())
-                {
-                    yield return WaiterCoroutine(scheduleType, amountToWait);
-                }
-            }
-
-            action.Invoke();
         }
 
-        /// <summary>
-        /// This coroutine will wait for amountToWait before finishing
-        /// </summary>
-        /// <param name="scheduleType"></param>
-        /// <param name="amountToWait"></param>
-        /// <returns></returns>
-        private static IEnumerator WaiterCoroutine(ScheduleType scheduleType, int amountToWait)
+        action.Invoke();
+    }
+
+    /// <summary>
+    /// This coroutine will wait for amountToWait before finishing
+    /// </summary>
+    /// <param name="scheduleType"></param>
+    /// <param name="amountToWait"></param>
+    /// <returns></returns>
+    private static IEnumerator WaiterCoroutine(ScheduleType scheduleType, int amountToWait)
+    {
+        switch (scheduleType)
         {
-            switch (scheduleType)
-            {
-                case ScheduleType.WaitForSeconds:
-                    var count = 0;
-                    while (amountToWait >= count)
-                    {
-                        yield return new WaitForSecondsRealtime(1);
-                        count++;
-                    }
+            case ScheduleType.WaitForSeconds:
+                var count = 0;
+                while (amountToWait >= count)
+                {
+                    yield return new WaitForSecondsRealtime(1);
+                    count++;
+                }
                     
-                    break;
-                case ScheduleType.WaitForFrames:
-                    count = 0;
-                    while (amountToWait >= count)
-                    {
-                        yield return new WaitForEndOfFrame();
-                        count++;
-                    }
-                    break;
-            }
+                break;
+            case ScheduleType.WaitForFrames:
+                count = 0;
+                while (amountToWait >= count)
+                {
+                    yield return new WaitForEndOfFrame();
+                    count++;
+                }
+                break;
         }
     }
 }

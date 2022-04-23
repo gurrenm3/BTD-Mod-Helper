@@ -1,26 +1,24 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api;
-using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.UI
+namespace BTD_Mod_Helper.Patches.UI;
+
+[HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Open))]
+internal class MainMenu_Open
 {
-    [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Open))]
-    internal class MainMenu_Open
+    [HarmonyPostfix]
+    internal static void Postfix()
     {
-        [HarmonyPostfix]
-        internal static void Postfix()
-        {
-            ResetSessionData();
+        ResetSessionData();
 
-            Animations.Load();
-            Fonts.Load();
+        Animations.Load();
+        Fonts.Load();
             
-            ModHelper.PerformHook(mod => mod.OnMainMenu());
-        }
+        ModHelper.PerformHook(mod => mod.OnMainMenu());
+    }
 
-        private static void ResetSessionData()
-        {
-            SessionData.Reset();
-        }
+    private static void ResetSessionData()
+    {
+        SessionData.Reset();
     }
 }

@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api;
 
-namespace BTD_Mod_Helper
+namespace BTD_Mod_Helper;
+
+/// <summary>
+/// Initial task to register ModContent from other mods
+/// </summary>
+internal class ByteWaitTask : ModLoadTask
 {
+    /// <inheritdoc />
+    public override string DisplayName => "Waiting for ByteLoaders...";
+
     /// <summary>
-    /// Initial task to register ModContent from other mods
+    /// Don't load this like a normal task
     /// </summary>
-    internal class ByteWaitTask : ModLoadTask
+    /// <returns></returns>
+    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
+
+    /// <summary>
+    /// Registers ModContent from other mods
+    /// </summary>
+    public override IEnumerator Coroutine()
     {
-        /// <inheritdoc />
-        public override string DisplayName => "Waiting for ByteLoaders...";
-
-        /// <summary>
-        /// Don't load this like a normal task
-        /// </summary>
-        /// <returns></returns>
-        public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
-
-        /// <summary>
-        /// Registers ModContent from other mods
-        /// </summary>
-        public override IEnumerator Coroutine()
+        while (!ModByteLoader.loadedAllBytes)
         {
-            while (!ModByteLoader.loadedAllBytes)
-            {
-                yield return true;
-            }
+            yield return true;
         }
     }
 }

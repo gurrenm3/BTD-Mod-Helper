@@ -1,22 +1,20 @@
 ﻿using Assets.Scripts.Models;
-using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches;
+
+[HarmonyPatch(typeof(Model), nameof(Model.IsEqual))]
+internal class Model_IsEqual
 {
-    [HarmonyPatch(typeof(Model), nameof(Model.IsEqual))]
-    internal class Model_IsEqual
+    [HarmonyPrefix]
+    internal static bool Prefix(Model __instance, Model to, ref bool __result)
     {
-        [HarmonyPrefix]
-        internal static bool Prefix(Model __instance, Model to, ref bool __result)
+        if (to.GetIl2CppType().Name != __instance.GetIl2CppType().Name)
         {
-            if (to.GetIl2CppType().Name != __instance.GetIl2CppType().Name)
-            {
-                //TODO: this is an incredibly weird thing to have to do, but we do
-                __result = false;
-                return false;
-            }
-
-            return true;
+            //TODO: this is an incredibly weird thing to have to do, but we do
+            __result = false;
+            return false;
         }
+
+        return true;
     }
 }

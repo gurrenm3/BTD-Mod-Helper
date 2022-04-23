@@ -22,21 +22,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Remove="System"/>
-        <Using Remove="System.IO"/>
-        <Using Remove="System.Linq"/>
-        <Using Remove="System.Net.Http"/>
-        <Using Remove="System.Threading"/>
-        <Using Remove="System.Threading.Tasks"/>
-        <Using Remove="System.Collections.Generic"/>
+        <Using Remove="System" />
+        <Using Remove="System.IO" />
+        <Using Remove="System.Linq" />
+        <Using Remove="System.Net.Http" />
+        <Using Remove="System.Threading" />
+        <Using Remove="System.Threading.Tasks" />
+        <Using Remove="System.Collections.Generic" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Resources.Extensions" Version="6.0.0" GeneratePathProperty="true"/>
-        <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true"/>
-        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" GeneratePathProperty="true"/>
-        <PackageReference Include="Octokit" Version="0.50.0" GeneratePathProperty="true"/>
-        <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" GeneratePathProperty="true"/>
+        <PackageReference Include="System.Resources.Extensions" Version="6.0.0" GeneratePathProperty="true" />
+        <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
+        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" GeneratePathProperty="true" />
+        <PackageReference Include="Octokit" Version="0.50.0" GeneratePathProperty="true" />
+        <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" GeneratePathProperty="true" />
     </ItemGroup>
 
     <ItemGroup>
@@ -52,15 +52,15 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
-        <EmbeddedResource Include="nfd.dll"/>
-        <EmbeddedResource Include="nfd_x86.dll"/>
-        <EmbeddedResource Include="btd6.targets"/>
+        <EmbeddedResource Include="nfd.dll" />
+        <EmbeddedResource Include="nfd_x86.dll" />
+        <EmbeddedResource Include="btd6.targets" />
     </ItemGroup>
 
-    <Import Project="..\Shared\Shared Project.projitems" Label="Shared"/>
+    <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
 
     <!--So that you can override the C: specific targets without changing the one that gets included in git-->
-    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets"/>
-    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>
+    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
+    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
 
 </Project>

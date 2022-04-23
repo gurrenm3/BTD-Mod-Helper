@@ -6,154 +6,150 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
-namespace BTD_Mod_Helper.Api.ModOptions
+namespace BTD_Mod_Helper.Api.ModOptions;
+
+internal class ModSettingsHandler
 {
-    internal class ModSettingsHandler
+    internal static void InitializeModSettings()
     {
-        internal static void InitializeModSettings()
+        if (!Directory.Exists(ModHelper.ModSettingsDirectory))
         {
-            if (!Directory.Exists(ModHelper.ModSettingsDirectory))
+            Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
+        }
+
+        foreach (var mod in ModHelper.Mods)
+        {
+            mod.ModSettings = new Dictionary<string, ModSetting>();
+            try
             {
-                Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
+                foreach (var field in mod.GetType()
+                             .GetFields(BindingFlags.Public |
+                                        BindingFlags.NonPublic |
+                                        BindingFlags.Instance |
+                                        BindingFlags.Static)
+                             .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
+                {
+                    var modSetting = (ModSetting) field.GetValue(mod)!;
+                    mod.ModSettings[field.Name] = modSetting;
+                    modSetting.displayName ??= Regex.Replace(field.Name, "(\\B[A-Z])", " $1");
+                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Error initializing ModSettings for {mod.Info.Name}");
+                ModHelper.Warning(e);
             }
 
-            foreach (var mod in ModHelper.Mods)
+            if (mod.ModSettings.Any())
             {
-                mod.ModSettings = new Dictionary<string, ModSetting>();
-                try
+                var fileName = mod.SettingsFilePath;
+                if (!File.Exists(fileName))
                 {
-                    foreach (var field in mod.GetType()
-                                 .GetFields(BindingFlags.Public |
-                                            BindingFlags.NonPublic |
-                                            BindingFlags.Instance |
-                                            BindingFlags.Static)
-                                 .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
-                    {
-                        var modSetting = (ModSetting) field.GetValue(mod);
-                        mod.ModSettings[field.Name] = modSetting;
-                        if (modSetting.displayName == default)
-                        {
-                            modSetting.displayName = Regex.Replace(field.Name, "(\\B[A-Z])", " $1");
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    ModHelper.Warning($"Error initializing ModSettings for {mod.Info.Name}");
-                    ModHelper.Warning(e);
-                }
-
-                if (mod.ModSettings.Any())
-                {
-                    var fileName = mod.SettingsFilePath;
-                    if (!File.Exists(fileName))
-                    {
-                        SaveModSettings(mod);
-                    }
+                    SaveModSettings(mod);
                 }
             }
         }
+    }
 
-        internal static void LoadModSettings()
+    internal static void LoadModSettings()
+    {
+        foreach (var mod in ModHelper.Mods)
         {
-            foreach (var mod in ModHelper.Mods)
+            try
             {
-                try
+                var fileName = mod.SettingsFilePath;
+                if (File.Exists(fileName))
                 {
-                    var fileName = mod.SettingsFilePath;
-                    if (File.Exists(fileName))
+                    using (var file = File.OpenText(fileName))
+                    using (var reader = new JsonTextReader(file))
                     {
-                        using (var file = File.OpenText(fileName))
-                        using (var reader = new JsonTextReader(file))
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            if (reader.Value != null && reader.TokenType == JsonToken.PropertyName)
                             {
-                                if (reader.Value != null && reader.TokenType == JsonToken.PropertyName)
+                                var name = (string) reader.Value;
+                                if (mod.ModSettings.ContainsKey(name))
                                 {
-                                    var name = (string) reader.Value;
-                                    if (mod.ModSettings.ContainsKey(name))
+                                    reader.Read();
+                                    try
                                     {
-                                        reader.Read();
-                                        try
-                                        {
-                                            mod.ModSettings[name].Load(reader.Value);
-                                        }
-                                        catch (Exception e)
-                                        {
-                                            ModHelper.Warning(
-                                                $"Error loading ModSetting {name} of mod {mod.Info.Name}");
-                                            ModHelper.Warning(e);
-                                        }
+                                        mod.ModSettings[name].Load(reader.Value);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        ModHelper.Warning(
+                                            $"Error loading ModSetting {name} of mod {mod.Info.Name}");
+                                        ModHelper.Warning(e);
                                     }
                                 }
                             }
                         }
                     }
                 }
-                catch (Exception e)
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Error loading ModSettings for {mod.Info.Name}");
+                ModHelper.Warning(e);
+            }
+        }
+    }
+
+    private static void SaveModSettings(BloonsMod mod, bool initialSave = false)
+    {
+        if (!Directory.Exists(ModHelper.ModSettingsDirectory))
+        {
+            Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
+        }
+
+        var fileName = mod.SettingsFilePath;
+        using (var file = File.CreateText(fileName))
+        using (var writer = new JsonTextWriter(file))
+        {
+            writer.Formatting = Formatting.Indented;
+            writer.WriteStartObject();
+
+            foreach (var item in mod.ModSettings)
+            {
+                var key = item.Key;
+                var modSetting = item.Value;
+                if (!initialSave)
                 {
-                    ModHelper.Warning($"Error loading ModSettings for {mod.Info.Name}");
-                    ModHelper.Warning(e);
+                    try
+                    {
+                        if (modSetting.OnSave())
+                        {
+                            writer.WritePropertyName(key);
+                            writer.WriteValue(modSetting.GetValue());
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ModHelper.Warning($"Failed onSave action for setting {key}");
+                        ModHelper.Warning(e);
+                    }
+
+                    modSetting.currentOption = null;
+                }
+                else
+                {
+                    writer.WritePropertyName(key);
+                    writer.WriteValue(modSetting.GetValue());
                 }
             }
-        }
 
-        private static void SaveModSettings(BloonsMod mod, bool initialSave = false)
+            writer.WriteEndObject();
+        }
+    }
+
+    internal static void SaveModSettings(bool initialSave = false)
+    {
+        foreach (var mod in ModHelper.Mods)
         {
-            if (!Directory.Exists(ModHelper.ModSettingsDirectory))
-            {
-                Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
-            }
-
-            var fileName = mod.SettingsFilePath;
-            using (var file = File.CreateText(fileName))
-            using (var writer = new JsonTextWriter(file))
-            {
-                writer.Formatting = Formatting.Indented;
-                writer.WriteStartObject();
-
-                foreach (var item in mod.ModSettings)
-                {
-                    var key = item.Key;
-                    var modSetting = item.Value;
-                    if (!initialSave)
-                    {
-                        try
-                        {
-                            if (modSetting.OnSave())
-                            {
-                                writer.WritePropertyName(key);
-                                writer.WriteValue(modSetting.GetValue());
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            ModHelper.Warning($"Failed onSave action for setting {key}");
-                            ModHelper.Warning(e);
-                        }
-
-                        modSetting.currentOption = null;
-                    }
-                    else
-                    {
-                        writer.WritePropertyName(key);
-                        writer.WriteValue(modSetting.GetValue());
-                    }
-                }
-
-                writer.WriteEndObject();
-            }
+            if (!mod.ModSettings.Any()) continue;
+            SaveModSettings(mod, initialSave);
         }
 
-        internal static void SaveModSettings(bool initialSave = false)
-        {
-            foreach (var mod in ModHelper.Mods)
-            {
-                if (!mod.ModSettings.Any()) continue;
-                SaveModSettings(mod, initialSave);
-            }
-
-            ModHelper.Msg("Successfully saved mod settings");
-        }
+        ModHelper.Msg("Successfully saved mod settings");
     }
 }

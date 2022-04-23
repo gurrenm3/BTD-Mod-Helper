@@ -4,26 +4,25 @@ using Assets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for AbilityModels
+/// </summary>
+public static class AbilityModelExt
 {
     /// <summary>
-    /// Extensions for AbilityModels
+    /// (Cross-Game compatible) Get the all AbilityToSimulation with this AbilityModel
     /// </summary>
-    public static class AbilityModelExt
+    /// <param name="abiltyModel"></param>
+    /// <returns></returns>
+    public static List<AbilityToSimulation> GetAbilitySims(this AbilityModel abiltyModel)
     {
-        /// <summary>
-        /// (Cross-Game compatible) Get the all AbilityToSimulation with this AbilityModel
-        /// </summary>
-        /// <param name="abiltyModel"></param>
-        /// <returns></returns>
-        public static List<AbilityToSimulation> GetAbilitySims(this AbilityModel abiltyModel)
+        if (InGame.instance == null)
         {
-            if (InGame.instance == null)
-            {
-                return new List<AbilityToSimulation>();
-            }
-            var abilities = InGame.instance.GetAbilities();
-            return abilities.Where(sim => sim.ability.abilityModel.IsEqual(abiltyModel)).ToList();
+            return new List<AbilityToSimulation>();
         }
+        var abilities = InGame.instance.GetAbilities()!;
+        return abilities.Where(sim => sim.ability.abilityModel.IsEqual(abiltyModel)).ToList();
     }
 }

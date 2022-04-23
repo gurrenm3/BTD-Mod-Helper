@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for Sprites
+/// </summary>
+public static class SpriteExt
 {
     /// <summary>
-    /// Extensions for Sprites
+    /// (Cross-Game compatible) Set this Sprite's texture
     /// </summary>
-    public static class SpriteExt
+    /// <param name="sprite"></param>
+    /// <param name="newTexture"></param>
+    public static void SetTexture(this Sprite sprite, Texture2D newTexture)
     {
-        /// <summary>
-        /// (Cross-Game compatible) Set this Sprite's texture
-        /// </summary>
-        /// <param name="sprite"></param>
-        /// <param name="newTexture"></param>
-        public static void SetTexture(this Sprite sprite, Texture2D newTexture)
-        {
-            var bytes = ImageConversion.EncodeToPNG(newTexture);
-            ImageConversion.LoadImage(sprite.texture, bytes);
-        }
+        var bytes = ImageConversion.EncodeToPNG(newTexture);
+        ImageConversion.LoadImage(sprite.texture, bytes);
     }
 }

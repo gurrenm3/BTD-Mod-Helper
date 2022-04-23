@@ -4,7 +4,6 @@ using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Extensions;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.ModOptions
@@ -15,29 +14,11 @@ namespace BTD_Mod_Helper.Api.ModOptions
     public class ModSettingBool : ModSetting<bool>
     {
         /// <summary>
-        /// Action to modify the ModHelperCheckbox after it's created
-        /// </summary>
-        public Action<ModHelperCheckbox> modifyCheckbox;
-
-        /// <summary>
         /// Whether this should display as an Enabled/Disabled button instead of a checkbox
         /// </summary>
         public bool button;
 
-        /// <summary>
-        /// The text that the button should have when it's enabled, if this is a button
-        /// </summary>
-        public string enabledText = "Enabled";
-
-        /// <summary>
-        /// The text that the button should have when it's disabled, if this is a button
-        /// </summary>
-        public string disabledText = "Disabled";
-
-        /// <summary>
-        /// The sprite to use for the button when it's enabled, GreenBtnLong by default
-        /// </summary>
-        public SpriteReference enabledButton = VanillaSprites.GreenBtnLong;
+        private Action<bool, ModHelperButton>? currentAction;
 
         /// <summary>
         /// The sprite to use for the button when it's disabled, RedBtnLong by default
@@ -45,9 +26,34 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public SpriteReference disabledButton = VanillaSprites.RedBtnLong;
 
         /// <summary>
+        /// The text that the button should have when it's disabled, if this is a button
+        /// </summary>
+        public string? disabledText = "Disabled";
+
+        /// <summary>
+        /// The sprite to use for the button when it's enabled, GreenBtnLong by default
+        /// </summary>
+        public SpriteReference enabledButton = VanillaSprites.GreenBtnLong;
+
+        /// <summary>
+        /// The text that the button should have when it's enabled, if this is a button
+        /// </summary>
+        public string? enabledText = "Enabled";
+
+        /// <summary>
         /// Action to modify the ModHelperCheckbox after it's created
         /// </summary>
-        public Action<ModHelperButton> modifyButton;
+        public Action<ModHelperButton>? modifyButton;
+
+        /// <summary>
+        /// Action to modify the ModHelperCheckbox after it's created
+        /// </summary>
+        public Action<ModHelperCheckbox>? modifyCheckbox;
+
+        /// <inheritdoc />
+        public ModSettingBool(bool value) : base(value)
+        {
+        }
 
 
         /// <summary>
@@ -55,11 +61,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// </summary>
         [Obsolete]
         public bool IsButton { get; set; }
-
-        /// <inheritdoc />
-        public ModSettingBool(bool value) : base(value)
-        {
-        }
 
         /// <summary>
         /// Create a new ModSetting bool with the given value as default
@@ -79,15 +80,13 @@ namespace BTD_Mod_Helper.Api.ModOptions
             return modSettingBool.value;
         }
 
-        private Action<bool, ModHelperButton> currentAction;
-
         /// <inheritdoc />
         public override void SetValue(object val)
         {
             base.SetValue(val);
             if (currentOption)
             {
-                var butt = currentOption.GetDescendent<ModHelperButton>("Button");
+                var butt = currentOption!.GetDescendent<ModHelperButton>("Button");
                 if (butt)
                 {
                     currentAction?.Invoke((bool) val, butt);
@@ -110,7 +109,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     value ? enabledText : disabledText, 80f
                 );
 
-                currentAction = (newValue, butt) =>
+                currentAction = (_, butt) =>
                 {
                     if (butt != null)
                     {
@@ -124,7 +123,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     SetValue(!value);
                     MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 }));
-                
+
                 option.SetResetAction(new Action(() =>
                 {
                     currentAction(defaultValue, buttonComponent);

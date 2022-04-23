@@ -1,38 +1,31 @@
-﻿using Assets.Scripts.Data.MapSets;
-using Assets.Scripts.Unity.UI_New;
-using Assets.Scripts.Unity.UI_New.Main.MapSelect;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Extensions;
-using HarmonyLib;
-using UnityEngine;
+﻿using Assets.Scripts.Unity.UI_New.Main.MapSelect;
 
-namespace BTD_Mod_Helper.Patches.Maps
+namespace BTD_Mod_Helper.Patches.Maps;
+
+[HarmonyPatch(typeof(MapButton), nameof(MapButton.Init))]
+internal class MapInfoPane_Init
 {
-    [HarmonyPatch(typeof(MapButton), nameof(MapButton.Init))]
-    internal class MapInfoPane_Init
+    [HarmonyPrefix]
+    internal static bool Prefix(MapButton __instance)
     {
-        [HarmonyPrefix]
-        internal static bool Prefix(MapButton __instance)
-        {
-            return true;
-        }
+        return true;
+    }
 
-        [HarmonyPostfix]
-        internal static void Postfix(MapButton __instance, string mapId)
-        {
-            /*ModHelper.Log(__instance.mapImage.sprite.rect.ToString());
-            if (!ModMap.IsCustomMap(mapId))
-                return;
+    [HarmonyPostfix]
+    internal static void Postfix(MapButton __instance, string mapId)
+    {
+        /*ModHelper.Log(__instance.mapImage.sprite.rect.ToString());
+        if (!ModMap.IsCustomMap(mapId))
+            return;
 
-            var modMap = ModContent.GetModMap(mapId);
+        var modMap = ModContent.GetModMap(mapId);
 
-            // thumbnail is 255 x 255
+        // thumbnail is 255 x 255
 
-            var texture = modMap.GetTexture();
-            var dup = texture.Duplicate();
-            dup.Resize(255, 255);
-            dup.Apply();
-            __instance.mapImage.sprite.SetTexture(dup);*/
-        }
+        var texture = modMap.GetTexture();
+        var dup = texture.Duplicate();
+        dup.Resize(255, 255);
+        dup.Apply();
+        __instance.mapImage.sprite.SetTexture(dup);*/
     }
 }

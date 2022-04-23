@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 
-namespace BTD_Mod_Helper.Api
+namespace BTD_Mod_Helper.Api;
+
+internal class BlatantFavoritism
 {
-    internal class BlatantFavoritism
+    public static Color32 GetColor(string? repoOwner)
     {
-        public static Color32 GetColor(string repoOwner)
+        switch (repoOwner)
         {
-            switch (repoOwner)
-            {
-                case "doombubbles":
-                    return new Color32(200, 0, 255, 255);
-                case "gurrenm3":
-                    return new Color32(200, 150, 255, 255);
-                default:
-                    return Color.white;
-            }
+            case "doombubbles":
+                return new Color32(200, 0, 255, 255);
+            case "gurrenm3":
+                return new Color32(200, 150, 255, 255);
+            default:
+                return Color.white;
         }
-        
     }
+        
 }

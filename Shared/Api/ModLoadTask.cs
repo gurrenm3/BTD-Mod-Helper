@@ -1,40 +1,38 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace BTD_Mod_Helper.Api
+namespace BTD_Mod_Helper.Api;
+
+/// <summary>
+/// Class for a Coroutine style task that runs during the BTD6 loading screen
+/// </summary>
+public abstract partial class ModLoadTask : NamedModContent
 {
+    internal static readonly Dictionary<int, ModLoadTask> Cache = new();
+
+    /// <inheritdoc />
+    public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+
+    /// <inheritdoc />
+    public sealed override string Description => base.DisplayNamePlural;
+
+    internal IEnumerator iEnumerator = null!;
+
+    //public abstract void Perform();
+
     /// <summary>
-    /// Class for a Coroutine style task that runs during the BTD6 loading screen
+    /// Coroutine style function
     /// </summary>
-    public abstract partial class ModLoadTask : NamedModContent
+    /// <returns></returns>
+    public abstract IEnumerator Coroutine();
+
+
+    /// <inheritdoc />
+    public sealed override int RegisterPerFrame => 999;
+
+    /// <inheritdoc />
+    public override void Register()
     {
-        internal static readonly Dictionary<int, ModLoadTask> Cache = new Dictionary<int, ModLoadTask>();
-
-        /// <inheritdoc />
-        public sealed override string DisplayNamePlural => base.DisplayNamePlural;
-
-        /// <inheritdoc />
-        public sealed override string Description => base.DisplayNamePlural;
-
-        internal IEnumerator iEnumerator;
-
-        //public abstract void Perform();
-
-        /// <summary>
-        /// Coroutine style function
-        /// </summary>
-        /// <returns></returns>
-        public abstract IEnumerator Coroutine();
-
-
-        /// <inheritdoc />
-        public sealed override int RegisterPerFrame => 999;
-
-        /// <inheritdoc />
-        public override void Register()
-        {
-            // nothing here since registering happens after TitleScreen, so ModLoadTasks should already be finished
-        }
+        // nothing here since registering happens after TitleScreen, so ModLoadTasks should already be finished
     }
 }

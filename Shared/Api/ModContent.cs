@@ -5,11 +5,8 @@ using System.Reflection;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Extensions;
-using MelonLoader;
 using UnityEngine;
 #if BloonsTD6
-using BTD_Mod_Helper.Api.Scenarios;
 #endif
 
 namespace BTD_Mod_Helper.Api
@@ -42,7 +39,7 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// (Cross-Game compatible) The BloonsMod that this content was added by
         /// </summary>
-        public BloonsMod mod;
+        public BloonsMod mod = null!;
 
         /// <summary>
         /// (Cross-Game compatible) Used for when you want to programmatically create multiple instances of a given ModContent
@@ -75,7 +72,6 @@ namespace BTD_Mod_Helper.Api
                 .GetValidTypes()
                 .Where(CanLoadType)
                 .SelectMany(type => CreateInstances(type, mod))
-                .Where(content => content != null)
                 .OrderBy(content => content.RegistrationPriority)
                 .ToList();
         }
@@ -100,7 +96,7 @@ namespace BTD_Mod_Helper.Api
                 ModContent instance;
                 try
                 {
-                    instance = (ModContent) Activator.CreateInstance(type);
+                    instance = (ModContent) Activator.CreateInstance(type)!;
                 }
                 catch (Exception)
                 {
@@ -168,7 +164,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <typeparam name="T">Your mod's main BloonsMod extending class</typeparam>
         /// <returns>A new SpriteReference</returns>
-        public static SpriteReference GetSpriteReferenceOrNull<T>(string name) where T : BloonsMod
+        public static SpriteReference? GetSpriteReferenceOrNull<T>(string name) where T : BloonsMod
         {
             return GetSpriteReferenceOrNull(GetInstance<T>(), name);
         }
@@ -179,7 +175,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>A new SpriteReference</returns>
-        protected SpriteReference GetSpriteReferenceOrNull(string name)
+        protected SpriteReference? GetSpriteReferenceOrNull(string name)
         {
             return GetSpriteReferenceOrNull(mod, name);
         }
@@ -191,7 +187,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>A new SpriteReference</returns>
-        public static SpriteReference GetSpriteReferenceOrNull(BloonsMod mod, string name)
+        public static SpriteReference? GetSpriteReferenceOrNull(BloonsMod mod, string name)
         {
             return TextureExists(mod, name) ? GetSpriteReference(mod, name) : null;
         }
@@ -270,7 +266,6 @@ namespace BTD_Mod_Helper.Api
         }
 
 
-
         /// <summary>
         /// (Cross-Game compatible) Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
         /// </summary>
@@ -306,7 +301,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="bloonsMod">The mod that adds this texture</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
-        public static Texture2D GetTexture(BloonsMod bloonsMod, string fileName)
+        public static Texture2D? GetTexture(BloonsMod bloonsMod, string fileName)
         {
             return ResourceHandler.GetTexture(GetTextureGUID(bloonsMod, fileName));
         }
@@ -316,7 +311,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
-        protected Texture2D GetTexture(string fileName)
+        protected Texture2D? GetTexture(string fileName)
         {
             return GetTexture(mod, fileName);
         }
@@ -326,7 +321,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
-        public static Texture2D GetTexture<T>(string fileName) where T : BloonsMod
+        public static Texture2D? GetTexture<T>(string fileName) where T : BloonsMod
         {
             return GetTexture(GetInstance<T>(), fileName);
         }
@@ -336,7 +331,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension.</param>
         /// <returns>The bytes associated with the texture.</returns>
-        protected byte[] GetTextureBytes(string fileName)
+        protected byte[]? GetTextureBytes(string fileName)
         {
             return GetTextureBytes(mod, fileName);
         }
@@ -347,11 +342,9 @@ namespace BTD_Mod_Helper.Api
         /// <param name="bloonsMod">The mod that adds this texture.</param>
         /// <param name="fileName">The file name of your texture, without the extension.</param>
         /// <returns>The bytes associated with the texture.</returns>
-        public static byte[] GetTextureBytes(BloonsMod bloonsMod, string fileName)
+        public static byte[]? GetTextureBytes(BloonsMod bloonsMod, string fileName)
         {
-            {
-                return ResourceHandler.GetTextureBytes(GetTextureGUID(bloonsMod, fileName));
-            }
+            return ResourceHandler.GetTextureBytes(GetTextureGUID(bloonsMod, fileName));
         }
 
         /// <summary>
@@ -359,7 +352,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension.</param>
         /// <returns>The bytes associated with the texture.</returns>
-        public static byte[] GetTextureBytes<T>(string fileName) where T : BloonsMod
+        public static byte[]? GetTextureBytes<T>(string fileName) where T : BloonsMod
         {
             return GetTextureBytes(GetInstance<T>(), fileName);
         }
@@ -371,7 +364,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
         /// <returns>A Sprite</returns>
-        public static Sprite GetSprite(BloonsMod mod, string name, float pixelsPerUnit = 10f)
+        public static Sprite? GetSprite(BloonsMod mod, string name, float pixelsPerUnit = 10f)
         {
             return ResourceHandler.GetSprite(GetTextureGUID(mod, name), pixelsPerUnit);
         }
@@ -382,7 +375,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
         /// <returns>A Sprite</returns>
-        protected Sprite GetSprite(string name, float pixelsPerUnit = 10f)
+        protected Sprite? GetSprite(string name, float pixelsPerUnit = 10f)
         {
             return GetSprite(mod, name, pixelsPerUnit);
         }
@@ -393,7 +386,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
         /// <returns>A Sprite</returns>
-        public static Sprite GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod
+        public static Sprite? GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod
         {
             return GetSprite(GetInstance<T>(), name, pixelsPerUnit);
         }
@@ -408,10 +401,10 @@ namespace BTD_Mod_Helper.Api
             var instance = ModContentInstance<T>.Instance;
             if (instance == null && typeof(MelonMod).IsAssignableFrom(typeof(T)))
             {
-                instance = MelonHandler.Mods.OfType<T>().FirstOrDefault();
+                instance = ModHelper.Mods.OfType<T>().FirstOrDefault();
             }
 
-            return instance;
+            return instance!;
         }
 
         /// <summary>
@@ -419,7 +412,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="type">The type to get the instance of</param>
         /// <returns>The official instance of it</returns>
-        public static IModContent GetInstance(Type type)
+        public static IModContent? GetInstance(Type type)
         {
             return ModContentInstances.Instances.TryGetValue(type, out var instance) ? instance[0] : default;
         }
@@ -429,7 +422,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="mod"></param>
         /// <param name="name"></param>
-        public static AssetBundle GetBundle(BloonsMod mod, string name)
+        public static AssetBundle? GetBundle(BloonsMod mod, string name)
         {
             if (ResourceHandler.Bundles.TryGetValue(mod.IDPrefix + name, out var bundle))
             {
@@ -459,7 +452,7 @@ namespace BTD_Mod_Helper.Api
         /// (Cross-Game compatible) Gets a bundle from the mod T with the specified name (no file extension)
         /// </summary>
         /// <param name="name"></param>
-        public static AssetBundle GetBundle<T>(string name) where T : BloonsMod
+        public static AssetBundle? GetBundle<T>(string name) where T : BloonsMod
         {
             return GetBundle(GetInstance<T>(), name);
         }
@@ -468,7 +461,7 @@ namespace BTD_Mod_Helper.Api
         /// (Cross-Game compatible) Gets a bundle from your mod with the specified name (no file extension)
         /// </summary>
         /// <param name="name"></param>
-        protected AssetBundle GetBundle(string name)
+        protected AssetBundle? GetBundle(string name)
         {
             return GetBundle(mod, name);
         }
@@ -478,7 +471,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static BloonsMod GetMod(string name)
+        public static BloonsMod? GetMod(string name)
         {
             return ModHelper.Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
         }
@@ -526,27 +519,6 @@ namespace BTD_Mod_Helper.Api
         public static List<T> GetInstances<T>() where T : ModContent
         {
             return ModContentInstance<T>.Instances;
-        }
-
-        /// <summary>
-        /// (Cross-Game compatible) Gets all loaded ModContent objects that have a base type of T 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static List<T> GetInstancesWithBaseType<T>() where T : ModContent
-        {
-            List<T> instances = new List<T>();
-            foreach (var modContent in ModContentInstances.Instances)
-            {
-                if (modContent.Key.BaseType != typeof(T))
-                    continue;
-
-                foreach (T item in modContent.Value)
-                {
-                    instances.Add(item);
-                }
-            }
-            return instances;
         }
     }
 }

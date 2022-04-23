@@ -2,9 +2,7 @@
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
 using System.Collections.Generic;
 using Assets.Scripts.Models.Bloons;
-using BTD_Mod_Helper.Extensions;
 using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Simulation.SMath;
 
 #if BloonsTD6
 using Assets.Scripts.Models.GenericBehaviors;
@@ -21,7 +19,7 @@ namespace BTD_Mod_Helper.Api.Display
     /// </summary>
     public abstract partial class ModDisplay : ModContent
     {
-        internal static readonly Dictionary<string, ModDisplay> Cache = new Dictionary<string, ModDisplay>();
+        internal static readonly Dictionary<string, ModDisplay> Cache = new();
 
         /// <summary>
         /// ModDisplays register first
@@ -52,7 +50,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// The position offset to render the display at (z axis is up toward camera)
         /// </summary>
-        public virtual Vector3 PositionOffset => new Vector3(0,0,0);
+        public virtual Vector3 PositionOffset => new(0,0,0);
 
         /// <summary>
         /// The scale to render the display at
@@ -76,7 +74,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="textureName">The name of the texture, without .png</param>
         protected void SetMeshTexture(UnityDisplayNode node, string textureName)
         {
-            node.GetMeshRenderer().SetMainTexture(GetTexture(textureName));
+            node.GetMeshRenderer().SetMainTexture(GetTexture(textureName)!);
         }
 
         /// <summary>
@@ -87,7 +85,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="index">The index to set at</param>
         protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index)
         {
-            node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName));
+            node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName)!);
         }
 
         /// <summary>
@@ -96,7 +94,7 @@ namespace BTD_Mod_Helper.Api.Display
         public void Apply(BloonModel bloonModel)
         {
             bloonModel.SetDisplayGUID(Id);
-            Apply(bloonModel.GetBehavior<DisplayModel>());
+            Apply(bloonModel.GetBehavior<DisplayModel>()!);
         }
 
         /// <summary>
@@ -107,7 +105,7 @@ namespace BTD_Mod_Helper.Api.Display
 #if BloonsTD6
             towerModel.display = Id;
 #endif
-            Apply(towerModel.GetBehavior<DisplayModel>());
+            Apply(towerModel.GetBehavior<DisplayModel>()!);
         }
 
         /// <summary>
@@ -118,7 +116,7 @@ namespace BTD_Mod_Helper.Api.Display
 #if BloonsTD6
             projectileModel.display = Id;
 #endif
-            Apply(projectileModel.GetBehavior<DisplayModel>());
+            Apply(projectileModel.GetBehavior<DisplayModel>()!);
         }
 
         /// <summary>

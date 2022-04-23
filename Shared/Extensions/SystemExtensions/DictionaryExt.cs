@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for normal System Dictionaries
+/// </summary>
+public static class DictionaryExt
 {
     /// <summary>
-    /// Extensions for normal System Dictionaries
+    /// (Cross-Game compatible) Get all of the values from this Dictionary as a list
     /// </summary>
-    public static class DictionaryExt
+    public static List<TValue> GetValues<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs) where TKey : notnull
     {
-        /// <summary>
-        /// (Cross-Game compatible) Get all of the values from this Dictionary as a list
-        /// </summary>
-        public static List<TValue> GetValues<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs)
-        {
-            return keyValuePairs.Values.ToList();
-        }
+        return keyValuePairs.Values.ToList();
     }
 }

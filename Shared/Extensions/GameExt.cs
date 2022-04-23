@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         public static MapLoader GetMapLoader(this Game game)
         {
 #if BloonsTD6
-            return UI.instance?.mapLoader;
+            return UI.instance.mapLoader;
 #elif BloonsAT
             return game.MapLoader;
 #endif
@@ -56,7 +56,7 @@ namespace BTD_Mod_Helper.Extensions
         public static bool IsAccountFlagged(this Game game)
         {
 #if BloonsTD6
-            var hackerStatus = game.GetBtd6Player().Hakxr;
+            var hackerStatus = game.GetBtd6Player()!.Hakxr;
             return hackerStatus.genrl || hackerStatus.ledrbrd;
 #elif BloonsAT
             return game.GetAdventureTimePlayer().HasStatusFlags();
@@ -88,7 +88,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="game"></param>
         /// <param name="action">The action you want to execute once it's time to run your task</param>
         /// <param name="waitCondition">Wait for this to be true before executing task</param>
-        public static void ScheduleTask(this Game game, Action action, Func<bool> waitCondition = null) => game.ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
+        public static void ScheduleTask(this Game game, Action action, Func<bool>? waitCondition = null) => game.ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
 
         /// <summary>
         /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine
@@ -98,7 +98,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="scheduleType">How you want to wait for your task</param>
         /// <param name="amountToWait">The amount you want to wait</param>
         /// /// <param name="waitCondition">Wait for this to be true before executing task</param>
-        public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait , Func<bool> waitCondition = null)
+        public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait , Func<bool>? waitCondition = null)
         {
             MelonLoader.MelonCoroutines.Start(TaskScheduler.Coroutine(action, scheduleType, amountToWait, waitCondition));
         }
@@ -107,7 +107,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
         /// </summary>
-        public static LiNKAccount GetPlayerLiNKAccount(this Game game)
+        public static LiNKAccount? GetPlayerLiNKAccount(this Game game)
         {
             return game.GetPlayerService()?.Player?.LiNKAccount;
         }
@@ -117,7 +117,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
-        public static ProfileModel GetPlayerProfile(this Game game)
+        public static ProfileModel? GetPlayerProfile(this Game game)
         {
             return game.GetPlayerService()?.Player?.Data;
         }

@@ -1,24 +1,23 @@
 ﻿using Assets.Scripts.Utils;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for SpriteReferences
+/// </summary>
+public static class SpriteReferenceExt
 {
     /// <summary>
-    /// Extensions for SpriteReferences
+    /// (Cross-Game compatible) Returns's the GUID of this SpriteReference
     /// </summary>
-    public static class SpriteReferenceExt
+    /// <param name="spriteReference"></param>
+    /// <returns></returns>
+    public static string GetGUID(this SpriteReference spriteReference)
     {
-        /// <summary>
-        /// (Cross-Game compatible) Returns's the GUID of this SpriteReference
-        /// </summary>
-        /// <param name="spriteReference"></param>
-        /// <returns></returns>
-        public static string GetGUID(this SpriteReference spriteReference)
-        {
 #if BloonsTD6
-            return spriteReference.GUID;
+        return spriteReference.GUID;
 #elif BloonsAT
             return spriteReference.Guid;
 #endif
-        }
     }
 }

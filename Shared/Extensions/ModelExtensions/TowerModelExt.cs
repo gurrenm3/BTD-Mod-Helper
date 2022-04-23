@@ -6,7 +6,6 @@ using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
 using System.Linq;
-using UnhollowerBaseLib;
 using System;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
@@ -49,22 +48,11 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// This is Obsolete, use GetAllTowerToSim instead. (Cross-Game compatible) Return all TowerToSimulations with this TowerModel
-        /// </summary>
-        [Obsolete]
-        public static List<TowerToSimulation> GetTowerSims(this TowerModel towerModel)
-        {
-            var towers = InGame.instance?.GetAllTowerToSim();
-            var desiredTowers = towers.Where(towerSim => towerSim.GetTower().towerModel.name == towerModel.name).ToList();
-            return desiredTowers;
-        }
-
-        /// <summary>
         /// (Cross-Game compatible) Return all TowerToSimulations with this TowerModel
         /// </summary>
         public static List<TowerToSimulation> GetAllTowerToSim(this TowerModel towerModel)
         {
-            var towers = InGame.instance?.GetAllTowerToSim();
+            var towers = InGame.instance.GetAllTowerToSim();
             var desiredTowers = towers.Where(towerSim => towerSim.Def.name == towerModel.name).ToList();
             return desiredTowers;
         }
@@ -81,7 +69,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first ability on the tower
         /// </summary>
-        public static AbilityModel GetAbility(this TowerModel towerModel)
+        public static AbilityModel? GetAbility(this TowerModel towerModel)
         {
             return towerModel.GetAbilities().FirstOrDefault();
         }
@@ -107,7 +95,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first AttackModel from this TowerModel, if it has one
         /// </summary>
-        public static AttackModel GetAttackModel(this TowerModel towerModel)
+        public static AttackModel? GetAttackModel(this TowerModel towerModel)
         {
             return towerModel.GetAttackModels().FirstOrDefault();
         }
@@ -115,7 +103,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first AttackModel whose name contains the given string
         /// </summary>
-        public static AttackModel GetAttackModel(this TowerModel towerModel, string nameContains)
+        public static AttackModel? GetAttackModel(this TowerModel towerModel, string nameContains)
         {
             return towerModel.GetAttackModels().FirstOrDefault(model => model.name.Contains(nameContains));
         }
@@ -137,7 +125,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             var attackModels = towerModel.GetAttackModels();
             if (attackModels is null)
-                return null;
+                return null!;
 
             if (!attackModels.Any())
                 return new List<WeaponModel>();
@@ -166,7 +154,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first WeaponModel this TowerModel has, if it has one.
         /// </summary>
-        public static WeaponModel GetWeapon(this TowerModel towerModel)
+        public static WeaponModel? GetWeapon(this TowerModel towerModel)
         {
             return towerModel.GetWeapons().FirstOrDefault();
         }
@@ -221,7 +209,7 @@ namespace BTD_Mod_Helper.Extensions
         /// If there is no associated ModTower, returns null
         /// </summary>
         /// <returns></returns>
-        public static ModTower GetModTower(this TowerModel towerModel)
+        public static ModTower? GetModTower(this TowerModel towerModel)
         {
             return ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
         }
@@ -232,9 +220,9 @@ namespace BTD_Mod_Helper.Extensions
         /// If there is no associated ModTower, returns null
         /// </summary>
         /// <returns></returns>
-        public static T GetModTower<T>(this TowerModel towerModel) where T : ModTower
+        public static T? GetModTower<T>(this TowerModel towerModel) where T : ModTower
         {
-            return (T) GetModTower(towerModel);
+            return (T?) GetModTower(towerModel);
         }
 
         /// <summary>

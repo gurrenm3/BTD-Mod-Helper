@@ -6,20 +6,19 @@ using Assets.Scripts.Models.Display;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for DisplayModel
+/// </summary>
+public static class DisplayModelExt
 {
     /// <summary>
-    /// Extensions for DisplayModel
+    /// Applies a given ModDisplay to this DisplayModel
     /// </summary>
-    public static class DisplayModelExt
+    /// <typeparam name="T">The type of ModDisplay</typeparam>
+    public static void ApplyDisplay<T>(this DisplayModel displayModel) where T : ModDisplay
     {
-        /// <summary>
-        /// Applies a given ModDisplay to this DisplayModel
-        /// </summary>
-        /// <typeparam name="T">The type of ModDisplay</typeparam>
-        public static void ApplyDisplay<T>(this DisplayModel displayModel) where T : ModDisplay
-        {
-            ModContent.GetInstance<T>().Apply(displayModel);
-        }
+        ModContent.GetInstance<T>().Apply(displayModel);
     }
 }

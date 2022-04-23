@@ -1,22 +1,21 @@
 ﻿using Assets.Scripts.Utils;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for system LockedLists
+/// </summary>
+public static partial class LockedListExt
 {
     /// <summary>
-    /// Extensions for system LockedLists
+    /// Not Tested
     /// </summary>
-    public static partial class LockedListExt
+    public static SizedList<T> ToSizedList<T>(this LockList<T> lockList)
     {
-        /// <summary>
-        /// Not Tested
-        /// </summary>
-        public static SizedList<T> ToSizedList<T>(this LockList<T> lockList)
-        {
-            var sizedList = new SizedList<T>();
-            for (var i = 0; i < sizedList.Count; i++)
-                sizedList.Add(sizedList[i]);
+        var sizedList = new SizedList<T>();
+        for (var i = 0; i < sizedList.Count; i++)
+            sizedList.Add(sizedList[i]);
 
-            return sizedList;
-        }
+        return sizedList;
     }
 }

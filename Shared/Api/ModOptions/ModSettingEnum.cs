@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -16,7 +15,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Action to modify the ModHelperDropdown after it's created
         /// </summary>
-        public Action<ModHelperDropdown> modifyDropdown;
+        public Action<ModHelperDropdown>? modifyDropdown;
 
         /// <inheritdoc />
         public ModSettingEnum(T value) : base(value)
@@ -46,7 +45,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             var dropdown = option.BottomRow.AddDropdown(
                 new Info("Dropdown", width: 1000, height: 150), Enum.GetNames(typeof(T)).ToIl2CppList(), 500,
-                new Action<int>(i => SetValue((T) Enum.GetValues(typeof(T)).GetValue(i))),
+                new Action<int>(i => SetValue((T) Enum.GetValues(typeof(T)).GetValue(i)!)),
                 VanillaSprites.BlueInsertPanelRound, 80f
             );
 

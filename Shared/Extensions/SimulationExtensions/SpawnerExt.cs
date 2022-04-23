@@ -2,8 +2,6 @@
 using Assets.Scripts.Simulation.Track;
 
 #if BloonsTD6
-using Assets.Scripts.Simulation.Bloons;
-using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Unity.UI_New.InGame;
 #elif BloonsAT
 using Assets.Scripts.Models.Rounds;

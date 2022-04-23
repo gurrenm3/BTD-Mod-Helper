@@ -1,15 +1,13 @@
 ﻿using Assets.Scripts.Unity.Bridge;
-using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Sim
+namespace BTD_Mod_Helper.Patches.Sim;
+
+[HarmonyPatch(typeof(UnityToSimulation), nameof(UnityToSimulation.Lose))]
+internal class UnityToSimulation_Lose
 {
-    [HarmonyPatch(typeof(UnityToSimulation), nameof(UnityToSimulation.Lose))]
-    internal class UnityToSimulation_Lose
+    [HarmonyPostfix]
+    internal static void Postfix()
     {
-        [HarmonyPostfix]
-        internal static void Postfix()
-        {
-            ModHelper.PerformHook(mod => mod.OnDefeat());
-        }
+        ModHelper.PerformHook(mod => mod.OnDefeat());
     }
 }

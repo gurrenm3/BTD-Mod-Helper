@@ -1,28 +1,26 @@
 ﻿using System;
-using BTD_Mod_Helper.Extensions;
 
-namespace BTD_Mod_Helper.Api.Helpers
+namespace BTD_Mod_Helper.Api.Helpers;
+
+/// <summary>
+/// Class for converting actions and functions
+/// </summary>
+public static class ActionHelper
 {
     /// <summary>
-    /// Class for converting actions and functions
+    /// Converts a nullable function into an action
     /// </summary>
-    public static class ActionHelper
+    public static Action CreateFromOptionalFunction(Function funcToExecute)
     {
-        /// <summary>
-        /// Converts a nullable function into an action
-        /// </summary>
-        public static Action CreateFromOptionalFunction(Function funcToExecute)
-        {
-            return (funcToExecute is null) ? () => { } : new Action(() => { funcToExecute(); });
-        }
+        return (funcToExecute is null) ? () => { } : new Action(() => { funcToExecute(); });
+    }
 
 
-        /// <summary>
-        /// Converts a nullable function into an action
-        /// </summary>
-        public static Action<T> CreateFromOptionalFunction<T>(Function<T> funcToExecute)
-        {
-            return (funcToExecute is null) ? t => { } : new Action<T>(t => { funcToExecute(); });
-        }
+    /// <summary>
+    /// Converts a nullable function into an action
+    /// </summary>
+    public static Action<T> CreateFromOptionalFunction<T>(Function<T> funcToExecute)
+    {
+        return (funcToExecute is null) ? t => { } : new Action<T>(t => { funcToExecute(); });
     }
 }
