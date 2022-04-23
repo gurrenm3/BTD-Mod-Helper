@@ -1,35 +1,31 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Target Name="ILRepacker_Debug" AfterTargets="Build" BeforeTargets="MoveDllToMods">
-		<ItemGroup>
-			<AssemblyFile Include="$(TargetDir)$(TargetName).dll" />
-		</ItemGroup>
-		<ItemGroup>
-			<InputAssemblies Include="@(AssemblyFile)" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NativeFileDialogSharp'" />
-		</ItemGroup>
-		<ItemGroup>
-			<LibraryPaths Include="$(SolutionDir)Dependencies\Shared"/>
-			<LibraryPaths Include="$(SolutionDir)Dependencies\BloonsTD6"/>
-		</ItemGroup>
-		<ILRepack
-			Parallel="true"
-			DebugInfo="false"
-			InputAssemblies="@(InputAssemblies)"
-			TargetKind="Dll"
-			OutputFile="@(AssemblyFile)"
-			Internalize="true"
-			LibraryPath="@(LibraryPaths)"
-		/>
-	</Target>
-	
-	<Target Name="Cleanup" AfterTargets="ILRepack">
-		<ItemGroup>
-			<FilesToDelete Include="$(OutputPath)Octokit.dll" />
-		</ItemGroup>
-		<Delete Files="@(FilesToDelete)" />
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <!--Since using ILRepack breaks debug breakpoints, were only going to be doing it on release-->
+    <Target Name="ILRepacker_Release" AfterTargets="Build" BeforeTargets="MoveDllToMods" Condition="'$(Configuration)'=='BTD6_Release'">
+        <ItemGroup>
+            <AssemblyFile Include="$(TargetDir)$(TargetName).dll"/>
+        </ItemGroup>
+        <ItemGroup>
+            <InputAssemblies Include="@(AssemblyFile)"/>
+            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'"/>
+            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'"/>
+            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NativeFileDialogSharp'"/>
+        </ItemGroup>
+        <ILRepack
+                Parallel="true"
+                DebugInfo="false"
+                InputAssemblies="@(InputAssemblies)"
+                TargetKind="Dll"
+                OutputFile="@(AssemblyFile)"
+                Internalize="true"
+                LibraryPath="@(LibraryPaths)"
+        />
+    </Target>
+
+    <!--Instead for Debug we're just making sure that the dlls are in the UserLibs folder-->
+    <Target Name="CopyLibs_Debug" AfterTargets="Build" BeforeTargets="MoveDllToMods" Condition="'$(Configuration)'=='BTD6_Debug'">
+        <Copy SourceFiles="$(PkgOctokit)\lib\netstandard2.0\Octokit.dll" DestinationFolder="$(BloonsTD6)\UserLibs" ContinueOnError="true"/>
+        <Copy SourceFiles="$(PkgFuzzySharp)\lib\netstandard2.0\FuzzySharp.dll" DestinationFolder="$(BloonsTD6)\UserLibs" ContinueOnError="true"/>
+        <Copy SourceFiles="$(PkgNativeFileDialogSharp)\lib\netstandard2.0\NativeFileDialogSharp.dll" DestinationFolder="$(BloonsTD6)\UserLibs" ContinueOnError="true"/>
     </Target>
 </Project>

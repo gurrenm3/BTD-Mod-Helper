@@ -1,33 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0-windows</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Configurations>BTD6_Debug;BTD6_Release</Configurations>
         <DefineConstants>BloonsTD6;TRACE</DefineConstants>
         <Nullable>enable</Nullable>
-        <Platforms>AnyCPU</Platforms>
+        <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'BTD6_Debug' ">
+        <Optimize>false</Optimize>
+        <DocumentationFile>bin\BTD6_Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'BTD6_Release' ">
+        <Optimize>true</Optimize>
+        <DebugType>none</DebugType>
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Remove="System" />
-        <Using Remove="System.IO" />
-        <Using Remove="System.Linq" />
-        <Using Remove="System.Net.Http" />
-        <Using Remove="System.Threading" />
-        <Using Remove="System.Threading.Tasks" />
-        <Using Remove="System.Collections.Generic" />
+        <Using Remove="System"/>
+        <Using Remove="System.IO"/>
+        <Using Remove="System.Linq"/>
+        <Using Remove="System.Net.Http"/>
+        <Using Remove="System.Threading"/>
+        <Using Remove="System.Threading.Tasks"/>
+        <Using Remove="System.Collections.Generic"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
-        <PackageReference Include="FuzzySharp" Version="2.0.2" />
-        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" />
-        <PackageReference Include="Octokit" Version="0.50.0" />
-        <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" />
+        <PackageReference Include="System.Resources.Extensions" Version="6.0.0" GeneratePathProperty="true"/>
+        <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true"/>
+        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" GeneratePathProperty="true"/>
+        <PackageReference Include="Octokit" Version="0.50.0" GeneratePathProperty="true"/>
+        <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" GeneratePathProperty="true"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <Compile Update="Properties\Resources.Designer.cs">
             <DesignTime>True</DesignTime>
@@ -41,15 +52,15 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
-        <EmbeddedResource Include="nfd.dll" />
-        <EmbeddedResource Include="nfd_x86.dll" />
-        <EmbeddedResource Include="btd6.targets" />
+        <EmbeddedResource Include="nfd.dll"/>
+        <EmbeddedResource Include="nfd_x86.dll"/>
+        <EmbeddedResource Include="btd6.targets"/>
     </ItemGroup>
 
-    <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
+    <Import Project="..\Shared\Shared Project.projitems" Label="Shared"/>
 
     <!--So that you can override the C: specific targets without changing the one that gets included in git-->
-    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
-    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
-    
+    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets"/>
+    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>
+
 </Project>
