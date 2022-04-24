@@ -58,6 +58,10 @@
         <EmbeddedResource Include="TemplateMod.zip" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings" />
+    </ItemGroup>
+
     <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
 
     <!--So that you can override the C: specific targets without changing the one that gets included in git-->

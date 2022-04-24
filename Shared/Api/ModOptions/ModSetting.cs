@@ -16,7 +16,7 @@ public abstract class ModSetting<T> : ModSetting
     internal T lastSavedValue;
 
     /// <summary>
-    /// Action to call when the value changes.
+    /// Action to call when the value changes within the menu
     /// </summary>
     public Action<T>? onValueChanged;
 
@@ -66,6 +66,10 @@ public abstract class ModSetting<T> : ModSetting
         {
             value = v;
             onValueChanged?.Invoke(v);
+            if (requiresRestart && currentOption != null)
+            {
+                currentOption.RestartIcon.SetActive(lastSavedValue?.Equals(value) != true || needsRestartRightNow);
+            }
         }
         else
         {
@@ -83,6 +87,11 @@ public abstract class ModSetting<T> : ModSetting
             return false;
         }
 
+        if (value?.Equals(lastSavedValue) != true && requiresRestart)
+        {
+            needsRestartRightNow = true;
+        }
+
         lastSavedValue = value;
         onSave?.Invoke(value);
         return true;
@@ -95,6 +104,7 @@ public abstract class ModSetting<T> : ModSetting
     {
         var modHelperOption = ModHelperOption.Create(displayName, description, icon);
         modifyOption?.Invoke(modHelperOption);
+        modHelperOption.RestartIcon.SetActive(needsRestartRightNow);
         return modHelperOption;
     }
 

@@ -53,6 +53,11 @@ public class ModHelperOption : ModHelperComponent
     /// </summary>
     public ModHelperPanel BottomRow { get; private set; } = null!;
 
+    /// <summary>
+    /// The image shown when this setting requires a restart
+    /// </summary>
+    public ModHelperImage RestartIcon { get; private set; } = null!;
+
     /// <inheritdoc />
     public ModHelperOption(IntPtr ptr) : base(ptr)
     {
@@ -94,7 +99,7 @@ public class ModHelperOption : ModHelperComponent
         modHelperOption.LayoutGroup.childForceExpandHeight = false;
         modHelperOption.LayoutGroup.childForceExpandWidth = false;
 
-        var topRow = modHelperOption.AddPanel(
+        var topRow = modHelperOption.TopRow = modHelperOption.AddPanel(
             new Info("TopRow", height: RowHeight, flexWidth: 1),
             null, RectTransform.Axis.Horizontal, 100
         );
@@ -106,6 +111,10 @@ public class ModHelperOption : ModHelperComponent
         {
             modHelperOption.Icon = iconPanel.AddImage(new Info("Icon", size: RowHeight), icon);
         }
+
+        var restart = modHelperOption.RestartIcon =
+            iconPanel.AddImage(new Info("Restart", size: RowHeight), VanillaSprites.RestartIcon);
+        restart.SetActive(false);
 
 #if BloonsTD6
         var text = modHelperOption.Name = topRow.AddText(
