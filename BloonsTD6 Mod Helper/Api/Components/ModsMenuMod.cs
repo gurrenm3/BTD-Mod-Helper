@@ -4,6 +4,7 @@ using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Menus;
+using MelonLoader.InternalUtils;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Components;
@@ -119,7 +120,7 @@ internal static class ModsMenuModExt
             background = VanillaSprites.MainBGPanelGrey;
         else if (data.Mod == ModContent.GetInstance<MelonMain>())
             background = VanillaSprites.MainBGPanelYellow;
-        else if (data.Mod?.Games.Any(attribute => attribute.Universal) == true)
+        else if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) != true)
             background = VanillaSprites.MainBgPanelHematite;
         else if (data.Mod != null && !(data.Mod is BloonsMod)) background = VanillaSprites.MainBGPanelBlueNotches;
         return background;

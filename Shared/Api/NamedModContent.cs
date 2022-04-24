@@ -10,7 +10,7 @@ public abstract class NamedModContent : ModContent
     /// <summary>
     /// The name that will be actually displayed for this in game
     /// </summary>
-    public virtual string DisplayName => Regex.Replace(Name, "(\\B[A-Z])", " $1");
+    public virtual string DisplayName => Name.Spaced();
 
     /// <summary>
     /// The name that will actually be display when referring to multiple of these

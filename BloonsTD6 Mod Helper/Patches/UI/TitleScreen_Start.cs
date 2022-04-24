@@ -17,19 +17,6 @@ internal class TitleScreen_Start
     [HarmonyPriority(Priority.High)]
     internal static void Postfix()
     {
-        /*foreach (var mod in ModHelper.Mods.OrderByDescending(mod => mod.Priority))
-        {
-            try
-            {
-                ModContent.RegisterModContent(mod);
-            }
-            catch (Exception e)
-            {
-                ModHelper.Error("Critical failure when registering content for mod " + mod.Info.Name);
-                ModHelper.Error(e);
-            }
-        }*/
-
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
 
         foreach (var modParagonTower in ModContent.GetContent<ModVanillaParagon>())

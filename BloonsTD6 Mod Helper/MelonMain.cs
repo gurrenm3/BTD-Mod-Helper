@@ -62,15 +62,6 @@ internal class MelonMain : BloonsTD6Mod
         {
             // ignored
         }
-            
-            
-
-        ModHelper.Log("Mod has finished loading");
-
-        /*VanillaSpriteGenerator.GenerateVanillaSprites(
-            @"C:\Users\jpgale\Documents\Coding\BTD-Mod-Helper\BloonsTD6 Mod Helper\Api\Enums\VanillaSprites.cs",
-            @"C:\Users\jpgale\Pictures\Dump\Sprites"
-        );*/
     }
 
     public static readonly ModSettingBool BypassSavingRestrictions = new(true)
@@ -119,7 +110,7 @@ internal class MelonMain : BloonsTD6Mod
         category = ModMaking
     };
 
-    private static readonly ModSettingFolder ModSourcesFolder =
+    public static readonly ModSettingFolder ModSourcesFolder =
         new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
             "BTD6 Mods"))
         {
@@ -258,6 +249,36 @@ internal class MelonMain : BloonsTD6Mod
     };
 
     public override void OnMatchEnd() => AutoSave.backup.CreateBackup();
+
+    #endregion
+
+    #region Debug
+
+    private static readonly ModSettingCategory Debug = new("Debug");
+    
+    private static readonly ModSettingFile VanillaSpritesClass = new("")
+    {
+        category = Debug,
+        description = "Location of the VanillaSprites.cs to generate to"
+    };
+
+    private static readonly ModSettingFolder AssetStudioDump = new("")
+    {
+        category = Debug,
+        description = "Folder where Asset Studio has dumped all the Sprite information"
+    };
+
+    private static readonly ModSettingButton GenerateVanillaSprites = new(() =>
+    {
+        if (!string.IsNullOrEmpty(VanillaSpritesClass) && !string.IsNullOrEmpty(AssetStudioDump))
+        {
+            VanillaSpriteGenerator.GenerateVanillaSprites(VanillaSpritesClass, AssetStudioDump);
+        }
+    })
+    {
+        category = Debug,
+        description = "Generates the VanillaSprites.cs file based on the previous two settings"
+    };
 
     #endregion
 }

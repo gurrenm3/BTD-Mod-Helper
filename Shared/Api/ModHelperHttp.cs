@@ -43,10 +43,8 @@ public class ModHelperHttp
         try
         {
             var response = await Client.GetAsync(url);
-            using (var fs = new FileStream(filePath, FileMode.Create))
-            {
-                await response.Content.CopyToAsync(fs);
-            }
+            await using var fs = new FileStream(filePath, FileMode.Create);
+            await response.Content.CopyToAsync(fs);
 
             return true;
         }
@@ -75,15 +73,12 @@ public class ModHelperHttp
             {
                 Directory.Delete(zipTempDir, true);
             }
-
             Directory.CreateDirectory(zipTempDir);
-
-            var zipFilePath = Path.Combine(zipTempDir, zipName);
-            await DownloadFile(url, zipFilePath);
-
-
-            ZipFile.ExtractToDirectory(zipFilePath, zipTempDir);
-            File.Delete(zipFilePath);
+            
+            var response = await Client.GetAsync(url);
+            await using var stream = await response.Content.ReadAsStreamAsync();
+            using var zip = new ZipArchive(stream);
+            zip.ExtractToDirectory(zipTempDir);
 
             return Directory.EnumerateFiles(zipTempDir);
         }

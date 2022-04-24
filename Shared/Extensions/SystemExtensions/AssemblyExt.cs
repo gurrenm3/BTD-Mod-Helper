@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -12,26 +13,16 @@ public static class AssemblyExt
     /// <summary>
     /// Gets the bytes for an embedded resource with the given name (found with endsWith), or null if no matches
     /// </summary>
-    public static byte[]? GetEmbeddedResource(this Assembly assembly, string endsWith)
+    public static Stream? GetEmbeddedResource(this Assembly assembly, string endsWith)
     {
-        var resource = assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith("nfd.dll"));
-        if (resource != null)
-        {
-            using var stream = assembly.GetManifestResourceStream(resource);
-            if (stream != null)
-            {
-                return stream.GetByteArray();
-            }
-        }
-
-        return null;
+        var resource = assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(endsWith));
+        return resource != null ? assembly.GetManifestResourceStream(resource) : null;
     }
 
     /// <inheritdoc cref="GetEmbeddedResource"/>
-    public static bool TryGetEmbeddedResource(this Assembly assembly, string endsWith, out byte[] bytes)
+    public static bool TryGetEmbeddedResource(this Assembly assembly, string endsWith, out Stream stream)
     {
-        var result = GetEmbeddedResource(assembly, endsWith);
-        bytes = result ?? Array.Empty<byte>();
-        return result != null;
+        stream = GetEmbeddedResource(assembly, endsWith)!;
+        return stream != null;
     }
 }

@@ -3,6 +3,7 @@ using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using NativeFileDialogSharp;
+using TMPro;
 using UnityEngine;
 
 
@@ -72,6 +73,7 @@ public class ModSettingFile : ModSetting<string>
         button.GetDescendent<Animator>().enabled = false;
 
         var text = button.AddText(new Info("FileText", anchorMin: Vector2.zero, anchorMax: Vector2.one), value);
+        text.Text.alignment = TextAlignmentOptions.Center;
 
         option.SetResetAction(new Action(() => text.SetText(defaultValue)));
 #endif

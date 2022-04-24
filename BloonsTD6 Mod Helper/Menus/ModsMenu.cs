@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
@@ -8,6 +10,7 @@ using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Helpers;
 using TMPro;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
@@ -122,6 +125,36 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         modBrowserButton.AddText(
             new Info("Text", 0, -200, 500, 100), "Browse Mods", 60f
         );
+
+        var createModButton = bottomButtonGroup.AddButton(
+            new Info("CreateModButton", 225, 50, 400, 400, anchor: new Vector2(0, 0),
+                pivot: new Vector2(0.5f, 0)), VanillaSprites.EditChallengeIcon,
+            new Action(() =>
+            {
+                PopupScreen.instance.ShowSetNamePopup("Create Empty Mod",
+                    "Choose a name for your mod. \n Example: 'TitleCaseButWithoutSpaces'", new Action<string>(s =>
+                    {
+                        if (!string.IsNullOrEmpty(s))
+                        {
+                            TemplateMod.CreateEmptyMod(s);
+                        }
+                    }), null);
+                TaskScheduler.ScheduleTask(
+                    () =>
+                    {
+                        var tmpInputField = PopupScreen.instance.GetTMP_InputField()!;
+                        tmpInputField.textComponent.font = Fonts.Btd6FontBody;
+                        tmpInputField.characterLimit = 50;
+                        tmpInputField.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
+                    },
+                    () => PopupScreen.instance.GetTMP_InputField() != null
+                );
+            })
+        );
+        createModButton.AddText(
+            new Info("Text", 0, -200, 500, 100), "Create Mod", 60f
+        );
+
 
         restartButton = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50,
             350, 350, anchor: Vector2.one, pivot: Vector2.one));

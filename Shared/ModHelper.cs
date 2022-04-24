@@ -138,7 +138,7 @@ public static class ModHelper
 
     #endregion
 
-    internal static BloonsMod Main => ModContent.GetInstance<MelonMain>();
+    internal static MelonMain Main => ModContent.GetInstance<MelonMain>();
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsMod
     {

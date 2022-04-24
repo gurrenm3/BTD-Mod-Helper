@@ -12,9 +12,9 @@ internal static class FileDialogHelper
         {
             var nfd = Path.Combine(MelonUtils.GameDirectory, dll);
             if (!File.Exists(nfd) &&
-                ModContent.GetInstance<MelonMain>().Assembly.TryGetEmbeddedResource(dll, out var bytes))
+                ModContent.GetInstance<MelonMain>().Assembly.TryGetEmbeddedResource(dll, out var stream))
             {
-                File.WriteAllBytes(nfd, bytes);
+                File.WriteAllBytes(nfd, stream.GetByteArray()!);
             }
         }
     }

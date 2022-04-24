@@ -31,7 +31,7 @@ internal class ModSettingsHandler
                 {
                     var modSetting = (ModSetting) field.GetValue(mod)!;
                     mod.ModSettings[field.Name] = modSetting;
-                    modSetting.displayName ??= Regex.Replace(field.Name, "(\\B[A-Z])", " $1");
+                    modSetting.displayName ??= field.Name.Spaced();
                 }
             }
             catch (Exception e)

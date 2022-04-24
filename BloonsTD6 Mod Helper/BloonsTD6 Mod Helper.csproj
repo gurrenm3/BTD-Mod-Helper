@@ -55,6 +55,7 @@
         <EmbeddedResource Include="nfd.dll" />
         <EmbeddedResource Include="nfd_x86.dll" />
         <EmbeddedResource Include="btd6.targets" />
+        <EmbeddedResource Include="TemplateMod.zip" />
     </ItemGroup>
 
     <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
