@@ -16,7 +16,14 @@ public abstract class ModRoundSet : NamedModContent
     /// RoundSets register Bloons and before GameModes
     /// </summary>
     protected override float RegistrationPriority => 9;
-
+    
+    /// <summary>
+    /// The Base Rounds included in the RoundSet specified by BaseRoundSet
+    /// </summary>
+    protected List<RoundModel> BaseRounds =>
+        Game.instance.model.roundSets.FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ??
+        new List<RoundModel>();
+    
     /// <inheritdoc />
     public override void Register()
     {
@@ -156,8 +163,7 @@ public abstract class ModRoundSet : NamedModContent
     {
         var roundSetModel = new RoundSetModel(Id, new Il2CppReferenceArray<RoundModel>(DefinedRounds));
 
-        var baseRounds = Game.instance.model.roundSets
-            .FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ?? new List<RoundModel>();
+        var baseRounds = BaseRounds;
         for (var i = 0; i < DefinedRounds; i++)
         {
             roundSetModel.rounds[i] = i < baseRounds.Count

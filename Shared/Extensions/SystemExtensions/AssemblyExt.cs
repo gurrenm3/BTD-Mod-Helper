@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,9 +21,10 @@ public static class AssemblyExt
     }
 
     /// <inheritdoc cref="GetEmbeddedResource"/>
-    public static bool TryGetEmbeddedResource(this Assembly assembly, string endsWith, out Stream stream)
+    public static bool TryGetEmbeddedResource(this Assembly assembly, string endsWith,
+        [NotNullWhen(true)] out Stream? stream)
     {
-        stream = GetEmbeddedResource(assembly, endsWith)!;
+        stream = GetEmbeddedResource(assembly, endsWith);
         return stream != null;
     }
 }

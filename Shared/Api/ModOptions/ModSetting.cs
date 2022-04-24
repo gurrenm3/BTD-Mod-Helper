@@ -149,6 +149,7 @@ public abstract class ModSetting
     public bool requiresRestart;
 
     internal ModHelperOption? currentOption;
+    internal bool needsRestartRightNow;
 
     /// <summary>
     /// Gets the current value that this ModSetting holds

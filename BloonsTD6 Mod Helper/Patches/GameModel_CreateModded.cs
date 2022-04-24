@@ -7,6 +7,7 @@ using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.UI.Modded;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
 using UnhollowerRuntimeLib;
@@ -55,8 +56,10 @@ internal class GameModel_CreateModded
     [HarmonyPostfix]
     internal static void Postfix(GameModel result, List<ModModel> mods)
     {
-        ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));
-        ModHelper.PerformHook(mod => mod.OnNewGameModel(result));
+        if (!string.IsNullOrEmpty(RoundSetChanger.RoundSetOverride))
+        {
+            result.bloonSet = RoundSetChanger.RoundSetOverride;
+        }
 
         foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>()
                      .Where(content => !content.AffectBaseGameModel && content.ShouldApply))
@@ -75,5 +78,8 @@ internal class GameModel_CreateModded
                 }
             }
         }
+
+        ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));
+        ModHelper.PerformHook(mod => mod.OnNewGameModel(result));
     }
 }

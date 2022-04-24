@@ -64,6 +64,12 @@ internal class MelonMain : BloonsTD6Mod
         }
     }
 
+    public static readonly ModSettingBool ShowRoundsetChanger = new(true)
+    {
+        description =
+            "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing."
+    };
+
     public static readonly ModSettingBool BypassSavingRestrictions = new(true)
     {
         description =
@@ -255,7 +261,7 @@ internal class MelonMain : BloonsTD6Mod
     #region Debug
 
     private static readonly ModSettingCategory Debug = new("Debug");
-    
+
     private static readonly ModSettingFile VanillaSpritesClass = new("")
     {
         category = Debug,
@@ -277,7 +283,8 @@ internal class MelonMain : BloonsTD6Mod
     })
     {
         category = Debug,
-        description = "Generates the VanillaSprites.cs file based on the previous two settings"
+        description = "Generates the VanillaSprites.cs file based on the previous two settings",
+        buttonText = "Generate"
     };
 
     #endregion

@@ -109,10 +109,8 @@ internal class ModSettingsHandler
             writer.Formatting = Formatting.Indented;
             writer.WriteStartObject();
 
-            foreach (var item in mod.ModSettings)
+            foreach (var (key, modSetting) in mod.ModSettings)
             {
-                var key = item.Key;
-                var modSetting = item.Value;
                 if (!initialSave)
                 {
                     try

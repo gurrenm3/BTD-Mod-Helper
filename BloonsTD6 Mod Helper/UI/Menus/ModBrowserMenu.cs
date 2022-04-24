@@ -15,7 +15,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = Il2CppSystem.Object;
 
-namespace BTD_Mod_Helper.Menus;
+namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 {

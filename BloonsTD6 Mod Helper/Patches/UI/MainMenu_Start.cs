@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
-using BTD_Mod_Helper.BTD6_UI;
+using BTD_Mod_Helper.UI.Modded;
 
 namespace BTD_Mod_Helper.Patches.UI;
 

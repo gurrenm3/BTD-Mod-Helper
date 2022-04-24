@@ -26,10 +26,10 @@ public static class Animations
 #elif BloonsAT
                 var animationControllers = Resources.FindObjectsOfTypeAll(Il2CppType.Of<RuntimeAnimatorController>());
 #endif
-            foreach (RuntimeAnimatorController runtimeAnimatorController in animationControllers)
+            foreach (var runtimeAnimatorController in animationControllers)
             {
                 AnimationsByName[runtimeAnimatorController.name] = runtimeAnimatorController;
-                ModHelper.Msg("Animation: " + runtimeAnimatorController.name);
+                // ModHelper.Msg("Animation: " + runtimeAnimatorController.name);
             }
         }
     }

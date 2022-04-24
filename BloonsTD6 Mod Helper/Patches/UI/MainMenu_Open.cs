@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.UI.Modded;
 
 namespace BTD_Mod_Helper.Patches.UI;
 
@@ -15,6 +16,8 @@ internal class MainMenu_Open
         Fonts.Load();
             
         ModHelper.PerformHook(mod => mod.OnMainMenu());
+        
+        RoundSetChanger.EnsureHidden();
     }
 
     private static void ResetSessionData()

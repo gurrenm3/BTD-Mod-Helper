@@ -15,7 +15,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace BTD_Mod_Helper.BTD6_UI;
+namespace BTD_Mod_Helper.UI.Modded;
 
 internal class ModdedMonkeySelectMenu
 {

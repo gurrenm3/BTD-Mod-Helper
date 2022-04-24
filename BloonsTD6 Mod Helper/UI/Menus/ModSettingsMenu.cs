@@ -7,7 +7,7 @@ using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
 
-namespace BTD_Mod_Helper.Menus;
+namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 {

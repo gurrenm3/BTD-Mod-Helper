@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Menus;
+using BTD_Mod_Helper.UI.Menus;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

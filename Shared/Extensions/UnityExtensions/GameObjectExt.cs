@@ -198,7 +198,7 @@ public static class GameObjectExt
     /// <summary>
     /// Used to null check unity objects without bypassing the lifecycle
     /// </summary>
-    public static T? Exists<T>(this T obj) where T : Object
+    public static T? Exists<T>(this T? obj) where T : Object
     {
         return obj == null ? null : obj;
     }

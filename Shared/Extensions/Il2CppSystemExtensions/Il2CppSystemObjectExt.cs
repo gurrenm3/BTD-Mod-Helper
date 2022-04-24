@@ -23,7 +23,7 @@ public static class Il2CppSystemObjectExt
     /// (Cross-Game compatible) Check if object is the same type as T
     /// </summary>
     /// <typeparam name="T">Type to check</typeparam>
-    public static bool IsType<T>(this Object instance) where T : Object
+    public static bool IsType<T>(this Object? instance) where T : Object
     {
         return instance?.TryCast<T>() != null;
     }

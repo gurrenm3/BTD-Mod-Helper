@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         public static MapLoader GetMapLoader(this Game game)
         {
 #if BloonsTD6
-            return UI.instance.mapLoader;
+            return Assets.Scripts.Unity.UI_New.UI.instance.mapLoader;
 #elif BloonsAT
             return game.MapLoader;
 #endif

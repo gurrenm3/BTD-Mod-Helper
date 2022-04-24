@@ -148,9 +148,9 @@ public static partial class GameExt
     /// <summary>
     /// Get the instance of UI
     /// </summary>
-    public static UI GetUI(this Game game)
+    public static Assets.Scripts.Unity.UI_New.UI GetUI(this Game game)
     {
-        return UI.instance;
+        return Assets.Scripts.Unity.UI_New.UI.instance;
     }
 
     /// <summary>

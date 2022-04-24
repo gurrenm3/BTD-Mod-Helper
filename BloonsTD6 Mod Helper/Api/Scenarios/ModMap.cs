@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Assets.Scripts.Data;
 using Assets.Scripts.Data.MapSets;
@@ -177,9 +178,9 @@ public abstract class ModMap : NamedModContent
     /// <param name="mapName"></param>
     /// <param name="map">The custom map, if found</param>
     /// <returns></returns>
-    public static bool IsCustomMap(string mapName, out ModMap map)
+    public static bool IsCustomMap(string mapName, [NotNullWhen(true)] out ModMap? map)
     {
-        map = GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName)!;
+        map = GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName);
         return map != null;
     }
 }

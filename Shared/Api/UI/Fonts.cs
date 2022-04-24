@@ -21,10 +21,10 @@ public static class Fonts
 #elif BloonsAT
                 var fontAssets = Resources.FindObjectsOfTypeAll(Il2CppType.Of<TMP_FontAsset>());
 #endif
-            foreach (TMP_FontAsset fontAsset in fontAssets)
+            foreach (var fontAsset in fontAssets)
             {
                 FontsByName[fontAsset.name] = fontAsset;
-                ModHelper.Msg("Font: " + fontAsset.name);
+                // ModHelper.Msg("Font: " + fontAsset.name);
             }
         }
     }

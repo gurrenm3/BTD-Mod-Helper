@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Assets.Scripts.Utils;
 using UnhollowerBaseLib;
 using UnhollowerBaseLib.Runtime;
@@ -58,7 +59,7 @@ public static partial class ArrayExt
         return true;
     }
 
-    private static bool CheckType<T>(object obj, out T? t)
+    private static bool CheckType<T>(object obj, [NotNullWhen(true)] out T? t)
     {
         switch (obj)
         {

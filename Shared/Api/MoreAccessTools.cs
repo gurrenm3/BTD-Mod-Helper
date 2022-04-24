@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
@@ -18,10 +19,11 @@ public static class MoreAccessTools
     /// <param name="methodName">The desired method name within the nested type</param>
     /// <param name="index">If multiple nested classes share a name portion, use the one at this index, default 0</param>
     /// <returns>The MethodInfo, or null alongside a console warning if one couldn't be found</returns>
-    public static MethodInfo? SafeGetNestedClassMethod(Type outerType, string nestedTypeName, string methodName, int index = 0)
+    public static MethodInfo? SafeGetNestedClassMethod(Type outerType, string nestedTypeName, string methodName,
+        int index = 0)
     {
         var innerTypes = outerType.GetNestedTypes().Where(type => type.Name.Contains($"_{nestedTypeName}_")).ToArray();
-            
+
         if (!innerTypes.Any() || index >= innerTypes.Length || index < 0)
         {
             MelonLogger.Warning($"Failed to find nested type {nestedTypeName} within {outerType.Name} with index {0}");
@@ -34,9 +36,10 @@ public static class MoreAccessTools
     }
 
     /// <inheritdoc cref="SafeGetNestedClassMethod"/>
-    public static bool TryGetNestedClassMethod(Type outerType, string nestedClassName, string methodName, out MethodInfo method, int index = 0)
+    public static bool TryGetNestedClassMethod(Type outerType, string nestedClassName, string methodName,
+        [NotNullWhen(true)] out MethodInfo? method, int index = 0)
     {
-        method = SafeGetNestedClassMethod(outerType, nestedClassName, methodName, index)!;
+        method = SafeGetNestedClassMethod(outerType, nestedClassName, methodName, index);
         return method != null;
     }
 }

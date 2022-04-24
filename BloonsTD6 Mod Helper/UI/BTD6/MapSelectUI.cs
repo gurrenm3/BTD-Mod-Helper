@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.BTD6_UI;
+namespace BTD_Mod_Helper.UI.BTD6;
 
 /// <summary>
 /// Class to access the game's Map Select UI

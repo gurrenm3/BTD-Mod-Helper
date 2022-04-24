@@ -3,7 +3,7 @@ using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Menus;
+using BTD_Mod_Helper.UI.Menus;
 using MelonLoader.InternalUtils;
 using UnityEngine;
 

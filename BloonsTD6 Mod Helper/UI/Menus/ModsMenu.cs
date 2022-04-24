@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
@@ -15,7 +13,7 @@ using TMPro;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
 
-namespace BTD_Mod_Helper.Menus;
+namespace BTD_Mod_Helper.UI.Menus;
 
 /// <summary>
 /// The ModGameMenu for the screen showing current mods
@@ -139,16 +137,12 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                             TemplateMod.CreateEmptyMod(s);
                         }
                     }), null);
-                TaskScheduler.ScheduleTask(
-                    () =>
-                    {
-                        var tmpInputField = PopupScreen.instance.GetTMP_InputField()!;
-                        tmpInputField.textComponent.font = Fonts.Btd6FontBody;
-                        tmpInputField.characterLimit = 50;
-                        tmpInputField.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
-                    },
-                    () => PopupScreen.instance.GetTMP_InputField() != null
-                );
+                PopupScreen.instance.ModifyField(tmpInputField =>
+                {
+                    tmpInputField.textComponent.font = Fonts.Btd6FontBody;
+                    tmpInputField.characterLimit = 50;
+                    tmpInputField.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
+                });
             })
         );
         createModButton.AddText(
@@ -350,7 +344,12 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                 pair.Key.UpdateAvailable && pair.Value != null && pair.Value.gameObject.active));
         }
 
-        restartButton.SetActive(ModHelperData.All.Any(data => data.RestartRequired));
+        restartButton.SetActive(
+            ModHelperData.All.Any(data => data.RestartRequired) ||
+            ModHelper.Mods.Any(bloonsMod =>
+                bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
+            )
+        );
 
         SetSelectedMod(selectedMod!);
     }
