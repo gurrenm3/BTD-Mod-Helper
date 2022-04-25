@@ -40,7 +40,7 @@ internal class Notification
     public Notification(int slot, NkhMsg msg)
     {
         if (assetBundle == null)
-            assetBundle = AssetBundle.LoadFromMemory(Properties.Resources.ingame_popup);
+            assetBundle = ModContent.GetBundle<MelonMain>("ingame_popup")!;
         if (canvas == null)
             canvas = assetBundle.LoadAsset("Canvas").Cast<GameObject>();
 

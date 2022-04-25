@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
@@ -107,6 +108,7 @@ internal static class RoundSetChanger
 
     private static void StartOptionsMode()
     {
+        MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
         HideButton();
         RevealOptions();
         /*if (MenuManager.instance.GetCurrentMenu().Exists().IsType<MapSelectScreen>(out var screen))
@@ -117,6 +119,7 @@ internal static class RoundSetChanger
 
     private static void StopOptionsMode()
     {
+        MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         HideOptions();
         RevealButton();
         /*if (MenuManager.instance.GetCurrentMenu().Exists().IsType<MapSelectScreen>(out var screen))

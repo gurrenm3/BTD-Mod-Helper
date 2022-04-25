@@ -18,24 +18,95 @@ public static class TemplateMod
     /// <summary>
     /// Creates an empty mod with the given name
     /// </summary>
-    public static async void CreateEmptyMod(string name)
+    public static void CreateModButtonClicked(string name)
     {
         var path = Path.Combine(MelonMain.ModSourcesFolder, name);
-        if (Directory.Exists(path))
+        var csProjPath = Path.Combine(path, $"{name}.csproj");
+        if (Directory.Exists(path) && !File.Exists(csProjPath))
         {
             PopupScreen.instance.ShowOkPopup(
                 $"Did not create mod template, directory \"{path}\" already exists.");
-            return;
         }
+        else if (File.Exists(csProjPath))
+        {
+            PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Upgrade Project",
+                $"There was already a mod project found at {path}. " +
+                "Would you like to upgrade its .csproj to net6 instead?",
+                new Action(() => UpgradeProject(path, name, csProjPath)),
+                "Yes", null, "No", Popup.TransitionAnim.Scale);
+        }
+        else
+        {
+            CreateProject(path, name);
+        }
+    }
 
-        await using var stream = ModHelper.Main.Assembly.GetEmbeddedResource("TemplateMod.zip")!;
+    private static async void CreateProject(string path, string name)
+    {
+        await using var stream = ModHelper.Main.Assembly.GetEmbeddedResource($"{nameof(TemplateMod)}.zip")!;
         using var zipArchive = new ZipArchive(stream);
         zipArchive.ExtractToDirectory(path);
         await ReplaceInAllFiles(path, name);
 
-        PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, $"Created {name}",
-            $"Successfully created empty mod at \"{path}\". Open in default IDE?",
-            new Action(() => OpenProject(path, name)), "Yes", null, "No", Popup.TransitionAnim.Scale);
+        SuccessPopup(path, name, "Created");
+    }
+
+    private static async void UpgradeProject(string path, string name, string csProjPath)
+    {
+        await using var stream = ModHelper.Main.Assembly.GetEmbeddedResource("TemplateMod.zip")!;
+        using var zipArchive = new ZipArchive(stream);
+
+        File.Move(csProjPath, csProjPath.Replace(".csproj", "_OLD.csproj"), true);
+        var csProj = zipArchive.GetEntry($"{nameof(TemplateMod)}.csproj")!;
+        csProj.ExtractToFile(csProjPath);
+        await ReplaceFileText(csProjPath, name);
+
+
+        var slnPath = Path.Combine(path, $"{name}.sln");
+        if (File.Exists(slnPath))
+        {
+            File.Move(slnPath, slnPath.Replace(".sln", "_OLD.sln"), true);
+            var sln = zipArchive.GetEntry($"{nameof(TemplateMod)}.sln")!;
+            sln.ExtractToFile(slnPath);
+            await ReplaceFileText(slnPath, name);
+        }
+
+        var properties = Path.Combine(path, "Properties");
+        if (Directory.Exists(properties))
+        {
+            Directory.Delete(properties, true);
+        }
+
+        var modHelperDataPath = Path.Combine(path, "ModHelperData.cs");
+        if (!File.Exists(modHelperDataPath))
+        {
+            var modHelperData = zipArchive.GetEntry("ModHelperData.cs")!;
+            modHelperData.ExtractToFile(modHelperDataPath);
+            await ReplaceFileText(modHelperDataPath, name);
+        }
+
+        var gitIgnorePath = Path.Combine(path, ".gitignore");
+        if (!File.Exists(gitIgnorePath))
+        {
+            zipArchive.GetEntry(".gitignore")!.ExtractToFile(gitIgnorePath);
+        }
+
+        SuccessPopup(path, name, "Upgraded");
+    }
+
+    private static void SuccessPopup(string path, string name, string verb) =>
+        TaskScheduler.ScheduleTask(() => PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
+            $"{verb} {name}", $"Successfully {verb} mod at \"{path}\". Open in default IDE?",
+            new Action(() => OpenProject(path, name)), "Yes", null, "No", Popup.TransitionAnim.Scale));
+
+    private static async Task ReplaceFileText(string file, string name)
+    {
+        var text = await File.ReadAllTextAsync(file);
+        File.Delete(file);
+        await File.WriteAllTextAsync(
+            file.Replace(nameof(TemplateMod), name),
+            text.Replace(nameof(TemplateMod), name)
+        );
     }
 
     private static async Task ReplaceInAllFiles(string path, string name)
@@ -43,17 +114,8 @@ public static class TemplateMod
         var files = Directory.EnumerateFiles(path);
         await Task.WhenAll(files
             .Where(file => ValidExtensions.Any(file.EndsWith))
-            .Select(file =>
-                Task.Run(async () =>
-                {
-                    var text = await File.ReadAllTextAsync(file);
-                    File.Delete(file);
-                    await File.WriteAllTextAsync(
-                        file.Replace(nameof(TemplateMod), name),
-                        text.Replace(nameof(TemplateMod), name)
-                    );
-                })
-            ).ToArray()
+            .Select(file => Task.Run(async () => await ReplaceFileText(file, name)))
+            .ToArray()
         );
     }
 

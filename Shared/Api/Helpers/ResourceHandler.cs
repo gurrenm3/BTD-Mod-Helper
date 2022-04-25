@@ -99,7 +99,7 @@ internal class ResourceHandler
 
         if (Resources.TryGetValue(guid, out var bytes))
         {
-            var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = 0};
+            var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -.5f};
             ImageConversion.LoadImage(texture, bytes);
             TextureCache[guid] = texture;
             return texture;
@@ -115,13 +115,13 @@ internal class ResourceHandler
 
     internal static readonly Dictionary<string, Sprite> SpriteCache = new();
 
-    internal static Sprite CreateSprite(Texture2D texture, float pixelsPerUnit = 10)
+    internal static Sprite CreateSprite(Texture2D texture, float pixelsPerUnit = 10.8f)
     {
         return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
             new Vector2(0.5f, 0.5f), pixelsPerUnit);
     }
 
-    internal static Sprite? CreateSprite(string guid, float pixelsPerUnit = 10)
+    internal static Sprite? CreateSprite(string guid, float pixelsPerUnit = 10.8f)
     {
         if (GetTexture(guid) is Texture2D texture)
         {
@@ -133,7 +133,7 @@ internal class ResourceHandler
         return null;
     }
 
-    internal static Sprite? GetSprite(string guid, float pixelsPerUnit = 10)
+    internal static Sprite? GetSprite(string guid, float pixelsPerUnit = 10.8f)
     {
         if (SpriteCache.TryGetValue(guid, out var sprite) && sprite != null)
         {

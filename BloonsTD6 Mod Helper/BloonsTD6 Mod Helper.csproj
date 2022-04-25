@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
-        <ImplicitUsings>enable</ImplicitUsings>
         <Configurations>BTD6_Debug;BTD6_Release</Configurations>
         <DefineConstants>BloonsTD6;TRACE</DefineConstants>
         <Nullable>enable</Nullable>
@@ -22,16 +21,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Remove="System" />
-        <Using Remove="System.IO" />
-        <Using Remove="System.Linq" />
-        <Using Remove="System.Net.Http" />
-        <Using Remove="System.Threading" />
-        <Using Remove="System.Threading.Tasks" />
-        <Using Remove="System.Collections.Generic" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="System.Resources.Extensions" Version="6.0.0" GeneratePathProperty="true" />
         <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
         <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" GeneratePathProperty="true" />
@@ -40,22 +29,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Update="Properties\Resources.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>Resources.resx</DependentUpon>
-        </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-        <EmbeddedResource Update="Properties\Resources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
         <EmbeddedResource Include="nfd.dll" />
         <EmbeddedResource Include="nfd_x86.dll" />
         <EmbeddedResource Include="btd6.targets" />
         <EmbeddedResource Include="TemplateMod.zip" />
+        <EmbeddedResource Include="Resources\ingame_popup.bundle" />
     </ItemGroup>
 
     <ItemGroup>

@@ -134,7 +134,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     {
                         if (!string.IsNullOrEmpty(s))
                         {
-                            TemplateMod.CreateEmptyMod(s);
+                            TemplateMod.CreateModButtonClicked(s);
                         }
                     }), null);
                 PopupScreen.instance.ModifyField(tmpInputField =>
@@ -161,7 +161,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     "Would you like to do that now?", new Action(() =>
                     {
                         // TODO LINUX COMPATIBLE RESTART
-                        var info = new ProcessStartInfo
+                        Process.Start(new ProcessStartInfo
                         {
                             Arguments = "/C ping 127.0.0.1 -n 3 && \"" +
                                         MelonUtils.GetApplicationPath() +
@@ -170,8 +170,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                             WindowStyle = ProcessWindowStyle.Hidden,
                             CreateNoWindow = true,
                             FileName = "cmd.exe"
-                        };
-                        Process.Start(info);
+                        });
                         MenuManager.instance.QuitGame();
                     }), "Yes", null, "No", Popup.TransitionAnim.Scale);
             }));
@@ -438,6 +437,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             selectedMod!.MoveToDisabledModsFolder();
             SetSelectedMod(selectedMod);
             SortMods(currentSort);
+            MenuManager.instance.buttonClickSound.Play("ClickSounds");
         });
 
         selectedModEnableButton = buttonsRow.AddButton(
@@ -452,6 +452,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             selectedMod!.MoveToEnabledModsFolder();
             SetSelectedMod(selectedMod);
             SortMods(currentSort);
+            MenuManager.instance.buttonClickSound.Play("ClickSounds");
         });
 
         selectedModSettingsButton = buttonsRow.AddButton(

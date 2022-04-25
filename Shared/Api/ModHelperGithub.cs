@@ -59,7 +59,7 @@ internal static class ModHelperGithub
 
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
 
-        Mods = mods.Where(mod => mod.RepoDataSuccess).Repeat(7).ToList();
+        Mods = mods.Where(mod => mod.RepoDataSuccess).ToList();
 
         UpdateRateLimit();
     }
@@ -158,7 +158,7 @@ internal static class ModHelperGithub
 
             if (mod.ManualDownload)
             {
-                Process.Start(releaseAsset.BrowserDownloadUrl);
+                Process.Start(new ProcessStartInfo(releaseAsset.BrowserDownloadUrl) {UseShellExecute = true});
                 return "";
             }
 
