@@ -69,7 +69,7 @@ internal static class ModHelperGithub
         try
         {
             var result = await ModHelperHttp.Client.GetStringAsync(VerifiedModdersURL);
-            string?[]? strings = JsonConvert.DeserializeObject<string[]>(result);
+            var strings = JsonConvert.DeserializeObject<string[]>(result);
             if (strings != null)
             {
                 foreach (var s in strings)

@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 public class ModSettingFile : ModSetting<string>
 {
     /// <summary>
-    /// TODO whats the filter format
+    /// https://github.com/mlabbe/nativefiledialog/blob/master/README.md#file-filter-syntax
     /// </summary>
     public string filter = "";
         

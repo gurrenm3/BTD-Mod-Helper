@@ -163,7 +163,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                         // TODO LINUX COMPATIBLE RESTART
                         Process.Start(new ProcessStartInfo
                         {
-                            Arguments = "/C ping 127.0.0.1 -n 3 && \"" +
+                            Arguments = "/C ping 127.0.0.1 -n 10 && \"" +
                                         MelonUtils.GetApplicationPath() +
                                         "\" " +
                                         Environment.GetCommandLineArgs().Join(delimiter: " "),
@@ -171,7 +171,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                             CreateNoWindow = true,
                             FileName = "cmd.exe"
                         });
-                        MenuManager.instance.QuitGame();
+                        
+                        TaskScheduler.ScheduleTask(() => MenuManager.instance.QuitGame());
                     }), "Yes", null, "No", Popup.TransitionAnim.Scale);
             }));
         restartButton.AddText(

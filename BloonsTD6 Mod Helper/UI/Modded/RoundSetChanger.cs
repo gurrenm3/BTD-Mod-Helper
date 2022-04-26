@@ -16,8 +16,8 @@ internal static class RoundSetChanger
 {
     private static readonly string[] ShowOnMenus =
     {
-        "MapSelectUI", "MapSelectScreen", "DifficultySelectUI", "DifficultySelectScreen", "ModeSelectUI",
-        "ModeSelectScreen"
+        "MapSelectUI", "DifficultySelectUI","ModeSelectUI",
+        "MapSelectScreen", "DifficultySelectScreen", "ModeSelectScreen"
     };
 
     private const float AnimatorSpeed = .75f;
@@ -26,13 +26,13 @@ internal static class RoundSetChanger
     private static ModHelperPanel buttonPanel = null!;
     private static ModHelperScrollPanel optionsPanel = null!;
     private static ModHelperButton button = null!;
-    private static Dictionary<string, ModHelperImage> ticks = new();
+    private static readonly Dictionary<string, ModHelperImage> Ticks = new();
 
     public static string? RoundSetOverride { get; private set; }
 
     private static void CreatePanel(GameObject screen)
     {
-        ticks.Clear();
+        Ticks.Clear();
         RoundSetOverride = "";
         buttonPanel = screen.AddModHelperPanel(
             new Info("RoundSetChangerPanel", anchor: new Vector2(1, 0), pivot: new Vector2(1f, 0f)));
@@ -99,7 +99,7 @@ internal static class RoundSetChanger
             new Info(displayName, 0, -175, 500, 100), displayName, 50f
         );
 
-        ticks[id] = roundButton.AddImage(
+        Ticks[id] = roundButton.AddImage(
             new Info("Tick", -75, -75, 100, 100, anchor: Vector2.one), VanillaSprites.SelectedTick
         );
 
@@ -155,7 +155,7 @@ internal static class RoundSetChanger
         optionsPanel.SetActive(true);
         optionsPanel.GetComponent<Animator>().Play("PopupScaleIn");
         optionsPanel.ScrollContent.RectTransform.localPosition = new Vector3(-200, 0, 0);
-        foreach (var (id, image) in ticks)
+        foreach (var (id, image) in Ticks)
         {
             image.SetActive(RoundSetOverride == id);
         }
