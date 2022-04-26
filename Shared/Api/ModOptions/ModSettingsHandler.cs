@@ -103,41 +103,39 @@ internal class ModSettingsHandler
         }
 
         var fileName = mod.SettingsFilePath;
-        using (var file = File.CreateText(fileName))
-        using (var writer = new JsonTextWriter(file))
+        using var file = File.CreateText(fileName);
+        using var writer = new JsonTextWriter(file);
+        writer.Formatting = Formatting.Indented;
+        writer.WriteStartObject();
+
+        foreach (var (key, modSetting) in mod.ModSettings)
         {
-            writer.Formatting = Formatting.Indented;
-            writer.WriteStartObject();
-
-            foreach (var (key, modSetting) in mod.ModSettings)
+            if (!initialSave)
             {
-                if (!initialSave)
+                try
                 {
-                    try
+                    if (modSetting.OnSave())
                     {
-                        if (modSetting.OnSave())
-                        {
-                            writer.WritePropertyName(key);
-                            writer.WriteValue(modSetting.GetValue());
-                        }
+                        writer.WritePropertyName(key);
+                        writer.WriteValue(modSetting.GetValue());
                     }
-                    catch (Exception e)
-                    {
-                        ModHelper.Warning($"Failed onSave action for setting {key}");
-                        ModHelper.Warning(e);
-                    }
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Warning($"Failed onSave action for setting {key}");
+                    ModHelper.Warning(e);
+                }
 
-                    modSetting.currentOption = null;
-                }
-                else
-                {
-                    writer.WritePropertyName(key);
-                    writer.WriteValue(modSetting.GetValue());
-                }
+                modSetting.currentOption = null;
             }
-
-            writer.WriteEndObject();
+            else
+            {
+                writer.WritePropertyName(key);
+                writer.WriteValue(modSetting.GetValue());
+            }
         }
+
+        writer.WriteEndObject();
     }
 
     internal static void SaveModSettings(bool initialSave = false)

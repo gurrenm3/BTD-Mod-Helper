@@ -19,7 +19,7 @@ namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 {
-    private const int ModsPerPage = 10;
+    private const int ModsPerPage = 15;
     private const int SearchCutoff = 50;
     private const int TypingCooldown = 30;
 

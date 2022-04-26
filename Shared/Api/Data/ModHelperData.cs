@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
+using Newtonsoft.Json.Linq;
 using Octokit;
 using UnityEngine;
 using FileMode = System.IO.FileMode;
@@ -20,8 +22,10 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 internal class ModHelperData
 {
-    private const string ModHelperDataName = "ModHelperData.cs";
-    private const string ModHelperDataName2 = "ModHelperData.txt";
+    private const string ModHelperDataCs = "ModHelperData.cs";
+    private const string ModHelperDataTxt = "ModHelperData.txt";
+    private const string ModHelperDataJson = "ModHelperData.json";
+    private const string ModHelperModsJson = "ModHelperMods.json";
     private const string DefaultIcon = "Icon.png";
 
     private const string VersionRegex = "\\bVersion\\s*=\\s*\"([.0-9]+)\";?[\n\r]+";
@@ -34,6 +38,7 @@ internal class ModHelperData
     private const string ManualDownloadRegex = "\\bManualDownload\\s*=\\s*(false|true);?[\n\r]+";
     private const string ZipRegex = "\\bZipName\\s*=\\s*\"(.+)\\.zip\";?[\n\r]+";
     private const string AuthorRegex = "\\bAuthor\\s*=\\s*\"(.+)\";?[\n\r]+";
+    private const string SubPathRegex = "\\bSubPath\\s*=\\s*\"(.+)\";?[\n\r]+";
 
     /// <summary>
     /// The ModHelperData objects for currently enabled mods
@@ -89,11 +94,12 @@ internal class ModHelperData
     {
     }
 
-    public ModHelperData(Repository repository)
+    public ModHelperData(Repository repository, string? subPath = null)
     {
         Repository = repository;
         RepoOwner = repository.Owner.Login;
         RepoName = repository.Name;
+        SubPath = subPath;
     }
 
     public ModHelperData(MelonMod mod)
@@ -162,6 +168,7 @@ internal class ModHelperData
     public bool ManualDownload { get; protected set; }
     public string? ZipName { get; protected set; }
     public string? Author { get; protected set; }
+    public string? SubPath { get; protected set; }
 
     /// <summary>
     /// The currently active mod that this is associated with, if any
@@ -192,6 +199,7 @@ internal class ModHelperData
     internal bool RepoDataSuccess { get; private set; }
     internal string? RepoVersion { get; private set; }
     internal Release? LatestRelease { get; private set; }
+    internal GitHubCommit? LatestCommit { get; private set; }
 
 
     internal bool UpdateAvailable =>
@@ -200,6 +208,12 @@ internal class ModHelperData
         RepoDataSuccess &&
         RepoVersion != null &&
         IsUpdate(Version, RepoVersion);
+
+    internal string ReadmeUrl => SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json")
+        ? $"https://github.com/{RepoOwner}/{RepoName}#readme"
+        : $"https://github.com/{RepoOwner}/{RepoName}/tree/{Repository!.DefaultBranch}/{SubPath}#readme";
+
+    internal string StarsUrl => $"https://www.github.com/{RepoOwner}/{RepoName}/stargazers";
 
     private void ReadValuesFromString(string data)
     {
@@ -213,6 +227,26 @@ internal class ModHelperData
         ManualDownload = GetRegexMatch<bool>(data, ManualDownloadRegex);
         ZipName = GetRegexMatch<string>(data, ZipRegex);
         Author = GetRegexMatch<string>(data, AuthorRegex);
+        SubPath = GetRegexMatch<string>(data, SubPathRegex);
+    }
+
+    private void ReadValuesFromJson(string data)
+    {
+        var json = JObject.Parse(data);
+        foreach (var (key, set) in Setters)
+        {
+            if (json.ContainsKey(key))
+            {
+                try
+                {
+                    set.Invoke(this, new object?[] {json["key"]});
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+        }
     }
 
     private static T? GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
@@ -244,9 +278,22 @@ internal class ModHelperData
         Active.Add(modHelperData);
     }
 
-    private string GetContentURL(string name)
+    internal string GetContentURL(string name)
     {
-        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Repository!.DefaultBranch}/{name}";
+        var path = name;
+        if (SubPath != null)
+        {
+            if (SubPath.EndsWith(".json") || SubPath.EndsWith(".txt"))
+            {
+                path = name.Replace(ModHelperDataJson, SubPath).Replace(ModHelperDataTxt, SubPath);
+            }
+            else
+            {
+                path = $"{SubPath}/{name}";
+            }
+        }
+
+        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Repository!.DefaultBranch}/{path}";
     }
 
     public async Task LoadDataFromRepoAsync()
@@ -254,9 +301,10 @@ internal class ModHelperData
         try
         {
             string? data = null;
-            try
+
+            try // getting ModHelperData.cs
             {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataName));
+                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs));
             }
             catch (Exception)
             {
@@ -265,9 +313,9 @@ internal class ModHelperData
 
             if (data == null)
             {
-                try
+                try // getting ModHelperData.txt
                 {
-                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataName2));
+                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt));
                 }
                 catch (Exception)
                 {
@@ -277,10 +325,29 @@ internal class ModHelperData
 
             if (data == null)
             {
-                return;
+                try // getting ModHelperData.json
+                {
+                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson));
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+
+                if (data != null)
+                {
+                    ReadValuesFromJson(data);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                ReadValuesFromString(data);
             }
 
-            ReadValuesFromString(data);
 
             if (HasRequiredRepoData())
             {
@@ -304,7 +371,7 @@ internal class ModHelperData
 
     public bool HasRequiredRepoData()
     {
-        return Version != null && RepoName != null && RepoOwner != null;
+        return Version != null && RepoName != null && RepoOwner != null && (SubPath == null || DllName != null);
     }
 
     public async Task<Release?> GetLatestRelease()
@@ -316,6 +383,33 @@ internal class ModHelperData
         catch (Exception e)
         {
             ModHelper.Warning($"Failed to get latest release for {Name}");
+            ModHelper.Warning(e);
+            return null;
+        }
+        finally
+        {
+            ModHelperGithub.UpdateRateLimit();
+        }
+    }
+
+    public async Task<GitHubCommit?> GetLatestCommit()
+    {
+        try
+        {
+            var path = DllName;
+            if (!SubPath!.EndsWith(".json") && !SubPath!.EndsWith(".txt"))
+            {
+                path = $"{SubPath}/{path}";
+            }
+
+            return LatestCommit =
+                (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository!.Id, new CommitRequest {Path = path}))
+                [0];
+            ;
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Failed to get latest commit for {Name}");
             ModHelper.Warning(e);
             return null;
         }
@@ -358,14 +452,16 @@ internal class ModHelperData
         return IconBytes != null && IconBytes.Length != 0;
     }
 
+
     public bool ModInstalledLocally(out ModHelperData modHelperData)
     {
-        var result = All.FirstOrDefault(data => (data.RepoName != null &&
-                                                 data.RepoName == RepoName &&
-                                                 data.RepoOwner == RepoOwner &&
-                                                 data.RepoOwner != null) ||
-                                                (data.DllName != null &&
-                                                 data.DllName == DllName));
+        var result = All.FirstOrDefault(
+            data =>
+                (data.RepoName?.Equals(RepoName) == true &&
+                 data.RepoOwner?.Equals(RepoOwner) == true &&
+                 data.SubPath == SubPath) ||
+                (data.DllName != null && data.DllName == DllName)
+        );
         modHelperData = result!;
         return result != null;
     }
@@ -489,20 +585,22 @@ internal class ModHelperData
 
         return false;
     }
-    
-    
+
+
     public static bool IsUpdate(string currentVersion, string latestVersion)
     {
         if (string.IsNullOrEmpty(currentVersion) || string.IsNullOrEmpty(latestVersion))
+        {
             return false;
+        }
 
         var currentParts = Regex.Split(Regex.Replace(currentVersion, @"\D", "."), @"\.+");
         var latestParts = Regex.Split(Regex.Replace(latestVersion, @"\D", "."), @"\.+");
 
-            
+
         var length = Math.Max(currentParts.Length, latestParts.Length);
-            
-        for(var i = 0; i < length; i++)
+
+        for (var i = 0; i < length; i++)
         {
             int thisPart = 0, thatPart = 0;
 
@@ -510,19 +608,50 @@ internal class ModHelperData
             {
                 int.TryParse(currentParts[i], out thisPart);
             }
-                
+
             if (i < latestParts.Length)
             {
                 int.TryParse(latestParts[i], out thatPart);
             }
-                
-            if(thisPart < thatPart)
+
+            if (thisPart < thatPart)
+            {
                 return true;
-            if(thisPart > thatPart)
+            }
+
+            if (thisPart > thatPart)
+            {
                 return false;
+            }
         }
 
         return false;
+    }
+
+    public static async Task<IEnumerable<ModHelperData>> LoadFromMonoRepo(Repository monoRepo)
+    {
+        var modsJsonUrl =
+            $"{ModHelperGithub.RawUserContent}/{monoRepo.Owner.Login}/{monoRepo.Name}/{monoRepo.DefaultBranch}/{ModHelperModsJson}";
+
+        try
+        {
+            var modsJson = JArray.Parse(await ModHelperHttp.Client.GetStringAsync(modsJsonUrl));
+
+            ModHelper.Msg($"Found monorepo {monoRepo.FullName}");
+            return modsJson
+                .Where(token => token.Type == JTokenType.String)
+                .Select(token => new ModHelperData(monoRepo, token.ToString()));
+        }
+        catch (HttpRequestException)
+        {
+            //ignored
+        }
+        catch (TimeoutException)
+        {
+            //ignored
+        }
+
+        return Enumerable.Empty<ModHelperData>();
     }
 
     public static void LoadAll()

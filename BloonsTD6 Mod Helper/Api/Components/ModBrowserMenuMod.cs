@@ -126,8 +126,7 @@ internal static class ModBrowserMenuModExt
 {
     public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
     {
-        mod.Homepage.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(
-            $"https://github.com/{modHelperData.RepoOwner}/{modHelperData.RepoName}#readme")
+        mod.Homepage.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(modHelperData.ReadmeUrl)
         {
             UseShellExecute = true
         }));
@@ -186,8 +185,7 @@ internal static class ModBrowserMenuModExt
         mod.Installed.SetActive(installed && !current.UpdateAvailable);
 
         mod.StarCount.SetText($"{modHelperData.Repository!.StargazersCount}");
-        mod.Star.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(
-            $"https://www.github.com/{modHelperData.RepoOwner}/{modHelperData.RepoName}/stargazers")
+        mod.Star.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(modHelperData.StarsUrl)
         {
             UseShellExecute = true
         }));

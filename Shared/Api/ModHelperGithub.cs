@@ -15,7 +15,8 @@ internal static class ModHelperGithub
 {
     public const string RawUserContent = "https://raw.githubusercontent.com";
 
-    private const string Topic = "btd6-mod";
+    private const string RepoTopic = "btd6-mod";
+    private const string MonoRepoTopic = "btd6-mods";
     private const string ProductName = "btd-mod-helper";
 
     private const string VerifiedModdersURL =
@@ -46,13 +47,17 @@ internal static class ModHelperGithub
 
     public static async Task PopulateMods()
     {
-        var searchRepositoryResult =
-            await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{Topic}"));
+        var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}"));
+        var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
 
+        var monoRepoTasks = (await monoRepoSearchTask).Items
+            .Select(ModHelperData.LoadFromMonoRepo)
+            .ToArray();
 
-        var mods = searchRepositoryResult.Items
+        var mods = (await repoSearchTask).Items
             .OrderBy(repo => repo.CreatedAt)
             .Select(repo => new ModHelperData(repo))
+            .Concat((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d))
             .ToArray();
 
         ModHelper.Msg("finished getting mods");
@@ -89,15 +94,33 @@ internal static class ModHelperGithub
     public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false,
         Action<string>? callback = null)
     {
-        var latestRelease = mod.LatestRelease ?? await mod.GetLatestRelease();
-        if (latestRelease == null)
+        Release? latestRelease = null!;
+        GitHubCommit? latestCommit = null!;
+        if (mod.SubPath != null)
         {
-            string errorMessage = $"Failed to get latest release from the GitHub API. {Sorry}";
-            ModHelper.Error(errorMessage);
+            latestCommit = mod.LatestCommit ?? await mod.GetLatestCommit();
+            if (latestCommit == null)
+            {
+                const string errorMessage = $"Failed to get latest commit from the GitHub API. {Sorry}";
+                ModHelper.Error(errorMessage);
 #if BloonsTD6
-            PopupScreen.instance.ShowOkPopup(errorMessage);
+                PopupScreen.instance.ShowOkPopup(errorMessage);
 #endif
-            return;
+                return;
+            }
+        }
+        else
+        {
+            latestRelease = mod.LatestRelease ?? await mod.GetLatestRelease();
+            if (latestRelease == null)
+            {
+                const string errorMessage = $"Failed to get latest release from the GitHub API. {Sorry}";
+                ModHelper.Error(errorMessage);
+#if BloonsTD6
+                PopupScreen.instance.ShowOkPopup(errorMessage);
+#endif
+                return;
+            }
         }
 
         var action = new Action(() =>
@@ -106,7 +129,12 @@ internal static class ModHelperGithub
             {
                 try
                 {
-                    var resultFile = await DownloadRelease(mod, latestRelease);
+                    var asset = mod.SubPath == null
+                        ? latestRelease.Assets.FirstOrDefault(asset => asset.Name == mod.DllName) ??
+                          latestRelease.Assets[0]
+                        : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
+                            DateTimeOffset.Now, mod.GetContentURL(mod.DllName!), null);
+                    var resultFile = await DownloadAsset(mod, asset);
                     if (resultFile != null)
                     {
                         if (callback != null && !string.IsNullOrWhiteSpace(resultFile))
@@ -122,7 +150,7 @@ internal static class ModHelperGithub
                     ModHelper.Warning(e);
                 }
 
-                string errorMessage = $"Failed to download asset. {Sorry}";
+                const string errorMessage = $"Failed to download asset. {Sorry}";
                 ModHelper.Error(errorMessage);
 #if BloonsTD6
                 PopupScreen.instance.ShowOkPopup(errorMessage);
@@ -139,7 +167,9 @@ internal static class ModHelperGithub
 #if BloonsTD6
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
                 $"Do you want to download\n{mod.Name} v{mod.RepoVersion}?",
-                "Latest Release Message:\n\"" + latestRelease.Body + "\"",
+                mod.SubPath == null
+                    ? $"Latest Release Message:\n\"{latestRelease.Body}\""
+                    : $"Latest Commit Message:\n\"{latestCommit.Commit.Message}\"",
                 action, "Yes", null, "No", Popup.TransitionAnim.Scale);
 #elif BloonsAT
                 throw new NotImplementedException(); // need to figure out how to do popups in BloonsAT
@@ -149,30 +179,14 @@ internal static class ModHelperGithub
         UpdateRateLimit();
     }
 
-    public static async Task<string?> DownloadRelease(ModHelperData mod, Release release)
-    {
-        try
-        {
-            var releaseAsset = release.Assets.FirstOrDefault(asset => asset.Name == mod.DllName) ??
-                               release.Assets[0];
-
-            if (mod.ManualDownload)
-            {
-                Process.Start(new ProcessStartInfo(releaseAsset.BrowserDownloadUrl) {UseShellExecute = true});
-                return "";
-            }
-
-            return await DownloadAsset(mod, releaseAsset);
-        }
-        catch (Exception e)
-        {
-            ModHelper.Warning(e);
-            return null;
-        }
-    }
-
     public static async Task<string?> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
     {
+        if (mod.ManualDownload)
+        {
+            Process.Start(new ProcessStartInfo(releaseAsset.BrowserDownloadUrl) {UseShellExecute = true});
+            return "";
+        }
+
         var name = mod.DllName ?? releaseAsset.Name;
         if (name == null || !name.EndsWith(".dll"))
         {
@@ -232,7 +246,6 @@ internal static class ModHelperGithub
                 var message = $"Successfully downloaded {name}\nRemember to restart to apply the changes!";
                 ModHelper.Log(message);
 #if BloonsTD6
-
                 PopupScreen.instance.ShowOkPopup(message);
 #endif
                 mod.SetVersion(mod.RepoVersion!);

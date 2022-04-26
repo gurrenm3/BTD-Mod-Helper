@@ -120,7 +120,7 @@ internal static class ModsMenuModExt
             background = VanillaSprites.MainBGPanelGrey;
         else if (data.Mod == ModContent.GetInstance<MelonMain>())
             background = VanillaSprites.MainBGPanelYellow;
-        else if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) != true)
+        else if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) == false)
             background = VanillaSprites.MainBgPanelHematite;
         else if (data.Mod != null && !(data.Mod is BloonsMod)) background = VanillaSprites.MainBGPanelBlueNotches;
         return background;
