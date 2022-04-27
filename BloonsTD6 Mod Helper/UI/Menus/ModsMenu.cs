@@ -57,6 +57,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static ModHelperButton selectedModSettingsButton = null!;
     private static ModHelperButton selectedModDisableButton = null!;
     private static ModHelperButton selectedModEnableButton = null!;
+    private static ModHelperButton selectedModHomeButton = null!;
     private static ModHelperButton updateAllButton = null!;
     private static ModHelperImage selectedModIcon = null!;
     private static ModsMenuMod modTemplate = null!;
@@ -171,7 +172,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                             CreateNoWindow = true,
                             FileName = "cmd.exe"
                         });
-                        
+
                         TaskScheduler.ScheduleTask(() => MenuManager.instance.QuitGame());
                     }), "Yes", null, "No", Popup.TransitionAnim.Scale);
             }));
@@ -246,6 +247,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModDisableButton.SetActive(modSelected.Enabled);
         selectedModEnableButton.SetActive(!modSelected.Enabled);
+
+        selectedModHomeButton.SetActive(selectedMod.ReadmeUrl != null);
     }
 
     private static void SortMods(int selectedIndex)
@@ -373,6 +376,13 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             "Test Long Mod Name", FontLarge, TextAlignmentOptions.Left
         );
 
+
+        selectedModHomeButton = firstRow.AddButton(new Info("HomePage", size: ModNameHeight), VanillaSprites.HomeBtn,
+            new Action(() => Process.Start(new ProcessStartInfo(selectedMod!.ReadmeUrl!)
+            {
+                UseShellExecute = true
+            })));
+
         // ReSharper disable once AsyncVoidLambda
         selectedModUpdateButton = firstRow.AddButton(
             new Info("UpdateButton", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
@@ -423,7 +433,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModIcon = buttonsRow.AddImage(
             new Info("ModIcon", ModIconSize / 2f, 0, ModIconSize, ModIconSize, anchor: new Vector2(0, 0.5f)),
-            GetSprite<MelonMain>("Icon")!
+            GetSprite<MelonMain>("Icon")
         );
 
         selectedModDisableButton = buttonsRow.AddButton(

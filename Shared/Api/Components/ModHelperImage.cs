@@ -46,7 +46,7 @@ public class ModHelperImage : ModHelperComponent
     }
         
     /// <inheritdoc cref="Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)"/>
-    public static ModHelperImage Create(Info info, Sprite sprite)
+    public static ModHelperImage Create(Info info, Sprite? sprite)
     {
         var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
 

@@ -126,7 +126,7 @@ internal static class ModBrowserMenuModExt
 {
     public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
     {
-        mod.Homepage.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(modHelperData.ReadmeUrl)
+        mod.Homepage.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(modHelperData.ReadmeUrl!)
         {
             UseShellExecute = true
         }));

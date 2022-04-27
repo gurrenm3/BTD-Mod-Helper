@@ -31,7 +31,7 @@ internal class ModHelperData
     private const string VersionRegex = "\\bVersion\\s*=\\s*\"([.0-9]+)\";?[\n\r]+";
     private const string NameRegex = "\\bName\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string DescRegex = "\\bDescription\\s*=(?:[\\s+]*\"(.+)\")+;?[\n\r]+";
-    private const string IconRegex = "\\bIcon\\s*=\\s*\"(.+)\\.png\";?[\n\r]+";
+    private const string IconRegex = "\\bIcon\\s*=\\s*\"(.+\\.png)\";?[\n\r]+";
     private const string DllRegex = "\\bDllName\\s*=\\s*\"(.+\\.dll)\";?[\n\r]+";
     private const string RepoNameRegex = "\\bRepoName\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string RepoOwnerRegex = "\\bRepoOwner\\s*=\\s*\"(.+)\";?[\n\r]+";
@@ -209,9 +209,17 @@ internal class ModHelperData
         RepoVersion != null &&
         IsUpdate(Version, RepoVersion);
 
-    internal string ReadmeUrl => SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json")
-        ? $"https://github.com/{RepoOwner}/{RepoName}#readme"
-        : $"https://github.com/{RepoOwner}/{RepoName}/tree/{Repository!.DefaultBranch}/{SubPath}#readme";
+    internal string? ReadmeUrl
+    {
+        get
+        {
+            if (RepoOwner == null || RepoName == null) 
+                return Mod?.Info.DownloadLink;
+            if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
+                return $"https://github.com/{RepoOwner}/{RepoName}#readme";
+            return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Repository!.DefaultBranch}/{SubPath}#readme";
+        }
+    }
 
     internal string StarsUrl => $"https://www.github.com/{RepoOwner}/{RepoName}/stargazers";
 

@@ -187,7 +187,7 @@ public class ModHelperComponent : MonoBehaviour
     }
 
     /// <inheritdoc cref="ModHelperImage.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)"/>
-    public ModHelperImage AddImage(Info info, Sprite sprite)
+    public ModHelperImage AddImage(Info info, Sprite? sprite)
     {
         return Add(ModHelperImage.Create(info, sprite));
     }
