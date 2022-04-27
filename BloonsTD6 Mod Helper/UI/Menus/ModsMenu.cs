@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
+using Assets.Scripts.Unity.Tasks;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
+using Il2CppSystem.Collections;
 using TMPro;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
@@ -161,19 +163,21 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     "Changes you've made will require restarting the game to take effect. " +
                     "Would you like to do that now?", new Action(() =>
                     {
-                        // TODO LINUX COMPATIBLE RESTART
+                        var linux = MelonUtils.IsUnderWineOrSteamProton();
                         Process.Start(new ProcessStartInfo
                         {
-                            Arguments = "/C ping 127.0.0.1 -n 10 && \"" +
+                            Arguments = (linux ? "-c" : "/C") +
+                                        " ping 127.0.0.1 -n 5 && \"" +
                                         MelonUtils.GetApplicationPath() +
                                         "\" " +
                                         Environment.GetCommandLineArgs().Join(delimiter: " "),
                             WindowStyle = ProcessWindowStyle.Hidden,
                             CreateNoWindow = true,
-                            FileName = "cmd.exe"
+                            FileName = linux ? "sh" : "cmd.exe",
+                            UseShellExecute = true
                         });
 
-                        TaskScheduler.ScheduleTask(() => MenuManager.instance.QuitGame());
+                        MenuManager.instance.QuitGame();
                     }), "Yes", null, "No", Popup.TransitionAnim.Scale);
             }));
         restartButton.AddText(
