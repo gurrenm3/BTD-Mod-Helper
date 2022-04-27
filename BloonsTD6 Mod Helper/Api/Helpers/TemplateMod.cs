@@ -31,7 +31,7 @@ public static class TemplateMod
         {
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Upgrade Project",
                 $"There was already a mod project found at {path}. " +
-                "Would you like to upgrade its .csproj to net6 instead?",
+                "Would you like to upgrade its .csproj to net6?",
                 new Action(() => UpgradeProject(path, name, csProjPath)),
                 "Yes", null, "No", Popup.TransitionAnim.Scale);
         }

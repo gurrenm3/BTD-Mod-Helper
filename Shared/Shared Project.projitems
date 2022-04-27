@@ -42,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\CostHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\Guard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ProcessHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ResourceHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\VanillaSpriteGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\VanillaTypeGenerator.cs" />

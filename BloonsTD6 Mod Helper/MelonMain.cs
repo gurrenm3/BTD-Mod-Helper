@@ -1,19 +1,20 @@
-﻿using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.InGame;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.ModOptions;
-using System;
-using Assets.Scripts.Unity.UI_New.Popups;
-using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Utils;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
+using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Unity.UI_New.Popups;
+using Assets.Scripts.Utils;
+using BTD_Mod_Helper;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
-using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
-using BTD_Mod_Helper;
+using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.UI.Modded;
+using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 [assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", ModHelper.Version, "Gurrenm4 and Doombubbles")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
@@ -36,6 +37,9 @@ internal class MelonMain : BloonsTD6Mod
         {
             ModHelperHttp.Init();
             ModHelperGithub.Init();
+
+            Task.Run(ModHelperGithub.PopulateMods);
+            Task.Run(ModHelperGithub.GetVerifiedModders);
         }
         catch (Exception e)
         {
@@ -52,9 +56,6 @@ internal class MelonMain : BloonsTD6Mod
         ModHelper.LoadAllMods();
 
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
-
-        Task.Run(ModHelperGithub.PopulateMods);
-        Task.Run(ModHelperGithub.GetVerifiedModders);
 
         try
         {

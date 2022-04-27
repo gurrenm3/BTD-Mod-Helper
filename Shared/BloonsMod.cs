@@ -96,6 +96,50 @@ public abstract class BloonsMod : MelonMod, IModContent
         return null;
     }
 
+    /// <summary>
+    /// Signifies that the game shouldn't crash / the mod shouldn't stop loading if one of its patches fails
+    /// </summary>
+    public virtual bool OptionalPatches => true;
+
+    internal List<string> failedPatches = new();
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed override void OnInitializeMelon()
+    {
+        // If they haven't set OptionalPatches to false and haven't already signified they have their own patching plan
+        // by using HarmonyDontPatchAll themselves...
+        if (OptionalPatches && !HarmonyDontPatchAll)
+        {
+            GetType()
+                .GetProperty(nameof(HarmonyDontPatchAll))!
+                .GetSetMethod(true)!
+                .Invoke(this, new object[] {true});
+
+            AccessTools.GetTypesFromAssembly(Assembly).Do(type =>
+            {
+                try
+                {
+                    HarmonyInstance.CreateClassProcessor(type).Patch();
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Warning(
+                        $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.Message}\" This needs to be fixed by {Info.Author}");
+                    failedPatches.Add(type.Name);
+                }
+            });
+        }
+
+        OnInitialize();
+    }
+
+    /// <inheritdoc cref="OnInitializeMelon"/>
+    public virtual void OnInitialize()
+    {
+    }
+
     #region API Hooks
 
     /// <summary>

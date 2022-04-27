@@ -132,8 +132,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                 pivot: new Vector2(0.5f, 0)), VanillaSprites.EditChallengeIcon,
             new Action(() =>
             {
-                PopupScreen.instance.ShowSetNamePopup("Create Empty Mod",
-                    "Choose a name for your mod. \n Example: 'TitleCaseButWithoutSpaces'", new Action<string>(s =>
+                PopupScreen.instance.ShowSetNamePopup("Create/Upgrade Mod",
+                    "Name of mod to create/upgrade. \n Example: 'TitleCaseButWithoutSpaces'", new Action<string>(s =>
                     {
                         if (!string.IsNullOrEmpty(s))
                         {
@@ -161,24 +161,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             {
                 PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
                     "Changes you've made will require restarting the game to take effect. " +
-                    "Would you like to do that now?", new Action(() =>
-                    {
-                        var linux = MelonUtils.IsUnderWineOrSteamProton();
-                        Process.Start(new ProcessStartInfo
-                        {
-                            Arguments = (linux ? "-c" : "/C") +
-                                        " ping 127.0.0.1 -n 5 && \"" +
-                                        MelonUtils.GetApplicationPath() +
-                                        "\" " +
-                                        Environment.GetCommandLineArgs().Join(delimiter: " "),
-                            WindowStyle = ProcessWindowStyle.Hidden,
-                            CreateNoWindow = true,
-                            FileName = linux ? "sh" : "cmd.exe",
-                            UseShellExecute = true
-                        });
-
-                        MenuManager.instance.QuitGame();
-                    }), "Yes", null, "No", Popup.TransitionAnim.Scale);
+                    "Would you like to do that now?", new Action(ProcessHelper.RestartGame),
+                    "Yes", null, "No", Popup.TransitionAnim.Scale);
             }));
         restartButton.AddText(
             new Info("Text", 0, -200, 500, 100), "Restart", FontMedium
@@ -382,19 +366,18 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
 
         selectedModHomeButton = firstRow.AddButton(new Info("HomePage", size: ModNameHeight), VanillaSprites.HomeBtn,
-            new Action(() => Process.Start(new ProcessStartInfo(selectedMod!.ReadmeUrl!)
-            {
-                UseShellExecute = true
-            })));
+            new Action(() => ProcessHelper.OpenURL(selectedMod!.ReadmeUrl!)));
 
         // ReSharper disable once AsyncVoidLambda
         selectedModUpdateButton = firstRow.AddButton(
-            new Info("UpdateButton", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
-            VanillaSprites.GreenBtnLong, new Action(async () => await ModHelperGithub.DownloadLatest(selectedMod!,
-                false, _ => Refresh()))
+            new Info("UpdateButton", size: ModNameHeight), VanillaSprites.GreenBtn, new Action(async () =>
+                await ModHelperGithub.DownloadLatest(selectedMod!, false, _ => Refresh()))
         );
-        selectedModUpdateButton.AddText(
+        /*selectedModUpdateButton.AddText(
             new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one), "Update", FontMedium
+        );*/
+        selectedModUpdateButton.AddImage(
+            new Info("UpgradeIcon", size: ModNameHeight - Padding), VanillaSprites.UpgradeIcon2
         );
 
         var secondRow = selectedModPanel.AddPanel(

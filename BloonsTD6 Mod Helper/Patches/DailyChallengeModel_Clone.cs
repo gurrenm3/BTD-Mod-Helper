@@ -3,7 +3,7 @@ using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(DailyChallengeModel), nameof(DailyChallengeModel.Clone))]
+[HarmonyPatch(typeof(DailyChallengeModel), "This won't work")]
 internal static class DailyChallengeModel_Clone
 {
     [HarmonyPostfix]

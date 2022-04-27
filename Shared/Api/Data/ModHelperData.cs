@@ -10,6 +10,7 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using UnityEngine;
+using UnityEngine.InputSystem.Utilities;
 using FileMode = System.IO.FileMode;
 
 namespace BTD_Mod_Helper.Api;
@@ -187,7 +188,7 @@ internal class ModHelperData
     /// or the data Version is ahead of the currently loaded mod's version
     /// </summary>
     internal bool RestartRequired =>
-        Enabled == (Mod == null) || (Mod != null && Version != null && IsUpdate(Version, Mod.Info.Version));
+        Enabled == (Mod == null) || (Mod != null && Version != null && IsUpdate(Mod.Info.Version, Version));
 
     /// <summary>
     /// The place that the .dll file for this mod is on the local machine, if any
@@ -213,7 +214,7 @@ internal class ModHelperData
     {
         get
         {
-            if (RepoOwner == null || RepoName == null) 
+            if (RepoOwner == null || RepoName == null)
                 return Mod?.Info.DownloadLink;
             if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
                 return $"https://github.com/{RepoOwner}/{RepoName}#readme";
@@ -247,7 +248,16 @@ internal class ModHelperData
             {
                 try
                 {
-                    set.Invoke(this, new object?[] {json["key"]});
+                    set.Invoke(this, new object?[] {json[key]!.ToObject<bool>()});
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+
+                try
+                {
+                    set.Invoke(this, new object?[] {json[key]!.ToObject<string>()});
                 }
                 catch (Exception)
                 {
@@ -289,16 +299,9 @@ internal class ModHelperData
     internal string GetContentURL(string name)
     {
         var path = name;
-        if (SubPath != null)
+        if (SubPath != null && !SubPath.EndsWith(".json") && SubPath.EndsWith(".txt"))
         {
-            if (SubPath.EndsWith(".json") || SubPath.EndsWith(".txt"))
-            {
-                path = name.Replace(ModHelperDataJson, SubPath).Replace(ModHelperDataTxt, SubPath);
-            }
-            else
-            {
-                path = $"{SubPath}/{name}";
-            }
+            path = $"{SubPath}/{name}";
         }
 
         return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Repository!.DefaultBranch}/{path}";
@@ -309,14 +312,24 @@ internal class ModHelperData
         try
         {
             string? data = null;
+            var json = false;
 
-            try // getting ModHelperData.cs
+            if (SubPath != null && (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json")))
             {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs));
+                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(SubPath));
+                json = SubPath.EndsWith(".json");
             }
-            catch (Exception)
+
+            if (data == null)
             {
-                // ignored
+                try // getting ModHelperData.cs
+                {
+                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs));
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
 
             if (data == null)
@@ -336,25 +349,18 @@ internal class ModHelperData
                 try // getting ModHelperData.json
                 {
                     data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson));
+                    json = true;
                 }
                 catch (Exception)
                 {
                     // ignored
                 }
+            }
 
-                if (data != null)
-                {
-                    ReadValuesFromJson(data);
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-                ReadValuesFromString(data);
-            }
+            if (data == null) return;
+
+            if (json) ReadValuesFromJson(data);
+            else ReadValuesFromString(data);
 
 
             if (HasRequiredRepoData())
@@ -468,7 +474,7 @@ internal class ModHelperData
                 (data.RepoName?.Equals(RepoName) == true &&
                  data.RepoOwner?.Equals(RepoOwner) == true &&
                  data.SubPath == SubPath) ||
-                (data.DllName != null && data.DllName == DllName)
+                (data.DllName != null && data.DllName == DllName && RepoName == null && RepoOwner == null)
         );
         modHelperData = result!;
         return result != null;

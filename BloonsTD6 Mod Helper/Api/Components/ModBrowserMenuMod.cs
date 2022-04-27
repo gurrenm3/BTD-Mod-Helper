@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.UI.Menus;
 using TMPro;
 using UnityEngine;
@@ -95,7 +96,8 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
         mainPanel.AddButton(new Info("Download", size: 200),
             ModContent.GetSpriteReference<MelonMain>("DownloadBtn"), null);
-        mainPanel.AddButton(new Info("Update", size: 200), VanillaSprites.UpgradeIcon, null);
+        var update = mainPanel.AddButton(new Info("Update", size: 200), VanillaSprites.UpgradeIcon, null);
+        update.AddImage(new Info("UpdateIcon", size: 133), VanillaSprites.UpgradeIcon2);
 
         mainPanel.AddImage(new Info("Installed", size: 200), VanillaSprites.TickGreenIcon);
 
@@ -126,11 +128,8 @@ internal static class ModBrowserMenuModExt
 {
     public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
     {
-        mod.Homepage.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(modHelperData.ReadmeUrl!)
-        {
-            UseShellExecute = true
-        }));
-        mod.Description.SetText(modHelperData.Description);
+        mod.Homepage.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.ReadmeUrl!));
+        mod.Description.Text.SetText(modHelperData.Description);
         mod.Info.Button.SetOnClick(() =>
         {
             mod.SetDescriptionShowing(!mod.descriptionShowing);
@@ -185,10 +184,7 @@ internal static class ModBrowserMenuModExt
         mod.Installed.SetActive(installed && !current.UpdateAvailable);
 
         mod.StarCount.SetText($"{modHelperData.Repository!.StargazersCount}");
-        mod.Star.Button.SetOnClick(() => Process.Start(new ProcessStartInfo(modHelperData.StarsUrl)
-        {
-            UseShellExecute = true
-        }));
+        mod.Star.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.StarsUrl));
 
         mod.SetDescriptionShowing(false);
 

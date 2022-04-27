@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json;
 using Octokit;
@@ -183,7 +184,7 @@ internal static class ModHelperGithub
     {
         if (mod.ManualDownload)
         {
-            Process.Start(new ProcessStartInfo(releaseAsset.BrowserDownloadUrl) {UseShellExecute = true});
+            ProcessHelper.OpenURL(releaseAsset.BrowserDownloadUrl);
             return "";
         }
 
@@ -205,7 +206,7 @@ internal static class ModHelperGithub
                     Directory.CreateDirectory(ModHelper.OldModsDirectory);
                 }
 
-                File.Copy(mod.FilePath, oldModsFilePath, true);
+                File.Move(mod.FilePath, oldModsFilePath, true);
                 ModHelper.Msg($"Backing up to {oldModsFilePath}");
             }
 

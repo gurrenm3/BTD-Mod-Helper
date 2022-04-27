@@ -32,7 +32,7 @@ public class ModHelperHttp
             " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
         Client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-        Client.Timeout = TimeSpan.FromMilliseconds(TimeOutMS);
+        // Client.Timeout = TimeSpan.FromMilliseconds(TimeOutMS);
     }
 
     /// <summary>
