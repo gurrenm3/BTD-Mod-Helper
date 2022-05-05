@@ -67,10 +67,16 @@ internal class MelonMain : BloonsTD6Mod
         }
     }
 
+    private static readonly ModSettingCategory General = new("General")
+    {
+        collapsed = false
+    };
+    
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
         description =
-            "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing."
+            "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
+        category = General
     };
 
     public static readonly ModSettingBool BypassSavingRestrictions = new(true)
@@ -78,7 +84,8 @@ internal class MelonMain : BloonsTD6Mod
         description =
             "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
             "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
-            "So, this setting overrides that restriction and will allow progress to be saved once more."
+            "So, this setting overrides that restriction and will allow progress to be saved once more.",
+        category = General
     };
 
     public static readonly ModSettingBool CleanProfile = new(true)
@@ -86,10 +93,25 @@ internal class MelonMain : BloonsTD6Mod
         description =
             "Automatically removes modded information from your profile before the data gets synced to the " +
             "Ninja Kiwi servers. NOTE: This is for very specific information relating to custom content implemented " +
-            "using the Mod Helper. This does not broadly prevent hacker pooling or mods messing up your profile in other ways."
+            "using the Mod Helper. This does not broadly prevent hacker pooling or mods messing up your profile in other ways.",
+        category = General
     };
 
-    private static readonly ModSettingBool AutoHideModdedClientPopup = false;
+    public static readonly ModSettingBool UseOldLoading = new(false)
+    {
+        description =
+            "Switches back to the old system of loading all mod content all at once as soon as the Title Screen is reached " +
+            "(causing the game to hang until finished), instead of the new method of adding new load tasks alongside the vanilla ones. " +
+            "Depending on the mods use this could be slightly faster, but less robust.",
+        category = General,
+        requiresRestart = true
+    };
+
+    private static readonly ModSettingBool AutoHideModdedClientPopup = new (false)
+    {
+        category = General,
+        description = "Removes the popup telling you that you're using a modded client. Like, we get it already."
+    };
 
     private static readonly ModSettingCategory ModMaking = "Mod Making";
 

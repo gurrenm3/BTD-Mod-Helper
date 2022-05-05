@@ -15,10 +15,10 @@ public abstract class ModUpgrade : NamedModContent
 {
     internal static readonly Dictionary<string, ModUpgrade> Cache = new();
 
-        
+
     /// <inheritdoc />
     public sealed override int RegisterPerFrame => 2;
-        
+
     /// <summary>
     /// ModUpgrades register second
     /// </summary>
@@ -34,6 +34,7 @@ public abstract class ModUpgrade : NamedModContent
             {
                 textTable[Id + " Title"] = ConfirmationTitle;
             }
+
             if (ConfirmationBody != null)
             {
                 textTable[Id + " Body"] = ConfirmationBody;
@@ -44,17 +45,7 @@ public abstract class ModUpgrade : NamedModContent
     /// <inheritdoc />
     public override void Register()
     {
-        try
-        {
-            upgradeModel = GetUpgradeModel();
-        }
-        catch (Exception e)
-        {
-            ModHelper.Error("Failed to create UpgradeModel for ModUpgrade " + Name);
-            ModHelper.Error(e);
-            return;
-        }
-
+        upgradeModel = GetUpgradeModel();
 
         AssignToModTower();
 
@@ -63,27 +54,31 @@ public abstract class ModUpgrade : NamedModContent
             Game.instance.model.AddUpgrade(upgradeModel);
             Cache[upgradeModel.name] = this;
         }
-        catch (Exception e)
+        finally
         {
-            ModHelper.Error("General error in loading ModUpgrade " + Name);
-            ModHelper.Error(e);
+            rollbackActions.Push(() =>
+            {
+                Game.instance.model.upgrades = Game.instance.model.upgrades.RemoveItem(upgradeModel);
+                Game.instance.model.upgradesByName.Remove(upgradeModel.name);
+                Game.instance.model.RemoveChildDependant(upgradeModel);
+                Cache.Remove(upgradeModel.name);
+            });
         }
     }
 
     internal virtual void AssignToModTower()
     {
-        if (Path >= 0 && Path < 3 && Tower.tierMaxes[Path] >= Tier)
+        if (Path is >= 0 and < 3 && Tower.tierMaxes[Path] >= Tier)
         {
             try
             {
                 Tower.upgrades[Path, Tier - 1] = this;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ModHelper.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
-                ModHelper.Error(e);
                 ModHelper.Error(
-                    "Double check that the Tower loaded and all Path and Tier values are correct");
+                    "Double check that all Path and Tier values are correct");
                 throw;
             }
         }
@@ -91,7 +86,7 @@ public abstract class ModUpgrade : NamedModContent
         {
             ModHelper.Warning("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
             ModHelper.Warning(
-                "Double check that the Tower loaded and all Path and Tier values are correct");
+                "Double check that all Path and Tier values are correct");
         }
     }
 
@@ -207,9 +202,8 @@ public abstract class ModUpgrade : NamedModContent
     /// <returns></returns>
     public virtual UpgradeModel GetUpgradeModel()
     {
-        return upgradeModel ??
-               (upgradeModel = new UpgradeModel(Id, Cost, XpCost, IconReference ?? DefaultIcon,
-                   Path, Tier - 1, 0, NeedsConfirmation ? Id : "", ""));
+        return upgradeModel ??= new UpgradeModel(Id, Cost, XpCost, IconReference ?? DefaultIcon,
+            Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
     }
 
     /// <summary>
@@ -222,7 +216,6 @@ public abstract class ModUpgrade : NamedModContent
         return false;
     }
 }
-
 
 /// <summary>
 /// A convenient generic class for specifying the ModTower that this ModUpgrade is for

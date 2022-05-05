@@ -17,13 +17,26 @@ internal class TitleScreen_Start
     [HarmonyPriority(Priority.High)]
     internal static void Postfix()
     {
-        ModHelper.PerformHook(mod => mod.OnTitleScreen());
+        if (ModHelper.FallbackToOldLoading)
+        {
+            ModContent.GetContent<ModByteLoader>().Do(loader => loader.LoadAllBytes());
+
+            new PreLoadResourcesTask().RunSync();
+
+            ModHelper.Mods
+                .Where(mod => mod.Content.Count > 0)
+                .OrderBy(mod => mod.Priority)
+                .Select(mod => new ModContentTask {mod = mod})
+                .Do(task => task.RunSync());
+            
+            ModContent.GetContent<ModLoadTask>().Do(task => task.RunSync());
+        }
+
 
         foreach (var modParagonTower in ModContent.GetContent<ModVanillaParagon>())
         {
             modParagonTower.AddUpgradesToRealTowers();
         }
-
 
         foreach (var modelMod in Game.instance.model.mods)
         {
@@ -36,7 +49,7 @@ internal class TitleScreen_Start
                 modelMod.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
             }
         }
-            
+
         foreach (var modHero in ModContent.GetContent<ModHero>())
         {
             try
@@ -55,6 +68,8 @@ internal class TitleScreen_Start
                 ModHelper.Error(e);
             }
         }
-            
+
+
+        ModHelper.PerformHook(mod => mod.OnTitleScreen());
     }
 }

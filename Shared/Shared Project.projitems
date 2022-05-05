@@ -48,6 +48,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\VanillaTypeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\IModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\LoadEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModByteLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModContentInstances.cs" />

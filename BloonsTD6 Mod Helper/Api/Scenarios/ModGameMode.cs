@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models.Towers.Mods;
+﻿using System;
+using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using Il2CppSystem.Collections.Generic;
@@ -61,10 +62,29 @@ public abstract class ModGameMode : NamedModContent
     {
         model = GetDefaultGameModeModel();
 
-        ModifyBaseGameModeModel(model);
+        try
+        {
+            ModifyBaseGameModeModel(model);
+        }
+        catch (Exception)
+        {
+            ModHelper.Error($"Failed to modify base GameMode for {Id}");
+            throw;
+        }
 
-        Game.instance.model.mods = Game.instance.model.mods.AddTo(model);
-        Game.instance.model.AddChildDependant(model);
+        try
+        {
+            Game.instance.model.mods = Game.instance.model.mods.AddTo(model);
+            Game.instance.model.AddChildDependant(model);
+        }
+        finally
+        {
+            rollbackActions.Push(() =>
+            {
+                Game.instance.model.mods = Game.instance.model.mods.RemoveItem(model);
+                Game.instance.model.RemoveChildDependant(model);
+            });
+        }
     }
 
     internal ModModel model = null!;

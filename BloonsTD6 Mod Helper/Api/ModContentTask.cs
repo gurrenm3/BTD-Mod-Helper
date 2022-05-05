@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BTD_Mod_Helper.Api;
 
-namespace BTD_Mod_Helper;
+namespace BTD_Mod_Helper.Api;
 
 /// <summary>
 /// Initial task to register ModContent from other mods
@@ -34,16 +33,35 @@ internal class ModContentTask : ModLoadTask
                 current = 0;
                 yield return null;
             }
+
             try
             {
                 modContent.Register();
             }
             catch (Exception e)
             {
-                ModHelper.Error($"Failed to register {modContent.Name}");
+                ModHelper.Error($"Failed to register {modContent.Id}");
                 ModHelper.Error(e);
-            }
+                mod.loadEvents.Add(new LoadEvent(LoadEventType.Error, $"Failed to register {modContent.Name}"));
 
+                foreach (var rollbackAction in modContent.rollbackActions)
+                {
+                    try
+                    {
+                        rollbackAction();
+                    }
+                    catch (Exception e2)
+                    {
+                        ModHelper.Error($"Error while rolling back failed addition of {Id}");
+                        ModHelper.Error(e2);
+                        break;
+                    }
+                }
+            }
+            finally
+            {
+                modContent.rollbackActions.Clear();
+            }
         }
     }
 }

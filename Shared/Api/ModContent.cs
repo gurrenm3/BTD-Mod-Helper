@@ -32,7 +32,7 @@ namespace BTD_Mod_Helper.Api
         public string Id => ID;
 
         /// <summary>
-        /// (Cross-Game compatible) Backing property for ID that's only able to be overrided internally
+        /// (Cross-Game compatible) Backing property for ID that's only able to be overriden internally
         /// </summary>
         protected internal virtual string ID => mod.IDPrefix + Name;
 
@@ -76,6 +76,9 @@ namespace BTD_Mod_Helper.Api
                 .ToList();
         }
 
+        
+        internal Stack<Action> rollbackActions = new();
+        
         private const BindingFlags ConstructorFlags = BindingFlags.Instance |
                                                       BindingFlags.Public |
                                                       BindingFlags.NonPublic;

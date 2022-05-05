@@ -269,7 +269,7 @@ public static partial class Il2CppReferenceArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+    /// (Cross-Game compatible) Return this with the specified item removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
@@ -280,9 +280,6 @@ public static partial class Il2CppReferenceArrayExt
         this Il2CppReferenceArray<TSource> referenceArray, TCast itemToRemove)
         where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
     {
-        if (!HasItemsOfType<TSource, TCast>(referenceArray))
-            return referenceArray;
-
         var arrayList = referenceArray.ToList();
 
         for (var i = 0; i < referenceArray.Count; i++)
