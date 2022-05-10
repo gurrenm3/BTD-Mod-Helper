@@ -106,7 +106,7 @@ internal class VanillaSpriteGenerator
                 }
 
                 var atlasLine = spriteDump.ReadLine();
-                if (atlasLine?.Contains("1") == true)
+                if (atlasLine?.Contains('1') == true)
                 {
                     spriteDump.ReadLine();
                     var atlas = spriteDump.ReadLine()?.Split('"')[1];

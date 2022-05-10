@@ -9,9 +9,6 @@
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'BTD6_Debug' ">
         <DocumentationFile>bin\BTD6_Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
     </PropertyGroup>
 

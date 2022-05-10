@@ -42,7 +42,7 @@ internal class ModContentTask : ModLoadTask
             {
                 ModHelper.Error($"Failed to register {modContent.Id}");
                 ModHelper.Error(e);
-                mod.loadEvents.Add(new LoadEvent(LoadEventType.Error, $"Failed to register {modContent.Name}"));
+                mod.loadErrors.Add($"Failed to register {modContent.Name}");
 
                 foreach (var rollbackAction in modContent.rollbackActions)
                 {

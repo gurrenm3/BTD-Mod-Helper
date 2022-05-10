@@ -24,7 +24,7 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     /// <summary>
     /// The settings in this mod organized by name
     /// </summary>
-    public Dictionary<string, ModSetting> ModSettings { get; internal set; } = null!;
+    public Dictionary<string, ModSetting> ModSettings { get; internal set; } =  new();
 
     /// <summary>
     /// The embedded resources of this mod
@@ -105,7 +105,7 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     /// </summary>
     public virtual bool OptionalPatches => true;
     
-    internal List<LoadEvent> loadEvents = new();
+    internal List<string> loadErrors = new();
     
     /// <summary>
     /// 
@@ -132,7 +132,7 @@ public abstract partial class BloonsMod : MelonMod, IModContent
                     MelonLogger.Warning(
                         $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.Message}\" This needs to be fixed by {Info.Author}");
                     
-                    loadEvents.Add(new LoadEvent(LoadEventType.Warning, $"Failed to apply patch(es) in {type.Name}"));
+                    loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
 
                     if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
                     {

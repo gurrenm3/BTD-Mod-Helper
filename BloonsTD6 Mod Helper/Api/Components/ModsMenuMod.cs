@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
+using Assets.Scripts.Unity.UI_New.Popups;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.UI.Menus;
@@ -19,6 +20,7 @@ internal class ModsMenuMod : ModHelperComponent
     public ModHelperButton Update => GetDescendent<ModHelperButton>("Update");
     public ModHelperButton Settings => GetDescendent<ModHelperButton>("Settings");
     public ModHelperImage Restart => GetDescendent<ModHelperImage>("Restart");
+    public ModHelperButton Warning => GetDescendent<ModHelperButton>("Warning");
 
     public ModsMenuMod(IntPtr ptr) : base(ptr)
     {
@@ -62,6 +64,11 @@ internal class ModsMenuMod : ModHelperComponent
             new Info("Settings", ModsMenu.Padding / -2f, ModsMenu.Padding / 2f, ModsMenu.ModPanelHeight / 3f,
                 ModsMenu.ModPanelHeight / 3f, anchor: new Vector2(1, 0)), VanillaSprites.SettingsIconSmall, null
         );
+        
+        panel.AddButton(
+            new Info("Warning", ModsMenu.Padding / 2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
+                ModsMenu.ModPanelHeight / 2f, anchor: new Vector2(0, 1)), VanillaSprites.NoticeBtn, null
+        );
 
         mod.SetActive(false);
 
@@ -91,10 +98,25 @@ internal static class ModsMenuModExt
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));
         mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open((BloonsMod) melonMod!));
 
-        if (!(melonMod is BloonsMod bloonsMod && bloonsMod.ModSettings.Any()))
+        mod.Settings.SetActive(false);
+        mod.Warning.SetActive(false);
+        
+        if (melonMod is BloonsMod bloonsMod)
         {
-            mod.Settings.SetActive(false);
+            if (bloonsMod.ModSettings.Any())
+            {
+                mod.Settings.SetActive(true);
+            }
+            if (bloonsMod.loadErrors.Any())
+            {
+                mod.Warning.SetActive(true);
+                mod.Warning.Button.SetOnClick(() =>
+                {
+                    PopupScreen.instance.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n"));
+                });
+            }
         }
+        
 
         mod.Refresh(modHelperData);
 
