@@ -18,11 +18,12 @@ public abstract partial class ModTowerDisplay : ModDisplay
         {
             Tower.displays.Add(this);
         }
-        catch (Exception e)
+        finally
         {
-            ModHelper.Error(
-                $"Failed to assign ModTowerDisplay {Name} to ModTower {Tower.Name}");
-            ModHelper.Error(e);
+            rollbackActions.Push(() =>
+            {
+                Tower?.displays.Remove(this);
+            });
         }
     }
 

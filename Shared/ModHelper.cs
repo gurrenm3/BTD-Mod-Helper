@@ -40,6 +40,14 @@ public static class ModHelper
     internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
     internal static string ModSettingsDirectory => Path.Combine(ModHelperDirectory, "Mod Settings");
 
+    private static bool fallBackToOldLoading;
+    
+    internal static bool FallbackToOldLoading
+    {
+        set => fallBackToOldLoading = value;
+        get => fallBackToOldLoading || MelonMain.UseOldLoading;
+    }
+
     /// <summary>
     /// Active mods that use ModHelper functionality
     /// </summary>
@@ -169,9 +177,9 @@ public static class ModHelper
         PerformHook<BloonsTD6Mod>(action);
     }
 #elif BloonsAT
-        internal static void PerformHook(System.Action<BloonsATMod> action)
-        {
-            PerformHook<BloonsATMod>(action);
-        }
+    internal static void PerformHook(System.Action<BloonsATMod> action)
+    {
+        PerformHook<BloonsATMod>(action);
+    }
 #endif
 }

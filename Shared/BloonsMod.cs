@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Patches;
+using BTD_Mod_Helper.Patches.Resources;
+using Main = Assets.Main.Main;
 
 namespace BTD_Mod_Helper;
 
 /// <summary>
 /// Expanded version of MelonMod to suit the needs of Bloons games and the Mod Helper
 /// </summary>
-public abstract class BloonsMod : MelonMod, IModContent
+public abstract partial class BloonsMod : MelonMod, IModContent
 {
     /// <summary>
     /// All ModContent in ths mod
@@ -20,7 +24,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// <summary>
     /// The settings in this mod organized by name
     /// </summary>
-    public Dictionary<string, ModSetting> ModSettings { get; internal set; } = null!;
+    public Dictionary<string, ModSetting> ModSettings { get; internal set; } =  new();
 
     /// <summary>
     /// The embedded resources of this mod
@@ -100,9 +104,9 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// Signifies that the game shouldn't crash / the mod shouldn't stop loading if one of its patches fails
     /// </summary>
     public virtual bool OptionalPatches => true;
-
-    internal List<string> failedPatches = new();
-
+    
+    internal List<string> loadErrors = new();
+    
     /// <summary>
     /// 
     /// </summary>
@@ -127,7 +131,13 @@ public abstract class BloonsMod : MelonMod, IModContent
                 {
                     MelonLogger.Warning(
                         $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.Message}\" This needs to be fixed by {Info.Author}");
-                    failedPatches.Add(type.Name);
+                    
+                    loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
+
+                    if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
+                    {
+                        ModHelper.FallbackToOldLoading = true;
+                    }
                 }
             });
         }

@@ -35,4 +35,12 @@ public abstract partial class ModLoadTask : NamedModContent
     {
         // nothing here since registering happens after TitleScreen, so ModLoadTasks should already be finished
     }
+    
+    internal void RunSync()
+    {
+        var coroutine = Coroutine();
+        while (coroutine.MoveNext())
+        {
+        }
+    }
 }

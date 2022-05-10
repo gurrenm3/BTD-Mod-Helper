@@ -15,16 +15,7 @@ public abstract class ModBloonDisplay : ModDisplay
     public override void Register()
     {
         base.Register();
-        try
-        {
-            Bloon.displays.Add(this);
-        }
-        catch (Exception e)
-        {
-            ModHelper.Error(
-                $"Failed to assign ModBloonDisplay {Name} to ModTower {Bloon.Name}");
-            ModHelper.Error(e);
-        }
+        Bloon.displays.Add(this);
     }
 
     /// <summary>

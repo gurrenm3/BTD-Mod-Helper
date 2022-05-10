@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Unity;
@@ -16,14 +17,14 @@ public abstract class ModRoundSet : NamedModContent
     /// RoundSets register Bloons and before GameModes
     /// </summary>
     protected override float RegistrationPriority => 9;
-    
+
     /// <summary>
     /// The Base Rounds included in the RoundSet specified by BaseRoundSet
     /// </summary>
     protected List<RoundModel> BaseRounds =>
         Game.instance.model.roundSets.FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ??
         new List<RoundModel>();
-    
+
     /// <inheritdoc />
     public override void Register()
     {
@@ -31,29 +32,48 @@ public abstract class ModRoundSet : NamedModContent
 
         for (var i = 0; i < model.rounds.Count; i++)
         {
-            ModifyRoundModels(model.rounds[i], i);
+            try
+            {
+                ModifyRoundModels(model.rounds[i], i);
 
-            if (i <= 40)
-            {
-                ModifyEasyRoundModels(model.rounds[i], i);
+                switch (i)
+                {
+                    case <= 40:
+                        ModifyEasyRoundModels(model.rounds[i], i);
+                        break;
+                    case <= 60:
+                        ModifyMediumRoundModels(model.rounds[i], i);
+                        break;
+                    case <= 80:
+                        ModifyHardRoundModels(model.rounds[i], i);
+                        break;
+                    case <= 100:
+                        ModifyImpoppableRoundModels(model.rounds[i], i);
+                        break;
+                }
             }
-            else if (i <= 60)
+            catch (Exception)
             {
-                ModifyMediumRoundModels(model.rounds[i], i);
-            }
-            else if (i <= 80)
-            {
-                ModifyHardRoundModels(model.rounds[i], i);
-            }
-            else if (i <= 100)
-            {
-                ModifyImpoppableRoundModels(model.rounds[i], i);
+                ModHelper.Error($"Failed to modify round {i} for round set {Id}");
+                throw;
             }
         }
 
-        Game.instance.model.roundSets = Game.instance.model.roundSets.AddTo(model);
-        Game.instance.model.roundSetsByName[Id] = model;
-        Game.instance.model.AddChildDependant(model);
+        try
+        {
+            Game.instance.model.roundSets = Game.instance.model.roundSets.AddTo(model);
+            Game.instance.model.roundSetsByName[Id] = model;
+            Game.instance.model.AddChildDependant(model);
+        }
+        finally
+        {
+            rollbackActions.Push(() =>
+            {
+                Game.instance.model.roundSets = Game.instance.model.roundSets.RemoveItem(model);
+                Game.instance.model.roundSetsByName.Remove(Id);
+                Game.instance.model.RemoveChildDependant(model);
+            });
+        }
     }
 
     /// <inheritdoc />

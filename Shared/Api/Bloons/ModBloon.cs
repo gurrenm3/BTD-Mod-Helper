@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Bloons.Behaviors;
@@ -30,7 +31,15 @@ public abstract partial class ModBloon : NamedModContent
     {
         bloonModel = GetDefaultBloonModel();
 
-        ModifyBaseBloonModel(bloonModel);
+        try
+        {
+            ModifyBaseBloonModel(bloonModel);
+        }
+        catch (Exception)
+        {
+            ModHelper.Error($"Failed to modify base Bloon model for {Id}");
+            throw;
+        }
 #if BloonsTD6
         bloonModel.updateChildBloonModels = true;
 #endif
@@ -68,7 +77,7 @@ public abstract partial class ModBloon : NamedModContent
     public abstract string BaseBloon { get; }
 
     /// <summary>
-    /// 
+    /// Apply your custom modifications to the base bloon
     /// </summary>
     /// <param name="bloonModel"></param>
     public abstract void ModifyBaseBloonModel(BloonModel bloonModel);

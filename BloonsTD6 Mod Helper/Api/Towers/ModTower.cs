@@ -29,7 +29,6 @@ public abstract partial class ModTower
         BottomPathUpgrades == 5 &&
         ParagonMode != ParagonMode.None;
 
-
     /// <summary>
     /// Constructor for ModTower, used implicitly by ModContent.Create
     /// </summary>
@@ -57,19 +56,11 @@ public abstract partial class ModTower
 
         if (!DontAddToShop)
         {
-            try
+            var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
+            if (index >= 0)
             {
-                var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
-                if (index >= 0)
-                {
-                    var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, -1, 0, null);
-                    Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
-                }
-            }
-            catch (Exception)
-            {
-                ModHelper.Error($"Failed to add ModTower {Name} to the shop");
-                throw;
+                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, -1, 0, null);
+                Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
             }
         }
 
@@ -127,7 +118,7 @@ public abstract partial class ModTower
     /// <returns></returns>
     public virtual int GetTowerIndex(List<TowerDetailsModel> towerSet)
     {
-        if (towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is TowerDetailsModel tower)
+        if (towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is { } tower)
         {
             return tower.towerIndex + 1;
         }

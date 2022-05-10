@@ -19,7 +19,7 @@ internal class ModSettingsHandler
 
         foreach (var mod in ModHelper.Mods)
         {
-            mod.ModSettings = new Dictionary<string, ModSetting>();
+            mod.ModSettings.Clear();
             try
             {
                 foreach (var field in mod.GetType()
