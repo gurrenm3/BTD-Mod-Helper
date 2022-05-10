@@ -1,22 +1,24 @@
 ﻿using Assets.Scripts.Simulation.Bloons;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Bloons;
-
-[HarmonyPatch(typeof(Bloon), nameof(Bloon.Leaked))]
-internal class Blooon_Leaked
+namespace BTD_Mod_Helper.Patches.Bloons
 {
-    [HarmonyPrefix]
-    internal static bool Prefix(Bloon __instance)
+    [HarmonyPatch(typeof(Bloon), nameof(Bloon.Leaked))]
+    internal class Blooon_Leaked
     {
-        var result = true;
-        SessionData.Instance.LeakedBloons.Add(__instance);
-        ModHelper.PerformHook(mod => result &= mod.PreBloonLeaked(__instance));
-        return result;
-    }
+        [HarmonyPrefix]
+        internal static bool Prefix(Bloon __instance)
+        {
+            bool result = true;
+            SessionData.Instance.LeakedBloons.Add(__instance);
+            MelonMain.PerformHook(mod => result &= mod.PreBloonLeaked(__instance));
+            return result;
+        }
 
-    [HarmonyPostfix]
-    internal static void Postfix(Bloon __instance)
-    {
-        ModHelper.PerformHook(mod => mod.PostBloonLeaked(__instance));
+        [HarmonyPostfix]
+        internal static void Postfix(Bloon __instance)
+        {
+            MelonMain.PerformHook(mod => mod.PostBloonLeaked(__instance));
+        }
     }
 }

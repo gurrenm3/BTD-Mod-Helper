@@ -1,17 +1,20 @@
 ﻿using Assets.Scripts.Simulation.Towers.Behaviors;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Towers;
-
-[HarmonyPatch(typeof(ParagonTower), nameof(ParagonTower.UpdateDegree))]
-internal class ParagonTower_UpdateDegree
+namespace BTD_Mod_Helper.Patches.Towers
 {
-    [HarmonyPostfix]
-    internal static void Postfix(ParagonTower __instance)
+    [HarmonyPatch(typeof(ParagonTower), nameof(ParagonTower.UpdateDegree))]
+    internal class ParagonTower_UpdateDegree
     {
-        if (__instance.tower?.towerModel?.GetModTower() is ModTower modTower && modTower.ShouldCreateParagon)
+        [HarmonyPostfix]
+        internal static void Postfix(ParagonTower __instance)
         {
-            modTower.paragonUpgrade?.OnDegreeSet(__instance.tower, __instance.GetCurrentDegree());
+            if (__instance.tower?.towerModel?.GetModTower() is ModTower modTower && modTower.ShouldCreateParagon)
+            {
+                modTower.paragonUpgrade?.OnDegreeSet(__instance.tower, __instance.GetCurrentDegree());
+            }
         }
     }
 }

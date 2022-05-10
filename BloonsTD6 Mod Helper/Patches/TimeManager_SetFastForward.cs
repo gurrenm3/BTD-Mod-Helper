@@ -1,13 +1,18 @@
 ﻿using Assets.Scripts.Utils;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches;
-
-[HarmonyPatch(typeof(TimeManager), nameof(TimeManager.SetFastForward))]
-internal class TimeManager_SetFastForward
+namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPostfix]
-    internal static void Postfix(bool value)
+    [HarmonyPatch(typeof(TimeManager), nameof(TimeManager.SetFastForward))]
+    internal class TimeManager_SetFastForward
     {
-        ModHelper.PerformHook(mod => mod.OnFastForwardChanged(value));
+        [HarmonyPostfix]
+        internal static void Postfix(bool value)
+        {
+            MelonMain.PerformHook(mod => mod.OnFastForwardChanged(value));
+        }
     }
+
+
+
 }

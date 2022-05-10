@@ -1,13 +1,15 @@
-﻿using NinjaKiwi.NKMulti;
+﻿using HarmonyLib;
+using NinjaKiwi.NKMulti;
 
-namespace BTD_Mod_Helper.Patches;
-
-[HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Update))]
-internal class NKMultiGameInterface_Update
+namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPostfix]
-    internal static void Postfix(ref NKMultiGameInterface __instance)
+    [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Update))]
+    internal class NKMultiGameInterface_Update
     {
-        SessionData.Instance.NkGI = __instance;
+        [HarmonyPostfix]
+        internal static void Postfix(ref NKMultiGameInterface __instance)
+        {
+            SessionData.Instance.NkGI = __instance;
+        }
     }
 }

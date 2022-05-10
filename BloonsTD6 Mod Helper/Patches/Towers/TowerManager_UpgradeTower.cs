@@ -1,32 +1,34 @@
 ﻿using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Simulation.Towers;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Towers;
-
-[HarmonyPatch(typeof(TowerManager), nameof(TowerManager.UpgradeTower))]
-internal class TowerManager_UpgradeTower
+namespace BTD_Mod_Helper.Patches.Towers
 {
-    [HarmonyPrefix]
-    internal static bool Prefix(Tower tower, TowerModel def, ref string? __state)
+    [HarmonyPatch(typeof(TowerManager), nameof(TowerManager.UpgradeTower))]
+    internal class TowerManager_UpgradeTower
     {
-        __state = null;
-        foreach (var upgrade in def.appliedUpgrades)
+        [HarmonyPrefix]
+        internal static bool Prefix(Tower tower, TowerModel def, ref string __state)
         {
-            if (!tower.towerModel.appliedUpgrades.Contains(upgrade))
+            __state = null;
+            foreach (var upgrade in def.appliedUpgrades)
             {
-                __state = upgrade;
+                if (!tower.towerModel.appliedUpgrades.Contains(upgrade))
+                {
+                    __state = upgrade;
+                }
             }
+
+            return true;
         }
 
-        return true;
-    }
-
-    [HarmonyPostfix]
-    internal static void Postfix(Tower tower, TowerModel def, string __state)
-    {
-        if (__state != null)
+        [HarmonyPostfix]
+        internal static void Postfix(Tower tower, TowerModel def, string __state)
         {
-            ModHelper.PerformHook(mod => mod.OnTowerUpgraded(tower, __state, def));
+            if (__state != null)
+            {
+                MelonMain.PerformHook(mod => mod.OnTowerUpgraded(tower, __state, def));
+            }
         }
     }
 }

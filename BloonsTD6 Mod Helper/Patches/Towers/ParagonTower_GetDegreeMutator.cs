@@ -1,18 +1,21 @@
 ﻿using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Simulation.Towers.Behaviors;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Towers;
-
-[HarmonyPatch(typeof(ParagonTower), nameof(ParagonTower.GetDegreeMutator))]
-internal class ParagonTower_GetDegreeMutator
+namespace BTD_Mod_Helper.Patches.Towers
 {
-    [HarmonyPostfix]
-    internal static void Postfix(ParagonTower __instance, float investment, ParagonTowerModel.PowerDegreeMutator __result)
+    [HarmonyPatch(typeof(ParagonTower), nameof(ParagonTower.GetDegreeMutator))]
+    internal class ParagonTower_GetDegreeMutator
     {
-        if (__instance.tower?.towerModel?.GetModTower() is ModTower modTower && modTower.ShouldCreateParagon)
+        [HarmonyPostfix]
+        internal static void Postfix(ParagonTower __instance, float investment, ParagonTowerModel.PowerDegreeMutator __result)
         {
-            modTower.paragonUpgrade?.ModifyPowerDegreeMutator(__result, investment, __result.degree);
+            if (__instance.tower?.towerModel?.GetModTower() is ModTower modTower && modTower.ShouldCreateParagon)
+            {
+                modTower.paragonUpgrade?.ModifyPowerDegreeMutator(__result, investment, __result.degree);
+            }
         }
     }
 }

@@ -1,30 +1,32 @@
 ﻿using Assets.Scripts.Unity.Player;
 using BTD_Mod_Helper.Api;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches;
-
-[HarmonyPatch(typeof(Btd6Player), nameof(Btd6Player.Save))]
-internal class Btd6Player_Save
+namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPrefix]
-    internal static bool Prefix(Btd6Player __instance, ref bool __state)
+    [HarmonyPatch(typeof(Btd6Player), nameof(Btd6Player.Save))]
+    internal class Btd6Player_Save
     {
-        __state = __instance.IsPendingSave;
-        if (__state && __instance.Data?.HasCompletedTutorial == true)
+        [HarmonyPrefix]
+        internal static bool Prefix(Btd6Player __instance, ref bool __state)
         {
-            ProfileManagement.CleanCurrentProfile(__instance.Data);
+            __state = __instance.IsPendingSave;
+            if (__state && __instance.Data?.HasCompletedTutorial == true)
+            {
+                ProfileManagement.CleanCurrentProfile(__instance.Data);
+            }
+
+            return true;
         }
 
-        return true;
-    }
 
-
-    [HarmonyPostfix]
-    internal static void Postfix(Btd6Player __instance, ref bool __state)
-    {
-        if (__state && __instance.Data?.HasCompletedTutorial == true)
+        [HarmonyPostfix]
+        internal static void Postfix(Btd6Player __instance, ref bool __state)
         {
-            ProfileManagement.UnCleanProfile(__instance.Data);
+            if (__state && __instance.Data?.HasCompletedTutorial == true)
+            {
+                ProfileManagement.UnCleanProfile(__instance.Data);
+            }
         }
     }
 }

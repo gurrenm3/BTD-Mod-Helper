@@ -7,69 +7,73 @@ using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
+using MelonLoader;
 
-namespace BTD_Mod_Helper.Patches.UI;
-
-[HarmonyPatch(typeof(TitleScreen), nameof(TitleScreen.Start))]
-internal class TitleScreen_Start
+namespace BTD_Mod_Helper.Patches.UI
 {
-    [HarmonyPostfix]
-    [HarmonyPriority(Priority.High)]
-    internal static void Postfix()
+    [HarmonyPatch(typeof(TitleScreen), nameof(TitleScreen.Start))]
+    internal class TitleScreen_Start
     {
-        if (ModHelper.FallbackToOldLoading)
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.High)]
+        internal static void Postfix()
         {
-            ModContent.GetContent<ModByteLoader>().Do(loader => loader.LoadAllBytes());
-
-            new PreLoadResourcesTask().RunSync();
-
-            ModHelper.Mods
-                .Where(mod => mod.Content.Count > 0)
-                .OrderBy(mod => mod.Priority)
-                .Select(mod => new ModContentTask {mod = mod})
-                .Do(task => task.RunSync());
-            
-            ModContent.GetContent<ModLoadTask>().Do(task => task.RunSync());
-        }
-
-
-        foreach (var modParagonTower in ModContent.GetContent<ModVanillaParagon>())
-        {
-            modParagonTower.AddUpgradesToRealTowers();
-        }
-
-        foreach (var modelMod in Game.instance.model.mods)
-        {
-            if (modelMod.name.EndsWith("Only"))
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority))
             {
-                var mutatorModModels = modelMod.mutatorMods.ToList();
-                mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
-                    .Where(set => !set.AllowInRestrictedModes)
-                    .Select(set => new LockTowerSetModModel(modelMod.name, set.Id)));
-                modelMod.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
-            }
-        }
-
-        foreach (var modHero in ModContent.GetContent<ModHero>())
-        {
-            try
-            {
-                var heroSprites = GameData.Instance.heroSprites;
-                heroSprites.heroSprite.Add(new HeroSprite
+                try
                 {
-                    heroId = modHero.Id,
-                    heroFontMaterial = heroSprites.GetFontMaterialRef(modHero.NameStyle),
-                    backgroundBanner = heroSprites.GetBannerRef(modHero.GlowStyle),
-                    backgroundColourTintOverride = heroSprites.GetBannerColourTintRef(modHero.BackgroundStyle)
-                });
+                    ResourceHandler.LoadEmbeddedTextures(mod);
+                    ResourceHandler.LoadEmbeddedBundles(mod);
+                    ModContent.LoadModContent(mod);
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                    MelonLogger.Error(e);
+                }
             }
-            catch (Exception e)
+
+            MelonMain.PerformHook(mod => mod.OnTitleScreen());
+
+            foreach (var modParagonTower in ModContent.GetContent<ModVanillaParagon>())
             {
-                ModHelper.Error(e);
+                modParagonTower.AddUpgradesToRealTowers();
             }
+
+
+            foreach (var modelMod in Game.instance.model.mods)
+            {
+                if (modelMod.name.EndsWith("Only"))
+                {
+                    var mutatorModModels = modelMod.mutatorMods.ToList();
+                    mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
+                        .Where(set => !set.AllowInRestrictedModes)
+                        .Select(set => new LockTowerSetModModel(modelMod.name, set.Id)));
+                    modelMod.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
+                }
+            }
+            
+            foreach (var modHero in ModContent.GetContent<ModHero>())
+            {
+                try
+                {
+                    var heroSprites = GameData.Instance.heroSprites;
+                    heroSprites.heroSprite.Add(new HeroSprite
+                    {
+                        heroId = modHero.Id,
+                        heroFontMaterial = heroSprites.GetFontMaterialRef(modHero.NameStyle),
+                        backgroundBanner = heroSprites.GetBannerRef(modHero.GlowStyle),
+                        backgroundColourTintOverride = heroSprites.GetBannerColourTintRef(modHero.BackgroundStyle)
+                    });
+                }
+                catch (Exception e)
+                {
+                    MelonLogger.Error(e);
+                }
+            }
+            
         }
-
-
-        ModHelper.PerformHook(mod => mod.OnTitleScreen());
     }
 }

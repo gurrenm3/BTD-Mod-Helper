@@ -1,17 +1,19 @@
 ﻿using Assets.Scripts.Unity.UI_New.Odyssey;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.UI;
-
-[HarmonyPatch(typeof(OdysseyEventScreen), nameof(OdysseyEventScreen.Update))]
-internal class OdysseyEventScreen_Update
+namespace BTD_Mod_Helper.Patches.UI
 {
-    [HarmonyPostfix]
-    internal static void Postfix()
+    [HarmonyPatch(typeof(OdysseyEventScreen), nameof(OdysseyEventScreen.Update))]
+    internal class OdysseyEventScreen_Update
     {
-        // Setting only if false because this method is called constantly when screen is open
-        if (!SessionData.Instance.IsInOdyssey)
+        [HarmonyPostfix]
+        internal static void Postfix()
         {
-            SessionData.Instance.IsInOdyssey = true;
+            // Setting only if false because this method is called constantly when screen is open
+            if (!SessionData.Instance.IsInOdyssey)
+            {
+                SessionData.Instance.IsInOdyssey = true;
+            }
         }
     }
 }

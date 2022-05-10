@@ -1,29 +1,32 @@
-﻿using NinjaKiwi.NKMulti;
+﻿using HarmonyLib;
+using NinjaKiwi.NKMulti;
 
-namespace BTD_Mod_Helper.Patches;
-
-[HarmonyPatch(typeof(NKMultiConnection), nameof(NKMultiConnection.Receive))]
-internal class NKMultiConnection_Receive
+namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPostfix]
-    internal static void Postfix(NKMultiConnection __instance)
+    [HarmonyPatch(typeof(NKMultiConnection), nameof(NKMultiConnection.Receive))]
+    internal class NKMultiConnection_Receive
     {
-        var messageQueue = __instance.ReceiveQueue;
-        if (messageQueue == null || messageQueue.Count == 0)
-            return;
-            
-        for (var i = 0; i < messageQueue.Count; i++)
+        [HarmonyPostfix]
+        internal static void Postfix(NKMultiConnection __instance)
         {
-            var message = messageQueue.Dequeue();
-            var consumed = false;
-            ModHelper.PerformHook(mod =>
+            var messageQueue = __instance.ReceiveQueue;
+            if (messageQueue == null || messageQueue.Count == 0)
+                return;
+            
+            for (int i = 0; i < messageQueue.Count; i++)
             {
-                consumed |= mod.ActOnMessage(message);
-            });
-            if (!consumed)
-            {
-                messageQueue.Enqueue(message);
+                var message = messageQueue.Dequeue();
+                bool consumed = false;
+                MelonMain.PerformHook(mod =>
+                {
+                    consumed |= mod.ActOnMessage(message);
+                });
+                if (!consumed)
+                {
+                    messageQueue.Enqueue(message);
+                }
             }
         }
     }
+
 }

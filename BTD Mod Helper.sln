@@ -1,56 +1,48 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{45CB0AF9-EB5F-4D6A-846C-830DD4F60B49}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BTD Mod Helper Core", "BTD Mod Helper Core\BTD Mod Helper Core.shproj", "{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsAT Mod Helper", "BloonsAT Mod Helper\BloonsAT Mod Helper.csproj", "{8ECD8935-8199-4B48-B6E0-320083C89B3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsAT Mod Helper", "BloonsAT Mod Helper\BloonsAT Mod Helper.csproj", "{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{12189163-C07D-423C-9006-978E944D7409}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Shared\Shared Project.projitems*{33f3cad7-6d69-4c86-8117-f5b3bbb81bb2}*SharedItemsImports = 5
-		Shared\Shared Project.projitems*{45cb0af9-eb5f-4d6a-846c-830dd4f60b49}*SharedItemsImports = 13
+		BTD Mod Helper Core\BTD Mod Helper Core.projitems*{12189163-c07d-423c-9006-978e944d7409}*SharedItemsImports = 4
+		BTD Mod Helper Core\BTD Mod Helper Core.projitems*{8ecd8935-8199-4b48-b6e0-320083c89b3b}*SharedItemsImports = 4
+		BTD Mod Helper Core\BTD Mod Helper Core.projitems*{bdae3217-fcba-4247-8809-fd7e2d637bd6}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		BATTD_Debug|Any CPU = BATTD_Debug|Any CPU
-		BATTD_Release|Any CPU = BATTD_Release|Any CPU
-		BTD6_Debug|Any CPU = BTD6_Debug|Any CPU
-		BTD6_Release|Any CPU = BTD6_Release|Any CPU
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		BloonsAT - Debug|Any CPU = BloonsAT - Debug|Any CPU
+		BloonsAT - Release|Any CPU = BloonsAT - Release|Any CPU
+		BloonsTD6 - Debug|Any CPU = BloonsTD6 - Debug|Any CPU
+		BloonsTD6 - Release|Any CPU = BloonsTD6 - Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Debug|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Debug|Any CPU.Build.0 = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Release|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Release|Any CPU.Build.0 = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Debug|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Debug|Any CPU.Build.0 = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Release|Any CPU.Build.0 = BTD6_Release|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.Build.0 = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.Build.0 = BTD6_Release|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Release|Any CPU.Build.0 = Release|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Release|Any CPU.Build.0 = Release|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.BloonsAT - Debug|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.BloonsAT - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.BloonsTD6 - Debug|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{BDAE3217-FCBA-4247-8809-FD7E2D637BD6}.BloonsTD6 - Release|Any CPU.ActiveCfg = Plugin - Release|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Debug|Any CPU.ActiveCfg = BloonsAT - Debug|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Debug|Any CPU.Build.0 = BloonsAT - Debug|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Release|Any CPU.ActiveCfg = BloonsAT - Release|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsAT - Release|Any CPU.Build.0 = BloonsAT - Release|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsTD6 - Debug|Any CPU.ActiveCfg = BloonsAT - Debug|Any CPU
+		{8ECD8935-8199-4B48-B6E0-320083C89B3B}.BloonsTD6 - Release|Any CPU.ActiveCfg = BloonsAT - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.BloonsAT - Debug|Any CPU.ActiveCfg = BloonsTD6 - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.BloonsAT - Release|Any CPU.ActiveCfg = BloonsTD6 - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Debug|Any CPU.ActiveCfg = BloonsTD6 - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Debug|Any CPU.Build.0 = BloonsTD6 - Debug|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Release|Any CPU.ActiveCfg = BloonsTD6 - Release|Any CPU
+		{12189163-C07D-423C-9006-978E944D7409}.BloonsTD6 - Release|Any CPU.Build.0 = BloonsTD6 - Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9EA78EC1-475B-4A4E-93DC-40F93636F7E5}
+		SolutionGuid = {71A09E45-64A4-4BEA-AA77-A8B2BA0744C9}
 	EndGlobalSection
 EndGlobal

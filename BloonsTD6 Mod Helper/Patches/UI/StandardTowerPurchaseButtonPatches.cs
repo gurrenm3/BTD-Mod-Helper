@@ -1,32 +1,47 @@
 ﻿using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.Patches.UI;
-
-[HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.DetermineBackgroundSprite))]
-internal class StandardTowerPurchaseButton_DetermineBackgroundSprite
+namespace BTD_Mod_Helper.Patches.UI
 {
-    [HarmonyPostfix]
-    internal static void Postfix(StandardTowerPurchaseButton __instance, ref SpriteReference __result)
+    [HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.DetermineBackgroundSprite))]
+    internal class StandardTowerPurchaseButton_DetermineBackgroundSprite
     {
-        if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
+        [HarmonyPostfix]
+        internal static void Postfix(StandardTowerPurchaseButton __instance, ref SpriteReference __result)
         {
-            __result = modTowerSet.ContainerReference;
+            if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
+            {
+                __result = modTowerSet.ContainerReference;
+            }
         }
     }
-}
 
-[HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.UpdateTowerDisplay))]
-internal class StandardTowerPurchaseButton_UpdateTowerDisplay
-{
-    [HarmonyPostfix]
-    internal static void Postfix(StandardTowerPurchaseButton __instance)
+    [HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.UpdateTowerDisplay))]
+    internal class StandardTowerPurchaseButton_UpdateTowerDisplay
     {
-        if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
+        [HarmonyPostfix]
+        internal static void Postfix(StandardTowerPurchaseButton __instance)
         {
-            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ContainerReference, __instance.GetComponent<Image>());
+            if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
+            {
+                ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ContainerReference, __instance.GetComponent<Image>());
+            }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -1,13 +1,15 @@
 ﻿using Assets.Scripts.Simulation;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Sim;
-
-[HarmonyPatch(typeof(Simulation), nameof(Simulation.RoundStart))]
-internal class Simulation_RoundStart
+namespace BTD_Mod_Helper.Patches.Sim
 {
-    [HarmonyPostfix]
-    internal static void Postfix()
+    [HarmonyPatch(typeof(Simulation), nameof(Simulation.RoundStart))]
+    internal class Simulation_RoundStart
     {
-        ModHelper.PerformHook(mod => mod.OnRoundStart());
+        [HarmonyPostfix]
+        internal static void Postfix()
+        {
+            MelonMain.PerformHook(mod => mod.OnRoundStart());
+        }
     }
 }

@@ -2,30 +2,32 @@
 using System.Linq;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Resources;
-
-[HarmonyPatch(typeof(Factory), nameof(Factory.DestroyAllActive))]
-internal class Factory_DestroyAllActive
+namespace BTD_Mod_Helper.Patches.Resources
 {
-    [HarmonyPostfix]
-    internal static void Postfix(Factory __instance)
+    [HarmonyPatch(typeof(Factory), nameof(Factory.DestroyAllActive))]
+    internal class Factory_DestroyAllActive
     {
-        foreach (var unityDisplayNode in ResourceHandler.Prefabs.Values
-                     .Where(unityDisplayNode => unityDisplayNode != null && !unityDisplayNode.isDestroyed))
+        [HarmonyPostfix]
+        internal static void Postfix(Factory __instance)
         {
-            try
+            foreach (var unityDisplayNode in ResourceHandler.Prefabs.Values
+                .Where(unityDisplayNode => unityDisplayNode != null && !unityDisplayNode.isDestroyed))
             {
-                unityDisplayNode.Destroy();
+                try
+                {
+                    unityDisplayNode.Destroy();
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
-            catch (Exception)
-            {
-                // ignored
-            }
+            
+            MelonMain.PerformHook(mod => mod.OnGameObjectsReset());
+            
+            ResourceHandler.Prefabs.Clear();
         }
-            
-        ModHelper.PerformHook(mod => mod.OnGameObjectsReset());
-            
-        ResourceHandler.Prefabs.Clear();
     }
 }

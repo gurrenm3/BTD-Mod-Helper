@@ -1,317 +1,301 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
-using Assets.Scripts.Unity;
+﻿using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Unity.UI_New.Popups;
-using Assets.Scripts.Utils;
-using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Helpers;
-using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.UI.Modded;
-using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
+using MelonLoader;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Assets.Scripts.Unity.UI_New.Popups;
+using BTD_Mod_Helper.Api.Updater;
+using System.Linq;
+using Assets.Scripts.Unity.Menu;
+using BTD_Mod_Helper.Extensions;
+using System.IO;
+using Assets.Scripts.Utils;
+using System.Diagnostics;
+using Assets.Scripts.Models;
 
-[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", ModHelper.Version, "Gurrenm4 and Doombubbles")]
-[assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
-[assembly: MelonPriority(-1000)]
-
-namespace BTD_Mod_Helper;
-
-internal class MelonMain : BloonsTD6Mod
+namespace BTD_Mod_Helper
 {
-#pragma warning disable CS0672
-    public override string GithubReleaseURL => "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases";
-    public override string LatestURL => "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
-#pragma warning restore CS0672
-
-    public override void OnApplicationStart()
+    internal class MelonMain : BloonsTD6Mod
     {
-        ModContentInstances.SetInstance(GetType(), this);
+        public override string GithubReleaseURL => "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases";
+        public override string LatestURL => "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest";
+        internal readonly List<UpdateInfo> modsNeedingUpdates = new List<UpdateInfo>();
 
-        try
+        public const string coopMessageCode = "BTD6_ModHelper";
+        public const string currentVersion = ModHelperData.currentVersion;
+
+        public override void OnApplicationStart()
         {
-            ModHelperHttp.Init();
-            ModHelperGithub.Init();
+            MelonLogger.Msg("Checking for updates...");
 
-            Task.Run(ModHelperGithub.PopulateMods);
-            Task.Run(ModHelperGithub.GetVerifiedModders);
+            var updateDir = this.GetModDirectory() + "\\UpdateInfo";
+            Directory.CreateDirectory(updateDir);
+
+            UpdateHandler.SaveModUpdateInfo(updateDir);
+            var allUpdateInfo = UpdateHandler.LoadAllUpdateInfo(updateDir);
+
+            UpdateHandler.CheckForUpdates(allUpdateInfo, modsNeedingUpdates);
+
+            //CheckModsForUpdates();
+
+            var settingsDir = this.GetModSettingsDir(true);
+            ModSettingsHandler.InitializeModSettings(settingsDir);
+            ModSettingsHandler.LoadModSettings(settingsDir);
+
+            Schedule_GameModel_Loaded();
+
+            MelonLogger.Msg("Mod has finished loading");
+            
         }
-        catch (Exception e)
+
+        public override void OnGameModelLoaded(GameModel model)
         {
-            ModHelper.Warning(e);
+            /* Save for now, useful for when they add new upgrades
+             Game.instance.model.upgrades.ForEach(upgrade =>
+            {
+                var textInfo = new CultureInfo("en-US", false).TextInfo;
+                var p = textInfo.ToTitleCase(upgrade.name.Replace(".", " ")).Replace(" ", "").Replace("+", "I")
+                    .Replace("Buccaneer-", "").Replace("-", "").Replace("'", "").Replace(":", "");
+                MelonLogger.Msg($"public const string {p} = \"{upgrade.name}\";");
+            });
+            */
         }
 
-        // Mod Settings
-        ModSettingsHandler.InitializeModSettings();
-        ModSettingsHandler.LoadModSettings();
+        
+        public static readonly ModSettingBool BypassSavingRestrictions = true;
 
-        Schedule_GameModel_Loaded();
+        public static readonly ModSettingBool CleanProfile = true;
 
-        // Load Content from other mods
-        ModHelper.LoadAllMods();
-
-        ModGameMenu.PatchAllTheOpens(HarmonyInstance);
-
-        try
+        private static readonly ModSettingBool AutoHideModdedClientPopup = false;
+        
+        private static readonly ModSettingBool OpenLocalDirectory = new ModSettingBool(false)
         {
-            CreateTargetsFile(ModSourcesFolder);
-        }
-        catch (Exception)
-        {
-            // ignored
-        }
-    }
-
-    private static readonly ModSettingCategory General = new("General")
-    {
-        collapsed = false
-    };
-    
-    public static readonly ModSettingBool ShowRoundsetChanger = new(true)
-    {
-        description =
-            "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
-        category = General
-    };
-
-    public static readonly ModSettingBool BypassSavingRestrictions = new(true)
-    {
-        description =
-            "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
-            "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
-            "So, this setting overrides that restriction and will allow progress to be saved once more.",
-        category = General
-    };
-
-    public static readonly ModSettingBool CleanProfile = new(true)
-    {
-        description =
-            "Automatically removes modded information from your profile before the data gets synced to the " +
-            "Ninja Kiwi servers. NOTE: This is for very specific information relating to custom content implemented " +
-            "using the Mod Helper. This does not broadly prevent hacker pooling or mods messing up your profile in other ways.",
-        category = General
-    };
-
-    public static readonly ModSettingBool UseOldLoading = new(false)
-    {
-        description =
-            "Switches back to the old system of loading all mod content all at once as soon as the Title Screen is reached " +
-            "(causing the game to hang until finished), instead of the new method of adding new load tasks alongside the vanilla ones. " +
-            "Depending on the mods use this could be slightly faster, but less robust.",
-        category = General,
-        requiresRestart = true
-    };
-
-    private static readonly ModSettingBool AutoHideModdedClientPopup = new (false)
-    {
-        category = General,
-        description = "Removes the popup telling you that you're using a modded client. Like, we get it already."
-    };
-
-    private static readonly ModSettingCategory ModMaking = "Mod Making";
-
-    private static readonly ModSettingButton OpenLocalDirectory = new()
-    {
-        displayName = "Open Local Files Directory",
-        action = () => Process.Start(FileIOUtil.sandboxRoot),
-        buttonText = "Open",
-        description =
-            "This is the 'Sandbox Root' directory that many vanilla and modded services use to dump files into.",
-        category = ModMaking
-    };
-
-    private static readonly ModSettingButton ExportGameModel = new()
-    {
-        displayName = "Export Game Data",
-        description =
-            "Exports much of the games data to json files that you can view. Helpful for understanding how " +
-            "vanilla content was implemented by Ninja Kiwi.",
-        action = () =>
-        {
-            GameModelExporter.ExportAll();
-            PopupScreen.instance.ShowOkPopup(
-                $"Finished exporting Game Model to {FileIOUtil.sandboxRoot}");
-        },
-        buttonText = "Export",
-        category = ModMaking
-    };
-
-    public static readonly ModSettingFolder ModSourcesFolder =
-        new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "BTD6 Mods"))
-        {
-            category = ModMaking,
-            description = "The folder where you keep the source codes for Mods",
-            customValidation = Directory.Exists,
-            onSave = CreateTargetsFile
+            displayName = "Open Local Files Directory",
+            IsButton = true
         };
 
-    private static bool afterTitleScreen;
-
-    public override void OnUpdate()
-    {
-        ModByteLoader.OnUpdate();
-
-        if (Game.instance is null)
-            return;
-
-        if (PopupScreen.instance != null && afterTitleScreen)
+        private static readonly ModSettingBool ExportTowerJSONs = new ModSettingBool(false)
         {
-            PopupScreen.instance.hasSeenModderWarning = AutoHideModdedClientPopup;
-        }
+            displayName = "Export Tower JSONs",
+            IsButton = true
+        };
 
-        if (InGame.instance is null)
-            return;
-
-        NotificationMgr.CheckForNotifications();
-        RoundSetChanger.EnsureHidden();
-    }
-
-    public static void CreateTargetsFile(string path)
-    {
-        if (!Directory.Exists(path))
+        private static readonly ModSettingBool ExportUpgradeJSONs = new ModSettingBool(false)
         {
-            try
-            {
-                Directory.CreateDirectory(path);
-            }
-            catch (Exception)
-            {
+            displayName = "Export Upgrade JSONs",
+            IsButton = true
+        };
+
+        private static readonly ModSettingString ExportPath = ""; // Gets set to the FileIOUtil path after that gets initialized
+
+        internal static ShowModOptions_Button modsButton;
+
+        private static bool afterTitleScreen;
+
+        public override void OnUpdate()
+        {
+            KeyCodeHooks();
+
+            if (Game.instance is null)
                 return;
+
+            if (PopupScreen.instance != null && afterTitleScreen)
+            {
+                UpdateHandler.AnnounceUpdates(modsNeedingUpdates, this.GetModDirectory());
+                PopupScreen.instance.hasSeenModderWarning = AutoHideModdedClientPopup;
             }
+
+            if (InGame.instance is null)
+                return;
+
+            NotificationMgr.CheckForNotifications();
         }
 
-        var targets = Path.Combine(path, "btd6.targets");
-        using var fs = new StreamWriter(targets);
-        using var stream =
-            ModHelper.Main.Assembly.GetManifestResourceStream("BTD_Mod_Helper.btd6.targets");
-        using var reader = new StreamReader(stream!);
-        var text = reader.ReadToEnd().Replace(
-            @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",
-            MelonUtils.GameDirectory);
-        fs.Write(text);
-    }
-
-    public override void OnTitleScreen()
-    {
-        ModSettingsHandler.SaveModSettings(true);
-
-        if (!scheduledInGamePatch)
-            Schedule_InGame_Loaded();
-
-        AutoSave.InitAutosave(this.GetModSettingsDir(true));
-
-
-        foreach (var gameMode in Game.instance.model.mods)
+        private static void KeyCodeHooks()
         {
-            if (gameMode.mutatorMods == null) continue;
-            foreach (var mutatorMod in gameMode.mutatorMods)
+            foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
             {
-                var typeName = mutatorMod.GetIl2CppType().Name;
-                if (!mutatorMod.name.StartsWith(typeName))
+                if (Input.GetKeyDown(key))
+                    PerformHook(mod => mod.OnKeyDown(key));
+
+                if (Input.GetKeyUp(key))
+                    PerformHook(mod => mod.OnKeyUp(key));
+
+                if (Input.GetKey(key))
+                    PerformHook(mod => mod.OnKeyHeld(key));
+            }
+        }
+        
+        public override void OnTitleScreen()
+        {
+            ModSettingsHandler.SaveModSettings(this.GetModSettingsDir());
+
+            if (!scheduledInGamePatch)
+                Schedule_InGame_Loaded();
+            
+            AutoSave.InitAutosave(this.GetModSettingsDir(true));
+
+            OpenLocalDirectory.OnInitialized.Add(option =>
+            {
+                var buttonOption = (ButtonOption)option;
+                buttonOption.ButtonText.text = "Open";
+                buttonOption.Button.AddOnClick(() => Process.Start(FileIOUtil.sandboxRoot));
+            });
+
+            ExportTowerJSONs.OnInitialized.Add(option =>
+            {
+                var buttonOption = (ButtonOption)option;
+                buttonOption.ButtonText.text = "Export";
+                buttonOption.Button.AddOnClick(() =>
                 {
-                    mutatorMod.name = mutatorMod._name = typeName + "_" + mutatorMod.name;
+                    MelonLogger.Msg("Dumping Towers to local files");
+                    MelonLogger.Msg(FileIOUtil.sandboxRoot);
+                    if(ExportPath != FileIOUtil.sandboxRoot){
+                        FileIOUtil.sandboxRoot = ExportPath;
+                    }
+                    MelonLogger.Msg(FileIOUtil.sandboxRoot);
+                    foreach (var tower in Game.instance.model.towers)
+                    {
+                        var path = "Towers/" + tower.baseId + "/" + tower.name + ".json";
+                        try
+                        {
+                            FileIOUtil.SaveObject(path, tower);
+                            MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+                        }
+                        catch (Exception)
+                        {
+                            MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+                        }
+                    }
+
+                    PopupScreen.instance.ShowOkPopup($"Finished exporting towers to {FileIOUtil.sandboxRoot + "Towers"}");
+                });
+            });
+            
+            ExportUpgradeJSONs.OnInitialized.Add(option =>
+            {
+                var buttonOption = (ButtonOption)option;
+                buttonOption.ButtonText.text = "Export";
+                buttonOption.Button.AddOnClick(() =>
+                {
+                    MelonLogger.Msg("Exporting Upgrades to local files");
+                    foreach (var upgrade in Game.instance.model.upgrades)
+                    {
+                        var path = "Upgrades/" + upgrade.name + ".json";
+                        try
+                        {
+                            FileIOUtil.SaveObject(path, upgrade);
+                            MelonLogger.Msg("Saving " + FileIOUtil.sandboxRoot + path);
+                        }
+                        catch (Exception)
+                        {
+                            MelonLogger.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+                        }
+                    }
+
+                    PopupScreen.instance.ShowOkPopup(
+                        $"Finished exporting upgrades to {FileIOUtil.sandboxRoot + "Upgrades"}");
+                });
+            });
+            
+            ExportPath.defaultValue = FileIOUtil.sandboxRoot;
+            if (ExportPath == "")
+            {
+                ExportPath.value = FileIOUtil.sandboxRoot;
+            }
+            else
+            {
+                FileIOUtil.sandboxRoot = ExportPath.value;
+            }
+
+            afterTitleScreen = true;
+        }
+
+        private void Schedule_GameModel_Loaded()
+        {
+            TaskScheduler.ScheduleTask(() => { PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)); },
+                () => Game.instance?.model != null);
+        }
+
+        bool scheduledInGamePatch;
+
+        private void Schedule_InGame_Loaded()
+        {
+            scheduledInGamePatch = true;
+            TaskScheduler.ScheduleTask(() => { PerformHook(mod => mod.OnInGameLoaded(InGame.instance)); },
+                () => InGame.instance?.GetSimulation() != null);
+        }
+
+        public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
+
+        public static void PerformHook(Action<BloonsTD6Mod> action)
+        {
+            foreach (var mod in MelonHandler.Mods.OfType<BloonsTD6Mod>().OrderByDescending(mod => mod.Priority))
+            {
+                if (!mod.CheatMod || !Game.instance.CanGetFlagged())
+                {
+                    try
+                    {
+                        action.Invoke(mod);
+                    }
+                    catch (Exception e)
+                    {
+                        MelonLogger.Error(e);
+                    }
                 }
             }
         }
 
-        afterTitleScreen = true;
-    }
-
-    private void Schedule_GameModel_Loaded()
-    {
-        TaskScheduler.ScheduleTask(
-            () => { ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)); },
-            () => Game.instance && Game.instance.model != null);
-    }
-
-    bool scheduledInGamePatch;
-
-    private void Schedule_InGame_Loaded()
-    {
-        scheduledInGamePatch = true;
-        TaskScheduler.ScheduleTask(() => { ModHelper.PerformHook(mod => mod.OnInGameLoaded(InGame.instance)); },
-            () => InGame.instance && InGame.instance.GetSimulation() != null);
-    }
-
-    public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
-
-    #region Autosave
-
-    public static readonly ModSettingCategory AutoSaveCategory = "Auto Save Settings";
-
-    public static readonly ModSettingButton OpenBackupDir = new(AutoSave.OpenBackupDir)
-    {
-        displayName = "Open Backup Directory",
-        buttonText = "Open",
-        category = AutoSaveCategory
-    };
-
-    public static readonly ModSettingButton OpenSaveDir = new(AutoSave.OpenAutoSaveDir)
-    {
-        displayName = "Open Save Directory",
-        buttonText = "Open",
-        category = AutoSaveCategory
-    };
-
-    public static readonly ModSettingFolder AutosavePath =
-        new(Path.Combine(ModHelper.ModHelperDirectory, "Mod Settings"))
+        public override void OnMainMenu()
         {
-            displayName = "Backup Directory",
-            onSave = AutoSave.SetAutosaveDirectory,
-            category = AutoSaveCategory
+            if (UpdateHandler.updatedMods && PopupScreen.instance != null)
+            {
+                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
+                    "You've downloaded new updates for mods, but still need to restart your game to apply them.\n" +
+                    "\nWould you like to do that now?", new Action(() =>
+                    {
+                        MelonLogger.Msg("Quitting the game");
+                        MenuManager.instance.QuitGame();
+                    }),
+                    "Yes, quit the game", new Action(() => { }), "Not now", Popup.TransitionAnim.Update);
+                UpdateHandler.updatedMods = false;
+            }
+        }
+
+        #region Autosave
+
+        public static ModSettingBool openBackupDir = new ModSettingBool(true)
+        {
+            IsButton = true,
+            displayName = "Open Backup Directory"
         };
 
-    public static readonly ModSettingInt TimeBetweenBackup = new(30)
-    {
-        displayName = "Minutes Between Each Backup",
-        category = AutoSaveCategory
-    };
-
-    public static readonly ModSettingInt MaxSavedBackups = new(10)
-    {
-        displayName = "Max Saved Backups",
-        onSave = max => AutoSave.backup.SetMaxBackups(max),
-        category = AutoSaveCategory
-    };
-
-    public override void OnMatchEnd() => AutoSave.backup.CreateBackup();
-
-    #endregion
-
-    #region Debug
-
-    private static readonly ModSettingCategory Debug = new("Debug");
-
-    private static readonly ModSettingFile VanillaSpritesClass = new("")
-    {
-        category = Debug,
-        description = "Location of the VanillaSprites.cs to generate to"
-    };
-
-    private static readonly ModSettingFolder AssetStudioDump = new("")
-    {
-        category = Debug,
-        description = "Folder where Asset Studio has dumped all the Sprite information"
-    };
-
-    private static readonly ModSettingButton GenerateVanillaSprites = new(() =>
-    {
-        if (!string.IsNullOrEmpty(VanillaSpritesClass) && !string.IsNullOrEmpty(AssetStudioDump))
+        public static ModSettingBool openSaveDir = new ModSettingBool(true)
         {
-            VanillaSpriteGenerator.GenerateVanillaSprites(VanillaSpritesClass, AssetStudioDump);
-        }
-    })
-    {
-        category = Debug,
-        description = "Generates the VanillaSprites.cs file based on the previous two settings",
-        buttonText = "Generate"
-    };
+            IsButton = true,
+            displayName = "Open Save Directory"
+        };
 
-    #endregion
+        public static ModSettingString autosavePath = new ModSettingString("")
+        {
+            displayName = "Backup Directory"
+        };
+
+        public static ModSettingInt timeBetweenBackup = new ModSettingInt(30)
+        {
+            displayName = "Minutes Between Each Backup"
+        };
+
+        public static ModSettingInt maxSavedBackups = new ModSettingInt(10)
+        {
+            displayName = "Max Saved Backups"
+        };
+
+        public override void OnMatchEnd() => AutoSave.backup.CreateBackup();
+
+        #endregion
+    }
 }

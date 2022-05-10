@@ -1,19 +1,26 @@
 ﻿using Assets.Scripts.Simulation.Towers;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Towers;
-
-[HarmonyPatch(typeof(Tower), nameof(Tower.OnDestroy))]
-//[HarmonyPatch]
-internal class Tower_Destroy
+namespace BTD_Mod_Helper.Patches.Towers
 {
-    /*static IEnumerable<MethodInfo> TargetMethods()
+
+    [HarmonyPatch(typeof(Tower), nameof(Tower.OnDestroy))]
+    //[HarmonyPatch]
+    internal class Tower_Destroy
     {
-        yield return typeof(Tower).GetMethod(nameof(Tower.Destroy));
-    }*/
+        /*static IEnumerable<MethodInfo> TargetMethods()
+        {
+            yield return typeof(Tower).GetMethod(nameof(Tower.Destroy));
+        }*/
         
-    [HarmonyPostfix]
-    internal static void Postfix(Tower __instance)
-    {
-        ModHelper.PerformHook(mod => mod.OnTowerDestroyed(__instance));
+        [HarmonyPostfix]
+        internal static void Postfix(Tower __instance)
+        {
+            MelonMain.PerformHook(mod => mod.OnTowerDestroyed(__instance));
+        }
     }
+
+
+
+
 }

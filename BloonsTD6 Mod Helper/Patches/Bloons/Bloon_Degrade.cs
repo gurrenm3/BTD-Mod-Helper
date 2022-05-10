@@ -1,18 +1,21 @@
 ﻿using Assets.Scripts.Simulation.Bloons;
+using BTD_Mod_Helper.Api;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Bloons;
-
-[HarmonyPatch(typeof(Bloon), nameof(Bloon.Degrade))]
-internal class Bloon_Degrade
+namespace BTD_Mod_Helper.Patches.Bloons
 {
-    [HarmonyPrefix]
-    internal static bool Prefix(Bloon __instance)
+    [HarmonyPatch(typeof(Bloon), nameof(Bloon.Degrade))]
+    internal class Bloon_Degrade
     {
-        bool hasKey = SessionData.Instance.PoppedBloons.TryGetValue(__instance.bloonModel.id, out int amountPopped);
-        if (!hasKey)
-            SessionData.Instance.PoppedBloons.Add(__instance.bloonModel.id, 0);
+        [HarmonyPrefix]
+        internal static bool Prefix(Bloon __instance)
+        {
+            bool hasKey = SessionData.PoppedBloons.TryGetValue(__instance.bloonModel.id, out int amountPopped);
+            if (!hasKey)
+                SessionData.PoppedBloons.Add(__instance.bloonModel.id, 0);
 
-        SessionData.Instance.PoppedBloons[__instance.bloonModel.id] = amountPopped + 1;
-        return true;
+            SessionData.PoppedBloons[__instance.bloonModel.id] = amountPopped + 1;
+            return true;
+        }
     }
 }

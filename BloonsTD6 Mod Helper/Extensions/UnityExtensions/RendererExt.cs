@@ -1,89 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using UnhollowerRuntimeLib;
 using UnityEngine;
 using UnityEngine.Rendering;
 using ArgumentException = System.ArgumentException;
 using Array = Il2CppSystem.Array;
 using Int32 = Il2CppSystem.Int32;
 
-namespace BTD_Mod_Helper.Extensions;
-
-/// <summary>
-/// Extensions for unity renderers
-/// </summary>
-public static partial class RendererExt
+namespace BTD_Mod_Helper.Extensions
 {
-    /// <summary>
-    /// Experimental method of messing with mesh renderers at runtime
-    /// </summary>
-    [Obsolete]
-    public static void SetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, List<int[]> trianglesAsArrays)
+    public static partial class RendererExt
     {
-        skinnedMeshRenderer.SetTriangles(trianglesAsArrays.SelectMany(array => array.AsEnumerable()).ToList());
-    }
-
-    /// <summary>
-    /// Experimental method of messing with mesh renderers at runtime
-    /// </summary>
-    [Obsolete]
-    public static void SetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, List<int> triangles)
-    {
-        var length = triangles.Count;
-        if (length % 3 != 0)
+        public static void SetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, List<int[]> trianglesAsArrays)
         {
-            throw new ArgumentException("Triangles list must be all sets of 3");
+            skinnedMeshRenderer.SetTriangles(trianglesAsArrays.SelectMany(array => array.AsEnumerable()).ToList());
         }
-        var array = Array.CreateInstance(Il2CppType.Of<int>(), length);
-        for (var i = 0; i < length; i++)
-        {
-            array.SetValue(new Int32 { m_value = triangles[i] }.BoxIl2CppObject(), i);
-        }
-        skinnedMeshRenderer.sharedMesh.SetTrianglesImpl(0, IndexFormat.UInt32, array, length, 0, length, true, (int)skinnedMeshRenderer.sharedMesh.GetBaseVertex(0));
-    }
 
-    /// <summary>
-    /// Experimental method of messing with mesh renderers at runtime
-    /// </summary>
-    [Obsolete]
-    public static IEnumerable<int> GetVerticesConnectedToBone(this SkinnedMeshRenderer skinnedMeshRenderer, int boneIndex)
-    {
-        var boneWeights = skinnedMeshRenderer.sharedMesh.boneWeights;
-        for (var i = 0; i < boneWeights.Count; i++)
+        public static void SetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, List<int> triangles)
         {
-            var boneWeight = boneWeights[i];
-            if (boneWeight.boneIndex0 == boneIndex && boneWeight.weight0 > 0 ||
-                boneWeight.boneIndex1 == boneIndex && boneWeight.weight1 > 0 ||
-                boneWeight.boneIndex2 == boneIndex && boneWeight.weight2 > 0 ||
-                boneWeight.boneIndex3 == boneIndex && boneWeight.weight3 > 0)
+            var length = triangles.Count;
+            if (length % 3 != 0)
             {
-                yield return i;
+                throw new ArgumentException("Triangles list must be all sets of 3");
             }
-        }
-    }
-
-    /// <summary>
-    /// Experimental method of messing with mesh renderers at runtime
-    /// </summary>
-    [Obsolete]
-    public static bool[] GetVerticesConnectedToBoneArray(this SkinnedMeshRenderer skinnedMeshRenderer, int boneIndex)
-    {
-        var boneWeights = skinnedMeshRenderer.sharedMesh.boneWeights;
-        var array = new bool[boneWeights.Count];
-
-        for (var i = 0; i < boneWeights.Count; i++)
-        {
-            var boneWeight = boneWeights[i];
-            if (boneWeight.boneIndex0 == boneIndex && boneWeight.weight0 > 0 ||
-                boneWeight.boneIndex1 == boneIndex && boneWeight.weight1 > 0 ||
-                boneWeight.boneIndex2 == boneIndex && boneWeight.weight2 > 0 ||
-                boneWeight.boneIndex3 == boneIndex && boneWeight.weight3 > 0)
+            var array = Array.CreateInstance(Int32.Il2CppType, length);
+            for (var i = 0; i < length; i++)
             {
-                array[i] = true;
+                array.SetValue(new Int32 { m_value = triangles[i] }.BoxIl2CppObject(), i);
+            }
+            skinnedMeshRenderer.sharedMesh.SetTrianglesImpl(0, IndexFormat.UInt32, array, length, 0, length, true, (int)skinnedMeshRenderer.sharedMesh.GetBaseVertex(0));
+        }
+
+        public static IEnumerable<int> GetVerticesConnectedToBone(this SkinnedMeshRenderer skinnedMeshRenderer, int boneIndex)
+        {
+            var boneWeights = skinnedMeshRenderer.sharedMesh.boneWeights;
+            for (var i = 0; i < boneWeights.Count; i++)
+            {
+                var boneWeight = boneWeights[i];
+                if (boneWeight.boneIndex0 == boneIndex && boneWeight.weight0 > 0 ||
+                    boneWeight.boneIndex1 == boneIndex && boneWeight.weight1 > 0 ||
+                    boneWeight.boneIndex2 == boneIndex && boneWeight.weight2 > 0 ||
+                    boneWeight.boneIndex3 == boneIndex && boneWeight.weight3 > 0)
+                {
+                    yield return i;
+                }
             }
         }
 
-        return array;
+        public static bool[] GetVerticesConnectedToBoneArray(this SkinnedMeshRenderer skinnedMeshRenderer, int boneIndex)
+        {
+            var boneWeights = skinnedMeshRenderer.sharedMesh.boneWeights;
+            var array = new bool[boneWeights.Count];
+
+            for (var i = 0; i < boneWeights.Count; i++)
+            {
+                var boneWeight = boneWeights[i];
+                if (boneWeight.boneIndex0 == boneIndex && boneWeight.weight0 > 0 ||
+                    boneWeight.boneIndex1 == boneIndex && boneWeight.weight1 > 0 ||
+                    boneWeight.boneIndex2 == boneIndex && boneWeight.weight2 > 0 ||
+                    boneWeight.boneIndex3 == boneIndex && boneWeight.weight3 > 0)
+                {
+                    array[i] = true;
+                }
+            }
+
+            return array;
+        }
     }
 }

@@ -1,13 +1,15 @@
 ﻿using Assets.Scripts.Unity.UI_New.InGame;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches;
-
-[HarmonyPatch(typeof(InGame), nameof(InGame.Quit))]
-internal class InGame_Quit
+namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPostfix]
-    internal static void Postfix()
+    [HarmonyPatch(typeof(InGame), nameof(InGame.Quit))]
+    internal class InGame_Quit
     {
-        ModHelper.PerformHook(mod => mod.OnMatchEnd());
+        [HarmonyPostfix]
+        internal static void Postfix()
+        {
+            MelonMain.PerformHook(mod => mod.OnMatchEnd());
+        }
     }
 }

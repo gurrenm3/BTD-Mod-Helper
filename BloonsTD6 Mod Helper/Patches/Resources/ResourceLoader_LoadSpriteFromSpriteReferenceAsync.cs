@@ -1,25 +1,28 @@
 ﻿using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Extensions;
+using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.Patches.Resources;
-
-[HarmonyPatch(typeof(ResourceLoader), nameof(ResourceLoader.LoadSpriteFromSpriteReferenceAsync))]
-internal class ResourceLoader_LoadSpriteFromSpriteReferenceAsync
+namespace BTD_Mod_Helper.Patches.Resources
 {
-    [HarmonyPostfix]
-    internal static void Postfix(ref SpriteReference reference, ref Image image)
+    [HarmonyPatch(typeof(ResourceLoader), nameof(ResourceLoader.LoadSpriteFromSpriteReferenceAsync))]
+    internal class ResourceLoader_LoadSpriteFromSpriteReferenceAsync
     {
-        if (reference is null || image is null || reference.GUID is null)
-            return;
-
-        var guid = reference.GUID;
-
-        if (ResourceHandler.GetSprite(guid) is Sprite spr)
+        [HarmonyPostfix]
+        internal static void Postfix(ref SpriteReference reference, ref Image image)
         {
-            spr.texture.mipMapBias = -1;
-            image.SetSprite(spr);
+            if (reference is null || image is null || reference.GUID is null)
+                return;
+
+            var guid = reference.GUID;
+
+            if (ResourceHandler.GetSprite(guid) is Sprite spr)
+            {
+                spr.texture.mipMapBias = -1;
+                image.SetSprite(spr);
+            }
         }
     }
 }

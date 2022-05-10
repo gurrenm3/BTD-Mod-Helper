@@ -1,10 +1,203 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>BloonsAT_Mod_Helper</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8ECD8935-8199-4B48-B6E0-320083C89B3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BTD_Mod_Helper</RootNamespace>
+    <AssemblyName>BloonsAT Mod Helper</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsAT - Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\BloonsAT - Debug\</OutputPath>
+    <DefineConstants>BloonsAT;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\BloonsAT - Debug\BloonsAT Mod Helper.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsAT - Release|AnyCPU'">
+    <OutputPath>bin\BloonsAT - Release\</OutputPath>
+    <DefineConstants>BloonsAT;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\BloonsAT - Release\BloonsAT Mod Helper.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MelonLoader">
+      <HintPath>..\Dependencies\Shared\MelonLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\Dependencies\BloonsAT\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>..\\Dependencies\BloonsAT\Il2Cppmscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>..\\Dependencies\BloonsAT\Il2CppSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\\Dependencies\BloonsAT\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NinjaKiwi.Common">
+      <HintPath>..\\Dependencies\BloonsAT\NinjaKiwi.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NinjaKiwi.LiNK">
+      <HintPath>..\\Dependencies\BloonsAT\NinjaKiwi.LiNK.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>..\\Dependencies\BloonsAT\System.Drawing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="UnhollowerBaseLib">
+      <HintPath>..\\Dependencies\BloonsAT\UnhollowerBaseLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnhollowerRuntimeLib">
+      <HintPath>..\\Dependencies\BloonsAT\UnhollowerRuntimeLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\\Dependencies\BloonsAT\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Il2CppAssetBundleManager">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Il2CppImageConversionManager">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.Il2CppImageConversionManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\\Dependencies\BloonsAT\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Builders\BloonModelBuilder.cs" />
+    <Compile Include="Api\SessionData.cs" />
+    <Compile Include="BloonsATMod.cs" />
+    <Compile Include="Extensions\AdventureTimePlayerExt.cs" />
+    <Compile Include="Extensions\BehaviorExtensions\AbilityModelBehaviorExt.cs" />
+    <Compile Include="Extensions\BehaviorExtensions\AddBehaviorToBloonModelExt.cs" />
+    <Compile Include="Extensions\CollectionExt.cs" />
+    <Compile Include="Extensions\GameExt.cs" />
+    <Compile Include="Extensions\InGameExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\BloonModelExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\GameModelExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\ModelExt.cs" />
+    <Compile Include="Extensions\ModelExtensions\TowerModelExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\ProjectileExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\UnityToSimulationExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\BloonToSimulationExt.cs" />
+    <Compile Include="Extensions\SimulationExtensions\EntityExt.cs" />
+    <Compile Include="Extensions\UnityExtensions\InputFieldExt.cs" />
+    <Compile Include="MelonMain.cs" />
+    <Compile Include="Patches\Bloon\BloonToSimulation_Ctor.cs" />
+    <Compile Include="Patches\Bloon\Bloon_Initialise.cs" />
+    <Compile Include="Patches\Bloon\Bloon_Leaked.cs" />
+    <Compile Include="Patches\Bloon\Bloon_OnDestroy_Patch.cs" />
+    <Compile Include="Patches\Bloon\Bloon_Damage.cs" />
+    <Compile Include="Patches\Towers\TowerHelper_CreateTowerInGame.cs" />
+    <Compile Include="Patches\FrontendWorld_Start.cs" />
+    <Compile Include="Patches\InGame\InGame_ShowLevelCompleteScreen.cs" />
+    <Compile Include="Patches\InGame\InGame_Restart.cs" />
+    <Compile Include="Patches\InGame\TimeManager_SetFastForward.cs" />
+    <Compile Include="Patches\InGame\TitleScreen_Start.cs" />
+    <Compile Include="Patches\Projectiles\Projectile_Initialise.cs" />
+    <Compile Include="Patches\Projectiles\Projectile_UpdatedModel.cs" />
+    <Compile Include="Patches\Sim\Simulation_IncreaseCash.cs" />
+    <Compile Include="Patches\InGame\InGame_OnPlayerDeath.cs" />
+    <Compile Include="Patches\InGame\InGame_RoundEnd.cs" />
+    <Compile Include="Patches\InGame\InGame_RoundStart.cs" />
+    <Compile Include="Patches\Sim\Simulation_DecreaseCash.cs" />
+    <Compile Include="Patches\Towers\TowerManager_UpgradeTower.cs" />
+    <Compile Include="Patches\Towers\Tower_Destroy.cs" />
+    <Compile Include="Patches\Towers\Tower_Highlight.cs" />
+    <Compile Include="Patches\Towers\Tower_Initialise.cs" />
+    <Compile Include="Patches\Towers\Tower_OnSold.cs" />
+    <Compile Include="Patches\Towers\Tower_ResetHighlight.cs" />
+    <Compile Include="Patches\Towers\Tower_UpdatedModel.cs" />
+    <Compile Include="Patches\Weapons\Weapon_Initialise.cs" />
+    <Compile Include="Patches\Weapons\Weapon_UpdatedModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ingame_popup.bundle" />
+    <None Include="Resources\modoptions.bundle" />
+  </ItemGroup>
+  <Import Project="..\BTD Mod Helper Core\BTD Mod Helper Core.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "F:\Program Files (x86)\Steam\steamapps\common\Bloons Adventure Time TD\Mods" /y
+copy "$(TargetDir)$(ProjectName).xml" "F:\Program Files (x86)\Steam\steamapps\common\Bloons Adventure Time TD\Mods" /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

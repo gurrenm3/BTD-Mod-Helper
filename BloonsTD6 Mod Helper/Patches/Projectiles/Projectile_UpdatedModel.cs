@@ -1,14 +1,16 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.Simulation.Towers.Projectiles;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Projectiles;
-
-[HarmonyPatch(typeof(Projectile), nameof(Projectile.UpdatedModel))]
-internal class Projectile_UpdatedModel
+namespace BTD_Mod_Helper.Patches.Projectiles
 {
-    [HarmonyPostfix]
-    internal static void Postfix(Projectile __instance, Model modelToUse)
+    [HarmonyPatch(typeof(Projectile), nameof(Projectile.UpdatedModel))]
+    internal class Projectile_UpdatedModel
     {
-        ModHelper.PerformHook(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
+        [HarmonyPostfix]
+        internal static void Postfix(Projectile __instance, Model modelToUse)
+        {
+            MelonMain.PerformHook(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
+        }
     }
 }

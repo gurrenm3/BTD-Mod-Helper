@@ -1,15 +1,17 @@
 ﻿using Assets.Scripts.Simulation;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Sim;
-
-[HarmonyPatch(typeof(Simulation), nameof(Simulation.RoundEnd))]
-internal class Simulation_RoundEnd
+namespace BTD_Mod_Helper.Patches.Sim
 {
-    [HarmonyPostfix]
-    internal static void Postfix()
+    [HarmonyPatch(typeof(Simulation), nameof(Simulation.RoundEnd))]
+    internal class Simulation_RoundEnd
     {
-        ModHelper.PerformHook(mod => mod.OnRoundEnd());
-        SessionData.Instance.LeakedBloons.Clear();
-        SessionData.Instance.DestroyedBloons.Clear();
+        [HarmonyPostfix]
+        internal static void Postfix()
+        {
+            MelonMain.PerformHook(mod => mod.OnRoundEnd());
+            SessionData.Instance.LeakedBloons.Clear();
+            SessionData.Instance.DestroyedBloons.Clear();
+        }
     }
 }

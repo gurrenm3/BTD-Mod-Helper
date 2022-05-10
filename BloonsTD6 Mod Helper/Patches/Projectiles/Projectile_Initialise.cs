@@ -1,16 +1,18 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Simulation.Towers.Projectiles;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Projectiles;
-
-[HarmonyPatch(typeof(Projectile), nameof(Projectile.Initialise))]
-internal class Projectile_Initialise
+namespace BTD_Mod_Helper.Patches.Projectiles
 {
-    [HarmonyPostfix]
-    internal static void Postfix(Projectile __instance, Entity target, Model modelToUse)
+    [HarmonyPatch(typeof(Projectile), nameof(Projectile.Initialise))]
+    internal class Projectile_Initialise
     {
-        ModHelper.PerformHook(mod => mod.OnProjectileCreated(__instance, target, modelToUse));
-        ModHelper.PerformHook(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
+        [HarmonyPostfix]
+        internal static void Postfix(Projectile __instance, Entity target, Model modelToUse)
+        {
+            MelonMain.PerformHook(mod => mod.OnProjectileCreated(__instance, target, modelToUse));
+            MelonMain.PerformHook(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
+        }
     }
 }

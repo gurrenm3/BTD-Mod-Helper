@@ -1,22 +1,20 @@
 ﻿using Assets.Scripts.Utils;
 using System.Collections.Generic;
 
-namespace BTD_Mod_Helper.Extensions;
-
-/// <summary>
-/// Extensions for system Lists
-/// </summary>
-public static partial class ListExt
+namespace BTD_Mod_Helper.Extensions
 {
-    /// <summary>
-    /// Not tested
-    /// </summary>
-    public static SizedList<T> ToSizedList<T>(this List<T> list)
+    public static partial class ListExt
     {
-        var sizedList = new SizedList<T>();
-        foreach (var item in list)
-            sizedList.Add(item);
+        /// <summary>
+        /// Not tested
+        /// </summary>
+        public static SizedList<T> ToSizedList<T>(this List<T> list)
+        {
+            SizedList<T> sizedList = new SizedList<T>();
+            foreach (T item in list)
+                sizedList.Add(item);
 
-        return sizedList;
+            return sizedList;
+        }
     }
 }

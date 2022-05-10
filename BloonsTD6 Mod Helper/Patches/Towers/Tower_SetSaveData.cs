@@ -1,14 +1,23 @@
 ﻿using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Simulation.Towers;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Towers;
-
-[HarmonyPatch(typeof(Tower), nameof(Tower.SetSaveData))]
-internal class Tower_SetSaveData
+namespace BTD_Mod_Helper.Patches.Towers
 {
-    [HarmonyPostfix]
-    internal static void Postfix(Tower __instance, TowerSaveDataModel towerData)
+
+    [HarmonyPatch(typeof(Tower), nameof(Tower.SetSaveData))]
+    internal class Tower_SetSaveData
     {
-        ModHelper.PerformHook(mod => mod.OnTowerLoaded(__instance, towerData));
+        [HarmonyPostfix]
+        internal static void Postfix(Tower __instance, TowerSaveDataModel towerData)
+        {
+            MelonMain.PerformHook(mod => mod.OnTowerLoaded(__instance, towerData));
+        }
     }
+
+
+
+
+
+
 }

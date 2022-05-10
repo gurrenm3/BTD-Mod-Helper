@@ -1,14 +1,16 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.Simulation.Towers.Weapons;
+using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Weapons;
-
-[HarmonyPatch(typeof(Weapon), nameof(Weapon.UpdatedModel))]
-internal class Weapon_UpdatedModel
+namespace BTD_Mod_Helper.Patches.Weapons
 {
-    [HarmonyPostfix]
-    internal static void Postfix(Weapon __instance, Model modelToUse)
+    [HarmonyPatch(typeof(Weapon), nameof(Weapon.UpdatedModel))]
+    internal class Weapon_UpdatedModel
     {
-        ModHelper.PerformHook(mod => mod.OnWeaponModelChanged(__instance, modelToUse));
+        [HarmonyPostfix]
+        internal static void Postfix(Weapon __instance, Model modelToUse)
+        {
+            MelonMain.PerformHook(mod => mod.OnWeaponModelChanged(__instance, modelToUse));
+        }
     }
 }
