@@ -1,16 +1,14 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
-using HarmonyLib;
 
-namespace BTD_Mod_Helper.Patches.Weapons
+namespace BTD_Mod_Helper.Patches.Weapons;
+
+[HarmonyPatch(typeof(Attack), nameof(Attack.UpdatedModel))]
+internal class Attack_UpdatedModel
 {
-    [HarmonyPatch(typeof(Attack), nameof(Attack.UpdatedModel))]
-    internal class Attack_UpdatedModel
+    [HarmonyPostfix]
+    internal static void Postfix(Attack __instance, Model modelToUse)
     {
-        [HarmonyPostfix]
-        internal static void Postfix(Attack __instance, Model modelToUse)
-        {
-            MelonMain.PerformHook(mod => mod.OnAttackModelChanged(__instance, modelToUse));
-        }
+        ModHelper.PerformHook(mod => mod.OnAttackModelChanged(__instance, modelToUse));
     }
 }

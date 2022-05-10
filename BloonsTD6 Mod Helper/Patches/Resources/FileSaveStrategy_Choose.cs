@@ -1,26 +1,27 @@
 ﻿using System.IO;
-using HarmonyLib;
 using NinjaKiwi.Players;
 using NinjaKiwi.Players.Files;
 
-namespace BTD_Mod_Helper.Patches.Resources
+namespace BTD_Mod_Helper.Patches.Resources;
+
+[HarmonyPatch(typeof(FileSaveStrategy), nameof(FileSaveStrategy.Choose))]
+internal class FileSaveStrategy_Choose
 {
-    [HarmonyPatch(typeof(FileSaveStrategy), nameof(FileSaveStrategy.Choose))]
-    internal class FileSaveStrategy_Choose
+    [HarmonyPrefix]
+    internal static bool Prefix()
     {
-        [HarmonyPrefix]
-        internal static bool Prefix()
-        {
-            return true;
-        }
+        return true;
+    }
 
-        [HarmonyPostfix]
-        internal static void Postfix(FileSaveStrategy __result, string path, SaveStrategy type)
-        {
-            if (!string.IsNullOrEmpty(SessionData.Instance.SaveDirectory) || !path.ToLower().EndsWith("profile.save"))
-                return;
+    [HarmonyPostfix]
+    internal static void Postfix(FileSaveStrategy? __result, string path, SaveStrategy type)
+    {
+        if (!string.IsNullOrEmpty(SessionData.Instance.SaveDirectory) || !path.ToLower().EndsWith("profile.save"))
+            return;
 
-            FileInfo fileInfo = new FileInfo(path);
+        var fileInfo = new FileInfo(path);
+        if (fileInfo.Directory != null)
+        {
             SessionData.Instance.SaveDirectory = fileInfo.Directory.FullName;
             SessionData.Instance.PlayerSaveStrategy = __result;
         }

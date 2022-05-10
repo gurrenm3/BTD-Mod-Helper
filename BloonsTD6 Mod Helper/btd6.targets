@@ -4,15 +4,14 @@
         <ManagedFolder>$(BloonsTD6)\MelonLoader\Managed</ManagedFolder>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="$(BloonsTD6)\MelonLoader\MelonLoader.dll"/>
-        <Reference Include="$(BloonsTD6)\MelonLoader\0Harmony.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\0Harmony.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\MelonLoader.dll"/>
+		<Reference Include="$(BloonsTD6)\MelonLoader\net6\Newtonsoft.Json.dll" />
+		<Reference Include="$(BloonsTD6)\MelonLoader\net6\System.Drawing.Common.dll" />
         <Reference Include="$(ManagedFolder)\Assembly-CSharp.dll" />
         <Reference Include="$(ManagedFolder)\Il2Cppmscorlib.dll" />
         <Reference Include="$(ManagedFolder)\Il2CppSystem.Core.dll" />
-        <Reference Include="$(ManagedFolder)\mscorlib.dll" />
         <Reference Include="$(ManagedFolder)\Il2CppSystem.dll" />
-        <Reference Include="$(ManagedFolder)\Newtonsoft.Json.dll" />
         <Reference Include="$(ManagedFolder)\NinjaKiwi.Common.dll" />
         <Reference Include="$(ManagedFolder)\NinjaKiwi.LiNK.dll" />
         <Reference Include="$(ManagedFolder)\UnhollowerBaseLib.dll" />
@@ -35,10 +34,16 @@
         <Reference Include="$(ManagedFolder)\UnityEngine.UIElementsModule.dll" />
         <Reference Include="$(ManagedFolder)\UnityEngine.UIModule.dll" />
     </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="**/*.png"/>
+        <EmbeddedResource Include="**/*.jpg"/>
+    </ItemGroup>
     <Target Name="MoveDllToMods" AfterTargets="Build" Condition="Exists('$(TargetDir)$(TargetName).dll')">
-        <Exec Command="copy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(BloonsTD6)\Mods&quot; /y"/>
+        <Message Text="Copying $(TargetName).dll to Mods Folder..." Importance="High" />
+        <Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(BloonsTD6)\Mods"/>
     </Target>
     <Target Name="MoveXmlToMods" AfterTargets="Build" Condition="Exists('$(TargetDir)$(TargetName).xml')">
-        <Exec Command="copy &quot;$(TargetDir)$(TargetName).xml&quot; &quot;$(BloonsTD6)\Mods&quot; /y"/>
+        <Message Text="Copying $(TargetName).xml to Mods Folder..." Importance="High" />
+        <Copy SourceFiles="$(TargetDir)$(TargetName).xml" DestinationFolder="$(BloonsTD6)\Mods"/>
     </Target>
 </Project>

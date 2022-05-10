@@ -1,5 +1,1 @@
-﻿namespace BTD_Mod_Helper.Patches.UI
-{
-    
-
-}
+﻿namespace BTD_Mod_Helper.Patches.UI;

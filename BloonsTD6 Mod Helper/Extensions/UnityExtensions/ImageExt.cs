@@ -1,18 +1,42 @@
-﻿using Assets.Scripts.Utils;
+﻿using Assets.Scripts.Unity.Utils;
+using Assets.Scripts.Utils;
+using System;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.Extensions
+namespace BTD_Mod_Helper.Extensions;
+
+/// <summary>
+/// Extensions for Images
+/// </summary>
+public static partial class ImageExt
 {
-    public static partial class ImageExt
+    /// <summary>
+    /// Set the sprite for this image 
+    /// </summary>
+    /// <param name="image"></param>
+    /// <param name="spriteReference">Sprite to change image to</param>
+    public static void SetSprite(this Image image, SpriteReference spriteReference)
     {
-        /// <summary>
-        /// Set the sprite for this image 
-        /// </summary>
-        /// <param name="image"></param>
-        /// <param name="spriteReference">Sprite to change image to</param>
-        public static void SetSprite(this Image image, SpriteReference spriteReference)
-        {
-            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
-        }
+        ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
+        image.enabled = true;
+    }
+
+    /// <summary>
+    /// Loads a sprite reference to this image
+    /// </summary>
+    /// <param name="image"></param>
+    /// <param name="spriteReference"></param>
+    public static void LoadSprite(this Image image, SpriteReference spriteReference)
+    {
+        ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
+    }
+
+    /// <summary>
+    /// Sets the sprite of this image to one with the given name in the named sprite atlas
+    /// </summary>
+    [Obsolete("Use SetSprite with a VanillaSpriteReference instead")]
+    public static void SetSpriteFromAtlas(this Image image, string atlas, string spriteName)
+    {
     }
 }
