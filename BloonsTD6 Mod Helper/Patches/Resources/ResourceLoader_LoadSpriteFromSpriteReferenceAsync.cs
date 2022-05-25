@@ -13,7 +13,9 @@ internal class ResourceLoader_LoadSpriteFromSpriteReferenceAsync
     {
         if (reference is null || image is null || reference.GUID is null)
             return;
-
+        var spriteref=reference;
+        var img=image;
+        ModHelper.PerformHook(mod=>mod.OnSpriteLoad(spriteref,img));
         var guid = reference.GUID;
 
         if (ResourceHandler.GetSprite(guid) is Sprite spr)

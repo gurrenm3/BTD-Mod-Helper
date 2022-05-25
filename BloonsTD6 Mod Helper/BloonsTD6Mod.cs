@@ -20,6 +20,9 @@ using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
 using Assets.Scripts.Models.Map;
+using Assets.Scripts.Unity.Audio;
+using Assets.Scripts.Utils;
+using UnityEngine.UI;
 
 namespace BTD_Mod_Helper;
 
@@ -132,6 +135,29 @@ public abstract class BloonsTD6Mod : BloonsMod
     {
     }
 
+    /// <summary>
+    /// Called when a display is being loaded such as a towers 3d model
+    /// <br/>
+    /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+    /// </summary>
+    public virtual void OnModelLoaded(Factory factory,string ModelToLoad,Il2CppSystem.Action<UnityDisplayNode>action){
+    }
+
+    /// <summary>
+    /// Called when the games audioFactory is loaded
+    /// <br/>
+    /// Equivalent to a HarmonyPostFix on AudioFactory_Start
+    /// </summary>
+    public virtual void OnAudioFactoryStart(AudioFactory audioFactory){    
+    }
+
+    /// <summary>
+    /// Called when a sprite is being loaded
+    /// <br/>
+    /// Equivalent to a HarmonyPostFix on ResourceLoader_LoadSpriteFromSpriteReferenceAsync
+    /// </summary>
+    public virtual void OnSpriteLoad(SpriteReference spriteref,Image image){
+    }
     #endregion
 
     #region Menu Hooks
@@ -330,7 +356,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called right after a Tower is selected by the player
     /// <br/>
-    /// Equivalent to a HarmonyPostFix on Tower.Highlight
+    /// Equivalent to a HarmonyPostFix on TowerSelectionMenu.Show
     /// </summary>
     public virtual void OnTowerSelected(Tower tower)
     {
