@@ -12,10 +12,12 @@ namespace BTD_Mod_Helper.Patches.Resources;
 internal class Factory_FindAndSetupPrototypeAsync
 {
     [HarmonyPrefix]
-    internal static bool Prefix(Factory __instance, ref string objectId, ref Action<UnityDisplayNode> onComplete)
+    internal static bool Prefix(ref Factory __instance, ref string objectId, ref Action<UnityDisplayNode> onComplete)
     {
         var id = objectId;
         var action = onComplete;
+        var factory=__instance;
+        ModHelper.PerformHook(mod=>mod.OnModelLoaded(factory,id,action));
         if (ResourceHandler.Prefabs.ContainsKey(objectId) && !ResourceHandler.Prefabs[objectId].isDestroyed)
         {
             onComplete.Invoke(ResourceHandler.Prefabs[objectId]);
@@ -28,7 +30,7 @@ internal class Factory_FindAndSetupPrototypeAsync
             objectId = "9dccc16d26c1c8a45b129e2a8cbd17ba";
             onComplete = new System.Action<UnityDisplayNode>(node =>
                 {
-                    var udn = Object.Instantiate(node, __instance.PrototypeRoot);
+                    var udn = Object.Instantiate(node, factory.PrototypeRoot);
                     udn.name = id + "(Clone)";
                     var texture = new Texture2D(2, 2);
                     ImageConversion.LoadImage(texture, bytes);
@@ -67,7 +69,7 @@ internal class Factory_FindAndSetupPrototypeAsync
                 objectId = modDisplay.BaseDisplay;
                 onComplete = new System.Action<UnityDisplayNode>(node =>
                 {
-                    var udn = Object.Instantiate(node, __instance.PrototypeRoot);
+                    var udn = Object.Instantiate(node, factory.PrototypeRoot);
                     SetupUDN(udn, modDisplay, action);
                 });
             }
