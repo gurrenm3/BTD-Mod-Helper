@@ -121,10 +121,14 @@ public static partial class UnityDisplayNodeExt
             if (renderers.Count == 0)
                 return new List<Renderer>();
         }
-
-        if (recalculate && node.genericRenderers![0] == null)
+        else
         {
-            node.RecalculateGenericRenderers();
+            renderers = node.genericRenderers.ToList();
+
+            if (recalculate && renderers.Any(renderer => renderer == null))
+            {
+                node.RecalculateGenericRenderers();
+            }
         }
 #elif BloonsAT
             renderers = node.GetComponents<Renderer>().ToList();
