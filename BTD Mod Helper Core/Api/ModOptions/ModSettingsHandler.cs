@@ -120,7 +120,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         {
             foreach (var mod in MelonHandler.Mods.OfType<BloonsMod>())
             {
-                if (!mod.ModSettings.Any()) continue;
+                if (mod.ModSettings == null || !mod.ModSettings.Any()) continue;
                 SaveModSettings(mod, modSettingsDir);
             }
         }
