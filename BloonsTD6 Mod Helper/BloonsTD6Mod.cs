@@ -46,6 +46,7 @@ namespace BTD_Mod_Helper
 
         /// <summary>
         /// Executed once the user has connected to a game session.
+        /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
         /// </summary>
         /// <param name="nkGi">The interface used to interact with the game.</param>
         public virtual void OnConnected(NKMultiGameInterface nkGi)
@@ -54,6 +55,7 @@ namespace BTD_Mod_Helper
 
         /// <summary>
         /// Executed once the user has tried to connect to a server, but failed to do so.
+        /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
         /// </summary>
         /// <param name="nkGi">The interface used to interact with the game.</param>
         public virtual void OnConnectFail(NKMultiGameInterface nkGi)
@@ -62,6 +64,7 @@ namespace BTD_Mod_Helper
 
         /// <summary>
         /// Executed once the player has disconnected from a server.
+        /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
         /// </summary>
         /// <param name="nkGi">The interface used to interact with the game.</param>
         public virtual void OnDisconnected(NKMultiGameInterface nkGi)
@@ -70,6 +73,7 @@ namespace BTD_Mod_Helper
 
         /// <summary>
         /// Executed when a new client has joined the game session.
+        /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
         /// </summary>
         /// <param name="nkGi">The interface used to interact with the game.</param>
         /// <param name="peerId">Index of the peer in question.</param>
@@ -79,6 +83,7 @@ namespace BTD_Mod_Helper
 
         /// <summary>
         /// Executed when a new client has left the game session.
+        /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
         /// </summary>
         /// <param name="nkGi">The interface used to interact with the game.</param>
         /// <param name="peerId">Index of the peer in question.</param>
@@ -93,6 +98,7 @@ namespace BTD_Mod_Helper
         /// <br/>
         /// If this is one of your messages and you're consuming and acting on it, return true.
         /// Otherwise, return false. Seriously.
+        /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
         /// </summary>
         public virtual bool ActOnMessage(Message message)
         {
