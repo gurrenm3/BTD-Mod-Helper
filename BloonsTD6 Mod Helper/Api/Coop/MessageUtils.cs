@@ -1,42 +1,54 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Text;
+using Newtonsoft.Json;
 using NinjaKiwi.NKMulti;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Coop
 {
+    /// <summary>
+    /// Utility functions used for sending messages over the network.
+    /// </summary>
     public class MessageUtils
     {
-        public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Il2CppSystem.Object
+        /// <summary>
+        /// Creates a message to be sent over the network.
+        /// The message will be serialized as JSON.
+        /// </summary>
+        /// <param name="objectToSend">The object to be sent. The object's properties will be serialized.</param>
+        /// <param name="code">Unique code for your specific message.</param>
+        public static Message CreateMessageEx<T>(T objectToSend, string code = "")
         {
             var json = JsonConvert.SerializeObject(objectToSend);
-            var serialize = Il2CppSystem.Text.Encoding.Default.GetBytes(json);
+            var serialize = Encoding.Default.GetBytes(json);
             code = string.IsNullOrEmpty(code) ? MelonMain.coopMessageCode : code;
             return new Message(code, serialize);
-
-            //throw new System.Exception("This code was broken in BTD6 update 27.0");
-            // commented code below broke in update 27.0
-            //Il2CppStructArray<byte> serialize = SerialisationUtil.Serialise(objectToSend);
-
-            // this code is commented because code above is broken
-            /*code = string.IsNullOrEmpty(code) ? MelonMain.coopMessageCode : code;
-            return new Message(code, serialize);*/
         }
 
+        /// <summary>
+        /// Reads a message sent from the network.
+        /// Assumes message is sent as JSON. (via <see cref="CreateMessageEx{T}"/>)
+        /// </summary>
+        /// <param name="serializedMessage">Raw bytes received from the network.</param>
         public static T ReadMessage<T>(Il2CppStructArray<byte> serializedMessage)
         {
-            var modMessage = Il2CppSystem.Text.Encoding.Default.GetString(serializedMessage);
+            var modMessage = Encoding.Default.GetString(serializedMessage);
             return JsonConvert.DeserializeObject<T>(modMessage);
-
-            //throw new System.Exception("This code was broken in BTD6 update 27.0");
-            // commented code below broke in update 27.0
-            //return SerialisationUtil.Deserialise<T>(serializedMessage);
         }
 
+        /// <summary>
+        /// Reads a message sent from the network.
+        /// Assumes message is sent as JSON. (via <see cref="CreateMessageEx{T}"/>)
+        /// </summary>
+        /// <param name="message">Message received from the network.</param>
         public static T ReadMessage<T>(Message message)
         {
-            //throw new System.Exception("This code was broken in BTD6 update 27.0");
-            // commented code below broke in update 27.0
             return ReadMessage<T>(message.bytes);
         }
+
+        #region Backwards Binary Compatibility
+        [Obsolete($"For backwards compatibility reasons only, please use {nameof(CreateMessageEx)}")]
+        public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Il2CppSystem.Object => CreateMessage(objectToSend, code);
+        #endregion
     }
 }

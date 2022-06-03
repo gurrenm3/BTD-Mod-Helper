@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
+    <!-- I want my nullables goddamn it. -->
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsTD6 - Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -19,7 +21,6 @@
     <DefineConstants>BloonsTD6;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <DocumentationFile>obj\BloonsTD6 - Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -31,7 +32,6 @@
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <DocumentationFile>bin\BloonsTD6 - Release\BloonsTD6 Mod Helper.xml</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -123,6 +123,8 @@
     <Compile Include="Patches\Player\Btd6Player_Save.cs" />
     <Compile Include="Patches\Player\Btd6Player_SaveNow.cs" />
     <Compile Include="Patches\Player\NKMultiConnection_Receive.cs" />
+    <Compile Include="Patches\Player\NKMultiGameInterface_Disconnect.cs" />
+    <Compile Include="Patches\Player\NKMultiGameInterface_Connect.cs" />
     <Compile Include="Patches\Player\NKMultiGameInterface_Update.cs" />
     <Compile Include="Patches\Player\ProfileModel_Validate.cs" />
     <Compile Include="Patches\Projectiles\Projectile_Initialise.cs" />

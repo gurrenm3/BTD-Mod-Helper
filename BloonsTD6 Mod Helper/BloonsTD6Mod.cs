@@ -21,6 +21,7 @@ using NinjaKiwi.NKMulti;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
+using BTD_Mod_Helper.Api.Coop;
 
 namespace BTD_Mod_Helper
 {
@@ -41,13 +42,54 @@ namespace BTD_Mod_Helper
             Game.instance.model.AddTowerToGame(newTowerModel, towerDetailsModel);
         }
 
+        #region Networking Hooks
 
-        #region Misc Hooks
+        /// <summary>
+        /// Executed once the user has connected to a game session.
+        /// </summary>
+        /// <param name="nkGi">The interface used to interact with the game.</param>
+        public virtual void OnConnected(NKMultiGameInterface nkGi)
+        {
+        }
+
+        /// <summary>
+        /// Executed once the user has tried to connect to a server, but failed to do so.
+        /// </summary>
+        /// <param name="nkGi">The interface used to interact with the game.</param>
+        public virtual void OnConnectFail(NKMultiGameInterface nkGi)
+        {
+        }
+
+        /// <summary>
+        /// Executed once the player has disconnected from a server.
+        /// </summary>
+        /// <param name="nkGi">The interface used to interact with the game.</param>
+        public virtual void OnDisconnected(NKMultiGameInterface nkGi)
+        {
+        }
+
+        /// <summary>
+        /// Executed when a new client has joined the game session.
+        /// </summary>
+        /// <param name="nkGi">The interface used to interact with the game.</param>
+        /// <param name="peerId">Index of the peer in question.</param>
+        public virtual void OnPeerConnected(NKMultiGameInterface nkGi, int peerId)
+        {
+        }
+
+        /// <summary>
+        /// Executed when a new client has left the game session.
+        /// </summary>
+        /// <param name="nkGi">The interface used to interact with the game.</param>
+        /// <param name="peerId">Index of the peer in question.</param>
+        public virtual void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId)
+        {
+        }
 
         /// <summary>
         /// Acts on a Network message that's been sent to the client
         /// <br/>
-        /// Use Game.instance.GetNKgI().ReadMessage&lt;YOUR_CLASS_NAME&gt;(message) to get back the same object/class you sent.
+        /// Use <see cref="MessageUtils.ReadMessage{T}(Message)"/> to read back the message you sent.
         /// <br/>
         /// If this is one of your messages and you're consuming and acting on it, return true.
         /// Otherwise, return false. Seriously.
@@ -57,6 +99,10 @@ namespace BTD_Mod_Helper
             return false;
         }
 
+        #endregion
+
+
+        #region Misc Hooks
 
         /// <summary>
         /// Called when the player's ProfileModel is loaded.

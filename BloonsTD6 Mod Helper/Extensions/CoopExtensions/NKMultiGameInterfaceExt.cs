@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Unity;
+﻿using System;
+using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api.Coop;
 using NinjaKiwi.NKMulti;
 using UnhollowerBaseLib;
@@ -8,28 +10,42 @@ namespace BTD_Mod_Helper.Extensions
     public static class NKMultiGameInterfaceExt
     {
         /// <summary>
+        /// Returns true if the player is a host in a co-op game.
+        /// Works for both lobby and in-game.
+        /// </summary>
+        public static bool IsCoOpHost(this NKMultiGameInterface nkGi)
+        {
+            var inGame = InGame.instance;
+            var game = Game.instance;
+
+            // Check lobby first.
+            var connection = game?.GetCoopLobbyConnection();
+            if (connection != null)
+                return connection.IsAuthority;
+
+            // Then check game.
+            if (inGame == null || !inGame.IsCoOpReady())
+                return nkGi.PeerID == 1; // The game does this! for lobby etc. Checked in IDA.
+
+            return inGame.coopGame.IsAuthority();
+        }
+
+        /// <summary>
         /// Send a Message to all players in the lobby
         /// </summary>
         /// <param name="message">Message to send</param>
-        public static void SendMessage(this NKMultiGameInterface nkGI, Message message)
-        {
-            nkGI.relayConnection.Writer.Write(message);
-        }
+        public static void SendMessage(this NKMultiGameInterface nkGI, Message message) => nkGI.relayConnection.Writer.Write(message);
 
         /// <summary>
         /// Convert an object to json and send it players or a player in the lobby
         /// </summary>
-        /// <param name="objectToSend">Object you want to send</param>
+        /// <param name="objectToSend">Object you want to send. The properties of the object will be serialised as JSON.</param>
         /// <param name="peerId">The id of the peer you want the message to go to. Leave null if you want to send to all players</param>
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
-        public static void SendMessage<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") where T : Il2CppSystem.Object
+        public static void SendMessageEx<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "")
         {
-            Message message = MessageUtils.CreateMessage(objectToSend, code);
-
-            var str = Il2CppSystem.Text.Encoding.Default.GetString(message.bytes);
-            MelonLoader.MelonLogger.Msg($"str: {str}");
-
-            if (peerId.HasValue && peerId != null)
+            var message = MessageUtils.CreateMessageEx(objectToSend, code);
+            if (peerId.HasValue && peerId.HasValue)
                 nkGI.SendToPeer(peerId.Value, message);
             else
                 nkGI.relayConnection.Writer.Write(message);
@@ -43,12 +59,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
         public static void SendMessage(this NKMultiGameInterface nkGI, Il2CppSystem.String objectToSend, byte? peerId = null, string code = "")
         {
-            Message message = MessageUtils.CreateMessage(objectToSend, code);
-
-            var str = Il2CppSystem.Text.Encoding.Default.GetString(message.bytes);
-            MelonLoader.MelonLogger.Msg($"str: {str}");
-
-            if (peerId.HasValue && peerId != null)
+            var message = MessageUtils.CreateMessage(objectToSend, code);
+            if (peerId.HasValue && peerId.HasValue)
                 nkGI.SendToPeer(peerId.Value, message);
             else
                 nkGI.relayConnection.Writer.Write(message);
@@ -82,9 +94,21 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (message.Code != Chat_Message.chatCoopCode)
                 return null;
+
             string json = nkGI.ReadMessage<string>(message.bytes);
             Chat_Message deserialized = Game.instance.GetJsonSerializer().DeserializeJson<Chat_Message>(json);
             return deserialized;
         }
+
+        #region Backwards Binary Compatibility
+        /// <summary>
+        /// Convert an object to json and send it players or a player in the lobby
+        /// </summary>
+        /// <param name="objectToSend">Object you want to send. The properties of the object will be serialised as JSON.</param>
+        /// <param name="peerId">The id of the peer you want the message to go to. Leave null if you want to send to all players</param>
+        /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
+        [Obsolete($"For backwards compatibility reasons only, please use {nameof(SendMessageEx)}")]
+        public static void SendMessage<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") where T : Il2CppSystem.Object => SendMessageEx(nkGI, objectToSend, peerId, code);
+        #endregion
     }
 }
