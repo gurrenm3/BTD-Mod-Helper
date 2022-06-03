@@ -13,12 +13,27 @@ using NinjaKiwi.Common;
 using NinjaKiwi.NKMulti;
 using NinjaKiwi.Players.Files.SaveStrategies;
 using System.Collections.Generic;
+using Assets.Scripts.Unity.UI_New.Coop;
+using NinjaKiwi.LiNK.Lobbies;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {
     public static partial class GameExt
     {
+        /// <summary>
+        /// Returns the current lobby screen.
+        /// </summary>
+        public static CoopLobbyScreen? GetCoopLobbyScreen(this Game game)
+        {
+            return (game.GetMenuManager()?.currMenu?.Item2?.TryCast<CoopLobbyScreen>());
+        }
+
+        /// <summary>
+        /// Returns the current lobby connection.
+        /// </summary>
+        public static LobbyConnection? GetCoopLobbyConnection(this Game game) => game.GetCoopLobbyScreen()?.lobbyConnection;
+
         /// <summary>
         /// Returns the directory where the Player's Profile.save file is located.
         /// Not set until after reaching the Main Menu for the first time
