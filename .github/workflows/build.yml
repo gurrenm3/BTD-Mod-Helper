@@ -1,0 +1,69 @@
+name: Build
+
+on:
+  push:
+    branches: [ "3.0_Release" ]
+    tags:
+      - '*'
+  pull_request:
+    branches: [ "3.0_Release" ]
+
+env:
+  CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
+  MELONLOADER_ZIP: MelonLoader.x64.CI.Release.zip
+
+jobs:
+  build:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+        
+      - name: Download MelonLoader
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build.yml
+          run_id: 2646345818 # https://github.com/LavaGang/MelonLoader/actions/runs/2646345818
+          name: $MELONLOADER_ZIP
+          repo: LavaGang
+      
+      - name: Extract MelonLoader
+        uses: montudor/action-zip@v1
+        with: 
+          args: unzip -qq $MELONLOADER_ZIP -d ./BloonsTD6/
+
+      - name: Clone Dependencies Repo
+        uses: actions/checkout@master
+        with:
+          repository: doombubbles/btd6-ci-dependencies
+          ref: main
+          path: BloonsTD6/MelonLoader/Managed
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x # net6 can still build older as well
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c BTD6_Release "$env:CSPROJ"
+
+      - name: Upload Mod DLL
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          # Artifact name
+          name: Mod DLL
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./Output/BtdModHelper.dll
+
+      - name: Upload Mod Documentation
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          # Artifact name
+          name: Mod Documentation
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./Output/BtdModHelper.xml
