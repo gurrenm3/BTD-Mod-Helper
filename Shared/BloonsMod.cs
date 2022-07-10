@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Patches;
 using BTD_Mod_Helper.Patches.Resources;
-using Main = Assets.Main.Main;
 
 namespace BTD_Mod_Helper;
 

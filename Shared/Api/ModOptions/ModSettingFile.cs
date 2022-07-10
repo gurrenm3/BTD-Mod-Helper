@@ -2,7 +2,7 @@
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
-using NativeFileDialogSharp;
+using NfdSharp;
 using TMPro;
 using UnityEngine;
 
@@ -62,11 +62,10 @@ public class ModSettingFile : ModSetting<string>
             new Action(() =>
             {
                 FileDialogHelper.PrepareNativeDlls();
-                    
-                var dialog = Dialog.FileOpen(filter, value);
-                if (dialog?.IsOk == true)
+
+                if (Nfd.OpenDialog(filter, value, out var path) == Nfd.NfdResult.NFD_OKAY)
                 {
-                    SetValue(dialog.Path);
+                    SetValue(path);
                 }
             })
         );

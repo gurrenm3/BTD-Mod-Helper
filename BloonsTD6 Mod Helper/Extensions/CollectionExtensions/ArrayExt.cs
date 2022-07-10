@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Assets.Scripts.Utils;
 using UnhollowerBaseLib;
 using UnhollowerBaseLib.Runtime;

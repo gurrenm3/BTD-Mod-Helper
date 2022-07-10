@@ -13,7 +13,6 @@ using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Display;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;

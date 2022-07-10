@@ -21,8 +21,8 @@
     <ItemGroup>
         <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
         <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" GeneratePathProperty="true" />
+        <PackageReference Include="NfdSharp" Version="1.0.1" />
         <PackageReference Include="Octokit" Version="0.52.0" GeneratePathProperty="true" />
-        <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" GeneratePathProperty="true" />
     </ItemGroup>
 
     <ItemGroup>

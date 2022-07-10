@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Models.Towers;
+﻿using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
 

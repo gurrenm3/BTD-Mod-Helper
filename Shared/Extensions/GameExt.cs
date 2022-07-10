@@ -9,7 +9,6 @@ using System.Collections;
 using BTD_Mod_Helper.Api.Enums;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Unity.Map;
-using Assets.Scripts.Unity.UI_New;
 
 #if BloonsTD6
 using NinjaKiwi.LiNK;
