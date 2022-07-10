@@ -27,7 +27,7 @@ public static class WeaponModelBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static T? GetBehavior<T>(this WeaponModel model) where T : Model
+    public static T GetBehavior<T>(this WeaponModel model) where T : Model
     {
         return ModelBehaviorExt.GetBehavior<T>(model);
     }

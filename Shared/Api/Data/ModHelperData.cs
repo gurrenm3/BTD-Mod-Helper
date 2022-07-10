@@ -10,7 +10,6 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using UnityEngine;
-using UnityEngine.InputSystem.Utilities;
 using FileMode = System.IO.FileMode;
 
 namespace BTD_Mod_Helper.Api;
@@ -58,7 +57,7 @@ internal class ModHelperData
 
     private static readonly Dictionary<string, MethodInfo> Setters;
     private static readonly Dictionary<string, MethodInfo> Getters;
-    private Sprite? icon;
+    private Sprite icon;
 
     /// <summary>
     /// Statically gets the Setters and Getters for easier accessing of the serialized fields
@@ -95,7 +94,7 @@ internal class ModHelperData
     {
     }
 
-    public ModHelperData(Repository repository, string? subPath = null)
+    public ModHelperData(Repository repository, string subPath = null)
     {
         Repository = repository;
         RepoOwner = repository.Owner.Login;
@@ -109,10 +108,11 @@ internal class ModHelperData
         Name = mod.Info.Name;
         Version = mod.Info.Version;
         Author = mod.Info.Author;
-        FilePath = mod.Location;
+        FilePath = mod.MelonAssembly.Assembly.Location;
         DllName = FilePath.Split('\\').Last();
 
-        var data = mod.Assembly.GetValidTypes().FirstOrDefault(type => type.Name == nameof(ModHelperData));
+        var data = mod.MelonAssembly.Assembly.GetValidTypes()
+            .FirstOrDefault(type => type.Name == nameof(ModHelperData));
         if (mod is MelonMain)
         {
             data = typeof(ModHelper);
@@ -140,12 +140,12 @@ internal class ModHelperData
         // ReSharper disable once ConstantNullCoalescingCondition
         var iconPath = Icon ?? "Icon.png";
         var assemblyPath = "." + iconPath.Replace("/", ".");
-        var resource = mod.Assembly
+        var resource = mod.MelonAssembly.Assembly
             .GetManifestResourceNames()
             .FirstOrDefault(s => s.EndsWith(assemblyPath));
         if (resource != null)
         {
-            IconBytes = mod.Assembly.GetManifestResourceStream(resource)?.GetByteArray();
+            IconBytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(resource)?.GetByteArray();
         }
         else
         {
@@ -155,26 +155,26 @@ internal class ModHelperData
 
     internal static IEnumerable<ModHelperData> All => Active.Concat(Inactive);
 
-    internal byte[]? IconBytes { get; private set; }
+    internal byte[] IconBytes { get; private set; }
     internal bool HasNoIcon { get; private set; }
 
     // These public properties are the serialized ones
-    public string? Version { get; protected set; }
-    public string? Name { get; protected set; }
-    public string? Description { get; protected set; }
-    public string? Icon { get; protected set; }
-    public string? DllName { get; protected set; }
-    public string? RepoName { get; protected set; }
-    public string? RepoOwner { get; protected set; }
+    public string Version { get; protected set; }
+    public string Name { get; protected set; }
+    public string Description { get; protected set; }
+    public string Icon { get; protected set; }
+    public string DllName { get; protected set; }
+    public string RepoName { get; protected set; }
+    public string RepoOwner { get; protected set; }
     public bool ManualDownload { get; protected set; }
-    public string? ZipName { get; protected set; }
-    public string? Author { get; protected set; }
-    public string? SubPath { get; protected set; }
+    public string ZipName { get; protected set; }
+    public string Author { get; protected set; }
+    public string SubPath { get; protected set; }
 
     /// <summary>
     /// The currently active mod that this is associated with, if any
     /// </summary>
-    internal MelonMod? Mod { get; }
+    internal MelonMod Mod { get; }
 
     /// <summary>
     /// Whether this mod is correctly in the Enabled mods folder
@@ -193,14 +193,14 @@ internal class ModHelperData
     /// <summary>
     /// The place that the .dll file for this mod is on the local machine, if any
     /// </summary>
-    internal string? FilePath { get; private set; }
+    internal string FilePath { get; private set; }
 
     // Browser Mod Info
-    internal Repository? Repository { get; private set; }
+    internal Repository Repository { get; private set; }
     internal bool RepoDataSuccess { get; private set; }
-    internal string? RepoVersion { get; private set; }
-    internal Release? LatestRelease { get; private set; }
-    internal GitHubCommit? LatestCommit { get; private set; }
+    internal string RepoVersion { get; private set; }
+    internal Release LatestRelease { get; private set; }
+    internal GitHubCommit LatestCommit { get; private set; }
 
 
     internal bool UpdateAvailable =>
@@ -210,7 +210,7 @@ internal class ModHelperData
         RepoVersion != null &&
         IsUpdate(Version, RepoVersion);
 
-    internal string? ReadmeUrl
+    internal string ReadmeUrl
     {
         get
         {
@@ -218,6 +218,7 @@ internal class ModHelperData
                 return Mod?.Info.DownloadLink;
             if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
                 return $"https://github.com/{RepoOwner}/{RepoName}#readme";
+
             return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Repository!.DefaultBranch}/{SubPath}#readme";
         }
     }
@@ -248,7 +249,7 @@ internal class ModHelperData
             {
                 try
                 {
-                    set.Invoke(this, new object?[] {json[key]!.ToObject<bool>()});
+                    set.Invoke(this, new object[] {json[key]!.ToObject<bool>()});
                 }
                 catch (Exception)
                 {
@@ -257,7 +258,7 @@ internal class ModHelperData
 
                 try
                 {
-                    set.Invoke(this, new object?[] {json[key]!.ToObject<string>()});
+                    set.Invoke(this, new object[] {json[key]!.ToObject<string>()});
                 }
                 catch (Exception)
                 {
@@ -267,13 +268,13 @@ internal class ModHelperData
         }
     }
 
-    private static T? GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
+    private static T GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
     {
         if (Regex.Match(data, regex) is {Success: true} match)
         {
             var matchGroup = match.Groups[1];
             var result = allowMultiline
-                ? matchGroup.Captures.Select(c => c.Value).Join(delimiter: "")
+                ? matchGroup.Captures.Cast<Capture>().Select(c => c.Value).Join(delimiter: "")
                 : matchGroup.Value;
             if (typeof(T) == typeof(string))
             {
@@ -311,7 +312,7 @@ internal class ModHelperData
     {
         try
         {
-            string? data = null;
+            string data = null;
             var json = false;
 
             if (SubPath != null && (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json")))
@@ -388,7 +389,7 @@ internal class ModHelperData
         return Version != null && RepoName != null && RepoOwner != null && (SubPath == null || DllName != null);
     }
 
-    public async Task<Release?> GetLatestRelease()
+    public async Task<Release> GetLatestRelease()
     {
         try
         {
@@ -406,7 +407,7 @@ internal class ModHelperData
         }
     }
 
-    public async Task<GitHubCommit?> GetLatestCommit()
+    public async Task<GitHubCommit> GetLatestCommit()
     {
         try
         {
@@ -419,6 +420,7 @@ internal class ModHelperData
             return LatestCommit =
                 (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository!.Id, new CommitRequest {Path = path}))
                 [0];
+
             ;
         }
         catch (Exception e)
@@ -480,7 +482,7 @@ internal class ModHelperData
         return result != null;
     }
 
-    public Sprite? GetIcon()
+    public Sprite GetIcon()
     {
         if (icon != null)
         {
@@ -670,7 +672,7 @@ internal class ModHelperData
 
     public static void LoadAll()
     {
-        foreach (var melonMod in MelonMod.RegisteredMelons)
+        foreach (var melonMod in ModHelper.Melons)
         {
             try
             {

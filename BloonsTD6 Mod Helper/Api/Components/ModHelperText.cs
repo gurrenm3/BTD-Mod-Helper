@@ -23,7 +23,7 @@ public class ModHelperText : ModHelperComponent
     /// <summary>
     /// Sets the text of this text to the given text
     /// </summary>
-    public void SetText(string? text)
+    public void SetText(string text)
     {
         Text.SetText(text);
     }
@@ -36,7 +36,7 @@ public class ModHelperText : ModHelperComponent
     /// <param name="fontSize">Size of font</param>
     /// <param name="align">Alignment of text</param>
     /// <returns>The created ModHelperText</returns>
-    public static ModHelperText Create(Info info, string? text, float fontSize = 42,
+    public static ModHelperText Create(Info info, string text, float fontSize = 42,
         TextAlignmentOptions align = TextAlignmentOptions.Center)
     {
         var modHelperText = ModHelperComponent.Create<ModHelperText>(info);

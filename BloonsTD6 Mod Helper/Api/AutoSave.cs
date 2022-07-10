@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 public static class AutoSave
 {
-    internal static BackupCreator backup = null!;
+    internal static BackupCreator backup;
     internal static bool autosaveInit;
     // internal static string profileSaveDir;
 

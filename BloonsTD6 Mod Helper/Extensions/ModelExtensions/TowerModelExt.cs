@@ -30,7 +30,7 @@ public static partial class TowerModelExt
     /// <summary>
     /// Return all TowerDetailModels that share a base id with this towerModel
     /// </summary>
-    public static TowerDetailsModel? GetTowerDetailsModel(this TowerModel towerModel)
+    public static TowerDetailsModel GetTowerDetailsModel(this TowerModel towerModel)
     {
         var baseId = towerModel.GetBaseId();
         return Game.instance.model?.GetAllTowerDetails()?.FirstOrDefault(details => details.towerId == baseId);
@@ -132,7 +132,7 @@ public static partial class TowerModelExt
     /// <summary>
     /// Return the UpgradeModel for a specific upgrade path/tier
     /// </summary>
-    public static UpgradeModel? GetUpgrade(this TowerModel towerModel, int path, int tier)
+    public static UpgradeModel GetUpgrade(this TowerModel towerModel, int path, int tier)
     {
         if (path < 0 || tier < 0)
             return null;
@@ -157,7 +157,7 @@ public static partial class TowerModelExt
     /// <summary>
     /// If this TowerModel is a Hero, return the HeroModel behavior
     /// </summary>
-    public static HeroModel? GetHeroModel(this TowerModel towerModel)
+    public static HeroModel GetHeroModel(this TowerModel towerModel)
     {
         return towerModel.GetBehavior<HeroModel>();
     }
@@ -171,7 +171,7 @@ public static partial class TowerModelExt
     /// <param name="newBaseId">Specify a new baseId. Set this if you want a baseId other than the newTowerId</param>
     /// <returns></returns>
     public static TowerModel MakeCopy(this TowerModel towerModel, string newTowerId, bool addToGame = false,
-        string? newBaseId = null)
+        string newBaseId = null)
     {
         var duplicate = MakeCopyInternal(towerModel, newTowerId);
         duplicate.baseId = string.IsNullOrEmpty(newBaseId) ? newTowerId : newBaseId;

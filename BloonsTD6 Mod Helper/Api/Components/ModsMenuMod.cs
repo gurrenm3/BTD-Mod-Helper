@@ -78,7 +78,7 @@ internal class ModsMenuMod : ModHelperComponent
 
 internal static class ModsMenuModExt
 {
-    public static void SetMod(this ModsMenuMod mod, ModHelperData modHelperData, MelonMod? melonMod = null)
+    public static void SetMod(this ModsMenuMod mod, ModHelperData modHelperData, MelonMod melonMod = null)
     {
         mod.MainButton.Image.SetSprite(GetBackground(modHelperData));
         mod.MainButton.Button.SetOnClick(() =>

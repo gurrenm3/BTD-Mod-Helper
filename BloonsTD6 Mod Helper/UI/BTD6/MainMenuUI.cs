@@ -24,7 +24,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Canvas for the Main Menu
     /// </summary>
-    public static Canvas? GetCanvas()
+    public static Canvas GetCanvas()
     {
         var sceneObjects = GetScene()?.GetRootGameObjects();
         if (sceneObjects is null || sceneObjects.Count == 0)
@@ -38,7 +38,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetMonkeysButton()
+    public static Button GetMonkeysButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/BottomButtonGroup/Monkeys/MonkeysAnim/Button");
     }
@@ -46,7 +46,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Heroes Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetHeroesButton()
+    public static Button GetHeroesButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/BottomButtonGroup/Heroes/HeroesAnim/Button");
     }
@@ -54,7 +54,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Play Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetPlayButton()
+    public static Button GetPlayButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/BottomButtonGroup/Play/PlayAnim/Button");
     }
@@ -62,7 +62,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetCoopButton()
+    public static Button GetCoopButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/BottomButtonGroup/CoOp/CoopAnim/Button");
     }
@@ -70,7 +70,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetPowersButton()
+    public static Button GetPowersButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/BottomButtonGroup/Powers/PowersAnim/Button");
     }
@@ -78,7 +78,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetKnowledgeButton()
+    public static Button GetKnowledgeButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/BottomButtonGroup/Knowledge/KnowledgeAnim/Button");
     }
@@ -86,7 +86,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetSettingsButton()
+    public static Button GetSettingsButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/Settings/Button");
     }
@@ -94,7 +94,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetAchievementsButton()
+    public static Button GetAchievementsButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/Achievements/Button");
     }
@@ -102,7 +102,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetStoreButton()
+    public static Button GetStoreButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/Store/Button");
     }
@@ -110,7 +110,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetTrophyStoreButton()
+    public static Button GetTrophyStoreButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/TrophyStore/Button");
     }
@@ -118,7 +118,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static Button? GetExitButton()
+    public static Button GetExitButton()
     {
         return GetCanvas()?.GetComponent<Button>("MainMenu/TrophyStore/Button");
     }
@@ -126,7 +126,7 @@ public static class MainMenuUI
     /// <summary>
     /// Gets the Monkeys Button if on the Main Menu, or null
     /// </summary>
-    public static NK_TextMeshProUGUI? GetXpBarText()
+    public static NK_TextMeshProUGUI GetXpBarText()
     {
         return GetCanvas()?.GetComponent<NK_TextMeshProUGUI>("MainMenu/PlayerInfo/XpBar/Text");
     }

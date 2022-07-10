@@ -43,7 +43,7 @@ public static class TemplateMod
 
     private static async void CreateProject(string path, string name)
     {
-        await using var stream = ModHelper.Main.Assembly.GetEmbeddedResource($"{nameof(TemplateMod)}.zip")!;
+        using var stream = ModHelper.MainAssembly.GetEmbeddedResource($"{nameof(TemplateMod)}.zip")!;
         using var zipArchive = new ZipArchive(stream);
         zipArchive.ExtractToDirectory(path);
         await ReplaceInAllFiles(path, name);
@@ -51,24 +51,24 @@ public static class TemplateMod
         SuccessPopup(path, name, "Created");
     }
 
-    private static async void UpgradeProject(string path, string name, string csProjPath)
+    private static void UpgradeProject(string path, string name, string csProjPath)
     {
-        await using var stream = ModHelper.Main.Assembly.GetEmbeddedResource("TemplateMod.zip")!;
+        using var stream = ModHelper.MainAssembly.GetEmbeddedResource("TemplateMod.zip")!;
         using var zipArchive = new ZipArchive(stream);
 
-        File.Move(csProjPath, csProjPath.Replace(".csproj", "_OLD.csproj"), true);
+        File.Move(csProjPath, csProjPath.Replace(".csproj", "_OLD.csproj")); //TODO OVERWRITE
         var csProj = zipArchive.GetEntry($"{nameof(TemplateMod)}.csproj")!;
         csProj.ExtractToFile(csProjPath);
-        await ReplaceFileText(csProjPath, name);
+        ReplaceFileText(csProjPath, name);
 
 
         var slnPath = Path.Combine(path, $"{name}.sln");
         if (File.Exists(slnPath))
         {
-            File.Move(slnPath, slnPath.Replace(".sln", "_OLD.sln"), true);
+            File.Move(slnPath, slnPath.Replace(".sln", "_OLD.sln"));  //TODO OVERWRITE
             var sln = zipArchive.GetEntry($"{nameof(TemplateMod)}.sln")!;
             sln.ExtractToFile(slnPath);
-            await ReplaceFileText(slnPath, name);
+            ReplaceFileText(slnPath, name);
         }
 
         var properties = Path.Combine(path, "Properties");
@@ -82,7 +82,7 @@ public static class TemplateMod
         {
             var modHelperData = zipArchive.GetEntry("ModHelperData.cs")!;
             modHelperData.ExtractToFile(modHelperDataPath);
-            await ReplaceFileText(modHelperDataPath, name);
+            ReplaceFileText(modHelperDataPath, name);
         }
 
         var gitIgnorePath = Path.Combine(path, ".gitignore");
@@ -99,11 +99,11 @@ public static class TemplateMod
             $"{verb} {name}", $"Successfully {verb} mod at \"{path}\". Open in default IDE?",
             new Action(() => OpenProject(path, name)), "Yes", null, "No", Popup.TransitionAnim.Scale));
 
-    private static async Task ReplaceFileText(string file, string name)
+    private static void ReplaceFileText(string file, string name)
     {
-        var text = await File.ReadAllTextAsync(file);
+        var text = File.ReadAllText(file);
         File.Delete(file);
-        await File.WriteAllTextAsync(
+        File.WriteAllText(
             file.Replace(nameof(TemplateMod), name),
             text.Replace(nameof(TemplateMod), name)
         );
@@ -114,7 +114,7 @@ public static class TemplateMod
         var files = Directory.EnumerateFiles(path);
         await Task.WhenAll(files
             .Where(file => ValidExtensions.Any(file.EndsWith))
-            .Select(file => Task.Run(async () => await ReplaceFileText(file, name)))
+            .Select(file => Task.Run(() => ReplaceFileText(file, name)))
             .ToArray()
         );
     }

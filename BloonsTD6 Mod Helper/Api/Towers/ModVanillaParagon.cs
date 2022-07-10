@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// </summary>
 public abstract class ModVanillaParagon : ModTower
 {
-    internal sealed override ModTowerSet? ModTowerSet => base.ModTowerSet;
+    internal sealed override ModTowerSet ModTowerSet => base.ModTowerSet;
 
     internal sealed override int UpgradePaths => 0;
 

@@ -120,7 +120,7 @@ public static partial class Il2CppReferenceArrayExt
         for (var i = 0; i < referenceArray.Count; i++)
             newRef[i] = referenceArray[i];
 
-        newRef[^1] = objectToAdd;
+        newRef[newRef.Length - 1] = objectToAdd;
 
         return newRef;
     }
@@ -194,7 +194,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <typeparam name="TCast">The Type of the Item you want</typeparam>
     /// <param name="referenceArray"></param>
     /// <returns></returns>
-    public static TCast? GetItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
+    public static TCast GetItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
         where TCast : Il2CppSystem.Object
         where TSource : Il2CppSystem.Object
     {

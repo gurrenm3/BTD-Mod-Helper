@@ -28,7 +28,7 @@ internal class ProfileManagement
 
     private static readonly HashSet<string> SeenEvents = new();
 
-    private static string? primaryHero;
+    private static string primaryHero;
 
     private static readonly Dictionary<(string, int), string> MapPlayerHeroes = new();
 
@@ -114,7 +114,7 @@ internal class ProfileManagement
         }
     }
 
-    internal static void CleanPastProfile(ProfileModel? profile)
+    internal static void CleanPastProfile(ProfileModel profile)
     {
         if (!MelonMain.CleanProfile || profile == null)
         {
@@ -132,7 +132,7 @@ internal class ProfileManagement
         // FileIOUtil.SaveObject("profile.json", profile);
     }
 
-    internal static void CleanCurrentProfile(ProfileModel? profile)
+    internal static void CleanCurrentProfile(ProfileModel profile)
     {
         if (!MelonMain.CleanProfile || profile == null)
         {
@@ -148,7 +148,7 @@ internal class ProfileManagement
         CleanProfile(profile, towers, upgrades, heroes, true);
     }
 
-    internal static void UnCleanProfile(ProfileModel? profile)
+    internal static void UnCleanProfile(ProfileModel profile)
     {
         if (!MelonMain.CleanProfile || profile == null)
         {
@@ -243,7 +243,7 @@ internal class ProfileManagement
         ModHelper.PerformHook(mod => mod.PostCleanProfile(profile));
     }
 
-    private static Func<string, bool> Clean(string name, IReadOnlyCollection<string>? things, bool current)
+    private static Func<string, bool> Clean(string name, IReadOnlyCollection<string> things, bool current)
     {
         return thing =>
         {
@@ -262,7 +262,7 @@ internal class ProfileManagement
         };
     }
 
-    private static void CleanHashSet(Il2CppSystem.Collections.Generic.HashSet<string>? hashSet,
+    private static void CleanHashSet(Il2CppSystem.Collections.Generic.HashSet<string> hashSet,
         Func<string, bool> clean, HashSet<string> storage)
     {
         storage.Clear();
@@ -285,7 +285,7 @@ internal class ProfileManagement
         }
     }
 
-    private static void CleanDictionary<T>(Il2CppSystem.Collections.Generic.Dictionary<string, T>? dictionary,
+    private static void CleanDictionary<T>(Il2CppSystem.Collections.Generic.Dictionary<string, T> dictionary,
         Func<string, bool> clean, Dictionary<string, T> storage)
     {
         storage.Clear();

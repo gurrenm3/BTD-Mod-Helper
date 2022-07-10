@@ -41,12 +41,12 @@ public abstract class ModHeroLevel : ModUpgrade
     /// <summary>
     /// No confirmation on hero upgrades
     /// </summary>
-    public sealed override string? ConfirmationTitle => base.ConfirmationTitle;
+    public sealed override string ConfirmationTitle => base.ConfirmationTitle;
 
     /// <summary>
     /// No confirmation on hero upgrades
     /// </summary>
-    public sealed override string? ConfirmationBody => base.ConfirmationBody;
+    public sealed override string ConfirmationBody => base.ConfirmationBody;
 
     /// <summary>
     /// Hero upgrades don't have individual icons
@@ -56,7 +56,7 @@ public abstract class ModHeroLevel : ModUpgrade
     /// <summary>
     /// Hero upgrades don't have individual icons
     /// </summary>
-    public sealed override SpriteReference? IconReference => null;
+    public sealed override SpriteReference IconReference => null;
 
     /// <summary>
     /// The upgrade's tier is the hero's level.
@@ -98,12 +98,12 @@ public abstract class ModHeroLevel : ModUpgrade
     /// <summary>
     /// DisplayName field of the AbilityModel added at this level, if any
     /// </summary>
-    public virtual string? AbilityName => null;
+    public virtual string AbilityName => null;
         
     /// <summary>
     /// Description of the ability added at this level, if any
     /// </summary>
-    public virtual string? AbilityDescription => null;
+    public virtual string AbilityDescription => null;
 }
 
 /// <summary>

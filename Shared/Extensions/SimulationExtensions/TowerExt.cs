@@ -35,7 +35,7 @@ public static partial class TowerExt
     /// (Cross-Game compatible) Return the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <returns></returns>
-    public static UnityDisplayNode? GetUnityDisplayNode(this Tower tower)
+    public static UnityDisplayNode GetUnityDisplayNode(this Tower tower)
     {
         return tower.GetDisplayNode()?.graphic;
     }
@@ -51,7 +51,7 @@ public static partial class TowerExt
     /// <summary>
     /// (Cross-Game compatible) Return the TowerToSimulation for this specific Tower
     /// </summary>
-    public static TowerToSimulation? GetTowerToSim(this Tower tower)
+    public static TowerToSimulation GetTowerToSim(this Tower tower)
     {
         var towerSims = InGame.instance.GetAllTowerToSim();
         return towerSims?.FirstOrDefault(sim => sim.GetTower().Equals(tower));

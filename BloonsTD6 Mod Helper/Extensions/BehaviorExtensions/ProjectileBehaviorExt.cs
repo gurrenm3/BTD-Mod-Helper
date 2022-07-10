@@ -19,7 +19,7 @@ public static class ProjectileBehaviorExt
     /// <summary>
     /// Return the first Behavior of type T
     /// </summary>
-    public static T? GetProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior
+    public static T GetProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior
     {
         return projectile.projectileBehaviors.GetItemOfType<ProjectileBehavior, T>();
     }

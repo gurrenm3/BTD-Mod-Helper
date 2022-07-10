@@ -13,17 +13,17 @@ public class ModMenuData : Object
     /// <summary>
     /// The id of the ModGameMenu this is for
     /// </summary>
-    public string id = null!;
+    public string id;
 
     /// <summary>
     /// The data that the ModGameMenu receives
     /// </summary>
-    public Object? modData;
+    public Object modData;
         
     /// <summary>
     /// The data that the base menu receives, if the Open code is still run
     /// </summary>
-    public Object? baseData;
+    public Object baseData;
 
     /// <inheritdoc />
     public ModMenuData(IntPtr ptr) : base(ptr)
@@ -33,7 +33,7 @@ public class ModMenuData : Object
     /// <summary>
     /// Creates a ModMenuData object with the given Id and data
     /// </summary>
-    public ModMenuData(string id, Object? modData, Object? baseData) : base(ClassInjector.DerivedConstructorPointer<ModMenuData>())
+    public ModMenuData(string id, Object modData, Object baseData) : base(ClassInjector.DerivedConstructorPointer<ModMenuData>())
     {
         ClassInjector.DerivedConstructorBody(this);
         this.id = id;

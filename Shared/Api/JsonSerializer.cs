@@ -66,7 +66,7 @@ public class JsonSerializer
     /// </summary>
     /// <typeparam name="T">The type to load</typeparam>
     /// <param name="filePath">Location of the file</param>
-    public T? LoadFromFile<T>(string filePath) where T : class
+    public T LoadFromFile<T>(string filePath) where T : class
     {
         var json = ReadTextFromFile(filePath);
         return (string.IsNullOrEmpty(json)) ? null : DeserializeJson<T>(json);
@@ -77,13 +77,13 @@ public class JsonSerializer
     /// </summary>
     /// <typeparam name="T">The type to load</typeparam>
     /// <param name="filePath">Location of the file</param>
-    public T? Il2CppLoadFromFile<T>(string filePath) where T : class
+    public T Il2CppLoadFromFile<T>(string filePath) where T : class
     {
         var json = ReadTextFromFile(filePath);
         return (string.IsNullOrEmpty(json)) ? null : Il2CppDeserializeJson<T>(json);
     }
 
-    private string? ReadTextFromFile(string filePath)
+    private string ReadTextFromFile(string filePath)
     {
         if (!IsPathValid(filePath))
             return null;

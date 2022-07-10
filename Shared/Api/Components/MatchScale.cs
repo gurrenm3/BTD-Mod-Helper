@@ -12,7 +12,7 @@ public class MatchScale : MonoBehaviour
     /// <summary>
     /// Other transform to constantly copy the scale from
     /// </summary>
-    public Transform transformToCopy = null!;
+    public Transform transformToCopy;
 
     /// <inheritdoc />
     public MatchScale(IntPtr ptr) : base(ptr)

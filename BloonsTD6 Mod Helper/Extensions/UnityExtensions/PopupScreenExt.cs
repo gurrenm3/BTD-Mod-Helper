@@ -15,7 +15,7 @@ public static class PopupScreenExt
     /// </summary>
     /// <param name="popupScreen"></param>
     /// <returns></returns>
-    public static TMP_InputField? GetTMP_InputField(this PopupScreen popupScreen)
+    public static TMP_InputField GetTMP_InputField(this PopupScreen popupScreen)
     {
         return popupScreen.GetFirstActivePopup()?.GetComponentInChildren<TMP_InputField>();
     }

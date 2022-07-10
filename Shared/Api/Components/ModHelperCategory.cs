@@ -35,7 +35,7 @@ public class ModHelperCategory : ModHelperOption
     /// <param name="collapsed">Whether it's collapsed by default or not</param>
     /// <param name="icon">The icon for the category, if any</param>
     /// <returns>The created ModHelperCategory</returns>
-    public static ModHelperCategory Create(string? displayName, bool collapsed, SpriteReference? icon = null)
+    public static ModHelperCategory Create(string displayName, bool collapsed, SpriteReference icon = null)
     {
         var category = Create<ModHelperCategory>(displayName, "", icon);
         category.collapsed = collapsed;

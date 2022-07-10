@@ -60,27 +60,25 @@ internal class ModSettingsHandler
                 var fileName = mod.SettingsFilePath;
                 if (File.Exists(fileName))
                 {
-                    using (var file = File.OpenText(fileName))
-                    using (var reader = new JsonTextReader(file))
+                    using var file = File.OpenText(fileName);
+                    using var reader = new JsonTextReader(file);
+                    while (reader.Read())
                     {
-                        while (reader.Read())
+                        if (reader.Value != null && reader.TokenType == JsonToken.PropertyName)
                         {
-                            if (reader.Value != null && reader.TokenType == JsonToken.PropertyName)
+                            var name = (string) reader.Value;
+                            if (mod.ModSettings.ContainsKey(name))
                             {
-                                var name = (string) reader.Value;
-                                if (mod.ModSettings.ContainsKey(name))
+                                reader.Read();
+                                try
                                 {
-                                    reader.Read();
-                                    try
-                                    {
-                                        mod.ModSettings[name].Load(reader.Value);
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        ModHelper.Warning(
-                                            $"Error loading ModSetting {name} of mod {mod.Info.Name}");
-                                        ModHelper.Warning(e);
-                                    }
+                                    mod.ModSettings[name].Load(reader.Value);
+                                }
+                                catch (Exception e)
+                                {
+                                    ModHelper.Warning(
+                                        $"Error loading ModSetting {name} of mod {mod.Info.Name}");
+                                    ModHelper.Warning(e);
                                 }
                             }
                         }

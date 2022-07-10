@@ -43,34 +43,34 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     internal const int FontMedium = 69;
     internal const int FontLarge = 80;
 
-    internal const string? DefaultDescription = "No description given";
+    internal const string DefaultDescription = "No description given";
 
     #endregion
 
-    private static Dictionary<ModHelperData, ModsMenuMod?> modPanels = new();
+    private static Dictionary<ModHelperData, ModsMenuMod> modPanels = new();
 
-    private static ModHelperScrollPanel modsList = null!;
-    private static ModHelperPanel selectedModPanel = null!;
-    private static ModHelperText selectedModName = null!;
-    private static ModHelperText selectedModAuthor = null!;
-    private static ModHelperText selectedModVersion = null!;
-    private static ModHelperText selectedModDescription = null!;
-    private static ModHelperButton selectedModUpdateButton = null!;
-    private static ModHelperButton selectedModSettingsButton = null!;
-    private static ModHelperButton selectedModDisableButton = null!;
-    private static ModHelperButton selectedModEnableButton = null!;
-    private static ModHelperButton selectedModHomeButton = null!;
-    private static ModHelperButton updateAllButton = null!;
-    private static ModHelperImage selectedModIcon = null!;
-    private static ModsMenuMod modTemplate = null!;
+    private static ModHelperScrollPanel modsList;
+    private static ModHelperPanel selectedModPanel;
+    private static ModHelperText selectedModName;
+    private static ModHelperText selectedModAuthor;
+    private static ModHelperText selectedModVersion;
+    private static ModHelperText selectedModDescription;
+    private static ModHelperButton selectedModUpdateButton;
+    private static ModHelperButton selectedModSettingsButton;
+    private static ModHelperButton selectedModDisableButton;
+    private static ModHelperButton selectedModEnableButton;
+    private static ModHelperButton selectedModHomeButton;
+    private static ModHelperButton updateAllButton;
+    private static ModHelperImage selectedModIcon;
+    private static ModsMenuMod modTemplate;
     private static int currentSort;
-    private static ModHelperPanel restartButton = null!;
+    private static ModHelperPanel restartButton;
 
-    private static Animator bottomGroupAnimator = null!;
+    private static Animator bottomGroupAnimator;
 
     private static bool loadedAllMods;
 
-    private static ModHelperData? selectedMod;
+    private static ModHelperData selectedMod;
 
     private static readonly string[] SortOptions =
     {
@@ -81,7 +81,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     };
 
     /// <inheritdoc />
-    public override bool OnMenuOpened(Object? data)
+    public override bool OnMenuOpened(Object data)
     {
         loadedAllMods = false;
         CommonForegroundHeader.SetText("Mods");
@@ -308,7 +308,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             VanillaSprites.BlueInsertPanelRound, Padding, Padding
         );
 
-        modPanels = new Dictionary<ModHelperData, ModsMenuMod?>();
+        modPanels = new Dictionary<ModHelperData, ModsMenuMod>();
         modTemplate = ModsMenuMod.CreateTemplate();
         modsList.AddScrollContent(modTemplate);
         foreach (var modHelperData in ModHelperData.All)

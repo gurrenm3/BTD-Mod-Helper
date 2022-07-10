@@ -54,7 +54,7 @@ public class ModHelperCheckbox : ModHelperComponent
     /// <param name="padding">How much space around the outside of the check there is</param>
     /// <returns>The new ModHelperCheckbox</returns>
     public static ModHelperCheckbox Create(Info info, bool defaultValue, SpriteReference background, 
-        UnityAction<bool>? onValueChanged = null, SpriteReference? checkImage = null, int padding = 0)
+        UnityAction<bool> onValueChanged = null, SpriteReference checkImage = null, int padding = 0)
     {
         var modHelperCheckbox = ModHelperComponent.Create<ModHelperCheckbox>(info);
 
@@ -62,7 +62,7 @@ public class ModHelperCheckbox : ModHelperComponent
         backgroundImage.type = Image.Type.Sliced;
         backgroundImage.SetSprite(background);
 
-        ModHelperImage? check;
+        ModHelperImage check;
 #if BloonsTD6
         check = modHelperCheckbox.AddImage(
             new Info("Check", anchorMin: Vector2.zero, anchorMax: Vector2.one, width: padding * -2,

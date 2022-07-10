@@ -36,7 +36,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Get the current Map
         /// </summary>
-        public static Map? GetMap(this InGame inGame)
+        public static Map GetMap(this InGame inGame)
         {
             return inGame.GetSimulation()?.Map;
         }
@@ -44,7 +44,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Get the current Simulation for this InGame session
         /// </summary>
-        public static Simulation? GetSimulation(this InGame inGame)
+        public static Simulation GetSimulation(this InGame inGame)
         {
             return inGame.GetUnityToSimulation()?.simulation;
         }
@@ -52,7 +52,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) The Game.model that is being used for this InGame.instance
         /// </summary>
-        public static GameModel? GetGameModel(this InGame inGame)
+        public static GameModel GetGameModel(this InGame inGame)
         {
             return inGame.GetSimulation()?.model;
         }
@@ -82,7 +82,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="inGame"></param>
         /// <param name="name">Optionally only get Towers whose TowerModel name is this parameter</param>
         /// <returns></returns>
-        public static List<Tower> GetTowers(this InGame inGame, string? name = null)
+        public static List<Tower> GetTowers(this InGame inGame, string name = null)
         {
             var towers = inGame.GetAllObjectsOfType<Tower>();
             if (!string.IsNullOrEmpty(name))
@@ -97,7 +97,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="inGame"></param>
         /// /// <param name="name">Optionally only get Towers whose TowerModel name is this parameter</param>
         /// <returns></returns>
-        public static List<TowerToSimulation> GetAllTowerToSim(this InGame inGame, string? name = null)
+        public static List<TowerToSimulation> GetAllTowerToSim(this InGame inGame, string name = null)
         {
             var towerToSims = inGame.GetUnityToSimulation()!.GetAllTowers()?.ToList();
             if (!string.IsNullOrEmpty(name))
@@ -155,7 +155,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
-        public static List<AbilityToSimulation>? GetAbilities(this InGame inGame)
+        public static List<AbilityToSimulation> GetAbilities(this InGame inGame)
         {
 #if BloonsTD6
             return inGame.GetUnityToSimulation()?.GetAllAbilities(false)?.ToList();
@@ -169,7 +169,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
-        public static UnityToSimulation? GetUnityToSimulation(this InGame inGame)
+        public static UnityToSimulation GetUnityToSimulation(this InGame inGame)
         {
 #if BloonsTD6
             return inGame.bridge;

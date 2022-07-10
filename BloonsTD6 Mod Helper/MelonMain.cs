@@ -189,7 +189,7 @@ internal class MelonMain : BloonsTD6Mod
         var targets = Path.Combine(path, "btd6.targets");
         using var fs = new StreamWriter(targets);
         using var stream =
-            ModHelper.Main.Assembly.GetManifestResourceStream("BTD_Mod_Helper.btd6.targets");
+            ModHelper.MainAssembly.GetManifestResourceStream("BTD_Mod_Helper.btd6.targets");
         using var reader = new StreamReader(stream!);
         var text = reader.ReadToEnd().Replace(
             @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",

@@ -19,7 +19,7 @@ namespace BTD_Mod_Helper.UI.Modded;
 
 internal class ModdedMonkeySelectMenu
 {
-    private static MonkeySelectMenu? menu;
+    private static MonkeySelectMenu menu;
     private static bool reOpening;
     private static string currentTowerSet = "";
 
@@ -155,7 +155,7 @@ internal class ModdedMonkeySelectMenu
     internal class MonkeySelectMenu_Open
     {
         [HarmonyPrefix]
-        internal static void Prefix(MonkeySelectMenu __instance, Il2CppSystem.Object? data)
+        internal static void Prefix(MonkeySelectMenu __instance, Il2CppSystem.Object data)
         {
             if (!reOpening)
             {
@@ -302,7 +302,7 @@ internal class ModdedMonkeySelectMenu
 
     private static int CurrentPage => (TotalSpotses.Values.Take(menu!.currentSet).Sum() + Offset) / 8;
 
-    internal static GameObject? pipHolder;
+    internal static GameObject pipHolder;
     internal static List<GameObject> pips = new();
 
     internal static Dictionary<ModTowerSet, GameObject> customMonkeyGroupButtons = new();

@@ -53,7 +53,7 @@ public static partial class GameModelExt
     /// <param name="towerModel">TowerModel to add</param>
     /// <param name="towerDetailsModel">Optionally add a TowerDetailsModel for your towerModel</param>
     public static void AddTowerToGame(this GameModel model, TowerModel towerModel,
-        TowerDetailsModel? towerDetailsModel = null)
+        TowerDetailsModel towerDetailsModel = null)
     {
         model.towers = model.towers.AddTo(towerModel);
         model.AddChildDependant(towerModel);
@@ -222,7 +222,7 @@ public static partial class GameModelExt
     /// </summary>
     /// <param name="model">the GameModel instance</param>
     /// <param name="towerBaseId">The base id all towers should share. Example: "DartMonkey"</param>
-    public static List<TowerModel>? GetTowerModels(this GameModel model, string towerBaseId)
+    public static List<TowerModel> GetTowerModels(this GameModel model, string towerBaseId)
     {
         return model.towers?.Where(t => t.baseId == towerBaseId).ToList();
     }
@@ -237,7 +237,7 @@ public static partial class GameModelExt
     /// <param name="path2"></param>
     /// <param name="path3"></param>
     /// <returns></returns>
-    public static TowerModel? GetTowerModel(this GameModel model, string towerId, int path1 = 0, int path2 = 0,
+    public static TowerModel GetTowerModel(this GameModel model, string towerId, int path1 = 0, int path2 = 0,
         int path3 = 0)
     {
         return model.towers.FirstOrDefault(t => t.name.Contains(towerId) && t.HasTiers(path1, path2, path3));
@@ -406,7 +406,7 @@ public static partial class GameModelExt
     /// <param name="model"></param>
     /// <param name="towerDetailsName">The <see cref="TowerDetailsModel.towerId"/> you are searching for</param>
     /// <returns>The first TowerDetailsModel found, otherwise returns null</returns>
-    public static TowerDetailsModel? GetTowerDetails(this GameModel model, string towerDetailsName)
+    public static TowerDetailsModel GetTowerDetails(this GameModel model, string towerDetailsName)
     {
         return model.towerSet.FirstOrDefault(tower => tower.towerId == towerDetailsName);
     }

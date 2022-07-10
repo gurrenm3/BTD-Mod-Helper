@@ -51,7 +51,7 @@ public static partial class InGameExt
     /// </summary>
     /// <param name="inGame">InGame instance</param>
     /// <param name="index">Index of the cash manager. Default is 0</param>
-    public static CashManager? GetCashManager(this InGame inGame, int index = 0)
+    public static CashManager GetCashManager(this InGame inGame, int index = 0)
     {
         return inGame.GetSimulation()?.cashManagers?.entries[index]?.value;
     }

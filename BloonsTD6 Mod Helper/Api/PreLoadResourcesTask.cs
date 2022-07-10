@@ -79,7 +79,7 @@ public class PreLoadResourcesTask : ModLoadTask
         }
     }
 
-    private static void PreloadSprite(Sprite sprite, string? name, GameObject parent)
+    private static void PreloadSprite(Sprite sprite, string name, GameObject parent)
     {
         var gameObject = new GameObject(name)
         {

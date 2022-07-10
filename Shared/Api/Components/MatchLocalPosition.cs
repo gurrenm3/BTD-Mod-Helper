@@ -12,7 +12,7 @@ public class MatchLocalPosition : MonoBehaviour
     /// <summary>
     /// Other transform to constantly copy the scale from
     /// </summary>
-    public Transform transformToCopy = null!;
+    public Transform transformToCopy;
 
     /// <summary>
     /// Offset from the transform to stay

@@ -17,7 +17,7 @@ public static class Texture2DExt
     /// </summary>
     /// <param name="texture2D"></param>
     /// <returns></returns>
-    [SupportedOSPlatform("windows")]
+    // [SupportedOSPlatform("windows")]
     public static System.Drawing.Image ToImage(this Texture2D texture2D)
     {
         var textureBytes = ImageConversion.EncodeToPNG(texture2D);

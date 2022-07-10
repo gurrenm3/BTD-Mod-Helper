@@ -106,7 +106,7 @@ public static partial class ListExt
     /// <param name="list"></param>
     /// <param name="filePath">FilePath of the saved List</param>
     /// <returns>The loaded List if successful, otherwise default value</returns>
-    public static T? LoadFromFile<T>(this List<T> list, string filePath)
+    public static T LoadFromFile<T>(this List<T> list, string filePath)
     {
         return list.LoadFromFile(filePath, out _);
     }
@@ -119,7 +119,7 @@ public static partial class ListExt
     /// <param name="filePath">FilePath of the saved List</param>
     /// <param name="success">Will be true if the List was successfully loaded, otherwise will be false</param>
     /// <returns>The loaded List if successful, otherwise default value</returns>
-    public static T? LoadFromFile<T>(this List<T> list, string filePath, out bool success)
+    public static T LoadFromFile<T>(this List<T> list, string filePath, out bool success)
     {
         success = false;
         var json = File.ReadAllText(filePath);
@@ -127,7 +127,7 @@ public static partial class ListExt
 
         try
         {
-            var loadedObject = (T?) JsonConvert.DeserializeObject(json);
+            var loadedObject = (T) JsonConvert.DeserializeObject(json);
             success = true;
             return loadedObject;
         }
@@ -171,7 +171,7 @@ public static partial class ListExt
     /// <typeparam name="TCast">The Type of the Item you want</typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static TCast? GetItemOfType<TSource, TCast>(this List<TSource> list) where TCast : Il2CppSystem.Object
+    public static TCast GetItemOfType<TSource, TCast>(this List<TSource> list) where TCast : Il2CppSystem.Object
         where TSource : Il2CppSystem.Object
     {
         if (!HasItemsOfType<TSource, TCast>(list))

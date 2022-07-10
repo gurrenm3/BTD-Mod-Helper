@@ -34,7 +34,7 @@ public class ModHelperComponent : MonoBehaviour
     /// <summary>
     /// The ModHelperComponent that this is a child of, if any
     /// </summary>
-    public ModHelperComponent? parent;
+    public ModHelperComponent parent;
 
     /// <summary>
     /// The RectTransform for this GameObject
@@ -152,7 +152,7 @@ public class ModHelperComponent : MonoBehaviour
     }
 
     /// <inheritdoc cref="ModHelperPanel.Create"/>
-    public ModHelperPanel AddPanel(Info info, SpriteReference? backgroundSprite = null,
+    public ModHelperPanel AddPanel(Info info, SpriteReference backgroundSprite = null,
         RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
     {
         return Add(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing, padding));
@@ -160,14 +160,14 @@ public class ModHelperComponent : MonoBehaviour
 
     /// <inheritdoc cref="ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable{UnityEngine.RectTransform.Axis},Assets.Scripts.Utils.SpriteReference,float,int)"/>
     public ModHelperScrollPanel AddScrollPanel(Info info, RectTransform.Axis? axis,
-        SpriteReference? backgroundSprite = null, float spacing = 0, int padding = 0)
+        SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
     {
         return Add(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing, padding));
     }
 
 #if BloonsTD6
     /// <inheritdoc cref="ModHelperText.Create"/>
-    public ModHelperText AddText(Info info, string? text, float fontSize = 42,
+    public ModHelperText AddText(Info info, string text, float fontSize = 42,
         TextAlignmentOptions align = TextAlignmentOptions.Capline)
     {
         return Add(ModHelperText.Create(info, text, fontSize, align));
@@ -175,7 +175,7 @@ public class ModHelperComponent : MonoBehaviour
 #endif
 
     /// <inheritdoc cref="ModHelperButton.Create"/>
-    public ModHelperButton AddButton(Info info, SpriteReference sprite, Action? onClick)
+    public ModHelperButton AddButton(Info info, SpriteReference sprite, Action onClick)
     {
         return Add(ModHelperButton.Create(info, sprite, onClick));
     }
@@ -187,7 +187,7 @@ public class ModHelperComponent : MonoBehaviour
     }
 
     /// <inheritdoc cref="ModHelperImage.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)"/>
-    public ModHelperImage AddImage(Info info, Sprite? sprite)
+    public ModHelperImage AddImage(Info info, Sprite sprite)
     {
         return Add(ModHelperImage.Create(info, sprite));
     }
@@ -195,7 +195,7 @@ public class ModHelperComponent : MonoBehaviour
     /// <inheritdoc cref="ModHelperDropdown.Create"/>
     public ModHelperDropdown AddDropdown(Info info, List<string> options, float windowHeight,
         UnityAction<int> onValueChanged,
-        SpriteReference? background = null, float labelFontSize = 42f)
+        SpriteReference background = null, float labelFontSize = 42f)
     {
         return Add(ModHelperDropdown.Create(info, options, windowHeight, onValueChanged, background,
             labelFontSize));
@@ -204,7 +204,7 @@ public class ModHelperComponent : MonoBehaviour
 #if BloonsTD6
     /// <inheritdoc cref="ModHelperSlider.Create"/>
     public ModHelperSlider AddSlider(Info info, float defaultValue, float minValue, float maxValue,
-        float stepSize, Vector2 handleSize, UnityAction<float>? onValueChanged = null, float fontSize = 42f,
+        float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
         string labelSuffix = "")
     {
         return Add(ModHelperSlider.Create(info, defaultValue, minValue, maxValue, stepSize, handleSize,
@@ -214,17 +214,17 @@ public class ModHelperComponent : MonoBehaviour
 
     /// <inheritdoc cref="ModHelperCheckbox.Create"/>
     public ModHelperCheckbox AddCheckbox(Info info, bool defaultValue, SpriteReference background,
-        UnityAction<bool>? onValueChanged = null, SpriteReference? checkImage = null, int padding = 20)
+        UnityAction<bool> onValueChanged = null, SpriteReference checkImage = null, int padding = 20)
     {
         return Add(ModHelperCheckbox.Create(info, defaultValue, background, onValueChanged, checkImage, padding));
     }
 
 #if BloonsTD6
     /// <inheritdoc cref="ModHelperInputField.Create"/>
-    public ModHelperInputField AddInputField(Info info, string? defaultValue, SpriteReference background,
-        UnityAction<string>? onValueChanged = null, float fontSize = 42,
+    public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
+        UnityAction<string> onValueChanged = null, float fontSize = 42,
         TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
-        TextAlignmentOptions align = TextAlignmentOptions.Capline, string? placeholder = null, int padding = 0)
+        TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
     {
         return Add(ModHelperInputField.Create(info, defaultValue, background, onValueChanged, fontSize, validation,
             align, placeholder, padding));
@@ -319,7 +319,7 @@ public static class ModHelperComponentExt
     /// </summary>
     /// <param name="component">this</param>
     /// <param name="name">Its new name</param>
-    public static T Duplicate<T>(this T component, string? name) where T : ModHelperComponent
+    public static T Duplicate<T>(this T component, string name) where T : ModHelperComponent
     {
         var gameObject = Object.Instantiate(component.gameObject, component.transform.parent);
         var newComponent = gameObject.GetComponent<T>();

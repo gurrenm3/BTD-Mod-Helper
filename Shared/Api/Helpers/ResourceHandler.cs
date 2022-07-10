@@ -20,17 +20,17 @@ internal class ResourceHandler
     internal static void LoadEmbeddedTextures(BloonsMod mod)
     {
         mod.Resources = new Dictionary<string, byte[]>();
-        foreach (var fileName in mod.Assembly.GetManifestResourceNames()
+        foreach (var fileName in mod.MelonAssembly.Assembly.GetManifestResourceNames()
                      .Where(s => s.EndsWith("png") || s.EndsWith("jpg")))
         {
-            var resource = mod.Assembly.GetManifestResourceStream(fileName)!.GetByteArray();
+            var resource = mod.MelonAssembly.Assembly.GetManifestResourceStream(fileName)!.GetByteArray();
             if (resource == null)
             {
                 continue;
             }
 
             var split = fileName.Split('.');
-            var name = split[^2];
+            var name = split[split.Length - 2];
             var guid = mod.IDPrefix + name;
             Resources[guid] = resource;
             mod.Resources[name] = resource;
@@ -39,9 +39,9 @@ internal class ResourceHandler
 
     internal static void LoadEmbeddedBundles(BloonsMod mod)
     {
-        foreach (var name in mod.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
+        foreach (var name in mod.MelonAssembly.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
         {
-            var bytes = mod.Assembly.GetManifestResourceStream(name)!.GetByteArray();
+            var bytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(name)!.GetByteArray();
             if (bytes == null)
             {
                 continue;
@@ -77,7 +77,7 @@ internal class ResourceHandler
 
     internal static readonly Dictionary<string, Texture2D> TextureCache = new();
 
-    internal static Texture2D? CreateTexture(string guid)
+    internal static Texture2D CreateTexture(string guid)
     {
         if (Resources.TryGetValue(guid, out var bytes))
         {
@@ -90,7 +90,7 @@ internal class ResourceHandler
         return null;
     }
 
-    internal static Texture2D? GetTexture(string guid)
+    internal static Texture2D GetTexture(string guid)
     {
         if (TextureCache.TryGetValue(guid, out var texture2d) && texture2d != null)
         {
@@ -108,7 +108,7 @@ internal class ResourceHandler
         return null;
     }
 
-    internal static byte[]? GetTextureBytes(string guid)
+    internal static byte[] GetTextureBytes(string guid)
     {
         return Resources.TryGetValue(guid, out var bytes) ? bytes : null;
     }
@@ -121,7 +121,7 @@ internal class ResourceHandler
             new Vector2(0.5f, 0.5f), pixelsPerUnit);
     }
 
-    internal static Sprite? CreateSprite(string guid, float pixelsPerUnit = 10.8f)
+    internal static Sprite CreateSprite(string guid, float pixelsPerUnit = 10.8f)
     {
         if (GetTexture(guid) is Texture2D texture)
         {
@@ -133,7 +133,7 @@ internal class ResourceHandler
         return null;
     }
 
-    internal static Sprite? GetSprite(string guid, float pixelsPerUnit = 10.8f)
+    internal static Sprite GetSprite(string guid, float pixelsPerUnit = 10.8f)
     {
         if (SpriteCache.TryGetValue(guid, out var sprite) && sprite != null)
         {

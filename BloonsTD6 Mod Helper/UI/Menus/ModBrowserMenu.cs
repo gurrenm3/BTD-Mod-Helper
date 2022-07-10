@@ -33,9 +33,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private readonly IRatioScorer scorer = ScorerCache.Get<WeightedRatioScorer>();
 
-    private IList<ModHelperData>? currentMods;
+    private IList<ModHelperData> currentMods;
     private int currentPage;
-    private string? currentSearch = "";
+    private string currentSearch = "";
 
     private SortingMethod sortingMethod = SortingMethod.Popularity;
 
@@ -44,7 +44,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
-    public override bool OnMenuOpened(Object? data)
+    public override bool OnMenuOpened(Object data)
     {
         ModifyExistingElements();
         AddNewElements();
@@ -106,7 +106,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         topArea.AddPanel(new Info("Filler 1", flex: 1));
 
         topArea.AddInputField(new Info("Searching", width: 1500, height: 150), currentSearch,
-            VanillaSprites.BlueInsertPanelRound, new Action<string?>(
+            VanillaSprites.BlueInsertPanelRound, new Action<string>(
                 s =>
                 {
                     currentSearch = s;

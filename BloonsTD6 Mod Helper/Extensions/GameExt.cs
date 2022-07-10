@@ -84,7 +84,7 @@ public static partial class GameExt
     /// </summary>
     /// <param name="game"></param>
     /// <returns></returns>
-    public static NKMultiGameInterface? GetNkGI(this Game game)
+    public static NKMultiGameInterface GetNkGI(this Game game)
     {
         return SessionData.Instance.NkGI;
     }
@@ -92,7 +92,7 @@ public static partial class GameExt
     /// <summary>
     /// Get the Unity Display Factory that manages on screen sprites. This Factory is different from other Factories in the game
     /// </summary>
-    public static Assets.Scripts.Unity.Display.Factory? GetDisplayFactory(this Game game)
+    public static Assets.Scripts.Unity.Display.Factory GetDisplayFactory(this Game game)
     {
         return game.scene?.factory;
     }
@@ -164,7 +164,7 @@ public static partial class GameExt
     /// <summary>
     /// Get the Btd6Player data for the player. Contains different info than PlayerProfile
     /// </summary>
-    public static Btd6Player? GetBtd6Player(this Game game)
+    public static Btd6Player GetBtd6Player(this Game game)
     {
         return game.GetPlayerService()?.Player;
     }
@@ -172,7 +172,7 @@ public static partial class GameExt
     /// <summary>
     /// Get all TowerDetailModels
     /// </summary>
-    public static Il2CppReferenceArray<TowerDetailsModel>? GetTowerDetailModels(this Game game)
+    public static Il2CppReferenceArray<TowerDetailsModel> GetTowerDetailModels(this Game game)
     {
         return game.model?.towerSet;
     }

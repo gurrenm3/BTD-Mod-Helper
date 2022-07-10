@@ -48,13 +48,19 @@ public static class ModHelper
         get => fallBackToOldLoading || MelonMain.UseOldLoading;
     }
 
+    private static IEnumerable<BloonsMod> mods;
+    
     /// <summary>
     /// Active mods that use ModHelper functionality
     /// </summary>
     public static IEnumerable<BloonsMod> Mods =>
-        mods ??= MelonMod.RegisteredMelons.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority);
+        mods ??= Melons.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority);
 
-    internal static IEnumerable<BloonsMod>? mods;
+    /// <summary>
+    /// All active mods, whether they're Mod Helper or not
+    /// </summary>
+    public static IEnumerable<MelonMod> Melons => MelonBase.RegisteredMelons.OfType<MelonMod>();
+
 
     internal static void LoadAllMods()
     {
@@ -147,6 +153,7 @@ public static class ModHelper
     #endregion
 
     internal static MelonMain Main => ModContent.GetInstance<MelonMain>();
+    internal static Assembly MainAssembly => Main.MelonAssembly.Assembly;
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsMod
     {

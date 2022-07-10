@@ -51,14 +51,14 @@ public abstract class ModGameMenu : ModContent
     /// <summary>
     /// The current GameMenu
     /// </summary>
-    public GameMenu GameMenu { get; private set; } = null!;
+    public GameMenu GameMenu { get; private set; }
 
     /// <summary>
     /// Runs right as your custom menu is being opened, with the optional data argument that can be passed into
     /// <see cref="Open{T}(Il2CppSystem.Object,Il2CppSystem.Object)"/>
     /// </summary>
     /// <returns>Whether to run the base menu's OnOpen code</returns>
-    public abstract bool OnMenuOpened(Object? data);
+    public abstract bool OnMenuOpened(Object data);
 
     /// <summary>
     /// Runs right as your custom menu is being closed
@@ -85,7 +85,7 @@ public abstract class ModGameMenu : ModContent
         return Types.TryGetValue(typeof(T), out var info) ? info.name : typeof(T).Name.Replace("Screen", "UI");
     }
 
-    internal static bool CheckOpen(GameMenu gameMenu, Object? data, out Object? outData)
+    internal static bool CheckOpen(GameMenu gameMenu, Object data, out Object outData)
     {
         if (data != null &&
             data.IsType(out ModMenuData menuData) &&
@@ -110,7 +110,7 @@ public abstract class ModGameMenu : ModContent
     /// <param name="data">The custom data to pass into your ModGameMenu's <see cref="OnMenuOpened"/> method</param>
     /// <param name="baseData">The data that you want to pass into the base menu's Open method, if you're still running the code</param>
     /// <typeparam name="T">The custom menu type to open</typeparam>
-    public static void Open<T>(Object? data = null, Object? baseData = null) where T : ModGameMenu
+    public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu
     {
         var modGameMenu = GetInstance<T>();
         modGameMenu.IsOpen = true;
@@ -151,12 +151,12 @@ public abstract class ModGameMenu : ModContent
         }
     }
 
-    private static bool Patch_data(GameMenu __instance, ref Object? data)
+    private static bool Patch_data(GameMenu __instance, ref Object data)
     {
         return CheckOpen(__instance, data, out data);
     }
 
-    private static bool Patch_menuData(GameMenu __instance, ref Object? menuData)
+    private static bool Patch_menuData(GameMenu __instance, ref Object menuData)
     {
         return CheckOpen(__instance, menuData, out menuData);
     }

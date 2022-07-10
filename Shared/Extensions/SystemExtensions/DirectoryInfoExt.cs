@@ -13,7 +13,7 @@ public static class DirectoryInfoExt
     /// </summary>
     /// <param name="directoryInfo"></param>
     /// <returns></returns>
-    public static FileInfo[]? GetAllMelonMods(this DirectoryInfo directoryInfo)
+    public static FileInfo[] GetAllMelonMods(this DirectoryInfo directoryInfo)
     {
         var files = directoryInfo.GetFiles();
         return !files.Any() ? null : Array.FindAll(files, file => file.IsMelonMod());

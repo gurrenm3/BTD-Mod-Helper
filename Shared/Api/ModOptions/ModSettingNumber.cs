@@ -30,12 +30,12 @@ public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, ICom
     /// <summary>
     /// Action to modify the ModHelperSlider after it's created
     /// </summary>
-    public Action<ModHelperSlider>? modifySlider;
+    public Action<ModHelperSlider> modifySlider;
 
     /// <summary>
     /// Action to modify the ModHelperInputField after it's created
     /// </summary>
-    public Action<ModHelperInputField>? modifyInput;
+    public Action<ModHelperInputField> modifyInput;
 #endif
 
     /// <summary>
@@ -56,7 +56,7 @@ public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, ICom
     /// <summary>
     /// Turn the value into a string for labels
     /// </summary>
-    protected abstract string? ToString(T input);
+    protected abstract string ToString(T input);
 
     /// <summary>
     /// Get the value from the string input component

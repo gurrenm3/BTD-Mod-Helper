@@ -11,15 +11,15 @@ namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 {
-    private BloonsMod bloonsMod = null!;
+    private BloonsMod bloonsMod;
 
-    private Animator animator = null!;
+    private Animator animator;
 
-    private CanvasGroup canvasGroup = null!;
+    private CanvasGroup canvasGroup;
 
     private bool closing;
 
-    public override bool OnMenuOpened(Object? data)
+    public override bool OnMenuOpened(Object data)
     {
         closing = false;
         var gameObject = GameMenu.gameObject;

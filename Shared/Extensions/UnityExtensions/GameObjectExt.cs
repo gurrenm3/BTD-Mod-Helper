@@ -26,7 +26,7 @@ public static class GameObjectExt
     /// <param name="gameObject"></param>
     /// <param name="componentName"></param>
     /// <returns></returns>
-    public static T? GetComponentInChildrenByName<T>(this GameObject gameObject, string componentName)
+    public static T GetComponentInChildrenByName<T>(this GameObject gameObject, string componentName)
         where T : Component
     {
         return gameObject.transform.GetComponentsInChildren<T>(true)
@@ -170,7 +170,7 @@ public static class GameObjectExt
 
     /// <inheritdoc cref="ModHelperComponent.AddPanel"/>
     public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Info info,
-        SpriteReference? backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
+        SpriteReference backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
         int padding = 0)
     {
         return gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing,
@@ -180,7 +180,7 @@ public static class GameObjectExt
     /// <inheritdoc cref="ModHelperComponent.AddScrollPanel"/>
     public static ModHelperScrollPanel AddModHelperScrollPanel(this GameObject gameObject, Info info,
         RectTransform.Axis? axis,
-        SpriteReference? backgroundSprite = null, float spacing = 0, int padding = 0)
+        SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
     {
         return gameObject.AddModHelperComponent(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing,
             padding));
@@ -198,7 +198,7 @@ public static class GameObjectExt
     /// <summary>
     /// Used to null check unity objects without bypassing the lifecycle
     /// </summary>
-    public static T? Exists<T>(this T? obj) where T : Object
+    public static T Exists<T>(this T obj) where T : Object
     {
         return obj == null ? null : obj;
     }

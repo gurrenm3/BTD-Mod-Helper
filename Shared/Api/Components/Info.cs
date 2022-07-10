@@ -10,7 +10,7 @@ public readonly struct Info
     /// <summary>
     /// The name of the ModHelperComponent's Unity GameObject
     /// </summary>
-    public string? Name { get; }
+    public string Name { get; }
 
     /// <summary>
     /// The localPosition field, by default relative to the parent's center unless anchors are changed
@@ -90,7 +90,7 @@ public readonly struct Info
     /// <param name="anchor">Sets both anchorMin and anchorMax to be this value</param>
     /// <param name="flex">Sets both flexWidth and flexHeight to be this value</param>
     /// <param name="size">Sets both width and height to be this value</param>
-    public Info(string? name, float x = 0f, float y = 0f, float width = 0f, float height = 0f, int flexWidth = -1,
+    public Info(string name, float x = 0f, float y = 0f, float width = 0f, float height = 0f, int flexWidth = -1,
         int flexHeight = -1, Vector2? anchorMin = null, Vector2? anchorMax = null, Vector3? scale = null,
         Vector2? pivot = null, Vector2? anchor = null, int? flex = null, float? size = null)
     {
@@ -122,7 +122,7 @@ public readonly struct Info
     /// <summary>
     /// Creates a new Info with all the same properties as this
     /// </summary>
-    public Info Duplicate(string? name)
+    public Info Duplicate(string name)
     {
         return new Info(name, Position.x, Position.y, SizeDelta.x, SizeDelta.y, FlexWidth, FlexHeight, AnchorMin,
             AnchorMax, Scale, Pivot);

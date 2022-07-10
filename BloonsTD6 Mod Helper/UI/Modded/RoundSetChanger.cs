@@ -23,12 +23,12 @@ internal static class RoundSetChanger
     private const float AnimatorSpeed = .75f;
     private const int AnimationTicks = (int)(20 / AnimatorSpeed);
 
-    private static ModHelperPanel buttonPanel = null!;
-    private static ModHelperScrollPanel optionsPanel = null!;
-    private static ModHelperButton button = null!;
+    private static ModHelperPanel buttonPanel;
+    private static ModHelperScrollPanel optionsPanel;
+    private static ModHelperButton button;
     private static readonly Dictionary<string, ModHelperImage> Ticks = new();
 
-    public static string? RoundSetOverride { get; private set; }
+    public static string RoundSetOverride { get; private set; }
 
     private static void CreatePanel(GameObject screen)
     {

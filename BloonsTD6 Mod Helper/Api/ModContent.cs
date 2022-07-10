@@ -14,7 +14,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="mapName"></param>
     /// <returns></returns>
-    public static ModMap? GetModMap(string mapName)
+    public static ModMap GetModMap(string mapName)
     {            
         return GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName);
     }

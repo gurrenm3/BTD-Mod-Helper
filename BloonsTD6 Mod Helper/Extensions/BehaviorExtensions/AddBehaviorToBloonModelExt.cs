@@ -18,7 +18,7 @@ public static class AddBehaviorToBloonModelExt
     }
 
     /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Assets.Scripts.Models.Model)"/>
-    public static T? GetBehavior<T>(this AddBehaviorToBloonModel model) where T : Model
+    public static T GetBehavior<T>(this AddBehaviorToBloonModel model) where T : Model
     {
         return ModelBehaviorExt.GetBehavior<T>(model);
     }

@@ -49,7 +49,7 @@ internal static class ModContentInstances
 /// <typeparam name="T"></typeparam>
 internal static class ModContentInstance<T> where T : IModContent
 {
-    internal static T? Instance { get; private set; }
+    internal static T Instance { get; private set; }
 
     internal static List<T> Instances { get; private set; } = new();
 

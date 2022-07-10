@@ -17,7 +17,7 @@ public static class EmissionModelBehaviorExt
     }
 
     /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Assets.Scripts.Models.Model)"/>
-    public static T? GetBehavior<T>(this EmissionModel model) where T : Model
+    public static T GetBehavior<T>(this EmissionModel model) where T : Model
     {
         return ModelBehaviorExt.GetBehavior<T>(model);
     }

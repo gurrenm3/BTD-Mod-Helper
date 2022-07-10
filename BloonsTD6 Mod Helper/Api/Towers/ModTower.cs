@@ -20,8 +20,8 @@ public abstract partial class ModTower
 
     internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
     internal readonly ModUpgrade[,] upgrades;
-    internal UpgradeModel dummyUpgrade = null!;
-    internal ModParagonUpgrade? paragonUpgrade;
+    internal UpgradeModel dummyUpgrade;
+    internal ModParagonUpgrade paragonUpgrade;
     internal virtual bool ShouldCreateParagon =>
         paragonUpgrade != null &&
         TopPathUpgrades == 5 &&

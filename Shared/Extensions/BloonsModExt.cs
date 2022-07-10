@@ -13,7 +13,7 @@ public static class BloonsModExt
     /// </summary>
     public static string GetModName(this BloonsMod bloonsMod)
     {
-        return bloonsMod.Assembly?.GetName().Name ?? bloonsMod.Info.Name;
+        return bloonsMod.MelonAssembly.Assembly?.GetName().Name ?? bloonsMod.Info.Name;
     }
 
     /// <summary>
@@ -62,6 +62,6 @@ public static class BloonsModExt
         return path;
     }
 
-    internal static ModHelperData? GetModHelperData(this MelonMod mod) =>
+    internal static ModHelperData GetModHelperData(this MelonMod mod) =>
         ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
 }

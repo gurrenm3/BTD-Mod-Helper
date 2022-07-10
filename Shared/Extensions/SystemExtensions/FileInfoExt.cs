@@ -14,7 +14,7 @@ public static class FileInfoExt
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
-    public static AssemblyName[]? GetAllReferences(this FileInfo fileInfo)
+    public static AssemblyName[] GetAllReferences(this FileInfo fileInfo)
     {
         try { return Assembly.LoadFrom(fileInfo.FullName).GetReferencedAssemblies(); }
         catch (Exception ex)

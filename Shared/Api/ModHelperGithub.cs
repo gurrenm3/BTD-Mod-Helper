@@ -33,11 +33,11 @@ internal static class ModHelperGithub
     public static List<ModHelperData> Mods { get; private set; } = new();
 
     // Will be moved to checking from a json file within the mod helper repo
-    public static readonly HashSet<string?> VerifiedModders = new();
+    public static readonly HashSet<string> VerifiedModders = new();
 
-    public static GitHubClient Client { get; private set; } = null!;
+    public static GitHubClient Client { get; private set; }
 
-    private static MiscellaneousRateLimit? rateLimit;
+    private static MiscellaneousRateLimit rateLimit;
 
     public static int RemainingSearches => rateLimit?.Resources?.Search?.Remaining ?? -1;
 
@@ -92,11 +92,10 @@ internal static class ModHelperGithub
         }
     }
 
-    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false,
-        Action<string>? callback = null)
+    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false, Action<string> callback = null)
     {
-        Release? latestRelease = null!;
-        GitHubCommit? latestCommit = null!;
+        Release latestRelease = null;
+        GitHubCommit latestCommit = null;
         if (mod.SubPath != null)
         {
             latestCommit = mod.LatestCommit ?? await mod.GetLatestCommit();
@@ -180,7 +179,7 @@ internal static class ModHelperGithub
         UpdateRateLimit();
     }
 
-    public static async Task<string?> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
+    public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
     {
         if (mod.ManualDownload)
         {
@@ -191,7 +190,7 @@ internal static class ModHelperGithub
         var name = mod.DllName ?? releaseAsset.Name;
         if (name == null || !name.EndsWith(".dll"))
         {
-            name = $"{mod.Mod!.Assembly.GetName().Name}.dll";
+            name = $"{mod.Mod!.MelonAssembly.Assembly.GetName().Name}.dll";
         }
 
         var downloadFilePath = Path.Combine(MelonHandler.ModsDirectory, name);
@@ -206,7 +205,12 @@ internal static class ModHelperGithub
                     Directory.CreateDirectory(ModHelper.OldModsDirectory);
                 }
 
-                File.Move(mod.FilePath, oldModsFilePath, true);
+                if (File.Exists(oldModsFilePath))
+                {
+                    File.Delete(oldModsFilePath);
+                }
+
+                File.Move(mod.FilePath, oldModsFilePath);
                 ModHelper.Msg($"Backing up to {oldModsFilePath}");
             }
 

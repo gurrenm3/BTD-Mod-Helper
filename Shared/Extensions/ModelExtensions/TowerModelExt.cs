@@ -69,7 +69,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first ability on the tower
         /// </summary>
-        public static AbilityModel? GetAbility(this TowerModel towerModel)
+        public static AbilityModel GetAbility(this TowerModel towerModel)
         {
             return towerModel.GetAbilities().FirstOrDefault();
         }
@@ -95,7 +95,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first AttackModel from this TowerModel, if it has one
         /// </summary>
-        public static AttackModel? GetAttackModel(this TowerModel towerModel)
+        public static AttackModel GetAttackModel(this TowerModel towerModel)
         {
             return towerModel.GetAttackModels().FirstOrDefault();
         }
@@ -103,7 +103,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first AttackModel whose name contains the given string
         /// </summary>
-        public static AttackModel? GetAttackModel(this TowerModel towerModel, string nameContains)
+        public static AttackModel GetAttackModel(this TowerModel towerModel, string nameContains)
         {
             return towerModel.GetAttackModels().FirstOrDefault(model => model.name.Contains(nameContains));
         }
@@ -154,7 +154,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Return the first WeaponModel this TowerModel has, if it has one.
         /// </summary>
-        public static WeaponModel? GetWeapon(this TowerModel towerModel)
+        public static WeaponModel GetWeapon(this TowerModel towerModel)
         {
             return towerModel.GetWeapons().FirstOrDefault();
         }
@@ -209,7 +209,7 @@ namespace BTD_Mod_Helper.Extensions
         /// If there is no associated ModTower, returns null
         /// </summary>
         /// <returns></returns>
-        public static ModTower? GetModTower(this TowerModel towerModel)
+        public static ModTower GetModTower(this TowerModel towerModel)
         {
             return ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
         }
@@ -220,9 +220,9 @@ namespace BTD_Mod_Helper.Extensions
         /// If there is no associated ModTower, returns null
         /// </summary>
         /// <returns></returns>
-        public static T? GetModTower<T>(this TowerModel towerModel) where T : ModTower
+        public static T GetModTower<T>(this TowerModel towerModel) where T : ModTower
         {
-            return (T?) GetModTower(towerModel);
+            return (T) GetModTower(towerModel);
         }
 
         /// <summary>

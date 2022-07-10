@@ -74,7 +74,7 @@ public class ModHelperSlider : ModHelperComponent
     /// <param name="labelSuffix">String to add to the end of the label, e.g. "%"</param>
     /// <returns></returns>
     public static ModHelperSlider Create(Info info, float defaultValue, float minValue, float maxValue,
-        float stepSize, Vector2 handleSize, UnityAction<float>? onValueChanged = null, float fontSize = 42f,
+        float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
         string labelSuffix = "")
     {
         var modHelperSlider = ModHelperComponent.Create<ModHelperSlider>(info);

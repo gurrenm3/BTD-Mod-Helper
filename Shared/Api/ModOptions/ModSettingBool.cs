@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// </summary>
         public bool button;
 
-        private Action<bool, ModHelperButton>? currentAction;
+        private Action<bool, ModHelperButton> currentAction;
 
         /// <summary>
         /// The sprite to use for the button when it's disabled, RedBtnLong by default
@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The text that the button should have when it's disabled, if this is a button
         /// </summary>
-        public string? disabledText = "Disabled";
+        public string disabledText = "Disabled";
 
         /// <summary>
         /// The sprite to use for the button when it's enabled, GreenBtnLong by default
@@ -38,17 +38,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The text that the button should have when it's enabled, if this is a button
         /// </summary>
-        public string? enabledText = "Enabled";
+        public string enabledText = "Enabled";
 
         /// <summary>
         /// Action to modify the ModHelperCheckbox after it's created
         /// </summary>
-        public Action<ModHelperButton>? modifyButton;
+        public Action<ModHelperButton> modifyButton;
 
         /// <summary>
         /// Action to modify the ModHelperCheckbox after it's created
         /// </summary>
-        public Action<ModHelperCheckbox>? modifyCheckbox;
+        public Action<ModHelperCheckbox> modifyCheckbox;
 
         /// <inheritdoc />
         public ModSettingBool(bool value) : base(value)

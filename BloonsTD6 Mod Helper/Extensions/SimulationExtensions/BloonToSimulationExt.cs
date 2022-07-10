@@ -14,7 +14,7 @@ public static partial class BloonToSimulationExt
     /// Return the DisplayNode for this bloon
     /// </summary>
     /// <returns></returns>
-    public static DisplayNode? GetDisplayNode(this BloonToSimulation bloonToSim)
+    public static DisplayNode GetDisplayNode(this BloonToSimulation bloonToSim)
     {
         return bloonToSim.GetBloon().GetDisplayNode();
     }
@@ -23,7 +23,7 @@ public static partial class BloonToSimulationExt
     /// Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <returns></returns>
-    public static UnityDisplayNode? GetUnityDisplayNode(this BloonToSimulation bloonToSim)
+    public static UnityDisplayNode GetUnityDisplayNode(this BloonToSimulation bloonToSim)
     {
         return bloonToSim.GetBloon().GetUnityDisplayNode();
     }

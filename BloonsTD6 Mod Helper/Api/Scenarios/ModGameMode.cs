@@ -87,7 +87,7 @@ public abstract class ModGameMode : NamedModContent
         }
     }
 
-    internal ModModel model = null!;
+    internal ModModel model;
 
     internal ModModel GetDefaultGameModeModel()
     {

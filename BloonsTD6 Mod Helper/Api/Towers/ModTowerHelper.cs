@@ -212,7 +212,8 @@ internal static partial class ModTowerHelper
         }
         else if (modTower.displays
                      .Where(display => display.UseForTower(towerModel.tiers) && display.ParagonDisplayIndex <= 0)
-                     .MaxBy(display => display.Id) is { } modTowerDisplay)
+                     .OrderByDescending(display => display.Id)
+                     .FirstOrDefault() is { } modTowerDisplay)
         {
             modTowerDisplay.ApplyToTower(towerModel);
         }
@@ -233,9 +234,10 @@ internal static partial class ModTowerHelper
                 displayDegreePath.name = $"AssetPathModel_{modTower.paragonUpgrade.GetType().Name}Lvl1";
 
                 var index = i;
-                var modTowerDisplay = modTower.displays.Where(display =>
-                        display.UseForTower(towerModel.tiers) && index >= display.ParagonDisplayIndex)
-                    .MaxBy(display => display.ParagonDisplayIndex);
+                var modTowerDisplay = modTower.displays
+                    .Where(display => display.UseForTower(towerModel.tiers) && index >= display.ParagonDisplayIndex)
+                    .OrderByDescending(display => display.ParagonDisplayIndex)
+                    .FirstOrDefault();
                 if (modTowerDisplay != default)
                 {
                     displayDegreePath.assetPath = modTowerDisplay.Id;

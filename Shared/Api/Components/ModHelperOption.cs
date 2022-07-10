@@ -25,38 +25,38 @@ public class ModHelperOption : ModHelperComponent
     /// <summary>
     /// The displayed name for this setting
     /// </summary>
-    public ModHelperText Name { get; private set; } = null!;
+    public ModHelperText Name { get; private set; }
 #endif
 
     /// <summary>
     /// The button that resets this setting
     /// </summary>
-    public ModHelperButton ResetButton { get; private set; } = null!;
+    public ModHelperButton ResetButton { get; private set; }
 
     /// <summary>
     /// The Icon for this setting. Will be null if no Icon provided
     /// </summary>
-    public ModHelperImage Icon { get; private set; } = null!;
+    public ModHelperImage Icon { get; private set; }
 
     /// <summary>
     /// The button that popups the description when pressed
     /// </summary>
-    public ModHelperButton InfoButton { get; private set; } = null!;
+    public ModHelperButton InfoButton { get; private set; }
 
     /// <summary>
     /// The top row of elements containing icon, name, info button
     /// </summary>
-    public ModHelperPanel TopRow { get; private set; } = null!;
+    public ModHelperPanel TopRow { get; private set; }
 
     /// <summary>
     /// The bottom row of elements containing the reset button and whatever input is added
     /// </summary>
-    public ModHelperPanel BottomRow { get; private set; } = null!;
+    public ModHelperPanel BottomRow { get; private set; }
 
     /// <summary>
     /// The image shown when this setting requires a restart
     /// </summary>
-    public ModHelperImage RestartIcon { get; private set; } = null!;
+    public ModHelperImage RestartIcon { get; private set; }
 
     /// <inheritdoc />
     public ModHelperOption(IntPtr ptr) : base(ptr)
@@ -79,15 +79,15 @@ public class ModHelperOption : ModHelperComponent
     /// <param name="description">The description of the mod setting, if any</param>
     /// <param name="icon">The icon of the mod setting, if any</param>
     /// <returns>The created ModHelperOption</returns>
-    public static ModHelperOption Create(string? displayName, string? description = null,
-        SpriteReference? icon = null)
+    public static ModHelperOption Create(string displayName, string description = null,
+        SpriteReference icon = null)
     {
         return Create<ModHelperOption>(displayName, description, icon);
     }
 
     /// <inheritdoc cref="Create"/>
-    protected static T Create<T>(string? displayName, string? description = null,
-        SpriteReference? icon = null)
+    protected static T Create<T>(string displayName, string description = null,
+        SpriteReference icon = null)
         where T : ModHelperOption
     {
         var modHelperOption = ModHelperComponent.Create<T>(

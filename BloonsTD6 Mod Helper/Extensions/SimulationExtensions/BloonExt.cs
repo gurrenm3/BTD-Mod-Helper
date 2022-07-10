@@ -15,7 +15,7 @@ public static partial class BloonExt
     /// <summary>
     /// Return the existing BloonToSimulation for this specific Bloon.
     /// </summary>
-    public static BloonToSimulation? GetBloonToSim(this Bloon bloon)
+    public static BloonToSimulation GetBloonToSim(this Bloon bloon)
     {
         var allBloons = InGame.instance.GetUnityToSimulation()!.GetAllBloons();
         return allBloons?.FirstOrDefault(simulation => simulation.GetBloon() == bloon);

@@ -33,7 +33,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
     public bool descriptionShowing;
 
-    public Action? iconAction;
+    public Action iconAction;
 
     public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
     {

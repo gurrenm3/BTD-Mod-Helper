@@ -25,7 +25,7 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static T? GetBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior
+    public static T GetBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior
     {
         return bloon.bloonBehaviors.GetItemOfType<BloonBehavior, T>();
     }

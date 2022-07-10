@@ -17,7 +17,7 @@ public class ModHelperHttp
     /// <summary>
     /// The HttpClient instance
     /// </summary>
-    public static HttpClient Client { get; private set; } = null!;
+    public static HttpClient Client { get; private set; }
 
     private const int TimeOutMS = 2000;
 
@@ -46,7 +46,7 @@ public class ModHelperHttp
         try
         {
             var response = await Client.GetAsync(url);
-            await using var fs = new FileStream(filePath, FileMode.Create);
+            using var fs = new FileStream(filePath, FileMode.Create);
             await response.Content.CopyToAsync(fs);
 
             return true;
@@ -59,7 +59,7 @@ public class ModHelperHttp
         return false;
     }
 
-        
+
     /// <summary>
     /// Downloads and extracts the contents of a zip file into the Zip Temp directory, returning the file paths
     /// of the extracted files
@@ -67,7 +67,7 @@ public class ModHelperHttp
     /// <param name="url">URL to download from</param>
     /// <param name="zipName">Name of the temporary zip file (will still be deleted at the end)</param>
     /// <returns>Enumeration of extracted file paths, or null</returns>
-    public static async Task<IEnumerable<string>?> DownloadZip(string url, string zipName = "temp.zip")
+    public static async Task<IEnumerable<string>> DownloadZip(string url, string zipName = "temp.zip")
     {
         try
         {
@@ -76,10 +76,11 @@ public class ModHelperHttp
             {
                 Directory.Delete(zipTempDir, true);
             }
+
             Directory.CreateDirectory(zipTempDir);
-            
+
             var response = await Client.GetAsync(url);
-            await using var stream = await response.Content.ReadAsStreamAsync();
+            using var stream = await response.Content.ReadAsStreamAsync();
             using var zip = new ZipArchive(stream);
             zip.ExtractToDirectory(zipTempDir);
 

@@ -17,12 +17,12 @@ public abstract partial class ModByteLoader : ModContent
 {
     internal static bool loadedAllBytes;
 
-    private static Task? currentLoadTask;
+    private static Task currentLoadTask;
 
     /// <summary>
     /// The array of object that NinjaKiwi programmed the loader to utilize
     /// </summary>
-    protected object[]? m;
+    protected object[] m;
 
     /// <summary>
     /// Whether the Result has been Loaded yet
@@ -32,12 +32,12 @@ public abstract partial class ModByteLoader : ModContent
     /// <summary>
     /// The Task responsible for loading the bytes in the background
     /// </summary>
-    protected Task? LoadTask { get; private set; }
+    protected Task LoadTask { get; private set; }
 
     /// <summary>
     /// The bytes that will be loaded from
     /// </summary>
-    protected byte[]? Bytes { get; private set; }
+    protected byte[] Bytes { get; private set; }
 
     /// <summary>
     /// The file name of the bytes file within your project.
@@ -63,10 +63,7 @@ public abstract partial class ModByteLoader : ModContent
 
         if (GetContent<ModByteLoader>().FirstOrDefault(loader => !loader.Loaded) is { } modByteLoader)
         {
-            currentLoadTask = modByteLoader.LoadTask = Task.Run(new Action(() =>
-            {
-                modByteLoader.LoadAllBytes();
-            }));
+            currentLoadTask = modByteLoader.LoadTask = Task.Run(new Action(() => { modByteLoader.LoadAllBytes(); }));
         }
         else
         {
@@ -102,7 +99,8 @@ public abstract partial class ModByteLoader : ModContent
     /// <returns></returns>
     public sealed override IEnumerable<ModContent> Load()
     {
-        var streamName = mod.Assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(BytesFileName));
+        var streamName = mod.MelonAssembly.Assembly.GetManifestResourceNames()
+            .FirstOrDefault(s => s.EndsWith(BytesFileName));
         if (streamName == null)
         {
             ModHelper.Warning($"Couldn't find bytes file {BytesFileName} in Assembly {mod.GetModName()}. " +
@@ -110,7 +108,7 @@ public abstract partial class ModByteLoader : ModContent
         }
         else
         {
-            Bytes = mod.Assembly.GetManifestResourceStream(streamName)?.GetByteArray();
+            Bytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(streamName)?.GetByteArray();
             if (Bytes != null)
             {
                 yield return this;
@@ -218,7 +216,7 @@ public abstract partial class ModByteLoader : ModContent
 /// <inheritdoc />
 public abstract class ModByteLoader<T> : ModByteLoader where T : Object
 {
-    private T? result;
+    private T result;
 
     /// <summary>
     /// The NinjaKiwi generated method that loads the bytes

@@ -14,7 +14,7 @@ public static class KnowledgeModelExt
 	/// </summary>
 	/// <param name="knowledgeModel"></param>
 	/// <returns></returns>
-	public static KnowledgeSetModel? GetKnowledgeSet(this KnowledgeModel knowledgeModel)
+	public static KnowledgeSetModel GetKnowledgeSet(this KnowledgeModel knowledgeModel)
 	{
 		var sets = Game.instance.model?.knowledgeSets;
 		if (sets is null || sets.Length == 0)

@@ -1,22 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
         <Configurations>BTD6_Debug;BTD6_Release</Configurations>
         <DefineConstants>BloonsTD6;TRACE</DefineConstants>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
         <DocumentationFile>bin\BTD6_Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Resources.Extensions" Version="6.0.0" GeneratePathProperty="true" />
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="System.IO.Compression.FileSystem" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
         <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" GeneratePathProperty="true" />
-        <PackageReference Include="Octokit" Version="0.50.0" GeneratePathProperty="true" />
+        <PackageReference Include="Octokit" Version="0.52.0" GeneratePathProperty="true" />
         <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" GeneratePathProperty="true" />
     </ItemGroup>
 

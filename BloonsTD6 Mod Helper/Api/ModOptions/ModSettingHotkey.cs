@@ -14,7 +14,7 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 public class ModSettingHotkey : ModSetting<string>
 {
     private HotKey hotKey;
-    private HotkeysScreenField? currentField;
+    private HotkeysScreenField currentField;
 
     /// <inheritdoc />
     public ModSettingHotkey(KeyCode key, HotkeyModifier modifier = HotkeyModifier.None)

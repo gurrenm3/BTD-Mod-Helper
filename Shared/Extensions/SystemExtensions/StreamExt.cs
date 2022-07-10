@@ -11,7 +11,7 @@ public static class StreamExt
     /// <summary>
     /// Synchronously gets the full array of bytes from any stream, disposing with the Stream afterwards
     /// </summary>
-    public static byte[]? GetByteArray(this Stream? stream)
+    public static byte[] GetByteArray(this Stream stream)
     {
         if (stream == null)
         {

@@ -24,7 +24,7 @@ public static class TitleScreenUI
     /// <summary>
     /// Gets the Canvas for the TitleScreenUI, or null
     /// </summary>
-    public static Canvas? GetCanvas()
+    public static Canvas GetCanvas()
     {
         var sceneObjects = GetScene()?.GetRootGameObjects();
         if (sceneObjects is null || sceneObjects.Count == 0)
@@ -38,7 +38,7 @@ public static class TitleScreenUI
     /// <summary>
     /// Gets the Intermediate Button if on the Map Select Menu, or null
     /// </summary>
-    public static Button? GetStartButton()
+    public static Button GetStartButton()
     {
         return GetCanvas()?.GetComponent<Button>("ScreenBoxer/TitleScreen/Start");
     }

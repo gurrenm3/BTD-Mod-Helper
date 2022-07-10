@@ -126,7 +126,7 @@ public static partial class SizedListExt
     /// <summary>
     /// Gets the first item of a given type within the list
     /// </summary>
-    public static TCast? GetItemOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TCast : Il2CppSystem.Object
+    public static TCast GetItemOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TCast : Il2CppSystem.Object
         where TSource : Il2CppSystem.Object
     {
         if (!HasItemsOfType<TSource, TCast>(sizedList))

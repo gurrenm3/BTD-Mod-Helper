@@ -60,10 +60,10 @@ public static class Il2CppGenericIEnumerable
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T? Last<T>(this IEnumerable<T> source) where T : Il2CppSystem.Object
+    public static T Last<T>(this IEnumerable<T> source) where T : Il2CppSystem.Object
     {
         var enumerator = source.GetEnumeratorCollections();
-        T? last = default;
+        T last = default;
 
         while (enumerator.MoveNext())
         {
@@ -79,10 +79,10 @@ public static class Il2CppGenericIEnumerable
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T? LastOrDefault<T>(this IEnumerable<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T LastOrDefault<T>(this IEnumerable<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
     {
         var enumerator = source.GetEnumeratorCollections();
-        T? last = default;
+        T last = default;
 
         while (enumerator.MoveNext())
         {
@@ -118,7 +118,7 @@ public static class Il2CppGenericIEnumerable
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T? FirstOrDefault<T>(this IEnumerable<T> source) where T : Il2CppSystem.Object
+    public static T FirstOrDefault<T>(this IEnumerable<T> source) where T : Il2CppSystem.Object
     {
         var enumerator = source.GetEnumeratorCollections();
         if (enumerator is null)
@@ -139,7 +139,7 @@ public static class Il2CppGenericIEnumerable
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T? FirstOrDefault<T>(this IEnumerable<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T FirstOrDefault<T>(this IEnumerable<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
     {
         var enumerator = source.GetEnumeratorCollections();
         while (enumerator.MoveNext())

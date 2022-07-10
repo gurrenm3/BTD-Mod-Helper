@@ -16,7 +16,7 @@ public abstract partial class ModLoadTask : NamedModContent
     /// <inheritdoc />
     public sealed override string Description => base.DisplayNamePlural;
 
-    internal IEnumerator iEnumerator = null!;
+    internal IEnumerator iEnumerator;
 
     //public abstract void Perform();
 

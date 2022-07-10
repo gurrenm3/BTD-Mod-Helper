@@ -23,7 +23,7 @@ public static class Il2CppSystemObjectExt
     /// (Cross-Game compatible) Check if object is the same type as T
     /// </summary>
     /// <typeparam name="T">Type to check</typeparam>
-    public static bool IsType<T>(this Object? instance) where T : Object
+    public static bool IsType<T>(this Object instance) where T : Object
     {
         return instance?.TryCast<T>() != null;
     }
@@ -34,7 +34,7 @@ public static class Il2CppSystemObjectExt
     /// <param name="instance"></param>
     /// <param name="castObject">The casted object if this is of type T</param>
     /// <typeparam name="T">Type to check</typeparam>
-    public static bool IsType<T>(this Object? instance, out T castObject) where T : Object
+    public static bool IsType<T>(this Object instance, out T castObject) where T : Object
     {
         castObject = instance?.TryCast<T>()!;
         return castObject != null;
@@ -47,7 +47,7 @@ public static class Il2CppSystemObjectExt
     }
         
     /// <inheritdoc cref="IsType{T}(Il2CppSystem.Object,out T)"/>
-    public static bool Is<T>(this Object? instance, out T castObject) where T : Object
+    public static bool Is<T>(this Object instance, out T castObject) where T : Object
     {
         castObject = instance?.TryCast<T>()!;
         return castObject != null;
