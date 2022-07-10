@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
@@ -9,8 +8,10 @@
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
-        <DocumentationFile>bin\BTD6_Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
+        <DocumentationFile>bin\BTD6_Debug\net48\BtdModHelper.xml</DocumentationFile>
         <LangVersion>10</LangVersion>
+        <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
+        <ProjectName>BtdModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,7 +31,6 @@
         <EmbeddedResource Include="nfd_x86.dll" />
         <EmbeddedResource Include="btd6.targets" />
         <EmbeddedResource Include="TemplateMod.zip" />
-        <EmbeddedResource Include="Resources\ingame_popup.bundle" />
     </ItemGroup>
 
     <ItemGroup>
@@ -42,5 +42,4 @@
     <!--Use the btd6.targets from the Mod Sources folder if this is placed there, otherwise use the included one-->
     <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
     <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
-
 </Project>
