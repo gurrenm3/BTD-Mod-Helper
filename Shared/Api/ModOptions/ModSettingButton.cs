@@ -57,9 +57,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 })
             );
 
-            button.AddText(
-                new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one), buttonText ?? "Dew It", 80f
-            );
+            button.AddText(new Info("Text", Info.Preset.FillParent), buttonText ?? "Dew It", 80f);
 
             option.ResetButton.gameObject.active = false;
 

@@ -55,7 +55,7 @@ namespace BTD_Mod_Helper.Extensions
         public static bool IsAccountFlagged(this Game game)
         {
 #if BloonsTD6
-            var hackerStatus = game.GetBtd6Player()!.Hakxr;
+            var hackerStatus = game.GetBtd6Player().Hakxr;
             return hackerStatus.genrl || hackerStatus.ledrbrd;
 #elif BloonsAT
             return game.GetAdventureTimePlayer().HasStatusFlags();

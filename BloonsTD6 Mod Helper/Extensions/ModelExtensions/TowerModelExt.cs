@@ -21,7 +21,7 @@ public static partial class TowerModelExt
     /// </summary>
     public static void SetMaxAmount(this TowerModel towerModel, int max)
     {
-        towerModel.GetTowerDetailsModel()!.towerCount = max;
+        towerModel.GetTowerDetailsModel().towerCount = max;
         var details = Game.instance.model.towerSet;
         InGame.instance.GetTowerInventory()
             .SetTowerMaxes(details.Cast<Il2CppSystem.Collections.Generic.IEnumerable<TowerDetailsModel>>());

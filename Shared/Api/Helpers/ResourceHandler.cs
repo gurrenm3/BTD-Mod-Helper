@@ -23,7 +23,7 @@ internal class ResourceHandler
         foreach (var fileName in mod.MelonAssembly.Assembly.GetManifestResourceNames()
                      .Where(s => s.EndsWith("png") || s.EndsWith("jpg")))
         {
-            var resource = mod.MelonAssembly.Assembly.GetManifestResourceStream(fileName)!.GetByteArray();
+            var resource = mod.MelonAssembly.Assembly.GetManifestResourceStream(fileName).GetByteArray();
             if (resource == null)
             {
                 continue;
@@ -41,7 +41,7 @@ internal class ResourceHandler
     {
         foreach (var name in mod.MelonAssembly.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
         {
-            var bytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(name)!.GetByteArray();
+            var bytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(name).GetByteArray();
             if (bytes == null)
             {
                 continue;

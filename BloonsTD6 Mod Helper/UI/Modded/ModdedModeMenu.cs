@@ -47,7 +47,7 @@ internal class ModdedModeMenu
         }
         else return;
 
-        var proto = modes.GetComponentInChildrenByName<Transform>("Standard")!.gameObject;
+        var proto = modes.GetComponentInChildrenByName<Transform>("Standard").gameObject;
 
         for (var i = 0; i < gameModes.Count; i++)
         {
@@ -58,7 +58,7 @@ internal class ModdedModeMenu
             newButton.name = modGameMode.Id;
             newButton.transform.TranslateScaled(GetOffset(i, gameModes.Count));
             newButton.GetComponent<Image>().LoadSprite(modGameMode.IconReference);
-            newButton.gameObject.GetComponentInChildrenByName<NK_TextMeshProUGUI>("Mode")!.localizeKey =
+            newButton.gameObject.GetComponentInChildrenByName<NK_TextMeshProUGUI>("Mode").localizeKey =
                 "Mode " + modGameMode.Id;
 
             var modeButton = newButton.GetComponent<ModeButton>();

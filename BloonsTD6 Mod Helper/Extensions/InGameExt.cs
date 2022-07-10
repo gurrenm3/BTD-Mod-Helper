@@ -20,10 +20,10 @@ public static partial class InGameExt
     /// <param name="roundSet">New Round Set Model to use</param>
     public static void SetRoundSet(this InGame inGame, RoundSetModel roundSet)
     {
-        var name = inGame.GetGameModel()!.roundSets.FirstOrDefault(model => model.name == roundSet.name)?.name;
+        var name = inGame.GetGameModel().roundSets.FirstOrDefault(model => model.name == roundSet.name)?.name;
         if (name != null)
         {
-            inGame.GetGameModel()!.bloonSet = name;
+            inGame.GetGameModel().bloonSet = name;
         }
         else
         {
@@ -61,7 +61,7 @@ public static partial class InGameExt
     /// </summary>
     public static double GetCash(this InGame inGame)
     {
-        return inGame.GetCashManager()!.cash.Value;
+        return inGame.GetCashManager().cash.Value;
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ public static partial class InGameExt
     /// <param name="amount">Amount of cash to add to player wallet</param>
     public static void AddCash(this InGame inGame, double amount)
     {
-        inGame.GetCashManager()!.cash.Value += amount;
+        inGame.GetCashManager().cash.Value += amount;
         InGame.instance.bridge.OnCashChangedSim();
     }
 
@@ -82,7 +82,7 @@ public static partial class InGameExt
     /// <param name="amount">Value to set cash to</param>
     public static void SetCash(this InGame inGame, double amount)
     {
-        inGame.GetCashManager()!.cash.Value = amount;
+        inGame.GetCashManager().cash.Value = amount;
         InGame.instance.bridge.OnCashChangedSim();
     }
 
@@ -91,7 +91,7 @@ public static partial class InGameExt
     /// </summary>
     public static double GetHealth(this InGame inGame)
     {
-        return inGame.GetSimulation()!.health.Value;
+        return inGame.GetSimulation().health.Value;
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public static partial class InGameExt
     /// <param name="amount">Amount of health to add</param>
     public static void AddHealth(this InGame inGame, double amount)
     {
-        inGame.GetSimulation()!.health.Value += amount;
+        inGame.GetSimulation().health.Value += amount;
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public static partial class InGameExt
     /// <param name="amount">Value to set health to</param>
     public static void SetHealth(this InGame inGame, double amount)
     {
-        inGame.GetSimulation()!.health.Value = amount;
+        inGame.GetSimulation().health.Value = amount;
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public static partial class InGameExt
     /// </summary>
     public static double GetMaxHealth(this InGame inGame)
     {
-        return inGame.GetSimulation()!.maxHealth.Value;
+        return inGame.GetSimulation().maxHealth.Value;
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public static partial class InGameExt
     /// <param name="amount">Amount to add to the player's max health</param>
     public static void AddMaxHealth(this InGame inGame, double amount)
     {
-        inGame.GetSimulation()!.maxHealth.Value += amount;
+        inGame.GetSimulation().maxHealth.Value += amount;
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public static partial class InGameExt
     /// <param name="amount">Value to set max health to</param>
     public static void SetMaxHealth(this InGame inGame, double amount)
     {
-        inGame.GetSimulation()!.maxHealth.Value = amount;
+        inGame.GetSimulation().maxHealth.Value = amount;
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ public static partial class InGameExt
     /// <param name="round"></param>
     public static void SetRound(this InGame inGame, int round)
     {
-        inGame.GetMap()!.spawner.SetRound(round);
+        inGame.GetMap().spawner.SetRound(round);
     }
 
     /// <summary>
@@ -198,8 +198,8 @@ public static partial class InGameExt
     public static void SpawnBloons(this InGame inGame,
         System.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
     {
-        inGame.GetUnityToSimulation()!.SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
-            inGame.GetUnityToSimulation()!.GetCurrentRound(), 0);
+        inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
+            inGame.GetUnityToSimulation().GetCurrentRound(), 0);
     }
 
 
@@ -210,8 +210,8 @@ public static partial class InGameExt
     /// <param name="bloonEmissionModels"></param>
     public static void SpawnBloons(this InGame inGame, List<BloonEmissionModel> bloonEmissionModels)
     {
-        inGame.GetUnityToSimulation()!.SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
-            inGame.GetUnityToSimulation()!.GetCurrentRound(), 0);
+        inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
+            inGame.GetUnityToSimulation().GetCurrentRound(), 0);
     }
 
 
@@ -223,7 +223,7 @@ public static partial class InGameExt
     public static void SpawnBloons(this InGame inGame, Il2CppReferenceArray<BloonEmissionModel> bloonEmissionModels)
     {
         inGame.GetUnityToSimulation()!
-            .SpawnBloons(bloonEmissionModels, inGame.GetUnityToSimulation()!.GetCurrentRound(), 0);
+            .SpawnBloons(bloonEmissionModels, inGame.GetUnityToSimulation().GetCurrentRound(), 0);
     }
 
 

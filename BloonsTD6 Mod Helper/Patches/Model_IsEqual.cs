@@ -2,6 +2,7 @@
 
 namespace BTD_Mod_Helper.Patches;
 
+// TODO is this still necessary?
 [HarmonyPatch(typeof(Model), nameof(Model.IsEqual))]
 internal class Model_IsEqual
 {

@@ -28,47 +28,35 @@ internal class ModsMenuMod : ModHelperComponent
 
     public static ModsMenuMod CreateTemplate()
     {
-        var mod = Create<ModsMenuMod>(
-            new Info("ModTemplate", height: 200, flexWidth: 1)
-        );
+        var mod = Create<ModsMenuMod>(new Info("ModTemplate")
+        {
+            Height = 200,
+            FlexWidth = 1
+        });
 
-        var panel = mod.AddButton(
-            new Info("MainButton", anchorMin: Vector2.zero, anchorMax: Vector2.one), VanillaSprites.UISprite, null
-        );
+        var panel = mod.AddButton(new Info("MainButton", Info.Preset.FillParent), VanillaSprites.UISprite, null);
 
-        panel.AddImage(
-            new Info("Icon", ModsMenu.Padding * 2, 0, size: ModsMenu.ModIconSize, anchor: new Vector2(0, 0.5f)),
-            VanillaSprites.UISprite
-        );
+        panel.AddImage(new Info("Icon", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, new Vector2(0, 0.5f)),
+            VanillaSprites.UISprite);
 
 
-        panel.AddImage(
-            new Info("Restart", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, ModsMenu.ModIconSize,
-                anchor: new Vector2(0, 0.5f)), VanillaSprites.RestartIcon
-        );
+        panel.AddImage(new Info("Restart", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, ModsMenu.ModIconSize,
+            new Vector2(0, 0.5f)), VanillaSprites.RestartIcon);
 
-        panel.AddText(new Info("Name", 0, 0, ModsMenu.ModNameWidth, ModsMenu.ModNameHeight), "Name",
+        panel.AddText(new Info("Name", ModsMenu.ModNameWidth, ModsMenu.ModNameHeight), "Name",
             ModsMenu.FontMedium);
 
-        panel.AddText(
-            new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
-                anchor: new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall
-        );
+        panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
+            anchor: new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
 
-        panel.AddButton(
-            new Info("Update", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
-                ModsMenu.ModPanelHeight / 2f, anchor: new Vector2(1, 1)), VanillaSprites.UpgradeBtn, null
-        );
+        panel.AddButton(new Info("Update", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
+            new Vector2(1, 1)), VanillaSprites.UpgradeBtn, null);
 
-        panel.AddButton(
-            new Info("Settings", ModsMenu.Padding / -2f, ModsMenu.Padding / 2f, ModsMenu.ModPanelHeight / 3f,
-                ModsMenu.ModPanelHeight / 3f, anchor: new Vector2(1, 0)), VanillaSprites.SettingsIconSmall, null
-        );
-        
-        panel.AddButton(
-            new Info("Warning", ModsMenu.Padding / 2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
-                ModsMenu.ModPanelHeight / 2f, anchor: new Vector2(0, 1)), VanillaSprites.NoticeBtn, null
-        );
+        panel.AddButton(new Info("Settings", ModsMenu.Padding / -2f, ModsMenu.Padding / 2f,
+            ModsMenu.ModPanelHeight / 3f, new Vector2(1, 0)), VanillaSprites.SettingsIconSmall, null);
+
+        panel.AddButton(new Info("Warning", ModsMenu.Padding / 2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
+            new Vector2(0, 1)), VanillaSprites.NoticeBtn, null);
 
         mod.SetActive(false);
 
@@ -100,13 +88,14 @@ internal static class ModsMenuModExt
 
         mod.Settings.SetActive(false);
         mod.Warning.SetActive(false);
-        
+
         if (melonMod is BloonsMod bloonsMod)
         {
             if (bloonsMod.ModSettings.Any())
             {
                 mod.Settings.SetActive(true);
             }
+
             if (bloonsMod.loadErrors.Any())
             {
                 mod.Warning.SetActive(true);
@@ -116,7 +105,7 @@ internal static class ModsMenuModExt
                 });
             }
         }
-        
+
 
         mod.Refresh(modHelperData);
 

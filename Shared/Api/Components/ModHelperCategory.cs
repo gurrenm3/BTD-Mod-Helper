@@ -49,17 +49,17 @@ public class ModHelperCategory : ModHelperOption
             throw new NotImplementedException(); // need to get "category.Name" working for BloonsAT
 #endif
 
-        var content = category.AddPanel(
-            new Info("CategoryContent", anchorMin: new Vector2(0, 0.5f), anchorMax: new Vector2(1, 0.5f)), null,
-            RectTransform.Axis.Vertical, 150
-        );
+        var content = category.AddPanel(new Info("CategoryContent")
+        {
+            AnchorMinX = 0, AnchorMaxX = 0
+        }, null, RectTransform.Axis.Vertical, 150);
         content.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
 
         var action = new Action<bool>(collapse =>
         {
             category.collapsed = collapse;
             content.gameObject.active = !collapse;
-            var localScale = category.InfoButton.parent!.RectTransform.localScale;
+            var localScale = category.InfoButton.parent.RectTransform.localScale;
             localScale.y = category.collapsed ? -1 : 1;
             category.InfoButton.parent.RectTransform.localScale = localScale;
         });

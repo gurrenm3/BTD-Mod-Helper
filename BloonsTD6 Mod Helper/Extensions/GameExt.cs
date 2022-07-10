@@ -198,7 +198,7 @@ public static partial class GameExt
     /// </summary>
     public static double GetMonkeyMoney(this Game game)
     {
-        return game.GetPlayerProfile()!.monkeyMoney.Value;
+        return game.GetPlayerProfile().monkeyMoney.Value;
     }
 
     /// <summary>

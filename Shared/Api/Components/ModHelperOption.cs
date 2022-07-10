@@ -99,10 +99,10 @@ public class ModHelperOption : ModHelperComponent
         modHelperOption.LayoutGroup.childForceExpandHeight = false;
         modHelperOption.LayoutGroup.childForceExpandWidth = false;
 
-        var topRow = modHelperOption.TopRow = modHelperOption.AddPanel(
-            new Info("TopRow", height: RowHeight, flexWidth: 1),
-            null, RectTransform.Axis.Horizontal, 100
-        );
+        var topRow = modHelperOption.TopRow = modHelperOption.AddPanel(new Info("TopRow")
+        {
+            Height = RowHeight, FlexWidth = 1
+        }, null, RectTransform.Axis.Horizontal, 100);
         topRow.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
 
 
@@ -117,8 +117,10 @@ public class ModHelperOption : ModHelperComponent
         restart.SetActive(false);
 
 #if BloonsTD6
-        var text = modHelperOption.Name = topRow.AddText(
-            new Info("Name", height: TextHeight), displayName, 80f);
+        var text = modHelperOption.Name = topRow.AddText(new Info("Name")
+        {
+            Height = TextHeight
+        }, displayName, 80f);
         text.FitContent(ContentSizeFitter.FitMode.PreferredSize);
 #elif BloonsAT
             throw new NotImplementedException(); // need to figure out how to get ModHelperText class working for BloonsAT
@@ -140,9 +142,11 @@ public class ModHelperOption : ModHelperComponent
 #endif
         }
 
-        var bottomRow = modHelperOption.BottomRow = modHelperOption.AddPanel(
-            new Info("BottomRow", height: RowHeight, flexWidth: 1), null, RectTransform.Axis.Horizontal, 100
-        );
+        var bottomRow = modHelperOption.BottomRow = modHelperOption.AddPanel(new Info("BottomRow")
+        {
+            Height = RowHeight,
+            FlexWidth = 1
+        }, null, RectTransform.Axis.Horizontal, 100);
         bottomRow.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
 #if BloonsTD6
         bottomRow.LayoutGroup.reverseArrangement = true;

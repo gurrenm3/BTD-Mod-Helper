@@ -189,7 +189,7 @@ internal static class ModHelperGithub
         var name = mod.DllName ?? releaseAsset.Name;
         if (name == null || !name.EndsWith(".dll"))
         {
-            name = $"{mod.Mod!.MelonAssembly.Assembly.GetName().Name}.dll";
+            name = $"{mod.Mod.MelonAssembly.Assembly.GetName().Name}.dll";
         }
 
         var downloadFilePath = Path.Combine(MelonHandler.ModsDirectory, name);

@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.Api.Components;
 internal class ModBrowserMenuMod : ModHelperPanel
 {
     public ModHelperPanel InfoPanel => GetDescendent<ModHelperPanel>("InfoPanel");
-    public ModHelperButton Info => GetDescendent<ModHelperButton>("Info");
+    public ModHelperButton InfoButton => GetDescendent<ModHelperButton>("Info");
     public ModHelperButton Homepage => GetDescendent<ModHelperButton>("Homepage");
     public ModHelperButton Download => GetDescendent<ModHelperButton>("Download");
     public ModHelperButton Update => GetDescendent<ModHelperButton>("Update");
@@ -40,65 +40,83 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
     public static ModBrowserMenuMod CreateTemplate()
     {
-        var mod = Create<ModBrowserMenuMod>(
-            new Info("ModTemplate", flex: 1), null, RectTransform.Axis.Vertical, 50
-        );
+        var mod = Create<ModBrowserMenuMod>(new Info("ModTemplate", Info.Preset.Flex), null,
+            RectTransform.Axis.Vertical, 50);
 
-        var mainPanel = mod.AddPanel(
-            new Info("MainPanel", height: 200, flexWidth: 1,
-                pivot: new Vector2(0.5f, 1)), null, RectTransform.Axis.Horizontal, 50
-        );
+        var mainPanel = mod.AddPanel(new Info("MainPanel")
+        {
+            Height = 200,
+            FlexWidth = 1,
+            Pivot = new Vector2(0.5f, 1)
+        }, null, RectTransform.Axis.Horizontal, 50);
 
-        var infoPanel = mod.AddPanel(new Info("InfoPanel", anchorMin: Vector2.zero, anchorMax: new Vector2(1, 0)),
-            VanillaSprites.BlueInsertPanel, RectTransform.Axis.Vertical, 0, 50);
+        var infoPanel = mod.AddPanel(new Info("InfoPanel")
+        {
+            AnchorMin = Vector2.zero,
+            AnchorMax = Vector2.one
+        }, VanillaSprites.BlueInsertPanel, RectTransform.Axis.Vertical, 0, 50);
         infoPanel.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
         infoPanel.LayoutGroup.childForceExpandWidth = true;
         infoPanel.LayoutGroup.childAlignment = TextAnchor.UpperLeft;
 
-        var description = infoPanel.AddText(
-            new Info("Description", flex: 1), Enumerable.Repeat("Testy text", 50).Join(), 69f,
-            TextAlignmentOptions.TopLeft
-        );
+        var description = infoPanel.AddText(new Info("Description", Info.Preset.Flex),
+            Enumerable.Repeat("Testy text", 50).Join(), 69f, TextAlignmentOptions.TopLeft);
         description.Text.font = Fonts.Btd6FontBody;
         description.Text.lineSpacing = 25;
         description.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
 
-        var panel = mainPanel.AddPanel(new Info("MainPanel", flex: 1), VanillaSprites.MainBGPanelBlue,
+        var panel = mainPanel.AddPanel(new Info("MainPanel", Info.Preset.Flex), VanillaSprites.MainBGPanelBlue,
             RectTransform.Axis.Horizontal, 0, 50);
 
         var iconPanel = panel.AddPanel(new Info("IconPanel", size: 200));
-        iconPanel.AddImage(
-            new Info("Icon", -ModsMenu.Padding, size: ModsMenu.ModIconSize), VanillaSprites.UISprite
-        );
+        iconPanel.AddImage(new Info("Icon")
+        {
+            X = -ModsMenu.Padding,
+            Size = ModsMenu.ModIconSize
+        }, VanillaSprites.UISprite);
 
-        panel.AddText(new Info("Name", height: ModsMenu.ModNameHeight, flexWidth: 3), "Name",
-            ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
+        panel.AddText(new Info("Name")
+        {
+            Height = ModsMenu.ModNameHeight,
+            FlexWidth = 3
+        }, "Name", ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
 
-        panel.AddText(new Info("Author", height: ModsMenu.ModNameHeight, flexWidth: 3), "Author",
-            ModsMenu.FontMedium);
+        panel.AddText(new Info("Author")
+        {
+            Height = ModsMenu.ModNameHeight,
+            FlexWidth = 3
+        }, "Author", ModsMenu.FontMedium);
 
-        panel.AddText(
-            new Info("Version", height: ModsMenu.ModNameHeight, flexWidth: 1), "v0.0.0", ModsMenu.FontSmall
-        );
+        panel.AddText(new Info("Version")
+        {
+            Height = ModsMenu.ModNameHeight,
+            FlexWidth = 1
+        }, "v0.0.0", ModsMenu.FontSmall);
 
-        var stars = panel.AddPanel(new Info("Stars", height: ModsMenu.ModNameHeight, flexWidth: 1), null,
-            RectTransform.Axis.Horizontal, 25);
+        var stars = panel.AddPanel(new Info("Stars")
+        {
+            Height = ModsMenu.ModNameHeight,
+            FlexWidth = 1
+        }, null, RectTransform.Axis.Horizontal, 25);
         stars.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
         stars.AddButton(new Info("Star", size: 100), VanillaSprites.Star, null);
-        stars.AddText(new Info("StarCount", height: ModsMenu.ModNameHeight, flexWidth: 1), "0", ModsMenu.FontMedium,
-            TextAlignmentOptions.CaplineLeft);
+        stars.AddText(new Info("StarCount")
+        {
+            Height = ModsMenu.ModNameHeight,
+            FlexWidth = 1
+        }, "0", ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
 
 
-        panel.AddButton(new Info("Info", size: 150), VanillaSprites.InfoBtn2, null);
+        panel.AddButton(new Info("Info", 150), VanillaSprites.InfoBtn2, null);
 
-        mainPanel.AddButton(new Info("Homepage", size: 200), VanillaSprites.HomeBtn, null);
+        mainPanel.AddButton(new Info("Homepage", 200), VanillaSprites.HomeBtn, null);
 
-        mainPanel.AddButton(new Info("Download", size: 200),
+        mainPanel.AddButton(new Info("Download", 200),
             ModContent.GetSpriteReference<MelonMain>("DownloadBtn"), null);
         var update = mainPanel.AddButton(new Info("Update", size: 200), VanillaSprites.UpgradeIcon, null);
-        update.AddImage(new Info("UpdateIcon", size: 133), VanillaSprites.UpgradeIcon2);
+        update.AddImage(new Info("UpdateIcon", 133), VanillaSprites.UpgradeIcon2);
 
-        mainPanel.AddImage(new Info("Installed", size: 200), VanillaSprites.TickGreenIcon);
+        mainPanel.AddImage(new Info("Installed", 200), VanillaSprites.TickGreenIcon);
 
 
         mod.SetDescriptionShowing(false);
@@ -129,7 +147,7 @@ internal static class ModBrowserMenuModExt
     {
         mod.Homepage.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.ReadmeUrl!));
         mod.Description.Text.SetText(modHelperData.Description);
-        mod.Info.Button.SetOnClick(() =>
+        mod.InfoButton.Button.SetOnClick(() =>
         {
             mod.SetDescriptionShowing(!mod.descriptionShowing);
             MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
@@ -182,7 +200,7 @@ internal static class ModBrowserMenuModExt
         mod.Update.SetActive(installed && current.UpdateAvailable);
         mod.Installed.SetActive(installed && !current.UpdateAvailable);
 
-        mod.StarCount.SetText($"{modHelperData.Repository!.StargazersCount}");
+        mod.StarCount.SetText($"{modHelperData.Repository.StargazersCount}");
         mod.Star.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.StarsUrl));
 
         mod.SetDescriptionShowing(false);

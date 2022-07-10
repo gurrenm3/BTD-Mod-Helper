@@ -61,14 +61,15 @@ public class ModHelperScrollPanel : ModHelperPanel
         var newPanel = Create<ModHelperScrollPanel>(info, backgroundSprite);
         var scrollRect = newPanel.AddComponent<ScrollRect>();
 
-        var scrollContent = newPanel.AddPanel(
-            new Info("ScrollContent",
-                anchorMin: new Vector2(
-                    axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
-                    axis == RectTransform.Axis.Horizontal ? 0 : 0.5f),
-                anchorMax: new Vector2(
-                    axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
-                    axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)), null, axis, spacing, padding);
+        var scrollContent = newPanel.AddPanel(new Info("ScrollContent")
+        {
+            AnchorMin = new Vector2(
+                axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
+                axis == RectTransform.Axis.Horizontal ? 0 : 0.5f),
+            AnchorMax = new Vector2(
+                axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
+                axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)
+        }, null, axis, spacing, padding);
         scrollContent.transform.parent = newPanel;
 
 #if BloonsTD6

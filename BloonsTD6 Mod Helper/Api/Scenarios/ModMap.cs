@@ -91,7 +91,7 @@ public abstract class ModMap : NamedModContent
         if (AutoUnlockMap)
         {
             Game.instance.ScheduleTask(
-                () => Game.instance.GetBtd6Player()!.UnlockMap(Name),
+                () => Game.instance.GetBtd6Player().UnlockMap(Name),
                 () => Game.instance && Game.instance.GetBtd6Player() != null);
         }
 

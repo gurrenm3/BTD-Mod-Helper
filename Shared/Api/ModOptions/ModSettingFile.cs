@@ -71,7 +71,7 @@ public class ModSettingFile : ModSetting<string>
         );
         button.GetDescendent<Animator>().enabled = false;
 
-        var text = button.AddText(new Info("FileText", anchorMin: Vector2.zero, anchorMax: Vector2.one), value);
+        var text = button.AddText(new Info("FileText", Info.Preset.FillParent), value);
         text.Text.alignment = TextAlignmentOptions.Center;
 
         option.SetResetAction(new Action(() => text.SetText(defaultValue)));

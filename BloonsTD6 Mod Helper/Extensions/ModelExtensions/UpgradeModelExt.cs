@@ -14,7 +14,7 @@ public static class UpgradeModelExt
     /// </summary>
     public static bool IsUpgradeUnlocked(this UpgradeModel upgradeModel)
     {
-        return Game.instance.GetBtd6Player()!.HasUpgrade(upgradeModel.name);
+        return Game.instance.GetBtd6Player().HasUpgrade(upgradeModel.name);
     }
 
     /// <summary>

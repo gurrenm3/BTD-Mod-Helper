@@ -45,7 +45,7 @@ internal class ModdedMonkeySelectMenu
     /// <param name="offset"></param>
     internal static void UpdateTowerSet(MonkeySelectMenu __instance, int offset = 0)
     {
-        var newTowerSet = menu!.TowerSets[menu.currentSet];
+        var newTowerSet = menu.TowerSets[menu.currentSet];
         if (newTowerSet != currentTowerSet)
         {
             currentTowerSet = newTowerSet;
@@ -129,7 +129,7 @@ internal class ModdedMonkeySelectMenu
     /// </summary>
     internal static void RefreshButtons()
     {
-        menu!.shopTowerDetailsModels = null;
+        menu.shopTowerDetailsModels = null;
         menu.buttonLeft.m_OnClick.RemoveAllListeners();
         menu.buttonRight.m_OnClick.RemoveAllListeners();
 
@@ -140,13 +140,13 @@ internal class ModdedMonkeySelectMenu
 
     public static bool ItComesAfter(string it, string maybeAfter)
     {
-        var sets = menu!.TowerSets;
+        var sets = menu.TowerSets;
         return (sets.IndexOf(it) - sets.IndexOf(maybeAfter) + sets.Length) % sets.Length == 1;
     }
 
     public static bool ItComesBefore(string it, string maybeBefore)
     {
-        var sets = menu!.TowerSets;
+        var sets = menu.TowerSets;
         return (sets.IndexOf(maybeBefore) - sets.IndexOf(it) + sets.Length) % sets.Length == 1;
     }
 
@@ -300,7 +300,7 @@ internal class ModdedMonkeySelectMenu
 
     private static int TotalPages => TotalSpotses.Values.Sum() / 8;
 
-    private static int CurrentPage => (TotalSpotses.Values.Take(menu!.currentSet).Sum() + Offset) / 8;
+    private static int CurrentPage => (TotalSpotses.Values.Take(menu.currentSet).Sum() + Offset) / 8;
 
     internal static GameObject pipHolder;
     internal static List<GameObject> pips = new();

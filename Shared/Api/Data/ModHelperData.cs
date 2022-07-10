@@ -132,7 +132,7 @@ internal class ModHelperData
                 catch (Exception)
                 {
                     ModHelper.Warning(
-                        $"The {fieldInfo.Name} of {mod.Info.Name}'s ModHelperData has incorrect type {rawConstantValue!.GetType().Name}");
+                        $"The {fieldInfo.Name} of {mod.Info.Name}'s ModHelperData has incorrect type {rawConstantValue.GetType().Name}");
                 }
             }
         }
@@ -219,7 +219,7 @@ internal class ModHelperData
             if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
                 return $"https://github.com/{RepoOwner}/{RepoName}#readme";
 
-            return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Repository!.DefaultBranch}/{SubPath}#readme";
+            return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Repository.DefaultBranch}/{SubPath}#readme";
         }
     }
 
@@ -249,7 +249,7 @@ internal class ModHelperData
             {
                 try
                 {
-                    set.Invoke(this, new object[] {json[key]!.ToObject<bool>()});
+                    set.Invoke(this, new object[] {json[key].ToObject<bool>()});
                 }
                 catch (Exception)
                 {
@@ -258,7 +258,7 @@ internal class ModHelperData
 
                 try
                 {
-                    set.Invoke(this, new object[] {json[key]!.ToObject<string>()});
+                    set.Invoke(this, new object[] {json[key].ToObject<string>()});
                 }
                 catch (Exception)
                 {
@@ -305,7 +305,7 @@ internal class ModHelperData
             path = $"{SubPath}/{name}";
         }
 
-        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Repository!.DefaultBranch}/{path}";
+        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Repository.DefaultBranch}/{path}";
     }
 
     public async Task LoadDataFromRepoAsync()
@@ -379,7 +379,7 @@ internal class ModHelperData
         }
         catch (Exception e)
         {
-            ModHelper.Warning($"Failed to get ModHelperData for {Repository!.Name}");
+            ModHelper.Warning($"Failed to get ModHelperData for {Repository.Name}");
             ModHelper.Warning(e);
         }
     }
@@ -393,7 +393,7 @@ internal class ModHelperData
     {
         try
         {
-            return LatestRelease = await ModHelperGithub.Client.Repository.Release.GetLatest(Repository!.Id);
+            return LatestRelease = await ModHelperGithub.Client.Repository.Release.GetLatest(Repository.Id);
         }
         catch (Exception e)
         {
@@ -412,13 +412,13 @@ internal class ModHelperData
         try
         {
             var path = DllName;
-            if (!SubPath!.EndsWith(".json") && !SubPath!.EndsWith(".txt"))
+            if (!SubPath.EndsWith(".json") && !SubPath.EndsWith(".txt"))
             {
                 path = $"{SubPath}/{path}";
             }
 
             return LatestCommit =
-                (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository!.Id, new CommitRequest {Path = path}))
+                (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository.Id, new CommitRequest {Path = path}))
                 [0];
 
             ;

@@ -61,7 +61,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static FactoryFactory GetMainFactory(this InGame inGame)
         {
-            return inGame.GetSimulation()!.factory;
+            return inGame.GetSimulation().factory;
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static List<TowerToSimulation> GetAllTowerToSim(this InGame inGame, string name = null)
         {
-            var towerToSims = inGame.GetUnityToSimulation()!.GetAllTowers()?.ToList();
+            var towerToSims = inGame.GetUnityToSimulation().GetAllTowers()?.ToList();
             if (!string.IsNullOrEmpty(name))
                 towerToSims = towerToSims?.FindAll(tower => tower.Def.name == name);
 
@@ -114,7 +114,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<Bloon> GetBloons(this InGame inGame)
         {
 #if BloonsTD6
-            return inGame.GetFactory<Bloon>()!.all.ToList();
+            return inGame.GetFactory<Bloon>().all.ToList();
 #elif BloonsAT
             return inGame.GetSimulation().bloonManager.GetBloons().ToList();
 #endif
@@ -128,7 +128,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<BloonToSimulation> GetAllBloonToSim(this InGame inGame)
         {
             //return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
-            return inGame.GetUnityToSimulation()!.GetAllBloons().ToList();
+            return inGame.GetUnityToSimulation().GetAllBloons().ToList();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerManager GetTowerManager(this InGame inGame)
         {
-            return inGame.GetSimulation()!.towerManager;
+            return inGame.GetSimulation().towerManager;
         }
 
         /// <summary>

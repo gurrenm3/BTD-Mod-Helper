@@ -71,10 +71,10 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (InGame.instance == null)
                 return;
-            var spawner = InGame.instance.GetMap()!.spawner;
+            var spawner = InGame.instance.GetMap().spawner;
 
 #if BloonsTD6
-            spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation()!.GetCurrentRound(), 0);
+            spawner.Emit(bloonModel, InGame.instance.GetUnityToSimulation().GetCurrentRound(), 0);
 #elif BloonsAT
             spawner.Emit(bloonModel);
 #endif
@@ -138,7 +138,7 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             bloonModel.display = guid;
 #endif
-            bloonModel.GetBehavior<DisplayModel>()!.display = guid;
+            bloonModel.GetBehavior<DisplayModel>().display = guid;
         }
 
         /// <summary>

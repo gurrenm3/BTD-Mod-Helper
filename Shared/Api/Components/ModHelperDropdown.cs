@@ -74,8 +74,7 @@ public class ModHelperDropdown : ModHelperComponent
         var modHelperDropdown = ModHelperComponent.Create<ModHelperDropdown>(info);
 
 #if BloonsTD6
-        var text = modHelperDropdown.AddText(
-            new Info("DropdownText", anchorMin: Vector2.zero, anchorMax: Vector2.one), "", labelFontSize);
+        var text = modHelperDropdown.AddText(new Info("DropdownText", Info.Preset.FillParent), "", labelFontSize);
 
         var dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
         dropdown.captionText = text.Text;

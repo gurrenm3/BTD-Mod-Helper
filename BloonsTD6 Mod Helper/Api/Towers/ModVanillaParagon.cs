@@ -134,7 +134,7 @@ public abstract class ModVanillaParagon : ModTower
         foreach (var towerModel in Game.instance.model.GetTowersWithBaseId(BaseTowerModel.baseId)
                      .Where(towerModel => towerModel.tier == 5))
         {
-            towerModel.paragonUpgrade = new UpgradePathModel(paragonUpgrade!.Id, $"{towerModel.baseId}-Paragon");
+            towerModel.paragonUpgrade = new UpgradePathModel(paragonUpgrade.Id, $"{towerModel.baseId}-Paragon");
         }
     }
 

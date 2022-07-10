@@ -103,7 +103,7 @@ public static partial class Il2CppReferenceArrayExt
     public static Il2CppReferenceArray<TCast> DuplicateAs<TSource, TCast>(this Il2CppReferenceArray<TSource> list)
         where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
     {
-        return list.CastAll<TSource, TCast>()!.ToIl2CppReferenceArray();
+        return list.CastAll<TSource, TCast>().ToIl2CppReferenceArray();
     }
 
     /// <summary>

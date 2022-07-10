@@ -15,7 +15,7 @@ public abstract partial class ModDisplay
     /// <param name="textureName">The name of the texture, without .png</param>
     protected void Set2DTexture(UnityDisplayNode node, string textureName)
     {
-        node.GetRenderer<SpriteRenderer>()!.sprite = GetSprite(textureName, PixelsPerUnit);
+        node.GetRenderer<SpriteRenderer>().sprite = GetSprite(textureName, PixelsPerUnit);
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public abstract partial class ModDisplay
     /// <param name="action">What to do with the node</param>
     protected void UseNode(string guid, Action<UnityDisplayNode> action)
     {
-        Game.instance.GetDisplayFactory()!.FindAndSetupPrototypeAsync(guid, new Action<UnityDisplayNode>((udn) =>
+        Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(guid, new Action<UnityDisplayNode>((udn) =>
         {
             udn.RecalculateGenericRenderers();
             action(udn);

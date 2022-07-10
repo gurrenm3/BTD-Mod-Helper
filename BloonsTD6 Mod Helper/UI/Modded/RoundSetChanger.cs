@@ -16,12 +16,12 @@ internal static class RoundSetChanger
 {
     private static readonly string[] ShowOnMenus =
     {
-        "MapSelectUI", "DifficultySelectUI","ModeSelectUI",
+        "MapSelectUI", "DifficultySelectUI", "ModeSelectUI",
         "MapSelectScreen", "DifficultySelectScreen", "ModeSelectScreen"
     };
 
     private const float AnimatorSpeed = .75f;
-    private const int AnimationTicks = (int)(20 / AnimatorSpeed);
+    private const int AnimationTicks = (int) (20 / AnimatorSpeed);
 
     private static ModHelperPanel buttonPanel;
     private static ModHelperScrollPanel optionsPanel;
@@ -34,17 +34,20 @@ internal static class RoundSetChanger
     {
         Ticks.Clear();
         RoundSetOverride = "";
-        buttonPanel = screen.AddModHelperPanel(
-            new Info("RoundSetChangerPanel", anchor: new Vector2(1, 0), pivot: new Vector2(1f, 0f)));
+        buttonPanel = screen.AddModHelperPanel(new Info("RoundSetChangerPanel")
+        {
+            Anchor = new Vector2(1, 0), Pivot = new Vector2(1, 0)
+        });
 
         var animator = buttonPanel.AddComponent<Animator>();
         animator.runtimeAnimatorController = Animations.PopupAnim;
         animator.speed = AnimatorSpeed;
 
 
-        optionsPanel = screen.AddModHelperScrollPanel(new Info("OptionsScroll", anchorMin: new Vector2(1, 0),
-            anchorMax: new Vector2(1, 1),
-            pivot: new Vector2(1f, 0f), width: 400), RectTransform.Axis.Vertical, null, 50, 100);
+        optionsPanel = screen.AddModHelperScrollPanel(new Info("OptionsScroll")
+        {
+            Width = 400, AnchorMin = new Vector2(1, 0), AnchorMax = new Vector2(1, 1), Pivot = new Vector2(1, 0)
+        }, RectTransform.Axis.Vertical, null, 50, 100);
 
         animator = optionsPanel.AddComponent<Animator>();
         animator.runtimeAnimatorController = Animations.PopupAnim;
@@ -76,9 +79,8 @@ internal static class RoundSetChanger
 
 
         button = buttonPanel.AddButton(
-            new Info("RoundSetChanger", -250, 50, 350, 350, anchor: new Vector2(1, 0), pivot: new Vector2(0.5f, 0)),
-            VanillaSprites.WoodenRoundButton, new Action(StartOptionsMode)
-        );
+            new Info("RoundSetChanger", -250, 50, 350, 350, new Vector2(1, 0), new Vector2(0.5f, 0)),
+            VanillaSprites.WoodenRoundButton, new Action(StartOptionsMode));
 
         button.AddText(
             new Info("Text", 0, -175, 500, 100), "Change Rounds", 60f

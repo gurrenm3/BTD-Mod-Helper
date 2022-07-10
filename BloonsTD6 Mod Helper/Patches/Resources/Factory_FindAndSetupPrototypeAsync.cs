@@ -56,7 +56,7 @@ internal class Factory_FindAndSetupPrototypeAsync
                 if (modDisplay is ICustomDisplay customDisplay)
                 {
                     var assetBundle = ModContent.GetBundle(modDisplay.mod, customDisplay.AssetBundleName);
-                    var udn = Object.Instantiate(assetBundle!.LoadAsset(customDisplay.PrefabName).Cast<GameObject>(),
+                    var udn = Object.Instantiate(assetBundle.LoadAsset(customDisplay.PrefabName).Cast<GameObject>(),
                         __instance.PrototypeRoot).AddComponent<UnityDisplayNode>();
                     udn.Active = false;
                     udn.transform.position = new Vector3(-3000, 0);

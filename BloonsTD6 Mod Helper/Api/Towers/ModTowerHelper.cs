@@ -122,7 +122,7 @@ internal static partial class ModTowerHelper
         if (modTower.ShouldCreateParagon && tiers.Any(i => i == 5))
         {
             towerModel.paragonUpgrade =
-                new UpgradePathModel(modTower.paragonUpgrade!.Id, $"{towerModel.baseId}-Paragon");
+                new UpgradePathModel(modTower.paragonUpgrade.Id, $"{towerModel.baseId}-Paragon");
         }
 
         // set the tower's portrait
@@ -156,7 +156,7 @@ internal static partial class ModTowerHelper
         towerModel.paragonUpgrade = null;
         towerModel.name = $"{towerModel.baseId}-Paragon";
         towerModel.isBakable = false;
-        towerModel.appliedUpgrades[5] = modTower.paragonUpgrade!.Id;
+        towerModel.appliedUpgrades[5] = modTower.paragonUpgrade.Id;
 
         var sprite = modTower.paragonUpgrade.PortraitReference;
         if (sprite != null)
@@ -205,8 +205,8 @@ internal static partial class ModTowerHelper
             var name = modTower.Get2DTexture(towerModel.tiers);
             var guid = ModContent.GetTextureGUID(modTower.mod, name);
             towerModel.display = guid;
-            towerModel.GetBehavior<DisplayModel>()!.display = guid;
-            towerModel.GetBehavior<DisplayModel>()!.positionOffset = new Vector3(0, 0, 2f);
+            towerModel.GetBehavior<DisplayModel>().display = guid;
+            towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
             ResourceHandler.ScalesFor2dModels[guid] = modTower.PixelsPerUnit;
         }
         else if (modTower.displays
@@ -220,7 +220,7 @@ internal static partial class ModTowerHelper
         // last paragon stuff
         if (modTower.ShouldCreateParagon && towerModel.isParagon)
         {
-            if (modTower.paragonUpgrade!.RemoveAbilities)
+            if (modTower.paragonUpgrade.RemoveAbilities)
             {
                 towerModel.behaviors = towerModel.behaviors.RemoveItemsOfType<Model, AbilityModel>();
             }
@@ -252,7 +252,7 @@ internal static partial class ModTowerHelper
             catch (Exception)
             {
                 ModHelper.Error(
-                    $"Failed to apply ModParagonUpgrade {modTower.paragonUpgrade!.Name} to TowerModel {towerModel.name}");
+                    $"Failed to apply ModParagonUpgrade {modTower.paragonUpgrade.Name} to TowerModel {towerModel.name}");
                 throw;
             }
         }

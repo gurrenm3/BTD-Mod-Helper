@@ -90,10 +90,11 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             newMod.SetActive(false);
         }
 
-        var topArea = GameMenu.transform.GetChild(0).gameObject.AddModHelperPanel(
-            new Info("TopArea", 0, -325, anchorMin: new Vector2(0, 1), anchorMax: new Vector2(1, 1),
-                pivot: new Vector2(0.5f, 1), height: 200), layoutAxis: RectTransform.Axis.Horizontal, padding: 50
-        );
+        var topArea = GameMenu.transform.GetChild(0).gameObject.AddModHelperPanel(new Info("TopArea")
+        {
+            Y = -325, Height = 200, Pivot = new Vector2(0.5f, 1),
+            AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1),
+        }, layoutAxis: RectTransform.Axis.Horizontal, padding: 50);
 
         topArea.AddDropdown(new Info("Sorting", width: 1000, height: 150),
             SortingMethods.Select(method => method.ToString().Spaced()).ToIl2CppList(), 600,
@@ -103,7 +104,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 RecalculateCurrentMods();
             }), VanillaSprites.BlueInsertPanelRound, 80f);
 
-        topArea.AddPanel(new Info("Filler 1", flex: 1));
+        topArea.AddPanel(new Info("Filler 1", Info.Preset.Flex));
 
         topArea.AddInputField(new Info("Searching", width: 1500, height: 150), currentSearch,
             VanillaSprites.BlueInsertPanelRound, new Action<string>(
@@ -114,7 +115,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft, "Search...",
             50);
 
-        topArea.AddPanel(new Info("Filler 2", flex: 1));
+        topArea.AddPanel(new Info("Filler 2", Info.Preset.Flex));
 
         topArea.AddPanel(new Info("Toggles", width: 1000, height: 150));
     }
@@ -146,22 +147,22 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
             var filteredMods = ModHelperGithub.Mods
                 .Where(data => string.IsNullOrEmpty(currentSearch) ||
-                               scorer.Score(currentSearch.ToLower(), data.Name!.ToLower()) >= SearchCutoff ||
-                               scorer.Score(currentSearch.ToLower(), data.RepoOwner!.ToLower()) >= SearchCutoff);
+                               scorer.Score(currentSearch.ToLower(), data.Name.ToLower()) >= SearchCutoff ||
+                               scorer.Score(currentSearch.ToLower(), data.RepoOwner.ToLower()) >= SearchCutoff);
 
             switch (sortingMethod)
             {
                 case SortingMethod.Popularity:
-                    filteredMods = filteredMods.OrderByDescending(data => data.Repository!.StargazersCount);
+                    filteredMods = filteredMods.OrderByDescending(data => data.Repository.StargazersCount);
                     break;
                 case SortingMethod.Alphabetical:
                     filteredMods = filteredMods.OrderBy(data => data.Name);
                     break;
                 case SortingMethod.RecentlyUpdated:
-                    filteredMods = filteredMods.OrderByDescending(data => data.Repository!.UpdatedAt);
+                    filteredMods = filteredMods.OrderByDescending(data => data.Repository.UpdatedAt);
                     break;
                 case SortingMethod.New:
-                    filteredMods = filteredMods.OrderByDescending(data => data.Repository!.CreatedAt);
+                    filteredMods = filteredMods.OrderByDescending(data => data.Repository.CreatedAt);
                     break;
             }
 
@@ -172,7 +173,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private void UpdateModList()
     {
-        var pageMods = currentMods!.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
+        var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
         var i = 0;
         foreach (var modHelperData in pageMods)
         {
