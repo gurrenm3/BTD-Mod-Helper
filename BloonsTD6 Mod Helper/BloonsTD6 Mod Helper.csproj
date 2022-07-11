@@ -9,7 +9,7 @@
         <DebugType>embedded</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
-        <DocumentationFile>bin\BTD6_Debug\BtdModHelper.xml</DocumentationFile>
+        <DocumentationFile>bin\BTD6_Debug\Btd6ModHelper.xml</DocumentationFile>
         <LangVersion>10</LangVersion>
         <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
         <ProjectName>Btd6ModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->

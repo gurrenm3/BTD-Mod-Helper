@@ -75,7 +75,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           # Artifact name
-          name: BtdModHelper.dll
+          name: ${{ env.PROJECT_NAME }}.dll
           # A file, directory or wildcard pattern that describes what to upload
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
       
@@ -84,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           # Artifact name
-          name: BtdModHelper.xml
+          name: ${{ env.PROJECT_NAME }}.xml
           # A file, directory or wildcard pattern that describes what to upload
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
           
