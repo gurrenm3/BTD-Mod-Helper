@@ -2,11 +2,11 @@ name: Build
 
 on:
   push:
-    branches: [ "3.0_Release" ]
+    branches: [ "3.0_Features" ]
     tags:
       - '*'
   pull_request:
-    branches: [ "3.0_Release" ]
+    branches: [ "3.0_Features" ]
 
 env:
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
