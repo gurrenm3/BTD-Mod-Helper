@@ -44,15 +44,8 @@
 
     <!--Mod Helper dependency-->
     <ItemGroup Condition="$(DontReferenceModHelper) != 'true'">
-        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\BtdModHelper.dll')">
-            <HintPath>$(BloonsTD6)\Mods\BtdModHelper.dll</HintPath>
-        </Reference>
-        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\_BtdModHelper.dll')">
-            <!--Allowing a standardized way to allow compatibility with mods that haven't updated yet-->
-            <HintPath>$(BloonsTD6)\Mods\_BtdModHelper.dll</HintPath>
-        </Reference>
-        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll')">
-            <HintPath>$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll</HintPath>
+        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\Btd6ModHelper.dll')">
+            <HintPath>$(BloonsTD6)\Mods\Btd6ModHelper.dll</HintPath>
         </Reference>
     </ItemGroup>
 

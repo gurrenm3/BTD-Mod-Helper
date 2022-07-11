@@ -12,7 +12,7 @@
         <DocumentationFile>bin\BTD6_Debug\BtdModHelper.xml</DocumentationFile>
         <LangVersion>10</LangVersion>
         <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
-        <ProjectName>BtdModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->
+        <ProjectName>Btd6ModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->
     </PropertyGroup>
 
     <ItemGroup>
