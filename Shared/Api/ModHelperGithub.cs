@@ -49,6 +49,7 @@ internal static class ModHelperGithub
     {
         var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}"));
         var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
+        var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
 
         var monoRepoTasks = (await monoRepoSearchTask).Items
             .Select(ModHelperData.LoadFromMonoRepo)
@@ -58,6 +59,7 @@ internal static class ModHelperGithub
             .OrderBy(repo => repo.CreatedAt)
             .Select(repo => new ModHelperData(repo))
             .Concat((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d))
+            .Append(new ModHelperData(await modHelperRepoSearchTask))
             .ToArray();
 
         ModHelper.Msg("finished getting mods");
@@ -129,7 +131,8 @@ internal static class ModHelperGithub
                 try
                 {
                     var asset = mod.SubPath == null
-                        ? latestRelease.Assets.FirstOrDefault(asset => asset.Name == mod.DllName) ??
+                        ? latestRelease.Assets.FirstOrDefault(asset =>
+                              asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
                           latestRelease.Assets[0]
                         : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
                             DateTimeOffset.Now, mod.GetContentURL(mod.DllName!), null);
@@ -165,7 +168,7 @@ internal static class ModHelperGithub
         {
 #if BloonsTD6
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
-                $"Do you want to download\n{mod.Name} v{mod.RepoVersion}?",
+                $"Do you want to download\n{mod.DisplayName} v{mod.RepoVersion}?",
                 mod.SubPath == null
                     ? $"Latest Release Message:\n\"{latestRelease.Body}\""
                     : $"Latest Commit Message:\n\"{latestCommit.Commit.Message}\"",
@@ -229,8 +232,8 @@ internal static class ModHelperGithub
                     {
                         try
                         {
-                            var dll = zippedFiles.First(s => s.EndsWith(name));
-                            File.Copy(dll, downloadFilePath, true);
+                            var dll = zippedFiles.FirstOrDefault(s => s.EndsWith(".dll"));
+                            File.Copy(dll, downloadFilePath);
                             success = true;
                         }
                         catch (InvalidOperationException)

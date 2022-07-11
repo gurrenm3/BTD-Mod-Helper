@@ -147,7 +147,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
             var filteredMods = ModHelperGithub.Mods
                 .Where(data => string.IsNullOrEmpty(currentSearch) ||
-                               scorer.Score(currentSearch.ToLower(), data.Name.ToLower()) >= SearchCutoff ||
+                               scorer.Score(currentSearch.ToLower(), data.DisplayName.ToLower()) >= SearchCutoff ||
                                scorer.Score(currentSearch.ToLower(), data.RepoOwner.ToLower()) >= SearchCutoff);
 
             switch (sortingMethod)
@@ -156,7 +156,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                     filteredMods = filteredMods.OrderByDescending(data => data.Repository.StargazersCount);
                     break;
                 case SortingMethod.Alphabetical:
-                    filteredMods = filteredMods.OrderBy(data => data.Name);
+                    filteredMods = filteredMods.OrderBy(data => data.DisplayName);
                     break;
                 case SortingMethod.RecentlyUpdated:
                     filteredMods = filteredMods.OrderByDescending(data => data.Repository.UpdatedAt);

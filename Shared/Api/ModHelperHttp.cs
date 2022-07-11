@@ -65,9 +65,8 @@ public class ModHelperHttp
     /// of the extracted files
     /// </summary>
     /// <param name="url">URL to download from</param>
-    /// <param name="zipName">Name of the temporary zip file (will still be deleted at the end)</param>
     /// <returns>Enumeration of extracted file paths, or null</returns>
-    public static async Task<IEnumerable<string>> DownloadZip(string url, string zipName = "temp.zip")
+    public static async Task<IEnumerable<string>> DownloadZip(string url)
     {
         try
         {

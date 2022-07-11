@@ -16,16 +16,11 @@ public partial class ModHelperComponent : MonoBehaviour
     /// Default font size for UI labels
     /// </summary>
     public const float DefaultFontSize = 42f;
-    
+
     /// <summary>
     /// Default alignment for texts and input fields
     /// </summary>
-    public const TextAlignmentOptions DefaultTextAlignment = TextAlignmentOptions.Center;
-    
-    /// <summary>
-    /// The Info object that this was defined with, determining its initial name, position and size
-    /// </summary>
-    public Info initialInfo;
+    public const TextAlignmentOptions DefaultTextAlignment = TextAlignmentOptions.Capline;
 
     /// <summary>
     /// Bool for if this should disable itself on the next frame
@@ -43,6 +38,16 @@ public partial class ModHelperComponent : MonoBehaviour
     public ModHelperComponent parent;
 
     /// <summary>
+    /// The Info object that this was defined with, determining its initial name, position and size
+    /// </summary>
+    public Info initialInfo;
+
+    /// <inheritdoc />
+    public ModHelperComponent(IntPtr ptr) : base(ptr)
+    {
+    }
+
+    /// <summary>
     /// The RectTransform for this GameObject
     /// </summary>
     public RectTransform RectTransform => transform.Cast<RectTransform>();
@@ -57,9 +62,15 @@ public partial class ModHelperComponent : MonoBehaviour
     /// </summary>
     public HorizontalOrVerticalLayoutGroup LayoutGroup => GetComponent<HorizontalOrVerticalLayoutGroup>();
 
-    /// <inheritdoc />
-    public ModHelperComponent(IntPtr ptr) : base(ptr)
+    private void Update()
     {
+        if (disableNextFrame)
+        {
+            disableNextFrame = false;
+            gameObject.SetActive(false);
+        }
+
+        OnUpdate();
     }
 
     /// <summary>
@@ -77,7 +88,7 @@ public partial class ModHelperComponent : MonoBehaviour
     /// </summary>
     public void SetParent(ModHelperComponent newParent)
     {
-        this.parent = newParent;
+        parent = newParent;
 
         if (newParent.LayoutGroup != null && !gameObject.HasComponent<ContentSizeFitter>())
         {
@@ -96,11 +107,8 @@ public partial class ModHelperComponent : MonoBehaviour
         return child;
     }
 
-    /// <inheritdoc cref="GameObject.AddComponent{T}"/>
-    public T AddComponent<T>() where T : Component
-    {
-        return gameObject.AddComponent<T>();
-    }
+    /// <inheritdoc cref="GameObject.AddComponent{T}" />
+    public T AddComponent<T>() where T : Component => gameObject.AddComponent<T>();
 
     /// <summary>
     /// Adds and returns a LayoutElement for this, making it work as part of a LayoutGroup
@@ -142,12 +150,9 @@ public partial class ModHelperComponent : MonoBehaviour
     /// <summary>
     /// Gets a descendent component with the given name
     /// </summary>
-    public T GetDescendent<T>(string s = "") where T : Component
-    {
-        return string.IsNullOrEmpty(s)
-            ? gameObject.GetComponentInChildren<T>()
-            : gameObject.GetComponentInChildrenByName<T>(s)!;
-    }
+    public T GetDescendent<T>(string s = "") where T : Component => string.IsNullOrEmpty(s)
+        ? gameObject.GetComponentInChildren<T>()
+        : gameObject.GetComponentInChildrenByName<T>(s)!;
 
     /// <summary>
     /// Sets whether or not this is active
@@ -176,17 +181,6 @@ public partial class ModHelperComponent : MonoBehaviour
         newInfo.Apply(this);
     }
 
-    private void Update()
-    {
-        if (disableNextFrame)
-        {
-            disableNextFrame = false;
-            gameObject.SetActive(false);
-        }
-
-        OnUpdate();
-    }
-
     /// <summary>
     /// Unity Component Update
     /// </summary>
@@ -195,20 +189,19 @@ public partial class ModHelperComponent : MonoBehaviour
     }
 
     /// <summary>
+    /// Deletes the underlying GameObject this is attached to, not just the component
+    /// </summary>
+    public void DeleteObject() => gameObject.Destroy();
+
+    /// <summary>
     /// Implicitly get the gameObject
     /// </summary>
-    public static implicit operator GameObject(ModHelperComponent component)
-    {
-        return component.gameObject;
-    }
+    public static implicit operator GameObject(ModHelperComponent component) => component.gameObject;
 
     /// <summary>
     /// Implicitly get the RectTransform
     /// </summary>
-    public static implicit operator RectTransform(ModHelperComponent component)
-    {
-        return component.RectTransform;
-    }
+    public static implicit operator RectTransform(ModHelperComponent component) => component.RectTransform;
 }
 
 /// <summary>
@@ -218,18 +211,16 @@ public static class ModHelperComponentExt
 {
     /// <summary>
     /// Adds the ModHelperComponent to a parent Transform, returning the ModHelperComponent
-    /// <br/>
+    /// <br />
     /// (This is an extension method just so that we can return the type generically)
     /// </summary>
-    public static T AddTo<T>(this T modHelperComponent, Transform parent) where T : ModHelperComponent
-    {
-        return parent.gameObject.AddModHelperComponent(modHelperComponent);
-    }
+    public static T AddTo<T>(this T modHelperComponent, Transform parent) where T : ModHelperComponent =>
+        parent.gameObject.AddModHelperComponent(modHelperComponent);
 
 
     /// <summary>
     /// Adds the ModHelperComponent to a parent GameObject, returning the ModHelperComponent
-    /// <br/>
+    /// <br />
     /// (This is an extension method just so that we can return the type generically)
     /// </summary>
     public static T AddModHelperComponent<T>(this ModHelperComponent parentComponent, T modHelperComponent)

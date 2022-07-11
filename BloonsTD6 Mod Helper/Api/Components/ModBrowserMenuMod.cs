@@ -153,7 +153,7 @@ internal static class ModBrowserMenuModExt
             MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         });
         mod.IconPanel.SetActive(false);
-        mod.Name.SetText(modHelperData.Name);
+        mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
         mod.Author.SetText(modHelperData.Author ?? modHelperData.RepoOwner);
         mod.Author.Text.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);

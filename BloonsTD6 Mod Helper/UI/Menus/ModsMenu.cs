@@ -56,6 +56,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static ModHelperButton selectedModSettingsButton;
     private static ModHelperButton selectedModDisableButton;
     private static ModHelperButton selectedModEnableButton;
+    private static ModHelperButton selectedModDeleteButton;
     private static ModHelperButton selectedModHomeButton;
     private static ModHelperButton updateAllButton;
     private static ModHelperImage selectedModIcon;
@@ -207,7 +208,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     {
         selectedMod = modSelected;
 
-        selectedModName.Text.SetText(modSelected.Name);
+        selectedModName.Text.SetText(modSelected.DisplayName);
         selectedModAuthor.Text.SetText(modSelected.Author ?? modSelected.RepoOwner);
         selectedModVersion.Text.SetText("v" + modSelected.Version);
         selectedModDescription.Text.SetText(modSelected.Description ?? DefaultDescription);
@@ -231,6 +232,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModDisableButton.SetActive(modSelected.Enabled);
         selectedModEnableButton.SetActive(!modSelected.Enabled);
+        selectedModDeleteButton.SetActive(!modSelected.Enabled && modSelected.Mod is null);
 
         selectedModHomeButton.SetActive(selectedMod.ReadmeUrl != null);
     }
@@ -370,9 +372,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Info("UpdateButton", size: ModNameHeight), VanillaSprites.GreenBtn, new Action(async () =>
                 await ModHelperGithub.DownloadLatest(selectedMod, false, _ => Refresh()))
         );
-        /*selectedModUpdateButton.AddText(
-            new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one), "Update", FontMedium
-        );*/
         selectedModUpdateButton.AddImage(
             new Info("UpgradeIcon", size: ModNameHeight - Padding), VanillaSprites.UpgradeIcon2
         );
@@ -415,39 +414,30 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         var buttonsRow = selectedModPanel.AddPanel(new Info("ButtonRow")
         {
-            Height = ModPanelHeight,
-            FlexWidth = 1
+            Height = ModPanelHeight, FlexWidth = 1
         });
 
         selectedModIcon = buttonsRow.AddImage(
             new Info("ModIcon", ModIconSize / 2f, 0, ModIconSize, ModIconSize, new Vector2(0, 0.5f)),
             GetSprite<MelonMain>("Icon"));
 
-        selectedModDisableButton = buttonsRow.AddButton(
+
+        var middleButtons = buttonsRow.AddPanel(new Info("MiddleButtons", Info.Preset.FillParent), null,
+            RectTransform.Axis.Horizontal, Padding);
+        middleButtons.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
+        selectedModDisableButton = middleButtons.AddButton(
             new Info("DisableButton", ModPanelHeight * ModHelperButton.LongBtnRatio, ModPanelHeight),
-            VanillaSprites.RedBtnLong, new Action(() => { }));
-
+            VanillaSprites.RedBtnLong, new Action(DisableSelectedMod));
         selectedModDisableButton.AddText(new Info("ButtonText", Info.Preset.FillParent), "Disable", FontLarge);
-        selectedModDisableButton.Button.SetOnClick(() =>
-        {
-            selectedMod.MoveToDisabledModsFolder();
-            SetSelectedMod(selectedMod);
-            SortMods(currentSort);
-            MenuManager.instance.buttonClickSound.Play("ClickSounds");
-        });
 
-        selectedModEnableButton = buttonsRow.AddButton(
+        selectedModDeleteButton = middleButtons.AddButton(new Info("Delete", ModPanelHeight), VanillaSprites.CloseBtn,
+            new Action(DeleteSelectedMod));
+
+        selectedModEnableButton = middleButtons.AddButton(
             new Info("EnabledButton", height: ModPanelHeight, width: ModPanelHeight * ModHelperButton.LongBtnRatio),
-            VanillaSprites.GreenBtnLong, new Action(() => { })
+            VanillaSprites.GreenBtnLong, new Action(EnableSelectedMod)
         );
         selectedModEnableButton.AddText(new Info("ButtonText", Info.Preset.FillParent), "Enable", FontLarge);
-        selectedModEnableButton.Button.SetOnClick(() =>
-        {
-            selectedMod.MoveToEnabledModsFolder();
-            SetSelectedMod(selectedMod);
-            SortMods(currentSort);
-            MenuManager.instance.buttonClickSound.Play("ClickSounds");
-        });
 
         selectedModSettingsButton = buttonsRow.AddButton(
             new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
@@ -455,5 +445,50 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModSettingsButton.AddImage(
             new Info("Gear", width: ModNameHeight, height: ModNameHeight), VanillaSprites.SettingsIcon
         );
+    }
+
+    private static void DeleteSelectedMod()
+    {
+        PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm",
+            "Are you sure you want to delete this mod? This action cannot be undone.", new Action(() =>
+            {
+                if (selectedMod.Delete())
+                {
+                    modPanels[selectedMod].gameObject.Destroy();
+                    modPanels.Remove(selectedMod);
+                    SetSelectedMod(ModHelper.Main.GetModHelperData());
+                    SortMods(currentSort);
+                    MenuManager.instance.buttonClickSound.Play("ClickSounds");
+                }
+            }), "Yes", null, "No", Popup.TransitionAnim.Scale);
+    }
+
+    private static void DisableSelectedMod()
+    {
+        if (selectedMod.MoveToDisabledModsFolder())
+        {
+            SetSelectedMod(selectedMod);
+            SortMods(currentSort);
+            MenuManager.instance.buttonClickSound.Play("ClickSounds");
+            if (selectedMod.Mod is MelonMain)
+            {
+                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
+                    "Disabling Mod Helper will mean you will no longer see this mods menu. " +
+                    "You would have to manually re-enable this / any other mods by dragging their .dll files" +
+                    $"out of the Disabled folder within your mods directory.", null, "Ok",
+                    new Action(EnableSelectedMod),
+                    "Re-enable", Popup.TransitionAnim.Scale);
+            }
+        }
+    }
+
+    private static void EnableSelectedMod()
+    {
+        if (selectedMod.MoveToEnabledModsFolder())
+        {
+            SetSelectedMod(selectedMod);
+            SortMods(currentSort);
+            MenuManager.instance.buttonClickSound.Play("ClickSounds");
+        }
     }
 }

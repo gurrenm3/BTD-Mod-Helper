@@ -73,7 +73,7 @@ public partial class ModHelperComponent
 
     /// <inheritdoc cref="ModHelperText.Create"/>
     public ModHelperText AddText(Info info, string text, float fontSize) =>
-        AddText(info, text, fontSize, TextAlignmentOptions.Center);
+        AddText(info, text, fontSize, DefaultTextAlignment);
 
     /// <inheritdoc cref="ModHelperText.Create"/>
     public ModHelperText AddText(Info info, string text, float fontSize, TextAlignmentOptions align) =>

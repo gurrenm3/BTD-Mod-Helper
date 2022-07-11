@@ -16,11 +16,14 @@ public static class ModHelper
 {
     #region ModHelperData for the Mod Helper
 
-    internal const string Version = "3.0.0";
+    internal const string Name = "BloonsTD6 Mod Helper";
+    internal const string Version = "2.9.9";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
-    internal const bool ManualDownload = true;
-    internal const string Description = "The mod that is allowing you to see this screen right now :P";
+    internal const string Description = "The mod that is allowing all this to happen right now :P";
+    internal const string ZipName = "BloonsTD6 Mod Helper.zip";
+    internal const string DllName = "Btd6ModHelper.dll";
+    internal const string Author = "Gurrenm4 and Doombubbles";
 
     #endregion
 
