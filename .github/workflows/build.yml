@@ -9,7 +9,7 @@ on:
     branches: [ "3.0_Features" ]
 
 env:
-  PROJECT_NAME: BtdModHelper
+  PROJECT_NAME: Btd6ModHelper
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
   MELONLOADER_BRANCH: alpha-development
