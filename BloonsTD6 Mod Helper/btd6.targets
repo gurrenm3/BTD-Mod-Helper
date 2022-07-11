@@ -6,9 +6,6 @@
         <OutputFolder>$(BloonsTD6)\Mods</OutputFolder>
     </PropertyGroup>
 
-    <!--For continuous integration github actions-->
-    <Import Condition="(Exists('$(ManagedFolder)\btd6_ci.targets') And '$(OS)' != 'Windows_NT')" Project="$(ManagedFolder)\btd6_ci.targets" />
-
     <!--References to MelonLoader dependencies-->
     <ItemGroup>
         <Reference Include="$(BloonsTD6)\MelonLoader\MelonLoader.dll"/>
@@ -68,7 +65,7 @@
 
     <!--Post build events to copy dll/xml to mods folder-->
     <Target Name="MoveDllToMods" AfterTargets="Build" Condition="Exists('$(TargetDir)$(TargetName).dll')">
-        <Message Text="Copying $(ProjectName).dll to Mods Folder... $(OS)" Importance="High"/>
+        <Message Text="Copying $(ProjectName).dll to Mods Folder..." Importance="High"/>
         <Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFiles="$(OutputFolder)\$(ProjectName).dll"/>
     </Target>
     <Target Name="MoveXmlToMods" AfterTargets="Build" Condition="Exists('$(TargetDir)$(ProjectName).xml')">

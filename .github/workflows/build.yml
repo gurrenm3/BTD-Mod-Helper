@@ -10,12 +10,13 @@ on:
 
 env:
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
-  MELONLOADER_ZIP: MelonLoader.x64.CI.Release.zip
+  MELONLOADER_ARTIFACT: MelonLoader.x64.CI.Release
+  BLOONSTD6: ./BloonsTD6
 
 jobs:
   build:
     
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Clone Repo
@@ -24,33 +25,28 @@ jobs:
       - name: Download MelonLoader
         uses: dawidd6/action-download-artifact@v2
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow: build.yml
-          run_id: 2646345818 # https://github.com/LavaGang/MelonLoader/actions/runs/2646345818
-          name: $MELONLOADER_ZIP
-          repo: LavaGang
-      
-      - name: Extract MelonLoader
-        uses: montudor/action-zip@v1
-        with: 
-          args: unzip -qq $MELONLOADER_ZIP -d ./BloonsTD6/
-
+          run_id: 2646562782
+          name: ${{ env.MELONLOADER_ARTIFACT }}
+          repo: LavaGang/MelonLoader
+          path: ${{ env.BLOONSTD6 }}
+  
       - name: Clone Dependencies Repo
         uses: actions/checkout@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: doombubbles/btd6-ci-dependencies
           ref: main
-          path: BloonsTD6/MelonLoader/Managed
+          path: ${{ env.BLOONSTD6 }}/MelonLoader/Managed
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x # net6 can still build older as well
 
-      - name: Restore dependencies
-        run: dotnet restore
-
       - name: Build
-        run: dotnet build --no-restore -c BTD6_Release "$env:CSPROJ"
+        run: dotnet build -c BTD6_Release "${{ env.CSPROJ }}" -p:BloonsTD6="../BloonsTD6"
 
       - name: Upload Mod DLL
         uses: actions/upload-artifact@v2.2.4
@@ -59,7 +55,7 @@ jobs:
           name: Mod DLL
           # A file, directory or wildcard pattern that describes what to upload
           path: ./Output/BtdModHelper.dll
-
+      
       - name: Upload Mod Documentation
         uses: actions/upload-artifact@v2.2.4
         with:
