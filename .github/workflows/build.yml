@@ -9,9 +9,10 @@ on:
     branches: [ "3.0_Features" ]
 
 env:
+  PROJECT_NAME: BtdModHelper
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
-  MELONLOADER_ARTIFACT: MelonLoader.x64.CI.Release
   BLOONSTD6: ./BloonsTD6
+  MELONLOADER_BRANCH: alpha-development
 
 jobs:
   build:
@@ -22,15 +23,34 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@master
         
-      - name: Download MelonLoader
+        
+      - name: Download Latest MelonLoader
+        if: env.MELONLOADER_BRANCH == ''
+        uses: robinraju/release-downloader@v1.4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: LavaGang/MelonLoader
+          fileName: MelonLoader.x64.zip
+          tarBall: false
+          zipBall: false
+          latest: true
+      - name: Extract Latest MelonLoader
+        if: env.MELONLOADER_BRANCH == ''
+        shell: bash
+        run: unzip MelonLoader.x64.zip -d ${{ env.BLOONSTD6 }}
+
+
+      - name: Download Specific MelonLoader
+        if: env.MELONLOADER_BRANCH != ''
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow: build.yml
-          run_id: 2646562782
-          name: ${{ env.MELONLOADER_ARTIFACT }}
+          branch: ${{ env.MELONLOADER_BRANCH }}
+          name: MelonLoader.x64.CI.Release
           repo: LavaGang/MelonLoader
           path: ${{ env.BLOONSTD6 }}
+  
   
       - name: Clone Dependencies Repo
         uses: actions/checkout@master
@@ -40,13 +60,16 @@ jobs:
           ref: main
           path: ${{ env.BLOONSTD6 }}/MelonLoader/Managed
 
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x # net6 can still build older as well
 
+
       - name: Build
         run: dotnet build -c BTD6_Release "${{ env.CSPROJ }}" -p:BloonsTD6="../BloonsTD6"
+
 
       - name: Upload Mod DLL
         uses: actions/upload-artifact@v2.2.4
@@ -54,7 +77,8 @@ jobs:
           # Artifact name
           name: BtdModHelper.dll
           # A file, directory or wildcard pattern that describes what to upload
-          path: ${{ env.BLOONSTD6 }}/Mods/BtdModHelper.dll
+          path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
+      
       
       - name: Upload Mod Documentation
         uses: actions/upload-artifact@v2.2.4
@@ -62,4 +86,15 @@ jobs:
           # Artifact name
           name: BtdModHelper.xml
           # A file, directory or wildcard pattern that describes what to upload
-          path: ${{ env.BLOONSTD6 }}/Mods/BtdModHelper.xml
+          path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
+          
+          
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
+            ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
+          body_path: ./BloonsTD6 Mod Helper/LATEST.md
+          fail_on_unmatched_files: true
