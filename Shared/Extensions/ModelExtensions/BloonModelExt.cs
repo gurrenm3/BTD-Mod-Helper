@@ -473,7 +473,7 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             if (!string.IsNullOrEmpty(growModel?.growToId))
             {
-                var newBloon = Game.instance.model.GetBloon(growModel.growToId).FindChangedBloonId(effect);
+                var newBloon = Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect);
                 if (newBloon != null)
                 {
                     growModel.growToId = newBloon;

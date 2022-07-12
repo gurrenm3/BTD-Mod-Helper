@@ -135,7 +135,7 @@ internal static class ModHelperGithub
                 try
                 {
                     var asset = mod.SubPath == null
-                        ? latestRelease.Assets.FirstOrDefault(asset =>
+                        ? latestRelease!.Assets.FirstOrDefault(asset =>
                               asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
                           latestRelease.Assets[0]
                         : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,

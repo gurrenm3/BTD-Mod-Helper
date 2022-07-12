@@ -120,7 +120,7 @@ public partial class ModHelperComponent : MonoBehaviour
             AddComponent<LayoutElement>();
         }
 
-        LayoutElement.minWidth = LayoutElement.preferredWidth = initialInfo.SizeDelta.x;
+        LayoutElement!.minWidth = LayoutElement.preferredWidth = initialInfo.SizeDelta.x;
         LayoutElement.minHeight = LayoutElement.preferredHeight = initialInfo.SizeDelta.y;
         LayoutElement.flexibleWidth = initialInfo.FlexWidth;
         LayoutElement.flexibleHeight = initialInfo.FlexHeight;

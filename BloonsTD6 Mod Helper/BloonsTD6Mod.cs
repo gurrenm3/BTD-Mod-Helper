@@ -23,6 +23,7 @@ using Assets.Scripts.Models.Map;
 using Assets.Scripts.Unity.Audio;
 using Assets.Scripts.Utils;
 using UnityEngine.UI;
+using BTD_Mod_Helper.Api.Coop;
 
 namespace BTD_Mod_Helper;
 
@@ -43,16 +44,63 @@ public abstract class BloonsTD6Mod : BloonsMod
         Game.instance.model.AddTowerToGame(newTowerModel, towerDetailsModel!);
     }
 
+    #region Networking Hooks
 
-    #region Misc Hooks
+    /// <summary>
+    /// Executed once the user has connected to a game session.
+    /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
+    /// </summary>
+    /// <param name="nkGi">The interface used to interact with the game.</param>
+    public virtual void OnConnected(NKMultiGameInterface nkGi)
+    {
+    }
+
+    /// <summary>
+    /// Executed once the user has tried to connect to a server, but failed to do so.
+    /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
+    /// </summary>
+    /// <param name="nkGi">The interface used to interact with the game.</param>
+    public virtual void OnConnectFail(NKMultiGameInterface nkGi)
+    {
+    }
+
+    /// <summary>
+    /// Executed once the player has disconnected from a server.
+    /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
+    /// </summary>
+    /// <param name="nkGi">The interface used to interact with the game.</param>
+    public virtual void OnDisconnected(NKMultiGameInterface nkGi)
+    {
+    }
+
+    /// <summary>
+    /// Executed when a new client has joined the game session.
+    /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
+    /// </summary>
+    /// <param name="nkGi">The interface used to interact with the game.</param>
+    /// <param name="peerId">Index of the peer in question.</param>
+    public virtual void OnPeerConnected(NKMultiGameInterface nkGi, int peerId)
+    {
+    }
+
+    /// <summary>
+    /// Executed when a new client has left the game session.
+    /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
+    /// </summary>
+    /// <param name="nkGi">The interface used to interact with the game.</param>
+    /// <param name="peerId">Index of the peer in question.</param>
+    public virtual void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId)
+    {
+    }
 
     /// <summary>
     /// Acts on a Network message that's been sent to the client
     /// <br/>
-    /// Use Game.instance.GetNKgI().ReadMessage&lt;YOUR_CLASS_NAME&gt;(message) to get back the same object/class you sent.
+    /// Use <see cref="MessageUtils.ReadMessage{T}(Message)"/> to read back the message you sent.
     /// <br/>
     /// If this is one of your messages and you're consuming and acting on it, return true.
     /// Otherwise, return false. Seriously.
+    /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
     /// </summary>
     public virtual bool ActOnMessage(Message message)
     {
@@ -140,7 +188,8 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
     /// </summary>
-    public virtual void OnModelLoaded(Factory factory,string ModelToLoad,Il2CppSystem.Action<UnityDisplayNode>action){
+    public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Il2CppSystem.Action<UnityDisplayNode> action)
+    {
     }
 
     /// <summary>
@@ -148,7 +197,8 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on AudioFactory_Start
     /// </summary>
-    public virtual void OnAudioFactoryStart(AudioFactory audioFactory){    
+    public virtual void OnAudioFactoryStart(AudioFactory audioFactory)
+    {
     }
 
     /// <summary>
@@ -156,8 +206,10 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on ResourceLoader_LoadSpriteFromSpriteReferenceAsync
     /// </summary>
-    public virtual void OnSpriteLoad(SpriteReference spriteref,Image image){
+    public virtual void OnSpriteLoad(SpriteReference spriteref, Image image)
+    {
     }
+
     #endregion
 
     #region Menu Hooks

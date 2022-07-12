@@ -14,6 +14,21 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class InGameExt
 {
     /// <summary>
+    /// Returns true if the initial co-op handshake has finished and user has co-op game details.
+    /// </summary>
+    /// <param name="inGame">The game.</param>
+    public static bool IsCoOpReady(this InGame inGame)
+    {
+        if (inGame == null)
+            return false;
+
+        if (!inGame.IsCoop)
+            return false;
+
+        return inGame.coopGame != null;
+    }
+
+    /// <summary>
     /// Custom API method that changes the game's round set to a custom RoundSetModel.
     /// </summary>
     /// <param name="inGame"></param>
