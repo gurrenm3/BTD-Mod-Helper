@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -93,12 +94,11 @@ internal partial class ModHelperData
         FilePath = mod.MelonAssembly.Assembly.Location;
         DllName = FilePath.Split('\\').Last();
 
-        var data = mod.MelonAssembly.Assembly.GetValidTypes()
-            .FirstOrDefault(type => type.Name == nameof(ModHelperData));
-        if (mod is MelonMain)
-        {
-            data = typeof(ModHelper);
-        }
+        var data = mod is MelonMain
+            ? typeof(ModHelper)
+            : mod.MelonAssembly.Assembly
+                .GetValidTypes()
+                .FirstOrDefault(type => type.Name == nameof(ModHelperData));
 
         if (data != null)
         {
@@ -116,6 +116,14 @@ internal partial class ModHelperData
                     ModHelper.Warning(
                         $"The {fieldInfo.Name} of {mod.Info.Name}'s ModHelperData has incorrect type {rawConstantValue.GetType().Name}");
                 }
+            }
+        }
+        else if (mod.MelonAssembly.Assembly.TryGetEmbeddedResource("ModHelperData.json", out var stream))
+        {
+            using (stream)
+            using (var reader = new StreamReader(stream, Encoding.UTF8))
+            {
+                ReadValuesFromJson(reader.ReadToEnd());
             }
         }
 

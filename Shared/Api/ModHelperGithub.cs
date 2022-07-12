@@ -4,10 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
+using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json;
 using Octokit;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api;
 
@@ -170,9 +174,21 @@ internal static class ModHelperGithub
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
                 $"Do you want to download\n{mod.DisplayName} v{mod.RepoVersion}?",
                 mod.SubPath == null
-                    ? $"Latest Release Message:\n\"{latestRelease.Body}\""
-                    : $"Latest Commit Message:\n\"{latestCommit.Commit.Message}\"",
+                    ? $"Latest Release Message:\n\"{latestRelease!.Body}\""
+                    : $"Latest Commit Message:\n\"{latestCommit!.Commit.Message}\"",
                 action, "Yes", null, "No", Popup.TransitionAnim.Scale);
+
+            PopupScreen.instance.ModifyBodyText(field =>
+            {
+                var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
+                    Info.Preset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
+                scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
+
+                var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
+                newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
+
+                field.Destroy();
+            });
 #elif BloonsAT
                 throw new NotImplementedException(); // need to figure out how to do popups in BloonsAT
 #endif
