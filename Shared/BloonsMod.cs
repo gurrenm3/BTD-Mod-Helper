@@ -51,6 +51,8 @@ public abstract partial class BloonsMod : MelonMod, IModContent
         }
     }
 
+    internal static readonly HashSet<Type> GotModTooSoon = new();
+
     /// <summary>
     /// Github API URL used to check if this mod is up to date.
     ///
@@ -149,9 +151,19 @@ public abstract partial class BloonsMod : MelonMod, IModContent
                     if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
                     {
                         ModHelper.FallbackToOldLoading = true;
+                        ModHelper.Msg("Falling back to old loading method");
                     }
                 }
             });
+        }
+
+        if (GotModTooSoon.Contains(GetType()))
+        {
+            // Happens when trying to get a custom embedded resource during the static constructor phase
+            if (IDPrefix != MelonAssembly.Assembly.GetName().Name + "-")
+            {
+                LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
+            }
         }
 
         OnApplicationStart();

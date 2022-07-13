@@ -138,7 +138,7 @@ public abstract partial class ModTower
                 break;
             case ParagonMode.None:
             default:
-                return null!;
+                return null;
         }
 
         towerModel.appliedUpgrades = new Il2CppStringArray(6);

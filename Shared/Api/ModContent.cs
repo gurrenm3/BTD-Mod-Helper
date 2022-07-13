@@ -77,7 +77,7 @@ namespace BTD_Mod_Helper.Api
         }
 
 
-        internal Stack<Action> rollbackActions = new();
+        internal readonly Stack<Action> rollbackActions = new();
 
         private const BindingFlags ConstructorFlags = BindingFlags.Instance |
                                                       BindingFlags.Public |
@@ -264,7 +264,13 @@ namespace BTD_Mod_Helper.Api
         public static string GetTextureGUID<T>(string name) where T : BloonsMod
         {
             var mod = GetInstance<T>();
-            return mod != null ? GetTextureGUID(mod, name) : typeof(T).Assembly.GetName().Name + "-" + name;
+            if (mod == null)
+            {
+                BloonsMod.GotModTooSoon.Add(typeof(T));
+                return typeof(T).Assembly.GetName().Name + "-" + name;
+            }
+
+            return GetTextureGUID(mod, name);
         }
 
         /// <summary>
@@ -410,16 +416,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <typeparam name="T">The type to get the instance of</typeparam>
         /// <returns>The singleton instance of it</returns>
-        public static T GetInstance<T>() where T : IModContent
-        {
-            var instance = ModContentInstance<T>.Instance;
-            if (instance == null && typeof(MelonMod).IsAssignableFrom(typeof(T)))
-            {
-                instance = ModHelper.Mods.OfType<T>().FirstOrDefault();
-            }
-
-            return instance!;
-        }
+        public static T GetInstance<T>() where T : IModContent => ModContentInstance<T>.Instance;
 
         /// <summary>
         /// (Cross-Game compatible) Gets the official instance of a particular ModContent or BloonsMod based on its type

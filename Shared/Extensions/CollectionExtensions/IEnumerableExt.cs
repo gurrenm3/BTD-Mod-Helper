@@ -67,9 +67,9 @@ public static class IEnumerableExt
     public static IEnumerable<TCast> CastAll<TSource, TCast>(this IEnumerable<TSource> list)
         where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
     {
-        return list.Select(m =>
+        return list?.Select(m =>
         {
-            if (m is null) return null!;
+            if (m is null) return null;
 
             var tryCast = m.TryCast<TCast>();
             if (tryCast == null)

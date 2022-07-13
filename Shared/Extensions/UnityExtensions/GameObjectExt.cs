@@ -136,7 +136,7 @@ public static class GameObjectExt
         if (gameObject == null)
         {
             ModHelper.Warning("Tried to duplicate a null Unity Object");
-            return null!;
+            return null;
         }
 
         return Object.Instantiate(gameObject);
@@ -150,7 +150,7 @@ public static class GameObjectExt
         if (gameObject == null)
         {
             ModHelper.Warning("Tried to duplicate a null Unity Object");
-            return null!;
+            return null;
         }
 
         return Object.Instantiate(gameObject, parent);

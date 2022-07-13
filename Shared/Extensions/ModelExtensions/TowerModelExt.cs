@@ -124,7 +124,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             var attackModels = towerModel.GetAttackModels();
             if (attackModels is null)
-                return null!;
+                return null;
 
             if (!attackModels.Any())
                 return new List<WeaponModel>();

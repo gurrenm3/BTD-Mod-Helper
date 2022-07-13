@@ -70,7 +70,7 @@ internal static class ModHelperGithub
 
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
 
-        Mods = mods.Where(mod => mod.RepoDataSuccess).ToList();
+        Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
 
         UpdateRateLimit();
     }
@@ -243,12 +243,12 @@ internal static class ModHelperGithub
                     break;
                 case ZipContentType:
                 case ZipContentType2:
-                    var zippedFiles = await ModHelperHttp.DownloadZip(releaseAsset.BrowserDownloadUrl);
-                    if (zippedFiles != null)
+                    var directoryInfo = await ModHelperHttp.DownloadZip(releaseAsset.BrowserDownloadUrl);
+                    if (directoryInfo != null)
                     {
                         try
                         {
-                            var dll = zippedFiles.FirstOrDefault(s => s.EndsWith(".dll"));
+                            var dll = directoryInfo.GetFiles().First(s => s.Extension == "dll").FullName;
                             File.Copy(dll, downloadFilePath);
                             success = true;
                         }

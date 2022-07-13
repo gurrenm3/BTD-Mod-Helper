@@ -61,29 +61,46 @@ public class ModHelperHttp
 
 
     /// <summary>
+    /// Downloads a zip file directly into a zip archive
+    /// </summary>
+    /// <param name="url"></param>
+    /// <returns></returns>
+    public static async Task<ZipArchive> GetZip(string url)
+    {
+        var response = await Client.GetAsync(url);
+        var stream = await response.Content.ReadAsStreamAsync();
+        return new ZipArchive(stream);
+    }
+
+
+    /// <summary>
     /// Downloads and extracts the contents of a zip file into the Zip Temp directory, returning the file paths
     /// of the extracted files
     /// </summary>
     /// <param name="url">URL to download from</param>
+    /// <param name="path">Path to unzip into, or null for using the zip temp directory</param>
     /// <returns>Enumeration of extracted file paths, or null</returns>
-    public static async Task<IEnumerable<string>> DownloadZip(string url)
+    public static async Task<DirectoryInfo> DownloadZip(string url, string path = null)
     {
         try
         {
-            var zipTempDir = ModHelper.ZipTempDirectory;
-            if (Directory.Exists(zipTempDir))
+            if (path == null)
             {
-                Directory.Delete(zipTempDir, true);
+                var zipTempDir = ModHelper.ZipTempDirectory;
+                if (Directory.Exists(zipTempDir))
+                {
+                    Directory.Delete(zipTempDir, true);
+                }
+
+                path = zipTempDir;
             }
 
-            Directory.CreateDirectory(zipTempDir);
+            Directory.CreateDirectory(path);
 
-            var response = await Client.GetAsync(url);
-            using var stream = await response.Content.ReadAsStreamAsync();
-            using var zip = new ZipArchive(stream);
-            zip.ExtractToDirectory(zipTempDir);
+            using var zip = await GetZip(url);
+            zip.ExtractToDirectory(path);
 
-            return Directory.EnumerateFiles(zipTempDir);
+            return new DirectoryInfo(path);
         }
         catch (Exception e)
         {

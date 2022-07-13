@@ -73,7 +73,7 @@ namespace BTD_Mod_Helper.Extensions
 
             ModHelper.Warning($"Type {model.GetIl2CppType().Name} does not have behaviors");
 
-            return null!;
+            return null;
         }
 
         /// <summary>

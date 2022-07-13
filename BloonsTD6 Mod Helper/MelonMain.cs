@@ -53,15 +53,19 @@ internal class MelonMain : BloonsTD6Mod
         // Load Content from other mods
         ModHelper.LoadAllMods();
 
+        // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
 
         try
         {
+            // Create the targets file for mod sources
             CreateTargetsFile(ModSourcesFolder);
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            // ignored
+            ModHelper.Warning("Could not create .targets file in Mod Sources. " +
+                              "If you have no intention of making mods, you can ignore this.");
+            ModHelper.Warning(e);
         }
     }
 
@@ -141,7 +145,7 @@ internal class MelonMain : BloonsTD6Mod
 
     public static readonly ModSettingFolder ModSourcesFolder =
         new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "BTD6 Mods"))
+            "BTD6 Mods Sources"))
         {
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",
