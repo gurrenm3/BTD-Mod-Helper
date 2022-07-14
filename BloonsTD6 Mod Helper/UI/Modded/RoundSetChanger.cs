@@ -21,7 +21,7 @@ internal static class RoundSetChanger
     };
 
     private const float AnimatorSpeed = .75f;
-    private const int AnimationTicks = (int) (20 / AnimatorSpeed);
+    private const int AnimationTicks = (int) (10 / AnimatorSpeed);
 
     private static ModHelperPanel buttonPanel;
     private static ModHelperScrollPanel optionsPanel;
@@ -74,7 +74,7 @@ internal static class RoundSetChanger
         );
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.Empty, "Default", VanillaSprites.WoodenRoundButton)
+            CreateRoundSetButton(RoundSetType.Empty, "No Change", VanillaSprites.WoodenRoundButton)
         );
 
 

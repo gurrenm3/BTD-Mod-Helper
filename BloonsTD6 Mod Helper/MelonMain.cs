@@ -59,7 +59,7 @@ internal class MelonMain : BloonsTD6Mod
         try
         {
             // Create the targets file for mod sources
-            CreateTargetsFile(ModSourcesFolder);
+            ModHelperFiles.CreateTargetsFile(ModSourcesFolder);
         }
         catch (Exception e)
         {
@@ -73,7 +73,7 @@ internal class MelonMain : BloonsTD6Mod
     {
         collapsed = false
     };
-    
+
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
         description =
@@ -109,7 +109,7 @@ internal class MelonMain : BloonsTD6Mod
         requiresRestart = true
     };
 
-    private static readonly ModSettingBool AutoHideModdedClientPopup = new (false)
+    private static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already."
@@ -150,7 +150,7 @@ internal class MelonMain : BloonsTD6Mod
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",
             customValidation = Directory.Exists,
-            onSave = CreateTargetsFile
+            onSave = ModHelperFiles.CreateTargetsFile
         };
 
     private static bool afterTitleScreen;
@@ -174,31 +174,6 @@ internal class MelonMain : BloonsTD6Mod
         RoundSetChanger.EnsureHidden();
     }
 
-    public static void CreateTargetsFile(string path)
-    {
-        if (!Directory.Exists(path))
-        {
-            try
-            {
-                Directory.CreateDirectory(path);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-        }
-
-        var targets = Path.Combine(path, "btd6.targets");
-        using var fs = new StreamWriter(targets);
-        using var stream =
-            ModHelper.MainAssembly.GetManifestResourceStream("BTD_Mod_Helper.btd6.targets");
-        using var reader = new StreamReader(stream!);
-        var text = reader.ReadToEnd().Replace(
-            @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",
-            MelonUtils.GameDirectory);
-        fs.Write(text);
-    }
-
     public override void OnTitleScreen()
     {
         ModSettingsHandler.SaveModSettings(true);
@@ -212,6 +187,7 @@ internal class MelonMain : BloonsTD6Mod
         foreach (var gameMode in Game.instance.model.mods)
         {
             if (gameMode.mutatorMods == null) continue;
+
             foreach (var mutatorMod in gameMode.mutatorMods)
             {
                 var typeName = mutatorMod.GetIl2CppType().Name;
