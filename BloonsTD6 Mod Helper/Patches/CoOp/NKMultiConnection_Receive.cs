@@ -12,7 +12,8 @@ internal class NKMultiConnection_Receive
         if (messageQueue == null || messageQueue.Count == 0)
             return;
             
-        for (var i = 0; i < messageQueue.Count; i++)
+        var messageCount = messageQueue.Count;
+            for (var i = 0; i < messageCount; i++)
         {
             var message = messageQueue.Dequeue();
             var consumed = false;

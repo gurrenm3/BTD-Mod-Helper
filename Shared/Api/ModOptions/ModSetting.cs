@@ -18,18 +18,18 @@ public abstract class ModSetting<T> : ModSetting
     /// <summary>
     /// Action to call when the value changes within the menu
     /// </summary>
-    public Action<T>? onValueChanged;
+    public Action<T> onValueChanged;
 
     /// <summary>
     /// Action to call when the value is saved, i.e. once they actually close the menu
     /// </summary>
-    public Action<T>? onSave;
+    public Action<T> onSave;
 
 
     /// <summary>
     /// Will only save the result and run onSave if this custom function validates the value
     /// </summary>
-    public Func<T, bool>? customValidation;
+    public Func<T, bool> customValidation;
 
 
     /// <summary>
@@ -131,34 +131,34 @@ public abstract class ModSetting
     /// <summary>
     /// The exact name displayed for this mod setting. If unset, will use the variable name.
     /// </summary>
-    public string? displayName;
+    public string displayName;
 
     /// <summary>
     /// The description / explanation of this mod setting
     /// </summary>
-    public string? description;
+    public string description;
 
     /// <summary>
     /// Icon to display alongside the setting
     /// </summary>
-    public SpriteReference? icon;
+    public SpriteReference icon;
 
     /// <summary>
     /// Action to modify the ModHelperOption after it's created
     /// </summary>
-    public Action<ModHelperOption>? modifyOption;
+    public Action<ModHelperOption> modifyOption;
 
     /// <summary>
     /// The category that this is part of, or null
     /// </summary>
-    public ModSettingCategory? category;
+    public ModSettingCategory category;
 
     /// <summary>
     /// Indicates to players that the effects of changing this setting will only take place after a restart
     /// </summary>
     public bool requiresRestart;
 
-    internal ModHelperOption? currentOption;
+    internal ModHelperOption currentOption;
     internal bool needsRestartRightNow;
 
     /// <summary>

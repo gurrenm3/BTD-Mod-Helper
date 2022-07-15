@@ -175,7 +175,7 @@ public static partial class ArrayExt
     /// <typeparam name="TCast">The Type of the Item you want</typeparam>
     /// <param name="array"></param>
     /// <returns></returns>
-    public static TCast? GetItemOfType<TSource, TCast>(this TSource[] array) where TCast : Il2CppSystem.Object
+    public static TCast GetItemOfType<TSource, TCast>(this TSource[] array) where TCast : Il2CppSystem.Object
         where TSource : Il2CppSystem.Object
     {
         if (!HasItemsOfType<TSource, TCast>(array))

@@ -22,10 +22,10 @@ public abstract partial class ModTower : NamedModContent
     internal virtual string[] DefaultMods =>
         new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
 
-    internal List<TowerModel> towerModels = null!;
+    internal List<TowerModel> towerModels;
     internal readonly int[] tierMaxes;
     internal readonly List<ModTowerDisplay> displays = new();
-    internal virtual ModTowerSet? ModTowerSet => null;
+    internal virtual ModTowerSet ModTowerSet => null;
     internal virtual int UpgradePaths => 3;
 
     /// <summary>

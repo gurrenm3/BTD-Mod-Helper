@@ -34,7 +34,7 @@ public static class ModModelExt
     /// (Cross-Game compatible) Return the first Mutator of type T, or null if there isn't one
     /// </summary>
     /// <typeparam name="T">The Mutator you want</typeparam>
-    public static T? GetMutator<T>(this ModModel model) where T : MutatorModModel
+    public static T GetMutator<T>(this ModModel model) where T : MutatorModModel
     {
         return model.GetMutators<T>()?.FirstOrDefault();
     }
@@ -44,7 +44,7 @@ public static class ModModelExt
     /// (Cross-Game compatible) Return the index'th Mutator of type T, or null
     /// </summary>
     /// <typeparam name="T">The Mutator you want</typeparam>
-    public static T? GetMutator<T>(this ModModel model, int index) where T : MutatorModModel
+    public static T GetMutator<T>(this ModModel model, int index) where T : MutatorModModel
     {
         return model.GetMutators<T>()?.Skip(index).FirstOrDefault();
     }
@@ -53,7 +53,7 @@ public static class ModModelExt
     /// (Cross-Game compatible) Return the first Mutator of type T whose name contains the given string, or null
     /// </summary>
     /// <typeparam name="T">The Mutator you want</typeparam>
-    public static T? GetMutator<T>(this ModModel model, string nameContains) where T : MutatorModModel
+    public static T GetMutator<T>(this ModModel model, string nameContains) where T : MutatorModModel
     {
         return model.GetMutators<T>()?.FirstOrDefault(m => m.name.Contains(nameContains));
     }

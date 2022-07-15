@@ -12,6 +12,8 @@ using BTD_Mod_Helper.Api;
 using NinjaKiwi.NKMulti;
 using NinjaKiwi.Players.Files.SaveStrategies;
 using System.Collections.Generic;
+using Assets.Scripts.Unity.UI_New.Coop;
+using NinjaKiwi.LiNK.Lobbies;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -21,6 +23,20 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static partial class GameExt
 {
+    /// <summary>
+    /// Returns the current lobby screen.
+    /// </summary>
+    public static CoopLobbyScreen GetCoopLobbyScreen(this Game game)
+    {
+        // ReSharper disable once Unity.NoNullPropagation
+        return game.GetMenuManager()?.currMenu?.Item2?.TryCast<CoopLobbyScreen>();
+    }
+
+    /// <summary>
+    /// Returns the current lobby connection.
+    /// </summary>
+    public static LobbyConnection GetCoopLobbyConnection(this Game game) => game.GetCoopLobbyScreen()?.lobbyConnection;
+
     /// <summary>
     /// Returns the directory where the Player's Profile.save file is located.
     /// Not set until after reaching the Main Menu for the first time
@@ -84,7 +100,7 @@ public static partial class GameExt
     /// </summary>
     /// <param name="game"></param>
     /// <returns></returns>
-    public static NKMultiGameInterface? GetNkGI(this Game game)
+    public static NKMultiGameInterface GetNkGI(this Game game)
     {
         return SessionData.Instance.NkGI;
     }
@@ -92,7 +108,7 @@ public static partial class GameExt
     /// <summary>
     /// Get the Unity Display Factory that manages on screen sprites. This Factory is different from other Factories in the game
     /// </summary>
-    public static Assets.Scripts.Unity.Display.Factory? GetDisplayFactory(this Game game)
+    public static Assets.Scripts.Unity.Display.Factory GetDisplayFactory(this Game game)
     {
         return game.scene?.factory;
     }
@@ -164,7 +180,7 @@ public static partial class GameExt
     /// <summary>
     /// Get the Btd6Player data for the player. Contains different info than PlayerProfile
     /// </summary>
-    public static Btd6Player? GetBtd6Player(this Game game)
+    public static Btd6Player GetBtd6Player(this Game game)
     {
         return game.GetPlayerService()?.Player;
     }
@@ -172,7 +188,7 @@ public static partial class GameExt
     /// <summary>
     /// Get all TowerDetailModels
     /// </summary>
-    public static Il2CppReferenceArray<TowerDetailsModel>? GetTowerDetailModels(this Game game)
+    public static Il2CppReferenceArray<TowerDetailsModel> GetTowerDetailModels(this Game game)
     {
         return game.model?.towerSet;
     }
@@ -198,7 +214,7 @@ public static partial class GameExt
     /// </summary>
     public static double GetMonkeyMoney(this Game game)
     {
-        return game.GetPlayerProfile()!.monkeyMoney.Value;
+        return game.GetPlayerProfile().monkeyMoney.Value;
     }
 
     /// <summary>

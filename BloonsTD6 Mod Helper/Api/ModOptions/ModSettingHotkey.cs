@@ -14,7 +14,7 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 public class ModSettingHotkey : ModSetting<string>
 {
     private HotKey hotKey;
-    private HotkeysScreenField? currentField;
+    private HotkeysScreenField currentField;
 
     /// <inheritdoc />
     public ModSettingHotkey(KeyCode key, HotkeyModifier modifier = HotkeyModifier.None)
@@ -93,10 +93,7 @@ public class ModSettingHotkey : ModSetting<string>
         var buttonComponent = option.BottomRow.AddButton(
             new Info("Button", width: 562, height: 200), VanillaSprites.GreenBtnLong, null
         );
-        var text = buttonComponent.AddText(
-            new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one),
-            "", 69f
-        );
+        var text = buttonComponent.AddText(new Info("Text", Info.Preset.FillParent), "", 69f);
 
         var changedHighlight = option.AddPanel(new Info("ChangedHighlight"));
         changedHighlight.LayoutElement.ignoreLayout = true;

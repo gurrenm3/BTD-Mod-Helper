@@ -14,7 +14,7 @@ public static class UpgradeModelExt
     /// </summary>
     public static bool IsUpgradeUnlocked(this UpgradeModel upgradeModel)
     {
-        return Game.instance.GetBtd6Player()!.HasUpgrade(upgradeModel.name);
+        return Game.instance.GetBtd6Player().HasUpgrade(upgradeModel.name);
     }
 
     /// <summary>
@@ -23,7 +23,7 @@ public static class UpgradeModelExt
     /// If there is no associated ModUpgrade, returns null
     /// </summary>
     /// <returns></returns>
-    public static ModUpgrade? GetModUpgrade(this UpgradeModel upgradeModel)
+    public static ModUpgrade GetModUpgrade(this UpgradeModel upgradeModel)
     {
         return ModUpgrade.Cache.TryGetValue(upgradeModel.name, out var modUpgrade) ? modUpgrade : null;
     }

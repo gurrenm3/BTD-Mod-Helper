@@ -44,7 +44,7 @@ public static partial class SizedListExt
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T? FirstOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T FirstOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
     {
         for (var i = 0; i < source.Count; i++)
         {
@@ -138,9 +138,9 @@ public static partial class SizedListExt
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T? LastOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate)
+    public static T LastOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate)
     {
-        T? last = default;
+        T last = default;
         for (var i = 0; i < source.Count; i++)
         {
             var item = source[i];
@@ -168,7 +168,7 @@ public static partial class SizedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T? FirstOrDefault<T>(this SizedList<T> source)
+    public static T FirstOrDefault<T>(this SizedList<T> source)
     {
         return source[0] == null ? default : source[0];
     }

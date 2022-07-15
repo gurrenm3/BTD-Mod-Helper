@@ -28,9 +28,11 @@ public static partial class UnityDisplayNodeExt
     /// <param name="node">The UnityDisplayNode</param>
     /// <param name="recalculate">Whether to recalculate renderers</param>
     /// <typeparam name="T">The type of Renderer you're looking for</typeparam>
-    public static T? GetRenderer<T>(this UnityDisplayNode node, bool recalculate = true) where T : Renderer
+    public static T GetRenderer<T>(this UnityDisplayNode node, bool recalculate = true) where T : Renderer
     {
-        return node.GetRenderers<T>(recalculate).MinBy(renderer => renderer.name.StartsWith("FlatSkin") ? 0 : 1);
+        return node.GetRenderers<T>(recalculate)
+            .OrderBy(renderer => renderer.name.StartsWith("FlatSkin") ? 0 : 1)
+            .FirstOrDefault()!;
     }
 
     /// <summary>
@@ -121,10 +123,14 @@ public static partial class UnityDisplayNodeExt
             if (renderers.Count == 0)
                 return new List<Renderer>();
         }
-
-        if (recalculate && node.genericRenderers![0] == null)
+        else
         {
-            node.RecalculateGenericRenderers();
+            renderers = node.genericRenderers.ToList();
+
+            if (recalculate && renderers.Any(renderer => renderer == null))
+            {
+                node.RecalculateGenericRenderers();
+            }
         }
 #elif BloonsAT
             renderers = node.GetComponents<Renderer>().ToList();
@@ -200,7 +206,7 @@ public static partial class UnityDisplayNodeExt
     /// <param name="node">The UnityDisplayNode</param>
     /// <param name="index"></param>
     /// <param name="path">Optional path to save to instead</param>
-    public static void SaveMeshTexture(this UnityDisplayNode node, int index = 0, string? path = null)
+    public static void SaveMeshTexture(this UnityDisplayNode node, int index = 0, string path = null)
     {
         if (path == null)
         {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Assets.Scripts.Utils;
 using UnhollowerBaseLib;
 using UnhollowerBaseLib.Runtime;
@@ -26,7 +25,7 @@ public static partial class ArrayExt
     /// <summary>
     /// Version of TryCast without the generic restriction
     /// </summary>
-    private static bool TryCast<T>(Il2CppObjectBase obj, out T? t)
+    private static bool TryCast<T>(Il2CppObjectBase obj, out T t)
     {
         t = default;
         var nativeClassPtr = Il2CppClassPointerStore<T>.NativeClassPtr;
@@ -55,11 +54,11 @@ public static partial class ArrayExt
             type = typeof(T);
         }
 
-        t = (T?) Activator.CreateInstance(type, obj.Pointer);
+        t = (T) Activator.CreateInstance(type, obj.Pointer);
         return true;
     }
 
-    private static bool CheckType<T>(object obj, [NotNullWhen(true)] out T? t)
+    private static bool CheckType<T>(object obj, out T t)
     {
         switch (obj)
         {
@@ -78,7 +77,7 @@ public static partial class ArrayExt
     /// <summary>
     /// Checks if the parameter array has the given types
     /// </summary>
-    public static bool CheckTypes<T1>(this object[] parameters, out T1? param1)
+    public static bool CheckTypes<T1>(this object[] parameters, out T1 param1)
     {
         param1 = default;
         if (parameters.Length < 1)
@@ -92,7 +91,7 @@ public static partial class ArrayExt
     /// <summary>
     /// Checks if the parameter array has the given types
     /// </summary>
-    public static bool CheckTypes<T1, T2>(this object[] parameters, out T1? param1, out T2? param2)
+    public static bool CheckTypes<T1, T2>(this object[] parameters, out T1 param1, out T2 param2)
     {
         param1 = default;
         param2 = default;
@@ -109,7 +108,7 @@ public static partial class ArrayExt
     /// <summary>
     /// Checks if the parameter array has the given types
     /// </summary>
-    public static bool CheckTypes<T1, T2, T3>(this object[] parameters, out T1? param1, out T2? param2, out T3? param3)
+    public static bool CheckTypes<T1, T2, T3>(this object[] parameters, out T1 param1, out T2 param2, out T3 param3)
     {
         param1 = default;
         param2 = default;
@@ -127,8 +126,8 @@ public static partial class ArrayExt
     /// <summary>
     /// Checks if the parameter array has the given types
     /// </summary>
-    public static bool CheckTypes<T1, T2, T3, T4>(this object[] parameters, out T1? param1, out T2? param2,
-        out T3? param3, out T4? param4)
+    public static bool CheckTypes<T1, T2, T3, T4>(this object[] parameters, out T1 param1, out T2 param2,
+        out T3 param3, out T4 param4)
     {
         param1 = default;
         param2 = default;
@@ -147,8 +146,8 @@ public static partial class ArrayExt
     /// <summary>
     /// Checks if the parameter array has the given types
     /// </summary>
-    public static bool CheckTypes<T1, T2, T3, T4, T5>(this object[] parameters, out T1? param1, out T2? param2,
-        out T3? param3, out T4? param4, out T5? param5)
+    public static bool CheckTypes<T1, T2, T3, T4, T5>(this object[] parameters, out T1 param1, out T2 param2,
+        out T3 param3, out T4 param4, out T5 param5)
     {
         param1 = default;
         param2 = default;
@@ -168,8 +167,8 @@ public static partial class ArrayExt
     /// <summary>
     /// Checks if the parameter array has the given types
     /// </summary>
-    public static bool CheckTypes<T1, T2, T3, T4, T5, T6>(this object[] parameters, out T1? param1, out T2? param2,
-        out T3? param3, out T4? param4, out T5? param5, out T6? param6)
+    public static bool CheckTypes<T1, T2, T3, T4, T5, T6>(this object[] parameters, out T1 param1, out T2 param2,
+        out T3 param3, out T4 param4, out T5 param5, out T6 param6)
     {
         param1 = default;
         param2 = default;

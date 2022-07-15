@@ -74,7 +74,7 @@ public class ModHelperSlider : ModHelperComponent
     /// <param name="labelSuffix">String to add to the end of the label, e.g. "%"</param>
     /// <returns></returns>
     public static ModHelperSlider Create(Info info, float defaultValue, float minValue, float maxValue,
-        float stepSize, Vector2 handleSize, UnityAction<float>? onValueChanged = null, float fontSize = 42f,
+        float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
         string labelSuffix = "")
     {
         var modHelperSlider = ModHelperComponent.Create<ModHelperSlider>(info);
@@ -90,45 +90,37 @@ public class ModHelperSlider : ModHelperComponent
         modHelperSlider.defaultValue = defaultValue;
         slider.minValue = minValue * modHelperSlider.scaleFactor;
         slider.maxValue = maxValue * modHelperSlider.scaleFactor;
-        var background = modHelperSlider.AddPanel(
-            new Info("Background", anchorMin: Vector2.zero, anchorMax: Vector2.one), VanillaSprites.SmallSquareWhite
-        );
+        var background = modHelperSlider.AddPanel(new Info("Background", Info.Preset.FillParent),
+            VanillaSprites.SmallSquareWhite);
         background.Background.color = new Color(.219f, .125f, .058f);
 
-        var fillPanel = modHelperSlider.AddPanel(
-            new Info("FillPanel", width: info.Height / -4f, height: info.Height / -4f, anchorMin: Vector2.zero,
-                anchorMax: Vector2.one)
-        );
+        var fillPanel = modHelperSlider.AddPanel(new Info("FillPanel", Info.Preset.FillParent)
+        {
+            Width = info.Width / -4f,
+            Height = info.Height / 4f
+        });
 
-        var fill = fillPanel.AddPanel(
-            new Info("Fill", anchorMin: Vector2.zero, anchorMax: Vector2.one), VanillaSprites.SmallSquareWhite
-        );
+        var fill = fillPanel.AddPanel(new Info("Fill", Info.Preset.FillParent), VanillaSprites.SmallSquareWhite);
         fill.Background.color = new Color(.5f, 1, 0);
         slider.fillRect = fill;
         slider.m_FillContainerRect = fillPanel;
 
         var anchorPos = (defaultValue - minValue) / (maxValue - minValue);
 
-        modHelperSlider.AddImage(
-            new Info("DefaultNotch", width: 64, height: 136, anchor: new Vector2(anchorPos, 0.5f)),
-            VanillaSprites.SliderMarker
-        );
+        modHelperSlider.AddImage(new Info("DefaultNotch", 64, 136, new Vector2(anchorPos, 0.5f)),
+            VanillaSprites.SliderMarker);
 
-        var handleContainer = modHelperSlider.AddPanel(
-            new Info("HandleContainer", anchorMin: Vector2.zero, anchorMax: Vector2.one)
-        );
+        var handleContainer = modHelperSlider.AddPanel(new Info("HandleContainer", Info.Preset.FillParent));
 
         var pip = handleContainer.AddImage(
-            new Info("Handle", width: handleSize.x, height: handleSize.y - info.Height),
+            new Info("Handle", handleSize.x, handleSize.y - info.Height),
             VanillaSprites.BlueBtnCircleSmall
         );
         slider.handleRect = pip;
         slider.m_HandleContainerRect = handleContainer;
 
-        var label = pip.AddText(
-            new Info("Label", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2),
-            defaultValue.ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize
-        );
+        var label = pip.AddText(new Info("Label", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2),
+            defaultValue.ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize);
 
 
         slider.onValueChanged.AddListener(new Action<float>(value =>

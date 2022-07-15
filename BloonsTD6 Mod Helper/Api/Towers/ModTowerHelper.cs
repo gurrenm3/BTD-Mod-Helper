@@ -13,7 +13,6 @@ using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Display;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -123,7 +122,7 @@ internal static partial class ModTowerHelper
         if (modTower.ShouldCreateParagon && tiers.Any(i => i == 5))
         {
             towerModel.paragonUpgrade =
-                new UpgradePathModel(modTower.paragonUpgrade!.Id, $"{towerModel.baseId}-Paragon");
+                new UpgradePathModel(modTower.paragonUpgrade.Id, $"{towerModel.baseId}-Paragon");
         }
 
         // set the tower's portrait
@@ -157,7 +156,7 @@ internal static partial class ModTowerHelper
         towerModel.paragonUpgrade = null;
         towerModel.name = $"{towerModel.baseId}-Paragon";
         towerModel.isBakable = false;
-        towerModel.appliedUpgrades[5] = modTower.paragonUpgrade!.Id;
+        towerModel.appliedUpgrades[5] = modTower.paragonUpgrade.Id;
 
         var sprite = modTower.paragonUpgrade.PortraitReference;
         if (sprite != null)
@@ -206,13 +205,14 @@ internal static partial class ModTowerHelper
             var name = modTower.Get2DTexture(towerModel.tiers);
             var guid = ModContent.GetTextureGUID(modTower.mod, name);
             towerModel.display = guid;
-            towerModel.GetBehavior<DisplayModel>()!.display = guid;
-            towerModel.GetBehavior<DisplayModel>()!.positionOffset = new Vector3(0, 0, 2f);
+            towerModel.GetBehavior<DisplayModel>().display = guid;
+            towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
             ResourceHandler.ScalesFor2dModels[guid] = modTower.PixelsPerUnit;
         }
         else if (modTower.displays
                      .Where(display => display.UseForTower(towerModel.tiers) && display.ParagonDisplayIndex <= 0)
-                     .MaxBy(display => display.Id) is { } modTowerDisplay)
+                     .OrderByDescending(display => display.Id)
+                     .FirstOrDefault() is { } modTowerDisplay)
         {
             modTowerDisplay.ApplyToTower(towerModel);
         }
@@ -220,7 +220,7 @@ internal static partial class ModTowerHelper
         // last paragon stuff
         if (modTower.ShouldCreateParagon && towerModel.isParagon)
         {
-            if (modTower.paragonUpgrade!.RemoveAbilities)
+            if (modTower.paragonUpgrade.RemoveAbilities)
             {
                 towerModel.behaviors = towerModel.behaviors.RemoveItemsOfType<Model, AbilityModel>();
             }
@@ -233,9 +233,10 @@ internal static partial class ModTowerHelper
                 displayDegreePath.name = $"AssetPathModel_{modTower.paragonUpgrade.GetType().Name}Lvl1";
 
                 var index = i;
-                var modTowerDisplay = modTower.displays.Where(display =>
-                        display.UseForTower(towerModel.tiers) && index >= display.ParagonDisplayIndex)
-                    .MaxBy(display => display.ParagonDisplayIndex);
+                var modTowerDisplay = modTower.displays
+                    .Where(display => display.UseForTower(towerModel.tiers) && index >= display.ParagonDisplayIndex)
+                    .OrderByDescending(display => display.ParagonDisplayIndex)
+                    .FirstOrDefault();
                 if (modTowerDisplay != default)
                 {
                     displayDegreePath.assetPath = modTowerDisplay.Id;
@@ -251,7 +252,7 @@ internal static partial class ModTowerHelper
             catch (Exception)
             {
                 ModHelper.Error(
-                    $"Failed to apply ModParagonUpgrade {modTower.paragonUpgrade!.Name} to TowerModel {towerModel.name}");
+                    $"Failed to apply ModParagonUpgrade {modTower.paragonUpgrade.Name} to TowerModel {towerModel.name}");
                 throw;
             }
         }

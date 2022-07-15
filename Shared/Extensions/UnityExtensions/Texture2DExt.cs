@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.Versioning;
 using UnityEngine;
 using Graphics = UnityEngine.Graphics;
 
@@ -17,7 +16,7 @@ public static class Texture2DExt
     /// </summary>
     /// <param name="texture2D"></param>
     /// <returns></returns>
-    [SupportedOSPlatform("windows")]
+    // [SupportedOSPlatform("windows")]
     public static System.Drawing.Image ToImage(this Texture2D texture2D)
     {
         var textureBytes = ImageConversion.EncodeToPNG(texture2D);

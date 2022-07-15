@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// </summary>
         public bool button;
 
-        private Action<bool, ModHelperButton>? currentAction;
+        private Action<bool, ModHelperButton> currentAction;
 
         /// <summary>
         /// The sprite to use for the button when it's disabled, RedBtnLong by default
@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The text that the button should have when it's disabled, if this is a button
         /// </summary>
-        public string? disabledText = "Disabled";
+        public string disabledText = "Disabled";
 
         /// <summary>
         /// The sprite to use for the button when it's enabled, GreenBtnLong by default
@@ -38,17 +38,17 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The text that the button should have when it's enabled, if this is a button
         /// </summary>
-        public string? enabledText = "Enabled";
+        public string enabledText = "Enabled";
 
         /// <summary>
         /// Action to modify the ModHelperCheckbox after it's created
         /// </summary>
-        public Action<ModHelperButton>? modifyButton;
+        public Action<ModHelperButton> modifyButton;
 
         /// <summary>
         /// Action to modify the ModHelperCheckbox after it's created
         /// </summary>
-        public Action<ModHelperCheckbox>? modifyCheckbox;
+        public Action<ModHelperCheckbox> modifyCheckbox;
 
         /// <inheritdoc />
         public ModSettingBool(bool value) : base(value)
@@ -59,8 +59,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Old way to do a button before ModSettingButton was a thing
         /// </summary>
-        [Obsolete]
-        public bool IsButton { get; set; }
+        [Obsolete] public bool IsButton { get; set; }
 
         /// <summary>
         /// Create a new ModSetting bool with the given value as default
@@ -86,7 +85,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
             base.SetValue(val);
             if (currentOption)
             {
-                var butt = currentOption!.GetDescendent<ModHelperButton>("Button");
+                var butt = currentOption.GetDescendent<ModHelperButton>("Button");
                 if (butt)
                 {
                     currentAction?.Invoke((bool) val, butt);
@@ -101,20 +100,18 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             if (button)
             {
+                var text = value ? enabledText : disabledText;
                 var buttonComponent = option.BottomRow.AddButton(
                     new Info("Button", width: 562, height: 200), value ? enabledButton : disabledButton, null
                 );
-                buttonComponent.AddText(
-                    new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one),
-                    value ? enabledText : disabledText, 80f
-                );
+                buttonComponent.AddText(new Info("Text", Info.Preset.FillParent), text, 80f);
 
                 currentAction = (_, butt) =>
                 {
                     if (butt != null)
                     {
                         butt.Image.SetSprite(value ? enabledButton : disabledButton);
-                        butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(value ? enabledText : disabledText);
+                        butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(text);
                     }
                 };
                 buttonComponent.Button.onClick.AddListener(new Action(() =>

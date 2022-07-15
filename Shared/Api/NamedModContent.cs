@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
-
-namespace BTD_Mod_Helper.Api;
+﻿namespace BTD_Mod_Helper.Api;
 
 /// <summary>
 /// ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable

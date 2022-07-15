@@ -43,7 +43,7 @@ public static class Il2CppGenericIEnumerableExt
     /// <param name="enumerable"></param>
     /// <param name="index"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Object? GetItem<T>(this IEnumerable<T> enumerable, int index)
+    public static Il2CppSystem.Object GetItem<T>(this IEnumerable<T> enumerable, int index)
     {
         var i = 0;
         var enumerator = enumerable.GetEnumeratorCollections();

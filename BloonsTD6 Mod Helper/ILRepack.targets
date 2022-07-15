@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="ILRepacker_Debug" AfterTargets="Build" BeforeTargets="MoveDllToMods">
+        <ItemGroup>
+            <AssemblyFile Include="$(TargetDir)$(TargetName).dll"/>
+        </ItemGroup>
+        <ItemGroup>
+            <InputAssemblies Include="@(AssemblyFile)"/>
+            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'"/>
+            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'"/>
+            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'"/>
+            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NfdSharp'"/>
+        </ItemGroup>
+        <ItemGroup>
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader"/>
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader\Managed"/>
+        </ItemGroup>
+        <ILRepack
+                Parallel="true"
+                InputAssemblies="@(InputAssemblies)"
+                TargetKind="Dll"
+                OutputFile="@(AssemblyFile)"
+                Internalize="true"
+                LibraryPath="@(LibraryPaths)"
+        />
+
+    </Target>
+
+    <!--<Target Name="Cleanup" AfterTargets="ILRepack">
+        <ItemGroup>
+            <FilesToDelete Include="$(OutputPath)Octokit.dll" />
+            <FilesToDelete Include="$(OutputPath)Octokit.dll" />
+            <FilesToDelete Include="$(OutputPath)Octokit.dll" />
+        </ItemGroup>
+        <Delete Files="@(FilesToDelete)" />
+    </Target>-->
+</Project>

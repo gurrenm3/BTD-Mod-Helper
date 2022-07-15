@@ -170,14 +170,14 @@ public abstract class ModRoundSet : NamedModContent
     /// <br/>
     /// For no hint, return null.
     /// </summary>
-    public virtual string? GetHint(int round)
+    public virtual string GetHint(int round)
     {
         return null;
     }
 
     internal string HintKey(int round) => $"{Id} Hint {round}";
 
-    internal RoundSetModel model = null!;
+    internal RoundSetModel model;
 
     internal RoundSetModel GetDefaultRoundSetModel()
     {

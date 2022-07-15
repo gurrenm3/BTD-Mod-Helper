@@ -39,7 +39,7 @@ public static class TowerModelBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static T? GetBehavior<T>(this TowerModel model) where T : Model
+    public static T GetBehavior<T>(this TowerModel model) where T : Model
     {
         return ModelBehaviorExt.GetBehavior<T>(model);
     }

@@ -90,7 +90,7 @@ public abstract class ModUpgrade : NamedModContent
         }
     }
 
-    private UpgradeModel? upgradeModel;
+    private UpgradeModel upgradeModel;
 
     private static SpriteReference DefaultIcon => CreateSpriteReference("aa0cb2e090ae15a478243899824ad4b1");
 
@@ -129,12 +129,12 @@ public abstract class ModUpgrade : NamedModContent
     /// <summary>
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference? IconReference => GetSpriteReferenceOrNull(Icon);
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrNull(Icon);
 
     /// <summary>
     /// If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference? PortraitReference => GetSpriteReferenceOrNull(Portrait);
+    public virtual SpriteReference PortraitReference => GetSpriteReferenceOrNull(Portrait);
 
 
     /// <summary>
@@ -151,12 +151,12 @@ public abstract class ModUpgrade : NamedModContent
     /// <summary>
     /// The title for the confirmation popup, if needed
     /// </summary>
-    public virtual string? ConfirmationTitle => null;
+    public virtual string ConfirmationTitle => null;
 
     /// <summary>
     /// The body text for the confirmation popup, if needed
     /// </summary>
-    public virtual string? ConfirmationBody => null;
+    public virtual string ConfirmationBody => null;
 
     /// <summary>
     /// Xp Cost for the upgrade. Meaningless usually because custom heroes automatically are automatically unlocked.

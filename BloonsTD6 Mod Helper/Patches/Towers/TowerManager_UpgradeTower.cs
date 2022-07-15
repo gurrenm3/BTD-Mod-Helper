@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Patches.Towers;
 internal class TowerManager_UpgradeTower
 {
     [HarmonyPrefix]
-    internal static bool Prefix(Tower tower, TowerModel def, ref string? __state)
+    internal static bool Prefix(Tower tower, TowerModel def, ref string __state)
     {
         __state = null;
         foreach (var upgrade in def.appliedUpgrades)

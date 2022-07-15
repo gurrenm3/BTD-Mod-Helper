@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Patches.UI;
 internal class CoopQuickMatchScreen_Open
 {
     [HarmonyPrefix]
-    private static bool Prefix(GameMenu __instance, ref Object? data)
+    private static bool Prefix(GameMenu __instance, ref Object data)
     {
         return ModGameMenu.CheckOpen(__instance, data, out data);
     }

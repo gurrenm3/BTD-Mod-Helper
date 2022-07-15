@@ -11,9 +11,9 @@ namespace BTD_Mod_Helper.Api;
 
 internal class NkhText
 {
-    public string Title = null!;
+    public string Title;
     public Color TitleColor = Color.white;
-    public string Body = null!;
+    public string Body;
     public Color BodyColor = Color.white;
     //public Vector2? BodyPosition;
     //public Vector2? BodySize;
@@ -21,7 +21,7 @@ internal class NkhText
 
 internal class NkhMsg
 {
-    public NkhText NkhText = null!;
+    public NkhText NkhText;
     public double MsgShowTime = 1.5f;
 }
 
@@ -29,8 +29,8 @@ internal class Notification
 {
     public GameObject gameObject;
 
-    private static AssetBundle? assetBundle;
-    private static GameObject? canvas;
+    private static AssetBundle assetBundle;
+    private static GameObject canvas;
 
     public Image img;
     public Text title;
@@ -222,7 +222,7 @@ internal class Notification
     }
 
 
-    public static event EventHandler<NotificationEventArgs> UpdateEvent = null!;
+    public static event EventHandler<NotificationEventArgs> UpdateEvent;
     public class NotificationEventArgs : EventArgs { }
     public void OnUpdate(NotificationEventArgs e)
     {

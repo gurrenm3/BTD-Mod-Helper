@@ -2,7 +2,6 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.Versioning;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -16,7 +15,7 @@ public static partial class ImageExt
     /// </summary>
     /// <param name="image"></param>
     /// <returns></returns>
-    [SupportedOSPlatform("windows")]
+    // [SupportedOSPlatform("windows")]
     public static byte[] GetBytes(this Image image)
     {
         using var thumbnailStream = new MemoryStream();
@@ -33,7 +32,7 @@ public static partial class ImageExt
     /// <param name="width"></param>
     /// <param name="height"></param>
     /// <returns></returns>
-    [SupportedOSPlatform("windows")]
+    // [SupportedOSPlatform("windows")]
     public static Bitmap Resize(this Image image, int width, int height)
     {
         var destRect = new Rectangle(0, 0, width, height);

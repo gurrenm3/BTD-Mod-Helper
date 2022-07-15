@@ -13,7 +13,7 @@ public class ModGameMenuTracker : MonoBehaviour
     /// <summary>
     /// The Id of the ModGameMenu that this is for
     /// </summary>
-    public string? modGameMenuId;
+    public string modGameMenuId;
         
     /// <inheritdoc />
     public ModGameMenuTracker(IntPtr ptr) : base(ptr)

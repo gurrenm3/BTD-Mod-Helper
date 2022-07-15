@@ -14,7 +14,7 @@ internal class FileSaveStrategy_Choose
     }
 
     [HarmonyPostfix]
-    internal static void Postfix(FileSaveStrategy? __result, string path, SaveStrategy type)
+    internal static void Postfix(FileSaveStrategy __result, string path, SaveStrategy type)
     {
         if (!string.IsNullOrEmpty(SessionData.Instance.SaveDirectory) || !path.ToLower().EndsWith("profile.save"))
             return;

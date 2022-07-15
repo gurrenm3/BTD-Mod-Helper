@@ -14,7 +14,7 @@ public class ModSettingString : ModSetting<string>
     /// <summary>
     /// Action to modify the ModHelperInputField after it's created
     /// </summary>
-    public Action<ModHelperInputField>? modifyInput;
+    public Action<ModHelperInputField> modifyInput;
 #endif
 
     /// <summary>
@@ -41,7 +41,7 @@ public class ModSettingString : ModSetting<string>
     /// InputField validation, use one of the ModSettingString.[thing] constants 
     /// </summary>
     [Obsolete("Use characterValidation instead")]
-    public string? validation;
+    public string validation;
 
     /// <summary>
     /// Validation for the input field, determining which characters are allowed

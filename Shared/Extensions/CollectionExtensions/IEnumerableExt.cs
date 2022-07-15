@@ -64,12 +64,12 @@ public static class IEnumerableExt
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast"></typeparam>
     /// <returns></returns>
-    public static IEnumerable<TCast>? CastAll<TSource, TCast>(this IEnumerable<TSource>? list)
+    public static IEnumerable<TCast> CastAll<TSource, TCast>(this IEnumerable<TSource> list)
         where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
     {
         return list?.Select(m =>
         {
-            if (m is null) return null!;
+            if (m is null) return null;
 
             var tryCast = m.TryCast<TCast>();
             if (tryCast == null)
@@ -88,8 +88,8 @@ public static class IEnumerableExt
     /// Returns the argument that maximizes the given value
     /// </summary>
     public static T ArgMax<T, K>(this IEnumerable<T> source,
-        Func<T, K>? map = null,
-        IComparer<K>? comparer = null)
+        Func<T, K> map = null,
+        IComparer<K> comparer = null)
     {
         if (ReferenceEquals(null, source))
             throw new ArgumentNullException(nameof(source));

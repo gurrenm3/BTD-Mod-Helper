@@ -61,7 +61,7 @@ public class ModSettingDouble : ModSettingNumber<double>
     }
 
     /// <inheritdoc />
-    protected override string? ToString(double input) => 
+    protected override string ToString(double input) => 
         Math.Round(Math.Round(input / stepSize) * stepSize, 3).ToString();
 
     /// <inheritdoc />

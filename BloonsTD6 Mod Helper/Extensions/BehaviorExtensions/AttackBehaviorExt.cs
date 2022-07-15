@@ -25,7 +25,7 @@ public static class AttackBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="attack"></param>
     /// <returns></returns>
-    public static T? GetAttackBehavior<T>(this Attack attack) where T : AttackBehavior
+    public static T GetAttackBehavior<T>(this Attack attack) where T : AttackBehavior
     {
         return attack.attackBehaviors.GetItemOfType<AttackBehavior, T>();
     }

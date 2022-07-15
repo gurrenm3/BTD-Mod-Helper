@@ -11,12 +11,12 @@ public class ModSettingCategory
     /// <summary>
     /// Name of the category
     /// </summary>
-    public string? displayName;
+    public string displayName;
 
     /// <summary>
     /// Icon of the category, if any
     /// </summary>
-    public SpriteReference? icon;
+    public SpriteReference icon;
 
     /// <summary>
     /// Order of this category in relation to other categories. A setting not having a category will have order = 0
@@ -31,12 +31,12 @@ public class ModSettingCategory
     /// <summary>
     /// Action to modify the ModHelperCategory after it's created
     /// </summary>
-    public Action<ModHelperCategory>? modifyCategory;
+    public Action<ModHelperCategory> modifyCategory;
 
     /// <summary>
     /// Creates a new ModSettingCategory with the given displayName
     /// </summary>
-    public ModSettingCategory(string? displayName)
+    public ModSettingCategory(string displayName)
     {
         this.displayName = displayName;
     }
@@ -55,7 +55,7 @@ public class ModSettingCategory
     /// <summary>
     /// Gets the name from a category
     /// </summary>
-    public static implicit operator string? (ModSettingCategory category)
+    public static implicit operator string (ModSettingCategory category)
     {
         return category.displayName;
     }
@@ -63,7 +63,7 @@ public class ModSettingCategory
     /// <summary>
     /// Creates a new category with the given name
     /// </summary>
-    public static implicit operator ModSettingCategory(string? displayName)
+    public static implicit operator ModSettingCategory(string displayName)
     {
         return new ModSettingCategory(displayName);
     }

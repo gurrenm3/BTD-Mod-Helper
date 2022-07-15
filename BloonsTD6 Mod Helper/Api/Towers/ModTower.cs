@@ -4,7 +4,6 @@ using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
@@ -20,8 +19,8 @@ public abstract partial class ModTower
 
     internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
     internal readonly ModUpgrade[,] upgrades;
-    internal UpgradeModel dummyUpgrade = null!;
-    internal ModParagonUpgrade? paragonUpgrade;
+    internal UpgradeModel dummyUpgrade;
+    internal ModParagonUpgrade paragonUpgrade;
     internal virtual bool ShouldCreateParagon =>
         paragonUpgrade != null &&
         TopPathUpgrades == 5 &&
@@ -139,7 +138,7 @@ public abstract partial class ModTower
                 break;
             case ParagonMode.None:
             default:
-                return null!;
+                return null;
         }
 
         towerModel.appliedUpgrades = new Il2CppStringArray(6);

@@ -2,7 +2,7 @@
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
-using NativeFileDialogSharp;
+using NfdSharp;
 using TMPro;
 using UnityEngine;
 using Action = System.Action;
@@ -64,16 +64,15 @@ public class ModSettingFolder : ModSetting<string>
             {
                 FileDialogHelper.PrepareNativeDlls();
                     
-                var dialog = Dialog.FolderPicker(lastSavedValue);
-                if (dialog?.IsOk == true)
+                if (Nfd.PickFolder(lastSavedValue, out var path) == Nfd.NfdResult.NFD_OKAY)
                 {
-                    SetValue(dialog.Path);
+                    SetValue(path);
                 }
             })
         );
         button.GetDescendent<Animator>().enabled = false;
 
-        var text = button.AddText(new Info("FolderText", anchorMin: Vector2.zero, anchorMax: Vector2.one), value);
+        var text = button.AddText(new Info("FolderText", Info.Preset.FillParent), value);
         text.Text.alignment = TextAlignmentOptions.Center;
 
         option.SetResetAction(new Action(() => text.SetText(defaultValue)));

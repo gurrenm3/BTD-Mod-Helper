@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Patches;
 using BTD_Mod_Helper.Patches.Resources;
-using Main = Assets.Main.Main;
 
 namespace BTD_Mod_Helper;
 
@@ -19,22 +17,22 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     /// <summary>
     /// All ModContent in ths mod
     /// </summary>
-    public IReadOnlyList<ModContent> Content { get; internal set; } = null!;
+    public IReadOnlyList<ModContent> Content { get; internal set; }
 
     /// <summary>
     /// The settings in this mod organized by name
     /// </summary>
-    public Dictionary<string, ModSetting> ModSettings { get; internal set; } =  new();
+    public Dictionary<string, ModSetting> ModSettings { get; internal set; } = new();
 
     /// <summary>
     /// The embedded resources of this mod
     /// </summary>
-    public Dictionary<string, byte[]> Resources { get; internal set; } = null!;
+    public Dictionary<string, byte[]> Resources { get; internal set; }
 
     /// <summary>
     /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods
     /// </summary>
-    public virtual string IDPrefix => Assembly.GetName().Name + "-";
+    public virtual string IDPrefix => MelonAssembly.Assembly.GetName().Name + "-";
 
     /// <summary>
     /// Setting this to true will prevent your BloonsMod hooks from executing if the player could get flagged for using mods at that time.
@@ -48,10 +46,12 @@ public abstract partial class BloonsMod : MelonMod, IModContent
         get
         {
             var oldPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{Info.Name}.json");
-            var newPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{Assembly.GetName().Name}.json");
+            var newPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{MelonAssembly.Assembly.GetName().Name}.json");
             return File.Exists(oldPath) ? oldPath : newPath;
         }
     }
+
+    internal static readonly HashSet<Type> GotModTooSoon = new();
 
     /// <summary>
     /// Github API URL used to check if this mod is up to date.
@@ -75,7 +75,6 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     [Obsolete("Switch to using ModHelperData (wiki page)")]
     public virtual string MelonInfoCsURL => "";
 
-
     /// <summary>
     /// Link that people should be prompted to go to when this mod is out of date.
     ///
@@ -95,7 +94,7 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     /// <param name="operation">A string for the name of the operation that another mods wants to call</param>
     /// <param name="parameters">The parameters that another mod has provided</param>
     /// <returns>A possible result of this call</returns>
-    public virtual object? Call(string operation, params object[] parameters)
+    public virtual object Call(string operation, params object[] parameters)
     {
         return null;
     }
@@ -104,24 +103,39 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     /// Signifies that the game shouldn't crash / the mod shouldn't stop loading if one of its patches fails
     /// </summary>
     public virtual bool OptionalPatches => true;
-    
+
     internal List<string> loadErrors = new();
-    
+
     /// <summary>
-    /// 
+    /// Lets the ModHelper control patching, allowing for individual patches to fail without the entire mod getting
+    /// unloaded. 
     /// </summary>
+    internal bool modHelperPatchAll;
+
+    /// <inheritdoc />
     public sealed override void OnInitializeMelon()
     {
         // If they haven't set OptionalPatches to false and haven't already signified they have their own patching plan
         // by using HarmonyDontPatchAll themselves...
-        if (OptionalPatches && !HarmonyDontPatchAll)
+        if (OptionalPatches && !MelonAssembly.HarmonyDontPatchAll)
         {
-            GetType()
-                .GetProperty(nameof(HarmonyDontPatchAll))!
+            typeof(MelonAssembly)
+                .GetProperty(nameof(MelonAssembly.HarmonyDontPatchAll))!
                 .GetSetMethod(true)!
-                .Invoke(this, new object[] {true});
+                .Invoke(MelonAssembly, new object[] {true});
 
-            AccessTools.GetTypesFromAssembly(Assembly).Do(type =>
+            modHelperPatchAll = true;
+        }
+
+        OnInitialize();
+    }
+
+    /// <inheritdoc />
+    public sealed override void OnLoaderInitialized()
+    {
+        if (modHelperPatchAll)
+        {
+            AccessTools.GetTypesFromAssembly(MelonAssembly.Assembly).Do(type =>
             {
                 try
                 {
@@ -129,20 +143,35 @@ public abstract partial class BloonsMod : MelonMod, IModContent
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Warning(
-                        $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.Message}\" This needs to be fixed by {Info.Author}");
-                    
+                    MelonLogger.Warning($"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.Message}\" " +
+                                        $"The mod might not function correctly. This needs to be fixed by {Info.Author}");
+
                     loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
 
                     if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
                     {
                         ModHelper.FallbackToOldLoading = true;
+                        ModHelper.Msg("Falling back to old loading method");
                     }
                 }
             });
         }
 
-        OnInitialize();
+        if (GotModTooSoon.Contains(GetType()))
+        {
+            // Happens when trying to get a custom embedded resource during the static constructor phase
+            if (IDPrefix != MelonAssembly.Assembly.GetName().Name + "-")
+            {
+                LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
+            }
+        }
+
+        OnApplicationStart();
+    }
+
+    /// <inheritdoc cref="OnLoaderInitialized"/>
+    public new virtual void OnApplicationStart()
+    {
     }
 
     /// <inheritdoc cref="OnInitializeMelon"/>

@@ -16,11 +16,14 @@ public static class ModHelper
 {
     #region ModHelperData for the Mod Helper
 
+    internal const string Name = "BloonsTD6 Mod Helper";
     internal const string Version = "3.0.0";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
-    internal const bool ManualDownload = true;
-    internal const string Description = "The mod that is allowing you to see this screen right now :P";
+    internal const string Description = "The mod that is allowing all this to happen right now :P";
+    internal const string ZipName = "BloonsTD6 Mod Helper.zip";
+    internal const string DllName = "Btd6ModHelper.dll";
+    internal const string Author = "Gurrenm4 and Doombubbles";
 
     #endregion
 
@@ -48,13 +51,19 @@ public static class ModHelper
         get => fallBackToOldLoading || MelonMain.UseOldLoading;
     }
 
+    private static IEnumerable<BloonsMod> mods;
+    
     /// <summary>
     /// Active mods that use ModHelper functionality
     /// </summary>
     public static IEnumerable<BloonsMod> Mods =>
-        mods ??= MelonMod.RegisteredMelons.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority);
+        mods ??= Melons.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority);
 
-    internal static IEnumerable<BloonsMod>? mods;
+    /// <summary>
+    /// All active mods, whether they're Mod Helper or not
+    /// </summary>
+    public static IEnumerable<MelonMod> Melons => MelonBase.RegisteredMelons.OfType<MelonMod>();
+
 
     internal static void LoadAllMods()
     {
@@ -147,6 +156,7 @@ public static class ModHelper
     #endregion
 
     internal static MelonMain Main => ModContent.GetInstance<MelonMain>();
+    internal static Assembly MainAssembly => Main.MelonAssembly.Assembly;
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsMod
     {

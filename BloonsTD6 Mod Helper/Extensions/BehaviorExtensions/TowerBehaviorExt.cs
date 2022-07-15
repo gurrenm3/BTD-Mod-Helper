@@ -19,7 +19,7 @@ public static class TowerBehaviorExt
     /// <summary>
     /// Return the first Behavior of type T
     /// </summary>
-    public static T? GetTowerBehavior<T>(this Tower tower) where T : TowerBehavior
+    public static T GetTowerBehavior<T>(this Tower tower) where T : TowerBehavior
     {
         return tower.towerBehaviors.GetItemOfType<TowerBehavior, T>();
     }

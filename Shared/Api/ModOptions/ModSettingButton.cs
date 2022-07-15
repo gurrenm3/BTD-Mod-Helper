@@ -16,12 +16,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The action that this button performs
         /// </summary>
-        public Action? action;
+        public Action action;
 
         /// <summary>
         /// The text that will appear on the button, "Dew It" by default
         /// </summary>
-        public string? buttonText;
+        public string buttonText;
 
         /// <summary>
         /// The sprite to use for the button, BlueBtnLong by default
@@ -31,7 +31,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Action to modify the ModHelperButton after it's created
         /// </summary>
-        public Action<ModHelperButton>? modifyButton;
+        public Action<ModHelperButton> modifyButton;
 
         /// <inheritdoc />
         public ModSettingButton() : base(0)
@@ -57,9 +57,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 })
             );
 
-            button.AddText(
-                new Info("Text", anchorMin: Vector2.zero, anchorMax: Vector2.one), buttonText ?? "Dew It", 80f
-            );
+            button.AddText(new Info("Text", Info.Preset.FillParent), buttonText ?? "Dew It", 80f);
 
             option.ResetButton.gameObject.active = false;
 

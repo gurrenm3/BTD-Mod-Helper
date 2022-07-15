@@ -11,15 +11,15 @@ namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 {
-    private BloonsMod bloonsMod = null!;
+    private BloonsMod bloonsMod;
 
-    private Animator animator = null!;
+    private Animator animator;
 
-    private CanvasGroup canvasGroup = null!;
+    private CanvasGroup canvasGroup;
 
     private bool closing;
 
-    public override bool OnMenuOpened(Object? data)
+    public override bool OnMenuOpened(Object data)
     {
         closing = false;
         var gameObject = GameMenu.gameObject;
@@ -28,16 +28,14 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         bloonsMod = ModHelper.Mods.First(m => m.IDPrefix == data?.ToString());
         CommonForegroundHeader.SetText(bloonsMod.Info.Name);
 
-        var scrollPanel = gameObject.AddModHelperScrollPanel(
-            new Info("ScrollPanel", anchorMin: Vector2.zero, anchorMax: Vector2.one),
-            RectTransform.Axis.Vertical, null, 150, 300
-        );
-            
+        var scrollPanel = gameObject.AddModHelperScrollPanel(new Info("ScrollPanel", Info.Preset.FillParent),
+            RectTransform.Axis.Vertical, null, 150, 300);
+
         animator = scrollPanel.AddComponent<Animator>();
         animator.runtimeAnimatorController = Animations.PopupAnim;
         animator.speed = .65f;
         animator.Rebind();
-            
+
         canvasGroup = scrollPanel.AddComponent<CanvasGroup>();
 
         foreach (var (category, modSettings) in bloonsMod.ModSettings.Values

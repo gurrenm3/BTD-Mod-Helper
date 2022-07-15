@@ -26,7 +26,7 @@ public static class GameObjectExt
     /// <param name="gameObject"></param>
     /// <param name="componentName"></param>
     /// <returns></returns>
-    public static T? GetComponentInChildrenByName<T>(this GameObject gameObject, string componentName)
+    public static T GetComponentInChildrenByName<T>(this GameObject gameObject, string componentName)
         where T : Component
     {
         return gameObject.transform.GetComponentsInChildren<T>(true)
@@ -136,7 +136,7 @@ public static class GameObjectExt
         if (gameObject == null)
         {
             ModHelper.Warning("Tried to duplicate a null Unity Object");
-            return null!;
+            return null;
         }
 
         return Object.Instantiate(gameObject);
@@ -150,7 +150,7 @@ public static class GameObjectExt
         if (gameObject == null)
         {
             ModHelper.Warning("Tried to duplicate a null Unity Object");
-            return null!;
+            return null;
         }
 
         return Object.Instantiate(gameObject, parent);
@@ -168,19 +168,18 @@ public static class GameObjectExt
         return modHelperComponent;
     }
 
-    /// <inheritdoc cref="ModHelperComponent.AddPanel"/>
+    /// <inheritdoc cref="ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info)"/>
     public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Info info,
-        SpriteReference? backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
+        SpriteReference backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
         int padding = 0)
     {
         return gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing,
             padding));
     }
 
-    /// <inheritdoc cref="ModHelperComponent.AddScrollPanel"/>
+    /// <inheritdoc cref="ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info)"/>
     public static ModHelperScrollPanel AddModHelperScrollPanel(this GameObject gameObject, Info info,
-        RectTransform.Axis? axis,
-        SpriteReference? backgroundSprite = null, float spacing = 0, int padding = 0)
+        RectTransform.Axis? axis, SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
     {
         return gameObject.AddModHelperComponent(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing,
             padding));
@@ -198,7 +197,7 @@ public static class GameObjectExt
     /// <summary>
     /// Used to null check unity objects without bypassing the lifecycle
     /// </summary>
-    public static T? Exists<T>(this T? obj) where T : Object
+    public static T Exists<T>(this T obj) where T : Object
     {
         return obj == null ? null : obj;
     }

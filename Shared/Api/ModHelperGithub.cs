@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
+using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json;
 using Octokit;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api;
 
@@ -33,11 +36,11 @@ internal static class ModHelperGithub
     public static List<ModHelperData> Mods { get; private set; } = new();
 
     // Will be moved to checking from a json file within the mod helper repo
-    public static readonly HashSet<string?> VerifiedModders = new();
+    public static readonly HashSet<string> VerifiedModders = new();
 
-    public static GitHubClient Client { get; private set; } = null!;
+    public static GitHubClient Client { get; private set; }
 
-    private static MiscellaneousRateLimit? rateLimit;
+    private static MiscellaneousRateLimit rateLimit;
 
     public static int RemainingSearches => rateLimit?.Resources?.Search?.Remaining ?? -1;
 
@@ -50,6 +53,7 @@ internal static class ModHelperGithub
     {
         var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}"));
         var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
+        var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
 
         var monoRepoTasks = (await monoRepoSearchTask).Items
             .Select(ModHelperData.LoadFromMonoRepo)
@@ -59,13 +63,14 @@ internal static class ModHelperGithub
             .OrderBy(repo => repo.CreatedAt)
             .Select(repo => new ModHelperData(repo))
             .Concat((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d))
+            .Append(new ModHelperData(await modHelperRepoSearchTask))
             .ToArray();
 
         ModHelper.Msg("finished getting mods");
 
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
 
-        Mods = mods.Where(mod => mod.RepoDataSuccess).ToList();
+        Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
 
         UpdateRateLimit();
     }
@@ -92,11 +97,10 @@ internal static class ModHelperGithub
         }
     }
 
-    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false,
-        Action<string>? callback = null)
+    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false, Action<string> callback = null)
     {
-        Release? latestRelease = null!;
-        GitHubCommit? latestCommit = null!;
+        Release latestRelease = null;
+        GitHubCommit latestCommit = null;
         if (mod.SubPath != null)
         {
             latestCommit = mod.LatestCommit ?? await mod.GetLatestCommit();
@@ -131,7 +135,8 @@ internal static class ModHelperGithub
                 try
                 {
                     var asset = mod.SubPath == null
-                        ? latestRelease.Assets.FirstOrDefault(asset => asset.Name == mod.DllName) ??
+                        ? latestRelease!.Assets.FirstOrDefault(asset =>
+                              asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
                           latestRelease.Assets[0]
                         : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
                             DateTimeOffset.Now, mod.GetContentURL(mod.DllName!), null);
@@ -167,11 +172,23 @@ internal static class ModHelperGithub
         {
 #if BloonsTD6
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
-                $"Do you want to download\n{mod.Name} v{mod.RepoVersion}?",
+                $"Do you want to download\n{mod.DisplayName} v{mod.RepoVersion}?",
                 mod.SubPath == null
-                    ? $"Latest Release Message:\n\"{latestRelease.Body}\""
-                    : $"Latest Commit Message:\n\"{latestCommit.Commit.Message}\"",
+                    ? $"Latest Release Message:\n\"{latestRelease!.Body}\""
+                    : $"Latest Commit Message:\n\"{latestCommit!.Commit.Message}\"",
                 action, "Yes", null, "No", Popup.TransitionAnim.Scale);
+
+            PopupScreen.instance.ModifyBodyText(field =>
+            {
+                var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
+                    Info.Preset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
+                scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
+
+                var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
+                newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
+
+                field.Destroy();
+            });
 #elif BloonsAT
                 throw new NotImplementedException(); // need to figure out how to do popups in BloonsAT
 #endif
@@ -180,7 +197,7 @@ internal static class ModHelperGithub
         UpdateRateLimit();
     }
 
-    public static async Task<string?> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
+    public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
     {
         if (mod.ManualDownload)
         {
@@ -191,7 +208,7 @@ internal static class ModHelperGithub
         var name = mod.DllName ?? releaseAsset.Name;
         if (name == null || !name.EndsWith(".dll"))
         {
-            name = $"{mod.Mod!.Assembly.GetName().Name}.dll";
+            name = $"{mod.Mod.MelonAssembly.Assembly.GetName().Name}.dll";
         }
 
         var downloadFilePath = Path.Combine(MelonHandler.ModsDirectory, name);
@@ -206,7 +223,12 @@ internal static class ModHelperGithub
                     Directory.CreateDirectory(ModHelper.OldModsDirectory);
                 }
 
-                File.Move(mod.FilePath, oldModsFilePath, true);
+                if (File.Exists(oldModsFilePath))
+                {
+                    File.Delete(oldModsFilePath);
+                }
+
+                File.Move(mod.FilePath, oldModsFilePath);
                 ModHelper.Msg($"Backing up to {oldModsFilePath}");
             }
 
@@ -221,13 +243,13 @@ internal static class ModHelperGithub
                     break;
                 case ZipContentType:
                 case ZipContentType2:
-                    var zippedFiles = await ModHelperHttp.DownloadZip(releaseAsset.BrowserDownloadUrl);
-                    if (zippedFiles != null)
+                    var directoryInfo = await ModHelperHttp.DownloadZip(releaseAsset.BrowserDownloadUrl);
+                    if (directoryInfo != null)
                     {
                         try
                         {
-                            var dll = zippedFiles.First(s => s.EndsWith(name));
-                            File.Copy(dll, downloadFilePath, true);
+                            var dll = directoryInfo.GetFiles().First(s => s.Extension == "dll").FullName;
+                            File.Copy(dll, downloadFilePath);
                             success = true;
                         }
                         catch (InvalidOperationException)

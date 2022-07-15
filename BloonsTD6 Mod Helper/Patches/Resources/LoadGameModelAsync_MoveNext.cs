@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Patches.Resources;
     nameof(GameModelUtil._LoadGameModelAsync_d__9.MoveNext))]
 internal static class LoadGameModelAsync_MoveNext
 {
-    private static GameModel? gameModel;
+    private static GameModel gameModel;
         
     [HarmonyPrefix]
     private static bool Prefix(GameModelUtil._LoadGameModelAsync_d__9 __instance)

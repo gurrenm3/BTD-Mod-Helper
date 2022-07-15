@@ -24,7 +24,7 @@ public static class MapSelectUI
     /// <summary>
     /// Gets the Canvas for the MapSelectUI, or null
     /// </summary>
-    public static Canvas? GetCanvas()
+    public static Canvas GetCanvas()
     {
         var sceneObjects = GetScene()?.GetRootGameObjects();
         if (sceneObjects is null || sceneObjects.Count == 0)
@@ -38,7 +38,7 @@ public static class MapSelectUI
     /// <summary>
     /// Gets the Beginner Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle? GetBeginnerButton()
+    public static Toggle GetBeginnerButton()
     {
         return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/BeginnerBtn");
     }
@@ -46,7 +46,7 @@ public static class MapSelectUI
     /// <summary>
     /// Gets the Intermediate Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle? GetIntermediateButton()
+    public static Toggle GetIntermediateButton()
     {
         return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/IntermediateBtn");
     }
@@ -54,7 +54,7 @@ public static class MapSelectUI
     /// <summary>
     /// Gets the Advanced Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle? GetAdvancedButton()
+    public static Toggle GetAdvancedButton()
     {
         return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/AdvancedBtn");
     }
@@ -62,7 +62,7 @@ public static class MapSelectUI
     /// <summary>
     /// Gets the Expert Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle? GetExpertButton()
+    public static Toggle GetExpertButton()
     {
         return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExpertBtn");
     }
@@ -70,7 +70,7 @@ public static class MapSelectUI
     /// <summary>
     /// Gets the Extreme Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle? GetExtremeButton()
+    public static Toggle GetExtremeButton()
     {
         return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExtremeBtn");
     }

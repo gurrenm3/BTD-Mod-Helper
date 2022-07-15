@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Assets.Scripts.Data;
 using Assets.Scripts.Data.MapSets;
@@ -60,8 +59,8 @@ public abstract class ModMap : NamedModContent
 
     internal List<AreaModel> areaModels = new();
     internal List<PathModel> paths = new();
-    private SpriteReference? mapSprite;
-    private Texture2D? mapTexture;
+    private SpriteReference mapSprite;
+    private Texture2D mapTexture;
 
     /// <summary>
     /// Get's the map details for this map. Override this method if you want extra customization.
@@ -92,7 +91,7 @@ public abstract class ModMap : NamedModContent
         if (AutoUnlockMap)
         {
             Game.instance.ScheduleTask(
-                () => Game.instance.GetBtd6Player()!.UnlockMap(Name),
+                () => Game.instance.GetBtd6Player().UnlockMap(Name),
                 () => Game.instance && Game.instance.GetBtd6Player() != null);
         }
 
@@ -105,7 +104,7 @@ public abstract class ModMap : NamedModContent
     /// Returns the sprite reference of this map.
     /// </summary>
     /// <returns></returns>
-    public virtual SpriteReference? GetSpriteReference()
+    public virtual SpriteReference GetSpriteReference()
     {
         return mapSprite;
     }
@@ -152,7 +151,7 @@ public abstract class ModMap : NamedModContent
         return areaModel;
     }
 
-    internal byte[]? GetMapBytes()
+    internal byte[] GetMapBytes()
     {
         return ResourceHandler.GetTextureBytes(GetMapGUID());
     }
@@ -178,7 +177,7 @@ public abstract class ModMap : NamedModContent
     /// <param name="mapName"></param>
     /// <param name="map">The custom map, if found</param>
     /// <returns></returns>
-    public static bool IsCustomMap(string mapName, [NotNullWhen(true)] out ModMap? map)
+    public static bool IsCustomMap(string mapName, out ModMap map)
     {
         map = GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName);
         return map != null;

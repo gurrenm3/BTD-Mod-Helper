@@ -1,31 +1,36 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
         <Configurations>BTD6_Debug;BTD6_Release</Configurations>
         <DefineConstants>BloonsTD6;TRACE</DefineConstants>
-        <Nullable>enable</Nullable>
+        <Nullable>warnings</Nullable>
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
-        <DocumentationFile>bin\BTD6_Debug\BloonsTD6 Mod Helper.xml</DocumentationFile>
+        <DocumentationFile>bin\BTD6_Debug\Btd6ModHelper.xml</DocumentationFile>
+        <LangVersion>latest</LangVersion>
+        <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
+        <ProjectName>Btd6ModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Resources.Extensions" Version="6.0.0" GeneratePathProperty="true" />
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="System.IO.Compression.FileSystem" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
-        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" GeneratePathProperty="true" />
-        <PackageReference Include="Octokit" Version="0.50.0" GeneratePathProperty="true" />
-        <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" GeneratePathProperty="true" />
+        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.14" GeneratePathProperty="true" />
+        <PackageReference Include="NfdSharp" Version="1.0.1" />
+        <PackageReference Include="Octokit" Version="0.52.0" GeneratePathProperty="true" />
     </ItemGroup>
 
     <ItemGroup>
         <EmbeddedResource Include="nfd.dll" />
         <EmbeddedResource Include="nfd_x86.dll" />
         <EmbeddedResource Include="btd6.targets" />
-        <EmbeddedResource Include="TemplateMod.zip" />
-        <EmbeddedResource Include="Resources\ingame_popup.bundle" />
     </ItemGroup>
 
     <ItemGroup>
@@ -37,5 +42,4 @@
     <!--Use the btd6.targets from the Mod Sources folder if this is placed there, otherwise use the included one-->
     <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
     <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
-
 </Project>

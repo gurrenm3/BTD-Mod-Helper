@@ -22,7 +22,7 @@ public static partial class ProjectileExt
     /// Get the UnityDisplayNode for this Projectile. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <returns></returns>
-    public static UnityDisplayNode? GetUnityDisplayNode(this Projectile projectile)
+    public static UnityDisplayNode GetUnityDisplayNode(this Projectile projectile)
     {
         return projectile.GetDisplayNode()?.graphic;
     }

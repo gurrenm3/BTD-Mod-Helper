@@ -1,8 +1,5 @@
 ﻿using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.UI_New.InGame;
-using System.Linq;
-using System;
 
 namespace BTD_Mod_Helper.Extensions;
 

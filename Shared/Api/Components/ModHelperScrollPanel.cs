@@ -31,7 +31,7 @@ public class ModHelperScrollPanel : ModHelperPanel
     /// The ContentSizeFitter component which makes sure that the ScrollContent
     /// is the right size to hold all the scrollable items.
     /// </summary>
-    public ContentSizeFitter? ContentSizeFitter { get; private set; }
+    public ContentSizeFitter ContentSizeFitter { get; private set; }
 
     /// <inheritdoc />
     public ModHelperScrollPanel(IntPtr ptr) : base(ptr)
@@ -56,19 +56,20 @@ public class ModHelperScrollPanel : ModHelperPanel
     /// <param name="padding"></param>
     /// <returns>The created ModHelperScrollPanel</returns>
     public static ModHelperScrollPanel Create(Info info, RectTransform.Axis? axis,
-        SpriteReference? backgroundSprite = null, float spacing = 0, int padding = 0)
+        SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
     {
         var newPanel = Create<ModHelperScrollPanel>(info, backgroundSprite);
         var scrollRect = newPanel.AddComponent<ScrollRect>();
 
-        var scrollContent = newPanel.AddPanel(
-            new Info("ScrollContent",
-                anchorMin: new Vector2(
-                    axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
-                    axis == RectTransform.Axis.Horizontal ? 0 : 0.5f),
-                anchorMax: new Vector2(
-                    axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
-                    axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)), null, axis, spacing, padding);
+        var scrollContent = newPanel.AddPanel(new Info("ScrollContent")
+        {
+            AnchorMin = new Vector2(
+                axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
+                axis == RectTransform.Axis.Horizontal ? 0 : 0.5f),
+            AnchorMax = new Vector2(
+                axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
+                axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)
+        }, null, axis, spacing, padding);
         scrollContent.transform.parent = newPanel;
 
 #if BloonsTD6

@@ -33,7 +33,7 @@ public class ModHelperInputField : ModHelperComponent
     /// </summary>
     /// <param name="text">The new text</param>
     /// <param name="sendCallback">Whether the onValueChanged listener should fire</param>
-    public void SetText(string? text, bool sendCallback = true)
+    public void SetText(string text, bool sendCallback = true)
     {
         InputField.SetText(text, sendCallback);
     }
@@ -56,10 +56,10 @@ public class ModHelperInputField : ModHelperComponent
     /// <param name="placeholder"></param>
     /// <param name="padding"></param>
     /// <returns>The created ModHelperInputField</returns>
-    public static ModHelperInputField Create(Info info, string? defaultValue, SpriteReference background,
-        UnityAction<string>? onValueChanged = null, float fontSize = 42,
+    public static ModHelperInputField Create(Info info, string defaultValue, SpriteReference background,
+        UnityAction<string> onValueChanged = null, float fontSize = 42,
         TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
-        TextAlignmentOptions align = TextAlignmentOptions.Capline, string? placeholder = null, int padding = 0)
+        TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
     {
         var modHelperInputField = ModHelperComponent.Create<ModHelperInputField>(info);
         modHelperInputField.AddComponent<Mask>();
@@ -69,13 +69,12 @@ public class ModHelperInputField : ModHelperComponent
         backgroundImage.type = Image.Type.Sliced;
         backgroundImage.SetSprite(background);
 
-        var textViewPort =
-            modHelperInputField.AddPanel(new Info("TextViewport", anchorMin: Vector2.zero, anchorMax: Vector2.one));
+        var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", Info.Preset.FillParent));
 
-        var text = textViewPort.AddText(
-            new Info("Text", width: padding * -2, anchorMin: Vector2.zero, anchorMax: Vector2.one),
-            defaultValue, fontSize, align
-        );
+        var text = textViewPort.AddText(new Info("Text", Info.Preset.FillParent)
+        {
+            Width = padding * -2
+        }, defaultValue, fontSize, align);
         text.Text.overflowMode = TextOverflowModes.Masking;
         text.Text.font = Fonts.Btd6FontBody;
 
@@ -88,10 +87,10 @@ public class ModHelperInputField : ModHelperComponent
 
         if (placeholder != null)
         {
-            var placeholderText = textViewPort.AddText(
-                new Info("Placeholder", width: padding * -2, anchorMin: Vector2.zero, anchorMax: Vector2.one),
-                placeholder, fontSize, align
-            );
+            var placeholderText = textViewPort.AddText(new Info("Placeholder", Info.Preset.FillParent)
+            {
+                Width = padding * -2
+            }, placeholder, fontSize, align);
             placeholderText.Text.overflowMode = TextOverflowModes.Masking;
             placeholderText.Text.font = Fonts.Btd6FontBody;
             inputField.placeholder = placeholderText.Text;

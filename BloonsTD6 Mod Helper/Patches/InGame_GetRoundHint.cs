@@ -12,7 +12,7 @@ internal static class InGame_GetRoundHint
     private static void Postfix(InGame __instance, ref string __result)
     {
         if (ModContent.GetContent<ModRoundSet>()
-                .FirstOrDefault(set => set.Id == __instance.GetGameModel()!.bloonSet)
+                .FirstOrDefault(set => set.Id == __instance.GetGameModel().bloonSet)
             is {CustomHints: true} modRoundSet)
         {
             __result = modRoundSet.HintKey(__instance.bridge.GetCurrentRound());

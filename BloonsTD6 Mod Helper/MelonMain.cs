@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
@@ -16,7 +14,7 @@ using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.UI.Modded;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
-[assembly: MelonInfo(typeof(MelonMain), "BloonsTD6 Mod Helper", ModHelper.Version, "Gurrenm4 and Doombubbles")]
+[assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonPriority(-1000)]
 
@@ -55,15 +53,19 @@ internal class MelonMain : BloonsTD6Mod
         // Load Content from other mods
         ModHelper.LoadAllMods();
 
+        // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
 
         try
         {
-            CreateTargetsFile(ModSourcesFolder);
+            // Create the targets file for mod sources
+            ModHelperFiles.CreateTargetsFile(ModSourcesFolder);
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            // ignored
+            ModHelper.Warning("Could not create .targets file in Mod Sources. " +
+                              "If you have no intention of making mods, you can ignore this.");
+            ModHelper.Warning(e);
         }
     }
 
@@ -71,7 +73,7 @@ internal class MelonMain : BloonsTD6Mod
     {
         collapsed = false
     };
-    
+
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
         description =
@@ -107,7 +109,7 @@ internal class MelonMain : BloonsTD6Mod
         requiresRestart = true
     };
 
-    private static readonly ModSettingBool AutoHideModdedClientPopup = new (false)
+    private static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already."
@@ -143,12 +145,12 @@ internal class MelonMain : BloonsTD6Mod
 
     public static readonly ModSettingFolder ModSourcesFolder =
         new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "BTD6 Mods"))
+            "BTD6 Mods Sources"))
         {
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",
             customValidation = Directory.Exists,
-            onSave = CreateTargetsFile
+            onSave = ModHelperFiles.CreateTargetsFile
         };
 
     private static bool afterTitleScreen;
@@ -172,31 +174,6 @@ internal class MelonMain : BloonsTD6Mod
         RoundSetChanger.EnsureHidden();
     }
 
-    public static void CreateTargetsFile(string path)
-    {
-        if (!Directory.Exists(path))
-        {
-            try
-            {
-                Directory.CreateDirectory(path);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-        }
-
-        var targets = Path.Combine(path, "btd6.targets");
-        using var fs = new StreamWriter(targets);
-        using var stream =
-            ModHelper.Main.Assembly.GetManifestResourceStream("BTD_Mod_Helper.btd6.targets");
-        using var reader = new StreamReader(stream!);
-        var text = reader.ReadToEnd().Replace(
-            @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",
-            MelonUtils.GameDirectory);
-        fs.Write(text);
-    }
-
     public override void OnTitleScreen()
     {
         ModSettingsHandler.SaveModSettings(true);
@@ -210,6 +187,7 @@ internal class MelonMain : BloonsTD6Mod
         foreach (var gameMode in Game.instance.model.mods)
         {
             if (gameMode.mutatorMods == null) continue;
+
             foreach (var mutatorMod in gameMode.mutatorMods)
             {
                 var typeName = mutatorMod.GetIl2CppType().Name;

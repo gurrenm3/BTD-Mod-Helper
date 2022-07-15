@@ -48,7 +48,7 @@ public class ModSettingInt : ModSettingNumber<long> //it's a long because of JSO
     }
 
     /// <inheritdoc />
-    protected override string? ToString(long input) => input.ToString();
+    protected override string ToString(long input) => input.ToString();
 
     /// <inheritdoc />
     protected override long FromString(string s) => int.TryParse(s, out var result) ? result : 0;

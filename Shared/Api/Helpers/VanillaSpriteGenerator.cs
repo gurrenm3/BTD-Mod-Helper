@@ -80,7 +80,7 @@ internal class VanillaSpriteGenerator
     {
         name = "";
         guid = "";
-        string? originalName = null;
+        string originalName = null;
         using var spriteDump = new StreamReader(file);
         while (spriteDump.ReadLine() is string line)
         {

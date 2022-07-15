@@ -48,11 +48,11 @@ public partial class SessionData
     /// <summary>
     /// The instance of <see cref="FileSaveStrategy"/> that is used to load the Player save.
     /// </summary>
-    public FileSaveStrategy? PlayerSaveStrategy { get; set; }
+    public FileSaveStrategy PlayerSaveStrategy { get; set; }
 
     /// <summary>
     /// The instance of <see cref="NKMultiGameInterface"/> that is used during a 
     /// multiplayer game
     /// </summary>
-    public NKMultiGameInterface? NkGI { get; set; }
+    public NKMultiGameInterface NkGI { get; set; }
 }

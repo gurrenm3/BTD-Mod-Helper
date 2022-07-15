@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Get the DamageModel behavior from the list of behaviors
         /// </summary>
-        public static DamageModel? GetDamageModel(this ProjectileModel projectileModel)
+        public static DamageModel GetDamageModel(this ProjectileModel projectileModel)
         {
             return projectileModel.GetBehavior<DamageModel>();
         }

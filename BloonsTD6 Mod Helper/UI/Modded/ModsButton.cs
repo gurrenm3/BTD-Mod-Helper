@@ -28,9 +28,8 @@ internal static class ModsButton
         modsButton.name = "Mods";
         modsButton.transform.localPosition = new Vector3(1600, 0, 0);
         modsButton.RemoveComponent<PipEventChecker>();
-        modsButton.GetComponentInChildrenByName<Image>("Button")!.SetSprite(Sprite);
-        modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey =
-            $"   Mods ({MelonMod.RegisteredMelons.Count})";
+        modsButton.GetComponentInChildrenByName<Image>("Button").SetSprite(Sprite);
+        modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = $"   Mods ({ModHelper.Melons.Count()})";
         modsButton.GetComponentInChildren<Button>().SetOnClick(() => ModGameMenu.Open<ModsMenu>());
 
         var indicator = modsButton.GetComponentInChildrenByName<RectTransform>("ParagonAvailable")!;

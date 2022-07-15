@@ -61,9 +61,9 @@ public abstract partial class ModBloon : NamedModContent
         Cache[bloonModel.name] = this;
     }
 
-    internal virtual ModBloon? BaseModBloon => null;
+    internal virtual ModBloon BaseModBloon => null;
     internal readonly List<ModBloonDisplay> displays = new();
-    internal BloonModel bloonModel = null!;
+    internal BloonModel bloonModel;
 
 
     /// <inheritdoc />
@@ -111,7 +111,7 @@ public abstract partial class ModBloon : NamedModContent
     /// <summary>
     /// The ID of the bloon that this should regrow into
     /// </summary>
-    public virtual string? RegrowsTo => null;
+    public virtual string RegrowsTo => null;
 
     /// <summary>
     /// Whether this Bloon should use its Icon as its display
@@ -131,7 +131,7 @@ public abstract partial class ModBloon : NamedModContent
     /// <summary>
     /// The list of displays to use as DamageStates for this Bloon
     /// </summary>
-    public virtual IEnumerable<string>? DamageStates => null;
+    public virtual IEnumerable<string> DamageStates => null;
 
     /// <summary>
     /// For 2D bloons, the ratio between pixels and display units. Higher number -> smaller Bloon.

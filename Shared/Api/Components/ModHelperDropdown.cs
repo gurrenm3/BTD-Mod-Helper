@@ -64,7 +64,7 @@ public class ModHelperDropdown : ModHelperComponent
     /// <param name="labelFontSize">Text size of label</param>
     /// <returns>The created ModHelperDropdown</returns>
     public static ModHelperDropdown Create(Info info, List<string> options, float windowHeight,
-        UnityAction<int>? onValueChanged, SpriteReference? background = null, float labelFontSize = 42f)
+        UnityAction<int> onValueChanged, SpriteReference background = null, float labelFontSize = 42f)
     {
         var (width, height) = info.SizeDelta;
 
@@ -74,8 +74,7 @@ public class ModHelperDropdown : ModHelperComponent
         var modHelperDropdown = ModHelperComponent.Create<ModHelperDropdown>(info);
 
 #if BloonsTD6
-        var text = modHelperDropdown.AddText(
-            new Info("DropdownText", anchorMin: Vector2.zero, anchorMax: Vector2.one), "", labelFontSize);
+        var text = modHelperDropdown.AddText(new Info("DropdownText", Info.Preset.FillParent), "", labelFontSize);
 
         var dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
         dropdown.captionText = text.Text;

@@ -32,7 +32,7 @@ public static class Il2CppIEnumeratorExt
     /// <param name="enumerator"></param>
     /// <param name="index"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Object? GetItem(this IEnumerator enumerator, int index)
+    public static Il2CppSystem.Object GetItem(this IEnumerator enumerator, int index)
     {
         var i = 0;
         while (enumerator.MoveNext())

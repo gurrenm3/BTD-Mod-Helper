@@ -14,7 +14,7 @@ public static partial class BloonExt
     /// (Cross-Game compatible) Return the DisplayNode for this bloon
     /// </summary>
     /// <returns></returns>
-    public static DisplayNode? GetDisplayNode(this Bloon bloon)
+    public static DisplayNode GetDisplayNode(this Bloon bloon)
     {
         return bloon.Node;
     }
@@ -24,7 +24,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static UnityDisplayNode? GetUnityDisplayNode(this Bloon bloon)
+    public static UnityDisplayNode GetUnityDisplayNode(this Bloon bloon)
     {
         return bloon.GetDisplayNode()?.graphic;
     }

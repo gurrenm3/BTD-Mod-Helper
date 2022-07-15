@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Action to modify the ModHelperDropdown after it's created
         /// </summary>
-        public Action<ModHelperDropdown>? modifyDropdown;
+        public Action<ModHelperDropdown> modifyDropdown;
 
         /// <inheritdoc />
         public ModSettingEnum(T value) : base(value)

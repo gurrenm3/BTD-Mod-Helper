@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Assets.Scripts.Simulation.Track;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Models;
-using System;
 
 #if BloonsTD6
 using Assets.Scripts.Simulation.Towers.Projectiles;
@@ -36,7 +35,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Get the current Map
         /// </summary>
-        public static Map? GetMap(this InGame inGame)
+        public static Map GetMap(this InGame inGame)
         {
             return inGame.GetSimulation()?.Map;
         }
@@ -44,7 +43,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) Get the current Simulation for this InGame session
         /// </summary>
-        public static Simulation? GetSimulation(this InGame inGame)
+        public static Simulation GetSimulation(this InGame inGame)
         {
             return inGame.GetUnityToSimulation()?.simulation;
         }
@@ -52,7 +51,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// (Cross-Game compatible) The Game.model that is being used for this InGame.instance
         /// </summary>
-        public static GameModel? GetGameModel(this InGame inGame)
+        public static GameModel GetGameModel(this InGame inGame)
         {
             return inGame.GetSimulation()?.model;
         }
@@ -62,7 +61,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static FactoryFactory GetMainFactory(this InGame inGame)
         {
-            return inGame.GetSimulation()!.factory;
+            return inGame.GetSimulation().factory;
         }
 
         /// <summary>
@@ -82,7 +81,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="inGame"></param>
         /// <param name="name">Optionally only get Towers whose TowerModel name is this parameter</param>
         /// <returns></returns>
-        public static List<Tower> GetTowers(this InGame inGame, string? name = null)
+        public static List<Tower> GetTowers(this InGame inGame, string name = null)
         {
             var towers = inGame.GetAllObjectsOfType<Tower>();
             if (!string.IsNullOrEmpty(name))
@@ -97,9 +96,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="inGame"></param>
         /// /// <param name="name">Optionally only get Towers whose TowerModel name is this parameter</param>
         /// <returns></returns>
-        public static List<TowerToSimulation> GetAllTowerToSim(this InGame inGame, string? name = null)
+        public static List<TowerToSimulation> GetAllTowerToSim(this InGame inGame, string name = null)
         {
-            var towerToSims = inGame.GetUnityToSimulation()!.GetAllTowers()?.ToList();
+            var towerToSims = inGame.GetUnityToSimulation().GetAllTowers()?.ToList();
             if (!string.IsNullOrEmpty(name))
                 towerToSims = towerToSims?.FindAll(tower => tower.Def.name == name);
 
@@ -115,7 +114,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<Bloon> GetBloons(this InGame inGame)
         {
 #if BloonsTD6
-            return inGame.GetFactory<Bloon>()!.all.ToList();
+            return inGame.GetFactory<Bloon>().all.ToList();
 #elif BloonsAT
             return inGame.GetSimulation().bloonManager.GetBloons().ToList();
 #endif
@@ -129,7 +128,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<BloonToSimulation> GetAllBloonToSim(this InGame inGame)
         {
             //return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
-            return inGame.GetUnityToSimulation()!.GetAllBloons().ToList();
+            return inGame.GetUnityToSimulation().GetAllBloons().ToList();
         }
 
         /// <summary>
@@ -147,7 +146,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerManager GetTowerManager(this InGame inGame)
         {
-            return inGame.GetSimulation()!.towerManager;
+            return inGame.GetSimulation().towerManager;
         }
 
         /// <summary>
@@ -155,7 +154,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
-        public static List<AbilityToSimulation>? GetAbilities(this InGame inGame)
+        public static List<AbilityToSimulation> GetAbilities(this InGame inGame)
         {
 #if BloonsTD6
             return inGame.GetUnityToSimulation()?.GetAllAbilities(false)?.ToList();
@@ -169,7 +168,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
-        public static UnityToSimulation? GetUnityToSimulation(this InGame inGame)
+        public static UnityToSimulation GetUnityToSimulation(this InGame inGame)
         {
 #if BloonsTD6
             return inGame.bridge;

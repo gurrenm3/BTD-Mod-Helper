@@ -73,7 +73,7 @@ namespace BTD_Mod_Helper.Extensions
 
             ModHelper.Warning($"Type {model.GetIl2CppType().Name} does not have behaviors");
 
-            return null!;
+            return null;
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Return the first Behavior of type T, or null if there isn't one
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T? GetBehavior<T>(this Model model) where T : Model
+        public static T GetBehavior<T>(this Model model) where T : Model
         {
             return model.GetBehaviors().FirstOrDefault(m => m.IsType<T>())?.Cast<T>();
         }
@@ -171,7 +171,7 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Return the index'th Behavior of type T, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T? GetBehavior<T>(this Model model, int index) where T : Model
+        public static T GetBehavior<T>(this Model model, int index) where T : Model
         {
             return model.GetBehaviors<T>().Skip(index).FirstOrDefault();
         }
@@ -180,7 +180,7 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Return the first Behavior of type T whose name contains the given string, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T? GetBehavior<T>(this Model model, string nameContains) where T : Model
+        public static T GetBehavior<T>(this Model model, string nameContains) where T : Model
         {
             return model.GetBehaviors<T>()?.FirstOrDefault(m => m.name.Contains(nameContains));
         }

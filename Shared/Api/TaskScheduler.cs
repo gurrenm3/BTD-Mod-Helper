@@ -21,7 +21,7 @@ public static class TaskScheduler
     /// </summary>
     /// <param name="action">The action you want to execute once it's time to run your task</param>
     /// <param name="waitCondition">Wait for this to be true before executing task</param>
-    public static void ScheduleTask(Action action, Func<bool>? waitCondition = null)
+    public static void ScheduleTask(Action action, Func<bool> waitCondition = null)
     {
         ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
     }
@@ -33,7 +33,7 @@ public static class TaskScheduler
     /// <param name="scheduleType">How you want to wait for your task</param>
     /// <param name="amountToWait">The amount you want to wait</param>
     /// /// <param name="waitCondition">Wait for this to be true before executing task</param>
-    public static void ScheduleTask(Action action, ScheduleType scheduleType, int amountToWait, Func<bool>? waitCondition = null)
+    public static void ScheduleTask(Action action, ScheduleType scheduleType, int amountToWait, Func<bool> waitCondition = null)
     {
         try
         {
@@ -56,7 +56,7 @@ public static class TaskScheduler
     /// <param name="amountToWait"></param>
     /// <param name="waitCondition"></param>
     /// <returns></returns>
-    internal static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait, Func<bool>? waitCondition = null)
+    internal static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait, Func<bool> waitCondition = null)
     {
         if (waitCondition is null)
         {

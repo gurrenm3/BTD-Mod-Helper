@@ -12,7 +12,7 @@ public static partial class TowerExt
     /// Get the MonkeyAnimationController for this Tower. Needed to modify 3D models
     /// </summary>
     /// <returns></returns>
-    public static MonkeyAnimationController? GetMonkeyAnimController(this Tower tower)
+    public static MonkeyAnimationController GetMonkeyAnimController(this Tower tower)
     {
         return tower.GetUnityDisplayNode()?.monkeyAnimationController;
     }
