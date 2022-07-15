@@ -4,6 +4,7 @@ using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Models.TowerSets;
+using Assets.Scripts.Data.Global;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -178,6 +179,13 @@ public abstract class ModHero : ModTower
     /// The total number of abilities that this hero has as max level
     /// </summary>
     public abstract int Abilities { get; }
+
+    /// <summary>
+    /// Gives you access to the HeroSprite for this hero in case you want a really fancy select screen for your hero
+    /// <br/>
+    /// If you set this, you MUST set all the required data for it manually else bad things will happen :(
+    /// </summary>
+    public abstract HeroSprite Sprite { get; }
 
     /// <summary>
     /// The index to add this hero at in relation to other heroes
