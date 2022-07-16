@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## ProjectileModelExt Class
 
@@ -57,7 +57,7 @@ public static bool CanHitCamo(this Assets.Scripts.Models.Towers.Projectiles.Proj
 
 ## ProjectileModelExt.GetDamageModel(this ProjectileModel) Method
 
-(Cross-Game compatible) Get the DamageModel behavior from the list of behaviors
+Get the DamageModel behavior from the list of behaviors
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModel GetDamageModel(this Assets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel);
@@ -75,7 +75,7 @@ public static Assets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModel Get
 
 ## ProjectileModelExt.GetProjectileSims(this ProjectileModel) Method
 
-(Cross-Game compatible) Get all Projectile Simulations that have this ProjectileModel
+Get all Projectile Simulations that have this ProjectileModel
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Simulation.Towers.Projectiles.Projectile> GetProjectileSims(this Assets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel);

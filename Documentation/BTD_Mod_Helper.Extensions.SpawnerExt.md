@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## SpawnerExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## SpawnerExt.Emit(this Spawner, BloonModel) Method
 
-(Cross-Game compatible) Spawn a BloonModel on the map
+Spawn a BloonModel on the map
 
 ```csharp
 public static void Emit(this Assets.Scripts.Simulation.Track.Spawner spawner, Assets.Scripts.Models.Bloons.BloonModel bloonModel);

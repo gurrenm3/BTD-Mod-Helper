@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api](index.md#BTD_Mod_Helper.Api 'BTD_Mod_Helper.Api')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api](README.md#BTD_Mod_Helper.Api 'BTD_Mod_Helper.Api')
 
 ## ModContent Class
 
@@ -31,7 +31,7 @@ Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.I
 
 ## ModContent.mod Field
 
-(Cross-Game compatible) The BloonsMod that this content was added by
+The BloonsMod that this content was added by
 
 ```csharp
 public BloonsMod mod;
@@ -45,7 +45,7 @@ public BloonsMod mod;
 
 ## ModContent.Id Property
 
-(Cross-Game compatible) The id that this ModContent will be given; a combination of the Mod's prefix and the name
+The id that this ModContent will be given; a combination of the Mod's prefix and the name
 
 ```csharp
 public string Id { get; }
@@ -58,7 +58,7 @@ public string Id { get; }
 
 ## ModContent.Name Property
 
-(Cross-Game compatible) The name that will be at the end of the ID for this ModContent, by default the class name
+The name that will be at the end of the ID for this ModContent, by default the class name
 
 ```csharp
 public virtual string Name { get; }
@@ -72,7 +72,7 @@ public virtual string Name { get; }
 
 ## ModContent.BloonID<T>() Method
 
-(Cross-Game compatible) Gets the ID for the given ModBloon
+Gets the ID for the given ModBloon
 
 ```csharp
 public static string BloonID<T>()
@@ -91,7 +91,7 @@ public static string BloonID<T>()
 
 ## ModContent.CreateInstances(Type, BloonsMod) Method
 
-(Cross-Game compatible) Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
+Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
 
 ```csharp
 private static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModContent> CreateInstances(System.Type type, BTD_Mod_Helper.BloonsMod mod);
@@ -113,7 +113,7 @@ private static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModCont
 
 ## ModContent.CreateSpriteReference(string) Method
 
-(Cross-Game compatible) Returns a new SpriteReference that uses the given guid
+Returns a new SpriteReference that uses the given guid
 
 ```csharp
 public static Assets.Scripts.Utils.SpriteReference CreateSpriteReference(string guid);
@@ -133,7 +133,7 @@ The guid that you'd like to assign to the SpriteReference
 
 ## ModContent.CreateSpriteReference(uint[]) Method
 
-(Cross-Game compatible) Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
+Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
 
 ```csharp
 public static Assets.Scripts.Utils.SpriteReference CreateSpriteReference(params uint[] data);
@@ -194,7 +194,7 @@ public static string GameModeId<T>()
 
 ## ModContent.GetBundle(BloonsMod, string) Method
 
-(Cross-Game compatible) Gets a bundle from a mod with the specified name (no file extension)
+Gets a bundle from a mod with the specified name (no file extension)
 
 ```csharp
 public static UnityEngine.AssetBundle GetBundle(BTD_Mod_Helper.BloonsMod mod, string name);
@@ -216,7 +216,7 @@ public static UnityEngine.AssetBundle GetBundle(BTD_Mod_Helper.BloonsMod mod, st
 
 ## ModContent.GetBundle(string) Method
 
-(Cross-Game compatible) Gets a bundle from your mod with the specified name (no file extension)
+Gets a bundle from your mod with the specified name (no file extension)
 
 ```csharp
 protected UnityEngine.AssetBundle GetBundle(string name);
@@ -234,7 +234,7 @@ protected UnityEngine.AssetBundle GetBundle(string name);
 
 ## ModContent.GetBundle<T>(string) Method
 
-(Cross-Game compatible) Gets a bundle from the mod T with the specified name (no file extension)
+Gets a bundle from the mod T with the specified name (no file extension)
 
 ```csharp
 public static UnityEngine.AssetBundle GetBundle<T>(string name)
@@ -258,7 +258,7 @@ public static UnityEngine.AssetBundle GetBundle<T>(string name)
 
 ## ModContent.GetContent<T>() Method
 
-(Cross-Game compatible) Gets all loaded ModContent objects that are T or a subclass of T
+Gets all loaded ModContent objects that are T or a subclass of T
 
 ```csharp
 public static System.Collections.Generic.List<T> GetContent<T>()
@@ -277,7 +277,7 @@ public static System.Collections.Generic.List<T> GetContent<T>()
 
 ## ModContent.GetDisplayGUID<T>() Method
 
-(Cross-Game compatible) Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
+Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
 
 ```csharp
 public static string GetDisplayGUID<T>()
@@ -296,7 +296,7 @@ public static string GetDisplayGUID<T>()
 
 ## ModContent.GetInstance(Type) Method
 
-(Cross-Game compatible) Gets the official instance of a particular ModContent or BloonsMod based on its type
+Gets the official instance of a particular ModContent or BloonsMod based on its type
 
 ```csharp
 public static BTD_Mod_Helper.Api.IModContent GetInstance(System.Type type);
@@ -317,7 +317,7 @@ The official instance of it
 
 ## ModContent.GetInstance<T>() Method
 
-(Cross-Game compatible) Gets the singleton instance of a particular ModContent or BloonsMod based on its type
+Gets the singleton instance of a particular ModContent or BloonsMod based on its type
 
 ```csharp
 public static T GetInstance<T>()
@@ -339,7 +339,7 @@ The singleton instance of it
 
 ## ModContent.GetInstances<T>() Method
 
-(Cross-Game compatible) Gets all loaded ModContent objects that are of type T
+Gets all loaded ModContent objects that are of type T
 
 ```csharp
 public static System.Collections.Generic.List<T> GetInstances<T>()
@@ -358,7 +358,7 @@ public static System.Collections.Generic.List<T> GetInstances<T>()
 
 ## ModContent.GetMod(string) Method
 
-(Cross-Game compatible) Gets a BloonsMod by its name, or returns null if none are loaded with that name
+Gets a BloonsMod by its name, or returns null if none are loaded with that name
 
 ```csharp
 public static BTD_Mod_Helper.BloonsMod GetMod(string name);
@@ -394,7 +394,7 @@ public static BTD_Mod_Helper.Api.Scenarios.ModMap GetModMap(string mapName);
 
 ## ModContent.GetSprite(BloonsMod, string, float) Method
 
-(Cross-Game compatible) Constructs a Sprite for a given texture name within a given mod
+Constructs a Sprite for a given texture name within a given mod
 
 ```csharp
 public static UnityEngine.Sprite GetSprite(BTD_Mod_Helper.BloonsMod mod, string name, float pixelsPerUnit=10f);
@@ -425,7 +425,7 @@ A Sprite
 
 ## ModContent.GetSprite(string, float) Method
 
-(Cross-Game compatible) Constructs a Sprite for a given texture name within this mod
+Constructs a Sprite for a given texture name within this mod
 
 ```csharp
 protected UnityEngine.Sprite GetSprite(string name, float pixelsPerUnit=10f);
@@ -452,7 +452,7 @@ A Sprite
 
 ## ModContent.GetSprite<T>(string, float) Method
 
-(Cross-Game compatible) Constructs a Sprite for a given texture name within a given mod
+Constructs a Sprite for a given texture name within a given mod
 
 ```csharp
 public static UnityEngine.Sprite GetSprite<T>(string name, float pixelsPerUnit=10f)
@@ -485,7 +485,7 @@ A Sprite
 
 ## ModContent.GetSpriteReference(BloonsMod, string) Method
 
-(Cross-Game compatible) Gets a sprite reference by name for a specific mod
+Gets a sprite reference by name for a specific mod
 
 ```csharp
 public static Assets.Scripts.Utils.SpriteReference GetSpriteReference(BTD_Mod_Helper.BloonsMod mod, string name);
@@ -512,7 +512,7 @@ A new SpriteReference
 
 ## ModContent.GetSpriteReference(string) Method
 
-(Cross-Game compatible) Gets a sprite reference by name for this mod
+Gets a sprite reference by name for this mod
 
 ```csharp
 protected Assets.Scripts.Utils.SpriteReference GetSpriteReference(string name);
@@ -533,7 +533,7 @@ A new SpriteReference
 
 ## ModContent.GetSpriteReference<T>(string) Method
 
-(Cross-Game compatible) Gets a sprite reference by name for a specific mod
+Gets a sprite reference by name for a specific mod
 
 ```csharp
 public static Assets.Scripts.Utils.SpriteReference GetSpriteReference<T>(string name)
@@ -562,7 +562,7 @@ A new SpriteReference
 
 ## ModContent.GetSpriteReferenceOrNull(BloonsMod, string) Method
 
-(Cross-Game compatible) Gets a sprite reference by name for a specific mod,returning null if the texture hasn't currently been  
+Gets a sprite reference by name for a specific mod,returning null if the texture hasn't currently been  
 loaded instead of an invalid SpriteReference
 
 ```csharp
@@ -590,7 +590,7 @@ A new SpriteReference
 
 ## ModContent.GetSpriteReferenceOrNull(string) Method
 
-(Cross-Game compatible) Gets a sprite reference by name for this mod, returning null if the texture hasn't currently been  
+Gets a sprite reference by name for this mod, returning null if the texture hasn't currently been  
 loaded instead of an invalid SpriteReference
 
 ```csharp
@@ -612,7 +612,7 @@ A new SpriteReference
 
 ## ModContent.GetSpriteReferenceOrNull<T>(string) Method
 
-(Cross-Game compatible) Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been  
+Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been  
 loaded instead of an invalid SpriteReference
 
 ```csharp
@@ -642,7 +642,7 @@ A new SpriteReference
 
 ## ModContent.GetTexture(BloonsMod, string) Method
 
-(Cross-Game compatible) Constructs a Texture2D for a given texture name within a mod
+Constructs a Texture2D for a given texture name within a mod
 
 ```csharp
 public static UnityEngine.Texture2D GetTexture(BTD_Mod_Helper.BloonsMod bloonsMod, string fileName);
@@ -669,7 +669,7 @@ A Texture2D
 
 ## ModContent.GetTexture(string) Method
 
-(Cross-Game compatible) Constructs a Texture2D for a given texture name within this mod
+Constructs a Texture2D for a given texture name within this mod
 
 ```csharp
 protected UnityEngine.Texture2D GetTexture(string fileName);
@@ -690,7 +690,7 @@ A Texture2D
 
 ## ModContent.GetTexture<T>(string) Method
 
-(Cross-Game compatible) Constructs a Texture2D for a given texture name within a mod
+Constructs a Texture2D for a given texture name within a mod
 
 ```csharp
 public static UnityEngine.Texture2D GetTexture<T>(string fileName)
@@ -717,7 +717,7 @@ A Texture2D
 
 ## ModContent.GetTextureBytes(BloonsMod, string) Method
 
-(Cross-Game compatible) Returns the Bytes associated with a texture.
+Returns the Bytes associated with a texture.
 
 ```csharp
 public static byte[] GetTextureBytes(BTD_Mod_Helper.BloonsMod bloonsMod, string fileName);
@@ -744,7 +744,7 @@ The bytes associated with the texture.
 
 ## ModContent.GetTextureBytes(string) Method
 
-(Cross-Game compatible) Returns the Bytes associated with a texture.
+Returns the Bytes associated with a texture.
 
 ```csharp
 protected byte[] GetTextureBytes(string fileName);
@@ -765,7 +765,7 @@ The bytes associated with the texture.
 
 ## ModContent.GetTextureBytes<T>(string) Method
 
-(Cross-Game compatible) Returns the Bytes associated with a texture.
+Returns the Bytes associated with a texture.
 
 ```csharp
 public static byte[] GetTextureBytes<T>(string fileName)
@@ -792,7 +792,7 @@ The bytes associated with the texture.
 
 ## ModContent.GetTextureGUID(BloonsMod, string) Method
 
-(Cross-Game compatible) Gets a texture's GUID by name for a specific mod
+Gets a texture's GUID by name for a specific mod
 
 ```csharp
 public static string GetTextureGUID(BTD_Mod_Helper.BloonsMod mod, string fileName);
@@ -819,7 +819,7 @@ The texture's GUID
 
 ## ModContent.GetTextureGUID(string) Method
 
-(Cross-Game compatible) Gets a texture's GUID by name for this mod  
+Gets a texture's GUID by name for this mod  
 <br/>  
 Returns null if a Texture hasn't been loaded with that name
 
@@ -842,7 +842,7 @@ The texture's GUID
 
 ## ModContent.GetTextureGUID<T>(string) Method
 
-(Cross-Game compatible) Gets a texture's GUID by name for a specific mod  
+Gets a texture's GUID by name for a specific mod  
 <br/>  
 Returns null if a Texture hasn't been loaded with that name
 
@@ -933,7 +933,7 @@ public static string RoundSetId<T>()
 
 ## ModContent.TextureExists(BloonsMod, string) Method
 
-(Cross-Game compatible) Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
+Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
 
 ```csharp
 public static bool TextureExists(BTD_Mod_Helper.BloonsMod bloonsMod, string name);
@@ -959,7 +959,7 @@ The file name of your texture, without the extension
 
 ## ModContent.TextureExists(string) Method
 
-(Cross-Game compatible) Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
+Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
 
 ```csharp
 protected bool TextureExists(string name);
@@ -979,7 +979,7 @@ The file name of your texture, without the extension
 
 ## ModContent.TextureExists<T>(string) Method
 
-(Cross-Game compatible) Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
+Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
 
 ```csharp
 public static bool TextureExists<T>(string name)

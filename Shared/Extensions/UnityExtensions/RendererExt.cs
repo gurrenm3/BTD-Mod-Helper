@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class RendererExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Set the texture for this renderer. Equivalent to "render.material.mainTexture = texture2D"
+    /// Set the texture for this renderer. Equivalent to "render.material.mainTexture = texture2D"
     /// </summary>
     /// <param name="renderer"></param>
     /// <param name="texture2D"></param>
@@ -20,7 +20,7 @@ public static partial class RendererExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
+    /// Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
     /// </summary>
     /// <param name="renderers"></param>
     /// <param name="texture2D"></param>
@@ -30,7 +30,7 @@ public static partial class RendererExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Unbinds the renderer's sharedMesh, so that changes you make to it don't change the original
+    /// Unbinds the renderer's sharedMesh, so that changes you make to it don't change the original
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <returns></returns>
@@ -40,7 +40,7 @@ public static partial class RendererExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) 
+    /// 
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <returns></returns>
@@ -52,7 +52,7 @@ public static partial class RendererExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) 
+    /// 
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <returns></returns>
@@ -64,7 +64,7 @@ public static partial class RendererExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets the list of triangles for a Mesh, even if its not marked as isReadable
+    /// Gets the list of triangles for a Mesh, even if its not marked as isReadable
     /// <br/>
     /// Each "triangle" is a set of 3 consecutive ints in the list, where the number is the index in the vertices
     /// </summary>
@@ -77,7 +77,7 @@ public static partial class RendererExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) 
+    /// 
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <param name="submesh"></param>
@@ -95,7 +95,7 @@ public static partial class RendererExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) 
+    /// 
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <param name="name"></param>

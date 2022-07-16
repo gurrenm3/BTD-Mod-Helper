@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class ActionExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return this as a System.Action
+    /// Return this as a System.Action
     /// </summary>
     /// <param name="action"></param>
     /// <returns></returns>

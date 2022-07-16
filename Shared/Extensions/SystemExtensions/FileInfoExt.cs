@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class FileInfoExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Get all Assembly References from this FileInfo. Returns null if there are none
+    /// Get all Assembly References from this FileInfo. Returns null if there are none
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
@@ -30,7 +30,7 @@ public static class FileInfoExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Returns whether or not this File has a reference to the newer MelonLoader.dll or the older MelonLoader.ModHandler.dll
+    /// Returns whether or not this File has a reference to the newer MelonLoader.dll or the older MelonLoader.ModHandler.dll
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
@@ -40,7 +40,7 @@ public static class FileInfoExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Returns whether or not this File has a reference to the newer MelonLoader.dll (For MelonLoader 3.0 and up)
+    /// Returns whether or not this File has a reference to the newer MelonLoader.dll (For MelonLoader 3.0 and up)
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
@@ -51,7 +51,7 @@ public static class FileInfoExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Returns whether or not this File has a reference to the older MelonLoader.ModHandler.dll (For MelonLoader 2.7.4 and below)
+    /// Returns whether or not this File has a reference to the older MelonLoader.ModHandler.dll (For MelonLoader 2.7.4 and below)
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>

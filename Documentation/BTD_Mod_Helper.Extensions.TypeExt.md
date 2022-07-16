@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## TypeExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## TypeExt.GetMethods(this Type, string) Method
 
-(Cross-Game compatible) Get all methods with the specified method name
+Get all methods with the specified method name
 
 ```csharp
 public static System.Reflection.MethodInfo[] GetMethods(this System.Type type, string methodName);

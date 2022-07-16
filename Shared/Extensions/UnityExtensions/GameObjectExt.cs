@@ -20,7 +20,7 @@ public static class GameObjectExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Try to get a component in a child of this GameObject by it's name. Equivelant to a foreach with GetComponentsInChildren
+    /// Try to get a component in a child of this GameObject by it's name. Equivelant to a foreach with GetComponentsInChildren
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="gameObject"></param>
@@ -34,7 +34,7 @@ public static class GameObjectExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Makes the Game Object visible by setting the scale to the default value of 1
+    /// Makes the Game Object visible by setting the scale to the default value of 1
     /// </summary>
     /// <param name="gameObject"></param>
     public static void Show(this GameObject gameObject)
@@ -43,7 +43,7 @@ public static class GameObjectExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Makes the Game Object hidden (not visible) by setting the scale to zero
+    /// Makes the Game Object hidden (not visible) by setting the scale to zero
     /// </summary>
     /// <param name="gameObject"></param>
     public static void Hide(this GameObject gameObject)
@@ -92,7 +92,7 @@ public static class GameObjectExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Translates this GameObject scaled with it's "lossyScale", making it move the same
+    /// Translates this GameObject scaled with it's "lossyScale", making it move the same
     /// amount regardless of screen resolution
     /// </summary>
     /// <param name="gameObject"></param>

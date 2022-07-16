@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## ImageExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## ImageExt.GetBytes(this Image) Method
 
-(Cross-Game compatible) Returns the Bytes of this Image.
+Returns the Bytes of this Image.
 
 ```csharp
 public static byte[] GetBytes(this System.Drawing.Image image);
@@ -53,7 +53,7 @@ public static void LoadSprite(this UnityEngine.UI.Image image, Assets.Scripts.Ut
 
 ## ImageExt.Resize(this Image, int, int) Method
 
-(Cross-Game compatible) Returns a new image that is a resized version of this one.
+Returns a new image that is a resized version of this one.
 
 ```csharp
 public static System.Drawing.Bitmap Resize(this System.Drawing.Image image, int width, int height);
@@ -79,7 +79,7 @@ public static System.Drawing.Bitmap Resize(this System.Drawing.Image image, int 
 
 ## ImageExt.SaveToPNG(this Image, string) Method
 
-(Cross-Game compatible) Saves an image as a PNG files  
+Saves an image as a PNG files  
 Coded in a robust manner that should work for all images, including those with multiple sprites on them being used
 
 ```csharp
@@ -122,7 +122,7 @@ Sprite to change image to
 
 ## ImageExt.SetSprite(this Image, Sprite) Method
 
-(Cross-Game compatible) Set the sprite for this image
+Set the sprite for this image
 
 ```csharp
 public static void SetSprite(this UnityEngine.UI.Image image, UnityEngine.Sprite sprite);

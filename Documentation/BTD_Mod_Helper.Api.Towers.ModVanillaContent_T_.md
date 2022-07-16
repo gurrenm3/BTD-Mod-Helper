@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Towers](index.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Towers](README.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
 
 ## ModVanillaContent<T> Class
 
@@ -19,6 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Derived  
 &#8627; [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon')  
+&#8627; [ModVanillaBloons](BTD_Mod_Helper.Api.Bloons.ModVanillaBloons.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloons')  
 &#8627; [ModVanillaTower](BTD_Mod_Helper.Api.Towers.ModVanillaTower.md 'BTD_Mod_Helper.Api.Towers.ModVanillaTower')  
 &#8627; [ModVanillaUpgrade](BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade')
 ### Methods

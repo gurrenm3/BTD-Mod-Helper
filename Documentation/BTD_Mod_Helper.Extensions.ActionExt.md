@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## ActionExt Class
 
@@ -204,7 +204,7 @@ argument to pass in while invoking
 
 ## ActionExt.ToIl2CppSystemAction(this Action) Method
 
-(Cross-Game compatible) Return this as a System.Action
+Return this as a System.Action
 
 ```csharp
 public static Il2CppSystem.Action ToIl2CppSystemAction(this System.Action action);

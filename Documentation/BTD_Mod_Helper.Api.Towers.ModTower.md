@@ -1,9 +1,10 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Towers](index.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Towers](README.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
 
 ## ModTower Class
 
-Class representing a custom Tower being added by a mod
+Class for adding a custom Tower to the game. Use alongside [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') to define its upgrades,  
+and optionally [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay') to define custom displays for it.
 
 ```csharp
 public abstract class ModTower : BTD_Mod_Helper.Api.NamedModContent
@@ -24,7 +25,7 @@ Derived
 The string to use for the Magic tower set
 
 ```csharp
-protected const string MAGIC = Magic;
+protected const string MAGIC = "Magic";
 ```
 
 #### Field Value
@@ -37,7 +38,7 @@ protected const string MAGIC = Magic;
 The string to use for the Military tower set
 
 ```csharp
-protected const string MILITARY = Military;
+protected const string MILITARY = "Military";
 ```
 
 #### Field Value
@@ -50,7 +51,7 @@ protected const string MILITARY = Military;
 The string to use for the Primary tower set
 
 ```csharp
-protected const string PRIMARY = Primary;
+protected const string PRIMARY = "Primary";
 ```
 
 #### Field Value
@@ -63,7 +64,7 @@ protected const string PRIMARY = Primary;
 The string to use for the Support tower set
 
 ```csharp
-protected const string SUPPORT = Support;
+protected const string SUPPORT = "Support";
 ```
 
 #### Field Value
@@ -139,7 +140,9 @@ public virtual bool DontAddToShop { get; }
 
 ## ModTower.Icon Property
 
-The Icon for the Tower's purchase button
+The Icon for the Tower's purchase button, by default "[Name]-Icon"  
+<br/>  
+(Name of .png or .jpg, not including file extension)
 
 ```csharp
 public virtual string Icon { get; }
@@ -174,19 +177,6 @@ public abstract int MiddlePathUpgrades { get; }
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.Order'></a>
-
-## ModTower.Order Property
-
-Customized order in which to add this ModTower in the shop in relation to others added by your mod
-
-```csharp
-public virtual int Order { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode'></a>
 
 ## ModTower.ParagonMode Property
@@ -204,7 +194,8 @@ public virtual BTD_Mod_Helper.Api.Towers.ParagonMode ParagonMode { get; }
 
 ## ModTower.PixelsPerUnit Property
 
-For 2D towers, the ratio between pixels and display units. Higher number -> smaller tower.
+For 2D towers, the ratio between pixels and display units. Higher number -> smaller tower.  
+<seealso cref="P:BTD_Mod_Helper.Api.Towers.ModTower.Use2DModel"/><seealso cref="M:BTD_Mod_Helper.Api.Towers.ModTower.Get2DTexture(System.Int32[])"/>
 
 ```csharp
 public virtual float PixelsPerUnit { get; }
@@ -217,7 +208,9 @@ public virtual float PixelsPerUnit { get; }
 
 ## ModTower.Portrait Property
 
-The Portrait for the 0-0-0 tower
+The Portrait for the 0-0-0 tower, by default "[Name]-Portrait"  
+<br/>  
+(Name of .png or .jpg, not including file extension)
 
 ```csharp
 public virtual string Portrait { get; }
@@ -238,19 +231,6 @@ public virtual Assets.Scripts.Utils.SpriteReference PortraitReference { get; }
 
 #### Property Value
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.RegistrationPriority'></a>
-
-## ModTower.RegistrationPriority Property
-
-ModTowers register third
-
-```csharp
-protected sealed override float RegistrationPriority { get; }
-```
-
-#### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.TopPathUpgrades'></a>
 
@@ -284,7 +264,8 @@ public abstract string TowerSet { get; }
 
 ## ModTower.Use2DModel Property
 
-Whether this Tower should display 2-dimensionally, and search for png images
+Whether this Tower should display 2-dimensionally, and search for png images  
+<br/><seealso cref="P:BTD_Mod_Helper.Api.Towers.ModTower.PixelsPerUnit"/><seealso cref="M:BTD_Mod_Helper.Api.Towers.ModTower.Get2DTexture(System.Int32[])"/>
 
 ```csharp
 public virtual bool Use2DModel { get; }

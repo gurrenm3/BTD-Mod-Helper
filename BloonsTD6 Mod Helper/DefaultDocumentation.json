@@ -1,5 +1,6 @@
 {
   "GeneratedPages": "Types",
   "OutputDirectoryPath": "..\\Documentation",
-  "GeneratedAccessModifiers": "Public,Private,Protected"
+  "GeneratedAccessModifiers": "Public,Private,Protected",
+  "AssemblyPageName": "README"
 }

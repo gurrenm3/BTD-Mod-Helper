@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Towers](index.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Towers](README.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
 
 ## ModTowerSet Class
 
@@ -154,19 +154,6 @@ public virtual Assets.Scripts.Utils.SpriteReference PortraitReference { get; }
 
 #### Property Value
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.RegistrationPriority'></a>
-
-## ModTowerSet.RegistrationPriority Property
-
-ModTowerSets register fourth
-
-```csharp
-protected sealed override float RegistrationPriority { get; }
-```
-
-#### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_string_)'></a>

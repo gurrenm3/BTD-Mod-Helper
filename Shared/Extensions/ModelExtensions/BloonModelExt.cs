@@ -56,7 +56,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the number position of this bloon from the list of all bloons (Game.instance.model.bloons)
+        /// Return the number position of this bloon from the list of all bloons (Game.instance.model.bloons)
         /// </summary>
         public static int GetIndex(this BloonModel bloonModel)
         {
@@ -65,7 +65,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Spawn this BloonModel on the map right now
+        /// Spawn this BloonModel on the map right now
         /// </summary>
         public static void SpawnBloonModel(this BloonModel bloonModel)
         {
@@ -81,7 +81,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Create a BloonEmissionModel from this BloonModel
+        /// Create a BloonEmissionModel from this BloonModel
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="count">Number of bloons in this emission model</param>
@@ -93,7 +93,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) This is Obsolete, use GetAllBloonToSim instead. (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
+        /// This is Obsolete, use GetAllBloonToSim instead. Return all BloonToSimulations with this BloonModel
         /// </summary>
         [Obsolete]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
@@ -112,7 +112,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
+        /// Return all BloonToSimulations with this BloonModel
         /// </summary>
         public static List<BloonToSimulation> GetAllBloonToSim(this BloonModel bloonModel)
         {
@@ -129,7 +129,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Set the Display GUID for this BloonModel.
+        /// Set the Display GUID for this BloonModel.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="guid"></param>
@@ -142,7 +142,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Returns the Display GUID for this BloonModel.
+        /// Returns the Display GUID for this BloonModel.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <returns></returns>
@@ -156,7 +156,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the Base ID of this BloonModel
+        /// Return the Base ID of this BloonModel
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <returns></returns>
@@ -170,7 +170,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Returns whether or not this BloonModel is a Camo bloon.
+        /// Returns whether or not this BloonModel is a Camo bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <returns></returns>
@@ -184,7 +184,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Set whether or not this BloonModel is a Camo bloon.
+        /// Set whether or not this BloonModel is a Camo bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="isCamo"></param>
@@ -199,7 +199,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Returns whether or not this BloonModel is a Regrow bloon.
+        /// Returns whether or not this BloonModel is a Regrow bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <returns></returns>
@@ -213,7 +213,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Set whether or not this BloonModel is a Regrow bloon.
+        /// Set whether or not this BloonModel is a Regrow bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="isRegrow"></param>
@@ -228,7 +228,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Adds the Regrow behavior to this BloonModel and sets what 
+        /// Adds the Regrow behavior to this BloonModel and sets what 
         /// Bloon it Regrows into.
         /// </summary>
         /// <param name="bloonModel"></param>
@@ -248,7 +248,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Removes the Regrow behavior from this BloonModel.
+        /// Removes the Regrow behavior from this BloonModel.
         /// </summary>
         /// <param name="bloonModel"></param>
         public static void RemoveRegrow(this BloonModel bloonModel)
@@ -258,7 +258,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Returns whether or not this BloonModel is a Fortified bloon.
+        /// Returns whether or not this BloonModel is a Fortified bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <returns></returns>
@@ -272,7 +272,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Set whether or not this BloonModel is a Fortified bloon.
+        /// Set whether or not this BloonModel is a Fortified bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="isFortified"></param>
@@ -287,7 +287,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Returns whether or not this BloonModel is an MOAB-Class bloon.
+        /// Returns whether or not this BloonModel is an MOAB-Class bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <returns></returns>
@@ -301,7 +301,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Set whether or not this BloonModel is a Fortified bloon.
+        /// Set whether or not this BloonModel is a Fortified bloon.
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="isMoabBloon"></param>
@@ -316,7 +316,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Applies a given ModDisplay to this TowerModel
+        /// Applies a given ModDisplay to this TowerModel
         /// </summary>
         /// <typeparam name="T">The type of ModDisplay</typeparam>
         public static void ApplyDisplay<T>(this BloonModel bloonModel) where T : ModDisplay
@@ -325,7 +325,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Adds a child to be spawned from the Bloon
+        /// Adds a child to be spawned from the Bloon
         /// </summary>
         public static void AddToChildren<T>(this BloonModel bloonModel, int amount = 1) where T : ModBloon
         {
@@ -333,7 +333,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Gets the SpawnChildrenModel for the bloon, and optionally creates one if it doesn't exist
+        /// Gets the SpawnChildrenModel for the bloon, and optionally creates one if it doesn't exist
         /// </summary>
         public static SpawnChildrenModel GetSpawnChildrenModel(this BloonModel bloonModel, bool addIfNotExists = false)
         {
@@ -348,7 +348,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Adds a child to be spawned from the Bloon
+        /// Adds a child to be spawned from the Bloon
         /// </summary>
         public static void AddToChildren(this BloonModel bloonModel, string id, int amount = 1)
         {
@@ -363,7 +363,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Removes all spawned children from this BloonModel
+        /// Removes all spawned children from this BloonModel
         /// </summary>
         public static void RemoveAllChildren(this BloonModel bloonModel)
         {
@@ -375,7 +375,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Removes up to amount of the given Bloon from the spawned children
+        /// Removes up to amount of the given Bloon from the spawned children
         /// </summary>
         public static void RemoveFromChildren(this BloonModel bloonModel, string id, int amount = 1)
         {
@@ -396,7 +396,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Replaces all spawned child Bloons with the given id with the given ModBloon
+        /// Replaces all spawned child Bloons with the given id with the given ModBloon
         /// </summary>
         public static void ReplaceInChildren(this BloonModel bloonModel, string oldId, string newId)
         {
@@ -415,7 +415,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Replaces all spawned child Bloons that have id oldId with the given ModBloon
+        /// Replaces all spawned child Bloons that have id oldId with the given ModBloon
         /// </summary>
         public static void ReplaceInChildren<T>(this BloonModel bloonModel, string oldId) where T : ModBloon
         {
@@ -423,7 +423,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Replaces all spawned child Bloons of the first ModBloon type with the second ModBloon type
+        /// Replaces all spawned child Bloons of the first ModBloon type with the second ModBloon type
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="id"></param>
@@ -434,7 +434,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
+        /// Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="change"></param>
@@ -488,7 +488,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Makes all children of this Bloon Camo, if they can have it
+        /// Makes all children of this Bloon Camo, if they can have it
         /// </summary>
         public static void MakeChildrenCamo(this BloonModel bloonModel)
         {
@@ -496,7 +496,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Makes all children of this Bloon Regrow, if they can have it
+        /// Makes all children of this Bloon Regrow, if they can have it
         /// </summary>
         public static void MakeChildrenRegrow(this BloonModel bloonModel)
         {
@@ -504,7 +504,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Makes all children of this Bloon Fortified, if they can have it
+        /// Makes all children of this Bloon Fortified, if they can have it
         /// </summary>
         public static void MakeChildrenFortified(this BloonModel bloonModel)
         {
@@ -512,7 +512,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Gets the ModBloon associated with this BloonModel
+        /// Gets the ModBloon associated with this BloonModel
         /// <br/>
         /// If there is no associated ModBloon, returns null
         /// </summary>

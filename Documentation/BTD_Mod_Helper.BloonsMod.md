@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper](index.md#BTD_Mod_Helper 'BTD_Mod_Helper')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper](README.md#BTD_Mod_Helper 'BTD_Mod_Helper')
 
 ## BloonsMod Class
 
@@ -23,7 +23,7 @@ Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.I
 ## BloonsMod.CheatMod Property
 
 Setting this to true will prevent your BloonsMod hooks from executing if the player could get flagged for using mods at that time.  
-  
+<br/>   
 For example, using mods in public co-op
 
 ```csharp
@@ -116,7 +116,7 @@ public virtual string MelonInfoCsURL { get; }
 The settings in this mod organized by name
 
 ```csharp
-public System.Collections.Generic.Dictionary<string,BTD_Mod_Helper.Api.ModOptions.ModSetting> ModSettings { get; set; }
+public System.Collections.Generic.Dictionary<string,BTD_Mod_Helper.Api.ModOptions.ModSetting> ModSettings { get; }
 ```
 
 #### Property Value

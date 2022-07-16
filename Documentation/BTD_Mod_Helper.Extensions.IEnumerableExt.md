@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## IEnumerableExt Class
 
@@ -141,7 +141,7 @@ public static System.Collections.Generic.IEnumerable<T> Repeat<T>(this System.Co
 
 ## IEnumerableExt.ToIl2CppList<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return as Il2CppSystem.List
+Return as Il2CppSystem.List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);
@@ -164,7 +164,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Syst
 
 ## IEnumerableExt.ToIl2CppReferenceArray<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return as Il2CppReferenceArray
+Return as Il2CppReferenceArray
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.IEnumerable<T> enumerable)
@@ -188,7 +188,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 
 ## IEnumerableExt.ToLockList<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return as LockList
+Return as LockList
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);

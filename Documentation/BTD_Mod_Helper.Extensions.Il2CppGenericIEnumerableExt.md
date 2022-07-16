@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppGenericIEnumerableExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppGenericIEnumerableExt.Count<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Get the total number of elements
+Get the total number of elements
 
 ```csharp
 public static int Count<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable);
@@ -39,7 +39,7 @@ public static int Count<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> 
 
 ## Il2CppGenericIEnumerableExt.GetEnumeratorCollections<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as IEnumerable.GetEnumerator()
+Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as IEnumerable.GetEnumerator()
 
 ```csharp
 public static Il2CppSystem.Collections.IEnumerator GetEnumeratorCollections<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable);
@@ -62,7 +62,7 @@ public static Il2CppSystem.Collections.IEnumerator GetEnumeratorCollections<T>(t
 
 ## Il2CppGenericIEnumerableExt.GetItem<T>(this IEnumerable<T>, int) Method
 
-(Cross-Game compatible) Return the Item at a specific index
+Return the Item at a specific index
 
 ```csharp
 public static Il2CppSystem.Object GetItem<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable, int index);
@@ -89,7 +89,7 @@ public static Il2CppSystem.Object GetItem<T>(this Il2CppSystem.Collections.Gener
 
 ## Il2CppGenericIEnumerableExt.ToIl2CppList<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return as Il2CppSystem.List
+Return as Il2CppSystem.List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable)
@@ -113,7 +113,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Il2C
 
 ## Il2CppGenericIEnumerableExt.ToIl2CppReferenceArray<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return as Il2CppReferenceArray
+Return as Il2CppReferenceArray
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable)
@@ -137,7 +137,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 
 ## Il2CppGenericIEnumerableExt.ToList<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return as System.List
+Return as System.List
 
 ```csharp
 public static System.Collections.Generic.List<T> ToList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable)
@@ -161,7 +161,7 @@ public static System.Collections.Generic.List<T> ToList<T>(this Il2CppSystem.Col
 
 ## Il2CppGenericIEnumerableExt.ToLockList<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return as LockList
+Return as LockList
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable)

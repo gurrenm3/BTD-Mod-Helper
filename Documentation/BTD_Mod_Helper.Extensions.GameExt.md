@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## GameExt Class
 
@@ -57,7 +57,7 @@ public static bool CanGetFlagged(this Assets.Scripts.Unity.Game game);
 
 ## GameExt.CreateSpriteReference(this Game, string) Method
 
-(Cross-Game compatible) Returns a new SpriteReference that uses the given guid
+Returns a new SpriteReference that uses the given guid
 
 ```csharp
 public static Assets.Scripts.Utils.SpriteReference CreateSpriteReference(this Assets.Scripts.Unity.Game game, string guid);
@@ -223,7 +223,7 @@ public static BTD_Mod_Helper.Api.JsonSerializer GetJsonSerializer(this Assets.Sc
 
 ## GameExt.GetLocalizationManager(this Game) Method
 
-(Cross-Game compatible) Get the instance of LocalizationManager
+Get the instance of LocalizationManager
 
 ```csharp
 public static NinjaKiwi.Common.LocalizationManager GetLocalizationManager(this Assets.Scripts.Unity.Game game);
@@ -241,7 +241,7 @@ public static NinjaKiwi.Common.LocalizationManager GetLocalizationManager(this A
 
 ## GameExt.GetMapLoader(this Game) Method
 
-(Cross-Game compatible) Returns the instance of the Map Loader.
+Returns the instance of the Map Loader.
 
 ```csharp
 public static Assets.Scripts.Unity.Map.MapLoader GetMapLoader(this Assets.Scripts.Unity.Game game);
@@ -277,7 +277,7 @@ public static Assets.Scripts.Unity.Menu.MenuManager GetMenuManager(this Assets.S
 
 ## GameExt.GetModel(this Game) Method
 
-(Cross-Game compatible) Get GameModel. Same as using Game.instance.model
+Get GameModel. Same as using Game.instance.model
 
 ```csharp
 public static Assets.Scripts.Models.GameModel GetModel(this Assets.Scripts.Unity.Game game);
@@ -331,7 +331,7 @@ public static NinjaKiwi.NKMulti.NKMultiGameInterface GetNkGI(this Assets.Scripts
 
 ## GameExt.GetPlayerLiNKAccount(this Game) Method
 
-(Cross-Game compatible) Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
+Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
 
 ```csharp
 public static NinjaKiwi.LiNK.LiNKAccount GetPlayerLiNKAccount(this Assets.Scripts.Unity.Game game);
@@ -349,7 +349,7 @@ public static NinjaKiwi.LiNK.LiNKAccount GetPlayerLiNKAccount(this Assets.Script
 
 ## GameExt.GetPlayerProfile(this Game) Method
 
-(Cross-Game compatible) Get the ProfileModel for the Player
+Get the ProfileModel for the Player
 
 ```csharp
 public static Assets.Scripts.Models.Profile.ProfileModel GetPlayerProfile(this Assets.Scripts.Unity.Game game);
@@ -367,7 +367,7 @@ public static Assets.Scripts.Models.Profile.ProfileModel GetPlayerProfile(this A
 
 ## GameExt.GetPlayerService(this Game) Method
 
-(Cross-Game compatible) Get the PlayerService for the player
+Get the PlayerService for the player
 
 ```csharp
 public static Assets.Scripts.Unity.Player.PlayerService GetPlayerService(this Assets.Scripts.Unity.Game game);
@@ -516,7 +516,7 @@ public static Assets.Scripts.Unity.UI_New.UI GetUI(this Assets.Scripts.Unity.Gam
 
 ## GameExt.IsAccountFlagged(this Game) Method
 
-(Cross-Game compatible) Returns whether or not the player's account is currently flagged/hackerpooled
+Returns whether or not the player's account is currently flagged/hackerpooled
 
 ```csharp
 public static bool IsAccountFlagged(this Assets.Scripts.Unity.Game game);
@@ -609,7 +609,7 @@ Path to save to
 
 ## GameExt.ScheduleTask(this Game, Action, ScheduleType, int, Func<bool>) Method
 
-(Cross-Game compatible) Schedule a task to execute later on as a Coroutine
+Schedule a task to execute later on as a Coroutine
 
 ```csharp
 public static void ScheduleTask(this Assets.Scripts.Unity.Game game, System.Action action, BTD_Mod_Helper.Api.Enums.ScheduleType scheduleType, int amountToWait, System.Func<bool> waitCondition=null);
@@ -648,7 +648,7 @@ Wait for this to be true before executing task
 
 ## GameExt.ScheduleTask(this Game, Action, Func<bool>) Method
 
-(Cross-Game compatible) Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
+Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
 
 ```csharp
 public static void ScheduleTask(this Assets.Scripts.Unity.Game game, System.Action action, System.Func<bool> waitCondition=null);
@@ -675,7 +675,7 @@ Wait for this to be true before executing task
 
 ## GameExt.ScheduleTask(this Game, IEnumerator) Method
 
-(Cross-Game compatible) Schedule a task to execute right now as a Coroutine
+Schedule a task to execute right now as a Coroutine
 
 ```csharp
 public static void ScheduleTask(this Assets.Scripts.Unity.Game game, System.Collections.IEnumerator iEnumerator);
@@ -717,7 +717,7 @@ Value to set Monkey Money to
 
 ## GameExt.ShowMessage(this Game, string, float, string) Method
 
-(Cross-Game compatible) Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
+Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
 
 ```csharp
 public static void ShowMessage(this Assets.Scripts.Unity.Game game, string message, float displayTime, string title);
@@ -752,7 +752,7 @@ Message title. Will be mod name by default
 
 ## GameExt.ShowMessage(this Game, string, string) Method
 
-(Cross-Game compatible) Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
+Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
 
 ```csharp
 public static void ShowMessage(this Assets.Scripts.Unity.Game game, string message, string title);

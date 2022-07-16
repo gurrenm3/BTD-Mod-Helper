@@ -22,7 +22,7 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     /// <summary>
     /// The settings in this mod organized by name
     /// </summary>
-    public Dictionary<string, ModSetting> ModSettings { get; internal set; } = new();
+    public Dictionary<string, ModSetting> ModSettings { get; } = new();
 
     /// <summary>
     /// The embedded resources of this mod
@@ -36,7 +36,7 @@ public abstract partial class BloonsMod : MelonMod, IModContent
 
     /// <summary>
     /// Setting this to true will prevent your BloonsMod hooks from executing if the player could get flagged for using mods at that time.
-    /// 
+    /// <br/> 
     /// For example, using mods in public co-op
     /// </summary>
     public virtual bool CheatMod => true;

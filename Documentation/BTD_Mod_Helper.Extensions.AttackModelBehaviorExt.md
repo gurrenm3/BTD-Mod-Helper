@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## AttackModelBehaviorExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## AttackModelBehaviorExt.AddBehavior<T>(this AttackModel, T) Method
 
-(Cross-Game compatible) Add a Behavior to this
+Add a Behavior to this
 
 ```csharp
 public static void AddBehavior<T>(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel model, T behavior)
@@ -43,7 +43,7 @@ The Behavior you want to add
 
 ## AttackModelBehaviorExt.GetBehavior<T>(this AttackModel) Method
 
-(Cross-Game compatible) Return the first Behavior of type T
+Return the first Behavior of type T
 
 ```csharp
 public static T GetBehavior<T>(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel model)
@@ -69,7 +69,7 @@ The Behavior you want
 
 ## AttackModelBehaviorExt.GetBehaviors<T>(this AttackModel) Method
 
-(Cross-Game compatible) Return all Behaviors of type T
+Return all Behaviors of type T
 
 ```csharp
 public static System.Collections.Generic.List<T> GetBehaviors<T>(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel model)
@@ -95,7 +95,7 @@ The Behavior you want
 
 ## AttackModelBehaviorExt.HasBehavior<T>(this AttackModel) Method
 
-(Cross-Game compatible) Check if this has a specific Behavior
+Check if this has a specific Behavior
 
 ```csharp
 public static bool HasBehavior<T>(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel model)
@@ -121,7 +121,7 @@ The Behavior you're checking for
 
 ## AttackModelBehaviorExt.RemoveBehavior<T>(this AttackModel) Method
 
-(Cross-Game compatible) Remove the first Behavior of Type T
+Remove the first Behavior of Type T
 
 ```csharp
 public static void RemoveBehavior<T>(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel model)
@@ -144,7 +144,7 @@ The Behavior you want to remove
 
 ## AttackModelBehaviorExt.RemoveBehavior<T>(this AttackModel, T) Method
 
-(Cross-Game compatible) Remove the first Behavior of type T
+Remove the first Behavior of type T
 
 ```csharp
 public static void RemoveBehavior<T>(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel model, T behavior)
@@ -171,7 +171,7 @@ The Behavior you want to remove
 
 ## AttackModelBehaviorExt.RemoveBehaviors<T>(this AttackModel) Method
 
-(Cross-Game compatible) Remove all Behaviors of type T
+Remove all Behaviors of type T
 
 ```csharp
 public static void RemoveBehaviors<T>(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel model)

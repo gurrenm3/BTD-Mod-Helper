@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## ModModelExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## ModModelExt.AddMutator(this ModModel, MutatorModModel) Method
 
-(Cross-Game compatible) Add a Mutator to this ModModel
+Add a Mutator to this ModModel
 
 ```csharp
 public static void AddMutator(this Assets.Scripts.Models.Towers.Mods.ModModel model, Assets.Scripts.Models.Towers.Mods.MutatorModModel mutator);
@@ -35,7 +35,7 @@ public static void AddMutator(this Assets.Scripts.Models.Towers.Mods.ModModel mo
 
 ## ModModelExt.GetMutator<T>(this ModModel) Method
 
-(Cross-Game compatible) Return the first Mutator of type T, or null if there isn't one
+Return the first Mutator of type T, or null if there isn't one
 
 ```csharp
 public static T GetMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model)
@@ -61,7 +61,7 @@ The Mutator you want
 
 ## ModModelExt.GetMutator<T>(this ModModel, int) Method
 
-(Cross-Game compatible) Return the index'th Mutator of type T, or null
+Return the index'th Mutator of type T, or null
 
 ```csharp
 public static T GetMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model, int index)
@@ -91,7 +91,7 @@ The Mutator you want
 
 ## ModModelExt.GetMutator<T>(this ModModel, string) Method
 
-(Cross-Game compatible) Return the first Mutator of type T whose name contains the given string, or null
+Return the first Mutator of type T whose name contains the given string, or null
 
 ```csharp
 public static T GetMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model, string nameContains)
@@ -121,7 +121,7 @@ The Mutator you want
 
 ## ModModelExt.GetMutators<T>(this ModModel) Method
 
-(Cross-Game compatible) Return all Mutators of type T
+Return all Mutators of type T
 
 ```csharp
 public static System.Collections.Generic.IEnumerable<T> GetMutators<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model)
@@ -147,7 +147,7 @@ The Mutator you want
 
 ## ModModelExt.HasMutator<T>(this ModModel) Method
 
-(Cross-Game compatible) Check if this has a specific Mutator
+Check if this has a specific Mutator
 
 ```csharp
 public static bool HasMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model)
@@ -173,7 +173,7 @@ The Mutator you're checking for
 
 ## ModModelExt.HasMutator<T>(this ModModel, T) Method
 
-(Cross-Game compatible) Check if this has a specific Mutator and return it
+Check if this has a specific Mutator and return it
 
 ```csharp
 public static bool HasMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model, out T mutator)
@@ -203,7 +203,7 @@ The Mutator you're checking for
 
 ## ModModelExt.RemoveMutator(this ModModel, MutatorModModel) Method
 
-(Cross-Game compatible) Removes a specific mutator from a tower
+Removes a specific mutator from a tower
 
 ```csharp
 public static void RemoveMutator(this Assets.Scripts.Models.Towers.Mods.ModModel model, Assets.Scripts.Models.Towers.Mods.MutatorModModel mutator);
@@ -222,7 +222,7 @@ public static void RemoveMutator(this Assets.Scripts.Models.Towers.Mods.ModModel
 
 ## ModModelExt.RemoveMutator<T>(this ModModel) Method
 
-(Cross-Game compatible) Remove the first Mutator of Type T
+Remove the first Mutator of Type T
 
 ```csharp
 public static void RemoveMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model)
@@ -245,7 +245,7 @@ The Mutator you want to remove
 
 ## ModModelExt.RemoveMutator<T>(this ModModel, int) Method
 
-(Cross-Game compatible) Remove the index'th Mutator of Type T
+Remove the index'th Mutator of Type T
 
 ```csharp
 public static void RemoveMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model, int index)
@@ -272,7 +272,7 @@ The Mutator you want to remove
 
 ## ModModelExt.RemoveMutator<T>(this ModModel, string) Method
 
-(Cross-Game compatible) Remove the first Mutator of Type T whose name contains a certain string
+Remove the first Mutator of Type T whose name contains a certain string
 
 ```csharp
 public static void RemoveMutator<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model, string nameContains)
@@ -299,7 +299,7 @@ The Mutator you want to remove
 
 ## ModModelExt.RemoveMutators<T>(this ModModel) Method
 
-(Cross-Game compatible) Remove all Mutators of type T
+Remove all Mutators of type T
 
 ```csharp
 public static void RemoveMutators<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model)
@@ -320,7 +320,7 @@ public static void RemoveMutators<T>(this Assets.Scripts.Models.Towers.Mods.ModM
 
 ## ModModelExt.UseRoundSet<T>(this ModModel) Method
 
-(Cross-Game compatible) Makes this GameMode use the given RoundSet
+Makes this GameMode use the given RoundSet
 
 ```csharp
 public static void UseRoundSet<T>(this Assets.Scripts.Models.Towers.Mods.ModModel model)

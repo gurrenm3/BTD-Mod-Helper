@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Bloons](index.md#BTD_Mod_Helper.Api.Bloons 'BTD_Mod_Helper.Api.Bloons')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Bloons](README.md#BTD_Mod_Helper.Api.Bloons 'BTD_Mod_Helper.Api.Bloons')
 
 ## ModRoundSet Class
 
@@ -118,19 +118,6 @@ public virtual Assets.Scripts.Utils.SpriteReference IconReference { get; }
 
 #### Property Value
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
-
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.RegistrationPriority'></a>
-
-## ModRoundSet.RegistrationPriority Property
-
-RoundSets register Bloons and before GameModes
-
-```csharp
-protected override float RegistrationPriority { get; }
-```
-
-#### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.GetHint(int)'></a>

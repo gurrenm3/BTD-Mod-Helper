@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## UnityDisplayNodeExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## UnityDisplayNodeExt.Get3DModels(this UnityDisplayNode) Method
 
-(Cross-Game compatible) Get all 3D models attached to this UnityDisplayNode.
+Get all 3D models attached to this UnityDisplayNode.
 
 ```csharp
 public static System.Collections.Generic.List<UnityEngine.Transform> Get3DModels(this Assets.Scripts.Unity.Display.UnityDisplayNode unityDisplayNode);
@@ -34,7 +34,7 @@ public static System.Collections.Generic.List<UnityEngine.Transform> Get3DModels
 
 ## UnityDisplayNodeExt.GetBone(this UnityDisplayNode, string) Method
 
-(Cross-Game compatible) Gets the transform associated with the given bone
+Gets the transform associated with the given bone
 
 ```csharp
 public static UnityEngine.Transform GetBone(this Assets.Scripts.Unity.Display.UnityDisplayNode unityDisplayNode, string boneName);
@@ -56,7 +56,7 @@ public static UnityEngine.Transform GetBone(this Assets.Scripts.Unity.Display.Un
 
 ## UnityDisplayNodeExt.GetMeshRenderer(this UnityDisplayNode, int, bool) Method
 
-(Cross-Game compatible) Gets the first (or an indexed) SkinnedMeshRenderer/MeshRenderer
+Gets the first (or an indexed) SkinnedMeshRenderer/MeshRenderer
 
 ```csharp
 public static UnityEngine.Renderer GetMeshRenderer(this Assets.Scripts.Unity.Display.UnityDisplayNode node, int index=0, bool recalculate=true);
@@ -82,7 +82,7 @@ public static UnityEngine.Renderer GetMeshRenderer(this Assets.Scripts.Unity.Dis
 
 ## UnityDisplayNodeExt.GetMeshRenderers(this UnityDisplayNode, bool) Method
 
-(Cross-Game compatible) Gets all renderers that are of type SkinnedMeshRenderer or MeshRenderer
+Gets all renderers that are of type SkinnedMeshRenderer or MeshRenderer
 
 ```csharp
 public static System.Collections.Generic.List<UnityEngine.Renderer> GetMeshRenderers(this Assets.Scripts.Unity.Display.UnityDisplayNode node, bool recalculate=true);
@@ -104,7 +104,7 @@ public static System.Collections.Generic.List<UnityEngine.Renderer> GetMeshRende
 
 ## UnityDisplayNodeExt.GetRenderer<T>(this UnityDisplayNode, bool) Method
 
-(Cross-Game compatible) Gets the first generic renderer of the specified type, recalculating the renderers if need be
+Gets the first generic renderer of the specified type, recalculating the renderers if need be
 
 ```csharp
 public static T GetRenderer<T>(this Assets.Scripts.Unity.Display.UnityDisplayNode node, bool recalculate=true)
@@ -138,7 +138,7 @@ Whether to recalculate renderers
 
 ## UnityDisplayNodeExt.GetRenderers(this UnityDisplayNode, bool) Method
 
-(Cross-Game compatible) Gets all generic renderers on this UnityDisplayNode, recalculating the renderers if need be
+Gets all generic renderers on this UnityDisplayNode, recalculating the renderers if need be
 
 ```csharp
 public static System.Collections.Generic.List<UnityEngine.Renderer> GetRenderers(this Assets.Scripts.Unity.Display.UnityDisplayNode node, bool recalculate=true);
@@ -164,7 +164,7 @@ Whether to recalculate renderers
 
 ## UnityDisplayNodeExt.GetRenderers<T>(this UnityDisplayNode, bool) Method
 
-(Cross-Game compatible) Gets all generic renderers of the specified type, recalculating the renderers if need be
+Gets all generic renderers of the specified type, recalculating the renderers if need be
 
 ```csharp
 public static System.Collections.Generic.List<T> GetRenderers<T>(this Assets.Scripts.Unity.Display.UnityDisplayNode node, bool recalculate=true)
@@ -198,8 +198,7 @@ Whether to recalculate renderers
 
 ## UnityDisplayNodeExt.PrintInfo(this UnityDisplayNode) Method
 
-(Cross-Game compatible) Prints relevant info about this node to the console including:  
-<br/>
+Prints relevant info about this node to the console
 
 ```csharp
 public static void PrintInfo(this Assets.Scripts.Unity.Display.UnityDisplayNode node);
@@ -214,7 +213,7 @@ public static void PrintInfo(this Assets.Scripts.Unity.Display.UnityDisplayNode 
 
 ## UnityDisplayNodeExt.RemoveBone(this UnityDisplayNode, string, bool) Method
 
-(Cross-Game compatible) Removes (hides) a given bone
+Removes (hides) a given bone
 
 ```csharp
 public static void RemoveBone(this Assets.Scripts.Unity.Display.UnityDisplayNode unityDisplayNode, string boneName, bool alreadyUnbound=false);
@@ -237,7 +236,7 @@ public static void RemoveBone(this Assets.Scripts.Unity.Display.UnityDisplayNode
 
 ## UnityDisplayNodeExt.SaveMeshTexture(this UnityDisplayNode, int, string) Method
 
-(Cross-Game compatible) Saves the texture used for this node's mesh renderer   
+Saves the texture used for this node's mesh renderer   
 <br/>  
 By default, this saves to local files, aka "C:\Users\...\AppData\LocalLow\Ninja Kiwi\BloonsTD6"
 

@@ -140,7 +140,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Check if this has a specific Behavior
+        /// Check if this has a specific Behavior
         /// </summary>
         /// <typeparam name="T">The Behavior you're checking for</typeparam>
         public static bool HasBehavior<T>(this Model model) where T : Model
@@ -149,7 +149,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Check if this has a specific Behavior and return it
+        /// Check if this has a specific Behavior and return it
         /// </summary>
         /// <typeparam name="T">The Behavior you're checking for</typeparam>
         public static bool HasBehavior<T>(this Model model, out T behavior) where T : Model
@@ -159,7 +159,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first Behavior of type T, or null if there isn't one
+        /// Return the first Behavior of type T, or null if there isn't one
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static T GetBehavior<T>(this Model model) where T : Model
@@ -168,7 +168,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the index'th Behavior of type T, or null
+        /// Return the index'th Behavior of type T, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static T GetBehavior<T>(this Model model, int index) where T : Model
@@ -177,7 +177,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first Behavior of type T whose name contains the given string, or null
+        /// Return the first Behavior of type T whose name contains the given string, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static T GetBehavior<T>(this Model model, string nameContains) where T : Model
@@ -186,7 +186,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return all Behaviors of type T
+        /// Return all Behaviors of type T
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static IEnumerable<T> GetBehaviors<T>(this Model model) where T : Model
@@ -195,7 +195,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Add a Behavior to this model
+        /// Add a Behavior to this model
         /// </summary>
         public static void AddBehavior(this Model model, Model behavior)
         {
@@ -208,7 +208,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Remove the first Behavior of Type T
+        /// Remove the first Behavior of Type T
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         public static void RemoveBehavior<T>(this Model model) where T : Model
@@ -220,7 +220,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Remove the index'th Behavior of Type T
+        /// Remove the index'th Behavior of Type T
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         public static void RemoveBehavior<T>(this Model model, int index) where T : Model
@@ -233,7 +233,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Remove the first Behavior of Type T whose name contains a certain string
+        /// Remove the first Behavior of Type T whose name contains a certain string
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         public static void RemoveBehavior<T>(this Model model, string nameContains) where T : Model
@@ -246,7 +246,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Removes a specific behavior from a tower
+        /// Removes a specific behavior from a tower
         /// </summary>
         public static void RemoveBehavior(this Model model, Model behavior)
         {
@@ -259,7 +259,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Remove all Behaviors of type T
+        /// Remove all Behaviors of type T
         /// </summary>
         public static void RemoveBehaviors<T>(this Model model) where T : Model
         {

@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## SpriteReferenceExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## SpriteReferenceExt.GetGUID(this SpriteReference) Method
 
-(Cross-Game compatible) Returns's the GUID of this SpriteReference
+Returns's the GUID of this SpriteReference
 
 ```csharp
 public static string GetGUID(this Assets.Scripts.Utils.SpriteReference spriteReference);

@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Towers](index.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Towers](README.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
 
 ## ModUpgrade Class
 
@@ -195,19 +195,6 @@ public virtual int Priority { get; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RegistrationPriority'></a>
-
-## ModUpgrade.RegistrationPriority Property
-
-ModUpgrades register second
-
-```csharp
-protected sealed override float RegistrationPriority { get; }
-```
-
-#### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tier'></a>
 

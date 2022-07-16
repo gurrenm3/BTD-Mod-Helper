@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## GameObjectExt Class
 
@@ -303,7 +303,7 @@ public static T GetComponent<T>(this UnityEngine.GameObject gameObject, string c
 
 ## GameObjectExt.GetComponentInChildrenByName<T>(this GameObject, string) Method
 
-(Cross-Game compatible) Try to get a component in a child of this GameObject by it's name. Equivelant to a foreach with GetComponentsInChildren
+Try to get a component in a child of this GameObject by it's name. Equivelant to a foreach with GetComponentsInChildren
 
 ```csharp
 public static T GetComponentInChildrenByName<T>(this UnityEngine.GameObject gameObject, string componentName)
@@ -383,7 +383,7 @@ public static bool HasComponent<T>(this UnityEngine.GameObject gameObject, out T
 
 ## GameObjectExt.Hide(this GameObject) Method
 
-(Cross-Game compatible) Makes the Game Object hidden (not visible) by setting the scale to zero
+Makes the Game Object hidden (not visible) by setting the scale to zero
 
 ```csharp
 public static void Hide(this UnityEngine.GameObject gameObject);
@@ -438,7 +438,7 @@ public static void RemoveComponent<T>(this UnityEngine.GameObject gameObject)
 
 ## GameObjectExt.Show(this GameObject) Method
 
-(Cross-Game compatible) Makes the Game Object visible by setting the scale to the default value of 1
+Makes the Game Object visible by setting the scale to the default value of 1
 
 ```csharp
 public static void Show(this UnityEngine.GameObject gameObject);
@@ -453,7 +453,7 @@ public static void Show(this UnityEngine.GameObject gameObject);
 
 ## GameObjectExt.TranslateScaled(this GameObject, Vector3) Method
 
-(Cross-Game compatible) Translates this GameObject scaled with it's "lossyScale", making it move the same  
+Translates this GameObject scaled with it's "lossyScale", making it move the same  
 amount regardless of screen resolution
 
 ```csharp

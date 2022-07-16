@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## ListExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## ListExt.Duplicate<T>(this List<T>) Method
 
-(Cross-Game compatible) Return a duplicate of this
+Return a duplicate of this
 
 ```csharp
 public static System.Collections.Generic.List<T> Duplicate<T>(this System.Collections.Generic.List<T> list);
@@ -39,7 +39,7 @@ public static System.Collections.Generic.List<T> Duplicate<T>(this System.Collec
 
 ## ListExt.DuplicateAs<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return a duplicate of this as type TCast
+Return a duplicate of this as type TCast
 
 ```csharp
 public static System.Collections.Generic.List<TCast> DuplicateAs<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
@@ -68,7 +68,7 @@ public static System.Collections.Generic.List<TCast> DuplicateAs<TSource,TCast>(
 
 ## ListExt.GetItemOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return the first item of type TCast
+Return the first item of type TCast
 
 ```csharp
 public static TCast GetItemOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
@@ -99,7 +99,7 @@ The Type of the Item you want
 
 ## ListExt.GetItemsOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return all Items of type TCast
+Return all Items of type TCast
 
 ```csharp
 public static System.Collections.Generic.List<TCast> GetItemsOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
@@ -130,7 +130,7 @@ The Type of the Items you want
 
 ## ListExt.HasItemsOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Check if this has any items of type TCast
+Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
@@ -161,7 +161,7 @@ The Type you're checking for
 
 ## ListExt.LoadFromFile<T>(this List<T>, string) Method
 
-(Cross-Game compatible) Load a List from a FilePath
+Load a List from a FilePath
 
 ```csharp
 public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath);
@@ -191,7 +191,7 @@ The loaded List if successful, otherwise default value
 
 ## ListExt.LoadFromFile<T>(this List<T>, string, bool) Method
 
-(Cross-Game compatible) Load a List from a FilePath
+Load a List from a FilePath
 
 ```csharp
 public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath, out bool success);
@@ -227,7 +227,7 @@ The loaded List if successful, otherwise default value
 
 ## ListExt.RemoveItem<TSource,TCast>(this List<TSource>, TCast) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static System.Collections.Generic.List<TSource> RemoveItem<TSource,TCast>(this System.Collections.Generic.List<TSource> list, TCast itemToRemove)
@@ -264,7 +264,7 @@ The specific Item to remove
 
 ## ListExt.RemoveItemOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static System.Collections.Generic.List<TSource> RemoveItemOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
@@ -295,7 +295,7 @@ The Type of the Item you want to remove
 
 ## ListExt.RemoveItemsOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return this with all Items of type TCast removed
+Return this with all Items of type TCast removed
 
 ```csharp
 public static System.Collections.Generic.List<TSource> RemoveItemsOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
@@ -326,7 +326,7 @@ The Type of the Items that you want to remove
 
 ## ListExt.SaveToFile<T>(this List<T>, string) Method
 
-(Cross-Game compatible) Save a list to file
+Save a list to file
 
 ```csharp
 public static bool SaveToFile<T>(this System.Collections.Generic.List<T> list, string filePath);
@@ -358,7 +358,7 @@ True if successful, false if it fails
 
 ## ListExt.ToIl2CppList<T>(this List<T>) Method
 
-(Cross-Game compatible) Return as Il2CppSystem.List
+Return as Il2CppSystem.List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this System.Collections.Generic.List<T> list);
@@ -381,7 +381,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Syst
 
 ## ListExt.ToIl2CppReferenceArray<T>(this List<T>) Method
 
-(Cross-Game compatible) Return as Il2CppReferenceArray
+Return as Il2CppReferenceArray
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T> list)
@@ -405,7 +405,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 
 ## ListExt.ToLockList<T>(this List<T>) Method
 
-(Cross-Game compatible) Return as LockList
+Return as LockList
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> list);

@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Towers](index.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Towers](README.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
 
 ## ModVanillaContent Class
 
@@ -58,7 +58,7 @@ public virtual string DisplayName { get; }
 
 ## ModVanillaContent.Name Property
 
-(Cross-Game compatible) The name that will be at the end of the ID for this ModContent, by default the class name
+The name that will be at the end of the ID for this ModContent, by default the class name
 
 ```csharp
 public sealed override string Name { get; }

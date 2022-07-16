@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## LockedListExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## LockedListExt.AddTo<TSource,TCast>(this LockList<TSource>, TCast) Method
 
-(Cross-Game compatible) Return this with an additional Item added to it
+Return this with an additional Item added to it
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<TSource> AddTo<TSource,TCast>(this Assets.Scripts.Utils.LockList<TSource> lockList, TCast objectToAdd)
@@ -53,7 +53,7 @@ Item to add
 
 ## LockedListExt.Duplicate<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return a duplicate of this
+Return a duplicate of this
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<T> Duplicate<T>(this Assets.Scripts.Utils.LockList<T> list);
@@ -76,7 +76,7 @@ public static Assets.Scripts.Utils.LockList<T> Duplicate<T>(this Assets.Scripts.
 
 ## LockedListExt.DuplicateAs<TSource,TCast>(this LockList<TSource>) Method
 
-(Cross-Game compatible) Return a duplicate of this as type TCast
+Return a duplicate of this as type TCast
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<TCast> DuplicateAs<TSource,TCast>(this Assets.Scripts.Utils.LockList<TSource> list)
@@ -105,7 +105,7 @@ public static Assets.Scripts.Utils.LockList<TCast> DuplicateAs<TSource,TCast>(th
 
 ## LockedListExt.GetItemsOfType<TSource,TCast>(this LockList<TSource>) Method
 
-(Cross-Game compatible) Return all Items of type TCast
+Return all Items of type TCast
 
 ```csharp
 public static System.Collections.Generic.List<TCast> GetItemsOfType<TSource,TCast>(this Assets.Scripts.Utils.LockList<TSource> lockList)
@@ -136,7 +136,7 @@ The Type of the Items you want
 
 ## LockedListExt.HasItemsOfType<TSource,TCast>(this LockList<TSource>) Method
 
-(Cross-Game compatible) Check if this has any items of type TCast
+Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this Assets.Scripts.Utils.LockList<TSource> lockList)
@@ -167,7 +167,7 @@ The Type you're checking for
 
 ## LockedListExt.RemoveItem<TSource,TCast>(this LockList<TSource>, TCast) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<TSource> RemoveItem<TSource,TCast>(this Assets.Scripts.Utils.LockList<TSource> lockList, TCast itemToRemove)
@@ -204,7 +204,7 @@ The specific Item to remove
 
 ## LockedListExt.RemoveItemOfType<TSource,TCast>(this LockList<TSource>) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<TSource> RemoveItemOfType<TSource,TCast>(this Assets.Scripts.Utils.LockList<TSource> lockList)
@@ -235,7 +235,7 @@ The Type of the Item you want to remove
 
 ## LockedListExt.RemoveItemsOfType<TSource,TCast>(this LockList<TSource>) Method
 
-(Cross-Game compatible) Return this with all Items of type TCast removed
+Return this with all Items of type TCast removed
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<TSource> RemoveItemsOfType<TSource,TCast>(this Assets.Scripts.Utils.LockList<TSource> lockList)
@@ -266,7 +266,7 @@ The Type of the Items that you want to remove
 
 ## LockedListExt.ToArray<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return as System.Array
+Return as System.Array
 
 ```csharp
 public static T[] ToArray<T>(this Assets.Scripts.Utils.LockList<T> lockList);
@@ -289,7 +289,7 @@ public static T[] ToArray<T>(this Assets.Scripts.Utils.LockList<T> lockList);
 
 ## LockedListExt.ToIl2CppList<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return as Il2CppSystem.List
+Return as Il2CppSystem.List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Assets.Scripts.Utils.LockList<T> lockList);
@@ -312,7 +312,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Asse
 
 ## LockedListExt.ToIl2CppReferenceArray<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return as Il2CppReferenceArray
+Return as Il2CppReferenceArray
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this Assets.Scripts.Utils.LockList<T> lockList)
@@ -336,7 +336,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 
 ## LockedListExt.ToList<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return as System.List
+Return as System.List
 
 ```csharp
 public static System.Collections.Generic.List<T> ToList<T>(this Assets.Scripts.Utils.LockList<T> lockList);

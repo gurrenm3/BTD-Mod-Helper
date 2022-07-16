@@ -9,7 +9,7 @@ using Assets.Scripts.Data.Global;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
-/// 
+/// Class for adding a custom Hero to the game. Use alongside <see cref="ModHeroLevel"/> to give multiple levels.
 /// </summary>
 public abstract class ModHero : ModTower
 {
@@ -46,12 +46,7 @@ public abstract class ModHero : ModTower
     /// No paragon heroes
     /// </summary>
     public sealed override ParagonMode ParagonMode => ParagonMode.None;
-
-    /// <summary>
-    /// No Order among different custom heroes
-    /// </summary>
-    public sealed override int Order => base.Order;
-
+    
     /// <summary>
     /// The default hero (or tower) to base your hero off of
     /// </summary>

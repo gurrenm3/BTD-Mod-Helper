@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## TowerExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## TowerExt.GetDisplayNode(this Tower) Method
 
-(Cross-Game compatible) Return the DisplayNode for this Tower
+Return the DisplayNode for this Tower
 
 ```csharp
 public static Assets.Scripts.Simulation.Display.DisplayNode GetDisplayNode(this Assets.Scripts.Simulation.Towers.Tower tower);
@@ -34,7 +34,7 @@ public static Assets.Scripts.Simulation.Display.DisplayNode GetDisplayNode(this 
 
 ## TowerExt.GetFactory(this Tower) Method
 
-(Cross-Game compatible) Return the Factory that creates Towers
+Return the Factory that creates Towers
 
 ```csharp
 public static Assets.Scripts.Simulation.Factory.Factory<Assets.Scripts.Simulation.Towers.Tower> GetFactory(this Assets.Scripts.Simulation.Towers.Tower tower);
@@ -70,7 +70,7 @@ public static Assets.Scripts.Unity.Display.Animation.MonkeyAnimationController G
 
 ## TowerExt.GetTowerToSim(this Tower) Method
 
-(Cross-Game compatible) Return the TowerToSimulation for this specific Tower
+Return the TowerToSimulation for this specific Tower
 
 ```csharp
 public static Assets.Scripts.Unity.Bridge.TowerToSimulation GetTowerToSim(this Assets.Scripts.Simulation.Towers.Tower tower);
@@ -88,7 +88,7 @@ public static Assets.Scripts.Unity.Bridge.TowerToSimulation GetTowerToSim(this A
 
 ## TowerExt.GetUnityDisplayNode(this Tower) Method
 
-(Cross-Game compatible) Return the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
+Return the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
 
 ```csharp
 public static Assets.Scripts.Unity.Display.UnityDisplayNode GetUnityDisplayNode(this Assets.Scripts.Simulation.Towers.Tower tower);
@@ -106,7 +106,7 @@ public static Assets.Scripts.Unity.Display.UnityDisplayNode GetUnityDisplayNode(
 
 ## TowerExt.SellTower(this Tower) Method
 
-(Cross-Game compatible) Sell this tower
+Sell this tower
 
 ```csharp
 public static void SellTower(this Assets.Scripts.Simulation.Towers.Tower tower);
@@ -121,7 +121,7 @@ public static void SellTower(this Assets.Scripts.Simulation.Towers.Tower tower);
 
 ## TowerExt.SetTowerModel(this Tower, TowerModel) Method
 
-(Cross-Game compatible) Change TowerModel to a different one. Will update display
+Change TowerModel to a different one. Will update display
 
 ```csharp
 public static void SetTowerModel(this Assets.Scripts.Simulation.Towers.Tower tower, Assets.Scripts.Models.Towers.TowerModel towerModel);

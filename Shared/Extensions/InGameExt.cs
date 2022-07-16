@@ -23,7 +23,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class InGameExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Returns whether or not the player is currently in a game.
+        /// Returns whether or not the player is currently in a game.
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
@@ -33,7 +33,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the current Map
+        /// Get the current Map
         /// </summary>
         public static Map GetMap(this InGame inGame)
         {
@@ -41,7 +41,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the current Simulation for this InGame session
+        /// Get the current Simulation for this InGame session
         /// </summary>
         public static Simulation GetSimulation(this InGame inGame)
         {
@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) The Game.model that is being used for this InGame.instance
+        /// The Game.model that is being used for this InGame.instance
         /// </summary>
         public static GameModel GetGameModel(this InGame inGame)
         {
@@ -57,7 +57,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the main Factory that creates and manages all other Factories
+        /// Get the main Factory that creates and manages all other Factories
         /// </summary>
         public static FactoryFactory GetMainFactory(this InGame inGame)
         {
@@ -65,7 +65,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the Factory for a specific Type. Ex: Getting the Factory that makes Towers
+        /// Get the Factory for a specific Type. Ex: Getting the Factory that makes Towers
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="inGame"></param>
@@ -76,7 +76,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get every Tower that has been created through the Tower Factory
+        /// Get every Tower that has been created through the Tower Factory
         /// </summary>
         /// <param name="inGame"></param>
         /// <param name="name">Optionally only get Towers whose TowerModel name is this parameter</param>
@@ -91,7 +91,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get all TowerToSimulations
+        /// Get all TowerToSimulations
         /// </summary>
         /// <param name="inGame"></param>
         /// /// <param name="name">Optionally only get Towers whose TowerModel name is this parameter</param>
@@ -107,7 +107,7 @@ namespace BTD_Mod_Helper.Extensions
 
 
         /// <summary>
-        /// (Cross-Game compatible) Get's all Bloons on the map
+        /// Get's all Bloons on the map
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
@@ -121,7 +121,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get's all existing BloonToSimulations
+        /// Get's all existing BloonToSimulations
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
@@ -132,7 +132,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get's all existing Projectiles on the map
+        /// Get's all existing Projectiles on the map
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
@@ -142,7 +142,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the current TowerManager for this game session
+        /// Get the current TowerManager for this game session
         /// </summary>
         public static TowerManager GetTowerManager(this InGame inGame)
         {
@@ -150,7 +150,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get's all AbilityToSimulations currently in the game
+        /// Get's all AbilityToSimulations currently in the game
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
@@ -164,7 +164,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get's the UnityToSimulation for this game
+        /// Get's the UnityToSimulation for this game
         /// </summary>
         /// <param name="inGame"></param>
         /// <returns></returns>
@@ -179,7 +179,7 @@ namespace BTD_Mod_Helper.Extensions
 
 
         /// <summary>
-        /// (Cross-Game compatible) Gets all objects of type T. Does this by returning all objects created by the Factory of type T
+        /// Gets all objects of type T. Does this by returning all objects created by the Factory of type T
         /// </summary>
         /// <typeparam name="T">The type of items you want</typeparam>
         public static List<T> GetAllObjectsOfType<T>(this InGame inGame) where T : RootObject, new()

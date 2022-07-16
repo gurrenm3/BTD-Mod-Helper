@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## BloonToSimulationExt Class
 
@@ -70,7 +70,7 @@ public static float GetDistanceTravelled(this Assets.Scripts.Unity.Bridge.BloonT
 
 ## BloonToSimulationExt.GetId(this BloonToSimulation) Method
 
-(Cross-Game compatible) Return the Id of this BloonToSimulation
+Return the Id of this BloonToSimulation
 
 ```csharp
 public static int GetId(this Assets.Scripts.Unity.Bridge.BloonToSimulation bloonToSim);

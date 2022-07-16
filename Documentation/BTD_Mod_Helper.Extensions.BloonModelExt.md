@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## BloonModelExt Class
 
@@ -35,7 +35,7 @@ public static void AddTag(this Assets.Scripts.Models.Bloons.BloonModel bloonMode
 
 ## BloonModelExt.AddToChildren(this BloonModel, string, int) Method
 
-(Cross-Game compatible) Adds a child to be spawned from the Bloon
+Adds a child to be spawned from the Bloon
 
 ```csharp
 public static void AddToChildren(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, string id, int amount=1);
@@ -58,7 +58,7 @@ public static void AddToChildren(this Assets.Scripts.Models.Bloons.BloonModel bl
 
 ## BloonModelExt.AddToChildren<T>(this BloonModel, int) Method
 
-(Cross-Game compatible) Adds a child to be spawned from the Bloon
+Adds a child to be spawned from the Bloon
 
 ```csharp
 public static void AddToChildren<T>(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, int amount=1)
@@ -83,7 +83,7 @@ public static void AddToChildren<T>(this Assets.Scripts.Models.Bloons.BloonModel
 
 ## BloonModelExt.ApplyDisplay<T>(this BloonModel) Method
 
-(Cross-Game compatible) Applies a given ModDisplay to this TowerModel
+Applies a given ModDisplay to this TowerModel
 
 ```csharp
 public static void ApplyDisplay<T>(this Assets.Scripts.Models.Bloons.BloonModel bloonModel)
@@ -106,7 +106,7 @@ The type of ModDisplay
 
 ## BloonModelExt.CreateBloonEmissionModel(this BloonModel, int, int) Method
 
-(Cross-Game compatible) Create a BloonEmissionModel from this BloonModel
+Create a BloonEmissionModel from this BloonModel
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> CreateBloonEmissionModel(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, int count, int spacing);
@@ -136,7 +136,7 @@ Space between each bloon in this emission model
 
 ## BloonModelExt.FindChangedBloonId(this BloonModel, Action<BloonModel>) Method
 
-(Cross-Game compatible) Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
+Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
 
 ```csharp
 public static string FindChangedBloonId(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, System.Action<Assets.Scripts.Models.Bloons.BloonModel> change);
@@ -158,7 +158,7 @@ public static string FindChangedBloonId(this Assets.Scripts.Models.Bloons.BloonM
 
 ## BloonModelExt.GetAllBloonToSim(this BloonModel) Method
 
-(Cross-Game compatible) Return all BloonToSimulations with this BloonModel
+Return all BloonToSimulations with this BloonModel
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.BloonToSimulation> GetAllBloonToSim(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -176,7 +176,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.BloonT
 
 ## BloonModelExt.GetBaseID(this BloonModel) Method
 
-(Cross-Game compatible) Return the Base ID of this BloonModel
+Return the Base ID of this BloonModel
 
 ```csharp
 public static string GetBaseID(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -212,7 +212,7 @@ public static Assets.Scripts.Models.Bloons.BloonModel GetBloonModel(this Assets.
 
 ## BloonModelExt.GetBloonSims(this BloonModel) Method
 
-(Cross-Game compatible) This is Obsolete, use GetAllBloonToSim instead. (Cross-Game compatible) Return all BloonToSimulations with this BloonModel
+This is Obsolete, use GetAllBloonToSim instead. Return all BloonToSimulations with this BloonModel
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.BloonToSimulation> GetBloonSims(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -230,7 +230,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.BloonT
 
 ## BloonModelExt.GetDisplayGUID(this BloonModel) Method
 
-(Cross-Game compatible) Returns the Display GUID for this BloonModel.
+Returns the Display GUID for this BloonModel.
 
 ```csharp
 public static string GetDisplayGUID(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -248,7 +248,7 @@ public static string GetDisplayGUID(this Assets.Scripts.Models.Bloons.BloonModel
 
 ## BloonModelExt.GetIndex(this BloonModel) Method
 
-(Cross-Game compatible) Return the number position of this bloon from the list of all bloons (Game.instance.model.bloons)
+Return the number position of this bloon from the list of all bloons (Game.instance.model.bloons)
 
 ```csharp
 public static int GetIndex(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -266,7 +266,7 @@ public static int GetIndex(this Assets.Scripts.Models.Bloons.BloonModel bloonMod
 
 ## BloonModelExt.GetModBloon(this BloonModel) Method
 
-(Cross-Game compatible) Gets the ModBloon associated with this BloonModel  
+Gets the ModBloon associated with this BloonModel  
 <br/>  
 If there is no associated ModBloon, returns null
 
@@ -286,7 +286,7 @@ public static BTD_Mod_Helper.Api.Bloons.ModBloon GetModBloon(this Assets.Scripts
 
 ## BloonModelExt.GetSpawnChildrenModel(this BloonModel, bool) Method
 
-(Cross-Game compatible) Gets the SpawnChildrenModel for the bloon, and optionally creates one if it doesn't exist
+Gets the SpawnChildrenModel for the bloon, and optionally creates one if it doesn't exist
 
 ```csharp
 public static Assets.Scripts.Models.Bloons.Behaviors.SpawnChildrenModel GetSpawnChildrenModel(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, bool addIfNotExists=false);
@@ -332,7 +332,7 @@ How many layers of bloons to pop, ignoring layer health. If less than 0, calcula
 
 ## BloonModelExt.IsCamoBloon(this BloonModel) Method
 
-(Cross-Game compatible) Returns whether or not this BloonModel is a Camo bloon.
+Returns whether or not this BloonModel is a Camo bloon.
 
 ```csharp
 public static bool IsCamoBloon(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -350,7 +350,7 @@ public static bool IsCamoBloon(this Assets.Scripts.Models.Bloons.BloonModel bloo
 
 ## BloonModelExt.IsFortifiedBloon(this BloonModel) Method
 
-(Cross-Game compatible) Returns whether or not this BloonModel is a Fortified bloon.
+Returns whether or not this BloonModel is a Fortified bloon.
 
 ```csharp
 public static bool IsFortifiedBloon(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -368,7 +368,7 @@ public static bool IsFortifiedBloon(this Assets.Scripts.Models.Bloons.BloonModel
 
 ## BloonModelExt.IsMoabBloon(this BloonModel) Method
 
-(Cross-Game compatible) Returns whether or not this BloonModel is an MOAB-Class bloon.
+Returns whether or not this BloonModel is an MOAB-Class bloon.
 
 ```csharp
 public static bool IsMoabBloon(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -386,7 +386,7 @@ public static bool IsMoabBloon(this Assets.Scripts.Models.Bloons.BloonModel bloo
 
 ## BloonModelExt.IsRegrowBloon(this BloonModel) Method
 
-(Cross-Game compatible) Returns whether or not this BloonModel is a Regrow bloon.
+Returns whether or not this BloonModel is a Regrow bloon.
 
 ```csharp
 public static bool IsRegrowBloon(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -404,7 +404,7 @@ public static bool IsRegrowBloon(this Assets.Scripts.Models.Bloons.BloonModel bl
 
 ## BloonModelExt.MakeChildrenCamo(this BloonModel) Method
 
-(Cross-Game compatible) Makes all children of this Bloon Camo, if they can have it
+Makes all children of this Bloon Camo, if they can have it
 
 ```csharp
 public static void MakeChildrenCamo(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -419,7 +419,7 @@ public static void MakeChildrenCamo(this Assets.Scripts.Models.Bloons.BloonModel
 
 ## BloonModelExt.MakeChildrenFortified(this BloonModel) Method
 
-(Cross-Game compatible) Makes all children of this Bloon Fortified, if they can have it
+Makes all children of this Bloon Fortified, if they can have it
 
 ```csharp
 public static void MakeChildrenFortified(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -434,7 +434,7 @@ public static void MakeChildrenFortified(this Assets.Scripts.Models.Bloons.Bloon
 
 ## BloonModelExt.MakeChildrenRegrow(this BloonModel) Method
 
-(Cross-Game compatible) Makes all children of this Bloon Regrow, if they can have it
+Makes all children of this Bloon Regrow, if they can have it
 
 ```csharp
 public static void MakeChildrenRegrow(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -449,7 +449,7 @@ public static void MakeChildrenRegrow(this Assets.Scripts.Models.Bloons.BloonMod
 
 ## BloonModelExt.RemoveAllChildren(this BloonModel) Method
 
-(Cross-Game compatible) Removes all spawned children from this BloonModel
+Removes all spawned children from this BloonModel
 
 ```csharp
 public static void RemoveAllChildren(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -464,7 +464,7 @@ public static void RemoveAllChildren(this Assets.Scripts.Models.Bloons.BloonMode
 
 ## BloonModelExt.RemoveFromChildren(this BloonModel, string, int) Method
 
-(Cross-Game compatible) Removes up to amount of the given Bloon from the spawned children
+Removes up to amount of the given Bloon from the spawned children
 
 ```csharp
 public static void RemoveFromChildren(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, string id, int amount=1);
@@ -487,7 +487,7 @@ public static void RemoveFromChildren(this Assets.Scripts.Models.Bloons.BloonMod
 
 ## BloonModelExt.RemoveRegrow(this BloonModel) Method
 
-(Cross-Game compatible) Removes the Regrow behavior from this BloonModel.
+Removes the Regrow behavior from this BloonModel.
 
 ```csharp
 public static void RemoveRegrow(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -521,7 +521,7 @@ public static void RemoveTag(this Assets.Scripts.Models.Bloons.BloonModel bloonM
 
 ## BloonModelExt.ReplaceInChildren(this BloonModel, string, string) Method
 
-(Cross-Game compatible) Replaces all spawned child Bloons with the given id with the given ModBloon
+Replaces all spawned child Bloons with the given id with the given ModBloon
 
 ```csharp
 public static void ReplaceInChildren(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, string oldId, string newId);
@@ -544,7 +544,7 @@ public static void ReplaceInChildren(this Assets.Scripts.Models.Bloons.BloonMode
 
 ## BloonModelExt.ReplaceInChildren<T>(this BloonModel, string) Method
 
-(Cross-Game compatible) Replaces all spawned child Bloons that have id oldId with the given ModBloon
+Replaces all spawned child Bloons that have id oldId with the given ModBloon
 
 ```csharp
 public static void ReplaceInChildren<T>(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, string oldId)
@@ -569,7 +569,7 @@ public static void ReplaceInChildren<T>(this Assets.Scripts.Models.Bloons.BloonM
 
 ## BloonModelExt.ReplaceInChildren<TOld,TNew>(this BloonModel, string) Method
 
-(Cross-Game compatible) Replaces all spawned child Bloons of the first ModBloon type with the second ModBloon type
+Replaces all spawned child Bloons of the first ModBloon type with the second ModBloon type
 
 ```csharp
 public static void ReplaceInChildren<TOld,TNew>(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, string id)
@@ -599,7 +599,7 @@ public static void ReplaceInChildren<TOld,TNew>(this Assets.Scripts.Models.Bloon
 
 ## BloonModelExt.SetCamo(this BloonModel, bool) Method
 
-(Cross-Game compatible) Set whether or not this BloonModel is a Camo bloon.
+Set whether or not this BloonModel is a Camo bloon.
 
 ```csharp
 public static void SetCamo(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, bool isCamo);
@@ -618,7 +618,7 @@ public static void SetCamo(this Assets.Scripts.Models.Bloons.BloonModel bloonMod
 
 ## BloonModelExt.SetDisplayGUID(this BloonModel, string) Method
 
-(Cross-Game compatible) Set the Display GUID for this BloonModel.
+Set the Display GUID for this BloonModel.
 
 ```csharp
 public static void SetDisplayGUID(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, string guid);
@@ -637,7 +637,7 @@ public static void SetDisplayGUID(this Assets.Scripts.Models.Bloons.BloonModel b
 
 ## BloonModelExt.SetFortified(this BloonModel, bool) Method
 
-(Cross-Game compatible) Set whether or not this BloonModel is a Fortified bloon.
+Set whether or not this BloonModel is a Fortified bloon.
 
 ```csharp
 public static void SetFortified(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, bool isFortified);
@@ -656,7 +656,7 @@ public static void SetFortified(this Assets.Scripts.Models.Bloons.BloonModel blo
 
 ## BloonModelExt.SetMoab(this BloonModel, bool) Method
 
-(Cross-Game compatible) Set whether or not this BloonModel is a Fortified bloon.
+Set whether or not this BloonModel is a Fortified bloon.
 
 ```csharp
 public static void SetMoab(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, bool isMoabBloon);
@@ -675,7 +675,7 @@ public static void SetMoab(this Assets.Scripts.Models.Bloons.BloonModel bloonMod
 
 ## BloonModelExt.SetRegrow(this BloonModel, string, float) Method
 
-(Cross-Game compatible) Adds the Regrow behavior to this BloonModel and sets what   
+Adds the Regrow behavior to this BloonModel and sets what   
 Bloon it Regrows into.
 
 ```csharp
@@ -703,7 +703,7 @@ The rate at which this regrows.
 
 ## BloonModelExt.SetRegrowBool(this BloonModel, bool) Method
 
-(Cross-Game compatible) Set whether or not this BloonModel is a Regrow bloon.
+Set whether or not this BloonModel is a Regrow bloon.
 
 ```csharp
 private static void SetRegrowBool(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, bool isRegrow);
@@ -722,7 +722,7 @@ private static void SetRegrowBool(this Assets.Scripts.Models.Bloons.BloonModel b
 
 ## BloonModelExt.SpawnBloonModel(this BloonModel) Method
 
-(Cross-Game compatible) Spawn this BloonModel on the map right now
+Spawn this BloonModel on the map right now
 
 ```csharp
 public static void SpawnBloonModel(this Assets.Scripts.Models.Bloons.BloonModel bloonModel);

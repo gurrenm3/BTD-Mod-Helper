@@ -1,9 +1,9 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.ModOptions](index.md#BTD_Mod_Helper.Api.ModOptions 'BTD_Mod_Helper.Api.ModOptions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.ModOptions](README.md#BTD_Mod_Helper.Api.ModOptions 'BTD_Mod_Helper.Api.ModOptions')
 
 ## ModSetting<T> Class
 
-(Cross-Game compatible) Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu
+Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu
 
 ```csharp
 public abstract class ModSetting<T> : BTD_Mod_Helper.Api.ModOptions.ModSetting

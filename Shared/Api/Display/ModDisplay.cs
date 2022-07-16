@@ -24,6 +24,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// ModDisplays register first
         /// </summary>
+        /// <exclude/>
         protected sealed override float RegistrationPriority => 1;
 
         /// <inheritdoc />
@@ -68,7 +69,7 @@ namespace BTD_Mod_Helper.Api.Display
         public virtual bool ModifiesUnityObject => false;
 
         /// <summary>
-        /// (Cross-Game compatible) Sets the mesh texture to that of a named png
+        /// Sets the mesh texture to that of a named png
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="textureName">The name of the texture, without .png</param>
@@ -78,7 +79,7 @@ namespace BTD_Mod_Helper.Api.Display
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Sets the mesh texture to that of a named png
+        /// Sets the mesh texture to that of a named png
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="textureName">The name of the texture, without .png</param>
@@ -89,7 +90,7 @@ namespace BTD_Mod_Helper.Api.Display
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Applies this ModDisplay to a given BloonModel
+        /// Applies this ModDisplay to a given BloonModel
         /// </summary>
         public void Apply(BloonModel bloonModel)
         {
@@ -98,7 +99,7 @@ namespace BTD_Mod_Helper.Api.Display
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Applies this ModDisplay to a given TowerModel
+        /// Applies this ModDisplay to a given TowerModel
         /// </summary>
         public void Apply(TowerModel towerModel)
         {
@@ -109,7 +110,7 @@ namespace BTD_Mod_Helper.Api.Display
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Applies this ModDisplay to a given ProjectileModel
+        /// Applies this ModDisplay to a given ProjectileModel
         /// </summary>
         public void Apply(ProjectileModel projectileModel)
         {
@@ -120,7 +121,7 @@ namespace BTD_Mod_Helper.Api.Display
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Applies this ModDisplay to a given DisplayModel
+        /// Applies this ModDisplay to a given DisplayModel
         /// </summary>
         public void Apply(DisplayModel displayModel)
         {

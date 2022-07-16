@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## EntityExt Class
 
@@ -34,7 +34,7 @@ public static Assets.Scripts.Simulation.Display.DisplayNode GetDisplayNode(this 
 
 ## EntityExt.GetFactory(this Entity) Method
 
-(Cross-Game compatible) Return the Factory that creates Entities
+Return the Factory that creates Entities
 
 ```csharp
 public static Assets.Scripts.Simulation.Factory.Factory<Assets.Scripts.Simulation.Objects.Entity> GetFactory(this Assets.Scripts.Simulation.Objects.Entity entity);

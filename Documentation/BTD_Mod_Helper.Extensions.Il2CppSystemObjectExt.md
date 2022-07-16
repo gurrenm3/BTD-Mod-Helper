@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppSystemObjectExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppSystemObjectExt.Is<T>(this Object) Method
 
-(Cross-Game compatible) Check if object is the same type as T
+Check if object is the same type as T
 
 ```csharp
 public static bool Is<T>(this Il2CppSystem.Object instance)
@@ -42,7 +42,7 @@ Type to check
 
 ## Il2CppSystemObjectExt.Is<T>(this Object, T) Method
 
-(Cross-Game compatible) Check if object is the same type as T
+Check if object is the same type as T
 
 ```csharp
 public static bool Is<T>(this Il2CppSystem.Object instance, out T castObject)
@@ -74,7 +74,7 @@ The casted object if this is of type T
 
 ## Il2CppSystemObjectExt.IsType<T>(this Object) Method
 
-(Cross-Game compatible) Check if object is the same type as T
+Check if object is the same type as T
 
 ```csharp
 public static bool IsType<T>(this Il2CppSystem.Object instance)
@@ -100,7 +100,7 @@ Type to check
 
 ## Il2CppSystemObjectExt.IsType<T>(this Object, T) Method
 
-(Cross-Game compatible) Check if object is the same type as T
+Check if object is the same type as T
 
 ```csharp
 public static bool IsType<T>(this Il2CppSystem.Object instance, out T castObject)
@@ -132,7 +132,7 @@ The casted object if this is of type T
 
 ## Il2CppSystemObjectExt.ReferenceEquals(this Object, Object) Method
 
-(Cross-Game compatible) Is this Reference equal to another Object's Reference?
+Is this Reference equal to another Object's Reference?
 
 ```csharp
 public static bool ReferenceEquals(this Il2CppSystem.Object instance, Il2CppSystem.Object to);

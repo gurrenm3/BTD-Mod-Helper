@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Texture2DExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Texture2DExt.CreateFromColor(this Texture2D, Color) Method
 
-(Cross-Game compatible) Create Texture2D from a unity Color. Texture will only be this color
+Create Texture2D from a unity Color. Texture will only be this color
 
 ```csharp
 public static UnityEngine.Texture2D CreateFromColor(this UnityEngine.Texture2D texture2D, UnityEngine.Color color);
@@ -40,7 +40,7 @@ Color to make new texture
 
 ## Texture2DExt.CreateSpriteFromTexture(this Texture2D, float) Method
 
-(Cross-Game compatible) Create a Sprite from this Texture2D
+Create a Sprite from this Texture2D
 
 ```csharp
 public static UnityEngine.Sprite CreateSpriteFromTexture(this UnityEngine.Texture2D texture2D, float pixelsPerUnit);
@@ -64,7 +64,7 @@ Number of pixels you want in each unit. More pixels means bigger sprite in game
 
 ## Texture2DExt.CreateSpriteFromTexture(this Texture2D, float, Vector2) Method
 
-(Cross-Game compatible) Create a Sprite from this Texture2D
+Create a Sprite from this Texture2D
 
 ```csharp
 public static UnityEngine.Sprite CreateSpriteFromTexture(this UnityEngine.Texture2D texture2D, float pixelsPerUnit, UnityEngine.Vector2 pivot);
@@ -92,7 +92,7 @@ Number of pixels you want in each unit. More pixels means bigger sprite in game
 
 ## Texture2DExt.LoadFromFile(this Texture2D, string) Method
 
-(Cross-Game compatible) Create Texture2D from a file on local PC
+Create Texture2D from a file on local PC
 
 ```csharp
 public static UnityEngine.Texture2D LoadFromFile(this UnityEngine.Texture2D texture, string filePath);
@@ -116,7 +116,7 @@ path of file on PC
 
 ## Texture2DExt.SaveToPNG(this Texture2D, string) Method
 
-(Cross-Game compatible) Save Texture2D as a png to file.
+Save Texture2D as a png to file.
 
 ```csharp
 public static void SaveToPNG(this UnityEngine.Texture2D texture, string filePath);
@@ -137,7 +137,7 @@ File path to save texture to
 
 ## Texture2DExt.ToImage(this Texture2D) Method
 
-(Cross-Game compatible) Returns a new Image made out of this Texture.
+Returns a new Image made out of this Texture.
 
 ```csharp
 public static System.Drawing.Image ToImage(this UnityEngine.Texture2D texture2D);

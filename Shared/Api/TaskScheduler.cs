@@ -11,13 +11,13 @@ namespace BTD_Mod_Helper.Api;
 public static class TaskScheduler
 {
     /// <summary>
-    /// (Cross-Game compatible) Schedule a task to execute right now as a Coroutine
+    /// Schedule a task to execute right now as a Coroutine
     /// </summary>
     /// <param name="iEnumerator"></param>
     public static void ScheduleTask(IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
 
     /// <summary>
-    /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
+    /// Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
     /// </summary>
     /// <param name="action">The action you want to execute once it's time to run your task</param>
     /// <param name="waitCondition">Wait for this to be true before executing task</param>
@@ -27,7 +27,7 @@ public static class TaskScheduler
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine
+    /// Schedule a task to execute later on as a Coroutine
     /// </summary>
     /// <param name="action">The action you want to execute once it's time to run your task</param>
     /// <param name="scheduleType">How you want to wait for your task</param>

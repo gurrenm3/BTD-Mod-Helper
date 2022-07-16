@@ -36,7 +36,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// Override the ID to not have the prefix. It's necessary to work, and there's not a good way for
     /// different paragon mods to coexist anyway
     /// </summary>
-    protected internal override string ID => Tower is ModVanillaParagon ? Name : base.ID;
+    private protected override string ID => Tower is ModVanillaParagon ? Name : base.ID;
 
     /// <summary>
     /// No changing of ModParagonUpgrade path

@@ -5,7 +5,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class BloonToSimulationExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return the Id of this BloonToSimulation
+    /// Return the Id of this BloonToSimulation
     /// </summary>
     /// <param name="bloonToSim"></param>
     /// <returns></returns>

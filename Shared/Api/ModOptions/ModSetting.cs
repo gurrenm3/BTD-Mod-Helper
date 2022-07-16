@@ -6,7 +6,7 @@ using BTD_Mod_Helper.Api.Components;
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>
-/// (Cross-Game compatible) Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu
+/// Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu
 /// </summary>
 /// <typeparam name="T">The type that this ModSetting holds</typeparam>
 public abstract class ModSetting<T> : ModSetting

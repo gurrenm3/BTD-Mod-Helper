@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## SpriteExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## SpriteExt.SetTexture(this Sprite, Texture2D) Method
 
-(Cross-Game compatible) Set this Sprite's texture
+Set this Sprite's texture
 
 ```csharp
 public static void SetTexture(this UnityEngine.Sprite sprite, UnityEngine.Texture2D newTexture);

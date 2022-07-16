@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class Il2CppReferenceArray
 {
     /// <summary>
-    /// (Cross-Game compatible) Performs the specified action on each element
+    /// Performs the specified action on each element
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -21,7 +21,7 @@ public static class Il2CppReferenceArray
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the index of the element that matches the predicate
+    /// Return the index of the element that matches the predicate
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -39,7 +39,7 @@ public static class Il2CppReferenceArray
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return whether or not there are any elements in this
+    /// Return whether or not there are any elements in this
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -50,7 +50,7 @@ public static class Il2CppReferenceArray
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+    /// Return whether or not there are any elements in this that match the predicate
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>

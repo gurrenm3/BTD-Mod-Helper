@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Bloons](index.md#BTD_Mod_Helper.Api.Bloons 'BTD_Mod_Helper.Api.Bloons')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Bloons](README.md#BTD_Mod_Helper.Api.Bloons 'BTD_Mod_Helper.Api.Bloons')
 
 ## ModBloon Class
 
@@ -114,19 +114,6 @@ For 2D bloons, the ratio between pixels and display units. Higher number -> smal
 
 ```csharp
 public virtual float PixelsPerUnit { get; }
-```
-
-#### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.RegistrationPriority'></a>
-
-## ModBloon.RegistrationPriority Property
-
-ModBloons with a BaseModBloon need to register after their base
-
-```csharp
-protected override float RegistrationPriority { get; }
 ```
 
 #### Property Value

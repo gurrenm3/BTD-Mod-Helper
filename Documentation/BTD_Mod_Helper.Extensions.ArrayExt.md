@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## ArrayExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## ArrayExt.AddTo<T>(this T[], List<T>) Method
 
-(Cross-Game compatible) Return this with Items added to it
+Return this with Items added to it
 
 ```csharp
 public static T[] AddTo<T>(this T[] array, System.Collections.Generic.List<T> objectsToAdd)
@@ -48,7 +48,7 @@ Items you want to add
 
 ## ArrayExt.AddTo<T>(this T[], T) Method
 
-(Cross-Game compatible) Return this with an Item added to it
+Return this with an Item added to it
 
 ```csharp
 public static T[] AddTo<T>(this T[] array, T objectToAdd)
@@ -80,7 +80,7 @@ Item to add to this
 
 ## ArrayExt.AddTo<T>(this T[], T[]) Method
 
-(Cross-Game compatible) Return this with Items added to it
+Return this with Items added to it
 
 ```csharp
 public static T[] AddTo<T>(this T[] array, T[] objectsToAdd)
@@ -112,7 +112,7 @@ Items you want to add
 
 ## ArrayExt.Any<T>(this T[]) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this
+Return whether or not there are any elements in this
 
 ```csharp
 public static bool Any<T>(this T[] array);
@@ -135,7 +135,7 @@ public static bool Any<T>(this T[] array);
 
 ## ArrayExt.Any<T>(this T[], Func<T,bool>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+Return whether or not there are any elements in this that match the predicate
 
 ```csharp
 public static bool Any<T>(this T[] array, System.Func<T,bool> predicate);
@@ -444,7 +444,7 @@ public static bool CheckTypes<T1>(this object[] parameters, out T1 param1);
 
 ## ArrayExt.Duplicate<T>(this T[]) Method
 
-(Cross-Game compatible) Return a duplicate of this Array
+Return a duplicate of this Array
 
 ```csharp
 public static T[] Duplicate<T>(this T[] array);
@@ -467,7 +467,7 @@ public static T[] Duplicate<T>(this T[] array);
 
 ## ArrayExt.DuplicateAs<TSource,TCast>(this TSource[]) Method
 
-(Cross-Game compatible) Return a duplicate of this array as type TCast
+Return a duplicate of this array as type TCast
 
 ```csharp
 public static TCast[] DuplicateAs<TSource,TCast>(this TSource[] array)
@@ -500,7 +500,7 @@ The Cast type
 
 ## ArrayExt.FindAll<T>(this T[], Predicate<T>) Method
 
-(Cross-Game compatible) Retrieves all the elements that match the conditions defined by the specified predicate.
+Retrieves all the elements that match the conditions defined by the specified predicate.
 
 ```csharp
 public static T[] FindAll<T>(this T[] array, System.Predicate<T> match);
@@ -529,7 +529,7 @@ The Predicate delegate that defines the conditions of the elements to search for
 
 ## ArrayExt.ForEach<T>(this T[], Action<T>) Method
 
-(Cross-Game compatible) Performs the specified action on each element
+Performs the specified action on each element
 
 ```csharp
 public static void ForEach<T>(this T[] array, System.Action<T> action);
@@ -555,7 +555,7 @@ Action to preform on each element
 
 ## ArrayExt.GetItemOfType<TSource,TCast>(this TSource[]) Method
 
-(Cross-Game compatible) Return the first Item of type TCast
+Return the first Item of type TCast
 
 ```csharp
 public static TCast GetItemOfType<TSource,TCast>(this TSource[] array)
@@ -586,7 +586,7 @@ The Type of the Item you want
 
 ## ArrayExt.GetItemsOfType<TSource,TCast>(this TSource[]) Method
 
-(Cross-Game compatible) Return all Items of type TCast
+Return all Items of type TCast
 
 ```csharp
 public static System.Collections.Generic.IEnumerable<TCast> GetItemsOfType<TSource,TCast>(this TSource[] array)
@@ -617,7 +617,7 @@ The Type of the Items you want
 
 ## ArrayExt.HasItemsOfType<TSource,TCast>(this TSource[]) Method
 
-(Cross-Game compatible) Check if this has any items of type TCast
+Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this TSource[] array)
@@ -708,7 +708,7 @@ The array
 
 ## ArrayExt.RemoveItem<TSource,TCast>(this TSource[], TCast) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static TSource[] RemoveItem<TSource,TCast>(this TSource[] array, TCast itemToRemove)
@@ -745,7 +745,7 @@ The specific Item to remove
 
 ## ArrayExt.RemoveItemOfType<TSource,TCast>(this TSource[]) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static TSource[] RemoveItemOfType<TSource,TCast>(this TSource[] array)
@@ -776,7 +776,7 @@ The Type of the Item you want to remove
 
 ## ArrayExt.RemoveItemsOfType<TSource,TCast>(this TSource[]) Method
 
-(Cross-Game compatible) Return this with all Items of type TCast removed
+Return this with all Items of type TCast removed
 
 ```csharp
 public static TSource[] RemoveItemsOfType<TSource,TCast>(this TSource[] array)
@@ -807,7 +807,7 @@ The Type of the Items that you want to remove
 
 ## ArrayExt.ToIl2CppList<T>(this T[]) Method
 
-(Cross-Game compatible) Return as Il2CppSystem.List
+Return as Il2CppSystem.List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] array)
@@ -831,7 +831,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] 
 
 ## ArrayExt.ToIl2CppReferenceArray<T>(this T[]) Method
 
-(Cross-Game compatible) Return as Il2CppReferenceArray
+Return as Il2CppReferenceArray
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array)
@@ -855,7 +855,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 
 ## ArrayExt.ToLockList<T>(this T[]) Method
 
-(Cross-Game compatible) Return as LockList
+Return as LockList
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] array);

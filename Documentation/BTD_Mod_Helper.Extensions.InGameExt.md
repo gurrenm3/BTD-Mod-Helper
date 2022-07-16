@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## InGameExt Class
 
@@ -85,7 +85,7 @@ Amount to add to the player's max health
 
 ## InGameExt.GetAbilities(this InGame) Method
 
-(Cross-Game compatible) Get's all AbilityToSimulations currently in the game
+Get's all AbilityToSimulations currently in the game
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.AbilityToSimulation> GetAbilities(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -103,7 +103,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.Abilit
 
 ## InGameExt.GetAllBloonToSim(this InGame) Method
 
-(Cross-Game compatible) Get's all existing BloonToSimulations
+Get's all existing BloonToSimulations
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.BloonToSimulation> GetAllBloonToSim(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -121,7 +121,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.BloonT
 
 ## InGameExt.GetAllObjectsOfType<T>(this InGame) Method
 
-(Cross-Game compatible) Gets all objects of type T. Does this by returning all objects created by the Factory of type T
+Gets all objects of type T. Does this by returning all objects created by the Factory of type T
 
 ```csharp
 public static System.Collections.Generic.List<T> GetAllObjectsOfType<T>(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame)
@@ -147,7 +147,7 @@ The type of items you want
 
 ## InGameExt.GetAllTowerToSim(this InGame, string) Method
 
-(Cross-Game compatible) Get all TowerToSimulations
+Get all TowerToSimulations
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.TowerToSimulation> GetAllTowerToSim(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame, string name=null);
@@ -171,7 +171,7 @@ Optionally only get Towers whose TowerModel name is this parameter
 
 ## InGameExt.GetBloons(this InGame) Method
 
-(Cross-Game compatible) Get's all Bloons on the map
+Get's all Bloons on the map
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Simulation.Bloons.Bloon> GetBloons(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -233,7 +233,7 @@ Index of the cash manager. Default is 0
 
 ## InGameExt.GetFactory<T>(this InGame) Method
 
-(Cross-Game compatible) Get the Factory for a specific Type. Ex: Getting the Factory that makes Towers
+Get the Factory for a specific Type. Ex: Getting the Factory that makes Towers
 
 ```csharp
 public static Assets.Scripts.Simulation.Factory.Factory<T> GetFactory<T>(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame)
@@ -257,7 +257,7 @@ public static Assets.Scripts.Simulation.Factory.Factory<T> GetFactory<T>(this As
 
 ## InGameExt.GetGameModel(this InGame) Method
 
-(Cross-Game compatible) The Game.model that is being used for this InGame.instance
+The Game.model that is being used for this InGame.instance
 
 ```csharp
 public static Assets.Scripts.Models.GameModel GetGameModel(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -311,7 +311,7 @@ public static UnityEngine.GameObject GetInGameUI(this Assets.Scripts.Unity.UI_Ne
 
 ## InGameExt.GetMainFactory(this InGame) Method
 
-(Cross-Game compatible) Get the main Factory that creates and manages all other Factories
+Get the main Factory that creates and manages all other Factories
 
 ```csharp
 public static Assets.Scripts.Simulation.Factory.FactoryFactory GetMainFactory(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -329,7 +329,7 @@ public static Assets.Scripts.Simulation.Factory.FactoryFactory GetMainFactory(th
 
 ## InGameExt.GetMap(this InGame) Method
 
-(Cross-Game compatible) Get the current Map
+Get the current Map
 
 ```csharp
 public static Assets.Scripts.Simulation.Track.Map GetMap(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -383,7 +383,7 @@ public static System.Collections.Generic.Dictionary<string,int> GetPoppedBloons(
 
 ## InGameExt.GetProjectiles(this InGame) Method
 
-(Cross-Game compatible) Get's all existing Projectiles on the map
+Get's all existing Projectiles on the map
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Simulation.Towers.Projectiles.Projectile> GetProjectiles(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -401,7 +401,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Simulation.Towers.P
 
 ## InGameExt.GetSimulation(this InGame) Method
 
-(Cross-Game compatible) Get the current Simulation for this InGame session
+Get the current Simulation for this InGame session
 
 ```csharp
 public static Assets.Scripts.Simulation.Simulation GetSimulation(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -437,7 +437,7 @@ public static Assets.Scripts.Simulation.Input.TowerInventory GetTowerInventory(t
 
 ## InGameExt.GetTowerManager(this InGame) Method
 
-(Cross-Game compatible) Get the current TowerManager for this game session
+Get the current TowerManager for this game session
 
 ```csharp
 public static Assets.Scripts.Simulation.Towers.TowerManager GetTowerManager(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -455,7 +455,7 @@ public static Assets.Scripts.Simulation.Towers.TowerManager GetTowerManager(this
 
 ## InGameExt.GetTowers(this InGame, string) Method
 
-(Cross-Game compatible) Get every Tower that has been created through the Tower Factory
+Get every Tower that has been created through the Tower Factory
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Simulation.Towers.Tower> GetTowers(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame, string name=null);
@@ -479,7 +479,7 @@ Optionally only get Towers whose TowerModel name is this parameter
 
 ## InGameExt.GetUnityToSimulation(this InGame) Method
 
-(Cross-Game compatible) Get's the UnityToSimulation for this game
+Get's the UnityToSimulation for this game
 
 ```csharp
 public static Assets.Scripts.Unity.Bridge.UnityToSimulation GetUnityToSimulation(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);
@@ -517,7 +517,7 @@ The game.
 
 ## InGameExt.IsInGame(this InGame) Method
 
-(Cross-Game compatible) Returns whether or not the player is currently in a game.
+Returns whether or not the player is currently in a game.
 
 ```csharp
 public static bool IsInGame(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame);

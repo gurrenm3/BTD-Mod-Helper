@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## FileInfoExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## FileInfoExt.GetAllReferences(this FileInfo) Method
 
-(Cross-Game compatible) Get all Assembly References from this FileInfo. Returns null if there are none
+Get all Assembly References from this FileInfo. Returns null if there are none
 
 ```csharp
 public static System.Reflection.AssemblyName[] GetAllReferences(this System.IO.FileInfo fileInfo);
@@ -34,7 +34,7 @@ public static System.Reflection.AssemblyName[] GetAllReferences(this System.IO.F
 
 ## FileInfoExt.IsMelonMod(this FileInfo) Method
 
-(Cross-Game compatible) Returns whether or not this File has a reference to the newer MelonLoader.dll or the older MelonLoader.ModHandler.dll
+Returns whether or not this File has a reference to the newer MelonLoader.dll or the older MelonLoader.ModHandler.dll
 
 ```csharp
 public static bool IsMelonMod(this System.IO.FileInfo fileInfo);
@@ -52,7 +52,7 @@ public static bool IsMelonMod(this System.IO.FileInfo fileInfo);
 
 ## FileInfoExt.IsNewerMelonMod(this FileInfo) Method
 
-(Cross-Game compatible) Returns whether or not this File has a reference to the newer MelonLoader.dll (For MelonLoader 3.0 and up)
+Returns whether or not this File has a reference to the newer MelonLoader.dll (For MelonLoader 3.0 and up)
 
 ```csharp
 public static bool IsNewerMelonMod(this System.IO.FileInfo fileInfo);
@@ -70,7 +70,7 @@ public static bool IsNewerMelonMod(this System.IO.FileInfo fileInfo);
 
 ## FileInfoExt.IsOlderMelonMod(this FileInfo) Method
 
-(Cross-Game compatible) Returns whether or not this File has a reference to the older MelonLoader.ModHandler.dll (For MelonLoader 2.7.4 and below)
+Returns whether or not this File has a reference to the older MelonLoader.ModHandler.dll (For MelonLoader 2.7.4 and below)
 
 ```csharp
 public static bool IsOlderMelonMod(this System.IO.FileInfo fileInfo);

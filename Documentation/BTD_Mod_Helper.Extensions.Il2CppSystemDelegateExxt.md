@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppSystemDelegateExxt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppSystemDelegateExxt.Duplicate<T>(this Delegate) Method
 
-(Cross-Game compatible) Create a new and seperate copy of this object. Same as using:  .Clone().Cast();
+Create a new and seperate copy of this object. Same as using:  .Clone().Cast();
 
 ```csharp
 public static T Duplicate<T>(this Il2CppSystem.Delegate del)

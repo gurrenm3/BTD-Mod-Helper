@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## DirectoryInfoExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## DirectoryInfoExt.GetAllMelonMods(this DirectoryInfo) Method
 
-(Cross-Game compatible) Returns all Files in this directory that reference MelonLoader.dll or MelonLoader.ModHandler.dll
+Returns all Files in this directory that reference MelonLoader.dll or MelonLoader.ModHandler.dll
 
 ```csharp
 public static System.IO.FileInfo[] GetAllMelonMods(this System.IO.DirectoryInfo directoryInfo);

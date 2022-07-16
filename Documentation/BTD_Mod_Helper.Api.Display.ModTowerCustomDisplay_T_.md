@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Display](index.md#BTD_Mod_Helper.Api.Display 'BTD_Mod_Helper.Api.Display')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Display](README.md#BTD_Mod_Helper.Api.Display 'BTD_Mod_Helper.Api.Display')
 
 ## ModTowerCustomDisplay<T> Class
 

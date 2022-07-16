@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class SpriteExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Set this Sprite's texture
+    /// Set this Sprite's texture
     /// </summary>
     /// <param name="sprite"></param>
     /// <param name="newTexture"></param>

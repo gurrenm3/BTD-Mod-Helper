@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppIEnumeratorExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppIEnumeratorExt.Count(this IEnumerator) Method
 
-(Cross-Game compatible) Get the total number of elements
+Get the total number of elements
 
 ```csharp
 public static int Count(this Il2CppSystem.Collections.IEnumerator enumerator);
@@ -34,7 +34,7 @@ public static int Count(this Il2CppSystem.Collections.IEnumerator enumerator);
 
 ## Il2CppIEnumeratorExt.GetItem(this IEnumerator, int) Method
 
-(Cross-Game compatible) Return the Item at a specific index
+Return the Item at a specific index
 
 ```csharp
 public static Il2CppSystem.Object GetItem(this Il2CppSystem.Collections.IEnumerator enumerator, int index);
@@ -56,7 +56,7 @@ public static Il2CppSystem.Object GetItem(this Il2CppSystem.Collections.IEnumera
 
 ## Il2CppIEnumeratorExt.ToIl2CppList(this IEnumerator) Method
 
-(Cross-Game compatible) Return as Il2CppSystem.List
+Return as Il2CppSystem.List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object> ToIl2CppList(this Il2CppSystem.Collections.IEnumerator enumerator);
@@ -74,7 +74,7 @@ public static Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object> ToIl2Cp
 
 ## Il2CppIEnumeratorExt.ToIl2CppReferenceArray(this IEnumerator) Method
 
-(Cross-Game compatible) Return as Il2CppReferenceArray
+Return as Il2CppReferenceArray
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<Il2CppSystem.Object> ToIl2CppReferenceArray(this Il2CppSystem.Collections.IEnumerator enumerator);
@@ -92,7 +92,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<Il2CppSystem.Object> ToIl2C
 
 ## Il2CppIEnumeratorExt.ToList(this IEnumerator) Method
 
-(Cross-Game compatible) Return as System.List
+Return as System.List
 
 ```csharp
 public static System.Collections.Generic.List<Il2CppSystem.Object> ToList(this Il2CppSystem.Collections.IEnumerator enumerator);
@@ -110,7 +110,7 @@ public static System.Collections.Generic.List<Il2CppSystem.Object> ToList(this I
 
 ## Il2CppIEnumeratorExt.ToLockList(this IEnumerator) Method
 
-(Cross-Game compatible) Return as LockList
+Return as LockList
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<Il2CppSystem.Object> ToLockList(this Il2CppSystem.Collections.IEnumerator enumerator);

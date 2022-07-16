@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class ImageExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Returns the Bytes of this Image.
+    /// Returns the Bytes of this Image.
     /// </summary>
     /// <param name="image"></param>
     /// <returns></returns>
@@ -26,7 +26,7 @@ public static partial class ImageExt
         
         
     /// <summary>
-    /// (Cross-Game compatible) Returns a new image that is a resized version of this one.
+    /// Returns a new image that is a resized version of this one.
     /// </summary>
     /// <param name="image"></param>
     /// <param name="width"></param>

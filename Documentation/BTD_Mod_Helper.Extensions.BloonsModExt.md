@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## BloonsModExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## BloonsModExt.GetModDirectory(this BloonsMod) Method
 
-(Cross-Game compatible) Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
 
 ```csharp
 public static string GetModDirectory(this BTD_Mod_Helper.BloonsMod bloonsMod);
@@ -34,7 +34,7 @@ public static string GetModDirectory(this BTD_Mod_Helper.BloonsMod bloonsMod);
 
 ## BloonsModExt.GetModDirectory(this BloonsMod, bool) Method
 
-(Cross-Game compatible) Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
 
 ```csharp
 public static string GetModDirectory(this BTD_Mod_Helper.BloonsMod bloonsMod, bool createIfNotExists);
@@ -58,7 +58,7 @@ Create the mod's directory if it doesn't exist yet?
 
 ## BloonsModExt.GetModName(this BloonsMod) Method
 
-(Cross-Game compatible) Get the name of this mod from it's dll name
+Get the name of this mod from it's dll name
 
 ```csharp
 public static string GetModName(this BTD_Mod_Helper.BloonsMod bloonsMod);
@@ -76,7 +76,7 @@ public static string GetModName(this BTD_Mod_Helper.BloonsMod bloonsMod);
 
 ## BloonsModExt.GetModSettingsDir(this BloonsMod) Method
 
-(Cross-Game compatible) Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
 
 ```csharp
 public static string GetModSettingsDir(this BTD_Mod_Helper.BloonsMod bloonsMod);
@@ -94,7 +94,7 @@ public static string GetModSettingsDir(this BTD_Mod_Helper.BloonsMod bloonsMod);
 
 ## BloonsModExt.GetModSettingsDir(this BloonsMod, bool) Method
 
-(Cross-Game compatible) Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
 
 ```csharp
 public static string GetModSettingsDir(this BTD_Mod_Helper.BloonsMod bloonsMod, bool createIfNotExists);

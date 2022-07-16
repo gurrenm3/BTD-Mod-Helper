@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## GrowModelExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## GrowModelExt.GetRegrowBloon(this GrowModel) Method
 
-(Cross-Game compatible) Returns the ID of the BloonModel that this regrows into.
+Returns the ID of the BloonModel that this regrows into.
 
 ```csharp
 public static string GetRegrowBloon(this Assets.Scripts.Models.Bloons.Behaviors.GrowModel growModel);
@@ -34,7 +34,7 @@ public static string GetRegrowBloon(this Assets.Scripts.Models.Bloons.Behaviors.
 
 ## GrowModelExt.SetRegrowBloon(this GrowModel, string) Method
 
-(Cross-Game compatible) Sets which bloon this should regrow into.
+Sets which bloon this should regrow into.
 
 ```csharp
 public static void SetRegrowBloon(this Assets.Scripts.Models.Bloons.Behaviors.GrowModel growModel, string regrowsTo);
@@ -55,7 +55,7 @@ The ID of the bloon this should regrow into
 
 ## GrowModelExt.SetRegrowBloon(this GrowModel, string, float) Method
 
-(Cross-Game compatible) Sets which bloon this should regrow into.
+Sets which bloon this should regrow into.
 
 ```csharp
 public static void SetRegrowBloon(this Assets.Scripts.Models.Bloons.Behaviors.GrowModel growModel, string regrowsTo, float regrowRate);

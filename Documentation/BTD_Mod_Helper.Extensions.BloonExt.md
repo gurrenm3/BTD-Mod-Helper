@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## BloonExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## BloonExt.CreateBloonToSim(this Bloon) Method
 
-(Cross-Game compatible) Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically destroyed when this Bloon is destroyed
+Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically destroyed when this Bloon is destroyed
 
 ```csharp
 public static Assets.Scripts.Unity.Bridge.BloonToSimulation CreateBloonToSim(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
@@ -52,7 +52,7 @@ public static Assets.Scripts.Unity.Bridge.BloonToSimulation GetBloonToSim(this A
 
 ## BloonExt.GetDisplayNode(this Bloon) Method
 
-(Cross-Game compatible) Return the DisplayNode for this bloon
+Return the DisplayNode for this bloon
 
 ```csharp
 public static Assets.Scripts.Simulation.Display.DisplayNode GetDisplayNode(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
@@ -70,7 +70,7 @@ public static Assets.Scripts.Simulation.Display.DisplayNode GetDisplayNode(this 
 
 ## BloonExt.GetFactory(this Bloon) Method
 
-(Cross-Game compatible) Return the Factory that creates Bloons
+Return the Factory that creates Bloons
 
 ```csharp
 public static Assets.Scripts.Simulation.Factory.Factory<Assets.Scripts.Simulation.Bloons.Bloon> GetFactory(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
@@ -88,7 +88,7 @@ public static Assets.Scripts.Simulation.Factory.Factory<Assets.Scripts.Simulatio
 
 ## BloonExt.GetId(this Bloon) Method
 
-(Cross-Game compatible) Return the Id of this Bloon
+Return the Id of this Bloon
 
 ```csharp
 public static int GetId(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
@@ -106,7 +106,7 @@ public static int GetId(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
 
 ## BloonExt.GetUnityDisplayNode(this Bloon) Method
 
-(Cross-Game compatible) Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
+Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
 
 ```csharp
 public static Assets.Scripts.Unity.Display.UnityDisplayNode GetUnityDisplayNode(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
@@ -281,6 +281,8 @@ True if it was popped, false if it was leaked or not destroyed yet
 <a name='BTD_Mod_Helper.Extensions.BloonExt.WillPopBloon(thisAssets.Scripts.Simulation.Bloons.Bloon,Assets.Scripts.Simulation.Towers.Projectiles.Projectile)'></a>
 
 ## BloonExt.WillPopBloon(this Bloon, Projectile) Method
+
+Tests whether a project will pop this bloon
 
 ```csharp
 public static bool WillPopBloon(this Assets.Scripts.Simulation.Bloons.Bloon bloon, Assets.Scripts.Simulation.Towers.Projectiles.Projectile projectile);

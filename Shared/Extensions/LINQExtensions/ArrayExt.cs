@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class ArrayExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Performs the specified action on each element
+    /// Performs the specified action on each element
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="array"></param>
@@ -20,7 +20,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Retrieves all the elements that match the conditions defined by the specified predicate.
+    /// Retrieves all the elements that match the conditions defined by the specified predicate.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="array"></param>
@@ -32,7 +32,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return whether or not there are any elements in this
+    /// Return whether or not there are any elements in this
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="array"></param>
@@ -43,7 +43,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+    /// Return whether or not there are any elements in this that match the predicate
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="array"></param>

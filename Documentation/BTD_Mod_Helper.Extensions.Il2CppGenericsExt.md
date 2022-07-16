@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppGenericsExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppGenericsExt.Duplicate<T>(this List<T>) Method
 
-(Cross-Game compatible) Return a duplicate of this List
+Return a duplicate of this List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> Duplicate<T>(this Il2CppSystem.Collections.Generic.List<T> list);
@@ -39,7 +39,7 @@ public static Il2CppSystem.Collections.Generic.List<T> Duplicate<T>(this Il2CppS
 
 ## Il2CppGenericsExt.DuplicateAs<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return a duplicate of this list as type TCast
+Return a duplicate of this list as type TCast
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<TCast> DuplicateAs<TSource,TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
@@ -68,7 +68,7 @@ public static Il2CppSystem.Collections.Generic.List<TCast> DuplicateAs<TSource,T
 
 ## Il2CppGenericsExt.GetItemOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return the first item of type TCast
+Return the first item of type TCast
 
 ```csharp
 public static TCast GetItemOfType<TSource,TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
@@ -99,7 +99,7 @@ The Type of the Item you want
 
 ## Il2CppGenericsExt.GetItemsOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return all Items of type TCast
+Return all Items of type TCast
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<TCast> GetItemsOfType<TSource,TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
@@ -130,7 +130,7 @@ The Type of the Items you want
 
 ## Il2CppGenericsExt.HasItemsOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Check if this has any items of type TCast
+Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
@@ -161,7 +161,7 @@ The Type you're checking for
 
 ## Il2CppGenericsExt.RemoveItem<TSource,TCast>(this List<TSource>, TCast) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<TSource> RemoveItem<TSource,TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list, TCast itemToRemove)
@@ -198,7 +198,7 @@ The specific Item to remove
 
 ## Il2CppGenericsExt.RemoveItemOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<TSource> RemoveItemOfType<TSource,TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
@@ -229,7 +229,7 @@ The Type of the Item you want to remove
 
 ## Il2CppGenericsExt.RemoveItemsOfType<TSource,TCast>(this List<TSource>) Method
 
-(Cross-Game compatible) Return this with all Items of type TCast removed
+Return this with all Items of type TCast removed
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<TSource> RemoveItemsOfType<TSource,TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
@@ -260,7 +260,7 @@ The Type of the Items that you want to remove
 
 ## Il2CppGenericsExt.ToArray<T>(this List<T>) Method
 
-(Cross-Game compatible) Return as an Array
+Return as an Array
 
 ```csharp
 public static T[] ToArray<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList);
@@ -283,7 +283,7 @@ public static T[] ToArray<T>(this Il2CppSystem.Collections.Generic.List<T> il2Cp
 
 ## Il2CppGenericsExt.ToIl2CppReferenceArray<T>(this List<T>) Method
 
-(Cross-Game compatible) Return as Il2CppReferenceArray
+Return as Il2CppReferenceArray
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList)
@@ -307,7 +307,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 
 ## Il2CppGenericsExt.ToList<T>(this List<T>) Method
 
-(Cross-Game compatible) Return as System.List
+Return as System.List
 
 ```csharp
 public static System.Collections.Generic.List<T> ToList<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList);
@@ -330,7 +330,7 @@ public static System.Collections.Generic.List<T> ToList<T>(this Il2CppSystem.Col
 
 ## Il2CppGenericsExt.ToLockList<T>(this List<T>) Method
 
-(Cross-Game compatible) Return as LockList
+Return as LockList
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList);

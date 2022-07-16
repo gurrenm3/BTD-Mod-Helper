@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppReferenceArray Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppReferenceArray.Any<T>(this Il2CppReferenceArray<T>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this
+Return whether or not there are any elements in this
 
 ```csharp
 public static bool Any<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> source)
@@ -40,7 +40,7 @@ public static bool Any<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> source)
 
 ## Il2CppReferenceArray.Any<T>(this Il2CppReferenceArray<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+Return whether or not there are any elements in this that match the predicate
 
 ```csharp
 public static bool Any<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> source, System.Func<T,bool> predicate)
@@ -68,7 +68,7 @@ public static bool Any<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> source,
 
 ## Il2CppReferenceArray.FindIndex<T>(this Il2CppReferenceArray<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the index of the element that matches the predicate
+Return the index of the element that matches the predicate
 
 ```csharp
 public static int FindIndex<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> source, System.Func<T,bool> predicate)
@@ -96,7 +96,7 @@ public static int FindIndex<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> so
 
 ## Il2CppReferenceArray.ForEach<T>(this Il2CppReferenceArray<T>, Action<T>) Method
 
-(Cross-Game compatible) Performs the specified action on each element
+Performs the specified action on each element
 
 ```csharp
 public static void ForEach<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> source, System.Action<T> action)

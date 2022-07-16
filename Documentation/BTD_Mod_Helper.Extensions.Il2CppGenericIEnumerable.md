@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppGenericIEnumerable Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppGenericIEnumerable.Any<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this
+Return whether or not there are any elements in this
 
 ```csharp
 public static bool Any<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source)
@@ -40,7 +40,7 @@ public static bool Any<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> s
 
 ## Il2CppGenericIEnumerable.Any<T>(this IEnumerable<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+Return whether or not there are any elements in this that match the predicate
 
 ```csharp
 public static bool Any<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source, System.Func<T,bool> predicate)
@@ -68,7 +68,7 @@ public static bool Any<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> s
 
 ## Il2CppGenericIEnumerable.First<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return the first element in the collection
+Return the first element in the collection
 
 ```csharp
 public static T First<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source)
@@ -92,7 +92,7 @@ public static T First<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> so
 
 ## Il2CppGenericIEnumerable.FirstOrDefault<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return the first element in the collection, or return default if it's null
+Return the first element in the collection, or return default if it's null
 
 ```csharp
 public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source)
@@ -116,7 +116,7 @@ public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.IEnumera
 
 ## Il2CppGenericIEnumerable.FirstOrDefault<T>(this IEnumerable<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the first element that matches the predicate, or return default
+Return the first element that matches the predicate, or return default
 
 ```csharp
 public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source, System.Func<T,bool> predicate)
@@ -144,7 +144,7 @@ public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.IEnumera
 
 ## Il2CppGenericIEnumerable.ForEach<T>(this IEnumerable<T>, Action<T>) Method
 
-(Cross-Game compatible) Performs the specified action on each element
+Performs the specified action on each element
 
 ```csharp
 public static void ForEach<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source, System.Action<T> action)
@@ -171,7 +171,7 @@ Action to preform on each element
 
 ## Il2CppGenericIEnumerable.Last<T>(this IEnumerable<T>) Method
 
-(Cross-Game compatible) Return the last item in the collection
+Return the last item in the collection
 
 ```csharp
 public static T Last<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source)
@@ -195,7 +195,7 @@ public static T Last<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> sou
 
 ## Il2CppGenericIEnumerable.LastOrDefault<T>(this IEnumerable<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the last item in the collection that meets the condition, or return default
+Return the last item in the collection that meets the condition, or return default
 
 ```csharp
 public static T LastOrDefault<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> source, System.Func<T,bool> predicate)

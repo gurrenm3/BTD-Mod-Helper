@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Vector3Ext Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Vector3Ext.ToSMathVector(this Vector3) Method
 
-(Cross-Game compatible) Convert UnityEngine.Vector3 to NinjaKiwi's SMath.Vector3
+Convert UnityEngine.Vector3 to NinjaKiwi's SMath.Vector3
 
 ```csharp
 public static Assets.Scripts.Simulation.SMath.Vector3 ToSMathVector(this UnityEngine.Vector3 vector3);

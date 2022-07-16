@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## TowerModelExt Class
 
@@ -81,7 +81,7 @@ The type of ModDisplay
 
 ## TowerModelExt.GetAbilities(this TowerModel) Method
 
-(Cross-Game compatible) Return all AbilityModel behaviors from this tower, if it has any
+Return all AbilityModel behaviors from this tower, if it has any
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel> GetAbilities(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -99,7 +99,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Behav
 
 ## TowerModelExt.GetAbility(this TowerModel) Method
 
-(Cross-Game compatible) Return the first ability on the tower
+Return the first ability on the tower
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel GetAbility(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -117,7 +117,7 @@ public static Assets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel GetA
 
 ## TowerModelExt.GetAbility(this TowerModel, int) Method
 
-(Cross-Game compatible) Return a specific Ability of the tower.
+Return a specific Ability of the tower.
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel GetAbility(this Assets.Scripts.Models.Towers.TowerModel towerModel, int index);
@@ -143,7 +143,7 @@ Index of the ability you want.
 
 ## TowerModelExt.GetAllTowerToSim(this TowerModel) Method
 
-(Cross-Game compatible) Return all TowerToSimulations with this TowerModel
+Return all TowerToSimulations with this TowerModel
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.TowerToSimulation> GetAllTowerToSim(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -179,7 +179,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Upgra
 
 ## TowerModelExt.GetAttackModel(this TowerModel) Method
 
-(Cross-Game compatible) Return the first AttackModel from this TowerModel, if it has one
+Return the first AttackModel from this TowerModel, if it has one
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel GetAttackModel(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -197,7 +197,7 @@ public static Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel GetAttac
 
 ## TowerModelExt.GetAttackModel(this TowerModel, int) Method
 
-(Cross-Game compatible) Return one of the AttackModels from this TowerModel. By default will give the first AttackModel
+Return one of the AttackModels from this TowerModel. By default will give the first AttackModel
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel GetAttackModel(this Assets.Scripts.Models.Towers.TowerModel towerModel, int index);
@@ -223,7 +223,7 @@ Index of the AttackModel you want
 
 ## TowerModelExt.GetAttackModel(this TowerModel, string) Method
 
-(Cross-Game compatible) Return the first AttackModel whose name contains the given string
+Return the first AttackModel whose name contains the given string
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel GetAttackModel(this Assets.Scripts.Models.Towers.TowerModel towerModel, string nameContains);
@@ -245,7 +245,7 @@ public static Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel GetAttac
 
 ## TowerModelExt.GetAttackModels(this TowerModel) Method
 
-(Cross-Game compatible) Return all AttackModel behaviors for this TowerModel
+Return all AttackModel behaviors for this TowerModel
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel> GetAttackModels(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -263,7 +263,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Behav
 
 ## TowerModelExt.GetBaseId(this TowerModel) Method
 
-(Cross-Game compatible) Get the name of the BaseTower. Will be different from this TowerModel's name if this TowerModel isn't a BaseTower
+Get the name of the BaseTower. Will be different from this TowerModel's name if this TowerModel isn't a BaseTower
 
 ```csharp
 public static string GetBaseId(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -381,7 +381,7 @@ public static Assets.Scripts.Models.TowerSets.TowerDetailsModel GetTowerDetailsM
 
 ## TowerModelExt.GetTowerId(this TowerModel) Method
 
-(Cross-Game compatible) Get the TowerId of this TowerModel. Equivalent to towerModel.name
+Get the TowerId of this TowerModel. Equivalent to towerModel.name
 
 ```csharp
 public static string GetTowerId(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -469,7 +469,7 @@ What tier of upgrade is currently applied to tower
 
 ## TowerModelExt.GetWeapon(this TowerModel) Method
 
-(Cross-Game compatible) Return the first WeaponModel this TowerModel has, if it has one.
+Return the first WeaponModel this TowerModel has, if it has one.
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Weapons.WeaponModel GetWeapon(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -487,7 +487,7 @@ public static Assets.Scripts.Models.Towers.Weapons.WeaponModel GetWeapon(this As
 
 ## TowerModelExt.GetWeapon(this TowerModel, int) Method
 
-(Cross-Game compatible) Return one of the WeaponModels this TowerModel has. By default will return the first one
+Return one of the WeaponModels this TowerModel has. By default will return the first one
 
 ```csharp
 public static Assets.Scripts.Models.Towers.Weapons.WeaponModel GetWeapon(this Assets.Scripts.Models.Towers.TowerModel towerModel, int index);
@@ -513,7 +513,7 @@ Index of WeaponModel that you want
 
 ## TowerModelExt.GetWeapons(this TowerModel) Method
 
-(Cross-Game compatible) Recursively get every WeaponModels this TowerModel has
+Recursively get every WeaponModels this TowerModel has
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Weapons.WeaponModel> GetWeapons(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -646,7 +646,7 @@ public static System.Nullable<bool> IsHeroUnlocked(this Assets.Scripts.Models.To
 
 ## TowerModelExt.IsTowerUnlocked(this TowerModel) Method
 
-(Cross-Game compatible) Has player already unlocked this TowerModel
+Has player already unlocked this TowerModel
 
 ```csharp
 public static System.Nullable<bool> IsTowerUnlocked(this Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -756,7 +756,7 @@ Specify a new baseId. Set this if you want a baseId other than the newTowerId
 
 ## TowerModelExt.SellAll(this TowerModel) Method
 
-(Cross-Game compatible) Sell every tower that uses this TowerModel
+Sell every tower that uses this TowerModel
 
 ```csharp
 public static void SellAll(this Assets.Scripts.Models.Towers.TowerModel towerModel);

@@ -1,7 +1,9 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Towers](index.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Towers](README.md#BTD_Mod_Helper.Api.Towers 'BTD_Mod_Helper.Api.Towers')
 
 ## ModHero Class
+
+Class for adding a custom Hero to the game. Use alongside [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') to give multiple levels.
 
 ```csharp
 public abstract class ModHero : BTD_Mod_Helper.Api.Towers.ModTower
@@ -166,19 +168,6 @@ public virtual string NameStyle { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.Order'></a>
-
-## ModHero.Order Property
-
-No Order among different custom heroes
-
-```csharp
-public sealed override int Order { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.ParagonMode'></a>
 

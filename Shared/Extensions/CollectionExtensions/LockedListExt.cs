@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class LockedListExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return as System.List
+    /// Return as System.List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
@@ -23,7 +23,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppSystem.List
+    /// Return as Il2CppSystem.List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
@@ -38,7 +38,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as System.Array
+    /// Return as System.Array
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
@@ -57,7 +57,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppReferenceArray
+    /// Return as Il2CppReferenceArray
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
@@ -73,7 +73,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return a duplicate of this
+    /// Return a duplicate of this
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
@@ -88,7 +88,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return a duplicate of this as type TCast
+    /// Return a duplicate of this as type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast"></typeparam>
@@ -106,7 +106,7 @@ public static partial class LockedListExt
 
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with an additional Item added to it
+    /// Return this with an additional Item added to it
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item to add</typeparam>
@@ -126,7 +126,7 @@ public static partial class LockedListExt
 
 
     /// <summary>
-    /// (Cross-Game compatible) Check if this has any items of type TCast
+    /// Check if this has any items of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type you're checking for</typeparam>
@@ -153,7 +153,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return all Items of type TCast
+    /// Return all Items of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Items you want</typeparam>
@@ -190,7 +190,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+    /// Return this with the first Item of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
@@ -205,7 +205,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+    /// Return this with the first Item of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
@@ -234,7 +234,7 @@ public static partial class LockedListExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with all Items of type TCast removed
+    /// Return this with all Items of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>

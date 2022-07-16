@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## AttackModelExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## AttackModelExt.AddWeapon(this AttackModel, WeaponModel) Method
 
-(Cross-Game compatible) Add a weapon to this Attack Model
+Add a weapon to this Attack Model
 
 ```csharp
 public static void AddWeapon(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel attackModel, Assets.Scripts.Models.Towers.Weapons.WeaponModel weaponToAdd);
@@ -64,7 +64,7 @@ public static void ApplyDisplay<T>(this Assets.Scripts.Models.Towers.Behaviors.A
 
 ## AttackModelExt.GetAllProjectiles(this AttackModel) Method
 
-(Cross-Game compatible) Recursively get all ProjectileModels for this attack model and all of it's weapons
+Recursively get all ProjectileModels for this attack model and all of it's weapons
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Projectiles.ProjectileModel> GetAllProjectiles(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel attackModel);
@@ -82,7 +82,7 @@ public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.Proje
 
 ## AttackModelExt.RemoveWeapon(this AttackModel, WeaponModel) Method
 
-(Cross-Game compatible) Remove a weapon from this Attack Model
+Remove a weapon from this Attack Model
 
 ```csharp
 public static void RemoveWeapon(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel attackModel, Assets.Scripts.Models.Towers.Weapons.WeaponModel weaponToRemove);

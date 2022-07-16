@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Helpers](index.md#BTD_Mod_Helper.Api.Helpers 'BTD_Mod_Helper.Api.Helpers')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Helpers](README.md#BTD_Mod_Helper.Api.Helpers 'BTD_Mod_Helper.Api.Helpers')
 
 ## CostHelper Class
 
@@ -70,7 +70,7 @@ The modified cost
 
 ## CostHelper.CostForDifficulty(int, float) Method
 
-(Cross-Game compatible) Applies a multiplier to a cost and rounds it
+Applies a multiplier to a cost and rounds it
 
 ```csharp
 public static int CostForDifficulty(int cost, float multiplier);
@@ -120,7 +120,7 @@ The modified cost
 
 ## CostHelper.CostForDifficulty(int, string) Method
 
-(Cross-Game compatible) Scales a base (medium) cost to the given difficulty
+Scales a base (medium) cost to the given difficulty
 
 ```csharp
 public static int CostForDifficulty(int cost, string difficulty);

@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## AbilityModelExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## AbilityModelExt.GetAbilitySims(this AbilityModel) Method
 
-(Cross-Game compatible) Get the all AbilityToSimulation with this AbilityModel
+Get the all AbilityToSimulation with this AbilityModel
 
 ```csharp
 public static System.Collections.Generic.List<Assets.Scripts.Unity.Bridge.AbilityToSimulation> GetAbilitySims(this Assets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel abiltyModel);

@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppStringArrayExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppStringArrayExt.AddTo(this Il2CppStringArray, string) Method
 
-(Cross-Game compatible) Return this with an Item added to it
+Return this with an Item added to it
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppStringArray AddTo(this UnhollowerBaseLib.Il2CppStringArray array, string itemToAdd);

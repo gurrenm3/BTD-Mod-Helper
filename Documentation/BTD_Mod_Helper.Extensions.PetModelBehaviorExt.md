@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## PetModelBehaviorExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## PetModelBehaviorExt.AddBehavior<T>(this PetModel, T) Method
 
-(Cross-Game compatible) Add a Behavior to this model
+Add a Behavior to this model
 
 ```csharp
 public static void AddBehavior<T>(this Assets.Scripts.Models.Towers.Pets.PetModel model, T behavior)
@@ -41,7 +41,7 @@ public static void AddBehavior<T>(this Assets.Scripts.Models.Towers.Pets.PetMode
 
 ## PetModelBehaviorExt.GetBehavior<T>(this PetModel) Method
 
-(Cross-Game compatible) Return the first Behavior of type T, or null if there isn't one
+Return the first Behavior of type T, or null if there isn't one
 
 ```csharp
 public static T GetBehavior<T>(this Assets.Scripts.Models.Towers.Pets.PetModel model)
@@ -67,7 +67,7 @@ The Behavior you want
 
 ## PetModelBehaviorExt.GetBehaviors<T>(this PetModel) Method
 
-(Cross-Game compatible) Return all Behaviors of type T
+Return all Behaviors of type T
 
 ```csharp
 public static System.Collections.Generic.List<T> GetBehaviors<T>(this Assets.Scripts.Models.Towers.Pets.PetModel model)
@@ -93,7 +93,7 @@ The Behavior you want
 
 ## PetModelBehaviorExt.HasBehavior<T>(this PetModel) Method
 
-(Cross-Game compatible) Check if this has a specific Behavior
+Check if this has a specific Behavior
 
 ```csharp
 public static bool HasBehavior<T>(this Assets.Scripts.Models.Towers.Pets.PetModel model)
@@ -119,7 +119,7 @@ The Behavior you're checking for
 
 ## PetModelBehaviorExt.RemoveBehavior<T>(this PetModel) Method
 
-(Cross-Game compatible) Remove the first Behavior of Type T
+Remove the first Behavior of Type T
 
 ```csharp
 public static void RemoveBehavior<T>(this Assets.Scripts.Models.Towers.Pets.PetModel model)
@@ -142,7 +142,7 @@ The Behavior you want to remove
 
 ## PetModelBehaviorExt.RemoveBehavior<T>(this PetModel, T) Method
 
-(Cross-Game compatible) Removes a specific behavior from a tower
+Removes a specific behavior from a tower
 
 ```csharp
 public static void RemoveBehavior<T>(this Assets.Scripts.Models.Towers.Pets.PetModel model, T behavior)
@@ -167,7 +167,7 @@ public static void RemoveBehavior<T>(this Assets.Scripts.Models.Towers.Pets.PetM
 
 ## PetModelBehaviorExt.RemoveBehaviors<T>(this PetModel) Method
 
-(Cross-Game compatible) Remove all Behaviors of type T
+Remove all Behaviors of type T
 
 ```csharp
 public static void RemoveBehaviors<T>(this Assets.Scripts.Models.Towers.Pets.PetModel model)

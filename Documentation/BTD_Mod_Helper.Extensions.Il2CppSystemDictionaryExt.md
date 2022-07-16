@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppSystemDictionaryExt Class
 
@@ -48,7 +48,7 @@ public static void Deconstruct<K,V>(this Il2CppSystem.Collections.Generic.KeyVal
 
 ## Il2CppSystemDictionaryExt.GetValues<TKey,TValue>(this Dictionary<TKey,TValue>) Method
 
-(Cross-Game compatible) Get all of the values from this Dictionary as a list
+Get all of the values from this Dictionary as a list
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<TValue> GetValues<TKey,TValue>(this Il2CppSystem.Collections.Generic.Dictionary<TKey,TValue> keyValuePairs);

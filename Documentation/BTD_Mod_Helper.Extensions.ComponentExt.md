@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## ComponentExt Class
 
@@ -58,7 +58,7 @@ public static T GetComponent<T>(this UnityEngine.Component component, string com
 
 ## ComponentExt.GetComponentFromChildrenByName<T>(this Component, string) Method
 
-(Cross-Game compatible) Try to get a component in a child of this Component by it's name. Equivelant to a foreach with GetComponentsInChildren
+Try to get a component in a child of this Component by it's name. Equivelant to a foreach with GetComponentsInChildren
 
 ```csharp
 public static T GetComponentFromChildrenByName<T>(this UnityEngine.Component component, string componentName)
@@ -86,7 +86,7 @@ public static T GetComponentFromChildrenByName<T>(this UnityEngine.Component com
 
 ## ComponentExt.Hide(this Component) Method
 
-(Cross-Game compatible) Makes the Component hidden (not visible) by setting the scale to zero
+Makes the Component hidden (not visible) by setting the scale to zero
 
 ```csharp
 public static void Hide(this UnityEngine.Component component);
@@ -101,7 +101,7 @@ public static void Hide(this UnityEngine.Component component);
 
 ## ComponentExt.Show(this Component) Method
 
-(Cross-Game compatible) Makes the Component visible by setting the scale to the default value of 1
+Makes the Component visible by setting the scale to the default value of 1
 
 ```csharp
 public static void Show(this UnityEngine.Component component);
@@ -116,7 +116,7 @@ public static void Show(this UnityEngine.Component component);
 
 ## ComponentExt.TranslateScaled(this Component, Vector3) Method
 
-(Cross-Game compatible) Translates this component scaled with it's "lossyScale", making it move the same  
+Translates this component scaled with it's "lossyScale", making it move the same  
 amount regardless of screen resolution
 
 ```csharp

@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## LockedList Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## LockedList.Any<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this
+Return whether or not there are any elements in this
 
 ```csharp
 public static bool Any<T>(this Assets.Scripts.Utils.LockList<T> source)
@@ -40,7 +40,7 @@ public static bool Any<T>(this Assets.Scripts.Utils.LockList<T> source)
 
 ## LockedList.Any<T>(this LockList<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+Return whether or not there are any elements in this that match the predicate
 
 ```csharp
 public static bool Any<T>(this Assets.Scripts.Utils.LockList<T> source, System.Func<T,bool> predicate)
@@ -68,7 +68,7 @@ public static bool Any<T>(this Assets.Scripts.Utils.LockList<T> source, System.F
 
 ## LockedList.FindIndex<T>(this LockList<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the index of the element that matches the predicate
+Return the index of the element that matches the predicate
 
 ```csharp
 public static int FindIndex<T>(this Assets.Scripts.Utils.LockList<T> source, System.Func<T,bool> predicate)
@@ -96,7 +96,7 @@ public static int FindIndex<T>(this Assets.Scripts.Utils.LockList<T> source, Sys
 
 ## LockedList.First<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return the first element in the collection
+Return the first element in the collection
 
 ```csharp
 public static T First<T>(this Assets.Scripts.Utils.LockList<T> source);
@@ -119,7 +119,7 @@ public static T First<T>(this Assets.Scripts.Utils.LockList<T> source);
 
 ## LockedList.First<T>(this LockList<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the first element that matches the predicate
+Return the first element that matches the predicate
 
 ```csharp
 public static T First<T>(this Assets.Scripts.Utils.LockList<T> source, System.Func<T,bool> predicate)
@@ -147,7 +147,7 @@ public static T First<T>(this Assets.Scripts.Utils.LockList<T> source, System.Fu
 
 ## LockedList.FirstOrDefault<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return the first element in the collection, or return default if it's null
+Return the first element in the collection, or return default if it's null
 
 ```csharp
 public static T FirstOrDefault<T>(this Assets.Scripts.Utils.LockList<T> source);
@@ -170,7 +170,7 @@ public static T FirstOrDefault<T>(this Assets.Scripts.Utils.LockList<T> source);
 
 ## LockedList.FirstOrDefault<T>(this LockList<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the first element that matches the predicate, or return default
+Return the first element that matches the predicate, or return default
 
 ```csharp
 public static T FirstOrDefault<T>(this Assets.Scripts.Utils.LockList<T> source, System.Func<T,bool> predicate)
@@ -198,7 +198,7 @@ public static T FirstOrDefault<T>(this Assets.Scripts.Utils.LockList<T> source, 
 
 ## LockedList.ForEach<T>(this LockList<T>, Action<T>) Method
 
-(Cross-Game compatible) Performs the specified action on each element
+Performs the specified action on each element
 
 ```csharp
 public static void ForEach<T>(this Assets.Scripts.Utils.LockList<T> source, System.Action<T> action);
@@ -224,7 +224,7 @@ Action to preform on each element
 
 ## LockedList.Last<T>(this LockList<T>) Method
 
-(Cross-Game compatible) Return the last item in the collection
+Return the last item in the collection
 
 ```csharp
 public static T Last<T>(this Assets.Scripts.Utils.LockList<T> source);
@@ -247,7 +247,7 @@ public static T Last<T>(this Assets.Scripts.Utils.LockList<T> source);
 
 ## LockedList.LastOrDefault<T>(this LockList<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the last item in the collection that meets the condition, or return default
+Return the last item in the collection that meets the condition, or return default
 
 ```csharp
 public static T LastOrDefault<T>(this Assets.Scripts.Utils.LockList<T> source, System.Func<T,bool> predicate);
@@ -274,7 +274,7 @@ public static T LastOrDefault<T>(this Assets.Scripts.Utils.LockList<T> source, S
 
 ## LockedList.Where<T>(this LockList<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return all elements that match the predicate
+Return all elements that match the predicate
 
 ```csharp
 public static System.Collections.Generic.List<T> Where<T>(this Assets.Scripts.Utils.LockList<T> source, System.Func<T,bool> predicate)

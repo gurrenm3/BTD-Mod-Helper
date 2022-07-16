@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## DictionaryExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## DictionaryExt.GetValues<TKey,TValue>(this Dictionary<TKey,TValue>) Method
 
-(Cross-Game compatible) Get all of the values from this Dictionary as a list
+Get all of the values from this Dictionary as a list
 
 ```csharp
 public static System.Collections.Generic.List<TValue> GetValues<TKey,TValue>(this System.Collections.Generic.Dictionary<TKey,TValue> keyValuePairs)

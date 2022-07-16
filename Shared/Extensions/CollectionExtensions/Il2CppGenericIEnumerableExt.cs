@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class Il2CppGenericIEnumerableExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as IEnumerable.GetEnumerator()
+    /// Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as IEnumerable.GetEnumerator()
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -21,7 +21,7 @@ public static class Il2CppGenericIEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Get the total number of elements
+    /// Get the total number of elements
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -37,7 +37,7 @@ public static class Il2CppGenericIEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the Item at a specific index
+    /// Return the Item at a specific index
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -58,7 +58,7 @@ public static class Il2CppGenericIEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppSystem.List
+    /// Return as Il2CppSystem.List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -75,7 +75,7 @@ public static class Il2CppGenericIEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as System.List
+    /// Return as System.List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -92,7 +92,7 @@ public static class Il2CppGenericIEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppReferenceArray
+    /// Return as Il2CppReferenceArray
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -113,7 +113,7 @@ public static class Il2CppGenericIEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as LockList
+    /// Return as LockList
     /// </summary>
     public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
     {

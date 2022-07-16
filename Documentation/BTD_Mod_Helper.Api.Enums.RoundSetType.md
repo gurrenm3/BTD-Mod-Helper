@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Enums](index.md#BTD_Mod_Helper.Api.Enums 'BTD_Mod_Helper.Api.Enums')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Enums](README.md#BTD_Mod_Helper.Api.Enums 'BTD_Mod_Helper.Api.Enums')
 
 ## RoundSetType Class
 

@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class TowerExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Change TowerModel to a different one. Will update display
+    /// Change TowerModel to a different one. Will update display
     /// </summary>
     /// <param name="tower">The Simulation Tower</param>
     /// <param name="towerModel">TowerModel to change to</param>
@@ -22,7 +22,7 @@ public static partial class TowerExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the DisplayNode for this Tower
+    /// Return the DisplayNode for this Tower
     /// </summary>
     /// <returns></returns>
     public static DisplayNode GetDisplayNode(this Tower tower)
@@ -31,7 +31,7 @@ public static partial class TowerExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
+    /// Return the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <returns></returns>
     public static UnityDisplayNode GetUnityDisplayNode(this Tower tower)
@@ -40,7 +40,7 @@ public static partial class TowerExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Sell this tower
+    /// Sell this tower
     /// </summary>
     public static void SellTower(this Tower tower)
     {
@@ -48,7 +48,7 @@ public static partial class TowerExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the TowerToSimulation for this specific Tower
+    /// Return the TowerToSimulation for this specific Tower
     /// </summary>
     public static TowerToSimulation GetTowerToSim(this Tower tower)
     {
@@ -57,7 +57,7 @@ public static partial class TowerExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the Factory that creates Towers
+    /// Return the Factory that creates Towers
     /// </summary>
     /// <param name="tower"></param>
     /// <returns></returns>

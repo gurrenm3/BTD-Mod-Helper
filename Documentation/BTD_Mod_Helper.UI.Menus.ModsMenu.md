@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.UI.Menus](index.md#BTD_Mod_Helper.UI.Menus 'BTD_Mod_Helper.UI.Menus')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.UI.Menus](README.md#BTD_Mod_Helper.UI.Menus 'BTD_Mod_Helper.UI.Menus')
 
 ## ModsMenu Class
 

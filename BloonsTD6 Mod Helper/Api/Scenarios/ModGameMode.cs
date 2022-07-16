@@ -15,6 +15,7 @@ public abstract class ModGameMode : NamedModContent
     /// <summary>
     /// Registers after Round Sets
     /// </summary>
+    /// <exclude/>
     protected override float RegistrationPriority => 10;
 
     /// <inheritdoc />

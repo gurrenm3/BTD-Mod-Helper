@@ -13,6 +13,7 @@ public abstract partial class ModTowerSet : NamedModContent
     /// <summary>
     /// ModTowerSets register fourth
     /// </summary>
+    /// <exclude/>
     protected sealed override float RegistrationPriority => 4;
 
     /// <inheritdoc />

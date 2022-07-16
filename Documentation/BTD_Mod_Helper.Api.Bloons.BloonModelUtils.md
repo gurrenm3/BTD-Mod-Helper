@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Bloons](index.md#BTD_Mod_Helper.Api.Bloons 'BTD_Mod_Helper.Api.Bloons')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Bloons](README.md#BTD_Mod_Helper.Api.Bloons 'BTD_Mod_Helper.Api.Bloons')
 
 ## BloonModelUtils Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## BloonModelUtils.ConstructBloonId(string, bool, bool, bool) Method
 
-(Cross-Game compatible) Constructs an accurate BloonID for a BloonModel based off of it's statuses.
+Constructs an accurate BloonID for a BloonModel based off of it's statuses.
 
 ```csharp
 public static string ConstructBloonId(string bloonName, bool camo, bool regrow, bool fortified);
@@ -46,7 +46,7 @@ public static string ConstructBloonId(string bloonName, bool camo, bool regrow, 
 
 ## BloonModelUtils.CreateGrowModel(string, float) Method
 
-(Cross-Game compatible) Creates a GrowModel behavior that adds Regrowth.
+Creates a GrowModel behavior that adds Regrowth.
 
 ```csharp
 public static Assets.Scripts.Models.Bloons.Behaviors.GrowModel CreateGrowModel(string regrowsTo, float regrowRate);

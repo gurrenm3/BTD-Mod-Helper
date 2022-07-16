@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper](index.md#BTD_Mod_Helper 'BTD_Mod_Helper')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper](README.md#BTD_Mod_Helper 'BTD_Mod_Helper')
 
 ## BloonsTD6Mod Class
 

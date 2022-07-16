@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppGenerics Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppGenerics.Any<T>(this List<T>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this
+Return whether or not there are any elements in this
 
 ```csharp
 public static bool Any<T>(this Il2CppSystem.Collections.Generic.List<T> source)
@@ -40,7 +40,7 @@ public static bool Any<T>(this Il2CppSystem.Collections.Generic.List<T> source)
 
 ## Il2CppGenerics.Any<T>(this List<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+Return whether or not there are any elements in this that match the predicate
 
 ```csharp
 public static bool Any<T>(this Il2CppSystem.Collections.Generic.List<T> source, System.Func<T,bool> predicate)
@@ -68,7 +68,7 @@ public static bool Any<T>(this Il2CppSystem.Collections.Generic.List<T> source, 
 
 ## Il2CppGenerics.FindIndex<T>(this List<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the index of the element that matches the predicate
+Return the index of the element that matches the predicate
 
 ```csharp
 public static int FindIndex<T>(this Il2CppSystem.Collections.Generic.List<T> source, System.Func<T,bool> predicate)
@@ -96,7 +96,7 @@ public static int FindIndex<T>(this Il2CppSystem.Collections.Generic.List<T> sou
 
 ## Il2CppGenerics.First<T>(this List<T>) Method
 
-(Cross-Game compatible) Return the first element in the collection
+Return the first element in the collection
 
 ```csharp
 public static T First<T>(this Il2CppSystem.Collections.Generic.List<T> source);
@@ -119,7 +119,7 @@ public static T First<T>(this Il2CppSystem.Collections.Generic.List<T> source);
 
 ## Il2CppGenerics.First<T>(this List<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the first element that matches the predicate
+Return the first element that matches the predicate
 
 ```csharp
 public static T First<T>(this Il2CppSystem.Collections.Generic.List<T> source, System.Func<T,bool> predicate)
@@ -147,7 +147,7 @@ public static T First<T>(this Il2CppSystem.Collections.Generic.List<T> source, S
 
 ## Il2CppGenerics.FirstOrDefault<T>(this List<T>) Method
 
-(Cross-Game compatible) Return the first element in the collection, or return default if it's null
+Return the first element in the collection, or return default if it's null
 
 ```csharp
 public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.List<T> source);
@@ -170,7 +170,7 @@ public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.List<T> 
 
 ## Il2CppGenerics.FirstOrDefault<T>(this List<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the first element that matches the predicate, or return default
+Return the first element that matches the predicate, or return default
 
 ```csharp
 public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.List<T> source, System.Func<T,bool> predicate)
@@ -198,7 +198,7 @@ public static T FirstOrDefault<T>(this Il2CppSystem.Collections.Generic.List<T> 
 
 ## Il2CppGenerics.Last<T>(this List<T>) Method
 
-(Cross-Game compatible) Return the last item in the collection
+Return the last item in the collection
 
 ```csharp
 public static T Last<T>(this Il2CppSystem.Collections.Generic.List<T> source);
@@ -221,7 +221,7 @@ public static T Last<T>(this Il2CppSystem.Collections.Generic.List<T> source);
 
 ## Il2CppGenerics.LastOrDefault<T>(this List<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return the last item in the collection that meets the condition, or return default
+Return the last item in the collection that meets the condition, or return default
 
 ```csharp
 public static T LastOrDefault<T>(this Il2CppSystem.Collections.Generic.List<T> source, System.Func<T,bool> predicate);
@@ -248,7 +248,7 @@ public static T LastOrDefault<T>(this Il2CppSystem.Collections.Generic.List<T> s
 
 ## Il2CppGenerics.Where<T>(this List<T>, Func<T,bool>) Method
 
-(Cross-Game compatible) Return all elements that match the predicate
+Return all elements that match the predicate
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> Where<T>(this Il2CppSystem.Collections.Generic.List<T> source, System.Func<T,bool> predicate)

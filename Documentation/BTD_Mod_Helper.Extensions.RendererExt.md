@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## RendererExt Class
 
@@ -16,8 +16,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## RendererExt.BakedMesh(this SkinnedMeshRenderer) Method
 
-(Cross-Game compatible)
-
 ```csharp
 public static UnityEngine.Mesh BakedMesh(this UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer);
 ```
@@ -33,8 +31,6 @@ public static UnityEngine.Mesh BakedMesh(this UnityEngine.SkinnedMeshRenderer sk
 <a name='BTD_Mod_Helper.Extensions.RendererExt.GetBoneIndex(thisUnityEngine.SkinnedMeshRenderer,string)'></a>
 
 ## RendererExt.GetBoneIndex(this SkinnedMeshRenderer, string) Method
-
-(Cross-Game compatible)
 
 ```csharp
 public static int GetBoneIndex(this UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, string name);
@@ -56,7 +52,7 @@ public static int GetBoneIndex(this UnityEngine.SkinnedMeshRenderer skinnedMeshR
 
 ## RendererExt.GetTriangles(this SkinnedMeshRenderer, int) Method
 
-(Cross-Game compatible) Gets the list of triangles for a Mesh, even if its not marked as isReadable  
+Gets the list of triangles for a Mesh, even if its not marked as isReadable  
 <br/>  
 Each "triangle" is a set of 3 consecutive ints in the list, where the number is the index in the vertices
 
@@ -80,8 +76,6 @@ public static System.Collections.Generic.List<int> GetTriangles(this UnityEngine
 
 ## RendererExt.GetTrianglesAsArrays(this SkinnedMeshRenderer, int) Method
 
-(Cross-Game compatible)
-
 ```csharp
 public static System.Collections.Generic.List<int[]> GetTrianglesAsArrays(this UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, int submesh=0);
 ```
@@ -101,8 +95,6 @@ public static System.Collections.Generic.List<int[]> GetTrianglesAsArrays(this U
 <a name='BTD_Mod_Helper.Extensions.RendererExt.GetVertices(thisUnityEngine.SkinnedMeshRenderer)'></a>
 
 ## RendererExt.GetVertices(this SkinnedMeshRenderer) Method
-
-(Cross-Game compatible)
 
 ```csharp
 public static System.Collections.Generic.List<UnityEngine.Vector3> GetVertices(this UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer);
@@ -164,7 +156,7 @@ public static bool[] GetVerticesConnectedToBoneArray(this UnityEngine.SkinnedMes
 
 ## RendererExt.SetMainTexture(this Il2CppReferenceArray<Renderer>, Texture2D) Method
 
-(Cross-Game compatible) Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
+Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
 
 ```csharp
 public static void SetMainTexture(this UnhollowerBaseLib.Il2CppReferenceArray<UnityEngine.Renderer> renderers, UnityEngine.Texture2D texture2D);
@@ -183,7 +175,7 @@ public static void SetMainTexture(this UnhollowerBaseLib.Il2CppReferenceArray<Un
 
 ## RendererExt.SetMainTexture(this Renderer, Texture2D) Method
 
-(Cross-Game compatible) Set the texture for this renderer. Equivalent to "render.material.mainTexture = texture2D"
+Set the texture for this renderer. Equivalent to "render.material.mainTexture = texture2D"
 
 ```csharp
 public static void SetMainTexture(this UnityEngine.Renderer renderer, UnityEngine.Texture2D texture2D);
@@ -240,7 +232,7 @@ public static void SetTriangles(this UnityEngine.SkinnedMeshRenderer skinnedMesh
 
 ## RendererExt.UnbindMesh(this SkinnedMeshRenderer) Method
 
-(Cross-Game compatible) Unbinds the renderer's sharedMesh, so that changes you make to it don't change the original
+Unbinds the renderer's sharedMesh, so that changes you make to it don't change the original
 
 ```csharp
 public static UnityEngine.Mesh UnbindMesh(this UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer);

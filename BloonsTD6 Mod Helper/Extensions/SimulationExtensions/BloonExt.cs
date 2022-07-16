@@ -22,7 +22,7 @@ public static partial class BloonExt
     }
 
     /// <summary>
-    /// 
+    /// Tests whether a project will pop this bloon
     /// </summary>
     /// <param name="bloon"></param>
     /// <param name="projectile"></param>

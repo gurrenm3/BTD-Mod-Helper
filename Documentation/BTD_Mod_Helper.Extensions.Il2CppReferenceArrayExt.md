@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## Il2CppReferenceArrayExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## Il2CppReferenceArrayExt.AddTo<T>(this Il2CppReferenceArray<T>, List<T>) Method
 
-(Cross-Game compatible) Return this with additional Items added to it
+Return this with additional Items added to it
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> AddTo<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> referenceArray, System.Collections.Generic.List<T> objectsToAdd)
@@ -48,7 +48,7 @@ Items to add
 
 ## Il2CppReferenceArrayExt.AddTo<T>(this Il2CppReferenceArray<T>, T) Method
 
-(Cross-Game compatible) Return this with an additional Item added to it
+Return this with an additional Item added to it
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> AddTo<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> referenceArray, T objectToAdd)
@@ -80,7 +80,7 @@ Item to add
 
 ## Il2CppReferenceArrayExt.AddTo<T>(this Il2CppReferenceArray<T>, Il2CppReferenceArray<T>) Method
 
-(Cross-Game compatible) Return this with additional Items added to it
+Return this with additional Items added to it
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> AddTo<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> referenceArray, UnhollowerBaseLib.Il2CppReferenceArray<T> objectsToAdd)
@@ -133,7 +133,7 @@ public static void Clear<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> refer
 
 ## Il2CppReferenceArrayExt.Duplicate<T>(this Il2CppReferenceArray<T>) Method
 
-(Cross-Game compatible) Return a duplicate of this
+Return a duplicate of this
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<T> Duplicate<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> list)
@@ -157,7 +157,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> Duplicate<T>(this Unholl
 
 ## Il2CppReferenceArrayExt.DuplicateAs<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
 
-(Cross-Game compatible) Return a duplicate of this as type TCast
+Return a duplicate of this as type TCast
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<TCast> DuplicateAs<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> list)
@@ -210,7 +210,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> Empty<T>(this Unhollower
 
 ## Il2CppReferenceArrayExt.GetItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
 
-(Cross-Game compatible) Return the first item of type TCast
+Return the first item of type TCast
 
 ```csharp
 public static TCast GetItemOfType<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray)
@@ -241,7 +241,7 @@ The Type of the Item you want
 
 ## Il2CppReferenceArrayExt.GetItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
 
-(Cross-Game compatible) Return all Items of type TCast
+Return all Items of type TCast
 
 ```csharp
 public static System.Collections.Generic.List<TCast> GetItemsOfType<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray)
@@ -272,7 +272,7 @@ The Type of the Items you want
 
 ## Il2CppReferenceArrayExt.HasItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
 
-(Cross-Game compatible) Check if this has any items of type TCast
+Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray)
@@ -303,7 +303,7 @@ The Type you're checking for
 
 ## Il2CppReferenceArrayExt.RemoveItem<TSource,TCast>(this Il2CppReferenceArray<TSource>, TCast) Method
 
-(Cross-Game compatible) Return this with the specified item removed
+Return this with the specified item removed
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<TSource> RemoveItem<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray, TCast itemToRemove)
@@ -340,7 +340,7 @@ The specific Item to remove
 
 ## Il2CppReferenceArrayExt.RemoveItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<TSource> RemoveItemOfType<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray)
@@ -371,7 +371,7 @@ The Type of the Item you want to remove
 
 ## Il2CppReferenceArrayExt.RemoveItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>, Model) Method
 
-(Cross-Game compatible) Return this with the first Item of type TCast removed
+Return this with the first Item of type TCast removed
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<TSource> RemoveItemOfType<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray, Assets.Scripts.Models.Model removeChildFrom)
@@ -408,7 +408,7 @@ Model to remove the child dependents from
 
 ## Il2CppReferenceArrayExt.RemoveItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
 
-(Cross-Game compatible) Return this with all Items of type TCast removed
+Return this with all Items of type TCast removed
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray)
@@ -439,7 +439,7 @@ The Type of the Items that you want to remove
 
 ## Il2CppReferenceArrayExt.RemoveItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>, Model) Method
 
-(Cross-Game compatible) Return this with all Items of type TCast removed
+Return this with all Items of type TCast removed
 
 ```csharp
 public static UnhollowerBaseLib.Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource,TCast>(this UnhollowerBaseLib.Il2CppReferenceArray<TSource> referenceArray, Assets.Scripts.Models.Model removeChildFrom)
@@ -476,7 +476,7 @@ Model to remove the child dependents from
 
 ## Il2CppReferenceArrayExt.ToArray<T>(this Il2CppReferenceArray<T>) Method
 
-(Cross-Game compatible) Return as a System.Array
+Return as a System.Array
 
 ```csharp
 public static T[] ToArray<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> referenceArray)
@@ -500,7 +500,7 @@ public static T[] ToArray<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> refe
 
 ## Il2CppReferenceArrayExt.ToIl2CppList<T>(this Il2CppReferenceArray<T>) Method
 
-(Cross-Game compatible) Return as Il2CppSystem.List
+Return as Il2CppSystem.List
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> referenceArray)
@@ -524,7 +524,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Unho
 
 ## Il2CppReferenceArrayExt.ToList<T>(this Il2CppReferenceArray<T>) Method
 
-(Cross-Game compatible) Return as System.List
+Return as System.List
 
 ```csharp
 public static System.Collections.Generic.List<T> ToList<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> referenceArray)
@@ -548,7 +548,7 @@ public static System.Collections.Generic.List<T> ToList<T>(this UnhollowerBaseLi
 
 ## Il2CppReferenceArrayExt.ToLockList<T>(this Il2CppReferenceArray<T>) Method
 
-(Cross-Game compatible) Return as LockList
+Return as LockList
 
 ```csharp
 public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this UnhollowerBaseLib.Il2CppReferenceArray<T> referenceArray)

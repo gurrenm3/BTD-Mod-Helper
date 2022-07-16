@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.ModMenu](index.md#BTD_Mod_Helper.Api.ModMenu 'BTD_Mod_Helper.Api.ModMenu')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.ModMenu](README.md#BTD_Mod_Helper.Api.ModMenu 'BTD_Mod_Helper.Api.ModMenu')
 
 ## ModHelperHttp Class
 

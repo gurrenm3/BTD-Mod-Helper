@@ -1,4 +1,4 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
+#### [BloonsTD6 Mod Helper](README.md 'README')
 
 ## BloonsTD6 Mod Helper Assembly
 ### Namespaces
@@ -49,7 +49,8 @@
 | [ModBloon](BTD_Mod_Helper.Api.Bloons.ModBloon.md 'BTD_Mod_Helper.Api.Bloons.ModBloon') | Class for adding in a new Bloon to the game |
 | [ModBloon&lt;T&gt;](BTD_Mod_Helper.Api.Bloons.ModBloon_T_.md 'BTD_Mod_Helper.Api.Bloons.ModBloon<T>') | Class for a ModBloon which has a different ModBloon as its base |
 | [ModRoundSet](BTD_Mod_Helper.Api.Bloons.ModRoundSet.md 'BTD_Mod_Helper.Api.Bloons.ModRoundSet') | Class for a custom RoundSet |
-| [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon') | |
+| [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon') | Allows you to easily modify the models of a specific vanilla Bloon |
+| [ModVanillaBloons](BTD_Mod_Helper.Api.Bloons.ModVanillaBloons.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloons') | Allows you to easily modify the models of multiple vanilla Bloons |
 
 <a name='BTD_Mod_Helper.Api.Components'></a>
 
@@ -146,7 +147,7 @@
 | Classes | |
 | :--- | :--- |
 | [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') | Base class for a ModSetting without the generics |
-| [ModSetting&lt;T&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>') | (Cross-Game compatible) Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu |
+| [ModSetting&lt;T&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>') | Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu |
 | [ModSettingBool](BTD_Mod_Helper.Api.ModOptions.ModSettingBool.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingBool') | ModSetting class for a boolean value |
 | [ModSettingButton](BTD_Mod_Helper.Api.ModOptions.ModSettingButton.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingButton') | ModSetting for adding a button in the settings that performs a given action, with the setting just tracking<br/>the number of times that the button has been pressed. |
 | [ModSettingCategory](BTD_Mod_Helper.Api.ModOptions.ModSettingCategory.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingCategory') | Category of mod settings |
@@ -174,12 +175,12 @@
 
 | Classes | |
 | :--- | :--- |
-| [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero') | |
+| [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero') | Class for adding a custom Hero to the game. Use alongside [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') to give multiple levels. |
 | [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') | Class representing the UpgradeModel and changes for a particular Level for a ModHero |
 | [ModHeroLevel&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModHeroLevel_T_.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel<T>') | Convenient generic class for specifying the ModHero that this ModHeroLevel is for |
 | [ModParagonUpgrade](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade') | Defines the Paragon Upgrade for a ModTower. Remember to set the [ParagonMode](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode 'BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode') property. |
 | [ModParagonUpgrade&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade_T_.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade<T>') | A convenient generic class for specifying the ModTower that this ModParagonUpgrade is for |
-| [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower') | Class representing a custom Tower being added by a mod |
+| [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower') | Class for adding a custom Tower to the game. Use alongside [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') to define its upgrades,<br/>and optionally [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay') to define custom displays for it. |
 | [ModTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModTower<T>') | A convenient generic class for specifying the ModTowerSet that a ModTower uses |
 | [ModTowerSet](BTD_Mod_Helper.Api.Towers.ModTowerSet.md 'BTD_Mod_Helper.Api.Towers.ModTowerSet') | A custom collection of ModTowers |
 | [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') | A class used to create an Upgrade for a Tower |

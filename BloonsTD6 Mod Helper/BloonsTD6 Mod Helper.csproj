@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="DefaultDocumentation" Version="0.8.0" PrivateAssets="all" />
+        <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1" PrivateAssets="all" />
         <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
         <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.14" GeneratePathProperty="true" />
         <PackageReference Include="NfdSharp" Version="1.0.1" />

@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class EntityExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return the Factory that creates Entities
+    /// Return the Factory that creates Entities
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>

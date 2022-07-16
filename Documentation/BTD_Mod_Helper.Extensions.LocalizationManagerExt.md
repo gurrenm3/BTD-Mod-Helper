@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Extensions](index.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Extensions](README.md#BTD_Mod_Helper.Extensions 'BTD_Mod_Helper.Extensions')
 
 ## LocalizationManagerExt Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## LocalizationManagerExt.GetTextTable(this LocalizationManager) Method
 
-(Cross-Game compatible) Returns the text table that is currently in use.
+Returns the text table that is currently in use.
 
 ```csharp
 public static Il2CppSystem.Collections.Generic.Dictionary<string,string> GetTextTable(this NinjaKiwi.Common.LocalizationManager localization);

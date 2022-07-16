@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api](index.md#BTD_Mod_Helper.Api 'BTD_Mod_Helper.Api')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api](README.md#BTD_Mod_Helper.Api 'BTD_Mod_Helper.Api')
 
 ## TaskScheduler Class
 
@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## TaskScheduler.ScheduleTask(Action, ScheduleType, int, Func<bool>) Method
 
-(Cross-Game compatible) Schedule a task to execute later on as a Coroutine
+Schedule a task to execute later on as a Coroutine
 
 ```csharp
 public static void ScheduleTask(System.Action action, BTD_Mod_Helper.Api.Enums.ScheduleType scheduleType, int amountToWait, System.Func<bool> waitCondition=null);
@@ -51,7 +51,7 @@ Wait for this to be true before executing task
 
 ## TaskScheduler.ScheduleTask(Action, Func<bool>) Method
 
-(Cross-Game compatible) Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
+Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
 
 ```csharp
 public static void ScheduleTask(System.Action action, System.Func<bool> waitCondition=null);
@@ -74,7 +74,7 @@ Wait for this to be true before executing task
 
 ## TaskScheduler.ScheduleTask(IEnumerator) Method
 
-(Cross-Game compatible) Schedule a task to execute right now as a Coroutine
+Schedule a task to execute right now as a Coroutine
 
 ```csharp
 public static void ScheduleTask(System.Collections.IEnumerator iEnumerator);

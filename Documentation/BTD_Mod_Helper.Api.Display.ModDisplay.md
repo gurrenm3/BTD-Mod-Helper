@@ -1,5 +1,5 @@
-#### [BloonsTD6 Mod Helper](index.md 'index')
-### [BTD_Mod_Helper.Api.Display](index.md#BTD_Mod_Helper.Api.Display 'BTD_Mod_Helper.Api.Display')
+#### [BloonsTD6 Mod Helper](README.md 'README')
+### [BTD_Mod_Helper.Api.Display](README.md#BTD_Mod_Helper.Api.Display 'BTD_Mod_Helper.Api.Display')
 
 ## ModDisplay Class
 
@@ -24,7 +24,7 @@ Derived
 The display id for RoadSpikes
 
 ```csharp
-public const string Generic2dDisplay = 9dccc16d26c1c8a45b129e2a8cbd17ba;
+public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
 ```
 
 #### Field Value
@@ -83,19 +83,6 @@ public virtual Assets.Scripts.Simulation.SMath.Vector3 PositionOffset { get; }
 #### Property Value
 [Assets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.SMath.Vector3 'Assets.Scripts.Simulation.SMath.Vector3')
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.RegistrationPriority'></a>
-
-## ModDisplay.RegistrationPriority Property
-
-ModDisplays register first
-
-```csharp
-protected sealed override float RegistrationPriority { get; }
-```
-
-#### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Scale'></a>
 
 ## ModDisplay.Scale Property
@@ -114,7 +101,7 @@ public virtual float Scale { get; }
 
 ## ModDisplay.Apply(BloonModel) Method
 
-(Cross-Game compatible) Applies this ModDisplay to a given BloonModel
+Applies this ModDisplay to a given BloonModel
 
 ```csharp
 public void Apply(Assets.Scripts.Models.Bloons.BloonModel bloonModel);
@@ -129,7 +116,7 @@ public void Apply(Assets.Scripts.Models.Bloons.BloonModel bloonModel);
 
 ## ModDisplay.Apply(DisplayModel) Method
 
-(Cross-Game compatible) Applies this ModDisplay to a given DisplayModel
+Applies this ModDisplay to a given DisplayModel
 
 ```csharp
 public void Apply(Assets.Scripts.Models.GenericBehaviors.DisplayModel displayModel);
@@ -144,7 +131,7 @@ public void Apply(Assets.Scripts.Models.GenericBehaviors.DisplayModel displayMod
 
 ## ModDisplay.Apply(ProjectileModel) Method
 
-(Cross-Game compatible) Applies this ModDisplay to a given ProjectileModel
+Applies this ModDisplay to a given ProjectileModel
 
 ```csharp
 public void Apply(Assets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel);
@@ -159,7 +146,7 @@ public void Apply(Assets.Scripts.Models.Towers.Projectiles.ProjectileModel proje
 
 ## ModDisplay.Apply(TowerModel) Method
 
-(Cross-Game compatible) Applies this ModDisplay to a given TowerModel
+Applies this ModDisplay to a given TowerModel
 
 ```csharp
 public void Apply(Assets.Scripts.Models.Towers.TowerModel towerModel);
@@ -264,7 +251,7 @@ The name of the texture, without .png
 
 ## ModDisplay.SetMeshTexture(UnityDisplayNode, string) Method
 
-(Cross-Game compatible) Sets the mesh texture to that of a named png
+Sets the mesh texture to that of a named png
 
 ```csharp
 protected void SetMeshTexture(Assets.Scripts.Unity.Display.UnityDisplayNode node, string textureName);
@@ -287,7 +274,7 @@ The name of the texture, without .png
 
 ## ModDisplay.SetMeshTexture(UnityDisplayNode, string, int) Method
 
-(Cross-Game compatible) Sets the mesh texture to that of a named png
+Sets the mesh texture to that of a named png
 
 ```csharp
 protected void SetMeshTexture(Assets.Scripts.Unity.Display.UnityDisplayNode node, string textureName, int index);
