@@ -24,14 +24,14 @@ public abstract class ModHero : ModTower
     public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
     {
         base.RegisterText(textTable);
-            
+
         textTable[Id + " Short Description"] = Title;
         textTable[Id + " Level 1 Description"] = Level1Description;
     }
 
     internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
     {
-        "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands", 
+        "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands",
         "Scholarships", "SelfTaughtHeroes", "WeakPoint"
     }).ToArray();
 
@@ -83,10 +83,11 @@ public abstract class ModHero : ModTower
     /// <returns></returns>
     public sealed override IEnumerable<int[]> TowerTiers()
     {
-        yield return new[] { 0, 0, 0 };
+        yield return new[] {0, 0, 0};
+
         for (var i = 2; i <= MaxLevel; i++)
         {
-            yield return new[] { i, 0, 0 };
+            yield return new[] {i, 0, 0};
         }
     }
 
@@ -98,6 +99,7 @@ public abstract class ModHero : ModTower
             // Unrelated to the actual XpRatio weirdly enough
             baseTowerModel.AddBehavior(new HeroModel($"HeroModel_{Name}", 1.0f, 1.0f));
         }
+
         return baseTowerModel;
     }
 
@@ -108,6 +110,7 @@ public abstract class ModHero : ModTower
         {
             id += " " + tiers[0];
         }
+
         return id;
     }
 
@@ -115,12 +118,12 @@ public abstract class ModHero : ModTower
     /// The other hero that has the same colored name in the Heroes menu as you want to use
     /// </summary>
     public virtual string NameStyle => TowerType.Ezili;
-        
+
     /// <summary>
     /// The other hero that has the same glow color in the Heroes menu as you want to use
     /// </summary>
     public virtual string GlowStyle => TowerType.Ezili;
-        
+
     /// <summary>
     /// The other hero that has the same background color in the Heroes menu as you want to use
     /// </summary>
@@ -135,7 +138,7 @@ public abstract class ModHero : ModTower
     /// The exact sprite reference used for the button
     /// </summary>
     public virtual SpriteReference ButtonReference => GetSpriteReference(Button);
-        
+
     /// <summary>
     /// The name of the png to try to find for the new hero select screen button
     /// </summary>
@@ -169,12 +172,12 @@ public abstract class ModHero : ModTower
     /// The short description that appears under the name of the hero
     /// </summary>
     public abstract string Title { get; }
-        
+
     /// <summary>
     /// The description to use for the first level of your hero
     /// </summary>
     public abstract string Level1Description { get; }
-        
+
     /// <summary>
     /// The total number of abilities that this hero has as max level
     /// </summary>
@@ -186,6 +189,15 @@ public abstract class ModHero : ModTower
     /// If you set this, you MUST set all the required data for it manually else bad things will happen :(
     /// </summary>
     public abstract HeroSprite Sprite { get; }
+
+    /// <summary>
+    /// Modifies the HeroSprite used in the Heroes menu. Will already have modified the font/banner/color using
+    /// <see cref="NameStyle"/>, <see cref="GlowStyle"/> and <see cref="BackgroundStyle"/> at this point.
+    /// </summary>
+    /// <param name="heroSprite">The HeroSprite to modify</param>
+    public virtual void ModifyHeroSprite(HeroSprite heroSprite)
+    {
+    }
 
     /// <summary>
     /// The index to add this hero at in relation to other heroes
