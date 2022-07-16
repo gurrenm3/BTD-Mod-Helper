@@ -83,19 +83,6 @@ public virtual Assets.Scripts.Simulation.SMath.Vector3 PositionOffset { get; }
 #### Property Value
 [Assets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.SMath.Vector3 'Assets.Scripts.Simulation.SMath.Vector3')
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.RegisterPerFrame'></a>
-
-## ModDisplay.RegisterPerFrame Property
-
-(Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
-
-```csharp
-public sealed override int RegisterPerFrame { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.RegistrationPriority'></a>
 
 ## ModDisplay.RegistrationPriority Property
@@ -249,16 +236,6 @@ public abstract void ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplay
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
 
 `node` [Assets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.UnityDisplayNode 'Assets.Scripts.Unity.Display.UnityDisplayNode')
-
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Register()'></a>
-
-## ModDisplay.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(Assets.Scripts.Unity.Display.UnityDisplayNode,string)'></a>
 

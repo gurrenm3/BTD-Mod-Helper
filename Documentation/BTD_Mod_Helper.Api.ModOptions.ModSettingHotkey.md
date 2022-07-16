@@ -12,20 +12,6 @@ public class ModSettingHotkey : BTD_Mod_Helper.Api.ModOptions.ModSetting<string>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') &#129106; [BTD_Mod_Helper.Api.ModOptions.ModSetting&lt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>') &#129106; ModSettingHotkey
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.CreateComponent()'></a>
-
-## ModSettingHotkey.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal override BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent
-
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.IsPressed()'></a>
 
 ## ModSettingHotkey.IsPressed() Method
@@ -60,20 +46,6 @@ Returns whether the Hotkey just went from being pressed to not being pressed on 
 
 ```csharp
 public bool JustReleased();
-```
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.OnSave()'></a>
-
-## ModSettingHotkey.OnSave() Method
-
-Validates the current value using the customValidation function, if there is one.  
-If there were no issues, performs the onSave action
-
-```csharp
-internal override bool OnSave();
 ```
 
 #### Returns

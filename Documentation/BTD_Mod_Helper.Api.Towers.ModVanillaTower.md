@@ -87,13 +87,3 @@ public override System.Collections.Generic.IEnumerable<Assets.Scripts.Models.Tow
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaTower.Register()'></a>
-
-## ModVanillaTower.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```

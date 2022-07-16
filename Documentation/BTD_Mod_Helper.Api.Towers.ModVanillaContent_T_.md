@@ -23,40 +23,6 @@ Derived
 &#8627; [ModVanillaUpgrade](BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(Assets.Scripts.Models.Model)'></a>
-
-## ModVanillaContent<T>.Apply(Model) Method
-
-Applies the modifications to the vanilla content
-
-```csharp
-internal override void Apply(Assets.Scripts.Models.Model model);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(Assets.Scripts.Models.Model).model'></a>
-
-`model` [Assets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Model 'Assets.Scripts.Models.Model')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(Assets.Scripts.Models.Model,Assets.Scripts.Models.GameModel)'></a>
-
-## ModVanillaContent<T>.Apply(Model, GameModel) Method
-
-Applies the modifications to the vanilla content
-
-```csharp
-internal override void Apply(Assets.Scripts.Models.Model model, Assets.Scripts.Models.GameModel gameModel);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(Assets.Scripts.Models.Model,Assets.Scripts.Models.GameModel).model'></a>
-
-`model` [Assets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Model 'Assets.Scripts.Models.Model')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(Assets.Scripts.Models.Model,Assets.Scripts.Models.GameModel).gameModel'></a>
-
-`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
-
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T)'></a>
 
 ## ModVanillaContent<T>.Apply(T) Method

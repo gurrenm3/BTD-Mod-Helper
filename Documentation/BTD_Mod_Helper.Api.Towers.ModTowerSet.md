@@ -225,13 +225,3 @@ public sealed override System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Register()'></a>
-
-## ModTowerSet.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```

@@ -131,20 +131,6 @@ protected abstract TMPro.TMP_InputField.CharacterValidation Validation { get; }
 [TMPro.TMP_InputField.CharacterValidation](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TMP_InputField.CharacterValidation 'TMPro.TMP_InputField.CharacterValidation')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingNumber_T_.CreateComponent()'></a>
-
-## ModSettingNumber<T>.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal override BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent
-
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingNumber_T_.FromFloat(float)'></a>
 
 ## ModSettingNumber<T>.FromFloat(float) Method

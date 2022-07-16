@@ -316,31 +316,6 @@ public virtual void ModifyHeroSprite(Assets.Scripts.Data.Global.HeroSprite heroS
 
 The HeroSprite to modify
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.Register()'></a>
-
-## ModHero.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```
-
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_)'></a>
-
-## ModHero.RegisterText(Dictionary<string,string>) Method
-
-Registers the text for this in the LocalizationManager
-
-```csharp
-public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string,string> textTable);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_).textTable'></a>
-
-`textTable` [Il2CppSystem.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')
-
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.TowerTiers()'></a>
 
 ## ModHero.TowerTiers() Method

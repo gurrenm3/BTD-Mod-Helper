@@ -93,19 +93,6 @@ public virtual Assets.Scripts.Utils.SpriteReference IconReference { get; }
 #### Property Value
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ID'></a>
-
-## ModBloon.ID Property
-
-(Cross-Game compatible) Backing property for ID that's only able to be overriden internally
-
-```csharp
-protected internal override string ID { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.KeepBaseId'></a>
 
 ## ModBloon.KeepBaseId Property
@@ -131,19 +118,6 @@ public virtual float PixelsPerUnit { get; }
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.RegisterPerFrame'></a>
-
-## ModBloon.RegisterPerFrame Property
-
-(Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
-
-```csharp
-public sealed override int RegisterPerFrame { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.RegistrationPriority'></a>
 
@@ -225,13 +199,3 @@ public abstract void ModifyBaseBloonModel(Assets.Scripts.Models.Bloons.BloonMode
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBaseBloonModel(Assets.Scripts.Models.Bloons.BloonModel).bloonModel'></a>
 
 `bloonModel` [Assets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.BloonModel 'Assets.Scripts.Models.Bloons.BloonModel')
-
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Register()'></a>
-
-## ModBloon.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```

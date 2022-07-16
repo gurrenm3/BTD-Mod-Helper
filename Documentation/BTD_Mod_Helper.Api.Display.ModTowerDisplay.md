@@ -122,16 +122,6 @@ public override void ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplay
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.Register()'></a>
-
-## ModTowerDisplay.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```
-
 <a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.UseForTower(int[])'></a>
 
 ## ModTowerDisplay.UseForTower(int[]) Method

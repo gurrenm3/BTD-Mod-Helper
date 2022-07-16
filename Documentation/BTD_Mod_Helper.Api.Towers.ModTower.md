@@ -15,17 +15,6 @@ Derived
 &#8627; [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero')  
 &#8627; [ModTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModTower<T>')  
 &#8627; [ModVanillaParagon](BTD_Mod_Helper.Api.Towers.ModVanillaParagon.md 'BTD_Mod_Helper.Api.Towers.ModVanillaParagon')
-### Constructors
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModTower()'></a>
-
-## ModTower() Constructor
-
-Constructor for ModTower, used implicitly by ModContent.Create
-
-```csharp
-protected ModTower();
-```
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.MAGIC'></a>
@@ -250,19 +239,6 @@ public virtual Assets.Scripts.Utils.SpriteReference PortraitReference { get; }
 #### Property Value
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.RegisterPerFrame'></a>
-
-## ModTower.RegisterPerFrame Property
-
-(Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
-
-```csharp
-public sealed override int RegisterPerFrame { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.RegistrationPriority'></a>
 
 ## ModTower.RegistrationPriority Property
@@ -339,23 +315,6 @@ public virtual string Get2DTexture(int[] tiers);
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetDefaultTowerModel()'></a>
-
-## ModTower.GetDefaultTowerModel() Method
-
-Gets the base 0-0-0 TowerModel for this Tower  
-<br/>  
-Starts with the [BaseTower](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.BaseTower 'BTD_Mod_Helper.Api.Towers.ModTower.BaseTower'), modifies its default properties as needed,  
-then calls [ModifyBaseTowerModel(TowerModel)](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(Assets.Scripts.Models.Towers.TowerModel) 'BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(Assets.Scripts.Models.Towers.TowerModel)') on it.
-
-```csharp
-internal virtual Assets.Scripts.Models.Towers.TowerModel GetDefaultTowerModel();
-```
-
-#### Returns
-[Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')  
-The 0-0-0 TowerModel for this Tower
-
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.GetTowerIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerDetailsModel_)'></a>
 
 ## ModTower.GetTowerIndex(List<TowerDetailsModel>) Method
@@ -394,16 +353,6 @@ public abstract void ModifyBaseTowerModel(Assets.Scripts.Models.Towers.TowerMode
 `towerModel` [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')
 
 The Base Tower Model
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.Register()'></a>
-
-## ModTower.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers()'></a>
 

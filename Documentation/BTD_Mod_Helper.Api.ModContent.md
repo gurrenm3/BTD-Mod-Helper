@@ -54,19 +54,6 @@ public string Id { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModContent.ID'></a>
-
-## ModContent.ID Property
-
-(Cross-Game compatible) Backing property for ID that's only able to be overriden internally
-
-```csharp
-protected internal virtual string ID { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Api.ModContent.Name'></a>
 
 ## ModContent.Name Property
@@ -79,32 +66,6 @@ public virtual string Name { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Api.ModContent.RegisterPerFrame'></a>
-
-## ModContent.RegisterPerFrame Property
-
-(Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
-
-```csharp
-public virtual int RegisterPerFrame { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-<a name='BTD_Mod_Helper.Api.ModContent.RegistrationPriority'></a>
-
-## ModContent.RegistrationPriority Property
-
-(Cross-Game compatible) Used to allow some ModContent to Register before or after others
-
-```csharp
-protected virtual float RegistrationPriority { get; }
-```
-
-#### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModContent.BloonID_T_()'></a>
@@ -948,29 +909,6 @@ The bottom path tier
 #### Returns
 [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')  
 The tower name/id
-
-<a name='BTD_Mod_Helper.Api.ModContent.Load()'></a>
-
-## ModContent.Load() Method
-
-(Cross-Game compatible) Used for when you want to programmatically create multiple instances of a given ModContent
-
-```csharp
-public virtual System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModContent> Load();
-```
-
-#### Returns
-[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-<a name='BTD_Mod_Helper.Api.ModContent.Register()'></a>
-
-## ModContent.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public abstract void Register();
-```
 
 <a name='BTD_Mod_Helper.Api.ModContent.RoundSetId_T_()'></a>
 

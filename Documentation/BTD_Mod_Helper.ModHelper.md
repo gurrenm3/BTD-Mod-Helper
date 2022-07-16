@@ -65,21 +65,6 @@ public static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.BloonsMod> M
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 ### Methods
 
-<a name='BTD_Mod_Helper.ModHelper.Error(object)'></a>
-
-## ModHelper.Error(object) Method
-
-Logs an error from the Mod Helper's LoggerInstance
-
-```csharp
-internal static void Error(object obj);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.ModHelper.Error(object).obj'></a>
-
-`obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
-
 <a name='BTD_Mod_Helper.ModHelper.Error_T_(object)'></a>
 
 ## ModHelper.Error<T>(object) Method
@@ -98,21 +83,6 @@ public static void Error<T>(object obj)
 #### Parameters
 
 <a name='BTD_Mod_Helper.ModHelper.Error_T_(object).obj'></a>
-
-`obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
-
-<a name='BTD_Mod_Helper.ModHelper.Log(object)'></a>
-
-## ModHelper.Log(object) Method
-
-Logs a message from the Mod Helper's LoggerInstance
-
-```csharp
-internal static void Log(object obj);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.ModHelper.Log(object).obj'></a>
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
@@ -137,21 +107,6 @@ public static void Log<T>(object obj)
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
-<a name='BTD_Mod_Helper.ModHelper.Msg(object)'></a>
-
-## ModHelper.Msg(object) Method
-
-Logs a message from the Mod Helper's LoggerInstance
-
-```csharp
-internal static void Msg(object obj);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.ModHelper.Msg(object).obj'></a>
-
-`obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
-
 <a name='BTD_Mod_Helper.ModHelper.Msg_T_(object)'></a>
 
 ## ModHelper.Msg<T>(object) Method
@@ -170,21 +125,6 @@ public static void Msg<T>(object obj)
 #### Parameters
 
 <a name='BTD_Mod_Helper.ModHelper.Msg_T_(object).obj'></a>
-
-`obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
-
-<a name='BTD_Mod_Helper.ModHelper.Warning(object)'></a>
-
-## ModHelper.Warning(object) Method
-
-Logs a warning from the Mod Helper's LoggerInstance
-
-```csharp
-internal static void Warning(object obj);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.ModHelper.Warning(object).obj'></a>
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 

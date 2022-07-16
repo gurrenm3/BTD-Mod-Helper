@@ -67,19 +67,6 @@ public sealed override string Name { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.RegisterPerFrame'></a>
-
-## ModVanillaContent.RegisterPerFrame Property
-
-(Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
-
-```csharp
-public sealed override int RegisterPerFrame { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.ShouldApply'></a>
 
 ## ModVanillaContent.ShouldApply Property
@@ -93,40 +80,6 @@ public virtual bool ShouldApply { get; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.Apply(Assets.Scripts.Models.Model)'></a>
-
-## ModVanillaContent.Apply(Model) Method
-
-Applies the modifications to the vanilla content
-
-```csharp
-internal virtual void Apply(Assets.Scripts.Models.Model model);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.Apply(Assets.Scripts.Models.Model).model'></a>
-
-`model` [Assets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Model 'Assets.Scripts.Models.Model')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.Apply(Assets.Scripts.Models.Model,Assets.Scripts.Models.GameModel)'></a>
-
-## ModVanillaContent.Apply(Model, GameModel) Method
-
-Applies the modifications to the vanilla content
-
-```csharp
-internal virtual void Apply(Assets.Scripts.Models.Model model, Assets.Scripts.Models.GameModel gameModel);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.Apply(Assets.Scripts.Models.Model,Assets.Scripts.Models.GameModel).model'></a>
-
-`model` [Assets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Model 'Assets.Scripts.Models.Model')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.Apply(Assets.Scripts.Models.Model,Assets.Scripts.Models.GameModel).gameModel'></a>
-
-`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.GetAffectedModels(Assets.Scripts.Models.GameModel)'></a>
 
@@ -145,13 +98,3 @@ public abstract System.Collections.Generic.IEnumerable<Assets.Scripts.Models.Mod
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Assets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Model 'Assets.Scripts.Models.Model')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.Register()'></a>
-
-## ModVanillaContent.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```

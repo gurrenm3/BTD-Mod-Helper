@@ -211,19 +211,3 @@ public override int XpCost { get; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-### Methods
-
-<a name='BTD_Mod_Helper.Api.Towers.ModHeroLevel.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_)'></a>
-
-## ModHeroLevel.RegisterText(Dictionary<string,string>) Method
-
-Registers the text for this in the LocalizationManager
-
-```csharp
-public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string,string> textTable);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModHeroLevel.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_).textTable'></a>
-
-`textTable` [Il2CppSystem.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')

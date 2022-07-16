@@ -26,20 +26,6 @@ public string filter;
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingFile.CreateComponent()'></a>
-
-## ModSettingFile.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal override BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent
-
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingFile.SetValue(object)'></a>
 
 ## ModSettingFile.SetValue(object) Method

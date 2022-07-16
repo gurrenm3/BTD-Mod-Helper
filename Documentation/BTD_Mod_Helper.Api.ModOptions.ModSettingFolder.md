@@ -12,20 +12,6 @@ public class ModSettingFolder : BTD_Mod_Helper.Api.ModOptions.ModSetting<string>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') &#129106; [BTD_Mod_Helper.Api.ModOptions.ModSetting&lt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>') &#129106; ModSettingFolder
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingFolder.CreateComponent()'></a>
-
-## ModSettingFolder.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal override BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent
-
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingFolder.SetValue(object)'></a>
 
 ## ModSettingFolder.SetValue(object) Method

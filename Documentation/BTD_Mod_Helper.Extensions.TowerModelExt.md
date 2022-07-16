@@ -752,30 +752,6 @@ Specify a new baseId. Set this if you want a baseId other than the newTowerId
 #### Returns
 [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.MakeCopyInternal(Assets.Scripts.Models.Towers.TowerModel,string)'></a>
-
-## TowerModelExt.MakeCopyInternal(TowerModel, string) Method
-
-(Cross-Game compatible) Duplicate this TowerModel with a unique name. Very useful for making custom TowerModels
-
-```csharp
-internal static Assets.Scripts.Models.Towers.TowerModel MakeCopyInternal(Assets.Scripts.Models.Towers.TowerModel towerModel, string newTowerId);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.MakeCopyInternal(Assets.Scripts.Models.Towers.TowerModel,string).towerModel'></a>
-
-`towerModel` [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.MakeCopyInternal(Assets.Scripts.Models.Towers.TowerModel,string).newTowerId'></a>
-
-`newTowerId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-Set's the new towerId of this copy. By default the baseId will be set to this as well
-
-#### Returns
-[Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')
-
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.SellAll(thisAssets.Scripts.Models.Towers.TowerModel)'></a>
 
 ## TowerModelExt.SellAll(this TowerModel) Method

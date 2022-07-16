@@ -16,21 +16,6 @@ Derived
 &#8627; [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent')
-### Fields
-
-<a name='BTD_Mod_Helper.BloonsMod.modHelperPatchAll'></a>
-
-## BloonsMod.modHelperPatchAll Field
-
-Lets the ModHelper control patching, allowing for individual patches to fail without the entire mod getting  
-unloaded.
-
-```csharp
-internal bool modHelperPatchAll;
-```
-
-#### Field Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Properties
 
 <a name='BTD_Mod_Helper.BloonsMod.CheatMod'></a>

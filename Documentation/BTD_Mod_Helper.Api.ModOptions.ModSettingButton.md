@@ -75,18 +75,3 @@ public Action<ModHelperButton> modifyButton;
 
 #### Field Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
-### Methods
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingButton.CreateComponent()'></a>
-
-## ModSettingButton.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal override BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent

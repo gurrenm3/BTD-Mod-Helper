@@ -119,28 +119,3 @@ public abstract void ModifyBaseGameModeModel(Assets.Scripts.Models.Towers.Mods.M
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Assets.Scripts.Models.Towers.Mods.ModModel).gameModeModel'></a>
 
 `gameModeModel` [Assets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Mods.ModModel 'Assets.Scripts.Models.Towers.Mods.ModModel')
-
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.Register()'></a>
-
-## ModGameMode.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```
-
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_)'></a>
-
-## ModGameMode.RegisterText(Dictionary<string,string>) Method
-
-Registers the text for this in the LocalizationManager
-
-```csharp
-public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string,string> textTable);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_).textTable'></a>
-
-`textTable` [Il2CppSystem.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')

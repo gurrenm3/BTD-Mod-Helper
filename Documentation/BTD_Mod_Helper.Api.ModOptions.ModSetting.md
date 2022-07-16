@@ -94,20 +94,6 @@ public bool requiresRestart;
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.CreateComponent()'></a>
-
-## ModSetting.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal abstract BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent
-
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.GetDefaultValue()'></a>
 
 ## ModSetting.GetDefaultValue() Method
@@ -135,20 +121,6 @@ public abstract object GetValue();
 #### Returns
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 The value
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.OnSave()'></a>
-
-## ModSetting.OnSave() Method
-
-Validates the current value using the customValidation function, if there is one.  
-If there were no issues, performs the onSave action
-
-```csharp
-internal abstract bool OnSave();
-```
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.SetValue(object)'></a>
 

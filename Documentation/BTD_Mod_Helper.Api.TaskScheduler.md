@@ -12,36 +12,6 @@ public static class TaskScheduler
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; TaskScheduler
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.TaskScheduler.Coroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_)'></a>
-
-## TaskScheduler.Coroutine(Action, ScheduleType, int, Func<bool>) Method
-
-Will wait for amountToWait before executing your Action. If a waitCondition is specified it will continue waiting amountToWait until waitCondition is true
-
-```csharp
-internal static System.Collections.IEnumerator Coroutine(System.Action action, BTD_Mod_Helper.Api.Enums.ScheduleType scheduleType, int amountToWait, System.Func<bool> waitCondition=null);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.TaskScheduler.Coroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).action'></a>
-
-`action` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
-
-<a name='BTD_Mod_Helper.Api.TaskScheduler.Coroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).scheduleType'></a>
-
-`scheduleType` [ScheduleType](BTD_Mod_Helper.Api.Enums.ScheduleType.md 'BTD_Mod_Helper.Api.Enums.ScheduleType')
-
-<a name='BTD_Mod_Helper.Api.TaskScheduler.Coroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).amountToWait'></a>
-
-`amountToWait` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-<a name='BTD_Mod_Helper.Api.TaskScheduler.Coroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).waitCondition'></a>
-
-`waitCondition` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
-
-#### Returns
-[System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')
-
 <a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_)'></a>
 
 ## TaskScheduler.ScheduleTask(Action, ScheduleType, int, Func<bool>) Method

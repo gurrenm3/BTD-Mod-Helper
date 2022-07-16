@@ -102,21 +102,6 @@ public string validation;
 
 #### Field Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-### Methods
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingString.CreateComponent()'></a>
-
-## ModSettingString.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal override BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent
 ### Operators
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingString.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingString(string)'></a>

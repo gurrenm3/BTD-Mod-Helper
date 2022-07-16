@@ -196,19 +196,6 @@ public virtual int Priority { get; }
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RegisterPerFrame'></a>
-
-## ModUpgrade.RegisterPerFrame Property
-
-(Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
-
-```csharp
-public sealed override int RegisterPerFrame { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RegistrationPriority'></a>
 
 ## ModUpgrade.RegistrationPriority Property
@@ -295,31 +282,6 @@ public virtual Assets.Scripts.Models.Towers.Upgrades.UpgradeModel GetUpgradeMode
 
 #### Returns
 [Assets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradeModel')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Register()'></a>
-
-## ModUpgrade.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```
-
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_)'></a>
-
-## ModUpgrade.RegisterText(Dictionary<string,string>) Method
-
-Registers the text for this in the LocalizationManager
-
-```csharp
-public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string,string> textTable);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_).textTable'></a>
-
-`textTable` [Il2CppSystem.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RestrictUpgrading(Assets.Scripts.Simulation.Towers.Tower)'></a>
 

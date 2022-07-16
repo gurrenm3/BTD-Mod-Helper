@@ -31,6 +31,7 @@ public abstract partial class ModTower
     /// <summary>
     /// Constructor for ModTower, used implicitly by ModContent.Create
     /// </summary>
+    /// <exclude/>
     protected ModTower()
     {
         Init(out upgrades, out tierMaxes);

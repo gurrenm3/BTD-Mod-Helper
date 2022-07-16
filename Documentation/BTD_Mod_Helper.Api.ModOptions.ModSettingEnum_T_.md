@@ -48,21 +48,6 @@ public Action<ModHelperDropdown> modifyDropdown;
 
 #### Field Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
-### Methods
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.CreateComponent()'></a>
-
-## ModSettingEnum<T>.CreateComponent() Method
-
-Constructs a visual ModHelperComponent for this ModSetting
-
-```csharp
-internal override BTD_Mod_Helper.Api.Components.ModHelperOption CreateComponent();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
-The created ModHelperComponent
 ### Operators
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_(T)'></a>

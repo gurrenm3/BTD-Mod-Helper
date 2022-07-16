@@ -140,20 +140,6 @@ public override object GetValue();
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 The value
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.OnSave()'></a>
-
-## ModSetting<T>.OnSave() Method
-
-Validates the current value using the customValidation function, if there is one.  
-If there were no issues, performs the onSave action
-
-```csharp
-internal override bool OnSave();
-```
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.SetValue(object)'></a>
 
 ## ModSetting<T>.SetValue(object) Method

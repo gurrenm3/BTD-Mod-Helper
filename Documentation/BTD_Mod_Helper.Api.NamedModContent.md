@@ -60,19 +60,3 @@ public virtual string DisplayNamePlural { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-### Methods
-
-<a name='BTD_Mod_Helper.Api.NamedModContent.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_)'></a>
-
-## NamedModContent.RegisterText(Dictionary<string,string>) Method
-
-Registers the text for this in the LocalizationManager
-
-```csharp
-public virtual void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string,string> textTable);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.NamedModContent.RegisterText(Il2CppSystem.Collections.Generic.Dictionary_string,string_).textTable'></a>
-
-`textTable` [Il2CppSystem.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary-2 'Il2CppSystem.Collections.Generic.Dictionary`2')

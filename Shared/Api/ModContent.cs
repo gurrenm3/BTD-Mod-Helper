@@ -46,6 +46,7 @@ namespace BTD_Mod_Helper.Api
         /// (Cross-Game compatible) Used for when you want to programmatically create multiple instances of a given ModContent
         /// </summary>
         /// <returns></returns>
+        /// <exclude/>
         public virtual IEnumerable<ModContent> Load()
         {
             yield return this;
@@ -54,16 +55,19 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// (Cross-Game compatible) Registers this ModContent into the game
         /// </summary>
+        /// <exclude/>
         public abstract void Register();
 
         /// <summary>
         /// (Cross-Game compatible) Used to allow some ModContent to Register before or after others
         /// </summary>
+        /// <exclude/>
         protected virtual float RegistrationPriority => 5f;
 
         /// <summary>
         /// (Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
         /// </summary>
+        /// <exclude/>
         public virtual int RegisterPerFrame => 1;
 
 

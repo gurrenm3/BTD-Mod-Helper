@@ -1,4 +1,5 @@
 {
   "GeneratedPages": "Types",
-  "OutputDirectoryPath": "..\\Documentation"
+  "OutputDirectoryPath": "..\\Documentation",
+  "GeneratedAccessModifiers": "Public,Private,Protected"
 }

@@ -63,13 +63,3 @@ protected static string GetBloonDisplay(string bloonId, int damagedAmount=0);
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Api.Display.ModBloonDisplay.Register()'></a>
-
-## ModBloonDisplay.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```

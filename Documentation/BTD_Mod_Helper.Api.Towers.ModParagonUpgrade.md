@@ -15,20 +15,6 @@ Derived
 &#8627; [ModParagonUpgrade&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade_T_.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade<T>')
 ### Properties
 
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.ID'></a>
-
-## ModParagonUpgrade.ID Property
-
-Override the ID to not have the prefix. It's necessary to work, and there's not a good way for  
-different paragon mods to coexist anyway
-
-```csharp
-protected internal override string ID { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.Name'></a>
 
 ## ModParagonUpgrade.Name Property

@@ -81,19 +81,6 @@ protected Il2CppSystem.Threading.Tasks.Task LoadTask { get; set; }
 
 #### Property Value
 [Il2CppSystem.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Threading.Tasks.Task 'Il2CppSystem.Threading.Tasks.Task')
-
-<a name='BTD_Mod_Helper.Api.ModByteLoader.RegisterPerFrame'></a>
-
-## ModByteLoader.RegisterPerFrame Property
-
-(Cross-Game compatible) How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
-
-```csharp
-public sealed override int RegisterPerFrame { get; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string)'></a>
@@ -178,13 +165,3 @@ public sealed override System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-<a name='BTD_Mod_Helper.Api.ModByteLoader.Register()'></a>
-
-## ModByteLoader.Register() Method
-
-(Cross-Game compatible) Registers this ModContent into the game
-
-```csharp
-public override void Register();
-```
