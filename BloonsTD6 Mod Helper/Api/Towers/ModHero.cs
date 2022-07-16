@@ -184,13 +184,6 @@ public abstract class ModHero : ModTower
     public abstract int Abilities { get; }
 
     /// <summary>
-    /// Gives you access to the HeroSprite for this hero in case you want a really fancy select screen for your hero
-    /// <br/>
-    /// If you set this, you MUST set all the required data for it manually else bad things will happen :(
-    /// </summary>
-    public abstract HeroSprite Sprite { get; }
-
-    /// <summary>
     /// Modifies the HeroSprite used in the Heroes menu. Will already have modified the font/banner/color using
     /// <see cref="NameStyle"/>, <see cref="GlowStyle"/> and <see cref="BackgroundStyle"/> at this point.
     /// </summary>

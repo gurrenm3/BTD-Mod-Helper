@@ -17,7 +17,7 @@ public static class ModHelper
     #region ModHelperData for the Mod Helper
 
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.0.0";
+    internal const string Version = "3.0.0-alpha1";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description = "The mod that is allowing all this to happen right now :P";
@@ -71,7 +71,6 @@ public static class ModHelper
         {
             try
             {
-                ModContentInstances.SetInstance(mod.GetType(), mod);
                 ResourceHandler.LoadEmbeddedTextures(mod);
                 ResourceHandler.LoadEmbeddedBundles(mod);
                 ModContent.LoadModContent(mod);

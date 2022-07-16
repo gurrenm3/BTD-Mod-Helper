@@ -21,14 +21,11 @@ internal class GameModel_CreateModded
     [HarmonyPrefix]
     internal static bool Prefix()
     {
-        if (Game.instance.model.searchCache == null)
+        Game.instance.model.searchCache ??= new Dictionary<Type, Dictionary<string, Model>>
         {
-            Game.instance.model.searchCache = new Dictionary<Type, Dictionary<string, Model>>
-            {
-                [Il2CppType.Of<TowerModel>()] = new(),
-                [Il2CppType.Of<BloonModel>()] = new()
-            };
-        }
+            [Il2CppType.Of<TowerModel>()] = new(),
+            [Il2CppType.Of<BloonModel>()] = new()
+        };
 
         var towerCache = Game.instance.model.searchCache[Il2CppType.Of<TowerModel>()];
         foreach (var (key, value) in ModTowerHelper.TowerCache)
@@ -38,7 +35,7 @@ internal class GameModel_CreateModded
                 towerCache[key] = value;
             }
         }
-            
+
         var bloonCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
         foreach (var (key, value) in ModBloon.BloonModelCache)
         {

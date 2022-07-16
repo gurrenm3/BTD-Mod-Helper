@@ -20,7 +20,7 @@ public partial class ModHelperComponent : MonoBehaviour
     /// <summary>
     /// Default alignment for texts and input fields
     /// </summary>
-    public const TextAlignmentOptions DefaultTextAlignment = TextAlignmentOptions.Capline;
+    public const TextAlignmentOptions DefaultTextAlignment = TextAlignmentOptions.Midline;
 
     /// <summary>
     /// Bool for if this should disable itself on the next frame

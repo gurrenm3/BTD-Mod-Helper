@@ -115,6 +115,8 @@ public abstract partial class BloonsMod : MelonMod, IModContent
     /// <inheritdoc />
     public sealed override void OnInitializeMelon()
     {
+        ModContentInstances.SetInstance(GetType(), this);
+        
         // If they haven't set OptionalPatches to false and haven't already signified they have their own patching plan
         // by using HarmonyDontPatchAll themselves...
         if (OptionalPatches && !MelonAssembly.HarmonyDontPatchAll)
