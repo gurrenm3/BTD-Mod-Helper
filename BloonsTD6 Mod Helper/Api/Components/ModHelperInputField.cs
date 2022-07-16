@@ -56,6 +56,7 @@ public class ModHelperInputField : ModHelperComponent
     /// <param name="placeholder"></param>
     /// <param name="padding"></param>
     /// <returns>The created ModHelperInputField</returns>
+    /// <exclude/>
     public static ModHelperInputField Create(Info info, string defaultValue, SpriteReference background,
         UnityAction<string> onValueChanged = null, float fontSize = 42,
         TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,

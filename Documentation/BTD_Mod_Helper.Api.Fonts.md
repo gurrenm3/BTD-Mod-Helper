@@ -1,0 +1,31 @@
+#### [BloonsTD6 Mod Helper](index.md 'index')
+### [BTD_Mod_Helper.Api](index.md#BTD_Mod_Helper.Api 'BTD_Mod_Helper.Api')
+
+## Fonts Class
+
+Class to statically store TMP_FontAsset for different fonts
+
+```csharp
+public static class Fonts
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Fonts
+### Methods
+
+<a name='BTD_Mod_Helper.Api.Fonts.Get(string)'></a>
+
+## Fonts.Get(string) Method
+
+Gets an AnimationController by its name, or null if there isn't one with that name
+
+```csharp
+public static TMPro.TMP_FontAsset Get(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Fonts.Get(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[TMPro.TMP_FontAsset](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TMP_FontAsset 'TMPro.TMP_FontAsset')

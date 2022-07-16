@@ -148,37 +148,44 @@ public partial class ModHelperComponent
     #region AddInputField
 
     /// <inheritdoc cref="ModHelperInputField.Create"/>
+    /// <exclude/>
     public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background) =>
         AddInputField(info, defaultValue, background, null);
 
     /// <inheritdoc cref="ModHelperInputField.Create"/>
+    /// <exclude/>
     public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
         UnityAction<string> onValueChanged) =>
         AddInputField(info, defaultValue, background, onValueChanged, DefaultFontSize);
 
     /// <inheritdoc cref="ModHelperInputField.Create"/>
+    /// <exclude/>
     public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
         UnityAction<string> onValueChanged, float fontSize) => AddInputField(info, defaultValue, background,
         onValueChanged, fontSize, TMP_InputField.CharacterValidation.None);
 
     /// <inheritdoc cref="ModHelperInputField.Create"/>
+    /// <exclude/>
     public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
         UnityAction<string> onValueChanged, float fontSize, TMP_InputField.CharacterValidation validation) =>
         AddInputField(info, defaultValue, background, onValueChanged, fontSize, validation, DefaultTextAlignment);
 
     /// <inheritdoc cref="ModHelperInputField.Create"/>
+    /// <exclude/>
     public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
         UnityAction<string> onValueChanged, float fontSize, TMP_InputField.CharacterValidation validation,
         TextAlignmentOptions align) =>
         AddInputField(info, defaultValue, background, onValueChanged, fontSize, validation, align, null);
 
     /// <inheritdoc cref="ModHelperInputField.Create"/>
+    /// <exclude/>
     public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
         UnityAction<string> onValueChanged, float fontSize, TMP_InputField.CharacterValidation validation,
         TextAlignmentOptions align, string placeholder) =>
         AddInputField(info, defaultValue, background, onValueChanged, fontSize, validation, align, placeholder, 0);
 
     /// <inheritdoc cref="ModHelperInputField.Create"/>
+    /// <exclude/>
     public ModHelperInputField AddInputField(Info info, string defaultValue, SpriteReference background,
         UnityAction<string> onValueChanged, float fontSize, TMP_InputField.CharacterValidation validation,
         TextAlignmentOptions align, string placeholder, int padding) => Add(ModHelperInputField.Create(info,
