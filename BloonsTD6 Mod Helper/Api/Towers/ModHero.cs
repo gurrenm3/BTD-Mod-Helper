@@ -5,6 +5,7 @@ using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Data.Global;
+using Assets.Scripts.Data;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -180,12 +181,18 @@ public abstract class ModHero : ModTower
     /// </summary>
     public abstract int Abilities { get; }
 
+    protected virtual HeroSprite Sprite=>new HeroSprite{
+        heroId=Id,
+        heroFontMaterial=GameData.Instance.heroSprites.GetFontMaterialRef(NameStyle),
+        backgroundBanner=GameData.Instance.heroSprites.GetBannerRef(GlowStyle),
+        backgroundColourTintOverride=GameData.Instance.heroSprites.GetBannerColourTintRef(BackgroundStyle)
+    };
     /// <summary>
     /// Gives you access to the HeroSprite for this hero in case you want a really fancy select screen for your hero
-    /// <br/>
-    /// If you set this, you MUST set all the required data for it manually else bad things will happen :(
     /// </summary>
-    public abstract HeroSprite Sprite { get; }
+    public virtual HeroSprite GetSprite(){
+        return Sprite;
+    }
 
     /// <summary>
     /// The index to add this hero at in relation to other heroes
