@@ -6,6 +6,7 @@ using Assets.Scripts.Utils;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Data.Global;
 using Assets.Scripts.Data;
+using System;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -148,6 +149,20 @@ public abstract class ModHero : ModTower
     public virtual SpriteReference SquareReference => GetSpriteReference(Square);
 
     /// <summary>
+    /// If you want your hero to have multiple portraits in the select screen, mess with this
+    /// <br/>
+    /// The string must be a number (blame nk for not making it accept a int) and controls what level the portrait is for
+    /// <br/>
+    /// The SpriteReference is the actual image that will be displayed
+    /// </summary>
+    public virtual Dictionary<string,SpriteReference>SelectScreenPortraits=>new Dictionary<string,SpriteReference>(){
+        {"0",PortraitReference},
+        {"5",PortraitReference},
+        {"10",PortraitReference},
+        {"20",PortraitReference}
+    };
+
+    /// <summary>
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
     /// that you've actually created for your Hero.
     /// </summary>
@@ -181,18 +196,19 @@ public abstract class ModHero : ModTower
     /// </summary>
     public abstract int Abilities { get; }
 
-    protected virtual HeroSprite Sprite=>new HeroSprite{
-        heroId=Id,
-        heroFontMaterial=GameData.Instance.heroSprites.GetFontMaterialRef(NameStyle),
-        backgroundBanner=GameData.Instance.heroSprites.GetBannerRef(GlowStyle),
-        backgroundColourTintOverride=GameData.Instance.heroSprites.GetBannerColourTintRef(BackgroundStyle)
-    };
     /// <summary>
-    /// Gives you access to the HeroSprite for this hero in case you want a really fancy select screen for your hero
+    /// Modifies the HeroSprite used in the Heroes menu. Will already have modified the font/banner/color using
+    /// <see cref="NameStyle"/>, <see cref="GlowStyle"/> and <see cref="BackgroundStyle"/> at this point.
     /// </summary>
-    public virtual HeroSprite GetSprite(){
-        return Sprite;
+    /// <param name="heroSprite">The HeroSprite to modify</param>
+    public virtual void ModifyHeroSprite(HeroSprite heroSprite)
+    {
     }
+
+    /// <summary>
+    /// Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to play
+    /// </summary>
+    public virtual string SelectSound=>"";
 
     /// <summary>
     /// The index to add this hero at in relation to other heroes

@@ -54,7 +54,16 @@ internal class TitleScreen_Start
         {
             try
             {
-                GameData.Instance.heroSprites.heroSprite.Add(modHero.GetSprite());
+                var heroSprites = GameData.Instance.heroSprites;
+                var heroSprite = new HeroSprite
+                {
+                    heroId = modHero.Id,
+                    heroFontMaterial = heroSprites.GetFontMaterialRef(modHero.NameStyle),
+                    backgroundBanner = heroSprites.GetBannerRef(modHero.GlowStyle),
+                    backgroundColourTintOverride = heroSprites.GetBannerColourTintRef(modHero.BackgroundStyle)
+                };
+                modHero.ModifyHeroSprite(heroSprite);
+                heroSprites.heroSprite.Add(heroSprite);
             }
             catch (Exception e)
             {
