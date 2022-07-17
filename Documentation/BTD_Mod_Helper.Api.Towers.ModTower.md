@@ -296,6 +296,27 @@ public virtual string Get2DTexture(int[] tiers);
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetPortraitReferenceForTiers(int[])'></a>
+
+## ModTower.GetPortraitReferenceForTiers(int[]) Method
+
+Gets the portrait reference this tower should use for the given tiers  
+<br/>  
+Looks for the highest tier [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') this tower has that defined a [PortraitReference](BTD_Mod_Helper.Api.Towers.ModUpgrade.md#BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference'),  
+falling back to the tower's own base [PortraitReference](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference') by default.
+
+```csharp
+public Assets.Scripts.Utils.SpriteReference GetPortraitReferenceForTiers(int[] tiers);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetPortraitReferenceForTiers(int[]).tiers'></a>
+
+`tiers` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+#### Returns
+[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.GetTowerIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerDetailsModel_)'></a>
 
 ## ModTower.GetTowerIndex(List<TowerDetailsModel>) Method

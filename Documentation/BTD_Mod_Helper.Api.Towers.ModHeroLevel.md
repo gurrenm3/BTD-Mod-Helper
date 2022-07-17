@@ -171,6 +171,22 @@ public sealed override int Path { get; }
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModHeroLevel.Portrait'></a>
+
+## ModHeroLevel.Portrait Property
+
+The filename without extension for the portrait this Level should make the hero start using  
+<br/>  
+By default, the [Portrait](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.Portrait 'BTD_Mod_Helper.Api.Towers.ModTower.Portrait') of the [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero') with the [Level](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md#BTD_Mod_Helper.Api.Towers.ModHeroLevel.Level 'BTD_Mod_Helper.Api.Towers.ModHeroLevel.Level') appended,  
+e.g. "IndustrialFarmer-Portrait3"
+
+```csharp
+public override string Portrait { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModHeroLevel.Tier'></a>
 
 ## ModHeroLevel.Tier Property

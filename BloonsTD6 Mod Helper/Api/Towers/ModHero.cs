@@ -46,7 +46,7 @@ public abstract class ModHero : ModTower
     /// No paragon heroes
     /// </summary>
     public sealed override ParagonMode ParagonMode => ParagonMode.None;
-    
+
     /// <summary>
     /// The default hero (or tower) to base your hero off of
     /// </summary>
@@ -145,18 +145,15 @@ public abstract class ModHero : ModTower
     public virtual SpriteReference SquareReference => GetSpriteReference(Square);
 
     /// <summary>
-    /// If you want your hero to have multiple portraits in the select screen, mess with this
+    /// If you want to manually override which portraits your hero uses in the select screen, mess with this
     /// <br/>
-    /// The string must be a number (blame nk for not making it accept a int) and controls what level the portrait is for
+    /// By default will find any <see cref="ModUpgrade.PortraitReference"/>s defined in your <see cref="ModHeroLevel"/>s
     /// <br/>
     /// The SpriteReference is the actual image that will be displayed
     /// </summary>
-    public virtual Dictionary<string,SpriteReference>SelectScreenPortraits=>new Dictionary<string,SpriteReference>(){
-        {"0",PortraitReference},
-        {"5",PortraitReference},
-        {"10",PortraitReference},
-        {"20",PortraitReference}
-    };
+    public virtual Dictionary<int, SpriteReference> SelectScreenPortraits => upgrades.Cast<ModHeroLevel>()
+        .Where(level => level?.PortraitReference is not null)
+        .ToDictionary(level => level.Level, level => level.PortraitReference);
 
     /// <summary>
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
@@ -204,7 +201,7 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to play
     /// </summary>
-    public virtual string SelectSound=>"";
+    public virtual string SelectSound => "";
 
     /// <summary>
     /// The index to add this hero at in relation to other heroes

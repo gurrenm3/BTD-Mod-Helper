@@ -17,9 +17,9 @@ public abstract partial class ModTower : NamedModContent
     /// </summary>
     /// <exclude/>
     protected sealed override float RegistrationPriority => 3;
-        
+
     /// <inheritdoc />
-    public sealed override int RegisterPerFrame => 1;        
+    public sealed override int RegisterPerFrame => 1;
 
     internal virtual string[] DefaultMods =>
         new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
@@ -131,7 +131,6 @@ public abstract partial class ModTower : NamedModContent
     /// </summary>
     public virtual bool AlwaysIncludeInChallenge => true;
 
-        
 
     /// <summary>
     /// Implemented by a ModTower to modify the base tower model before applying any/all ModUpgrades
@@ -141,7 +140,6 @@ public abstract partial class ModTower : NamedModContent
     /// <param name="towerModel">The Base Tower Model</param>
     public abstract void ModifyBaseTowerModel(TowerModel towerModel);
 
-        
 
     internal virtual string TowerId(int[] tiers)
     {
@@ -221,4 +219,22 @@ public abstract partial class ModTower : NamedModContent
 
         return Name;
     }
+
+    /// <summary>
+    /// Gets the portrait reference this tower should use for the given tiers
+    /// <br/>
+    /// Looks for the highest tier <see cref="ModUpgrade"/> this tower has that defined a <see cref="ModUpgrade.PortraitReference"/>,
+    /// falling back to the tower's own base <see cref="PortraitReference"/> by default.
+    /// </summary>
+    /// <param name="tiers"></param>
+    public SpriteReference GetPortraitReferenceForTiers(int[] tiers) => upgrades.Cast<ModUpgrade>()
+        .Where(modUpgrade => modUpgrade != null &&
+                             tiers[modUpgrade.Path] >= modUpgrade.Tier &&
+                             modUpgrade.PortraitReference is not null)
+        .OrderByDescending(modUpgrade => modUpgrade.Tier)
+        .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
+        .ThenBy(modUpgrade => modUpgrade.Path)
+        .Select(upgrade => upgrade.PortraitReference)
+        .DefaultIfEmpty(PortraitReference)
+        .First();
 }

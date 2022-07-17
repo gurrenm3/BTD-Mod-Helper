@@ -186,18 +186,18 @@ public sealed override BTD_Mod_Helper.Api.Towers.ParagonMode ParagonMode { get; 
 
 ## ModHero.SelectScreenPortraits Property
 
-If you want your hero to have multiple portraits in the select screen, mess with this  
+If you want to manually override which portraits your hero uses in the select screen, mess with this  
 <br/>  
-The string must be a number (blame nk for not making it accept a int) and controls what level the portrait is for  
+By default will find any [PortraitReference](BTD_Mod_Helper.Api.Towers.ModUpgrade.md#BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference')s defined in your [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel')s  
 <br/>  
 The SpriteReference is the actual image that will be displayed
 
 ```csharp
-public virtual System.Collections.Generic.Dictionary<string,Assets.Scripts.Utils.SpriteReference> SelectScreenPortraits { get; }
+public virtual System.Collections.Generic.Dictionary<int,Assets.Scripts.Utils.SpriteReference> SelectScreenPortraits { get; }
 ```
 
 #### Property Value
-[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.SelectSound'></a>
 

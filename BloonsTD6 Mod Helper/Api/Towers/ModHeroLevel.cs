@@ -73,7 +73,7 @@ public abstract class ModHeroLevel : ModUpgrade
     /// <br/>
     /// Default is calculated the same way Ninja Kiwi does it using 
     /// </summary>
-    public override int XpCost => (int)(DefaultXp[Level] * Hero.XpRatio);
+    public override int XpCost => (int) (DefaultXp[Level] * Hero.XpRatio);
 
     /// <summary>
     /// The ModTower is the ModHero
@@ -89,7 +89,7 @@ public abstract class ModHeroLevel : ModUpgrade
     /// What level this 
     /// </summary>
     public abstract int Level { get; }
-        
+
     /// <summary>
     /// The tower that this is an upgrade for
     /// </summary>
@@ -99,11 +99,19 @@ public abstract class ModHeroLevel : ModUpgrade
     /// DisplayName field of the AbilityModel added at this level, if any
     /// </summary>
     public virtual string AbilityName => null;
-        
+
     /// <summary>
     /// Description of the ability added at this level, if any
     /// </summary>
     public virtual string AbilityDescription => null;
+
+    /// <summary>
+    /// The filename without extension for the portrait this Level should make the hero start using
+    /// <br/>
+    /// By default, the <see cref="ModTower.Portrait"/> of the <see cref="ModHero"/> with the <see cref="Level"/> appended,
+    /// e.g. "IndustrialFarmer-Portrait3"
+    /// </summary>
+    public override string Portrait => Hero.Portrait + Level;
 }
 
 /// <summary>
