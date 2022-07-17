@@ -93,7 +93,7 @@ public class ModSettingHotkey : ModSetting<string>
         var buttonComponent = option.BottomRow.AddButton(
             new Info("Button", width: 562, height: 200), VanillaSprites.GreenBtnLong, null
         );
-        var text = buttonComponent.AddText(new Info("Text", Info.Preset.FillParent), "", 69f);
+        var text = buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), "", 69f);
 
         var changedHighlight = option.AddPanel(new Info("ChangedHighlight"));
         changedHighlight.LayoutElement.ignoreLayout = true;

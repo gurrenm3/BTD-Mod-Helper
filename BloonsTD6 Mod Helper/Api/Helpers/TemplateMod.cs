@@ -89,7 +89,7 @@ namespace BTD_Mod_Helper.Api.Helpers
 
                 if (zipArchive == null) throw new FileNotFoundException();
 
-                FileMoveOverwrite(csProjPath, Path.Combine(ModHelper.ModHelperDirectory, $"{name}.csproj"));
+                FileMoveOverwrite(csProjPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.csproj"));
                 var csProj = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".csproj");
                 csProj.ExtractToFile(csProjPath);
                 ReplaceFileText(csProjPath, name);
@@ -98,7 +98,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 var slnPath = Path.Combine(path, $"{name}.sln");
                 if (File.Exists(slnPath))
                 {
-                    FileMoveOverwrite(slnPath, Path.Combine(ModHelper.ModHelperDirectory, $"{name}.sln"));
+                    FileMoveOverwrite(slnPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.sln"));
                     var sln = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".sln");
                     sln.ExtractToFile(slnPath);
                     ReplaceFileText(slnPath, name);

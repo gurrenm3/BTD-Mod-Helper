@@ -286,15 +286,15 @@ public readonly struct Info
     /// </summary>
     /// <param name="name">The name of the ModHelperComponent's Unity GameObject</param>
     /// <param name="preset">A preset to apply</param>
-    public Info(string name, Preset preset) : this(name)
+    public Info(string name, InfoPreset preset) : this(name)
     {
         switch (preset)
         {
-            case Preset.FillParent:
+            case InfoPreset.FillParent:
                 AnchorMin = Vector2.zero;
                 AnchorMax = Vector2.one;
                 break;
-            case Preset.Flex:
+            case InfoPreset.Flex:
                 Flex = 1;
                 break;
         }
@@ -330,37 +330,37 @@ public readonly struct Info
         FlexHeight = FlexHeight,
         Scale = Scale
     };
+}
+
+/// <summary>
+/// Specific common preset setups of Info structs
+/// </summary>
+public enum InfoPreset
+{
+    /// <summary>
+    /// Will fill its parent component by matching its top left and bottom right with the parent's
+    /// <br/>
+    /// Equivalent to
+    /// <code>
+    /// {
+    ///     AnchorMin = new Vector2(0, 0),
+    ///     AnchorMax = new Vector2(1, 1)
+    /// }
+    /// </code>
+    /// Set alongside negative width/height to add padding around the edges, or positive to expand beyond
+    /// </summary>
+    FillParent,
 
     /// <summary>
-    /// Specific common preset setups of Info structs
+    /// Will fully flex horizontally and vertically,
+    /// <br/>
+    /// Equivalent to
+    /// <code>
+    /// {
+    ///     FlexWidth = 1,
+    ///     FlexHeight = 1
+    /// }
+    /// </code>
     /// </summary>
-    public enum Preset
-    {
-        /// <summary>
-        /// Will fill its parent component by matching its top left and bottom right with the parent's
-        /// <br/>
-        /// Equivalent to
-        /// <code>
-        /// {
-        ///     AnchorMin = new Vector2(0, 0),
-        ///     AnchorMax = new Vector2(1, 1)
-        /// }
-        /// </code>
-        /// Set alongside negative width/height to add padding around the edges, or positive to expand beyond
-        /// </summary>
-        FillParent,
-
-        /// <summary>
-        /// Will fully flex horizontally and vertically,
-        /// <br/>
-        /// Equivalent to
-        /// <code>
-        /// {
-        ///     FlexWidth = 1,
-        ///     FlexHeight = 1
-        /// }
-        /// </code>
-        /// </summary>
-        Flex
-    }
+    Flex
 }

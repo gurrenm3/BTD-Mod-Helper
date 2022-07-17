@@ -72,7 +72,7 @@ public class ModSettingFolder : ModSetting<string>
         );
         button.GetDescendent<Animator>().enabled = false;
 
-        var text = button.AddText(new Info("FolderText", Info.Preset.FillParent), value);
+        var text = button.AddText(new Info("FolderText", InfoPreset.FillParent), value);
 
         option.SetResetAction(new Action(() => text.SetText(defaultValue)));
 #endif

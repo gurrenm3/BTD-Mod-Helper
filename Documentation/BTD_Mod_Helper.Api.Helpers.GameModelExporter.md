@@ -30,13 +30,3 @@ public static void Export(Il2CppSystem.Object data, string path);
 <a name='BTD_Mod_Helper.Api.Helpers.GameModelExporter.Export(Il2CppSystem.Object,string).path'></a>
 
 `path` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Api.Helpers.GameModelExporter.ExportAll()'></a>
-
-## GameModelExporter.ExportAll() Method
-
-Exports every bit of GameModel and GameData info of note to the local folder
-
-```csharp
-public static void ExportAll();
-```

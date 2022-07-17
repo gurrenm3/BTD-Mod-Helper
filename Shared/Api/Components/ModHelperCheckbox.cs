@@ -64,7 +64,7 @@ public class ModHelperCheckbox : ModHelperComponent
 
         ModHelperImage check;
 #if BloonsTD6
-        check = modHelperCheckbox.AddImage(new Info("Check", Info.Preset.FillParent)
+        check = modHelperCheckbox.AddImage(new Info("Check", InfoPreset.FillParent)
         {
             Size = padding * -2
         }, checkImage ?? VanillaSprites.TickGreenIcon);

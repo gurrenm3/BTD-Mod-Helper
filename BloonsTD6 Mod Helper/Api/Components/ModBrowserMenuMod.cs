@@ -40,7 +40,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
     public static ModBrowserMenuMod CreateTemplate()
     {
-        var mod = Create<ModBrowserMenuMod>(new Info("ModTemplate", Info.Preset.Flex), null,
+        var mod = Create<ModBrowserMenuMod>(new Info("ModTemplate", InfoPreset.Flex), null,
             RectTransform.Axis.Vertical, 50);
 
         var mainPanel = mod.AddPanel(new Info("MainPanel")
@@ -59,13 +59,13 @@ internal class ModBrowserMenuMod : ModHelperPanel
         infoPanel.LayoutGroup.childForceExpandWidth = true;
         infoPanel.LayoutGroup.childAlignment = TextAnchor.UpperLeft;
 
-        var description = infoPanel.AddText(new Info("Description", Info.Preset.Flex),
+        var description = infoPanel.AddText(new Info("Description", InfoPreset.Flex),
             Enumerable.Repeat("Testy text", 50).Join(), 69f, TextAlignmentOptions.TopLeft);
         description.Text.font = Fonts.Btd6FontBody;
         description.Text.lineSpacing = 25;
         description.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
 
-        var panel = mainPanel.AddPanel(new Info("MainPanel", Info.Preset.Flex), VanillaSprites.MainBGPanelBlue,
+        var panel = mainPanel.AddPanel(new Info("MainPanel", InfoPreset.Flex), VanillaSprites.MainBGPanelBlue,
             RectTransform.Axis.Horizontal, 0, 50);
 
         var iconPanel = panel.AddPanel(new Info("IconPanel", size: 200));

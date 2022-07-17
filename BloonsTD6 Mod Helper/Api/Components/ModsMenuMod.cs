@@ -34,7 +34,7 @@ internal class ModsMenuMod : ModHelperComponent
             FlexWidth = 1
         });
 
-        var panel = mod.AddButton(new Info("MainButton", Info.Preset.FillParent), VanillaSprites.UISprite, null);
+        var panel = mod.AddButton(new Info("MainButton", InfoPreset.FillParent), VanillaSprites.UISprite, null);
 
         panel.AddImage(new Info("Icon", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, new Vector2(0, 0.5f)),
             VanillaSprites.UISprite);

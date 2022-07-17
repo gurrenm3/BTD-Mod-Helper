@@ -145,7 +145,7 @@ internal class MelonMain : BloonsTD6Mod
 
     public static readonly ModSettingFolder ModSourcesFolder =
         new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "BTD6 Mods Sources"))
+            "BTD6 Mod Sources"))
         {
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",

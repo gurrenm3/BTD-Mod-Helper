@@ -32,7 +32,7 @@ public abstract BTD_Mod_Helper.Api.Bloons.ModBloon Bloon { get; }
 
 ## ModBloonDisplay.Damage Property
 
-How damaged the Bloon is
+How damaged the Bloon is, higher numbers = use when more damaged
 
 ```csharp
 public virtual int Damage { get; }

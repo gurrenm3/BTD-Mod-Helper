@@ -104,7 +104,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 RecalculateCurrentMods();
             }), VanillaSprites.BlueInsertPanelRound, 80f);
 
-        topArea.AddPanel(new Info("Filler 1", Info.Preset.Flex));
+        topArea.AddPanel(new Info("Filler 1", InfoPreset.Flex));
 
         topArea.AddInputField(new Info("Searching", width: 1500, height: 150), currentSearch,
             VanillaSprites.BlueInsertPanelRound, new Action<string>(
@@ -115,7 +115,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft, "Search...",
             50);
 
-        topArea.AddPanel(new Info("Filler 2", Info.Preset.Flex));
+        topArea.AddPanel(new Info("Filler 2", InfoPreset.Flex));
 
         topArea.AddPanel(new Info("Toggles", width: 1000, height: 150));
     }

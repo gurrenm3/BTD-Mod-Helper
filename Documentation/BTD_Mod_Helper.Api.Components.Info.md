@@ -26,26 +26,26 @@ public Info(string name);
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,BTD_Mod_Helper.Api.Components.Info.Preset)'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,BTD_Mod_Helper.Api.Components.InfoPreset)'></a>
 
-## Info(string, Preset) Constructor
+## Info(string, InfoPreset) Constructor
 
 Creates a new info struct representing the name, position and size of a ModHelperComponent
 
 ```csharp
-public Info(string name, BTD_Mod_Helper.Api.Components.Info.Preset preset);
+public Info(string name, BTD_Mod_Helper.Api.Components.InfoPreset preset);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,BTD_Mod_Helper.Api.Components.Info.Preset).name'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,BTD_Mod_Helper.Api.Components.InfoPreset).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The name of the ModHelperComponent's Unity GameObject
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,BTD_Mod_Helper.Api.Components.Info.Preset).preset'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,BTD_Mod_Helper.Api.Components.InfoPreset).preset'></a>
 
-`preset` [Preset](BTD_Mod_Helper.Api.Components.Info.Preset.md 'BTD_Mod_Helper.Api.Components.Info.Preset')
+`preset` [InfoPreset](BTD_Mod_Helper.Api.Components.InfoPreset.md 'BTD_Mod_Helper.Api.Components.InfoPreset')
 
 A preset to apply
 

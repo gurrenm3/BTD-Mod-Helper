@@ -104,7 +104,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 var buttonComponent = option.BottomRow.AddButton(
                     new Info("Button", width: 562, height: 200), value ? enabledButton : disabledButton, null
                 );
-                buttonComponent.AddText(new Info("Text", Info.Preset.FillParent), text, 80f);
+                buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), text, 80f);
 
                 currentAction = (_, butt) =>
                 {

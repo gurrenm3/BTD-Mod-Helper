@@ -51,6 +51,12 @@ public abstract partial class BloonsMod : MelonMod, IModContent
         }
     }
 
+    /// <summary>
+    /// The path that this mod would most likely be at in the Mod Sources folder
+    /// </summary>
+    public string ModSourcesPath =>
+        Path.Combine(ModHelper.ModSourcesDirectory, MelonAssembly.Assembly.GetName().Name);
+
     internal static readonly HashSet<Type> GotModTooSoon = new();
 
     /// <summary>

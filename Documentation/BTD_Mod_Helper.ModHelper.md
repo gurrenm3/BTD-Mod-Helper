@@ -63,6 +63,19 @@ public static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.BloonsMod> M
 
 #### Property Value
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+<a name='BTD_Mod_Helper.ModHelper.ModSourcesDirectory'></a>
+
+## ModHelper.ModSourcesDirectory Property
+
+The directory path on the user's system that's set as their Mod Sources folder
+
+```csharp
+public static string ModSourcesDirectory { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
 <a name='BTD_Mod_Helper.ModHelper.Error_T_(object)'></a>

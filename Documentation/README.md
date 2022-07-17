@@ -81,7 +81,7 @@
 
 | Enums | |
 | :--- | :--- |
-| [Info.Preset](BTD_Mod_Helper.Api.Components.Info.Preset.md 'BTD_Mod_Helper.Api.Components.Info.Preset') | Specific common preset setups of Info structs |
+| [InfoPreset](BTD_Mod_Helper.Api.Components.InfoPreset.md 'BTD_Mod_Helper.Api.Components.InfoPreset') | Specific common preset setups of Info structs |
 
 <a name='BTD_Mod_Helper.Api.Coop'></a>
 

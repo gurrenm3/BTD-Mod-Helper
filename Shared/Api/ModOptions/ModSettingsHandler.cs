@@ -91,12 +91,9 @@ internal class ModSettingsHandler
         }
     }
 
-    private static void SaveModSettings(BloonsMod mod, bool initialSave = false)
+    internal static void SaveModSettings(BloonsMod mod, bool initialSave = false)
     {
-        if (!Directory.Exists(ModHelper.ModSettingsDirectory))
-        {
-            Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
-        }
+        Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
 
         var fileName = mod.SettingsFilePath;
         using var file = File.CreateText(fileName);

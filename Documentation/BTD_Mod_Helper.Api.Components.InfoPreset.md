@@ -1,16 +1,16 @@
 #### [BloonsTD6 Mod Helper](README.md 'README')
-### [BTD_Mod_Helper.Api.Components](README.md#BTD_Mod_Helper.Api.Components 'BTD_Mod_Helper.Api.Components').[Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+### [BTD_Mod_Helper.Api.Components](README.md#BTD_Mod_Helper.Api.Components 'BTD_Mod_Helper.Api.Components')
 
-## Info.Preset Enum
+## InfoPreset Enum
 
 Specific common preset setups of Info structs
 
 ```csharp
-public enum Info.Preset
+public enum InfoPreset
 ```
 ### Fields
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Preset.FillParent'></a>
+<a name='BTD_Mod_Helper.Api.Components.InfoPreset.FillParent'></a>
 
 `FillParent` 0
 
@@ -26,7 +26,7 @@ Equivalent to
 ```  
 Set alongside negative width/height to add padding around the edges, or positive to expand beyond
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Preset.Flex'></a>
+<a name='BTD_Mod_Helper.Api.Components.InfoPreset.Flex'></a>
 
 `Flex` 1
 

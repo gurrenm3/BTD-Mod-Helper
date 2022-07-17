@@ -87,28 +87,6 @@ public static string BloonID<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModContent.CreateInstances(System.Type,BTD_Mod_Helper.BloonsMod)'></a>
-
-## ModContent.CreateInstances(Type, BloonsMod) Method
-
-Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
-
-```csharp
-private static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModContent> CreateInstances(System.Type type, BTD_Mod_Helper.BloonsMod mod);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.CreateInstances(System.Type,BTD_Mod_Helper.BloonsMod).type'></a>
-
-`type` [System.Type](https://docs.microsoft.com/en-us/dotnet/api/System.Type 'System.Type')
-
-<a name='BTD_Mod_Helper.Api.ModContent.CreateInstances(System.Type,BTD_Mod_Helper.BloonsMod).mod'></a>
-
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
-
-#### Returns
-[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
 <a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(string)'></a>
 
 ## ModContent.CreateSpriteReference(string) Method
@@ -909,6 +887,24 @@ The bottom path tier
 #### Returns
 [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')  
 The tower name/id
+
+<a name='BTD_Mod_Helper.Api.ModContent.Load(BTD_Mod_Helper.Api.ModContent)'></a>
+
+## ModContent.Load(ModContent) Method
+
+Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
+
+```csharp
+private static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModContent> Load(BTD_Mod_Helper.Api.ModContent instance);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Load(BTD_Mod_Helper.Api.ModContent).instance'></a>
+
+`instance` [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 <a name='BTD_Mod_Helper.Api.ModContent.RoundSetId_T_()'></a>
 

@@ -98,7 +98,7 @@ public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, ICom
         {
             // ReSharper disable twice PossibleInvalidOperationException
             var sliderComponent = option.BottomRow.AddSlider(
-                new Info("Slider", width: 1500, height: 100), ToFloat(defaultValue),
+                new Info("Slider", width: 1500, height: 100), ToFloat(value),
                 ToFloat(min.Value), ToFloat(max.Value), StepSize, new Vector2(150, 150),
                 new Action<float>(f => SetValue(Clamp(FromFloat(f)))), 80f
             );

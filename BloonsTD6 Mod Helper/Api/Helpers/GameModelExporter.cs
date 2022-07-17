@@ -13,7 +13,7 @@ public static class GameModelExporter
     /// <summary>
     /// Exports every bit of GameModel and GameData info of note to the local folder
     /// </summary>
-    public static void ExportAll()
+    internal static void ExportAll()
     {
         ModHelper.Log("Exporting Towers to local files");
         foreach (var tower in Game.instance.model.towers)

@@ -28,7 +28,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         bloonsMod = ModHelper.Mods.First(m => m.IDPrefix == data?.ToString());
         CommonForegroundHeader.SetText(bloonsMod.Info.Name);
 
-        var scrollPanel = gameObject.AddModHelperScrollPanel(new Info("ScrollPanel", Info.Preset.FillParent),
+        var scrollPanel = gameObject.AddModHelperScrollPanel(new Info("ScrollPanel", InfoPreset.FillParent),
             RectTransform.Axis.Vertical, null, 150, 300);
 
         animator = scrollPanel.AddComponent<Animator>();
@@ -76,9 +76,12 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     public override void OnMenuClosed()
     {
+        if (!closing)
+        {
+            ModSettingsHandler.SaveModSettings(bloonsMod);
+            animator.Play("PopupSlideOut");
+        }
         closing = true;
-        animator.Play("PopupSlideOut");
-        Task.Run(() => ModSettingsHandler.SaveModSettings());
     }
 
     public static void Open(BloonsMod bloonsMod)

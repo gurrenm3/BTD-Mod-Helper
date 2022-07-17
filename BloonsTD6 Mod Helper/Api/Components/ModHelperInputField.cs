@@ -70,9 +70,9 @@ public class ModHelperInputField : ModHelperComponent
         backgroundImage.type = Image.Type.Sliced;
         backgroundImage.SetSprite(background);
 
-        var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", Info.Preset.FillParent));
+        var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", InfoPreset.FillParent));
 
-        var text = textViewPort.AddText(new Info("Text", Info.Preset.FillParent)
+        var text = textViewPort.AddText(new Info("Text", InfoPreset.FillParent)
         {
             Width = padding * -2
         }, defaultValue, fontSize, align);
@@ -88,7 +88,7 @@ public class ModHelperInputField : ModHelperComponent
 
         if (placeholder != null)
         {
-            var placeholderText = textViewPort.AddText(new Info("Placeholder", Info.Preset.FillParent)
+            var placeholderText = textViewPort.AddText(new Info("Placeholder", InfoPreset.FillParent)
             {
                 Width = padding * -2
             }, placeholder, fontSize, align);

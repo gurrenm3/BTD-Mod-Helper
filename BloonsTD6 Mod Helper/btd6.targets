@@ -49,11 +49,12 @@
         </Reference>
     </ItemGroup>
 
-    <!--Automatically embed pngs, jpgs and bundles-->
+    <!--Automatically embed pngs, jpgs, bytes and bundles-->
     <ItemGroup Condition="'$(AutoEmbed)' != 'false'">
         <EmbeddedResource Include="**/*.png"/>
         <EmbeddedResource Include="**/*.jpg"/>
         <EmbeddedResource Include="**/*.bundle"/>
+        <EmbeddedResource Include="**/*.bytes"/>
     </ItemGroup>
 
     <!--Post build events to copy dll/xml to mods folder-->

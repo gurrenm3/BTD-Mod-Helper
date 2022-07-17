@@ -23,7 +23,7 @@ public abstract class ModBloonDisplay : ModDisplay
     public abstract ModBloon Bloon { get; }
 
     /// <summary>
-    /// How damaged the Bloon is
+    /// How damaged the Bloon is, higher numbers = use when more damaged
     /// </summary>
     public virtual int Damage => 0;
 

@@ -126,6 +126,12 @@ internal static class ModHelperGithub
 #endif
                 return;
             }
+
+            if (latestRelease.TagName != mod.RepoVersion)
+            {
+                ModHelper.Warning("Latest Release Tag didn't match listed mod version. " +
+                                  "The real release for this version may be present in the API yet.");
+            }
         }
 
         var action = new Action(() =>
@@ -163,7 +169,7 @@ internal static class ModHelperGithub
 #endif
             });
         });
-
+        
         if (bypassPopup)
         {
             action.Invoke();
@@ -172,7 +178,7 @@ internal static class ModHelperGithub
         {
 #if BloonsTD6
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
-                $"Do you want to download\n{mod.DisplayName} v{mod.RepoVersion}?",
+                $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                 mod.SubPath == null
                     ? $"Latest Release Message:\n\"{latestRelease!.Body}\""
                     : $"Latest Commit Message:\n\"{latestCommit!.Commit.Message}\"",
@@ -181,7 +187,7 @@ internal static class ModHelperGithub
             PopupScreen.instance.ModifyBodyText(field =>
             {
                 var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
-                    Info.Preset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
+                    InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
                 scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
 
                 var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);

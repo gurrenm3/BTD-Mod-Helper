@@ -90,17 +90,17 @@ public class ModHelperSlider : ModHelperComponent
         modHelperSlider.defaultValue = defaultValue;
         slider.minValue = minValue * modHelperSlider.scaleFactor;
         slider.maxValue = maxValue * modHelperSlider.scaleFactor;
-        var background = modHelperSlider.AddPanel(new Info("Background", Info.Preset.FillParent),
+        var background = modHelperSlider.AddPanel(new Info("Background", InfoPreset.FillParent),
             VanillaSprites.SmallSquareWhite);
         background.Background.color = new Color(.219f, .125f, .058f);
 
-        var fillPanel = modHelperSlider.AddPanel(new Info("FillPanel", Info.Preset.FillParent)
+        var fillPanel = modHelperSlider.AddPanel(new Info("FillPanel", InfoPreset.FillParent)
         {
-            Width = info.Width / -4f,
-            Height = info.Height / 4f
+            Width = info.Height / -4f,
+            Height = info.Height / -4f
         });
 
-        var fill = fillPanel.AddPanel(new Info("Fill", Info.Preset.FillParent), VanillaSprites.SmallSquareWhite);
+        var fill = fillPanel.AddPanel(new Info("Fill", InfoPreset.FillParent), VanillaSprites.SmallSquareWhite);
         fill.Background.color = new Color(.5f, 1, 0);
         slider.fillRect = fill;
         slider.m_FillContainerRect = fillPanel;
@@ -110,7 +110,7 @@ public class ModHelperSlider : ModHelperComponent
         modHelperSlider.AddImage(new Info("DefaultNotch", 64, 136, new Vector2(anchorPos, 0.5f)),
             VanillaSprites.SliderMarker);
 
-        var handleContainer = modHelperSlider.AddPanel(new Info("HandleContainer", Info.Preset.FillParent));
+        var handleContainer = modHelperSlider.AddPanel(new Info("HandleContainer", InfoPreset.FillParent));
 
         var pip = handleContainer.AddImage(
             new Info("Handle", handleSize.x, handleSize.y - info.Height),

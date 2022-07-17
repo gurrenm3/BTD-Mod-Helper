@@ -20,13 +20,13 @@ internal class ByteWaitTask : ModLoadTask
     public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
     /// <summary>
-    /// Registers ModContent from other mods
+    /// Wait for the bytes to all be loaded
     /// </summary>
     public override IEnumerator Coroutine()
     {
         while (!ModByteLoader.loadedAllBytes)
         {
-            yield return true;
+            yield return null;
         }
     }
 }

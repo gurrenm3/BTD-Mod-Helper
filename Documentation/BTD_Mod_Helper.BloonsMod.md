@@ -122,6 +122,19 @@ public System.Collections.Generic.Dictionary<string,BTD_Mod_Helper.Api.ModOption
 #### Property Value
 [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
+<a name='BTD_Mod_Helper.BloonsMod.ModSourcesPath'></a>
+
+## BloonsMod.ModSourcesPath Property
+
+The path that this mod would most likely be at in the Mod Sources folder
+
+```csharp
+public string ModSourcesPath { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.BloonsMod.OptionalPatches'></a>
 
 ## BloonsMod.OptionalPatches Property

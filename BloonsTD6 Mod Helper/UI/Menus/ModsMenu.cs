@@ -121,7 +121,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Anchor = new Vector2(1, 0),
             Pivot = new Vector2(0.5f, 0)
         }, VanillaSprites.WoodenRoundButton, new Action(() => Open<ModBrowserMenu>()));
-        modBrowserButton.AddImage(new Info("ComputerMonkey", Info.Preset.FillParent), VanillaSprites.BenjaminIcon);
+        modBrowserButton.AddImage(new Info("ComputerMonkey", InfoPreset.FillParent), VanillaSprites.BenjaminIcon);
         modBrowserButton.AddText(new Info("Text", 0, -200, 500, 100), "Browse Mods", 60f);
 
         var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, 50, 400)
@@ -155,7 +155,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Anchor = Vector2.one
         });
 
-        restartButton.AddButton(new Info("Restart", Info.Preset.FillParent), VanillaSprites.RestartBtn,
+        restartButton.AddButton(new Info("Restart", InfoPreset.FillParent), VanillaSprites.RestartBtn,
             new Action(() =>
             {
                 PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
@@ -282,7 +282,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Action<int>(SortMods), VanillaSprites.BlueInsertPanelRound, FontSmall
         );
 
-        topRow.AddPanel(new Info("Filler", Info.Preset.Flex));
+        topRow.AddPanel(new Info("Filler", InfoPreset.Flex));
 
         // ReSharper disable once AsyncVoidLambda
         updateAllButton = topRow.AddButton(
@@ -297,9 +297,9 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             })
         );
 
-        updateAllButton.AddText(new Info("UpdateAllText", Info.Preset.FillParent), "Update All", FontSmall);
+        updateAllButton.AddText(new Info("UpdateAllText", InfoPreset.FillParent), "Update All", FontSmall);
 
-        modsList = leftMenu.AddScrollPanel(new Info("ModListScroll", Info.Preset.Flex), RectTransform.Axis.Vertical,
+        modsList = leftMenu.AddScrollPanel(new Info("ModListScroll", InfoPreset.Flex), RectTransform.Axis.Vertical,
             VanillaSprites.BlueInsertPanelRound, Padding, Padding);
 
         modPanels = new Dictionary<ModHelperData, ModsMenuMod>();
@@ -356,7 +356,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Flex = 1
         }, VanillaSprites.BlueInsertPanelRound);
 
-        selectedModName = modTitlePanel.AddText(new Info("ModTitle", Info.Preset.FillParent)
+        selectedModName = modTitlePanel.AddText(new Info("ModTitle", InfoPreset.FillParent)
         {
             Width = Padding * -2
         }, "Test Long Mod Name", FontLarge, TextAlignmentOptions.Left);
@@ -386,12 +386,12 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             FlexWidth = 4, FlexHeight = 1
         }, VanillaSprites.BlueInsertPanelRound);
 
-        selectedModAuthor = modAuthorPanel.AddText(new Info("Author", Info.Preset.FillParent)
+        selectedModAuthor = modAuthorPanel.AddText(new Info("Author", InfoPreset.FillParent)
         {
             Width = Padding * -2
         }, "Author", FontSmall, TextAlignmentOptions.Left);
 
-        var modVersionPanel = secondRow.AddPanel(new Info("ModVersionPanel", Info.Preset.Flex),
+        var modVersionPanel = secondRow.AddPanel(new Info("ModVersionPanel", InfoPreset.Flex),
             VanillaSprites.BlueInsertPanelRound);
         selectedModVersion = modVersionPanel.AddText(new Info("Version")
         {
@@ -399,7 +399,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }, "Version", FontSmall);
 
 
-        var descriptionPanel = selectedModPanel.AddScrollPanel(new Info("DescriptionPanel", Info.Preset.Flex),
+        var descriptionPanel = selectedModPanel.AddScrollPanel(new Info("DescriptionPanel", InfoPreset.Flex),
             RectTransform.Axis.Vertical, VanillaSprites.BlueInsertPanelRound, Padding, Padding);
 
         selectedModDescription = ModHelperText.Create(new Info("DescriptionText")
@@ -422,13 +422,13 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             GetSprite<MelonMain>("Icon"));
 
 
-        var middleButtons = buttonsRow.AddPanel(new Info("MiddleButtons", Info.Preset.FillParent), null,
+        var middleButtons = buttonsRow.AddPanel(new Info("MiddleButtons", InfoPreset.FillParent), null,
             RectTransform.Axis.Horizontal, Padding);
         middleButtons.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
         selectedModDisableButton = middleButtons.AddButton(
             new Info("DisableButton", ModPanelHeight * ModHelperButton.LongBtnRatio, ModPanelHeight),
             VanillaSprites.RedBtnLong, new Action(DisableSelectedMod));
-        selectedModDisableButton.AddText(new Info("ButtonText", Info.Preset.FillParent), "Disable", FontLarge);
+        selectedModDisableButton.AddText(new Info("ButtonText", InfoPreset.FillParent), "Disable", FontLarge);
 
         selectedModDeleteButton = middleButtons.AddButton(new Info("Delete", ModPanelHeight), VanillaSprites.CloseBtn,
             new Action(DeleteSelectedMod));
@@ -437,7 +437,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Info("EnabledButton", height: ModPanelHeight, width: ModPanelHeight * ModHelperButton.LongBtnRatio),
             VanillaSprites.GreenBtnLong, new Action(EnableSelectedMod)
         );
-        selectedModEnableButton.AddText(new Info("ButtonText", Info.Preset.FillParent), "Enable", FontLarge);
+        selectedModEnableButton.AddText(new Info("ButtonText", InfoPreset.FillParent), "Enable", FontLarge);
 
         selectedModSettingsButton = buttonsRow.AddButton(
             new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),

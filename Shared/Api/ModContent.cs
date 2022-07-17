@@ -83,7 +83,11 @@ namespace BTD_Mod_Helper.Api
             mod.Content = mod.MelonAssembly.Assembly
                 .GetValidTypes()
                 .Where(CanLoadType)
-                .SelectMany(type => CreateInstances(type, mod))
+                .Select(type => CreateInstance(type, mod))
+                .Where(content => content != null)
+                .OrderBy(content => content.RegistrationPriority)
+                .ThenBy(content => content.Order)
+                .SelectMany(Load)
                 .OrderBy(content => content.RegistrationPriority)
                 .ThenBy(content => content.Order)
                 .ToList();
@@ -102,54 +106,49 @@ namespace BTD_Mod_Helper.Api
             typeof(ModContent).IsAssignableFrom(type) &&
             type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) != null;
 
+        private static ModContent CreateInstance(Type type, BloonsMod mod)
+        {
+            ModContent instance;
+            try
+            {
+                instance = (ModContent) Activator.CreateInstance(type)!;
+                instance.mod = mod;
+                ModContentInstances.SetInstance(type, instance);
+            }
+            catch (Exception)
+            {
+                ModHelper.Error($"Error creating default {type.Name}");
+                ModHelper.Error("A zero argument constructor is REQUIRED for all ModContent classes");
+                return null;
+            }
+
+            return instance;
+        }
+
         /// <summary>
         /// Creates the Instances of a ModContent type within a Mod and adds them to ModContentInstances
         /// </summary>
-        private static IEnumerable<ModContent> CreateInstances(Type type, BloonsMod mod)
+        private static IEnumerable<ModContent> Load(ModContent instance)
         {
+            var type = instance.GetType();
+            var instances = new List<ModContent>();
             try
             {
-                var instances = new List<ModContent>();
-                ModContent instance;
-                try
+                instances.AddRange(instance.Load());
+                foreach (var modContent in instances)
                 {
-                    instance = (ModContent) Activator.CreateInstance(type)!;
+                    modContent.mod = instance.mod;
                 }
-                catch (Exception)
-                {
-                    ModHelper.Error($"Error creating default {type.Name}");
-                    ModHelper.Error("A zero argument constructor is REQUIRED for all ModContent classes");
-                    return instances;
-                }
-
-                instance.mod = mod;
-
-                try
-                {
-                    instances.AddRange(instance.Load());
-                    foreach (var modContent in instances)
-                    {
-                        modContent.mod = mod;
-                    }
-                }
-                catch (Exception e)
-                {
-                    ModHelper.Error(
-                        $"Failed loading instances of type {type.Name} for mod {type.Assembly.GetName().Name}");
-                    ModHelper.Error(e);
-                    return instances;
-                }
-
                 ModContentInstances.SetInstances(type, instances);
-
-                return instances;
             }
             catch (Exception e)
             {
-                ModHelper.Error("Failed to load " + type.Name);
+                ModHelper.Error(
+                    $"Failed loading instances of type {type.Name} for mod {type.Assembly.GetName().Name}");
                 ModHelper.Error(e);
-                return Array.Empty<ModContent>();
             }
+            
+            return instances;
         }
 
         /// <summary>

@@ -21,7 +21,6 @@ public static class ModHelper
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description = "The mod that is allowing all this to happen right now :P";
-    internal const string ZipName = "BloonsTD6 Mod Helper.zip";
     internal const string DllName = "Btd6ModHelper.dll";
     internal const string Author = "Gurrenm4 and Doombubbles";
 
@@ -42,7 +41,13 @@ public static class ModHelper
     internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
     internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
     internal static string ModSettingsDirectory => Path.Combine(ModHelperDirectory, "Mod Settings");
+    internal static string ReplacedFilesDirectory => Path.Combine(ModHelperDirectory, "Replaced");
 
+    /// <summary>
+    /// The directory path on the user's system that's set as their Mod Sources folder
+    /// </summary>
+    public static string ModSourcesDirectory => MelonMain.ModSourcesFolder;
+    
     private static bool fallBackToOldLoading;
     
     internal static bool FallbackToOldLoading

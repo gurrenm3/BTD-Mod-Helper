@@ -71,7 +71,7 @@ public class ModSettingFile : ModSetting<string>
         );
         button.GetDescendent<Animator>().enabled = false;
 
-        var text = button.AddText(new Info("FileText", Info.Preset.FillParent), value);
+        var text = button.AddText(new Info("FileText", InfoPreset.FillParent), value);
 
         option.SetResetAction(new Action(() => text.SetText(defaultValue)));
 #endif
