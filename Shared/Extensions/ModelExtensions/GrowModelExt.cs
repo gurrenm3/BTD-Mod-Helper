@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class GrowModelExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Sets which bloon this should regrow into.
+    /// Sets which bloon this should regrow into.
     /// </summary>
     /// <param name="growModel"></param>
     /// <param name="regrowsTo">The ID of the bloon this should regrow into</param>
@@ -22,7 +22,7 @@ public static class GrowModelExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Sets which bloon this should regrow into.
+    /// Sets which bloon this should regrow into.
     /// </summary>
     /// <param name="growModel"></param>
     /// <param name="regrowsTo">The ID of the bloon this should regrow into</param>
@@ -34,7 +34,7 @@ public static class GrowModelExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Returns the ID of the BloonModel that this regrows into.
+    /// Returns the ID of the BloonModel that this regrows into.
     /// </summary>
     /// <param name="growModel"></param>
     /// <returns></returns>

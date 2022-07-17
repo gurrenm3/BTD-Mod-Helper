@@ -5,7 +5,7 @@ namespace BTD_Mod_Helper.Patches.ModdedClientChecking;
 /// <summary>
 /// You forced our hand :(
 /// </summary>
-public class ModdedClientBypassing
+internal class ModdedClientBypassing
 {
     /// <summary>
     /// The nuclear option would be just setting this to true, which would entirely bypass all of NK's clientside checks

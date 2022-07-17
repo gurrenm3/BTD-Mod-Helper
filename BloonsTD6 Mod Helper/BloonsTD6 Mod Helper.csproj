@@ -8,19 +8,26 @@
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
-        <DocumentationFile>bin\BTD6_Debug\Btd6ModHelper.xml</DocumentationFile>
         <LangVersion>latest</LangVersion>
+        
+        <!--ILRepack settings-->
+        <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
+        
+        <!--btd6.targets settings-->
         <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
         <ProjectName>Btd6ModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->
+
+        <!--Documentation Settings-->
+        <DocumentationFile>bin\BTD6_Debug\Btd6ModHelper.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
         <Reference Include="System.IO.Compression" />
         <Reference Include="System.IO.Compression.FileSystem" />
     </ItemGroup>
-    
+
     <ItemGroup>
+        <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1" PrivateAssets="all" />
         <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
         <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.14" GeneratePathProperty="true" />
         <PackageReference Include="NfdSharp" Version="1.0.1" />
@@ -34,7 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings" />
+        <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings" />
     </ItemGroup>
 
     <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />

@@ -25,6 +25,7 @@ public abstract class NamedModContent : ModContent
     /// Registers the text for this in the LocalizationManager
     /// </summary>
     /// <param name="textTable"></param>
+    /// <exclude/>
     public virtual void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
     {
         textTable[Id] = DisplayName;

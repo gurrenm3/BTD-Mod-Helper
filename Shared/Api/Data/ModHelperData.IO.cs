@@ -11,7 +11,14 @@ namespace BTD_Mod_Helper.Api;
 
 internal partial class ModHelperData
 {
-    private const string VersionRegex = "\\bVersion\\s*=\\s*\"([.0-9]+)\";?[\n\r]+";
+    // From MelonLoader SemVersion
+    private const string SemVerRegex = @"(?<major>\d+)" +
+                                       @"(?>\.(?<minor>\d+))?" +
+                                       @"(?>\.(?<patch>\d+))?" +
+                                       @"(?>\-(?<pre>[0-9A-Za-z\-\.]+))?" +
+                                       @"(?>\+(?<build>[0-9A-Za-z\-\.]+))?";
+
+    private const string VersionRegex = "\\bVersion\\s*=\\s*\"" + SemVerRegex + "\";?[\n\r]+";
     private const string NameRegex = "\\bName\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string DescRegex = "\\bDescription\\s*=(?:[\\s+]*\"(.+)\")+;?[\n\r]+";
     private const string IconRegex = "\\bIcon\\s*=\\s*\"(.+\\.png)\";?[\n\r]+";

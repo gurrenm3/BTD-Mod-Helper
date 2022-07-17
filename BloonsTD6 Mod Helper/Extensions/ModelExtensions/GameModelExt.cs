@@ -293,6 +293,7 @@ public static partial class GameModelExt
     /// <param name="time">Time the bloon should be spawned</param>
     /// <param name="chargedMutators"></param>
     /// <param name="behaviorMutators"></param>
+    /// <exclude/>
     public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time,
         Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators,
         Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)

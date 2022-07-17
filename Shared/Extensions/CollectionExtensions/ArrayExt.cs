@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class ArrayExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppSystem.List
+    /// Return as Il2CppSystem.List
     /// </summary>
     public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] array)
         where T : Il2CppSystem.Object
@@ -22,7 +22,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppReferenceArray
+    /// Return as Il2CppReferenceArray
     /// </summary>
     public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array) where T : Il2CppSystem.Object
     {
@@ -35,7 +35,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as LockList
+    /// Return as LockList
     /// </summary>
     public static LockList<T> ToLockList<T>(this T[] array)
     {
@@ -47,7 +47,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return a duplicate of this Array
+    /// Return a duplicate of this Array
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="array"></param>
@@ -65,7 +65,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return a duplicate of this array as type TCast
+    /// Return a duplicate of this array as type TCast
     /// </summary>
     /// <typeparam name="TSource">The original Array Type</typeparam>
     /// <typeparam name="TCast">The Cast type</typeparam>
@@ -85,7 +85,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with an Item added to it
+    /// Return this with an Item added to it
     /// </summary>
     /// <typeparam name="T">The Type of the Item you want to add</typeparam>
     /// <param name="array"></param>
@@ -102,7 +102,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with Items added to it
+    /// Return this with Items added to it
     /// </summary>
     /// <typeparam name="T">The Type of the Items you want to add</typeparam>
     /// <param name="array"></param>
@@ -129,7 +129,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with Items added to it
+    /// Return this with Items added to it
     /// </summary>
     /// <typeparam name="T">The Type of the Items you want to add</typeparam>
     /// <param name="array"></param>
@@ -142,7 +142,7 @@ public static partial class ArrayExt
 
 
     /// <summary>
-    /// (Cross-Game compatible) Check if this has any items of type TCast
+    /// Check if this has any items of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type you're checking for</typeparam>
@@ -169,7 +169,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the first Item of type TCast
+    /// Return the first Item of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want</typeparam>
@@ -186,7 +186,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return all Items of type TCast
+    /// Return all Items of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Items you want</typeparam>
@@ -199,7 +199,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+    /// Return this with the first Item of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
@@ -214,7 +214,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+    /// Return this with the first Item of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
@@ -243,7 +243,7 @@ public static partial class ArrayExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with all Items of type TCast removed
+    /// Return this with all Items of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>

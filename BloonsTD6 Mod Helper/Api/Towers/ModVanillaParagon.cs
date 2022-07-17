@@ -34,7 +34,7 @@ public abstract class ModVanillaParagon : ModTower
     /// <summary>
     /// Order doesn't apply here
     /// </summary>
-    public sealed override int Order => base.Order;
+    protected sealed override int Order => base.Order;
 
     /// <summary>
     /// Same towerSet as base tower

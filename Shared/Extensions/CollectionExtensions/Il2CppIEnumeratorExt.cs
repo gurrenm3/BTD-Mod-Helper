@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class Il2CppIEnumeratorExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Get the total number of elements
+    /// Get the total number of elements
     /// </summary>
     /// <param name="enumerator"></param>
     /// <returns></returns>
@@ -27,7 +27,7 @@ public static class Il2CppIEnumeratorExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the Item at a specific index
+    /// Return the Item at a specific index
     /// </summary>
     /// <param name="enumerator"></param>
     /// <param name="index"></param>
@@ -46,7 +46,7 @@ public static class Il2CppIEnumeratorExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as System.List
+    /// Return as System.List
     /// </summary>
     /// <param name="enumerator"></param>
     /// <returns></returns>
@@ -60,7 +60,7 @@ public static class Il2CppIEnumeratorExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppSystem.List
+    /// Return as Il2CppSystem.List
     /// </summary>
     public static Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object> ToIl2CppList(this IEnumerator enumerator)
     {
@@ -74,7 +74,7 @@ public static class Il2CppIEnumeratorExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppReferenceArray
+    /// Return as Il2CppReferenceArray
     /// </summary>
     public static Il2CppReferenceArray<Il2CppSystem.Object> ToIl2CppReferenceArray(this IEnumerator enumerator)
     {
@@ -93,7 +93,7 @@ public static class Il2CppIEnumeratorExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as LockList
+    /// Return as LockList
     /// </summary>
     public static LockList<Il2CppSystem.Object> ToLockList(this IEnumerator enumerator)
     {

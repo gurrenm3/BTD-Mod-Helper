@@ -16,6 +16,7 @@ public abstract class ModRoundSet : NamedModContent
     /// <summary>
     /// RoundSets register Bloons and before GameModes
     /// </summary>
+    /// <exclude/>
     protected override float RegistrationPriority => 9;
 
     /// <summary>

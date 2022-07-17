@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\BloonModelUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModBloon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModVanillaBloon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Bloons\ModVanillaBloons.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\Info.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchLocalPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Components\MatchScale.cs" />

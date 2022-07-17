@@ -23,7 +23,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class GameExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Returns the instance of the Map Loader.
+        /// Returns the instance of the Map Loader.
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
@@ -37,7 +37,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Returns a new SpriteReference that uses the given guid
+        /// Returns a new SpriteReference that uses the given guid
         /// </summary>
         /// <param name="game"></param>
         /// <param name="guid"></param>
@@ -48,7 +48,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Returns whether or not the player's account is currently flagged/hackerpooled
+        /// Returns whether or not the player's account is currently flagged/hackerpooled
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
@@ -63,7 +63,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the instance of LocalizationManager
+        /// Get the instance of LocalizationManager
         /// </summary>
         public static LocalizationManager GetLocalizationManager(this Game game)
         {
@@ -75,14 +75,14 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Schedule a task to execute right now as a Coroutine
+        /// Schedule a task to execute right now as a Coroutine
         /// </summary>
         /// <param name="game"></param>
         /// <param name="iEnumerator"></param>
         public static void ScheduleTask(this Game game, IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
 
         /// <summary>
-        /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
+        /// Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
         /// </summary>
         /// <param name="game"></param>
         /// <param name="action">The action you want to execute once it's time to run your task</param>
@@ -90,7 +90,7 @@ namespace BTD_Mod_Helper.Extensions
         public static void ScheduleTask(this Game game, Action action, Func<bool> waitCondition = null) => game.ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
 
         /// <summary>
-        /// (Cross-Game compatible) Schedule a task to execute later on as a Coroutine
+        /// Schedule a task to execute later on as a Coroutine
         /// </summary>
         /// <param name="game"></param>
         /// <param name="action">The action you want to execute once it's time to run your task</param>
@@ -104,7 +104,7 @@ namespace BTD_Mod_Helper.Extensions
 
 
         /// <summary>
-        /// (Cross-Game compatible) Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
+        /// Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
         /// </summary>
         public static LiNKAccount GetPlayerLiNKAccount(this Game game)
         {
@@ -112,7 +112,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the ProfileModel for the Player
+        /// Get the ProfileModel for the Player
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
@@ -122,7 +122,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the PlayerService for the player
+        /// Get the PlayerService for the player
         /// </summary>
         public static PlayerService GetPlayerService(this Game game)
         {
@@ -134,7 +134,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get GameModel. Same as using Game.instance.model
+        /// Get GameModel. Same as using Game.instance.model
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
@@ -144,7 +144,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
+        /// Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
         /// </summary>
         /// <param name="game">the Game instance</param>
         /// <param name="message">Message body</param>
@@ -155,7 +155,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
+        /// Uses custom message popup to show a message in game. Currently only works in active game sessions and not on Main Menu
         /// </summary>
         /// <param name="game">the Game instance</param>
         /// <param name="message">Message body</param>

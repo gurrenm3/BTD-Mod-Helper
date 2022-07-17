@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class Il2CppSystemObjectExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Is this Reference equal to another Object's Reference?
+    /// Is this Reference equal to another Object's Reference?
     /// </summary>
     /// <param name="instance"></param>
     /// <param name="to">Object to compare to</param>
@@ -20,7 +20,7 @@ public static class Il2CppSystemObjectExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Check if object is the same type as T
+    /// Check if object is the same type as T
     /// </summary>
     /// <typeparam name="T">Type to check</typeparam>
     public static bool IsType<T>(this Object instance) where T : Object
@@ -29,7 +29,7 @@ public static class Il2CppSystemObjectExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Check if object is the same type as T
+    /// Check if object is the same type as T
     /// </summary>
     /// <param name="instance"></param>
     /// <param name="castObject">The casted object if this is of type T</param>

@@ -21,7 +21,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class TowerModelExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Get the name of the BaseTower. Will be different from this TowerModel's name if this TowerModel isn't a BaseTower
+        /// Get the name of the BaseTower. Will be different from this TowerModel's name if this TowerModel isn't a BaseTower
         /// </summary>
         /// <param name="towerModel"></param>
         /// <returns></returns>
@@ -35,7 +35,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Has player already unlocked this TowerModel
+        /// Has player already unlocked this TowerModel
         /// </summary>
         public static bool? IsTowerUnlocked(this TowerModel towerModel)
         {
@@ -47,7 +47,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return all TowerToSimulations with this TowerModel
+        /// Return all TowerToSimulations with this TowerModel
         /// </summary>
         public static List<TowerToSimulation> GetAllTowerToSim(this TowerModel towerModel)
         {
@@ -58,7 +58,7 @@ namespace BTD_Mod_Helper.Extensions
         
         
         /// <summary>
-        /// (Cross-Game compatible) Return all AbilityModel behaviors from this tower, if it has any
+        /// Return all AbilityModel behaviors from this tower, if it has any
         /// </summary>
         public static List<AbilityModel> GetAbilities(this TowerModel towerModel)
         {
@@ -66,7 +66,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first ability on the tower
+        /// Return the first ability on the tower
         /// </summary>
         public static AbilityModel GetAbility(this TowerModel towerModel)
         {
@@ -74,7 +74,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return a specific Ability of the tower.
+        /// Return a specific Ability of the tower.
         /// </summary>
         /// <param name="towerModel">the TowerModel</param>
         /// <param name="index">Index of the ability you want.</param>
@@ -84,7 +84,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return all AttackModel behaviors for this TowerModel
+        /// Return all AttackModel behaviors for this TowerModel
         /// </summary>
         public static List<AttackModel> GetAttackModels(this TowerModel towerModel)
         {
@@ -92,7 +92,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first AttackModel from this TowerModel, if it has one
+        /// Return the first AttackModel from this TowerModel, if it has one
         /// </summary>
         public static AttackModel GetAttackModel(this TowerModel towerModel)
         {
@@ -100,7 +100,7 @@ namespace BTD_Mod_Helper.Extensions
         }
         
         /// <summary>
-        /// (Cross-Game compatible) Return the first AttackModel whose name contains the given string
+        /// Return the first AttackModel whose name contains the given string
         /// </summary>
         public static AttackModel GetAttackModel(this TowerModel towerModel, string nameContains)
         {
@@ -108,7 +108,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return one of the AttackModels from this TowerModel. By default will give the first AttackModel
+        /// Return one of the AttackModels from this TowerModel. By default will give the first AttackModel
         /// </summary>
         /// <param name="towerModel">The TowerModel</param>
         /// <param name="index">Index of the AttackModel you want</param>
@@ -118,7 +118,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Recursively get every WeaponModels this TowerModel has
+        /// Recursively get every WeaponModels this TowerModel has
         /// </summary>
         public static List<WeaponModel> GetWeapons(this TowerModel towerModel)
         {
@@ -141,7 +141,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return one of the WeaponModels this TowerModel has. By default will return the first one
+        /// Return one of the WeaponModels this TowerModel has. By default will return the first one
         /// </summary>
         /// <param name="towerModel">The TowerModel</param>
         /// <param name="index">Index of WeaponModel that you want</param>
@@ -151,7 +151,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Return the first WeaponModel this TowerModel has, if it has one.
+        /// Return the first WeaponModel this TowerModel has, if it has one.
         /// </summary>
         public static WeaponModel GetWeapon(this TowerModel towerModel)
         {
@@ -159,7 +159,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Sell every tower that uses this TowerModel
+        /// Sell every tower that uses this TowerModel
         /// </summary>
         /// <param name="towerModel"></param>
         public static void SellAll(this TowerModel towerModel)
@@ -169,7 +169,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get the TowerId of this TowerModel. Equivalent to towerModel.name
+        /// Get the TowerId of this TowerModel. Equivalent to towerModel.name
         /// </summary>
         /// <param name="towerModel"></param>
         /// <returns></returns>
@@ -179,7 +179,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Duplicate this TowerModel with a unique name. Very useful for making custom TowerModels
+        /// Duplicate this TowerModel with a unique name. Very useful for making custom TowerModels
         /// </summary>
         /// <param name="towerModel"></param>
         /// <param name="newTowerId">Set's the new towerId of this copy. By default the baseId will be set to this as well</param>

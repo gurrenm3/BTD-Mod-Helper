@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Api.Bloons;
 public class BloonModelUtils
 {
     /// <summary>
-    /// (Cross-Game compatible) Constructs an accurate BloonID for a BloonModel based off of it's statuses.
+    /// Constructs an accurate BloonID for a BloonModel based off of it's statuses.
     /// </summary>
     /// <param name="bloonName"></param>
     /// <param name="camo"></param>
@@ -28,7 +28,7 @@ public class BloonModelUtils
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Creates a GrowModel behavior that adds Regrowth.
+    /// Creates a GrowModel behavior that adds Regrowth.
     /// </summary>
     /// <param name="regrowsTo"></param>
     /// <param name="regrowRate"></param>

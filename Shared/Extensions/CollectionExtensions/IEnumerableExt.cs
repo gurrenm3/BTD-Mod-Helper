@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class IEnumerableExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppSystem.List
+    /// Return as Il2CppSystem.List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -30,7 +30,7 @@ public static class IEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppReferenceArray
+    /// Return as Il2CppReferenceArray
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
@@ -42,7 +42,7 @@ public static class IEnumerableExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as LockList
+    /// Return as LockList
     /// </summary>
     public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable)
     {

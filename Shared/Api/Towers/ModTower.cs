@@ -7,13 +7,15 @@ using BTD_Mod_Helper.Api.Display;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
-/// Class representing a custom Tower being added by a mod
+/// Class for adding a custom Tower to the game. Use alongside <see cref="ModUpgrade"/> to define its upgrades,
+/// and optionally <see cref="ModTowerDisplay"/> to define custom displays for it.
 /// </summary>
 public abstract partial class ModTower : NamedModContent
 {
     /// <summary>
     /// ModTowers register third
     /// </summary>
+    /// <exclude/>
     protected sealed override float RegistrationPriority => 3;
         
     /// <inheritdoc />
@@ -29,12 +31,16 @@ public abstract partial class ModTower : NamedModContent
     internal virtual int UpgradePaths => 3;
 
     /// <summary>
-    /// The Portrait for the 0-0-0 tower
+    /// The Portrait for the 0-0-0 tower, by default "[Name]-Portrait"
+    /// <br/>
+    /// (Name of .png or .jpg, not including file extension)
     /// </summary>
     public virtual string Portrait => GetType().Name + "-Portrait";
 
     /// <summary>
-    /// The Icon for the Tower's purchase button
+    /// The Icon for the Tower's purchase button, by default "[Name]-Icon"
+    /// <br/>
+    /// (Name of .png or .jpg, not including file extension)
     /// </summary>
     public virtual string Icon => GetType().Name + "-Icon";
 
@@ -50,11 +56,16 @@ public abstract partial class ModTower : NamedModContent
 
     /// <summary>
     /// Whether this Tower should display 2-dimensionally, and search for png images
+    /// <br/>
+    /// <seealso cref="PixelsPerUnit"/>
+    /// <seealso cref="Get2DTexture"/>
     /// </summary>
     public virtual bool Use2DModel => false;
 
     /// <summary>
     /// For 2D towers, the ratio between pixels and display units. Higher number -> smaller tower.
+    /// <seealso cref="Use2DModel"/>
+    /// <seealso cref="Get2DTexture"/>
     /// </summary>
     public virtual float PixelsPerUnit => 10f;
 
@@ -62,11 +73,6 @@ public abstract partial class ModTower : NamedModContent
     /// Makes this Tower not actually add itself to the shop, useful for making subtowers
     /// </summary>
     public virtual bool DontAddToShop => false;
-
-    /// <summary>
-    /// Customized order in which to add this ModTower in the shop in relation to others added by your mod
-    /// </summary>
-    public virtual int Order => 0;
 
     /// <summary>
     /// The string to use for the Primary tower set

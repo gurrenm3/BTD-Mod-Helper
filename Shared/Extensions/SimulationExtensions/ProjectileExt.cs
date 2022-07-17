@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class ProjectileExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return the Factory that creates Projectiles
+    /// Return the Factory that creates Projectiles
     /// </summary>
     /// <param name="projectile"></param>
     /// <returns></returns>

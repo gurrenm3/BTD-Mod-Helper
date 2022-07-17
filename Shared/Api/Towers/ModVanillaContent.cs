@@ -67,11 +67,18 @@ public abstract class ModVanillaContent : ModContent
             var gameModel = Game.instance.model;
             foreach (var affectedModel in GetAffectedModels(gameModel))
             {
+                if (affectedModel == null)
+                {
+                    ModHelper.Warning($"Unable to modify vanilla {TypeName}, found null");
+                    break;
+                }
                 Apply(affectedModel);
                 Apply(affectedModel, gameModel);
             }
         }
     }
+
+    internal abstract string TypeName { get; }
 }
     
 /// <summary>
@@ -79,6 +86,8 @@ public abstract class ModVanillaContent : ModContent
 /// </summary>
 public abstract class ModVanillaContent<T> : ModVanillaContent where T : Model
 {
+    internal override string TypeName => typeof(T).Name;
+
     /// <inheritdoc />
     public sealed override IEnumerable<Model> GetAffectedModels(GameModel gameModel)
     {

@@ -15,7 +15,7 @@ namespace BTD_Mod_Helper.Extensions
     public static class SpawnerExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Spawn a BloonModel on the map
+        /// Spawn a BloonModel on the map
         /// </summary>
         /// <param name="spawner"></param>
         /// <param name="bloonModel"></param>

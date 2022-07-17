@@ -21,7 +21,7 @@ public static class HarmonyExt
             prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPrefix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPrefix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPrefix(this HarmonyLib.Harmony harmonyInstance, Type classToPatch, int constructorIndex,
         Type myPatchClass, string myPatchMethod)
     {
@@ -30,7 +30,7 @@ public static class HarmonyExt
             prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPrefix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPrefix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPrefix<TClassToPatch, TMyPatchClass>(this HarmonyLib.Harmony harmonyInstance,
         string methodToPatch, string myPatchMethod)
     {
@@ -41,7 +41,7 @@ public static class HarmonyExt
             prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPrefix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPrefix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPrefix(this HarmonyLib.Harmony harmonyInstance, Type classToPatch, string methodToPatch,
         Type myPatchClass, string myPatchMethod)
     {
@@ -50,7 +50,7 @@ public static class HarmonyExt
             prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPrefix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPrefix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPrefix<TClassToPatch, TMyPatchClass>(this HarmonyLib.Harmony harmonyInstance,
         string methodToPatch, int methodOverloadIndex, string myPatchMethod)
     {
@@ -61,7 +61,7 @@ public static class HarmonyExt
             prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPrefix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPrefix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPrefix(this HarmonyLib.Harmony harmonyInstance, Type classToPatch, string methodToPatch,
         int methodOverloadIndex, Type myPatchClass, string myPatchMethod)
     {
@@ -70,7 +70,7 @@ public static class HarmonyExt
             prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPrefix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPrefix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPrefix(this HarmonyLib.Harmony harmonyInstance, MethodInfo methodToPatch,
         Type myPatchClass, string myPatchMethod)
     {
@@ -78,7 +78,7 @@ public static class HarmonyExt
             prefix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPrefix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPrefix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPrefix(this HarmonyLib.Harmony harmonyInstance, MethodInfo methodToPatch,
         MethodInfo myPatchMethod)
     {
@@ -99,7 +99,7 @@ public static class HarmonyExt
             postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPostfix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPostfix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPostfix(this HarmonyLib.Harmony harmonyInstance, Type classToPatch,
         int constructorIndex, Type myPatchClass, string myPatchMethod)
     {
@@ -108,7 +108,7 @@ public static class HarmonyExt
             postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPostfix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPostfix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPostfix<TClassToPatch, TMyPatchClass>(this HarmonyLib.Harmony harmonyInstance,
         string methodToPatch, string myPatchMethod)
     {
@@ -119,7 +119,7 @@ public static class HarmonyExt
             postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPostfix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPostfix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPostfix(this HarmonyLib.Harmony harmonyInstance, Type classToPatch,
         string methodToPatch, Type myPatchClass, string myPatchMethod)
     {
@@ -128,7 +128,7 @@ public static class HarmonyExt
             postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPostfix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPostfix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPostfix<TClassToPatch, TMyPatchClass>(this HarmonyLib.Harmony harmonyInstance,
         string methodToPatch, int methodOverloadIndex, string myPatchMethod)
     {
@@ -139,7 +139,7 @@ public static class HarmonyExt
             postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPostfix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPostfix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPostfix(this HarmonyLib.Harmony harmonyInstance, Type classToPatch,
         string methodToPatch, int methodOverloadIndex, Type myPatchClass, string myPatchMethod)
     {
@@ -148,7 +148,7 @@ public static class HarmonyExt
             postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPostfix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPostfix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPostfix(this HarmonyLib.Harmony harmonyInstance, MethodInfo methodToPatch,
         Type myPatchClass, string myPatchMethod)
     {
@@ -156,7 +156,7 @@ public static class HarmonyExt
             postfix: new HarmonyMethod(AccessTools.Method(myPatchClass, myPatchMethod)));
     }
 
-    /// <inheritdoc cref="PatchPostfix(HarmonyLib.Harmony,System.Type,int,System.Type,string)"/>
+    /// <inheritdoc cref="PatchPostfix{TClassToPatch,TMyPatchClass}(HarmonyLib.Harmony,int,string)"/>
     public static void PatchPostfix(this HarmonyLib.Harmony harmonyInstance, MethodInfo methodToPatch,
         MethodInfo myPatchMethod)
     {

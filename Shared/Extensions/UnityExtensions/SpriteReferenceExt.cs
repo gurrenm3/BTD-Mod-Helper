@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class SpriteReferenceExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Returns's the GUID of this SpriteReference
+    /// Returns's the GUID of this SpriteReference
     /// </summary>
     /// <param name="spriteReference"></param>
     /// <returns></returns>

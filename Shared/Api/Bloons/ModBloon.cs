@@ -24,6 +24,7 @@ public abstract partial class ModBloon : NamedModContent
     /// <summary>
     /// ModBloons with a BaseModBloon need to register after their base
     /// </summary>
+    /// <exclude/>
     protected override float RegistrationPriority => (BaseModBloon?.RegistrationPriority ?? 5) + 1;
 
     /// <inheritdoc />
@@ -66,8 +67,7 @@ public abstract partial class ModBloon : NamedModContent
     internal BloonModel bloonModel;
 
 
-    /// <inheritdoc />
-    protected internal override string ID => KeepBaseId
+    private protected override string ID => KeepBaseId
         ? BloonModelUtils.ConstructBloonId(BaseBloon, Camo, Regrow, Fortified)
         : base.ID;
 

@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class BloonsModExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Get the name of this mod from it's dll name
+    /// Get the name of this mod from it's dll name
     /// </summary>
     public static string GetModName(this BloonsMod bloonsMod)
     {
@@ -17,7 +17,7 @@ public static class BloonsModExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+    /// Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
@@ -27,7 +27,7 @@ public static class BloonsModExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+    /// Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
@@ -40,7 +40,7 @@ public static class BloonsModExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+    /// Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
@@ -50,7 +50,7 @@ public static class BloonsModExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+    /// Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>

@@ -9,6 +9,7 @@ namespace BTD_Mod_Helper;
 /// This class is used in the API to store data about the current state of the game,
 /// like whether or not the player is in a Public Coop game
 /// </summary>
+/// <exclude/>
 public partial class SessionData
 {
     /// <summary>

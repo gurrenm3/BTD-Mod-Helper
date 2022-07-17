@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class Texture2DExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Returns a new Image made out of this Texture.
+    /// Returns a new Image made out of this Texture.
     /// </summary>
     /// <param name="texture2D"></param>
     /// <returns></returns>
@@ -26,7 +26,7 @@ public static class Texture2DExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Create Texture2D from a unity Color. Texture will only be this color
+    /// Create Texture2D from a unity Color. Texture will only be this color
     /// </summary>
     /// <param name="texture2D"></param>
     /// <param name="color">Color to make new texture</param>
@@ -39,7 +39,7 @@ public static class Texture2DExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Save Texture2D as a png to file.
+    /// Save Texture2D as a png to file.
     /// </summary>
     /// <param name="texture"></param>
     /// <param name="filePath">File path to save texture to</param>
@@ -76,7 +76,7 @@ public static class Texture2DExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Create Texture2D from a file on local PC
+    /// Create Texture2D from a file on local PC
     /// </summary>
     /// <param name="texture"></param>
     /// <param name="filePath">path of file on PC</param>
@@ -87,7 +87,7 @@ public static class Texture2DExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Create a Sprite from this Texture2D
+    /// Create a Sprite from this Texture2D
     /// </summary>
     /// <param name="texture2D"></param>
     /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
@@ -97,7 +97,7 @@ public static class Texture2DExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Create a Sprite from this Texture2D
+    /// Create a Sprite from this Texture2D
     /// </summary>
     /// <param name="texture2D"></param>
     /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>

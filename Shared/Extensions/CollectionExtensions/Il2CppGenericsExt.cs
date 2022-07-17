@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class Il2CppGenericsExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return as System.List
+    /// Return as System.List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
@@ -26,7 +26,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as an Array
+    /// Return as an Array
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
@@ -45,7 +45,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as Il2CppReferenceArray
+    /// Return as Il2CppReferenceArray
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
@@ -56,7 +56,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return as LockList
+    /// Return as LockList
     /// </summary>
     public static LockList<T> ToLockList<T>(this List<T> il2CppList)
     {
@@ -68,7 +68,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return a duplicate of this List
+    /// Return a duplicate of this List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
@@ -83,7 +83,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return a duplicate of this list as type TCast
+    /// Return a duplicate of this list as type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast"></typeparam>
@@ -101,7 +101,7 @@ public static partial class Il2CppGenericsExt
 
 
     /// <summary>
-    /// (Cross-Game compatible) Check if this has any items of type TCast
+    /// Check if this has any items of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type you're checking for</typeparam>
@@ -114,7 +114,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the first item of type TCast
+    /// Return the first item of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want</typeparam>
@@ -127,7 +127,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return all Items of type TCast
+    /// Return all Items of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Items you want</typeparam>
@@ -140,7 +140,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+    /// Return this with the first Item of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
@@ -155,7 +155,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with the first Item of type TCast removed
+    /// Return this with the first Item of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
@@ -174,7 +174,7 @@ public static partial class Il2CppGenericsExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return this with all Items of type TCast removed
+    /// Return this with all Items of type TCast removed
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>

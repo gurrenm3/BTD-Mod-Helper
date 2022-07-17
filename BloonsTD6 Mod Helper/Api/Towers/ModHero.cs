@@ -5,13 +5,11 @@ using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Data.Global;
-using Assets.Scripts.Data;
-using System;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
-/// 
+/// Class for adding a custom Hero to the game. Use alongside <see cref="ModHeroLevel"/> to give multiple levels.
 /// </summary>
 public abstract class ModHero : ModTower
 {
@@ -26,14 +24,14 @@ public abstract class ModHero : ModTower
     public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
     {
         base.RegisterText(textTable);
-            
+
         textTable[Id + " Short Description"] = Title;
         textTable[Id + " Level 1 Description"] = Level1Description;
     }
 
     internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
     {
-        "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands", 
+        "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands",
         "Scholarships", "SelfTaughtHeroes", "WeakPoint"
     }).ToArray();
 
@@ -48,12 +46,7 @@ public abstract class ModHero : ModTower
     /// No paragon heroes
     /// </summary>
     public sealed override ParagonMode ParagonMode => ParagonMode.None;
-
-    /// <summary>
-    /// No Order among different custom heroes
-    /// </summary>
-    public sealed override int Order => base.Order;
-
+    
     /// <summary>
     /// The default hero (or tower) to base your hero off of
     /// </summary>
@@ -85,10 +78,11 @@ public abstract class ModHero : ModTower
     /// <returns></returns>
     public sealed override IEnumerable<int[]> TowerTiers()
     {
-        yield return new[] { 0, 0, 0 };
+        yield return new[] {0, 0, 0};
+
         for (var i = 2; i <= MaxLevel; i++)
         {
-            yield return new[] { i, 0, 0 };
+            yield return new[] {i, 0, 0};
         }
     }
 
@@ -100,6 +94,7 @@ public abstract class ModHero : ModTower
             // Unrelated to the actual XpRatio weirdly enough
             baseTowerModel.AddBehavior(new HeroModel($"HeroModel_{Name}", 1.0f, 1.0f));
         }
+
         return baseTowerModel;
     }
 
@@ -110,6 +105,7 @@ public abstract class ModHero : ModTower
         {
             id += " " + tiers[0];
         }
+
         return id;
     }
 
@@ -117,12 +113,12 @@ public abstract class ModHero : ModTower
     /// The other hero that has the same colored name in the Heroes menu as you want to use
     /// </summary>
     public virtual string NameStyle => TowerType.Ezili;
-        
+
     /// <summary>
     /// The other hero that has the same glow color in the Heroes menu as you want to use
     /// </summary>
     public virtual string GlowStyle => TowerType.Ezili;
-        
+
     /// <summary>
     /// The other hero that has the same background color in the Heroes menu as you want to use
     /// </summary>
@@ -137,7 +133,7 @@ public abstract class ModHero : ModTower
     /// The exact sprite reference used for the button
     /// </summary>
     public virtual SpriteReference ButtonReference => GetSpriteReference(Button);
-        
+
     /// <summary>
     /// The name of the png to try to find for the new hero select screen button
     /// </summary>
@@ -147,20 +143,6 @@ public abstract class ModHero : ModTower
     /// The SpriteReference for this hero's Square icon in the new revamped HeroScreen
     /// </summary>
     public virtual SpriteReference SquareReference => GetSpriteReference(Square);
-
-    /// <summary>
-    /// If you want your hero to have multiple portraits in the select screen, mess with this
-    /// <br/>
-    /// The string must be a number (blame nk for not making it accept a int) and controls what level the portrait is for
-    /// <br/>
-    /// The SpriteReference is the actual image that will be displayed
-    /// </summary>
-    public virtual Dictionary<string,SpriteReference>SelectScreenPortraits=>new Dictionary<string,SpriteReference>(){
-        {"0",PortraitReference},
-        {"5",PortraitReference},
-        {"10",PortraitReference},
-        {"20",PortraitReference}
-    };
 
     /// <summary>
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
@@ -185,12 +167,12 @@ public abstract class ModHero : ModTower
     /// The short description that appears under the name of the hero
     /// </summary>
     public abstract string Title { get; }
-        
+
     /// <summary>
     /// The description to use for the first level of your hero
     /// </summary>
     public abstract string Level1Description { get; }
-        
+
     /// <summary>
     /// The total number of abilities that this hero has as max level
     /// </summary>
@@ -204,11 +186,6 @@ public abstract class ModHero : ModTower
     public virtual void ModifyHeroSprite(HeroSprite heroSprite)
     {
     }
-
-    /// <summary>
-    /// Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to play
-    /// </summary>
-    public virtual string SelectSound=>"";
 
     /// <summary>
     /// The index to add this hero at in relation to other heroes

@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 public partial class CostHelper
 {
     /// <summary>
-    /// (Cross-Game compatible) Scales a base (medium) cost to the given difficulty
+    /// Scales a base (medium) cost to the given difficulty
     /// </summary>
     public static int CostForDifficulty(int cost, string difficulty)
     {
@@ -26,7 +26,7 @@ public partial class CostHelper
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Applies a multiplier to a cost and rounds it
+    /// Applies a multiplier to a cost and rounds it
     /// </summary>
     public static int CostForDifficulty(int cost, float multiplier)
     {

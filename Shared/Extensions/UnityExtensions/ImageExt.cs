@@ -6,7 +6,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class ImageExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Saves an image as a PNG files
+    /// Saves an image as a PNG files
     /// Coded in a robust manner that should work for all images, including those with multiple sprites on them being used
     /// </summary>
     /// <param name="image"></param>
@@ -27,7 +27,7 @@ public static partial class ImageExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Set the sprite for this image
+    /// Set the sprite for this image
     /// </summary>
     /// <param name="image"></param>
     /// <param name="sprite">Sprite to change image to</param>

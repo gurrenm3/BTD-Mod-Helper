@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class DictionaryExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Get all of the values from this Dictionary as a list
+    /// Get all of the values from this Dictionary as a list
     /// </summary>
     public static List<TValue> GetValues<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs) where TKey : notnull
     {

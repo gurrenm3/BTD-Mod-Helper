@@ -3,7 +3,7 @@ using Assets.Scripts.Utils;
 using System.IO;
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Extensions.DisplayNodeExtensions;
+namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Extension for dumping textures from UnityDisplayNodes

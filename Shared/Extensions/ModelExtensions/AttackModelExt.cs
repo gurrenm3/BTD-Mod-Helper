@@ -24,7 +24,7 @@ namespace BTD_Mod_Helper.Extensions
     public static class AttackModelExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Add a weapon to this Attack Model
+        /// Add a weapon to this Attack Model
         /// </summary>
         /// <param name="attackModel"></param>
         /// <param name="weaponToAdd">Weapon to add</param>
@@ -32,7 +32,7 @@ namespace BTD_Mod_Helper.Extensions
             attackModel.weapons = attackModel.weapons.AddTo(weaponToAdd);
 
         /// <summary>
-        /// (Cross-Game compatible) Remove a weapon from this Attack Model
+        /// Remove a weapon from this Attack Model
         /// </summary>
         /// <param name="attackModel"></param>
         /// <param name="weaponToRemove"></param>
@@ -40,7 +40,7 @@ namespace BTD_Mod_Helper.Extensions
             attackModel.weapons = attackModel.weapons.RemoveItem(weaponToRemove);
 
         /// <summary>
-        /// (Cross-Game compatible) Recursively get all ProjectileModels for this attack model and all of it's weapons
+        /// Recursively get all ProjectileModels for this attack model and all of it's weapons
         /// </summary>
         /// <param name="attackModel"></param>
         /// <returns></returns>

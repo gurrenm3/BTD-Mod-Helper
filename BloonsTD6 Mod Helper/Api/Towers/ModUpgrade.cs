@@ -22,6 +22,7 @@ public abstract class ModUpgrade : NamedModContent
     /// <summary>
     /// ModUpgrades register second
     /// </summary>
+    /// <exclude/>
     protected sealed override float RegistrationPriority => 2;
 
     /// <inheritdoc />

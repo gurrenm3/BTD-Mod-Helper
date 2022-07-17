@@ -31,6 +31,7 @@ public abstract partial class ModTower
     /// <summary>
     /// Constructor for ModTower, used implicitly by ModContent.Create
     /// </summary>
+    /// <exclude/>
     protected ModTower()
     {
         Init(out upgrades, out tierMaxes);
@@ -71,7 +72,6 @@ public abstract partial class ModTower
     /// <br/>
     /// Starts with the <see cref="BaseTower"/>, modifies its default properties as needed,
     /// then calls <see cref="ModifyBaseTowerModel"/> on it.
-    /// 
     /// </summary>
     /// <returns>The 0-0-0 TowerModel for this Tower</returns>
     internal virtual TowerModel GetDefaultTowerModel()

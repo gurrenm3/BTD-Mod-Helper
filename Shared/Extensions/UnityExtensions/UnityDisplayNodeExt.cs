@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class UnityDisplayNodeExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Get all 3D models attached to this UnityDisplayNode. 
+    /// Get all 3D models attached to this UnityDisplayNode. 
     /// </summary>
     /// <param name="unityDisplayNode"></param>
     /// <returns></returns>
@@ -23,7 +23,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets the first generic renderer of the specified type, recalculating the renderers if need be
+    /// Gets the first generic renderer of the specified type, recalculating the renderers if need be
     /// </summary>
     /// <param name="node">The UnityDisplayNode</param>
     /// <param name="recalculate">Whether to recalculate renderers</param>
@@ -36,7 +36,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets all generic renderers on this UnityDisplayNode, recalculating the renderers if need be
+    /// Gets all generic renderers on this UnityDisplayNode, recalculating the renderers if need be
     /// </summary>
     /// <param name="node">The UnityDisplayNode</param>
     /// <param name="recalculate">Whether to recalculate renderers</param>
@@ -65,7 +65,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets all generic renderers of the specified type, recalculating the renderers if need be
+    /// Gets all generic renderers of the specified type, recalculating the renderers if need be
     /// </summary>
     /// <param name="node">The UnityDisplayNode</param>
     /// <param name="recalculate">Whether to recalculate renderers</param>
@@ -95,7 +95,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets the first (or an indexed) SkinnedMeshRenderer/MeshRenderer
+    /// Gets the first (or an indexed) SkinnedMeshRenderer/MeshRenderer
     /// </summary>
     /// <param name="node"></param>
     /// <param name="index"></param>
@@ -107,7 +107,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets all renderers that are of type SkinnedMeshRenderer or MeshRenderer
+    /// Gets all renderers that are of type SkinnedMeshRenderer or MeshRenderer
     /// </summary>
     /// <param name="node"></param>
     /// <param name="recalculate"></param>
@@ -141,9 +141,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Prints relevant info about this node to the console including:
-    /// <br/>
-    /// 
+    /// Prints relevant info about this node to the console
     /// </summary>
     /// <param name="node"></param>
     public static void PrintInfo(this UnityDisplayNode node)
@@ -181,7 +179,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Removes (hides) a given bone
+    /// Removes (hides) a given bone
     /// </summary>
     public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string boneName,
         bool alreadyUnbound = false)
@@ -191,7 +189,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Gets the transform associated with the given bone
+    /// Gets the transform associated with the given bone
     /// </summary>
     public static Transform GetBone(this UnityDisplayNode unityDisplayNode, string boneName)
     {
@@ -199,7 +197,7 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Saves the texture used for this node's mesh renderer 
+    /// Saves the texture used for this node's mesh renderer 
     /// <br/>
     /// By default, this saves to local files, aka "C:\Users\...\AppData\LocalLow\Ninja Kiwi\BloonsTD6"
     /// </summary>

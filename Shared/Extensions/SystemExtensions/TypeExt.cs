@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class TypeExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Get all methods with the specified method name
+    /// Get all methods with the specified method name
     /// </summary>
     /// <param name="type"></param>
     /// <param name="methodName"></param>

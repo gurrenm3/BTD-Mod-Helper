@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class Il2CppGenericIEnumerable
 {
     /// <summary>
-    /// (Cross-Game compatible) Performs the specified action on each element
+    /// Performs the specified action on each element
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -22,7 +22,7 @@ public static class Il2CppGenericIEnumerable
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return whether or not there are any elements in this
+    /// Return whether or not there are any elements in this
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -36,7 +36,7 @@ public static class Il2CppGenericIEnumerable
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return whether or not there are any elements in this that match the predicate
+    /// Return whether or not there are any elements in this that match the predicate
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -55,7 +55,7 @@ public static class Il2CppGenericIEnumerable
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the last item in the collection
+    /// Return the last item in the collection
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -73,7 +73,7 @@ public static class Il2CppGenericIEnumerable
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the last item in the collection that meets the condition, or return default
+    /// Return the last item in the collection that meets the condition, or return default
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -95,7 +95,7 @@ public static class Il2CppGenericIEnumerable
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the first element in the collection
+    /// Return the first element in the collection
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -113,7 +113,7 @@ public static class Il2CppGenericIEnumerable
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the first element in the collection, or return default if it's null
+    /// Return the first element in the collection, or return default if it's null
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
@@ -133,7 +133,7 @@ public static class Il2CppGenericIEnumerable
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the first element that matches the predicate, or return default
+    /// Return the first element that matches the predicate, or return default
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>

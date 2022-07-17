@@ -13,7 +13,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class LocalizationManagerExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Returns the text table that is currently in use.
+    /// Returns the text table that is currently in use.
     /// </summary>
     /// <param name="localization"></param>
     /// <returns></returns>

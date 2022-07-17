@@ -20,7 +20,7 @@ namespace BTD_Mod_Helper.Extensions
     public static partial class ProjectileModelExt
     {
         /// <summary>
-        /// (Cross-Game compatible) Get the DamageModel behavior from the list of behaviors
+        /// Get the DamageModel behavior from the list of behaviors
         /// </summary>
         public static DamageModel GetDamageModel(this ProjectileModel projectileModel)
         {
@@ -28,7 +28,7 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// (Cross-Game compatible) Get all Projectile Simulations that have this ProjectileModel
+        /// Get all Projectile Simulations that have this ProjectileModel
         /// </summary>
         public static List<Projectile> GetProjectileSims(this ProjectileModel projectileModel)
         {

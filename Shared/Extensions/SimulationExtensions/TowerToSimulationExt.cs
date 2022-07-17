@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class TowerToSimulationExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return the Tower associated with this TowerToSimulation
+    /// Return the Tower associated with this TowerToSimulation
     /// </summary>
     /// <param name="towerToSim"></param>
     /// <returns></returns>

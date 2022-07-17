@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class Il2CppStringArrayExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return this with an Item added to it
+    /// Return this with an Item added to it
     /// </summary>
     /// <param name="array"></param>
     /// <param name="itemToAdd"></param>

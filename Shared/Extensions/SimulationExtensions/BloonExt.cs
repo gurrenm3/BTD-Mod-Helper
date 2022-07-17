@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class BloonExt
 {
     /// <summary>
-    /// (Cross-Game compatible) Return the DisplayNode for this bloon
+    /// Return the DisplayNode for this bloon
     /// </summary>
     /// <returns></returns>
     public static DisplayNode GetDisplayNode(this Bloon bloon)
@@ -20,7 +20,7 @@ public static partial class BloonExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
+    /// Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
@@ -30,7 +30,7 @@ public static partial class BloonExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically destroyed when this Bloon is destroyed
+    /// Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically destroyed when this Bloon is destroyed
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
@@ -58,7 +58,7 @@ public static partial class BloonExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the Id of this Bloon
+    /// Return the Id of this Bloon
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
@@ -72,7 +72,7 @@ public static partial class BloonExt
     }
 
     /// <summary>
-    /// (Cross-Game compatible) Return the Factory that creates Bloons
+    /// Return the Factory that creates Bloons
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
