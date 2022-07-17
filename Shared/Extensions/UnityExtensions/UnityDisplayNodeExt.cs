@@ -43,25 +43,12 @@ public static partial class UnityDisplayNodeExt
     /// <returns></returns>
     public static List<Renderer> GetRenderers(this UnityDisplayNode node, bool recalculate = true)
     {
-        var renderers = new List<Renderer>();
-
-#if BloonsTD6
-        if (node.genericRenderers == null)
-        {
-            renderers = node.GetComponents<Renderer>().ToList();
-            if (renderers.Count == 0)
-                return new List<Renderer>();
-        }
-
-        if (recalculate && node.genericRenderers![0] == null)
+        if (recalculate && (node.genericRenderers == null || node.genericRenderers.Any(renderer => renderer == null)))
         {
             node.RecalculateGenericRenderers();
         }
-#elif BloonsAT
-            renderers = node.GetComponents<Renderer>().ToList();
-#endif
 
-        return renderers;
+        return node.genericRenderers.ToList();
     }
 
     /// <summary>
@@ -73,25 +60,7 @@ public static partial class UnityDisplayNodeExt
     /// <returns></returns>
     public static List<T> GetRenderers<T>(this UnityDisplayNode node, bool recalculate = true) where T : Renderer
     {
-        var renderers = new List<Renderer>();
-
-#if BloonsTD6
-        if (node.genericRenderers == null)
-        {
-            renderers = node.GetComponents<Renderer>().ToList();
-            if (renderers.Count == 0)
-                return new List<T>();
-        }
-
-        if (recalculate && node.genericRenderers![0] == null)
-        {
-            node.RecalculateGenericRenderers();
-        }
-#elif BloonsAT
-            renderers = node.GetComponents<Renderer>().ToList();
-#endif
-
-        return renderers.GetItemsOfType<Renderer, T>();
+        return node.GetRenderers(recalculate).GetItemsOfType<Renderer, T>();
     }
 
     /// <summary>
@@ -103,7 +72,7 @@ public static partial class UnityDisplayNodeExt
     /// <returns></returns>
     public static Renderer GetMeshRenderer(this UnityDisplayNode node, int index = 0, bool recalculate = true)
     {
-        return node.GetMeshRenderers()[index];
+        return node.GetMeshRenderers(recalculate)[index];
     }
 
     /// <summary>
@@ -114,30 +83,9 @@ public static partial class UnityDisplayNodeExt
     /// <returns></returns>
     public static List<Renderer> GetMeshRenderers(this UnityDisplayNode node, bool recalculate = true)
     {
-        List<Renderer> renderers = new List<Renderer>();
-
-#if BloonsTD6
-        if (node.genericRenderers == null)
-        {
-            renderers = node.GetComponents<Renderer>().ToList();
-            if (renderers.Count == 0)
-                return new List<Renderer>();
-        }
-        else
-        {
-            renderers = node.genericRenderers.ToList();
-
-            if (recalculate && renderers.Any(renderer => renderer == null))
-            {
-                node.RecalculateGenericRenderers();
-            }
-        }
-#elif BloonsAT
-            renderers = node.GetComponents<Renderer>().ToList();
-#endif
-
-        return renderers.Where(nodeGenericRenderer => nodeGenericRenderer.IsType<SkinnedMeshRenderer>() ||
-                                                      nodeGenericRenderer.IsType<MeshRenderer>()).ToList();
+        return node.GetRenderers(recalculate)
+            .Where(nodeGenericRenderer => nodeGenericRenderer.IsType<SkinnedMeshRenderer>() ||
+                                          nodeGenericRenderer.IsType<MeshRenderer>()).ToList();
     }
 
     /// <summary>

@@ -39,7 +39,7 @@ public static partial class Il2CppReferenceArrayExt
     /// </summary>
     public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
     {
-        return new List<T>(referenceArray);
+        return referenceArray != null ? new List<T>(referenceArray) : null;
     }
 
     /// <summary>
