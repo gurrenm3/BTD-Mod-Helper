@@ -145,6 +145,20 @@ public abstract class ModHero : ModTower
     public virtual SpriteReference SquareReference => GetSpriteReference(Square);
 
     /// <summary>
+    /// If you want your hero to have multiple portraits in the select screen, mess with this
+    /// <br/>
+    /// The string must be a number (blame nk for not making it accept a int) and controls what level the portrait is for
+    /// <br/>
+    /// The SpriteReference is the actual image that will be displayed
+    /// </summary>
+    public virtual Dictionary<string,SpriteReference>SelectScreenPortraits=>new Dictionary<string,SpriteReference>(){
+        {"0",PortraitReference},
+        {"5",PortraitReference},
+        {"10",PortraitReference},
+        {"20",PortraitReference}
+    };
+
+    /// <summary>
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
     /// that you've actually created for your Hero.
     /// </summary>
@@ -186,6 +200,11 @@ public abstract class ModHero : ModTower
     public virtual void ModifyHeroSprite(HeroSprite heroSprite)
     {
     }
+
+    /// <summary>
+    /// Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to play
+    /// </summary>
+    public virtual string SelectSound=>"";
 
     /// <summary>
     /// The index to add this hero at in relation to other heroes

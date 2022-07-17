@@ -267,17 +267,15 @@ internal static partial class ModTowerHelper
             var heroDetailsModel =
                 new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, null, false);
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
-
-            var skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.SquareReference,
+            SkinModel skinModel=new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.SquareReference,
                 modHero.Id, modHero.Id + " Short Description", modHero.Id + " Description", 0, true,
                 new Il2CppReferenceArray<SwapTowerSpriteModel>(0),
                 new Il2CppReferenceArray<SwapTowerGraphicModel>(0),
                 new Il2CppReferenceArray<SwapTowerSoundModel>(0),
                 new Il2CppReferenceArray<SwapTowerOverlayModel>(0), "Quincy",
-                new Il2CppReferenceArray<SpriteReference>(new[] {modHero.PortraitReference}),
-                new Il2CppStringArray(0), new SoundModel("BlankSoundModel_", ""),
-                new SoundModel("BlankSoundModel_", ""));
-
+                new Il2CppReferenceArray<SpriteReference>(modHero.SelectScreenPortraits.Values.ToArray()),
+                new Il2CppStringArray(modHero.SelectScreenPortraits.Keys.ToArray()),
+                new SoundModel("BlankSoundModel_", ""),new SoundModel("SoundModel", modHero.SelectSound));
             Game.instance.model.skins = Game.instance.model.skins.AddTo(skinModel);
         }
     }
