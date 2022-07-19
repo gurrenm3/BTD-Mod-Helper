@@ -178,6 +178,7 @@ internal static partial class ModTowerHelper
             }
         }
 
+        towerModel.GenerateDescendentNames();
 
         if (modTower.ShouldCreateParagon && towerModel.isParagon)
         {

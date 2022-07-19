@@ -151,50 +151,58 @@ public static void RemoveBloonGroup(this Assets.Scripts.Models.Rounds.RoundModel
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string)'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string,bool)'></a>
 
-## RoundModelExt.ReplaceBloonInGroups(this RoundModel, string, string) Method
+## RoundModelExt.ReplaceBloonInGroups(this RoundModel, string, string, bool) Method
 
 Replaces BloonGroups of a certain bloonId with ones for a new Id
 
 ```csharp
-public static void ReplaceBloonInGroups(this Assets.Scripts.Models.Rounds.RoundModel roundModel, string oldBloonId, string newBloonId);
+public static void ReplaceBloonInGroups(this Assets.Scripts.Models.Rounds.RoundModel roundModel, string oldBloonId, string newBloonId, bool byBaseId=false);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string).roundModel'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string,bool).roundModel'></a>
 
 `roundModel` [Assets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.RoundModel 'Assets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string).oldBloonId'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string,bool).oldBloonId'></a>
 
 `oldBloonId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string).newBloonId'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string,bool).newBloonId'></a>
 
 `newBloonId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string)'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisAssets.Scripts.Models.Rounds.RoundModel,string,string,bool).byBaseId'></a>
 
-## RoundModelExt.ReplaceBloonInGroups<T>(this RoundModel, string) Method
+`byBaseId` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string,bool)'></a>
+
+## RoundModelExt.ReplaceBloonInGroups<T>(this RoundModel, string, bool) Method
 
 Replaces BloonGroups of a certain bloonId with ones for a new Id
 
 ```csharp
-public static void ReplaceBloonInGroups<T>(this Assets.Scripts.Models.Rounds.RoundModel roundModel, string oldBloonId)
+public static void ReplaceBloonInGroups<T>(this Assets.Scripts.Models.Rounds.RoundModel roundModel, string oldBloonId, bool byBaseId=false)
     where T : BTD_Mod_Helper.Api.Bloons.ModBloon;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string).T'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string,bool).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string).roundModel'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string,bool).roundModel'></a>
 
 `roundModel` [Assets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.RoundModel 'Assets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string).oldBloonId'></a>
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string,bool).oldBloonId'></a>
 
 `oldBloonId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups_T_(thisAssets.Scripts.Models.Rounds.RoundModel,string,bool).byBaseId'></a>
+
+`byBaseId` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

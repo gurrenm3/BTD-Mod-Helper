@@ -1062,6 +1062,34 @@ The ModUpgrade type
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 The upgrade name/id
 
+<a name='BTD_Mod_Helper.Api.ModContent.TryFind_T_(string,T)'></a>
+
+## ModContent.TryFind<T>(string, T) Method
+
+Finds the loaded ModContent with the given Id and type T
+
+```csharp
+public static bool TryFind<T>(string id, out T result)
+    where T : BTD_Mod_Helper.Api.ModContent;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.TryFind_T_(string,T).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.TryFind_T_(string,T).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModContent.TryFind_T_(string,T).result'></a>
+
+`result` [T](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.TryFind_T_(string,T).T 'BTD_Mod_Helper.Api.ModContent.TryFind<T>(string, T).T')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModContent.UpgradeID_T_()'></a>
 
 ## ModContent.UpgradeID<T>() Method

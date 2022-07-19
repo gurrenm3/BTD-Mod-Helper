@@ -139,6 +139,7 @@ namespace BTD_Mod_Helper.Api
                 {
                     modContent.mod = instance.mod;
                 }
+
                 ModContentInstances.SetInstances(type, instances);
             }
             catch (Exception e)
@@ -147,7 +148,7 @@ namespace BTD_Mod_Helper.Api
                     $"Failed loading instances of type {type.Name} for mod {type.Assembly.GetName().Name}");
                 ModHelper.Error(e);
             }
-            
+
             return instances;
         }
 
@@ -560,6 +561,13 @@ namespace BTD_Mod_Helper.Api
                 ModBloon.Cache.TryGetValue(id, out var modBloon)) return modBloon as T;
 
             return GetContent<T>().FirstOrDefault(content => content.Id == id);
+        }
+
+        /// <inheritdoc cref="Find{T}"/>
+        public static bool TryFind<T>(string id, out T result) where T : ModContent
+        {
+            result = Find<T>(id);
+            return result != default;
         }
     }
 }

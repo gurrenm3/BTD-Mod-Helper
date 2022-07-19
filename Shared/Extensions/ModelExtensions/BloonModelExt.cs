@@ -71,6 +71,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (InGame.instance == null)
                 return;
+
             var spawner = InGame.instance.GetMap().spawner;
 
 #if BloonsTD6
@@ -120,6 +121,7 @@ namespace BTD_Mod_Helper.Extensions
             {
                 return null;
             }
+
             var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
                 return null;
@@ -438,19 +440,23 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="bloonModel"></param>
         /// <param name="change"></param>
-        public static string FindChangedBloonId(this BloonModel bloonModel, Action<BloonModel> change)
+        /// <param name="id"></param>
+        public static bool FindChangedBloonId(this BloonModel bloonModel, Action<BloonModel> change, out string id)
         {
             var bloon = bloonModel.Duplicate();
 
             change(bloon);
 
-            return Game.instance.model.bloons
+            id = Game.instance.model.bloons
                 .Where(model =>
                     model.GetBaseID() == bloon.GetBaseID() &&
                     model.IsCamoBloon() == bloon.IsCamoBloon() &&
                     model.IsRegrowBloon() == bloon.IsRegrowBloon() &&
-                    model.IsFortifiedBloon() == bloon.IsFortifiedBloon())
+                    model.IsFortifiedBloon() == bloon.IsFortifiedBloon()
+                )
                 .Select(model => model.id).FirstOrDefault();
+
+            return id != null;
         }
 
         private static void MakeChildrenSomething(this BloonModel bloonModel, Action<BloonModel> effect)
@@ -461,8 +467,7 @@ namespace BTD_Mod_Helper.Extensions
                 for (var i = 0; i < spawnChildrenModel.children.Count; i++)
                 {
                     var current = spawnChildrenModel.children[i];
-                    var newBloon = Game.instance.model.GetBloon(current).FindChangedBloonId(effect);
-                    if (newBloon != null)
+                    if (Game.instance.model.GetBloon(current).FindChangedBloonId(effect, out var newBloon))
                     {
                         spawnChildrenModel.children[i] = newBloon;
                     }
@@ -473,8 +478,7 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             if (!string.IsNullOrEmpty(growModel?.growToId))
             {
-                var newBloon = Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect);
-                if (newBloon != null)
+                if (Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect, out var newBloon))
                 {
                     growModel.growToId = newBloon;
                 }
@@ -482,9 +486,8 @@ namespace BTD_Mod_Helper.Extensions
 #elif BloonsAT
             // need to implement for BATTD.
             // Need to figure out how to check for "growModel.growToId" in BATTD
-            throw new NotImplementedException(); 
+            throw new NotImplementedException();
 #endif
-
         }
 
         /// <summary>

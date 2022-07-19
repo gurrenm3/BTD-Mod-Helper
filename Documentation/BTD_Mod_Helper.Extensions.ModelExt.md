@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## ModelExt.Duplicate<T>(this T) Method
 
-Create a new and seperate copy of this object. Same as using:  .Clone().Cast();
+Create a new and separate copy of this object. Same as using:  .Clone().Cast();
 
 ```csharp
 public static T Duplicate<T>(this T model)

@@ -132,27 +132,31 @@ Space between each bloon in this emission model
 #### Returns
 [UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_)'></a>
+<a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_,string)'></a>
 
-## BloonModelExt.FindChangedBloonId(this BloonModel, Action<BloonModel>) Method
+## BloonModelExt.FindChangedBloonId(this BloonModel, Action<BloonModel>, string) Method
 
 Finds the id for a bloon that has the properties of this bloonModel, or null if there isn't one
 
 ```csharp
-public static string FindChangedBloonId(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, System.Action<Assets.Scripts.Models.Bloons.BloonModel> change);
+public static bool FindChangedBloonId(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, System.Action<Assets.Scripts.Models.Bloons.BloonModel> change, out string id);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_).bloonModel'></a>
+<a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_,string).bloonModel'></a>
 
 `bloonModel` [Assets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.BloonModel 'Assets.Scripts.Models.Bloons.BloonModel')
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_).change'></a>
+<a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_,string).change'></a>
 
 `change` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Assets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.BloonModel 'Assets.Scripts.Models.Bloons.BloonModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 
+<a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_,string).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 #### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.BloonModelExt.GetAllBloonToSim(thisAssets.Scripts.Models.Bloons.BloonModel)'></a>
 

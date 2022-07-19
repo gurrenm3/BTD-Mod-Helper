@@ -44,7 +44,9 @@ public abstract partial class ModBloon : NamedModContent
 #if BloonsTD6
         bloonModel.updateChildBloonModels = true;
 #endif
-
+        
+        bloonModel.GenerateDescendentNames();
+        
         displays.FirstOrDefault(display => display.Damage == 0)?.Apply(bloonModel);
         var damageDisplays = displays
             .Where(display => display.Damage > 0)

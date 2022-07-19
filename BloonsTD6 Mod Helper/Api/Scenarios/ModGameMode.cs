@@ -72,6 +72,8 @@ public abstract class ModGameMode : NamedModContent
             ModHelper.Error($"Failed to modify base GameMode for {Id}");
             throw;
         }
+        
+        model.GenerateDescendentNames();
 
         try
         {
