@@ -211,7 +211,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModName.Text.SetText(modSelected.DisplayName);
         selectedModAuthor.Text.SetText(modSelected.Author ?? modSelected.RepoOwner);
         selectedModVersion.Text.SetText("v" + modSelected.Version);
-        selectedModDescription.Text.SetText(modSelected.Description ?? DefaultDescription);
+        selectedModDescription.Text.SetText(modSelected.DisplayDescription);
 
         selectedModAuthor.Text.SetFaceColor(BlatantFavoritism.GetColor(modSelected.RepoOwner));
 

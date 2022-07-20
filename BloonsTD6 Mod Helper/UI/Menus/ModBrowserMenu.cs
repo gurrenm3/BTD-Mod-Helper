@@ -44,12 +44,12 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
-    public override bool OnMenuOpened(Object data)
+    public override bool OnMenuOpened(Object obj)
     {
         ModifyExistingElements();
         AddNewElements();
 
-        currentMods = ModHelperGithub.Mods;
+        currentMods = ModHelperGithub.VisibleMods.ToList();
         UpdateModList();
 
         return false;

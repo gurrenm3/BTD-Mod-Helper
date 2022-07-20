@@ -36,6 +36,19 @@ public ModSettingEnum(T value);
 `value` [T](BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.md#BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.T 'BTD_Mod_Helper.Api.ModOptions.ModSettingEnum<T>.T')
 ### Fields
 
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.labelFunction'></a>
+
+## ModSettingEnum<T>.labelFunction Field
+
+A function to apply to each enum value to get the label for it
+
+```csharp
+public Func<T,string> labelFunction;
+```
+
+#### Field Value
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.md#BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.T 'BTD_Mod_Helper.Api.ModOptions.ModSettingEnum<T>.T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.modifyDropdown'></a>
 
 ## ModSettingEnum<T>.modifyDropdown Field

@@ -29,7 +29,7 @@ internal partial class ModHelperData
     private const string ZipRegex = "\\bZipName\\s*=\\s*\"(.+)\\.zip\";?[\n\r]+";
     private const string AuthorRegex = "\\bAuthor\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string SubPathRegex = "\\bSubPath\\s*=\\s*\"(.+)\";?[\n\r]+";
-    
+
     private static readonly Dictionary<string, MethodInfo> Setters;
     private static readonly Dictionary<string, MethodInfo> Getters;
 
@@ -65,27 +65,30 @@ internal partial class ModHelperData
         }
     }
 
-    private void ReadValuesFromString(string data)
+    private void ReadValuesFromString(string data, bool allowRepo = true)
     {
         Version = GetRegexMatch<string>(data, VersionRegex)!;
         Name = GetRegexMatch<string>(data, NameRegex)!;
         Description = GetRegexMatch<string>(data, DescRegex, true);
         Icon = GetRegexMatch<string>(data, IconRegex);
         DllName = GetRegexMatch<string>(data, DllRegex);
-        RepoName = GetRegexMatch<string>(data, RepoNameRegex);
-        RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex);
         ManualDownload = GetRegexMatch<bool>(data, ManualDownloadRegex);
         ZipName = GetRegexMatch<string>(data, ZipRegex);
         Author = GetRegexMatch<string>(data, AuthorRegex);
         SubPath = GetRegexMatch<string>(data, SubPathRegex);
+        if (allowRepo)
+        {
+            RepoName = GetRegexMatch<string>(data, RepoNameRegex);
+            RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex);
+        }
     }
 
-    private void ReadValuesFromJson(string data)
+    private void ReadValuesFromJson(string data, bool allowRepo = true)
     {
         var json = JObject.Parse(data);
         foreach (var (key, set) in Setters)
         {
-            if (json.ContainsKey(key))
+            if (json.ContainsKey(key) && (allowRepo || !key.Contains("Repo")))
             {
                 try
                 {

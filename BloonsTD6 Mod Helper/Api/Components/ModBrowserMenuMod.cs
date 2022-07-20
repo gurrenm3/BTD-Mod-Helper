@@ -146,7 +146,7 @@ internal static class ModBrowserMenuModExt
     public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
     {
         mod.Homepage.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.ReadmeUrl!));
-        mod.Description.Text.SetText(modHelperData.Description);
+        mod.Description.Text.SetText(modHelperData.DisplayDescription.Replace("\\n", "\n"));
         mod.InfoButton.Button.SetOnClick(() =>
         {
             mod.SetDescriptionShowing(!mod.descriptionShowing);

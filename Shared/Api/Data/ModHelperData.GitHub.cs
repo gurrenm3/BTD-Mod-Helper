@@ -14,6 +14,7 @@ internal partial class ModHelperData
 {
     private const string ModHelperDataCs = "ModHelperData.cs";
     private const string ModHelperDataJson = "ModHelperData.json";
+    private const string ModHelperDataTxt = "ModHelperData.txt";
     private const string ModHelperModsJson = "ModHelperMods.json";
 
     internal Repository Repository { get; private set; }
@@ -75,12 +76,12 @@ internal partial class ModHelperData
             string data = null;
             var json = false;
 
-            if (RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName)
+            if (RepoName == ModHelper.RepoName)
             {
                 data = await ModHelperHttp.Client.GetStringAsync(GetContentURL("Shared/ModHelper.cs"));
             }
 
-            if (SubPath != null && (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json")))
+            if (SubPath != null && (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json") || SubPath.EndsWith(".cs")))
             {
                 data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(SubPath));
                 json = SubPath.EndsWith(".json");
@@ -110,10 +111,22 @@ internal partial class ModHelperData
                     // ignored
                 }
             }
+            
+            if (data == null)
+            {
+                try // getting ModHelperData.json
+                {
+                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt));
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
 
             if (data == null) return;
 
-            if (json) ReadValuesFromJson(data);
+            if (json) ReadValuesFromJson(data, false);
             else ReadValuesFromString(data);
 
 
@@ -203,9 +216,8 @@ internal partial class ModHelperData
             return !HasNoIcon;
         }
 
-        // As a precaution against trolls, only Verified Modders can have their icons shown in the Mod Browser
-        // This may or may not expand to Verified Modders being the only ones with mods in the browser allowed
-        if (HasNoIcon || !ModHelperGithub.VerifiedModders.Contains(RepoOwner))
+        // TODO might make it so that unverified mods can't have icons
+        if (HasNoIcon /*|| !ModHelperGithub.VerifiedModders.Contains(RepoOwner)*/)
         {
             return false;
         }

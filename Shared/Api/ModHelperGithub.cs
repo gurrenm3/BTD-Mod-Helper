@@ -8,10 +8,9 @@ using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Octokit;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api;
 
@@ -23,8 +22,8 @@ internal static class ModHelperGithub
     private const string MonoRepoTopic = "btd6-mods";
     private const string ProductName = "btd-mod-helper";
 
-    private const string VerifiedModdersURL =
-        "https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/3.0_Features/verified_modders.json";
+    private const string ModdersURL =
+        "https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/3.0_Features/modders.json";
 
     private const string DllContentType = "application/x-msdownload";
     private const string ZipContentType = "application/zip";
@@ -35,14 +34,23 @@ internal static class ModHelperGithub
 
     public static List<ModHelperData> Mods { get; private set; } = new();
 
-    // Will be moved to checking from a json file within the mod helper repo
     public static readonly HashSet<string> VerifiedModders = new();
+    public static readonly HashSet<string> BannedModders = new();
+    public static bool ForceVerifiedOnly { get; private set; }
 
     public static GitHubClient Client { get; private set; }
 
     private static MiscellaneousRateLimit rateLimit;
 
     public static int RemainingSearches => rateLimit?.Resources?.Search?.Remaining ?? -1;
+
+    private static bool VerifiedOnly => ForceVerifiedOnly || !MelonMain.ShowUnverifiedModBrowserContent;
+
+    public static IEnumerable<ModHelperData> VisibleMods => Mods
+        .Where(data => data.RepoName != ModHelper.RepoName &&
+                       !BannedModders.Contains(data.RepoOwner) &&
+                       (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)))
+        .ToList();
 
     public static void Init()
     {
@@ -79,20 +87,22 @@ internal static class ModHelperGithub
     {
         try
         {
-            var result = await ModHelperHttp.Client.GetStringAsync(VerifiedModdersURL);
-            var strings = JsonConvert.DeserializeObject<string[]>(result);
-            if (strings != null)
+            var result = await ModHelperHttp.Client.GetStringAsync(ModdersURL);
+            var jobject = JObject.Parse(result);
+            ForceVerifiedOnly = jobject.GetValue("forceVerifiedOnly")!.ToObject<bool>();
+            foreach (var jToken in jobject.GetValue("verified")!)
             {
-                foreach (var s in strings)
-                {
-                    ModHelper.Msg($"Found verified modder {s}");
-                    VerifiedModders.Add(s);
-                }
+                VerifiedModders.Add(jToken.ToObject<string>());
+            }
+
+            foreach (var jToken in jobject.GetValue("banned")!)
+            {
+                BannedModders.Add(jToken.ToObject<string>());
             }
         }
         catch (Exception e)
         {
-            ModHelper.Warning("Failed to get verified modders list");
+            ModHelper.Warning("Failed to get modders data");
             ModHelper.Warning(e);
         }
     }
@@ -169,7 +179,7 @@ internal static class ModHelperGithub
 #endif
             });
         });
-        
+
         if (bypassPopup)
         {
             action.Invoke();

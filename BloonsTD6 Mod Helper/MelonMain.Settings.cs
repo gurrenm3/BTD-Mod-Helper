@@ -16,6 +16,13 @@ internal partial class MelonMain
         collapsed = false
     };
 
+    public static readonly ModSettingBool ShowUnverifiedModBrowserContent = new(false)
+    {
+        description = "Toggle whether to allow showing content from GitHub users that have not been manually verified with one of the major BTD6 modding discord servers. " +
+                      "Unverified content will still be moderated and egregious content removed, but it is still more of a risk than verified content.",
+        category = General
+    };
+
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
         description =

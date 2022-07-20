@@ -81,6 +81,8 @@ internal partial class ModHelperData
 
     internal string DisplayName => Name ?? Mod?.Info.Name ?? Repository?.Name;
 
+    internal string DisplayDescription => Description ?? Repository?.Description ?? "No description provided.";
+
     public ModHelperData()
     {
     }
@@ -118,12 +120,20 @@ internal partial class ModHelperData
                 }
             }
         }
-        else if (mod.MelonAssembly.Assembly.TryGetEmbeddedResource("ModHelperData.json", out var stream))
+        else if (mod.MelonAssembly.Assembly.TryGetEmbeddedResource(ModHelperDataJson, out var jsonStream))
         {
-            using (stream)
-            using (var reader = new StreamReader(stream, Encoding.UTF8))
+            using (jsonStream)
+            using (var reader = new StreamReader(jsonStream, Encoding.UTF8))
             {
                 ReadValuesFromJson(reader.ReadToEnd());
+            }
+        }
+        else if (mod.MelonAssembly.Assembly.TryGetEmbeddedResource(ModHelperDataTxt, out var txtStream))
+        {
+            using (txtStream)
+            using (var reader = new StreamReader(txtStream, Encoding.UTF8))
+            {
+                ReadValuesFromString(reader.ReadToEnd());
             }
         }
 
