@@ -116,24 +116,23 @@ public abstract class ModGameMenu : ModContent
         modGameMenu.IsOpen = true;
         MenuManager.instance.OpenMenu(modGameMenu.BaseMenu, new ModMenuData(modGameMenu.Id, data, baseData));
     }
-        
-    internal static readonly Dictionary<Type, (string name, string data)> Types =
-        new()
-        {
-            {typeof(ExtraSettingsScreen), (SceneNames.ExtraSettingsUI, "menuData")},
-            {typeof(SettingsScreen), (SceneNames.SettingsUI, "menuData")},
-            {typeof(PowersSelectScreen), (SceneNames.PowersSelectUI, "data")},
-            //{typeof(TwitchSettingsUI), ("TwitchSettingsUI", "data")},
-            {typeof(HotkeysScreen), (SceneNames.HotkeysUI, "menuData")},
-            {typeof(JukeBoxScreen), (SceneNames.JukeboxUI, "data")},
-            {typeof(CollectionEventUI), (SceneNames.CollectionEventUI, "data")},
-            {typeof(AchievementsScreen), (SceneNames.AchievementsUI, "data")},
-            {typeof(PlaySocialScreen), (SceneNames.PlaySocial, "data")},
-            {typeof(GameEventsScreen), (SceneNames.GameEventsUI, "data")},
-            {typeof(HeroInGameScreen), (SceneNames.HeroInGameUI, "data")},
-            {typeof(LevelUpScreen), (SceneNames.LevelUpUI, "data")},
-            {typeof(ContentBrowser), (SceneNames.ContentBrowser, "data")}
-        };
+
+    internal static readonly Dictionary<Type, (string name, string data)> Types = new()
+    {
+        {typeof(ExtraSettingsScreen), (SceneNames.ExtraSettingsUI, "menuData")},
+        {typeof(SettingsScreen), (SceneNames.SettingsUI, "menuData")},
+        {typeof(PowersSelectScreen), (SceneNames.PowersSelectUI, "data")},
+        //{typeof(TwitchSettingsUI), ("TwitchSettingsUI", "data")},
+        {typeof(HotkeysScreen), (SceneNames.HotkeysUI, "menuData")},
+        {typeof(JukeBoxScreen), (SceneNames.JukeboxUI, "data")},
+        {typeof(CollectionEventUI), (SceneNames.CollectionEventUI, "data")},
+        {typeof(AchievementsScreen), (SceneNames.AchievementsUI, "data")},
+        {typeof(PlaySocialScreen), (SceneNames.PlaySocial, "data")},
+        {typeof(GameEventsScreen), (SceneNames.GameEventsUI, "data")},
+        {typeof(HeroInGameScreen), (SceneNames.HeroInGameUI, "data")},
+        {typeof(LevelUpScreen), (SceneNames.LevelUpUI, "data")},
+        {typeof(ContentBrowser), (SceneNames.ContentBrowser, "data")}
+    };
 
     internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony)
     {

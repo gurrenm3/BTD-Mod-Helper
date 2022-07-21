@@ -68,7 +68,7 @@ public class PreLoadResourcesTask : ModLoadTask
             foreach (var (key, bytes) in bloonsMod.Resources)
             {
                 var guid = bloonsMod.IDPrefix + key;
-                PreloadSprite(ResourceHandler.GetSprite(guid)!, key, modObject);
+                PreloadSprite(ResourceHandler.GetSprite(guid), key, modObject);
                 currentByteTotal += bytes.Length;
                 if (currentByteTotal > BytesPerFrame)
                 {

@@ -21,6 +21,10 @@ public class ModHelperHttp
 
     private const int TimeOutMS = 2000;
 
+    private const int DefaultMaxResponseSize = 500000; // .5 MB for normal requests like images, json data
+
+    private const int ExpandedMaxResponseSize = DefaultMaxResponseSize * 100; // 50 MB for 
+
     /// <summary>
     /// Initializes the HttpClient
     /// </summary>
@@ -32,7 +36,8 @@ public class ModHelperHttp
             " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
         Client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-        // Client.Timeout = TimeSpan.FromMilliseconds(TimeOutMS);
+        Client.Timeout = TimeSpan.FromMilliseconds(TimeOutMS);
+        Client.MaxResponseContentBufferSize = DefaultMaxResponseSize;
     }
 
     /// <summary>
@@ -45,6 +50,7 @@ public class ModHelperHttp
     {
         try
         {
+            Client.MaxResponseContentBufferSize = ExpandedMaxResponseSize;
             var response = await Client.GetAsync(url);
             using var fs = new FileStream(filePath, FileMode.Create);
             await response.Content.CopyToAsync(fs);
@@ -54,6 +60,10 @@ public class ModHelperHttp
         catch (Exception e)
         {
             ModHelper.Warning(e);
+        }
+        finally
+        {
+            Client.MaxResponseContentBufferSize = DefaultMaxResponseSize;
         }
 
         return false;
@@ -67,9 +77,17 @@ public class ModHelperHttp
     /// <returns></returns>
     public static async Task<ZipArchive> GetZip(string url)
     {
-        var response = await Client.GetAsync(url);
-        var stream = await response.Content.ReadAsStreamAsync();
-        return new ZipArchive(stream);
+        try
+        {
+            Client.MaxResponseContentBufferSize = ExpandedMaxResponseSize;
+            var response = await Client.GetAsync(url);
+            var stream = await response.Content.ReadAsStreamAsync();
+            return new ZipArchive(stream);
+        }
+        finally
+        {
+            Client.MaxResponseContentBufferSize = DefaultMaxResponseSize;
+        }
     }
 
 

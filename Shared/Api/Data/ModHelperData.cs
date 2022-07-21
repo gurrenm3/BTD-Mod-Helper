@@ -71,13 +71,8 @@ internal partial class ModHelperData
     /// or the data Version is ahead of the currently loaded mod's version
     /// </summary>
     internal bool RestartRequired =>
-        Enabled == (Mod == null) || Mod != null && Version != null && IsUpdate(Mod.Info.Version, Version);
+        Enabled == (Mod == null) || Mod != null && Version != null && IsUpdate(Mod.Info.Version, Version, RepoOwner);
 
-    // Browser Mod Info
-
-    internal string Branch => RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName
-        ? "3.0_Features"
-        : Repository.DefaultBranch;
 
     internal string DisplayName => Name ?? Mod?.Info.Name ?? Repository?.Name;
 

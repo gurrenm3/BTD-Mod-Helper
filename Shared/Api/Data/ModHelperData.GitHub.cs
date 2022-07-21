@@ -23,12 +23,18 @@ internal partial class ModHelperData
     internal Release LatestRelease { get; private set; }
     internal GitHubCommit LatestCommit { get; private set; }
 
+    // Browser Mod Info
+
+    internal string Branch => RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName
+        ? "3.0_Features"
+        : Repository.DefaultBranch;
+
     internal bool UpdateAvailable =>
         Version != null &&
         !RestartRequired &&
         RepoDataSuccess &&
         RepoVersion != null &&
-        IsUpdate(Version, RepoVersion);
+        IsUpdate(Version, RepoVersion, RepoOwner);
 
     internal string ReadmeUrl
     {
@@ -46,9 +52,9 @@ internal partial class ModHelperData
     internal string StarsUrl => $"https://www.github.com/{RepoOwner}/{RepoName}/stargazers";
 
     internal bool HasRequiredRepoData => SemVersion.TryParse(Version, out _) &&
-                                       RepoName != null &&
-                                       RepoOwner != null &&
-                                       (SubPath == null || DllName != null);
+                                         RepoName != null &&
+                                         RepoOwner != null &&
+                                         (SubPath == null || DllName != null);
 
     public ModHelperData(Repository repository, string subPath = null)
     {
@@ -111,7 +117,7 @@ internal partial class ModHelperData
                     // ignored
                 }
             }
-            
+
             if (data == null)
             {
                 try // getting ModHelperData.json
@@ -141,12 +147,18 @@ internal partial class ModHelperData
                     modHelperData.RepoVersion = Version;
                     modHelperData.RepoDataSuccess = true;
                 }
+            } else if (RepoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Warning($"{Repository.FullName} did not have all required ModHelperData");
             }
         }
         catch (Exception e)
         {
-            ModHelper.Warning($"Failed to get ModHelperData for {Repository.Name}");
-            ModHelper.Warning(e);
+            if (RepoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Warning($"Failed to get ModHelperData for {Repository.FullName}");
+                ModHelper.Warning(e);
+            }
         }
     }
 
@@ -196,10 +208,20 @@ internal partial class ModHelperData
         }
     }
 
-    public static bool IsUpdate(string currentVersion, string latestVersion)
+    public static bool IsUpdate(string currentVersion, string latestVersion, string repoOwner = null)
     {
-        if (!SemVersion.TryParse(latestVersion, out var latestSemver)) return false;
-        if (!SemVersion.TryParse(currentVersion, out var currentSemver)) return true;
+        if (!SemVersion.TryParse(latestVersion, out var latestSemver) ||
+            !SemVersion.TryParse(currentVersion, out var currentSemver))
+        {
+            if (!string.IsNullOrEmpty(repoOwner) && repoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Warning(
+                    $"Couldn't compare versions '{currentVersion}' and '{latestVersion}' for mod by {repoOwner}." +
+                    $" One or both are not in semver format");
+            }
+
+            return false;
+        }
 
         return latestSemver > currentSemver;
     }
@@ -208,7 +230,7 @@ internal partial class ModHelperData
     public async Task<bool> LoadIconFromRepoAsync()
     {
         // Don't fetch an icon that we've already got
-        // This does mean that icon changes won't be seen in the Mod Browser until you download the new version, but that's ok
+        // This does mean that icon changes won't be seen in the Mod Browser until you download the new version, but eh
         if (ModInstalledLocally(out var local))
         {
             IconBytes = local.IconBytes;
@@ -222,15 +244,21 @@ internal partial class ModHelperData
             return false;
         }
 
+        var iconURL = GetContentURL(Icon ?? DefaultIcon);
         if (IconBytes == null)
         {
             try
             {
-                IconBytes = await ModHelperHttp.Client.GetByteArrayAsync(GetContentURL(Icon ?? DefaultIcon));
+                IconBytes = await ModHelperHttp.Client.GetByteArrayAsync(iconURL);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 HasNoIcon = true;
+                if (RepoOwner == MelonMain.GitHubUsername)
+                {
+                    ModHelper.Warning($"Failed to get icon for mod {Repository.FullName}. Checked at {iconURL}");
+                    ModHelper.Warning(e);
+                }
             }
         }
 
@@ -251,13 +279,13 @@ internal partial class ModHelperData
                 .Where(token => token.Type == JTokenType.String)
                 .Select(token => new ModHelperData(monoRepo, token.ToString()));
         }
-        catch (HttpRequestException)
+        catch (Exception e)
         {
-            //ignored
-        }
-        catch (TimeoutException)
-        {
-            //ignored
+            if (monoRepo.Owner.Login == MelonMain.GitHubUsername)
+            {
+                ModHelper.Warning($"Failed to load data for monorepo {monoRepo.FullName}.");
+                ModHelper.Warning(e);
+            }
         }
 
         return Enumerable.Empty<ModHelperData>();

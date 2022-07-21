@@ -117,9 +117,10 @@ internal static class ModsMenuModExt
         mod.MainButton.Image.SetSprite(GetBackground(modHelperData));
         mod.Update.SetActive(modHelperData.UpdateAvailable);
         mod.Restart.SetActive(modHelperData.RestartRequired);
-        mod.Version.Text.color = ModHelperData.IsUpdate(modHelperData.Version!, modHelperData.RepoVersion!)
-            ? Color.red
-            : Color.white;
+        mod.Version.Text.color =
+            ModHelperData.IsUpdate(modHelperData.Version, modHelperData.RepoVersion, modHelperData.RepoOwner)
+                ? Color.red
+                : Color.white;
 
         mod.Icon.SetActive(!modHelperData.HasNoIcon);
     }

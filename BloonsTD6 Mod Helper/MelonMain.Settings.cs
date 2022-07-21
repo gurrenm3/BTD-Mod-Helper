@@ -39,6 +39,12 @@ internal partial class MelonMain
         category = General
     };
 
+    private static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
+    {
+        category = General,
+        description = "Removes the popup telling you that you're using a modded client. Like, we get it already."
+    };
+
     public static readonly ModSettingBool CleanProfile = new(true)
     {
         description =
@@ -58,13 +64,15 @@ internal partial class MelonMain
         requiresRestart = true
     };
 
-    private static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
-    {
-        category = General,
-        description = "Removes the popup telling you that you're using a modded client. Like, we get it already."
-    };
-
     private static readonly ModSettingCategory ModMaking = "Mod Making";
+
+    public static readonly ModSettingString GitHubUsername = new("")
+    {
+        displayName = "GitHub Username",
+        description = "Set this to your GitHub username to see messages in the log for " +
+                      "HTTP / GitHub api errors about your mods as they get loaded to the Mod Browser",
+        category = ModMaking
+    };
 
     private static readonly ModSettingButton OpenLocalDirectory = new()
     {
