@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BTD_Mod_Helper.Api.ModOptions;
 
@@ -58,26 +59,19 @@ internal class ModSettingsHandler
                 var fileName = mod.SettingsFilePath;
                 if (File.Exists(fileName))
                 {
-                    using var file = File.OpenText(fileName);
-                    using var reader = new JsonTextReader(file);
-                    while (reader.Read())
+                    var json = JObject.Parse(File.ReadAllText(fileName));
+                    foreach (var (name, token) in json)
                     {
-                        if (reader.Value != null && reader.TokenType == JsonToken.PropertyName)
+                        if (mod.ModSettings.ContainsKey(name) && token != null)
                         {
-                            var name = (string) reader.Value;
-                            if (mod.ModSettings.ContainsKey(name))
+                            try
                             {
-                                reader.Read();
-                                try
-                                {
-                                    mod.ModSettings[name].Load(reader.Value);
-                                }
-                                catch (Exception e)
-                                {
-                                    ModHelper.Warning(
-                                        $"Error loading ModSetting {name} of mod {mod.Info.Name}");
-                                    ModHelper.Warning(e);
-                                }
+                                mod.ModSettings[name].Load(token.ToObject<object>());
+                            }
+                            catch (Exception e)
+                            {
+                                ModHelper.Warning($"Error loading ModSetting {name} of mod {mod.Info.Name}");
+                                ModHelper.Warning(e);
                             }
                         }
                     }
@@ -94,41 +88,57 @@ internal class ModSettingsHandler
     internal static void SaveModSettings(BloonsMod mod, bool initialSave = false)
     {
         Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
-
         var fileName = mod.SettingsFilePath;
-        using var file = File.CreateText(fileName);
-        using var writer = new JsonTextWriter(file);
-        writer.Formatting = Formatting.Indented;
-        writer.WriteStartObject();
+
+        var json = new JObject();
 
         foreach (var (key, modSetting) in mod.ModSettings)
         {
-            if (!initialSave)
+            var value = modSetting.GetValue();
+            if (value != null)
             {
                 try
                 {
-                    if (modSetting.OnSave())
+                    if (initialSave || modSetting.OnSave())
                     {
-                        writer.WritePropertyName(key);
-                        writer.WriteValue(modSetting.GetValue());
+                        json[key] = JToken.FromObject(value);
                     }
                 }
                 catch (Exception e)
                 {
-                    ModHelper.Warning($"Failed onSave action for setting {key}");
+                    ModHelper.Warning($"Failed to save {key} for {mod.GetModName()}");
                     ModHelper.Warning(e);
                 }
-
-                modSetting.currentOption = null;
-            }
-            else
-            {
-                writer.WritePropertyName(key);
-                writer.WriteValue(modSetting.GetValue());
             }
         }
 
-        writer.WriteEndObject();
+        File.WriteAllText(fileName, json.ToString(Formatting.Indented));
+
+        // TODO fix the real source of this extremely strange bug
+        foreach (var file in Directory.EnumerateFiles(ModHelper.ModSettingsDirectory).Where(s => s.EndsWith("..json")))
+        {
+            try
+            {
+                var correctFile = file.Replace("..json", "");
+                if (File.Exists(correctFile))
+                {
+                    File.Delete(file);
+                }
+                else
+                {
+                    File.Move(file, correctFile);
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        if (!initialSave)
+        {
+            ModHelper.Msg($"Saved to {fileName}");
+        }
     }
 
     internal static void SaveModSettings(bool initialSave = false)
@@ -136,6 +146,7 @@ internal class ModSettingsHandler
         foreach (var mod in ModHelper.Mods)
         {
             if (!mod.ModSettings.Any()) continue;
+
             SaveModSettings(mod, initialSave);
         }
 

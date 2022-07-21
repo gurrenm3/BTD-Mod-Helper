@@ -12,7 +12,8 @@ public abstract class ModSetting
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModSetting
 
 Derived  
-&#8627; [ModSetting&lt;T&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>')
+&#8627; [ModSetting&lt;T&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>')  
+&#8627; [ModSettingButton](BTD_Mod_Helper.Api.ModOptions.ModSettingButton.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingButton')
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.category'></a>
@@ -94,6 +95,19 @@ public bool requiresRestart;
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.CreateBaseOption()'></a>
+
+## ModSetting.CreateBaseOption() Method
+
+Creates a base ModHelperOption component based on the name, description and icon of this
+
+```csharp
+protected BTD_Mod_Helper.Api.Components.ModHelperOption CreateBaseOption();
+```
+
+#### Returns
+[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')
+
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.GetDefaultValue()'></a>
 
 ## ModSetting.GetDefaultValue() Method
@@ -101,7 +115,7 @@ public bool requiresRestart;
 Gets the default value for this ModSetting
 
 ```csharp
-public abstract object GetDefaultValue();
+public virtual object GetDefaultValue();
 ```
 
 #### Returns
@@ -115,7 +129,7 @@ The default value
 Gets the current value that this ModSetting holds
 
 ```csharp
-public abstract object GetValue();
+public virtual object GetValue();
 ```
 
 #### Returns
@@ -129,7 +143,7 @@ The value
 Sets the current value of this ModSetting
 
 ```csharp
-public abstract void SetValue(object val);
+public virtual void SetValue(object val);
 ```
 #### Parameters
 

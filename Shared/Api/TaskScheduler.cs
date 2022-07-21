@@ -37,8 +37,7 @@ public static class TaskScheduler
     {
         try
         {
-            MelonLoader.MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, waitCondition));
-
+            MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, waitCondition));
         }
         catch (Exception ex)
         {

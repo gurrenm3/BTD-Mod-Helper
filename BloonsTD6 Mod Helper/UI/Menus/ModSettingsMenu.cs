@@ -6,6 +6,7 @@ using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
 using Object = Il2CppSystem.Object;
+using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 namespace BTD_Mod_Helper.UI.Menus;
 

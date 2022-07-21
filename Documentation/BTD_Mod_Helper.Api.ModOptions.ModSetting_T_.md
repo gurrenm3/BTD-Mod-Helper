@@ -20,7 +20,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Derived  
 &#8627; [ModSettingBool](BTD_Mod_Helper.Api.ModOptions.ModSettingBool.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingBool')  
-&#8627; [ModSettingButton](BTD_Mod_Helper.Api.ModOptions.ModSettingButton.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingButton')  
 &#8627; [ModSettingEnum&lt;T&gt;](BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingEnum<T>')  
 &#8627; [ModSettingFile](BTD_Mod_Helper.Api.ModOptions.ModSettingFile.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingFile')  
 &#8627; [ModSettingFolder](BTD_Mod_Helper.Api.ModOptions.ModSettingFolder.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingFolder')  
@@ -98,19 +97,6 @@ public System.Collections.Generic.List<System.Action<T>> OnValueChanged { get; s
 #### Property Value
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[T](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md#BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.T 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 ### Methods
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.CreateBaseOption()'></a>
-
-## ModSetting<T>.CreateBaseOption() Method
-
-Creates a base ModHelperOption component based on the name, description and icon of this
-
-```csharp
-protected BTD_Mod_Helper.Api.Components.ModHelperOption CreateBaseOption();
-```
-
-#### Returns
-[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.GetDefaultValue()'></a>
 

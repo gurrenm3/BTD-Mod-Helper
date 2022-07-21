@@ -83,10 +83,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public override void SetValue(object val)
         {
             base.SetValue(val);
-            if (currentOption)
+            if (currentOption != null)
             {
                 var butt = currentOption.GetDescendent<ModHelperButton>("Button");
-                if (butt)
+                if (butt != null)
                 {
                     currentAction?.Invoke((bool) val, butt);
                 }

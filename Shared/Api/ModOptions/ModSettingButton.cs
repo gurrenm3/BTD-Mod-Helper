@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
     /// ModSetting for adding a button in the settings that performs a given action, with the setting just tracking
     /// the number of times that the button has been pressed.
     /// </summary>
-    public class ModSettingButton : ModSetting<long>
+    public class ModSettingButton : ModSetting
     {
         /// <summary>
         /// The action that this button performs
@@ -34,12 +34,12 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public Action<ModHelperButton> modifyButton;
 
         /// <inheritdoc />
-        public ModSettingButton() : base(0)
+        public ModSettingButton()
         {
         }
 
         /// <inheritdoc />
-        public ModSettingButton(Action action) : base(0)
+        public ModSettingButton(Action action)
         {
             this.action = action;
         }
@@ -52,7 +52,6 @@ namespace BTD_Mod_Helper.Api.ModOptions
             var button = option.BottomRow.AddButton(
                 new Info("Button", width: 562, height: 200), buttonSprite, new Action(() =>
                 {
-                    SetValue(value + 1);
                     action?.Invoke();
                 })
             );

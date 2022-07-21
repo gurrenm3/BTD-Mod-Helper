@@ -7,10 +7,10 @@ ModSetting for adding a button in the settings that performs a given action, wit
 the number of times that the button has been pressed.
 
 ```csharp
-public class ModSettingButton : BTD_Mod_Helper.Api.ModOptions.ModSetting<long>
+public class ModSettingButton : BTD_Mod_Helper.Api.ModOptions.ModSetting
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') &#129106; [BTD_Mod_Helper.Api.ModOptions.ModSetting&lt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>') &#129106; ModSettingButton
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') &#129106; ModSettingButton
 ### Constructors
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingButton.ModSettingButton()'></a>
