@@ -3,8 +3,6 @@ name: Build
 on:
   push:
     branches: [ "3.0_Features" ]
-    tags:
-      - '*'
   pull_request:
     branches: [ "3.0_Features" ]
 
@@ -87,14 +85,3 @@ jobs:
           name: ${{ env.PROJECT_NAME }}.xml
           # A file, directory or wildcard pattern that describes what to upload
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
-          
-          
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: |
-            ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
-            ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
-          body_path: ./BloonsTD6 Mod Helper/LATEST.md
-          fail_on_unmatched_files: true
