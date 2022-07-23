@@ -888,6 +888,46 @@ The bottom path tier
 [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')  
 The tower name/id
 
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
+
+## ModContent.HasMod(string) Method
+
+Returns whether a mod with the given name is installed
+
+```csharp
+public static bool HasMod(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
+
+## ModContent.HasMod(string, BloonsMod) Method
+
+Returns whether a mod with the given name is installed, and pass it to the out param if it is
+
+```csharp
+public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod).bloonsMod'></a>
+
+`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModContent.Load(BTD_Mod_Helper.Api.ModContent)'></a>
 
 ## ModContent.Load(ModContent) Method

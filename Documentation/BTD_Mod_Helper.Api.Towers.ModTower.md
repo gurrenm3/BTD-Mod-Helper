@@ -337,6 +337,27 @@ public virtual int GetTowerIndex(System.Collections.Generic.List<Assets.Scripts.
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsValidCrosspath(int[])'></a>
+
+## ModTower.IsValidCrosspath(int[]) Method
+
+Another way to modify the allowable crosspaths for your tower. By default, checks that the highest tier is at  
+most 5, the next highest is at most 2, and the last one is 0  
+<br/>  
+Used in the default implementation of [TowerTiers()](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers() 'BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers()')
+
+```csharp
+public virtual bool IsValidCrosspath(int[] tiers);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsValidCrosspath(int[]).tiers'></a>
+
+`tiers` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(Assets.Scripts.Models.Towers.TowerModel)'></a>
 
 ## ModTower.ModifyBaseTowerModel(TowerModel) Method

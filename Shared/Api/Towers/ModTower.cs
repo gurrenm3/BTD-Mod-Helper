@@ -158,7 +158,6 @@ public abstract partial class ModTower : NamedModContent
     /// <returns></returns>
     public virtual IEnumerable<int[]> TowerTiers()
     {
-        var results = new List<int[]>();
         for (var i = 0; i <= TopPathUpgrades; i++)
         {
             for (var j = 0; j <= MiddlePathUpgrades; j++)
@@ -166,16 +165,25 @@ public abstract partial class ModTower : NamedModContent
                 for (var k = 0; k <= BottomPathUpgrades; k++)
                 {
                     var tiers = new[] {i, j, k};
-                    var sorted = tiers.OrderBy(num => -num).ToArray();
-                    if (sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0)
+                    if (IsValidCrosspath(tiers))
                     {
-                        results.Add(tiers);
+                        yield return tiers;
                     }
                 }
             }
         }
+    }
 
-        return results;
+    /// <summary>
+    /// Another way to modify the allowable crosspaths for your tower. By default, checks that the highest tier is at
+    /// most 5, the next highest is at most 2, and the last one is 0
+    /// <br/>
+    /// Used in the default implementation of <see cref="TowerTiers"/>
+    /// </summary>
+    public virtual bool IsValidCrosspath(int[] tiers)
+    {
+        var sorted = tiers.OrderByDescending(num => num).ToArray();
+        return sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0;
     }
 
     /// <summary>
