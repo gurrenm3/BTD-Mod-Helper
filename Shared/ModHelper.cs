@@ -25,6 +25,8 @@ public static class ModHelper
     internal const string Author = "Gurrenm4 and Doombubbles";
 
     #endregion
+    
+    internal const string Branch = "main";
 
     /// <summary>
     /// Directory where the Mod Helper stores most of its extra info
