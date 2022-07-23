@@ -49,8 +49,7 @@ internal static class ModHelperGithub
     public static IEnumerable<ModHelperData> VisibleMods => Mods
         .Where(data => data.RepoName != ModHelper.RepoName &&
                        !BannedModders.Contains(data.RepoOwner) &&
-                       (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)))
-        .ToList();
+                       (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)));
 
     public static void Init()
     {

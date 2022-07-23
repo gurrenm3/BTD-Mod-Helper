@@ -49,7 +49,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         ModifyExistingElements();
         AddNewElements();
 
-        currentMods = ModHelperGithub.VisibleMods.ToList();
+        currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
         UpdateModList();
 
         return false;
@@ -140,33 +140,27 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         }
     }
 
+    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
+    {
+        SortingMethod.Popularity => mods.OrderByDescending(data => data.Repository.StargazersCount),
+        SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
+        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.Repository.UpdatedAt),
+        SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
+        _ => mods
+    }).ToList();
+
     private void RecalculateCurrentMods()
     {
         Task.Run(() =>
         {
             ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
-            var filteredMods = ModHelperGithub.Mods
+            var filteredMods = ModHelperGithub.VisibleMods
                 .Where(data => string.IsNullOrEmpty(currentSearch) ||
                                scorer.Score(currentSearch.ToLower(), data.DisplayName.ToLower()) >= SearchCutoff ||
-                               scorer.Score(currentSearch.ToLower(), data.RepoOwner.ToLower()) >= SearchCutoff);
+                               scorer.Score(currentSearch.ToLower(), data.RepoOwner.ToLower()) >= SearchCutoff ||
+                               scorer.Score(currentSearch.ToLower(), data.Author.ToLower()) >= SearchCutoff);
 
-            switch (sortingMethod)
-            {
-                case SortingMethod.Popularity:
-                    filteredMods = filteredMods.OrderByDescending(data => data.Repository.StargazersCount);
-                    break;
-                case SortingMethod.Alphabetical:
-                    filteredMods = filteredMods.OrderBy(data => data.DisplayName);
-                    break;
-                case SortingMethod.RecentlyUpdated:
-                    filteredMods = filteredMods.OrderByDescending(data => data.Repository.UpdatedAt);
-                    break;
-                case SortingMethod.New:
-                    filteredMods = filteredMods.OrderByDescending(data => data.Repository.CreatedAt);
-                    break;
-            }
-
-            currentMods = filteredMods.ToList();
+            currentMods = Sort(filteredMods, sortingMethod);
             modsNeedRefreshing = true;
         });
     }

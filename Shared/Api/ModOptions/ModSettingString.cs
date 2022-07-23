@@ -77,7 +77,11 @@ public class ModSettingString : ModSetting<string>
 #if BloonsTD6
         var input = option.BottomRow.AddInputField(
             new Info("Input", width: 1500, height: 150), value, VanillaSprites.BlueInsertPanelRound,
-            new Action<string>(SetValue), 80f, characterValidation
+            new Action<string>((s) =>
+            {
+                SetValue(s);
+                // ModHelper.Log("value is a changin");
+            }), 80f, characterValidation
         );
 
         option.SetResetAction(new Action(() => input.SetText(defaultValue)));

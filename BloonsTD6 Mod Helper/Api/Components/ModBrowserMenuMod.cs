@@ -22,6 +22,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModHelperButton Update => GetDescendent<ModHelperButton>("Update");
     public ModHelperText Description => GetDescendent<ModHelperText>("Description");
     public ModHelperPanel IconPanel => GetDescendent<ModHelperPanel>("IconPanel");
+    public ModHelperPanel LackOfIconPanel => GetDescendent<ModHelperPanel>("LackOfIconPanel");
     public ModHelperImage Icon => GetDescendent<ModHelperImage>("Icon");
     public ModHelperText Name => GetDescendent<ModHelperText>("Name");
     public ModHelperText Author => GetDescendent<ModHelperText>("Author");
@@ -80,6 +81,8 @@ internal class ModBrowserMenuMod : ModHelperPanel
             Height = ModsMenu.ModNameHeight,
             FlexWidth = 3
         }, "Name", ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
+        
+        var lackOfIconPanel = panel.AddPanel(new Info("LackOfIconPanel", size: 200));
 
         panel.AddText(new Info("Author")
         {
@@ -153,6 +156,7 @@ internal static class ModBrowserMenuModExt
             MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         });
         mod.IconPanel.SetActive(false);
+        mod.LackOfIconPanel.SetActive(true);
         mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
         mod.Author.SetText(modHelperData.Author ?? modHelperData.RepoOwner);
@@ -166,6 +170,7 @@ internal static class ModBrowserMenuModExt
                 mod.iconAction = () =>
                 {
                     mod.IconPanel.SetActive(true);
+                    mod.LackOfIconPanel.SetActive(false);
                     mod.Icon.Image.SetSprite(modHelperData.GetIcon()!);
                 };
             }

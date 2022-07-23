@@ -166,7 +166,7 @@ internal partial class ModHelperData
                 data.SubPath == SubPath ||
                 data.DllName != null && data.DllName == DllName && RepoName == null && RepoOwner == null
         );
-        modHelperData = result!;
+        modHelperData = result;
         return result != null;
     }
 

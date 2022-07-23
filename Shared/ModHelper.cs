@@ -18,7 +18,7 @@ public static class ModHelper
 
     internal const string Name = "BloonsTD6 Mod Helper";
     internal const string Version = "3.0.0-alpha1";
-    internal const string RepoOwner = "gurrenm3";
+    internal const string RepoOwner = "doombubbles";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description = "The mod that is allowing all this to happen right now :P";
     internal const string DllName = "Btd6ModHelper.dll";

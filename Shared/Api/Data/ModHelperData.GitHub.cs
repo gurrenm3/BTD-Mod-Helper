@@ -17,17 +17,20 @@ internal partial class ModHelperData
     private const string ModHelperDataTxt = "ModHelperData.txt";
     private const string ModHelperModsJson = "ModHelperMods.json";
 
+    private const string DescriptionBranchRegex = "Mod\\s+Browser\\s+Branch\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/]+)\"";
+    
     internal Repository Repository { get; private set; }
     internal bool RepoDataSuccess { get; private set; }
     internal string RepoVersion { get; private set; }
     internal Release LatestRelease { get; private set; }
     internal GitHubCommit LatestCommit { get; private set; }
+    internal string Branch { get; private set; }
 
     // Browser Mod Info
 
-    internal string Branch => RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName
+    /*internal string Branch => RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName
         ? "3.0_Features"
-        : Repository.DefaultBranch;
+        : Repository.DefaultBranch;*/
 
     internal bool UpdateAvailable =>
         Version != null &&
@@ -45,7 +48,7 @@ internal partial class ModHelperData
             if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
                 return $"https://github.com/{RepoOwner}/{RepoName}#readme";
 
-            return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Repository.DefaultBranch}/{SubPath}#readme";
+            return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Branch}/{SubPath}#readme";
         }
     }
 
@@ -62,6 +65,14 @@ internal partial class ModHelperData
         RepoOwner = repository.Owner.Login;
         RepoName = repository.Name;
         SubPath = subPath;
+        Branch = RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName
+            ? "3.0_Features"
+            : Repository.DefaultBranch;
+        if (GetRegexMatch<string>(Repository.Description ?? "", DescriptionBranchRegex) is string branch)
+        {
+            Branch = branch;
+            ModHelper.Msg($"Successfully set branch for {repository.FullName} to {branch}");
+        }
     }
 
     internal string GetContentURL(string name)
@@ -130,7 +141,14 @@ internal partial class ModHelperData
                 }
             }
 
-            if (data == null) return;
+            if (data == null)
+            {
+                if (RepoOwner == MelonMain.GitHubUsername)
+                {
+                    ModHelper.Warning($"Did not find any mod data for {Repository.FullName} branch {Branch}");
+                }
+                return;
+            }
 
             if (json) ReadValuesFromJson(data, false);
             else ReadValuesFromString(data);
@@ -141,10 +159,16 @@ internal partial class ModHelperData
                 RepoDataSuccess = true;
                 RepoVersion = Version;
 
+                if (RepoOwner == MelonMain.GitHubUsername)
+                {
+                    ModHelper.Log($"Successfully found mod {Repository.FullName} for browser");
+                }
+
                 if (ModInstalledLocally(out var modHelperData))
                 {
                     modHelperData.Repository = Repository;
                     modHelperData.RepoVersion = Version;
+                    modHelperData.Branch = Branch;
                     modHelperData.RepoDataSuccess = true;
                 }
             } else if (RepoOwner == MelonMain.GitHubUsername)
@@ -213,13 +237,6 @@ internal partial class ModHelperData
         if (!SemVersion.TryParse(latestVersion, out var latestSemver) ||
             !SemVersion.TryParse(currentVersion, out var currentSemver))
         {
-            if (!string.IsNullOrEmpty(repoOwner) && repoOwner == MelonMain.GitHubUsername)
-            {
-                ModHelper.Warning(
-                    $"Couldn't compare versions '{currentVersion}' and '{latestVersion}' for mod by {repoOwner}." +
-                    $" One or both are not in semver format");
-            }
-
             return false;
         }
 
