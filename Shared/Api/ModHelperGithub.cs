@@ -26,6 +26,7 @@ internal static class ModHelperGithub
         $"https://raw.githubusercontent.com/{ModHelper.RepoOwner}/{ModHelper.RepoName}/{ModHelper.Branch}/modders.json";
 
     private const string DllContentType = "application/x-msdownload";
+    private const string DllContentType2 = "application/octet-stream";
     private const string ZipContentType = "application/zip";
     private const string ZipContentType2 = "application/x-zip-compressed";
 
@@ -189,8 +190,8 @@ internal static class ModHelperGithub
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
                 $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                 mod.SubPath == null
-                    ? $"Latest Release Message:\n\"{latestRelease!.Body}\""
-                    : $"Latest Commit Message:\n\"{latestCommit!.Commit.Message}\"",
+                    ? latestRelease!.Body
+                    : latestCommit!.Commit.Message,
                 action, "Yes", null, "No", Popup.TransitionAnim.Scale);
 
             PopupScreen.instance.ModifyBodyText(field =>
@@ -251,9 +252,10 @@ internal static class ModHelperGithub
             switch (releaseAsset.ContentType)
             {
                 default:
-                    throw new ArgumentException(
-                        $"Won't download release asset with content type {releaseAsset.ContentType}");
+                    ModHelper.Error("Won't download release asset with content type {releaseAsset.ContentType}");
+                    return null;
                 case DllContentType:
+                case DllContentType2:
                     success = await ModHelperHttp.DownloadFile(releaseAsset.BrowserDownloadUrl, downloadFilePath);
                     break;
                 case ZipContentType:
