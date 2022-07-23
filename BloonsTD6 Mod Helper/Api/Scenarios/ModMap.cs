@@ -117,7 +117,7 @@ public abstract class ModMap : NamedModContent
     {
         return (mapTexture != null
             ? mapTexture
-            : mapTexture = GetTexture(MapImageName))!; // returns unresized version of texture;
+            : mapTexture = GetTexture(MapImageName)); // returns unresized version of texture;
         //return mapTexture != null ? mapTexture : mapTexture = MapHelper.ResizeForGame();
     }
 

@@ -152,7 +152,7 @@ public partial class ModHelperComponent : MonoBehaviour
     /// </summary>
     public T GetDescendent<T>(string s = "") where T : Component => string.IsNullOrEmpty(s)
         ? gameObject.GetComponentInChildren<T>()
-        : gameObject.GetComponentInChildrenByName<T>(s)!;
+        : gameObject.GetComponentInChildrenByName<T>(s);
 
     /// <summary>
     /// Sets whether or not this is active

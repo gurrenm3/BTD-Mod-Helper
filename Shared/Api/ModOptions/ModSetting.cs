@@ -50,13 +50,13 @@ public abstract class ModSetting<T> : ModSetting
     /// <inheritdoc />
     public override object GetValue()
     {
-        return value!;
+        return value;
     }
 
     /// <inheritdoc />
     public override object GetDefaultValue()
     {
-        return defaultValue!;
+        return defaultValue;
     }
 
     /// <inheritdoc />

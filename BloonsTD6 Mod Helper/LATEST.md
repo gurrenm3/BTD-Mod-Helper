@@ -1,1 +1,1 @@
-Fixing Mod Helper self updating
+- Mods Menu UI fixes

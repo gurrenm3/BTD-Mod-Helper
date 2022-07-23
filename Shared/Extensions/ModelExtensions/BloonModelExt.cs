@@ -346,7 +346,7 @@ namespace BTD_Mod_Helper.Extensions
                 bloonModel.AddBehavior(spawnChild);
             }
 
-            return spawnChild!;
+            return spawnChild;
         }
 
         /// <summary>

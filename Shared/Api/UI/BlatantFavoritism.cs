@@ -4,17 +4,10 @@ namespace BTD_Mod_Helper.Api;
 
 internal class BlatantFavoritism
 {
-    public static Color32 GetColor(string repoOwner)
+    public static Color32 GetColor(string repoOwner) => repoOwner switch
     {
-        switch (repoOwner)
-        {
-            case "doombubbles":
-                return new Color32(200, 0, 255, 255);
-            case "gurrenm3":
-                return new Color32(200, 150, 255, 255);
-            default:
-                return Color.white;
-        }
-    }
-        
+        "doombubbles" => new Color32(200, 0, 255, 255),
+        "gurrenm3" => new Color32(200, 150, 255, 255),
+        _ => Color.white
+    };
 }

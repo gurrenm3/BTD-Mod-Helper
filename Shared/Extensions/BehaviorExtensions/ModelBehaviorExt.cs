@@ -154,7 +154,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you're checking for</typeparam>
         public static bool HasBehavior<T>(this Model model, out T behavior) where T : Model
         {
-            behavior = model.GetBehavior<T>()!;
+            behavior = model.GetBehavior<T>();
             return behavior != null;
         }
 
@@ -191,7 +191,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want</typeparam>
         public static IEnumerable<T> GetBehaviors<T>(this Model model) where T : Model
         {
-            return model.GetBehaviors().Select(b => b?.TryCast<T>()).Where(b => b != null)!;
+            return model.GetBehaviors().Select(b => b?.TryCast<T>()).Where(b => b != null);
         }
 
         /// <summary>

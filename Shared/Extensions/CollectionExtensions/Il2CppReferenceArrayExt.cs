@@ -30,7 +30,7 @@ public static partial class Il2CppReferenceArrayExt
     {
         for (var i = 0; i < referenceArray.Length; i++)
         {
-            referenceArray[i] = default!;
+            referenceArray[i] = default;
         }
     }
 

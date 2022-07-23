@@ -60,7 +60,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// The ParagonTowerModel that this will use as a base. You don't need to worry about displayDegreePaths
     /// </summary>
     public virtual ParagonTowerModel ParagonTowerModel => Game.instance.model
-        .GetTowerWithName($"{TowerType.BoomerangMonkey}-Paragon").GetBehavior<ParagonTowerModel>()!;
+        .GetTowerWithName($"{TowerType.BoomerangMonkey}-Paragon").GetBehavior<ParagonTowerModel>();
 
     /// <summary>
     /// By default, remove any abilities from the Paragon tower

@@ -9,10 +9,10 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 public static class Animations
 {
-    public static RuntimeAnimatorController GlobalButtonAnimation => Get("GlobalButtonAnimation")!;
-    public static RuntimeAnimatorController TabAnimation => Get("GlobalTabAnimation")!;
-    public static RuntimeAnimatorController GlowPulse => Get("GlowPulse")!;
-    public static RuntimeAnimatorController PopupAnim => Get("PopupAnim")!;
+    public static RuntimeAnimatorController GlobalButtonAnimation => Get("GlobalButtonAnimation");
+    public static RuntimeAnimatorController TabAnimation => Get("GlobalTabAnimation");
+    public static RuntimeAnimatorController GlowPulse => Get("GlowPulse");
+    public static RuntimeAnimatorController PopupAnim => Get("PopupAnim");
 
     private static readonly Dictionary<string, RuntimeAnimatorController> AnimationsByName = new();
 

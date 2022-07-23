@@ -111,7 +111,7 @@ namespace BTD_Mod_Helper.Api
             ModContent instance;
             try
             {
-                instance = (ModContent) Activator.CreateInstance(type)!;
+                instance = (ModContent) Activator.CreateInstance(type);
                 instance.mod = mod;
                 ModContentInstances.SetInstance(type, instance);
             }

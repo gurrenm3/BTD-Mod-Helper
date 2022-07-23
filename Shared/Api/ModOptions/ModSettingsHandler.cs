@@ -28,7 +28,7 @@ internal class ModSettingsHandler
                                         BindingFlags.Static)
                              .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
                 {
-                    var modSetting = (ModSetting) field.GetValue(mod)!;
+                    var modSetting = (ModSetting) field.GetValue(mod);
                     mod.ModSettings[field.Name] = modSetting;
                     modSetting.displayName ??= field.Name.Spaced();
                 }

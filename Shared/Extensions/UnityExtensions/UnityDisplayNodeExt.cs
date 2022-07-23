@@ -32,7 +32,7 @@ public static partial class UnityDisplayNodeExt
     {
         return node.GetRenderers<T>(recalculate)
             .OrderBy(renderer => renderer.name.StartsWith("FlatSkin") ? 0 : 1)
-            .FirstOrDefault()!;
+            .FirstOrDefault();
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public static partial class UnityDisplayNodeExt
     /// </summary>
     public static Transform GetBone(this UnityDisplayNode unityDisplayNode, string boneName)
     {
-        return unityDisplayNode.gameObject.GetComponentInChildrenByName<Transform>(boneName)!;
+        return unityDisplayNode.gameObject.GetComponentInChildrenByName<Transform>(boneName);
     }
 
     /// <summary>

@@ -32,7 +32,7 @@ internal static class ModsButton
         modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = $"   Mods ({ModHelper.Melons.Count()})";
         modsButton.GetComponentInChildren<Button>().SetOnClick(() => ModGameMenu.Open<ModsMenu>());
 
-        var indicator = modsButton.GetComponentInChildrenByName<RectTransform>("ParagonAvailable")!;
+        var indicator = modsButton.GetComponentInChildrenByName<RectTransform>("ParagonAvailable");
         indicator.gameObject.SetActive(ModHelperData.All.Any(data => data.UpdateAvailable));
         indicator.Find("Glow").GetComponent<Image>().color = Color.green;
         indicator.Find("Icon").GetComponent<Image>().SetSprite(VanillaSprites.UpgradeBtn);

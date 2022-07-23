@@ -49,12 +49,14 @@
         </Reference>
     </ItemGroup>
 
-    <!--Automatically embed pngs, jpgs, bytes and bundles-->
+    <!--Automatic embeds-->
     <ItemGroup Condition="'$(AutoEmbed)' != 'false'">
         <EmbeddedResource Include="**/*.png"/>
         <EmbeddedResource Include="**/*.jpg"/>
         <EmbeddedResource Include="**/*.bundle"/>
         <EmbeddedResource Include="**/*.bytes"/>
+        <EmbeddedResource Condition="Exists('ModHelperData.json')" Include="ModHelperData.json"/>
+        <EmbeddedResource Condition="Exists('ModHelperData.txt')" Include="ModHelperData.txt"/>
     </ItemGroup>
 
     <!--Post build events to copy dll/xml to mods folder. Works even if game is currently running-->
@@ -64,7 +66,7 @@
         <Delete Condition="Exists('$(BloonsTD6)\$(OutputFolder)\BloonsTD6 Mod Helper\Old Mods\$(ProjectName).dll')"
                 Files="$(BloonsTD6)\$(OutputFolder)\BloonsTD6 Mod Helper\Old Mods\$(ProjectName).dll"/>
         
-        <Move Condition="Exists('$(BloonsTD6)\$(OutputFolder)\$(ProjectName).dll')"
+        <Move Condition="Exists('$(BloonsTD6)\$(OutputFolder)\$(ProjectNamez).dll')"
               SourceFiles="$(BloonsTD6)\$(OutputFolder)\$(ProjectName).dll"
               DestinationFiles="$(BloonsTD6)\$(OutputFolder)\BloonsTD6 Mod Helper\Old Mods\$(ProjectName).dll"/>
 

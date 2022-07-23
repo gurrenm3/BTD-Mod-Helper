@@ -209,7 +209,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedMod = modSelected;
 
         selectedModName.Text.SetText(modSelected.DisplayName);
-        selectedModAuthor.Text.SetText(modSelected.Author ?? modSelected.RepoOwner);
+        selectedModAuthor.Text.SetText(modSelected.DisplayAuthor);
         selectedModVersion.Text.SetText("v" + modSelected.Version);
         selectedModDescription.Text.SetText(modSelected.DisplayDescription);
 
@@ -358,8 +358,11 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModName = modTitlePanel.AddText(new Info("ModTitle", InfoPreset.FillParent)
         {
-            Width = Padding * -2
+            Width = Padding * -2,
+            Height = -Padding
         }, "Test Long Mod Name", FontLarge, TextAlignmentOptions.Left);
+        selectedModName.Text.enableAutoSizing = true;
+        
 
 
         selectedModHomeButton = firstRow.AddButton(new Info("HomePage")
@@ -388,15 +391,19 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModAuthor = modAuthorPanel.AddText(new Info("Author", InfoPreset.FillParent)
         {
-            Width = Padding * -2
+            Width = Padding * -2,
+            Height = -Padding
         }, "Author", FontSmall, TextAlignmentOptions.Left);
+        selectedModAuthor.Text.enableAutoSizing = true;
 
         var modVersionPanel = secondRow.AddPanel(new Info("ModVersionPanel", InfoPreset.Flex),
             VanillaSprites.BlueInsertPanelRound);
-        selectedModVersion = modVersionPanel.AddText(new Info("Version")
+        selectedModVersion = modVersionPanel.AddText(new Info("Version", InfoPreset.FillParent)
         {
-            Width = Padding * -2
-        }, "Version", FontSmall);
+            Width = -Padding,
+            Height = -Padding
+        }, "Version");
+        selectedModVersion.Text.enableAutoSizing = true;
 
 
         var descriptionPanel = selectedModPanel.AddScrollPanel(new Info("DescriptionPanel", InfoPreset.Flex),

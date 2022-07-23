@@ -13,7 +13,7 @@ internal class TowerSetBgSprites_GetSprite
     {
         if (ModContent.GetContent<ModTowerSet>().FirstOrDefault(set => set.Id == name) is ModTowerSet modTowerSet)
         {
-            __result = ModContent.GetSprite(modTowerSet.mod, modTowerSet.Container)!;
+            __result = ModContent.GetSprite(modTowerSet.mod, modTowerSet.Container);
         }
     }
 }

@@ -40,7 +40,7 @@ internal class Notification
     public Notification(int slot, NkhMsg msg)
     {
         if (assetBundle == null)
-            assetBundle = ModContent.GetBundle<MelonMain>("ingame_popup")!;
+            assetBundle = ModContent.GetBundle<MelonMain>("ingame_popup");
         if (canvas == null)
             canvas = assetBundle.LoadAsset("Canvas").Cast<GameObject>();
 
@@ -114,7 +114,7 @@ internal class Notification
         doStallMsg = false;
         doHideMsg = false;
 
-        UpdateEvent += Notification_UpdateEvent!;
+        UpdateEvent += Notification_UpdateEvent;
     }
 
     private void Notification_UpdateEvent(object sender, NotificationEventArgs e)
@@ -198,7 +198,7 @@ internal class Notification
         gameObject.SetActive(false);
         Object.Destroy(gameObject);
 
-        UpdateEvent -= Notification_UpdateEvent!;
+        UpdateEvent -= Notification_UpdateEvent;
         NotificationMgr.notifications.Remove(this);
     }
 

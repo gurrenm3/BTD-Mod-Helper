@@ -36,7 +36,7 @@ public static class Il2CppSystemObjectExt
     /// <typeparam name="T">Type to check</typeparam>
     public static bool IsType<T>(this Object instance, out T castObject) where T : Object
     {
-        castObject = instance?.TryCast<T>()!;
+        castObject = instance?.TryCast<T>();
         return castObject != null;
     }
         
@@ -49,7 +49,7 @@ public static class Il2CppSystemObjectExt
     /// <inheritdoc cref="IsType{T}(Il2CppSystem.Object,out T)"/>
     public static bool Is<T>(this Object instance, out T castObject) where T : Object
     {
-        castObject = instance?.TryCast<T>()!;
+        castObject = instance?.TryCast<T>();
         return castObject != null;
     }
         

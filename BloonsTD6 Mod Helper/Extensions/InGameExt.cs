@@ -249,7 +249,7 @@ public static partial class InGameExt
     /// <param name="round"></param>
     public static void SpawnBloons(this InGame inGame, int round)
     {
-        var model = inGame.GetGameModel()!;
+        var model = inGame.GetGameModel();
 
         var index = (round < 100) ? round - 1 : round - 100;
         var emissions = (round < 100)

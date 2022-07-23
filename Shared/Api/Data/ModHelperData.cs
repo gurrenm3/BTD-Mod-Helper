@@ -68,14 +68,15 @@ internal partial class ModHelperData
 
     /// <summary>
     /// Either a Mod's "Enabled" status is different from whether or not it's loaded into the game,
-    /// or the data Version is ahead of the currently loaded mod's version
+    /// or the data Version matches the repo's version and not the current version
     /// </summary>
     internal bool RestartRequired =>
-        Enabled == (Mod == null) || Mod != null && Version != null && IsUpdate(Mod.Info.Version, Version, RepoOwner);
+        Enabled == (Mod == null) ||
+        Mod != null && Version != null && Version == RepoVersion && IsUpdate(Mod.Info.Version, Version, RepoOwner);
 
-
-    internal string DisplayName => Name ?? Mod?.Info.Name ?? Repository?.Name;
-
+    // Values to be displayed in the GUI
+    internal string DisplayName => Name ?? Mod?.Info.Name ?? RepoName;
+    internal string DisplayAuthor => Author?.ToLower() == "unknown" ? RepoOwner ?? Author : Author ?? RepoOwner;
     internal string DisplayDescription => Description ?? Repository?.Description ?? "No description provided.";
 
     public ModHelperData()

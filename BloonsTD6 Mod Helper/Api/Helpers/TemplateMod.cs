@@ -113,7 +113,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 var modHelperDataPath = Path.Combine(path, "ModHelperData.cs");
                 if (!File.Exists(modHelperDataPath))
                 {
-                    var modHelperData = zipArchive.GetEntry(ZipArchivePrefix + "ModHelperData.cs")!;
+                    var modHelperData = zipArchive.GetEntry(ZipArchivePrefix + "ModHelperData.cs");
                     modHelperData.ExtractToFile(modHelperDataPath);
                     ReplaceFileText(modHelperDataPath, name);
                 }

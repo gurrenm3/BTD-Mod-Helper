@@ -22,7 +22,7 @@ public static class AbilityModelExt
         {
             return new List<AbilityToSimulation>();
         }
-        var abilities = InGame.instance.GetAbilities()!;
+        var abilities = InGame.instance.GetAbilities();
         return abilities.Where(sim => sim.ability.abilityModel.IsEqual(abiltyModel)).ToList();
     }
 }

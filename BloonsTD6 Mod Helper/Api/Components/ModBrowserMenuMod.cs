@@ -159,7 +159,7 @@ internal static class ModBrowserMenuModExt
         mod.LackOfIconPanel.SetActive(true);
         mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
-        mod.Author.SetText(modHelperData.Author ?? modHelperData.RepoOwner);
+        mod.Author.SetText(modHelperData.DisplayAuthor);
         mod.Author.Text.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
 
         Task.Run(async () =>

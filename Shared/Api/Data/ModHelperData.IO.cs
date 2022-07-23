@@ -67,8 +67,8 @@ internal partial class ModHelperData
 
     private void ReadValuesFromString(string data, bool allowRepo = true)
     {
-        Version = GetRegexMatch<string>(data, VersionRegex)!;
-        Name = GetRegexMatch<string>(data, NameRegex)!;
+        Version = GetRegexMatch<string>(data, VersionRegex);
+        Name = GetRegexMatch<string>(data, NameRegex);
         Description = GetRegexMatch<string>(data, DescRegex, true);
         Icon = GetRegexMatch<string>(data, IconRegex);
         DllName = GetRegexMatch<string>(data, DllRegex);

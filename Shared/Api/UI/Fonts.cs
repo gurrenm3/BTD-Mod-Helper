@@ -37,8 +37,8 @@ public static class Fonts
         return FontsByName.TryGetValue(name, out var anim) ? anim : null;
     }
         
-    public static TMP_FontAsset Btd6FontBody => Get("Btd6FontBodySDF")!;
-    public static TMP_FontAsset Btd6FontTitle => Get("Btd6FontTitleSDF")!;
-    public static TMP_FontAsset CurrencyExtras => Get("CurrencyExtrasSDF")!;
-    public static TMP_FontAsset LiberationSans => Get("CurrencyExtrasSDF")!;
+    public static TMP_FontAsset Btd6FontBody => Get("Btd6FontBodySDF");
+    public static TMP_FontAsset Btd6FontTitle => Get("Btd6FontTitleSDF");
+    public static TMP_FontAsset CurrencyExtras => Get("CurrencyExtrasSDF");
+    public static TMP_FontAsset LiberationSans => Get("CurrencyExtrasSDF");
 }

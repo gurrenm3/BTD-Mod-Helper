@@ -25,7 +25,7 @@ public static class ComponentExt
     /// <returns></returns>
     public static T GetComponentFromChildrenByName<T>(this Component component, string componentName) where T : Component
     {
-        return component.transform.GetComponentsInChildren<T>().FirstOrDefault(comp => comp.name == componentName)!;
+        return component.transform.GetComponentsInChildren<T>().FirstOrDefault(comp => comp.name == componentName);
     }
 
     /// <summary>

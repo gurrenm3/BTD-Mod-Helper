@@ -57,7 +57,7 @@ public class JsonSerializer
     /// </summary>
     public T DeserializeJson<T>(string text)
     {
-        return JsonConvert.DeserializeObject<T>(text)!;
+        return JsonConvert.DeserializeObject<T>(text);
     }
 
         

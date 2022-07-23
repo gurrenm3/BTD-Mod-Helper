@@ -9,11 +9,15 @@ using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.Playables;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
 internal static class RoundSetChanger
 {
+    public static string RoundSetOverride { get; private set; }
+    
     private static readonly string[] ShowOnMenus =
     {
         "MapSelectUI", "DifficultySelectUI", "ModeSelectUI",
@@ -26,13 +30,11 @@ internal static class RoundSetChanger
     private static ModHelperPanel buttonPanel;
     private static ModHelperScrollPanel optionsPanel;
     private static ModHelperButton button;
-    private static readonly Dictionary<string, ModHelperImage> Ticks = new();
-
-    public static string RoundSetOverride { get; private set; }
+    private static readonly Dictionary<string, ModHelperImage> CheckMarks = new();
 
     private static void CreatePanel(GameObject screen)
     {
-        Ticks.Clear();
+        CheckMarks.Clear();
         RoundSetOverride = "";
         buttonPanel = screen.AddModHelperPanel(new Info("RoundSetChangerPanel")
         {
@@ -101,7 +103,7 @@ internal static class RoundSetChanger
             new Info(displayName, 0, -175, 500, 100), displayName, 50f
         );
 
-        Ticks[id] = roundButton.AddImage(
+        CheckMarks[id] = roundButton.AddImage(
             new Info("Tick", -75, -75, 100, 100, anchor: Vector2.one), VanillaSprites.SelectedTick
         );
 
@@ -157,7 +159,7 @@ internal static class RoundSetChanger
         optionsPanel.SetActive(true);
         optionsPanel.GetComponent<Animator>().Play("PopupScaleIn");
         optionsPanel.ScrollContent.RectTransform.localPosition = new Vector3(-200, 0, 0);
-        foreach (var (id, image) in Ticks)
+        foreach (var (id, image) in CheckMarks)
         {
             image.SetActive(RoundSetOverride == id);
         }

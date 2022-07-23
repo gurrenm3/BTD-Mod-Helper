@@ -78,7 +78,7 @@ public static class IEnumerableExt
                     $"Couldn't cast type {m.GetIl2CppType().Name} to {Il2CppType.Of<TCast>().Name}");
             }
 
-            return tryCast!;
+            return tryCast;
         });
     }
 
@@ -100,7 +100,7 @@ public static class IEnumerableExt
 
         comparer ??= System.Collections.Generic.Comparer<K>.Default;
 
-        map ??= arg => (K) (object) arg!;
+        map ??= arg => (K) (object) arg;
 
         foreach (var item in source)
         {
@@ -115,7 +115,7 @@ public static class IEnumerableExt
         }
 
         if (!first)
-            return result!;
+            return result;
         throw new ArgumentException(@"Can't compute ArgMax on empty sequence.", nameof(source));
     }
 

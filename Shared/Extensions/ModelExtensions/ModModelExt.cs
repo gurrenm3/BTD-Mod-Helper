@@ -30,7 +30,7 @@ public static class ModModelExt
     /// <typeparam name="T">The Mutator you're checking for</typeparam>
     public static bool HasMutator<T>(this ModModel model, out T mutator) where T : MutatorModModel
     {
-        mutator = model.GetMutator<T>()!;
+        mutator = model.GetMutator<T>();
         return mutator != null;
     }
 
@@ -68,7 +68,7 @@ public static class ModModelExt
     /// <typeparam name="T">The Mutator you want</typeparam>
     public static IEnumerable<T> GetMutators<T>(this ModModel model) where T : MutatorModModel
     {
-        return model.mutatorMods.Select(b => b?.TryCast<T>()).Where(b => b != null)!;
+        return model.mutatorMods.Select(b => b?.TryCast<T>()).Where(b => b != null);
     }
 
     /// <summary>

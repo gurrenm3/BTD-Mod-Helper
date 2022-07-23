@@ -235,6 +235,6 @@ public abstract class ModByteLoader<T> : ModByteLoader where T : Object
     public T LoadResult()
     {
         LoadTask?.Wait(); // Just in case the loading hasn't completed yet
-        return result!;
+        return result;
     }
 }

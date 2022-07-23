@@ -36,7 +36,7 @@ internal class Factory_FindAndSetupPrototypeAsync
                     ImageConversion.LoadImage(texture, bytes);
                     udn.isSprite = true;
                     udn.RecalculateGenericRenderers();
-                    var spriteRenderer = udn.genericRenderers.GetItemOfType<Renderer, SpriteRenderer>()!;
+                    var spriteRenderer = udn.genericRenderers.GetItemOfType<Renderer, SpriteRenderer>();
                     var scale = ResourceHandler.ScalesFor2dModels.TryGetValue(id, out var f) ? f : 10;
                     spriteRenderer.sprite = Sprite.Create(texture,
                         new Rect(0, 0, texture.width, texture.height),
