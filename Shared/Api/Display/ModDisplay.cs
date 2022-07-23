@@ -3,6 +3,7 @@ using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
 using System.Collections.Generic;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
+using UnityEngine;
 
 #if BloonsTD6
 using Assets.Scripts.Models.GenericBehaviors;
@@ -51,7 +52,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// The position offset to render the display at (z axis is up toward camera)
         /// </summary>
-        public virtual Vector3 PositionOffset => new(0,0,0);
+        public virtual Vector3 PositionOffset => new(0, 0, 0);
 
         /// <summary>
         /// The scale to render the display at
@@ -73,10 +74,8 @@ namespace BTD_Mod_Helper.Api.Display
         /// </summary>
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="textureName">The name of the texture, without .png</param>
-        protected void SetMeshTexture(UnityDisplayNode node, string textureName)
-        {
+        protected void SetMeshTexture(UnityDisplayNode node, string textureName) =>
             node.GetMeshRenderer().SetMainTexture(GetTexture(textureName)!);
-        }
 
         /// <summary>
         /// Sets the mesh texture to that of a named png
@@ -84,10 +83,25 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="textureName">The name of the texture, without .png</param>
         /// <param name="index">The index to set at</param>
-        protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index)
-        {
+        protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index) =>
             node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName)!);
-        }
+
+        /// <summary>
+        /// Sets the outline color for the first mesh renderer in the given node
+        /// </summary>
+        /// <param name="node">The UnityDisplayNode</param>
+        /// <param name="color">The color for it to be outlined (when not highlighted)</param>
+        protected void SetMeshOutlineColor(UnityDisplayNode node, Color color) =>
+            node.GetMeshRenderer().SetOutlineColor(color);
+
+        /// <summary>
+        /// Sets the outline color for the index'th mesh renderer in the given node
+        /// </summary>
+        /// <param name="node">The UnityDisplayNode</param>
+        /// <param name="color">The color for it to be outlined (when not highlighted)</param>
+        /// <param name="index">What index of mesh renderer to use</param>
+        protected void SetMeshOutlineColor(UnityDisplayNode node, Color color, int index) =>
+            node.GetMeshRenderer(index).SetOutlineColor(color);
 
         /// <summary>
         /// Applies this ModDisplay to a given BloonModel
@@ -133,7 +147,7 @@ namespace BTD_Mod_Helper.Api.Display
         }
 
 
-#region Misc Display Ids
+        #region Misc Display Ids
 
         /// <summary>
         /// The display id for RoadSpikes
@@ -187,6 +201,6 @@ namespace BTD_Mod_Helper.Api.Display
 
 #pragma warning restore CS1591
 
-#endregion
+        #endregion
     }
 }

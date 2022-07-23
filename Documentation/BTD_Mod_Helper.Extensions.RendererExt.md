@@ -190,6 +190,25 @@ public static void SetMainTexture(this UnityEngine.Renderer renderer, UnityEngin
 
 `texture2D` [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
 
+<a name='BTD_Mod_Helper.Extensions.RendererExt.SetOutlineColor(thisUnityEngine.Renderer,UnityEngine.Color)'></a>
+
+## RendererExt.SetOutlineColor(this Renderer, Color) Method
+
+Sets the outline color for this renderer
+
+```csharp
+public static void SetOutlineColor(this UnityEngine.Renderer renderer, UnityEngine.Color color);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.RendererExt.SetOutlineColor(thisUnityEngine.Renderer,UnityEngine.Color).renderer'></a>
+
+`renderer` [UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')
+
+<a name='BTD_Mod_Helper.Extensions.RendererExt.SetOutlineColor(thisUnityEngine.Renderer,UnityEngine.Color).color'></a>
+
+`color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
+
 <a name='BTD_Mod_Helper.Extensions.RendererExt.SetTriangles(thisUnityEngine.SkinnedMeshRenderer,System.Collections.Generic.List_int[]_)'></a>
 
 ## RendererExt.SetTriangles(this SkinnedMeshRenderer, List<int[]>) Method

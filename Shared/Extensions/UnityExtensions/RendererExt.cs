@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnhollowerBaseLib;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace BTD_Mod_Helper.Extensions;
 
 public static partial class RendererExt
 {
+    private static readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
+
     /// <summary>
     /// Set the texture for this renderer. Equivalent to "render.material.mainTexture = texture2D"
     /// </summary>
@@ -19,6 +22,15 @@ public static partial class RendererExt
         renderer.material.mainTexture = texture2D;
     }
 
+    /// <summary>
+    /// Sets the outline color for this renderer
+    /// </summary>
+    public static void SetOutlineColor(this Renderer renderer, Color color)
+    {
+        renderer.material.SetColor(OutlineColor, color);
+        renderer.material.SetShaderKeywords(Array.Empty<string>());
+    }
+    
     /// <summary>
     /// Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
     /// </summary>

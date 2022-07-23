@@ -1,1 +1,3 @@
 - Mods Menu UI fixes
+- Added new easier `ModTower.IsValidCrosspath` method
+- Added `SetOutlineColor` extension method for mesh renderers

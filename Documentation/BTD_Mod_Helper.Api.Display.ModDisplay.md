@@ -247,6 +247,58 @@ The UnityDisplayNode
 
 The name of the texture, without .png
 
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color)'></a>
+
+## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color) Method
+
+Sets the outline color for the first mesh renderer in the given node
+
+```csharp
+protected void SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode node, UnityEngine.Color color);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color).node'></a>
+
+`node` [Assets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.UnityDisplayNode 'Assets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color).color'></a>
+
+`color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
+
+The color for it to be outlined (when not highlighted)
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int)'></a>
+
+## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color, int) Method
+
+Sets the outline color for the index'th mesh renderer in the given node
+
+```csharp
+protected void SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode node, UnityEngine.Color color, int index);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int).node'></a>
+
+`node` [Assets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.UnityDisplayNode 'Assets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int).color'></a>
+
+`color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
+
+The color for it to be outlined (when not highlighted)
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Assets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int).index'></a>
+
+`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+What index of mesh renderer to use
+
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Assets.Scripts.Unity.Display.UnityDisplayNode,string)'></a>
 
 ## ModDisplay.SetMeshTexture(UnityDisplayNode, string) Method
