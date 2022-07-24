@@ -50,9 +50,7 @@ public System.Collections.Generic.IReadOnlyList<BTD_Mod_Helper.Api.ModContent> C
 
 ## BloonsMod.GithubReleaseURL Property
 
-Github API URL used to check if this mod is up to date.  
-  
-    For example: "https://api.github.com/repos/gurrenm3/BTD-Mod-Helper/releases"
+[https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29 'https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29')
 
 ```csharp
 public virtual string GithubReleaseURL { get; }
@@ -78,9 +76,7 @@ public virtual string IDPrefix { get; }
 
 ## BloonsMod.LatestURL Property
 
-Link that people should be prompted to go to when this mod is out of date.  
-  
-    For example: "https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest"
+[https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29 'https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29')
 
 ```csharp
 public virtual string LatestURL { get; }
@@ -93,14 +89,7 @@ public virtual string LatestURL { get; }
 
 ## BloonsMod.MelonInfoCsURL Property
 
-As an alternative to a GithubReleaseURL, a direct link to a web-hosted version of the .cs file that  
-has the "MelonInfo" attribute with the version of your mod  
-  
-      
-    For example: "https://raw.githubusercontent.com/doombubbles/BTD6-Mods/main/MegaKnowledge/Main.cs"  
-  
-    because the file contains  
-    [assembly: MelonInfo(typeof(MegaKnowledge.Main), "Mega Knowledge", "1.0.1", "doombubbles")]
+[https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29 'https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29')
 
 ```csharp
 public virtual string MelonInfoCsURL { get; }

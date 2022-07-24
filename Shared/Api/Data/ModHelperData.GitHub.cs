@@ -18,19 +18,14 @@ internal partial class ModHelperData
     private const string ModHelperModsJson = "ModHelperMods.json";
 
     private const string DescriptionBranchRegex = "Mod\\s+Browser\\s+Branch\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/]+)\"";
-    
+
+    // Browser Mod Info
     internal Repository Repository { get; private set; }
     internal bool RepoDataSuccess { get; private set; }
     internal string RepoVersion { get; private set; }
     internal Release LatestRelease { get; private set; }
     internal GitHubCommit LatestCommit { get; private set; }
     internal string Branch { get; private set; }
-
-    // Browser Mod Info
-
-    /*internal string Branch => RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName
-        ? "3.0_Features"
-        : Repository.DefaultBranch;*/
 
     internal bool UpdateAvailable =>
         Version != null &&
@@ -39,12 +34,14 @@ internal partial class ModHelperData
         RepoVersion != null &&
         IsUpdate(Version, RepoVersion, RepoOwner);
 
+    internal bool OutOfDate => UpdateAvailable || OldDownloadUrl != null;
+
     internal string ReadmeUrl
     {
         get
         {
             if (RepoOwner == null || RepoName == null)
-                return Mod?.Info.DownloadLink;
+                return OldDownloadUrl ?? Mod?.Info.DownloadLink;
             if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
                 return $"https://github.com/{RepoOwner}/{RepoName}#readme";
 
@@ -147,6 +144,7 @@ internal partial class ModHelperData
                 {
                     ModHelper.Warning($"Did not find any mod data for {Repository.FullName} branch {Branch}");
                 }
+
                 return;
             }
 
@@ -171,7 +169,8 @@ internal partial class ModHelperData
                     modHelperData.Branch = Branch;
                     modHelperData.RepoDataSuccess = true;
                 }
-            } else if (RepoOwner == MelonMain.GitHubUsername)
+            }
+            else if (RepoOwner == MelonMain.GitHubUsername)
             {
                 ModHelper.Warning($"{Repository.FullName} did not have all required ModHelperData");
             }
