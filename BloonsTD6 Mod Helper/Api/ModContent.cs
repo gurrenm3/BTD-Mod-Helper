@@ -87,5 +87,21 @@ public abstract partial class ModContent : IComparable<ModContent>
     }
 
     /// <inheritdoc />
-    public int CompareTo(ModContent other) => Order.CompareTo(other.Order);
+    public int CompareTo(ModContent other)
+    {
+        var compareTo = Order.CompareTo(other.Order);
+        if (compareTo == 0)
+        {
+            compareTo = mod.Priority.CompareTo(other.mod.Priority);
+        }
+        if (compareTo == 0)
+        {
+            compareTo = string.Compare(Id, other.Id, StringComparison.Ordinal);
+        }
+        if (compareTo == 0)
+        {
+            compareTo = GetHashCode().CompareTo(other.GetHashCode());
+        }
+        return compareTo;
+    }
 }

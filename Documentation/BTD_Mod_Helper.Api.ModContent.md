@@ -319,7 +319,7 @@ The singleton instance of it
 
 ## ModContent.GetInstances<T>() Method
 
-Gets all loaded ModContent objects that are of type T
+Gets all loaded ModContent objects that are exactly of type T
 
 ```csharp
 public static System.Collections.Generic.List<T> GetInstances<T>()

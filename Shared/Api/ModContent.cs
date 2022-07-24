@@ -132,13 +132,18 @@ namespace BTD_Mod_Helper.Api
         private static IEnumerable<ModContent> Load(ModContent instance)
         {
             var type = instance.GetType();
-            var instances = new List<ModContent>();
+            var content = new List<ModContent>();
             try
             {
-                instances.AddRange(instance.Load());
-                foreach (var modContent in instances)
+                content.AddRange(instance.Load());
+                var instances = new List<ModContent>();
+                foreach (var modContent in content)
                 {
                     modContent.mod = instance.mod;
+                    if(instance.GetType().IsInstanceOfType(modContent))
+                    {
+                        instances.Add(modContent);
+                    }
                 }
 
                 ModContentInstances.SetInstances(type, instances);
@@ -150,7 +155,7 @@ namespace BTD_Mod_Helper.Api
                 ModHelper.Error(e);
             }
 
-            return instances;
+            return content;
         }
 
         /// <summary>
@@ -537,15 +542,14 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public static List<T> GetContent<T>() where T : ModContent
         {
-            return ModContentInstances.Instances
-                .Where(pair => typeof(T).IsAssignableFrom(pair.Key))
-                .SelectMany(pair => pair.Value)
-                .Cast<T>()
+            return ModHelper.Mods
+                .SelectMany(bloonsMod => bloonsMod.Content)
+                .OfType<T>()
                 .ToList();
         }
 
         /// <summary>
-        /// Gets all loaded ModContent objects that are of type T 
+        /// Gets all loaded ModContent objects that are exactly of type T 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>

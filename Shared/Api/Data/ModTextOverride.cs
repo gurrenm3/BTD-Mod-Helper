@@ -37,7 +37,10 @@ public abstract class ModTextOverride : ModContent
             Cache[key] = new SortedSet<ModTextOverride>();
         }
 
-        Cache[key].Add(textOverride);
+        if (!Cache[key].Add(textOverride))
+        {
+            ModHelper.Warning($"Failed to register text override {textOverride.Id}");
+        }
     }
     
     /// <inheritdoc />
