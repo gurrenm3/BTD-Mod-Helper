@@ -91,7 +91,7 @@ jobs:
           
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') && github.repository == 'doombubbles/BTD-Mod-Helper'
         with:
           files: |
             ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
