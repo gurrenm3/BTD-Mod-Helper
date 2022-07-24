@@ -66,7 +66,7 @@
         <Delete Condition="Exists('$(BloonsTD6)\$(OutputFolder)\BloonsTD6 Mod Helper\Old Mods\$(ProjectName).dll')"
                 Files="$(BloonsTD6)\$(OutputFolder)\BloonsTD6 Mod Helper\Old Mods\$(ProjectName).dll"/>
         
-        <Move Condition="Exists('$(BloonsTD6)\$(OutputFolder)\$(ProjectNamez).dll')"
+        <Move Condition="Exists('$(BloonsTD6)\$(OutputFolder)\$(ProjectName).dll')"
               SourceFiles="$(BloonsTD6)\$(OutputFolder)\$(ProjectName).dll"
               DestinationFiles="$(BloonsTD6)\$(OutputFolder)\BloonsTD6 Mod Helper\Old Mods\$(ProjectName).dll"/>
 

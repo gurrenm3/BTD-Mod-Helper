@@ -1,4 +1,5 @@
-﻿#pragma warning disable 1591
+﻿using System;
+#pragma warning disable 1591
 namespace BTD_Mod_Helper.Api.Enums;
 
 public static class UpgradeType
@@ -66,7 +67,9 @@ public static class UpgradeType
     public const string Overdrive = "Overdrive";
     public const string TheTackZone = "The Tack Zone";
     public const string Permafrost = "Permafrost";
+    [Obsolete("Use ColdSnap")]
     public const string MetalFreeze = "Metal Freeze";
+    public const string ColdSnap = "Metal Freeze";
     public const string IceShards = "Ice Shards";
     public const string Embrittlement = "Embrittlement";
     public const string SuperBrittle = "Super Brittle";
@@ -214,7 +217,9 @@ public static class UpgradeType
     public const string MonkeySense = "Monkey Sense";
     public const string Shimmer = "Shimmer";
     public const string NecromancerUnpoppedArmy = "Necromancer: Unpopped Army";
+    [Obsolete("Use PrinceOfDarkness")]
     public const string Soulbind = "Soulbind";
+    public const string PrinceOfDarkness = "Soulbind";
     public const string LaserBlasts = "Laser Blasts";
     public const string PlasmaBlasts = "Plasma Blasts";
     public const string SunAvatar = "Sun Avatar";

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
 using UnityEngine;
@@ -561,13 +562,6 @@ namespace BTD_Mod_Helper.Api
         /// <returns></returns>
         public static T Find<T>(string id) where T : ModContent
         {
-            if (typeof(ModTower).IsAssignableFrom(typeof(T)) &&
-                ModTowerHelper.ModTowerCache.TryGetValue(id, out var modTower)) return modTower as T;
-            if (typeof(ModUpgrade).IsAssignableFrom(typeof(T)) &&
-                ModUpgrade.Cache.TryGetValue(id, out var modUpgrade)) return modUpgrade as T;
-            if (typeof(ModBloon).IsAssignableFrom(typeof(T)) &&
-                ModBloon.Cache.TryGetValue(id, out var modBloon)) return modBloon as T;
-
             return GetContent<T>().FirstOrDefault(content => content.Id == id);
         }
 

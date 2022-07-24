@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Models.Towers;
+﻿using System;
+using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Scenarios;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace BTD_Mod_Helper.Api;
 
-public abstract partial class ModContent
+public abstract partial class ModContent : IComparable<ModContent>
 {
     /// <summary>
     /// Returns a ModMap based on it's name.
@@ -84,4 +85,7 @@ public abstract partial class ModContent
     {
         return GetInstance<T>().Id;
     }
+
+    /// <inheritdoc />
+    public int CompareTo(ModContent other) => Order.CompareTo(other.Order);
 }

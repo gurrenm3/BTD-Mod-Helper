@@ -91,6 +91,15 @@
 | :--- | :--- |
 | [MessageUtils](BTD_Mod_Helper.Api.Coop.MessageUtils.md 'BTD_Mod_Helper.Api.Coop.MessageUtils') | Utility functions used for sending messages over the network. |
 
+<a name='BTD_Mod_Helper.Api.Data'></a>
+
+## BTD_Mod_Helper.Api.Data Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModMultiTextOverride](BTD_Mod_Helper.Api.Data.ModMultiTextOverride.md 'BTD_Mod_Helper.Api.Data.ModMultiTextOverride') | A bunch of ModTextOverrides that all share the same Active condition and don't require any on the fly determinations of their text |
+| [ModTextOverride](BTD_Mod_Helper.Api.Data.ModTextOverride.md 'BTD_Mod_Helper.Api.Data.ModTextOverride') | Class for dynamically overriding In-Game text in a way that's compatible with other mods |
+
 <a name='BTD_Mod_Helper.Api.Display'></a>
 
 ## BTD_Mod_Helper.Api.Display Namespace
