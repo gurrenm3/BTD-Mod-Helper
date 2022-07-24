@@ -118,9 +118,11 @@ internal static class ModHelperGithub
             {
                 const string errorMessage = $"Failed to get latest commit from the GitHub API. {Sorry}";
                 ModHelper.Error(errorMessage);
-#if BloonsTD6
-                PopupScreen.instance.ShowOkPopup(errorMessage);
-#endif
+                if (!bypassPopup)
+                {
+                    PopupScreen.instance.ShowOkPopup(errorMessage);
+                }
+
                 return;
             }
         }
@@ -131,9 +133,11 @@ internal static class ModHelperGithub
             {
                 const string errorMessage = $"Failed to get latest release from the GitHub API. {Sorry}";
                 ModHelper.Error(errorMessage);
-#if BloonsTD6
-                PopupScreen.instance.ShowOkPopup(errorMessage);
-#endif
+                if (!bypassPopup)
+                {
+                    PopupScreen.instance.ShowOkPopup(errorMessage);
+                }
+
                 return;
             }
 
@@ -144,55 +148,19 @@ internal static class ModHelperGithub
             }
         }
 
-        var action = new Action(() =>
-        {
-            Task.Run(async () =>
-            {
-                try
-                {
-                    var asset = mod.SubPath == null
-                        ? latestRelease!.Assets.FirstOrDefault(asset =>
-                              asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
-                          latestRelease.Assets[0]
-                        : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
-                            DateTimeOffset.Now, mod.GetContentURL(mod.DllName!), null);
-                    var resultFile = await DownloadAsset(mod, asset);
-                    if (resultFile != null)
-                    {
-                        if (callback != null && !string.IsNullOrWhiteSpace(resultFile))
-                        {
-                            callback(resultFile);
-                        }
-
-                        return;
-                    }
-                }
-                catch (Exception e)
-                {
-                    ModHelper.Warning(e);
-                }
-
-                const string errorMessage = $"Failed to download asset. {Sorry}";
-                ModHelper.Error(errorMessage);
-#if BloonsTD6
-                PopupScreen.instance.ShowOkPopup(errorMessage);
-#endif
-            });
-        });
 
         if (bypassPopup)
         {
-            action.Invoke();
+            await Download(mod, callback, latestRelease, false);
         }
         else
         {
-#if BloonsTD6
             PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
                 $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                 mod.SubPath == null
                     ? latestRelease!.Body
                     : latestCommit!.Commit.Message,
-                action, "Yes", null, "No", Popup.TransitionAnim.Scale);
+                new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No", Popup.TransitionAnim.Scale);
 
             PopupScreen.instance.ModifyBodyText(field =>
             {
@@ -205,15 +173,44 @@ internal static class ModHelperGithub
 
                 field.Destroy();
             });
-#elif BloonsAT
-                throw new NotImplementedException(); // need to figure out how to do popups in BloonsAT
-#endif
         }
 
         UpdateRateLimit();
+        
     }
 
-    public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset)
+    private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease, bool showPopup)
+    {
+        try
+        {
+            var asset = mod.SubPath == null
+                ? latestRelease!.Assets.FirstOrDefault(asset =>
+                      asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
+                  latestRelease.Assets[0]
+                : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
+                    DateTimeOffset.Now, mod.GetContentURL(mod.DllName!), null);
+            var resultFile = await DownloadAsset(mod, asset, showPopup);
+            if (resultFile != null)
+            {
+                if (callback != null && !string.IsNullOrWhiteSpace(resultFile))
+                {
+                    callback(resultFile);
+                }
+
+                return;
+            }
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+        const string errorMessage = $"Failed to download asset. {Sorry}";
+        ModHelper.Error(errorMessage);
+        PopupScreen.instance.ShowOkPopup(errorMessage);
+    }
+
+    public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true)
     {
         if (mod.ManualDownload)
         {
@@ -285,9 +282,11 @@ internal static class ModHelperGithub
             {
                 var message = $"Successfully downloaded {name}\nRemember to restart to apply the changes!";
                 ModHelper.Log(message);
-#if BloonsTD6
-                PopupScreen.instance.ShowOkPopup(message);
-#endif
+                if (showPopup)
+                {
+                    PopupScreen.instance.ShowOkPopup(message);
+                }
+                
                 mod.SetVersion(mod.RepoVersion!);
                 return downloadFilePath;
             }

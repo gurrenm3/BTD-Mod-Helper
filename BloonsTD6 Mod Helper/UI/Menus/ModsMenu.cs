@@ -289,11 +289,19 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Info("UpdateAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
             VanillaSprites.GreenBtnLong, new Action(async () =>
             {
-                foreach (var modHelperData in modPanels.Select(pair => pair.Key)
-                             .Where(data => data.UpdateAvailable))
-                {
-                    await ModHelperGithub.DownloadLatest(modHelperData, true, _ => Refresh());
-                }
+                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm Update All Mods?",
+                    "This will update all mods to latest versions with no further confirmation.", new Action(
+                        async () =>
+                        {
+                            foreach (var (data, panel) in modPanels
+                                         .Where(kvp => kvp.Key.UpdateAvailable))
+                            {
+                                await ModHelperGithub.DownloadLatest(data, true);
+                                panel.Refresh(data);
+                            }
+                            Refresh();
+                            PopupScreen.instance.ShowOkPopup("Successfully updated mods, remember to restart to apply changes.");
+                        }), "Yes", null, "No", Popup.TransitionAnim.Scale);
             })
         );
 
@@ -362,7 +370,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Height = -Padding
         }, "Test Long Mod Name", FontLarge, TextAlignmentOptions.Left);
         selectedModName.Text.enableAutoSizing = true;
-        
 
 
         selectedModHomeButton = firstRow.AddButton(new Info("HomePage")
