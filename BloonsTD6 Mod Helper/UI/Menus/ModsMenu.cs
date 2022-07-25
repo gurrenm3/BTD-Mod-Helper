@@ -116,7 +116,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         bottomGroupAnimator.speed = .55f;
         bottomGroupAnimator.Play("PopupSlideIn");
 
-        var modBrowserButton = bottomButtonGroup.AddButton(new Info("ModBrowserButton", -225, 50, 400)
+        var modBrowserButton = bottomButtonGroup.AddButton(new Info("ModBrowserButton", -225, Padding, 400)
         {
             Anchor = new Vector2(1, 0),
             Pivot = new Vector2(0.5f, 0)
@@ -124,7 +124,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         modBrowserButton.AddImage(new Info("ComputerMonkey", InfoPreset.FillParent), VanillaSprites.BenjaminIcon);
         modBrowserButton.AddText(new Info("Text", 0, -200, 500, 100), "Browse Mods", 60f);
 
-        var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, 50, 400)
+        var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, Padding, 400)
         {
             Anchor = Vector2.zero,
             Pivot = new Vector2(0.5f, 0)
@@ -444,9 +444,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             VanillaSprites.RedBtnLong, new Action(DisableSelectedMod));
         selectedModDisableButton.AddText(new Info("ButtonText", InfoPreset.FillParent), "Disable", FontLarge);
 
-        selectedModDeleteButton = middleButtons.AddButton(new Info("Delete", ModPanelHeight), VanillaSprites.CloseBtn,
-            new Action(DeleteSelectedMod));
-
         selectedModEnableButton = middleButtons.AddButton(
             new Info("EnabledButton", height: ModPanelHeight, width: ModPanelHeight * ModHelperButton.LongBtnRatio),
             VanillaSprites.GreenBtnLong, new Action(EnableSelectedMod)
@@ -459,11 +456,15 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModSettingsButton.AddImage(
             new Info("Gear", width: ModNameHeight, height: ModNameHeight), VanillaSprites.SettingsIcon
         );
+        
+        selectedModDeleteButton = buttonsRow.AddButton(
+            new Info("Delete", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
+            VanillaSprites.CloseBtn, new Action(DeleteSelectedMod));
     }
 
     private static void DeleteSelectedMod()
     {
-        PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm",
+        PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Delete Mod",
             "Are you sure you want to delete this mod? This action cannot be undone.", new Action(() =>
             {
                 if (selectedMod.Delete())

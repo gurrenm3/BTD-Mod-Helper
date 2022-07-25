@@ -269,11 +269,11 @@ internal partial class ModHelperData
 
                             data.SetFilePath(file.FullName);
                             Inactive.Add(data);
-                            ModHelper.Msg($"Found disabled mod {file.FullName}");
+                            // ModHelper.Msg($"Found disabled mod {file.FullName}");
                         }
                         else
                         {
-                            ModHelper.Msg($"{data.DisplayName} is already enabled?");
+                            // ModHelper.Msg($"{data.DisplayName} is already enabled?");
                         }
                     }
                     catch (Exception e)
