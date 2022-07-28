@@ -60,12 +60,19 @@ internal class Factory_FindAndSetupPrototypeAsync
                         __instance.PrototypeRoot).AddComponent<UnityDisplayNode>();
                     udn.Active = false;
                     udn.transform.position = new Vector3(-3000, 0);
-                    var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
-                    udn.genericRenderers[0].SetMaterial(material);
+                    try
+                    {
+                        var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
+                        udn.genericRenderers[0].SetMaterial(material);
+                    }
+                    catch (Exception e)
+                    {
+                        ModHelper.Error($"Failed to load material for {modDisplay.Name}");
+                        ModHelper.Error(e);
+                    }
                     SetupUDN(udn, modDisplay, onComplete);
                     return false;
                 }
-
                 objectId = modDisplay.BaseDisplay;
                 onComplete = new System.Action<UnityDisplayNode>(node =>
                 {
