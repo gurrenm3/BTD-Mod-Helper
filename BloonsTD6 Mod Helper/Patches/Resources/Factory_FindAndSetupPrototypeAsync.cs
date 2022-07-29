@@ -60,12 +60,15 @@ internal class Factory_FindAndSetupPrototypeAsync
                         __instance.PrototypeRoot).AddComponent<UnityDisplayNode>();
                     udn.Active = false;
                     udn.transform.position = new Vector3(-3000, 0);
-                    var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
-                    udn.genericRenderers[0].SetMaterial(material);
+                    if (customDisplay.MaterialName != null || customDisplay.MaterialName == "")
+                    {
+                        var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
+                        udn.genericRenderers[0].SetMaterial(material);
+                    }
+                    ModHelper.Msg($"Material for {modDisplay.Name} was empty, so it was not set. This may cause display issues");
                     SetupUDN(udn, modDisplay, onComplete);
                     return false;
                 }
-
                 objectId = modDisplay.BaseDisplay;
                 onComplete = new System.Action<UnityDisplayNode>(node =>
                 {
