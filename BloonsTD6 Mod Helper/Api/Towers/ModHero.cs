@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
@@ -187,7 +188,8 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// The total number of abilities that this hero has as max level
     /// </summary>
-    public abstract int Abilities { get; }
+    [Obsolete("No longer required to manually specify")]
+    public virtual int Abilities { get; }
 
     /// <summary>
     /// Modifies the HeroSprite used in the Heroes menu. Will already have modified the font/banner/color using

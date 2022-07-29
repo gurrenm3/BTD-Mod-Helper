@@ -48,7 +48,7 @@ public override string BaseDisplay { get; }
 The name of the material that should be applied to the tower from the asset bundle
 
 ```csharp
-public abstract string MaterialName { get; }
+public virtual string MaterialName { get; }
 ```
 
 #### Property Value

@@ -1,3 +1,1 @@
-- In game UI explanation for mods using the old updating system
-- Allowing custom materials for custom models to be optional
-- Repositioned the delete button for disabled mods
+- The `ModHero` property `Abilities` no longer needs to be manually specified

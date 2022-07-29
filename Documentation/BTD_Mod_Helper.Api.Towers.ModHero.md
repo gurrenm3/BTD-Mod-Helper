@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 The total number of abilities that this hero has as max level
 
 ```csharp
-public abstract int Abilities { get; }
+public virtual int Abilities { get; }
 ```
 
 #### Property Value
