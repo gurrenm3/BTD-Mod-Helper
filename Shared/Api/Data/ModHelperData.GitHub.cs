@@ -68,7 +68,10 @@ internal partial class ModHelperData
         if (GetRegexMatch<string>(Repository.Description ?? "", DescriptionBranchRegex) is string branch)
         {
             Branch = branch;
-            ModHelper.Msg($"Successfully set branch for {repository.FullName} to {branch}");
+            if (RepoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Msg($"Successfully set branch for {repository.FullName} to {branch}");
+            }
         }
     }
 
@@ -290,7 +293,10 @@ internal partial class ModHelperData
         {
             var modsJson = JArray.Parse(await ModHelperHttp.Client.GetStringAsync(modsJsonUrl));
 
-            ModHelper.Msg($"Found monorepo {monoRepo.FullName}");
+            if (monoRepo.Owner.Login == MelonMain.GitHubUsername)
+            {
+                ModHelper.Msg($"Found monorepo {monoRepo.FullName}");
+            }
             return modsJson
                 .Where(token => token.Type == JTokenType.String)
                 .Select(token => new ModHelperData(monoRepo, token.ToString()));

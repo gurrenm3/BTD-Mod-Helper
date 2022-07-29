@@ -287,7 +287,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         // ReSharper disable once AsyncVoidLambda
         updateAllButton = topRow.AddButton(
             new Info("UpdateAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
-            VanillaSprites.GreenBtnLong, new Action(async () =>
+            VanillaSprites.GreenBtnLong, new Action(() =>
             {
                 PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm Update All Mods?",
                     "This will update all mods to latest versions with no further confirmation.", new Action(

@@ -153,7 +153,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     {
         Task.Run(() =>
         {
-            ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
+            // ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
             var filteredMods = ModHelperGithub.VisibleMods
                 .Where(data => string.IsNullOrEmpty(currentSearch) ||
                                scorer.Score(currentSearch.ToLower(), data.DisplayName.ToLower()) >= SearchCutoff ||

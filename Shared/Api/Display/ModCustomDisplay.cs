@@ -14,7 +14,7 @@ public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
     public abstract string PrefabName { get; }
 
     /// <inheritdoc />
-    public abstract string MaterialName { get; }
+    public virtual string MaterialName => null;
 
     /// <summary>
     /// On a ModCustomDisplay, this property does nothing

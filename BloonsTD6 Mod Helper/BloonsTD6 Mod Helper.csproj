@@ -20,6 +20,10 @@
         <!--Documentation Settings-->
         <DocumentationFile>bin\BTD6_Debug\Btd6ModHelper.xml</DocumentationFile>
     </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)' == 'BTD6_Release'">
+        <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
+    </PropertyGroup>
 
     <ItemGroup>
         <Reference Include="System.IO.Compression" />

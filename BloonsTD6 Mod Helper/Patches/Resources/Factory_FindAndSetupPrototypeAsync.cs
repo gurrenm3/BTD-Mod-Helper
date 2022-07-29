@@ -3,6 +3,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using Il2CppSystem;
 using UnityEngine;
+using Console = System.Console;
 using Exception = System.Exception;
 using Object = UnityEngine.Object;
 
@@ -60,12 +61,19 @@ internal class Factory_FindAndSetupPrototypeAsync
                         __instance.PrototypeRoot).AddComponent<UnityDisplayNode>();
                     udn.Active = false;
                     udn.transform.position = new Vector3(-3000, 0);
-                    if (customDisplay.MaterialName != null || customDisplay.MaterialName == "")
+                    if (!string.IsNullOrEmpty(customDisplay.MaterialName))
                     {
-                        var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
-                        udn.genericRenderers[0].SetMaterial(material);
+                        try
+                        {
+                            var material = assetBundle.LoadAsset(customDisplay.MaterialName).Cast<Material>();
+                            udn.genericRenderers[0].SetMaterial(material);
+                        }
+                        catch (Exception e)
+                        {
+                            ModHelper.Warning($"Failed to load custom material {customDisplay.MaterialName}");
+                            ModHelper.Warning(e);
+                        }
                     }
-                    ModHelper.Msg($"Material for {modDisplay.Name} was empty, so it was not set. This may cause display issues");
                     SetupUDN(udn, modDisplay, onComplete);
                     return false;
                 }
