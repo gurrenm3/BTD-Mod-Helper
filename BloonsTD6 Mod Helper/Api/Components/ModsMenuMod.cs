@@ -72,7 +72,18 @@ internal static class ModsMenuModExt
         mod.MainButton.Button.SetOnClick(() =>
         {
             ModsMenu.SetSelectedMod(modHelperData);
-            MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
+            switch (modHelperData.Enabled)
+            {
+                case false when Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift):
+                    ModsMenu.EnableSelectedMod();
+                    break;
+                case true when Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt):
+                    ModsMenu.DisableSelectedMod();
+                    break;
+                default:
+                    MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
+                    break;
+            }
         });
 
         if (!modHelperData.HasNoIcon && modHelperData.GetIcon() is Sprite sprite)

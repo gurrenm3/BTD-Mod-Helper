@@ -39,6 +39,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// </summary>
     /// <param name="newTowerModel">The new tower model</param>
     /// <param name="towerDetailsModel">A TowerDetailsModel to go with it, if it'll be in the shop</param>
+    [Obsolete("Just use Game.instance.model.AddTowerToGame")]
     public static void AddTowerToGame(TowerModel newTowerModel, TowerDetailsModel towerDetailsModel = null)
     {
         Game.instance.model.AddTowerToGame(newTowerModel, towerDetailsModel!);

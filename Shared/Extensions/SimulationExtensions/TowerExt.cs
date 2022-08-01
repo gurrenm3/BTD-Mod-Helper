@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Models.Towers;
+﻿using System;
+using System.Collections.Generic;
+using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Simulation.Display;
 using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity.Bridge;
@@ -6,6 +8,7 @@ using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Simulation.Factory;
 using System.Linq;
+using Il2CppSystem.Linq;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -65,4 +68,15 @@ public static partial class TowerExt
     {
         return InGame.instance.GetFactory<Tower>();
     }
+
+    /// <summary>
+    /// Gets all other towers that are in range of this tower not including itself
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <returns></returns>
+    public static IEnumerable<Tower> GetTowersInRange(this Tower tower) => InGame.instance
+        .GetTowerManager()
+        .GetTowersInRange(tower.Position, tower.towerModel.range)
+        .ToList()
+        .Where(t => t.Id != tower.Id);
 }

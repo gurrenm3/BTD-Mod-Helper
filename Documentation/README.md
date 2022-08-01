@@ -108,6 +108,7 @@
 | :--- | :--- |
 | [ModBloonDisplay](BTD_Mod_Helper.Api.Display.ModBloonDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay') | A ModDisplay that will automatically apply to a ModBloon |
 | [ModBloonDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay<T>') | A convenient generic class for applying a ModBloonDisplay to a ModBloon |
+| [ModBuffIcon](BTD_Mod_Helper.Api.Display.ModBuffIcon.md 'BTD_Mod_Helper.Api.Display.ModBuffIcon') | Class for adding a new buff icon that can be displayed for towers |
 | [ModCustomDisplay](BTD_Mod_Helper.Api.Display.ModCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModCustomDisplay') | The custom version of a ModDisplay that loads in a model from a unity assetbundle |
 | [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay') | A custom Display that is a copy of an existing Display that can be modified |
 | [ModTowerCustomDisplay](BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay') | A ModCustomDisplay that will automatically apply to a ModTower for specific tiers |
@@ -294,6 +295,7 @@
 | [StandardTowerPurchaseButtonExt](BTD_Mod_Helper.Extensions.StandardTowerPurchaseButtonExt.md 'BTD_Mod_Helper.Extensions.StandardTowerPurchaseButtonExt') | Extensions for StandardTowerPurchaseButtons |
 | [StreamExt](BTD_Mod_Helper.Extensions.StreamExt.md 'BTD_Mod_Helper.Extensions.StreamExt') | Extensions for streams |
 | [StringExt](BTD_Mod_Helper.Extensions.StringExt.md 'BTD_Mod_Helper.Extensions.StringExt') | Extensions for strings |
+| [SupportModelExt](BTD_Mod_Helper.Extensions.SupportModelExt.md 'BTD_Mod_Helper.Extensions.SupportModelExt') | Extension methods for support models |
 | [Texture2DExt](BTD_Mod_Helper.Extensions.Texture2DExt.md 'BTD_Mod_Helper.Extensions.Texture2DExt') | Extensions for Texture2Ds |
 | [ToggleEventExt](BTD_Mod_Helper.Extensions.ToggleEventExt.md 'BTD_Mod_Helper.Extensions.ToggleEventExt') | Extensions for ToggleEvents |
 | [ToggleExt](BTD_Mod_Helper.Extensions.ToggleExt.md 'BTD_Mod_Helper.Extensions.ToggleExt') | Extensions for Toggles |

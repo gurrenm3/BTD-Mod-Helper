@@ -116,10 +116,11 @@ namespace BTD_Mod_Helper.Api
                 instance.mod = mod;
                 ModContentInstances.SetInstance(type, instance);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 ModHelper.Error($"Error creating default {type.Name}");
                 ModHelper.Error("A zero argument constructor is REQUIRED for all ModContent classes");
+                ModHelper.Error(e);
                 return null;
             }
 

@@ -478,7 +478,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             }), "Yes", null, "No", Popup.TransitionAnim.Scale);
     }
 
-    private static void DisableSelectedMod()
+    internal static void DisableSelectedMod()
     {
         if (selectedMod.MoveToDisabledModsFolder())
         {
@@ -497,7 +497,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }
     }
 
-    private static void EnableSelectedMod()
+    internal static void EnableSelectedMod()
     {
         if (selectedMod.MoveToEnabledModsFolder())
         {

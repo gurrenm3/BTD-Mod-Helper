@@ -3,9 +3,11 @@ using System.Linq;
 using Assets.Main.Scenes;
 using Assets.Scripts.Data;
 using Assets.Scripts.Data.Global;
+using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Patches.UI;

@@ -66,6 +66,24 @@ public static Assets.Scripts.Unity.Display.Animation.MonkeyAnimationController G
 #### Returns
 [Assets.Scripts.Unity.Display.Animation.MonkeyAnimationController](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.Animation.MonkeyAnimationController 'Assets.Scripts.Unity.Display.Animation.MonkeyAnimationController')
 
+<a name='BTD_Mod_Helper.Extensions.TowerExt.GetTowersInRange(thisAssets.Scripts.Simulation.Towers.Tower)'></a>
+
+## TowerExt.GetTowersInRange(this Tower) Method
+
+Gets all other towers that are in range of this tower not including itself
+
+```csharp
+public static System.Collections.Generic.IEnumerable<Assets.Scripts.Simulation.Towers.Tower> GetTowersInRange(this Assets.Scripts.Simulation.Towers.Tower tower);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.GetTowersInRange(thisAssets.Scripts.Simulation.Towers.Tower).tower'></a>
+
+`tower` [Assets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.Towers.Tower 'Assets.Scripts.Simulation.Towers.Tower')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Assets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.Towers.Tower 'Assets.Scripts.Simulation.Towers.Tower')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
 <a name='BTD_Mod_Helper.Extensions.TowerExt.GetTowerToSim(thisAssets.Scripts.Simulation.Towers.Tower)'></a>
 
 ## TowerExt.GetTowerToSim(this Tower) Method

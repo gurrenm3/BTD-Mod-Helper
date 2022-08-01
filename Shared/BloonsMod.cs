@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper;
 /// <summary>
 /// Expanded version of MelonMod to suit the needs of Bloons games and the Mod Helper
 /// </summary>
-public abstract partial class BloonsMod : MelonMod, IModContent
+public abstract class BloonsMod : MelonMod, IModContent
 {
     /// <summary>
     /// All ModContent in ths mod

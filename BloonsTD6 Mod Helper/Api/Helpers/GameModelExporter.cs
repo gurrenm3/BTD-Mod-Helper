@@ -43,6 +43,14 @@ public static class GameModelExporter
                 {
                     foreach (var knowledgeModel in knowledgeLevelModel.items)
                     {
+                        if (knowledgeModel.mod?.mutatorMods != null)
+                        {
+                            foreach (var mutatorModModel in knowledgeModel.mod.mutatorMods)
+                            {
+                                mutatorModModel.name = mutatorModModel.GetIl2CppType().Name + "_" + mutatorModModel.name;
+                            }
+                        }
+
                         Export(knowledgeModel,
                             $"Knowledge/{knowledgeSet.name}/{knowledgeLevelModel.name}/{knowledgeModel.name}.json");
                     }
@@ -83,7 +91,12 @@ public static class GameModelExporter
         {
             Export(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json");
         }
-            
+
+        ModHelper.Log("Exporting buff indicators to local files");
+        foreach (var indicatorModel in Game.instance.model.buffIndicatorModels)
+        {
+            Export(indicatorModel, $"Buffs/{indicatorModel.name}.json");
+        }
     }
 
     /// <summary>

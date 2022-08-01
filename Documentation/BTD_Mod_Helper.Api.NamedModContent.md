@@ -14,6 +14,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Derived  
 &#8627; [ModBloon](BTD_Mod_Helper.Api.Bloons.ModBloon.md 'BTD_Mod_Helper.Api.Bloons.ModBloon')  
 &#8627; [ModRoundSet](BTD_Mod_Helper.Api.Bloons.ModRoundSet.md 'BTD_Mod_Helper.Api.Bloons.ModRoundSet')  
+&#8627; [ModBuffIcon](BTD_Mod_Helper.Api.Display.ModBuffIcon.md 'BTD_Mod_Helper.Api.Display.ModBuffIcon')  
 &#8627; [ModLoadTask](BTD_Mod_Helper.Api.ModLoadTask.md 'BTD_Mod_Helper.Api.ModLoadTask')  
 &#8627; [ModGameMode](BTD_Mod_Helper.Api.Scenarios.ModGameMode.md 'BTD_Mod_Helper.Api.Scenarios.ModGameMode')  
 &#8627; [ModMap](BTD_Mod_Helper.Api.Scenarios.ModMap.md 'BTD_Mod_Helper.Api.Scenarios.ModMap')  

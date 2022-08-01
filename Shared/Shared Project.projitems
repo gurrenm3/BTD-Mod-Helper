@@ -35,6 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Data\SessionData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ICustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModBloonDisplay.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModBuffIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerCustomDisplay.cs" />
