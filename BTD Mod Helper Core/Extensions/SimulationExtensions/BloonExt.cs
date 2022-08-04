@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Simulation.Bloons;
+﻿using Assets.Scripts;
+using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Display;
 using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.Display;
@@ -73,7 +74,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="bloon"></param>
         /// <returns></returns>
-        public static int GetId(this Bloon bloon)
+        public static ObjectId GetId(this Bloon bloon)
         {
 #if BloonsTD6
             return bloon.Id;

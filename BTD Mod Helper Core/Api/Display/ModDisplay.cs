@@ -10,6 +10,7 @@ using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using UnityEngine;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
@@ -98,7 +99,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <returns></returns>
         public DisplayModel GetDisplayModel()
         {
-            return new DisplayModel($"DisplayModel_{Name}", Id, 0, PositionOffset, Scale);
+            return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, PositionOffset, Scale);
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="displayModel"></param>
         public void Apply(DisplayModel displayModel)
         {
-            displayModel.display = Id;
+            displayModel.display = CreatePrefabReference(Id);
             displayModel.positionOffset = PositionOffset;
             displayModel.scale = Scale;
         }
@@ -119,7 +120,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="towerModel"></param>
         public void Apply(TowerModel towerModel)
         {
-            towerModel.display = Id;
+            towerModel.display = CreatePrefabReference(Id);
             Apply(towerModel.GetBehavior<DisplayModel>());
         }
 
@@ -130,7 +131,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="projectileModel"></param>
         public void Apply(ProjectileModel projectileModel)
         {
-            projectileModel.display = Id;
+            projectileModel.display = CreatePrefabReference(Id);
             Apply(projectileModel.GetBehavior<DisplayModel>());
         }
 
@@ -144,7 +145,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <returns>The display GUID</returns>
         protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0)
         {
-            return Game.instance.model.GetTower(tower, top, mid, bot).display;
+            return Game.instance.model.GetTower(tower, top, mid, bot).display?.GUID;
         }
 
         /// <summary>
@@ -154,7 +155,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <returns></returns>
         protected void UseNode(string guid, Action<UnityDisplayNode> action)
         {
-            Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(guid, new Action<UnityDisplayNode>((udn) =>
+            Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(CreatePrefabReference(guid), new Action<UnityDisplayNode>((udn) =>
             {
                 udn.RecalculateGenericRenderers();
                 action(udn);

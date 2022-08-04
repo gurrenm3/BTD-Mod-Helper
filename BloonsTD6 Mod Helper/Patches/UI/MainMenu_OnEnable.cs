@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
 using HarmonyLib;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches.UI
 {
@@ -10,7 +11,6 @@ namespace BTD_Mod_Helper.Patches.UI
         internal static void Postfix()
         {
             ResetSessionData();
-
             MelonMain.PerformHook(mod => mod.OnMainMenu());
         }
 

@@ -3,6 +3,7 @@ using Assets.Scripts.Models.Profile;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 using HarmonyLib;
+using MelonLoader;
 
 namespace BTD_Mod_Helper.Patches
 {
@@ -20,7 +21,7 @@ namespace BTD_Mod_Helper.Patches
         internal static void Postfix(ProfileModel __instance)
         {
             foreach (var modTower in ModContent.GetContent<ModTower>()
-                .Where(modTower => !(modTower is ModHero) && !__instance.unlockedTowers.Contains(modTower.Id)))
+                .Where(modTower => modTower is not ModHero && !__instance.unlockedTowers.Contains(modTower.Id)))
             {
                 __instance.unlockedTowers.Add(modTower.Id);
                 __instance.acquiredUpgrades.Add(modTower.Id);

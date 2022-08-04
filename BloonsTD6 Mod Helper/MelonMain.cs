@@ -15,6 +15,12 @@ using System.IO;
 using Assets.Scripts.Utils;
 using System.Diagnostics;
 using Assets.Scripts.Models;
+using BTD_Mod_Helper.Patches;
+using UnhollowerBaseLib;
+using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.ResourceManagement.Util;
+using String = Il2CppSystem.String;
 
 namespace BTD_Mod_Helper
 {
@@ -48,7 +54,6 @@ namespace BTD_Mod_Helper
             Schedule_GameModel_Loaded();
 
             MelonLogger.Msg("Mod has finished loading");
-            
         }
 
         public override void OnGameModelLoaded(GameModel model)

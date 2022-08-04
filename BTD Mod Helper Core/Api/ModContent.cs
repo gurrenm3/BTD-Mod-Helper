@@ -214,14 +214,24 @@ namespace BTD_Mod_Helper.Api
         public static SpriteReference CreateSpriteReference(string guid)
         {
 #if BloonsTD6
-            return new SpriteReference(guid);
+            return new SpriteReference
+            {
+                guidRef = guid
+            };
 #elif BloonsAT
             var reference = new SpriteReference();
             reference.guid = guid;
             return reference;
 #endif
         }
-
+        
+        public static PrefabReference CreatePrefabReference(string guid)
+        {
+            return new PrefabReference
+            {
+                guidRef = guid
+            };
+        }
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod

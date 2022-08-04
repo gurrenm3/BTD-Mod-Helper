@@ -12,7 +12,7 @@ namespace BTD_Mod_Helper.Extensions
         /// (Cross-Game compatible) Create Texture2D from a unity Color. Texture will only be this color
         /// </summary>
         /// <param name="color">Color to make new texture</param>
-        public static Texture2D CreateFromColor(this Texture2D texture2D, UnityEngine.Color color)
+        public static Texture2D CreateFromColor(this Texture2D texture2D, Color color)
         {
             texture2D = new Texture2D(1, 1);
             texture2D.SetPixel(0, 0, color);

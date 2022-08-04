@@ -1,10 +1,12 @@
-using Assets.Scripts.Models.Towers.Knowledge;
+using Assets.Scripts.Models.Knowledge;
 using Assets.Scripts.Unity;
 
 namespace BTD_Mod_Helper.Extensions
 {
 	public static class KnowledgeModelExt
 	{
+		
+		/* TODO fix knowledge stuff
 		/// <summary>
 		/// Returns the KnowledgeSetModel that contains this KnowledgeModel
 		/// </summary>
@@ -24,5 +26,7 @@ namespace BTD_Mod_Helper.Extensions
 
 			return null;
 		}
+		*/
+		
 	}
 }

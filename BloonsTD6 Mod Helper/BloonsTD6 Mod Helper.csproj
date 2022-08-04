@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <!-- I want my nullables goddamn it. -->
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BloonsTD6 - Debug|AnyCPU'">
@@ -107,7 +108,6 @@
     <Compile Include="Extensions\UnityExtensions\RendererExt.cs" />
     <Compile Include="Extensions\UnityExtensions\UnityDisplayNodeExt.cs" />
     <Compile Include="MelonMain.cs" />
-    <Compile Include="Patches\Bloons\Bloon_Damage - Copy.cs" />
     <Compile Include="Patches\Bloons\Bloon_UpdatedModel.cs" />
     <Compile Include="Patches\Bloons\Bloon_Initialize.cs" />
     <Compile Include="Patches\Bloons\Bloon_Leaked.cs" />
@@ -119,7 +119,6 @@
     <Compile Include="Patches\InGame_StartMatch.cs" />
     <Compile Include="Patches\InputManager_PrimeTower.cs" />
     <Compile Include="Patches\ModdedClientChecking\**\*.cs" />
-    <Compile Include="Patches\Model_IsEqual.cs" />
     <Compile Include="Patches\Player\Btd6Player_Save.cs" />
     <Compile Include="Patches\Player\Btd6Player_SaveNow.cs" />
     <Compile Include="Patches\Player\NKMultiConnection_Receive.cs" />
@@ -156,8 +155,8 @@
     <Compile Include="Patches\UI\CoopQuickMatchScreen_Open.cs" />
     <Compile Include="Patches\UI\HeroButton_Init.cs" />
     <Compile Include="Patches\UI\HeroInGameScreen_Open.cs" />
-    <Compile Include="Patches\UI\HeroSprites_GetFontMaterialRef.cs" />
-    <Compile Include="Patches\UI\HeroUpgradeDetails_SetDetails.cs" />
+    <Compile Include="Patches\UI\HeroSprites_Ctor.cs" />
+    <Compile Include="Patches\UI\HeroUpgradeDetails_BindDetails.cs" />
     <Compile Include="Patches\UI\MainMenuEventPanel_OpenRaceEventScreen.cs" />
     <Compile Include="Patches\UI\MainMenu_OnEnable.cs" />
     <Compile Include="Patches\UI\OdysseyEventScreen_Update.cs" />

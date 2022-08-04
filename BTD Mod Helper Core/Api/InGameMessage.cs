@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using MelonLoader;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api
 {
@@ -63,7 +65,7 @@ namespace BTD_Mod_Helper.Api
 
 
 
-            gameObject = GameObject.Instantiate(canvas, globalScene.GetRootGameObjects()[0].transform);
+            gameObject = Object.Instantiate(canvas, globalScene.GetRootGameObjects()[0].transform);
 
             //tried this to get popup showing on main menu. Didnt work
             /*var canvasPos = gameObject.transform.position;
@@ -194,7 +196,7 @@ namespace BTD_Mod_Helper.Api
         private void MsgCleanup()
         {
             gameObject.SetActive(false);
-            GameObject.Destroy(gameObject);
+            Object.Destroy(gameObject);
 
             UpdateEvent -= Notification_UpdateEvent;
             NotificationMgr.notifications.Remove(this);

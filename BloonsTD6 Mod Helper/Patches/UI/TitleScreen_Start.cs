@@ -55,7 +55,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 }
             }
             
-            foreach (var modHero in ModContent.GetContent<ModHero>())
+            /*foreach (var modHero in ModContent.GetContent<ModHero>())
             {
                 try
                 {
@@ -72,8 +72,7 @@ namespace BTD_Mod_Helper.Patches.UI
                 {
                     MelonLogger.Error(e);
                 }
-            }
-            
+            }*/
         }
     }
 }

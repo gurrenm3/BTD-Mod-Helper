@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Unity.Bridge;
+﻿using Assets.Scripts;
+using Assets.Scripts.Unity.Bridge;
 
 namespace BTD_Mod_Helper.Extensions
 {
@@ -9,7 +10,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="bloonToSim"></param>
         /// <returns></returns>
-        public static int GetId(this BloonToSimulation bloonToSim)
+        public static ObjectId GetId(this BloonToSimulation bloonToSim)
         {
 #if BloonsTD6
             return bloonToSim.id;

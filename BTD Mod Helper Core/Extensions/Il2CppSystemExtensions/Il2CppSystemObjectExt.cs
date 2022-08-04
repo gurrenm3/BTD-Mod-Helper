@@ -1,4 +1,6 @@
-﻿using Il2CppSystem;
+﻿using System.Runtime.InteropServices;
+using Il2CppSystem;
+using UnhollowerBaseLib;
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Extensions
@@ -13,7 +15,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <returns></returns>
         public static bool ReferenceEquals(this Object instance, Object to)
         {
-            return ReferenceEquals(instance, (object)to);
+            return ReferenceEquals(instance, (object) to);
         }
 
         /// <summary>
@@ -37,19 +39,33 @@ namespace BTD_Mod_Helper.Extensions
             return castObject != null;
         }
         
+        public static bool Is<T>(this Il2CppObjectBase instance, out T castObject) where T : Il2CppObjectBase
+        {
+            castObject = instance?.TryCast<T>();
+            return castObject != null;
+        }
+
+        public static string GetTypeName(this Il2CppObjectBase instance)
+        {
+            return instance == null
+                ? "null"
+                : Marshal.PtrToStringAnsi(
+                    IL2CPP.il2cpp_class_get_name(IL2CPP.il2cpp_object_get_class(instance.Pointer)));
+        }
+
         public static Object ToIl2Cpp(this float f)
         {
-            return new Single { m_value = f }.BoxIl2CppObject();
+            return new Single {m_value = f}.BoxIl2CppObject();
         }
-        
+
         public static Object ToIl2Cpp(this int i)
         {
-            return new Int32 { m_value = i }.BoxIl2CppObject();
+            return new Int32 {m_value = i}.BoxIl2CppObject();
         }
-        
+
         public static Object ToIl2Cpp(this bool b)
         {
-            return new Boolean { m_value = b }.BoxIl2CppObject();
+            return new Boolean {m_value = b}.BoxIl2CppObject();
         }
     }
 }

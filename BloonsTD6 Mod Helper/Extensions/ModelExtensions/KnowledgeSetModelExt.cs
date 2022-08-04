@@ -1,11 +1,9 @@
-﻿using Assets.Scripts.Models.Towers.Knowledge;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace BTD_Mod_Helper.Extensions
+﻿namespace BTD_Mod_Helper.Extensions
 {
     public static class KnowledgeSetModelExt
     {
+        
+        /* todo fix knowledge stuff
         /// <summary>
         /// Returns whether or not this KnowledgeSetModel contains <paramref name="containsModel"/>
         /// </summary>
@@ -25,5 +23,7 @@ namespace BTD_Mod_Helper.Extensions
 
             return knowledgeModels.Any(model => model.Equals(containsModel));
         }
+        */
+        
     }
 }

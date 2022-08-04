@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Extensions;
 using UnhollowerBaseLib;
 
@@ -43,7 +44,7 @@ namespace BTD_Mod_Helper.Api.Builders
         public BloonModel Create(string name, string display, BloonModel baseModel = null)
         {
             BloonModel bloonModel = Create(name, baseModel);
-            bloonModel.display = display;
+            bloonModel.display = ModContent.CreatePrefabReference(display);
             return bloonModel;
         }
     }

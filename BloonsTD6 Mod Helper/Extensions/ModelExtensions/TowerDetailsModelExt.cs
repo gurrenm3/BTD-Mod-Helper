@@ -37,7 +37,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         public static TowerPurchaseButton GetTowerPurchaseButton(this TowerDetailsModel towerDetailsModel)
         {
-            Assets.Scripts.Models.Towers.TowerModel towerModel = Game.instance.model.GetTower(towerDetailsModel.towerId);
+            TowerModel towerModel = Game.instance.model.GetTower(towerDetailsModel.towerId);
             return towerModel.GetTowerPurchaseButton();
         }
 

@@ -16,6 +16,7 @@ namespace BTD_Mod_Helper.Patches.Resources
     [HarmonyPatch(typeof(Factory), nameof(Factory.FindAndSetupPrototypeAsync))]
     internal class Factory_FindAndSetupPrototypeAsync
     {
+        /*
         [HarmonyPrefix]
         internal static bool Prefix(Factory __instance, ref string objectId, ref Action<UnityDisplayNode> onComplete)
         {
@@ -86,6 +87,8 @@ namespace BTD_Mod_Helper.Patches.Resources
 
             return true;
         }
+        
+        */
 
         private static void SetupUDN(UnityDisplayNode udn, ModDisplay modDisplay, Action<UnityDisplayNode> onComplete)
         {

@@ -6,13 +6,13 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Models.Audio;
 using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Skins;
-using Assets.Scripts.Models.Skins.Behaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.Main.HeroSelect;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
@@ -166,7 +166,7 @@ namespace BTD_Mod_Helper.Api.Towers
                 var portraitUpgrade = modTower.upgrades.Cast<ModUpgrade>()
                     .Where(modUpgrade => modUpgrade != null &&
                                          tiers[modUpgrade.Path] >= modUpgrade.Tier &&
-                                         modUpgrade.PortraitReference)
+                                         modUpgrade.PortraitReference != null)
                     .OrderByDescending(modUpgrade => modUpgrade.Tier)
                     .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
                     .ThenBy(modUpgrade => modUpgrade.Path)
@@ -263,8 +263,8 @@ namespace BTD_Mod_Helper.Api.Towers
                 {
                     var name = modTower.Get2DTexture(towerModel.tiers);
                     var guid = ModContent.GetTextureGUID(modTower.mod, name);
-                    towerModel.display = guid;
-                    towerModel.GetBehavior<DisplayModel>().display = guid;
+                    towerModel.display = ModContent.CreatePrefabReference(guid);
+                    towerModel.GetBehavior<DisplayModel>().display = ModContent.CreatePrefabReference(guid);
                     towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
                     Tower2DScales[guid] = modTower.PixelsPerUnit;
                 }
@@ -317,7 +317,7 @@ namespace BTD_Mod_Helper.Api.Towers
                             .FirstOrDefault();
                         if (modTowerDisplay != default)
                         {
-                            displayDegreePath.assetPath = modTowerDisplay.Id;
+                            displayDegreePath.assetPath = ModContent.CreatePrefabReference(modTowerDisplay.Id);
                         }
                     }
 
@@ -349,6 +349,7 @@ namespace BTD_Mod_Helper.Api.Towers
                     new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, null, false);
                 Game.instance.model.AddHeroDetails(heroDetailsModel, index);
 
+                /*
                 var skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.SquareReference,
                     modHero.Id, modHero.Id + " Short Description", modHero.Id + " Description", 0, true,
                     new Il2CppReferenceArray<SwapTowerSpriteModel>(0),
@@ -360,6 +361,8 @@ namespace BTD_Mod_Helper.Api.Towers
                     new SoundModel("BlankSoundModel_", ""));
 
                 Game.instance.model.skins = Game.instance.model.skins.AddTo(skinModel);
+                
+                */
             }
         }
     }
