@@ -91,7 +91,7 @@ public static Assets.Scripts.Simulation.Factory.Factory<Assets.Scripts.Simulatio
 Return the Id of this Bloon
 
 ```csharp
-public static int GetId(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
+public static Assets.Scripts.ObjectId GetId(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
 ```
 #### Parameters
 
@@ -100,7 +100,7 @@ public static int GetId(this Assets.Scripts.Simulation.Bloons.Bloon bloon);
 `bloon` [Assets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.Bloons.Bloon 'Assets.Scripts.Simulation.Bloons.Bloon')
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[Assets.Scripts.ObjectId](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.ObjectId 'Assets.Scripts.ObjectId')
 
 <a name='BTD_Mod_Helper.Extensions.BloonExt.GetUnityDisplayNode(thisAssets.Scripts.Simulation.Bloons.Bloon)'></a>
 

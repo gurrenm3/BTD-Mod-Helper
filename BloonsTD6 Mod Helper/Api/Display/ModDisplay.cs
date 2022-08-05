@@ -2,6 +2,7 @@
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
 using System;
+using Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Display;
@@ -24,7 +25,7 @@ public abstract partial class ModDisplay
     /// <returns></returns>
     public DisplayModel GetDisplayModel()
     {
-        return new DisplayModel($"DisplayModel_{Name}", Id, 0, PositionOffset, Scale);
+        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, PositionOffset, Scale);
     }
 
     /// <summary>
@@ -37,7 +38,7 @@ public abstract partial class ModDisplay
     /// <returns>The display GUID</returns>
     protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0)
     {
-        return Game.instance.model.GetTower(tower, top, mid, bot).display;
+        return Game.instance.model.GetTower(tower, top, mid, bot).display.GUID;
     }
 
     /// <summary>
@@ -47,7 +48,7 @@ public abstract partial class ModDisplay
     /// <param name="action">What to do with the node</param>
     protected void UseNode(string guid, Action<UnityDisplayNode> action)
     {
-        Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(guid, new Action<UnityDisplayNode>((udn) =>
+        Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(CreatePrefabReference(guid), new Action<UnityDisplayNode>((udn) =>
         {
             udn.RecalculateGenericRenderers();
             action(udn);

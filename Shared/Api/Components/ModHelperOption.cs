@@ -79,15 +79,14 @@ public class ModHelperOption : ModHelperComponent
     /// <param name="description">The description of the mod setting, if any</param>
     /// <param name="icon">The icon of the mod setting, if any</param>
     /// <returns>The created ModHelperOption</returns>
-    public static ModHelperOption Create(string displayName, string description = null,
-        SpriteReference icon = null)
+    public static ModHelperOption Create(string displayName, string description = null, string icon = null)
     {
         return Create<ModHelperOption>(displayName, description, icon);
     }
 
     /// <inheritdoc cref="Create"/>
     protected static T Create<T>(string displayName, string description = null,
-        SpriteReference icon = null)
+        string icon = null)
         where T : ModHelperOption
     {
         var modHelperOption = ModHelperComponent.Create<T>(

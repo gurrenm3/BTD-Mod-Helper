@@ -82,42 +82,42 @@ public void AddScrollContent(BTD_Mod_Helper.Api.Components.ModHelperComponent ch
 
 `child` [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int)'></a>
 
-## ModHelperScrollPanel.Create(Info, Nullable<Axis>, SpriteReference, float, int) Method
+## ModHelperScrollPanel.Create(Info, Nullable<Axis>, string, float, int) Method
 
 Creates a new ModHelperScrollPanel
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperScrollPanel Create(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, Assets.Scripts.Utils.SpriteReference backgroundSprite=null, float spacing=0f, int padding=0);
+public static BTD_Mod_Helper.Api.Components.ModHelperScrollPanel Create(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite=null, float spacing=0f, int padding=0);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).axis'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).axis'></a>
 
 `axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 The axis that it scrolls in, or null for both directions
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).spacing'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).spacing'></a>
 
 `spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 If axis is not null, then the layout spacing for the items
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).padding'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.Create(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 

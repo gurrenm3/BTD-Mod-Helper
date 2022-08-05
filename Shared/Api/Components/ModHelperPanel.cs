@@ -30,14 +30,14 @@ public class ModHelperPanel : ModHelperComponent
     /// <param name="spacing">The layout group's spacing</param>
     /// <param name="padding">The layout group's padding</param>
     /// <returns>The created ModHelperPanel</returns>
-    public static ModHelperPanel Create(Info info, SpriteReference backgroundSprite = null,
+    public static ModHelperPanel Create(Info info, string backgroundSprite = null,
         RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
     {
         return Create<ModHelperPanel>(info, backgroundSprite, layoutAxis, spacing, padding);
     }
 
     /// <inheritdoc cref="Create"/>
-    protected static T Create<T>(Info info, SpriteReference backgroundSprite = null,
+    protected static T Create<T>(Info info, string backgroundSprite = null,
         RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
         where T : ModHelperPanel
     {
@@ -47,7 +47,7 @@ public class ModHelperPanel : ModHelperComponent
         {
             var background = modHelperPanel.AddComponent<Image>();
             background.type = Image.Type.Sliced;
-            background.SetSprite(backgroundSprite);
+            background.SetSprite(ModContent.CreateSpriteReference(backgroundSprite));
         }
 
         if (layoutAxis != null)

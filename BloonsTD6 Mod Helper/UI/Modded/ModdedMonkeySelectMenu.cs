@@ -368,8 +368,8 @@ internal class ModdedMonkeySelectMenu
         canvasRenderer.cullTransparentMesh = false;
         var image = pip.AddComponent<Image>();
         var mapPip = pip.AddComponent<MapPip>();
-        mapPip.activatedSprite = new SpriteReference("Ui[PagePipOn]");
-        mapPip.deactivatedSprite = new SpriteReference("Ui[PagePipOff]");
+        mapPip.activatedSprite = ModContent.CreateSpriteReference("Ui[PagePipOn]");
+        mapPip.deactivatedSprite = ModContent.CreateSpriteReference("Ui[PagePipOff]");
         mapPip.pipImage = image;
         pip.AddComponent<SpriteReleaser>();
         var layoutElement = pip.AddComponent<LayoutElement>();

@@ -40,32 +40,32 @@ public BTD_Mod_Helper.Api.Components.ModHelperPanel CategoryContent { get; }
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,string)'></a>
 
-## ModHelperCategory.Create(string, bool, SpriteReference) Method
+## ModHelperCategory.Create(string, bool, string) Method
 
 Creates a new ModHelperCategory
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperCategory Create(string displayName, bool collapsed, Assets.Scripts.Utils.SpriteReference icon=null);
+public static BTD_Mod_Helper.Api.Components.ModHelperCategory Create(string displayName, bool collapsed, string icon=null);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,Assets.Scripts.Utils.SpriteReference).displayName'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,string).displayName'></a>
 
 `displayName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The name of the category
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,Assets.Scripts.Utils.SpriteReference).collapsed'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,string).collapsed'></a>
 
 `collapsed` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 Whether it's collapsed by default or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,Assets.Scripts.Utils.SpriteReference).icon'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Create(string,bool,string).icon'></a>
 
-`icon` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The icon for the category, if any
 

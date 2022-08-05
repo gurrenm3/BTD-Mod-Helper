@@ -65,7 +65,7 @@ public abstract class ModRoundSet : NamedModContent
         try
         {
             Game.instance.model.roundSets = Game.instance.model.roundSets.AddTo(model);
-            Game.instance.model.roundSetsByName[Id] = model;
+            // Game.instance.model.roundSetsByName[Id] = model;
             Game.instance.model.AddChildDependant(model);
         }
         finally
@@ -73,7 +73,7 @@ public abstract class ModRoundSet : NamedModContent
             rollbackActions.Push(() =>
             {
                 Game.instance.model.roundSets = Game.instance.model.roundSets.RemoveItem(model);
-                Game.instance.model.roundSetsByName.Remove(Id);
+                // Game.instance.model.roundSetsByName.Remove(Id);
                 Game.instance.model.RemoveChildDependant(model);
             });
         }
@@ -121,7 +121,7 @@ public abstract class ModRoundSet : NamedModContent
     /// <summary>
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+    public virtual string IconReference => GetTextureGUID(Icon);
 
     /// <summary>
     /// Whether this Round set should show up in the menu allowing you to use any RoundSet for any GameMode

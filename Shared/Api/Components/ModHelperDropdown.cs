@@ -64,7 +64,7 @@ public class ModHelperDropdown : ModHelperComponent
     /// <param name="labelFontSize">Text size of label</param>
     /// <returns>The created ModHelperDropdown</returns>
     public static ModHelperDropdown Create(Info info, List<string> options, float windowHeight,
-        UnityAction<int> onValueChanged, SpriteReference background = null, float labelFontSize = 42f)
+        UnityAction<int> onValueChanged, string background = null, float labelFontSize = 42f)
     {
         var (width, height) = info.SizeDelta;
 

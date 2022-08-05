@@ -7,9 +7,14 @@
     </PropertyGroup>
 
     <!--References to MelonLoader dependencies-->
-    <ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
         <Reference Include="$(BloonsTD6)\MelonLoader\MelonLoader.dll"/>
         <Reference Include="$(BloonsTD6)\MelonLoader\0Harmony.dll"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\MelonLoader.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\0Harmony.dll"/>
     </ItemGroup>
 
     <!--References to BTD6 dependencies-->
@@ -40,6 +45,7 @@
         <Reference Include="$(ManagedFolder)\UnityEngine.UIElementsModule.dll"/>
         <Reference Include="$(ManagedFolder)\UnityEngine.UIModule.dll"/>
         <Reference Include="$(ManagedFolder)\Newtonsoft.Json.dll"/>
+        <Reference Include="$(ManagedFolder)\Unity.Addressables.dll"/>
     </ItemGroup>
 
     <!--Mod Helper dependency-->

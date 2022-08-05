@@ -28,6 +28,7 @@ internal static class ModsButton
         modsButton.name = "Mods";
         modsButton.transform.localPosition = new Vector3(1600, 0, 0);
         modsButton.RemoveComponent<PipEventChecker>();
+        MelonLogger.Warning("About to set the mod helper sprite!!!!");
         modsButton.GetComponentInChildrenByName<Image>("Button").SetSprite(Sprite);
         modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = $"   Mods ({ModHelper.Melons.Count()})";
         modsButton.GetComponentInChildren<Button>().SetOnClick(() => ModGameMenu.Open<ModsMenu>());

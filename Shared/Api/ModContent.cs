@@ -234,12 +234,23 @@ namespace BTD_Mod_Helper.Api
         public static SpriteReference CreateSpriteReference(string guid)
         {
 #if BloonsTD6
-            return new SpriteReference(guid);
+            return new SpriteReference
+            {
+                guidRef = guid
+            };
 #elif BloonsAT
             var reference = new SpriteReference();
             reference.guid = guid;
             return reference;
 #endif
+        }
+
+        public static PrefabReference CreatePrefabReference(string guid)
+        {
+            return new PrefabReference
+            {
+                guidRef = guid
+            };
         }
 
         /// <summary>
@@ -270,7 +281,7 @@ namespace BTD_Mod_Helper.Api
         /// <returns>The texture's GUID</returns>
         public static string GetTextureGUID(BloonsMod mod, string fileName)
         {
-            return mod.IDPrefix + fileName;
+            return "MainMenuUiAtlas[" +  mod.IDPrefix + fileName + "]";
         }
 
         /// <summary>
@@ -287,7 +298,7 @@ namespace BTD_Mod_Helper.Api
             if (mod == null)
             {
                 BloonsMod.GotModTooSoon.Add(typeof(T));
-                return typeof(T).Assembly.GetName().Name + "-" + name;
+                return "MainMenuUiAtlas[" + typeof(T).Assembly.GetName().Name + "-" + name + "]";
             }
 
             return GetTextureGUID(mod, name);

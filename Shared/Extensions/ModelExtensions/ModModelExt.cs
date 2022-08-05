@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Models.Powers.Mods;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity.Towers.Mods;
@@ -239,8 +240,10 @@ public static class ModModelExt
     /// </summary>
     public static void SetPowersEnabled(this ModModel model, bool enabled)
     {
-        model.RemoveMutator<DisablePowersModModel>();
+        /* TODO powers
+        model.RemoveMutator<PowerModModel>();
         if (!enabled) model.AddMutator(new DisablePowersModModel("_"));
+        */
     }
 
     /// <summary>

@@ -118,6 +118,27 @@ public static void SetSprite(this UnityEngine.UI.Image image, Assets.Scripts.Uti
 
 Sprite to change image to
 
+<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,string)'></a>
+
+## ImageExt.SetSprite(this Image, string) Method
+
+Set the sprite for this image
+
+```csharp
+public static void SetSprite(this UnityEngine.UI.Image image, string guid);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,string).image'></a>
+
+`image` [UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')
+
+<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,string).guid'></a>
+
+`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Sprite to change image to
+
 <a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,UnityEngine.Sprite)'></a>
 
 ## ImageExt.SetSprite(this Image, Sprite) Method

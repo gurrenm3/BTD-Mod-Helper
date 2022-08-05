@@ -115,7 +115,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
         mainPanel.AddButton(new Info("Homepage", 200), VanillaSprites.HomeBtn, null);
 
         mainPanel.AddButton(new Info("Download", 200),
-            ModContent.GetSpriteReference<MelonMain>("DownloadBtn"), null);
+            ModContent.GetTextureGUID<MelonMain>("DownloadBtn"), null);
         var update = mainPanel.AddButton(new Info("Update", size: 200), VanillaSprites.UpgradeIcon, null);
         update.AddImage(new Info("UpdateIcon", 133), VanillaSprites.UpgradeIcon2);
 

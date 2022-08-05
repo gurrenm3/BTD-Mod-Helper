@@ -53,30 +53,30 @@ public UnityEngine.UI.Image Image { get; }
 [UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action)'></a>
 
-## ModHelperButton.Create(Info, SpriteReference, Action) Method
+## ModHelperButton.Create(Info, string, Action) Method
 
 Creates a new ModHelperButton
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperButton Create(BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference sprite, Il2CppSystem.Action onClick);
+public static BTD_Mod_Helper.Api.Components.ModHelperButton Create(BTD_Mod_Helper.Api.Components.Info info, string sprite, Il2CppSystem.Action onClick);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action).sprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).sprite'></a>
 
-`sprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The button's visuals
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action).onClick'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).onClick'></a>
 
 `onClick` [Il2CppSystem.Action](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Action 'Il2CppSystem.Action')
 

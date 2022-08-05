@@ -56,7 +56,7 @@ public class ModHelperScrollPanel : ModHelperPanel
     /// <param name="padding"></param>
     /// <returns>The created ModHelperScrollPanel</returns>
     public static ModHelperScrollPanel Create(Info info, RectTransform.Axis? axis,
-        SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
+        string backgroundSprite = null, float spacing = 0, int padding = 0)
     {
         var newPanel = Create<ModHelperScrollPanel>(info, backgroundSprite);
         var scrollRect = newPanel.AddComponent<ScrollRect>();

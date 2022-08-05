@@ -16,7 +16,7 @@ public class ModSettingCategory
     /// <summary>
     /// Icon of the category, if any
     /// </summary>
-    public SpriteReference icon;
+    public string icon;
 
     /// <summary>
     /// Order of this category in relation to other categories. A setting not having a category will have order = 0

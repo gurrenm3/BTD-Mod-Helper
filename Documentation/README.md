@@ -264,8 +264,6 @@
 | [InputFieldExt](BTD_Mod_Helper.Extensions.InputFieldExt.md 'BTD_Mod_Helper.Extensions.InputFieldExt') | Extensions for InputFields |
 | [InputFieldOnValueChanged](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged') | Extension for OnChangeEvent |
 | [InputFieldSubmitEvent](BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.md 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent') | Extensions for InputFieldSubmitEvents |
-| [KnowledgeModelExt](BTD_Mod_Helper.Extensions.KnowledgeModelExt.md 'BTD_Mod_Helper.Extensions.KnowledgeModelExt') | Extensions for KnowledgeModels |
-| [KnowledgeSetModelExt](BTD_Mod_Helper.Extensions.KnowledgeSetModelExt.md 'BTD_Mod_Helper.Extensions.KnowledgeSetModelExt') | Extensions for KnowledgeSetModels |
 | [LayoutGroupExt](BTD_Mod_Helper.Extensions.LayoutGroupExt.md 'BTD_Mod_Helper.Extensions.LayoutGroupExt') | Extensions for LayoutGroups |
 | [ListExt](BTD_Mod_Helper.Extensions.ListExt.md 'BTD_Mod_Helper.Extensions.ListExt') | Extensions for system Lists |
 | [LocalizationManagerExt](BTD_Mod_Helper.Extensions.LocalizationManagerExt.md 'BTD_Mod_Helper.Extensions.LocalizationManagerExt') | Extension methods for the Localization Manager. |

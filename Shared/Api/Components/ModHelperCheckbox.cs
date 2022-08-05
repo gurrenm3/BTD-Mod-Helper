@@ -53,8 +53,8 @@ public class ModHelperCheckbox : ModHelperComponent
     /// <param name="checkImage">The checkmark itself, or null for the default checkmark</param>
     /// <param name="padding">How much space around the outside of the check there is</param>
     /// <returns>The new ModHelperCheckbox</returns>
-    public static ModHelperCheckbox Create(Info info, bool defaultValue, SpriteReference background,
-        UnityAction<bool> onValueChanged = null, SpriteReference checkImage = null, int padding = 0)
+    public static ModHelperCheckbox Create(Info info, bool defaultValue, string background,
+        UnityAction<bool> onValueChanged = null, string checkImage = null, int padding = 0)
     {
         var modHelperCheckbox = ModHelperComponent.Create<ModHelperCheckbox>(info);
 

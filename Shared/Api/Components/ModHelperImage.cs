@@ -28,7 +28,7 @@ public class ModHelperImage : ModHelperComponent
     /// <param name="info">The name/position/size info</param>
     /// <param name="sprite">The sprite to display</param>
     /// <returns>The created ModHelperImage</returns>
-    public static ModHelperImage Create(Info info, SpriteReference sprite)
+    public static ModHelperImage Create(Info info, string sprite)
     {
         var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
 
@@ -45,7 +45,6 @@ public class ModHelperImage : ModHelperComponent
         return modHelperImage;
     }
         
-    /// <inheritdoc cref="Create(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)"/>
     public static ModHelperImage Create(Info info, Sprite sprite)
     {
         var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);

@@ -130,7 +130,7 @@ public abstract class ModSetting
     /// <summary>
     /// Icon to display alongside the setting
     /// </summary>
-    public SpriteReference icon;
+    public string icon;
 
     /// <summary>
     /// Action to modify the ModHelperOption after it's created

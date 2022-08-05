@@ -32,32 +32,7 @@ public static class GameModelExporter
         {
             Export(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json");
         }
-
-
-        ModHelper.Log("Exporting Monkey Knowledge to local files");
-        foreach (var knowledgeSet in Game.instance.model.knowledgeSets)
-        {
-            foreach (var knowledgeTierModel in knowledgeSet.tiers)
-            {
-                foreach (var knowledgeLevelModel in knowledgeTierModel.levels)
-                {
-                    foreach (var knowledgeModel in knowledgeLevelModel.items)
-                    {
-                        if (knowledgeModel.mod?.mutatorMods != null)
-                        {
-                            foreach (var mutatorModModel in knowledgeModel.mod.mutatorMods)
-                            {
-                                mutatorModModel.name = mutatorModModel.GetIl2CppType().Name + "_" + mutatorModModel.name;
-                            }
-                        }
-
-                        Export(knowledgeModel,
-                            $"Knowledge/{knowledgeSet.name}/{knowledgeLevelModel.name}/{knowledgeModel.name}.json");
-                    }
-                }
-            }
-        }
-
+        
 
         ModHelper.Log("Exporting Powers to local files");
         foreach (var model in Game.instance.model.powers)
@@ -69,12 +44,6 @@ public static class GameModelExporter
         foreach (var model in Game.instance.model.mods)
         {
             Export(model, $"Mods/{model.name}.json");
-        }
-
-        ModHelper.Log("Exporting Skins to local files");
-        foreach (var model in Game.instance.model.skins)
-        {
-            Export(model, $"Skins/{model.towerBaseId}/{model.name}.json");
         }
 
         ModHelper.Log("Exporting Rounds to local files");

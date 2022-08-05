@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models;
-using Assets.Scripts.Models.Audio;
 using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Skins;
-using Assets.Scripts.Models.Skins.Behaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
 using Assets.Scripts.Models.Towers.Upgrades;
@@ -144,7 +141,7 @@ internal static partial class ModTowerHelper
         towerModel.appliedUpgrades[5] = modTower.paragonUpgrade.Id;
 
         var sprite = modTower.paragonUpgrade.PortraitReference;
-        if (sprite != null)
+        if (sprite is not null)
         {
             towerModel.portrait = sprite;
         }
@@ -190,8 +187,8 @@ internal static partial class ModTowerHelper
         {
             var name = modTower.Get2DTexture(towerModel.tiers);
             var guid = ModContent.GetTextureGUID(modTower.mod, name);
-            towerModel.display = guid;
-            towerModel.GetBehavior<DisplayModel>().display = guid;
+            towerModel.display = ModContent.CreatePrefabReference(guid);
+            towerModel.GetBehavior<DisplayModel>().display = ModContent.CreatePrefabReference(guid);
             towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
             ResourceHandler.ScalesFor2dModels[guid] = modTower.PixelsPerUnit;
         }
@@ -225,7 +222,7 @@ internal static partial class ModTowerHelper
                     .FirstOrDefault();
                 if (modTowerDisplay != default)
                 {
-                    displayDegreePath.assetPath = modTowerDisplay.Id;
+                    displayDegreePath.assetPath = ModContent.CreatePrefabReference(modTowerDisplay.Id);
                 }
             }
 
@@ -253,7 +250,7 @@ internal static partial class ModTowerHelper
             var heroDetailsModel =
                 new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, null, false);
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
-            SkinModel skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.SquareReference,
+            /*SkinModel skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.SquareReference,
                 modHero.Id, modHero.Id + " Short Description", modHero.Id + " Description", 0, true,
                 new Il2CppReferenceArray<SwapTowerSpriteModel>(0),
                 new Il2CppReferenceArray<SwapTowerGraphicModel>(0),
@@ -262,7 +259,7 @@ internal static partial class ModTowerHelper
                 modHero.SelectScreenPortraits.Values.Prepend(modHero.PortraitReference).ToArray(),
                 modHero.SelectScreenPortraits.Keys.Select(i => i.ToString()).ToArray(),
                 new SoundModel("BlankSoundModel_", ""), new SoundModel("SoundModel", modHero.SelectSound));
-            Game.instance.model.skins = Game.instance.model.skins.AddTo(skinModel);
+            Game.instance.model.skins = Game.instance.model.skins.AddTo(skinModel);*/
         }
     }
 }

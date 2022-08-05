@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Patches.Resources;
     nameof(LocalizationManager._LoadTableAsync_d__45.MoveNext))]
 internal static class LocalizationManger_LoadTableAsync
 {
-    [HarmonyPostfix]
+    /*[HarmonyPostfix]
     private static void Postfix(LocalizationManager._LoadTableAsync_d__45 __instance)
     {
         var result = __instance.__t__builder.Task.Result;
@@ -27,5 +27,5 @@ internal static class LocalizationManger_LoadTableAsync
                 }
             }
         }
-    }
+    }*/
 }

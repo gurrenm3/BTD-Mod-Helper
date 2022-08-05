@@ -26,7 +26,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The sprite to use for the button, BlueBtnLong by default
         /// </summary>
-        public SpriteReference buttonSprite = VanillaSprites.BlueBtnLong;
+        public string buttonSprite = VanillaSprites.BlueBtnLong;
 
         /// <summary>
         /// Action to modify the ModHelperButton after it's created

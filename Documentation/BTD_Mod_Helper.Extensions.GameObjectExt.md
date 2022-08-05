@@ -42,46 +42,46 @@ public static T AddModHelperComponent<T>(this UnityEngine.GameObject gameObject,
 #### Returns
 [T](BTD_Mod_Helper.Extensions.GameObjectExt.md#BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperComponent_T_(thisUnityEngine.GameObject,T).T 'BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperComponent<T>(this UnityEngine.GameObject, T).T')
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int)'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int)'></a>
 
-## GameObjectExt.AddModHelperPanel(this GameObject, Info, SpriteReference, Nullable<Axis>, float, int) Method
+## GameObjectExt.AddModHelperPanel(this GameObject, Info, string, Nullable<Axis>, float, int) Method
 
 Creates a new ModHelperPanel
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperPanel AddModHelperPanel(this UnityEngine.GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference backgroundSprite=null, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis=null, float spacing=50f, int padding=0);
+public static BTD_Mod_Helper.Api.Components.ModHelperPanel AddModHelperPanel(this UnityEngine.GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite=null, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis=null, float spacing=50f, int padding=0);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).gameObject'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).gameObject'></a>
 
 `gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).info'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).layoutAxis'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).layoutAxis'></a>
 
 `layoutAxis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 If present, creates this panel with a Horizontal/Vertical layout group
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).spacing'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).spacing'></a>
 
 `spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The layout group's spacing
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).padding'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
@@ -91,46 +91,46 @@ The layout group's padding
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
 The created ModHelperPanel
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int)'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int)'></a>
 
-## GameObjectExt.AddModHelperScrollPanel(this GameObject, Info, Nullable<Axis>, SpriteReference, float, int) Method
+## GameObjectExt.AddModHelperScrollPanel(this GameObject, Info, Nullable<Axis>, string, float, int) Method
 
 Creates a new ModHelperScrollPanel
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddModHelperScrollPanel(this UnityEngine.GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, Assets.Scripts.Utils.SpriteReference backgroundSprite=null, float spacing=0f, int padding=0);
+public static BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddModHelperScrollPanel(this UnityEngine.GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite=null, float spacing=0f, int padding=0);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).gameObject'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).gameObject'></a>
 
 `gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).info'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).axis'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).axis'></a>
 
 `axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 The axis that it scrolls in, or null for both directions
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).spacing'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).spacing'></a>
 
 `spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 If axis is not null, then the layout spacing for the items
 
-<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).padding'></a>
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperScrollPanel(thisUnityEngine.GameObject,BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 

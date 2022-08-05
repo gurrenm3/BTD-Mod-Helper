@@ -15,6 +15,7 @@ using BTD_Mod_Helper.Api.Enums;
 
 #if BloonsTD6
 using Assets.Scripts.Models.GenericBehaviors;
+using Assets.Scripts.Utils;
 #elif BloonsAT
 using Assets.Scripts.Models.Display;
 #endif
@@ -138,9 +139,9 @@ namespace BTD_Mod_Helper.Extensions
         public static void SetDisplayGUID(this BloonModel bloonModel, string guid)
         {
 #if BloonsTD6
-            bloonModel.display = guid;
+            bloonModel.display = ModContent.CreatePrefabReference(guid);
 #endif
-            bloonModel.GetBehavior<DisplayModel>().display = guid;
+            bloonModel.GetBehavior<DisplayModel>().display = ModContent.CreatePrefabReference(guid);
         }
 
         /// <summary>
@@ -151,7 +152,7 @@ namespace BTD_Mod_Helper.Extensions
         public static string GetDisplayGUID(this BloonModel bloonModel)
         {
 #if BloonsTD6
-            return bloonModel.display;
+            return bloonModel.display.GUID;
 #elif BloonsAT
             return bloonModel.GetBehavior<DisplayModel>().display;
 #endif

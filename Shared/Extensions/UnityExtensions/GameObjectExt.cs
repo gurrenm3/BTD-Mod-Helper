@@ -170,7 +170,7 @@ public static class GameObjectExt
 
     /// <inheritdoc cref="ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info)"/>
     public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Info info,
-        SpriteReference backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
+        string backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
         int padding = 0)
     {
         return gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing,
@@ -179,7 +179,7 @@ public static class GameObjectExt
 
     /// <inheritdoc cref="ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info)"/>
     public static ModHelperScrollPanel AddModHelperScrollPanel(this GameObject gameObject, Info info,
-        RectTransform.Axis? axis, SpriteReference backgroundSprite = null, float spacing = 0, int padding = 0)
+        RectTransform.Axis? axis, string backgroundSprite = null, float spacing = 0, int padding = 0)
     {
         return gameObject.AddModHelperComponent(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing,
             padding));

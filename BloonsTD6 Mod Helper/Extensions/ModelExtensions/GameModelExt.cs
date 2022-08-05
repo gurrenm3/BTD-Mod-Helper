@@ -378,7 +378,7 @@ public static partial class GameModelExt
     public static void AddUpgrade(this GameModel model, UpgradeModel upgradeModel)
     {
         model.upgrades = model.upgrades.AddTo(upgradeModel);
-        model.upgradesByName.Add(upgradeModel.name, upgradeModel);
+        model.upgradesByName?.Add(upgradeModel.name, upgradeModel);
         model.AddChildDependant(upgradeModel);
     }
 

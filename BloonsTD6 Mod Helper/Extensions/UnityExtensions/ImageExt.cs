@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Utils;
 using System;
+using BTD_Mod_Helper.Api;
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -19,7 +20,18 @@ public static partial class ImageExt
         ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
         image.enabled = true;
     }
-
+    
+    /// <summary>
+    /// Set the sprite for this image 
+    /// </summary>
+    /// <param name="image"></param>
+    /// <param name="guid">Sprite to change image to</param>
+    public static void SetSprite(this Image image, string guid)
+    {
+        ResourceLoader.LoadSpriteFromSpriteReferenceAsync(ModContent.CreateSpriteReference(guid), image);
+        image.enabled = true;
+    }
+    
     /// <summary>
     /// Loads a sprite reference to this image
     /// </summary>

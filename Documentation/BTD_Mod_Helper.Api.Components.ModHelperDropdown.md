@@ -91,48 +91,48 @@ public BTD_Mod_Helper.Api.Components.ModHelperText Text { get; }
 [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float)'></a>
 
-## ModHelperDropdown.Create(Info, List<string>, float, UnityAction<int>, SpriteReference, float) Method
+## ModHelperDropdown.Create(Info, List<string>, float, UnityAction<int>, string, float) Method
 
 Creates a new ModHelperDropdown
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperDropdown Create(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, Assets.Scripts.Utils.SpriteReference background=null, float labelFontSize=42f);
+public static BTD_Mod_Helper.Api.Components.ModHelperDropdown Create(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, string background=null, float labelFontSize=42f);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: width/height must be set to actual values
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).options'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).options'></a>
 
 `options` [Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
 
 The list of options
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).windowHeight'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).windowHeight'></a>
 
 `windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Height of the created dropdown window
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).onValueChanged'></a>
 
 `onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
 
 Action that should happen when an option of the given index is selected
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background image
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).labelFontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Create(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).labelFontSize'></a>
 
 `labelFontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 

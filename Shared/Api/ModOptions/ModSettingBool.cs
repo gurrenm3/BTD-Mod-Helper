@@ -23,7 +23,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The sprite to use for the button when it's disabled, RedBtnLong by default
         /// </summary>
-        public SpriteReference disabledButton = VanillaSprites.RedBtnLong;
+        public string disabledButton = VanillaSprites.RedBtnLong;
 
         /// <summary>
         /// The text that the button should have when it's disabled, if this is a button
@@ -33,7 +33,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// The sprite to use for the button when it's enabled, GreenBtnLong by default
         /// </summary>
-        public SpriteReference enabledButton = VanillaSprites.GreenBtnLong;
+        public string enabledButton = VanillaSprites.GreenBtnLong;
 
         /// <summary>
         /// The text that the button should have when it's enabled, if this is a button

@@ -61,11 +61,11 @@ public string displayName;
 Icon of the category, if any
 
 ```csharp
-public SpriteReference icon;
+public string icon;
 ```
 
 #### Field Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingCategory.modifyCategory'></a>
 

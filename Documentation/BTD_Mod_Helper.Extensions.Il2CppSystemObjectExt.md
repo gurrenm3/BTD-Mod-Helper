@@ -12,58 +12,58 @@ public static class Il2CppSystemObjectExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Il2CppSystemObjectExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase)'></a>
 
-## Il2CppSystemObjectExt.Is<T>(this Object) Method
+## Il2CppSystemObjectExt.Is<T>(this Il2CppObjectBase) Method
 
 Check if object is the same type as T
 
 ```csharp
-public static bool Is<T>(this Il2CppSystem.Object instance)
-    where T : Il2CppSystem.Object;
+public static bool Is<T>(this UnhollowerBaseLib.Il2CppObjectBase instance)
+    where T : UnhollowerBaseLib.Il2CppObjectBase;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object).T'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase).T'></a>
 
 `T`
 
 Type to check
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object).instance'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase).instance'></a>
 
-`instance` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+`instance` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object,T)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T)'></a>
 
-## Il2CppSystemObjectExt.Is<T>(this Object, T) Method
+## Il2CppSystemObjectExt.Is<T>(this Il2CppObjectBase, T) Method
 
 Check if object is the same type as T
 
 ```csharp
-public static bool Is<T>(this Il2CppSystem.Object instance, out T castObject)
-    where T : Il2CppSystem.Object;
+public static bool Is<T>(this UnhollowerBaseLib.Il2CppObjectBase instance, out T castObject)
+    where T : UnhollowerBaseLib.Il2CppObjectBase;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object,T).T'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).T'></a>
 
 `T`
 
 Type to check
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object,T).instance'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).instance'></a>
 
-`instance` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+`instance` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object,T).castObject'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).castObject'></a>
 
-`castObject` [T](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppSystem.Object,T).T 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is<T>(this Il2CppSystem.Object, T).T')
+`castObject` [T](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).T 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is<T>(this UnhollowerBaseLib.Il2CppObjectBase, T).T')
 
 The casted object if this is of type T
 
@@ -128,24 +128,24 @@ The casted object if this is of type T
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisIl2CppSystem.Object,Il2CppSystem.Object)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisUnhollowerBaseLib.Il2CppObjectBase,UnhollowerBaseLib.Il2CppObjectBase)'></a>
 
-## Il2CppSystemObjectExt.ReferenceEquals(this Object, Object) Method
+## Il2CppSystemObjectExt.ReferenceEquals(this Il2CppObjectBase, Il2CppObjectBase) Method
 
 Is this Reference equal to another Object's Reference?
 
 ```csharp
-public static bool ReferenceEquals(this Il2CppSystem.Object instance, Il2CppSystem.Object to);
+public static bool ReferenceEquals(this UnhollowerBaseLib.Il2CppObjectBase instance, UnhollowerBaseLib.Il2CppObjectBase to);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisIl2CppSystem.Object,Il2CppSystem.Object).instance'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisUnhollowerBaseLib.Il2CppObjectBase,UnhollowerBaseLib.Il2CppObjectBase).instance'></a>
 
-`instance` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+`instance` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisIl2CppSystem.Object,Il2CppSystem.Object).to'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisUnhollowerBaseLib.Il2CppObjectBase,UnhollowerBaseLib.Il2CppObjectBase).to'></a>
 
-`to` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+`to` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
 
 Object to compare to
 

@@ -44,11 +44,11 @@ public Action action;
 The sprite to use for the button, BlueBtnLong by default
 
 ```csharp
-public SpriteReference buttonSprite;
+public string buttonSprite;
 ```
 
 #### Field Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingButton.buttonText'></a>
 

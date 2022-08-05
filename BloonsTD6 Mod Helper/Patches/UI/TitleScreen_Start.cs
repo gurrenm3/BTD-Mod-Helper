@@ -9,6 +9,13 @@ using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
+using UnhollowerBaseLib;
+using UnhollowerRuntimeLib;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.U2D;
 
 namespace BTD_Mod_Helper.Patches.UI;
 
@@ -30,7 +37,7 @@ internal class TitleScreen_Start
                 .OrderBy(mod => mod.Priority)
                 .Select(mod => new ModContentTask {mod = mod})
                 .Do(task => task.RunSync());
-            
+
             ModContent.GetContent<ModLoadTask>().Do(task => task.RunSync());
         }
 
@@ -56,7 +63,7 @@ internal class TitleScreen_Start
         {
             try
             {
-                var heroSprites = GameData.Instance.heroSprites;
+                /*var heroSprites = GameData.Instance.heroSprites;
                 var heroSprite = new HeroSprite
                 {
                     heroId = modHero.Id,
@@ -65,7 +72,7 @@ internal class TitleScreen_Start
                     backgroundColourTintOverride = heroSprites.GetBannerColourTintRef(modHero.BackgroundStyle)
                 };
                 modHero.ModifyHeroSprite(heroSprite);
-                heroSprites.heroSprite.Add(heroSprite);
+                heroSprites.heroSprite.Add(heroSprite);*/
             }
             catch (Exception e)
             {

@@ -3,6 +3,7 @@ using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
 using System.Collections.Generic;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Utils;
 using UnityEngine;
 
 #if BloonsTD6
@@ -118,7 +119,7 @@ namespace BTD_Mod_Helper.Api.Display
         public void Apply(TowerModel towerModel)
         {
 #if BloonsTD6
-            towerModel.display = Id;
+            towerModel.display = ModContent.CreatePrefabReference(Id);
 #endif
             Apply(towerModel.GetBehavior<DisplayModel>()!);
         }
@@ -129,7 +130,7 @@ namespace BTD_Mod_Helper.Api.Display
         public void Apply(ProjectileModel projectileModel)
         {
 #if BloonsTD6
-            projectileModel.display = Id;
+            projectileModel.display = ModContent.CreatePrefabReference(Id);
 #endif
             Apply(projectileModel.GetBehavior<DisplayModel>()!);
         }
@@ -139,7 +140,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// </summary>
         public void Apply(DisplayModel displayModel)
         {
-            displayModel.display = Id;
+            displayModel.display = ModContent.CreatePrefabReference(Id);
 #if BloonsTD6
             displayModel.positionOffset = PositionOffset;
             displayModel.scale = Scale;

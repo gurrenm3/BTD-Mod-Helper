@@ -32,11 +32,11 @@ public bool button;
 The sprite to use for the button when it's disabled, RedBtnLong by default
 
 ```csharp
-public SpriteReference disabledButton;
+public string disabledButton;
 ```
 
 #### Field Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingBool.disabledText'></a>
 
@@ -58,11 +58,11 @@ public string disabledText;
 The sprite to use for the button when it's enabled, GreenBtnLong by default
 
 ```csharp
-public SpriteReference enabledButton;
+public string enabledButton;
 ```
 
 #### Field Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingBool.enabledText'></a>
 

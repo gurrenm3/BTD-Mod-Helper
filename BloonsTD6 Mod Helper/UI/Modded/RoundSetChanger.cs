@@ -89,7 +89,7 @@ internal static class RoundSetChanger
         );
     }
 
-    private static ModHelperButton CreateRoundSetButton(string id, string displayName, SpriteReference icon)
+    private static ModHelperButton CreateRoundSetButton(string id, string displayName, string icon)
     {
         var roundButton = ModHelperButton.Create(new Info(displayName, width: 300, height: 300),
             icon, new Action(() =>

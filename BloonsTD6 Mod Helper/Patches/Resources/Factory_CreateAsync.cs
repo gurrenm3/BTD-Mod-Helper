@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Patches.Resources;
 [HarmonyPatch(typeof(Factory), nameof(Factory.CreateAsync))]
 internal static class Factory_CreateAsync
 {
-    [HarmonyPrefix]
+    /*[HarmonyPrefix]
     private static bool Prefix(string objectId, ref Il2CppSystem.Action<UnityDisplayNode> onComplete)
     {
         if (ModDisplay.Cache.TryGetValue(objectId, out var modDisplay) &&
@@ -24,5 +24,5 @@ internal static class Factory_CreateAsync
         }
 
         return true;
-    }
+    }*/
 }

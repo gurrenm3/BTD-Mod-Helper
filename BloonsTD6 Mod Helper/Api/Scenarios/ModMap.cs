@@ -85,6 +85,7 @@ public abstract class ModMap : NamedModContent
     /// </summary>
     public sealed override void Register()
     {
+        /*
         GameData.Instance.mapSet.Maps.items =
             GameData.Instance.mapSet.Maps.items.AddTo(GetMapDetails());
 
@@ -98,6 +99,7 @@ public abstract class ModMap : NamedModContent
         mapSprite = GetSpriteReference(MapImageName);
 
         MelonLogger.Msg($"Registered Map: {Name}");
+        */
     }
 
     /// <summary>

@@ -6,6 +6,7 @@ using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Utils;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -78,7 +79,7 @@ public abstract partial class ModTower
     {
         var towerModel = !string.IsNullOrEmpty(BaseTower)
             ? BaseTowerModel.MakeCopy(Id)
-            : new TowerModel(Id, Id);
+            : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
         towerModel.name = Id;
 
         towerModel.appliedUpgrades = new Il2CppStringArray(0);

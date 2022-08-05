@@ -107,32 +107,32 @@ public BTD_Mod_Helper.Api.Components.ModHelperPanel TopRow { get; set; }
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,string)'></a>
 
-## ModHelperOption.Create(string, string, SpriteReference) Method
+## ModHelperOption.Create(string, string, string) Method
 
 Creates a new MoodHelperOption
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperOption Create(string displayName, string description=null, Assets.Scripts.Utils.SpriteReference icon=null);
+public static BTD_Mod_Helper.Api.Components.ModHelperOption Create(string displayName, string description=null, string icon=null);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,Assets.Scripts.Utils.SpriteReference).displayName'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,string).displayName'></a>
 
 `displayName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The displayed name of the mod setting
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,Assets.Scripts.Utils.SpriteReference).description'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,string).description'></a>
 
 `description` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The description of the mod setting, if any
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,Assets.Scripts.Utils.SpriteReference).icon'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create(string,string,string).icon'></a>
 
-`icon` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The icon of the mod setting, if any
 
@@ -140,43 +140,43 @@ The icon of the mod setting, if any
 [ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
 The created ModHelperOption
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string)'></a>
 
-## ModHelperOption.Create<T>(string, string, SpriteReference) Method
+## ModHelperOption.Create<T>(string, string, string) Method
 
 Creates a new MoodHelperOption
 
 ```csharp
-protected static T Create<T>(string displayName, string description=null, Assets.Scripts.Utils.SpriteReference icon=null)
+protected static T Create<T>(string displayName, string description=null, string icon=null)
     where T : BTD_Mod_Helper.Api.Components.ModHelperOption;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,Assets.Scripts.Utils.SpriteReference).T'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,Assets.Scripts.Utils.SpriteReference).displayName'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string).displayName'></a>
 
 `displayName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The displayed name of the mod setting
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,Assets.Scripts.Utils.SpriteReference).description'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string).description'></a>
 
 `description` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The description of the mod setting, if any
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,Assets.Scripts.Utils.SpriteReference).icon'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string).icon'></a>
 
-`icon` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The icon of the mod setting, if any
 
 #### Returns
-[T](BTD_Mod_Helper.Api.Components.ModHelperOption.md#BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,Assets.Scripts.Utils.SpriteReference).T 'BTD_Mod_Helper.Api.Components.ModHelperOption.Create<T>(string, string, Assets.Scripts.Utils.SpriteReference).T')  
+[T](BTD_Mod_Helper.Api.Components.ModHelperOption.md#BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string).T 'BTD_Mod_Helper.Api.Components.ModHelperOption.Create<T>(string, string, string).T')  
 The created ModHelperOption
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperOption.SetResetAction(UnityEngine.Events.UnityAction)'></a>

@@ -73,7 +73,7 @@ public static float GetDistanceTravelled(this Assets.Scripts.Unity.Bridge.BloonT
 Return the Id of this BloonToSimulation
 
 ```csharp
-public static int GetId(this Assets.Scripts.Unity.Bridge.BloonToSimulation bloonToSim);
+public static Assets.Scripts.ObjectId GetId(this Assets.Scripts.Unity.Bridge.BloonToSimulation bloonToSim);
 ```
 #### Parameters
 
@@ -82,7 +82,7 @@ public static int GetId(this Assets.Scripts.Unity.Bridge.BloonToSimulation bloon
 `bloonToSim` [Assets.Scripts.Unity.Bridge.BloonToSimulation](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Bridge.BloonToSimulation 'Assets.Scripts.Unity.Bridge.BloonToSimulation')
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[Assets.Scripts.ObjectId](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.ObjectId 'Assets.Scripts.ObjectId')
 
 <a name='BTD_Mod_Helper.Extensions.BloonToSimulationExt.GetUnityDisplayNode(thisAssets.Scripts.Unity.Bridge.BloonToSimulation)'></a>
 

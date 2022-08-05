@@ -135,7 +135,7 @@ internal static class ModsMenuModExt
         mod.Icon.SetActive(!modHelperData.HasNoIcon);
     }
 
-    public static SpriteReference GetBackground(ModHelperData data)
+    public static string GetBackground(ModHelperData data)
     {
         var background = VanillaSprites.MainBGPanelBlue;
         if (!data.Enabled)

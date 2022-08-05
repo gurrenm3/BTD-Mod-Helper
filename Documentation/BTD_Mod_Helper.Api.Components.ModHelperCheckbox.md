@@ -52,48 +52,48 @@ public UnityEngine.UI.Toggle Toggle { get; }
 [UnityEngine.UI.Toggle](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Toggle 'UnityEngine.UI.Toggle')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int)'></a>
 
-## ModHelperCheckbox.Create(Info, bool, SpriteReference, UnityAction<bool>, SpriteReference, int) Method
+## ModHelperCheckbox.Create(Info, bool, string, UnityAction<bool>, string, int) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperCheckbox Create(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, Assets.Scripts.Utils.SpriteReference background, UnityEngine.Events.UnityAction<bool> onValueChanged=null, Assets.Scripts.Utils.SpriteReference checkImage=null, int padding=0);
+public static BTD_Mod_Helper.Api.Components.ModHelperCheckbox Create(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityEngine.Events.UnityAction<bool> onValueChanged=null, string checkImage=null, int padding=0);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).onValueChanged'></a>
 
 `onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
 
 Action to perform when it is checked/unchecked, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).checkImage'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).checkImage'></a>
 
-`checkImage` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The checkmark itself, or null for the default checkmark
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).padding'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 

@@ -166,30 +166,30 @@ public T Add<T>(T child)
 #### Returns
 [T](BTD_Mod_Helper.Api.Components.ModHelperComponent.md#BTD_Mod_Helper.Api.Components.ModHelperComponent.Add_T_(T).T 'BTD_Mod_Helper.Api.Components.ModHelperComponent.Add<T>(T).T')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action)'></a>
 
-## ModHelperComponent.AddButton(Info, SpriteReference, Action) Method
+## ModHelperComponent.AddButton(Info, string, Action) Method
 
 Creates a new ModHelperButton
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperButton AddButton(BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference sprite, Il2CppSystem.Action onClick);
+public BTD_Mod_Helper.Api.Components.ModHelperButton AddButton(BTD_Mod_Helper.Api.Components.Info info, string sprite, Il2CppSystem.Action onClick);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action).sprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).sprite'></a>
 
-`sprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The button's visuals
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,Il2CppSystem.Action).onClick'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).onClick'></a>
 
 `onClick` [Il2CppSystem.Action](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Action 'Il2CppSystem.Action')
 
@@ -198,32 +198,32 @@ What should happen when the button is clicked
 #### Returns
 [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string)'></a>
 
-## ModHelperComponent.AddCheckbox(Info, bool, SpriteReference) Method
+## ModHelperComponent.AddCheckbox(Info, bool, string) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, Assets.Scripts.Utils.SpriteReference background);
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
@@ -231,36 +231,36 @@ The background behind the check, or null for nothing
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_)'></a>
 
-## ModHelperComponent.AddCheckbox(Info, bool, SpriteReference, UnityAction<bool>) Method
+## ModHelperComponent.AddCheckbox(Info, bool, string, UnityAction<bool>) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, Assets.Scripts.Utils.SpriteReference background, UnityEngine.Events.UnityAction<bool> onValueChanged);
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityEngine.Events.UnityAction<bool> onValueChanged);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).onValueChanged'></a>
 
 `onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
 
@@ -270,44 +270,44 @@ Action to perform when it is checked/unchecked, or null
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string)'></a>
 
-## ModHelperComponent.AddCheckbox(Info, bool, SpriteReference, UnityAction<bool>, SpriteReference) Method
+## ModHelperComponent.AddCheckbox(Info, bool, string, UnityAction<bool>, string) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, Assets.Scripts.Utils.SpriteReference background, UnityEngine.Events.UnityAction<bool> onValueChanged, Assets.Scripts.Utils.SpriteReference checkImage);
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityEngine.Events.UnityAction<bool> onValueChanged, string checkImage);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).onValueChanged'></a>
 
 `onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
 
 Action to perform when it is checked/unchecked, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference).checkImage'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).checkImage'></a>
 
-`checkImage` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The checkmark itself, or null for the default checkmark
 
@@ -315,48 +315,48 @@ The checkmark itself, or null for the default checkmark
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int)'></a>
 
-## ModHelperComponent.AddCheckbox(Info, bool, SpriteReference, UnityAction<bool>, SpriteReference, int) Method
+## ModHelperComponent.AddCheckbox(Info, bool, string, UnityAction<bool>, string, int) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, Assets.Scripts.Utils.SpriteReference background, UnityEngine.Events.UnityAction<bool> onValueChanged, Assets.Scripts.Utils.SpriteReference checkImage, int padding);
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityEngine.Events.UnityAction<bool> onValueChanged, string checkImage, int padding);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).onValueChanged'></a>
 
 `onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
 
 Action to perform when it is checked/unchecked, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).checkImage'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).checkImage'></a>
 
-`checkImage` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The checkmark itself, or null for the default checkmark
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,Assets.Scripts.Utils.SpriteReference,UnityEngine.Events.UnityAction_bool_,Assets.Scripts.Utils.SpriteReference,int).padding'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
@@ -405,44 +405,44 @@ Action that should happen when an option of the given index is selected
 [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
 The created ModHelperDropdown
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string)'></a>
 
-## ModHelperComponent.AddDropdown(Info, List<string>, float, UnityAction<int>, SpriteReference) Method
+## ModHelperComponent.AddDropdown(Info, List<string>, float, UnityAction<int>, string) Method
 
 Creates a new ModHelperDropdown
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, Assets.Scripts.Utils.SpriteReference background);
+public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, string background);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: width/height must be set to actual values
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference).options'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).options'></a>
 
 `options` [Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
 
 The list of options
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference).windowHeight'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).windowHeight'></a>
 
 `windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Height of the created dropdown window
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).onValueChanged'></a>
 
 `onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
 
 Action that should happen when an option of the given index is selected
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background image
 
@@ -450,48 +450,48 @@ The background image
 [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
 The created ModHelperDropdown
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float)'></a>
 
-## ModHelperComponent.AddDropdown(Info, List<string>, float, UnityAction<int>, SpriteReference, float) Method
+## ModHelperComponent.AddDropdown(Info, List<string>, float, UnityAction<int>, string, float) Method
 
 Creates a new ModHelperDropdown
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, Assets.Scripts.Utils.SpriteReference background, float labelFontSize);
+public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, string background, float labelFontSize);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: width/height must be set to actual values
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).options'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).options'></a>
 
 `options` [Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
 
 The list of options
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).windowHeight'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).windowHeight'></a>
 
 `windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Height of the created dropdown window
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).onValueChanged'></a>
 
 `onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
 
 Action that should happen when an option of the given index is selected
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).background'></a>
 
-`background` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background image
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,Assets.Scripts.Utils.SpriteReference,float).labelFontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).labelFontSize'></a>
 
 `labelFontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
@@ -501,26 +501,26 @@ Text size of label
 [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
 The created ModHelperDropdown
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,string)'></a>
 
-## ModHelperComponent.AddImage(Info, SpriteReference) Method
+## ModHelperComponent.AddImage(Info, string) Method
 
 Creates a new ModHelperImage
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperImage AddImage(BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference sprite);
+public BTD_Mod_Helper.Api.Components.ModHelperImage AddImage(BTD_Mod_Helper.Api.Components.Info info, string sprite);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference).sprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,string).sprite'></a>
 
-`sprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The sprite to display
 
@@ -589,26 +589,26 @@ The name/position/size info
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
 The created ModHelperPanel
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string)'></a>
 
-## ModHelperComponent.AddPanel(Info, SpriteReference) Method
+## ModHelperComponent.AddPanel(Info, string) Method
 
 Creates a new ModHelperPanel
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference backgroundSprite);
+public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
@@ -616,30 +616,30 @@ The panel's background sprite
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
 The created ModHelperPanel
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_)'></a>
 
-## ModHelperComponent.AddPanel(Info, SpriteReference, Nullable<Axis>) Method
+## ModHelperComponent.AddPanel(Info, string, Nullable<Axis>) Method
 
 Creates a new ModHelperPanel
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis);
+public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_).layoutAxis'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_).layoutAxis'></a>
 
 `layoutAxis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
@@ -649,36 +649,36 @@ If present, creates this panel with a Horizontal/Vertical layout group
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
 The created ModHelperPanel
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float)'></a>
 
-## ModHelperComponent.AddPanel(Info, SpriteReference, Nullable<Axis>, float) Method
+## ModHelperComponent.AddPanel(Info, string, Nullable<Axis>, float) Method
 
 Creates a new ModHelperPanel
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis, float spacing);
+public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis, float spacing);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float).layoutAxis'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).layoutAxis'></a>
 
 `layoutAxis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 If present, creates this panel with a Horizontal/Vertical layout group
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float).spacing'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).spacing'></a>
 
 `spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
@@ -688,42 +688,42 @@ The layout group's spacing
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
 The created ModHelperPanel
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int)'></a>
 
-## ModHelperComponent.AddPanel(Info, SpriteReference, Nullable<Axis>, float, int) Method
+## ModHelperComponent.AddPanel(Info, string, Nullable<Axis>, float, int) Method
 
 Creates a new ModHelperPanel
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, Assets.Scripts.Utils.SpriteReference backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis, float spacing, int padding);
+public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis, float spacing, int padding);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).layoutAxis'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).layoutAxis'></a>
 
 `layoutAxis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 If present, creates this panel with a Horizontal/Vertical layout group
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).spacing'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).spacing'></a>
 
 `spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The layout group's spacing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,Assets.Scripts.Utils.SpriteReference,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).padding'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
@@ -781,32 +781,32 @@ The axis that it scrolls in, or null for both directions
 [ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
 The created ModHelperScrollPanel
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string)'></a>
 
-## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, SpriteReference) Method
+## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, string) Method
 
 Creates a new ModHelperScrollPanel
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, Assets.Scripts.Utils.SpriteReference backgroundSprite);
+public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference).axis'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string).axis'></a>
 
 `axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 The axis that it scrolls in, or null for both directions
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
@@ -814,36 +814,36 @@ The panel's background sprite
 [ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
 The created ModHelperScrollPanel
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float)'></a>
 
-## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, SpriteReference, float) Method
+## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, string, float) Method
 
 Creates a new ModHelperScrollPanel
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, Assets.Scripts.Utils.SpriteReference backgroundSprite, float spacing);
+public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite, float spacing);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float).axis'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).axis'></a>
 
 `axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 The axis that it scrolls in, or null for both directions
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float).spacing'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).spacing'></a>
 
 `spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
@@ -853,42 +853,42 @@ If axis is not null, then the layout spacing for the items
 [ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
 The created ModHelperScrollPanel
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int)'></a>
 
-## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, SpriteReference, float, int) Method
+## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, string, float, int) Method
 
 Creates a new ModHelperScrollPanel
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, Assets.Scripts.Utils.SpriteReference backgroundSprite, float spacing, int padding);
+public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite, float spacing, int padding);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).axis'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).axis'></a>
 
 `axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 The axis that it scrolls in, or null for both directions
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).backgroundSprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).backgroundSprite'></a>
 
-`backgroundSprite` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The panel's background sprite
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).spacing'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).spacing'></a>
 
 `spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 If axis is not null, then the layout spacing for the items
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,Assets.Scripts.Utils.SpriteReference,float,int).padding'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
