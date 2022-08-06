@@ -141,7 +141,7 @@ namespace BTD_Mod_Helper.Api
                 foreach (var modContent in content)
                 {
                     modContent.mod = instance.mod;
-                    if(instance.GetType().IsInstanceOfType(modContent))
+                    if (instance.GetType().IsInstanceOfType(modContent))
                     {
                         instances.Add(modContent);
                     }
@@ -231,27 +231,15 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="guid">The guid that you'd like to assign to the SpriteReference</param>
         /// <returns></returns>
-        public static SpriteReference CreateSpriteReference(string guid)
+        public static SpriteReference CreateSpriteReference(string guid) => new()
         {
-#if BloonsTD6
-            return new SpriteReference
-            {
-                guidRef = guid
-            };
-#elif BloonsAT
-            var reference = new SpriteReference();
-            reference.guid = guid;
-            return reference;
-#endif
-        }
+            guidRef = guid
+        };
 
-        public static PrefabReference CreatePrefabReference(string guid)
+        public static PrefabReference CreatePrefabReference(string guid) => new()
         {
-            return new PrefabReference
-            {
-                guidRef = guid
-            };
-        }
+            guidRef = guid
+        };
 
         /// <summary>
         /// Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
@@ -279,13 +267,11 @@ namespace BTD_Mod_Helper.Api
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
-        public static string GetTextureGUID(BloonsMod mod, string fileName)
-        {
-            return "MainMenuUiAtlas[" +  mod.IDPrefix + fileName + "]";
-        }
+        public static string GetTextureGUID(BloonsMod mod, string fileName) =>
+            "MainMenuUiAtlas[" + GetId(mod, fileName) + "]";
 
         /// <summary>
-        /// Gets a texture's GUID by name for a specific mod
+        /// Gets a texture's GUID by name for a specific mod, to be used in SpriteReferences
         /// <br/>
         /// Returns null if a Texture hasn't been loaded with that name
         /// </summary>
@@ -298,11 +284,12 @@ namespace BTD_Mod_Helper.Api
             if (mod == null)
             {
                 BloonsMod.GotModTooSoon.Add(typeof(T));
-                return "MainMenuUiAtlas[" + typeof(T).Assembly.GetName().Name + "-" + name + "]";
+                return "MainMenuUiAtlas[" + GetId<T>(name) + "]";
             }
 
             return GetTextureGUID(mod, name);
         }
+
 
         /// <summary>
         /// Gets a texture's GUID by name for this mod
@@ -311,10 +298,33 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
-        public string GetTextureGUID(string name)
+        public string GetTextureGUID(string name) => GetTextureGUID(mod, name);
+
+
+        /// <summary>
+        /// Gets the id of a resource by appending the mod's ID prefix to its name
+        /// </summary>
+        public static string GetId(BloonsMod bloonsMod, string name) => bloonsMod.IDPrefix + name;
+
+        /// <summary>
+        /// Gets the id of a resource by appending the mod's ID prefix to its name
+        /// </summary>
+        public static string GetId<T>(string name) where T : BloonsMod
         {
-            return GetTextureGUID(mod, name);
+            var mod = GetInstance<T>();
+            if (mod == null)
+            {
+                BloonsMod.GotModTooSoon.Add(typeof(T));
+                return typeof(T).Assembly.GetName().Name + "-" + name;
+            }
+
+            return GetId(mod, name);
         }
+
+        /// <summary>
+        /// Gets the id of a resource by appending the mod's ID prefix to its name
+        /// </summary>
+        public string GetId(string name) => GetId(mod, name);
 
 
         /// <summary>
@@ -324,7 +334,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         public static bool TextureExists(BloonsMod bloonsMod, string name)
         {
-            return ResourceHandler.Resources.ContainsKey(GetTextureGUID(bloonsMod, name));
+            return ResourceHandler.Resources.ContainsKey(GetId(bloonsMod, name));
         }
 
         /// <summary>
@@ -332,19 +342,13 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <typeparam name="T">The mod to look in</typeparam>
-        public static bool TextureExists<T>(string name) where T : BloonsMod
-        {
-            return TextureExists(GetInstance<T>(), name);
-        }
+        public static bool TextureExists<T>(string name) where T : BloonsMod => TextureExists(GetInstance<T>(), name);
 
         /// <summary>
         /// Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
         /// </summary>
         /// <param name="name">The file name of your texture, without the extension</param>
-        protected bool TextureExists(string name)
-        {
-            return TextureExists(mod, name);
-        }
+        protected bool TextureExists(string name) => TextureExists(mod, name);
 
         /// <summary>
         /// Constructs a Texture2D for a given texture name within a mod
@@ -352,30 +356,23 @@ namespace BTD_Mod_Helper.Api
         /// <param name="bloonsMod">The mod that adds this texture</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
-        public static Texture2D GetTexture(BloonsMod bloonsMod, string fileName)
-        {
-            return ResourceHandler.GetTexture(GetTextureGUID(bloonsMod, fileName));
-        }
+        public static Texture2D GetTexture(BloonsMod bloonsMod, string fileName) =>
+            ResourceHandler.GetTexture(GetId(bloonsMod, fileName));
 
         /// <summary>
         /// Constructs a Texture2D for a given texture name within this mod
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
-        protected Texture2D GetTexture(string fileName)
-        {
-            return GetTexture(mod, fileName);
-        }
+        protected Texture2D GetTexture(string fileName) => GetTexture(mod, fileName);
 
         /// <summary>
         /// Constructs a Texture2D for a given texture name within a mod
         /// </summary>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>A Texture2D</returns>
-        public static Texture2D GetTexture<T>(string fileName) where T : BloonsMod
-        {
-            return GetTexture(GetInstance<T>(), fileName);
-        }
+        public static Texture2D GetTexture<T>(string fileName) where T : BloonsMod =>
+            GetTexture(GetInstance<T>(), fileName);
 
         /// <summary>
         /// Returns the Bytes associated with a texture.
@@ -466,7 +463,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name"></param>
         public static AssetBundle GetBundle(BloonsMod mod, string name)
         {
-            if (ResourceHandler.Bundles.TryGetValue(mod.IDPrefix + name, out var bundle))
+            if (ResourceHandler.Bundles.TryGetValue(GetId(mod, name), out var bundle))
             {
                 return bundle;
             }
@@ -520,7 +517,7 @@ namespace BTD_Mod_Helper.Api
         /// Returns whether a mod with the given name is installed
         /// </summary>
         public static bool HasMod(string name) => GetMod(name) != null;
-        
+
         /// <summary>
         /// Returns whether a mod with the given name is installed, and pass it to the out param if it is
         /// </summary>

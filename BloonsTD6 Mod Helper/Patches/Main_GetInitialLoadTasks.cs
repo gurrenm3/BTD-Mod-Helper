@@ -25,25 +25,29 @@ internal static class Main_GetInitialLoadTasks
         {
             return;
         }
-        
+
         var tasks = __result.Tasks.Cast<Il2CppReferenceArray<ITask>>().ToList();
         var gameModelLoad = tasks.Last();
         tasks.Remove(gameModelLoad);
-        tasks.Add(new Task(CustomGameModelLoadName, Main.__c.__9__46_8).Cast<ITask>()); // The last of the Assets_Main_Main___c$$_GetInitialLoadTasks_...
-        tasks.Add(new ByteWaitTask().CreateTask());
-        tasks.Add(new PreLoadResourcesTask().CreateTask());
+        // The last of the Assets_Main_Main___c$$_GetInitialLoadTasks_...
+        tasks.Add(new Task(CustomGameModelLoadName, Main.__c.__9__46_8).Cast<ITask>());
+        tasks.Add(new ByteWaitTask {mod = ModHelper.Main}.CreateTask());
+        tasks.Add(new PreLoadResourcesTask {mod = ModHelper.Main}.CreateTask());
 
+        // All the tasks for loading mod content
         tasks.AddRange(ModHelper.Mods
             .Where(mod => mod.Content.Count > 0)
             .OrderBy(mod => mod.Priority)
             .Select(mod => new ModContentTask {mod = mod})
             .Select(modContentTask => modContentTask.CreateTask()));
 
+        // Modders own custom load tasks
         tasks.AddRange(ModContent
             .GetContent<ModLoadTask>()
             .OrderBy(task => task.mod.Priority)
             .Select(modLoadTask => modLoadTask.CreateTask()));
 
+        // The original game model load at the end
         tasks.Add(gameModelLoad);
 
         __result.Tasks = new SeriesTasks(tasks.ToArray()).Cast<IEnumerable<ITask>>();

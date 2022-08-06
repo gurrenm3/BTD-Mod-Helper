@@ -31,8 +31,8 @@ internal class ResourceHandler
 
             var split = fileName.Split('.');
             var name = split[split.Length - 2];
-            var guid = mod.IDPrefix + name;
-            Resources[guid] = resource;
+            var id = ModContent.GetId(mod, name);
+            Resources[id] = resource;
             mod.Resources[name] = resource;
         }
     }
@@ -133,13 +133,13 @@ internal class ResourceHandler
         return null;
     }
 
-    internal static Sprite GetSprite(string guid, float pixelsPerUnit = 10.8f)
+    internal static Sprite GetSprite(string id, float pixelsPerUnit = 10.8f)
     {
-        if (SpriteCache.TryGetValue(guid, out var sprite) && sprite != null)
+        if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null)
         {
             return sprite;
         }
 
-        return CreateSprite(guid, pixelsPerUnit);
+        return CreateSprite(id, pixelsPerUnit);
     }
 }

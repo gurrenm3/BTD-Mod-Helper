@@ -272,6 +272,70 @@ public static string GetDisplayGUID<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsMod,string)'></a>
+
+## ModContent.GetId(BloonsMod, string) Method
+
+Gets the id of a resource by appending the mod's ID prefix to its name
+
+```csharp
+public static string GetId(BTD_Mod_Helper.BloonsMod bloonsMod, string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsMod,string).bloonsMod'></a>
+
+`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsMod,string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(string)'></a>
+
+## ModContent.GetId(string) Method
+
+Gets the id of a resource by appending the mod's ID prefix to its name
+
+```csharp
+public string GetId(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId_T_(string)'></a>
+
+## ModContent.GetId<T>(string) Method
+
+Gets the id of a resource by appending the mod's ID prefix to its name
+
+```csharp
+public static string GetId<T>(string name)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId_T_(string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId_T_(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetInstance(System.Type)'></a>
 
 ## ModContent.GetInstance(Type) Method
@@ -822,7 +886,7 @@ The texture's GUID
 
 ## ModContent.GetTextureGUID<T>(string) Method
 
-Gets a texture's GUID by name for a specific mod  
+Gets a texture's GUID by name for a specific mod, to be used in SpriteReferences  
 <br/>  
 Returns null if a Texture hasn't been loaded with that name
 

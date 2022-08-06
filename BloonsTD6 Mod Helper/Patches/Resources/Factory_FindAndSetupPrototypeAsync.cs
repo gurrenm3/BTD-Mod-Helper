@@ -1,8 +1,14 @@
-﻿using Assets.Scripts.Unity.Display;
+﻿using System;
+using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
-using Il2CppSystem;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Console = System.Console;
 using Exception = System.Exception;
 using Object = UnityEngine.Object;
@@ -93,39 +99,4 @@ internal class Factory_FindAndSetupPrototypeAsync
 
         return true;
     }*/
-
-    private static void SetupUDN(UnityDisplayNode udn, ModDisplay modDisplay, Action<UnityDisplayNode> onComplete)
-    {
-        udn.name = modDisplay.Id + "(Clone)";
-        udn.RecalculateGenericRenderers();
-        try
-        {
-            modDisplay.ModifyDisplayNode(udn);
-        }
-        catch (Exception e)
-        {
-            ModHelper.Error($"Failed to modify DisplayNode for {modDisplay.Name}");
-            ModHelper.Error(e);
-        }
-
-        try
-        {
-            if (modDisplay.Scale < 1f || modDisplay.Scale > 1f)
-            {
-                udn.transform.GetChild(0).transform.localScale = new Vector3(modDisplay.Scale,
-                    modDisplay.Scale, modDisplay.Scale);
-            }
-        }
-        catch (Exception e)
-        {
-            ModHelper.Error($"Failed to change scale for {modDisplay.Name}");
-            ModHelper.Error(e);
-        }
-
-        udn.RecalculateGenericRenderers();
-
-        onComplete.Invoke(udn);
-
-        ResourceHandler.Prefabs[modDisplay.Id] = udn;
-    }
 }

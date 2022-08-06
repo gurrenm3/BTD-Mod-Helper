@@ -44,7 +44,7 @@ internal class ModSettingsHandler
                 var fileName = mod.SettingsFilePath;
                 if (!File.Exists(fileName))
                 {
-                    SaveModSettings(mod);
+                    SaveModSettings(mod, true);
                 }
             }
         }

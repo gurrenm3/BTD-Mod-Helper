@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Unity.Towers.Mods;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
@@ -68,8 +69,7 @@ public class PreLoadResourcesTask : ModLoadTask
             };
             foreach (var (key, bytes) in bloonsMod.Resources)
             {
-                var guid = bloonsMod.IDPrefix + key;
-                PreloadSprite(ResourceHandler.GetSprite(guid), key, modObject);
+                PreloadSprite(ResourceHandler.GetSprite(GetId(bloonsMod, key)), key, modObject);
                 currentByteTotal += bytes.Length;
                 if (currentByteTotal > BytesPerFrame)
                 {

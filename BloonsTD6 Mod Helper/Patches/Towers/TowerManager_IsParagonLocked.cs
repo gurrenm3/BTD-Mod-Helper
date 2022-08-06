@@ -10,6 +10,10 @@ internal static class TowerManager_IsParagonLocked
     [HarmonyPostfix]
     private static void Postfix(Tower tower, ref bool __result)
     {
-        __result = true;
+        if (tower.towerModel.GetModTower() is {paragonUpgrade: ModParagonUpgrade modParagonUpgrade} &&
+            modParagonUpgrade.RestrictUpgrading(tower))
+        {
+            __result = true;
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace BTD_Mod_Helper.Patches.Towers;
 [HarmonyPatch(typeof(TowerManager), nameof(TowerManager.UpgradeTower))]
 internal class TowerManager_UpgradeTower
 {
-    [HarmonyPrefix]
+    /*[HarmonyPrefix]
     internal static bool Prefix(Tower tower, TowerModel def, ref string __state)
     {
         __state = null;
@@ -28,5 +28,5 @@ internal class TowerManager_UpgradeTower
         {
             ModHelper.PerformHook(mod => mod.OnTowerUpgraded(tower, __state, def));
         }
-    }
+    }*/
 }
