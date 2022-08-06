@@ -52,3 +52,30 @@ The sprite to display
 #### Returns
 [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
 The created ModHelperImage
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.Create(BTD_Mod_Helper.Api.Components.Info,UnityEngine.Sprite)'></a>
+
+## ModHelperImage.Create(Info, Sprite) Method
+
+Creates a new ModHelperImage
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperImage Create(BTD_Mod_Helper.Api.Components.Info info, UnityEngine.Sprite sprite);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.Create(BTD_Mod_Helper.Api.Components.Info,UnityEngine.Sprite).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.Create(BTD_Mod_Helper.Api.Components.Info,UnityEngine.Sprite).sprite'></a>
+
+`sprite` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+The sprite to display
+
+#### Returns
+[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
+The created ModHelperImage

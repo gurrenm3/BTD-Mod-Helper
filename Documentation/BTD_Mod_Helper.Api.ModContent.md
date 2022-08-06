@@ -89,6 +89,26 @@ public static string BloonID<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference(string)'></a>
+
+## ModContent.CreatePrefabReference(string) Method
+
+Returns a new PrefabReference that uses the given guid
+
+```csharp
+public static Assets.Scripts.Utils.PrefabReference CreatePrefabReference(string guid);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference(string).guid'></a>
+
+`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The guid that you'd like to assign to the PrefabReference
+
+#### Returns
+[Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
+
 <a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(string)'></a>
 
 ## ModContent.CreateSpriteReference(string) Method

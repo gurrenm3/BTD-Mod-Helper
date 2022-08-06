@@ -45,6 +45,12 @@ public class ModHelperImage : ModHelperComponent
         return modHelperImage;
     }
         
+    /// <summary>
+    /// Creates a new ModHelperImage
+    /// </summary>
+    /// <param name="info">The name/position/size info</param>
+    /// <param name="sprite">The sprite to display</param>
+    /// <returns>The created ModHelperImage</returns>
     public static ModHelperImage Create(Info info, Sprite sprite)
     {
         var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);

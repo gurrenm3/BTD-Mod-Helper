@@ -1,4 +1,8 @@
 ﻿using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Utils;
+using Il2CppSystem;
+using UnityEngine;
+using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Api.Display;
 
@@ -30,4 +34,28 @@ public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
             
     }
 
+
+    internal override bool Create(Factory factory, PrefabReference prefabReference, Action<UnityDisplayNode> onComplete,
+        ref UnityDisplayNode prototype)
+    {
+        var assetBundle = GetBundle(mod, AssetBundleName);
+        var gameObject = assetBundle.LoadAsset(PrefabName).Cast<GameObject>();
+        var baseNode = gameObject.AddComponent<UnityDisplayNode>();
+        if (!string.IsNullOrEmpty(MaterialName))
+        {
+            try
+            {
+                var material = assetBundle.LoadAsset(MaterialName).Cast<Material>();
+                baseNode.genericRenderers[0].SetMaterial(material);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Failed to load custom material {MaterialName}");
+                ModHelper.Warning(e);
+            }
+        }
+        prototype = CreateNewPrototype(factory, prefabReference, baseNode);
+        
+        return true;
+    }
 }

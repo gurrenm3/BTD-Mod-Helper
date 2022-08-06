@@ -187,7 +187,6 @@ public abstract partial class ModBloon : NamedModContent
             {
                 var guid = GetTextureGUID(Icon);
                 model.SetDisplayGUID(guid);
-                ResourceHandler.ScalesFor2dModels[guid] = PixelsPerUnit;
             }
             else
             {

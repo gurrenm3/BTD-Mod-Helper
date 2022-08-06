@@ -58,6 +58,9 @@ public static class Il2CppSystemObjectExt
         return castObject != null;
     }
 
+    /// <summary>
+    /// Gets the exact il2cpp type name of an object
+    /// </summary>
     public static string TypeName(this Il2CppObjectBase obj)
     {
         return Marshal.PtrToStringAnsi(IL2CPP.il2cpp_class_get_name(IL2CPP.il2cpp_object_get_class(obj.Pointer)));

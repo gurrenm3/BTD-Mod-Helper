@@ -16,7 +16,13 @@ public abstract partial class ModDisplay
     /// <param name="textureName">The name of the texture, without .png</param>
     protected void Set2DTexture(UnityDisplayNode node, string textureName)
     {
-        node.GetRenderer<SpriteRenderer>().sprite = GetSprite(textureName, PixelsPerUnit);
+        var sprite = GetSprite(textureName, PixelsPerUnit);
+        if (sprite == null)
+        {
+            ModHelper.Msg($"the sprite was null for {textureName} and mod {mod.GetModName()} :grimace:");
+        }
+
+        node.GetRenderer<SpriteRenderer>().sprite = sprite;
     }
 
     /// <summary>
@@ -25,7 +31,8 @@ public abstract partial class ModDisplay
     /// <returns></returns>
     public DisplayModel GetDisplayModel()
     {
-        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, PositionOffset, Scale);
+        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, PositionOffset.ToSMathVector(),
+            Scale);
     }
 
     /// <summary>
@@ -48,11 +55,12 @@ public abstract partial class ModDisplay
     /// <param name="action">What to do with the node</param>
     protected void UseNode(string guid, Action<UnityDisplayNode> action)
     {
-        Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(CreatePrefabReference(guid), new Action<UnityDisplayNode>((udn) =>
-        {
-            udn.RecalculateGenericRenderers();
-            action(udn);
-            udn.RecalculateGenericRenderers();
-        }));
+        Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(CreatePrefabReference(guid),
+            new Action<UnityDisplayNode>((udn) =>
+            {
+                udn.RecalculateGenericRenderers();
+                action(udn);
+                udn.RecalculateGenericRenderers();
+            }));
     }
 }

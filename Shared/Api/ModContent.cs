@@ -36,7 +36,7 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// Backing property for ID that's only able to be overriden internally
         /// </summary>
-        private protected virtual string ID => mod.IDPrefix + Name;
+        private protected virtual string ID => GetId(mod, Name);
 
         /// <summary>
         /// The BloonsMod that this content was added by
@@ -236,6 +236,11 @@ namespace BTD_Mod_Helper.Api
             guidRef = guid
         };
 
+        /// <summary>
+        /// Returns a new PrefabReference that uses the given guid
+        /// </summary>
+        /// <param name="guid">The guid that you'd like to assign to the PrefabReference</param>
+        /// <returns></returns>
         public static PrefabReference CreatePrefabReference(string guid) => new()
         {
             guidRef = guid
@@ -260,6 +265,9 @@ namespace BTD_Mod_Helper.Api
             return CreateSpriteReference(guid.ToLower());
         }
 
+        internal const string HijackSpriteAtlas = "Ui";
+        
+        internal static string WrapGuid(string orig) => $"{HijackSpriteAtlas}[{orig}]";
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod
@@ -267,8 +275,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="mod">The BloonsMod that the texture is from</param>
         /// <param name="fileName">The file name of your texture, without the extension</param>
         /// <returns>The texture's GUID</returns>
-        public static string GetTextureGUID(BloonsMod mod, string fileName) =>
-            "MainMenuUiAtlas[" + GetId(mod, fileName) + "]";
+        public static string GetTextureGUID(BloonsMod mod, string fileName) => WrapGuid(GetId(mod, fileName));
 
         /// <summary>
         /// Gets a texture's GUID by name for a specific mod, to be used in SpriteReferences
@@ -284,7 +291,7 @@ namespace BTD_Mod_Helper.Api
             if (mod == null)
             {
                 BloonsMod.GotModTooSoon.Add(typeof(T));
-                return "MainMenuUiAtlas[" + GetId<T>(name) + "]";
+                return WrapGuid(GetId<T>(name));
             }
 
             return GetTextureGUID(mod, name);
@@ -412,21 +419,9 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
         /// <returns>A Sprite</returns>
-        public static Sprite GetSprite(BloonsMod mod, string name, float pixelsPerUnit = 10f)
-        {
-            return ResourceHandler.GetSprite(GetTextureGUID(mod, name), pixelsPerUnit);
-        }
+        public static Sprite GetSprite(BloonsMod mod, string name, float pixelsPerUnit = 10f) =>
+            ResourceHandler.GetSprite(GetId(mod, name), pixelsPerUnit);
 
-        /// <summary>
-        /// Constructs a Sprite for a given texture name within this mod
-        /// </summary>
-        /// <param name="name">The file name of your texture, without the extension</param>
-        /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
-        /// <returns>A Sprite</returns>
-        protected Sprite GetSprite(string name, float pixelsPerUnit = 10f)
-        {
-            return GetSprite(mod, name, pixelsPerUnit);
-        }
 
         /// <summary>
         /// Constructs a Sprite for a given texture name within a given mod
@@ -434,10 +429,16 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">The file name of your texture, without the extension</param>
         /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
         /// <returns>A Sprite</returns>
-        public static Sprite GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod
-        {
-            return GetSprite(GetInstance<T>(), name, pixelsPerUnit);
-        }
+        public static Sprite GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod =>
+            GetSprite(GetInstance<T>(), name, pixelsPerUnit);
+
+        /// <summary>
+        /// Constructs a Sprite for a given texture name within this mod
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
+        /// <returns>A Sprite</returns>
+        protected Sprite GetSprite(string name, float pixelsPerUnit = 10f) => GetSprite(mod, name, pixelsPerUnit);
 
         /// <summary>
         /// Gets the singleton instance of a particular ModContent or BloonsMod based on its type
@@ -529,43 +530,31 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static string BloonID<T>() where T : ModBloon
-        {
-            return GetInstance<T>().Id;
-        }
+        public static string BloonID<T>() where T : ModBloon => GetInstance<T>().Id;
 
         /// <summary>
         /// Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static string GetDisplayGUID<T>() where T : ModDisplay
-        {
-            return GetInstance<T>().Id;
-        }
+        public static string GetDisplayGUID<T>() where T : ModDisplay => GetInstance<T>().Id;
 
         /// <summary>
         /// Gets all loaded ModContent objects that are T or a subclass of T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static List<T> GetContent<T>() where T : ModContent
-        {
-            return ModHelper.Mods
-                .SelectMany(bloonsMod => bloonsMod.Content)
-                .OfType<T>()
-                .ToList();
-        }
+        public static List<T> GetContent<T>() where T : ModContent => ModHelper.Mods
+            .SelectMany(bloonsMod => bloonsMod.Content)
+            .OfType<T>()
+            .ToList();
 
         /// <summary>
         /// Gets all loaded ModContent objects that are exactly of type T 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static List<T> GetInstances<T>() where T : ModContent
-        {
-            return ModContentInstance<T>.Instances;
-        }
+        public static List<T> GetInstances<T>() where T : ModContent => ModContentInstance<T>.Instances;
 
         /// <summary>
         /// Finds the loaded ModContent with the given Id and type T

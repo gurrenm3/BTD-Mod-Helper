@@ -205,3 +205,21 @@ public static Il2CppSystem.Object ToIl2Cpp(this int i);
 
 #### Returns
 [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.TypeName(thisUnhollowerBaseLib.Il2CppObjectBase)'></a>
+
+## Il2CppSystemObjectExt.TypeName(this Il2CppObjectBase) Method
+
+Gets the exact il2cpp type name of an object
+
+```csharp
+public static string TypeName(this UnhollowerBaseLib.Il2CppObjectBase obj);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.TypeName(thisUnhollowerBaseLib.Il2CppObjectBase).obj'></a>
+
+`obj` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

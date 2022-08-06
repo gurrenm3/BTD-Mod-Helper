@@ -111,6 +111,7 @@
 | [ModBuffIcon](BTD_Mod_Helper.Api.Display.ModBuffIcon.md 'BTD_Mod_Helper.Api.Display.ModBuffIcon') | Class for adding a new buff icon that can be displayed for towers |
 | [ModCustomDisplay](BTD_Mod_Helper.Api.Display.ModCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModCustomDisplay') | The custom version of a ModDisplay that loads in a model from a unity assetbundle |
 | [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay') | A custom Display that is a copy of an existing Display that can be modified |
+| [ModDisplay2D](BTD_Mod_Helper.Api.Display.ModDisplay2D.md 'BTD_Mod_Helper.Api.Display.ModDisplay2D') | Mod Display specifically set up to be a 2d image |
 | [ModTowerCustomDisplay](BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay') | A ModCustomDisplay that will automatically apply to a ModTower for specific tiers |
 | [ModTowerCustomDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay<T>') | A convenient generic class for applying a ModTowerCustomDisplay to a ModTower |
 | [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay') | A ModDisplay that will automatically apply to a ModTower for specific tiers |
@@ -123,6 +124,7 @@
 | Classes | |
 | :--- | :--- |
 | [RoundSetType](BTD_Mod_Helper.Api.Enums.RoundSetType.md 'BTD_Mod_Helper.Api.Enums.RoundSetType') | In game IDs for the round sets included in BTD6 |
+| [TowerSetType](BTD_Mod_Helper.Api.Enums.TowerSetType.md 'BTD_Mod_Helper.Api.Enums.TowerSetType') | Enum-like class for the different tower set types |
 
 | Enums | |
 | :--- | :--- |

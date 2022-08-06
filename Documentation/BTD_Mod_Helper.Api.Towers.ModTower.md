@@ -275,6 +275,25 @@ public virtual bool Use2DModel { get; }
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.Get2DScale(int[])'></a>
+
+## ModTower.Get2DScale(int[]) Method
+
+Gets the scale to use for a 2d tower at the given tiers  
+<seealso cref="P:BTD_Mod_Helper.Api.Towers.ModTower.Use2DModel"/><seealso cref="M:BTD_Mod_Helper.Api.Towers.ModTower.Get2DTexture(System.Int32[])"/>
+
+```csharp
+public virtual float Get2DScale(int[] tiers);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.Get2DScale(int[]).tiers'></a>
+
+`tiers` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+#### Returns
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.Get2DTexture(int[])'></a>
 
 ## ModTower.Get2DTexture(int[]) Method
@@ -282,7 +301,8 @@ public virtual bool Use2DModel { get; }
 If this is a 2D tower, gets the name of the .png to use for a given set of tiers  
 <br/>  
 Default Behavior Example: For CardMonkey with tiers 2-3-0, it would try (in order):  
-CardMonkey-230, CardMonkey-X3X, CardMonkey-2XX, CardMonkey
+CardMonkey-230, CardMonkey-X3X, CardMonkey-2XX, CardMonkey  
+<seealso cref="P:BTD_Mod_Helper.Api.Towers.ModTower.Use2DModel"/>[Get2DScale(int[])](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.Get2DScale(int[]) 'BTD_Mod_Helper.Api.Towers.ModTower.Get2DScale(int[])')
 
 ```csharp
 public virtual string Get2DTexture(int[] tiers);

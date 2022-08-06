@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using Assets.Scripts.Simulation.SMath;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -12,8 +13,8 @@ public static class Vector3Ext
     /// </summary>
     /// <param name="vector3"></param>
     /// <returns></returns>
-    public static Assets.Scripts.Simulation.SMath.Vector3 ToSMathVector(this Vector3 vector3)
+    public static Vector3 ToSMathVector(this UnityEngine.Vector3 vector3)
     {
-        return new Assets.Scripts.Simulation.SMath.Vector3(vector3);
+        return new Vector3(vector3);
     }
 }

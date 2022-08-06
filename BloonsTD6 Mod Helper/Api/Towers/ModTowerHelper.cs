@@ -10,6 +10,7 @@ using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Display;
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -185,12 +186,10 @@ internal static partial class ModTowerHelper
         // set the tower's display model
         if (modTower.Use2DModel)
         {
-            var name = modTower.Get2DTexture(towerModel.tiers);
-            var guid = ModContent.GetTextureGUID(modTower.mod, name);
-            towerModel.display = ModContent.CreatePrefabReference(guid);
-            towerModel.GetBehavior<DisplayModel>().display = ModContent.CreatePrefabReference(guid);
-            towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
-            ResourceHandler.ScalesFor2dModels[guid] = modTower.PixelsPerUnit;
+            var textureName = modTower.Get2DTexture(towerModel.tiers);
+            var scale = modTower.Get2DScale(towerModel.tiers);
+            var display = new ModTowerDisplay2D(modTower.mod, towerModel.name, textureName, scale);
+            display.Apply(towerModel);
         }
         else if (modTower.displays
                      .Where(display => display.UseForTower(towerModel.tiers) && display.ParagonDisplayIndex <= 0)

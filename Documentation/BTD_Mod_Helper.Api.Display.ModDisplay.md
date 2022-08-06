@@ -14,6 +14,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Derived  
 &#8627; [ModBloonDisplay](BTD_Mod_Helper.Api.Display.ModBloonDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay')  
 &#8627; [ModCustomDisplay](BTD_Mod_Helper.Api.Display.ModCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModCustomDisplay')  
+&#8627; [ModDisplay2D](BTD_Mod_Helper.Api.Display.ModDisplay2D.md 'BTD_Mod_Helper.Api.Display.ModDisplay2D')  
 &#8627; [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay')
 ### Fields
 
@@ -77,11 +78,11 @@ public virtual float PixelsPerUnit { get; }
 The position offset to render the display at (z axis is up toward camera)
 
 ```csharp
-public virtual Assets.Scripts.Simulation.SMath.Vector3 PositionOffset { get; }
+public virtual UnityEngine.Vector3 PositionOffset { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.SMath.Vector3 'Assets.Scripts.Simulation.SMath.Vector3')
+[UnityEngine.Vector3](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector3 'UnityEngine.Vector3')
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Scale'></a>
 
@@ -119,7 +120,7 @@ public void Apply(Assets.Scripts.Models.Bloons.BloonModel bloonModel);
 Applies this ModDisplay to a given DisplayModel
 
 ```csharp
-public void Apply(Assets.Scripts.Models.GenericBehaviors.DisplayModel displayModel);
+public virtual void Apply(Assets.Scripts.Models.GenericBehaviors.DisplayModel displayModel);
 ```
 #### Parameters
 
@@ -134,7 +135,7 @@ public void Apply(Assets.Scripts.Models.GenericBehaviors.DisplayModel displayMod
 Applies this ModDisplay to a given ProjectileModel
 
 ```csharp
-public void Apply(Assets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel);
+public virtual void Apply(Assets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel);
 ```
 #### Parameters
 
@@ -149,7 +150,7 @@ public void Apply(Assets.Scripts.Models.Towers.Projectiles.ProjectileModel proje
 Applies this ModDisplay to a given TowerModel
 
 ```csharp
-public void Apply(Assets.Scripts.Models.Towers.TowerModel towerModel);
+public virtual void Apply(Assets.Scripts.Models.Towers.TowerModel towerModel);
 ```
 #### Parameters
 

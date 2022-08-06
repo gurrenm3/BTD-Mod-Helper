@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Utils;
@@ -67,6 +68,7 @@ public abstract partial class ModTower : NamedModContent
     /// <seealso cref="Use2DModel"/>
     /// <seealso cref="Get2DTexture"/>
     /// </summary>
+    [Obsolete("Use Get2DScale")]
     public virtual float PixelsPerUnit => 10f;
 
     /// <summary>
@@ -77,21 +79,25 @@ public abstract partial class ModTower : NamedModContent
     /// <summary>
     /// The string to use for the Primary tower set
     /// </summary>
+    [Obsolete("Use TowerSetType.Primary")]
     protected const string PRIMARY = "Primary";
 
     /// <summary>
     /// The string to use for the Magic tower set
     /// </summary>
+    [Obsolete("Use TowerSetType.Magic")]
     protected const string MAGIC = "Magic";
 
     /// <summary>
     /// The string to use for the Military tower set
     /// </summary>
+    [Obsolete("Use TowerSetType.Military")]
     protected const string MILITARY = "Military";
 
     /// <summary>
     /// The string to use for the Support tower set
     /// </summary>
+    [Obsolete("Use TowerSetType.Support")]
     protected const string SUPPORT = "Support";
 
     /// <summary>
@@ -191,9 +197,9 @@ public abstract partial class ModTower : NamedModContent
     /// <br/>
     /// Default Behavior Example: For CardMonkey with tiers 2-3-0, it would try (in order):
     /// CardMonkey-230, CardMonkey-X3X, CardMonkey-2XX, CardMonkey
+    /// <seealso cref="Use2DModel"/>
+    /// <see cref="Get2DScale"/>
     /// </summary>
-    /// <param name="tiers"></param>
-    /// <returns></returns>
     public virtual string Get2DTexture(int[] tiers)
     {
         var name = $"{Name}-{tiers.Printed()}";
@@ -227,6 +233,13 @@ public abstract partial class ModTower : NamedModContent
 
         return Name;
     }
+
+    /// <summary>
+    /// Gets the scale to use for a 2d tower at the given tiers
+    /// <seealso cref="Use2DModel"/>
+    /// <seealso cref="Get2DTexture"/>
+    /// </summary>
+    public virtual float Get2DScale(int[] tiers) => 1f;
 
     /// <summary>
     /// Gets the portrait reference this tower should use for the given tiers

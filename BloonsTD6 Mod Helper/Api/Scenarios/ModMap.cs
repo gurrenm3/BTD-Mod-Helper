@@ -59,7 +59,9 @@ public abstract class ModMap : NamedModContent
 
     internal List<AreaModel> areaModels = new();
     internal List<PathModel> paths = new();
+#pragma warning disable CS0649
     private SpriteReference mapSprite;
+#pragma warning restore CS0649
     private Texture2D mapTexture;
 
     /// <summary>

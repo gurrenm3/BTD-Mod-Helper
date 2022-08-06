@@ -1,10 +1,15 @@
-﻿using Assets.Scripts.Unity.Display;
-using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
+﻿using System;
+using Assets.Scripts.Unity.Display;
 using System.Collections.Generic;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+using NinjaKiwi.Common;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using Object = UnityEngine.Object;
 
 #if BloonsTD6
 using Assets.Scripts.Models.GenericBehaviors;
@@ -37,8 +42,7 @@ namespace BTD_Mod_Helper.Api.Display
         {
             Cache[Id] = this;
         }
-
-
+        
         /// <summary>
         /// The GUID of the display to copy this ModDisplay off of
         /// </summary>
@@ -68,6 +72,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// If you modify the unity Object and not just the DisplayNode attached to it, then set this to true
         /// </summary>
+        [Obsolete("No longer required")]
         public virtual bool ModifiesUnityObject => false;
 
         /// <summary>
@@ -76,7 +81,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="node">The UnityDisplayNode</param>
         /// <param name="textureName">The name of the texture, without .png</param>
         protected void SetMeshTexture(UnityDisplayNode node, string textureName) =>
-            node.GetMeshRenderer().SetMainTexture(GetTexture(textureName)!);
+            node.GetMeshRenderer().SetMainTexture(GetTexture(textureName));
 
         /// <summary>
         /// Sets the mesh texture to that of a named png
@@ -85,7 +90,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <param name="textureName">The name of the texture, without .png</param>
         /// <param name="index">The index to set at</param>
         protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index) =>
-            node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName)!);
+            node.GetMeshRenderer(index).SetMainTexture(GetTexture(textureName));
 
         /// <summary>
         /// Sets the outline color for the first mesh renderer in the given node
@@ -104,6 +109,8 @@ namespace BTD_Mod_Helper.Api.Display
         protected void SetMeshOutlineColor(UnityDisplayNode node, Color color, int index) =>
             node.GetMeshRenderer(index).SetOutlineColor(color);
 
+        #region Applying Methods
+
         /// <summary>
         /// Applies this ModDisplay to a given BloonModel
         /// </summary>
@@ -116,10 +123,10 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Applies this ModDisplay to a given TowerModel
         /// </summary>
-        public void Apply(TowerModel towerModel)
+        public virtual void Apply(TowerModel towerModel)
         {
 #if BloonsTD6
-            towerModel.display = ModContent.CreatePrefabReference(Id);
+            towerModel.display = CreatePrefabReference(Id);
 #endif
             Apply(towerModel.GetBehavior<DisplayModel>()!);
         }
@@ -127,10 +134,10 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Applies this ModDisplay to a given ProjectileModel
         /// </summary>
-        public void Apply(ProjectileModel projectileModel)
+        public virtual void Apply(ProjectileModel projectileModel)
         {
 #if BloonsTD6
-            projectileModel.display = ModContent.CreatePrefabReference(Id);
+            projectileModel.display = CreatePrefabReference(Id);
 #endif
             Apply(projectileModel.GetBehavior<DisplayModel>()!);
         }
@@ -138,14 +145,106 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Applies this ModDisplay to a given DisplayModel
         /// </summary>
-        public void Apply(DisplayModel displayModel)
+        public virtual void Apply(DisplayModel displayModel)
         {
-            displayModel.display = ModContent.CreatePrefabReference(Id);
+            displayModel.display = CreatePrefabReference(Id);
 #if BloonsTD6
-            displayModel.positionOffset = PositionOffset;
+            displayModel.positionOffset = PositionOffset.ToSMathVector();
             displayModel.scale = Scale;
 #endif
         }
+
+        #endregion
+
+
+        #region Internal Display Loading
+
+        /// <summary>
+        /// Creates a 
+        /// </summary>
+        /// <returns>Whether to still call the original CreateAsync callback</returns>
+        internal virtual bool Create(Factory factory, PrefabReference prefabReference,
+            Il2CppSystem.Action<UnityDisplayNode> onComplete, ref UnityDisplayNode prototype)
+        {
+            factory.FindAndSetupPrototypeAsync(CreatePrefabReference(BaseDisplay), new Action<UnityDisplayNode>(node =>
+            {
+                var newPrototype = CreateNewPrototype(factory, prefabReference, node);
+                SetupUDN(newPrototype);
+                var newNode = CreateAsyncCallback(factory, prefabReference, newPrototype);
+                onComplete.Invoke(newNode);
+            }));
+
+            // Don't call the original CreateAsync callback
+            return false;
+        }
+
+        /// <summary>
+        /// Recreated version of the CreateAsync_b__0 callback. Would like to just call this directly, but manually
+        /// messing with the __DisplayClass_s proved buggy.
+        /// </summary>
+        /// <returns>The unity display node for the newly created display</returns>
+        internal static UnityDisplayNode CreateAsyncCallback(Factory factory, PrefabReference prefabReference,
+            UnityDisplayNode prototype)
+        {
+            var position = new Vector3(Factory.kOffscreenPosition.x, 0, 0);
+            var rotation = Quaternion.identity;
+            var newPrototype = Object.Instantiate(prototype.gameObject, position, rotation, factory.DisplayRoot);
+            newPrototype.SetActive(true);
+            var newNode = newPrototype.GetComponent<UnityDisplayNode>();
+            newNode.Create();
+            newNode.cloneOf = prefabReference;
+            factory.active.Add(newNode);
+            return newNode;
+        }
+
+        /// <summary>
+        /// Creates and stores a new prototype for a prefab reference based on an original prototype
+        /// </summary>
+        internal UnityDisplayNode CreateNewPrototype(Factory factory, PrefabReference prefabReference,
+            UnityDisplayNode prototype)
+        {
+            var parent = Game.instance.prototypeObjects.transform;
+            var gameObject = Object.Instantiate(prototype.gameObject, parent);
+            gameObject.name = Id + "(Clone)";
+            var manager = Addressables.Instance.ResourceManager;
+            factory.prototypeHandles[prefabReference] = manager.CreateCompletedOperation(gameObject, "");
+            return gameObject.GetComponent<UnityDisplayNode>();
+        }
+
+
+        /// <summary>
+        /// Applies the effects of a ModDisplay on a UnityDisplayNode
+        /// </summary>
+        internal void SetupUDN(UnityDisplayNode udn)
+        {
+            udn.RecalculateGenericRenderers();
+            try
+            {
+                ModifyDisplayNode(udn);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error($"Failed to modify DisplayNode for {Name}");
+                ModHelper.Error(e);
+            }
+
+            try
+            {
+                if (Scale is < 1f or > 1f)
+                {
+                    udn.transform.GetChild(0).transform.localScale = Scale * Vector3.one;
+                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error($"Failed to change scale for {Name}");
+                ModHelper.Error(e);
+            }
+
+            udn.RecalculateGenericRenderers();
+        }
+
+        #endregion
 
 
         #region Misc Display Ids

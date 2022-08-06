@@ -28,10 +28,7 @@ internal static class LoadGameModelAsync_MoveNext
     {
         if (__instance.__1__state == -2)
         {
-            if (gameModel == null)
-            {
-                gameModel = __instance.__t__builder.Task.Result;
-            }
+            gameModel ??= __instance.__t__builder.Task.Result;
         }
             
     }

@@ -15,7 +15,7 @@ internal interface ICustomDisplay
         
         
     /// <summary>
-    /// The name of the material that should be applied to the tower from the asset bundle
+    /// The name of the material that should be applied to the tower from the asset bundle, if any
     /// </summary>
     string MaterialName { get; }
 }

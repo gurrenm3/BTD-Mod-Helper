@@ -38,6 +38,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModBuffIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay2D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerDisplay2D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\BloonTag.cs" />
@@ -45,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\GameModeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\RoundSetType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\ScheduleType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\TowerSetType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\UpgradeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ActionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\CostHelper.cs" />

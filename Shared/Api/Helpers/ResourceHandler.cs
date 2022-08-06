@@ -10,12 +10,7 @@ internal class ResourceHandler
 {
     internal static readonly Dictionary<string, byte[]> Resources = new();
 
-    public static readonly Dictionary<string, UnityDisplayNode> Prefabs = new();
-
     public static readonly Dictionary<string, AssetBundle> Bundles = new();
-
-
-    internal static readonly Dictionary<string, float> ScalesFor2dModels = new();
 
     internal static void LoadEmbeddedTextures(BloonsMod mod)
     {
@@ -81,7 +76,7 @@ internal class ResourceHandler
     {
         if (Resources.TryGetValue(guid, out var bytes))
         {
-            var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = 0};
+            var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -.5f};
             ImageConversion.LoadImage(texture, bytes);
             TextureCache[guid] = texture;
             return texture;
@@ -92,20 +87,8 @@ internal class ResourceHandler
 
     internal static Texture2D GetTexture(string guid)
     {
-        if (TextureCache.TryGetValue(guid, out var texture2d) && texture2d != null)
-        {
-            return texture2d;
-        }
-
-        if (Resources.TryGetValue(guid, out var bytes))
-        {
-            var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -.5f};
-            ImageConversion.LoadImage(texture, bytes);
-            TextureCache[guid] = texture;
-            return texture;
-        }
-
-        return null;
+        if (TextureCache.TryGetValue(guid, out var texture2d) && texture2d != null) return texture2d;
+        return CreateTexture(guid);
     }
 
     internal static byte[] GetTextureBytes(string guid)
@@ -121,12 +104,12 @@ internal class ResourceHandler
             new Vector2(0.5f, 0.5f), pixelsPerUnit);
     }
 
-    internal static Sprite CreateSprite(string guid, float pixelsPerUnit = 10.8f)
+    internal static Sprite CreateSprite(string id, float pixelsPerUnit = 10.8f)
     {
-        if (GetTexture(guid) is Texture2D texture)
+        if (GetTexture(id) is Texture2D texture)
         {
-            var sprite = SpriteCache[guid] = CreateSprite(texture, pixelsPerUnit);
-            sprite.name = guid;
+            var sprite = SpriteCache[id] = CreateSprite(texture, pixelsPerUnit);
+            sprite.name = id;
             return sprite;
         }
 
@@ -135,11 +118,7 @@ internal class ResourceHandler
 
     internal static Sprite GetSprite(string id, float pixelsPerUnit = 10.8f)
     {
-        if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null)
-        {
-            return sprite;
-        }
-
+        if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null) return sprite;
         return CreateSprite(id, pixelsPerUnit);
     }
 }
