@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -7,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace BTD_Mod_Helper.Api.ModOptions;
 
-internal class ModSettingsHandler
+internal static class ModSettingsHandler
 {
     internal static void InitializeModSettings()
     {
@@ -21,70 +22,64 @@ internal class ModSettingsHandler
             mod.ModSettings.Clear();
             try
             {
-                foreach (var field in mod.GetType()
-                             .GetFields(BindingFlags.Public |
-                                        BindingFlags.NonPublic |
-                                        BindingFlags.Instance |
-                                        BindingFlags.Static)
-                             .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType)))
-                {
-                    var modSetting = (ModSetting) field.GetValue(mod);
-                    mod.ModSettings[field.Name] = modSetting;
-                    modSetting.displayName ??= field.Name.Spaced();
-                }
+                GetModSettings(mod, mod);
             }
             catch (Exception e)
             {
                 ModHelper.Warning($"Error initializing ModSettings for {mod.Info.Name}");
                 ModHelper.Warning(e);
             }
-
-            if (mod.ModSettings.Any())
-            {
-                var fileName = mod.SettingsFilePath;
-                if (!File.Exists(fileName))
-                {
-                    SaveModSettings(mod, true);
-                }
-            }
         }
     }
 
-    internal static void LoadModSettings()
+    internal static void GetModSettings(object obj, BloonsMod mod)
     {
-        foreach (var mod in ModHelper.Mods)
+        var fields = obj.GetType()
+            .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+            .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType));
+
+        foreach (var field in fields)
         {
-            try
+            var modSetting = (ModSetting) field.GetValue(obj);
+            mod.ModSettings[field.Name] = modSetting;
+            modSetting.displayName ??= field.Name.Spaced();
+        }
+        
+        LoadModSettings(mod);
+    }
+
+    internal static void LoadModSettings(BloonsMod mod)
+    {
+        try
+        {
+            var fileName = mod.SettingsFilePath;
+            if (File.Exists(fileName))
             {
-                var fileName = mod.SettingsFilePath;
-                if (File.Exists(fileName))
+                var json = JObject.Parse(File.ReadAllText(fileName));
+                foreach (var (name, token) in json)
                 {
-                    var json = JObject.Parse(File.ReadAllText(fileName));
-                    foreach (var (name, token) in json)
+                    if (mod.ModSettings.ContainsKey(name) && token != null)
                     {
-                        if (mod.ModSettings.ContainsKey(name) && token != null)
+                        try
                         {
-                            try
-                            {
-                                mod.ModSettings[name].Load(token.ToObject<object>());
-                            }
-                            catch (Exception e)
-                            {
-                                ModHelper.Warning($"Error loading ModSetting {name} of mod {mod.Info.Name}");
-                                ModHelper.Warning(e);
-                            }
+                            mod.ModSettings[name].Load(token.ToObject<object>());
+                        }
+                        catch (Exception e)
+                        {
+                            ModHelper.Warning($"Error loading ModSetting {name} of mod {mod.Info.Name}");
+                            ModHelper.Warning(e);
                         }
                     }
                 }
             }
-            catch (Exception e)
-            {
-                ModHelper.Warning($"Error loading ModSettings for {mod.Info.Name}");
-                ModHelper.Warning(e);
-            }
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Error loading ModSettings for {mod.Info.Name}");
+            ModHelper.Warning(e);
         }
     }
-
+    
     internal static void SaveModSettings(BloonsMod mod, bool initialSave = false)
     {
         Directory.CreateDirectory(ModHelper.ModSettingsDirectory);

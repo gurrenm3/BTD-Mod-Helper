@@ -19,6 +19,7 @@ BTD_Mod_Helper.Api.IModContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModContent
 
 Derived  
+&#8627; [ModSettings](BTD_Mod_Helper.Api.Data.ModSettings.md 'BTD_Mod_Helper.Api.Data.ModSettings')  
 &#8627; [ModTextOverride](BTD_Mod_Helper.Api.Data.ModTextOverride.md 'BTD_Mod_Helper.Api.Data.ModTextOverride')  
 &#8627; [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')  
 &#8627; [ModByteLoader](BTD_Mod_Helper.Api.ModByteLoader.md 'BTD_Mod_Helper.Api.ModByteLoader')  

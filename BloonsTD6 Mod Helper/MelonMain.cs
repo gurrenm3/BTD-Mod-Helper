@@ -38,15 +38,15 @@ internal partial class MelonMain : BloonsTD6Mod
 
         // Mod Settings
         ModSettingsHandler.InitializeModSettings();
-        ModSettingsHandler.LoadModSettings();
-
-        Schedule_GameModel_Loaded();
 
         // Load Content from other mods
         ModHelper.LoadAllMods();
 
         // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
+        
+        
+        Schedule_GameModel_Loaded();
 
         try
         {

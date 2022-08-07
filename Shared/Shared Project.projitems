@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Data\ModHelperData.GitHub.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Data\ModHelperData.IO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Data\ModMultiTextOverride.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Data\ModSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Data\ModTextOverride.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Data\SessionData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ICustomDisplay.cs" />
