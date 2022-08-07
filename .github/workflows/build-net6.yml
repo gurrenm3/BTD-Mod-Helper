@@ -1,0 +1,89 @@
+name: Build net6
+
+on:
+  push:
+    branches: [ "3.0_Features" ]
+    tags:
+      - '*'
+  pull_request:
+    branches: [ "3.0_Features" ]
+
+env:
+  PROJECT_NAME: Btd6ModHelper
+  CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
+  BLOONSTD6: ./BloonsTD6
+  MELONLOADER_BRANCH: bootstrap-dotnet
+
+jobs:
+  build:
+    
+    runs-on: windows-latest
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+        
+        
+      - name: Download Latest MelonLoader
+        if: env.MELONLOADER_BRANCH == ''
+        uses: robinraju/release-downloader@v1.4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: LavaGang/MelonLoader
+          fileName: MelonLoader.x64.zip
+          tarBall: false
+          zipBall: false
+          latest: true
+      - name: Extract Latest MelonLoader
+        if: env.MELONLOADER_BRANCH == ''
+        shell: bash
+        run: unzip MelonLoader.x64.zip -d ${{ env.BLOONSTD6 }}
+
+
+      - name: Download Specific MelonLoader
+        if: env.MELONLOADER_BRANCH != ''
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: build.yml
+          branch: ${{ env.MELONLOADER_BRANCH }}
+          name: MelonLoader.x64.CI.Release
+          repo: SamboyCoding/MelonLoader
+          path: ${{ env.BLOONSTD6 }}
+  
+  
+      - name: Clone Dependencies Repo
+        uses: actions/checkout@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: doombubbles/btd6-ci-dependencies
+          ref: main
+          path: ${{ env.BLOONSTD6 }}/MelonLoader/Managed
+
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x # net6 can still build older as well
+
+
+      - name: Build
+        run: dotnet build -c BTD6_Release_net6 "${{ env.CSPROJ }}" -p:BloonsTD6="../BloonsTD6"
+
+
+      - name: Upload Mod DLL
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          # Artifact name
+          name: ${{ env.PROJECT_NAME }}.dll
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
+      
+      
+      - name: Upload Mod Documentation
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          # Artifact name
+          name: ${{ env.PROJECT_NAME }}.xml
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml

@@ -25,7 +25,7 @@ public static class MoreAccessTools
 
         if (!innerTypes.Any() || index >= innerTypes.Length || index < 0)
         {
-            MelonLogger.Warning($"Failed to find nested type {nestedTypeName} within {outerType.Name} with index {0}");
+            ModHelper.Warning($"Failed to find nested type {nestedTypeName} within {outerType.Name} with index {0}");
             return null;
         }
 

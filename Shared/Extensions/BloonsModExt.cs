@@ -1,4 +1,5 @@
 using System.IO;
+using System.Reflection;
 using BTD_Mod_Helper.Api;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -13,7 +14,7 @@ public static class BloonsModExt
     /// </summary>
     public static string GetModName(this BloonsMod bloonsMod)
     {
-        return bloonsMod.MelonAssembly.Assembly?.GetName().Name ?? bloonsMod.Info.Name;
+        return bloonsMod.GetAssembly()?.GetName().Name ?? bloonsMod.Info.Name;
     }
 
     /// <summary>
@@ -64,4 +65,13 @@ public static class BloonsModExt
 
     internal static ModHelperData GetModHelperData(this MelonMod mod) =>
         ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
+
+    internal static Assembly GetAssembly(this MelonMod mod)
+    {
+#if NET48
+        return mod.MelonAssembly.Assembly;
+#else
+        return mod.Assembly;
+#endif
+    }
 }

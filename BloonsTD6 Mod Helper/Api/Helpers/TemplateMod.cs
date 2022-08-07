@@ -90,7 +90,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 if (zipArchive == null) throw new FileNotFoundException();
 
                 FileMoveOverwrite(csProjPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.csproj"));
-                var csProj = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".csproj");
+                var csProj = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".csproj")!;
                 csProj.ExtractToFile(csProjPath);
                 ReplaceFileText(csProjPath, name);
 
@@ -100,7 +100,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 {
                     FileMoveOverwrite(slnPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.sln"));
                     var sln = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".sln");
-                    sln.ExtractToFile(slnPath);
+                    sln?.ExtractToFile(slnPath);
                     ReplaceFileText(slnPath, name);
                 }
 
@@ -114,11 +114,11 @@ namespace BTD_Mod_Helper.Api.Helpers
                 if (!File.Exists(modHelperDataPath))
                 {
                     var modHelperData = zipArchive.GetEntry(ZipArchivePrefix + "ModHelperData.cs");
-                    modHelperData.ExtractToFile(modHelperDataPath);
+                    modHelperData?.ExtractToFile(modHelperDataPath);
                     ReplaceFileText(modHelperDataPath, name);
                 }
 
-                zipArchive.GetEntry(ZipArchivePrefix + ".gitignore").ExtractToFile(Path.Combine(path, ".gitignore"), true);
+                zipArchive.GetEntry(ZipArchivePrefix + ".gitignore")?.ExtractToFile(Path.Combine(path, ".gitignore"), true);
 
                 var propertiesPath = Path.Combine(path, "Properties");
                 var launchSettingsPath = Path.Combine(propertiesPath, "launchSettings.json");
@@ -126,7 +126,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 {
                     Directory.CreateDirectory(propertiesPath);
                     var launchSettings = zipArchive.GetEntry(ZipArchivePrefix + "Properties/launchSettings.json");
-                    launchSettings.ExtractToFile(launchSettingsPath);
+                    launchSettings?.ExtractToFile(launchSettingsPath);
                 }
 
                 var workflowsPath = Path.Combine(path, ".github", "workflows");
@@ -135,7 +135,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 {
                     Directory.CreateDirectory(workflowsPath);
                     var buildYml = zipArchive.GetEntry(ZipArchivePrefix + ".github/workflows/build.yml");
-                    buildYml.ExtractToFile(buildYmlPath);
+                    buildYml?.ExtractToFile(buildYmlPath);
                     ReplaceFileText(buildYmlPath, name);
                 }
 
@@ -160,6 +160,7 @@ namespace BTD_Mod_Helper.Api.Helpers
 
         private static void ReplaceFileText(string file, string name)
         {
+            if (!File.Exists(file)) return;
             var text = File.ReadAllText(file);
             File.Delete(file);
             File.WriteAllText(

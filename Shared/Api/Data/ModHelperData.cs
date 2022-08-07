@@ -95,12 +95,12 @@ internal partial class ModHelperData
         Name = mod.Info.Name;
         Version = mod.Info.Version;
         Author = mod.Info.Author;
-        FilePath = mod.MelonAssembly.Assembly.Location;
+        FilePath = mod.GetAssembly().Location;
         DllName = FilePath.Split('\\').Last();
 
         var data = mod is MelonMain
             ? typeof(ModHelper)
-            : mod.MelonAssembly.Assembly
+            : mod.GetAssembly()
                 .GetValidTypes()
                 .FirstOrDefault(type => type.Name == nameof(ModHelperData));
 
@@ -110,7 +110,7 @@ internal partial class ModHelperData
                          .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static)
                          .Where(info => info.IsLiteral && !info.IsInitOnly && Setters.ContainsKey(info.Name)))
             {
-                var rawConstantValue = fieldInfo.GetRawConstantValue();
+                var rawConstantValue = fieldInfo.GetRawConstantValue()!;
                 try
                 {
                     Setters[fieldInfo.Name].Invoke(this, new[] {rawConstantValue});
@@ -122,7 +122,7 @@ internal partial class ModHelperData
                 }
             }
         }
-        else if (mod.MelonAssembly.Assembly.TryGetEmbeddedResource(ModHelperDataJson, out var jsonStream))
+        else if (mod.GetAssembly().TryGetEmbeddedResource(ModHelperDataJson, out var jsonStream))
         {
             using (jsonStream)
             using (var reader = new StreamReader(jsonStream, Encoding.UTF8))
@@ -130,7 +130,7 @@ internal partial class ModHelperData
                 ReadValuesFromJson(reader.ReadToEnd());
             }
         }
-        else if (mod.MelonAssembly.Assembly.TryGetEmbeddedResource(ModHelperDataTxt, out var txtStream))
+        else if (mod.GetAssembly().TryGetEmbeddedResource(ModHelperDataTxt, out var txtStream))
         {
             using (txtStream)
             using (var reader = new StreamReader(txtStream, Encoding.UTF8))
@@ -142,12 +142,12 @@ internal partial class ModHelperData
         // ReSharper disable once ConstantNullCoalescingCondition
         var iconPath = Icon ?? DefaultIcon;
         var assemblyPath = "." + iconPath.Replace("/", ".");
-        var resource = mod.MelonAssembly.Assembly
+        var resource = mod.GetAssembly()
             .GetManifestResourceNames()
             .FirstOrDefault(s => s.EndsWith(assemblyPath));
         if (resource != null)
         {
-            IconBytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(resource)?.GetByteArray();
+            IconBytes = mod.GetAssembly().GetManifestResourceStream(resource)?.GetByteArray();
         }
         else
         {

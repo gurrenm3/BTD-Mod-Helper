@@ -8,6 +8,12 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.Default.props" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.props" />
   <PropertyGroup />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'BTD6_Release_net6|AnyCPU' ">
+    <OutputPath>bin\BTD6_Release_net6\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'BTD6_Debug_net6|AnyCPU' ">
+    <OutputPath>bin\BTD6_Debug_net6\</OutputPath>
+  </PropertyGroup>
   <Import Project="Shared Project.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
 </Project>

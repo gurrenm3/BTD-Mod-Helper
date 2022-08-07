@@ -25,7 +25,7 @@ public static class ModHelper
     internal const string Author = "Gurrenm4 and Doombubbles";
 
     #endregion
-    
+
     internal const string Branch = "main";
 
     /// <summary>
@@ -49,9 +49,9 @@ public static class ModHelper
     /// The directory path on the user's system that's set as their Mod Sources folder
     /// </summary>
     public static string ModSourcesDirectory => MelonMain.ModSourcesFolder;
-    
+
     private static bool fallBackToOldLoading;
-    
+
     internal static bool FallbackToOldLoading
     {
         set => fallBackToOldLoading = value;
@@ -59,7 +59,7 @@ public static class ModHelper
     }
 
     private static IEnumerable<BloonsMod> mods;
-    
+
     /// <summary>
     /// Active mods that use ModHelper functionality
     /// </summary>
@@ -132,7 +132,14 @@ public static class ModHelper
     /// </summary>
     internal static void Log(object obj)
     {
-        Main.LoggerInstance.Msg(obj);
+#if NET6_0
+        lock (Main.LoggerInstance)
+        {
+#endif
+            Main.LoggerInstance.Msg(obj);
+#if NET6_0
+        }
+#endif
     }
 
     /// <summary>
@@ -140,7 +147,14 @@ public static class ModHelper
     /// </summary>
     internal static void Msg(object obj)
     {
-        Main.LoggerInstance.Msg(obj);
+#if NET6_0
+        lock (Main.LoggerInstance)
+        {
+#endif
+            Main.LoggerInstance.Msg(obj);
+#if NET6_0
+        }
+#endif
     }
 
     /// <summary>
@@ -148,7 +162,14 @@ public static class ModHelper
     /// </summary>
     internal static void Error(object obj)
     {
-        Main.LoggerInstance.Error(obj);
+#if NET6_0
+        lock (Main.LoggerInstance)
+        {
+#endif
+            Main.LoggerInstance.Error(obj);
+#if NET6_0
+        }
+#endif
     }
 
     /// <summary>
@@ -156,13 +177,20 @@ public static class ModHelper
     /// </summary>
     internal static void Warning(object obj)
     {
-        Main.LoggerInstance.Warning(obj);
+#if NET6_0
+        lock (Main.LoggerInstance)
+        {
+#endif
+            Main.LoggerInstance.Warning(obj);
+#if NET6_0
+        }
+#endif
     }
 
     #endregion
 
     internal static MelonMain Main => ModContent.GetInstance<MelonMain>();
-    internal static Assembly MainAssembly => Main.MelonAssembly.Assembly;
+    internal static Assembly MainAssembly => Main.GetAssembly();
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsMod
     {

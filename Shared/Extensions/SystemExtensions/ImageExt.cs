@@ -1,7 +1,10 @@
 ﻿using System.Drawing;
+using System.IO;
+
+#if !NET6_0
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.IO;
+#endif
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -10,6 +13,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static partial class ImageExt
 {
+#if !NET6_0
     /// <summary>
     /// Returns the Bytes of this Image.
     /// </summary>
@@ -23,8 +27,7 @@ public static partial class ImageExt
         return thumbnailStream.ToArray();
     }
 
-        
-        
+
     /// <summary>
     /// Returns a new image that is a resized version of this one.
     /// </summary>
@@ -53,4 +56,5 @@ public static partial class ImageExt
 
         return destImage;
     }
+#endif
 }

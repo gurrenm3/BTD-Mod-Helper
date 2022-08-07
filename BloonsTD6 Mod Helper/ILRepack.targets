@@ -11,10 +11,18 @@
             <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'"/>
             <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NfdSharp'"/>
         </ItemGroup>
+        
         <ItemGroup>
             <LibraryPaths Include="$(BloonsTD6)\MelonLoader"/>
             <LibraryPaths Include="$(BloonsTD6)\MelonLoader\Managed"/>
         </ItemGroup>
+        
+        <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader\net6"/>
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader\net6\Managed"/>
+            <LibraryPaths Include="$(NetCoreRoot)packs\Microsoft.NETCore.App.Ref\6.0.0\ref\net6.0"/>
+        </ItemGroup>
+        
         <ILRepack
                 Parallel="true"
                 InputAssemblies="@(InputAssemblies)"

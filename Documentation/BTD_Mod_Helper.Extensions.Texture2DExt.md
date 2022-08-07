@@ -133,24 +133,6 @@ public static void SaveToPNG(this UnityEngine.Texture2D texture, string filePath
 
 File path to save texture to
 
-<a name='BTD_Mod_Helper.Extensions.Texture2DExt.ToImage(thisUnityEngine.Texture2D)'></a>
-
-## Texture2DExt.ToImage(this Texture2D) Method
-
-Returns a new Image made out of this Texture.
-
-```csharp
-public static System.Drawing.Image ToImage(this UnityEngine.Texture2D texture2D);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Texture2DExt.ToImage(thisUnityEngine.Texture2D).texture2D'></a>
-
-`texture2D` [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
-
-#### Returns
-[System.Drawing.Image](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Image 'System.Drawing.Image')
-
 <a name='BTD_Mod_Helper.Extensions.Texture2DExt.TrySaveToPNG(thisUnityEngine.Texture,string)'></a>
 
 ## Texture2DExt.TrySaveToPNG(this Texture, string) Method

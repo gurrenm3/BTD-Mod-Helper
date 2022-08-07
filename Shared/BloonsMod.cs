@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
 using BTD_Mod_Helper.Api;
@@ -32,7 +33,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// <summary>
     /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods
     /// </summary>
-    public virtual string IDPrefix => MelonAssembly.Assembly.GetName().Name + "-";
+    public virtual string IDPrefix => this.GetAssembly().GetName().Name + "-";
 
     /// <summary>
     /// Setting this to true will prevent your BloonsMod hooks from executing if the player could get flagged for using mods at that time.
@@ -46,7 +47,7 @@ public abstract class BloonsMod : MelonMod, IModContent
         get
         {
             var oldPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{Info.Name}.json");
-            var newPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{MelonAssembly.Assembly.GetName().Name}.json");
+            var newPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{this.GetAssembly().GetName().Name}.json");
             return File.Exists(oldPath) ? oldPath : newPath;
         }
     }
@@ -55,7 +56,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// The path that this mod would most likely be at in the Mod Sources folder
     /// </summary>
     public string ModSourcesPath =>
-        Path.Combine(ModHelper.ModSourcesDirectory, MelonAssembly.Assembly.GetName().Name);
+        Path.Combine(ModHelper.ModSourcesDirectory, this.GetAssembly().GetName().Name!);
 
     internal static readonly HashSet<Type> GotModTooSoon = new();
 
@@ -93,19 +94,43 @@ public abstract class BloonsMod : MelonMod, IModContent
         return null;
     }
 
+    
+    #region API Hooks
+
+    /// <summary>
+    /// Called whenever the Mod Options Menu gets opened, after it finishes initializing
+    /// </summary>
+    public virtual void OnModOptionsOpened()
+    {
+    }
+    
+    /*
+    /// <summary>
+    /// Called when the Mod Options Menu gets closed
+    /// </summary>
+    public virtual void OnModOptionsClosed() // not implemented for now
+    {
+    }*/
+
+    #endregion
+    
+    
+    internal List<string> loadErrors = new();
+
     /// <summary>
     /// Signifies that the game shouldn't crash / the mod shouldn't stop loading if one of its patches fails
     /// </summary>
     public virtual bool OptionalPatches => true;
 
-    internal List<string> loadErrors = new();
 
+#if NET48
     /// <summary>
     /// Lets the ModHelper control patching, allowing for individual patches to fail without the entire mod getting
     /// unloaded. 
     /// </summary>
     internal bool modHelperPatchAll;
-
+    
+    
     /// <inheritdoc />
     public sealed override void OnInitializeMelon()
     {
@@ -131,7 +156,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     {
         if (modHelperPatchAll)
         {
-            AccessTools.GetTypesFromAssembly(MelonAssembly.Assembly).Do(type =>
+            AccessTools.GetTypesFromAssembly(this.GetAssembly()).Do(type =>
             {
                 try
                 {
@@ -156,7 +181,7 @@ public abstract class BloonsMod : MelonMod, IModContent
         if (GotModTooSoon.Contains(GetType()))
         {
             // Happens when trying to get a custom embedded resource during the static constructor phase
-            if (IDPrefix != MelonAssembly.Assembly.GetName().Name + "-")
+            if (IDPrefix != this.GetAssembly().GetName().Name + "-")
             {
                 LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
             }
@@ -175,23 +200,30 @@ public abstract class BloonsMod : MelonMod, IModContent
     {
     }
 
-    #region API Hooks
+#elif NET6_0
 
-    /// <summary>
-    /// Called whenever the Mod Options Menu gets opened, after it finishes initializing
-    /// </summary>
-    public virtual void OnModOptionsOpened()
+    /// <inheritdoc />
+    public sealed override void OnInitializeMelon()
     {
+        ModContentInstances.SetInstance(GetType(), this);
     }
-    /*
-    /// <summary>
-    /// Called when the Mod Options Menu gets closed
-    /// </summary>
-    public virtual void OnModOptionsClosed() // not implemented for now
-    {
-    }*/
 
-    #endregion
+    
+    /// <inheritdoc cref="OnInitializeMelon" />
+    public virtual void OnLoaderInitialized()
+    {
+        
+    }
+    
+#else
+
+    /// <inheritdoc />
+    public override void OnPreSupportModule()
+    {
+        ModContentInstances.SetInstance(GetType(), this);
+    }
+
+#endif
 
     #region Input Hooks
 

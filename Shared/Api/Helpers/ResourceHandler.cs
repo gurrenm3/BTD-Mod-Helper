@@ -15,10 +15,10 @@ internal class ResourceHandler
     internal static void LoadEmbeddedTextures(BloonsMod mod)
     {
         mod.Resources = new Dictionary<string, byte[]>();
-        foreach (var fileName in mod.MelonAssembly.Assembly.GetManifestResourceNames()
+        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
                      .Where(s => s.EndsWith("png") || s.EndsWith("jpg")))
         {
-            var resource = mod.MelonAssembly.Assembly.GetManifestResourceStream(fileName).GetByteArray();
+            var resource = mod.GetAssembly().GetManifestResourceStream(fileName).GetByteArray();
             if (resource == null)
             {
                 continue;
@@ -34,9 +34,9 @@ internal class ResourceHandler
 
     internal static void LoadEmbeddedBundles(BloonsMod mod)
     {
-        foreach (var name in mod.MelonAssembly.Assembly.GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
+        foreach (var name in mod.GetAssembly().GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
         {
-            var bytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(name).GetByteArray();
+            var bytes = mod.GetAssembly().GetManifestResourceStream(name).GetByteArray();
             if (bytes == null)
             {
                 continue;

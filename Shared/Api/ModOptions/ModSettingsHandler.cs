@@ -40,7 +40,7 @@ internal static class ModSettingsHandler
 
         foreach (var field in fields)
         {
-            var modSetting = (ModSetting) field.GetValue(obj);
+            var modSetting = (ModSetting) field.GetValue(obj)!;
             mod.ModSettings[field.Name] = modSetting;
             modSetting.displayName ??= field.Name.Spaced();
         }

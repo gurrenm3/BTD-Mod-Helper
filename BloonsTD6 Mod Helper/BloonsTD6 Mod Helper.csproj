@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
-        <Configurations>BTD6_Debug;BTD6_Release</Configurations>
+        <Configurations>BTD6_Debug;BTD6_Release;BTD6_Release_net6;BTD6_Debug_net6</Configurations>
         <DefineConstants>BloonsTD6;TRACE</DefineConstants>
         <Nullable>warnings</Nullable>
         <Optimize>false</Optimize>
@@ -19,13 +19,18 @@
 
         <!--Documentation Settings-->
         <DocumentationFile>bin\BTD6_Debug\Btd6ModHelper.xml</DocumentationFile>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     
     <PropertyGroup Condition="'$(Configuration)' == 'BTD6_Release'">
         <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
     </PropertyGroup>
 
-    <ItemGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'BTD6_Debug_net6' ">
+      <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
         <Reference Include="System.IO.Compression" />
         <Reference Include="System.IO.Compression.FileSystem" />
     </ItemGroup>

@@ -99,7 +99,7 @@ public abstract partial class ModByteLoader : ModContent
     /// <returns></returns>
     public sealed override IEnumerable<ModContent> Load()
     {
-        var streamName = mod.MelonAssembly.Assembly.GetManifestResourceNames()
+        var streamName = mod.GetAssembly().GetManifestResourceNames()
             .FirstOrDefault(s => s.EndsWith(BytesFileName));
         if (streamName == null)
         {
@@ -108,7 +108,7 @@ public abstract partial class ModByteLoader : ModContent
         }
         else
         {
-            Bytes = mod.MelonAssembly.Assembly.GetManifestResourceStream(streamName)?.GetByteArray();
+            Bytes = mod.GetAssembly().GetManifestResourceStream(streamName)?.GetByteArray();
             if (Bytes != null)
             {
                 yield return this;

@@ -10,7 +10,7 @@ public abstract class BloonsMod : MelonLoader.MelonMod,
 BTD_Mod_Helper.Api.IModContent
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [MelonLoader.MelonBase](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonBase 'MelonLoader.MelonBase') &#129106; [MelonLoader.MelonTypeBase&lt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonTypeBase-1 'MelonLoader.MelonTypeBase`1')[MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonTypeBase-1 'MelonLoader.MelonTypeBase`1') &#129106; [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod') &#129106; BloonsMod
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [MelonLoader.MelonBase](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonBase 'MelonLoader.MelonBase') &#129106; [MelonLoader.Melon&lt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.Melon-1 'MelonLoader.Melon`1')[MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.Melon-1 'MelonLoader.Melon`1') &#129106; [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod') &#129106; BloonsMod
 
 Derived  
 &#8627; [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
@@ -184,37 +184,11 @@ The parameters that another mod has provided
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 A possible result of this call
 
-<a name='BTD_Mod_Helper.BloonsMod.OnApplicationStart()'></a>
-
-## BloonsMod.OnApplicationStart() Method
-
-Runs after the Melon has registered. This callback waits until MelonLoader has fully initialized ([MelonLoader.MelonEvents.OnApplicationStart](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonEvents.OnApplicationStart 'MelonLoader.MelonEvents.OnApplicationStart')).
-
-```csharp
-public virtual void OnApplicationStart();
-```
-
-<a name='BTD_Mod_Helper.BloonsMod.OnInitialize()'></a>
-
-## BloonsMod.OnInitialize() Method
-
-Runs when the Melon is registered. Executed before the Melon's info is printed to the console. This callback should only be used a constructor for the Melon.  
-  
-Please note that this callback may run before the Support Module is loaded and before the Engine is fully initialized.  
-            <br>As a result, using unhollowed assemblies and creating/getting UnityEngine Objects may not be possible and you would have to override <see cref="M:MelonLoader.MelonBase.OnLoaderInitialized"/> instead.</br>
-
-```csharp
-public virtual void OnInitialize();
-```
-
 <a name='BTD_Mod_Helper.BloonsMod.OnInitializeMelon()'></a>
 
 ## BloonsMod.OnInitializeMelon() Method
 
-Runs when the Melon is registered. Executed before the Melon's info is printed to the console. This callback should only be used a constructor for the Melon.  
-  
-Please note that this callback may run before the Support Module is loaded and before the Engine is fully initialized.  
-            <br>As a result, using unhollowed assemblies and creating/getting UnityEngine Objects may not be possible and you would have to override <see cref="M:MelonLoader.MelonBase.OnLoaderInitialized"/> instead.</br>
+Runs when the Melon is registered.
 
 ```csharp
 public sealed override void OnInitializeMelon();
@@ -275,10 +249,10 @@ public virtual void OnKeyUp(UnityEngine.KeyCode keyCode);
 
 ## BloonsMod.OnLoaderInitialized() Method
 
-Runs after the Melon has registered. This callback waits until MelonLoader has fully initialized ([MelonLoader.MelonEvents.OnApplicationStart](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonEvents.OnApplicationStart 'MelonLoader.MelonEvents.OnApplicationStart')).
+Runs when the Melon is registered.
 
 ```csharp
-public sealed override void OnLoaderInitialized();
+public virtual void OnLoaderInitialized();
 ```
 
 <a name='BTD_Mod_Helper.BloonsMod.OnModOptionsOpened()'></a>

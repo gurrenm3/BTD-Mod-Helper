@@ -79,20 +79,17 @@ namespace BTD_Mod_Helper.Api
         public virtual int RegisterPerFrame => 1;
 
 
-        internal static void LoadModContent(BloonsMod mod)
-        {
-            mod.Content = mod.MelonAssembly.Assembly
-                .GetValidTypes()
-                .Where(CanLoadType)
-                .Select(type => CreateInstance(type, mod))
-                .Where(content => content != null)
-                .OrderBy(content => content.RegistrationPriority)
-                .ThenBy(content => content.Order)
-                .SelectMany(Load)
-                .OrderBy(content => content.RegistrationPriority)
-                .ThenBy(content => content.Order)
-                .ToList();
-        }
+        internal static void LoadModContent(BloonsMod mod) => mod.Content = mod.GetAssembly()
+            .GetValidTypes()
+            .Where(CanLoadType)
+            .Select(type => CreateInstance(type, mod))
+            .Where(content => content != null)
+            .OrderBy(content => content.RegistrationPriority)
+            .ThenBy(content => content.Order)
+            .SelectMany(Load)
+            .OrderBy(content => content.RegistrationPriority)
+            .ThenBy(content => content.Order)
+            .ToList();
 
 
         internal readonly Stack<Action> rollbackActions = new();
@@ -112,7 +109,7 @@ namespace BTD_Mod_Helper.Api
             ModContent instance;
             try
             {
-                instance = (ModContent) Activator.CreateInstance(type);
+                instance = (ModContent) Activator.CreateInstance(type)!;
                 instance.mod = mod;
                 ModContentInstances.SetInstance(type, instance);
             }
@@ -235,7 +232,7 @@ namespace BTD_Mod_Helper.Api
         {
             guidRef = guid
         };
-        
+
 
         /// <summary>
         /// Returns a new PrefabReference that uses the given guid
@@ -250,7 +247,8 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// Creates a Prefab Reference for a ModDisplay
         /// </summary>
-        public static PrefabReference CreatePrefabReference<T>() where T : ModDisplay => CreatePrefabReference(GetInstance<T>().Id);
+        public static PrefabReference CreatePrefabReference<T>() where T : ModDisplay =>
+            CreatePrefabReference(GetInstance<T>().Id);
 
         /// <summary>
         /// Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
@@ -272,7 +270,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         internal const string HijackSpriteAtlas = "Ui";
-        
+
         internal static string WrapGuid(string orig) => $"{HijackSpriteAtlas}[{orig}]";
 
         /// <summary>

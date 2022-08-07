@@ -11,6 +11,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class Texture2DExt
 {
+#if !NET6_0
     /// <summary>
     /// Returns a new Image made out of this Texture.
     /// </summary>
@@ -24,6 +25,7 @@ public static class Texture2DExt
         var image = System.Drawing.Image.FromStream(stream);
         return image;
     }
+#endif
 
     /// <summary>
     /// Create Texture2D from a unity Color. Texture will only be this color

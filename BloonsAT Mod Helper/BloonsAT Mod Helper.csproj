@@ -5,6 +5,8 @@
     <RootNamespace>BloonsAT_Mod_Helper</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;BTD6_Debug_net6;BTD6_Release_net6</Configurations>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
 </Project>
