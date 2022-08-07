@@ -1,4 +1,4 @@
-- Experimental fixes for Sprites and Displays
+- **Experimental fixes for Sprites/Displays/Heroes**
 - The `ModHero` property `Abilities` no longer needs to be manually specified
 - Added `ModBuffIcon` for using new images as indicators for tower status effects
 - Added `ModSettings` class for declaring settings outside the main melon
