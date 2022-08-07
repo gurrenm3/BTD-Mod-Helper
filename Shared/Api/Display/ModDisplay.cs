@@ -49,7 +49,7 @@ namespace BTD_Mod_Helper.Api.Display
         public virtual string BaseDisplay => "";
 
         /// <summary>
-        /// The prefab reference itself of the base display that will be sused
+        /// The prefab reference itself of the base display that will be used
         /// </summary>
         public virtual PrefabReference BaseDisplayReference => CreatePrefabReference(BaseDisplay);
 

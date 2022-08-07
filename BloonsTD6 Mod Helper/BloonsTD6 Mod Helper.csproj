@@ -22,7 +22,7 @@
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     
-    <PropertyGroup Condition="'$(Configuration)' == 'BTD6_Release'">
+    <PropertyGroup Condition="'$(Configuration)' != 'BTD6_Debug'">
         <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
     </PropertyGroup>
 

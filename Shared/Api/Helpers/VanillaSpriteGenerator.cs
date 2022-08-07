@@ -115,7 +115,7 @@ internal class VanillaSpriteGenerator
                     return true;
                 }
 
-                var spriteReference = ModContent.CreateSpriteReference(ints);
+                var spriteReference = ModContent.CreateSpriteReferenceFromBytes(ints);
 
                 guid = spriteReference.GetGUID();
 

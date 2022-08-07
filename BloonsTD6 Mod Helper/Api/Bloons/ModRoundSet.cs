@@ -121,7 +121,7 @@ public abstract class ModRoundSet : NamedModContent
     /// <summary>
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
-    public virtual string IconReference => GetTextureGUID(Icon);
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
 
     /// <summary>
     /// Whether this Round set should show up in the menu allowing you to use any RoundSet for any GameMode

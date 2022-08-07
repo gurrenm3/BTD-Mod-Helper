@@ -90,6 +90,26 @@ public static string BloonID<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.ModContent.CreateAudioSourceReference(string)'></a>
+
+## ModContent.CreateAudioSourceReference(string) Method
+
+Returns a new AudioSourceReference that uses the given guid
+
+```csharp
+public static Assets.Scripts.Utils.AudioSourceReference CreateAudioSourceReference(string guid);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.CreateAudioSourceReference(string).guid'></a>
+
+`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The guid that you'd like to assign to the AudioSourceReference
+
+#### Returns
+[Assets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.AudioSourceReference 'Assets.Scripts.Utils.AudioSourceReference')
+
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference(string)'></a>
 
 ## ModContent.CreatePrefabReference(string) Method
@@ -145,24 +165,6 @@ public static Assets.Scripts.Utils.SpriteReference CreateSpriteReference(string 
 `guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The guid that you'd like to assign to the SpriteReference
-
-#### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
-
-<a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(uint[])'></a>
-
-## ModContent.CreateSpriteReference(uint[]) Method
-
-Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio
-
-```csharp
-public static Assets.Scripts.Utils.SpriteReference CreateSpriteReference(params uint[] data);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(uint[]).data'></a>
-
-`data` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
@@ -642,11 +644,91 @@ The file name of your texture, without the extension
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string)'></a>
+
+## ModContent.GetSpriteReferenceOrDefault(BloonsMod, string) Method
+
+Gets a sprite reference by name for a specific mod, or if the mod does not include a texture with that name,  
+treats it as a vanilla sprite reference
+
+```csharp
+public static Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod mod, string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+
+`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+The BloonsMod that the texture is from
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+#### Returns
+[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+A new SpriteReference
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(string)'></a>
+
+## ModContent.GetSpriteReferenceOrDefault(string) Method
+
+Gets a sprite reference by name for a specific mod, or if the mod does not include a texture with that name,  
+treats it as a vanilla sprite reference
+
+```csharp
+protected Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+#### Returns
+[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+A new SpriteReference
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault_T_(string)'></a>
+
+## ModContent.GetSpriteReferenceOrDefault<T>(string) Method
+
+Gets a sprite reference by name for a specific mod, or if the mod does not include a texture with that name,  
+treats it as a vanilla sprite reference
+
+```csharp
+public static Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault<T>(string name)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault_T_(string).T'></a>
+
+`T`
+
+Your mod's main BloonsMod extending class
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault_T_(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+#### Returns
+[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+A new SpriteReference
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod,string)'></a>
 
 ## ModContent.GetSpriteReferenceOrNull(BloonsMod, string) Method
 
-Gets a sprite reference by name for a specific mod,returning null if the texture hasn't currently been  
+Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been  
 loaded instead of an invalid SpriteReference
 
 ```csharp

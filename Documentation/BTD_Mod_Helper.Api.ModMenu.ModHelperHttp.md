@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 The HttpClient instance
 
 ```csharp
-public static System.Net.Http.HttpClient Client { get; set; }
+public static HttpClient Client { get; set; }
 ```
 
 #### Property Value
@@ -88,7 +88,7 @@ Enumeration of extracted file paths, or null
 Downloads a zip file directly into a zip archive
 
 ```csharp
-public static System.Threading.Tasks.Task<System.IO.Compression.ZipArchive> GetZip(string url);
+public static System.Threading.Tasks.Task<ZipArchive> GetZip(string url);
 ```
 #### Parameters
 

@@ -45,7 +45,7 @@ public abstract class ModGameMode : NamedModContent
     /// <summary>
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
 
     /// <inheritdoc />
     public override void RegisterText(Dictionary<string, string> textTable)

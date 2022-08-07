@@ -135,7 +135,7 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// The exact sprite reference used for the button
     /// </summary>
-    public virtual SpriteReference ButtonReference => GetSpriteReference(Button);
+    public virtual SpriteReference ButtonReference => GetSpriteReferenceOrDefault(Button);
 
     /// <summary>
     /// The name of the png to try to find for the new hero select screen button
@@ -145,7 +145,7 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// The SpriteReference for this hero's Square icon in the new revamped HeroScreen
     /// </summary>
-    public virtual SpriteReference SquareReference => GetSpriteReference(Square);
+    public virtual SpriteReference SquareReference => GetSpriteReferenceOrDefault(Square);
 
     /// <summary>
     /// If you want to manually override which portraits your hero uses in the select screen, mess with this

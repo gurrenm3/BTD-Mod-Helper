@@ -195,6 +195,7 @@
 | [ModParagonUpgrade&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade_T_.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade<T>') | A convenient generic class for specifying the ModTower that this ModParagonUpgrade is for |
 | [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower') | Class for adding a custom Tower to the game. Use alongside [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') to define its upgrades,<br/>and optionally [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay') to define custom displays for it. |
 | [ModTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModTower<T>') | A convenient generic class for specifying the ModTowerSet that a ModTower uses |
+| [ModTowerHelper](BTD_Mod_Helper.Api.Towers.ModTowerHelper.md 'BTD_Mod_Helper.Api.Towers.ModTowerHelper') | Class with helper methods for TowerModels / ModTowers<br/><br/><br/>Mostly used internally |
 | [ModTowerSet](BTD_Mod_Helper.Api.Towers.ModTowerSet.md 'BTD_Mod_Helper.Api.Towers.ModTowerSet') | A custom collection of ModTowers |
 | [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') | A class used to create an Upgrade for a Tower |
 | [ModUpgrade&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModUpgrade_T_.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade<T>') | A convenient generic class for specifying the ModTower that this ModUpgrade is for |

@@ -63,7 +63,7 @@ internal static class RoundSetChanger
         foreach (var modRoundSet in ModContent.GetContent<ModRoundSet>().Where(set => set.AddToOverrideMenu))
         {
             optionsPanel.AddScrollContent(
-                CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.IconReference)
+                CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.IconReference.guidRef)
             );
         }
 

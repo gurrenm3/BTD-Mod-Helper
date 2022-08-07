@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity.UI_New.Popups;
@@ -8,6 +10,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
@@ -86,14 +89,21 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         ModSettingsHandler.SaveModSettings(true);
 
-        if (!scheduledInGamePatch)
-            Schedule_InGame_Loaded();
+        if (!scheduledInGamePatch) Schedule_InGame_Loaded();
 
         AutoSave.InitAutosave(this.GetModSettingsDir(true));
-
-
+        
         foreach (var gameMode in Game.instance.model.mods)
         {
+            if (gameMode.name.EndsWith("Only"))
+            {
+                var mutatorModModels = gameMode.mutatorMods.ToList();
+                mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
+                    .Where(set => !set.AllowInRestrictedModes)
+                    .Select(set => new LockTowerSetModModel(gameMode.name, set.Id)));
+                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
+            }
+            
             if (gameMode.mutatorMods == null) continue;
 
             foreach (var mutatorMod in gameMode.mutatorMods)

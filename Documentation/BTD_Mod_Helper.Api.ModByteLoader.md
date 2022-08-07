@@ -83,75 +83,83 @@ protected Il2CppSystem.Threading.Tasks.Task LoadTask { get; set; }
 [Il2CppSystem.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Threading.Tasks.Task 'Il2CppSystem.Threading.Tasks.Task')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string,string)'></a>
 
-## ModByteLoader.ConvertLoader<T>(string, string, string, string) Method
+## ModByteLoader.ConvertLoader<T>(string, string, string, string, string) Method
 
 Converts a generated Loader using normal System data structures to one that uses IL2Cpp ones
 
 ```csharp
-private static void ConvertLoader<T>(string unconvertedLoader, string convertedLoader, string className, string bytesFileName)
+private static void ConvertLoader<T>(string unconvertedLoader, string convertedLoader, string className, string bytesFileName, string nameSpace=null)
     where T : Il2CppSystem.Object;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string).T'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string,string).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string).unconvertedLoader'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string,string).unconvertedLoader'></a>
 
 `unconvertedLoader` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-Absolute file path of the BTD6 generated loader .cs
-
-<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string).convertedLoader'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string,string).convertedLoader'></a>
 
 `convertedLoader` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string).className'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string,string).className'></a>
 
 `className` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string).bytesFileName'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string,string).bytesFileName'></a>
 
 `bytesFileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.ConvertLoader_T_(string,string,string,string,string).nameSpace'></a>
 
-## ModByteLoader.Generate<T>(T, string, string) Method
+`nameSpace` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string,string)'></a>
+
+## ModByteLoader.Generate<T>(T, string, string, string) Method
 
 Generates a ModByteLoader class and corresponding .bytes file within the BloonsTD6 directory
 
 ```csharp
-public static void Generate<T>(T model, string loaderFilePath, string bytesFilePath)
+public static void Generate<T>(T model, string loaderFilePath, string bytesFilePath, string nameSpace=null)
     where T : Il2CppSystem.Object;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string).T'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string,string).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string).model'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string,string).model'></a>
 
-`model` [T](BTD_Mod_Helper.Api.ModByteLoader.md#BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string).T 'BTD_Mod_Helper.Api.ModByteLoader.Generate<T>(T, string, string).T')
+`model` [T](BTD_Mod_Helper.Api.ModByteLoader.md#BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string,string).T 'BTD_Mod_Helper.Api.ModByteLoader.Generate<T>(T, string, string, string).T')
 
 The model that you want to be able to be statically loaded from bytes
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string).loaderFilePath'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string,string).loaderFilePath'></a>
 
 `loaderFilePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The absolute file path on your system where the .cs Loader file should end up
 
-<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string).bytesFilePath'></a>
+<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string,string).bytesFilePath'></a>
 
 `bytesFilePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The absolute file path on your system where the bytes file should end up
+
+<a name='BTD_Mod_Helper.Api.ModByteLoader.Generate_T_(T,string,string,string).nameSpace'></a>
+
+`nameSpace` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+If included, namespace to add to the loader cs file
 
 <a name='BTD_Mod_Helper.Api.ModByteLoader.Load()'></a>
 

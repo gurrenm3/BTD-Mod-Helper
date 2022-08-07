@@ -131,16 +131,19 @@ public abstract partial class ModByteLoader : ModContent
     {
         "Assets.Scripts.Models.Towers.TowerModel.TowerSize"
     };
+    
+    private static readonly string[] AssetRefTypes =
+    {
+        "SpriteReference",
+        "PrefabReference",
+        "AudioSourceReference"
+    };
 
     /// <summary>
     /// Converts a generated Loader using normal System data structures to one that uses IL2Cpp ones
     /// </summary>
-    /// <param name="unconvertedLoader">Absolute file path of the BTD6 generated loader .cs</param>
-    /// <param name="convertedLoader"></param>
-    /// <param name="className"></param>
-    /// <param name="bytesFileName"></param>
     private static void ConvertLoader<T>(string unconvertedLoader, string convertedLoader, string className,
-        string bytesFileName) where T : Object
+        string bytesFileName, string nameSpace = null) where T : Object
     {
         using var reader = new StreamReader(unconvertedLoader);
         var loader = reader.ReadToEnd();
@@ -149,6 +152,7 @@ public abstract partial class ModByteLoader : ModContent
                  "using UnhollowerRuntimeLib;\n" +
                  "using BTD_Mod_Helper.Extensions;\n" +
                  "using BTD_Mod_Helper.Api;\n" +
+                 (string.IsNullOrEmpty(nameSpace) ? "" : $"\nnamespace {nameSpace};\n") +
                  loader;
         loader = loader.Replace($"{Il2CppType.Of<T>().Name}Loader : IGameModelLoader",
             $"{className} : {nameof(ModByteLoader)}<{Il2CppType.Of<T>().FullName}>");
@@ -182,21 +186,21 @@ public abstract partial class ModByteLoader : ModContent
         loader = loader.Replace("object[] m;",
             $"protected override string BytesFileName => \"{bytesFileName}\";");
 
-        foreach (var reference in References)
+        foreach (var r in References)
         {
-            loader = loader.Replace($"{reference}[arrCount]", $"Il2CppReferenceArray<{reference}>(arrCount)");
-            loader = loader.Replace($"{reference}[]", $"Il2CppReferenceArray<{reference}>");
+            loader = loader.Replace($"{r}[arrCount]", $"Il2CppReferenceArray<{r}>(arrCount)");
+            loader = loader.Replace($"{r}[]", $"Il2CppReferenceArray<{r}>");
         }
 
-        foreach (var strukt in Structs)
+        foreach (var s in Structs)
         {
-            loader = loader.Replace($"{strukt}[arrCount]", $"Il2CppStructArray<{strukt}>(arrCount)");
-            loader = loader.Replace($"{strukt}[]", $"Il2CppStructArray<{strukt}>");
+            loader = loader.Replace($"{s}[arrCount]", $"Il2CppStructArray<{s}>(arrCount)");
+            loader = loader.Replace($"{s}[]", $"Il2CppStructArray<{s}>");
         }
 
-        foreach (var enuhm in Enums)
+        foreach (var e in Enums)
         {
-            loader = Regex.Replace(loader, $@"\({enuhm}\) \((br\.ReadInt32\(\))\)", @"$1");
+            loader = Regex.Replace(loader, $@"\({e}\) \((br\.ReadInt32\(\))\)", @"$1");
         }
 
         loader = Regex.Replace(loader, @"SetValue\(v\,br\.ReadInt32\(\)\)",
@@ -207,6 +211,14 @@ public abstract partial class ModByteLoader : ModContent
             @"SetValue(v,br.ReadBoolean().ToIl2Cpp())");
 
         loader = Regex.Replace(loader, @"\(([A-Z].+)\[\]\)", @"(Il2CppReferenceArray<$1>)");
+
+
+        foreach (var assetReference in AssetRefTypes)
+        {
+            loader = Regex.Replace(loader, $"new Assets\\.Scripts\\.Utils\\.{assetReference}\\((.+)\\)",
+                $"ModContent.Create{assetReference}($1)");
+            loader = loader.Replace($"(Il2CppReferenceArray<Assets.Scripts.Utils.{assetReference}>)", $"(Assets.Scripts.Utils.{assetReference}[])");
+        }
 
         using var writer = new StreamWriter(convertedLoader);
         writer.Write(loader);

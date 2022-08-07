@@ -98,7 +98,7 @@ public abstract partial class ModBloon : NamedModContent
     /// <summary>
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
 
     /// <summary>
     /// Add the necessary properties to make this a Fortified Bloon

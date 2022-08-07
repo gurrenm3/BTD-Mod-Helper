@@ -42,7 +42,7 @@ public abstract partial class ModTowerSet : NamedModContent
     /// <summary>
     /// SpriteReference for the container
     /// </summary>
-    public virtual SpriteReference ContainerReference => GetSpriteReference(Container);
+    public virtual SpriteReference ContainerReference => GetSpriteReferenceOrDefault(Container);
 
     /// <summary>
     /// Name of .png file for the background used for non-paragon upgrades in the Upgrade screen
@@ -52,7 +52,7 @@ public abstract partial class ModTowerSet : NamedModContent
     /// <summary>
     /// SpriteReference for the large container
     /// </summary>
-    public virtual SpriteReference ContainerLargeReference => GetSpriteReference(ContainerLarge);
+    public virtual SpriteReference ContainerLargeReference => GetSpriteReferenceOrDefault(ContainerLarge);
 
     /// <summary>
     /// Name of .png file for the group button used in the Monkeys menu

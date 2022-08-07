@@ -113,11 +113,11 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual string IconReference { get; }
+public virtual Assets.Scripts.Utils.SpriteReference IconReference { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.GetHint(int)'></a>

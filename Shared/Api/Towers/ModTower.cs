@@ -48,12 +48,12 @@ public abstract partial class ModTower : NamedModContent
     /// <summary>
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
 
     /// <summary>
     /// If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
+    public virtual SpriteReference PortraitReference => GetSpriteReferenceOrDefault(Portrait);
 
     /// <summary>
     /// Whether this Tower should display 2-dimensionally, and search for png images

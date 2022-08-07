@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Assets.Scripts.Data;
+using Assets.Scripts.Data.Global;
 using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Unity;
@@ -9,7 +11,7 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// Class for adding a new buff icon that can be displayed for towers
 /// </summary>
-public class ModBuffIcon : NamedModContent
+public abstract class ModBuffIcon : NamedModContent
 {
     internal static readonly Dictionary<string, SpriteReference> CustomBuffIcons = new();
 
@@ -35,7 +37,7 @@ public class ModBuffIcon : NamedModContent
     /// <summary>
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
-    public virtual SpriteReference IconReference => GetSpriteReference(Icon);
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
 
     /// <summary>
     /// Whether the buff affects every tower on screen
@@ -48,7 +50,7 @@ public class ModBuffIcon : NamedModContent
     public virtual int MaxStackSize => 0;
 
     /// <summary>
-    /// TODO
+    /// Controls the OnlyShowBuffIfMutated property on the model
     /// </summary>
     public virtual bool OnlyShowBuffIfMutated => false;
 
@@ -80,5 +82,11 @@ public class ModBuffIcon : NamedModContent
 
         gameModel.buffIndicatorModels = gameModel.buffIndicatorModels.AddTo(model);
         gameModel.AddChildDependant(model);
+        
+        GameData.Instance.buffIconSprites.buffIconSprites.Add(new BuffIconSprite
+        {
+            buffId = Id,
+            icon = IconReference
+        });
     }
 }

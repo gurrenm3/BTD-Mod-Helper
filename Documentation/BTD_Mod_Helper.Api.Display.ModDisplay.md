@@ -49,7 +49,7 @@ public virtual string BaseDisplay { get; }
 
 ## ModDisplay.BaseDisplayReference Property
 
-The prefab reference itself of the base display that will be sused
+The prefab reference itself of the base display that will be used
 
 ```csharp
 public virtual Assets.Scripts.Utils.PrefabReference BaseDisplayReference { get; }

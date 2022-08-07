@@ -1,4 +1,4 @@
-- **Experimental fixes for Sprites/Displays/Heroes**
-- The `ModHero` property `Abilities` no longer needs to be manually specified
-- Added `ModBuffIcon` for using new images as indicators for tower status effects
-- Added `ModSettings` class for declaring settings outside the main melon
+- Added public `ModTowerHelper.CreateTowerModel` method that can correctly create an empty tower model
+- Fixed buff icons all looking like Elite Sniper (lol)
+- Fixed ModByteLoaders for the new v32.0 asset reference changes
+- Added a namespace option for generating a ModByteLoader

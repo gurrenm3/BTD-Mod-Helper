@@ -129,6 +129,13 @@ public abstract class ModVanillaParagon : ModTower
         return baseTowerModel;
     }
 
+    /// <inheritdoc />
+    public override void Register()
+    {
+        base.Register();
+        AddUpgradesToRealTowers();
+    }
+
     internal void AddUpgradesToRealTowers()
     {
         foreach (var towerModel in Game.instance.model.GetTowersWithBaseId(BaseTowerModel.baseId)

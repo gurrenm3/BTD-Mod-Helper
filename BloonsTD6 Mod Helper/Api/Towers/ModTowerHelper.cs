@@ -8,12 +8,20 @@ using Assets.Scripts.Models.Towers.Behaviors.Abilities;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Api.Enums;
 using UnhollowerBaseLib;
+using Nullable = Il2CppSystem.Nullable;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
-internal static partial class ModTowerHelper
+/// <summary>
+/// Class with helper methods for TowerModels / ModTowers
+/// <br/>
+/// Mostly used internally
+/// </summary>
+public static partial class ModTowerHelper
 {
     internal static List<TowerModel> AddTower(ModTower modTower)
     {
@@ -247,11 +255,24 @@ internal static partial class ModTowerHelper
             var heroDetailsModel =
                 new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, null, false);
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
-            
+
             var skinsData = GameData.Instance.skinsData;
             var skinsByName = skinsData.SkinList.items.ToDictionary(data => data.name, data => data);
             var skinData = modHero.CreateDefaultSkin(skinsByName);
             skinsData.AddSkins(new[] {skinData});
         }
+    }
+
+
+    /// <summary>
+    /// Creates and returns an empty TowerModel
+    /// </summary>
+    public static TowerModel CreateTowerModel(string name, string baseId = null, string towerSet = null)
+    {
+        var sprite = Il2CppSystem.Nullable<SpriteReference>.Unbox(ModContent.CreateSpriteReference(""));
+        var display = ModContent.CreatePrefabReference("");
+        return new TowerModel(name, baseId ?? name, towerSet ?? TowerSetType.Primary, display,
+            icon: sprite, portrait: sprite, instaIcon: sprite, emoteSpriteSmall: sprite, emoteSpriteLarge: sprite
+        );
     }
 }

@@ -76,7 +76,7 @@ namespace BTD_Mod_Helper.Api
         /// How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
         /// </summary>
         /// <exclude/>
-        public virtual int RegisterPerFrame => 1;
+        public virtual int RegisterPerFrame => 10;
 
 
         internal static void LoadModContent(BloonsMod mod) => mod.Content = mod.GetAssembly()
@@ -212,7 +212,7 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
-        /// Gets a sprite reference by name for a specific mod,returning null if the texture hasn't currently been
+        /// Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been
         /// loaded instead of an invalid SpriteReference
         /// </summary>
         /// <param name="mod">The BloonsMod that the texture is from</param>
@@ -224,22 +224,56 @@ namespace BTD_Mod_Helper.Api
         }
 
         /// <summary>
+        /// Gets a sprite reference by name for a specific mod, or if the mod does not include a texture with that name,
+        /// treats it as a vanilla sprite reference
+        /// </summary>
+        /// <param name="mod">The BloonsMod that the texture is from</param>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <returns>A new SpriteReference</returns>
+        public static SpriteReference GetSpriteReferenceOrDefault(BloonsMod mod, string name) =>
+            TextureExists(mod, name) ? GetSpriteReference(mod, name) : CreateSpriteReference(name);
+
+        /// <summary>
+        /// Gets a sprite reference by name for a specific mod, or if the mod does not include a texture with that name,
+        /// treats it as a vanilla sprite reference
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <typeparam name="T">Your mod's main BloonsMod extending class</typeparam>
+        /// <returns>A new SpriteReference</returns>
+        public static SpriteReference GetSpriteReferenceOrDefault<T>(string name) where T : BloonsMod =>
+            GetSpriteReferenceOrDefault(GetInstance<T>(), name);
+
+        /// <summary>
+        /// Gets a sprite reference by name for a specific mod, or if the mod does not include a texture with that name,
+        /// treats it as a vanilla sprite reference
+        /// </summary>
+        /// <param name="name">The file name of your texture, without the extension</param>
+        /// <returns>A new SpriteReference</returns>
+        protected SpriteReference GetSpriteReferenceOrDefault(string name) => GetSpriteReferenceOrDefault(mod, name);
+
+        /// <summary>
         /// Returns a new SpriteReference that uses the given guid
         /// </summary>
         /// <param name="guid">The guid that you'd like to assign to the SpriteReference</param>
-        /// <returns></returns>
         public static SpriteReference CreateSpriteReference(string guid) => new()
         {
             guidRef = guid
         };
 
-
         /// <summary>
         /// Returns a new PrefabReference that uses the given guid
         /// </summary>
         /// <param name="guid">The guid that you'd like to assign to the PrefabReference</param>
-        /// <returns></returns>
         public static PrefabReference CreatePrefabReference(string guid) => new()
+        {
+            guidRef = guid
+        };
+
+        /// <summary>
+        /// Returns a new AudioSourceReference that uses the given guid
+        /// </summary>
+        /// <param name="guid">The guid that you'd like to assign to the AudioSourceReference</param>
+        public static AudioSourceReference CreateAudioSourceReference(string guid) => new()
         {
             guidRef = guid
         };
@@ -255,7 +289,7 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static SpriteReference CreateSpriteReference(params uint[] data)
+        internal static SpriteReference CreateSpriteReferenceFromBytes(params uint[] data)
         {
             var bytes = new byte[16];
             for (var i = 0; i < 4; i++)
