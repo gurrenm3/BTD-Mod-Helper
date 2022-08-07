@@ -6,6 +6,8 @@ using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Data.Global;
+using Assets.Scripts.Data.Skins;
+using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -152,9 +154,14 @@ public abstract class ModHero : ModTower
     /// <br/>
     /// The SpriteReference is the actual image that will be displayed
     /// </summary>
-    public virtual Dictionary<int, SpriteReference> SelectScreenPortraits => upgrades.Cast<ModHeroLevel>()
-        .Where(level => level?.PortraitReference is not null)
-        .ToDictionary(level => level.Level, level => level.PortraitReference);
+    public virtual Dictionary<int, SpriteReference> SelectScreenPortraits => new()
+    {
+        {1, PortraitReference},
+        {3, GetPortraitReferenceForTiers(new []{3, 0, 0})},
+        {10, GetPortraitReferenceForTiers(new []{10, 0, 0})},
+        {20, GetPortraitReferenceForTiers(new []{20, 0, 0})},
+    };
+    
 
     /// <summary>
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
@@ -187,6 +194,8 @@ public abstract class ModHero : ModTower
 
     /// <summary>
     /// The total number of abilities that this hero has as max level
+    /// <br/>
+    /// OBSOLETE: No longer required to manually specify
     /// </summary>
     [Obsolete("No longer required to manually specify")]
     public virtual int Abilities { get; }
@@ -198,6 +207,79 @@ public abstract class ModHero : ModTower
     /// <param name="heroSprite">The HeroSprite to modify</param>
     public virtual void ModifyHeroSprite(HeroSprite heroSprite)
     {
+    }
+
+    /// <summary>
+    /// Gets the font material for the default SkinData
+    /// </summary>
+    /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
+    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
+        skinsByName.TryGetValue(NameStyle, out var dataForFont)
+            ? dataForFont.fontMaterial
+            : skinsByName[TowerType.Quincy].fontMaterial;
+
+    /// <summary>
+    /// Gets the Background Banner for the default SkinData
+    /// </summary>
+    /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
+    public virtual GameObject GetBackgroundBanner(Dictionary<string, SkinData> skinsByName) =>
+        skinsByName.TryGetValue(GlowStyle, out var dataForFont)
+            ? dataForFont.backgroundBanner
+            : skinsByName[TowerType.Quincy].backgroundBanner;
+
+    /// <summary>
+    /// Gets the background color for the default SkinData
+    /// </summary>
+    /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
+    public virtual Color GetBackgroundColor(Dictionary<string, SkinData> skinsByName) =>
+        skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
+            ? dataForFont.backgroundColourTintOverride
+            : skinsByName[TowerType.Quincy].backgroundColourTintOverride;
+
+    /// <summary>
+    /// Creates the SkinData for the default tower
+    /// </summary>
+    /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
+    public virtual SkinData CreateDefaultSkin(Dictionary<string, SkinData> skinsByName)
+    {
+        var skinData = ScriptableObject.CreateInstance<SkinData>();
+        skinData.name = skinData.baseTowerName = Id;
+        skinData.skinName = Id + " Short Description";
+        skinData.description = Id + " Description";
+        skinData.icon = ButtonReference;
+        skinData.iconSquare = SquareReference;
+        skinData.isDefaultTowerSkin = true;
+
+        skinData.unlockedEventSound = new AudioSourceReference
+        {
+            guidRef = SelectSound
+        };
+        skinData.unlockedVoiceSound = new AudioSourceReference
+        {
+            guidRef = ""
+        };
+
+        skinData.textMaterialId = NameStyle;
+        skinData.fontMaterial = GetFontMaterial(skinsByName);
+        skinData.backgroundBanner = GetBackgroundBanner(skinsByName);
+        skinData.backgroundColourTintOverride = GetBackgroundColor(skinsByName);
+
+        skinData.StorePortraitsContainer = new PortraitContainer
+        {
+            items = SelectScreenPortraits.Select(pair => new StorePortraits
+            {
+                levelTxt = pair.Key.ToString(),
+                asset = pair.Value
+            }).ToIl2CppList()
+        };
+        
+        // ReSharper disable ArrangeObjectCreationWhenTypeNotEvident
+        skinData.SwapAudioContainer = new SwapAudioContainer {items = new()};
+        skinData.SwapOverlayContainer = new SwapOverlayContainer {items = new()};
+        skinData.SwapPrefabContainer = new SwapPrefabContainer {items = new()};
+        skinData.SwapSpriteContainer = new SwapSpriteContainer {items = new()};
+
+        return skinData;
     }
 
     /// <summary>

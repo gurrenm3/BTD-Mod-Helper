@@ -59,28 +59,6 @@ internal class TitleScreen_Start
             }
         }
 
-        foreach (var modHero in ModContent.GetContent<ModHero>())
-        {
-            try
-            {
-                /*var heroSprites = GameData.Instance.heroSprites;
-                var heroSprite = new HeroSprite
-                {
-                    heroId = modHero.Id,
-                    heroFontMaterial = heroSprites.GetFontMaterialRef(modHero.NameStyle),
-                    backgroundBanner = heroSprites.GetBannerRef(modHero.GlowStyle),
-                    backgroundColourTintOverride = heroSprites.GetBannerColourTintRef(modHero.BackgroundStyle)
-                };
-                modHero.ModifyHeroSprite(heroSprite);
-                heroSprites.heroSprite.Add(heroSprite);*/
-            }
-            catch (Exception e)
-            {
-                ModHelper.Error(e);
-            }
-        }
-
-
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
     }
 }

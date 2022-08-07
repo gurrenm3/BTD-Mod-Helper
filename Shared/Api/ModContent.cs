@@ -235,6 +235,7 @@ namespace BTD_Mod_Helper.Api
         {
             guidRef = guid
         };
+        
 
         /// <summary>
         /// Returns a new PrefabReference that uses the given guid
@@ -245,6 +246,11 @@ namespace BTD_Mod_Helper.Api
         {
             guidRef = guid
         };
+
+        /// <summary>
+        /// Creates a Prefab Reference for a ModDisplay
+        /// </summary>
+        public static PrefabReference CreatePrefabReference<T>() where T : ModDisplay => CreatePrefabReference(GetInstance<T>().Id);
 
         /// <summary>
         /// Creates a Sprite reference from the unsigned ints that can be found for a vanilla Sprite in AssetStudio

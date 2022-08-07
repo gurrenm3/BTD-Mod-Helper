@@ -109,6 +109,25 @@ The guid that you'd like to assign to the PrefabReference
 #### Returns
 [Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
 
+<a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference_T_()'></a>
+
+## ModContent.CreatePrefabReference<T>() Method
+
+Creates a Prefab Reference for a ModDisplay
+
+```csharp
+public static Assets.Scripts.Utils.PrefabReference CreatePrefabReference<T>()
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference_T_().T'></a>
+
+`T`
+
+#### Returns
+[Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
+
 <a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(string)'></a>
 
 ## ModContent.CreateSpriteReference(string) Method

@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Data;
 using Assets.Scripts.Models;
-using Assets.Scripts.Models.GenericBehaviors;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors.Abilities;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using UnhollowerBaseLib;
 
@@ -249,16 +247,11 @@ internal static partial class ModTowerHelper
             var heroDetailsModel =
                 new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, null, false);
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
-            /*SkinModel skinModel = new HeroSkinModel(modHero.Id, modHero.ButtonReference, modHero.SquareReference,
-                modHero.Id, modHero.Id + " Short Description", modHero.Id + " Description", 0, true,
-                new Il2CppReferenceArray<SwapTowerSpriteModel>(0),
-                new Il2CppReferenceArray<SwapTowerGraphicModel>(0),
-                new Il2CppReferenceArray<SwapTowerSoundModel>(0),
-                new Il2CppReferenceArray<SwapTowerOverlayModel>(0), "Quincy",
-                modHero.SelectScreenPortraits.Values.Prepend(modHero.PortraitReference).ToArray(),
-                modHero.SelectScreenPortraits.Keys.Select(i => i.ToString()).ToArray(),
-                new SoundModel("BlankSoundModel_", ""), new SoundModel("SoundModel", modHero.SelectSound));
-            Game.instance.model.skins = Game.instance.model.skins.AddTo(skinModel);*/
+            
+            var skinsData = GameData.Instance.skinsData;
+            var skinsByName = skinsData.SkinList.items.ToDictionary(data => data.name, data => data);
+            var skinData = modHero.CreateDefaultSkin(skinsByName);
+            skinsData.AddSkins(new[] {skinData});
         }
     }
 }

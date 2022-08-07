@@ -38,6 +38,19 @@ public override string BaseDisplay { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Display.ModCustomDisplay.LoadAsync'></a>
+
+## ModCustomDisplay.LoadAsync Property
+
+Whether to try loading the asset from the bundle asynchronously. Not yet thoroughly tested
+
+```csharp
+public virtual bool LoadAsync { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Display.ModCustomDisplay.MaterialName'></a>
 
 ## ModCustomDisplay.MaterialName Property

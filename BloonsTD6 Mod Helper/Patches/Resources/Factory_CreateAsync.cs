@@ -15,7 +15,8 @@ internal static class Factory_CreateAsync
 
         if (prototype == null && ModDisplay.Cache.TryGetValue(prefabReference.guidRef, out var modDisplay))
         {
-            return modDisplay.Create(factory, prefabReference, onComplete, ref prototype);
+            modDisplay.Create(factory, prefabReference, node => onComplete.Invoke(node));
+            return false;
         }
 
         return true;

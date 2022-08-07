@@ -39,11 +39,24 @@ public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
 The GUID of the display to copy this ModDisplay off of
 
 ```csharp
-public abstract string BaseDisplay { get; }
+public virtual string BaseDisplay { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplayReference'></a>
+
+## ModDisplay.BaseDisplayReference Property
+
+The prefab reference itself of the base display that will be sused
+
+```csharp
+public virtual Assets.Scripts.Utils.PrefabReference BaseDisplayReference { get; }
+```
+
+#### Property Value
+[Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifiesUnityObject'></a>
 
@@ -78,11 +91,11 @@ public virtual float PixelsPerUnit { get; }
 The position offset to render the display at (z axis is up toward camera)
 
 ```csharp
-public virtual UnityEngine.Vector3 PositionOffset { get; }
+public virtual Assets.Scripts.Simulation.SMath.Vector3 PositionOffset { get; }
 ```
 
 #### Property Value
-[UnityEngine.Vector3](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector3 'UnityEngine.Vector3')
+[Assets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.SMath.Vector3 'Assets.Scripts.Simulation.SMath.Vector3')
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Scale'></a>
 
@@ -217,13 +230,39 @@ public Assets.Scripts.Models.GenericBehaviors.DisplayModel GetDisplayModel();
 Alters the UnityDisplayNode that was copied from the one used by [BaseDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md#BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay 'BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay')
 
 ```csharp
-public abstract void ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplayNode node);
+public virtual void ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplayNode node);
 ```
 #### Parameters
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
 
 `node` [Assets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.UnityDisplayNode 'Assets.Scripts.Unity.Display.UnityDisplayNode')
+
+The prototype unity display node
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(Assets.Scripts.Unity.Display.UnityDisplayNode,System.Action)'></a>
+
+## ModDisplay.ModifyDisplayNodeAsync(UnityDisplayNode, Action) Method
+
+Allows you to modify this node asynchronously. On complete must be called for load to work! Takes  
+place after the non-async ModifyDisplayNode call
+
+```csharp
+public virtual void ModifyDisplayNodeAsync(Assets.Scripts.Unity.Display.UnityDisplayNode node, System.Action onComplete);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(Assets.Scripts.Unity.Display.UnityDisplayNode,System.Action).node'></a>
+
+`node` [Assets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.UnityDisplayNode 'Assets.Scripts.Unity.Display.UnityDisplayNode')
+
+The prototype unity display node
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(Assets.Scripts.Unity.Display.UnityDisplayNode,System.Action).onComplete'></a>
+
+`onComplete` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
+
+Callback for when you've finished changing the node
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(Assets.Scripts.Unity.Display.UnityDisplayNode,string)'></a>
 

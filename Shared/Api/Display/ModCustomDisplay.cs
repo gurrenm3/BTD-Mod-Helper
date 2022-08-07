@@ -1,6 +1,5 @@
-﻿using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Utils;
-using Il2CppSystem;
+﻿using System;
+using Assets.Scripts.Unity.Display;
 using UnityEngine;
 using Exception = System.Exception;
 
@@ -26,6 +25,11 @@ public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
     public override string BaseDisplay => "";
 
     /// <summary>
+    /// Whether to try loading the asset from the bundle asynchronously. Not yet thoroughly tested
+    /// </summary>
+    public virtual bool LoadAsync => false;
+
+    /// <summary>
     /// Performs alterations to the unity display node when it is created
     /// </summary>
     /// <param name="node"></param>
@@ -34,12 +38,27 @@ public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
             
     }
 
-
-    internal override bool Create(Factory factory, PrefabReference prefabReference, Action<UnityDisplayNode> onComplete,
-        ref UnityDisplayNode prototype)
+    internal override void GetBasePrototype(Factory factory, Action<UnityDisplayNode> onComplete)
     {
         var assetBundle = GetBundle(mod, AssetBundleName);
-        var gameObject = assetBundle.LoadAsset(PrefabName).Cast<GameObject>();
+        if (LoadAsync)
+        {
+            assetBundle.LoadAssetAsync(PrefabName).add_completed(new Action<AsyncOperation>(operation =>
+            {
+                var request = operation.Cast<AssetBundleRequest>();
+                var gameObject = request.GetResult().Cast<GameObject>();
+                CompletePrototype(gameObject, assetBundle, onComplete);
+            }));
+        }
+        else
+        {
+            var gameObject = assetBundle.LoadAsset(PrefabName).Cast<GameObject>();
+            CompletePrototype(gameObject, assetBundle, onComplete);
+        }
+    }
+
+    private void CompletePrototype(GameObject gameObject, AssetBundle assetBundle, Action<UnityDisplayNode> onComplete)
+    {
         var baseNode = gameObject.AddComponent<UnityDisplayNode>();
         if (!string.IsNullOrEmpty(MaterialName))
         {
@@ -54,8 +73,7 @@ public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
                 ModHelper.Warning(e);
             }
         }
-        prototype = CreateNewPrototype(factory, prefabReference, baseNode);
-        
-        return true;
+
+        onComplete(baseNode);
     }
 }

@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using Assets.Scripts.Data;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -32,7 +36,7 @@ public static class GameModelExporter
         {
             Export(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json");
         }
-        
+
 
         ModHelper.Log("Exporting Powers to local files");
         foreach (var model in Game.instance.model.powers)
@@ -54,7 +58,7 @@ public static class GameModelExporter
                 Export(roundSet.rounds[i], $"Rounds/{roundSet.name}/{i + 1}.json");
             }
         }
-            
+
         ModHelper.Log("Exporting maps to local files");
         foreach (var mapSetMap in GameData.Instance.mapSet.maps)
         {
@@ -66,6 +70,37 @@ public static class GameModelExporter
         {
             Export(indicatorModel, $"Buffs/{indicatorModel.name}.json");
         }
+
+        ModHelper.Log("Exporting skins to local files");
+        GameData.Instance.skinsData.SkinList.items.ForEach(data =>
+        {
+            var jobject = new JObject
+            {
+                ["name"] = data.name,
+                ["skinName"] = data.skinName,
+                ["description"] = data.description,
+                ["baseTowerName"] = data.baseTowerName,
+                ["mmCost"] = data.mmCost,
+                ["icon"] = data.icon.GUID,
+                ["iconSquare"] = data.iconSquare.GUID,
+                ["isDefaultTowerSkin"] = data.isDefaultTowerSkin,
+                ["textMaterialId"] = data.textMaterialId,
+                ["StorePortraitsContainer"] = new JArray(
+                    data.StorePortraitsContainer?.items?.ToList()?.Select(portrait =>
+                        new JObject
+                        {
+                            ["asset"] = portrait.asset?.GUID,
+                            ["levelText"] = portrait.levelTxt
+                        }) ??
+                    Array.Empty<JObject>()
+                )
+            };
+
+            Directory.CreateDirectory(Path.Combine(FileIOUtil.sandboxRoot, "Skins", data.baseTowerName));
+            var path = $"Skins/{data.baseTowerName}/{data.name}.json";
+            File.WriteAllText(Path.Combine(FileIOUtil.sandboxRoot, path), jobject.ToString(Formatting.Indented));
+            ModHelper.Log("Saving " + FileIOUtil.sandboxRoot + path);
+        });
     }
 
     /// <summary>
@@ -76,12 +111,11 @@ public static class GameModelExporter
         try
         {
             FileIOUtil.SaveObject(path, data);
-            ModHelper.Log("Saving " + FileIOUtil.sandboxRoot + path);
+            ModHelper.Log("Saving " + Path.Combine(FileIOUtil.sandboxRoot, path));
         }
         catch (Exception)
         {
-            ModHelper.Error("Failed to save " + FileIOUtil.sandboxRoot + path);
+            ModHelper.Error("Failed to save " + Path.Combine(FileIOUtil.sandboxRoot, path));
         }
     }
-
 }

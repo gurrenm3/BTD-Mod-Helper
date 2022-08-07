@@ -16,12 +16,9 @@ public abstract partial class ModDisplay
     /// <param name="textureName">The name of the texture, without .png</param>
     protected void Set2DTexture(UnityDisplayNode node, string textureName)
     {
+#pragma warning disable CS0618
         var sprite = GetSprite(textureName, PixelsPerUnit);
-        if (sprite == null)
-        {
-            ModHelper.Msg($"the sprite was null for {textureName} and mod {mod.GetModName()} :grimace:");
-        }
-
+#pragma warning restore CS0618
         node.GetRenderer<SpriteRenderer>().sprite = sprite;
     }
 
@@ -31,7 +28,7 @@ public abstract partial class ModDisplay
     /// <returns></returns>
     public DisplayModel GetDisplayModel()
     {
-        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, PositionOffset.ToSMathVector(),
+        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, PositionOffset,
             Scale);
     }
 

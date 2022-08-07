@@ -42,22 +42,40 @@ namespace BTD_Mod_Helper.Api.Display
         {
             Cache[Id] = this;
         }
-        
+
         /// <summary>
         /// The GUID of the display to copy this ModDisplay off of
         /// </summary>
-        public abstract string BaseDisplay { get; }
+        public virtual string BaseDisplay => "";
+
+        /// <summary>
+        /// The prefab reference itself of the base display that will be sused
+        /// </summary>
+        public virtual PrefabReference BaseDisplayReference => CreatePrefabReference(BaseDisplay);
 
         /// <summary>
         /// Alters the UnityDisplayNode that was copied from the one used by <see cref="BaseDisplay"/>
         /// </summary>
-        /// <param name="node"></param>
-        public abstract void ModifyDisplayNode(UnityDisplayNode node);
+        /// <param name="node">The prototype unity display node</param>
+        public virtual void ModifyDisplayNode(UnityDisplayNode node)
+        {
+        }
+
+        /// <summary>
+        /// Allows you to modify this node asynchronously. On complete must be called for load to work! Takes
+        /// place after the non-async ModifyDisplayNode call
+        /// </summary>
+        /// <param name="node">The prototype unity display node</param>
+        /// <param name="onComplete">Callback for when you've finished changing the node</param>
+        public virtual void ModifyDisplayNodeAsync(UnityDisplayNode node, Action onComplete)
+        {
+            onComplete();
+        }
 
         /// <summary>
         /// The position offset to render the display at (z axis is up toward camera)
         /// </summary>
-        public virtual Vector3 PositionOffset => new(0, 0, 0);
+        public virtual Assets.Scripts.Simulation.SMath.Vector3 PositionOffset => new(0, 0, 0);
 
         /// <summary>
         /// The scale to render the display at
@@ -67,13 +85,13 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// How many pixels in a sprite texture should be equal to one unit
         /// </summary>
+        [Obsolete("Due to resource pre loading you most likely want to use Scale instead")]
         public virtual float PixelsPerUnit => 10f;
 
         /// <summary>
         /// If you modify the unity Object and not just the DisplayNode attached to it, then set this to true
         /// </summary>
-        [Obsolete("No longer required")]
-        public virtual bool ModifiesUnityObject => false;
+        [Obsolete("No longer required")] public virtual bool ModifiesUnityObject => false;
 
         /// <summary>
         /// Sets the mesh texture to that of a named png
@@ -149,7 +167,7 @@ namespace BTD_Mod_Helper.Api.Display
         {
             displayModel.display = CreatePrefabReference(Id);
 #if BloonsTD6
-            displayModel.positionOffset = PositionOffset.ToSMathVector();
+            displayModel.positionOffset = PositionOffset;
             displayModel.scale = Scale;
 #endif
         }
@@ -160,30 +178,29 @@ namespace BTD_Mod_Helper.Api.Display
         #region Internal Display Loading
 
         /// <summary>
-        /// Creates a 
+        /// Gets the prototype to use for a callback in CreateAsync, or returns null and says "Fine, I'll do it myself"
         /// </summary>
         /// <returns>Whether to still call the original CreateAsync callback</returns>
-        internal virtual bool Create(Factory factory, PrefabReference prefabReference,
-            Il2CppSystem.Action<UnityDisplayNode> onComplete, ref UnityDisplayNode prototype)
-        {
-            factory.FindAndSetupPrototypeAsync(CreatePrefabReference(BaseDisplay), new Action<UnityDisplayNode>(node =>
+        internal void Create(Factory factory, PrefabReference prefabReference, Action<UnityDisplayNode> onComplete) =>
+            GetBasePrototype(factory, node =>
             {
                 var newPrototype = CreateNewPrototype(factory, prefabReference, node);
-                SetupUDN(newPrototype);
-                var newNode = CreateAsyncCallback(factory, prefabReference, newPrototype);
-                onComplete.Invoke(newNode);
-            }));
+                SetupUDN(newPrototype, () =>
+                {
+                    var newNode = CreateAsyncCallback(factory, prefabReference, newPrototype);
+                    onComplete.Invoke(newNode);
+                });
+            });
 
-            // Don't call the original CreateAsync callback
-            return false;
-        }
+        internal virtual void GetBasePrototype(Factory factory, Action<UnityDisplayNode> onComplete) =>
+            factory.FindAndSetupPrototypeAsync(BaseDisplayReference, onComplete);
 
         /// <summary>
         /// Recreated version of the CreateAsync_b__0 callback. Would like to just call this directly, but manually
         /// messing with the __DisplayClass_s proved buggy.
         /// </summary>
         /// <returns>The unity display node for the newly created display</returns>
-        internal static UnityDisplayNode CreateAsyncCallback(Factory factory, PrefabReference prefabReference,
+        internal UnityDisplayNode CreateAsyncCallback(Factory factory, PrefabReference prefabReference,
             UnityDisplayNode prototype)
         {
             var position = new Vector3(Factory.kOffscreenPosition.x, 0, 0);
@@ -215,7 +232,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Applies the effects of a ModDisplay on a UnityDisplayNode
         /// </summary>
-        internal void SetupUDN(UnityDisplayNode udn)
+        internal void SetupUDN(UnityDisplayNode udn, Action onComplete)
         {
             udn.RecalculateGenericRenderers();
             try
@@ -242,6 +259,8 @@ namespace BTD_Mod_Helper.Api.Display
             }
 
             udn.RecalculateGenericRenderers();
+
+            ModifyDisplayNodeAsync(udn, onComplete);
         }
 
         #endregion
