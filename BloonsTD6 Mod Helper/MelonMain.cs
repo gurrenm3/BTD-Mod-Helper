@@ -11,6 +11,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
@@ -136,6 +137,14 @@ internal partial class MelonMain : BloonsTD6Mod
     }
 
     public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
+
+    public override void OnMainMenu()
+    {
+        Animations.Load();
+        Fonts.Load();
+        RoundSetChanger.EnsureHidden();
+        ModsMenu.selectedMod = null;
+    }
 
     #region Autosave
 

@@ -37,7 +37,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private int currentPage;
     private string currentSearch = "";
 
-    private SortingMethod sortingMethod = SortingMethod.Popularity;
+    private SortingMethod sortingMethod = SortingMethod.RecentlyUpdated;
 
     private int typingCooldown;
 
@@ -49,6 +49,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         ModifyExistingElements();
         AddNewElements();
 
+        sortingMethod = SortingMethod.RecentlyUpdated;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
         UpdateModList();
 
@@ -90,11 +91,12 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             newMod.SetActive(false);
         }
 
-        var topArea = GameMenu.transform.GetChild(0).gameObject.AddModHelperPanel(new Info("TopArea")
-        {
-            Y = -325, Height = 200, Pivot = new Vector2(0.5f, 1),
-            AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1),
-        }, layoutAxis: RectTransform.Axis.Horizontal, padding: 50);
+        var topArea = GameMenu.GetComponentFromChildrenByName<RectTransform>("Container").gameObject
+            .AddModHelperPanel(new Info("TopArea")
+            {
+                Y = -325, Height = 200, Pivot = new Vector2(0.5f, 1),
+                AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1),
+            }, layoutAxis: RectTransform.Axis.Horizontal, padding: 50);
 
         topArea.AddDropdown(new Info("Sorting", width: 1000, height: 150),
             SortingMethods.Select(method => method.ToString().Spaced()).ToIl2CppList(), 600,
@@ -144,7 +146,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     {
         SortingMethod.Popularity => mods.OrderByDescending(data => data.Repository.StargazersCount),
         SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
-        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.Repository.UpdatedAt),
+        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.Repository.PushedAt ?? data.Repository.CreatedAt),
         SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
         _ => mods
     }).ToList();
@@ -238,8 +240,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private enum SortingMethod
     {
-        Popularity,
         RecentlyUpdated,
+        Popularity,
         New,
         Alphabetical
     }

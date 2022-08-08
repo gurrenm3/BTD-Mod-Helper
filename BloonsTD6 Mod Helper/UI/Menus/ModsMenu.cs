@@ -68,7 +68,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static bool loadedAllMods;
 
-    private static ModHelperData selectedMod;
+    internal static ModHelperData selectedMod;
 
     private static readonly string[] SortOptions =
     {

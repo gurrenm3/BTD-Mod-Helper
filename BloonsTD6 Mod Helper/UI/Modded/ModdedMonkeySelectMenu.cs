@@ -7,6 +7,7 @@ using Assets.Scripts.Unity.UI_New.Main.MapSelect;
 using Assets.Scripts.Unity.UI_New.Main.MonkeySelect;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppSystem;
 using UnhollowerBaseLib;
@@ -323,14 +324,14 @@ internal class ModdedMonkeySelectMenu
         }
     }
 
-    internal static void CreatePips(MonkeySelectMenu __instance)
+    internal static void CreatePips(MonkeySelectMenu menu)
     {
         DestroyPips();
 
         pipHolder = new GameObject("PipHolder",
             new Il2CppReferenceArray<Type>(new[] {Il2CppType.Of<RectTransform>()}))
         {
-            transform = {parent = __instance.transform}
+            transform = {parent = menu.transform}
         };
         var gridLayoutGroup = pipHolder.AddComponent<GridLayoutGroup>();
         gridLayoutGroup.cellSize = new Vector2(64, 64);
@@ -341,19 +342,19 @@ internal class ModdedMonkeySelectMenu
         gridLayoutGroup.constraintCount = 1;
         gridLayoutGroup.startCorner = GridLayoutGroup.Corner.UpperLeft;
 
-        var scale = __instance.monkeyGroupButtons.First().transform.lossyScale;
-        var monkeyGroupButtonsPos = __instance.monkeyGroupButtons.First().transform.parent.position;
+        var scale = menu.monkeyGroupButtons.First().transform.lossyScale;
+        var monkeyGroupButtonsPos = menu.monkeyGroupButtons.First().transform.parent.position;
 
         pipHolder.transform.position = monkeyGroupButtonsPos + new Vector3(0, 125, 0) * scale.x;
         pipHolder.transform.localScale = new Vector3(1, 1, 1);
 
         for (var i = 0; i < TotalPages; i++)
         {
-            pips.Add(CreatePip(pipHolder.transform));
+            pips.Add(CreatePip(pipHolder.transform, menu));
         }
     }
 
-    internal static GameObject CreatePip(Transform parent)
+    internal static GameObject CreatePip(Transform parent, MonkeySelectMenu menu)
     {
         var pip = new GameObject("CustomPip",
             new Il2CppReferenceArray<Type>(new[] {Il2CppType.Of<RectTransform>()}))
@@ -376,6 +377,8 @@ internal class ModdedMonkeySelectMenu
         layoutElement.preferredHeight = 64;
         layoutElement.preferredWidth = 64;
         layoutElement.useGUILayout = true;
+        var matchScale = pip.AddComponent<MatchScale>();
+        matchScale.transformToCopy = menu.towerButtons[0].transform.parent;
 
         mapPip.Deactivate();
 

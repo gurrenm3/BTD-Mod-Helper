@@ -11,13 +11,7 @@ internal class MainMenu_Open
     internal static void Postfix()
     {
         ResetSessionData();
-
-        Animations.Load();
-        Fonts.Load();
-            
         ModHelper.PerformHook(mod => mod.OnMainMenu());
-        
-        RoundSetChanger.EnsureHidden();
     }
 
     private static void ResetSessionData()
