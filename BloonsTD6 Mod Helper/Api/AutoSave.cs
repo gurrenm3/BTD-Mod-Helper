@@ -12,6 +12,7 @@ namespace BTD_Mod_Helper.Api;
 public static class AutoSave
 {
     internal static BackupCreator backup;
+
     internal static bool autosaveInit;
     // internal static string profileSaveDir;
 
@@ -50,13 +51,14 @@ public static class AutoSave
             },
             Api.Enums.ScheduleType.WaitForSeconds, TimeBetweenBackup * secondsPerMinute);
     }
-        
+
     internal static void OpenAutoSaveDir()
     {
         var saveDirectory = Game.instance.GetSaveDirectory();
         if (string.IsNullOrEmpty(saveDirectory) || !Directory.Exists(saveDirectory))
         {
-            PopupScreen.instance.ShowOkPopup("Can't open Save directory because it wasn't found");
+            PopupScreen.instance.SafelyQueue(screen =>
+                screen.ShowOkPopup("Can't open Save directory because it wasn't found"));
         }
         else
         {
@@ -68,7 +70,8 @@ public static class AutoSave
     {
         if (string.IsNullOrEmpty(AutosavePath) || !Directory.Exists(AutosavePath))
         {
-            PopupScreen.instance.ShowOkPopup("Can't open Backup directory because it wasn't found");
+            PopupScreen.instance.SafelyQueue(screen =>
+                screen.ShowOkPopup("Can't open Backup directory because it wasn't found"));
         }
         else
         {

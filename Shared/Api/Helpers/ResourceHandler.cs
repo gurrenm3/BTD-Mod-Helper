@@ -85,10 +85,10 @@ internal class ResourceHandler
         return null;
     }
 
-    internal static Texture2D GetTexture(string guid)
+    internal static Texture2D GetTexture(string id)
     {
-        if (TextureCache.TryGetValue(guid, out var texture2d) && texture2d != null) return texture2d;
-        return CreateTexture(guid);
+        if (TextureCache.TryGetValue(id, out var texture2d) && texture2d != null) return texture2d;
+        return CreateTexture(id);
     }
 
     internal static byte[] GetTextureBytes(string guid)

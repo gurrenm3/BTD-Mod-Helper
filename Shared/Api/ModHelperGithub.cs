@@ -31,7 +31,7 @@ internal static class ModHelperGithub
     private const string ZipContentType2 = "application/x-zip-compressed";
 
     private const string Sorry =
-        "Please try again at a later time, and if it still doesn't work, contact the mod developer.";
+        "Please try again at a later time. If issues stil persist for this mod and not others, contact the mod developer.";
 
     public static List<ModHelperData> Mods { get; private set; } = new();
 
@@ -120,7 +120,7 @@ internal static class ModHelperGithub
                 ModHelper.Error(errorMessage);
                 if (!bypassPopup)
                 {
-                    PopupScreen.instance.ShowOkPopup(errorMessage);
+                    PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
                 }
 
                 return;
@@ -135,7 +135,7 @@ internal static class ModHelperGithub
                 ModHelper.Error(errorMessage);
                 if (!bypassPopup)
                 {
-                    PopupScreen.instance.ShowOkPopup(errorMessage);
+                    PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
                 }
 
                 return;
@@ -143,7 +143,7 @@ internal static class ModHelperGithub
 
             if (latestRelease.TagName != mod.RepoVersion)
             {
-                ModHelper.Warning("Latest Release Tag didn't match listed mod version. " +
+                ModHelper.Warning($"Latest Release Tag '{latestRelease.TagName}' didn't match listed mod version '{mod.RepoVersion}'. " +
                                   "The real release for this version may be present in the API yet.");
             }
         }
@@ -155,14 +155,15 @@ internal static class ModHelperGithub
         }
         else
         {
-            PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
                 $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                 mod.SubPath == null
                     ? latestRelease!.Body
                     : latestCommit!.Commit.Message,
-                new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No", Popup.TransitionAnim.Scale);
+                new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No",
+                Popup.TransitionAnim.Scale));
 
-            PopupScreen.instance.ModifyBodyText(field =>
+            PopupScreen.instance.SafelyQueue(screen => screen.ModifyBodyText(field =>
             {
                 var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
                     InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
@@ -172,14 +173,14 @@ internal static class ModHelperGithub
                 newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
 
                 field.Destroy();
-            });
+            }));
         }
 
         UpdateRateLimit();
-        
     }
 
-    private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease, bool showPopup)
+    private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease,
+        bool showPopup)
     {
         try
         {
@@ -207,7 +208,7 @@ internal static class ModHelperGithub
 
         const string errorMessage = $"Failed to download asset. {Sorry}";
         ModHelper.Error(errorMessage);
-        PopupScreen.instance.ShowOkPopup(errorMessage);
+        PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
     }
 
     public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true)
@@ -280,13 +281,13 @@ internal static class ModHelperGithub
 
             if (success)
             {
-                var message = $"Successfully downloaded {name}\nRemember to restart to apply the changes!";
+                var message = $"Successfully downloaded {name}, remember to restart to apply the changes!";
                 ModHelper.Log(message);
                 if (showPopup)
                 {
-                    PopupScreen.instance.ShowOkPopup(message);
+                    PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(message));
                 }
-                
+
                 mod.SetVersion(mod.RepoVersion!);
                 return downloadFilePath;
             }

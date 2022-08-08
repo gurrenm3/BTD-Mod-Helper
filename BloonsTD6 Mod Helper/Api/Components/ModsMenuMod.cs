@@ -112,7 +112,8 @@ internal static class ModsMenuModExt
                 mod.Warning.SetActive(true);
                 mod.Warning.Button.SetOnClick(() =>
                 {
-                    PopupScreen.instance.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n"));
+                    PopupScreen.instance.SafelyQueue(screen =>
+                        screen.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n")));
                 });
             }
         }

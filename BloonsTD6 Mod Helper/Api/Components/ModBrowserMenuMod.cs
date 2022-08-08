@@ -205,7 +205,7 @@ internal static class ModBrowserMenuModExt
         mod.Update.SetActive(installed && current.UpdateAvailable);
         mod.Installed.SetActive(installed && !current.UpdateAvailable);
 
-        mod.StarCount.SetText($"{modHelperData.Repository.StargazersCount}");
+        mod.StarCount.SetText($"{modHelperData.Stars}{(string.IsNullOrEmpty(modHelperData.SubPath) ? "" : "+")}");
         mod.Star.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.StarsUrl));
 
         mod.SetDescriptionShowing(false);

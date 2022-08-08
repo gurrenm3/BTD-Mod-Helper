@@ -19,12 +19,6 @@ public class ModHelperHttp
     /// </summary>
     public static HttpClient Client { get; private set; }
 
-    private const int TimeOutMS = 2000;
-
-    private const int DefaultMaxResponseSize = 500000; // .5 MB for normal requests like images, json data
-
-    private const int ExpandedMaxResponseSize = DefaultMaxResponseSize * 100; // 50 MB for 
-
     /// <summary>
     /// Initializes the HttpClient
     /// </summary>
@@ -36,8 +30,7 @@ public class ModHelperHttp
             " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
         Client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-        Client.Timeout = TimeSpan.FromMilliseconds(TimeOutMS);
-        Client.MaxResponseContentBufferSize = DefaultMaxResponseSize;
+        UpdateSettings();
     }
 
     /// <summary>
@@ -50,7 +43,7 @@ public class ModHelperHttp
     {
         try
         {
-            Client.MaxResponseContentBufferSize = ExpandedMaxResponseSize;
+            Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
             var response = await Client.GetAsync(url);
             using var fs = new FileStream(filePath, FileMode.Create);
             await response.Content.CopyToAsync(fs);
@@ -63,7 +56,7 @@ public class ModHelperHttp
         }
         finally
         {
-            Client.MaxResponseContentBufferSize = DefaultMaxResponseSize;
+            Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
         }
 
         return false;
@@ -79,14 +72,14 @@ public class ModHelperHttp
     {
         try
         {
-            Client.MaxResponseContentBufferSize = ExpandedMaxResponseSize;
+            Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
             var response = await Client.GetAsync(url);
             var stream = await response.Content.ReadAsStreamAsync();
             return new ZipArchive(stream);
         }
         finally
         {
-            Client.MaxResponseContentBufferSize = DefaultMaxResponseSize;
+            Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
         }
     }
 
@@ -126,5 +119,11 @@ public class ModHelperHttp
         }
 
         return null;
+    }
+
+    internal static void UpdateSettings()
+    {
+        Client.Timeout = TimeSpan.FromSeconds(MelonMain.RequestTimeout);
+        Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
     }
 }

@@ -83,12 +83,23 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public override void SetValue(object val)
         {
             base.SetValue(val);
-            if (currentOption != null)
+            try
             {
-                var butt = currentOption.GetDescendent<ModHelperButton>("Button");
-                if (butt != null)
+                if (currentOption is not null && currentOption != null)
                 {
-                    currentAction?.Invoke((bool) val, butt);
+                    var butt = currentOption.GetDescendent<ModHelperButton>("Button");
+                    if (butt is not null && butt != null)
+                    {
+                        currentAction?.Invoke((bool) val, butt);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                if (currentAction != null)
+                {
+                    ModHelper.Error("Failed to run ModSettingBool action");
+                    ModHelper.Error(e);
                 }
             }
         }
@@ -118,7 +129,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 {
                     currentAction(!value, buttonComponent);
                     SetValue(!value);
-                    MenuManager.instance.buttonClickSound.Play("ClickSounds");
+                    // MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 }));
 
                 option.SetResetAction(new Action(() =>
@@ -135,7 +146,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                     new Action<bool>(enabled =>
                     {
                         SetValue(enabled);
-                        MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
+                        // MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
                     })
                 );
                 option.SetResetAction(new Action(() => checkbox.SetChecked(defaultValue)));

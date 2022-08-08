@@ -50,6 +50,8 @@ internal partial class ModHelperData
     }
 
     internal string StarsUrl => $"https://www.github.com/{RepoOwner}/{RepoName}/stargazers";
+    private float splittingStarsAmongst = 1;
+    internal int Stars => (int) Math.Ceiling(Repository?.StargazersCount ?? 0 / splittingStarsAmongst);
 
     internal bool HasRequiredRepoData => SemVersion.TryParse(Version, out _) &&
                                          RepoName != null &&
@@ -91,7 +93,6 @@ internal partial class ModHelperData
         try
         {
             string data = null;
-            var json = false;
 
             if (RepoName == ModHelper.RepoName)
             {
@@ -101,46 +102,26 @@ internal partial class ModHelperData
             if (SubPath != null && (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json") || SubPath.EndsWith(".cs")))
             {
                 data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(SubPath));
-                json = SubPath.EndsWith(".json");
             }
 
-            if (data == null)
+            try
             {
-                try // getting ModHelperData.cs
+                data ??= await WhenFirstSucceededOrAllFailed(new[]
                 {
-                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs));
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
+                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs)),
+                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson)),
+                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt))
+                });
 
-            if (data == null)
+            }
+            catch (Exception e)
             {
-                try // getting ModHelperData.json
+                if (RepoOwner == MelonMain.GitHubUsername)
                 {
-                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson));
-                    json = true;
-                }
-                catch (Exception)
-                {
-                    // ignored
+                    ModHelper.Warning(e);
                 }
             }
-
-            if (data == null)
-            {
-                try // getting ModHelperData.json
-                {
-                    data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt));
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
-
+            
             if (data == null)
             {
                 if (RepoOwner == MelonMain.GitHubUsername)
@@ -150,6 +131,8 @@ internal partial class ModHelperData
 
                 return;
             }
+
+            var json = data.TrimStart().StartsWith("{");
 
             if (json) ReadValuesFromJson(data, false);
             else ReadValuesFromString(data);
@@ -187,6 +170,22 @@ internal partial class ModHelperData
             }
         }
     }
+
+    private async Task<T> WhenFirstSucceededOrAllFailed<T>(IEnumerable<Task<T>> tasks)
+    {
+        var taskList = new List<Task<T>>( tasks );
+        while ( taskList.Count > 0 )
+        {
+            var firstCompleted = await Task.WhenAny( taskList ).ConfigureAwait(false);
+            if ( firstCompleted.Status == TaskStatus.RanToCompletion )
+            {
+                return firstCompleted.Result;
+            }
+            taskList.Remove( firstCompleted );
+        }
+
+        return default;
+    } 
 
     public async Task<Release> GetLatestRelease()
     {
@@ -297,9 +296,18 @@ internal partial class ModHelperData
             {
                 ModHelper.Msg($"Found monorepo {monoRepo.FullName}");
             }
-            return modsJson
+
+            var modHelperDatas = modsJson
                 .Where(token => token.Type == JTokenType.String)
-                .Select(token => new ModHelperData(monoRepo, token.ToString()));
+                .Select(token => new ModHelperData(monoRepo, token.ToString()))
+                .ToList();
+
+            foreach (var modHelperData in modHelperDatas)
+            {
+                modHelperData.splittingStarsAmongst = modHelperDatas.Count;
+            }
+
+            return modHelperDatas;
         }
         catch (Exception e)
         {

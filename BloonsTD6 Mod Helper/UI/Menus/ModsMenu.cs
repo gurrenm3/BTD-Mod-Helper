@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
@@ -66,7 +67,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static Animator bottomGroupAnimator;
 
-    private static bool loadedAllMods;
 
     internal static ModHelperData selectedMod;
 
@@ -81,7 +81,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     /// <inheritdoc />
     public override bool OnMenuOpened(Object data)
     {
-        loadedAllMods = false;
         CommonForegroundHeader.SetText("Mods");
 
         var panelTransform = GameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
@@ -97,9 +96,24 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedMod ??= ModHelper.Main.GetModHelperData();
 
         SetSelectedMod(selectedMod!);
-        Refresh();
+
+        MelonCoroutines.Start(CreateModPanels());
 
         return false;
+    }
+
+    private static IEnumerator CreateModPanels()
+    {
+        foreach (var data in modPanels.Keys.ToList())
+        {
+            var panel = modPanels[data] = modTemplate.Duplicate(data.Name);
+            yield return null;
+
+            panel.SetMod(data, data.Mod);
+            yield return null;
+        }
+
+        Refresh();
     }
 
     private static void CreateExtraButtons(ExtraSettingsScreen gameMenu)
@@ -130,20 +144,20 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Pivot = new Vector2(0.5f, 0)
         }, VanillaSprites.EditChallengeIcon, new Action(() =>
         {
-            PopupScreen.instance.ShowSetNamePopup("Create/Upgrade Mod",
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowSetNamePopup("Create/Upgrade Mod",
                 "Name of mod to create/upgrade. \n Example: 'TitleCaseButWithoutSpaces'", new Action<string>(s =>
                 {
                     if (!string.IsNullOrEmpty(s))
                     {
                         TemplateMod.CreateModButtonClicked(s);
                     }
-                }), null);
-            PopupScreen.instance.ModifyField(tmpInputField =>
+                }), null));
+            PopupScreen.instance.SafelyQueue(screen => screen.ModifyField(tmpInputField =>
             {
                 tmpInputField.textComponent.font = Fonts.Btd6FontBody;
                 tmpInputField.characterLimit = 50;
                 tmpInputField.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
-            });
+            }));
         }));
 
         createModButton.AddText(new Info("Text", 0, -200, 500, 100), "Create Mod", 60f);
@@ -154,20 +168,22 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Pivot = Vector2.one,
             Anchor = Vector2.one
         });
+        restartButton.SetActive(false);
 
         restartButton.AddButton(new Info("Restart", InfoPreset.FillParent), VanillaSprites.RestartBtn,
             new Action(() =>
             {
-                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Restart Required",
+                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                    "Restart Required",
                     "Changes you've made will require restarting the game to take effect. " +
                     "Would you like to do that now?", new Action(ProcessHelper.RestartGame),
-                    "Yes", null, "No", Popup.TransitionAnim.Scale);
+                    "Yes", null, "No", Popup.TransitionAnim.Scale));
             }));
         restartButton.AddText(new Info("Text", 0, -200, 500, 100), "Restart", FontMedium);
     }
 
     /// <inheritdoc />
-    public override void OnMenuUpdate()
+    /*public override void OnMenuUpdate()
     {
         if (loadedAllMods)
         {
@@ -194,7 +210,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Refresh();
             loadedAllMods = true;
         }
-    }
+    }*/
 
     /// <inheritdoc />
     public override void OnMenuClosed()
@@ -289,7 +305,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Info("UpdateAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
             VanillaSprites.GreenBtnLong, new Action(() =>
             {
-                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm Update All Mods?",
+                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                    "Confirm Update All Mods?",
                     "This will update all mods to latest versions with no further confirmation.", new Action(
                         async () =>
                         {
@@ -299,11 +316,14 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                                 await ModHelperGithub.DownloadLatest(data, true);
                                 panel.Refresh(data);
                             }
+
                             Refresh();
-                            PopupScreen.instance.ShowOkPopup("Successfully updated mods, remember to restart to apply changes.");
-                        }), "Yes", null, "No", Popup.TransitionAnim.Scale);
+                            PopupScreen.instance.SafelyQueue(popupScreen => popupScreen.ShowOkPopup(
+                                "Successfully updated mods, remember to restart to apply changes."));
+                        }), "Yes", null, "No", Popup.TransitionAnim.Scale));
             })
         );
+        updateAllButton.SetActive(false);
 
         updateAllButton.AddText(new Info("UpdateAllText", InfoPreset.FillParent), "Update All", FontSmall);
 
@@ -456,7 +476,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModSettingsButton.AddImage(
             new Info("Gear", width: ModNameHeight, height: ModNameHeight), VanillaSprites.SettingsIcon
         );
-        
+
         selectedModDeleteButton = buttonsRow.AddButton(
             new Info("Delete", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
             VanillaSprites.CloseBtn, new Action(DeleteSelectedMod));
@@ -464,7 +484,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static void DeleteSelectedMod()
     {
-        PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Delete Mod",
+        PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Delete Mod",
             "Are you sure you want to delete this mod? This action cannot be undone.", new Action(() =>
             {
                 if (selectedMod.Delete())
@@ -475,7 +495,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     SortMods(currentSort);
                     MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 }
-            }), "Yes", null, "No", Popup.TransitionAnim.Scale);
+            }), "Yes", null, "No", Popup.TransitionAnim.Scale));
     }
 
     internal static void DisableSelectedMod()
@@ -487,12 +507,12 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             MenuManager.instance.buttonClickSound.Play("ClickSounds");
             if (selectedMod.Mod is MelonMain)
             {
-                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
+                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
                     "Disabling Mod Helper will mean you will no longer see this mods menu. " +
                     "You would have to manually re-enable this / any other mods by dragging their .dll files" +
                     $"out of the Disabled folder within your mods directory.", null, "Ok",
                     new Action(EnableSelectedMod),
-                    "Re-enable", Popup.TransitionAnim.Scale);
+                    "Re-enable", Popup.TransitionAnim.Scale));
             }
         }
     }

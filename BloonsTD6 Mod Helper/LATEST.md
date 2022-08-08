@@ -1,4 +1,6 @@
-- Added public `ModTowerHelper.CreateTowerModel` method that can correctly create an empty tower model
-- Fixed buff icons all looking like Elite Sniper (lol)
-- Fixed ModByteLoaders for the new v32.0 asset reference changes
-- Added a namespace option for generating a ModByteLoader
+- Mod Browser top bar fixed
+- Fixed custom tower set in game backgrounds
+- Reduced lag from menu loading
+- Added more settings for the mod browser
+- Significantly increased default http request timeout amount
+- Added `PopupScreen.instance.SafelyQueue((popupScreen) => ...)` extension method to help avoid crashes from simultaneous popups

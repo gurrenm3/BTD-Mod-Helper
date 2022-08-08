@@ -27,6 +27,9 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         ModContentInstances.SetInstance(GetType(), this);
 
+        // Mod Settings
+        ModSettingsHandler.InitializeModSettings();
+        
         try
         {
             ModHelperHttp.Init();
@@ -39,9 +42,6 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             ModHelper.Warning(e);
         }
-
-        // Mod Settings
-        ModSettingsHandler.InitializeModSettings();
 
         // Load Content from other mods
         ModHelper.LoadAllMods();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -72,6 +73,7 @@ public abstract partial class ModTowerSet : NamedModContent
     /// <summary>
     /// SpriteReference for the portrait
     /// </summary>
+    [Obsolete("Only the Portrait property used")]
     public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
 
     /*public virtual string Icon => GetType().Name + "-Icon";

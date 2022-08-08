@@ -30,16 +30,17 @@ namespace BTD_Mod_Helper.Api.Helpers
                 Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories).Any() &&
                 !File.Exists(csProjPath))
             {
-                PopupScreen.instance.ShowOkPopup(
-                    $"Did not create mod template, directory \"{path}\" already exists.");
+                PopupScreen.instance.SafelyQueue(screen =>
+                    screen.ShowOkPopup($"Did not create mod template, directory \"{path}\" already exists."));
             }
             else if (File.Exists(csProjPath))
             {
-                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Upgrade Project",
+                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                    "Upgrade Project",
                     $"There was already a mod project found at {path}. " +
                     "Would you like to upgrade its .csproj?",
                     new Action(() => UpgradeProject(path, name, csProjPath)),
-                    "Yes", null, "No", Popup.TransitionAnim.Scale);
+                    "Yes", null, "No", Popup.TransitionAnim.Scale));
             }
             else
             {
@@ -118,7 +119,8 @@ namespace BTD_Mod_Helper.Api.Helpers
                     ReplaceFileText(modHelperDataPath, name);
                 }
 
-                zipArchive.GetEntry(ZipArchivePrefix + ".gitignore")?.ExtractToFile(Path.Combine(path, ".gitignore"), true);
+                zipArchive.GetEntry(ZipArchivePrefix + ".gitignore")
+                    ?.ExtractToFile(Path.Combine(path, ".gitignore"), true);
 
                 var propertiesPath = Path.Combine(path, "Properties");
                 var launchSettingsPath = Path.Combine(propertiesPath, "launchSettings.json");
@@ -149,18 +151,18 @@ namespace BTD_Mod_Helper.Api.Helpers
         }
 
         private static void SuccessPopup(string path, string name, string verb) =>
-            TaskScheduler.ScheduleTask(() => PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter,
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
                 $"{verb} {name}", $"Successfully {verb} mod at \"{path}\". Open in default IDE?",
                 new Action(() => OpenProject(path, name)), "Yes", null, "No", Popup.TransitionAnim.Scale));
 
 
-        private static void FailPopup() =>
-            TaskScheduler.ScheduleTask(() =>
-                PopupScreen.instance.ShowOkPopup("Something seems to have gone wrong. Check the console for details."));
+        private static void FailPopup() => PopupScreen.instance.SafelyQueue(screen =>
+            screen.ShowOkPopup("Something seems to have gone wrong. Check the console for details."));
 
         private static void ReplaceFileText(string file, string name)
         {
             if (!File.Exists(file)) return;
+
             var text = File.ReadAllText(file);
             File.Delete(file);
             File.WriteAllText(

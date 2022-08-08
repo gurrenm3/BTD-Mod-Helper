@@ -85,3 +85,23 @@ public static void ModifyField(this Assets.Scripts.Unity.UI_New.Popups.PopupScre
 <a name='BTD_Mod_Helper.Extensions.PopupScreenExt.ModifyField(thisAssets.Scripts.Unity.UI_New.Popups.PopupScreen,System.Action_TMPro.TMP_InputField_).func'></a>
 
 `func` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[TMPro.TMP_InputField](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TMP_InputField 'TMPro.TMP_InputField')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+
+<a name='BTD_Mod_Helper.Extensions.PopupScreenExt.SafelyQueue(thisAssets.Scripts.Unity.UI_New.Popups.PopupScreen,System.Action_Assets.Scripts.Unity.UI_New.Popups.PopupScreen_)'></a>
+
+## PopupScreenExt.SafelyQueue(this PopupScreen, Action<PopupScreen>) Method
+
+Since a recent BTD6 update, trying to show a popup while there already is one can cause a game crash. This method  
+safely queues a popup for once there aren't any already active
+
+```csharp
+public static void SafelyQueue(this Assets.Scripts.Unity.UI_New.Popups.PopupScreen popupScreen, System.Action<Assets.Scripts.Unity.UI_New.Popups.PopupScreen> action);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PopupScreenExt.SafelyQueue(thisAssets.Scripts.Unity.UI_New.Popups.PopupScreen,System.Action_Assets.Scripts.Unity.UI_New.Popups.PopupScreen_).popupScreen'></a>
+
+`popupScreen` [Assets.Scripts.Unity.UI_New.Popups.PopupScreen](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.UI_New.Popups.PopupScreen 'Assets.Scripts.Unity.UI_New.Popups.PopupScreen')
+
+<a name='BTD_Mod_Helper.Extensions.PopupScreenExt.SafelyQueue(thisAssets.Scripts.Unity.UI_New.Popups.PopupScreen,System.Action_Assets.Scripts.Unity.UI_New.Popups.PopupScreen_).action'></a>
+
+`action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Assets.Scripts.Unity.UI_New.Popups.PopupScreen](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.UI_New.Popups.PopupScreen 'Assets.Scripts.Unity.UI_New.Popups.PopupScreen')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')

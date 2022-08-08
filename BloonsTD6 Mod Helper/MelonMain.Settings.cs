@@ -16,13 +16,6 @@ internal partial class MelonMain
         collapsed = false
     };
 
-    public static readonly ModSettingBool ShowUnverifiedModBrowserContent = new(false)
-    {
-        description = "Toggle whether to allow showing content from GitHub users that have not been manually verified with one of the major BTD6 modding discord servers. " +
-                      "Unverified content will still be moderated and egregious content removed, but it is still more of a risk than verified content.",
-        category = General
-    };
-
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
         description =
@@ -64,6 +57,50 @@ internal partial class MelonMain
         requiresRestart = true
     };
 
+    private static readonly ModSettingCategory ModBrowserSettings = "Mod Browser Settings";
+
+    public static readonly ModSettingBool ShowUnverifiedModBrowserContent = new(false)
+    {
+        description =
+            "Toggle whether to allow showing content from GitHub users that have not been manually verified with one of the major BTD6 modding discord servers. " +
+            "Unverified content will still be moderated and egregious content removed, but it is still more of a risk than verified content.",
+        category = ModBrowserSettings
+    };
+
+    public static readonly ModSettingDouble RequestTimeout = new(10)
+    {
+        displayName = "Request Timeout (s)",
+        category = ModBrowserSettings,
+        description =
+            "The number of seconds that the internal HTTP client should wait for responses to its requests. " +
+            "Increasing this value will make the browser slower to load all mods on average, " +
+            "but increases the consistency of finding 100% of valid mods if you have slower internet.",
+        slider = true,
+        min = 1,
+        max = 100,
+        stepSize = .1f
+    };
+
+    public static readonly ModSettingDouble NormalRequestLimit = new(.5)
+    {
+        displayName = "Icon Size Limit (mb)",
+        category = ModBrowserSettings,
+        description = "The maximum number of megabytes that a non-mod http request can return, such as icons for mods.",
+        min = .1,
+        max = 50,
+        stepSize = .1f
+    };
+
+    public static readonly ModSettingDouble ModRequestLimit = new(50)
+    {
+        displayName = "Mod Size Limit (mb)",
+        category = ModBrowserSettings,
+        description = "The maximum number of megabytes that a Mod can be to try to download it.",
+        min = 1,
+        max = 1000,
+        stepSize = 1
+    };
+
     private static readonly ModSettingCategory ModMaking = "Mod Making";
 
     public static readonly ModSettingString GitHubUsername = new("")
@@ -93,8 +130,8 @@ internal partial class MelonMain
         action = () =>
         {
             GameModelExporter.ExportAll();
-            PopupScreen.instance.ShowOkPopup(
-                $"Finished exporting Game Model to {FileIOUtil.sandboxRoot}");
+            PopupScreen.instance.SafelyQueue(screen =>
+                screen.ShowOkPopup($"Finished exporting Game Model to {FileIOUtil.sandboxRoot}"));
         },
         buttonText = "Export",
         category = ModMaking

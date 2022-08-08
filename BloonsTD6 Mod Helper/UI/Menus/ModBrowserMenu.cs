@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private SortingMethod sortingMethod = SortingMethod.RecentlyUpdated;
 
     private int typingCooldown;
-
+    private bool templatesCreated = false;
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
@@ -49,11 +50,33 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         ModifyExistingElements();
         AddNewElements();
 
+        templatesCreated = false;
+        MelonCoroutines.Start(CreateModTemplates());
+
         sortingMethod = SortingMethod.RecentlyUpdated;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
-        UpdateModList();
+
+        modsNeedRefreshing = true;
 
         return false;
+    }
+
+    public IEnumerator CreateModTemplates()
+    {
+        var template =
+            GameMenu.scrollRect.content.gameObject.AddModHelperComponent(ModBrowserMenuMod.CreateTemplate());
+        
+        yield return null;
+        
+        for (var i = 0; i < ModsPerPage; i++)
+        {
+            var newMod = mods[i] = template.Duplicate($"Mod {i}");
+            newMod.AddTo(GameMenu.scrollRect.content);
+            newMod.SetActive(false);
+            yield return null;
+        }
+
+        templatesCreated = true;
     }
 
     public void ModifyExistingElements()
@@ -82,15 +105,6 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     public void AddNewElements()
     {
-        var template =
-            GameMenu.scrollRect.content.gameObject.AddModHelperComponent(ModBrowserMenuMod.CreateTemplate());
-        for (var i = 0; i < ModsPerPage; i++)
-        {
-            var newMod = mods[i] = template.Duplicate($"Mod {i}");
-            newMod.AddTo(GameMenu.scrollRect.content);
-            newMod.SetActive(false);
-        }
-
         var topArea = GameMenu.GetComponentFromChildrenByName<RectTransform>("Container").gameObject
             .AddModHelperPanel(new Info("TopArea")
             {
@@ -128,7 +142,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         if (modsNeedRefreshing && currentMods != null)
         {
-            UpdateModList();
+            MelonCoroutines.Start(UpdateModList());
             modsNeedRefreshing = false;
         }
 
@@ -141,15 +155,6 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             }
         }
     }
-
-    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
-    {
-        SortingMethod.Popularity => mods.OrderByDescending(data => data.Repository.StargazersCount),
-        SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
-        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.Repository.PushedAt ?? data.Repository.CreatedAt),
-        SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
-        _ => mods
-    }).ToList();
 
     private void RecalculateCurrentMods()
     {
@@ -167,27 +172,30 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         });
     }
 
-    private void UpdateModList()
+    private IEnumerator UpdateModList()
     {
+        while (!templatesCreated)
+        {
+            yield return null;
+        }
+        
+        GameMenu.searchingImg.gameObject.SetActive(false);
+        GameMenu.requiresInternetObj.SetActive(false);
+        UpdatePagination();
+        foreach (var modBrowserMenuMod in mods)
+        {
+            modBrowserMenuMod.SetActive(false);
+        }
+        yield return null;
+
         var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
         var i = 0;
         foreach (var modHelperData in pageMods)
         {
             mods[i].SetMod(modHelperData);
             i++;
+            yield return null;
         }
-
-        while (i < ModsPerPage)
-        {
-            mods[i].SetActive(false);
-            i++;
-        }
-
-
-        GameMenu.searchingImg.gameObject.SetActive(false);
-        GameMenu.requiresInternetObj.SetActive(false);
-
-        UpdatePagination();
     }
 
     private void UpdatePagination()
@@ -217,7 +225,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             currentPage = TotalPages - 1;
         }
 
-        UpdateModList();
+        modsNeedRefreshing = true;
 
         MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
     }
@@ -230,19 +238,31 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         {
             menuMod.SetActive(false);
         }
-
+        
         Task.Run(async () =>
         {
             await ModHelperGithub.PopulateMods();
+            currentPage = 0;
             RecalculateCurrentMods();
         });
     }
+
+    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
+    {
+        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
+        SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
+        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.Repository.PushedAt ?? data.Repository.CreatedAt),
+        SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
+        SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
+        _ => mods
+    }).ToList();
 
     private enum SortingMethod
     {
         RecentlyUpdated,
         Popularity,
+        Alphabetical,
         New,
-        Alphabetical
+        Old
     }
 }

@@ -14,7 +14,7 @@ internal class TSMThemeDefault_TowerInfoChanged
     {
         if (tower.Def.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet && !tower.IsParagon)
         {
-            var texture = ResourceHandler.GetTexture(modTowerSet.PortraitReference.GUID);
+            var texture = ResourceHandler.GetTexture(ModContent.GetId(modTowerSet.mod, modTowerSet.Portrait));
             if (texture != null)
             {
                 var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),

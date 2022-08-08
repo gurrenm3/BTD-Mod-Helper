@@ -133,7 +133,7 @@ public class ModHelperOption : ModHelperComponent
                 VanillaSprites.InfoBtn2,
                 string.IsNullOrEmpty(description)
                     ? null
-                    : new Action(() => { PopupScreen.instance.ShowOkPopup(description); })
+                    : new Action(() => PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(description)))
             );
 #elif BloonsAT
                 // need to figure out how to get the VanillaSprites mentioned above to work with BloonsAT
