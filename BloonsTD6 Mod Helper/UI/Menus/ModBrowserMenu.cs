@@ -144,7 +144,6 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         if (modsNeedRefreshing && currentMods != null)
         {
             MelonCoroutines.Start(UpdateModList());
-            ModHelper.Msg("Just called UpdateModList()");
             modsNeedRefreshing = false;
         }
 
@@ -176,7 +175,6 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private IEnumerator UpdateModList()
     {
-        ModHelper.Msg("Updating mods list");
         GameMenu.searchingImg.gameObject.SetActive(false);
         GameMenu.requiresInternetObj.SetActive(ModHelperGithub.VerifiedModders.Count == 0);
         while (!templatesCreated)

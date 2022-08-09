@@ -186,7 +186,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         });
         var animator = restartPanel.AddComponent<Animator>();
         animator.runtimeAnimatorController = Animations.PopupAnim;
-        animator.speed *= .75f;
+        animator.speed *= .7f;
         restartPanel.SetActive(false);
 
         restartPanel.AddButton(new Info("Restart", InfoPreset.FillParent), VanillaSprites.RestartBtn,

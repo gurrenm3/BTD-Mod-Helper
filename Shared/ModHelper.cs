@@ -17,10 +17,10 @@ public static class ModHelper
     #region ModHelperData for the Mod Helper
 
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.0.0-alpha9";
+    internal const string Version = "3.0.0-rc1";
     internal const string RepoOwner = "doombubbles";
     internal const string RepoName = "BTD-Mod-Helper";
-    internal const string Description = "The mod that is allowing all this to happen right now :P";
+    internal const string Description = "A powerful and easy to use API for modding BTD6. Also the mod that is allowing all of this UI to happen right now :P";
     internal const string DllName = "Btd6ModHelper.dll";
     internal const string Author = "Gurrenm4 and Doombubbles";
 

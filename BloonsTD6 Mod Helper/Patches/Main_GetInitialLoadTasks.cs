@@ -31,8 +31,8 @@ internal static class Main_GetInitialLoadTasks
         tasks.Remove(gameModelLoad);
         // The last of the Assets_Main_Main___c$$_GetInitialLoadTasks_...
         tasks.Add(new Task(CustomGameModelLoadName, Main.__c.__9__46_8).Cast<ITask>());
-        tasks.Add(new PreLoadResourcesTask {mod = ModHelper.Main}.CreateTask());
         tasks.Add(new ByteWaitTask {mod = ModHelper.Main}.CreateTask());
+        tasks.Add(new PreLoadResourcesTask {mod = ModHelper.Main}.CreateTask());
 
         // All the tasks for loading mod content
         tasks.AddRange(ModHelper.Mods

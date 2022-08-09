@@ -6,10 +6,10 @@
 <h1 align="center">
 BTD Mod Helper
 
-![total downloads](https://img.shields.io/github/downloads/gurrenm3/BTD-Mod-Helper/total 'total downloads for API')
-![total issues](https://img.shields.io/github/issues/gurrenm3/BTD-Mod-Helper 'total issues for API')
-![code size](https://img.shields.io/github/languages/code-size/gurrenm3/BTD-Mod-Helper 'total code size for API')
-![latest release](https://img.shields.io/github/v/tag/gurrenm3/BTD-Mod-Helper 'latest release for API')
+[![total downloads](https://img.shields.io/github/downloads/gurrenm3/BTD-Mod-Helper/total 'total downloads for API')](https://github.com/gurrenm3/BTD-Mod-Helper/releases)
+[![total issues](https://img.shields.io/github/issues/gurrenm3/BTD-Mod-Helper 'total issues for API')](https://github.com/gurrenm3/BTD-Mod-Helper/issues)
+[![code size](https://img.shields.io/github/languages/code-size/gurrenm3/BTD-Mod-Helper 'total code size for API')](https://github.com/gurrenm3/BTD-Mod-Helper/archive/refs/heads/master.zip)
+[![latest release](https://img.shields.io/github/v/tag/gurrenm3/BTD-Mod-Helper 'latest release for API')](https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest)
 
 </h1>
 
@@ -65,7 +65,7 @@ A powerful and easy to use API for modding BTD6, and to a lesser extent BATTD.
     - Easy common hooks like `OnMainMenu()`, `OnTitleScreen()`, `OnNewGameModel()` etc
     - Define [Mod Settings](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Mod-Settings) like `ModSettingInt`
       , `ModSettingHotKey`, `ModSettingEnum` etc
-    - Make your Harmony Patches not brick your whole mod if one of them fails after a game udpate
+    - Make your Harmony Patches not brick your whole mod if one of them fails after a game update
 
 - ### A dedicated BTD6 Mod Sources folder with standardized btd6.targets file
 

@@ -1,6 +1,3 @@
-- DirectoryNotFound fix for the upgrade project helper
-- Ensured download task doesn't fail if trying to replace mod with invalid ModHelperData
-- Improvements for monorepos
-- Fixed mod description new line character escaping issues
-- Fixed mod browser search bar
-- Revamped the README.md
+- First release candidate for 3.0
+- Removed last couple debugging log messages
+- Updated mod description

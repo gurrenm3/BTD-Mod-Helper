@@ -13,8 +13,8 @@ internal class TitleScreen_Start
     {
         if (ModHelper.FallbackToOldLoading)
         {
-            new PreLoadResourcesTask().RunSync();
             ModContent.GetContent<ModByteLoader>().Do(loader => loader.LoadAllBytes());
+            new PreLoadResourcesTask().RunSync();
 
             ModHelper.Mods
                 .Where(mod => mod.Content.Count > 0)
