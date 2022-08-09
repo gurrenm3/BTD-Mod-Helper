@@ -1,67 +1,95 @@
-# BTD Mod Helper
+<a href="https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest/download/Btd6ModHelper.dll">
+    <img align="left" alt="Icon" height="90" src="BloonsTD6%20Mod%20Helper/Icon.png">
+    <img align="right" alt="Download" height="75" src="https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/master/BloonsTD6%20Mod%20Helper/Resources/DownloadBtn.png">
+</a>
+
+<h1 align="center">
+BTD Mod Helper
 
 ![total downloads](https://img.shields.io/github/downloads/gurrenm3/BTD-Mod-Helper/total 'total downloads for API')
 ![total issues](https://img.shields.io/github/issues/gurrenm3/BTD-Mod-Helper 'total issues for API')
 ![code size](https://img.shields.io/github/languages/code-size/gurrenm3/BTD-Mod-Helper 'total code size for API')
 ![latest release](https://img.shields.io/github/v/tag/gurrenm3/BTD-Mod-Helper 'latest release for API')
-![hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/gurrenm3/BTD-Mod-Helper)
 
-A powerful and easy to use API for modding BTD6, BATTD, and other Ninja Kiwi games. It was created with the successes and failures of previous APIs in mind so it's significantly easier to use.
+</h1>
 
-## How to use it
+A powerful and easy to use API for modding BTD6, and to a lesser extent BATTD.
 
-**NEW: For the most up to date information, use our [GitHub Wiki](https://github.com/gurrenm3/BTD-Mod-Helper/wiki)**
+## Instructions
 
-Like other API, download/clone it. In your mod's Visual Studio project add a reference to `BloonsTD6 Mod Helper.dll` or `BloonsAT Mod Helper.dll` depending on your game. In your mod files, you can now use `using BTD_Mod_Helper;` and derivatives like `using BTD_Mod_Helper.Extensions;` to access the Mod Helpers contents. Thats it. Much of this API is built using extension methods, which means it's created to work along side the game's own code. So just make your mods like normal and you'll see the new features pop up in Visual Studio Intellisense. As a side note, make sure the mod is in your game's Mods folder. It needs to be run like a mod
+### [Get BTD6 on Steam](https://store.steampowered.com/app/960090/Bloons_TD_6/)
 
-## What can this API currently help with
+### [Installing BTD Mod Helper](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Install-Guide)
 
-**NEW WITH VERSION 2.0**
+### [Creating Mods with BTD Mod Helper](https://github.com/gurrenm3/BTD-Mod-Helper/wiki)
 
--   [A fully featured custom Tower system](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Tower) that makes adding new Towers vastly easier
-    -   `ModTower` for adding Towers
-    -   `ModUpgrade` for adding Upgrades
-    -   `ModDisplay` for adding Displays
--   In Game configurable settings for your mods
--   Automatic registering of textures that you include in your project
+## Player Features
 
-**Original**
+- ### An In-Game Mod Browser for viewing/downloading/updating mods from GitHub
 
--   Much of the useful game code is hidden, deeply nested, and located in obscure places. The API moves them to `Game.instance` and `InGame.instance` whenever it makes sense to make them significantly easier to access and bring awareness to their existance.
--   Many extension methods added to make modifying towers, upgrades, weapons, projectiles, and bloons easier.
--   A lot of code for towers/bloons is unconnected, meaning you have to go all over to find something. API connects them in as many ways as possible
-    -   `Tower`s, `TowerModel`s, `TowerToSimulation`, and `TowerPurchaseButton` are all inter-linked.
-    -   `Bloon`s, `BloonModel`s, and `BloonToSimulation` are all inter-linked
-    -   Same for Abilities and projectiles
-    -   Can get every created instance from a model. Ex: Can get every `Tower`/`TowerToSimulation` from a specific `TowerModel`. Applies to everything in this list
--   Massive amounts of support added for Behaviors. Can easily look for, add, and remove behaviors from nearly everything that has "behaviors"
--   Added [extension methods](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Array-extension-methods) for Arrays, `System.List`, `Il2CppSystem.List`, `LockList`, `SizedList`, `IEnumerable`, and `Il2CppReferenceArray`
-    -   Can convert between all of them, duplicate/clone, and change the "Type" that the collection is.
-    -   New support for getting items, adding items, and removing items
-    -   Custom linq extensions for easier manipluation
-    -   More
--   Support for custom textures/sprites/3d models
--   Many extensions to allow for "Cross-Game compatibility". This means you can make your mod for one game and it will work for another with little to no extra work
+- ### An In-Game Mods Menu with customizable Mod Settings alongside enabled/disabling/deleting etc
 
-For BTD6:
+- ### Re-enabling profile progress saving for specific single-player situations
 
--   Fully custom bloon sets (not possible in vanila BTD6), BloonBuilder (easier time creating custom bloon types), Json Serializer, and other useful features
--   Co-op modding techniques
--   Bugfixes for BTD6
--   More
+## Mod Creator Features
 
-## Testimonies
+- ### Many new API Classes for adding new BTD6 Content
+    - [`ModTower`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Tower)
+      and [`ModUpgrade`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Tower#modupgrades) for adding
+      custom Towers
+    - [`ModHero`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Hero)
+      and [`ModHeroLevel`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Hero#modherolevel) for adding
+      custom Heroes
+    - [`ModParagonUpgrade`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Paragon)
+      and [`ModVanillaParagon`]() for adding custom Paragons
+    - [`ModDisplay`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-Textures-and-Displays#moddisplay) for
+      customizing in game models for Towers and such
+    - [`ModBloon`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Making-a-Custom-Bloon) for adding custom
+      Bloons
+    - [`ModRoundSet`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Making-a-Custom-Round-Set)
+      and [`ModGameMode`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Making-a-Custom-Game-Mode) for
+      custom round sets and game modes
+    - [`ModGameMenu`](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Custom-Menu-Screens) for custom Menu
+      Screens, along with a
+      whole [custom UI system](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Custom-UI-(ModHelperComponents))
+    - Many more
 
-Mod makers that have used this API say it's at least 3 times easier to use and more powerful than the next leading API.
+- ### Hundreds of API extension methods
+    - Many helpful type-based `.GetBehavior<T>()`, `.RemoveBehavior<T>()`, etc methods for working with behavior models
+    - Easily accessible LINQ operations like `.Where()`, `.Select()`, `.FirstOrDefault()` etc for all Il2Cpp collection types
+    - Easy conversion between normal and Il2Cpp collection types
+    - Extensions on types like `Game` and `InGame` for common operations like `GetCash()`, `GetHealth()`
+      , `GetGameModel()` etc
+
+- ### The BloonsTD6Mod class
+    - Easy common hooks like `OnMainMenu()`, `OnTitleScreen()`, `OnNewGameModel()` etc
+    - Define [Mod Settings](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Mod-Settings) like `ModSettingInt`
+      , `ModSettingHotKey`, `ModSettingEnum` etc
+    - Make your Harmony Patches not brick your whole mod if one of them fails after a game udpate
+
+- ### A dedicated BTD6 Mod Sources folder with standardized btd6.targets file
+
+    - Develop your mods with referential dependencies that would work on anyone else's machine
+    - Automatically copies your .dll to the Mods folder on build, even while the game is running
+    - Automatically includes your .png, .bundle etc files as embedded resources
+    - Create a new Mod from an empty template from In Game
+
+- ### Even more
+    - New strongly typed enum-like classes for base BTD6 types like `UpgradeType`, `BloonType`, `BloonTag` etc
+    - API methods for handling Co Op
+    - All sprites in the game easily referencable from the `VanillaSprites` class
+    - Classes for accessing the in-built Fonts and Animations used by BTD6
+    - Helper Unity components like `ScaleOverride`, `MatchLocationPositions`, `MatchScale`
 
 ## Credits
 
-This mod wouldn't be possible without all of the contributions from the community. DoomBubbles and Bowdown097 added a lot of nice features to the api and provided a lot of valuable suggestions. Mr.Nuke, James, and Timotheeee we're really helpful when it came to testing/suggesting new features. Since this api was built off of the successes/ failures of Gurren Core and the old NKHook6, it does reuse some of the extensions from them. Thanks to ASM for creating and testing those original methods
+BTD Mod Helper was originally created by @gurrenm3, and is now primarily developed by @doombubbles.
 
-## Future plans
-
-The API already has a lot of features added, however it's nowhere near done. My goal is to make this a universal mod helper for all of Ninja Kiwi's Unity games, so there's still a ton of work ahead. Also, the Mod Helper was recently redone to allow support for BTD Battles 2 when it's released.
+Others who have made notable suggestions/contributions include but are not limited to: Bowdown097, Mr Nuke, James,
+Timotheeee, and Silentstorm.
 
 ## Contact
 
-If you have any suggestions please join our [Discord Server](https://discord.gg/NnD6nRH). My Discord name is gurrenm4#2395
+Mod Helper contributors are most active on the [BTD6 Mods & Discussion Discord Server](https://discord.gg/NnD6nRH).
+
+Discord names gurrenm4#2395 and doombubbles#1701

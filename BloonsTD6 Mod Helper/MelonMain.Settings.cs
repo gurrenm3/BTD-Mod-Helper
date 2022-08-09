@@ -67,7 +67,16 @@ internal partial class MelonMain
         category = ModBrowserSettings
     };
 
-    public static readonly ModSettingDouble RequestTimeout = new(10)
+    public static readonly ModSettingInt ModsPerPage = new(15)
+    {
+        description =
+            "How many mods to display in each page of the Mod Browser. Lower amounts would marginally improve performance.",
+        category = ModBrowserSettings,
+        min = 5,
+        max = 100
+    };
+    
+    public static readonly ModSettingDouble RequestTimeout = new(15)
     {
         displayName = "Request Timeout (s)",
         category = ModBrowserSettings,
@@ -75,10 +84,9 @@ internal partial class MelonMain
             "The number of seconds that the internal HTTP client should wait for responses to its requests. " +
             "Increasing this value will make the browser slower to load all mods on average, " +
             "but increases the consistency of finding 100% of valid mods if you have slower internet.",
-        slider = true,
         min = 1,
         max = 100,
-        stepSize = .1f
+        stepSize = 1
     };
 
     public static readonly ModSettingDouble NormalRequestLimit = new(.5)

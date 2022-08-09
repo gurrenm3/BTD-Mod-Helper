@@ -81,7 +81,7 @@ internal partial class ModHelperData
     // Values to be displayed in the GUI
     internal string DisplayName => Name ?? Mod?.Info.Name ?? RepoName;
     internal string DisplayAuthor => Author?.ToLower() == "unknown" ? RepoOwner ?? Author : Author ?? RepoOwner;
-    internal string DisplayDescription => Description ?? Repository?.Description ?? "No description provided.";
+    internal string DisplayDescription => (Description ?? Repository?.Description ?? "No description provided.").Replace("\\n", "\n");
 
     internal string OldDownloadUrl { get; }
 
@@ -137,6 +137,13 @@ internal partial class ModHelperData
             {
                 ReadValuesFromString(reader.ReadToEnd());
             }
+        }
+
+        if (Version != mod.Info.Version)
+        {
+            MelonLogger.Warning($"Version mismatch for {Name}: " +
+                                $"MeloInfo version is {mod.Info.Version} but ModHelperData version is {Version}. " +
+                                $"This could lead to unexpected behavior.");
         }
 
         // ReSharper disable once ConstantNullCoalescingCondition

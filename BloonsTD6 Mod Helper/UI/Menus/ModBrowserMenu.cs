@@ -20,9 +20,10 @@ namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 {
-    private const int ModsPerPage = 15;
     private const int SearchCutoff = 50;
     private const int TypingCooldown = 30;
+    
+    private static int ModsPerPage => MelonMain.ModsPerPage;
 
     private static bool modsNeedRefreshing;
 
@@ -41,7 +42,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private SortingMethod sortingMethod = SortingMethod.RecentlyUpdated;
 
     private int typingCooldown;
-    private bool templatesCreated = false;
+    private bool templatesCreated;
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
@@ -143,6 +144,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         if (modsNeedRefreshing && currentMods != null)
         {
             MelonCoroutines.Start(UpdateModList());
+            ModHelper.Msg("Just called UpdateModList()");
             modsNeedRefreshing = false;
         }
 
@@ -165,7 +167,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 .Where(data => string.IsNullOrEmpty(currentSearch) ||
                                scorer.Score(currentSearch.ToLower(), data.DisplayName.ToLower()) >= SearchCutoff ||
                                scorer.Score(currentSearch.ToLower(), data.RepoOwner.ToLower()) >= SearchCutoff ||
-                               scorer.Score(currentSearch.ToLower(), data.Author.ToLower()) >= SearchCutoff);
+                               scorer.Score(currentSearch.ToLower(), data.DisplayAuthor.ToLower()) >= SearchCutoff);
 
             currentMods = Sort(filteredMods, sortingMethod);
             modsNeedRefreshing = true;
@@ -174,13 +176,14 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private IEnumerator UpdateModList()
     {
+        ModHelper.Msg("Updating mods list");
+        GameMenu.searchingImg.gameObject.SetActive(false);
+        GameMenu.requiresInternetObj.SetActive(ModHelperGithub.VerifiedModders.Count == 0);
         while (!templatesCreated)
         {
             yield return null;
         }
 
-        GameMenu.searchingImg.gameObject.SetActive(false);
-        GameMenu.requiresInternetObj.SetActive(false);
         UpdatePagination();
         foreach (var modBrowserMenuMod in mods)
         {
@@ -250,8 +253,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
     {
-        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars)
-            .ThenBy(data => data.Repository.ForksCount).ThenBy(data => data.Repository.Owner.Followers),
+        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
         SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
         SortingMethod.RecentlyUpdated => mods.OrderByDescending(data =>
             data.Repository.PushedAt ?? data.Repository.CreatedAt),

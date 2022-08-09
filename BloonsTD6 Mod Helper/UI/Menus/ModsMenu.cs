@@ -118,13 +118,15 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         yield return null;
 
-        foreach (var data in modPanels.Keys.ToList())
+        var keys = modPanels.Keys.ToList();
+        for (var index = 0; index < keys.Count; index++)
         {
+            var data = keys[index];
             var panel = modPanels[data] = modTemplate.Duplicate(data.Name);
-            yield return null;
+            if (index > 6) yield return null;
 
             panel.SetMod(data, data.Mod);
-            yield return null;
+            if (index > 6) yield return null;
         }
 
         Refresh();
