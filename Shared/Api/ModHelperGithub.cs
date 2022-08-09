@@ -74,9 +74,10 @@ internal static class ModHelperGithub
             .Append(new ModHelperData(await modHelperRepoSearchTask))
             .ToArray();
 
-        ModHelper.Msg("finished getting mods");
 
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
+
+        ModHelper.Msg("Finished getting mods from github");
 
         Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
 
@@ -143,8 +144,9 @@ internal static class ModHelperGithub
 
             if (latestRelease.TagName != mod.RepoVersion)
             {
-                ModHelper.Warning($"Latest Release Tag '{latestRelease.TagName}' didn't match listed mod version '{mod.RepoVersion}'. " +
-                                  "The real release for this version may be present in the API yet.");
+                ModHelper.Warning(
+                    $"Latest Release Tag '{latestRelease.TagName}' didn't match listed mod version '{mod.RepoVersion}'. " +
+                    "The real release for this version may not be present in the API yet.");
             }
         }
 
@@ -155,25 +157,28 @@ internal static class ModHelperGithub
         }
         else
         {
-            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
-                $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
-                mod.SubPath == null
-                    ? latestRelease!.Body
-                    : latestCommit!.Commit.Message,
-                new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No",
-                Popup.TransitionAnim.Scale));
-
-            PopupScreen.instance.SafelyQueue(screen => screen.ModifyBodyText(field =>
+            PopupScreen.instance.SafelyQueue(screen =>
             {
-                var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
-                    InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
-                scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
+                screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                    $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
+                    mod.SubPath == null
+                        ? latestRelease!.Body
+                        : latestCommit!.Commit.Message,
+                    new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No",
+                    Popup.TransitionAnim.Scale, instantClose: true);
 
-                var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
-                newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
+                screen.ModifyBodyText(field =>
+                {
+                    var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
+                        InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
+                    scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
 
-                field.Destroy();
-            }));
+                    var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
+                    newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
+
+                    field.Destroy();
+                });
+            });
         }
 
         UpdateRateLimit();
@@ -189,7 +194,7 @@ internal static class ModHelperGithub
                       asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
                   latestRelease.Assets[0]
                 : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
-                    DateTimeOffset.Now, mod.GetContentURL(mod.DllName!), null);
+                    DateTimeOffset.Now, mod.GetContentURL(mod.DllName), null);
             var resultFile = await DownloadAsset(mod, asset, showPopup);
             if (resultFile != null)
             {
@@ -230,18 +235,18 @@ internal static class ModHelperGithub
 
         try
         {
+            if (File.Exists(downloadFilePath))
+            {
+                Directory.CreateDirectory(ModHelper.OldModsDirectory);
+                if (File.Exists(oldModsFilePath)) File.Delete(oldModsFilePath);
+                File.Move(downloadFilePath, oldModsFilePath);
+                ModHelper.Msg($"Backing up to {oldModsFilePath}");
+            }
+
             if (mod.FilePath != null && File.Exists(mod.FilePath))
             {
-                if (!Directory.Exists(ModHelper.OldModsDirectory))
-                {
-                    Directory.CreateDirectory(ModHelper.OldModsDirectory);
-                }
-
-                if (File.Exists(oldModsFilePath))
-                {
-                    File.Delete(oldModsFilePath);
-                }
-
+                Directory.CreateDirectory(ModHelper.OldModsDirectory);
+                if (File.Exists(oldModsFilePath)) File.Delete(oldModsFilePath);
                 File.Move(mod.FilePath, oldModsFilePath);
                 ModHelper.Msg($"Backing up to {oldModsFilePath}");
             }
@@ -285,7 +290,7 @@ internal static class ModHelperGithub
                 ModHelper.Log(message);
                 if (showPopup)
                 {
-                    PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(message));
+                    PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(message.Replace(",", "\n")));
                 }
 
                 mod.SetVersion(mod.RepoVersion!);

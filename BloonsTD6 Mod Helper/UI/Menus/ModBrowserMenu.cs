@@ -65,9 +65,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     {
         var template =
             GameMenu.scrollRect.content.gameObject.AddModHelperComponent(ModBrowserMenuMod.CreateTemplate());
-        
+
         yield return null;
-        
+
         for (var i = 0; i < ModsPerPage; i++)
         {
             var newMod = mods[i] = template.Duplicate($"Mod {i}");
@@ -178,7 +178,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         {
             yield return null;
         }
-        
+
         GameMenu.searchingImg.gameObject.SetActive(false);
         GameMenu.requiresInternetObj.SetActive(false);
         UpdatePagination();
@@ -186,6 +186,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         {
             modBrowserMenuMod.SetActive(false);
         }
+
         yield return null;
 
         var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
@@ -249,9 +250,11 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
     {
-        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
+        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars)
+            .ThenBy(data => data.Repository.ForksCount).ThenBy(data => data.Repository.Owner.Followers),
         SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
-        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.Repository.PushedAt ?? data.Repository.CreatedAt),
+        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data =>
+            data.Repository.PushedAt ?? data.Repository.CreatedAt),
         SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
         SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
         _ => mods

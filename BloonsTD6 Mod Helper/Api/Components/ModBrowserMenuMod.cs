@@ -82,7 +82,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
             FlexWidth = 3
         }, "Name", ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
         
-        var lackOfIconPanel = panel.AddPanel(new Info("LackOfIconPanel", size: 200));
+        panel.AddPanel(new Info("LackOfIconPanel", size: 200));
 
         panel.AddText(new Info("Author")
         {
@@ -116,7 +116,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
         mainPanel.AddButton(new Info("Download", 200),
             ModContent.GetTextureGUID<MelonMain>("DownloadBtn"), null);
-        var update = mainPanel.AddButton(new Info("Update", size: 200), VanillaSprites.UpgradeIcon, null);
+        var update = mainPanel.AddButton(new Info("Update", 200), VanillaSprites.GreenBtn, null);
         update.AddImage(new Info("UpdateIcon", 133), VanillaSprites.UpgradeIcon2);
 
         mainPanel.AddImage(new Info("Installed", 200), VanillaSprites.TickGreenIcon);

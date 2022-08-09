@@ -72,7 +72,7 @@ internal partial class ModHelperData
             Branch = branch;
             if (RepoOwner == MelonMain.GitHubUsername)
             {
-                ModHelper.Msg($"Successfully set branch for {repository.FullName} to {branch}");
+                ModHelper.Msg($"Successfully set branch for {repository.FullName}  to {branch}");
             }
         }
     }
@@ -80,7 +80,7 @@ internal partial class ModHelperData
     internal string GetContentURL(string name)
     {
         var path = name;
-        if (SubPath != null && !SubPath.EndsWith(".json") && SubPath.EndsWith(".txt"))
+        if (SubPath != null && !(SubPath.EndsWith(".json") || SubPath.EndsWith(".cs") || SubPath.EndsWith(".txt")))
         {
             path = $"{SubPath}/{name}";
         }
@@ -112,7 +112,6 @@ internal partial class ModHelperData
                     ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson)),
                     ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt))
                 });
-
             }
             catch (Exception e)
             {
@@ -126,7 +125,7 @@ internal partial class ModHelperData
             {
                 if (RepoOwner == MelonMain.GitHubUsername)
                 {
-                    ModHelper.Warning($"Did not find any mod data for {Repository.FullName} branch {Branch}");
+                    ModHelper.Warning($"Did not find any mod data for {Repository.FullName} {SubPath} branch {Branch} ");
                 }
 
                 return;
@@ -145,7 +144,7 @@ internal partial class ModHelperData
 
                 if (RepoOwner == MelonMain.GitHubUsername)
                 {
-                    ModHelper.Log($"Successfully found mod {Repository.FullName} for browser");
+                    ModHelper.Log($"Successfully found mod {Repository.FullName} {SubPath} for browser");
                 }
 
                 if (ModInstalledLocally(out var modHelperData))

@@ -96,7 +96,7 @@ internal partial class ModHelperData
         Version = mod.Info.Version;
         Author = mod.Info.Author;
         FilePath = mod.GetAssembly().Location;
-        DllName = FilePath.Split('\\').Last();
+        DllName = Path.GetFileName(FilePath);
 
         var data = mod is MelonMain
             ? typeof(ModHelper)
@@ -162,7 +162,8 @@ internal partial class ModHelperData
             if (!string.IsNullOrEmpty(bloonsMod.LatestURL))
             {
                 OldDownloadUrl = bloonsMod.LatestURL;
-            } else if (!string.IsNullOrEmpty(bloonsMod.GithubReleaseURL))
+            }
+            else if (!string.IsNullOrEmpty(bloonsMod.GithubReleaseURL))
             {
                 OldDownloadUrl = bloonsMod.GithubReleaseURL.Replace("api.github.com/repos", "www.github.com");
             }
@@ -186,12 +187,11 @@ internal partial class ModHelperData
 
     public bool ModInstalledLocally(out ModHelperData modHelperData)
     {
-        var result = All.FirstOrDefault(
-            data =>
-                data.RepoName?.Equals(RepoName) == true &&
-                data.RepoOwner?.Equals(RepoOwner) == true &&
-                data.SubPath == SubPath ||
-                data.DllName != null && data.DllName == DllName && RepoName == null && RepoOwner == null
+        var result = All.FirstOrDefault(data =>
+            data.RepoName?.Equals(RepoName) == true &&
+            data.RepoOwner?.Equals(RepoOwner) == true &&
+            data.SubPath == SubPath ||
+            data.DllName?.Equals(DllName) == true && RepoName == null && RepoOwner == null
         );
         modHelperData = result;
         return result != null;
@@ -238,60 +238,61 @@ internal partial class ModHelperData
             }
         }
 
-        Task.Run(async () =>
+        Task.Run(LoadDisabledMods);
+    }
+
+    private static async Task LoadDisabledMods()
+    {
+        var disabledMods = new DirectoryInfo(ModHelper.DisabledModsDirectory);
+        if (disabledMods.Exists)
         {
-            var disabledMods = new DirectoryInfo(ModHelper.DisabledModsDirectory);
-            if (disabledMods.Exists)
+            foreach (var file in disabledMods.EnumerateFiles())
             {
-                foreach (var file in disabledMods.EnumerateFiles())
+                if (file.Extension != ".dll")
                 {
-                    if (file.Extension != ".dll")
-                    {
-                        continue;
-                    }
+                    continue;
+                }
 
-                    var dataFile = Path.Combine(ModHelper.DataDirectory, file.Name.Replace(".dll", ".json"));
-                    if (!File.Exists(dataFile))
-                    {
-                        continue;
-                    }
+                var dataFile = Path.Combine(ModHelper.DataDirectory, file.Name.Replace(".dll", ".json"));
+                if (!File.Exists(dataFile))
+                {
+                    continue;
+                }
 
-                    try
-                    {
-                        using var fs = new StreamReader(dataFile);
-                        var contents = await fs.ReadToEndAsync();
-                        var data = new ModHelperData();
-                        data.ReadValuesFromJson(contents);
+                try
+                {
+                    using var fs = new StreamReader(dataFile);
+                    var contents = await fs.ReadToEndAsync();
+                    var data = new ModHelperData();
+                    data.ReadValuesFromJson(contents);
 
-                        if (!data.ModInstalledLocally(out _))
+                    if (!data.ModInstalledLocally(out _))
+                    {
+                        var iconFile = Path.Combine(ModHelper.DataDirectory, file.Name.Replace(".dll", ".png"));
+                        if (File.Exists(iconFile))
                         {
-                            var iconFile = Path.Combine(ModHelper.DataDirectory,
-                                file.Name.Replace(".dll", ".png"));
-                            if (File.Exists(iconFile))
-                            {
-                                data.IconBytes = new FileStream(iconFile, FileMode.Open).GetByteArray();
-                            }
-                            else
-                            {
-                                data.HasNoIcon = true;
-                            }
-
-                            data.SetFilePath(file.FullName);
-                            Inactive.Add(data);
-                            // ModHelper.Msg($"Found disabled mod {file.FullName}");
+                            data.IconBytes = new FileStream(iconFile, FileMode.Open).GetByteArray();
                         }
                         else
                         {
-                            // ModHelper.Msg($"{data.DisplayName} is already enabled?");
+                            data.HasNoIcon = true;
                         }
+
+                        data.SetFilePath(file.FullName);
+                        Inactive.Add(data);
+                        // ModHelper.Msg($"Found disabled mod {file.FullName}");
                     }
-                    catch (Exception e)
+                    else
                     {
-                        ModHelper.Warning($"Failed to read disabled mod data {file.Name}");
-                        ModHelper.Warning(e);
+                        // ModHelper.Msg($"{data.DisplayName} is already enabled?");
                     }
                 }
+                catch (Exception e)
+                {
+                    ModHelper.Warning($"Failed to read disabled mod data {file.Name}");
+                    ModHelper.Warning(e);
+                }
             }
-        });
+        }
     }
 }

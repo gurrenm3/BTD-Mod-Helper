@@ -90,6 +90,8 @@ namespace BTD_Mod_Helper.Api.Helpers
 
                 if (zipArchive == null) throw new FileNotFoundException();
 
+                Directory.CreateDirectory(ModHelper.ReplacedFilesDirectory);
+                
                 FileMoveOverwrite(csProjPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.csproj"));
                 var csProj = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".csproj")!;
                 csProj.ExtractToFile(csProjPath);

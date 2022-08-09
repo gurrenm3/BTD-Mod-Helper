@@ -46,12 +46,7 @@ internal partial class ModHelperData
 
         try
         {
-            if (!Directory.Exists(ModHelper.DataDirectory))
-            {
-                Directory.CreateDirectory(ModHelper.DataDirectory);
-            }
-
-            SaveToJson(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".json")));
+            SaveToJson(ModHelper.DataDirectory);
             if (GetIcon() is Sprite sprite)
             {
                 sprite.texture.TrySaveToPNG(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".png")));

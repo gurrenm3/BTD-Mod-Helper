@@ -160,9 +160,11 @@ internal partial class ModHelperData
         }
     }
 
-    public void SaveToJson(string filePath)
+    public void SaveToJson(string folderPath)
     {
         var json = new JObject();
+        Directory.CreateDirectory(folderPath);
+        var filePath = Path.Combine(folderPath, DllName.Replace(".dll", ".json"));
         foreach (var (name, getter) in Getters)
         {
             var result = getter.Invoke(this, null);

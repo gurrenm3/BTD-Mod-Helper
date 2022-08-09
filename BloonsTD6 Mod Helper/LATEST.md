@@ -1,6 +1,3 @@
-- Mod Browser top bar fixed
-- Fixed custom tower set in game backgrounds
-- Reduced lag from menu loading
-- Added more settings for the mod browser
-- Significantly increased default http request timeout amount
-- Added `PopupScreen.instance.SafelyQueue((popupScreen) => ...)` extension method to help avoid crashes from simultaneous popups
+- DirectoryNotFound fix for the upgrade project helper
+- Ensured download task doesn't fail if trying to replace mod with invalid ModHelperData
+- Improvements for monorepos

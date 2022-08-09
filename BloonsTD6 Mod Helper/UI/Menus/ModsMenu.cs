@@ -63,7 +63,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static ModHelperImage selectedModIcon;
     private static ModsMenuMod modTemplate;
     private static int currentSort;
-    private static ModHelperPanel restartButton;
+    private static ModHelperPanel restartPanel;
 
     private static Animator bottomGroupAnimator;
 
@@ -77,6 +77,11 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         "Inactive Mods",
         "Mods Needing Updates"
     };
+
+    private static bool RestartRequired => ModHelperData.All.Any(data => data.RestartRequired) ||
+                                           ModHelper.Mods.Any(bloonsMod =>
+                                               bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
+                                           );
 
     /// <inheritdoc />
     public override bool OnMenuOpened(Object data)
@@ -104,6 +109,15 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static IEnumerator CreateModPanels()
     {
+        updateAllButton.gameObject.SetActive(modPanels.Keys.Any(data => data.UpdateAvailable));
+        if (RestartRequired)
+        {
+            restartPanel.SetActive(true);
+            restartPanel.GetComponent<Animator>().Play("PopupScaleIn");
+        }
+
+        yield return null;
+
         foreach (var data in modPanels.Keys.ToList())
         {
             var panel = modPanels[data] = modTemplate.Duplicate(data.Name);
@@ -163,14 +177,17 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         createModButton.AddText(new Info("Text", 0, -200, 500, 100), "Create Mod", 60f);
 
 
-        restartButton = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350)
+        restartPanel = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350)
         {
             Pivot = Vector2.one,
             Anchor = Vector2.one
         });
-        restartButton.SetActive(false);
+        var animator = restartPanel.AddComponent<Animator>();
+        animator.runtimeAnimatorController = Animations.PopupAnim;
+        animator.speed *= .75f;
+        restartPanel.SetActive(false);
 
-        restartButton.AddButton(new Info("Restart", InfoPreset.FillParent), VanillaSprites.RestartBtn,
+        restartPanel.AddButton(new Info("Restart", InfoPreset.FillParent), VanillaSprites.RestartBtn,
             new Action(() =>
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
@@ -179,43 +196,14 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     "Would you like to do that now?", new Action(ProcessHelper.RestartGame),
                     "Yes", null, "No", Popup.TransitionAnim.Scale));
             }));
-        restartButton.AddText(new Info("Text", 0, -200, 500, 100), "Restart", FontMedium);
+        restartPanel.AddText(new Info("Text", 0, -200, 500, 100), "Restart", FontMedium);
     }
-
-    /// <inheritdoc />
-    /*public override void OnMenuUpdate()
-    {
-        if (loadedAllMods)
-        {
-            return;
-        }
-
-        var (data, _) = modPanels.FirstOrDefault(pair => pair.Value == null);
-        if (data != null)
-        {
-            try
-            {
-                var panel = modTemplate.Duplicate(data.Name);
-                panel.SetMod(data, data.Mod);
-                modPanels[data] = panel;
-            }
-            catch (Exception)
-            {
-                loadedAllMods = true;
-                throw;
-            }
-        }
-        else
-        {
-            Refresh();
-            loadedAllMods = true;
-        }
-    }*/
 
     /// <inheritdoc />
     public override void OnMenuClosed()
     {
         bottomGroupAnimator.Play("PopupSlideOut");
+        restartPanel.GetComponent<Animator>().Play("PopupScaleOut");
 
         modPanels.Clear();
     }
@@ -351,17 +339,14 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             panel.Refresh(modHelperData);
         }
 
-        if (updateAllButton is not null)
+        if (updateAllButton != null)
         {
             updateAllButton.gameObject.SetActive(modPanels.Any(pair =>
                 pair.Key.UpdateAvailable && pair.Value is not null && pair.Value.gameObject.active));
         }
 
-        restartButton.SetActive(
-            ModHelperData.All.Any(data => data.RestartRequired) ||
-            ModHelper.Mods.Any(bloonsMod =>
-                bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
-            )
+        restartPanel.SetActive(
+            RestartRequired
         );
 
         SetSelectedMod(selectedMod!);
@@ -509,7 +494,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
                     "Disabling Mod Helper will mean you will no longer see this mods menu. " +
-                    "You would have to manually re-enable this / any other mods by dragging their .dll files" +
+                    "You would have to manually re-enable this / any other mods by dragging their .dll files " +
                     $"out of the Disabled folder within your mods directory.", null, "Ok",
                     new Action(EnableSelectedMod),
                     "Re-enable", Popup.TransitionAnim.Scale));

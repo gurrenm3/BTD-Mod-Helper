@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Models.TowerSets.Mods;
@@ -89,6 +90,10 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnTitleScreen()
     {
         ModSettingsHandler.SaveModSettings(true);
+        foreach (var modHelperData in ModHelperData.Active)
+        {
+            modHelperData.SaveToJson(ModHelper.DataDirectory);
+        }
 
         if (!scheduledInGamePatch) Schedule_InGame_Loaded();
 
