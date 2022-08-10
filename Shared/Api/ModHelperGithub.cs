@@ -59,6 +59,7 @@ internal static class ModHelperGithub
 
     public static async Task PopulateMods()
     {
+        var start = DateTime.Now;
         var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}"));
         var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
         var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
@@ -73,13 +74,13 @@ internal static class ModHelperGithub
             .Concat((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d))
             .Append(new ModHelperData(await modHelperRepoSearchTask))
             .ToArray();
-
-
+        
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
-
-        ModHelper.Msg("Finished getting mods from github");
-
+        
         Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
+        var duration = DateTime.Now - start;
+
+        ModHelper.Msg($"Finished getting mods from github, found {Mods.Count} mods in {duration.TotalSeconds:F1} seconds");
 
         UpdateRateLimit();
     }

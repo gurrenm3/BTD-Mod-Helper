@@ -1,2 +1,3 @@
 - Fixed Mod Browser Icons for locally installed mods with no icon
 - Added a mod browser setting to toggle re-reusing locally downloaded icons in the mod browser
+- Replaced some "is Name null" checks with "is Name null or empty"

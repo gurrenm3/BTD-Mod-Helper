@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -79,9 +78,11 @@ internal partial class ModHelperData
         Mod != null && Version != null && Version == RepoVersion && IsUpdate(Mod.Info.Version, Version, RepoOwner);
 
     // Values to be displayed in the GUI
-    internal string DisplayName => Name ?? Mod?.Info.Name ?? RepoName;
+    internal string DisplayName => Name.NullIfEmpty() ?? Mod?.Info.Name.NullIfEmpty() ?? RepoName ?? "No Name Provided";
     internal string DisplayAuthor => Author?.ToLower() == "unknown" ? RepoOwner ?? Author : Author ?? RepoOwner;
-    internal string DisplayDescription => (Description ?? Repository?.Description ?? "No description provided.").Replace("\\n", "\n");
+    internal string DisplayDescription =>
+        (Description.NullIfEmpty() ?? Repository?.Description.NullIfEmpty() ?? "No description provided.")
+        .Replace("\\n", "\n");
 
     internal string OldDownloadUrl { get; }
 
@@ -137,7 +138,7 @@ internal partial class ModHelperData
                 ReadValuesFromString(reader.ReadToEnd());
             }
         }
-        
+
         // Use the dll name that's actually loaded even if they've specified something else
         DllName = Path.GetFileName(FilePath);
 
@@ -145,7 +146,7 @@ internal partial class ModHelperData
         {
             MelonLogger.Warning($"Version mismatch for {Name}: " +
                                 $"MeloInfo version is {mod.Info.Version} but ModHelperData version is {Version}. " +
-                                $"This could lead to unexpected behavior.");
+                                "This could lead to unexpected behavior.");
         }
 
         // ReSharper disable once ConstantNullCoalescingCondition
@@ -291,10 +292,7 @@ internal partial class ModHelperData
                         Inactive.Add(data);
                         // ModHelper.Msg($"Found disabled mod {file.FullName}");
                     }
-                    else
-                    {
-                        // ModHelper.Msg($"{data.DisplayName} is already enabled?");
-                    }
+                    // ModHelper.Msg($"{data.DisplayName} is already enabled?");
                 }
                 catch (Exception e)
                 {
