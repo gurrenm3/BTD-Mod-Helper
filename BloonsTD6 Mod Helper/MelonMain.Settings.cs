@@ -86,8 +86,8 @@ internal partial class MelonMain
         min = 5,
         max = 100
     };
-    
-    public static readonly ModSettingDouble RequestTimeout = new(15)
+
+    public static readonly ModSettingDouble RequestTimeout = new(30)
     {
         displayName = "Request Timeout (s)",
         category = ModBrowserSettings,
@@ -95,10 +95,20 @@ internal partial class MelonMain
             "The number of seconds that the internal HTTP client should wait for responses to its requests. " +
             "Increasing this value will make the browser slower to load all mods on average, " +
             "but increases the consistency of finding 100% of valid mods if you have slower internet.",
-        min = 1,
-        max = 100,
+        min = 5,
+        max = 300,
         stepSize = 1,
         icon = DartTimeIcon
+    };
+
+    public static readonly ModSettingBool ReUseLocalIcons = new(true)
+    {
+        displayName = "Re-Use Local Icons",
+        category = ModBrowserSettings,
+        description =
+            "Set to true to avoid redownloading icons for Mod Browser mods that you already have installed on your machine. " +
+            "Faster loading, with the caveat that if the icon was changed in an update it wouldn't appear until after you updated.",
+        icon = RespecBtn
     };
 
     public static readonly ModSettingDouble NormalRequestLimit = new(.5)

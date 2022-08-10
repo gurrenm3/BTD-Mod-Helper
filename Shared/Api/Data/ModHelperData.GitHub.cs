@@ -120,12 +120,13 @@ internal partial class ModHelperData
                     ModHelper.Warning(e);
                 }
             }
-            
+
             if (data == null)
             {
                 if (RepoOwner == MelonMain.GitHubUsername)
                 {
-                    ModHelper.Warning($"Did not find any mod data for {Repository.FullName} {SubPath} branch {Branch} ");
+                    ModHelper.Warning(
+                        $"Did not find any mod data for {Repository.FullName} {SubPath} branch {Branch} ");
                 }
 
                 return;
@@ -172,19 +173,20 @@ internal partial class ModHelperData
 
     private async Task<T> WhenFirstSucceededOrAllFailed<T>(IEnumerable<Task<T>> tasks)
     {
-        var taskList = new List<Task<T>>( tasks );
-        while ( taskList.Count > 0 )
+        var taskList = new List<Task<T>>(tasks);
+        while (taskList.Count > 0)
         {
-            var firstCompleted = await Task.WhenAny( taskList ).ConfigureAwait(false);
-            if ( firstCompleted.Status == TaskStatus.RanToCompletion )
+            var firstCompleted = await Task.WhenAny(taskList).ConfigureAwait(false);
+            if (firstCompleted.Status == TaskStatus.RanToCompletion)
             {
                 return firstCompleted.Result;
             }
-            taskList.Remove( firstCompleted );
+
+            taskList.Remove(firstCompleted);
         }
 
         return default;
-    } 
+    }
 
     public async Task<Release> GetLatestRelease()
     {
@@ -248,11 +250,11 @@ internal partial class ModHelperData
     {
         // Don't fetch an icon that we've already got
         // This does mean that icon changes won't be seen in the Mod Browser until you download the new version, but eh
-        if (ModInstalledLocally(out var local))
+        if (MelonMain.ReUseLocalIcons && ModInstalledLocally(out var local) && !local.HasNoIcon)
         {
             IconBytes = local.IconBytes;
-            HasNoIcon = local.HasNoIcon;
-            return !HasNoIcon;
+            HasNoIcon = false;
+            return true;
         }
 
         // TODO might make it so that unverified mods can't have icons

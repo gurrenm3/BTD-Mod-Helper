@@ -1,5 +1,2 @@
-- Fixed the mod browser Mods Per Page setting
-- Fixed internal ModHelperData issue with DllName sometimes being overriden
-- Fixed some v32.0 issues for ModBloon displays
-- Fixed some v32.0 UI issues for ModHeroes with max level < 20
-- Added some icons for the Mod Helper settings
+- Fixed Mod Browser Icons for locally installed mods with no icon
+- Added a mod browser setting to toggle re-reusing locally downloaded icons in the mod browser
