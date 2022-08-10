@@ -129,7 +129,7 @@ public class ModHelperOption : ModHelperComponent
         {
 #if BloonsTD6
             modHelperOption.InfoButton = infoPanel.AddButton(
-                new Info("Info", size: TextHeight),
+                new Info("Info", size: TextHeight + 25),
                 VanillaSprites.InfoBtn2,
                 string.IsNullOrEmpty(description)
                     ? null

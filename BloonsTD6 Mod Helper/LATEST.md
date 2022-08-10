@@ -1,3 +1,5 @@
-- First release candidate for 3.0
-- Removed last couple debugging log messages
-- Updated mod description
+- Fixed the mod browser Mods Per Page setting
+- Fixed internal ModHelperData issue with DllName sometimes being overriden
+- Fixed some v32.0 issues for ModBloon displays
+- Fixed some v32.0 UI issues for ModHeroes with max level < 20
+- Added some icons for the Mod Helper settings

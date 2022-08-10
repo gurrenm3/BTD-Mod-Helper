@@ -6,6 +6,7 @@ using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;
+using static BTD_Mod_Helper.Api.Enums.VanillaSprites;
 
 namespace BTD_Mod_Helper;
 
@@ -13,14 +14,16 @@ internal partial class MelonMain
 {
     private static readonly ModSettingCategory General = new("General")
     {
-        collapsed = false
+        collapsed = false,
+        icon = SettingsIcon
     };
 
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
         description =
             "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
-        category = General
+        category = General,
+        icon = AlternateBloonsBtn
     };
 
     public static readonly ModSettingBool BypassSavingRestrictions = new(true)
@@ -29,13 +32,15 @@ internal partial class MelonMain
             "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
             "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
             "So, this setting overrides that restriction and will allow progress to be saved once more.",
-        category = General
+        category = General,
+        icon = SaveGameIcon
     };
 
     private static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
-        description = "Removes the popup telling you that you're using a modded client. Like, we get it already."
+        description = "Removes the popup telling you that you're using a modded client. Like, we get it already.",
+        icon = HideIcon
     };
 
     public static readonly ModSettingBool CleanProfile = new(true)
@@ -44,7 +49,8 @@ internal partial class MelonMain
             "Automatically removes modded information from your profile before the data gets synced to the " +
             "Ninja Kiwi servers. NOTE: This is for very specific information relating to custom content implemented " +
             "using the Mod Helper. This does not broadly prevent hacker pooling or mods messing up your profile in other ways.",
-        category = General
+        category = General,
+        icon = CleansingFoamUpgradeIcon
     };
 
     public static readonly ModSettingBool UseOldLoading = new(false)
@@ -54,17 +60,22 @@ internal partial class MelonMain
             "(causing the game to hang until finished), instead of the new method of adding new load tasks alongside the vanilla ones. " +
             "Depending on the mods use this could be slightly faster, but less robust.",
         category = General,
-        requiresRestart = true
+        requiresRestart = true,
+        icon = RetroTechbotIcon
     };
 
-    private static readonly ModSettingCategory ModBrowserSettings = "Mod Browser Settings";
+    private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
+    {
+        icon = BenjaminIcon
+    };
 
     public static readonly ModSettingBool ShowUnverifiedModBrowserContent = new(false)
     {
         description =
             "Toggle whether to allow showing content from GitHub users that have not been manually verified with one of the major BTD6 modding discord servers. " +
             "Unverified content will still be moderated and egregious content removed, but it is still more of a risk than verified content.",
-        category = ModBrowserSettings
+        category = ModBrowserSettings,
+        icon = DangerSoonIcon
     };
 
     public static readonly ModSettingInt ModsPerPage = new(15)
@@ -86,7 +97,8 @@ internal partial class MelonMain
             "but increases the consistency of finding 100% of valid mods if you have slower internet.",
         min = 1,
         max = 100,
-        stepSize = 1
+        stepSize = 1,
+        icon = DartTimeIcon
     };
 
     public static readonly ModSettingDouble NormalRequestLimit = new(.5)
@@ -96,7 +108,8 @@ internal partial class MelonMain
         description = "The maximum number of megabytes that a non-mod http request can return, such as icons for mods.",
         min = .1,
         max = 50,
-        stepSize = .1f
+        stepSize = .1f,
+        icon = LocalNetworkIcon
     };
 
     public static readonly ModSettingDouble ModRequestLimit = new(50)
@@ -106,17 +119,22 @@ internal partial class MelonMain
         description = "The maximum number of megabytes that a Mod can be to try to download it.",
         min = 1,
         max = 1000,
-        stepSize = 1
+        stepSize = 1,
+        icon = LocalNetworkIcon
     };
 
-    private static readonly ModSettingCategory ModMaking = "Mod Making";
+    private static readonly ModSettingCategory ModMaking = new("Mod Making")
+    {
+        icon = EditChallengeIcon
+    };
 
     public static readonly ModSettingString GitHubUsername = new("")
     {
         displayName = "GitHub Username",
         description = "Set this to your GitHub username to see messages in the log for " +
                       "HTTP / GitHub api errors about your mods as they get loaded to the Mod Browser",
-        category = ModMaking
+        category = ModMaking,
+        icon = NamedMonkeyIcon
     };
 
     private static readonly ModSettingButton OpenLocalDirectory = new()
@@ -142,7 +160,8 @@ internal partial class MelonMain
                 screen.ShowOkPopup($"Finished exporting Game Model to {FileIOUtil.sandboxRoot}"));
         },
         buttonText = "Export",
-        category = ModMaking
+        category = ModMaking,
+        icon = ShareIosIcon
     };
 
     public static readonly ModSettingFolder ModSourcesFolder =
@@ -157,7 +176,10 @@ internal partial class MelonMain
 
     #region Autosave
 
-    public static readonly ModSettingCategory AutoSaveCategory = "Auto Save Settings";
+    public static readonly ModSettingCategory AutoSaveCategory = new("Auto Save Settings")
+    {
+        icon = SaveGameIcon
+    };
 
     public static readonly ModSettingButton OpenBackupDir = new(AutoSave.OpenBackupDir)
     {

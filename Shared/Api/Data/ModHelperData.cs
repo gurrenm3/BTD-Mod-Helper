@@ -96,7 +96,6 @@ internal partial class ModHelperData
         Version = mod.Info.Version;
         Author = mod.Info.Author;
         FilePath = mod.GetAssembly().Location;
-        DllName = Path.GetFileName(FilePath);
 
         var data = mod is MelonMain
             ? typeof(ModHelper)
@@ -138,6 +137,9 @@ internal partial class ModHelperData
                 ReadValuesFromString(reader.ReadToEnd());
             }
         }
+        
+        // Use the dll name that's actually loaded even if they've specified something else
+        DllName = Path.GetFileName(FilePath);
 
         if (Version != mod.Info.Version)
         {

@@ -134,7 +134,7 @@ internal partial class ModHelperData
             var json = data.TrimStart().StartsWith("{");
 
             if (json) ReadValuesFromJson(data, false);
-            else ReadValuesFromString(data);
+            else ReadValuesFromString(data, false);
 
 
             if (HasRequiredRepoData)

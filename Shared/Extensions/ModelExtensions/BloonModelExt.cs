@@ -141,7 +141,15 @@ namespace BTD_Mod_Helper.Extensions
 #if BloonsTD6
             bloonModel.display = ModContent.CreatePrefabReference(guid);
 #endif
-            bloonModel.GetBehavior<DisplayModel>().display = ModContent.CreatePrefabReference(guid);
+            if (bloonModel.HasBehavior<DisplayModel>())
+            {
+                bloonModel.GetBehavior<DisplayModel>().display = ModContent.CreatePrefabReference(guid);
+            }
+            else
+            {
+                bloonModel.AddBehavior(new DisplayModel("DisplayModel_BloonDisplay",
+                    ModContent.CreatePrefabReference(guid), 0));
+            }
         }
 
         /// <summary>
@@ -195,7 +203,15 @@ namespace BTD_Mod_Helper.Extensions
         {
 #if BloonsTD6
             bloonModel.isCamo = isCamo;
-            bloonModel.AddTag(BloonTag.Camo);
+            switch (isCamo)
+            {
+                case true when !bloonModel.HasTag(BloonTag.Camo):
+                    bloonModel.AddTag(BloonTag.Camo);
+                    break;
+                case false when bloonModel.HasTag(BloonTag.Camo):
+                    bloonModel.RemoveTag(BloonTag.Camo);
+                    break;
+            }
 #elif BloonsAT
             bloonModel.IsCamo = isCamo;
 #endif
@@ -224,7 +240,15 @@ namespace BTD_Mod_Helper.Extensions
         {
 #if BloonsTD6
             bloonModel.isGrow = isRegrow;
-            bloonModel.AddTag(BloonTag.Regrow);
+            switch (isRegrow)
+            {
+                case true when !bloonModel.HasTag(BloonTag.Regrow):
+                    bloonModel.AddTag(BloonTag.Regrow);
+                    break;
+                case false when bloonModel.HasTag(BloonTag.Regrow):
+                    bloonModel.RemoveTag(BloonTag.Regrow);
+                    break;
+            }
 #elif BloonsAT
             bloonModel.IsRegrow.cachedObject = isRegrow; // this is untested and may not work.
 #endif
@@ -283,7 +307,15 @@ namespace BTD_Mod_Helper.Extensions
         {
 #if BloonsTD6
             bloonModel.isFortified = isFortified;
-            bloonModel.AddTag(BloonTag.Fortified);
+            switch (isFortified)
+            {
+                case true when !bloonModel.HasTag(BloonTag.Fortified):
+                    bloonModel.AddTag(BloonTag.Fortified);
+                    break;
+                case false when bloonModel.HasTag(BloonTag.Fortified):
+                    bloonModel.RemoveTag(BloonTag.Fortified);
+                    break;
+            }
 #elif BloonsAT
             bloonModel._IsFortified_k__BackingField = isFortified;
 #endif

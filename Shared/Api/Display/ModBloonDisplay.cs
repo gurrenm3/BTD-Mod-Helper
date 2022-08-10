@@ -41,8 +41,7 @@ public abstract class ModBloonDisplay : ModDisplay
             return bloonModel.GetDisplayGUID();
         }
 
-        var damageStateModels = bloonModel.GetBehaviors<DamageStateModel>()
-            .OrderByDescending(model => model.healthPercent).ToList();
+        var damageStateModels = bloonModel.damageDisplayStates;
         return damageStateModels[damagedAmount - 1].displayPath.GUID;
     }
 }

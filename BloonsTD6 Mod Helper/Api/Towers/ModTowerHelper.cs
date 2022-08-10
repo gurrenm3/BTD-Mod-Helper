@@ -194,7 +194,7 @@ public static partial class ModTowerHelper
         {
             var textureName = modTower.Get2DTexture(towerModel.tiers);
             var scale = modTower.Get2DScale(towerModel.tiers);
-            var display = new ModTowerDisplay2D(modTower.mod, towerModel.name, textureName, scale);
+            var display = new ModDisplay2DImpl(modTower.mod, towerModel.name, textureName, scale);
             display.Apply(towerModel);
         }
         else if (modTower.displays

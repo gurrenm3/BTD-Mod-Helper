@@ -44,9 +44,9 @@ public abstract partial class ModBloon : NamedModContent
 #if BloonsTD6
         bloonModel.updateChildBloonModels = true;
 #endif
-        
+
         bloonModel.GenerateDescendentNames();
-        
+
         displays.FirstOrDefault(display => display.Damage == 0)?.Apply(bloonModel);
         var damageDisplays = displays
             .Where(display => display.Damage > 0)
@@ -113,7 +113,7 @@ public abstract partial class ModBloon : NamedModContent
     /// <summary>
     /// The ID of the bloon that this should regrow into
     /// </summary>
-    public virtual string RegrowsTo => null;
+    public virtual string RegrowsTo => "";
 
     /// <summary>
     /// Whether this Bloon should use its Icon as its display
@@ -138,7 +138,13 @@ public abstract partial class ModBloon : NamedModContent
     /// <summary>
     /// For 2D bloons, the ratio between pixels and display units. Higher number -> smaller Bloon.
     /// </summary>
+    [Obsolete("Use Scale instead")]
     public virtual float PixelsPerUnit => 10f;
+
+    /// <summary>
+    /// For bloons with UseIconAsDisplay, the scale for the texture to use
+    /// </summary>
+    public virtual float Scale => 1f;
 
 
     internal BloonModel BaseBloonModel => Game.instance.model.GetBloon(BaseBloon);
@@ -154,7 +160,8 @@ public abstract partial class ModBloon : NamedModContent
         if (BaseModBloon != null)
         {
             model.baseId = BaseModBloon.Id;
-        }            
+        }
+
         if (!KeepBaseId)
         {
             model.baseId = Id;
@@ -167,11 +174,11 @@ public abstract partial class ModBloon : NamedModContent
         model.SetCamo(Camo);
         model.SetFortified(Fortified);
 
-        if (Regrow && !string.IsNullOrEmpty(RegrowsTo))
+        if (Regrow)
         {
             model.SetRegrow(RegrowsTo, RegrowRate);
         }
-        if (!Regrow)
+        else
         {
             model.RemoveRegrow();
         }
@@ -183,15 +190,8 @@ public abstract partial class ModBloon : NamedModContent
 
         if (UseIconAsDisplay)
         {
-            if (TextureExists(mod, Icon))
-            {
-                var guid = GetTextureGUID(Icon);
-                model.SetDisplayGUID(guid);
-            }
-            else
-            {
-                ModHelper.Log($"Couldn't find icon {Icon}");
-            }
+            var display = new ModDisplay2DImpl(mod, Id, Icon, Scale);
+            display.Apply(model);
         }
 
         return model;
@@ -199,25 +199,28 @@ public abstract partial class ModBloon : NamedModContent
 
     internal void ApplyDamageStates(BloonModel model, List<string> damageStates)
     {
-        model.RemoveBehaviors<DamageStateModel>();
+        // model.RemoveBehaviors<DamageStateModel>();
         var displayStates = new List<DamageStateModel>();
 
         var count = damageStates.Count + 1;
         var i = 1f;
         foreach (var damageState in damageStates)
         {
-            displayStates.Insert(0, new DamageStateModel($"DamageStateModel_damage_state_{i}",
-                ModContent.CreatePrefabReference(damageState), 1 - i / count));
+            displayStates.Add(new DamageStateModel($"DamageStateModel_damage_state_{i}",
+                CreatePrefabReference(damageState), 1 - i / count));
             i++;
         }
 
 #if BloonsTD6
         model.damageDisplayStates = displayStates.ToIl2CppReferenceArray();
 #endif
+
+        /* No longer included as of v32.0
         foreach (var damageStateModel in displayStates)
         {
             model.AddBehavior(damageStateModel);
         }
+        */
     }
 }
 

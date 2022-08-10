@@ -18,7 +18,7 @@ public class BloonModelUtils
     /// <returns></returns>
     public static string ConstructBloonId(string bloonName, bool camo, bool regrow, bool fortified)
     {
-        string baseName = bloonName.Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", "");
+        var baseName = bloonName.Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", "");
 #if BloonsTD6
         return BloonTypeUtility.BloonType(baseName, camo, regrow, fortified);
 #elif BloonsAT

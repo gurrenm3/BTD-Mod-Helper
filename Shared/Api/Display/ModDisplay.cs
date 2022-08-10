@@ -178,7 +178,7 @@ namespace BTD_Mod_Helper.Api.Display
         #region Internal Display Loading
 
         /// <summary>
-        /// Gets the prototype to use for a callback in CreateAsync, or returns null and says "Fine, I'll do it myself"
+        /// Gets the prototype to use for a callback in CreateAsync
         /// </summary>
         /// <returns>Whether to still call the original CreateAsync callback</returns>
         internal void Create(Factory factory, PrefabReference prefabReference, Action<UnityDisplayNode> onComplete) =>

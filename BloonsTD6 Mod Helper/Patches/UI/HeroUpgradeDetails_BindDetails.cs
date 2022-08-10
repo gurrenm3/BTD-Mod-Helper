@@ -20,12 +20,14 @@ namespace BTD_Mod_Helper.Patches.UI
                 {
                     __instance.heroUpgrades[i].gameObject.SetActive(i < modHero.MaxLevel);
                 }
-
-                // TODO unity explorer ability panels
-                /*for (var i = 0; i < __instance.abilityPanels.Length; i++)
+                
+            }
+            else
+            {
+                foreach (var t in __instance.heroUpgrades)
                 {
-                    __instance.abilityPanels[i].gameObject.SetActive(i < modHero.Abilities);
-                }*/
+                    t.gameObject.SetActive(true);
+                }
             }
         }
     }

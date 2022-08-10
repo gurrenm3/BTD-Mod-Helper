@@ -40,7 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay2D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerDisplay2D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModDisplay2DImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerCustomDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Display\ModTowerDisplay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Enums\BloonTag.cs" />

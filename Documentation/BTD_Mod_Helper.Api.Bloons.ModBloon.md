@@ -158,6 +158,19 @@ public virtual string RegrowsTo { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Scale'></a>
+
+## ModBloon.Scale Property
+
+For bloons with UseIconAsDisplay, the scale for the texture to use
+
+```csharp
+public virtual float Scale { get; }
+```
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.UseIconAsDisplay'></a>
 
 ## ModBloon.UseIconAsDisplay Property

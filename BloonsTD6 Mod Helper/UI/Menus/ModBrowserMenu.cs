@@ -29,9 +29,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private static readonly List<SortingMethod> SortingMethods =
         Enum.GetValues(typeof(SortingMethod)).Cast<SortingMethod>().ToList();
-
-
-    private readonly ModBrowserMenuMod[] mods = new ModBrowserMenuMod[ModsPerPage];
+    
+    private ModBrowserMenuMod[] mods;
 
     private readonly IRatioScorer scorer = ScorerCache.Get<WeightedRatioScorer>();
 
@@ -48,6 +47,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     public override bool OnMenuOpened(Object obj)
     {
+        mods = new ModBrowserMenuMod[ModsPerPage];
         ModifyExistingElements();
         AddNewElements();
 
