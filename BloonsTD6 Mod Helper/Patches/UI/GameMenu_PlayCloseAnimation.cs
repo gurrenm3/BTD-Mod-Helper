@@ -14,6 +14,7 @@ internal static class GameMenu_PlayCloseAnimation
         {
             if (ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
             {
+                modGameMenu.Closing = true;
                 modGameMenu.OnMenuClosed();
             }
         }

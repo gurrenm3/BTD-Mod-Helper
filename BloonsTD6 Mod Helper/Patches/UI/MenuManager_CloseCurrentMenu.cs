@@ -17,6 +17,7 @@ internal static class MenuManager_CloseCurrentMenu
             current.gameObject.HasComponent(out ModGameMenuTracker tracker) &&
             ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
         {
+            modGameMenu.Closing = true;
             modGameMenu.OnMenuClosed();
         }
 

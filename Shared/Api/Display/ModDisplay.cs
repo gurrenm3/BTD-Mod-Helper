@@ -35,7 +35,7 @@ namespace BTD_Mod_Helper.Api.Display
         protected sealed override float RegistrationPriority => 1;
 
         /// <inheritdoc />
-        public sealed override int RegisterPerFrame => 100;
+        public sealed override int RegisterPerFrame => 10;
 
         /// <inheritdoc />
         public override void Register()

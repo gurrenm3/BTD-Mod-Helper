@@ -22,14 +22,14 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 {
     private const int SearchCutoff = 50;
     private const int TypingCooldown = 30;
-    
+
     private static int ModsPerPage => MelonMain.ModsPerPage;
 
     private static bool modsNeedRefreshing;
 
     private static readonly List<SortingMethod> SortingMethods =
         Enum.GetValues(typeof(SortingMethod)).Cast<SortingMethod>().ToList();
-    
+
     private ModBrowserMenuMod[] mods;
 
     private readonly IRatioScorer scorer = ScorerCache.Get<WeightedRatioScorer>();
@@ -69,12 +69,16 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         yield return null;
 
+        if (Closing) yield break;
+
         for (var i = 0; i < ModsPerPage; i++)
         {
             var newMod = mods[i] = template.Duplicate($"Mod {i}");
             newMod.AddTo(GameMenu.scrollRect.content);
             newMod.SetActive(false);
             yield return null;
+
+            if (Closing) yield break;
         }
 
         templatesCreated = true;
@@ -180,6 +184,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         while (!templatesCreated)
         {
             yield return null;
+
+            if (Closing) yield break;
         }
 
         UpdatePagination();
@@ -190,6 +196,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         yield return null;
 
+        if (Closing) yield break;
+
         var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
         var i = 0;
         foreach (var modHelperData in pageMods)
@@ -197,6 +205,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             mods[i].SetMod(modHelperData);
             i++;
             yield return null;
+
+            if (Closing) yield break;
         }
     }
 
@@ -240,7 +250,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         {
             menuMod.SetActive(false);
         }
-        
+
         Task.Run(async () =>
         {
             await ModHelperGithub.PopulateMods();

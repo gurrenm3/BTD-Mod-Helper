@@ -18,13 +18,10 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     private CanvasGroup canvasGroup;
 
-    private bool closing;
-
     private ModHelperScrollPanel scrollPanel;
 
     public override bool OnMenuOpened(Object data)
     {
-        closing = false;
         var gameObject = GameMenu.gameObject;
         gameObject.DestroyAllChildren();
 
@@ -57,15 +54,23 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
             {
                 var categoryOption = category.Create();
                 yield return null;
+
+                if (Closing) yield break;
+
                 scrollPanel.AddScrollContent(categoryOption);
                 content = categoryOption.CategoryContent;
                 yield return null;
+
+                if (Closing) yield break;
             }
 
             foreach (var modSetting in modSettings)
             {
                 var modHelperOption = modSetting.CreateComponent();
                 yield return null;
+
+                if (Closing) yield break;
+
                 modSetting.currentOption = modHelperOption;
                 if (modHelperOption.ResetButton.gameObject.active)
                 {
@@ -73,15 +78,17 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
                 }
 
                 content.Add(modHelperOption);
-                
+
                 yield return null;
+
+                if (Closing) yield break;
             }
         }
     }
 
     public override void OnMenuUpdate()
     {
-        if (closing)
+        if (Closing)
         {
             canvasGroup.alpha -= .07f;
         }
@@ -89,13 +96,9 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     public override void OnMenuClosed()
     {
-        if (!closing)
-        {
-            ModSettingsHandler.SaveModSettings(bloonsMod);
-            ModHelperHttp.UpdateSettings();
-            animator.Play("PopupSlideOut");
-        }
-        closing = true;
+        ModSettingsHandler.SaveModSettings(bloonsMod);
+        ModHelperHttp.UpdateSettings();
+        animator.Play("PopupSlideOut");
     }
 
     public static void Open(BloonsMod bloonsMod)

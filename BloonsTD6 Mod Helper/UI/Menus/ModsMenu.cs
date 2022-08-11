@@ -107,7 +107,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         return false;
     }
 
-    private static IEnumerator CreateModPanels()
+    private IEnumerator CreateModPanels()
     {
         updateAllButton.gameObject.SetActive(modPanels.Keys.Any(data => data.UpdateAvailable));
         if (RestartRequired)
@@ -118,6 +118,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         yield return null;
 
+        if (Closing) yield break;
+
         var keys = modPanels.Keys.ToList();
         for (var index = 0; index < keys.Count; index++)
         {
@@ -125,8 +127,12 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             var panel = modPanels[data] = modTemplate.Duplicate(data.Name);
             if (index > 6) yield return null;
 
+            if (Closing) yield break;
+
             panel.SetMod(data, data.Mod);
             if (index > 6) yield return null;
+
+            if (Closing) yield break;
         }
 
         Refresh();

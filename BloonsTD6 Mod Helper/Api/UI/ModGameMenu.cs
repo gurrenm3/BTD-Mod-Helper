@@ -33,6 +33,11 @@ public abstract class ModGameMenu : ModContent
         CommonForegroundScreen.instance.heading.GetComponentInChildren<NK_TextMeshProUGUI>();
 
     /// <summary>
+    /// Whether the menu is currently closing
+    /// </summary>
+    protected internal bool Closing { get; internal set; }
+
+    /// <summary>
     /// The string name of the in game menu to copy from
     /// </summary>
     public abstract string BaseMenu { get; }
@@ -96,6 +101,7 @@ public abstract class ModGameMenu : ModContent
             tracker.modGameMenuId = modGameMenu.Id;
 
             modGameMenu.GameMenu = gameMenu;
+            modGameMenu.Closing = false;
             return gameMenu.enabled = modGameMenu.OnMenuOpened(menuData.modData);
         }
 

@@ -85,8 +85,7 @@ public class ModHelperOption : ModHelperComponent
     }
 
     /// <inheritdoc cref="Create"/>
-    protected static T Create<T>(string displayName, string description = null,
-        string icon = null)
+    protected static T Create<T>(string displayName, string description = null, string icon = null)
         where T : ModHelperOption
     {
         var modHelperOption = ModHelperComponent.Create<T>(
@@ -109,6 +108,7 @@ public class ModHelperOption : ModHelperComponent
         if (icon != null)
         {
             modHelperOption.Icon = iconPanel.AddImage(new Info("Icon", size: RowHeight), icon);
+            modHelperOption.Icon.Image.color = Color.white;
         }
 
         var restart = modHelperOption.RestartIcon =

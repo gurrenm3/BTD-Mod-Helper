@@ -1,3 +1,6 @@
 - Fixed Mod Browser Icons for locally installed mods with no icon
 - Added a mod browser setting to toggle re-reusing locally downloaded icons in the mod browser
 - Replaced some "is Name null" checks with "is Name null or empty"
+- Fixed weird icon fading issue for repeated opening settings menus with collapsed categories
+- Recompiled for v32.1 to fix ShowOkPopup method signature change
+- Fixed error in logs for closing certain custom menus too fast

@@ -148,7 +148,6 @@ internal partial class MelonMain : BloonsTD6Mod
         Animations.Load();
         Fonts.Load();
         RoundSetChanger.EnsureHidden();
-        ModsMenu.selectedMod = null;
     }
 
     #region Autosave

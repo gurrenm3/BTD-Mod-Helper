@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Unity.UI_New.Main;
+using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
 
 namespace BTD_Mod_Helper.Patches.UI;
@@ -10,5 +11,6 @@ internal static class MainMenu_Start
     private static void Postfix(MainMenu __instance)
     {
         ModsButton.Create(__instance);
+        ModsMenu.selectedMod = null;
     }
 }
