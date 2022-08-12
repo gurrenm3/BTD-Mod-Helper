@@ -2,11 +2,13 @@ name: Build
 
 on:
   push:
-    branches: [ "3.0_Features" ]
+    branches:
+      - '*'
     tags:
       - '*'
   pull_request:
-    branches: [ "3.0_Features" ]
+    branches:
+      - '*'
 
 env:
   PROJECT_NAME: Btd6ModHelper
@@ -91,7 +93,7 @@ jobs:
           
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/') && github.repository == 'doombubbles/BTD-Mod-Helper'
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll

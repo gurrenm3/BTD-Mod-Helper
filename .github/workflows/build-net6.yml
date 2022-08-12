@@ -2,11 +2,13 @@ name: Build net6
 
 on:
   push:
-    branches: [ "3.0_Features" ]
+    branches:
+      - '*'
     tags:
       - '*'
   pull_request:
-    branches: [ "3.0_Features" ]
+    branches:
+      - '*'
 
 env:
   PROJECT_NAME: Btd6ModHelper

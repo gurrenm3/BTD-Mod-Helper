@@ -427,7 +427,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called right after a Tower is upgraded
     /// </summary>
-    public virtual void OnTowerUpgraded(Tower tower, String upgradeName, TowerModel newBaseTowerModel)
+    public virtual void OnTowerUpgraded(Tower tower, string upgradeName, TowerModel newBaseTowerModel)
     {
     }
 

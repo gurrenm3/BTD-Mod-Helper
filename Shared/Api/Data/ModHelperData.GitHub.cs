@@ -51,7 +51,7 @@ internal partial class ModHelperData
 
     internal string StarsUrl => $"https://www.github.com/{RepoOwner}/{RepoName}/stargazers";
     private float splittingStarsAmongst = 1;
-    internal int Stars => (int) Math.Ceiling(Repository?.StargazersCount ?? 0 / splittingStarsAmongst);
+    internal int Stars => (int) Math.Ceiling((Repository?.StargazersCount ?? 0) / splittingStarsAmongst);
 
     internal bool HasRequiredRepoData => SemVersion.TryParse(Version, out _) &&
                                          RepoName != null &&
