@@ -1,15 +1,16 @@
 ﻿using Assets.Scripts.Simulation;
 using Assets.Scripts.Simulation.Towers;
+using Assets.Scripts.Simulation.Tracking;
 
 namespace BTD_Mod_Helper.Patches.Sim;
 
-[HarmonyPatch(typeof(Simulation), nameof(Simulation.AddCash))]
-internal class Simulation_AddCash
+[HarmonyPatch(typeof(AnalyticsTrackerSimManager), nameof(AnalyticsTrackerSimManager.OnCashEarned))]
+internal static class AnalyticsTrackerSimManager_OnCashEarned
 {
     [HarmonyPostfix]
-    internal static void Postfix(double c, Simulation.CashType from, int cashIndex, Simulation.CashSource source,
-        Tower tower)
+    private static void Postfix(int playerId, double cash,
+        Simulation.CashType from, Simulation.CashSource source, Tower tower)
     {
-        ModHelper.PerformHook(mod => mod.OnCashAdded(c, from, cashIndex, source, tower));
+        ModHelper.PerformHook(mod => mod.OnCashAdded(cash, from, playerId, source, tower));
     }
 }

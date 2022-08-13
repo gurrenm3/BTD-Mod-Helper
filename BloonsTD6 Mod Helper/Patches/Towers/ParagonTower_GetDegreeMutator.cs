@@ -10,7 +10,7 @@ internal class ParagonTower_GetDegreeMutator
     [HarmonyPostfix]
     internal static void Postfix(ParagonTower __instance, float investment, ParagonTowerModel.PowerDegreeMutator __result)
     {
-        if (__instance.tower?.towerModel?.GetModTower() is ModTower modTower && modTower.ShouldCreateParagon)
+        if (__instance.tower?.towerModel?.GetModTower() is {ShouldCreateParagon: true} modTower)
         {
             modTower.paragonUpgrade?.ModifyPowerDegreeMutator(__result, investment, __result.degree);
         }

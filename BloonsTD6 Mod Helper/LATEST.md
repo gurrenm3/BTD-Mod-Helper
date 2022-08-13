@@ -1,1 +1,2 @@
 - Added an annoying, impossible to miss (or escape...) Popup if you're not using correct MelonLoader version
+- Fixed issue where Double Cash doubled cash generation it wasn't supposed to

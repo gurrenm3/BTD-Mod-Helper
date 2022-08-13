@@ -1,13 +1,14 @@
 ﻿using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Tracking;
 
 namespace BTD_Mod_Helper.Patches.Sim;
 
-[HarmonyPatch(typeof(Simulation), nameof(Simulation.RemoveCash))]
-internal class Simulation_RemoveCash
+[HarmonyPatch(typeof(AnalyticsTrackerSimManager), nameof(AnalyticsTrackerSimManager.OnCashSpent))]
+internal static class AnalyticsTrackerSimManager_OnCashSpent
 {
     [HarmonyPostfix]
-    internal static void Postfix(double c, Simulation.CashType from, int cashIndex, Simulation.CashSource source)
+    private static void Postfix(int playerId, double cash, Simulation.CashType from, Simulation.CashSource source)
     {
-        ModHelper.PerformHook(mod => mod.OnCashRemoved(c, from, cashIndex, source));
+        ModHelper.PerformHook(mod => mod.OnCashRemoved(cash, from, playerId, source));
     }
 }

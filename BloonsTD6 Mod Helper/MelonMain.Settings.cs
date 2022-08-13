@@ -6,6 +6,7 @@ using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;
+using UnityEngine;
 using static BTD_Mod_Helper.Api.Enums.VanillaSprites;
 
 namespace BTD_Mod_Helper;
@@ -255,6 +256,12 @@ internal partial class MelonMain
         category = Debug,
         description = "Generates the VanillaSprites.cs file based on the previous two settings",
         buttonText = "Generate"
+    };
+
+    private static readonly ModSettingHotkey ExportSelectedTower = new (KeyCode.Backslash)
+    {
+        category = Debug,
+        description = "While in game, exports the exact TowerModel being used by the selected tower."
     };
 
     #endregion

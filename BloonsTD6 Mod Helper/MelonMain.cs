@@ -4,8 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Models.TowerSets.Mods;
+using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
@@ -100,6 +103,15 @@ internal partial class MelonMain : BloonsTD6Mod
 
         NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
+
+#if BTD6_DEBUG
+        if (TowerSelectionMenu.instance != null &&
+            TowerSelectionMenu.instance.selectedTower != null &&
+            ExportSelectedTower.JustPressed())
+        {
+            GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
+        }
+#endif
     }
 
     public override void OnTitleScreen()
