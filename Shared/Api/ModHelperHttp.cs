@@ -123,7 +123,14 @@ public class ModHelperHttp
 
     internal static void UpdateSettings()
     {
-        Client.Timeout = TimeSpan.FromSeconds(MelonMain.RequestTimeout);
-        Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+        try
+        {
+            Client.Timeout = TimeSpan.FromSeconds(MelonMain.RequestTimeout);
+            Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+        }
+        catch (Exception)
+        {
+            // ignored
+        }
     }
 }

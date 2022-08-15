@@ -97,7 +97,10 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     public override void OnMenuClosed()
     {
         ModSettingsHandler.SaveModSettings(bloonsMod);
-        ModHelperHttp.UpdateSettings();
+        if (bloonsMod is MelonMain)
+        {
+            ModHelperHttp.UpdateSettings();
+        }
         animator.Play("PopupSlideOut");
     }
 
