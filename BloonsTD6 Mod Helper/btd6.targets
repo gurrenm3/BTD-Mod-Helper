@@ -53,6 +53,9 @@
         <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\Btd6ModHelper.dll')">
             <HintPath>$(BloonsTD6)\Mods\Btd6ModHelper.dll</HintPath>
         </Reference>
+        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll')">
+            <HintPath>$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
     <!--Automatic embeds-->
