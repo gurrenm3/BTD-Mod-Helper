@@ -43,7 +43,9 @@ public class ModHelperHttp
     {
         try
         {
+#if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+#endif
             var response = await Client.GetAsync(url);
             using var fs = new FileStream(filePath, FileMode.Create);
             await response.Content.CopyToAsync(fs);
@@ -56,7 +58,9 @@ public class ModHelperHttp
         }
         finally
         {
+#if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+#endif
         }
 
         return false;
@@ -72,14 +76,18 @@ public class ModHelperHttp
     {
         try
         {
+#if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+#endif
             var response = await Client.GetAsync(url);
             var stream = await response.Content.ReadAsStreamAsync();
             return new ZipArchive(stream);
         }
         finally
         {
+#if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+#endif
         }
     }
 
@@ -126,7 +134,12 @@ public class ModHelperHttp
         try
         {
             Client.Timeout = TimeSpan.FromSeconds(MelonMain.RequestTimeout);
+
+#if NET6_0
+            Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+#else
             Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+#endif
         }
         catch (Exception)
         {

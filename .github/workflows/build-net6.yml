@@ -11,7 +11,7 @@ on:
       - '*'
 
 env:
-  PROJECT_NAME: Btd6ModHelper
+  PROJECT_NAME: BloonsTD6 Mod Helper
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
   MELONLOADER_BRANCH: bootstrap-dotnet

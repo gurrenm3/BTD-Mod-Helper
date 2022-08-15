@@ -28,6 +28,8 @@
 
     <PropertyGroup Condition="('$(Configuration)' == 'BTD6_Debug_net6') Or ('$(Configuration)' == 'BTD6_Release_net6')">
       <TargetFramework>net6.0</TargetFramework>
+        <ProjectName>BloonsTD6 Mod Helper</ProjectName> <!--net6 needs old name still-->
+        <DocumentationFile>bin\BTD6_Debug_net6\BloonsTD6 Mod Helper.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">

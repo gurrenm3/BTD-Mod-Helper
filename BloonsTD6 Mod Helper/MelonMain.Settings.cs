@@ -99,6 +99,9 @@ internal partial class MelonMain
         min = 5,
         max = 300,
         stepSize = 1,
+#if NET6_0
+        requiresRestart = true,
+#endif
         icon = DartTimeIcon
     };
 
@@ -120,6 +123,9 @@ internal partial class MelonMain
         min = .1,
         max = 50,
         stepSize = .1f,
+#if NET6_0
+        requiresRestart = true,
+#endif
         icon = LocalNetworkIcon
     };
 
@@ -131,6 +137,9 @@ internal partial class MelonMain
         min = 1,
         max = 1000,
         stepSize = 1,
+#if NET6_0
+        requiresRestart = true,
+#endif
         icon = LocalNetworkIcon
     };
 
@@ -258,7 +267,7 @@ internal partial class MelonMain
         buttonText = "Generate"
     };
 
-    private static readonly ModSettingHotkey ExportSelectedTower = new (KeyCode.Backslash)
+    private static readonly ModSettingHotkey ExportSelectedTower = new(KeyCode.Backslash)
     {
         category = Debug,
         description = "While in game, exports the exact TowerModel being used by the selected tower."
