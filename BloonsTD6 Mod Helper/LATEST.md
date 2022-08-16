@@ -1,5 +1,6 @@
-- Added an annoying, impossible to miss (or escape...) Popup if you're not using correct MelonLoader version
-- Fixed issue where Double Cash doubled cash generation it wasn't supposed to
+- Added an annoying, impossible to miss Popup if you're not using a compatible MelonLoader version
+- Fixed issue where Double Cash mode was doubling cash generation it wasn't supposed to
 - Fixed Round Set Changer setting
 - Fixed sporadic issue with backing out of a Mod Settings menu
-- Internally switched to SetParent calls to avoid flooding the MelonLoader debug log
+- Fixed `OnMenuClosed()` still happening if you pressed Escape too early for the menu to actually close
+- Internally switched from `.parent =` to `SetParent` calls to avoid flooding the MelonLoader debug log

@@ -10,24 +10,23 @@ namespace BTD_Mod_Helper.Patches.UI;
 internal static class MenuManager_CloseCurrentMenu
 {
     [HarmonyPrefix]
-    private static void Prefix(MenuManager __instance, ref string __state)
+    private static void Prefix(MenuManager __instance, ref GameMenu __state)
     {
-        var current = __instance.GetCurrentMenu();
-        if (current != null &&
-            current.gameObject.HasComponent(out ModGameMenuTracker tracker) &&
+        __state = __instance.GetCurrentMenu();
+    }
+
+    [HarmonyPostfix]
+    private static void Postfix(MenuManager __instance, ref GameMenu __state)
+    {
+        if (__state != null && __instance.IsClosingOrOpeningMenu &&
+            __state.gameObject.HasComponent(out ModGameMenuTracker tracker) &&
             ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
         {
             modGameMenu.Closing = true;
             modGameMenu.OnMenuClosed();
         }
-
-        __state = current.Exists()?.name ?? "";
-
-    }
-
-    [HarmonyPostfix]
-    private static void Postfix(MenuManager __instance, ref string __state)
-    {
-        RoundSetChanger.OnMenuChanged(__state, __instance.menuStack.ToList().LastOrDefault()?.Item1 ?? "");
+        
+        RoundSetChanger.OnMenuChanged(__state.Exists()?.name ?? "",
+            __instance.menuStack.ToList().LastOrDefault()?.Item1 ?? "");
     }
 }
