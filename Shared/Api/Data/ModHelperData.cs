@@ -151,7 +151,7 @@ internal partial class ModHelperData
 
         // ReSharper disable once ConstantNullCoalescingCondition
         var iconPath = Icon ?? DefaultIcon;
-        var assemblyPath = "." + iconPath.Replace("/", ".");
+        var assemblyPath = "." + Path.GetFileName(iconPath);
         var resource = mod.GetAssembly()
             .GetManifestResourceNames()
             .FirstOrDefault(s => s.EndsWith(assemblyPath));

@@ -200,7 +200,7 @@ internal static class ModHelperGithub
                       asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
                   latestRelease.Assets[0]
                 : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
-                    DateTimeOffset.Now, mod.GetContentURL(mod.DllName), null);
+                    DateTimeOffset.Now, mod.GetContentURL(mod.ZipName ?? mod.DllName), null);
             var resultFile = await DownloadAsset(mod, asset, showPopup);
             if (resultFile != null)
             {
@@ -231,7 +231,7 @@ internal static class ModHelperGithub
         }
 
         var name = mod.DllName ?? releaseAsset.Name;
-        if (name == null || !name.EndsWith(".dll"))
+        if (mod.Mod != null && name == null)
         {
             name = $"{mod.Mod.GetAssembly().GetName().Name}.dll";
         }
@@ -261,7 +261,7 @@ internal static class ModHelperGithub
             switch (releaseAsset.ContentType)
             {
                 default:
-                    ModHelper.Error("Won't download release asset with content type {releaseAsset.ContentType}");
+                    ModHelper.Error($"Won't download release asset with content type {releaseAsset.ContentType}");
                     return null;
                 case DllContentType:
                 case DllContentType2:
@@ -272,18 +272,22 @@ internal static class ModHelperGithub
                     var directoryInfo = await ModHelperHttp.DownloadZip(releaseAsset.BrowserDownloadUrl);
                     if (directoryInfo != null)
                     {
-                        try
+                        var file = directoryInfo.GetFiles()
+                            .FirstOrDefault(info => info.Name.EndsWith(mod.DllName!));
+                        if (file == null)
                         {
-                            var dll = directoryInfo.GetFiles().First(s => s.Extension == "dll").FullName;
-                            File.Copy(dll, downloadFilePath);
-                            success = true;
+                            ModHelper.Warning($"Couldn't find file in Zip that matched DllName {mod.DllName}");
+                            file = directoryInfo.GetFiles().FirstOrDefault(s => s.Extension == "dll");
+                            if (file != null)
+                            {
+                                ModHelper.Warning($"Using the first .dll found instead, {file.Name}");
+                            }
                         }
-                        catch (InvalidOperationException)
+
+                        if (file != null)
                         {
-                            ModHelper.Warning(
-                                $"Zip archive did not contain {name}. " +
-                                "The mod developer may have made a typo, " +
-                                "or needs to use the DllName property in their ModHelperData.");
+                            File.Copy(file.FullName, downloadFilePath);
+                            success = true;
                         }
                     }
 
@@ -331,5 +335,17 @@ internal static class ModHelperGithub
                 ModHelper.Warning(e);
             }
         });
+    }
+
+    public static void CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target)
+    {
+        foreach (var dir in source.GetDirectories())
+        {
+            CopyFilesRecursively(dir, target.CreateSubdirectory(dir.Name));
+        }
+        foreach (var file in source.GetFiles())
+        {
+            file.CopyTo(Path.Combine(target.FullName, file.Name), true);
+        }
     }
 }

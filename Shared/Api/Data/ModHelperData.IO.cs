@@ -26,7 +26,7 @@ internal partial class ModHelperData
     private const string RepoNameRegex = "\\bRepoName\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string RepoOwnerRegex = "\\bRepoOwner\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string ManualDownloadRegex = "\\bManualDownload\\s*=\\s*(false|true);?[\n\r]+";
-    private const string ZipRegex = "\\bZipName\\s*=\\s*\"(.+)\\.zip\";?[\n\r]+";
+    private const string ZipRegex = "\\bZipName\\s*=\\s*\"(.+\\.zip)\";?[\n\r]+";
     private const string AuthorRegex = "\\bAuthor\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string SubPathRegex = "\\bSubPath\\s*=\\s*\"(.+)\";?[\n\r]+";
 

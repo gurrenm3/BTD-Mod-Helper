@@ -5,4 +5,5 @@
 - Fixed Round Set Changer setting
 - Fixed sporadic issue with backing out of a Mod Settings menu
 - Fixed `OnMenuClosed()` still happening if you pressed Escape too early for the menu to actually close
+- Fixed monorepo mods using ZipName without DllName not showing up in the Mod Browser
 - Internally switched from `.parent =` to `SetParent` calls to avoid flooding the MelonLoader debug log
