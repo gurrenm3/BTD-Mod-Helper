@@ -79,7 +79,8 @@ public partial class ModHelperComponent : MonoBehaviour
     public void SetParent(Transform newParent)
     {
         var t = transform;
-        t.parent = newParent;
+        // t.parent = newParent;
+        t.SetParent(newParent, false);
         initialInfo.Apply(RectTransform);
     }
 

@@ -2,3 +2,4 @@
 - Fixed issue where Double Cash doubled cash generation it wasn't supposed to
 - Fixed Round Set Changer setting
 - Fixed sporadic issue with backing out of a Mod Settings menu
+- Internally switched to SetParent calls to avoid flooding the MelonLoader debug log
