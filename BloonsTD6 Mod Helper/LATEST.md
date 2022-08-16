@@ -1,6 +1,7 @@
-- Added an annoying, impossible to miss Popup if you're not using a compatible MelonLoader version
+- Added the `SquareIcon` ModHelperData bool property to make the icon draw as constrained within panels rather than being allowed to slightly overflow
+- Added an impossible to miss Popup for if you're not using a compatible MelonLoader version
 - Added the ability to use a `<!--Mod Browser Message Start-->` markdown comment in release messages to only include information beyond a certain point
-- Added signifying icons for Verified Modders in the Mod Browser
+- Added checkmark icons for Verified Modders in the Mod Browser
 - Fixed issue where Double Cash mode was doubling cash generation it wasn't supposed to
 - Fixed Round Set Changer setting
 - Fixed sporadic issue with backing out of a Mod Settings menu

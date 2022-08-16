@@ -185,6 +185,9 @@ internal static class ModBrowserMenuModExt
         mod.Author.SetText(modHelperData.DisplayAuthor);
         mod.Author.Text.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
 
+        mod.Icon.RectTransform.sizeDelta = modHelperData.SquareIcon
+            ? new Vector2(ModsMenu.ModPanelHeight - 4, ModsMenu.ModPanelHeight - 4)
+            : new Vector2(ModsMenu.ModIconSize, ModsMenu.ModIconSize);
         Task.Run(async () =>
         {
             var success = await modHelperData.LoadIconFromRepoAsync();
