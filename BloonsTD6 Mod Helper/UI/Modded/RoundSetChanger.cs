@@ -136,7 +136,7 @@ internal static class RoundSetChanger
     {
         var screen = CommonForegroundScreen.instance.transform;
         var roundSetChanger = screen.FindChild("RoundSetChangerPanel");
-        if (roundSetChanger == null && MelonMain.ShowRoundsetChanger)
+        if (roundSetChanger == null)
         {
             CreatePanel(screen.gameObject);
         }
@@ -200,6 +200,8 @@ internal static class RoundSetChanger
 
     public static void OnMenuChanged(string currentMenu, string newMenu)
     {
+        if (!MelonMain.ShowRoundsetChanger) return;
+
         if (ShowOnMenus.Contains(newMenu) && !ShowOnMenus.Contains(currentMenu))
         {
             Show();

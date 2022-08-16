@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Models.TowerSets.Mods;
+using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
+using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
@@ -30,7 +34,7 @@ internal partial class MelonMain : BloonsTD6Mod
 
         // Mod Settings
         ModSettingsHandler.InitializeModSettings();
-        
+
         try
         {
             ModHelperHttp.Init();
@@ -49,8 +53,8 @@ internal partial class MelonMain : BloonsTD6Mod
 
         // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
-        
-        
+
+
         Schedule_GameModel_Loaded();
 
         try
@@ -70,6 +74,20 @@ internal partial class MelonMain : BloonsTD6Mod
 
     public override void OnUpdate()
     {
+        if (!MelonLoaderChecker.IsVersionNewEnough())
+        {
+            if (PopupScreen.instance != null && !PopupScreen.instance.IsPopupActive())
+            {
+                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Not On MelonLoader 0.5.5",
+                    "Mod Helper failed to load. Not On MelonLoader 0.5.5. Click ok to be taken to a page with more information.",
+                    new Action(() =>
+                    {
+                        ProcessHelper.OpenURL("https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Install-Guide");
+                    }), "Ok", null, "Cancel", Popup.TransitionAnim.Scale, instantClose: true);
+            }
+            return;
+        }
+
         ModByteLoader.OnUpdate();
 
         if (Game.instance is null)
@@ -85,6 +103,15 @@ internal partial class MelonMain : BloonsTD6Mod
 
         NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
+
+#if BTD6_DEBUG
+        if (TowerSelectionMenu.instance != null &&
+            TowerSelectionMenu.instance.selectedTower != null &&
+            ExportSelectedTower.JustPressed())
+        {
+            GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
+        }
+#endif
     }
 
     public override void OnTitleScreen()
@@ -98,7 +125,7 @@ internal partial class MelonMain : BloonsTD6Mod
         if (!scheduledInGamePatch) Schedule_InGame_Loaded();
 
         AutoSave.InitAutosave(this.GetModSettingsDir(true));
-        
+
         foreach (var gameMode in Game.instance.model.mods)
         {
             if (gameMode.name.EndsWith("Only"))
@@ -109,7 +136,7 @@ internal partial class MelonMain : BloonsTD6Mod
                     .Select(set => new LockTowerSetModModel(gameMode.name, set.Id)));
                 gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
             }
-            
+
             if (gameMode.mutatorMods == null) continue;
 
             foreach (var mutatorMod in gameMode.mutatorMods)

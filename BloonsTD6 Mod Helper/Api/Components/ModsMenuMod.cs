@@ -134,6 +134,9 @@ internal static class ModsMenuModExt
             : Color.white;
 
         mod.Icon.SetActive(!modHelperData.HasNoIcon);
+        mod.Icon.RectTransform.sizeDelta = modHelperData.SquareIcon
+            ? new Vector2(ModsMenu.ModPanelHeight - 4, ModsMenu.ModPanelHeight - 4)
+            : new Vector2(ModsMenu.ModIconSize, ModsMenu.ModIconSize);
     }
 
     public static string GetBackground(ModHelperData data)

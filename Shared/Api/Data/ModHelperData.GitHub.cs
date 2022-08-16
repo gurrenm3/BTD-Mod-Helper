@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
@@ -18,6 +19,7 @@ internal partial class ModHelperData
     private const string ModHelperModsJson = "ModHelperMods.json";
 
     private const string DescriptionBranchRegex = "Mod\\s+Browser\\s+Branch\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/]+)\"";
+    private const string DescriptionDataPathRegex = "Mod\\s*Helper\\s*Data\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/ ]+)\"";
 
     // Browser Mod Info
     internal Repository Repository { get; private set; }
@@ -26,6 +28,7 @@ internal partial class ModHelperData
     internal Release LatestRelease { get; private set; }
     internal GitHubCommit LatestCommit { get; private set; }
     internal string Branch { get; private set; }
+    internal string DataPath { get; private set; }
 
     internal bool UpdateAvailable =>
         Version != null &&
@@ -53,10 +56,18 @@ internal partial class ModHelperData
     private float splittingStarsAmongst = 1;
     internal int Stars => (int) Math.Ceiling((Repository?.StargazersCount ?? 0) / splittingStarsAmongst);
 
-    internal bool HasRequiredRepoData => SemVersion.TryParse(Version, out _) &&
-                                         RepoName != null &&
-                                         RepoOwner != null &&
-                                         (SubPath == null || DllName != null);
+    internal string RequiredRepoDataError
+    {
+        get
+        {
+            if (!SemVersion.TryParse(Version, out _)) return $"'{Version}' is not a valid SemVer";
+            if (string.IsNullOrEmpty(RepoName)) return "RepoName is null/empty";
+            if (string.IsNullOrEmpty(RepoOwner)) return "RepoOwner is null/empty";
+            if (SubPath != null && DllName == null && ZipName == null) return "SubPath used without DllName/ZipName";
+
+            return null;
+        }
+    }
 
     public ModHelperData(Repository repository, string subPath = null)
     {
@@ -64,25 +75,32 @@ internal partial class ModHelperData
         RepoOwner = repository.Owner.Login;
         RepoName = repository.Name;
         SubPath = subPath;
-        Branch = RepoOwner == ModHelper.RepoOwner && RepoName == ModHelper.RepoName
-            ? "3.0_Features"
-            : Repository.DefaultBranch;
+        Branch = Repository.DefaultBranch;
         if (GetRegexMatch<string>(Repository.Description ?? "", DescriptionBranchRegex) is string branch)
         {
             Branch = branch;
             if (RepoOwner == MelonMain.GitHubUsername)
             {
-                ModHelper.Msg($"Successfully set branch for {repository.FullName}  to {branch}");
+                ModHelper.Msg($"Successfully set branch for {repository.FullName} to {branch}");
+            }
+        }
+        if (string.IsNullOrEmpty(SubPath) &&
+            GetRegexMatch<string>(Repository.Description ?? "", DescriptionDataPathRegex) is string dataPath)
+        {
+            DataPath = dataPath;
+            if (RepoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Msg($"Successfully looking for ModHelperData for {repository.FullName} at {dataPath}");
             }
         }
     }
 
     internal string GetContentURL(string name)
     {
-        var path = name;
+        var path = WebUtility.UrlEncode(name);
         if (SubPath != null && !(SubPath.EndsWith(".json") || SubPath.EndsWith(".cs") || SubPath.EndsWith(".txt")))
         {
-            path = $"{SubPath}/{name}";
+            path = $"{SubPath}/{path}";
         }
 
         return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Branch}/{path}";
@@ -98,10 +116,14 @@ internal partial class ModHelperData
             {
                 data = await ModHelperHttp.Client.GetStringAsync(GetContentURL("Shared/ModHelper.cs"));
             }
-
-            if (SubPath != null && (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json") || SubPath.EndsWith(".cs")))
+            else if (SubPath != null &&
+                     (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json") || SubPath.EndsWith(".cs")))
             {
                 data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(SubPath));
+            }
+            else if (DataPath != null)
+            {
+                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(DataPath));
             }
 
             try
@@ -138,7 +160,7 @@ internal partial class ModHelperData
             else ReadValuesFromString(data, false);
 
 
-            if (HasRequiredRepoData)
+            if (RequiredRepoDataError == null)
             {
                 RepoDataSuccess = true;
                 RepoVersion = Version;
@@ -155,10 +177,23 @@ internal partial class ModHelperData
                     modHelperData.Branch = Branch;
                     modHelperData.RepoDataSuccess = true;
                 }
+
+
+                if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
+                {
+                    ManualDownload = true;
+
+                    if (RepoOwner == MelonMain.GitHubUsername)
+                    {
+                        ModHelper.Warning(
+                            $"Overriding {Repository.FullName} {SubPath} to be ManualDownload because it doesn't specify the DllName alongside the ZipName");
+                    }
+                }
             }
             else if (RepoOwner == MelonMain.GitHubUsername)
             {
-                ModHelper.Warning($"{Repository.FullName} did not have all required ModHelperData");
+                ModHelper.Warning(
+                    $"{Repository.FullName} {SubPath} did not have all required ModHelperData: {RequiredRepoDataError}");
             }
         }
         catch (Exception e)
@@ -171,7 +206,7 @@ internal partial class ModHelperData
         }
     }
 
-    private async Task<T> WhenFirstSucceededOrAllFailed<T>(IEnumerable<Task<T>> tasks)
+    private static async Task<T> WhenFirstSucceededOrAllFailed<T>(IEnumerable<Task<T>> tasks)
     {
         var taskList = new List<Task<T>>(tasks);
         while (taskList.Count > 0)

@@ -26,9 +26,10 @@ internal partial class ModHelperData
     private const string RepoNameRegex = "\\bRepoName\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string RepoOwnerRegex = "\\bRepoOwner\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string ManualDownloadRegex = "\\bManualDownload\\s*=\\s*(false|true);?[\n\r]+";
-    private const string ZipRegex = "\\bZipName\\s*=\\s*\"(.+)\\.zip\";?[\n\r]+";
+    private const string ZipRegex = "\\bZipName\\s*=\\s*\"(.+\\.zip)\";?[\n\r]+";
     private const string AuthorRegex = "\\bAuthor\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string SubPathRegex = "\\bSubPath\\s*=\\s*\"(.+)\";?[\n\r]+";
+    private const string SquareIconRegex = "\\SquareIcon\\s*=\\s*(false|true);?[\n\r]+";
 
     private static readonly Dictionary<string, MethodInfo> Setters;
     private static readonly Dictionary<string, MethodInfo> Getters;
@@ -81,6 +82,7 @@ internal partial class ModHelperData
             RepoName = GetRegexMatch<string>(data, RepoNameRegex);
             RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex);
         }
+        SquareIcon = GetRegexMatch<bool>(data, SquareIconRegex);
     }
 
     private void ReadValuesFromJson(string data, bool allowRepo = true)

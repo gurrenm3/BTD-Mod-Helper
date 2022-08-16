@@ -6,6 +6,7 @@ using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;
+using UnityEngine;
 using static BTD_Mod_Helper.Api.Enums.VanillaSprites;
 
 namespace BTD_Mod_Helper;
@@ -98,6 +99,9 @@ internal partial class MelonMain
         min = 5,
         max = 300,
         stepSize = 1,
+#if NET6_0
+        requiresRestart = true,
+#endif
         icon = DartTimeIcon
     };
 
@@ -119,6 +123,9 @@ internal partial class MelonMain
         min = .1,
         max = 50,
         stepSize = .1f,
+#if NET6_0
+        requiresRestart = true,
+#endif
         icon = LocalNetworkIcon
     };
 
@@ -130,6 +137,9 @@ internal partial class MelonMain
         min = 1,
         max = 1000,
         stepSize = 1,
+#if NET6_0
+        requiresRestart = true,
+#endif
         icon = LocalNetworkIcon
     };
 
@@ -255,6 +265,12 @@ internal partial class MelonMain
         category = Debug,
         description = "Generates the VanillaSprites.cs file based on the previous two settings",
         buttonText = "Generate"
+    };
+
+    private static readonly ModSettingHotkey ExportSelectedTower = new(KeyCode.Backslash)
+    {
+        category = Debug,
+        description = "While in game, exports the exact TowerModel being used by the selected tower."
     };
 
     #endregion

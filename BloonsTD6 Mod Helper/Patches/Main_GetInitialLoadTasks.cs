@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Assets.Scripts.Unity.Tasks;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppSystem.Collections.Generic;
 using UnhollowerBaseLib;
 using Main = Assets.Main.Main;
@@ -21,10 +22,7 @@ internal static class Main_GetInitialLoadTasks
     [HarmonyPostfix]
     private static void Postfix(ref SeriesTasks __result)
     {
-        if (ModHelper.FallbackToOldLoading)
-        {
-            return;
-        }
+        if (ModHelper.FallbackToOldLoading || !MelonLoaderChecker.IsVersionNewEnough()) return;
 
         var tasks = __result.Tasks.Cast<Il2CppReferenceArray<ITask>>().ToList();
         var gameModelLoad = tasks.Last();

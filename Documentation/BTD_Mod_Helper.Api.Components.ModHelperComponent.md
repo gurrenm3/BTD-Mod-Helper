@@ -1297,6 +1297,22 @@ Unity Component Update
 protected virtual void OnUpdate();
 ```
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.RemoveComponent_T_()'></a>
+
+## ModHelperComponent.RemoveComponent<T>() Method
+
+Removes a Component from a GameObject by destroying it
+
+```csharp
+public void RemoveComponent<T>()
+    where T : UnityEngine.Component;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.RemoveComponent_T_().T'></a>
+
+`T`
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.SetActive(bool)'></a>
 
 ## ModHelperComponent.SetActive(bool) Method

@@ -56,6 +56,7 @@ internal partial class ModHelperData
     public string ZipName { get; protected set; }
     public string Author { get; protected set; }
     public string SubPath { get; protected set; }
+    public bool SquareIcon { get; protected set; }
 
     /// <summary>
     /// The currently active mod that this is associated with, if any
@@ -151,7 +152,7 @@ internal partial class ModHelperData
 
         // ReSharper disable once ConstantNullCoalescingCondition
         var iconPath = Icon ?? DefaultIcon;
-        var assemblyPath = "." + iconPath.Replace("/", ".");
+        var assemblyPath = "." + Path.GetFileName(iconPath);
         var resource = mod.GetAssembly()
             .GetManifestResourceNames()
             .FirstOrDefault(s => s.EndsWith(assemblyPath));

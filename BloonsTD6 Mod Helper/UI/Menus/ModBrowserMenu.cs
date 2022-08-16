@@ -226,6 +226,10 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private void SetPage(int page)
     {
+        if (currentPage != page)
+        {
+            GameMenu.scrollRect.verticalNormalizedPosition = 1f;
+        }
         currentPage = page;
         if (currentPage < 0)
         {
