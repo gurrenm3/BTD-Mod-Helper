@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.Components;
@@ -74,13 +75,14 @@ internal static class ModHelperGithub
             .Concat((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d))
             .Append(new ModHelperData(await modHelperRepoSearchTask))
             .ToArray();
-        
+
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
-        
+
         Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
         var duration = DateTime.Now - start;
 
-        ModHelper.Msg($"Finished getting mods from github, found {Mods.Count} mods in {duration.TotalSeconds:F1} seconds");
+        ModHelper.Msg(
+            $"Finished getting mods from github, found {Mods.Count} mods in {duration.TotalSeconds:F1} seconds");
 
         UpdateRateLimit();
     }
@@ -162,9 +164,9 @@ internal static class ModHelperGithub
             {
                 screen.ShowPopup(PopupScreen.Placement.menuCenter,
                     $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
-                    mod.SubPath == null
+                    ParseReleaseMessage(mod.SubPath == null
                         ? latestRelease!.Body
-                        : latestCommit!.Commit.Message,
+                        : latestCommit!.Commit.Message),
                     new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No",
                     Popup.TransitionAnim.Scale, instantClose: true);
 
@@ -184,6 +186,9 @@ internal static class ModHelperGithub
 
         UpdateRateLimit();
     }
+
+    private static string ParseReleaseMessage(string body) =>
+        Regex.Split(body ?? "", @"<!--Mod Browser Message Start-->[\r\n\s]*").LastOrDefault() ?? "";
 
     private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease,
         bool showPopup)

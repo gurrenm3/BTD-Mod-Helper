@@ -4,3 +4,4 @@
 - Fixed sporadic issue with backing out of a Mod Settings menu
 - Fixed `OnMenuClosed()` still happening if you pressed Escape too early for the menu to actually close
 - Internally switched from `.parent =` to `SetParent` calls to avoid flooding the MelonLoader debug log
+- Added the ability to use a `<!--Mod Browser Message Start-->` markdown comment in release messages to only include information beyond a certain point
