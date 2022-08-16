@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Unity.Menu;
+using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.UI.Menus;
@@ -30,6 +31,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModHelperImage Installed => GetDescendent<ModHelperImage>("Installed");
     public ModHelperButton Star => GetDescendent<ModHelperButton>("Star");
     public ModHelperText StarCount => GetDescendent<ModHelperText>("StarCount");
+    public ModHelperButton Verified => GetDescendent<ModHelperButton>("Verified");
 
     public bool descriptionShowing;
 
@@ -76,19 +78,40 @@ internal class ModBrowserMenuMod : ModHelperPanel
             Size = ModsMenu.ModIconSize
         }, VanillaSprites.UISprite);
 
-        panel.AddText(new Info("Name")
+        var name = panel.AddText(new Info("Name")
         {
             Height = ModsMenu.ModNameHeight,
             FlexWidth = 3
-        }, "Name", ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
-        
+        }, "Name", ModsMenu.FontMedium, TextAlignmentOptions.MidlineLeft);
+        name.Text.enableAutoSizing = true;
+
         panel.AddPanel(new Info("LackOfIconPanel", size: 200));
 
-        panel.AddText(new Info("Author")
+        var authorPanel = panel.AddPanel(new Info("AuthorPanel")
         {
             Height = ModsMenu.ModNameHeight,
-            FlexWidth = 3
+            FlexWidth = 2
+        });
+        var authorResizingPanel = authorPanel.AddPanel(new Info("AuthorResizingPanel")
+        {
+            Height = ModsMenu.ModNameHeight
+        }, null, RectTransform.Axis.Horizontal);
+
+        var contentSizeFitter = authorResizingPanel.AddComponent<ContentSizeFitter>();
+        contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+        var authorText = authorResizingPanel.AddText(new Info("Author")
+        {
+            Height = ModsMenu.ModNameHeight
         }, "Author", ModsMenu.FontMedium);
+        authorText.RemoveComponent<LayoutElement>();
+        var verified = authorText.AddButton(new Info("Verified", 75)
+        {
+            Anchor = new Vector2(1, 0.5f),
+            Pivot = new Vector2(0, 0.5f),
+            X = ModsMenu.Padding / 2f
+        }, VanillaSprites.VerifiedIcon, null);
+        verified.RemoveComponent<Animator>();
 
         panel.AddText(new Info("Version")
         {
@@ -208,6 +231,16 @@ internal static class ModBrowserMenuModExt
         mod.StarCount.SetText($"{modHelperData.Stars}{(string.IsNullOrEmpty(modHelperData.SubPath) ? "" : "+")}");
         mod.Star.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.StarsUrl));
 
+        mod.Verified.SetActive(ModHelperGithub.VerifiedModders.Contains(modHelperData.RepoOwner));
+        var coolKidsClub = BlatantFavoritism.GetColor(modHelperData.RepoOwner) != Color.white;
+        mod.Verified.Button.SetOnClick(() => PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(
+            "This modder has been manually verified with the maintainers of BTD Mod Helper. " +
+            "Their work is trusted to not be unsafe, exploitative, obscene, or malicious. " +
+            (coolKidsClub
+                ? " Additionally, the special color indicates they are a significant Mod Helper contributor."
+                : ""))
+        ));
+        mod.Verified.Image.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
         mod.SetDescriptionShowing(false);
 
         mod.SetActive(true);

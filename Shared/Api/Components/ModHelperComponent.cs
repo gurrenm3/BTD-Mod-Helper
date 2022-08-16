@@ -110,6 +110,9 @@ public partial class ModHelperComponent : MonoBehaviour
 
     /// <inheritdoc cref="GameObject.AddComponent{T}" />
     public T AddComponent<T>() where T : Component => gameObject.AddComponent<T>();
+    
+    /// <inheritdoc cref="GameObjectExt.RemoveComponent{T}"/>
+    public void RemoveComponent<T>() where T : Component => gameObject.RemoveComponent<T>();
 
     /// <summary>
     /// Adds and returns a LayoutElement for this, making it work as part of a LayoutGroup
