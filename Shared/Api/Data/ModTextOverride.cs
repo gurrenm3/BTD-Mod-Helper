@@ -6,8 +6,7 @@ namespace BTD_Mod_Helper.Api.Data;
 /// <summary>
 /// Class for dynamically overriding In-Game text in a way that's compatible with other mods
 /// </summary>
-public abstract class ModTextOverride : ModContent
-{
+public abstract class ModTextOverride : ModContent {
     /// <inheritdoc />
     public override int RegisterPerFrame => 100;
 
@@ -23,34 +22,31 @@ public abstract class ModTextOverride : ModContent
     /// </summary>
     public abstract bool Active { get; }
 
-    internal virtual string TextValueForKey(string key) => TextValue;
-    
+    internal virtual string TextValueForKey(string key) {
+        return TextValue;
+    }
+
     /// <summary>
     /// The text that will actually be returned if this is active
     /// </summary>
     public abstract string TextValue { get; }
 
-    private protected static void AddToCache(string key, ModTextOverride textOverride)
-    {
-        if (!Cache.ContainsKey(key))
-        {
+    private protected static void AddToCache(string key, ModTextOverride textOverride) {
+        if (!Cache.ContainsKey(key)) {
             Cache[key] = new SortedSet<ModTextOverride>();
         }
 
-        if (!Cache[key].Add(textOverride))
-        {
+        if (!Cache[key].Add(textOverride)) {
             ModHelper.Warning($"Failed to register text override {textOverride.Id}");
         }
     }
-    
+
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         AddToCache(LocalizationKey, this);
     }
 
-    internal static bool TryGetOverride(string key, out string text)
-    {
+    internal static bool TryGetOverride(string key, out string text) {
         text = default;
         if (!Cache.TryGetValue(key, out var overrides)) return false;
 

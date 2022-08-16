@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts;
 using Assets.Scripts.Unity.Audio;
 using Assets.Scripts.Unity.CollectionEvent;
@@ -14,7 +15,9 @@ using Assets.Scripts.Unity.UI_New.HeroInGame;
 using Assets.Scripts.Unity.UI_New.LevelUp;
 using Assets.Scripts.Unity.UI_New.Main.PowersSelect;
 using Assets.Scripts.Unity.UI_New.Settings;
+
 using BTD_Mod_Helper.Api.Components;
+
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Api;
@@ -22,8 +25,7 @@ namespace BTD_Mod_Helper.Api;
 /// <summary>
 /// Class for a custom BTD6 menu
 /// </summary>
-public abstract class ModGameMenu : ModContent
-{
+public abstract class ModGameMenu : ModContent {
     internal static readonly Dictionary<string, ModGameMenu> Cache = new();
 
     /// <summary>
@@ -48,8 +50,7 @@ public abstract class ModGameMenu : ModContent
     public bool IsOpen { get; internal set; }
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         Cache[Id] = this;
     }
 
@@ -68,15 +69,13 @@ public abstract class ModGameMenu : ModContent
     /// <summary>
     /// Runs right as your custom menu is being closed
     /// </summary>
-    public virtual void OnMenuClosed()
-    {
+    public virtual void OnMenuClosed() {
     }
 
     /// <summary>
     /// Runs every time that your custom menu updates
     /// </summary>
-    public virtual void OnMenuUpdate()
-    {
+    public virtual void OnMenuUpdate() {
     }
 
 
@@ -85,17 +84,14 @@ public abstract class ModGameMenu : ModContent
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    protected static string MenuName<T>() where T : GameMenu
-    {
+    protected static string MenuName<T>() where T : GameMenu {
         return Types.TryGetValue(typeof(T), out var info) ? info.name : typeof(T).Name.Replace("Screen", "UI");
     }
 
-    internal static bool CheckOpen(GameMenu gameMenu, Object data, out Object outData)
-    {
+    internal static bool CheckOpen(GameMenu gameMenu, Object data, out Object outData) {
         if (data != null &&
             data.IsType(out ModMenuData menuData) &&
-            GetContent<ModGameMenu>().FirstOrDefault(menu => menu.Id == menuData.id) is ModGameMenu modGameMenu)
-        {
+            GetContent<ModGameMenu>().FirstOrDefault(menu => menu.Id == menuData.id) is ModGameMenu modGameMenu) {
             outData = menuData.baseData;
             var tracker = gameMenu.gameObject.AddComponent<ModGameMenuTracker>();
             tracker.modGameMenuId = modGameMenu.Id;
@@ -116,8 +112,7 @@ public abstract class ModGameMenu : ModContent
     /// <param name="data">The custom data to pass into your ModGameMenu's <see cref="OnMenuOpened"/> method</param>
     /// <param name="baseData">The data that you want to pass into the base menu's Open method, if you're still running the code</param>
     /// <typeparam name="T">The custom menu type to open</typeparam>
-    public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu
-    {
+    public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu {
         var modGameMenu = GetInstance<T>();
         modGameMenu.IsOpen = true;
         MenuManager.instance.OpenMenu(modGameMenu.BaseMenu, new ModMenuData(modGameMenu.Id, data, baseData));
@@ -140,29 +135,22 @@ public abstract class ModGameMenu : ModContent
         {typeof(ContentBrowser), (SceneNames.ContentBrowser, "data")}
     };
 
-    internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony)
-    {
-        foreach (var (type, (_, data)) in Types)
-        {
-            try
-            {
+    internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony) {
+        foreach (var (type, (_, data)) in Types) {
+            try {
                 harmony.PatchPrefix(type, "Open", typeof(ModGameMenu), "Patch_" + data);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ModHelper.Warning($"Failed to apply Open patch for {type.Name}");
                 ModHelper.Warning(e);
             }
         }
     }
 
-    private static bool Patch_data(GameMenu __instance, ref Object data)
-    {
+    private static bool Patch_data(GameMenu __instance, ref Object data) {
         return CheckOpen(__instance, data, out data);
     }
 
-    private static bool Patch_menuData(GameMenu __instance, ref Object menuData)
-    {
+    private static bool Patch_menuData(GameMenu __instance, ref Object menuData) {
         return CheckOpen(__instance, menuData, out menuData);
     }
 }
@@ -170,8 +158,7 @@ public abstract class ModGameMenu : ModContent
 /// <summary>
 /// Generic class for creating a ModGameMenu with the given type as it's base menu
 /// </summary>
-public abstract class ModGameMenu<T> : ModGameMenu where T : GameMenu
-{
+public abstract class ModGameMenu<T> : ModGameMenu where T : GameMenu {
     /// <inheritdoc />
     public override string BaseMenu => MenuName<T>();
 

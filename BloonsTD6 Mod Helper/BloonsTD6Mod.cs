@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+
 using Assets.Scripts.Models;
+using Assets.Scripts.Models.Map;
 using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Mods;
@@ -10,28 +12,30 @@ using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Input;
 using Assets.Scripts.Simulation.Objects;
 using Assets.Scripts.Simulation.Towers;
+using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
+using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
 using Assets.Scripts.Simulation.Towers.Projectiles;
 using Assets.Scripts.Simulation.Towers.Weapons;
-using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity;
-using Il2CppSystem.Collections.Generic;
-using NinjaKiwi.NKMulti;
-using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
-using Assets.Scripts.Simulation.Towers.Behaviors.Abilities;
-using Assets.Scripts.Models.Map;
 using Assets.Scripts.Unity.Audio;
+using Assets.Scripts.Unity.Display;
+using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Utils;
-using UnityEngine.UI;
+
 using BTD_Mod_Helper.Api.Coop;
+
+using Il2CppSystem.Collections.Generic;
+
+using NinjaKiwi.NKMulti;
+
+using UnityEngine.UI;
 
 namespace BTD_Mod_Helper;
 
 /// <summary>
 /// Extend this Class instead of MelonMod to gain access to dozens of easy to use built-in hooks
 /// </summary>
-public abstract class BloonsTD6Mod : BloonsMod
-{
+public abstract class BloonsTD6Mod : BloonsMod {
     /// <summary>
     /// Adds a TowerModel to the official list of TowerModels being used by the game
     /// <br/>
@@ -40,8 +44,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <param name="newTowerModel">The new tower model</param>
     /// <param name="towerDetailsModel">A TowerDetailsModel to go with it, if it'll be in the shop</param>
     [Obsolete("Just use Game.instance.model.AddTowerToGame")]
-    public static void AddTowerToGame(TowerModel newTowerModel, TowerDetailsModel towerDetailsModel = null)
-    {
+    public static void AddTowerToGame(TowerModel newTowerModel, TowerDetailsModel towerDetailsModel = null) {
         Game.instance.model.AddTowerToGame(newTowerModel, towerDetailsModel!);
     }
 
@@ -52,8 +55,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
-    public virtual void OnConnected(NKMultiGameInterface nkGi)
-    {
+    public virtual void OnConnected(NKMultiGameInterface nkGi) {
     }
 
     /// <summary>
@@ -61,8 +63,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
-    public virtual void OnConnectFail(NKMultiGameInterface nkGi)
-    {
+    public virtual void OnConnectFail(NKMultiGameInterface nkGi) {
     }
 
     /// <summary>
@@ -70,8 +71,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
-    public virtual void OnDisconnected(NKMultiGameInterface nkGi)
-    {
+    public virtual void OnDisconnected(NKMultiGameInterface nkGi) {
     }
 
     /// <summary>
@@ -80,8 +80,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
     /// <param name="peerId">Index of the peer in question.</param>
-    public virtual void OnPeerConnected(NKMultiGameInterface nkGi, int peerId)
-    {
+    public virtual void OnPeerConnected(NKMultiGameInterface nkGi, int peerId) {
     }
 
     /// <summary>
@@ -90,8 +89,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
     /// <param name="peerId">Index of the peer in question.</param>
-    public virtual void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId)
-    {
+    public virtual void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId) {
     }
 
     /// <summary>
@@ -103,8 +101,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Otherwise, return false. Seriously.
     /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
     /// </summary>
-    public virtual bool ActOnMessage(Message message)
-    {
+    public virtual bool ActOnMessage(Message message) {
         return false;
     }
 
@@ -112,8 +109,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Called when a map model is loaded by the game. Equivelant to MapLoader.Load.
     /// </summary>
     /// <param name="mapModel">The map that was just loaded. It is passed by reference to allow for modifications.</param>
-    public virtual void OnMapModelLoaded(ref MapModel mapModel)
-    {
+    public virtual void OnMapModelLoaded(ref MapModel mapModel) {
     }
 
 
@@ -122,38 +118,33 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on ProfileModel_Validate
     /// </summary>
-    public virtual void OnProfileLoaded(ProfileModel result)
-    {
+    public virtual void OnProfileLoaded(ProfileModel result) {
     }
 
     /// <summary>
     /// Perform actions on a profile right before the Mod Helper cleans it. If you see that the Mod Helper cleans
     /// past profile data from your mod on startup, it should be removed here.
     /// </summary>
-    public virtual void PreCleanProfile(ProfileModel profile)
-    {
+    public virtual void PreCleanProfile(ProfileModel profile) {
     }
 
     /// <summary>
     /// If you removed any data in PreCleanProfile, you may want to add it back here, or just call <see cref="OnProfileLoaded"/>
     /// again on the profile.
     /// </summary>
-    public virtual void PostCleanProfile(ProfileModel profile)
-    {
+    public virtual void PostCleanProfile(ProfileModel profile) {
     }
 
     /// <summary>
     /// Called when InGame.instance.UnityToSimulation.Simulation is not null
     /// </summary>
-    public virtual void OnInGameLoaded(InGame inGame)
-    {
+    public virtual void OnInGameLoaded(InGame inGame) {
     }
 
     /// <summary>
     /// Called when Game.instance.model is not null
     /// </summary>
-    public virtual void OnGameModelLoaded(GameModel model)
-    {
+    public virtual void OnGameModelLoaded(GameModel model) {
     }
 
     /// <summary>
@@ -161,8 +152,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
     /// </summary>
-    public virtual void OnNewGameModel(GameModel result)
-    {
+    public virtual void OnNewGameModel(GameModel result) {
     }
 
     /// <summary>
@@ -171,8 +161,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <param name="towerInventory"></param>
     /// <param name="allTowersInTheGame"></param>
     public virtual void OnTowerInventoryInitialized(TowerInventory towerInventory,
-        List<TowerDetailsModel> allTowersInTheGame)
-    {
+        List<TowerDetailsModel> allTowersInTheGame) {
     }
 
     /// <summary>
@@ -180,8 +169,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
     /// </summary>
-    public virtual void OnNewGameModel(GameModel result, List<ModModel> mods)
-    {
+    public virtual void OnNewGameModel(GameModel result, List<ModModel> mods) {
     }
 
     /// <summary>
@@ -189,8 +177,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
     /// </summary>
-    public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Il2CppSystem.Action<UnityDisplayNode> action)
-    {
+    public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Il2CppSystem.Action<UnityDisplayNode> action) {
     }
 
     /// <summary>
@@ -198,8 +185,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on AudioFactory_Start
     /// </summary>
-    public virtual void OnAudioFactoryStart(AudioFactory audioFactory)
-    {
+    public virtual void OnAudioFactoryStart(AudioFactory audioFactory) {
     }
 
     /// <summary>
@@ -207,8 +193,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on ResourceLoader_LoadSpriteFromSpriteReferenceAsync
     /// </summary>
-    public virtual void OnSpriteLoad(SpriteReference spriteref, Image image)
-    {
+    public virtual void OnSpriteLoad(SpriteReference spriteref, Image image) {
     }
 
     #endregion
@@ -220,8 +205,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on MainMenu.OnEnable
     /// </summary>
-    public virtual void OnMainMenu()
-    {
+    public virtual void OnMainMenu() {
     }
 
     /// <summary>
@@ -229,8 +213,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on InGame.OnVictory
     /// </summary>
-    public virtual void OnVictory()
-    {
+    public virtual void OnVictory() {
     }
 
     /// <summary>
@@ -238,8 +221,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on InGame.StartMatch
     /// </summary>
-    public virtual void OnMatchStart()
-    {
+    public virtual void OnMatchStart() {
     }
 
     /// <summary>
@@ -247,8 +229,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on InGame.Restart
     /// </summary>
-    public virtual void OnRestart()
-    {
+    public virtual void OnRestart() {
     }
 
     /// <summary>
@@ -256,8 +237,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on TimeManager.SetFastForward
     /// </summary>
-    public virtual void OnFastForwardChanged(bool newValue)
-    {
+    public virtual void OnFastForwardChanged(bool newValue) {
     }
 
 
@@ -266,8 +246,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on TitleScreen.Start
     /// </summary>
-    public virtual void OnTitleScreen()
-    {
+    public virtual void OnTitleScreen() {
     }
 
 
@@ -276,8 +255,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on InGame.Quit
     /// </summary>
-    public virtual void OnMatchEnd()
-    {
+    public virtual void OnMatchEnd() {
     }
 
     #endregion
@@ -290,8 +268,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPreFix on Bloon.Leaked
     /// </summary>
-    public virtual bool PreBloonLeaked(Bloon bloon)
-    {
+    public virtual bool PreBloonLeaked(Bloon bloon) {
         return true;
     }
 
@@ -301,8 +278,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.Leaked
     /// </summary>
-    public virtual void PostBloonLeaked(Bloon bloon)
-    {
+    public virtual void PostBloonLeaked(Bloon bloon) {
     }
 
 
@@ -311,8 +287,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.Initialise
     /// </summary>
-    public virtual void OnBloonCreated(Bloon bloon)
-    {
+    public virtual void OnBloonCreated(Bloon bloon) {
     }
 
     /// <summary>
@@ -320,8 +295,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.UpdatedModel
     /// </summary>
-    public virtual void OnBloonModelUpdated(Bloon bloon, Model model)
-    {
+    public virtual void OnBloonModelUpdated(Bloon bloon, Model model) {
     }
 
 
@@ -330,16 +304,14 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.OnDestroy
     /// </summary>
-    public virtual void OnBloonDestroy(Bloon bloon)
-    {
+    public virtual void OnBloonDestroy(Bloon bloon) {
     }
 
     /// <summary>
     /// Called right after a Bloon is destroyed, but only when it's popped and not leaked
     /// </summary>
     /// <param name="bloon"></param>
-    public virtual void OnBloonPopped(Bloon bloon)
-    {
+    public virtual void OnBloonPopped(Bloon bloon) {
     }
 
     /// <summary>
@@ -350,8 +322,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile,
         bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower,
         [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true,
-        bool ignoreNonTargetable = false, bool blockSpawnChildren = false)
-    {
+        bool ignoreNonTargetable = false, bool blockSpawnChildren = false) {
     }
 
     /*
@@ -375,8 +346,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPreFix on InputManager.CreateTowerGraphicsAsync
     /// </summary>
-    public virtual void OnTowerGraphicsCreated(TowerModel towerModel, List<UnityDisplayNode> placementGraphics)
-    {
+    public virtual void OnTowerGraphicsCreated(TowerModel towerModel, List<UnityDisplayNode> placementGraphics) {
     }
 
     /// <summary>
@@ -384,8 +354,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Tower.Initialise
     /// </summary>
-    public virtual void OnTowerCreated(Tower tower, Entity target, Model modelToUse)
-    {
+    public virtual void OnTowerCreated(Tower tower, Entity target, Model modelToUse) {
     }
 
     /// <summary>
@@ -393,8 +362,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Tower.Destroyed
     /// </summary>
-    public virtual void OnTowerDestroyed(Tower tower)
-    {
+    public virtual void OnTowerDestroyed(Tower tower) {
     }
 
     /// <summary>
@@ -402,8 +370,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Tower.OnSold
     /// </summary>
-    public virtual void OnTowerSold(Tower tower, float amount)
-    {
+    public virtual void OnTowerSold(Tower tower, float amount) {
     }
 
     /// <summary>
@@ -411,8 +378,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on TowerSelectionMenu.Show
     /// </summary>
-    public virtual void OnTowerSelected(Tower tower)
-    {
+    public virtual void OnTowerSelected(Tower tower) {
     }
 
     /// <summary>
@@ -420,15 +386,13 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Tower.UnHighlight
     /// </summary>
-    public virtual void OnTowerDeselected(Tower tower)
-    {
+    public virtual void OnTowerDeselected(Tower tower) {
     }
 
     /// <summary>
     /// Called right after a Tower is upgraded
     /// </summary>
-    public virtual void OnTowerUpgraded(Tower tower, string upgradeName, TowerModel newBaseTowerModel)
-    {
+    public virtual void OnTowerUpgraded(Tower tower, string upgradeName, TowerModel newBaseTowerModel) {
     }
 
     /// <summary>
@@ -436,8 +400,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Tower.UpdatedModel
     /// </summary>
-    public virtual void OnTowerModelChanged(Tower tower, Model newModel)
-    {
+    public virtual void OnTowerModelChanged(Tower tower, Model newModel) {
     }
 
     /// <summary>
@@ -447,8 +410,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Tower.GetSavedData
     /// </summary>
-    public virtual void OnTowerSaved(Tower tower, TowerSaveDataModel saveData)
-    {
+    public virtual void OnTowerSaved(Tower tower, TowerSaveDataModel saveData) {
     }
 
     /// <summary>
@@ -458,8 +420,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Tower.SetSavedData
     /// </summary>
-    public virtual void OnTowerLoaded(Tower tower, TowerSaveDataModel saveData)
-    {
+    public virtual void OnTowerLoaded(Tower tower, TowerSaveDataModel saveData) {
     }
 
     #endregion
@@ -473,8 +434,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Equivalent to a HarmonyPostFix on Simulation.AddCash
     /// </summary>
     public virtual void OnCashAdded(double amount, Simulation.CashType from,
-        int cashIndex, Simulation.CashSource source, Tower tower)
-    {
+        int cashIndex, Simulation.CashSource source, Tower tower) {
     }
 
     /// <summary>
@@ -483,8 +443,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Equivalent to a HarmonyPostFix on Simulation.RemoveCash
     /// </summary>
     public virtual void OnCashRemoved(double amount, Simulation.CashType from, int cashIndex,
-        Simulation.CashSource source)
-    {
+        Simulation.CashSource source) {
     }
 
     /// <summary>
@@ -492,8 +451,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Simulation.OnRoundStart
     /// </summary>
-    public virtual void OnRoundStart()
-    {
+    public virtual void OnRoundStart() {
     }
 
     /// <summary>
@@ -501,8 +459,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Simulation.OnRoundEnd
     /// </summary>
-    public virtual void OnRoundEnd()
-    {
+    public virtual void OnRoundEnd() {
     }
 
     /// <summary>
@@ -510,8 +467,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Simulation.OnDefeat
     /// </summary>
-    public virtual void OnDefeat()
-    {
+    public virtual void OnDefeat() {
     }
 
     #endregion
@@ -523,8 +479,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Ability.Activate
     /// </summary>
-    public virtual void OnAbilityCast(Ability ability)
-    {
+    public virtual void OnAbilityCast(Ability ability) {
     }
 
     /// <summary>
@@ -532,8 +487,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Attack.Initialise
     /// </summary>
-    public virtual void OnAttackCreated(Attack attack, Entity entity, Model modelToUse)
-    {
+    public virtual void OnAttackCreated(Attack attack, Entity entity, Model modelToUse) {
     }
 
 
@@ -542,8 +496,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Attack.UpdatedModel
     /// </summary>
-    public virtual void OnAttackModelChanged(Attack attack, Model newModel)
-    {
+    public virtual void OnAttackModelChanged(Attack attack, Model newModel) {
     }
 
     /// <summary>
@@ -551,8 +504,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Weapon.Initialise
     /// </summary>
-    public virtual void OnWeaponCreated(Weapon weapon, Entity entity, Model modelToUse)
-    {
+    public virtual void OnWeaponCreated(Weapon weapon, Entity entity, Model modelToUse) {
     }
 
     /// <summary>
@@ -560,8 +512,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Weapon.SpawnDart
     /// </summary>
-    public virtual void OnWeaponFire(Weapon weapon)
-    {
+    public virtual void OnWeaponFire(Weapon weapon) {
     }
 
     /// <summary>
@@ -569,8 +520,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Weapon.UpdatedModel
     /// </summary>
-    public virtual void OnWeaponModelChanged(Weapon weapon, Model newModel)
-    {
+    public virtual void OnWeaponModelChanged(Weapon weapon, Model newModel) {
     }
 
     /// <summary>
@@ -578,8 +528,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Projectile.Initialise
     /// </summary>
-    public virtual void OnProjectileCreated(Projectile projectile, Entity entity, Model modelToUse)
-    {
+    public virtual void OnProjectileCreated(Projectile projectile, Entity entity, Model modelToUse) {
     }
 
 
@@ -588,15 +537,13 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Projectile.UpdatedModel
     /// </summary>
-    public virtual void OnProjectileModelChanged(Projectile projectile, Model newModel)
-    {
+    public virtual void OnProjectileModelChanged(Projectile projectile, Model newModel) {
     }
 
     /// <summary>
     /// Called when all of the existing GameObjects within a match are destroyed
     /// </summary>
-    public virtual void OnGameObjectsReset()
-    {
+    public virtual void OnGameObjectsReset() {
     }
 
     #endregion

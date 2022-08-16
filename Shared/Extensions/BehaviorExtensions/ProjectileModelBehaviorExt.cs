@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Models;
+
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,21 +9,18 @@ using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 #endif
 
-namespace BTD_Mod_Helper.Extensions
-{
+namespace BTD_Mod_Helper.Extensions {
     /// <summary>
     /// Behavior Extensions for ProjectileModels
     /// </summary>
-    public static class ProjectileModelBehaviorExt
-    {
+    public static class ProjectileModelBehaviorExt {
         /// <summary>
         /// Check if this has a specific Behavior
         /// </summary>
         /// <typeparam name="T">The Behavior you're checking for</typeparam>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static bool HasBehavior<T>(this ProjectileModel model) where T : Model
-        {
+        public static bool HasBehavior<T>(this ProjectileModel model) where T : Model {
             return ModelBehaviorExt.HasBehavior<T>(model);
         }
 
@@ -33,8 +31,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="model"></param>
         /// <param name="behavior"></param>
         /// <returns></returns>
-        public static bool HasBehavior<T>(this ProjectileModel model, out T behavior) where T : Model
-        {
+        public static bool HasBehavior<T>(this ProjectileModel model, out T behavior) where T : Model {
             return ModelBehaviorExt.HasBehavior(model, out behavior);
         }
 
@@ -44,8 +41,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want</typeparam>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static T GetBehavior<T>(this ProjectileModel model) where T : Model
-        {
+        public static T GetBehavior<T>(this ProjectileModel model) where T : Model {
             return ModelBehaviorExt.GetBehavior<T>(model);
         }
 
@@ -55,8 +51,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want</typeparam>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static List<T> GetBehaviors<T>(this ProjectileModel model) where T : Model
-        {
+        public static List<T> GetBehaviors<T>(this ProjectileModel model) where T : Model {
             return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
         }
 
@@ -66,8 +61,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want to add</typeparam>
         /// <param name="model"></param>
         /// <param name="behavior"></param>
-        public static void AddBehavior<T>(this ProjectileModel model, T behavior) where T : Model
-        {
+        public static void AddBehavior<T>(this ProjectileModel model, T behavior) where T : Model {
             ModelBehaviorExt.AddBehavior(model, behavior);
         }
 
@@ -76,8 +70,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         /// <param name="model"></param>
-        public static void RemoveBehavior<T>(this ProjectileModel model) where T : Model
-        {
+        public static void RemoveBehavior<T>(this ProjectileModel model) where T : Model {
             ModelBehaviorExt.RemoveBehavior<T>(model);
         }
 
@@ -87,8 +80,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         /// <param name="model"></param>
         /// <param name="behavior"></param>
-        public static void RemoveBehavior<T>(this ProjectileModel model, T behavior) where T : Model
-        {
+        public static void RemoveBehavior<T>(this ProjectileModel model, T behavior) where T : Model {
             ModelBehaviorExt.RemoveBehavior(model, behavior);
         }
 
@@ -97,8 +89,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
         /// <param name="model"></param>
-        public static void RemoveBehaviors<T>(this ProjectileModel model) where T : Model
-        {
+        public static void RemoveBehaviors<T>(this ProjectileModel model) where T : Model {
             ModelBehaviorExt.RemoveBehaviors<T>(model);
         }
     }

@@ -3,7 +3,6 @@
 /// <summary>
 /// Extensions for UnityToSimulation
 /// </summary>
-public static class UnityToSimulationExt
-{
-        
+public static class UnityToSimulationExt {
+
 }

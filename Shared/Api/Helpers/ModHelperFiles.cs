@@ -3,18 +3,12 @@ using System.IO;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 
-internal static class ModHelperFiles
-{
-    public static void CreateTargetsFile(string path)
-    {
-        if (!Directory.Exists(path))
-        {
-            try
-            {
+internal static class ModHelperFiles {
+    public static void CreateTargetsFile(string path) {
+        if (!Directory.Exists(path)) {
+            try {
                 Directory.CreateDirectory(path);
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 return;
             }
         }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -13,8 +15,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// <summary>
 /// Dummy ModTower that can be used to make a Paragon for a base tower.
 /// </summary>
-public abstract class ModVanillaParagon : ModTower
-{
+public abstract class ModVanillaParagon : ModTower {
     internal sealed override ModTowerSet ModTowerSet => base.ModTowerSet;
 
     internal sealed override int UpgradePaths => 0;
@@ -64,12 +65,10 @@ public abstract class ModVanillaParagon : ModTower
     /// <summary>
     /// Tower gets modified in the Paragon upgrade
     /// </summary>
-    public sealed override void ModifyBaseTowerModel(TowerModel towerModel)
-    {
+    public sealed override void ModifyBaseTowerModel(TowerModel towerModel) {
     }
 
-    internal override string TowerId(int[] tiers)
-    {
+    internal override string TowerId(int[] tiers) {
         return BaseTowerModel.baseId + "-Paragon";
     }
 
@@ -77,8 +76,7 @@ public abstract class ModVanillaParagon : ModTower
     /// Doesn't generate any of the tower on its own
     /// </summary>
     /// <returns></returns>
-    public sealed override IEnumerable<int[]> TowerTiers()
-    {
+    public sealed override IEnumerable<int[]> TowerTiers() {
         return Array.Empty<int[]>();
     }
 
@@ -86,17 +84,17 @@ public abstract class ModVanillaParagon : ModTower
     /// Controlled by the ModParagonUpgrade
     /// </summary>
     public sealed override string Portrait => base.Portrait;
-        
+
     /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
     public sealed override string Icon => base.Icon;
-        
+
     /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
     public sealed override SpriteReference IconReference => base.IconReference;
-        
+
     /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
@@ -112,8 +110,7 @@ public abstract class ModVanillaParagon : ModTower
     /// </summary>
     /// <param name="towerSet"></param>
     /// <returns></returns>
-    public sealed override int GetTowerIndex(List<TowerDetailsModel> towerSet)
-    {
+    public sealed override int GetTowerIndex(List<TowerDetailsModel> towerSet) {
         return base.GetTowerIndex(towerSet);
     }
 
@@ -122,31 +119,26 @@ public abstract class ModVanillaParagon : ModTower
     /// </summary>
     public override string Name => BaseTowerModel.baseId;
 
-    internal override TowerModel GetDefaultTowerModel()
-    {
+    internal override TowerModel GetDefaultTowerModel() {
         var baseTowerModel = base.GetDefaultTowerModel();
         baseTowerModel.baseId = BaseTowerModel.baseId;
         return baseTowerModel;
     }
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         base.Register();
         AddUpgradesToRealTowers();
     }
 
-    internal void AddUpgradesToRealTowers()
-    {
+    internal void AddUpgradesToRealTowers() {
         foreach (var towerModel in Game.instance.model.GetTowersWithBaseId(BaseTowerModel.baseId)
-                     .Where(towerModel => towerModel.tier == 5))
-        {
+                     .Where(towerModel => towerModel.tier == 5)) {
             towerModel.paragonUpgrade = new UpgradePathModel(paragonUpgrade.Id, $"{towerModel.baseId}-Paragon");
         }
     }
 
-    internal override TowerModel GetBaseParagonModel()
-    {
+    internal override TowerModel GetBaseParagonModel() {
         var towerModel = GetDefaultTowerModel();
         towerModel.appliedUpgrades = new Il2CppStringArray(6);
         Game.instance.model.GetTower(towerModel.baseId, 5).appliedUpgrades

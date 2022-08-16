@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Text;
+
 using Newtonsoft.Json;
+
 using NinjaKiwi.NKMulti;
+
 using UnhollowerBaseLib;
 
-namespace BTD_Mod_Helper.Api.Coop
-{
+namespace BTD_Mod_Helper.Api.Coop {
     /// <summary>
     /// Utility functions used for sending messages over the network.
     /// </summary>
-    public class MessageUtils
-    {
+    public class MessageUtils {
         /// <summary>
         /// Creates a message to be sent over the network.
         /// The message will be serialized as JSON.
         /// </summary>
         /// <param name="objectToSend">The object to be sent. The object's properties will be serialized.</param>
         /// <param name="code">Unique code for your specific message.</param>
-        public static Message CreateMessageEx<T>(T objectToSend, string code = "")
-        {
+        public static Message CreateMessageEx<T>(T objectToSend, string code = "") {
             var json = JsonConvert.SerializeObject(objectToSend);
             var serialize = Encoding.Default.GetBytes(json);
             code = string.IsNullOrEmpty(code) ? "BTD6_ModHelper" : code;
@@ -30,8 +30,7 @@ namespace BTD_Mod_Helper.Api.Coop
         /// Assumes message is sent as JSON. (via <see cref="CreateMessageEx{T}"/>)
         /// </summary>
         /// <param name="serializedMessage">Raw bytes received from the network.</param>
-        public static T ReadMessage<T>(Il2CppStructArray<byte> serializedMessage)
-        {
+        public static T ReadMessage<T>(Il2CppStructArray<byte> serializedMessage) {
             var modMessage = Encoding.Default.GetString(serializedMessage);
             return JsonConvert.DeserializeObject<T>(modMessage);
         }
@@ -41,8 +40,7 @@ namespace BTD_Mod_Helper.Api.Coop
         /// Assumes message is sent as JSON. (via <see cref="CreateMessageEx{T}"/>)
         /// </summary>
         /// <param name="message">Message received from the network.</param>
-        public static T ReadMessage<T>(Message message)
-        {
+        public static T ReadMessage<T>(Message message) {
             return ReadMessage<T>(message.bytes);
         }
 
@@ -55,7 +53,9 @@ namespace BTD_Mod_Helper.Api.Coop
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         [Obsolete($"For backwards compatibility reasons only, please use {nameof(CreateMessageEx)}")]
-        public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Il2CppSystem.Object => CreateMessageEx(objectToSend, code);
+        public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Il2CppSystem.Object {
+            return CreateMessageEx(objectToSend, code);
+        }
         #endregion
     }
 }

@@ -1,23 +1,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
-internal static class RoundSetChanger
-{
+internal static class RoundSetChanger {
     public static string RoundSetOverride { get; private set; }
-    
+
     private static readonly string[] ShowOnMenus =
     {
         "MapSelectUI", "DifficultySelectUI", "ModeSelectUI",
@@ -25,19 +27,17 @@ internal static class RoundSetChanger
     };
 
     private const float AnimatorSpeed = .75f;
-    private const int AnimationTicks = (int) (10 / AnimatorSpeed);
+    private const int AnimationTicks = (int)(10 / AnimatorSpeed);
 
     private static ModHelperPanel buttonPanel;
     private static ModHelperScrollPanel optionsPanel;
     private static ModHelperButton button;
     private static readonly Dictionary<string, ModHelperImage> CheckMarks = new();
 
-    private static void CreatePanel(GameObject screen)
-    {
+    private static void CreatePanel(GameObject screen) {
         CheckMarks.Clear();
         RoundSetOverride = "";
-        buttonPanel = screen.AddModHelperPanel(new Info("RoundSetChangerPanel")
-        {
+        buttonPanel = screen.AddModHelperPanel(new Info("RoundSetChangerPanel") {
             Anchor = new Vector2(1, 0), Pivot = new Vector2(1, 0)
         });
 
@@ -46,8 +46,7 @@ internal static class RoundSetChanger
         animator.speed = AnimatorSpeed;
 
 
-        optionsPanel = screen.AddModHelperScrollPanel(new Info("OptionsScroll")
-        {
+        optionsPanel = screen.AddModHelperScrollPanel(new Info("OptionsScroll") {
             Width = 400, AnchorMin = new Vector2(1, 0), AnchorMax = new Vector2(1, 1), Pivot = new Vector2(1, 0)
         }, RectTransform.Axis.Vertical, null, 50, 100);
 
@@ -60,8 +59,7 @@ internal static class RoundSetChanger
 
         optionsPanel.SetActive(false);
 
-        foreach (var modRoundSet in ModContent.GetContent<ModRoundSet>().Where(set => set.AddToOverrideMenu))
-        {
+        foreach (var modRoundSet in ModContent.GetContent<ModRoundSet>().Where(set => set.AddToOverrideMenu)) {
             optionsPanel.AddScrollContent(
                 CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.IconReference.guidRef)
             );
@@ -89,11 +87,9 @@ internal static class RoundSetChanger
         );
     }
 
-    private static ModHelperButton CreateRoundSetButton(string id, string displayName, string icon)
-    {
+    private static ModHelperButton CreateRoundSetButton(string id, string displayName, string icon) {
         var roundButton = ModHelperButton.Create(new Info(displayName, width: 300, height: 300),
-            icon, new Action(() =>
-            {
+            icon, new Action(() => {
                 StopOptionsMode();
                 RoundSetOverride = id;
                 button.Image.SetSprite(icon);
@@ -110,8 +106,7 @@ internal static class RoundSetChanger
         return roundButton;
     }
 
-    private static void StartOptionsMode()
-    {
+    private static void StartOptionsMode() {
         MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
         HideButton();
         RevealOptions();
@@ -121,8 +116,7 @@ internal static class RoundSetChanger
         }*/
     }
 
-    private static void StopOptionsMode()
-    {
+    private static void StopOptionsMode() {
         MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         HideOptions();
         RevealButton();
@@ -132,83 +126,68 @@ internal static class RoundSetChanger
         }*/
     }
 
-    private static void Init()
-    {
+    private static void Init() {
         var screen = CommonForegroundScreen.instance.transform;
         var roundSetChanger = screen.FindChild("RoundSetChangerPanel");
-        if (roundSetChanger == null)
-        {
+        if (roundSetChanger == null) {
             CreatePanel(screen.gameObject);
         }
     }
 
-    private static void RevealButton()
-    {
+    private static void RevealButton() {
         buttonPanel.SetActive(true);
         buttonPanel.GetComponent<Animator>().Play("PopupSlideIn");
     }
 
-    private static void HideButton()
-    {
+    private static void HideButton() {
         buttonPanel.GetComponent<Animator>().Play("PopupSlideOut");
         TaskScheduler.ScheduleTask(() => buttonPanel.SetActive(false), ScheduleType.WaitForFrames, AnimationTicks);
     }
 
-    private static void RevealOptions()
-    {
+    private static void RevealOptions() {
         optionsPanel.SetActive(true);
         optionsPanel.GetComponent<Animator>().Play("PopupScaleIn");
         optionsPanel.ScrollContent.RectTransform.localPosition = new Vector3(-200, 0, 0);
-        foreach (var (id, image) in CheckMarks)
-        {
+        foreach (var (id, image) in CheckMarks) {
             image.SetActive(RoundSetOverride == id);
         }
     }
 
-    private static void HideOptions()
-    {
+    private static void HideOptions() {
         optionsPanel.GetComponent<Animator>().Play("PopupScaleOut");
         TaskScheduler.ScheduleTask(() => optionsPanel.SetActive(false), ScheduleType.WaitForFrames, AnimationTicks);
     }
 
-    private static void Show()
-    {
+    private static void Show() {
         Init();
         RevealButton();
         optionsPanel.SetActive(false);
     }
 
-    private static void Hide()
-    {
+    private static void Hide() {
         Init();
         HideButton();
         HideOptions();
     }
 
-    public static void EnsureHidden()
-    {
-        if (buttonPanel != null)
-        {
+    public static void EnsureHidden() {
+        if (buttonPanel != null) {
             buttonPanel.SetActive(false);
         }
 
-        if (optionsPanel != null)
-        {
+        if (optionsPanel != null) {
             optionsPanel.SetActive(false);
         }
     }
 
-    public static void OnMenuChanged(string currentMenu, string newMenu)
-    {
+    public static void OnMenuChanged(string currentMenu, string newMenu) {
         if (!MelonMain.ShowRoundsetChanger) return;
 
-        if (ShowOnMenus.Contains(newMenu) && !ShowOnMenus.Contains(currentMenu))
-        {
+        if (ShowOnMenus.Contains(newMenu) && !ShowOnMenus.Contains(currentMenu)) {
             Show();
         }
 
-        if (ShowOnMenus.Contains(currentMenu) && !ShowOnMenus.Contains(newMenu))
-        {
+        if (ShowOnMenus.Contains(currentMenu) && !ShowOnMenus.Contains(newMenu)) {
             Hide();
         }
     }

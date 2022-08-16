@@ -3,8 +3,7 @@
 /// <summary>
 /// ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable
 /// </summary>
-public abstract class NamedModContent : ModContent
-{
+public abstract class NamedModContent : ModContent {
     /// <summary>
     /// The name that will be actually displayed for this in game
     /// </summary>
@@ -26,8 +25,7 @@ public abstract class NamedModContent : ModContent
     /// </summary>
     /// <param name="textTable"></param>
     /// <exclude/>
-    public virtual void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
-    {
+    public virtual void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable) {
         textTable[Id] = DisplayName;
         textTable[Id + "s"] = DisplayNamePlural;
         textTable[Id + " Description"] = Description;

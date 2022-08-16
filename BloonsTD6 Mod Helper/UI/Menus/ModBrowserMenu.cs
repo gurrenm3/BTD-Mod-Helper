@@ -3,23 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+
 using FuzzySharp.SimilarityRatio;
 using FuzzySharp.SimilarityRatio.Scorer;
 using FuzzySharp.SimilarityRatio.Scorer.Composite;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
+
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.UI.Menus;
 
-internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
-{
+internal class ModBrowserMenu : ModGameMenu<ContentBrowser> {
     private const int SearchCutoff = 50;
     private const int TypingCooldown = 30;
 
@@ -45,8 +50,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
-    public override bool OnMenuOpened(Object obj)
-    {
+    public override bool OnMenuOpened(Object obj) {
         mods = new ModBrowserMenuMod[ModsPerPage];
         ModifyExistingElements();
         AddNewElements();
@@ -62,8 +66,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         return false;
     }
 
-    public IEnumerator CreateModTemplates()
-    {
+    public IEnumerator CreateModTemplates() {
         var template =
             GameMenu.scrollRect.content.gameObject.AddModHelperComponent(ModBrowserMenuMod.CreateTemplate());
 
@@ -71,8 +74,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         if (Closing) yield break;
 
-        for (var i = 0; i < ModsPerPage; i++)
-        {
+        for (var i = 0; i < ModsPerPage; i++) {
             var newMod = mods[i] = template.Duplicate($"Mod {i}");
             newMod.AddTo(GameMenu.scrollRect.content);
             newMod.SetActive(false);
@@ -84,8 +86,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         templatesCreated = true;
     }
 
-    public void ModifyExistingElements()
-    {
+    public void ModifyExistingElements() {
         GameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("Title").SetText("Mod Browser");
 
         GameMenu.GetComponentFromChildrenByName<RectTransform>("TopBar").gameObject.active = false;
@@ -108,19 +109,16 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         GameMenu.lastPageBtn.SetOnClick(() => SetPage(TotalPages - 1));
     }
 
-    public void AddNewElements()
-    {
+    public void AddNewElements() {
         var topArea = GameMenu.GetComponentFromChildrenByName<RectTransform>("Container").gameObject
-            .AddModHelperPanel(new Info("TopArea")
-            {
+            .AddModHelperPanel(new Info("TopArea") {
                 Y = -325, Height = 200, Pivot = new Vector2(0.5f, 1),
                 AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1),
             }, layoutAxis: RectTransform.Axis.Horizontal, padding: 50);
 
         topArea.AddDropdown(new Info("Sorting", width: 1000, height: 150),
             SortingMethods.Select(method => method.ToString().Spaced()).ToIl2CppList(), 600,
-            new Action<int>(i =>
-            {
+            new Action<int>(i => {
                 sortingMethod = SortingMethods[i];
                 RecalculateCurrentMods();
             }), VanillaSprites.BlueInsertPanelRound, 80f);
@@ -129,8 +127,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         topArea.AddInputField(new Info("Searching", width: 1500, height: 150), currentSearch,
             VanillaSprites.BlueInsertPanelRound, new Action<string>(
-                s =>
-                {
+                s => {
                     currentSearch = s;
                     typingCooldown = TypingCooldown;
                 }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft, "Search...",
@@ -141,30 +138,24 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         topArea.AddPanel(new Info("Toggles", width: 1000, height: 150));
     }
 
-    public override void OnMenuUpdate()
-    {
+    public override void OnMenuUpdate() {
         currentMods ??= ModHelperGithub.Mods;
 
-        if (modsNeedRefreshing && currentMods != null)
-        {
+        if (modsNeedRefreshing && currentMods != null) {
             MelonCoroutines.Start(UpdateModList());
             modsNeedRefreshing = false;
         }
 
-        if (typingCooldown > 0)
-        {
+        if (typingCooldown > 0) {
             typingCooldown--;
-            if (typingCooldown == 0)
-            {
+            if (typingCooldown == 0) {
                 RecalculateCurrentMods();
             }
         }
     }
 
-    private void RecalculateCurrentMods()
-    {
-        Task.Run(() =>
-        {
+    private void RecalculateCurrentMods() {
+        Task.Run(() => {
             // ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
             var filteredMods = ModHelperGithub.VisibleMods
                 .Where(data => string.IsNullOrEmpty(currentSearch) ||
@@ -177,20 +168,17 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         });
     }
 
-    private IEnumerator UpdateModList()
-    {
+    private IEnumerator UpdateModList() {
         GameMenu.searchingImg.gameObject.SetActive(false);
         GameMenu.requiresInternetObj.SetActive(ModHelperGithub.VerifiedModders.Count == 0);
-        while (!templatesCreated)
-        {
+        while (!templatesCreated) {
             yield return null;
 
             if (Closing) yield break;
         }
 
         UpdatePagination();
-        foreach (var modBrowserMenuMod in mods)
-        {
+        foreach (var modBrowserMenuMod in mods) {
             modBrowserMenuMod.SetActive(false);
         }
 
@@ -200,8 +188,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
         var i = 0;
-        foreach (var modHelperData in pageMods)
-        {
+        foreach (var modHelperData in pageMods) {
             mods[i].SetMod(modHelperData);
             i++;
             yield return null;
@@ -210,8 +197,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         }
     }
 
-    private void UpdatePagination()
-    {
+    private void UpdatePagination() {
         GameMenu.refreshBtn.interactable = true;
 
         GameMenu.firstPageBtn.interactable = TotalPages >= 2 && currentPage > 0;
@@ -224,16 +210,13 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         GameMenu.SetCurrentPage(currentPage + 1);
     }
 
-    private void SetPage(int page)
-    {
+    private void SetPage(int page) {
         currentPage = page;
-        if (currentPage < 0)
-        {
+        if (currentPage < 0) {
             currentPage = 0;
         }
 
-        if (currentPage > TotalPages - 1)
-        {
+        if (currentPage > TotalPages - 1) {
             currentPage = TotalPages - 1;
         }
 
@@ -242,36 +225,33 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
     }
 
-    private void RefreshMods()
-    {
+    private void RefreshMods() {
         GameMenu.refreshBtn.interactable = false;
         GameMenu.searchingImg.gameObject.SetActive(true);
-        foreach (var menuMod in mods)
-        {
+        foreach (var menuMod in mods) {
             menuMod.SetActive(false);
         }
 
-        Task.Run(async () =>
-        {
+        Task.Run(async () => {
             await ModHelperGithub.PopulateMods();
             currentPage = 0;
             RecalculateCurrentMods();
         });
     }
 
-    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
-    {
-        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
-        SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
-        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data =>
-            data.Repository.PushedAt ?? data.Repository.CreatedAt),
-        SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
-        SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
-        _ => mods
-    }).ToList();
+    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) {
+        return (sort switch {
+            SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
+            SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
+            SortingMethod.RecentlyUpdated => mods.OrderByDescending(data =>
+                data.Repository.PushedAt ?? data.Repository.CreatedAt),
+            SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
+            SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
+            _ => mods
+        }).ToList();
+    }
 
-    private enum SortingMethod
-    {
+    private enum SortingMethod {
         RecentlyUpdated,
         Popularity,
         Alphabetical,

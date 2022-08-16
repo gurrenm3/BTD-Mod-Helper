@@ -1,52 +1,39 @@
-﻿using Assets.Scripts.Models.Towers.Projectiles;
+﻿using Assets.Scripts.Models.Towers.Filters;
+using Assets.Scripts.Models.Towers.Projectiles;
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Assets.Scripts.Models.Towers.Filters;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class ProjectileModelExt
-{
+public static partial class ProjectileModelExt {
     /// <summary>
     /// Returns whether a projectile is able to hit Camo bloons
     /// </summary>
-    public static bool CanHitCamo(this ProjectileModel projectileModel)
-    {
+    public static bool CanHitCamo(this ProjectileModel projectileModel) {
         var projectileFilterModel = projectileModel.GetBehavior<ProjectileFilterModel>();
         var filterInvisibleModel =
             projectileFilterModel?.filters.GetItemOfType<FilterModel, FilterInvisibleModel>();
-        if (filterInvisibleModel != null)
-        {
-            return !filterInvisibleModel.isActive;
-        }
-
-        return true;
+        return filterInvisibleModel == null || !filterInvisibleModel.isActive;
     }
 
     /// <summary>
     /// Makes a projectile model able to see Camo or not
     /// </summary>]
-    public static void SetHitCamo(this ProjectileModel projectileModel, bool canHitCamo)
-    {
+    public static void SetHitCamo(this ProjectileModel projectileModel, bool canHitCamo) {
         var projectileFilterModel = projectileModel.GetBehavior<ProjectileFilterModel>();
-        if (projectileFilterModel == null)
-        {
+        if (projectileFilterModel == null) {
             projectileModel.AddBehavior(new ProjectileFilterModel("ProjectileFilterModel_" + projectileModel.name,
                 new Il2CppReferenceArray<FilterModel>(new FilterModel[]
                     {new FilterInvisibleModel("FilterInvisibleModel_", !canHitCamo, false)})));
-        }
-        else
-        {
+        } else {
             var filterInvisibleModel =
                 projectileFilterModel.filters.GetItemOfType<FilterModel, FilterInvisibleModel>();
-            if (filterInvisibleModel == null)
-            {
+            if (filterInvisibleModel == null) {
                 projectileFilterModel.filters =
                     projectileFilterModel.filters.AddTo(new FilterInvisibleModel("FilterInvisibleModel_",
                         !canHitCamo, false));
-            }
-            else
-            {
+            } else {
                 filterInvisibleModel.isActive = !canHitCamo;
             }
         }

@@ -1,10 +1,8 @@
 using Assets.Scripts.Utils;
 
 #pragma warning disable CS1591
-namespace BTD_Mod_Helper.Api.Enums
-{
-    public static class VanillaSprites
-    {
+namespace BTD_Mod_Helper.Api.Enums {
+    public static class VanillaSprites {
         public const string Alchemist000 = "650013dbd97ece449914f1581aa55304";
         public const string AlchemistInsta000 = "767eae36a46f64741931c042854479e5";
         public const string BananaFarm000 = "79fc18f53f20f514b8bd3e362749d49e";

@@ -2,8 +2,7 @@
 #pragma warning disable 1591
 namespace BTD_Mod_Helper.Api.Enums;
 
-public static class UpgradeType
-{
+public static class UpgradeType {
     public const string SharpShots = "Sharp Shots";
     public const string RazorSharpShots = "Razor Sharp Shots";
     public const string SpikeOPult = "Spike-o-pult";

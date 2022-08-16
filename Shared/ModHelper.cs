@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+
 using Assets.Scripts.Unity;
+
 using BTD_Mod_Helper.Api;
+
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper;
@@ -12,8 +15,7 @@ namespace BTD_Mod_Helper;
 /// <summary>
 /// Catch-all class for non-extension static methods
 /// </summary>
-public static class ModHelper
-{
+public static class ModHelper {
     #region ModHelperData for the Mod Helper
 
     internal const string Name = "BloonsTD6 Mod Helper";
@@ -52,8 +54,7 @@ public static class ModHelper
 
     private static bool fallBackToOldLoading;
 
-    internal static bool FallbackToOldLoading
-    {
+    internal static bool FallbackToOldLoading {
         set => fallBackToOldLoading = value;
         get => fallBackToOldLoading || MelonMain.UseOldLoading;
     }
@@ -72,18 +73,13 @@ public static class ModHelper
     public static IEnumerable<MelonMod> Melons => MelonBase.RegisteredMelons.OfType<MelonMod>();
 
 
-    internal static void LoadAllMods()
-    {
-        foreach (var mod in Mods.OrderByDescending(mod => mod.Priority))
-        {
-            try
-            {
+    internal static void LoadAllMods() {
+        foreach (var mod in Mods.OrderByDescending(mod => mod.Priority)) {
+            try {
                 ResourceHandler.LoadEmbeddedTextures(mod);
                 ResourceHandler.LoadEmbeddedBundles(mod);
                 ModContent.LoadModContent(mod);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Error("Critical failure when loading resources for mod " + mod.Info.Name);
                 Error(e);
             }
@@ -97,16 +93,14 @@ public static class ModHelper
     /// <summary>
     /// Logs a message from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Log<T>(object obj) where T : BloonsMod
-    {
+    public static void Log<T>(object obj) where T : BloonsMod {
         ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
     }
 
     /// <summary>
     /// Logs a message from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Msg<T>(object obj) where T : BloonsMod
-    {
+    public static void Msg<T>(object obj) where T : BloonsMod {
         ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
     }
 
@@ -114,27 +108,23 @@ public static class ModHelper
     /// <summary>
     /// Logs an error from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Error<T>(object obj) where T : BloonsMod
-    {
+    public static void Error<T>(object obj) where T : BloonsMod {
         ModContent.GetInstance<T>().LoggerInstance.Error(obj);
     }
 
     /// <summary>
     /// Logs a warning from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Warning<T>(object obj) where T : BloonsMod
-    {
+    public static void Warning<T>(object obj) where T : BloonsMod {
         ModContent.GetInstance<T>().LoggerInstance.Warning(obj);
     }
 
     /// <summary>
     /// Logs a message from the Mod Helper's LoggerInstance
     /// </summary>
-    internal static void Log(object obj)
-    {
+    internal static void Log(object obj) {
 #if NET6_0
-        lock (Main.LoggerInstance)
-        {
+        lock (Main.LoggerInstance) {
 #endif
             Main.LoggerInstance.Msg(obj);
 #if NET6_0
@@ -145,11 +135,9 @@ public static class ModHelper
     /// <summary>
     /// Logs a message from the Mod Helper's LoggerInstance
     /// </summary>
-    internal static void Msg(object obj)
-    {
+    internal static void Msg(object obj) {
 #if NET6_0
-        lock (Main.LoggerInstance)
-        {
+        lock (Main.LoggerInstance) {
 #endif
             Main.LoggerInstance.Msg(obj);
 #if NET6_0
@@ -160,11 +148,9 @@ public static class ModHelper
     /// <summary>
     /// Logs an error from the Mod Helper's LoggerInstance
     /// </summary>
-    internal static void Error(object obj)
-    {
+    internal static void Error(object obj) {
 #if NET6_0
-        lock (Main.LoggerInstance)
-        {
+        lock (Main.LoggerInstance) {
 #endif
             Main.LoggerInstance.Error(obj);
 #if NET6_0
@@ -175,11 +161,9 @@ public static class ModHelper
     /// <summary>
     /// Logs a warning from the Mod Helper's LoggerInstance
     /// </summary>
-    internal static void Warning(object obj)
-    {
+    internal static void Warning(object obj) {
 #if NET6_0
-        lock (Main.LoggerInstance)
-        {
+        lock (Main.LoggerInstance) {
 #endif
             Main.LoggerInstance.Warning(obj);
 #if NET6_0
@@ -192,23 +176,17 @@ public static class ModHelper
     internal static MelonMain Main => ModContent.GetInstance<MelonMain>();
     internal static Assembly MainAssembly => Main.GetAssembly();
 
-    private static void PerformHook<T>(Action<T> action) where T : BloonsMod
-    {
-        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
-        {
+    private static void PerformHook<T>(Action<T> action) where T : BloonsMod {
+        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority)) {
 #if BloonsTD6
             var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
 #elif BloonsAT
                 var canPerformHook = !mod.CheatMod;
 #endif
-            if (canPerformHook)
-            {
-                try
-                {
+            if (canPerformHook) {
+                try {
                     action.Invoke(mod);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     mod.LoggerInstance.Error(e);
                 }
             }
@@ -216,8 +194,7 @@ public static class ModHelper
     }
 
 #if BloonsTD6
-    internal static void PerformHook(Action<BloonsTD6Mod> action)
-    {
+    internal static void PerformHook(Action<BloonsTD6Mod> action) {
         PerformHook<BloonsTD6Mod>(action);
     }
 #elif BloonsAT

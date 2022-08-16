@@ -1,22 +1,23 @@
 ﻿using System.Linq;
+
 using Assets.Scripts.Unity.UI_New.Main;
 using Assets.Scripts.Unity.UI_New.Main.Home;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.UI.Menus;
+
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
-internal static class ModsButton
-{
+internal static class ModsButton {
     private static SpriteReference Sprite => ModContent.GetSpriteReference<MelonMain>("ModsBtn");
 
-    public static void Create(MainMenu mainMenu)
-    {
+    public static void Create(MainMenu mainMenu) {
         var mainMenuTransform = mainMenu.transform.Cast<RectTransform>();
         var bottomGroup = mainMenuTransform.FindChild("BottomButtonGroup");
         var baseButton = bottomGroup.FindChild("Monkeys").gameObject;
@@ -43,18 +44,13 @@ internal static class ModsButton
         var rect = mainMenuTransform.rect;
         var aspectRatio = rect.width / rect.height;
 
-        if (aspectRatio < 1.5)
-        {
+        if (aspectRatio < 1.5) {
             matchLocalPosition.offset = new Vector3(-560, 0);
             matchLocalPosition.scale = new Vector3(1, 3.33f, 1);
-        }
-        else if (aspectRatio < 1.7)
-        {
+        } else if (aspectRatio < 1.7) {
             matchLocalPosition.offset = new Vector3(-450, 0);
             matchLocalPosition.scale = new Vector3(1, 3f, 1);
-        }
-        else
-        {
+        } else {
             matchLocalPosition.offset = new Vector3(-200, 0);
         }
     }

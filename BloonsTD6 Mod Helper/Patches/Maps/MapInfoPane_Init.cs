@@ -3,17 +3,14 @@
 namespace BTD_Mod_Helper.Patches.Maps;
 
 [HarmonyPatch(typeof(MapButton), nameof(MapButton.Init))]
-internal class MapInfoPane_Init
-{
+internal class MapInfoPane_Init {
     [HarmonyPrefix]
-    internal static bool Prefix(MapButton __instance)
-    {
+    internal static bool Prefix(MapButton __instance) {
         return true;
     }
 
     [HarmonyPostfix]
-    internal static void Postfix(MapButton __instance, string mapId)
-    {
+    internal static void Postfix(MapButton __instance, string mapId) {
         /*ModHelper.Log(__instance.mapImage.sprite.rect.ToString());
         if (!ModMap.IsCustomMap(mapId))
             return;

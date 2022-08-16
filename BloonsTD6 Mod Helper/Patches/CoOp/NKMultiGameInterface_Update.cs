@@ -1,16 +1,13 @@
 ﻿using NinjaKiwi.NKMulti;
 
-namespace BTD_Mod_Helper.Patches
-{
+namespace BTD_Mod_Helper.Patches {
     [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Update))]
-    internal class NKMultiGameInterface_Update
-    {
+    internal class NKMultiGameInterface_Update {
         [HarmonyPriority(Priority.HigherThanNormal)]
         [HarmonyPrefix]
-        internal static void Prefix(ref NKMultiGameInterface __instance)
-        {
+        internal static void Prefix(ref NKMultiGameInterface __instance) {
             SessionData.Instance.NkGI = __instance;
-            if (__instance.relayConnection == null) 
+            if (__instance.relayConnection == null)
                 return;
 
             // There exist some game states where send/receive might not be called

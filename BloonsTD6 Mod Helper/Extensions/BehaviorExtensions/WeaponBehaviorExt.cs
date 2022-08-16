@@ -1,21 +1,20 @@
-﻿using Assets.Scripts.Simulation.Towers.Weapons;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using Assets.Scripts.Simulation.Towers.Weapons;
 
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Behavior extensions for Weapons
 /// </summary>
-public static class WeaponBehaviorExt
-{
+public static class WeaponBehaviorExt {
     /// <summary>
     /// Check if this has a specific Behavior
     /// </summary>
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="weapon"></param>
     /// <returns></returns>
-    public static bool HasWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior
-    {
+    public static bool HasWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior {
         return weapon.weaponBehaviors.HasItemsOfType<WeaponBehavior, T>();
     }
 
@@ -25,8 +24,7 @@ public static class WeaponBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="weapon"></param>
     /// <returns></returns>
-    public static T GetWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior
-    {
+    public static T GetWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior {
         return weapon.weaponBehaviors.GetItemOfType<WeaponBehavior, T>();
     }
 
@@ -36,8 +34,7 @@ public static class WeaponBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="weapon"></param>
     /// <returns></returns>
-    public static List<T> GetWeaponBehaviors<T>(this Weapon weapon) where T : WeaponBehavior
-    {
+    public static List<T> GetWeaponBehaviors<T>(this Weapon weapon) where T : WeaponBehavior {
         return weapon.weaponBehaviors.GetItemsOfType<WeaponBehavior, T>();
     }
 
@@ -47,8 +44,7 @@ public static class WeaponBehaviorExt
     /// <typeparam name="T">The Behavior you want to add</typeparam>
     /// <param name="weapon"></param>
     /// <param name="behavior"></param>
-    public static void AddWeaponBehavior<T>(this Weapon weapon, T behavior) where T : WeaponBehavior
-    {
+    public static void AddWeaponBehavior<T>(this Weapon weapon, T behavior) where T : WeaponBehavior {
         weapon.weaponBehaviors.Add(behavior);
     }
 
@@ -57,8 +53,7 @@ public static class WeaponBehaviorExt
     /// </summary>
     /// <typeparam name="T">The Behavior you want to remove</typeparam>
     /// <param name="weapon"></param>
-    public static void RemoveWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior
-    {
+    public static void RemoveWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior {
         weapon.weaponBehaviors = weapon.weaponBehaviors.RemoveItemOfType<WeaponBehavior, T>();
     }
 
@@ -68,8 +63,7 @@ public static class WeaponBehaviorExt
     /// <typeparam name="T">The Behavior you want to remove</typeparam>
     /// <param name="weapon"></param>
     /// <param name="behavior"></param>
-    public static void RemoveWeaponBehavior<T>(this Weapon weapon, T behavior) where T : WeaponBehavior
-    {
+    public static void RemoveWeaponBehavior<T>(this Weapon weapon, T behavior) where T : WeaponBehavior {
         weapon.weaponBehaviors = weapon.weaponBehaviors.RemoveItem(behavior);
     }
 
@@ -78,8 +72,7 @@ public static class WeaponBehaviorExt
     /// </summary>
     /// <typeparam name="T">The Behavior you want to remove</typeparam>
     /// <param name="weapon"></param>
-    public static void RemoveWeaponBehaviors<T>(this Weapon weapon) where T : WeaponBehavior
-    {
+    public static void RemoveWeaponBehaviors<T>(this Weapon weapon) where T : WeaponBehavior {
         weapon.weaponBehaviors = weapon.weaponBehaviors.RemoveItemsOfType<WeaponBehavior, T>();
     }
 }

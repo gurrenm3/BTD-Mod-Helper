@@ -1,7 +1,11 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Enums;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +15,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a category in the mod settings menu
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperCategory : ModHelperOption
-{
+public class ModHelperCategory : ModHelperOption {
     /// <summary>
     /// The panel that holds all the mod settings
     /// </summary>
@@ -24,8 +27,7 @@ public class ModHelperCategory : ModHelperOption
     public bool collapsed;
 
     /// <inheritdoc />
-    public ModHelperCategory(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperCategory(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
@@ -35,8 +37,7 @@ public class ModHelperCategory : ModHelperOption
     /// <param name="collapsed">Whether it's collapsed by default or not</param>
     /// <param name="icon">The icon for the category, if any</param>
     /// <returns>The created ModHelperCategory</returns>
-    public static ModHelperCategory Create(string displayName, bool collapsed, string icon = null)
-    {
+    public static ModHelperCategory Create(string displayName, bool collapsed, string icon = null) {
         var category = Create<ModHelperCategory>(displayName, "", icon);
         category.collapsed = collapsed;
         category.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
@@ -49,14 +50,12 @@ public class ModHelperCategory : ModHelperOption
             throw new NotImplementedException(); // need to get "category.Name" working for BloonsAT
 #endif
 
-        var content = category.AddPanel(new Info("CategoryContent")
-        {
+        var content = category.AddPanel(new Info("CategoryContent") {
             AnchorMinX = 0, AnchorMaxX = 0
         }, null, RectTransform.Axis.Vertical, 150);
         content.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
 
-        var action = new Action<bool>(collapse =>
-        {
+        var action = new Action<bool>(collapse => {
             category.collapsed = collapse;
             content.gameObject.active = !collapse;
             var localScale = category.InfoButton.parent.RectTransform.localScale;

@@ -3,7 +3,6 @@
 /// <summary>
 /// Extensions for RoundModels
 /// </summary>
-public static partial class RoundModelExt
-{
-        
+public static partial class RoundModelExt {
+
 }

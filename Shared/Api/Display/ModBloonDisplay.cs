@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+
 using Assets.Scripts.Models.Bloons.Behaviors;
 using Assets.Scripts.Unity;
+
 using BTD_Mod_Helper.Api.Bloons;
 
 namespace BTD_Mod_Helper.Api.Display;
@@ -8,11 +10,9 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// A ModDisplay that will automatically apply to a ModBloon
 /// </summary>
-public abstract class ModBloonDisplay : ModDisplay
-{
+public abstract class ModBloonDisplay : ModDisplay {
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         base.Register();
         Bloon.displays.Add(this);
     }
@@ -33,11 +33,9 @@ public abstract class ModBloonDisplay : ModDisplay
     /// <param name="bloonId"></param>
     /// <param name="damagedAmount"></param>
     /// <returns></returns>
-    protected static string GetBloonDisplay(string bloonId, int damagedAmount = 0)
-    {
+    protected static string GetBloonDisplay(string bloonId, int damagedAmount = 0) {
         var bloonModel = Game.instance.model.GetBloon(bloonId);
-        if (damagedAmount == 0)
-        {
+        if (damagedAmount == 0) {
             return bloonModel.GetDisplayGUID();
         }
 
@@ -49,8 +47,7 @@ public abstract class ModBloonDisplay : ModDisplay
 /// <summary>
 /// A convenient generic class for applying a ModBloonDisplay to a ModBloon
 /// </summary>
-public abstract class ModBloonDisplay<T> : ModBloonDisplay where T : ModBloon
-{
+public abstract class ModBloonDisplay<T> : ModBloonDisplay where T : ModBloon {
     /// <inheritdoc />
     public override ModBloon Bloon => GetInstance<T>();
 }

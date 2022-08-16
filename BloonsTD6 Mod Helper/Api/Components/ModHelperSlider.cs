@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+
 using BTD_Mod_Helper.Api.Enums;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,8 +13,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a sliding input
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperSlider : ModHelperComponent
-{
+public class ModHelperSlider : ModHelperComponent {
     /// <summary>
     /// The actual Slider component
     /// </summary>
@@ -50,14 +51,12 @@ public class ModHelperSlider : ModHelperComponent
     /// </summary>
     /// <param name="value">The new value</param>
     /// <param name="sendCallback">Whether the onValueChanged listener should fire</param>
-    public void SetCurrentValue(float value, bool sendCallback = true)
-    {
+    public void SetCurrentValue(float value, bool sendCallback = true) {
         Slider.Set(value * scaleFactor, sendCallback);
     }
 
     /// <inheritdoc />
-    public ModHelperSlider(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperSlider(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
@@ -75,14 +74,12 @@ public class ModHelperSlider : ModHelperComponent
     /// <returns></returns>
     public static ModHelperSlider Create(Info info, float defaultValue, float minValue, float maxValue,
         float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
-        string labelSuffix = "")
-    {
+        string labelSuffix = "") {
         var modHelperSlider = ModHelperComponent.Create<ModHelperSlider>(info);
         var slider = modHelperSlider.AddComponent<Slider>();
         slider.direction = Slider.Direction.LeftToRight;
 
-        if (stepSize > 0)
-        {
+        if (stepSize > 0) {
             modHelperSlider.scaleFactor = 1 / stepSize;
             slider.wholeNumbers = true;
         }
@@ -94,8 +91,7 @@ public class ModHelperSlider : ModHelperComponent
             VanillaSprites.SmallSquareWhite);
         background.Background.color = new Color(.219f, .125f, .058f);
 
-        var fillPanel = modHelperSlider.AddPanel(new Info("FillPanel", InfoPreset.FillParent)
-        {
+        var fillPanel = modHelperSlider.AddPanel(new Info("FillPanel", InfoPreset.FillParent) {
             Width = info.Height / -4f,
             Height = info.Height / -4f
         });
@@ -123,8 +119,7 @@ public class ModHelperSlider : ModHelperComponent
             defaultValue.ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize);
 
 
-        slider.onValueChanged.AddListener(new Action<float>(value =>
-        {
+        slider.onValueChanged.AddListener(new Action<float>(value => {
             var realValue = value / modHelperSlider.scaleFactor;
             label.SetText(realValue.ToString(CultureInfo.InvariantCulture) + labelSuffix);
             onValueChanged?.Invoke(realValue);

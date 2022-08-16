@@ -1,18 +1,18 @@
-﻿global using HarmonyLib;
+﻿global using BTD_Mod_Helper.Extensions;
+
+global using HarmonyLib;
+
 global using MelonLoader;
-global using BTD_Mod_Helper.Extensions;
+
+using System.ComponentModel;
 
 
-namespace System.Runtime.CompilerServices
-{
-    using ComponentModel;
-
+namespace System.Runtime.CompilerServices {
     /// <summary>
     /// Reserved to be used by the compiler for tracking metadata.
     /// This class should not be used by developers in source code.
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
-    internal static class IsExternalInit
-    {
+    internal static class IsExternalInit {
     }
 }

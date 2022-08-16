@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Unity.Display;
+
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Api.Display;
@@ -6,8 +7,7 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// A ModCustomDisplay that will automatically apply to a ModTower for specific tiers
 /// </summary>
-public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
-{
+public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay {
     /// <inheritdoc />
     public abstract string AssetBundleName { get; }
 
@@ -26,9 +26,8 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
     /// Performs alterations to the unity display node when it is created
     /// </summary>
     /// <param name="node"></param>
-    public override void ModifyDisplayNode(UnityDisplayNode node)
-    {
-            
+    public override void ModifyDisplayNode(UnityDisplayNode node) {
+
     }
 }
 
@@ -36,8 +35,7 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
 /// A convenient generic class for applying a ModTowerCustomDisplay to a ModTower
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModTowerCustomDisplay<T> : ModTowerCustomDisplay where T : ModTower
-{
+public abstract class ModTowerCustomDisplay<T> : ModTowerCustomDisplay where T : ModTower {
     /// <inheritdoc />
     public override ModTower Tower => GetInstance<T>();
 }

@@ -3,11 +3,9 @@
 namespace BTD_Mod_Helper.Patches.Weapons;
 
 [HarmonyPatch(typeof(Ability), nameof(Ability.Activate))]
-internal class Activate_Patch
-{
+internal class Activate_Patch {
     [HarmonyPostfix]
-    internal static void Postfix(Ability __instance)
-    {
+    internal static void Postfix(Ability __instance) {
         ModHelper.PerformHook(mod => mod.OnAbilityCast(__instance));
     }
 }

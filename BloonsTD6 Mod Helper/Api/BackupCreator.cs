@@ -1,33 +1,36 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
+
 using Assets.Scripts.Unity;
-using System;
 
 namespace BTD_Mod_Helper.Api;
 
-class BackupCreator
-{
+internal class BackupCreator {
     private long _maxBackups;
     private string _backupDir;
 
-    public BackupCreator(string backupDir, long maxBackups)
-    {
+    public BackupCreator(string backupDir, long maxBackups) {
         _backupDir = backupDir;
         _maxBackups = maxBackups;
     }
 
-    public void SetMaxBackups(long max) => _maxBackups = max;
+    public void SetMaxBackups(long max) {
+        _maxBackups = max;
+    }
 
-    private FileInfo[] GetAllBackups() => new DirectoryInfo(_backupDir).GetFiles();
+    private FileInfo[] GetAllBackups() {
+        return new DirectoryInfo(_backupDir).GetFiles();
+    }
 
-    private bool IsOverMaxBackups() => GetAllBackups().Length > _maxBackups;
+    private bool IsOverMaxBackups() {
+        return GetAllBackups().Length > _maxBackups;
+    }
 
-    public void CreateBackup()
-    {
+    public void CreateBackup() {
         ModHelper.Log("Attempting to backup Profile...");
         var saveDir = Game.instance.GetSaveDirectory();
-        if (string.IsNullOrEmpty(saveDir))
-        {
+        if (string.IsNullOrEmpty(saveDir)) {
             //ModHelper.Error("Unable to backup Profile. Save directory not found");
             return;
         }
@@ -43,25 +46,19 @@ class BackupCreator
             DeleteOldestBackup();
     }
 
-    public void MoveBackupDir(string newBackupDir)
-    {
-        if (string.IsNullOrEmpty(_backupDir) || string.IsNullOrEmpty(newBackupDir))
-        {
+    public void MoveBackupDir(string newBackupDir) {
+        if (string.IsNullOrEmpty(_backupDir) || string.IsNullOrEmpty(newBackupDir)) {
             ModHelper.Error("Can't move Autosave directory because either" +
                             " the old backup dir or new backup dir was not valid");
             return;
         }
 
         var files = GetAllBackups();
-        foreach (var file in files)
-        {
+        foreach (var file in files) {
             var destFileName = $"{newBackupDir}\\{file.Name}.{file.Extension}";
-            try
-            {
+            try {
                 File.Move(file.FullName, destFileName);
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 // ignored
             }
         }
@@ -69,8 +66,7 @@ class BackupCreator
         _backupDir = newBackupDir;
     }
 
-    private void DeleteOldestBackup()
-    {
+    private void DeleteOldestBackup() {
         var backups = GetAllBackups().OrderBy(backup => backup.CreationTime.ToFileTime());
         File.Delete(backups.ElementAt(0).FullName);
     }

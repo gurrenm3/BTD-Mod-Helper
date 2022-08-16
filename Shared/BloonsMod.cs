@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using BTD_Mod_Helper.Api.ModOptions;
-using UnityEngine;
+
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Patches;
 using BTD_Mod_Helper.Patches.Resources;
+
+using UnityEngine;
 
 namespace BTD_Mod_Helper;
 
 /// <summary>
 /// Expanded version of MelonMod to suit the needs of Bloons games and the Mod Helper
 /// </summary>
-public abstract class BloonsMod : MelonMod, IModContent
-{
+public abstract class BloonsMod : MelonMod, IModContent {
     /// <summary>
     /// All ModContent in ths mod
     /// </summary>
@@ -42,10 +43,8 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// </summary>
     public virtual bool CheatMod => true;
 
-    internal string SettingsFilePath
-    {
-        get
-        {
+    internal string SettingsFilePath {
+        get {
             var oldPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{Info.Name}.json");
             var newPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{this.GetAssembly().GetName().Name}.json");
             return File.Exists(oldPath) ? oldPath : newPath;
@@ -89,21 +88,19 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// <param name="operation">A string for the name of the operation that another mods wants to call</param>
     /// <param name="parameters">The parameters that another mod has provided</param>
     /// <returns>A possible result of this call</returns>
-    public virtual object Call(string operation, params object[] parameters)
-    {
+    public virtual object Call(string operation, params object[] parameters) {
         return null;
     }
 
-    
+
     #region API Hooks
 
     /// <summary>
     /// Called whenever the Mod Options Menu gets opened, after it finishes initializing
     /// </summary>
-    public virtual void OnModOptionsOpened()
-    {
+    public virtual void OnModOptionsOpened() {
     }
-    
+
     /*
     /// <summary>
     /// Called when the Mod Options Menu gets closed
@@ -113,8 +110,8 @@ public abstract class BloonsMod : MelonMod, IModContent
     }*/
 
     #endregion
-    
-    
+
+
     internal List<string> loadErrors = new();
 
     /// <summary>
@@ -203,18 +200,16 @@ public abstract class BloonsMod : MelonMod, IModContent
 #elif NET6_0
 
     /// <inheritdoc />
-    public sealed override void OnInitializeMelon()
-    {
+    public sealed override void OnInitializeMelon() {
         ModContentInstances.SetInstance(GetType(), this);
     }
 
-    
+
     /// <inheritdoc cref="OnInitializeMelon" />
-    public virtual void OnLoaderInitialized()
-    {
-        
+    public virtual void OnLoaderInitialized() {
+
     }
-    
+
 #else
 
     /// <inheritdoc />
@@ -233,8 +228,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// Equivalent to a HarmonyPostFix on Input.GetKeyDown
     /// </summary>
     [Obsolete("Use a ModSettingHotkey or Input.GetKeyDown within OnUpdate")]
-    public virtual void OnKeyDown(KeyCode keyCode)
-    {
+    public virtual void OnKeyDown(KeyCode keyCode) {
     }
 
     /// <summary>
@@ -243,8 +237,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// Equivalent to a HarmonyPostFix on Input.GetKeyUp
     /// </summary>
     [Obsolete("Use a ModSettingHotkey or Input.GetKeyUp within OnUpdate")]
-    public virtual void OnKeyUp(KeyCode keyCode)
-    {
+    public virtual void OnKeyUp(KeyCode keyCode) {
     }
 
     /// <summary>
@@ -253,8 +246,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// Equivalent to a HarmonyPostFix on Input.GetKey
     /// </summary>
     [Obsolete("Use a ModSettingHotkey or Input.GetKey within OnUpdate")]
-    public virtual void OnKeyHeld(KeyCode keyCode)
-    {
+    public virtual void OnKeyHeld(KeyCode keyCode) {
     }
 
     #endregion

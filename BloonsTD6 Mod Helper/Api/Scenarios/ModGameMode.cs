@@ -1,8 +1,11 @@
 ﻿using System;
+
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+
 using Il2CppSystem.Collections.Generic;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Scenarios;
@@ -10,8 +13,7 @@ namespace BTD_Mod_Helper.Api.Scenarios;
 /// <summary>
 /// Class for a custom GameMode that will be added to the modes screen when starting a new match
 /// </summary>
-public abstract class ModGameMode : NamedModContent
-{
+public abstract class ModGameMode : NamedModContent {
     /// <summary>
     /// Registers after Round Sets
     /// </summary>
@@ -48,8 +50,7 @@ public abstract class ModGameMode : NamedModContent
     public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
 
     /// <inheritdoc />
-    public override void RegisterText(Dictionary<string, string> textTable)
-    {
+    public override void RegisterText(Dictionary<string, string> textTable) {
         textTable["Mode " + Id] = DisplayName;
     }
 
@@ -59,31 +60,24 @@ public abstract class ModGameMode : NamedModContent
     public abstract void ModifyBaseGameModeModel(ModModel gameModeModel);
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         model = GetDefaultGameModeModel();
 
-        try
-        {
+        try {
             ModifyBaseGameModeModel(model);
-        }
-        catch (Exception)
-        {
+        } catch (Exception) {
             ModHelper.Error($"Failed to modify base GameMode for {Id}");
             throw;
         }
-        
+
         model.GenerateDescendentNames();
 
-        try
-        {
+        try {
             Game.instance.model.mods = Game.instance.model.mods.AddTo(model);
             Game.instance.model.AddChildDependant(model);
         }
-        finally
-        {
-            rollbackActions.Push(() =>
-            {
+        finally {
+            rollbackActions.Push(() => {
                 Game.instance.model.mods = Game.instance.model.mods.RemoveItem(model);
                 Game.instance.model.RemoveChildDependant(model);
             });
@@ -92,21 +86,16 @@ public abstract class ModGameMode : NamedModContent
 
     internal ModModel model;
 
-    internal ModModel GetDefaultGameModeModel()
-    {
+    internal ModModel GetDefaultGameModeModel() {
         ModModel modModel;
-        if (string.IsNullOrEmpty(BaseGameMode))
-        {
-            modModel = new ModModel(Id, new[] {Id}, new Il2CppReferenceArray<MutatorModModel>(0), PreApplies);
-        }
-        else
-        {
+        if (string.IsNullOrEmpty(BaseGameMode)) {
+            modModel = new ModModel(Id, new[] { Id }, new Il2CppReferenceArray<MutatorModModel>(0), PreApplies);
+        } else {
             modModel = Game.instance.model.GetModModel(BaseGameMode).Duplicate();
-            modModel.toggles = new[] {Id};
+            modModel.toggles = new[] { Id };
             modModel.preApplies = PreApplies;
-                
-            foreach (var mutator in modModel.mutatorMods)
-            {
+
+            foreach (var mutator in modModel.mutatorMods) {
                 mutator.name = mutator.name = mutator.name.Replace(modModel.name, Id);
             }
         }

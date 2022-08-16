@@ -7,8 +7,7 @@ namespace BTD_Mod_Helper.Api.Display;
 /// Class used internally to represent displays for <see cref="ModTower"/>s using <see cref="ModTower.Use2DModel"/>
 /// and <see cref="ModBloon"/>s using <see cref="ModBloon.UseIconAsDisplay"/>
 /// </summary>
-internal sealed class ModDisplay2DImpl : ModDisplay2D
-{
+internal sealed class ModDisplay2DImpl : ModDisplay2D {
     private protected override string ID { get; }
     protected override string TextureName { get; }
 
@@ -21,8 +20,7 @@ internal sealed class ModDisplay2DImpl : ModDisplay2D
     /// <param name="id">Id for the display to use</param>
     /// <param name="textureName">Texture name, not a guid</param>
     /// <param name="scale">Scale to use</param>
-    public ModDisplay2DImpl(BloonsMod bloonsMod, string id, string textureName, float scale = 10f)
-    {
+    public ModDisplay2DImpl(BloonsMod bloonsMod, string id, string textureName, float scale = 10f) {
         mod = bloonsMod;
         ID = id;
         TextureName = textureName;

@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Api;
 
-internal class ProfileManagement
-{
-    private static readonly string[] ParagonEvents = {"ParagonPanelViewed", "ParagonUpgradeAvailable"};
+internal class ProfileManagement {
+    private static readonly string[] ParagonEvents = { "ParagonPanelViewed", "ParagonUpgradeAvailable" };
 
     private static readonly HashSet<string> UnlockedTowers = new();
     private static readonly Dictionary<string, KonFuze> TowersPlacedByBaseName = new();
@@ -35,8 +36,7 @@ internal class ProfileManagement
     private static readonly Dictionary<string, string> SelectedTowerSkinData = new();
 
     private static void CleanProfile(ProfileModel profile, IReadOnlyCollection<string> towers,
-        IReadOnlyCollection<string> upgrades, IReadOnlyCollection<string> heroes, bool current)
-    {
+        IReadOnlyCollection<string> upgrades, IReadOnlyCollection<string> heroes, bool current) {
         ModHelper.PerformHook(mod => mod.PreCleanProfile(profile));
 
         CleanHashSet(profile.unlockedTowers, Clean("unlockedTower", towers, current), UnlockedTowers);
@@ -60,15 +60,11 @@ internal class ProfileManagement
             HeroLevelsByName);
 
         SeenEvents.Clear();
-        profile.seenEvents?.RemoveWhere(new Func<string, bool>(s =>
-        {
-            foreach (var paragonEvent in ParagonEvents)
-            {
-                if (s.StartsWith(paragonEvent))
-                {
+        profile.seenEvents?.RemoveWhere(new Func<string, bool>(s => {
+            foreach (var paragonEvent in ParagonEvents) {
+                if (s.StartsWith(paragonEvent)) {
                     var tower = s.Replace(paragonEvent, "");
-                    if (Clean(paragonEvent, towers, current)(tower))
-                    {
+                    if (Clean(paragonEvent, towers, current)(tower)) {
                         SeenEvents.Add(s);
                         return true;
                     }
@@ -82,29 +78,23 @@ internal class ProfileManagement
             new Dictionary<string, Il2CppSystem.Collections.Generic.List<InstaTowerModel>>());
 
         primaryHero = null;
-        if (Clean("primaryHero", heroes, current)(profile.primaryHero))
-        {
+        if (Clean("primaryHero", heroes, current)(profile.primaryHero)) {
             primaryHero = profile.primaryHero;
             profile.primaryHero = "Quincy";
         }
 
         MapPlayerHeroes.Clear();
-        foreach (var (name, map) in profile.savedMaps)
-        {
-            if (map != null)
-            {
+        foreach (var (name, map) in profile.savedMaps) {
+            if (map != null) {
                 /*if (Clean($"{name} primaryHero", heroes, current)(map.primaryHero))
                 {
                     MapPrimaryHeroes[name] = map.primaryHero;
                     map.primaryHero = "Quincy";
                 }*/
 
-                foreach (var (id, player) in map.players)
-                {
-                    if (player != null)
-                    {
-                        if (Clean($"{id} primaryHero", heroes, current)(player.hero))
-                        {
+                foreach (var (id, player) in map.players) {
+                    if (player != null) {
+                        if (Clean($"{id} primaryHero", heroes, current)(player.hero)) {
                             MapPlayerHeroes[(name, id)] = player.hero;
                             player.hero = "Quincy";
                         }
@@ -114,10 +104,8 @@ internal class ProfileManagement
         }
     }
 
-    internal static void CleanPastProfile(ProfileModel profile)
-    {
-        if (!MelonMain.CleanProfile || profile == null)
-        {
+    internal static void CleanPastProfile(ProfileModel profile) {
+        if (!MelonMain.CleanProfile || profile == null) {
             return;
         }
 
@@ -132,10 +120,8 @@ internal class ProfileManagement
         // FileIOUtil.SaveObject("profile.json", profile);
     }
 
-    internal static void CleanCurrentProfile(ProfileModel profile)
-    {
-        if (!MelonMain.CleanProfile || profile == null)
-        {
+    internal static void CleanCurrentProfile(ProfileModel profile) {
+        if (!MelonMain.CleanProfile || profile == null) {
             return;
         }
 
@@ -148,75 +134,60 @@ internal class ProfileManagement
         CleanProfile(profile, towers, upgrades, heroes, true);
     }
 
-    internal static void UnCleanProfile(ProfileModel profile)
-    {
-        if (!MelonMain.CleanProfile || profile == null)
-        {
+    internal static void UnCleanProfile(ProfileModel profile) {
+        if (!MelonMain.CleanProfile || profile == null) {
             return;
         }
 
-        foreach (var unlockedTower in UnlockedTowers)
-        {
+        foreach (var unlockedTower in UnlockedTowers) {
             profile.unlockedTowers.Add(unlockedTower);
         }
 
-        foreach (var (name, tower) in TowersPlacedByBaseName)
-        {
+        foreach (var (name, tower) in TowersPlacedByBaseName) {
             profile.analyticsKonFuze.towersPlacedByBaseName.Add(name, tower);
         }
 
-        foreach (var (tower, xp) in TowerXp)
-        {
+        foreach (var (tower, xp) in TowerXp) {
             profile.towerXp.Add(tower, xp);
         }
 
-        foreach (var acquiredUpgrade in AcquiredUpgrades)
-        {
+        foreach (var acquiredUpgrade in AcquiredUpgrades) {
             profile.acquiredUpgrades.Add(acquiredUpgrade);
         }
 
-        foreach (var unlockedHero in UnlockedHeroes)
-        {
+        foreach (var unlockedHero in UnlockedHeroes) {
             profile.unlockedHeroes.Add(unlockedHero);
         }
 
-        foreach (var seenUnlockedNotification in SeenUnlockedNotification)
-        {
+        foreach (var seenUnlockedNotification in SeenUnlockedNotification) {
             profile.seenUnlockedNotification.Add(seenUnlockedNotification);
         }
 
-        foreach (var seenUnlockedHero in SeenUnlockedHeroes)
-        {
+        foreach (var seenUnlockedHero in SeenUnlockedHeroes) {
             profile.seenUnlockedHeroes.Add(seenUnlockedHero);
         }
 
-        foreach (var seenNewHeroNotification in SeenNewHeroNotification)
-        {
+        foreach (var seenNewHeroNotification in SeenNewHeroNotification) {
             profile.seenNewHeroNotification.Add(seenNewHeroNotification);
         }
 
-        foreach (var (name, hero) in HeroesPlacedByName)
-        {
+        foreach (var (name, hero) in HeroesPlacedByName) {
             profile.analyticsKonFuze.heroesPlacedByName.Add(name, hero);
         }
 
-        foreach (var (name, level) in HeroLevelsByName)
-        {
+        foreach (var (name, level) in HeroLevelsByName) {
             profile.analyticsKonFuze.heroLevelsByName.Add(name, level);
         }
 
-        foreach (var (name, skinData) in SelectedTowerSkinData)
-        {
+        foreach (var (name, skinData) in SelectedTowerSkinData) {
             profile.selectedTowerSkinData.Add(name, skinData);
         }
 
-        foreach (var seenEvent in SeenEvents)
-        {
+        foreach (var seenEvent in SeenEvents) {
             profile.seenEvents.Add(seenEvent);
         }
 
-        if (primaryHero != null)
-        {
+        if (primaryHero != null) {
             profile.primaryHero = primaryHero;
         }
 
@@ -228,13 +199,10 @@ internal class ProfileManagement
             }
         }*/
 
-        foreach (var ((map, player), hero) in MapPlayerHeroes)
-        {
-            if (profile.savedMaps?.ContainsKey(map) == true)
-            {
+        foreach (var ((map, player), hero) in MapPlayerHeroes) {
+            if (profile.savedMaps?.ContainsKey(map) == true) {
                 var mapSaveDataModel = profile.savedMaps[map];
-                if (mapSaveDataModel.players.ContainsKey(player))
-                {
+                if (mapSaveDataModel.players.ContainsKey(player)) {
                     mapSaveDataModel.players[player].hero = hero;
                 }
             }
@@ -243,18 +211,14 @@ internal class ProfileManagement
         ModHelper.PerformHook(mod => mod.PostCleanProfile(profile));
     }
 
-    private static Func<string, bool> Clean(string name, IReadOnlyCollection<string> things, bool current)
-    {
-        return thing =>
-        {
-            if (string.IsNullOrEmpty(thing) || things == null)
-            {
+    private static Func<string, bool> Clean(string name, IReadOnlyCollection<string> things, bool current) {
+        return thing => {
+            if (string.IsNullOrEmpty(thing) || things == null) {
                 return false;
             }
 
             var shouldRemove = current ? things.Contains(thing) : !things.Contains(thing);
-            if (shouldRemove && !current)
-            {
+            if (shouldRemove && !current) {
                 ModHelper.Log($"Cleaning {name} {thing}");
             }
 
@@ -263,47 +227,37 @@ internal class ProfileManagement
     }
 
     private static void CleanHashSet(Il2CppSystem.Collections.Generic.HashSet<string> hashSet,
-        Func<string, bool> clean, HashSet<string> storage)
-    {
+        Func<string, bool> clean, HashSet<string> storage) {
         storage.Clear();
-        if (hashSet == null)
-        {
+        if (hashSet == null) {
             return;
         }
 
-        foreach (var thing in hashSet)
-        {
-            if (clean(thing))
-            {
+        foreach (var thing in hashSet) {
+            if (clean(thing)) {
                 storage.Add(thing);
             }
         }
 
-        foreach (var thing in storage)
-        {
+        foreach (var thing in storage) {
             hashSet.Remove(thing);
         }
     }
 
     private static void CleanDictionary<T>(Il2CppSystem.Collections.Generic.Dictionary<string, T> dictionary,
-        Func<string, bool> clean, Dictionary<string, T> storage)
-    {
+        Func<string, bool> clean, Dictionary<string, T> storage) {
         storage.Clear();
-        if (dictionary == null)
-        {
+        if (dictionary == null) {
             return;
         }
-            
-        foreach (var (thing, value) in dictionary)
-        {
-            if (clean(thing))
-            {
+
+        foreach (var (thing, value) in dictionary) {
+            if (clean(thing)) {
                 storage.Add(thing, value);
             }
         }
 
-        foreach (var thing in storage.Keys)
-        {
+        foreach (var thing in storage.Keys) {
             dictionary.Remove(thing);
         }
     }

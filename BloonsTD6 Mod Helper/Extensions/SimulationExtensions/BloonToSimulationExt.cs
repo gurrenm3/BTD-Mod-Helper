@@ -8,14 +8,12 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for the BloonToSimulation
 /// </summary>
-public static partial class BloonToSimulationExt
-{
+public static partial class BloonToSimulationExt {
     /// <summary>
     /// Return the DisplayNode for this bloon
     /// </summary>
     /// <returns></returns>
-    public static DisplayNode GetDisplayNode(this BloonToSimulation bloonToSim)
-    {
+    public static DisplayNode GetDisplayNode(this BloonToSimulation bloonToSim) {
         return bloonToSim.GetBloon().GetDisplayNode();
     }
 
@@ -23,16 +21,14 @@ public static partial class BloonToSimulationExt
     /// Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <returns></returns>
-    public static UnityDisplayNode GetUnityDisplayNode(this BloonToSimulation bloonToSim)
-    {
+    public static UnityDisplayNode GetUnityDisplayNode(this BloonToSimulation bloonToSim) {
         return bloonToSim.GetBloon().GetUnityDisplayNode();
     }
 
     /// <summary>
     /// Return the Simulation Bloon for this specific BloonToSimulation. Returns object of class Bloon
     /// </summary>
-    public static Bloon GetBloon(this BloonToSimulation bloonToSim)
-    {
+    public static Bloon GetBloon(this BloonToSimulation bloonToSim) {
         return bloonToSim.GetSimBloon();
         //return SessionData.Instance.bloonTracker.GetBloon(bloonToSim.GetId());
     }
@@ -42,8 +38,7 @@ public static partial class BloonToSimulationExt
     /// </summary>
     /// <param name="bloonToSim"></param>
     /// <returns></returns>
-    public static float GetDistanceTravelled(this BloonToSimulation bloonToSim)
-    {
+    public static float GetDistanceTravelled(this BloonToSimulation bloonToSim) {
         var distance = bloonToSim.GetBloon().distanceTraveled;
 #if BloonsAT
             bloonToSim.distanceTravelled = distance;

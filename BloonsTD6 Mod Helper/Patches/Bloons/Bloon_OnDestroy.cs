@@ -3,8 +3,7 @@
 namespace BTD_Mod_Helper.Patches.Bloons;
 
 [HarmonyPatch(typeof(Bloon), nameof(Bloon.OnDestroy))]
-internal class Bloon_OnDestroy
-{
+internal class Bloon_OnDestroy {
     /*[HarmonyPrefix]
     internal static bool Prefix(Bloon __instance)
     {

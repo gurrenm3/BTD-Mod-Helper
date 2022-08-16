@@ -1,7 +1,10 @@
 ﻿using System;
+
 using Assets.Scripts.Unity.UI_New.Popups;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Enums;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,8 +15,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent that's the base panel for the visual representation of a ModSetting
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperOption : ModHelperComponent
-{
+public class ModHelperOption : ModHelperComponent {
     internal const int PanelWidth = 2500;
     internal const int PanelHeight = 400;
     internal const int RowHeight = 200;
@@ -59,15 +61,13 @@ public class ModHelperOption : ModHelperComponent
     public ModHelperImage RestartIcon { get; private set; }
 
     /// <inheritdoc />
-    public ModHelperOption(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperOption(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
     /// Adds an action to the reset button
     /// </summary>
-    public void SetResetAction(UnityAction action)
-    {
+    public void SetResetAction(UnityAction action) {
         ResetButton.Button.onClick.AddListener(action);
     }
 
@@ -79,15 +79,13 @@ public class ModHelperOption : ModHelperComponent
     /// <param name="description">The description of the mod setting, if any</param>
     /// <param name="icon">The icon of the mod setting, if any</param>
     /// <returns>The created ModHelperOption</returns>
-    public static ModHelperOption Create(string displayName, string description = null, string icon = null)
-    {
+    public static ModHelperOption Create(string displayName, string description = null, string icon = null) {
         return Create<ModHelperOption>(displayName, description, icon);
     }
 
     /// <inheritdoc cref="Create"/>
     protected static T Create<T>(string displayName, string description = null, string icon = null)
-        where T : ModHelperOption
-    {
+        where T : ModHelperOption {
         var modHelperOption = ModHelperComponent.Create<T>(
             new Info(displayName, width: PanelWidth, height: PanelHeight)
         );
@@ -97,16 +95,14 @@ public class ModHelperOption : ModHelperComponent
         modHelperOption.LayoutGroup.childForceExpandHeight = false;
         modHelperOption.LayoutGroup.childForceExpandWidth = false;
 
-        var topRow = modHelperOption.TopRow = modHelperOption.AddPanel(new Info("TopRow")
-        {
+        var topRow = modHelperOption.TopRow = modHelperOption.AddPanel(new Info("TopRow") {
             Height = RowHeight, FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, 100);
         topRow.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
 
 
         var iconPanel = topRow.AddPanel(new Info("IconPanel", size: RowHeight));
-        if (icon != null)
-        {
+        if (icon != null) {
             modHelperOption.Icon = iconPanel.AddImage(new Info("Icon", size: RowHeight), icon);
             modHelperOption.Icon.Image.color = Color.white;
         }
@@ -116,8 +112,7 @@ public class ModHelperOption : ModHelperComponent
         restart.SetActive(false);
 
 #if BloonsTD6
-        var text = modHelperOption.Name = topRow.AddText(new Info("Name")
-        {
+        var text = modHelperOption.Name = topRow.AddText(new Info("Name") {
             Height = TextHeight
         }, displayName, 80f);
         text.FitContent(ContentSizeFitter.FitMode.PreferredSize);
@@ -125,8 +120,7 @@ public class ModHelperOption : ModHelperComponent
             throw new NotImplementedException(); // need to figure out how to get ModHelperText class working for BloonsAT
 #endif
         var infoPanel = topRow.AddPanel(new Info("InfoPanel", size: RowHeight));
-        if (description != null)
-        {
+        if (description != null) {
 #if BloonsTD6
             modHelperOption.InfoButton = infoPanel.AddButton(
                 new Info("Info", size: TextHeight + 25),
@@ -141,8 +135,7 @@ public class ModHelperOption : ModHelperComponent
 #endif
         }
 
-        var bottomRow = modHelperOption.BottomRow = modHelperOption.AddPanel(new Info("BottomRow")
-        {
+        var bottomRow = modHelperOption.BottomRow = modHelperOption.AddPanel(new Info("BottomRow") {
             Height = RowHeight,
             FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, 100);

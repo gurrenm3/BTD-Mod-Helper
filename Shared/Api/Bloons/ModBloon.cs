@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Bloons.Behaviors;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Display;
 
 namespace BTD_Mod_Helper.Api.Bloons;
@@ -12,8 +14,7 @@ namespace BTD_Mod_Helper.Api.Bloons;
 /// <summary>
 /// Class for adding in a new Bloon to the game
 /// </summary>
-public abstract partial class ModBloon : NamedModContent
-{
+public abstract partial class ModBloon : NamedModContent {
     internal static readonly Dictionary<string, ModBloon> Cache = new();
 
     internal static readonly Dictionary<string, BloonModel> BloonModelCache = new();
@@ -28,16 +29,12 @@ public abstract partial class ModBloon : NamedModContent
     protected override float RegistrationPriority => (BaseModBloon?.RegistrationPriority ?? 5) + 1;
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         bloonModel = GetDefaultBloonModel();
 
-        try
-        {
+        try {
             ModifyBaseBloonModel(bloonModel);
-        }
-        catch (Exception)
-        {
+        } catch (Exception) {
             ModHelper.Error($"Failed to modify base Bloon model for {Id}");
             throw;
         }
@@ -52,8 +49,7 @@ public abstract partial class ModBloon : NamedModContent
             .Where(display => display.Damage > 0)
             .OrderBy(display => display.Damage)
             .ToList();
-        if (damageDisplays.Any())
-        {
+        if (damageDisplays.Any()) {
             ApplyDamageStates(bloonModel, damageDisplays.Select(display => display.Id).ToList());
         }
 
@@ -149,21 +145,18 @@ public abstract partial class ModBloon : NamedModContent
 
     internal BloonModel BaseBloonModel => Game.instance.model.GetBloon(BaseBloon);
 
-    internal virtual BloonModel GetDefaultBloonModel()
-    {
+    internal virtual BloonModel GetDefaultBloonModel() {
         var model = BaseBloonModel.Duplicate();
 
 #if BloonsTD6
         model.icon = IconReference;
         model.RemoveTag(model.GetBaseID());
 
-        if (BaseModBloon != null)
-        {
+        if (BaseModBloon != null) {
             model.baseId = BaseModBloon.Id;
         }
 
-        if (!KeepBaseId)
-        {
+        if (!KeepBaseId) {
             model.baseId = Id;
         }
 
@@ -174,22 +167,17 @@ public abstract partial class ModBloon : NamedModContent
         model.SetCamo(Camo);
         model.SetFortified(Fortified);
 
-        if (Regrow)
-        {
+        if (Regrow) {
             model.SetRegrow(RegrowsTo, RegrowRate);
-        }
-        else
-        {
+        } else {
             model.RemoveRegrow();
         }
 
-        if (DamageStates != null)
-        {
+        if (DamageStates != null) {
             ApplyDamageStates(model, DamageStates.ToList());
         }
 
-        if (UseIconAsDisplay)
-        {
+        if (UseIconAsDisplay) {
             var display = new ModDisplay2DImpl(mod, Id, Icon, Scale);
             display.Apply(model);
         }
@@ -197,15 +185,13 @@ public abstract partial class ModBloon : NamedModContent
         return model;
     }
 
-    internal void ApplyDamageStates(BloonModel model, List<string> damageStates)
-    {
+    internal void ApplyDamageStates(BloonModel model, List<string> damageStates) {
         // model.RemoveBehaviors<DamageStateModel>();
         var displayStates = new List<DamageStateModel>();
 
         var count = damageStates.Count + 1;
         var i = 1f;
-        foreach (var damageState in damageStates)
-        {
+        foreach (var damageState in damageStates) {
             displayStates.Add(new DamageStateModel($"DamageStateModel_damage_state_{i}",
                 CreatePrefabReference(damageState), 1 - i / count));
             i++;
@@ -228,8 +214,7 @@ public abstract partial class ModBloon : NamedModContent
 /// Class for a ModBloon which has a different ModBloon as its base
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModBloon<T> : ModBloon where T : ModBloon
-{
+public abstract class ModBloon<T> : ModBloon where T : ModBloon {
     /// <inheritdoc />
     public override bool KeepBaseId => true;
 

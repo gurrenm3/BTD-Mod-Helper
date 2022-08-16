@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Assets.Scripts.Unity.UI_New.Popups;
+
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
+
 using Newtonsoft.Json.Linq;
+
 using Octokit;
+
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api;
 
-internal static class ModHelperGithub
-{
+internal static class ModHelperGithub {
     public const string RawUserContent = "https://raw.githubusercontent.com";
 
     private const string RepoTopic = "btd6-mod";
@@ -52,13 +56,11 @@ internal static class ModHelperGithub
                        !BannedModders.Contains(data.RepoOwner) &&
                        (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)));
 
-    public static void Init()
-    {
+    public static void Init() {
         Client = new GitHubClient(new ProductHeaderValue(ProductName));
     }
 
-    public static async Task PopulateMods()
-    {
+    public static async Task PopulateMods() {
         var start = DateTime.Now;
         var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}"));
         var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
@@ -74,9 +76,9 @@ internal static class ModHelperGithub
             .Concat((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d))
             .Append(new ModHelperData(await modHelperRepoSearchTask))
             .ToArray();
-        
+
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
-        
+
         Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
         var duration = DateTime.Now - start;
 
@@ -85,66 +87,51 @@ internal static class ModHelperGithub
         UpdateRateLimit();
     }
 
-    public static async Task GetVerifiedModders()
-    {
-        try
-        {
+    public static async Task GetVerifiedModders() {
+        try {
             var result = await ModHelperHttp.Client.GetStringAsync(ModdersURL);
             var jobject = JObject.Parse(result);
             ForceVerifiedOnly = jobject.GetValue("forceVerifiedOnly")!.ToObject<bool>();
-            foreach (var jToken in jobject.GetValue("verified")!)
-            {
+            foreach (var jToken in jobject.GetValue("verified")!) {
                 VerifiedModders.Add(jToken.ToObject<string>());
             }
 
-            foreach (var jToken in jobject.GetValue("banned")!)
-            {
+            foreach (var jToken in jobject.GetValue("banned")!) {
                 BannedModders.Add(jToken.ToObject<string>());
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning("Failed to get modders data");
             ModHelper.Warning(e);
         }
     }
 
-    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false, Action<string> callback = null)
-    {
+    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false, Action<string> callback = null) {
         Release latestRelease = null;
         GitHubCommit latestCommit = null;
-        if (mod.SubPath != null)
-        {
+        if (mod.SubPath != null) {
             latestCommit = mod.LatestCommit ?? await mod.GetLatestCommit();
-            if (latestCommit == null)
-            {
+            if (latestCommit == null) {
                 const string errorMessage = $"Failed to get latest commit from the GitHub API. {Sorry}";
                 ModHelper.Error(errorMessage);
-                if (!bypassPopup)
-                {
+                if (!bypassPopup) {
                     PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
                 }
 
                 return;
             }
-        }
-        else
-        {
+        } else {
             latestRelease = mod.LatestRelease ?? await mod.GetLatestRelease();
-            if (latestRelease == null)
-            {
+            if (latestRelease == null) {
                 const string errorMessage = $"Failed to get latest release from the GitHub API. {Sorry}";
                 ModHelper.Error(errorMessage);
-                if (!bypassPopup)
-                {
+                if (!bypassPopup) {
                     PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
                 }
 
                 return;
             }
 
-            if (latestRelease.TagName != mod.RepoVersion)
-            {
+            if (latestRelease.TagName != mod.RepoVersion) {
                 ModHelper.Warning(
                     $"Latest Release Tag '{latestRelease.TagName}' didn't match listed mod version '{mod.RepoVersion}'. " +
                     "The real release for this version may not be present in the API yet.");
@@ -152,14 +139,10 @@ internal static class ModHelperGithub
         }
 
 
-        if (bypassPopup)
-        {
+        if (bypassPopup) {
             await Download(mod, callback, latestRelease, false);
-        }
-        else
-        {
-            PopupScreen.instance.SafelyQueue(screen =>
-            {
+        } else {
+            PopupScreen.instance.SafelyQueue(screen => {
                 screen.ShowPopup(PopupScreen.Placement.menuCenter,
                     $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                     mod.SubPath == null
@@ -168,8 +151,7 @@ internal static class ModHelperGithub
                     new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No",
                     Popup.TransitionAnim.Scale, instantClose: true);
 
-                screen.ModifyBodyText(field =>
-                {
+                screen.ModifyBodyText(field => {
                     var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
                         InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
                     scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
@@ -186,10 +168,8 @@ internal static class ModHelperGithub
     }
 
     private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease,
-        bool showPopup)
-    {
-        try
-        {
+        bool showPopup) {
+        try {
             var asset = mod.SubPath == null
                 ? latestRelease!.Assets.FirstOrDefault(asset =>
                       asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
@@ -197,18 +177,14 @@ internal static class ModHelperGithub
                 : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
                     DateTimeOffset.Now, mod.GetContentURL(mod.DllName), null);
             var resultFile = await DownloadAsset(mod, asset, showPopup);
-            if (resultFile != null)
-            {
-                if (callback != null && !string.IsNullOrWhiteSpace(resultFile))
-                {
+            if (resultFile != null) {
+                if (callback != null && !string.IsNullOrWhiteSpace(resultFile)) {
                     callback(resultFile);
                 }
 
                 return;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning(e);
         }
 
@@ -217,35 +193,29 @@ internal static class ModHelperGithub
         PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
     }
 
-    public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true)
-    {
-        if (mod.ManualDownload)
-        {
+    public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true) {
+        if (mod.ManualDownload) {
             ProcessHelper.OpenURL(releaseAsset.BrowserDownloadUrl);
             return "";
         }
 
         var name = mod.DllName ?? releaseAsset.Name;
-        if (name == null || !name.EndsWith(".dll"))
-        {
+        if (name == null || !name.EndsWith(".dll")) {
             name = $"{mod.Mod.GetAssembly().GetName().Name}.dll";
         }
 
         var downloadFilePath = Path.Combine(MelonHandler.ModsDirectory, name);
         var oldModsFilePath = Path.Combine(ModHelper.OldModsDirectory, name);
 
-        try
-        {
-            if (File.Exists(downloadFilePath))
-            {
+        try {
+            if (File.Exists(downloadFilePath)) {
                 Directory.CreateDirectory(ModHelper.OldModsDirectory);
                 if (File.Exists(oldModsFilePath)) File.Delete(oldModsFilePath);
                 File.Move(downloadFilePath, oldModsFilePath);
                 ModHelper.Msg($"Backing up to {oldModsFilePath}");
             }
 
-            if (mod.FilePath != null && File.Exists(mod.FilePath))
-            {
+            if (mod.FilePath != null && File.Exists(mod.FilePath)) {
                 Directory.CreateDirectory(ModHelper.OldModsDirectory);
                 if (File.Exists(oldModsFilePath)) File.Delete(oldModsFilePath);
                 File.Move(mod.FilePath, oldModsFilePath);
@@ -253,8 +223,7 @@ internal static class ModHelperGithub
             }
 
             var success = false;
-            switch (releaseAsset.ContentType)
-            {
+            switch (releaseAsset.ContentType) {
                 default:
                     ModHelper.Error("Won't download release asset with content type {releaseAsset.ContentType}");
                     return null;
@@ -265,16 +234,12 @@ internal static class ModHelperGithub
                 case ZipContentType:
                 case ZipContentType2:
                     var directoryInfo = await ModHelperHttp.DownloadZip(releaseAsset.BrowserDownloadUrl);
-                    if (directoryInfo != null)
-                    {
-                        try
-                        {
+                    if (directoryInfo != null) {
+                        try {
                             var dll = directoryInfo.GetFiles().First(s => s.Extension == "dll").FullName;
                             File.Copy(dll, downloadFilePath);
                             success = true;
-                        }
-                        catch (InvalidOperationException)
-                        {
+                        } catch (InvalidOperationException) {
                             ModHelper.Warning(
                                 $"Zip archive did not contain {name}. " +
                                 "The mod developer may have made a typo, " +
@@ -285,26 +250,21 @@ internal static class ModHelperGithub
                     break;
             }
 
-            if (success)
-            {
+            if (success) {
                 var message = $"Successfully downloaded {name}, remember to restart to apply the changes!";
                 ModHelper.Log(message);
-                if (showPopup)
-                {
+                if (showPopup) {
                     PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(message.Replace(",", "\n")));
                 }
 
                 mod.SetVersion(mod.RepoVersion!);
                 return downloadFilePath;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning(e);
         }
 
-        if (File.Exists(oldModsFilePath))
-        {
+        if (File.Exists(oldModsFilePath)) {
             File.Copy(oldModsFilePath, downloadFilePath, true);
             ModHelper.Msg($"Loading backup from {oldModsFilePath}");
         }
@@ -313,16 +273,11 @@ internal static class ModHelperGithub
     }
 
 
-    public static void UpdateRateLimit()
-    {
-        Task.Run(async () =>
-        {
-            try
-            {
+    public static void UpdateRateLimit() {
+        Task.Run(async () => {
+            try {
                 rateLimit = await Client.Miscellaneous.GetRateLimits();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ModHelper.Warning(e);
             }
         });

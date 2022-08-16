@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using Assets.Scripts.Data;
 using Assets.Scripts.Data.Global;
 using Assets.Scripts.Models.GenericBehaviors;
@@ -11,8 +12,7 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// Class for adding a new buff icon that can be displayed for towers
 /// </summary>
-public abstract class ModBuffIcon : NamedModContent
-{
+public abstract class ModBuffIcon : NamedModContent {
     internal static readonly Dictionary<string, SpriteReference> CustomBuffIcons = new();
 
     /// <inheritdoc />
@@ -54,15 +54,16 @@ public abstract class ModBuffIcon : NamedModContent
     /// </summary>
     public virtual bool OnlyShowBuffIfMutated => false;
 
-    private BuffIndicatorModel CreateBuffIndicatorModel() => new($"BuffIndicatorModel_{Id}-{Icon}", Icon, Id, GlobalRange,
+    private BuffIndicatorModel CreateBuffIndicatorModel() {
+        return new($"BuffIndicatorModel_{Id}-{Icon}", Icon, Id, GlobalRange,
         MaxStackSize, OnlyShowBuffIfMutated);
+    }
 
     /// <summary>
     /// Makes a support model use this as its buff indicator
     /// </summary>
     /// <param name="supportModel">The support model to apply to</param>
-    public void ApplyTo(SupportModel supportModel)
-    {
+    public void ApplyTo(SupportModel supportModel) {
         supportModel.buffLocsName = Icon;
         supportModel.buffIconName = Id;
         supportModel.isGlobal = GlobalRange;
@@ -70,10 +71,9 @@ public abstract class ModBuffIcon : NamedModContent
         supportModel.onlyShowBuffIfMutated = OnlyShowBuffIfMutated;
         supportModel.showBuffIcon = true;
     }
-    
+
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         CustomBuffIcons[Id] = IconReference;
 
         var model = CreateBuffIndicatorModel();
@@ -82,9 +82,8 @@ public abstract class ModBuffIcon : NamedModContent
 
         gameModel.buffIndicatorModels = gameModel.buffIndicatorModels.AddTo(model);
         gameModel.AddChildDependant(model);
-        
-        GameData.Instance.buffIconSprites.buffIconSprites.Add(new BuffIconSprite
-        {
+
+        GameData.Instance.buffIconSprites.buffIconSprites.Add(new BuffIconSprite {
             buffId = Id,
             icon = IconReference
         });

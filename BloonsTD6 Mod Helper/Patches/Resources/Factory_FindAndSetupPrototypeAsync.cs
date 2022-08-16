@@ -1,14 +1,18 @@
 ﻿using System;
+
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
+
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement;
 using UnityEngine.ResourceManagement.AsyncOperations;
+
 using Console = System.Console;
 using Exception = System.Exception;
 using Object = UnityEngine.Object;
@@ -16,8 +20,7 @@ using Object = UnityEngine.Object;
 namespace BTD_Mod_Helper.Patches.Resources;
 
 [HarmonyPatch(typeof(Factory), nameof(Factory.FindAndSetupPrototypeAsync))]
-internal class Factory_FindAndSetupPrototypeAsync
-{
+internal class Factory_FindAndSetupPrototypeAsync {
     /*[HarmonyPrefix]
     internal static bool Prefix(ref Factory __instance, ref string objectId, ref Action<UnityDisplayNode> onComplete)
     {

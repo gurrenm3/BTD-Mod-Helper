@@ -1,5 +1,7 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +11,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a background panel
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperScrollPanel : ModHelperPanel
-{
+public class ModHelperScrollPanel : ModHelperPanel {
     /// <summary>
     /// The ScrollContent object. This is the object that the children are actually part of,
     /// and is what actually moves up and down when scrolling.
@@ -34,15 +35,13 @@ public class ModHelperScrollPanel : ModHelperPanel
     public ContentSizeFitter ContentSizeFitter { get; private set; }
 
     /// <inheritdoc />
-    public ModHelperScrollPanel(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperScrollPanel(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
     /// Adds a child to the ScrollContent of this panel
     /// </summary>
-    public void AddScrollContent(ModHelperComponent child)
-    {
+    public void AddScrollContent(ModHelperComponent child) {
         ScrollContent.Add(child);
     }
 
@@ -56,13 +55,11 @@ public class ModHelperScrollPanel : ModHelperPanel
     /// <param name="padding"></param>
     /// <returns>The created ModHelperScrollPanel</returns>
     public static ModHelperScrollPanel Create(Info info, RectTransform.Axis? axis,
-        string backgroundSprite = null, float spacing = 0, int padding = 0)
-    {
+        string backgroundSprite = null, float spacing = 0, int padding = 0) {
         var newPanel = Create<ModHelperScrollPanel>(info, backgroundSprite);
         var scrollRect = newPanel.AddComponent<ScrollRect>();
 
-        var scrollContent = newPanel.AddPanel(new Info("ScrollContent")
-        {
+        var scrollContent = newPanel.AddPanel(new Info("ScrollContent") {
             AnchorMin = new Vector2(
                 axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
                 axis == RectTransform.Axis.Horizontal ? 0 : 0.5f),
@@ -84,17 +81,13 @@ public class ModHelperScrollPanel : ModHelperPanel
 
         newPanel.AddComponent<Mask>();
 
-        if (axis != null)
-        {
+        if (axis != null) {
             var contentSizeFitter = newPanel.ContentSizeFitter = scrollContent.AddComponent<ContentSizeFitter>();
-            if (axis == RectTransform.Axis.Horizontal)
-            {
+            if (axis == RectTransform.Axis.Horizontal) {
                 scrollRect.vertical = false;
                 contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
                 contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.Unconstrained;
-            }
-            else
-            {
+            } else {
                 scrollRect.horizontal = false;
                 contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
                 contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;

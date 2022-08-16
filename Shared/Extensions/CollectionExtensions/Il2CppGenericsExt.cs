@@ -1,6 +1,9 @@
-﻿using Assets.Scripts.Utils;
+﻿using System;
+
+using Assets.Scripts.Utils;
+
 using Il2CppSystem.Collections.Generic;
-using System;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -8,16 +11,14 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for generic il2cpp lists
 /// </summary>
-public static partial class Il2CppGenericsExt
-{
+public static partial class Il2CppGenericsExt {
     /// <summary>
     /// Return as System.List
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
     /// <returns></returns>
-    public static System.Collections.Generic.List<T> ToList<T>(this List<T> il2CppList)
-    {
+    public static System.Collections.Generic.List<T> ToList<T>(this List<T> il2CppList) {
         var newList = new System.Collections.Generic.List<T>();
         foreach (var item in il2CppList)
             newList.Add(item);
@@ -31,14 +32,12 @@ public static partial class Il2CppGenericsExt
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
     /// <returns></returns>
-    public static T[] ToArray<T>(this List<T> il2CppList)
-    {
+    public static T[] ToArray<T>(this List<T> il2CppList) {
         var newArray = new T[] { };
 
-        foreach (var item in il2CppList)
-        {
+        foreach (var item in il2CppList) {
             Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item;
+            newArray[^1] = item;
         }
 
         return newArray;
@@ -50,16 +49,14 @@ public static partial class Il2CppGenericsExt
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
     /// <returns></returns>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this List<T> il2CppList) where T : Il2CppSystem.Object
-    {
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this List<T> il2CppList) where T : Il2CppSystem.Object {
         return new Il2CppReferenceArray<T>(il2CppList.ToArray());
     }
 
     /// <summary>
     /// Return as LockList
     /// </summary>
-    public static LockList<T> ToLockList<T>(this List<T> il2CppList)
-    {
+    public static LockList<T> ToLockList<T>(this List<T> il2CppList) {
         var lockList = new LockList<T>();
         foreach (var item in il2CppList)
             lockList.Add(item);
@@ -73,8 +70,7 @@ public static partial class Il2CppGenericsExt
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static List<T> Duplicate<T>(this List<T> list)
-    {
+    public static List<T> Duplicate<T>(this List<T> list) {
         var newList = new List<T>();
         foreach (var item in list)
             newList.Add(item);
@@ -90,8 +86,7 @@ public static partial class Il2CppGenericsExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static List<TCast> DuplicateAs<TSource, TCast>(this List<TSource> list)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
-    {
+        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object {
         var newList = new List<TCast>();
         foreach (var item in list)
             newList.Add(item.TryCast<TCast>());
@@ -108,8 +103,7 @@ public static partial class Il2CppGenericsExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static bool HasItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
-    {
+        where TCast : Il2CppSystem.Object {
         return list.Any(o => o.IsType<TCast>());
     }
 
@@ -121,8 +115,7 @@ public static partial class Il2CppGenericsExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static TCast GetItemOfType<TSource, TCast>(this List<TSource> list) where TCast : Il2CppSystem.Object
-        where TSource : Il2CppSystem.Object
-    {
+        where TSource : Il2CppSystem.Object {
         return list.First(o => o.IsType<TCast>()).Cast<TCast>();
     }
 
@@ -134,8 +127,7 @@ public static partial class Il2CppGenericsExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static List<TCast> GetItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
-    {
+        where TCast : Il2CppSystem.Object {
         return list.DuplicateAs<TSource, TCast>().Where(o => o != null);
     }
 
@@ -148,8 +140,7 @@ public static partial class Il2CppGenericsExt
     /// <returns></returns>
     public static List<TSource> RemoveItemOfType<TSource, TCast>(this List<TSource> list)
         where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
-    {
+        where TCast : Il2CppSystem.Object {
         var item = GetItemOfType<TSource, TCast>(list);
         return RemoveItem(list, item);
     }
@@ -163,11 +154,9 @@ public static partial class Il2CppGenericsExt
     /// <param name="itemToRemove">The specific Item to remove</param>
     /// <returns></returns>
     public static List<TSource> RemoveItem<TSource, TCast>(this List<TSource> list, TCast itemToRemove)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
-    {
+        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object {
         var itemOfType = itemToRemove ?? list.GetItemOfType<TSource, TCast>();
-        if (itemOfType != null)
-        {
+        if (itemOfType != null) {
             list.Remove(itemOfType.Cast<TSource>());
         }
         return list;
@@ -182,8 +171,7 @@ public static partial class Il2CppGenericsExt
     /// <returns></returns>
     public static List<TSource> RemoveItemsOfType<TSource, TCast>(this List<TSource> list)
         where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
-    {
+        where TCast : Il2CppSystem.Object {
         list.RemoveAll(new Func<TSource, bool>(item => item.IsType<TCast>()));
         return list;
     }

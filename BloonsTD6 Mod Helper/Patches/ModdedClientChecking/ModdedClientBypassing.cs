@@ -5,8 +5,7 @@ namespace BTD_Mod_Helper.Patches.ModdedClientChecking;
 /// <summary>
 /// You forced our hand :(
 /// </summary>
-internal class ModdedClientBypassing
-{
+internal class ModdedClientBypassing {
     /// <summary>
     /// The nuclear option would be just setting this to true, which would entirely bypass all of NK's clientside checks
     /// </summary>
@@ -20,8 +19,7 @@ internal class ModdedClientBypassing
     /// <summary>
     /// Called in prefix patches on methods where we think modded clients should be accepted
     /// </summary>
-    internal static void StartBypassingCheck()
-    {
+    internal static void StartBypassingCheck() {
         CurrentlyBypassingCheck = true;
         Modding.isModdedClient = false;
     }
@@ -29,8 +27,7 @@ internal class ModdedClientBypassing
     /// <summary>
     /// Called in postfix patches on methods where we think modded clients should be accepted
     /// </summary>
-    internal static void StopBypassingCheck()
-    {
+    internal static void StopBypassingCheck() {
         CurrentlyBypassingCheck = DefaultBypassCheck;
         Modding.isModdedClient = !DefaultBypassCheck;
     }

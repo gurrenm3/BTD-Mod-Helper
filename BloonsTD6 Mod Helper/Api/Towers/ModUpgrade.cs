@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Simulation.Towers;
@@ -11,8 +12,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// <summary>
 /// A class used to create an Upgrade for a Tower
 /// </summary>
-public abstract class ModUpgrade : NamedModContent
-{
+public abstract class ModUpgrade : NamedModContent {
     internal static readonly Dictionary<string, ModUpgrade> Cache = new();
 
 
@@ -26,39 +26,31 @@ public abstract class ModUpgrade : NamedModContent
     protected sealed override float RegistrationPriority => 2;
 
     /// <inheritdoc />
-    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
-    {
+    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable) {
         base.RegisterText(textTable);
-        if (NeedsConfirmation)
-        {
-            if (ConfirmationTitle != null)
-            {
+        if (NeedsConfirmation) {
+            if (ConfirmationTitle != null) {
                 textTable[Id + " Title"] = ConfirmationTitle;
             }
 
-            if (ConfirmationBody != null)
-            {
+            if (ConfirmationBody != null) {
                 textTable[Id + " Body"] = ConfirmationBody;
             }
         }
     }
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         upgradeModel = GetUpgradeModel();
 
         AssignToModTower();
 
-        try
-        {
+        try {
             Game.instance.model.AddUpgrade(upgradeModel);
             Cache[upgradeModel.name] = this;
         }
-        finally
-        {
-            rollbackActions.Push(() =>
-            {
+        finally {
+            rollbackActions.Push(() => {
                 Game.instance.model.upgrades = Game.instance.model.upgrades.RemoveItem(upgradeModel);
                 Game.instance.model.upgradesByName.Remove(upgradeModel.name);
                 Game.instance.model.RemoveChildDependant(upgradeModel);
@@ -67,24 +59,17 @@ public abstract class ModUpgrade : NamedModContent
         }
     }
 
-    internal virtual void AssignToModTower()
-    {
-        if (Path is >= 0 and < 3 && Tower.tierMaxes[Path] >= Tier)
-        {
-            try
-            {
+    internal virtual void AssignToModTower() {
+        if (Path is >= 0 and < 3 && Tower.tierMaxes[Path] >= Tier) {
+            try {
                 Tower.upgrades[Path, Tier - 1] = this;
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 ModHelper.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
                 ModHelper.Error(
                     "Double check that all Path and Tier values are correct");
                 throw;
             }
-        }
-        else
-        {
+        } else {
             ModHelper.Warning("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
             ModHelper.Warning(
                 "Double check that all Path and Tier values are correct");
@@ -201,8 +186,7 @@ public abstract class ModUpgrade : NamedModContent
     /// If you really need to override the way that the ModUpgrade makes its UpgradeModel, go ahead
     /// </summary>
     /// <returns></returns>
-    public virtual UpgradeModel GetUpgradeModel()
-    {
+    public virtual UpgradeModel GetUpgradeModel() {
         return upgradeModel ??= new UpgradeModel(Id, Cost, XpCost, IconReference ?? DefaultIcon,
             Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
     }
@@ -212,8 +196,7 @@ public abstract class ModUpgrade : NamedModContent
     /// </summary>
     /// <param name="tower"></param>
     /// <returns>If </returns>
-    public virtual bool RestrictUpgrading(Tower tower)
-    {
+    public virtual bool RestrictUpgrading(Tower tower) {
         return false;
     }
 }
@@ -222,8 +205,7 @@ public abstract class ModUpgrade : NamedModContent
 /// A convenient generic class for specifying the ModTower that this ModUpgrade is for
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModUpgrade<T> : ModUpgrade where T : ModTower
-{
+public abstract class ModUpgrade<T> : ModUpgrade where T : ModTower {
     /// <inheritdoc />
     public override ModTower Tower => GetInstance<T>();
 }

@@ -1,33 +1,38 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.Main;
 using Assets.Scripts.Unity.UI_New.Main.MapSelect;
 using Assets.Scripts.Unity.UI_New.Main.MonkeySelect;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;
+
 using Il2CppSystem;
+
 using UnhollowerBaseLib;
+
 using UnhollowerRuntimeLib;
+
 using UnityEngine;
 using UnityEngine.UI;
+
 using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
-internal class ModdedMonkeySelectMenu
-{
+internal class ModdedMonkeySelectMenu {
     private static MonkeySelectMenu menu;
     private static bool reOpening;
     private static string currentTowerSet = "";
 
     private static readonly Dictionary<string, int> Offsets = new();
 
-    private static int Offset
-    {
+    private static int Offset {
         get => Offsets[currentTowerSet];
         set => Offsets[currentTowerSet] = value;
     }
@@ -44,15 +49,12 @@ internal class ModdedMonkeySelectMenu
     /// </summary>
     /// <param name="__instance"></param>
     /// <param name="offset"></param>
-    internal static void UpdateTowerSet(MonkeySelectMenu __instance, int offset = 0)
-    {
+    internal static void UpdateTowerSet(MonkeySelectMenu __instance, int offset = 0) {
         var newTowerSet = menu.TowerSets[menu.currentSet];
-        if (newTowerSet != currentTowerSet)
-        {
+        if (newTowerSet != currentTowerSet) {
             currentTowerSet = newTowerSet;
 
-            if (offset != Offset)
-            {
+            if (offset != Offset) {
                 Cycle(offset);
             }
         }
@@ -63,21 +65,17 @@ internal class ModdedMonkeySelectMenu
     /// <br/>
     /// Their order in the GameModel is what determines their order in the screen
     /// </summary>
-    internal static void UpdateGameModel(string set = "")
-    {
-        if (set == "")
-        {
+    internal static void UpdateGameModel(string set = "") {
+        if (set == "") {
             set = currentTowerSet;
         }
 
         var model = Game.instance.model;
-        for (var index = 0; index < TowersInSets[set].Count; index++)
-        {
+        for (var index = 0; index < TowersInSets[set].Count; index++) {
             var details = TowersInSets[set][index];
             model.RemoveChildDependant(details);
 
-            if (index >= Offsets[set])
-            {
+            if (index >= Offsets[set]) {
                 model.AddChildDependant(details);
             }
         }
@@ -86,17 +84,14 @@ internal class ModdedMonkeySelectMenu
     /// <summary>
     /// Put the GameModel's TowerDetails ordering back to normal
     /// </summary>
-    internal static void ResetGameModel()
-    {
+    internal static void ResetGameModel() {
         var model = Game.instance.model;
-        foreach (var details in model.towerSet)
-        {
+        foreach (var details in model.towerSet) {
             model.RemoveChildDependant(details);
             model.AddChildDependant(details);
         }
 
-        foreach (var details in model.heroSet)
-        {
+        foreach (var details in model.heroSet) {
             model.RemoveChildDependant(details);
             model.AddChildDependant(details);
         }
@@ -105,18 +100,14 @@ internal class ModdedMonkeySelectMenu
     /// <summary>
     /// Change the MonkeySelectButtons on the current page
     /// </summary>
-    internal static void Cycle(int offset)
-    {
-        if (menu != null)
-        {
+    internal static void Cycle(int offset) {
+        if (menu != null) {
             Offset = offset;
-            if (Offset < 0)
-            {
+            if (Offset < 0) {
                 Offset += TotalSpots;
             }
 
-            if (Offset >= TotalSpots)
-            {
+            if (Offset >= TotalSpots) {
                 Offset = 0;
             }
 
@@ -128,8 +119,7 @@ internal class ModdedMonkeySelectMenu
     /// <summary>
     /// Actually make the displayed buttons change
     /// </summary>
-    internal static void RefreshButtons()
-    {
+    internal static void RefreshButtons() {
         menu.shopTowerDetailsModels = null;
         menu.buttonLeft.m_OnClick.RemoveAllListeners();
         menu.buttonRight.m_OnClick.RemoveAllListeners();
@@ -139,30 +129,24 @@ internal class ModdedMonkeySelectMenu
         reOpening = false;
     }
 
-    public static bool ItComesAfter(string it, string maybeAfter)
-    {
+    public static bool ItComesAfter(string it, string maybeAfter) {
         var sets = menu.TowerSets;
         return (sets.IndexOf(it) - sets.IndexOf(maybeAfter) + sets.Length) % sets.Length == 1;
     }
 
-    public static bool ItComesBefore(string it, string maybeBefore)
-    {
+    public static bool ItComesBefore(string it, string maybeBefore) {
         var sets = menu.TowerSets;
         return (sets.IndexOf(maybeBefore) - sets.IndexOf(it) + sets.Length) % sets.Length == 1;
     }
 
 
     [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.Open))]
-    internal class MonkeySelectMenu_Open
-    {
+    internal class MonkeySelectMenu_Open {
         [HarmonyPrefix]
-        internal static void Prefix(MonkeySelectMenu __instance, Il2CppSystem.Object data)
-        {
-            if (!reOpening)
-            {
+        internal static void Prefix(MonkeySelectMenu __instance, Il2CppSystem.Object data) {
+            if (!reOpening) {
                 var towerSets = new List<string>(__instance.TowerSets);
-                foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
-                {
+                foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>()) {
                     var towerSetIndex = modTowerSet.GetTowerSetIndex(towerSets);
                     towerSets.Insert(towerSetIndex, modTowerSet.Id);
                 }
@@ -170,13 +154,11 @@ internal class ModdedMonkeySelectMenu
                 __instance.TowerSets = towerSets.ToArray();
             }
 
-            if (data == null)
-            {
+            if (data == null) {
                 menu = null;
 
                 var model = Game.instance.model;
-                foreach (var set in __instance.TowerSets)
-                {
+                foreach (var set in __instance.TowerSets) {
                     Offsets[set] = 0;
                     TowersInSets[set] = model.towerSet.Where(details =>
                         model.GetTowerFromId(details.towerId).towerSet == set).ToList();
@@ -184,16 +166,14 @@ internal class ModdedMonkeySelectMenu
                 }
             }
 
-            if (!reOpening)
-            {
+            if (!reOpening) {
                 CreatePips(__instance);
                 CreateCustomButtons(__instance);
             }
         }
 
         [HarmonyPostfix]
-        internal static void Postfix(MonkeySelectMenu __instance, Il2CppSystem.Object data)
-        {
+        internal static void Postfix(MonkeySelectMenu __instance, Il2CppSystem.Object data) {
             menu = __instance;
             UpdateTowerSet(__instance);
             UpdatePips();
@@ -212,34 +192,28 @@ internal class ModdedMonkeySelectMenu
     /// towerSet=not null swipeGesture=false (reOpening=true) - Called during our calls to Open() to change the buttons
     /// </summary>
     [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.SwitchTowerSet))]
-    internal class MonkeySelectMenu_SwitchTowerSet
-    {
+    internal class MonkeySelectMenu_SwitchTowerSet {
         [HarmonyPrefix]
         internal static bool Prefix(MonkeySelectMenu __instance, ref string towerSet, bool swipeGesture,
             ref int __state) // State is the offset that the page should be at after this switch
         {
             __state = Offset;
 
-            if (towerSet != currentTowerSet)
-            {
+            if (towerSet != currentTowerSet) {
                 // By default, switches will take the 
                 __state = 0;
 
                 // Swipe gestures also include the left and right arrow buttons alongside swiping.
                 // This is how actual navigation between the different pages of the same tower sets happens
-                if (swipeGesture)
-                {
-                    if (ItComesAfter(towerSet, currentTowerSet) && Offset != TotalSpots - 8)
-                    {
+                if (swipeGesture) {
+                    if (ItComesAfter(towerSet, currentTowerSet) && Offset != TotalSpots - 8) {
                         // Move to next page of tower set
                         Cycle(Offset + 8);
                         return false; // Don't switch to next tower set
                     }
 
-                    if (ItComesBefore(towerSet, currentTowerSet))
-                    {
-                        if (Offset != 0)
-                        {
+                    if (ItComesBefore(towerSet, currentTowerSet)) {
+                        if (Offset != 0) {
                             // Move to previous page of tower set
                             Cycle(Offset - 8);
                             return false; // Don't switch to previous tower set
@@ -249,9 +223,7 @@ internal class ModdedMonkeySelectMenu
                         __state = TotalSpotses[towerSet] - 8;
                     }
                 }
-            }
-            else if (!reOpening)
-            {
+            } else if (!reOpening) {
                 // Like on the maps screen, clicking your current MonkeyGroupButton should cycle the set
                 Cycle(Offset + 8);
             }
@@ -260,40 +232,33 @@ internal class ModdedMonkeySelectMenu
         }
 
         [HarmonyPostfix]
-        internal static void Postfix(MonkeySelectMenu __instance, string towerSet, bool swipeGesture, int __state)
-        {
+        internal static void Postfix(MonkeySelectMenu __instance, string towerSet, bool swipeGesture, int __state) {
             UpdateTowerSet(__instance, __state);
             UpdatePips();
         }
     }
 
     [HarmonyPatch(typeof(MonkeyGroupButton), nameof(MonkeyGroupButton.Initialise))]
-    internal class MonkeyGroupButton_Initialise
-    {
+    internal class MonkeyGroupButton_Initialise {
         [HarmonyPrefix]
-        internal static bool Prefix(MonkeyGroupButton __instance)
-        {
+        internal static bool Prefix(MonkeyGroupButton __instance) {
             // Don't re-initialize the MonkeyGroupButtons while we're reloading
             return !reOpening;
         }
     }
 
     [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Start))]
-    internal class MainMenu_Awake
-    {
+    internal class MainMenu_Awake {
         [HarmonyPostfix]
-        internal static void Postfix(MainMenu __instance)
-        {
+        internal static void Postfix(MainMenu __instance) {
             ResetGameModel();
         }
     }
 
     [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.Close))]
-    internal class MonkeySelectMenu_Close
-    {
+    internal class MonkeySelectMenu_Close {
         [HarmonyPostfix]
-        internal static void Postfix(MonkeySelectMenu __instance)
-        {
+        internal static void Postfix(MonkeySelectMenu __instance) {
             //DestroyPips();
             //DestroyCustomButtons();
         }
@@ -308,30 +273,23 @@ internal class ModdedMonkeySelectMenu
 
     internal static Dictionary<ModTowerSet, GameObject> customMonkeyGroupButtons = new();
 
-    internal static void UpdatePips()
-    {
-        for (var index = 0; index < pips.Count; index++)
-        {
+    internal static void UpdatePips() {
+        for (var index = 0; index < pips.Count; index++) {
             var pip = pips[index];
-            if (index == CurrentPage)
-            {
+            if (index == CurrentPage) {
                 pip.GetComponent<MapPip>().Activate();
-            }
-            else
-            {
+            } else {
                 pip.GetComponent<MapPip>().Deactivate();
             }
         }
     }
 
-    internal static void CreatePips(MonkeySelectMenu menu)
-    {
+    internal static void CreatePips(MonkeySelectMenu menu) {
         DestroyPips();
 
         pipHolder = new GameObject("PipHolder",
-            new Il2CppReferenceArray<Type>(new[] {Il2CppType.Of<RectTransform>()}))
-        {
-            transform = {parent = menu.transform}
+            new Il2CppReferenceArray<Type>(new[] { Il2CppType.Of<RectTransform>() })) {
+            transform = { parent = menu.transform }
         };
         var gridLayoutGroup = pipHolder.AddComponent<GridLayoutGroup>();
         gridLayoutGroup.cellSize = new Vector2(64, 64);
@@ -348,17 +306,14 @@ internal class ModdedMonkeySelectMenu
         pipHolder.transform.position = monkeyGroupButtonsPos + new Vector3(0, 125, 0) * scale.x;
         pipHolder.transform.localScale = new Vector3(1, 1, 1);
 
-        for (var i = 0; i < TotalPages; i++)
-        {
+        for (var i = 0; i < TotalPages; i++) {
             pips.Add(CreatePip(pipHolder.transform, menu));
         }
     }
 
-    internal static GameObject CreatePip(Transform parent, MonkeySelectMenu menu)
-    {
+    internal static GameObject CreatePip(Transform parent, MonkeySelectMenu menu) {
         var pip = new GameObject("CustomPip",
-            new Il2CppReferenceArray<Type>(new[] {Il2CppType.Of<RectTransform>()}))
-        {
+            new Il2CppReferenceArray<Type>(new[] { Il2CppType.Of<RectTransform>() })) {
             transform =
             {
                 parent = parent
@@ -387,14 +342,12 @@ internal class ModdedMonkeySelectMenu
         return pip;
     }
 
-    internal static void CreateCustomButtons(MonkeySelectMenu __instance)
-    {
+    internal static void CreateCustomButtons(MonkeySelectMenu __instance) {
         DestroyCustomButtons();
 
         var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
         var horizontalLayoutGroup = __instance.monkeyGroupButtons[0].GetComponentInParent<HorizontalLayoutGroup>();
-        foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
-        {
+        foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>()) {
             horizontalLayoutGroup.enabled = true;
             var index = modTowerSet.GetTowerSetIndex(monkeyGroupButtons.Select(b => b.groupName).ToList());
             var groupButton = CreateMonkeyGroupButton(__instance, modTowerSet);
@@ -406,8 +359,7 @@ internal class ModdedMonkeySelectMenu
         __instance.monkeyGroupButtons = monkeyGroupButtons.ToArray();
     }
 
-    internal static GameObject CreateMonkeyGroupButton(MonkeySelectMenu instance, ModTowerSet modTowerSet)
-    {
+    internal static GameObject CreateMonkeyGroupButton(MonkeySelectMenu instance, ModTowerSet modTowerSet) {
         var primary = instance.monkeyGroupButtons.First(button => button.groupName == "Primary");
         var groupButton = Object.Instantiate(primary.gameObject, primary.transform.parent);
         var monkeyGroupButton = groupButton.GetComponent<MonkeyGroupButton>();
@@ -418,26 +370,21 @@ internal class ModdedMonkeySelectMenu
         return groupButton;
     }
 
-    internal static void DestroyPips()
-    {
-        foreach (var gameObject in pips)
-        {
+    internal static void DestroyPips() {
+        foreach (var gameObject in pips) {
             Object.Destroy(gameObject);
         }
 
         pips.Clear();
 
-        if (pipHolder != null)
-        {
+        if (pipHolder != null) {
             Object.Destroy(pipHolder);
             pipHolder = null;
         }
     }
 
-    internal static void DestroyCustomButtons()
-    {
-        foreach (var gameObject in customMonkeyGroupButtons.Values)
-        {
+    internal static void DestroyCustomButtons() {
+        foreach (var gameObject in customMonkeyGroupButtons.Values) {
             Object.Destroy(gameObject);
         }
 

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.Towers.Behaviors;
-using Assets.Scripts.Utils;
-using Assets.Scripts.Models.TowerSets;
+
 using Assets.Scripts.Data.Global;
 using Assets.Scripts.Data.Skins;
+using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Behaviors;
+using Assets.Scripts.Models.TowerSets;
+using Assets.Scripts.Utils;
+
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -14,18 +16,15 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// <summary>
 /// Class for adding a custom Hero to the game. Use alongside <see cref="ModHeroLevel"/> to give multiple levels.
 /// </summary>
-public abstract class ModHero : ModTower
-{
+public abstract class ModHero : ModTower {
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         base.Register();
         ModTowerHelper.FinalizeHero(this);
     }
 
     /// <inheritdoc />
-    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
-    {
+    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable) {
         base.RegisterText(textTable);
 
         textTable[Id + " Short Description"] = Title;
@@ -79,21 +78,17 @@ public abstract class ModHero : ModTower
     /// Heroes tower tiers are always Level-0-0
     /// </summary>
     /// <returns></returns>
-    public sealed override IEnumerable<int[]> TowerTiers()
-    {
-        yield return new[] {0, 0, 0};
+    public sealed override IEnumerable<int[]> TowerTiers() {
+        yield return new[] { 0, 0, 0 };
 
-        for (var i = 2; i <= MaxLevel; i++)
-        {
-            yield return new[] {i, 0, 0};
+        for (var i = 2; i <= MaxLevel; i++) {
+            yield return new[] { i, 0, 0 };
         }
     }
 
-    internal override TowerModel GetDefaultTowerModel()
-    {
+    internal override TowerModel GetDefaultTowerModel() {
         var baseTowerModel = base.GetDefaultTowerModel();
-        if (!baseTowerModel.HasBehavior<HeroModel>())
-        {
+        if (!baseTowerModel.HasBehavior<HeroModel>()) {
             // Unrelated to the actual XpRatio weirdly enough
             baseTowerModel.AddBehavior(new HeroModel($"HeroModel_{Name}", 1.0f, 1.0f));
         }
@@ -101,11 +96,9 @@ public abstract class ModHero : ModTower
         return baseTowerModel;
     }
 
-    internal override string TowerId(int[] tiers)
-    {
+    internal override string TowerId(int[] tiers) {
         var id = Id;
-        if (tiers[0] > 0)
-        {
+        if (tiers[0] > 0) {
             id += " " + tiers[0];
         }
 
@@ -161,7 +154,7 @@ public abstract class ModHero : ModTower
         {10, GetPortraitReferenceForTiers(new []{10, 0, 0})},
         {20, GetPortraitReferenceForTiers(new []{20, 0, 0})},
     };
-    
+
 
     /// <summary>
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
@@ -205,43 +198,44 @@ public abstract class ModHero : ModTower
     /// <see cref="NameStyle"/>, <see cref="GlowStyle"/> and <see cref="BackgroundStyle"/> at this point.
     /// </summary>
     /// <param name="heroSprite">The HeroSprite to modify</param>
-    public virtual void ModifyHeroSprite(HeroSprite heroSprite)
-    {
+    public virtual void ModifyHeroSprite(HeroSprite heroSprite) {
     }
 
     /// <summary>
     /// Gets the font material for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
-        skinsByName.TryGetValue(NameStyle, out var dataForFont)
+    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName) {
+        return skinsByName.TryGetValue(NameStyle, out var dataForFont)
             ? dataForFont.fontMaterial
             : skinsByName[TowerType.Quincy].fontMaterial;
+    }
 
     /// <summary>
     /// Gets the Background Banner for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual GameObject GetBackgroundBanner(Dictionary<string, SkinData> skinsByName) =>
-        skinsByName.TryGetValue(GlowStyle, out var dataForFont)
+    public virtual GameObject GetBackgroundBanner(Dictionary<string, SkinData> skinsByName) {
+        return skinsByName.TryGetValue(GlowStyle, out var dataForFont)
             ? dataForFont.backgroundBanner
             : skinsByName[TowerType.Quincy].backgroundBanner;
+    }
 
     /// <summary>
     /// Gets the background color for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Color GetBackgroundColor(Dictionary<string, SkinData> skinsByName) =>
-        skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
+    public virtual Color GetBackgroundColor(Dictionary<string, SkinData> skinsByName) {
+        return skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
             ? dataForFont.backgroundColourTintOverride
             : skinsByName[TowerType.Quincy].backgroundColourTintOverride;
+    }
 
     /// <summary>
     /// Creates the SkinData for the default tower
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual SkinData CreateDefaultSkin(Dictionary<string, SkinData> skinsByName)
-    {
+    public virtual SkinData CreateDefaultSkin(Dictionary<string, SkinData> skinsByName) {
         var skinData = ScriptableObject.CreateInstance<SkinData>();
         skinData.name = skinData.baseTowerName = Id;
         skinData.skinName = Id + " Short Description";
@@ -250,12 +244,10 @@ public abstract class ModHero : ModTower
         skinData.iconSquare = SquareReference;
         skinData.isDefaultTowerSkin = true;
 
-        skinData.unlockedEventSound = new AudioSourceReference
-        {
+        skinData.unlockedEventSound = new AudioSourceReference {
             guidRef = SelectSound
         };
-        skinData.unlockedVoiceSound = new AudioSourceReference
-        {
+        skinData.unlockedVoiceSound = new AudioSourceReference {
             guidRef = ""
         };
 
@@ -264,20 +256,18 @@ public abstract class ModHero : ModTower
         skinData.backgroundBanner = GetBackgroundBanner(skinsByName);
         skinData.backgroundColourTintOverride = GetBackgroundColor(skinsByName);
 
-        skinData.StorePortraitsContainer = new PortraitContainer
-        {
-            items = SelectScreenPortraits.Select(pair => new StorePortraits
-            {
+        skinData.StorePortraitsContainer = new PortraitContainer {
+            items = SelectScreenPortraits.Select(pair => new StorePortraits {
                 levelTxt = pair.Key.ToString(),
                 asset = pair.Value
             }).ToIl2CppList()
         };
-        
+
         // ReSharper disable ArrangeObjectCreationWhenTypeNotEvident
-        skinData.SwapAudioContainer = new SwapAudioContainer {items = new()};
-        skinData.SwapOverlayContainer = new SwapOverlayContainer {items = new()};
-        skinData.SwapPrefabContainer = new SwapPrefabContainer {items = new()};
-        skinData.SwapSpriteContainer = new SwapSpriteContainer {items = new()};
+        skinData.SwapAudioContainer = new SwapAudioContainer { items = new() };
+        skinData.SwapOverlayContainer = new SwapOverlayContainer { items = new() };
+        skinData.SwapPrefabContainer = new SwapPrefabContainer { items = new() };
+        skinData.SwapSpriteContainer = new SwapSpriteContainer { items = new() };
 
         return skinData;
     }
@@ -292,8 +282,7 @@ public abstract class ModHero : ModTower
     /// </summary>
     /// <param name="heroSet"></param>
     /// <returns></returns>
-    public virtual int GetHeroIndex(List<HeroDetailsModel> heroSet)
-    {
+    public virtual int GetHeroIndex(List<HeroDetailsModel> heroSet) {
         return heroSet.Count;
     }
 }

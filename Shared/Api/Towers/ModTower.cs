@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Display;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -11,8 +13,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// Class for adding a custom Tower to the game. Use alongside <see cref="ModUpgrade"/> to define its upgrades,
 /// and optionally <see cref="ModTowerDisplay"/> to define custom displays for it.
 /// </summary>
-public abstract partial class ModTower : NamedModContent
-{
+public abstract partial class ModTower : NamedModContent {
     /// <summary>
     /// ModTowers register third
     /// </summary>
@@ -23,7 +24,7 @@ public abstract partial class ModTower : NamedModContent
     public sealed override int RegisterPerFrame => 1;
 
     internal virtual string[] DefaultMods =>
-        new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
+        new[] { "GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining" };
 
     internal List<TowerModel> towerModels;
     internal readonly int[] tierMaxes;
@@ -147,11 +148,9 @@ public abstract partial class ModTower : NamedModContent
     public abstract void ModifyBaseTowerModel(TowerModel towerModel);
 
 
-    internal virtual string TowerId(int[] tiers)
-    {
+    internal virtual string TowerId(int[] tiers) {
         var id = Id;
-        if (tiers.Sum() > 0)
-        {
+        if (tiers.Sum() > 0) {
             id += "-" + tiers.Printed();
         }
 
@@ -162,17 +161,12 @@ public abstract partial class ModTower : NamedModContent
     /// Returns all the valid tiers for the TowerModels of this Tower
     /// </summary>
     /// <returns></returns>
-    public virtual IEnumerable<int[]> TowerTiers()
-    {
-        for (var i = 0; i <= TopPathUpgrades; i++)
-        {
-            for (var j = 0; j <= MiddlePathUpgrades; j++)
-            {
-                for (var k = 0; k <= BottomPathUpgrades; k++)
-                {
-                    var tiers = new[] {i, j, k};
-                    if (IsValidCrosspath(tiers))
-                    {
+    public virtual IEnumerable<int[]> TowerTiers() {
+        for (var i = 0; i <= TopPathUpgrades; i++) {
+            for (var j = 0; j <= MiddlePathUpgrades; j++) {
+                for (var k = 0; k <= BottomPathUpgrades; k++) {
+                    var tiers = new[] { i, j, k };
+                    if (IsValidCrosspath(tiers)) {
                         yield return tiers;
                     }
                 }
@@ -186,8 +180,7 @@ public abstract partial class ModTower : NamedModContent
     /// <br/>
     /// Used in the default implementation of <see cref="TowerTiers"/>
     /// </summary>
-    public virtual bool IsValidCrosspath(int[] tiers)
-    {
+    public virtual bool IsValidCrosspath(int[] tiers) {
         var sorted = tiers.OrderByDescending(num => num).ToArray();
         return sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0;
     }
@@ -200,33 +193,26 @@ public abstract partial class ModTower : NamedModContent
     /// <seealso cref="Use2DModel"/>
     /// <see cref="Get2DScale"/>
     /// </summary>
-    public virtual string Get2DTexture(int[] tiers)
-    {
+    public virtual string Get2DTexture(int[] tiers) {
         var name = $"{Name}-{tiers.Printed()}";
-        if (TextureExists(name))
-        {
+        if (TextureExists(name)) {
             return name;
         }
 
-        foreach (var i in tiers.Order())
-        {
-            if (tiers[i] == 0)
-            {
+        foreach (var i in tiers.Order()) {
+            if (tiers[i] == 0) {
                 break;
             }
 
             var printed = tiers.Printed().ToCharArray();
-            for (var j = 0; j < 3; j++)
-            {
-                if (i != j)
-                {
+            for (var j = 0; j < 3; j++) {
+                if (i != j) {
                     printed[j] = 'X';
                 }
             }
 
             name = $"{Name}-{printed}";
-            if (TextureExists(name))
-            {
+            if (TextureExists(name)) {
                 return name;
             }
         }
@@ -239,7 +225,9 @@ public abstract partial class ModTower : NamedModContent
     /// <seealso cref="Use2DModel"/>
     /// <seealso cref="Get2DTexture"/>
     /// </summary>
-    public virtual float Get2DScale(int[] tiers) => 1f;
+    public virtual float Get2DScale(int[] tiers) {
+        return 1f;
+    }
 
     /// <summary>
     /// Gets the portrait reference this tower should use for the given tiers
@@ -248,7 +236,8 @@ public abstract partial class ModTower : NamedModContent
     /// falling back to the tower's own base <see cref="PortraitReference"/> by default.
     /// </summary>
     /// <param name="tiers"></param>
-    public SpriteReference GetPortraitReferenceForTiers(int[] tiers) => upgrades.Cast<ModUpgrade>()
+    public SpriteReference GetPortraitReferenceForTiers(int[] tiers) {
+        return upgrades.Cast<ModUpgrade>()
         .Where(modUpgrade => modUpgrade != null &&
                              tiers[modUpgrade.Path] >= modUpgrade.Tier &&
                              modUpgrade.PortraitReference is not null)
@@ -258,4 +247,5 @@ public abstract partial class ModTower : NamedModContent
         .Select(upgrade => upgrade.PortraitReference)
         .DefaultIfEmpty(PortraitReference)
         .First();
+    }
 }

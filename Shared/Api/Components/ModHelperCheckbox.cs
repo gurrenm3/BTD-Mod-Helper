@@ -1,6 +1,9 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Enums;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,8 +14,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a Checkbox
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperCheckbox : ModHelperComponent
-{
+public class ModHelperCheckbox : ModHelperComponent {
     /// <summary>
     /// The Toggle component
     /// </summary>
@@ -33,14 +35,12 @@ public class ModHelperCheckbox : ModHelperComponent
     /// </summary>
     /// <param name="isChecked">The new value</param>
     /// <param name="sendCallback">Whether the onValueChanged listener should fire</param>
-    public void SetChecked(bool isChecked, bool sendCallback = true)
-    {
+    public void SetChecked(bool isChecked, bool sendCallback = true) {
         Toggle.Set(isChecked, sendCallback);
     }
 
     /// <inheritdoc />
-    public ModHelperCheckbox(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperCheckbox(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
@@ -54,8 +54,7 @@ public class ModHelperCheckbox : ModHelperComponent
     /// <param name="padding">How much space around the outside of the check there is</param>
     /// <returns>The new ModHelperCheckbox</returns>
     public static ModHelperCheckbox Create(Info info, bool defaultValue, string background,
-        UnityAction<bool> onValueChanged = null, string checkImage = null, int padding = 0)
-    {
+        UnityAction<bool> onValueChanged = null, string checkImage = null, int padding = 0) {
         var modHelperCheckbox = ModHelperComponent.Create<ModHelperCheckbox>(info);
 
         var backgroundImage = modHelperCheckbox.AddComponent<Image>();
@@ -64,8 +63,7 @@ public class ModHelperCheckbox : ModHelperComponent
 
         ModHelperImage check;
 #if BloonsTD6
-        check = modHelperCheckbox.AddImage(new Info("Check", InfoPreset.FillParent)
-        {
+        check = modHelperCheckbox.AddImage(new Info("Check", InfoPreset.FillParent) {
             Size = padding * -2
         }, checkImage ?? VanillaSprites.TickGreenIcon);
 #elif BloonsAT
@@ -75,8 +73,7 @@ public class ModHelperCheckbox : ModHelperComponent
 
         var toggle = modHelperCheckbox.AddComponent<Toggle>();
         toggle.graphic = check.Image;
-        if (onValueChanged != null)
-        {
+        if (onValueChanged != null) {
             toggle.onValueChanged.AddListener(onValueChanged);
         }
 

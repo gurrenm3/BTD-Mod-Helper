@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Linq;
+
 using Assets.Scripts.Unity.UI_New.Settings;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+
 using UnityEngine;
+
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.UI.Menus;
 
-internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
-{
+internal class ModSettingsMenu : ModGameMenu<HotkeysScreen> {
     private BloonsMod bloonsMod;
 
     private Animator animator;
@@ -20,8 +23,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     private ModHelperScrollPanel scrollPanel;
 
-    public override bool OnMenuOpened(Object data)
-    {
+    public override bool OnMenuOpened(Object data) {
         var gameObject = GameMenu.gameObject;
         gameObject.DestroyAllChildren();
 
@@ -43,15 +45,12 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         return true;
     }
 
-    public IEnumerator CreateMenuContent()
-    {
+    public IEnumerator CreateMenuContent() {
         foreach (var (category, modSettings) in bloonsMod.ModSettings.Values
                      .GroupBy(setting => setting.category)
-                     .OrderBy(kvp => kvp.Key?.order ?? 0))
-        {
+                     .OrderBy(kvp => kvp.Key?.order ?? 0)) {
             var content = scrollPanel.ScrollContent;
-            if (category != null)
-            {
+            if (category != null) {
                 var categoryOption = category.Create();
                 yield return null;
 
@@ -64,16 +63,14 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
                 if (Closing) yield break;
             }
 
-            foreach (var modSetting in modSettings)
-            {
+            foreach (var modSetting in modSettings) {
                 var modHelperOption = modSetting.CreateComponent();
                 yield return null;
 
                 if (Closing) yield break;
 
                 modSetting.currentOption = modHelperOption;
-                if (modHelperOption.ResetButton.gameObject.active)
-                {
+                if (modHelperOption.ResetButton.gameObject.active) {
                     modHelperOption.BottomRow.AddPanel(new Info("Empty", size: ModHelperOption.ResetSize));
                 }
 
@@ -86,16 +83,13 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         }
     }
 
-    public override void OnMenuUpdate()
-    {
-        if (Closing)
-        {
+    public override void OnMenuUpdate() {
+        if (Closing) {
             canvasGroup.alpha -= .07f;
         }
     }
 
-    public override void OnMenuClosed()
-    {
+    public override void OnMenuClosed() {
         animator.Play("PopupSlideOut");
         ModSettingsHandler.SaveModSettings(bloonsMod);
 #if !NET6_0
@@ -106,8 +100,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 #endif
     }
 
-    public static void Open(BloonsMod bloonsMod)
-    {
+    public static void Open(BloonsMod bloonsMod) {
         ModGameMenu.Open<ModSettingsMenu>(bloonsMod.IDPrefix);
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
+
 using Assets.Scripts.Unity.Display;
+
 using UnityEngine;
+
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Api.Display;
@@ -8,8 +11,7 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// The custom version of a ModDisplay that loads in a model from a unity assetbundle
 /// </summary>
-public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
-{
+public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay {
     /// <inheritdoc />
     public abstract string AssetBundleName { get; }
 
@@ -33,42 +35,31 @@ public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
     /// Performs alterations to the unity display node when it is created
     /// </summary>
     /// <param name="node"></param>
-    public override void ModifyDisplayNode(UnityDisplayNode node)
-    {
-            
+    public override void ModifyDisplayNode(UnityDisplayNode node) {
+
     }
 
-    internal override void GetBasePrototype(Factory factory, Action<UnityDisplayNode> onComplete)
-    {
+    internal override void GetBasePrototype(Factory factory, Action<UnityDisplayNode> onComplete) {
         var assetBundle = GetBundle(mod, AssetBundleName);
-        if (LoadAsync)
-        {
-            assetBundle.LoadAssetAsync(PrefabName).add_completed(new Action<AsyncOperation>(operation =>
-            {
+        if (LoadAsync) {
+            assetBundle.LoadAssetAsync(PrefabName).add_completed(new Action<AsyncOperation>(operation => {
                 var request = operation.Cast<AssetBundleRequest>();
                 var gameObject = request.GetResult().Cast<GameObject>();
                 CompletePrototype(gameObject, assetBundle, onComplete);
             }));
-        }
-        else
-        {
+        } else {
             var gameObject = assetBundle.LoadAsset(PrefabName).Cast<GameObject>();
             CompletePrototype(gameObject, assetBundle, onComplete);
         }
     }
 
-    private void CompletePrototype(GameObject gameObject, AssetBundle assetBundle, Action<UnityDisplayNode> onComplete)
-    {
+    private void CompletePrototype(GameObject gameObject, AssetBundle assetBundle, Action<UnityDisplayNode> onComplete) {
         var baseNode = gameObject.AddComponent<UnityDisplayNode>();
-        if (!string.IsNullOrEmpty(MaterialName))
-        {
-            try
-            {
+        if (!string.IsNullOrEmpty(MaterialName)) {
+            try {
                 var material = assetBundle.LoadAsset(MaterialName).Cast<Material>();
                 baseNode.genericRenderers[0].SetMaterial(material);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ModHelper.Warning($"Failed to load custom material {MaterialName}");
                 ModHelper.Warning(e);
             }

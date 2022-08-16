@@ -1,21 +1,19 @@
-﻿using Assets.Scripts.Models.Bloons;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Unity;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class BloonModelExt
-{
+public static partial class BloonModelExt {
     /// <summary>
     /// Adds a tag to the BloonModel, if it doesn't already exist
     /// </summary>
-    public static void AddTag(this BloonModel bloonModel, string tag)
-    {
+    public static void AddTag(this BloonModel bloonModel, string tag) {
         var tags = bloonModel.tags?.ToList() ?? new List<string>();
-        if (!tags.Contains(tag))
-        {
+        if (!tags.Contains(tag)) {
             tags.Add(tag);
             bloonModel.tags = tags.ToArray();
         }
@@ -24,13 +22,10 @@ public static partial class BloonModelExt
     /// <summary>
     /// Removes a tag from the BloonModel, if it exists
     /// </summary>
-    public static void RemoveTag(this BloonModel bloonModel, string tag)
-    {
-        if (bloonModel.tags != null)
-        {
+    public static void RemoveTag(this BloonModel bloonModel, string tag) {
+        if (bloonModel.tags != null) {
             var tags = bloonModel.tags.ToList();
-            if (tags.Contains(tag))
-            {
+            if (tags.Contains(tag)) {
                 tags.Remove(tag);
                 bloonModel.tags = tags.ToArray();
             }
@@ -42,8 +37,7 @@ public static partial class BloonModelExt
     /// </summary>
     /// <param name="bloonGroupModel"></param>
     /// <returns></returns>
-    public static BloonModel GetBloonModel(this BloonGroupModel bloonGroupModel)
-    {
+    public static BloonModel GetBloonModel(this BloonGroupModel bloonGroupModel) {
         return Game.instance.model.GetBloon(bloonGroupModel.bloon);
     }
 }

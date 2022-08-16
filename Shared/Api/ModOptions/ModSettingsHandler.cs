@@ -3,104 +3,79 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace BTD_Mod_Helper.Api.ModOptions;
 
-internal static class ModSettingsHandler
-{
-    internal static void InitializeModSettings()
-    {
-        if (!Directory.Exists(ModHelper.ModSettingsDirectory))
-        {
+internal static class ModSettingsHandler {
+    internal static void InitializeModSettings() {
+        if (!Directory.Exists(ModHelper.ModSettingsDirectory)) {
             Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
         }
 
-        foreach (var mod in ModHelper.Mods)
-        {
+        foreach (var mod in ModHelper.Mods) {
             mod.ModSettings.Clear();
-            try
-            {
+            try {
                 GetModSettings(mod, mod);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ModHelper.Warning($"Error initializing ModSettings for {mod.Info.Name}");
                 ModHelper.Warning(e);
             }
         }
     }
 
-    internal static void GetModSettings(object obj, BloonsMod mod)
-    {
+    internal static void GetModSettings(object obj, BloonsMod mod) {
         var fields = obj.GetType()
             .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
             .Where(field => typeof(ModSetting).IsAssignableFrom(field.FieldType));
 
-        foreach (var field in fields)
-        {
-            var modSetting = (ModSetting) field.GetValue(obj)!;
+        foreach (var field in fields) {
+            var modSetting = (ModSetting)field.GetValue(obj)!;
             mod.ModSettings[field.Name] = modSetting;
             modSetting.displayName ??= field.Name.Spaced();
         }
-        
+
         LoadModSettings(mod);
     }
 
-    internal static void LoadModSettings(BloonsMod mod)
-    {
-        try
-        {
+    internal static void LoadModSettings(BloonsMod mod) {
+        try {
             var fileName = mod.SettingsFilePath;
-            if (File.Exists(fileName))
-            {
+            if (File.Exists(fileName)) {
                 var json = JObject.Parse(File.ReadAllText(fileName));
-                foreach (var (name, token) in json)
-                {
-                    if (mod.ModSettings.ContainsKey(name) && token != null)
-                    {
-                        try
-                        {
+                foreach (var (name, token) in json) {
+                    if (mod.ModSettings.ContainsKey(name) && token != null) {
+                        try {
                             mod.ModSettings[name].Load(token.ToObject<object>());
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             ModHelper.Warning($"Error loading ModSetting {name} of mod {mod.Info.Name}");
                             ModHelper.Warning(e);
                         }
                     }
                 }
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning($"Error loading ModSettings for {mod.Info.Name}");
             ModHelper.Warning(e);
         }
     }
-    
-    internal static void SaveModSettings(BloonsMod mod, bool initialSave = false)
-    {
+
+    internal static void SaveModSettings(BloonsMod mod, bool initialSave = false) {
         Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
         var fileName = mod.SettingsFilePath;
 
         var json = new JObject();
 
-        foreach (var (key, modSetting) in mod.ModSettings)
-        {
+        foreach (var (key, modSetting) in mod.ModSettings) {
             var value = modSetting.GetValue();
-            if (value != null)
-            {
-                try
-                {
-                    if (initialSave || modSetting.OnSave())
-                    {
+            if (value != null) {
+                try {
+                    if (initialSave || modSetting.OnSave()) {
                         json[key] = JToken.FromObject(value);
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     ModHelper.Warning($"Failed to save {key} for {mod.GetModName()}");
                     ModHelper.Warning(e);
                 }
@@ -110,36 +85,26 @@ internal static class ModSettingsHandler
         File.WriteAllText(fileName, json.ToString(Formatting.Indented));
 
         // TODO fix the real source of this extremely strange bug
-        foreach (var file in Directory.EnumerateFiles(ModHelper.ModSettingsDirectory).Where(s => s.EndsWith("..json")))
-        {
-            try
-            {
+        foreach (var file in Directory.EnumerateFiles(ModHelper.ModSettingsDirectory).Where(s => s.EndsWith("..json"))) {
+            try {
                 var correctFile = file.Replace("..json", "");
-                if (File.Exists(correctFile))
-                {
+                if (File.Exists(correctFile)) {
                     File.Delete(file);
-                }
-                else
-                {
+                } else {
                     File.Move(file, correctFile);
                 }
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 // ignored
             }
         }
 
-        if (!initialSave)
-        {
+        if (!initialSave) {
             ModHelper.Msg($"Saved to {fileName}");
         }
     }
 
-    internal static void SaveModSettings(bool initialSave = false)
-    {
-        foreach (var mod in ModHelper.Mods)
-        {
+    internal static void SaveModSettings(bool initialSave = false) {
+        foreach (var mod in ModHelper.Mods) {
             if (!mod.ModSettings.Any()) continue;
 
             SaveModSettings(mod, initialSave);

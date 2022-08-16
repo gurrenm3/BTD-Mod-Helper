@@ -1,26 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models.Difficulty;
 using Assets.Scripts.Unity.UI_New.Main.ModeSelect;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Scenarios;
+
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
-internal class ModdedModeMenu
-{
+internal class ModdedModeMenu {
     private const float SpacingX = 780;
     private const float SpacingY = 690;
 
-    private static Vector3 GetOffset(int num, int total)
-    {
+    private static Vector3 GetOffset(int num, int total) {
         var x = SpacingX * (num % 5);
         var y = -SpacingY * (1 + num / 5);
-        if (total > 4)
-        {
+        if (total > 4) {
             x -= SpacingX;
         }
 
@@ -30,27 +30,19 @@ internal class ModdedModeMenu
     }
 
     private static void AddButtonsForDifficulty(ModeScreen modeScreen, string difficulty,
-        List<ModGameMode> gameModes)
-    {
+        List<ModGameMode> gameModes) {
         GameObject modes;
-        if (difficulty == DifficultyType.Easy)
-        {
+        if (difficulty == DifficultyType.Easy) {
             modes = modeScreen.easyModes;
-        }
-        else if (difficulty == DifficultyType.Medium)
-        {
+        } else if (difficulty == DifficultyType.Medium) {
             modes = modeScreen.mediumModes;
-        }
-        else if (difficulty == DifficultyType.Hard)
-        {
+        } else if (difficulty == DifficultyType.Hard) {
             modes = modeScreen.hardModes;
-        }
-        else return;
+        } else return;
 
         var proto = modes.GetComponentInChildrenByName<Transform>("Standard").gameObject;
 
-        for (var i = 0; i < gameModes.Count; i++)
-        {
+        for (var i = 0; i < gameModes.Count; i++) {
             var modGameMode = gameModes[i];
 
             var newButton = Object.Instantiate(proto, modes.transform);
@@ -70,10 +62,8 @@ internal class ModdedModeMenu
         }
     }
 
-    private static void MakeScrollable(ModeScreen modeScreen, int maxCount)
-    {
-        if (maxCount == 0)
-        {
+    private static void MakeScrollable(ModeScreen modeScreen, int maxCount) {
+        if (maxCount == 0) {
             return;
         }
         var modeSelectCanvas = modeScreen.transform.parent.gameObject;
@@ -93,17 +83,13 @@ internal class ModdedModeMenu
     }
 
     [HarmonyPatch(typeof(ModeScreen), nameof(ModeScreen.Open))]
-    internal static class ModeScreen_Open
-    {
+    internal static class ModeScreen_Open {
         [HarmonyPrefix]
-        private static void Prefix(ModeScreen __instance)
-        {
+        private static void Prefix(ModeScreen __instance) {
             var maxCount = 0;
             foreach (var (difficulty, gameModes) in ModContent.GetContent<ModGameMode>()
-                         .GroupBy(mode => mode.Difficulty))
-            {
-                if (gameModes.Count > maxCount)
-                {
+                         .GroupBy(mode => mode.Difficulty)) {
+                if (gameModes.Count > maxCount) {
                     maxCount = gameModes.Count;
                 }
 

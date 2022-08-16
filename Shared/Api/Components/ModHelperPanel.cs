@@ -1,5 +1,7 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,16 +11,14 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a background panel
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperPanel : ModHelperComponent
-{
+public class ModHelperPanel : ModHelperComponent {
     /// <summary>
     /// The background image
     /// </summary>
     public Image Background => GetComponent<Image>();
 
     /// <inheritdoc />
-    public ModHelperPanel(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperPanel(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
@@ -31,34 +31,27 @@ public class ModHelperPanel : ModHelperComponent
     /// <param name="padding">The layout group's padding</param>
     /// <returns>The created ModHelperPanel</returns>
     public static ModHelperPanel Create(Info info, string backgroundSprite = null,
-        RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
-    {
+        RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0) {
         return Create<ModHelperPanel>(info, backgroundSprite, layoutAxis, spacing, padding);
     }
 
     /// <inheritdoc cref="Create"/>
     protected static T Create<T>(Info info, string backgroundSprite = null,
         RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
-        where T : ModHelperPanel
-    {
+        where T : ModHelperPanel {
         var modHelperPanel = ModHelperComponent.Create<T>(info);
 
-        if (backgroundSprite != null)
-        {
+        if (backgroundSprite != null) {
             var background = modHelperPanel.AddComponent<Image>();
             background.type = Image.Type.Sliced;
             background.SetSprite(ModContent.CreateSpriteReference(backgroundSprite));
         }
 
-        if (layoutAxis != null)
-        {
-            if (layoutAxis == RectTransform.Axis.Horizontal)
-            {
+        if (layoutAxis != null) {
+            if (layoutAxis == RectTransform.Axis.Horizontal) {
                 modHelperPanel.AddComponent<HorizontalLayoutGroup>();
                 modHelperPanel.LayoutGroup.childAlignment = TextAnchor.MiddleLeft;
-            }
-            else
-            {
+            } else {
                 modHelperPanel.AddComponent<VerticalLayoutGroup>();
                 modHelperPanel.LayoutGroup.childAlignment = TextAnchor.UpperCenter;
             }
@@ -67,8 +60,7 @@ public class ModHelperPanel : ModHelperComponent
             modHelperPanel.LayoutGroup.childForceExpandHeight = false;
             modHelperPanel.LayoutGroup.childForceExpandWidth = false;
 
-            if (padding > 0)
-            {
+            if (padding > 0) {
                 modHelperPanel.LayoutGroup.SetPadding(padding);
             }
         }

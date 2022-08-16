@@ -1,6 +1,9 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,8 +14,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a text input field
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperInputField : ModHelperComponent
-{
+public class ModHelperInputField : ModHelperComponent {
     /// <summary>
     /// The InputField component
     /// </summary>
@@ -33,14 +35,12 @@ public class ModHelperInputField : ModHelperComponent
     /// </summary>
     /// <param name="text">The new text</param>
     /// <param name="sendCallback">Whether the onValueChanged listener should fire</param>
-    public void SetText(string text, bool sendCallback = true)
-    {
+    public void SetText(string text, bool sendCallback = true) {
         InputField.SetText(text, sendCallback);
     }
 
     /// <inheritdoc />
-    public ModHelperInputField(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperInputField(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
@@ -60,8 +60,7 @@ public class ModHelperInputField : ModHelperComponent
     public static ModHelperInputField Create(Info info, string defaultValue, string background,
         UnityAction<string> onValueChanged = null, float fontSize = 42,
         TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
-        TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
-    {
+        TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0) {
         var modHelperInputField = ModHelperComponent.Create<ModHelperInputField>(info);
         modHelperInputField.AddComponent<Mask>();
 
@@ -72,8 +71,7 @@ public class ModHelperInputField : ModHelperComponent
 
         var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", InfoPreset.FillParent));
 
-        var text = textViewPort.AddText(new Info("Text", InfoPreset.FillParent)
-        {
+        var text = textViewPort.AddText(new Info("Text", InfoPreset.FillParent) {
             Width = padding * -2
         }, defaultValue, fontSize, align);
         text.Text.overflowMode = TextOverflowModes.Masking;
@@ -86,10 +84,8 @@ public class ModHelperInputField : ModHelperComponent
         inputField.textViewport = textViewPort;
         inputField.caretWidth = 5;
 
-        if (placeholder != null)
-        {
-            var placeholderText = textViewPort.AddText(new Info("Placeholder", InfoPreset.FillParent)
-            {
+        if (placeholder != null) {
+            var placeholderText = textViewPort.AddText(new Info("Placeholder", InfoPreset.FillParent) {
                 Width = padding * -2
             }, placeholder, fontSize, align);
             placeholderText.Text.overflowMode = TextOverflowModes.Masking;
@@ -98,8 +94,7 @@ public class ModHelperInputField : ModHelperComponent
             placeholderText.Text.color = new Color(1, 1, 1, .5f);
         }
 
-        if (onValueChanged != null)
-        {
+        if (onValueChanged != null) {
             inputField.onValueChanged.AddListener(onValueChanged);
         }
 
@@ -112,8 +107,7 @@ public class ModHelperInputField : ModHelperComponent
 
 
     /// <inheritdoc />
-    protected override void OnUpdate()
-    {
+    protected override void OnUpdate() {
         InputField.enabled = true;
     }
 }

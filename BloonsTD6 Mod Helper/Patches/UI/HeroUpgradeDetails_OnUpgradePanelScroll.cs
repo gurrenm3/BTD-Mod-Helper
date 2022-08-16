@@ -1,20 +1,20 @@
 using System.Linq;
+
 using Assets.Scripts.Unity.UI_New.Main.HeroSelect;
+
 using BTD_Mod_Helper.Api.Towers;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(HeroUpgradeDetails), nameof(HeroUpgradeDetails.OnUpgradePanelScroll))]
-internal static class HeroUpgradeDetails_OnUpgradePanelScroll
-{
+internal static class HeroUpgradeDetails_OnUpgradePanelScroll {
     [HarmonyPrefix]
-    private static bool Prefix(HeroUpgradeDetails __instance, ref Il2CppReferenceArray<HeroUpgradeButton> __state)
-    {
+    private static bool Prefix(HeroUpgradeDetails __instance, ref Il2CppReferenceArray<HeroUpgradeButton> __state) {
         __state = __instance.heroUpgrades;
         if (ModTowerHelper.ModTowerCache.TryGetValue(__instance.selectedHeroId, out var tower) &&
-            tower is ModHero {MaxLevel: < 20} hero)
-        {
+            tower is ModHero { MaxLevel: < 20 } hero) {
             __instance.heroUpgrades = __instance.heroUpgrades.Take(hero.MaxLevel).ToIl2CppReferenceArray();
         }
 
@@ -22,8 +22,7 @@ internal static class HeroUpgradeDetails_OnUpgradePanelScroll
     }
 
     [HarmonyPostfix]
-    private static void Postfix(HeroUpgradeDetails __instance, ref Il2CppReferenceArray<HeroUpgradeButton> __state)
-    {
+    private static void Postfix(HeroUpgradeDetails __instance, ref Il2CppReferenceArray<HeroUpgradeButton> __state) {
         __instance.heroUpgrades = __state;
     }
 }

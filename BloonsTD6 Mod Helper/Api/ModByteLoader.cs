@@ -1,12 +1,13 @@
 ﻿using System.IO;
+
 using Assets.Scripts.Utils;
+
 using Exception = System.Exception;
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Api;
 
-public abstract partial class ModByteLoader
-{
+public abstract partial class ModByteLoader {
     /// <summary>
     /// Generates a ModByteLoader class and corresponding .bytes file within the BloonsTD6 directory
     /// </summary>
@@ -15,8 +16,7 @@ public abstract partial class ModByteLoader
     /// <param name="bytesFilePath">The absolute file path on your system where the bytes file should end up</param>
     /// <param name="nameSpace">If included, namespace to add to the loader cs file</param>
     public static void Generate<T>(T model, string loaderFilePath, string bytesFilePath, string nameSpace = null)
-        where T : Object
-    {
+        where T : Object {
         Directory.CreateDirectory(ModHelper.ReplacedFilesDirectory);
 
         var unconvertedLoader = $"{FileIOUtil.sandboxRoot}UnconvertedLoader.cs";
@@ -28,18 +28,14 @@ public abstract partial class ModByteLoader
 
         var backupBytesPath = Path.Combine(ModHelper.ReplacedFilesDirectory, bytesFileName);
 
-        try
-        {
-            if (File.Exists(bytesFileName))
-            {
+        try {
+            if (File.Exists(bytesFileName)) {
                 if (File.Exists(backupBytesPath)) File.Delete(backupBytesPath);
                 File.Move(backupBytesPath, backupBytesPath);
             }
 
             flatFileCodeGen.Generate(model, bytesFilePath, unconvertedLoader);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Error($"Failed to generate bytes {bytesFilePath}");
             ModHelper.Error(e);
             return;
@@ -49,18 +45,14 @@ public abstract partial class ModByteLoader
 
         var backupLoader = Path.Combine(ModHelper.ReplacedFilesDirectory, loaderName + ".cs");
 
-        try
-        {
-            if (File.Exists(loaderFilePath))
-            {
+        try {
+            if (File.Exists(loaderFilePath)) {
                 if (File.Exists(backupLoader)) File.Delete(backupLoader);
                 File.Move(loaderFilePath, backupLoader);
             }
 
             ConvertLoader<T>(unconvertedLoader, loaderFilePath, loaderName, bytesFileName, nameSpace);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Error($"Failed to generate ModByteLoader {loaderFilePath}");
             ModHelper.Error(e);
             return;

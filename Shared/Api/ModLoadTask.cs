@@ -6,8 +6,7 @@ namespace BTD_Mod_Helper.Api;
 /// <summary>
 /// Class for a Coroutine style task that runs during the BTD6 loading screen
 /// </summary>
-public abstract partial class ModLoadTask : NamedModContent
-{
+public abstract partial class ModLoadTask : NamedModContent {
     internal static readonly Dictionary<int, ModLoadTask> Cache = new();
 
     /// <inheritdoc />
@@ -31,16 +30,13 @@ public abstract partial class ModLoadTask : NamedModContent
     public sealed override int RegisterPerFrame => 999;
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         // nothing here since registering happens after TitleScreen, so ModLoadTasks should already be finished
     }
-    
-    internal void RunSync()
-    {
+
+    internal void RunSync() {
         var coroutine = Coroutine();
-        while (coroutine.MoveNext())
-        {
+        while (coroutine.MoveNext()) {
         }
     }
 }

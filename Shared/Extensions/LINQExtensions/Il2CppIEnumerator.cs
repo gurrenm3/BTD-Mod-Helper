@@ -1,22 +1,21 @@
 ﻿using System;
-using Il2CppSystem.Collections;
 using System.Collections.Generic;
+
+using Il2CppSystem.Collections;
 
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Extensions for il2cpp ienumerators
 /// </summary>
-public static class Il2CppIEnumerator
-{
+public static class Il2CppIEnumerator {
     /// <summary>
     /// Performs the specified action on each element
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <param name="action">Action to preform on each element</param>
-    public static void ForEach<T>(this IEnumerator source, Action<T> action) where T : Il2CppSystem.Object
-    {
+    public static void ForEach<T>(this IEnumerator source, Action<T> action) where T : Il2CppSystem.Object {
         while (source.MoveNext())
             action.Invoke(source.Current.Cast<T>());
     }
@@ -28,10 +27,8 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T First<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
-    {
-        while (source.MoveNext())
-        {
+    public static T First<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object {
+        while (source.MoveNext()) {
             var item = source.Current.Cast<T>();
             if (predicate(item))
                 return item;
@@ -46,10 +43,8 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
-    {
-        while (source.MoveNext())
-        {
+    public static T FirstOrDefault<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object {
+        while (source.MoveNext()) {
             var item = source.Current.Cast<T>();
             if (predicate(item))
                 return item;
@@ -64,11 +59,9 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static List<T> Where<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
-    {
+    public static List<T> Where<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object {
         var result = new List<T>();
-        while (source.MoveNext())
-        {
+        while (source.MoveNext()) {
             var item = source.Current.Cast<T>();
             if (predicate(item))
                 result.Add(item);
@@ -83,11 +76,9 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static int FindIndex<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
-    {
+    public static int FindIndex<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object {
         var i = 0;
-        while (source.MoveNext())
-        {
+        while (source.MoveNext()) {
             if (predicate(source.Current.Cast<T>()))
                 return i;
             i++;
@@ -103,10 +94,8 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
-    {
-        while (source.MoveNext())
-        {
+    public static bool Any<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object {
+        while (source.MoveNext()) {
             if (predicate(source.Current.Cast<T>()))
                 return true;
         }
@@ -120,11 +109,9 @@ public static class Il2CppIEnumerator
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T Last<T>(this IEnumerator source) where T : Il2CppSystem.Object
-    {
+    public static T Last<T>(this IEnumerator source) where T : Il2CppSystem.Object {
         T last = default;
-        while (source.MoveNext())
-        {
+        while (source.MoveNext()) {
             last = source.Current.Cast<T>();
         }
         return last;
@@ -137,12 +124,10 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T LastOrDefault<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
-    {
+    public static T LastOrDefault<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object {
         T last = default;
 
-        while (source.MoveNext())
-        {
+        while (source.MoveNext()) {
             var item = source.Current.Cast<T>();
             if (predicate(item))
                 last = item;
@@ -157,10 +142,8 @@ public static class Il2CppIEnumerator
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T First<T>(this IEnumerator source) where T : Il2CppSystem.Object
-    {
-        while (source.MoveNext())
-        {
+    public static T First<T>(this IEnumerator source) where T : Il2CppSystem.Object {
+        while (source.MoveNext()) {
             return source.Current.Cast<T>();
         }
 
@@ -173,10 +156,8 @@ public static class Il2CppIEnumerator
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this IEnumerator source) where T : Il2CppSystem.Object
-    {
-        while (source.MoveNext())
-        {
+    public static T FirstOrDefault<T>(this IEnumerator source) where T : Il2CppSystem.Object {
+        while (source.MoveNext()) {
             return source.Current.Cast<T>();
         }
 

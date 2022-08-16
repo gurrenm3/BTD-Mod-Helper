@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Assets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -7,8 +8,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// <summary>
 /// A custom collection of ModTowers
 /// </summary>
-public abstract partial class ModTowerSet : NamedModContent
-{
+public abstract partial class ModTowerSet : NamedModContent {
     internal static readonly Dictionary<string, ModTowerSet> Cache = new();
 
     /// <summary>
@@ -18,11 +18,10 @@ public abstract partial class ModTowerSet : NamedModContent
     protected sealed override float RegistrationPriority => 4;
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         Cache[Id] = this;
     }
-        
+
     /// <summary>
     /// Unused
     /// </summary>
@@ -86,8 +85,7 @@ public abstract partial class ModTowerSet : NamedModContent
     /// </summary>
     /// <param name="towerSets">The current towerSets that already exist</param>
     /// <returns></returns>
-    public virtual int GetTowerSetIndex(List<string> towerSets)
-    {
+    public virtual int GetTowerSetIndex(List<string> towerSets) {
         return towerSets.Count;
     }
 
@@ -100,8 +98,7 @@ public abstract partial class ModTowerSet : NamedModContent
     /// No loading multiple instances of a ModTowerSet
     /// </summary>
     /// <returns></returns>
-    public sealed override IEnumerable<ModContent> Load()
-    {
+    public sealed override IEnumerable<ModContent> Load() {
         return base.Load();
     }
 }

@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Assets.Scripts.Unity.Menu;
+
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.UI.Menus;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
+
 using IntPtr = System.IntPtr;
 
 namespace BTD_Mod_Helper.Api.Components;
 
 [RegisterTypeInIl2Cpp(false)]
-internal class ModBrowserMenuMod : ModHelperPanel
-{
+internal class ModBrowserMenuMod : ModHelperPanel {
     public ModHelperPanel InfoPanel => GetDescendent<ModHelperPanel>("InfoPanel");
     public ModHelperButton InfoButton => GetDescendent<ModHelperButton>("Info");
     public ModHelperButton Homepage => GetDescendent<ModHelperButton>("Homepage");
@@ -35,24 +39,20 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
     public Action iconAction;
 
-    public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
-    {
+    public ModBrowserMenuMod(IntPtr ptr) : base(ptr) {
     }
 
-    public static ModBrowserMenuMod CreateTemplate()
-    {
+    public static ModBrowserMenuMod CreateTemplate() {
         var mod = Create<ModBrowserMenuMod>(new Info("ModTemplate", InfoPreset.Flex), null,
             RectTransform.Axis.Vertical, 50);
 
-        var mainPanel = mod.AddPanel(new Info("MainPanel")
-        {
+        var mainPanel = mod.AddPanel(new Info("MainPanel") {
             Height = 200,
             FlexWidth = 1,
             Pivot = new Vector2(0.5f, 1)
         }, null, RectTransform.Axis.Horizontal, 50);
 
-        var infoPanel = mod.AddPanel(new Info("InfoPanel")
-        {
+        var infoPanel = mod.AddPanel(new Info("InfoPanel") {
             AnchorMin = Vector2.zero,
             AnchorMax = Vector2.one
         }, VanillaSprites.BlueInsertPanel, RectTransform.Axis.Vertical, 0, 50);
@@ -70,41 +70,35 @@ internal class ModBrowserMenuMod : ModHelperPanel
             RectTransform.Axis.Horizontal, 0, 50);
 
         var iconPanel = panel.AddPanel(new Info("IconPanel", size: 200));
-        iconPanel.AddImage(new Info("Icon")
-        {
+        iconPanel.AddImage(new Info("Icon") {
             X = -ModsMenu.Padding,
             Size = ModsMenu.ModIconSize
         }, VanillaSprites.UISprite);
 
-        panel.AddText(new Info("Name")
-        {
+        panel.AddText(new Info("Name") {
             Height = ModsMenu.ModNameHeight,
             FlexWidth = 3
         }, "Name", ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
-        
+
         panel.AddPanel(new Info("LackOfIconPanel", size: 200));
 
-        panel.AddText(new Info("Author")
-        {
+        panel.AddText(new Info("Author") {
             Height = ModsMenu.ModNameHeight,
             FlexWidth = 3
         }, "Author", ModsMenu.FontMedium);
 
-        panel.AddText(new Info("Version")
-        {
+        panel.AddText(new Info("Version") {
             Height = ModsMenu.ModNameHeight,
             FlexWidth = 1
         }, "v0.0.0", ModsMenu.FontSmall);
 
-        var stars = panel.AddPanel(new Info("Stars")
-        {
+        var stars = panel.AddPanel(new Info("Stars") {
             Height = ModsMenu.ModNameHeight,
             FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, 25);
         stars.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
         stars.AddButton(new Info("Star", size: 100), VanillaSprites.Star, null);
-        stars.AddText(new Info("StarCount")
-        {
+        stars.AddText(new Info("StarCount") {
             Height = ModsMenu.ModNameHeight,
             FlexWidth = 1
         }, "0", ModsMenu.FontMedium, TextAlignmentOptions.CaplineLeft);
@@ -127,31 +121,25 @@ internal class ModBrowserMenuMod : ModHelperPanel
         return mod;
     }
 
-    public void SetDescriptionShowing(bool showing)
-    {
+    public void SetDescriptionShowing(bool showing) {
         InfoPanel.SetActive(showing);
         descriptionShowing = showing;
     }
 
-    protected override void OnUpdate()
-    {
+    protected override void OnUpdate() {
         // Needs to run on the main thread and not in a task
-        if (iconAction != null)
-        {
+        if (iconAction != null) {
             iconAction.Invoke();
             iconAction = null;
         }
     }
 }
 
-internal static class ModBrowserMenuModExt
-{
-    public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
-    {
+internal static class ModBrowserMenuModExt {
+    public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData) {
         mod.Homepage.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.ReadmeUrl!));
         mod.Description.Text.SetText(modHelperData.DisplayDescription);
-        mod.InfoButton.Button.SetOnClick(() =>
-        {
+        mod.InfoButton.Button.SetOnClick(() => {
             mod.SetDescriptionShowing(!mod.descriptionShowing);
             MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         });
@@ -162,13 +150,10 @@ internal static class ModBrowserMenuModExt
         mod.Author.SetText(modHelperData.DisplayAuthor);
         mod.Author.Text.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
 
-        Task.Run(async () =>
-        {
+        Task.Run(async () => {
             var success = await modHelperData.LoadIconFromRepoAsync();
-            if (success)
-            {
-                mod.iconAction = () =>
-                {
+            if (success) {
+                mod.iconAction = () => {
                     mod.IconPanel.SetActive(true);
                     mod.LackOfIconPanel.SetActive(false);
                     mod.Icon.Image.SetSprite(modHelperData.GetIcon()!);
@@ -177,12 +162,9 @@ internal static class ModBrowserMenuModExt
         });
 
         var installed = modHelperData.ModInstalledLocally(out var current);
-        mod.Download.Button.SetOnClick(() =>
-        {
-            Task.Run(async () =>
-            {
-                await ModHelperGithub.DownloadLatest(modHelperData, false, filePath =>
-                {
+        mod.Download.Button.SetOnClick(() => {
+            Task.Run(async () => {
+                await ModHelperGithub.DownloadLatest(modHelperData, false, filePath => {
                     modHelperData.SetFilePath(filePath);
                     ModHelperData.Inactive.Add(modHelperData);
                     mod.Download.SetActive(false);
@@ -190,12 +172,9 @@ internal static class ModBrowserMenuModExt
                 });
             });
         });
-        mod.Update.Button.SetOnClick(() =>
-        {
-            Task.Run(async () =>
-            {
-                await ModHelperGithub.DownloadLatest(current, false, _ =>
-                {
+        mod.Update.Button.SetOnClick(() => {
+            Task.Run(async () => {
+                await ModHelperGithub.DownloadLatest(current, false, _ => {
                     mod.Update.SetActive(false);
                     mod.Installed.SetActive(true);
                 });

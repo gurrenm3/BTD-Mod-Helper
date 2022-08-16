@@ -6,14 +6,11 @@ using Assets.Scripts.Simulation.Towers;
 namespace BTD_Mod_Helper.Patches.Towers;
 
 [HarmonyPatch(typeof(Tower), nameof(Tower.Initialise))]
-internal class Tower_Initialise
-{
+internal class Tower_Initialise {
     [HarmonyPostfix]
-    internal static void Postfix(Tower __instance, Entity target, Model modelToUse)
-    {
+    internal static void Postfix(Tower __instance, Entity target, Model modelToUse) {
         // This is a bugfix. Doing this makes the display behavior more accessible. I added extra checks for redundency
-        if (__instance.display is null)
-        {
+        if (__instance.display is null) {
             if (__instance.entity.displayBehaviorCache is null)
                 __instance.entity.displayBehaviorCache = __instance.entity.GetBehavior<DisplayBehavior>();
 

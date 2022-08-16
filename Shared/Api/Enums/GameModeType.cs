@@ -1,8 +1,7 @@
 ﻿#pragma warning disable CS1591
 namespace BTD_Mod_Helper.Api.Enums;
 
-public static class GameModeType
-{
+public static class GameModeType {
     public const string DeflationChinockLock = "DeflationChinockLock";
     public const string Easy = "Easy";
     public const string Medium = "Medium";

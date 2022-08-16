@@ -5,19 +5,15 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// <summary>
 /// Class representing the UpgradeModel and changes for a particular Level for a ModHero
 /// </summary>
-public abstract class ModHeroLevel : ModUpgrade
-{
+public abstract class ModHeroLevel : ModUpgrade {
     /// <inheritdoc />
-    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
-    {
+    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable) {
         base.RegisterText(textTable);
-        if (AbilityName != null)
-        {
+        if (AbilityName != null) {
             textTable[AbilityName + " Ability"] = AbilityName;
         }
 
-        if (AbilityDescription != null)
-        {
+        if (AbilityDescription != null) {
             textTable[AbilityName + " Ability Description"] = AbilityDescription;
         }
     }
@@ -73,7 +69,7 @@ public abstract class ModHeroLevel : ModUpgrade
     /// <br/>
     /// Default is calculated the same way Ninja Kiwi does it using 
     /// </summary>
-    public override int XpCost => (int) (DefaultXp[Level] * Hero.XpRatio);
+    public override int XpCost => (int)(DefaultXp[Level] * Hero.XpRatio);
 
     /// <summary>
     /// The ModTower is the ModHero
@@ -118,8 +114,7 @@ public abstract class ModHeroLevel : ModUpgrade
 /// Convenient generic class for specifying the ModHero that this ModHeroLevel is for
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModHeroLevel<T> : ModHeroLevel where T : ModHero
-{
+public abstract class ModHeroLevel<T> : ModHeroLevel where T : ModHero {
     /// <inheritdoc />
     public override ModHero Hero => GetInstance<T>();
 }

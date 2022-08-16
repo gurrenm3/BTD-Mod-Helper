@@ -6,36 +6,27 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for streams
 /// </summary>
-public static class StreamExt
-{
+public static class StreamExt {
     /// <summary>
     /// Synchronously gets the full array of bytes from any stream, disposing with the Stream afterwards
     /// </summary>
-    public static byte[] GetByteArray(this Stream stream)
-    {
-        if (stream == null)
-        {
+    public static byte[] GetByteArray(this Stream stream) {
+        if (stream == null) {
             return null;
         }
-            
-        try
-        {
-            using (stream)
-            {
-                if (stream is MemoryStream memoryStream)
-                {
+
+        try {
+            using (stream) {
+                if (stream is MemoryStream memoryStream) {
                     return memoryStream.ToArray();
                 }
 
-                using (memoryStream = new MemoryStream())
-                {
+                using (memoryStream = new MemoryStream()) {
                     stream.CopyTo(memoryStream);
                     return memoryStream.ToArray();
                 }
             }
-        }
-        catch (Exception)
-        {
+        } catch (Exception) {
             return null;
         }
     }

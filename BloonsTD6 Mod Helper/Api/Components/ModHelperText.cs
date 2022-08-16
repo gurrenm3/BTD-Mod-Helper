@@ -1,4 +1,5 @@
 ﻿using System;
+
 using TMPro;
 
 namespace BTD_Mod_Helper.Api.Components;
@@ -7,8 +8,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a background panel
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperText : ModHelperComponent
-{
+public class ModHelperText : ModHelperComponent {
     /// <summary>
     /// The component that handles the Text rendering
     /// </summary>
@@ -16,15 +16,13 @@ public class ModHelperText : ModHelperComponent
 
 
     /// <inheritdoc />
-    public ModHelperText(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperText(IntPtr ptr) : base(ptr) {
     }
 
     /// <summary>
     /// Sets the text of this text to the given text
     /// </summary>
-    public void SetText(string text)
-    {
+    public void SetText(string text) {
         Text.SetText(text);
     }
 
@@ -37,8 +35,7 @@ public class ModHelperText : ModHelperComponent
     /// <param name="align">Alignment of text</param>
     /// <returns>The created ModHelperText</returns>
     public static ModHelperText Create(Info info, string text, float fontSize = 42,
-        TextAlignmentOptions align = DefaultTextAlignment)
-    {
+        TextAlignmentOptions align = DefaultTextAlignment) {
         var modHelperText = ModHelperComponent.Create<ModHelperText>(info);
 
         var textMesh = modHelperText.AddComponent<NK_TextMeshProUGUI>();

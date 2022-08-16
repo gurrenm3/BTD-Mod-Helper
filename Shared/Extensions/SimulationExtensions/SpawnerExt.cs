@@ -7,20 +7,17 @@ using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Models.Rounds;
 #endif
 
-namespace BTD_Mod_Helper.Extensions
-{
+namespace BTD_Mod_Helper.Extensions {
     /// <summary>
     /// Extensions for Spawners
     /// </summary>
-    public static class SpawnerExt
-    {
+    public static class SpawnerExt {
         /// <summary>
         /// Spawn a BloonModel on the map
         /// </summary>
         /// <param name="spawner"></param>
         /// <param name="bloonModel"></param>
-        public static void Emit(this Spawner spawner, BloonModel bloonModel)
-        {
+        public static void Emit(this Spawner spawner, BloonModel bloonModel) {
 #if BloonsTD6
             spawner.Emit(bloonModel, InGame.Bridge.GetCurrentRound(), 0);
 #elif BloonsAT

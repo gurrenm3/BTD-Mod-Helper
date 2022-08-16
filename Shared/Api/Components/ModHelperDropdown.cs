@@ -1,8 +1,13 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Enums;
+
 using Il2CppSystem.Collections.Generic;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -13,8 +18,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a 
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperDropdown : ModHelperComponent
-{
+public class ModHelperDropdown : ModHelperComponent {
     /// <summary>
     /// The Image being displayed
     /// </summary>
@@ -48,8 +52,7 @@ public class ModHelperDropdown : ModHelperComponent
     public ModHelperPanel TemplateItem => TemplatePanel.GetDescendent<ModHelperPanel>("Item");
 
     /// <inheritdoc />
-    public ModHelperDropdown(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperDropdown(IntPtr ptr) : base(ptr) {
     }
 
 
@@ -64,8 +67,7 @@ public class ModHelperDropdown : ModHelperComponent
     /// <param name="labelFontSize">Text size of label</param>
     /// <returns>The created ModHelperDropdown</returns>
     public static ModHelperDropdown Create(Info info, List<string> options, float windowHeight,
-        UnityAction<int> onValueChanged, string background = null, float labelFontSize = 42f)
-    {
+        UnityAction<int> onValueChanged, string background = null, float labelFontSize = 42f) {
         var (width, height) = info.SizeDelta;
 
         var contentHeight = options.Count * height;
@@ -84,13 +86,11 @@ public class ModHelperDropdown : ModHelperComponent
         dropdown.ClearOptions();
         dropdown.AddOptions(options);
 
-        if (onValueChanged != null)
-        {
+        if (onValueChanged != null) {
             dropdown.onValueChanged.AddListener(onValueChanged);
         }
 
-        if (background != null)
-        {
+        if (background != null) {
             var image = dropdown.image = modHelperDropdown.AddComponent<Image>();
             image.SetSprite(background);
             image.type = Image.Type.Sliced;
@@ -116,7 +116,7 @@ public class ModHelperDropdown : ModHelperComponent
         var item =
             ModHelperPanel.Create(new Info("Item", width: width, height: height));
         var toggle = item.AddComponent<Toggle>();
-        toggle.transition = (Selectable.Transition) Toggle.ToggleTransition.Fade;
+        toggle.transition = (Selectable.Transition)Toggle.ToggleTransition.Fade;
 
         var itemBackground = item.AddPanel(new Info("ItemBackground", width: width, height: height));
         var backgroundImage = itemBackground.AddComponent<Image>();

@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Components;
+
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Patches.UI;
@@ -6,19 +7,14 @@ namespace BTD_Mod_Helper.Patches.UI;
 /// <summary>
 /// I'm just annoyed that Unity doesn't work this way by default lol
 /// </summary>
-internal static class LayoutGroupPatches
-{
+internal static class LayoutGroupPatches {
     [HarmonyPatch(typeof(LayoutGroup), nameof(LayoutGroup.flexibleHeight), MethodType.Getter)]
-    internal static class LayoutGroup_FlexibleHeight
-    {
+    internal static class LayoutGroup_FlexibleHeight {
         [HarmonyPostfix]
-        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result)
-        {
-            if (__instance.GetComponent<ModHelperPanel>() != null)
-            {
+        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result) {
+            if (__instance.GetComponent<ModHelperPanel>() != null) {
                 var layoutElement = __instance.GetComponent<LayoutElement>();
-                if (layoutElement != null && layoutElement.enabled)
-                {
+                if (layoutElement != null && layoutElement.enabled) {
                     __result = layoutElement.flexibleHeight;
                 }
             }
@@ -26,16 +22,12 @@ internal static class LayoutGroupPatches
     }
 
     [HarmonyPatch(typeof(LayoutGroup), nameof(LayoutGroup.flexibleWidth), MethodType.Getter)]
-    internal static class LayoutGroup_FlexibleWidth
-    {
+    internal static class LayoutGroup_FlexibleWidth {
         [HarmonyPostfix]
-        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result)
-        {
-            if (__instance.GetComponent<ModHelperPanel>() != null)
-            {
+        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result) {
+            if (__instance.GetComponent<ModHelperPanel>() != null) {
                 var layoutElement = __instance.GetComponent<LayoutElement>();
-                if (layoutElement != null && layoutElement.enabled)
-                {
+                if (layoutElement != null && layoutElement.enabled) {
                     __result = layoutElement.flexibleWidth;
                 }
             }
@@ -43,16 +35,12 @@ internal static class LayoutGroupPatches
     }
 
     [HarmonyPatch(typeof(LayoutGroup), nameof(LayoutGroup.preferredHeight), MethodType.Getter)]
-    internal static class LayoutGroup_PreferredHeight
-    {
+    internal static class LayoutGroup_PreferredHeight {
         [HarmonyPostfix]
-        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result)
-        {
-            if (__instance.GetComponent<ModHelperPanel>() != null)
-            {
+        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result) {
+            if (__instance.GetComponent<ModHelperPanel>() != null) {
                 var layoutElement = __instance.GetComponent<LayoutElement>();
-                if (layoutElement != null && layoutElement.enabled)
-                {
+                if (layoutElement != null && layoutElement.enabled) {
                     __result = layoutElement.preferredHeight;
                 }
             }
@@ -60,16 +48,12 @@ internal static class LayoutGroupPatches
     }
 
     [HarmonyPatch(typeof(LayoutGroup), nameof(LayoutGroup.preferredWidth), MethodType.Getter)]
-    internal static class LayoutGroup_PreferredWidth
-    {
+    internal static class LayoutGroup_PreferredWidth {
         [HarmonyPostfix]
-        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result)
-        {
-            if (__instance.GetComponent<ModHelperPanel>() != null)
-            {
+        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result) {
+            if (__instance.GetComponent<ModHelperPanel>() != null) {
                 var layoutElement = __instance.GetComponent<LayoutElement>();
-                if (layoutElement != null && layoutElement.enabled)
-                {
+                if (layoutElement != null && layoutElement.enabled) {
                     __result = layoutElement.preferredWidth;
                 }
             }
@@ -77,16 +61,12 @@ internal static class LayoutGroupPatches
     }
 
     [HarmonyPatch(typeof(LayoutGroup), nameof(LayoutGroup.minHeight), MethodType.Getter)]
-    internal static class LayoutGroup_MinHeight
-    {
+    internal static class LayoutGroup_MinHeight {
         [HarmonyPostfix]
-        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result)
-        {
-            if (__instance.GetComponent<ModHelperPanel>() != null)
-            {
+        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result) {
+            if (__instance.GetComponent<ModHelperPanel>() != null) {
                 var layoutElement = __instance.GetComponent<LayoutElement>();
-                if (layoutElement != null && layoutElement.enabled)
-                {
+                if (layoutElement != null && layoutElement.enabled) {
                     __result = layoutElement.minHeight;
                 }
             }
@@ -94,16 +74,12 @@ internal static class LayoutGroupPatches
     }
 
     [HarmonyPatch(typeof(LayoutGroup), nameof(LayoutGroup.minWidth), MethodType.Getter)]
-    internal static class LayoutGroup_MinWidth
-    {
+    internal static class LayoutGroup_MinWidth {
         [HarmonyPostfix]
-        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result)
-        {
-            if (__instance.GetComponent<ModHelperPanel>() != null)
-            {
+        private static void Postfix(HorizontalLayoutGroup __instance, ref float __result) {
+            if (__instance.GetComponent<ModHelperPanel>() != null) {
                 var layoutElement = __instance.GetComponent<LayoutElement>();
-                if (layoutElement != null && layoutElement.enabled)
-                {
+                if (layoutElement != null && layoutElement.enabled) {
                     __result = layoutElement.minWidth;
                 }
             }

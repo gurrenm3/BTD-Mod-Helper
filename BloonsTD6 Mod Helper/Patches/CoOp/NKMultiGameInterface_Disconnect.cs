@@ -1,12 +1,13 @@
 ﻿using HarmonyLib;
+
 using NinjaKiwi.NKMulti;
 
-namespace BTD_Mod_Helper.Patches
-{
+namespace BTD_Mod_Helper.Patches {
     [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Disconnect))]
-    internal class NKMultiGameInterface_Disconnect
-    {
+    internal class NKMultiGameInterface_Disconnect {
         [HarmonyPostfix]
-        public static void Postfix(NKMultiGameInterface __instance) => ModHelper.PerformHook(mod => { mod.OnDisconnected(__instance); });
+        public static void Postfix(NKMultiGameInterface __instance) {
+            ModHelper.PerformHook(mod => { mod.OnDisconnected(__instance); });
+        }
     }
 }

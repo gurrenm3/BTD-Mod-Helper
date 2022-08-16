@@ -1,13 +1,14 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Components;
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>
 /// Category of mod settings
 /// </summary>
-public class ModSettingCategory
-{
+public class ModSettingCategory {
     /// <summary>
     /// Name of the category
     /// </summary>
@@ -27,7 +28,7 @@ public class ModSettingCategory
     /// Whether this category is currently collapsed / hiding its elements
     /// </summary>
     public bool collapsed = true;
-        
+
     /// <summary>
     /// Action to modify the ModHelperCategory after it's created
     /// </summary>
@@ -36,8 +37,7 @@ public class ModSettingCategory
     /// <summary>
     /// Creates a new ModSettingCategory with the given displayName
     /// </summary>
-    public ModSettingCategory(string displayName)
-    {
+    public ModSettingCategory(string displayName) {
         this.displayName = displayName;
     }
 
@@ -45,8 +45,7 @@ public class ModSettingCategory
     /// Creates the visual ModHelperCategory for this option
     /// </summary>
     /// <returns></returns>
-    public ModHelperCategory Create()
-    {
+    public ModHelperCategory Create() {
         var modHelperCategory = ModHelperCategory.Create(displayName, collapsed, icon);
         modifyCategory?.Invoke(modHelperCategory);
         return modHelperCategory;
@@ -55,16 +54,14 @@ public class ModSettingCategory
     /// <summary>
     /// Gets the name from a category
     /// </summary>
-    public static implicit operator string (ModSettingCategory category)
-    {
+    public static implicit operator string(ModSettingCategory category) {
         return category.displayName;
     }
 
     /// <summary>
     /// Creates a new category with the given name
     /// </summary>
-    public static implicit operator ModSettingCategory(string displayName)
-    {
+    public static implicit operator ModSettingCategory(string displayName) {
         return new ModSettingCategory(displayName);
     }
 }

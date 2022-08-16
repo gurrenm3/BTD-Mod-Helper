@@ -1,5 +1,6 @@
 using System.IO;
 using System.Reflection;
+
 using BTD_Mod_Helper.Api;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -7,13 +8,11 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for BloonsMods (for some reason lol)
 /// </summary>
-public static class BloonsModExt
-{
+public static class BloonsModExt {
     /// <summary>
     /// Get the name of this mod from it's dll name
     /// </summary>
-    public static string GetModName(this BloonsMod bloonsMod)
-    {
+    public static string GetModName(this BloonsMod bloonsMod) {
         return bloonsMod.GetAssembly()?.GetName().Name ?? bloonsMod.Info.Name;
     }
 
@@ -22,8 +21,7 @@ public static class BloonsModExt
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
-    public static string GetModDirectory(this BloonsMod bloonsMod)
-    {
+    public static string GetModDirectory(this BloonsMod bloonsMod) {
         return Path.Combine(MelonHandler.ModsDirectory, bloonsMod.GetModName());
     }
 
@@ -33,8 +31,7 @@ public static class BloonsModExt
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
-    public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists)
-    {
+    public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists) {
         var path = $"{MelonHandler.ModsDirectory}\\{bloonsMod.GetModName()}";
         if (createIfNotExists) Directory.CreateDirectory(path);
         return path;
@@ -45,8 +42,7 @@ public static class BloonsModExt
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
-    public static string GetModSettingsDir(this BloonsMod bloonsMod)
-    {
+    public static string GetModSettingsDir(this BloonsMod bloonsMod) {
         return Path.Combine(bloonsMod.GetModDirectory(), "Mod Settings");
     }
 
@@ -56,18 +52,17 @@ public static class BloonsModExt
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
-    public static string GetModSettingsDir(this BloonsMod bloonsMod, bool createIfNotExists)
-    {
+    public static string GetModSettingsDir(this BloonsMod bloonsMod, bool createIfNotExists) {
         var path = bloonsMod.GetModSettingsDir();
         if (createIfNotExists) Directory.CreateDirectory(path);
         return path;
     }
 
-    internal static ModHelperData GetModHelperData(this MelonMod mod) =>
-        ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
+    internal static ModHelperData GetModHelperData(this MelonMod mod) {
+        return ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
+    }
 
-    internal static Assembly GetAssembly(this MelonMod mod)
-    {
+    internal static Assembly GetAssembly(this MelonMod mod) {
 #if NET48
         return mod.MelonAssembly.Assembly;
 #else

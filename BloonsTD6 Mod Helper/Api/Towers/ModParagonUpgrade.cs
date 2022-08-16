@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Behaviors;
 using Assets.Scripts.Models.Towers.Upgrades;
@@ -11,16 +12,11 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// <summary>
 /// Defines the Paragon Upgrade for a ModTower. Remember to set the <see cref="ModTower.ParagonMode"/> property.
 /// </summary>
-public abstract class ModParagonUpgrade : ModUpgrade
-{
-    internal override void AssignToModTower()
-    {
-        try
-        {
+public abstract class ModParagonUpgrade : ModUpgrade {
+    internal override void AssignToModTower() {
+        try {
             Tower.paragonUpgrade = this;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning("Failed to assign ModParagonUpgrade " + Name + $" to ModTower {Tower.Name}");
             ModHelper.Error(e);
             throw;
@@ -51,8 +47,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// <summary>
     /// No loading of multiple ModParagonUpgrades
     /// </summary>
-    public sealed override IEnumerable<ModContent> Load()
-    {
+    public sealed override IEnumerable<ModContent> Load() {
         return base.Load();
     }
 
@@ -74,25 +69,22 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// <param name="investment"></param>
     /// <param name="degree"></param>
     public virtual void ModifyPowerDegreeMutator(ParagonTowerModel.PowerDegreeMutator powerDegreeMutator,
-        float investment, int degree)
-    {
-            
+        float investment, int degree) {
+
     }
-        
+
     /// <summary>
     /// Method to modify the Simulation Tower once its Degree has been set
     /// </summary>
     /// <param name="tower"></param>
     /// <param name="degree"></param>
-    public virtual void OnDegreeSet(Tower tower, int degree)
-    {
-            
+    public virtual void OnDegreeSet(Tower tower, int degree) {
+
     }
 
 
     /// <inheritdoc />
-    public override UpgradeModel GetUpgradeModel()
-    {
+    public override UpgradeModel GetUpgradeModel() {
         var model = base.GetUpgradeModel();
         model.confirmation = "Paragon";
         return model;
@@ -103,8 +95,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
 /// A convenient generic class for specifying the ModTower that this ModParagonUpgrade is for
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModParagonUpgrade<T> : ModParagonUpgrade where T : ModTower
-{
+public abstract class ModParagonUpgrade<T> : ModParagonUpgrade where T : ModTower {
     /// <inheritdoc />
     public override ModTower Tower => GetInstance<T>();
 }

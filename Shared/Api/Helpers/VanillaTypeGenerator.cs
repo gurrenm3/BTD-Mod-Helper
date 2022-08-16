@@ -1,7 +1,6 @@
 ﻿namespace BTD_Mod_Helper.Api.Helpers;
 
-internal class VanillaTypeGenerator
-{
+internal class VanillaTypeGenerator {
     /* Save for now, useful for when they add new upgrades
          Game.instance.model.upgrades.ForEach(upgrade =>
         {

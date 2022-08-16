@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+
 using Assets.Scripts.Unity.Player;
 using Assets.Scripts.Unity.UI_New.DailyChallenge;
 using Assets.Scripts.Unity.UI_New.GameOver;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api;
 
 namespace BTD_Mod_Helper.Patches.ModdedClientChecking;
 
 [HarmonyPatch]
-internal static class ModdedClientUsagePatches
-{
-    private static IEnumerable<MethodBase> TargetMethods()
-    {
+internal static class ModdedClientUsagePatches {
+    private static IEnumerable<MethodBase> TargetMethods() {
         yield return AccessTools.Method(typeof(Btd6Player), nameof(Btd6Player.Save));
         yield return AccessTools.Method(typeof(Btd6Player), nameof(Btd6Player.SaveNow));
         yield return AccessTools.Method(typeof(Btd6Player), nameof(Btd6Player.SyncNow));
@@ -37,14 +37,12 @@ internal static class ModdedClientUsagePatches
     }
 
     [HarmonyPrefix]
-    private static void Prefix()
-    {
+    private static void Prefix() {
         ModdedClientBypassing.StartBypassingCheck();
     }
 
     [HarmonyPostfix]
-    private static void Postfix()
-    {
+    private static void Postfix() {
         ModdedClientBypassing.StopBypassingCheck();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models;
+
 using Enumerable = System.Linq.Enumerable;
 
 #if BloonsTD6
@@ -20,20 +22,17 @@ using Assets.Scripts.Models.Towers.Weapons;
 #endif
 
 
-namespace BTD_Mod_Helper.Extensions
-{
+namespace BTD_Mod_Helper.Extensions {
     /// <summary>
     /// Extensions for dealing with the behaviors of Models
     /// </summary>
-    internal static class ModelBehaviorExt
-    {
+    internal static class ModelBehaviorExt {
         /// <summary>
         /// Gets the behaviors of a model. If the model does not have a behaviors field, then this returns null.
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static IEnumerable<Model> GetBehaviors(this Model model)
-        {
+        public static IEnumerable<Model> GetBehaviors(this Model model) {
 #if BloonsTD6
             if (model.IsType(out AbilityModel abilityModel))
                 return abilityModel.behaviors ?? Enumerable.Empty<Model>();
@@ -82,20 +81,16 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="model">The model</param>
         /// <param name="behaviors">The new behaviors</param>
         /// <param name="handleDependents">Whether this should handle adding and removing dependents itself</param>
-        public static void SetBehaviors(this Model model, IEnumerable<Model> behaviors, bool handleDependents = true)
-        {
+        public static void SetBehaviors(this Model model, IEnumerable<Model> behaviors, bool handleDependents = true) {
             var il2CppReferenceArray = behaviors.ToIl2CppReferenceArray();
 
             var children = model.GetBehaviors();
-            if (children != null && handleDependents)
-            {
-                foreach (var child in children)
-                {
+            if (children != null && handleDependents) {
+                foreach (var child in children) {
                     model.RemoveChildDependant(child);
                 }
 
-                foreach (var behavior in il2CppReferenceArray)
-                {
+                foreach (var behavior in il2CppReferenceArray) {
                     model.AddChildDependant(behavior);
                 }
             }
@@ -136,15 +131,14 @@ namespace BTD_Mod_Helper.Extensions
             else if (model.IsType(out AddbehaviorToWeaponModel addModel5))
                 addModel5.behaviors = il2CppReferenceArray.DuplicateAs<Model, WeaponBehaviorModel>();
 #endif
-            
+
         }
 
         /// <summary>
         /// Check if this has a specific Behavior
         /// </summary>
         /// <typeparam name="T">The Behavior you're checking for</typeparam>
-        public static bool HasBehavior<T>(this Model model) where T : Model
-        {
+        public static bool HasBehavior<T>(this Model model) where T : Model {
             return model.GetBehaviors().Any(b => b.IsType<T>());
         }
 
@@ -152,8 +146,7 @@ namespace BTD_Mod_Helper.Extensions
         /// Check if this has a specific Behavior and return it
         /// </summary>
         /// <typeparam name="T">The Behavior you're checking for</typeparam>
-        public static bool HasBehavior<T>(this Model model, out T behavior) where T : Model
-        {
+        public static bool HasBehavior<T>(this Model model, out T behavior) where T : Model {
             behavior = model.GetBehavior<T>();
             return behavior != null;
         }
@@ -162,8 +155,7 @@ namespace BTD_Mod_Helper.Extensions
         /// Return the first Behavior of type T, or null if there isn't one
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T GetBehavior<T>(this Model model) where T : Model
-        {
+        public static T GetBehavior<T>(this Model model) where T : Model {
             return model.GetBehaviors().FirstOrDefault(m => m.IsType<T>())?.Cast<T>();
         }
 
@@ -171,8 +163,7 @@ namespace BTD_Mod_Helper.Extensions
         /// Return the index'th Behavior of type T, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T GetBehavior<T>(this Model model, int index) where T : Model
-        {
+        public static T GetBehavior<T>(this Model model, int index) where T : Model {
             return model.GetBehaviors<T>().Skip(index).FirstOrDefault();
         }
 
@@ -180,8 +171,7 @@ namespace BTD_Mod_Helper.Extensions
         /// Return the first Behavior of type T whose name contains the given string, or null
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static T GetBehavior<T>(this Model model, string nameContains) where T : Model
-        {
+        public static T GetBehavior<T>(this Model model, string nameContains) where T : Model {
             return model.GetBehaviors<T>()?.FirstOrDefault(m => m.name.Contains(nameContains));
         }
 
@@ -189,19 +179,16 @@ namespace BTD_Mod_Helper.Extensions
         /// Return all Behaviors of type T
         /// </summary>
         /// <typeparam name="T">The Behavior you want</typeparam>
-        public static IEnumerable<T> GetBehaviors<T>(this Model model) where T : Model
-        {
+        public static IEnumerable<T> GetBehaviors<T>(this Model model) where T : Model {
             return model.GetBehaviors().Select(b => b?.TryCast<T>()).Where(b => b != null);
         }
 
         /// <summary>
         /// Add a Behavior to this model
         /// </summary>
-        public static void AddBehavior(this Model model, Model behavior)
-        {
+        public static void AddBehavior(this Model model, Model behavior) {
             var behaviors = model.GetBehaviors();
-            if (behaviors != null)
-            {
+            if (behaviors != null) {
                 model.SetBehaviors(behaviors.Append(behavior), false);
                 model.AddChildDependant(behavior);
             }
@@ -211,10 +198,8 @@ namespace BTD_Mod_Helper.Extensions
         /// Remove the first Behavior of Type T
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
-        public static void RemoveBehavior<T>(this Model model) where T : Model
-        {
-            if (model.HasBehavior(out T behavior))
-            {
+        public static void RemoveBehavior<T>(this Model model) where T : Model {
+            if (model.HasBehavior(out T behavior)) {
                 model.RemoveBehavior(behavior);
             }
         }
@@ -223,11 +208,9 @@ namespace BTD_Mod_Helper.Extensions
         /// Remove the index'th Behavior of Type T
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
-        public static void RemoveBehavior<T>(this Model model, int index) where T : Model
-        {
+        public static void RemoveBehavior<T>(this Model model, int index) where T : Model {
             var behavior = model.GetBehavior<T>(index);
-            if (behavior != null)
-            {
+            if (behavior != null) {
                 model.RemoveBehavior(behavior);
             }
         }
@@ -236,11 +219,9 @@ namespace BTD_Mod_Helper.Extensions
         /// Remove the first Behavior of Type T whose name contains a certain string
         /// </summary>
         /// <typeparam name="T">The Behavior you want to remove</typeparam>
-        public static void RemoveBehavior<T>(this Model model, string nameContains) where T : Model
-        {
+        public static void RemoveBehavior<T>(this Model model, string nameContains) where T : Model {
             var behavior = model.GetBehavior<T>(nameContains);
-            if (behavior != null)
-            {
+            if (behavior != null) {
                 model.RemoveBehavior(behavior);
             }
         }
@@ -248,11 +229,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Removes a specific behavior from a tower
         /// </summary>
-        public static void RemoveBehavior(this Model model, Model behavior)
-        {
+        public static void RemoveBehavior(this Model model, Model behavior) {
             var behaviors = model.GetBehaviors();
-            if (behaviors != null)
-            {
+            if (behaviors != null) {
                 model.SetBehaviors(behaviors.Where(b => b?.Equals(behavior) != true), false);
                 model.RemoveChildDependant(behavior);
             }
@@ -261,11 +240,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Remove all Behaviors of type T
         /// </summary>
-        public static void RemoveBehaviors<T>(this Model model) where T : Model
-        {
+        public static void RemoveBehaviors<T>(this Model model) where T : Model {
             var behaviors = model.GetBehaviors();
-            if (behaviors != null)
-            {
+            if (behaviors != null) {
                 model.SetBehaviors(behaviors.Where(b => !b.IsType<T>()));
             }
         }

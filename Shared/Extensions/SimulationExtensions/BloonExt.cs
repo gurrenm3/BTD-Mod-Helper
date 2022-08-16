@@ -1,22 +1,21 @@
 ﻿using Assets.Scripts;
 using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Display;
+using Assets.Scripts.Simulation.Factory;
 using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Simulation.Factory;
+
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class BloonExt
-{
+public static partial class BloonExt {
     /// <summary>
     /// Return the DisplayNode for this bloon
     /// </summary>
     /// <returns></returns>
-    public static DisplayNode GetDisplayNode(this Bloon bloon)
-    {
+    public static DisplayNode GetDisplayNode(this Bloon bloon) {
         return bloon.Node;
     }
 
@@ -25,8 +24,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static UnityDisplayNode GetUnityDisplayNode(this Bloon bloon)
-    {
+    public static UnityDisplayNode GetUnityDisplayNode(this Bloon bloon) {
         return bloon.GetDisplayNode()?.graphic;
     }
 
@@ -35,11 +33,9 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static BloonToSimulation CreateBloonToSim(this Bloon bloon)
-    {
+    public static BloonToSimulation CreateBloonToSim(this Bloon bloon) {
         var currentPos = new Vector3();
-        if(bloon.Position?.ToUnity() != null)
-        {
+        if (bloon.Position?.ToUnity() != null) {
             currentPos = bloon.Position.ToUnity();
         }
 
@@ -63,8 +59,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static ObjectId GetId(this Bloon bloon)
-    {
+    public static ObjectId GetId(this Bloon bloon) {
 #if BloonsTD6
         return bloon.Id;
 #elif BloonsAT
@@ -77,8 +72,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static Factory<Bloon> GetFactory(this Bloon bloon)
-    {
+    public static Factory<Bloon> GetFactory(this Bloon bloon) {
         return InGame.instance.GetFactory<Bloon>();
     }
 }

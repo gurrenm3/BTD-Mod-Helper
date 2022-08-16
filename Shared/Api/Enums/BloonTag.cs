@@ -1,8 +1,7 @@
 ﻿#pragma warning disable 1591
 namespace BTD_Mod_Helper.Api.Enums;
 
-public static class BloonTag
-{
+public static class BloonTag {
     public const string Red = "Red";
     public const string Regrow = "Grow";
     public const string Camo = "Camo";

@@ -1,7 +1,9 @@
-﻿using Assets.Scripts.Simulation.Bloons;
+﻿using System.Collections.Generic;
+
+using Assets.Scripts.Simulation.Bloons;
+
 using NinjaKiwi.NKMulti;
 using NinjaKiwi.Players.Files;
-using System.Collections.Generic;
 
 namespace BTD_Mod_Helper;
 
@@ -10,8 +12,7 @@ namespace BTD_Mod_Helper;
 /// like whether or not the player is in a Public Coop game
 /// </summary>
 /// <exclude/>
-public partial class SessionData
-{
+public partial class SessionData {
     /// <summary>
     /// Contains all the Bloons that were leaked during this round
     /// Used to track which bloons were popped and which leaked

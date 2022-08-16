@@ -1,18 +1,19 @@
 ﻿#if BloonsTD6
 using System;
+
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Api.ModOptions
-{
+namespace BTD_Mod_Helper.Api.ModOptions {
     /// <summary>
     /// ModSetting class for a boolean value
     /// </summary>
-    public class ModSettingBool : ModSetting<bool>
-    {
+    public class ModSettingBool : ModSetting<bool> {
         /// <summary>
         /// Whether this should display as an Enabled/Disabled button instead of a checkbox
         /// </summary>
@@ -51,8 +52,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public Action<ModHelperCheckbox> modifyCheckbox;
 
         /// <inheritdoc />
-        public ModSettingBool(bool value) : base(value)
-        {
+        public ModSettingBool(bool value) : base(value) {
         }
 
 
@@ -64,8 +64,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Create a new ModSetting bool with the given value as default
         /// </summary>
-        public static implicit operator ModSettingBool(bool value)
-        {
+        public static implicit operator ModSettingBool(bool value) {
             return new ModSettingBool(value);
         }
 
@@ -74,30 +73,22 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// </summary>
         /// <param name="modSettingBool"></param>
         /// <returns></returns>
-        public static implicit operator bool(ModSettingBool modSettingBool)
-        {
+        public static implicit operator bool(ModSettingBool modSettingBool) {
             return modSettingBool.value;
         }
 
         /// <inheritdoc />
-        public override void SetValue(object val)
-        {
+        public override void SetValue(object val) {
             base.SetValue(val);
-            try
-            {
-                if (currentOption is not null && currentOption != null)
-                {
+            try {
+                if (currentOption is not null and not null) {
                     var butt = currentOption.GetDescendent<ModHelperButton>("Button");
-                    if (butt is not null && butt != null)
-                    {
-                        currentAction?.Invoke((bool) val, butt);
+                    if (butt is not null and not null) {
+                        currentAction?.Invoke((bool)val, butt);
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                if (currentAction != null)
-                {
+            } catch (Exception e) {
+                if (currentAction != null) {
                     ModHelper.Error("Failed to run ModSettingBool action");
                     ModHelper.Error(e);
                 }
@@ -105,46 +96,37 @@ namespace BTD_Mod_Helper.Api.ModOptions
         }
 
         /// <inheritdoc />
-        internal override ModHelperOption CreateComponent()
-        {
+        internal override ModHelperOption CreateComponent() {
             var option = CreateBaseOption();
 
-            if (button)
-            {
+            if (button) {
                 var text = value ? enabledText : disabledText;
                 var buttonComponent = option.BottomRow.AddButton(
                     new Info("Button", width: 562, height: 200), value ? enabledButton : disabledButton, null
                 );
                 buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), text, 80f);
 
-                currentAction = (_, butt) =>
-                {
-                    if (butt != null)
-                    {
+                currentAction = (_, butt) => {
+                    if (butt != null) {
                         butt.Image.SetSprite(value ? enabledButton : disabledButton);
                         butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(text);
                     }
                 };
-                buttonComponent.Button.onClick.AddListener(new Action(() =>
-                {
+                buttonComponent.Button.onClick.AddListener(new Action(() => {
                     currentAction(!value, buttonComponent);
                     SetValue(!value);
                     // MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 }));
 
-                option.SetResetAction(new Action(() =>
-                {
+                option.SetResetAction(new Action(() => {
                     currentAction(defaultValue, buttonComponent);
                     SetValue(defaultValue);
                 }));
                 modifyButton?.Invoke(buttonComponent);
-            }
-            else
-            {
+            } else {
                 var checkbox = option.BottomRow.AddCheckbox(
                     new Info("Checkbox", size: 200), value, VanillaSprites.BlueInsertPanelRound,
-                    new Action<bool>(enabled =>
-                    {
+                    new Action<bool>(enabled => {
                         SetValue(enabled);
                         // MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
                     })

@@ -1,12 +1,17 @@
 ﻿using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Player;
+
 using BTD_Mod_Helper.Api;
+
 using Assets.Scripts.Models;
+
 using System.Runtime.InteropServices;
 using System;
 using System.Collections;
+
 using BTD_Mod_Helper.Api.Enums;
+
 using Assets.Scripts.Utils;
 using Assets.Scripts.Unity.Map;
 
@@ -18,17 +23,14 @@ using Ninjakiwi.LiNK;
 using Assets.Scripts.Unity.Localization;
 #endif
 
-namespace BTD_Mod_Helper.Extensions
-{
-    public static partial class GameExt
-    {
+namespace BTD_Mod_Helper.Extensions {
+    public static partial class GameExt {
         /// <summary>
         /// Returns the instance of the Map Loader.
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
-        public static MapLoader GetMapLoader(this Game game)
-        {
+        public static MapLoader GetMapLoader(this Game game) {
 #if BloonsTD6
             return Assets.Scripts.Unity.UI_New.UI.instance.mapLoader;
 #elif BloonsAT
@@ -42,8 +44,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="game"></param>
         /// <param name="guid"></param>
         /// <returns></returns>
-        public static SpriteReference CreateSpriteReference(this Game game, string guid)
-        {
+        public static SpriteReference CreateSpriteReference(this Game game, string guid) {
             return ModContent.CreateSpriteReference(guid);
         }
 
@@ -52,8 +53,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
-        public static bool IsAccountFlagged(this Game game)
-        {
+        public static bool IsAccountFlagged(this Game game) {
 #if BloonsTD6
             var hackerStatus = game.GetBtd6Player().Hakxr;
             return hackerStatus.genrl || hackerStatus.ledrbrd;
@@ -65,8 +65,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Get the instance of LocalizationManager
         /// </summary>
-        public static LocalizationManager GetLocalizationManager(this Game game)
-        {
+        public static LocalizationManager GetLocalizationManager(this Game game) {
 #if BloonsTD6
             return LocalizationManager.Instance;
 #elif BloonsAT
@@ -79,7 +78,9 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="game"></param>
         /// <param name="iEnumerator"></param>
-        public static void ScheduleTask(this Game game, IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
+        public static void ScheduleTask(this Game game, IEnumerator iEnumerator) {
+            MelonLoader.MelonCoroutines.Start(iEnumerator);
+        }
 
         /// <summary>
         /// Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
@@ -87,7 +88,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="game"></param>
         /// <param name="action">The action you want to execute once it's time to run your task</param>
         /// <param name="waitCondition">Wait for this to be true before executing task</param>
-        public static void ScheduleTask(this Game game, Action action, Func<bool> waitCondition = null) => game.ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
+        public static void ScheduleTask(this Game game, Action action, Func<bool> waitCondition = null) {
+            game.ScheduleTask(action, ScheduleType.WaitForFrames, 0, waitCondition);
+        }
 
         /// <summary>
         /// Schedule a task to execute later on as a Coroutine
@@ -97,8 +100,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="scheduleType">How you want to wait for your task</param>
         /// <param name="amountToWait">The amount you want to wait</param>
         /// /// <param name="waitCondition">Wait for this to be true before executing task</param>
-        public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait , Func<bool> waitCondition = null)
-        {
+        public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait, Func<bool> waitCondition = null) {
             MelonLoader.MelonCoroutines.Start(TaskScheduler.Coroutine(action, scheduleType, amountToWait, waitCondition));
         }
 
@@ -106,8 +108,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
         /// </summary>
-        public static LiNKAccount GetPlayerLiNKAccount(this Game game)
-        {
+        public static LiNKAccount GetPlayerLiNKAccount(this Game game) {
             return game.GetPlayerService()?.Player?.LiNKAccount;
         }
 
@@ -116,16 +117,14 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
-        public static ProfileModel GetPlayerProfile(this Game game)
-        {
+        public static ProfileModel GetPlayerProfile(this Game game) {
             return game.GetPlayerService()?.Player?.Data;
         }
 
         /// <summary>
         /// Get the PlayerService for the player
         /// </summary>
-        public static PlayerService GetPlayerService(this Game game)
-        {
+        public static PlayerService GetPlayerService(this Game game) {
 #if BloonsTD6
             return game.playerService;
 #elif BloonsAT
@@ -138,8 +137,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
-        public static GameModel GetModel(this Game game)
-        {
+        public static GameModel GetModel(this Game game) {
             return game.model;
         }
 
@@ -149,8 +147,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="game">the Game instance</param>
         /// <param name="message">Message body</param>
         /// <param name="title">Message title. Will be mod name by default</param>
-        public static void ShowMessage(this Game game, string message, [Optional] string title)
-        {
+        public static void ShowMessage(this Game game, string message, [Optional] string title) {
             game.ShowMessage(message, 2f, title);
         }
 
@@ -161,13 +158,10 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="message">Message body</param>
         /// <param name="displayTime">Time to show message on screen</param>
         /// <param name="title">Message title. Will be mod name by default</param>
-        public static void ShowMessage(this Game game, string message, float displayTime, [Optional] string title)
-        {
-            var msg = new NkhMsg
-            {
+        public static void ShowMessage(this Game game, string message, float displayTime, [Optional] string title) {
+            var msg = new NkhMsg {
                 MsgShowTime = displayTime,
-                NkhText = new NkhText
-                {
+                NkhText = new NkhText {
                     Body = message,
                     Title = title
                 }

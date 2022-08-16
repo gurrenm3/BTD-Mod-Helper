@@ -2,15 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using Assets.Scripts.Unity.UI_New.Popups;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
+
 using TMPro;
+
 using UnityEngine;
+
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.UI.Menus;
@@ -18,8 +23,7 @@ namespace BTD_Mod_Helper.UI.Menus;
 /// <summary>
 /// The ModGameMenu for the screen showing current mods
 /// </summary>
-public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
-{
+public class ModsMenu : ModGameMenu<ExtraSettingsScreen> {
     #region Constants
 
     internal const int Padding = 50;
@@ -84,8 +88,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                                            );
 
     /// <inheritdoc />
-    public override bool OnMenuOpened(Object data)
-    {
+    public override bool OnMenuOpened(Object data) {
         CommonForegroundHeader.SetText("Mods");
 
         var panelTransform = GameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
@@ -107,11 +110,9 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         return false;
     }
 
-    private IEnumerator CreateModPanels()
-    {
+    private IEnumerator CreateModPanels() {
         updateAllButton.gameObject.SetActive(modPanels.Keys.Any(data => data.UpdateAvailable));
-        if (RestartRequired)
-        {
+        if (RestartRequired) {
             restartPanel.SetActive(true);
             restartPanel.GetComponent<Animator>().Play("PopupScaleIn");
         }
@@ -121,8 +122,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         if (Closing) yield break;
 
         var keys = modPanels.Keys.ToList();
-        for (var index = 0; index < keys.Count; index++)
-        {
+        for (var index = 0; index < keys.Count; index++) {
             var data = keys[index];
             var panel = modPanels[data] = modTemplate.Duplicate(data.Name);
             if (index > 6) yield return null;
@@ -138,10 +138,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         Refresh();
     }
 
-    private static void CreateExtraButtons(ExtraSettingsScreen gameMenu)
-    {
-        var bottomButtonGroup = gameMenu.gameObject.AddModHelperPanel(new Info("BottomButtonGroup")
-        {
+    private static void CreateExtraButtons(ExtraSettingsScreen gameMenu) {
+        var bottomButtonGroup = gameMenu.gameObject.AddModHelperPanel(new Info("BottomButtonGroup") {
             Height = 400,
             AnchorMin = Vector2.zero,
             AnchorMax = new Vector2(1, 0),
@@ -152,30 +150,24 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         bottomGroupAnimator.speed = .55f;
         bottomGroupAnimator.Play("PopupSlideIn");
 
-        var modBrowserButton = bottomButtonGroup.AddButton(new Info("ModBrowserButton", -225, Padding, 400)
-        {
+        var modBrowserButton = bottomButtonGroup.AddButton(new Info("ModBrowserButton", -225, Padding, 400) {
             Anchor = new Vector2(1, 0),
             Pivot = new Vector2(0.5f, 0)
         }, VanillaSprites.WoodenRoundButton, new Action(() => Open<ModBrowserMenu>()));
         modBrowserButton.AddImage(new Info("ComputerMonkey", InfoPreset.FillParent), VanillaSprites.BenjaminIcon);
         modBrowserButton.AddText(new Info("Text", 0, -200, 500, 100), "Browse Mods", 60f);
 
-        var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, Padding, 400)
-        {
+        var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, Padding, 400) {
             Anchor = Vector2.zero,
             Pivot = new Vector2(0.5f, 0)
-        }, VanillaSprites.EditChallengeIcon, new Action(() =>
-        {
+        }, VanillaSprites.EditChallengeIcon, new Action(() => {
             PopupScreen.instance.SafelyQueue(screen => screen.ShowSetNamePopup("Create/Upgrade Mod",
-                "Name of mod to create/upgrade. \n Example: 'TitleCaseButWithoutSpaces'", new Action<string>(s =>
-                {
-                    if (!string.IsNullOrEmpty(s))
-                    {
+                "Name of mod to create/upgrade. \n Example: 'TitleCaseButWithoutSpaces'", new Action<string>(s => {
+                    if (!string.IsNullOrEmpty(s)) {
                         TemplateMod.CreateModButtonClicked(s);
                     }
                 }), null));
-            PopupScreen.instance.SafelyQueue(screen => screen.ModifyField(tmpInputField =>
-            {
+            PopupScreen.instance.SafelyQueue(screen => screen.ModifyField(tmpInputField => {
                 tmpInputField.textComponent.font = Fonts.Btd6FontBody;
                 tmpInputField.characterLimit = 50;
                 tmpInputField.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
@@ -185,8 +177,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         createModButton.AddText(new Info("Text", 0, -200, 500, 100), "Create Mod", 60f);
 
 
-        restartPanel = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350)
-        {
+        restartPanel = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350) {
             Pivot = Vector2.one,
             Anchor = Vector2.one
         });
@@ -196,8 +187,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         restartPanel.SetActive(false);
 
         restartPanel.AddButton(new Info("Restart", InfoPreset.FillParent), VanillaSprites.RestartBtn,
-            new Action(() =>
-            {
+            new Action(() => {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
                     "Restart Required",
                     "Changes you've made will require restarting the game to take effect. " +
@@ -208,16 +198,14 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     }
 
     /// <inheritdoc />
-    public override void OnMenuClosed()
-    {
+    public override void OnMenuClosed() {
         bottomGroupAnimator.Play("PopupSlideOut");
         restartPanel.GetComponent<Animator>().Play("PopupScaleOut");
 
         modPanels.Clear();
     }
 
-    internal static void SetSelectedMod(ModHelperData modSelected)
-    {
+    internal static void SetSelectedMod(ModHelperData modSelected) {
         selectedMod = modSelected;
 
         selectedModName.Text.SetText(modSelected.DisplayName);
@@ -232,13 +220,10 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
                                                        bloonsMod.ModSettings.Any());
 
-        if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite)
-        {
+        if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite) {
             selectedModIcon.gameObject.SetActive(true);
             selectedModIcon.Image.SetSprite(sprite);
-        }
-        else
-        {
+        } else {
             selectedModIcon.gameObject.SetActive(false);
         }
 
@@ -249,15 +234,11 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModHomeButton.SetActive(selectedMod.ReadmeUrl != null);
     }
 
-    private static void SortMods(int selectedIndex)
-    {
+    private static void SortMods(int selectedIndex) {
         currentSort = selectedIndex;
-        foreach (var (modHelperData, modPanel) in modPanels)
-        {
-            if (modPanel != null)
-            {
-                switch (selectedIndex)
-                {
+        foreach (var (modHelperData, modPanel) in modPanels) {
+            if (modPanel != null) {
+                switch (selectedIndex) {
                     default:
                         modPanel.gameObject.SetActive(true);
                         break;
@@ -277,15 +258,13 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         Refresh();
     }
 
-    private static void CreateLeftMenu(ModHelperPanel modsMenu)
-    {
+    private static void CreateLeftMenu(ModHelperPanel modsMenu) {
         var leftMenu = modsMenu.AddPanel(
             new Info("LeftMenu", (MenuWidth - LeftMenuWidth) / -2f, 0, LeftMenuWidth, MenuHeight),
             VanillaSprites.MainBGPanelBlue, RectTransform.Axis.Vertical, Padding, Padding
         );
 
-        var topRow = leftMenu.AddPanel(new Info("TopRow")
-        {
+        var topRow = leftMenu.AddPanel(new Info("TopRow") {
             Height = ModNameHeight,
             FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, Padding);
@@ -299,16 +278,13 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         // ReSharper disable once AsyncVoidLambda
         updateAllButton = topRow.AddButton(
             new Info("UpdateAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
-            VanillaSprites.GreenBtnLong, new Action(() =>
-            {
+            VanillaSprites.GreenBtnLong, new Action(() => {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
                     "Confirm Update All Mods?",
                     "This will update all mods to latest versions with no further confirmation.", new Action(
-                        async () =>
-                        {
+                        async () => {
                             foreach (var (data, panel) in modPanels
-                                         .Where(kvp => kvp.Key.UpdateAvailable))
-                            {
+                                         .Where(kvp => kvp.Key.UpdateAvailable)) {
                                 await ModHelperGithub.DownloadLatest(data, true);
                                 panel.Refresh(data);
                             }
@@ -329,26 +305,21 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         modPanels = new Dictionary<ModHelperData, ModsMenuMod>();
         modTemplate = ModsMenuMod.CreateTemplate();
         modsList.AddScrollContent(modTemplate);
-        foreach (var modHelperData in ModHelperData.All)
-        {
+        foreach (var modHelperData in ModHelperData.All) {
             modPanels[modHelperData] = null;
         }
     }
 
-    private static void Refresh()
-    {
-        foreach (var (modHelperData, panel) in modPanels)
-        {
-            if (panel is null)
-            {
+    private static void Refresh() {
+        foreach (var (modHelperData, panel) in modPanels) {
+            if (panel is null) {
                 continue;
             }
 
             panel.Refresh(modHelperData);
         }
 
-        if (updateAllButton != null)
-        {
+        if (updateAllButton != null) {
             updateAllButton.gameObject.SetActive(modPanels.Any(pair =>
                 pair.Key.UpdateAvailable && pair.Value is not null && pair.Value.gameObject.active));
         }
@@ -360,33 +331,28 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         SetSelectedMod(selectedMod!);
     }
 
-    private static void CreateRightMenu(ModHelperPanel modsMenu)
-    {
+    private static void CreateRightMenu(ModHelperPanel modsMenu) {
         selectedModPanel = modsMenu.AddPanel(
             new Info("ModInfo", (MenuWidth - RightMenuWidth) / 2f, 0, RightMenuWidth, MenuHeight),
             VanillaSprites.MainBGPanelBlue, RectTransform.Axis.Vertical, Padding, Padding
         );
 
-        var firstRow = selectedModPanel.AddPanel(new Info("FirstRow")
-        {
+        var firstRow = selectedModPanel.AddPanel(new Info("FirstRow") {
             Height = ModNameHeight, FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, Padding);
 
-        var modTitlePanel = firstRow.AddPanel(new Info("ModTitlePanel")
-        {
+        var modTitlePanel = firstRow.AddPanel(new Info("ModTitlePanel") {
             Flex = 1
         }, VanillaSprites.BlueInsertPanelRound);
 
-        selectedModName = modTitlePanel.AddText(new Info("ModTitle", InfoPreset.FillParent)
-        {
+        selectedModName = modTitlePanel.AddText(new Info("ModTitle", InfoPreset.FillParent) {
             Width = Padding * -2,
             Height = -Padding
         }, "Test Long Mod Name", FontLarge, TextAlignmentOptions.Left);
         selectedModName.Text.enableAutoSizing = true;
 
 
-        selectedModHomeButton = firstRow.AddButton(new Info("HomePage")
-        {
+        selectedModHomeButton = firstRow.AddButton(new Info("HomePage") {
             Size = ModNameHeight
         }, VanillaSprites.HomeBtn, new Action(() => ProcessHelper.OpenURL(selectedMod.ReadmeUrl!)));
 
@@ -399,18 +365,15 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Info("UpgradeIcon", size: ModNameHeight - Padding), VanillaSprites.UpgradeIcon2
         );
 
-        var secondRow = selectedModPanel.AddPanel(new Info("SecondRow")
-        {
+        var secondRow = selectedModPanel.AddPanel(new Info("SecondRow") {
             Height = OtherHeight, FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, Padding);
 
-        var modAuthorPanel = secondRow.AddPanel(new Info("ModAuthorPanel")
-        {
+        var modAuthorPanel = secondRow.AddPanel(new Info("ModAuthorPanel") {
             FlexWidth = 4, FlexHeight = 1
         }, VanillaSprites.BlueInsertPanelRound);
 
-        selectedModAuthor = modAuthorPanel.AddText(new Info("Author", InfoPreset.FillParent)
-        {
+        selectedModAuthor = modAuthorPanel.AddText(new Info("Author", InfoPreset.FillParent) {
             Width = Padding * -2,
             Height = -Padding
         }, "Author", FontSmall, TextAlignmentOptions.Left);
@@ -418,8 +381,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         var modVersionPanel = secondRow.AddPanel(new Info("ModVersionPanel", InfoPreset.Flex),
             VanillaSprites.BlueInsertPanelRound);
-        selectedModVersion = modVersionPanel.AddText(new Info("Version", InfoPreset.FillParent)
-        {
+        selectedModVersion = modVersionPanel.AddText(new Info("Version", InfoPreset.FillParent) {
             Width = -Padding,
             Height = -Padding
         }, "Version");
@@ -429,8 +391,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         var descriptionPanel = selectedModPanel.AddScrollPanel(new Info("DescriptionPanel", InfoPreset.Flex),
             RectTransform.Axis.Vertical, VanillaSprites.BlueInsertPanelRound, Padding, Padding);
 
-        selectedModDescription = ModHelperText.Create(new Info("DescriptionText")
-        {
+        selectedModDescription = ModHelperText.Create(new Info("DescriptionText") {
             Width = RightMenuWidth - Padding * 4
         }, DefaultDescription, FontSmall, TextAlignmentOptions.TopLeft);
         descriptionPanel.AddScrollContent(selectedModDescription);
@@ -439,8 +400,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModDescription.Text.lineSpacing = Padding / 2f;
         selectedModDescription.Text.font = Fonts.Btd6FontBody;
 
-        var buttonsRow = selectedModPanel.AddPanel(new Info("ButtonRow")
-        {
+        var buttonsRow = selectedModPanel.AddPanel(new Info("ButtonRow") {
             Height = ModPanelHeight, FlexWidth = 1
         });
 
@@ -475,13 +435,10 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             VanillaSprites.CloseBtn, new Action(DeleteSelectedMod));
     }
 
-    private static void DeleteSelectedMod()
-    {
+    private static void DeleteSelectedMod() {
         PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Delete Mod",
-            "Are you sure you want to delete this mod? This action cannot be undone.", new Action(() =>
-            {
-                if (selectedMod.Delete())
-                {
+            "Are you sure you want to delete this mod? This action cannot be undone.", new Action(() => {
+                if (selectedMod.Delete()) {
                     modPanels[selectedMod].gameObject.Destroy();
                     modPanels.Remove(selectedMod);
                     SetSelectedMod(ModHelper.Main.GetModHelperData());
@@ -491,15 +448,12 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             }), "Yes", null, "No", Popup.TransitionAnim.Scale));
     }
 
-    internal static void DisableSelectedMod()
-    {
-        if (selectedMod.MoveToDisabledModsFolder())
-        {
+    internal static void DisableSelectedMod() {
+        if (selectedMod.MoveToDisabledModsFolder()) {
             SetSelectedMod(selectedMod);
             SortMods(currentSort);
             MenuManager.instance.buttonClickSound.Play("ClickSounds");
-            if (selectedMod.Mod is MelonMain)
-            {
+            if (selectedMod.Mod is MelonMain) {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
                     "Disabling Mod Helper will mean you will no longer see this mods menu. " +
                     "You would have to manually re-enable this / any other mods by dragging their .dll files " +
@@ -510,10 +464,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }
     }
 
-    internal static void EnableSelectedMod()
-    {
-        if (selectedMod.MoveToEnabledModsFolder())
-        {
+    internal static void EnableSelectedMod() {
+        if (selectedMod.MoveToEnabledModsFolder()) {
             SetSelectedMod(selectedMod);
             SortMods(currentSort);
             MenuManager.instance.buttonClickSound.Play("ClickSounds");

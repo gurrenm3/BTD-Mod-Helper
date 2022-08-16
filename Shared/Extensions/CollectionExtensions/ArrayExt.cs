@@ -1,19 +1,19 @@
-﻿using Assets.Scripts.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using Assets.Scripts.Utils;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class ArrayExt
-{
+public static partial class ArrayExt {
     /// <summary>
     /// Return as Il2CppSystem.List
     /// </summary>
     public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] array)
-        where T : Il2CppSystem.Object
-    {
+        where T : Il2CppSystem.Object {
         var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
         foreach (var item in array)
             il2CppList.Add(item);
@@ -24,8 +24,7 @@ public static partial class ArrayExt
     /// <summary>
     /// Return as Il2CppReferenceArray
     /// </summary>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array) where T : Il2CppSystem.Object
-    {
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array) where T : Il2CppSystem.Object {
         var il2cppArray = new Il2CppReferenceArray<T>(array.Length);
 
         for (var i = 0; i < array.Length; i++)
@@ -37,8 +36,7 @@ public static partial class ArrayExt
     /// <summary>
     /// Return as LockList
     /// </summary>
-    public static LockList<T> ToLockList<T>(this T[] array)
-    {
+    public static LockList<T> ToLockList<T>(this T[] array) {
         var lockList = new LockList<T>();
         foreach (var item in array)
             lockList.Add(item);
@@ -52,13 +50,11 @@ public static partial class ArrayExt
     /// <typeparam name="T"></typeparam>
     /// <param name="array"></param>
     /// <returns></returns>
-    public static T[] Duplicate<T>(this T[] array)
-    {
+    public static T[] Duplicate<T>(this T[] array) {
         var newArray = new T[] { };
-        foreach (var item in array)
-        {
+        foreach (var item in array) {
             Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item;
+            newArray[^1] = item;
         }
 
         return newArray;
@@ -72,13 +68,11 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <returns></returns>
     public static TCast[] DuplicateAs<TSource, TCast>(this TSource[] array)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
-    {
+        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object {
         var newArray = new TCast[] { };
-        foreach (var item in array)
-        {
+        foreach (var item in array) {
             Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item.TryCast<TCast>();
+            newArray[^1] = item.TryCast<TCast>();
         }
 
         return newArray;
@@ -91,8 +85,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <param name="objectToAdd">Item to add to this</param>
     /// <returns></returns>
-    public static T[] AddTo<T>(this T[] array, T objectToAdd) where T : Il2CppSystem.Object
-    {
+    public static T[] AddTo<T>(this T[] array, T objectToAdd) where T : Il2CppSystem.Object {
         if (array is null)
             array = new T[0];
 
@@ -108,8 +101,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <param name="objectsToAdd">Items you want to add</param>
     /// <returns></returns>
-    public static T[] AddTo<T>(this T[] array, T[] objectsToAdd) where T : Il2CppSystem.Object
-    {
+    public static T[] AddTo<T>(this T[] array, T[] objectsToAdd) where T : Il2CppSystem.Object {
         if (array is null)
             array = new T[0];
 
@@ -119,8 +111,7 @@ public static partial class ArrayExt
         var tempList = new List<T>(array);
         tempList.AddRange(objectsToAdd);
 
-        for (var i = 0; i < tempList.Count; i++)
-        {
+        for (var i = 0; i < tempList.Count; i++) {
             var item = tempList[i];
             newReference[i] = item;
         }
@@ -135,8 +126,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <param name="objectsToAdd">Items you want to add</param>
     /// <returns></returns>
-    public static T[] AddTo<T>(this T[] array, List<T> objectsToAdd) where T : Il2CppSystem.Object
-    {
+    public static T[] AddTo<T>(this T[] array, List<T> objectsToAdd) where T : Il2CppSystem.Object {
         return array.AddTo(objectsToAdd.ToArray());
     }
 
@@ -149,18 +139,13 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <returns></returns>
     public static bool HasItemsOfType<TSource, TCast>(this TSource[] array) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
-    {
+        where TCast : Il2CppSystem.Object {
         // Doing this the ugly way to guarantee no errors. Had a couple of bizarre errors in testing when using LINQ
-        foreach (var item in array)
-        {
-            try
-            {
+        foreach (var item in array) {
+            try {
                 if (item.IsType<TCast>())
                     return true;
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 // ignored
             }
         }
@@ -176,8 +161,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <returns></returns>
     public static TCast GetItemOfType<TSource, TCast>(this TSource[] array) where TCast : Il2CppSystem.Object
-        where TSource : Il2CppSystem.Object
-    {
+        where TSource : Il2CppSystem.Object {
         if (!HasItemsOfType<TSource, TCast>(array))
             return null;
 
@@ -193,8 +177,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <returns></returns>
     public static IEnumerable<TCast> GetItemsOfType<TSource, TCast>(this TSource[] array)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
-    {
+        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object {
         return array.Select(o => o.TryCast<TCast>()).Where(o => o != null);
     }
 
@@ -207,8 +190,7 @@ public static partial class ArrayExt
     /// <returns></returns>
     public static TSource[] RemoveItemOfType<TSource, TCast>(this TSource[] array)
         where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
-    {
+        where TCast : Il2CppSystem.Object {
         var behavior = GetItemOfType<TSource, TCast>(array);
         return behavior != null ? RemoveItem(array, behavior) : array;
     }
@@ -222,15 +204,13 @@ public static partial class ArrayExt
     /// <param name="itemToRemove">The specific Item to remove</param>
     /// <returns></returns>
     public static TSource[] RemoveItem<TSource, TCast>(this TSource[] array, TCast itemToRemove)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
-    {
+        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object {
         if (!HasItemsOfType<TSource, TCast>(array))
             return array;
 
         var arrayList = array.ToList();
 
-        for (var i = 0; i < array.Length; i++)
-        {
+        for (var i = 0; i < array.Length; i++) {
             var item = array[i];
             if (item is null || !item.Equals(itemToRemove.TryCast<TCast>()))
                 continue;
@@ -251,15 +231,13 @@ public static partial class ArrayExt
     /// <returns></returns>
     public static TSource[] RemoveItemsOfType<TSource, TCast>(this TSource[] array)
         where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
-    {
+        where TCast : Il2CppSystem.Object {
         if (!HasItemsOfType<TSource, TCast>(array))
             return array;
 
         var numRemoved = 0;
         var arrayList = array.ToList();
-        for (var i = 0; i < array.Length; i++)
-        {
+        for (var i = 0; i < array.Length; i++) {
             var item = array[i];
             if (item is null || !item.IsType<TCast>())
                 continue;
@@ -278,8 +256,7 @@ public static partial class ArrayExt
     /// </summary>
     /// <param name="arr">The array</param>
     /// <returns></returns>
-    public static string Printed(this int[] arr)
-    {
+    public static string Printed(this int[] arr) {
         return arr.Aggregate("", (current, i) => current + i);
     }
 
@@ -290,9 +267,8 @@ public static partial class ArrayExt
     /// </summary>
     /// <param name="arr"></param>
     /// <returns></returns>
-    public static int[] Order(this int[] arr)
-    {
-        var order = new[] {0, 1, 2};
+    public static int[] Order(this int[] arr) {
+        var order = new[] { 0, 1, 2 };
         return order.OrderByDescending(i => arr[i]).ThenByDescending(i => i % 2).ThenBy(i => i).ToArray();
     }
 
@@ -301,8 +277,7 @@ public static partial class ArrayExt
     /// </summary>
     /// <param name="tiers"></param>
     /// <returns></returns>
-    public static bool IsValid(this int[] tiers)
-    {
+    public static bool IsValid(this int[] tiers) {
         return tiers.Length == 3 && tiers.Max() <= 5 && tiers.Min() == 0 && tiers.OrderBy(i => i).ToArray()[1] <= 2;
     }
 }

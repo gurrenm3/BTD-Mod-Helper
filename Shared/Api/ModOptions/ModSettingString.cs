@@ -1,6 +1,8 @@
 ﻿using System;
+
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+
 using TMPro;
 
 namespace BTD_Mod_Helper.Api.ModOptions;
@@ -8,8 +10,7 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// <summary>
 /// ModSetting for a string value
 /// </summary>
-public class ModSettingString : ModSetting<string>
-{
+public class ModSettingString : ModSetting<string> {
 #if BloonsTD6
     /// <summary>
     /// Action to modify the ModHelperInputField after it's created
@@ -47,38 +48,33 @@ public class ModSettingString : ModSetting<string>
     /// Validation for the input field, determining which characters are allowed
     /// </summary>
     public TMP_InputField.CharacterValidation characterValidation;
-        
+
     /// <inheritdoc />
-    public ModSettingString(string value) : base(value)
-    {
+    public ModSettingString(string value) : base(value) {
     }
 
     /// <summary>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
-    public static implicit operator ModSettingString(string value)
-    {
+    public static implicit operator ModSettingString(string value) {
         return new ModSettingString(value);
     }
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator string(ModSettingString modSettingString)
-    {
+    public static implicit operator string(ModSettingString modSettingString) {
         return modSettingString.value;
     }
 
     /// <inheritdoc />
-    internal override ModHelperOption CreateComponent()
-    {
+    internal override ModHelperOption CreateComponent() {
         var option = CreateBaseOption();
 
 #if BloonsTD6
         var input = option.BottomRow.AddInputField(
             new Info("Input", width: 1500, height: 150), value, VanillaSprites.BlueInsertPanelRound,
-            new Action<string>((s) =>
-            {
+            new Action<string>((s) => {
                 SetValue(s);
                 // ModHelper.Log("value is a changin");
             }), 80f, characterValidation

@@ -1,7 +1,10 @@
 ﻿using System;
+
 using Assets.Scripts.Utils;
+
 using UnityEngine;
 using UnityEngine.UI;
+
 using Action = Il2CppSystem.Action;
 
 namespace BTD_Mod_Helper.Api.Components;
@@ -10,8 +13,7 @@ namespace BTD_Mod_Helper.Api.Components;
 /// ModHelperComponent for a background panel
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModHelperButton : ModHelperComponent
-{
+public class ModHelperButton : ModHelperComponent {
     /// <summary>
     /// The aspect ratio of LongBtn sprites, since they aren't sliced for some reason lol
     /// </summary>
@@ -28,8 +30,7 @@ public class ModHelperButton : ModHelperComponent
     public Button Button => GetComponent<Button>();
 
     /// <inheritdoc />
-    public ModHelperButton(IntPtr ptr) : base(ptr)
-    {
+    public ModHelperButton(IntPtr ptr) : base(ptr) {
     }
 
 
@@ -40,8 +41,7 @@ public class ModHelperButton : ModHelperComponent
     /// <param name="sprite">The button's visuals</param>
     /// <param name="onClick">What should happen when the button is clicked</param>
     /// <returns></returns>
-    public static ModHelperButton Create(Info info, string sprite, Action onClick)
-    {
+    public static ModHelperButton Create(Info info, string sprite, Action onClick) {
         var modHelperButton = ModHelperComponent.Create<ModHelperButton>(info);
 
         var image = modHelperButton.AddComponent<Image>();
@@ -49,8 +49,7 @@ public class ModHelperButton : ModHelperComponent
         image.SetSprite(sprite);
 
         var button = modHelperButton.AddComponent<Button>();
-        if (onClick != null)
-        {
+        if (onClick != null) {
             button.onClick.AddListener(onClick.Invoke);
         }
 

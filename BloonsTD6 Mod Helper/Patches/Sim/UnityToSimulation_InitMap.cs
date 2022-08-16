@@ -1,33 +1,31 @@
 ﻿using Assets.Scripts.Models.Map;
 using Assets.Scripts.Unity.Bridge;
+
 using BTD_Mod_Helper.Api.Scenarios;
+
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Patches.Sim;
 
 [HarmonyPatch(typeof(UnityToSimulation), nameof(UnityToSimulation.InitMap))]
-internal class UnityToSimulation_InitMap
-{
-    static string[] rainObjectNames = { "Rain", "WaterSplashes", "Ripples" };
+internal class UnityToSimulation_InitMap {
+    private static string[] rainObjectNames = { "Rain", "WaterSplashes", "Ripples" };
 
     [HarmonyPrefix]
-    internal static bool Prefix(UnityToSimulation __instance, ref MapModel map)
-    {
+    internal static bool Prefix(UnityToSimulation __instance, ref MapModel map) {
         if (!ModMap.IsCustomMap(map.mapName, out var modMap))
             return true;
-            
+
         // testing resize code here
         var imageBytes = modMap.GetMapBytes();
-        if (imageBytes == null)
-        {
+        if (imageBytes == null) {
             ModHelper.Error("Image bytes are null!");
         }
-            
+
 
 
         // remove all unwanted game objects
-        foreach (var ob in Object.FindObjectsOfType<GameObject>())
-        {
+        foreach (var ob in Object.FindObjectsOfType<GameObject>()) {
             if (ob.name == "MuddyPuddlesTerrain")
                 continue;
 

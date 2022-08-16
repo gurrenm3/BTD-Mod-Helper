@@ -5,11 +5,9 @@ using Assets.Scripts.Simulation.Towers.Projectiles;
 namespace BTD_Mod_Helper.Patches.Projectiles;
 
 [HarmonyPatch(typeof(Projectile), nameof(Projectile.Initialise))]
-internal class Projectile_Initialise
-{
+internal class Projectile_Initialise {
     [HarmonyPostfix]
-    internal static void Postfix(Projectile __instance, Entity target, Model modelToUse)
-    {
+    internal static void Postfix(Projectile __instance, Entity target, Model modelToUse) {
         ModHelper.PerformHook(mod => mod.OnProjectileCreated(__instance, target, modelToUse));
         ModHelper.PerformHook(mod => mod.OnProjectileModelChanged(__instance, modelToUse));
     }

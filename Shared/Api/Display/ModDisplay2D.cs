@@ -8,8 +8,7 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// Mod Display specifically set up to be a 2d image 
 /// </summary>
-public abstract class ModDisplay2D : ModDisplay
-{
+public abstract class ModDisplay2D : ModDisplay {
     /// <inheritdoc />
     public sealed override string BaseDisplay => Generic2dDisplay;
 
@@ -19,15 +18,13 @@ public abstract class ModDisplay2D : ModDisplay
     protected abstract string TextureName { get; }
 
     /// <inheritdoc />
-    public override void Apply(TowerModel towerModel)
-    {
+    public override void Apply(TowerModel towerModel) {
         base.Apply(towerModel);
         towerModel.GetBehavior<DisplayModel>().positionOffset = new Vector3(0, 0, 2f);
     }
 
     /// <inheritdoc />
-    public override void ModifyDisplayNode(UnityDisplayNode node)
-    {
+    public override void ModifyDisplayNode(UnityDisplayNode node) {
         Set2DTexture(node, TextureName);
         node.towerPlacementPreCalcOffset = new UnityEngine.Vector3(0, 2f, 0);
     }

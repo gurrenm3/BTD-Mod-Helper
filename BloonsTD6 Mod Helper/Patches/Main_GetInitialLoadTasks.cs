@@ -1,16 +1,20 @@
 ﻿using System.Linq;
+
 using Assets.Scripts.Unity.Tasks;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
+
 using Il2CppSystem.Collections.Generic;
+
 using UnhollowerBaseLib;
+
 using Main = Assets.Main.Main;
 
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(Main), nameof(Main.GetInitialLoadTasks))]
-internal static class Main_GetInitialLoadTasks
-{
+internal static class Main_GetInitialLoadTasks {
     /// <summary>
     /// I noticed that if any tasks are added after the vanilla final task of loading the GameModel, then aren't run.
     /// But, since most tasks we want to add need to deal with the GameModel, I added in a custom task to load the
@@ -20,8 +24,7 @@ internal static class Main_GetInitialLoadTasks
     internal const string CustomGameModelLoadName = "Pre-Preparing Darts...";
 
     [HarmonyPostfix]
-    private static void Postfix(ref SeriesTasks __result)
-    {
+    private static void Postfix(ref SeriesTasks __result) {
         if (ModHelper.FallbackToOldLoading || !MelonLoaderChecker.IsVersionNewEnough()) return;
 
         var tasks = __result.Tasks.Cast<Il2CppReferenceArray<ITask>>().ToList();
@@ -29,14 +32,14 @@ internal static class Main_GetInitialLoadTasks
         tasks.Remove(gameModelLoad);
         // The last of the Assets_Main_Main___c$$_GetInitialLoadTasks_...
         tasks.Add(new Task(CustomGameModelLoadName, Main.__c.__9__46_8).Cast<ITask>());
-        tasks.Add(new ByteWaitTask {mod = ModHelper.Main}.CreateTask());
-        tasks.Add(new PreLoadResourcesTask {mod = ModHelper.Main}.CreateTask());
+        tasks.Add(new ByteWaitTask { mod = ModHelper.Main }.CreateTask());
+        tasks.Add(new PreLoadResourcesTask { mod = ModHelper.Main }.CreateTask());
 
         // All the tasks for loading mod content
         tasks.AddRange(ModHelper.Mods
             .Where(mod => mod.Content.Count > 0)
             .OrderBy(mod => mod.Priority)
-            .Select(mod => new ModContentTask {mod = mod})
+            .Select(mod => new ModContentTask { mod = mod })
             .Select(modContentTask => modContentTask.CreateTask()));
 
         // Modders own custom load tasks

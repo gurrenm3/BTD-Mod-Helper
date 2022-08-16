@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Bloons;
@@ -11,8 +13,7 @@ namespace BTD_Mod_Helper.Api.Bloons;
 /// <summary>
 /// Class for a custom RoundSet
 /// </summary>
-public abstract class ModRoundSet : NamedModContent
-{
+public abstract class ModRoundSet : NamedModContent {
     /// <summary>
     /// RoundSets register Bloons and before GameModes
     /// </summary>
@@ -27,18 +28,14 @@ public abstract class ModRoundSet : NamedModContent
         new List<RoundModel>();
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         model = GetDefaultRoundSetModel();
 
-        for (var i = 0; i < model.rounds.Count; i++)
-        {
-            try
-            {
+        for (var i = 0; i < model.rounds.Count; i++) {
+            try {
                 ModifyRoundModels(model.rounds[i], i);
 
-                switch (i)
-                {
+                switch (i) {
                     case <= 40:
                         ModifyEasyRoundModels(model.rounds[i], i);
                         break;
@@ -52,26 +49,21 @@ public abstract class ModRoundSet : NamedModContent
                         ModifyImpoppableRoundModels(model.rounds[i], i);
                         break;
                 }
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 ModHelper.Error($"Failed to modify round {i} for round set {Id}");
                 throw;
             }
         }
 
         model.GenerateDescendentNames();
-        
-        try
-        {
+
+        try {
             Game.instance.model.roundSets = Game.instance.model.roundSets.AddTo(model);
             // Game.instance.model.roundSetsByName[Id] = model;
             Game.instance.model.AddChildDependant(model);
         }
-        finally
-        {
-            rollbackActions.Push(() =>
-            {
+        finally {
+            rollbackActions.Push(() => {
                 Game.instance.model.roundSets = Game.instance.model.roundSets.RemoveItem(model);
                 // Game.instance.model.roundSetsByName.Remove(Id);
                 Game.instance.model.RemoveChildDependant(model);
@@ -80,17 +72,13 @@ public abstract class ModRoundSet : NamedModContent
     }
 
     /// <inheritdoc />
-    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
-    {
+    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable) {
         base.RegisterText(textTable);
 
-        if (CustomHints)
-        {
-            for (var round = 0; round < DefinedRounds; round++)
-            {
+        if (CustomHints) {
+            for (var round = 0; round < DefinedRounds; round++) {
                 var hint = GetHint(round);
-                if (hint != null)
-                {
+                if (hint != null) {
                     textTable.Add(HintKey(round), hint);
                 }
             }
@@ -131,36 +119,31 @@ public abstract class ModRoundSet : NamedModContent
     /// <summary>
     /// Called to modify any/all rounds from 1 to <see cref="DefinedRounds"/>
     /// </summary>
-    public virtual void ModifyRoundModels(RoundModel roundModel, int round)
-    {
+    public virtual void ModifyRoundModels(RoundModel roundModel, int round) {
     }
 
     /// <summary>
     /// Called to modify specifically just rounds from 1 to 40
     /// </summary>
-    public virtual void ModifyEasyRoundModels(RoundModel roundModel, int round)
-    {
+    public virtual void ModifyEasyRoundModels(RoundModel roundModel, int round) {
     }
 
     /// <summary>
     /// Called to modify specifically just rounds from 41 to 60
     /// </summary>
-    public virtual void ModifyMediumRoundModels(RoundModel roundModel, int round)
-    {
+    public virtual void ModifyMediumRoundModels(RoundModel roundModel, int round) {
     }
 
     /// <summary>
     /// Called to modify specifically just rounds from 61 to 80
     /// </summary>
-    public virtual void ModifyHardRoundModels(RoundModel roundModel, int round)
-    {
+    public virtual void ModifyHardRoundModels(RoundModel roundModel, int round) {
     }
 
     /// <summary>
     /// Called to modify specifically just rounds from 81 to 100
     /// </summary>
-    public virtual void ModifyImpoppableRoundModels(RoundModel roundModel, int round)
-    {
+    public virtual void ModifyImpoppableRoundModels(RoundModel roundModel, int round) {
     }
 
     /// <summary>
@@ -173,22 +156,21 @@ public abstract class ModRoundSet : NamedModContent
     /// <br/>
     /// For no hint, return null.
     /// </summary>
-    public virtual string GetHint(int round)
-    {
+    public virtual string GetHint(int round) {
         return null;
     }
 
-    internal string HintKey(int round) => $"{Id} Hint {round}";
+    internal string HintKey(int round) {
+        return $"{Id} Hint {round}";
+    }
 
     internal RoundSetModel model;
 
-    internal RoundSetModel GetDefaultRoundSetModel()
-    {
+    internal RoundSetModel GetDefaultRoundSetModel() {
         var roundSetModel = new RoundSetModel(Id, new Il2CppReferenceArray<RoundModel>(DefinedRounds));
 
         var baseRounds = BaseRounds;
-        for (var i = 0; i < DefinedRounds; i++)
-        {
+        for (var i = 0; i < DefinedRounds; i++) {
             roundSetModel.rounds[i] = i < baseRounds.Count
                 ? baseRounds[i].Duplicate()
                 : new RoundModel("RoundModel_", new Il2CppReferenceArray<BloonGroupModel>(0));

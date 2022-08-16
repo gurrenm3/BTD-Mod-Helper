@@ -12,8 +12,7 @@ namespace BTD_Mod_Helper.Api.ModMenu;
 /// <summary>
 /// Http client used by the mod helper
 /// </summary>
-public class ModHelperHttp
-{
+public class ModHelperHttp {
     /// <summary>
     /// The HttpClient instance
     /// </summary>
@@ -22,8 +21,7 @@ public class ModHelperHttp
     /// <summary>
     /// Initializes the HttpClient
     /// </summary>
-    public static void Init()
-    {
+    public static void Init() {
         Client = new HttpClient();
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         Client.DefaultRequestHeaders.Add("user-agent",
@@ -39,10 +37,8 @@ public class ModHelperHttp
     /// <param name="url">URL to download from</param>
     /// <param name="filePath">File path for the resulting file</param>
     /// <returns>Whether it was sucessful</returns>
-    public static async Task<bool> DownloadFile(string url, string filePath)
-    {
-        try
-        {
+    public static async Task<bool> DownloadFile(string url, string filePath) {
+        try {
 #if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
 #endif
@@ -51,13 +47,10 @@ public class ModHelperHttp
             await response.Content.CopyToAsync(fs);
 
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning(e);
         }
-        finally
-        {
+        finally {
 #if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
 #endif
@@ -72,10 +65,8 @@ public class ModHelperHttp
     /// </summary>
     /// <param name="url"></param>
     /// <returns></returns>
-    public static async Task<ZipArchive> GetZip(string url)
-    {
-        try
-        {
+    public static async Task<ZipArchive> GetZip(string url) {
+        try {
 #if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
 #endif
@@ -83,8 +74,7 @@ public class ModHelperHttp
             var stream = await response.Content.ReadAsStreamAsync();
             return new ZipArchive(stream);
         }
-        finally
-        {
+        finally {
 #if !NET6_0
             Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
 #endif
@@ -99,15 +89,11 @@ public class ModHelperHttp
     /// <param name="url">URL to download from</param>
     /// <param name="path">Path to unzip into, or null for using the zip temp directory</param>
     /// <returns>Enumeration of extracted file paths, or null</returns>
-    public static async Task<DirectoryInfo> DownloadZip(string url, string path = null)
-    {
-        try
-        {
-            if (path == null)
-            {
+    public static async Task<DirectoryInfo> DownloadZip(string url, string path = null) {
+        try {
+            if (path == null) {
                 var zipTempDir = ModHelper.ZipTempDirectory;
-                if (Directory.Exists(zipTempDir))
-                {
+                if (Directory.Exists(zipTempDir)) {
                     Directory.Delete(zipTempDir, true);
                 }
 
@@ -120,29 +106,23 @@ public class ModHelperHttp
             zip.ExtractToDirectory(path);
 
             return new DirectoryInfo(path);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning(e);
         }
 
         return null;
     }
 
-    internal static void UpdateSettings()
-    {
-        try
-        {
+    internal static void UpdateSettings() {
+        try {
             Client.Timeout = TimeSpan.FromSeconds(MelonMain.RequestTimeout);
 
 #if NET6_0
-            Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+            Client.MaxResponseContentBufferSize = (long)(MelonMain.ModRequestLimit * 1e6);
 #else
             Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
 #endif
-        }
-        catch (Exception)
-        {
+        } catch (Exception) {
             // ignored
         }
     }

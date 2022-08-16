@@ -2,10 +2,8 @@
 
 namespace BTD_Mod_Helper.Api;
 
-internal class Guard
-{
-    public static void ThrowIfArgumentIsNull(object argumentObject, string argumentName, string message = "")
-    {
+internal class Guard {
+    public static void ThrowIfArgumentIsNull(object argumentObject, string argumentName, string message = "") {
         if (argumentObject != null)
             return;
 
@@ -16,8 +14,7 @@ internal class Guard
     }
 
 
-    public static void ThrowIfStringIsNull(string stringToCheck, string message)
-    {
+    public static void ThrowIfStringIsNull(string stringToCheck, string message) {
         if (string.IsNullOrEmpty(stringToCheck))
             throw new Exception(message);
     }

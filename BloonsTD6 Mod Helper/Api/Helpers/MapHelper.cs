@@ -1,7 +1,10 @@
-﻿using Assets.Scripts.Models.Map;
+﻿using System.Collections.Generic;
+
+using Assets.Scripts.Models.Map;
 using Assets.Scripts.Models.Map.Spawners;
-using System.Collections.Generic;
+
 using UnityEngine;
+
 using Random = System.Random;
 using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
 using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
@@ -12,9 +15,8 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// <summary>
 /// Contains helper methods for working with maps and custom maps.
 /// </summary>
-public class MapHelper
-{
-    static Random rand = new();
+public class MapHelper {
+    private static Random rand = new();
 
     /// <summary>
     /// Create a <see cref="PointInfo"/> out of an X and Y coord.
@@ -22,8 +24,7 @@ public class MapHelper
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(float x, float y)
-    {
+    public static PointInfo CreatePointInfo(float x, float y) {
         return CreatePointInfo(new Vector3(x, y));
     }
 
@@ -32,8 +33,7 @@ public class MapHelper
     /// </summary>
     /// <param name="point"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(Vector2 point)
-    {
+    public static PointInfo CreatePointInfo(Vector2 point) {
         return CreatePointInfo(new Vector3(point.x, point.y));
     }
 
@@ -44,8 +44,7 @@ public class MapHelper
     /// <param name="y"></param>
     /// <param name="z"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(float x, float y, float z)
-    {
+    public static PointInfo CreatePointInfo(float x, float y, float z) {
         return CreatePointInfo(new Vector3(x, y, z));
     }
 
@@ -54,10 +53,8 @@ public class MapHelper
     /// </summary>
     /// <param name="point"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(Vector3 point)
-    {
-        return new PointInfo
-        {
+    public static PointInfo CreatePointInfo(Vector3 point) {
+        return new PointInfo {
             point = point,
             rotation = 0,
             distance = 1,
@@ -75,8 +72,7 @@ public class MapHelper
     /// <param name="pathName"></param>
     /// <param name="points"></param>
     /// <returns></returns>
-    public static PathModel CreatePathModel(string pathName, List<Vector2> points)
-    {
+    public static PathModel CreatePathModel(string pathName, List<Vector2> points) {
         List<PointInfo> allPoints = new List<PointInfo>();
         points.ForEach(p => allPoints.Add(CreatePointInfo(p)));
         return CreatePathModel(pathName, allPoints);
@@ -88,8 +84,7 @@ public class MapHelper
     /// <param name="pathName"></param>
     /// <param name="points"></param>
     /// <returns></returns>
-    public static PathModel CreatePathModel(string pathName, List<PointInfo> points)
-    {
+    public static PathModel CreatePathModel(string pathName, List<PointInfo> points) {
         var pathModel = new PathModel(pathName, points.ToArray(), true, false, new Vector3(), new Vector3(), null, null);
         return pathModel;
     }
@@ -99,8 +94,7 @@ public class MapHelper
     /// </summary>
     /// <param name="paths"></param>
     /// <returns></returns>
-    public static PathSpawnerModel CreateSpawner(PathModel[] paths)
-    {
+    public static PathSpawnerModel CreateSpawner(PathModel[] paths) {
         string[] pathNames = new string[paths.Length];
         for (int i = 0; i < paths.Length; i++)
             pathNames[i] = (paths[i].pathId);
@@ -108,8 +102,7 @@ public class MapHelper
         return new PathSpawnerModel("", new SplitterModel("", pathNames), new SplitterModel("", pathNames));
     }
 
-    internal static Texture2D ResizeForGame(Texture2D texture2D)
-    {
+    internal static Texture2D ResizeForGame(Texture2D texture2D) {
         // float divx = 2;
         // float divy = 1.21f;
         // int marginx = 450;

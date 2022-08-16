@@ -3,7 +3,6 @@
 /// <summary>
 /// Dummy interface to unite ModContent and BloonsMod
 /// </summary>
-public interface IModContent
-{
-        
+public interface IModContent {
+
 }

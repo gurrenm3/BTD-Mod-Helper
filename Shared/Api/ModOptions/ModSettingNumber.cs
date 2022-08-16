@@ -1,7 +1,10 @@
 ﻿using System;
+
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+
 using TMPro;
+
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.ModOptions;
@@ -9,8 +12,7 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// <summary>
 /// ModSetting class for a number, implying it can have a min/max value, and be an input or a slider
 /// </summary> 
-public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, IComparable<T>
-{
+public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, IComparable<T> {
     /// <summary>
     /// The lowest allowed value, or null for unbounded
     /// </summary>
@@ -49,8 +51,7 @@ public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, ICom
     protected abstract TMP_InputField.CharacterValidation Validation { get; }
 
     /// <inheritdoc />
-    protected ModSettingNumber(T value) : base(value)
-    {
+    protected ModSettingNumber(T value) : base(value) {
     }
 
     /// <summary>
@@ -73,29 +74,16 @@ public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, ICom
     /// </summary>
     protected abstract T FromFloat(float f);
 
-    private T Clamp(T v)
-    {
-        if (min != null && v.CompareTo(min.Value) < 0)
-        {
-            return min.Value;
-        }
-
-        if (max != null && v.CompareTo(max.Value) > 0)
-        {
-            return max.Value;
-        }
-
-        return v;
+    private T Clamp(T v) {
+        return min != null && v.CompareTo(min.Value) < 0 ? min.Value : max != null && v.CompareTo(max.Value) > 0 ? max.Value : v;
     }
 
     /// <inheritdoc />
-    internal override ModHelperOption CreateComponent()
-    {
+    internal override ModHelperOption CreateComponent() {
         var option = CreateBaseOption();
 
 #if BloonsTD6
-        if (slider && min != null && max != null)
-        {
+        if (slider && min != null && max != null) {
             // ReSharper disable twice PossibleInvalidOperationException
             var sliderComponent = option.BottomRow.AddSlider(
                 new Info("Slider", width: 1500, height: 100), ToFloat(defaultValue),
@@ -110,9 +98,7 @@ public abstract class ModSettingNumber<T> : ModSetting<T> where T : struct, ICom
 
             option.SetResetAction(new Action(() => sliderComponent.SetCurrentValue(ToFloat(defaultValue))));
             modifySlider?.Invoke(sliderComponent);
-        }
-        else
-        {
+        } else {
             var input = option.BottomRow.AddInputField(
                 new Info("Input", width: 500, height: 150), ToString(value), VanillaSprites.BlueInsertPanelRound,
                 new Action<string>(s => SetValue(Clamp(FromString(s)))), 80f, Validation

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using UnhollowerBaseLib;
+
 using UnityEngine;
+
 using Object = UnityEngine.Object;
 using Tuple = System.Tuple<int, int, int>;
 
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class RendererExt
-{
+public static partial class RendererExt {
     private static readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
 
     /// <summary>
@@ -17,27 +19,24 @@ public static partial class RendererExt
     /// </summary>
     /// <param name="renderer"></param>
     /// <param name="texture2D"></param>
-    public static void SetMainTexture(this Renderer renderer, Texture2D texture2D)
-    {
+    public static void SetMainTexture(this Renderer renderer, Texture2D texture2D) {
         renderer.material.mainTexture = texture2D;
     }
 
     /// <summary>
     /// Sets the outline color for this renderer
     /// </summary>
-    public static void SetOutlineColor(this Renderer renderer, Color color)
-    {
+    public static void SetOutlineColor(this Renderer renderer, Color color) {
         renderer.material.SetColor(OutlineColor, color);
         renderer.material.SetShaderKeywords(Array.Empty<string>());
     }
-    
+
     /// <summary>
     /// Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
     /// </summary>
     /// <param name="renderers"></param>
     /// <param name="texture2D"></param>
-    public static void SetMainTexture(this Il2CppReferenceArray<Renderer> renderers, Texture2D texture2D)
-    {
+    public static void SetMainTexture(this Il2CppReferenceArray<Renderer> renderers, Texture2D texture2D) {
         renderers.ForEach(renderer => renderer.material.mainTexture = texture2D);
     }
 
@@ -46,8 +45,7 @@ public static partial class RendererExt
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <returns></returns>
-    public static Mesh UnbindMesh(this SkinnedMeshRenderer skinnedMeshRenderer)
-    {
+    public static Mesh UnbindMesh(this SkinnedMeshRenderer skinnedMeshRenderer) {
         return skinnedMeshRenderer.sharedMesh = Object.Instantiate(skinnedMeshRenderer.sharedMesh);
     }
 
@@ -56,8 +54,7 @@ public static partial class RendererExt
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <returns></returns>
-    public static Mesh BakedMesh(this SkinnedMeshRenderer skinnedMeshRenderer)
-    {
+    public static Mesh BakedMesh(this SkinnedMeshRenderer skinnedMeshRenderer) {
         var mesh = new Mesh();
         skinnedMeshRenderer.BakeMesh(mesh);
         return mesh;
@@ -68,8 +65,7 @@ public static partial class RendererExt
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <returns></returns>
-    public static List<Vector3> GetVertices(this SkinnedMeshRenderer skinnedMeshRenderer)
-    {
+    public static List<Vector3> GetVertices(this SkinnedMeshRenderer skinnedMeshRenderer) {
         return skinnedMeshRenderer.sharedMesh.isReadable
             ? skinnedMeshRenderer.sharedMesh.vertices.ToList()
             : skinnedMeshRenderer.BakedMesh().vertices.ToList();
@@ -83,8 +79,7 @@ public static partial class RendererExt
     /// <param name="skinnedMeshRenderer"></param>
     /// <param name="submesh"></param>
     /// <returns></returns>
-    public static List<int> GetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, int submesh = 0)
-    {
+    public static List<int> GetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, int submesh = 0) {
         return skinnedMeshRenderer.sharedMesh.GetTrianglesImpl(submesh, false).ToList();
     }
 
@@ -94,12 +89,10 @@ public static partial class RendererExt
     /// <param name="skinnedMeshRenderer"></param>
     /// <param name="submesh"></param>
     /// <returns></returns>
-    public static List<int[]> GetTrianglesAsArrays(this SkinnedMeshRenderer skinnedMeshRenderer, int submesh = 0)
-    {
+    public static List<int[]> GetTrianglesAsArrays(this SkinnedMeshRenderer skinnedMeshRenderer, int submesh = 0) {
         var triangles = skinnedMeshRenderer.GetTriangles();
         var trianglesAsVectors = new List<int[]>();
-        for (var i = 0; i < triangles.Count; i += 3)
-        {
+        for (var i = 0; i < triangles.Count; i += 3) {
             trianglesAsVectors.Add(new[] { triangles[i], triangles[i + 1], triangles[i + 2] });
         }
 
@@ -112,12 +105,9 @@ public static partial class RendererExt
     /// <param name="skinnedMeshRenderer"></param>
     /// <param name="name"></param>
     /// <returns></returns>
-    public static int GetBoneIndex(this SkinnedMeshRenderer skinnedMeshRenderer, string name)
-    {
-        for (var i = 0; i < skinnedMeshRenderer.bones.Count; i++)
-        {
-            if (skinnedMeshRenderer.bones[i].name == name)
-            {
+    public static int GetBoneIndex(this SkinnedMeshRenderer skinnedMeshRenderer, string name) {
+        for (var i = 0; i < skinnedMeshRenderer.bones.Count; i++) {
+            if (skinnedMeshRenderer.bones[i].name == name) {
                 return i;
             }
         }

@@ -11,8 +11,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extension Methods for System.Image
 /// </summary>
-public static partial class ImageExt
-{
+public static partial class ImageExt {
 #if !NET6_0
     /// <summary>
     /// Returns the Bytes of this Image.

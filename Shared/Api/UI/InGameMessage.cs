@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api;
 
-internal class NkhText
-{
+internal class NkhText {
     public string Title;
     public Color TitleColor = Color.white;
     public string Body;
@@ -19,14 +20,12 @@ internal class NkhText
     //public Vector2? BodySize;
 }
 
-internal class NkhMsg
-{
+internal class NkhMsg {
     public NkhText NkhText;
     public double MsgShowTime = 1.5f;
 }
 
-internal class Notification
-{
+internal class Notification {
     public GameObject gameObject;
 
     private static AssetBundle assetBundle;
@@ -37,8 +36,7 @@ internal class Notification
     public Text body;
     public NkhMsg currentMsg;
     public int slot;
-    public Notification(int slot, NkhMsg msg)
-    {
+    public Notification(int slot, NkhMsg msg) {
         if (assetBundle == null)
             assetBundle = ModContent.GetBundle<MelonMain>("ingame_popup");
         if (canvas == null)
@@ -117,8 +115,7 @@ internal class Notification
         UpdateEvent += Notification_UpdateEvent;
     }
 
-    private void Notification_UpdateEvent(object sender, NotificationEventArgs e)
-    {
+    private void Notification_UpdateEvent(object sender, NotificationEventArgs e) {
         Update();
     }
 
@@ -126,8 +123,7 @@ internal class Notification
     private bool doShowMsg = false;
     private bool doStallMsg = false;
     private bool doHideMsg = false;
-    public void Update()
-    {
+    public void Update() {
         if (Time.time < nextMsgRunTime)
             return;
 
@@ -147,14 +143,12 @@ internal class Notification
     //private readonly int defaultWidth = 345;
     private readonly int defaultWidth = 500;
     private readonly int maxX = 15;
-    private void ShowMsg()
-    {
+    private void ShowMsg() {
         if (Time.time < nextMsgRunTime)
             return;
 
         var amtToAdd = 18.5f;
-        if ((img.transform.position.x + amtToAdd) >= maxX)
-        {
+        if ((img.transform.position.x + amtToAdd) >= maxX) {
             Slide(maxX);
             doShowMsg = false;
             nextMsgRunTime = Time.time + (float)currentMsg.MsgShowTime;
@@ -167,8 +161,7 @@ internal class Notification
         nextMsgRunTime = Time.time + transitionWaitTimePerRun;
     }
 
-    private void StallMsg()
-    {
+    private void StallMsg() {
         if (Time.time < nextMsgRunTime)
             return;
 
@@ -176,14 +169,12 @@ internal class Notification
         doHideMsg = true;
     }
 
-    private void HideMsg()
-    {
+    private void HideMsg() {
         if (Time.time < nextMsgRunTime)
             return;
 
         var amtToSubtract = 6.5f;
-        if (img.transform.position.x - amtToSubtract <= -defaultWidth)
-        {
+        if (img.transform.position.x - amtToSubtract <= -defaultWidth) {
             Slide(-defaultWidth);
             MsgCleanup();
         }
@@ -193,8 +184,7 @@ internal class Notification
         nextMsgRunTime = Time.time + transitionWaitTimePerRun;
     }
 
-    private void MsgCleanup()
-    {
+    private void MsgCleanup() {
         gameObject.SetActive(false);
         Object.Destroy(gameObject);
 
@@ -204,8 +194,7 @@ internal class Notification
 
 
 
-    public void Slide([Optional] float? x, [Optional] float? y, [Optional] float? z)
-    {
+    public void Slide([Optional] float? x, [Optional] float? y, [Optional] float? z) {
         if (x == null && y == null)
             return;
 
@@ -224,21 +213,18 @@ internal class Notification
 
     public static event EventHandler<NotificationEventArgs> UpdateEvent;
     public class NotificationEventArgs : EventArgs { }
-    public void OnUpdate(NotificationEventArgs e)
-    {
+    public void OnUpdate(NotificationEventArgs e) {
         UpdateEvent?.Invoke(this, e);
     }
 }
 
 
 
-internal static class NotificationMgr
-{
+internal static class NotificationMgr {
     private static readonly int maxMessagesAtOnce = 5;
     public static List<Notification> notifications = new();
     public static Queue<NkhMsg> notificationQueue = new();
-    public static void AddNotification(NkhMsg msg)
-    {
+    public static void AddNotification(NkhMsg msg) {
         var globalScene = SceneManager.GetSceneByName("Global");
         if (!globalScene.IsValid())
             return;
@@ -248,23 +234,19 @@ internal static class NotificationMgr
             return;
 
         //if (InGame.instance == null || notifications.Count >= maxMessagesAtOnce)
-        if (notifications.Count >= maxMessagesAtOnce)
-        {
+        if (notifications.Count >= maxMessagesAtOnce) {
             notificationQueue.Enqueue(msg);
             return;
         }
 
-        lock (notifications)
-        {
+        lock (notifications) {
 
             var slot = 0;
             for (var i = 0; i < maxMessagesAtOnce; i++)  //this terrible looking code gets first availible slot for message. prevents overlapping msgs
             {
                 var skip = false;
-                foreach (var item in notifications)
-                {
-                    if (item.slot == i)
-                    {
+                foreach (var item in notifications) {
+                    if (item.slot == i) {
                         skip = true;
                         break;
                     }
@@ -283,17 +265,13 @@ internal static class NotificationMgr
     }
 
 
-    public static void CheckForNotifications()
-    {
-        lock (notifications)
-        {
+    public static void CheckForNotifications() {
+        lock (notifications) {
             if (notifications.Any())
-                notifications[notifications.Count - 1].OnUpdate(new Notification.NotificationEventArgs());
+                notifications[^1].OnUpdate(new Notification.NotificationEventArgs());
 
-            if (notificationQueue.Any() && notifications.Count == 0)
-            {
-                while (notifications.Count < maxMessagesAtOnce)
-                {
+            if (notificationQueue.Any() && notifications.Count == 0) {
+                while (notifications.Count < maxMessagesAtOnce) {
                     if (notificationQueue.Count == 0)
                         break;
 

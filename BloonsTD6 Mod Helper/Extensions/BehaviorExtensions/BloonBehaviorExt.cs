@@ -1,21 +1,20 @@
-﻿using Assets.Scripts.Simulation.Bloons;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using Assets.Scripts.Simulation.Bloons;
 
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Extensions for getting bloon behaviors
 /// </summary>
-public static class BloonBehaviorExt
-{
+public static class BloonBehaviorExt {
     /// <summary>
     /// Check if this has a specific Behavior
     /// </summary>
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static bool HasBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior
-    {
+    public static bool HasBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior {
         return bloon.bloonBehaviors.HasItemsOfType<BloonBehavior, T>();
     }
 
@@ -25,8 +24,7 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static T GetBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior
-    {
+    public static T GetBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior {
         return bloon.bloonBehaviors.GetItemOfType<BloonBehavior, T>();
     }
 
@@ -36,8 +34,7 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static List<T> GetBloonBehaviors<T>(this Bloon bloon) where T : BloonBehavior
-    {
+    public static List<T> GetBloonBehaviors<T>(this Bloon bloon) where T : BloonBehavior {
         return bloon.bloonBehaviors.GetItemsOfType<BloonBehavior, T>();
     }
 
@@ -47,8 +44,7 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you want to add</typeparam>
     /// <param name="bloon"></param>
     /// <param name="behavior"></param>
-    public static void AddBloonBehavior<T>(this Bloon bloon, T behavior) where T : BloonBehavior
-    {
+    public static void AddBloonBehavior<T>(this Bloon bloon, T behavior) where T : BloonBehavior {
         bloon.bloonBehaviors.Add(behavior);
     }
 
@@ -57,8 +53,7 @@ public static class BloonBehaviorExt
     /// </summary>
     /// <typeparam name="T">The Behavior you want to remove</typeparam>
     /// <param name="bloon"></param>
-    public static void RemoveBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior
-    {
+    public static void RemoveBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior {
         bloon.bloonBehaviors = bloon.bloonBehaviors.RemoveItemOfType<BloonBehavior, T>();
     }
 
@@ -68,8 +63,7 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you want to remove</typeparam>
     /// <param name="bloon"></param>
     /// <param name="behavior"></param>
-    public static void RemoveBloonBehavior<T>(this Bloon bloon, T behavior) where T : BloonBehavior
-    {
+    public static void RemoveBloonBehavior<T>(this Bloon bloon, T behavior) where T : BloonBehavior {
         bloon.bloonBehaviors = bloon.bloonBehaviors.RemoveItem(behavior);
     }
 
@@ -78,8 +72,7 @@ public static class BloonBehaviorExt
     /// </summary>
     /// <typeparam name="T">The Behavior you want to remove</typeparam>
     /// <param name="bloon"></param>
-    public static void RemoveBloonBehaviors<T>(this Bloon bloon) where T : BloonBehavior
-    {
+    public static void RemoveBloonBehaviors<T>(this Bloon bloon) where T : BloonBehavior {
         bloon.bloonBehaviors = bloon.bloonBehaviors.RemoveItemsOfType<BloonBehavior, T>();
     }
 }

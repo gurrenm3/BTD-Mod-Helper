@@ -1,22 +1,21 @@
-﻿using Assets.Scripts.Simulation.Bloons;
+﻿using System.Runtime.InteropServices;
+
+using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Towers.Projectiles;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Unity.UI_New.InGame;
-using System.Runtime.InteropServices;
 
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Extensions for Bloons
 /// </summary>
-public static partial class BloonExt
-{
+public static partial class BloonExt {
     /// <summary>
     /// Return the existing BloonToSimulation for this specific Bloon.
     /// </summary>
-    public static BloonToSimulation GetBloonToSim(this Bloon bloon)
-    {
+    public static BloonToSimulation GetBloonToSim(this Bloon bloon) {
         var allBloons = InGame.instance.GetUnityToSimulation().GetAllBloons();
         return allBloons?.FirstOrDefault(simulation => simulation.GetBloon() == bloon);
     }
@@ -27,8 +26,7 @@ public static partial class BloonExt
     /// <param name="bloon"></param>
     /// <param name="projectile"></param>
     /// <returns></returns>
-    public static bool WillPopBloon(this Bloon bloon, Projectile projectile)
-    {
+    public static bool WillPopBloon(this Bloon bloon, Projectile projectile) {
         return bloon.WillPopBloon(projectile.projectileModel.GetDamageModel());
     }
 
@@ -37,8 +35,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns>True if it was popped, false if it was leaked or not destroyed yet</returns>
-    public static bool WasBloonPopped(this Bloon bloon)
-    {
+    public static bool WasBloonPopped(this Bloon bloon) {
         //bloon.will
         var leakedBloon = SessionData.Instance.LeakedBloons.Contains(bloon);
         var destroyedBloon = SessionData.Instance.DestroyedBloons.Contains(bloon);
@@ -50,8 +47,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon">the Bloon</param>
     /// <param name="isCamo">Should bloon be camo</param>
-    public static void SetCamo(this Bloon bloon, bool isCamo)
-    {
+    public static void SetCamo(this Bloon bloon, bool isCamo) {
         var bloonModel = bloon.bloonModel;
         bloon.SetBloonStatus(isCamo, bloonModel.isFortified, bloonModel.isGrow);
     }
@@ -61,8 +57,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon">the Bloon</param>
     /// <param name="isFortified">Should bloon be fortified</param>
-    public static void SetFortified(this Bloon bloon, bool isFortified)
-    {
+    public static void SetFortified(this Bloon bloon, bool isFortified) {
         var bloonModel = bloon.bloonModel;
         bloon.SetBloonStatus(bloonModel.isCamo, isFortified, bloonModel.isGrow);
     }
@@ -72,8 +67,7 @@ public static partial class BloonExt
     /// </summary>
     /// <param name="bloon">the Bloon</param>
     /// <param name="isRegrow">Should bloon be regrow</param>
-    public static void SetRegrow(this Bloon bloon, bool isRegrow)
-    {
+    public static void SetRegrow(this Bloon bloon, bool isRegrow) {
         var bloonModel = bloon.bloonModel;
         bloon.SetBloonStatus(bloonModel.isCamo, bloonModel.isFortified, isRegrow);
     }
@@ -85,8 +79,7 @@ public static partial class BloonExt
     /// <param name="removeCamo">Should remove camo if present?</param>
     /// <param name="removeFortify">Should remove fortify if present?</param>
     /// <param name="removeRegrow">Should remove regrow if present?</param>
-    public static void RemoveBloonStatus(this Bloon bloon, bool removeCamo, bool removeFortify, bool removeRegrow)
-    {
+    public static void RemoveBloonStatus(this Bloon bloon, bool removeCamo, bool removeFortify, bool removeRegrow) {
         var bloonId = bloon.bloonModel.id;
 
         if (bloonId.Contains("Camo") && removeCamo)
@@ -108,8 +101,7 @@ public static partial class BloonExt
     /// <param name="setCamo">Should have camo?</param>
     /// <param name="setFortified">Should have fortify?</param>
     /// <param name="setRegrow">Should have regrow?</param>
-    public static void SetBloonStatus(this Bloon bloon, [Optional] bool setCamo, [Optional] bool setFortified, [Optional] bool setRegrow)
-    {
+    public static void SetBloonStatus(this Bloon bloon, [Optional] bool setCamo, [Optional] bool setFortified, [Optional] bool setRegrow) {
         var model = Game.instance.model;
         var bloonModel = bloon.bloonModel;
 

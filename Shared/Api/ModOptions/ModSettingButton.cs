@@ -1,18 +1,19 @@
 ﻿#if BloonsTD6
 using System;
+
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+
 using UnityEngine;
 
-namespace BTD_Mod_Helper.Api.ModOptions
-{
+namespace BTD_Mod_Helper.Api.ModOptions {
     /// <summary>
     /// ModSetting for adding a button in the settings that performs a given action, with the setting just tracking
     /// the number of times that the button has been pressed.
     /// </summary>
-    public class ModSettingButton : ModSetting
-    {
+    public class ModSettingButton : ModSetting {
         /// <summary>
         /// The action that this button performs
         /// </summary>
@@ -34,24 +35,20 @@ namespace BTD_Mod_Helper.Api.ModOptions
         public Action<ModHelperButton> modifyButton;
 
         /// <inheritdoc />
-        public ModSettingButton()
-        {
+        public ModSettingButton() {
         }
 
         /// <inheritdoc />
-        public ModSettingButton(Action action)
-        {
+        public ModSettingButton(Action action) {
             this.action = action;
         }
 
         /// <inheritdoc />
-        internal override ModHelperOption CreateComponent()
-        {
+        internal override ModHelperOption CreateComponent() {
             var option = CreateBaseOption();
 
             var button = option.BottomRow.AddButton(
-                new Info("Button", width: 562, height: 200), buttonSprite, new Action(() =>
-                {
+                new Info("Button", width: 562, height: 200), buttonSprite, new Action(() => {
                     action?.Invoke();
                 })
             );

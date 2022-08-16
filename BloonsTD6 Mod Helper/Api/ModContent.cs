@@ -1,22 +1,22 @@
 ﻿using System;
+using System.Linq;
+
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity;
+
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
-using System.Linq;
 
 namespace BTD_Mod_Helper.Api;
 
-public abstract partial class ModContent : IComparable<ModContent>
-{
+public abstract partial class ModContent : IComparable<ModContent> {
     /// <summary>
     /// Returns a ModMap based on it's name.
     /// </summary>
     /// <param name="mapName"></param>
     /// <returns></returns>
-    public static ModMap GetModMap(string mapName)
-    {            
+    public static ModMap GetModMap(string mapName) {
         return GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName);
     }
 
@@ -25,8 +25,7 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string GameModeId<T>() where T : ModGameMode
-    {
+    public static string GameModeId<T>() where T : ModGameMode {
         return GetInstance<T>().Id;
     }
 
@@ -35,8 +34,7 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string RoundSetId<T>() where T : ModRoundSet
-    {
+    public static string RoundSetId<T>() where T : ModRoundSet {
         return GetInstance<T>().Id;
     }
 
@@ -48,8 +46,7 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// <param name="bot">The bottom path tier</param>
     /// <typeparam name="T">The ModTower type</typeparam>
     /// <returns>The tower name/id</returns>
-    public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
-    {
+    public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower {
         return GetInstance<T>().TowerId(new[] { top, mid, bot });
     }
 
@@ -61,8 +58,7 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// <param name="bot">The bottom path tier</param>
     /// <typeparam name="T">The ModTower type</typeparam>
     /// <returns>The tower name/id</returns>
-    public static TowerModel GetTowerModel<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
-    {
+    public static TowerModel GetTowerModel<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower {
         return Game.instance.model.GetTowerFromId(TowerID<T>(top, mid, bot));
     }
 
@@ -71,8 +67,7 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// </summary>
     /// <typeparam name="T">The ModUpgrade type</typeparam>
     /// <returns>The upgrade name/id</returns>
-    public static string UpgradeID<T>() where T : ModUpgrade
-    {
+    public static string UpgradeID<T>() where T : ModUpgrade {
         return GetInstance<T>().Id;
     }
 
@@ -81,25 +76,20 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// </summary>
     /// <typeparam name="T">The ModUpgrade type</typeparam>
     /// <returns>The upgrade name/id</returns>
-    public static string TowerSet<T>() where T : ModTowerSet
-    {
+    public static string TowerSet<T>() where T : ModTowerSet {
         return GetInstance<T>().Id;
     }
 
     /// <inheritdoc />
-    public int CompareTo(ModContent other)
-    {
+    public int CompareTo(ModContent other) {
         var compareTo = Order.CompareTo(other.Order);
-        if (compareTo == 0)
-        {
+        if (compareTo == 0) {
             compareTo = mod.Priority.CompareTo(other.mod.Priority);
         }
-        if (compareTo == 0)
-        {
+        if (compareTo == 0) {
             compareTo = string.Compare(Id, other.Id, StringComparison.Ordinal);
         }
-        if (compareTo == 0)
-        {
+        if (compareTo == 0) {
             compareTo = GetHashCode().CompareTo(other.GetHashCode());
         }
         return compareTo;

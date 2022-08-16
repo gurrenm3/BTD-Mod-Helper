@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Simulation.Towers;
@@ -10,6 +11,7 @@ using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Assets.Scripts.Unity.UI_New.Popups;
+
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
@@ -18,6 +20,7 @@ using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
+
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
@@ -26,25 +29,20 @@ using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 namespace BTD_Mod_Helper;
 
-internal partial class MelonMain : BloonsTD6Mod
-{
-    public override void OnApplicationStart()
-    {
+internal partial class MelonMain : BloonsTD6Mod {
+    public override void OnApplicationStart() {
         ModContentInstances.SetInstance(GetType(), this);
 
         // Mod Settings
         ModSettingsHandler.InitializeModSettings();
 
-        try
-        {
+        try {
             ModHelperHttp.Init();
             ModHelperGithub.Init();
 
             Task.Run(ModHelperGithub.PopulateMods);
             Task.Run(ModHelperGithub.GetVerifiedModders);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning(e);
         }
 
@@ -57,13 +55,10 @@ internal partial class MelonMain : BloonsTD6Mod
 
         Schedule_GameModel_Loaded();
 
-        try
-        {
+        try {
             // Create the targets file for mod sources
             ModHelperFiles.CreateTargetsFile(ModSourcesFolder);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning("Could not create .targets file in Mod Sources. " +
                               "If you have no intention of making mods, you can ignore this.");
             ModHelper.Warning(e);
@@ -72,16 +67,12 @@ internal partial class MelonMain : BloonsTD6Mod
 
     private static bool afterTitleScreen;
 
-    public override void OnUpdate()
-    {
-        if (!MelonLoaderChecker.IsVersionNewEnough())
-        {
-            if (PopupScreen.instance != null && !PopupScreen.instance.IsPopupActive())
-            {
+    public override void OnUpdate() {
+        if (!MelonLoaderChecker.IsVersionNewEnough()) {
+            if (PopupScreen.instance != null && !PopupScreen.instance.IsPopupActive()) {
                 PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Not On MelonLoader 0.5.5",
                     "Mod Helper failed to load. Not On MelonLoader 0.5.5. Click ok to be taken to a page with more information.",
-                    new Action(() =>
-                    {
+                    new Action(() => {
                         ProcessHelper.OpenURL("https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Install-Guide");
                     }), "Ok", null, "Cancel", Popup.TransitionAnim.Scale, instantClose: true);
             }
@@ -93,8 +84,7 @@ internal partial class MelonMain : BloonsTD6Mod
         if (Game.instance is null)
             return;
 
-        if (PopupScreen.instance != null && afterTitleScreen)
-        {
+        if (PopupScreen.instance != null && afterTitleScreen) {
             PopupScreen.instance.hasSeenModderWarning = AutoHideModdedClientPopup;
         }
 
@@ -114,11 +104,9 @@ internal partial class MelonMain : BloonsTD6Mod
 #endif
     }
 
-    public override void OnTitleScreen()
-    {
+    public override void OnTitleScreen() {
         ModSettingsHandler.SaveModSettings(true);
-        foreach (var modHelperData in ModHelperData.Active)
-        {
+        foreach (var modHelperData in ModHelperData.Active) {
             modHelperData.SaveToJson(ModHelper.DataDirectory);
         }
 
@@ -126,10 +114,8 @@ internal partial class MelonMain : BloonsTD6Mod
 
         AutoSave.InitAutosave(this.GetModSettingsDir(true));
 
-        foreach (var gameMode in Game.instance.model.mods)
-        {
-            if (gameMode.name.EndsWith("Only"))
-            {
+        foreach (var gameMode in Game.instance.model.mods) {
+            if (gameMode.name.EndsWith("Only")) {
                 var mutatorModModels = gameMode.mutatorMods.ToList();
                 mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
                     .Where(set => !set.AllowInRestrictedModes)
@@ -139,11 +125,9 @@ internal partial class MelonMain : BloonsTD6Mod
 
             if (gameMode.mutatorMods == null) continue;
 
-            foreach (var mutatorMod in gameMode.mutatorMods)
-            {
+            foreach (var mutatorMod in gameMode.mutatorMods) {
                 var typeName = mutatorMod.GetIl2CppType().Name;
-                if (!mutatorMod.name.StartsWith(typeName))
-                {
+                if (!mutatorMod.name.StartsWith(typeName)) {
                     mutatorMod.name = mutatorMod._name = typeName + "_" + mutatorMod.name;
                 }
             }
@@ -152,26 +136,25 @@ internal partial class MelonMain : BloonsTD6Mod
         afterTitleScreen = true;
     }
 
-    private void Schedule_GameModel_Loaded()
-    {
+    private void Schedule_GameModel_Loaded() {
         TaskScheduler.ScheduleTask(
             () => { ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)); },
             () => Game.instance && Game.instance.model != null);
     }
 
-    bool scheduledInGamePatch;
+    private bool scheduledInGamePatch;
 
-    private void Schedule_InGame_Loaded()
-    {
+    private void Schedule_InGame_Loaded() {
         scheduledInGamePatch = true;
         TaskScheduler.ScheduleTask(() => { ModHelper.PerformHook(mod => mod.OnInGameLoaded(InGame.instance)); },
             () => InGame.instance && InGame.instance.GetSimulation() != null);
     }
 
-    public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
+    public override void OnInGameLoaded(InGame inGame) {
+        scheduledInGamePatch = false;
+    }
 
-    public override void OnMainMenu()
-    {
+    public override void OnMainMenu() {
         Animations.Load();
         Fonts.Load();
         RoundSetChanger.EnsureHidden();
@@ -179,7 +162,9 @@ internal partial class MelonMain : BloonsTD6Mod
 
     #region Autosave
 
-    public override void OnMatchEnd() => AutoSave.backup.CreateBackup();
+    public override void OnMatchEnd() {
+        AutoSave.backup.CreateBackup();
+    }
 
     #endregion
 }

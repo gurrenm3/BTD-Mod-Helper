@@ -1,46 +1,44 @@
 ﻿using System.Linq;
+
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
+
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
+
 using UnhollowerRuntimeLib;
+
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(GameModel), typeof(List<ModModel>))]
-internal class GameModel_CreateModded
-{
+internal class GameModel_CreateModded {
     [HarmonyPrefix]
-    internal static bool Prefix()
-    {
-        Game.instance.model.searchCache ??= new Dictionary<Type, Dictionary<string, Model>>
-        {
+    internal static bool Prefix() {
+        Game.instance.model.searchCache ??= new Dictionary<Type, Dictionary<string, Model>> {
             [Il2CppType.Of<TowerModel>()] = new(),
             [Il2CppType.Of<BloonModel>()] = new()
         };
 
         var towerCache = Game.instance.model.searchCache[Il2CppType.Of<TowerModel>()];
-        foreach (var (key, value) in ModTowerHelper.TowerCache)
-        {
-            if (!towerCache.ContainsKey(key))
-            {
+        foreach (var (key, value) in ModTowerHelper.TowerCache) {
+            if (!towerCache.ContainsKey(key)) {
                 towerCache[key] = value;
             }
         }
 
         var bloonCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
-        foreach (var (key, value) in ModBloon.BloonModelCache)
-        {
-            if (!bloonCache.ContainsKey(key))
-            {
+        foreach (var (key, value) in ModBloon.BloonModelCache) {
+            if (!bloonCache.ContainsKey(key)) {
                 bloonCache[key] = value;
             }
         }
@@ -51,25 +49,18 @@ internal class GameModel_CreateModded
 
 
     [HarmonyPostfix]
-    internal static void Postfix(GameModel result, List<ModModel> mods)
-    {
-        if (!string.IsNullOrEmpty(RoundSetChanger.RoundSetOverride))
-        {
+    internal static void Postfix(GameModel result, List<ModModel> mods) {
+        if (!string.IsNullOrEmpty(RoundSetChanger.RoundSetOverride)) {
             result.bloonSet = RoundSetChanger.RoundSetOverride;
         }
 
         foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>()
-                     .Where(content => !content.AffectBaseGameModel && content.ShouldApply))
-        {
-            foreach (var affectedTower in modVanillaContent.GetAffectedModels(result))
-            {
-                try
-                {
+                     .Where(content => !content.AffectBaseGameModel && content.ShouldApply)) {
+            foreach (var affectedTower in modVanillaContent.GetAffectedModels(result)) {
+                try {
                     modVanillaContent.Apply(affectedTower);
                     modVanillaContent.Apply(affectedTower, result);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     ModHelper.Error($"Failed to apply {modVanillaContent.Name}");
                     ModHelper.Error(e);
                 }

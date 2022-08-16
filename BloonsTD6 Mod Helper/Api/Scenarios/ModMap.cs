@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using Assets.Scripts.Data;
 using Assets.Scripts.Data.MapSets;
 using Assets.Scripts.Models.Map;
 using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Helpers;
+
 using UnhollowerBaseLib;
+
 using UnityEngine;
+
 using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
 
 namespace BTD_Mod_Helper.Api.Scenarios;
@@ -16,8 +21,7 @@ namespace BTD_Mod_Helper.Api.Scenarios;
 /// <summary>
 /// Class for creating custom Maps easier. 
 /// </summary>
-public abstract class ModMap : NamedModContent
-{
+public abstract class ModMap : NamedModContent {
     /// <summary>
     /// The name of the Image file that would be the actual map. By default
     /// this will be set to be the same as <see cref="ModContent.Name"/>. Change this
@@ -68,10 +72,8 @@ public abstract class ModMap : NamedModContent
     /// Get's the map details for this map. Override this method if you want extra customization.
     /// </summary>
     /// <returns></returns>
-    protected virtual MapDetails GetMapDetails()
-    {
-        return new MapDetails()
-        {
+    protected virtual MapDetails GetMapDetails() {
+        return new MapDetails() {
             id = Name,
             isBrowserOnly = false,
             isDebug = false,
@@ -85,8 +87,7 @@ public abstract class ModMap : NamedModContent
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    public sealed override void Register()
-    {
+    public sealed override void Register() {
         /*
         GameData.Instance.mapSet.Maps.items =
             GameData.Instance.mapSet.Maps.items.AddTo(GetMapDetails());
@@ -108,8 +109,7 @@ public abstract class ModMap : NamedModContent
     /// Returns the sprite reference of this map.
     /// </summary>
     /// <returns></returns>
-    public virtual SpriteReference GetSpriteReference()
-    {
+    public virtual SpriteReference GetSpriteReference() {
         return mapSprite;
     }
 
@@ -117,11 +117,8 @@ public abstract class ModMap : NamedModContent
     /// Returns the texture of this map. The first time it's loaded it will automatically resize to fit the game.
     /// </summary>
     /// <returns></returns>
-    public virtual Texture2D GetTexture()
-    {
-        return (mapTexture != null
-            ? mapTexture
-            : mapTexture = GetTexture(MapImageName)); // returns unresized version of texture;
+    public virtual Texture2D GetTexture() {
+        return (mapTexture ??= GetTexture(MapImageName)); // returns unresized version of texture;
         //return mapTexture != null ? mapTexture : mapTexture = MapHelper.ResizeForGame();
     }
 
@@ -130,8 +127,7 @@ public abstract class ModMap : NamedModContent
     /// </summary>
     /// <param name="points"></param>
     /// <returns></returns>
-    protected PathModel AddPath(List<Vector2> points)
-    {
+    protected PathModel AddPath(List<Vector2> points) {
         string pathName = $"Path{paths.Count + 1}";
         var pathModel = MapHelper.CreatePathModel(pathName, points);
         paths.Add(pathModel);
@@ -144,8 +140,7 @@ public abstract class ModMap : NamedModContent
     /// <param name="type"></param>
     /// <param name="points"></param>
     /// <returns></returns>
-    protected AreaModel AddAreaModel(AreaType type, List<Vector2> points)
-    {
+    protected AreaModel AddAreaModel(AreaType type, List<Vector2> points) {
         string areaName = $"AreaModel{areaModels.Count}"; // others called it lol instead of AreaModel
         var polygon = new Polygon(points.ToIl2CppList());
         var areaModel =
@@ -155,13 +150,11 @@ public abstract class ModMap : NamedModContent
         return areaModel;
     }
 
-    internal byte[] GetMapBytes()
-    {
+    internal byte[] GetMapBytes() {
         return ResourceHandler.GetTextureBytes(GetMapGUID());
     }
 
-    internal string GetMapGUID()
-    {
+    internal string GetMapGUID() {
         return GetTextureGUID(MapImageName);
     }
 
@@ -170,8 +163,7 @@ public abstract class ModMap : NamedModContent
     /// </summary>
     /// <param name="mapName"></param>
     /// <returns></returns>
-    public static bool IsCustomMap(string mapName)
-    {
+    public static bool IsCustomMap(string mapName) {
         return GetContent<ModMap>().Any(map => map.Name == mapName);
     }
 
@@ -181,8 +173,7 @@ public abstract class ModMap : NamedModContent
     /// <param name="mapName"></param>
     /// <param name="map">The custom map, if found</param>
     /// <returns></returns>
-    public static bool IsCustomMap(string mapName, out ModMap map)
-    {
+    public static bool IsCustomMap(string mapName, out ModMap map) {
         map = GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName);
         return map != null;
     }

@@ -7,20 +7,15 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for FileInfo
 /// </summary>
-public static class FileInfoExt
-{
+public static class FileInfoExt {
     /// <summary>
     /// Get all Assembly References from this FileInfo. Returns null if there are none
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
-    public static AssemblyName[] GetAllReferences(this FileInfo fileInfo)
-    {
-        try { return Assembly.LoadFrom(fileInfo.FullName).GetReferencedAssemblies(); }
-        catch (Exception ex)
-        {
-            if (ex.Message.Contains("HRESULT: 0x80131515"))
-            {
+    public static AssemblyName[] GetAllReferences(this FileInfo fileInfo) {
+        try { return Assembly.LoadFrom(fileInfo.FullName).GetReferencedAssemblies(); } catch (Exception ex) {
+            if (ex.Message.Contains("HRESULT: 0x80131515")) {
                 ModHelper.Log($"The file you tried accessing is blocked. Please Unblock \"{fileInfo.FullName}\" to continue." +
                               $"\n\nYou can do this by Right-Clicking on the file, clicking Properties, and then making sure that " +
                               $"\"Unblock\" is checked.");
@@ -34,8 +29,7 @@ public static class FileInfoExt
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
-    public static bool IsMelonMod(this FileInfo fileInfo)
-    {
+    public static bool IsMelonMod(this FileInfo fileInfo) {
         return fileInfo.IsNewerMelonMod() || fileInfo.IsOlderMelonMod();
     }
 
@@ -44,8 +38,7 @@ public static class FileInfoExt
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
-    public static bool IsNewerMelonMod(this FileInfo fileInfo)
-    {
+    public static bool IsNewerMelonMod(this FileInfo fileInfo) {
         var references = fileInfo.GetAllReferences();
         return references is not null && references.Any(reference => reference.Name == "MelonLoader");
     }
@@ -55,8 +48,7 @@ public static class FileInfoExt
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
-    public static bool IsOlderMelonMod(this FileInfo fileInfo)
-    {
+    public static bool IsOlderMelonMod(this FileInfo fileInfo) {
         var references = fileInfo.GetAllReferences();
         return references is not null && references.Any(reference => reference.Name == "MelonLoader.ModHandler");
     }

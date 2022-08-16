@@ -1,37 +1,31 @@
 using System;
 using System.IO;
+
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api;
 
-internal partial class ModHelperData
-{
+internal partial class ModHelperData {
     /// <summary>
     /// The place that the .dll file for this mod is on the local machine, if any
     /// </summary>
     internal string FilePath { get; private set; }
 
-    public void SetFilePath(string filePath)
-    {
+    public void SetFilePath(string filePath) {
         FilePath = filePath;
         DllName = Path.GetFileName(filePath);
     }
 
-    private bool MoveToFolder(string folderPath)
-    {
-        if (DllName != null && FilePath != null)
-        {
-            try
-            {
+    private bool MoveToFolder(string folderPath) {
+        if (DllName != null && FilePath != null) {
+            try {
                 if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
                 var newFilePath = Path.Combine(folderPath, DllName);
                 if (File.Exists(newFilePath)) File.Delete(newFilePath);
                 File.Move(FilePath, newFilePath);
                 FilePath = newFilePath;
                 return true;
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ModHelper.Warning($"Failed to move {FilePath} to {Path.GetDirectoryName(folderPath)} folder");
                 ModHelper.Warning(e);
             }
@@ -40,22 +34,17 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToDisabledModsFolder()
-    {
+    public bool MoveToDisabledModsFolder() {
         if (!MoveToFolder(ModHelper.DisabledModsDirectory)) return false;
 
-        try
-        {
+        try {
             SaveToJson(ModHelper.DataDirectory);
-            if (GetIcon() is Sprite sprite)
-            {
+            if (GetIcon() is Sprite sprite) {
                 sprite.texture.TrySaveToPNG(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".png")));
             }
 
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning($"Failed to move {FilePath} to disabled mods folder");
             ModHelper.Warning(e);
         }
@@ -63,18 +52,17 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToEnabledModsFolder() => MoveToFolder(MelonHandler.ModsDirectory);
+    public bool MoveToEnabledModsFolder() {
+        return MoveToFolder(MelonHandler.ModsDirectory);
+    }
 
-    public bool Delete()
-    {
-        if (Mod is not null || Enabled || FilePath == null || DllName == null)
-        {
+    public bool Delete() {
+        if (Mod is not null || Enabled || FilePath == null || DllName == null) {
             ModHelper.Warning("Can't delete mod that isn't fully disabled and inactive");
             return false;
         }
 
-        try
-        {
+        try {
             File.Delete(FilePath);
 
             var json = Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".json"));
@@ -84,9 +72,7 @@ internal partial class ModHelperData
 
             Inactive.Remove(this);
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             ModHelper.Warning($"Failed to delete mod at {FilePath}");
             ModHelper.Warning(e);
         }

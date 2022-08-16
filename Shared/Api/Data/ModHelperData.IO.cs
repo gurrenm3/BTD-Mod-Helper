@@ -4,13 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace BTD_Mod_Helper.Api;
 
-internal partial class ModHelperData
-{
+internal partial class ModHelperData {
     // From MelonLoader SemVersion
     private const string SemVerRegex = @"(?:\d+)" +
                                        @"(?>\.(?:\d+))?" +
@@ -36,37 +36,28 @@ internal partial class ModHelperData
     /// <summary>
     /// Statically gets the Setters and Getters for easier accessing of the serialized fields
     /// </summary>
-    static ModHelperData()
-    {
+    static ModHelperData() {
         Setters = new Dictionary<string, MethodInfo>();
         Getters = new Dictionary<string, MethodInfo>();
-        foreach (var propertyInfo in typeof(ModHelperData).GetProperties())
-        {
+        foreach (var propertyInfo in typeof(ModHelperData).GetProperties()) {
             var setMethod = propertyInfo.GetSetMethod(true);
-            if (setMethod != null)
-            {
+            if (setMethod != null) {
                 Setters[propertyInfo.Name] = setMethod;
-            }
-            else
-            {
+            } else {
                 ModHelper.Warning($"No set method for {propertyInfo.Name}");
                 continue;
             }
 
             var getMethod = propertyInfo.GetGetMethod(true);
-            if (getMethod != null)
-            {
+            if (getMethod != null) {
                 Getters[propertyInfo.Name] = getMethod;
-            }
-            else
-            {
+            } else {
                 ModHelper.Warning($"No get method for {propertyInfo.Name}");
             }
         }
     }
 
-    private void ReadValuesFromString(string data, bool allowRepo = true)
-    {
+    private void ReadValuesFromString(string data, bool allowRepo = true) {
         Version = GetRegexMatch<string>(data, VersionRegex);
         Name = GetRegexMatch<string>(data, NameRegex);
         Description = GetRegexMatch<string>(data, DescRegex, true);
@@ -76,74 +67,56 @@ internal partial class ModHelperData
         ZipName = GetRegexMatch<string>(data, ZipRegex);
         Author = GetRegexMatch<string>(data, AuthorRegex);
         SubPath = GetRegexMatch<string>(data, SubPathRegex);
-        if (allowRepo)
-        {
+        if (allowRepo) {
             RepoName = GetRegexMatch<string>(data, RepoNameRegex);
             RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex);
         }
     }
 
-    private void ReadValuesFromJson(string data, bool allowRepo = true)
-    {
+    private void ReadValuesFromJson(string data, bool allowRepo = true) {
         var json = JObject.Parse(data);
-        foreach (var (key, set) in Setters)
-        {
-            if (json.ContainsKey(key) && (allowRepo || !key.Contains("Repo")))
-            {
-                try
-                {
-                    set.Invoke(this, new object[] {json[key]?.ToObject<bool>()});
-                }
-                catch (Exception)
-                {
+        foreach (var (key, set) in Setters) {
+            if (json.ContainsKey(key) && (allowRepo || !key.Contains("Repo"))) {
+                try {
+                    set.Invoke(this, new object[] { json[key]?.ToObject<bool>() });
+                } catch (Exception) {
                     // ignored
                 }
 
-                try
-                {
-                    set.Invoke(this, new object[] {json[key]?.ToObject<string>()});
-                }
-                catch (Exception)
-                {
+                try {
+                    set.Invoke(this, new object[] { json[key]?.ToObject<string>() });
+                } catch (Exception) {
                     // ignored
                 }
             }
         }
     }
 
-    private static T GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
-    {
-        if (Regex.Match(data, regex) is {Success: true} match)
-        {
+    private static T GetRegexMatch<T>(string data, string regex, bool allowMultiline = false) {
+        if (Regex.Match(data, regex) is { Success: true } match) {
             var matchGroup = match.Groups[1];
             var result = allowMultiline
                 ? matchGroup.Captures.Cast<Capture>().Select(c => c.Value).Join(delimiter: "")
                 : matchGroup.Value;
-            if (typeof(T) == typeof(string))
-            {
-                return (T) (object) result;
+            if (typeof(T) == typeof(string)) {
+                return (T)(object)result;
             }
 
-            if (typeof(T) == typeof(bool))
-            {
-                return (T) (object) (bool.TryParse(result, out var b) ? b : default);
+            if (typeof(T) == typeof(bool)) {
+                return (T)(object)(bool.TryParse(result, out var b) && b);
             }
         }
 
         return default;
     }
 
-    public void SaveToTxt(string filePath)
-    {
+    public void SaveToTxt(string filePath) {
         using var fs = new StreamWriter(filePath);
-        foreach (var (name, getter) in Getters)
-        {
+        foreach (var (name, getter) in Getters) {
             var result = getter.Invoke(this, null);
-            if (result != null)
-            {
+            if (result != null) {
                 string rightSide;
-                switch (result)
-                {
+                switch (result) {
                     case string s:
                         rightSide = $"\"{s}\"";
                         break;
@@ -160,18 +133,14 @@ internal partial class ModHelperData
         }
     }
 
-    public void SaveToJson(string folderPath)
-    {
+    public void SaveToJson(string folderPath) {
         var json = new JObject();
         Directory.CreateDirectory(folderPath);
         var filePath = Path.Combine(folderPath, DllName.Replace(".dll", ".json"));
-        foreach (var (name, getter) in Getters)
-        {
+        foreach (var (name, getter) in Getters) {
             var result = getter.Invoke(this, null);
-            if (result != null)
-            {
-                json[name] = result switch
-                {
+            if (result != null) {
+                json[name] = result switch {
                     string s => s,
                     bool b => b,
                     int i => i,

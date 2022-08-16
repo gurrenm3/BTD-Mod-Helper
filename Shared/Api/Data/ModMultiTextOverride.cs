@@ -6,8 +6,7 @@ namespace BTD_Mod_Helper.Api.Data;
 /// <summary>
 /// A bunch of ModTextOverrides that all share the same Active condition and don't require any on the fly determinations of their text
 /// </summary>
-public abstract class ModMultiTextOverride : ModTextOverride
-{
+public abstract class ModMultiTextOverride : ModTextOverride {
     private Dictionary<string, string> table;
 
     /// <summary>
@@ -25,21 +24,21 @@ public abstract class ModMultiTextOverride : ModTextOverride
     /// Suffix added to all keys in the table, by default nothing ""
     /// </summary>
     public virtual string KeyPrefix => "";
-    
+
     /// <summary>
     /// Suffix added to all keys in the table, by default nothing ""
     /// </summary>
     public virtual string KeySuffix => "";
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         table = Table.ToDictionary(pair => KeyPrefix + pair.Key + KeySuffix, pair => pair.Value);
-        foreach (var key in table.Keys)
-        {
+        foreach (var key in table.Keys) {
             AddToCache(key, this);
         }
     }
 
-    internal override string TextValueForKey(string key) => table[key];
+    internal override string TextValueForKey(string key) {
+        return table[key];
+    }
 }

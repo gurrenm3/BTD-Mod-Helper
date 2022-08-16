@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Assets.Scripts.Utils;
+
 using BTD_Mod_Helper.Api.Components;
 
 namespace BTD_Mod_Helper.Api.ModOptions;
@@ -9,8 +11,7 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// Class for keeping track of a variable for a Mod that can be changed in game via the Mod Settings menu
 /// </summary>
 /// <typeparam name="T">The type that this ModSetting holds</typeparam>
-public abstract class ModSetting<T> : ModSetting
-{
+public abstract class ModSetting<T> : ModSetting {
     internal T value;
     internal T defaultValue;
     internal T lastSavedValue;
@@ -42,53 +43,42 @@ public abstract class ModSetting<T> : ModSetting
     /// Constructs a new ModSetting for the given value
     /// </summary>
     /// <param name="value"></param>
-    protected ModSetting(T value)
-    {
+    protected ModSetting(T value) {
         this.value = defaultValue = lastSavedValue = value;
     }
 
     /// <inheritdoc />
-    public override object GetValue()
-    {
+    public override object GetValue() {
         return value;
     }
 
     /// <inheritdoc />
-    public override object GetDefaultValue()
-    {
+    public override object GetDefaultValue() {
         return defaultValue;
     }
 
     /// <inheritdoc />
-    public override void SetValue(object val)
-    {
-        if (val is T v)
-        {
+    public override void SetValue(object val) {
+        if (val is T v) {
             value = v;
             onValueChanged?.Invoke(v);
-            if (requiresRestart && currentOption != null)
-            {
+            if (requiresRestart && currentOption != null) {
                 currentOption.RestartIcon.SetActive(lastSavedValue?.Equals(value) != true || needsRestartRightNow);
             }
-        }
-        else
-        {
+        } else {
             ModHelper.Warning(
                 $"Error: ModSetting type mismatch between {typeof(T).Name} and {val.GetType().Name} for {displayName}");
         }
     }
 
     /// <inheritdoc />
-    internal override bool OnSave()
-    {
-        if (customValidation != null && !customValidation(value))
-        {
+    internal override bool OnSave() {
+        if (customValidation != null && !customValidation(value)) {
             value = lastSavedValue;
             return false;
         }
 
-        if (value?.Equals(lastSavedValue) != true && requiresRestart)
-        {
+        if (value?.Equals(lastSavedValue) != true && requiresRestart) {
             needsRestartRightNow = true;
         }
 
@@ -97,15 +87,11 @@ public abstract class ModSetting<T> : ModSetting
         return true;
     }
 
-    internal override void Load(object val)
-    {
-        if (val is T v)
-        {
+    internal override void Load(object val) {
+        if (val is T v) {
             value = v;
             lastSavedValue = value;
-        }
-        else
-        {
+        } else {
             ModHelper.Warning(
                 $"Error: ModSetting type mismatch between {typeof(T).Name} and {val.GetType().Name} for {displayName}");
         }
@@ -115,8 +101,7 @@ public abstract class ModSetting<T> : ModSetting
 /// <summary>
 /// Base class for a ModSetting without the generics
 /// </summary>
-public abstract class ModSetting
-{
+public abstract class ModSetting {
     /// <summary>
     /// The exact name displayed for this mod setting. If unset, will use the variable name.
     /// </summary>
@@ -154,21 +139,24 @@ public abstract class ModSetting
     /// Gets the current value that this ModSetting holds
     /// </summary>
     /// <returns>The value</returns>
-    public virtual object GetValue() => null;
+    public virtual object GetValue() {
+        return null;
+    }
 
     /// <summary>
     /// Gets the default value for this ModSetting
     /// </summary>
     /// <returns>The default value</returns>
-    public virtual object GetDefaultValue() => null;
+    public virtual object GetDefaultValue() {
+        return null;
+    }
 
     /// <summary>
     /// Sets the current value of this ModSetting
     /// </summary>
     /// <param name="val">The new value</param>
-    public virtual void SetValue(object val)
-    {
-        
+    public virtual void SetValue(object val) {
+
     }
 
     /// <summary>
@@ -181,20 +169,20 @@ public abstract class ModSetting
     /// Validates the current value using the customValidation function, if there is one.
     /// If there were no issues, performs the onSave action
     /// </summary>
-    internal virtual bool OnSave() => true;
-    
-    internal virtual void Load(object value)
-    {
-        
+    internal virtual bool OnSave() {
+        return true;
     }
-    
-    
+
+    internal virtual void Load(object value) {
+
+    }
+
+
 
     /// <summary>
     /// Creates a base ModHelperOption component based on the name, description and icon of this
     /// </summary>
-    protected ModHelperOption CreateBaseOption()
-    {
+    protected ModHelperOption CreateBaseOption() {
         var modHelperOption = ModHelperOption.Create(displayName, description, icon);
         modifyOption?.Invoke(modHelperOption);
         modHelperOption.RestartIcon.SetActive(needsRestartRightNow);

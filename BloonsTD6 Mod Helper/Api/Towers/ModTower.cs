@@ -1,18 +1,19 @@
-﻿using Assets.Scripts.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
-using System.Collections.Generic;
-using System.Linq;
 using Assets.Scripts.Utils;
+
 using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
-public abstract partial class ModTower
-{
+public abstract partial class ModTower {
     /// <summary>
     /// Defines whether / how this ModTower has a Paragon
     /// </summary>
@@ -33,33 +34,27 @@ public abstract partial class ModTower
     /// Constructor for ModTower, used implicitly by ModContent.Create
     /// </summary>
     /// <exclude/>
-    protected ModTower()
-    {
+    protected ModTower() {
         Init(out upgrades, out tierMaxes);
     }
 
-    internal void Init(out ModUpgrade[,] u, out int[] t)
-    {
+    internal void Init(out ModUpgrade[,] u, out int[] t) {
         t = new[] { TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades };
         u = new ModUpgrade[UpgradePaths, t.Max()];
     }
 
 
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         towerModels = ModTowerHelper.AddTower(this);
 
-        foreach (var towerModel in towerModels)
-        {
+        foreach (var towerModel in towerModels) {
             ModTowerHelper.FinalizeTowerModel(this, towerModel);
         }
 
-        if (!DontAddToShop)
-        {
+        if (!DontAddToShop) {
             var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
-            if (index >= 0)
-            {
+            if (index >= 0) {
                 var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, -1, 0, null);
                 Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
             }
@@ -75,8 +70,7 @@ public abstract partial class ModTower
     /// then calls <see cref="ModifyBaseTowerModel"/> on it.
     /// </summary>
     /// <returns>The 0-0-0 TowerModel for this Tower</returns>
-    internal virtual TowerModel GetDefaultTowerModel()
-    {
+    internal virtual TowerModel GetDefaultTowerModel() {
         var towerModel = !string.IsNullOrEmpty(BaseTower)
             ? BaseTowerModel.MakeCopy(Id)
             : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
@@ -96,8 +90,7 @@ public abstract partial class ModTower
             .Select(s => new ApplyModModel($"{Id}Upgrades", s, ""))
             .ToArray();
 
-        towerModel.GetDescendants<Model>().ForEach(model =>
-        {
+        towerModel.GetDescendants<Model>().ForEach(model => {
             model.name = model.name.Replace(BaseTower, Name);
             model._name = model._name.Replace(BaseTower, Name);
         });
@@ -116,21 +109,15 @@ public abstract partial class ModTower
     /// </summary>
     /// <param name="towerSet"></param>
     /// <returns></returns>
-    public virtual int GetTowerIndex(List<TowerDetailsModel> towerSet)
-    {
-        if (towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is { } tower)
-        {
-            return tower.towerIndex + 1;
-        }
-
-        return ModTowerSet?.GetTowerStartIndex(towerSet) ?? towerSet.Count;
+    public virtual int GetTowerIndex(List<TowerDetailsModel> towerSet) {
+        return towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is { } tower
+            ? tower.towerIndex + 1
+            : ModTowerSet?.GetTowerStartIndex(towerSet) ?? towerSet.Count;
     }
 
-    internal virtual TowerModel GetBaseParagonModel()
-    {
+    internal virtual TowerModel GetBaseParagonModel() {
         TowerModel towerModel;
-        switch (ParagonMode)
-        {
+        switch (ParagonMode) {
             case ParagonMode.Base000:
                 towerModel = ModTowerHelper.CreateTowerModel(this, new[] { 0, 0, 0 });
                 break;
@@ -143,8 +130,7 @@ public abstract partial class ModTower
         }
 
         towerModel.appliedUpgrades = new Il2CppStringArray(6);
-        for (var i = 0; i < 5; i++)
-        {
+        for (var i = 0; i < 5; i++) {
             towerModel.appliedUpgrades[i] = upgrades[0, i].Id;
         }
 
@@ -156,8 +142,7 @@ public abstract partial class ModTower
 /// A convenient generic class for specifying the ModTowerSet that a ModTower uses
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModTower<T> : ModTower where T : ModTowerSet
-{
+public abstract class ModTower<T> : ModTower where T : ModTowerSet {
     internal override ModTowerSet ModTowerSet => GetInstance<T>();
 
     /// <summary>
@@ -169,8 +154,7 @@ public abstract class ModTower<T> : ModTower where T : ModTowerSet
 /// <summary>
 /// Defines the Paragon behavior for a ModTower
 /// </summary>
-public enum ParagonMode
-{
+public enum ParagonMode {
     /// <summary>
     /// Don't generate a Paragon
     /// </summary>

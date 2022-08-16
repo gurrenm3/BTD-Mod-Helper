@@ -1,23 +1,24 @@
 ﻿using System;
+
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
+
 using BTD_Mod_Helper.Api.Coop;
+
 using NinjaKiwi.NKMulti;
+
 using UnhollowerBaseLib;
 
-namespace BTD_Mod_Helper.Extensions
-{
+namespace BTD_Mod_Helper.Extensions {
     /// <summary>
     /// Extensions for sending and receiving data in coop
     /// </summary>
-    public static class NKMultiGameInterfaceExt
-    {
+    public static class NKMultiGameInterfaceExt {
         /// <summary>
         /// Returns true if the player is a host in a co-op game.
         /// Works for both lobby and in-game.
         /// </summary>
-        public static bool IsCoOpHost(this NKMultiGameInterface nkGi)
-        {
+        public static bool IsCoOpHost(this NKMultiGameInterface nkGi) {
             var inGame = InGame.instance;
             var game = Game.instance;
 
@@ -39,7 +40,9 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="nkGI"></param>
         /// <param name="message">Message to send</param>
-        public static void SendMessage(this NKMultiGameInterface nkGI, Message message) => nkGI.relayConnection.Writer.Write(message);
+        public static void SendMessage(this NKMultiGameInterface nkGI, Message message) {
+            nkGI.relayConnection.Writer.Write(message);
+        }
 
         /// <summary>
         /// Convert an object to json and send it players or a player in the lobby
@@ -48,8 +51,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="objectToSend">Object you want to send. The properties of the object will be serialised as JSON.</param>
         /// <param name="peerId">The id of the peer you want the message to go to. Leave null if you want to send to all players</param>
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
-        public static void SendMessageEx<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "")
-        {
+        public static void SendMessageEx<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") {
             var message = MessageUtils.CreateMessageEx(objectToSend, code);
             if (peerId.HasValue)
                 nkGI.SendToPeer(peerId.Value, message);
@@ -64,8 +66,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="objectToSend">string message to send. Can be JSON</param>
         /// <param name="peerId">The id of the peer you want the message to go to. Leave null if you want to send to all players</param>
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
-        public static void SendMessage(this NKMultiGameInterface nkGI, Il2CppSystem.String objectToSend, byte? peerId = null, string code = "")
-        {
+        public static void SendMessage(this NKMultiGameInterface nkGI, Il2CppSystem.String objectToSend, byte? peerId = null, string code = "") {
             var message = MessageUtils.CreateMessage(objectToSend, code);
             if (peerId.HasValue)
                 nkGI.SendToPeer(peerId.Value, message);
@@ -79,8 +80,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">Type to convert bytes to</typeparam>
         /// <param name="nkGI"></param>
         /// <param name="messageBytes">messageBytes</param>
-        public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Il2CppStructArray<byte> messageBytes)
-        {
+        public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Il2CppStructArray<byte> messageBytes) {
             return MessageUtils.ReadMessage<T>(messageBytes);
         }
 
@@ -90,8 +90,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <typeparam name="T">Type to convert bytes to</typeparam>
         /// <param name="nkGI"></param>
         /// <param name="message">Message you want to read</param>
-        public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Message message)
-        {
+        public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Message message) {
             return MessageUtils.ReadMessage<T>(message.GetBytes());
         }
 
@@ -119,7 +118,9 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="peerId">The id of the peer you want the message to go to. Leave null if you want to send to all players</param>
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
         [Obsolete($"For backwards compatibility reasons only, please use {nameof(SendMessageEx)}")]
-        public static void SendMessage<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") where T : Il2CppSystem.Object => SendMessageEx(nkGI, objectToSend, peerId, code);
+        public static void SendMessage<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") where T : Il2CppSystem.Object {
+            SendMessageEx(nkGI, objectToSend, peerId, code);
+        }
         #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Unity.Display;
+
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Api.Display;
@@ -7,20 +8,15 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// A ModDisplay that will automatically apply to a ModTower for specific tiers
 /// </summary>
-public abstract partial class ModTowerDisplay : ModDisplay
-{
+public abstract partial class ModTowerDisplay : ModDisplay {
     /// <inheritdoc />
-    public override void Register()
-    {
+    public override void Register() {
         base.Register();
-        try
-        {
+        try {
             Tower.displays.Add(this);
         }
-        finally
-        {
-            rollbackActions.Push(() =>
-            {
+        finally {
+            rollbackActions.Push(() => {
                 Tower?.displays.Remove(this);
             });
         }
@@ -43,8 +39,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
     /// apply to an AttackModel instead
     /// </summary>
     /// <param name="towerModel"></param>
-    public virtual void ApplyToTower(TowerModel towerModel)
-    {
+    public virtual void ApplyToTower(TowerModel towerModel) {
         Apply(towerModel);
     }
 
@@ -73,8 +68,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
     /// png with the same name as the class
     /// </summary>
     /// <param name="node">The UnityDisplayNode</param>
-    public override void ModifyDisplayNode(UnityDisplayNode node)
-    {
+    public override void ModifyDisplayNode(UnityDisplayNode node) {
         SetMeshTexture(node, Name);
     }
 
@@ -83,8 +77,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
     /// </summary>
     /// <param name="tiers"></param>
     /// <returns></returns>
-    protected bool IsParagon(int[] tiers)
-    {
+    protected bool IsParagon(int[] tiers) {
         return tiers[0] == 6;
     }
 
@@ -97,8 +90,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
 /// <summary>
 /// A convenient generic class for applying a ModTowerDisplay to a ModTower
 /// </summary>
-public abstract class ModTowerDisplay<T> : ModTowerDisplay where T : ModTower
-{
+public abstract class ModTowerDisplay<T> : ModTowerDisplay where T : ModTower {
     /// <inheritdoc />
     public override ModTower Tower => GetInstance<T>();
 }

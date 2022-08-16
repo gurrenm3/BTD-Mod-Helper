@@ -1,4 +1,5 @@
 ﻿using System;
+
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Components;
@@ -8,30 +9,24 @@ namespace BTD_Mod_Helper.Api.Components;
 /// as direct comparison on the Unity Objects does not work reliably
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
-public class ModGameMenuTracker : MonoBehaviour
-{
+public class ModGameMenuTracker : MonoBehaviour {
     /// <summary>
     /// The Id of the ModGameMenu that this is for
     /// </summary>
     public string modGameMenuId;
-        
+
     /// <inheritdoc />
-    public ModGameMenuTracker(IntPtr ptr) : base(ptr)
-    {
+    public ModGameMenuTracker(IntPtr ptr) : base(ptr) {
     }
 
-    private void Update()
-    {
-        if (ModGameMenu.Cache.TryGetValue(modGameMenuId ?? "", out var modGameMenu))
-        {
+    private void Update() {
+        if (ModGameMenu.Cache.TryGetValue(modGameMenuId ?? "", out var modGameMenu)) {
             modGameMenu.OnMenuUpdate();
         }
     }
 
-    private void OnDestroy()
-    {
-        if (ModGameMenu.Cache.TryGetValue(modGameMenuId ?? "", out var modGameMenu))
-        {
+    private void OnDestroy() {
+        if (ModGameMenu.Cache.TryGetValue(modGameMenuId ?? "", out var modGameMenu)) {
             modGameMenu.IsOpen = false;
         }
     }
