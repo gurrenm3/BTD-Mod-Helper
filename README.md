@@ -83,10 +83,10 @@ A powerful and easy to use API for modding BTD6, and to a lesser extent BATTD.
 
 ## Credits
 
-BTD Mod Helper was originally created by @gurrenm3, and is now primarily developed by @doombubbles.
+BTD Mod Helper was originally created by [@gurrenm3](https://github.com/gurrenm3), and is now primarily developed by [@doombubbles](https://github.com/doombubbles).
 
-Others who have made notable suggestions/contributions include but are not limited to: Bowdown097, Mr Nuke, James,
-Timotheeee, and Silentstorm.
+Others who have made notable suggestions/contributions include but are not limited to: [Bowdown097](https://github.com/Bowdown097), [Mr Nuke](https://github.com/Nukeman999), James,
+[Timotheeee](https://github.com/Timotheeee), and [Silentstorm](https://github.com/Onixiya).
 
 ## Contact
 
