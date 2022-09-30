@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -29,6 +30,7 @@ internal partial class ModHelperData
     internal GitHubCommit LatestCommit { get; private set; }
     internal string Branch { get; private set; }
     internal string DataPath { get; private set; }
+    internal List<string> Topics { get; private set; }
 
     internal bool UpdateAvailable =>
         Version != null &&
@@ -178,7 +180,6 @@ internal partial class ModHelperData
                     modHelperData.RepoDataSuccess = true;
                 }
 
-
                 if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
                 {
                     ManualDownload = true;
@@ -188,6 +189,12 @@ internal partial class ModHelperData
                         ModHelper.Warning(
                             $"Overriding {Repository.FullName} {SubPath} to be ManualDownload because it doesn't specify the DllName alongside the ZipName");
                     }
+                }
+
+                Topics = Repository.Topics.ToList();
+                if (!string.IsNullOrEmpty(ExtraTopics))
+                {
+                    Topics.AddRange(ExtraTopics.Split(','));
                 }
             }
             else if (RepoOwner == MelonMain.GitHubUsername)

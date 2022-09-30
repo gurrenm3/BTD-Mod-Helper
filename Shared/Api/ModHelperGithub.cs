@@ -19,8 +19,8 @@ internal static class ModHelperGithub
 {
     public const string RawUserContent = "https://raw.githubusercontent.com";
 
-    private const string RepoTopic = "btd6-mod";
-    private const string MonoRepoTopic = "btd6-mods";
+    internal const string RepoTopic = "btd6-mod";
+    internal const string MonoRepoTopic = "btd6-mods";
     private const string ProductName = "btd-mod-helper";
 
     private const string ModdersURL =
