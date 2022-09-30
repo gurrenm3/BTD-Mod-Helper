@@ -22,7 +22,7 @@ internal static class Main_GetInitialLoadTasks
     [HarmonyPostfix]
     private static void Postfix(ref SeriesTasks __result)
     {
-        if (ModHelper.FallbackToOldLoading || !MelonLoaderChecker.IsVersionNewEnough()) return;
+        if (ModHelper.FallbackToOldLoading) return;
 
         var tasks = __result.Tasks.Cast<Il2CppReferenceArray<ITask>>().ToList();
         var gameModelLoad = tasks.Last();

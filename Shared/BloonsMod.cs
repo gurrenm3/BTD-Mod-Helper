@@ -148,11 +148,12 @@ public abstract class BloonsMod : MelonMod, IModContent
             modHelperPatchAll = true;
         }
 
+        OnApplicationStart();
         OnInitialize();
     }
 
     /// <inheritdoc />
-    public sealed override void OnLoaderInitialized()
+    public sealed override void OnEarlyInitializeMelon()
     {
         if (modHelperPatchAll)
         {
@@ -187,11 +188,17 @@ public abstract class BloonsMod : MelonMod, IModContent
             }
         }
 
-        OnApplicationStart();
+        OnEarlyInitialize();
     }
 
-    /// <inheritdoc cref="OnLoaderInitialized"/>
+    /// <inheritdoc cref="OnInitializeMelon"/>
     public new virtual void OnApplicationStart()
+    {
+        
+    }
+    
+    /// <inheritdoc cref="OnEarlyInitializeMelon"/>
+    public virtual void OnEarlyInitialize()
     {
     }
 

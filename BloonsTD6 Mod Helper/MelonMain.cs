@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Models.TowerSets.Mods;
-using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
@@ -16,7 +12,6 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
@@ -28,7 +23,7 @@ namespace BTD_Mod_Helper;
 
 internal partial class MelonMain : BloonsTD6Mod
 {
-    public override void OnApplicationStart()
+    public override void OnInitialize()
     {
         ModContentInstances.SetInstance(GetType(), this);
 
@@ -74,20 +69,6 @@ internal partial class MelonMain : BloonsTD6Mod
 
     public override void OnUpdate()
     {
-        if (!MelonLoaderChecker.IsVersionNewEnough())
-        {
-            if (PopupScreen.instance != null && !PopupScreen.instance.IsPopupActive())
-            {
-                PopupScreen.instance.ShowPopup(PopupScreen.Placement.menuCenter, "Not On MelonLoader 0.5.5",
-                    "Mod Helper failed to load. Not On MelonLoader 0.5.5. Click ok to be taken to a page with more information.",
-                    new Action(() =>
-                    {
-                        ProcessHelper.OpenURL("https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Install-Guide");
-                    }), "Ok", null, "Cancel", Popup.TransitionAnim.Scale, instantClose: true);
-            }
-            return;
-        }
-
         ModByteLoader.OnUpdate();
 
         if (Game.instance is null)

@@ -32,19 +32,6 @@ namespace BTD_Mod_Helper;
 /// </summary>
 public abstract class BloonsTD6Mod : BloonsMod
 {
-    /// <summary>
-    /// Adds a TowerModel to the official list of TowerModels being used by the game
-    /// <br/>
-    /// Equivalent to calling Game.instance.model.AddTowerToGame(...)
-    /// </summary>
-    /// <param name="newTowerModel">The new tower model</param>
-    /// <param name="towerDetailsModel">A TowerDetailsModel to go with it, if it'll be in the shop</param>
-    [Obsolete("Just use Game.instance.model.AddTowerToGame")]
-    public static void AddTowerToGame(TowerModel newTowerModel, TowerDetailsModel towerDetailsModel = null)
-    {
-        Game.instance.model.AddTowerToGame(newTowerModel, towerDetailsModel!);
-    }
-
     #region Networking Hooks
 
     /// <summary>

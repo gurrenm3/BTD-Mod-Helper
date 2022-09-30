@@ -1,10 +1,3 @@
-- Added the `SquareIcon` ModHelperData bool property to make the icon draw as constrained within panels rather than being allowed to slightly overflow
-- Added an impossible to miss Popup for if you're not using a compatible MelonLoader version
-- Added the ability to use a `<!--Mod Browser Message Start-->` markdown comment in release messages to only include information beyond a certain point
-- Added checkmark icons for Verified Modders in the Mod Browser
-- Fixed issue where Double Cash mode was doubling cash generation it wasn't supposed to
-- Fixed Round Set Changer setting
-- Fixed sporadic issue with backing out of a Mod Settings menu
-- Fixed `OnMenuClosed()` still happening if you pressed Escape too early for the menu to actually close
-- Fixed monorepo mods using ZipName without DllName not showing up in the Mod Browser
-- Internally switched from `.parent =` to `SetParent` calls to avoid flooding the MelonLoader debug log
+- Updated for the official MelonLoader v0.5.5 release
+
+Use this version of the mod alongside the MelonLoader 0.5.5 you get from the official installer, not the github actions / nightly builds that have been linked previously.

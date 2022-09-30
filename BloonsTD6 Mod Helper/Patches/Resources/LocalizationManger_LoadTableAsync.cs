@@ -12,8 +12,6 @@ internal static class LocalizationManger_LoadTableAsync
     [HarmonyPostfix]
     private static void Postfix(LocalizationManager._LoadTableAsync_d__45 __instance)
     {
-        if (!MelonLoaderChecker.IsVersionNewEnough()) return;
-        
         var result = __instance.__t__builder.Task.Result;
         if (result != null)
         {

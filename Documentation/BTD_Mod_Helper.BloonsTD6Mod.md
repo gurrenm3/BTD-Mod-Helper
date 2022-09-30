@@ -36,31 +36,6 @@ public virtual bool ActOnMessage(NinjaKiwi.NKMulti.Message message);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AddTowerToGame(Assets.Scripts.Models.Towers.TowerModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel)'></a>
-
-## BloonsTD6Mod.AddTowerToGame(TowerModel, TowerDetailsModel) Method
-
-Adds a TowerModel to the official list of TowerModels being used by the game  
-<br/>  
-Equivalent to calling Game.instance.model.AddTowerToGame(...)
-
-```csharp
-public static void AddTowerToGame(Assets.Scripts.Models.Towers.TowerModel newTowerModel, Assets.Scripts.Models.TowerSets.TowerDetailsModel towerDetailsModel=null);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AddTowerToGame(Assets.Scripts.Models.Towers.TowerModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel).newTowerModel'></a>
-
-`newTowerModel` [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')
-
-The new tower model
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AddTowerToGame(Assets.Scripts.Models.Towers.TowerModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel).towerDetailsModel'></a>
-
-`towerDetailsModel` [Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')
-
-A TowerDetailsModel to go with it, if it'll be in the shop
-
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnAbilityCast(Assets.Scripts.Simulation.Towers.Behaviors.Abilities.Ability)'></a>
 
 ## BloonsTD6Mod.OnAbilityCast(Ability) Method
