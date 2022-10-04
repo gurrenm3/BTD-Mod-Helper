@@ -14,7 +14,7 @@ env:
   PROJECT_NAME: BloonsTD6 Mod Helper
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
-  MELONLOADER_BRANCH: bootstrap-dotnet
+  MELONLOADER_BRANCH: coreclr-reborn
 
 jobs:
   build:
@@ -50,7 +50,7 @@ jobs:
           workflow: build.yml
           branch: ${{ env.MELONLOADER_BRANCH }}
           name: MelonLoader.x64.CI.Release
-          repo: SamboyCoding/MelonLoader
+          repo: LavaGang/MelonLoader
           path: ${{ env.BLOONSTD6 }}
   
   

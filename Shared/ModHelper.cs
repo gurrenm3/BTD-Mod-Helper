@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
+using MelonLoader.Utils;
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper;

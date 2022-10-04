@@ -123,7 +123,6 @@ public abstract class BloonsMod : MelonMod, IModContent
     public virtual bool OptionalPatches => true;
 
 
-#if NET48
     /// <summary>
     /// Lets the ModHelper control patching, allowing for individual patches to fail without the entire mod getting
     /// unloaded. 
@@ -206,31 +205,6 @@ public abstract class BloonsMod : MelonMod, IModContent
     public virtual void OnInitialize()
     {
     }
-
-#elif NET6_0
-
-    /// <inheritdoc />
-    public sealed override void OnInitializeMelon()
-    {
-        ModContentInstances.SetInstance(GetType(), this);
-    }
-
-    
-    /// <inheritdoc cref="OnInitializeMelon" />
-    public virtual void OnLoaderInitialized()
-    {
-        
-    }
-    
-#else
-
-    /// <inheritdoc />
-    public override void OnPreSupportModule()
-    {
-        ModContentInstances.SetInstance(GetType(), this);
-    }
-
-#endif
 
     #region Input Hooks
 
