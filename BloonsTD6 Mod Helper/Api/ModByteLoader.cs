@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Assets.Scripts.Utils;
+using BTD_Mod_Helper.Api.Helpers;
 using Exception = System.Exception;
 using Object = Il2CppSystem.Object;
 
@@ -19,7 +20,7 @@ public abstract partial class ModByteLoader
     {
         Directory.CreateDirectory(ModHelper.ReplacedFilesDirectory);
 
-        var unconvertedLoader = $"{FileIOUtil.sandboxRoot}UnconvertedLoader.cs";
+        var unconvertedLoader = $"{FileIOHelper.sandboxRoot}UnconvertedLoader.cs";
 
         var loaderName = Path.GetFileNameWithoutExtension(loaderFilePath);
         var bytesFileName = Path.GetFileName(bytesFilePath);

@@ -201,15 +201,6 @@ public abstract class ModHero : ModTower
     public virtual int Abilities { get; }
 
     /// <summary>
-    /// Modifies the HeroSprite used in the Heroes menu. Will already have modified the font/banner/color using
-    /// <see cref="NameStyle"/>, <see cref="GlowStyle"/> and <see cref="BackgroundStyle"/> at this point.
-    /// </summary>
-    /// <param name="heroSprite">The HeroSprite to modify</param>
-    public virtual void ModifyHeroSprite(HeroSprite heroSprite)
-    {
-    }
-
-    /// <summary>
     /// Gets the font material for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
@@ -222,7 +213,7 @@ public abstract class ModHero : ModTower
     /// Gets the Background Banner for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual GameObject GetBackgroundBanner(Dictionary<string, SkinData> skinsByName) =>
+    public virtual PrefabReference GetBackgroundBanner(Dictionary<string, SkinData> skinsByName) =>
         skinsByName.TryGetValue(GlowStyle, out var dataForFont)
             ? dataForFont.backgroundBanner
             : skinsByName[TowerType.Quincy].backgroundBanner;

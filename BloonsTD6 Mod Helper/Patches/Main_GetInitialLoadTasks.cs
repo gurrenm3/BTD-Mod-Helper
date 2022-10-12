@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Assets.Scripts.Unity.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppSystem.Collections.Generic;
@@ -8,7 +7,7 @@ using Main = Assets.Main.Main;
 
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(Main), nameof(Main.GetInitialLoadTasks))]
+/*[HarmonyPatch(typeof(Main), nameof(Main))]
 internal static class Main_GetInitialLoadTasks
 {
     /// <summary>
@@ -50,4 +49,4 @@ internal static class Main_GetInitialLoadTasks
 
         __result.Tasks = new SeriesTasks(tasks.ToArray()).Cast<IEnumerable<ITask>>();
     }
-}
+}*/

@@ -96,10 +96,10 @@ public static class GameModelExporter
                 )
             };
 
-            Directory.CreateDirectory(Path.Combine(FileIOUtil.sandboxRoot, "Skins", data.baseTowerName));
+            Directory.CreateDirectory(Path.Combine(FileIOHelper.sandboxRoot, "Skins", data.baseTowerName));
             var path = $"Skins/{data.baseTowerName}/{data.name}.json";
-            File.WriteAllText(Path.Combine(FileIOUtil.sandboxRoot, path), jobject.ToString(Formatting.Indented));
-            ModHelper.Log("Saving " + FileIOUtil.sandboxRoot + path);
+            File.WriteAllText(Path.Combine(FileIOHelper.sandboxRoot, path), jobject.ToString(Formatting.Indented));
+            ModHelper.Log("Saving " + FileIOHelper.sandboxRoot + path);
         });
     }
 
@@ -110,12 +110,13 @@ public static class GameModelExporter
     {
         try
         {
-            FileIOUtil.SaveObject(path, data);
-            ModHelper.Log("Saving " + Path.Combine(FileIOUtil.sandboxRoot, path));
+            FileIOHelper.SaveObject(path, data);
+            ModHelper.Log("Saving " + Path.Combine(FileIOHelper.sandboxRoot, path));
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            ModHelper.Error("Failed to save " + Path.Combine(FileIOUtil.sandboxRoot, path));
+            ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
+            ModHelper.Warning(e);
         }
     }
 }

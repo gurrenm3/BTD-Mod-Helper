@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Unity.Display;
 using Assets.Scripts.Utils;
 using System.IO;
+using BTD_Mod_Helper.Api.Helpers;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -16,9 +17,9 @@ public static partial class DumpNodeExt
     /// </summary>
     public static void Dump(this UnityDisplayNode node)
     {
-        if (!Directory.Exists($"{FileIOUtil.sandboxRoot}DumpedTextures/"))
+        if (!Directory.Exists($"{FileIOHelper.sandboxRoot}DumpedTextures/"))
         {
-            Directory.CreateDirectory($"{FileIOUtil.sandboxRoot}DumpedTextures/");
+            Directory.CreateDirectory($"{FileIOHelper.sandboxRoot}DumpedTextures/");
         }
         foreach (var item in node.genericRenderers)
         {
@@ -26,7 +27,7 @@ public static partial class DumpNodeExt
             {
                 if (item.material.mainTexture)
                 {
-                    item.material.mainTexture.TrySaveToPNG($"{FileIOUtil.sandboxRoot}DumpedTextures/{item.material.mainTexture.name}.png");
+                    item.material.mainTexture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{item.material.mainTexture.name}.png");
                 }
             }
         }
@@ -35,7 +36,7 @@ public static partial class DumpNodeExt
         {
             foreach (var spriteRenderer in node.gameObject.GetComponentsInChildren<SpriteRenderer>())
             {
-                spriteRenderer.sprite.texture.TrySaveToPNG($"{FileIOUtil.sandboxRoot}DumpedTextures/{spriteRenderer.sprite.texture.name}.png");
+                spriteRenderer.sprite.texture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{spriteRenderer.sprite.texture.name}.png");
             }
         }
     }

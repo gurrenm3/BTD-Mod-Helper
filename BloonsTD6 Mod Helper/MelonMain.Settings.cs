@@ -160,7 +160,7 @@ internal partial class MelonMain
     private static readonly ModSettingButton OpenLocalDirectory = new()
     {
         displayName = "Open Local Files Directory",
-        action = () => Process.Start(FileIOUtil.sandboxRoot),
+        action = () => Process.Start(FileIOHelper.sandboxRoot),
         buttonText = "Open",
         description =
             "This is the 'Sandbox Root' directory that many vanilla and modded services use to dump files into.",
@@ -177,7 +177,7 @@ internal partial class MelonMain
         {
             GameModelExporter.ExportAll();
             PopupScreen.instance.SafelyQueue(screen =>
-                screen.ShowOkPopup($"Finished exporting Game Model to {FileIOUtil.sandboxRoot}"));
+                screen.ShowOkPopup($"Finished exporting Game Model to {FileIOHelper.sandboxRoot}"));
         },
         buttonText = "Export",
         category = ModMaking,

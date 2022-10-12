@@ -24,6 +24,10 @@ internal class ModContentTask : ModLoadTask
     /// </summary>
     public override IEnumerator Coroutine()
     {
+        if (ModHelper.FallbackToOldLoading)
+        {
+            ModHelper.Log(DisplayName);
+        }
         var current = 0f;
         foreach (var modContent in mod.Content)
         {

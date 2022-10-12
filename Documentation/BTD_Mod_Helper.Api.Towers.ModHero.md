@@ -328,7 +328,7 @@ Existing hero skins by their skin/tower name
 Gets the Background Banner for the default SkinData
 
 ```csharp
-public virtual UnityEngine.GameObject GetBackgroundBanner(System.Collections.Generic.Dictionary<string,Assets.Scripts.Data.Skins.SkinData> skinsByName);
+public virtual Assets.Scripts.Utils.PrefabReference GetBackgroundBanner(System.Collections.Generic.Dictionary<string,Assets.Scripts.Data.Skins.SkinData> skinsByName);
 ```
 #### Parameters
 
@@ -339,7 +339,7 @@ public virtual UnityEngine.GameObject GetBackgroundBanner(System.Collections.Gen
 Existing hero skins by their skin/tower name
 
 #### Returns
-[UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+[Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundColor(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_)'></a>
 
@@ -398,24 +398,6 @@ public virtual int GetHeroIndex(System.Collections.Generic.List<Assets.Scripts.M
 
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.ModifyHeroSprite(Assets.Scripts.Data.Global.HeroSprite)'></a>
-
-## ModHero.ModifyHeroSprite(HeroSprite) Method
-
-Modifies the HeroSprite used in the Heroes menu. Will already have modified the font/banner/color using  
-[NameStyle](BTD_Mod_Helper.Api.Towers.ModHero.md#BTD_Mod_Helper.Api.Towers.ModHero.NameStyle 'BTD_Mod_Helper.Api.Towers.ModHero.NameStyle'), [GlowStyle](BTD_Mod_Helper.Api.Towers.ModHero.md#BTD_Mod_Helper.Api.Towers.ModHero.GlowStyle 'BTD_Mod_Helper.Api.Towers.ModHero.GlowStyle') and [BackgroundStyle](BTD_Mod_Helper.Api.Towers.ModHero.md#BTD_Mod_Helper.Api.Towers.ModHero.BackgroundStyle 'BTD_Mod_Helper.Api.Towers.ModHero.BackgroundStyle') at this point.
-
-```csharp
-public virtual void ModifyHeroSprite(Assets.Scripts.Data.Global.HeroSprite heroSprite);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.ModifyHeroSprite(Assets.Scripts.Data.Global.HeroSprite).heroSprite'></a>
-
-`heroSprite` [Assets.Scripts.Data.Global.HeroSprite](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.Global.HeroSprite 'Assets.Scripts.Data.Global.HeroSprite')
-
-The HeroSprite to modify
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.TowerTiers()'></a>
 

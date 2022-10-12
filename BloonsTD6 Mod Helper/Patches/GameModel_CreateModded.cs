@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Assets.Scripts.Data.Knowledge;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
@@ -15,7 +16,8 @@ using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(GameModel), typeof(List<ModModel>))]
+[HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(GameModel), typeof(List<ModModel>),
+    typeof(List<RelicKnowledgeItemBase>))]
 internal class GameModel_CreateModded
 {
     [HarmonyPrefix]

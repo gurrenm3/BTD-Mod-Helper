@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
 using TMPro;
@@ -71,7 +72,11 @@ public class ModHelperCategory : ModHelperOption
             //category.InfoButton.Image.SetSprite(VanillaSprites.ArrowHideBtn); this won't work
             throw new NotImplementedException(); // figure out how to get VanillaSprites for BloonsAT
 #endif
-        category.InfoButton.Button.AddOnClick(() => action(!category.collapsed));
+        category.InfoButton.Button.AddOnClick(() =>
+        {
+            action(!category.collapsed);
+            MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
+        });
 
         return category;
     }

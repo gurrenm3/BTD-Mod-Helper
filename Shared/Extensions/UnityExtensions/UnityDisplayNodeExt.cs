@@ -3,6 +3,7 @@ using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -157,7 +158,7 @@ public static partial class UnityDisplayNodeExt
         if (path == null)
         {
 #if BloonsTD6
-            path = FileIOUtil.GetSandboxPath() + node.name + index + ".png";
+            path = FileIOHelper.GetSandboxPath() + node.name + index + ".png";
 #elif BloonsAT
                 ModHelper.Error("Can't save mesh texture because no save path was provided");
                 return;

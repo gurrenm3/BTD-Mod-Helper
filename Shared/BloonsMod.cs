@@ -93,7 +93,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     {
         return null;
     }
-
+    
     
     #region API Hooks
 
@@ -131,7 +131,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     
     
     /// <inheritdoc />
-    public sealed override void OnInitializeMelon()
+    public sealed override void OnEarlyInitializeMelon()
     {
         ModContentInstances.SetInstance(GetType(), this);
         
@@ -147,12 +147,11 @@ public abstract class BloonsMod : MelonMod, IModContent
             modHelperPatchAll = true;
         }
 
-        OnApplicationStart();
-        OnInitialize();
+        OnEarlyInitialize();
     }
-
+    
     /// <inheritdoc />
-    public sealed override void OnEarlyInitializeMelon()
+    public sealed override void OnInitializeMelon()
     {
         if (modHelperPatchAll)
         {
@@ -169,11 +168,11 @@ public abstract class BloonsMod : MelonMod, IModContent
 
                     loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
 
-                    if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
+                    /*if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
                     {
                         ModHelper.FallbackToOldLoading = true;
                         ModHelper.Msg("Falling back to old loading method");
-                    }
+                    }*/
                 }
             });
         }
@@ -187,7 +186,8 @@ public abstract class BloonsMod : MelonMod, IModContent
             }
         }
 
-        OnEarlyInitialize();
+        OnApplicationStart();
+        OnInitialize();
     }
 
     /// <inheritdoc cref="OnInitializeMelon"/>
