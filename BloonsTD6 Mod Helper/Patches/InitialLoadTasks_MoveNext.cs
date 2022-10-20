@@ -1,13 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models;
+using System.Reflection;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.Analytics;
 using BTD_Mod_Helper.Api;
+using Il2CppSystem.Threading.Tasks;
+using Ninjakiwi.BuildAutomation;
 using NinjaKiwi.Common;
 using UnityEngine;
 using Exception = System.Exception;
 using Int32 = Il2CppSystem.Int32;
+using Main = Assets.Main.Main;
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(Assets.Main.Main._InitialLoadTasks_d__45),
@@ -21,6 +25,8 @@ internal static class InitialLoadTasks_MoveNext
     private static bool started;
 
     private static bool finished;
+
+    public static bool Active => started && !finished;
 
     [HarmonyPrefix]
     private static bool Prefix(Assets.Main.Main._InitialLoadTasks_d__45 __instance)
@@ -107,7 +113,7 @@ internal static class InitialLoadTasks_MoveNext
 
         var total = tasks.Count + modsTasks.Count;
         var moddedStep = Math.Min(modStep, modsTasks.Count - 1);
-        var current = started ? step + moddedStep + 1: step;
+        var current = started ? step + moddedStep + 1 : step;
 
         loadingScreen.SetMainText(LocalizationManager.Instance.Format("Loading Step", new[]
         {
@@ -123,5 +129,31 @@ internal static class InitialLoadTasks_MoveNext
             loadingScreen.SetSubText(task.DisplayName);
             loadingScreen.SetStatusText(task.Description);
         }
+    }
+}
+
+[HarmonyPatch]
+internal static class PreventTaskPatches
+{
+    private static IEnumerable<MethodBase> TargetMethods()
+    {
+        yield return typeof(AnalyticsManager).GetMethod(nameof(AnalyticsManager.Initialize));
+        yield return typeof(NKTimer).GetMethod(nameof(NKTimer.RefreshServerDateTime));
+        yield return typeof(SkuSettings).GetMethod(nameof(SkuSettings.RefreshEventsData));
+        yield return typeof(SkuSettings).GetMethod(nameof(SkuSettings.Initialise));
+        yield return typeof(Main).GetMethod(nameof(Main.CheckVersionAsync));
+        yield return typeof(BundleLoader).GetMethod(nameof(BundleLoader.LoadBundlesAsync));
+        yield return typeof(Main).GetMethod(nameof(Main.LoadGlobalScene));
+    }
+
+    [HarmonyPrefix]
+    private static bool Prefix(ref Task __result)
+    {
+        if (InitialLoadTasks_MoveNext.Active)
+        {
+            __result = Task.CompletedTask;
+            return false;
+        }
+        return true;
     }
 }
