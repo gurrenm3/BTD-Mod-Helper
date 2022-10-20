@@ -47,6 +47,7 @@
         <Reference Include="$(ManagedFolder)\Newtonsoft.Json.dll"/>
         <Reference Include="$(ManagedFolder)\Unity.Addressables.dll"/>
         <Reference Include="$(ManagedFolder)\Il2CppNewtonsoft.Json.dll"/>
+        <Reference Include="$(ManagedFolder)\ValueTupleBridge.dll"/>
     </ItemGroup>
 
     <!--Mod Helper dependency-->
