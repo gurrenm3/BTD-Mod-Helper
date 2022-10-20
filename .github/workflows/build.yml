@@ -14,7 +14,6 @@ env:
   PROJECT_NAME: Btd6ModHelper
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
-  MELONLOADER_BRANCH: alpha-development
 
 jobs:
   build:
