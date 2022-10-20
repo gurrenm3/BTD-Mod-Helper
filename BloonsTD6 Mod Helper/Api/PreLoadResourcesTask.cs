@@ -24,7 +24,7 @@ internal class PreLoadResourcesTask : ModLoadTask
 
     public override bool ShowProgressBar => showProgressBar ??=
         ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values).Sum(bytes => bytes.Length) >
-        BytesPerFrame * 30;
+        BytesPerFrame * 5;
 
     internal static PreLoadResourcesTask Instance { get; private set; }
     

@@ -42,7 +42,5 @@ internal class ByteWaitTask : ModLoadTask
             }
             yield return null;
         }
-
-        ModHelper.Msg("yay they all done");
     }
 }

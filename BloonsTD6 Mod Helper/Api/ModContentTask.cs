@@ -19,7 +19,7 @@ internal class ModContentTask : ModLoadTask
     /// <returns></returns>
     public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
-    public override bool ShowProgressBar => Total > 30;
+    public override bool ShowProgressBar => Total > 5;
 
     private float? total;
     
