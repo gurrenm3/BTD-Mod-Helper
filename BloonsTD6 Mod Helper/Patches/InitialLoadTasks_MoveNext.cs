@@ -14,22 +14,19 @@ using Int32 = Il2CppSystem.Int32;
 using Main = Assets.Main.Main;
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(Assets.Main.Main._InitialLoadTasks_d__45),
-    nameof(Assets.Main.Main._InitialLoadTasks_d__45.MoveNext))]
+[HarmonyPatch(typeof(Main._InitialLoadTasks_d__45), nameof(Main._InitialLoadTasks_d__45.MoveNext))]
 internal static class InitialLoadTasks_MoveNext
 {
-    private static List<ModLoadTask> modsTasks;
+    internal static List<ModLoadTask> modsTasks;
 
-    private static int modStep;
+    internal static int modStep;
 
-    private static bool started;
+    internal static bool started;
 
-    private static bool finished;
-
-    public static bool Active => started && !finished;
+    internal static bool finished;
 
     [HarmonyPrefix]
-    private static bool Prefix(Assets.Main.Main._InitialLoadTasks_d__45 __instance)
+    private static bool Prefix(Main._InitialLoadTasks_d__45 __instance)
     {
         if (modsTasks == null)
         {
@@ -105,7 +102,7 @@ internal static class InitialLoadTasks_MoveNext
         }
     }
 
-    private static void UpdateLoadingScreen(Assets.Main.Main._InitialLoadTasks_d__45 __instance)
+    private static void UpdateLoadingScreen(Main._InitialLoadTasks_d__45 __instance)
     {
         var tasks = __instance._tasks_5__3;
         var step = started ? tasks.Count : __instance._taskIdx_5__4;
@@ -149,7 +146,7 @@ internal static class PreventTaskPatches
     [HarmonyPrefix]
     private static bool Prefix(ref Task __result)
     {
-        if (InitialLoadTasks_MoveNext.Active)
+        if (InitialLoadTasks_MoveNext.started && !MelonMain.afterTitleScreen)
         {
             __result = Task.CompletedTask;
             return false;

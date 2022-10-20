@@ -68,7 +68,7 @@ internal partial class MelonMain : BloonsTD6Mod
         }
     }
 
-    private static bool afterTitleScreen;
+    internal static bool afterTitleScreen;
 
     public override void OnUpdate()
     {
