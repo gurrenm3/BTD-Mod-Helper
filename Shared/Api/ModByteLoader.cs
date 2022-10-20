@@ -17,7 +17,7 @@ public abstract partial class ModByteLoader : ModContent
 {
     internal static bool loadedAllBytes;
 
-    private static Task currentLoadTask;
+    internal static Task currentLoadTask;
 
     /// <summary>
     /// The array of object that NinjaKiwi programmed the loader to utilize
@@ -63,7 +63,7 @@ public abstract partial class ModByteLoader : ModContent
 
         if (GetContent<ModByteLoader>().FirstOrDefault(loader => !loader.Loaded) is { } modByteLoader)
         {
-            currentLoadTask = modByteLoader.LoadTask = Task.Run(new Action(() => { modByteLoader.LoadAllBytes(); }));
+            currentLoadTask = modByteLoader.LoadTask = Task.Run(new Action(() => modByteLoader.LoadAllBytes()));
         }
         else
         {
@@ -131,7 +131,7 @@ public abstract partial class ModByteLoader : ModContent
     {
         "Assets.Scripts.Models.Towers.TowerModel.TowerSize"
     };
-    
+
     private static readonly string[] AssetRefTypes =
     {
         "SpriteReference",
@@ -217,7 +217,8 @@ public abstract partial class ModByteLoader : ModContent
         {
             loader = Regex.Replace(loader, $"new Assets\\.Scripts\\.Utils\\.{assetReference}\\((.+)\\)",
                 $"ModContent.Create{assetReference}($1)");
-            loader = loader.Replace($"(Il2CppReferenceArray<Assets.Scripts.Utils.{assetReference}>)", $"(Assets.Scripts.Utils.{assetReference}[])");
+            loader = loader.Replace($"(Il2CppReferenceArray<Assets.Scripts.Utils.{assetReference}>)",
+                $"(Assets.Scripts.Utils.{assetReference}[])");
         }
 
         using var writer = new StreamWriter(convertedLoader);

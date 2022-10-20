@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.Scripts.Models.TowerSets.Mods;
@@ -12,6 +14,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Patches;
 using BTD_Mod_Helper.UI.Modded;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
@@ -70,6 +73,7 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
+        InitialLoadTasks_MoveNext.Update();
 
         if (Game.instance is null)
             return;

@@ -12,14 +12,27 @@ namespace BTD_Mod_Helper.Api;
 /// <summary>
 /// Task to preload images and save them in the Unity scene so they can be accessed quickly
 /// </summary>
-public class PreLoadResourcesTask : ModLoadTask
+internal class PreLoadResourcesTask : ModLoadTask
 {
     private const int BytesPerFrame = 100000;
 
-    /// <inheritdoc />
     public override string DisplayName => "Pre-loading mod resources...";
 
     private int currentByteTotal;
+
+    private bool? showProgressBar;
+
+    public override bool ShowProgressBar => showProgressBar ??=
+        ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values).Sum(bytes => bytes.Length) >
+        BytesPerFrame * 30;
+
+    internal static PreLoadResourcesTask Instance { get; private set; }
+    
+    public PreLoadResourcesTask()
+    {
+        Instance = this;
+        mod = ModHelper.Main;
+    }
 
     /// <summary>
     /// Don't load this like a normal task
@@ -27,7 +40,6 @@ public class PreLoadResourcesTask : ModLoadTask
     /// <returns></returns>
     public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
-    /// <inheritdoc />
     public override IEnumerator Coroutine()
     {
         var scene = SceneManager.GetSceneByName("Global");
@@ -58,9 +70,13 @@ public class PreLoadResourcesTask : ModLoadTask
 
         yield return null;
 
+        var totalMods = ModHelper.Mods.Count();
         foreach (var bloonsMod in ModHelper.Mods)
         {
-            var modObject = new GameObject(bloonsMod.GetModName())
+            var name = bloonsMod.GetModName();
+            // Description = name;
+
+            var modObject = new GameObject(name)
             {
                 transform =
                 {
@@ -77,6 +93,8 @@ public class PreLoadResourcesTask : ModLoadTask
                     yield return null;
                 }
             }
+
+            Progress += 1f / totalMods;
         }
     }
 

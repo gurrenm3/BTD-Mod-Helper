@@ -52,6 +52,10 @@ public abstract class BloonsMod : MelonMod, IModContent
         }
     }
 
+    private ModLoadTask loadContentTask;
+
+    internal ModLoadTask LoadContentTask => loadContentTask ??= new ModContentTask {mod = this};
+
     /// <summary>
     /// The path that this mod would most likely be at in the Mod Sources folder
     /// </summary>
@@ -93,8 +97,8 @@ public abstract class BloonsMod : MelonMod, IModContent
     {
         return null;
     }
-    
-    
+
+
     #region API Hooks
 
     /// <summary>
@@ -103,7 +107,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     public virtual void OnModOptionsOpened()
     {
     }
-    
+
     /*
     /// <summary>
     /// Called when the Mod Options Menu gets closed
@@ -113,8 +117,8 @@ public abstract class BloonsMod : MelonMod, IModContent
     }*/
 
     #endregion
-    
-    
+
+
     internal List<string> loadErrors = new();
 
     /// <summary>
@@ -128,13 +132,13 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// unloaded. 
     /// </summary>
     internal bool modHelperPatchAll;
-    
-    
+
+
     /// <inheritdoc />
     public sealed override void OnEarlyInitializeMelon()
     {
         ModContentInstances.SetInstance(GetType(), this);
-        
+
         // If they haven't set OptionalPatches to false and haven't already signified they have their own patching plan
         // by using HarmonyDontPatchAll themselves...
         if (OptionalPatches && !MelonAssembly.HarmonyDontPatchAll)
@@ -149,7 +153,7 @@ public abstract class BloonsMod : MelonMod, IModContent
 
         OnEarlyInitialize();
     }
-    
+
     /// <inheritdoc />
     public sealed override void OnInitializeMelon()
     {
@@ -193,9 +197,9 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// <inheritdoc cref="OnInitializeMelon"/>
     public new virtual void OnApplicationStart()
     {
-        
+
     }
-    
+
     /// <inheritdoc cref="OnEarlyInitializeMelon"/>
     public virtual void OnEarlyInitialize()
     {

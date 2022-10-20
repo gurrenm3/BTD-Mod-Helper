@@ -19,6 +19,12 @@ internal class ModContentTask : ModLoadTask
     /// <returns></returns>
     public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
+    public override bool ShowProgressBar => Total > 30;
+
+    private float? total;
+    
+    public float Total => total ??= mod.Content.Sum(content => 1f / content.RegisterPerFrame);
+
     /// <summary>
     /// Registers ModContent from other mods
     /// </summary>
@@ -31,7 +37,8 @@ internal class ModContentTask : ModLoadTask
         var current = 0f;
         foreach (var modContent in mod.Content)
         {
-            current += 1f / modContent.RegisterPerFrame;
+            var weight = 1f / modContent.RegisterPerFrame;
+            current += weight;
             if (current >= 1f)
             {
                 current = 0;
@@ -66,6 +73,7 @@ internal class ModContentTask : ModLoadTask
             {
                 modContent.rollbackActions.Clear();
             }
+            Progress += weight / Total;
         }
     }
 }

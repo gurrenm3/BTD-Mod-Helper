@@ -85,6 +85,29 @@ File name within the sandbox directory
 #### Returns
 [T](BTD_Mod_Helper.Api.Helpers.FileIOHelper.md#BTD_Mod_Helper.Api.Helpers.FileIOHelper.LoadObject_T_(string).T 'BTD_Mod_Helper.Api.Helpers.FileIOHelper.LoadObject<T>(string).T')
 
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveFile(string,string)'></a>
+
+## FileIOHelper.SaveFile(string, string) Method
+
+Same as the original FileIOUtil.SaveFile
+
+```csharp
+public static void SaveFile(string fileName, string text);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveFile(string,string).fileName'></a>
+
+`fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+File name within the sandbox directory
+
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveFile(string,string).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Text file contents to save
+
 <a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveObject(string,Il2CppSystem.Object)'></a>
 
 ## FileIOHelper.SaveObject(string, Object) Method

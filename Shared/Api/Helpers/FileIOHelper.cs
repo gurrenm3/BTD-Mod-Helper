@@ -27,14 +27,36 @@ public static class FileIOHelper
     /// <param name="data"></param>
     public static void SaveObject(string fileName, Il2CppSystem.Object data)
     {
-        var path = Path.Combine(sandboxRoot, fileName);
-        var directory = Path.GetDirectoryName(path)!;
-        if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
-
         var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
         {
             Formatting = Formatting.Indented
         });
+
+        SaveFile(fileName, text);
+    }
+
+    /// <summary>
+    /// Same as the original FileIOUtil.LoadObject
+    /// </summary>
+    /// <param name="fileName">File name within the sandbox directory</param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T LoadObject<T>(string fileName) where T : Il2CppSystem.Object
+    {
+        var text = LoadFile(fileName);
+        return JsonConvert.DeserializeObject<T>(text);
+    }
+
+    /// <summary>
+    /// Same as the original FileIOUtil.SaveFile
+    /// </summary>
+    /// <param name="fileName">File name within the sandbox directory</param>
+    /// <param name="text">Text file contents to save</param>
+    public static void SaveFile(string fileName, string text)
+    {
+        var path = Path.Combine(sandboxRoot, fileName);
+        var directory = Path.GetDirectoryName(path)!;
+        if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
         File.WriteAllText(path, text);
     }
@@ -50,15 +72,4 @@ public static class FileIOHelper
         return File.Exists(path) ? File.ReadAllText(path) : null;
     }
 
-    /// <summary>
-    /// Same as the original FileIOUtil.LoadObject
-    /// </summary>
-    /// <param name="fileName">File name within the sandbox directory</param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static T LoadObject<T>(string fileName) where T : Il2CppSystem.Object
-    {
-        var text = LoadFile(fileName);
-        return JsonConvert.DeserializeObject<T>(text);
-    }
 }

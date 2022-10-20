@@ -10,19 +10,18 @@ public abstract class ModLoadTask : BTD_Mod_Helper.Api.NamedModContent
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModLoadTask
-
-Derived  
-&#8627; [PreLoadResourcesTask](BTD_Mod_Helper.Api.PreLoadResourcesTask.md 'BTD_Mod_Helper.Api.PreLoadResourcesTask')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.ModLoadTask.Description'></a>
 
 ## ModLoadTask.Description Property
 
-The in game description of this
+The subtext that appears to the right of the Display Name at the bottom of the loading screen  
+<br/>  
+Can be dynamically changed while running the task
 
 ```csharp
-public sealed override string Description { get; }
+public virtual string Description { get; set; }
 ```
 
 #### Property Value
@@ -40,6 +39,32 @@ public sealed override string DisplayNamePlural { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModLoadTask.Progress'></a>
+
+## ModLoadTask.Progress Property
+
+If [ShowProgressBar](BTD_Mod_Helper.Api.ModLoadTask.md#BTD_Mod_Helper.Api.ModLoadTask.ShowProgressBar 'BTD_Mod_Helper.Api.ModLoadTask.ShowProgressBar') is enabled, how much Progress should be shown (from 0 to 1)
+
+```csharp
+public float Progress { get; set; }
+```
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.ModLoadTask.ShowProgressBar'></a>
+
+## ModLoadTask.ShowProgressBar Property
+
+Whether to show the progress bar during this task or not
+
+```csharp
+public virtual bool ShowProgressBar { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModLoadTask.Coroutine()'></a>
