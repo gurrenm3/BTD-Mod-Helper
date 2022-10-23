@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Assets.Scripts.Data;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Profile;
 using Assets.Scripts.Models.Towers;
@@ -94,6 +95,10 @@ public abstract class BloonsTD6Mod : BloonsMod
     {
         return false;
     }
+
+    #endregion
+
+    #region Loading Hooks
 
     /// <summary>
     /// Called when a map model is loaded by the game. Equivelant to MapLoader.Load.
@@ -198,7 +203,16 @@ public abstract class BloonsTD6Mod : BloonsMod
     {
     }
 
+    /// <summary>
+    /// Called when the GameData.Instance object is first loaded
+    /// </summary>
+    /// <param name="gameData">GameData.Instance</param>
+    public virtual void OnGameDataLoaded(GameData gameData)
+    {
+    }
+
     #endregion
+
 
     #region Menu Hooks
 

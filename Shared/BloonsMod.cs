@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
@@ -15,10 +16,16 @@ namespace BTD_Mod_Helper;
 /// </summary>
 public abstract class BloonsMod : MelonMod, IModContent
 {
+    private List<ModContent> content;
+
     /// <summary>
     /// All ModContent in ths mod
     /// </summary>
-    public IReadOnlyList<ModContent> Content { get; internal set; }
+    public IReadOnlyList<ModContent> Content
+    {
+        get => content;
+        internal set => content = value as List<ModContent>;
+    }
 
     /// <summary>
     /// The settings in this mod organized by name
@@ -98,6 +105,34 @@ public abstract class BloonsMod : MelonMod, IModContent
         return null;
     }
 
+    /// <summary>
+    /// Manually adds new ModContent to the mod. Does not directly call <see cref="ModContent.Load"/> or
+    /// <see cref="ModContent.Register"/>, but the latter will still end up being called if this is added before the
+    /// Registration phase.
+    /// </summary>
+    /// <param name="modContent"></param>
+    public void AddContent(ModContent modContent)
+    {
+        modContent.mod = this;
+        content.Add(modContent);
+        ModContentInstances.AddInstance(modContent.GetType(), modContent);
+    }
+
+    /// <summary>
+    /// Manually adds multiple new ModContent to the mod. Does not directly call <see cref="ModContent.Load"/> or
+    /// <see cref="ModContent.Register"/>, but the latter will still end up being called if this is added before the
+    /// Registration phase.
+    /// </summary>
+    public void AddContent(IEnumerable<ModContent> modContents)
+    {
+        var contents = modContents.ToList();
+        foreach (var modContent in contents)
+        {
+            modContent.mod = this;
+            ModContentInstances.AddInstance(modContent.GetType(), modContent);
+        }
+        content.AddRange(contents);
+    }
 
     #region API Hooks
 
@@ -137,7 +172,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// <inheritdoc />
     public sealed override void OnEarlyInitializeMelon()
     {
-        ModContentInstances.SetInstance(GetType(), this);
+        ModContentInstances.AddInstance(GetType(), this);
 
         // If they haven't set OptionalPatches to false and haven't already signified they have their own patching plan
         // by using HarmonyDontPatchAll themselves...

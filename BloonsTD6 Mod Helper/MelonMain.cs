@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Assets.Scripts.Data;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
@@ -28,7 +29,7 @@ internal partial class MelonMain : BloonsTD6Mod
 {
     public override void OnInitialize()
     {
-        ModContentInstances.SetInstance(GetType(), this);
+        ModContentInstances.AddInstance(GetType(), this);
 
         // Mod Settings
         ModSettingsHandler.InitializeModSettings();
@@ -54,6 +55,8 @@ internal partial class MelonMain : BloonsTD6Mod
 
 
         Schedule_GameModel_Loaded();
+        Schedule_GameModel_Loaded();
+        Schedule_GameData_Loaded();
 
         try
         {
@@ -140,7 +143,7 @@ internal partial class MelonMain : BloonsTD6Mod
     private void Schedule_GameModel_Loaded()
     {
         TaskScheduler.ScheduleTask(
-            () => { ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)); },
+            () => ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)),
             () => Game.instance && Game.instance.model != null);
     }
 
@@ -149,11 +152,17 @@ internal partial class MelonMain : BloonsTD6Mod
     private void Schedule_InGame_Loaded()
     {
         scheduledInGamePatch = true;
-        TaskScheduler.ScheduleTask(() => { ModHelper.PerformHook(mod => mod.OnInGameLoaded(InGame.instance)); },
+        TaskScheduler.ScheduleTask(() => ModHelper.PerformHook(mod => mod.OnInGameLoaded(InGame.instance)),
             () => InGame.instance && InGame.instance.GetSimulation() != null);
     }
 
     public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
+
+    public void Schedule_GameData_Loaded()
+    {
+        TaskScheduler.ScheduleTask(() => ModHelper.PerformHook(mod => mod.OnGameDataLoaded(GameData.Instance)),
+            () => GameData.Instance != null);
+    }
 
     public override void OnMainMenu()
     {

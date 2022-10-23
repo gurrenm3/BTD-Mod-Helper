@@ -25,6 +25,19 @@ public static string DisabledModsDirectory { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.ModHelper.IsNet6'></a>
+
+## ModHelper.IsNet6 Property
+
+Gets whether this is running on net6 MelonLoader
+
+```csharp
+public static bool IsNet6 { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.ModHelper.Melons'></a>
 
 ## ModHelper.Melons Property

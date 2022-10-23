@@ -1,1 +1,4 @@
-- Fixed visual side effect where monkeys visuals weren't always being removed after exiting a match
+- These official released versions are now cross-compatible with both regular MelonLoader and [net6 MelonLoader](https://github.com/LavaGang/MelonLoader/actions/workflows/build.yml?query=branch%3Acoreclr-reborn)
+  - The build-net6.yml github action will still be in effect just to keep an eye on compatibility with compiling for net6
+- Added the `OnGameDataLoaded` hook
+- Added `BloonsMod.AddContent` methods 

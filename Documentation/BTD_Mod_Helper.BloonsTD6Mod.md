@@ -332,6 +332,23 @@ public virtual void OnFastForwardChanged(bool newValue);
 
 `newValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnGameDataLoaded(Assets.Scripts.Data.GameData)'></a>
+
+## BloonsTD6Mod.OnGameDataLoaded(GameData) Method
+
+Called when the GameData.Instance object is first loaded
+
+```csharp
+public virtual void OnGameDataLoaded(Assets.Scripts.Data.GameData gameData);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnGameDataLoaded(Assets.Scripts.Data.GameData).gameData'></a>
+
+`gameData` [Assets.Scripts.Data.GameData](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.GameData 'Assets.Scripts.Data.GameData')
+
+GameData.Instance
+
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnGameModelLoaded(Assets.Scripts.Models.GameModel)'></a>
 
 ## BloonsTD6Mod.OnGameModelLoaded(GameModel) Method

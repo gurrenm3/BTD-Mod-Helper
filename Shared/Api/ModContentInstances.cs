@@ -16,21 +16,22 @@ internal static class ModContentInstances
         Actions = new Dictionary<Type, Action<List<IModContent>>>();
     }
 
-    internal static void SetInstance(Type type, IModContent instance)
+    internal static void AddInstance(Type type, IModContent instance)
     {
-        SetInstances(type, new List<IModContent> {instance});
+        AddInstances(type, new List<IModContent> {instance});
     }
 
-    internal static void SetInstances(Type type, List<ModContent> instances)
+    internal static void AddInstances(Type type, List<ModContent> instances)
     {
-        SetInstances(type, instances.Cast<IModContent>().ToList());
+        AddInstances(type, instances.Cast<IModContent>().ToList());
     }
 
-    internal static void SetInstances(Type type, List<IModContent> instances)
+    internal static void AddInstances(Type type, List<IModContent> instances)
     {
         if (typeof(IModContent).IsAssignableFrom(type))
         {
-            Instances[type] = instances.ToList();
+            if (!Instances.TryGetValue(type, out var list)) list = Instances[type] = new List<IModContent>();
+            list.AddRange(instances);
             if (Actions.TryGetValue(type, out var action))
             {
                 action(Instances[type]);
@@ -55,16 +56,17 @@ internal static class ModContentInstance<T> where T : IModContent
 
     static ModContentInstance()
     {
-        ModContentInstances.Actions[typeof(T)] = SetInstances;
+        ModContentInstances.Actions[typeof(T)] = AddInstances;
         if (ModContentInstances.Instances.TryGetValue(typeof(T), out var instances))
         {
-            SetInstances(instances);
+            AddInstances(instances);
         }
     }
 
-    private static void SetInstances(IEnumerable<IModContent> instances)
+    private static void AddInstances(IEnumerable<IModContent> instances)
     {
-        Instances = instances.Cast<T>().ToList();
-        Instance = Instances.First();
+        Instances ??= new List<T>();
+        Instances.AddRange(instances.Cast<T>());
+        Instance ??= Instances.First();
     }
 }

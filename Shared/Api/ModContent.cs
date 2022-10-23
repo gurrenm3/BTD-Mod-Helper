@@ -76,7 +76,7 @@ namespace BTD_Mod_Helper.Api
         /// How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
         /// </summary>
         /// <exclude/>
-        public virtual int RegisterPerFrame => 10;
+        public virtual int RegisterPerFrame => 20;
 
 
         internal static void LoadModContent(BloonsMod mod) => mod.Content = mod.GetAssembly()
@@ -111,7 +111,7 @@ namespace BTD_Mod_Helper.Api
             {
                 instance = (ModContent) Activator.CreateInstance(type)!;
                 instance.mod = mod;
-                ModContentInstances.SetInstance(type, instance);
+                ModContentInstances.AddInstance(type, instance);
             }
             catch (Exception e)
             {
@@ -144,7 +144,7 @@ namespace BTD_Mod_Helper.Api
                     }
                 }
 
-                ModContentInstances.SetInstances(type, instances);
+                ModContentInstances.AddInstances(type, instances);
             }
             catch (Exception e)
             {
