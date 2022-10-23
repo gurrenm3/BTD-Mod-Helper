@@ -18,9 +18,9 @@ internal class VanillaSpriteGenerator
     /// To get the necessary files, from the "...\BloonsTD6\BloonsTD6_Data\StreamingAssets\aa\StandaloneWindows64\Full\" folder, choose:
     /// <list type="">
     ///     <item>asset_references_assets_all_[...].bundle</item>
-    ///     <item>asset_references_assets_all_[...].bundle</item>
     ///     <item>initial_loading_ui_scenes_all_all_[...].bundle</item>
     ///     <item>sprite_atlases_assets_all_[...].bundle</item>
+    ///     <item>ui_scenes_all_[...].bundle</item>
     /// </list>
     /// in Asset Studio. Then, select all assets of type Sprite, and in the menu do Export -> Dump -> Selected assets
     /// </summary>
@@ -46,9 +46,12 @@ internal class VanillaSpriteGenerator
             }
         }
 
+        var realNames = new HashSet<string>();
+
         using (var vanillaSpritesFile = new StreamWriter(vanillaSpritesCs))
         {
             vanillaSpritesFile.WriteLine("using Assets.Scripts.Utils;");
+            vanillaSpritesFile.WriteLine("using System.Collections.Generic;");
             vanillaSpritesFile.WriteLine("");
             vanillaSpritesFile.WriteLine("#pragma warning disable CS1591");
             vanillaSpritesFile.WriteLine("namespace BTD_Mod_Helper.Api.Enums");
@@ -63,12 +66,25 @@ internal class VanillaSpriteGenerator
                 {
                     var realName = name + (i > 1 ? i.ToString() : "");
                     vanillaSpritesFile.WriteLine(
-                        $"{Tab}{Tab}public static SpriteReference {realName} => ModContent.CreateSpriteReference(\"{guid}\");"
+                        $"{Tab}{Tab}public const string {realName} = \"{guid}\";"
                     );
                     i++;
+                    realNames.Add(realName);
                 }
             }
 
+            vanillaSpritesFile.WriteLine();
+            vanillaSpritesFile.WriteLine($"{Tab}{Tab}public static readonly Dictionary<string, string> ByName;");
+            vanillaSpritesFile.WriteLine($"{Tab}{Tab}static VanillaSprites()");
+            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{{");
+            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}ByName = new Dictionary<string, string>");
+            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}{{");
+            foreach (var realName in realNames)
+            {
+                vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}{Tab}[\"{realName}\"] = {realName},");
+            }
+            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}}};");
+            vanillaSpritesFile.WriteLine($"{Tab}{Tab}}}");
             vanillaSpritesFile.WriteLine($"{Tab}}}");
             vanillaSpritesFile.WriteLine("}");
         }

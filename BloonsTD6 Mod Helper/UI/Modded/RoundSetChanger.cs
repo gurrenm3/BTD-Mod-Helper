@@ -14,8 +14,14 @@ using UnityEngine.Playables;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
-internal static class RoundSetChanger
+/// <summary>
+/// Class controlling the in game Round Set override UI
+/// </summary>
+public static class RoundSetChanger
 {
+    /// <summary>
+    /// The round set override currently chosen, or null
+    /// </summary>
     public static string RoundSetOverride { get; private set; }
     
     private static readonly string[] ShowOnMenus =
@@ -185,7 +191,7 @@ internal static class RoundSetChanger
         HideOptions();
     }
 
-    public static void EnsureHidden()
+    internal static void EnsureHidden()
     {
         if (buttonPanel != null)
         {
@@ -198,7 +204,7 @@ internal static class RoundSetChanger
         }
     }
 
-    public static void OnMenuChanged(string currentMenu, string newMenu)
+    internal static void OnMenuChanged(string currentMenu, string newMenu)
     {
         if (!MelonMain.ShowRoundsetChanger) return;
 

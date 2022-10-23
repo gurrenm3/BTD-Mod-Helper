@@ -341,3 +341,11 @@
 | Classes | |
 | :--- | :--- |
 | [ModsMenu](BTD_Mod_Helper.UI.Menus.ModsMenu.md 'BTD_Mod_Helper.UI.Menus.ModsMenu') | The ModGameMenu for the screen showing current mods |
+
+<a name='BTD_Mod_Helper.UI.Modded'></a>
+
+## BTD_Mod_Helper.UI.Modded Namespace
+
+| Classes | |
+| :--- | :--- |
+| [RoundSetChanger](BTD_Mod_Helper.UI.Modded.RoundSetChanger.md 'BTD_Mod_Helper.UI.Modded.RoundSetChanger') | Class controlling the in game Round Set override UI |
