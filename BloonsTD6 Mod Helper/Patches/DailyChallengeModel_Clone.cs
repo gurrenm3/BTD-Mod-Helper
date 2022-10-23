@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Models.ServerEvents;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Patches;
@@ -9,8 +10,9 @@ internal static class DailyChallengeModel_Clone
     [HarmonyPostfix]
     private static void Postfix(DailyChallengeModel __result)
     {
-        foreach (var (towerId, modTower) in ModTowerHelper.ModTowerCache)
+        foreach (var modTower in ModContent.GetContent<ModTower>())
         {
+            var towerId = modTower.Id;
             if (modTower.AlwaysIncludeInChallenge)
             {
                 var towerData = __result.towers.FirstOrDefault(data => data.tower == towerId);

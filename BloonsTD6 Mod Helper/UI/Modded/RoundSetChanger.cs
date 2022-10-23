@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New;
+using Assets.Scripts.Unity.UI_New.Main.Facebook;
+using Assets.Scripts.Unity.UI_New.Main.MapSelect;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
@@ -11,6 +13,7 @@ using BTD_Mod_Helper.Api.Enums;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
@@ -23,7 +26,7 @@ public static class RoundSetChanger
     /// The round set override currently chosen, or null
     /// </summary>
     public static string RoundSetOverride { get; private set; }
-    
+
     private static readonly string[] ShowOnMenus =
     {
         "MapSelectUI", "DifficultySelectUI", "ModeSelectUI",
@@ -37,6 +40,7 @@ public static class RoundSetChanger
     private static ModHelperScrollPanel optionsPanel;
     private static ModHelperButton button;
     private static readonly Dictionary<string, ModHelperImage> CheckMarks = new();
+    private static List<ModRoundSet> modRoundSets;
 
     private static void CreatePanel(GameObject screen)
     {
@@ -66,7 +70,8 @@ public static class RoundSetChanger
 
         optionsPanel.SetActive(false);
 
-        foreach (var modRoundSet in ModContent.GetContent<ModRoundSet>().Where(set => set.AddToOverrideMenu))
+        modRoundSets ??= ModContent.GetContent<ModRoundSet>().Where(set => set.AddToOverrideMenu).ToList();
+        foreach (var modRoundSet in modRoundSets)
         {
             optionsPanel.AddScrollContent(
                 CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.IconReference.guidRef)
@@ -121,10 +126,10 @@ public static class RoundSetChanger
         MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
         HideButton();
         RevealOptions();
-        /*if (MenuManager.instance.GetCurrentMenu().Exists().IsType<MapSelectScreen>(out var screen))
+        if (MenuManager.instance.GetCurrentMenu().Exists().IsType<MapSelectScreen>() && modRoundSets.Count > 3)
         {
-            screen.transform.FindChild("Friends").Exists()?.gameObject.SetActive(false);
-        }*/
+            CommonForegroundScreen.instance.GetComponentInChildren<FriendLoginButton>(true).gameObject.SetActive(false);
+        }
     }
 
     private static void StopOptionsMode()
@@ -132,10 +137,6 @@ public static class RoundSetChanger
         MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         HideOptions();
         RevealButton();
-        /*if (MenuManager.instance.GetCurrentMenu().Exists().IsType<MapSelectScreen>(out var screen))
-        {
-            screen.transform.FindChild("Friends").Exists()?.gameObject.SetActive(true);
-        }*/
     }
 
     private static void Init()
@@ -175,6 +176,7 @@ public static class RoundSetChanger
     {
         optionsPanel.GetComponent<Animator>().Play("PopupScaleOut");
         TaskScheduler.ScheduleTask(() => optionsPanel.SetActive(false), ScheduleType.WaitForFrames, AnimationTicks);
+        CommonForegroundScreen.instance.GetComponentInChildren<FriendLoginButton>(true).gameObject.SetActive(true);
     }
 
     private static void Show()

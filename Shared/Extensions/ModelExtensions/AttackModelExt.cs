@@ -4,6 +4,7 @@ using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
+using UnhollowerBaseLib;
 
 #if BloonsTD6
 using Assets.Scripts.Models.Towers.Projectiles;
@@ -26,18 +27,52 @@ namespace BTD_Mod_Helper.Extensions
         /// <summary>
         /// Add a weapon to this Attack Model
         /// </summary>
-        /// <param name="attackModel"></param>
+        /// <param name="attackModel">this</param>
         /// <param name="weaponToAdd">Weapon to add</param>
-        public static void AddWeapon(this AttackModel attackModel, WeaponModel weaponToAdd) =>
+        public static void AddWeapon(this AttackModel attackModel, WeaponModel weaponToAdd)
+        {
             attackModel.weapons = attackModel.weapons.AddTo(weaponToAdd);
+            attackModel.AddChildDependant(weaponToAdd);
+        }
 
         /// <summary>
         /// Remove a weapon from this Attack Model
         /// </summary>
-        /// <param name="attackModel"></param>
-        /// <param name="weaponToRemove"></param>
-        public static void RemoveWeapon(this AttackModel attackModel, WeaponModel weaponToRemove) =>
+        /// <param name="attackModel">this</param>
+        /// <param name="weaponToRemove">Weapon to remove</param>
+        public static void RemoveWeapon(this AttackModel attackModel, WeaponModel weaponToRemove)
+        {
             attackModel.weapons = attackModel.weapons.RemoveItem(weaponToRemove);
+            attackModel.RemoveChildDependant(weaponToRemove);
+        }
+
+        /// <summary>
+        /// Sets the weapon at the given index (default 0) of this attack model to be the given one.
+        /// </summary>
+        /// <param name="attackModel">this</param>
+        /// <param name="weaponModel">Weapon to add</param>
+        /// <param name="index">Index within weapons array</param>
+        public static void SetWeapon(this AttackModel attackModel, WeaponModel weaponModel, int index = 0)
+        {
+            if (attackModel.weapons == null)
+            {
+                attackModel.weapons = new[] {weaponModel};
+            }
+            else if (index >= attackModel.weapons.Length)
+            {
+                attackModel.weapons = attackModel.weapons.AddTo(weaponModel);
+            }
+            else if (index < 0)
+            {
+                throw new IndexOutOfRangeException("Index can't be negative");
+            }
+            else
+            {
+                attackModel.RemoveChildDependant(attackModel.weapons[index]);
+                attackModel.weapons[index] = weaponModel;
+            }
+            attackModel.AddChildDependant(weaponModel);
+        }
 
         /// <summary>
         /// Recursively get all ProjectileModels for this attack model and all of it's weapons
