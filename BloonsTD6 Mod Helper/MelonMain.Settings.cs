@@ -99,9 +99,7 @@ internal partial class MelonMain
         min = 5,
         max = 300,
         stepSize = 1,
-#if NET6_0
-        requiresRestart = true,
-#endif
+        requiresRestart = ModHelper.IsNet6,
         icon = DartTimeIcon
     };
 
@@ -123,9 +121,7 @@ internal partial class MelonMain
         min = .1,
         max = 50,
         stepSize = .1f,
-#if NET6_0
-        requiresRestart = true,
-#endif
+        requiresRestart = ModHelper.IsNet6,
         icon = LocalNetworkIcon
     };
 
@@ -137,9 +133,7 @@ internal partial class MelonMain
         min = 1,
         max = 1000,
         stepSize = 1,
-#if NET6_0
-        requiresRestart = true,
-#endif
+        requiresRestart = ModHelper.IsNet6,
         icon = LocalNetworkIcon
     };
 

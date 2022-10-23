@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Assets.Scripts.Unity.Towers.Mods;
 
 namespace BTD_Mod_Helper.Api.ModMenu;
 
@@ -43,9 +44,10 @@ public class ModHelperHttp
     {
         try
         {
-#if !NET6_0
-            Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
-#endif
+            if (!ModHelper.IsNet6)
+            {
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+            }
             var response = await Client.GetAsync(url);
             using var fs = new FileStream(filePath, FileMode.Create);
             await response.Content.CopyToAsync(fs);
@@ -58,9 +60,10 @@ public class ModHelperHttp
         }
         finally
         {
-#if !NET6_0
-            Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
-#endif
+            if (!ModHelper.IsNet6)
+            {
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+            }
         }
 
         return false;
@@ -76,18 +79,20 @@ public class ModHelperHttp
     {
         try
         {
-#if !NET6_0
-            Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
-#endif
+            if (!ModHelper.IsNet6)
+            {
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+            }
             var response = await Client.GetAsync(url);
             var stream = await response.Content.ReadAsStreamAsync();
             return new ZipArchive(stream);
         }
         finally
         {
-#if !NET6_0
-            Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
-#endif
+            if (ModHelper.IsNet6)
+            {
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+            }
         }
     }
 
@@ -135,11 +140,14 @@ public class ModHelperHttp
         {
             Client.Timeout = TimeSpan.FromSeconds(MelonMain.RequestTimeout);
 
-#if NET6_0
-            Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
-#else
-            Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
-#endif
+            if (ModHelper.IsNet6)
+            {
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+            }
+            else
+            {
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
+            }
         }
         catch (Exception)
         {

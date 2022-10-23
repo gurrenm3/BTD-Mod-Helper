@@ -50,6 +50,11 @@ public static class ModHelper
     /// The directory path on the user's system that's set as their Mod Sources folder
     /// </summary>
     public static string ModSourcesDirectory => MelonMain.ModSourcesFolder;
+    
+    /// <summary>
+    /// Gets whether this is running on net6 MelonLoader
+    /// </summary>
+    public static bool IsNet6 => Environment.Version.Major >= 6;
 
     private static bool fallBackToOldLoading = true;
 
@@ -133,14 +138,10 @@ public static class ModHelper
     /// </summary>
     internal static void Log(object obj)
     {
-#if NET6_0
         lock (Main.LoggerInstance)
         {
-#endif
             Main.LoggerInstance.Msg(obj);
-#if NET6_0
         }
-#endif
     }
 
     /// <summary>
@@ -148,14 +149,10 @@ public static class ModHelper
     /// </summary>
     internal static void Msg(object obj)
     {
-#if NET6_0
         lock (Main.LoggerInstance)
         {
-#endif
             Main.LoggerInstance.Msg(obj);
-#if NET6_0
         }
-#endif
     }
 
     /// <summary>
@@ -163,14 +160,10 @@ public static class ModHelper
     /// </summary>
     internal static void Error(object obj)
     {
-#if NET6_0
         lock (Main.LoggerInstance)
         {
-#endif
             Main.LoggerInstance.Error(obj);
-#if NET6_0
         }
-#endif
     }
 
     /// <summary>
@@ -178,14 +171,10 @@ public static class ModHelper
     /// </summary>
     internal static void Warning(object obj)
     {
-#if NET6_0
         lock (Main.LoggerInstance)
         {
-#endif
             Main.LoggerInstance.Warning(obj);
-#if NET6_0
         }
-#endif
     }
 
     #endregion

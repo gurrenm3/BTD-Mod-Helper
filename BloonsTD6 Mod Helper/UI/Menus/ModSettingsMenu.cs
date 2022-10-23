@@ -98,12 +98,10 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     {
         animator.Play("PopupSlideOut");
         ModSettingsHandler.SaveModSettings(bloonsMod);
-#if !NET6_0
-        if (bloonsMod is MelonMain)
+        if (bloonsMod is MelonMain && !ModHelper.IsNet6)
         {
             ModHelperHttp.UpdateSettings();
         }
-#endif
     }
 
     public static void Open(BloonsMod bloonsMod)

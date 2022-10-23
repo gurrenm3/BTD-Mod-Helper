@@ -15,7 +15,7 @@ public abstract class ModVanillaContent : ModContent
     public virtual bool AffectBaseGameModel => false;
         
     /// <inheritdoc />
-    public sealed override int RegisterPerFrame => AffectBaseGameModel ? 1 : 3;
+    public sealed override int RegisterPerFrame => AffectBaseGameModel ? 3 : 10;
         
         
     /// <summary>
