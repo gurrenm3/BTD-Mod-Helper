@@ -28,8 +28,9 @@ internal static class DailyChallengeModel_Clone
 
                 if (modTower is ModHero)
                 {
-                    var chooseHero = __result.towers.First(data => data.isHero && data.tower == "ChosenPrimaryHero");
-                    if (chooseHero.max != 1)
+                    var chooseHero =
+                        __result.towers.FirstOrDefault(data => data.isHero && data.tower == "ChosenPrimaryHero");
+                    if (chooseHero?.max != 1)
                     {
                         towerData.max = 1;
                     }

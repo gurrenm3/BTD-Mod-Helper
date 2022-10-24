@@ -27,6 +27,8 @@ public static void AddWeapon(this Assets.Scripts.Models.Towers.Behaviors.Attack.
 
 `attackModel` [Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
 
+this
+
 <a name='BTD_Mod_Helper.Extensions.AttackModelExt.AddWeapon(thisAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel,Assets.Scripts.Models.Towers.Weapons.WeaponModel).weaponToAdd'></a>
 
 `weaponToAdd` [Assets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Weapons.WeaponModel 'Assets.Scripts.Models.Towers.Weapons.WeaponModel')
@@ -93,6 +95,39 @@ public static void RemoveWeapon(this Assets.Scripts.Models.Towers.Behaviors.Atta
 
 `attackModel` [Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
 
+this
+
 <a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveWeapon(thisAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel,Assets.Scripts.Models.Towers.Weapons.WeaponModel).weaponToRemove'></a>
 
 `weaponToRemove` [Assets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Weapons.WeaponModel 'Assets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+Weapon to remove
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.SetWeapon(thisAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel,Assets.Scripts.Models.Towers.Weapons.WeaponModel,int)'></a>
+
+## AttackModelExt.SetWeapon(this AttackModel, WeaponModel, int) Method
+
+Sets the weapon at the given index (default 0) of this attack model to be the given one.
+
+```csharp
+public static void SetWeapon(this Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel attackModel, Assets.Scripts.Models.Towers.Weapons.WeaponModel weaponModel, int index=0);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.SetWeapon(thisAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel,Assets.Scripts.Models.Towers.Weapons.WeaponModel,int).attackModel'></a>
+
+`attackModel` [Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Assets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
+this
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.SetWeapon(thisAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel,Assets.Scripts.Models.Towers.Weapons.WeaponModel,int).weaponModel'></a>
+
+`weaponModel` [Assets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Weapons.WeaponModel 'Assets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+Weapon to add
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.SetWeapon(thisAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel,Assets.Scripts.Models.Towers.Weapons.WeaponModel,int).index'></a>
+
+`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+Index within weapons array

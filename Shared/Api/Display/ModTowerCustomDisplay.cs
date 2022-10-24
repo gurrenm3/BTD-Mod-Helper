@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Unity.Display;
+﻿using System;
+using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Api.Display;
@@ -17,10 +18,13 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
     /// <inheritdoc />
     public virtual string MaterialName => null;
 
+    /// <inheritdoc />
+    public virtual bool LoadAsync => false;
+
     /// <summary>
     /// On a ModCustomDisplay, this property does nothing
     /// </summary>
-    public override string BaseDisplay => "";
+    public sealed override string BaseDisplay => "";
 
     /// <summary>
     /// Performs alterations to the unity display node when it is created
@@ -28,7 +32,12 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
     /// <param name="node"></param>
     public override void ModifyDisplayNode(UnityDisplayNode node)
     {
-            
+
+    }
+
+    internal override void GetBasePrototype(Factory factory, Action<UnityDisplayNode> onComplete)
+    {
+        this.GetBasePrototype(mod, onComplete);
     }
 }
 

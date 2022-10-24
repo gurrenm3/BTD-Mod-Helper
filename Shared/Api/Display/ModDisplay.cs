@@ -180,7 +180,6 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// Gets the prototype to use for a callback in CreateAsync
         /// </summary>
-        /// <returns>Whether to still call the original CreateAsync callback</returns>
         internal void Create(Factory factory, PrefabReference prefabReference, Action<UnityDisplayNode> onComplete) =>
             GetBasePrototype(factory, node =>
             {
