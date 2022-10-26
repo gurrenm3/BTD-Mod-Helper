@@ -35,11 +35,24 @@ public abstract string AssetBundleName { get; }
 On a ModCustomDisplay, this property does nothing
 
 ```csharp
-public override string BaseDisplay { get; }
+public sealed override string BaseDisplay { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.LoadAsync'></a>
+
+## ModTowerCustomDisplay.LoadAsync Property
+
+Whether to try loading the asset from the bundle asynchronously. Not yet thoroughly tested
+
+```csharp
+public virtual bool LoadAsync { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.MaterialName'></a>
 

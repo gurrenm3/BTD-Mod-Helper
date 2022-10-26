@@ -32,7 +32,7 @@ public abstract string AssetBundleName { get; }
 On a ModCustomDisplay, this property does nothing
 
 ```csharp
-public override string BaseDisplay { get; }
+public sealed override string BaseDisplay { get; }
 ```
 
 #### Property Value

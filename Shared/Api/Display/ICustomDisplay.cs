@@ -4,24 +4,24 @@ using UnityEngine;
 namespace BTD_Mod_Helper.Api.Display;
 
 internal interface ICustomDisplay
-{ 
+{
     /// <summary>
     /// The name of the asset bundle file that the model is in, not including the .bundle extension
     /// </summary>
     string AssetBundleName { get; }
-    
+
     /// <summary>
     /// The name of the prefab that the model has within the Asset Bundle
     /// </summary>
     string PrefabName { get; }
-    
+
     /// <summary>
     /// The name of the material that should be applied to the tower from the asset bundle, if any
     /// </summary>
     string MaterialName { get; }
 
     /// <summary>
-    /// Whether to try loading the asset from the bundle asynchronously. Not yet thoroughly tested
+    /// Whether to try loading the asset from the bundle asynchronously.
     /// </summary>
     bool LoadAsync { get; }
 }
@@ -34,7 +34,8 @@ internal static class ICustomDisplayExt
     /// <param name="display">this</param>
     /// <param name="mod">mod to look for the asset bundle in</param>
     /// <param name="onComplete">completion action</param>
-    internal static void GetBasePrototype(this ICustomDisplay display, BloonsMod mod, Action<UnityDisplayNode> onComplete)
+    internal static void GetBasePrototype(this ICustomDisplay display, BloonsMod mod,
+        Action<UnityDisplayNode> onComplete)
     {
         var assetBundle = ModContent.GetBundle(mod, display.AssetBundleName);
         if (display.LoadAsync)
@@ -63,6 +64,8 @@ internal static class ICustomDisplayExt
     internal static void CompletePrototype(this ICustomDisplay display, GameObject gameObject, AssetBundle assetBundle,
         Action<UnityDisplayNode> onComplete)
     {
+        gameObject.transform.position = new Vector3(Factory.kOffscreenPosition.x, 0, 0);
+        gameObject.SetActive(false);
         var baseNode = gameObject.AddComponent<UnityDisplayNode>();
         if (!string.IsNullOrEmpty(display.MaterialName))
         {

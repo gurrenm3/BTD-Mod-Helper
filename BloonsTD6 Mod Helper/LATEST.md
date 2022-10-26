@@ -6,3 +6,4 @@ A small, modder-oriented update
 - Prevented non-vanilla towers from being chosen for Insta Monkeys (theoretically)
 - Updated VanillaSprites for v33 and added a `ByName` string lookup
 - Added `AttackModel.SetWeapon` helper extension
+- Some fixes to `ModCustomDisplay` and `ModTowerCustomDisplay`
