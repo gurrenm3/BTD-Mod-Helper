@@ -71,7 +71,7 @@ namespace BTD_Mod_Helper.Api
         /// or for making certain content load before others like may be necessary for sub-towers.
         /// Default/0 will use arbitrary ordering.
         /// </summary>
-        protected virtual int Order => 0;
+        public virtual int Order => 0;
 
         /// <summary>
         /// How many of this ModContent should it try to register in each frame. Higher numbers could lead to faster but choppier loading.
