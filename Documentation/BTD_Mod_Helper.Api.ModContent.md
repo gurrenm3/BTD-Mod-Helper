@@ -80,7 +80,7 @@ or for making certain content load before others like may be necessary for sub-t
 Default/0 will use arbitrary ordering.
 
 ```csharp
-protected virtual int Order { get; }
+public virtual int Order { get; }
 ```
 
 #### Property Value
