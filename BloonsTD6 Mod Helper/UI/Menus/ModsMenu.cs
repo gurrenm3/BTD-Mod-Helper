@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Assets.Scripts.Unity.Menu;
 using Assets.Scripts.Unity.UI_New.ChallengeEditor;
 using Assets.Scripts.Unity.UI_New.Popups;
@@ -61,9 +62,11 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static ModHelperButton selectedModHomeButton;
     private static ModHelperButton updateAllButton;
     private static ModHelperImage selectedModIcon;
+    private static ModHelperImage selectedModLoadingSpinner;
     private static ModsMenuMod modTemplate;
     private static int currentSort;
     private static ModHelperPanel restartPanel;
+    private static Task updateTask;
 
     private static Animator bottomGroupAnimator;
 
@@ -216,6 +219,16 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         modPanels.Clear();
     }
 
+    /// <inheritdoc />
+    public override void OnMenuUpdate()
+    {
+        if (selectedModLoadingSpinner != null)
+        {
+            selectedModLoadingSpinner.transform.Rotate(0, 0, -2);
+            selectedModLoadingSpinner.SetActive(updateTask is {IsCompleted: false});
+        }
+    }
+
     internal static void SetSelectedMod(ModHelperData modSelected)
     {
         selectedMod = modSelected;
@@ -309,7 +322,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                             foreach (var (data, panel) in modPanels
                                          .Where(kvp => kvp.Key.UpdateAvailable))
                             {
-                                await ModHelperGithub.DownloadLatest(data, true);
+                                await ModHelperGithub.DownloadLatest(data, true, null, task => updateTask = task);
                                 panel.Refresh(data);
                             }
 
@@ -337,9 +350,11 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static void Refresh()
     {
+        if (selectedModPanel == null) return;
+
         foreach (var (modHelperData, panel) in modPanels)
         {
-            if (panel is null)
+            if (panel == null)
             {
                 continue;
             }
@@ -393,11 +408,15 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         // ReSharper disable once AsyncVoidLambda
         selectedModUpdateButton = firstRow.AddButton(
             new Info("UpdateButton", size: ModNameHeight), VanillaSprites.GreenBtn, new Action(async () =>
-                await ModHelperGithub.DownloadLatest(selectedMod, false, _ => Refresh()))
+                await ModHelperGithub.DownloadLatest(selectedMod, false, _ => Refresh(), task => updateTask = task))
         );
         selectedModUpdateButton.AddImage(
             new Info("UpgradeIcon", size: ModNameHeight - Padding), VanillaSprites.UpgradeIcon2
         );
+        selectedModLoadingSpinner = selectedModUpdateButton.AddImage(
+            new Info("Spinner", size: ModNameHeight), VanillaSprites.LoadingWheel
+        );
+
 
         var secondRow = selectedModPanel.AddPanel(new Info("SecondRow")
         {

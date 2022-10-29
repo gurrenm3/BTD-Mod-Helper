@@ -32,9 +32,11 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModHelperButton Star => GetDescendent<ModHelperButton>("Star");
     public ModHelperText StarCount => GetDescendent<ModHelperText>("StarCount");
     public ModHelperButton Verified => GetDescendent<ModHelperButton>("Verified");
+    public ModHelperImage Spinner => GetDescendent<ModHelperImage>("Spinner");
 
     public bool descriptionShowing;
 
+    public Task task;
     public string modName;
     public Action iconAction;
 
@@ -135,15 +137,16 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
 
         panel.AddButton(new Info("Info", 150), VanillaSprites.InfoBtn2, null);
-
         mainPanel.AddButton(new Info("Homepage", 200), VanillaSprites.HomeBtn, null);
 
-        mainPanel.AddButton(new Info("Download", 200),
-            ModContent.GetTextureGUID<MelonMain>("DownloadBtn"), null);
-        var update = mainPanel.AddButton(new Info("Update", 200), VanillaSprites.GreenBtn, null);
+        var rightButton = mainPanel.AddPanel(new Info("RightButton", 200));
+        rightButton.AddButton(new Info("Download", 200), ModContent.GetTextureGUID<MelonMain>("DownloadBtn"), null);
+        var update = rightButton.AddButton(new Info("Update", 200), VanillaSprites.GreenBtn, null);
         update.AddImage(new Info("UpdateIcon", 133), VanillaSprites.UpgradeIcon2);
+        var spinner = rightButton.AddImage(new Info("Spinner", 200), VanillaSprites.LoadingWheel);
+        spinner.SetActive(false);
 
-        mainPanel.AddImage(new Info("Installed", 200), VanillaSprites.TickGreenIcon);
+        rightButton.AddImage(new Info("Installed", 200), VanillaSprites.TickGreenIcon);
 
 
         mod.SetDescriptionShowing(false);
@@ -165,6 +168,9 @@ internal class ModBrowserMenuMod : ModHelperPanel
             iconAction.Invoke();
             iconAction = null;
         }
+
+        Spinner.transform.Rotate(0, 0, -2);
+        Spinner.SetActive(task is {IsCompleted: false});
     }
 }
 
@@ -207,26 +213,42 @@ internal static class ModBrowserMenuModExt
         var installed = modHelperData.ModInstalledLocally(out var current);
         mod.Download.Button.SetOnClick(() =>
         {
-            Task.Run(async () =>
+            Task.Run(() =>
             {
-                await ModHelperGithub.DownloadLatest(modHelperData, false, filePath =>
+                var downloadTask = ModHelperGithub.DownloadLatest(modHelperData, false, filePath =>
                 {
                     modHelperData.SetFilePath(filePath);
                     ModHelperData.Inactive.Add(modHelperData);
-                    mod.Download.SetActive(false);
-                    mod.Installed.SetActive(true);
-                });
+                    if (mod != null && mod.gameObject.active && mod.modName == modHelperData.Name)
+                    {
+                        mod.Download.SetActive(false);
+                        mod.Installed.SetActive(true);
+                    }
+                }, task => mod.task = task);
+
+                if (!downloadTask.IsCompleted)
+                {
+                    mod.task = downloadTask;
+                }
             });
         });
         mod.Update.Button.SetOnClick(() =>
         {
-            Task.Run(async () =>
+            Task.Run(() =>
             {
-                await ModHelperGithub.DownloadLatest(current, false, _ =>
+                var downloadTask = ModHelperGithub.DownloadLatest(current, false, _ =>
                 {
-                    mod.Update.SetActive(false);
-                    mod.Installed.SetActive(true);
-                });
+                    if (mod != null && mod.gameObject.active && mod.modName == modHelperData.Name)
+                    {
+                        mod.Update.SetActive(false);
+                        mod.Installed.SetActive(true);
+                    }
+                }, task => mod.task = task);
+
+                if (!downloadTask.IsCompleted)
+                {
+                    mod.task = downloadTask;
+                }
             });
         });
         mod.Download.SetActive(!installed);

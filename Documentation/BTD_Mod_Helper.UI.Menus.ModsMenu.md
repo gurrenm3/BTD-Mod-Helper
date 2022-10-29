@@ -41,3 +41,13 @@ public override bool OnMenuOpened(Il2CppSystem.Object data);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
 Whether to run the base menu's OnOpen code
+
+<a name='BTD_Mod_Helper.UI.Menus.ModsMenu.OnMenuUpdate()'></a>
+
+## ModsMenu.OnMenuUpdate() Method
+
+Runs every time that your custom menu updates
+
+```csharp
+public override void OnMenuUpdate();
+```

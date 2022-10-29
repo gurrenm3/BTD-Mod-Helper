@@ -111,7 +111,8 @@ internal static class ModHelperGithub
         }
     }
 
-    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false, Action<string> callback = null)
+    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false,
+        Action<string> filePathCallback = null, Action<Task> taskCallback = null)
     {
         Release latestRelease = null;
         GitHubCommit latestCommit = null;
@@ -148,7 +149,7 @@ internal static class ModHelperGithub
             if (latestRelease.TagName != mod.RepoVersion)
             {
                 ModHelper.Warning(
-                    $"Latest Release Tag '{latestRelease.TagName}' didn't match listed mod version '{mod.RepoVersion}'. " +
+                    $"Latest Release Tag '{latestRelease.TagName}' didn't exactly match listed mod version '{mod.RepoVersion}'. " +
                     "The real release for this version may not be present in the API yet.");
             }
         }
@@ -156,7 +157,9 @@ internal static class ModHelperGithub
 
         if (bypassPopup)
         {
-            await Download(mod, callback, latestRelease, false);
+            var downloadTask = Download(mod, filePathCallback, latestRelease, false);
+            taskCallback?.Invoke(downloadTask);
+            await downloadTask;
         }
         else
         {
@@ -167,8 +170,12 @@ internal static class ModHelperGithub
                     ParseReleaseMessage(mod.SubPath == null
                         ? latestRelease!.Body
                         : latestCommit!.Commit.Message),
-                    new Action(async () => await Download(mod, callback, latestRelease, true)), "Yes", null, "No",
-                    Popup.TransitionAnim.Scale, instantClose: true);
+                    new Action(async () =>
+                    {
+                        var downloadTask = Download(mod, filePathCallback, latestRelease, true);
+                        taskCallback?.Invoke(downloadTask);
+                        await downloadTask;
+                    }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
 
                 screen.ModifyBodyText(field =>
                 {
