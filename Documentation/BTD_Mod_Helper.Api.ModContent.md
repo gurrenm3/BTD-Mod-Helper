@@ -69,6 +69,22 @@ public virtual string Name { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModContent.Order'></a>
+
+## ModContent.Order Property
+
+The order that this ModContent will be loaded/registered in by Mod Helper.  
+Useful for changing the ordering that it will appear in in-game relative to other content of this type in your mod,  
+or for making certain content load before others like may be necessary for sub-towers.  
+Default/0 will use arbitrary ordering.
+
+```csharp
+protected virtual int Order { get; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModContent.BloonID_T_()'></a>

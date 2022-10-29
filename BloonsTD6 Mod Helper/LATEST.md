@@ -7,3 +7,4 @@ A small, modder-oriented update
 - Updated VanillaSprites for v33 and added a `ByName` string lookup
 - Added `AttackModel.SetWeapon` helper extension
 - Some fixes to `ModCustomDisplay` and `ModTowerCustomDisplay`
+- Fixed a niche situation where mod browser mods could load the wrong icons

@@ -42,7 +42,7 @@ public sealed override string BaseDisplay { get; }
 
 ## ModCustomDisplay.LoadAsync Property
 
-Whether to try loading the asset from the bundle asynchronously. Not yet thoroughly tested
+Whether to try loading the asset from the bundle asynchronously.
 
 ```csharp
 public virtual bool LoadAsync { get; }

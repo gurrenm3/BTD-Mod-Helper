@@ -66,10 +66,11 @@ namespace BTD_Mod_Helper.Api
         protected virtual float RegistrationPriority => 5f;
 
         /// <summary>
-        /// The order that this should appear if/when this ModContent is added to lists visible to users. Default/0
-        /// will use arbitrary ordering.
+        /// The order that this ModContent will be loaded/registered in by Mod Helper.
+        /// Useful for changing the ordering that it will appear in in-game relative to other content of this type in your mod,
+        /// or for making certain content load before others like may be necessary for sub-towers.
+        /// Default/0 will use arbitrary ordering.
         /// </summary>
-        /// <exclude/>
         protected virtual int Order => 0;
 
         /// <summary>

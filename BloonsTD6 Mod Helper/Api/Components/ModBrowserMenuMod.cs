@@ -35,6 +35,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
     public bool descriptionShowing;
 
+    public string modName;
     public Action iconAction;
 
     public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
@@ -171,6 +172,7 @@ internal static class ModBrowserMenuModExt
 {
     public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
     {
+        mod.modName = modHelperData.Name;
         mod.Homepage.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.ReadmeUrl!));
         mod.Description.Text.SetText(modHelperData.DisplayDescription);
         mod.InfoButton.Button.SetOnClick(() =>
@@ -191,7 +193,7 @@ internal static class ModBrowserMenuModExt
         Task.Run(async () =>
         {
             var success = await modHelperData.LoadIconFromRepoAsync();
-            if (success)
+            if (success && mod.modName == modHelperData.Name) // make sure the mod panel hasn't been repurposed
             {
                 mod.iconAction = () =>
                 {
