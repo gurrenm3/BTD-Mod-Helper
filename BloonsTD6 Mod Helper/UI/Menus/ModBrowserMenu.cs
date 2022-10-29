@@ -35,6 +35,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private readonly IRatioScorer scorer = ScorerCache.Get<WeightedRatioScorer>();
 
     private IList<ModHelperData> currentMods;
+    private IList<ModHelperData> lastMods;
     private int currentPage;
     private string currentSearch = "";
 
@@ -55,6 +56,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         MelonCoroutines.Start(CreateModTemplates());
 
         sortingMethod = SortingMethod.RecentlyUpdated;
+        lastMods = ModHelperGithub.Mods;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
         modsNeedRefreshing = true;
@@ -100,6 +102,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         GameMenu.scrollRect.rectTransform.localPosition += new Vector3(0, 100, 0);
 
         GameMenu.searchingImg.gameObject.SetActive(true);
+        GameMenu.requiresInternetObj.SetActive(ModHelperGithub.VerifiedModders.Count == 0);
 
         GameMenu.refreshBtn.SetOnClick(RefreshMods);
         GameMenu.firstPageBtn.SetOnClick(() => SetPage(0));
@@ -143,9 +146,15 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     public override void OnMenuUpdate()
     {
-        currentMods ??= ModHelperGithub.Mods;
+        if (!ReferenceEquals(lastMods, ModHelperGithub.Mods))
+        {
+            ModHelper.Msg("Successfully refreshing after mod population");
+            currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
+            modsNeedRefreshing = true;
+        }
+        lastMods = ModHelperGithub.Mods;
 
-        if (modsNeedRefreshing && currentMods != null)
+        if (modsNeedRefreshing && currentMods.Any())
         {
             MelonCoroutines.Start(UpdateModList());
             modsNeedRefreshing = false;

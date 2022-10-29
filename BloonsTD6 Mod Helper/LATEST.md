@@ -9,3 +9,4 @@
 - Some fixes to `ModCustomDisplay` and `ModTowerCustomDisplay`
 - Fixed a niche situation where mod browser mods could load the wrong icons
 - Fixed a crash when exiting the mod browser while a download was in progress
+- Mod Browser will now correctly refresh if Mods haven't finished populating yet when you first open it
