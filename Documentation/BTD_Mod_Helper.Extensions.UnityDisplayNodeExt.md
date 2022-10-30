@@ -12,6 +12,25 @@ public static class UnityDisplayNodeExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; UnityDisplayNodeExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.DumpTextures(thisAssets.Scripts.Unity.Display.UnityDisplayNode,string)'></a>
+
+## UnityDisplayNodeExt.DumpTextures(this UnityDisplayNode, string) Method
+
+Dumps all textures for every renderer in the node
+
+```csharp
+public static void DumpTextures(this Assets.Scripts.Unity.Display.UnityDisplayNode node, string prefix);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.DumpTextures(thisAssets.Scripts.Unity.Display.UnityDisplayNode,string).node'></a>
+
+`node` [Assets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.UnityDisplayNode 'Assets.Scripts.Unity.Display.UnityDisplayNode')
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.DumpTextures(thisAssets.Scripts.Unity.Display.UnityDisplayNode,string).prefix'></a>
+
+`prefix` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.Get3DModels(thisAssets.Scripts.Unity.Display.UnityDisplayNode)'></a>
 
 ## UnityDisplayNodeExt.Get3DModels(this UnityDisplayNode) Method

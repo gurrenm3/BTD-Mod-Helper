@@ -181,4 +181,26 @@ public static partial class UnityDisplayNodeExt
             meshRenderers[index].material.mainTexture.TrySaveToPNG(path);
         }
     }
+
+    /// <summary>
+    /// Dumps all textures for every renderer in the node
+    /// </summary>
+    /// <param name="node"></param>
+    /// <param name="prefix"></param>
+    public static void DumpTextures(this UnityDisplayNode node, string prefix)
+    {
+        foreach (var renderer in node.genericRenderers)
+        {
+            if (renderer.material == null) return;
+
+            var i = 0;
+            foreach (var texture in renderer.material.GetTexturePropertyNames())
+            {
+                if (renderer.material.GetTexture(texture) != null)
+                {
+                    renderer.material.GetTexture(texture).TrySaveToPNG($"{prefix} - {texture} {i++}.png");
+                }
+            }
+        }
+    }
 }

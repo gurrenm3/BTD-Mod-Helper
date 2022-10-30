@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using Assets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
-using MelonLoader.Utils;
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper;
@@ -18,7 +17,7 @@ public static class ModHelper
     #region ModHelperData for the Mod Helper
 
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.0.5";
+    internal const string Version = "3.0.6";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description = "A powerful and easy to use API for modding BTD6. Also the mod that is allowing all of this UI to happen right now :P";
@@ -105,7 +104,7 @@ public static class ModHelper
     /// </summary>
     public static void Log<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
+        ModContent.GetInstance<T>().LoggerInstance.Msg(obj ?? "null");
     }
 
     /// <summary>
@@ -113,7 +112,7 @@ public static class ModHelper
     /// </summary>
     public static void Msg<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Msg(obj);
+        ModContent.GetInstance<T>().LoggerInstance.Msg(obj ?? "null");
     }
 
 
@@ -122,7 +121,7 @@ public static class ModHelper
     /// </summary>
     public static void Error<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Error(obj);
+        ModContent.GetInstance<T>().LoggerInstance.Error(obj ?? "null");
     }
 
     /// <summary>
@@ -130,7 +129,7 @@ public static class ModHelper
     /// </summary>
     public static void Warning<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Warning(obj);
+        ModContent.GetInstance<T>().LoggerInstance.Warning(obj ?? "null");
     }
 
     /// <summary>
@@ -140,7 +139,7 @@ public static class ModHelper
     {
         lock (Main.LoggerInstance)
         {
-            Main.LoggerInstance.Msg(obj);
+            Main.LoggerInstance.Msg(obj ?? "null");
         }
     }
 
@@ -151,7 +150,7 @@ public static class ModHelper
     {
         lock (Main.LoggerInstance)
         {
-            Main.LoggerInstance.Msg(obj);
+            Main.LoggerInstance.Msg(obj ?? "null");
         }
     }
 
@@ -162,7 +161,7 @@ public static class ModHelper
     {
         lock (Main.LoggerInstance)
         {
-            Main.LoggerInstance.Error(obj);
+            Main.LoggerInstance.Error(obj ?? "null");
         }
     }
 
@@ -173,7 +172,7 @@ public static class ModHelper
     {
         lock (Main.LoggerInstance)
         {
-            Main.LoggerInstance.Warning(obj);
+            Main.LoggerInstance.Warning(obj ?? "null");
         }
     }
 
