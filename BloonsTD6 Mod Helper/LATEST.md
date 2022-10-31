@@ -1,13 +1,1 @@
-- These official released versions are now cross-compatible with both regular MelonLoader and [net6 MelonLoader](https://github.com/LavaGang/MelonLoader/actions/workflows/build.yml?query=branch%3Acoreclr-reborn)
-  - The build-net6.yml github action will still be in effect just to keep an eye on compatibility with compiling for net6
-- Added a spinner icons for when background tasks are in progress in mods menu / browser
-- Added the `OnGameDataLoaded` hook
-- Added `BloonsMod.AddContent` methods
-- Prevented non-vanilla towers from being chosen for Insta Monkeys (theoretically)
-- Updated VanillaSprites for v33 and added a `ByName` string lookup
-- Added `AttackModel.SetWeapon` helper extension
-- Some fixes to `ModCustomDisplay` and `ModTowerCustomDisplay`
-- Fixed a niche situation where mod browser mods could load the wrong icons
-- Fixed a crash when exiting the mod browser while a download was in progress
-- Mod Browser will now correctly refresh if Mods haven't finished populating yet when you first open it
-- Re-added UnityDisplayNode DumpTextures extension
+- Can close the Round Set Changer by clicking elsewhere on the background

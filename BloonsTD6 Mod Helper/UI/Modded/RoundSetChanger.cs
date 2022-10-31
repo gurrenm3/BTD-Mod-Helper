@@ -42,6 +42,8 @@ public static class RoundSetChanger
     private static readonly Dictionary<string, ModHelperImage> CheckMarks = new();
     private static List<ModRoundSet> modRoundSets;
 
+    private static ModHelperPanel invisibleCancel;
+
     private static void CreatePanel(GameObject screen)
     {
         CheckMarks.Clear();
@@ -108,6 +110,7 @@ public static class RoundSetChanger
                 StopOptionsMode();
                 RoundSetOverride = id;
                 button.Image.SetSprite(icon);
+                MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
             }));
 
         roundButton.AddText(
@@ -134,19 +137,29 @@ public static class RoundSetChanger
 
     private static void StopOptionsMode()
     {
-        MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         HideOptions();
         RevealButton();
     }
 
     private static void Init()
     {
-        var screen = CommonForegroundScreen.instance.transform;
-        var roundSetChanger = screen.FindChild("RoundSetChangerPanel");
+        var foregroundScreen = CommonForegroundScreen.instance.transform;
+        var backgroundScreen = CommonBackgroundScreen.instance.transform;
+        var roundSetChanger = foregroundScreen.FindChild("RoundSetChangerPanel");
         if (roundSetChanger == null)
         {
-            CreatePanel(screen.gameObject);
+            CreatePanel(foregroundScreen.gameObject);
+            CreateCancel(backgroundScreen.gameObject);
         }
+    }
+    
+    private static void CreateCancel(GameObject screen)
+    {
+        invisibleCancel = screen.AddModHelperPanel(new Info("InvisibleCancel", InfoPreset.FillParent));
+        var cancel = invisibleCancel.AddComponent<Button>();
+        cancel.SetOnClick(StopOptionsMode);
+        invisibleCancel.SetActive(false);
+        invisibleCancel.AddComponent<Text>();
     }
 
     private static void RevealButton()
@@ -170,6 +183,7 @@ public static class RoundSetChanger
         {
             image.SetActive(RoundSetOverride == id);
         }
+        invisibleCancel.SetActive(true);
     }
 
     private static void HideOptions()
@@ -177,6 +191,7 @@ public static class RoundSetChanger
         optionsPanel.GetComponent<Animator>().Play("PopupScaleOut");
         TaskScheduler.ScheduleTask(() => optionsPanel.SetActive(false), ScheduleType.WaitForFrames, AnimationTicks);
         CommonForegroundScreen.instance.GetComponentInChildren<FriendLoginButton>(true).gameObject.SetActive(true);
+        invisibleCancel.SetActive(false);
     }
 
     private static void Show()
@@ -210,14 +225,39 @@ public static class RoundSetChanger
     {
         if (!MelonMain.ShowRoundsetChanger) return;
 
-        if (ShowOnMenus.Contains(newMenu) && !ShowOnMenus.Contains(currentMenu))
+        if (ShowOnMenus.Contains(newMenu))
         {
-            Show();
+            if (!ShowOnMenus.Contains(currentMenu))
+            {
+                Show();
+            }
+            
+            ModifyBlockClicks();
         }
 
         if (ShowOnMenus.Contains(currentMenu) && !ShowOnMenus.Contains(newMenu))
         {
             Hide();
         }
+    }
+
+    internal static void ModifyBlockClicks()
+    {
+        TaskScheduler.ScheduleTask(() =>
+        {
+            var gameMenu = MenuManager.instance.GetCurrentMenu();
+            var blockClicks = gameMenu.transform.GetComponentFromChildrenByName<RectTransform>("BlockClicks");
+            if (blockClicks != null && !blockClicks.gameObject.HasComponent<Button>())
+            {
+                var cancel = blockClicks.gameObject.AddComponent<Button>();
+                cancel.AddOnClick(() =>
+                {
+                    if (optionsPanel != null && optionsPanel.isActiveAndEnabled)
+                    {
+                        StopOptionsMode();
+                    }
+                });
+            }
+        }, ScheduleType.WaitForFrames, 10);
     }
 }
