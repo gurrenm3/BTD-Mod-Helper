@@ -26,7 +26,7 @@ public static class ModHelper
 
     #endregion
 
-    internal const string Branch = "master";
+    internal const string Branch = "preview";
 
     /// <summary>
     /// Directory where the Mod Helper stores most of its extra info
