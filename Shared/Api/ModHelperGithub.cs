@@ -38,7 +38,8 @@ internal static class ModHelperGithub
 
     public static readonly HashSet<string> VerifiedModders = new();
     public static readonly HashSet<string> BannedModders = new();
-    public static bool ForceVerifiedOnly { get; private set; }
+    public static readonly HashSet<string> VerifiedTopics = new();
+    private static bool ForceVerifiedOnly { get; set; }
 
     public static GitHubClient Client { get; private set; }
 
@@ -46,7 +47,7 @@ internal static class ModHelperGithub
 
     public static int RemainingSearches => rateLimit?.Resources?.Search?.Remaining ?? -1;
 
-    private static bool VerifiedOnly => ForceVerifiedOnly || !MelonMain.ShowUnverifiedModBrowserContent;
+    public static bool VerifiedOnly => ForceVerifiedOnly || !MelonMain.ShowUnverifiedModBrowserContent;
 
     public static IEnumerable<ModHelperData> VisibleMods => Mods
         .Where(data => data.RepoName != ModHelper.RepoName &&
@@ -79,10 +80,9 @@ internal static class ModHelperGithub
         Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
 
         Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
-        var duration = DateTime.Now - start;
+        var time = DateTime.Now - start;
 
-        ModHelper.Msg(
-            $"Finished getting mods from github, found {Mods.Count} mods in {duration.TotalSeconds:F1} seconds");
+        ModHelper.Msg($"Finished getting mods from github, found {Mods.Count} mods in {time.TotalSeconds:F1} seconds");
 
         UpdateRateLimit();
     }
@@ -102,6 +102,14 @@ internal static class ModHelperGithub
             foreach (var jToken in jobject.GetValue("banned")!)
             {
                 BannedModders.Add(jToken.ToObject<string>());
+            }
+
+            if (jobject.ContainsKey("topics"))
+            {
+                foreach (var jToken in jobject.GetValue("topics")!)
+                {
+                    VerifiedTopics.Add(jToken.ToObject<string>());
+                }
             }
         }
         catch (Exception e)

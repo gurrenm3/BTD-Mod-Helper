@@ -56,7 +56,10 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
         var modTopics = ModHelperGithub.VisibleMods.SelectMany(data => data.Topics)
-            .Where(s => s != ModHelperGithub.RepoTopic && s != ModHelperGithub.MonoRepoTopic)
+            .Where(s =>
+                s != ModHelperGithub.RepoTopic &&
+                s != ModHelperGithub.MonoRepoTopic &&
+                (!ModHelperGithub.VerifiedOnly || ModHelperGithub.VerifiedTopics.Contains(s)))
             .GroupBy(topic => topic)
             .ToDictionary(grouping => grouping.Key, grouping => grouping.Count());
         
