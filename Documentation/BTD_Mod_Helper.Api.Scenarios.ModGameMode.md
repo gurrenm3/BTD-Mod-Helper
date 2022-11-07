@@ -106,3 +106,18 @@ public abstract void ModifyBaseGameModeModel(Assets.Scripts.Models.Towers.Mods.M
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Assets.Scripts.Models.Towers.Mods.ModModel).gameModeModel'></a>
 
 `gameModeModel` [Assets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Mods.ModModel 'Assets.Scripts.Models.Towers.Mods.ModModel')
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Assets.Scripts.Models.GameModel)'></a>
+
+## ModGameMode.ModifyGameModel(GameModel) Method
+
+Modifies the GameModel that's used for matches played with this mode
+
+```csharp
+public virtual void ModifyGameModel(Assets.Scripts.Models.GameModel gameModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Assets.Scripts.Models.GameModel).gameModel'></a>
+
+`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')

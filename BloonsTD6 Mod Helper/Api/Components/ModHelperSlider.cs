@@ -113,8 +113,7 @@ public class ModHelperSlider : ModHelperComponent
         var handleContainer = modHelperSlider.AddPanel(new Info("HandleContainer", InfoPreset.FillParent));
 
         var pip = handleContainer.AddImage(
-            new Info("Handle", handleSize.x, handleSize.y - info.Height),
-            VanillaSprites.BlueBtnCircleSmall
+            new Info("Handle", handleSize.x, handleSize.y - info.Height), VanillaSprites.BlueBtnCircleSmall
         );
         slider.handleRect = pip;
         slider.m_HandleContainerRect = handleContainer;

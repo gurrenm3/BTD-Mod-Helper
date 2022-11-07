@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
@@ -12,6 +13,8 @@ namespace BTD_Mod_Helper.Api.Scenarios;
 /// </summary>
 public abstract class ModGameMode : NamedModContent
 {
+    internal static readonly System.Collections.Generic.Dictionary<string, ModGameMode> Cache = new();
+
     /// <summary>
     /// Registers after Round Sets
     /// </summary>
@@ -79,6 +82,7 @@ public abstract class ModGameMode : NamedModContent
         {
             Game.instance.model.mods = Game.instance.model.mods.AddTo(model);
             Game.instance.model.AddChildDependant(model);
+            Cache[Id] = this;
         }
         finally
         {
@@ -104,7 +108,7 @@ public abstract class ModGameMode : NamedModContent
             modModel = Game.instance.model.GetModModel(BaseGameMode).Duplicate();
             modModel.toggles = new[] {Id};
             modModel.preApplies = PreApplies;
-                
+
             foreach (var mutator in modModel.mutatorMods)
             {
                 mutator.name = mutator.name = mutator.name.Replace(modModel.name, Id);
@@ -114,5 +118,14 @@ public abstract class ModGameMode : NamedModContent
         modModel.name = modModel._name = Id;
 
         return modModel;
+    }
+
+    /// <summary>
+    /// Modifies the GameModel that's used for matches played with this mode
+    /// </summary>
+    /// <param name="gameModel"></param>
+    public virtual void ModifyGameModel(GameModel gameModel)
+    {
+
     }
 }

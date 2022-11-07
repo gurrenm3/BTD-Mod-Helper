@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Models;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
@@ -13,6 +14,8 @@ namespace BTD_Mod_Helper.Api.Bloons;
 /// </summary>
 public abstract class ModRoundSet : NamedModContent
 {
+    internal static readonly Dictionary<string, ModRoundSet> Cache = new();
+
     /// <summary>
     /// RoundSets register Bloons and before GameModes
     /// </summary>
@@ -67,6 +70,7 @@ public abstract class ModRoundSet : NamedModContent
             Game.instance.model.roundSets = Game.instance.model.roundSets.AddTo(model);
             // Game.instance.model.roundSetsByName[Id] = model;
             Game.instance.model.AddChildDependant(model);
+            Cache[Id] = this;
         }
         finally
         {
@@ -77,6 +81,7 @@ public abstract class ModRoundSet : NamedModContent
                 Game.instance.model.RemoveChildDependant(model);
             });
         }
+
     }
 
     /// <inheritdoc />
@@ -177,6 +182,15 @@ public abstract class ModRoundSet : NamedModContent
     {
         return null;
     }
+    
+    /// <summary>
+    /// Modifies the GameModel that's used for matches played with this round set
+    /// </summary>
+    /// <param name="gameModel"></param>
+    public virtual void ModifyGameModel(GameModel gameModel)
+    {
+        
+    }
 
     internal string HintKey(int round) => $"{Id} Hint {round}";
 
@@ -197,4 +211,6 @@ public abstract class ModRoundSet : NamedModContent
 
         return roundSetModel;
     }
+    
+    
 }

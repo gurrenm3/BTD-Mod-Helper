@@ -111,18 +111,18 @@ namespace BTD_Mod_Helper.Api.ModOptions
 
             if (button)
             {
-                var text = value ? enabledText : disabledText;
                 var buttonComponent = option.BottomRow.AddButton(
                     new Info("Button", width: 562, height: 200), value ? enabledButton : disabledButton, null
                 );
-                buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), text, 80f);
+                buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), value ? enabledText : disabledText,
+                    80f);
 
                 currentAction = (_, butt) =>
                 {
                     if (butt != null)
                     {
                         butt.Image.SetSprite(value ? enabledButton : disabledButton);
-                        butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(text);
+                        butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(value ? enabledText : disabledText);
                     }
                 };
                 buttonComponent.Button.onClick.AddListener(new Action(() =>

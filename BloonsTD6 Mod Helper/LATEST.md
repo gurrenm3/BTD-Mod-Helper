@@ -1,1 +1,5 @@
 - Can close the Round Set Changer by clicking elsewhere on the background
+- Fixed custom game mode RemoveMutators extension
+- Added direct ModGameMode.ModifyGameModel and ModRoundSet.ModifyGameModel overrides
+- Fixed ModSettingBool buttons not text switching
+- Fixed default position of ModSetting sliders with step sizes

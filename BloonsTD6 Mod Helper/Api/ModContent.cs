@@ -15,30 +15,21 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// </summary>
     /// <param name="mapName"></param>
     /// <returns></returns>
-    public static ModMap GetModMap(string mapName)
-    {            
-        return GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName);
-    }
+    public static ModMap GetModMap(string mapName) => GetContent<ModMap>().FirstOrDefault(map => map.Name == mapName);
 
     /// <summary>
     /// Gets the ID for the given ModGameMode
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string GameModeId<T>() where T : ModGameMode
-    {
-        return GetInstance<T>().Id;
-    }
+    public static string GameModeId<T>() where T : ModGameMode => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the ID for the given ModRoundSet
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string RoundSetId<T>() where T : ModRoundSet
-    {
-        return GetInstance<T>().Id;
-    }
+    public static string RoundSetId<T>() where T : ModRoundSet => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the internal tower name/id for a ModTower
@@ -50,7 +41,7 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// <returns>The tower name/id</returns>
     public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
     {
-        return GetInstance<T>().TowerId(new[] { top, mid, bot });
+        return GetInstance<T>().TowerId(new[] {top, mid, bot});
     }
 
     /// <summary>
@@ -71,20 +62,14 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// </summary>
     /// <typeparam name="T">The ModUpgrade type</typeparam>
     /// <returns>The upgrade name/id</returns>
-    public static string UpgradeID<T>() where T : ModUpgrade
-    {
-        return GetInstance<T>().Id;
-    }
+    public static string UpgradeID<T>() where T : ModUpgrade => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the internal tower set id for a given TowerSet
     /// </summary>
     /// <typeparam name="T">The ModUpgrade type</typeparam>
     /// <returns>The upgrade name/id</returns>
-    public static string TowerSet<T>() where T : ModTowerSet
-    {
-        return GetInstance<T>().Id;
-    }
+    public static string TowerSet<T>() where T : ModTowerSet => GetInstance<T>().Id;
 
     /// <inheritdoc />
     public int CompareTo(ModContent other)

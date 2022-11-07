@@ -159,6 +159,21 @@ public virtual void ModifyEasyRoundModels(Assets.Scripts.Models.Rounds.RoundMode
 
 `round` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyGameModel(Assets.Scripts.Models.GameModel)'></a>
+
+## ModRoundSet.ModifyGameModel(GameModel) Method
+
+Modifies the GameModel that's used for matches played with this round set
+
+```csharp
+public virtual void ModifyGameModel(Assets.Scripts.Models.GameModel gameModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyGameModel(Assets.Scripts.Models.GameModel).gameModel'></a>
+
+`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
+
 <a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyHardRoundModels(Assets.Scripts.Models.Rounds.RoundModel,int)'></a>
 
 ## ModRoundSet.ModifyHardRoundModels(RoundModel, int) Method

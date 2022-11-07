@@ -246,6 +246,7 @@ public static class RoundSetChanger
         TaskScheduler.ScheduleTask(() =>
         {
             var gameMenu = MenuManager.instance.GetCurrentMenu();
+            if (gameMenu == null) return;
             var blockClicks = gameMenu.transform.GetComponentFromChildrenByName<RectTransform>("BlockClicks");
             if (blockClicks != null && !blockClicks.gameObject.HasComponent<Button>())
             {

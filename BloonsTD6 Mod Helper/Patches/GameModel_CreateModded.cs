@@ -5,8 +5,10 @@ using Assets.Scripts.Models.Bloons;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Mods;
 using Assets.Scripts.Unity;
+using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppSystem;
@@ -76,6 +78,16 @@ internal class GameModel_CreateModded
                     ModHelper.Error(e);
                 }
             }
+        }
+
+        if (ModRoundSet.Cache.TryGetValue(result.bloonSet, out var modRoundSet))
+        {
+            modRoundSet.ModifyGameModel(result);
+        }
+        
+        if (ModGameMode.Cache.TryGetValue(InGameData.CurrentGame.selectedMode, out var modGameMode))
+        {
+            modGameMode.ModifyGameModel(result);
         }
 
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));

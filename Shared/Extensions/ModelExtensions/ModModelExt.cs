@@ -151,7 +151,7 @@ public static class ModModelExt
         {
             model.mutatorMods = model.mutatorMods.Where(b =>
             {
-                if (predicate(b))
+                if (!predicate(b))
                 {
                     return true;
                 }
