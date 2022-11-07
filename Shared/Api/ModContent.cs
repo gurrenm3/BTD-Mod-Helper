@@ -548,20 +548,20 @@ namespace BTD_Mod_Helper.Api
         /// <summary>
         /// Gets a BloonsMod by its name, or returns null if none are loaded with that name
         /// </summary>
-        public static BloonsMod GetMod(string name)
-        {
-            return ModHelper.Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
-        }
+        [Obsolete("Use ModHelper.GetMod instead")]
+        public static BloonsMod GetMod(string name) => ModHelper.GetMod(name);
 
         /// <summary>
         /// Returns whether a mod with the given name is installed
         /// </summary>
-        public static bool HasMod(string name) => GetMod(name) != null;
+        [Obsolete("Use ModHelper.HasMod instead")]
+        public static bool HasMod(string name) => ModHelper.HasMod(name);
 
         /// <summary>
         /// Returns whether a mod with the given name is installed, and pass it to the out param if it is
         /// </summary>
-        public static bool HasMod(string name, out BloonsMod bloonsMod) => (bloonsMod = GetMod(name)) != null;
+        [Obsolete("Use ModHelper.HasMod instead")]
+        public static bool HasMod(string name, out BloonsMod bloonsMod) => ModHelper.HasMod(name, out bloonsMod);
 
 
         /// <summary>

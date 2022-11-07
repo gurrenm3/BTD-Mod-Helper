@@ -92,7 +92,7 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// <summary>
     /// Allows you to define ways for other mods to interact with this mod. Other mods could do:
     /// <code>
-    /// ModContent.GetMod("YourModName")?.Call("YourOperationName", ...);
+    /// ModHelper.GetMod("YourModName")?.Call("YourOperationName", ...);
     /// </code>
     /// to execute functionality here.
     /// <br/>

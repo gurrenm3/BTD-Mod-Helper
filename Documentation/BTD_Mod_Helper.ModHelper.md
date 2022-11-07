@@ -112,6 +112,83 @@ public static void Error<T>(object obj)
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
+<a name='BTD_Mod_Helper.ModHelper.GetMod(string)'></a>
+
+## ModHelper.GetMod(string) Method
+
+Gets a BloonsMod by its name, or returns null if none are loaded with that name
+
+```csharp
+public static BTD_Mod_Helper.BloonsMod GetMod(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.ModHelper.GetMod(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+<a name='BTD_Mod_Helper.ModHelper.GetMod_T_()'></a>
+
+## ModHelper.GetMod<T>() Method
+
+Gets the instance of a specific BloonsMod by its type
+
+```csharp
+public static T GetMod<T>()
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.ModHelper.GetMod_T_().T'></a>
+
+`T`
+
+#### Returns
+[T](BTD_Mod_Helper.ModHelper.md#BTD_Mod_Helper.ModHelper.GetMod_T_().T 'BTD_Mod_Helper.ModHelper.GetMod<T>().T')
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string)'></a>
+
+## ModHelper.HasMod(string) Method
+
+Returns whether a mod with the given name is installed
+
+```csharp
+public static bool HasMod(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
+
+## ModHelper.HasMod(string, BloonsMod) Method
+
+Returns whether a mod with the given name is installed, and pass it to the out param if it is
+
+```csharp
+public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod).bloonsMod'></a>
+
+`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.ModHelper.Log_T_(object)'></a>
 
 ## ModHelper.Log<T>(object) Method

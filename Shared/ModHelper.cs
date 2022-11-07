@@ -17,7 +17,7 @@ public static class ModHelper
     #region ModHelperData for the Mod Helper
 
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.0.6";
+    internal const string Version = "3.0.7";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description = "A powerful and easy to use API for modding BTD6. Also the mod that is allowing all of this UI to happen right now :P";
@@ -96,7 +96,27 @@ public static class ModHelper
 
         ModHelperData.LoadAll();
     }
+    
+    /// <summary>
+    /// Gets a BloonsMod by its name, or returns null if none are loaded with that name
+    /// </summary>
+    public static BloonsMod GetMod(string name) => Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
 
+    /// <summary>
+    /// Gets the instance of a specific BloonsMod by its type
+    /// </summary>
+    public static T GetMod<T>() where T : BloonsMod => Melon<T>.Instance;
+    
+    /// <summary>
+    /// Returns whether a mod with the given name is installed
+    /// </summary>
+    public static bool HasMod(string name) => GetMod(name) != null;
+
+    /// <summary>
+    /// Returns whether a mod with the given name is installed, and pass it to the out param if it is
+    /// </summary>
+    public static bool HasMod(string name, out BloonsMod bloonsMod) => (bloonsMod = GetMod(name)) != null;
+    
     #region Console Messages
 
     /// <summary>
@@ -104,7 +124,7 @@ public static class ModHelper
     /// </summary>
     public static void Log<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Msg(obj ?? "null");
+        GetMod<T>().LoggerInstance.Msg(obj ?? "null");
     }
 
     /// <summary>
@@ -112,7 +132,7 @@ public static class ModHelper
     /// </summary>
     public static void Msg<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Msg(obj ?? "null");
+        GetMod<T>().LoggerInstance.Msg(obj ?? "null");
     }
 
 
@@ -121,7 +141,7 @@ public static class ModHelper
     /// </summary>
     public static void Error<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Error(obj ?? "null");
+        GetMod<T>().LoggerInstance.Error(obj ?? "null");
     }
 
     /// <summary>
@@ -129,7 +149,7 @@ public static class ModHelper
     /// </summary>
     public static void Warning<T>(object obj) where T : BloonsMod
     {
-        ModContent.GetInstance<T>().LoggerInstance.Warning(obj ?? "null");
+        GetMod<T>().LoggerInstance.Warning(obj ?? "null");
     }
 
     /// <summary>
@@ -205,10 +225,7 @@ public static class ModHelper
     }
 
 #if BloonsTD6
-    internal static void PerformHook(Action<BloonsTD6Mod> action)
-    {
-        PerformHook<BloonsTD6Mod>(action);
-    }
+    internal static void PerformHook(Action<BloonsTD6Mod> action) => PerformHook<BloonsTD6Mod>(action);
 #elif BloonsAT
     internal static void PerformHook(System.Action<BloonsATMod> action)
     {
