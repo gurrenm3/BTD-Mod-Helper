@@ -36,8 +36,11 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private IList<ModHelperData> currentMods;
     private IList<ModHelperData> lastMods;
+    private IList<string> topics;
+    private IList<string> topicLabels;
     private int currentPage;
     private string currentSearch = "";
+    private string currentTopic;
 
     private SortingMethod sortingMethod = SortingMethod.RecentlyUpdated;
 
@@ -49,6 +52,28 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     public override bool OnMenuOpened(Object obj)
     {
         mods = new ModBrowserMenuMod[ModsPerPage];
+        sortingMethod = SortingMethod.RecentlyUpdated;
+        currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
+
+        var modTopics = ModHelperGithub.VisibleMods.SelectMany(data => data.Topics)
+            .Where(s =>
+                s != ModHelperGithub.RepoTopic &&
+                s != ModHelperGithub.MonoRepoTopic &&
+                (!ModHelperGithub.VerifiedOnly || ModHelperGithub.VerifiedTopics.Contains(s)))
+            .GroupBy(topic => topic)
+            .ToDictionary(grouping => grouping.Key, grouping => grouping.Count());
+        
+        topics = modTopics
+            .OrderByDescending(pair => pair.Value)
+            .Select(pair => pair.Key)
+            .Prepend(null)
+            .ToList();
+        topicLabels = modTopics
+            .OrderByDescending(pair => pair.Value)
+            .Select(pair => $"{pair.Key} ({pair.Value})")
+            .Prepend("Filter by Topic")
+            .ToList();
+
         ModifyExistingElements();
         AddNewElements();
 
@@ -120,7 +145,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1),
             }, layoutAxis: RectTransform.Axis.Horizontal, padding: 50);
 
-        topArea.AddDropdown(new Info("Sorting", width: 1000, height: 150),
+        topArea.AddDropdown(new Info("Sorting", 1000, 150),
             SortingMethods.Select(method => method.ToString().Spaced()).ToIl2CppList(), 600,
             new Action<int>(i =>
             {
@@ -130,7 +155,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         topArea.AddPanel(new Info("Filler 1", InfoPreset.Flex));
 
-        topArea.AddInputField(new Info("Searching", width: 1500, height: 150), currentSearch,
+        topArea.AddInputField(new Info("Searching", 1500, 150), currentSearch,
             VanillaSprites.BlueInsertPanelRound, new Action<string>(
                 s =>
                 {
@@ -141,7 +166,12 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         topArea.AddPanel(new Info("Filler 2", InfoPreset.Flex));
 
-        topArea.AddPanel(new Info("Toggles", width: 1000, height: 150));
+        topArea.AddDropdown(new Info("Filter", 1000, 150), topicLabels.ToIl2CppList(), 600,
+            new Action<int>(i =>
+            {
+                currentTopic = topics[i];
+                RecalculateCurrentMods();
+            }), VanillaSprites.BlueInsertPanelRound, 80f);
     }
 
     public override void OnMenuUpdate()
@@ -176,6 +206,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         {
             // ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
             var filteredMods = ModHelperGithub.VisibleMods
+                .Where(data => string.IsNullOrEmpty(currentTopic) || data.Topics.Contains(currentTopic))
                 .Where(data => string.IsNullOrEmpty(currentSearch) ||
                                scorer.Score(currentSearch.ToLower(), data.DisplayName.ToLower()) >= SearchCutoff ||
                                scorer.Score(currentSearch.ToLower(), data.RepoOwner.ToLower()) >= SearchCutoff ||
