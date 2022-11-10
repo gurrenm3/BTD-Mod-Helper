@@ -192,7 +192,7 @@ public void AddContent(System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api
 Allows you to define ways for other mods to interact with this mod. Other mods could do:  
   
 ```csharp  
-ModContent.GetMod("YourModName")?.Call("YourOperationName", ...);  
+ModHelper.GetMod("YourModName")?.Call("YourOperationName", ...);  
 ```  
 to execute functionality here.  
 <br/>

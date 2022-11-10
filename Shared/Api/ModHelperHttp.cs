@@ -89,7 +89,7 @@ public class ModHelperHttp
         }
         finally
         {
-            if (ModHelper.IsNet6)
+            if (!ModHelper.IsNet6)
             {
                 Client.MaxResponseContentBufferSize = (long) (MelonMain.NormalRequestLimit * 1e6);
             }
