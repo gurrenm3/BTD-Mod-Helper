@@ -30,3 +30,25 @@ public static void Export(Il2CppSystem.Object data, string path);
 <a name='BTD_Mod_Helper.Api.Helpers.GameModelExporter.Export(Il2CppSystem.Object,string).path'></a>
 
 `path` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Helpers.GameModelExporter.TryExport(Il2CppSystem.Object,string)'></a>
+
+## GameModelExporter.TryExport(Object, string) Method
+
+Exports a Model to the path, returning whether it was successful. Does not log anything.
+
+```csharp
+public static bool TryExport(Il2CppSystem.Object data, string path);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Helpers.GameModelExporter.TryExport(Il2CppSystem.Object,string).data'></a>
+
+`data` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+
+<a name='BTD_Mod_Helper.Api.Helpers.GameModelExporter.TryExport(Il2CppSystem.Object,string).path'></a>
+
+`path` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

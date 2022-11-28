@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 
@@ -26,7 +27,6 @@ public abstract partial class ModTower : NamedModContent
         new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
 
     internal List<TowerModel> towerModels;
-    internal readonly int[] tierMaxes;
     internal readonly List<ModTowerDisplay> displays = new();
     internal virtual ModTowerSet ModTowerSet => null;
     internal virtual int UpgradePaths => 3;
@@ -248,7 +248,7 @@ public abstract partial class ModTower : NamedModContent
     /// falling back to the tower's own base <see cref="PortraitReference"/> by default.
     /// </summary>
     /// <param name="tiers"></param>
-    public SpriteReference GetPortraitReferenceForTiers(int[] tiers) => upgrades.Cast<ModUpgrade>()
+    public SpriteReference GetPortraitReferenceForTiers(int[] tiers) => Upgrades.Cast<ModUpgrade>()
         .Where(modUpgrade => modUpgrade != null &&
                              tiers[modUpgrade.Path] >= modUpgrade.Tier &&
                              modUpgrade.PortraitReference is not null)

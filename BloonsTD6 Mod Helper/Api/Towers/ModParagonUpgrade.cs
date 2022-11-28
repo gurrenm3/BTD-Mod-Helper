@@ -13,7 +13,8 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// </summary>
 public abstract class ModParagonUpgrade : ModUpgrade
 {
-    internal override void AssignToModTower()
+    /// <inheritdoc />
+    protected internal override void AssignToModTower()
     {
         try
         {

@@ -60,15 +60,27 @@ public abstract class ModBuffIcon : NamedModContent
     /// <summary>
     /// Makes a support model use this as its buff indicator
     /// </summary>
-    /// <param name="supportModel">The support model to apply to</param>
-    public void ApplyTo(SupportModel supportModel)
+    /// <param name="model">The support model to apply to</param>
+    public void ApplyTo(SupportModel model)
     {
-        supportModel.buffLocsName = Icon;
-        supportModel.buffIconName = Id;
-        supportModel.isGlobal = GlobalRange;
-        supportModel.maxStackSize = MaxStackSize;
-        supportModel.onlyShowBuffIfMutated = OnlyShowBuffIfMutated;
-        supportModel.showBuffIcon = true;
+        model.buffLocsName = Icon;
+        model.buffIconName = Id;
+        model.isGlobal = GlobalRange;
+        model.maxStackSize = MaxStackSize;
+        model.onlyShowBuffIfMutated = OnlyShowBuffIfMutated;
+        model.showBuffIcon = true;
+    }
+    
+    /// <summary>
+    /// Makes a support model use this as its buff indicator
+    /// </summary>
+    /// <param name="model">The support model to apply to</param>
+    public void ApplyTo(TowerBehaviorBuffModel model)
+    {
+        model.buffLocsName = Icon;
+        model.buffIconName = Id;
+        model.isGlobalRange = GlobalRange;
+        model.maxStackSize = MaxStackSize;
     }
     
     /// <inheritdoc />
