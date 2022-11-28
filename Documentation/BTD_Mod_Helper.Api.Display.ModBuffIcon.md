@@ -126,12 +126,29 @@ public virtual bool OnlyShowBuffIfMutated { get; }
 Makes a support model use this as its buff indicator
 
 ```csharp
-public void ApplyTo(Assets.Scripts.Models.Towers.Behaviors.SupportModel supportModel);
+public void ApplyTo(Assets.Scripts.Models.Towers.Behaviors.SupportModel model);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Assets.Scripts.Models.Towers.Behaviors.SupportModel).supportModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Assets.Scripts.Models.Towers.Behaviors.SupportModel).model'></a>
 
-`supportModel` [Assets.Scripts.Models.Towers.Behaviors.SupportModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Behaviors.SupportModel 'Assets.Scripts.Models.Towers.Behaviors.SupportModel')
+`model` [Assets.Scripts.Models.Towers.Behaviors.SupportModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Behaviors.SupportModel 'Assets.Scripts.Models.Towers.Behaviors.SupportModel')
+
+The support model to apply to
+
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Assets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel)'></a>
+
+## ModBuffIcon.ApplyTo(TowerBehaviorBuffModel) Method
+
+Makes a support model use this as its buff indicator
+
+```csharp
+public void ApplyTo(Assets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Assets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel).model'></a>
+
+`model` [Assets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel 'Assets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel')
 
 The support model to apply to

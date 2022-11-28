@@ -19,59 +19,85 @@ public static class GameModelExporter
     /// </summary>
     internal static void ExportAll()
     {
-        ModHelper.Log("Exporting Towers to local files");
+        var total = 0;
+        var success = 0;
+        ModHelper.Msg("Exporting game data, this will take a couple seconds...");
         foreach (var tower in Game.instance.model.towers)
         {
-            Export(tower, $"Towers/{tower.baseId}/{tower.name}.json");
-        }
+            if (TryExport(tower, $"Towers/{tower.baseId}/{tower.name}.json")) success++;
+            total++;
 
-        ModHelper.Log("Exporting Upgrades to local files");
+            if (total % 500 == 0)
+            {
+                ModHelper.Msg($"{total} TowerModels in...");
+            }
+        }
+        ModHelper.Log($"Exported {success}/{total} TowerModels to {Path.Combine(FileIOHelper.sandboxRoot, "Towers")}");
+
+
+        total = success = 0;
         foreach (var upgrade in Game.instance.model.upgrades)
         {
-            Export(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json");
+            if (TryExport(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json")) success++;
+            total++;
         }
+        ModHelper.Log(
+            $"Exported {success}/{total} UpgradeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Upgrades")}");
 
-        ModHelper.Log("Exporting Bloons to local files");
+        total = success = 0;
         foreach (var bloon in Game.instance.model.bloons)
         {
-            Export(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json");
+            if (TryExport(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json")) success++;
+            total++;
         }
+        ModHelper.Log($"Exported {success}/{total} BloonModels to {Path.Combine(FileIOHelper.sandboxRoot, "Bloons")}");
 
 
-        ModHelper.Log("Exporting Powers to local files");
+        total = success = 0;
         foreach (var model in Game.instance.model.powers)
         {
-            Export(model, $"Powers/{model.name}.json");
+            if (TryExport(model, $"Powers/{model.name}.json")) success++;
+            total++;
         }
+        ModHelper.Log($"Exported {success}/{total} PowerModels to {Path.Combine(FileIOHelper.sandboxRoot, "Powers")}");
 
-        ModHelper.Log("Exporting Mods to local files");
+        total = success = 0;
         foreach (var model in Game.instance.model.mods)
         {
-            Export(model, $"Mods/{model.name}.json");
+            if (TryExport(model, $"Mods/{model.name}.json")) success++;
+            total++;
         }
+        ModHelper.Log($"Exported {success}/{total} ModModels to {Path.Combine(FileIOHelper.sandboxRoot, "Mods")}");
 
-        ModHelper.Log("Exporting Rounds to local files");
+        total = success = 0;
         foreach (var roundSet in Game.instance.model.roundSets)
         {
             for (var i = 0; i < roundSet.rounds.Count; i++)
             {
-                Export(roundSet.rounds[i], $"Rounds/{roundSet.name}/{i + 1}.json");
+                if (TryExport(roundSet.rounds[i], $"Rounds/{roundSet.name}/{i + 1}.json")) success++;
+                total++;
             }
         }
+        ModHelper.Log($"Exported {success}/{total} RoundModels to {Path.Combine(FileIOHelper.sandboxRoot, "Rounds")}");
 
-        ModHelper.Log("Exporting maps to local files");
+        total = success = 0;
         foreach (var mapSetMap in GameData.Instance.mapSet.maps)
         {
-            Export(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json");
+            if (TryExport(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json")) success++;
+            total++;
         }
+        ModHelper.Log($"Exported {success}/{total} MapDetails to {Path.Combine(FileIOHelper.sandboxRoot, "Maps")}");
 
-        ModHelper.Log("Exporting buff indicators to local files");
+        total = success = 0;
         foreach (var indicatorModel in Game.instance.model.buffIndicatorModels)
         {
-            Export(indicatorModel, $"Buffs/{indicatorModel.name}.json");
+            if (TryExport(indicatorModel, $"Buffs/{indicatorModel.name}.json")) success++;
+            total++;
         }
+        ModHelper.Log(
+            $"Exported {success}/{total} BuffIndicatorModels to {Path.Combine(FileIOHelper.sandboxRoot, "Buffs")}");
 
-        ModHelper.Log("Exporting skins to local files");
+        total = success = 0;
         GameData.Instance.skinsData.SkinList.items.ForEach(data =>
         {
             var jobject = new JObject
@@ -96,11 +122,39 @@ public static class GameModelExporter
                 )
             };
 
-            Directory.CreateDirectory(Path.Combine(FileIOHelper.sandboxRoot, "Skins", data.baseTowerName));
-            var path = $"Skins/{data.baseTowerName}/{data.name}.json";
-            File.WriteAllText(Path.Combine(FileIOHelper.sandboxRoot, path), jobject.ToString(Formatting.Indented));
-            ModHelper.Log("Saving " + FileIOHelper.sandboxRoot + path);
+            try
+            {
+
+                Directory.CreateDirectory(Path.Combine(FileIOHelper.sandboxRoot, "Skins", data.baseTowerName));
+                var path = $"Skins/{data.baseTowerName}/{data.name}.json";
+                File.WriteAllText(Path.Combine(FileIOHelper.sandboxRoot, path), jobject.ToString(Formatting.Indented));
+                success++;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+            total++;
         });
+        ModHelper.Log(
+            $"Exported {success}/{total} SkinDatas to {Path.Combine(FileIOHelper.sandboxRoot, "Skins")}");
+    }
+
+    /// <summary>
+    /// Exports a Model to the path, returning whether it was successful. Does not log anything.
+    /// </summary>
+    /// <returns></returns>
+    public static bool TryExport(Il2CppSystem.Object data, string path)
+    {
+        try
+        {
+            FileIOHelper.SaveObject(path, data);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
     }
 
     /// <summary>

@@ -92,7 +92,7 @@ public static partial class ModTowerHelper
         towerModel.name = modTower.TowerId(tiers);
 
         // add the names to applied upgrades
-        towerModel.appliedUpgrades = modTower.upgrades.Cast<ModUpgrade>()
+        towerModel.appliedUpgrades = modTower.Upgrades.Cast<ModUpgrade>()
             .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
             .Select(modUpgrade => modUpgrade.Id)
             .ToArray();
@@ -103,7 +103,7 @@ public static partial class ModTowerHelper
         var modTowerTiers = towerTiers.ToList();
         for (var i = 0; i < modTower.UpgradePaths; i++)
         {
-            var tierMax = modTower.tierMaxes[i];
+            var tierMax = modTower.TierMaxes[i];
             if (tiers[i] < tierMax)
             {
                 var newTiers = tiers.Duplicate();
@@ -115,8 +115,12 @@ public static partial class ModTowerHelper
 
                 if (modTowerTiers.Any(t => t.SequenceEqual(newTiers)))
                 {
-                    var modUpgrade = modTower.upgrades[i, newTiers[i] - 1];
-                    var upgradePathModel = new UpgradePathModel(modUpgrade.Id, modTower.TowerId(newTiers));
+                    var modUpgrade = modTower.Upgrades[i, newTiers[i] - 1];
+                    if (modUpgrade == null)
+                    {
+                        ModHelper.Warning($"{modTower.Name} has missing upgrade in path {i} tier {newTiers[i] - 1}");
+                    }
+                    var upgradePathModel = modTower.GetUpgradePathModel(modUpgrade, newTiers);
                     towerModel.upgrades = towerModel.upgrades.AddTo(upgradePathModel);
                 }
             }
@@ -163,7 +167,7 @@ public static partial class ModTowerHelper
 
         // actually apply the upgrades
 
-        foreach (var modUpgrade in modTower.upgrades.Cast<ModUpgrade>()
+        foreach (var modUpgrade in modTower.Upgrades.Cast<ModUpgrade>()
                      .Where(modUpgrade =>
                          modUpgrade != null && towerModel.tiers[modUpgrade.Path] >= modUpgrade.Tier)
                      .OrderByDescending(modUpgrade => modUpgrade.Priority)

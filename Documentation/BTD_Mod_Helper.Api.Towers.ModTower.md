@@ -357,6 +357,32 @@ public virtual int GetTowerIndex(System.Collections.Generic.List<Assets.Scripts.
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetUpgradePathModel(BTD_Mod_Helper.Api.Towers.ModUpgrade,int[])'></a>
+
+## ModTower.GetUpgradePathModel(ModUpgrade, int[]) Method
+
+Creates an UpgradePathModel for a particular upgrade and new tiers
+
+```csharp
+public virtual Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel GetUpgradePathModel(BTD_Mod_Helper.Api.Towers.ModUpgrade modUpgrade, int[] newTiers);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetUpgradePathModel(BTD_Mod_Helper.Api.Towers.ModUpgrade,int[]).modUpgrade'></a>
+
+`modUpgrade` [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade')
+
+The upgrade
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetUpgradePathModel(BTD_Mod_Helper.Api.Towers.ModUpgrade,int[]).newTiers'></a>
+
+`newTiers` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+The new desired tiers of the tower
+
+#### Returns
+[Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.IsValidCrosspath(int[])'></a>
 
 ## ModTower.IsValidCrosspath(int[]) Method

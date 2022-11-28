@@ -19,7 +19,6 @@ public abstract partial class ModTower
     public virtual ParagonMode ParagonMode => ParagonMode.None;
 
     internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
-    internal readonly ModUpgrade[,] upgrades;
     internal UpgradeModel dummyUpgrade;
     internal ModParagonUpgrade paragonUpgrade;
     internal virtual bool ShouldCreateParagon =>
@@ -29,21 +28,19 @@ public abstract partial class ModTower
         BottomPathUpgrades == 5 &&
         ParagonMode != ParagonMode.None;
 
+    private ModUpgrade[,] upgrades;
+    private int[] tierMaxes;
+
+    internal ModUpgrade[,] Upgrades => upgrades ??= new ModUpgrade[UpgradePaths, TierMaxes.Max()];
+    internal int[] TierMaxes => tierMaxes ??= new[] {TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades};
+
     /// <summary>
     /// Constructor for ModTower, used implicitly by ModContent.Create
     /// </summary>
     /// <exclude/>
     protected ModTower()
     {
-        Init(out upgrades, out tierMaxes);
     }
-
-    internal void Init(out ModUpgrade[,] u, out int[] t)
-    {
-        t = new[] { TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades };
-        u = new ModUpgrade[UpgradePaths, t.Max()];
-    }
-
 
     /// <inheritdoc />
     public override void Register()
@@ -90,7 +87,7 @@ public abstract partial class ModTower
         towerModel.powerName = null;
 
         towerModel.tier = 0;
-        towerModel.tiers = new[] { 0, 0, 0 };
+        towerModel.tiers = new[] {0, 0, 0};
 
         towerModel.mods = DefaultMods
             .Select(s => new ApplyModModel($"{Id}Upgrades", s, ""))
@@ -132,10 +129,10 @@ public abstract partial class ModTower
         switch (ParagonMode)
         {
             case ParagonMode.Base000:
-                towerModel = ModTowerHelper.CreateTowerModel(this, new[] { 0, 0, 0 });
+                towerModel = ModTowerHelper.CreateTowerModel(this, new[] {0, 0, 0});
                 break;
             case ParagonMode.Base555:
-                towerModel = ModTowerHelper.CreateTowerModel(this, new[] { 5, 5, 5 });
+                towerModel = ModTowerHelper.CreateTowerModel(this, new[] {5, 5, 5});
                 break;
             case ParagonMode.None:
             default:
@@ -145,11 +142,21 @@ public abstract partial class ModTower
         towerModel.appliedUpgrades = new Il2CppStringArray(6);
         for (var i = 0; i < 5; i++)
         {
-            towerModel.appliedUpgrades[i] = upgrades[0, i].Id;
+            towerModel.appliedUpgrades[i] = Upgrades[0, i].Id;
         }
 
         return towerModel;
     }
+
+
+    /// <summary>
+    /// Creates an UpgradePathModel for a particular upgrade and new tiers
+    /// </summary>
+    /// <param name="modUpgrade">The upgrade</param>
+    /// <param name="newTiers">The new desired tiers of the tower</param>
+    /// <returns></returns>
+    public virtual UpgradePathModel GetUpgradePathModel(ModUpgrade modUpgrade, int[] newTiers) =>
+        new(modUpgrade.Id, TowerId(newTiers));
 }
 
 /// <summary>

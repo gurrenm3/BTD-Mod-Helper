@@ -165,7 +165,7 @@ internal partial class MelonMain
     {
         displayName = "Export Game Data",
         description =
-            "Exports much of the games data to json files that you can view. Helpful for understanding how " +
+            "Exports much of the game's data to json files that you can view. Helpful for understanding how " +
             "vanilla content was implemented by Ninja Kiwi.",
         action = () =>
         {

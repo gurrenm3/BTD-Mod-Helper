@@ -67,13 +67,16 @@ public abstract class ModUpgrade : NamedModContent
         }
     }
 
-    internal virtual void AssignToModTower()
+    /// <summary>
+    /// Assigns this upgrade to its ModTower
+    /// </summary>
+    protected internal virtual void AssignToModTower()
     {
-        if (Path is >= 0 and < 3 && Tower.tierMaxes[Path] >= Tier)
+        if (Path is >= 0 and < 3 && Tower.TierMaxes[Path] >= Tier)
         {
             try
             {
-                Tower.upgrades[Path, Tier - 1] = this;
+                Tower.Upgrades[Path, Tier - 1] = this;
             }
             catch (Exception)
             {
@@ -85,9 +88,9 @@ public abstract class ModUpgrade : NamedModContent
         }
         else
         {
-            ModHelper.Warning("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
-            ModHelper.Warning(
-                "Double check that all Path and Tier values are correct");
+            ModHelper.Warning("Failed to assign ModUpgrade " + Name + $" to ModTower {Tower.Name}'s upgrades");
+            ModHelper.Warning("Double check that all Path and Tier values are correct");
+            ModHelper.Warning($"{Tower.TierMaxes[Path]} compared to {Tier}");
         }
     }
 

@@ -17,7 +17,7 @@ internal class UpgradeScreen_PopulatePath
         if (modTower != null)
         {
             var portrait = modTower.PortraitReference;
-            var maxPathTier = modTower.tierMaxes[pathIndex];
+            var maxPathTier = modTower.TierMaxes[pathIndex];
             var emptyAbilities = new List<AbilityModel>().Cast<ICollection<AbilityModel>>();
             var upgradeModel = modTower.dummyUpgrade;
             for (var i = maxPathTier; i < 5; i++)
