@@ -12,6 +12,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.UI.Menus;
@@ -67,6 +68,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static int currentSort;
     private static ModHelperPanel restartPanel;
     private static Task updateTask;
+    private static ModHelperScrollPanel topRow;
 
     private static Animator bottomGroupAnimator;
 
@@ -75,10 +77,10 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static readonly string[] SortOptions =
     {
-        "All Mods",
-        "Active Mods",
-        "Inactive Mods",
-        "Mods Needing Updates"
+        "All",
+        "Active",
+        "Inactive",
+        "Updates"
     };
 
     private static bool RestartRequired => ModHelperData.All.Any(data => data.RestartRequired) ||
@@ -255,8 +257,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             selectedModIcon.gameObject.SetActive(false);
         }
 
-        selectedModDisableButton.SetActive(modSelected.Enabled);
-        selectedModEnableButton.SetActive(!modSelected.Enabled);
+        selectedModDisableButton.SetActive(modSelected.Enabled && selectedMod.Mod is not MelonMain);
+        selectedModEnableButton.SetActive(!modSelected.Enabled && selectedMod.Mod is not MelonMain);
         selectedModDeleteButton.SetActive(!modSelected.Enabled && modSelected.Mod is null);
 
         selectedModHomeButton.SetActive(selectedMod.ReadmeUrl != null);
@@ -297,20 +299,22 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             VanillaSprites.MainBGPanelBlue, RectTransform.Axis.Vertical, Padding, Padding
         );
 
-        var topRow = leftMenu.AddPanel(new Info("TopRow")
+        topRow = leftMenu.AddScrollPanel(new Info("TopRow")
         {
             Height = ModNameHeight,
             FlexWidth = 1
-        }, null, RectTransform.Axis.Horizontal, Padding);
+        }, RectTransform.Axis.Horizontal, null, Padding);
+        topRow.AddComponent<Image>();
+        topRow.Mask.showMaskGraphic = false;
+        topRow.Mask.enabled = false;
 
-        topRow.AddDropdown(new Info("ModFilter", 800f, ModNameHeight), SortOptions.ToIl2CppList(), ModNameHeight * 4,
+        topRow.ScrollContent.AddDropdown(new Info("ModFilter", 500f, ModNameHeight), SortOptions.ToIl2CppList(),
+            ModNameHeight * 4,
             new Action<int>(SortMods), VanillaSprites.BlueInsertPanelRound, FontSmall
         );
 
-        topRow.AddPanel(new Info("Filler", InfoPreset.Flex));
-
         // ReSharper disable once AsyncVoidLambda
-        updateAllButton = topRow.AddButton(
+        updateAllButton = topRow.ScrollContent.AddButton(
             new Info("UpdateAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
             VanillaSprites.GreenBtnLong, new Action(() =>
             {
@@ -333,8 +337,62 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             })
         );
         updateAllButton.SetActive(false);
-
         updateAllButton.AddText(new Info("UpdateAllText", InfoPreset.FillParent), "Update All", FontSmall);
+
+        var disableAll = topRow.ScrollContent.AddButton(
+            new Info("DisableAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
+            VanillaSprites.RedBtnLong, new Action(
+                () =>
+                {
+                    foreach (var modHelperData in ModHelperData.All.Where(data =>
+                                 data.Enabled && data.Mod is not MelonMain))
+                    {
+                        modHelperData.MoveToDisabledModsFolder(true);
+                    }
+                    SortMods(currentSort);
+                    MenuManager.instance.buttonClickSound.Play("ClickSounds");
+                }));
+        disableAll.AddText(new Info("Text", InfoPreset.FillParent), "Disable All", FontSmall);
+
+        var enableAll = topRow.ScrollContent.AddButton(
+            new Info("EnableAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
+            VanillaSprites.GreenBtnLong, new Action(
+                () =>
+                {
+                    var any = false;
+                    foreach (var modHelperData in ModHelperData.All.Where(data =>
+                                 !data.Enabled && data.Mod is not MelonMain))
+                    {
+                        modHelperData.MoveToEnabledModsFolder();
+                        any = true;
+                    }
+                    if (any)
+                    {
+                        SortMods(currentSort);
+                        MenuManager.instance.buttonClickSound.Play("ClickSounds");
+                    }
+                }));
+        enableAll.AddText(new Info("Text", InfoPreset.FillParent), "Enable All", FontSmall);
+
+        topRow.ScrollContent.AddButton(new Info("ResetAll", ModNameHeight), VanillaSprites.RestartBtn,
+            new Action(
+                () =>
+                {
+                    foreach (var modHelperData in ModHelperData.All.Where(data => data.Mod is not MelonMain))
+                    {
+                        switch (modHelperData.Enabled)
+                        {
+                            case true when modHelperData.Mod is null:
+                                modHelperData.MoveToDisabledModsFolder();
+                                break;
+                            case false when modHelperData.Mod is not null:
+                                modHelperData.MoveToEnabledModsFolder();
+                                break;
+                        }
+                    }
+                    SortMods(currentSort);
+                    MenuManager.instance.buttonClickSound.Play("ClickSounds");
+                }));
 
         modsList = leftMenu.AddScrollPanel(new Info("ModListScroll", InfoPreset.Flex), RectTransform.Axis.Vertical,
             VanillaSprites.BlueInsertPanelRound, Padding, Padding);
@@ -346,6 +404,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         {
             modPanels[modHelperData] = null;
         }
+
+        topRow.Mask.enabled = true;
     }
 
     private static void Refresh()
@@ -364,8 +424,15 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         if (updateAllButton != null)
         {
-            updateAllButton.gameObject.SetActive(modPanels.Any(pair =>
-                pair.Key.UpdateAvailable && pair.Value is not null && pair.Value.gameObject.active));
+            var anyModsNeedUpdates = modPanels.Any(pair =>
+                pair.Key.UpdateAvailable && pair.Value is not null && pair.Value.gameObject.active);
+            updateAllButton.gameObject.SetActive(anyModsNeedUpdates);
+            if (topRow.ScrollContent.enabled != anyModsNeedUpdates)
+            {
+                topRow.ScrollRect.enabled = anyModsNeedUpdates;
+                topRow.ScrollRect.horizontalNormalizedPosition = 0;
+            }
+
         }
 
         restartPanel.SetActive(

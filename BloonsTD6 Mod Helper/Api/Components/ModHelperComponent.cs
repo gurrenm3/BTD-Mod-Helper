@@ -119,6 +119,12 @@ public partial class ModHelperComponent
         Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize, string labelSuffix) =>
         Add(ModHelperSlider.Create(info, defaultValue, minValue, maxValue, stepSize, handleSize, onValueChanged,
             fontSize, labelSuffix));
+    
+    /// <inheritdoc cref="ModHelperSlider.Create"/>
+    public ModHelperSlider AddSlider(Info info, float defaultValue, float minValue, float maxValue, float stepSize,
+        Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize, string labelSuffix, float startingValue) =>
+        Add(ModHelperSlider.Create(info, defaultValue, minValue, maxValue, stepSize, handleSize, onValueChanged,
+            fontSize, labelSuffix, startingValue));
 
     #endregion
 

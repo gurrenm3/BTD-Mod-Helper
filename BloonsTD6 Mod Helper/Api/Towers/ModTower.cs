@@ -6,6 +6,8 @@ using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Simulation.Towers;
+using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Utils;
 using UnhollowerBaseLib;
 
@@ -157,6 +159,25 @@ public abstract partial class ModTower
     /// <returns></returns>
     public virtual UpgradePathModel GetUpgradePathModel(ModUpgrade modUpgrade, int[] newTiers) =>
         new(modUpgrade.Id, TowerId(newTiers));
+
+
+    /// <summary>
+    /// Allows you to override how many possible Upgrade pips it should show as being possible for a tower to get 
+    /// </summary>
+    /// <param name="tower">The TowerToSimulation</param>
+    /// <param name="path">What path this is for</param>
+    /// <param name="defaultMax">The default maximum</param>
+    /// <returns>The new maximum amount of upgrade pips, or null for no change</returns>
+    public virtual int? MaxUpgradePips(TowerToSimulation tower, int path, int defaultMax) => null;
+
+    /// <summary>
+    /// Allows you to override whether an UpgradePath should be closed or not for a tower
+    /// </summary>
+    /// <param name="tower">The TowerToSimulation</param>
+    /// <param name="path">What path this is for</param>
+    /// <param name="defaultClosed">Whether it'd be naturally closed or not</param>
+    /// <returns>Whether the upgrade path should be closed, or null for no change</returns>
+    public virtual bool? IsUpgradePathClosed(TowerToSimulation tower, int path, bool defaultClosed) => null;
 }
 
 /// <summary>

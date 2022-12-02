@@ -74,6 +74,10 @@ public class ModHelperDropdown : ModHelperComponent
         var modHelperDropdown = ModHelperComponent.Create<ModHelperDropdown>(info);
 
 #if BloonsTD6
+        modHelperDropdown.AddImage(
+            new Info("Arrow", -64, 0, 64, 40, anchor: new Vector2(1, 0.5f)), VanillaSprites.MonkeyKnowledgeArrow
+        );
+
         var text = modHelperDropdown.AddText(new Info("DropdownText", InfoPreset.FillParent), "", labelFontSize);
 
         var dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
@@ -97,10 +101,6 @@ public class ModHelperDropdown : ModHelperComponent
         }
 
 #if BloonsTD6
-        modHelperDropdown.AddImage(
-            new Info("Arrow", -64, 0, 64, 40, anchor: new Vector2(1, 0.5f)), VanillaSprites.MonkeyKnowledgeArrow
-        );
-
         var template = modHelperDropdown.AddScrollPanel(
             new Info("Template", 0, height / -2 - realHeight / 2, width, realHeight),
             RectTransform.Axis.Vertical, VanillaSprites.UISprite);

@@ -72,10 +72,11 @@ public class ModHelperSlider : ModHelperComponent
     /// <param name="onValueChanged">Action should happen when the slider changes value, or null</param>
     /// <param name="fontSize">The size of the label text</param>
     /// <param name="labelSuffix">String to add to the end of the label, e.g. "%"</param>
+    /// <param name="startingValue">If not null, the value that this should start as instead of the default</param>
     /// <returns></returns>
     public static ModHelperSlider Create(Info info, float defaultValue, float minValue, float maxValue,
         float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
-        string labelSuffix = "")
+        string labelSuffix = "", float? startingValue = null)
     {
         var modHelperSlider = ModHelperComponent.Create<ModHelperSlider>(info);
         var slider = modHelperSlider.AddComponent<Slider>();
@@ -119,17 +120,15 @@ public class ModHelperSlider : ModHelperComponent
         slider.m_HandleContainerRect = handleContainer;
 
         var label = pip.AddText(new Info("Label", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2),
-            defaultValue.ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize);
-
+            (startingValue ?? defaultValue).ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize);
 
         slider.onValueChanged.AddListener(new Action<float>(value =>
-        {
-            var realValue = value / modHelperSlider.scaleFactor;
-            label.SetText(realValue.ToString(CultureInfo.InvariantCulture) + labelSuffix);
-            onValueChanged?.Invoke(realValue);
-        }));
+            label.SetText((value / modHelperSlider.scaleFactor).ToString(CultureInfo.InvariantCulture) + labelSuffix)));
 
-        modHelperSlider.SetCurrentValue(defaultValue);
+        modHelperSlider.SetCurrentValue((startingValue ?? defaultValue));
+
+        slider.onValueChanged.AddListener(new Action<float>(value =>
+            onValueChanged?.Invoke(value / modHelperSlider.scaleFactor)));
 
         return modHelperSlider;
     }

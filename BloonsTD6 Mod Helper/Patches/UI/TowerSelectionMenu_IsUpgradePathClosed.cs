@@ -14,5 +14,11 @@ internal class TowerSelectionMenu_IsUpgradePathClosed
         {
             __result = true;
         }
+
+        if (tower.towerModel.GetModTower() is ModTower modTower &&
+            modTower.IsUpgradePathClosed(__instance.selectedTower, path, __result) is bool newClosed)
+        {
+            __result = newClosed;
+        }
     }
 }
