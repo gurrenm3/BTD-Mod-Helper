@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.UI.Menus;
 using MelonLoader.InternalUtils;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace BTD_Mod_Helper.Api.Components;
 
@@ -21,6 +22,8 @@ internal class ModsMenuMod : ModHelperComponent
     public ModHelperButton Settings => GetDescendent<ModHelperButton>("Settings");
     public ModHelperImage Restart => GetDescendent<ModHelperImage>("Restart");
     public ModHelperButton Warning => GetDescendent<ModHelperButton>("Warning");
+
+    public UnityAction toggleMod;
 
     public ModsMenuMod(IntPtr ptr) : base(ptr)
     {
@@ -122,6 +125,23 @@ internal static class ModsMenuModExt
         mod.Refresh(modHelperData);
 
         mod.SetActive(true);
+
+        mod.toggleMod = new Action(() =>
+        {
+            if (modHelperData.Mod is MelonMain) return;
+                
+            switch (modHelperData.Enabled)
+            {
+                case false:
+                    modHelperData.MoveToEnabledModsFolder();
+                    break;
+                case true:
+                    modHelperData.MoveToDisabledModsFolder();
+                    break;
+            }
+            mod.Refresh(modHelperData);
+            MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
+        });
     }
 
     public static void Refresh(this ModsMenuMod mod, ModHelperData modHelperData)

@@ -32,6 +32,42 @@ public static BTD_Mod_Helper.Api.Towers.ModUpgrade GetModUpgrade(this Assets.Scr
 #### Returns
 [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade')
 
+<a name='BTD_Mod_Helper.Extensions.UpgradeModelExt.GetModUpgrade(thisAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel)'></a>
+
+## UpgradeModelExt.GetModUpgrade(this UpgradePathModel) Method
+
+Gets the ModUpgrade that this UpgradePathModel is for, or null if it's vanilla
+
+```csharp
+public static BTD_Mod_Helper.Api.Towers.ModUpgrade GetModUpgrade(this Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel upgradePathModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UpgradeModelExt.GetModUpgrade(thisAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel).upgradePathModel'></a>
+
+`upgradePathModel` [Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel')
+
+#### Returns
+[ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade')
+
+<a name='BTD_Mod_Helper.Extensions.UpgradeModelExt.GetUpgrade(thisAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel)'></a>
+
+## UpgradeModelExt.GetUpgrade(this UpgradePathModel) Method
+
+Gets the UpgradeModel that this UpgradePathModel uses
+
+```csharp
+public static Assets.Scripts.Models.Towers.Upgrades.UpgradeModel GetUpgrade(this Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel upgradePathModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UpgradeModelExt.GetUpgrade(thisAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel).upgradePathModel'></a>
+
+`upgradePathModel` [Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel')
+
+#### Returns
+[Assets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradeModel')
+
 <a name='BTD_Mod_Helper.Extensions.UpgradeModelExt.IsUpgradeUnlocked(thisAssets.Scripts.Models.Towers.Upgrades.UpgradeModel)'></a>
 
 ## UpgradeModelExt.IsUpgradeUnlocked(this UpgradeModel) Method

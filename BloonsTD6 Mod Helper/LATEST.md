@@ -1,2 +1,11 @@
+- Added new buttons to the mods menu for disabling all, enabling all and resetting the enabled/disabled status for all mods
+  - Mod Helper is omitted from disabling
+  - Mods can now also be quickly enabled/disabled by right-clicking them in the list
+- Fixed ModSetting slider options sometimes showing the wrong starting value
+  - ModHelperSlider components can now more easily be created with a different "starting" value than their "default" value
 - Improved the performance of the Export Game Model button
-- 
+- Added `UpgradePathModel.GetUpgrade` and `UpgradePathModel.GetModUpgrade` extension methods
+- Made a few internal api methods accessible
+- Makes the game actually respect the UpgradePathModel's requested tower ID for upgrading a tower
+  - This is a subtle difference that has no effect for vanilla upgrades, but prevents the patch being needed by all mods that try funky things with UpgradePathModels
+- Added `ModTower.IsUpgradePathClosed`, `ModTower.MaxUpgradePips`, `ModTower.GetUpgradePathModel` overrides

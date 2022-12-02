@@ -40,14 +40,14 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToDisabledModsFolder()
+    public bool MoveToDisabledModsFolder(bool quick = false)
     {
         if (!MoveToFolder(ModHelper.DisabledModsDirectory)) return false;
 
         try
         {
             SaveToJson(ModHelper.DataDirectory);
-            if (GetIcon() is Sprite sprite)
+            if (!quick && GetIcon() is Sprite sprite)
             {
                 sprite.texture.TrySaveToPNG(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".png")));
             }

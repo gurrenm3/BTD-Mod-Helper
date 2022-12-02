@@ -102,6 +102,19 @@ public bool slider;
 
 #### Field Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingNumber_T_.sliderSuffix'></a>
+
+## ModSettingNumber<T>.sliderSuffix Field
+
+Suffix to add to the end of the slider label
+
+```csharp
+public string sliderSuffix;
+```
+
+#### Field Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingNumber_T_.StepSize'></a>

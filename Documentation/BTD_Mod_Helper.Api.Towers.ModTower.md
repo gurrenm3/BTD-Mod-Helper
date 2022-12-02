@@ -383,6 +383,39 @@ The new desired tiers of the tower
 #### Returns
 [Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradePathModel')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,bool)'></a>
+
+## ModTower.IsUpgradePathClosed(TowerToSimulation, int, bool) Method
+
+Allows you to override whether an UpgradePath should be closed or not for a tower
+
+```csharp
+public virtual System.Nullable<bool> IsUpgradePathClosed(Assets.Scripts.Unity.Bridge.TowerToSimulation tower, int path, bool defaultClosed);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,bool).tower'></a>
+
+`tower` [Assets.Scripts.Unity.Bridge.TowerToSimulation](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Bridge.TowerToSimulation 'Assets.Scripts.Unity.Bridge.TowerToSimulation')
+
+The TowerToSimulation
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,bool).path'></a>
+
+`path` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+What path this is for
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,bool).defaultClosed'></a>
+
+`defaultClosed` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether it'd be naturally closed or not
+
+#### Returns
+[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
+Whether the upgrade path should be closed, or null for no change
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.IsValidCrosspath(int[])'></a>
 
 ## ModTower.IsValidCrosspath(int[]) Method
@@ -403,6 +436,39 @@ public virtual bool IsValidCrosspath(int[] tiers);
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,int)'></a>
+
+## ModTower.MaxUpgradePips(TowerToSimulation, int, int) Method
+
+Allows you to override how many possible Upgrade pips it should show as being possible for a tower to get
+
+```csharp
+public virtual System.Nullable<int> MaxUpgradePips(Assets.Scripts.Unity.Bridge.TowerToSimulation tower, int path, int defaultMax);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,int).tower'></a>
+
+`tower` [Assets.Scripts.Unity.Bridge.TowerToSimulation](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Bridge.TowerToSimulation 'Assets.Scripts.Unity.Bridge.TowerToSimulation')
+
+The TowerToSimulation
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,int).path'></a>
+
+`path` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+What path this is for
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Assets.Scripts.Unity.Bridge.TowerToSimulation,int,int).defaultMax'></a>
+
+`defaultMax` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The default maximum
+
+#### Returns
+[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
+The new maximum amount of upgrade pips, or null for no change
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(Assets.Scripts.Models.Towers.TowerModel)'></a>
 
