@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Powers.Mods;
 using Assets.Scripts.Models.Towers.Mods;
+using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Models.TowerSets.Mods;
 using Assets.Scripts.Unity.Towers.Mods;
 using BTD_Mod_Helper.Api;
@@ -291,12 +292,12 @@ public static class ModModelExt
     /// <param name="model"></param>
     /// <param name="towerSet">The tower set to lock</param>
     /// <param name="locked">Whether to lock or unlock the tower set</param>
-    public static void LockTowerSet(this ModModel model, string towerSet, bool locked = true)
+    public static void LockTowerSet(this ModModel model, TowerSet towerSet, bool locked = true)
     {
         model.RemoveMutators(modModel => modModel.Is(out LockTowerSetModModel m) && m.towerSetToLock == towerSet);
         if (locked)
         {
-            model.AddMutator(new LockTowerModModel("_", towerSet));
+            model.AddMutator(new LockTowerSetModModel("_", towerSet));
         }
     }
 

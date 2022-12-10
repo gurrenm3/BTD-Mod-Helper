@@ -1,4 +1,5 @@
 ﻿using System;
+using Il2CppInterop.Runtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -110,7 +111,7 @@ public partial class ModHelperComponent : MonoBehaviour
 
     /// <inheritdoc cref="GameObject.AddComponent{T}" />
     public T AddComponent<T>() where T : Component => gameObject.AddComponent<T>();
-    
+
     /// <inheritdoc cref="GameObjectExt.RemoveComponent{T}"/>
     public void RemoveComponent<T>() where T : Component => gameObject.RemoveComponent<T>();
 
@@ -168,7 +169,7 @@ public partial class ModHelperComponent : MonoBehaviour
 
     internal static T Create<T>(Info info) where T : ModHelperComponent
     {
-        var newGameObject = new GameObject(info.Name, new[] {UnhollowerRuntimeLib.Il2CppType.Of<RectTransform>()});
+        var newGameObject = new GameObject(info.Name, Il2CppType.Of<RectTransform>());
         var modHelperComponent = newGameObject.AddComponent<T>();
         modHelperComponent.initialInfo = info;
         info.Apply(modHelperComponent);

@@ -1,7 +1,6 @@
 using System.Linq;
 using Assets.Scripts.Unity.UI_New.Main.HeroSelect;
 using BTD_Mod_Helper.Api.Towers;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.UI;
 

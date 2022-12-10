@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Models.Towers;
 using Assets.Scripts.Models.Towers.Upgrades;
+using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 
@@ -105,7 +106,7 @@ public abstract partial class ModTower : NamedModContent
     /// <br/>
     /// For now, just use one of the default constants provided of PRIMARY, MILITARY, MAGIC, or SUPPORT.
     /// </summary>
-    public abstract string TowerSet { get; }
+    public abstract TowerSet TowerSet { get; }
 
     /// <summary>
     /// The id of the default BTD Tower that your Tower is going to be copied from by default.

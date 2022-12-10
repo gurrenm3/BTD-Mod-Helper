@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Il2CppInterop.Runtime;
 using Il2CppSystem.Threading.Tasks;
-using UnhollowerRuntimeLib;
 using Exception = System.Exception;
 using Object = Il2CppSystem.Object;
 
@@ -149,7 +149,7 @@ public abstract partial class ModByteLoader : ModContent
         var loader = reader.ReadToEnd();
 
         loader = "using UnhollowerBaseLib;\n" +
-                 "using UnhollowerRuntimeLib;\n" +
+                 "using Il2CppInterop.Runtime;\n" +
                  "using BTD_Mod_Helper.Extensions;\n" +
                  "using BTD_Mod_Helper.Api;\n" +
                  (string.IsNullOrEmpty(nameSpace) ? "" : $"\nnamespace {nameSpace};\n") +

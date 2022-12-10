@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net48</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
         <Configurations>BTD6_Debug;BTD6_Release;BTD6_Release_net6;BTD6_Debug_net6</Configurations>
         <DefineConstants>BloonsTD6;TRACE</DefineConstants>
@@ -26,21 +26,13 @@
         <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
     </PropertyGroup>
 
-    <PropertyGroup Condition="('$(Configuration)' == 'BTD6_Debug_net6') Or ('$(Configuration)' == 'BTD6_Release_net6')">
-      <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
-        <Reference Include="System.IO.Compression" />
-        <Reference Include="System.IO.Compression.FileSystem" />
-    </ItemGroup>
-
     <ItemGroup>
         <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1" PrivateAssets="all" />
         <PackageReference Include="FuzzySharp" Version="2.0.2" GeneratePathProperty="true" />
         <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.14" GeneratePathProperty="true" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
         <PackageReference Include="NfdSharp" Version="1.0.1" />
-        <PackageReference Include="Octokit" Version="0.52.0" GeneratePathProperty="true" />
+        <PackageReference Include="Octokit" Version="4.0.3" GeneratePathProperty="true" />
     </ItemGroup>
 
     <ItemGroup>

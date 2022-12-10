@@ -13,7 +13,7 @@ using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
-using UnhollowerRuntimeLib;
+using Il2CppInterop.Runtime;
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Patches;

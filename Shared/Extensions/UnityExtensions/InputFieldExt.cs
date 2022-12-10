@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using System;
+using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -12,7 +13,7 @@ public static partial class InputFieldExt
     /// </summary>\
     public static void AddSubmitEvent(this InputField inputField, InputFieldSubmitEvent.Function funcToExecute)
     {
-        inputField.onEndEdit.AddListener(funcToExecute);
+        inputField.onEndEdit.AddListener(new Action<string>(funcToExecute.Invoke));
     }
 
     /// <summary>

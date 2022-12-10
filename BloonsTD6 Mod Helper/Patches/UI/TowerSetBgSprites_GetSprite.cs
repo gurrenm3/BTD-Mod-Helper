@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Assets.Scripts.Models.TowerSets;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 using UnityEngine;
@@ -9,11 +10,12 @@ namespace BTD_Mod_Helper.Patches.UI;
 internal class TowerSetBgSprites_GetSprite
 {
     [HarmonyPostfix]
-    internal static void Postfix(string name, ref Sprite __result)
+    internal static void Postfix(TowerSet ts, ref Sprite __result)
     {
-        if (ModContent.GetContent<ModTowerSet>().FirstOrDefault(set => set.Id == name) is ModTowerSet modTowerSet)
+        // TODO fix modded tower sets
+        /*if (ModContent.GetContent<ModTowerSet>().FirstOrDefault(set => set.Id == name) is ModTowerSet modTowerSet)
         {
             __result = ModContent.GetSprite(modTowerSet.mod, modTowerSet.Container);
-        }
+        }*/
     }
 }

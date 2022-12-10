@@ -47,6 +47,7 @@ Global
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45CB0AF9-EB5F-4D6A-846C-830DD4F60B49}.BTD6_Release_net6|Any CPU.ActiveCfg = BTD6_Release_net6|Any CPU
 		{45CB0AF9-EB5F-4D6A-846C-830DD4F60B49}.BTD6_Debug_net6|Any CPU.ActiveCfg = BTD6_Debug_net6|Any CPU
+		{45CB0AF9-EB5F-4D6A-846C-830DD4F60B49}.BTD6_Release_net6|Any CPU.Build.0 = BTD6_Release_net6|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,7 +11,6 @@ using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Enums;
-using UnhollowerBaseLib;
 using Nullable = Il2CppSystem.Nullable;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -265,18 +264,5 @@ public static partial class ModTowerHelper
             var skinData = modHero.CreateDefaultSkin(skinsByName);
             skinsData.AddSkins(new[] {skinData});
         }
-    }
-
-
-    /// <summary>
-    /// Creates and returns an empty TowerModel
-    /// </summary>
-    public static TowerModel CreateTowerModel(string name, string baseId = null, string towerSet = null)
-    {
-        var sprite = Il2CppSystem.Nullable<SpriteReference>.Unbox(ModContent.CreateSpriteReference(""));
-        var display = ModContent.CreatePrefabReference("");
-        return new TowerModel(name, baseId ?? name, towerSet ?? TowerSetType.Primary, display,
-            icon: sprite, portrait: sprite, instaIcon: sprite, emoteSpriteSmall: sprite, emoteSpriteLarge: sprite
-        );
     }
 }

@@ -2,8 +2,7 @@
 using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using System.Linq;
-using UnhollowerBaseLib;
-using UnhollowerRuntimeLib;
+using Il2CppInterop.Runtime;
 
 namespace BTD_Mod_Helper.Extensions;
 

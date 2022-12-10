@@ -1,5 +1,5 @@
 ﻿using System;
-using UnhollowerRuntimeLib;
+using Il2CppInterop.Runtime.Injection;
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.Api;
@@ -19,7 +19,7 @@ public class ModMenuData : Object
     /// The data that the ModGameMenu receives
     /// </summary>
     public Object modData;
-        
+
     /// <summary>
     /// The data that the base menu receives, if the Open code is still run
     /// </summary>
@@ -33,7 +33,8 @@ public class ModMenuData : Object
     /// <summary>
     /// Creates a ModMenuData object with the given Id and data
     /// </summary>
-    public ModMenuData(string id, Object modData, Object baseData) : base(ClassInjector.DerivedConstructorPointer<ModMenuData>())
+    public ModMenuData(string id, Object modData, Object baseData) : base(ClassInjector
+        .DerivedConstructorPointer<ModMenuData>())
     {
         ClassInjector.DerivedConstructorBody(this);
         this.id = id;

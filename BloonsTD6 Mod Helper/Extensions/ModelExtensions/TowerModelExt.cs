@@ -200,7 +200,7 @@ public static partial class TowerModelExt
     public static void SetTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0,
         bool addToTowerName = false)
     {
-        towerModel.tiers = new UnhollowerBaseLib.Il2CppStructArray<int>(3)
+        towerModel.tiers = new Il2CppStructArray<int>(3)
         {
             [0] = tier1,
             [1] = tier2,

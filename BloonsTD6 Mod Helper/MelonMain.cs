@@ -118,11 +118,12 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             if (gameMode.name.EndsWith("Only"))
             {
-                var mutatorModModels = gameMode.mutatorMods.ToList();
+                // TODO fix modded tower sets
+                /*var mutatorModModels = gameMode.mutatorMods.ToList();
                 mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
                     .Where(set => !set.AllowInRestrictedModes)
                     .Select(set => new LockTowerSetModModel(gameMode.name, set.Id)));
-                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
+                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();*/
             }
 
             if (gameMode.mutatorMods == null) continue;

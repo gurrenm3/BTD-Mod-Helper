@@ -3,7 +3,6 @@ using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api.Coop;
 using NinjaKiwi.NKMulti;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions
 {

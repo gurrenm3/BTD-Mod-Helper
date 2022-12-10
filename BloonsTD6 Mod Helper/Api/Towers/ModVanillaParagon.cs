@@ -6,7 +6,6 @@ using Assets.Scripts.Models.Towers.Upgrades;
 using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -39,7 +38,7 @@ public abstract class ModVanillaParagon : ModTower
     /// <summary>
     /// Same towerSet as base tower
     /// </summary>
-    public sealed override string TowerSet => BaseTowerModel.towerSet;
+    public sealed override TowerSet TowerSet => BaseTowerModel.towerSet;
 
     /// <summary>
     /// Handled by upgrade cost

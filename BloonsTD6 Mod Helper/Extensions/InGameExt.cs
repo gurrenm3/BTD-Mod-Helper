@@ -4,7 +4,6 @@ using Assets.Scripts.Simulation.Input;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Il2CppSystem.Collections.Generic;
-using UnhollowerBaseLib;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Assets.Scripts.Simulation.Simulation;
@@ -68,7 +67,7 @@ public static partial class InGameExt
     /// <param name="index">Index of the cash manager. Default is 0</param>
     public static CashManager GetCashManager(this InGame inGame, int index = 0)
     {
-        return inGame.GetSimulation()?.cashManagers?.entries[index]?.value;
+        return inGame.GetSimulation()?.cashManagers?._entries[index]?.value;
     }
 
     /// <summary>

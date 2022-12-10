@@ -10,8 +10,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppSystem;
-using UnhollowerBaseLib;
-using UnhollowerRuntimeLib;
+using Il2CppInterop.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -22,9 +21,9 @@ internal class ModdedMonkeySelectMenu
 {
     private static MonkeySelectMenu menu;
     private static bool reOpening;
-    private static string currentTowerSet = "";
+    private static TowerSet currentTowerSet = TowerSet.None;
 
-    private static readonly Dictionary<string, int> Offsets = new();
+    private static readonly Dictionary<TowerSet, int> Offsets = new();
 
     private static int Offset
     {
@@ -32,10 +31,10 @@ internal class ModdedMonkeySelectMenu
         set => Offsets[currentTowerSet] = value;
     }
 
-    private static readonly Dictionary<string, List<TowerDetailsModel>> TowersInSets = new();
+    private static readonly Dictionary<TowerSet, List<TowerDetailsModel>> TowersInSets = new();
 
     // Total amount of towers in each set rounded up to the nearest multiple of 8
-    private static readonly Dictionary<string, int> TotalSpotses = new();
+    private static readonly Dictionary<TowerSet, int> TotalSpotses = new();
     private static int TotalSpots => TotalSpotses[currentTowerSet];
 
 
@@ -46,7 +45,8 @@ internal class ModdedMonkeySelectMenu
     /// <param name="offset"></param>
     internal static void UpdateTowerSet(MonkeySelectMenu __instance, int offset = 0)
     {
-        var newTowerSet = menu.TowerSets[menu.currentSet];
+        var newTowerSet = MonkeySelectMenu.TowerSets[menu.currentSet];
+        
         if (newTowerSet != currentTowerSet)
         {
             currentTowerSet = newTowerSet;
@@ -63,9 +63,9 @@ internal class ModdedMonkeySelectMenu
     /// <br/>
     /// Their order in the GameModel is what determines their order in the screen
     /// </summary>
-    internal static void UpdateGameModel(string set = "")
+    internal static void UpdateGameModel(TowerSet set = TowerSet.None)
     {
-        if (set == "")
+        if (set == TowerSet.None)
         {
             set = currentTowerSet;
         }
@@ -135,19 +135,19 @@ internal class ModdedMonkeySelectMenu
         menu.buttonRight.m_OnClick.RemoveAllListeners();
 
         reOpening = true;
-        menu.Open(currentTowerSet);
+        menu.Open((int) currentTowerSet);
         reOpening = false;
     }
 
-    public static bool ItComesAfter(string it, string maybeAfter)
+    public static bool ItComesAfter(TowerSet it, TowerSet maybeAfter)
     {
-        var sets = menu.TowerSets;
+        var sets = MonkeySelectMenu.TowerSets;
         return (sets.IndexOf(it) - sets.IndexOf(maybeAfter) + sets.Length) % sets.Length == 1;
     }
 
-    public static bool ItComesBefore(string it, string maybeBefore)
+    public static bool ItComesBefore(TowerSet it, TowerSet maybeBefore)
     {
-        var sets = menu.TowerSets;
+        var sets = MonkeySelectMenu.TowerSets;
         return (sets.IndexOf(maybeBefore) - sets.IndexOf(it) + sets.Length) % sets.Length == 1;
     }
 
@@ -160,14 +160,14 @@ internal class ModdedMonkeySelectMenu
         {
             if (!reOpening)
             {
-                var towerSets = new List<string>(__instance.TowerSets);
-                foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
+                var towerSets = new List<TowerSet>(MonkeySelectMenu.TowerSets);
+                /*foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
                 {
                     var towerSetIndex = modTowerSet.GetTowerSetIndex(towerSets);
                     towerSets.Insert(towerSetIndex, modTowerSet.Id);
                 }
-
-                __instance.TowerSets = towerSets.ToArray();
+                TODO fix modded tower sets
+                MonkeySelectMenu.TowerSets = towerSets.ToArray();*/
             }
 
             if (data == null)
@@ -175,7 +175,7 @@ internal class ModdedMonkeySelectMenu
                 menu = null;
 
                 var model = Game.instance.model;
-                foreach (var set in __instance.TowerSets)
+                foreach (var set in MonkeySelectMenu.TowerSets)
                 {
                     Offsets[set] = 0;
                     TowersInSets[set] = model.towerSet.Where(details =>
@@ -215,7 +215,7 @@ internal class ModdedMonkeySelectMenu
     internal class MonkeySelectMenu_SwitchTowerSet
     {
         [HarmonyPrefix]
-        internal static bool Prefix(MonkeySelectMenu __instance, ref string towerSet, bool swipeGesture,
+        internal static bool Prefix(MonkeySelectMenu __instance, ref TowerSet towerSet, bool swipeGesture,
             ref int __state) // State is the offset that the page should be at after this switch
         {
             __state = Offset;
@@ -391,7 +391,8 @@ internal class ModdedMonkeySelectMenu
     {
         DestroyCustomButtons();
 
-        var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
+        // TODO fix mod tower sets
+        /*var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
         var horizontalLayoutGroup = __instance.monkeyGroupButtons[0].GetComponentInParent<HorizontalLayoutGroup>();
         foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
         {
@@ -403,7 +404,7 @@ internal class ModdedMonkeySelectMenu
             monkeyGroupButtons.Insert(index, groupButton.GetComponent<MonkeyGroupButton>());
         }
 
-        __instance.monkeyGroupButtons = monkeyGroupButtons.ToArray();
+        __instance.monkeyGroupButtons = monkeyGroupButtons.ToArray();*/
     }
 
     internal static GameObject CreateMonkeyGroupButton(MonkeySelectMenu instance, ModTowerSet modTowerSet)
