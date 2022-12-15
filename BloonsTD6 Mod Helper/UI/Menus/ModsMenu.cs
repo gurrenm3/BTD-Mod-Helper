@@ -307,6 +307,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         topRow.AddComponent<Image>();
         topRow.Mask.showMaskGraphic = false;
         topRow.Mask.enabled = false;
+        topRow.ScrollContent.RectTransform.pivot = new Vector2(0, 0.5f);
 
         topRow.ScrollContent.AddDropdown(new Info("ModFilter", 500f, ModNameHeight), SortOptions.ToIl2CppList(),
             ModNameHeight * 4,
@@ -427,12 +428,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             var anyModsNeedUpdates = modPanels.Any(pair =>
                 pair.Key.UpdateAvailable && pair.Value is not null && pair.Value.gameObject.active);
             updateAllButton.gameObject.SetActive(anyModsNeedUpdates);
-            if (topRow.ScrollContent.enabled != anyModsNeedUpdates)
-            {
-                topRow.ScrollRect.enabled = anyModsNeedUpdates;
-                topRow.ScrollRect.horizontalNormalizedPosition = 0;
-            }
-
         }
 
         restartPanel.SetActive(

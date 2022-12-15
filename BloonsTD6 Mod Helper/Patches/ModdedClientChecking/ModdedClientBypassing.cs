@@ -17,11 +17,15 @@ internal class ModdedClientBypassing
     /// </summary>
     public static bool CurrentlyBypassingCheck { get; private set; }
 
+    internal static bool ForceNoSave { get; set; }
+
     /// <summary>
     /// Called in prefix patches on methods where we think modded clients should be accepted
     /// </summary>
     internal static void StartBypassingCheck()
     {
+        if (ForceNoSave) return;
+
         CurrentlyBypassingCheck = true;
         Modding.isModdedClient = false;
     }
