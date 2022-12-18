@@ -1,8 +1,8 @@
 ﻿using System;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppSystem.Collections.Generic;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

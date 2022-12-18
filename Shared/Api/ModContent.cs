@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Display;

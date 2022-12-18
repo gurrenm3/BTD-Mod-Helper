@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Unity.UI_New.Odyssey;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.Odyssey;
 
 namespace BTD_Mod_Helper.Patches.UI;
 

@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Simulation.Objects;
-using Assets.Scripts.Simulation.Factory;
-using Assets.Scripts.Unity.UI_New.InGame;
+﻿using Il2CppAssets.Scripts.Simulation.Objects;
+using Il2CppAssets.Scripts.Simulation.Factory;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 
 namespace BTD_Mod_Helper.Extensions;
 

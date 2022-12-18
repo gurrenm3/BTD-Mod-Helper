@@ -1,4 +1,4 @@
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using System.Collections.Generic;
 
 #pragma warning disable CS1591

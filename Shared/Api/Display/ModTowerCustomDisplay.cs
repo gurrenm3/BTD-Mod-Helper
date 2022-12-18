@@ -1,5 +1,5 @@
 ﻿using System;
-using Assets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Api.Display;

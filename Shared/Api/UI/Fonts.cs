@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 #pragma warning disable CS1591
 

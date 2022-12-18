@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Assets.Scripts.Models.Profile;
+using Il2CppAssets.Scripts.Models.Profile;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 

@@ -1,8 +1,8 @@
 ﻿using System;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using UnityEngine;

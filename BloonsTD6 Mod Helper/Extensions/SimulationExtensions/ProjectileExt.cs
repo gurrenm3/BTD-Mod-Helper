@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Simulation.Display;
-using Assets.Scripts.Simulation.Towers.Projectiles;
-using Assets.Scripts.Unity.Display;
+﻿using Il2CppAssets.Scripts.Simulation.Display;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
+using Il2CppAssets.Scripts.Unity.Display;
 
 namespace BTD_Mod_Helper.Extensions;
 

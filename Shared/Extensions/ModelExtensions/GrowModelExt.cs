@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Models.Bloons.Behaviors;
+﻿using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 
 namespace BTD_Mod_Helper.Extensions;
 

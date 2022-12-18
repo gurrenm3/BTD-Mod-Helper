@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.Main;
-using Assets.Scripts.Unity.UI_New.Main.MapSelect;
-using Assets.Scripts.Unity.UI_New.Main.MonkeySelect;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.Main;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.MonkeySelect;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;

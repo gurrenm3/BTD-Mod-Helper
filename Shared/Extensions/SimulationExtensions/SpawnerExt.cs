@@ -1,10 +1,10 @@
-﻿using Assets.Scripts.Models.Bloons;
-using Assets.Scripts.Simulation.Track;
+﻿using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Simulation.Track;
 
 #if BloonsTD6
-using Assets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 #elif BloonsAT
-using Assets.Scripts.Models.Rounds;
+using Il2CppAssets.Scripts.Models.Rounds;
 #endif
 
 namespace BTD_Mod_Helper.Extensions

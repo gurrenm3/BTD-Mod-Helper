@@ -1,18 +1,18 @@
 ﻿using System;
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers.Behaviors.Attack;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
 
 #if BloonsTD6
-using Assets.Scripts.Models.Towers.Projectiles;
-using Assets.Scripts.Models.Towers.Weapons;
-using Assets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
+using Il2CppAssets.Scripts.Models.Towers.Weapons;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 #elif BloonsAT
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Assets.Scripts.Models.Towers.Weapons.Behaviors;
-using Assets.Scripts.Models.Display;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors;
+using Il2CppAssets.Scripts.Models.Display;
 #endif
 
 

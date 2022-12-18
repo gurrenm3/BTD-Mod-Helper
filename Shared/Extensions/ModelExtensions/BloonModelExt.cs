@@ -1,22 +1,22 @@
-﻿using Assets.Scripts.Models.Bloons;
-using Assets.Scripts.Models.Rounds;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.UI_New.InGame;
+﻿using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Rounds;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Bridge;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using Assets.Scripts.Models.Bloons.Behaviors;
+using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Enums;
 
 #if BloonsTD6
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Utils;
 #elif BloonsAT
-using Assets.Scripts.Models.Display;
+using Il2CppAssets.Scripts.Models.Display;
 #endif
 
 

@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Assets.Scripts.Unity.UI_New.Popups;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;

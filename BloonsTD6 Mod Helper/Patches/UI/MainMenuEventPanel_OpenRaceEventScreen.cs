@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Unity.UI_New.Main.EventPanel;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.Main.EventPanel;
 
 namespace BTD_Mod_Helper.Patches.UI;
 

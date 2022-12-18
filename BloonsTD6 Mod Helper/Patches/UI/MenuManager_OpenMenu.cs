@@ -1,4 +1,4 @@
-using Assets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.UI.Modded;
 
 namespace BTD_Mod_Helper.Patches.UI;

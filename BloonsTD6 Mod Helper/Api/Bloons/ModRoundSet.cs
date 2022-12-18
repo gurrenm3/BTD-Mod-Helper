@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Rounds;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Rounds;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace BTD_Mod_Helper.Api.Bloons;

@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.Scripts.Unity.UI_New.Popups;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.ModMenu;
 
 namespace BTD_Mod_Helper.Api.Helpers

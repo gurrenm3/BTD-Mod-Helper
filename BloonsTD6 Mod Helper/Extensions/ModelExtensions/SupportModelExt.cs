@@ -1,4 +1,4 @@
-using Assets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 

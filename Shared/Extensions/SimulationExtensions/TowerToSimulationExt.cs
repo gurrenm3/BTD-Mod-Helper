@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Simulation.Towers;
-using Assets.Scripts.Unity.Bridge;
+﻿using Il2CppAssets.Scripts.Simulation.Towers;
+using Il2CppAssets.Scripts.Unity.Bridge;
 
 namespace BTD_Mod_Helper.Extensions;
 

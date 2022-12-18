@@ -1,4 +1,4 @@
-using Assets.Scripts.Simulation.Towers;
+using Il2CppAssets.Scripts.Simulation.Towers;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Unity.UI_New.Popups;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.UI.Menus;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using IntPtr = System.IntPtr;

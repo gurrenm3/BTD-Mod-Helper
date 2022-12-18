@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
-using NinjaKiwi.Common;
+using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions;

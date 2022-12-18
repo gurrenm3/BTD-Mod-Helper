@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Unity.UI_New.Main;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.UI.Modded;
 

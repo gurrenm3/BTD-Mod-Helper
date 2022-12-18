@@ -1,4 +1,4 @@
-using Assets.Scripts.Data.Global;
+using Il2CppAssets.Scripts.Data.Global;
 using HarmonyLib;
 using MelonLoader;
 

@@ -1,4 +1,4 @@
-using Assets.Scripts.Unity.UI_New.Upgrade;
+using Il2CppAssets.Scripts.Unity.UI_New.Upgrade;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Patches.UI;

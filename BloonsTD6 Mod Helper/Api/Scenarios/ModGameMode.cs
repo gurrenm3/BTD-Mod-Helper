@@ -1,8 +1,8 @@
 ﻿using System;
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers.Mods;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Mods;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem.Collections.Generic;
 
 namespace BTD_Mod_Helper.Api.Scenarios;

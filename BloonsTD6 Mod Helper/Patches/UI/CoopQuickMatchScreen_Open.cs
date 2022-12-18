@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Unity.UI_New.Coop;
+﻿using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New.Coop;
 using BTD_Mod_Helper.Api;
 using Il2CppSystem;
 

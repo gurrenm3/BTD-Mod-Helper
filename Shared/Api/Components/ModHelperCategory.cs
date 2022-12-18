@@ -1,8 +1,8 @@
 ﻿using System;
-using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

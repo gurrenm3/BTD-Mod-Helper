@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics;
-using Assets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.Menu;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 

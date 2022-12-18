@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

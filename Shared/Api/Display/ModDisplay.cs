@@ -1,22 +1,22 @@
 ﻿using System;
-using Assets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Unity.Display;
 using System.Collections.Generic;
-using Assets.Scripts.Models.Bloons;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
-using NinjaKiwi.Common;
+using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
 #if BloonsTD6
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Towers.Projectiles;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 #elif BloonsAT
-using Assets.Scripts.Models.Display;
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Display;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 #endif
 
 namespace BTD_Mod_Helper.Api.Display
@@ -75,7 +75,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// The position offset to render the display at (z axis is up toward camera)
         /// </summary>
-        public virtual Assets.Scripts.Simulation.SMath.Vector3 PositionOffset => new(0, 0, 0);
+        public virtual Il2CppAssets.Scripts.Simulation.SMath.Vector3 PositionOffset => new(0, 0, 0);
 
         /// <summary>
         /// The scale to render the display at

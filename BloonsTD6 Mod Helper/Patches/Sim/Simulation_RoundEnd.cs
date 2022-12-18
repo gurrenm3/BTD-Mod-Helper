@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation;
+﻿using Il2CppAssets.Scripts.Simulation;
 
 namespace BTD_Mod_Helper.Patches.Sim;
 

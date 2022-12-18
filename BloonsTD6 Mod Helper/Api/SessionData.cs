@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Simulation.Bloons;
-using NinjaKiwi.NKMulti;
-using NinjaKiwi.Players.Files;
+﻿using Il2CppAssets.Scripts.Simulation.Bloons;
+using Il2CppNinjaKiwi.NKMulti;
+using Il2CppNinjaKiwi.Players.Files;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper;

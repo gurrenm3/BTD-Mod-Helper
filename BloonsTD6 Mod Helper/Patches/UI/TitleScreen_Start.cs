@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Linq;
-using Assets.Main.Scenes;
+using Il2CppAssets.Main.Scenes;
 using BTD_Mod_Helper.Api;
 using NinjaKiwi.Common;
 

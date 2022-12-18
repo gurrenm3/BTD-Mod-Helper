@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Simulation.Behaviors;
-using Assets.Scripts.Simulation.Objects;
-using Assets.Scripts.Simulation.Towers;
+﻿using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Simulation.Behaviors;
+using Il2CppAssets.Scripts.Simulation.Objects;
+using Il2CppAssets.Scripts.Simulation.Towers;
 
 namespace BTD_Mod_Helper.Patches.Towers;
 

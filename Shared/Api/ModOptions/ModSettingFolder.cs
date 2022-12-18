@@ -3,7 +3,7 @@ using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using NfdSharp;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 using Action = System.Action;
 

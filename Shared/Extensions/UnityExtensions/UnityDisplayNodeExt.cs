@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using System.Collections.Generic;
 using System.Linq;

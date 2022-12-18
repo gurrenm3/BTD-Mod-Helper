@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Models.Map;
-using Assets.Scripts.Unity.Bridge;
+﻿using Il2CppAssets.Scripts.Models.Map;
+using Il2CppAssets.Scripts.Unity.Bridge;
 using BTD_Mod_Helper.Api.Scenarios;
 using UnityEngine;
 

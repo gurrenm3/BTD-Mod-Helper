@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.Objects;
+﻿using Il2CppAssets.Scripts.Simulation.Objects;
 using UnityEngine;
 using System.Linq;
 

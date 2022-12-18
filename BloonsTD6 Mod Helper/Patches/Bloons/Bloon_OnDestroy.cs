@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.Bloons;
+﻿using Il2CppAssets.Scripts.Simulation.Bloons;
 
 namespace BTD_Mod_Helper.Patches.Bloons;
 

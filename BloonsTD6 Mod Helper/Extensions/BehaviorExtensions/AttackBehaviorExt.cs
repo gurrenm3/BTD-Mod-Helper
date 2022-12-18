@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.Towers.Behaviors.Attack;
+﻿using Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions;

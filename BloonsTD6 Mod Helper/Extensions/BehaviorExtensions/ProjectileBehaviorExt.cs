@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.Towers.Projectiles;
+﻿using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions;

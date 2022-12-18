@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
+﻿using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
 
 namespace BTD_Mod_Helper.Extensions;
 

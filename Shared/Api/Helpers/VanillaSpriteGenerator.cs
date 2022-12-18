@@ -50,7 +50,7 @@ internal class VanillaSpriteGenerator
 
         using (var vanillaSpritesFile = new StreamWriter(vanillaSpritesCs))
         {
-            vanillaSpritesFile.WriteLine("using Assets.Scripts.Utils;");
+            vanillaSpritesFile.WriteLine("using Il2CppAssets.Scripts.Utils;");
             vanillaSpritesFile.WriteLine("using System.Collections.Generic;");
             vanillaSpritesFile.WriteLine("");
             vanillaSpritesFile.WriteLine("#pragma warning disable CS1591");

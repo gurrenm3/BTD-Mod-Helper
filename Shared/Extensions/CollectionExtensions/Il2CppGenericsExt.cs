@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem.Collections.Generic;
 using System;
 

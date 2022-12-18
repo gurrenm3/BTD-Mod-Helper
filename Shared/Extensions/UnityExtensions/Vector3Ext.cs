@@ -1,5 +1,5 @@
 ﻿
-using Assets.Scripts.Simulation.SMath;
+using Il2CppAssets.Scripts.Simulation.SMath;
 
 namespace BTD_Mod_Helper.Extensions;
 

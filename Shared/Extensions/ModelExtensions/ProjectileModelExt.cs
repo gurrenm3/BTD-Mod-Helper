@@ -1,15 +1,15 @@
-﻿using Assets.Scripts.Unity.UI_New.InGame;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 #if BloonsTD6
-using Assets.Scripts.Models.Towers.Projectiles;
-using Assets.Scripts.Simulation.Towers.Projectiles;
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 #elif BloonsAT
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Assets.Scripts.Simulation.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Behaviors;
 #endif
 
 namespace BTD_Mod_Helper.Extensions

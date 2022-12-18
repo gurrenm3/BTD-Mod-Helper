@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Assets.Scripts.Data;
-using Assets.Scripts.Data.Global;
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Towers.Behaviors;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Data.Global;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Display;
 

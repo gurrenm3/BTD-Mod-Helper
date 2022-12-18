@@ -1,10 +1,10 @@
-﻿using Assets.Scripts.Models.Map;
-using Assets.Scripts.Models.Map.Spawners;
+﻿using Il2CppAssets.Scripts.Models.Map;
+using Il2CppAssets.Scripts.Models.Map.Spawners;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
-using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
-using Vector3 = Assets.Scripts.Simulation.SMath.Vector3;
+using Vector2 = Il2CppAssets.Scripts.Simulation.SMath.Vector2;
+using Vector3 = Il2CppAssets.Scripts.Simulation.SMath.Vector3;
 
 
 namespace BTD_Mod_Helper.Api.Helpers;

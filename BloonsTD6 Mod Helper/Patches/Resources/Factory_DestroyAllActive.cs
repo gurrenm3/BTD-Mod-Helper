@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Unity.Display;
+﻿using Il2CppAssets.Scripts.Unity.Display;
 
 namespace BTD_Mod_Helper.Patches.Resources;
 

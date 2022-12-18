@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using Assets.Scripts.Models.Rounds;
-using Assets.Scripts.Simulation.Input;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Models.Rounds;
+using Il2CppAssets.Scripts.Simulation.Input;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppSystem.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Assets.Scripts.Simulation.Simulation;
+using static Il2CppAssets.Scripts.Simulation.Simulation;
 
 namespace BTD_Mod_Helper.Extensions;
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Assets.Scripts.Data;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

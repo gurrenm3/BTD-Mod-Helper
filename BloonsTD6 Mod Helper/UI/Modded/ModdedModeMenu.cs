@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models.Difficulty;
-using Assets.Scripts.Unity.UI_New.Main.ModeSelect;
+using Il2CppAssets.Scripts.Models.Difficulty;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Scenarios;

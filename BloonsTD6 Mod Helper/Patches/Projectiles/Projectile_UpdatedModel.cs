@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Simulation.Towers.Projectiles;
+﻿using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 
 namespace BTD_Mod_Helper.Patches.Projectiles;
 

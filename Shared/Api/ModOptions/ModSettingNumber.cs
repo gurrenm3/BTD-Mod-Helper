@@ -1,7 +1,7 @@
 ﻿using System;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.ModOptions;

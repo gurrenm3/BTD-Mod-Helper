@@ -1,8 +1,8 @@
 ﻿using System;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using BTD_Mod_Helper.Api.Coop;
-using NinjaKiwi.NKMulti;
+using Il2CppNinjaKiwi.NKMulti;
 
 namespace BTD_Mod_Helper.Extensions
 {

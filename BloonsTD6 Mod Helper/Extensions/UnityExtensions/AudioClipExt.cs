@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Unity;
+﻿using Il2CppAssets.Scripts.Unity;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions;

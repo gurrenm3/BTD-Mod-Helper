@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.Towers.Behaviors;
-using Assets.Scripts.Models.Towers.Upgrades;
-using Assets.Scripts.Simulation.Towers;
-using Assets.Scripts.Unity;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Upgrades;
+using Il2CppAssets.Scripts.Simulation.Towers;
+using Il2CppAssets.Scripts.Unity;
 
 namespace BTD_Mod_Helper.Api.Towers;
 

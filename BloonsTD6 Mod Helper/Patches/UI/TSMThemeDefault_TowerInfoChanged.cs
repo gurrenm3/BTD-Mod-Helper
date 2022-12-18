@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes;
+﻿using Il2CppAssets.Scripts.Unity.Bridge;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 using UnityEngine;

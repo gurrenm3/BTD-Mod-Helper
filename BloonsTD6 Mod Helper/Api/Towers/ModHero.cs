@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.Towers.Behaviors;
-using Assets.Scripts.Utils;
-using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Data.Global;
-using Assets.Scripts.Data.Skins;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Data.Global;
+using Il2CppAssets.Scripts.Data.Skins;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Towers;

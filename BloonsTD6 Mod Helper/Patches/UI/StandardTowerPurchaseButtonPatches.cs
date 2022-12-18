@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
-using Assets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Towers;
 using UnityEngine.UI;
 

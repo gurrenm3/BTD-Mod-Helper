@@ -1,7 +1,7 @@
 ﻿#if BloonsAT
-using Assets.Scripts.Unity.Localization;
+using Il2CppAssets.Scripts.Unity.Localization;
 #elif BloonsTD6
-using NinjaKiwi.Common;
+using Il2CppNinjaKiwi.Common;
 #endif
 using Il2CppSystem.Collections.Generic;
 

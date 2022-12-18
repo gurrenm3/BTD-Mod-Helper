@@ -1,7 +1,7 @@
 ﻿using System;
 using HarmonyLib;
 using MelonLoader;
-using NinjaKiwi.NKMulti;
+using Il2CppNinjaKiwi.NKMulti;
 using Task = Il2CppSystem.Threading.Tasks.Task;
 
 namespace BTD_Mod_Helper.Patches

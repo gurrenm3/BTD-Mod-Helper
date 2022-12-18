@@ -1,5 +1,5 @@
 ﻿using System;
-using TMPro;
+using Il2CppTMPro;
 
 namespace BTD_Mod_Helper.Api.Components;
 

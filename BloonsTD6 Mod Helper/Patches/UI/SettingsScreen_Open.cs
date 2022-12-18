@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Unity.UI_New.Settings;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.Settings;
 
 namespace BTD_Mod_Helper.Patches.UI;
 

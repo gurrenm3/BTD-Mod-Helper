@@ -1,7 +1,7 @@
-using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Simulation.SMath;
-using Assets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Simulation.SMath;
+using Il2CppAssets.Scripts.Unity.Display;
 
 namespace BTD_Mod_Helper.Api.Display;
 

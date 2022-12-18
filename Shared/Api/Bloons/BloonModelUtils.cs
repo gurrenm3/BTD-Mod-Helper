@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Models.Bloons.Behaviors;
-using Assets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
+using Il2CppAssets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Bloons;
 

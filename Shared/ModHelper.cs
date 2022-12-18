@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Assets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
 using Exception = System.Exception;
 

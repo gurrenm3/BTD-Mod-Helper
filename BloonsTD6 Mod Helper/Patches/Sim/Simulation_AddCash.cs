@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Towers;
-using Assets.Scripts.Simulation.Tracking;
+﻿using Il2CppAssets.Scripts.Simulation;
+using Il2CppAssets.Scripts.Simulation.Towers;
+using Il2CppAssets.Scripts.Simulation.Tracking;
 
 namespace BTD_Mod_Helper.Patches.Sim;
 

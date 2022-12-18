@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
 using UnityEngine;
 using UnityEngine.UI;
 

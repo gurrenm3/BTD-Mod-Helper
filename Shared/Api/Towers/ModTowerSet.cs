@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Towers;
 

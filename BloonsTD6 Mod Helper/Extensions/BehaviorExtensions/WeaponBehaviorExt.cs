@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.Towers.Weapons;
+﻿using Il2CppAssets.Scripts.Simulation.Towers.Weapons;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions;

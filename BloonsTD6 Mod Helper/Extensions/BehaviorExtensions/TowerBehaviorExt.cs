@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.Towers;
+﻿using Il2CppAssets.Scripts.Simulation.Towers;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions;

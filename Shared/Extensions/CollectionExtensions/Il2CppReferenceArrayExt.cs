@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models;
+using Il2CppAssets.Scripts.Models;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace BTD_Mod_Helper.Extensions;

@@ -1,8 +1,8 @@
 using System.Linq;
-using Assets.Scripts;
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Unity.Bridge;
+using Il2CppAssets.Scripts;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Unity.Bridge;
 namespace BTD_Mod_Helper.Patches.Sim;
 
 /// <summary>

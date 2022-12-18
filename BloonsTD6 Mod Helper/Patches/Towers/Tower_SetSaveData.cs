@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Models.Profile;
-using Assets.Scripts.Simulation.Towers;
+﻿using Il2CppAssets.Scripts.Models.Profile;
+using Il2CppAssets.Scripts.Simulation.Towers;
 
 namespace BTD_Mod_Helper.Patches.Towers;
 

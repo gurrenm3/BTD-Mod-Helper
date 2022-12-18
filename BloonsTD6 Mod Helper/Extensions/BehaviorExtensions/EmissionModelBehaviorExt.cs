@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers.Behaviors.Emissions;
+﻿using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
 using System.Collections.Generic;
 using System.Linq;
 

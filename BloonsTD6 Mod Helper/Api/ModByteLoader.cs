@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Helpers;
 using Exception = System.Exception;
 using Object = Il2CppSystem.Object;

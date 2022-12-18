@@ -1,5 +1,5 @@
 ﻿using System;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using Il2CppInterop.Runtime;

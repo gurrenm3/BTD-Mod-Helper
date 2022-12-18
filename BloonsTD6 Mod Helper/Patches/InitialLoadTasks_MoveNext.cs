@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Analytics;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Analytics;
 using BTD_Mod_Helper.Api;
+using Il2CppNinjakiwi.BuildAutomation;
 using Il2CppSystem.Threading.Tasks;
-using Ninjakiwi.BuildAutomation;
-using NinjaKiwi.Common;
+using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using Exception = System.Exception;
 using Int32 = Il2CppSystem.Int32;
-using Main = Assets.Main.Main;
+using Main = Il2CppAssets.Main.Main;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Patches;
 
@@ -53,7 +53,7 @@ internal static class InitialLoadTasks_MoveNext
     }
 
     [HarmonyPostfix]
-    private static void Postfix(Assets.Main.Main._InitialLoadTasks_d__45 __instance)
+    private static void Postfix(Main._InitialLoadTasks_d__45 __instance)
     {
         var tasks = __instance._tasks_5__3;
         if (tasks == null || MelonMain.UseOldLoading) return;

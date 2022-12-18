@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Models.ServerEvents;
+﻿using Il2CppAssets.Scripts.Models.ServerEvents;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;

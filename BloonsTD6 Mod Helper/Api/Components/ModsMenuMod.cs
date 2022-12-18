@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Unity.UI_New.Popups;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.UI.Menus;
 using MelonLoader.InternalUtils;

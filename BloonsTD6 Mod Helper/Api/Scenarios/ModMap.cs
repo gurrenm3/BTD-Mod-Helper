@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Data;
-using Assets.Scripts.Data.MapSets;
-using Assets.Scripts.Models.Map;
-using Assets.Scripts.Simulation.SMath;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Data.MapSets;
+using Il2CppAssets.Scripts.Models.Map;
+using Il2CppAssets.Scripts.Simulation.SMath;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Helpers;
 using UnityEngine;
-using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
+using Vector2 = Il2CppAssets.Scripts.Simulation.SMath.Vector2;
 
 namespace BTD_Mod_Helper.Api.Scenarios;
 

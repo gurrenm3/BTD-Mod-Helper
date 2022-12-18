@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.Towers.Behaviors;
+﻿using Il2CppAssets.Scripts.Simulation.Towers.Behaviors;
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Patches.Towers;

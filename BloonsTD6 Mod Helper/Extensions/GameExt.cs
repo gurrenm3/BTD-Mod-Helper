@@ -1,19 +1,19 @@
-﻿using Assets.Scripts.Models.PowerSets;
-using Assets.Scripts.Models.Towers;
-using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Unity.Player;
-using Assets.Scripts.Unity.UI_New;
-using Assets.Scripts.Unity.UI_New.InGame.RightMenu;
-using Assets.Scripts.Unity.UI_New.Popups;
-using Assets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Models.PowerSets;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.Player;
+using Il2CppAssets.Scripts.Unity.UI_New;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
-using NinjaKiwi.NKMulti;
-using NinjaKiwi.Players.Files.SaveStrategies;
+using Il2CppNinjaKiwi.NKMulti;
+using Il2CppNinjaKiwi.Players.Files.SaveStrategies;
 using System.Collections.Generic;
-using Assets.Scripts.Unity.UI_New.Coop;
-using NinjaKiwi.LiNK.Lobbies;
+using Il2CppAssets.Scripts.Unity.UI_New.Coop;
+using Il2CppNinjaKiwi.LiNK.Lobbies;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -107,7 +107,7 @@ public static partial class GameExt
     /// <summary>
     /// Get the Unity Display Factory that manages on screen sprites. This Factory is different from other Factories in the game
     /// </summary>
-    public static Assets.Scripts.Unity.Display.Factory GetDisplayFactory(this Game game)
+    public static Il2CppAssets.Scripts.Unity.Display.Factory GetDisplayFactory(this Game game)
     {
         return game.scene?.factory;
     }
@@ -163,9 +163,9 @@ public static partial class GameExt
     /// <summary>
     /// Get the instance of UI
     /// </summary>
-    public static Assets.Scripts.Unity.UI_New.UI GetUI(this Game game)
+    public static Il2CppAssets.Scripts.Unity.UI_New.UI GetUI(this Game game)
     {
-        return Assets.Scripts.Unity.UI_New.UI.instance;
+        return Il2CppAssets.Scripts.Unity.UI_New.UI.instance;
     }
 
     /// <summary>

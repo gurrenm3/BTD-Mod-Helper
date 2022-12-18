@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Assets.Scripts.Unity.UI_New.Main;
-using Assets.Scripts.Unity.UI_New.Main.Home;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Unity.UI_New.Main;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.Home;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;

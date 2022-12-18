@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
-using Assets.Scripts.Unity.UI_New.Settings;
+using Il2CppAssets.Scripts.Unity.UI_New.Settings;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.ModMenu;

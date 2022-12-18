@@ -1,5 +1,5 @@
 ﻿using System;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime;
 using Il2CppInterop.Runtime.InteropTypes;
 using Il2CppInterop.Runtime.Runtime;

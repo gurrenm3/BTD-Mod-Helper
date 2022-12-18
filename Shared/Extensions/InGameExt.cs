@@ -1,18 +1,18 @@
-﻿using Assets.Scripts.Simulation.Bloons;
-using Assets.Scripts.Simulation.Factory;
-using Assets.Scripts.Simulation.Objects;
-using Assets.Scripts.Simulation.Towers;
-using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.UI_New.InGame;
+﻿using Il2CppAssets.Scripts.Simulation.Bloons;
+using Il2CppAssets.Scripts.Simulation.Factory;
+using Il2CppAssets.Scripts.Simulation.Objects;
+using Il2CppAssets.Scripts.Simulation.Towers;
+using Il2CppAssets.Scripts.Unity.Bridge;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using System.Collections.Generic;
-using Assets.Scripts.Simulation.Track;
-using Assets.Scripts.Simulation;
-using Assets.Scripts.Models;
+using Il2CppAssets.Scripts.Simulation.Track;
+using Il2CppAssets.Scripts.Simulation;
+using Il2CppAssets.Scripts.Models;
 
 #if BloonsTD6
-using Assets.Scripts.Simulation.Towers.Projectiles;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 #elif BloonsAT
-using Assets.Scripts.Simulation.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Behaviors;
 #endif
 
 namespace BTD_Mod_Helper.Extensions

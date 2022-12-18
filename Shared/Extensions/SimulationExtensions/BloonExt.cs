@@ -1,10 +1,10 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Simulation.Bloons;
-using Assets.Scripts.Simulation.Display;
-using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.Display;
-using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Simulation.Factory;
+﻿using Il2CppAssets.Scripts;
+using Il2CppAssets.Scripts.Simulation.Bloons;
+using Il2CppAssets.Scripts.Simulation.Display;
+using Il2CppAssets.Scripts.Unity.Bridge;
+using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Simulation.Factory;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Extensions;

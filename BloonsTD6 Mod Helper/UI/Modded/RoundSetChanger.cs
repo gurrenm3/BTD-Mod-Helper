@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Unity.Menu;
-using Assets.Scripts.Unity.UI_New;
-using Assets.Scripts.Unity.UI_New.Main.Facebook;
-using Assets.Scripts.Unity.UI_New.Main.MapSelect;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.Facebook;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
+using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;

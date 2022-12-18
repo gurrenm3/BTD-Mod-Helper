@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Models;
+﻿using Il2CppAssets.Scripts.Models;
 
 namespace BTD_Mod_Helper.Patches;
 

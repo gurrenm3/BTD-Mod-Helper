@@ -1,7 +1,7 @@
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.Events;
 

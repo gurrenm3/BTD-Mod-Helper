@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.Models;
+﻿using Il2CppAssets.Scripts.Models;
 using System.Collections.Generic;
 using System.Linq;
 
 #if BloonsTD6
-using Assets.Scripts.Models.Towers.Projectiles;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 #elif BloonsAT
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 #endif
 
 namespace BTD_Mod_Helper.Extensions

@@ -1,8 +1,8 @@
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Store.Loot;
-using Assets.Scripts.Unity;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Store.Loot;
+using Il2CppAssets.Scripts.Unity;
 using UnityEngine;
-using static Assets.Scripts.Models.Towers.TowerType;
+using static Il2CppAssets.Scripts.Models.Towers.TowerType;
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(RandomInstaMonkeyLoot), nameof(RandomInstaMonkeyLoot.Convert))]

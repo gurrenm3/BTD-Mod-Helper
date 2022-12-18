@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using NinjaKiwi.Players;
-using NinjaKiwi.Players.Files;
+using Il2CppNinjaKiwi.Players;
+using Il2CppNinjaKiwi.Players.Files;
 
 namespace BTD_Mod_Helper.Patches.Resources;
 

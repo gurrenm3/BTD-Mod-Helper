@@ -1,6 +1,6 @@
 ﻿using System;
 using Il2CppInterop.Runtime;
-using TMPro;
+using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;

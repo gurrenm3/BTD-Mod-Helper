@@ -1,7 +1,7 @@
 ﻿using System;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
-using NinjaKiwi.Common;
+using Il2CppNinjaKiwi.Common;
 
 namespace BTD_Mod_Helper.Patches.Resources;
 

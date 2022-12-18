@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Simulation.Objects;
+﻿using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Simulation.Objects;
 using System.Collections.Generic;
 
 namespace BTD_Mod_Helper.Extensions;

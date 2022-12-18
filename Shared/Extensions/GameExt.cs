@@ -1,21 +1,21 @@
-﻿using Assets.Scripts.Models.Profile;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Player;
+﻿using Il2CppAssets.Scripts.Models.Profile;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Player;
 using BTD_Mod_Helper.Api;
-using Assets.Scripts.Models;
+using Il2CppAssets.Scripts.Models;
 using System.Runtime.InteropServices;
 using System;
 using System.Collections;
 using BTD_Mod_Helper.Api.Enums;
-using Assets.Scripts.Utils;
-using Assets.Scripts.Unity.Map;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppAssets.Scripts.Unity.Map;
 
 #if BloonsTD6
-using NinjaKiwi.LiNK;
-using NinjaKiwi.Common;
+using Il2CppNinjaKiwi.LiNK;
+using Il2CppNinjaKiwi.Common;
 #elif BloonsAT
-using Ninjakiwi.LiNK;
-using Assets.Scripts.Unity.Localization;
+using Il2CppNinjaKiwi.LiNK;
+using Il2CppAssets.Scripts.Unity.Localization;
 #endif
 
 namespace BTD_Mod_Helper.Extensions
@@ -30,7 +30,7 @@ namespace BTD_Mod_Helper.Extensions
         public static MapLoader GetMapLoader(this Game game)
         {
 #if BloonsTD6
-            return Assets.Scripts.Unity.UI_New.UI.instance.mapLoader;
+            return Il2CppAssets.Scripts.Unity.UI_New.UI.instance.mapLoader;
 #elif BloonsAT
             return game.MapLoader;
 #endif

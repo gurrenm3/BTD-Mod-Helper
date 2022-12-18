@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Models.Towers.Pets;
+﻿using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Pets;
 using System.Collections.Generic;
 using System.Linq;
 

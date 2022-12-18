@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Models.GenericBehaviors;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Display;
+﻿using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
 using System;
-using Assets.Scripts.Utils;
+using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Display;
