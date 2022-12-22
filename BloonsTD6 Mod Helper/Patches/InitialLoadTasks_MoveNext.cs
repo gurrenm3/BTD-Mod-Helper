@@ -15,7 +15,7 @@ using Main = Assets.Main.Main;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(Main._InitialLoadTasks_d__45), nameof(Main._InitialLoadTasks_d__45.MoveNext))]
+/*[HarmonyPatch(typeof(Main._InitialLoadTasks_d__45), nameof(Main._InitialLoadTasks_d__45.MoveNext))]
 internal static class InitialLoadTasks_MoveNext
 {
     internal static List<ModLoadTask> modsTasks;
@@ -150,4 +150,4 @@ internal static class PreventTaskPatches
         }
         return true;
     }
-}
+}*/

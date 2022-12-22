@@ -16,7 +16,7 @@ internal static class IsModdedClientPatches
     [HarmonyPrefix]
     private static bool Prefix(ref bool __result)
     {
-        if (ModdedClientBypassing.CurrentlyBypassingCheck && MelonMain.BypassSavingRestrictions)
+        if (MelonMain.BypassSavingRestrictions)
         {
             __result = false;
             return false;

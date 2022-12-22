@@ -76,7 +76,7 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
-        InitialLoadTasks_MoveNext.Update();
+        // InitialLoadTasks_MoveNext.Update();
 
         if (Game.instance is null)
             return;
@@ -111,8 +111,6 @@ internal partial class MelonMain : BloonsTD6Mod
         }
 
         if (!scheduledInGamePatch) Schedule_InGame_Loaded();
-
-        AutoSave.InitAutosave(this.GetModSettingsDir(true));
 
         foreach (var gameMode in Game.instance.model.mods)
         {
@@ -171,10 +169,4 @@ internal partial class MelonMain : BloonsTD6Mod
         Fonts.Load();
         RoundSetChanger.EnsureHidden();
     }
-
-    #region Autosave
-
-    public override void OnMatchEnd() => AutoSave.backup.CreateBackup();
-
-    #endregion
 }

@@ -188,50 +188,6 @@ internal partial class MelonMain
             onSave = ModHelperFiles.CreateTargetsFile
         };
 
-    #region Autosave
-
-    public static readonly ModSettingCategory AutoSaveCategory = new("Auto Save Settings")
-    {
-        icon = SaveGameIcon
-    };
-
-    public static readonly ModSettingButton OpenBackupDir = new(AutoSave.OpenBackupDir)
-    {
-        displayName = "Open Backup Directory",
-        buttonText = "Open",
-        category = AutoSaveCategory
-    };
-
-    public static readonly ModSettingButton OpenSaveDir = new(AutoSave.OpenAutoSaveDir)
-    {
-        displayName = "Open Save Directory",
-        buttonText = "Open",
-        category = AutoSaveCategory
-    };
-
-    public static readonly ModSettingFolder AutosavePath =
-        new(Path.Combine(ModHelper.ModHelperDirectory, "Mod Settings"))
-        {
-            displayName = "Backup Directory",
-            onSave = AutoSave.SetAutosaveDirectory,
-            category = AutoSaveCategory
-        };
-
-    public static readonly ModSettingInt TimeBetweenBackup = new(30)
-    {
-        displayName = "Minutes Between Each Backup",
-        category = AutoSaveCategory
-    };
-
-    public static readonly ModSettingInt MaxSavedBackups = new(10)
-    {
-        displayName = "Max Saved Backups",
-        onSave = max => AutoSave.backup.SetMaxBackups(max),
-        category = AutoSaveCategory
-    };
-
-    #endregion
-
     #region Debug
 
     private static readonly ModSettingCategory Debug = new("Debug");

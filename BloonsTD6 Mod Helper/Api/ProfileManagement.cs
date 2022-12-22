@@ -232,10 +232,10 @@ internal class ProfileManagement
         {
             if (profile.savedMaps?.ContainsKey(map) == true)
             {
-                var mapSaveDataModel = profile.savedMaps[map];
+                var mapSaveDataModel = profile.savedMaps[(string) map];
                 if (mapSaveDataModel.players.ContainsKey(player))
                 {
-                    mapSaveDataModel.players[player].hero = hero;
+                    mapSaveDataModel.players[(int) player].hero = hero;
                 }
             }
         }
@@ -293,7 +293,7 @@ internal class ProfileManagement
         {
             return;
         }
-            
+
         foreach (var (thing, value) in dictionary)
         {
             if (clean(thing))

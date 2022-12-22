@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Assets.Main.Scenes;
 using BTD_Mod_Helper.Api;
+using NinjaKiwi.Common;
 
 namespace BTD_Mod_Helper.Patches.UI;
 
@@ -24,6 +26,22 @@ internal class TitleScreen_Start
                 .Do(task => task.RunSync());
 
             ModContent.GetContent<ModLoadTask>().Do(task => task.RunSync());
+        }
+
+        var currentTable = LocalizationManager.Instance.textTable;
+        var defaultTable = LocalizationManager.Instance.defaultTable;
+        foreach (var namedModContent in ModContent.GetContent<NamedModContent>())
+        {
+            try
+            {
+                namedModContent.RegisterText(currentTable);
+                namedModContent.RegisterText(defaultTable);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Log($"Failed to register text for {namedModContent}");
+                ModHelper.Error(e);
+            }
         }
 
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
