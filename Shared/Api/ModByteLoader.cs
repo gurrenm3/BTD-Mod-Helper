@@ -129,7 +129,8 @@ public abstract partial class ModByteLoader : ModContent
 
     private static readonly string[] Enums =
     {
-        "Assets.Scripts.Models.Towers.TowerModel.TowerSize"
+        "Assets.Scripts.Models.Towers.TowerModel.TowerSize",
+        "Assets.Scripts.Models.TowerSets.TowerSet"
     };
 
     private static readonly string[] AssetRefTypes =
@@ -148,8 +149,9 @@ public abstract partial class ModByteLoader : ModContent
         using var reader = new StreamReader(unconvertedLoader);
         var loader = reader.ReadToEnd();
 
-        loader = "using UnhollowerBaseLib;\n" +
-                 "using Il2CppInterop.Runtime;\n" +
+        loader = "using Il2CppInterop.Runtime;\n" +
+                 "using Il2CppInterop.Runtime.InteropTypes;\n" +
+                 "using Il2CppInterop.Runtime.InteropTypes.Arrays;\n" +
                  "using BTD_Mod_Helper.Extensions;\n" +
                  "using BTD_Mod_Helper.Api;\n" +
                  (string.IsNullOrEmpty(nameSpace) ? "" : $"\nnamespace {nameSpace};\n") +
@@ -198,11 +200,6 @@ public abstract partial class ModByteLoader : ModContent
             loader = loader.Replace($"{s}[]", $"Il2CppStructArray<{s}>");
         }
 
-        foreach (var e in Enums)
-        {
-            loader = Regex.Replace(loader, $@"\({e}\) \((br\.ReadInt32\(\))\)", @"$1");
-        }
-
         loader = Regex.Replace(loader, @"SetValue\(v\,br\.ReadInt32\(\)\)",
             @"SetValue(v,br.ReadInt32().ToIl2Cpp())");
         loader = Regex.Replace(loader, @"SetValue\(v\,br\.ReadSingle\(\)\)",
@@ -211,7 +208,11 @@ public abstract partial class ModByteLoader : ModContent
             @"SetValue(v,br.ReadBoolean().ToIl2Cpp())");
 
         loader = Regex.Replace(loader, @"\(([A-Z].+)\[\]\)", @"(Il2CppReferenceArray<$1>)");
-
+        
+        foreach (var e in Enums)
+        {
+            loader = loader.Replace($"(Il2CppReferenceArray<{e}>)", $"({e}[])");
+        }
 
         foreach (var assetReference in AssetRefTypes)
         {

@@ -265,4 +265,17 @@ public static partial class ModTowerHelper
             skinsData.AddSkins(new[] {skinData});
         }
     }
+    
+    
+    /// <summary>
+    /// Creates and returns an empty TowerModel
+    /// </summary>
+    public static TowerModel CreateTowerModel(string name, string baseId = null, TowerSet towerSet = TowerSet.None)
+    {
+        var sprite = Il2CppSystem.Nullable<SpriteReference>.Unbox(ModContent.CreateSpriteReference(""));
+        var display = ModContent.CreatePrefabReference("");
+        return new TowerModel(name, baseId ?? name, towerSet, display,
+            icon: sprite, portrait: sprite, instaIcon: sprite, emoteSpriteSmall: sprite, emoteSpriteLarge: sprite
+        );
+    }
 }
