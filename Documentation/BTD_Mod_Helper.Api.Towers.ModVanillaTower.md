@@ -63,11 +63,11 @@ public abstract string TowerId { get; }
 Change the TowerSet that this tower is part of. Also handles moving its place within the shop.
 
 ```csharp
-public virtual string TowerSet { get; }
+public virtual Assets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaTower.GetAffected(Assets.Scripts.Models.GameModel)'></a>

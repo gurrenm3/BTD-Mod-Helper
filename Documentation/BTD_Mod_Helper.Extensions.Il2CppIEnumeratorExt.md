@@ -77,7 +77,7 @@ public static Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object> ToIl2Cp
 Return as Il2CppReferenceArray
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<Il2CppSystem.Object> ToIl2CppReferenceArray(this Il2CppSystem.Collections.IEnumerator enumerator);
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Il2CppSystem.Object> ToIl2CppReferenceArray(this Il2CppSystem.Collections.IEnumerator enumerator);
 ```
 #### Parameters
 
@@ -86,7 +86,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<Il2CppSystem.Object> ToIl2C
 `enumerator` [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppIEnumeratorExt.ToList(thisIl2CppSystem.Collections.IEnumerator)'></a>
 

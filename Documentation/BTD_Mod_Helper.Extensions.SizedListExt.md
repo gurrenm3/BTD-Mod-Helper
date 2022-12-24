@@ -553,7 +553,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Asse
 Converts a SizedList to an Il2cppreferencearray
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this Assets.Scripts.Utils.SizedList<T> sizedList)
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this Assets.Scripts.Utils.SizedList<T> sizedList)
     where T : Il2CppSystem.Object;
 ```
 #### Type parameters
@@ -568,7 +568,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 `sizedList` [Assets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.ToIl2CppReferenceArray_T_(thisAssets.Scripts.Utils.SizedList_T_).T 'BTD_Mod_Helper.Extensions.SizedListExt.ToIl2CppReferenceArray<T>(this Assets.Scripts.Utils.SizedList<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.ToIl2CppReferenceArray_T_(thisAssets.Scripts.Utils.SizedList_T_).T 'BTD_Mod_Helper.Extensions.SizedListExt.ToIl2CppReferenceArray<T>(this Assets.Scripts.Utils.SizedList<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.ToIl2CppReferenceArray_T_(thisAssets.Scripts.Utils.SizedList_T_).T 'BTD_Mod_Helper.Extensions.SizedListExt.ToIl2CppReferenceArray<T>(this Assets.Scripts.Utils.SizedList<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.SizedListExt.ToList_T_(thisAssets.Scripts.Utils.SizedList_T_)'></a>
 

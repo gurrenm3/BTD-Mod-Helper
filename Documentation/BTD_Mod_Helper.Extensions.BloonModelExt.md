@@ -109,7 +109,7 @@ The type of ModDisplay
 Create a BloonEmissionModel from this BloonModel
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> CreateBloonEmissionModel(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, int count, int spacing);
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> CreateBloonEmissionModel(this Assets.Scripts.Models.Bloons.BloonModel bloonModel, int count, int spacing);
 ```
 #### Parameters
 
@@ -130,7 +130,7 @@ Number of bloons in this emission model
 Space between each bloon in this emission model
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.BloonModelExt.FindChangedBloonId(thisAssets.Scripts.Models.Bloons.BloonModel,System.Action_Assets.Scripts.Models.Bloons.BloonModel_,string)'></a>
 

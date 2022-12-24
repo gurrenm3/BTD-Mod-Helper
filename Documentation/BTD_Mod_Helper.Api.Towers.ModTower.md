@@ -254,11 +254,11 @@ The family of Monkeys that your Tower should be put in.
 For now, just use one of the default constants provided of PRIMARY, MILITARY, MAGIC, or SUPPORT.
 
 ```csharp
-public abstract string TowerSet { get; }
+public abstract Assets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.Use2DModel'></a>
 

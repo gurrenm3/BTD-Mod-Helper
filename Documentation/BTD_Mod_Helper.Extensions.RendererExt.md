@@ -152,22 +152,22 @@ public static bool[] GetVerticesConnectedToBoneArray(this UnityEngine.SkinnedMes
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
-<a name='BTD_Mod_Helper.Extensions.RendererExt.SetMainTexture(thisUnhollowerBaseLib.Il2CppReferenceArray_UnityEngine.Renderer_,UnityEngine.Texture2D)'></a>
+<a name='BTD_Mod_Helper.Extensions.RendererExt.SetMainTexture(thisIl2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray_UnityEngine.Renderer_,UnityEngine.Texture2D)'></a>
 
 ## RendererExt.SetMainTexture(this Il2CppReferenceArray<Renderer>, Texture2D) Method
 
 Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
 
 ```csharp
-public static void SetMainTexture(this UnhollowerBaseLib.Il2CppReferenceArray<UnityEngine.Renderer> renderers, UnityEngine.Texture2D texture2D);
+public static void SetMainTexture(this Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<UnityEngine.Renderer> renderers, UnityEngine.Texture2D texture2D);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.RendererExt.SetMainTexture(thisUnhollowerBaseLib.Il2CppReferenceArray_UnityEngine.Renderer_,UnityEngine.Texture2D).renderers'></a>
+<a name='BTD_Mod_Helper.Extensions.RendererExt.SetMainTexture(thisIl2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray_UnityEngine.Renderer_,UnityEngine.Texture2D).renderers'></a>
 
-`renderers` [UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+`renderers` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
-<a name='BTD_Mod_Helper.Extensions.RendererExt.SetMainTexture(thisUnhollowerBaseLib.Il2CppReferenceArray_UnityEngine.Renderer_,UnityEngine.Texture2D).texture2D'></a>
+<a name='BTD_Mod_Helper.Extensions.RendererExt.SetMainTexture(thisIl2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray_UnityEngine.Renderer_,UnityEngine.Texture2D).texture2D'></a>
 
 `texture2D` [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
 

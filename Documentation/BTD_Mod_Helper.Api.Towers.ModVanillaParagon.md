@@ -188,11 +188,11 @@ public sealed override int TopPathUpgrades { get; }
 Same towerSet as base tower
 
 ```csharp
-public sealed override string TowerSet { get; }
+public sealed override Assets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.GetTowerIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerDetailsModel_)'></a>

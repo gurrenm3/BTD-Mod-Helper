@@ -31,6 +31,37 @@ public static bool IsCoOpHost(this NinjaKiwi.NKMulti.NKMultiGameInterface nkGi);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_)'></a>
+
+## NKMultiGameInterfaceExt.ReadMessage<T>(this NKMultiGameInterface, Il2CppStructArray<byte>) Method
+
+Convert messageBytes to an object of type T
+
+```csharp
+public static T ReadMessage<T>(this NinjaKiwi.NKMulti.NKMultiGameInterface nkGI, Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray<byte> messageBytes);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).T'></a>
+
+`T`
+
+Type to convert bytes to
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).nkGI'></a>
+
+`nkGI` [NinjaKiwi.NKMulti.NKMultiGameInterface](https://docs.microsoft.com/en-us/dotnet/api/NinjaKiwi.NKMulti.NKMultiGameInterface 'NinjaKiwi.NKMulti.NKMultiGameInterface')
+
+<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).messageBytes'></a>
+
+`messageBytes` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1')[System.Byte](https://docs.microsoft.com/en-us/dotnet/api/System.Byte 'System.Byte')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1')
+
+messageBytes
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.md#BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).T 'BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage<T>(this NinjaKiwi.NKMulti.NKMultiGameInterface, Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray<byte>).T')
+
 <a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,NinjaKiwi.NKMulti.Message)'></a>
 
 ## NKMultiGameInterfaceExt.ReadMessage<T>(this NKMultiGameInterface, Message) Method
@@ -61,37 +92,6 @@ Message you want to read
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.md#BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,NinjaKiwi.NKMulti.Message).T 'BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage<T>(this NinjaKiwi.NKMulti.NKMultiGameInterface, NinjaKiwi.NKMulti.Message).T')
-
-<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,UnhollowerBaseLib.Il2CppStructArray_byte_)'></a>
-
-## NKMultiGameInterfaceExt.ReadMessage<T>(this NKMultiGameInterface, Il2CppStructArray<byte>) Method
-
-Convert messageBytes to an object of type T
-
-```csharp
-public static T ReadMessage<T>(this NinjaKiwi.NKMulti.NKMultiGameInterface nkGI, UnhollowerBaseLib.Il2CppStructArray<byte> messageBytes);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,UnhollowerBaseLib.Il2CppStructArray_byte_).T'></a>
-
-`T`
-
-Type to convert bytes to
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,UnhollowerBaseLib.Il2CppStructArray_byte_).nkGI'></a>
-
-`nkGI` [NinjaKiwi.NKMulti.NKMultiGameInterface](https://docs.microsoft.com/en-us/dotnet/api/NinjaKiwi.NKMulti.NKMultiGameInterface 'NinjaKiwi.NKMulti.NKMultiGameInterface')
-
-<a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,UnhollowerBaseLib.Il2CppStructArray_byte_).messageBytes'></a>
-
-`messageBytes` [UnhollowerBaseLib.Il2CppStructArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppStructArray-1 'UnhollowerBaseLib.Il2CppStructArray`1')[System.Byte](https://docs.microsoft.com/en-us/dotnet/api/System.Byte 'System.Byte')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppStructArray-1 'UnhollowerBaseLib.Il2CppStructArray`1')
-
-messageBytes
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.md#BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage_T_(thisNinjaKiwi.NKMulti.NKMultiGameInterface,UnhollowerBaseLib.Il2CppStructArray_byte_).T 'BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.ReadMessage<T>(this NinjaKiwi.NKMulti.NKMultiGameInterface, UnhollowerBaseLib.Il2CppStructArray<byte>).T')
 
 <a name='BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.SendMessage(thisNinjaKiwi.NKMulti.NKMultiGameInterface,Il2CppSystem.String,System.Nullable_byte_,string)'></a>
 
