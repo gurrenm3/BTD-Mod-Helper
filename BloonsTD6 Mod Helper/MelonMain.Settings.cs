@@ -4,6 +4,7 @@ using System.IO;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
@@ -68,6 +69,14 @@ internal partial class MelonMain
     private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
     {
         icon = BenjaminIcon
+    };
+
+    public static readonly ModSettingBool HideBrokenMods = new(true)
+    {
+        description = "Hides mods from the Mod Browser that are almost certainly broken from being too out of date. " +
+                      "This is currently just based on having a 'WorksOnVersion' value in its ModHelperData >= 34",
+        category = ModBrowserSettings,
+        icon = HideIcon
     };
 
     public static readonly ModSettingBool ShowUnverifiedModBrowserContent = new(false)

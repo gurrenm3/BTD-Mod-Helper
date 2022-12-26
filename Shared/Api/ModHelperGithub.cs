@@ -11,6 +11,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
+using Semver;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api;
@@ -49,10 +50,16 @@ internal static class ModHelperGithub
 
     public static bool VerifiedOnly => ForceVerifiedOnly || !MelonMain.ShowUnverifiedModBrowserContent;
 
-    public static IEnumerable<ModHelperData> VisibleMods => Mods
-        .Where(data => data.RepoName != ModHelper.RepoName &&
-                       !BannedModders.Contains(data.RepoOwner) &&
-                       (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)));
+    public static IEnumerable<ModHelperData> VisibleMods => Mods.Where(ModIsVisible);
+
+    public static bool ModIsVisible(this ModHelperData data) =>
+        data.RepoName != ModHelper.RepoName &&
+        !BannedModders.Contains(data.RepoOwner) &&
+        (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)) &&
+        (!MelonMain.HideBrokenMods || !data.ModIsBroken());
+
+    public static bool ModIsBroken(this ModHelperData data) =>
+        !SemVersion.TryParse(data.WorksOnVersion, out var semver) || semver.Major < 34;
 
     public static void Init()
     {
