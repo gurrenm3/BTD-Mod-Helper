@@ -32,11 +32,11 @@ public string CurrentValue { get; }
 The InputField component
 
 ```csharp
-public global::NK_TextMeshProInputField InputField { get; }
+public Il2Cpp.NK_TextMeshProInputField InputField { get; }
 ```
 
 #### Property Value
-[NK_TextMeshProInputField](https://docs.microsoft.com/en-us/dotnet/api/NK_TextMeshProInputField 'NK_TextMeshProInputField')
+[Il2Cpp.NK_TextMeshProInputField](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProInputField 'Il2Cpp.NK_TextMeshProInputField')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperInputField.Text'></a>
 

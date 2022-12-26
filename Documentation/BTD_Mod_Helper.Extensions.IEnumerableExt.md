@@ -191,7 +191,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 Return as LockList
 
 ```csharp
-public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);
+public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);
 ```
 #### Type parameters
 
@@ -205,4 +205,4 @@ public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collect
 `enumerable` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 #### Returns
-[Assets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')

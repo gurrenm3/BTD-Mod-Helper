@@ -164,7 +164,7 @@ public static System.Collections.Generic.List<T> ToList<T>(this Il2CppSystem.Col
 Return as LockList
 
 ```csharp
-public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable)
+public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T> enumerable)
     where T : Il2CppSystem.Object;
 ```
 #### Type parameters
@@ -179,4 +179,4 @@ public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this Il2CppSystem.C
 `enumerable` [Il2CppSystem.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable-1 'Il2CppSystem.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.ToLockList_T_(thisIl2CppSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.ToLockList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable-1 'Il2CppSystem.Collections.Generic.IEnumerable`1')
 
 #### Returns
-[Assets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.ToLockList_T_(thisIl2CppSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.ToLockList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.ToLockList_T_(thisIl2CppSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.ToLockList<T>(this Il2CppSystem.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')

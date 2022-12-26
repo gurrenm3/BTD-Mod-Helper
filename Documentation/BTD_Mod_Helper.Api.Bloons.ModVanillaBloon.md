@@ -6,10 +6,10 @@
 Allows you to easily modify the models of a specific vanilla Bloon
 
 ```csharp
-public abstract class ModVanillaBloon : BTD_Mod_Helper.Api.Towers.ModVanillaContent<Assets.Scripts.Models.Bloons.BloonModel>
+public abstract class ModVanillaBloon : BTD_Mod_Helper.Api.Towers.ModVanillaContent<Il2CppAssets.Scripts.Models.Bloons.BloonModel>
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent') &#129106; [BTD_Mod_Helper.Api.Towers.ModVanillaContent&lt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>')[Assets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.BloonModel 'Assets.Scripts.Models.Bloons.BloonModel')[&gt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>') &#129106; ModVanillaBloon
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent') &#129106; [BTD_Mod_Helper.Api.Towers.ModVanillaContent&lt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>')[Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')[&gt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>') &#129106; ModVanillaBloon
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.BloonId'></a>
@@ -41,20 +41,20 @@ public virtual bool MatchBaseId { get; }
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.GetAffected(Assets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.GetAffected(Il2CppAssets.Scripts.Models.GameModel)'></a>
 
 ## ModVanillaBloon.GetAffected(GameModel) Method
 
 Gets the BloonModels affected by this ModVanillaBloon
 
 ```csharp
-public override System.Collections.Generic.IEnumerable<Assets.Scripts.Models.Bloons.BloonModel> GetAffected(Assets.Scripts.Models.GameModel gameModel);
+public override System.Collections.Generic.IEnumerable<Il2CppAssets.Scripts.Models.Bloons.BloonModel> GetAffected(Il2CppAssets.Scripts.Models.GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.GetAffected(Assets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.GetAffected(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
 
-`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
+`gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
 #### Returns
-[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Assets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.BloonModel 'Assets.Scripts.Models.Bloons.BloonModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')

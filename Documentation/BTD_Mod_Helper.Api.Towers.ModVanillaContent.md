@@ -81,20 +81,20 @@ public virtual bool ShouldApply { get; }
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.GetAffectedModels(Assets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.GetAffectedModels(Il2CppAssets.Scripts.Models.GameModel)'></a>
 
 ## ModVanillaContent.GetAffectedModels(GameModel) Method
 
 Gets the TowerModels that this will affect in the GameModel
 
 ```csharp
-public abstract System.Collections.Generic.IEnumerable<Assets.Scripts.Models.Model> GetAffectedModels(Assets.Scripts.Models.GameModel gameModel);
+public abstract System.Collections.Generic.IEnumerable<Il2CppAssets.Scripts.Models.Model> GetAffectedModels(Il2CppAssets.Scripts.Models.GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.GetAffectedModels(Assets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent.GetAffectedModels(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
 
-`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
+`gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
 #### Returns
-[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Assets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Model 'Assets.Scripts.Models.Model')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')

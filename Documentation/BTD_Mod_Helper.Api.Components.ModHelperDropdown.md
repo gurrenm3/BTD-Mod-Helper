@@ -45,11 +45,11 @@ public UnityEngine.UI.Image Background { get; }
 The component which handles the dropdown
 
 ```csharp
-public TMPro.TMP_Dropdown Dropdown { get; }
+public Il2CppTMPro.TMP_Dropdown Dropdown { get; }
 ```
 
 #### Property Value
-[TMPro.TMP_Dropdown](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TMP_Dropdown 'TMPro.TMP_Dropdown')
+[Il2CppTMPro.TMP_Dropdown](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TMP_Dropdown 'Il2CppTMPro.TMP_Dropdown')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.TemplateItem'></a>
 

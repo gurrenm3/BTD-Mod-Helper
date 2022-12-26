@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Convert UnityEngine.Vector3 to NinjaKiwi's SMath.Vector3
 
 ```csharp
-public static Assets.Scripts.Simulation.SMath.Vector3 ToSMathVector(this UnityEngine.Vector3 vector3);
+public static Il2CppAssets.Scripts.Simulation.SMath.Vector3 ToSMathVector(this UnityEngine.Vector3 vector3);
 ```
 #### Parameters
 
@@ -28,4 +28,4 @@ public static Assets.Scripts.Simulation.SMath.Vector3 ToSMathVector(this UnityEn
 `vector3` [UnityEngine.Vector3](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector3 'UnityEngine.Vector3')
 
 #### Returns
-[Assets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.SMath.Vector3 'Assets.Scripts.Simulation.SMath.Vector3')
+[Il2CppAssets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector3 'Il2CppAssets.Scripts.Simulation.SMath.Vector3')

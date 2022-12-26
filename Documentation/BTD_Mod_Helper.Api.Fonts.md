@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Gets an AnimationController by its name, or null if there isn't one with that name
 
 ```csharp
-public static TMPro.TMP_FontAsset Get(string name);
+public static Il2CppTMPro.TMP_FontAsset Get(string name);
 ```
 #### Parameters
 
@@ -28,4 +28,4 @@ public static TMPro.TMP_FontAsset Get(string name);
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
-[TMPro.TMP_FontAsset](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TMP_FontAsset 'TMPro.TMP_FontAsset')
+[Il2CppTMPro.TMP_FontAsset](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TMP_FontAsset 'Il2CppTMPro.TMP_FontAsset')

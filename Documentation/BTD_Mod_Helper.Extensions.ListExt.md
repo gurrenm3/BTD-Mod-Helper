@@ -408,7 +408,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 Return as LockList
 
 ```csharp
-public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> list);
+public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> list);
 ```
 #### Type parameters
 
@@ -422,7 +422,7 @@ public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collect
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToLockList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Assets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToLockList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToLockList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')
 
 <a name='BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_)'></a>
 
@@ -431,7 +431,7 @@ public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collect
 Not tested
 
 ```csharp
-public static Assets.Scripts.Utils.SizedList<T> ToSizedList<T>(this System.Collections.Generic.List<T> list);
+public static Il2CppAssets.Scripts.Utils.SizedList<T> ToSizedList<T>(this System.Collections.Generic.List<T> list);
 ```
 #### Type parameters
 
@@ -445,4 +445,4 @@ public static Assets.Scripts.Utils.SizedList<T> ToSizedList<T>(this System.Colle
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToSizedList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Assets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToSizedList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')
+[Il2CppAssets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToSizedList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')

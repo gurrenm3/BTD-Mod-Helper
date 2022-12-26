@@ -69,7 +69,7 @@ public abstract BTD_Mod_Helper.Api.Towers.ModTower Tower { get; }
 [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(Assets.Scripts.Models.Towers.TowerModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(Il2CppAssets.Scripts.Models.Towers.TowerModel)'></a>
 
 ## ModTowerDisplay.ApplyToTower(TowerModel) Method
 
@@ -77,13 +77,13 @@ Applies this ModTowerDisplay to the towerModel. Override to change how this appl
 apply to an AttackModel instead
 
 ```csharp
-public virtual void ApplyToTower(Assets.Scripts.Models.Towers.TowerModel towerModel);
+public virtual void ApplyToTower(Il2CppAssets.Scripts.Models.Towers.TowerModel towerModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(Assets.Scripts.Models.Towers.TowerModel).towerModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(Il2CppAssets.Scripts.Models.Towers.TowerModel).towerModel'></a>
 
-`towerModel` [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 <a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.IsParagon(int[])'></a>
 
@@ -103,7 +103,7 @@ protected bool IsParagon(int[] tiers);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplayNode)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode)'></a>
 
 ## ModTowerDisplay.ModifyDisplayNode(UnityDisplayNode) Method
 
@@ -112,13 +112,13 @@ By default, this will change the main texture of the first SkinnedMeshRenderer o
 png with the same name as the class
 
 ```csharp
-public override void ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplayNode node);
+public override void ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(Assets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
 
-`node` [Assets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Display.UnityDisplayNode 'Assets.Scripts.Unity.Display.UnityDisplayNode')
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 

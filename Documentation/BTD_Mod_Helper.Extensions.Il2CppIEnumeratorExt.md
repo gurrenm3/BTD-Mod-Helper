@@ -113,7 +113,7 @@ public static System.Collections.Generic.List<Il2CppSystem.Object> ToList(this I
 Return as LockList
 
 ```csharp
-public static Assets.Scripts.Utils.LockList<Il2CppSystem.Object> ToLockList(this Il2CppSystem.Collections.IEnumerator enumerator);
+public static Il2CppAssets.Scripts.Utils.LockList<Il2CppSystem.Object> ToLockList(this Il2CppSystem.Collections.IEnumerator enumerator);
 ```
 #### Parameters
 
@@ -122,4 +122,4 @@ public static Assets.Scripts.Utils.LockList<Il2CppSystem.Object> ToLockList(this
 `enumerator` [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
 
 #### Returns
-[Assets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')[Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')

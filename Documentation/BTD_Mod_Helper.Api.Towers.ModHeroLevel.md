@@ -113,11 +113,11 @@ public sealed override string Icon { get; }
 Hero upgrades don't have individual icons
 
 ```csharp
-public sealed override Assets.Scripts.Utils.SpriteReference IconReference { get; }
+public sealed override Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHeroLevel.Level'></a>
 

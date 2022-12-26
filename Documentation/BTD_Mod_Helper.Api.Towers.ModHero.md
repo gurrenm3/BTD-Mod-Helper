@@ -86,11 +86,11 @@ public virtual string Button { get; }
 The exact sprite reference used for the button
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference ButtonReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference ButtonReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.DontAddToShop'></a>
 
@@ -195,11 +195,11 @@ By default will find any [PortraitReference](BTD_Mod_Helper.Api.Towers.ModUpgrad
 The SpriteReference is the actual image that will be displayed
 
 ```csharp
-public virtual System.Collections.Generic.Dictionary<int,Assets.Scripts.Utils.SpriteReference> SelectScreenPortraits { get; }
+public virtual System.Collections.Generic.Dictionary<int,Il2CppAssets.Scripts.Utils.SpriteReference> SelectScreenPortraits { get; }
 ```
 
 #### Property Value
-[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.SelectSound'></a>
 
@@ -234,11 +234,11 @@ public virtual string Square { get; }
 The SpriteReference for this hero's Square icon in the new revamped HeroScreen
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference SquareReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference SquareReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.Title'></a>
 
@@ -273,11 +273,11 @@ public sealed override int TopPathUpgrades { get; }
 Heroes can only be in the Hero tower set
 
 ```csharp
-public sealed override Assets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
+public sealed override Il2CppAssets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
+[Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.XpRatio'></a>
 
@@ -301,100 +301,100 @@ public abstract float XpRatio { get; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.CreateDefaultSkin(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.CreateDefaultSkin(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_)'></a>
 
 ## ModHero.CreateDefaultSkin(Dictionary<string,SkinData>) Method
 
 Creates the SkinData for the default tower
 
 ```csharp
-public virtual Assets.Scripts.Data.Skins.SkinData CreateDefaultSkin(System.Collections.Generic.Dictionary<string,Assets.Scripts.Data.Skins.SkinData> skinsByName);
+public virtual Il2CppAssets.Scripts.Data.Skins.SkinData CreateDefaultSkin(System.Collections.Generic.Dictionary<string,Il2CppAssets.Scripts.Data.Skins.SkinData> skinsByName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.CreateDefaultSkin(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.CreateDefaultSkin(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
 
-`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Assets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.Skins.SkinData 'Assets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Il2CppAssets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Skins.SkinData 'Il2CppAssets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 Existing hero skins by their skin/tower name
 
 #### Returns
-[Assets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.Skins.SkinData 'Assets.Scripts.Data.Skins.SkinData')
+[Il2CppAssets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Skins.SkinData 'Il2CppAssets.Scripts.Data.Skins.SkinData')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundBanner(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundBanner(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_)'></a>
 
 ## ModHero.GetBackgroundBanner(Dictionary<string,SkinData>) Method
 
 Gets the Background Banner for the default SkinData
 
 ```csharp
-public virtual Assets.Scripts.Utils.PrefabReference GetBackgroundBanner(System.Collections.Generic.Dictionary<string,Assets.Scripts.Data.Skins.SkinData> skinsByName);
+public virtual Il2CppAssets.Scripts.Utils.PrefabReference GetBackgroundBanner(System.Collections.Generic.Dictionary<string,Il2CppAssets.Scripts.Data.Skins.SkinData> skinsByName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundBanner(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundBanner(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
 
-`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Assets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.Skins.SkinData 'Assets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Il2CppAssets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Skins.SkinData 'Il2CppAssets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 Existing hero skins by their skin/tower name
 
 #### Returns
-[Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
+[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundColor(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundColor(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_)'></a>
 
 ## ModHero.GetBackgroundColor(Dictionary<string,SkinData>) Method
 
 Gets the background color for the default SkinData
 
 ```csharp
-public virtual UnityEngine.Color GetBackgroundColor(System.Collections.Generic.Dictionary<string,Assets.Scripts.Data.Skins.SkinData> skinsByName);
+public virtual UnityEngine.Color GetBackgroundColor(System.Collections.Generic.Dictionary<string,Il2CppAssets.Scripts.Data.Skins.SkinData> skinsByName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundColor(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetBackgroundColor(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
 
-`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Assets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.Skins.SkinData 'Assets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Il2CppAssets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Skins.SkinData 'Il2CppAssets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 Existing hero skins by their skin/tower name
 
 #### Returns
 [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetFontMaterial(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetFontMaterial(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_)'></a>
 
 ## ModHero.GetFontMaterial(Dictionary<string,SkinData>) Method
 
 Gets the font material for the default SkinData
 
 ```csharp
-public virtual UnityEngine.Material GetFontMaterial(System.Collections.Generic.Dictionary<string,Assets.Scripts.Data.Skins.SkinData> skinsByName);
+public virtual UnityEngine.Material GetFontMaterial(System.Collections.Generic.Dictionary<string,Il2CppAssets.Scripts.Data.Skins.SkinData> skinsByName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetFontMaterial(System.Collections.Generic.Dictionary_string,Assets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetFontMaterial(System.Collections.Generic.Dictionary_string,Il2CppAssets.Scripts.Data.Skins.SkinData_).skinsByName'></a>
 
-`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Assets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.Skins.SkinData 'Assets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+`skinsByName` [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[Il2CppAssets.Scripts.Data.Skins.SkinData](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Skins.SkinData 'Il2CppAssets.Scripts.Data.Skins.SkinData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 Existing hero skins by their skin/tower name
 
 #### Returns
 [UnityEngine.Material](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Material 'UnityEngine.Material')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetHeroIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.HeroDetailsModel_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetHeroIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.HeroDetailsModel_)'></a>
 
 ## ModHero.GetHeroIndex(List<HeroDetailsModel>) Method
 
 The index to add this hero at in relation to other heroes
 
 ```csharp
-public virtual int GetHeroIndex(System.Collections.Generic.List<Assets.Scripts.Models.TowerSets.HeroDetailsModel> heroSet);
+public virtual int GetHeroIndex(System.Collections.Generic.List<Il2CppAssets.Scripts.Models.TowerSets.HeroDetailsModel> heroSet);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetHeroIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.HeroDetailsModel_).heroSet'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.GetHeroIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.HeroDetailsModel_).heroSet'></a>
 
-`heroSet` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Models.TowerSets.HeroDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.HeroDetailsModel 'Assets.Scripts.Models.TowerSets.HeroDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+`heroSet` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.TowerSets.HeroDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.HeroDetailsModel 'Il2CppAssets.Scripts.Models.TowerSets.HeroDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')

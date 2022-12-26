@@ -6,10 +6,10 @@
 ModContent class for modifying all TowerModels that have a given upgrade applied to them
 
 ```csharp
-public abstract class ModVanillaUpgrade : BTD_Mod_Helper.Api.Towers.ModVanillaContent<Assets.Scripts.Models.Towers.TowerModel>
+public abstract class ModVanillaUpgrade : BTD_Mod_Helper.Api.Towers.ModVanillaContent<Il2CppAssets.Scripts.Models.Towers.TowerModel>
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent') &#129106; [BTD_Mod_Helper.Api.Towers.ModVanillaContent&lt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>')[Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')[&gt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>') &#129106; ModVanillaUpgrade
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent') &#129106; [BTD_Mod_Helper.Api.Towers.ModVanillaContent&lt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>')[Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')[&gt;](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>') &#129106; ModVanillaUpgrade
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.Cost'></a>
@@ -41,35 +41,35 @@ public abstract string UpgradeId { get; }
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.Apply(Assets.Scripts.Models.Towers.Upgrades.UpgradeModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.Apply(Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel)'></a>
 
 ## ModVanillaUpgrade.Apply(UpgradeModel) Method
 
 Change the UpgradeModel for this upgrade
 
 ```csharp
-public virtual void Apply(Assets.Scripts.Models.Towers.Upgrades.UpgradeModel upgradeModel);
+public virtual void Apply(Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel upgradeModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.Apply(Assets.Scripts.Models.Towers.Upgrades.UpgradeModel).upgradeModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.Apply(Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel).upgradeModel'></a>
 
-`upgradeModel` [Assets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradeModel')
+`upgradeModel` [Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.GetAffected(Assets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.GetAffected(Il2CppAssets.Scripts.Models.GameModel)'></a>
 
 ## ModVanillaUpgrade.GetAffected(GameModel) Method
 
 Gets the TowerModels that this will affect in the GameModel
 
 ```csharp
-public override System.Collections.Generic.IEnumerable<Assets.Scripts.Models.Towers.TowerModel> GetAffected(Assets.Scripts.Models.GameModel gameModel);
+public override System.Collections.Generic.IEnumerable<Il2CppAssets.Scripts.Models.Towers.TowerModel> GetAffected(Il2CppAssets.Scripts.Models.GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.GetAffected(Assets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.GetAffected(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
 
-`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
+`gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
 #### Returns
-[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')

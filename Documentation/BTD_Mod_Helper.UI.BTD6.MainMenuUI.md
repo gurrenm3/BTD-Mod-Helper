@@ -188,8 +188,8 @@ public static UnityEngine.UI.Button GetTrophyStoreButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static global::NK_TextMeshProUGUI GetXpBarText();
+public static Il2Cpp.NK_TextMeshProUGUI GetXpBarText();
 ```
 
 #### Returns
-[NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/NK_TextMeshProUGUI 'NK_TextMeshProUGUI')
+[Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI')

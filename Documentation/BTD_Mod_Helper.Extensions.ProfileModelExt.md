@@ -12,49 +12,49 @@ public static class ProfileModelExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ProfileModelExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisAssets.Scripts.Models.Profile.ProfileModel,string)'></a>
+<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisIl2CppAssets.Scripts.Models.Profile.ProfileModel,string)'></a>
 
 ## ProfileModelExt.UnlockTower(this ProfileModel, string) Method
 
 Add a tower to the list of UnlockedTowers
 
 ```csharp
-public static void UnlockTower(this Assets.Scripts.Models.Profile.ProfileModel profileModel, string towerId);
+public static void UnlockTower(this Il2CppAssets.Scripts.Models.Profile.ProfileModel profileModel, string towerId);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisAssets.Scripts.Models.Profile.ProfileModel,string).profileModel'></a>
+<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisIl2CppAssets.Scripts.Models.Profile.ProfileModel,string).profileModel'></a>
 
-`profileModel` [Assets.Scripts.Models.Profile.ProfileModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Profile.ProfileModel 'Assets.Scripts.Models.Profile.ProfileModel')
+`profileModel` [Il2CppAssets.Scripts.Models.Profile.ProfileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Profile.ProfileModel 'Il2CppAssets.Scripts.Models.Profile.ProfileModel')
 
-<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisAssets.Scripts.Models.Profile.ProfileModel,string).towerId'></a>
+<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisIl2CppAssets.Scripts.Models.Profile.ProfileModel,string).towerId'></a>
 
 `towerId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The ID of the tower you want to unlock
 
-<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisAssets.Scripts.Models.Profile.ProfileModel,string,bool)'></a>
+<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisIl2CppAssets.Scripts.Models.Profile.ProfileModel,string,bool)'></a>
 
 ## ProfileModelExt.UnlockTower(this ProfileModel, string, bool) Method
 
 Add a tower to the list of UnlockedTowers only if the TowerModel is in Game.instance.model.towers
 
 ```csharp
-public static bool UnlockTower(this Assets.Scripts.Models.Profile.ProfileModel profileModel, string towerId, bool unlockIfTowerModelExists);
+public static bool UnlockTower(this Il2CppAssets.Scripts.Models.Profile.ProfileModel profileModel, string towerId, bool unlockIfTowerModelExists);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisAssets.Scripts.Models.Profile.ProfileModel,string,bool).profileModel'></a>
+<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisIl2CppAssets.Scripts.Models.Profile.ProfileModel,string,bool).profileModel'></a>
 
-`profileModel` [Assets.Scripts.Models.Profile.ProfileModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Profile.ProfileModel 'Assets.Scripts.Models.Profile.ProfileModel')
+`profileModel` [Il2CppAssets.Scripts.Models.Profile.ProfileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Profile.ProfileModel 'Il2CppAssets.Scripts.Models.Profile.ProfileModel')
 
-<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisAssets.Scripts.Models.Profile.ProfileModel,string,bool).towerId'></a>
+<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisIl2CppAssets.Scripts.Models.Profile.ProfileModel,string,bool).towerId'></a>
 
 `towerId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The ID of the tower you want to unlock
 
-<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisAssets.Scripts.Models.Profile.ProfileModel,string,bool).unlockIfTowerModelExists'></a>
+<a name='BTD_Mod_Helper.Extensions.ProfileModelExt.UnlockTower(thisIl2CppAssets.Scripts.Models.Profile.ProfileModel,string,bool).unlockIfTowerModelExists'></a>
 
 `unlockIfTowerModelExists` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 

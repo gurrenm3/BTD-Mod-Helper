@@ -59,7 +59,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: doombubbles/btd6-ci-dependencies
           ref: main
-          path: ${{ env.BLOONSTD6 }}/MelonLoader/Managed
+          path: ${{ env.BLOONSTD6 }}/MelonLoader/Il2CppAssemblies
 
 
       - name: Setup .NET

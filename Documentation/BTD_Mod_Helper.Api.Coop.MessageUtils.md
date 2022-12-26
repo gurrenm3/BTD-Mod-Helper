@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Old way to send a message
 
 ```csharp
-public static NinjaKiwi.NKMulti.Message CreateMessage<T>(T objectToSend, string code="")
+public static Il2CppNinjaKiwi.NKMulti.Message CreateMessage<T>(T objectToSend, string code="")
     where T : Il2CppSystem.Object;
 ```
 #### Type parameters
@@ -38,7 +38,7 @@ public static NinjaKiwi.NKMulti.Message CreateMessage<T>(T objectToSend, string 
 `code` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
-[NinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/NinjaKiwi.NKMulti.Message 'NinjaKiwi.NKMulti.Message')
+[Il2CppNinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.NKMulti.Message 'Il2CppNinjaKiwi.NKMulti.Message')
 
 <a name='BTD_Mod_Helper.Api.Coop.MessageUtils.CreateMessageEx_T_(T,string)'></a>
 
@@ -48,7 +48,7 @@ Creates a message to be sent over the network.
 The message will be serialized as JSON.
 
 ```csharp
-public static NinjaKiwi.NKMulti.Message CreateMessageEx<T>(T objectToSend, string code="");
+public static Il2CppNinjaKiwi.NKMulti.Message CreateMessageEx<T>(T objectToSend, string code="");
 ```
 #### Type parameters
 
@@ -70,7 +70,7 @@ The object to be sent. The object's properties will be serialized.
 Unique code for your specific message.
 
 #### Returns
-[NinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/NinjaKiwi.NKMulti.Message 'NinjaKiwi.NKMulti.Message')
+[Il2CppNinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.NKMulti.Message 'Il2CppNinjaKiwi.NKMulti.Message')
 
 <a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_)'></a>
 
@@ -98,7 +98,7 @@ Raw bytes received from the network.
 #### Returns
 [T](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).T 'BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage<T>(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray<byte>).T')
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(NinjaKiwi.NKMulti.Message)'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message)'></a>
 
 ## MessageUtils.ReadMessage<T>(Message) Method
 
@@ -106,20 +106,20 @@ Reads a message sent from the network.
 Assumes message is sent as JSON. (via [CreateMessageEx&lt;T&gt;(T, string)](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.CreateMessageEx_T_(T,string) 'BTD_Mod_Helper.Api.Coop.MessageUtils.CreateMessageEx<T>(T, string)'))
 
 ```csharp
-public static T ReadMessage<T>(NinjaKiwi.NKMulti.Message message);
+public static T ReadMessage<T>(Il2CppNinjaKiwi.NKMulti.Message message);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(NinjaKiwi.NKMulti.Message).T'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(NinjaKiwi.NKMulti.Message).message'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message).message'></a>
 
-`message` [NinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/NinjaKiwi.NKMulti.Message 'NinjaKiwi.NKMulti.Message')
+`message` [Il2CppNinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.NKMulti.Message 'Il2CppNinjaKiwi.NKMulti.Message')
 
 Message received from the network.
 
 #### Returns
-[T](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(NinjaKiwi.NKMulti.Message).T 'BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage<T>(NinjaKiwi.NKMulti.Message).T')
+[T](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message).T 'BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage<T>(Il2CppNinjaKiwi.NKMulti.Message).T')

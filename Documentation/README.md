@@ -247,7 +247,7 @@
 | [GameExt](BTD_Mod_Helper.Extensions.GameExt.md 'BTD_Mod_Helper.Extensions.GameExt') | Extensions for Game |
 | [GameModelExt](BTD_Mod_Helper.Extensions.GameModelExt.md 'BTD_Mod_Helper.Extensions.GameModelExt') | Extensions for the GameModel |
 | [GameObjectExt](BTD_Mod_Helper.Extensions.GameObjectExt.md 'BTD_Mod_Helper.Extensions.GameObjectExt') | Extensions for GameObjects |
-| [GrowModelExt](BTD_Mod_Helper.Extensions.GrowModelExt.md 'BTD_Mod_Helper.Extensions.GrowModelExt') | Extension methods for [Assets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.Behaviors.GrowModel 'Assets.Scripts.Models.Bloons.Behaviors.GrowModel'). |
+| [GrowModelExt](BTD_Mod_Helper.Extensions.GrowModelExt.md 'BTD_Mod_Helper.Extensions.GrowModelExt') | Extension methods for [Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel'). |
 | [HarmonyExt](BTD_Mod_Helper.Extensions.HarmonyExt.md 'BTD_Mod_Helper.Extensions.HarmonyExt') | Extensions for Harmony stuff |
 | [IEnumerableExt](BTD_Mod_Helper.Extensions.IEnumerableExt.md 'BTD_Mod_Helper.Extensions.IEnumerableExt') | Extensions for the normal System IEnumerable class |
 | [Il2CppGenericIEnumerable](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable') | Extensions for Il2cpp Ienumerables |

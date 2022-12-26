@@ -113,7 +113,7 @@ public static string BloonID<T>()
 Returns a new AudioSourceReference that uses the given guid
 
 ```csharp
-public static Assets.Scripts.Utils.AudioSourceReference CreateAudioSourceReference(string guid);
+public static Il2CppAssets.Scripts.Utils.AudioSourceReference CreateAudioSourceReference(string guid);
 ```
 #### Parameters
 
@@ -124,7 +124,7 @@ public static Assets.Scripts.Utils.AudioSourceReference CreateAudioSourceReferen
 The guid that you'd like to assign to the AudioSourceReference
 
 #### Returns
-[Assets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.AudioSourceReference 'Assets.Scripts.Utils.AudioSourceReference')
+[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference(string)'></a>
 
@@ -133,7 +133,7 @@ The guid that you'd like to assign to the AudioSourceReference
 Returns a new PrefabReference that uses the given guid
 
 ```csharp
-public static Assets.Scripts.Utils.PrefabReference CreatePrefabReference(string guid);
+public static Il2CppAssets.Scripts.Utils.PrefabReference CreatePrefabReference(string guid);
 ```
 #### Parameters
 
@@ -144,7 +144,7 @@ public static Assets.Scripts.Utils.PrefabReference CreatePrefabReference(string 
 The guid that you'd like to assign to the PrefabReference
 
 #### Returns
-[Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
+[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference_T_()'></a>
 
@@ -153,7 +153,7 @@ The guid that you'd like to assign to the PrefabReference
 Creates a Prefab Reference for a ModDisplay
 
 ```csharp
-public static Assets.Scripts.Utils.PrefabReference CreatePrefabReference<T>()
+public static Il2CppAssets.Scripts.Utils.PrefabReference CreatePrefabReference<T>()
     where T : BTD_Mod_Helper.Api.Display.ModDisplay;
 ```
 #### Type parameters
@@ -163,7 +163,7 @@ public static Assets.Scripts.Utils.PrefabReference CreatePrefabReference<T>()
 `T`
 
 #### Returns
-[Assets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.PrefabReference 'Assets.Scripts.Utils.PrefabReference')
+[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(string)'></a>
 
@@ -172,7 +172,7 @@ public static Assets.Scripts.Utils.PrefabReference CreatePrefabReference<T>()
 Returns a new SpriteReference that uses the given guid
 
 ```csharp
-public static Assets.Scripts.Utils.SpriteReference CreateSpriteReference(string guid);
+public static Il2CppAssets.Scripts.Utils.SpriteReference CreateSpriteReference(string guid);
 ```
 #### Parameters
 
@@ -183,7 +183,7 @@ public static Assets.Scripts.Utils.SpriteReference CreateSpriteReference(string 
 The guid that you'd like to assign to the SpriteReference
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.Find_T_(string)'></a>
 
@@ -590,7 +590,7 @@ A Sprite
 Gets a sprite reference by name for a specific mod
 
 ```csharp
-public static Assets.Scripts.Utils.SpriteReference GetSpriteReference(BTD_Mod_Helper.BloonsMod mod, string name);
+public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference(BTD_Mod_Helper.BloonsMod mod, string name);
 ```
 #### Parameters
 
@@ -607,7 +607,7 @@ The BloonsMod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(string)'></a>
@@ -617,7 +617,7 @@ A new SpriteReference
 Gets a sprite reference by name for this mod
 
 ```csharp
-protected Assets.Scripts.Utils.SpriteReference GetSpriteReference(string name);
+protected Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference(string name);
 ```
 #### Parameters
 
@@ -628,7 +628,7 @@ protected Assets.Scripts.Utils.SpriteReference GetSpriteReference(string name);
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference_T_(string)'></a>
@@ -638,7 +638,7 @@ A new SpriteReference
 Gets a sprite reference by name for a specific mod
 
 ```csharp
-public static Assets.Scripts.Utils.SpriteReference GetSpriteReference<T>(string name)
+public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference<T>(string name)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -657,7 +657,7 @@ Your mod's main BloonsMod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -668,7 +668,7 @@ Gets a sprite reference by name for a specific mod, or if the mod does not inclu
 treats it as a vanilla sprite reference
 
 ```csharp
-public static Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod mod, string name);
+public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod mod, string name);
 ```
 #### Parameters
 
@@ -685,7 +685,7 @@ The BloonsMod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(string)'></a>
@@ -696,7 +696,7 @@ Gets a sprite reference by name for a specific mod, or if the mod does not inclu
 treats it as a vanilla sprite reference
 
 ```csharp
-protected Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(string name);
+protected Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(string name);
 ```
 #### Parameters
 
@@ -707,7 +707,7 @@ protected Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(strin
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault_T_(string)'></a>
@@ -718,7 +718,7 @@ Gets a sprite reference by name for a specific mod, or if the mod does not inclu
 treats it as a vanilla sprite reference
 
 ```csharp
-public static Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault<T>(string name)
+public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault<T>(string name)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -737,7 +737,7 @@ Your mod's main BloonsMod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -748,7 +748,7 @@ Gets a sprite reference by name for a specific mod, returning null if the textur
 loaded instead of an invalid SpriteReference
 
 ```csharp
-public static Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod mod, string name);
+public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod mod, string name);
 ```
 #### Parameters
 
@@ -765,7 +765,7 @@ The BloonsMod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(string)'></a>
@@ -776,7 +776,7 @@ Gets a sprite reference by name for this mod, returning null if the texture hasn
 loaded instead of an invalid SpriteReference
 
 ```csharp
-protected Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull(string name);
+protected Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull(string name);
 ```
 #### Parameters
 
@@ -787,7 +787,7 @@ protected Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull(string n
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull_T_(string)'></a>
@@ -798,7 +798,7 @@ Gets a sprite reference by name for a specific mod, returning null if the textur
 loaded instead of an invalid SpriteReference
 
 ```csharp
-public static Assets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull<T>(string name)
+public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull<T>(string name)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -817,7 +817,7 @@ Your mod's main BloonsMod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')  
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -1058,7 +1058,7 @@ The texture's GUID
 Gets the TowerModel for a ModTower at a specific tier level
 
 ```csharp
-public static Assets.Scripts.Models.Towers.TowerModel GetTowerModel<T>(int top=0, int mid=0, int bot=0)
+public static Il2CppAssets.Scripts.Models.Towers.TowerModel GetTowerModel<T>(int top=0, int mid=0, int bot=0)
     where T : BTD_Mod_Helper.Api.Towers.ModTower;
 ```
 #### Type parameters
@@ -1089,7 +1089,7 @@ The middle path tier
 The bottom path tier
 
 #### Returns
-[Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')  
+[Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')  
 The tower name/id
 
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>

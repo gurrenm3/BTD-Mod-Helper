@@ -29,9 +29,7 @@
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.AudioModule.dll"/>
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.CoreModule.dll"/>
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.dll"/>
-        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppAssetBundleManager.dll"/>
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.InputLegacyModule.dll"/>
-        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppImageConversionManager.dll"/>
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.ImageConversionModule.dll"/>
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.JSONSerializeModule.dll"/>
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.TextRenderingModule.dll"/>
@@ -40,8 +38,10 @@
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.UIModule.dll"/>
         <!--<Reference Include="$(Il2CppAssemblies)\Newtonsoft.Json.dll"/>-->
         <Reference Include="$(Il2CppAssemblies)\Unity.Addressables.dll"/>
+        
+        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppAssetBundleManager.dll"/>
+        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppImageConversionManager.dll"/>
         <Reference Include="$(ManagedFolder)\ValueTupleBridge.dll"/>
-
 
         <Reference Include="$(BloonsTD6)\MelonLoader\net6\Il2CppInterop.Runtime.dll"/>
     </ItemGroup>

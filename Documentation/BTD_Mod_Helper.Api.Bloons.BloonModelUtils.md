@@ -49,7 +49,7 @@ public static string ConstructBloonId(string bloonName, bool camo, bool regrow, 
 Creates a GrowModel behavior that adds Regrowth.
 
 ```csharp
-public static Assets.Scripts.Models.Bloons.Behaviors.GrowModel CreateGrowModel(string regrowsTo, float regrowRate);
+public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel CreateGrowModel(string regrowsTo, float regrowRate);
 ```
 #### Parameters
 
@@ -62,4 +62,4 @@ public static Assets.Scripts.Models.Bloons.Behaviors.GrowModel CreateGrowModel(s
 `regrowRate` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Returns
-[Assets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.Behaviors.GrowModel 'Assets.Scripts.Models.Bloons.Behaviors.GrowModel')
+[Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel')

@@ -47,7 +47,7 @@ public const TextAlignmentOptions DefaultTextAlignment = 4098;
 ```
 
 #### Field Value
-[TMPro.TextAlignmentOptions](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TextAlignmentOptions 'TMPro.TextAlignmentOptions')
+[Il2CppTMPro.TextAlignmentOptions](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TextAlignmentOptions 'Il2CppTMPro.TextAlignmentOptions')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.disableNextFrame'></a>
 
@@ -1266,38 +1266,38 @@ Size of font
 [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
 The created ModHelperText
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TMPro.TextAlignmentOptions)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions)'></a>
 
 ## ModHelperComponent.AddText(Info, string, float, TextAlignmentOptions) Method
 
 Creates a new ModHelperText
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperText AddText(BTD_Mod_Helper.Api.Components.Info info, string text, float fontSize, TMPro.TextAlignmentOptions align);
+public BTD_Mod_Helper.Api.Components.ModHelperText AddText(BTD_Mod_Helper.Api.Components.Info info, string text, float fontSize, Il2CppTMPro.TextAlignmentOptions align);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TMPro.TextAlignmentOptions).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TMPro.TextAlignmentOptions).text'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).text'></a>
 
 `text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The text to display
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TMPro.TextAlignmentOptions).fontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).fontSize'></a>
 
 `fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Size of font
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TMPro.TextAlignmentOptions).align'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).align'></a>
 
-`align` [TMPro.TextAlignmentOptions](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TextAlignmentOptions 'TMPro.TextAlignmentOptions')
+`align` [Il2CppTMPro.TextAlignmentOptions](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TextAlignmentOptions 'Il2CppTMPro.TextAlignmentOptions')
 
 Alignment of text
 

@@ -87,11 +87,11 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference IconReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.KeepBaseId'></a>
 
@@ -185,17 +185,17 @@ public virtual bool UseIconAsDisplay { get; }
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBaseBloonModel(Assets.Scripts.Models.Bloons.BloonModel)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBaseBloonModel(Il2CppAssets.Scripts.Models.Bloons.BloonModel)'></a>
 
 ## ModBloon.ModifyBaseBloonModel(BloonModel) Method
 
 Apply your custom modifications to the base bloon
 
 ```csharp
-public abstract void ModifyBaseBloonModel(Assets.Scripts.Models.Bloons.BloonModel bloonModel);
+public abstract void ModifyBaseBloonModel(Il2CppAssets.Scripts.Models.Bloons.BloonModel bloonModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBaseBloonModel(Assets.Scripts.Models.Bloons.BloonModel).bloonModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBaseBloonModel(Il2CppAssets.Scripts.Models.Bloons.BloonModel).bloonModel'></a>
 
-`bloonModel` [Assets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Bloons.BloonModel 'Assets.Scripts.Models.Bloons.BloonModel')
+`bloonModel` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')

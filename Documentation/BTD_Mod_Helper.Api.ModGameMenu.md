@@ -35,11 +35,11 @@ public abstract string BaseMenu { get; }
 The text of the Header component that's on many UI screens, might be null
 
 ```csharp
-protected global::NK_TextMeshProUGUI CommonForegroundHeader { get; }
+protected Il2Cpp.NK_TextMeshProUGUI CommonForegroundHeader { get; }
 ```
 
 #### Property Value
-[NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/NK_TextMeshProUGUI 'NK_TextMeshProUGUI')
+[Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI')
 
 <a name='BTD_Mod_Helper.Api.ModGameMenu.GameMenu'></a>
 
@@ -48,11 +48,11 @@ protected global::NK_TextMeshProUGUI CommonForegroundHeader { get; }
 The current GameMenu
 
 ```csharp
-public Assets.Scripts.Unity.Menu.GameMenu GameMenu { get; set; }
+public Il2CppAssets.Scripts.Unity.Menu.GameMenu GameMenu { get; set; }
 ```
 
 #### Property Value
-[Assets.Scripts.Unity.Menu.GameMenu](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Menu.GameMenu 'Assets.Scripts.Unity.Menu.GameMenu')
+[Il2CppAssets.Scripts.Unity.Menu.GameMenu](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Menu.GameMenu 'Il2CppAssets.Scripts.Unity.Menu.GameMenu')
 
 <a name='BTD_Mod_Helper.Api.ModGameMenu.IsOpen'></a>
 
@@ -76,7 +76,7 @@ The name NinjaKiwi gave to the menu of the given screen type
 
 ```csharp
 protected static string MenuName<T>()
-    where T : Assets.Scripts.Unity.Menu.GameMenu;
+    where T : Il2CppAssets.Scripts.Unity.Menu.GameMenu;
 ```
 #### Type parameters
 

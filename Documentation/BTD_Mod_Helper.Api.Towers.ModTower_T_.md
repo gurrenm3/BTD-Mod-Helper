@@ -25,8 +25,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 The custom tower set that this ModTower uses
 
 ```csharp
-public sealed override Assets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
+public sealed override Il2CppAssets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
+[Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')

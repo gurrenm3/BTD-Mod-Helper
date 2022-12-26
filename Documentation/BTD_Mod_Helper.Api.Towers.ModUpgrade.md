@@ -121,11 +121,11 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference IconReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.NeedsConfirmation'></a>
 
@@ -176,11 +176,11 @@ public virtual string Portrait { get; }
 If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference PortraitReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference PortraitReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Priority'></a>
 
@@ -236,7 +236,7 @@ public virtual int XpCost { get; }
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ApplyUpgrade(Assets.Scripts.Models.Towers.TowerModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ApplyUpgrade(Il2CppAssets.Scripts.Models.Towers.TowerModel)'></a>
 
 ## ModUpgrade.ApplyUpgrade(TowerModel) Method
 
@@ -249,13 +249,13 @@ The default ordering of upgrade application is to do them in ascending order of 
 then Bot at each tier. This can be changed using [Priority](BTD_Mod_Helper.Api.Towers.ModUpgrade.md#BTD_Mod_Helper.Api.Towers.ModUpgrade.Priority 'BTD_Mod_Helper.Api.Towers.ModUpgrade.Priority').
 
 ```csharp
-public abstract void ApplyUpgrade(Assets.Scripts.Models.Towers.TowerModel towerModel);
+public abstract void ApplyUpgrade(Il2CppAssets.Scripts.Models.Towers.TowerModel towerModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ApplyUpgrade(Assets.Scripts.Models.Towers.TowerModel).towerModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ApplyUpgrade(Il2CppAssets.Scripts.Models.Towers.TowerModel).towerModel'></a>
 
-`towerModel` [Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.GetUpgradeModel()'></a>
 
@@ -264,26 +264,26 @@ public abstract void ApplyUpgrade(Assets.Scripts.Models.Towers.TowerModel towerM
 If you really need to override the way that the ModUpgrade makes its UpgradeModel, go ahead
 
 ```csharp
-public virtual Assets.Scripts.Models.Towers.Upgrades.UpgradeModel GetUpgradeModel();
+public virtual Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel GetUpgradeModel();
 ```
 
 #### Returns
-[Assets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Assets.Scripts.Models.Towers.Upgrades.UpgradeModel')
+[Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RestrictUpgrading(Assets.Scripts.Simulation.Towers.Tower)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RestrictUpgrading(Il2CppAssets.Scripts.Simulation.Towers.Tower)'></a>
 
 ## ModUpgrade.RestrictUpgrading(Tower) Method
 
 Allows you to dynamically allow an upgrade to not be purchasable based on the InGame values of a Tower
 
 ```csharp
-public virtual bool RestrictUpgrading(Assets.Scripts.Simulation.Towers.Tower tower);
+public virtual bool RestrictUpgrading(Il2CppAssets.Scripts.Simulation.Towers.Tower tower);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RestrictUpgrading(Assets.Scripts.Simulation.Towers.Tower).tower'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RestrictUpgrading(Il2CppAssets.Scripts.Simulation.Towers.Tower).tower'></a>
 
-`tower` [Assets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.Towers.Tower 'Assets.Scripts.Simulation.Towers.Tower')
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  

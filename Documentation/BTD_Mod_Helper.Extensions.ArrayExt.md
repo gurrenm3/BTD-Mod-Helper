@@ -858,7 +858,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 Return as LockList
 
 ```csharp
-public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] array);
+public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] array);
 ```
 #### Type parameters
 
@@ -872,7 +872,7 @@ public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] array);
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToLockList<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[Assets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToLockList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.LockList-1 'Assets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToLockList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')
 
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[])'></a>
 
@@ -881,7 +881,7 @@ public static Assets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] array);
 Not Tested
 
 ```csharp
-public static Assets.Scripts.Utils.SizedList<T> ToSizedList<T>(this T[] array);
+public static Il2CppAssets.Scripts.Utils.SizedList<T> ToSizedList<T>(this T[] array);
 ```
 #### Type parameters
 
@@ -895,7 +895,7 @@ public static Assets.Scripts.Utils.SizedList<T> ToSizedList<T>(this T[] array);
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[Assets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')
+[Il2CppAssets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')
 
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T)'></a>
 

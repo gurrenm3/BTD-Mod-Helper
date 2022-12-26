@@ -12,24 +12,24 @@ public static class ImageExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ImageExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.ImageExt.LoadSprite(thisUnityEngine.UI.Image,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Extensions.ImageExt.LoadSprite(thisUnityEngine.UI.Image,Il2CppAssets.Scripts.Utils.SpriteReference)'></a>
 
 ## ImageExt.LoadSprite(this Image, SpriteReference) Method
 
 Loads a sprite reference to this image
 
 ```csharp
-public static void LoadSprite(this UnityEngine.UI.Image image, Assets.Scripts.Utils.SpriteReference spriteReference);
+public static void LoadSprite(this UnityEngine.UI.Image image, Il2CppAssets.Scripts.Utils.SpriteReference spriteReference);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ImageExt.LoadSprite(thisUnityEngine.UI.Image,Assets.Scripts.Utils.SpriteReference).image'></a>
+<a name='BTD_Mod_Helper.Extensions.ImageExt.LoadSprite(thisUnityEngine.UI.Image,Il2CppAssets.Scripts.Utils.SpriteReference).image'></a>
 
 `image` [UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')
 
-<a name='BTD_Mod_Helper.Extensions.ImageExt.LoadSprite(thisUnityEngine.UI.Image,Assets.Scripts.Utils.SpriteReference).spriteReference'></a>
+<a name='BTD_Mod_Helper.Extensions.ImageExt.LoadSprite(thisUnityEngine.UI.Image,Il2CppAssets.Scripts.Utils.SpriteReference).spriteReference'></a>
 
-`spriteReference` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`spriteReference` [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Extensions.ImageExt.SaveToPNG(thisUnityEngine.UI.Image,string)'></a>
 
@@ -53,24 +53,24 @@ public static void SaveToPNG(this UnityEngine.UI.Image image, string filePath);
 
 Absolute file path on the machine to save the file to
 
-<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,Assets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,Il2CppAssets.Scripts.Utils.SpriteReference)'></a>
 
 ## ImageExt.SetSprite(this Image, SpriteReference) Method
 
 Set the sprite for this image
 
 ```csharp
-public static void SetSprite(this UnityEngine.UI.Image image, Assets.Scripts.Utils.SpriteReference spriteReference);
+public static void SetSprite(this UnityEngine.UI.Image image, Il2CppAssets.Scripts.Utils.SpriteReference spriteReference);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,Assets.Scripts.Utils.SpriteReference).image'></a>
+<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,Il2CppAssets.Scripts.Utils.SpriteReference).image'></a>
 
 `image` [UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')
 
-<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,Assets.Scripts.Utils.SpriteReference).spriteReference'></a>
+<a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisUnityEngine.UI.Image,Il2CppAssets.Scripts.Utils.SpriteReference).spriteReference'></a>
 
-`spriteReference` [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+`spriteReference` [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 Sprite to change image to
 

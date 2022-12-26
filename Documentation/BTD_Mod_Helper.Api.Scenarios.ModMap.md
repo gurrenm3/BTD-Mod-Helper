@@ -30,11 +30,11 @@ protected virtual bool AutoUnlockMap { get; }
 ## ModMap.CoopDivision Property
 
 ```csharp
-public virtual Assets.Scripts.Data.MapSets.CoopDivision CoopDivision { get; }
+public virtual Il2CppAssets.Scripts.Data.MapSets.CoopDivision CoopDivision { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Data.MapSets.CoopDivision](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.MapSets.CoopDivision 'Assets.Scripts.Data.MapSets.CoopDivision')
+[Il2CppAssets.Scripts.Data.MapSets.CoopDivision](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.MapSets.CoopDivision 'Il2CppAssets.Scripts.Data.MapSets.CoopDivision')
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModMap.Difficulty'></a>
 
@@ -43,11 +43,11 @@ public virtual Assets.Scripts.Data.MapSets.CoopDivision CoopDivision { get; }
 The difficulty of this map.
 
 ```csharp
-public abstract Assets.Scripts.Data.MapSets.MapDifficulty Difficulty { get; }
+public abstract Il2CppAssets.Scripts.Data.MapSets.MapDifficulty Difficulty { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Data.MapSets.MapDifficulty](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.MapSets.MapDifficulty 'Assets.Scripts.Data.MapSets.MapDifficulty')
+[Il2CppAssets.Scripts.Data.MapSets.MapDifficulty](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.MapSets.MapDifficulty 'Il2CppAssets.Scripts.Data.MapSets.MapDifficulty')
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModMap.EnableRain'></a>
 
@@ -103,45 +103,45 @@ public virtual float MapWideBloonSpeed { get; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Assets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Assets.Scripts.Simulation.SMath.Vector2_)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_)'></a>
 
 ## ModMap.AddAreaModel(AreaType, List<Vector2>) Method
 
 Add an area model to this path.
 
 ```csharp
-protected Assets.Scripts.Models.Map.AreaModel AddAreaModel(Assets.Scripts.Models.Map.AreaType type, System.Collections.Generic.List<Assets.Scripts.Simulation.SMath.Vector2> points);
+protected Il2CppAssets.Scripts.Models.Map.AreaModel AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType type, System.Collections.Generic.List<Il2CppAssets.Scripts.Simulation.SMath.Vector2> points);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Assets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Assets.Scripts.Simulation.SMath.Vector2_).type'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_).type'></a>
 
-`type` [Assets.Scripts.Models.Map.AreaType](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Map.AreaType 'Assets.Scripts.Models.Map.AreaType')
+`type` [Il2CppAssets.Scripts.Models.Map.AreaType](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.AreaType 'Il2CppAssets.Scripts.Models.Map.AreaType')
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Assets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Assets.Scripts.Simulation.SMath.Vector2_).points'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_).points'></a>
 
-`points` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Simulation.SMath.Vector2](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.SMath.Vector2 'Assets.Scripts.Simulation.SMath.Vector2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+`points` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Simulation.SMath.Vector2](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector2 'Il2CppAssets.Scripts.Simulation.SMath.Vector2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Assets.Scripts.Models.Map.AreaModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Map.AreaModel 'Assets.Scripts.Models.Map.AreaModel')
+[Il2CppAssets.Scripts.Models.Map.AreaModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.AreaModel 'Il2CppAssets.Scripts.Models.Map.AreaModel')
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Assets.Scripts.Simulation.SMath.Vector2_)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_)'></a>
 
 ## ModMap.AddPath(List<Vector2>) Method
 
 Use this to add a path to your map.
 
 ```csharp
-protected Assets.Scripts.Models.Map.PathModel AddPath(System.Collections.Generic.List<Assets.Scripts.Simulation.SMath.Vector2> points);
+protected Il2CppAssets.Scripts.Models.Map.PathModel AddPath(System.Collections.Generic.List<Il2CppAssets.Scripts.Simulation.SMath.Vector2> points);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Assets.Scripts.Simulation.SMath.Vector2_).points'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_).points'></a>
 
-`points` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Simulation.SMath.Vector2](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Simulation.SMath.Vector2 'Assets.Scripts.Simulation.SMath.Vector2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+`points` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Simulation.SMath.Vector2](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector2 'Il2CppAssets.Scripts.Simulation.SMath.Vector2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Assets.Scripts.Models.Map.PathModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Map.PathModel 'Assets.Scripts.Models.Map.PathModel')
+[Il2CppAssets.Scripts.Models.Map.PathModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.PathModel 'Il2CppAssets.Scripts.Models.Map.PathModel')
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModMap.GetMapDetails()'></a>
 
@@ -150,11 +150,11 @@ protected Assets.Scripts.Models.Map.PathModel AddPath(System.Collections.Generic
 Get's the map details for this map. Override this method if you want extra customization.
 
 ```csharp
-protected virtual Assets.Scripts.Data.MapSets.MapDetails GetMapDetails();
+protected virtual Il2CppAssets.Scripts.Data.MapSets.MapDetails GetMapDetails();
 ```
 
 #### Returns
-[Assets.Scripts.Data.MapSets.MapDetails](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Data.MapSets.MapDetails 'Assets.Scripts.Data.MapSets.MapDetails')
+[Il2CppAssets.Scripts.Data.MapSets.MapDetails](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.MapSets.MapDetails 'Il2CppAssets.Scripts.Data.MapSets.MapDetails')
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModMap.GetSpriteReference()'></a>
 
@@ -163,11 +163,11 @@ protected virtual Assets.Scripts.Data.MapSets.MapDetails GetMapDetails();
 Returns the sprite reference of this map.
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference GetSpriteReference();
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference();
 ```
 
 #### Returns
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModMap.GetTexture()'></a>
 

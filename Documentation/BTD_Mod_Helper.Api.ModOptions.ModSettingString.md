@@ -36,7 +36,7 @@ public CharacterValidation characterValidation;
 ```
 
 #### Field Value
-[TMPro.TMP_InputField.CharacterValidation](https://docs.microsoft.com/en-us/dotnet/api/TMPro.TMP_InputField.CharacterValidation 'TMPro.TMP_InputField.CharacterValidation')
+[Il2CppTMPro.TMP_InputField.CharacterValidation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TMP_InputField.CharacterValidation 'Il2CppTMPro.TMP_InputField.CharacterValidation')
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingString.Decimal'></a>
 

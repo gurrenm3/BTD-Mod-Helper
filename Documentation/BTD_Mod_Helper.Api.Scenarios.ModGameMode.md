@@ -72,11 +72,11 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference IconReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.PreApplies'></a>
 
@@ -92,32 +92,32 @@ protected virtual bool PreApplies { get; }
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Assets.Scripts.Models.Towers.Mods.ModModel)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Il2CppAssets.Scripts.Models.Towers.Mods.ModModel)'></a>
 
 ## ModGameMode.ModifyBaseGameModeModel(ModModel) Method
 
 Implemented by a ModGameMode to modify the base game mode, for instance by adding or removing mutator mods
 
 ```csharp
-public abstract void ModifyBaseGameModeModel(Assets.Scripts.Models.Towers.Mods.ModModel gameModeModel);
+public abstract void ModifyBaseGameModeModel(Il2CppAssets.Scripts.Models.Towers.Mods.ModModel gameModeModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Assets.Scripts.Models.Towers.Mods.ModModel).gameModeModel'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Il2CppAssets.Scripts.Models.Towers.Mods.ModModel).gameModeModel'></a>
 
-`gameModeModel` [Assets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Mods.ModModel 'Assets.Scripts.Models.Towers.Mods.ModModel')
+`gameModeModel` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Assets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel)'></a>
 
 ## ModGameMode.ModifyGameModel(GameModel) Method
 
 Modifies the GameModel that's used for matches played with this mode
 
 ```csharp
-public virtual void ModifyGameModel(Assets.Scripts.Models.GameModel gameModel);
+public virtual void ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Assets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
 
-`gameModel` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
+`gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')

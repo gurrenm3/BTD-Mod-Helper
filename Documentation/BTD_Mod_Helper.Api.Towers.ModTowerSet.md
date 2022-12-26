@@ -45,11 +45,11 @@ public virtual string Button { get; }
 SpriteReference for the button
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference ButtonReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference ButtonReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Container'></a>
 
@@ -84,11 +84,11 @@ public virtual string ContainerLarge { get; }
 SpriteReference for the large container
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference ContainerLargeReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference ContainerLargeReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.ContainerReference'></a>
 
@@ -97,11 +97,11 @@ public virtual Assets.Scripts.Utils.SpriteReference ContainerLargeReference { ge
 SpriteReference for the container
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference ContainerReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference ContainerReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Description'></a>
 
@@ -149,14 +149,14 @@ public virtual string Portrait { get; }
 SpriteReference for the portrait
 
 ```csharp
-public virtual Assets.Scripts.Utils.SpriteReference PortraitReference { get; }
+public virtual Il2CppAssets.Scripts.Utils.SpriteReference PortraitReference { get; }
 ```
 
 #### Property Value
-[Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerSet_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerSet_)'></a>
 
 ## ModTowerSet.GetTowerSetIndex(List<TowerSet>) Method
 
@@ -164,20 +164,20 @@ Where to place this ModTowerSet in relation to other towerSets. By default at th
 <br/>
 
 ```csharp
-public virtual int GetTowerSetIndex(System.Collections.Generic.List<Assets.Scripts.Models.TowerSets.TowerSet> towerSets);
+public virtual int GetTowerSetIndex(System.Collections.Generic.List<Il2CppAssets.Scripts.Models.TowerSets.TowerSet> towerSets);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerSet_).towerSets'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerSet_).towerSets'></a>
 
-`towerSets` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+`towerSets` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 The current towerSets that already exist
 
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerStartIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerDetailsModel_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerStartIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel_)'></a>
 
 ## ModTowerSet.GetTowerStartIndex(List<TowerDetailsModel>) Method
 
@@ -187,13 +187,13 @@ By default, will determine the position based on GetTowerSetIndex
 <br/>
 
 ```csharp
-public virtual int GetTowerStartIndex(System.Collections.Generic.List<Assets.Scripts.Models.TowerSets.TowerDetailsModel> towerSet);
+public virtual int GetTowerStartIndex(System.Collections.Generic.List<Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel> towerSet);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerStartIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerDetailsModel_).towerSet'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerStartIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel_).towerSet'></a>
 
-`towerSet` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+`towerSet` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel 'Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 The set of all current tower details
 

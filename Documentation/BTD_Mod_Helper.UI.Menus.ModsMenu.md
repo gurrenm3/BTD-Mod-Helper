@@ -6,10 +6,10 @@
 The ModGameMenu for the screen showing current mods
 
 ```csharp
-public class ModsMenu : BTD_Mod_Helper.Api.ModGameMenu<Assets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen>
+public class ModsMenu : BTD_Mod_Helper.Api.ModGameMenu<Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen>
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModGameMenu](BTD_Mod_Helper.Api.ModGameMenu.md 'BTD_Mod_Helper.Api.ModGameMenu') &#129106; [BTD_Mod_Helper.Api.ModGameMenu&lt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>')[Assets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen 'Assets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen')[&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') &#129106; ModsMenu
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModGameMenu](BTD_Mod_Helper.Api.ModGameMenu.md 'BTD_Mod_Helper.Api.ModGameMenu') &#129106; [BTD_Mod_Helper.Api.ModGameMenu&lt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>')[Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen 'Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor.ExtraSettingsScreen')[&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') &#129106; ModsMenu
 ### Methods
 
 <a name='BTD_Mod_Helper.UI.Menus.ModsMenu.OnMenuClosed()'></a>

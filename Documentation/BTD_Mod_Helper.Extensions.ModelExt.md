@@ -20,7 +20,7 @@ Create a new and separate copy of this object. Same as using:  .Clone().Cast();
 
 ```csharp
 public static T Duplicate<T>(this T model)
-    where T : Assets.Scripts.Models.Model;
+    where T : Il2CppAssets.Scripts.Models.Model;
 ```
 #### Type parameters
 
