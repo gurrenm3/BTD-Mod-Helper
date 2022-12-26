@@ -428,6 +428,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             var anyModsNeedUpdates = modPanels.Any(pair =>
                 pair.Key.UpdateAvailable && pair.Value is not null && pair.Value.gameObject.active);
             updateAllButton.gameObject.SetActive(anyModsNeedUpdates);
+
         }
 
         restartPanel.SetActive(

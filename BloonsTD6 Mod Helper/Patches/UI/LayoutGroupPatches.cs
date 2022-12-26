@@ -6,7 +6,7 @@ namespace BTD_Mod_Helper.Patches.UI;
 /// <summary>
 /// I'm just annoyed that Unity doesn't work this way by default lol
 /// </summary>
-internal static class LayoutGroupPatches
+/*internal static class LayoutGroupPatches
 {
     [HarmonyPatch(typeof(LayoutGroup), nameof(LayoutGroup.flexibleHeight), MethodType.Getter)]
     internal static class LayoutGroup_FlexibleHeight
@@ -109,4 +109,4 @@ internal static class LayoutGroupPatches
             }
         }
     }
-}
+}*/

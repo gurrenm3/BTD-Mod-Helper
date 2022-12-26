@@ -9,13 +9,10 @@ internal static class DataConflict_ShowUpdatePopup
     [HarmonyPrefix]
     private static bool Prefix()
     {
-        if (!ModdedClientBypassing.ForceNoSave)
-        {
-            PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(
-                "You aren't using the latest version of the game, " +
-                "so Mod Helper's profile saving fix has been disabled."));
-            ModdedClientBypassing.ForceNoSave = true;
-        }
+        PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(
+            "You aren't using the latest version of the game, " +
+            "so Mod Helper's profile saving fix has been disabled."));
+        IsModdedClientPatches.ForceNoSave = true;
         return false;
     }
 }

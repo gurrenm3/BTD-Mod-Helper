@@ -20,7 +20,7 @@ Create a new and seperate copy of this object. Same as using:  .Clone().Cast();
 
 ```csharp
 public static T Duplicate<T>(this Il2CppSystem.Delegate del)
-    where T : UnhollowerBaseLib.Il2CppObjectBase;
+    where T : Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase;
 ```
 #### Type parameters
 

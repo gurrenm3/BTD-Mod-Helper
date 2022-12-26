@@ -156,21 +156,21 @@ public virtual Assets.Scripts.Utils.SpriteReference PortraitReference { get; }
 [Assets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SpriteReference 'Assets.Scripts.Utils.SpriteReference')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_string_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerSet_)'></a>
 
-## ModTowerSet.GetTowerSetIndex(List<string>) Method
+## ModTowerSet.GetTowerSetIndex(List<TowerSet>) Method
 
 Where to place this ModTowerSet in relation to other towerSets. By default at the end.  
 <br/>
 
 ```csharp
-public virtual int GetTowerSetIndex(System.Collections.Generic.List<string> towerSets);
+public virtual int GetTowerSetIndex(System.Collections.Generic.List<Assets.Scripts.Models.TowerSets.TowerSet> towerSets);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_string_).towerSets'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_Assets.Scripts.Models.TowerSets.TowerSet_).towerSets'></a>
 
-`towerSets` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+`towerSets` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 The current towerSets that already exist
 

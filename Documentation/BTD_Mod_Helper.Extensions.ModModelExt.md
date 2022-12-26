@@ -199,28 +199,28 @@ The Mutator you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,string,bool)'></a>
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,Assets.Scripts.Models.TowerSets.TowerSet,bool)'></a>
 
-## ModModelExt.LockTowerSet(this ModModel, string, bool) Method
+## ModModelExt.LockTowerSet(this ModModel, TowerSet, bool) Method
 
 Prevents a particular TowerSet from being used in this mode
 
 ```csharp
-public static void LockTowerSet(this Assets.Scripts.Models.Towers.Mods.ModModel model, string towerSet, bool locked=true);
+public static void LockTowerSet(this Assets.Scripts.Models.Towers.Mods.ModModel model, Assets.Scripts.Models.TowerSets.TowerSet towerSet, bool locked=true);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,string,bool).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,Assets.Scripts.Models.TowerSets.TowerSet,bool).model'></a>
 
 `model` [Assets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.Mods.ModModel 'Assets.Scripts.Models.Towers.Mods.ModModel')
 
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,string,bool).towerSet'></a>
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,Assets.Scripts.Models.TowerSets.TowerSet,bool).towerSet'></a>
 
-`towerSet` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`towerSet` [Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
 
 The tower set to lock
 
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,string,bool).locked'></a>
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisAssets.Scripts.Models.Towers.Mods.ModModel,Assets.Scripts.Models.TowerSets.TowerSet,bool).locked'></a>
 
 `locked` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 

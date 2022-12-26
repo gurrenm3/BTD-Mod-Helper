@@ -20,16 +20,16 @@ public abstract partial class ModTowerSet
         var towerSets = towerSet.Select(model => model.GetTower().towerSet);
 
         // Group the towers into chunks of the same tower set
-        var towerSetChunks = new List<Tuple<string, int>>();
+        var towerSetChunks = new List<Tuple<TowerSet, int>>();
         foreach (var set in towerSets)
         {
-            if (towerSetChunks.LastOrDefault() is Tuple<string, int> last && last.Item1 == set)
+            if (towerSetChunks.LastOrDefault() is Tuple<TowerSet, int> last && last.Item1 == set)
             {
-                towerSetChunks[towerSetChunks.Count - 1] = new Tuple<string, int>(set, last.Item2 + 1);
+                towerSetChunks[towerSetChunks.Count - 1] = new Tuple<TowerSet, int>(set, last.Item2 + 1);
             }
             else
             {
-                towerSetChunks.Add(new Tuple<string, int>(set, 1));
+                towerSetChunks.Add(new Tuple<TowerSet, int>(set, 1));
             }
         }
 

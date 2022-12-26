@@ -12,58 +12,58 @@ public static class Il2CppSystemObjectExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Il2CppSystemObjectExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase)'></a>
 
 ## Il2CppSystemObjectExt.Is<T>(this Il2CppObjectBase) Method
 
 Check if object is the same type as T
 
 ```csharp
-public static bool Is<T>(this UnhollowerBaseLib.Il2CppObjectBase instance)
-    where T : UnhollowerBaseLib.Il2CppObjectBase;
+public static bool Is<T>(this Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase instance)
+    where T : Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase).T'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase).T'></a>
 
 `T`
 
 Type to check
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase).instance'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase).instance'></a>
 
-`instance` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
+`instance` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T)'></a>
 
 ## Il2CppSystemObjectExt.Is<T>(this Il2CppObjectBase, T) Method
 
 Check if object is the same type as T
 
 ```csharp
-public static bool Is<T>(this UnhollowerBaseLib.Il2CppObjectBase instance, out T castObject)
-    where T : UnhollowerBaseLib.Il2CppObjectBase;
+public static bool Is<T>(this Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase instance, out T castObject)
+    where T : Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).T'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).T'></a>
 
 `T`
 
 Type to check
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).instance'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).instance'></a>
 
-`instance` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
+`instance` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).castObject'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).castObject'></a>
 
-`castObject` [T](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisUnhollowerBaseLib.Il2CppObjectBase,T).T 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is<T>(this UnhollowerBaseLib.Il2CppObjectBase, T).T')
+`castObject` [T](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).T 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is<T>(this Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase, T).T')
 
 The casted object if this is of type T
 
@@ -128,24 +128,24 @@ The casted object if this is of type T
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisUnhollowerBaseLib.Il2CppObjectBase,UnhollowerBaseLib.Il2CppObjectBase)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase)'></a>
 
 ## Il2CppSystemObjectExt.ReferenceEquals(this Il2CppObjectBase, Il2CppObjectBase) Method
 
 Is this Reference equal to another Object's Reference?
 
 ```csharp
-public static bool ReferenceEquals(this UnhollowerBaseLib.Il2CppObjectBase instance, UnhollowerBaseLib.Il2CppObjectBase to);
+public static bool ReferenceEquals(this Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase instance, Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase to);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisUnhollowerBaseLib.Il2CppObjectBase,UnhollowerBaseLib.Il2CppObjectBase).instance'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase).instance'></a>
 
-`instance` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
+`instance` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisUnhollowerBaseLib.Il2CppObjectBase,UnhollowerBaseLib.Il2CppObjectBase).to'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.ReferenceEquals(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase).to'></a>
 
-`to` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
+`to` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
 Object to compare to
 
@@ -206,20 +206,20 @@ public static Il2CppSystem.Object ToIl2Cpp(this int i);
 #### Returns
 [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.TypeName(thisUnhollowerBaseLib.Il2CppObjectBase)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.TypeName(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase)'></a>
 
 ## Il2CppSystemObjectExt.TypeName(this Il2CppObjectBase) Method
 
 Gets the exact il2cpp type name of an object
 
 ```csharp
-public static string TypeName(this UnhollowerBaseLib.Il2CppObjectBase obj);
+public static string TypeName(this Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase obj);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.TypeName(thisUnhollowerBaseLib.Il2CppObjectBase).obj'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.TypeName(thisIl2CppInterop.Runtime.InteropTypes.Il2CppObjectBase).obj'></a>
 
-`obj` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
+`obj` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

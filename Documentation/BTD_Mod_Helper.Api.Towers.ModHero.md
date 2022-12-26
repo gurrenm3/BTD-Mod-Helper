@@ -273,11 +273,11 @@ public sealed override int TopPathUpgrades { get; }
 Heroes can only be in the Hero tower set
 
 ```csharp
-public sealed override string TowerSet { get; }
+public sealed override Assets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.XpRatio'></a>
 

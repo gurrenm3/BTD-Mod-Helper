@@ -834,7 +834,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] 
 Return as Il2CppReferenceArray
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array)
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array)
     where T : Il2CppSystem.Object;
 ```
 #### Type parameters
@@ -849,7 +849,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[])'></a>
 
@@ -897,29 +897,29 @@ public static Assets.Scripts.Utils.SizedList<T> ToSizedList<T>(this T[] array);
 #### Returns
 [Assets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Utils.SizedList-1 'Assets.Scripts.Utils.SizedList`1')
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(UnhollowerBaseLib.Il2CppObjectBase,T)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T)'></a>
 
 ## ArrayExt.TryCast<T>(Il2CppObjectBase, T) Method
 
 Version of TryCast without the generic restriction
 
 ```csharp
-private static bool TryCast<T>(UnhollowerBaseLib.Il2CppObjectBase obj, out T t);
+private static bool TryCast<T>(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase obj, out T t);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(UnhollowerBaseLib.Il2CppObjectBase,T).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(UnhollowerBaseLib.Il2CppObjectBase,T).obj'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).obj'></a>
 
-`obj` [UnhollowerBaseLib.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppObjectBase 'UnhollowerBaseLib.Il2CppObjectBase')
+`obj` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(UnhollowerBaseLib.Il2CppObjectBase,T).t'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).t'></a>
 
-`t` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(UnhollowerBaseLib.Il2CppObjectBase,T).T 'BTD_Mod_Helper.Extensions.ArrayExt.TryCast<T>(UnhollowerBaseLib.Il2CppObjectBase, T).T')
+`t` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).T 'BTD_Mod_Helper.Extensions.ArrayExt.TryCast<T>(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase, T).T')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

@@ -13,7 +13,7 @@ public static class Il2CppSystemDictionaryExt
     /// </summary>
     public static List<TValue> GetValues<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs)
     {
-        return keyValuePairs.entries.Select(entry => entry.value).ToIl2CppList();
+        return keyValuePairs._entries.Select(entry => entry.value).ToIl2CppList();
     }
         
 

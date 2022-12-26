@@ -12,7 +12,6 @@ using Assets.Scripts.Simulation.Bloons;
 using Assets.Scripts.Simulation.Objects;
 using System.Collections.Generic;
 using System.Linq;
-using UnhollowerBaseLib;
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -103,7 +102,7 @@ public static partial class GameModelExt
     /// <param name="towerDetailsModel"></param>
     public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel)
     {
-        AddTowerDetails(model, towerDetailsModel, "");
+        AddTowerDetails(model, towerDetailsModel, TowerSet.None);
     }
 
     /// <summary>
@@ -115,11 +114,11 @@ public static partial class GameModelExt
     /// <param name="model">The GameModel</param>
     /// <param name="towerDetailsModel">The TowerDetailsModel to be added</param>
     /// <param name="set">The TowerSet of the tower to be added</param>
-    public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel, string set)
+    public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel, TowerSet set)
     {
         var towerSet = model.towerSet.ToList();
         var index = towerSet.Count;
-        if (!string.IsNullOrEmpty(set))
+        if (set != TowerSet.None)
         {
             var lastOfSet = towerSet.LastOrDefault(tdm => tdm.GetTower().towerSet == set);
             if (lastOfSet != default)

@@ -7,6 +7,8 @@ namespace BTD_Mod_Helper.Patches.ModdedClientChecking;
 [HarmonyPatch]
 internal static class IsModdedClientPatches
 {
+    public static bool ForceNoSave { get; set; }
+
     private static IEnumerable<MethodBase> TargetMethods()
     {
         yield return AccessTools.PropertyGetter(typeof(Game), nameof(Game.IsModdedClient));
@@ -16,7 +18,7 @@ internal static class IsModdedClientPatches
     [HarmonyPrefix]
     private static bool Prefix(ref bool __result)
     {
-        if (ModdedClientBypassing.CurrentlyBypassingCheck && MelonMain.BypassSavingRestrictions)
+        if (MelonMain.BypassSavingRestrictions || ForceNoSave)
         {
             __result = false;
             return false;

@@ -58,7 +58,7 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// Heroes can only be in the Hero tower set
     /// </summary>
-    public sealed override string TowerSet => "Hero";
+    public sealed override TowerSet TowerSet => TowerSet.Hero;
 
     /// <summary>
     /// Putting all the hero level upgrades in the top path

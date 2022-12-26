@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using UnhollowerBaseLib;
+using Il2CppInterop.Runtime;
 using Boolean = Il2CppSystem.Boolean;
 using Int32 = Il2CppSystem.Int32;
 using Object = Il2CppSystem.Object;
@@ -69,24 +69,15 @@ public static class Il2CppSystemObjectExt
     /// <summary>
     /// Box a float into an Il2cpp object
     /// </summary>
-    public static Object ToIl2Cpp(this float f)
-    {
-        return new Single {m_value = f}.BoxIl2CppObject();
-    }
+    public static Object ToIl2Cpp(this float f) => f;
 
     /// <summary>
     /// Box a int into an Il2cpp object
     /// </summary>
-    public static Object ToIl2Cpp(this int i)
-    {
-        return new Int32 {m_value = i}.BoxIl2CppObject();
-    }
+    public static Object ToIl2Cpp(this int i) => i;
 
     /// <summary>
     /// Box a bool into an Il2cpp object
     /// </summary>
-    public static Object ToIl2Cpp(this bool b)
-    {
-        return new Boolean {m_value = b}.BoxIl2CppObject();
-    }
+    public static Object ToIl2Cpp(this bool b) => b;
 }

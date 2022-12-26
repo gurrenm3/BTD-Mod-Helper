@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnhollowerRuntimeLib;
+using Il2CppInterop.Runtime;
 using UnityEngine;
 using UnityEngine.Rendering;
 using ArgumentException = System.ArgumentException;
@@ -38,7 +38,7 @@ public static partial class RendererExt
         var array = Array.CreateInstance(Il2CppType.Of<int>(), length);
         for (var i = 0; i < length; i++)
         {
-            array.SetValue(new Int32 { m_value = triangles[i] }.BoxIl2CppObject(), i);
+            array.SetValue(triangles[i], i);
         }
         skinnedMeshRenderer.sharedMesh.SetTrianglesImpl(0, IndexFormat.UInt32, array, length, 0, length, true, (int)skinnedMeshRenderer.sharedMesh.GetBaseVertex(0));
     }

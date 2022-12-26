@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -55,7 +54,7 @@ public static partial class SizedListExt
     public static LockList<T> ToLockList<T>(this SizedList<T> sizedList)
     {
         var lockList = new LockList<T>();
-        for (var i = 0; i < sizedList.count; i++)
+        for (var i = 0; i < sizedList.Count; i++)
             lockList.Add(sizedList[i]);
 
         return lockList;
@@ -68,7 +67,7 @@ public static partial class SizedListExt
     public static SizedList<T> Duplicate<T>(this SizedList<T> list)
     {
         var newList = new SizedList<T>();
-        for (var i = 0; i < list.count; i++)
+        for (var i = 0; i < list.Count; i++)
             newList.Add(list[i]);
 
         return newList;
@@ -81,7 +80,7 @@ public static partial class SizedListExt
         where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
     {
         var newList = new SizedList<TCast>();
-        for (var i = 0; i < list.count; i++)
+        for (var i = 0; i < list.Count; i++)
             newList.Add(list[i].TryCast<TCast>());
 
         return newList;
@@ -94,7 +93,7 @@ public static partial class SizedListExt
     public static bool HasItemsOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TSource : Il2CppSystem.Object
         where TCast : Il2CppSystem.Object
     {
-        for (var i = 0; i < sizedList.count; i++)
+        for (var i = 0; i < sizedList.Count; i++)
         {
             var item = sizedList[i];
             try
@@ -132,7 +131,7 @@ public static partial class SizedListExt
         if (!HasItemsOfType<TSource, TCast>(sizedList))
             return null;
 
-        for (var i = 0; i < sizedList.count; i++)
+        for (var i = 0; i < sizedList.Count; i++)
         {
             var item = sizedList[i];
             try
@@ -156,7 +155,7 @@ public static partial class SizedListExt
         where TCast : Il2CppSystem.Object
     {
         var results = new List<TCast>();
-        for (var i = 0; i < sizedList.count; i++)
+        for (var i = 0; i < sizedList.Count; i++)
         {
             var item = sizedList[i];
             try

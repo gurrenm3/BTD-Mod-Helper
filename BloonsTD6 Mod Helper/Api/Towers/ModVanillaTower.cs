@@ -2,6 +2,7 @@
 using System.Linq;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Unity;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -14,7 +15,7 @@ public abstract partial class ModVanillaTower
         base.Register();
 
         var affectedTowers = GetAffected(Game.instance.model).ToList();
-        if (!string.IsNullOrEmpty(TowerSet))
+        if (TowerSet != TowerSet.None)
         {
             foreach (var affectedTower in affectedTowers)
             {
@@ -67,6 +68,5 @@ public abstract partial class ModVanillaTower
 /// <typeparam name="T"></typeparam>
 public abstract class ModVanillaTower<T> : ModVanillaTower where T : ModTowerSet
 {
-    /// <inheritdoc />
-    public sealed override string TowerSet => ModContent.TowerSet<T>();
+    // TODO fix for enum
 }

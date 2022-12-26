@@ -7,7 +7,6 @@ using Assets.Scripts.Simulation.SMath;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Helpers;
-using UnhollowerBaseLib;
 using UnityEngine;
 using Vector2 = Assets.Scripts.Simulation.SMath.Vector2;
 

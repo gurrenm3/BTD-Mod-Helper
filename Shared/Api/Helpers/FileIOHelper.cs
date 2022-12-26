@@ -1,5 +1,6 @@
 using System.IO;
-using Il2CppNewtonsoft.Json;
+using MelonLoader.TinyJSON;
+using Newtonsoft.Json;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -27,10 +28,13 @@ public static class FileIOHelper
     /// <param name="data"></param>
     public static void SaveObject(string fileName, Il2CppSystem.Object data)
     {
-        var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
+        // TODO this needs il2cpp json
+        /*var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
         {
             Formatting = Formatting.Indented
-        });
+        });*/
+        
+        var text = JSON.Dump(data, EncodeOptions.PrettyPrint);
 
         SaveFile(fileName, text);
     }

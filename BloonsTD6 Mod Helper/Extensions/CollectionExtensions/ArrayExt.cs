@@ -1,7 +1,8 @@
 ﻿using System;
 using Assets.Scripts.Utils;
-using UnhollowerBaseLib;
-using UnhollowerBaseLib.Runtime;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.InteropTypes;
+using Il2CppInterop.Runtime.Runtime;
 
 namespace BTD_Mod_Helper.Extensions;
 

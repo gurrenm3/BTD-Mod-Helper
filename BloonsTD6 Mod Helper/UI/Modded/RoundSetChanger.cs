@@ -75,9 +75,17 @@ public static class RoundSetChanger
         modRoundSets ??= ModContent.GetContent<ModRoundSet>().Where(set => set.AddToOverrideMenu).ToList();
         foreach (var modRoundSet in modRoundSets)
         {
-            optionsPanel.AddScrollContent(
-                CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.IconReference.guidRef)
-            );
+            try
+            {
+                optionsPanel.AddScrollContent(
+                    CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.IconReference.guidRef)
+                );
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Failed to display round set {modRoundSet.Id}");
+                ModHelper.Warning(e);
+            }
         }
 
         optionsPanel.AddScrollContent(

@@ -9,7 +9,6 @@ using System.Linq;
 using Assets.Scripts.Simulation.Towers;
 using Assets.Scripts.Unity.Bridge;
 using Assets.Scripts.Utils;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -191,7 +190,7 @@ public abstract class ModTower<T> : ModTower where T : ModTowerSet
     /// <summary>
     /// The custom tower set that this ModTower uses
     /// </summary>
-    public sealed override string TowerSet => TowerSet<T>();
+    public sealed override TowerSet TowerSet => TowerSet.None;
 }
 
 /// <summary>

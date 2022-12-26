@@ -190,7 +190,7 @@ public static Assets.Scripts.Unity.Display.Factory GetDisplayFactory(this Assets
 Get all HeroDetailModels
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.TowerSets.TowerDetailsModel> GetHeroDetailModels(this Assets.Scripts.Unity.Game game);
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Assets.Scripts.Models.TowerSets.TowerDetailsModel> GetHeroDetailModels(this Assets.Scripts.Unity.Game game);
 ```
 #### Parameters
 
@@ -199,7 +199,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Tower
 `game` [Assets.Scripts.Unity.Game](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Game 'Assets.Scripts.Unity.Game')
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.GameExt.GetJsonSerializer(thisAssets.Scripts.Unity.Game)'></a>
 
@@ -406,7 +406,7 @@ public static Assets.Scripts.Unity.UI_New.Popups.PopupScreen GetPopupScreen(this
 Get all PowerDetailModels
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.PowerSets.PowerDetailsModel> GetPowerDetailModels(this Assets.Scripts.Unity.Game game);
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Assets.Scripts.Models.PowerSets.PowerDetailsModel> GetPowerDetailModels(this Assets.Scripts.Unity.Game game);
 ```
 #### Parameters
 
@@ -415,7 +415,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Power
 `game` [Assets.Scripts.Unity.Game](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Game 'Assets.Scripts.Unity.Game')
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.PowerSets.PowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.PowerSets.PowerDetailsModel 'Assets.Scripts.Models.PowerSets.PowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Assets.Scripts.Models.PowerSets.PowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.PowerSets.PowerDetailsModel 'Assets.Scripts.Models.PowerSets.PowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.GameExt.GetSaveDirectory(thisAssets.Scripts.Unity.Game)'></a>
 
@@ -461,7 +461,7 @@ public static Assets.Scripts.Unity.UI_New.InGame.RightMenu.ShopMenu GetShopMenu(
 Get all TowerDetailModels
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.TowerSets.TowerDetailsModel> GetTowerDetailModels(this Assets.Scripts.Unity.Game game);
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Assets.Scripts.Models.TowerSets.TowerDetailsModel> GetTowerDetailModels(this Assets.Scripts.Unity.Game game);
 ```
 #### Parameters
 
@@ -470,26 +470,26 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Tower
 `game` [Assets.Scripts.Unity.Game](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Game 'Assets.Scripts.Unity.Game')
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
-<a name='BTD_Mod_Helper.Extensions.GameExt.GetTowerListForTowerType(thisAssets.Scripts.Unity.Game,string)'></a>
+<a name='BTD_Mod_Helper.Extensions.GameExt.GetTowerListForTowerType(thisAssets.Scripts.Unity.Game,Assets.Scripts.Models.TowerSets.TowerSet)'></a>
 
-## GameExt.GetTowerListForTowerType(this Game, string) Method
+## GameExt.GetTowerListForTowerType(this Game, TowerSet) Method
 
 Not tested
 
 ```csharp
-public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.TowerModel> GetTowerListForTowerType(this Assets.Scripts.Unity.Game game, string towerSet);
+public static System.Collections.Generic.List<Assets.Scripts.Models.Towers.TowerModel> GetTowerListForTowerType(this Assets.Scripts.Unity.Game game, Assets.Scripts.Models.TowerSets.TowerSet towerSet);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.GameExt.GetTowerListForTowerType(thisAssets.Scripts.Unity.Game,string).game'></a>
+<a name='BTD_Mod_Helper.Extensions.GameExt.GetTowerListForTowerType(thisAssets.Scripts.Unity.Game,Assets.Scripts.Models.TowerSets.TowerSet).game'></a>
 
 `game` [Assets.Scripts.Unity.Game](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.Game 'Assets.Scripts.Unity.Game')
 
-<a name='BTD_Mod_Helper.Extensions.GameExt.GetTowerListForTowerType(thisAssets.Scripts.Unity.Game,string).towerSet'></a>
+<a name='BTD_Mod_Helper.Extensions.GameExt.GetTowerListForTowerType(thisAssets.Scripts.Unity.Game,Assets.Scripts.Models.TowerSets.TowerSet).towerSet'></a>
 
-`towerSet` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`towerSet` [Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Towers.TowerModel 'Assets.Scripts.Models.Towers.TowerModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')

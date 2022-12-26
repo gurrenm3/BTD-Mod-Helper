@@ -12,9 +12,10 @@ using UnityEngine;
 using Exception = System.Exception;
 using Int32 = Il2CppSystem.Int32;
 using Main = Assets.Main.Main;
+using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(Main._InitialLoadTasks_d__45), nameof(Main._InitialLoadTasks_d__45.MoveNext))]
+/*[HarmonyPatch(typeof(Main._InitialLoadTasks_d__45), nameof(Main._InitialLoadTasks_d__45.MoveNext))]
 internal static class InitialLoadTasks_MoveNext
 {
     internal static List<ModLoadTask> modsTasks;
@@ -112,11 +113,7 @@ internal static class InitialLoadTasks_MoveNext
         var moddedStep = Math.Min(modStep, modsTasks.Count - 1);
         var current = started ? step + moddedStep + 1 : step;
 
-        loadingScreen.SetMainText(LocalizationManager.Instance.Format("Loading Step", new[]
-        {
-            new Int32 {m_value = current}.BoxIl2CppObject(),
-            new Int32 {m_value = total}.BoxIl2CppObject()
-        }));
+        loadingScreen.SetMainText(LocalizationManager.Instance.Format("Loading Step", current, total));
 
         if (started)
         {
@@ -153,4 +150,4 @@ internal static class PreventTaskPatches
         }
         return true;
     }
-}
+}*/

@@ -14,7 +14,6 @@ using NinjaKiwi.Players.Files.SaveStrategies;
 using System.Collections.Generic;
 using Assets.Scripts.Unity.UI_New.Coop;
 using NinjaKiwi.LiNK.Lobbies;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -172,7 +171,7 @@ public static partial class GameExt
     /// <summary>
     /// Not tested
     /// </summary>
-    public static List<TowerModel> GetTowerListForTowerType(this Game game, string towerSet)
+    public static List<TowerModel> GetTowerListForTowerType(this Game game, TowerSet towerSet)
     {
         return Helpers.GetTowerListForTowerType(towerSet).ToList();
     }

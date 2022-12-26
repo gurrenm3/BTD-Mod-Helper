@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Models.Towers;
+using Assets.Scripts.Models.TowerSets;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -22,7 +23,7 @@ public abstract partial class ModVanillaTower : ModVanillaContent<TowerModel>
     /// <summary>
     /// Change the TowerSet that this tower is part of. Also handles moving its place within the shop.
     /// </summary>
-    public virtual string TowerSet => null;
+    public virtual TowerSet TowerSet => TowerSet.None;
         
     /// <summary>
     /// Changes the base cost

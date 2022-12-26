@@ -54,6 +54,38 @@ public static void AddTowerDetails(this Assets.Scripts.Models.GameModel model, A
 
 `towerDetailsModel` [Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')
 
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,Assets.Scripts.Models.TowerSets.TowerSet)'></a>
+
+## GameModelExt.AddTowerDetails(this GameModel, TowerDetailsModel, TowerSet) Method
+
+Adds a TowerDetailsModel to the GameModel's TowerSet, taking into account what set of towers it's a part of  
+<br/>  
+For example, a new custom Primary tower would be added right at the end of the primary towers,  
+and right before the start of the military towers
+
+```csharp
+public static void AddTowerDetails(this Assets.Scripts.Models.GameModel model, Assets.Scripts.Models.TowerSets.TowerDetailsModel towerDetailsModel, Assets.Scripts.Models.TowerSets.TowerSet set);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,Assets.Scripts.Models.TowerSets.TowerSet).model'></a>
+
+`model` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
+
+The GameModel
+
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,Assets.Scripts.Models.TowerSets.TowerSet).towerDetailsModel'></a>
+
+`towerDetailsModel` [Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')
+
+The TowerDetailsModel to be added
+
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,Assets.Scripts.Models.TowerSets.TowerSet).set'></a>
+
+`set` [Assets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerSet 'Assets.Scripts.Models.TowerSets.TowerSet')
+
+The TowerSet of the tower to be added
+
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,int)'></a>
 
 ## GameModelExt.AddTowerDetails(this GameModel, TowerDetailsModel, int) Method
@@ -76,38 +108,6 @@ public static void AddTowerDetails(this Assets.Scripts.Models.GameModel model, A
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,int).index'></a>
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,string)'></a>
-
-## GameModelExt.AddTowerDetails(this GameModel, TowerDetailsModel, string) Method
-
-Adds a TowerDetailsModel to the GameModel's TowerSet, taking into account what set of towers it's a part of  
-<br/>  
-For example, a new custom Primary tower would be added right at the end of the primary towers,  
-and right before the start of the military towers
-
-```csharp
-public static void AddTowerDetails(this Assets.Scripts.Models.GameModel model, Assets.Scripts.Models.TowerSets.TowerDetailsModel towerDetailsModel, string set);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,string).model'></a>
-
-`model` [Assets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.GameModel 'Assets.Scripts.Models.GameModel')
-
-The GameModel
-
-<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,string).towerDetailsModel'></a>
-
-`towerDetailsModel` [Assets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.TowerSets.TowerDetailsModel 'Assets.Scripts.Models.TowerSets.TowerDetailsModel')
-
-The TowerDetailsModel to be added
-
-<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisAssets.Scripts.Models.GameModel,Assets.Scripts.Models.TowerSets.TowerDetailsModel,string).set'></a>
-
-`set` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The TowerSet of the tower to be added
 
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowersToGame(thisAssets.Scripts.Models.GameModel,System.Collections.Generic.IEnumerable_Assets.Scripts.Models.Towers.TowerModel_)'></a>
 
@@ -256,7 +256,7 @@ Time the bloon should be spawned
 Create a BloonEmissionModel from a bloonModel
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> CreateBloonEmissions(this Assets.Scripts.Models.GameModel model, Assets.Scripts.Models.Bloons.BloonModel bloonModel, int number, float spacing);
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> CreateBloonEmissions(this Assets.Scripts.Models.GameModel model, Assets.Scripts.Models.Bloons.BloonModel bloonModel, int number, float spacing);
 ```
 #### Parameters
 
@@ -285,7 +285,7 @@ Number of Bloons in this emission
 Space between each bloon in this emission
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.CreateBloonEmissions(thisAssets.Scripts.Models.GameModel,string,int,float)'></a>
 
@@ -294,7 +294,7 @@ Space between each bloon in this emission
 Create a BloonEmissionModel from a bloon's name
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> CreateBloonEmissions(this Assets.Scripts.Models.GameModel model, string bloonName, int number, float spacing);
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> CreateBloonEmissions(this Assets.Scripts.Models.GameModel model, string bloonName, int number, float spacing);
 ```
 #### Parameters
 
@@ -323,7 +323,7 @@ Number of Bloons in this emission
 Space between each bloon in this emission
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.CreateBloonGroup(thisAssets.Scripts.Models.GameModel,string,float,float,int)'></a>
 

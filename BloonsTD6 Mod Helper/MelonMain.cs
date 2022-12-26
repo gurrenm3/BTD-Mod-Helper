@@ -76,7 +76,7 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
-        InitialLoadTasks_MoveNext.Update();
+        // InitialLoadTasks_MoveNext.Update();
 
         if (Game.instance is null)
             return;
@@ -112,17 +112,16 @@ internal partial class MelonMain : BloonsTD6Mod
 
         if (!scheduledInGamePatch) Schedule_InGame_Loaded();
 
-        AutoSave.InitAutosave(this.GetModSettingsDir(true));
-
         foreach (var gameMode in Game.instance.model.mods)
         {
             if (gameMode.name.EndsWith("Only"))
             {
-                var mutatorModModels = gameMode.mutatorMods.ToList();
+                // TODO fix modded tower sets
+                /*var mutatorModModels = gameMode.mutatorMods.ToList();
                 mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
                     .Where(set => !set.AllowInRestrictedModes)
                     .Select(set => new LockTowerSetModModel(gameMode.name, set.Id)));
-                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
+                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();*/
             }
 
             if (gameMode.mutatorMods == null) continue;
@@ -170,10 +169,4 @@ internal partial class MelonMain : BloonsTD6Mod
         Fonts.Load();
         RoundSetChanger.EnsureHidden();
     }
-
-    #region Autosave
-
-    public override void OnMatchEnd() => AutoSave.backup.CreateBackup();
-
-    #endregion
 }

@@ -678,6 +678,25 @@ public static void SetRoundSet(this Assets.Scripts.Unity.UI_New.InGame.InGame in
 
 New Round Set Model to use
 
+<a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray_Assets.Scripts.Models.Rounds.BloonEmissionModel_)'></a>
+
+## InGameExt.SpawnBloons(this InGame, Il2CppReferenceArray<BloonEmissionModel>) Method
+
+Spawn bloons in game
+
+```csharp
+public static void SpawnBloons(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame, Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> bloonEmissionModels);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray_Assets.Scripts.Models.Rounds.BloonEmissionModel_).inGame'></a>
+
+`inGame` [Assets.Scripts.Unity.UI_New.InGame.InGame](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.UI_New.InGame.InGame 'Assets.Scripts.Unity.UI_New.InGame.InGame')
+
+<a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray_Assets.Scripts.Models.Rounds.BloonEmissionModel_).bloonEmissionModels'></a>
+
+`bloonEmissionModels` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
+
 <a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,Il2CppSystem.Collections.Generic.List_Assets.Scripts.Models.Rounds.BloonEmissionModel_)'></a>
 
 ## InGameExt.SpawnBloons(this InGame, List<BloonEmissionModel>) Method
@@ -761,22 +780,3 @@ public static void SpawnBloons(this Assets.Scripts.Unity.UI_New.InGame.InGame in
 <a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,System.Collections.Generic.List_Assets.Scripts.Models.Rounds.BloonEmissionModel_).bloonEmissionModels'></a>
 
 `bloonEmissionModels` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,UnhollowerBaseLib.Il2CppReferenceArray_Assets.Scripts.Models.Rounds.BloonEmissionModel_)'></a>
-
-## InGameExt.SpawnBloons(this InGame, Il2CppReferenceArray<BloonEmissionModel>) Method
-
-Spawn bloons in game
-
-```csharp
-public static void SpawnBloons(this Assets.Scripts.Unity.UI_New.InGame.InGame inGame, UnhollowerBaseLib.Il2CppReferenceArray<Assets.Scripts.Models.Rounds.BloonEmissionModel> bloonEmissionModels);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,UnhollowerBaseLib.Il2CppReferenceArray_Assets.Scripts.Models.Rounds.BloonEmissionModel_).inGame'></a>
-
-`inGame` [Assets.Scripts.Unity.UI_New.InGame.InGame](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Unity.UI_New.InGame.InGame 'Assets.Scripts.Unity.UI_New.InGame.InGame')
-
-<a name='BTD_Mod_Helper.Extensions.InGameExt.SpawnBloons(thisAssets.Scripts.Unity.UI_New.InGame.InGame,UnhollowerBaseLib.Il2CppReferenceArray_Assets.Scripts.Models.Rounds.BloonEmissionModel_).bloonEmissionModels'></a>
-
-`bloonEmissionModels` [UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[Assets.Scripts.Models.Rounds.BloonEmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Assets.Scripts.Models.Rounds.BloonEmissionModel 'Assets.Scripts.Models.Rounds.BloonEmissionModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')

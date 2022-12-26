@@ -5,7 +5,7 @@ using NinjaKiwi.Common;
 
 namespace BTD_Mod_Helper.Patches.Resources;
 
-[HarmonyPatch(typeof(LocalizationManager._LoadTableAsync_d__45),
+/*[HarmonyPatch(typeof(LocalizationManager._LoadTableAsync_d__45),
     nameof(LocalizationManager._LoadTableAsync_d__45.MoveNext))]
 internal static class LocalizationManger_LoadTableAsync
 {
@@ -29,4 +29,4 @@ internal static class LocalizationManger_LoadTableAsync
             }
         }
     }
-}
+}*/

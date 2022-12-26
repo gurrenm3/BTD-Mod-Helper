@@ -3,7 +3,6 @@ using Assets.Scripts.Unity.UI_New.HeroInGame;
 using Assets.Scripts.Unity.UI_New.Main.HeroSelect;
 using BTD_Mod_Helper.Api.Towers;
 using HarmonyLib;
-using UnhollowerBaseLib;
 
 namespace BTD_Mod_Helper.Patches.UI
 {

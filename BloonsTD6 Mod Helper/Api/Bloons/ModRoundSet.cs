@@ -5,7 +5,7 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Models.Rounds;
 using Assets.Scripts.Unity;
 using Assets.Scripts.Utils;
-using UnhollowerBaseLib;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace BTD_Mod_Helper.Api.Bloons;
 

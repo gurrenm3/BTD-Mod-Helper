@@ -384,7 +384,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Syst
 Return as Il2CppReferenceArray
 
 ```csharp
-public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T> list)
+public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T> list)
     where T : Il2CppSystem.Object;
 ```
 #### Type parameters
@@ -399,7 +399,7 @@ public static UnhollowerBaseLib.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[UnhollowerBaseLib.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnhollowerBaseLib.Il2CppReferenceArray-1 'UnhollowerBaseLib.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
 
 <a name='BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_)'></a>
 

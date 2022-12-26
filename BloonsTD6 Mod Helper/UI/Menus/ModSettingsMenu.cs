@@ -5,14 +5,19 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppSystem;
+using MelonLoader.TinyJSON;
+using Newtonsoft.Json;
 using UnityEngine;
+using Console = System.Console;
+using Exception = System.Exception;
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 {
-    private BloonsMod bloonsMod;
+    public static BloonsMod BloonsMod { get; private set; }
 
     private Animator animator;
 
@@ -25,8 +30,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         var gameObject = GameMenu.gameObject;
         gameObject.DestroyAllChildren();
 
-        bloonsMod = ModHelper.Mods.First(m => m.IDPrefix == data?.ToString());
-        CommonForegroundHeader.SetText(bloonsMod.Info.Name);
+        CommonForegroundHeader.SetText(BloonsMod.Info.Name);
 
         scrollPanel = gameObject.AddModHelperScrollPanel(new Info("ScrollPanel", InfoPreset.FillParent),
             RectTransform.Axis.Vertical, null, 150, 300);
@@ -45,7 +49,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     public IEnumerator CreateMenuContent()
     {
-        foreach (var (category, modSettings) in bloonsMod.ModSettings.Values
+        foreach (var (category, modSettings) in BloonsMod.ModSettings.Values
                      .GroupBy(setting => setting.category)
                      .OrderBy(kvp => kvp.Key?.order ?? 0))
         {
@@ -97,8 +101,8 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     public override void OnMenuClosed()
     {
         animator.Play("PopupSlideOut");
-        ModSettingsHandler.SaveModSettings(bloonsMod);
-        if (bloonsMod is MelonMain && !ModHelper.IsNet6)
+        ModSettingsHandler.SaveModSettings(BloonsMod);
+        if (BloonsMod is MelonMain && !ModHelper.IsNet6)
         {
             ModHelperHttp.UpdateSettings();
         }
@@ -106,6 +110,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     public static void Open(BloonsMod bloonsMod)
     {
-        ModGameMenu.Open<ModSettingsMenu>(bloonsMod.IDPrefix);
+        BloonsMod = bloonsMod;
+        ModGameMenu.Open<ModSettingsMenu>();
     }
 }

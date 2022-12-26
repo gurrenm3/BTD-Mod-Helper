@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Models.TowerSets;
 using Assets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Towers;
@@ -86,7 +87,7 @@ public abstract partial class ModTowerSet : NamedModContent
     /// </summary>
     /// <param name="towerSets">The current towerSets that already exist</param>
     /// <returns></returns>
-    public virtual int GetTowerSetIndex(List<string> towerSets)
+    public virtual int GetTowerSetIndex(List<TowerSet> towerSets)
     {
         return towerSets.Count;
     }
