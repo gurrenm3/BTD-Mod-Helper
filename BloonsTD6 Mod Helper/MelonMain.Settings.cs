@@ -76,7 +76,7 @@ internal partial class MelonMain
         description = "Hides mods from the Mod Browser that are almost certainly broken from being too out of date. " +
                       "This is currently just based on having a 'WorksOnVersion' value in its ModHelperData >= 34",
         category = ModBrowserSettings,
-        icon = HideIcon
+        icon = CloseBtn
     };
 
     public static readonly ModSettingBool ShowUnverifiedModBrowserContent = new(false)

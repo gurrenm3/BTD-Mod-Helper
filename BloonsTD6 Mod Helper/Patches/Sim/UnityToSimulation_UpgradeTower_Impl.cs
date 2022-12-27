@@ -18,7 +18,7 @@ namespace BTD_Mod_Helper.Patches.Sim;
 internal static class UnityToSimulation_UpgradeTower_Impl
 {
     [HarmonyPrefix]
-    private static void Before(UnityToSimulation __instance, ObjectId id, int pathIndex)
+    private static void Prefix(UnityToSimulation __instance, ObjectId id, int pathIndex)
     {
         var towerManager = __instance.simulation.towerManager;
         var tower = towerManager.GetTowerById(id).towerModel;

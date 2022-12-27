@@ -17,6 +17,7 @@ using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Patches;
 using BTD_Mod_Helper.UI.Modded;
+using Il2CppAssets.Scripts.Models.TowerSets;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
