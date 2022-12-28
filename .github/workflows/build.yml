@@ -49,7 +49,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow: build.yml
           branch: ${{ env.MELONLOADER_BRANCH }}
-          name: MelonLoader.x64.CI.Release
+          name: MelonLoader.Windows.x64.CI.Release
           repo: LavaGang/MelonLoader
           path: ${{ env.BLOONSTD6 }}
   
