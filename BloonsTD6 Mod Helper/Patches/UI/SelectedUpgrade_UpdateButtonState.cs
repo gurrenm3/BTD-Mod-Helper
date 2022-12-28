@@ -10,7 +10,7 @@ internal class SelectedUpgrade_UpdateButtonState
     [HarmonyPostfix]
     internal static void Postfix(SelectedUpgrade __instance)
     {
-        if (__instance.selectedDetails.upgrade.GetModUpgrade()?.Tower.ModTowerSet is ModTowerSet modTowerSet &&
+        if (__instance.selectedDetails.Exists()?.upgrade?.GetModUpgrade()?.Tower.ModTowerSet is { } modTowerSet &&
             !__instance.isParagon)
         {
             ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ContainerLargeReference,

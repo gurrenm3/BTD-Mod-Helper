@@ -9,7 +9,7 @@ internal static class TowerImageLoader_GetBgSprite
     [HarmonyPostfix]
     private static void Postfix(TowerImageLoader __instance, ref SpriteReference __result)
     {
-        if (__instance.TowerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
+        if (__instance.TowerModel?.GetModTower()?.ModTowerSet is { } modTowerSet)
         {
             __result = modTowerSet.ContainerReference;
         }

@@ -8,7 +8,7 @@ internal static class UpgradeScreen_UpdatePortraitBackground
     [HarmonyPostfix]
     private static void Postfix(UpgradeScreen __instance)
     {
-        if (ModTowerHelper.ModTowerCache.TryGetValue(__instance.currTowerId, out var tower) &&
+        if (ModTowerHelper.ModTowerCache.TryGetValue(__instance.currTowerId ?? "", out var tower) &&
             tower.ModTowerSet is { } towerSet)
         {
             __instance.selectedUpgrade.portraitBackground.SetSprite(towerSet.ContainerReference);

@@ -2,6 +2,9 @@
 
 namespace BTD_Mod_Helper.Patches.UI;
 
+/// <summary>
+/// TODO document the necessity of this
+/// </summary>
 [HarmonyPatch(typeof(UpgradeScreen), nameof(UpgradeScreen._Open_b__49_0))]
 internal class UpgradeScreen_Open
 {

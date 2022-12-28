@@ -12,6 +12,7 @@ on:
 
 env:
   PROJECT_NAME: Btd6ModHelper
+  MELONLOADER_BRANCH: alpha-development
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
 
