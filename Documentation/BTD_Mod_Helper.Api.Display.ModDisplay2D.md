@@ -39,33 +39,33 @@ protected abstract string TextureName { get; }
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.Apply(Il2CppAssets.Scripts.Models.Towers.TowerModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.Apply(TowerModel)'></a>
 
 ## ModDisplay2D.Apply(TowerModel) Method
 
 Applies this ModDisplay to a given TowerModel
 
 ```csharp
-public override void Apply(Il2CppAssets.Scripts.Models.Towers.TowerModel towerModel);
+public override void Apply(TowerModel towerModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.Apply(Il2CppAssets.Scripts.Models.Towers.TowerModel).towerModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.Apply(TowerModel).towerModel'></a>
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.ModifyDisplayNode(UnityDisplayNode)'></a>
 
 ## ModDisplay2D.ModifyDisplayNode(UnityDisplayNode) Method
 
 Alters the UnityDisplayNode that was copied from the one used by [BaseDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md#BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay 'BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay')
 
 ```csharp
-public override void ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node);
+public override void ModifyDisplayNode(UnityDisplayNode node);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay2D.ModifyDisplayNode(UnityDisplayNode).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 

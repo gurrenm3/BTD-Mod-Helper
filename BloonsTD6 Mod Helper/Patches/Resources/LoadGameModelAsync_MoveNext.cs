@@ -1,11 +1,11 @@
 ﻿using Il2CppAssets.Scripts.Models;
 
 namespace BTD_Mod_Helper.Patches.Resources;
-
+/*
 /// <summary>
 /// This makes the first GameModel loaded always be the one returned, even if another GameModel load tries to happen
 /// </summary>
-/*[HarmonyPatch(typeof(GameModelUtil._LoadGameModelAsync_d__9),
+[HarmonyPatch(typeof(GameModelUtil._LoadGameModelAsync_d__9),
     nameof(GameModelUtil._LoadGameModelAsync_d__9.MoveNext))]
 internal static class LoadGameModelAsync_MoveNext
 {

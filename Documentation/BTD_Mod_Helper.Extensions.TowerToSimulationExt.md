@@ -12,18 +12,18 @@ public static class TowerToSimulationExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; TowerToSimulationExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.TowerToSimulationExt.GetTower(thisIl2CppAssets.Scripts.Unity.Bridge.TowerToSimulation)'></a>
+<a name='BTD_Mod_Helper.Extensions.TowerToSimulationExt.GetTower(thisTowerToSimulation)'></a>
 
 ## TowerToSimulationExt.GetTower(this TowerToSimulation) Method
 
 Return the Tower associated with this TowerToSimulation
 
 ```csharp
-public static Il2CppAssets.Scripts.Simulation.Towers.Tower GetTower(this Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation towerToSim);
+public static Tower GetTower(this TowerToSimulation towerToSim);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.TowerToSimulationExt.GetTower(thisIl2CppAssets.Scripts.Unity.Bridge.TowerToSimulation).towerToSim'></a>
+<a name='BTD_Mod_Helper.Extensions.TowerToSimulationExt.GetTower(thisTowerToSimulation).towerToSim'></a>
 
 `towerToSim` [Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation 'Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation')
 

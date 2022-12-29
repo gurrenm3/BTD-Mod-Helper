@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Gets an AnimationController by its name, or null if there isn't one with that name
 
 ```csharp
-public static UnityEngine.RuntimeAnimatorController Get(string name);
+public static RuntimeAnimatorController Get(string name);
 ```
 #### Parameters
 

@@ -39,6 +39,7 @@ Global
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Debug|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

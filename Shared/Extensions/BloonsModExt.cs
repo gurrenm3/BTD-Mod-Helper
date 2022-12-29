@@ -1,6 +1,7 @@
 using System.IO;
 using System.Reflection;
 using BTD_Mod_Helper.Api;
+using MelonLoader.Utils;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -24,7 +25,7 @@ public static class BloonsModExt
     /// <returns></returns>
     public static string GetModDirectory(this BloonsMod bloonsMod)
     {
-        return Path.Combine(MelonHandler.ModsDirectory, bloonsMod.GetModName());
+        return Path.Combine(MelonEnvironment.ModsDirectory, bloonsMod.GetModName());
     }
 
     /// <summary>
@@ -35,7 +36,7 @@ public static class BloonsModExt
     /// <returns></returns>
     public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists)
     {
-        var path = $"{MelonHandler.ModsDirectory}\\{bloonsMod.GetModName()}";
+        var path = $"{MelonEnvironment.ModsDirectory}\\{bloonsMod.GetModName()}";
         if (createIfNotExists) Directory.CreateDirectory(path);
         return path;
     }
@@ -68,10 +69,6 @@ public static class BloonsModExt
 
     internal static Assembly GetAssembly(this MelonMod mod)
     {
-#if NET48
         return mod.MelonAssembly.Assembly;
-#else
-        return mod.Assembly;
-#endif
     }
 }

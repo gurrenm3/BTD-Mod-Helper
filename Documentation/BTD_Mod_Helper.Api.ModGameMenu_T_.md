@@ -7,7 +7,7 @@ Generic class for creating a ModGameMenu with the given type as it's base menu
 
 ```csharp
 public abstract class ModGameMenu<T> : BTD_Mod_Helper.Api.ModGameMenu
-    where T : Il2CppAssets.Scripts.Unity.Menu.GameMenu
+    where T : GameMenu
 ```
 #### Type parameters
 

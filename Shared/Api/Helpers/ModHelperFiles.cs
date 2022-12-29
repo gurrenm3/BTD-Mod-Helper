@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using MelonLoader.Utils;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -26,7 +27,7 @@ internal static class ModHelperFiles
         using var reader = new StreamReader(stream!);
         var text = reader.ReadToEnd().Replace(
             @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",
-            MelonUtils.GameDirectory);
+            MelonEnvironment.GameRootDirectory);
         fs.Write(text);
     }
 }

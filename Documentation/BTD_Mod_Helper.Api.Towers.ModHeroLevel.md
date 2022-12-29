@@ -113,7 +113,7 @@ public sealed override string Icon { get; }
 Hero upgrades don't have individual icons
 
 ```csharp
-public sealed override Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
+public sealed override SpriteReference IconReference { get; }
 ```
 
 #### Property Value

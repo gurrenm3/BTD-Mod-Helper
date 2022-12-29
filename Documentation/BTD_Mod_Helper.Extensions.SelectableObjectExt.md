@@ -12,18 +12,18 @@ public static class SelectableObjectExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SelectableObjectExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.SelectableObjectExt.GetSkinnedMeshRenderer(thisIl2CppAssets.Scripts.Simulation.Objects.SelectableObject)'></a>
+<a name='BTD_Mod_Helper.Extensions.SelectableObjectExt.GetSkinnedMeshRenderer(thisSelectableObject)'></a>
 
 ## SelectableObjectExt.GetSkinnedMeshRenderer(this SelectableObject) Method
 
 Gets the first SkinnedMeshRenderer of this object
 
 ```csharp
-public static UnityEngine.SkinnedMeshRenderer GetSkinnedMeshRenderer(this Il2CppAssets.Scripts.Simulation.Objects.SelectableObject selectableObject);
+public static SkinnedMeshRenderer GetSkinnedMeshRenderer(this SelectableObject selectableObject);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.SelectableObjectExt.GetSkinnedMeshRenderer(thisIl2CppAssets.Scripts.Simulation.Objects.SelectableObject).selectableObject'></a>
+<a name='BTD_Mod_Helper.Extensions.SelectableObjectExt.GetSkinnedMeshRenderer(thisSelectableObject).selectableObject'></a>
 
 `selectableObject` [Il2CppAssets.Scripts.Simulation.Objects.SelectableObject](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.SelectableObject 'Il2CppAssets.Scripts.Simulation.Objects.SelectableObject')
 

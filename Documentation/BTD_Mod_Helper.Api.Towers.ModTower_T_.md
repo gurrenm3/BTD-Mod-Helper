@@ -25,7 +25,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 The custom tower set that this ModTower uses
 
 ```csharp
-public sealed override Il2CppAssets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
+public sealed override TowerSet TowerSet { get; }
 ```
 
 #### Property Value

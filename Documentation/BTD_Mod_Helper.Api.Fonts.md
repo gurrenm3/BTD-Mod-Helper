@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Gets an AnimationController by its name, or null if there isn't one with that name
 
 ```csharp
-public static Il2CppTMPro.TMP_FontAsset Get(string name);
+public static TMP_FontAsset Get(string name);
 ```
 #### Parameters
 

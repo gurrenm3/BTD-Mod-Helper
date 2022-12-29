@@ -67,7 +67,7 @@ Same as the original FileIOUtil.LoadObject
 
 ```csharp
 public static T LoadObject<T>(string fileName)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -108,7 +108,7 @@ File name within the sandbox directory
 
 Text file contents to save
 
-<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveObject(string,Il2CppSystem.Object)'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveObject(string,Object)'></a>
 
 ## FileIOHelper.SaveObject(string, Object) Method
 
@@ -117,16 +117,16 @@ Saves an il2cpp object directly to the sandbox path like the original FileIOUtil
 Will also create subdirectories as needed to save the file
 
 ```csharp
-public static void SaveObject(string fileName, Il2CppSystem.Object data);
+public static void SaveObject(string fileName, Object data);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveObject(string,Il2CppSystem.Object).fileName'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveObject(string,Object).fileName'></a>
 
 `fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 Name of file, extension included
 
-<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveObject(string,Il2CppSystem.Object).data'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.SaveObject(string,Object).data'></a>
 
 `data` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')

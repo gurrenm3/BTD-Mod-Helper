@@ -2,6 +2,7 @@
 using Il2CppNinjaKiwi.NKMulti;
 using Il2CppNinjaKiwi.Players.Files;
 using System.Collections.Generic;
+using Il2CppNinjaKiwi.Players;
 
 namespace BTD_Mod_Helper;
 
@@ -41,7 +42,7 @@ public partial class SessionData
 
     /// <summary>
     /// The directory of the save file. 
-    /// Gets set when <see cref="FileSaveStrategy.Choose(string, NinjaKiwi.Players.SaveStrategy)"/>
+    /// Gets set when <see cref="FileSaveStrategy.Choose(string,SaveStrategy)"/>
     /// tries to load the Player Save
     /// </summary>
     public string SaveDirectory { get; set; } = "";

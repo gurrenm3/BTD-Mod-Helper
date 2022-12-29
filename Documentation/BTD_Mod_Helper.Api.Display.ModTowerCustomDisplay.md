@@ -81,17 +81,17 @@ public abstract string PrefabName { get; }
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.ModifyDisplayNode(UnityDisplayNode)'></a>
 
 ## ModTowerCustomDisplay.ModifyDisplayNode(UnityDisplayNode) Method
 
 Performs alterations to the unity display node when it is created
 
 ```csharp
-public override void ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node);
+public override void ModifyDisplayNode(UnityDisplayNode node);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.ModifyDisplayNode(UnityDisplayNode).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')

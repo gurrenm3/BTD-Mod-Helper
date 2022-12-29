@@ -15,36 +15,36 @@
 
     <!--References to BTD6 dependencies-->
     <ItemGroup Condition="'$(JustMelonloader)' != 'true'">
-        <Reference Include="$(Il2CppAssemblies)\Assembly-CSharp.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Il2Cppmscorlib.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Il2CppSystem.Core.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Il2CppSystem.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.Common.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.LiNK.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Unity.InputSystem.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Unity.ResourceManager.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\Unity.TextMeshPro.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.AnimationModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.AssetBundleModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.AudioModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.CoreModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.InputLegacyModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.ImageConversionModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.JSONSerializeModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.TextRenderingModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.UI.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.UIElementsModule.dll"/>
-        <Reference Include="$(Il2CppAssemblies)\UnityEngine.UIModule.dll"/>
-        <!--<Reference Include="$(Il2CppAssemblies)\Il2CppNewtonsoft.Json.dll"/>-->
-        <Reference Include="$(Il2CppAssemblies)\Unity.Addressables.dll"/>
+        <Reference Include="$(Il2CppAssemblies)\Assembly-CSharp.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2Cppmscorlib.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2CppSystem.Core.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2CppSystem.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.Common.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.LiNK.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Unity.InputSystem.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Unity.ResourceManager.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Unity.TextMeshPro.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.AnimationModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.AssetBundleModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.AudioModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.CoreModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.InputLegacyModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.ImageConversionModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.JSONSerializeModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.TextRenderingModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.UI.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.UIElementsModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.UIModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2CppNewtonsoft.Json.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Unity.Addressables.dll" Private="false"/>
         
-        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppAssetBundleManager.dll"/>
-        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppImageConversionManager.dll"/>
-        <Reference Include="$(ManagedFolder)\ValueTupleBridge.dll"/>
-        <Reference Include="$(ManagedFolder)\Newtonsoft.Json.dll"/>
+        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppAssetBundleManager.dll" Private="false"/>
+        <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppImageConversionManager.dll" Private="false"/>
+        <Reference Include="$(ManagedFolder)\ValueTupleBridge.dll" Private="false"/>
+        <Reference Include="$(ManagedFolder)\Newtonsoft.Json.dll" Private="false"/>
 
-        <Reference Include="$(BloonsTD6)\MelonLoader\net6\Il2CppInterop.Runtime.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\Il2CppInterop.Runtime.dll" Private="false"/>
     </ItemGroup>
 
     <!--Mod Helper dependency-->

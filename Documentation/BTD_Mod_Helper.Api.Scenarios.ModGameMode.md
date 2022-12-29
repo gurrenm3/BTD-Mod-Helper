@@ -72,7 +72,7 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
+public virtual SpriteReference IconReference { get; }
 ```
 
 #### Property Value
@@ -92,32 +92,32 @@ protected virtual bool PreApplies { get; }
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Il2CppAssets.Scripts.Models.Towers.Mods.ModModel)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(ModModel)'></a>
 
 ## ModGameMode.ModifyBaseGameModeModel(ModModel) Method
 
 Implemented by a ModGameMode to modify the base game mode, for instance by adding or removing mutator mods
 
 ```csharp
-public abstract void ModifyBaseGameModeModel(Il2CppAssets.Scripts.Models.Towers.Mods.ModModel gameModeModel);
+public abstract void ModifyBaseGameModeModel(ModModel gameModeModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(Il2CppAssets.Scripts.Models.Towers.Mods.ModModel).gameModeModel'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(ModModel).gameModeModel'></a>
 
 `gameModeModel` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(GameModel)'></a>
 
 ## ModGameMode.ModifyGameModel(GameModel) Method
 
 Modifies the GameModel that's used for matches played with this mode
 
 ```csharp
-public virtual void ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel gameModel);
+public virtual void ModifyGameModel(GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')

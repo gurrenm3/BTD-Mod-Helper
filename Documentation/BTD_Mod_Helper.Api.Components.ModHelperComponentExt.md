@@ -42,7 +42,7 @@ public static T AddModHelperComponent<T>(this BTD_Mod_Helper.Api.Components.ModH
 #### Returns
 [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddModHelperComponent_T_(thisBTD_Mod_Helper.Api.Components.ModHelperComponent,T).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddModHelperComponent<T>(this BTD_Mod_Helper.Api.Components.ModHelperComponent, T).T')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,UnityEngine.Transform)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform)'></a>
 
 ## ModHelperComponentExt.AddTo<T>(this T, Transform) Method
 
@@ -51,26 +51,26 @@ Adds the ModHelperComponent to a parent Transform, returning the ModHelperCompon
 (This is an extension method just so that we can return the type generically)
 
 ```csharp
-public static T AddTo<T>(this T modHelperComponent, UnityEngine.Transform parent)
+public static T AddTo<T>(this T modHelperComponent, Transform parent)
     where T : BTD_Mod_Helper.Api.Components.ModHelperComponent;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,UnityEngine.Transform).T'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,UnityEngine.Transform).modHelperComponent'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform).modHelperComponent'></a>
 
-`modHelperComponent` [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,UnityEngine.Transform).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo<T>(this T, UnityEngine.Transform).T')
+`modHelperComponent` [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo<T>(this T, Transform).T')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,UnityEngine.Transform).parent'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform).parent'></a>
 
 `parent` [UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
 
 #### Returns
-[T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,UnityEngine.Transform).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo<T>(this T, UnityEngine.Transform).T')
+[T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo<T>(this T, Transform).T')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.Duplicate_T_(thisT,string)'></a>
 

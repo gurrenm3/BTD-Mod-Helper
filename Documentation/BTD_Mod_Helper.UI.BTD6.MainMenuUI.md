@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetAchievementsButton();
+public static Button GetAchievementsButton();
 ```
 
 #### Returns
@@ -32,7 +32,7 @@ public static UnityEngine.UI.Button GetAchievementsButton();
 Gets the Canvas for the Main Menu
 
 ```csharp
-public static UnityEngine.Canvas GetCanvas();
+public static Canvas GetCanvas();
 ```
 
 #### Returns
@@ -45,7 +45,7 @@ public static UnityEngine.Canvas GetCanvas();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetCoopButton();
+public static Button GetCoopButton();
 ```
 
 #### Returns
@@ -58,7 +58,7 @@ public static UnityEngine.UI.Button GetCoopButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetExitButton();
+public static Button GetExitButton();
 ```
 
 #### Returns
@@ -71,7 +71,7 @@ public static UnityEngine.UI.Button GetExitButton();
 Gets the Heroes Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetHeroesButton();
+public static Button GetHeroesButton();
 ```
 
 #### Returns
@@ -84,7 +84,7 @@ public static UnityEngine.UI.Button GetHeroesButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetKnowledgeButton();
+public static Button GetKnowledgeButton();
 ```
 
 #### Returns
@@ -97,7 +97,7 @@ public static UnityEngine.UI.Button GetKnowledgeButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetMonkeysButton();
+public static Button GetMonkeysButton();
 ```
 
 #### Returns
@@ -110,7 +110,7 @@ public static UnityEngine.UI.Button GetMonkeysButton();
 Gets the Play Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetPlayButton();
+public static Button GetPlayButton();
 ```
 
 #### Returns
@@ -123,7 +123,7 @@ public static UnityEngine.UI.Button GetPlayButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetPowersButton();
+public static Button GetPowersButton();
 ```
 
 #### Returns
@@ -136,7 +136,7 @@ public static UnityEngine.UI.Button GetPowersButton();
 Gets the Scene for the Main Menu
 
 ```csharp
-public static System.Nullable<UnityEngine.SceneManagement.Scene> GetScene();
+public static System.Nullable<Scene> GetScene();
 ```
 
 #### Returns
@@ -149,7 +149,7 @@ public static System.Nullable<UnityEngine.SceneManagement.Scene> GetScene();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetSettingsButton();
+public static Button GetSettingsButton();
 ```
 
 #### Returns
@@ -162,7 +162,7 @@ public static UnityEngine.UI.Button GetSettingsButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetStoreButton();
+public static Button GetStoreButton();
 ```
 
 #### Returns
@@ -175,7 +175,7 @@ public static UnityEngine.UI.Button GetStoreButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetTrophyStoreButton();
+public static Button GetTrophyStoreButton();
 ```
 
 #### Returns
@@ -188,7 +188,7 @@ public static UnityEngine.UI.Button GetTrophyStoreButton();
 Gets the Monkeys Button if on the Main Menu, or null
 
 ```csharp
-public static Il2Cpp.NK_TextMeshProUGUI GetXpBarText();
+public static NK_TextMeshProUGUI GetXpBarText();
 ```
 
 #### Returns

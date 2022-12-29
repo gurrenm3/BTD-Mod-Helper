@@ -20,7 +20,7 @@ Return this with Items added to it
 
 ```csharp
 public static T[] AddTo<T>(this T[] array, System.Collections.Generic.List<T> objectsToAdd)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -52,7 +52,7 @@ Return this with an Item added to it
 
 ```csharp
 public static T[] AddTo<T>(this T[] array, T objectToAdd)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -84,7 +84,7 @@ Return this with Items added to it
 
 ```csharp
 public static T[] AddTo<T>(this T[] array, T[] objectsToAdd)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -471,8 +471,8 @@ Return a duplicate of this array as type TCast
 
 ```csharp
 public static TCast[] DuplicateAs<TSource,TCast>(this TSource[] array)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -559,8 +559,8 @@ Return the first Item of type TCast
 
 ```csharp
 public static TCast GetItemOfType<TSource,TCast>(this TSource[] array)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -590,8 +590,8 @@ Return all Items of type TCast
 
 ```csharp
 public static System.Collections.Generic.IEnumerable<TCast> GetItemsOfType<TSource,TCast>(this TSource[] array)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -621,8 +621,8 @@ Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this TSource[] array)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -712,8 +712,8 @@ Return this with the first Item of type TCast removed
 
 ```csharp
 public static TSource[] RemoveItem<TSource,TCast>(this TSource[] array, TCast itemToRemove)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -749,8 +749,8 @@ Return this with the first Item of type TCast removed
 
 ```csharp
 public static TSource[] RemoveItemOfType<TSource,TCast>(this TSource[] array)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -780,8 +780,8 @@ Return this with all Items of type TCast removed
 
 ```csharp
 public static TSource[] RemoveItemsOfType<TSource,TCast>(this TSource[] array)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -810,8 +810,8 @@ The Type of the Items that you want to remove
 Return as Il2CppSystem.List
 
 ```csharp
-public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] array)
-    where T : Il2CppSystem.Object;
+public static List<T> ToIl2CppList<T>(this T[] array)
+    where T : Object;
 ```
 #### Type parameters
 
@@ -825,7 +825,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] 
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppList<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
+[Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray_T_(thisT[])'></a>
 
@@ -834,8 +834,8 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] 
 Return as Il2CppReferenceArray
 
 ```csharp
-public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array)
-    where T : Il2CppSystem.Object;
+public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array)
+    where T : Object;
 ```
 #### Type parameters
 
@@ -849,7 +849,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToIl2CppReferenceArray<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[])'></a>
 
@@ -858,7 +858,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 Return as LockList
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] array);
+public static LockList<T> ToLockList<T>(this T[] array);
 ```
 #### Type parameters
 
@@ -872,7 +872,7 @@ public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] arra
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToLockList<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToLockList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[])'></a>
 
@@ -881,7 +881,7 @@ public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this T[] arra
 Not Tested
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SizedList<T> ToSizedList<T>(this T[] array);
+public static SizedList<T> ToSizedList<T>(this T[] array);
 ```
 #### Type parameters
 
@@ -895,31 +895,31 @@ public static Il2CppAssets.Scripts.Utils.SizedList<T> ToSizedList<T>(this T[] ar
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToSizedList<T>(this T[]).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')
+[Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppObjectBase,T)'></a>
 
 ## ArrayExt.TryCast<T>(Il2CppObjectBase, T) Method
 
 Version of TryCast without the generic restriction
 
 ```csharp
-private static bool TryCast<T>(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase obj, out T t);
+private static bool TryCast<T>(Il2CppObjectBase obj, out T t);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppObjectBase,T).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).obj'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppObjectBase,T).obj'></a>
 
 `obj` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).t'></a>
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppObjectBase,T).t'></a>
 
-`t` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase,T).T 'BTD_Mod_Helper.Extensions.ArrayExt.TryCast<T>(Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase, T).T')
+`t` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppObjectBase,T).T 'BTD_Mod_Helper.Extensions.ArrayExt.TryCast<T>(Il2CppObjectBase, T).T')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

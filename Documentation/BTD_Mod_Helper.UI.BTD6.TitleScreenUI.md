@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Gets the Canvas for the TitleScreenUI, or null
 
 ```csharp
-public static UnityEngine.Canvas GetCanvas();
+public static Canvas GetCanvas();
 ```
 
 #### Returns
@@ -32,7 +32,7 @@ public static UnityEngine.Canvas GetCanvas();
 Gets the Scene if on the Title Screen menu
 
 ```csharp
-public static System.Nullable<UnityEngine.SceneManagement.Scene> GetScene();
+public static System.Nullable<Scene> GetScene();
 ```
 
 #### Returns
@@ -45,7 +45,7 @@ public static System.Nullable<UnityEngine.SceneManagement.Scene> GetScene();
 Gets the Intermediate Button if on the Map Select Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Button GetStartButton();
+public static Button GetStartButton();
 ```
 
 #### Returns

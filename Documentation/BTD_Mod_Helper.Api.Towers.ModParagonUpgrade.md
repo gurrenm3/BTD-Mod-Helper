@@ -35,7 +35,7 @@ public sealed override string Name { get; }
 The ParagonTowerModel that this will use as a base. You don't need to worry about displayDegreePaths
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel ParagonTowerModel { get; }
+public virtual ParagonTowerModel ParagonTowerModel { get; }
 ```
 
 #### Property Value
@@ -88,7 +88,7 @@ public sealed override int Tier { get; }
 If you really need to override the way that the ModUpgrade makes its UpgradeModel, go ahead
 
 ```csharp
-public override Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel GetUpgradeModel();
+public override UpgradeModel GetUpgradeModel();
 ```
 
 #### Returns
@@ -107,44 +107,21 @@ public sealed override System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.ModifyPowerDegreeMutator(Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator,float,int)'></a>
-
-## ModParagonUpgrade.ModifyPowerDegreeMutator(PowerDegreeMutator, float, int) Method
-
-Modify the PowerDegreeMutator of the Paragon
-
-```csharp
-public virtual void ModifyPowerDegreeMutator(Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator powerDegreeMutator, float investment, int degree);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.ModifyPowerDegreeMutator(Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator,float,int).powerDegreeMutator'></a>
-
-`powerDegreeMutator` [Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator 'Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.ModifyPowerDegreeMutator(Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator,float,int).investment'></a>
-
-`investment` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.ModifyPowerDegreeMutator(Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonTowerModel.PowerDegreeMutator,float,int).degree'></a>
-
-`degree` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.OnDegreeSet(Il2CppAssets.Scripts.Simulation.Towers.Tower,int)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.OnDegreeSet(Tower,int)'></a>
 
 ## ModParagonUpgrade.OnDegreeSet(Tower, int) Method
 
 Method to modify the Simulation Tower once its Degree has been set
 
 ```csharp
-public virtual void OnDegreeSet(Il2CppAssets.Scripts.Simulation.Towers.Tower tower, int degree);
+public virtual void OnDegreeSet(Tower tower, int degree);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.OnDegreeSet(Il2CppAssets.Scripts.Simulation.Towers.Tower,int).tower'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.OnDegreeSet(Tower,int).tower'></a>
 
 `tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.OnDegreeSet(Il2CppAssets.Scripts.Simulation.Towers.Tower,int).degree'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.OnDegreeSet(Tower,int).degree'></a>
 
 `degree` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')

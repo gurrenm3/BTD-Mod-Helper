@@ -69,7 +69,7 @@ public abstract BTD_Mod_Helper.Api.Towers.ModTower Tower { get; }
 [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(Il2CppAssets.Scripts.Models.Towers.TowerModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(TowerModel)'></a>
 
 ## ModTowerDisplay.ApplyToTower(TowerModel) Method
 
@@ -77,11 +77,11 @@ Applies this ModTowerDisplay to the towerModel. Override to change how this appl
 apply to an AttackModel instead
 
 ```csharp
-public virtual void ApplyToTower(Il2CppAssets.Scripts.Models.Towers.TowerModel towerModel);
+public virtual void ApplyToTower(TowerModel towerModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(Il2CppAssets.Scripts.Models.Towers.TowerModel).towerModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ApplyToTower(TowerModel).towerModel'></a>
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
@@ -103,7 +103,7 @@ protected bool IsParagon(int[] tiers);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(UnityDisplayNode)'></a>
 
 ## ModTowerDisplay.ModifyDisplayNode(UnityDisplayNode) Method
 
@@ -112,11 +112,11 @@ By default, this will change the main texture of the first SkinnedMeshRenderer o
 png with the same name as the class
 
 ```csharp
-public override void ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node);
+public override void ModifyDisplayNode(UnityDisplayNode node);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ModifyDisplayNode(UnityDisplayNode).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 

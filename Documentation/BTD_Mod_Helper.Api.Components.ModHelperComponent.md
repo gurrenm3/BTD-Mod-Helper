@@ -6,10 +6,10 @@
 Base for a helper component for making custom UIs in the same style as Vanilla ones
 
 ```csharp
-public class ModHelperComponent : UnityEngine.MonoBehaviour
+public class ModHelperComponent
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase') &#129106; [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object') &#129106; [UnityEngine.Object](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Object 'UnityEngine.Object') &#129106; [UnityEngine.Component](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Component 'UnityEngine.Component') &#129106; [UnityEngine.Behaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Behaviour 'UnityEngine.Behaviour') &#129106; [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; ModHelperComponent
+Inheritance [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; ModHelperComponent
 
 Derived  
 &#8627; [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')  
@@ -109,7 +109,7 @@ public ModHelperComponent parent;
 The LayoutElement component, if this has been assigned one
 
 ```csharp
-public UnityEngine.UI.LayoutElement LayoutElement { get; }
+public LayoutElement LayoutElement { get; }
 ```
 
 #### Property Value
@@ -122,7 +122,7 @@ public UnityEngine.UI.LayoutElement LayoutElement { get; }
 The LayoutGroup component, if this has been assigned one
 
 ```csharp
-public UnityEngine.UI.HorizontalOrVerticalLayoutGroup LayoutGroup { get; }
+public HorizontalOrVerticalLayoutGroup LayoutGroup { get; }
 ```
 
 #### Property Value
@@ -135,7 +135,7 @@ public UnityEngine.UI.HorizontalOrVerticalLayoutGroup LayoutGroup { get; }
 The RectTransform for this GameObject
 
 ```csharp
-public UnityEngine.RectTransform RectTransform { get; }
+public RectTransform RectTransform { get; }
 ```
 
 #### Property Value
@@ -166,30 +166,30 @@ public T Add<T>(T child)
 #### Returns
 [T](BTD_Mod_Helper.Api.Components.ModHelperComponent.md#BTD_Mod_Helper.Api.Components.ModHelperComponent.Add_T_(T).T 'BTD_Mod_Helper.Api.Components.ModHelperComponent.Add<T>(T).T')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Action)'></a>
 
 ## ModHelperComponent.AddButton(Info, string, Action) Method
 
 Creates a new ModHelperButton
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperButton AddButton(BTD_Mod_Helper.Api.Components.Info info, string sprite, Il2CppSystem.Action onClick);
+public BTD_Mod_Helper.Api.Components.ModHelperButton AddButton(BTD_Mod_Helper.Api.Components.Info info, string sprite, Action onClick);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Action).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).sprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Action).sprite'></a>
 
 `sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The button's visuals
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).onClick'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddButton(BTD_Mod_Helper.Api.Components.Info,string,Action).onClick'></a>
 
 `onClick` [Il2CppSystem.Action](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Action 'Il2CppSystem.Action')
 
@@ -231,38 +231,38 @@ The background behind the check, or null for nothing
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_)'></a>
 
 ## ModHelperComponent.AddCheckbox(Info, bool, string, UnityAction<bool>) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityEngine.Events.UnityAction<bool> onValueChanged);
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityAction<bool> onValueChanged);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).background'></a>
 
 `background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action to perform when it is checked/unchecked, or null
 
@@ -270,42 +270,42 @@ Action to perform when it is checked/unchecked, or null
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string)'></a>
 
 ## ModHelperComponent.AddCheckbox(Info, bool, string, UnityAction<bool>, string) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityEngine.Events.UnityAction<bool> onValueChanged, string checkImage);
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityAction<bool> onValueChanged, string checkImage);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).background'></a>
 
 `background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action to perform when it is checked/unchecked, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string).checkImage'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).checkImage'></a>
 
 `checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -315,48 +315,48 @@ The checkmark itself, or null for the default checkmark
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int)'></a>
 
 ## ModHelperComponent.AddCheckbox(Info, bool, string, UnityAction<bool>, string, int) Method
 
 Creates a new ModHelperCheckbox
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityEngine.Events.UnityAction<bool> onValueChanged, string checkImage, int padding);
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityAction<bool> onValueChanged, string checkImage, int padding);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).defaultValue'></a>
 
 `defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 If it starts out checked or not
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).background'></a>
 
 `background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background behind the check, or null for nothing
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action to perform when it is checked/unchecked, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).checkImage'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).checkImage'></a>
 
 `checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The checkmark itself, or null for the default checkmark
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityEngine.Events.UnityAction_bool_,string,int).padding'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).padding'></a>
 
 `padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
@@ -366,38 +366,38 @@ How much space around the outside of the check there is
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_)'></a>
 
 ## ModHelperComponent.AddDropdown(Info, List<string>, float, UnityAction<int>) Method
 
 Creates a new ModHelperDropdown
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged);
+public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, List<string> options, float windowHeight, UnityAction<int> onValueChanged);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: width/height must be set to actual values
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_).options'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).options'></a>
 
-`options` [Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
+`options` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 The list of options
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_).windowHeight'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).windowHeight'></a>
 
 `windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Height of the created dropdown window
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action that should happen when an option of the given index is selected
 
@@ -405,42 +405,42 @@ Action that should happen when an option of the given index is selected
 [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
 The created ModHelperDropdown
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string)'></a>
 
 ## ModHelperComponent.AddDropdown(Info, List<string>, float, UnityAction<int>, string) Method
 
 Creates a new ModHelperDropdown
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, string background);
+public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, List<string> options, float windowHeight, UnityAction<int> onValueChanged, string background);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: width/height must be set to actual values
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).options'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).options'></a>
 
-`options` [Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
+`options` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 The list of options
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).windowHeight'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).windowHeight'></a>
 
 `windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Height of the created dropdown window
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action that should happen when an option of the given index is selected
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).background'></a>
 
 `background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -450,48 +450,48 @@ The background image
 [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
 The created ModHelperDropdown
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float)'></a>
 
 ## ModHelperComponent.AddDropdown(Info, List<string>, float, UnityAction<int>, string, float) Method
 
 Creates a new ModHelperDropdown
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, Il2CppSystem.Collections.Generic.List<string> options, float windowHeight, UnityEngine.Events.UnityAction<int> onValueChanged, string background, float labelFontSize);
+public BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(BTD_Mod_Helper.Api.Components.Info info, List<string> options, float windowHeight, UnityAction<int> onValueChanged, string background, float labelFontSize);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: width/height must be set to actual values
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).options'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).options'></a>
 
-`options` [Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
+`options` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 The list of options
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).windowHeight'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).windowHeight'></a>
 
 `windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Height of the created dropdown window
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action that should happen when an option of the given index is selected
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).background'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).background'></a>
 
 `background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The background image
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,Il2CppSystem.Collections.Generic.List_string_,float,UnityEngine.Events.UnityAction_int_,string,float).labelFontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddDropdown(BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).labelFontSize'></a>
 
 `labelFontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
@@ -500,6 +500,33 @@ Text size of label
 #### Returns
 [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
 The created ModHelperDropdown
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,Sprite)'></a>
+
+## ModHelperComponent.AddImage(Info, Sprite) Method
+
+Creates a new ModHelperImage
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperImage AddImage(BTD_Mod_Helper.Api.Components.Info info, Sprite sprite);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,Sprite).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,Sprite).sprite'></a>
+
+`sprite` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+The sprite to display
+
+#### Returns
+[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
+The created ModHelperImage
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,string)'></a>
 
@@ -528,33 +555,6 @@ The sprite to display
 [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
 The created ModHelperImage
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,UnityEngine.Sprite)'></a>
-
-## ModHelperComponent.AddImage(Info, Sprite) Method
-
-Creates a new ModHelperImage
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperImage AddImage(BTD_Mod_Helper.Api.Components.Info info, UnityEngine.Sprite sprite);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,UnityEngine.Sprite).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddImage(BTD_Mod_Helper.Api.Components.Info,UnityEngine.Sprite).sprite'></a>
-
-`sprite` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
-
-The sprite to display
-
-#### Returns
-[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
-The created ModHelperImage
-
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddLayoutElement()'></a>
 
 ## ModHelperComponent.AddLayoutElement() Method
@@ -562,382 +562,54 @@ The created ModHelperImage
 Adds and returns a LayoutElement for this, making it work as part of a LayoutGroup
 
 ```csharp
-public UnityEngine.UI.LayoutElement AddLayoutElement();
+public LayoutElement AddLayoutElement();
 ```
 
 #### Returns
 [UnityEngine.UI.LayoutElement](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.LayoutElement 'UnityEngine.UI.LayoutElement')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info)'></a>
-
-## ModHelperComponent.AddPanel(Info) Method
-
-Creates a new ModHelperPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-#### Returns
-[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
-The created ModHelperPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string)'></a>
-
-## ModHelperComponent.AddPanel(Info, string) Method
-
-Creates a new ModHelperPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string).backgroundSprite'></a>
-
-`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The panel's background sprite
-
-#### Returns
-[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
-The created ModHelperPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_)'></a>
-
-## ModHelperComponent.AddPanel(Info, string, Nullable<Axis>) Method
-
-Creates a new ModHelperPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_).backgroundSprite'></a>
-
-`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The panel's background sprite
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_).layoutAxis'></a>
-
-`layoutAxis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
-
-If present, creates this panel with a Horizontal/Vertical layout group
-
-#### Returns
-[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
-The created ModHelperPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float)'></a>
-
-## ModHelperComponent.AddPanel(Info, string, Nullable<Axis>, float) Method
-
-Creates a new ModHelperPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis, float spacing);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).backgroundSprite'></a>
-
-`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The panel's background sprite
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).layoutAxis'></a>
-
-`layoutAxis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
-
-If present, creates this panel with a Horizontal/Vertical layout group
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float).spacing'></a>
-
-`spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-The layout group's spacing
-
-#### Returns
-[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
-The created ModHelperPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int)'></a>
-
-## ModHelperComponent.AddPanel(Info, string, Nullable<Axis>, float, int) Method
-
-Creates a new ModHelperPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddPanel(BTD_Mod_Helper.Api.Components.Info info, string backgroundSprite, System.Nullable<UnityEngine.RectTransform.Axis> layoutAxis, float spacing, int padding);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).backgroundSprite'></a>
-
-`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The panel's background sprite
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).layoutAxis'></a>
-
-`layoutAxis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
-
-If present, creates this panel with a Horizontal/Vertical layout group
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).spacing'></a>
-
-`spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-The layout group's spacing
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info,string,System.Nullable_UnityEngine.RectTransform.Axis_,float,int).padding'></a>
-
-`padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-The layout group's padding
-
-#### Returns
-[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
-The created ModHelperPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info)'></a>
-
-## ModHelperComponent.AddScrollPanel(Info) Method
-
-Creates a new ModHelperScrollPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-#### Returns
-[ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
-The created ModHelperScrollPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_)'></a>
-
-## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>) Method
-
-Creates a new ModHelperScrollPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_).axis'></a>
-
-`axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
-
-The axis that it scrolls in, or null for both directions
-
-#### Returns
-[ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
-The created ModHelperScrollPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string)'></a>
-
-## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, string) Method
-
-Creates a new ModHelperScrollPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string).axis'></a>
-
-`axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
-
-The axis that it scrolls in, or null for both directions
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string).backgroundSprite'></a>
-
-`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The panel's background sprite
-
-#### Returns
-[ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
-The created ModHelperScrollPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float)'></a>
-
-## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, string, float) Method
-
-Creates a new ModHelperScrollPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite, float spacing);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).axis'></a>
-
-`axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
-
-The axis that it scrolls in, or null for both directions
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).backgroundSprite'></a>
-
-`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The panel's background sprite
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float).spacing'></a>
-
-`spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-If axis is not null, then the layout spacing for the items
-
-#### Returns
-[ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
-The created ModHelperScrollPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int)'></a>
-
-## ModHelperComponent.AddScrollPanel(Info, Nullable<Axis>, string, float, int) Method
-
-Creates a new ModHelperScrollPanel
-
-```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperScrollPanel AddScrollPanel(BTD_Mod_Helper.Api.Components.Info info, System.Nullable<UnityEngine.RectTransform.Axis> axis, string backgroundSprite, float spacing, int padding);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).info'></a>
-
-`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-The name/position/size info
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).axis'></a>
-
-`axis` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[UnityEngine.RectTransform.Axis](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform.Axis 'UnityEngine.RectTransform.Axis')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
-
-The axis that it scrolls in, or null for both directions
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).backgroundSprite'></a>
-
-`backgroundSprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The panel's background sprite
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).spacing'></a>
-
-`spacing` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-If axis is not null, then the layout spacing for the items
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info,System.Nullable_UnityEngine.RectTransform.Axis_,string,float,int).padding'></a>
-
-`padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-#### Returns
-[ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel')  
-The created ModHelperScrollPanel
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2)'></a>
 
 ## ModHelperComponent.AddSlider(Info, float, float, float, float, Vector2) Method
 
 Creates a new ModHelperSlider
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, UnityEngine.Vector2 handleSize);
+public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: height must be a set value
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).defaultValue'></a>
 
 `defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The default slider amount
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2).minValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).minValue'></a>
 
 `minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The minimum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2).maxValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).maxValue'></a>
 
 `maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The maximum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2).stepSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).stepSize'></a>
 
 `stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 What value the slider should increase by per tick
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2).handleSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).handleSize'></a>
 
 `handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
@@ -946,116 +618,116 @@ The height and width of the pip
 #### Returns
 [ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_)'></a>
 
 ## ModHelperComponent.AddSlider(Info, float, float, float, float, Vector2, UnityAction<float>) Method
 
 Creates a new ModHelperSlider
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, UnityEngine.Vector2 handleSize, UnityEngine.Events.UnityAction<float> onValueChanged);
+public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: height must be a set value
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).defaultValue'></a>
 
 `defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The default slider amount
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_).minValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).minValue'></a>
 
 `minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The minimum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_).maxValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).maxValue'></a>
 
 `maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The maximum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_).stepSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).stepSize'></a>
 
 `stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 What value the slider should increase by per tick
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_).handleSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).handleSize'></a>
 
 `handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
 The height and width of the pip
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action should happen when the slider changes value, or null
 
 #### Returns
 [ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float)'></a>
 
 ## ModHelperComponent.AddSlider(Info, float, float, float, float, Vector2, UnityAction<float>, float) Method
 
 Creates a new ModHelperSlider
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, UnityEngine.Vector2 handleSize, UnityEngine.Events.UnityAction<float> onValueChanged, float fontSize);
+public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: height must be a set value
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).defaultValue'></a>
 
 `defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The default slider amount
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).minValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).minValue'></a>
 
 `minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The minimum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).maxValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).maxValue'></a>
 
 `maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The maximum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).stepSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).stepSize'></a>
 
 `stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 What value the slider should increase by per tick
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).handleSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).handleSize'></a>
 
 `handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
 The height and width of the pip
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action should happen when the slider changes value, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float).fontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).fontSize'></a>
 
 `fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
@@ -1064,66 +736,66 @@ The size of the label text
 #### Returns
 [ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string)'></a>
 
 ## ModHelperComponent.AddSlider(Info, float, float, float, float, Vector2, UnityAction<float>, float, string) Method
 
 Creates a new ModHelperSlider
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, UnityEngine.Vector2 handleSize, UnityEngine.Events.UnityAction<float> onValueChanged, float fontSize, string labelSuffix);
+public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize, string labelSuffix);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: height must be a set value
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).defaultValue'></a>
 
 `defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The default slider amount
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).minValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).minValue'></a>
 
 `minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The minimum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).maxValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).maxValue'></a>
 
 `maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The maximum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).stepSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).stepSize'></a>
 
 `stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 What value the slider should increase by per tick
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).handleSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).handleSize'></a>
 
 `handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
 The height and width of the pip
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action should happen when the slider changes value, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).fontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).fontSize'></a>
 
 `fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The size of the label text
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string).labelSuffix'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).labelSuffix'></a>
 
 `labelSuffix` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1132,72 +804,72 @@ String to add to the end of the label, e.g. "%"
 #### Returns
 [ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float)'></a>
 
 ## ModHelperComponent.AddSlider(Info, float, float, float, float, Vector2, UnityAction<float>, float, string, float) Method
 
 Creates a new ModHelperSlider
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, UnityEngine.Vector2 handleSize, UnityEngine.Events.UnityAction<float> onValueChanged, float fontSize, string labelSuffix, float startingValue);
+public BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize, string labelSuffix, float startingValue);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info. NOTE: height must be a set value
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).defaultValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).defaultValue'></a>
 
 `defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The default slider amount
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).minValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).minValue'></a>
 
 `minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The minimum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).maxValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).maxValue'></a>
 
 `maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The maximum value of the slider
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).stepSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).stepSize'></a>
 
 `stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 What value the slider should increase by per tick
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).handleSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).handleSize'></a>
 
 `handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
 The height and width of the pip
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).onValueChanged'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).onValueChanged'></a>
 
-`onValueChanged` [UnityEngine.Events.UnityAction&lt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction-1 'UnityEngine.Events.UnityAction`1')
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
 
 Action should happen when the slider changes value, or null
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).fontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).fontSize'></a>
 
 `fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The size of the label text
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).labelSuffix'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).labelSuffix'></a>
 
 `labelSuffix` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 String to add to the end of the label, e.g. "%"
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,UnityEngine.Vector2,UnityEngine.Events.UnityAction_float_,float,string,float).startingValue'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddSlider(BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).startingValue'></a>
 
 `startingValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
@@ -1266,36 +938,36 @@ Size of font
 [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
 The created ModHelperText
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions)'></a>
 
 ## ModHelperComponent.AddText(Info, string, float, TextAlignmentOptions) Method
 
 Creates a new ModHelperText
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperText AddText(BTD_Mod_Helper.Api.Components.Info info, string text, float fontSize, Il2CppTMPro.TextAlignmentOptions align);
+public BTD_Mod_Helper.Api.Components.ModHelperText AddText(BTD_Mod_Helper.Api.Components.Info info, string text, float fontSize, TextAlignmentOptions align);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).text'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).text'></a>
 
 `text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The text to display
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).fontSize'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).fontSize'></a>
 
 `fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 Size of font
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,Il2CppTMPro.TextAlignmentOptions).align'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddText(BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).align'></a>
 
 `align` [Il2CppTMPro.TextAlignmentOptions](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TextAlignmentOptions 'Il2CppTMPro.TextAlignmentOptions')
 
@@ -1315,28 +987,6 @@ Deletes the underlying GameObject this is attached to, not just the component
 public void DeleteObject();
 ```
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.FitContent(UnityEngine.UI.ContentSizeFitter.FitMode,UnityEngine.UI.ContentSizeFitter.FitMode)'></a>
-
-## ModHelperComponent.FitContent(FitMode, FitMode) Method
-
-Adds and returns a ContentSizeFitter with the given properties
-
-```csharp
-public UnityEngine.UI.ContentSizeFitter FitContent(UnityEngine.UI.ContentSizeFitter.FitMode horizontal=UnityEngine.UI.ContentSizeFitter.FitMode.Unconstrained, UnityEngine.UI.ContentSizeFitter.FitMode vertical=UnityEngine.UI.ContentSizeFitter.FitMode.Unconstrained);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.FitContent(UnityEngine.UI.ContentSizeFitter.FitMode,UnityEngine.UI.ContentSizeFitter.FitMode).horizontal'></a>
-
-`horizontal` [UnityEngine.UI.ContentSizeFitter.FitMode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.ContentSizeFitter.FitMode 'UnityEngine.UI.ContentSizeFitter.FitMode')
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.FitContent(UnityEngine.UI.ContentSizeFitter.FitMode,UnityEngine.UI.ContentSizeFitter.FitMode).vertical'></a>
-
-`vertical` [UnityEngine.UI.ContentSizeFitter.FitMode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.ContentSizeFitter.FitMode 'UnityEngine.UI.ContentSizeFitter.FitMode')
-
-#### Returns
-[UnityEngine.UI.ContentSizeFitter](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.ContentSizeFitter 'UnityEngine.UI.ContentSizeFitter')
-
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.GetDescendent_T_(string)'></a>
 
 ## ModHelperComponent.GetDescendent<T>(string) Method
@@ -1345,7 +995,7 @@ Gets a descendent component with the given name
 
 ```csharp
 public T GetDescendent<T>(string s="")
-    where T : UnityEngine.Component;
+    where T : Component;
 ```
 #### Type parameters
 
@@ -1379,7 +1029,7 @@ Removes a Component from a GameObject by destroying it
 
 ```csharp
 public void RemoveComponent<T>()
-    where T : UnityEngine.Component;
+    where T : Component;
 ```
 #### Type parameters
 
@@ -1432,52 +1082,52 @@ public void SetParent(BTD_Mod_Helper.Api.Components.ModHelperComponent newParent
 
 `newParent` [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.SetParent(UnityEngine.Transform)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.SetParent(Transform)'></a>
 
 ## ModHelperComponent.SetParent(Transform) Method
 
 Sets a particular transform to be the parent of this
 
 ```csharp
-public void SetParent(UnityEngine.Transform newParent);
+public void SetParent(Transform newParent);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.SetParent(UnityEngine.Transform).newParent'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.SetParent(Transform).newParent'></a>
 
 `newParent` [UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
 ### Operators
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitUnityEngine.GameObject(BTD_Mod_Helper.Api.Components.ModHelperComponent)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitGameObject(BTD_Mod_Helper.Api.Components.ModHelperComponent)'></a>
 
 ## ModHelperComponent.implicit operator GameObject(ModHelperComponent) Operator
 
 Implicitly get the gameObject
 
 ```csharp
-public static UnityEngine.GameObject implicit operator GameObject(BTD_Mod_Helper.Api.Components.ModHelperComponent component);
+public static GameObject implicit operator GameObject(BTD_Mod_Helper.Api.Components.ModHelperComponent component);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitUnityEngine.GameObject(BTD_Mod_Helper.Api.Components.ModHelperComponent).component'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitGameObject(BTD_Mod_Helper.Api.Components.ModHelperComponent).component'></a>
 
 `component` [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
 
 #### Returns
 [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitUnityEngine.RectTransform(BTD_Mod_Helper.Api.Components.ModHelperComponent)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitRectTransform(BTD_Mod_Helper.Api.Components.ModHelperComponent)'></a>
 
 ## ModHelperComponent.implicit operator RectTransform(ModHelperComponent) Operator
 
 Implicitly get the RectTransform
 
 ```csharp
-public static UnityEngine.RectTransform implicit operator RectTransform(BTD_Mod_Helper.Api.Components.ModHelperComponent component);
+public static RectTransform implicit operator RectTransform(BTD_Mod_Helper.Api.Components.ModHelperComponent component);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitUnityEngine.RectTransform(BTD_Mod_Helper.Api.Components.ModHelperComponent).component'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitRectTransform(BTD_Mod_Helper.Api.Components.ModHelperComponent).component'></a>
 
 `component` [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
 

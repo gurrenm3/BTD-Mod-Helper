@@ -43,8 +43,8 @@ Return a duplicate of this as type TCast
 
 ```csharp
 public static System.Collections.Generic.List<TCast> DuplicateAs<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -72,8 +72,8 @@ Return the first item of type TCast
 
 ```csharp
 public static TCast GetItemOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -103,8 +103,8 @@ Return all Items of type TCast
 
 ```csharp
 public static System.Collections.Generic.List<TCast> GetItemsOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -134,8 +134,8 @@ Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -231,8 +231,8 @@ Return this with the first Item of type TCast removed
 
 ```csharp
 public static System.Collections.Generic.List<TSource> RemoveItem<TSource,TCast>(this System.Collections.Generic.List<TSource> list, TCast itemToRemove)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -268,8 +268,8 @@ Return this with the first Item of type TCast removed
 
 ```csharp
 public static System.Collections.Generic.List<TSource> RemoveItemOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -299,8 +299,8 @@ Return this with all Items of type TCast removed
 
 ```csharp
 public static System.Collections.Generic.List<TSource> RemoveItemsOfType<TSource,TCast>(this System.Collections.Generic.List<TSource> list)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -361,7 +361,7 @@ True if successful, false if it fails
 Return as Il2CppSystem.List
 
 ```csharp
-public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this System.Collections.Generic.List<T> list);
+public static List<T> ToIl2CppList<T>(this System.Collections.Generic.List<T> list);
 ```
 #### Type parameters
 
@@ -375,7 +375,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Syst
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToIl2CppList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToIl2CppList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToIl2CppList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToIl2CppList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
+[Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 <a name='BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.List_T_)'></a>
 
@@ -384,8 +384,8 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Syst
 Return as Il2CppReferenceArray
 
 ```csharp
-public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T> list)
-    where T : Il2CppSystem.Object;
+public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T> list)
+    where T : Object;
 ```
 #### Type parameters
 
@@ -399,7 +399,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
 <a name='BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_)'></a>
 
@@ -408,7 +408,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 Return as LockList
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> list);
+public static LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> list);
 ```
 #### Type parameters
 
@@ -422,7 +422,7 @@ public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this System.C
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToLockList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToLockList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_)'></a>
 
@@ -431,7 +431,7 @@ public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this System.C
 Not tested
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SizedList<T> ToSizedList<T>(this System.Collections.Generic.List<T> list);
+public static SizedList<T> ToSizedList<T>(this System.Collections.Generic.List<T> list);
 ```
 #### Type parameters
 
@@ -445,4 +445,4 @@ public static Il2CppAssets.Scripts.Utils.SizedList<T> ToSizedList<T>(this System
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToSizedList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SizedList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToSizedList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList-1 'Il2CppAssets.Scripts.Utils.SizedList`1')
+[Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')

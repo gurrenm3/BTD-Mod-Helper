@@ -153,7 +153,7 @@ public Info(string name, float x, float y, float width, float height);
 
 `height` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2)'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2)'></a>
 
 ## Info(string, float, float, float, float, Vector2) Constructor
 
@@ -161,35 +161,35 @@ Creates a new info struct representing the name, position and size of a ModHelpe
 <param name="name">The name of the ModHelperComponent's Unity GameObject</param>
 
 ```csharp
-public Info(string name, float x, float y, float width, float height, UnityEngine.Vector2 anchor);
+public Info(string name, float x, float y, float width, float height, Vector2 anchor);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2).name'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2).x'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2).x'></a>
 
 `x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2).y'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2).y'></a>
 
 `y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2).width'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2).width'></a>
 
 `width` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2).height'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2).height'></a>
 
 `height` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2).anchor'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2).anchor'></a>
 
 `anchor` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2)'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2)'></a>
 
 ## Info(string, float, float, float, float, Vector2, Vector2) Constructor
 
@@ -197,39 +197,39 @@ Creates a new info struct representing the name, position and size of a ModHelpe
 <param name="name">The name of the ModHelperComponent's Unity GameObject</param>
 
 ```csharp
-public Info(string name, float x, float y, float width, float height, UnityEngine.Vector2 anchor, UnityEngine.Vector2 pivot);
+public Info(string name, float x, float y, float width, float height, Vector2 anchor, Vector2 pivot);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2).name'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2).x'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2).x'></a>
 
 `x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2).y'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2).y'></a>
 
 `y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2).width'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2).width'></a>
 
 `width` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2).height'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2).height'></a>
 
 `height` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2).anchor'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2).anchor'></a>
 
 `anchor` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,UnityEngine.Vector2,UnityEngine.Vector2).pivot'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,float,Vector2,Vector2).pivot'></a>
 
 `pivot` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,UnityEngine.Vector2)'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,Vector2)'></a>
 
 ## Info(string, float, float, float, Vector2) Constructor
 
@@ -237,31 +237,31 @@ Creates a new info struct representing the name, position and size of a ModHelpe
 <param name="name">The name of the ModHelperComponent's Unity GameObject</param>
 
 ```csharp
-public Info(string name, float x, float y, float size, UnityEngine.Vector2 anchor);
+public Info(string name, float x, float y, float size, Vector2 anchor);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,UnityEngine.Vector2).name'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,Vector2).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,UnityEngine.Vector2).x'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,Vector2).x'></a>
 
 `x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,UnityEngine.Vector2).y'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,Vector2).y'></a>
 
 `y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,UnityEngine.Vector2).size'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,Vector2).size'></a>
 
 `size` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,UnityEngine.Vector2).anchor'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,float,Vector2).anchor'></a>
 
 `anchor` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,UnityEngine.Vector2)'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,Vector2)'></a>
 
 ## Info(string, float, float, Vector2) Constructor
 
@@ -269,23 +269,23 @@ Creates a new info struct representing the name, position and size of a ModHelpe
 <param name="name">The name of the ModHelperComponent's Unity GameObject</param>
 
 ```csharp
-public Info(string name, float width, float height, UnityEngine.Vector2 anchor);
+public Info(string name, float width, float height, Vector2 anchor);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,UnityEngine.Vector2).name'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,Vector2).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,UnityEngine.Vector2).width'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,Vector2).width'></a>
 
 `width` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,UnityEngine.Vector2).height'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,Vector2).height'></a>
 
 `height` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,UnityEngine.Vector2).anchor'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Info(string,float,float,Vector2).anchor'></a>
 
 `anchor` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 ### Properties
@@ -297,7 +297,7 @@ public Info(string name, float width, float height, UnityEngine.Vector2 anchor);
 Sets both AnchorMin and AnchorMax to the given value
 
 ```csharp
-public UnityEngine.Vector2 Anchor { set; }
+public Vector2 Anchor { set; }
 ```
 
 #### Property Value
@@ -310,7 +310,7 @@ public UnityEngine.Vector2 Anchor { set; }
 The upper anchor. (0, 0) is the parent's lower left while (1,1) is the parent's upper right. Default (0.5, 0.5)
 
 ```csharp
-public UnityEngine.Vector2 AnchorMax { get; set; }
+public Vector2 AnchorMax { get; set; }
 ```
 
 #### Property Value
@@ -349,7 +349,7 @@ public float AnchorMaxY { get; set; }
 The lower anchor. (0, 0) is the parent's lower left while (1,1) is the parent's upper right. Default (0.5, 0.5)
 
 ```csharp
-public UnityEngine.Vector2 AnchorMin { get; set; }
+public Vector2 AnchorMin { get; set; }
 ```
 
 #### Property Value
@@ -453,7 +453,7 @@ public string Name { get; }
 The point between (0, 0) and (1, 1) that this object rotates around and expands out from, by default (0.5, 0.5)
 
 ```csharp
-public UnityEngine.Vector2 Pivot { get; set; }
+public Vector2 Pivot { get; set; }
 ```
 
 #### Property Value
@@ -492,7 +492,7 @@ public float PivotY { get; set; }
 The localPosition field, by default relative to the parent's center unless anchors are changed
 
 ```csharp
-public UnityEngine.Vector2 Position { get; set; }
+public Vector2 Position { get; set; }
 ```
 
 #### Property Value
@@ -505,7 +505,7 @@ public UnityEngine.Vector2 Position { get; set; }
 The local scale field to initialize width
 
 ```csharp
-public UnityEngine.Vector3 Scale { get; set; }
+public Vector3 Scale { get; set; }
 ```
 
 #### Property Value
@@ -531,7 +531,7 @@ public float Size { set; }
 The sizeDelta field. This technically is how much the size should change compared to (anchorMax - anchorMin)
 
 ```csharp
-public UnityEngine.Vector2 SizeDelta { get; set; }
+public Vector2 SizeDelta { get; set; }
 ```
 
 #### Property Value
@@ -577,18 +577,18 @@ public float Y { get; set; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Apply(UnityEngine.RectTransform)'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Apply(RectTransform)'></a>
 
 ## Info.Apply(RectTransform) Method
 
 Sets the properties of the RectTransform based on this Info object
 
 ```csharp
-public void Apply(UnityEngine.RectTransform rectTransform);
+public void Apply(RectTransform rectTransform);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.Info.Apply(UnityEngine.RectTransform).rectTransform'></a>
+<a name='BTD_Mod_Helper.Api.Components.Info.Apply(RectTransform).rectTransform'></a>
 
 `rectTransform` [UnityEngine.RectTransform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform 'UnityEngine.RectTransform')
 

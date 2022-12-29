@@ -57,8 +57,8 @@ Objects that aren't of the specified type will end up as null in the result
 
 ```csharp
 public static System.Collections.Generic.IEnumerable<TCast> CastAll<TSource,TCast>(this System.Collections.Generic.IEnumerable<TSource> list)
-    where TSource : Il2CppSystem.Object
-    where TCast : Il2CppSystem.Object;
+    where TSource : Object
+    where TCast : Object;
 ```
 #### Type parameters
 
@@ -144,7 +144,7 @@ public static System.Collections.Generic.IEnumerable<T> Repeat<T>(this System.Co
 Return as Il2CppSystem.List
 
 ```csharp
-public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);
+public static List<T> ToIl2CppList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);
 ```
 #### Type parameters
 
@@ -158,7 +158,7 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Syst
 `enumerable` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 #### Returns
-[Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
+[Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 <a name='BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.IEnumerable_T_)'></a>
 
@@ -167,8 +167,8 @@ public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this Syst
 Return as Il2CppReferenceArray
 
 ```csharp
-public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.IEnumerable<T> enumerable)
-    where T : Il2CppSystem.Object;
+public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.IEnumerable<T> enumerable)
+    where T : Object;
 ```
 #### Type parameters
 
@@ -182,7 +182,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 `enumerable` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppReferenceArray<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 #### Returns
-[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppReferenceArray_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToIl2CppReferenceArray<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1')
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
 <a name='BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList_T_(thisSystem.Collections.Generic.IEnumerable_T_)'></a>
 
@@ -191,7 +191,7 @@ public static Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<T> 
 Return as LockList
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);
+public static LockList<T> ToLockList<T>(this System.Collections.Generic.IEnumerable<T> enumerable);
 ```
 #### Type parameters
 
@@ -205,4 +205,4 @@ public static Il2CppAssets.Scripts.Utils.LockList<T> ToLockList<T>(this System.C
 `enumerable` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList-1 'Il2CppAssets.Scripts.Utils.LockList`1')
+[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')

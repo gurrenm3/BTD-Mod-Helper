@@ -158,7 +158,7 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
+public virtual SpriteReference IconReference { get; }
 ```
 
 #### Property Value
@@ -226,7 +226,7 @@ public virtual string Portrait { get; }
 If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Utils.SpriteReference PortraitReference { get; }
+public virtual SpriteReference PortraitReference { get; }
 ```
 
 #### Property Value
@@ -254,7 +254,7 @@ The family of Monkeys that your Tower should be put in.
 For now, just use one of the default constants provided of PRIMARY, MILITARY, MAGIC, or SUPPORT.
 
 ```csharp
-public abstract Il2CppAssets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
+public abstract TowerSet TowerSet { get; }
 ```
 
 #### Property Value
@@ -326,7 +326,7 @@ Looks for the highest tier [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 
 falling back to the tower's own base [PortraitReference](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference') by default.
 
 ```csharp
-public Il2CppAssets.Scripts.Utils.SpriteReference GetPortraitReferenceForTiers(int[] tiers);
+public SpriteReference GetPortraitReferenceForTiers(int[] tiers);
 ```
 #### Parameters
 
@@ -337,7 +337,7 @@ public Il2CppAssets.Scripts.Utils.SpriteReference GetPortraitReferenceForTiers(i
 #### Returns
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetTowerIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetTowerIndex(System.Collections.Generic.List_TowerDetailsModel_)'></a>
 
 ## ModTower.GetTowerIndex(List<TowerDetailsModel>) Method
 
@@ -346,11 +346,11 @@ When adding this tower to the shop, gets the index at which to add the tower rel
 By default, the tower will be put at the end of the TowerSet category that it's in.
 
 ```csharp
-public virtual int GetTowerIndex(System.Collections.Generic.List<Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel> towerSet);
+public virtual int GetTowerIndex(System.Collections.Generic.List<TowerDetailsModel> towerSet);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetTowerIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel_).towerSet'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetTowerIndex(System.Collections.Generic.List_TowerDetailsModel_).towerSet'></a>
 
 `towerSet` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel 'Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
@@ -364,7 +364,7 @@ public virtual int GetTowerIndex(System.Collections.Generic.List<Il2CppAssets.Sc
 Creates an UpgradePathModel for a particular upgrade and new tiers
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel GetUpgradePathModel(BTD_Mod_Helper.Api.Towers.ModUpgrade modUpgrade, int[] newTiers);
+public virtual UpgradePathModel GetUpgradePathModel(BTD_Mod_Helper.Api.Towers.ModUpgrade modUpgrade, int[] newTiers);
 ```
 #### Parameters
 
@@ -383,30 +383,30 @@ The new desired tiers of the tower
 #### Returns
 [Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel 'Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,bool)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(TowerToSimulation,int,bool)'></a>
 
 ## ModTower.IsUpgradePathClosed(TowerToSimulation, int, bool) Method
 
 Allows you to override whether an UpgradePath should be closed or not for a tower
 
 ```csharp
-public virtual System.Nullable<bool> IsUpgradePathClosed(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation tower, int path, bool defaultClosed);
+public virtual System.Nullable<bool> IsUpgradePathClosed(TowerToSimulation tower, int path, bool defaultClosed);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,bool).tower'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(TowerToSimulation,int,bool).tower'></a>
 
 `tower` [Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation 'Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation')
 
 The TowerToSimulation
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,bool).path'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(TowerToSimulation,int,bool).path'></a>
 
 `path` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 What path this is for
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,bool).defaultClosed'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IsUpgradePathClosed(TowerToSimulation,int,bool).defaultClosed'></a>
 
 `defaultClosed` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
@@ -437,30 +437,30 @@ public virtual bool IsValidCrosspath(int[] tiers);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,int)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(TowerToSimulation,int,int)'></a>
 
 ## ModTower.MaxUpgradePips(TowerToSimulation, int, int) Method
 
 Allows you to override how many possible Upgrade pips it should show as being possible for a tower to get
 
 ```csharp
-public virtual System.Nullable<int> MaxUpgradePips(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation tower, int path, int defaultMax);
+public virtual System.Nullable<int> MaxUpgradePips(TowerToSimulation tower, int path, int defaultMax);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,int).tower'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(TowerToSimulation,int,int).tower'></a>
 
 `tower` [Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation 'Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation')
 
 The TowerToSimulation
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,int).path'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(TowerToSimulation,int,int).path'></a>
 
 `path` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 What path this is for
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(Il2CppAssets.Scripts.Unity.Bridge.TowerToSimulation,int,int).defaultMax'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.MaxUpgradePips(TowerToSimulation,int,int).defaultMax'></a>
 
 `defaultMax` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
@@ -470,7 +470,7 @@ The default maximum
 [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 The new maximum amount of upgrade pips, or null for no change
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(Il2CppAssets.Scripts.Models.Towers.TowerModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(TowerModel)'></a>
 
 ## ModTower.ModifyBaseTowerModel(TowerModel) Method
 
@@ -479,11 +479,11 @@ Implemented by a ModTower to modify the base tower model before applying any/all
 Things like the TowerModel's name, cost, tier, and upgrades are already taken care of before this point
 
 ```csharp
-public abstract void ModifyBaseTowerModel(Il2CppAssets.Scripts.Models.Towers.TowerModel towerModel);
+public abstract void ModifyBaseTowerModel(TowerModel towerModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(Il2CppAssets.Scripts.Models.Towers.TowerModel).towerModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyBaseTowerModel(TowerModel).towerModel'></a>
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 

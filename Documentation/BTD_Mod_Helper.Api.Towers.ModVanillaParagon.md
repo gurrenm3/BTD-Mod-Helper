@@ -84,7 +84,7 @@ public sealed override string Icon { get; }
 Controlled by the ModParagonUpgrade
 
 ```csharp
-public sealed override Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
+public sealed override SpriteReference IconReference { get; }
 ```
 
 #### Property Value
@@ -162,7 +162,7 @@ public sealed override string Portrait { get; }
 Controlled by the ModParagonUpgrade
 
 ```csharp
-public sealed override Il2CppAssets.Scripts.Utils.SpriteReference PortraitReference { get; }
+public sealed override SpriteReference PortraitReference { get; }
 ```
 
 #### Property Value
@@ -188,43 +188,43 @@ public sealed override int TopPathUpgrades { get; }
 Same towerSet as base tower
 
 ```csharp
-public sealed override Il2CppAssets.Scripts.Models.TowerSets.TowerSet TowerSet { get; }
+public sealed override TowerSet TowerSet { get; }
 ```
 
 #### Property Value
 [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.GetTowerIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel_)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.GetTowerIndex(System.Collections.Generic.List_TowerDetailsModel_)'></a>
 
 ## ModVanillaParagon.GetTowerIndex(List<TowerDetailsModel>) Method
 
 Tower index doesn't apply
 
 ```csharp
-public sealed override int GetTowerIndex(System.Collections.Generic.List<Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel> towerSet);
+public sealed override int GetTowerIndex(System.Collections.Generic.List<TowerDetailsModel> towerSet);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.GetTowerIndex(System.Collections.Generic.List_Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel_).towerSet'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.GetTowerIndex(System.Collections.Generic.List_TowerDetailsModel_).towerSet'></a>
 
 `towerSet` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel 'Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.ModifyBaseTowerModel(Il2CppAssets.Scripts.Models.Towers.TowerModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.ModifyBaseTowerModel(TowerModel)'></a>
 
 ## ModVanillaParagon.ModifyBaseTowerModel(TowerModel) Method
 
 Tower gets modified in the Paragon upgrade
 
 ```csharp
-public sealed override void ModifyBaseTowerModel(Il2CppAssets.Scripts.Models.Towers.TowerModel towerModel);
+public sealed override void ModifyBaseTowerModel(TowerModel towerModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.ModifyBaseTowerModel(Il2CppAssets.Scripts.Models.Towers.TowerModel).towerModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.ModifyBaseTowerModel(TowerModel).towerModel'></a>
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 

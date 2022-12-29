@@ -19,8 +19,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Old way to send a message
 
 ```csharp
-public static Il2CppNinjaKiwi.NKMulti.Message CreateMessage<T>(T objectToSend, string code="")
-    where T : Il2CppSystem.Object;
+public static Message CreateMessage<T>(T objectToSend, string code="")
+    where T : Object;
 ```
 #### Type parameters
 
@@ -48,7 +48,7 @@ Creates a message to be sent over the network.
 The message will be serialized as JSON.
 
 ```csharp
-public static Il2CppNinjaKiwi.NKMulti.Message CreateMessageEx<T>(T objectToSend, string code="");
+public static Message CreateMessageEx<T>(T objectToSend, string code="");
 ```
 #### Type parameters
 
@@ -72,7 +72,7 @@ Unique code for your specific message.
 #### Returns
 [Il2CppNinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.NKMulti.Message 'Il2CppNinjaKiwi.NKMulti.Message')
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_)'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppStructArray_byte_)'></a>
 
 ## MessageUtils.ReadMessage<T>(Il2CppStructArray<byte>) Method
 
@@ -80,25 +80,25 @@ Reads a message sent from the network.
 Assumes message is sent as JSON. (via [CreateMessageEx&lt;T&gt;(T, string)](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.CreateMessageEx_T_(T,string) 'BTD_Mod_Helper.Api.Coop.MessageUtils.CreateMessageEx<T>(T, string)'))
 
 ```csharp
-public static T ReadMessage<T>(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray<byte> serializedMessage);
+public static T ReadMessage<T>(Il2CppStructArray<byte> serializedMessage);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).T'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppStructArray_byte_).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).serializedMessage'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppStructArray_byte_).serializedMessage'></a>
 
-`serializedMessage` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1')[System.Byte](https://docs.microsoft.com/en-us/dotnet/api/System.Byte 'System.Byte')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray-1 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1')
+`serializedMessage` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray')
 
 Raw bytes received from the network.
 
 #### Returns
-[T](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray_byte_).T 'BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage<T>(Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray<byte>).T')
+[T](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppStructArray_byte_).T 'BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage<T>(Il2CppStructArray<byte>).T')
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message)'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Message)'></a>
 
 ## MessageUtils.ReadMessage<T>(Message) Method
 
@@ -106,20 +106,20 @@ Reads a message sent from the network.
 Assumes message is sent as JSON. (via [CreateMessageEx&lt;T&gt;(T, string)](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.CreateMessageEx_T_(T,string) 'BTD_Mod_Helper.Api.Coop.MessageUtils.CreateMessageEx<T>(T, string)'))
 
 ```csharp
-public static T ReadMessage<T>(Il2CppNinjaKiwi.NKMulti.Message message);
+public static T ReadMessage<T>(Message message);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message).T'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Message).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message).message'></a>
+<a name='BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Message).message'></a>
 
 `message` [Il2CppNinjaKiwi.NKMulti.Message](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.NKMulti.Message 'Il2CppNinjaKiwi.NKMulti.Message')
 
 Message received from the network.
 
 #### Returns
-[T](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Il2CppNinjaKiwi.NKMulti.Message).T 'BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage<T>(Il2CppNinjaKiwi.NKMulti.Message).T')
+[T](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage_T_(Message).T 'BTD_Mod_Helper.Api.Coop.MessageUtils.ReadMessage<T>(Message).T')

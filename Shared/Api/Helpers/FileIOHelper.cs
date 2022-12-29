@@ -1,6 +1,6 @@
+using System;
 using System.IO;
-using MelonLoader.TinyJSON;
-using Newtonsoft.Json;
+using Il2CppNewtonsoft.Json;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -28,13 +28,10 @@ public static class FileIOHelper
     /// <param name="data"></param>
     public static void SaveObject(string fileName, Il2CppSystem.Object data)
     {
-        // TODO this needs il2cpp json
-        /*var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
+        var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
         {
             Formatting = Formatting.Indented
-        });*/
-        
-        var text = JSON.Dump(data, EncodeOptions.PrettyPrint);
+        });
 
         SaveFile(fileName, text);
     }
@@ -45,10 +42,11 @@ public static class FileIOHelper
     /// <param name="fileName">File name within the sandbox directory</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
+    [Obsolete("Broken as of MelonLoader 0.6.0")]
     public static T LoadObject<T>(string fileName) where T : Il2CppSystem.Object
     {
         var text = LoadFile(fileName);
-        return JsonConvert.DeserializeObject<T>(text);
+        return null;
     }
 
     /// <summary>

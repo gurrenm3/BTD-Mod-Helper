@@ -113,7 +113,7 @@ public static string BloonID<T>()
 Returns a new AudioSourceReference that uses the given guid
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.AudioSourceReference CreateAudioSourceReference(string guid);
+public static AudioSourceReference CreateAudioSourceReference(string guid);
 ```
 #### Parameters
 
@@ -133,7 +133,7 @@ The guid that you'd like to assign to the AudioSourceReference
 Returns a new PrefabReference that uses the given guid
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.PrefabReference CreatePrefabReference(string guid);
+public static PrefabReference CreatePrefabReference(string guid);
 ```
 #### Parameters
 
@@ -153,7 +153,7 @@ The guid that you'd like to assign to the PrefabReference
 Creates a Prefab Reference for a ModDisplay
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.PrefabReference CreatePrefabReference<T>()
+public static PrefabReference CreatePrefabReference<T>()
     where T : BTD_Mod_Helper.Api.Display.ModDisplay;
 ```
 #### Type parameters
@@ -172,7 +172,7 @@ public static Il2CppAssets.Scripts.Utils.PrefabReference CreatePrefabReference<T
 Returns a new SpriteReference that uses the given guid
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SpriteReference CreateSpriteReference(string guid);
+public static SpriteReference CreateSpriteReference(string guid);
 ```
 #### Parameters
 
@@ -235,7 +235,7 @@ public static string GameModeId<T>()
 Gets a bundle from a mod with the specified name (no file extension)
 
 ```csharp
-public static UnityEngine.AssetBundle GetBundle(BTD_Mod_Helper.BloonsMod mod, string name);
+public static AssetBundle GetBundle(BTD_Mod_Helper.BloonsMod mod, string name);
 ```
 #### Parameters
 
@@ -257,7 +257,7 @@ public static UnityEngine.AssetBundle GetBundle(BTD_Mod_Helper.BloonsMod mod, st
 Gets a bundle from your mod with the specified name (no file extension)
 
 ```csharp
-protected UnityEngine.AssetBundle GetBundle(string name);
+protected AssetBundle GetBundle(string name);
 ```
 #### Parameters
 
@@ -275,7 +275,7 @@ protected UnityEngine.AssetBundle GetBundle(string name);
 Gets a bundle from the mod T with the specified name (no file extension)
 
 ```csharp
-public static UnityEngine.AssetBundle GetBundle<T>(string name)
+public static AssetBundle GetBundle<T>(string name)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -499,7 +499,7 @@ public static BTD_Mod_Helper.Api.Scenarios.ModMap GetModMap(string mapName);
 Constructs a Sprite for a given texture name within a given mod
 
 ```csharp
-public static UnityEngine.Sprite GetSprite(BTD_Mod_Helper.BloonsMod mod, string name, float pixelsPerUnit=10f);
+public static Sprite GetSprite(BTD_Mod_Helper.BloonsMod mod, string name, float pixelsPerUnit=10f);
 ```
 #### Parameters
 
@@ -530,7 +530,7 @@ A Sprite
 Constructs a Sprite for a given texture name within this mod
 
 ```csharp
-protected UnityEngine.Sprite GetSprite(string name, float pixelsPerUnit=10f);
+protected Sprite GetSprite(string name, float pixelsPerUnit=10f);
 ```
 #### Parameters
 
@@ -557,7 +557,7 @@ A Sprite
 Constructs a Sprite for a given texture name within a given mod
 
 ```csharp
-public static UnityEngine.Sprite GetSprite<T>(string name, float pixelsPerUnit=10f)
+public static Sprite GetSprite<T>(string name, float pixelsPerUnit=10f)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -590,7 +590,7 @@ A Sprite
 Gets a sprite reference by name for a specific mod
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference(BTD_Mod_Helper.BloonsMod mod, string name);
+public static SpriteReference GetSpriteReference(BTD_Mod_Helper.BloonsMod mod, string name);
 ```
 #### Parameters
 
@@ -617,7 +617,7 @@ A new SpriteReference
 Gets a sprite reference by name for this mod
 
 ```csharp
-protected Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference(string name);
+protected SpriteReference GetSpriteReference(string name);
 ```
 #### Parameters
 
@@ -638,7 +638,7 @@ A new SpriteReference
 Gets a sprite reference by name for a specific mod
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference<T>(string name)
+public static SpriteReference GetSpriteReference<T>(string name)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -668,7 +668,7 @@ Gets a sprite reference by name for a specific mod, or if the mod does not inclu
 treats it as a vanilla sprite reference
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod mod, string name);
+public static SpriteReference GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod mod, string name);
 ```
 #### Parameters
 
@@ -696,7 +696,7 @@ Gets a sprite reference by name for a specific mod, or if the mod does not inclu
 treats it as a vanilla sprite reference
 
 ```csharp
-protected Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault(string name);
+protected SpriteReference GetSpriteReferenceOrDefault(string name);
 ```
 #### Parameters
 
@@ -718,7 +718,7 @@ Gets a sprite reference by name for a specific mod, or if the mod does not inclu
 treats it as a vanilla sprite reference
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrDefault<T>(string name)
+public static SpriteReference GetSpriteReferenceOrDefault<T>(string name)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -748,7 +748,7 @@ Gets a sprite reference by name for a specific mod, returning null if the textur
 loaded instead of an invalid SpriteReference
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod mod, string name);
+public static SpriteReference GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod mod, string name);
 ```
 #### Parameters
 
@@ -776,7 +776,7 @@ Gets a sprite reference by name for this mod, returning null if the texture hasn
 loaded instead of an invalid SpriteReference
 
 ```csharp
-protected Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull(string name);
+protected SpriteReference GetSpriteReferenceOrNull(string name);
 ```
 #### Parameters
 
@@ -798,7 +798,7 @@ Gets a sprite reference by name for a specific mod, returning null if the textur
 loaded instead of an invalid SpriteReference
 
 ```csharp
-public static Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReferenceOrNull<T>(string name)
+public static SpriteReference GetSpriteReferenceOrNull<T>(string name)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -827,7 +827,7 @@ A new SpriteReference
 Constructs a Texture2D for a given texture name within a mod
 
 ```csharp
-public static UnityEngine.Texture2D GetTexture(BTD_Mod_Helper.BloonsMod bloonsMod, string fileName);
+public static Texture2D GetTexture(BTD_Mod_Helper.BloonsMod bloonsMod, string fileName);
 ```
 #### Parameters
 
@@ -854,7 +854,7 @@ A Texture2D
 Constructs a Texture2D for a given texture name within this mod
 
 ```csharp
-protected UnityEngine.Texture2D GetTexture(string fileName);
+protected Texture2D GetTexture(string fileName);
 ```
 #### Parameters
 
@@ -875,7 +875,7 @@ A Texture2D
 Constructs a Texture2D for a given texture name within a mod
 
 ```csharp
-public static UnityEngine.Texture2D GetTexture<T>(string fileName)
+public static Texture2D GetTexture<T>(string fileName)
     where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
@@ -1058,7 +1058,7 @@ The texture's GUID
 Gets the TowerModel for a ModTower at a specific tier level
 
 ```csharp
-public static Il2CppAssets.Scripts.Models.Towers.TowerModel GetTowerModel<T>(int top=0, int mid=0, int bot=0)
+public static TowerModel GetTowerModel<T>(int top=0, int mid=0, int bot=0)
     where T : BTD_Mod_Helper.Api.Towers.ModTower;
 ```
 #### Type parameters

@@ -12,18 +12,18 @@ public static class AbilityModelExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; AbilityModelExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.AbilityModelExt.GetAbilitySims(thisIl2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.AbilityModelExt.GetAbilitySims(thisAbilityModel)'></a>
 
 ## AbilityModelExt.GetAbilitySims(this AbilityModel) Method
 
 Get the all AbilityToSimulation with this AbilityModel
 
 ```csharp
-public static System.Collections.Generic.List<Il2CppAssets.Scripts.Unity.Bridge.AbilityToSimulation> GetAbilitySims(this Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel abiltyModel);
+public static System.Collections.Generic.List<AbilityToSimulation> GetAbilitySims(this AbilityModel abiltyModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.AbilityModelExt.GetAbilitySims(thisIl2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel).abiltyModel'></a>
+<a name='BTD_Mod_Helper.Extensions.AbilityModelExt.GetAbilitySims(thisAbilityModel).abiltyModel'></a>
 
 `abiltyModel` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
 

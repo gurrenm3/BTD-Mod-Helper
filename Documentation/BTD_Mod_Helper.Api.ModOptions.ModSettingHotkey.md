@@ -69,18 +69,18 @@ public override void SetValue(object val);
 The new value
 ### Operators
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingHotkey(UnityEngine.KeyCode)'></a>
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingHotkey(KeyCode)'></a>
 
 ## ModSettingHotkey.implicit operator ModSettingHotkey(KeyCode) Operator
 
 Creates a new ModSettingHotkey from a KeyCode
 
 ```csharp
-public static BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey implicit operator ModSettingHotkey(UnityEngine.KeyCode key);
+public static BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey implicit operator ModSettingHotkey(KeyCode key);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingHotkey(UnityEngine.KeyCode).key'></a>
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingHotkey(KeyCode).key'></a>
 
 `key` [UnityEngine.KeyCode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.KeyCode 'UnityEngine.KeyCode')
 

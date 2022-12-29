@@ -14,26 +14,26 @@ public static class ModTowerHelper
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModTowerHelper
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,Il2CppAssets.Scripts.Models.TowerSets.TowerSet)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,TowerSet)'></a>
 
 ## ModTowerHelper.CreateTowerModel(string, string, TowerSet) Method
 
 Creates and returns an empty TowerModel
 
 ```csharp
-public static Il2CppAssets.Scripts.Models.Towers.TowerModel CreateTowerModel(string name, string baseId=null, Il2CppAssets.Scripts.Models.TowerSets.TowerSet towerSet=Il2CppAssets.Scripts.Models.TowerSets.TowerSet.None);
+public static TowerModel CreateTowerModel(string name, string baseId=null, TowerSet towerSet=0);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,Il2CppAssets.Scripts.Models.TowerSets.TowerSet).name'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,TowerSet).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,Il2CppAssets.Scripts.Models.TowerSets.TowerSet).baseId'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,TowerSet).baseId'></a>
 
 `baseId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,Il2CppAssets.Scripts.Models.TowerSets.TowerSet).towerSet'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerHelper.CreateTowerModel(string,string,TowerSet).towerSet'></a>
 
 `towerSet` [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 

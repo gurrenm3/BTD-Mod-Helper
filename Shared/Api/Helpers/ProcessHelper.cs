@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using Il2CppAssets.Scripts.Unity.Menu;
+using MelonLoader.Utils;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -21,7 +22,7 @@ public static class ProcessHelper
         {
             Arguments = (linux ? "-c" : "/C") +
                         $" ping 127.0.0.1 -n {WaitSeconds} && " +
-                        $"\"{MelonUtils.GetApplicationPath()}\" " +
+                        $"\"{MelonEnvironment.GameExecutablePath}\" " +
                         Environment.GetCommandLineArgs().Join(delimiter: " "),
             WindowStyle = ProcessWindowStyle.Hidden,
             CreateNoWindow = true,

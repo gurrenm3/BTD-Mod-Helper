@@ -12,57 +12,57 @@ public static class DeconstructExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DeconstructExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Rect,float,float,float,float)'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisRect,float,float,float,float)'></a>
 
 ## DeconstructExt.Deconstruct(this Rect, float, float, float, float) Method
 
 Deconstruct a rectangle
 
 ```csharp
-public static void Deconstruct(this UnityEngine.Rect rect, out float x, out float y, out float width, out float height);
+public static void Deconstruct(this Rect rect, out float x, out float y, out float width, out float height);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Rect,float,float,float,float).rect'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisRect,float,float,float,float).rect'></a>
 
 `rect` [UnityEngine.Rect](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Rect 'UnityEngine.Rect')
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Rect,float,float,float,float).x'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisRect,float,float,float,float).x'></a>
 
 `x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Rect,float,float,float,float).y'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisRect,float,float,float,float).y'></a>
 
 `y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Rect,float,float,float,float).width'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisRect,float,float,float,float).width'></a>
 
 `width` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Rect,float,float,float,float).height'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisRect,float,float,float,float).height'></a>
 
 `height` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Vector2,float,float)'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisVector2,float,float)'></a>
 
 ## DeconstructExt.Deconstruct(this Vector2, float, float) Method
 
 For some reason the normal deconstruct isn't accessible in all places?
 
 ```csharp
-public static void Deconstruct(this UnityEngine.Vector2 vector2, out float x, out float y);
+public static void Deconstruct(this Vector2 vector2, out float x, out float y);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Vector2,float,float).vector2'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisVector2,float,float).vector2'></a>
 
 `vector2` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Vector2,float,float).x'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisVector2,float,float).x'></a>
 
 `x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisUnityEngine.Vector2,float,float).y'></a>
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct(thisVector2,float,float).y'></a>
 
 `y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 

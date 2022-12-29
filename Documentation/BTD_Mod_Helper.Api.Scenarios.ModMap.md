@@ -30,7 +30,7 @@ protected virtual bool AutoUnlockMap { get; }
 ## ModMap.CoopDivision Property
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Data.MapSets.CoopDivision CoopDivision { get; }
+public virtual CoopDivision CoopDivision { get; }
 ```
 
 #### Property Value
@@ -43,7 +43,7 @@ public virtual Il2CppAssets.Scripts.Data.MapSets.CoopDivision CoopDivision { get
 The difficulty of this map.
 
 ```csharp
-public abstract Il2CppAssets.Scripts.Data.MapSets.MapDifficulty Difficulty { get; }
+public abstract MapDifficulty Difficulty { get; }
 ```
 
 #### Property Value
@@ -103,40 +103,40 @@ public virtual float MapWideBloonSpeed { get; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(AreaType,System.Collections.Generic.List_Vector2_)'></a>
 
 ## ModMap.AddAreaModel(AreaType, List<Vector2>) Method
 
 Add an area model to this path.
 
 ```csharp
-protected Il2CppAssets.Scripts.Models.Map.AreaModel AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType type, System.Collections.Generic.List<Il2CppAssets.Scripts.Simulation.SMath.Vector2> points);
+protected AreaModel AddAreaModel(AreaType type, System.Collections.Generic.List<Vector2> points);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_).type'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(AreaType,System.Collections.Generic.List_Vector2_).type'></a>
 
 `type` [Il2CppAssets.Scripts.Models.Map.AreaType](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.AreaType 'Il2CppAssets.Scripts.Models.Map.AreaType')
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(Il2CppAssets.Scripts.Models.Map.AreaType,System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_).points'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddAreaModel(AreaType,System.Collections.Generic.List_Vector2_).points'></a>
 
 `points` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Simulation.SMath.Vector2](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector2 'Il2CppAssets.Scripts.Simulation.SMath.Vector2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
 [Il2CppAssets.Scripts.Models.Map.AreaModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.AreaModel 'Il2CppAssets.Scripts.Models.Map.AreaModel')
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_)'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Vector2_)'></a>
 
 ## ModMap.AddPath(List<Vector2>) Method
 
 Use this to add a path to your map.
 
 ```csharp
-protected Il2CppAssets.Scripts.Models.Map.PathModel AddPath(System.Collections.Generic.List<Il2CppAssets.Scripts.Simulation.SMath.Vector2> points);
+protected PathModel AddPath(System.Collections.Generic.List<Vector2> points);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Il2CppAssets.Scripts.Simulation.SMath.Vector2_).points'></a>
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.AddPath(System.Collections.Generic.List_Vector2_).points'></a>
 
 `points` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Simulation.SMath.Vector2](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector2 'Il2CppAssets.Scripts.Simulation.SMath.Vector2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
@@ -150,7 +150,7 @@ protected Il2CppAssets.Scripts.Models.Map.PathModel AddPath(System.Collections.G
 Get's the map details for this map. Override this method if you want extra customization.
 
 ```csharp
-protected virtual Il2CppAssets.Scripts.Data.MapSets.MapDetails GetMapDetails();
+protected virtual MapDetails GetMapDetails();
 ```
 
 #### Returns
@@ -163,7 +163,7 @@ protected virtual Il2CppAssets.Scripts.Data.MapSets.MapDetails GetMapDetails();
 Returns the sprite reference of this map.
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference();
+public virtual SpriteReference GetSpriteReference();
 ```
 
 #### Returns
@@ -176,7 +176,7 @@ public virtual Il2CppAssets.Scripts.Utils.SpriteReference GetSpriteReference();
 Returns the texture of this map. The first time it's loaded it will automatically resize to fit the game.
 
 ```csharp
-public virtual UnityEngine.Texture2D GetTexture();
+public virtual Texture2D GetTexture();
 ```
 
 #### Returns

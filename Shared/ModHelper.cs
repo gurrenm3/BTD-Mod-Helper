@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Il2CppAssets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
+using MelonLoader.Utils;
 using Exception = System.Exception;
 
 namespace BTD_Mod_Helper;
@@ -32,12 +33,12 @@ public static class ModHelper
     /// Directory where the Mod Helper stores most of its extra info
     /// </summary>
     public static string ModHelperDirectory =>
-        Path.Combine(MelonHandler.ModsDirectory, Assembly.GetExecutingAssembly().GetName().Name!);
+        Path.Combine(MelonEnvironment.ModsDirectory, Assembly.GetExecutingAssembly().GetName().Name!);
 
     /// <summary>
     /// Directory for where disabled mods are stored
     /// </summary>
-    public static string DisabledModsDirectory => Path.Combine(MelonHandler.ModsDirectory, "Disabled");
+    public static string DisabledModsDirectory => Path.Combine(MelonEnvironment.ModsDirectory, "Disabled");
 
     internal static string ZipTempDirectory => Path.Combine(ModHelperDirectory, "Zip Temp");
     internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");

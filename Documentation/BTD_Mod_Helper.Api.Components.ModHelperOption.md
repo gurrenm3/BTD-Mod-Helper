@@ -9,7 +9,7 @@ ModHelperComponent that's the base panel for the visual representation of a ModS
 public class ModHelperOption : BTD_Mod_Helper.Api.Components.ModHelperComponent
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase') &#129106; [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object') &#129106; [UnityEngine.Object](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Object 'UnityEngine.Object') &#129106; [UnityEngine.Component](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Component 'UnityEngine.Component') &#129106; [UnityEngine.Behaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Behaviour 'UnityEngine.Behaviour') &#129106; [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') &#129106; ModHelperOption
+Inheritance [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') &#129106; ModHelperOption
 
 Derived  
 &#8627; [ModHelperCategory](BTD_Mod_Helper.Api.Components.ModHelperCategory.md 'BTD_Mod_Helper.Api.Components.ModHelperCategory')
@@ -179,17 +179,17 @@ The icon of the mod setting, if any
 [T](BTD_Mod_Helper.Api.Components.ModHelperOption.md#BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string).T 'BTD_Mod_Helper.Api.Components.ModHelperOption.Create<T>(string, string, string).T')  
 The created ModHelperOption
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.SetResetAction(UnityEngine.Events.UnityAction)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.SetResetAction(UnityAction)'></a>
 
 ## ModHelperOption.SetResetAction(UnityAction) Method
 
 Adds an action to the reset button
 
 ```csharp
-public void SetResetAction(UnityEngine.Events.UnityAction action);
+public void SetResetAction(UnityAction action);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.SetResetAction(UnityEngine.Events.UnityAction).action'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.SetResetAction(UnityAction).action'></a>
 
 `action` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')

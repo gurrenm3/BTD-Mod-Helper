@@ -86,7 +86,7 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
+public virtual SpriteReference IconReference { get; }
 ```
 
 #### Property Value
@@ -119,35 +119,35 @@ public virtual bool OnlyShowBuffIfMutated { get; }
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(SupportModel)'></a>
 
 ## ModBuffIcon.ApplyTo(SupportModel) Method
 
 Makes a support model use this as its buff indicator
 
 ```csharp
-public void ApplyTo(Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportModel model);
+public void ApplyTo(SupportModel model);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportModel).model'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(SupportModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportModel')
 
 The support model to apply to
 
-<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(TowerBehaviorBuffModel)'></a>
 
 ## ModBuffIcon.ApplyTo(TowerBehaviorBuffModel) Method
 
 Makes a support model use this as its buff indicator
 
 ```csharp
-public void ApplyTo(Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel model);
+public void ApplyTo(TowerBehaviorBuffModel model);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel).model'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.ApplyTo(TowerBehaviorBuffModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel')
 

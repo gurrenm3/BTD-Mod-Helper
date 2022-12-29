@@ -276,7 +276,7 @@ Runs after the Melon has registered. This callback waits until MelonLoader has f
 public sealed override void OnInitializeMelon();
 ```
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyDown(UnityEngine.KeyCode)'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnKeyDown(KeyCode)'></a>
 
 ## BloonsMod.OnKeyDown(KeyCode) Method
 
@@ -285,15 +285,15 @@ Called on the frame that a key starts being held
 Equivalent to a HarmonyPostFix on Input.GetKeyDown
 
 ```csharp
-public virtual void OnKeyDown(UnityEngine.KeyCode keyCode);
+public virtual void OnKeyDown(KeyCode keyCode);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyDown(UnityEngine.KeyCode).keyCode'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnKeyDown(KeyCode).keyCode'></a>
 
 `keyCode` [UnityEngine.KeyCode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.KeyCode 'UnityEngine.KeyCode')
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyHeld(UnityEngine.KeyCode)'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnKeyHeld(KeyCode)'></a>
 
 ## BloonsMod.OnKeyHeld(KeyCode) Method
 
@@ -302,15 +302,15 @@ Called every frame that a key is being held
 Equivalent to a HarmonyPostFix on Input.GetKey
 
 ```csharp
-public virtual void OnKeyHeld(UnityEngine.KeyCode keyCode);
+public virtual void OnKeyHeld(KeyCode keyCode);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyHeld(UnityEngine.KeyCode).keyCode'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnKeyHeld(KeyCode).keyCode'></a>
 
 `keyCode` [UnityEngine.KeyCode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.KeyCode 'UnityEngine.KeyCode')
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyUp(UnityEngine.KeyCode)'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnKeyUp(KeyCode)'></a>
 
 ## BloonsMod.OnKeyUp(KeyCode) Method
 
@@ -319,11 +319,11 @@ Called on the frame that a key stops being held
 Equivalent to a HarmonyPostFix on Input.GetKeyUp
 
 ```csharp
-public virtual void OnKeyUp(UnityEngine.KeyCode keyCode);
+public virtual void OnKeyUp(KeyCode keyCode);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyUp(UnityEngine.KeyCode).keyCode'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnKeyUp(KeyCode).keyCode'></a>
 
 `keyCode` [UnityEngine.KeyCode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.KeyCode 'UnityEngine.KeyCode')
 

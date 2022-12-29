@@ -9,6 +9,7 @@ using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
+using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
@@ -258,7 +259,7 @@ internal static class ModHelperGithub
             name = $"{mod.Mod.GetAssembly().GetName().Name}.dll";
         }
 
-        var downloadFilePath = Path.Combine(MelonHandler.ModsDirectory, name);
+        var downloadFilePath = Path.Combine(MelonEnvironment.ModsDirectory, name);
         var oldModsFilePath = Path.Combine(ModHelper.OldModsDirectory, name);
 
         try
@@ -350,7 +351,7 @@ internal static class ModHelperGithub
         {
             try
             {
-                rateLimit = await Client.Miscellaneous.GetRateLimits();
+                rateLimit = await Client.RateLimit.GetRateLimits();
             }
             catch (Exception e)
             {

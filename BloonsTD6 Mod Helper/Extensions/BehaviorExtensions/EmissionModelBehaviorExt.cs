@@ -10,13 +10,13 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class EmissionModelBehaviorExt
 {
-    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Assets.Scripts.Models.Model)"/>
+    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)"/>
     public static bool HasBehavior<T>(this EmissionModel model) where T : Model
     {
         return ModelBehaviorExt.HasBehavior<T>(model);
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Assets.Scripts.Models.Model)"/>
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)"/>
     public static T GetBehavior<T>(this EmissionModel model) where T : Model
     {
         return ModelBehaviorExt.GetBehavior<T>(model);
@@ -34,7 +34,7 @@ public static class EmissionModelBehaviorExt
         ModelBehaviorExt.AddBehavior(model, behavior);
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Assets.Scripts.Models.Model)"/>
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)"/>
     public static void RemoveBehavior<T>(this EmissionModel model) where T : Model
     {
         ModelBehaviorExt.RemoveBehavior<T>(model);

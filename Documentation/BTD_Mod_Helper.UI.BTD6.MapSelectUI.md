@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Gets the Advanced Button if on the Map Select Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Toggle GetAdvancedButton();
+public static Toggle GetAdvancedButton();
 ```
 
 #### Returns
@@ -32,7 +32,7 @@ public static UnityEngine.UI.Toggle GetAdvancedButton();
 Gets the Beginner Button if on the Map Select Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Toggle GetBeginnerButton();
+public static Toggle GetBeginnerButton();
 ```
 
 #### Returns
@@ -45,7 +45,7 @@ public static UnityEngine.UI.Toggle GetBeginnerButton();
 Gets the Canvas for the MapSelectUI, or null
 
 ```csharp
-public static UnityEngine.Canvas GetCanvas();
+public static Canvas GetCanvas();
 ```
 
 #### Returns
@@ -58,7 +58,7 @@ public static UnityEngine.Canvas GetCanvas();
 Gets the Expert Button if on the Map Select Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Toggle GetExpertButton();
+public static Toggle GetExpertButton();
 ```
 
 #### Returns
@@ -71,7 +71,7 @@ public static UnityEngine.UI.Toggle GetExpertButton();
 Gets the Extreme Button if on the Map Select Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Toggle GetExtremeButton();
+public static Toggle GetExtremeButton();
 ```
 
 #### Returns
@@ -84,7 +84,7 @@ public static UnityEngine.UI.Toggle GetExtremeButton();
 Gets the Intermediate Button if on the Map Select Menu, or null
 
 ```csharp
-public static UnityEngine.UI.Toggle GetIntermediateButton();
+public static Toggle GetIntermediateButton();
 ```
 
 #### Returns
@@ -97,7 +97,7 @@ public static UnityEngine.UI.Toggle GetIntermediateButton();
 Gets the Scene if on the Map Select menu
 
 ```csharp
-public static System.Nullable<UnityEngine.SceneManagement.Scene> GetScene();
+public static System.Nullable<Scene> GetScene();
 ```
 
 #### Returns

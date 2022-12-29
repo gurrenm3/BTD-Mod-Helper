@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using MelonLoader.Utils;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api;
@@ -63,7 +64,7 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToEnabledModsFolder() => MoveToFolder(MelonHandler.ModsDirectory);
+    public bool MoveToEnabledModsFolder() => MoveToFolder(MelonEnvironment.ModsDirectory);
 
     public bool Delete()
     {

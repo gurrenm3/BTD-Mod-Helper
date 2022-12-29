@@ -52,7 +52,7 @@ public virtual string BaseDisplay { get; }
 The prefab reference itself of the base display that will be used
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Utils.PrefabReference BaseDisplayReference { get; }
+public virtual PrefabReference BaseDisplayReference { get; }
 ```
 
 #### Property Value
@@ -91,7 +91,7 @@ public virtual float PixelsPerUnit { get; }
 The position offset to render the display at (z axis is up toward camera)
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Simulation.SMath.Vector3 PositionOffset { get; }
+public virtual Vector3 PositionOffset { get; }
 ```
 
 #### Property Value
@@ -111,63 +111,63 @@ public virtual float Scale { get; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.Bloons.BloonModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(BloonModel)'></a>
 
 ## ModDisplay.Apply(BloonModel) Method
 
 Applies this ModDisplay to a given BloonModel
 
 ```csharp
-public void Apply(Il2CppAssets.Scripts.Models.Bloons.BloonModel bloonModel);
+public void Apply(BloonModel bloonModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.Bloons.BloonModel).bloonModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(BloonModel).bloonModel'></a>
 
 `bloonModel` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(DisplayModel)'></a>
 
 ## ModDisplay.Apply(DisplayModel) Method
 
 Applies this ModDisplay to a given DisplayModel
 
 ```csharp
-public virtual void Apply(Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel);
+public virtual void Apply(DisplayModel displayModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel).displayModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(DisplayModel).displayModel'></a>
 
 `displayModel` [Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel')
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(ProjectileModel)'></a>
 
 ## ModDisplay.Apply(ProjectileModel) Method
 
 Applies this ModDisplay to a given ProjectileModel
 
 ```csharp
-public virtual void Apply(Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel);
+public virtual void Apply(ProjectileModel projectileModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel).projectileModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(ProjectileModel).projectileModel'></a>
 
 `projectileModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.Towers.TowerModel)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(TowerModel)'></a>
 
 ## ModDisplay.Apply(TowerModel) Method
 
 Applies this ModDisplay to a given TowerModel
 
 ```csharp
-public virtual void Apply(Il2CppAssets.Scripts.Models.Towers.TowerModel towerModel);
+public virtual void Apply(TowerModel towerModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(Il2CppAssets.Scripts.Models.Towers.TowerModel).towerModel'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(TowerModel).towerModel'></a>
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
@@ -217,30 +217,30 @@ The display GUID
 Gets a new DisplayModel based on this ModDisplay
 
 ```csharp
-public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel GetDisplayModel();
+public DisplayModel GetDisplayModel();
 ```
 
 #### Returns
 [Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel')
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNode(UnityDisplayNode)'></a>
 
 ## ModDisplay.ModifyDisplayNode(UnityDisplayNode) Method
 
 Alters the UnityDisplayNode that was copied from the one used by [BaseDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md#BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay 'BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay')
 
 ```csharp
-public virtual void ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node);
+public virtual void ModifyDisplayNode(UnityDisplayNode node);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNode(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNode(UnityDisplayNode).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The prototype unity display node
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,System.Action)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(UnityDisplayNode,System.Action)'></a>
 
 ## ModDisplay.ModifyDisplayNodeAsync(UnityDisplayNode, Action) Method
 
@@ -248,167 +248,167 @@ Allows you to modify this node asynchronously. On complete must be called for lo
 place after the non-async ModifyDisplayNode call
 
 ```csharp
-public virtual void ModifyDisplayNodeAsync(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node, System.Action onComplete);
+public virtual void ModifyDisplayNodeAsync(UnityDisplayNode node, System.Action onComplete);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,System.Action).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(UnityDisplayNode,System.Action).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The prototype unity display node
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,System.Action).onComplete'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifyDisplayNodeAsync(UnityDisplayNode,System.Action).onComplete'></a>
 
 `onComplete` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
 
 Callback for when you've finished changing the node
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(UnityDisplayNode,string)'></a>
 
 ## ModDisplay.Set2DTexture(UnityDisplayNode, string) Method
 
 Sets the sprite texture to that of a named png
 
 ```csharp
-protected void Set2DTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node, string textureName);
+protected void Set2DTexture(UnityDisplayNode node, string textureName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(UnityDisplayNode,string).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string).textureName'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Set2DTexture(UnityDisplayNode,string).textureName'></a>
 
 `textureName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The name of the texture, without .png
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color)'></a>
 
 ## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color) Method
 
 Sets the outline color for the first mesh renderer in the given node
 
 ```csharp
-protected void SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node, UnityEngine.Color color);
+protected void SetMeshOutlineColor(UnityDisplayNode node, Color color);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color).color'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).color'></a>
 
 `color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
 
 The color for it to be outlined (when not highlighted)
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color,int)'></a>
 
 ## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color, int) Method
 
 Sets the outline color for the index'th mesh renderer in the given node
 
 ```csharp
-protected void SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node, UnityEngine.Color color, int index);
+protected void SetMeshOutlineColor(UnityDisplayNode node, Color color, int index);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color,int).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int).color'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color,int).color'></a>
 
 `color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
 
 The color for it to be outlined (when not highlighted)
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,UnityEngine.Color,int).index'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color,int).index'></a>
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 What index of mesh renderer to use
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string)'></a>
 
 ## ModDisplay.SetMeshTexture(UnityDisplayNode, string) Method
 
 Sets the mesh texture to that of a named png
 
 ```csharp
-protected void SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node, string textureName);
+protected void SetMeshTexture(UnityDisplayNode node, string textureName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string).textureName'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).textureName'></a>
 
 `textureName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The name of the texture, without .png
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string,int)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string,int)'></a>
 
 ## ModDisplay.SetMeshTexture(UnityDisplayNode, string, int) Method
 
 Sets the mesh texture to that of a named png
 
 ```csharp
-protected void SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode node, string textureName, int index);
+protected void SetMeshTexture(UnityDisplayNode node, string textureName, int index);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string,int).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string,int).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string,int).textureName'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string,int).textureName'></a>
 
 `textureName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The name of the texture, without .png
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode,string,int).index'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string,int).index'></a>
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 The index to set at
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode_)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_)'></a>
 
 ## ModDisplay.UseNode(string, Action<UnityDisplayNode>) Method
 
 Gets a UnityDisplayNode for a different guid
 
 ```csharp
-protected void UseNode(string guid, System.Action<Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode> action);
+protected void UseNode(string guid, System.Action<UnityDisplayNode> action);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode_).guid'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_).guid'></a>
 
 `guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The asset reference guid to get the node from
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode_).action'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_).action'></a>
 
 `action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 

@@ -85,11 +85,11 @@ protected override float StepSize { get; }
 Validation to use for the input component
 
 ```csharp
-protected override Il2CppTMPro.TMP_InputField.CharacterValidation Validation { get; }
+protected override CharacterValidation Validation { get; }
 ```
 
 #### Property Value
-[Il2CppTMPro.TMP_InputField.CharacterValidation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TMP_InputField.CharacterValidation 'Il2CppTMPro.TMP_InputField.CharacterValidation')
+[Il2CppTMPro.CharacterValidation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.CharacterValidation 'Il2CppTMPro.CharacterValidation')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.FromFloat(float)'></a>

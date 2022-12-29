@@ -9,7 +9,7 @@ ModHelperComponent for a background panel
 public class ModHelperButton : BTD_Mod_Helper.Api.Components.ModHelperComponent
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase') &#129106; [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object') &#129106; [UnityEngine.Object](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Object 'UnityEngine.Object') &#129106; [UnityEngine.Component](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Component 'UnityEngine.Component') &#129106; [UnityEngine.Behaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Behaviour 'UnityEngine.Behaviour') &#129106; [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') &#129106; ModHelperButton
+Inheritance [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') &#129106; ModHelperButton
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperButton.LongBtnRatio'></a>
@@ -33,7 +33,7 @@ public const float LongBtnRatio = 2.81;
 The actual button component
 
 ```csharp
-public UnityEngine.UI.Button Button { get; }
+public Button Button { get; }
 ```
 
 #### Property Value
@@ -46,37 +46,37 @@ public UnityEngine.UI.Button Button { get; }
 The displayed image of the button
 
 ```csharp
-public UnityEngine.UI.Image Image { get; }
+public Image Image { get; }
 ```
 
 #### Property Value
 [UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action)'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Action)'></a>
 
 ## ModHelperButton.Create(Info, string, Action) Method
 
 Creates a new ModHelperButton
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperButton Create(BTD_Mod_Helper.Api.Components.Info info, string sprite, Il2CppSystem.Action onClick);
+public static BTD_Mod_Helper.Api.Components.ModHelperButton Create(BTD_Mod_Helper.Api.Components.Info info, string sprite, Action onClick);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).info'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Action).info'></a>
 
 `info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 
 The name/position/size info
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).sprite'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Action).sprite'></a>
 
 `sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The button's visuals
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Il2CppSystem.Action).onClick'></a>
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Create(BTD_Mod_Helper.Api.Components.Info,string,Action).onClick'></a>
 
 `onClick` [Il2CppSystem.Action](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Action 'Il2CppSystem.Action')
 

@@ -1,4 +1,5 @@
 using System.IO;
+using MelonLoader.Utils;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -10,7 +11,7 @@ internal static class FileDialogHelper
     {
         foreach (var dll in Dlls)
         {
-            var nfd = Path.Combine(MelonUtils.GameDirectory, dll);
+            var nfd = Path.Combine(MelonEnvironment.GameRootDirectory, dll);
             if (!File.Exists(nfd) && ModHelper.MainAssembly.TryGetEmbeddedResource(dll, out var stream))
             {
                 using (stream)

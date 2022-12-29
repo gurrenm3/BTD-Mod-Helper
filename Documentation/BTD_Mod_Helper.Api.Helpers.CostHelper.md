@@ -34,24 +34,24 @@ public static int CostForDifficulty(int cost, float multiplier);
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppAssets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,GameModel)'></a>
 
 ## CostHelper.CostForDifficulty(int, GameModel) Method
 
 Gets a modified cost for a given GameModel's difficulty
 
 ```csharp
-public static int CostForDifficulty(int cost, Il2CppAssets.Scripts.Models.GameModel gameModel);
+public static int CostForDifficulty(int cost, GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppAssets.Scripts.Models.GameModel).cost'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,GameModel).cost'></a>
 
 `cost` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 The default cost
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
@@ -61,24 +61,24 @@ The current GameModel
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
 The modified cost
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame)'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,InGame)'></a>
 
 ## CostHelper.CostForDifficulty(int, InGame) Method
 
 Gets a modified cost for a given instance of InGame
 
 ```csharp
-public static int CostForDifficulty(int cost, Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame inGame);
+public static int CostForDifficulty(int cost, InGame inGame);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame).cost'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,InGame).cost'></a>
 
 `cost` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 The default cost
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame).inGame'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,InGame).inGame'></a>
 
 `inGame` [Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame 'Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame')
 
@@ -88,7 +88,7 @@ Current instance of InGame
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
 The modified cost
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppSystem.Collections.Generic.List_Il2CppAssets.Scripts.Models.Towers.Mods.ModModel_)'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,List_ModModel_)'></a>
 
 ## CostHelper.CostForDifficulty(int, List<ModModel>) Method
 
@@ -96,19 +96,19 @@ Gets a modified cost for a given set of ModModels that are used to setup a match
 Somewhere deep within those mods is likely to be a Cost modifier, and this will find and apply that
 
 ```csharp
-public static int CostForDifficulty(int cost, Il2CppSystem.Collections.Generic.List<Il2CppAssets.Scripts.Models.Towers.Mods.ModModel> mods);
+public static int CostForDifficulty(int cost, List<ModModel> mods);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppSystem.Collections.Generic.List_Il2CppAssets.Scripts.Models.Towers.Mods.ModModel_).cost'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,List_ModModel_).cost'></a>
 
 `cost` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 The default cost
 
-<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,Il2CppSystem.Collections.Generic.List_Il2CppAssets.Scripts.Models.Towers.Mods.ModModel_).mods'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.CostHelper.CostForDifficulty(int,List_ModModel_).mods'></a>
 
-`mods` [Il2CppSystem.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List-1 'Il2CppSystem.Collections.Generic.List`1')
+`mods` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 The mods that the match is using
 

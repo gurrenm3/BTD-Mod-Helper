@@ -6,32 +6,32 @@
 Class to be passed in to the Open methods of Screens
 
 ```csharp
-public class ModMenuData : Il2CppSystem.Object
+public class ModMenuData
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase') &#129106; [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object') &#129106; ModMenuData
+Inheritance [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object') &#129106; ModMenuData
 ### Constructors
 
-<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Il2CppSystem.Object,Il2CppSystem.Object)'></a>
+<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Object,Object)'></a>
 
 ## ModMenuData(string, Object, Object) Constructor
 
 Creates a ModMenuData object with the given Id and data
 
 ```csharp
-public ModMenuData(string id, Il2CppSystem.Object modData, Il2CppSystem.Object baseData);
+public ModMenuData(string id, Object modData, Object baseData);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Il2CppSystem.Object,Il2CppSystem.Object).id'></a>
+<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Object,Object).id'></a>
 
 `id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Il2CppSystem.Object,Il2CppSystem.Object).modData'></a>
+<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Object,Object).modData'></a>
 
 `modData` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
 
-<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Il2CppSystem.Object,Il2CppSystem.Object).baseData'></a>
+<a name='BTD_Mod_Helper.Api.ModMenuData.ModMenuData(string,Object,Object).baseData'></a>
 
 `baseData` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
 ### Fields

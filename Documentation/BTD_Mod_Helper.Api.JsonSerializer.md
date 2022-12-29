@@ -108,7 +108,7 @@ Save an instance of a class to file
 
 ```csharp
 public void Il2CppSaveToFile<T>(T jsonObject, string savePath, bool shouldIndent=true, bool overwriteExisting=true)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -151,7 +151,7 @@ Serialize a il2cpp object
 
 ```csharp
 public string Il2CppSerializeJson<T>(T il2cppObject, bool shouldIndent=true)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -247,47 +247,47 @@ Whether nulls should be ignored
 
 Overwrite the file if it already exists
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool)'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool)'></a>
 
 ## JsonSerializer.SaveToFile<T>(T, string, JsonSerializerSettings, bool, bool) Method
 
 Save an instance of a class to file
 
 ```csharp
-public void SaveToFile<T>(T jsonObject, string savePath, Newtonsoft.Json.JsonSerializerSettings serializerSettings, bool shouldIndent=true, bool overwriteExisting=true);
+public void SaveToFile<T>(T jsonObject, string savePath, JsonSerializerSettings serializerSettings, bool shouldIndent=true, bool overwriteExisting=true);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool).T'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool).T'></a>
 
 `T`
 
 Type of class to save
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool).jsonObject'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool).jsonObject'></a>
 
-`jsonObject` [T](BTD_Mod_Helper.Api.JsonSerializer.md#BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool).T 'BTD_Mod_Helper.Api.JsonSerializer.SaveToFile<T>(T, string, Newtonsoft.Json.JsonSerializerSettings, bool, bool).T')
+`jsonObject` [T](BTD_Mod_Helper.Api.JsonSerializer.md#BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool).T 'BTD_Mod_Helper.Api.JsonSerializer.SaveToFile<T>(T, string, JsonSerializerSettings, bool, bool).T')
 
 Object to save. Must be of Type T
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool).savePath'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool).savePath'></a>
 
 `savePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 Location to save file to
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool).serializerSettings'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool).serializerSettings'></a>
 
 `serializerSettings` [Newtonsoft.Json.JsonSerializerSettings](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.JsonSerializerSettings 'Newtonsoft.Json.JsonSerializerSettings')
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool).shouldIndent'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool).shouldIndent'></a>
 
 `shouldIndent` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 Whether it should be indented
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,Newtonsoft.Json.JsonSerializerSettings,bool,bool).overwriteExisting'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SaveToFile_T_(T,string,JsonSerializerSettings,bool,bool).overwriteExisting'></a>
 
 `overwriteExisting` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
@@ -324,31 +324,31 @@ public string SerializeJson<T>(T objectToSerialize, bool shouldIndent=true, bool
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,Newtonsoft.Json.JsonSerializerSettings,bool)'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,JsonSerializerSettings,bool)'></a>
 
 ## JsonSerializer.SerializeJson<T>(T, JsonSerializerSettings, bool) Method
 
 Serialize a non-il2cpp object
 
 ```csharp
-public string SerializeJson<T>(T objectToSerialize, Newtonsoft.Json.JsonSerializerSettings serializerSettings, bool shouldIndent=true);
+public string SerializeJson<T>(T objectToSerialize, JsonSerializerSettings serializerSettings, bool shouldIndent=true);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,Newtonsoft.Json.JsonSerializerSettings,bool).T'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,JsonSerializerSettings,bool).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,Newtonsoft.Json.JsonSerializerSettings,bool).objectToSerialize'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,JsonSerializerSettings,bool).objectToSerialize'></a>
 
-`objectToSerialize` [T](BTD_Mod_Helper.Api.JsonSerializer.md#BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,Newtonsoft.Json.JsonSerializerSettings,bool).T 'BTD_Mod_Helper.Api.JsonSerializer.SerializeJson<T>(T, Newtonsoft.Json.JsonSerializerSettings, bool).T')
+`objectToSerialize` [T](BTD_Mod_Helper.Api.JsonSerializer.md#BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,JsonSerializerSettings,bool).T 'BTD_Mod_Helper.Api.JsonSerializer.SerializeJson<T>(T, JsonSerializerSettings, bool).T')
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,Newtonsoft.Json.JsonSerializerSettings,bool).serializerSettings'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,JsonSerializerSettings,bool).serializerSettings'></a>
 
 `serializerSettings` [Newtonsoft.Json.JsonSerializerSettings](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.JsonSerializerSettings 'Newtonsoft.Json.JsonSerializerSettings')
 
-<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,Newtonsoft.Json.JsonSerializerSettings,bool).shouldIndent'></a>
+<a name='BTD_Mod_Helper.Api.JsonSerializer.SerializeJson_T_(T,JsonSerializerSettings,bool).shouldIndent'></a>
 
 `shouldIndent` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 

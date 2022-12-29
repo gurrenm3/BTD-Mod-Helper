@@ -32,7 +32,7 @@ public virtual bool AddToOverrideMenu { get; }
 The Base Rounds included in the RoundSet specified by BaseRoundSet
 
 ```csharp
-protected System.Collections.Generic.List<Il2CppAssets.Scripts.Models.Rounds.RoundModel> BaseRounds { get; }
+protected System.Collections.Generic.List<RoundModel> BaseRounds { get; }
 ```
 
 #### Property Value
@@ -113,7 +113,7 @@ public virtual string Icon { get; }
 If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
 
 ```csharp
-public virtual Il2CppAssets.Scripts.Utils.SpriteReference IconReference { get; }
+public virtual SpriteReference IconReference { get; }
 ```
 
 #### Property Value
@@ -140,112 +140,112 @@ public virtual string GetHint(int round);
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyEasyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyEasyRoundModels(RoundModel,int)'></a>
 
 ## ModRoundSet.ModifyEasyRoundModels(RoundModel, int) Method
 
 Called to modify specifically just rounds from 1 to 40
 
 ```csharp
-public virtual void ModifyEasyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel roundModel, int round);
+public virtual void ModifyEasyRoundModels(RoundModel roundModel, int round);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyEasyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).roundModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyEasyRoundModels(RoundModel,int).roundModel'></a>
 
 `roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyEasyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).round'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyEasyRoundModels(RoundModel,int).round'></a>
 
 `round` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyGameModel(GameModel)'></a>
 
 ## ModRoundSet.ModifyGameModel(GameModel) Method
 
 Modifies the GameModel that's used for matches played with this round set
 
 ```csharp
-public virtual void ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel gameModel);
+public virtual void ModifyGameModel(GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyGameModel(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyGameModel(GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyHardRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyHardRoundModels(RoundModel,int)'></a>
 
 ## ModRoundSet.ModifyHardRoundModels(RoundModel, int) Method
 
 Called to modify specifically just rounds from 61 to 80
 
 ```csharp
-public virtual void ModifyHardRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel roundModel, int round);
+public virtual void ModifyHardRoundModels(RoundModel roundModel, int round);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyHardRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).roundModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyHardRoundModels(RoundModel,int).roundModel'></a>
 
 `roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyHardRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).round'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyHardRoundModels(RoundModel,int).round'></a>
 
 `round` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyImpoppableRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyImpoppableRoundModels(RoundModel,int)'></a>
 
 ## ModRoundSet.ModifyImpoppableRoundModels(RoundModel, int) Method
 
 Called to modify specifically just rounds from 81 to 100
 
 ```csharp
-public virtual void ModifyImpoppableRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel roundModel, int round);
+public virtual void ModifyImpoppableRoundModels(RoundModel roundModel, int round);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyImpoppableRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).roundModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyImpoppableRoundModels(RoundModel,int).roundModel'></a>
 
 `roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyImpoppableRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).round'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyImpoppableRoundModels(RoundModel,int).round'></a>
 
 `round` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyMediumRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyMediumRoundModels(RoundModel,int)'></a>
 
 ## ModRoundSet.ModifyMediumRoundModels(RoundModel, int) Method
 
 Called to modify specifically just rounds from 41 to 60
 
 ```csharp
-public virtual void ModifyMediumRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel roundModel, int round);
+public virtual void ModifyMediumRoundModels(RoundModel roundModel, int round);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyMediumRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).roundModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyMediumRoundModels(RoundModel,int).roundModel'></a>
 
 `roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyMediumRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).round'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyMediumRoundModels(RoundModel,int).round'></a>
 
 `round` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int)'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyRoundModels(RoundModel,int)'></a>
 
 ## ModRoundSet.ModifyRoundModels(RoundModel, int) Method
 
 Called to modify any/all rounds from 1 to [DefinedRounds](BTD_Mod_Helper.Api.Bloons.ModRoundSet.md#BTD_Mod_Helper.Api.Bloons.ModRoundSet.DefinedRounds 'BTD_Mod_Helper.Api.Bloons.ModRoundSet.DefinedRounds')
 
 ```csharp
-public virtual void ModifyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel roundModel, int round);
+public virtual void ModifyRoundModels(RoundModel roundModel, int round);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).roundModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyRoundModels(RoundModel,int).roundModel'></a>
 
 `roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyRoundModels(Il2CppAssets.Scripts.Models.Rounds.RoundModel,int).round'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.ModifyRoundModels(RoundModel,int).round'></a>
 
 `round` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')

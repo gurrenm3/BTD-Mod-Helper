@@ -12,18 +12,18 @@ public static class SpriteReferenceExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SpriteReferenceExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.SpriteReferenceExt.GetGUID(thisIl2CppAssets.Scripts.Utils.SpriteReference)'></a>
+<a name='BTD_Mod_Helper.Extensions.SpriteReferenceExt.GetGUID(thisSpriteReference)'></a>
 
 ## SpriteReferenceExt.GetGUID(this SpriteReference) Method
 
 Returns's the GUID of this SpriteReference
 
 ```csharp
-public static string GetGUID(this Il2CppAssets.Scripts.Utils.SpriteReference spriteReference);
+public static string GetGUID(this SpriteReference spriteReference);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.SpriteReferenceExt.GetGUID(thisIl2CppAssets.Scripts.Utils.SpriteReference).spriteReference'></a>
+<a name='BTD_Mod_Helper.Extensions.SpriteReferenceExt.GetGUID(thisSpriteReference).spriteReference'></a>
 
 `spriteReference` [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 

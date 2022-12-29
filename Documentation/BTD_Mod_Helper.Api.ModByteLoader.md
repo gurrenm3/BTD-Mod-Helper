@@ -76,7 +76,7 @@ public bool Loaded { get; set; }
 The Task responsible for loading the bytes in the background
 
 ```csharp
-protected Il2CppSystem.Threading.Tasks.Task LoadTask { get; set; }
+protected Task LoadTask { get; set; }
 ```
 
 #### Property Value
@@ -91,7 +91,7 @@ Converts a generated Loader using normal System data structures to one that uses
 
 ```csharp
 private static void ConvertLoader<T>(string unconvertedLoader, string convertedLoader, string className, string bytesFileName, string nameSpace=null)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -128,7 +128,7 @@ Generates a ModByteLoader class and corresponding .bytes file within the BloonsT
 
 ```csharp
 public static void Generate<T>(T model, string loaderFilePath, string bytesFilePath, string nameSpace=null)
-    where T : Il2CppSystem.Object;
+    where T : Object;
 ```
 #### Type parameters
 

@@ -35,7 +35,7 @@ public abstract string BaseMenu { get; }
 The text of the Header component that's on many UI screens, might be null
 
 ```csharp
-protected Il2Cpp.NK_TextMeshProUGUI CommonForegroundHeader { get; }
+protected NK_TextMeshProUGUI CommonForegroundHeader { get; }
 ```
 
 #### Property Value
@@ -48,7 +48,7 @@ protected Il2Cpp.NK_TextMeshProUGUI CommonForegroundHeader { get; }
 The current GameMenu
 
 ```csharp
-public Il2CppAssets.Scripts.Unity.Menu.GameMenu GameMenu { get; set; }
+public GameMenu GameMenu { get; set; }
 ```
 
 #### Property Value
@@ -76,7 +76,7 @@ The name NinjaKiwi gave to the menu of the given screen type
 
 ```csharp
 protected static string MenuName<T>()
-    where T : Il2CppAssets.Scripts.Unity.Menu.GameMenu;
+    where T : GameMenu;
 ```
 #### Type parameters
 
@@ -97,19 +97,19 @@ Runs right as your custom menu is being closed
 public virtual void OnMenuClosed();
 ```
 
-<a name='BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Il2CppSystem.Object)'></a>
+<a name='BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Object)'></a>
 
 ## ModGameMenu.OnMenuOpened(Object) Method
 
 Runs right as your custom menu is being opened, with the optional data argument that can be passed into  
-[Open&lt;T&gt;(Object, Object)](BTD_Mod_Helper.Api.ModGameMenu.md#BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Il2CppSystem.Object,Il2CppSystem.Object) 'BTD_Mod_Helper.Api.ModGameMenu.Open<T>(Il2CppSystem.Object, Il2CppSystem.Object)')
+[Open&lt;T&gt;(Object, Object)](BTD_Mod_Helper.Api.ModGameMenu.md#BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Object,Object) 'BTD_Mod_Helper.Api.ModGameMenu.Open<T>(Object, Object)')
 
 ```csharp
-public abstract bool OnMenuOpened(Il2CppSystem.Object data);
+public abstract bool OnMenuOpened(Object data);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Il2CppSystem.Object).data'></a>
+<a name='BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Object).data'></a>
 
 `data` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
 
@@ -127,32 +127,32 @@ Runs every time that your custom menu updates
 public virtual void OnMenuUpdate();
 ```
 
-<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Il2CppSystem.Object,Il2CppSystem.Object)'></a>
+<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Object,Object)'></a>
 
 ## ModGameMenu.Open<T>(Object, Object) Method
 
 Opens a custom menu
 
 ```csharp
-public static void Open<T>(Il2CppSystem.Object data=null, Il2CppSystem.Object baseData=null)
+public static void Open<T>(Object data=null, Object baseData=null)
     where T : BTD_Mod_Helper.Api.ModGameMenu;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Il2CppSystem.Object,Il2CppSystem.Object).T'></a>
+<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Object,Object).T'></a>
 
 `T`
 
 The custom menu type to open
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Il2CppSystem.Object,Il2CppSystem.Object).data'></a>
+<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Object,Object).data'></a>
 
 `data` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
 
-The custom data to pass into your ModGameMenu's [OnMenuOpened(Object)](BTD_Mod_Helper.Api.ModGameMenu.md#BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Il2CppSystem.Object) 'BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Il2CppSystem.Object)') method
+The custom data to pass into your ModGameMenu's [OnMenuOpened(Object)](BTD_Mod_Helper.Api.ModGameMenu.md#BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Object) 'BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Object)') method
 
-<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Il2CppSystem.Object,Il2CppSystem.Object).baseData'></a>
+<a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Object,Object).baseData'></a>
 
 `baseData` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
 

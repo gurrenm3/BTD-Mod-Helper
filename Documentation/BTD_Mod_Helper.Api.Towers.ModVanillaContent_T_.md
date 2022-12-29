@@ -7,7 +7,7 @@ ModContent Class for modifying a certain set of vanilla towers
 
 ```csharp
 public abstract class ModVanillaContent<T> : BTD_Mod_Helper.Api.Towers.ModVanillaContent
-    where T : Il2CppAssets.Scripts.Models.Model
+    where T : Model
 ```
 #### Type parameters
 
@@ -39,55 +39,55 @@ public virtual void Apply(T model);
 
 `model` [T](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md#BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.T 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>.T')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,Il2CppAssets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,GameModel)'></a>
 
 ## ModVanillaContent<T>.Apply(T, GameModel) Method
 
 Applies the modifications to the vanilla content
 
 ```csharp
-public virtual void Apply(T model, Il2CppAssets.Scripts.Models.GameModel gameModel);
+public virtual void Apply(T model, GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,Il2CppAssets.Scripts.Models.GameModel).model'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,GameModel).model'></a>
 
 `model` [T](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md#BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.T 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>.T')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffected(Il2CppAssets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffected(GameModel)'></a>
 
 ## ModVanillaContent<T>.GetAffected(GameModel) Method
 
 Gets the TowerModels that this will affect in the GameModel
 
 ```csharp
-public abstract System.Collections.Generic.IEnumerable<T> GetAffected(Il2CppAssets.Scripts.Models.GameModel gameModel);
+public abstract System.Collections.Generic.IEnumerable<T> GetAffected(GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffected(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffected(GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md#BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.T 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffectedModels(Il2CppAssets.Scripts.Models.GameModel)'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffectedModels(GameModel)'></a>
 
 ## ModVanillaContent<T>.GetAffectedModels(GameModel) Method
 
 Gets the TowerModels that this will affect in the GameModel
 
 ```csharp
-public sealed override System.Collections.Generic.IEnumerable<Il2CppAssets.Scripts.Models.Model> GetAffectedModels(Il2CppAssets.Scripts.Models.GameModel gameModel);
+public sealed override System.Collections.Generic.IEnumerable<Model> GetAffectedModels(GameModel gameModel);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffectedModels(Il2CppAssets.Scripts.Models.GameModel).gameModel'></a>
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffectedModels(GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 

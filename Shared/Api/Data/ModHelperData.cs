@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using MelonLoader.Utils;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api;
 
@@ -70,7 +71,7 @@ internal partial class ModHelperData
     /// </summary>
     internal bool Enabled => FilePath != null &&
                              DllName != null &&
-                             FilePath == Path.Combine(MelonHandler.ModsDirectory, DllName);
+                             FilePath == Path.Combine(MelonEnvironment.ModsDirectory, DllName);
 
     /// <summary>
     /// Either a Mod's "Enabled" status is different from whether or not it's loaded into the game,
