@@ -30,6 +30,7 @@ internal static class ModHelperGithub
 
     private const string DllContentType = "application/x-msdownload";
     private const string DllContentType2 = "application/octet-stream";
+    private const string DllContentType3 = "application/x-msdos-program";
     private const string ZipContentType = "application/zip";
     private const string ZipContentType2 = "application/x-zip-compressed";
 
@@ -288,6 +289,7 @@ internal static class ModHelperGithub
                     return null;
                 case DllContentType:
                 case DllContentType2:
+                case DllContentType3:
                     success = await ModHelperHttp.DownloadFile(releaseAsset.BrowserDownloadUrl, downloadFilePath);
                     break;
                 case ZipContentType:
