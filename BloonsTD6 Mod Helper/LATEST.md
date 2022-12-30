@@ -1,2 +1,4 @@
 - Fixed Exporting Game Data button for modders
 - Added `application/x-msdos-program` as an allowed download content type for the Mod Browser
+- Increased the default mod browser download limit from 50 MB to 75 MB
+- Fixed some upgrade screen UI glitches

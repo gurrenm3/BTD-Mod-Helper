@@ -46,7 +46,7 @@ public class ModHelperHttp
         {
             if (!ModHelper.IsNet6)
             {
-                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimitMb * 1e6);
             }
             var response = await Client.GetAsync(url);
             using var fs = new FileStream(filePath, FileMode.Create);
@@ -81,7 +81,7 @@ public class ModHelperHttp
         {
             if (!ModHelper.IsNet6)
             {
-                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimitMb * 1e6);
             }
             var response = await Client.GetAsync(url);
             var stream = await response.Content.ReadAsStreamAsync();
@@ -142,7 +142,7 @@ public class ModHelperHttp
 
             if (ModHelper.IsNet6)
             {
-                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimit * 1e6);
+                Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimitMb * 1e6);
             }
             else
             {

@@ -134,7 +134,7 @@ internal partial class MelonMain
         icon = LocalNetworkIcon
     };
 
-    public static readonly ModSettingDouble ModRequestLimit = new(50)
+    public static readonly ModSettingDouble ModRequestLimitMb = new(75)
     {
         displayName = "Mod Size Limit (mb)",
         category = ModBrowserSettings,
