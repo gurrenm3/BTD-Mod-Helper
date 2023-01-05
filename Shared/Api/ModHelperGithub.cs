@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
@@ -34,7 +35,7 @@ internal static class ModHelperGithub
     private const string ZipContentType = "application/zip";
     private const string ZipContentType2 = "application/x-zip-compressed";
 
-    private const string Sorry =
+    private const string GenericSorry =
         "Please try again at a later time. If issues stil persist for this mod and not others, contact the mod developer.";
 
     public static List<ModHelperData> Mods { get; private set; } = new();
@@ -138,7 +139,7 @@ internal static class ModHelperGithub
             latestCommit = mod.LatestCommit ?? await mod.GetLatestCommit();
             if (latestCommit == null)
             {
-                const string errorMessage = $"Failed to get latest commit from the GitHub API. {Sorry}";
+                const string errorMessage = $"Failed to get latest commit from the GitHub API. {GenericSorry}";
                 ModHelper.Error(errorMessage);
                 if (!bypassPopup)
                 {
@@ -153,7 +154,7 @@ internal static class ModHelperGithub
             latestRelease = mod.LatestRelease ?? await mod.GetLatestRelease();
             if (latestRelease == null)
             {
-                const string errorMessage = $"Failed to get latest release from the GitHub API. {Sorry}";
+                const string errorMessage = $"Failed to get latest release from the GitHub API. {GenericSorry}";
                 ModHelper.Error(errorMessage);
                 if (!bypassPopup)
                 {
@@ -217,6 +218,7 @@ internal static class ModHelperGithub
     private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease,
         bool showPopup)
     {
+        Exception exception = null;
         try
         {
             var asset = mod.SubPath == null
@@ -239,9 +241,18 @@ internal static class ModHelperGithub
         catch (Exception e)
         {
             ModHelper.Warning(e);
+            exception = e;
         }
+        exception ??= ModHelperHttp.LastException;
 
-        const string errorMessage = $"Failed to download asset. {Sorry}";
+        var errorMessage = "Failed to download asset. ";
+        errorMessage += exception switch
+        {
+            HttpRequestException httpRequestException when httpRequestException.Message.Contains("maximum buffer") =>
+                $"Size exceeded the current limit of {(int) MelonMain.ModRequestLimitMb} MB. " +
+                "This limit can be increased in the Mod Helper's settings menu under the Mod Browser section.",
+            _ => GenericSorry
+        };
         ModHelper.Error(errorMessage);
         PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
     }

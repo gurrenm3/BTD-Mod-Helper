@@ -20,6 +20,8 @@ public class ModHelperHttp
     /// </summary>
     public static HttpClient Client { get; private set; }
 
+    internal static Exception LastException { get; private set; }
+
     /// <summary>
     /// Initializes the HttpClient
     /// </summary>
@@ -42,6 +44,7 @@ public class ModHelperHttp
     /// <returns>Whether it was sucessful</returns>
     public static async Task<bool> DownloadFile(string url, string filePath)
     {
+        LastException = null;
         try
         {
             if (!ModHelper.IsNet6)
@@ -57,6 +60,7 @@ public class ModHelperHttp
         catch (Exception e)
         {
             ModHelper.Warning(e);
+            LastException = e;
         }
         finally
         {
@@ -106,6 +110,7 @@ public class ModHelperHttp
     /// <returns>Enumeration of extracted file paths, or null</returns>
     public static async Task<DirectoryInfo> DownloadZip(string url, string path = null)
     {
+        LastException = null;
         try
         {
             if (path == null)
@@ -129,6 +134,7 @@ public class ModHelperHttp
         catch (Exception e)
         {
             ModHelper.Warning(e);
+            LastException = e;
         }
 
         return null;

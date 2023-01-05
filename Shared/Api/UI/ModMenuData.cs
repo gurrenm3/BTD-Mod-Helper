@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Api;
 /// <summary>
 /// Class to be passed in to the Open methods of Screens
 /// </summary>
-[RegisterTypeInIl2Cpp]
+[RegisterTypeInIl2Cpp(false)]
 public class ModMenuData : Object
 {
     /// <summary>
