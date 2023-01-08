@@ -54,6 +54,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
                 new Action<int>(i => SetValue((T) Enum.GetValues(typeof(T)).GetValue(i)!)),
                 VanillaSprites.BlueInsertPanelRound, 80f
             );
+            dropdown.Dropdown.SetValue(Enum.GetValues(typeof(T)).Cast<T>().ToList().IndexOf(value));
 
 
             option.SetResetAction(new Action(() =>
