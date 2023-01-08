@@ -63,22 +63,7 @@ internal static class ModSettingsHandler
                         try
                         {
                             var modSetting = mod.ModSettings[name];
-                            // Iterate until find ModSetting<> base class to get it's type
-                            var settingType = modSetting.GetType();
-                            var foundType = false;
-                            while(!foundType && settingType.BaseType != typeof(ModSetting) && settingType.BaseType != null)
-                            {
-                                settingType = settingType.BaseType;
-                                if (settingType.IsGenericType && settingType.GetGenericTypeDefinition() == typeof(ModSetting<>))
-                                {
-                                    // Load using the type from ModSetting<>
-                                    modSetting.Load(token.ToObject(settingType.GenericTypeArguments[0]));
-                                    foundType = true;
-                                }
-                            }
-                            // Load just from object if failed to find type
-                            if (!foundType)
-                                modSetting.Load(token.ToObject<object>());
+                            modSetting.Load(token.ToObject(modSetting.GetSettingType()));
                         }
                         catch (Exception e)
                         {
