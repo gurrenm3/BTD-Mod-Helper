@@ -110,6 +110,8 @@ public abstract class ModSetting<T> : ModSetting
                 $"Error: ModSetting type mismatch between {typeof(T).Name} and {val.GetType().Name} for {displayName}");
         }
     }
+
+    internal override Type GetSettingType() => typeof(T);
 }
 
 /// <summary>
@@ -187,8 +189,8 @@ public abstract class ModSetting
     {
         
     }
-    
-    
+
+    internal virtual Type GetSettingType() => typeof(object);
 
     /// <summary>
     /// Creates a base ModHelperOption component based on the name, description and icon of this

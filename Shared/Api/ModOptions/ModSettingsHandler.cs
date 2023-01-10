@@ -62,7 +62,8 @@ internal static class ModSettingsHandler
                     {
                         try
                         {
-                            mod.ModSettings[name].Load(token.ToObject<object>());
+                            var modSetting = mod.ModSettings[name];
+                            modSetting.Load(token.ToObject(modSetting.GetSettingType()));
                         }
                         catch (Exception e)
                         {
