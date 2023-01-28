@@ -63,8 +63,8 @@ public abstract class ModBuffIcon : NamedModContent
     /// <param name="model">The support model to apply to</param>
     public void ApplyTo(SupportModel model)
     {
-        model.buffLocsName = Icon;
-        model.buffIconName = Id;
+        model.buffLocsName = BuffLocsName;
+        model.buffIconName = BuffIconName;
         model.isGlobal = GlobalRange;
         model.maxStackSize = MaxStackSize;
         model.onlyShowBuffIfMutated = OnlyShowBuffIfMutated;
@@ -77,11 +77,21 @@ public abstract class ModBuffIcon : NamedModContent
     /// <param name="model">The support model to apply to</param>
     public void ApplyTo(TowerBehaviorBuffModel model)
     {
-        model.buffLocsName = Icon;
-        model.buffIconName = Id;
+        model.buffLocsName = BuffLocsName;
+        model.buffIconName = BuffIconName;
         model.isGlobalRange = GlobalRange;
         model.maxStackSize = MaxStackSize;
     }
+
+    /// <summary>
+    /// What should go in a Model's buffLocsName field
+    /// </summary>
+    public string BuffLocsName => Icon;
+
+    /// <summary>
+    /// What should go in a Model's buffIconName field
+    /// </summary>
+    public string BuffIconName => Id;
     
     /// <inheritdoc />
     public override void Register()
