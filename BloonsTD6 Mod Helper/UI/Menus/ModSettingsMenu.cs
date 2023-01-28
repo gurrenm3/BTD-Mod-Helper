@@ -29,6 +29,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     {
         var gameObject = GameMenu.gameObject;
         gameObject.DestroyAllChildren();
+        GameMenu.saved = true;
 
         CommonForegroundHeader.SetText(BloonsMod.Info.Name);
 

@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.Towers;
 using UnityEngine;
 using static BTD_Mod_Helper.Api.Enums.VanillaSprites;
 

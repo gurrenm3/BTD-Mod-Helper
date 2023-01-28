@@ -170,6 +170,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             new Action<int>(i =>
             {
                 currentTopic = topics[i];
+                SetPage(0);
                 RecalculateCurrentMods();
             }), VanillaSprites.BlueInsertPanelRound, 80f);
     }
