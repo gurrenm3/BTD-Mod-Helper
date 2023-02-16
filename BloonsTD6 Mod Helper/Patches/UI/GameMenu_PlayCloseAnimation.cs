@@ -4,19 +4,17 @@ using BTD_Mod_Helper.Api.Components;
 
 namespace BTD_Mod_Helper.Patches.UI;
 
-[HarmonyPatch(typeof(GameMenu), nameof(GameMenu.PlayCloseAnimation))]
+//TODO: go back to the old way of doing this before the animation plays
+[HarmonyPatch(typeof(MenuManager), nameof(MenuManager.CloseCurrentMenuIfPossible))]
 internal static class GameMenu_PlayCloseAnimation
 {
     [HarmonyPrefix]
-    private static bool Prefix(GameMenu __instance)
+    private static bool Prefix(MenuManager __instance)
     {
-        if (__instance.gameObject.HasComponent<ModGameMenuTracker>(out var tracker))
+        if (__instance.GetCurrentMenu().gameObject.HasComponent<ModGameMenuTracker>(out var tracker) && ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
         {
-            if (ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
-            {
-                modGameMenu.Closing = true;
-                modGameMenu.OnMenuClosed();
-            }
+            modGameMenu.Closing = true;
+            modGameMenu.OnMenuClosed();
         }
         return true;
     }
