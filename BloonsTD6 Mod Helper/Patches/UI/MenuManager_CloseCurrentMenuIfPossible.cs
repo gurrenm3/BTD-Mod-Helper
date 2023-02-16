@@ -6,7 +6,7 @@ using BTD_Mod_Helper.UI.Modded;
 
 namespace BTD_Mod_Helper.Patches.UI;
 
-[HarmonyPatch(typeof(MenuManager), nameof(MenuManager.CloseCurrentMenu))]
+[HarmonyPatch(typeof(MenuManager), nameof(MenuManager.CloseCurrentMenuIfPossible))]
 internal static class MenuManager_CloseCurrentMenu
 {
     [HarmonyPrefix]
