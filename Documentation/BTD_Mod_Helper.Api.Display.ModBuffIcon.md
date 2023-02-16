@@ -12,6 +12,32 @@ public abstract class ModBuffIcon : BTD_Mod_Helper.Api.NamedModContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModBuffIcon
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.BuffIconName'></a>
+
+## ModBuffIcon.BuffIconName Property
+
+What should go in a Model's buffIconName field
+
+```csharp
+public string BuffIconName { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.BuffLocsName'></a>
+
+## ModBuffIcon.BuffLocsName Property
+
+What should go in a Model's buffLocsName field
+
+```csharp
+public string BuffLocsName { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.Description'></a>
 
 ## ModBuffIcon.Description Property

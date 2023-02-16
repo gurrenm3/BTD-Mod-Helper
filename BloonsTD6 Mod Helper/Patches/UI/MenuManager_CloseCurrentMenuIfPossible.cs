@@ -18,7 +18,8 @@ internal static class MenuManager_CloseCurrentMenu
     [HarmonyPostfix]
     private static void Postfix(MenuManager __instance, ref GameMenu __state)
     {
-        if (__state != null && __instance.IsClosingOrOpeningMenu &&
+        if (__state != null &&
+            __instance.IsClosingOrOpeningMenu &&
             __state.gameObject.HasComponent(out ModGameMenuTracker tracker) &&
             ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
         {
@@ -27,6 +28,6 @@ internal static class MenuManager_CloseCurrentMenu
         }
         
         RoundSetChanger.OnMenuChanged(__state.Exists()?.name ?? "",
-            __instance.menuStack.ToList().LastOrDefault()?.Item1 ?? "");
+            __instance.menuStack.ToList().SkipLast(1).LastOrDefault()?.Item1 ?? "");
     }
 }
