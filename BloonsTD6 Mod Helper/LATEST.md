@@ -1,4 +1,1 @@
-- Fixed ModSettingHotkeys to allow easier overlap with vanilla hotkeys
-- Fixed filtering mods menu empty page
-- Fixes for ModSettingEnums (thanks Baydock!)
-- Added BuffLocsName and BuffIconName properties to ModBuffIcons for clarity when manually applying them
+- Updated for BTD6 v35.0 (hastened by @GrahamKracker !)
