@@ -11,7 +11,7 @@ using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using Exception = System.Exception;
 using Int32 = Il2CppSystem.Int32;
-using Main = Il2CppAssets.Main.Main;
+using Main = Il2CppAssets.Scripts.Main;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Patches;
 
