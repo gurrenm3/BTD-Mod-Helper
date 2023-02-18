@@ -126,6 +126,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\Il2CppReferenceArray.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\LINQExtensions\LockedList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\AbilityModelExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\AirUnitModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\AttackModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\BloonModelExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ModelExtensions\DisplayModelExt.cs" />
