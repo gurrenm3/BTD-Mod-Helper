@@ -123,13 +123,13 @@ public abstract partial class ModByteLoader : ModContent
 
     private static readonly string[] Structs =
     {
-        "Il2CppAssets.Scripts.Models.Map.AreaType",
         "Il2CppAssets.Scripts.Simulation.SMath.Vector3"
     };
 
     private static readonly string[] Enums =
     {
         "Il2CppAssets.Scripts.Models.Towers.TowerModel.TowerSize",
+        "Il2CppAssets.Scripts.Models.Map.AreaType",
         "Il2CppAssets.Scripts.Models.TowerSets.TowerSet"
     };
 
@@ -160,6 +160,7 @@ public abstract partial class ModByteLoader : ModContent
                  loader;
         loader = loader.Replace($"{Il2CppType.Of<T>().Name}Loader : IGameModelLoader",
             $"{className} : {nameof(ModByteLoader)}<{Il2CppType.Of<T>().FullName}>");
+        loader = loader.Replace("Assets", "Il2CppAssets");
         loader = loader.Replace("using System", "using Il2CppSystem");
         loader = loader.Replace("using Il2CppSystem.IO", "using System.IO");
         loader = Regex.Replace(loader, @"private void (.*)<T>\(\) {",
