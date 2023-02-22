@@ -1,1 +1,2 @@
-- Updated for BTD6 v35.0 (hastened by @GrahamKracker !)
+- Fixed FileIOHelper.LoadObject<T>
+- Fixed Open Local Files Directory button

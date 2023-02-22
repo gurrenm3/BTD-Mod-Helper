@@ -1,7 +1,9 @@
-using System;
-using System.IO;
 using Il2CppNewtonsoft.Json;
+using Il2CppSystem.IO;
 using UnityEngine;
+using Directory = System.IO.Directory;
+using File = System.IO.File;
+using Path = System.IO.Path;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -43,11 +45,20 @@ public static class FileIOHelper
     /// <param name="fileName">File name within the sandbox directory</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    [Obsolete("Broken as of MelonLoader 0.6.0")]
     public static T LoadObject<T>(string fileName) where T : Object
     {
         var text = LoadFile(fileName);
-        return null;
+
+        // return JsonConvert.DeserializeObject<T>(text);
+        
+        var jsonSerializer = Il2CppNewtonsoft.Json.JsonSerializer.CreateDefault(new JsonSerializerSettings());
+        var s = new StringReader(text);
+        var reader = new JsonTextReader(s);
+        var result = jsonSerializer.Deserialize<T>(reader);
+        s.Close();
+        reader.Close();
+        
+        return result;
     }
 
     /// <summary>

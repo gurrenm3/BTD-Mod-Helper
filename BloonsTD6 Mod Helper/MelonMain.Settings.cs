@@ -164,7 +164,12 @@ internal partial class MelonMain
     private static readonly ModSettingButton OpenLocalDirectory = new()
     {
         displayName = "Open Local Files Directory",
-        action = () => Process.Start(FileIOHelper.sandboxRoot),
+        action = () => Process.Start(new ProcessStartInfo()
+        {
+            FileName = FileIOHelper.sandboxRoot,
+            UseShellExecute = true,
+            Verb = "open"
+        }),
         buttonText = "Open",
         description =
             "This is the 'Sandbox Root' directory that many vanilla and modded services use to dump files into.",
