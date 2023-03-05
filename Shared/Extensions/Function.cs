@@ -11,7 +11,7 @@ public delegate void Function();
 /// 
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public delegate T Function<T>();
+public delegate T Function<out T>();
     
 //public delegate void Function<T>(T t);
 

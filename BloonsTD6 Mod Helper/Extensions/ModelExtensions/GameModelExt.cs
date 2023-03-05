@@ -337,11 +337,10 @@ public static partial class GameModelExt
         var weaponModels = new List<WeaponModel>();
         var attackModels = model.GetAllAttackModels();
 
-        foreach (var attackModel in attackModels)
+        foreach (var weaponArray in attackModels.Select(attackModel => attackModel.weapons))
         {
-            var weapons = attackModel.weapons;
-            if (weapons != null && weapons.Any())
-                weaponModels.AddRange(weapons);
+            if (weaponArray != null && weaponArray.Any())
+                weaponModels.AddRange(weaponArray);
         }
 
         return weaponModels;

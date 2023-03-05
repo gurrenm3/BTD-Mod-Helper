@@ -25,7 +25,7 @@ public static class FileInfoExt
                               $"\n\nYou can do this by Right-Clicking on the file, clicking Properties, and then making sure that " +
                               $"\"Unblock\" is checked.");
             }
-            return null;
+            return Array.Empty<AssemblyName>();
         }
     }
 

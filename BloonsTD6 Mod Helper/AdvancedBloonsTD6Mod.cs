@@ -34,13 +34,18 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Equivalent to a HarmonyPrefix on TowerManager_IsParagonLocked
     /// </summary>
     /// <param name="tower"></param>
-    /// <param name="result">The result of the method, different from what you return</param>
+    /// <param name="result">The result of the method, since it returns a bool, different from what you return</param>
     /// <param name="towerManager"></param>
     public virtual bool PreIsParagonLocked(ref TowerManager towerManager, ref Tower tower, ref bool result)
     {
         return true;
     }
     
+    /// <summary>
+    /// Called after the game thinks a paragon is locked
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on TowerManager_IsParagonLocked
+    /// </summary>
     public virtual void PostIsParagonLocked(TowerManager towerManager, Tower tower, bool result)
     {
     }
@@ -61,6 +66,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Return 'false' to prevent the original method from running
     /// <br/>
     /// Equivalent to a HarmonyPrefix on InGame_Quit
+    /// </summary>
     public virtual bool PreMatchEnd(InGame inGame)
     {
         return true;

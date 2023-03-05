@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace BTD_Mod_Helper.Extensions;
 
@@ -51,11 +52,6 @@ public static partial class ArrayExt
     /// <returns></returns>
     public static bool Any<T>(this T[] array, Func<T, bool> predicate)
     {
-        foreach (var item in array)
-        {
-            if (predicate(item))
-                return true;
-        }
-        return false;
+        return Enumerable.Any(array, predicate);
     }
 }

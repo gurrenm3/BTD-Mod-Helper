@@ -216,13 +216,10 @@ public abstract class BloonsMod : MelonMod, IModContent
             });
         }
 
-        if (GotModTooSoon.Contains(GetType()))
+        if (GotModTooSoon.Contains(GetType()) && IDPrefix != this.GetAssembly().GetName().Name + "-")
         {
             // Happens when trying to get a custom embedded resource during the static constructor phase
-            if (IDPrefix != this.GetAssembly().GetName().Name + "-")
-            {
-                LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
-            }
+            LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
         }
 
         OnApplicationStart();

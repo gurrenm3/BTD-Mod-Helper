@@ -94,19 +94,19 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// This is Obsolete, use GetAllBloonToSim instead. Return all BloonToSimulations with this BloonModel
+        /// Return all BloonToSimulations with this BloonModel
         /// </summary>
-        [Obsolete]
+        [Obsolete("use GetAllBloonToSim instead")]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
             if (InGame.instance == null)
             {
-                return null;
+                return Array.Empty<BloonToSimulation>().ToList();
             }
 
             var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
-                return null;
+                return Array.Empty<BloonToSimulation>().ToList();
 
             var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
             return results;
@@ -119,12 +119,12 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (InGame.instance == null)
             {
-                return null;
+                return Array.Empty<BloonToSimulation>().ToList();
             }
 
             var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
-                return null;
+                return Array.Empty<BloonToSimulation>().ToList();
 
             var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
             return results;
@@ -508,12 +508,9 @@ namespace BTD_Mod_Helper.Extensions
 
             var growModel = bloonModel.GetBehavior<GrowModel>();
 #if BloonsTD6
-            if (!string.IsNullOrEmpty(growModel?.growToId))
+            if (!string.IsNullOrEmpty(growModel?.growToId) && Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect, out var newBloon1))
             {
-                if (Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect, out var newBloon))
-                {
-                    growModel.growToId = newBloon;
-                }
+                growModel.growToId = newBloon1;
             }
 #elif BloonsAT
             // need to implement for BATTD.

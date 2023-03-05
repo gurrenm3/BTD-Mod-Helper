@@ -1,6 +1,7 @@
 ﻿using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Utils;
 using System.IO;
+using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
 using UnityEngine;
 
@@ -23,20 +24,17 @@ public static partial class DumpNodeExt
         }
         foreach (var item in node.genericRenderers)
         {
-            if (item.materials.Length > 0)
+            if (item.materials.Length > 0 && item.material.mainTexture)
             {
-                if (item.material.mainTexture)
-                {
-                    item.material.mainTexture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{item.material.mainTexture.name}.png");
-                }
+                item.material.mainTexture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{item.material.mainTexture.name}.png");
             }
         }
 
         if (node.isSprite)
         {
-            foreach (var spriteRenderer in node.gameObject.GetComponentsInChildren<SpriteRenderer>())
+            foreach (var sprite in node.gameObject.GetComponentsInChildren<SpriteRenderer>().Select(spriteRenderer=>spriteRenderer.sprite))
             {
-                spriteRenderer.sprite.texture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{spriteRenderer.sprite.texture.name}.png");
+                sprite.texture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{sprite.texture.name}.png");
             }
         }
     }

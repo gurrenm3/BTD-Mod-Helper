@@ -189,16 +189,16 @@ public static partial class UnityDisplayNodeExt
     /// <param name="prefix"></param>
     public static void DumpTextures(this UnityDisplayNode node, string prefix)
     {
-        foreach (var renderer in node.genericRenderers)
+        foreach (var material in node.genericRenderers.Select(x=>x.material))
         {
-            if (renderer.material == null) return;
+            if (material == null) return;
 
             var i = 0;
-            foreach (var texture in renderer.material.GetTexturePropertyNames())
+            foreach (var texture in material.GetTexturePropertyNames())
             {
-                if (renderer.material.GetTexture(texture) != null)
+                if (material.GetTexture(texture) != null)
                 {
-                    renderer.material.GetTexture(texture).TrySaveToPNG($"{prefix} - {texture} {i++}.png");
+                    material.GetTexture(texture).TrySaveToPNG($"{prefix} - {texture} {i++}.png");
                 }
             }
         }

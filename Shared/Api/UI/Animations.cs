@@ -29,7 +29,6 @@ public static class Animations
             foreach (var runtimeAnimatorController in animationControllers)
             {
                 AnimationsByName[runtimeAnimatorController.name] = runtimeAnimatorController;
-                // ModHelper.Msg("Animation: " + runtimeAnimatorController.name);
             }
         }
     }

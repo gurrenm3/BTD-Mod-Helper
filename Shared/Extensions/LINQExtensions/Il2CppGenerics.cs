@@ -77,10 +77,9 @@ public static class Il2CppGenerics
     /// <returns></returns>
     public static bool Any<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
     {
-        foreach (var item in source)
+        foreach (var _ in source.Where(predicate))
         {
-            if (predicate(item))
-                return true;
+            return true;
         }
         return false;
     }

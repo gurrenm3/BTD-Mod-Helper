@@ -51,6 +51,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="attackModel">this</param>
         /// <param name="weaponModel">Weapon to add</param>
         /// <param name="index">Index within weapons array</param>
+        /// <exception cref="ArgumentException"> thrown when index &#60; 0</exception>
         public static void SetWeapon(this AttackModel attackModel, WeaponModel weaponModel, int index = 0)
         {
             if (attackModel.weapons == null)
@@ -63,7 +64,7 @@ namespace BTD_Mod_Helper.Extensions
             }
             else if (index < 0)
             {
-                throw new IndexOutOfRangeException("Index can't be negative");
+                throw new ArgumentException("Index can't be negative");
             }
             else
             {
@@ -113,13 +114,10 @@ namespace BTD_Mod_Helper.Extensions
                     projectileField = behavior.GetIl2CppType().GetField("projectileModel");
                 }
 
-                if (projectileField != null)
+                if (projectileField != null && projectileField.GetValue(behavior).IsType(out ProjectileModel projectileModel))
                 {
-                    if (projectileField.GetValue(behavior).IsType(out ProjectileModel projectileModel))
-                    {
-                        allProjectiles.Add(projectileModel);
-                        allProjectiles.AddRange(GetSubProjectiles(projectileModel.behaviors));
-                    }
+                    allProjectiles.Add(projectileModel);
+                    allProjectiles.AddRange(GetSubProjectiles(projectileModel.behaviors));
                 }
             }
 
@@ -139,7 +137,7 @@ namespace BTD_Mod_Helper.Extensions
             var displayModels = attackModel.GetBehaviors<DisplayModel>().ToList();
             if (displayModels.Count > 0 && index >= 0 && index < displayModels.Count)
             {
-                var display = displayModels[index];
+                //var display = displayModels[index];
                 displayModels[index].ApplyDisplay<T>();
             }
         }

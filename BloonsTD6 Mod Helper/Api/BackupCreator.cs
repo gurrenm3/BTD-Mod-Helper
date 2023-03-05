@@ -28,7 +28,6 @@ class BackupCreator
         var saveDir = Game.instance.GetSaveDirectory();
         if (string.IsNullOrEmpty(saveDir))
         {
-            //ModHelper.Error("Unable to backup Profile. Save directory not found");
             return;
         }
 
