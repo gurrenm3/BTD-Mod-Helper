@@ -7,7 +7,6 @@ internal class PopupScreen_ShowModderPopup
     [HarmonyPrefix]
     private static bool Prefix(PopupScreen __instance)
     {
-        ModHelper.Log("PopupScreen_ShowModderPopup");
         __instance.hasSeenModderWarning = MelonMain.AutoHideModdedClientPopup;
         return MelonMain.AutoHideModdedClientPopup;
     }
