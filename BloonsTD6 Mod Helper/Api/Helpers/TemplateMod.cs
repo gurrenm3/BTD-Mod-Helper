@@ -57,7 +57,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 return;
             }
 
-            ModHelper.Msg($"Successfully downl oaded template from {ZipURL}");
+            ModHelper.Msg($"Successfully downloaded template from {ZipURL}");
 
             try
             {

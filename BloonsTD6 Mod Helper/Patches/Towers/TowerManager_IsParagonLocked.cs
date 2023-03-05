@@ -7,6 +7,21 @@ namespace BTD_Mod_Helper.Patches.Towers;
 [HarmonyPatch(typeof(TowerManager), nameof(TowerManager.IsParagonLocked))]
 internal static class TowerManager_IsParagonLocked
 {
+    [HarmonyPrefix]
+    private static bool Prefix(TowerManager __instance, ref Tower tower, ref bool __result)
+    {
+        var result = false;
+        
+        var unreftower = tower;
+
+        ModHelper.PerformAdvancedModHook(mod => mod.PreIsParagonLocked(ref __instance, ref unreftower, ref result));
+
+        tower = unreftower;
+        
+        __result = result;
+        return false;
+    }
+    
     [HarmonyPostfix]
     private static void Postfix(TowerManager __instance, Tower tower, ref bool __result)
     {       
