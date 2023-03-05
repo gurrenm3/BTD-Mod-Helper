@@ -71,23 +71,13 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning(e);
         }
     }
-
-    internal static bool afterTitleScreen;
-
+    
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
         // InitialLoadTasks_MoveNext.Update();
 
-        if (Game.instance is null)
-            return;
-
-        if (PopupScreen.instance != null && afterTitleScreen)
-        {
-            PopupScreen.instance.hasSeenModderWarning = AutoHideModdedClientPopup;
-        }
-
-        if (InGame.instance is null)
+        if (Game.instance is null || InGame.instance is null)
             return;
 
         NotificationMgr.CheckForNotifications();
@@ -136,8 +126,6 @@ internal partial class MelonMain : BloonsTD6Mod
                 }
             }
         }
-
-        afterTitleScreen = true;
     }
 
     private void Schedule_GameModel_Loaded()

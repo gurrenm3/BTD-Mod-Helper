@@ -288,7 +288,7 @@ internal static class NotificationMgr
         lock (notifications)
         {
             if (notifications.Any())
-                notifications[notifications.Count - 1].OnUpdate(new Notification.NotificationEventArgs());
+                notifications[^1].OnUpdate(new Notification.NotificationEventArgs());
 
             if (notificationQueue.Any() && notifications.Count == 0)
             {

@@ -39,7 +39,7 @@ internal partial class MelonMain
         icon = SaveGameIcon
     };
 
-    private static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
+    internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already.",

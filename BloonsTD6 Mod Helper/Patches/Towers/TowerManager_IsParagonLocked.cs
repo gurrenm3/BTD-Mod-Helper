@@ -11,28 +11,24 @@ internal static class TowerManager_IsParagonLocked
     private static bool Prefix(TowerManager __instance, ref Tower tower, ref bool __result)
     {
         var result = false;
+        var keepexecuting = true;
         
         var unreftower = tower;
 
-        ModHelper.PerformAdvancedModHook(mod => mod.PreIsParagonLocked(ref __instance, ref unreftower, ref result));
+        ModHelper.PerformAdvancedModHook(mod => keepexecuting &= mod.PreIsParagonLocked(ref __instance, ref unreftower, ref result));
 
         tower = unreftower;
         
         __result = result;
-        return false;
+        return keepexecuting;
     }
     
     [HarmonyPostfix]
     private static void Postfix(TowerManager __instance, Tower tower, ref bool __result)
-    {       
-        var result = false;
+    {
+        var result = tower.towerModel.GetModTower() is {paragonUpgrade: ModParagonUpgrade modParagonUpgrade} &&
+                     modParagonUpgrade.RestrictUpgrading(tower);
 
-        if (tower.towerModel.GetModTower() is {paragonUpgrade: ModParagonUpgrade modParagonUpgrade} &&
-            modParagonUpgrade.RestrictUpgrading(tower))
-        {
-            result = true;
-        }
-        
         ModHelper.PerformAdvancedModHook(mod => mod.PostIsParagonLocked(__instance, tower, result));
 
         __result = result;

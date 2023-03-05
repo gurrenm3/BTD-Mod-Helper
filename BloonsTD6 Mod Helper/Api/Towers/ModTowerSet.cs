@@ -25,7 +25,7 @@ public abstract partial class ModTowerSet
         {
             if (towerSetChunks.LastOrDefault() is Tuple<TowerSet, int> last && last.Item1 == set)
             {
-                towerSetChunks[towerSetChunks.Count - 1] = new Tuple<TowerSet, int>(set, last.Item2 + 1);
+                towerSetChunks[^1] = new Tuple<TowerSet, int>(set, last.Item2 + 1);
             }
             else
             {

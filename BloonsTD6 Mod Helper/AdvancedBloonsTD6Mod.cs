@@ -45,7 +45,26 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     {
     }
     
+    /// <summary>
+    /// Called before the a game is won
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on InGame_OnVictory
+    /// </summary>
+    public virtual bool PreOnVictory(InGame inGame)
+    {
+        return true;
+    }
     
+    /// <summary>
+    /// Called before the player returns to the MainMenu from a match
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on InGame_Quit
+    public virtual bool PreMatchEnd(InGame inGame)
+    {
+        return true;
+    }
     
     
 }
