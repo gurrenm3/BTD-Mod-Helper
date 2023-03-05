@@ -8,12 +8,19 @@ namespace BTD_Mod_Helper.Patches.Towers;
 internal static class TowerManager_IsParagonLocked
 {
     [HarmonyPostfix]
-    private static void Postfix(Tower tower, ref bool __result)
-    {
+    private static void Postfix(TowerManager __instance, Tower tower, ref bool __result)
+    {       
+        var result = false;
+
         if (tower.towerModel.GetModTower() is {paragonUpgrade: ModParagonUpgrade modParagonUpgrade} &&
             modParagonUpgrade.RestrictUpgrading(tower))
         {
-            __result = true;
+            result = true;
         }
+        
+        ModHelper.PerformAdvancedModHook(mod => mod.PostIsParagonLocked(__instance, tower, result));
+
+        __result = result;
     }
+    
 }

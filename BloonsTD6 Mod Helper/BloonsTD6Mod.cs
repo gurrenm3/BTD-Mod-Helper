@@ -14,7 +14,6 @@ using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 using Il2CppAssets.Scripts.Simulation.Towers.Weapons;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity;
 using Il2CppSystem.Collections.Generic;
 using Il2CppNinjaKiwi.NKMulti;
 using Il2CppAssets.Scripts.Unity.Display;
@@ -199,6 +198,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on ResourceLoader_LoadSpriteFromSpriteReferenceAsync
     /// </summary>
+    [Obsolete("No longer implemented")]
     public virtual void OnSpriteLoad(SpriteReference spriteref, Image image)
     {
     }
@@ -348,6 +348,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.Damaged
     /// </summary>
+    [Obsolete("No longer implemented")]
     public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile,
         bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower,
         [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true,

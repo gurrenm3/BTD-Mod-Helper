@@ -8,6 +8,22 @@ namespace BTD_Mod_Helper.Patches;
 [HarmonyPatch(typeof(InGame), nameof(InGame.GetRoundHint))]
 internal static class InGame_GetRoundHint
 {
+    [HarmonyPrefix]
+    private static bool Prefix(ref InGame __instance, ref string __result)
+    {        
+        var result = true;
+        var unrefinstance = __instance;
+        var unrefresult = __result;
+        var round = __instance.bridge.GetCurrentRound();
+        
+        ModHelper.PerformAdvancedModHook(mod => result &= mod.PreGetRoundHint(ref unrefinstance, ref unrefresult, round));
+        
+        __instance = unrefinstance;
+        __result = unrefresult;
+        
+        return true;
+    }
+    
     [HarmonyPostfix]
     private static void Postfix(InGame __instance, ref string __result)
     {
@@ -17,5 +33,12 @@ internal static class InGame_GetRoundHint
         {
             __result = modRoundSet.HintKey(__instance.bridge.GetCurrentRound());
         }
+        var round = __instance.bridge.GetCurrentRound();
+        var unrefresult = __result;
+
+        ModHelper.PerformAdvancedModHook(mod => mod.PostGetRoundHint(__instance, unrefresult, round));
+        
+        __result = unrefresult;
+        
     }
 }

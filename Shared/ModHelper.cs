@@ -225,8 +225,34 @@ public static class ModHelper
         }
     }
 
+    private static void PerformAdvancedModHook<T>(Action<T> action) where T : AdvancedBloonsTD6Mod
+    {
+        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
+        {
+#if BloonsTD6
+            var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
+#elif BloonsAT
+                var canPerformHook = !mod.CheatMod;
+#endif
+            if (canPerformHook)
+            {
+                try
+                {
+                    action.Invoke(mod);
+                }
+                catch (Exception e)
+                {
+                    mod.LoggerInstance.Error(e);
+                }
+            }
+        }
+    }
+    
+
 #if BloonsTD6
     internal static void PerformHook(Action<BloonsTD6Mod> action) => PerformHook<BloonsTD6Mod>(action);
+    internal static void PerformAdvancedModHook(Action<AdvancedBloonsTD6Mod> action) => PerformAdvancedModHook<AdvancedBloonsTD6Mod>(action);
+
 #elif BloonsAT
     internal static void PerformHook(System.Action<BloonsATMod> action)
     {
