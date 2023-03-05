@@ -103,6 +103,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Called when a map model is loaded by the game. Equivelant to MapLoader.Load.
     /// </summary>
     /// <param name="mapModel">The map that was just loaded. It is passed by reference to allow for modifications.</param>
+    [Obsolete("No longer implemented.")]
     public virtual void OnMapModelLoaded(ref MapModel mapModel)
     {
     }
@@ -161,6 +162,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// </summary>
     /// <param name="towerInventory"></param>
     /// <param name="allTowersInTheGame"></param>
+    [Obsolete("No longer implemented.")]
     public virtual void OnTowerInventoryInitialized(TowerInventory towerInventory,
         List<TowerDetailsModel> allTowersInTheGame)
     {
@@ -180,6 +182,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
     /// </summary>
+    [Obsolete("No longer implemented.")]
     public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Il2CppSystem.Action<UnityDisplayNode> action)
     {
     }
@@ -298,7 +301,6 @@ public abstract class BloonsTD6Mod : BloonsMod
 
     /// <summary>
     /// Called right after a Bloon leaks.
-    /// Return 'false' to prevent the leak from happening
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.Leaked
     /// </summary>
@@ -331,6 +333,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.OnDestroy
     /// </summary>
+    [Obsolete("No longer implemented.")]
     public virtual void OnBloonDestroy(Bloon bloon)
     {
     }
@@ -339,6 +342,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Called right after a Bloon is destroyed, but only when it's popped and not leaked
     /// </summary>
     /// <param name="bloon"></param>
+    [Obsolete("No longer implemented")]
     public virtual void OnBloonPopped(Bloon bloon)
     {
     }
@@ -355,18 +359,6 @@ public abstract class BloonsTD6Mod : BloonsMod
         bool ignoreNonTargetable = false, bool blockSpawnChildren = false)
     {
     }
-
-    /*
-    /// <summary>
-    /// Called right after a Bloon is damaged
-    /// <br/>
-    /// Equivalent to a HarmonyPostFix on Bloon.Damaged
-    /// </summary>
-    // this was removed because it was removed in BTD6 version 25
-    public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, bool ignoreNonTargetable = false)
-    {
-    }
-    */
 
     #endregion
 
