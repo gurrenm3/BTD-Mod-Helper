@@ -43,7 +43,11 @@ internal partial class MelonMain
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already.",
-        icon = HideIcon
+        icon = HideIcon,
+        onValueChanged = x =>
+        {
+            PopupScreen.instance.hasSeenModderWarning = x;
+        }
     };
 
     public static readonly ModSettingBool CleanProfile = new(true)
