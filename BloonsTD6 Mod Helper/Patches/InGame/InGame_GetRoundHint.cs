@@ -14,14 +14,13 @@ internal static class InGame_GetRoundHint
         var result = true;
         var unrefinstance = __instance;
         var unrefresult = __result;
-        var round = __instance.bridge.GetCurrentRound();
         
-        ModHelper.PerformAdvancedModHook(mod => result &= mod.PreGetRoundHint(ref unrefinstance, ref unrefresult, round));
+        ModHelper.PerformAdvancedModHook(mod => result &= mod.PreGetRoundHint(ref unrefinstance, ref unrefresult));
         
         __instance = unrefinstance;
         __result = unrefresult;
         
-        return true;
+        return result;
     }
     
     [HarmonyPostfix]
@@ -33,10 +32,9 @@ internal static class InGame_GetRoundHint
         {
             __result = modRoundSet.HintKey(__instance.bridge.GetCurrentRound());
         }
-        var round = __instance.bridge.GetCurrentRound();
         var unrefresult = __result;
 
-        ModHelper.PerformAdvancedModHook(mod => mod.PostGetRoundHint(__instance, unrefresult, round));
+        ModHelper.PerformAdvancedModHook(mod => mod.PostGetRoundHint(__instance, ref unrefresult));
         
         __result = unrefresult;
         

@@ -2,12 +2,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.Api.Towers;
 using UnityEngine;
 using static BTD_Mod_Helper.Api.Enums.VanillaSprites;
 

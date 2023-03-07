@@ -29,7 +29,7 @@ internal static class TowerManager_IsParagonLocked
         var result = tower.towerModel.GetModTower() is {paragonUpgrade: ModParagonUpgrade modParagonUpgrade} &&
                      modParagonUpgrade.RestrictUpgrading(tower);
 
-        ModHelper.PerformAdvancedModHook(mod => mod.PostIsParagonLocked(__instance, tower, result));
+        ModHelper.PerformAdvancedModHook(mod => mod.PostIsParagonLocked(__instance, tower, ref result));
 
         __result = result;
     }

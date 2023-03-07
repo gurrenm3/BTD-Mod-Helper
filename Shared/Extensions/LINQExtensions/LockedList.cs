@@ -37,7 +37,7 @@ public static class LockedList
                 return item;
         }
 
-        throw new NullReferenceException();
+        throw new ArgumentNullException(nameof(source), "No element satisfies the condition in predicate.");
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public static class LockedList
     /// <returns></returns>
     public static T Last<T>(this LockList<T> source)
     {
-        return source[source.Count - 1];
+        return source[^1];
     }
 
     /// <summary>
