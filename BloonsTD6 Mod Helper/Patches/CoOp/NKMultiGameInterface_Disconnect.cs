@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using Il2CppNinjaKiwi.NKMulti;
+﻿using Il2CppNinjaKiwi.NKMulti;
 
 namespace BTD_Mod_Helper.Patches
 {

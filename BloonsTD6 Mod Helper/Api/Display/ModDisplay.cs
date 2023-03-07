@@ -2,7 +2,6 @@
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
 using System;
-using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Display;

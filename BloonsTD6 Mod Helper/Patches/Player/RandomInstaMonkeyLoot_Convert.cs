@@ -1,6 +1,4 @@
-using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Store.Loot;
-using Il2CppAssets.Scripts.Unity;
 using UnityEngine;
 using static Il2CppAssets.Scripts.Models.Towers.TowerType;
 namespace BTD_Mod_Helper.Patches;

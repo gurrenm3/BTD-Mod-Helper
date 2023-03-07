@@ -1,10 +1,6 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Il2CppInterop.Runtime;
-using Boolean = Il2CppSystem.Boolean;
-using Int32 = Il2CppSystem.Int32;
 using Object = Il2CppSystem.Object;
-using Single = Il2CppSystem.Single;
 
 namespace BTD_Mod_Helper.Extensions;
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Il2CppAssets.Scripts.Unity.Display;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Api;
@@ -93,7 +92,7 @@ internal class ResourceHandler
 
     internal static byte[] GetTextureBytes(string guid)
     {
-        return Resources.TryGetValue(guid, out var bytes) ? bytes : null;
+        return Resources.TryGetValue(guid, out var bytes) ? bytes : Array.Empty<byte>();
     }
 
     internal static readonly Dictionary<string, Sprite> SpriteCache = new();

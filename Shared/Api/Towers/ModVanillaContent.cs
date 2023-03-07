@@ -43,15 +43,13 @@ public abstract class ModVanillaContent : ModContent
     /// </summary>
     internal virtual void Apply(Model model)
     {
-            
     }
-        
+    
     /// <summary>
     /// Applies the modifications to the vanilla content
     /// </summary>
     internal virtual void Apply(Model model, GameModel gameModel)
     {
-            
     }
 
     /// <summary>

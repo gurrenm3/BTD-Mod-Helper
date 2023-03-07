@@ -1,17 +1,4 @@
-﻿using System;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Unity.Display;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Display;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using Console = System.Console;
-using Exception = System.Exception;
-using Object = UnityEngine.Object;
+﻿using Il2CppAssets.Scripts.Unity.Display;
 
 namespace BTD_Mod_Helper.Patches.Resources;
 

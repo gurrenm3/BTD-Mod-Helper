@@ -1,6 +1,4 @@
-﻿using Il2CppAssets.Scripts.Models;
-
-namespace BTD_Mod_Helper.Patches.Resources;
+﻿namespace BTD_Mod_Helper.Patches.Resources;
 /*
 /// <summary>
 /// This makes the first GameModel loaded always be the one returned, even if another GameModel load tries to happen

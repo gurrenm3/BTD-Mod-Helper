@@ -5,5 +5,5 @@
 /// </summary>
 public interface IModContent
 {
-        
+    
 }

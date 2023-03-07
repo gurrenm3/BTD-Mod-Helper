@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Il2CppAssets.Scripts.Data;
-using Il2CppAssets.Scripts.Models.TowerSets.Mods;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Patches;
-using BTD_Mod_Helper.UI.Modded;
-using Il2CppAssets.Scripts.Models.TowerSets;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
@@ -81,7 +71,7 @@ internal partial class MelonMain : BloonsTD6Mod
             return;
 
         NotificationMgr.CheckForNotifications();
-        RoundSetChanger.EnsureHidden();
+        //RoundSetChanger.EnsureHidden();  //TODO see if this is actually needed
 
 #if BTD6_DEBUG
         if (TowerSelectionMenu.instance != null &&
@@ -91,6 +81,7 @@ internal partial class MelonMain : BloonsTD6Mod
             GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
         }
 #endif
+        
     }
 
     public override void OnTitleScreen()

@@ -11,14 +11,14 @@ internal class Guard
 
         if (string.IsNullOrEmpty(message))
             throw new ArgumentNullException(argumentName);
-        else
-            throw new ArgumentNullException(argumentName, message);
+        
+        throw new ArgumentNullException(argumentName, message);
     }
 
 
     public static void ThrowIfStringIsNull(string stringToCheck, string message)
     {
         if (string.IsNullOrEmpty(stringToCheck))
-            throw new Exception(message);
+            throw new ArgumentNullException(message);
     }
 }

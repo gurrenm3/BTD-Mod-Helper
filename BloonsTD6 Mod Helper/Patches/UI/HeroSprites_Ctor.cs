@@ -1,7 +1,3 @@
-using Il2CppAssets.Scripts.Data.Global;
-using HarmonyLib;
-using MelonLoader;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 /*[HarmonyPatch(typeof(HeroSprites), MethodType.Constructor)]

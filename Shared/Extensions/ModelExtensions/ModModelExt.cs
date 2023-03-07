@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Il2CppAssets.Scripts.Models.Powers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Models.TowerSets.Mods;
-using Il2CppAssets.Scripts.Unity.Towers.Mods;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Enums;

@@ -1,9 +1,4 @@
-﻿using System;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Helpers;
-using Il2CppNinjaKiwi.Common;
-
-namespace BTD_Mod_Helper.Patches.Resources;
+﻿namespace BTD_Mod_Helper.Patches.Resources;
 
 /*[HarmonyPatch(typeof(LocalizationManager._LoadTableAsync_d__45),
     nameof(LocalizationManager._LoadTableAsync_d__45.MoveNext))]

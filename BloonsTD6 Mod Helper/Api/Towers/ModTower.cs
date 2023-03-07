@@ -6,9 +6,7 @@ using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using System.Collections.Generic;
 using System.Linq;
-using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity.Bridge;
-using Il2CppAssets.Scripts.Utils;
 
 namespace BTD_Mod_Helper.Api.Towers;
 

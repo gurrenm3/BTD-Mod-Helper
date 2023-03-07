@@ -1,5 +1,4 @@
 ﻿using System;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.Events;

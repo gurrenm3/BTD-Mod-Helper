@@ -14,7 +14,6 @@ using BTD_Mod_Helper.Api.Enums;
 
 #if BloonsTD6
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
-using Il2CppAssets.Scripts.Utils;
 #elif BloonsAT
 using Il2CppAssets.Scripts.Models.Display;
 #endif
@@ -99,17 +98,7 @@ namespace BTD_Mod_Helper.Extensions
         [Obsolete("use GetAllBloonToSim instead")]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
-            if (InGame.instance == null)
-            {
-                return Array.Empty<BloonToSimulation>().ToList();
-            }
-
-            var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
-            if (bloonSims is null || !bloonSims.Any())
-                return Array.Empty<BloonToSimulation>().ToList();
-
-            var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
-            return results;
+            return GetAllBloonToSim(bloonModel);
         }
 
         /// <summary>

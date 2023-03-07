@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.MapSets;
 using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Simulation.SMath;
-using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Helpers;
 using UnityEngine;

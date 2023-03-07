@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Simulation.Display;
 using Il2CppAssets.Scripts.Simulation.Towers;
@@ -8,7 +7,6 @@ using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Simulation.Factory;
 using System.Linq;
-using Il2CppSystem.Linq;
 
 namespace BTD_Mod_Helper.Extensions;
 

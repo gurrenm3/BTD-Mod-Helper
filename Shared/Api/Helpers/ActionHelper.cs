@@ -21,6 +21,6 @@ public static class ActionHelper
     /// </summary>
     public static Action<T> CreateFromOptionalFunction<T>(Function<T> funcToExecute)
     {
-        return (funcToExecute is null) ? t => { } : new Action<T>(t => { funcToExecute(); });
+        return (funcToExecute is null) ? t => { } : new Action<T>(_ => { funcToExecute(); });
     }
 }

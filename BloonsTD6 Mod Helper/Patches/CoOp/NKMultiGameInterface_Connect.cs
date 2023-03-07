@@ -1,6 +1,4 @@
 ﻿using System;
-using HarmonyLib;
-using MelonLoader;
 using Il2CppNinjaKiwi.NKMulti;
 using Task = Il2CppSystem.Threading.Tasks.Task;
 
@@ -10,9 +8,9 @@ namespace BTD_Mod_Helper.Patches
     internal class NKMultiGameInterface_Connect
     {
         [HarmonyPostfix]
-        public static void Postfix(NKMultiGameInterface __instance, ref Task __result) => __result.ContinueWith(new Action<Task>(task => OnConnectTaskFinished(__instance, task)));
+        public static void Postfix(NKMultiGameInterface __instance, ref Task __result) => __result.ContinueWith(new Action<Task>(_ => OnConnectTaskFinished(__instance)));
 
-        private static void OnConnectTaskFinished(NKMultiGameInterface instance, Task obj)
+        private static void OnConnectTaskFinished(NKMultiGameInterface instance)
         {
             if (instance.IsConnected)
             {

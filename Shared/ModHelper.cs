@@ -204,7 +204,7 @@ public static class ModHelper
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsMod
     {
-        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
+        foreach (var mod in Mods.OfType<T>().OrderBy(mod => mod.Priority))
         {
 #if BloonsTD6
             var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();

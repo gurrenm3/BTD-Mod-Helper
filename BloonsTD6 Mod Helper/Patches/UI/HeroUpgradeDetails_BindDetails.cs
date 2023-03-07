@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using Il2CppAssets.Scripts.Unity.UI_New.HeroInGame;
-using Il2CppAssets.Scripts.Unity.UI_New.Main.HeroSelect;
+﻿using Il2CppAssets.Scripts.Unity.UI_New.Main.HeroSelect;
 using BTD_Mod_Helper.Api.Towers;
-using HarmonyLib;
 
 namespace BTD_Mod_Helper.Patches.UI
 {

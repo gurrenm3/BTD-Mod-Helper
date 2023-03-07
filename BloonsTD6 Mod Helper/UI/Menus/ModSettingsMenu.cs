@@ -5,12 +5,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
-using Il2CppSystem;
-using MelonLoader.TinyJSON;
-using Newtonsoft.Json;
 using UnityEngine;
-using Console = System.Console;
-using Exception = System.Exception;
 using Object = Il2CppSystem.Object;
 
 namespace BTD_Mod_Helper.UI.Menus;

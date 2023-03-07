@@ -10,8 +10,6 @@ using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Enums;
-using Nullable = Il2CppSystem.Nullable;
 
 namespace BTD_Mod_Helper.Api.Towers;
 

@@ -5,10 +5,8 @@ using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
-using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
 #if BloonsTD6

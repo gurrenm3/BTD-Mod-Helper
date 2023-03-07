@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

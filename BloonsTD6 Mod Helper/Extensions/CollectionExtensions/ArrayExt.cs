@@ -1,8 +1,6 @@
 ﻿using System;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime;
-using Il2CppInterop.Runtime.InteropTypes;
-using Il2CppInterop.Runtime.Runtime;
 
 namespace BTD_Mod_Helper.Extensions;
 

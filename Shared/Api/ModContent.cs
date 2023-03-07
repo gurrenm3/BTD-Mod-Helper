@@ -4,9 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Bloons;
-using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Towers;
 using UnityEngine;
 #if BloonsTD6
 #endif
@@ -326,14 +324,14 @@ namespace BTD_Mod_Helper.Api
         /// <returns>The texture's GUID</returns>
         public static string GetTextureGUID<T>(string name) where T : BloonsMod
         {
-            var mod = GetInstance<T>();
-            if (mod == null)
+            var bloonsMod = GetInstance<T>();
+            if (bloonsMod == null)
             {
                 BloonsMod.GotModTooSoon.Add(typeof(T));
                 return WrapGuid(GetId<T>(name));
             }
 
-            return GetTextureGUID(mod, name);
+            return GetTextureGUID(bloonsMod, name);
         }
 
 
@@ -357,14 +355,14 @@ namespace BTD_Mod_Helper.Api
         /// </summary>
         public static string GetId<T>(string name) where T : BloonsMod
         {
-            var mod = GetInstance<T>();
-            if (mod == null)
+            var bloonsMod = GetInstance<T>();
+            if (bloonsMod == null)
             {
                 BloonsMod.GotModTooSoon.Add(typeof(T));
                 return typeof(T).Assembly.GetName().Name + "-" + name;
             }
 
-            return GetId(mod, name);
+            return GetId(bloonsMod, name);
         }
 
         /// <summary>

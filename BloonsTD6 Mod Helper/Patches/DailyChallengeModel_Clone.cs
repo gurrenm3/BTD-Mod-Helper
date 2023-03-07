@@ -1,6 +1,6 @@
-﻿using Il2CppAssets.Scripts.Models.ServerEvents;
+﻿using System.Linq;
+using Il2CppAssets.Scripts.Models.ServerEvents;
 using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;
 
 namespace BTD_Mod_Helper.Patches;
@@ -12,37 +12,36 @@ internal static class DailyChallengeModel_Clone
     private static void Postfix(DailyChallengeModel __result)
     {
         if (__result?.towers == null) return;
-
-        foreach (var modTower in ModContent.GetContent<ModTower>())
+        
+        foreach (var modTower in ModContent.GetContent<ModTower>().Where(x => x.AlwaysIncludeInChallenge))
         {
             var towerId = modTower.Id;
-            if (modTower.AlwaysIncludeInChallenge)
-            {
-                var towerData = __result.towers.FirstOrDefault(data => data.tower == towerId);
-                if (towerData == null)
-                {
-                    towerData = new TowerData
-                    {
-                        tower = towerId,
-                        isHero = modTower is ModHero
-                    };
-                    __result.towers.Add(towerData);
-                }
 
-                if (modTower is ModHero)
+            var towerData = __result.towers.FirstOrDefault(data => data.tower == towerId);
+            if (towerData == null)
+            {
+                towerData = new TowerData
                 {
-                    var chooseHero =
-                        __result.towers.FirstOrDefault(data => data.isHero && data.tower == "ChosenPrimaryHero");
-                    if (chooseHero?.max != 1)
-                    {
-                        towerData.max = 1;
-                    }
-                }
-                else
+                    tower = towerId,
+                    isHero = modTower is ModHero
+                };
+                __result.towers.Add(towerData);
+            }
+            
+            if (modTower is ModHero)
+            {
+                var chooseHero =
+                    __result.towers.FirstOrDefault(data => data.isHero && data.tower == "ChosenPrimaryHero");
+                if (chooseHero?.max != 1)
                 {
-                    towerData.max = -1;
+                    towerData.max = 1;
                 }
             }
+            else
+            {
+                towerData.max = -1;
+            }
+
         }
     }
 }

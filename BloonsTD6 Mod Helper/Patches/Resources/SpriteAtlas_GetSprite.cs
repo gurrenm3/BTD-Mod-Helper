@@ -15,18 +15,20 @@ internal static class SpriteAtlas_GetSprite
         var unrefname = name;
         var unref__result = __result;
 
+        
+        ModHelper.PerformAdvancedModHook(mod =>
+            result &= mod.PreSpriteLoaded(ref unref__instance, ref unrefname, ref unref__result));
+        __instance = unref__instance;
+        name = unrefname;
+        __result = unref__result;
+        
         if (__instance.name == ModContent.HijackSpriteAtlas && ResourceHandler.GetSprite(name) is Sprite spr)
         {
             spr.texture.mipMapBias = -1;
             __result = spr;
             result = false;
         }
-        ModHelper.PerformAdvancedModHook(mod =>
-            result &= mod.PreSpriteLoaded(ref unref__instance, ref unrefname, ref unref__result));
-
-        __instance = unref__instance;
-        name = unrefname;
-        __result = unref__result;
+       
         
         return result;
     }

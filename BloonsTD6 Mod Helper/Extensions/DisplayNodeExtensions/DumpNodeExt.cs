@@ -1,5 +1,4 @@
 ﻿using Il2CppAssets.Scripts.Unity.Display;
-using Il2CppAssets.Scripts.Utils;
 using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
@@ -32,9 +31,9 @@ public static partial class DumpNodeExt
 
         if (node.isSprite)
         {
-            foreach (var sprite in node.gameObject.GetComponentsInChildren<SpriteRenderer>().Select(spriteRenderer=>spriteRenderer.sprite))
+            foreach (var texture in node.gameObject.GetComponentsInChildren<SpriteRenderer>().Select(spriteRenderer=>spriteRenderer.sprite.texture))
             {
-                sprite.texture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{sprite.texture.name}.png");
+                texture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{texture.name}.png");
             }
         }
     }

@@ -1,10 +1,7 @@
 ﻿#if BloonsTD6
 using System;
-using Il2CppAssets.Scripts.Unity.Menu;
-using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.ModOptions
 {
@@ -59,7 +56,7 @@ namespace BTD_Mod_Helper.Api.ModOptions
         /// <summary>
         /// Old way to do a button before ModSettingButton was a thing
         /// </summary>
-        [Obsolete] public bool IsButton { get; set; }
+        [Obsolete("Use ModSettingButton")] public bool IsButton { get; set; }
 
         /// <summary>
         /// Create a new ModSetting bool with the given value as default
@@ -85,10 +82,10 @@ namespace BTD_Mod_Helper.Api.ModOptions
             base.SetValue(val);
             try
             {
-                if (currentOption is not null && currentOption != null)
+                if (currentOption is not null)
                 {
                     var butt = currentOption.GetDescendent<ModHelperButton>("Button");
-                    if (butt is not null && butt != null)
+                    if (butt is not null)
                     {
                         currentAction?.Invoke((bool) val, butt);
                     }
