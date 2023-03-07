@@ -10,6 +10,9 @@ public abstract class BloonsTD6Mod : BTD_Mod_Helper.BloonsMod
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [MelonLoader.MelonBase](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonBase 'MelonLoader.MelonBase') &#129106; [MelonLoader.MelonTypeBase&lt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonTypeBase-1 'MelonLoader.MelonTypeBase`1')[MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonTypeBase-1 'MelonLoader.MelonTypeBase`1') &#129106; [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod') &#129106; [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod') &#129106; BloonsTD6Mod
+
+Derived  
+&#8627; [AdvancedBloonsTD6Mod](BTD_Mod_Helper.AdvancedBloonsTD6Mod.md 'BTD_Mod_Helper.AdvancedBloonsTD6Mod')
 ### Methods
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.ActOnMessage(Message)'></a>
@@ -404,23 +407,6 @@ public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Action<Un
 
 `action` [Il2CppSystem.Action](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Action 'Il2CppSystem.Action')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel)'></a>
-
-## BloonsTD6Mod.OnNewGameModel(GameModel) Method
-
-Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
-<br/>  
-Equivalent to a HarmonyPostFix on GameModel_CreatedModded
-
-```csharp
-public virtual void OnNewGameModel(GameModel result);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel).result'></a>
-
-`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
-
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,List_ModModel_)'></a>
 
 ## BloonsTD6Mod.OnNewGameModel(GameModel, List<ModModel>) Method
@@ -441,6 +427,23 @@ public virtual void OnNewGameModel(GameModel result, List<ModModel> mods);
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,List_ModModel_).mods'></a>
 
 `mods` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel)'></a>
+
+## BloonsTD6Mod.OnNewGameModel(GameModel) Method
+
+Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
+<br/>  
+Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+
+```csharp
+public virtual void OnNewGameModel(GameModel result);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel).result'></a>
+
+`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnPeerConnected(NKMultiGameInterface,int)'></a>
 
@@ -986,7 +989,6 @@ public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile 
 ## BloonsTD6Mod.PostBloonLeaked(Bloon) Method
 
 Called right after a Bloon leaks.  
-Return 'false' to prevent the leak from happening  
 <br/>  
 Equivalent to a HarmonyPostFix on Bloon.Leaked
 

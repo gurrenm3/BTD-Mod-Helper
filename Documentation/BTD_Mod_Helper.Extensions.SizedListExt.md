@@ -12,30 +12,6 @@ public static class SizedListExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SizedListExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_)'></a>
-
-## SizedListExt.Any<T>(this SizedList<T>) Method
-
-Return whether or not there are any elements in this
-
-```csharp
-public static bool Any<T>(this SizedList<T> source)
-    where T : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_).source'></a>
-
-`source` [Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_,System.Func_T,bool_)'></a>
 
 ## SizedListExt.Any<T>(this SizedList<T>, Func<T,bool>) Method
@@ -60,6 +36,30 @@ public static bool Any<T>(this SizedList<T> source, System.Func<T,bool> predicat
 <a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_,System.Func_T,bool_).predicate'></a>
 
 `predicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.SizedListExt.Any<T>(this SizedList<T>, System.Func<T,bool>).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_)'></a>
+
+## SizedListExt.Any<T>(this SizedList<T>) Method
+
+Return whether or not there are any elements in this
+
+```csharp
+public static bool Any<T>(this SizedList<T> source)
+    where T : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.Any_T_(thisSizedList_T_).source'></a>
+
+`source` [Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -144,29 +144,6 @@ public static int FindIndex<T>(this SizedList<T> source, System.Func<T,bool> pre
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_)'></a>
-
-## SizedListExt.First<T>(this SizedList<T>) Method
-
-Return the first element in the collection
-
-```csharp
-public static T First<T>(this SizedList<T> source);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_).source'></a>
-
-`source` [Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_).T 'BTD_Mod_Helper.Extensions.SizedListExt.First<T>(this SizedList<T>).T')
-
 <a name='BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_,System.Func_T,bool_)'></a>
 
 ## SizedListExt.First<T>(this SizedList<T>, Func<T,bool>) Method
@@ -195,28 +172,28 @@ public static T First<T>(this SizedList<T> source, System.Func<T,bool> predicate
 #### Returns
 [T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.SizedListExt.First<T>(this SizedList<T>, System.Func<T,bool>).T')
 
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_)'></a>
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_)'></a>
 
-## SizedListExt.FirstOrDefault<T>(this SizedList<T>) Method
+## SizedListExt.First<T>(this SizedList<T>) Method
 
-Return the first element in the collection, or return default if it's null
+Return the first element in the collection
 
 ```csharp
-public static T FirstOrDefault<T>(this SizedList<T> source);
+public static T First<T>(this SizedList<T> source);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_).T'></a>
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_).source'></a>
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_).source'></a>
 
 `source` [Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
 
 #### Returns
-[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_).T 'BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault<T>(this SizedList<T>).T')
+[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.First_T_(thisSizedList_T_).T 'BTD_Mod_Helper.Extensions.SizedListExt.First<T>(this SizedList<T>).T')
 
 <a name='BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_,System.Func_T,bool_)'></a>
 
@@ -245,6 +222,29 @@ public static T FirstOrDefault<T>(this SizedList<T> source, System.Func<T,bool> 
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault<T>(this SizedList<T>, System.Func<T,bool>).T')
+
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_)'></a>
+
+## SizedListExt.FirstOrDefault<T>(this SizedList<T>) Method
+
+Return the first element in the collection, or return default if it's null
+
+```csharp
+public static T FirstOrDefault<T>(this SizedList<T> source);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_).source'></a>
+
+`source` [Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.SizedListExt.md#BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault_T_(thisSizedList_T_).T 'BTD_Mod_Helper.Extensions.SizedListExt.FirstOrDefault<T>(this SizedList<T>).T')
 
 <a name='BTD_Mod_Helper.Extensions.SizedListExt.ForEach_T_(thisSizedList_T_,System.Action_T_)'></a>
 

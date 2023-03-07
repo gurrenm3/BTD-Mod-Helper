@@ -91,32 +91,6 @@ The Behavior you want
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehaviors_T_(thisTowerModel).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehaviors<T>(this TowerModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel)'></a>
-
-## TowerModelBehaviorExt.HasBehavior<T>(this TowerModel) Method
-
-Check if this has a specific Behavior
-
-```csharp
-public static bool HasBehavior<T>(this TowerModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,T)'></a>
 
 ## TowerModelBehaviorExt.HasBehavior<T>(this TowerModel, T) Method
@@ -147,28 +121,31 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel)'></a>
 
-## TowerModelBehaviorExt.RemoveBehavior<T>(this TowerModel) Method
+## TowerModelBehaviorExt.HasBehavior<T>(this TowerModel) Method
 
-Remove the first Behavior of Type T
+Check if this has a specific Behavior
 
 ```csharp
-public static void RemoveBehavior<T>(this TowerModel model)
+public static bool HasBehavior<T>(this TowerModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel).T'></a>
 
 `T`
 
-The Behavior you want to remove
+The Behavior you're checking for
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,T)'></a>
 
@@ -196,6 +173,29 @@ The Behavior you want to remove
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,T).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior<T>(this TowerModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel)'></a>
+
+## TowerModelBehaviorExt.RemoveBehavior<T>(this TowerModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this TowerModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehaviors_T_(thisTowerModel)'></a>
 

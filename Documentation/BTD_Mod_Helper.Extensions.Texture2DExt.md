@@ -36,30 +36,6 @@ Color to make new texture
 #### Returns
 [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
 
-<a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float)'></a>
-
-## Texture2DExt.CreateSpriteFromTexture(this Texture2D, float) Method
-
-Create a Sprite from this Texture2D
-
-```csharp
-public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float).texture2D'></a>
-
-`texture2D` [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
-
-<a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float).pixelsPerUnit'></a>
-
-`pixelsPerUnit` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-Number of pixels you want in each unit. More pixels means bigger sprite in game
-
-#### Returns
-[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
-
 <a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float,Vector2)'></a>
 
 ## Texture2DExt.CreateSpriteFromTexture(this Texture2D, float, Vector2) Method
@@ -84,6 +60,30 @@ Number of pixels you want in each unit. More pixels means bigger sprite in game
 <a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float,Vector2).pivot'></a>
 
 `pivot` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
+
+#### Returns
+[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+<a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float)'></a>
+
+## Texture2DExt.CreateSpriteFromTexture(this Texture2D, float) Method
+
+Create a Sprite from this Texture2D
+
+```csharp
+public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float).texture2D'></a>
+
+`texture2D` [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
+
+<a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateSpriteFromTexture(thisTexture2D,float).pixelsPerUnit'></a>
+
+`pixelsPerUnit` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Number of pixels you want in each unit. More pixels means bigger sprite in game
 
 #### Returns
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')

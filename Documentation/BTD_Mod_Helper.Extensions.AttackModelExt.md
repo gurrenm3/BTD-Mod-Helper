@@ -131,3 +131,8 @@ Weapon to add
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 Index within weapons array
+
+#### Exceptions
+
+[System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System.ArgumentException')  
+thrown when index < 0
