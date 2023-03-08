@@ -14,6 +14,7 @@ using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity.Map;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
+using Il2CppAssets.Scripts.Unity.UI_New.Pause;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D;
@@ -567,5 +568,25 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     {
     }
     
+    /// <summary>
+    /// Called before the pause screen is opened
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on PauseScreen.Open
+    /// </summary>
+    /// <param name="pauseScreen"></param>
+    public virtual bool PrePauseScreenOpened(ref PauseScreen pauseScreen)
+    {
+        return true;
+    }
     
+    /// <summary>
+    /// Called after the pause screen is opened
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on PauseScreen.Open
+    /// </summary>
+    /// <param name="pauseScreen"></param>
+    public virtual void PostPauseScreenOpened(PauseScreen pauseScreen)
+    {
+    }
 }
