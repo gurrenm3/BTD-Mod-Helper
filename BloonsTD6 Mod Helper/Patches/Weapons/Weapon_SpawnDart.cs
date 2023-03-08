@@ -3,7 +3,7 @@
 namespace BTD_Mod_Helper.Patches.Weapons;
 
 [HarmonyPatch(typeof(Weapon), nameof(Weapon.SpawnDart))]
-internal static class Weapon_Fire
+internal static class Weapon_SpawnDart
 {
     [HarmonyPostfix]
     public static void Postfix(Weapon __instance)

@@ -112,7 +112,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called when the player's ProfileModel is loaded.
     /// <br/>
-    /// Equivalent to a HarmonyPostFix on ProfileModel_Validate
+    /// Equivalent to a HarmonyPostFix on ProfileModel.Validate
     /// </summary>
     public virtual void OnProfileLoaded(ProfileModel result)
     {
@@ -151,7 +151,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers
     /// <br/>
-    /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+    /// Equivalent to a HarmonyPostFix on GameModel.CreatedModded
     /// </summary>
     public virtual void OnNewGameModel(GameModel result)
     {
@@ -171,7 +171,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers
     /// <br/>
-    /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+    /// Equivalent to a HarmonyPostFix on GameModel.CreatedModded
     /// </summary>
     public virtual void OnNewGameModel(GameModel result, List<ModModel> mods)
     {
@@ -180,7 +180,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called when a display is being loaded such as a towers 3d model
     /// <br/>
-    /// Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+    /// Equivalent to a HarmonyPostFix on GameModel.CreatedModded
     /// </summary>
     [Obsolete("No longer implemented.")]
     public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Il2CppSystem.Action<UnityDisplayNode> action)
@@ -190,7 +190,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called when the games audioFactory is loaded
     /// <br/>
-    /// Equivalent to a HarmonyPostFix on AudioFactory_Start
+    /// Equivalent to a HarmonyPostFix on AudioFactory.Start
     /// </summary>
     public virtual void OnAudioFactoryStart(AudioFactory audioFactory)
     {
@@ -199,7 +199,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <summary>
     /// Called when a sprite is being loaded
     /// <br/>
-    /// Equivalent to a HarmonyPostFix on ResourceLoader_LoadSpriteFromSpriteReferenceAsync
+    /// Equivalent to a HarmonyPostFix on ResourceLoader.LoadSpriteFromSpriteReferenceAsync
     /// </summary>
     [Obsolete("No longer implemented")]
     public virtual void OnSpriteLoad(SpriteReference spriteref, Image image)

@@ -1,4 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
@@ -25,7 +26,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the game shows a hint for a specific round
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on InGame_GetRoundHint
+    /// Equivalent to a HarmonyPrefix on InGame.GetRoundHint
     /// </summary>
     /// <param name="inGame"></param>
     /// <param name="text">the text the hint will have, passed as a ref to allow changes</param>
@@ -37,7 +38,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// called after the game shows a hint for a specific round
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on InGame_GetRoundHint
+    /// Equivalent to a HarmonyPostfix on InGame.GetRoundHint
     /// </summary>
     /// <param name="inGame"></param>
     /// <param name="text">the text the hint will have, passed as a ref to allow changes</param>
@@ -49,7 +50,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the game thinks a paragon is locked
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on TowerManager_IsParagonLocked
+    /// Equivalent to a HarmonyPrefix on TowerManager.IsParagonLocked
     /// </summary>
     /// <param name="tower"></param>
     /// <param name="result">The result of the method, since it returns a bool, different from what you return</param>
@@ -62,7 +63,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after the game thinks a paragon is locked
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on TowerManager_IsParagonLocked
+    /// Equivalent to a HarmonyPostfix on TowerManager.IsParagonLocked
     /// </summary>
     /// <param name="tower"></param>
     /// <param name="result">The result of the method, since it returns a bool, different from what you return</param>
@@ -75,7 +76,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the a game is won
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on InGame_OnVictory
+    /// Equivalent to a HarmonyPrefix on InGame.OnVictory
     /// </summary>
     public virtual bool PreOnVictory(InGame inGame)
     {
@@ -86,7 +87,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the player returns to the MainMenu from a match
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on InGame_Quit
+    /// Equivalent to a HarmonyPrefix on InGame.Quit
     /// </summary>
     public virtual bool PreMatchEnd(InGame inGame)
     {
@@ -97,7 +98,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the game is restarted
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on InGame_Restart
+    /// Equivalent to a HarmonyPrefix on InGame.Restart
     /// </summary>
     public virtual bool PreRestart(InGame inGame)
     {
@@ -108,7 +109,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the game is started
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on InGame_Restart
+    /// Equivalent to a HarmonyPrefix on InGame.Restart
     /// </summary>
     public virtual bool PreMatchStart(InGame inGame)
     {
@@ -119,7 +120,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a sprite is loaded from a SpriteAtlas
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on SpriteAtlas_GetSprite
+    /// Equivalent to a HarmonyPrefix on SpriteAtlas.GetSprite
     /// </summary>
     /// <param name="spriteAtlas"></param>
     /// <param name="name"></param>
@@ -133,7 +134,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after a sprite is loaded from a SpriteAtlas
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on SpriteAtlas_GetSprite
+    /// Equivalent to a HarmonyPostfix on SpriteAtlas.GetSprite
     /// </summary>
     /// <param name="spriteAtlas"></param>
     /// <param name="name"></param>
@@ -146,7 +147,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the degree mutator for a paragon is loaded
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on ParagonTower_GetDegreeMutator
+    /// Equivalent to a HarmonyPrefix on ParagonTower.GetDegreeMutator
     /// </summary>
     /// <param name="paragonTower"></param>
     /// <param name="investment"></param>
@@ -161,7 +162,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after the degree mutator for a paragon is loaded
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on ParagonTower_GetDegreeMutator
+    /// Equivalent to a HarmonyPostfix on ParagonTower.GetDegreeMutator
     /// </summary>
     /// <param name="paragonTower"></param>
     /// <param name="investment"></param>
@@ -175,7 +176,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the degree for a paragon is changed
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on ParagonTower_UpdateDegree
+    /// Equivalent to a HarmonyPrefix on ParagonTower.UpdateDegree
     /// </summary>
     /// <param name="paragonTower"></param>
     /// <returns></returns>
@@ -187,7 +188,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after the degree for a paragon is changed
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on ParagonTower_UpdateDegree
+    /// Equivalent to a HarmonyPostfix on ParagonTower.UpdateDegree
     /// </summary>
     /// <param name="paragonTower"></param>
     public virtual void PostParagonDegreeUpdated(ParagonTower paragonTower)
@@ -198,7 +199,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a tower is sold
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on Tower_OnSold
+    /// Equivalent to a HarmonyPrefix on Tower.OnSold
     /// </summary>
     /// <param name="tower"></param>
     /// <param name="amount"></param>
@@ -212,7 +213,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a tower is upgraded
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on TowerManager_UpgradeTower
+    /// Equivalent to a HarmonyPrefix on TowerManager.UpgradeTower
     /// </summary>
     /// <param name="tower"></param>
     /// <param name="upgradeName"></param>
@@ -227,7 +228,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before any button in the game is clicked
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on Button_OnPointerClick
+    /// Equivalent to a HarmonyPrefix on Button.OnPointerClick
     /// </summary>
     /// <param name="button"></param>
     /// <param name="clickData"></param>
@@ -240,7 +241,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after any button in the game is clicked
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on Button_OnPointerClick
+    /// Equivalent to a HarmonyPostfix on Button.OnPointerClick
     /// </summary>
     /// <param name="button"></param>
     /// <param name="clickData"></param>
@@ -252,7 +253,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a new bloon emission is added to the spawner
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on Spawner_AddEmissions
+    /// Equivalent to a HarmonyPrefix on Spawner.AddEmissions
     /// </summary>
     /// <param name="spawner"></param>
     /// <param name="newEmissions"></param>
@@ -268,7 +269,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after a new bloon emission is added to the spawner
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on Spawner_AddEmissions
+    /// Equivalent to a HarmonyPostfix on Spawner.AddEmissions
     /// </summary>
     /// <param name="spawner"></param>
     /// <param name="newEmissions"></param>
@@ -284,7 +285,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a bloon is emitted from a spawner
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on Spawner_Emit
+    /// Equivalent to a HarmonyPrefix on Spawner.Emit
     /// </summary>
     /// <param name="spawner"></param>
     /// <param name="bloonModel"></param>
@@ -302,7 +303,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after a bloon is emitted from a spawner
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on Spawner_Emit
+    /// Equivalent to a HarmonyPostfix on Spawner.Emit
     /// </summary>
     /// <param name="spawner"></param>
     /// <param name="bloonModel"></param>
@@ -319,12 +320,12 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before the mouse goes over a button
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on Button_OnPointerEnter
+    /// Equivalent to a HarmonyPrefix on Button.OnPointerEnter
     /// </summary>
     /// <param name="button"></param>
     /// <param name="eventData"></param>
     /// <returns></returns>
-    public virtual bool PrePointerEnterButton(ref Button button, ref PointerEventData eventData)
+    public virtual bool PrePointerEnterSelectable(ref Selectable button, ref PointerEventData eventData)
     {
         return true;
     }
@@ -332,36 +333,36 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after the mouse goes over a button
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on Button_OnPointerEnter
+    /// Equivalent to a HarmonyPostfix on Button.OnPointerEnter
     /// </summary>
     /// <param name="button"></param>
     /// <param name="eventData"></param>
-    public virtual void PostPointerEnterButton(ref Button button, PointerEventData eventData)
+    public virtual void PostPointerEnterSelectable(ref Selectable button, PointerEventData eventData)
     {
     }
-    
+
     /// <summary>
     /// Called before the mouse leaves a button
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on Button_OnPointerExit
+    /// Equivalent to a HarmonyPrefix on Button.OnPointerExit
     /// </summary>
     /// <param name="button"></param>
     /// <param name="eventData"></param>
     /// <returns></returns>
-    public virtual bool PrePointerExitButton(ref Button button, ref PointerEventData eventData)
+    public virtual bool PrePointerExitSelectable(ref Selectable button, ref PointerEventData eventData)
     {
         return true;
     }
-    
+
     /// <summary>
     /// Called after the mouse leaves a button
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on Button_OnPointerExit
+    /// Equivalent to a HarmonyPostfix on Button.OnPointerExit
     /// </summary>
     /// <param name="button"></param>
     /// <param name="eventData"></param>
-    public virtual void PostPointerExitButton(ref Button button, PointerEventData eventData)
+    public virtual void PostPointerExitSelectable(ref Selectable button, PointerEventData eventData)
     {
     }
     
@@ -369,7 +370,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a MapLoader loads a map
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on MapLoader_LoadMap
+    /// Equivalent to a HarmonyPrefix on MapLoader.LoadMap
     /// </summary>
     /// <param name="mapLoader"></param>
     /// <returns></returns>
@@ -381,7 +382,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after a MapLoader loads a map
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on MapLoader_LoadMap
+    /// Equivalent to a HarmonyPostfix on MapLoader.LoadMap
     /// </summary>
     /// <param name="mapLoader"></param>
     public virtual void PostMapLoaded(MapLoader mapLoader)
@@ -392,7 +393,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a Removeable is destroyed
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on Map_DestroyRemoveable
+    /// Equivalent to a HarmonyPrefix on Map.DestroyRemoveable
     /// </summary>
     /// <param name="removeable"></param>
     /// <returns></returns>
@@ -404,7 +405,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after a Removeable is destroyed
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on Map_DestroyRemoveable
+    /// Equivalent to a HarmonyPostfix on Map.DestroyRemoveable
     /// </summary>
     /// <param name="removeable"></param>
     public virtual void PostRemoveableDestroyed(Removeable removeable)
@@ -415,7 +416,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// Called before a TowerPurchaseButton is created
     /// Return 'false' to prevent the original method from running
     /// <br/>
-    /// Equivalent to a HarmonyPrefix on ShopMenu_CreateTowerButton
+    /// Equivalent to a HarmonyPrefix on ShopMenu.CreateTowerButton
     /// </summary>
     /// <param name="tower"></param>
     /// <param name="index"></param>
@@ -430,13 +431,36 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <summary>
     /// Called after a TowerPurchaseButton is created
     /// <br/>
-    /// Equivalent to a HarmonyPostfix on ShopMenu_CreateTowerButton
+    /// Equivalent to a HarmonyPostfix on ShopMenu.CreateTowerButton
     /// </summary>
     /// <param name="tower"></param>
     /// <param name="index"></param>
     /// <param name="showAmount"></param>
     /// <param name="button"></param>
     public virtual void PostTowerButtonCreated(TowerModel tower, int index, bool showAmount, ref TowerPurchaseButton button)
+    {
+    }
+    
+    /// <summary>
+    /// Called before a MapModel is created
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on the constructor for MapModel
+    /// </summary>
+    /// <param name="mapModel"></param>
+    /// <returns></returns>
+    public virtual bool PreMapModelCreated(ref MapModel mapModel)
+    {
+        return true;
+    }
+    
+    /// <summary>
+    /// Called after a MapModel is created
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on the constructor for MapModel
+    /// </summary>
+    /// <param name="mapModel"></param>
+    public virtual void PostMapModelCreated(MapModel mapModel)
     {
     }
     
