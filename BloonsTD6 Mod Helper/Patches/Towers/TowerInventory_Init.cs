@@ -12,7 +12,7 @@ internal static class TowerInventory_Init
     {
         var result = true;
         var unref__instance = __instance;
-        var unref_allTowersInTheGame = allTowersInTheGame.ToList();
+        var unref_allTowersInTheGame = allTowersInTheGame;
         ModHelper.PerformAdvancedModHook(mod => result &=  mod.PreTowerInventoryInit(ref unref__instance, ref unref_allTowersInTheGame));
         __instance = unref__instance;
         allTowersInTheGame = unref_allTowersInTheGame;

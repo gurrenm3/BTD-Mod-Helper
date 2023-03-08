@@ -446,7 +446,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     {
     }
     
-    /// <summary>
+    /*/// <summary>
     /// Called before a MapModel is created
     /// Return 'false' to prevent the original method from running
     /// <br/>
@@ -467,7 +467,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <param name="mapModel"></param>
     public virtual void PostMapModelCreated(MapModel mapModel)
     {
-    }
+    }*/
     
     /// <summary>
     /// Called before a TowerInventory is initialized
@@ -478,7 +478,7 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// <param name="towerInventory"></param>
     /// <param name="baseTowers"></param>
     /// <returns></returns>
-    public virtual bool PreTowerInventoryInit(ref TowerInventory towerInventory, ref List<TowerDetailsModel> baseTowers)
+    public virtual bool PreTowerInventoryInit(ref TowerInventory towerInventory, ref IEnumerable<TowerDetailsModel> baseTowers)
     {
         return true;
     }
