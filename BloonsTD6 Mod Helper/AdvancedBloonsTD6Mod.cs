@@ -519,20 +519,50 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     {
     }
     
+    /// <summary>
+    /// Called before a tower enters placement mode
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on InputManager.EnterPlacementMode
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <returns></returns>
     public virtual bool PreEnterPlacementMode(ref TowerModel tower)
     {
         return true;
     }
     
+    /// <summary>
+    /// Called after a tower enters placement mode
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on InputManager.EnterPlacementMode
+    /// </summary>
+    /// <param name="tower"></param>
     public virtual void PostEnterPlacementMode(TowerModel tower)
     {
     }
     
+    /// <summary>
+    /// Called before the upgrade tree is shown for a tower
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on InGame.ShowUpgradeTree
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <param name="fromDoubleTap"></param>
+    /// <returns></returns>
     public virtual bool PreShowUpgradeTree(ref TowerModel tower, ref bool fromDoubleTap)
     {
         return true;
     }
     
+    /// <summary>
+    /// Called after the upgrade tree is shown for a tower
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on InGame.ShowUpgradeTree
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <param name="fromDoubleTap"></param>
     public virtual void PostShowUpgradeTree(TowerModel tower, bool fromDoubleTap)
     {
     }
