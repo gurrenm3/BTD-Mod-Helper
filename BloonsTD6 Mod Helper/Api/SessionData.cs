@@ -56,4 +56,9 @@ public partial class SessionData
     /// multiplayer game
     /// </summary>
     public NKMultiGameInterface NkGI { get; set; }
+    
+    /// <summary>
+    /// If the player is in a game, is it currently paused
+    /// </summary>
+    public bool IsPaused { get; set; }
 }

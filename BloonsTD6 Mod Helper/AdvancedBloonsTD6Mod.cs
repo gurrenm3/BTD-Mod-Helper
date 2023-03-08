@@ -589,4 +589,28 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     public virtual void PostPauseScreenOpened(PauseScreen pauseScreen)
     {
     }
+
+    /// <summary>
+    /// Called before the pause screen is closed
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on PauseScreen.Close
+    /// </summary>
+    /// <param name="pauseScreen"></param>
+    /// <returns></returns>
+    public virtual bool PrePauseScreenClosed(ref PauseScreen pauseScreen)
+    {
+        return true;
+    }
+    
+    /// <summary>
+    /// Called after the pause screen is closed
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on PauseScreen.Close
+    /// </summary>
+    /// <param name="pauseScreen"></param>
+    public virtual void PostPauseScreenClosed(PauseScreen pauseScreen)
+    {
+    }
+    
 }
