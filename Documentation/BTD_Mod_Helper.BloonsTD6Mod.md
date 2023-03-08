@@ -108,7 +108,7 @@ public virtual void OnAttackModelChanged(Attack attack, Model newModel);
 
 Called when the games audioFactory is loaded  
 <br/>  
-Equivalent to a HarmonyPostFix on AudioFactory_Start
+Equivalent to a HarmonyPostFix on AudioFactory.Start
 
 ```csharp
 public virtual void OnAudioFactoryStart(AudioFactory audioFactory);
@@ -388,7 +388,7 @@ public virtual void OnMatchStart();
 
 Called when a display is being loaded such as a towers 3d model  
 <br/>  
-Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+Equivalent to a HarmonyPostFix on GameModel.CreatedModded
 
 ```csharp
 public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Action<UnityDisplayNode> action);
@@ -413,7 +413,7 @@ public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Action<Un
 
 Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
 <br/>  
-Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+Equivalent to a HarmonyPostFix on GameModel.CreatedModded
 
 ```csharp
 public virtual void OnNewGameModel(GameModel result, List<ModModel> mods);
@@ -428,13 +428,34 @@ public virtual void OnNewGameModel(GameModel result, List<ModModel> mods);
 
 `mods` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,MapModel)'></a>
+
+## BloonsTD6Mod.OnNewGameModel(GameModel, MapModel) Method
+
+Called when a new GameModel is created, including the map  
+<br/>  
+Equivalent to a HarmonyPostFix on GameModel.CreatedModded
+
+```csharp
+public virtual void OnNewGameModel(GameModel result, MapModel map);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,MapModel).result'></a>
+
+`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,MapModel).map'></a>
+
+`map` [Il2CppAssets.Scripts.Models.Map.MapModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.MapModel 'Il2CppAssets.Scripts.Models.Map.MapModel')
+
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel)'></a>
 
 ## BloonsTD6Mod.OnNewGameModel(GameModel) Method
 
 Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
 <br/>  
-Equivalent to a HarmonyPostFix on GameModel_CreatedModded
+Equivalent to a HarmonyPostFix on GameModel.CreatedModded
 
 ```csharp
 public virtual void OnNewGameModel(GameModel result);
@@ -499,7 +520,7 @@ Index of the peer in question.
 
 Called when the player's ProfileModel is loaded.  
 <br/>  
-Equivalent to a HarmonyPostFix on ProfileModel_Validate
+Equivalent to a HarmonyPostFix on ProfileModel.Validate
 
 ```csharp
 public virtual void OnProfileLoaded(ProfileModel result);
@@ -598,7 +619,7 @@ public virtual void OnRoundStart();
 
 Called when a sprite is being loaded  
 <br/>  
-Equivalent to a HarmonyPostFix on ResourceLoader_LoadSpriteFromSpriteReferenceAsync
+Equivalent to a HarmonyPostFix on ResourceLoader.LoadSpriteFromSpriteReferenceAsync
 
 ```csharp
 public virtual void OnSpriteLoad(SpriteReference spriteref, Image image);

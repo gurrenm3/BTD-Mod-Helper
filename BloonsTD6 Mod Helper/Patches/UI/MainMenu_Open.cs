@@ -8,6 +8,6 @@ internal class MainMenu_Open
     internal static void Postfix()
     {
         SessionData.Reset();
-        //ModHelper.PerformHook(mod => mod.OnMainMenu()); //TODO: fix this
+        ModHelper.PerformHook(mod => mod.OnMainMenu());
     }
 }
