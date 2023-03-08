@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models.TowerSets;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 public abstract partial class ModTowerSet

@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

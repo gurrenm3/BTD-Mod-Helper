@@ -7,7 +7,6 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
-
 namespace BTD_Mod_Helper.Api;
 
 internal partial class ModHelperData

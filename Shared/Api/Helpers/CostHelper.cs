@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>

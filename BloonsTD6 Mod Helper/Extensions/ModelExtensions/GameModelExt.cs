@@ -1,19 +1,19 @@
-﻿using Il2CppAssets.Scripts.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Models.Towers;
-using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
+using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Simulation.Objects;
-using System.Collections.Generic;
-using System.Linq;
-using BTD_Mod_Helper.Api.Towers;
-
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class GameModelExt
@@ -293,9 +293,7 @@ public static partial class GameModelExt
     /// <param name="chargedMutators"></param>
     /// <param name="behaviorMutators"></param>
     /// <exclude/>
-    public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time,
-        Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators,
-        Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
+    public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time, Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators, Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
     {
         //return new BloonEmissionModel("", time, bloonName, chargedMutators, behaviorMutators); // removed in update 25.0
         return new BloonEmissionModel("", time, bloonName);
@@ -395,7 +393,7 @@ public static partial class GameModelExt
     public static void AddUpgrades(this GameModel model, UpgradeModel[] upgradeModels)
     {
         model.upgrades = model.upgrades.AddTo(upgradeModels);
-        System.Array.ForEach(upgradeModels, upgrade => model.upgradesByName.Add(upgrade.name, upgrade));
+        Array.ForEach(upgradeModels, upgrade => model.upgradesByName.Add(upgrade.name, upgrade));
     }
 
     /// <summary>

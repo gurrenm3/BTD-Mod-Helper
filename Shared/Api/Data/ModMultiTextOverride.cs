@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-
 namespace BTD_Mod_Helper.Api.Data;
 
 /// <summary>

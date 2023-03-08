@@ -4,7 +4,6 @@ using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppAssets.Scripts.Unity.UI_New.Upgrade;
 using Il2CppSystem.Collections.Generic;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(UpgradeScreen), nameof(UpgradeScreen.PopulatePath))]

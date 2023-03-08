@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using Il2CppAssets.Scripts.Unity;
-
 namespace BTD_Mod_Helper.Patches.ModdedClientChecking;
 
 [HarmonyPatch]

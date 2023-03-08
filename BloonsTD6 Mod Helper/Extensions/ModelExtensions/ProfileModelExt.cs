@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Unity;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

@@ -1,7 +1,6 @@
 ﻿using System;
 using Il2CppNinjaKiwi.NKMulti;
-using Task = Il2CppSystem.Threading.Tasks.Task;
-
+using Il2CppSystem.Threading.Tasks;
 namespace BTD_Mod_Helper.Patches
 {
     [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Connect))]

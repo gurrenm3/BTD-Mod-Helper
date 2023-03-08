@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿using Il2CppSystem;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -13,7 +12,7 @@ public static class Il2CppReferenceArray
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <param name="action">Action to preform on each element</param>
-    public static void ForEach<T>(this Il2CppReferenceArray<T> source, Action<T> action) where T : Il2CppSystem.Object
+    public static void ForEach<T>(this Il2CppReferenceArray<T> source, System.Action<T> action) where T : Object
     {
         for (var i = 0; i < source.Count; i++)
             action.Invoke(source[i]);
@@ -26,7 +25,7 @@ public static class Il2CppReferenceArray
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static int FindIndex<T>(this Il2CppReferenceArray<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static int FindIndex<T>(this Il2CppReferenceArray<T> source, System.Func<T, bool> predicate) where T : Object
     {
         for (var i = 0; i < source.Count; i++)
         {
@@ -43,7 +42,7 @@ public static class Il2CppReferenceArray
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static bool Any<T>(this Il2CppReferenceArray<T> source) where T : Il2CppSystem.Object
+    public static bool Any<T>(this Il2CppReferenceArray<T> source) where T : Object
     {
         return source.Count > 0;
     }
@@ -55,7 +54,7 @@ public static class Il2CppReferenceArray
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this Il2CppReferenceArray<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static bool Any<T>(this Il2CppReferenceArray<T> source, System.Func<T, bool> predicate) where T : Object
     {
         for (var i = 0; i < source.Count; i++)
         {

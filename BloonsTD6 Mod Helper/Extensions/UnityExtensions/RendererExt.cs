@@ -4,9 +4,7 @@ using System.Linq;
 using Il2CppInterop.Runtime;
 using UnityEngine;
 using UnityEngine.Rendering;
-using ArgumentException = System.ArgumentException;
 using Array = Il2CppSystem.Array;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

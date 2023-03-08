@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Action = Il2CppSystem.Action;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -41,7 +40,7 @@ public class ModHelperButton : ModHelperComponent
     /// <returns></returns>
     public static ModHelperButton Create(Info info, string sprite, Action onClick)
     {
-        var modHelperButton = ModHelperComponent.Create<ModHelperButton>(info);
+        var modHelperButton = Create<ModHelperButton>(info);
 
         var image = modHelperButton.AddComponent<Image>();
         image.type = Image.Type.Sliced;

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api;
 
 internal class ResourceHandler

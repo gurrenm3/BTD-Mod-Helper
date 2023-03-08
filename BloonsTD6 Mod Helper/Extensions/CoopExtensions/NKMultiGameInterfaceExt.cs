@@ -1,9 +1,8 @@
-﻿using System;
+﻿using BTD_Mod_Helper.Api.Coop;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using BTD_Mod_Helper.Api.Coop;
 using Il2CppNinjaKiwi.NKMulti;
-
+using Il2CppSystem;
 namespace BTD_Mod_Helper.Extensions
 {
     /// <summary>
@@ -63,7 +62,7 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="objectToSend">string message to send. Can be JSON</param>
         /// <param name="peerId">The id of the peer you want the message to go to. Leave null if you want to send to all players</param>
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
-        public static void SendMessage(this NKMultiGameInterface nkGI, Il2CppSystem.String objectToSend, byte? peerId = null, string code = "")
+        public static void SendMessage(this NKMultiGameInterface nkGI, String objectToSend, byte? peerId = null, string code = "")
         {
             var message = MessageUtils.CreateMessage(objectToSend, code);
             if (peerId.HasValue)
@@ -117,8 +116,8 @@ namespace BTD_Mod_Helper.Extensions
         /// <param name="objectToSend">Object you want to send. The properties of the object will be serialised as JSON.</param>
         /// <param name="peerId">The id of the peer you want the message to go to. Leave null if you want to send to all players</param>
         /// <param name="code">Coop code used to distinguish this message from others. Like a lock and key for reading messages</param>
-        [Obsolete($"For backwards compatibility reasons only, please use {nameof(SendMessageEx)}")]
-        public static void SendMessage<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") where T : Il2CppSystem.Object => SendMessageEx(nkGI, objectToSend, peerId, code);
+        [System.Obsolete($"For backwards compatibility reasons only, please use {nameof(SendMessageEx)}")]
+        public static void SendMessage<T>(this NKMultiGameInterface nkGI, T objectToSend, byte? peerId = null, string code = "") where T : Object => SendMessageEx(nkGI, objectToSend, peerId, code);
         #endregion
     }
 }

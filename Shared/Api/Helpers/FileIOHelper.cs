@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Il2CppNewtonsoft.Json;
 using UnityEngine;
+using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
@@ -26,7 +27,7 @@ public static class FileIOHelper
     /// </summary>
     /// <param name="fileName">Name of file, extension included</param>
     /// <param name="data"></param>
-    public static void SaveObject(string fileName, Il2CppSystem.Object data)
+    public static void SaveObject(string fileName, Object data)
     {
         var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
         {
@@ -43,7 +44,7 @@ public static class FileIOHelper
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     [Obsolete("Broken as of MelonLoader 0.6.0")]
-    public static T LoadObject<T>(string fileName) where T : Il2CppSystem.Object
+    public static T LoadObject<T>(string fileName) where T : Object
     {
         var text = LoadFile(fileName);
         return null;

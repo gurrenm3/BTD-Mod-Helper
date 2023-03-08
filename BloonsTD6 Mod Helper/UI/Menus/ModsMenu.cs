@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Il2CppAssets.Scripts.Unity.Menu;
-using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = Il2CppSystem.Object;
-
 namespace BTD_Mod_Helper.UI.Menus;
 
 /// <summary>
@@ -585,7 +584,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
                     "Disabling Mod Helper will mean you will no longer see this mods menu. " +
                     "You would have to manually re-enable this / any other mods by dragging their .dll files " +
-                    $"out of the Disabled folder within your mods directory.", null, "Ok",
+                    "out of the Disabled folder within your mods directory.", null, "Ok",
                     new Action(EnableSelectedMod),
                     "Re-enable", Popup.TransitionAnim.Scale));
             }

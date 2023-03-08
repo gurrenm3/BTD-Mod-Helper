@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.IO;
+﻿using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
-
+using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -17,7 +17,7 @@ public class JsonSerializer
     /// <summary>
     /// Serialize a il2cpp object
     /// </summary>
-    public string Il2CppSerializeJson<T>(T il2cppObject, bool shouldIndent = true) where T : Il2CppSystem.Object
+    public string Il2CppSerializeJson<T>(T il2cppObject, bool shouldIndent = true) where T : Object
     {
         return JsonUtility.ToJson(il2cppObject, shouldIndent);
     }
@@ -143,7 +143,7 @@ public class JsonSerializer
 
     /// <inheritdoc cref="SaveToFile{T}(T,string,bool,bool,bool)"/>
     public void Il2CppSaveToFile<T>(T jsonObject, string savePath, bool shouldIndent = true, bool overwriteExisting = true)
-        where T : Il2CppSystem.Object
+        where T : Object
     {
         Guard.ThrowIfStringIsNull(savePath, "Can't save file, save path is null");
         CreateDirIfNotFound(savePath);

@@ -5,7 +5,6 @@ using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
-
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>

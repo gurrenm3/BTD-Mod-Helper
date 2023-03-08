@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -29,7 +28,7 @@ public class ModHelperImage : ModHelperComponent
     /// <returns>The created ModHelperImage</returns>
     public static ModHelperImage Create(Info info, string sprite)
     {
-        var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
+        var modHelperImage = Create<ModHelperImage>(info);
 
         var image = modHelperImage.AddComponent<Image>();
         if (sprite != null)
@@ -52,7 +51,7 @@ public class ModHelperImage : ModHelperComponent
     /// <returns>The created ModHelperImage</returns>
     public static ModHelperImage Create(Info info, Sprite sprite)
     {
-        var modHelperImage = ModHelperComponent.Create<ModHelperImage>(info);
+        var modHelperImage = Create<ModHelperImage>(info);
 
         var image = modHelperImage.AddComponent<Image>();
         if (sprite != null)

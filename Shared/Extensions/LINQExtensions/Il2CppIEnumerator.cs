@@ -1,7 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Il2CppSystem;
 using Il2CppSystem.Collections;
-using System.Collections.Generic;
-
+using Exception = System.Exception;
+using NullReferenceException = System.NullReferenceException;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -15,7 +16,7 @@ public static class Il2CppIEnumerator
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <param name="action">Action to preform on each element</param>
-    public static void ForEach<T>(this IEnumerator source, Action<T> action) where T : Il2CppSystem.Object
+    public static void ForEach<T>(this IEnumerator source, System.Action<T> action) where T : Object
     {
         while (source.MoveNext())
             action.Invoke(source.Current.Cast<T>());
@@ -28,7 +29,7 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T First<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T First<T>(this IEnumerator source, System.Func<T, bool> predicate) where T : Object
     {
         while (source.MoveNext())
         {
@@ -46,7 +47,7 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T FirstOrDefault<T>(this IEnumerator source, System.Func<T, bool> predicate) where T : Object
     {
         while (source.MoveNext())
         {
@@ -64,7 +65,7 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static List<T> Where<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static List<T> Where<T>(this IEnumerator source, System.Func<T, bool> predicate) where T : Object
     {
         var result = new List<T>();
         while (source.MoveNext())
@@ -83,7 +84,7 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static int FindIndex<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static int FindIndex<T>(this IEnumerator source, System.Func<T, bool> predicate) where T : Object
     {
         var i = 0;
         while (source.MoveNext())
@@ -103,7 +104,7 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static bool Any<T>(this IEnumerator source, System.Func<T, bool> predicate) where T : Object
     {
         while (source.MoveNext())
         {
@@ -120,7 +121,7 @@ public static class Il2CppIEnumerator
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T Last<T>(this IEnumerator source) where T : Il2CppSystem.Object
+    public static T Last<T>(this IEnumerator source) where T : Object
     {
         T last = default;
         while (source.MoveNext())
@@ -137,7 +138,7 @@ public static class Il2CppIEnumerator
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T LastOrDefault<T>(this IEnumerator source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T LastOrDefault<T>(this IEnumerator source, System.Func<T, bool> predicate) where T : Object
     {
         T last = default;
 
@@ -157,7 +158,7 @@ public static class Il2CppIEnumerator
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T First<T>(this IEnumerator source) where T : Il2CppSystem.Object
+    public static T First<T>(this IEnumerator source) where T : Object
     {
         while (source.MoveNext())
         {
@@ -173,7 +174,7 @@ public static class Il2CppIEnumerator
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this IEnumerator source) where T : Il2CppSystem.Object
+    public static T FirstOrDefault<T>(this IEnumerator source) where T : Object
     {
         while (source.MoveNext())
         {

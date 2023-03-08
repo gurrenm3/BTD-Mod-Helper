@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Il2CppAssets.Scripts.Models.Difficulty;
-using Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Scenarios;
+using Il2CppAssets.Scripts.Models.Difficulty;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect;
 using UnityEngine;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.UI.Modded;
 
 internal class ModdedModeMenu

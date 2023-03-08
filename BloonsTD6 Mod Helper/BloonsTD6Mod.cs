@@ -1,7 +1,8 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+using BTD_Mod_Helper.Api.Coop;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
@@ -11,20 +12,18 @@ using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Simulation.Input;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Simulation.Towers;
+using Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Abilities;
+using Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack;
 using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 using Il2CppAssets.Scripts.Simulation.Towers.Weapons;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppSystem.Collections.Generic;
-using Il2CppNinjaKiwi.NKMulti;
-using Il2CppAssets.Scripts.Unity.Display;
-using Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack;
-using Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Abilities;
-using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Unity.Audio;
+using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.NKMulti;
+using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
 using UnityEngine.UI;
-using BTD_Mod_Helper.Api.Coop;
-
 namespace BTD_Mod_Helper;
 
 /// <summary>
@@ -103,7 +102,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Called when a map model is loaded by the game. Equivelant to MapLoader.Load.
     /// </summary>
     /// <param name="mapModel">The map that was just loaded. It is passed by reference to allow for modifications.</param>
-    [Obsolete("No longer implemented.")]
+    [System.Obsolete("No longer implemented.")]
     public virtual void OnMapModelLoaded(ref MapModel mapModel)
     {
     }
@@ -162,7 +161,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// </summary>
     /// <param name="towerInventory"></param>
     /// <param name="allTowersInTheGame"></param>
-    [Obsolete("No longer implemented.")]
+    [System.Obsolete("No longer implemented.")]
     public virtual void OnTowerInventoryInitialized(TowerInventory towerInventory,
         List<TowerDetailsModel> allTowersInTheGame)
     {
@@ -176,14 +175,23 @@ public abstract class BloonsTD6Mod : BloonsMod
     public virtual void OnNewGameModel(GameModel result, List<ModModel> mods)
     {
     }
+    
+    /// <summary>
+    /// Called when a new GameModel is created, including the map
+    /// <br/>
+    /// Equivalent to a HarmonyPostFix on GameModel.CreatedModded
+    /// </summary>
+    public virtual void OnNewGameModel(GameModel result, MapModel map)
+    {
+    }
 
     /// <summary>
     /// Called when a display is being loaded such as a towers 3d model
     /// <br/>
     /// Equivalent to a HarmonyPostFix on GameModel.CreatedModded
     /// </summary>
-    [Obsolete("No longer implemented.")]
-    public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Il2CppSystem.Action<UnityDisplayNode> action)
+    [System.Obsolete("No longer implemented.")]
+    public virtual void OnModelLoaded(Factory factory, string ModelToLoad, Action<UnityDisplayNode> action)
     {
     }
 
@@ -201,7 +209,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on ResourceLoader.LoadSpriteFromSpriteReferenceAsync
     /// </summary>
-    [Obsolete("No longer implemented")]
+    [System.Obsolete("No longer implemented")]
     public virtual void OnSpriteLoad(SpriteReference spriteref, Image image)
     {
     }
@@ -333,7 +341,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.OnDestroy
     /// </summary>
-    [Obsolete("No longer implemented.")]
+    [System.Obsolete("No longer implemented.")]
     public virtual void OnBloonDestroy(Bloon bloon)
     {
     }
@@ -342,7 +350,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Called right after a Bloon is destroyed, but only when it's popped and not leaked
     /// </summary>
     /// <param name="bloon"></param>
-    [Obsolete("No longer implemented")]
+    [System.Obsolete("No longer implemented")]
     public virtual void OnBloonPopped(Bloon bloon)
     {
     }
@@ -352,7 +360,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br/>
     /// Equivalent to a HarmonyPostFix on Bloon.Damaged
     /// </summary>
-    [Obsolete("No longer implemented")]
+    [System.Obsolete("No longer implemented")]
     public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile,
         bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower,
         [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true,

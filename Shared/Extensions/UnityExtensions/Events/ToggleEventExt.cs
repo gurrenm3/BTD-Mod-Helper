@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -16,6 +15,6 @@ public static class ToggleEventExt
     /// </summary>
     public static void AddListener(this Toggle.ToggleEvent submitEvent, Function funcToExecute)
     {
-        submitEvent.AddListener(new Action<bool>((b) => { funcToExecute(b); }));
+        submitEvent.AddListener(new Action<bool>(b => { funcToExecute(b); }));
     }
 }

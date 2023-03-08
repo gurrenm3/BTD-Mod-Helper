@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

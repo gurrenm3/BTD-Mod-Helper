@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Data.MapSets;
 using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Simulation.SMath;
 using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Helpers;
 using UnityEngine;
 using Vector2 = Il2CppAssets.Scripts.Simulation.SMath.Vector2;
-
 namespace BTD_Mod_Helper.Api.Scenarios;
 
 /// <summary>
@@ -67,7 +66,7 @@ public abstract class ModMap : NamedModContent
     /// <returns></returns>
     protected virtual MapDetails GetMapDetails()
     {
-        return new MapDetails()
+        return new MapDetails
         {
             id = Name,
             isBrowserOnly = false,
@@ -146,8 +145,7 @@ public abstract class ModMap : NamedModContent
         string areaName = $"AreaModel{areaModels.Count}"; // others called it lol instead of AreaModel
         var polygon = new Polygon(points.ToIl2CppList());
         var areaModel =
-            new AreaModel(areaName, polygon, new Il2CppReferenceArray<Polygon>(0), 100, type,
-                0); // TODO is an empty holes array correct?
+            new AreaModel(areaName, polygon, new Il2CppReferenceArray<Polygon>(0), 100, type); // TODO is an empty holes array correct?
         areaModels.Add(areaModel);
         return areaModel;
     }

@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Simulation.Input;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppSystem.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Il2CppAssets.Scripts.Simulation.Simulation;
@@ -159,7 +159,7 @@ public static partial class InGameExt
     /// <summary>
     /// Get collection of popped bloons in this game. Right now only works for current games. Does not store results from loaded games 
     /// </summary>
-    public static System.Collections.Generic.Dictionary<string, int> GetPoppedBloons(this InGame inGame)
+    public static Dictionary<string, int> GetPoppedBloons(this InGame inGame)
     {
         return SessionData.Instance.PoppedBloons;
     }
@@ -210,7 +210,7 @@ public static partial class InGameExt
     /// <param name="inGame"></param>
     /// <param name="bloonEmissionModels"></param>
     public static void SpawnBloons(this InGame inGame,
-        System.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
+        List<BloonEmissionModel> bloonEmissionModels)
     {
         inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
             inGame.GetUnityToSimulation().GetCurrentRound(), 0);
@@ -222,7 +222,7 @@ public static partial class InGameExt
     /// </summary>
     /// <param name="inGame"></param>
     /// <param name="bloonEmissionModels"></param>
-    public static void SpawnBloons(this InGame inGame, List<BloonEmissionModel> bloonEmissionModels)
+    public static void SpawnBloons(this InGame inGame, Il2CppSystem.Collections.Generic.List<BloonEmissionModel> bloonEmissionModels)
     {
         inGame.GetUnityToSimulation().SpawnBloons(bloonEmissionModels.ToIl2CppReferenceArray(),
             inGame.GetUnityToSimulation().GetCurrentRound(), 0);

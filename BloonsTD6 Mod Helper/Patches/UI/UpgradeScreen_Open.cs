@@ -1,5 +1,4 @@
 ﻿using Il2CppAssets.Scripts.Unity.UI_New.Upgrade;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 /// <summary>

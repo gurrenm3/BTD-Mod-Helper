@@ -1,9 +1,10 @@
-﻿using Il2CppAssets.Scripts.Utils;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
-
+using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
+using Array = System.Array;
+using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class Il2CppReferenceArrayExt
@@ -15,7 +16,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="referenceArray"></param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> Empty<T>(this Il2CppReferenceArray<T> referenceArray)
-        where T : Il2CppSystem.Object
+        where T : Object
     {
         return new Il2CppReferenceArray<T>(0);
     }
@@ -25,7 +26,7 @@ public static partial class Il2CppReferenceArrayExt
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="referenceArray"></param>
-    public static void Clear<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
+    public static void Clear<T>(this Il2CppReferenceArray<T> referenceArray) where T : Object
     {
         for (var i = 0; i < referenceArray.Length; i++)
         {
@@ -36,7 +37,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <summary>
     /// Return as System.List
     /// </summary>
-    public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
+    public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Object
     {
         return referenceArray != null ? new List<T>(referenceArray) : Array.Empty<T>().ToList();
     }
@@ -46,7 +47,7 @@ public static partial class Il2CppReferenceArrayExt
     /// </summary>
     public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(
         this Il2CppReferenceArray<T> referenceArray)
-        where T : Il2CppSystem.Object
+        where T : Object
     {
         var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
         foreach (var item in referenceArray)
@@ -58,7 +59,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <summary>
     /// Return as a System.Array
     /// </summary>
-    public static T[] ToArray<T>(this Il2CppReferenceArray<T> referenceArray) where T : Il2CppSystem.Object
+    public static T[] ToArray<T>(this Il2CppReferenceArray<T> referenceArray) where T : Object
     {
         return referenceArray;
     }
@@ -67,7 +68,7 @@ public static partial class Il2CppReferenceArrayExt
     /// Return as LockList
     /// </summary>
     public static LockList<T> ToLockList<T>(this Il2CppReferenceArray<T> referenceArray)
-        where T : Il2CppSystem.Object
+        where T : Object
     {
         var lockList = new LockList<T>();
         foreach (var item in referenceArray)
@@ -83,7 +84,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> Duplicate<T>(this Il2CppReferenceArray<T> list)
-        where T : Il2CppSystem.Object
+        where T : Object
     {
         var newList = new List<T>();
         foreach (var item in list)
@@ -100,7 +101,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static Il2CppReferenceArray<TCast> DuplicateAs<TSource, TCast>(this Il2CppReferenceArray<TSource> list)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         return list.CastAll<TSource, TCast>().ToIl2CppReferenceArray();
     }
@@ -113,7 +114,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="objectToAdd">Item to add</param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, T objectToAdd)
-        where T : Il2CppSystem.Object
+        where T : Object
     {
         var newRef = new Il2CppReferenceArray<T>(referenceArray.Count + 1);
         for (var i = 0; i < referenceArray.Count; i++)
@@ -132,7 +133,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="objectsToAdd">Items to add</param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray,
-        Il2CppReferenceArray<T> objectsToAdd) where T : Il2CppSystem.Object
+        Il2CppReferenceArray<T> objectsToAdd) where T : Object
     {
         var size = referenceArray.Count + objectsToAdd.Count;
         var newReference = new Il2CppReferenceArray<T>(size);
@@ -157,7 +158,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="objectsToAdd">Items to add</param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray,
-        List<T> objectsToAdd) where T : Il2CppSystem.Object
+        List<T> objectsToAdd) where T : Object
     {
         return referenceArray.AddTo(objectsToAdd.ToIl2CppReferenceArray());
     }
@@ -171,8 +172,8 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="referenceArray"></param>
     /// <returns></returns>
     public static bool HasItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         try
         {
@@ -194,8 +195,8 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="referenceArray"></param>
     /// <returns></returns>
     public static TCast GetItemOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
-        where TCast : Il2CppSystem.Object
-        where TSource : Il2CppSystem.Object
+        where TCast : Object
+        where TSource : Object
     {
         if (!HasItemsOfType<TSource, TCast>(referenceArray))
             return null;
@@ -212,8 +213,8 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="referenceArray"></param>
     /// <returns></returns>
     public static List<TCast> GetItemsOfType<TSource, TCast>(this Il2CppReferenceArray<TSource> referenceArray)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         var results = new List<TCast>();
         if (!HasItemsOfType<TSource, TCast>(referenceArray))
@@ -237,8 +238,8 @@ public static partial class Il2CppReferenceArrayExt
     /// <returns></returns>
     public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(
         this Il2CppReferenceArray<TSource> referenceArray)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         var behavior = GetItemOfType<TSource, TCast>(referenceArray);
         return behavior != null ? RemoveItem(referenceArray, behavior) : referenceArray;
@@ -254,7 +255,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <returns></returns>
     public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource, TCast>(
         this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
-        where TSource : Il2CppSystem.Object
+        where TSource : Object
         where TCast : Model
     {
         var behavior = GetItemOfType<TSource, TCast>(referenceArray);
@@ -277,7 +278,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <returns></returns>
     public static Il2CppReferenceArray<TSource> RemoveItem<TSource, TCast>(
         this Il2CppReferenceArray<TSource> referenceArray, TCast itemToRemove)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         var arrayList = referenceArray.ToList();
 
@@ -303,8 +304,8 @@ public static partial class Il2CppReferenceArrayExt
     /// <returns></returns>
     public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(
         this Il2CppReferenceArray<TSource> referenceArray)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(referenceArray))
             return referenceArray;
@@ -334,7 +335,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <returns></returns>
     public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource, TCast>(
         this Il2CppReferenceArray<TSource> referenceArray, Model removeChildFrom)
-        where TSource : Il2CppSystem.Object
+        where TSource : Object
         where TCast : Model
     {
         if (!HasItemsOfType<TSource, TCast>(referenceArray))

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

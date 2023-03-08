@@ -1,5 +1,4 @@
 ﻿using Il2CppAssets.Scripts.Unity.Display;
-
 namespace BTD_Mod_Helper.Patches.Resources;
 
 [HarmonyPatch(typeof(Factory), nameof(Factory.FindAndSetupPrototypeAsync))]

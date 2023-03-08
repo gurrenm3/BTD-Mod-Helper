@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using Il2CppAssets.Scripts.Data.Skins;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Data.Skins;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem.Collections.Generic;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -23,7 +22,7 @@ public abstract class ModHero : ModTower
     }
 
     /// <inheritdoc />
-    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
+    public override void RegisterText(Dictionary<string, string> textTable)
     {
         base.RegisterText(textTable);
 
@@ -78,7 +77,7 @@ public abstract class ModHero : ModTower
     /// Heroes tower tiers are always Level-0-0
     /// </summary>
     /// <returns></returns>
-    public sealed override IEnumerable<int[]> TowerTiers()
+    public sealed override System.Collections.Generic.IEnumerable<int[]> TowerTiers()
     {
         yield return new[] {0, 0, 0};
 
@@ -153,7 +152,7 @@ public abstract class ModHero : ModTower
     /// <br/>
     /// The SpriteReference is the actual image that will be displayed
     /// </summary>
-    public virtual Dictionary<int, SpriteReference> SelectScreenPortraits => new()
+    public virtual System.Collections.Generic.Dictionary<int, SpriteReference> SelectScreenPortraits => new()
     {
         {1, PortraitReference},
         {3, GetPortraitReferenceForTiers(new []{3, 0, 0})},
@@ -203,7 +202,7 @@ public abstract class ModHero : ModTower
     /// Gets the font material for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
+    public virtual Material GetFontMaterial(System.Collections.Generic.Dictionary<string, SkinData> skinsByName) =>
         skinsByName.TryGetValue(NameStyle, out var dataForFont)
             ? dataForFont.fontMaterial
             : skinsByName[TowerType.Quincy].fontMaterial;
@@ -212,7 +211,7 @@ public abstract class ModHero : ModTower
     /// Gets the Background Banner for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual PrefabReference GetBackgroundBanner(Dictionary<string, SkinData> skinsByName) =>
+    public virtual PrefabReference GetBackgroundBanner(System.Collections.Generic.Dictionary<string, SkinData> skinsByName) =>
         skinsByName.TryGetValue(GlowStyle, out var dataForFont)
             ? dataForFont.backgroundBanner
             : skinsByName[TowerType.Quincy].backgroundBanner;
@@ -221,7 +220,7 @@ public abstract class ModHero : ModTower
     /// Gets the background color for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Color GetBackgroundColor(Dictionary<string, SkinData> skinsByName) =>
+    public virtual Color GetBackgroundColor(System.Collections.Generic.Dictionary<string, SkinData> skinsByName) =>
         skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
             ? dataForFont.backgroundColourTintOverride
             : skinsByName[TowerType.Quincy].backgroundColourTintOverride;
@@ -230,7 +229,7 @@ public abstract class ModHero : ModTower
     /// Creates the SkinData for the default tower
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual SkinData CreateDefaultSkin(Dictionary<string, SkinData> skinsByName)
+    public virtual SkinData CreateDefaultSkin(System.Collections.Generic.Dictionary<string, SkinData> skinsByName)
     {
         var skinData = ScriptableObject.CreateInstance<SkinData>();
         skinData.name = skinData.baseTowerName = Id;
@@ -282,7 +281,7 @@ public abstract class ModHero : ModTower
     /// </summary>
     /// <param name="heroSet"></param>
     /// <returns></returns>
-    public virtual int GetHeroIndex(List<HeroDetailsModel> heroSet)
+    public virtual int GetHeroIndex(System.Collections.Generic.List<HeroDetailsModel> heroSet)
     {
         return heroSet.Count;
     }

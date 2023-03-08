@@ -1,10 +1,9 @@
 ﻿using System;
-using Il2CppAssets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>

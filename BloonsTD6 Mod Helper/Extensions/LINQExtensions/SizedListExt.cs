@@ -1,7 +1,7 @@
-﻿using Il2CppAssets.Scripts.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
-
+using Il2CppAssets.Scripts.Utils;
+using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class SizedListExt
@@ -25,7 +25,7 @@ public static partial class SizedListExt
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T First<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T First<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Object
     {
         for (var i = 0; i < source.Count; i++)
         {
@@ -44,7 +44,7 @@ public static partial class SizedListExt
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T FirstOrDefault<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Object
     {
         for (var i = 0; i < source.Count; i++)
         {
@@ -62,7 +62,7 @@ public static partial class SizedListExt
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static List<T> Where<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static List<T> Where<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Object
     {
         var result = new List<T>();
         for (var i = 0; i < source.Count; i++)
@@ -81,7 +81,7 @@ public static partial class SizedListExt
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static int FindIndex<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static int FindIndex<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Object
     {
         for (var i = 0; i < source.Count; i++)
         {
@@ -98,7 +98,7 @@ public static partial class SizedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static bool Any<T>(this SizedList<T> source) where T : Il2CppSystem.Object
+    public static bool Any<T>(this SizedList<T> source) where T : Object
     {
         return source.Count > 0;
     }
@@ -110,7 +110,7 @@ public static partial class SizedListExt
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static bool Any<T>(this SizedList<T> source, Func<T, bool> predicate) where T : Object
     {
         for (var i = 0; i < source.Count; i++)
         {

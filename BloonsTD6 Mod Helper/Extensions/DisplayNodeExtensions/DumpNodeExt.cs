@@ -1,9 +1,8 @@
-﻿using Il2CppAssets.Scripts.Unity.Display;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
+using Il2CppAssets.Scripts.Unity.Display;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

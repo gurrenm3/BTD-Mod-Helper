@@ -4,7 +4,6 @@ using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 public abstract partial class ModVanillaUpgrade

@@ -1,15 +1,14 @@
-﻿using Il2CppAssets.Scripts.Models.Profile;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Unity.Player;
-using BTD_Mod_Helper.Api;
-using Il2CppAssets.Scripts.Models;
-using System.Runtime.InteropServices;
-using System;
+﻿using System;
 using System.Collections;
+using System.Runtime.InteropServices;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Enums;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Profile;
+using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Map;
-
+using Il2CppAssets.Scripts.Unity.Player;
+using Il2CppAssets.Scripts.Utils;
 #if BloonsTD6
 using Il2CppNinjaKiwi.LiNK;
 using Il2CppNinjaKiwi.Common;
@@ -79,7 +78,7 @@ namespace BTD_Mod_Helper.Extensions
         /// </summary>
         /// <param name="game"></param>
         /// <param name="iEnumerator"></param>
-        public static void ScheduleTask(this Game game, IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
+        public static void ScheduleTask(this Game game, IEnumerator iEnumerator) => MelonCoroutines.Start(iEnumerator);
 
         /// <summary>
         /// Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
@@ -99,7 +98,7 @@ namespace BTD_Mod_Helper.Extensions
         /// /// <param name="waitCondition">Wait for this to be true before executing task</param>
         public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait , Func<bool> waitCondition = null)
         {
-            MelonLoader.MelonCoroutines.Start(TaskScheduler.Coroutine(action, scheduleType, amountToWait, waitCondition));
+            MelonCoroutines.Start(TaskScheduler.Coroutine(action, scheduleType, amountToWait, waitCondition));
         }
 
 

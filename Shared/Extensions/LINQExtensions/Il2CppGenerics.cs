@@ -1,7 +1,6 @@
-﻿using Il2CppSystem.Collections.Generic;
-using System;
+﻿using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
 using Il2CppSystem.Linq;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -16,9 +15,9 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T First<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T First<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object
     {
-        return Enumerable.First(source.Cast<IEnumerable<T>>(), predicate);
+        return source.Cast<IEnumerable<T>>().First(predicate);
     }
 
     /// <summary>
@@ -28,7 +27,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static T FirstOrDefault<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object
     {
         return Enumerable.FirstOrDefault(source.Cast<IEnumerable<T>>(), predicate);
     }
@@ -40,9 +39,9 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static List<T> Where<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static List<T> Where<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object
     {
-        return Enumerable.Where(source.Cast<IEnumerable<T>>(), predicate).ToIl2CppList();
+        return source.Cast<IEnumerable<T>>().Where(predicate).ToIl2CppList();
     }
 
     /// <summary>
@@ -52,7 +51,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static int FindIndex<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static int FindIndex<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object
     {
         return source.FindIndex(predicate);
     }
@@ -63,7 +62,7 @@ public static class Il2CppGenerics
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static bool Any<T>(this List<T> source) where T : Il2CppSystem.Object
+    public static bool Any<T>(this List<T> source) where T : Object
     {
         return source.Count > 0;
     }
@@ -75,7 +74,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this List<T> source, Func<T, bool> predicate) where T : Il2CppSystem.Object
+    public static bool Any<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object
     {
         foreach (var _ in source.Where(predicate))
         {
@@ -93,7 +92,7 @@ public static class Il2CppGenerics
     /// <returns></returns>
     public static T Last<T>(this List<T> source)
     {
-        return Enumerable.Last(source.Cast<IEnumerable<T>>());
+        return source.Cast<IEnumerable<T>>().Last();
     }
 
     /// <summary>
@@ -103,9 +102,9 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T LastOrDefault<T>(this List<T> source, Func<T, bool> predicate)
+    public static T LastOrDefault<T>(this List<T> source, System.Func<T, bool> predicate)
     {
-        return Enumerable.LastOrDefault(Enumerable.Where(source.Cast<IEnumerable<T>>(), predicate));
+        return source.Cast<IEnumerable<T>>().Where(predicate).LastOrDefault();
     }
 
     /// <summary>
@@ -116,7 +115,7 @@ public static class Il2CppGenerics
     /// <returns></returns>
     public static T First<T>(this List<T> source)
     {
-        return Enumerable.First(source.Cast<IEnumerable<T>>());
+        return source.Cast<IEnumerable<T>>().First();
     }
 
     /// <summary>
@@ -127,6 +126,6 @@ public static class Il2CppGenerics
     /// <returns></returns>
     public static T FirstOrDefault<T>(this List<T> source)
     {
-        return Enumerable.FirstOrDefault(source.Cast<IEnumerable<T>>());
+        return source.Cast<IEnumerable<T>>().FirstOrDefault();
     }
 }

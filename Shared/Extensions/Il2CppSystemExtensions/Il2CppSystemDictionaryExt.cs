@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Il2CppSystem.Collections.Generic;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

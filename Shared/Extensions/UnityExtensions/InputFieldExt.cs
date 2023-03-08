@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

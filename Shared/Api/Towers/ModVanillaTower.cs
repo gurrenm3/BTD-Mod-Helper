@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>

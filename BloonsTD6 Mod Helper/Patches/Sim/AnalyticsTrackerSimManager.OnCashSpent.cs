@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Simulation;
 using Il2CppAssets.Scripts.Simulation.Tracking;
-
 namespace BTD_Mod_Helper.Patches.Sim;
 
 [HarmonyPatch(typeof(AnalyticsTrackerSimManager), nameof(AnalyticsTrackerSimManager.OnCashSpent))]

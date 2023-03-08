@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

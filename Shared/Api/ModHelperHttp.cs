@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-
 namespace BTD_Mod_Helper.Api.ModMenu;
 
 /// <summary>

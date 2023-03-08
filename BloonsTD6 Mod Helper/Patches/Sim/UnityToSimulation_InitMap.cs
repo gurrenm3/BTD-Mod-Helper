@@ -1,8 +1,7 @@
-﻿using Il2CppAssets.Scripts.Models.Map;
+﻿using BTD_Mod_Helper.Api.Scenarios;
+using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Unity.Bridge;
-using BTD_Mod_Helper.Api.Scenarios;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Patches.Sim;
 
 [HarmonyPatch(typeof(UnityToSimulation), nameof(UnityToSimulation.InitMap))]

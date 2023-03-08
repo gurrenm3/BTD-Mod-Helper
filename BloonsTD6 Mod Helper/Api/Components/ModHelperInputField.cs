@@ -3,7 +3,6 @@ using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -61,7 +60,7 @@ public class ModHelperInputField : ModHelperComponent
         TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
         TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
     {
-        var modHelperInputField = ModHelperComponent.Create<ModHelperInputField>(info);
+        var modHelperInputField = Create<ModHelperInputField>(info);
         modHelperInputField.AddComponent<Mask>();
 
 

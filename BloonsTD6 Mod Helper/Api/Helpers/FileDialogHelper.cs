@@ -1,6 +1,5 @@
 using System.IO;
 using MelonLoader.Utils;
-
 namespace BTD_Mod_Helper.Api.Helpers;
 
 internal static class FileDialogHelper

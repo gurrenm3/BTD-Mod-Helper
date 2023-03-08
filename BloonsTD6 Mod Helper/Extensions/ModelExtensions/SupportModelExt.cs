@@ -1,7 +1,6 @@
-using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
-
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

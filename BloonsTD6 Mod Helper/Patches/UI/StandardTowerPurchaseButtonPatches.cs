@@ -1,8 +1,7 @@
-﻿using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
+﻿using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
 using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Towers;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.DetermineBackgroundSprite))]

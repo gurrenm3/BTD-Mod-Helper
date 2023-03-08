@@ -1,5 +1,4 @@
 ﻿using Il2CppAssets.Scripts.Models.Towers;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>

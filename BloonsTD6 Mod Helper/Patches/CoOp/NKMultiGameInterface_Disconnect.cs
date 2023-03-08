@@ -1,5 +1,4 @@
 ﻿using Il2CppNinjaKiwi.NKMulti;
-
 namespace BTD_Mod_Helper.Patches
 {
     [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Disconnect))]

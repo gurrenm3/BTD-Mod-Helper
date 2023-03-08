@@ -2,7 +2,6 @@
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppSystem.Collections.Generic;
-
 namespace BTD_Mod_Helper.Api.Helpers;
 
 public partial class CostHelper
@@ -32,7 +31,7 @@ public partial class CostHelper
             }
         }
 
-        return CostHelper.CostForDifficulty(cost, mult);
+        return CostForDifficulty(cost, mult);
     }
 
     /// <summary>
@@ -50,7 +49,7 @@ public partial class CostHelper
             ModHelper.Warning("Use the list of ModModels to find the difficulty instead");
         }
 
-        return CostHelper.CostForDifficulty(cost, gameModel.difficultyId);
+        return CostForDifficulty(cost, gameModel.difficultyId);
     }
 
     /// <summary>
@@ -61,6 +60,6 @@ public partial class CostHelper
     /// <returns>The modified cost</returns>
     public static int CostForDifficulty(int cost, InGame inGame)
     {
-        return CostHelper.CostForDifficulty(cost, inGame.SelectedDifficulty);
+        return CostForDifficulty(cost, inGame.SelectedDifficulty);
     }
 }

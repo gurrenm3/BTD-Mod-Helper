@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 internal static class ModSettingsHandler

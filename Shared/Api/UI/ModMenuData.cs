@@ -1,7 +1,6 @@
-﻿using System;
-using Il2CppInterop.Runtime.Injection;
-using Object = Il2CppSystem.Object;
-
+﻿using Il2CppInterop.Runtime.Injection;
+using Il2CppSystem;
+using IntPtr = System.IntPtr;
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>

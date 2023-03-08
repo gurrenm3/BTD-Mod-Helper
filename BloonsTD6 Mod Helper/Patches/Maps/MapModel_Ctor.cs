@@ -4,9 +4,7 @@ using Il2CppAssets.Scripts.Models.Map.Spawners;
 using Il2CppAssets.Scripts.Models.Map.Triggers;
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(MapModel), MethodType.Constructor)]
-[HarmonyPatch(new[] { typeof(string), typeof(Il2CppReferenceArray<AreaModel>), typeof(Il2CppReferenceArray<BlockerModel>), typeof(Il2CppReferenceArray<CoopAreaLayoutModel>), typeof(Il2CppReferenceArray<PathModel>), typeof(Il2CppReferenceArray<RemoveableModel>), typeof(Il2CppReferenceArray<MapGizmoModel>), typeof(int),
-    typeof(PathSpawnerModel), typeof(Il2CppReferenceArray<MapEventModel>), typeof(float)})]
+[HarmonyPatch(typeof(MapModel), MethodType.Constructor, typeof(string), typeof(Il2CppReferenceArray<AreaModel>), typeof(Il2CppReferenceArray<BlockerModel>), typeof(Il2CppReferenceArray<CoopAreaLayoutModel>), typeof(Il2CppReferenceArray<PathModel>), typeof(Il2CppReferenceArray<RemoveableModel>), typeof(Il2CppReferenceArray<MapGizmoModel>), typeof(int), typeof(PathSpawnerModel), typeof(Il2CppReferenceArray<MapEventModel>), typeof(float))]
 internal static class MapModel_Ctor
 {
     [HarmonyPrefix]

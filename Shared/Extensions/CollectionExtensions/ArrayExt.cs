@@ -1,8 +1,9 @@
-﻿using Il2CppAssets.Scripts.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using System.Linq;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
+using Array = System.Array;
+using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class ArrayExt
@@ -10,10 +11,10 @@ public static partial class ArrayExt
     /// <summary>
     /// Return as Il2CppSystem.List
     /// </summary>
-    public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this T[] array)
-        where T : Il2CppSystem.Object
+    public static List<T> ToIl2CppList<T>(this T[] array)
+        where T : Object
     {
-        var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+        var il2CppList = new List<T>();
         foreach (var item in array)
             il2CppList.Add(item);
 
@@ -23,7 +24,7 @@ public static partial class ArrayExt
     /// <summary>
     /// Return as Il2CppReferenceArray
     /// </summary>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array) where T : Il2CppSystem.Object
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this T[] array) where T : Object
     {
         var il2cppArray = new Il2CppReferenceArray<T>(array.Length);
 
@@ -71,7 +72,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <returns></returns>
     public static TCast[] DuplicateAs<TSource, TCast>(this TSource[] array)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         var newArray = new TCast[] { };
         foreach (var item in array)
@@ -90,7 +91,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <param name="objectToAdd">Item to add to this</param>
     /// <returns></returns>
-    public static T[] AddTo<T>(this T[] array, T objectToAdd) where T : Il2CppSystem.Object
+    public static T[] AddTo<T>(this T[] array, T objectToAdd) where T : Object
     {
         if (array is null)
             array = new T[0];
@@ -107,7 +108,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <param name="objectsToAdd">Items you want to add</param>
     /// <returns></returns>
-    public static T[] AddTo<T>(this T[] array, T[] objectsToAdd) where T : Il2CppSystem.Object
+    public static T[] AddTo<T>(this T[] array, T[] objectsToAdd) where T : Object
     {
         if (array is null)
             array = new T[0];
@@ -115,7 +116,7 @@ public static partial class ArrayExt
         var size = array.Length + objectsToAdd.Length;
         var newReference = new T[size];
 
-        var tempList = new List<T>(array);
+        var tempList = new System.Collections.Generic.List<T>(array);
         tempList.AddRange(objectsToAdd);
 
         for (var i = 0; i < tempList.Count; i++)
@@ -134,7 +135,7 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <param name="objectsToAdd">Items you want to add</param>
     /// <returns></returns>
-    public static T[] AddTo<T>(this T[] array, List<T> objectsToAdd) where T : Il2CppSystem.Object
+    public static T[] AddTo<T>(this T[] array, System.Collections.Generic.List<T> objectsToAdd) where T : Object
     {
         return array.AddTo(objectsToAdd.ToArray());
     }
@@ -147,8 +148,8 @@ public static partial class ArrayExt
     /// <typeparam name="TCast">The Type you're checking for</typeparam>
     /// <param name="array"></param>
     /// <returns></returns>
-    public static bool HasItemsOfType<TSource, TCast>(this TSource[] array) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static bool HasItemsOfType<TSource, TCast>(this TSource[] array) where TSource : Object
+        where TCast : Object
     {
         // Doing this the ugly way to guarantee no errors. Had a couple of bizarre errors in testing when using LINQ
         foreach (var item in array)
@@ -174,8 +175,8 @@ public static partial class ArrayExt
     /// <typeparam name="TCast">The Type of the Item you want</typeparam>
     /// <param name="array"></param>
     /// <returns></returns>
-    public static TCast GetItemOfType<TSource, TCast>(this TSource[] array) where TCast : Il2CppSystem.Object
-        where TSource : Il2CppSystem.Object
+    public static TCast GetItemOfType<TSource, TCast>(this TSource[] array) where TCast : Object
+        where TSource : Object
     {
         if (!HasItemsOfType<TSource, TCast>(array))
             return null;
@@ -191,8 +192,8 @@ public static partial class ArrayExt
     /// <typeparam name="TCast">The Type of the Items you want</typeparam>
     /// <param name="array"></param>
     /// <returns></returns>
-    public static IEnumerable<TCast> GetItemsOfType<TSource, TCast>(this TSource[] array)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+    public static System.Collections.Generic.IEnumerable<TCast> GetItemsOfType<TSource, TCast>(this TSource[] array)
+        where TSource : Object where TCast : Object
     {
         return array.Select(o => o.TryCast<TCast>()).Where(o => o != null);
     }
@@ -205,8 +206,8 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <returns></returns>
     public static TSource[] RemoveItemOfType<TSource, TCast>(this TSource[] array)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         var behavior = GetItemOfType<TSource, TCast>(array);
         return behavior != null ? RemoveItem(array, behavior) : array;
@@ -221,7 +222,7 @@ public static partial class ArrayExt
     /// <param name="itemToRemove">The specific Item to remove</param>
     /// <returns></returns>
     public static TSource[] RemoveItem<TSource, TCast>(this TSource[] array, TCast itemToRemove)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(array))
             return array;
@@ -249,8 +250,8 @@ public static partial class ArrayExt
     /// <param name="array"></param>
     /// <returns></returns>
     public static TSource[] RemoveItemsOfType<TSource, TCast>(this TSource[] array)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(array))
             return array;

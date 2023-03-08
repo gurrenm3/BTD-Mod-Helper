@@ -2,7 +2,6 @@
 using BTD_Mod_Helper.Api.Enums;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -54,7 +53,7 @@ public class ModHelperCheckbox : ModHelperComponent
     public static ModHelperCheckbox Create(Info info, bool defaultValue, string background,
         UnityAction<bool> onValueChanged = null, string checkImage = null, int padding = 0)
     {
-        var modHelperCheckbox = ModHelperComponent.Create<ModHelperCheckbox>(info);
+        var modHelperCheckbox = Create<ModHelperCheckbox>(info);
 
         var backgroundImage = modHelperCheckbox.AddComponent<Image>();
         backgroundImage.type = Image.Type.Sliced;

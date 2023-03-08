@@ -1,7 +1,6 @@
-﻿using Il2CppAssets.Scripts.Models.Towers.Projectiles;
+﻿using Il2CppAssets.Scripts.Models.Towers.Filters;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Il2CppAssets.Scripts.Models.Towers.Filters;
-
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class ProjectileModelExt

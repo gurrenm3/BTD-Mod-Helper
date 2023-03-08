@@ -1,6 +1,5 @@
-using Il2CppAssets.Scripts.Simulation.Towers;
 using BTD_Mod_Helper.Api.Towers;
-
+using Il2CppAssets.Scripts.Simulation.Towers;
 namespace BTD_Mod_Helper.Patches.Towers;
 
 [HarmonyPatch(typeof(TowerManager), nameof(TowerManager.IsParagonLocked))]

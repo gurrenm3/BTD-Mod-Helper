@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Towers.Behaviors;
-
 namespace BTD_Mod_Helper.Patches.Towers;
 
 [HarmonyPatch(typeof(ParagonTower), nameof(ParagonTower.GetDegreeMutator))]

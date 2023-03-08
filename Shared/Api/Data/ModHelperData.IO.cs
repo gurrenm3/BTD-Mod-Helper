@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
 namespace BTD_Mod_Helper.Api;
 
 internal partial class ModHelperData
@@ -123,7 +122,7 @@ internal partial class ModHelperData
         {
             var matchGroup = match.Groups[1];
             var result = allowMultiline
-                ? matchGroup.Captures.Cast<Capture>().Select(c => c.Value).Join(delimiter: "")
+                ? matchGroup.Captures.Select(c => c.Value).Join(delimiter: "")
                 : matchGroup.Value;
             if (typeof(T) == typeof(string))
             {

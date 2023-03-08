@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using Il2CppNinjaKiwi.Players;
 using Il2CppNinjaKiwi.Players.Files;
-
 namespace BTD_Mod_Helper.Patches.Resources;
 
 [HarmonyPatch(typeof(FileSaveStrategy), nameof(FileSaveStrategy.Choose))]

@@ -2,7 +2,6 @@
 using System;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-
 namespace BTD_Mod_Helper.Api.ModOptions
 {
     /// <summary>

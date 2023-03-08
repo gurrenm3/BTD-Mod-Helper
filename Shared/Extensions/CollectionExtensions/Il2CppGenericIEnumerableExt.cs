@@ -1,6 +1,7 @@
 ﻿using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
+using Il2CppSystem.Collections;
 using Il2CppSystem.Collections.Generic;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -14,9 +15,9 @@ public static class Il2CppGenericIEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Collections.IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable)
+    public static IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable)
     {
-        return enumerable.GetEnumerator().Cast<Il2CppSystem.Collections.IEnumerator>();
+        return enumerable.GetEnumerator().Cast<IEnumerator>();
     }
 
     /// <summary>
@@ -42,7 +43,7 @@ public static class Il2CppGenericIEnumerableExt
     /// <param name="enumerable"></param>
     /// <param name="index"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Object GetItem<T>(this IEnumerable<T> enumerable, int index)
+    public static Object GetItem<T>(this IEnumerable<T> enumerable, int index)
     {
         var i = 0;
         var enumerator = enumerable.GetEnumeratorCollections();
@@ -62,7 +63,7 @@ public static class Il2CppGenericIEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
+    public static List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable) where T : Object
     {
         var il2CppList = new List<T>();
 
@@ -79,7 +80,7 @@ public static class Il2CppGenericIEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static System.Collections.Generic.List<T> ToList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
+    public static System.Collections.Generic.List<T> ToList<T>(this IEnumerable<T> enumerable) where T : Object
     {
         var list = new System.Collections.Generic.List<T>();
 
@@ -96,7 +97,7 @@ public static class Il2CppGenericIEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this IEnumerable<T> enumerable) where T : Object
     {
         var il2cppArray = new Il2CppReferenceArray<T>(enumerable.Count());
 
@@ -114,7 +115,7 @@ public static class Il2CppGenericIEnumerableExt
     /// <summary>
     /// Return as LockList
     /// </summary>
-    public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable) where T : Il2CppSystem.Object
+    public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable) where T : Object
     {
         var lockList = new LockList<T>();
         var enumerator = enumerable.GetEnumeratorCollections();

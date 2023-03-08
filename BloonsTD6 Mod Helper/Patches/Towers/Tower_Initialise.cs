@@ -2,7 +2,6 @@
 using Il2CppAssets.Scripts.Simulation.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Simulation.Towers;
-
 namespace BTD_Mod_Helper.Patches.Towers;
 
 [HarmonyPatch(typeof(Tower), nameof(Tower.Initialise))]

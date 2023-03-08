@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Il2CppAssets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
+using Il2CppAssets.Scripts.Unity;
 using MelonLoader.Utils;
-using Exception = System.Exception;
-
 namespace BTD_Mod_Helper;
 
 /// <summary>

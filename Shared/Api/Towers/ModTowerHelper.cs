@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models.Towers;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 public static partial class ModTowerHelper

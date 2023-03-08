@@ -4,7 +4,6 @@ using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>

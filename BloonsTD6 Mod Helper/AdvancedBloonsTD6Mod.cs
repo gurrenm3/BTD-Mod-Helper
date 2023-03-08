@@ -1,11 +1,15 @@
-﻿using Il2CppAssets.Scripts.Models.Bloons;
+﻿using System.Collections.Generic;
+using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Bloons;
+using Il2CppAssets.Scripts.Simulation.Input;
 using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Simulation.Towers.Behaviors;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity.Map;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -14,6 +18,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using InputManager = Il2CppAssets.Scripts.Simulation.Input.InputManager;
 using Removeable = Il2CppAssets.Scripts.Simulation.Track.Removeable;
 namespace BTD_Mod_Helper;
 
@@ -461,6 +466,74 @@ public abstract class AdvancedBloonsTD6Mod : BloonsTD6Mod
     /// </summary>
     /// <param name="mapModel"></param>
     public virtual void PostMapModelCreated(MapModel mapModel)
+    {
+    }
+    
+    /// <summary>
+    /// Called before a TowerInventory is initialized
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on TowerInventory.Init
+    /// </summary>
+    /// <param name="towerInventory"></param>
+    /// <param name="baseTowers"></param>
+    /// <returns></returns>
+    public virtual bool PreTowerInventoryInit(ref TowerInventory towerInventory, ref List<TowerDetailsModel> baseTowers)
+    {
+        return true;
+    }
+    
+    /// <summary>
+    /// Called after a TowerInventory is initialized
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on TowerInventory.Init
+    /// </summary>
+    /// <param name="towerInventory"></param>
+    /// <param name="baseTowers"></param>
+    public virtual void PostTowerInventoryInit(TowerInventory towerInventory, List<TowerDetailsModel> baseTowers)
+    {
+    }
+    
+    /// <summary>
+    /// Called before a banana is picked up
+    /// Return 'false' to prevent the original method from running
+    /// <br/>
+    /// Equivalent to a HarmonyPrefix on Cash.Pickup
+    /// </summary>
+    /// <param name="banana"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public virtual bool PreCashPickup(ref Cash banana, ref float amount)
+    {
+        return true;
+    }
+    
+    /// <summary>
+    /// Called after a banana is picked up
+    /// <br/>
+    /// Equivalent to a HarmonyPostfix on Cash.Pickup
+    /// </summary>
+    /// <param name="banana"></param>
+    /// <param name="amount"></param>
+    public virtual void PostCashPickup(Cash banana, ref float amount)
+    {
+    }
+    
+    public virtual bool PreEnterPlacementMode(ref TowerModel tower)
+    {
+        return true;
+    }
+    
+    public virtual void PostEnterPlacementMode(TowerModel tower)
+    {
+    }
+    
+    public virtual bool PreShowUpgradeTree(ref TowerModel tower, ref bool fromDoubleTap)
+    {
+        return true;
+    }
+    
+    public virtual void PostShowUpgradeTree(TowerModel tower, bool fromDoubleTap)
     {
     }
     

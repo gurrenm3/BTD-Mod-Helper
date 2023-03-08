@@ -1,7 +1,6 @@
 using BTD_Mod_Helper.Api;
 using UnityEngine;
 using UnityEngine.U2D;
-
 namespace BTD_Mod_Helper.Patches.Resources;
 
 [HarmonyPatch(typeof(SpriteAtlas), nameof(SpriteAtlas.GetSprite))]

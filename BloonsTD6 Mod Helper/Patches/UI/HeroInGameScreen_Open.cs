@@ -1,6 +1,5 @@
-using Il2CppAssets.Scripts.Unity.UI_New.HeroInGame;
 using BTD_Mod_Helper.Api.Towers;
-
+using Il2CppAssets.Scripts.Unity.UI_New.HeroInGame;
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(HeroInGameScreen), nameof(HeroInGameScreen.Open))]

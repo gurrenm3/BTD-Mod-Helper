@@ -1,7 +1,8 @@
-﻿using Il2CppAssets.Scripts.Utils;
-using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
+using Array = System.Array;
+using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class LockedListExt
@@ -61,7 +62,7 @@ public static partial class LockedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this LockList<T> lockList) where T : Il2CppSystem.Object
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this LockList<T> lockList) where T : Object
     {
         var il2cppArray = new Il2CppReferenceArray<T>(lockList.Count);
 
@@ -94,7 +95,7 @@ public static partial class LockedListExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static LockList<TCast> DuplicateAs<TSource, TCast>(this LockList<TSource> list)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         var newList = new LockList<TCast>();
         for (var i = 0; i < list.Count; i++)
@@ -113,7 +114,7 @@ public static partial class LockedListExt
     /// <param name="objectToAdd">Item to add</param>
     /// <returns></returns>
     public static LockList<TSource> AddTo<TSource, TCast>(this LockList<TSource> lockList, TCast objectToAdd)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         if (lockList is null)
             lockList = new LockList<TSource>();
@@ -131,8 +132,8 @@ public static partial class LockedListExt
     /// <typeparam name="TCast">The Type you're checking for</typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static bool HasItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static bool HasItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Object
+        where TCast : Object
     {
         for (var i = 0; i < lockList.Count; i++)
         {
@@ -158,8 +159,8 @@ public static partial class LockedListExt
     /// <typeparam name="TCast">The Type of the Items you want</typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static List<TCast> GetItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static List<TCast> GetItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Object
+        where TCast : Object
     {
         var result = new List<TCast>();
         lockList.ForEach(item => 
@@ -196,8 +197,8 @@ public static partial class LockedListExt
     /// <param name="lockList"></param>
     /// <returns></returns>
     public static LockList<TSource> RemoveItemOfType<TSource, TCast>(this LockList<TSource> lockList)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         var behavior = lockList.First(o => o.IsType<TCast>()).Cast<TCast>();
         return RemoveItem(lockList, behavior);
@@ -212,7 +213,7 @@ public static partial class LockedListExt
     /// <param name="itemToRemove">The specific Item to remove</param>
     /// <returns></returns>
     public static LockList<TSource> RemoveItem<TSource, TCast>(this LockList<TSource> lockList, TCast itemToRemove)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(lockList))
             return lockList;
@@ -240,8 +241,8 @@ public static partial class LockedListExt
     /// <param name="lockList"></param>
     /// <returns></returns>
     public static LockList<TSource> RemoveItemsOfType<TSource, TCast>(this LockList<TSource> lockList)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(lockList))
             return lockList;

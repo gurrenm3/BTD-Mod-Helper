@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Models.TowerSets;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(TowerSetBgSprites), nameof(TowerSetBgSprites.GetSprite))]

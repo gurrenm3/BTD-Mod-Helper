@@ -1,9 +1,10 @@
-﻿using System;
+﻿using System.Linq;
 using Il2CppAssets.Scripts.Utils;
-using System.Collections.Generic;
-using System.Linq;
 using Il2CppInterop.Runtime;
-
+using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
+using ArgumentException = System.ArgumentException;
+using ArgumentNullException = System.ArgumentNullException;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -17,9 +18,9 @@ public static class IEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable)
+    public static List<T> ToIl2CppList<T>(this System.Collections.Generic.IEnumerable<T> enumerable)
     {
-        var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+        var il2CppList = new List<T>();
         foreach (var t in enumerable)
         {
             il2CppList.Add(t);
@@ -34,8 +35,8 @@ public static class IEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this IEnumerable<T> enumerable)
-        where T : Il2CppSystem.Object
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.IEnumerable<T> enumerable)
+        where T : Object
     {
         return enumerable as T[] ?? enumerable.ToArray();
     }
@@ -43,7 +44,7 @@ public static class IEnumerableExt
     /// <summary>
     /// Return as LockList
     /// </summary>
-    public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable)
+    public static LockList<T> ToLockList<T>(this System.Collections.Generic.IEnumerable<T> enumerable)
     {
         var lockList = new LockList<T>();
         foreach (var t in enumerable)
@@ -63,8 +64,8 @@ public static class IEnumerableExt
     /// <typeparam name="TSource"></typeparam>
     /// <typeparam name="TCast"></typeparam>
     /// <returns></returns>
-    public static IEnumerable<TCast> CastAll<TSource, TCast>(this IEnumerable<TSource> list)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+    public static System.Collections.Generic.IEnumerable<TCast> CastAll<TSource, TCast>(this System.Collections.Generic.IEnumerable<TSource> list)
+        where TSource : Object where TCast : Object
     {
         return list?.Select(m =>
         {
@@ -86,9 +87,7 @@ public static class IEnumerableExt
     /// <summary>
     /// Returns the argument that maximizes the given value
     /// </summary>
-    public static T ArgMax<T, K>(this IEnumerable<T> source,
-        Func<T, K> map = null,
-        IComparer<K> comparer = null)
+    public static T ArgMax<T, K>(this System.Collections.Generic.IEnumerable<T> source, System.Func<T, K> map = null, System.Collections.Generic.IComparer<K> comparer = null)
     {
         if (ReferenceEquals(null, source))
             throw new ArgumentNullException(nameof(source));
@@ -126,7 +125,7 @@ public static class IEnumerableExt
     /// <param name="v"></param>
     /// <typeparam name="K"></typeparam>
     /// <typeparam name="V"></typeparam>
-    public static void Deconstruct<K, V>(this IGrouping<K, V> grouping, out K k, out List<V> v)
+    public static void Deconstruct<K, V>(this IGrouping<K, V> grouping, out K k, out System.Collections.Generic.List<V> v)
     {
         k = grouping.Key;
         v = grouping.ToList();
@@ -135,7 +134,7 @@ public static class IEnumerableExt
     /// <summary>
     /// Repeats each element in the sequence n times, keeping the same order of elements
     /// </summary>
-    public static IEnumerable<T> Repeat<T>(this IEnumerable<T> enumerable, int n)
+    public static System.Collections.Generic.IEnumerable<T> Repeat<T>(this System.Collections.Generic.IEnumerable<T> enumerable, int n)
     {
         return enumerable.SelectMany(t => Enumerable.Repeat(t, n));
     }

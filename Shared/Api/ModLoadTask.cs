@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using Il2CppAssets.Scripts.Simulation.SMath;
-
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>

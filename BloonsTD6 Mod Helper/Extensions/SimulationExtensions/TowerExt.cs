@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity.Display.Animation;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Simulation.Towers;
-
 namespace BTD_Mod_Helper.Patches.Towers;
 
 [HarmonyPatch(typeof(TowerManager), nameof(TowerManager.UpgradeTower))]

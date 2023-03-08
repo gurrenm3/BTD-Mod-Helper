@@ -1,5 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Utils;
-
+using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 public abstract class ModHeroLevel : ModUpgrade
 {
     /// <inheritdoc />
-    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
+    public override void RegisterText(Dictionary<string, string> textTable)
     {
         base.RegisterText(textTable);
         if (AbilityName != null)

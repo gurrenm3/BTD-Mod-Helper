@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Display;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Display;
-
 namespace BTD_Mod_Helper.Api.Bloons;
 
 /// <summary>

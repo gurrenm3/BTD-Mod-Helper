@@ -2,7 +2,6 @@
 using BTD_Mod_Helper.Api.Components;
 using Il2CppNinjaKiwi.Common;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using BTD_Mod_Helper.Api.ModOptions;
-
 namespace BTD_Mod_Helper.Api.Data;
 
 /// <summary>
