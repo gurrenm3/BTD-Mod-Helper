@@ -5,6 +5,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -71,7 +72,7 @@ internal partial class MelonMain : BloonsTD6Mod
             return;
 
         NotificationMgr.CheckForNotifications();
-        //RoundSetChanger.EnsureHidden();  //TODO see if this is actually needed
+        RoundSetChanger.EnsureHidden();
 
 #if BTD6_DEBUG
         if (TowerSelectionMenu.instance != null &&
