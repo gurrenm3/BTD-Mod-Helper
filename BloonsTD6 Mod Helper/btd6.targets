@@ -9,8 +9,8 @@
 
     <!--References to MelonLoader dependencies-->
     <ItemGroup>
-        <Reference Include="$(BloonsTD6)\MelonLoader\net6\MelonLoader.dll"/>
-        <Reference Include="$(BloonsTD6)\MelonLoader\net6\0Harmony.dll"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\MelonLoader.dll" Private="false"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\0Harmony.dll" Private="false"/>
     </ItemGroup>
 
     <!--References to BTD6 dependencies-->
@@ -49,10 +49,10 @@
 
     <!--Mod Helper dependency-->
     <ItemGroup Condition="$(DontReferenceModHelper) != 'true'">
-        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\Btd6ModHelper.dll')">
+        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\Btd6ModHelper.dll')" Private="false">
             <HintPath>$(BloonsTD6)\Mods\Btd6ModHelper.dll</HintPath>
         </Reference>
-        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll')">
+        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll')" Private="false">
             <HintPath>$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll</HintPath>
         </Reference>
     </ItemGroup>
@@ -61,6 +61,7 @@
     <ItemGroup Condition="'$(AutoEmbed)' != 'false'">
         <EmbeddedResource Include="**/*.png"/>
         <EmbeddedResource Include="**/*.jpg"/>
+        <EmbeddedResource Include="**/*.wav"/>
         <EmbeddedResource Include="**/*.bundle"/>
         <EmbeddedResource Include="**/*.bytes"/>
         <EmbeddedResource Condition="Exists('ModHelperData.json')" Include="ModHelperData.json"/>

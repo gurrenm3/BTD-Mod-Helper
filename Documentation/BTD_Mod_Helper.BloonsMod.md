@@ -6,17 +6,30 @@
 Expanded version of MelonMod to suit the needs of Bloons games and the Mod Helper
 
 ```csharp
-public abstract class BloonsMod : MelonLoader.MelonMod,
+public abstract class BloonsMod :
 BTD_Mod_Helper.Api.IModContent
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [MelonLoader.MelonBase](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonBase 'MelonLoader.MelonBase') &#129106; [MelonLoader.MelonTypeBase&lt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonTypeBase-1 'MelonLoader.MelonTypeBase`1')[MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonTypeBase-1 'MelonLoader.MelonTypeBase`1') &#129106; [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod') &#129106; BloonsMod
+Inheritance [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod') &#129106; BloonsMod
 
 Derived  
 &#8627; [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent')
 ### Properties
+
+<a name='BTD_Mod_Helper.BloonsMod.AudioClips'></a>
+
+## BloonsMod.AudioClips Property
+
+Audio clips for the embedded sounds in this mod
+
+```csharp
+public System.Collections.Generic.Dictionary<string,AudioClip> AudioClips { get; set; }
+```
+
+#### Property Value
+[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 <a name='BTD_Mod_Helper.BloonsMod.CheatMod'></a>
 
@@ -141,7 +154,7 @@ public virtual bool OptionalPatches { get; }
 
 ## BloonsMod.Resources Property
 
-The embedded resources of this mod
+The embedded resources (textures) of this mod
 
 ```csharp
 public System.Collections.Generic.Dictionary<string,byte[]> Resources { get; set; }
@@ -217,64 +230,6 @@ The parameters that another mod has provided
 #### Returns
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 A possible result of this call
-
-<a name='BTD_Mod_Helper.BloonsMod.OnApplicationStart()'></a>
-
-## BloonsMod.OnApplicationStart() Method
-
-Runs after the Melon has registered. This callback waits until MelonLoader has fully initialized ([MelonLoader.MelonEvents.OnApplicationStart](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonEvents.OnApplicationStart 'MelonLoader.MelonEvents.OnApplicationStart')).
-
-```csharp
-public virtual void OnApplicationStart();
-```
-
-<a name='BTD_Mod_Helper.BloonsMod.OnEarlyInitialize()'></a>
-
-## BloonsMod.OnEarlyInitialize() Method
-
-Runs when the Melon is registered. Executed before the Melon's info is printed to the console. This callback should only be used a constructor for the Melon.
-
-```csharp
-public virtual void OnEarlyInitialize();
-```
-
-### Remarks
-Please note that this callback may run before the Support Module is loaded.  
-<br>As a result, using unhollowed assemblies may not be possible yet and you would have to override <see cref="M:MelonLoader.MelonBase.OnInitializeMelon"/> instead.</br>
-
-<a name='BTD_Mod_Helper.BloonsMod.OnEarlyInitializeMelon()'></a>
-
-## BloonsMod.OnEarlyInitializeMelon() Method
-
-Runs when the Melon is registered. Executed before the Melon's info is printed to the console. This callback should only be used a constructor for the Melon.
-
-```csharp
-public sealed override void OnEarlyInitializeMelon();
-```
-
-### Remarks
-Please note that this callback may run before the Support Module is loaded.  
-<br>As a result, using unhollowed assemblies may not be possible yet and you would have to override <see cref="M:MelonLoader.MelonBase.OnInitializeMelon"/> instead.</br>
-
-<a name='BTD_Mod_Helper.BloonsMod.OnInitialize()'></a>
-
-## BloonsMod.OnInitialize() Method
-
-Runs after the Melon has registered. This callback waits until MelonLoader has fully initialized ([MelonLoader.MelonEvents.OnApplicationStart](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonEvents.OnApplicationStart 'MelonLoader.MelonEvents.OnApplicationStart')).
-
-```csharp
-public virtual void OnInitialize();
-```
-
-<a name='BTD_Mod_Helper.BloonsMod.OnInitializeMelon()'></a>
-
-## BloonsMod.OnInitializeMelon() Method
-
-Runs after the Melon has registered. This callback waits until MelonLoader has fully initialized ([MelonLoader.MelonEvents.OnApplicationStart](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonEvents.OnApplicationStart 'MelonLoader.MelonEvents.OnApplicationStart')).
-
-```csharp
-public sealed override void OnInitializeMelon();
-```
 
 <a name='BTD_Mod_Helper.BloonsMod.OnKeyDown(KeyCode)'></a>
 

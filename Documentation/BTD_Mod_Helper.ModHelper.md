@@ -45,7 +45,7 @@ public static bool IsNet6 { get; }
 All active mods, whether they're Mod Helper or not
 
 ```csharp
-public static System.Collections.Generic.IEnumerable<MelonLoader.MelonMod> Melons { get; }
+public static System.Collections.Generic.IEnumerable<MelonMod> Melons { get; }
 ```
 
 #### Property Value

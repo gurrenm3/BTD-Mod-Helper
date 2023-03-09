@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NAudio.Wave;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api;
 
 internal class ResourceHandler
 {
     internal static readonly Dictionary<string, byte[]> Resources = new();
+    internal static readonly Dictionary<string, AudioClip> AudioClips = new();
 
     public static readonly Dictionary<string, AssetBundle> Bundles = new();
 
@@ -14,19 +16,56 @@ internal class ResourceHandler
     {
         mod.Resources = new Dictionary<string, byte[]>();
         foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
-                     .Where(s => s.EndsWith("png") || s.EndsWith("jpg")))
+                     .Where(s => s.EndsWith(".png") || s.EndsWith(".jpg")))
         {
             var resource = mod.GetAssembly().GetManifestResourceStream(fileName).GetByteArray();
-            if (resource == null)
-            {
-                continue;
-            }
+            if (resource == null) continue;
 
             var split = fileName.Split('.');
-            var name = split[split.Length - 2];
+            var name = split[^2];
             var id = ModContent.GetId(mod, name);
             Resources[id] = resource;
             mod.Resources[name] = resource;
+        }
+    }
+
+    internal static void LoadEmbeddedAudio(BloonsMod mod)
+    {
+        mod.AudioClips = new Dictionary<string, AudioClip>();
+
+        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
+                     .Where(s => s.EndsWith(".wav")))
+        {
+            var split = fileName.Split('.');
+            var name = split[^2];
+            var id = ModContent.GetId(mod, name);
+
+            try
+            {
+                using var stream = mod.GetAssembly().GetManifestResourceStream(fileName);
+                using var reader = new WaveFileReader(stream);
+                var waveFormat = reader.WaveFormat;
+
+                var totalSamples = (int) (reader.SampleCount * waveFormat.Channels);
+                var data = new float[totalSamples];
+
+                reader.ToSampleProvider().Read(data, 0, totalSamples);
+
+                var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
+
+                if (audioClip.SetData(data, 0))
+                {
+                    AudioClips[id] = mod.AudioClips[name] = audioClip;
+                }
+                else
+                {
+                    ModHelper.Warning($"Failed to set data for audio clip {fileName}");
+                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
         }
     }
 
@@ -86,6 +125,7 @@ internal class ResourceHandler
     internal static Texture2D GetTexture(string id)
     {
         if (TextureCache.TryGetValue(id, out var texture2d) && texture2d != null) return texture2d;
+
         return CreateTexture(id);
     }
 
@@ -117,6 +157,7 @@ internal class ResourceHandler
     internal static Sprite GetSprite(string id, float pixelsPerUnit = 10.8f)
     {
         if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null) return sprite;
+
         return CreateSprite(id, pixelsPerUnit);
     }
 }

@@ -29,9 +29,14 @@ public abstract class BloonsMod : MelonMod, IModContent
     public Dictionary<string, ModSetting> ModSettings { get; } = new();
 
     /// <summary>
-    /// The embedded resources of this mod
+    /// The embedded resources (textures) of this mod
     /// </summary>
     public Dictionary<string, byte[]> Resources { get; internal set; }
+    
+    /// <summary>
+    /// Audio clips for the embedded sounds in this mod
+    /// </summary>
+    public Dictionary<string, AudioClip> AudioClips { get; internal set; }
 
     /// <summary>
     /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods

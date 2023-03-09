@@ -610,5 +610,55 @@ namespace BTD_Mod_Helper.Api
             result = Find<T>(id);
             return result != default;
         }
+
+        /// <summary>
+        /// Gets an AudioClip from a mod by its name (no file extension included)
+        /// </summary>
+        /// <param name="mod">The mod</param>
+        /// <param name="name">Sound name (no .wav)</param>
+        /// <returns>a playable AudioClip</returns>
+        public static AudioClip GetAudioClip(BloonsMod mod, string name) =>
+            mod.AudioClips.GetValueOrDefault(name);
+
+        /// <summary>
+        /// Gets an AudioClip from a mod by its name (no file extension included)
+        /// </summary>
+        /// <param name="name">Sound name (no .wav)</param>
+        /// <typeparam name="T">The mod</typeparam>
+        /// <returns>a playable AudioClip</returns>
+        public static AudioClip GetAudioClip<T>(string name) where T : BloonsMod =>
+            GetAudioClip(GetInstance<T>(), name);
+
+        /// <summary>
+        /// Gets an AudioClip from this mod by its name (no file extension included)
+        /// </summary>
+        /// <param name="name">Sound name (no .wav)</param>
+        /// <returns>a playable AudioClip</returns>
+        public AudioClip GetAudioClip(string name) => GetAudioClip(mod, name);
+
+        /// <summary>
+        /// Gets an AudioSource reference for a given sound within a mod
+        /// </summary>
+        /// <param name="mod"></param>
+        /// <param name="name">Sound name (no .wav)</param>
+        /// <returns>An AudioSoundReference</returns>
+        public static AudioSourceReference GetAudioSourceReference(BloonsMod mod, string name) =>
+            CreateAudioSourceReference(GetId(mod, name));
+
+        /// <summary>
+        /// Gets an AudioSource reference for a given sound within a mod
+        /// </summary>
+        /// <param name="name">Sound name (no .wav)</param>
+        /// <typeparam name="T">The mod</typeparam>
+        /// <returns>An AudioSoundReference</returns>
+        public static AudioSourceReference CreateAudioSourceReference<T>(string name) where T : BloonsMod =>
+            GetAudioSourceReference(GetInstance<T>(), name);
+
+        /// <summary>
+        /// Gets an AudioSource reference for a given sound within this mod
+        /// </summary>
+        /// <param name="name">Sound name (no .wav)</param>
+        /// <returns>An AudioSoundReference</returns>
+        public AudioSourceReference GetAudioSourceReference(string name) => GetAudioSourceReference(mod, name);
     }
 }

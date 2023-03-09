@@ -83,6 +83,7 @@ public static class ModHelper
             try
             {
                 ResourceHandler.LoadEmbeddedTextures(mod);
+                ResourceHandler.LoadEmbeddedAudio(mod);
                 ResourceHandler.LoadEmbeddedBundles(mod);
                 ModContent.LoadModContent(mod);
             }

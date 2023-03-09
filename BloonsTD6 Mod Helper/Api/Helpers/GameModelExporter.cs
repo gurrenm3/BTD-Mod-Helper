@@ -138,6 +138,15 @@ public static class GameModelExporter
         });
         ModHelper.Log(
             $"Exported {success}/{total} SkinDatas to {Path.Combine(FileIOHelper.sandboxRoot, "Skins")}");
+        
+        total = success = 0;
+        foreach (var knowledgeModel in Game.instance.model.allKnowledge)
+        {
+            if (TryExport(knowledgeModel, $"Knowledge/{knowledgeModel.name}.json")) success++;
+            total++;
+        }
+        ModHelper.Log(
+            $"Exported {success}/{total} KnowledeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Knowledge")}");
     }
 
     /// <summary>
