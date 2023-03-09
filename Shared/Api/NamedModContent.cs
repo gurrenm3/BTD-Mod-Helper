@@ -1,4 +1,5 @@
-﻿namespace BTD_Mod_Helper.Api;
+﻿using Il2CppSystem.Collections.Generic;
+namespace BTD_Mod_Helper.Api;
 
 /// <summary>
 /// ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable
@@ -26,7 +27,7 @@ public abstract class NamedModContent : ModContent
     /// </summary>
     /// <param name="textTable"></param>
     /// <exclude/>
-    public virtual void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
+    public virtual void RegisterText(Dictionary<string, string> textTable)
     {
         textTable[Id] = DisplayName;
         textTable[Id + "s"] = DisplayNamePlural;

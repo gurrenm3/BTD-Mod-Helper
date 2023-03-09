@@ -5,10 +5,10 @@ global using Il2CppInterop.Runtime.InteropTypes;
 global using Il2CppInterop.Runtime.Runtime;
 global using Il2CppInterop.Runtime.InteropTypes.Arrays;
 global using Il2Cpp;
+using System.ComponentModel;
 
 namespace System.Runtime.CompilerServices
 {
-    using ComponentModel;
 
     /// <summary>
     /// Reserved to be used by the compiler for tracking metadata.

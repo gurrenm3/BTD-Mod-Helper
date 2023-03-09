@@ -4,7 +4,7 @@
 ## Function<T>() Delegate
 
 ```csharp
-public delegate T Function<T>();
+public delegate T Function<out T>();
 ```
 #### Type parameters
 

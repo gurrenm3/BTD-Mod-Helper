@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using MelonLoader.Utils;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api;
 
 internal partial class ModHelperData

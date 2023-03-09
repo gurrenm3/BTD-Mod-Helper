@@ -1,7 +1,6 @@
-﻿using Il2CppAssets.Scripts.Models.Towers.Upgrades;
+﻿using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity;
-using BTD_Mod_Helper.Api.Towers;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

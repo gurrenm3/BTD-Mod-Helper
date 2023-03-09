@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Il2CppAssets.Scripts.Unity.Menu;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.UI.Menus;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using IntPtr = System.IntPtr;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 [RegisterTypeInIl2Cpp(false)]

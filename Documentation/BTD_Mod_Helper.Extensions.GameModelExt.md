@@ -35,25 +35,6 @@ public static void AddHeroDetails(this GameModel model, HeroDetailsModel heroDet
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisGameModel,TowerDetailsModel)'></a>
-
-## GameModelExt.AddTowerDetails(this GameModel, TowerDetailsModel) Method
-
-Adds a tower
-
-```csharp
-public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisGameModel,TowerDetailsModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
-
-<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisGameModel,TowerDetailsModel).towerDetailsModel'></a>
-
-`towerDetailsModel` [Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel 'Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel')
-
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisGameModel,TowerDetailsModel,int)'></a>
 
 ## GameModelExt.AddTowerDetails(this GameModel, TowerDetailsModel, int) Method
@@ -108,6 +89,25 @@ The TowerDetailsModel to be added
 `set` [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 
 The TowerSet of the tower to be added
+
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisGameModel,TowerDetailsModel)'></a>
+
+## GameModelExt.AddTowerDetails(this GameModel, TowerDetailsModel) Method
+
+Adds a tower
+
+```csharp
+public static void AddTowerDetails(this GameModel model, TowerDetailsModel towerDetailsModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisGameModel,TowerDetailsModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowerDetails(thisGameModel,TowerDetailsModel).towerDetailsModel'></a>
+
+`towerDetailsModel` [Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel 'Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel')
 
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.AddTowersToGame(thisGameModel,System.Collections.Generic.IEnumerable_TowerModel_)'></a>
 

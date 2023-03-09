@@ -1,11 +1,9 @@
 ﻿using System;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -88,7 +86,7 @@ public class ModHelperOption : ModHelperComponent
     protected static T Create<T>(string displayName, string description = null, string icon = null)
         where T : ModHelperOption
     {
-        var modHelperOption = ModHelperComponent.Create<T>(
+        var modHelperOption = Create<T>(
             new Info(displayName, width: PanelWidth, height: PanelHeight)
         );
 

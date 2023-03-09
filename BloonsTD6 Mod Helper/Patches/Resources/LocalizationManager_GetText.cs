@@ -1,6 +1,5 @@
 using BTD_Mod_Helper.Api.Data;
 using Il2CppNinjaKiwi.Common;
-
 namespace BTD_Mod_Helper.Patches.Resources;
 
 [HarmonyPatch(typeof(LocalizationManager), nameof(LocalizationManager.GetText))]

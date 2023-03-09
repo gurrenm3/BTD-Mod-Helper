@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using BTD_Mod_Helper.Api.Towers;
-
 namespace BTD_Mod_Helper.Api.Enums;
 
 /// <summary>

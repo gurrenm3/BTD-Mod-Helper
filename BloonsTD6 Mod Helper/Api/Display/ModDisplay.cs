@@ -1,10 +1,8 @@
-﻿using Il2CppAssets.Scripts.Models.GenericBehaviors;
+﻿using System;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
-using System;
-using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api.Display;
 
 public abstract partial class ModDisplay
@@ -53,7 +51,7 @@ public abstract partial class ModDisplay
     protected void UseNode(string guid, Action<UnityDisplayNode> action)
     {
         Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(CreatePrefabReference(guid),
-            new Action<UnityDisplayNode>((udn) =>
+            new Action<UnityDisplayNode>(udn =>
             {
                 udn.RecalculateGenericRenderers();
                 action(udn);

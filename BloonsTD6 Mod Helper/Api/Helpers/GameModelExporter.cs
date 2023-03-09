@@ -1,12 +1,12 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using Array = System.Array;
+using Exception = System.Exception;
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
@@ -144,7 +144,7 @@ public static class GameModelExporter
     /// Exports a Model to the path, returning whether it was successful. Does not log anything.
     /// </summary>
     /// <returns></returns>
-    public static bool TryExport(Il2CppSystem.Object data, string path)
+    public static bool TryExport(Object data, string path)
     {
         try
         {
@@ -160,7 +160,7 @@ public static class GameModelExporter
     /// <summary>
     /// Tries to save a specific Model and logs doing so
     /// </summary>
-    public static void Export(Il2CppSystem.Object data, string path)
+    public static void Export(Object data, string path)
     {
         try
         {

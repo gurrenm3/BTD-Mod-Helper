@@ -1,8 +1,7 @@
-﻿using Il2CppAssets.Scripts.Utils;
-using System;
+﻿using System;
 using BTD_Mod_Helper.Api;
+using Il2CppAssets.Scripts.Utils;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

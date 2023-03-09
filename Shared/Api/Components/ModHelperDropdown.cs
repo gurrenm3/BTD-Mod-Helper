@@ -1,12 +1,10 @@
 ﻿using System;
-using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppSystem.Collections.Generic;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -71,7 +69,7 @@ public class ModHelperDropdown : ModHelperComponent
         var contentHeight = options.Count * height;
         var realHeight = Math.Min(windowHeight, contentHeight);
 
-        var modHelperDropdown = ModHelperComponent.Create<ModHelperDropdown>(info);
+        var modHelperDropdown = Create<ModHelperDropdown>(info);
 
 #if BloonsTD6
         modHelperDropdown.AddImage(

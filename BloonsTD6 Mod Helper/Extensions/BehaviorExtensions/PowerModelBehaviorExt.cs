@@ -1,8 +1,7 @@
-﻿using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Powers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Powers;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

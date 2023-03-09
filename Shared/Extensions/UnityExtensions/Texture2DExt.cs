@@ -2,8 +2,6 @@
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using Graphics = UnityEngine.Graphics;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

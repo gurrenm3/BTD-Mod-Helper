@@ -1,8 +1,5 @@
 ﻿using System;
 using Il2CppAssets.Scripts.Unity.Display;
-using UnityEngine;
-using Exception = System.Exception;
-
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>

@@ -9,6 +9,7 @@
 
 | Classes | |
 | :--- | :--- |
+| [AdvancedBloonsTD6Mod](BTD_Mod_Helper.AdvancedBloonsTD6Mod.md 'BTD_Mod_Helper.AdvancedBloonsTD6Mod') | A more advanced version of the BloonsTD6Mod Class that has postfixes and prefixes for all hooks, along with instances and all parameters for each patch |
 | [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod') | Expanded version of MelonMod to suit the needs of Bloons games and the Mod Helper |
 | [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod') | Extend this Class instead of MelonMod to gain access to dozens of easy to use built-in hooks |
 | [ModHelper](BTD_Mod_Helper.ModHelper.md 'BTD_Mod_Helper.ModHelper') | Catch-all class for non-extension static methods |
@@ -56,7 +57,7 @@
 
 | Classes | |
 | :--- | :--- |
-| [MatchLocalPosition](BTD_Mod_Helper.Api.Components.MatchLocalPosition.md 'BTD_Mod_Helper.Api.Components.MatchLocalPosition') | Component to make this transform continuously match the scale of another transform |
+| [MatchLocalPosition](BTD_Mod_Helper.Api.Components.MatchLocalPosition.md 'BTD_Mod_Helper.Api.Components.MatchLocalPosition') | Component to make this transform continuously match the position of another transform |
 | [ModGameMenuTracker](BTD_Mod_Helper.Api.Components.ModGameMenuTracker.md 'BTD_Mod_Helper.Api.Components.ModGameMenuTracker') | Component to track that a instance of a GameMenu's gameObject actually is the same ModGameMenu as was opened,<br/>as direct comparison on the Unity Objects does not work reliably |
 | [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton') | ModHelperComponent for a background panel |
 | [ModHelperCategory](BTD_Mod_Helper.Api.Components.ModHelperCategory.md 'BTD_Mod_Helper.Api.Components.ModHelperCategory') | ModHelperComponent for a category in the mod settings menu |
@@ -219,6 +220,7 @@
 | [AbilityModelExt](BTD_Mod_Helper.Extensions.AbilityModelExt.md 'BTD_Mod_Helper.Extensions.AbilityModelExt') | Extensions for AbilityModels |
 | [ActionExt](BTD_Mod_Helper.Extensions.ActionExt.md 'BTD_Mod_Helper.Extensions.ActionExt') | Extension methods for System.Action |
 | [AddBehaviorToBloonModelExt](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt') | Extensions for AddBehaviorToBloonModels |
+| [AirUnitModelBehaviorExt](BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt') | Behavior extensions for AirUnitModels |
 | [ArrayExt](BTD_Mod_Helper.Extensions.ArrayExt.md 'BTD_Mod_Helper.Extensions.ArrayExt') | Extensions for arrays |
 | [AssemblyExt](BTD_Mod_Helper.Extensions.AssemblyExt.md 'BTD_Mod_Helper.Extensions.AssemblyExt') | Extensions for Assemblies |
 | [AttackBehaviorExt](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackBehaviorExt') | Behavior extensions for attacks |

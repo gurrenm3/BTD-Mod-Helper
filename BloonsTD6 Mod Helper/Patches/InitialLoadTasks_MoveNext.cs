@@ -1,18 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Unity.Analytics;
-using BTD_Mod_Helper.Api;
-using Il2CppNinjakiwi.BuildAutomation;
-using Il2CppSystem.Threading.Tasks;
-using Il2CppNinjaKiwi.Common;
-using UnityEngine;
-using Exception = System.Exception;
-using Int32 = Il2CppSystem.Int32;
-using Main = Il2CppAssets.Scripts.Main;
-using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Patches;
 
 /*[HarmonyPatch(typeof(Main._InitialLoadTasks_d__45), nameof(Main._InitialLoadTasks_d__45.MoveNext))]

@@ -31,32 +31,6 @@ public static void AddMutator(this ModModel model, MutatorModModel mutator);
 
 `mutator` [Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel')
 
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel)'></a>
-
-## ModModelExt.GetMutator<T>(this ModModel) Method
-
-Return the first Mutator of type T, or null if there isn't one
-
-```csharp
-public static T GetMutator<T>(this ModModel model)
-    where T : MutatorModModel;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).T'></a>
-
-`T`
-
-The Mutator you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.ModModelExt.md#BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).T 'BTD_Mod_Helper.Extensions.ModModelExt.GetMutator<T>(this ModModel).T')
-
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel,int)'></a>
 
 ## ModModelExt.GetMutator<T>(this ModModel, int) Method
@@ -117,6 +91,32 @@ The Mutator you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ModModelExt.md#BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel,string).T 'BTD_Mod_Helper.Extensions.ModModelExt.GetMutator<T>(this ModModel, string).T')
 
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel)'></a>
+
+## ModModelExt.GetMutator<T>(this ModModel) Method
+
+Return the first Mutator of type T, or null if there isn't one
+
+```csharp
+public static T GetMutator<T>(this ModModel model)
+    where T : MutatorModModel;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).T'></a>
+
+`T`
+
+The Mutator you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.ModModelExt.md#BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).T 'BTD_Mod_Helper.Extensions.ModModelExt.GetMutator<T>(this ModModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutators_T_(thisModModel)'></a>
 
 ## ModModelExt.GetMutators<T>(this ModModel) Method
@@ -142,32 +142,6 @@ The Mutator you want
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.ModModelExt.md#BTD_Mod_Helper.Extensions.ModModelExt.GetMutators_T_(thisModModel).T 'BTD_Mod_Helper.Extensions.ModModelExt.GetMutators<T>(this ModModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel)'></a>
-
-## ModModelExt.HasMutator<T>(this ModModel) Method
-
-Check if this has a specific Mutator
-
-```csharp
-public static bool HasMutator<T>(this ModModel model)
-    where T : MutatorModModel;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel).T'></a>
-
-`T`
-
-The Mutator you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel,T)'></a>
 
@@ -195,6 +169,32 @@ The Mutator you're checking for
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel,T).mutator'></a>
 
 `mutator` [T](BTD_Mod_Helper.Extensions.ModModelExt.md#BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel,T).T 'BTD_Mod_Helper.Extensions.ModModelExt.HasMutator<T>(this ModModel, T).T')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel)'></a>
+
+## ModModelExt.HasMutator<T>(this ModModel) Method
+
+Check if this has a specific Mutator
+
+```csharp
+public static bool HasMutator<T>(this ModModel model)
+    where T : MutatorModModel;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel).T'></a>
+
+`T`
+
+The Mutator you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -244,29 +244,6 @@ public static void RemoveMutator(this ModModel model, MutatorModModel mutator);
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator(thisModModel,MutatorModModel).mutator'></a>
 
 `mutator` [Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel')
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel)'></a>
-
-## ModModelExt.RemoveMutator<T>(this ModModel) Method
-
-Remove the first Mutator of Type T
-
-```csharp
-public static void RemoveMutator<T>(this ModModel model)
-    where T : MutatorModModel;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel).T'></a>
-
-`T`
-
-The Mutator you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel,int)'></a>
 
@@ -321,6 +298,29 @@ The Mutator you want to remove
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel,string).nameContains'></a>
 
 `nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel)'></a>
+
+## ModModelExt.RemoveMutator<T>(this ModModel) Method
+
+Remove the first Mutator of Type T
+
+```csharp
+public static void RemoveMutator<T>(this ModModel model)
+    where T : MutatorModModel;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel).T'></a>
+
+`T`
+
+The Mutator you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutators(thisModModel,System.Func_MutatorModModel,bool_)'></a>
 

@@ -1,10 +1,11 @@
-﻿#if BloonsTD6
+﻿
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Display;
+#if BloonsTD6
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 #elif BloonsAT
 using Il2CppAssets.Scripts.Models.Display;
 #endif
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Display;
 
 namespace BTD_Mod_Helper.Extensions;
 

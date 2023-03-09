@@ -1,16 +1,15 @@
 ﻿using System;
-using Il2CppAssets.Scripts.Unity.Display;
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Simulation.SMath;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Utils;
-using Il2CppNinjaKiwi.Common;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using Color = UnityEngine.Color;
 using Object = UnityEngine.Object;
-
+using Quaternion = UnityEngine.Quaternion;
 #if BloonsTD6
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
@@ -75,7 +74,7 @@ namespace BTD_Mod_Helper.Api.Display
         /// <summary>
         /// The position offset to render the display at (z axis is up toward camera)
         /// </summary>
-        public virtual Il2CppAssets.Scripts.Simulation.SMath.Vector3 PositionOffset => new(0, 0, 0);
+        public virtual Vector3 PositionOffset => new(0);
 
         /// <summary>
         /// The scale to render the display at
@@ -202,7 +201,7 @@ namespace BTD_Mod_Helper.Api.Display
         internal UnityDisplayNode CreateAsyncCallback(Factory factory, PrefabReference prefabReference,
             UnityDisplayNode prototype)
         {
-            var position = new Vector3(Factory.kOffscreenPosition.x, 0, 0);
+            var position = new UnityEngine.Vector3(Factory.kOffscreenPosition.x, 0, 0);
             var rotation = Quaternion.identity;
             var newPrototype = Object.Instantiate(prototype.gameObject, position, rotation, factory.DisplayRoot);
             newPrototype.SetActive(true);
@@ -248,7 +247,7 @@ namespace BTD_Mod_Helper.Api.Display
             {
                 if (Scale is < 1f or > 1f)
                 {
-                    udn.transform.GetChild(0).transform.localScale = Scale * Vector3.one;
+                    udn.transform.GetChild(0).transform.localScale = Scale * UnityEngine.Vector3.one;
                 }
             }
             catch (Exception e)

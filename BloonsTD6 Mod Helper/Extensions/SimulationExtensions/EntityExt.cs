@@ -1,7 +1,6 @@
 ﻿using Il2CppAssets.Scripts.Simulation.Display;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Unity.Display;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

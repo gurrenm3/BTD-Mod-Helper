@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -22,10 +21,10 @@ public static class FileInfoExt
             if (ex.Message.Contains("HRESULT: 0x80131515"))
             {
                 ModHelper.Log($"The file you tried accessing is blocked. Please Unblock \"{fileInfo.FullName}\" to continue." +
-                              $"\n\nYou can do this by Right-Clicking on the file, clicking Properties, and then making sure that " +
-                              $"\"Unblock\" is checked.");
+                              "\n\nYou can do this by Right-Clicking on the file, clicking Properties, and then making sure that " +
+                              "\"Unblock\" is checked.");
             }
-            return null;
+            return Array.Empty<AssemblyName>();
         }
     }
 

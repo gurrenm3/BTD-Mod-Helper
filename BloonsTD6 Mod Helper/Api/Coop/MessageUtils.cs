@@ -1,8 +1,7 @@
-﻿using System;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text;
 using Il2CppNinjaKiwi.NKMulti;
-
+using Il2CppSystem;
+using Newtonsoft.Json;
 namespace BTD_Mod_Helper.Api.Coop
 {
     /// <summary>
@@ -53,8 +52,8 @@ namespace BTD_Mod_Helper.Api.Coop
         /// <param name="code"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        [Obsolete($"For backwards compatibility reasons only, please use {nameof(CreateMessageEx)}")]
-        public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Il2CppSystem.Object => CreateMessageEx(objectToSend, code);
+        [System.Obsolete($"For backwards compatibility reasons only, please use {nameof(CreateMessageEx)}")]
+        public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Object => CreateMessageEx(objectToSend, code);
         #endregion
     }
 }

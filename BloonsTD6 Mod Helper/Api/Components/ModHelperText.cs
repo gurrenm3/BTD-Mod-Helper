@@ -1,6 +1,5 @@
 ﻿using System;
 using Il2CppTMPro;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -39,7 +38,7 @@ public class ModHelperText : ModHelperComponent
     public static ModHelperText Create(Info info, string text, float fontSize = 42,
         TextAlignmentOptions align = DefaultTextAlignment)
     {
-        var modHelperText = ModHelperComponent.Create<ModHelperText>(info);
+        var modHelperText = Create<ModHelperText>(info);
 
         var textMesh = modHelperText.AddComponent<NK_TextMeshProUGUI>();
 

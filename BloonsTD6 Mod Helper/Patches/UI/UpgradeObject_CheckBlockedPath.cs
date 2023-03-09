@@ -1,5 +1,5 @@
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(UpgradeObject), nameof(UpgradeObject.CheckBlockedPath))]

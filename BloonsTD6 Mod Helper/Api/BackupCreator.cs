@@ -1,8 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Unity;
-using System;
-
 namespace BTD_Mod_Helper.Api;
 
 class BackupCreator
@@ -28,7 +27,6 @@ class BackupCreator
         var saveDir = Game.instance.GetSaveDirectory();
         if (string.IsNullOrEmpty(saveDir))
         {
-            //ModHelper.Error("Unable to backup Profile. Save directory not found");
             return;
         }
 

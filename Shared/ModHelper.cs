@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Il2CppAssets.Scripts.Unity;
 using BTD_Mod_Helper.Api;
+using Il2CppAssets.Scripts.Unity;
 using MelonLoader.Utils;
-using Exception = System.Exception;
-
 namespace BTD_Mod_Helper;
 
 /// <summary>
@@ -204,7 +202,7 @@ public static class ModHelper
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsMod
     {
-        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
+        foreach (var mod in Mods.OfType<T>().OrderBy(mod => mod.Priority))
         {
 #if BloonsTD6
             var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
@@ -225,8 +223,34 @@ public static class ModHelper
         }
     }
 
+    private static void PerformAdvancedModHook<T>(Action<T> action) where T : AdvancedBloonsTD6Mod
+    {
+        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
+        {
+#if BloonsTD6
+            var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
+#elif BloonsAT
+                var canPerformHook = !mod.CheatMod;
+#endif
+            if (canPerformHook)
+            {
+                try
+                {
+                    action.Invoke(mod);
+                }
+                catch (Exception e)
+                {
+                    mod.LoggerInstance.Error(e);
+                }
+            }
+        }
+    }
+    
+
 #if BloonsTD6
     internal static void PerformHook(Action<BloonsTD6Mod> action) => PerformHook<BloonsTD6Mod>(action);
+    internal static void PerformAdvancedModHook(Action<AdvancedBloonsTD6Mod> action) => PerformAdvancedModHook<AdvancedBloonsTD6Mod>(action);
+
 #elif BloonsAT
     internal static void PerformHook(System.Action<BloonsATMod> action)
     {

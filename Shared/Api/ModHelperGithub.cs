@@ -5,17 +5,16 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api;
 
 internal static class ModHelperGithub

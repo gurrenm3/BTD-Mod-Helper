@@ -3,7 +3,7 @@
 
 ## MatchLocalPosition Class
 
-Component to make this transform continuously match the scale of another transform
+Component to make this transform continuously match the position of another transform
 
 ```csharp
 public class MatchLocalPosition

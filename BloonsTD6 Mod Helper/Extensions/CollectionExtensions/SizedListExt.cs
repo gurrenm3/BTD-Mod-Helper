@@ -1,8 +1,8 @@
-﻿using Il2CppAssets.Scripts.Utils;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
+using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
+using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -38,7 +38,7 @@ public static partial class SizedListExt
     /// <summary>
     /// Converts a SizedList to an Il2cppreferencearray
     /// </summary>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this SizedList<T> sizedList) where T : Il2CppSystem.Object
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this SizedList<T> sizedList) where T : Object
     {
         var il2cppArray = new Il2CppReferenceArray<T>(sizedList.Count);
 
@@ -77,7 +77,7 @@ public static partial class SizedListExt
     /// Constructs a new SizedList with the same elements, but casted
     /// </summary>
     public static SizedList<TCast> DuplicateAs<TSource, TCast>(this SizedList<TSource> list)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         var newList = new SizedList<TCast>();
         for (var i = 0; i < list.Count; i++)
@@ -90,8 +90,8 @@ public static partial class SizedListExt
     /// <summary>
     /// Returns whether this has any items of the given type
     /// </summary>
-    public static bool HasItemsOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static bool HasItemsOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TSource : Object
+        where TCast : Object
     {
         for (var i = 0; i < sizedList.Count; i++)
         {
@@ -125,8 +125,8 @@ public static partial class SizedListExt
     /// <summary>
     /// Gets the first item of a given type within the list
     /// </summary>
-    public static TCast GetItemOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TCast : Il2CppSystem.Object
-        where TSource : Il2CppSystem.Object
+    public static TCast GetItemOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TCast : Object
+        where TSource : Object
     {
         if (!HasItemsOfType<TSource, TCast>(sizedList))
             return null;
@@ -151,8 +151,8 @@ public static partial class SizedListExt
     /// <summary>
     /// Gets all items of a certain type out of a SizedList
     /// </summary>
-    public static List<TCast> GetItemsOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static List<TCast> GetItemsOfType<TSource, TCast>(this SizedList<TSource> sizedList) where TSource : Object
+        where TCast : Object
     {
         var results = new List<TCast>();
         for (var i = 0; i < sizedList.Count; i++)
@@ -177,8 +177,8 @@ public static partial class SizedListExt
     /// Returns a new list with the first item of a given type returned
     /// </summary>
     public static SizedList<TSource> RemoveItemOfType<TSource, TCast>(this SizedList<TSource> sizedList)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         var behavior = GetItemOfType<TSource, TCast>(sizedList);
         return behavior != null ? RemoveItem(sizedList, behavior) : sizedList;
@@ -189,7 +189,7 @@ public static partial class SizedListExt
     /// Returns a new list with the given item returned
     /// </summary>
     public static SizedList<TSource> RemoveItem<TSource, TCast>(this SizedList<TSource> sizedList, TCast itemToRemove)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+        where TSource : Object where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(sizedList))
             return sizedList;
@@ -214,8 +214,8 @@ public static partial class SizedListExt
     /// Returns a new list with all items of a given type removed
     /// </summary>
     public static SizedList<TSource> RemoveItemsOfType<TSource, TCast>(this SizedList<TSource> sizedList)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+        where TSource : Object
+        where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(sizedList))
             return sizedList;

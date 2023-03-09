@@ -1,8 +1,7 @@
 ﻿using System;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper.Api;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

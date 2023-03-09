@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
-using Il2CppSystem.Collections.Generic;
-
 namespace BTD_Mod_Helper.Api.Scenarios;
 
 /// <summary>
@@ -12,7 +11,7 @@ namespace BTD_Mod_Helper.Api.Scenarios;
 /// </summary>
 public abstract class ModGameMode : NamedModContent
 {
-    internal static readonly System.Collections.Generic.Dictionary<string, ModGameMode> Cache = new();
+    internal static readonly Dictionary<string, ModGameMode> Cache = new();
 
     /// <summary>
     /// Registers after Round Sets
@@ -50,7 +49,7 @@ public abstract class ModGameMode : NamedModContent
     public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
 
     /// <inheritdoc />
-    public override void RegisterText(Dictionary<string, string> textTable)
+    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
     {
         textTable["Mode " + Id] = DisplayName;
     }

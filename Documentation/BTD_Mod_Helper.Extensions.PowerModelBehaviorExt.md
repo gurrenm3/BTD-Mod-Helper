@@ -115,29 +115,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel)'></a>
-
-## PowerModelBehaviorExt.RemoveBehavior<T>(this PowerModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this PowerModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Powers.PowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Powers.PowerModel 'Il2CppAssets.Scripts.Models.Powers.PowerModel')
-
 <a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel,T)'></a>
 
 ## PowerModelBehaviorExt.RemoveBehavior<T>(this PowerModel, T) Method
@@ -162,6 +139,29 @@ public static void RemoveBehavior<T>(this PowerModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel,T).T 'BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior<T>(this PowerModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel)'></a>
+
+## PowerModelBehaviorExt.RemoveBehavior<T>(this PowerModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this PowerModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Powers.PowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Powers.PowerModel 'Il2CppAssets.Scripts.Models.Powers.PowerModel')
 
 <a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehaviors_T_(thisPowerModel)'></a>
 

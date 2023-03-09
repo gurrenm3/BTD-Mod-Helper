@@ -1,20 +1,20 @@
-﻿using Il2CppAssets.Scripts.Models.PowerSets;
+﻿using System.Collections.Generic;
+using BTD_Mod_Helper.Api;
+using Il2CppAssets.Scripts.Models.PowerSets;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.Player;
 using Il2CppAssets.Scripts.Unity.UI_New;
+using Il2CppAssets.Scripts.Unity.UI_New.Coop;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api;
+using Il2CppNinjaKiwi.LiNK.Lobbies;
 using Il2CppNinjaKiwi.NKMulti;
 using Il2CppNinjaKiwi.Players.Files.SaveStrategies;
-using System.Collections.Generic;
-using Il2CppAssets.Scripts.Unity.UI_New.Coop;
-using Il2CppNinjaKiwi.LiNK.Lobbies;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -107,7 +107,7 @@ public static partial class GameExt
     /// <summary>
     /// Get the Unity Display Factory that manages on screen sprites. This Factory is different from other Factories in the game
     /// </summary>
-    public static Il2CppAssets.Scripts.Unity.Display.Factory GetDisplayFactory(this Game game)
+    public static Factory GetDisplayFactory(this Game game)
     {
         return game.scene?.factory;
     }

@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
+﻿using BTD_Mod_Helper.Api.Bloons;
 using Il2CppAssets.Scripts.Unity;
-using BTD_Mod_Helper.Api.Bloons;
-
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>

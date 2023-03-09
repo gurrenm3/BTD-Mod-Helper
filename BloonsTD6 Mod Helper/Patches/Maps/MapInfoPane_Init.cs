@@ -1,5 +1,4 @@
 ﻿using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
-
 namespace BTD_Mod_Helper.Patches.Maps;
 
 [HarmonyPatch(typeof(MapButton), nameof(MapButton.Init))]

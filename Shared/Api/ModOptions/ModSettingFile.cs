@@ -3,10 +3,7 @@ using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using NfdSharp;
-using Il2CppTMPro;
 using UnityEngine;
-
-
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>

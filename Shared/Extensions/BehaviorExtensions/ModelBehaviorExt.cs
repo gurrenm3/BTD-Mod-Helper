@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
-using Enumerable = System.Linq.Enumerable;
-
 #if BloonsTD6
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Powers;

@@ -1,6 +1,5 @@
-﻿using Il2CppAssets.Scripts.Utils;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
+using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

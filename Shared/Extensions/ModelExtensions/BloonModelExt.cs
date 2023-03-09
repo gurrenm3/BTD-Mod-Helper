@@ -1,20 +1,18 @@
-﻿using Il2CppAssets.Scripts.Models.Bloons;
-using Il2CppAssets.Scripts.Models.Rounds;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Unity.Bridge;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.Linq;
-using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Enums;
-
+using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
+using Il2CppAssets.Scripts.Models.Rounds;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Bridge;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 #if BloonsTD6
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
-using Il2CppAssets.Scripts.Utils;
 #elif BloonsAT
 using Il2CppAssets.Scripts.Models.Display;
 #endif
@@ -94,22 +92,12 @@ namespace BTD_Mod_Helper.Extensions
         }
 
         /// <summary>
-        /// This is Obsolete, use GetAllBloonToSim instead. Return all BloonToSimulations with this BloonModel
+        /// Return all BloonToSimulations with this BloonModel
         /// </summary>
-        [Obsolete]
+        [Obsolete("use GetAllBloonToSim instead")]
         public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
         {
-            if (InGame.instance == null)
-            {
-                return null;
-            }
-
-            var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
-            if (bloonSims is null || !bloonSims.Any())
-                return null;
-
-            var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
-            return results;
+            return GetAllBloonToSim(bloonModel);
         }
 
         /// <summary>
@@ -119,12 +107,12 @@ namespace BTD_Mod_Helper.Extensions
         {
             if (InGame.instance == null)
             {
-                return null;
+                return Array.Empty<BloonToSimulation>().ToList();
             }
 
             var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
             if (bloonSims is null || !bloonSims.Any())
-                return null;
+                return Array.Empty<BloonToSimulation>().ToList();
 
             var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
             return results;
@@ -508,12 +496,9 @@ namespace BTD_Mod_Helper.Extensions
 
             var growModel = bloonModel.GetBehavior<GrowModel>();
 #if BloonsTD6
-            if (!string.IsNullOrEmpty(growModel?.growToId))
+            if (!string.IsNullOrEmpty(growModel?.growToId) && Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect, out var newBloon1))
             {
-                if (Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect, out var newBloon))
-                {
-                    growModel.growToId = newBloon;
-                }
+                growModel.growToId = newBloon1;
             }
 #elif BloonsAT
             // need to implement for BATTD.

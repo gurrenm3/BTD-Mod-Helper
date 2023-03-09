@@ -3,19 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Il2CppAssets.Scripts.Unity.Menu;
-using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using FuzzySharp.SimilarityRatio;
 using FuzzySharp.SimilarityRatio.Scorer;
 using FuzzySharp.SimilarityRatio.Scorer.Composite;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = Il2CppSystem.Object;
-
 namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModBrowserMenu : ModGameMenu<ContentBrowser>

@@ -1,4 +1,6 @@
-﻿using Il2CppAssets.Scripts.Models.Towers;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.TowerSets;
@@ -6,9 +8,6 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

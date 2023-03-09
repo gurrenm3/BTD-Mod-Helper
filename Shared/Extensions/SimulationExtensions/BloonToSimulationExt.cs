@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Unity.Bridge;
-
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class BloonToSimulationExt

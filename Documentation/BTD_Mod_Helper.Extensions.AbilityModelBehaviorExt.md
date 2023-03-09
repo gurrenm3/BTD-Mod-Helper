@@ -115,29 +115,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel)'></a>
-
-## AbilityModelBehaviorExt.RemoveBehavior<T>(this AbilityModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this AbilityModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
-
 <a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel,T)'></a>
 
 ## AbilityModelBehaviorExt.RemoveBehavior<T>(this AbilityModel, T) Method
@@ -162,6 +139,29 @@ public static void RemoveBehavior<T>(this AbilityModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel,T).T 'BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior<T>(this AbilityModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel)'></a>
+
+## AbilityModelBehaviorExt.RemoveBehavior<T>(this AbilityModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this AbilityModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
 
 <a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehaviors_T_(thisAbilityModel)'></a>
 

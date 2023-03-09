@@ -1,6 +1,5 @@
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Towers;
-
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>

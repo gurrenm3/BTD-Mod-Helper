@@ -2,7 +2,6 @@
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppTMPro;
-
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>
@@ -77,7 +76,7 @@ public class ModSettingString : ModSetting<string>
 #if BloonsTD6
         var input = option.BottomRow.AddInputField(
             new Info("Input", width: 1500, height: 150), value, VanillaSprites.BlueInsertPanelRound,
-            new Action<string>((s) =>
+            new Action<string>(s =>
             {
                 SetValue(s);
                 // ModHelper.Log("value is a changin");

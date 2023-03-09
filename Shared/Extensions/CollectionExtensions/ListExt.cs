@@ -1,9 +1,9 @@
-﻿using Il2CppAssets.Scripts.Utils;
+﻿using System.IO;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
+using Il2CppSystem.Collections.Generic;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-
+using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
 public static partial class ListExt
@@ -11,9 +11,9 @@ public static partial class ListExt
     /// <summary>
     /// Return as Il2CppSystem.List
     /// </summary>
-    public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this List<T> list)
+    public static List<T> ToIl2CppList<T>(this System.Collections.Generic.List<T> list)
     {
-        var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
+        var il2CppList = new List<T>();
         foreach (var item in list)
             il2CppList.Add(item);
 
@@ -23,7 +23,7 @@ public static partial class ListExt
     /// <summary>
     /// Return as Il2CppReferenceArray
     /// </summary>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this List<T> list) where T : Il2CppSystem.Object
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this System.Collections.Generic.List<T> list) where T : Object
     {
         var il2cppArray = new Il2CppReferenceArray<T>(list.Count);
 
@@ -36,7 +36,7 @@ public static partial class ListExt
     /// <summary>
     /// Return as LockList
     /// </summary>
-    public static LockList<T> ToLockList<T>(this List<T> list)
+    public static LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> list)
     {
         var lockList = new LockList<T>();
         foreach (var item in list)
@@ -51,9 +51,9 @@ public static partial class ListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static List<T> Duplicate<T>(this List<T> list)
+    public static System.Collections.Generic.List<T> Duplicate<T>(this System.Collections.Generic.List<T> list)
     {
-        var newList = new List<T>();
+        var newList = new System.Collections.Generic.List<T>();
         foreach (var item in list)
             newList.Add(item);
 
@@ -67,10 +67,10 @@ public static partial class ListExt
     /// <typeparam name="TCast"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static List<TCast> DuplicateAs<TSource, TCast>(this List<TSource> list)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+    public static System.Collections.Generic.List<TCast> DuplicateAs<TSource, TCast>(this System.Collections.Generic.List<TSource> list)
+        where TSource : Object where TCast : Object
     {
-        var newList = new List<TCast>();
+        var newList = new System.Collections.Generic.List<TCast>();
         foreach (var item in list)
             newList.Add(item.TryCast<TCast>());
 
@@ -84,7 +84,7 @@ public static partial class ListExt
     /// <param name="list">The list you want to save</param>
     /// <param name="filePath">The FilePath you want to save it to</param>
     /// <returns>True if successful, false if it fails</returns>
-    public static bool SaveToFile<T>(this List<T> list, string filePath)
+    public static bool SaveToFile<T>(this System.Collections.Generic.List<T> list, string filePath)
     {
         try
         {
@@ -105,7 +105,7 @@ public static partial class ListExt
     /// <param name="list"></param>
     /// <param name="filePath">FilePath of the saved List</param>
     /// <returns>The loaded List if successful, otherwise default value</returns>
-    public static T LoadFromFile<T>(this List<T> list, string filePath)
+    public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath)
     {
         return list.LoadFromFile(filePath, out _);
     }
@@ -118,7 +118,7 @@ public static partial class ListExt
     /// <param name="filePath">FilePath of the saved List</param>
     /// <param name="success">Will be true if the List was successfully loaded, otherwise will be false</param>
     /// <returns>The loaded List if successful, otherwise default value</returns>
-    public static T LoadFromFile<T>(this List<T> list, string filePath, out bool success)
+    public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath, out bool success)
     {
         success = false;
         var json = File.ReadAllText(filePath);
@@ -144,8 +144,8 @@ public static partial class ListExt
     /// <typeparam name="TCast">The Type you're checking for</typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static bool HasItemsOfType<TSource, TCast>(this List<TSource> list) where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static bool HasItemsOfType<TSource, TCast>(this System.Collections.Generic.List<TSource> list) where TSource : Object
+        where TCast : Object
     {
         foreach (var item in list)
         {
@@ -170,8 +170,8 @@ public static partial class ListExt
     /// <typeparam name="TCast">The Type of the Item you want</typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static TCast GetItemOfType<TSource, TCast>(this List<TSource> list) where TCast : Il2CppSystem.Object
-        where TSource : Il2CppSystem.Object
+    public static TCast GetItemOfType<TSource, TCast>(this System.Collections.Generic.List<TSource> list) where TCast : Object
+        where TSource : Object
     {
         if (!HasItemsOfType<TSource, TCast>(list))
             return null;
@@ -199,11 +199,11 @@ public static partial class ListExt
     /// <typeparam name="TCast">The Type of the Items you want</typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static List<TCast> GetItemsOfType<TSource, TCast>(this List<TSource> list)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static System.Collections.Generic.List<TCast> GetItemsOfType<TSource, TCast>(this System.Collections.Generic.List<TSource> list)
+        where TSource : Object
+        where TCast : Object
     {
-        var results = new List<TCast>();
+        var results = new System.Collections.Generic.List<TCast>();
         foreach (var item in list)
         {
             try
@@ -227,9 +227,9 @@ public static partial class ListExt
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static List<TSource> RemoveItemOfType<TSource, TCast>(this List<TSource> list)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static System.Collections.Generic.List<TSource> RemoveItemOfType<TSource, TCast>(this System.Collections.Generic.List<TSource> list)
+        where TSource : Object
+        where TCast : Object
     {
         var item = GetItemOfType<TSource, TCast>(list);
         return item != null ? RemoveItem(list, item) : list;
@@ -243,8 +243,8 @@ public static partial class ListExt
     /// <param name="list"></param>
     /// <param name="itemToRemove">The specific Item to remove</param>
     /// <returns></returns>
-    public static List<TSource> RemoveItem<TSource, TCast>(this List<TSource> list, TCast itemToRemove)
-        where TSource : Il2CppSystem.Object where TCast : Il2CppSystem.Object
+    public static System.Collections.Generic.List<TSource> RemoveItem<TSource, TCast>(this System.Collections.Generic.List<TSource> list, TCast itemToRemove)
+        where TSource : Object where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(list))
             return list;
@@ -270,9 +270,9 @@ public static partial class ListExt
     /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static List<TSource> RemoveItemsOfType<TSource, TCast>(this List<TSource> list)
-        where TSource : Il2CppSystem.Object
-        where TCast : Il2CppSystem.Object
+    public static System.Collections.Generic.List<TSource> RemoveItemsOfType<TSource, TCast>(this System.Collections.Generic.List<TSource> list)
+        where TSource : Object
+        where TCast : Object
     {
         if (!HasItemsOfType<TSource, TCast>(list))
             return list;

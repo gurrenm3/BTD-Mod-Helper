@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models.TowerSets;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 public abstract partial class ModTowerSet
@@ -25,7 +24,7 @@ public abstract partial class ModTowerSet
         {
             if (towerSetChunks.LastOrDefault() is Tuple<TowerSet, int> last && last.Item1 == set)
             {
-                towerSetChunks[towerSetChunks.Count - 1] = new Tuple<TowerSet, int>(set, last.Item2 + 1);
+                towerSetChunks[^1] = new Tuple<TowerSet, int>(set, last.Item2 + 1);
             }
             else
             {

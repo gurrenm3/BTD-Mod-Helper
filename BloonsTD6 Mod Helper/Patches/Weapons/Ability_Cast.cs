@@ -1,5 +1,4 @@
 ﻿using Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Abilities;
-
 namespace BTD_Mod_Helper.Patches.Weapons;
 
 [HarmonyPatch(typeof(Ability), nameof(Ability.Activate))]

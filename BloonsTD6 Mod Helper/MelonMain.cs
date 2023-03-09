@@ -1,25 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Il2CppAssets.Scripts.Data;
-using Il2CppAssets.Scripts.Models.TowerSets.Mods;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Patches;
-using BTD_Mod_Helper.UI.Modded;
-using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
-
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonPriority(-1000)]
@@ -71,27 +61,17 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning(e);
         }
     }
-
-    internal static bool afterTitleScreen;
-
+    
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
         // InitialLoadTasks_MoveNext.Update();
 
-        if (Game.instance is null)
-            return;
-
-        if (PopupScreen.instance != null && afterTitleScreen)
-        {
-            PopupScreen.instance.hasSeenModderWarning = AutoHideModdedClientPopup;
-        }
-
-        if (InGame.instance is null)
+        if (Game.instance is null || InGame.instance is null)
             return;
 
         NotificationMgr.CheckForNotifications();
-        RoundSetChanger.EnsureHidden();
+        //RoundSetChanger.EnsureHidden();  //TODO see if this is actually needed
 
 #if BTD6_DEBUG
         if (TowerSelectionMenu.instance != null &&
@@ -101,6 +81,7 @@ internal partial class MelonMain : BloonsTD6Mod
             GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
         }
 #endif
+        
     }
 
     public override void OnTitleScreen()
@@ -136,8 +117,6 @@ internal partial class MelonMain : BloonsTD6Mod
                 }
             }
         }
-
-        afterTitleScreen = true;
     }
 
     private void Schedule_GameModel_Loaded()

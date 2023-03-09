@@ -1,10 +1,8 @@
-using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.Events;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 // We're using method overloading instead of optional parameters to avoid breakage when new parameters need to be added

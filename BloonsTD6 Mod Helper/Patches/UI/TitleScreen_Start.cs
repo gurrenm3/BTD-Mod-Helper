@@ -3,7 +3,6 @@ using System.Linq;
 using BTD_Mod_Helper.Api;
 using Il2CppAssets.Scripts.Unity.Scenes;
 using Il2CppNinjaKiwi.Common;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(TitleScreen), nameof(TitleScreen.Start))]

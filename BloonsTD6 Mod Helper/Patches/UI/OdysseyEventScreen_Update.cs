@@ -1,5 +1,4 @@
 ﻿using Il2CppAssets.Scripts.Unity.UI_New.Odyssey;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(OdysseyEventScreen), nameof(OdysseyEventScreen.Update))]

@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -16,6 +15,6 @@ public static class InputFieldOnValueChanged
     /// </summary>
     public static void AddListener(this InputField.OnChangeEvent valueChangedEvent, Function funcToExecute)
     {
-        valueChangedEvent.AddListener(new Action<string>((str) => { funcToExecute(str); }));
+        valueChangedEvent.AddListener(new Action<string>(str => { funcToExecute(str); }));
     }
 }

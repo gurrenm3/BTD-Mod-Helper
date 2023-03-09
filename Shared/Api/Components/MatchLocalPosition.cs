@@ -1,10 +1,9 @@
 ﻿using System;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
-/// Component to make this transform continuously match the scale of another transform
+/// Component to make this transform continuously match the position of another transform
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
 public class MatchLocalPosition : MonoBehaviour

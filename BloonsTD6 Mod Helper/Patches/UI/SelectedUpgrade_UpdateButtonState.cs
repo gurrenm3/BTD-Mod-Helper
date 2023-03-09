@@ -1,7 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Unity.UI_New.Upgrade;
 using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api.Towers;
-
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(SelectedUpgrade), nameof(SelectedUpgrade.UpdateButtonState))]

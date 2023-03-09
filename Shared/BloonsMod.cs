@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
 using UnityEngine;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Patches;
-using BTD_Mod_Helper.Patches.Resources;
-
 namespace BTD_Mod_Helper;
 
 /// <summary>
@@ -216,13 +212,10 @@ public abstract class BloonsMod : MelonMod, IModContent
             });
         }
 
-        if (GotModTooSoon.Contains(GetType()))
+        if (GotModTooSoon.Contains(GetType()) && IDPrefix != this.GetAssembly().GetName().Name + "-")
         {
             // Happens when trying to get a custom embedded resource during the static constructor phase
-            if (IDPrefix != this.GetAssembly().GetName().Name + "-")
-            {
-                LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
-            }
+            LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
         }
 
         OnApplicationStart();
@@ -232,7 +225,6 @@ public abstract class BloonsMod : MelonMod, IModContent
     /// <inheritdoc cref="OnInitializeMelon"/>
     public new virtual void OnApplicationStart()
     {
-
     }
 
     /// <inheritdoc cref="OnEarlyInitializeMelon"/>

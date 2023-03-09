@@ -1,9 +1,7 @@
 ﻿using System.IO;
-using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Helpers;
+using Il2CppSystem;
 using Exception = System.Exception;
-using Object = Il2CppSystem.Object;
-
 namespace BTD_Mod_Helper.Api;
 
 public abstract partial class ModByteLoader

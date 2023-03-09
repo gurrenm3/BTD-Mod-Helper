@@ -216,7 +216,7 @@ public static BloonModel GetBloonModel(this BloonGroupModel bloonGroupModel);
 
 ## BloonModelExt.GetBloonSims(this BloonModel) Method
 
-This is Obsolete, use GetAllBloonToSim instead. Return all BloonToSimulations with this BloonModel
+Return all BloonToSimulations with this BloonModel
 
 ```csharp
 public static System.Collections.Generic.List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel);

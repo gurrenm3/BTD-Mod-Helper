@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
-
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -43,15 +42,13 @@ public abstract class ModVanillaContent : ModContent
     /// </summary>
     internal virtual void Apply(Model model)
     {
-            
     }
-        
+    
     /// <summary>
     /// Applies the modifications to the vanilla content
     /// </summary>
     internal virtual void Apply(Model model, GameModel gameModel)
     {
-            
     }
 
     /// <summary>

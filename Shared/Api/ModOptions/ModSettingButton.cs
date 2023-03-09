@@ -1,10 +1,7 @@
 ﻿#if BloonsTD6
 using System;
-using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using UnityEngine;
-
 namespace BTD_Mod_Helper.Api.ModOptions
 {
     /// <summary>

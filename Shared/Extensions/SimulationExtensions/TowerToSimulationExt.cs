@@ -1,6 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity.Bridge;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

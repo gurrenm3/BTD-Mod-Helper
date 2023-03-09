@@ -1,8 +1,7 @@
-﻿using BTD_Mod_Helper.Api.Enums;
-using System;
+﻿using System;
 using System.Collections;
+using BTD_Mod_Helper.Api.Enums;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -14,7 +13,7 @@ public static class TaskScheduler
     /// Schedule a task to execute right now as a Coroutine
     /// </summary>
     /// <param name="iEnumerator"></param>
-    public static void ScheduleTask(IEnumerator iEnumerator) => MelonLoader.MelonCoroutines.Start(iEnumerator);
+    public static void ScheduleTask(IEnumerator iEnumerator) => MelonCoroutines.Start(iEnumerator);
 
     /// <summary>
     /// Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame

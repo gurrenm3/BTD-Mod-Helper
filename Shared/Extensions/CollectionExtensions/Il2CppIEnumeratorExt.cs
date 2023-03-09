@@ -1,8 +1,7 @@
-﻿using Il2CppAssets.Scripts.Utils;
+﻿using System.Collections.Generic;
+using Il2CppAssets.Scripts.Utils;
+using Il2CppSystem;
 using Il2CppSystem.Collections;
-using System.Collections.Generic;
-
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -31,7 +30,7 @@ public static class Il2CppIEnumeratorExt
     /// <param name="enumerator"></param>
     /// <param name="index"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Object GetItem(this IEnumerator enumerator, int index)
+    public static Object GetItem(this IEnumerator enumerator, int index)
     {
         var i = 0;
         while (enumerator.MoveNext())
@@ -49,9 +48,9 @@ public static class Il2CppIEnumeratorExt
     /// </summary>
     /// <param name="enumerator"></param>
     /// <returns></returns>
-    public static List<Il2CppSystem.Object> ToList(this IEnumerator enumerator)
+    public static List<Object> ToList(this IEnumerator enumerator)
     {
-        var newList = new List<Il2CppSystem.Object>();
+        var newList = new List<Object>();
         while (enumerator.MoveNext())
             newList.Add(enumerator.Current);
 
@@ -61,10 +60,10 @@ public static class Il2CppIEnumeratorExt
     /// <summary>
     /// Return as Il2CppSystem.List
     /// </summary>
-    public static Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object> ToIl2CppList(this IEnumerator enumerator)
+    public static Il2CppSystem.Collections.Generic.List<Object> ToIl2CppList(this IEnumerator enumerator)
     {
         var il2CppList = 
-            new Il2CppSystem.Collections.Generic.List<Il2CppSystem.Object>();
+            new Il2CppSystem.Collections.Generic.List<Object>();
 
         while (enumerator.MoveNext())
             il2CppList.Add(enumerator.Current);
@@ -75,10 +74,10 @@ public static class Il2CppIEnumeratorExt
     /// <summary>
     /// Return as Il2CppReferenceArray
     /// </summary>
-    public static Il2CppReferenceArray<Il2CppSystem.Object> ToIl2CppReferenceArray(this IEnumerator enumerator)
+    public static Il2CppReferenceArray<Object> ToIl2CppReferenceArray(this IEnumerator enumerator)
     {
         var il2cppArray = 
-            new Il2CppReferenceArray<Il2CppSystem.Object>(enumerator.Count());
+            new Il2CppReferenceArray<Object>(enumerator.Count());
 
         var i = 0;
         while (enumerator.MoveNext())
@@ -94,9 +93,9 @@ public static class Il2CppIEnumeratorExt
     /// <summary>
     /// Return as LockList
     /// </summary>
-    public static LockList<Il2CppSystem.Object> ToLockList(this IEnumerator enumerator)
+    public static LockList<Object> ToLockList(this IEnumerator enumerator)
     {
-        var lockList = new LockList<Il2CppSystem.Object>();
+        var lockList = new LockList<Object>();
         while (enumerator.MoveNext())
             lockList.Add(enumerator.Current);
 

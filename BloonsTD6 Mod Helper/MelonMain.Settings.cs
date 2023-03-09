@@ -1,13 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
 using static BTD_Mod_Helper.Api.Enums.VanillaSprites;
 
@@ -39,11 +35,15 @@ internal partial class MelonMain
         icon = SaveGameIcon
     };
 
-    private static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
+    internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already.",
-        icon = HideIcon
+        icon = HideIcon,
+        onValueChanged = x =>
+        {
+            PopupScreen.instance.hasSeenModderWarning = x;
+        }
     };
 
     public static readonly ModSettingBool CleanProfile = new(true)

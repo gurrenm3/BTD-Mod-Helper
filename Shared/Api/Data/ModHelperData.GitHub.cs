@@ -1,15 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
-
 namespace BTD_Mod_Helper.Api;
 
 internal partial class ModHelperData
@@ -261,8 +258,6 @@ internal partial class ModHelperData
             return LatestCommit =
                 (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository.Id, new CommitRequest {Path = path}))
                 [0];
-
-            ;
         }
         catch (Exception e)
         {

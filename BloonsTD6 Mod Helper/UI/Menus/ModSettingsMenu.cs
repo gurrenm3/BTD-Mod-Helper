@@ -1,18 +1,12 @@
 ﻿using System.Collections;
 using System.Linq;
-using Il2CppAssets.Scripts.Unity.UI_New.Settings;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
-using Il2CppSystem;
-using MelonLoader.TinyJSON;
-using Newtonsoft.Json;
+using Il2CppAssets.Scripts.Unity.UI_New.Settings;
 using UnityEngine;
-using Console = System.Console;
-using Exception = System.Exception;
 using Object = Il2CppSystem.Object;
-
 namespace BTD_Mod_Helper.UI.Menus;
 
 internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
@@ -112,6 +106,6 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     public static void Open(BloonsMod bloonsMod)
     {
         BloonsMod = bloonsMod;
-        ModGameMenu.Open<ModSettingsMenu>();
+        Open<ModSettingsMenu>();
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
-
 namespace BTD_Mod_Helper.Api;
 
 internal class NkhText
@@ -123,9 +122,9 @@ internal class Notification
     }
 
     public bool msgIsAlive = true;
-    private bool doShowMsg = false;
-    private bool doStallMsg = false;
-    private bool doHideMsg = false;
+    private bool doShowMsg;
+    private bool doStallMsg;
+    private bool doHideMsg;
     public void Update()
     {
         if (Time.time < nextMsgRunTime)
@@ -141,9 +140,9 @@ internal class Notification
             HideMsg();
     }
 
-    private float nextMsgRunTime = 0f;
+    private float nextMsgRunTime;
     private readonly float transitionWaitTimePerRun = 0f;
-    private float nextX = 0;
+    private float nextX;
     //private readonly int defaultWidth = 345;
     private readonly int defaultWidth = 500;
     private readonly int maxX = 15;
@@ -288,7 +287,7 @@ internal static class NotificationMgr
         lock (notifications)
         {
             if (notifications.Any())
-                notifications[notifications.Count - 1].OnUpdate(new Notification.NotificationEventArgs());
+                notifications[^1].OnUpdate(new Notification.NotificationEventArgs());
 
             if (notificationQueue.Any() && notifications.Count == 0)
             {

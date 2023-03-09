@@ -4,7 +4,7 @@
 
 ## General
 
-- As of v32.0, nearly every method that has a `SpriteRefernce`, `PrefabReference` or `AudioSourceReference` as a
+- As of v32.0, nearly every method that has a `SpriteReference`, `PrefabReference` or `AudioSourceReference` as a
   parameter will have side effects ranging from crashing the game to preventing the original from running. (This was the
   cause of the v32.0 custom display crisis). E.g.
     - `Factory.FindAndSetupPrototypeAsync`

@@ -4,7 +4,6 @@ using BTD_Mod_Helper.Api.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
@@ -78,7 +77,7 @@ public class ModHelperSlider : ModHelperComponent
         float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
         string labelSuffix = "", float? startingValue = null)
     {
-        var modHelperSlider = ModHelperComponent.Create<ModHelperSlider>(info);
+        var modHelperSlider = Create<ModHelperSlider>(info);
         var slider = modHelperSlider.AddComponent<Slider>();
         slider.direction = Slider.Direction.LeftToRight;
 

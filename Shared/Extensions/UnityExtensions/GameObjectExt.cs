@@ -1,9 +1,7 @@
 ﻿using System.Linq;
-using Il2CppAssets.Scripts.Utils;
 using BTD_Mod_Helper.Api.Components;
 using Il2CppNinjaKiwi.Common;
 using UnityEngine;
-
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -78,10 +76,7 @@ public static class GameObjectExt
         }
 
         str += " (";
-        foreach (var component in gameObject.GetComponents<Component>())
-        {
-            str += " " + component.GetIl2CppType().Name;
-        }
+        str = gameObject.GetComponents<Component>().Aggregate(str, (current, component) => current + (" " + component.GetIl2CppType().Name));
 
         str += ")";
         ModHelper.Log(str);

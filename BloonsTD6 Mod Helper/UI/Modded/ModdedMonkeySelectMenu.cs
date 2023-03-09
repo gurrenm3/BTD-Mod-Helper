@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MonkeySelect;
 using Il2CppAssets.Scripts.Utils;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Helpers;
-using BTD_Mod_Helper.Api.Towers;
-using Il2CppSystem;
 using Il2CppInterop.Runtime;
+using Il2CppSystem;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
-
+using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.UI.Modded;
 
 internal class ModdedMonkeySelectMenu
@@ -156,7 +155,7 @@ internal class ModdedMonkeySelectMenu
     internal class MonkeySelectMenu_Open
     {
         [HarmonyPrefix]
-        internal static void Prefix(MonkeySelectMenu __instance, Il2CppSystem.Object data)
+        internal static void Prefix(MonkeySelectMenu __instance, Object data)
         {
             if (!reOpening)
             {
@@ -192,7 +191,7 @@ internal class ModdedMonkeySelectMenu
         }
 
         [HarmonyPostfix]
-        internal static void Postfix(MonkeySelectMenu __instance, Il2CppSystem.Object data)
+        internal static void Postfix(MonkeySelectMenu __instance, Object data)
         {
             menu = __instance;
             UpdateTowerSet(__instance);
@@ -410,7 +409,7 @@ internal class ModdedMonkeySelectMenu
     internal static GameObject CreateMonkeyGroupButton(MonkeySelectMenu instance, ModTowerSet modTowerSet)
     {
         var primary = instance.monkeyGroupButtons.First(button => button.groupName == "Primary");
-        var groupButton = Object.Instantiate(primary.gameObject, primary.transform.parent);
+        var groupButton = UnityEngine.Object.Instantiate(primary.gameObject, primary.transform.parent);
         var monkeyGroupButton = groupButton.GetComponent<MonkeyGroupButton>();
         monkeyGroupButton.groupName = modTowerSet.Id;
         groupButton.name = modTowerSet.Id;
@@ -423,14 +422,14 @@ internal class ModdedMonkeySelectMenu
     {
         foreach (var gameObject in pips)
         {
-            Object.Destroy(gameObject);
+            UnityEngine.Object.Destroy(gameObject);
         }
 
         pips.Clear();
 
         if (pipHolder != null)
         {
-            Object.Destroy(pipHolder);
+            UnityEngine.Object.Destroy(pipHolder);
             pipHolder = null;
         }
     }
@@ -439,7 +438,7 @@ internal class ModdedMonkeySelectMenu
     {
         foreach (var gameObject in customMonkeyGroupButtons.Values)
         {
-            Object.Destroy(gameObject);
+            UnityEngine.Object.Destroy(gameObject);
         }
 
         customMonkeyGroupButtons.Clear();
