@@ -3,5 +3,7 @@
   - To directly get and play a custom sound "MySound.wav" `AudioClip`, you'd do `ModContent.GetAudioClip<YourBloonsTD6Mod>("MySound").Play()`
   - To use the custom sound in a `SoundModel` you'd do `soundModel.assetId = ModContent.GetAudioSourceReference<YourBloonsTD6Mod>("MySound")`
 - Fixed FileIOHelper.LoadObject<T>
+- Updated VanillaSprites with v35 textures
 - Fixed Open Local Files Directory button
 - Re enabled Monkey Knowledge getting exported from the Game Model
+- Game Model Export also will create a `resources.json` file listing the GUID / resource mappings

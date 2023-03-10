@@ -57,7 +57,7 @@ public static class PopupScreenExt
     /// </summary>
     public static void SafelyQueue(this PopupScreen popupScreen, Action<PopupScreen> action) =>
         TaskScheduler.ScheduleTask(
-            () => action(PopupScreen.instance),
-            () => PopupScreen.instance != null && !PopupScreen.instance.IsPopupActive()
+            () => action(popupScreen),
+            () => popupScreen != null && !popupScreen.IsPopupActive()
         );
 }

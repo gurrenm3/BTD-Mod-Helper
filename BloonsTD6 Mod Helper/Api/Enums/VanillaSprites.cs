@@ -1,4 +1,6 @@
+using Il2CppAssets.Scripts.Utils;
 using System.Collections.Generic;
+
 #pragma warning disable CS1591
 namespace BTD_Mod_Helper.Api.Enums
 {
@@ -880,6 +882,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string BaubleMineIcon = "e52422a7842754048b0d779c229f8be3";
         public const string BazookaMissile = "d17dfac55c7633942ae6585d3161c138";
         public const string BeaconMarker = "IngameUi[BeaconMarker]";
+        public const string BeastHandlerIcon = "MonkeyIcons[BeastHandlerIcon]";
         public const string Begging = "UiEmoteIcons[Begging]";
         public const string BeggingMonkeyIcon = "cd3aff42f65933e4bbbf0f829d3d6b14";
         public const string BeginnerMapIcon = "2247cdefe8267411ab46be0838a5cc2d";
@@ -945,6 +948,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string BigSpenderIcon = "291b56c3836aad747b25f4a74425a4eb";
         public const string BigSqueezeAA = "bf0cbc2585bbd4f15bde298ca4e50299";
         public const string BigTrapsIcon = "MonkeyKnowledgeUi[BigTrapsIcon]";
+        public const string BikerBonesHellriftPlacementIcon = "1dda5a5fbed47c54c8013fd2c7a79967";
         public const string BikerBonesIcon = "MonkeyIcons[BikerBonesIcon]";
         public const string BikerBonesPortrait = "f93d2660c6396d142b36535b40e222f2";
         public const string BikerBonesPortraitLv10 = "442ac3ff9a40bc84e96037fe54b8e32c";
@@ -1150,6 +1154,9 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string BuffIconAlchemistxxx = "UiBuffIcons[BuffIconAlchemistxxx]";
         public const string BuffIconBananaFarm5xx = "UiBuffIcons[BuffIconBananaFarm5xx]";
         public const string BuffIconBananaFarmxx4 = "UiBuffIcons[BuffIconBananaFarmxx4]";
+        public const string BuffIconBeastHandlerBird = "UiBuffIcons[BuffIconBeastHandlerBird]";
+        public const string BuffIconBeastHandlerDino = "UiBuffIcons[BuffIconBeastHandlerDino]";
+        public const string BuffIconBeastHandlerFish = "UiBuffIcons[BuffIconBeastHandlerFish]";
         public const string BuffIconBenjamin = "UiBuffIcons[BuffIconBenjamin]";
         public const string BuffIconBiohack = "UiBuffIcons[BuffIconBiohack]";
         public const string BuffIconBlastChain = "UiBuffIcons[BuffIconBlastChain]";
@@ -1441,6 +1448,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string CtBlueMainRibbon = "2cfc18f1ed1109f45bd459ab095327e2";
         public const string CtBlueRibbon = "c2655b6e50712994fa7484ace7dfb63d";
         public const string CtBubblePoint = "662cae9aa1b8e8a4cb1dd163071e8145";
+        public const string CTCosyMonkeyIcon = "80230b8d281863c4a84034b3954bded2";
         public const string CtDailyRewardIcon = "ad15a6a87017e6542a61cf16015c0377";
         public const string CtGlobalPlayerBronzeMedal = "97b6508bd4674da449d6a86e464aa413";
         public const string CtGlobalPlayerDiamondMedal = "29b4e68cdf0a032458c6583aff46d0b6";
@@ -1503,6 +1511,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string DangerSoonIcon = "0b76613c9a7f04f38bc7f8c7fdcd7d92";
         public const string DarkChampionUpgradeIcon = "ee4f71c7f61c65441aab5487f3e7b216";
         public const string DarkChampionUpgradeIconAA = "df8a49905b70b461f990306901ae2683";
+        public const string DarkDungeonStatuePortrait = "4706e1e0ab479a348851c64ffe60a69b";
         public const string DarkKnightUpgradeIcon = "42dade880051bd64cb20eded6e436f65";
         public const string DarkKnightUpgradeIconAA = "e1aa6469911cb4a68bf51802b93958bb";
         public const string DarkLightningBall = "f8aa1cfd8875a42239cc6128d89d8ea3";
@@ -1765,6 +1774,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string ExitGameBtn = "MainMenuUiAtlas[ExitGameBtn]";
         public const string ExitIcon = "Ui[ExitIcon]";
         public const string ExplodingPineappleUpgradeIcon = "79d96678a83f7344b91bea7f7a2c202f";
+        public const string ExplosionScorchMark = "cd1c8f88374c5aa41a435cf5ac65f53a";
         public const string ExtraBounceIcon = "MonkeyKnowledgeUi[ExtraBounceIcon]";
         public const string ExtraBurnyStuffIcon = "MonkeyKnowledgeUi[ExtraBurnyStuffIcon]";
         public const string ExtraDartsPopIcon = "MonkeyKnowledgeUi[ExtraDartsPopIcon]";
@@ -2108,6 +2118,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string GreenCandyCorn = "f4c195581cb6c5640823e6d7ed17e8af";
         public const string GreenDark = "TitleScreenBg[GreenDark]";
         public const string GreenFillSmall = "Ui[GreenFillSmall]";
+        public const string GreenGlueSplatter = "d8d8320eea56d7445813b830cf3e30f8";
         public const string GreenInsertRibbon = "Ui[GreenInsertRibbon]";
         public const string GreenPip = "IngameUi[GreenPip]";
         public const string GreenPoplustThorn = "128322265373dd546bf91c858f07f1c8";
@@ -2215,6 +2226,8 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string HeroIconGwendolinScientist2 = "dfa06e4aba8c0cd4d831df1e35b63bdd";
         public const string HeroIconJoanOfArc = "629ddd2eab1d3734ca477275a6a589fd";
         public const string HeroIconJoanOfArc2 = "b7c33651aac7392429505822345a3b9c";
+        public const string HeroIconKaijuPat = "822865224bba2154f9ca7faacb916df0";
+        public const string HeroIconKaijuPat2 = "9f88b2314478700429f77bd8edd52400";
         public const string HeroIconMountainObyn = "12d4fe8d0fe62684485173efc3868344";
         public const string HeroIconMountainObyn2 = "18101ffa47822034e96aeedb00226dca";
         public const string HeroIconObynGreenFoot = "0e6207817907ad94a94ecd0841a61755";
@@ -2224,7 +2237,6 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string HeroIconPatFusty = "9746e29a9b95c9244bf994b5ce192e63";
         public const string HeroIconPatFusty2 = "9d32dd861cce40c4687058a8028c4cc7";
         public const string HeroIconPatFustyTheSnowman = "25e92762a89fd5247ac1e8c34630ee89";
-        public const string HeroIconPatFustyTheSnowman2 = "d4bb7730f6f4342c0935c9e336c49f62";
         public const string HeroIconPsi = "4ca869b9295d7f44cb8854e8da4b6070";
         public const string HeroIconPsi2 = "f4422b58e43e53141bc709bbf4d3bdb1";
         public const string HeroIconPsiPsimbals = "39e88ee112545af4c8f92de06d010ca0";
@@ -2413,6 +2425,12 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string JungleVineGrow02 = "a663b2285e8b13f45bda62435079fa56";
         public const string JungleVineGrow03 = "cda11d57af3c4114cb9bb7f69af44ac9";
         public const string JustOneMoreIcon = "MonkeyKnowledgeUi[JustOneMoreIcon]";
+        public const string KaijuPatIcon = "a537203809819e242afd93687f127fba";
+        public const string KaijuPatPortrait = "d1138473a332c7e42a85a30e977025a5";
+        public const string KaijuPatPortraitLvl10 = "7f91f090d54a1f24ab84d26c24fd2481";
+        public const string KaijuPatPortraitLvl20 = "49f3433765bf8eb43a5756dfe231383a";
+        public const string KaijuPatPortraitLvl3 = "b51646fee81e4da46b2a1e7ec7c22a60";
+        public const string KaijuPatPortraitLvl5 = "00976a8f251a40a439c34fb4be6453d3";
         public const string KingPropIcon = "66a80f1f8468ba5438d89fc43c772a79";
         public const string KnockbackUpgradeIcon = "13a708ba16d83884aa770fb651bf3e04";
         public const string KnowledgeIcon = "beb11a3687e0748238af3aa2e8ffd250";
@@ -2791,8 +2809,8 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string MOABGlaiveRang = "155a23172558cf44faccbaff45f32d45";
         public const string MoabGlueUpgradeIcon = "352fdb3487af05a448c09b73566c6fd1";
         public const string MoabHexAA = "8e24e9f47b1d148609f88852355b1230";
-        public const string MOABIcon = "080471fa334264e7fae8b36b4827c33f";
         public const string MoabIcon = "UiBloonIcons[MoabIcon]";
+        public const string MOABIcon = "080471fa334264e7fae8b36b4827c33f";
         public const string MoabMaulerMoabIcon = "f629bd6b490878140886c779b6b0c8ca";
         public const string MoabMaulerUpgradeIcon = "4f11d9b6f8bd4ec4fb1ef1cde5baf163";
         public const string MoabMine = "a10b8b98cab94ee4d8beec9d0a74ce84";
@@ -3100,7 +3118,6 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string PinkCamo = "Bloons[PinkCamo]";
         public const string PinkGlueBasic = "Bloons[PinkGlueBasic]";
         public const string PinkGlueDissolve = "Bloons[PinkGlueDissolve]";
-        public const string PinkGlueSplatter = "70a3fb14990d43a4db87bc16744f5fb0";
         public const string PinkGlueStronger = "Bloons[PinkGlueStronger]";
         public const string PinkIce = "Bloons[PinkIce]";
         public const string PinkRegrow = "Bloons[PinkRegrow]";
@@ -3271,6 +3288,10 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string ProfileAvatar66 = "fd770c021d392be429410476db0bacca";
         public const string ProfileAvatar67 = "000ab4c71b0d0f148a661daee8d3b016";
         public const string ProfileAvatar68 = "a6de4008d2e7ebd47a43de47f5f70041";
+        public const string ProfileAvatar69 = "0f5214912c24d6341aca4457bb81e2b0";
+        public const string ProfileAvatar70 = "42eb73e783dd0474ca90af1f2a517997";
+        public const string ProfileAvatar71 = "fcc2146944fbeb7478c37aa967088ee4";
+        public const string ProfileAvatar72 = "78b81d89b2ec6e7418a584c6086c060b";
         public const string ProfileBanner1 = "1e5c72175c3c90d44984c3fe6bcee633";
         public const string ProfileBanner10 = "21db6e2b1b2e92a43b802e809a13f4e7";
         public const string ProfileBanner10Icon = "8eb61fd2c8a4b6d499032db0cb804bbd";
@@ -3323,6 +3344,15 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string ProfileBanner25 = "c4226dc34ef368340b2ef4f9737ecad7";
         public const string ProfileBanner25Icon = "ef5a5e414da62d148a34c2045b7fa8b9";
         public const string ProfileBanner25Small = "aa1f249d0846bcf4eb5aeea5b7f7acc6";
+        public const string ProfileBanner26 = "ac02cd9fa5251854ab5c64cf8cf927ee";
+        public const string ProfileBanner26Icon = "8b0e28444cf8fa34d98ec391e3b86a4e";
+        public const string ProfileBanner26Small = "0a265f1e9d23679468ec7948db7385f3";
+        public const string ProfileBanner27 = "f21d32f4cc428724688ff9bc02ab8fcd";
+        public const string ProfileBanner27Icon = "7da65d2a28a5613499b9376b6f5bc861";
+        public const string ProfileBanner27Small = "4684552f24b50264f9665f4333777b7b";
+        public const string ProfileBanner28 = "7f215f7a99a2ca4478d36d314ecf56be";
+        public const string ProfileBanner28Icon = "ca1d4f1afbe04e041b4d8a8cb7e61161";
+        public const string ProfileBanner28Small = "69bcb30fca27f9945a0238c244f3b1c8";
         public const string ProfileBanner2Icon = "cb0639abaaa27c64a8d3a0ff082bedd8";
         public const string ProfileBanner2Small = "60a710f9451a7d0428a366193a6c32dc";
         public const string ProfileBanner3 = "ca3fb9c6fee62ab449291b6fd2b7bed7";
@@ -3412,6 +3442,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string PurpleRegrowCamo = "Bloons[PurpleRegrowCamo]";
         public const string PurpleThorn = "8566e87e5f08ea44aa9ae1e509e6fef7";
         public const string PursuitUpgradeIcon = "3d08be8876462204d9702b4259d9828e";
+        public const string PushNotificationsIcon = "MainMenuUiAtlas[PushNotificationsIcon]";
         public const string QuadBurstIcon = "MonkeyKnowledgeUi[QuadBurstIcon]";
         public const string QuadDartsUpgradeIcon = "3fc425e1d15ace748a50fc49156f1a68";
         public const string QuestBg = "7c717b4d171c6654eb33ab4b3f0bb896";
@@ -3635,6 +3666,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string ShopHeroPanel = "d211a7872e9984ad29e121b86bf65447";
         public const string ShopNail = "4c502536dea57e94aa34842c08b53dcc";
         public const string ShrapnelShotUpgradeIcon = "26fe9f61258b148c8a1c268a64501969";
+        public const string ShuffleIcon = "IngameUi[ShuffleIcon]";
         public const string Shuriken = "13ba1a7cbdbf1a342af22be707098e63";
         public const string SideQuestIcon = "e932dbef9f9c646878e73ee63237b4f3";
         public const string Sigh = "UiEmoteIcons[Sigh]";
@@ -3690,6 +3722,7 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string SmudgeCattPortraitLvl7 = "2a52e83338c353840bddbbe3770caf2c";
         public const string SmudgeCattTotem = "1589fcbf83560d046ac8d3d515c557d8";
         public const string Sniper = "TitleScreenBg[Sniper]";
+        public const string SniperMonkeyChameleonPetIcon = "e2c78796d1b0b3d469a9a638eba9cd00";
         public const string SniperMonkeyIcon = "MonkeyIcons[SniperMonkeyIcon]";
         public const string Snowball = "1a37eded77d9a9347be919c1cafbfe5c";
         public const string SnowflakeBlade = "af665467cc7552c4e9abafb359ae6ca0";
@@ -3965,6 +3998,8 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string TeamFrame11 = "a6a51919b1b602e4ababbc0caf0df64a";
         public const string TeamFrame12 = "7356abd61fcdcc34f8e551c5d403379f";
         public const string TeamFrame13 = "150086bd24cd5db45a64b8408c9db760";
+        public const string TeamFrame14 = "491018e3c9251f344a3888aa8e45dcbf";
+        public const string TeamFrame15 = "cea088ab8fc75a145aa377c4c2b1e64f";
         public const string TeamFrame2 = "4a7103a6b46da7143b24badfcf38c02f";
         public const string TeamFrame3 = "3bcda7f6980deb246b060f59069f1a78";
         public const string TeamFrame4 = "4ccc84e911700ec4f8419c1a93e28197";
@@ -3981,6 +4016,8 @@ namespace BTD_Mod_Helper.Api.Enums
         public const string TeamIcon14 = "e074590b8a889634fa2c4687d1669b0a";
         public const string TeamIcon15 = "43adbff527a183244a980d0df315bafc";
         public const string TeamIcon16 = "71ef50ac1f98ab9419d9042f8d6589d9";
+        public const string TeamIcon17 = "945e7fa5d5f45ce4a97ac684d5311ef7";
+        public const string TeamIcon18 = "1026728eb256d2b4783febdfca317b5a";
         public const string TeamIcon2 = "0d6e4559bd6bfd94487c437f4fddde38";
         public const string TeamIcon3 = "b88473e5ea524e04ebe84db0ad570e07";
         public const string TeamIcon4 = "b8b82ad80db896e4b94884d9e0d55b90";
@@ -5275,6 +5312,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["BaubleMineIcon"] = BaubleMineIcon,
                 ["BazookaMissile"] = BazookaMissile,
                 ["BeaconMarker"] = BeaconMarker,
+                ["BeastHandlerIcon"] = BeastHandlerIcon,
                 ["Begging"] = Begging,
                 ["BeggingMonkeyIcon"] = BeggingMonkeyIcon,
                 ["BeginnerMapIcon"] = BeginnerMapIcon,
@@ -5340,6 +5378,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["BigSpenderIcon"] = BigSpenderIcon,
                 ["BigSqueezeAA"] = BigSqueezeAA,
                 ["BigTrapsIcon"] = BigTrapsIcon,
+                ["BikerBonesHellriftPlacementIcon"] = BikerBonesHellriftPlacementIcon,
                 ["BikerBonesIcon"] = BikerBonesIcon,
                 ["BikerBonesPortrait"] = BikerBonesPortrait,
                 ["BikerBonesPortraitLv10"] = BikerBonesPortraitLv10,
@@ -5545,6 +5584,9 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["BuffIconAlchemistxxx"] = BuffIconAlchemistxxx,
                 ["BuffIconBananaFarm5xx"] = BuffIconBananaFarm5xx,
                 ["BuffIconBananaFarmxx4"] = BuffIconBananaFarmxx4,
+                ["BuffIconBeastHandlerBird"] = BuffIconBeastHandlerBird,
+                ["BuffIconBeastHandlerDino"] = BuffIconBeastHandlerDino,
+                ["BuffIconBeastHandlerFish"] = BuffIconBeastHandlerFish,
                 ["BuffIconBenjamin"] = BuffIconBenjamin,
                 ["BuffIconBiohack"] = BuffIconBiohack,
                 ["BuffIconBlastChain"] = BuffIconBlastChain,
@@ -5836,6 +5878,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["CtBlueMainRibbon"] = CtBlueMainRibbon,
                 ["CtBlueRibbon"] = CtBlueRibbon,
                 ["CtBubblePoint"] = CtBubblePoint,
+                ["CTCosyMonkeyIcon"] = CTCosyMonkeyIcon,
                 ["CtDailyRewardIcon"] = CtDailyRewardIcon,
                 ["CtGlobalPlayerBronzeMedal"] = CtGlobalPlayerBronzeMedal,
                 ["CtGlobalPlayerDiamondMedal"] = CtGlobalPlayerDiamondMedal,
@@ -5898,6 +5941,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["DangerSoonIcon"] = DangerSoonIcon,
                 ["DarkChampionUpgradeIcon"] = DarkChampionUpgradeIcon,
                 ["DarkChampionUpgradeIconAA"] = DarkChampionUpgradeIconAA,
+                ["DarkDungeonStatuePortrait"] = DarkDungeonStatuePortrait,
                 ["DarkKnightUpgradeIcon"] = DarkKnightUpgradeIcon,
                 ["DarkKnightUpgradeIconAA"] = DarkKnightUpgradeIconAA,
                 ["DarkLightningBall"] = DarkLightningBall,
@@ -6160,6 +6204,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["ExitGameBtn"] = ExitGameBtn,
                 ["ExitIcon"] = ExitIcon,
                 ["ExplodingPineappleUpgradeIcon"] = ExplodingPineappleUpgradeIcon,
+                ["ExplosionScorchMark"] = ExplosionScorchMark,
                 ["ExtraBounceIcon"] = ExtraBounceIcon,
                 ["ExtraBurnyStuffIcon"] = ExtraBurnyStuffIcon,
                 ["ExtraDartsPopIcon"] = ExtraDartsPopIcon,
@@ -6503,6 +6548,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["GreenCandyCorn"] = GreenCandyCorn,
                 ["GreenDark"] = GreenDark,
                 ["GreenFillSmall"] = GreenFillSmall,
+                ["GreenGlueSplatter"] = GreenGlueSplatter,
                 ["GreenInsertRibbon"] = GreenInsertRibbon,
                 ["GreenPip"] = GreenPip,
                 ["GreenPoplustThorn"] = GreenPoplustThorn,
@@ -6610,6 +6656,8 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["HeroIconGwendolinScientist2"] = HeroIconGwendolinScientist2,
                 ["HeroIconJoanOfArc"] = HeroIconJoanOfArc,
                 ["HeroIconJoanOfArc2"] = HeroIconJoanOfArc2,
+                ["HeroIconKaijuPat"] = HeroIconKaijuPat,
+                ["HeroIconKaijuPat2"] = HeroIconKaijuPat2,
                 ["HeroIconMountainObyn"] = HeroIconMountainObyn,
                 ["HeroIconMountainObyn2"] = HeroIconMountainObyn2,
                 ["HeroIconObynGreenFoot"] = HeroIconObynGreenFoot,
@@ -6619,7 +6667,6 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["HeroIconPatFusty"] = HeroIconPatFusty,
                 ["HeroIconPatFusty2"] = HeroIconPatFusty2,
                 ["HeroIconPatFustyTheSnowman"] = HeroIconPatFustyTheSnowman,
-                ["HeroIconPatFustyTheSnowman2"] = HeroIconPatFustyTheSnowman2,
                 ["HeroIconPsi"] = HeroIconPsi,
                 ["HeroIconPsi2"] = HeroIconPsi2,
                 ["HeroIconPsiPsimbals"] = HeroIconPsiPsimbals,
@@ -6808,6 +6855,12 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["JungleVineGrow02"] = JungleVineGrow02,
                 ["JungleVineGrow03"] = JungleVineGrow03,
                 ["JustOneMoreIcon"] = JustOneMoreIcon,
+                ["KaijuPatIcon"] = KaijuPatIcon,
+                ["KaijuPatPortrait"] = KaijuPatPortrait,
+                ["KaijuPatPortraitLvl10"] = KaijuPatPortraitLvl10,
+                ["KaijuPatPortraitLvl20"] = KaijuPatPortraitLvl20,
+                ["KaijuPatPortraitLvl3"] = KaijuPatPortraitLvl3,
+                ["KaijuPatPortraitLvl5"] = KaijuPatPortraitLvl5,
                 ["KingPropIcon"] = KingPropIcon,
                 ["KnockbackUpgradeIcon"] = KnockbackUpgradeIcon,
                 ["KnowledgeIcon"] = KnowledgeIcon,
@@ -7186,8 +7239,8 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["MOABGlaiveRang"] = MOABGlaiveRang,
                 ["MoabGlueUpgradeIcon"] = MoabGlueUpgradeIcon,
                 ["MoabHexAA"] = MoabHexAA,
-                ["MOABIcon"] = MOABIcon,
                 ["MoabIcon"] = MoabIcon,
+                ["MOABIcon"] = MOABIcon,
                 ["MoabMaulerMoabIcon"] = MoabMaulerMoabIcon,
                 ["MoabMaulerUpgradeIcon"] = MoabMaulerUpgradeIcon,
                 ["MoabMine"] = MoabMine,
@@ -7495,7 +7548,6 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["PinkCamo"] = PinkCamo,
                 ["PinkGlueBasic"] = PinkGlueBasic,
                 ["PinkGlueDissolve"] = PinkGlueDissolve,
-                ["PinkGlueSplatter"] = PinkGlueSplatter,
                 ["PinkGlueStronger"] = PinkGlueStronger,
                 ["PinkIce"] = PinkIce,
                 ["PinkRegrow"] = PinkRegrow,
@@ -7666,6 +7718,10 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["ProfileAvatar66"] = ProfileAvatar66,
                 ["ProfileAvatar67"] = ProfileAvatar67,
                 ["ProfileAvatar68"] = ProfileAvatar68,
+                ["ProfileAvatar69"] = ProfileAvatar69,
+                ["ProfileAvatar70"] = ProfileAvatar70,
+                ["ProfileAvatar71"] = ProfileAvatar71,
+                ["ProfileAvatar72"] = ProfileAvatar72,
                 ["ProfileBanner1"] = ProfileBanner1,
                 ["ProfileBanner10"] = ProfileBanner10,
                 ["ProfileBanner10Icon"] = ProfileBanner10Icon,
@@ -7718,6 +7774,15 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["ProfileBanner25"] = ProfileBanner25,
                 ["ProfileBanner25Icon"] = ProfileBanner25Icon,
                 ["ProfileBanner25Small"] = ProfileBanner25Small,
+                ["ProfileBanner26"] = ProfileBanner26,
+                ["ProfileBanner26Icon"] = ProfileBanner26Icon,
+                ["ProfileBanner26Small"] = ProfileBanner26Small,
+                ["ProfileBanner27"] = ProfileBanner27,
+                ["ProfileBanner27Icon"] = ProfileBanner27Icon,
+                ["ProfileBanner27Small"] = ProfileBanner27Small,
+                ["ProfileBanner28"] = ProfileBanner28,
+                ["ProfileBanner28Icon"] = ProfileBanner28Icon,
+                ["ProfileBanner28Small"] = ProfileBanner28Small,
                 ["ProfileBanner2Icon"] = ProfileBanner2Icon,
                 ["ProfileBanner2Small"] = ProfileBanner2Small,
                 ["ProfileBanner3"] = ProfileBanner3,
@@ -7807,6 +7872,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["PurpleRegrowCamo"] = PurpleRegrowCamo,
                 ["PurpleThorn"] = PurpleThorn,
                 ["PursuitUpgradeIcon"] = PursuitUpgradeIcon,
+                ["PushNotificationsIcon"] = PushNotificationsIcon,
                 ["QuadBurstIcon"] = QuadBurstIcon,
                 ["QuadDartsUpgradeIcon"] = QuadDartsUpgradeIcon,
                 ["QuestBg"] = QuestBg,
@@ -8030,6 +8096,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["ShopHeroPanel"] = ShopHeroPanel,
                 ["ShopNail"] = ShopNail,
                 ["ShrapnelShotUpgradeIcon"] = ShrapnelShotUpgradeIcon,
+                ["ShuffleIcon"] = ShuffleIcon,
                 ["Shuriken"] = Shuriken,
                 ["SideQuestIcon"] = SideQuestIcon,
                 ["Sigh"] = Sigh,
@@ -8085,6 +8152,7 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["SmudgeCattPortraitLvl7"] = SmudgeCattPortraitLvl7,
                 ["SmudgeCattTotem"] = SmudgeCattTotem,
                 ["Sniper"] = Sniper,
+                ["SniperMonkeyChameleonPetIcon"] = SniperMonkeyChameleonPetIcon,
                 ["SniperMonkeyIcon"] = SniperMonkeyIcon,
                 ["Snowball"] = Snowball,
                 ["SnowflakeBlade"] = SnowflakeBlade,
@@ -8360,6 +8428,8 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["TeamFrame11"] = TeamFrame11,
                 ["TeamFrame12"] = TeamFrame12,
                 ["TeamFrame13"] = TeamFrame13,
+                ["TeamFrame14"] = TeamFrame14,
+                ["TeamFrame15"] = TeamFrame15,
                 ["TeamFrame2"] = TeamFrame2,
                 ["TeamFrame3"] = TeamFrame3,
                 ["TeamFrame4"] = TeamFrame4,
@@ -8376,6 +8446,8 @@ namespace BTD_Mod_Helper.Api.Enums
                 ["TeamIcon14"] = TeamIcon14,
                 ["TeamIcon15"] = TeamIcon15,
                 ["TeamIcon16"] = TeamIcon16,
+                ["TeamIcon17"] = TeamIcon17,
+                ["TeamIcon18"] = TeamIcon18,
                 ["TeamIcon2"] = TeamIcon2,
                 ["TeamIcon3"] = TeamIcon3,
                 ["TeamIcon4"] = TeamIcon4,

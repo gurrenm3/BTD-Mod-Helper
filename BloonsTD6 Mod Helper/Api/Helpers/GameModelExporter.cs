@@ -3,8 +3,12 @@ using System.Linq;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppSystem;
+using Il2CppSystem.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using Array = System.Array;
 using Exception = System.Exception;
 namespace BTD_Mod_Helper.Api.Helpers;
@@ -147,6 +151,32 @@ public static class GameModelExporter
         }
         ModHelper.Log(
             $"Exported {success}/{total} KnowledeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Knowledge")}");
+        
+        
+        var resourcesJson = new JObject();
+        var resourceLocationMap = Addressables.ResourceLocators.First().Cast<ResourceLocationMap>();
+
+        foreach (var (o, locations) in resourceLocationMap.Locations)
+        {
+            var key = o.ToString();
+            
+            if (!Guid.TryParse(key, out _)) continue;
+
+            var list = locations
+                .Cast<Il2CppReferenceArray<IResourceLocation>>()
+                .Select(location => location.InternalId)
+                .Distinct()
+                .Where(s => s != key)
+                .ToArray();
+
+            if (list.Length == 0) continue;
+
+            resourcesJson[key] = list.Length > 1 ? JArray.FromObject(list) : list[0];
+        }
+
+        var resourcesPath = Path.Combine(FileIOHelper.sandboxRoot, "resources.json");
+        File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
+        ModHelper.Log($"Exported resources to {resourcesPath}");
     }
 
     /// <summary>

@@ -14,6 +14,7 @@ using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonPriority(-1000)]
+[assembly: MelonOptionalDependencies("NAudio.WinMM", "NAudio.Wasapi")] // Avoids the warning about these not getting ILRepacked; they're not needed
 
 namespace BTD_Mod_Helper;
 
@@ -62,7 +63,7 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning(e);
         }
     }
-    
+
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
@@ -82,7 +83,7 @@ internal partial class MelonMain : BloonsTD6Mod
             GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
         }
 #endif
-        
+
     }
 
     public override void OnTitleScreen()
