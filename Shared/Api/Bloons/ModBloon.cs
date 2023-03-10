@@ -60,7 +60,7 @@ public abstract partial class ModBloon : NamedModContent
         Game.instance.model.AddChildDependant(bloonModel);
         Game.instance.model.bloonsByName[bloonModel.name] = bloonModel;
         BloonModelCache[bloonModel.name] = bloonModel;
-        Cache[bloonModel.name] = this;
+        Cache[bloonModel.id] = this;
     }
 
     internal virtual ModBloon BaseModBloon => null;

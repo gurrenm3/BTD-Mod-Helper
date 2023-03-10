@@ -1,4 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Simulation;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 namespace BTD_Mod_Helper.Patches.Sim;
 
 [HarmonyPatch(typeof(Simulation), nameof(Simulation.RoundEnd))]

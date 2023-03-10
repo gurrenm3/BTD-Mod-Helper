@@ -1,4 +1,6 @@
-﻿using Il2CppAssets.Scripts.Simulation.Bloons;
+﻿using BTD_Mod_Helper.Api.Bloons;
+using Il2CppAssets.Scripts.Simulation.Bloons;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 namespace BTD_Mod_Helper.Patches.Bloons;
 
 [HarmonyPatch(typeof(Bloon), nameof(Bloon.Leaked))]
@@ -9,6 +11,15 @@ internal class Blooon_Leaked
     {
         var result = true;
         SessionData.Instance.LeakedBloons.Add(__instance);
+        if (ModBoss.Cache.ContainsKey(__instance.bloonModel.id))
+        {
+            var boss = ModBoss.Cache[__instance.bloonModel.id];
+            if (boss.KillOnLeak)
+            {
+                __instance.bloonModel.leakDamage = (float) InGame.instance.GetHealth() + 1;
+            }
+        }
+        
         ModHelper.PerformHook(mod => result &= mod.PreBloonLeaked(__instance));
         return result;
     }
@@ -17,5 +28,10 @@ internal class Blooon_Leaked
     internal static void Postfix(Bloon __instance)
     {
         ModHelper.PerformHook(mod => mod.PostBloonLeaked(__instance));
+        if (ModBoss.Cache.ContainsKey(__instance.bloonModel.id))
+        {
+            var boss = ModBoss.Cache[__instance.bloonModel.id];
+            boss.OnLeak(__instance);
+        }
     }
 }
