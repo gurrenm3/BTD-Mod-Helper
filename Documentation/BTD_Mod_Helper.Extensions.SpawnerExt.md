@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Spawn a BloonModel on the map
 
 ```csharp
-public static void Emit(this Spawner spawner, BloonModel bloonModel);
+public static Bloon Emit(this Spawner spawner, BloonModel bloonModel);
 ```
 #### Parameters
 
@@ -30,3 +30,6 @@ public static void Emit(this Spawner spawner, BloonModel bloonModel);
 <a name='BTD_Mod_Helper.Extensions.SpawnerExt.Emit(thisSpawner,BloonModel).bloonModel'></a>
 
 `bloonModel` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+#### Returns
+[Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')

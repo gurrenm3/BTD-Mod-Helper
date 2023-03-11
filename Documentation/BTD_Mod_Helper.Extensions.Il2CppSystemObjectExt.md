@@ -12,32 +12,6 @@ public static class Il2CppSystemObjectExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Il2CppSystemObjectExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppObjectBase)'></a>
-
-## Il2CppSystemObjectExt.Is<T>(this Il2CppObjectBase) Method
-
-Check if object is the same type as T
-
-```csharp
-public static bool Is<T>(this Il2CppObjectBase instance)
-    where T : Il2CppObjectBase;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppObjectBase).T'></a>
-
-`T`
-
-Type to check
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppObjectBase).instance'></a>
-
-`instance` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppObjectBase,T)'></a>
 
 ## Il2CppSystemObjectExt.Is<T>(this Il2CppObjectBase, T) Method
@@ -70,28 +44,28 @@ The casted object if this is of type T
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppObjectBase)'></a>
 
-## Il2CppSystemObjectExt.IsType<T>(this Object) Method
+## Il2CppSystemObjectExt.Is<T>(this Il2CppObjectBase) Method
 
 Check if object is the same type as T
 
 ```csharp
-public static bool IsType<T>(this Object instance)
-    where T : Object;
+public static bool Is<T>(this Il2CppObjectBase instance)
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject).T'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppObjectBase).T'></a>
 
 `T`
 
 Type to check
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject).instance'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisIl2CppObjectBase).instance'></a>
 
-`instance` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+`instance` [Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase 'Il2CppInterop.Runtime.InteropTypes.Il2CppObjectBase')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -124,6 +98,32 @@ Type to check
 `castObject` [T](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject,T).T 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType<T>(this Object, T).T')
 
 The casted object if this is of type T
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject)'></a>
+
+## Il2CppSystemObjectExt.IsType<T>(this Object) Method
+
+Check if object is the same type as T
+
+```csharp
+public static bool IsType<T>(this Object instance)
+    where T : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject).T'></a>
+
+`T`
+
+Type to check
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject).instance'></a>
+
+`instance` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

@@ -14,9 +14,10 @@ internal class Blooon_Leaked
         if (ModBoss.Cache.ContainsKey(__instance.bloonModel.id))
         {
             var boss = ModBoss.Cache[__instance.bloonModel.id];
-            if (boss.KillOnLeak)
+            if (boss.AlwaysDefeatOnLeak)
             {
-                __instance.bloonModel.leakDamage = (float) InGame.instance.GetHealth() + 1;
+                __instance.bloonModel.leakDamage = (float) InGame.instance.GetHealth() + InGame.instance.GetSimulation().shield.ValueFloat + 1;
+                __instance.UpdateRootModel(__instance.bloonModel);
             }
         }
         

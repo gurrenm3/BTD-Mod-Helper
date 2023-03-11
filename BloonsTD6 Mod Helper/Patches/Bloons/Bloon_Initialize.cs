@@ -27,8 +27,7 @@ internal class Bloon_Initialize
         if (ModBoss.Cache.ContainsKey(modelToUse.Cast<BloonModel>().id))
         {
             var boss = ModBoss.Cache[modelToUse.Cast<BloonModel>().id];
-            var baseboss = boss.bloonModel;
-            var roundboss = boss.ModifyForRound(baseboss, InGame.instance.GetUnityToSimulation().GetCurrentRound()+1);
+            var roundboss = boss.ModifyForRound(boss.bloonModel, InGame.instance.GetUnityToSimulation().GetCurrentRound()+1);
             __instance.bloonModel = roundboss;
             __instance.UpdateRootModel(roundboss);
             boss.OnSpawn(__instance);

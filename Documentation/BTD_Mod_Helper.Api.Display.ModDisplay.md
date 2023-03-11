@@ -287,29 +287,6 @@ The UnityDisplayNode
 
 The name of the texture, without .png
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color)'></a>
-
-## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color) Method
-
-Sets the outline color for the first mesh renderer in the given node
-
-```csharp
-protected void SetMeshOutlineColor(UnityDisplayNode node, Color color);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).node'></a>
-
-`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
-
-The UnityDisplayNode
-
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).color'></a>
-
-`color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
-
-The color for it to be outlined (when not highlighted)
-
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color,int)'></a>
 
 ## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color, int) Method
@@ -339,28 +316,28 @@ The color for it to be outlined (when not highlighted)
 
 What index of mesh renderer to use
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color)'></a>
 
-## ModDisplay.SetMeshTexture(UnityDisplayNode, string) Method
+## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color) Method
 
-Sets the mesh texture to that of a named png
+Sets the outline color for the first mesh renderer in the given node
 
 ```csharp
-protected void SetMeshTexture(UnityDisplayNode node, string textureName);
+protected void SetMeshOutlineColor(UnityDisplayNode node, Color color);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).textureName'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).color'></a>
 
-`textureName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
 
-The name of the texture, without .png
+The color for it to be outlined (when not highlighted)
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string,int)'></a>
 
@@ -390,6 +367,29 @@ The name of the texture, without .png
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 The index to set at
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string)'></a>
+
+## ModDisplay.SetMeshTexture(UnityDisplayNode, string) Method
+
+Sets the mesh texture to that of a named png
+
+```csharp
+protected void SetMeshTexture(UnityDisplayNode node, string textureName);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).node'></a>
+
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).textureName'></a>
+
+`textureName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The name of the texture, without .png
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_)'></a>
 

@@ -47,6 +47,7 @@
 | [BloonModelUtils](BTD_Mod_Helper.Api.Bloons.BloonModelUtils.md 'BTD_Mod_Helper.Api.Bloons.BloonModelUtils') | Provides Utility methods for dealing with BloonModels |
 | [ModBloon](BTD_Mod_Helper.Api.Bloons.ModBloon.md 'BTD_Mod_Helper.Api.Bloons.ModBloon') | Class for adding in a new Bloon to the game |
 | [ModBloon&lt;T&gt;](BTD_Mod_Helper.Api.Bloons.ModBloon_T_.md 'BTD_Mod_Helper.Api.Bloons.ModBloon<T>') | Class for a ModBloon which has a different ModBloon as its base |
+| [ModBoss](BTD_Mod_Helper.Api.Bloons.ModBoss.md 'BTD_Mod_Helper.Api.Bloons.ModBoss') | Class for adding a new boss to the game |
 | [ModRoundSet](BTD_Mod_Helper.Api.Bloons.ModRoundSet.md 'BTD_Mod_Helper.Api.Bloons.ModRoundSet') | Class for a custom RoundSet |
 | [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon') | Allows you to easily modify the models of a specific vanilla Bloon |
 | [ModVanillaBloons](BTD_Mod_Helper.Api.Bloons.ModVanillaBloons.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloons') | Allows you to easily modify the models of multiple vanilla Bloons |

@@ -10,37 +10,80 @@ using Il2CppAssets.Scripts.Unity;
 
 namespace BTD_Mod_Helper.Api.Bloons;
 
+/// <summary>
+/// Class for adding a new boss to the game
+/// </summary>
 public abstract class ModBoss : ModBloon
 {
-    public sealed override string BaseBloon => BloonType.Red;
+
+    /// <inheritdoc />
+    public sealed override string BaseBloon => BloonType.Bad;
     
-    internal static readonly Dictionary<string, ModBoss> Cache = new();
+    internal static readonly new Dictionary<string, ModBoss> Cache = new();
     
+    /// <summary>
+    /// Called when the boss is spawned
+    /// </summary>
+    /// <param name="bloon"></param>
     public virtual void OnSpawn(Bloon bloon)
     {
     }
     
+    /// <summary>
+    /// Called when the boss is leaked
+    /// </summary>
+    /// <param name="bloon"></param>
     public virtual void OnLeak(Bloon bloon)
     {
     }
     
+    /// <summary>
+    /// Called when the boss is popped
+    /// </summary>
+    /// <param name="bloon"></param>
     public virtual void OnPop(Bloon bloon)
     {
     }
 
-    public virtual float Speed => 1f; //BAD speed
+    /// <summary>
+    /// The speed of the boss, 4.5 is the default for a BAD and 25 is the default for a red bloon
+    /// </summary>
+    public virtual float Speed => 4.5f; 
     
+    /// <summary>
+    /// The health of the boss
+    /// </summary>
     public virtual float Health => 100_000f;
     
+    /// <summary>
+    /// Modifies the boss before it is spawned, based on the round
+    /// </summary>
+    /// <param name="bloonModel"></param>
+    /// <param name="round"></param>
+    /// <returns></returns>
     public virtual BloonModel ModifyForRound(BloonModel bloonModel, int round)
     {
         return bloonModel;
     }
-    
+    /// <summary>
+    /// Whether the boss should always cause defeat on leak
+    /// </summary>
+    public virtual bool AlwaysDefeatOnLeak => true; 
+    /// <summary>
+    /// Whether the boss should block rounds from spawning
+    /// </summary>
+    public virtual bool BlockRounds => false;
+    /// <summary>
+    /// The delay(in seconds) before the boss spawns on a round defined in <see cref="SpawnRounds"/>
+    /// </summary>
     public virtual float SpawnDelay => 0f;
     
+    /// <summary>
+    /// The rounds the boss should spawn on
+    /// </summary>
     public abstract IEnumerable<int> SpawnRounds { get; }
 
+    /// <inheritdoc />
     public sealed override bool UseIconAsDisplay => false;
 
     internal sealed override BloonModel GetDefaultBloonModel()
@@ -69,7 +112,7 @@ public abstract class ModBoss : ModBloon
         }
         catch (Exception)
         {
-            ModHelper.Error($"Failed to modify base Bloon model for {Id}");
+            ModHelper.Error($"Failed to modify base Bloon model for boss {Id}");
             throw;
         }
 
@@ -93,17 +136,12 @@ public abstract class ModBoss : ModBloon
         
         Cache[bloonModel.id] = this;
     }
-    
-    public virtual bool KillOnLeak => false;
-
-    public virtual bool BlockRounds => false;
-    
+    /// <inheritdoc />
     public sealed override bool KeepBaseId => false;
-
+    /// <inheritdoc />
     public sealed override bool Regrow => false;
+    /// <inheritdoc />
     public sealed override string RegrowsTo => "";
-
+    /// <inheritdoc />
     public sealed override float RegrowRate => 3;
-    
-    
 }

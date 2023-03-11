@@ -182,24 +182,6 @@ public virtual Texture2D GetTexture();
 #### Returns
 [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
 
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.IsCustomMap(string)'></a>
-
-## ModMap.IsCustomMap(string) Method
-
-Returns whether or not a map is a custom map, based off of it's name.
-
-```csharp
-public static bool IsCustomMap(string mapName);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.IsCustomMap(string).mapName'></a>
-
-`mapName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Api.Scenarios.ModMap.IsCustomMap(string,BTD_Mod_Helper.Api.Scenarios.ModMap)'></a>
 
 ## ModMap.IsCustomMap(string, ModMap) Method
@@ -220,6 +202,24 @@ public static bool IsCustomMap(string mapName, out BTD_Mod_Helper.Api.Scenarios.
 `map` [ModMap](BTD_Mod_Helper.Api.Scenarios.ModMap.md 'BTD_Mod_Helper.Api.Scenarios.ModMap')
 
 The custom map, if found
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.IsCustomMap(string)'></a>
+
+## ModMap.IsCustomMap(string) Method
+
+Returns whether or not a map is a custom map, based off of it's name.
+
+```csharp
+public static bool IsCustomMap(string mapName);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModMap.IsCustomMap(string).mapName'></a>
+
+`mapName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
