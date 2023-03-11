@@ -28,8 +28,9 @@ internal class Simulation_RoundStart
             {
                 var list = new List<BloonEmissionModel>
                 {
-                    new(id + "_Boss", boss.SpawnDelay, boss.bloonModel.id, true)
+                    new(id + "_Boss", 0, boss.bloonModel.id, true)
                 };
+                
                 InGame.instance.GetMap().spawner.AddEmissions(list.ToIl2CppReferenceArray(),
                     currentRound);
             }

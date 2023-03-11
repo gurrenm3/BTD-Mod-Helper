@@ -1,6 +1,4 @@
 ﻿using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using BTD_Mod_Helper.Api.Bloons;
 using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity;
@@ -13,7 +11,7 @@ namespace BTD_Mod_Helper.Patches.Spawners;
 internal static class Spawner_IsRoundOver
 {
     [HarmonyPrefix]
-    private static bool Prefix(Spawner __instance, int round, ref bool __result)
+    private static bool Prefix(Spawner __instance, ref bool __result)
     {
         if (__instance.IsCurrentSpawnRoundEmitting())
         {

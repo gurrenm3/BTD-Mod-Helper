@@ -58,12 +58,12 @@ public abstract class ModBoss : ModBloon
     /// <summary>
     /// Modifies the boss before it is spawned, based on the round
     /// </summary>
-    /// <param name="bloonModel"></param>
+    /// <param name="bloon"></param>
     /// <param name="round"></param>
     /// <returns></returns>
-    public virtual BloonModel ModifyForRound(BloonModel bloonModel, int round)
+    public virtual BloonModel ModifyForRound(BloonModel bloon, int round)
     {
-        return bloonModel;
+        return bloon;
     }
     /// <summary>
     /// Whether the boss should always cause defeat on leak
@@ -73,11 +73,7 @@ public abstract class ModBoss : ModBloon
     /// Whether the boss should block rounds from spawning
     /// </summary>
     public virtual bool BlockRounds => false;
-    /// <summary>
-    /// The delay(in seconds) before the boss spawns on a round defined in <see cref="SpawnRounds"/>
-    /// </summary>
-    public virtual float SpawnDelay => 0f;
-    
+
     /// <summary>
     /// The rounds the boss should spawn on
     /// </summary>
