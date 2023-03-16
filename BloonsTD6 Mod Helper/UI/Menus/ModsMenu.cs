@@ -7,12 +7,14 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.UI.BTD6;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppFacepunch.Steamworks;
 using Il2CppTMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.UI.Menus;
 
@@ -209,6 +211,21 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     "Yes", null, "No", Popup.TransitionAnim.Scale));
             }));
         restartPanel.AddText(new Info("Text", 0, -200, 500, 100), "Restart", FontMedium);
+
+
+        if (DateTime.Now is {Month: 4, Day: 1})
+        {
+            var march32 = bottomButtonGroup.AddButton(new Info("March32ndButton")
+            {
+                Width = 1000, Height = 250, Y = Padding, Anchor = new Vector2(0.5f, 0), Pivot = new Vector2(0.5f, 0)
+            }, VanillaSprites.GreenBtnLong, new Action(() => EmbeddedBrowser.OpenURL(
+                "https://www.youtube.com/watch?v=dQw4w9WgXcQ?autoplay=1",
+                view => view.Surface.KeyDown(0x0D /* VK_RETURN */, HTMLKeyModifiers.None))
+            ));
+            march32.AddText(new Info("Text", InfoPreset.FillParent), "Get 100 Trophies", 80f);
+            march32.AddImage(new Info("TrophyL", -475, 0, 300), VanillaSprites.TrophyIcon);
+            march32.AddImage(new Info("TrophyR", 475, 0, 300), VanillaSprites.TrophyIcon);
+        }
     }
 
     /// <inheritdoc />

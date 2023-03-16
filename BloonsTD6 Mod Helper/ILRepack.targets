@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Target Name="ILRepacker_Debug" AfterTargets="Build" BeforeTargets="MoveDllToMods">
+    <Target Name="Definitons">
         <ItemGroup>
             <AssemblyFile Include="$(TargetDir)$(TargetName).dll"/>
-        </ItemGroup>
-        <ItemGroup>
             <InputAssemblies Include="@(AssemblyFile)"/>
-            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'"/>
-            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'"/>
-            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'"/>
-            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NfdSharp'"/>
-            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio'"/>
-            <InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio.Core'"/>
+            
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'"/>
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'"/>
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'"/>
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NfdSharp'"/>
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio'"/>
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio.Core'"/>
+            <InputAssemblies Include="@(NugetAssemblies)"/>
         </ItemGroup>
-        
+    </Target>
+
+    <!--When in Debug mode, copy the libraries into UserLibs-->
+    <Target Name="DebugCopyLibs" AfterTargets="Build"  DependsOnTargets="Definitons" Condition="'$(Configuration)' == 'BTD6_Debug'" >
+        <Message Text="Copying Nuget Assemblies to UserLibs folder..." Importance="high" />
+        <Copy SourceFiles="@(NugetAssemblies)" DestinationFolder="$(BloonsTD6)\UserLibs"/>
+    </Target>
+
+    <!--When in Release mode, pack the libraries into the dll-->
+    <Target Name="ILRepacker" AfterTargets="Build" BeforeTargets="MoveDllToMods" DependsOnTargets="Definitons" Condition="'$(Configuration)' != 'BTD6_Debug'" >
         <ItemGroup>
             <LibraryPaths Include="$(BloonsTD6)\MelonLoader"/>
             <LibraryPaths Include="$(BloonsTD6)\MelonLoader\Managed"/>
@@ -32,13 +41,4 @@
         />
 
     </Target>
-
-    <!--<Target Name="Cleanup" AfterTargets="ILRepack">
-        <ItemGroup>
-            <FilesToDelete Include="$(OutputPath)Octokit.dll" />
-            <FilesToDelete Include="$(OutputPath)Octokit.dll" />
-            <FilesToDelete Include="$(OutputPath)Octokit.dll" />
-        </ItemGroup>
-        <Delete Files="@(FilesToDelete)" />
-    </Target>-->
 </Project>
