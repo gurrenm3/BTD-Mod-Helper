@@ -199,6 +199,27 @@ public abstract class ModUpgrade : NamedModContent
     /// <param name="towerModel"></param>
     public abstract void ApplyUpgrade(TowerModel towerModel);
 
+
+    /// <summary>
+    /// Apply effects to this Tower Model before all other ApplyUpgrade and LateApplyUpgrade effects have happened
+    /// <br/>
+    /// Otherwise, usual priority / ordering rules still apply
+    /// </summary>
+    /// <param name="towerModel"></param>
+    public virtual void EarlyApplyUpgrade(TowerModel towerModel)
+    {
+    }
+
+    /// <summary>
+    /// Apply effects to this Tower Model after all the other EarlyApplyUpgrade and ApplyUpgrade effects have happened
+    /// <br/>
+    /// Otherwise, usual priority / ordering rules still apply
+    /// </summary>
+    /// <param name="towerModel"></param>
+    public virtual void LateApplyUpgrade(TowerModel towerModel)
+    {
+    }
+
     /// <summary>
     /// If you really need to override the way that the ModUpgrade makes its UpgradeModel, go ahead
     /// </summary>

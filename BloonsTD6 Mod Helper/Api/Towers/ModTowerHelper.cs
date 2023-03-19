@@ -163,12 +163,29 @@ public static partial class ModTowerHelper
 
         // actually apply the upgrades
 
-        foreach (var modUpgrade in modTower.Upgrades.Cast<ModUpgrade>()
-                     .Where(modUpgrade =>
-                         modUpgrade != null && towerModel.tiers[modUpgrade.Path] >= modUpgrade.Tier)
-                     .OrderByDescending(modUpgrade => modUpgrade.Priority)
-                     .ThenBy(modUpgrade => modUpgrade.Tier)
-                     .ThenBy(modUpgrade => modUpgrade.Path))
+        var modUpgrades = modTower.Upgrades.Cast<ModUpgrade>()
+            .Where(modUpgrade =>
+                modUpgrade != null && towerModel.tiers[modUpgrade.Path] >= modUpgrade.Tier)
+            .OrderByDescending(modUpgrade => modUpgrade.Priority)
+            .ThenBy(modUpgrade => modUpgrade.Tier)
+            .ThenBy(modUpgrade => modUpgrade.Path)
+            .ToList();
+
+        foreach (var modUpgrade in modUpgrades)
+        {
+            try
+            {
+                modUpgrade.EarlyApplyUpgrade(towerModel);
+            }
+            catch (Exception)
+            {
+                ModHelper.Error(
+                    $"Failed to EarlyApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
+                throw;
+            }
+        }
+
+        foreach (var modUpgrade in modUpgrades)
         {
             try
             {
@@ -177,7 +194,21 @@ public static partial class ModTowerHelper
             catch (Exception)
             {
                 ModHelper.Error(
-                    $"Failed to apply ModUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
+                    $"Failed to ApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
+                throw;
+            }
+        }
+
+        foreach (var modUpgrade in modUpgrades)
+        {
+            try
+            {
+                modUpgrade.LateApplyUpgrade(towerModel);
+            }
+            catch (Exception)
+            {
+                ModHelper.Error(
+                    $"Failed to LateApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
                 throw;
             }
         }
@@ -199,8 +230,7 @@ public static partial class ModTowerHelper
         }
         else if (modTower.displays
                      .Where(display => display.UseForTower(towerModel.tiers) && display.ParagonDisplayIndex <= 0)
-                     .OrderByDescending(display => display.Id)
-                     .FirstOrDefault() is { } modTowerDisplay)
+                     .MaxBy(display => display.Id) is { } modTowerDisplay)
         {
             modTowerDisplay.ApplyToTower(towerModel);
         }
@@ -223,8 +253,7 @@ public static partial class ModTowerHelper
                 var index = i;
                 var modTowerDisplay = modTower.displays
                     .Where(display => display.UseForTower(towerModel.tiers) && index >= display.ParagonDisplayIndex)
-                    .OrderByDescending(display => display.ParagonDisplayIndex)
-                    .FirstOrDefault();
+                    .MaxBy(display => display.ParagonDisplayIndex);
                 if (modTowerDisplay != default)
                 {
                     displayDegreePath.assetPath = ModContent.CreatePrefabReference(modTowerDisplay.Id);
@@ -262,8 +291,8 @@ public static partial class ModTowerHelper
             skinsData.AddSkins(new[] {skinData});
         }
     }
-    
-    
+
+
     /// <summary>
     /// Creates and returns an empty TowerModel
     /// </summary>

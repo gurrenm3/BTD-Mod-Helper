@@ -7,3 +7,4 @@
 - Fixed Open Local Files Directory button
 - Re enabled Monkey Knowledge getting exported from the Game Model
 - Game Model Export also will create a `resources.json` file listing the GUID / resource mappings
+- Added `LateApplyUpgrade` and `EarlyApplyUpgrade` methods to simplify having some parts of upgrade effects apply after/before all others

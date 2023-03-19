@@ -257,6 +257,23 @@ public abstract void ApplyUpgrade(TowerModel towerModel);
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.EarlyApplyUpgrade(TowerModel)'></a>
+
+## ModUpgrade.EarlyApplyUpgrade(TowerModel) Method
+
+Apply effects to this Tower Model before all other ApplyUpgrade and LateApplyUpgrade effects have happened  
+<br/>  
+Otherwise, usual priority / ordering rules still apply
+
+```csharp
+public virtual void EarlyApplyUpgrade(TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.EarlyApplyUpgrade(TowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.GetUpgradeModel()'></a>
 
 ## ModUpgrade.GetUpgradeModel() Method
@@ -269,6 +286,23 @@ public virtual UpgradeModel GetUpgradeModel();
 
 #### Returns
 [Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.LateApplyUpgrade(TowerModel)'></a>
+
+## ModUpgrade.LateApplyUpgrade(TowerModel) Method
+
+Apply effects to this Tower Model after all the other EarlyApplyUpgrade and ApplyUpgrade effects have happened  
+<br/>  
+Otherwise, usual priority / ordering rules still apply
+
+```csharp
+public virtual void LateApplyUpgrade(TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.LateApplyUpgrade(TowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RestrictUpgrading(Tower)'></a>
 

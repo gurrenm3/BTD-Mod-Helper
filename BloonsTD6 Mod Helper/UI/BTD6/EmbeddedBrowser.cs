@@ -53,8 +53,10 @@ internal static class EmbeddedBrowser
                     VanillaSprites.BackBtn, new Action(() => webview.RunJavascript("history.back()"))));
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("RefreshButton", 100),
                     VanillaSprites.RestartBtn, new Action(() => steamWebView.Reload())));
-                panel.AddModHelperComponent(ModHelperButton.Create(new Info("OpenButton", 100),
-                    VanillaSprites.BackupBtn, new Action(() => ProcessHelper.OpenURL(CurrentUrl))));
+                var open = panel.AddModHelperComponent(ModHelperButton.Create(new Info("OpenButton", 100),
+                    VanillaSprites.BlueBtn, new Action(() => ProcessHelper.OpenURL(CurrentUrl))));
+                var exit = open.AddImage(new Info("Exit", 70), VanillaSprites.ExitIcon);
+                exit.RectTransform.Rotate(0, 0, -90);
 
 #if BTD6_DEBUG
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("GoogleButton", 100),
@@ -135,7 +137,7 @@ internal static class EmbeddedBrowser
         [HarmonyPostfix]
         private static void Postfix(ref Event __result)
         {
-            if (SteamWebView_OnGUI.UsingRawImage && __result is {type: EventType.MouseDown})
+            if (SteamWebView_OnGUI.UsingRawImage && __result is {type: EventType.MouseDown or EventType.ScrollWheel})
             {
                 try
                 {
