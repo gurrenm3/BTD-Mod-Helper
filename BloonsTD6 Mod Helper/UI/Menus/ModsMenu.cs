@@ -482,7 +482,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModHomeButton = firstRow.AddButton(new Info("HomePage")
         {
             Size = ModNameHeight
-        }, VanillaSprites.HomeBtn, new Action(() => ProcessHelper.OpenURL(selectedMod.ReadmeUrl!)));
+        }, VanillaSprites.HomeBtn, new Action(() => EmbeddedBrowser.OpenURL(selectedMod.ReadmeUrl!)));
 
         // ReSharper disable once AsyncVoidLambda
         selectedModUpdateButton = firstRow.AddButton(
