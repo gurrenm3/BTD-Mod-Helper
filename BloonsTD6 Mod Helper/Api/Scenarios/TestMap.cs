@@ -4,7 +4,7 @@ using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Simulation.SMath;
 namespace BTD_Mod_Helper.Api.Scenarios;
 
-internal class TestMap : ModMap
+/*internal class TestMap : ModMap
 {
     public override string Name => "Test Map";
     public override MapDifficulty Difficulty => MapDifficulty.Beginner;
@@ -26,4 +26,4 @@ internal class TestMap : ModMap
             new(3, 5),
         });
     }
-}
+}*/
