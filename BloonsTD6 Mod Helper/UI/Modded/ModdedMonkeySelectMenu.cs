@@ -37,6 +37,9 @@ internal class ModdedMonkeySelectMenu
     private static int TotalSpots => TotalSpotses[currentTowerSet];
 
 
+    private static TowerSet FromString(string s) => Enum.TryParse(s, out TowerSet towerSet) ? towerSet :
+        ModTowerSet.Cache.TryGetValue(s, out ModTowerSet modTowerSet) ? modTowerSet.Set : TowerSet.None;
+
     /// <summary>
     /// Update the currentTowerSet tracker, and change the state if need be
     /// </summary>
@@ -45,7 +48,7 @@ internal class ModdedMonkeySelectMenu
     internal static void UpdateTowerSet(MonkeySelectMenu __instance, int offset = 0)
     {
         var newTowerSet = MonkeySelectMenu.TowerSets[menu.currentSet];
-        
+
         if (newTowerSet != currentTowerSet)
         {
             currentTowerSet = newTowerSet;
@@ -160,13 +163,14 @@ internal class ModdedMonkeySelectMenu
             if (!reOpening)
             {
                 var towerSets = new List<TowerSet>(MonkeySelectMenu.TowerSets);
-                /*foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
+                foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
                 {
+                    if (towerSets.Contains(modTowerSet.Set)) continue;
+
                     var towerSetIndex = modTowerSet.GetTowerSetIndex(towerSets);
-                    towerSets.Insert(towerSetIndex, modTowerSet.Id);
+                    towerSets.Insert(towerSetIndex, modTowerSet.Set);
                 }
-                TODO fix modded tower sets
-                MonkeySelectMenu.TowerSets = towerSets.ToArray();*/
+                MonkeySelectMenu.TowerSets = towerSets.ToArray();
             }
 
             if (data == null)
@@ -287,17 +291,6 @@ internal class ModdedMonkeySelectMenu
         }
     }
 
-    [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.Close))]
-    internal class MonkeySelectMenu_Close
-    {
-        [HarmonyPostfix]
-        internal static void Postfix(MonkeySelectMenu __instance)
-        {
-            //DestroyPips();
-            //DestroyCustomButtons();
-        }
-    }
-
     private static int TotalPages => TotalSpotses.Values.Sum() / 8;
 
     private static int CurrentPage => (TotalSpotses.Values.Take(menu.currentSet).Sum() + Offset) / 8;
@@ -390,20 +383,19 @@ internal class ModdedMonkeySelectMenu
     {
         DestroyCustomButtons();
 
-        // TODO fix mod tower sets
-        /*var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
+        var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
         var horizontalLayoutGroup = __instance.monkeyGroupButtons[0].GetComponentInParent<HorizontalLayoutGroup>();
         foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
         {
             horizontalLayoutGroup.enabled = true;
-            var index = modTowerSet.GetTowerSetIndex(monkeyGroupButtons.Select(b => b.groupName).ToList());
+            var index = modTowerSet.GetTowerSetIndex(monkeyGroupButtons.Select(b => FromString(b.groupName)).ToList());
             var groupButton = CreateMonkeyGroupButton(__instance, modTowerSet);
             groupButton.transform.SetSiblingIndex(index);
             customMonkeyGroupButtons[modTowerSet] = groupButton;
             monkeyGroupButtons.Insert(index, groupButton.GetComponent<MonkeyGroupButton>());
         }
 
-        __instance.monkeyGroupButtons = monkeyGroupButtons.ToArray();*/
+        __instance.monkeyGroupButtons = monkeyGroupButtons.ToArray();
     }
 
     internal static GameObject CreateMonkeyGroupButton(MonkeySelectMenu instance, ModTowerSet modTowerSet)
@@ -415,6 +407,8 @@ internal class ModdedMonkeySelectMenu
         groupButton.name = modTowerSet.Id;
         groupButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = modTowerSet.Id;
         ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ButtonReference, monkeyGroupButton.icon);
+        monkeyGroupButton.button.SetOnClick(() => menu.SwitchTowerSet(modTowerSet.Set));
+        TaskScheduler.ScheduleTask(() => monkeyGroupButton.SetLocked(false));
         return groupButton;
     }
 

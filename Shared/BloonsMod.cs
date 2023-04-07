@@ -203,7 +203,7 @@ public abstract class BloonsMod : MelonMod, IModContent
                 }
                 catch (Exception e)
                 {
-                    MelonLogger.Warning($"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.Message}\" " +
+                    MelonLogger.Warning($"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.InnerException?.Message ?? e.Message}\" " +
                                         $"The mod might not function correctly. This needs to be fixed by {Info.Author}");
 
                     loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
