@@ -64,6 +64,33 @@ public static List<TCast> DuplicateAs<TSource,TCast>(this List<TSource> list)
 #### Returns
 [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.Get_T_(thisList_T_,int)'></a>
+
+## Il2CppGenericsExt.Get<T>(this List<T>, int) Method
+
+Gets the item at the specified index. Circumvents "ambiguous indexer" warnings
+
+```csharp
+public static T Get<T>(this List<T> list, int index);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.Get_T_(thisList_T_,int).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.Get_T_(thisList_T_,int).list'></a>
+
+`list` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.Get_T_(thisList_T_,int).index'></a>
+
+`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.Il2CppGenericsExt.md#BTD_Mod_Helper.Extensions.Il2CppGenericsExt.Get_T_(thisList_T_,int).T 'BTD_Mod_Helper.Extensions.Il2CppGenericsExt.Get<T>(this List<T>, int).T')
+
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.GetItemOfType_TSource,TCast_(thisList_TSource_)'></a>
 
 ## Il2CppGenericsExt.GetItemOfType<TSource,TCast>(this List<TSource>) Method

@@ -239,4 +239,12 @@ public static partial class TowerModelExt
             towerModel.AddTiersToName(tier1, tier2, tier3);
         }
     }
+
+    /// <summary>
+    /// Gets the tower set (vanilla or modded) of this tower in the form of a string
+    /// </summary>
+    /// <param name="towerModel"></param>
+    /// <returns></returns>
+    public static string GetTowerSet(this TowerModel towerModel) =>
+        towerModel.GetModTower()?.ModTowerSet?.Id ?? towerModel.towerSet.ToString();
 }

@@ -187,7 +187,7 @@ public abstract class ModTower<T> : ModTower where T : ModTowerSet
     /// <summary>
     /// The custom tower set that this ModTower uses
     /// </summary>
-    public sealed override TowerSet TowerSet => TowerSet.None;
+    public sealed override TowerSet TowerSet => ModTowerSet.Set;
 }
 
 /// <summary>

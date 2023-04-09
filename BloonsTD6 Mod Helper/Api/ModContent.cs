@@ -62,14 +62,7 @@ public abstract partial class ModContent : IComparable<ModContent>
     /// <typeparam name="T">The ModUpgrade type</typeparam>
     /// <returns>The upgrade name/id</returns>
     public static string UpgradeID<T>() where T : ModUpgrade => GetInstance<T>().Id;
-
-    /// <summary>
-    /// Gets the internal tower set id for a given TowerSet
-    /// </summary>
-    /// <typeparam name="T">The ModUpgrade type</typeparam>
-    /// <returns>The upgrade name/id</returns>
-    public static string TowerSet<T>() where T : ModTowerSet => GetInstance<T>().Id;
-
+    
     /// <inheritdoc />
     public int CompareTo(ModContent other)
     {

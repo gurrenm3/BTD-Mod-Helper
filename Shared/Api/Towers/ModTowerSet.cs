@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Towers;
@@ -10,17 +11,30 @@ namespace BTD_Mod_Helper.Api.Towers;
 public abstract partial class ModTowerSet : NamedModContent
 {
     internal static readonly Dictionary<string, ModTowerSet> Cache = new();
+    internal static int NextTowerSet { get; private set; } = 2 * (int) Enum.GetValues<TowerSet>().Last();
 
     /// <summary>
-    /// ModTowerSets register fourth
+    /// Internal int enum value used for this ModdedTowerSet
+    /// </summary>
+    public int TowerSetInt { get; private set; }
+
+    /// <summary>
+    /// TowerSet enum for this modded TowerSet
+    /// </summary>
+    public TowerSet Set => (TowerSet) TowerSetInt;
+
+    /// <summary>
+    /// ModTowerSets register before ModTowers, alongside ModUpgrades
     /// </summary>
     /// <exclude/>
-    protected sealed override float RegistrationPriority => 4;
+    protected sealed override float RegistrationPriority => 2;
 
     /// <inheritdoc />
     public override void Register()
     {
         Cache[Id] = this;
+        TowerSetInt = NextTowerSet;
+        NextTowerSet *= 2;
     }
         
     /// <summary>

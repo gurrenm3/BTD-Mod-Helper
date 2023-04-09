@@ -34,6 +34,9 @@ internal static class ModHelperGithub
     private const string ZipContentType = "application/zip";
     private const string ZipContentType2 = "application/x-zip-compressed";
 
+    internal static readonly string[] AllContentTypes =
+        {DllContentType, DllContentType2, DllContentType3, ZipContentType, ZipContentType2};
+
     private const string GenericSorry =
         "Please try again at a later time. If issues stil persist for this mod and not others, contact the mod developer.";
 

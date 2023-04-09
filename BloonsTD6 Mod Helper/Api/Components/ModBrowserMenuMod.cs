@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.UI.BTD6;
 using BTD_Mod_Helper.UI.Menus;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
@@ -177,7 +178,7 @@ internal static class ModBrowserMenuModExt
     public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
     {
         mod.modName = modHelperData.Name;
-        mod.Homepage.Button.SetOnClick(() => ProcessHelper.OpenURL(modHelperData.ReadmeUrl!));
+        mod.Homepage.Button.SetOnClick(() => EmbeddedBrowser.OpenURL(modHelperData.ReadmeUrl!));
         mod.Description.Text.SetText(modHelperData.DisplayDescription);
         mod.InfoButton.Button.SetOnClick(() =>
         {

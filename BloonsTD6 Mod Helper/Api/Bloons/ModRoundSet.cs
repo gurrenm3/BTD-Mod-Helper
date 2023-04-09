@@ -196,7 +196,7 @@ public abstract class ModRoundSet : NamedModContent
 
     internal RoundSetModel GetDefaultRoundSetModel()
     {
-        var roundSetModel = new RoundSetModel(Id, new Il2CppReferenceArray<RoundModel>(DefinedRounds));
+        var roundSetModel = new RoundSetModel(Id, new Il2CppReferenceArray<RoundModel>(DefinedRounds), false);
 
         var baseRounds = BaseRounds;
         for (var i = 0; i < DefinedRounds; i++)

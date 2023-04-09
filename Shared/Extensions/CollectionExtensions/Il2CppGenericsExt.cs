@@ -186,4 +186,13 @@ public static partial class Il2CppGenericsExt
         list.RemoveAll(new System.Func<TSource, bool>(item => item.IsType<TCast>()));
         return list;
     }
+
+    /// <summary>
+    /// Gets the item at the specified index. Circumvents "ambiguous indexer" warnings
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="index"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T Get<T>(this Il2CppSystem.Collections.Generic.List<T> list, int index) => list._items[index];
 }

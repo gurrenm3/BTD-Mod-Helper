@@ -17,7 +17,7 @@ internal class StandardTowerPurchaseButton_DetermineBackgroundSprite
     }
 }
 
-[HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.UpdateTowerDisplay))]
+[HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.UpdateDisplay))]
 internal class StandardTowerPurchaseButton_UpdateTowerDisplay
 {
     [HarmonyPostfix]
