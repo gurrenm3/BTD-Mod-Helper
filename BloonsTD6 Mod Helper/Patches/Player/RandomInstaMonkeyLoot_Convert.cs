@@ -13,7 +13,7 @@ internal static class RandomInstaMonkeyLoot_Convert
         DartMonkey, BoomerangMonkey, BombShooter, TackShooter, IceMonkey, GlueGunner,
         SniperMonkey, MonkeySub, MonkeyBuccaneer, MonkeyAce, HeliPilot, MortarMonkey, DartlingGunner,
         WizardMonkey, SuperMonkey, NinjaMonkey, Alchemist, Druid,
-        BananaFarm, SpikeFactory, MonkeyVillage, EngineerMonkey
+        BananaFarm, SpikeFactory, MonkeyVillage, EngineerMonkey, BeastHandler
     };
 
     [HarmonyPrefix]
@@ -21,7 +21,22 @@ internal static class RandomInstaMonkeyLoot_Convert
     {
         if (string.IsNullOrEmpty(__instance.fixedBaseTower))
         {
-            __instance.fixedBaseTower = VanillaTowers[Random.RandomRangeInt(0, VanillaTowers.Length)];
+            if (InGame.instance.GetGameModel().gameMode == "PrimaryOnly")
+            {
+                __instance.fixedBaseTower = VanillaTowers[Random.RandomRangeInt(0, 6)];
+            }
+            else if (InGame.instance.GetGameModel().gameMode == "MilitaryOnly")
+            {
+                __instance.fixedBaseTower = VanillaTowers[Random.RandomRangeInt(7, 13)];
+            }
+            else if (InGame.instance.GetGameModel().gameMode == "MagicOnly")
+            {
+                __instance.fixedBaseTower = VanillaTowers[Random.RandomRangeInt(14, 18)];
+            }
+            else
+            {
+                __instance.fixedBaseTower = VanillaTowers[Random.RandomRangeInt(0, VanillaTowers.Length)];
+            }
         }
     }
 }
