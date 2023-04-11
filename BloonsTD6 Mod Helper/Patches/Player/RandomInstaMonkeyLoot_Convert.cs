@@ -1,6 +1,7 @@
 using Il2CppAssets.Scripts.Models.Store.Loot;
 using UnityEngine;
 using static Il2CppAssets.Scripts.Models.Towers.TowerType;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(RandomInstaMonkeyLoot), nameof(RandomInstaMonkeyLoot.Convert))]
