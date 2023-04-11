@@ -1,2 +1,4 @@
-- Recompiled and fixed patches for BTD6 v36.0
-- Added new VanillaSprites references for v36.0 images
+- Regenerated UpgradeType constants for v36
+- Fixed the ModTower Instas blocker not knowing about Beast Handlers and ignoring Primary/Military/Magic only (thanks @Jonyboylovespie)
+- Added a stopgap patch onto `Il2CppDetourMethodPatcher_RaiseException` to make "During invoking native->managed trampoline" errors also print their full exceptions
+  - This will eventually be removed once MelonLoader fixes it

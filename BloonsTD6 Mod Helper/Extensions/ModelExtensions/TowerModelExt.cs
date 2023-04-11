@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
@@ -247,4 +248,12 @@ public static partial class TowerModelExt
     /// <returns></returns>
     public static string GetTowerSet(this TowerModel towerModel) =>
         towerModel.GetModTower()?.ModTowerSet?.Id ?? towerModel.towerSet.ToString();
+
+    /// <summary>
+    /// Gets whether a Tower/Hero is a base one added by the vanilla game.
+    /// </summary>
+    public static bool IsVanillaTower(this TowerModel towerModel) =>
+        VanillaSprites.ByName.ContainsKey(towerModel.IsHero()
+            ? "HeroIcon" + towerModel.baseId
+            : towerModel.baseId + "000");
 }

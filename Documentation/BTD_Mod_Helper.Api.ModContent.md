@@ -1436,28 +1436,6 @@ The bottom path tier
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 The tower name/id
 
-<a name='BTD_Mod_Helper.Api.ModContent.TowerSet_T_()'></a>
-
-## ModContent.TowerSet<T>() Method
-
-Gets the internal tower set id for a given TowerSet
-
-```csharp
-public static string TowerSet<T>()
-    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.TowerSet_T_().T'></a>
-
-`T`
-
-The ModUpgrade type
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The upgrade name/id
-
 <a name='BTD_Mod_Helper.Api.ModContent.TryFind_T_(string,T)'></a>
 
 ## ModContent.TryFind<T>(string, T) Method

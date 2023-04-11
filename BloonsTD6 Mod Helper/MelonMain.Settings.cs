@@ -207,10 +207,10 @@ internal partial class MelonMain
 
     private static readonly ModSettingCategory Debug = new("Debug");
 
-    private static readonly ModSettingFile VanillaSpritesClass = new("")
+    private static readonly ModSettingFolder ModHelperSourceFolder = new("")
     {
         category = Debug,
-        description = "Location of the VanillaSprites.cs to generate to"
+        description = "Location of Mod Helper Source code"
     };
 
     private static readonly ModSettingFolder AssetStudioDump = new("")
@@ -221,14 +221,30 @@ internal partial class MelonMain
 
     private static readonly ModSettingButton GenerateVanillaSprites = new(() =>
     {
-        if (!string.IsNullOrEmpty(VanillaSpritesClass) && !string.IsNullOrEmpty(AssetStudioDump))
+        if (!string.IsNullOrEmpty(ModHelperSourceFolder) && !string.IsNullOrEmpty(AssetStudioDump))
         {
-            VanillaSpriteGenerator.GenerateVanillaSprites(VanillaSpritesClass, AssetStudioDump);
+            VanillaSpriteGenerator.GenerateVanillaSprites(
+                Path.Combine(ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums", "VanillaSprites.cs"),
+                AssetStudioDump);
         }
     })
     {
         category = Debug,
         description = "Generates the VanillaSprites.cs file based on the previous two settings",
+        buttonText = "Generate"
+    };
+
+    private static readonly ModSettingButton GenerateUpgradeTypes = new(() =>
+    {
+        if (!string.IsNullOrEmpty(ModHelperSourceFolder))
+        {
+            var csFie = Path.Combine(ModHelperSourceFolder, "Shared", "Api", "Enums", "UpgradeType.cs");
+            UpgradeTypeGenerator.GenerateVanillaUpgradeTypes(csFie);
+        }
+    })
+    {
+        category = Debug,
+        description = "Generates the UpgradeType.cs file",
         buttonText = "Generate"
     };
 

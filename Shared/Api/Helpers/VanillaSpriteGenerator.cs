@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 namespace BTD_Mod_Helper.Api.Helpers;
 
-internal class VanillaSpriteGenerator
+internal static class VanillaSpriteGenerator
 {
-    private const string Tab = "    ";
-
     // Some names map to multiple Sprites. Keep them sorted by their guid so that they'll always be given the same number
     internal static readonly Dictionary<string, SortedSet<string>> SpriteReferences = new();
 
@@ -49,14 +47,18 @@ internal class VanillaSpriteGenerator
 
         using (var vanillaSpritesFile = new StreamWriter(vanillaSpritesCs))
         {
-            vanillaSpritesFile.WriteLine("using Il2CppAssets.Scripts.Utils;");
-            vanillaSpritesFile.WriteLine("using System.Collections.Generic;");
-            vanillaSpritesFile.WriteLine("");
-            vanillaSpritesFile.WriteLine("#pragma warning disable CS1591");
-            vanillaSpritesFile.WriteLine("namespace BTD_Mod_Helper.Api.Enums");
-            vanillaSpritesFile.WriteLine("{");
-            vanillaSpritesFile.WriteLine($"{Tab}public static class VanillaSprites");
-            vanillaSpritesFile.WriteLine($"{Tab}{{");
+            vanillaSpritesFile.WriteLine(
+                """
+                using Il2CppAssets.Scripts.Utils;
+                using System.Collections.Generic;
+
+                #pragma warning disable CS1591
+                namespace BTD_Mod_Helper.Api.Enums;
+                    
+                public static class VanillaSprites
+                {
+                """
+            );
 
             foreach (var (name, guids) in SpriteReferences)
             {
@@ -65,7 +67,9 @@ internal class VanillaSpriteGenerator
                 {
                     var realName = name + (i > 1 ? i.ToString() : "");
                     vanillaSpritesFile.WriteLine(
-                        $"{Tab}{Tab}public const string {realName} = \"{guid}\";"
+                        $"""
+                            public const string {realName} = "{guid}";
+                        """
                     );
                     i++;
                     realNames.Add(realName);
@@ -73,19 +77,30 @@ internal class VanillaSpriteGenerator
             }
 
             vanillaSpritesFile.WriteLine();
-            vanillaSpritesFile.WriteLine($"{Tab}{Tab}public static readonly Dictionary<string, string> ByName;");
-            vanillaSpritesFile.WriteLine($"{Tab}{Tab}static VanillaSprites()");
-            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{{");
-            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}ByName = new Dictionary<string, string>");
-            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}{{");
+            vanillaSpritesFile.WriteLine(
+                """
+                    public static readonly Dictionary<string, string> ByName;
+                    static VanillaSprites()
+                    {
+                        ByName = new Dictionary<string, string>
+                        {
+                """
+            );
             foreach (var realName in realNames)
             {
-                vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}{Tab}[\"{realName}\"] = {realName},");
+                vanillaSpritesFile.WriteLine(
+                    $"""
+                                ["{realName}"] = {realName},
+                    """
+                );
             }
-            vanillaSpritesFile.WriteLine($"{Tab}{Tab}{Tab}}};");
-            vanillaSpritesFile.WriteLine($"{Tab}{Tab}}}");
-            vanillaSpritesFile.WriteLine($"{Tab}}}");
-            vanillaSpritesFile.WriteLine("}");
+            vanillaSpritesFile.WriteLine(
+                """
+                        };
+                    }
+                }
+                """
+            );
         }
 
         SpriteReferences.Clear();

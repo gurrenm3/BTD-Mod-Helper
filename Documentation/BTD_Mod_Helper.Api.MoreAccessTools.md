@@ -20,7 +20,7 @@ Safely gets the MethodInfo for a method within a nested class. This is recommend
 directly targeting it with typeof and nameof because the nested class names can change randomly.
 
 ```csharp
-public static System.Reflection.MethodInfo SafeGetNestedClassMethod(System.Type outerType, string nestedTypeName, string methodName, int index=0);
+public static System.Reflection.MethodInfo SafeGetNestedClassMethod(System.Type outerType, string nestedTypeName, string methodName="MoveNext", int index=0);
 ```
 #### Parameters
 

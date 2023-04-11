@@ -413,6 +413,24 @@ public static TowerPurchaseButton GetTowerPurchaseButton(this TowerModel towerMo
 #### Returns
 [Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton 'Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetTowerSet(thisTowerModel)'></a>
+
+## TowerModelExt.GetTowerSet(this TowerModel) Method
+
+Gets the tower set (vanilla or modded) of this tower in the form of a string
+
+```csharp
+public static string GetTowerSet(this TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetTowerSet(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetUpgrade(thisTowerModel,int,int)'></a>
 
 ## TowerModelExt.GetUpgrade(this TowerModel, int, int) Method
