@@ -358,4 +358,45 @@ internal partial class ModHelperData
 
         return Enumerable.Empty<ModHelperData>();
     }
+
+    private string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
+
+    public List<ModHelperData> FindDependencies(List<ModHelperData> ignored = null)
+    {
+        if (string.IsNullOrEmpty(Dependencies)) return new List<ModHelperData>();
+
+        var list = new List<ModHelperData>();
+        try
+        {
+            foreach (var dependency in Dependencies.Split(","))
+            {
+                try
+                {
+                    var data = ModHelperGithub.Mods.FirstOrDefault(data => data.Identifier == dependency);
+
+                    if (data != null &&
+                        !data.ModInstalledLocally(out _) &&
+                        (ignored == null || !ignored.Contains(data)))
+                    {
+                        list.Add(data);
+                        list.AddRange(data.FindDependencies(list));
+                    }
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Warning($"Problem with dependency list {dependency}");
+                    ModHelper.Warning(e);
+                }
+            }
+
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Problem with dependencies list {Dependencies}");
+            ModHelper.Warning(e);
+        }
+
+        return list;
+    }
+
 }

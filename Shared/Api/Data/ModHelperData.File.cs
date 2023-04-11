@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Linq;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api;
@@ -92,5 +94,30 @@ internal partial class ModHelperData
         }
 
         return false;
+    }
+
+    public void WarningsFromDisabling(Action reEnable)
+    {
+        if (Mod is MelonMain)
+        {
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
+                "Disabling Mod Helper will mean you will no longer see this mods menu. " +
+                "You would have to manually re-enable this / any other mods by dragging their .dll files " +
+                "out of the Disabled folder within your mods directory.", null, "Ok",
+                reEnable, "Re-enable", Popup.TransitionAnim.Scale));
+        }
+        else
+        {
+            var dependents = FindDependents();
+
+            if (dependents.Any())
+            {
+                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
+                    $"The following enabled mods list this mod as a dependency, and may not function without it: {dependents.Select(data => data.DisplayName).Join()}",
+                    null, "Ok",
+                    reEnable,
+                    "Re-enable", Popup.TransitionAnim.Scale));
+            }
+        }
     }
 }

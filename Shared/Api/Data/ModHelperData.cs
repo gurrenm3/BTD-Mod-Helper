@@ -60,6 +60,7 @@ internal partial class ModHelperData
     public bool SquareIcon { get; protected set; }
     public string ExtraTopics { get; protected set; }
     public string WorksOnVersion { get; protected set; }
+    public string Dependencies { get; protected set; }
 
     /// <summary>
     /// The currently active mod that this is associated with, if any
@@ -306,4 +307,8 @@ internal partial class ModHelperData
             }
         }
     }
+    
+    public List<ModHelperData> FindDependents() => Active
+        .Where(data => this != data && (data.Dependencies ?? "").Contains(Identifier))
+        .ToList();
 }

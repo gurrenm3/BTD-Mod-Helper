@@ -127,7 +127,7 @@ internal static class ModsMenuModExt
         mod.toggleMod = new Action(() =>
         {
             if (modHelperData.Mod is MelonMain) return;
-                
+
             switch (modHelperData.Enabled)
             {
                 case false:
@@ -135,6 +135,7 @@ internal static class ModsMenuModExt
                     break;
                 case true:
                     modHelperData.MoveToDisabledModsFolder();
+                    modHelperData.WarningsFromDisabling(() => modHelperData.MoveToEnabledModsFolder());
                     break;
             }
             mod.Refresh(modHelperData);

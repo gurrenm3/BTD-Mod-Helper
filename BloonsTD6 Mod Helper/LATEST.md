@@ -2,3 +2,6 @@
 - Fixed the ModTower Instas blocker not knowing about Beast Handlers and ignoring Primary/Military/Magic only (thanks @Jonyboylovespie)
 - Added a stopgap patch onto `Il2CppDetourMethodPatcher_RaiseException` to make "During invoking native->managed trampoline" errors also print their full exceptions
   - This will eventually be removed once MelonLoader fixes it
+- Fixed internal GitHub API pagination, aka there should be less mods slipping through the cracks and sometimes not being shown in the Mod Browser
+- Added a "Dependencies" field to ModHelperData, letting modders specify a comma separated list of "owner/repository" format GitHub mod dependencies
+  - When a user first downloads a mod, they will be prompted to also download the dependencies (including dependencies of dependencies)
