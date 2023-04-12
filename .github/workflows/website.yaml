@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-        
+
 jobs:
   website:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
           node-version: "lts/*"
           cache: "yarn"
           cache-dependency-path: 'Website/yarn.lock'
-          
+
       - name: Install
         uses: borales/actions-yarn@v4.2.0
         with:
@@ -31,21 +31,12 @@ jobs:
         with:
           dir: Website
           cmd: build
-          
-      # - name: Deploy
-      #   if: {{github.action_repository}}
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-      #     publish_dir: ./Website/out
 
       - name: Deploy
-        uses: borales/actions-yarn@v4.2.0
-        env:
-          GIT_AUTHOR_NAME: github-actions[bot]
-          GIT_AUTHOR_EMAIL: actions@github.com
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          dir: Website
-          cmd: pages
-          
+          deploy_key: ${{ secrets.GITHUB_TOKEN  }}
+          publish_dir: ./Website/out
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
         
