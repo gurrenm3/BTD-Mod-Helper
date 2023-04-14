@@ -11,7 +11,7 @@ export default () => {
 
   return (
     <MarkdownLayout data={undefined} noTitle={true}>
-      <div style={{ height: 500 }} />
+      <div />
     </MarkdownLayout>
   );
 };

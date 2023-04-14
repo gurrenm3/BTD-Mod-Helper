@@ -47,5 +47,15 @@ export const getStaticProps = async ({
 };
 
 export default ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <MarkdownLayout data={data} />
+  <>
+    <style jsx global>{`
+      td {
+        overflow-wrap: anywhere;
+      }
+      h2 {
+        overflow-wrap: anywhere;
+      }
+    `}</style>
+    <MarkdownLayout data={data} />
+  </>
 );

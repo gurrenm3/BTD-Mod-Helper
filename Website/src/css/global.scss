@@ -71,3 +71,10 @@ h2 {
 h3 {
   margin-bottom: .75rem;
 }
+
+@media (max-width: 768px) {
+  p {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}

@@ -11,7 +11,12 @@ import rehypeRewrite from "rehype-rewrite";
 import { RootContent } from "hast";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
-import { toc } from "@jsdevtools/rehype-toc";
+import {
+  HtmlElementNode,
+  Options,
+  TextNode,
+  toc,
+} from "@jsdevtools/rehype-toc";
 import { Parent } from "unist";
 import rehypeRaw from "rehype-raw";
 
@@ -90,7 +95,33 @@ export const getMarkdownContent = async (file) => {
   const processedTableOfContents = await remark()
     .use(remarkRehype)
     .use(rehypeSlug)
-    .use(toc)
+    .use(toc, {
+      customizeTOCItem: (node) => {
+        const anchor = node.children.find(
+          (value) =>
+            value.type === "element" &&
+            (value as HtmlElementNode).tagName === "a"
+        ) as HtmlElementNode | undefined;
+        if (!anchor) return true;
+
+        const text = anchor.children?.find((value) => value.type === "text") as
+          | TextNode
+          | undefined;
+        if (!text || !text.value || text.value.length < 50) return true;
+
+        if (text.value.includes(":")) {
+          text.value =
+            text.value.substring(0, text.value.indexOf(":") + 1) + " ...";
+        }
+
+        if (text.value.includes("!")) {
+          text.value =
+            text.value.substring(0, text.value.indexOf("!") + 1) + " ...";
+        }
+
+        return true;
+      },
+    } as Options)
     .use(() => (tree: Parent) => tree.children[0])
     .use(rehypeStringify)
     .process(matterResult.content);

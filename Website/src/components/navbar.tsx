@@ -44,7 +44,10 @@ export const ModHelperNavBar: FunctionComponent = () => {
       className={`p-2 my-${switchSize}-4 main-black-panel`}
     >
       <Navbar variant={"dark"} expand={"md"} className={"luckiest-guy p-0"}>
-        <NavbarBrand href={"/"} className={"py-0"}>
+        <NavbarBrand
+          href={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/"}
+          className={"py-0"}
+        >
           <Image
             src={Logo}
             alt={"Mod Helper logo"}
@@ -54,7 +57,7 @@ export const ModHelperNavBar: FunctionComponent = () => {
           />
         </NavbarBrand>
         <NavbarBrand
-          href={"/"}
+          href={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/"}
           className={"text-outline-black text-white fs-3 py-0 me-auto"}
         >
           BTD Mod Helper
