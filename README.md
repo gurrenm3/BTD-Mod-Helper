@@ -1,6 +1,6 @@
 <a href="https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest/download/Btd6ModHelper.dll">
-    <img align="left" alt="Icon" height="90" src="BloonsTD6%20Mod%20Helper/Icon.png">
-    <img align="right" alt="Download" height="75" src="https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/master/BloonsTD6%20Mod%20Helper/Resources/DownloadBtn.png">
+    <img id="mod-icon" align="left" alt="Icon" height="90" src="https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/master/BloonsTD6%20Mod%20Helper/Icon.png">
+    <img id="download-icon" align="right" alt="Download" height="75" src="https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/master/BloonsTD6%20Mod%20Helper/Resources/DownloadBtn.png">
 </a>
 
 <h1 align="center">
@@ -8,12 +8,12 @@ BTD Mod Helper
 
 [![total downloads](https://img.shields.io/github/downloads/gurrenm3/BTD-Mod-Helper/total 'total downloads for API')](https://github.com/gurrenm3/BTD-Mod-Helper/releases)
 [![total issues](https://img.shields.io/github/issues/gurrenm3/BTD-Mod-Helper 'total issues for API')](https://github.com/gurrenm3/BTD-Mod-Helper/issues)
-[![code size](https://img.shields.io/github/languages/code-size/gurrenm3/BTD-Mod-Helper 'total code size for API')](https://github.com/gurrenm3/BTD-Mod-Helper/archive/refs/heads/master.zip)
+[![code size](https://img.shields.io/github/stars/gurrenm3/BTD-Mod-Helper 'total stars for API')](https://github.com/gurrenm3/BTD-Mod-Helper/stargazers)
 [![latest release](https://img.shields.io/github/v/tag/gurrenm3/BTD-Mod-Helper 'latest release for API')](https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest)
 
 </h1>
 
-A powerful and easy to use API for modding BTD6, and to a lesser extent BATTD.
+A powerful and easy to use API for modding Bloons Tower Defense 6.
 
 ## Instructions
 

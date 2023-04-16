@@ -1,0 +1,80 @@
+html {
+  font-size: 14px;
+}
+
+body {
+  background-color: rgba(0, 0, 0, .66);
+}
+
+pre {
+  word-wrap: normal;
+}
+
+pre code.hljs {
+  border-radius: .5rem;
+}
+
+ol, ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+ol > li > ol {
+  list-style-type: circle;
+}
+
+ol > li > ol > li > ol {
+  list-style-type: square;
+}
+
+.main-black-panel {
+  background: rgba(0, 0, 0, .66) !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.main-black-panel.offcanvas-start.show {
+  border-radius: 0 1rem 0 1rem;
+}
+
+.main-black-panel.offcanvas-end.show {
+   border-radius: 1rem 0 1rem 0;
+ }
+
+@media (min-width: 1200px) {
+  .main-black-panel {
+    border-radius: 1rem;
+  }
+}
+
+.toc-link {
+  color: white !important;
+}
+
+.toc-item {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+img#mod-icon {
+  margin-top: -.75rem;
+  margin-left: -.5rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+h3 {
+  margin-bottom: .75rem;
+}
+
+@media (max-width: 768px) {
+  p {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}

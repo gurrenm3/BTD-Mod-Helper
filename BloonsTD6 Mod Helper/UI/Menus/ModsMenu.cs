@@ -596,15 +596,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             SetSelectedMod(selectedMod);
             SortMods(currentSort);
             MenuManager.instance.buttonClickSound.Play("ClickSounds");
-            if (selectedMod.Mod is MelonMain)
-            {
-                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
-                    "Disabling Mod Helper will mean you will no longer see this mods menu. " +
-                    "You would have to manually re-enable this / any other mods by dragging their .dll files " +
-                    "out of the Disabled folder within your mods directory.", null, "Ok",
-                    new Action(EnableSelectedMod),
-                    "Re-enable", Popup.TransitionAnim.Scale));
-            }
+            selectedMod.WarningsFromDisabling(EnableSelectedMod);
         }
     }
 

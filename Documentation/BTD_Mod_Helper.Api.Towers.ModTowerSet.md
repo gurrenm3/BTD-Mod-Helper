@@ -154,6 +154,32 @@ public virtual SpriteReference PortraitReference { get; }
 
 #### Property Value
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Set'></a>
+
+## ModTowerSet.Set Property
+
+TowerSet enum for this modded TowerSet
+
+```csharp
+public TowerSet Set { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.TowerSetInt'></a>
+
+## ModTowerSet.TowerSetInt Property
+
+Internal int enum value used for this ModdedTowerSet
+
+```csharp
+public int TowerSetInt { get; set; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.GetTowerSetIndex(System.Collections.Generic.List_TowerSet_)'></a>

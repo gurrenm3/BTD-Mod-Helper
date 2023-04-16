@@ -1,0 +1,42 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          cache: "yarn"
+          cache-dependency-path: 'Website/yarn.lock'
+
+      - name: Install
+        uses: borales/actions-yarn@v4.2.0
+        with:
+          dir: Website
+          cmd: install --frozen-lockfile
+
+      - name: Build
+        uses: borales/actions-yarn@v4.2.0
+        with:
+          dir: Website
+          cmd: build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Website/out
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+        

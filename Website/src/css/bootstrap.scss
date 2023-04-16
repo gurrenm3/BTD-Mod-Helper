@@ -1,0 +1,59 @@
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+$body-color: white;
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px,
+        xxxl: 1800px
+);
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark,
+        "gray": $gray-500
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+@media (max-width: 1399.9px) {
+  .rounded-xl-0 {
+    border-radius: 0 !important;
+  }
+}
+
+@media (max-width: 1799.9px) {
+  .rounded-xxl-0 {
+    border-radius: 0 !important;
+  }
+}
+
+.fs-smaller {
+  font-size: smaller !important;
+}
+
+.w-max-content {
+  width: max-content !important;
+}
+
+.text-outline-black {
+  -webkit-text-stroke: .1rem black;
+  text-stroke: .1rem black;
+}
+
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere !important;
+}

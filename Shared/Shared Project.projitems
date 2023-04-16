@@ -58,7 +58,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ProcessHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\ResourceHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\VanillaSpriteGenerator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\VanillaTypeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Api\Helpers\UpgradeTypeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\IModContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\JsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Api\ModByteLoader.cs" />
