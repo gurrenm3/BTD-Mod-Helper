@@ -2,13 +2,11 @@ import React, {
   createContext,
   forwardRef,
   PropsWithChildren,
-  useContext,
   useEffect,
   useState,
 } from "react";
 import maps from "../data/maps.json";
 import { useUpdateEffect } from "react-use";
-import { ScrollBarsContext } from "./layout";
 import { positionValues } from "react-custom-scrollbars-2";
 
 export const BackgroundContext = createContext([
@@ -21,7 +19,6 @@ export const backgroundOnScroll = (
   background: HTMLDivElement
 ) => {
   const style = background.style;
-  const aspectRatio = clientWidth / clientHeight;
   const factor = scrollHeight / clientHeight;
 
   if (factor <= 1) {
@@ -29,11 +26,13 @@ export const backgroundOnScroll = (
     return;
   }
 
+  const aspectRatio = clientWidth / clientHeight;
   const maxEffectiveBgHeight = (9 * clientWidth) / 16;
+  const offset = (maxEffectiveBgHeight - clientHeight) * top;
 
-  const offset = (maxEffectiveBgHeight - clientHeight) * (top - 0.5);
-
-  if (aspectRatio < 16 / 9) {
+  if (offset < 0) {
+    style.backgroundPositionY = `0`;
+  } else if (aspectRatio < 16 / 9) {
     style.backgroundPositionY = `${offset}px`;
   } else {
     style.backgroundPositionY = `${-offset}px`;
@@ -42,7 +41,6 @@ export const backgroundOnScroll = (
 
 const BackgroundImage = forwardRef<HTMLDivElement, PropsWithChildren>(
   ({ children }, ref) => {
-    const scrollBars = useContext(ScrollBarsContext);
     const [map, setMap] = useState("workshop");
 
     useEffect(() => {
@@ -62,8 +60,9 @@ const BackgroundImage = forwardRef<HTMLDivElement, PropsWithChildren>(
             position: "fixed",
             left: 0,
             right: 0,
-            zIndex: -1,
+            zIndex: -100,
             backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_PATH}/images/BTD6/Maps/${maps[map]}.png)`,
+            backgroundRepeat: "no-repeat",
             filter: "blur(5px)",
             transform: "scale(1.1)",
             height: "100%",

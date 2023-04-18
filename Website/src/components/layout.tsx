@@ -72,32 +72,18 @@ const Layout: FunctionComponent<LayoutProps> = ({
   ...props
 }) => {
   const height = use100vh() ?? 1000;
-  const scrollbars = useRef<Scrollbars>(null);
-  const background = useRef<HTMLDivElement>(null);
 
   return (
-    <>
-      <ModHelperScrollBars
-        ref={scrollbars}
-        autoHeightMax={height}
-        onUpdate={(values) => backgroundOnScroll(values, background.current!)}
-      >
-        <ScrollBarsContext.Provider value={scrollbars.current}>
-          <div
-            className={cx("d-flex flex-column", className)}
-            style={{ minHeight: height, ...style }}
-            {...props}
-          >
-            <SkipLink />
-            <BackgroundImage ref={background}>
-              <ModHelperNavBar />
-              {children}
-              <ModHelperFooter backToTop={backToTop} />
-            </BackgroundImage>
-          </div>
-        </ScrollBarsContext.Provider>
-      </ModHelperScrollBars>
-    </>
+    <div
+      className={cx("d-flex", "flex-column", className)}
+      style={{ minHeight: height, ...style }}
+      {...props}
+    >
+      <SkipLink />
+      <ModHelperNavBar />
+      {children}
+      <ModHelperFooter backToTop={backToTop} />
+    </div>
   );
 };
 

@@ -26,15 +26,16 @@ import { BackgroundContext } from "./background-image";
 import { List } from "react-bootstrap-icons";
 
 const ModHelperNavItem: FunctionComponent<
-  NavLinkProps & LinkProps & { path: string }
-> = ({ path, title, href, disabled, children, ...props }) => (
+  Omit<NavLinkProps, "active"> & LinkProps & { path: string; active?: string }
+> = ({ path, title, href, disabled, children, active, ...props }) => (
   <NavItem data-toggle="tooltip" title={title}>
     <NavLink
       as={Link}
       href={href}
       disabled={disabled}
       active={
-        !disabled && (href === "/" ? href === path : path.startsWith(href))
+        !disabled &&
+        (href === "/" ? href === path : path.startsWith(active || href))
       }
       className={"text-outline-black fs-3 py-0"}
       {...props}
@@ -105,10 +106,14 @@ export const ModHelperNavBar: FunctionComponent = () => {
             <ModHelperNavItem path={path} href={"/"}>
               Home
             </ModHelperNavItem>
-            <ModHelperNavItem path={path} href={"/wiki"}>
+            <ModHelperNavItem path={path} href={"/wiki/Home"} active={"/wiki"}>
               Wiki
             </ModHelperNavItem>
-            <ModHelperNavItem path={path} href={"/docs"}>
+            <ModHelperNavItem
+              path={path}
+              href={"/docs/README"}
+              active={"/docs"}
+            >
               Docs
             </ModHelperNavItem>
             {/*<ModHelperNavItem path={path} href={""} disabled={true}>

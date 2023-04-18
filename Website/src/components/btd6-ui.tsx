@@ -1,5 +1,31 @@
+import { useEffect } from "react";
+
+const Themes = ["light", "dark"];
+const DefaultTheme = "light";
+
 export const Btd6Styles = () => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+
+  useEffect(() => {
+    let theme = DefaultTheme;
+
+    //local storage is used to override OS theme settings
+    if (localStorage.getItem("theme")) {
+      theme = localStorage.getItem("theme")!;
+    } else if (
+      "watchMedia" in window &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      //OS theme setting detected as dark
+      theme = "dark";
+    }
+
+    if (!Themes.includes(theme)) {
+      theme = DefaultTheme;
+    }
+
+    document.documentElement.setAttribute("data-theme", theme);
+  }, []);
 
   return (
     <>
