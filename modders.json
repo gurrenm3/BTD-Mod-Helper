@@ -25,6 +25,9 @@
   "banned": [
     "Interesting-exe"
   ],
+  "bannedMods" : [
+    "Jonyboylovespie/EverythingIsFree"
+  ],
   "topics": [
     "new-towers",
     "new-heroes",

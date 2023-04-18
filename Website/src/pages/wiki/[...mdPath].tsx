@@ -10,7 +10,7 @@ import {
   getMarkdownPaths,
   toMdPath,
 } from "../../lib/markdown";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MarkdownLayout } from "../../components/markdown-layout";
 
 const wikiDirectory = path.join(process.cwd(), "..", "Wiki");

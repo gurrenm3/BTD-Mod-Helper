@@ -1,4 +1,4 @@
-##### [Home](/wiki)
+##### [Home](/wiki/Home)
 
 ###### Starting BTD Modding
 

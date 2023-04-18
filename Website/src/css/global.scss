@@ -1,9 +1,16 @@
+@use "sass:meta";
+
 html {
   font-size: 14px;
 }
 
 body {
   background-color: rgba(0, 0, 0, .66);
+}
+
+.text-outline-black {
+  -webkit-text-stroke: .1rem black;
+  text-stroke: .1rem black;
 }
 
 pre {
@@ -27,23 +34,32 @@ ol > li > ol > li > ol {
   list-style-type: square;
 }
 
-.main-black-panel {
-  background: rgba(0, 0, 0, .66) !important;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+.main-panel {
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  min-width: 0;
 }
 
-.main-black-panel.offcanvas-start.show {
+[data-theme="dark"] .main-panel {
+  background: rgba(0, 0, 0, .66) !important;
+}
+
+.main-panel.offcanvas-start.show {
   border-radius: 0 1rem 0 1rem;
 }
 
-.main-black-panel.offcanvas-end.show {
-   border-radius: 1rem 0 1rem 0;
- }
+.main-panel.offcanvas-end.show {
+  border-radius: 1rem 0 1rem 0;
+}
 
-@media (min-width: 1200px) {
-  .main-black-panel {
+@media (min-width: 992px) {
+  .main-panel {
     border-radius: 1rem;
   }
+}
+
+[data-theme="dark"] .non-main-panel {
+  border: 1px solid white;
+  border-radius: 1rem;
 }
 
 .toc-link {
@@ -72,9 +88,63 @@ h3 {
   margin-bottom: .75rem;
 }
 
-@media (max-width: 768px) {
-  p {
-    overflow-x: scroll;
-    overflow-y: hidden;
+img {
+  max-width: 100%;
+}
+
+html[data-theme="light"] {
+  @include meta.load-css("highlight.js/styles/tomorrow-night-blue");
+}
+
+html[data-theme="dark"] {
+  @include meta.load-css("highlight.js/styles/github-dark");
+}
+
+.dark-mode-switch:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+// Landscaper
+@media (min-aspect-ratio: 16/9) {
+  .dynamic-background {
+    background-size: 100vw calc(9 / 16 * 100vw);
+    background-position: center;
   }
+}
+
+// Portraiter
+@media (max-aspect-ratio: 16/9) {
+  .dynamic-background {
+    background-size: calc(16 / 9 * 100vh) 100vh;
+    background-position: center;
+  }
+}
+
+input::placeholder {
+  color: lightgray !important;
+}
+
+.fs-smaller {
+  font-size: smaller;
+}
+
+.fs-larger {
+  font-size: larger;
+}
+
+.modal-xl#selectedMod h1 {
+}
+
+.modal-xl#selectedMod h1, .modal-xl#selectedMod h2, .modal-xl#selectedMod h3,
+.modal-xl#selectedMod h4, .modal-xl#selectedMod h5, .modal-xl#selectedMod h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: var(--base-text-weight-semibold, 600);
+  line-height: 1.25;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.nav-link {
+  user-select: none;
 }

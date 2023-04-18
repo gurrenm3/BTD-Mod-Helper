@@ -45,6 +45,7 @@ internal static class ModHelperGithub
     public static readonly HashSet<string> VerifiedModders = new();
     public static readonly HashSet<string> BannedModders = new();
     public static readonly HashSet<string> VerifiedTopics = new();
+    public static readonly HashSet<string> BannedMods = new();
     private static bool ForceVerifiedOnly { get; set; }
 
     public static GitHubClient Client { get; private set; }
@@ -60,6 +61,7 @@ internal static class ModHelperGithub
     public static bool ModIsVisible(this ModHelperData data) =>
         data.RepoName != ModHelper.RepoName &&
         !BannedModders.Contains(data.RepoOwner) &&
+        !BannedMods.Contains(data.Identifier) &&
         (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)) &&
         (!MelonMain.HideBrokenMods || !data.ModIsBroken());
 
@@ -129,6 +131,11 @@ internal static class ModHelperGithub
             foreach (var jToken in jobject.GetValue("banned")!)
             {
                 BannedModders.Add(jToken.ToObject<string>());
+            }
+            
+            foreach (var jToken in jobject.GetValue("bannedMods")!)
+            {
+                BannedMods.Add(jToken.ToObject<string>());
             }
 
             if (jobject.ContainsKey("topics"))

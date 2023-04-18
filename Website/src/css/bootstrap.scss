@@ -1,4 +1,3 @@
-
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 
@@ -28,32 +27,20 @@ $theme-colors: (
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: gray;
+}
 
-@media (max-width: 1399.9px) {
-  .rounded-xl-0 {
-    border-radius: 0 !important;
+[data-theme="light"] {
+  --bs-link-color: #0000FF;
+}
+
+.fs-5 {
+   font-size: calc(1.25rem + .2vw) !important;
+ }
+
+@media (min-width: 1200px) {
+  .fs-5 {
+    font-size: 1.5rem !important;
   }
-}
-
-@media (max-width: 1799.9px) {
-  .rounded-xxl-0 {
-    border-radius: 0 !important;
-  }
-}
-
-.fs-smaller {
-  font-size: smaller !important;
-}
-
-.w-max-content {
-  width: max-content !important;
-}
-
-.text-outline-black {
-  -webkit-text-stroke: .1rem black;
-  text-stroke: .1rem black;
-}
-
-.overflow-wrap-anywhere {
-  overflow-wrap: anywhere !important;
 }
