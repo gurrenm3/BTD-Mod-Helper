@@ -19,6 +19,7 @@ import rehypeReact, { Options } from "rehype-react";
 import Link from "next/link";
 import { getMarkdownContent } from "../lib/markdown";
 import { htmlToReact } from "./markdown";
+import ModHelperHelmet from "./helmet";
 
 const ModHelperOffCanvas: FunctionComponent<
   PropsWithChildren<{
@@ -59,11 +60,12 @@ interface MarkdownLayoutProps {
   sidebar?: Awaited<ReturnType<typeof getMarkdownContent>>;
   noToc?: boolean;
   noTitle?: boolean;
+  description?: string;
 }
 
 export const MarkdownLayout: FunctionComponent<
   PropsWithChildren<MarkdownLayoutProps>
-> = ({ data, sidebar, noToc, noTitle, children }) => {
+> = ({ data, sidebar, noToc, noTitle, description, children }) => {
   const hasToc = !noToc && data?.tableOfContentsHtml?.includes("li");
   const [showToc, setShowToc] = useState(false);
   const [showWiki, setShowWiki] = useState(false);
@@ -88,9 +90,9 @@ export const MarkdownLayout: FunctionComponent<
 
   return (
     <Layout>
-      <Helmet
-        {...(data?.title ? { title: data.title } : {})}
-        meta={[{ name: "description", content: data?.description }]}
+      <ModHelperHelmet
+        title={data?.title}
+        description={data?.description ?? description}
       />
       <div className={`d-flex flex-grow-1`}>
         <div

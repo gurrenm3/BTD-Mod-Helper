@@ -54,6 +54,12 @@ export const getStaticProps = async ({
 export default ({
   data,
   sidebar,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <MarkdownLayout data={data} sidebar={sidebar} />;
-};
+}: InferGetStaticPropsType<typeof getStaticProps>) => (
+  <MarkdownLayout
+    data={data}
+    sidebar={sidebar}
+    description={
+      "Wiki for the modding api for BloonsTD6. Learn how to download, install and make BTD6 mods."
+    }
+  />
+);

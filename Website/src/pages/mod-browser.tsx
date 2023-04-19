@@ -57,6 +57,7 @@ import WarningSign from "public/images/BTD6/WarningSign.png";
 import Image from "next/image";
 import { MainContentMarker } from "../components/skip-link";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import ModHelperHelmet from "../components/helmet";
 
 enum SortingMethod {
   RecentlyUpdated = "Recently Updated",
@@ -252,6 +253,12 @@ export default () => {
       style={{ height: height }}
       backToTop={() => scrollbars.current?.scrollTop(0)}
     >
+      <ModHelperHelmet
+        title={"BTD6 Mod Browser"}
+        description={
+          "Browse, search and download mods for BTD6 using BTD Mod Helper."
+        }
+      />
       <Container
         fluid={switchSize}
         className={`d-flex flex-column main-panel btd6-panel blue flex-1 gap-2`}

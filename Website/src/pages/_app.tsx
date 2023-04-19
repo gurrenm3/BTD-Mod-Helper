@@ -17,6 +17,10 @@ import { ModHelperFooter, ModHelperNavBar } from "../components/navbar";
 import { ModHelperScrollBars, ScrollBarsContext } from "../components/layout";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
+const DefaultTitle = "BTD Mod Helper";
+const DefaultDescription =
+  "Home of the modding api for BloonsTD6. Learn how to download, install and make BTD6 mods.";
+
 export default ({ Component, pageProps }: AppProps) => {
   const height = use100vh() ?? 1000;
   const scrollbars = useRef<Scrollbars>(null);
@@ -25,7 +29,7 @@ export default ({ Component, pageProps }: AppProps) => {
   return (
     <SSRProvider>
       <Btd6Styles />
-      <ModHelperHelmet />
+      <ModHelperHelmet title={DefaultTitle} description={DefaultDescription} />
       <ModHelperScrollBars
         ref={scrollbars}
         autoHeightMax={height}
