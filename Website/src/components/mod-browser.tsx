@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useMemo, useState } from "react";
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   getContentUrl,
   getGithubUrl,
@@ -11,7 +17,7 @@ import {
   ModHelperData,
 } from "../lib/mod-helper-data";
 import { downloadMod, ModdersData } from "../lib/mod-browser";
-import { Button, Col, Collapse, Row } from "react-bootstrap";
+import { Button, Col, Collapse, Overlay, Row } from "react-bootstrap";
 import cx from "classnames";
 import { getColor } from "../lib/blatant-favoritism";
 import Image from "next/image";
@@ -28,14 +34,24 @@ export interface ReleaseWithMod extends Release {
   mod: ModHelperData;
 }
 
-export const ModEntry: FunctionComponent<{
+interface ModEntryProps {
   mod: ModHelperData;
   data: ModdersData;
   selectMod?: (mod: ModHelperData) => void;
   showRelease?: (release: ReleaseWithMod) => void;
   showCommit?: (commit: Commit) => void;
   mini?: boolean;
-}> = ({ mod, data, selectMod, showRelease, mini }) => {
+  style?: CSSProperties;
+}
+
+export const ModEntry: FunctionComponent<ModEntryProps> = ({
+  mod,
+  data,
+  selectMod,
+  showRelease,
+  mini,
+  style,
+}) => {
   const iconSize = mod.SquareIcon ? 50 : 60;
   const iconLeftPad = mod.SquareIcon ? "-.75rem" : "-1rem";
 
@@ -50,10 +66,14 @@ export const ModEntry: FunctionComponent<{
     [mod.Description]
   );
 
+  const container = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+
   return (
-    <div>
+    <div style={style} ref={container}>
       <div className={"d-flex"}>
         <Row
+          ref={panel}
           key={mod.Identifier}
           className={cx(
             "non-main-panel bg-black bg-opacity-50 btd6-panel blue",
@@ -214,13 +234,25 @@ export const ModEntry: FunctionComponent<{
           </Button>
         </div>
       </div>
-      <Collapse in={description}>
-        <div>
-          <div className={"mt-2 btd6-panel blue-insert text-white"}>
-            {descriptionBody}
-          </div>
+      <Overlay
+        target={panel.current}
+        container={container.current}
+        show={description}
+        placement={"bottom"}
+        rootClose={true}
+        onHide={() => showDescription(false)}
+      >
+        <div
+          style={{
+            width: panel.current?.clientWidth,
+          }}
+          className={
+            "main-panel non-main-panel bg-black btd6-panel blue-insert text-white"
+          }
+        >
+          {descriptionBody || "No Description Provided"}
         </div>
-      </Collapse>
+      </Overlay>
     </div>
   );
 };

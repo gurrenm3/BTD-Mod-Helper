@@ -219,7 +219,7 @@ export default () => {
     const mod = modsById[selectedMod];
     const readmeUrl = getContentUrl(mod, "README.md");
 
-    fetch(readmeUrl, { cache: "force-cache" }).then(async (value) => {
+    fetch(readmeUrl).then(async (value) => {
       let readmeMd = value ? await value.text() : "This mod has no README.md";
       if (!readmeMd || !readmeMd.trim()) {
         readmeMd = "This mod has an empty README.md";
@@ -252,6 +252,7 @@ export default () => {
     <Layout
       style={{ height: height }}
       backToTop={() => scrollbars.current?.scrollTop(0)}
+      footerClassName={`d-none d-${switchSize}-flex`}
     >
       <ModHelperHelmet
         title={"BTD6 Mod Browser"}

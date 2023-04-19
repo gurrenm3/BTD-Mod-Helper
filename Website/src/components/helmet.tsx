@@ -22,6 +22,11 @@ const ModHelperHelmet: FunctionComponent<ModHelperHelmetProps> = ({
       />
     )}
     <meta
+      key={"apple-mobile-web-app-capable"}
+      property="apple-mobile-web-app-capable"
+      content="yes"
+    />
+    <meta
       key={"apple-mobile-web-app-status-bar-style"}
       property="apple-mobile-web-app-status-bar-style"
       content="black-translucent"

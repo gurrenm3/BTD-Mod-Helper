@@ -24,6 +24,7 @@ import maps from "../data/maps.json";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import { BackgroundContext } from "./background-image";
 import { List } from "react-bootstrap-icons";
+import cx from "classnames";
 
 const ModHelperNavItem: FunctionComponent<
   Omit<NavLinkProps, "active"> & LinkProps & { path: string; active?: string }
@@ -129,16 +130,22 @@ export const ModHelperNavBar: FunctionComponent = () => {
   );
 };
 
-export const ModHelperFooter: FunctionComponent<{ backToTop?: () => void }> = ({
-  backToTop,
-}) => {
+export const ModHelperFooter: FunctionComponent<{
+  backToTop?: () => void;
+  className?: string;
+}> = ({ backToTop, className }) => {
   const scrollbars = useContext(ScrollBarsContext);
   const [map, setMap] = useContext(BackgroundContext);
 
   return (
     <Container
       fluid={switchSize}
-      className={`main-panel my-${switchSize}-4 btd6-panel blue d-flex justify-content-between align-items-center`}
+      className={cx(
+        "main-panel btd6-panel blue",
+        `my-${switchSize}-4`,
+        "d-flex justify-content-between align-items-center",
+        className
+      )}
     >
       <Button
         variant={"outline-light"}

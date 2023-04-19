@@ -4,8 +4,12 @@ html {
   font-size: 14px;
 }
 
-body {
-  background-color: rgba(0, 0, 0, .66);
+[data-theme="dark"] body {
+  background-color: rgba(0, 0, 0, .9);
+}
+
+[data-theme="light"] body {
+  background-color: #5A8FD6;
 }
 
 .text-outline-black {
@@ -35,7 +39,7 @@ ol > li > ol > li > ol {
 }
 
 .main-panel {
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   min-width: 0;
 }
 
@@ -53,6 +57,7 @@ ol > li > ol > li > ol {
 
 @media (min-width: 992px) {
   .main-panel {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
   }
 }
