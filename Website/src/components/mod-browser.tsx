@@ -3,12 +3,14 @@ import {
   getContentUrl,
   getGithubUrl,
   getIconUrl,
+  getStarCount,
+  getStarsUrl,
   modDisplayAuthor,
   modDisplayName,
   modDisplayVersion,
   ModHelperData,
 } from "../lib/mod-helper-data";
-import { ModdersData } from "../lib/mod-browser";
+import { downloadMod, ModdersData } from "../lib/mod-browser";
 import { Button, Col, Collapse, Row } from "react-bootstrap";
 import cx from "classnames";
 import { getColor } from "../lib/blatant-favoritism";
@@ -19,7 +21,6 @@ import InfoBtn from "public/images/BTD6/InfoBtn.png";
 import ArrowHideBtn from "public/images/BTD6/ArrowHideBtn.png";
 import VerifiedIcon from "public/images/BTD6/VerifiedIcon.png";
 import DownloadBtn from "public/BloonsTD6 Mod Helper/Resources/DownloadBtn.png";
-import { Octokit } from "octokit";
 import { Commit, Release } from "@octokit/webhooks-types";
 import { htmlToReact } from "./markdown";
 
@@ -30,11 +31,12 @@ export interface ReleaseWithMod extends Release {
 export const ModEntry: FunctionComponent<{
   mod: ModHelperData;
   data: ModdersData;
-  selectMod: (mod: ModHelperData) => void;
-  showRelease: (release: ReleaseWithMod) => void;
+  selectMod?: (mod: ModHelperData) => void;
+  showRelease?: (release: ReleaseWithMod) => void;
   showCommit?: (commit: Commit) => void;
-}> = ({ mod, data, selectMod, showRelease }) => {
-  const iconSize = mod.SquareIcon ? 49 : 60;
+  mini?: boolean;
+}> = ({ mod, data, selectMod, showRelease, mini }) => {
+  const iconSize = mod.SquareIcon ? 50 : 60;
   const iconLeftPad = mod.SquareIcon ? "-.75rem" : "-1rem";
 
   const [description, showDescription] = useState(false);
@@ -48,52 +50,6 @@ export const ModEntry: FunctionComponent<{
     [mod.Description]
   );
 
-  const downloadMod = async () => {
-    if (!mod.LatestRelease) {
-      const octokit = new Octokit();
-      mod.LatestRelease = octokit.rest.repos
-        .getLatestRelease({
-          owner: mod.RepoOwner,
-          repo: mod.RepoName,
-        })
-        .then((value) => value.data as Release)
-        .catch(() => null);
-    }
-
-    const release = (await mod.LatestRelease) as ReleaseWithMod;
-
-    if (release) {
-      release.mod = mod;
-      showRelease(release);
-      return;
-    }
-
-    if (!mod.DllName) return;
-
-    let path = mod.DllName;
-    if (
-      mod.SubPath &&
-      !mod.SubPath.endsWith(".json") &&
-      !mod.SubPath.endsWith(".txt")
-    ) {
-      path = mod.SubPath + path;
-    }
-
-    window.open(getContentUrl(mod, path), "_blank");
-
-    /*if (!mod.LatestCommit) {
-      const octokit = new Octokit();
-      mod.LatestCommit = octokit.rest.repos
-        .listCommits({
-          path,
-          owner: mod.RepoOwner,
-          repo: mod.RepoName,
-        })
-        .then((value) => value.data[0] as Commit)
-        .catch((reason) => null);
-    }*/
-  };
-
   return (
     <div>
       <div className={"d-flex"}>
@@ -103,9 +59,10 @@ export const ModEntry: FunctionComponent<{
             "non-main-panel bg-black bg-opacity-50 btd6-panel blue",
             "user-select-none",
             "flex-fill mx-0 p-md-0 gap-3 gap-md-0 gx-0 gx-md-3",
-            "align-items-center align-content-around justify-content-around",
+            "align-items-center align-content-around",
             "luckiest-guy lh-1 fs-5",
-            "flex-wrap flex-md-nowrap"
+            "flex-wrap flex-md-nowrap",
+            mini ? "justify-content-between" : "justify-content-around"
           )}
         >
           <Col
@@ -114,7 +71,7 @@ export const ModEntry: FunctionComponent<{
             style={{ margin: `-1rem 0 -1rem ${iconLeftPad}` }}
             className={"d-lg-block"}
           >
-            <div style={{ height: 60, width: 60 }}>
+            <div style={{ height: 60, width: 60 }} className={"d-flex"}>
               <img
                 alt={""}
                 src={getIconUrl(mod)}
@@ -126,6 +83,7 @@ export const ModEntry: FunctionComponent<{
                 }}
                 height={iconSize}
                 width={iconSize}
+                className={"m-auto"}
               />
             </div>
           </Col>
@@ -165,40 +123,52 @@ export const ModEntry: FunctionComponent<{
               )}
             </a>
           </Col>
-          <Col id={"version"} xs={"auto"} className={"text-outline-black"}>
-            {modDisplayVersion(mod)}
-          </Col>
-          <Col
-            xs={"auto"}
-            id={"stars"}
-            className={"mx-md-auto text-outline-black"}
-          >
-            <a
-              href={`https://github.com/${mod.RepoOwner}/${mod.RepoName}/stargazers`}
-              className={"btn btd6-button p-0 border-0"}
-              target={"_blank"}
+          {!mini && (
+            <Col
+              id={"version"}
+              xs={"auto"}
+              className={"text-outline-black"}
+              style={{ minWidth: "5rem" }}
             >
+              {modDisplayVersion(mod)}
+            </Col>
+          )}
+          {!mini && (
+            <Col
+              xs={"auto"}
+              id={"stars"}
+              className={"mx-md-auto text-outline-black"}
+            >
+              <a
+                href={getStarsUrl(mod)}
+                className={"btn btd6-button p-0 border-0"}
+                target={"_blank"}
+              >
+                <Image
+                  src={Star}
+                  height={25}
+                  width={25}
+                  alt={"Star"}
+                  className={"mb-1 me-1 user-select-none"}
+                  draggable={false}
+                />
+              </a>
+              {getStarCount(mod)}
+              {mod.CountOfMonoRepo ? "+" : " "}
+            </Col>
+          )}
+          {selectMod && (
+            <Col id={"info"} xs={"auto"}>
               <Image
-                src={Star}
-                height={25}
-                width={25}
-                alt={"Star"}
-                className={"mb-1 me-1 user-select-none"}
+                src={InfoBtn}
+                alt={"More Info"}
+                className={"btn btd6-button m-0 p-0 border-0"}
+                height={35}
                 draggable={false}
+                onClick={() => selectMod(mod)}
               />
-            </a>
-            {mod.Repository.stargazers_count}
-          </Col>
-          <Col id={"info"} xs={"auto"}>
-            <Image
-              src={InfoBtn}
-              alt={"More Info"}
-              className={"btn btd6-button m-0 p-0 border-0"}
-              height={35}
-              draggable={false}
-              onClick={() => selectMod(mod)}
-            />
-          </Col>
+            </Col>
+          )}
           <Col id={"description"} xs={"auto"}>
             <Image
               src={ArrowHideBtn}
@@ -228,7 +198,9 @@ export const ModEntry: FunctionComponent<{
           </a>
           <Button
             className={"p-0 bg-transparent border-0"}
-            onClick={downloadMod}
+            onClick={() =>
+              downloadMod(mod, showRelease, mini ? undefined : selectMod)
+            }
           >
             <Image
               src={DownloadBtn}

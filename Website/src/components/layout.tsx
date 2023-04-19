@@ -61,7 +61,7 @@ export const ModHelperScrollBars = forwardRef<Scrollbars, ScrollbarProps>(
 
 interface LayoutProps
   extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
-  backToTop?: boolean;
+  backToTop?: () => void;
 }
 
 const Layout: FunctionComponent<LayoutProps> = ({

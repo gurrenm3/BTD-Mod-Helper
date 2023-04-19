@@ -1,4 +1,7 @@
-3.0 helps with both the creation of new menu screens as well as just creating general new UI. This guide is about general UI. For creating custom menu screens, see [Custom Menus](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Custom-Menu-Screens).
+---
+title: Custom UI (ModHelperComponents)
+---
+3.0 helps with both the creation of new menu screens as well as just creating general new UI. This guide is about general UI. For creating custom menu screens, see [Custom Menus](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-Menu-Screens).
 
 For creating custom UI, it's highly recommended that you use the [UnityExplorer](https://github.com/sinai-dev/UnityExplorer/releases) mod to help whenever you have to edit the Unity objects directly.
 

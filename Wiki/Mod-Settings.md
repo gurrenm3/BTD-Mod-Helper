@@ -10,7 +10,7 @@ But, in the couple situations where that won't work, you can always use their `G
 
 **New with 3.0**, `ModSetting`s can also be given an `icon` and a `description` that will be shown. You can also specify `requiresRestart` to make it visually apparent that a setting's affect only applies after a restart.
 
-For further customization, there's also a `modifyOption` parameter you can pass a function in to that will let you manually change the visuals, maybe with the new [custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Custom-UI%2C-Menus/_edit) features.
+For further customization, there's also a `modifyOption` parameter you can pass a function in to that will let you manually change the visuals, maybe with the new [custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-UI%2C-Menus/_edit) features.
 
 The `onValueChanged` field can be used to cause side effects while the setting is being edited in the menu, or `onSave` for when the value is saved upon leaving the menu. `customValidation` can be provided to prevent the saving of invalid values.
 

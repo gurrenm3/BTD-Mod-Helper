@@ -1,4 +1,4 @@
-3.0 helps with both the creation of new menu screens as well as just creating general new UI. This guide is about custom menu screens. For general UI, see [Custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Custom-UI%2C-Menus).
+3.0 helps with both the creation of new menu screens as well as just creating general new UI. This guide is about custom menu screens. For general UI, see [Custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-UI%2C-Menus).
 
 ## ModGameMenu
 
@@ -26,7 +26,7 @@
 
 </details>
 
-`OnMenuOpened()`: This method must be overriden, and it's what lets you modify/remove the elements of your base screen and add all the custom elements you want. Use the `GameMenu` property as your entry point to the Unity scene. For more information about creating UI here, see [Custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Custom-UI%2C-Menus).
+`OnMenuOpened()`: This method must be overriden, and it's what lets you modify/remove the elements of your base screen and add all the custom elements you want. Use the `GameMenu` property as your entry point to the Unity scene. For more information about creating UI here, see [Custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-UI%2C-Menus).
 
 ### Other Properties
 

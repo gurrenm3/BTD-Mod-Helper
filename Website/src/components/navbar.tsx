@@ -129,7 +129,7 @@ export const ModHelperNavBar: FunctionComponent = () => {
   );
 };
 
-export const ModHelperFooter: FunctionComponent<{ backToTop?: boolean }> = ({
+export const ModHelperFooter: FunctionComponent<{ backToTop?: () => void }> = ({
   backToTop,
 }) => {
   const scrollbars = useContext(ScrollBarsContext);
@@ -138,19 +138,23 @@ export const ModHelperFooter: FunctionComponent<{ backToTop?: boolean }> = ({
   return (
     <Container
       fluid={switchSize}
-      className={`main-panel my-${switchSize}-4 btd6-panel blue d-flex justify-content-between`}
+      className={`main-panel my-${switchSize}-4 btd6-panel blue d-flex justify-content-between align-items-center`}
     >
-      {backToTop !== false && (
-        <Button
-          variant={"outline-light"}
-          onClick={() => scrollbars?.scrollTop(0)}
-          className={"btd6-button blue long"}
-        >
-          Back to Top
-        </Button>
-      )}
-
-      <Dropdown drop={"up"} align={"end"} className={"text-end ms-auto"}>
+      <Button
+        variant={"outline-light"}
+        onClick={() => {
+          scrollbars?.scrollTop(0);
+          backToTop?.();
+        }}
+        className={"btd6-button blue long align-self-stretch p-3"}
+      >
+        Back to Top
+      </Button>
+      <div className={`text-center d-none d-sm-block fs-larger`}>
+        To learn how to download BTD Mod Helper and install mods,{" "}
+        <Link href={"/wiki/Install-Guide#main-content"}>click here</Link>
+      </div>
+      <Dropdown drop={"up"} align={"end"} className={"text-end"}>
         <DropdownToggle
           className={"btd6-panel blue-insert-round"}
           variant={"outline-light"}

@@ -17,3 +17,17 @@ export const getString = async (url: string) => {
     return Promise.reject();
   }
 };
+
+export const getJson = async (url: string) => {
+  try {
+    const response = await fetch(url, { cache: "force-cache" });
+
+    if (!response?.ok) {
+      return Promise.reject();
+    }
+
+    return await response.json();
+  } catch (e) {
+    return Promise.reject();
+  }
+};

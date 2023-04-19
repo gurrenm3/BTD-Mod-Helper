@@ -307,8 +307,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     {
         SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
         SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
-        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data =>
-            data.Repository.PushedAt ?? data.Repository.CreatedAt),
+        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.UpdatedAtUtc),
         SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
         SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
         _ => mods

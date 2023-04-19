@@ -1,4 +1,4 @@
-import { getString, parseBool } from "./util";
+import { getJson, getString, parseBool } from "./util";
 import { Commit, Release, Repository } from "@octokit/webhooks-types";
 import semver from "semver/preload";
 
@@ -68,6 +68,7 @@ export type ModHelperData = {
   DataPath?: string;
   Topics: string[];
   Identifier: string;
+  CountOfMonoRepo?: number;
 };
 
 type Types = {
@@ -165,11 +166,17 @@ export const getGithubUrl = (data: ModHelperData, path: string = "") => {
   return `https://github.com/${data.RepoOwner}/${data.RepoName}/tree/${data.Branch}/${path}`;
 };
 
-const getStarsUrl = (data: ModHelperData) =>
-  `https://www.github.com/${data.RepoOwner}/${data.RepoName}/stargazers`;
+export const getStarsUrl = (data?: ModHelperData) =>
+  `https://www.github.com/${data?.RepoOwner}/${data?.RepoName}/stargazers`;
+
+export const getStarCount = (data?: ModHelperData) =>
+  Math.ceil(
+    (data?.Repository?.stargazers_count ?? 0) /
+      Math.max(1, data?.CountOfMonoRepo ?? 0)
+  );
 
 const hasMissingRepoData = (data: ModHelperData) => {
-  if (!semver.valid(data.Version ?? ""))
+  if (!semver.coerce(data.Version ?? ""))
     return `${data.Version} is not a valid SemVer`;
   if (!data.RepoName) return `RepoName is null/empty`;
   if (!data.RepoOwner) return "RepoOwner is null/empty";
@@ -181,7 +188,10 @@ const hasMissingRepoData = (data: ModHelperData) => {
 
 const RawUserContent = "https://raw.githubusercontent.com";
 
-export const getContentUrl = (data: ModHelperData, name?: string) => {
+export const getContentUrl = (
+  data: Pick<ModHelperData, "SubPath" | "RepoOwner" | "RepoName" | "Branch">,
+  name?: string
+) => {
   let path = name ? encodeURIComponent(name) : "";
 
   if (
@@ -244,13 +254,15 @@ export const loadDataFromRepo = async (
     );
   }
 
-  try {
-    data = await Promise.any([
-      getString(getContentUrl(modHelperData, ModHelperDataCs)),
-      getString(getContentUrl(modHelperData, ModHelperDataJson)),
-      getString(getContentUrl(modHelperData, ModHelperDataTxt)),
-    ]);
-  } catch (e) {}
+  if (!data) {
+    try {
+      data = await Promise.any([
+        getString(getContentUrl(modHelperData, ModHelperDataCs)),
+        getString(getContentUrl(modHelperData, ModHelperDataJson)),
+        getString(getContentUrl(modHelperData, ModHelperDataTxt)),
+      ]);
+    } catch (e) {}
+  }
 
   if (!data) {
     console.warn(`Didn't find any ModHelperData for ${modHelperData.RepoName}`);
@@ -281,4 +293,52 @@ export const loadDataFromRepo = async (
   return modHelperData;
 };
 
-export const loadDataFromMonoRepo = async (repo: Repository) => {};
+export const loadDataFromMonoRepo = async (
+  repo: Repository
+): Promise<(ModHelperData | undefined)[]> => {
+  const modsJsonUrl = getContentUrl(
+    {
+      RepoOwner: repo.owner.login,
+      RepoName: repo.name,
+      Branch: repo.default_branch,
+    },
+    ModHelperModsJson
+  );
+
+  let modsJson: string[];
+
+  try {
+    modsJson = (await getJson(modsJsonUrl)) as string[];
+  } catch (e) {
+    return [];
+  }
+
+  if (!modsJson) return [];
+
+  return await Promise.all(
+    modsJson.map(async (subPath) => {
+      const data = await loadDataFromRepo(repo, subPath);
+      if (data) {
+        data.CountOfMonoRepo = modsJson.length;
+      }
+      return data;
+    })
+  );
+};
+
+export const findDependencies = (
+  mod: ModHelperData,
+  modsById: Record<string, ModHelperData>,
+  found?: string[]
+) => {
+  const results: string[] = [];
+  if (mod.Dependencies) {
+    for (let id of mod.Dependencies.split(",")) {
+      if (id in modsById && !found?.includes(id)) {
+        results.push(id);
+        results.push(...findDependencies(modsById[id], modsById, results));
+      }
+    }
+  }
+  return results;
+};

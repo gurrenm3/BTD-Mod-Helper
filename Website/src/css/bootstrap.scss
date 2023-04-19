@@ -20,7 +20,7 @@ $theme-colors: (
         "info": $info,
         "warning": $warning,
         "danger": $danger,
-        "light": $light,
+        "light": $gray-300,
         "dark": $dark,
         "gray": $gray-500
 );
@@ -43,4 +43,13 @@ $theme-colors: (
   .fs-5 {
     font-size: 1.5rem !important;
   }
+}
+
+[data-theme="dark"] .non-main-panel {
+  border: 1px solid $gray-300;
+  border-radius: 1rem;
+}
+
+.btn-outline-light {
+  color: white !important;
 }

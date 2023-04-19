@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import {
@@ -21,9 +22,12 @@ import {
 } from "react-bootstrap";
 import { useDebounce, useList, useMap } from "react-use";
 import {
+  findDependencies,
   getContentUrl,
   getGithubUrl,
+  getStarCount,
   LatestVersion,
+  modDisplayAuthor,
   modDisplayName,
   modDisplayVersion,
   ModHelperData,
@@ -31,6 +35,7 @@ import {
   StoppedWorkingVersion,
 } from "../lib/mod-helper-data";
 import {
+  downloadRelease,
   getModdersData,
   ModdersData,
   populateMods,
@@ -51,6 +56,7 @@ import VerifiedIcon from "public/images/BTD6/VerifiedIcon.png";
 import WarningSign from "public/images/BTD6/WarningSign.png";
 import Image from "next/image";
 import { MainContentMarker } from "../components/skip-link";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 enum SortingMethod {
   RecentlyUpdated = "Recently Updated",
@@ -62,12 +68,18 @@ enum SortingMethod {
 
 const sortMods = (method: SortingMethod) => (mod: ModHelperData) => {
   const createdAt = new Date(mod.Repository.created_at).getTime();
-  const updatedAt = new Date(
+  let updatedAt = new Date(
     mod.Repository.pushed_at || mod.Repository.created_at
   ).getTime();
+  if ((mod.CountOfMonoRepo ?? 1) > 1) {
+    const splitBetween = Math.floor(Math.sqrt(mod.CountOfMonoRepo ?? 1));
+    const since = Date.now() - updatedAt;
+    updatedAt -= since * splitBetween;
+  }
+
   switch (method) {
     case SortingMethod.Popularity:
-      return -mod.Repository.stargazers_count;
+      return -getStarCount(mod);
     case SortingMethod.Alphabetical:
       return modDisplayName(mod);
     case SortingMethod.Old:
@@ -125,9 +137,10 @@ export default () => {
     clearModsById();
     fuse.remove(() => true);
 
-    populateMods(onModFound, setTotalCount).then(() =>
-      console.log("Finished populating mods")
-    );
+    populateMods(onModFound, (count) => {
+      setTotalCount(count);
+      console.log(`Setting count to ${count}`);
+    }).then(() => console.log("Finished populating mods"));
   };
 
   useEffect(() => {
@@ -222,13 +235,28 @@ export default () => {
     });
   }, [selectedMod, modsById[selectedMod]]);
 
+  const selectedModDependencies = useMemo(
+    () =>
+      selectedMod && selectedMod in modsById
+        ? findDependencies(modsById[selectedMod], modsById).filter(
+            (value) => value !== selectedMod
+          )
+        : [],
+    [selectedMod, modsById]
+  );
+
+  const scrollbars = useRef<Scrollbars>(null);
+
   return (
-    <Layout style={{ height: height }} backToTop={false}>
+    <Layout
+      style={{ height: height }}
+      backToTop={() => scrollbars.current?.scrollTop(0)}
+    >
       <Container
         fluid={switchSize}
-        className={`d-flex flex-column main-panel btd6-panel blue flex-1`}
+        className={`d-flex flex-column main-panel btd6-panel blue flex-1 gap-2`}
       >
-        <Row className={"mb-3 g-3 justify-content-between"}>
+        <Row className={"g-3 justify-content-between"}>
           <Col xs={7} lg={5} className={"flex-grow-1"}>
             <Form
               onSubmit={(event) => {
@@ -368,7 +396,7 @@ export default () => {
         <MainContentMarker />
         <div
           className={
-            "flex-grow-1 position-relative btd6-panel blue-insert-round overflow-hidden p-0 mb-1"
+            "flex-grow-1 position-relative btd6-panel blue-insert-round overflow-hidden p-0"
           }
         >
           {mods.length === 0 && (
@@ -379,6 +407,7 @@ export default () => {
             </div>
           )}
           <ModHelperScrollBars
+            ref={scrollbars}
             className={"position-absolute h-100"}
             autoHeightMin={"100%"}
             autoHeightMax={"100%"}
@@ -401,7 +430,7 @@ export default () => {
             max={totalCount}
             now={mods.length}
             animated={true}
-            className={"mt-2"}
+            className={"mt-1"}
           />
         </Collapse>
       </Container>
@@ -441,23 +470,18 @@ export default () => {
               )
             }
           >
-            Releases
+            More
           </Button>
           <Button
             variant={"outline-light"}
             className={"btd6-button green long fs-5 pb-2 text-outline-black"}
             style={{ height: 45 }}
             onClick={() => {
-              if (!release) return;
-              const mod = release.mod;
-
-              const asset =
-                release.assets.find(
-                  (asset) =>
-                    asset.name === mod.DllName || asset.name === mod.ZipName
-                ) ?? release.assets[0];
-
-              window.open(asset.url, "_blank");
+              downloadRelease(release!);
+              if (release?.mod.Dependencies) {
+                setSelectedMod(release!.mod.Identifier);
+              }
+              setRelease(undefined);
             }}
           >
             Download
@@ -478,6 +502,26 @@ export default () => {
           README.md for {modDisplayName(modsById[selectedMod])}
         </Modal.Header>
         <Modal.Body>{selectedModBody}</Modal.Body>
+        {selectedModDependencies.length > 0 && (
+          <Modal.Footer className={"flex-column"}>
+            <div className={"fs-2 m-0"}>Dependencies</div>
+            <div>
+              This mod has the following dependencies. It may not function
+              properly if you don't download them as well.
+            </div>
+            <div className={"w-100 d-flex flex-column gap-3"}>
+              {selectedModDependencies.map((id) => {
+                const mod = modsById[id];
+
+                return mod ? (
+                  <ModEntry mod={mod} data={moddersData} mini={true} />
+                ) : (
+                  <div className={"w-100 text-center"}>{id}</div>
+                );
+              })}
+            </div>
+          </Modal.Footer>
+        )}
       </Modal>
     </Layout>
   );

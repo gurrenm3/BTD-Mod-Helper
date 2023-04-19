@@ -21,7 +21,7 @@ This page covers some tips for users / modders for dealing with the update to 0.
 
 ![net6.0 in csproj](https://cdn.discordapp.com/attachments/800115046134186026/1057082225587408896/image.png)
 
-* If you aren't already, it'd really make your life easier to [make use of the `btd6.targets` file that Mod Helper provides](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Migration-Guide#3-update-to-using-btd6targets-and-the-mod-sources-folder). The updated `btd6.targets` will already handle switching to the new dll references, so most of what's left is fixing your `using ...` statements.
+* If you aren't already, it'd really make your life easier to [make use of the `btd6.targets` file that Mod Helper provides](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Migration-Guide#3-update-to-using-btd6targets-and-the-mod-sources-folder). The updated `btd6.targets` will already handle switching to the new dll references, so most of what's left is fixing your `using ...` statements.
 
 * 0.6.0 replaces the old Unhollower library with the new Il2CppInterop library. Anywhere where you have
 ```cs
