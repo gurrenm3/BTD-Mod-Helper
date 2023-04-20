@@ -166,6 +166,7 @@ export default () => {
     StoppedWorkingVersion
   );
   useDebounce(() => setSearch(searchbar), 500, [searchbar]);
+  useEffect(() => setSearchbar(search), [search]);
 
   useEffect(() => {
     if (selectedMod && !(selectedMod in modsById)) {
@@ -257,7 +258,7 @@ export default () => {
       <ModHelperHelmet
         title={"BTD6 Mod Browser"}
         description={
-          "Browse, search and download mods for BTD6 using BTD Mod Helper."
+          "Browse, search and download mods for BloonsTD6 using BTD Mod Helper."
         }
       />
       <Container

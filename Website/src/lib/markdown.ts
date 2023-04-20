@@ -8,7 +8,7 @@ import rehypeStringify from "rehype-stringify";
 import rehypeSlug from "rehype-slug";
 import { HtmlElementNode, TextNode, toc } from "@jsdevtools/rehype-toc";
 import { Parent } from "unist";
-import { markdownToHtml } from "../components/markdown";
+import { markdownToHtml, markdownToToc } from "../components/markdown";
 
 export const getMarkdownPaths = async (dir: string) =>
   await glob(path.join(dir, "**", "*.md").replaceAll(path.sep, "/"));
@@ -33,43 +33,11 @@ export const getMarkdownContent = async (file) => {
   const matterResult = matter(fileContents);
 
   const processedContent = await markdownToHtml().process(matterResult.content);
-
   const contentHtml = processedContent.toString();
 
-  const processedTableOfContents = await remark()
-    .use(remarkRehype)
-    .use(rehypeSlug)
-    .use(toc, {
-      customizeTOCItem: (node) => {
-        const anchor = node.children.find(
-          (value) =>
-            value.type === "element" &&
-            (value as HtmlElementNode).tagName === "a"
-        ) as HtmlElementNode | undefined;
-        if (!anchor) return true;
-
-        const text = anchor.children?.find((value) => value.type === "text") as
-          | TextNode
-          | undefined;
-        if (!text || !text.value || text.value.length < 50) return true;
-
-        if (text.value.includes(":")) {
-          text.value =
-            text.value.substring(0, text.value.indexOf(":") + 1) + " ...";
-        }
-
-        if (text.value.includes("!")) {
-          text.value =
-            text.value.substring(0, text.value.indexOf("!") + 1) + " ...";
-        }
-
-        return true;
-      },
-    })
-    .use(() => (tree: Parent) => tree.children[0])
-    .use(rehypeStringify)
-    .process(matterResult.content);
-
+  const processedTableOfContents = await markdownToToc().process(
+    matterResult.content
+  );
   const tableOfContentsHtml = processedTableOfContents.toString();
 
   return {
@@ -77,7 +45,7 @@ export const getMarkdownContent = async (file) => {
     tableOfContentsHtml,
     ...(matterResult.data as {
       title?: string;
-      description?: string;
+      subtitle?: string;
     }),
   };
 };

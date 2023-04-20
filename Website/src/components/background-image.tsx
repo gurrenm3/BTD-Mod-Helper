@@ -63,7 +63,7 @@ const BackgroundImage = forwardRef<HTMLDivElement, PropsWithChildren>(
             zIndex: -100,
             backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_PATH}/images/BTD6/Maps/${maps[map]}.png)`,
             backgroundRepeat: "no-repeat",
-            filter: "blur(5px)",
+            filter: "blur(7px)",
             transform: "scale(1.1)",
             height: "100%",
             width: "100%",

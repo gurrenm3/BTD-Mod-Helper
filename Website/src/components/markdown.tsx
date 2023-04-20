@@ -14,6 +14,8 @@ import React, { createElement, Fragment } from "react";
 import Link from "next/link";
 import { RootContent } from "hast";
 import rehypeSanitize from "rehype-sanitize";
+import { HtmlElementNode, TextNode, toc } from "@jsdevtools/rehype-toc";
+import { Parent } from "unist";
 
 const rewrittenUrl = (href: string, basePath?: string) => {
   // Migrate Wiki links
@@ -108,3 +110,36 @@ export const htmlToReact = (sanitize?: boolean) =>
           props.href ? <Link {...props} /> : <a {...props} />,
       },
     } as Options);
+
+export const markdownToToc =  () => remark()
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(toc, {
+      customizeTOCItem: (node) => {
+        const anchor = node.children.find(
+          (value) =>
+            value.type === "element" &&
+            (value as HtmlElementNode).tagName === "a"
+        ) as HtmlElementNode | undefined;
+        if (!anchor) return true;
+
+        const text = anchor.children?.find((value) => value.type === "text") as
+          | TextNode
+          | undefined;
+        if (!text || !text.value || text.value.length < 50) return true;
+
+        if (text.value.includes(":")) {
+          text.value =
+            text.value.substring(0, text.value.indexOf(":") + 1) + " ...";
+        }
+
+        if (text.value.includes("!")) {
+          text.value =
+            text.value.substring(0, text.value.indexOf("!") + 1) + " ...";
+        }
+
+        return true;
+      },
+    })
+    .use(() => (tree: Parent) => tree.children[0])
+    .use(rehypeStringify);

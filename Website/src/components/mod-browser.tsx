@@ -60,8 +60,11 @@ export const ModEntry: FunctionComponent<ModEntryProps> = ({
   // noinspection JSVoidFunctionReturnValueUsed
   const descriptionBody = useMemo(
     () =>
-      htmlToReact().processSync(
-        (mod.Description ?? "").replaceAll("\\n", "<br/>")
+      htmlToReact(true).processSync(
+        (mod.Description || "No Description Provided").replaceAll(
+          "\\n",
+          "<br/>"
+        )
       ).result,
     [mod.Description]
   );
@@ -250,7 +253,7 @@ export const ModEntry: FunctionComponent<ModEntryProps> = ({
             "main-panel non-main-panel bg-black btd6-panel blue-insert text-white"
           }
         >
-          {descriptionBody || "No Description Provided"}
+          {descriptionBody}
         </div>
       </Overlay>
     </div>

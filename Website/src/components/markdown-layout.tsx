@@ -92,7 +92,7 @@ export const MarkdownLayout: FunctionComponent<
     <Layout>
       <ModHelperHelmet
         title={data?.title}
-        description={data?.description ?? description}
+        description={data?.subtitle ?? description}
       />
       <div className={`d-flex flex-grow-1`}>
         <div
@@ -130,35 +130,38 @@ export const MarkdownLayout: FunctionComponent<
         >
           {!(noTitle && !hasToc && !sidebar) && (
             <>
-              <h1 className={"d-flex my-1 btd6-panel blue-insert-round"}>
-                <div className={`flex-1 d-${switchSize}-none text-start`}>
-                  {hasToc && (
-                    <Button
-                      className={`d-${switchSize}-none me-2 btd6-button blue p-2`}
-                      variant={"outline-light"}
-                      onClick={() => setShowToc(true)}
-                    >
-                      <ListUl size={"2rem"} />
-                    </Button>
-                  )}
-                </div>
-                <div
-                  className={`text-center text-${switchSize}-start mt-1 mt-${switchSize}-start`}
-                >
-                  {data?.title}
-                </div>
-                <div className={`flex-1 d-${switchSize}-none text-end`}>
-                  {sidebar && (
-                    <Button
-                      className={`d-${switchSize}-none ms-auto btd6-button blue p-2`}
-                      variant={"outline-light"}
-                      onClick={() => setShowWiki(true)}
-                    >
-                      <List size={"2rem"} />
-                    </Button>
-                  )}
-                </div>
-              </h1>
+              <div className={"my-1 btd6-panel blue-insert-round"}>
+                <h1 className={"d-flex"}>
+                  <div className={`flex-1 d-${switchSize}-none text-start`}>
+                    {hasToc && (
+                      <Button
+                        className={`d-${switchSize}-none me-2 btd6-button blue p-2`}
+                        variant={"outline-light"}
+                        onClick={() => setShowToc(true)}
+                      >
+                        <ListUl size={"2rem"} />
+                      </Button>
+                    )}
+                  </div>
+                  <div
+                    className={`text-center text-${switchSize}-start mt-1 mt-${switchSize}-start`}
+                  >
+                    {data?.title}
+                  </div>
+                  <div className={`flex-1 d-${switchSize}-none text-end`}>
+                    {sidebar && (
+                      <Button
+                        className={`d-${switchSize}-none ms-auto btd6-button blue p-2`}
+                        variant={"outline-light"}
+                        onClick={() => setShowWiki(true)}
+                      >
+                        <List size={"2rem"} />
+                      </Button>
+                    )}
+                  </div>
+                </h1>
+                {data?.subtitle && <div>{data.subtitle}</div>}
+              </div>
               <hr />
             </>
           )}

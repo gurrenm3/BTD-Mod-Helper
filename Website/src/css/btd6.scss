@@ -17,6 +17,10 @@
   border-color: transparent !important;
 }
 
+[data-theme="light"] .btd6-panel  a:not(.nav-link):not(.navbar-brand) {
+  font-weight: bolder;
+}
+
 .btd6-button {
   background-size: 100% 100%;
   background-repeat: no-repeat;

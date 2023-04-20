@@ -75,6 +75,7 @@ export const Btd6Styles = () => {
 
           .btd6-panel.white-insert-round {
             border-image-source: url(${basePath}/images/BTD6/InsertPanelWhiteRound.png);
+            color: black;
           }
 
           [data-theme="light"] .btd6-panel.blue-insert-round {

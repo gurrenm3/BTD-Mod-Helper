@@ -17,7 +17,7 @@
 
 ###### 3.0 Features
 
-[**Appearing in the Mod Browser**](/wiki/Appearing-in-the-Mod-Browser-(ModHelperData))
+[**Appearing in the Mod Browser**](/wiki/Appearing-in-the-Mod-Browser)
 
 [Making a Custom Bloon](/wiki/Making-a-Custom-Bloon)
 
@@ -28,8 +28,6 @@
 [Custom UI (ModHelperComponents)](/wiki/Custom-UI)
 
 [Custom Menu Screens](/wiki/Custom-Menu-Screens)
-
-[Custom Load Tasks](/wiki/Custom-Load-Tasks)
 
 [Custom Byte Loaders](/wiki/Custom-Byte-Loaders)
 
