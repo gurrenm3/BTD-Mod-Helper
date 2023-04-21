@@ -373,7 +373,7 @@ internal partial class ModHelperData
         return Enumerable.Empty<ModHelperData>();
     }
 
-    public string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
+    internal string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
 
     public List<ModHelperData> FindDependencies(List<ModHelperData> ignored = null)
     {

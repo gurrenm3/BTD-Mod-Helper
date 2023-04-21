@@ -253,6 +253,18 @@ internal partial class ModHelperData
             }
         }
 
+        foreach (var modHelperData in Active.Where(modHelperData => !string.IsNullOrEmpty(modHelperData.Dependencies)))
+        {
+            foreach (var dependency in modHelperData.Dependencies.Split(","))
+            {
+                if (!Active.Exists(data => data.Identifier == dependency) && modHelperData.Mod is BloonsMod mod)
+                {
+                    mod.loadErrors.Add($"Missing dependency {dependency}");
+                }
+            }
+        }
+
+
         Task.Run(LoadDisabledMods);
     }
 
@@ -307,7 +319,7 @@ internal partial class ModHelperData
             }
         }
     }
-    
+
     public List<ModHelperData> FindDependents() => Active
         .Where(data => this != data && (data.Dependencies ?? "").Contains(Identifier))
         .ToList();

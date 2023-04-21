@@ -120,9 +120,9 @@ public abstract class ModVanillaParagon : ModTower
     /// </summary>
     public override string Name => BaseTowerModel.baseId;
 
-    internal override TowerModel GetDefaultTowerModel()
+    internal override TowerModel GetDefaultTowerModel(int[] tiers = null)
     {
-        var baseTowerModel = base.GetDefaultTowerModel();
+        var baseTowerModel = base.GetDefaultTowerModel(tiers);
         baseTowerModel.baseId = BaseTowerModel.baseId;
         return baseTowerModel;
     }

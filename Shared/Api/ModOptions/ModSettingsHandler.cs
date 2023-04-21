@@ -2,6 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.ModMenu;
+using MelonLoader.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Api.ModOptions;
@@ -42,7 +45,7 @@ internal static class ModSettingsHandler
             mod.ModSettings[field.Name] = modSetting;
             modSetting.displayName ??= field.Name.Spaced();
         }
-        
+
         LoadModSettings(mod);
     }
 
@@ -70,6 +73,7 @@ internal static class ModSettingsHandler
                         }
                     }
                 }
+                mod.OnLoadSettings(json);
             }
         }
         catch (Exception e)
@@ -78,7 +82,7 @@ internal static class ModSettingsHandler
             ModHelper.Warning(e);
         }
     }
-    
+
     internal static void SaveModSettings(BloonsMod mod, bool initialSave = false)
     {
         Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
@@ -104,6 +108,15 @@ internal static class ModSettingsHandler
                     ModHelper.Warning(e);
                 }
             }
+        }
+
+        try
+        {
+            mod.OnSaveSettings(json);
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
         }
 
         File.WriteAllText(fileName, json.ToString(Formatting.Indented));
