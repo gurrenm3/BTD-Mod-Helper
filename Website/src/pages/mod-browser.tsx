@@ -275,7 +275,7 @@ export default () => {
             >
               <FormControl
                 value={searchbar}
-                className={"btd6-panel blue-insert-round text-white"}
+                className={"btd6-panel blue-insert-round"}
                 placeholder={"Search..."}
                 onChange={(event) => setSearchbar(event.target.value)}
               />

@@ -231,56 +231,22 @@ The parameters that another mod has provided
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 A possible result of this call
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyDown(KeyCode)'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnLoadSettings(JObject)'></a>
 
-## BloonsMod.OnKeyDown(KeyCode) Method
+## BloonsMod.OnLoadSettings(JObject) Method
 
-Called on the frame that a key starts being held  
-  
-Equivalent to a HarmonyPostFix on Input.GetKeyDown
+Called when the settings for your mod are loaded
 
 ```csharp
-public virtual void OnKeyDown(KeyCode keyCode);
+public virtual void OnLoadSettings(JObject settings);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyDown(KeyCode).keyCode'></a>
+<a name='BTD_Mod_Helper.BloonsMod.OnLoadSettings(JObject).settings'></a>
 
-`keyCode` [UnityEngine.KeyCode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.KeyCode 'UnityEngine.KeyCode')
+`settings` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
 
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyHeld(KeyCode)'></a>
-
-## BloonsMod.OnKeyHeld(KeyCode) Method
-
-Called every frame that a key is being held   
-  
-Equivalent to a HarmonyPostFix on Input.GetKey
-
-```csharp
-public virtual void OnKeyHeld(KeyCode keyCode);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyHeld(KeyCode).keyCode'></a>
-
-`keyCode` [UnityEngine.KeyCode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.KeyCode 'UnityEngine.KeyCode')
-
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyUp(KeyCode)'></a>
-
-## BloonsMod.OnKeyUp(KeyCode) Method
-
-Called on the frame that a key stops being held  
-  
-Equivalent to a HarmonyPostFix on Input.GetKeyUp
-
-```csharp
-public virtual void OnKeyUp(KeyCode keyCode);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsMod.OnKeyUp(KeyCode).keyCode'></a>
-
-`keyCode` [UnityEngine.KeyCode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.KeyCode 'UnityEngine.KeyCode')
+The json representation of the settings that were just loaded
 
 <a name='BTD_Mod_Helper.BloonsMod.OnModOptionsOpened()'></a>
 
@@ -291,3 +257,20 @@ Called whenever the Mod Options Menu gets opened, after it finishes initializing
 ```csharp
 public virtual void OnModOptionsOpened();
 ```
+
+<a name='BTD_Mod_Helper.BloonsMod.OnSaveSettings(JObject)'></a>
+
+## BloonsMod.OnSaveSettings(JObject) Method
+
+Called when the settings for your mod are saved.
+
+```csharp
+public virtual void OnSaveSettings(JObject settings);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsMod.OnSaveSettings(JObject).settings'></a>
+
+`settings` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
+
+The json representation of the settings about to be saved

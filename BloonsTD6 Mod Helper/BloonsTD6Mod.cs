@@ -24,6 +24,7 @@ using Il2CppNinjaKiwi.NKMulti;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
 using UnityEngine.UI;
+using ObsoleteAttribute = System.ObsoleteAttribute;
 namespace BTD_Mod_Helper;
 
 /// <summary>
@@ -38,6 +39,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
+    [Obsolete("Currently disabled due to instability")]
     public virtual void OnConnected(NKMultiGameInterface nkGi)
     {
     }
@@ -47,6 +49,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Note: Only invoked if <see cref="BloonsMod.CheatMod"/> == true.
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
+    [Obsolete("Currently disabled due to instability")]
     public virtual void OnConnectFail(NKMultiGameInterface nkGi)
     {
     }
@@ -66,6 +69,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
     /// <param name="peerId">Index of the peer in question.</param>
+    [Obsolete("Currently disabled due to instability")]
     public virtual void OnPeerConnected(NKMultiGameInterface nkGi, int peerId)
     {
     }
@@ -76,6 +80,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// </summary>
     /// <param name="nkGi">The interface used to interact with the game.</param>
     /// <param name="peerId">Index of the peer in question.</param>
+    [Obsolete("Currently disabled due to instability")]
     public virtual void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId)
     {
     }
@@ -175,7 +180,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     public virtual void OnNewGameModel(GameModel result, List<ModModel> mods)
     {
     }
-    
+
     /// <summary>
     /// Called when a new GameModel is created, including the map
     /// <br/>

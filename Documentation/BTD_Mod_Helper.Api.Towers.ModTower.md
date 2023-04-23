@@ -316,6 +316,37 @@ public virtual string Get2DTexture(int[] tiers);
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetBaseTowerModel(int[])'></a>
+
+## ModTower.GetBaseTowerModel(int[]) Method
+
+Allows you to change the base TowerModel your tower will use at different tiers. Note that you'd need to be  
+careful if you entirely changed the base tower you're working with at different tiers, as it will still attempt  
+to apply all the appropriate upgrades. If you would like a ModUpgrade to only have an effect at a given tier,  
+you could do something like:  
+  
+```csharp  
+public override void ApplyUpgrade(TowerModel towerModel) {  
+    if (towerModel.tiers[Path] != Tier) return;  
+    ...  
+}  
+```
+
+```csharp
+public virtual TowerModel GetBaseTowerModel(int[] tiers);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.GetBaseTowerModel(int[]).tiers'></a>
+
+`tiers` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+Length 3 array of Top/Mid/Bot tiers
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')  
+The base TowerModel to use
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.GetPortraitReferenceForTiers(int[])'></a>
 
 ## ModTower.GetPortraitReferenceForTiers(int[]) Method
