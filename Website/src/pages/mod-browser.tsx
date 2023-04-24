@@ -1,7 +1,6 @@
 import Layout, { ModHelperScrollBars, switchSize } from "../components/layout";
 import React, {
   ReactElement,
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -27,7 +26,6 @@ import {
   getGithubUrl,
   getStarCount,
   LatestVersion,
-  modDisplayAuthor,
   modDisplayName,
   modDisplayVersion,
   ModHelperData,
@@ -99,7 +97,7 @@ export default () => {
   const router = useRouter();
   const height = use100vh() ?? 1000;
 
-  const [moddersData, setModdersData] = useState({
+  const moddersData = useRef({
     forceVerifiedOnly: false,
     verified: [],
     banned: [],
@@ -122,13 +120,16 @@ export default () => {
   const onModFound = (mod?: ModHelperData) => {
     if (
       !mod ||
-      moddersData.banned.includes(mod.RepoOwner) ||
-      moddersData.bannedMods.includes(mod.Identifier)
+      moddersData.current.banned.includes(mod.RepoOwner) ||
+      moddersData.current.bannedMods.includes(mod.Identifier)
     )
-      return;
+      return false;
+
     addMod((value) => value.Identifier === mod.Identifier, mod);
     fuse.add(mod);
     setMod(mod.Identifier, mod);
+
+    return true;
   };
 
   const [totalCount, setTotalCount] = useState(100);
@@ -146,7 +147,7 @@ export default () => {
 
   useEffect(() => {
     getModdersData()
-      .then(setModdersData)
+      .then((value) => (moddersData.current = value))
       .then(() => console.log("Got modders data"));
 
     getAllMods();
@@ -185,8 +186,8 @@ export default () => {
         .filter((data) => !modIsOld(data, oldCutoff))
         .filter(
           (data) =>
-            (showUnverified && !moddersData.forceVerifiedOnly) ||
-            moddersData.verified.includes(data.RepoOwner)
+            (showUnverified && !moddersData.current.forceVerifiedOnly) ||
+            moddersData.current.verified.includes(data.RepoOwner)
         )
         .filter(
           (data) =>
@@ -281,7 +282,7 @@ export default () => {
               />
             </Form>
           </Col>
-          {!moddersData.forceVerifiedOnly && (
+          {!moddersData.current.forceVerifiedOnly && (
             <Col xs={"auto"} className={"order-lg-last"}>
               <Button
                 variant={"outline-light"}
@@ -355,7 +356,7 @@ export default () => {
                 >
                   Any
                 </DropdownItem>
-                {moddersData.topics.map((key) => (
+                {moddersData.current.topics.map((key) => (
                   <DropdownItem
                     key={key}
                     onClick={() => setTopic(key)}
@@ -426,7 +427,7 @@ export default () => {
                 <ModEntry
                   key={mod.Identifier}
                   mod={mod}
-                  data={moddersData}
+                  data={moddersData.current}
                   selectMod={(mod) => setSelectedMod(mod.Identifier)}
                   showRelease={setRelease}
                 />
@@ -523,7 +524,7 @@ export default () => {
                 const mod = modsById[id];
 
                 return mod ? (
-                  <ModEntry mod={mod} data={moddersData} mini={true} />
+                  <ModEntry mod={mod} data={moddersData.current} mini={true} />
                 ) : (
                   <div className={"w-100 text-center"}>{id}</div>
                 );

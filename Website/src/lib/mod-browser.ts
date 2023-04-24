@@ -42,7 +42,7 @@ export const populateSpecificMod = async (selectedMod: string) => {
 const PerPage = 100;
 
 export const populateMods = async (
-  onModFound: (data: ModHelperData) => void,
+  onModFound: (data: ModHelperData) => boolean,
   setTotalCount: (count: number) => void
 ) => {
   const octokit = new Octokit();
@@ -65,8 +65,7 @@ export const populateMods = async (
     await Promise.all(
       searchResult.items.map(async (repo) => {
         const data = await loadDataFromRepo(repo as Repository);
-        if (data) {
-          onModFound(data);
+        if (data && onModFound(data)) {
           validMods++;
         } else {
           invalidMods++;
@@ -103,9 +102,10 @@ export const populateMods = async (
           datas.length
       );
       for (let data of datas) {
-        if (data) {
-          onModFound(data);
+        if (data && onModFound(data)) {
           validMods++;
+        } else {
+          invalidMods++;
         }
       }
     }
