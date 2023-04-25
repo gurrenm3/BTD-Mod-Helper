@@ -13,6 +13,7 @@ internal class Model_IsEqualAfterReferenceCheck
 {
     private static IEnumerable<Type> ModelsNeedingPatches()
     {
+        // TODO expand this list with anything else that causes issues
         yield return typeof(SingleEmissionModel);
         yield return typeof(ArcEmissionModel);
     }
