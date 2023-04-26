@@ -23,8 +23,6 @@ internal class TitleScreen_Start
                 .OrderBy(mod => mod.Priority)
                 .Select(mod => mod.LoadContentTask)
                 .Do(task => task.RunSync());
-
-            ModContent.GetContent<ModLoadTask>().Do(task => task.RunSync());
         }
 
         var currentTable = LocalizationManager.Instance.textTable;

@@ -241,7 +241,7 @@ internal partial class ModHelperData
 
     public static void LoadAll()
     {
-        foreach (var melonMod in ModHelper.Melons.OrderBy(mod => mod.Priority))
+        foreach (var melonMod in ModHelper.Melons.OrderByDescending(mod => mod is MelonMain))
         {
             try
             {

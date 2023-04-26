@@ -69,7 +69,7 @@ public static class ModHelper
     /// Active mods that use ModHelper functionality
     /// </summary>
     public static IEnumerable<BloonsMod> Mods =>
-        mods ??= Melons.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority);
+        mods ??= Melons.OfType<BloonsMod>().OrderBy(mod => mod.Priority);
 
     /// <summary>
     /// All active mods, whether they're Mod Helper or not
@@ -79,7 +79,7 @@ public static class ModHelper
 
     internal static void LoadAllMods()
     {
-        foreach (var mod in Mods.OrderByDescending(mod => mod.Priority))
+        foreach (var mod in Mods.OrderBy(mod => mod.Priority))
         {
             try
             {
@@ -227,7 +227,7 @@ public static class ModHelper
 
     private static void PerformAdvancedModHook<T>(Action<T> action) where T : AdvancedBloonsTD6Mod
     {
-        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
+        foreach (var mod in Mods.OfType<T>().OrderBy(mod => mod.Priority))
         {
 #if BloonsTD6
             var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();

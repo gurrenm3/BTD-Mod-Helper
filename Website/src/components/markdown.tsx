@@ -21,6 +21,10 @@ const rewrittenUrl = (href: string, basePath?: string) => {
   // Migrate Wiki links
   if (href.startsWith("https://github.com/gurrenm3/BTD-Mod-Helper/wiki")) {
     href = href.replace("https://github.com/gurrenm3/BTD-Mod-Helper", "");
+
+    href = href
+      .replace(encodeURIComponent("[3.0]-"), "")
+      .replace(encodeURIComponent("-(ModHelperComponents)"), "");
   }
 
   // Adjust base paths
@@ -111,7 +115,8 @@ export const htmlToReact = (sanitize?: boolean) =>
       },
     } as Options);
 
-export const markdownToToc =  () => remark()
+export const markdownToToc = () =>
+  remark()
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(toc, {

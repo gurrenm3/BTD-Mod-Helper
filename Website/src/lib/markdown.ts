@@ -23,7 +23,7 @@ export const toMdPath = (file: string, dir: string) =>
 export const fromMdPath = (mdPath: string[], dir: string) =>
   path.join(dir, path.join(...mdPath) + ".md").replaceAll(path.sep, "/");
 
-export const getMarkdownContent = async (file) => {
+export const getMarkdownContent = async (file, linkBasePath?: string) => {
   const fileContents = await fs.promises.readFile(
     file.replaceAll(path.sep, "/"),
     {
@@ -32,7 +32,9 @@ export const getMarkdownContent = async (file) => {
   );
   const matterResult = matter(fileContents);
 
-  const processedContent = await markdownToHtml().process(matterResult.content);
+  const processedContent = await markdownToHtml(linkBasePath).process(
+    matterResult.content
+  );
   const contentHtml = processedContent.toString();
 
   const processedTableOfContents = await markdownToToc().process(

@@ -6,7 +6,8 @@ import { MarkdownLayout } from "../components/markdown-layout";
 
 export const getStaticProps = async ({}: GetStaticPropsContext) => {
   const data = await getMarkdownContent(
-    path.join(process.cwd(), "..", "README.md")
+    path.join(process.cwd(), "..", "README.md"),
+    process.env.NEXT_PUBLIC_BASE_PATH
   );
 
   return {
