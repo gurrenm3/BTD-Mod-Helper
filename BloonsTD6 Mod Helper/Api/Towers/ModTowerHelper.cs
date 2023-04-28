@@ -82,9 +82,7 @@ public static partial class ModTowerHelper
 
     internal static TowerModel CreateTowerModel(ModTower modTower, int[] tiers)
     {
-        var towerModel = modTower.GetDefaultTowerModel().Duplicate();
-        towerModel.tiers = tiers;
-        towerModel.tier = tiers.Max();
+        var towerModel = modTower.GetDefaultTowerModel(tiers).Duplicate();
         towerModel.name = modTower.TowerId(tiers);
 
         // add the names to applied upgrades

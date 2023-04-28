@@ -10,7 +10,7 @@ import {
   getMarkdownPaths,
   toMdPath,
 } from "../../lib/markdown";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MarkdownLayout } from "../../components/markdown-layout";
 
 const wikiDirectory = path.join(process.cwd(), "..", "Wiki");
@@ -54,6 +54,12 @@ export const getStaticProps = async ({
 export default ({
   data,
   sidebar,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <MarkdownLayout data={data} sidebar={sidebar} />;
-};
+}: InferGetStaticPropsType<typeof getStaticProps>) => (
+  <MarkdownLayout
+    data={data}
+    sidebar={sidebar}
+    description={
+      "Wiki for the modding api for BloonsTD6. Learn how to download, install and make BTD6 mods."
+    }
+  />
+);

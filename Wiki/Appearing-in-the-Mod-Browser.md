@@ -63,7 +63,7 @@ AuthorRegex = "\\bAuthor\\s*=\\s*\"(.+)\";?[\n\r]+";
 SubPathRegex = "\\bSubPath\\s*=\\s*\"(.+)\";?[\n\r]+";
 ```
 
-</details/>
+</details>
 
 
 If you do use the *.cs way, you can also then directly use the values in your MelonInfoAttribute, so you only have to keep track of them in one place
@@ -101,6 +101,8 @@ If you do use the *.cs way, you can also then directly use the values in your Me
 `SquareIcon` (bool): Makes your icon draw as constrained within panels rather than being allowed to slightly overflow.
 
 `SubPath` (string): See Experimental: MonoRepo support below 
+
+`Dependencies` (string): Comma separated list of strings for what other dependencies from the Mod Browser this mod has (other than Mod Helper). Reference mods using the "owner/repository" format, using the GitHub owner name (not the mod's display Author) and the GitHub repository name (not the mod's display name). Example: "doombubbles/paths-plus-plus" or  "doombubbles/paths-plus-plus,doombubbles/ultimate-crosspathing"
 
 ## Updating
 

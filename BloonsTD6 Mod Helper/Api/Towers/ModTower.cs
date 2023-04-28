@@ -64,17 +64,13 @@ public abstract partial class ModTower
     }
 
     /// <summary>
-    /// Gets the base 0-0-0 TowerModel for this Tower
-    /// <br/>
-    /// Starts with the <see cref="BaseTower"/>, modifies its default properties as needed,
-    /// then calls <see cref="ModifyBaseTowerModel"/> on it.
+    /// Gets the base TowerModel for this Tower to use at the given tiers
     /// </summary>
     /// <returns>The 0-0-0 TowerModel for this Tower</returns>
-    internal virtual TowerModel GetDefaultTowerModel()
+    internal virtual TowerModel GetDefaultTowerModel(int[] tiers = null)
     {
-        var towerModel = !string.IsNullOrEmpty(BaseTower)
-            ? BaseTowerModel.MakeCopy(Id)
-            : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
+        tiers ??= new[] {0, 0, 0};
+        var towerModel = GetBaseTowerModel(tiers);
         towerModel.name = Id;
 
         towerModel.appliedUpgrades = new Il2CppStringArray(0);
@@ -84,8 +80,8 @@ public abstract partial class ModTower
         towerModel.dontDisplayUpgrades = false;
         towerModel.powerName = null;
 
-        towerModel.tier = 0;
-        towerModel.tiers = new[] {0, 0, 0};
+        towerModel.tier = tiers.Max();
+        towerModel.tiers = tiers;
 
         towerModel.mods = DefaultMods
             .Select(s => new ApplyModModel($"{Id}Upgrades", s, ""))
@@ -174,6 +170,24 @@ public abstract partial class ModTower
     /// <param name="defaultClosed">Whether it'd be naturally closed or not</param>
     /// <returns>Whether the upgrade path should be closed, or null for no change</returns>
     public virtual bool? IsUpgradePathClosed(TowerToSimulation tower, int path, bool defaultClosed) => null;
+
+    /// <summary>
+    /// Allows you to change the base TowerModel your tower will use at different tiers. Note that you'd need to be
+    /// careful if you entirely changed the base tower you're working with at different tiers, as it will still attempt
+    /// to apply all the appropriate upgrades. If you would like a ModUpgrade to only have an effect at a given tier,
+    /// you could do something like:
+    /// <code>
+    /// public override void ApplyUpgrade(TowerModel towerModel) {
+    ///     if (towerModel.tiers[Path] != Tier) return;
+    ///     ...
+    /// }
+    /// </code>
+    /// </summary>
+    /// <param name="tiers">Length 3 array of Top/Mid/Bot tiers</param>
+    /// <returns>The base TowerModel to use</returns>
+    public virtual TowerModel GetBaseTowerModel(int[] tiers) => !string.IsNullOrEmpty(BaseTower)
+        ? BaseTowerModel.MakeCopy(Id)
+        : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
 }
 
 /// <summary>

@@ -1,0 +1,54 @@
+.btd6-panel {
+  border-image-slice: 60 fill;
+  border-image-width: 1rem;
+  padding: .75rem;
+}
+
+@media (min-width: 992px) {
+  .btd6-panel.main-panel {
+    box-shadow: 0 .125rem .25rem .25rem rgba(0, 0, 0, 0.2);
+  }
+}
+
+[data-theme="light"] .btd6-panel {
+  color: white;
+  background-color: transparent;
+  border-radius: 1.2rem;
+  border-color: transparent !important;
+}
+
+[data-theme="light"] .btd6-panel  a:not(.nav-link):not(.navbar-brand):not(.text-outline-black) {
+  font-weight: bolder;
+}
+
+.btd6-button {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  aspect-ratio: 1;
+  box-shadow: none !important;
+  line-height: 1rem;
+}
+
+[data-theme="light"] .btd6-button {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: white !important;
+}
+
+[data-theme="dark"] .btd6-button {
+  border-color: white;
+}
+
+.btd6-button.long {
+  aspect-ratio: 3;
+}
+
+.btd6-button:active:hover {
+  transform: scale(95%, 95%);
+  transition-duration: 50ms;
+  transition-property: transform;
+}
+
+.btd6-panel.blue-insert-round {
+  border-image-width: 2rem;
+}

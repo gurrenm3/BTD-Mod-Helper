@@ -1,4 +1,4 @@
-##### [Home](/wiki)
+##### [Home](/wiki/Home)
 
 ###### Starting BTD Modding
 
@@ -17,21 +17,19 @@
 
 ###### 3.0 Features
 
-[**Appearing in the Mod Browser**](/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-(ModHelperData))
+[**Appearing in the Mod Browser**](/wiki/Appearing-in-the-Mod-Browser)
 
-[Making a Custom Bloon](/wiki/%5B3.0%5D-Making-a-Custom-Bloon)
+[Making a Custom Bloon](/wiki/Making-a-Custom-Bloon)
 
-[Making a Custom Game Mode](/wiki/%5B3.0%5D-Making-a-Custom-Game-Mode)
+[Making a Custom Game Mode](/wiki/Making-a-Custom-Game-Mode)
 
-[Making a Custom Round Set](/wiki/%5B3.0%5D-Making-a-Custom-Round-Set)
+[Making a Custom Round Set](/wiki/Making-a-Custom-Round-Set)
 
-[Custom UI (ModHelperComponents)](/wiki/%5B3.0%5D-Custom-UI-(ModHelperComponents))
+[Custom UI (ModHelperComponents)](/wiki/Custom-UI)
 
-[Custom Menu Screens](/wiki/%5B3.0%5D-Custom-Menu-Screens)
+[Custom Menu Screens](/wiki/Custom-Menu-Screens)
 
-[Custom Load Tasks](/wiki/%5B3.0%5D-Custom-Load-Tasks)
-
-[Custom Byte Loaders](/wiki/%5B3.0%5D-Custom-Byte-Loaders)
+[Custom Byte Loaders](/wiki/Custom-Byte-Loaders)
 
 ###### BTD Modding Info
 
@@ -51,12 +49,10 @@
 
 [Custom Textures and Displays](/wiki/Custom-Textures-and-Displays)
 
-[In Game Mod Settings](/wiki/%5B3.0%5D-Mod-Settings)
+[In Game Mod Settings](/wiki/Mod-Settings)
 
 ###### Extension Methods
 
 [Common Extension Methods](/wiki/Common-Extension-Methods)
-
-[JSON Serialization](/wiki/JSON-Serializer)
 
 [Array Extension Methods](/wiki/Array-extension-methods)

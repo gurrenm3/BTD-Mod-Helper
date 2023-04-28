@@ -736,6 +736,24 @@ Tier of upgrade
 #### Returns
 [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsVanillaTower(thisTowerModel)'></a>
+
+## TowerModelExt.IsVanillaTower(this TowerModel) Method
+
+Gets whether a Tower/Hero is a base one added by the vanilla game.
+
+```csharp
+public static bool IsVanillaTower(this TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsVanillaTower(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.MakeCopy(thisTowerModel,string,bool,string)'></a>
 
 ## TowerModelExt.MakeCopy(this TowerModel, string, bool, string) Method

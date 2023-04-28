@@ -2,7 +2,7 @@
 
 Creating custom Bloons comes in the form of creating classes that extend `ModBloon`.
 
-If you want to add a `ModBloon` to the game in a natural way, consider [Making a Custom Round Set](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Making-a-Custom-Round-Set) / [Making a Custom Game Mode](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Making-a-Custom-Game-Mode).
+If you want to add a `ModBloon` to the game in a natural way, consider [Making a Custom Round Set](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Round-Set) / [Making a Custom Game Mode](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Game-Mode).
 
 # [ModBloon](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Api.Bloons.ModBloon.md)
 

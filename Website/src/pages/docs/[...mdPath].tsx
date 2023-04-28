@@ -56,6 +56,11 @@ export default ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => (
         overflow-wrap: anywhere;
       }
     `}</style>
-    <MarkdownLayout data={data} />
+    <MarkdownLayout
+      data={data}
+      description={
+        "Documentation for the modding api for BloonsTD6. Learn how to make BTD6 mods using BTD Mod Helper."
+      }
+    />
   </>
 );

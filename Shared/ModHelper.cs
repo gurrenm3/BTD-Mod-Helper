@@ -16,11 +16,12 @@ public static class ModHelper
     #region ModHelperData for the Mod Helper
 
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.1.6";
+    internal const string Version = "3.1.7";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description = "A powerful and easy to use API for modding BTD6. Also the mod that is allowing all of this UI to happen right now :P";
     internal const string DllName = "Btd6ModHelper.dll";
+    internal const string XmlName = "Btd6ModHelper.xml";
     internal const string Author = "Gurrenm4 and Doombubbles";
 
     #endregion
@@ -68,7 +69,7 @@ public static class ModHelper
     /// Active mods that use ModHelper functionality
     /// </summary>
     public static IEnumerable<BloonsMod> Mods =>
-        mods ??= Melons.OfType<BloonsMod>().OrderByDescending(mod => mod.Priority);
+        mods ??= Melons.OfType<BloonsMod>().OrderBy(mod => mod.Priority);
 
     /// <summary>
     /// All active mods, whether they're Mod Helper or not
@@ -78,7 +79,7 @@ public static class ModHelper
 
     internal static void LoadAllMods()
     {
-        foreach (var mod in Mods.OrderByDescending(mod => mod.Priority))
+        foreach (var mod in Mods.OrderBy(mod => mod.Priority))
         {
             try
             {
@@ -226,7 +227,7 @@ public static class ModHelper
 
     private static void PerformAdvancedModHook<T>(Action<T> action) where T : AdvancedBloonsTD6Mod
     {
-        foreach (var mod in Mods.OfType<T>().OrderByDescending(mod => mod.Priority))
+        foreach (var mod in Mods.OfType<T>().OrderBy(mod => mod.Priority))
         {
 #if BloonsTD6
             var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();

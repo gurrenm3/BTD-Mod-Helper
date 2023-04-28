@@ -3,12 +3,14 @@ using Il2CppNinjaKiwi.NKMulti;
 using Il2CppSystem.Threading.Tasks;
 namespace BTD_Mod_Helper.Patches
 {
-    [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Connect))]
+    // [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Connect))]
     internal class NKMultiGameInterface_Connect
     {
         [HarmonyPostfix]
+        [Obsolete]
         public static void Postfix(NKMultiGameInterface __instance, ref Task __result) => __result.ContinueWith(new Action<Task>(_ => OnConnectTaskFinished(__instance)));
 
+        [Obsolete]
         private static void OnConnectTaskFinished(NKMultiGameInterface instance)
         {
             if (instance.IsConnected)
@@ -23,8 +25,10 @@ namespace BTD_Mod_Helper.Patches
             }
         }
 
+        [Obsolete]
         private static void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId) => ModHelper.PerformHook(mod => mod.OnPeerDisconnected(nkGi, peerId));
 
+        [Obsolete]
         private static void OnPeerConnected(NKMultiGameInterface nkGi, int peerId) => ModHelper.PerformHook(mod => mod.OnPeerConnected(nkGi, peerId));
     }
 }

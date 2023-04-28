@@ -87,9 +87,9 @@ public abstract class ModHero : ModTower
         }
     }
 
-    internal override TowerModel GetDefaultTowerModel()
+    internal override TowerModel GetDefaultTowerModel(int[] tiers = null)
     {
-        var baseTowerModel = base.GetDefaultTowerModel();
+        var baseTowerModel = base.GetDefaultTowerModel(tiers);
         if (!baseTowerModel.HasBehavior<HeroModel>())
         {
             // Unrelated to the actual XpRatio weirdly enough

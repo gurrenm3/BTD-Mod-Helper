@@ -255,5 +255,5 @@ public static partial class TowerModelExt
     public static bool IsVanillaTower(this TowerModel towerModel) =>
         VanillaSprites.ByName.ContainsKey(towerModel.IsHero()
             ? "HeroIcon" + towerModel.baseId
-            : towerModel.baseId + "000");
+            : towerModel.baseId.Replace(TowerType.WizardMonkey, "Wizard") + "000");
 }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using MelonLoader.Utils;
 namespace BTD_Mod_Helper.Api.ModMenu;
 
 /// <summary>
@@ -156,5 +157,23 @@ public class ModHelperHttp
         {
             // ignored
         }
+    }
+
+    internal static void DownloadDocumentationXml()
+    {
+        const string url =
+            $"https://github.com/{ModHelper.RepoOwner}/{ModHelper.RepoName}/releases/download/{ModHelper.Version}/{ModHelper.XmlName}";
+        Task.Run(async () =>
+        {
+            try
+            {
+                await DownloadFile(url, Path.Combine(MelonEnvironment.ModsDirectory, ModHelper.XmlName));
+                ModHelper.Msg($"Downloaded {ModHelper.XmlName} for v{ModHelper.Version}");
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
+        });
     }
 }

@@ -1,6 +1,8 @@
-import React, { ComponentPropsWithoutRef, FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import {
+  Button,
   Container,
+  Dropdown,
   Navbar,
   NavbarBrand,
   NavItem,
@@ -13,18 +15,28 @@ import Logo from "public/BloonsTD6 Mod Helper/Resources/ModsBtn.png";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 import { useRouter } from "next/router";
 import NavbarToggle from "react-bootstrap/NavbarToggle";
-import { switchSize } from "./layout";
+import { ModHelperScrollBars, ScrollBarsContext, switchSize } from "./layout";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { useUpdate } from "react-use";
+import DropdownToggle from "react-bootstrap/DropdownToggle";
+import DropdownMenu from "react-bootstrap/DropdownMenu";
+import maps from "../data/maps.json";
+import DropdownItem from "react-bootstrap/DropdownItem";
+import { BackgroundContext } from "./background-image";
+import { List } from "react-bootstrap-icons";
+import cx from "classnames";
 
 const ModHelperNavItem: FunctionComponent<
-  NavLinkProps & LinkProps & { path: string }
-> = ({ path, title, href, disabled, children, ...props }) => (
+  Omit<NavLinkProps, "active"> & LinkProps & { path: string; active?: string }
+> = ({ path, title, href, disabled, children, active, ...props }) => (
   <NavItem data-toggle="tooltip" title={title}>
     <NavLink
       as={Link}
       href={href}
       disabled={disabled}
       active={
-        !disabled && (href === "/" ? href === path : path.startsWith(href))
+        !disabled &&
+        (href === "/" ? href === path : path.startsWith(active || href))
       }
       className={"text-outline-black fs-3 py-0"}
       {...props}
@@ -38,12 +50,22 @@ export const ModHelperNavBar: FunctionComponent = () => {
   const router = useRouter();
   const path = router?.asPath ?? "";
 
+  const theme =
+    typeof document !== "undefined"
+      ? document.documentElement.getAttribute("data-theme") || "light"
+      : typeof localStorage !== "undefined"
+      ? localStorage.getItem("theme") || "light"
+      : "light";
+
+  const update = useUpdate();
+
   return (
-    <Container
-      fluid={switchSize}
-      className={`p-2 my-${switchSize}-4 main-black-panel`}
-    >
-      <Navbar variant={"dark"} expand={"md"} className={"luckiest-guy p-0"}>
+    <Container fluid={switchSize} className={`p-0 my-${switchSize}-4`}>
+      <Navbar
+        variant={"dark"}
+        expand={"md"}
+        className={"luckiest-guy d-flex main-panel btd6-panel blue"}
+      >
         <NavbarBrand
           href={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/"}
           className={"py-0"}
@@ -62,34 +84,107 @@ export const ModHelperNavBar: FunctionComponent = () => {
         >
           BTD Mod Helper
         </NavbarBrand>
-        <NavbarToggle label={"toggle"}>
-          <span className="navbar-toggler-icon" />
+        <div className={"ms-auto me-4"}>
+          <DarkModeSwitch
+            className={"dark-mode-switch"}
+            checked={theme === "dark"}
+            sunColor={"rgba(255,255,255,.75)"}
+            moonColor={"rgba(255,255,255,.75)"}
+            onChange={() => {
+              const newTheme = theme === "dark" ? "light" : "dark";
+              localStorage.setItem("theme", newTheme);
+              document.documentElement.setAttribute("data-theme", newTheme);
+              update();
+            }}
+            size={"2rem"}
+          />
+        </div>
+        <NavbarToggle label={"toggle"} className={"btd6-button blue p-2"}>
+          <List size={"2rem"} className={"text-white"} />
         </NavbarToggle>
-        <NavbarCollapse>
+        <NavbarCollapse className={"flex-grow-0"}>
           <div className={"navbar-nav ms-auto text-center"}>
             <ModHelperNavItem path={path} href={"/"}>
               Home
             </ModHelperNavItem>
-            <ModHelperNavItem path={path} href={"/wiki"}>
+            <ModHelperNavItem path={path} href={"/wiki/Home"} active={"/wiki"}>
               Wiki
             </ModHelperNavItem>
-            <ModHelperNavItem path={path} href={"/docs"}>
+            <ModHelperNavItem
+              path={path}
+              href={"/docs/README"}
+              active={"/docs"}
+            >
               Docs
             </ModHelperNavItem>
             {/*<ModHelperNavItem path={path} href={""} disabled={true}>
               Download
             </ModHelperNavItem>*/}
-            <ModHelperNavItem
-              path={path}
-              href={""}
-              disabled={true}
-              title={"Coming Soon!"}
-            >
+            <ModHelperNavItem path={path} href={"/mod-browser"}>
               Mod Browser
             </ModHelperNavItem>
           </div>
         </NavbarCollapse>
       </Navbar>
+    </Container>
+  );
+};
+
+export const ModHelperFooter: FunctionComponent<{
+  backToTop?: () => void;
+  className?: string;
+}> = ({ backToTop, className }) => {
+  const scrollbars = useContext(ScrollBarsContext);
+  const [map, setMap] = useContext(BackgroundContext);
+
+  return (
+    <Container
+      fluid={switchSize}
+      className={cx(
+        "main-panel btd6-panel blue",
+        `my-${switchSize}-4`,
+        "d-flex justify-content-between align-items-center",
+        className
+      )}
+    >
+      <Button
+        variant={"outline-light"}
+        onClick={() => {
+          scrollbars?.scrollTop(0);
+          backToTop?.();
+        }}
+        className={"btd6-button blue long align-self-stretch p-3"}
+      >
+        Back to Top
+      </Button>
+      <div className={`text-center d-none d-sm-block fs-larger`}>
+        To learn how to download BTD Mod Helper and install mods,{" "}
+        <Link href={"/wiki/Install-Guide#main-content"}>click here</Link>
+      </div>
+      <Dropdown drop={"up"} align={"end"} className={"text-end"}>
+        <DropdownToggle
+          className={"btd6-panel blue-insert-round"}
+          variant={"outline-light"}
+        >
+          Background
+        </DropdownToggle>
+        <DropdownMenu
+          className={"non-main-panel bg-black btd6-panel blue-insert pe-0"}
+        >
+          <ModHelperScrollBars>
+            {Object.keys(maps).map((key) => (
+              <DropdownItem
+                key={key}
+                active={key === map}
+                className={"p-0 me-3 w-auto text-white"}
+                onClick={() => setMap(key)}
+              >
+                {maps[key]}
+              </DropdownItem>
+            ))}
+          </ModHelperScrollBars>
+        </DropdownMenu>
+      </Dropdown>
     </Container>
   );
 };

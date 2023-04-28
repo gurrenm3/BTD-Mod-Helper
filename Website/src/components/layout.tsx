@@ -1,34 +1,29 @@
 import React, {
   createContext,
+  forwardRef,
   FunctionComponent,
+  HTMLAttributes,
   PropsWithChildren,
   useRef,
 } from "react";
-import BackgroundImage from "./background-image";
-import { Scrollbars } from "react-custom-scrollbars-2";
+import BackgroundImage, { backgroundOnScroll } from "./background-image";
+import { ScrollbarProps, Scrollbars } from "react-custom-scrollbars-2";
 import { use100vh } from "react-div-100vh";
-import { ModHelperNavBar } from "./navbar";
-import ModHelperHelmet from "./helmet";
-import { Container } from "react-bootstrap";
+import { ModHelperFooter, ModHelperNavBar } from "./navbar";
 import SkipLink from "./skip-link";
+import cx from "classnames";
 
-export const switchSize = "xl";
+export const switchSize = "lg";
 
 export const ScrollBarsContext = createContext(null as Scrollbars | null);
 
-const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  const height = use100vh() ?? 1000;
-
-  const ref = useRef<Scrollbars | null>(null);
-
-  return (
-    <>
-      <ModHelperHelmet />
+export const ModHelperScrollBars = forwardRef<Scrollbars, ScrollbarProps>(
+  ({ children, ...props }, ref) => {
+    return (
       <Scrollbars
         ref={ref}
         universal
         autoHeight
-        autoHeightMax={height}
         autoHide
         autoHideTimeout={1000}
         autoHideDuration={200}
@@ -56,25 +51,41 @@ const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
             }}
           />
         )}
+        {...props}
       >
-        <ScrollBarsContext.Provider value={ref.current}>
-          <div
-            style={{
-              height,
-            }}
-            className={"d-flex flex-column"}
-          >
-            <SkipLink />
-            <BackgroundImage />
-            <ModHelperNavBar />
-            <Container id={"main"} className={"main-black-panel m-0"}>
-              <hr className={"d-xl-none m-0 bg-black"} />
-            </Container>
-            {children}
-          </div>
-        </ScrollBarsContext.Provider>
+        {children}
       </Scrollbars>
-    </>
+    );
+  }
+);
+
+interface LayoutProps
+  extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
+  backToTop?: () => void;
+  footerClassName?: string;
+}
+
+const Layout: FunctionComponent<LayoutProps> = ({
+  children,
+  className,
+  style,
+  backToTop,
+  footerClassName,
+  ...props
+}) => {
+  const height = use100vh() ?? 1000;
+
+  return (
+    <div
+      className={cx("d-flex", "flex-column", className)}
+      style={{ minHeight: height, ...style }}
+      {...props}
+    >
+      <SkipLink />
+      <ModHelperNavBar />
+      {children}
+      <ModHelperFooter backToTop={backToTop} className={footerClassName} />
+    </div>
   );
 };
 

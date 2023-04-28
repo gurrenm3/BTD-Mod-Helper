@@ -54,6 +54,20 @@ internal partial class ModHelperData
     internal string StarsUrl => $"https://www.github.com/{RepoOwner}/{RepoName}/stargazers";
     private float splittingStarsAmongst = 1;
     internal int Stars => (int) Math.Ceiling((Repository?.StargazersCount ?? 0) / splittingStarsAmongst);
+    internal long UpdatedAtUtc
+    {
+        get
+        {
+            var updatedAt = (Repository.PushedAt ?? Repository.CreatedAt).ToUnixTimeSeconds();
+            if (splittingStarsAmongst > 1)
+            {
+                var splitBetween = (long) Math.Ceiling(Math.Sqrt(splittingStarsAmongst));
+                var since = DateTimeOffset.Now.ToUnixTimeSeconds();
+                updatedAt -= since * splitBetween;
+            }
+            return updatedAt;
+        }
+    }
 
     internal string RequiredRepoDataError
     {
@@ -359,7 +373,7 @@ internal partial class ModHelperData
         return Enumerable.Empty<ModHelperData>();
     }
 
-    private string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
+    internal string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
 
     public List<ModHelperData> FindDependencies(List<ModHelperData> ignored = null)
     {

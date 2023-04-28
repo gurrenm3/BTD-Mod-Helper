@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 namespace BTD_Mod_Helper;
 
@@ -241,38 +242,23 @@ public abstract class BloonsMod : MelonMod, IModContent
     public virtual void OnInitialize()
     {
     }
-
-    #region Input Hooks
-
+    
+    
     /// <summary>
-    /// Called on the frame that a key starts being held
-    ///
-    /// Equivalent to a HarmonyPostFix on Input.GetKeyDown
+    /// Called when the settings for your mod are saved.
     /// </summary>
-    [Obsolete("Use a ModSettingHotkey or Input.GetKeyDown within OnUpdate")]
-    public virtual void OnKeyDown(KeyCode keyCode)
+    /// <param name="settings">The json representation of the settings about to be saved</param>
+    public virtual void OnSaveSettings(JObject settings)
     {
+        
     }
-
+    
     /// <summary>
-    /// Called on the frame that a key stops being held
-    ///
-    /// Equivalent to a HarmonyPostFix on Input.GetKeyUp
+    /// Called when the settings for your mod are loaded
     /// </summary>
-    [Obsolete("Use a ModSettingHotkey or Input.GetKeyUp within OnUpdate")]
-    public virtual void OnKeyUp(KeyCode keyCode)
+    /// <param name="settings">The json representation of the settings that were just loaded</param>
+    public virtual void OnLoadSettings(JObject settings)
     {
+        
     }
-
-    /// <summary>
-    /// Called every frame that a key is being held 
-    ///
-    /// Equivalent to a HarmonyPostFix on Input.GetKey
-    /// </summary>
-    [Obsolete("Use a ModSettingHotkey or Input.GetKey within OnUpdate")]
-    public virtual void OnKeyHeld(KeyCode keyCode)
-    {
-    }
-
-    #endregion
 }

@@ -1,4 +1,3 @@
-import { GetStaticProps } from "next";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { MarkdownLayout } from "../../components/markdown-layout";

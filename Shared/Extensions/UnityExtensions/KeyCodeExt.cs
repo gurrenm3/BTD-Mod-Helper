@@ -22,6 +22,10 @@ internal static class KeyCodeExt
     internal static KeyCode GetKeyCode(this string path)
     {
         var key = path.Split('/').Last();
+        if (int.TryParse(key, out _))
+        {
+            key = "Alpha" + key;
+        }
         return Enum.TryParse(key, true, out KeyCode keyCode) ? keyCode : default;
     }
 }

@@ -22,10 +22,21 @@ public class ModSettingHotkey : ModSetting<string>
         hotKey = new HotKey(modifier, key.GetPath());
     }
 
+    internal override void Load(object val)
+    {
+        base.Load(val);
+        UpdateHotkeyFromValue();
+    }
+
     /// <inheritdoc />
     public override void SetValue(object val)
     {
         base.SetValue(val);
+        UpdateHotkeyFromValue();
+    }
+
+    private void UpdateHotkeyFromValue()
+    {
         var array = value.Split('-');
         hotKey.path = array[0];
         hotKey.modifierKey = Enum.TryParse(array[1], out HotkeyModifier m) ? m : default;
@@ -43,34 +54,25 @@ public class ModSettingHotkey : ModSetting<string>
                 return func(KeyCode.LeftAlt) || func(KeyCode.RightAlt);
             default:
             case HotkeyModifier.None:
-                return func(hotKey.path.GetKeyCode());
+                return true;
         }
     }
 
     /// <summary>
     /// Returns whether the Hotkey was pressed down on this frame
     /// </summary>
-    public bool JustPressed()
-    {
-        return Modifier(Input.GetKey) && Input.GetKeyDown(hotKey.path.GetKeyCode());
-    }
+    public bool JustPressed() => Modifier(Input.GetKey) && Input.GetKeyDown(hotKey.path.GetKeyCode());
 
     /// <summary>
     /// Returns whether the Hotkey is currently being pressed / held
     /// </summary>
-    public bool IsPressed()
-    {
-        return Modifier(Input.GetKey) && Input.GetKey(hotKey.path.GetKeyCode());
-    }
+    public bool IsPressed() => Modifier(Input.GetKey) && Input.GetKey(hotKey.path.GetKeyCode());
 
     /// <summary>
     /// Returns whether the Hotkey just went from being pressed to not being pressed on this frame
     /// </summary>
-    public bool JustReleased()
-    {
-        return Modifier(Input.GetKey) && Input.GetKeyUp(hotKey.path.GetKeyCode()) ||
-               Modifier(Input.GetKeyUp) && Input.GetKey(hotKey.path.GetKeyCode());
-    }
+    public bool JustReleased() => Modifier(Input.GetKey) && Input.GetKeyUp(hotKey.path.GetKeyCode()) ||
+                                  Modifier(Input.GetKeyUp) && Input.GetKey(hotKey.path.GetKeyCode());
 
     /// <inheritdoc />
     internal override bool OnSave()
@@ -117,8 +119,5 @@ public class ModSettingHotkey : ModSetting<string>
     /// <summary>
     /// Creates a new ModSettingHotkey from a KeyCode
     /// </summary>
-    public static implicit operator ModSettingHotkey(KeyCode key)
-    {
-        return new ModSettingHotkey(key);
-    }
+    public static implicit operator ModSettingHotkey(KeyCode key) => new(key);
 }

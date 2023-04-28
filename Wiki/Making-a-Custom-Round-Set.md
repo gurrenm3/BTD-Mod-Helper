@@ -1,6 +1,6 @@
 **This guide assumes that you already have at least a basic knowledge of C#, and have set up a modding environment as explained on this wiki.**
 
-A custom Round Set is just what it sounds like, a new collection of Rounds you can face alongside the vanilla default and ABR round sets. Round Sets can be used directly for any map if the "Show Roundset Changer" Mod Helper setting is enabled, or they can be used as part of a [Custom Game Mode](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Making-a-Custom-Game-Mode), something that actually adds a new Button in the mode select screen.
+A custom Round Set is just what it sounds like, a new collection of Rounds you can face alongside the vanilla default and ABR round sets. Round Sets can be used directly for any map if the "Show Roundset Changer" Mod Helper setting is enabled, or they can be used as part of a [Custom Game Mode](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Game-Mode), something that actually adds a new Button in the mode select screen.
 
 # [ModRoundSet](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Api.Bloons.ModRoundSet.md)
 
