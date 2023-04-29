@@ -8,7 +8,7 @@ internal class Bloon_Degrade
     [HarmonyPrefix]
     internal static bool Prefix(Bloon __instance)
     {
-        bool hasKey = SessionData.Instance.PoppedBloons.TryGetValue(__instance.bloonModel.id, out int amountPopped);
+        var hasKey = SessionData.Instance.PoppedBloons.TryGetValue(__instance.bloonModel.id, out var amountPopped);
         if (!hasKey)
             SessionData.Instance.PoppedBloons.Add(__instance.bloonModel.id, 0);
         SessionData.Instance.PoppedBloons[__instance.bloonModel.id] = amountPopped + 1;
@@ -17,7 +17,14 @@ internal class Bloon_Degrade
     [HarmonyPostfix]
     internal static void Postfix(Bloon __instance)
     {
-        if (ModBoss.Cache.ContainsKey(__instance.bloonModel.id))
-            ModBoss.Cache[__instance.bloonModel.id].OnPop(__instance);
+        try
+        {
+            if (ModBoss.Cache.TryGetValue(__instance.bloonModel.name, out var value))
+                value.OnPop(__instance);
+        }
+        catch (System.Exception e)
+        {
+            ModHelper.Error(e);
+        }
     }
 }

@@ -123,18 +123,18 @@ namespace BTD_Mod_Helper.Extensions
         public static List<WeaponModel> GetWeapons(this TowerModel towerModel)
         {
             var attackModels = towerModel.GetAttackModels();
-            if (attackModels is null)
-                return null;
-
-            if (!attackModels.Any())
-                return new List<WeaponModel>();
+            switch (attackModels)
+            {
+                case null:
+                    return null;
+                case {Count: 0}:
+                    return new List<WeaponModel>();
+            }
 
             var weaponModels = new List<WeaponModel>();
-            foreach (var attackModel in attackModels)
+            foreach (var weapons in attackModels.Select(attackModel => attackModel.weapons).Where(weapons => weapons != null))
             {
-                var weapons = attackModel.weapons;
-                if (weapons != null)
-                    weaponModels.AddRange(weapons);
+                weaponModels.AddRange(weapons);
             }
 
             return weaponModels;

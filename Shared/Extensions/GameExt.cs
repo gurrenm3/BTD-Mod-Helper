@@ -164,11 +164,11 @@ namespace BTD_Mod_Helper.Extensions
         {
             var msg = new NkhMsg
             {
-                MsgShowTime = displayTime,
-                NkhText = new NkhText
+                msgShowTime = displayTime,
+                nkhText = new NkhText
                 {
-                    Body = message,
-                    Title = title
+                    body = message,
+                    title = title
                 }
             };
 

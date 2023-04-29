@@ -23,6 +23,7 @@ public static class IEnumerableExt
         var il2CppList = new List<T>();
         foreach (var t in enumerable)
         {
+            
             il2CppList.Add(t);
         }
 

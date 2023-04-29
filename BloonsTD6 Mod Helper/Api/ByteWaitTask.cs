@@ -17,7 +17,7 @@ internal class ByteWaitTask : ModLoadTask
     /// <returns></returns>
     public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
-    public override bool ShowProgressBar => GetContent<ModByteLoader>().Any();
+    public override bool ShowProgressBar => GetContent<ModByteLoader>().Count > 0;
 
     internal static ByteWaitTask Instance { get; private set; }
 

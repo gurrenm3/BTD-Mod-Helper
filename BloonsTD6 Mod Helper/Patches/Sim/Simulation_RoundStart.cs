@@ -13,7 +13,7 @@ internal class Simulation_RoundStart
     {
         try
         {
-            ModHelper.PerformHook(mod => mod.OnRoundStart());    
+            ModHelper.PerformHook(mod => mod.OnRoundStart());
 
             var currentRound = InGame.instance.GetUnityToSimulation().GetCurrentRound() + 1;
 

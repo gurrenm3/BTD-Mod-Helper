@@ -11,9 +11,8 @@ internal class Blooon_Leaked
     {
         var result = true;
         SessionData.Instance.LeakedBloons.Add(__instance);
-        if (ModBoss.Cache.ContainsKey(__instance.bloonModel.id))
+        if (ModBoss.Cache.TryGetValue(__instance.bloonModel.id, out var boss))
         {
-            var boss = ModBoss.Cache[__instance.bloonModel.id];
             if (boss.AlwaysDefeatOnLeak)
             {
                 __instance.bloonModel.leakDamage = (float) InGame.instance.GetHealth() + InGame.instance.GetSimulation().shield.ValueFloat + 1;
@@ -29,9 +28,8 @@ internal class Blooon_Leaked
     internal static void Postfix(Bloon __instance)
     {
         ModHelper.PerformHook(mod => mod.PostBloonLeaked(__instance));
-        if (ModBoss.Cache.ContainsKey(__instance.bloonModel.id))
+        if (ModBoss.Cache.TryGetValue(__instance.bloonModel.id, out var boss))
         {
-            var boss = ModBoss.Cache[__instance.bloonModel.id];
             boss.OnLeak(__instance);
         }
     }

@@ -42,7 +42,7 @@ public sealed override string BaseBloon { get; }
 
 ## ModBoss.BlockRounds Property
 
-Whether the boss should block rounds from spawning
+Whether the boss should block rounds from spawning, behaving like a normal bloon
 
 ```csharp
 public virtual bool BlockRounds { get; }
@@ -116,18 +116,18 @@ public sealed override string RegrowsTo { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModBoss.SpawnDelay'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModBoss.Skulls'></a>
 
-## ModBoss.SpawnDelay Property
+## ModBoss.Skulls Property
 
-The delay(in seconds) before the boss spawns on a round defined in [SpawnRounds](BTD_Mod_Helper.Api.Bloons.ModBoss.md#BTD_Mod_Helper.Api.Bloons.ModBoss.SpawnRounds 'BTD_Mod_Helper.Api.Bloons.ModBoss.SpawnRounds')
+The number of skulls the boss has each round, goes (round, # of skulls)
 
 ```csharp
-public virtual float SpawnDelay { get; }
+public abstract System.Collections.Generic.Dictionary<int,int> Skulls { get; }
 ```
 
 #### Property Value
-[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBoss.SpawnRounds'></a>
 
@@ -154,20 +154,25 @@ public virtual float Speed { get; }
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+### Methods
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModBoss.UseIconAsDisplay'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModBoss.AddWaitPanel(BTD_Mod_Helper.Api.Components.ModHelperPanel)'></a>
 
-## ModBoss.UseIconAsDisplay Property
+## ModBoss.AddWaitPanel(ModHelperPanel) Method
 
-Whether this Bloon should use its Icon as its display
+Creates the panel that shows "Boss appears in X rounds"
 
 ```csharp
-public sealed override bool UseIconAsDisplay { get; }
+public virtual BTD_Mod_Helper.Api.Components.ModHelperPanel AddWaitPanel(BTD_Mod_Helper.Api.Components.ModHelperPanel holderPanel);
 ```
+#### Parameters
 
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-### Methods
+<a name='BTD_Mod_Helper.Api.Bloons.ModBoss.AddWaitPanel(BTD_Mod_Helper.Api.Components.ModHelperPanel).holderPanel'></a>
+
+`holderPanel` [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
+
+#### Returns
+[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBoss.ModifyForRound(BloonModel,int)'></a>
 
@@ -176,13 +181,13 @@ public sealed override bool UseIconAsDisplay { get; }
 Modifies the boss before it is spawned, based on the round
 
 ```csharp
-public virtual BloonModel ModifyForRound(BloonModel bloonModel, int round);
+public virtual BloonModel ModifyForRound(BloonModel bloon, int round);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Bloons.ModBoss.ModifyForRound(BloonModel,int).bloonModel'></a>
+<a name='BTD_Mod_Helper.Api.Bloons.ModBoss.ModifyForRound(BloonModel,int).bloon'></a>
 
-`bloonModel` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+`bloon` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBoss.ModifyForRound(BloonModel,int).round'></a>
 

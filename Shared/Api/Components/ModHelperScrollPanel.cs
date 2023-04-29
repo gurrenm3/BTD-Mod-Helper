@@ -68,6 +68,7 @@ public class ModHelperScrollPanel : ModHelperPanel
                 axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
                 axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)
         }, null, axis, spacing, padding);
+        
         scrollContent.SetParent(newPanel);
 
 #if BloonsTD6

@@ -177,12 +177,13 @@ public static partial class Il2CppReferenceArrayExt
     {
         try
         {
-            var result = referenceArray.First(item => item.IsType<TCast>());
+            referenceArray.First(item => item.IsType<TCast>());
         }
         catch (Exception)
         {
             return false;
         }
+        
 
         return true;
     }

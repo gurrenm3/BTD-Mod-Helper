@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
@@ -65,6 +66,14 @@ internal partial class MelonMain : BloonsTD6Mod
         }
     }
 
+    public override void OnInGameLoaded(InGame inGame)
+    {
+        if (ModBoss.Cache.Count > 0)
+        {
+            ModBossUI.Init();
+        }
+    }
+
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
@@ -94,9 +103,7 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             modHelperData.SaveToJson(ModHelper.DataDirectory);
         }
-
-        if (!scheduledInGamePatch) Schedule_InGame_Loaded();
-
+        
         foreach (var gameMode in Game.instance.model.mods)
         {
             if (gameMode.name.EndsWith("Only"))
@@ -122,34 +129,25 @@ internal partial class MelonMain : BloonsTD6Mod
         }
     }
 
-    private void Schedule_GameModel_Loaded()
-    {
-        TaskScheduler.ScheduleTask(
-            () => ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)),
-            () => Game.instance && Game.instance.model != null);
-    }
+    private static void Schedule_GameModel_Loaded() => TaskScheduler.ScheduleTask(
+        () => ModHelper.PerformHook(mod => mod.OnGameModelLoaded(Game.instance.model)),
+        () => Game.instance && Game.instance.model != null);
 
-    bool scheduledInGamePatch;
 
-    private void Schedule_InGame_Loaded()
-    {
-        scheduledInGamePatch = true;
-        TaskScheduler.ScheduleTask(() => ModHelper.PerformHook(mod => mod.OnInGameLoaded(InGame.instance)),
-            () => InGame.instance && InGame.instance.GetSimulation() != null);
-    }
+    private static void Schedule_InGame_Loaded() => TaskScheduler.ScheduleTask(() =>
+        {
+            ModHelper.PerformHook(mod => mod.OnInGameLoaded(InGame.instance));
+        },
+        () => InGame.instance && InGame.instance.GetSimulation() != null);
 
-    public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
-
-    public void Schedule_GameData_Loaded()
-    {
-        TaskScheduler.ScheduleTask(() => ModHelper.PerformHook(mod => mod.OnGameDataLoaded(GameData.Instance)),
-            () => GameData.Instance != null);
-    }
+    public static void Schedule_GameData_Loaded() => TaskScheduler.ScheduleTask(() => ModHelper.PerformHook(mod => mod.OnGameDataLoaded(GameData.Instance)),
+        () => GameData.Instance != null);
 
     public override void OnMainMenu()
     {
         Animations.Load();
         Fonts.Load();
+        Schedule_InGame_Loaded();
     }
 
     public override void OnLoadSettings(JObject settings)

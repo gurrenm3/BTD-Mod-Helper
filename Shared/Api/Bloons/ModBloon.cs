@@ -51,7 +51,7 @@ public abstract partial class ModBloon : NamedModContent
             .Where(display => display.Damage > 0)
             .OrderBy(display => display.Damage)
             .ToList();
-        if (damageDisplays.Any())
+        if (damageDisplays.Count > 0)
         {
             ApplyDamageStates(bloonModel, damageDisplays.Select(display => display.Id).ToList());
         }
@@ -60,7 +60,7 @@ public abstract partial class ModBloon : NamedModContent
         Game.instance.model.AddChildDependant(bloonModel);
         Game.instance.model.bloonsByName[bloonModel.name] = bloonModel;
         BloonModelCache[bloonModel.name] = bloonModel;
-        Cache[bloonModel.id] = this;
+        Cache[bloonModel.name] = this;
     }
 
     internal virtual ModBloon BaseModBloon => null;

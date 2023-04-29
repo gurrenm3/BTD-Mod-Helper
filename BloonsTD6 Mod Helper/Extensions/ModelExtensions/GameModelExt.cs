@@ -320,7 +320,7 @@ public static partial class GameModelExt
         foreach (var tower in towers)
         {
             var attacks = tower.GetAttackModels();
-            if (attacks != null && attacks.Any())
+            if (attacks != null && attacks.Count > 0)
                 attackModels.AddRange(attacks);
         }
 
@@ -337,7 +337,7 @@ public static partial class GameModelExt
 
         foreach (var weaponArray in attackModels.Select(attackModel => attackModel.weapons))
         {
-            if (weaponArray != null && weaponArray.Any())
+            if (weaponArray != null && weaponArray.Count > 0)
                 weaponModels.AddRange(weaponArray);
         }
 

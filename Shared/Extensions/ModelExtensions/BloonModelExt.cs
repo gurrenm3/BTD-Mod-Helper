@@ -111,7 +111,7 @@ namespace BTD_Mod_Helper.Extensions
             }
 
             var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
-            if (bloonSims is null || !bloonSims.Any())
+            if (bloonSims is null || bloonSims.Count == 0)
                 return Array.Empty<BloonToSimulation>().ToList();
 
             var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();

@@ -15,6 +15,6 @@ public static class DirectoryInfoExt
     public static FileInfo[] GetAllMelonMods(this DirectoryInfo directoryInfo)
     {
         var files = directoryInfo.GetFiles();
-        return !files.Any() ? Array.Empty<FileInfo>() : Array.FindAll(files, file => file.IsMelonMod());
+        return (files.Length <= 0) ? Array.Empty<FileInfo>() : Array.FindAll(files, file => file.IsMelonMod());
     }
 }

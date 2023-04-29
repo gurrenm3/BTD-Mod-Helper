@@ -184,7 +184,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         }
         lastMods = ModHelperGithub.Mods;
 
-        if (modsNeedRefreshing && currentMods.Any())
+        if (modsNeedRefreshing && currentMods.Count > 0)
         {
             MelonCoroutines.Start(UpdateModList());
             modsNeedRefreshing = false;

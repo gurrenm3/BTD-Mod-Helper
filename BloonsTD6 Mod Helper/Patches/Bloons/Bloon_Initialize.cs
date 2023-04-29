@@ -1,8 +1,5 @@
-﻿using BTD_Mod_Helper.Api.Bloons;
-using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Bloons;
+﻿using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Simulation.Bloons;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 namespace BTD_Mod_Helper.Patches.Bloons;
 
 [HarmonyPatch(typeof(Bloon), nameof(Bloon.Initialise))]

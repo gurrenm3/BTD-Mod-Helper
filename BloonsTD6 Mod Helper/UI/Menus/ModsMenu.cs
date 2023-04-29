@@ -261,7 +261,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModUpdateButton.gameObject.SetActive(modSelected.UpdateAvailable);
 
         selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
-                                                       bloonsMod.ModSettings.Any());
+                                                       bloonsMod.ModSettings.Count > 0);
 
         if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite)
         {

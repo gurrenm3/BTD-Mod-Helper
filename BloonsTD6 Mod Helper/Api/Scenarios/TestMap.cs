@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using Il2CppAssets.Scripts.Data.MapSets;
-using Il2CppAssets.Scripts.Models.Map;
-using Il2CppAssets.Scripts.Simulation.SMath;
-namespace BTD_Mod_Helper.Api.Scenarios;
+﻿namespace BTD_Mod_Helper.Api.Scenarios;
 
 /*internal class TestMap : ModMap
 {

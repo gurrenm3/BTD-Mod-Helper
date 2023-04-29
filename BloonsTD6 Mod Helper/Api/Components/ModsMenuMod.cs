@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.UI.Menus;
 using Il2CppAssets.Scripts.Unity.Menu;
@@ -82,7 +81,7 @@ internal static class ModsMenuModExt
                     ModsMenu.DisableSelectedMod();
                     break;
                 default:
-                    MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
+                    MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
                     break;
             }
         });
@@ -103,12 +102,12 @@ internal static class ModsMenuModExt
 
         if (melonMod is BloonsMod bloonsMod)
         {
-            if (bloonsMod.ModSettings.Any())
+            if (bloonsMod.ModSettings.Count > 0)
             {
                 mod.Settings.SetActive(true);
             }
 
-            if (bloonsMod.loadErrors.Any())
+            if (bloonsMod.loadErrors.Count > 0)
             {
                 mod.Warning.SetActive(true);
                 mod.Warning.Button.SetOnClick(() =>
@@ -167,7 +166,7 @@ internal static class ModsMenuModExt
             background = VanillaSprites.MainBGPanelYellow;
         else if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) == false)
             background = VanillaSprites.MainBgPanelHematite;
-        else if (data.Mod != null && !(data.Mod is BloonsMod)) background = VanillaSprites.MainBGPanelBlueNotches;
+        else if (data.Mod != null && data.Mod is not BloonsMod) background = VanillaSprites.MainBGPanelBlueNotches;
         return background;
     }
 }

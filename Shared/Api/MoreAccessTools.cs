@@ -22,7 +22,7 @@ public static class MoreAccessTools
     {
         var innerTypes = outerType.GetNestedTypes().Where(type => type.Name.Contains($"_{nestedTypeName}_")).ToArray();
 
-        if (!innerTypes.Any() || index >= innerTypes.Length || index < 0)
+        if (innerTypes.Length == 0 || index >= innerTypes.Length || index < 0)
         {
             ModHelper.Warning($"Failed to find nested type {nestedTypeName} within {outerType.Name} with index {0}");
             return null;

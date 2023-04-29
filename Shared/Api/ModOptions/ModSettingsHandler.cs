@@ -152,7 +152,7 @@ internal static class ModSettingsHandler
     {
         foreach (var mod in ModHelper.Mods)
         {
-            if (!mod.ModSettings.Any()) continue;
+            if (mod.ModSettings.Count == 0) continue;
 
             SaveModSettings(mod, initialSave);
         }

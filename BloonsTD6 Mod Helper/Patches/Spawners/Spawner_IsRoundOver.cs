@@ -5,40 +5,42 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 namespace BTD_Mod_Helper.Patches.Spawners;
 
-
-
 [HarmonyPatch(typeof(Spawner), nameof(Spawner.IsRoundOver))]
 internal static class Spawner_IsRoundOver
 {
     [HarmonyPrefix]
     private static bool Prefix(Spawner __instance, ref bool __result)
     {
-        if (__instance.IsCurrentSpawnRoundEmitting())
+        try
         {
-            return true;
-        }
-        
-        var aliveBloons = InGame.instance.GetAllBloonToSim().Select(x=>x.GetSimBloon()).ToList();
-        
-        var bossCount = aliveBloons.Count(bloon => bloon is not null && ModBoss.Cache.ContainsKey(bloon.bloonModel.id) && !ModBoss.Cache[bloon.bloonModel.id].BlockRounds);
-        
-        var bloonCount = aliveBloons.Count(bloon => bloon is not null && !ModBoss.Cache.ContainsKey(bloon.bloonModel.id));
-        
-        /*ModHelper.Msg("Boss Count: " + bossCount);
-        ModHelper.Msg("bloon Count: " + bloonCount);*/
-        
-        if (bossCount >= 1 && bloonCount == 0)
-        {
-            if (!Game.instance.GetPlayerProfile().inGameSettings.autoPlay)
+            if (__instance.IsCurrentSpawnRoundEmitting())
             {
-                Game.instance.GetPlayerProfile().inGameSettings.autoPlay = true;
-                InGame.instance.bridge.SetAutoPlay(true); //todo: better way to force rounds to keep coming
+                //__result = false;
+                //return false;
+                return true;
             }
 
-            __result = true;
-            return false;
+            var aliveBloons = InGame.instance.GetAllBloonToSim().Select(x => x.GetSimBloon()).ToList();
+
+            var activeBoss = aliveBloons.Any(bloon => bloon is not null && ModBoss.Cache.ContainsKey(bloon.bloonModel.id) && !ModBoss.Cache[bloon.bloonModel.id].BlockRounds);
+
+            if (activeBoss && !aliveBloons.Any(bloon => bloon is not null && !ModBoss.Cache.ContainsKey(bloon.bloonModel.id)))
+            {
+                if (!Game.instance.GetPlayerProfile().inGameSettings.autoPlay)
+                {
+                    Game.instance.GetPlayerProfile().inGameSettings.autoPlay = true;
+                    InGame.instance.bridge.SetAutoPlay(true); //TODO: better way to force rounds to keep coming
+                }
+
+                __result = true;
+                return false;
+            }
         }
-        
+        catch (System.Exception e)
+        {
+            ModHelper.Error(e);
+        }
+
         return true;
     }
 }

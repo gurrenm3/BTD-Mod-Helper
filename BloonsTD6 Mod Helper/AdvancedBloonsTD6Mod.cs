@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models.Bloons;
-using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
@@ -19,7 +18,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.U2D;
 using UnityEngine.UI;
-using InputManager = Il2CppAssets.Scripts.Simulation.Input.InputManager;
 using Removeable = Il2CppAssets.Scripts.Simulation.Track.Removeable;
 namespace BTD_Mod_Helper;
 
