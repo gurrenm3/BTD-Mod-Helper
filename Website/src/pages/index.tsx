@@ -6,8 +6,7 @@ import { MarkdownLayout } from "../components/markdown-layout";
 
 export const getStaticProps = async ({}: GetStaticPropsContext) => {
   const data = await getMarkdownContent(
-    path.join(process.cwd(), "..", "README.md"),
-    process.env.NEXT_PUBLIC_BASE_PATH
+    path.join(process.cwd(), "..", "README.md")
   );
 
   return {
@@ -17,15 +16,13 @@ export const getStaticProps = async ({}: GetStaticPropsContext) => {
   };
 };
 
-const Index = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return (
-    <MarkdownLayout data={data} noToc={true} noTitle={true}>
-      <div
-        className={"p-2 btd6-panel blue-insert-round mt-1"}
-        dangerouslySetInnerHTML={{ __html: data?.contentHtml ?? "" }}
-      />
-    </MarkdownLayout>
-  );
-};
+const Index = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => (
+  <MarkdownLayout
+    data={data}
+    noToc={true}
+    noTitle={true}
+    className={"p-3 my-2"}
+  />
+);
 
 export default Index;

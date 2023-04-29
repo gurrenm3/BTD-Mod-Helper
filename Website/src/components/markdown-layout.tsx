@@ -20,6 +20,7 @@ import Link from "next/link";
 import { getMarkdownContent } from "../lib/markdown";
 import { htmlToReact } from "./markdown";
 import ModHelperHelmet from "./helmet";
+import cx from "classnames";
 
 const ModHelperOffCanvas: FunctionComponent<
   PropsWithChildren<{
@@ -61,11 +62,12 @@ interface MarkdownLayoutProps {
   noToc?: boolean;
   noTitle?: boolean;
   description?: string;
+  className?: string;
 }
 
 export const MarkdownLayout: FunctionComponent<
   PropsWithChildren<MarkdownLayoutProps>
-> = ({ data, sidebar, noToc, noTitle, description, children }) => {
+> = ({ data, sidebar, noToc, noTitle, description, children, className }) => {
   const hasToc = !noToc && data?.tableOfContentsHtml?.includes("li");
   const [showToc, setShowToc] = useState(false);
   const [showWiki, setShowWiki] = useState(false);
@@ -166,7 +168,14 @@ export const MarkdownLayout: FunctionComponent<
             </>
           )}
           {children || (
-            <div className={"d-block btd6-panel blue-insert-round"}>
+            <div
+              className={cx(
+                "d-block",
+                "btd6-panel",
+                "blue-insert-round",
+                className
+              )}
+            >
               {content}
             </div>
           )}
