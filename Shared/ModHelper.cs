@@ -100,6 +100,9 @@ public static class ModHelper
     
     /// <summary>
     /// Gets a BloonsMod by its name, or returns null if none are loaded with that name
+    /// <br/>
+    /// In this case a mod's name is its Assembly Name, which is almost always the same as the file name, but for the
+    /// Mod Helper due to compatibility reasons it is "BloonsTD6 Mod Helper" rather than "Btd6ModHelper"
     /// </summary>
     public static BloonsMod GetMod(string name) => Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
 

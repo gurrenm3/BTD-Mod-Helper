@@ -36,7 +36,7 @@
                 InputAssemblies="@(InputAssemblies)"
                 TargetKind="Dll"
                 OutputFile="@(AssemblyFile)"
-                Internalize="true"
+                Internalize="false"
                 LibraryPath="@(LibraryPaths)"
         />
 

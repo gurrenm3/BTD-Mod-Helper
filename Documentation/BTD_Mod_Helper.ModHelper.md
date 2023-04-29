@@ -116,7 +116,10 @@ public static void Error<T>(object obj)
 
 ## ModHelper.GetMod(string) Method
 
-Gets a BloonsMod by its name, or returns null if none are loaded with that name
+Gets a BloonsMod by its name, or returns null if none are loaded with that name  
+<br/>  
+In this case a mod's name is its Assembly Name, which is almost always the same as the file name, but for the  
+Mod Helper due to compatibility reasons it is "BloonsTD6 Mod Helper" rather than "Btd6ModHelper"
 
 ```csharp
 public static BTD_Mod_Helper.BloonsMod GetMod(string name);
