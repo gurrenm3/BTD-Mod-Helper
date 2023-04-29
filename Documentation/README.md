@@ -139,6 +139,7 @@
 | :--- | :--- |
 | [ActionHelper](BTD_Mod_Helper.Api.Helpers.ActionHelper.md 'BTD_Mod_Helper.Api.Helpers.ActionHelper') | Class for converting actions and functions |
 | [CostHelper](BTD_Mod_Helper.Api.Helpers.CostHelper.md 'BTD_Mod_Helper.Api.Helpers.CostHelper') | Helper for scaling costs to difficulties |
+| [FileDialogHelper](BTD_Mod_Helper.Api.Helpers.FileDialogHelper.md 'BTD_Mod_Helper.Api.Helpers.FileDialogHelper') | Class to help with the usage of Native File Dialogs |
 | [FileIOHelper](BTD_Mod_Helper.Api.Helpers.FileIOHelper.md 'BTD_Mod_Helper.Api.Helpers.FileIOHelper') | Class replacing the original functionality of FileIOUtil before BTD6 update 33.0 |
 | [GameModelExporter](BTD_Mod_Helper.Api.Helpers.GameModelExporter.md 'BTD_Mod_Helper.Api.Helpers.GameModelExporter') | Class for handily exporting elements of the GameModel to json files |
 | [MapHelper](BTD_Mod_Helper.Api.Helpers.MapHelper.md 'BTD_Mod_Helper.Api.Helpers.MapHelper') | Contains helper methods for working with maps and custom maps. |

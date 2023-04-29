@@ -16,6 +16,7 @@ import { RootContent } from "hast";
 import rehypeSanitize from "rehype-sanitize";
 import { HtmlElementNode, TextNode, toc } from "@jsdevtools/rehype-toc";
 import { Parent } from "unist";
+import cx from "classnames";
 
 const rewrittenUrl = (href: string, basePath?: string) => {
   // Migrate Wiki links
@@ -110,8 +111,16 @@ export const htmlToReact = (sanitize?: boolean) =>
       createElement,
       Fragment,
       components: {
-        a: (props: any) =>
-          props.href ? <Link {...props} /> : <a {...props} />,
+        a: ({ className, href, ...props }: any) =>
+          href ? (
+            <Link
+              className={cx(className, "next-link")}
+              href={href}
+              {...props}
+            />
+          ) : (
+            <a className={className} {...props} />
+          ),
       },
     } as Options);
 
