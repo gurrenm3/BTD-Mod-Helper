@@ -1,2 +1,3 @@
 - `FileIOHelper.SaveObject` now will use `ReferenceLoopHandling.Ignore` by default
   - (More Alchemist TowerModels will now be included in the exported game data)
+- Added `ModTower.ShopTowerCount` override to easily set how many of a tower you can purchase at once in a standard game

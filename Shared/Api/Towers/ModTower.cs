@@ -136,6 +136,10 @@ public abstract partial class ModTower : NamedModContent
     /// </summary>
     public virtual bool AlwaysIncludeInChallenge => true;
 
+    /// <summary>
+    /// How many of this tower you can buy at once during a game. By default -1 for no limit.
+    /// </summary>
+    public virtual int ShopTowerCount => -1;
 
     /// <summary>
     /// Implemented by a ModTower to modify the base tower model before applying any/all ModUpgrades

@@ -55,7 +55,7 @@ public abstract partial class ModTower
             var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
             if (index >= 0)
             {
-                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, -1, 0);
+                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, ShopTowerCount, 0);
                 Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
             }
         }

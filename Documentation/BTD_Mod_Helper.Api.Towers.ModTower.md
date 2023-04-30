@@ -232,6 +232,19 @@ public virtual SpriteReference PortraitReference { get; }
 #### Property Value
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ShopTowerCount'></a>
+
+## ModTower.ShopTowerCount Property
+
+How many of this tower you can buy at once during a game. By default -1 for no limit.
+
+```csharp
+public virtual int ShopTowerCount { get; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.TopPathUpgrades'></a>
 
 ## ModTower.TopPathUpgrades Property
