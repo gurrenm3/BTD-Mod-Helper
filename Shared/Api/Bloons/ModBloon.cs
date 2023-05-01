@@ -205,8 +205,10 @@ public abstract partial class ModBloon : NamedModContent
         var i = 1f;
         foreach (var damageState in damageStates)
         {
+            var display = new ModDisplay2DImpl(mod, Id + i, damageState, Scale);
+            
             displayStates.Add(new DamageStateModel($"DamageStateModel_damage_state_{i}",
-                CreatePrefabReference(damageState), 1 - i / count));
+                CreatePrefabReference(display.Id), 1 - i / count));
             i++;
         }
 
