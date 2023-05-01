@@ -51,8 +51,17 @@ public abstract class ModUpgrade : NamedModContent
 
         try
         {
-            Game.instance.model.AddUpgrade(upgradeModel);
-            Cache[upgradeModel.name] = this;
+            if (Game.instance.model.upgradesByName.ContainsKey(upgradeModel.name))
+            {
+                var message = $"Duplicate Upgrade {upgradeModel.name}";
+                ModHelper.Error(message);
+                mod.loadErrors.Add(message);
+            }
+            else
+            {
+                Game.instance.model.AddUpgrade(upgradeModel);
+                Cache[upgradeModel.name] = this;
+            }
         }
         finally
         {

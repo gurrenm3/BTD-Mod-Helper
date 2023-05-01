@@ -380,6 +380,35 @@ Sound name (no .wav)
 [Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
 An AudioSoundReference
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference_T_(string)'></a>
+
+## ModContent.GetAudioSourceReference<T>(string) Method
+
+Gets an AudioSource reference for a given sound within a mod
+
+```csharp
+public static AudioSourceReference GetAudioSourceReference<T>(string name)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference_T_(string).T'></a>
+
+`T`
+
+The mod
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference_T_(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Sound name (no .wav)
+
+#### Returns
+[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+An AudioSoundReference
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsMod,string)'></a>
 
 ## ModContent.GetBundle(BloonsMod, string) Method
