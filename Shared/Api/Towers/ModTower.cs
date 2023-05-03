@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Towers;
@@ -149,6 +150,26 @@ public abstract partial class ModTower : NamedModContent
     /// <param name="towerModel">The Base Tower Model</param>
     public abstract void ModifyBaseTowerModel(TowerModel towerModel);
 
+    /// <summary>
+    /// Further modifies this tower when you go into a new match.
+    /// Useful for making conditional effects happen based on settings.
+    /// <br/>
+    /// The normal ApplyUpgrade effects for all upgrades will have already been applied on game start,
+    /// so this will simply modify all the TowerModels for this ModTower.
+    /// </summary>
+    /// <param name="towerModel">The Base Tower Model</param>
+    /// <param name="gameModes">What GameModes are active for the match</param>
+    public virtual void ModifyTowerModelForMatch(TowerModel towerModel, IReadOnlyList<ModModel> gameModes)
+    {
+    }
+
+    internal List<ModUpgrade> GetUpgradesForTiers(int[] tiers) => Upgrades.Cast<ModUpgrade>()
+        .Where(modUpgrade =>
+            modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
+        .OrderByDescending(modUpgrade => modUpgrade.Priority)
+        .ThenBy(modUpgrade => modUpgrade.Tier)
+        .ThenBy(modUpgrade => modUpgrade.Path)
+        .ToList();
 
     internal virtual string TowerId(int[] tiers)
     {

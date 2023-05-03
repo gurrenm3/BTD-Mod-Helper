@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity;
@@ -205,8 +206,22 @@ public abstract class ModUpgrade : NamedModContent
     /// The default ordering of upgrade application is to do them in ascending order of tier, doing Top then Mid
     /// then Bot at each tier. This can be changed using <see cref="Priority"/>.
     /// </summary>
-    /// <param name="towerModel"></param>
+    /// <param name="towerModel">The Tower Model</param>
     public abstract void ApplyUpgrade(TowerModel towerModel);
+
+    /// <summary>
+    /// Make this upgrade apply additional effects on a towerModel when you go into a new match.
+    /// Useful for making conditional effects happen based on settings.
+    /// <br/>
+    /// The normal ApplyUpgrade effects for all upgrades will have already been applied on game start,
+    /// so this will simply modify all the TowerModels for this ModTower that have this upgrade.
+    /// </summary>
+    /// <param name="towerModel">The Tower Model</param>
+    /// <param name="gameModes">What GameModes are active for the match</param>
+    public virtual void ApplyUpgradeForMatch(TowerModel towerModel, IReadOnlyList<ModModel> gameModes)
+    {
+        
+    }
 
 
     /// <summary>

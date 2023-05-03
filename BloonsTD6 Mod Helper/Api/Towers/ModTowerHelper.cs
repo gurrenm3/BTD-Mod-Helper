@@ -161,13 +161,7 @@ public static partial class ModTowerHelper
 
         // actually apply the upgrades
 
-        var modUpgrades = modTower.Upgrades.Cast<ModUpgrade>()
-            .Where(modUpgrade =>
-                modUpgrade != null && towerModel.tiers[modUpgrade.Path] >= modUpgrade.Tier)
-            .OrderByDescending(modUpgrade => modUpgrade.Priority)
-            .ThenBy(modUpgrade => modUpgrade.Tier)
-            .ThenBy(modUpgrade => modUpgrade.Path)
-            .ToList();
+        var modUpgrades = modTower.GetUpgradesForTiers(towerModel.tiers);
 
         foreach (var modUpgrade in modUpgrades)
         {

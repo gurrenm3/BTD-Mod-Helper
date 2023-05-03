@@ -95,10 +95,25 @@ internal class GameModel_CreateModded
         {
             modRoundSet.ModifyGameModel(result);
         }
-        
+
         if (ModGameMode.Cache.TryGetValue(InGameData.CurrentGame.selectedMode, out var modGameMode))
         {
             modGameMode.ModifyGameModel(result);
+        }
+
+        var gameModes = mods.ToList();
+        foreach (var towerModel in result.towers)
+        {
+            if (!ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower)) continue;
+
+            modTower.ModifyTowerModelForMatch(towerModel, gameModes);
+
+            var modUpgrades = modTower.GetUpgradesForTiers(towerModel.tiers);
+            
+            foreach (var modUpgrade in modUpgrades)
+            {
+                modUpgrade.ApplyUpgradeForMatch(towerModel, gameModes);
+            }
         }
 
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));

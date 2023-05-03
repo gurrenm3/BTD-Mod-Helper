@@ -533,6 +533,33 @@ public abstract void ModifyBaseTowerModel(TowerModel towerModel);
 
 The Base Tower Model
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_)'></a>
+
+## ModTower.ModifyTowerModelForMatch(TowerModel, IReadOnlyList<ModModel>) Method
+
+Further modifies this tower when you go into a new match.  
+Useful for making conditional effects happen based on settings.  
+<br/>  
+The normal ApplyUpgrade effects for all upgrades will have already been applied on game start,  
+so this will simply modify all the TowerModels for this ModTower.
+
+```csharp
+public virtual void ModifyTowerModelForMatch(TowerModel towerModel, System.Collections.Generic.IReadOnlyList<ModModel> gameModes);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+The Base Tower Model
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_).gameModes'></a>
+
+`gameModes` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
+
+What GameModes are active for the match
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers()'></a>
 
 ## ModTower.TowerTiers() Method
