@@ -18,6 +18,7 @@ public abstract partial class ModDisplay
         var sprite = GetSprite(textureName, PixelsPerUnit);
 #pragma warning restore CS0618
         node.GetRenderer<SpriteRenderer>().sprite = sprite;
+        node.IsSprite = true;
     }
 
     /// <summary>

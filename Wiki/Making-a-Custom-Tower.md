@@ -7,9 +7,11 @@ If you want a better understanding of what exactly these steps actually do, then
 
 If you're not someone who likes following step by step written guides, you can look at these for some complete examples:
 
-Doombubbles' [Card Monkey](https://github.com/doombubbles/card-monkey)
+Doombubbles' [Card Monkey](https://github.com/doombubbles/card-monkey#readme)
 
-Greenphx's [Mini Custom Towers V2](https://github.com/Greenphx9/BTD6Mods/tree/main/MiniCustomTowersV2)
+Void-n-Null's [Banana Farmer Tower](https://github.com/Void-n-Null/Banana-Farmer-Tower/tree/main/#readme)
+
+Doombubbles' [Temple Base](https://github.com/doombubbles/temple-base/tree/main/#readme)
 
 # ModTower
 
@@ -231,6 +233,51 @@ namespace CardMonkey.Displays.Tier5
 }
 ```
 
+# Custom Tower Set
+
+If you would like your Tower to be part of a Custom Tower set, you simply need to make a `ModTowerSet` class.
+
+```csharp
+public class Cool : ModTowerSet
+{
+    public override string DisplayName => "Cool Towers";
+    
+    public override bool AllowInRestrictedModes => false; // Set to true to still allow these towers in Primary/Military/Magic only, etc
+
+    // public override string Button => "Name of .png file for the group button used in the Monkeys menu, by default Name-Button";
+
+    // public override string Container => "Name of .png file for the background for towers in the Monkeys menu and the in game shop, by default Name-Container";
+
+    // public override string ContainerLarge => "Name of .png file for the background used for non-paragon upgrades in the Upgrade screen, by default Name-ContainerLarge";
+
+    // public override string Portrait => "Name of .png file for the background for in game portraits, by default Name-Portrait";
+
+    /// <summary>
+    /// Set the ordering of this Tower Set, in this case after Primary.
+    /// If this wasn't here, it'd be added at the end after all other tower sets.
+    /// </summary>
+    public override int GetTowerSetIndex(List<TowerSet> towerSets) => towerSets.IndexOf(TowerSet.Primary) + 1;
+}
+```
+
+Then, for any `ModTower` that you want to be part of the set, you change the definition of the class to
+```csharp
+public class MyCoolTower : ModTower<Cool>
+{
+    /* No override for the TowerSet property */
+    
+    public override int Order => 0; // Towers in your set will be sorted based on ascending Order
+    
+    /* ... */
+}
+```
+
+[See Image References](https://github.com/gurrenm3/BTD-Mod-Helper/tree/master/Website/public/images/TowerSet)
+
+Using a tool like Paint.net to change the hue would be a good way to get them how you want them to look.
+
 ***
 
-**Congratulations! You know have all the required information on the Mod Helper's role in making a fully featured Custom Tower. It's actual functionality will come down to how you edit the Models within the `ModifyBaseTower` and `ApplyUpgrade` methods, which means interacting with Ninja Kiwi's own systems. The Mod Helper's extension can make that easier**
+**Congratulations! You know have all the required information on the Mod Helper's role in making a fully featured Custom Tower. 
+It's actual functionality will come down to how you edit the Models within the `ModifyBaseTower` and `ApplyUpgrade` methods, which means interacting with Ninja Kiwi's own systems. 
+The Mod Helper's extensions can make that easier.**

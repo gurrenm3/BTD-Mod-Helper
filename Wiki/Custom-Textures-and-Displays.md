@@ -2,7 +2,11 @@ This guide will cover both the inclusion of custom .png files to your mod and cu
 
 # Custom Textures
 
-## Including the PNGs (NOTE: This section only applies anymore if you aren't following the mod template / didn't use the Create Mod button)
+## Including the PNGs
+
+
+<details>
+<summary>This section only applies anymore if you aren't following the mod template / didn't use the Create Mod button</summary>
 
 To make sure that your non-code files actually end up being included inside your .dll mod file, you need to change the way your C# project treats them.
 
@@ -13,6 +17,8 @@ Right click on the file you want to include (probably a .png unlike the image) a
 Find the "Build Action" property and set its value to be "Embedded Resource".
 
 Now, when you build your project, the .png will be included in the .dll as a resource that the Mod Helper can work with.
+
+</details>
 
 ## Using the Textures
 
@@ -53,3 +59,44 @@ The easiest way to use your display is through our `ApplyDisplay<T>()` extension
 Note that for Towers, there's a special `ModTowerDisplay` class you ought to use that you can read about [here](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Common-Extension-Methods).
 
 
+# Fully Custom Displays
+
+Using Custom 3D models from outside the game requires more Unity knowledge than this tutorial covers at this time.
+However, if you are already in a situation where you have a Unity AssetBundle that contains Prefabs for your displays,
+then you can follow these instructions to use them very simply.
+
+## Including the AssetBundle
+
+Set your bundle to have the file extension `.bundle` and have it within your project. Mod Helper will automatically
+handle loading from it as an embedded resource.
+
+## ModCustomDisplay
+
+The `ModCustomDisplay` class (or `ModTowerCustomDisplay`) is what will let you use your custom displays. The two required properties are simply:
+
+`AssetBundleName`: The name of your asset bundle file (without the ".bundle" part)
+
+`PrefabName`: The name of your Prefab within the bundle (case sensitive)
+
+Other class members you you can utilize are
+
+`MaterialName`: Set this to automatically apply a material from your bundle with the given name to your display
+
+`ModifyDisplayNode`: As with normal displays, you can modify the result display node with this
+
+Example that loads the prefab "MyModel" from "assets.bundle"
+
+```csharp
+public class MyCustomDisplay : ModCustomDisplay
+{
+    public override string AssetBundleName => "assets"; // loads from "assets.bundle"
+    public override string PrefabName => "MyModel"; // loads the "MyModel" prefab
+    
+    public override void ModifyDisplayNode(UnityDisplayNode node)
+    {
+        // modify the node however you want
+    }
+}
+```
+
+You can then apply this display using the standard `ApplyDisplay` methods as normal.

@@ -267,9 +267,9 @@ namespace BTD_Mod_Helper.Api.Display
         #region Misc Display Ids
 
         /// <summary>
-        /// The display id for RoadSpikes
+        /// The display id for a Red Bloon
         /// </summary>
-        public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
+        public const string Generic2dDisplay = "9d3c0064c3ace7448bf8fefa4a97a70f";
 #pragma warning disable CS1591
         public const string EtienneRoombaCat = "Assets/Monkeys/Etienne/Graphics/Pets/Roomba/PetRoombaDisplay.prefab";
 

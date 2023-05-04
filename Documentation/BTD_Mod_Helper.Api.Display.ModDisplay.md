@@ -22,10 +22,10 @@ Derived
 
 ## ModDisplay.Generic2dDisplay Field
 
-The display id for RoadSpikes
+The display id for a Red Bloon
 
 ```csharp
-public const string Generic2dDisplay = "9dccc16d26c1c8a45b129e2a8cbd17ba";
+public const string Generic2dDisplay = "9d3c0064c3ace7448bf8fefa4a97a70f";
 ```
 
 #### Field Value
