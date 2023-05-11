@@ -24,10 +24,6 @@ jobs:
     steps:
       - name: Clone Repo
         uses: actions/checkout@master
-
-
-      - name: json-yaml-validate
-        uses: GrantBirki/json-yaml-validate@v1.4.0
         
         
       - name: Download Latest MelonLoader
