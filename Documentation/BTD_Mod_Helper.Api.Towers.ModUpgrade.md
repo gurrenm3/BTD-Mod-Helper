@@ -257,6 +257,35 @@ public abstract void ApplyUpgrade(TowerModel towerModel);
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
+The Tower Model
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ApplyUpgradeForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_)'></a>
+
+## ModUpgrade.ApplyUpgradeForMatch(TowerModel, IReadOnlyList<ModModel>) Method
+
+Make this upgrade apply additional effects on a towerModel when you go into a new match.  
+Useful for making conditional effects happen based on settings.  
+<br/>  
+The normal ApplyUpgrade effects for all upgrades will have already been applied on game start,  
+so this will simply modify all the TowerModels for this ModTower that have this upgrade.
+
+```csharp
+public virtual void ApplyUpgradeForMatch(TowerModel towerModel, System.Collections.Generic.IReadOnlyList<ModModel> gameModes);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ApplyUpgradeForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+The Tower Model
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ApplyUpgradeForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_).gameModes'></a>
+
+`gameModes` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
+
+What GameModes are active for the match
+
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.EarlyApplyUpgrade(TowerModel)'></a>
 
 ## ModUpgrade.EarlyApplyUpgrade(TowerModel) Method

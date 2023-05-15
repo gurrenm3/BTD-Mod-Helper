@@ -654,7 +654,7 @@ namespace BTD_Mod_Helper.Api
         [Obsolete("Use GetAudioSourceReference")]
         public static AudioSourceReference CreateAudioSourceReference<T>(string name) where T : BloonsMod =>
             GetAudioSourceReference(GetInstance<T>(), name);
-        
+
         /// <summary>
         /// Gets an AudioSource reference for a given sound within a mod
         /// </summary>
@@ -670,5 +670,7 @@ namespace BTD_Mod_Helper.Api
         /// <param name="name">Sound name (no .wav)</param>
         /// <returns>An AudioSoundReference</returns>
         public AudioSourceReference GetAudioSourceReference(string name) => GetAudioSourceReference(mod, name);
+
+        internal int GetOrder() => Order;
     }
 }
