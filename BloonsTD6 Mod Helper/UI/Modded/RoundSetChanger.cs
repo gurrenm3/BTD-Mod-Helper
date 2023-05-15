@@ -5,12 +5,15 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.UI.Menus;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Facebook;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
 using UnityEngine;
 using UnityEngine.UI;
+using static MelonLoader.MelonLogger;
+
 namespace BTD_Mod_Helper.UI.Modded;
 
 /// <summary>
@@ -104,6 +107,8 @@ public static class RoundSetChanger
         button.AddText(
             new Info("Text", 0, -175, 500, 100), "Change Rounds", 60f
         );
+
+        BossesMenuBtn.Create(buttonPanel);
     }
 
     private static ModHelperButton CreateRoundSetButton(string id, string displayName, string icon)
