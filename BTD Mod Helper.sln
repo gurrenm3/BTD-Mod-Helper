@@ -7,13 +7,9 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloonsAT Mod Helper", "BloonsAT Mod Helper\BloonsAT Mod Helper.csproj", "{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsAT Mod Helper", "BloonsAT Mod Helper\BloonsAT Mod Helper.csproj", "{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Shared\Shared Project.projitems*{33f3cad7-6d69-4c86-8117-f5b3bbb81bb2}*SharedItemsImports = 5
-		Shared\Shared Project.projitems*{45cb0af9-eb5f-4d6a-846c-830dd4f60b49}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		BATTD_Debug|Any CPU = BATTD_Debug|Any CPU
 		BATTD_Release|Any CPU = BATTD_Release|Any CPU
@@ -23,28 +19,38 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.Build.0 = BTD6_Debug|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
-		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.Build.0 = BTD6_Release|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Debug|Any CPU.ActiveCfg = BTD6_Release|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Debug|Any CPU.Build.0 = BTD6_Release|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BATTD_Release|Any CPU.Build.0 = BTD6_Release|Any CPU
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Debug|Any CPU.ActiveCfg = BTD6_Release|Any CPU
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Debug|Any CPU.Build.0 = BTD6_Release|Any CPU
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.BTD6_Release|Any CPU.Build.0 = BTD6_Release|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.ActiveCfg = BTD6_Debug|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.Build.0 = BTD6_Debug|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.ActiveCfg = BTD6_Release|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.Build.0 = BTD6_Release|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BATTD_Release|Any CPU.Build.0 = Release|Any CPU
+		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Release|Any CPU.Build.0 = Release|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3CD0038-ADB1-4C15-970B-C9F72102F5D5}.BTD6_Debug|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EA78EC1-475B-4A4E-93DC-40F93636F7E5}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\Shared Project.projitems*{33f3cad7-6d69-4c86-8117-f5b3bbb81bb2}*SharedItemsImports = 5
+		Shared\Shared Project.projitems*{45cb0af9-eb5f-4d6a-846c-830dd4f60b49}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

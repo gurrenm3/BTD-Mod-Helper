@@ -2,12 +2,13 @@
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppNinjaKiwi.Common;
+using Il2CppSystem.Collections.Generic;
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using static BTD_Mod_Helper.UI.Menus.ModsMenu;
@@ -20,10 +21,12 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
     static ModHelperText displayNameLabel;
     static ModHelperText systemNameLabel;
     static ModHelperText extraCreditLabel;
-    static ModHelperText roundsLabel;
 
     static ModHelperText descriptionLabel;
     static ModHelperScrollPanel descriptionPanel;
+
+    static ModHelperDropdown roundDropdown;
+    static ModHelperPanel roundPanel;
 
     static ModHelperText speedLabel;
     static ModHelperText healthLabel;
@@ -34,6 +37,8 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
 
     static ModHelperText skullLabel;
     static ModHelperText timerLabel;
+
+    static ModBoss Boss;
 
     const string ListSeparator = ", ";
     const string InfoIcon = VanillaSprites.InfoBtn2;
@@ -53,7 +58,7 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         return false;
     }
 
-    static ModHelperPanel? bossPanel;
+    static ModHelperPanel bossPanel;
 
     private static void CreateLeftMenu(ModHelperPanel bossMenu)
     {
@@ -142,18 +147,15 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         descriptionLabel.Text.enableAutoSizing = true;
 
         descriptionPanel.AddScrollContent(descriptionLabel);
+        roundPanel = rightPanel.AddPanel(new Info("RoundsPanel", rightPanel.RectTransform.sizeDelta.x - Padding * 2, 150));
+        roundPanel.AddText(new Info("RoundsLabel", 0, 0, 500, roundPanel.RectTransform.sizeDelta.y), "Rounds:", FontMedium, Il2CppTMPro.TextAlignmentOptions.Right);
 
         var mainPanel = rightPanel.AddScrollPanel(new Info("MainPanel", InfoPreset.Flex), RectTransform.Axis.Vertical, VanillaSprites.BlueInsertPanelRound, Padding, Padding);
         var mainPanelWidth = rightPanel.RectTransform.sizeDelta.x - 4 * Padding;
 
         mainPanel.ScrollContent.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleLeft;
 
-        roundsLabel = mainPanel.AddText(new Info("RoundsLabel", ModNameWidth, ModNameHeight)
-        {
-            Flex = 1
-        }, "Round(s):", FontMedium, Il2CppTMPro.TextAlignmentOptions.Left);
-        mainPanel.AddScrollContent(roundsLabel);
-
+        // Stats
         var speedPanel = mainPanel.AddPanel(new Info("SpeedPanel", mainPanelWidth, ModNameHeight));
         mainPanel.AddScrollContent(speedPanel);
         speedPanel.AddComponent<HorizontalLayoutGroup>();
@@ -204,8 +206,9 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         });
 
         var panel = mod.AddButton(new Info("MainBtn", InfoPreset.FillParent), VanillaSprites.MainBGPanelBlueNotches,
-            new System.Action(() =>
+            new Action(() =>
             {
+                Boss = boss;
                 LoadBossInfo(boss);
                 MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
             }));
@@ -249,35 +252,48 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         descriptionPanel.SetActive($"Default description for {boss.Name}" != boss.Description);
         descriptionLabel.SetText(boss.Description);
 
-        roundsLabel.SetText("Round(s): " + string.Join(", ", boss.SpawnRounds));
-
-        speedLabel.SetText("Speed: " + boss.bloonModel.speed);
-        healthLabel.SetText("Health: " + boss.bloonModel.maxHealth); // Format ?
-
-        string timers = "";
-        string skulls = "";
-
-        ModBoss.BossRoundInfo[] infos = boss.RoundsInfo.Values.ToArray();
-        for (int i = 0; i < boss.RoundsInfo.Count; i++)
+        List<string> rounds = new List<string>();
+        foreach (var item in boss.SpawnRounds)
         {
-            var value = infos[i];
-
-            timers += (value.interval != null ? value.interval : -1) + "s";
-            skulls += value.skullCount != null ? value.skullCount : 0;
-
-            if (i != boss.RoundsInfo.Count - 1)
-            {
-                timers += ListSeparator;
-                skulls += ListSeparator;
-            }
+            rounds.Add(item.ToString());
         }
 
-        skullLabel.SetActive(boss.UsesSkulls);
-        skullLabel.SetText($"Skull(s) ({skulls}): " + boss.SkullDescription);
+        if (roundDropdown != null)
+            roundDropdown.DeleteObject();
 
-        timerLabel.SetActive(boss.UsesTimer);
-        timerLabel.SetText($"Timer ({timers}): " + boss.TimerDescription);
+        roundDropdown = roundPanel.AddDropdown(new Info("RoundDropdown", 575, 0, 500f, ModNameHeight), rounds,
+            ModNameHeight * 4,
+            new Action<int>((int r) =>
+            {
+                if (roundDropdown != null)
+                    UpdateRoundInfos(int.Parse(roundDropdown.Dropdown.options[r].text.ToString()));
+            }), VanillaSprites.BlueInsertPanelRound, FontSmall
+        );
+
+        if (rounds.Count > 0)
+            UpdateRoundInfos(int.Parse(rounds[0]));
 
         bossPanel.SetActive(true);
+    }
+
+    private static void UpdateRoundInfos(int round)
+    {
+        BloonModel copy = Boss.ModifyForRound(Boss.bloonModel.Duplicate(), round);
+
+        speedLabel.SetText("Speed: " + copy.speed);
+        healthLabel.SetText("Health: " + copy.maxHealth); // Format ?
+
+        skullLabel.SetActive(Boss.UsesSkulls);
+
+        if (Boss.RoundsInfo.TryGetValue(round, out var roundInfo))
+        {
+            if (roundInfo.skullCount != null)
+                skullLabel.SetText($"Skull{(roundInfo.skullCount > 1 ? "s" : "")} ({roundInfo.skullCount}): {(roundInfo.skullDescription == null ? Boss.SkullDescription : roundInfo.skullDescription)}");
+
+            timerLabel.SetActive(Boss.UsesTimer);
+
+            if (roundInfo.interval != null)
+                timerLabel.SetText($"Timer ({roundInfo.interval}s): {(roundInfo.timerDescription == null ? Boss.TimerDescription : roundInfo.timerDescription)}");
+        }
     }
 }

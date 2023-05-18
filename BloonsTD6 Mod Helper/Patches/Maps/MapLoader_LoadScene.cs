@@ -1,4 +1,6 @@
-﻿using Il2CppAssets.Scripts.Unity.Map;
+﻿using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.UI.Modded;
+using Il2CppAssets.Scripts.Unity.Map;
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(MapLoader), nameof(MapLoader.LoadScene))]
@@ -9,7 +11,7 @@ internal static class MapLoader_LoadScene
     {
         var result = true;
         var unref__instance = __instance;
-        ModHelper.PerformAdvancedModHook(mod => result &=  mod.PreMapLoaded(ref unref__instance));
+        ModHelper.PerformAdvancedModHook(mod => result &= mod.PreMapLoaded(ref unref__instance));
         __instance = unref__instance;
         return result;
     }

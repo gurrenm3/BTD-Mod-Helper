@@ -43,6 +43,11 @@
 
     <ItemGroup>
         <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings" />
+        <None Remove="Resources\BossUI\BossBarGradient.png" />
+        <None Remove="Resources\BossUI\BossSkullPipFire.png" />
+        <None Remove="Resources\BossUI\BossSkullPipOff.png" />
+        <None Remove="Resources\BossUI\BossSkullPipOn.png" />
+        <None Remove="Resources\BossUI\BossStar.png" />
     </ItemGroup>
 
     <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
