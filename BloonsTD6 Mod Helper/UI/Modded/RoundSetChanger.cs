@@ -1,18 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.UI.Menus;
+using BTD_Mod_Helper.UI.Menus.Bosses;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Facebook;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static MelonLoader.MelonLogger;
 
 namespace BTD_Mod_Helper.UI.Modded;
 
@@ -65,7 +64,6 @@ public static class RoundSetChanger
         animator = optionsPanel.AddComponent<Animator>();
         animator.runtimeAnimatorController = Animations.PopupAnim;
         animator.speed = AnimatorSpeed;
-
         optionsPanel.ScrollContent.RectTransform.pivot = new Vector2(0.5f, 0);
         optionsPanel.ScrollContent.LayoutGroup.childAlignment = TextAnchor.LowerCenter;
 
@@ -99,10 +97,9 @@ public static class RoundSetChanger
             CreateRoundSetButton(RoundSetType.Empty, "No Change", VanillaSprites.WoodenRoundButton)
         );
 
-
         button = buttonPanel.AddButton(
-            new Info("RoundSetChanger", -250, 50, 350, 350, new Vector2(1, 0), new Vector2(0.5f, 0)),
-            VanillaSprites.WoodenRoundButton, new Action(StartOptionsMode));
+        new Info("RoundSetChanger", -250, 50, 350, 350, new Vector2(1, 0), new Vector2(0.5f, 0)),
+        VanillaSprites.WoodenRoundButton, new Action(StartOptionsMode));
 
         button.AddText(
             new Info("Text", 0, -175, 500, 100), "Change Rounds", 60f
@@ -160,8 +157,9 @@ public static class RoundSetChanger
             CreatePanel(foregroundScreen.gameObject);
             CreateCancel(backgroundScreen.gameObject);
         }
+        button.SetActive(MelonMain.ShowRoundsetChanger);
     }
-    
+
     private static void CreateCancel(GameObject screen)
     {
         invisibleCancel = screen.AddModHelperPanel(new Info("InvisibleCancel", InfoPreset.FillParent));
@@ -209,7 +207,6 @@ public static class RoundSetChanger
         RevealButton();
         optionsPanel.SetActive(false);
     }
-
     private static void Hide()
     {
         Init();
@@ -232,7 +229,7 @@ public static class RoundSetChanger
 
     internal static void OnMenuChanged(string currentMenu, string newMenu)
     {
-        if (!MelonMain.ShowRoundsetChanger) return;
+        if (!MelonMain.ShowRoundsetChanger && ModBoss.Cache.Count == 0) return;
 
         if (ShowOnMenus.Contains(newMenu))
         {
@@ -240,7 +237,7 @@ public static class RoundSetChanger
             {
                 Show();
             }
-            
+
             ModifyBlockClicks();
         }
 

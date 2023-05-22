@@ -3,6 +3,7 @@ using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppSystem.Linq;
 using Il2CppTMPro;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,12 +36,11 @@ internal class ModBossUI
 
             foreach (var item in ModBoss.BossIcons)
             {
-                item.Value.DeleteObject();
+                if (item.Value != null)
+                    item.Value.DeleteObject();
             }
             ModBoss.BossIcons.Clear();
         }
-
-        DeleteWaitingPanels();
 
         MainPanel = InGame.instance.mapRect.gameObject.AddModHelperPanel(new Info("BossUIPanel",
             -400, -150, 800, 600, new Vector2(0.65f, .85f), new Vector2(.5f, .5f)),
@@ -86,7 +86,8 @@ internal class ModBossUI
     {
         for (int i = WaitingPanels.Count - 1; i >= 0; i--)
         {
-            WaitingPanels[i].DeleteObject();
+            if (WaitingPanels[i] != null)
+                WaitingPanels[i].DeleteObject();
         }
         WaitingPanels.Clear();
     }
@@ -102,14 +103,14 @@ internal class ModBossUI
         int closest = int.MaxValue;
         bool changed = false;
 
-        foreach (var item in Rounds.Keys)
+        foreach (var item in Rounds)
         {
-            if (item <= currentRound)
+            if (item.Key <= currentRound || !item.Value.Any(boss => ModBoss.GetPermission(boss, item.Key)))
                 continue;
 
-            if (item - currentRound < closest)
+            if (item.Key - currentRound < closest)
             {
-                closest = item - currentRound;
+                closest = item.Key - currentRound;
                 changed = true;
             }
         }
@@ -118,6 +119,8 @@ internal class ModBossUI
             return;
 
         List<ModBoss> nearBosses = Rounds[closest + currentRound];
+
+        nearBosses.RemoveAll(boss => !ModBoss.GetPermission(boss, closest + currentRound));
 
         int count = 2;
 

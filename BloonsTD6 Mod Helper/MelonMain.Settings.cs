@@ -20,9 +20,16 @@ internal partial class MelonMain
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
         description =
-            "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
+            "Toggles showing the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
         category = General,
         icon = AlternateBloonsBtn
+    };
+
+    public static readonly ModSettingBool ShowBossSpeedAsPercentage = new(true)
+    {
+        description = "Toggles showing the boss speed in the boss menu as a percentage or the literal value.",
+        category = General,
+        icon = FasterBossIcon,
     };
 
     public static readonly ModSettingBool BypassSavingRestrictions = new(true)

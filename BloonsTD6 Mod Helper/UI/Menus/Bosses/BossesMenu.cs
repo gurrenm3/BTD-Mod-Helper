@@ -3,17 +3,20 @@ using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem.Collections.Generic;
 using System;
+using System.Transactions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static BTD_Mod_Helper.UI.Menus.ModsMenu;
 
-namespace BTD_Mod_Helper.UI.Menus;
+namespace BTD_Mod_Helper.UI.Menus.Bosses;
 
 internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
 {
@@ -40,7 +43,7 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
 
     static ModBoss Boss;
 
-    const string ListSeparator = ", ";
+    static bool firstBoss = true;
     const string InfoIcon = VanillaSprites.InfoBtn2;
 
     public override bool OnMenuOpened(Il2CppSystem.Object data)
@@ -57,12 +60,17 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
 
         return false;
     }
+    public override void OnMenuClosed()
+    {
+        base.OnMenuClosed();
+        firstBoss = true;
+    }
 
     static ModHelperPanel bossPanel;
 
     private static void CreateLeftMenu(ModHelperPanel bossMenu)
     {
-        int Padding = 50;
+        var Padding = 50;
 
         var leftMenu = bossMenu.AddPanel(
             new Info("LeftMenu", (MenuWidth - 1750) / -2f, 0, 1750, MenuHeight),
@@ -76,11 +84,18 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         {
             bossList.AddScrollContent(CreateItem(item));
         }
+
+        var settingsPanel = leftMenu.AddScrollPanel(new Info("SettingsScroll", leftMenu.RectTransform.sizeDelta.x, 150), RectTransform.Axis.Horizontal, null, Padding, Padding);
+        settingsPanel.AddButton(new Info("BossSetupBtn", 150), VanillaSprites.SettingsBtn, new Action(() =>
+        {
+            ModGameMenu.Open<BossesSettings>();
+        }));
+
     }
 
     private static void CreateRightMenu(ModHelperPanel bossMenu)
     {
-        ModHelperPanel rightPanel = bossMenu.AddPanel(
+        var rightPanel = bossMenu.AddPanel(
             new Info("RightMenu", (MenuWidth - 1750) / 2f, 0, 1750, MenuHeight),
             VanillaSprites.MainBGPanelBlue, RectTransform.Axis.Vertical, Padding, Padding
         );
@@ -152,21 +167,28 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
 
         var mainPanel = rightPanel.AddScrollPanel(new Info("MainPanel", InfoPreset.Flex), RectTransform.Axis.Vertical, VanillaSprites.BlueInsertPanelRound, Padding, Padding);
         var mainPanelWidth = rightPanel.RectTransform.sizeDelta.x - 4 * Padding;
-
-        mainPanel.ScrollContent.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.MiddleLeft;
+        var mainPanelVLG = mainPanel.ScrollContent.GetComponent<VerticalLayoutGroup>();
+        mainPanelVLG.childAlignment = TextAnchor.MiddleLeft;
+        mainPanelVLG.childControlHeight = false;
 
         // Stats
+        // Speed
         var speedPanel = mainPanel.AddPanel(new Info("SpeedPanel", mainPanelWidth, ModNameHeight));
         mainPanel.AddScrollContent(speedPanel);
         speedPanel.AddComponent<HorizontalLayoutGroup>();
 
         speedLabel = speedPanel.AddText(new Info("SpeedLabel", speedPanel.RectTransform.sizeDelta.x - ModNameHeight, ModNameHeight), "Speed:", FontMedium, Il2CppTMPro.TextAlignmentOptions.Left);
-        speedPanel.AddButton(new Info("SpeedInfo", ModNameHeight, ModNameHeight), InfoIcon,
+
+        if (!MelonMain.ShowBossSpeedAsPercentage.value)
+        {
+            speedPanel.AddButton(new Info("SpeedInfo", ModNameHeight, ModNameHeight), InfoIcon,
             new Action(() =>
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup("For reference, a BAD has a speed of 4.5 while a red bloon has a speed of 25."));
             }));
+        }
 
+        // Health
         var healthPanel = mainPanel.AddPanel(new Info("HealthPanel", mainPanelWidth, ModNameHeight));
         mainPanel.AddScrollContent(healthPanel);
         healthPanel.AddComponent<HorizontalLayoutGroup>();
@@ -181,17 +203,20 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup("For reference, a BAD has 20k health while a DDT has 400 health."));
             }));
 
-
-        skullLabel = mainPanel.AddText(new Info("HealthLabel", ModNameWidth, ModNameHeight)
+        // Skull
+        skullLabel = mainPanel.AddText(new Info("SkullLabel", ModNameWidth, ModNameHeight)
         {
             Flex = 1
         }, "Skull (#):", FontMedium, Il2CppTMPro.TextAlignmentOptions.Left);
         mainPanel.AddScrollContent(skullLabel);
+        skullLabel.Text.overflowMode = Il2CppTMPro.TextOverflowModes.Overflow;
 
-        timerLabel = mainPanel.AddText(new Info("HealthLabel", ModNameWidth, ModNameHeight)
+        // Timer
+        timerLabel = mainPanel.AddText(new Info("TimerLabel", ModNameWidth, ModNameHeight)
         {
             Flex = 1
         }, "Timer (Xs):", FontMedium, Il2CppTMPro.TextAlignmentOptions.Left);
+        timerLabel.Text.overflowMode = Il2CppTMPro.TextOverflowModes.Overflow;
         mainPanel.AddScrollContent(timerLabel);
 
         bossPanel = rightPanel;
@@ -226,8 +251,8 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         if (bossPanel == null)
             return;
 
-        Sprite sprite = ModContent.GetSprite(boss.mod, boss.Icon);
-        Transform icon = bossPanel.transform.FindChildWithName("Icon");
+        var sprite = GetSprite(boss.mod, boss.Icon);
+        var icon = bossPanel.transform.FindChildWithName("Icon");
 
         if (sprite != null)
         {
@@ -235,7 +260,13 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         }
 
         displayNameLabel.SetText(boss.DisplayName);
-        systemNameLabel.SetText(boss.Name);
+        systemNameLabel.SetText(boss.ToString());
+
+#if BTD6_DEBUG
+        systemNameLabel.enabled = true;
+#else
+        systemNameLabel.enabled = false;
+#endif
 
         // Icons
         iconsPanel.Background.enabled = boss.bloonModel.isCamo || boss.bloonModel.isFortified;
@@ -252,7 +283,7 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
         descriptionPanel.SetActive($"Default description for {boss.Name}" != boss.Description);
         descriptionLabel.SetText(boss.Description);
 
-        List<string> rounds = new List<string>();
+        var rounds = new List<string>();
         foreach (var item in boss.SpawnRounds)
         {
             rounds.Add(item.ToString());
@@ -263,7 +294,7 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
 
         roundDropdown = roundPanel.AddDropdown(new Info("RoundDropdown", 575, 0, 500f, ModNameHeight), rounds,
             ModNameHeight * 4,
-            new Action<int>((int r) =>
+            new Action<int>((r) =>
             {
                 if (roundDropdown != null)
                     UpdateRoundInfos(int.Parse(roundDropdown.Dropdown.options[r].text.ToString()));
@@ -278,22 +309,62 @@ internal class BossesMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static void UpdateRoundInfos(int round)
     {
-        BloonModel copy = Boss.ModifyForRound(Boss.bloonModel.Duplicate(), round);
+        var copy = Boss.ModifyForRound(Boss.bloonModel.Duplicate(), round);
 
-        speedLabel.SetText("Speed: " + copy.speed);
-        healthLabel.SetText("Health: " + copy.maxHealth); // Format ?
-
-        skullLabel.SetActive(Boss.UsesSkulls);
+        speedLabel.SetText($"Speed: {(MelonMain.ShowBossSpeedAsPercentage.value ? (copy.speed / 4.5f * 100).ToString("F2") + "% of a BAD" : copy.speed)}");
+        healthLabel.SetText("Health: " + FormatNumber(copy.maxHealth));
 
         if (Boss.RoundsInfo.TryGetValue(round, out var roundInfo))
         {
+            skullLabel.SetActive(Boss.UsesSkulls);
             if (roundInfo.skullCount != null)
+            {
                 skullLabel.SetText($"Skull{(roundInfo.skullCount > 1 ? "s" : "")} ({roundInfo.skullCount}): {(roundInfo.skullDescription == null ? Boss.SkullDescription : roundInfo.skullDescription)}");
+                SizeOverflowText(skullLabel);
+            }
 
             timerLabel.SetActive(Boss.UsesTimer);
-
             if (roundInfo.interval != null)
+            {
                 timerLabel.SetText($"Timer ({roundInfo.interval}s): {(roundInfo.timerDescription == null ? Boss.TimerDescription : roundInfo.timerDescription)}");
+                SizeOverflowText(timerLabel);
+            }
         }
+
+        firstBoss = false;
+    }
+
+    private static void SizeOverflowText(ModHelperText label)
+    {
+        var timerLineCount = label.Text.GetTextInfo(label.Text.text).lineCount + (firstBoss ? -1 : 0);
+        label.RectTransform.sizeDelta = new Vector2(label.RectTransform.sizeDelta.x, label.Text.fontSize * timerLineCount + label.Text.lineSpacing * (timerLineCount - 1));
+    }
+
+    private static string FormatNumber(double number)
+    {
+        var result = number.ToString().Split(',')[0];
+        var letters = new string[] { "K", "M", "B", "T", "q", "Q", "s", "S", "O", "N", "d", "U", "D", "!", "@", "#", "$", "%", "^", "&", "*", "[", "]", "{", "}", ";" };
+
+        if (result.Length < 4)
+            return result;
+
+        var index = 0;
+        while (result.Length - 3 * (index + 1) > 3) { index++; }
+
+        var commaPos = result.Length - 3 * (index + 1);
+        var rest = result.Substring(commaPos, 4 - commaPos);
+
+        while (rest.Substring(rest.Length - 1, 1) == "0")
+        {
+            if (rest.Length == 1)
+            {
+                rest = "";
+                break;
+            }
+
+            rest = rest.Substring(0, rest.Length - 1);
+        }
+
+        return result.Substring(0, commaPos) + (rest.Length == 0 ? "" : ",") + rest + letters[index];
     }
 }

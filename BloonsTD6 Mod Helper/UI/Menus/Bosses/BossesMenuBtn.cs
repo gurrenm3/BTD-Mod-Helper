@@ -10,7 +10,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BTD_Mod_Helper.UI.Menus;
+namespace BTD_Mod_Helper.UI.Menus.Bosses;
 
 internal class BossesMenuBtn
 {
@@ -21,7 +21,7 @@ internal class BossesMenuBtn
         if (ModBoss.Cache.Count == 0)
             return;
 
-        var bossesBtn = panel.AddButton(new Info("RoundSetChanger", -750, 50, 350, 350, new Vector2(1, 0), new Vector2(0.5f, 0)), Sprite.GUID,
+        var bossesBtn = panel.AddButton(new Info("BossMenuBtn", -750, 50, 350, 350, new Vector2(1, 0), new Vector2(0.5f, 0)), Sprite.GUID,
             new Action(() => ModGameMenu.Open<BossesMenu>()));
 
         bossesBtn.AddText(new Info("Text", 0, -175, 500, 100), $"   Bosses ({ModBoss.Cache.Count})", 60f);

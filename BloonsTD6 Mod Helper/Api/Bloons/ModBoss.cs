@@ -1,7 +1,9 @@
 ﻿//Adapted from WarperSan's BossPack 
 
 using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts;
@@ -9,6 +11,7 @@ using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppNewtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -31,6 +34,15 @@ public abstract class ModBoss : ModBloon
     internal static Dictionary<ObjectId, Image> BossBars = new();
     internal static Dictionary<ObjectId, ModHelperText> BossHpTexts = new();
     internal static Dictionary<ObjectId, ModHelperButton> BossIcons = new();
+    internal static Dictionary<ObjectId, List<ModHelperImage>> BossSkulls = new();
+
+    internal static string SettingsPath => ModHelper.ModSettingsDirectory + "\\BossesSetting.json";
+
+    public static Dictionary<string, Dictionary<int, bool>> Permissions = JsonSerializer.instance.LoadFromFile<Dictionary<string, Dictionary<int, bool>>>(SettingsPath);
+
+    public static bool GetPermission(ModBoss boss, int round)
+        => ModBoss.Permissions.TryGetValue(boss.ToString(), out Dictionary<int, bool> permissions) && permissions.TryGetValue(round, out bool allowed) ? allowed : true;
+
     const uint maxLines = 3;
 
     /// <summary>
@@ -64,10 +76,8 @@ public abstract class ModBoss : ModBloon
         // Skulls
         if (bloon.bloonModel.HasBehavior<HealthPercentTriggerModel>() && info.skullCount != null)
         {
-            float[] percentageValues = info.percentageValues;
-
             // Puts default skulls placement
-            if (percentageValues == null)
+            if (info.percentageValues == null)
             {
                 uint skullsCount = (uint) info.skullCount;
 
@@ -81,11 +91,11 @@ public abstract class ModBoss : ModBloon
                     }
                 }
 
-                percentageValues = pV.ToArray();
+                info.percentageValues = pV.ToArray();
             }
 
             HealthPercentTriggerModel bossSkulls = bloon.bloonModel.GetBehavior<HealthPercentTriggerModel>();
-            bossSkulls.percentageValues = percentageValues;
+            bossSkulls.percentageValues = info.percentageValues;
             bossSkulls.preventFallthrough = info.preventFallThrough != null ? (bool) info.preventFallThrough : false;
         }
 
@@ -268,6 +278,28 @@ public abstract class ModBoss : ModBloon
         frameImg.pixelsPerUnitMultiplier = 0.1f;
         frameImg.rectTransform.sizeDelta = new Vector2(bossBarSlider.rectTransform.sizeDelta.x, bossBarSlider.rectTransform.sizeDelta.y + 40);
 
+        // Skulls
+        if (UsesSkulls)
+        {
+            float width = rtFrame.sizeDelta.x;
+            ModHelperPanel skullsHolder = panel.AddPanel(new Info("SkullsHolder", rtFrame.localPosition.x, -50, width, 150));
+
+            List<ModHelperImage> skulls = new List<ModHelperImage>();
+            Il2CppStructArray<float> percentageValues = boss.bloonModel.GetBehavior<HealthPercentTriggerModel>().percentageValues;
+            foreach (var item in percentageValues)
+            {
+                if (item > 1 || item < 0)
+                {
+                    ModHelper.Error($"A skull from {mod} is out of bounds. Ask {mod.GetModHelperData().Author} to fix it.");
+                    continue;
+                }
+
+                skulls.Add(skullsHolder.AddImage(new Info("Skull", width * item - width / 2, 0, 150), ModContent.GetTextureGUID<BloonsTD6Mod>("BossSkullPipOff")));
+            }
+            BossSkulls.Add(boss.Id, skulls);
+        }
+
+
         return panel;
     }
 
@@ -372,16 +404,14 @@ public abstract class ModBoss : ModBloon
     /// </summary>
     public bool UsesSkulls => RoundsInfo.Any(info => info.Value.skullCount > 0);
 
-    public virtual void SkullEffectUi()
-    {
-
-    }
-
     /// <summary>
     /// Called when the boss hits a skull
     /// </summary>
     /// <param name="boss"></param>
-    public virtual void SkullEffect(Bloon boss) { }
+    public virtual void SkullEffect(Bloon boss)
+    {
+        BossSkulls[boss.Id].First(icon => icon != null).DeleteObject();
+    }
     #endregion
 
     #region Timer
@@ -422,6 +452,7 @@ public abstract class ModBoss : ModBloon
         ModBoss.BossPanels = new();
         ModBoss.BossBars = new();
         ModBoss.BossHpTexts = new();
+        ModBoss.BossSkulls = new();
     }
 
     private void RemoveUI(Bloon bloon)

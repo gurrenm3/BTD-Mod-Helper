@@ -5,7 +5,6 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace BTD_Mod_Helper.Patches.Sim;
 
@@ -19,15 +18,18 @@ internal class Simulation_RoundStart
         {
             ModHelper.PerformHook(mod => mod.OnRoundStart());
 
-            var currentRound = InGame.instance.GetUnityToSimulation().GetCurrentRound() + 1;
-            ModBossUI.UpdateWaitPanel(currentRound);
-
-            IEnumerable<KeyValuePair<string, ModBoss>> currentBosses = ModBoss.Cache.Where(x => x.Value.SpawnRounds.Contains(currentRound));
-            foreach (var (_, boss) in currentBosses)
+            if (ModBoss.Cache.Count > 0)
             {
-                boss.OnSpawnMandatory(InGame.instance.GetMap().spawner.Emit(boss.ModifyForRound(boss.bloonModel, currentRound)));
-            }
+                var currentRound = InGame.instance.GetUnityToSimulation().GetCurrentRound() + 1;
+                ModBossUI.UpdateWaitPanel(currentRound);
 
+                IEnumerable<KeyValuePair<string, ModBoss>> currentBosses = ModBoss.Cache.Where(x => x.Value.SpawnRounds.Contains(currentRound));
+                foreach (var (_, boss) in currentBosses)
+                {
+                    if (ModBoss.GetPermission(boss, currentRound))
+                        boss.OnSpawnMandatory(InGame.instance.GetMap().spawner.Emit(boss.ModifyForRound(boss.bloonModel, currentRound)));
+                }
+            }
         }
         catch (Exception e)
         {

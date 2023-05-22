@@ -13,7 +13,6 @@ internal class Btd6Player_Save
         {
             ProfileManagement.CleanCurrentProfile(__instance.Data);
         }
-
         return true;
     }
 
