@@ -56,6 +56,7 @@ public class ModHelperButton : ModHelperComponent
 
         var animator = modHelperButton.AddComponent<Animator>();
         animator.runtimeAnimatorController = Animations.GlobalButtonAnimation;
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
 
         return modHelperButton;
     }

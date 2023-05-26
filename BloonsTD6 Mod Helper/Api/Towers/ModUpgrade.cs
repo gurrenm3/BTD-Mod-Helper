@@ -52,7 +52,7 @@ public abstract class ModUpgrade : NamedModContent
 
         try
         {
-            if (Game.instance.model.upgradesByName.ContainsKey(upgradeModel.name))
+            if (Cache.ContainsKey(upgradeModel.name))
             {
                 var message = $"Duplicate Upgrade {upgradeModel.name}";
                 ModHelper.Error(message);
@@ -69,7 +69,7 @@ public abstract class ModUpgrade : NamedModContent
             rollbackActions.Push(() =>
             {
                 Game.instance.model.upgrades = Game.instance.model.upgrades.RemoveItem(upgradeModel);
-                Game.instance.model.upgradesByName.Remove(upgradeModel.name);
+                Game.instance.model.upgradesByName?.Remove(upgradeModel.name);
                 Game.instance.model.RemoveChildDependant(upgradeModel);
                 Cache.Remove(upgradeModel.name);
             });
