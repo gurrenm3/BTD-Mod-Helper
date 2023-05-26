@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
@@ -51,7 +51,7 @@ public abstract partial class ModBloon : NamedModContent
             .Where(display => display.Damage > 0)
             .OrderBy(display => display.Damage)
             .ToList();
-        if (damageDisplays.Any())
+        if (damageDisplays.Count > 0)
         {
             ApplyDamageStates(bloonModel, damageDisplays.Select(display => display.Id).ToList());
         }
@@ -65,8 +65,7 @@ public abstract partial class ModBloon : NamedModContent
 
     internal virtual ModBloon BaseModBloon => null;
     internal readonly List<ModBloonDisplay> displays = new();
-    internal BloonModel bloonModel;
-
+    public BloonModel bloonModel;
 
     private protected override string ID => KeepBaseId
         ? BloonModelUtils.ConstructBloonId(BaseBloon, Camo, Regrow, Fortified)
@@ -82,7 +81,6 @@ public abstract partial class ModBloon : NamedModContent
     /// </summary>
     /// <param name="bloonModel"></param>
     public abstract void ModifyBaseBloonModel(BloonModel bloonModel);
-
 
     /// <summary>
     /// Set this to true if you're making another version of the BaseBloon, like a Fortified Red Bloon
@@ -148,7 +146,7 @@ public abstract partial class ModBloon : NamedModContent
 
     internal BloonModel BaseBloonModel => Game.instance.model.GetBloon(BaseBloon);
 
-    internal virtual BloonModel GetDefaultBloonModel()
+    protected virtual BloonModel GetDefaultBloonModel()
     {
         var model = BaseBloonModel.Duplicate();
 
