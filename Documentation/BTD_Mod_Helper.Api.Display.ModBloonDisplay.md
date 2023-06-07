@@ -40,6 +40,19 @@ public virtual int Damage { get; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Api.Display.ModBloonDisplay.DisplayCategory'></a>
+
+## ModBloonDisplay.DisplayCategory Property
+
+The DisplayCategory to use for the DisplayModel
+
+```csharp
+public override DisplayCategory DisplayCategory { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Display.ModBloonDisplay.GetBloonDisplay(string,int)'></a>

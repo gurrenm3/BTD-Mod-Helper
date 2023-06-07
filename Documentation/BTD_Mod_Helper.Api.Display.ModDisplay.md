@@ -58,6 +58,19 @@ public virtual PrefabReference BaseDisplayReference { get; }
 #### Property Value
 [Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
 
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.DisplayCategory'></a>
+
+## ModDisplay.DisplayCategory Property
+
+The DisplayCategory to use for the DisplayModel
+
+```csharp
+public virtual DisplayCategory DisplayCategory { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory')
+
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.ModifiesUnityObject'></a>
 
 ## ModDisplay.ModifiesUnityObject Property
@@ -413,3 +426,30 @@ The asset reference guid to get the node from
 `action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 
 What to do with the node
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_,DisplayCategory)'></a>
+
+## ModDisplay.UseNode(string, Action<UnityDisplayNode>, DisplayCategory) Method
+
+Gets a UnityDisplayNode for a different guid
+
+```csharp
+protected void UseNode(string guid, System.Action<UnityDisplayNode> action, DisplayCategory displayCategory);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_,DisplayCategory).guid'></a>
+
+`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The asset reference guid to get the node from
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_,DisplayCategory).action'></a>
+
+`action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+
+What to do with the node
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_,DisplayCategory).displayCategory'></a>
+
+`displayCategory` [Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory')

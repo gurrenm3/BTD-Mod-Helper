@@ -375,26 +375,3 @@ public static LockList<T> ToLockList<T>(this List<T> il2CppList);
 
 #### Returns
 [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.ToSizedList_T_(thisList_T_)'></a>
-
-## Il2CppGenericsExt.ToSizedList<T>(this List<T>) Method
-
-Not tested
-
-```csharp
-public static SizedList<T> ToSizedList<T>(this List<T> il2CppList);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.ToSizedList_T_(thisList_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericsExt.ToSizedList_T_(thisList_T_).il2CppList'></a>
-
-`il2CppList` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
-
-#### Returns
-[Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')

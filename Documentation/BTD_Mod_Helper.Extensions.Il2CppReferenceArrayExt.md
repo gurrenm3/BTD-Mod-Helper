@@ -3,7 +3,7 @@
 
 ## Il2CppReferenceArrayExt Class
 
-Extensions for Il2cpp arrays
+Extensions for Il2CppReferenceArrays
 
 ```csharp
 public static class Il2CppReferenceArrayExt
@@ -567,27 +567,3 @@ public static LockList<T> ToLockList<T>(this Il2CppReferenceArray<T> referenceAr
 
 #### Returns
 [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.ToSizedList_T_(thisIl2CppReferenceArray_T_)'></a>
-
-## Il2CppReferenceArrayExt.ToSizedList<T>(this Il2CppReferenceArray<T>) Method
-
-Not tested
-
-```csharp
-public static SizedList<T> ToSizedList<T>(this Il2CppReferenceArray<T> referenceArray)
-    where T : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.ToSizedList_T_(thisIl2CppReferenceArray_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.ToSizedList_T_(thisIl2CppReferenceArray_T_).referenceArray'></a>
-
-`referenceArray` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
-
-#### Returns
-[Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')

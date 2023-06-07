@@ -30,6 +30,19 @@ protected const int TotalParagonDisplays = 5;
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.DisplayCategory'></a>
+
+## ModTowerDisplay.DisplayCategory Property
+
+The DisplayCategory to use for the DisplayModel
+
+```csharp
+public override DisplayCategory DisplayCategory { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory')
+
 <a name='BTD_Mod_Helper.Api.Display.ModTowerDisplay.ParagonDisplayIndex'></a>
 
 ## ModTowerDisplay.ParagonDisplayIndex Property

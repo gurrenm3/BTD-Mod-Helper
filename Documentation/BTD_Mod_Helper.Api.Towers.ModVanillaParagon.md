@@ -45,7 +45,7 @@ public sealed override int Cost { get; }
 Controlled by the ModParagonUpgrade
 
 ```csharp
-public override string Description { get; }
+public sealed override string Description { get; }
 ```
 
 #### Property Value
@@ -110,7 +110,7 @@ public sealed override int MiddlePathUpgrades { get; }
 Name override
 
 ```csharp
-public override string Name { get; }
+public sealed override string Name { get; }
 ```
 
 #### Property Value

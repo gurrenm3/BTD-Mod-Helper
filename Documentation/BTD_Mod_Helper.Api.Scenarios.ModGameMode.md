@@ -105,7 +105,7 @@ public abstract void ModifyBaseGameModeModel(ModModel gameModeModel);
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(ModModel).gameModeModel'></a>
 
-`gameModeModel` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`gameModeModel` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(GameModel)'></a>
 

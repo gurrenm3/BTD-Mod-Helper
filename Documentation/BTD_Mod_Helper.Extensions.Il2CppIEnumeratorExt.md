@@ -123,3 +123,21 @@ public static LockList<Object> ToLockList(this IEnumerator enumerator);
 
 #### Returns
 [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumeratorExt.ToRootObjectLockList(thisIEnumerator)'></a>
+
+## Il2CppIEnumeratorExt.ToRootObjectLockList(this IEnumerator) Method
+
+Return as LockList
+
+```csharp
+public static RootObjectLockList<RootObject> ToRootObjectLockList(this IEnumerator enumerator);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumeratorExt.ToRootObjectLockList(thisIEnumerator).enumerator'></a>
+
+`enumerator` [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
+
+#### Returns
+[Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList 'Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList')

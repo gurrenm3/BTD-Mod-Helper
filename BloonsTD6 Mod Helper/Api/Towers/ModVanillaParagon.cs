@@ -66,10 +66,7 @@ public abstract class ModVanillaParagon : ModTower
     {
     }
 
-    internal override string TowerId(int[] tiers)
-    {
-        return BaseTowerModel.baseId + "-Paragon";
-    }
+    internal override string TowerId(int[] tiers) => BaseTowerModel.baseId + "-Paragon";
 
     /// <summary>
     /// Doesn't generate any of the tower on its own
@@ -103,22 +100,19 @@ public abstract class ModVanillaParagon : ModTower
     /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
-    public override string Description => "";
+    public sealed override string Description => "";
 
     /// <summary>
     /// Tower index doesn't apply
     /// </summary>
     /// <param name="towerSet"></param>
     /// <returns></returns>
-    public sealed override int GetTowerIndex(List<TowerDetailsModel> towerSet)
-    {
-        return base.GetTowerIndex(towerSet);
-    }
+    public sealed override int GetTowerIndex(List<TowerDetailsModel> towerSet) => base.GetTowerIndex(towerSet);
 
     /// <summary>
     /// Name override
     /// </summary>
-    public override string Name => BaseTowerModel.baseId;
+    public sealed override string Name => BaseTowerModel.baseId;
 
     internal override TowerModel GetDefaultTowerModel(int[] tiers = null)
     {

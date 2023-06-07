@@ -30,7 +30,7 @@ internal static class TowerInventory_Init
         {
             var towerModel = Game.instance.model.GetTowerWithName(modTower.Id);
 
-            if (modTower.DontAddToShop && !towerModel.isSubTower)
+            if (modTower.DontAddToShop && towerModel?.isSubTower == false)
             {
                 var index = Math.Clamp(modTower.GetTowerIndex(allTowers), 0, allTowers.Count);
                 list.Insert(index, new ShopTowerDetailsModel(modTower.Id, index, 5, 5, 5, modTower.ShopTowerCount, 0));

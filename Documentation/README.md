@@ -194,6 +194,8 @@
 | [ModHeroLevel&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModHeroLevel_T_.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel<T>') | Convenient generic class for specifying the ModHero that this ModHeroLevel is for |
 | [ModParagonUpgrade](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade') | Defines the Paragon Upgrade for a ModTower. Remember to set the [ParagonMode](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode 'BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode') property. |
 | [ModParagonUpgrade&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade_T_.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade<T>') | A convenient generic class for specifying the ModTower that this ModParagonUpgrade is for |
+| [ModSubTower](BTD_Mod_Helper.Api.Towers.ModSubTower.md 'BTD_Mod_Helper.Api.Towers.ModSubTower') | Helper class for making a subtower |
+| [ModSubTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModSubTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModSubTower<T>') | Helper class for making a subtower for a specific other ModTower |
 | [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower') | Class for adding a custom Tower to the game. Use alongside [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') to define its upgrades,<br/>and optionally [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay') to define custom displays for it. |
 | [ModTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModTower<T>') | A convenient generic class for specifying the ModTowerSet that a ModTower uses |
 | [ModTowerHelper](BTD_Mod_Helper.Api.Towers.ModTowerHelper.md 'BTD_Mod_Helper.Api.Towers.ModTowerHelper') | Class with helper methods for TowerModels / ModTowers<br/><br/><br/>Mostly used internally |
@@ -260,7 +262,7 @@
 | [Il2CppIEnumerator](BTD_Mod_Helper.Extensions.Il2CppIEnumerator.md 'BTD_Mod_Helper.Extensions.Il2CppIEnumerator') | Extensions for il2cpp ienumerators |
 | [Il2CppIEnumeratorExt](BTD_Mod_Helper.Extensions.Il2CppIEnumeratorExt.md 'BTD_Mod_Helper.Extensions.Il2CppIEnumeratorExt') | Extensions for Il2cpp Ienumerators |
 | [Il2CppReferenceArray](BTD_Mod_Helper.Extensions.Il2CppReferenceArray.md 'BTD_Mod_Helper.Extensions.Il2CppReferenceArray') | Extensions for il2cpp reference arrays |
-| [Il2CppReferenceArrayExt](BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.md 'BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt') | Extensions for Il2cpp arrays |
+| [Il2CppReferenceArrayExt](BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.md 'BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt') | Extensions for Il2CppReferenceArrays |
 | [Il2CppStringArrayExt](BTD_Mod_Helper.Extensions.Il2CppStringArrayExt.md 'BTD_Mod_Helper.Extensions.Il2CppStringArrayExt') | Extension methods for Il2CppStringArrays |
 | [Il2CppSystemDelegateExxt](BTD_Mod_Helper.Extensions.Il2CppSystemDelegateExxt.md 'BTD_Mod_Helper.Extensions.Il2CppSystemDelegateExxt') | Extensions for Il2cpp delegates |
 | [Il2CppSystemDictionaryExt](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt') | Extensions for il2cpp dictionaries |
@@ -271,10 +273,10 @@
 | [InputFieldOnValueChanged](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged') | Extension for OnChangeEvent |
 | [InputFieldSubmitEvent](BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.md 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent') | Extensions for InputFieldSubmitEvents |
 | [LayoutGroupExt](BTD_Mod_Helper.Extensions.LayoutGroupExt.md 'BTD_Mod_Helper.Extensions.LayoutGroupExt') | Extensions for LayoutGroups |
-| [ListExt](BTD_Mod_Helper.Extensions.ListExt.md 'BTD_Mod_Helper.Extensions.ListExt') | Extensions for system Lists |
+| [ListExt](BTD_Mod_Helper.Extensions.ListExt.md 'BTD_Mod_Helper.Extensions.ListExt') | Extensions for non il2cpp Lists |
 | [LocalizationManagerExt](BTD_Mod_Helper.Extensions.LocalizationManagerExt.md 'BTD_Mod_Helper.Extensions.LocalizationManagerExt') | Extension methods for the Localization Manager. |
 | [LockedList](BTD_Mod_Helper.Extensions.LockedList.md 'BTD_Mod_Helper.Extensions.LockedList') | Extensions for LockedLists |
-| [LockedListExt](BTD_Mod_Helper.Extensions.LockedListExt.md 'BTD_Mod_Helper.Extensions.LockedListExt') | Extensions for system LockedLists |
+| [LockedListExt](BTD_Mod_Helper.Extensions.LockedListExt.md 'BTD_Mod_Helper.Extensions.LockedListExt') | Extensions for LockLists |
 | [MapExt](BTD_Mod_Helper.Extensions.MapExt.md 'BTD_Mod_Helper.Extensions.MapExt') | Extensions for Maps |
 | [ModelExt](BTD_Mod_Helper.Extensions.ModelExt.md 'BTD_Mod_Helper.Extensions.ModelExt') | Extensions for Models |
 | [ModModelExt](BTD_Mod_Helper.Extensions.ModModelExt.md 'BTD_Mod_Helper.Extensions.ModModelExt') | Extensions for the ModModel (GameMode) class |
@@ -289,9 +291,9 @@
 | [ProjectileModelBehaviorExt](BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt') | Behavior Extensions for ProjectileModels |
 | [ProjectileModelExt](BTD_Mod_Helper.Extensions.ProjectileModelExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelExt') | Extensions for ProjectileModels |
 | [RendererExt](BTD_Mod_Helper.Extensions.RendererExt.md 'BTD_Mod_Helper.Extensions.RendererExt') | Extensions for unity renderers |
+| [RootObjectLockList](BTD_Mod_Helper.Extensions.RootObjectLockList.md 'BTD_Mod_Helper.Extensions.RootObjectLockList') | Extensions for RootObjectLockLists |
 | [RoundModelExt](BTD_Mod_Helper.Extensions.RoundModelExt.md 'BTD_Mod_Helper.Extensions.RoundModelExt') | Extensions for RoundModels |
 | [SelectableObjectExt](BTD_Mod_Helper.Extensions.SelectableObjectExt.md 'BTD_Mod_Helper.Extensions.SelectableObjectExt') | Extensions for Selectable Objects |
-| [SizedListExt](BTD_Mod_Helper.Extensions.SizedListExt.md 'BTD_Mod_Helper.Extensions.SizedListExt') | Extensions for SizedLists |
 | [SliderEventExt](BTD_Mod_Helper.Extensions.SliderEventExt.md 'BTD_Mod_Helper.Extensions.SliderEventExt') | Extensions for SliderEvents |
 | [SpawnerExt](BTD_Mod_Helper.Extensions.SpawnerExt.md 'BTD_Mod_Helper.Extensions.SpawnerExt') | Extensions for Spawners |
 | [SpriteExt](BTD_Mod_Helper.Extensions.SpriteExt.md 'BTD_Mod_Helper.Extensions.SpriteExt') | Extensions for Sprites |

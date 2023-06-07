@@ -25,11 +25,11 @@ public static void AddMutator(this ModModel model, MutatorModModel mutator);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.AddMutator(thisModModel,MutatorModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.AddMutator(thisModModel,MutatorModModel).mutator'></a>
 
-`mutator` [Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel')
+`mutator` [Il2CppAssets.Scripts.Models.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.MutatorModModel 'Il2CppAssets.Scripts.Models.MutatorModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel)'></a>
 
@@ -52,7 +52,7 @@ The Mutator you want
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ModModelExt.md#BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel).T 'BTD_Mod_Helper.Extensions.ModModelExt.GetMutator<T>(this ModModel).T')
@@ -78,7 +78,7 @@ The Mutator you want
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel,int).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel,int).index'></a>
 
@@ -108,7 +108,7 @@ The Mutator you want
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel,string).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutator_T_(thisModModel,string).nameContains'></a>
 
@@ -138,7 +138,7 @@ The Mutator you want
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.GetMutators_T_(thisModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.ModModelExt.md#BTD_Mod_Helper.Extensions.ModModelExt.GetMutators_T_(thisModModel).T 'BTD_Mod_Helper.Extensions.ModModelExt.GetMutators<T>(this ModModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
@@ -164,7 +164,7 @@ The Mutator you're checking for
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -190,7 +190,7 @@ The Mutator you're checking for
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel,T).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.HasMutator_T_(thisModModel,T).mutator'></a>
 
@@ -212,7 +212,7 @@ public static void LockTowerSet(this ModModel model, TowerSet towerSet, bool loc
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisModModel,TowerSet,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.LockTowerSet(thisModModel,TowerSet,bool).towerSet'></a>
 
@@ -239,11 +239,11 @@ public static void RemoveMutator(this ModModel model, MutatorModModel mutator);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator(thisModModel,MutatorModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator(thisModModel,MutatorModModel).mutator'></a>
 
-`mutator` [Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel')
+`mutator` [Il2CppAssets.Scripts.Models.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.MutatorModModel 'Il2CppAssets.Scripts.Models.MutatorModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel)'></a>
 
@@ -266,7 +266,7 @@ The Mutator you want to remove
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel,int)'></a>
 
@@ -289,7 +289,7 @@ The Mutator you want to remove
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel,int).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel,int).index'></a>
 
@@ -316,7 +316,7 @@ The Mutator you want to remove
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel,string).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutator_T_(thisModModel,string).nameContains'></a>
 
@@ -335,11 +335,11 @@ public static void RemoveMutators(this ModModel model, System.Func<MutatorModMod
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutators(thisModModel,System.Func_MutatorModModel,bool_).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutators(thisModModel,System.Func_MutatorModModel,bool_).predicate'></a>
 
-`predicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.MutatorModModel')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`predicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[Il2CppAssets.Scripts.Models.MutatorModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.MutatorModModel 'Il2CppAssets.Scripts.Models.MutatorModModel')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutators_T_(thisModModel)'></a>
 
@@ -360,7 +360,7 @@ public static void RemoveMutators<T>(this ModModel model)
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.RemoveMutators_T_(thisModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetAllCashMultiplier(thisModModel,float)'></a>
 
@@ -375,7 +375,7 @@ public static void SetAllCashMultiplier(this ModModel model, float mult);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetAllCashMultiplier(thisModModel,float).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetAllCashMultiplier(thisModModel,float).mult'></a>
 
@@ -394,7 +394,7 @@ public static void SetBloonHealth(this ModModel model, float mult, string tag);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetBloonHealth(thisModModel,float,string).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetBloonHealth(thisModModel,float,string).mult'></a>
 
@@ -421,7 +421,7 @@ public static void SetContinuesEnabled(this ModModel model, bool enabled);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetContinuesEnabled(thisModModel,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetContinuesEnabled(thisModModel,bool).enabled'></a>
 
@@ -431,7 +431,7 @@ public static void SetContinuesEnabled(this ModModel model, bool enabled);
 
 ## ModModelExt.SetEndingRound(this ModModel, int) Method
 
-Sets the round this mode ends at using a [Il2CppAssets.Scripts.Models.Towers.Mods.EndRoundModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.EndRoundModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.EndRoundModModel')
+Sets the round this mode ends at using a [Il2CppAssets.Scripts.Models.Gameplay.Mods.EndRoundModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Gameplay.Mods.EndRoundModModel 'Il2CppAssets.Scripts.Models.Gameplay.Mods.EndRoundModModel')
 
 ```csharp
 public static void SetEndingRound(this ModModel model, int endingRound);
@@ -440,7 +440,7 @@ public static void SetEndingRound(this ModModel model, int endingRound);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetEndingRound(thisModModel,int).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetEndingRound(thisModModel,int).endingRound'></a>
 
@@ -459,7 +459,7 @@ public static void SetImpoppable(this ModModel model, bool impoppable=true);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetImpoppable(thisModModel,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetImpoppable(thisModModel,bool).impoppable'></a>
 
@@ -478,7 +478,7 @@ public static void SetIncomeEnabled(this ModModel model, bool enabled);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetIncomeEnabled(thisModModel,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetIncomeEnabled(thisModModel,bool).enabled'></a>
 
@@ -488,7 +488,7 @@ public static void SetIncomeEnabled(this ModModel model, bool enabled);
 
 ## ModModelExt.SetMaxHealth(this ModModel, int) Method
 
-Sets the maximum life total this mode starts you with using a [Il2CppAssets.Scripts.Models.Towers.Mods.MaxHealthModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.MaxHealthModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.MaxHealthModModel')
+Sets the maximum life total this mode starts you with using a [Il2CppAssets.Scripts.Models.Gameplay.Mods.MaxHealthModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Gameplay.Mods.MaxHealthModModel 'Il2CppAssets.Scripts.Models.Gameplay.Mods.MaxHealthModModel')
 
 ```csharp
 public static void SetMaxHealth(this ModModel model, int health);
@@ -497,7 +497,7 @@ public static void SetMaxHealth(this ModModel model, int health);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetMaxHealth(thisModModel,int).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetMaxHealth(thisModModel,int).health'></a>
 
@@ -516,7 +516,7 @@ public static void SetMkEnabled(this ModModel model, bool enabled);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetMkEnabled(thisModModel,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetMkEnabled(thisModModel,bool).enabled'></a>
 
@@ -535,7 +535,7 @@ public static void SetPowersEnabled(this ModModel model, bool enabled);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetPowersEnabled(thisModModel,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetPowersEnabled(thisModModel,bool).enabled'></a>
 
@@ -554,7 +554,7 @@ public static void SetReversed(this ModModel model, bool reversed=true);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetReversed(thisModModel,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetReversed(thisModModel,bool).reversed'></a>
 
@@ -573,7 +573,7 @@ public static void SetSellingEnabled(this ModModel model, bool enabled);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetSellingEnabled(thisModModel,bool).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetSellingEnabled(thisModModel,bool).enabled'></a>
 
@@ -592,7 +592,7 @@ public static void SetSellMultiplier(this ModModel model, float mult);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetSellMultiplier(thisModModel,float).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetSellMultiplier(thisModModel,float).mult'></a>
 
@@ -602,7 +602,7 @@ public static void SetSellMultiplier(this ModModel model, float mult);
 
 ## ModModelExt.SetStartingCash(this ModModel, int, int, float) Method
 
-Sets the cash this mode starts you with using a [Il2CppAssets.Scripts.Models.Towers.Mods.StartingCashModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.StartingCashModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.StartingCashModModel')
+Sets the cash this mode starts you with using a [Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingCashModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingCashModModel 'Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingCashModModel')
 
 ```csharp
 public static void SetStartingCash(this ModModel model, int baseCash=0, int addCash=0, float multCash=0f);
@@ -611,7 +611,7 @@ public static void SetStartingCash(this ModModel model, int baseCash=0, int addC
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetStartingCash(thisModModel,int,int,float).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetStartingCash(thisModModel,int,int,float).baseCash'></a>
 
@@ -635,7 +635,7 @@ If not 0, an overall multiplier to the amount of starting cash
 
 ## ModModelExt.SetStartingHealth(this ModModel, int) Method
 
-Sets the life total this mode starts you with using a [Il2CppAssets.Scripts.Models.Towers.Mods.StartingCashModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.StartingCashModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.StartingCashModModel')
+Sets the life total this mode starts you with using a [Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingCashModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingCashModModel 'Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingCashModModel')
 
 ```csharp
 public static void SetStartingHealth(this ModModel model, int health);
@@ -644,7 +644,7 @@ public static void SetStartingHealth(this ModModel model, int health);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetStartingHealth(thisModModel,int).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetStartingHealth(thisModModel,int).health'></a>
 
@@ -654,7 +654,7 @@ public static void SetStartingHealth(this ModModel model, int health);
 
 ## ModModelExt.SetStartingRound(this ModModel, int) Method
 
-Sets the round this mode starts at using a [Il2CppAssets.Scripts.Models.Towers.Mods.StartingRoundModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.StartingRoundModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.StartingRoundModModel')
+Sets the round this mode starts at using a [Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingRoundModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingRoundModModel 'Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingRoundModModel')
 
 ```csharp
 public static void SetStartingRound(this ModModel model, int startingRound);
@@ -663,7 +663,7 @@ public static void SetStartingRound(this ModModel model, int startingRound);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetStartingRound(thisModModel,int).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.SetStartingRound(thisModModel,int).startingRound'></a>
 
@@ -682,7 +682,7 @@ public static void UseRoundSet(this ModModel model, string roundSetName);
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.UseRoundSet(thisModModel,string).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.UseRoundSet(thisModModel,string).roundSetName'></a>
 
@@ -707,4 +707,4 @@ public static void UseRoundSet<T>(this ModModel model)
 
 <a name='BTD_Mod_Helper.Extensions.ModModelExt.UseRoundSet_T_(thisModModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Towers.Mods.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Mods.ModModel 'Il2CppAssets.Scripts.Models.Towers.Mods.ModModel')
+`model` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')

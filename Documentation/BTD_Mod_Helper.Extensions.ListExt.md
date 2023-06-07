@@ -3,7 +3,7 @@
 
 ## ListExt Class
 
-Extensions for system Lists
+Extensions for non il2cpp Lists
 
 ```csharp
 public static class ListExt
@@ -424,25 +424,26 @@ public static LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> 
 #### Returns
 [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
 
-<a name='BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_)'></a>
+<a name='BTD_Mod_Helper.Extensions.ListExt.ToRootObjectLockList_T_(thisSystem.Collections.Generic.List_T_)'></a>
 
-## ListExt.ToSizedList<T>(this List<T>) Method
+## ListExt.ToRootObjectLockList<T>(this List<T>) Method
 
-Not tested
+Return as LockList
 
 ```csharp
-public static SizedList<T> ToSizedList<T>(this System.Collections.Generic.List<T> list);
+public static RootObjectLockList<T> ToRootObjectLockList<T>(this System.Collections.Generic.List<T> list)
+    where T : RootObject;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ListExt.ToRootObjectLockList_T_(thisSystem.Collections.Generic.List_T_).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).list'></a>
+<a name='BTD_Mod_Helper.Extensions.ListExt.ToRootObjectLockList_T_(thisSystem.Collections.Generic.List_T_).list'></a>
 
-`list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToSizedList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToSizedList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+`list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToRootObjectLockList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToRootObjectLockList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
+[Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList 'Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList')

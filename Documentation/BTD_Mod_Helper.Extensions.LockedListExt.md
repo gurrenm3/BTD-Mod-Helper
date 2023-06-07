@@ -3,7 +3,7 @@
 
 ## LockedListExt Class
 
-Extensions for system LockedLists
+Extensions for LockLists
 
 ```csharp
 public static class LockedListExt
@@ -354,26 +354,3 @@ public static System.Collections.Generic.List<T> ToList<T>(this LockList<T> lock
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.LockedListExt.md#BTD_Mod_Helper.Extensions.LockedListExt.ToList_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedListExt.ToList<T>(this LockList<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.Extensions.LockedListExt.ToSizedList_T_(thisLockList_T_)'></a>
-
-## LockedListExt.ToSizedList<T>(this LockList<T>) Method
-
-Not Tested
-
-```csharp
-public static SizedList<T> ToSizedList<T>(this LockList<T> lockList);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.LockedListExt.ToSizedList_T_(thisLockList_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.LockedListExt.ToSizedList_T_(thisLockList_T_).lockList'></a>
-
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
-
-#### Returns
-[Il2CppAssets.Scripts.Utils.SizedList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SizedList 'Il2CppAssets.Scripts.Utils.SizedList')
