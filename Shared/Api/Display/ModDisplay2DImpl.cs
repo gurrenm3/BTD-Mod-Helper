@@ -1,5 +1,6 @@
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>
@@ -8,6 +9,10 @@ namespace BTD_Mod_Helper.Api.Display;
 /// </summary>
 internal sealed class ModDisplay2DImpl : ModDisplay2D
 {
+    public override string BaseDisplay { get; }
+
+    public override DisplayCategory DisplayCategory { get; }
+
     private protected override string ID { get; }
     protected override string TextureName { get; }
 
@@ -20,12 +25,17 @@ internal sealed class ModDisplay2DImpl : ModDisplay2D
     /// <param name="id">Id for the display to use</param>
     /// <param name="textureName">Texture name, not a guid</param>
     /// <param name="scale">Scale to use</param>
-    public ModDisplay2DImpl(BloonsMod bloonsMod, string id, string textureName, float scale = 10f)
+    /// <param name="baseDisplay"></param>
+    /// <param name="displayCategory"></param>
+    public ModDisplay2DImpl(BloonsMod bloonsMod, string id, string textureName, float scale = 10f,
+        string baseDisplay = Generic2dDisplay, DisplayCategory displayCategory = DisplayCategory.Default)
     {
         mod = bloonsMod;
         ID = id;
         TextureName = textureName;
         Scale = scale;
+        BaseDisplay = baseDisplay;
+        DisplayCategory = displayCategory;
 
         Register();
     }

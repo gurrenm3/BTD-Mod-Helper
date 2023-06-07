@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Input;
 using Il2CppAssets.Scripts.Unity;
@@ -24,19 +26,6 @@ internal static class TowerInventory_Init
             result &= mod.PreTowerInventoryInit(ref unref__instance, ref unref_allTowersInTheGame));
         __instance = unref__instance;
 
-        var allTowers = Game.instance.model.towerSet.ToList();
-
-        foreach (var modTower in ModContent.GetContent<ModTower>())
-        {
-            var towerModel = Game.instance.model.GetTowerWithName(modTower.Id);
-
-            if (modTower.DontAddToShop && towerModel?.isSubTower == false)
-            {
-                var index = Math.Clamp(modTower.GetTowerIndex(allTowers), 0, allTowers.Count);
-                list.Insert(index, new ShopTowerDetailsModel(modTower.Id, index, 5, 5, 5, modTower.ShopTowerCount, 0));
-            }
-        }
-
         allTowersInTheGame = list.ToIl2CppReferenceArray()
             .Cast<Il2CppSystem.Collections.Generic.IEnumerable<TowerDetailsModel>>();
 
@@ -47,5 +36,25 @@ internal static class TowerInventory_Init
     private static void Postfix(TowerInventory __instance, IEnumerable<TowerDetailsModel> allTowersInTheGame)
     {
         ModHelper.PerformAdvancedModHook(mod => mod.PostTowerInventoryInit(__instance, allTowersInTheGame.ToList()));
+    }
+}
+
+/// <summary>
+/// Prevent crashes for non-subtowers that aren't in the inventory
+/// </summary>
+[HarmonyPatch]
+internal static class TowerInventory_Patches
+{
+    private static IEnumerable<MethodBase> TargetMethods()
+    {
+        yield return AccessTools.Method(typeof(TowerInventory), nameof(TowerInventory.UpdatedTower));
+        yield return AccessTools.Method(typeof(TowerInventory), nameof(TowerInventory.DestroyedTower));
+        yield return AccessTools.Method(typeof(TowerInventory), nameof(TowerInventory.CreatedTower));
+    }
+
+    [HarmonyPrefix]
+    private static bool Prefix(TowerInventory __instance, TowerModel def)
+    {
+        return __instance.towerMaxes.ContainsKey(def.baseId);
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using BTD_Mod_Helper.Api.Display;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Bloons;
@@ -189,7 +190,7 @@ public abstract partial class ModBloon : NamedModContent
 
         if (UseIconAsDisplay)
         {
-            var display = new ModDisplay2DImpl(mod, Id, Icon, Scale);
+            var display = new ModDisplay2DImpl(mod, Id, Icon, Scale, ModDisplay.Bloon2dDisplay, DisplayCategory.Bloon);
             display.Apply(model);
         }
 
@@ -205,8 +206,9 @@ public abstract partial class ModBloon : NamedModContent
         var i = 1f;
         foreach (var damageState in damageStates)
         {
-            var display = new ModDisplay2DImpl(mod, Id + i, damageState, Scale);
-            
+            var display = new ModDisplay2DImpl(mod, Id + i, damageState, Scale, ModDisplay.Bloon2dDisplay,
+                DisplayCategory.Bloon);
+
             displayStates.Add(new DamageStateModel($"DamageStateModel_damage_state_{i}",
                 CreatePrefabReference(display.Id), 1 - i / count));
             i++;

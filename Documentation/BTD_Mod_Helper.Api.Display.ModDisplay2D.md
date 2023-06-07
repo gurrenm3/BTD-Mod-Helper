@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 The GUID of the display to copy this ModDisplay off of
 
 ```csharp
-public sealed override string BaseDisplay { get; }
+public override string BaseDisplay { get; }
 ```
 
 #### Property Value

@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Api.Display;
 public abstract class ModDisplay2D : ModDisplay
 {
     /// <inheritdoc />
-    public sealed override string BaseDisplay => Generic2dDisplay;
+    public override string BaseDisplay => Generic2dDisplay;
 
     /// <summary>
     /// The file name (no .png) from your mod that you want to use as the 2d texture

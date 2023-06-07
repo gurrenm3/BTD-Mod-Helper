@@ -1,1 +1,2 @@
-- Fix for ModVanillaParagons
+- Fixed  ModVanillaParagons
+- Fixed 2d towers for the new DisplayCategory

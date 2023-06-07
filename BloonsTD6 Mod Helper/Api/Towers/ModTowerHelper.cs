@@ -4,6 +4,7 @@ using System.Linq;
 using BTD_Mod_Helper.Api.Display;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
@@ -217,7 +218,8 @@ public static partial class ModTowerHelper
         {
             var textureName = modTower.Get2DTexture(towerModel.tiers);
             var scale = modTower.Get2DScale(towerModel.tiers);
-            var display = new ModDisplay2DImpl(modTower.mod, towerModel.name, textureName, scale);
+            var display = new ModDisplay2DImpl(modTower.mod, towerModel.name, textureName, scale,
+                displayCategory: DisplayCategory.Tower);
             display.Apply(towerModel);
         }
         else if (modTower.displays
