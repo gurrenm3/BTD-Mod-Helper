@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.TowerSets;

@@ -135,7 +135,7 @@ namespace BTD_Mod_Helper.Extensions
             else
             {
                 bloonModel.AddBehavior(new DisplayModel("DisplayModel_BloonDisplay",
-                    ModContent.CreatePrefabReference(guid), 0));
+                    ModContent.CreatePrefabReference(guid), 0, DisplayCategory.Bloon));
             }
         }
 
@@ -496,7 +496,8 @@ namespace BTD_Mod_Helper.Extensions
 
             var growModel = bloonModel.GetBehavior<GrowModel>();
 #if BloonsTD6
-            if (!string.IsNullOrEmpty(growModel?.growToId) && Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect, out var newBloon1))
+            if (!string.IsNullOrEmpty(growModel?.growToId) &&
+                Game.instance.model.GetBloon(growModel!.growToId).FindChangedBloonId(effect, out var newBloon1))
             {
                 growModel.growToId = newBloon1;
             }

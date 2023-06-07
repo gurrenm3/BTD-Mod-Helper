@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem;
 using Array = System.Array;
@@ -6,9 +7,9 @@ using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
-/// Extensions for LockLists
+/// Extensions for RootObjectLockLists
 /// </summary>
-public static partial class LockedListExt
+public static partial class RootObjectLockList
 {
     /// <summary>
     /// Return as System.List
@@ -16,7 +17,7 @@ public static partial class LockedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static List<T> ToList<T>(this LockList<T> lockList)
+    public static List<T> ToList<T>(this RootObjectLockList<T> lockList) where T : RootObject
     {
         var newList = new List<T>();
         for (var i = 0; i < lockList.Count; i++)
@@ -31,7 +32,7 @@ public static partial class LockedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this LockList<T> lockList)
+    public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this RootObjectLockList<T> lockList) where T : RootObject
     {
         var il2CppList = new Il2CppSystem.Collections.Generic.List<T>();
         for (var i = 0; i < lockList.Count; i++)
@@ -46,7 +47,7 @@ public static partial class LockedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static T[] ToArray<T>(this LockList<T> lockList)
+    public static T[] ToArray<T>(this RootObjectLockList<T> lockList) where T : RootObject
     {
         var newArray = new T[] { };
         for (var i = 0; i < lockList.Count; i++)
@@ -65,7 +66,7 @@ public static partial class LockedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this LockList<T> lockList) where T : Object
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this RootObjectLockList<T> lockList) where T : RootObject
     {
         var il2cppArray = new Il2CppReferenceArray<T>(lockList.Count);
 
@@ -81,9 +82,9 @@ public static partial class LockedListExt
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static LockList<T> Duplicate<T>(this LockList<T> list)
+    public static RootObjectLockList<T> Duplicate<T>(this RootObjectLockList<T> list) where T : RootObject
     {
-        var newList = new LockList<T>();
+        var newList = new RootObjectLockList<T>();
         for (var i = 0; i < list.Count; i++)
             newList.Add(list.list.Get(i));
 
@@ -97,10 +98,10 @@ public static partial class LockedListExt
     /// <typeparam name="TCast"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static LockList<TCast> DuplicateAs<TSource, TCast>(this LockList<TSource> list)
-        where TSource : Object where TCast : Object
+    public static RootObjectLockList<TCast> DuplicateAs<TSource, TCast>(this RootObjectLockList<TSource> list)
+        where TSource : RootObject where TCast : RootObject
     {
-        var newList = new LockList<TCast>();
+        var newList = new RootObjectLockList<TCast>();
         for (var i = 0; i < list.Count; i++)
             newList.Add(list.list.Get(i).TryCast<TCast>());
 
@@ -116,11 +117,11 @@ public static partial class LockedListExt
     /// <param name="lockList"></param>
     /// <param name="objectToAdd">Item to add</param>
     /// <returns></returns>
-    public static LockList<TSource> AddTo<TSource, TCast>(this LockList<TSource> lockList, TCast objectToAdd)
-        where TSource : Object where TCast : Object
+    public static RootObjectLockList<TSource> AddTo<TSource, TCast>(this RootObjectLockList<TSource> lockList, TCast objectToAdd)
+        where TSource : RootObject where TCast : RootObject
     {
         if (lockList is null)
-            lockList = new LockList<TSource>();
+            lockList = new RootObjectLockList<TSource>();
 
         lockList.Add(objectToAdd.TryCast<TSource>());
         return lockList;
@@ -135,8 +136,8 @@ public static partial class LockedListExt
     /// <typeparam name="TCast">The Type you're checking for</typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static bool HasItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Object
-        where TCast : Object
+    public static bool HasItemsOfType<TSource, TCast>(this RootObjectLockList<TSource> lockList) where TSource : RootObject
+        where TCast : RootObject
     {
         for (var i = 0; i < lockList.Count; i++)
         {
@@ -162,8 +163,8 @@ public static partial class LockedListExt
     /// <typeparam name="TCast">The Type of the Items you want</typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static List<TCast> GetItemsOfType<TSource, TCast>(this LockList<TSource> lockList) where TSource : Object
-        where TCast : Object
+    public static List<TCast> GetItemsOfType<TSource, TCast>(this RootObjectLockList<TSource> lockList) where TSource : RootObject
+        where TCast : RootObject
     {
         var result = new List<TCast>();
         lockList.ForEach(item => 
@@ -199,9 +200,9 @@ public static partial class LockedListExt
     /// <typeparam name="TCast">The Type of the Item you want to remove</typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static LockList<TSource> RemoveItemOfType<TSource, TCast>(this LockList<TSource> lockList)
-        where TSource : Object
-        where TCast : Object
+    public static RootObjectLockList<TSource> RemoveItemOfType<TSource, TCast>(this RootObjectLockList<TSource> lockList)
+        where TSource : RootObject
+        where TCast : RootObject
     {
         var behavior = lockList.First(o => o.IsType<TCast>()).Cast<TCast>();
         return RemoveItem(lockList, behavior);
@@ -215,8 +216,8 @@ public static partial class LockedListExt
     /// <param name="lockList"></param>
     /// <param name="itemToRemove">The specific Item to remove</param>
     /// <returns></returns>
-    public static LockList<TSource> RemoveItem<TSource, TCast>(this LockList<TSource> lockList, TCast itemToRemove)
-        where TSource : Object where TCast : Object
+    public static RootObjectLockList<TSource> RemoveItem<TSource, TCast>(this RootObjectLockList<TSource> lockList, TCast itemToRemove)
+        where TSource : RootObject where TCast : RootObject
     {
         if (!HasItemsOfType<TSource, TCast>(lockList))
             return lockList;
@@ -233,7 +234,7 @@ public static partial class LockedListExt
             break;
         }
 
-        return arrayList.ToLockList();
+        return arrayList.ToRootObjectLockList();
     }
 
     /// <summary>
@@ -243,9 +244,9 @@ public static partial class LockedListExt
     /// <typeparam name="TCast">The Type of the Items that you want to remove</typeparam>
     /// <param name="lockList"></param>
     /// <returns></returns>
-    public static LockList<TSource> RemoveItemsOfType<TSource, TCast>(this LockList<TSource> lockList)
-        where TSource : Object
-        where TCast : Object
+    public static RootObjectLockList<TSource> RemoveItemsOfType<TSource, TCast>(this RootObjectLockList<TSource> lockList)
+        where TSource : RootObject
+        where TCast : RootObject
     {
         if (!HasItemsOfType<TSource, TCast>(lockList))
             return lockList;
@@ -262,6 +263,28 @@ public static partial class LockedListExt
             numRemoved++;
         }
 
-        return arrayList.ToLockList();
+        return arrayList.ToRootObjectLockList();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="lockList"></param>
+    /// <typeparam name="TSource"></typeparam>
+    /// <typeparam name="TCast"></typeparam>
+    /// <returns></returns>
+    public static TCast GetItemOfType<TSource, TCast>(this RootObjectLockList<TSource> lockList)
+        where TSource : RootObject
+        where TCast : RootObject
+    {
+        foreach (var rootObject in lockList.list)
+        {
+            if (rootObject.Is(out TCast cast))
+            {
+                return cast;
+            }
+        }
+
+        return null;
     }
 }

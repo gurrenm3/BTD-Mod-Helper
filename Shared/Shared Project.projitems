@@ -111,6 +111,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\Il2CppStringArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\ListExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\LockedListExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CollectionExtensions\RootObjectLockListExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DeconstructExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Function.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\GameExt.cs" />

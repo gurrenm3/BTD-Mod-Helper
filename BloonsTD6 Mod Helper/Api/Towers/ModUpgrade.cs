@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;

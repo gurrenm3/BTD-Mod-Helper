@@ -1,4 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Gameplay.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppSystem.Collections.Generic;

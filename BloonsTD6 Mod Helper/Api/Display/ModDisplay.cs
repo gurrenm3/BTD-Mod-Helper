@@ -8,6 +8,11 @@ namespace BTD_Mod_Helper.Api.Display;
 public abstract partial class ModDisplay
 {
     /// <summary>
+    /// The DisplayCategory to use for the DisplayModel
+    /// </summary>
+    public virtual DisplayCategory DisplayCategory => DisplayCategory.Default;
+
+    /// <summary>
     /// Sets the sprite texture to that of a named png
     /// </summary>
     /// <param name="node">The UnityDisplayNode</param>
@@ -27,8 +32,8 @@ public abstract partial class ModDisplay
     /// <returns></returns>
     public DisplayModel GetDisplayModel()
     {
-        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, PositionOffset,
-            Scale);
+        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, DisplayCategory,
+            PositionOffset, Scale);
     }
 
     /// <summary>
@@ -49,14 +54,26 @@ public abstract partial class ModDisplay
     /// </summary>
     /// <param name="guid">The asset reference guid to get the node from</param>
     /// <param name="action">What to do with the node</param>
-    protected void UseNode(string guid, Action<UnityDisplayNode> action)
+    /// <param name="displayCategory"></param>
+    protected void UseNode(string guid, Action<UnityDisplayNode> action, DisplayCategory displayCategory)
     {
         Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(CreatePrefabReference(guid),
+            DisplayCategory.Default,
             new Action<UnityDisplayNode>(udn =>
             {
                 udn.RecalculateGenericRenderers();
                 action(udn);
                 udn.RecalculateGenericRenderers();
             }));
+    }
+
+    /// <summary>
+    /// Gets a UnityDisplayNode for a different guid
+    /// </summary>
+    /// <param name="guid">The asset reference guid to get the node from</param>
+    /// <param name="action">What to do with the node</param>
+    protected void UseNode(string guid, Action<UnityDisplayNode> action)
+    {
+        UseNode(guid, action, DisplayCategory.Default);
     }
 }

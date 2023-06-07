@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Unity;
@@ -24,7 +25,7 @@ public abstract class ModRoundSet : NamedModContent
     /// The Base Rounds included in the RoundSet specified by BaseRoundSet
     /// </summary>
     protected List<RoundModel> BaseRounds =>
-        Game.instance.model.roundSets.FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ??
+        GameData.Instance.roundSets.FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ??
         new List<RoundModel>();
 
     /// <inheritdoc />
@@ -65,7 +66,7 @@ public abstract class ModRoundSet : NamedModContent
         
         try
         {
-            Game.instance.model.roundSets = Game.instance.model.roundSets.AddTo(model);
+            GameData.Instance.roundSets = GameData.Instance.roundSets.AddTo(model);
             // Game.instance.model.roundSetsByName[Id] = model;
             Game.instance.model.AddChildDependant(model);
             Cache[Id] = this;
@@ -74,7 +75,7 @@ public abstract class ModRoundSet : NamedModContent
         {
             rollbackActions.Push(() =>
             {
-                Game.instance.model.roundSets = Game.instance.model.roundSets.RemoveItem(model);
+                GameData.Instance.roundSets = GameData.Instance.roundSets.RemoveItem(model);
                 // Game.instance.model.roundSetsByName.Remove(Id);
                 Game.instance.model.RemoveChildDependant(model);
             });
@@ -196,7 +197,7 @@ public abstract class ModRoundSet : NamedModContent
 
     internal RoundSetModel GetDefaultRoundSetModel()
     {
-        var roundSetModel = new RoundSetModel(Id, new Il2CppReferenceArray<RoundModel>(DefinedRounds), false);
+        var roundSetModel = new RoundSetModel(Id, new Il2CppReferenceArray<RoundModel>(DefinedRounds), "");
 
         var baseRounds = BaseRounds;
         for (var i = 0; i < DefinedRounds; i++)

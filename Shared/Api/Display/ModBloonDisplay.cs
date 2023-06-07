@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Bloons;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Unity;
 namespace BTD_Mod_Helper.Api.Display;
 
@@ -7,6 +8,9 @@ namespace BTD_Mod_Helper.Api.Display;
 /// </summary>
 public abstract class ModBloonDisplay : ModDisplay
 {
+    /// <inheritdoc />
+    public override DisplayCategory DisplayCategory => DisplayCategory.Bloon;
+
     /// <inheritdoc />
     public override void Register()
     {

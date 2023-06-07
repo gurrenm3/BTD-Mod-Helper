@@ -21,6 +21,7 @@ class BackupCreator
 
     private bool IsOverMaxBackups() => GetAllBackups().Length > _maxBackups;
 
+    [Obsolete]
     public void CreateBackup()
     {
         ModHelper.Log("Attempting to backup Profile...");

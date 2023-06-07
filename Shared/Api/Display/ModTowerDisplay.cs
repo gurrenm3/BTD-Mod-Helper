@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Unity.Display;
 namespace BTD_Mod_Helper.Api.Display;
@@ -8,6 +9,9 @@ namespace BTD_Mod_Helper.Api.Display;
 /// </summary>
 public abstract partial class ModTowerDisplay : ModDisplay
 {
+    /// <inheritdoc />
+    public override DisplayCategory DisplayCategory => DisplayCategory.Tower;
+
     /// <inheritdoc />
     public override void Register()
     {

@@ -4,6 +4,8 @@ using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Gameplay.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Models.TowerSets.Mods;
@@ -165,8 +167,8 @@ public static class ModModelExt
     /// </summary>
     public static void UseRoundSet(this ModModel model, string roundSetName)
     {
-        model.RemoveMutators<BloonSetModModel>();
-        model.AddMutator(new BloonSetModModel("_", roundSetName));
+        model.RemoveMutators<RoundSetModModel>();
+        model.AddMutator(new RoundSetModModel("_", roundSetName));
     }
 
     /// <summary>

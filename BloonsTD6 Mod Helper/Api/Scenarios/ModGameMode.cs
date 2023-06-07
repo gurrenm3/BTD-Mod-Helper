@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Unity;
@@ -36,6 +37,7 @@ public abstract class ModGameMode : NamedModContent
     /// <summary>
     /// Whether this GameMode ...
     /// </summary>
+    [Obsolete("Field removed by NK")]
     protected virtual bool PreApplies => false;
 
     /// <summary>
@@ -78,7 +80,7 @@ public abstract class ModGameMode : NamedModContent
 
         try
         {
-            Game.instance.model.mods = Game.instance.model.mods.AddTo(model);
+            GameData.Instance.mods = GameData.Instance.mods.AddTo(model);
             Game.instance.model.AddChildDependant(model);
             Cache[Id] = this;
         }
@@ -86,7 +88,7 @@ public abstract class ModGameMode : NamedModContent
         {
             rollbackActions.Push(() =>
             {
-                Game.instance.model.mods = Game.instance.model.mods.RemoveItem(model);
+                GameData.Instance.mods = GameData.Instance.mods.RemoveItem(model);
                 Game.instance.model.RemoveChildDependant(model);
             });
         }
@@ -99,13 +101,13 @@ public abstract class ModGameMode : NamedModContent
         ModModel modModel;
         if (string.IsNullOrEmpty(BaseGameMode))
         {
-            modModel = new ModModel(Id, new[] {Id}, new Il2CppReferenceArray<MutatorModModel>(0), PreApplies);
+            modModel = new ModModel(Id, new Il2CppReferenceArray<MutatorModModel>(0));
         }
         else
         {
             modModel = Game.instance.model.GetModModel(BaseGameMode).Duplicate();
-            modModel.toggles = new[] {Id};
-            modModel.preApplies = PreApplies;
+            // modModel.toggles = new[] {Id};
+            // modModel.preApplies = PreApplies;
 
             foreach (var mutator in modModel.mutatorMods)
             {

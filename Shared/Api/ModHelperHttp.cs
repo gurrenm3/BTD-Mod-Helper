@@ -167,8 +167,10 @@ public class ModHelperHttp
         {
             try
             {
-                await DownloadFile(url, Path.Combine(MelonEnvironment.ModsDirectory, ModHelper.XmlName));
-                ModHelper.Msg($"Downloaded {ModHelper.XmlName} for v{ModHelper.Version}");
+                if (await DownloadFile(url, Path.Combine(MelonEnvironment.ModsDirectory, ModHelper.XmlName)))
+                {
+                    ModHelper.Msg($"Downloaded {ModHelper.XmlName} for v{ModHelper.Version}");
+                }
             }
             catch (Exception e)
             {

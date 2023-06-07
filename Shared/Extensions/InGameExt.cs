@@ -113,7 +113,7 @@ namespace BTD_Mod_Helper.Extensions
         public static List<Bloon> GetBloons(this InGame inGame)
         {
 #if BloonsTD6
-            return inGame.GetFactory<Bloon>().all.ToList();
+            return inGame.GetFactory<Bloon>().up.ToList(); // TODO check this
 #elif BloonsAT
             return inGame.GetSimulation().bloonManager.GetBloons().ToList();
 #endif
@@ -185,7 +185,7 @@ namespace BTD_Mod_Helper.Extensions
         {
             var factory = inGame.GetMainFactory()?.GetFactory<T>();
 #if BloonsTD6
-            return factory?.all?.ToList() ?? new List<T>();
+            return factory?.up?.ToList() ?? new List<T>(); // TODO check this
 #elif BloonsAT
             return factory?.active?.ToList();
 #endif

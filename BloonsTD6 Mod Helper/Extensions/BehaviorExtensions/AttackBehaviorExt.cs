@@ -37,7 +37,7 @@ public static class AttackBehaviorExt
     /// <returns></returns>
     public static List<T> GetAttackBehaviors<T>(this Attack attack) where T : AttackBehavior
     {
-        return attack.attackBehaviors.GetItemsOfType<AttackBehavior, T>();
+        return attack.attackBehaviors.GetItemsOfType<AttackBehavior, T>().ToList();
     }
 
     /// <summary>

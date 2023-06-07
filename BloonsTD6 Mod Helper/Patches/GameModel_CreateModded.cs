@@ -4,6 +4,7 @@ using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
+using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Knowledge;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
@@ -70,8 +71,9 @@ internal class GameModel_CreateModded
     {
         if (!string.IsNullOrEmpty(RoundSetChanger.RoundSetOverride))
         {
-            result.bloonSet = RoundSetChanger.RoundSetOverride;
+            result.SetRoundSet(GameData.Instance.RoundSetByName(RoundSetChanger.RoundSetOverride));
         }
+
 
         foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>()
                      .Where(content => !content.AffectBaseGameModel && content.ShouldApply))
@@ -91,7 +93,7 @@ internal class GameModel_CreateModded
             }
         }
 
-        if (ModRoundSet.Cache.TryGetValue(result.bloonSet, out var modRoundSet))
+        if (ModRoundSet.Cache.TryGetValue(result.roundSet.name, out var modRoundSet))
         {
             modRoundSet.ModifyGameModel(result);
         }
@@ -109,7 +111,7 @@ internal class GameModel_CreateModded
             modTower.ModifyTowerModelForMatch(towerModel, gameModes);
 
             var modUpgrades = modTower.GetUpgradesForTiers(towerModel.tiers);
-            
+
             foreach (var modUpgrade in modUpgrades)
             {
                 modUpgrade.ApplyUpgradeForMatch(towerModel, gameModes);

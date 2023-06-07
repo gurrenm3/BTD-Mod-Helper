@@ -7,6 +7,9 @@ using Array = System.Array;
 using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
+/// <summary>
+/// Extensions for Il2CppReferenceArrays
+/// </summary>
 public static partial class Il2CppReferenceArrayExt
 {
     /// <summary>

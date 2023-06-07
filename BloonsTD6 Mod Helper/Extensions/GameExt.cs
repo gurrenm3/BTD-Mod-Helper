@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BTD_Mod_Helper.Api;
 using Il2CppAssets.Scripts.Models.PowerSets;
 using Il2CppAssets.Scripts.Models.Towers;
@@ -42,6 +43,7 @@ public static partial class GameExt
     /// </summary>
     /// <param name="game"></param>
     /// <returns></returns>
+    [Obsolete]
     public static string GetSaveDirectory(this Game game)
     {
         return SessionData.Instance.SaveDirectory;
@@ -52,14 +54,9 @@ public static partial class GameExt
     /// </summary>
     /// <param name="game"></param>
     /// <param name="savePath">Path to save to</param>
+    [Obsolete]
     public static void SavePlayerData(this Game game, string savePath)
     {
-        var backup = SessionData.Instance.PlayerSaveStrategy?.MemberwiseClone().Cast<TimedBackupStrategy>();
-        if (backup != null)
-        {
-            backup.FilePath = savePath;
-            backup.CreateBackup();
-        }
     }
 
     /// <summary>

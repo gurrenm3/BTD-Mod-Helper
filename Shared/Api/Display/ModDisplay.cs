@@ -191,7 +191,7 @@ namespace BTD_Mod_Helper.Api.Display
             });
 
         internal virtual void GetBasePrototype(Factory factory, Action<UnityDisplayNode> onComplete) =>
-            factory.FindAndSetupPrototypeAsync(BaseDisplayReference, onComplete);
+            factory.FindAndSetupPrototypeAsync(BaseDisplayReference, DisplayCategory, onComplete);
 
         /// <summary>
         /// Recreated version of the CreateAsync_b__0 callback. Would like to just call this directly, but manually

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
@@ -6,6 +7,9 @@ using Newtonsoft.Json;
 using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
+/// <summary>
+/// Extensions for non il2cpp Lists
+/// </summary>
 public static partial class ListExt
 {
     /// <summary>
@@ -39,6 +43,19 @@ public static partial class ListExt
     public static LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> list)
     {
         var lockList = new LockList<T>();
+        foreach (var item in list)
+            lockList.Add(item);
+
+        return lockList;
+    }
+    
+    
+    /// <summary>
+    /// Return as LockList
+    /// </summary>
+    public static RootObjectLockList<T> ToRootObjectLockList<T>(this System.Collections.Generic.List<T> list) where T : RootObject
+    {
+        var lockList = new RootObjectLockList<T>();
         foreach (var item in list)
             lockList.Add(item);
 

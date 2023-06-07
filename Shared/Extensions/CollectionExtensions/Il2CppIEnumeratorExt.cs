@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem;
 using Il2CppSystem.Collections;
@@ -98,6 +99,18 @@ public static class Il2CppIEnumeratorExt
         var lockList = new LockList<Object>();
         while (enumerator.MoveNext())
             lockList.Add(enumerator.Current);
+
+        return lockList;
+    }
+    
+    /// <summary>
+    /// Return as LockList
+    /// </summary>
+    public static RootObjectLockList<RootObject> ToRootObjectLockList(this IEnumerator enumerator)
+    {
+        var lockList = new RootObjectLockList<RootObject>();
+        while (enumerator.MoveNext())
+            lockList.Add(enumerator.Current.Cast<RootObject>());
 
         return lockList;
     }

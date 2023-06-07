@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Models.Gameplay.Mods;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
@@ -97,16 +100,15 @@ internal partial class MelonMain : BloonsTD6Mod
 
         if (!scheduledInGamePatch) Schedule_InGame_Loaded();
 
-        foreach (var gameMode in Game.instance.model.mods)
+        foreach (var gameMode in GameData.Instance.mods)
         {
             if (gameMode.name.EndsWith("Only"))
             {
-                // TODO fix modded tower sets
-                /*var mutatorModModels = gameMode.mutatorMods.ToList();
+                var mutatorModModels = gameMode.mutatorMods.ToList();
                 mutatorModModels.AddRange(ModContent.GetContent<ModTowerSet>()
                     .Where(set => !set.AllowInRestrictedModes)
-                    .Select(set => new LockTowerSetModModel(gameMode.name, set.Id)));
-                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();*/
+                    .Select(set => new LockTowerSetModModel(gameMode.name, set.Set)));
+                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
             }
 
             if (gameMode.mutatorMods == null) continue;

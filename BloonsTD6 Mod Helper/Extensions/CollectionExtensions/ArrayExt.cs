@@ -9,18 +9,6 @@ namespace BTD_Mod_Helper.Extensions;
 public static partial class ArrayExt
 {
     /// <summary>
-    /// Not Tested
-    /// </summary>
-    public static SizedList<T> ToSizedList<T>(this T[] array)
-    {
-        var sizedList = new SizedList<T>();
-        foreach (var item in array)
-            sizedList.Add(item);
-
-        return sizedList;
-    }
-
-    /// <summary>
     /// Version of TryCast without the generic restriction
     /// </summary>
     private static bool TryCast<T>(Il2CppObjectBase obj, out T t)

@@ -34,15 +34,7 @@ public static partial class InGameExt
     /// <param name="roundSet">New Round Set Model to use</param>
     public static void SetRoundSet(this InGame inGame, RoundSetModel roundSet)
     {
-        var name = inGame.GetGameModel().roundSets.FirstOrDefault(model => model.name == roundSet.name)?.name;
-        if (name != null)
-        {
-            inGame.GetGameModel().bloonSet = name;
-        }
-        else
-        {
-            ModHelper.Warning("Round set was not in the GameModel");
-        }
+        inGame.GetGameModel().SetRoundSet(roundSet);
     }
 
     /// <summary>
@@ -252,7 +244,7 @@ public static partial class InGameExt
 
         var index = (round < 100) ? round - 1 : round - 100;
         var emissions = (round < 100)
-            ? model.GetRoundSet().rounds[index].emissions
+            ? model.roundSet.rounds[index].emissions
             : model.freeplayGroups[index].bloonEmissions;
         inGame.SpawnBloons(emissions);
     }

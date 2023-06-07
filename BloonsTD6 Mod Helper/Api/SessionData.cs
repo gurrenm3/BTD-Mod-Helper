@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppNinjaKiwi.NKMulti;
 using Il2CppNinjaKiwi.Players;
@@ -40,16 +41,10 @@ public partial class SessionData
     public bool IsInRace { get; set; } = false;
 
     /// <summary>
-    /// The directory of the save file. 
-    /// Gets set when <see cref="FileSaveStrategy.Choose(string,SaveStrategy)"/>
-    /// tries to load the Player Save
+    /// The directory of the save file.
     /// </summary>
+    [Obsolete]
     public string SaveDirectory { get; set; } = "";
-
-    /// <summary>
-    /// The instance of <see cref="FileSaveStrategy"/> that is used to load the Player save.
-    /// </summary>
-    public FileSaveStrategy PlayerSaveStrategy { get; set; }
 
     /// <summary>
     /// The instance of <see cref="NKMultiGameInterface"/> that is used during a 

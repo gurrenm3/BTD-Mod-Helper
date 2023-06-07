@@ -66,7 +66,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} PowerModels to {Path.Combine(FileIOHelper.sandboxRoot, "Powers")}");
 
         total = success = 0;
-        foreach (var model in Game.instance.model.mods)
+        foreach (var model in GameData.Instance.mods)
         {
             if (TryExport(model, $"Mods/{model.name}.json")) success++;
             total++;
@@ -74,7 +74,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} ModModels to {Path.Combine(FileIOHelper.sandboxRoot, "Mods")}");
 
         total = success = 0;
-        foreach (var roundSet in Game.instance.model.roundSets)
+        foreach (var roundSet in GameData.Instance.roundSets)
         {
             for (var i = 0; i < roundSet.rounds.Count; i++)
             {

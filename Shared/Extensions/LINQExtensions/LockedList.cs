@@ -18,7 +18,7 @@ public static class LockedList
     public static void ForEach<T>(this LockList<T> source, Action<T> action)
     {
         for (var i = 0; i < source.Count; i++)
-            action.Invoke(source[i]);
+            action.Invoke(source.list.Get(i));
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public static class LockedList
     {
         for (var i = 0; i < source.Count; i++)
         {
-            var item = source[i];
+            var item = source.list.Get(i);
             if (predicate(item))
                 return item;
         }
@@ -51,7 +51,7 @@ public static class LockedList
     {
         for (var i = 0; i < source.Count; i++)
         {
-            var item = source[i];
+            var item = source.list.Get(i);
             if (predicate(item))
                 return item;
         }
@@ -70,7 +70,7 @@ public static class LockedList
         var result = new List<T>();
         for (var i = 0; i < source.Count; i++)
         {
-            var item = source[i];
+            var item = source.list.Get(i);
             if (predicate(item))
                 result.Add(item);
         }
@@ -88,7 +88,7 @@ public static class LockedList
     {
         for (var i = 0; i < source.Count; i++)
         {
-            if (predicate(source[i]))
+            if (predicate(source.list.Get(i)))
                 return i;
         }
 
@@ -117,7 +117,7 @@ public static class LockedList
     {
         for (var i = 0; i < source.Count; i++)
         {
-            if (predicate(source[i]))
+            if (predicate(source.list.Get(i)))
                 return true;
         }
         return false;
@@ -132,7 +132,7 @@ public static class LockedList
     /// <returns></returns>
     public static T Last<T>(this LockList<T> source)
     {
-        return source[^1];
+        return source.list.Last();
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public static class LockedList
         T last = default;
         for (var i = 0; i < source.Count; i++)
         {
-            var item = source[i];
+            var item = source.list.Get(i);
             if (predicate(item))
                 last = item;
         }
@@ -163,7 +163,7 @@ public static class LockedList
     /// <returns></returns>
     public static T First<T>(this LockList<T> source)
     {
-        return source[0];
+        return source.list.First();
     }
 
     /// <summary>
@@ -174,6 +174,6 @@ public static class LockedList
     /// <returns></returns>
     public static T FirstOrDefault<T>(this LockList<T> source)
     {
-        return source[0] == null ? default : source[0];
+        return source.list.FirstOrDefault();
     }
 }

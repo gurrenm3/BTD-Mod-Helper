@@ -20,7 +20,7 @@
         <Reference Include="$(Il2CppAssemblies)\Il2CppSystem.Core.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Il2CppSystem.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.Common.dll" Private="false"/>
-        <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.LiNK.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.LiNK.Aot.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Unity.InputSystem.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Unity.ResourceManager.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Unity.TextMeshPro.dll" Private="false"/>
