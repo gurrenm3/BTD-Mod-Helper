@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Microsoft.VisualBasic.FileIO;
+using SearchOption = System.IO.SearchOption;
 namespace BTD_Mod_Helper.Api.Helpers
 {
     /// <summary>
@@ -67,7 +69,19 @@ namespace BTD_Mod_Helper.Api.Helpers
                     Directory.Delete(path);
                 }
 
-                directory.MoveTo(path);
+                try
+                {
+                    directory.MoveTo(path);
+                }
+                catch (IOException e)
+                {
+                    if (e.Message.Contains("across volumes"))
+                    {
+                        FileSystem.CopyDirectory(directory.FullName, path, true);
+                        directory.Delete(true);
+                    }
+                    else throw;
+                }
 
                 await ReplaceInAllFiles(path, name);
             }
@@ -90,8 +104,8 @@ namespace BTD_Mod_Helper.Api.Helpers
                 if (zipArchive == null) throw new FileNotFoundException();
 
                 Directory.CreateDirectory(ModHelper.ReplacedFilesDirectory);
-                
-                FileMoveOverwrite(csProjPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.csproj"));
+
+                File.Move(csProjPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.csproj"), true);
                 var csProj = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".csproj")!;
                 csProj.ExtractToFile(csProjPath);
                 ReplaceFileText(csProjPath, name);
@@ -100,7 +114,7 @@ namespace BTD_Mod_Helper.Api.Helpers
                 var slnPath = Path.Combine(path, $"{name}.sln");
                 if (File.Exists(slnPath))
                 {
-                    FileMoveOverwrite(slnPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.sln"));
+                    File.Move(slnPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.sln"), true);
                     var sln = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".sln");
                     sln?.ExtractToFile(slnPath);
                     ReplaceFileText(slnPath, name);
@@ -189,16 +203,6 @@ namespace BTD_Mod_Helper.Api.Helpers
             fileOpener.StartInfo.FileName = "explorer";
             fileOpener.StartInfo.Arguments = $"{Path.Combine(path, $"{name}.sln")}";
             fileOpener.Start();
-        }
-
-        private static void FileMoveOverwrite(string sourceFileName, string destFileName)
-        {
-            if (File.Exists(destFileName))
-            {
-                File.Delete(destFileName);
-            }
-
-            File.Move(sourceFileName, destFileName);
         }
     }
 }

@@ -29,7 +29,7 @@ internal class ProfileManagement
 
     private static string primaryHero;
 
-    private static readonly Dictionary<(string, int), string> MapPlayerHeroes = new();
+    private static readonly Dictionary<string, Dictionary<int, string>> MapPlayerHeroes = new();
 
     private static readonly Dictionary<string, string> SelectedTowerSkinData = new();
 
@@ -104,7 +104,8 @@ internal class ProfileManagement
                     {
                         if (Clean($"{id} primaryHero", heroes, current)(player.hero))
                         {
-                            MapPlayerHeroes[(name, id)] = player.hero;
+                            MapPlayerHeroes[name] ??= new Dictionary<int, string>();
+                            MapPlayerHeroes[name][id] = player.hero;
                             player.hero = "Quincy";
                         }
                     }
@@ -144,6 +145,10 @@ internal class ProfileManagement
         var upgrades = ModContent.GetContent<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();
         var heroes = ModContent.GetContent<ModHero>().Select(hero => hero.Id).ToList();
 
+        // handle dummy upgrades
+        upgrades.AddRange(towers);
+        upgrades.AddRange(heroes);
+        
         CleanProfile(profile, towers, upgrades, heroes, true);
     }
 
@@ -227,14 +232,16 @@ internal class ProfileManagement
             }
         }*/
 
-        foreach (var ((map, player), hero) in MapPlayerHeroes)
+        foreach (var (map, dict) in MapPlayerHeroes)
         {
-            if (profile.savedMaps?.ContainsKey(map) == true)
+            if (profile.savedMaps?.ContainsKey(map) != true) continue;
+
+            var mapSaveDataModel = profile.savedMaps[map];
+            foreach (var (player, hero) in dict)
             {
-                var mapSaveDataModel = profile.savedMaps[(string) map];
                 if (mapSaveDataModel.players.ContainsKey(player))
                 {
-                    mapSaveDataModel.players[(int) player].hero = hero;
+                    mapSaveDataModel.players[player].hero = hero;
                 }
             }
         }

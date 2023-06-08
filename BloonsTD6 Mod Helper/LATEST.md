@@ -1,2 +1,5 @@
-- Fixed  ModVanillaParagons
+- Fixed ModVanillaParagons
 - Fixed 2d towers for the new DisplayCategory
+- Fixed issue with heroes appearing in the shop multiple times
+- Fixed extraneous "cleaning acquiredUpgrade" messages after disabling mods
+- Create mod button will now work when your mods folder is on a different volume than your BTD6 install

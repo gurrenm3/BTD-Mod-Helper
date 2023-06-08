@@ -87,7 +87,7 @@ public abstract class ModGameMenu : ModContent
     /// <returns></returns>
     protected static string MenuName<T>() where T : GameMenu
     {
-        return Types.TryGetValue(typeof(T), out var info) ? info.name : typeof(T).Name.Replace("Screen", "UI");
+        return Types.TryGetValue(typeof(T), out var menuName) ? menuName : typeof(T).Name.Replace("Screen", "UI");
     }
 
     internal static bool CheckOpen(GameMenu gameMenu, Object data, out Object outData)
@@ -123,27 +123,36 @@ public abstract class ModGameMenu : ModContent
         MenuManager.instance.OpenMenu(modGameMenu.BaseMenu, new ModMenuData(modGameMenu.Id, data, baseData));
     }
 
-    internal static readonly Dictionary<Type, (string name, string data)> Types = new()
+    internal static readonly Dictionary<Type, string> Types = new()
     {
-        {typeof(ExtraSettingsScreen), (SceneNames.ExtraSettingsUI, "menuData")},
-        {typeof(SettingsScreen), (SceneNames.SettingsUI, "menuData")},
-        {typeof(PowersSelectScreen), (SceneNames.PowersSelectUI, "data")},
-        //{typeof(TwitchSettingsUI), ("TwitchSettingsUI", "data")},
-        {typeof(HotkeysScreen), (SceneNames.HotkeysUI, "menuData")},
-        {typeof(JukeBoxScreen), (SceneNames.JukeboxUI, "data")},
-        {typeof(CollectionEventUI), (SceneNames.CollectionEventUI, "data")},
-        {typeof(AchievementsScreen), (SceneNames.AchievementsUI, "data")},
-        {typeof(PlaySocialScreen), (SceneNames.PlaySocial, "data")},
-        {typeof(GameEventsScreen), (SceneNames.GameEventsUI, "data")},
-        {typeof(HeroInGameScreen), (SceneNames.HeroInGameUI, "data")},
-        {typeof(LevelUpScreen), (SceneNames.LevelUpUI, "data")},
-        {typeof(ContentBrowser), (SceneNames.ContentBrowser, "data")}
+        {typeof(ExtraSettingsScreen), SceneNames.ExtraSettingsUI},
+        {typeof(SettingsScreen), SceneNames.SettingsUI},
+        {typeof(PowersSelectScreen), SceneNames.PowersSelectUI},
+        //{typeof(TwitchSettingsUI), "TwitchSettingsUI"},
+        {typeof(HotkeysScreen), SceneNames.HotkeysUI},
+        {typeof(JukeBoxScreen), SceneNames.JukeboxUI},
+        {typeof(CollectionEventUI), SceneNames.CollectionEventUI},
+        {typeof(AchievementsScreen), SceneNames.AchievementsUI},
+        {typeof(PlaySocialScreen), SceneNames.PlaySocial},
+        {typeof(GameEventsScreen), SceneNames.GameEventsUI},
+        {typeof(HeroInGameScreen), SceneNames.HeroInGameUI},
+        {typeof(LevelUpScreen), SceneNames.LevelUpUI},
+        {typeof(ContentBrowser), SceneNames.ContentBrowser}
+    };
+
+
+    internal static readonly Dictionary<Type, string> DataNames = new()
+    {
+        {typeof(ExtraSettingsScreen), "menuData"},
+        {typeof(SettingsScreen), "menuData"},
+        {typeof(HotkeysScreen), "menuData"},
     };
 
     internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony)
     {
-        foreach (var (type, (_, data)) in Types)
+        foreach (var type in Types.Keys)
         {
+            var data = DataNames.GetValueOrDefault(type, "data");
             try
             {
                 harmony.PatchPrefix(type, "Open", typeof(ModGameMenu), "Patch_" + data);
