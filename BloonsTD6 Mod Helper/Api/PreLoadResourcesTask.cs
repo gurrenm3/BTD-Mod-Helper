@@ -13,29 +13,32 @@ internal class PreLoadResourcesTask : ModLoadTask
 {
     private const int BytesPerFrame = 100000;
 
-    public override string DisplayName => "Pre-loading mod resources...";
-
     private int currentByteTotal;
 
     private bool? showProgressBar;
 
-    public override bool ShowProgressBar => showProgressBar ??=
-        ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values).Sum(bytes => bytes.Length) >
-        BytesPerFrame * 5;
-
-    internal static PreLoadResourcesTask Instance { get; private set; }
-    
     public PreLoadResourcesTask()
     {
         Instance = this;
         mod = ModHelper.Main;
     }
 
+    public override string DisplayName => "Pre-loading mod resources...";
+
+    public override bool ShowProgressBar => showProgressBar ??=
+        ModHelper.Mods.SelectMany(BloonsTD6Mod => BloonsTD6Mod.Resources.Values).Sum(bytes => bytes.Length) >
+        BytesPerFrame * 5;
+
+    internal static PreLoadResourcesTask Instance { get; private set; }
+
     /// <summary>
     /// Don't load this like a normal task
     /// </summary>
     /// <returns></returns>
-    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
+    public override IEnumerable<ModContent> Load()
+    {
+        return Enumerable.Empty<ModContent>();
+    }
 
     public override IEnumerator Coroutine()
     {
@@ -68,9 +71,9 @@ internal class PreLoadResourcesTask : ModLoadTask
         yield return null;
 
         var totalMods = ModHelper.Mods.Count();
-        foreach (var bloonsMod in ModHelper.Mods)
+        foreach (var BloonsTD6Mod in ModHelper.Mods)
         {
-            var name = bloonsMod.GetModName();
+            var name = BloonsTD6Mod.GetModName();
             // Description = name;
 
             var modObject = new GameObject(name)
@@ -80,9 +83,9 @@ internal class PreLoadResourcesTask : ModLoadTask
                     parent = modHelperResources.transform
                 }
             };
-            foreach (var (key, bytes) in bloonsMod.Resources)
+            foreach (var (key, bytes) in BloonsTD6Mod.Resources)
             {
-                PreloadSprite(ResourceHandler.GetSprite(GetId(bloonsMod, key)), key, modObject);
+                PreloadSprite(ResourceHandler.GetSprite(GetId(BloonsTD6Mod, key)), key, modObject);
                 currentByteTotal += bytes.Length;
                 if (currentByteTotal > BytesPerFrame)
                 {

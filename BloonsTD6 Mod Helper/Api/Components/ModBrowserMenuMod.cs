@@ -15,6 +15,16 @@ namespace BTD_Mod_Helper.Api.Components;
 [RegisterTypeInIl2Cpp(false)]
 internal class ModBrowserMenuMod : ModHelperPanel
 {
+
+    public bool descriptionShowing;
+    public string modName;
+    public Action iconAction;
+
+    public Task task;
+
+    public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
+    {
+    }
     public ModHelperPanel InfoPanel => GetDescendent<ModHelperPanel>("InfoPanel");
     public ModHelperButton InfoButton => GetDescendent<ModHelperButton>("Info");
     public ModHelperButton Homepage => GetDescendent<ModHelperButton>("Homepage");
@@ -32,16 +42,6 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModHelperText StarCount => GetDescendent<ModHelperText>("StarCount");
     public ModHelperButton Verified => GetDescendent<ModHelperButton>("Verified");
     public ModHelperImage Spinner => GetDescendent<ModHelperImage>("Spinner");
-
-    public bool descriptionShowing;
-
-    public Task task;
-    public string modName;
-    public Action iconAction;
-
-    public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
-    {
-    }
 
     public static ModBrowserMenuMod CreateTemplate()
     {
@@ -73,7 +73,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
         var panel = mainPanel.AddPanel(new Info("MainPanel", InfoPreset.Flex), VanillaSprites.MainBGPanelBlue,
             RectTransform.Axis.Horizontal, 0, 50);
 
-        var iconPanel = panel.AddPanel(new Info("IconPanel", size: 200));
+        var iconPanel = panel.AddPanel(new Info("IconPanel", 200));
         iconPanel.AddImage(new Info("Icon")
         {
             X = -ModsMenu.Padding,
@@ -87,7 +87,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
         }, "Name", ModsMenu.FontMedium, TextAlignmentOptions.MidlineLeft);
         name.Text.enableAutoSizing = true;
 
-        panel.AddPanel(new Info("LackOfIconPanel", size: 200));
+        panel.AddPanel(new Info("LackOfIconPanel", 200));
 
         var authorPanel = panel.AddPanel(new Info("AuthorPanel")
         {
@@ -127,7 +127,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
             FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, 25);
         stars.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
-        stars.AddButton(new Info("Star", size: 100), VanillaSprites.Star, null);
+        stars.AddButton(new Info("Star", 100), VanillaSprites.Star, null);
         stars.AddText(new Info("StarCount")
         {
             Height = ModsMenu.ModNameHeight,

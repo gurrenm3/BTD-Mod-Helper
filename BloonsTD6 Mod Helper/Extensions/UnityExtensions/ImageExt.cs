@@ -1,16 +1,17 @@
 ﻿using System;
 using BTD_Mod_Helper.Api;
 using Il2CppAssets.Scripts.Utils;
+using UnityEngine;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Extensions for Images
 /// </summary>
-public static partial class ImageExt
+public static class ImageExt
 {
     /// <summary>
-    /// Set the sprite for this image 
+    /// Set the sprite for this image
     /// </summary>
     /// <param name="image"></param>
     /// <param name="spriteReference">Sprite to change image to</param>
@@ -19,9 +20,9 @@ public static partial class ImageExt
         ResourceLoader.LoadSpriteFromSpriteReferenceAsync(spriteReference, image);
         image.enabled = true;
     }
-    
+
     /// <summary>
-    /// Set the sprite for this image 
+    /// Set the sprite for this image
     /// </summary>
     /// <param name="image"></param>
     /// <param name="guid">Sprite to change image to</param>
@@ -30,7 +31,7 @@ public static partial class ImageExt
         ResourceLoader.LoadSpriteFromSpriteReferenceAsync(ModContent.CreateSpriteReference(guid), image);
         image.enabled = true;
     }
-    
+
     /// <summary>
     /// Loads a sprite reference to this image
     /// </summary>
@@ -47,5 +48,37 @@ public static partial class ImageExt
     [Obsolete("Use SetSprite with a VanillaSpriteReference instead")]
     public static void SetSpriteFromAtlas(this Image image, string atlas, string spriteName)
     {
+        throw new NotImplementedException();
+    }
+    /// <summary>
+    /// Saves an image as a PNG files
+    /// Coded in a robust manner that should work for all images, including those with multiple sprites on them being used
+    /// </summary>
+    /// <param name="image"></param>
+    /// <param name="filePath">Absolute file path on the machine to save the file to</param>
+    public static void SaveToPNG(this Image image, string filePath)
+    {
+        Texture texture;
+        if (image.sprite == null || image.sprite.texture == null)
+        {
+            texture = image.material.mainTexture;
+        }
+        else
+        {
+            texture = image.sprite.texture;
+        }
+
+        texture.TrySaveToPNG(filePath);
+    }
+
+    /// <summary>
+    /// Set the sprite for this image
+    /// </summary>
+    /// <param name="image"></param>
+    /// <param name="sprite">Sprite to change image to</param>
+    public static void SetSprite(this Image image, Sprite sprite)
+    {
+        image.canvasRenderer.SetTexture(sprite.texture);
+        image.sprite = sprite;
     }
 }

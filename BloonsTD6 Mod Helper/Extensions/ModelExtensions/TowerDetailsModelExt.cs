@@ -57,7 +57,8 @@ public static class TowerDetailsModelExt
     /// <summary>
     /// Makes a copy of this TowerDetailsModel with a new name
     /// </summary>
-    public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, bool addToGame = false)
+    public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName,
+        bool addToGame = false)
     {
         return towerDetailsModel.MakeCopy(newName, towerDetailsModel.towerIndex, addToGame);
     }
@@ -65,7 +66,8 @@ public static class TowerDetailsModelExt
     /// <summary>
     /// Makes a copy of this TowerDetailsModel with a new name and index
     /// </summary>
-    public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName, int newTowerIndex, bool addToGame =false)
+    public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName,
+        int newTowerIndex, bool addToGame = false)
     {
         var duplicate = towerDetailsModel.Duplicate();
         duplicate.towerId = newName;
@@ -114,5 +116,4 @@ public static class TowerDetailsModelExt
     {
         return Game.instance.model.GetTowerWithName(towerDetailsModel.towerId);
     }
-        
 }

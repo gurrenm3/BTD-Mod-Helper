@@ -18,19 +18,15 @@ namespace BTD_Mod_Helper.UI.Modded;
 /// </summary>
 public static class RoundSetChanger
 {
-    /// <summary>
-    /// The round set override currently chosen, or null
-    /// </summary>
-    public static string RoundSetOverride { get; private set; }
+
+    private const float AnimatorSpeed = .75f;
+    private const int AnimationTicks = (int) (10 / AnimatorSpeed);
 
     private static readonly string[] ShowOnMenus =
     {
         "MapSelectUI", "DifficultySelectUI", "ModeSelectUI",
         "MapSelectScreen", "DifficultySelectScreen", "ModeSelectScreen"
     };
-
-    private const float AnimatorSpeed = .75f;
-    private const int AnimationTicks = (int) (10 / AnimatorSpeed);
 
     private static ModHelperPanel buttonPanel;
     private static ModHelperScrollPanel optionsPanel;
@@ -39,6 +35,10 @@ public static class RoundSetChanger
     private static List<ModRoundSet> modRoundSets;
 
     private static ModHelperPanel invisibleCancel;
+    /// <summary>
+    /// The round set override currently chosen, or null
+    /// </summary>
+    public static string RoundSetOverride { get; private set; }
 
     private static void CreatePanel(GameObject screen)
     {
@@ -108,7 +108,7 @@ public static class RoundSetChanger
 
     private static ModHelperButton CreateRoundSetButton(string id, string displayName, string icon)
     {
-        var roundButton = ModHelperButton.Create(new Info(displayName, width: 300, height: 300),
+        var roundButton = ModHelperButton.Create(new Info(displayName, 300, 300),
             icon, new Action(() =>
             {
                 StopOptionsMode();
@@ -122,7 +122,7 @@ public static class RoundSetChanger
         );
 
         CheckMarks[id] = roundButton.AddImage(
-            new Info("Tick", -75, -75, 100, 100, anchor: Vector2.one), VanillaSprites.SelectedTick
+            new Info("Tick", -75, -75, 100, 100, Vector2.one), VanillaSprites.SelectedTick
         );
 
         return roundButton;
@@ -156,7 +156,7 @@ public static class RoundSetChanger
             CreateCancel(backgroundScreen.gameObject);
         }
     }
-    
+
     private static void CreateCancel(GameObject screen)
     {
         invisibleCancel = screen.AddModHelperPanel(new Info("InvisibleCancel", InfoPreset.FillParent));
@@ -235,7 +235,7 @@ public static class RoundSetChanger
             {
                 Show();
             }
-            
+
             ModifyBlockClicks();
         }
 

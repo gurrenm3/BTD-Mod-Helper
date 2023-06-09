@@ -9,8 +9,8 @@ using Il2CppAssets.Scripts.Data.Knowledge;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Map;
+using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Models.Towers;
-using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -20,8 +20,8 @@ using Il2CppSystem.Collections.Generic;
 using Exception = System.Exception;
 namespace BTD_Mod_Helper.Patches;
 
-/*[HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(List<string>),
-    typeof(ActiveRelicKnowledge), typeof(MapModel))]
+[HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(List<string>), typeof(ModModel),
+    typeof(ActiveRelicKnowledge), typeof(MapModel), typeof(RoundSetModel))]
 internal partial class GameModel_CreateModde
 {
     [HarmonyPostfix]
@@ -29,11 +29,11 @@ internal partial class GameModel_CreateModde
     {
         ModHelper.PerformHook(mod => mod.OnNewGameModel(__result, map));
     }
-}*/
+}
 
 [HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(GameModel), typeof(List<ModModel>),
     typeof(List<RelicKnowledgeItemBase>))]
-internal class GameModel_CreateModded
+internal static class GameModel_CreateModded
 {
     [HarmonyPrefix]
     internal static bool Prefix()
@@ -53,7 +53,7 @@ internal class GameModel_CreateModded
                 towerCache[key] = value;
             }
         }
-        
+
         var upgradeCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
         foreach (var (key, value) in ModUpgrade.UpgradeModelCache)
         {
@@ -62,7 +62,7 @@ internal class GameModel_CreateModded
                 upgradeCache[key] = value;
             }
         }
-        
+
 
         var bloonCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
         foreach (var (key, value) in ModBloon.BloonModelCache)
@@ -72,7 +72,7 @@ internal class GameModel_CreateModded
                 bloonCache[key] = value;
             }
         }
-        
+
 
         return true;
     }
@@ -137,7 +137,7 @@ internal class GameModel_CreateModded
             modBloon.ModifyBloonModelForMatch(bloonModel, gameModes);
         }
 
-        ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));
+        ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods.ToList()));
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result));
     }
 }

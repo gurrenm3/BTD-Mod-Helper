@@ -7,7 +7,7 @@ internal static class GameModel_GetBloon
 {
     [HarmonyPostfix]
     private static void Postfix(string id, ref BloonModel __result)
-    { 
+    {
         // This is here to catch errors in this method, otherwise it just fails silently which can be confusing
     }
 }

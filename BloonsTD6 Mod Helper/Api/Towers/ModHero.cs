@@ -1,34 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Data.Skins;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Utils;
-using Il2CppSystem.Collections.Generic;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
-/// Class for adding a custom Hero to the game. Use alongside <see cref="ModHeroLevel"/> to give multiple levels.
+/// Class for adding a custom Hero to the game. Use alongside <see cref="ModHeroLevel" /> to give multiple levels.
 /// </summary>
 public abstract class ModHero : ModTower
 {
-    /// <inheritdoc />
-    public override void Register()
-    {
-        base.Register();
-        ModTowerHelper.FinalizeHero(this);
-    }
-
-    /// <inheritdoc />
-    public override void RegisterText(Dictionary<string, string> textTable)
-    {
-        base.RegisterText(textTable);
-
-        textTable[Id + " Short Description"] = Title;
-        textTable[Id + " Level 1 Description"] = Level1Description;
-    }
 
     internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
     {
@@ -74,43 +59,6 @@ public abstract class ModHero : ModTower
     public sealed override int BottomPathUpgrades => 0;
 
     /// <summary>
-    /// Heroes tower tiers are always Level-0-0
-    /// </summary>
-    /// <returns></returns>
-    public sealed override System.Collections.Generic.IEnumerable<int[]> TowerTiers()
-    {
-        yield return new[] {0, 0, 0};
-
-        for (var i = 2; i <= MaxLevel; i++)
-        {
-            yield return new[] {i, 0, 0};
-        }
-    }
-
-    internal override TowerModel GetDefaultTowerModel(int[] tiers = null)
-    {
-        var baseTowerModel = base.GetDefaultTowerModel(tiers);
-        if (!baseTowerModel.HasBehavior<HeroModel>())
-        {
-            // Unrelated to the actual XpRatio weirdly enough
-            baseTowerModel.AddBehavior(new HeroModel($"HeroModel_{Name}", 1.0f, 1.0f));
-        }
-
-        return baseTowerModel;
-    }
-
-    internal override string TowerId(int[] tiers)
-    {
-        var id = Id;
-        if (tiers[0] > 0)
-        {
-            id += " " + tiers[0];
-        }
-
-        return id;
-    }
-
-    /// <summary>
     /// The other hero that has the same colored name in the Heroes menu as you want to use
     /// </summary>
     public virtual string NameStyle => TowerType.Ezili;
@@ -147,19 +95,19 @@ public abstract class ModHero : ModTower
 
     /// <summary>
     /// If you want to manually override which portraits your hero uses in the select screen, mess with this
-    /// <br/>
-    /// By default will find any <see cref="ModUpgrade.PortraitReference"/>s defined in your <see cref="ModHeroLevel"/>s
-    /// <br/>
+    /// <br />
+    /// By default will find any <see cref="ModUpgrade.PortraitReference" />s defined in your <see cref="ModHeroLevel" />s
+    /// <br />
     /// The SpriteReference is the actual image that will be displayed
     /// </summary>
-    public virtual System.Collections.Generic.Dictionary<int, SpriteReference> SelectScreenPortraits => new()
+    public virtual Dictionary<int, SpriteReference> SelectScreenPortraits => new()
     {
         {1, PortraitReference},
-        {3, GetPortraitReferenceForTiers(new []{3, 0, 0})},
-        {10, GetPortraitReferenceForTiers(new []{10, 0, 0})},
-        {20, GetPortraitReferenceForTiers(new []{20, 0, 0})},
+        {3, GetPortraitReferenceForTiers(new[] {3, 0, 0})},
+        {10, GetPortraitReferenceForTiers(new[] {10, 0, 0})},
+        {20, GetPortraitReferenceForTiers(new[] {20, 0, 0})}
     };
-    
+
 
     /// <summary>
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
@@ -169,13 +117,13 @@ public abstract class ModHero : ModTower
 
     /// <summary>
     /// XpRatio to use when determining the default xp costs of the levels.
-    /// <br/>
+    /// <br />
     /// All four base heroes (Quincy, Gwendolin, Striker Jones, Obyn Greenfoot) as well as Etienne have an XP ratio of 1x.
-    /// <br/>
+    /// <br />
     /// Ezili, Pat Fusty, Admiral Brickell, and Sauda have a 1.425x XP ratio.
-    /// <br/>
+    /// <br />
     /// Benjamin and Psi have an XP ratio of 1.5x.
-    /// <br/>
+    /// <br />
     /// Captain Churchill and Adora have a ratio of 1.71x.
     /// </summary>
     public abstract float XpRatio { get; }
@@ -192,44 +140,102 @@ public abstract class ModHero : ModTower
 
     /// <summary>
     /// The total number of abilities that this hero has as max level
-    /// <br/>
+    /// <br />
     /// OBSOLETE: No longer required to manually specify
     /// </summary>
     [Obsolete("No longer required to manually specify")]
     public virtual int Abilities { get; }
+    /// <inheritdoc />
+    public override void Register()
+    {
+        base.Register();
+        ModTowerHelper.FinalizeHero(this);
+    }
+
+    /// <inheritdoc />
+    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
+    {
+        base.RegisterText(textTable);
+
+        textTable[Id + " Short Description"] = Title;
+        textTable[Id + " Level 1 Description"] = Level1Description;
+    }
+
+    /// <summary>
+    /// Heroes tower tiers are always Level-0-0
+    /// </summary>
+    /// <returns></returns>
+    public sealed override IEnumerable<int[]> TowerTiers()
+    {
+        yield return new[] {0, 0, 0};
+
+        for (var i = 2; i <= MaxLevel; i++)
+        {
+            yield return new[] {i, 0, 0};
+        }
+    }
+
+    internal override TowerModel GetDefaultTowerModel(int[] tiers = null)
+    {
+        var baseTowerModel = base.GetDefaultTowerModel(tiers);
+        if (!baseTowerModel.HasBehavior<HeroModel>())
+        {
+            // Unrelated to the actual XpRatio weirdly enough
+            baseTowerModel.AddBehavior(new HeroModel($"HeroModel_{Name}", 1.0f, 1.0f));
+        }
+
+        return baseTowerModel;
+    }
+
+    internal override string TowerId(int[] tiers)
+    {
+        var id = Id;
+        if (tiers[0] > 0)
+        {
+            id += " " + tiers[0];
+        }
+
+        return id;
+    }
 
     /// <summary>
     /// Gets the font material for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Material GetFontMaterial(System.Collections.Generic.Dictionary<string, SkinData> skinsByName) =>
-        skinsByName.TryGetValue(NameStyle, out var dataForFont)
+    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName)
+    {
+        return skinsByName.TryGetValue(NameStyle, out var dataForFont)
             ? dataForFont.fontMaterial
             : skinsByName[TowerType.Quincy].fontMaterial;
+    }
 
     /// <summary>
     /// Gets the Background Banner for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual PrefabReference GetBackgroundBanner(System.Collections.Generic.Dictionary<string, SkinData> skinsByName) =>
-        skinsByName.TryGetValue(GlowStyle, out var dataForFont)
+    public virtual PrefabReference GetBackgroundBanner(Dictionary<string, SkinData> skinsByName)
+    {
+        return skinsByName.TryGetValue(GlowStyle, out var dataForFont)
             ? dataForFont.backgroundBanner
             : skinsByName[TowerType.Quincy].backgroundBanner;
+    }
 
     /// <summary>
     /// Gets the background color for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Color GetBackgroundColor(System.Collections.Generic.Dictionary<string, SkinData> skinsByName) =>
-        skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
+    public virtual Color GetBackgroundColor(Dictionary<string, SkinData> skinsByName)
+    {
+        return skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
             ? dataForFont.backgroundColourTintOverride
             : skinsByName[TowerType.Quincy].backgroundColourTintOverride;
+    }
 
     /// <summary>
     /// Creates the SkinData for the default tower
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual SkinData CreateDefaultSkin(System.Collections.Generic.Dictionary<string, SkinData> skinsByName)
+    public virtual SkinData CreateDefaultSkin(Dictionary<string, SkinData> skinsByName)
     {
         var skinData = ScriptableObject.CreateInstance<SkinData>();
         skinData.name = skinData.baseTowerName = Id;
@@ -261,7 +267,7 @@ public abstract class ModHero : ModTower
                 asset = pair.Value
             }).ToIl2CppList()
         };
-        
+
         // ReSharper disable ArrangeObjectCreationWhenTypeNotEvident
         skinData.SwapAudioContainer = new SwapAudioContainer {items = new()};
         skinData.SwapOverlayContainer = new SwapOverlayContainer {items = new()};
@@ -272,7 +278,8 @@ public abstract class ModHero : ModTower
     }
 
     /// <summary>
-    /// Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to play
+    /// Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to
+    /// play
     /// </summary>
     public virtual string SelectSound => "";
 
@@ -281,7 +288,7 @@ public abstract class ModHero : ModTower
     /// </summary>
     /// <param name="heroSet"></param>
     /// <returns></returns>
-    public virtual int GetHeroIndex(System.Collections.Generic.List<HeroDetailsModel> heroSet)
+    public virtual int GetHeroIndex(List<HeroDetailsModel> heroSet)
     {
         return heroSet.Count;
     }

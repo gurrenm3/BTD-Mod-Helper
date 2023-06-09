@@ -7,7 +7,7 @@ internal class Bloon_Degrade
     [HarmonyPrefix]
     internal static bool Prefix(Bloon __instance)
     {
-        bool hasKey = SessionData.Instance.PoppedBloons.TryGetValue(__instance.bloonModel.id, out int amountPopped);
+        var hasKey = SessionData.Instance.PoppedBloons.TryGetValue(__instance.bloonModel.id, out var amountPopped);
         if (!hasKey)
             SessionData.Instance.PoppedBloons.Add(__instance.bloonModel.id, 0);
 

@@ -24,13 +24,15 @@ public static partial class DumpNodeExt
         {
             if (item.materials.Length > 0 && item.material.mainTexture)
             {
-                item.material.mainTexture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{item.material.mainTexture.name}.png");
+                item.material.mainTexture.TrySaveToPNG(
+                    $"{FileIOHelper.sandboxRoot}DumpedTextures/{item.material.mainTexture.name}.png");
             }
         }
 
         if (node.isSprite)
         {
-            foreach (var texture in node.gameObject.GetComponentsInChildren<SpriteRenderer>().Select(spriteRenderer=>spriteRenderer.sprite.texture))
+            foreach (var texture in node.gameObject.GetComponentsInChildren<SpriteRenderer>()
+                         .Select(spriteRenderer => spriteRenderer.sprite.texture))
             {
                 texture.TrySaveToPNG($"{FileIOHelper.sandboxRoot}DumpedTextures/{texture.name}.png");
             }

@@ -9,20 +9,23 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 internal class ModContentTask : ModLoadTask
 {
+
+    private float? total;
     /// <inheritdoc />
     public override string DisplayName => $"Registering ModContent for {mod.Info.Name}...";
+
+    public override bool ShowProgressBar => Total > 5;
+
+    public float Total => total ??= mod.Content.Sum(content => 1f / content.RegisterPerFrame);
 
     /// <summary>
     /// Don't load this like a normal task
     /// </summary>
     /// <returns></returns>
-    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
-
-    public override bool ShowProgressBar => Total > 5;
-
-    private float? total;
-    
-    public float Total => total ??= mod.Content.Sum(content => 1f / content.RegisterPerFrame);
+    public override IEnumerable<ModContent> Load()
+    {
+        return Enumerable.Empty<ModContent>();
+    }
 
     /// <summary>
     /// Registers ModContent from other mods

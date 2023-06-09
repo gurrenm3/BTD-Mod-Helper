@@ -15,9 +15,13 @@ public static class MapSelectUI
     public static Scene? GetScene()
     {
         try
-        { return SceneManager.GetSceneByName("MapSelectUI"); }
+        {
+            return SceneManager.GetSceneByName("MapSelectUI");
+        }
         catch (ArgumentException)
-        { return null; }
+        {
+            return null;
+        }
     }
 
     /// <summary>

@@ -6,7 +6,8 @@ using UnityEngine;
 namespace BTD_Mod_Helper.Patches.UI;
 
 /// <summary>
-/// Stop the first object in the top upgrade row from being automatically selected, since it may not exist for modded towers
+/// Stop the first object in the top upgrade row from being automatically selected, since it may not exist for modded
+/// towers
 /// </summary>
 [HarmonyPatch(typeof(UpgradeScreen))]
 internal class UpgradeScreen_Open

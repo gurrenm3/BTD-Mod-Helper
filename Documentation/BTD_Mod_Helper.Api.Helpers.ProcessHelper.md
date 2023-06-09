@@ -33,7 +33,8 @@ URL to open
 
 ## ProcessHelper.RestartGame() Method
 
-Exits the game and starts a new process after waiting 10 seconds, to ensure no "Another instance is already running" errors
+Exits the game and starts a new process after waiting 10 seconds, to ensure no "Another instance is already running"  
+errors
 
 ```csharp
 public static void RestartGame();

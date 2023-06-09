@@ -255,7 +255,7 @@ public static void RemoveBone(this UnityDisplayNode unityDisplayNode, string bon
 
 ## UnityDisplayNodeExt.SaveMeshTexture(this UnityDisplayNode, int, string) Method
 
-Saves the texture used for this node's mesh renderer   
+Saves the texture used for this node's mesh renderer  
 <br/>  
 By default, this saves to local files, aka "C:\Users\...\AppData\LocalLow\Ninja Kiwi\BloonsTD6"
 

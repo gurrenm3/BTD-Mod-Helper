@@ -11,6 +11,10 @@ internal class InputManager_PrimeTower
         if (InGame.instance == null)
             return;
 
-        TaskScheduler.ScheduleTask(() => { ModHelper.PerformHook(mod => mod.OnTowerGraphicsCreated(__instance.placementModel, __instance.placementGraphics)); }, waitCondition: () => __instance.placementGraphics?.Count > 0);
+        var graphics = __instance.placementGraphics.ToList();
+
+        TaskScheduler.ScheduleTask(
+            () => { ModHelper.PerformHook(mod => mod.OnTowerGraphicsCreated(__instance.placementModel, graphics)); },
+            () => __instance.placementGraphics?.Count > 0);
     }
 }

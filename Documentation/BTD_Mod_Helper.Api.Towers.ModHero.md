@@ -205,7 +205,8 @@ public virtual System.Collections.Generic.Dictionary<int,SpriteReference> Select
 
 ## ModHero.SelectSound Property
 
-Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to play
+Sound to play when you select this hero in the hero select screen, the sound must be registered in the game for it to  
+play
 
 ```csharp
 public virtual string SelectSound { get; }

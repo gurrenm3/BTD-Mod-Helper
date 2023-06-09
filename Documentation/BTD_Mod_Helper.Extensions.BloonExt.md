@@ -16,7 +16,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## BloonExt.CreateBloonToSim(this Bloon) Method
 
-Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically destroyed when this Bloon is destroyed
+Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically  
+destroyed when this Bloon is destroyed
 
 ```csharp
 public static BloonToSimulation CreateBloonToSim(this Bloon bloon);

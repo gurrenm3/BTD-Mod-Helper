@@ -9,43 +9,43 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class EmissionModelBehaviorExt
 {
-    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)"/>
+    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
     public static bool HasBehavior<T>(this EmissionModel model) where T : Model
     {
         return ModelBehaviorExt.HasBehavior<T>(model);
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)"/>
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
     public static T GetBehavior<T>(this EmissionModel model) where T : Model
     {
         return ModelBehaviorExt.GetBehavior<T>(model);
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}"/>
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}" />
     public static List<T> GetBehaviors<T>(this EmissionModel model) where T : Model
     {
         return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior"/>
+    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior" />
     public static void AddBehavior<T>(this EmissionModel model, T behavior) where T : EmissionBehaviorModel
     {
         ModelBehaviorExt.AddBehavior(model, behavior);
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)"/>
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
     public static void RemoveBehavior<T>(this EmissionModel model) where T : Model
     {
         ModelBehaviorExt.RemoveBehavior<T>(model);
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior"/>
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior" />
     public static void RemoveBehavior<T>(this EmissionModel model, T behavior) where T : Model
     {
         ModelBehaviorExt.RemoveBehavior(model, behavior);
     }
 
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}"/>
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
     public static void RemoveBehaviors<T>(this EmissionModel model) where T : Model
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);

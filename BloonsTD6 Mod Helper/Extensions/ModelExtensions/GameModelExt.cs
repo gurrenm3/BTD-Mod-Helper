@@ -16,10 +16,13 @@ using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Simulation.Objects;
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class GameModelExt
+/// <summary>
+/// Extensions for the GameModel
+/// </summary>
+public static class GameModelExt
 {
     /// <summary>
-    /// Returns whether or not any TowerModels in <see cref="GameModel.towers"/> have <paramref name="towerId"/>
+    /// Returns whether or not any TowerModels in <see cref="GameModel.towers" /> have <paramref name="towerId" />
     /// in it's name
     /// </summary>
     /// <param name="model"></param>
@@ -31,7 +34,7 @@ public static partial class GameModelExt
     }
 
     /// <summary>
-    /// Returns whether or not any TowerDetailsModels in <see cref="GameModel.towerSet"/> have <paramref name="towerId"/>
+    /// Returns whether or not any TowerDetailsModels in <see cref="GameModel.towerSet" /> have <paramref name="towerId" />
     /// in it's name
     /// </summary>
     /// <param name="model"></param>
@@ -44,7 +47,7 @@ public static partial class GameModelExt
 
     /// <summary>
     /// Add a TowerModel to the game.
-    /// <br/>
+    /// <br />
     /// Using this method is preferable than modifying the GameModel's towers list manually, as this does more things
     /// to more fully integrate the tower within the game
     /// </summary>
@@ -96,7 +99,7 @@ public static partial class GameModelExt
 
 
     /// <summary>
-    /// Adds a tower 
+    /// Adds a tower
     /// </summary>
     /// <param name="model"></param>
     /// <param name="towerDetailsModel"></param>
@@ -107,7 +110,7 @@ public static partial class GameModelExt
 
     /// <summary>
     /// Adds a TowerDetailsModel to the GameModel's TowerSet, taking into account what set of towers it's a part of
-    /// <br/>
+    /// <br />
     /// For example, a new custom Primary tower would be added right at the end of the primary towers,
     /// and right before the start of the military towers
     /// </summary>
@@ -268,7 +271,7 @@ public static partial class GameModelExt
         var bloonEmissionModels = new List<BloonEmissionModel>();
 
         for (var i = 0; i < number; i++)
-            bloonEmissionModels.Add(model.CreateBloonEmission(bloonName, time: spacing * i));
+            bloonEmissionModels.Add(model.CreateBloonEmission(bloonName, spacing * i));
 
         return bloonEmissionModels.ToIl2CppReferenceArray();
     }
@@ -292,8 +295,10 @@ public static partial class GameModelExt
     /// <param name="time">Time the bloon should be spawned</param>
     /// <param name="chargedMutators"></param>
     /// <param name="behaviorMutators"></param>
-    /// <exclude/>
-    public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time, Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators, Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
+    /// <exclude />
+    public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time,
+        Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators,
+        Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
     {
         //return new BloonEmissionModel("", time, bloonName, chargedMutators, behaviorMutators); // removed in update 25.0
         return new BloonEmissionModel("", time, bloonName);
@@ -305,7 +310,7 @@ public static partial class GameModelExt
     public static BloonGroupModel CreateBloonGroup(this GameModel model, string bloonName, float startTime,
         float spacing, int count)
     {
-        var endTime = startTime + (spacing * count);
+        var endTime = startTime + spacing * count;
         return new BloonGroupModel("", bloonName, startTime, endTime, count);
     }
 
@@ -348,7 +353,9 @@ public static partial class GameModelExt
     /// Return all ProjectileModels from every TowerModel in the game
     /// </summary>
     public static List<ProjectileModel> GetAllProjectileModels(this GameModel model)
-        => model.towers.SelectMany(towerModel => towerModel.GetDescendants<ProjectileModel>().ToList()).ToList();
+    {
+        return model.towers.SelectMany(towerModel => towerModel.GetDescendants<ProjectileModel>().ToList()).ToList();
+    }
 
     /// <summary>
     /// Return all AbilityModels from every TowerModel in the game
@@ -356,7 +363,9 @@ public static partial class GameModelExt
     /// <param name="model"></param>
     /// <returns></returns>
     public static List<AbilityModel> GetAllAbilityModels(this GameModel model)
-        => model.towers.SelectMany(towerModel => towerModel.GetDescendants<AbilityModel>().ToList()).ToList();
+    {
+        return model.towers.SelectMany(towerModel => towerModel.GetDescendants<AbilityModel>().ToList()).ToList();
+    }
 
     /// <summary>
     /// Return all TowerModels that have at least one AbilityModel
@@ -398,14 +407,21 @@ public static partial class GameModelExt
     }
 
     /// <summary>
-    /// Returns the first TowerDetailsModel in <see cref="GameModel.towerSet"/> that has a towerId of
-    /// <paramref name="towerDetailsName"/>
+    /// Returns the first TowerDetailsModel in <see cref="GameModel.towerSet" /> that has a towerId of
+    /// <paramref name="towerDetailsName" />
     /// </summary>
     /// <param name="model"></param>
-    /// <param name="towerDetailsName">The <see cref="TowerDetailsModel.towerId"/> you are searching for</param>
+    /// <param name="towerDetailsName">The <see cref="TowerDetailsModel.towerId" /> you are searching for</param>
     /// <returns>The first TowerDetailsModel found, otherwise returns null</returns>
     public static TowerDetailsModel GetTowerDetails(this GameModel model, string towerDetailsName)
     {
         return model.towerSet.FirstOrDefault(tower => tower.towerId == towerDetailsName);
+    }
+    /// <summary>
+    /// Returns whether or not a bloon exists with this name
+    /// </summary>
+    public static bool DoesBloonExist(this GameModel gameModel, string bloonName)
+    {
+        return gameModel.bloons.Any(bloon => bloon.name == bloonName);
     }
 }

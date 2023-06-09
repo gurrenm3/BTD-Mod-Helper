@@ -1,10 +1,47 @@
-﻿using Il2CppAssets.Scripts.Models.Towers.Filters;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Display;
+using Il2CppAssets.Scripts.Models.Towers.Filters;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class ProjectileModelExt
+/// <summary>
+/// Extensions for ProjectileModels
+/// </summary>
+public static class ProjectileModelExt
 {
+    /// <summary>
+    /// Get the DamageModel behavior from the list of behaviors
+    /// </summary>
+    public static DamageModel GetDamageModel(this ProjectileModel projectileModel)
+    {
+        return projectileModel.GetBehavior<DamageModel>();
+    }
+
+    /// <summary>
+    /// Get all Projectile Simulations that have this ProjectileModel
+    /// </summary>
+    public static List<Projectile> GetProjectileSims(this ProjectileModel projectileModel)
+    {
+        var projectileSims = InGame.instance.GetProjectiles();
+        return projectileSims?.Where(projectile => projectile.projectileModel.name == projectileModel.name).ToList() ??
+               new List<Projectile>();
+    }
+
+
+    /// <summary>
+    /// Applies a given ModDisplay to this ProjectileModel
+    /// </summary>
+    /// <typeparam name="T">The type of ModDisplay</typeparam>
+    public static void ApplyDisplay<T>(this ProjectileModel projectileModel) where T : ModDisplay
+    {
+        ModContent.GetInstance<T>().Apply(projectileModel);
+    }
+
     /// <summary>
     /// Returns whether a projectile is able to hit Camo bloons
     /// </summary>
@@ -23,7 +60,8 @@ public static partial class ProjectileModelExt
 
     /// <summary>
     /// Makes a projectile model able to see Camo or not
-    /// </summary>]
+    /// </summary>
+    /// ]
     public static void SetHitCamo(this ProjectileModel projectileModel, bool canHitCamo)
     {
         var projectileFilterModel = projectileModel.GetBehavior<ProjectileFilterModel>();

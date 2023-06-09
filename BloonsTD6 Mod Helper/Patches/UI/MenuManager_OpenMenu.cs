@@ -1,6 +1,5 @@
-using Il2CppAssets.Scripts.Unity.Menu;
 using BTD_Mod_Helper.UI.Modded;
-
+using Il2CppAssets.Scripts.Unity.Menu;
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(MenuManager), nameof(MenuManager.OpenMenu))]

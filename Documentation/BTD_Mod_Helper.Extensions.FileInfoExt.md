@@ -70,7 +70,8 @@ public static bool IsNewerMelonMod(this System.IO.FileInfo fileInfo);
 
 ## FileInfoExt.IsOlderMelonMod(this FileInfo) Method
 
-Returns whether or not this File has a reference to the older MelonLoader.ModHandler.dll (For MelonLoader 2.7.4 and below)
+Returns whether or not this File has a reference to the older MelonLoader.ModHandler.dll (For MelonLoader 2.7.4 and  
+below)
 
 ```csharp
 public static bool IsOlderMelonMod(this System.IO.FileInfo fileInfo);

@@ -169,7 +169,8 @@ public static CoopLobbyScreen GetCoopLobbyScreen(this Game game);
 
 ## GameExt.GetDisplayFactory(this Game) Method
 
-Get the Unity Display Factory that manages on screen sprites. This Factory is different from other Factories in the game
+Get the Unity Display Factory that manages on screen sprites. This Factory is different from other Factories in the  
+game
 
 ```csharp
 public static Factory GetDisplayFactory(this Game game);

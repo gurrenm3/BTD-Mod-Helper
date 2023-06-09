@@ -17,7 +17,7 @@ internal class UpgradeScreen_UpdateUi
             });
         }
     }
-        
+
     [HarmonyPostfix]
     internal static void Postfix(UpgradeScreen __instance)
     {

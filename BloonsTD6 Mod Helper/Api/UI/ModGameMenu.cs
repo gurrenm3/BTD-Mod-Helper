@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Components;
 using Il2CppAssets.Scripts;
@@ -14,9 +15,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.HeroInGame;
 using Il2CppAssets.Scripts.Unity.UI_New.LevelUp;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.PowersSelect;
 using Il2CppAssets.Scripts.Unity.UI_New.Settings;
-using Il2CppSystem;
-using Exception = System.Exception;
-using Type = System.Type;
+using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -25,6 +24,31 @@ namespace BTD_Mod_Helper.Api;
 public abstract class ModGameMenu : ModContent
 {
     internal static readonly Dictionary<string, ModGameMenu> Cache = new();
+
+    internal static readonly Dictionary<Type, string> Types = new()
+    {
+        {typeof(ExtraSettingsScreen), SceneNames.ExtraSettingsUI},
+        {typeof(SettingsScreen), SceneNames.SettingsUI},
+        {typeof(PowersSelectScreen), SceneNames.PowersSelectUI},
+        //{typeof(TwitchSettingsUI), "TwitchSettingsUI"},
+        {typeof(HotkeysScreen), SceneNames.HotkeysUI},
+        {typeof(JukeBoxScreen), SceneNames.JukeboxUI},
+        {typeof(CollectionEventUI), SceneNames.CollectionEventUI},
+        {typeof(AchievementsScreen), SceneNames.AchievementsUI},
+        {typeof(PlaySocialScreen), SceneNames.PlaySocial},
+        {typeof(GameEventsScreen), SceneNames.GameEventsUI},
+        {typeof(HeroInGameScreen), SceneNames.HeroInGameUI},
+        {typeof(LevelUpScreen), SceneNames.LevelUpUI},
+        {typeof(ContentBrowser), SceneNames.ContentBrowser}
+    };
+
+
+    internal static readonly Dictionary<Type, string> DataNames = new()
+    {
+        {typeof(ExtraSettingsScreen), "menuData"},
+        {typeof(SettingsScreen), "menuData"},
+        {typeof(HotkeysScreen), "menuData"}
+    };
 
     /// <summary>
     /// The text of the Header component that's on many UI screens, might be null
@@ -47,6 +71,11 @@ public abstract class ModGameMenu : ModContent
     /// </summary>
     public bool IsOpen { get; internal set; }
 
+    /// <summary>
+    /// The current GameMenu
+    /// </summary>
+    public GameMenu GameMenu { get; private set; }
+
     /// <inheritdoc />
     public override void Register()
     {
@@ -54,13 +83,8 @@ public abstract class ModGameMenu : ModContent
     }
 
     /// <summary>
-    /// The current GameMenu
-    /// </summary>
-    public GameMenu GameMenu { get; private set; }
-
-    /// <summary>
     /// Runs right as your custom menu is being opened, with the optional data argument that can be passed into
-    /// <see cref="Open{T}(Il2CppSystem.Object,Il2CppSystem.Object)"/>
+    /// <see cref="Open{T}(Il2CppSystem.Object,Il2CppSystem.Object)" />
     /// </summary>
     /// <returns>Whether to run the base menu's OnOpen code</returns>
     public abstract bool OnMenuOpened(Object data);
@@ -94,7 +118,7 @@ public abstract class ModGameMenu : ModContent
     {
         if (data != null &&
             data.IsType(out ModMenuData menuData) &&
-            GetContent<ModGameMenu>().FirstOrDefault(menu => menu.Id == menuData.id) is ModGameMenu modGameMenu)
+            GetContent<ModGameMenu>().Find(menu => menu.Id == menuData.id) is ModGameMenu modGameMenu)
         {
             outData = menuData.baseData;
             var tracker = gameMenu.gameObject.AddComponent<ModGameMenuTracker>();
@@ -113,8 +137,11 @@ public abstract class ModGameMenu : ModContent
     /// <summary>
     /// Opens a custom menu
     /// </summary>
-    /// <param name="data">The custom data to pass into your ModGameMenu's <see cref="OnMenuOpened"/> method</param>
-    /// <param name="baseData">The data that you want to pass into the base menu's Open method, if you're still running the code</param>
+    /// <param name="data">The custom data to pass into your ModGameMenu's <see cref="OnMenuOpened" /> method</param>
+    /// <param name="baseData">
+    /// The data that you want to pass into the base menu's Open method, if you're still running the
+    /// code
+    /// </param>
     /// <typeparam name="T">The custom menu type to open</typeparam>
     public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu
     {
@@ -122,31 +149,6 @@ public abstract class ModGameMenu : ModContent
         modGameMenu.IsOpen = true;
         MenuManager.instance.OpenMenu(modGameMenu.BaseMenu, new ModMenuData(modGameMenu.Id, data, baseData));
     }
-
-    internal static readonly Dictionary<Type, string> Types = new()
-    {
-        {typeof(ExtraSettingsScreen), SceneNames.ExtraSettingsUI},
-        {typeof(SettingsScreen), SceneNames.SettingsUI},
-        {typeof(PowersSelectScreen), SceneNames.PowersSelectUI},
-        //{typeof(TwitchSettingsUI), "TwitchSettingsUI"},
-        {typeof(HotkeysScreen), SceneNames.HotkeysUI},
-        {typeof(JukeBoxScreen), SceneNames.JukeboxUI},
-        {typeof(CollectionEventUI), SceneNames.CollectionEventUI},
-        {typeof(AchievementsScreen), SceneNames.AchievementsUI},
-        {typeof(PlaySocialScreen), SceneNames.PlaySocial},
-        {typeof(GameEventsScreen), SceneNames.GameEventsUI},
-        {typeof(HeroInGameScreen), SceneNames.HeroInGameUI},
-        {typeof(LevelUpScreen), SceneNames.LevelUpUI},
-        {typeof(ContentBrowser), SceneNames.ContentBrowser}
-    };
-
-
-    internal static readonly Dictionary<Type, string> DataNames = new()
-    {
-        {typeof(ExtraSettingsScreen), "menuData"},
-        {typeof(SettingsScreen), "menuData"},
-        {typeof(HotkeysScreen), "menuData"},
-    };
 
     internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony)
     {
@@ -184,6 +186,6 @@ public abstract class ModGameMenu<T> : ModGameMenu where T : GameMenu
     /// <inheritdoc />
     public override string BaseMenu => MenuName<T>();
 
-    /// <inheritdoc cref="ModGameMenu.GameMenu"/>
+    /// <inheritdoc cref="ModGameMenu.GameMenu" />
     public new T GameMenu => base.GameMenu.Cast<T>();
 }

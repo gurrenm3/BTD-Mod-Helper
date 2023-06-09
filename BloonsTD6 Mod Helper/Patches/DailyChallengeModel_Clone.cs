@@ -11,7 +11,7 @@ internal static class DailyChallengeModel_Clone
     private static void Postfix(DailyChallengeModel __result)
     {
         if (__result?.towers == null) return;
-        
+
         foreach (var modTower in ModContent.GetContent<ModTower>().Where(x => x.AlwaysIncludeInChallenge))
         {
             var towerId = modTower.Id;
@@ -26,7 +26,7 @@ internal static class DailyChallengeModel_Clone
                 };
                 __result.towers.Add(towerData);
             }
-            
+
             if (modTower is ModHero)
             {
                 var chooseHero =

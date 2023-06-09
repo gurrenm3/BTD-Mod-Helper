@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
-
 namespace BTD_Mod_Helper.Patches;
 
 // This patch fixes a technically harmless but annoying "during invoking..." bug
@@ -18,8 +17,11 @@ internal class Model_IsEqualAfterReferenceCheck
         yield return typeof(ArcEmissionModel);
     }
 
-    private static IEnumerable<MethodBase> TargetMethods() => ModelsNeedingPatches()
-        .Select(type => AccessTools.Method(type, nameof(Model.IsEqualAfterReferenceCheck)));
+    private static IEnumerable<MethodBase> TargetMethods()
+    {
+        return ModelsNeedingPatches()
+            .Select(type => AccessTools.Method(type, nameof(Model.IsEqualAfterReferenceCheck)));
+    }
 
     internal static bool Prefix(Model __instance, Model to, ref bool __result)
     {

@@ -15,11 +15,16 @@ namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
 /// Class with helper methods for TowerModels / ModTowers
-/// <br/>
+/// <br />
 /// Mostly used internally
 /// </summary>
-public static partial class ModTowerHelper
+public static class ModTowerHelper
 {
+    // Cache of all added TowerModel.name => TowerModel
+    internal static readonly Dictionary<string, TowerModel> TowerCache = new();
+
+    // Cache of TowerModel.name => ModTower 
+    internal static readonly Dictionary<string, ModTower> ModTowerCache = new();
     internal static List<TowerModel> AddTower(ModTower modTower)
     {
         // Create all tower models
@@ -45,7 +50,7 @@ public static partial class ModTowerHelper
             modTower.rollbackActions.Push(() =>
             {
                 var towers = Game.instance.model.towers.ToList();
-                towers.RemoveAll(model => towerModels.Any(towerModel => model.name == towerModel?.name));
+                towers.RemoveAll(model => towerModels.Exists(towerModel => model.name == towerModel?.name));
                 Game.instance.model.towers = towers.ToIl2CppReferenceArray();
 
                 foreach (var towerModel in towerModels)
@@ -108,7 +113,7 @@ public static partial class ModTowerHelper
                     newTiers[i]++; // level 1 heroes are classified as tier 0 for whatever reason
                 }
 
-                if (modTowerTiers.Any(t => t.SequenceEqual(newTiers)))
+                if (modTowerTiers.Exists(t => t.SequenceEqual(newTiers)))
                 {
                     var modUpgrade = modTower.Upgrades[i, newTiers[i] - 1];
                     if (modUpgrade == null)

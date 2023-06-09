@@ -3,7 +3,7 @@
 
 ## ModSettings Class
 
-Another class outside of the main BloonsMod class that ModSettings can be defined in. Rules other work the same way
+Another class outside of the main BloonsTD6Mod class that ModSettings can be defined in. Rules other work the same way
 
 ```csharp
 public abstract class ModSettings : BTD_Mod_Helper.Api.ModContent

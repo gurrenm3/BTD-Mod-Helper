@@ -11,6 +11,11 @@ namespace BTD_Mod_Helper.Api.Components;
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperInputField : ModHelperComponent
 {
+
+    /// <inheritdoc />
+    public ModHelperInputField(IntPtr ptr) : base(ptr)
+    {
+    }
     /// <summary>
     /// The InputField component
     /// </summary>
@@ -36,11 +41,6 @@ public class ModHelperInputField : ModHelperComponent
         InputField.SetText(text, sendCallback);
     }
 
-    /// <inheritdoc />
-    public ModHelperInputField(IntPtr ptr) : base(ptr)
-    {
-    }
-
     /// <summary>
     /// Creates a new ModHelperInputField
     /// </summary>
@@ -54,7 +54,7 @@ public class ModHelperInputField : ModHelperComponent
     /// <param name="placeholder"></param>
     /// <param name="padding"></param>
     /// <returns>The created ModHelperInputField</returns>
-    /// <exclude/>
+    /// <exclude />
     public static ModHelperInputField Create(Info info, string defaultValue, string background,
         UnityAction<string> onValueChanged = null, float fontSize = 42,
         TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,

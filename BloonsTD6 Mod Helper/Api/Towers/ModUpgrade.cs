@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
-using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity;
@@ -14,8 +13,25 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// </summary>
 public abstract class ModUpgrade : NamedModContent
 {
+
+    /// <summary>
+    /// Path ID for the Top path
+    /// </summary>
+    protected const int TOP = 0;
+
+    /// <summary>
+    /// Path ID for the Middle path
+    /// </summary>
+    protected const int MIDDLE = 1;
+
+    /// <summary>
+    /// Path ID for the Bottom path
+    /// </summary>
+    protected const int BOTTOM = 2;
     internal static readonly Dictionary<string, ModUpgrade> Cache = new();
     internal static readonly Dictionary<string, UpgradeModel> UpgradeModelCache = new();
+
+    private UpgradeModel upgradeModel;
 
 
     /// <inheritdoc />
@@ -24,8 +40,85 @@ public abstract class ModUpgrade : NamedModContent
     /// <summary>
     /// ModUpgrades register second
     /// </summary>
-    /// <exclude/>
+    /// <exclude />
     protected sealed override float RegistrationPriority => 2;
+
+    private static SpriteReference DefaultIcon => CreateSpriteReference("aa0cb2e090ae15a478243899824ad4b1");
+
+    /// <summary>
+    /// The file name without extension for the Portrait for this upgrade
+    /// <br />
+    /// By default is the same file name as the tower followed by -Portrait
+    /// </summary>
+    public virtual string Portrait => GetType().Name + "-Portrait";
+
+    /// <summary>
+    /// The file name without extension for the Icon for this upgrade
+    /// <br />
+    /// The Tower follows the default Bloons method of picking a Portrait: choose the highest tier upgrade, and if
+    /// there's a tie, choose Mid > Top > Bot (for whatever reason)
+    /// <br />
+    /// By default is the same file name as the tower followed by -Icon
+    /// </summary>
+    public virtual string Icon => GetType().Name + "-Icon";
+
+    /// <summary>
+    /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
+    /// </summary>
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrNull(Icon);
+
+    /// <summary>
+    /// If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
+    /// </summary>
+    public virtual SpriteReference PortraitReference => GetSpriteReferenceOrNull(Portrait);
+
+
+    /// <summary>
+    /// Custom priority to make this upgrade applied sooner (increased priority) or later (decreased priority)
+    /// when the TowerModel is being constructed
+    /// </summary>
+    public virtual int Priority => 0;
+
+    /// <summary>
+    /// Whether this upgrade requires a confirmation popup
+    /// </summary>
+    public virtual bool NeedsConfirmation => false;
+
+    /// <summary>
+    /// The title for the confirmation popup, if needed
+    /// </summary>
+    public virtual string ConfirmationTitle => null;
+
+    /// <summary>
+    /// The body text for the confirmation popup, if needed
+    /// </summary>
+    public virtual string ConfirmationBody => null;
+
+    /// <summary>
+    /// Xp Cost for the upgrade. Meaningless usually because custom heroes automatically are automatically unlocked.
+    /// </summary>
+    public virtual int XpCost => 0;
+
+    /// <summary>
+    /// The upgrade path
+    /// Use <see cref="TOP" />, <see cref="MIDDLE" />, <see cref="BOTTOM" />
+    /// </summary>
+    public abstract int Path { get; }
+
+    /// <summary>
+    /// The upgrade tier, 1 for Tier 1 Upgrades, 2 for Tier 2, etc...
+    /// </summary>
+    public abstract int Tier { get; }
+
+    /// <summary>
+    /// How much the upgrade costs on Medium difficulty
+    /// </summary>
+    public abstract int Cost { get; }
+
+    /// <summary>
+    /// The tower that this is an upgrade for
+    /// </summary>
+    public abstract ModTower Tower { get; }
 
     /// <inheritdoc />
     public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
@@ -106,108 +199,14 @@ public abstract class ModUpgrade : NamedModContent
         }
     }
 
-    private UpgradeModel upgradeModel;
-
-    private static SpriteReference DefaultIcon => CreateSpriteReference("aa0cb2e090ae15a478243899824ad4b1");
-
-    /// <summary>
-    /// Path ID for the Top path
-    /// </summary>
-    protected const int TOP = 0;
-
-    /// <summary>
-    /// Path ID for the Middle path
-    /// </summary>
-    protected const int MIDDLE = 1;
-
-    /// <summary>
-    /// Path ID for the Bottom path
-    /// </summary>
-    protected const int BOTTOM = 2;
-
-    /// <summary>
-    /// The file name without extension for the Portrait for this upgrade
-    /// <br/>
-    /// By default is the same file name as the tower followed by -Portrait
-    /// </summary>
-    public virtual string Portrait => GetType().Name + "-Portrait";
-
-    /// <summary>
-    /// The file name without extension for the Icon for this upgrade
-    /// <br/>
-    /// The Tower follows the default Bloons method of picking a Portrait: choose the highest tier upgrade, and if
-    /// there's a tie, choose Mid > Top > Bot (for whatever reason)
-    /// <br/>
-    /// By default is the same file name as the tower followed by -Icon
-    /// </summary>
-    public virtual string Icon => GetType().Name + "-Icon";
-
-    /// <summary>
-    /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
-    /// </summary>
-    public virtual SpriteReference IconReference => GetSpriteReferenceOrNull(Icon);
-
-    /// <summary>
-    /// If you're not going to use a custom .png for your Portrait, use this to directly control its SpriteReference
-    /// </summary>
-    public virtual SpriteReference PortraitReference => GetSpriteReferenceOrNull(Portrait);
-
-
-    /// <summary>
-    /// Custom priority to make this upgrade applied sooner (increased priority) or later (decreased priority)
-    /// when the TowerModel is being constructed
-    /// </summary>
-    public virtual int Priority => 0;
-
-    /// <summary>
-    /// Whether this upgrade requires a confirmation popup
-    /// </summary>
-    public virtual bool NeedsConfirmation => false;
-
-    /// <summary>
-    /// The title for the confirmation popup, if needed
-    /// </summary>
-    public virtual string ConfirmationTitle => null;
-
-    /// <summary>
-    /// The body text for the confirmation popup, if needed
-    /// </summary>
-    public virtual string ConfirmationBody => null;
-
-    /// <summary>
-    /// Xp Cost for the upgrade. Meaningless usually because custom heroes automatically are automatically unlocked.
-    /// </summary>
-    public virtual int XpCost => 0;
-
-    /// <summary>
-    /// The upgrade path
-    /// Use <see cref="TOP"/>, <see cref="MIDDLE"/>, <see cref="BOTTOM"/>
-    /// </summary>
-    public abstract int Path { get; }
-
-    /// <summary>
-    /// The upgrade tier, 1 for Tier 1 Upgrades, 2 for Tier 2, etc...
-    /// </summary>
-    public abstract int Tier { get; }
-
-    /// <summary>
-    /// How much the upgrade costs on Medium difficulty
-    /// </summary>
-    public abstract int Cost { get; }
-
-    /// <summary>
-    /// The tower that this is an upgrade for
-    /// </summary>
-    public abstract ModTower Tower { get; }
-
     /// <summary>
     /// Apply the effects that this upgrade has onto a TowerModel
-    /// <br/>
+    /// <br />
     /// The TowerModel's tier(s), applied upgrades and other info will already be correct, so this is mostly about
     /// changing the TowerModel's behavior
-    /// <br/>
+    /// <br />
     /// The default ordering of upgrade application is to do them in ascending order of tier, doing Top then Mid
-    /// then Bot at each tier. This can be changed using <see cref="Priority"/>.
+    /// then Bot at each tier. This can be changed using <see cref="Priority" />.
     /// </summary>
     /// <param name="towerModel">The Tower Model</param>
     public abstract void ApplyUpgrade(TowerModel towerModel);
@@ -215,7 +214,7 @@ public abstract class ModUpgrade : NamedModContent
     /// <summary>
     /// Make this upgrade apply additional effects on a towerModel when you go into a new match.
     /// Useful for making conditional effects happen based on settings.
-    /// <br/>
+    /// <br />
     /// The normal ApplyUpgrade effects for all upgrades will have already been applied on game start,
     /// so this will simply modify all the TowerModels for this ModTower that have this upgrade.
     /// </summary>
@@ -223,13 +222,13 @@ public abstract class ModUpgrade : NamedModContent
     /// <param name="gameModes">What GameModes are active for the match</param>
     public virtual void ApplyUpgradeForMatch(TowerModel towerModel, IReadOnlyList<ModModel> gameModes)
     {
-        
+
     }
 
 
     /// <summary>
     /// Apply effects to this Tower Model before all other ApplyUpgrade and LateApplyUpgrade effects have happened
-    /// <br/>
+    /// <br />
     /// Otherwise, usual priority / ordering rules still apply
     /// </summary>
     /// <param name="towerModel"></param>
@@ -239,7 +238,7 @@ public abstract class ModUpgrade : NamedModContent
 
     /// <summary>
     /// Apply effects to this Tower Model after all the other EarlyApplyUpgrade and ApplyUpgrade effects have happened
-    /// <br/>
+    /// <br />
     /// Otherwise, usual priority / ordering rules still apply
     /// </summary>
     /// <param name="towerModel"></param>

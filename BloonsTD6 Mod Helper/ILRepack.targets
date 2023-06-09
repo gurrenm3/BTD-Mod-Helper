@@ -4,7 +4,7 @@
         <ItemGroup>
             <AssemblyFile Include="$(TargetDir)$(TargetName).dll"/>
             <InputAssemblies Include="@(AssemblyFile)"/>
-            
+
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Octokit'"/>
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Ookii.Dialogs.WinForms'"/>
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FuzzySharp'"/>
@@ -16,13 +16,13 @@
     </Target>
 
     <!--When in Debug mode, copy the libraries into UserLibs-->
-    <Target Name="DebugCopyLibs" AfterTargets="Build"  DependsOnTargets="Definitons" Condition="'$(Configuration)' == 'BTD6_Debug'" >
-        <Message Text="Copying Nuget Assemblies to UserLibs folder..." Importance="high" />
+    <Target Name="DebugCopyLibs" AfterTargets="Build" DependsOnTargets="Definitons" Condition="'$(Configuration)' == 'Debug'">
+        <Message Text="Copying Nuget Assemblies to UserLibs folder..." Importance="high"/>
         <Copy SourceFiles="@(NugetAssemblies)" DestinationFolder="$(BloonsTD6)\UserLibs"/>
     </Target>
 
     <!--When in Release mode, pack the libraries into the dll-->
-    <Target Name="ILRepacker" AfterTargets="Build" BeforeTargets="MoveDllToMods" DependsOnTargets="Definitons" Condition="'$(Configuration)' != 'BTD6_Debug'" >
+    <Target Name="ILRepacker" AfterTargets="Build" BeforeTargets="MoveDllToMods" DependsOnTargets="Definitons" Condition="'$(Configuration)' != 'Debug'">
         <ItemGroup>
             <LibraryPaths Include="$(BloonsTD6)\MelonLoader"/>
             <LibraryPaths Include="$(BloonsTD6)\MelonLoader\Managed"/>
@@ -30,7 +30,7 @@
             <LibraryPaths Include="$(BloonsTD6)\MelonLoader\Il2CppAssemblies"/>
             <LibraryPaths Include="$(NetCoreRoot)packs\Microsoft.NETCore.App.Ref\6.0.0\ref\net6.0"/>
         </ItemGroup>
-        
+
         <ILRepack
                 Parallel="true"
                 InputAssemblies="@(InputAssemblies)"

@@ -1,9 +1,7 @@
-using Il2CppAssets.Scripts.Utils;
 using System.Collections.Generic;
-
 #pragma warning disable CS1591
 namespace BTD_Mod_Helper.Api.Enums;
-    
+
 public static class VanillaSprites
 {
     public const string Alchemist000 = "650013dbd97ece449914f1581aa55304";
@@ -750,8 +748,10 @@ public static class VanillaSprites
     public const string AbilityBramble = "UiEmoteIcons[AbilityBramble]";
     public const string AbilityCocktail = "UiEmoteIcons[AbilityCocktail]";
     public const string AbilityConcussive = "UiEmoteIcons[AbilityConcussive]";
-    public const string AbilityCooldownReductionDecreaseIcon = "ChallengeRulesIcons[AbilityCooldownReductionDecreaseIcon]";
-    public const string AbilityCooldownReductionIncreaseIcon = "ChallengeRulesIcons[AbilityCooldownReductionIncreaseIcon]";
+    public const string AbilityCooldownReductionDecreaseIcon =
+        "ChallengeRulesIcons[AbilityCooldownReductionDecreaseIcon]";
+    public const string AbilityCooldownReductionIncreaseIcon =
+        "ChallengeRulesIcons[AbilityCooldownReductionIncreaseIcon]";
     public const string AbilityDisciplineIcon = "MonkeyKnowledgeUi[AbilityDisciplineIcon]";
     public const string AbilityMasteryIcon = "MonkeyKnowledgeUi[AbilityMasteryIcon]";
     public const string AbsoluteZeroUpgradeIcon = "302d17c6cad43c44eb8ae8800a078f78";
@@ -9109,7 +9109,7 @@ public static class VanillaSprites
             ["ZomgBloonIcon"] = ZomgBloonIcon,
             ["ZomgFortifiedIcon"] = ZomgFortifiedIcon,
             ["ZomgIcon"] = ZomgIcon,
-            ["ZOMGIcon"] = ZOMGIcon,
+            ["ZOMGIcon"] = ZOMGIcon
         };
     }
 }

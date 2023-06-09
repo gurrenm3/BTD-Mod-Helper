@@ -3,7 +3,8 @@
 
 ## ModMultiTextOverride Class
 
-A bunch of ModTextOverrides that all share the same Active condition and don't require any on the fly determinations of their text
+A bunch of ModTextOverrides that all share the same Active condition and don't require any on the fly determinations of  
+their text
 
 ```csharp
 public abstract class ModMultiTextOverride : BTD_Mod_Helper.Api.Data.ModTextOverride

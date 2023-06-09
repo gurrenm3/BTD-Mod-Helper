@@ -367,7 +367,8 @@ The base TowerModel to use
 
 Gets the portrait reference this tower should use for the given tiers  
 <br/>  
-Looks for the highest tier [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') this tower has that defined a [PortraitReference](BTD_Mod_Helper.Api.Towers.ModUpgrade.md#BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference'),  
+Looks for the highest tier [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') this tower has that defined a  
+[PortraitReference](BTD_Mod_Helper.Api.Towers.ModUpgrade.md#BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModUpgrade.PortraitReference'),  
 falling back to the tower's own base [PortraitReference](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference') by default.
 
 ```csharp

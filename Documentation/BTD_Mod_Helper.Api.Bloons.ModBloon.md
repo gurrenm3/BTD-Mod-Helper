@@ -199,3 +199,27 @@ public abstract void ModifyBaseBloonModel(BloonModel bloonModel);
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBaseBloonModel(BloonModel).bloonModel'></a>
 
 `bloonModel` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBloonModelForMatch(BloonModel,System.Collections.Generic.IReadOnlyList_ModModel_)'></a>
+
+## ModBloon.ModifyBloonModelForMatch(BloonModel, IReadOnlyList<ModModel>) Method
+
+Further modifies this bloon when you go into a new match.  
+Useful for making conditional effects happen based on settings.
+
+```csharp
+public virtual void ModifyBloonModelForMatch(BloonModel model, System.Collections.Generic.IReadOnlyList<ModModel> gameModes);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBloonModelForMatch(BloonModel,System.Collections.Generic.IReadOnlyList_ModModel_).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+The Base bloon model
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.ModifyBloonModelForMatch(BloonModel,System.Collections.Generic.IReadOnlyList_ModModel_).gameModes'></a>
+
+`gameModes` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
+
+What GameModes are active for the match

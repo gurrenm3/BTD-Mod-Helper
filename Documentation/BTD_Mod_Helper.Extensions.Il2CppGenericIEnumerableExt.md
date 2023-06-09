@@ -39,7 +39,8 @@ public static int Count<T>(this IEnumerable<T> enumerable);
 
 ## Il2CppGenericIEnumerableExt.GetEnumeratorCollections<T>(this IEnumerable<T>) Method
 
-Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as IEnumerable.GetEnumerator()
+Get the IEnumerator as type Il2CppSystem.Collections.IEnumerator. Needed for IEnumerator.MoveNext(). Not the same as  
+IEnumerable.GetEnumerator()
 
 ```csharp
 public static IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable);

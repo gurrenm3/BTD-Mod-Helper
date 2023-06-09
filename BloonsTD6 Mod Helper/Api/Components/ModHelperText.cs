@@ -8,16 +8,16 @@ namespace BTD_Mod_Helper.Api.Components;
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperText : ModHelperComponent
 {
-    /// <summary>
-    /// The component that handles the Text rendering
-    /// </summary>
-    public NK_TextMeshProUGUI Text => GetComponent<NK_TextMeshProUGUI>();
 
 
     /// <inheritdoc />
     public ModHelperText(IntPtr ptr) : base(ptr)
     {
     }
+    /// <summary>
+    /// The component that handles the Text rendering
+    /// </summary>
+    public NK_TextMeshProUGUI Text => GetComponent<NK_TextMeshProUGUI>();
 
     /// <summary>
     /// Sets the text of this text to the given text

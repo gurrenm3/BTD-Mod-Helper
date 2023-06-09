@@ -61,17 +61,10 @@ internal class ProfileManagement
         SeenEvents.Clear();
         profile.seenEvents?.RemoveWhere(new Func<string, bool>(s =>
         {
-            foreach (var paragonEvent in ParagonEvents)
+            if ((from paragonEvent in ParagonEvents where s.StartsWith(paragonEvent) let tower = s.Replace(paragonEvent, "") where Clean(paragonEvent, towers, current)(tower) select paragonEvent).Any())
             {
-                if (s.StartsWith(paragonEvent))
-                {
-                    var tower = s.Replace(paragonEvent, "");
-                    if (Clean(paragonEvent, towers, current)(tower))
-                    {
-                        SeenEvents.Add(s);
-                        return true;
-                    }
-                }
+                SeenEvents.Add(s);
+                return true;
             }
 
             return false;
@@ -100,14 +93,11 @@ internal class ProfileManagement
 
                 foreach (var (id, player) in map.players)
                 {
-                    if (player != null)
+                    if (player != null && Clean($"{id} primaryHero", heroes, current)(player.hero))
                     {
-                        if (Clean($"{id} primaryHero", heroes, current)(player.hero))
-                        {
-                            MapPlayerHeroes[name] ??= new Dictionary<int, string>();
-                            MapPlayerHeroes[name][id] = player.hero;
-                            player.hero = "Quincy";
-                        }
+                        MapPlayerHeroes[name] ??= new Dictionary<int, string>();
+                        MapPlayerHeroes[name][id] = player.hero;
+                        player.hero = "Quincy";
                     }
                 }
             }
@@ -148,7 +138,7 @@ internal class ProfileManagement
         // handle dummy upgrades
         upgrades.AddRange(towers);
         upgrades.AddRange(heroes);
-        
+
         CleanProfile(profile, towers, upgrades, heroes, true);
     }
 

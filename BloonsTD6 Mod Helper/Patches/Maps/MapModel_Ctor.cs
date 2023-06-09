@@ -17,13 +17,13 @@ internal static class MapModel_Ctor
         
         var result = true;
         var unref__instance = __instance;
-        //ModHelper.PerformAdvancedModHook(mod => result &=  mod.PreMapModelCreated(ref unref__instance));
+        //ModHelper.PerformHook(mod => result &=  mod.PreMapModelCreated(ref unref__instance));
         //__instance = unref__instance;
         return result;
     }*/
     /*[HarmonyPostfix]
     private static void Postfix(MapModel __instance)
     {
-        ModHelper.PerformAdvancedModHook(mod => mod.PostMapModelCreated(__instance));
+        ModHelper.PerformHook(mod => mod.PostMapModelCreated(__instance));
     }*/
 }

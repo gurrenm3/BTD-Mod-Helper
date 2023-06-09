@@ -12,6 +12,18 @@ namespace BTD_Mod_Helper.Api.Components;
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperSlider : ModHelperComponent
 {
+
+    /// <summary>
+    /// The Default value, not scaled to anything
+    /// </summary>
+    public float defaultValue;
+
+    private float scaleFactor = 1;
+
+    /// <inheritdoc />
+    public ModHelperSlider(IntPtr ptr) : base(ptr)
+    {
+    }
     /// <summary>
     /// The actual Slider component
     /// </summary>
@@ -21,11 +33,6 @@ public class ModHelperSlider : ModHelperComponent
     /// The panel that's the filled up bar part of the slider
     /// </summary>
     public ModHelperPanel Fill => GetDescendent<ModHelperPanel>("Fill");
-
-    /// <summary>
-    /// The Default value, not scaled to anything
-    /// </summary>
-    public float defaultValue;
 
     /// <summary>
     /// The real current value, scaled by the appropriate scale factor
@@ -42,8 +49,6 @@ public class ModHelperSlider : ModHelperComponent
     /// </summary>
     public ModHelperText Label => GetDescendent<ModHelperText>("Label");
 
-    private float scaleFactor = 1;
-
     /// <summary>
     /// Sets the current value of this
     /// </summary>
@@ -52,11 +57,6 @@ public class ModHelperSlider : ModHelperComponent
     public void SetCurrentValue(float value, bool sendCallback = true)
     {
         Slider.Set(value * scaleFactor, sendCallback);
-    }
-
-    /// <inheritdoc />
-    public ModHelperSlider(IntPtr ptr) : base(ptr)
-    {
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class ModHelperSlider : ModHelperComponent
         slider.onValueChanged.AddListener(new Action<float>(value =>
             label.SetText((value / modHelperSlider.scaleFactor).ToString(CultureInfo.InvariantCulture) + labelSuffix)));
 
-        modHelperSlider.SetCurrentValue((startingValue ?? defaultValue));
+        modHelperSlider.SetCurrentValue(startingValue ?? defaultValue);
 
         slider.onValueChanged.AddListener(new Action<float>(value =>
             onValueChanged?.Invoke(value / modHelperSlider.scaleFactor)));

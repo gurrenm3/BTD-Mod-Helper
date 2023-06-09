@@ -4,10 +4,10 @@ using System.Linq;
 using Il2CppAssets.Scripts.Unity;
 namespace BTD_Mod_Helper.Api;
 
-class BackupCreator
+internal class BackupCreator
 {
-    private long _maxBackups;
     private string _backupDir;
+    private long _maxBackups;
 
     public BackupCreator(string backupDir, long maxBackups)
     {
@@ -15,11 +15,20 @@ class BackupCreator
         _maxBackups = maxBackups;
     }
 
-    public void SetMaxBackups(long max) => _maxBackups = max;
+    public void SetMaxBackups(long max)
+    {
+        _maxBackups = max;
+    }
 
-    private FileInfo[] GetAllBackups() => new DirectoryInfo(_backupDir).GetFiles();
+    private FileInfo[] GetAllBackups()
+    {
+        return new DirectoryInfo(_backupDir).GetFiles();
+    }
 
-    private bool IsOverMaxBackups() => GetAllBackups().Length > _maxBackups;
+    private bool IsOverMaxBackups()
+    {
+        return GetAllBackups().Length > _maxBackups;
+    }
 
     [Obsolete]
     public void CreateBackup()

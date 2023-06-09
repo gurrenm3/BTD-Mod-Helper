@@ -4,7 +4,10 @@ using BTD_Mod_Helper.Api.Bloons;
 using Il2CppAssets.Scripts.Models.Rounds;
 namespace BTD_Mod_Helper.Extensions;
 
-public static partial class RoundModelExt
+/// <summary>
+/// Extensions for RoundModels
+/// </summary>
+public static class RoundModelExt
 {
     /// <summary>
     /// Adds a new group of Bloons to this round
@@ -96,7 +99,8 @@ public static partial class RoundModelExt
     /// <summary>
     /// Replaces BloonGroups of a certain bloonId with ones for a new Id
     /// </summary>
-    public static void ReplaceBloonInGroups(this RoundModel roundModel, string oldBloonId, string newBloonId, bool byBaseId = false)
+    public static void ReplaceBloonInGroups(this RoundModel roundModel, string oldBloonId, string newBloonId,
+        bool byBaseId = false)
     {
         foreach (var roundModelGroup in roundModel.groups)
         {
@@ -112,7 +116,8 @@ public static partial class RoundModelExt
     /// <summary>
     /// Replaces BloonGroups of a certain bloonId with ones for a new Id
     /// </summary>
-    public static void ReplaceBloonInGroups<T>(this RoundModel roundModel, string oldBloonId, bool byBaseId = false) where T : ModBloon
+    public static void ReplaceBloonInGroups<T>(this RoundModel roundModel, string oldBloonId, bool byBaseId = false)
+        where T : ModBloon
     {
         foreach (var roundModelGroup in roundModel.groups)
         {

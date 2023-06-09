@@ -142,7 +142,7 @@ public static class GameModelExporter
         });
         ModHelper.Log(
             $"Exported {success}/{total} SkinDatas to {Path.Combine(FileIOHelper.sandboxRoot, "Skins")}");
-        
+
         total = success = 0;
         foreach (var knowledgeModel in Game.instance.model.allKnowledge)
         {
@@ -151,15 +151,15 @@ public static class GameModelExporter
         }
         ModHelper.Log(
             $"Exported {success}/{total} KnowledeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Knowledge")}");
-        
-        
+
+
         var resourcesJson = new JObject();
         var resourceLocationMap = Addressables.ResourceLocators.First().Cast<ResourceLocationMap>();
 
         foreach (var (o, locations) in resourceLocationMap.Locations)
         {
             var key = o.ToString();
-            
+
             if (!Guid.TryParse(key, out _)) continue;
 
             var list = locations

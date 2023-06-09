@@ -1,11 +1,14 @@
-﻿using Il2CppAssets.Scripts.Models;
+﻿using System;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Gameplay.Mods;
-using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Api.Helpers;
 
-public partial class CostHelper
+/// <summary>
+/// Helper for scaling costs to difficulties
+/// </summary>
+public class CostHelper
 {
     /// <summary>
     /// Gets a modified cost for a given set of ModModels that are used to setup a match
@@ -62,5 +65,31 @@ public partial class CostHelper
     public static int CostForDifficulty(int cost, InGame inGame)
     {
         return CostForDifficulty(cost, inGame.SelectedDifficulty);
+    }
+    /// <summary>
+    /// Scales a base (medium) cost to the given difficulty
+    /// </summary>
+    public static int CostForDifficulty(int cost, string difficulty)
+    {
+        switch (difficulty)
+        {
+            case "Easy":
+                return CostForDifficulty(cost, .85f);
+            case "Hard":
+                return CostForDifficulty(cost, 1.08f);
+            case "Impoppable":
+                return CostForDifficulty(cost, 1.2f);
+            default:
+                return cost;
+        }
+    }
+
+    /// <summary>
+    /// Applies a multiplier to a cost and rounds it
+    /// </summary>
+    public static int CostForDifficulty(int cost, float multiplier)
+    {
+        var price = cost * multiplier;
+        return (int) (5 * Math.Round(price / 5));
     }
 }

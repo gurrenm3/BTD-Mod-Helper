@@ -7,31 +7,17 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// </summary>
 public abstract class ModHeroLevel : ModUpgrade
 {
-    /// <inheritdoc />
-    public override void RegisterText(Dictionary<string, string> textTable)
-    {
-        base.RegisterText(textTable);
-        if (AbilityName != null)
-        {
-            textTable[AbilityName + " Ability"] = AbilityName;
-        }
-
-        if (AbilityDescription != null)
-        {
-            textTable[AbilityName + " Ability Description"] = AbilityDescription;
-        }
-    }
-
-    /// <summary>
-    /// Internal naming scheme for hero levels
-    /// </summary>
-    public sealed override string Name => Hero.Name + " Level " + Level;
 
     private static readonly int[] DefaultXp =
     {
         0, 0, 180, 460, 1000, 1860, 3280, 5180, 8320, 9380, 13620, 16380,
         14400, 16650, 14940, 16380, 17820, 19260, 20700, 16470, 17280
     };
+
+    /// <summary>
+    /// Internal naming scheme for hero levels
+    /// </summary>
+    public sealed override string Name => Hero.Name + " Level " + Level;
 
     /// <summary>
     /// No confirmation on hero upgrades
@@ -70,8 +56,8 @@ public abstract class ModHeroLevel : ModUpgrade
 
     /// <summary>
     /// How much XP the hero needs to get to go from the previous level to this level.
-    /// <br/>
-    /// Default is calculated the same way Ninja Kiwi does it using 
+    /// <br />
+    /// Default is calculated the same way Ninja Kiwi does it using
     /// </summary>
     public override int XpCost => (int) (DefaultXp[Level] * Hero.XpRatio);
 
@@ -86,7 +72,7 @@ public abstract class ModHeroLevel : ModUpgrade
     public sealed override int Path => TOP;
 
     /// <summary>
-    /// What level this 
+    /// What level this
     /// </summary>
     public abstract int Level { get; }
 
@@ -107,11 +93,25 @@ public abstract class ModHeroLevel : ModUpgrade
 
     /// <summary>
     /// The filename without extension for the portrait this Level should make the hero start using
-    /// <br/>
-    /// By default, the <see cref="ModTower.Portrait"/> of the <see cref="ModHero"/> with the <see cref="Level"/> appended,
+    /// <br />
+    /// By default, the <see cref="ModTower.Portrait" /> of the <see cref="ModHero" /> with the <see cref="Level" /> appended,
     /// e.g. "IndustrialFarmer-Portrait3"
     /// </summary>
     public override string Portrait => Hero.Portrait + Level;
+    /// <inheritdoc />
+    public override void RegisterText(Dictionary<string, string> textTable)
+    {
+        base.RegisterText(textTable);
+        if (AbilityName != null)
+        {
+            textTable[AbilityName + " Ability"] = AbilityName;
+        }
+
+        if (AbilityDescription != null)
+        {
+            textTable[AbilityName + " Ability Description"] = AbilityDescription;
+        }
+    }
 }
 
 /// <summary>

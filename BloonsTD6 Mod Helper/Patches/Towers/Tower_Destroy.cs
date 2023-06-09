@@ -9,7 +9,7 @@ internal class Tower_Destroy
     {
         yield return typeof(Tower).GetMethod(nameof(Tower.Destroy));
     }*/
-        
+
     [HarmonyPostfix]
     internal static void Postfix(Tower __instance)
     {

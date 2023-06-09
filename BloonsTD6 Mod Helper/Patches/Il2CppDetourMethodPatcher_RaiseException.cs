@@ -8,9 +8,11 @@ internal static class Il2CppDetourMethodPatcher_RaiseException
 {
     private static IEnumerable<MethodBase> TargetMethods()
     {
-        yield return AccessTools.Method(Type.GetType("Il2CppInterop.HarmonySupport.Il2CppDetourMethodPatcher,Il2CppInterop.HarmonySupport"), "ReportException");
+        yield return AccessTools.Method(
+            Type.GetType("Il2CppInterop.HarmonySupport.Il2CppDetourMethodPatcher,Il2CppInterop.HarmonySupport"),
+            "ReportException");
     }
-    
+
     [HarmonyPostfix]
     private static void Postfix(Exception ex)
     {

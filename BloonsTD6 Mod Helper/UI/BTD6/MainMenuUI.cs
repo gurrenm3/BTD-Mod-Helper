@@ -15,9 +15,13 @@ public static class MainMenuUI
     public static Scene? GetScene()
     {
         try
-        { return SceneManager.GetSceneByName("MainMenuUi"); }
+        {
+            return SceneManager.GetSceneByName("MainMenuUi");
+        }
         catch (ArgumentException)
-        { return null; }
+        {
+            return null;
+        }
     }
 
     /// <summary>

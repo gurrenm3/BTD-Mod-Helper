@@ -1,4 +1,5 @@
-﻿using Il2CppAssets.Scripts.Simulation.Bloons;
+﻿using Il2CppAssets.Scripts;
+using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Simulation.Display;
 using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.Display;
@@ -7,8 +8,17 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for the BloonToSimulation
 /// </summary>
-public static partial class BloonToSimulationExt
+public static class BloonToSimulationExt
 {
+    /// <summary>
+    /// Return the Id of this BloonToSimulation
+    /// </summary>
+    /// <param name="bloonToSim"></param>
+    /// <returns></returns>
+    public static ObjectId GetId(this BloonToSimulation bloonToSim)
+    {
+        return bloonToSim.id;
+    }
     /// <summary>
     /// Return the DisplayNode for this bloon
     /// </summary>
@@ -44,9 +54,6 @@ public static partial class BloonToSimulationExt
     public static float GetDistanceTravelled(this BloonToSimulation bloonToSim)
     {
         var distance = bloonToSim.GetBloon().distanceTraveled;
-#if BloonsAT
-            bloonToSim.distanceTravelled = distance;
-#endif
         return distance;
     }
 }

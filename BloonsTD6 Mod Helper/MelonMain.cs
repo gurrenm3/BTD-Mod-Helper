@@ -24,6 +24,8 @@ namespace BTD_Mod_Helper;
 
 internal partial class MelonMain : BloonsTD6Mod
 {
+
+    private bool scheduledInGamePatch;
     public override void OnInitialize()
     {
         ModContentInstances.AddInstance(GetType(), this);
@@ -79,7 +81,7 @@ internal partial class MelonMain : BloonsTD6Mod
         NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
 
-#if BTD6_DEBUG
+#if DEBUG
         if (TowerSelectionMenu.instance != null &&
             TowerSelectionMenu.instance.selectedTower != null &&
             ExportSelectedTower.JustPressed())
@@ -131,8 +133,6 @@ internal partial class MelonMain : BloonsTD6Mod
             () => Game.instance && Game.instance.model != null);
     }
 
-    bool scheduledInGamePatch;
-
     private void Schedule_InGame_Loaded()
     {
         scheduledInGamePatch = true;
@@ -140,7 +140,10 @@ internal partial class MelonMain : BloonsTD6Mod
             () => InGame.instance && InGame.instance.GetSimulation() != null);
     }
 
-    public override void OnInGameLoaded(InGame inGame) => scheduledInGamePatch = false;
+    public override void OnInGameLoaded(InGame inGame)
+    {
+        scheduledInGamePatch = false;
+    }
 
     public void Schedule_GameData_Loaded()
     {

@@ -41,7 +41,7 @@ public abstract class ModSubTower<T> : ModSubTower where T : ModTower
 {
     /// <inheritdoc />
     protected override int Order => GetOrder() - 1;
-    
+
     /// <inheritdoc />
     public override TowerSet TowerSet => GetInstance<T>().TowerSet;
 }

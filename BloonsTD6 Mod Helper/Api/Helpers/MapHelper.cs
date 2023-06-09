@@ -12,10 +12,10 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public class MapHelper
 {
-    static Random rand = new();
+    private static readonly Random rand = new();
 
     /// <summary>
-    /// Create a <see cref="PointInfo"/> out of an X and Y coord.
+    /// Create a <see cref="PointInfo" /> out of an X and Y coord.
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -26,7 +26,7 @@ public class MapHelper
     }
 
     /// <summary>
-    /// Create a <see cref="PointInfo"/> out of a Vector2.
+    /// Create a <see cref="PointInfo" /> out of a Vector2.
     /// </summary>
     /// <param name="point"></param>
     /// <returns></returns>
@@ -36,7 +36,7 @@ public class MapHelper
     }
 
     /// <summary>
-    /// Create a <see cref="PointInfo"/> out of X, Y, Z coords.
+    /// Create a <see cref="PointInfo" /> out of X, Y, Z coords.
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -48,7 +48,7 @@ public class MapHelper
     }
 
     /// <summary>
-    /// Create a <see cref="PointInfo"/> out of a Vector3.
+    /// Create a <see cref="PointInfo" /> out of a Vector3.
     /// </summary>
     /// <param name="point"></param>
     /// <returns></returns>
@@ -75,7 +75,7 @@ public class MapHelper
     /// <returns></returns>
     public static PathModel CreatePathModel(string pathName, List<Vector2> points)
     {
-        List<PointInfo> allPoints = new List<PointInfo>();
+        var allPoints = new List<PointInfo>();
         points.ForEach(p => allPoints.Add(CreatePointInfo(p)));
         return CreatePathModel(pathName, allPoints);
     }
@@ -88,7 +88,8 @@ public class MapHelper
     /// <returns></returns>
     public static PathModel CreatePathModel(string pathName, List<PointInfo> points)
     {
-        var pathModel = new PathModel(pathName, points.ToArray(), true, false, new Vector3(), new Vector3(), null, null);
+        var pathModel = new PathModel(pathName, points.ToArray(), true, false, new Vector3(), new Vector3(), null,
+            null);
         return pathModel;
     }
 
@@ -99,9 +100,9 @@ public class MapHelper
     /// <returns></returns>
     public static PathSpawnerModel CreateSpawner(PathModel[] paths)
     {
-        string[] pathNames = new string[paths.Length];
-        for (int i = 0; i < paths.Length; i++)
-            pathNames[i] = (paths[i].pathId);
+        var pathNames = new string[paths.Length];
+        for (var i = 0; i < paths.Length; i++)
+            pathNames[i] = paths[i].pathId;
 
         return new PathSpawnerModel("", new SplitterModel("", pathNames), new SplitterModel("", pathNames));
     }

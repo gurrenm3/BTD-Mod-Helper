@@ -11,7 +11,10 @@ public static class NK_TextMeshProUGUIExt
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
-    public static string GetText(this NK_TextMeshProUGUI text) => Game.instance.GetLocalizationManager().textTable[text.localizeKey];
+    public static string GetText(this NK_TextMeshProUGUI text)
+    {
+        return Game.instance.GetLocalizationManager().textTable[text.localizeKey];
+    }
 
     /// <summary>
     /// Changes the text in the localization manager for this component

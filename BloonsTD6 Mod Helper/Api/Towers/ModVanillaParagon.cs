@@ -60,38 +60,20 @@ public abstract class ModVanillaParagon : ModTower
     public sealed override int BottomPathUpgrades => 0;
 
     /// <summary>
-    /// Tower gets modified in the Paragon upgrade
-    /// </summary>
-    public sealed override void ModifyBaseTowerModel(TowerModel towerModel)
-    {
-    }
-
-    internal override string TowerId(int[] tiers) => BaseTowerModel.baseId + "-Paragon";
-
-    /// <summary>
-    /// Doesn't generate any of the tower on its own
-    /// </summary>
-    /// <returns></returns>
-    public sealed override IEnumerable<int[]> TowerTiers()
-    {
-        return Array.Empty<int[]>();
-    }
-
-    /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
     public sealed override string Portrait => base.Portrait;
-        
+
     /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
     public sealed override string Icon => base.Icon;
-        
+
     /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
     public sealed override SpriteReference IconReference => base.IconReference;
-        
+
     /// <summary>
     /// Controlled by the ModParagonUpgrade
     /// </summary>
@@ -103,16 +85,40 @@ public abstract class ModVanillaParagon : ModTower
     public sealed override string Description => "";
 
     /// <summary>
+    /// Name override
+    /// </summary>
+    public sealed override string Name => BaseTowerModel.baseId;
+
+    /// <summary>
+    /// Tower gets modified in the Paragon upgrade
+    /// </summary>
+    public sealed override void ModifyBaseTowerModel(TowerModel towerModel)
+    {
+    }
+
+    internal override string TowerId(int[] tiers)
+    {
+        return BaseTowerModel.baseId + "-Paragon";
+    }
+
+    /// <summary>
+    /// Doesn't generate any of the tower on its own
+    /// </summary>
+    /// <returns></returns>
+    public sealed override IEnumerable<int[]> TowerTiers()
+    {
+        return Array.Empty<int[]>();
+    }
+
+    /// <summary>
     /// Tower index doesn't apply
     /// </summary>
     /// <param name="towerSet"></param>
     /// <returns></returns>
-    public sealed override int GetTowerIndex(List<TowerDetailsModel> towerSet) => base.GetTowerIndex(towerSet);
-
-    /// <summary>
-    /// Name override
-    /// </summary>
-    public sealed override string Name => BaseTowerModel.baseId;
+    public sealed override int GetTowerIndex(List<TowerDetailsModel> towerSet)
+    {
+        return base.GetTowerIndex(towerSet);
+    }
 
     internal override TowerModel GetDefaultTowerModel(int[] tiers = null)
     {

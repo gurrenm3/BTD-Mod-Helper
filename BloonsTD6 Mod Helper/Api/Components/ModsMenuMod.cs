@@ -12,6 +12,12 @@ namespace BTD_Mod_Helper.Api.Components;
 [RegisterTypeInIl2Cpp(false)]
 internal class ModsMenuMod : ModHelperComponent
 {
+
+    public UnityAction toggleMod;
+
+    public ModsMenuMod(IntPtr ptr) : base(ptr)
+    {
+    }
     public ModHelperButton MainButton => GetDescendent<ModHelperButton>("MainButton");
     public ModHelperImage Icon => GetDescendent<ModHelperImage>("Icon");
     public ModHelperText Name => GetDescendent<ModHelperText>("Name");
@@ -20,12 +26,6 @@ internal class ModsMenuMod : ModHelperComponent
     public ModHelperButton Settings => GetDescendent<ModHelperButton>("Settings");
     public ModHelperImage Restart => GetDescendent<ModHelperImage>("Restart");
     public ModHelperButton Warning => GetDescendent<ModHelperButton>("Warning");
-
-    public UnityAction toggleMod;
-
-    public ModsMenuMod(IntPtr ptr) : base(ptr)
-    {
-    }
 
     public static ModsMenuMod CreateTemplate()
     {
@@ -48,7 +48,7 @@ internal class ModsMenuMod : ModHelperComponent
             ModsMenu.FontMedium);
 
         panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
-            anchor: new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
+            new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
 
         panel.AddButton(new Info("Update", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
             new Vector2(1, 1)), VanillaSprites.UpgradeBtn, null);
@@ -96,25 +96,25 @@ internal static class ModsMenuModExt
         mod.Version.SetText("v" + modHelperData.Version);
         // ReSharper disable once AsyncVoidLambda
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));
-        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open((BloonsMod) melonMod!));
+        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open((BloonsTD6Mod) melonMod!));
 
         mod.Settings.SetActive(false);
         mod.Warning.SetActive(false);
 
-        if (melonMod is BloonsMod bloonsMod)
+        if (melonMod is BloonsTD6Mod BloonsTD6Mod)
         {
-            if (bloonsMod.ModSettings.Any())
+            if (BloonsTD6Mod.ModSettings.Any())
             {
                 mod.Settings.SetActive(true);
             }
 
-            if (bloonsMod.loadErrors.Any())
+            if (BloonsTD6Mod.loadErrors.Any())
             {
                 mod.Warning.SetActive(true);
                 mod.Warning.Button.SetOnClick(() =>
                 {
                     PopupScreen.instance.SafelyQueue(screen =>
-                        screen.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n")));
+                        screen.ShowOkPopup(BloonsTD6Mod.loadErrors.Join(null, "\n")));
                 });
             }
         }
@@ -167,7 +167,7 @@ internal static class ModsMenuModExt
             background = VanillaSprites.MainBGPanelYellow;
         else if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) == false)
             background = VanillaSprites.MainBgPanelHematite;
-        else if (data.Mod != null && !(data.Mod is BloonsMod)) background = VanillaSprites.MainBGPanelBlueNotches;
+        else if (data.Mod != null && !(data.Mod is BloonsTD6Mod)) background = VanillaSprites.MainBGPanelBlueNotches;
         return background;
     }
 }

@@ -4,16 +4,16 @@
 ## ModContent Class
 
 ModContent serves two major purposes:  
-    <br/>  
-    1. It is a base class for things that needs to be loaded via reflection from mods and given Ids,  
+<br/>  
+1. It is a base class for things that needs to be loaded via reflection from mods and given Ids,  
     such as ModTower and ModUpgrade  
-    <br/>  
-    2. It is a utility class with methods to access instances of those classes and other resources
+<br/>  
+2. It is a utility class with methods to access instances of those classes and other resources
 
 ```csharp
 public abstract class ModContent :
-System.IComparable<BTD_Mod_Helper.Api.ModContent>,
-BTD_Mod_Helper.Api.IModContent
+BTD_Mod_Helper.Api.IModContent,
+System.IComparable<BTD_Mod_Helper.Api.ModContent>
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModContent
@@ -27,21 +27,21 @@ Derived
 &#8627; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent')  
 &#8627; [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent')
 
-Implements [System.IComparable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1'), [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent')
+Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent'), [System.IComparable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.ModContent.mod'></a>
 
 ## ModContent.mod Field
 
-The BloonsMod that this content was added by
+The BloonsTD6Mod that this content was added by
 
 ```csharp
-public BloonsMod mod;
+public BloonsTD6Mod mod;
 ```
 
 #### Field Value
-[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+[BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.ModContent.Id'></a>
@@ -134,7 +134,7 @@ Gets an AudioSource reference for a given sound within a mod
 
 ```csharp
 public static AudioSourceReference CreateAudioSourceReference<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -257,24 +257,24 @@ public static string GameModeId<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClip(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClip(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetAudioClip(BloonsMod, string) Method
+## ModContent.GetAudioClip(BloonsTD6Mod, string) Method
 
 Gets an AudioClip from a mod by its name (no file extension included)
 
 ```csharp
-public static AudioClip GetAudioClip(BTD_Mod_Helper.BloonsMod mod, string name);
+public static AudioClip GetAudioClip(BTD_Mod_Helper.BloonsTD6Mod mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClip(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClip(BTD_Mod_Helper.BloonsTD6Mod,string).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 The mod
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClip(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClip(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -313,7 +313,7 @@ Gets an AudioClip from a mod by its name (no file extension included)
 
 ```csharp
 public static AudioClip GetAudioClip<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -334,22 +334,22 @@ Sound name (no .wav)
 [UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')  
 a playable AudioClip
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetAudioSourceReference(BloonsMod, string) Method
+## ModContent.GetAudioSourceReference(BloonsTD6Mod, string) Method
 
 Gets an AudioSource reference for a given sound within a mod
 
 ```csharp
-public static AudioSourceReference GetAudioSourceReference(BTD_Mod_Helper.BloonsMod mod, string name);
+public static AudioSourceReference GetAudioSourceReference(BTD_Mod_Helper.BloonsTD6Mod mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(BTD_Mod_Helper.BloonsTD6Mod,string).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -388,7 +388,7 @@ Gets an AudioSource reference for a given sound within a mod
 
 ```csharp
 public static AudioSourceReference GetAudioSourceReference<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -409,22 +409,22 @@ Sound name (no .wav)
 [Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
 An AudioSoundReference
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetBundle(BloonsMod, string) Method
+## ModContent.GetBundle(BloonsTD6Mod, string) Method
 
 Gets a bundle from a mod with the specified name (no file extension)
 
 ```csharp
-public static AssetBundle GetBundle(BTD_Mod_Helper.BloonsMod mod, string name);
+public static AssetBundle GetBundle(BTD_Mod_Helper.BloonsTD6Mod mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsTD6Mod,string).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -457,7 +457,7 @@ Gets a bundle from the mod T with the specified name (no file extension)
 
 ```csharp
 public static AssetBundle GetBundle<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -511,22 +511,22 @@ public static string GetDisplayGUID<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetId(BloonsMod, string) Method
+## ModContent.GetId(BloonsTD6Mod, string) Method
 
 Gets the id of a resource by appending the mod's ID prefix to its name
 
 ```csharp
-public static string GetId(BTD_Mod_Helper.BloonsMod bloonsMod, string name);
+public static string GetId(BTD_Mod_Helper.BloonsTD6Mod BloonsTD6Mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsMod,string).bloonsMod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsTD6Mod,string).BloonsTD6Mod'></a>
 
-`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`BloonsTD6Mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -559,7 +559,7 @@ Gets the id of a resource by appending the mod's ID prefix to its name
 
 ```csharp
 public static string GetId<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -579,7 +579,7 @@ public static string GetId<T>(string name)
 
 ## ModContent.GetInstance(Type) Method
 
-Gets the official instance of a particular ModContent or BloonsMod based on its type
+Gets the official instance of a particular ModContent or BloonsTD6Mod based on its type
 
 ```csharp
 public static BTD_Mod_Helper.Api.IModContent GetInstance(System.Type type);
@@ -600,7 +600,7 @@ The official instance of it
 
 ## ModContent.GetInstance<T>() Method
 
-Gets the singleton instance of a particular ModContent or BloonsMod based on its type
+Gets the singleton instance of a particular ModContent or BloonsTD6Mod based on its type
 
 ```csharp
 public static T GetInstance<T>()
@@ -641,10 +641,10 @@ public static System.Collections.Generic.List<T> GetInstances<T>()
 
 ## ModContent.GetMod(string) Method
 
-Gets a BloonsMod by its name, or returns null if none are loaded with that name
+Gets a BloonsTD6Mod by its name, or returns null if none are loaded with that name
 
 ```csharp
-public static BTD_Mod_Helper.BloonsMod GetMod(string name);
+public static BTD_Mod_Helper.BloonsTD6Mod GetMod(string name);
 ```
 #### Parameters
 
@@ -653,7 +653,7 @@ public static BTD_Mod_Helper.BloonsMod GetMod(string name);
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
-[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+[BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetModMap(string)'></a>
 
@@ -673,28 +673,28 @@ public static BTD_Mod_Helper.Api.Scenarios.ModMap GetModMap(string mapName);
 #### Returns
 [ModMap](BTD_Mod_Helper.Api.Scenarios.ModMap.md 'BTD_Mod_Helper.Api.Scenarios.ModMap')
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,float)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsTD6Mod,string,float)'></a>
 
-## ModContent.GetSprite(BloonsMod, string, float) Method
+## ModContent.GetSprite(BloonsTD6Mod, string, float) Method
 
 Constructs a Sprite for a given texture name within a given mod
 
 ```csharp
-public static Sprite GetSprite(BTD_Mod_Helper.BloonsMod mod, string name, float pixelsPerUnit=10f);
+public static Sprite GetSprite(BTD_Mod_Helper.BloonsTD6Mod mod, string name, float pixelsPerUnit=10f);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,float).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsTD6Mod,string,float).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,float).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsTD6Mod,string,float).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The file name of your texture, without the extension
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,float).pixelsPerUnit'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsTD6Mod,string,float).pixelsPerUnit'></a>
 
 `pixelsPerUnit` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
@@ -739,7 +739,7 @@ Constructs a Sprite for a given texture name within a given mod
 
 ```csharp
 public static Sprite GetSprite<T>(string name, float pixelsPerUnit=10f)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -764,24 +764,24 @@ The pixels per unit for the Sprite to have
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
 A Sprite
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetSpriteReference(BloonsMod, string) Method
+## ModContent.GetSpriteReference(BloonsTD6Mod, string) Method
 
 Gets a sprite reference by name for a specific mod
 
 ```csharp
-public static SpriteReference GetSpriteReference(BTD_Mod_Helper.BloonsMod mod, string name);
+public static SpriteReference GetSpriteReference(BTD_Mod_Helper.BloonsTD6Mod mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(BTD_Mod_Helper.BloonsTD6Mod,string).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-The BloonsMod that the texture is from
+The BloonsTD6Mod that the texture is from
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -820,7 +820,7 @@ Gets a sprite reference by name for a specific mod
 
 ```csharp
 public static SpriteReference GetSpriteReference<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -828,7 +828,7 @@ public static SpriteReference GetSpriteReference<T>(string name)
 
 `T`
 
-Your mod's main BloonsMod extending class
+Your mod's main BloonsTD6Mod extending class
 #### Parameters
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference_T_(string).name'></a>
@@ -841,25 +841,25 @@ The file name of your texture, without the extension
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetSpriteReferenceOrDefault(BloonsMod, string) Method
+## ModContent.GetSpriteReferenceOrDefault(BloonsTD6Mod, string) Method
 
 Gets a sprite reference by name for a specific mod, or if the mod does not include a texture with that name,  
 treats it as a vanilla sprite reference
 
 ```csharp
-public static SpriteReference GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod mod, string name);
+public static SpriteReference GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsTD6Mod mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsTD6Mod,string).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-The BloonsMod that the texture is from
+The BloonsTD6Mod that the texture is from
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -900,7 +900,7 @@ treats it as a vanilla sprite reference
 
 ```csharp
 public static SpriteReference GetSpriteReferenceOrDefault<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -908,7 +908,7 @@ public static SpriteReference GetSpriteReferenceOrDefault<T>(string name)
 
 `T`
 
-Your mod's main BloonsMod extending class
+Your mod's main BloonsTD6Mod extending class
 #### Parameters
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault_T_(string).name'></a>
@@ -921,25 +921,25 @@ The file name of your texture, without the extension
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetSpriteReferenceOrNull(BloonsMod, string) Method
+## ModContent.GetSpriteReferenceOrNull(BloonsTD6Mod, string) Method
 
 Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been  
 loaded instead of an invalid SpriteReference
 
 ```csharp
-public static SpriteReference GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod mod, string name);
+public static SpriteReference GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsTD6Mod mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsTD6Mod,string).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-The BloonsMod that the texture is from
+The BloonsTD6Mod that the texture is from
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -980,7 +980,7 @@ loaded instead of an invalid SpriteReference
 
 ```csharp
 public static SpriteReference GetSpriteReferenceOrNull<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -988,7 +988,7 @@ public static SpriteReference GetSpriteReferenceOrNull<T>(string name)
 
 `T`
 
-Your mod's main BloonsMod extending class
+Your mod's main BloonsTD6Mod extending class
 #### Parameters
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull_T_(string).name'></a>
@@ -1001,24 +1001,24 @@ The file name of your texture, without the extension
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
 A new SpriteReference
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetTexture(BloonsMod, string) Method
+## ModContent.GetTexture(BloonsTD6Mod, string) Method
 
 Constructs a Texture2D for a given texture name within a mod
 
 ```csharp
-public static Texture2D GetTexture(BTD_Mod_Helper.BloonsMod bloonsMod, string fileName);
+public static Texture2D GetTexture(BTD_Mod_Helper.BloonsTD6Mod BloonsTD6Mod, string fileName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string).bloonsMod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsTD6Mod,string).BloonsTD6Mod'></a>
 
-`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`BloonsTD6Mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 The mod that adds this texture
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string).fileName'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsTD6Mod,string).fileName'></a>
 
 `fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1057,7 +1057,7 @@ Constructs a Texture2D for a given texture name within a mod
 
 ```csharp
 public static Texture2D GetTexture<T>(string fileName)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -1076,24 +1076,24 @@ The file name of your texture, without the extension
 [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
 A Texture2D
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTextureBytes(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTextureBytes(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetTextureBytes(BloonsMod, string) Method
+## ModContent.GetTextureBytes(BloonsTD6Mod, string) Method
 
 Returns the Bytes associated with a texture.
 
 ```csharp
-public static byte[] GetTextureBytes(BTD_Mod_Helper.BloonsMod bloonsMod, string fileName);
+public static byte[] GetTextureBytes(BTD_Mod_Helper.BloonsTD6Mod BloonsTD6Mod, string fileName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTextureBytes(BTD_Mod_Helper.BloonsMod,string).bloonsMod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTextureBytes(BTD_Mod_Helper.BloonsTD6Mod,string).BloonsTD6Mod'></a>
 
-`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`BloonsTD6Mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 The mod that adds this texture.
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTextureBytes(BTD_Mod_Helper.BloonsMod,string).fileName'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTextureBytes(BTD_Mod_Helper.BloonsTD6Mod,string).fileName'></a>
 
 `fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1132,7 +1132,7 @@ Returns the Bytes associated with a texture.
 
 ```csharp
 public static byte[] GetTextureBytes<T>(string fileName)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -1151,24 +1151,24 @@ The file name of your texture, without the extension.
 [System.Byte](https://docs.microsoft.com/en-us/dotnet/api/System.Byte 'System.Byte')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')  
 The bytes associated with the texture.
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTextureGUID(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTextureGUID(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.GetTextureGUID(BloonsMod, string) Method
+## ModContent.GetTextureGUID(BloonsTD6Mod, string) Method
 
 Gets a texture's GUID by name for a specific mod
 
 ```csharp
-public static string GetTextureGUID(BTD_Mod_Helper.BloonsMod mod, string fileName);
+public static string GetTextureGUID(BTD_Mod_Helper.BloonsTD6Mod mod, string fileName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTextureGUID(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTextureGUID(BTD_Mod_Helper.BloonsTD6Mod,string).mod'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-The BloonsMod that the texture is from
+The BloonsTD6Mod that the texture is from
 
-<a name='BTD_Mod_Helper.Api.ModContent.GetTextureGUID(BTD_Mod_Helper.BloonsMod,string).fileName'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.GetTextureGUID(BTD_Mod_Helper.BloonsTD6Mod,string).fileName'></a>
 
 `fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1211,7 +1211,7 @@ Returns null if a Texture hasn't been loaded with that name
 
 ```csharp
 public static string GetTextureGUID<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 
@@ -1219,7 +1219,7 @@ public static string GetTextureGUID<T>(string name)
 
 `T`
 
-Your mod's main BloonsMod extending class
+Your mod's main BloonsTD6Mod extending class
 #### Parameters
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetTextureGUID_T_(string).name'></a>
@@ -1273,6 +1273,28 @@ The bottom path tier
 [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')  
 The tower name/id
 
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsTD6Mod)'></a>
+
+## ModContent.HasMod(string, BloonsTD6Mod) Method
+
+Returns whether a mod with the given name is installed, and pass it to the out param if it is
+
+```csharp
+public static bool HasMod(string name, out BTD_Mod_Helper.BloonsTD6Mod BloonsTD6Mod);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsTD6Mod).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsTD6Mod).BloonsTD6Mod'></a>
+
+`BloonsTD6Mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
 
 ## ModContent.HasMod(string) Method
@@ -1287,28 +1309,6 @@ public static bool HasMod(string name);
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
-
-## ModContent.HasMod(string, BloonsMod) Method
-
-Returns whether a mod with the given name is installed, and pass it to the out param if it is
-
-```csharp
-public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod).bloonsMod'></a>
-
-`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -1350,24 +1350,24 @@ public static string RoundSetId<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.ModContent.TextureExists(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.TextureExists(BTD_Mod_Helper.BloonsTD6Mod,string)'></a>
 
-## ModContent.TextureExists(BloonsMod, string) Method
+## ModContent.TextureExists(BloonsTD6Mod, string) Method
 
 Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
 
 ```csharp
-public static bool TextureExists(BTD_Mod_Helper.BloonsMod bloonsMod, string name);
+public static bool TextureExists(BTD_Mod_Helper.BloonsTD6Mod BloonsTD6Mod, string name);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.TextureExists(BTD_Mod_Helper.BloonsMod,string).bloonsMod'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.TextureExists(BTD_Mod_Helper.BloonsTD6Mod,string).BloonsTD6Mod'></a>
 
-`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`BloonsTD6Mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 The mod to look in
 
-<a name='BTD_Mod_Helper.Api.ModContent.TextureExists(BTD_Mod_Helper.BloonsMod,string).name'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.TextureExists(BTD_Mod_Helper.BloonsTD6Mod,string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1404,7 +1404,7 @@ Gets whether a texture with a given name has been loaded by the Mod Helper for a
 
 ```csharp
 public static bool TextureExists<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod;
+    where T : BTD_Mod_Helper.BloonsTD6Mod;
 ```
 #### Type parameters
 

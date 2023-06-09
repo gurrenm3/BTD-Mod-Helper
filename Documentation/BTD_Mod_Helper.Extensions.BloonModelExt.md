@@ -312,7 +312,8 @@ public static SpawnChildrenModel GetSpawnChildrenModel(this BloonModel bloonMode
 
 ## BloonModelExt.GetTotalCash(this BloonModel, int) Method
 
-(Cross-Game compatable) Return how much cash this bloon would give if popped by [layersPopped](BTD_Mod_Helper.Extensions.BloonModelExt.md#BTD_Mod_Helper.Extensions.BloonModelExt.GetTotalCash(thisBloonModel,int).layersPopped 'BTD_Mod_Helper.Extensions.BloonModelExt.GetTotalCash(this BloonModel, int).layersPopped') number of layers
+(Cross-Game compatable) Return how much cash this bloon would give if popped by [layersPopped](BTD_Mod_Helper.Extensions.BloonModelExt.md#BTD_Mod_Helper.Extensions.BloonModelExt.GetTotalCash(thisBloonModel,int).layersPopped 'BTD_Mod_Helper.Extensions.BloonModelExt.GetTotalCash(this BloonModel, int).layersPopped') number  
+of layers
 
 ```csharp
 public static int GetTotalCash(this BloonModel bloonModel, int layersPopped=-1);
@@ -327,7 +328,8 @@ public static int GetTotalCash(this BloonModel bloonModel, int layersPopped=-1);
 
 `layersPopped` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-How many layers of bloons to pop, ignoring layer health. If less than 0, calculates for the entire bloon
+How many layers of bloons to pop, ignoring layer health. If less than 0, calculates for the  
+entire bloon
 
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
@@ -679,7 +681,7 @@ public static void SetMoab(this BloonModel bloonModel, bool isMoabBloon);
 
 ## BloonModelExt.SetRegrow(this BloonModel, string, float) Method
 
-Adds the Regrow behavior to this BloonModel and sets what   
+Adds the Regrow behavior to this BloonModel and sets what  
 Bloon it Regrows into.
 
 ```csharp

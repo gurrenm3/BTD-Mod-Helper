@@ -23,5 +23,4 @@ internal class Btd6Player_SaveNow
             ProfileManagement.UnCleanProfile(__instance.Data);
         }
     }
-
 }

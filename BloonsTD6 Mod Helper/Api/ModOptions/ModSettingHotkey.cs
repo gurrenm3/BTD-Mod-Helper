@@ -12,8 +12,8 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// </summary>
 public class ModSettingHotkey : ModSetting<string>
 {
-    private HotKey hotKey;
     private HotkeysScreenField currentField;
+    private HotKey hotKey;
 
     /// <inheritdoc />
     public ModSettingHotkey(KeyCode key, HotkeyModifier modifier = HotkeyModifier.None)
@@ -61,18 +61,27 @@ public class ModSettingHotkey : ModSetting<string>
     /// <summary>
     /// Returns whether the Hotkey was pressed down on this frame
     /// </summary>
-    public bool JustPressed() => Modifier(Input.GetKey) && Input.GetKeyDown(hotKey.path.GetKeyCode());
+    public bool JustPressed()
+    {
+        return Modifier(Input.GetKey) && Input.GetKeyDown(hotKey.path.GetKeyCode());
+    }
 
     /// <summary>
     /// Returns whether the Hotkey is currently being pressed / held
     /// </summary>
-    public bool IsPressed() => Modifier(Input.GetKey) && Input.GetKey(hotKey.path.GetKeyCode());
+    public bool IsPressed()
+    {
+        return Modifier(Input.GetKey) && Input.GetKey(hotKey.path.GetKeyCode());
+    }
 
     /// <summary>
     /// Returns whether the Hotkey just went from being pressed to not being pressed on this frame
     /// </summary>
-    public bool JustReleased() => Modifier(Input.GetKey) && Input.GetKeyUp(hotKey.path.GetKeyCode()) ||
-                                  Modifier(Input.GetKeyUp) && Input.GetKey(hotKey.path.GetKeyCode());
+    public bool JustReleased()
+    {
+        return Modifier(Input.GetKey) && Input.GetKeyUp(hotKey.path.GetKeyCode()) ||
+               Modifier(Input.GetKeyUp) && Input.GetKey(hotKey.path.GetKeyCode());
+    }
 
     /// <inheritdoc />
     internal override bool OnSave()
@@ -92,7 +101,7 @@ public class ModSettingHotkey : ModSetting<string>
         var option = CreateBaseOption();
 
         var buttonComponent = option.BottomRow.AddButton(
-            new Info("Button", width: 562, height: 200), VanillaSprites.GreenBtnLong, null
+            new Info("Button", 562, 200), VanillaSprites.GreenBtnLong, null
         );
         var text = buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), "", 69f);
 
@@ -119,5 +128,8 @@ public class ModSettingHotkey : ModSetting<string>
     /// <summary>
     /// Creates a new ModSettingHotkey from a KeyCode
     /// </summary>
-    public static implicit operator ModSettingHotkey(KeyCode key) => new(key);
+    public static implicit operator ModSettingHotkey(KeyCode key)
+    {
+        return new ModSettingHotkey(key);
+    }
 }

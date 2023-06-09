@@ -58,7 +58,7 @@ internal static class EmbeddedBrowser
                 var exit = open.AddImage(new Info("Exit", 70), VanillaSprites.ExitIcon);
                 exit.RectTransform.Rotate(0, 0, -90);
 
-#if BTD6_DEBUG
+#if DEBUG
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("GoogleButton", 100),
                     VanillaSprites.ReviewMapBtn, new Action(() =>
                         webview.RunJavascript("location.href = 'https://google.com?theme=dark'"))));
@@ -125,7 +125,10 @@ internal static class EmbeddedBrowser
     internal static class GUI_DrawTexture
     {
         [HarmonyPrefix]
-        private static bool Prefix() => !SteamWebView_OnGUI.UsingRawImage;
+        private static bool Prefix()
+        {
+            return !SteamWebView_OnGUI.UsingRawImage;
+        }
     }
 
     /// <summary>

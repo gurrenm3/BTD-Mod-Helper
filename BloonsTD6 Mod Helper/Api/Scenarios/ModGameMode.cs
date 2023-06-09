@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Scenarios;
@@ -14,10 +13,12 @@ public abstract class ModGameMode : NamedModContent
 {
     internal static readonly Dictionary<string, ModGameMode> Cache = new();
 
+    internal ModModel model;
+
     /// <summary>
     /// Registers after Round Sets
     /// </summary>
-    /// <exclude/>
+    /// <exclude />
     protected override float RegistrationPriority => 10;
 
     /// <inheritdoc />
@@ -75,7 +76,7 @@ public abstract class ModGameMode : NamedModContent
             ModHelper.Error($"Failed to modify base GameMode for {Id}");
             throw;
         }
-        
+
         model.GenerateDescendentNames();
 
         try
@@ -93,8 +94,6 @@ public abstract class ModGameMode : NamedModContent
             });
         }
     }
-
-    internal ModModel model;
 
     internal ModModel GetDefaultGameModeModel()
     {

@@ -15,10 +15,12 @@ public abstract class ModRoundSet : NamedModContent
 {
     internal static readonly Dictionary<string, ModRoundSet> Cache = new();
 
+    internal RoundSetModel model;
+
     /// <summary>
     /// RoundSets register Bloons and before GameModes
     /// </summary>
-    /// <exclude/>
+    /// <exclude />
     protected override float RegistrationPriority => 9;
 
     /// <summary>
@@ -27,6 +29,42 @@ public abstract class ModRoundSet : NamedModContent
     protected List<RoundModel> BaseRounds =>
         GameData.Instance.roundSets.FirstOrDefault(set => set.name == BaseRoundSet)?.rounds.ToList() ??
         new List<RoundModel>();
+
+    /// <inheritdoc />
+    public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+
+    /// <summary>
+    /// The id of the existing RoundSet to use as a base. Use RoundSetType.[name]
+    /// If this RoundSetType.None, empty, or null, then an empty round set will be used
+    /// </summary>
+    public abstract string BaseRoundSet { get; }
+
+    /// <summary>
+    /// The total number of rounds that have specified Bloons.
+    /// <br />
+    /// After this number of rounds, randomized Free Play rounds will happen
+    /// </summary>
+    public abstract int DefinedRounds { get; }
+
+    /// <summary>
+    /// The Icon for the Button for this RoundSet within the UI, by default looking for the same name as the file
+    /// </summary>
+    public virtual string Icon => GetType().Name;
+
+    /// <summary>
+    /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
+    /// </summary>
+    public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
+
+    /// <summary>
+    /// Whether this Round set should show up in the menu allowing you to use any RoundSet for any GameMode
+    /// </summary>
+    public virtual bool AddToOverrideMenu => true;
+
+    /// <summary>
+    /// Whether these rounds should have custom hints, like Alternate Bloons Rounds does
+    /// </summary>
+    public virtual bool CustomHints => false;
 
     /// <inheritdoc />
     public override void Register()
@@ -63,7 +101,7 @@ public abstract class ModRoundSet : NamedModContent
         }
 
         model.GenerateDescendentNames();
-        
+
         try
         {
             GameData.Instance.roundSets = GameData.Instance.roundSets.AddTo(model);
@@ -101,39 +139,8 @@ public abstract class ModRoundSet : NamedModContent
         }
     }
 
-    /// <inheritdoc />
-    public sealed override string DisplayNamePlural => base.DisplayNamePlural;
-
     /// <summary>
-    /// The id of the existing RoundSet to use as a base. Use RoundSetType.[name]
-    /// If this RoundSetType.None, empty, or null, then an empty round set will be used
-    /// </summary>
-    public abstract string BaseRoundSet { get; }
-
-    /// <summary>
-    /// The total number of rounds that have specified Bloons.
-    /// <br/>
-    /// After this number of rounds, randomized Free Play rounds will happen
-    /// </summary>
-    public abstract int DefinedRounds { get; }
-
-    /// <summary>
-    /// The Icon for the Button for this RoundSet within the UI, by default looking for the same name as the file
-    /// </summary>
-    public virtual string Icon => GetType().Name;
-
-    /// <summary>
-    /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
-    /// </summary>
-    public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
-
-    /// <summary>
-    /// Whether this Round set should show up in the menu allowing you to use any RoundSet for any GameMode
-    /// </summary>
-    public virtual bool AddToOverrideMenu => true;
-
-    /// <summary>
-    /// Called to modify any/all rounds from 1 to <see cref="DefinedRounds"/>
+    /// Called to modify any/all rounds from 1 to <see cref="DefinedRounds" />
     /// </summary>
     public virtual void ModifyRoundModels(RoundModel roundModel, int round)
     {
@@ -168,32 +175,28 @@ public abstract class ModRoundSet : NamedModContent
     }
 
     /// <summary>
-    /// Whether these rounds should have custom hints, like Alternate Bloons Rounds does
-    /// </summary>
-    public virtual bool CustomHints => false;
-
-    /// <summary>
-    /// Gets the custom hint for a specific round. Make sure <see cref="CustomHints"/> is overriden as true.
-    /// <br/>
+    /// Gets the custom hint for a specific round. Make sure <see cref="CustomHints" /> is overriden as true.
+    /// <br />
     /// For no hint, return null.
     /// </summary>
     public virtual string GetHint(int round)
     {
         return null;
     }
-    
+
     /// <summary>
     /// Modifies the GameModel that's used for matches played with this round set
     /// </summary>
     /// <param name="gameModel"></param>
     public virtual void ModifyGameModel(GameModel gameModel)
     {
-        
+
     }
 
-    internal string HintKey(int round) => $"{Id} Hint {round}";
-
-    internal RoundSetModel model;
+    internal string HintKey(int round)
+    {
+        return $"{Id} Hint {round}";
+    }
 
     internal RoundSetModel GetDefaultRoundSetModel()
     {
@@ -210,6 +213,4 @@ public abstract class ModRoundSet : NamedModContent
 
         return roundSetModel;
     }
-    
-    
 }

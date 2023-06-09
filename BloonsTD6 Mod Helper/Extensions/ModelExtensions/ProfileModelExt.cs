@@ -22,7 +22,10 @@ public static class ProfileModelExt
     /// </summary>
     /// <param name="profileModel"></param>
     /// <param name="towerId">The ID of the tower you want to unlock</param>
-    /// <param name="unlockIfTowerModelExists">If set to true the TowerModel will only be unlocked if it has been registered in the game</param>
+    /// <param name="unlockIfTowerModelExists">
+    /// If set to true the TowerModel will only be unlocked if it has been registered in
+    /// the game
+    /// </param>
     /// <returns>Returns whether or not the tower was unlocked</returns>
     public static bool UnlockTower(this ProfileModel profileModel, string towerId, bool unlockIfTowerModelExists)
     {

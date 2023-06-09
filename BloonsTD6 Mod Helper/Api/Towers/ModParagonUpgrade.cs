@@ -8,24 +8,10 @@ using Il2CppAssets.Scripts.Unity;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
-/// Defines the Paragon Upgrade for a ModTower. Remember to set the <see cref="ModTower.ParagonMode"/> property.
+/// Defines the Paragon Upgrade for a ModTower. Remember to set the <see cref="ModTower.ParagonMode" /> property.
 /// </summary>
 public abstract class ModParagonUpgrade : ModUpgrade
 {
-    /// <inheritdoc />
-    protected internal override void AssignToModTower()
-    {
-        try
-        {
-            Tower.paragonUpgrade = this;
-        }
-        catch (Exception e)
-        {
-            ModHelper.Warning("Failed to assign ModParagonUpgrade " + Name + $" to ModTower {Tower.Name}");
-            ModHelper.Error(e);
-            throw;
-        }
-    }
 
     /// <summary>
     /// Specifically use the paragon upgrade naming scheme. No overriding because that apparently causes issues.
@@ -49,14 +35,6 @@ public abstract class ModParagonUpgrade : ModUpgrade
     public sealed override int Tier => 6;
 
     /// <summary>
-    /// No loading of multiple ModParagonUpgrades
-    /// </summary>
-    public sealed override IEnumerable<ModContent> Load()
-    {
-        return base.Load();
-    }
-
-    /// <summary>
     /// The ParagonTowerModel that this will use as a base. You don't need to worry about displayDegreePaths
     /// </summary>
     public virtual ParagonTowerModel ParagonTowerModel => Game.instance.model
@@ -66,6 +44,28 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// By default, remove any abilities from the Paragon tower
     /// </summary>
     public virtual bool RemoveAbilities => true;
+    /// <inheritdoc />
+    protected internal override void AssignToModTower()
+    {
+        try
+        {
+            Tower.paragonUpgrade = this;
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning("Failed to assign ModParagonUpgrade " + Name + $" to ModTower {Tower.Name}");
+            ModHelper.Error(e);
+            throw;
+        }
+    }
+
+    /// <summary>
+    /// No loading of multiple ModParagonUpgrades
+    /// </summary>
+    public sealed override IEnumerable<ModContent> Load()
+    {
+        return base.Load();
+    }
 
     /// <summary>
     /// Modify the PowerDegreeMutator of the Paragon
@@ -76,9 +76,9 @@ public abstract class ModParagonUpgrade : ModUpgrade
     public virtual void ModifyPowerDegreeMutator(ParagonTowerModel.PowerDegreeMutator powerDegreeMutator,
         float investment, int degree)
     {
-            
+
     }
-        
+
     /// <summary>
     /// Method to modify the Simulation Tower once its Degree has been set
     /// </summary>
@@ -86,7 +86,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// <param name="degree"></param>
     public virtual void OnDegreeSet(Tower tower, int degree)
     {
-            
+
     }
 
 

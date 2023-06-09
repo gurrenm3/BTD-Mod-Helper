@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppNinjaKiwi.NKMulti;
-using Il2CppNinjaKiwi.Players;
-using Il2CppNinjaKiwi.Players.Files;
 namespace BTD_Mod_Helper;
 
 /// <summary>
 /// This class is used in the API to store data about the current state of the game,
 /// like whether or not the player is in a Public Coop game
 /// </summary>
-/// <exclude/>
+/// <exclude />
 public partial class SessionData
 {
     /// <summary>
@@ -25,7 +23,7 @@ public partial class SessionData
     public List<Bloon> DestroyedBloons { get; set; } = new();
 
     /// <summary>
-    /// If the player is in Coop, this value represents whether it's a 
+    /// If the player is in Coop, this value represents whether it's a
     /// Public Coop match or not
     /// </summary>
     public bool IsInPublicCoop { get; set; } = false;
@@ -47,11 +45,11 @@ public partial class SessionData
     public string SaveDirectory { get; set; } = "";
 
     /// <summary>
-    /// The instance of <see cref="NKMultiGameInterface"/> that is used during a 
+    /// The instance of <see cref="NKMultiGameInterface" /> that is used during a
     /// multiplayer game
     /// </summary>
     public NKMultiGameInterface NkGI { get; set; }
-    
+
     /// <summary>
     /// If the player is in a game, is it currently paused
     /// </summary>

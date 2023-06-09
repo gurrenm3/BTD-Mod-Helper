@@ -365,7 +365,8 @@ public static double GetMaxHealth(this InGame inGame);
 
 ## InGameExt.GetPoppedBloons(this InGame) Method
 
-Get collection of popped bloons in this game. Right now only works for current games. Does not store results from loaded games
+Get collection of popped bloons in this game. Right now only works for current games. Does not store results from  
+loaded games
 
 ```csharp
 public static System.Collections.Generic.Dictionary<string,int> GetPoppedBloons(this InGame inGame);

@@ -55,9 +55,11 @@ public static class PopupScreenExt
     /// Since a recent BTD6 update, trying to show a popup while there already is one can cause a game crash. This method
     /// safely queues a popup for once there aren't any already active
     /// </summary>
-    public static void SafelyQueue(this PopupScreen popupScreen, Action<PopupScreen> action) =>
+    public static void SafelyQueue(this PopupScreen popupScreen, Action<PopupScreen> action)
+    {
         TaskScheduler.ScheduleTask(
             () => action(popupScreen),
             () => popupScreen != null && !popupScreen.IsPopupActive()
         );
+    }
 }

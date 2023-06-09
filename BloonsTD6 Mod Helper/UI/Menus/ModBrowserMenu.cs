@@ -22,29 +22,29 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private const int SearchCutoff = 50;
     private const int TypingCooldown = 30;
 
-    private static int ModsPerPage => MelonMain.ModsPerPage;
-
     private static bool modsNeedRefreshing;
 
     private static readonly List<SortingMethod> SortingMethods =
         Enum.GetValues(typeof(SortingMethod)).Cast<SortingMethod>().ToList();
 
-    private ModBrowserMenuMod[] mods;
-
     private readonly IRatioScorer scorer = ScorerCache.Get<WeightedRatioScorer>();
 
     private IList<ModHelperData> currentMods;
-    private IList<ModHelperData> lastMods;
-    private IList<string> topics;
-    private IList<string> topicLabels;
     private int currentPage;
     private string currentSearch = "";
     private string currentTopic;
+    private IList<ModHelperData> lastMods;
+
+    private ModBrowserMenuMod[] mods;
 
     private SortingMethod sortingMethod = SortingMethod.RecentlyUpdated;
+    private bool templatesCreated;
+    private IList<string> topicLabels;
+    private IList<string> topics;
 
     private int typingCooldown;
-    private bool templatesCreated;
+
+    private static int ModsPerPage => MelonMain.ModsPerPage;
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
@@ -61,7 +61,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 (!ModHelperGithub.VerifiedOnly || ModHelperGithub.VerifiedTopics.Contains(s)))
             .GroupBy(topic => topic)
             .ToDictionary(grouping => grouping.Key, grouping => grouping.Count());
-        
+
         topics = modTopics
             .OrderByDescending(pair => pair.Value)
             .Select(pair => pair.Key)
@@ -141,7 +141,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             .AddModHelperPanel(new Info("TopArea")
             {
                 Y = -325, Height = 200, Pivot = new Vector2(0.5f, 1),
-                AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1),
+                AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1)
             }, layoutAxis: RectTransform.Axis.Horizontal, padding: 50);
 
         topArea.AddDropdown(new Info("Sorting", 1000, 150),
@@ -303,15 +303,18 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         });
     }
 
-    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
+    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort)
     {
-        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
-        SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
-        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.UpdatedAtUtc),
-        SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
-        SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
-        _ => mods
-    }).ToList();
+        return (sort switch
+        {
+            SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
+            SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
+            SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.UpdatedAtUtc),
+            SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
+            SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
+            _ => mods
+        }).ToList();
+    }
 
     private enum SortingMethod
     {

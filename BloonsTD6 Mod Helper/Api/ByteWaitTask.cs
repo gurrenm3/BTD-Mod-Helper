@@ -8,23 +8,26 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 internal class ByteWaitTask : ModLoadTask
 {
-    /// <inheritdoc />
-    public override string DisplayName => "Waiting for ByteLoaders...";
-
-    /// <summary>
-    /// Don't load this like a normal task
-    /// </summary>
-    /// <returns></returns>
-    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
-
-    public override bool ShowProgressBar => GetContent<ModByteLoader>().Any();
-
-    internal static ByteWaitTask Instance { get; private set; }
 
     public ByteWaitTask()
     {
         Instance = this;
         mod = ModHelper.Main;
+    }
+    /// <inheritdoc />
+    public override string DisplayName => "Waiting for ByteLoaders...";
+
+    public override bool ShowProgressBar => GetContent<ModByteLoader>().Any();
+
+    internal static ByteWaitTask Instance { get; private set; }
+
+    /// <summary>
+    /// Don't load this like a normal task
+    /// </summary>
+    /// <returns></returns>
+    public override IEnumerable<ModContent> Load()
+    {
+        return Enumerable.Empty<ModContent>();
     }
 
     /// <summary>
@@ -36,7 +39,7 @@ internal class ByteWaitTask : ModLoadTask
         {
             var loaders = GetContent<ModByteLoader>();
             Progress = loaders.Count(loader => loader.Loaded) / (float) loaders.Count;
-            if (loaders.FirstOrDefault(loader => !loader.Loaded) is { } modByteLoader)
+            if (loaders.Find(loader => !loader.Loaded) is { } modByteLoader)
             {
                 Description = modByteLoader.Name;
             }

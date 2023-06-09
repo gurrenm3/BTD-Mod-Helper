@@ -12,16 +12,15 @@ internal class ProfileModel_Validate
     {
         ProfileManagement.CleanPastProfile(__instance);
     }
-        
-        
+
+
     [HarmonyPostfix]
     internal static void Postfix(ProfileModel __instance)
     {
-        foreach (var modTower in ModContent.GetContent<ModTower>()
-                     .Where(modTower => !(modTower is ModHero) && !__instance.unlockedTowers.Contains(modTower.Id)))
+        foreach (var modTowerId in ModContent.GetContent<ModTower>().Where(modTower => modTower is not ModHero && !__instance.unlockedTowers.Contains(modTower.Id)).Select(modTower => modTower.Id))
         {
-            __instance.unlockedTowers.Add(modTower.Id);
-            __instance.acquiredUpgrades.Add(modTower.Id);
+            __instance.unlockedTowers.Add(modTowerId);
+            __instance.acquiredUpgrades.Add(modTowerId);
         }
 
         foreach (var modUpgrade in ModContent.GetContent<ModUpgrade>()
@@ -30,13 +29,13 @@ internal class ProfileModel_Validate
             __instance.acquiredUpgrades.Add(modUpgrade.Id);
         }
 
-        foreach (var modHero in ModContent.GetContent<ModHero>())
+        foreach (var modHeroId in ModContent.GetContent<ModHero>().Select(modHero => modHero.Id))
         {
-            __instance.unlockedHeroes.Add(modHero.Id);
-            __instance.seenUnlockedHeroes.Add(modHero.Id);
-            __instance.seenNewHeroNotification.Add(modHero.Id);
+            __instance.unlockedHeroes.Add(modHeroId);
+            __instance.seenUnlockedHeroes.Add(modHeroId);
+            __instance.seenNewHeroNotification.Add(modHeroId);
         }
-            
+
         ModHelper.PerformHook(mod => mod.OnProfileLoaded(__instance));
     }
 }

@@ -11,13 +11,18 @@ public static class TitleScreenUI
 {
     /// <summary>
     /// Gets the Scene if on the Title Screen menu
-    /// </summary>=
+    /// </summary>
+    /// =
     public static Scene? GetScene()
     {
         try
-        { return SceneManager.GetSceneByName("TitleScreenUI"); }
+        {
+            return SceneManager.GetSceneByName("TitleScreenUI");
+        }
         catch (ArgumentException)
-        { return null; }
+        {
+            return null;
+        }
     }
 
     /// <summary>

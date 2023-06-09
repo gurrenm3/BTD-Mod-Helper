@@ -25,7 +25,8 @@ internal class StandardTowerPurchaseButton_UpdateTowerDisplay
     {
         if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
         {
-            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ContainerReference, __instance.GetComponent<Image>());
+            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(modTowerSet.ContainerReference,
+                __instance.GetComponent<Image>());
         }
     }
 }

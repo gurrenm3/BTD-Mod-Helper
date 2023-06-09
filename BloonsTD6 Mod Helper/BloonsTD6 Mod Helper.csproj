@@ -2,52 +2,49 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
-        <Configurations>BTD6_Debug;BTD6_Release</Configurations>
-        <DefineConstants>BloonsTD6;TRACE</DefineConstants>
+        <Configurations>Debug;Release</Configurations>
         <Nullable>warnings</Nullable>
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <LangVersion>preview</LangVersion>
-        
+
         <!--ILRepack settings-->
         <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->
-        
+
         <!--btd6.targets settings-->
         <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
         <ProjectName>Btd6ModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->
 
         <!--Documentation Settings-->
-        <DocumentationFile>bin\BTD6_Debug\Btd6ModHelper.xml</DocumentationFile>
+        <DocumentationFile>bin\Debug\Btd6ModHelper.xml</DocumentationFile>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
-    
-    <PropertyGroup Condition="'$(Configuration)' == 'BTD6_Debug'">
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1" PrivateAssets="all" />
-        <PackageReference Include="FuzzySharp" Version="2.0.2" />
-        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.14" />
-        <PackageReference Include="NfdSharp" Version="1.0.1" />
-        <PackageReference Include="Octokit" Version="4.0.3" />
-        <PackageReference Include="NAudio" Version="2.1.0" />
+        <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1" PrivateAssets="all"/>
+        <PackageReference Include="FuzzySharp" Version="2.0.2"/>
+        <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.14"/>
+        <PackageReference Include="NfdSharp" Version="1.0.1"/>
+        <PackageReference Include="Octokit" Version="4.0.3"/>
+        <PackageReference Include="NAudio" Version="2.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="nfd.dll" />
-        <EmbeddedResource Include="nfd_x86.dll" />
-        <EmbeddedResource Include="btd6.targets" />
+        <EmbeddedResource Include="nfd.dll"/>
+        <EmbeddedResource Include="nfd_x86.dll"/>
+        <EmbeddedResource Include="btd6.targets"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings" />
+        <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings"/>
     </ItemGroup>
-
-    <Import Project="..\Shared\Shared Project.projitems" Label="Shared" />
 
     <!--Use the btd6.targets from the Mod Sources folder if this is placed there, otherwise use the included one-->
-    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
-    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
+    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets"/>
+    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>
 </Project>

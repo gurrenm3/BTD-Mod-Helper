@@ -23,30 +23,6 @@ namespace BTD_Mod_Helper.UI.Menus;
 /// </summary>
 public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 {
-    #region Constants
-
-    internal const int Padding = 50;
-
-    internal const int MenuWidth = 3600;
-    internal const int MenuHeight = 1900;
-
-    internal const int LeftMenuWidth = 1750;
-    internal const int RightMenuWidth = 1750;
-
-    internal const int ModNameWidth = 1000;
-
-    internal const int ModIconSize = 250;
-    internal const int ModPanelHeight = 200;
-    internal const int ModNameHeight = 150;
-    internal const int OtherHeight = 100;
-
-    internal const int FontSmall = 52;
-    internal const int FontMedium = 69;
-    internal const int FontLarge = 80;
-
-    internal const string DefaultDescription = "No description given";
-
-    #endregion
 
     private static Dictionary<ModHelperData, ModsMenuMod> modPanels = new();
 
@@ -69,7 +45,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static int currentSort;
     private static ModHelperPanel restartPanel;
     private static Task updateTask;
-    private static ModHelperScrollPanel topRow;
 
     private static Animator bottomGroupAnimator;
 
@@ -85,8 +60,9 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     };
 
     private static bool RestartRequired => ModHelperData.All.Any(data => data.RestartRequired) ||
-                                           ModHelper.Mods.Any(bloonsMod =>
-                                               bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
+                                           ModHelper.Mods.Any(BloonsTD6Mod =>
+                                               BloonsTD6Mod.ModSettings.Values.Any(setting =>
+                                                   setting.needsRestartRightNow)
                                            );
 
     /// <inheritdoc />
@@ -260,8 +236,8 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModUpdateButton.gameObject.SetActive(modSelected.UpdateAvailable);
 
-        selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
-                                                       bloonsMod.ModSettings.Any());
+        selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsTD6Mod BloonsTD6Mod &&
+                                                       BloonsTD6Mod.ModSettings.Any());
 
         if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite)
         {
@@ -315,7 +291,7 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             VanillaSprites.MainBGPanelBlue, RectTransform.Axis.Vertical, Padding, Padding
         );
 
-        topRow = leftMenu.AddScrollPanel(new Info("TopRow")
+        var topRow = leftMenu.AddScrollPanel(new Info("TopRow")
         {
             Height = ModNameHeight,
             FlexWidth = 1
@@ -486,14 +462,14 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         // ReSharper disable once AsyncVoidLambda
         selectedModUpdateButton = firstRow.AddButton(
-            new Info("UpdateButton", size: ModNameHeight), VanillaSprites.GreenBtn, new Action(async () =>
+            new Info("UpdateButton", ModNameHeight), VanillaSprites.GreenBtn, new Action(async () =>
                 await ModHelperGithub.DownloadLatest(selectedMod, false, _ => Refresh(), task => updateTask = task))
         );
         selectedModUpdateButton.AddImage(
-            new Info("UpgradeIcon", size: ModNameHeight - Padding), VanillaSprites.UpgradeIcon2
+            new Info("UpgradeIcon", ModNameHeight - Padding), VanillaSprites.UpgradeIcon2
         );
         selectedModLoadingSpinner = selectedModUpdateButton.AddImage(
-            new Info("Spinner", size: ModNameHeight), VanillaSprites.LoadingWheel
+            new Info("Spinner", ModNameHeight), VanillaSprites.LoadingWheel
         );
 
 
@@ -563,9 +539,9 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModSettingsButton = buttonsRow.AddButton(
             new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
-            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod as BloonsMod)));
+            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod as BloonsTD6Mod)));
         selectedModSettingsButton.AddImage(
-            new Info("Gear", width: ModNameHeight, height: ModNameHeight), VanillaSprites.SettingsIcon
+            new Info("Gear", ModNameHeight, ModNameHeight), VanillaSprites.SettingsIcon
         );
 
         selectedModDeleteButton = buttonsRow.AddButton(
@@ -609,4 +585,28 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             MenuManager.instance.buttonClickSound.Play("ClickSounds");
         }
     }
+    #region Constants
+
+    internal const int Padding = 50;
+
+    internal const int MenuWidth = 3600;
+    internal const int MenuHeight = 1900;
+
+    internal const int LeftMenuWidth = 1750;
+    internal const int RightMenuWidth = 1750;
+
+    internal const int ModNameWidth = 1000;
+
+    internal const int ModIconSize = 250;
+    internal const int ModPanelHeight = 200;
+    internal const int ModNameHeight = 150;
+    internal const int OtherHeight = 100;
+
+    internal const int FontSmall = 52;
+    internal const int FontMedium = 69;
+    internal const int FontLarge = 80;
+
+    internal const string DefaultDescription = "No description given";
+
+    #endregion
 }

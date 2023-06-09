@@ -1,34 +1,42 @@
 ﻿using System;
 using Il2CppNinjaKiwi.NKMulti;
 using Il2CppSystem.Threading.Tasks;
-namespace BTD_Mod_Helper.Patches
+namespace BTD_Mod_Helper.Patches;
+
+// [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Connect))]
+internal class NKMultiGameInterface_Connect
 {
-    // [HarmonyPatch(typeof(NKMultiGameInterface), nameof(NKMultiGameInterface.Connect))]
-    internal class NKMultiGameInterface_Connect
+    [HarmonyPostfix]
+    [Obsolete]
+    public static void Postfix(NKMultiGameInterface __instance, ref Task __result)
     {
-        [HarmonyPostfix]
-        [Obsolete]
-        public static void Postfix(NKMultiGameInterface __instance, ref Task __result) => __result.ContinueWith(new Action<Task>(_ => OnConnectTaskFinished(__instance)));
+        __result.ContinueWith(new Action<Task>(_ => OnConnectTaskFinished(__instance)));
+    }
 
-        [Obsolete]
-        private static void OnConnectTaskFinished(NKMultiGameInterface instance)
+    [Obsolete]
+    private static void OnConnectTaskFinished(NKMultiGameInterface instance)
+    {
+        if (instance.IsConnected)
         {
-            if (instance.IsConnected)
-            {
-                ModHelper.PerformHook(mod => mod.OnConnected(instance));
-                instance.add_PeerConnectedEvent(new Action<int>(peerId => OnPeerConnected(instance, peerId)));
-                instance.add_PeerDisconnectedEvent(new Action<int>(peerId => OnPeerDisconnected(instance, peerId)));
-            }
-            else
-            {
-                ModHelper.PerformHook(mod => mod.OnConnectFail(instance));
-            }
+            ModHelper.PerformHook(mod => mod.OnConnected(instance));
+            instance.add_PeerConnectedEvent(new Action<int>(peerId => OnPeerConnected(instance, peerId)));
+            instance.add_PeerDisconnectedEvent(new Action<int>(peerId => OnPeerDisconnected(instance, peerId)));
         }
+        else
+        {
+            ModHelper.PerformHook(mod => mod.OnConnectFail(instance));
+        }
+    }
 
-        [Obsolete]
-        private static void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId) => ModHelper.PerformHook(mod => mod.OnPeerDisconnected(nkGi, peerId));
+    [Obsolete]
+    private static void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId)
+    {
+        ModHelper.PerformHook(mod => mod.OnPeerDisconnected(nkGi, peerId));
+    }
 
-        [Obsolete]
-        private static void OnPeerConnected(NKMultiGameInterface nkGi, int peerId) => ModHelper.PerformHook(mod => mod.OnPeerConnected(nkGi, peerId));
+    [Obsolete]
+    private static void OnPeerConnected(NKMultiGameInterface nkGi, int peerId)
+    {
+        ModHelper.PerformHook(mod => mod.OnPeerConnected(nkGi, peerId));
     }
 }

@@ -1,41 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using BTD_Mod_Helper.Api;
-using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Input;
-using Il2CppAssets.Scripts.Unity;
+using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Patches.Towers;
 
 [HarmonyPatch(typeof(TowerInventory), nameof(TowerInventory.Init))]
 internal static class TowerInventory_Init
 {
     [HarmonyPrefix]
-    private static bool Prefix(ref TowerInventory __instance,
-        ref Il2CppSystem.Collections.Generic.IEnumerable<TowerDetailsModel> allTowersInTheGame)
+    private static void Prefix(TowerInventory __instance, ref IEnumerable<TowerDetailsModel> allTowersInTheGame)
     {
-        var result = true;
-        var unref__instance = __instance;
         var list = allTowersInTheGame.ToList();
-        var unref_allTowersInTheGame = (IEnumerable<TowerDetailsModel>) list;
+        var unref_allTowersInTheGame = (System.Collections.Generic.IEnumerable<TowerDetailsModel>) list;
 
-        ModHelper.PerformAdvancedModHook(mod =>
-            result &= mod.PreTowerInventoryInit(ref unref__instance, ref unref_allTowersInTheGame));
-        __instance = unref__instance;
+        ModHelper.PerformHook(mod => mod.PreTowerInventoryInit(__instance, ref unref_allTowersInTheGame));
 
         allTowersInTheGame = list.ToIl2CppReferenceArray()
-            .Cast<Il2CppSystem.Collections.Generic.IEnumerable<TowerDetailsModel>>();
+            .Cast<IEnumerable<TowerDetailsModel>>();
 
-        return result;
     }
 
     [HarmonyPostfix]
-    private static void Postfix(TowerInventory __instance, IEnumerable<TowerDetailsModel> allTowersInTheGame)
+    private static void Postfix(TowerInventory __instance,
+        System.Collections.Generic.IEnumerable<TowerDetailsModel> allTowersInTheGame)
     {
-        ModHelper.PerformAdvancedModHook(mod => mod.PostTowerInventoryInit(__instance, allTowersInTheGame.ToList()));
+        ModHelper.PerformHook(mod => mod.OnTowerInventoryInit(__instance, allTowersInTheGame.ToList()));
     }
 }
 
@@ -45,7 +36,7 @@ internal static class TowerInventory_Init
 [HarmonyPatch]
 internal static class TowerInventory_Patches
 {
-    private static IEnumerable<MethodBase> TargetMethods()
+    private static System.Collections.Generic.IEnumerable<MethodBase> TargetMethods()
     {
         yield return AccessTools.Method(typeof(TowerInventory), nameof(TowerInventory.UpdatedTower));
         yield return AccessTools.Method(typeof(TowerInventory), nameof(TowerInventory.DestroyedTower));

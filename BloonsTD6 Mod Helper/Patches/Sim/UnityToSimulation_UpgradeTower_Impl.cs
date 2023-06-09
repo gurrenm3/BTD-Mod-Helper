@@ -7,11 +7,11 @@ namespace BTD_Mod_Helper.Patches.Sim;
 
 /// <summary>
 /// This is a pretty specific patch that addresses the following:
-/// <br/>
+/// <br />
 /// In the default game, the tower id specified in an UpgradePathModel is ONLY used in the UpgradeScreen for w/e reason.
 /// For actually upgrading the tower, it ignores it and just tries to find the next tower by its base id and tier.
 /// This patch changes it so that it actually respects what tower is being asked for in the UpgradePathModel.
-/// <br/>
+/// <br />
 /// This has no effect at all for vanilla towers, but allows modded towers to more easily do funky stuff with upgrades.
 /// </summary>
 [HarmonyPatch(typeof(UnityToSimulation), nameof(UnityToSimulation.UpgradeTower_Impl))]

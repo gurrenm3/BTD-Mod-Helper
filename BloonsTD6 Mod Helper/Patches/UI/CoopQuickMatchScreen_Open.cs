@@ -12,7 +12,7 @@ internal class CoopQuickMatchScreen_Open
     {
         return ModGameMenu.CheckOpen(__instance, data, out data);
     }
-        
+
     [HarmonyPostfix]
     internal static void Postfix()
     {

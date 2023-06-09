@@ -164,7 +164,7 @@ internal partial class MelonMain
     private static readonly ModSettingButton OpenLocalDirectory = new()
     {
         displayName = "Open Local Files Directory",
-        action = () => Process.Start(new ProcessStartInfo()
+        action = () => Process.Start(new ProcessStartInfo
         {
             FileName = FileIOHelper.sandboxRoot,
             UseShellExecute = true,

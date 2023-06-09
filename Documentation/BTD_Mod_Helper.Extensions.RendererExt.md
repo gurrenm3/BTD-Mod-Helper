@@ -156,7 +156,8 @@ public static bool[] GetVerticesConnectedToBoneArray(this SkinnedMeshRenderer sk
 
 ## RendererExt.SetMainTexture(this Il2CppReferenceArray<Renderer>, Texture2D) Method
 
-Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture = texture2D)"
+Set the texture for all renderers in this collection. Equivalent to a "ForEach(render.material.mainTexture =  
+texture2D)"
 
 ```csharp
 public static void SetMainTexture(this Il2CppReferenceArray<Renderer> renderers, Texture2D texture2D);
