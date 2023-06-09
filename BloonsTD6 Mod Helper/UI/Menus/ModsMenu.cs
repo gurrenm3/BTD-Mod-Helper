@@ -585,7 +585,6 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             MenuManager.instance.buttonClickSound.Play("ClickSounds");
         }
     }
-    #region Constants
 
     internal const int Padding = 50;
 
@@ -607,6 +606,4 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     internal const int FontLarge = 80;
 
     internal const string DefaultDescription = "No description given";
-
-    #endregion
 }
