@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
@@ -224,6 +225,16 @@ public abstract partial class ModBloon : NamedModContent
             model.AddBehavior(damageStateModel);
         }
         */
+    }
+    
+    /// <summary>
+    /// Further modifies this bloon when you go into a new match.
+    /// Useful for making conditional effects happen based on settings.
+    /// </summary>
+    /// <param name="model">The Base bloon model</param>
+    /// <param name="gameModes">What GameModes are active for the match</param>
+    public virtual void ModifyBloonModelForMatch(BloonModel model, IReadOnlyList<ModModel> gameModes)
+    {
     }
 }
 

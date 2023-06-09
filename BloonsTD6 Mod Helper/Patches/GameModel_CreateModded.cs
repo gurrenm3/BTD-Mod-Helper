@@ -11,6 +11,7 @@ using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
+using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppInterop.Runtime;
@@ -40,7 +41,8 @@ internal class GameModel_CreateModded
         Game.instance.model.searchCache ??= new Dictionary<Type, Dictionary<string, Model>>
         {
             [Il2CppType.Of<TowerModel>()] = new(),
-            [Il2CppType.Of<BloonModel>()] = new()
+            [Il2CppType.Of<BloonModel>()] = new(),
+            [Il2CppType.Of<UpgradeModel>()] = new()
         };
 
         var towerCache = Game.instance.model.searchCache[Il2CppType.Of<TowerModel>()];
@@ -51,6 +53,16 @@ internal class GameModel_CreateModded
                 towerCache[key] = value;
             }
         }
+        
+        var upgradeCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
+        foreach (var (key, value) in ModUpgrade.UpgradeModelCache)
+        {
+            if (!upgradeCache.ContainsKey(key))
+            {
+                upgradeCache[key] = value;
+            }
+        }
+        
 
         var bloonCache = Game.instance.model.searchCache[Il2CppType.Of<BloonModel>()];
         foreach (var (key, value) in ModBloon.BloonModelCache)
@@ -60,7 +72,7 @@ internal class GameModel_CreateModded
                 bloonCache[key] = value;
             }
         }
-
+        
 
         return true;
     }
@@ -103,7 +115,7 @@ internal class GameModel_CreateModded
             modGameMode.ModifyGameModel(result);
         }
 
-        var gameModes = mods.ToList();
+        var gameModes = mods.ToList().AsReadOnly();
         foreach (var towerModel in result.towers)
         {
             if (!ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower)) continue;
@@ -116,6 +128,13 @@ internal class GameModel_CreateModded
             {
                 modUpgrade.ApplyUpgradeForMatch(towerModel, gameModes);
             }
+        }
+
+        foreach (var bloonModel in result.bloons)
+        {
+            if (!ModBloon.Cache.TryGetValue(bloonModel.name, out var modBloon)) continue;
+
+            modBloon.ModifyBloonModelForMatch(bloonModel, gameModes);
         }
 
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));

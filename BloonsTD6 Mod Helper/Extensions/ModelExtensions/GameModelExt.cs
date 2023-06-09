@@ -376,6 +376,7 @@ public static partial class GameModelExt
         model.upgrades = model.upgrades.AddTo(upgradeModel);
         model.upgradesByName?.Add(upgradeModel.name, upgradeModel);
         model.AddChildDependant(upgradeModel);
+        ModUpgrade.UpgradeModelCache[upgradeModel.name] = upgradeModel;
     }
 
     /// <summary>

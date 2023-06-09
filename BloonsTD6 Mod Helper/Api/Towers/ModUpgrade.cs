@@ -15,6 +15,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 public abstract class ModUpgrade : NamedModContent
 {
     internal static readonly Dictionary<string, ModUpgrade> Cache = new();
+    internal static readonly Dictionary<string, UpgradeModel> UpgradeModelCache = new();
 
 
     /// <inheritdoc />
@@ -73,6 +74,7 @@ public abstract class ModUpgrade : NamedModContent
                 Game.instance.model.upgradesByName?.Remove(upgradeModel.name);
                 Game.instance.model.RemoveChildDependant(upgradeModel);
                 Cache.Remove(upgradeModel.name);
+                UpgradeModelCache.Remove(upgradeModel.name);
             });
         }
     }
