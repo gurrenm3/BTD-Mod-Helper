@@ -23,8 +23,7 @@ internal static class TowerInventory_Init
     }
 
     [HarmonyPostfix]
-    private static void Postfix(TowerInventory __instance,
-        System.Collections.Generic.IEnumerable<TowerDetailsModel> allTowersInTheGame)
+    private static void Postfix(TowerInventory __instance, IEnumerable<TowerDetailsModel> allTowersInTheGame)
     {
         ModHelper.PerformHook(mod => mod.OnTowerInventoryInit(__instance, allTowersInTheGame.ToList()));
     }
