@@ -50,10 +50,7 @@ public static partial class Il2CppGenericsExt
     /// <param name="il2CppList"></param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(
-        this Il2CppSystem.Collections.Generic.List<T> il2CppList) where T : Object
-    {
-        return new Il2CppReferenceArray<T>(il2CppList.ToArray());
-    }
+        this Il2CppSystem.Collections.Generic.List<T> il2CppList) where T : Object => new(il2CppList.ToArray());
 
     /// <summary>
     /// Return as LockList
@@ -203,8 +200,5 @@ public static partial class Il2CppGenericsExt
     /// <param name="index"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static T Get<T>(this Il2CppSystem.Collections.Generic.List<T> list, int index)
-    {
-        return list._items[index];
-    }
+    public static T Get<T>(this Il2CppSystem.Collections.Generic.List<T> list, int index) => list._items[index];
 }

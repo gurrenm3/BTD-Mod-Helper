@@ -13,25 +13,17 @@ public static class EntityExt
     /// <summary>
     /// Get the DisplayNode for this Entity
     /// </summary>
-    public static DisplayNode GetDisplayNode(this Entity entity)
-    {
-        return entity.GetDisplayBehavior().node;
-    }
+    public static DisplayNode GetDisplayNode(this Entity entity) => entity.GetDisplayBehavior().node;
 
     /// <summary>
     /// Get the UnityDisplayNode for this Entity
     /// </summary>
-    public static UnityDisplayNode GetUnityDisplayNode(this Entity entity)
-    {
-        return entity.GetDisplayNode().graphic;
-    }
+    public static UnityDisplayNode GetUnityDisplayNode(this Entity entity) => entity.GetDisplayNode().graphic;
+
     /// <summary>
     /// Return the Factory that creates Entities
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public static Factory<Entity> GetFactory(this Entity entity)
-    {
-        return InGame.instance.GetFactory<Entity>();
-    }
+    public static Factory<Entity> GetFactory(this Entity entity) => InGame.instance.GetFactory<Entity>();
 }

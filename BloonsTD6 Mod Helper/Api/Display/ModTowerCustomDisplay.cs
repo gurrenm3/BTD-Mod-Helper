@@ -13,6 +13,9 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
     /// On a ModCustomDisplay, this property does nothing
     /// </summary>
     public sealed override string BaseDisplay => "";
+
+    #region ICustomDisplay Members
+
     /// <inheritdoc />
     public abstract string AssetBundleName { get; }
 
@@ -24,6 +27,8 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
 
     /// <inheritdoc />
     public virtual bool LoadAsync => false;
+
+    #endregion
 
     /// <summary>
     /// Performs alterations to the unity display node when it is created

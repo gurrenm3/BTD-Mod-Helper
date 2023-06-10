@@ -50,6 +50,7 @@ public static class ImageExt
     {
         throw new NotImplementedException();
     }
+
     /// <summary>
     /// Saves an image as a PNG files
     /// Coded in a robust manner that should work for all images, including those with multiple sprites on them being used

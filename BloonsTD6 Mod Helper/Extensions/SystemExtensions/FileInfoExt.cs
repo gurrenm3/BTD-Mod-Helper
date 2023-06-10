@@ -34,10 +34,7 @@ public static class FileInfoExt
     /// </summary>
     /// <param name="fileInfo"></param>
     /// <returns></returns>
-    public static bool IsMelonMod(this FileInfo fileInfo)
-    {
-        return fileInfo.IsNewerMelonMod() || fileInfo.IsOlderMelonMod();
-    }
+    public static bool IsMelonMod(this FileInfo fileInfo) => fileInfo.IsNewerMelonMod() || fileInfo.IsOlderMelonMod();
 
     /// <summary>
     /// Returns whether or not this File has a reference to the newer MelonLoader.dll (For MelonLoader 3.0 and up)

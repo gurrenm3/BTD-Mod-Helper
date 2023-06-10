@@ -25,6 +25,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
     {
     }
+
     public ModHelperPanel InfoPanel => GetDescendent<ModHelperPanel>("InfoPanel");
     public ModHelperButton InfoButton => GetDescendent<ModHelperButton>("Info");
     public ModHelperButton Homepage => GetDescendent<ModHelperButton>("Homepage");

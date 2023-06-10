@@ -44,8 +44,5 @@ internal static class TowerInventory_Patches
     }
 
     [HarmonyPrefix]
-    private static bool Prefix(TowerInventory __instance, TowerModel def)
-    {
-        return __instance.towerMaxes.ContainsKey(def.baseId);
-    }
+    private static bool Prefix(TowerInventory __instance, TowerModel def) => __instance.towerMaxes.ContainsKey(def.baseId);
 }

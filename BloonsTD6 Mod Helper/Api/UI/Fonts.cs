@@ -35,8 +35,5 @@ public static class Fonts
     /// <summary>
     /// Gets an AnimationController by its name, or null if there isn't one with that name
     /// </summary>
-    public static TMP_FontAsset Get(string name)
-    {
-        return FontsByName.TryGetValue(name, out var anim) ? anim : null;
-    }
+    public static TMP_FontAsset Get(string name) => FontsByName.TryGetValue(name, out var anim) ? anim : null;
 }

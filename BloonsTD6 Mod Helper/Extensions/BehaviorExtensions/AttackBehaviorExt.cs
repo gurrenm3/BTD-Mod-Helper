@@ -13,10 +13,8 @@ public static class AttackBehaviorExt
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="attack"></param>
     /// <returns></returns>
-    public static bool HasAttackBehavior<T>(this Attack attack) where T : AttackBehavior
-    {
-        return attack.attackBehaviors.HasItemsOfType<AttackBehavior, T>();
-    }
+    public static bool HasAttackBehavior<T>(this Attack attack) where T : AttackBehavior =>
+        attack.attackBehaviors.HasItemsOfType<AttackBehavior, T>();
 
     /// <summary>
     /// Return the first Behavior of type T
@@ -24,10 +22,8 @@ public static class AttackBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="attack"></param>
     /// <returns></returns>
-    public static T GetAttackBehavior<T>(this Attack attack) where T : AttackBehavior
-    {
-        return attack.attackBehaviors.GetItemOfType<AttackBehavior, T>();
-    }
+    public static T GetAttackBehavior<T>(this Attack attack) where T : AttackBehavior =>
+        attack.attackBehaviors.GetItemOfType<AttackBehavior, T>();
 
     /// <summary>
     /// Return all Behaviors of type T
@@ -35,10 +31,8 @@ public static class AttackBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="attack"></param>
     /// <returns></returns>
-    public static List<T> GetAttackBehaviors<T>(this Attack attack) where T : AttackBehavior
-    {
-        return attack.attackBehaviors.GetItemsOfType<AttackBehavior, T>().ToList();
-    }
+    public static List<T> GetAttackBehaviors<T>(this Attack attack) where T : AttackBehavior =>
+        attack.attackBehaviors.GetItemsOfType<AttackBehavior, T>().ToList();
 
     /// <summary>
     /// Add a Behavior to this

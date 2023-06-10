@@ -7,8 +7,12 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class ToggleEventExt
 {
+    #region Delegates
+
     /// <inheritdoc />
     public delegate void Function(bool value);
+
+    #endregion
 
     /// <summary>
     /// Add a function to a submit event

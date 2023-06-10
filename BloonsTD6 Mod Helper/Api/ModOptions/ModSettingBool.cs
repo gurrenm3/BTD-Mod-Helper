@@ -59,20 +59,14 @@ public class ModSettingBool : ModSetting<bool>
     /// <summary>
     /// Create a new ModSetting bool with the given value as default
     /// </summary>
-    public static implicit operator ModSettingBool(bool value)
-    {
-        return new ModSettingBool(value);
-    }
+    public static implicit operator ModSettingBool(bool value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSettingBool
     /// </summary>
     /// <param name="modSettingBool"></param>
     /// <returns></returns>
-    public static implicit operator bool(ModSettingBool modSettingBool)
-    {
-        return modSettingBool.value;
-    }
+    public static implicit operator bool(ModSettingBool modSettingBool) => modSettingBool.value;
 
     /// <inheritdoc />
     public override void SetValue(object val)

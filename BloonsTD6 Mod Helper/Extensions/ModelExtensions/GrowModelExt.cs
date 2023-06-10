@@ -35,8 +35,5 @@ public static class GrowModelExt
     /// </summary>
     /// <param name="growModel"></param>
     /// <returns></returns>
-    public static string GetRegrowBloon(this GrowModel growModel)
-    {
-        return growModel.growToId;
-    }
+    public static string GetRegrowBloon(this GrowModel growModel) => growModel.growToId;
 }

@@ -86,10 +86,7 @@ public abstract class ModVanillaContent<T> : ModVanillaContent where T : Model
     internal override string TypeName => typeof(T).Name;
 
     /// <inheritdoc />
-    public sealed override IEnumerable<Model> GetAffectedModels(GameModel gameModel)
-    {
-        return GetAffected(gameModel);
-    }
+    public sealed override IEnumerable<Model> GetAffectedModels(GameModel gameModel) => GetAffected(gameModel);
 
     /// <inheritdoc />
     internal override void Apply(Model model)

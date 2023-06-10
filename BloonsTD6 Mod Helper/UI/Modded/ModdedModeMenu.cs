@@ -44,7 +44,10 @@ internal class ModdedModeMenu
         {
             modes = modeScreen.hardModes;
         }
-        else return;
+        else
+        {
+            return;
+        }
 
         var proto = modes.GetComponentInChildrenByName<Transform>("Standard").gameObject;
 
@@ -91,6 +94,8 @@ internal class ModdedModeMenu
         modeScreen.hardModes.TranslateScaled(up);
     }
 
+    #region Nested type: ModeScreen_Open
+
     [HarmonyPatch(typeof(ModeScreen), nameof(ModeScreen.Open))]
     internal static class ModeScreen_Open
     {
@@ -112,4 +117,6 @@ internal class ModdedModeMenu
             MakeScrollable(__instance, maxCount);
         }
     }
+
+    #endregion
 }

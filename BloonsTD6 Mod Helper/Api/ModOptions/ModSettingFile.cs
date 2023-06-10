@@ -25,18 +25,12 @@ public class ModSettingFile : ModSetting<string>
     /// <summary>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
-    public static implicit operator ModSettingFile(string value)
-    {
-        return new ModSettingFile(value);
-    }
+    public static implicit operator ModSettingFile(string value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator string(ModSettingFile modSettingFile)
-    {
-        return modSettingFile.value;
-    }
+    public static implicit operator string(ModSettingFile modSettingFile) => modSettingFile.value;
 
     /// <inheritdoc />
     public override void SetValue(object val)

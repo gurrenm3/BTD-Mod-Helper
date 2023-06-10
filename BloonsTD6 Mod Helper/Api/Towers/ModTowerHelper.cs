@@ -25,6 +25,7 @@ public static class ModTowerHelper
 
     // Cache of TowerModel.name => ModTower 
     internal static readonly Dictionary<string, ModTower> ModTowerCache = new();
+
     internal static List<TowerModel> AddTower(ModTower modTower)
     {
         // Create all tower models

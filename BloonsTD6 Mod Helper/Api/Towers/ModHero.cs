@@ -145,6 +145,7 @@ public abstract class ModHero : ModTower
     /// </summary>
     [Obsolete("No longer required to manually specify")]
     public virtual int Abilities { get; }
+
     /// <inheritdoc />
     public override void Register()
     {
@@ -202,34 +203,28 @@ public abstract class ModHero : ModTower
     /// Gets the font material for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName)
-    {
-        return skinsByName.TryGetValue(NameStyle, out var dataForFont)
+    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
+        skinsByName.TryGetValue(NameStyle, out var dataForFont)
             ? dataForFont.fontMaterial
             : skinsByName[TowerType.Quincy].fontMaterial;
-    }
 
     /// <summary>
     /// Gets the Background Banner for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual PrefabReference GetBackgroundBanner(Dictionary<string, SkinData> skinsByName)
-    {
-        return skinsByName.TryGetValue(GlowStyle, out var dataForFont)
+    public virtual PrefabReference GetBackgroundBanner(Dictionary<string, SkinData> skinsByName) =>
+        skinsByName.TryGetValue(GlowStyle, out var dataForFont)
             ? dataForFont.backgroundBanner
             : skinsByName[TowerType.Quincy].backgroundBanner;
-    }
 
     /// <summary>
     /// Gets the background color for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Color GetBackgroundColor(Dictionary<string, SkinData> skinsByName)
-    {
-        return skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
+    public virtual Color GetBackgroundColor(Dictionary<string, SkinData> skinsByName) =>
+        skinsByName.TryGetValue(BackgroundStyle, out var dataForFont)
             ? dataForFont.backgroundColourTintOverride
             : skinsByName[TowerType.Quincy].backgroundColourTintOverride;
-    }
 
     /// <summary>
     /// Creates the SkinData for the default tower
@@ -288,8 +283,5 @@ public abstract class ModHero : ModTower
     /// </summary>
     /// <param name="heroSet"></param>
     /// <returns></returns>
-    public virtual int GetHeroIndex(List<HeroDetailsModel> heroSet)
-    {
-        return heroSet.Count;
-    }
+    public virtual int GetHeroIndex(List<HeroDetailsModel> heroSet) => heroSet.Count;
 }

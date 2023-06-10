@@ -28,18 +28,12 @@ public class ModSettingEnum<T> : ModSetting<T> where T : Enum
     /// <summary>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
-    public static implicit operator ModSettingEnum<T>(T value)
-    {
-        return new ModSettingEnum<T>(value);
-    }
+    public static implicit operator ModSettingEnum<T>(T value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator T(ModSettingEnum<T> modSettingEnum)
-    {
-        return modSettingEnum.value;
-    }
+    public static implicit operator T(ModSettingEnum<T> modSettingEnum) => modSettingEnum.value;
 
     /// <inheritdoc />
     internal override ModHelperOption CreateComponent()

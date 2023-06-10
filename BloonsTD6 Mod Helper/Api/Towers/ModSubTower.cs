@@ -13,8 +13,10 @@ public abstract class ModSubTower : ModTower
 
     /// <inheritdoc />
     public sealed override int TopPathUpgrades => 0;
+
     /// <inheritdoc />
     public sealed override int MiddlePathUpgrades => 0;
+
     /// <inheritdoc />
     public sealed override int BottomPathUpgrades => 0;
 

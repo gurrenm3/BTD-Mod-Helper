@@ -7,10 +7,7 @@ internal class Bloon_Initialize
 {
 
     [HarmonyPrefix]
-    internal static bool Prefix(Bloon __instance, Model modelToUse)
-    {
-        return true;
-    }
+    internal static bool Prefix(Bloon __instance, Model modelToUse) => true;
 
     [HarmonyPostfix]
     internal static void Postfix(Bloon __instance, Model modelToUse)

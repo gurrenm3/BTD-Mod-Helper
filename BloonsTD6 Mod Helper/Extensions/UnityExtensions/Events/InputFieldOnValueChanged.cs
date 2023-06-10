@@ -7,8 +7,12 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class InputFieldOnValueChanged
 {
+    #region Delegates
+
     /// <inheritdoc />
     public delegate void Function(string value);
+
+    #endregion
 
     /// <summary>
     /// Adds a listener to a ValueChangedEvent

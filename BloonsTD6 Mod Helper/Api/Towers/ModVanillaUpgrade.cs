@@ -22,6 +22,7 @@ public abstract class ModVanillaUpgrade : ModVanillaContent<TowerModel>
     /// Use UpgradeType.[upgrade]
     /// </summary>
     public abstract string UpgradeId { get; }
+
     /// <inheritdoc />
     public override void Register()
     {

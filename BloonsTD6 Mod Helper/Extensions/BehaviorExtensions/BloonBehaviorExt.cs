@@ -13,10 +13,8 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static bool HasBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior
-    {
-        return bloon.bloonBehaviors.HasItemsOfType<BloonBehavior, T>();
-    }
+    public static bool HasBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior =>
+        bloon.bloonBehaviors.HasItemsOfType<BloonBehavior, T>();
 
     /// <summary>
     /// Return the first Behavior of type T
@@ -24,10 +22,8 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static T GetBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior
-    {
-        return bloon.bloonBehaviors.GetItemOfType<BloonBehavior, T>();
-    }
+    public static T GetBloonBehavior<T>(this Bloon bloon) where T : BloonBehavior =>
+        bloon.bloonBehaviors.GetItemOfType<BloonBehavior, T>();
 
     /// <summary>
     /// Return all Behaviors of type T
@@ -35,10 +31,8 @@ public static class BloonBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static List<T> GetBloonBehaviors<T>(this Bloon bloon) where T : BloonBehavior
-    {
-        return bloon.bloonBehaviors.GetItemsOfType<BloonBehavior, T>();
-    }
+    public static List<T> GetBloonBehaviors<T>(this Bloon bloon) where T : BloonBehavior =>
+        bloon.bloonBehaviors.GetItemsOfType<BloonBehavior, T>();
 
     /// <summary>
     /// Add a Behavior to this

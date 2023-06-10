@@ -46,6 +46,7 @@ internal class Notification
     private float nextX;
     public int slot;
     public Text title;
+
     public Notification(int slot, NkhMsg msg)
     {
         assetBundle ??= ModContent.GetBundle<MelonMain>("ingame_popup");
@@ -123,6 +124,7 @@ internal class Notification
     {
         Update();
     }
+
     public void Update()
     {
         if (Time.time < nextMsgRunTime)
@@ -137,6 +139,7 @@ internal class Notification
         if (doHideMsg)
             HideMsg();
     }
+
     private void ShowMsg()
     {
         if (Time.time < nextMsgRunTime)
@@ -213,14 +216,19 @@ internal class Notification
 
 
     public static event EventHandler<NotificationEventArgs> UpdateEvent;
+
     public void OnUpdate(NotificationEventArgs e)
     {
         UpdateEvent?.Invoke(null, e);
     }
 
+    #region Nested type: NotificationEventArgs
+
     public class NotificationEventArgs : EventArgs
     {
     }
+
+    #endregion
 }
 
 internal static class NotificationMgr
@@ -228,6 +236,7 @@ internal static class NotificationMgr
     private const int maxMessagesAtOnce = 5;
     public static readonly List<Notification> Notifications = new();
     public static readonly Queue<NkhMsg> NotificationQueue = new();
+
     public static void AddNotification(NkhMsg msg)
     {
         var globalScene = SceneManager.GetSceneByName("Global");

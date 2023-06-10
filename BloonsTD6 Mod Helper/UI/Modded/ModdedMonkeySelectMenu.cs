@@ -47,11 +47,8 @@ internal class ModdedMonkeySelectMenu
     private static int CurrentPage => (TotalSpotses.Values.Take(menu.currentSet).Sum() + Offset) / 8;
 
 
-    private static TowerSet FromString(string s)
-    {
-        return Enum.TryParse(s, out TowerSet towerSet) ? towerSet :
-            ModTowerSet.Cache.TryGetValue(s, out var modTowerSet) ? modTowerSet.Set : TowerSet.None;
-    }
+    private static TowerSet FromString(string s) => Enum.TryParse(s, out TowerSet towerSet) ? towerSet :
+        ModTowerSet.Cache.TryGetValue(s, out var modTowerSet) ? modTowerSet.Set : TowerSet.None;
 
     /// <summary>
     /// Update the currentTowerSet tracker, and change the state if need be
@@ -304,6 +301,32 @@ internal class ModdedMonkeySelectMenu
         customMonkeyGroupButtons.Clear();
     }
 
+    #region Nested type: MainMenu_Awake
+
+    [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Start))]
+    internal class MainMenu_Awake
+    {
+        [HarmonyPostfix]
+        internal static void Postfix(MainMenu __instance)
+        {
+            ResetGameModel();
+        }
+    }
+
+    #endregion
+    #region Nested type: MonkeyGroupButton_Initialise
+
+    [HarmonyPatch(typeof(MonkeyGroupButton), nameof(MonkeyGroupButton.Initialise))]
+    internal class MonkeyGroupButton_Initialise
+    {
+        [HarmonyPrefix]
+        internal static bool Prefix(MonkeyGroupButton __instance) =>
+            // Don't re-initialize the MonkeyGroupButtons while we're reloading
+            !reOpening;
+    }
+
+    #endregion
+    #region Nested type: MonkeySelectMenu_Open
 
     [HarmonyPatch(typeof(MonkeySelectMenu), nameof(MonkeySelectMenu.Open))]
     internal class MonkeySelectMenu_Open
@@ -353,6 +376,9 @@ internal class ModdedMonkeySelectMenu
             UpdatePips();
         }
     }
+
+    #endregion
+    #region Nested type: MonkeySelectMenu_SwitchTowerSet
 
     /// <summary>
     /// Possible inputs:
@@ -422,24 +448,5 @@ internal class ModdedMonkeySelectMenu
         }
     }
 
-    [HarmonyPatch(typeof(MonkeyGroupButton), nameof(MonkeyGroupButton.Initialise))]
-    internal class MonkeyGroupButton_Initialise
-    {
-        [HarmonyPrefix]
-        internal static bool Prefix(MonkeyGroupButton __instance)
-        {
-            // Don't re-initialize the MonkeyGroupButtons while we're reloading
-            return !reOpening;
-        }
-    }
-
-    [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Start))]
-    internal class MainMenu_Awake
-    {
-        [HarmonyPostfix]
-        internal static void Postfix(MainMenu __instance)
-        {
-            ResetGameModel();
-        }
-    }
+    #endregion
 }

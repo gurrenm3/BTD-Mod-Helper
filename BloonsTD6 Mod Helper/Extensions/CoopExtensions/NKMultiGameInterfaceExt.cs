@@ -82,10 +82,8 @@ public static class NKMultiGameInterfaceExt
     /// <typeparam name="T">Type to convert bytes to</typeparam>
     /// <param name="nkGI"></param>
     /// <param name="messageBytes">messageBytes</param>
-    public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Il2CppStructArray<byte> messageBytes)
-    {
-        return MessageUtils.ReadMessage<T>(messageBytes);
-    }
+    public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Il2CppStructArray<byte> messageBytes) =>
+        MessageUtils.ReadMessage<T>(messageBytes);
 
     /// <summary>
     /// Convert a Message's bytes to an object of type T
@@ -93,10 +91,8 @@ public static class NKMultiGameInterfaceExt
     /// <typeparam name="T">Type to convert bytes to</typeparam>
     /// <param name="nkGI"></param>
     /// <param name="message">Message you want to read</param>
-    public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Message message)
-    {
-        return MessageUtils.ReadMessage<T>(message.GetBytes());
-    }
+    public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Message message) =>
+        MessageUtils.ReadMessage<T>(message.GetBytes());
 
     /*/// <summary>
     /// Used to read messages from BTD6 InGameChat Mod. If Message is a ChatMessage, will be converted to a Chat_Message object

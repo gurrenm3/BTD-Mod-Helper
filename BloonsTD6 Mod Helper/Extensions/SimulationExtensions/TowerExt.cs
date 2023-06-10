@@ -29,19 +29,13 @@ public static class TowerExt
     /// Return the DisplayNode for this Tower
     /// </summary>
     /// <returns></returns>
-    public static DisplayNode GetDisplayNode(this Tower tower)
-    {
-        return tower.Node;
-    }
+    public static DisplayNode GetDisplayNode(this Tower tower) => tower.Node;
 
     /// <summary>
     /// Return the UnityDisplayNode for this Tower. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <returns></returns>
-    public static UnityDisplayNode GetUnityDisplayNode(this Tower tower)
-    {
-        return tower.GetDisplayNode()?.graphic;
-    }
+    public static UnityDisplayNode GetUnityDisplayNode(this Tower tower) => tower.GetDisplayNode()?.graphic;
 
     /// <summary>
     /// Sell this tower
@@ -65,10 +59,7 @@ public static class TowerExt
     /// </summary>
     /// <param name="tower"></param>
     /// <returns></returns>
-    public static Factory<Tower> GetFactory(this Tower tower)
-    {
-        return InGame.instance.GetFactory<Tower>();
-    }
+    public static Factory<Tower> GetFactory(this Tower tower) => InGame.instance.GetFactory<Tower>();
 
     /// <summary>
     /// Gets all other towers that are in range of this tower not including itself
@@ -83,12 +74,11 @@ public static class TowerExt
             .ToList()
             .Where(t => t.Id != tower.Id);
     }
+
     /// <summary>
     /// Get the MonkeyAnimationController for this Tower. Needed to modify 3D models
     /// </summary>
     /// <returns></returns>
-    public static MonkeyAnimationController GetMonkeyAnimController(this Tower tower)
-    {
-        return tower.GetUnityDisplayNode()?.monkeyAnimationController;
-    }
+    public static MonkeyAnimationController GetMonkeyAnimController(this Tower tower) =>
+        tower.GetUnityDisplayNode()?.monkeyAnimationController;
 }

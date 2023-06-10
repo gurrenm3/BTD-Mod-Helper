@@ -12,8 +12,5 @@ public static class LocalizationManagerExt
     /// </summary>
     /// <param name="localization"></param>
     /// <returns></returns>
-    public static Dictionary<string, string> GetTextTable(this LocalizationManager localization)
-    {
-        return localization.textTable;
-    }
+    public static Dictionary<string, string> GetTextTable(this LocalizationManager localization) => localization.textTable;
 }

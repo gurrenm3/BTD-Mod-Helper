@@ -179,10 +179,7 @@ public abstract class ModRoundSet : NamedModContent
     /// <br />
     /// For no hint, return null.
     /// </summary>
-    public virtual string GetHint(int round)
-    {
-        return null;
-    }
+    public virtual string GetHint(int round) => null;
 
     /// <summary>
     /// Modifies the GameModel that's used for matches played with this round set
@@ -193,10 +190,7 @@ public abstract class ModRoundSet : NamedModContent
 
     }
 
-    internal string HintKey(int round)
-    {
-        return $"{Id} Hint {round}";
-    }
+    internal string HintKey(int round) => $"{Id} Hint {round}";
 
     internal RoundSetModel GetDefaultRoundSetModel()
     {

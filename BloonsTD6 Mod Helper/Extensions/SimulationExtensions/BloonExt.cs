@@ -20,20 +20,14 @@ public static class BloonExt
     /// Return the DisplayNode for this bloon
     /// </summary>
     /// <returns></returns>
-    public static DisplayNode GetDisplayNode(this Bloon bloon)
-    {
-        return bloon.Node;
-    }
+    public static DisplayNode GetDisplayNode(this Bloon bloon) => bloon.Node;
 
     /// <summary>
     /// Return the UnityDisplayNode for this bloon. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static UnityDisplayNode GetUnityDisplayNode(this Bloon bloon)
-    {
-        return bloon.GetDisplayNode()?.graphic;
-    }
+    public static UnityDisplayNode GetUnityDisplayNode(this Bloon bloon) => bloon.GetDisplayNode()?.graphic;
 
     /// <summary>
     /// Creates a new BloonToSimulation based off of this Bloon and stores it for possible later use. It will automatically
@@ -58,20 +52,15 @@ public static class BloonExt
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static ObjectId GetId(this Bloon bloon)
-    {
-        return bloon.Id;
-    }
+    public static ObjectId GetId(this Bloon bloon) => bloon.Id;
 
     /// <summary>
     /// Return the Factory that creates Bloons
     /// </summary>
     /// <param name="bloon"></param>
     /// <returns></returns>
-    public static Factory<Bloon> GetFactory(this Bloon bloon)
-    {
-        return InGame.instance.GetFactory<Bloon>();
-    }
+    public static Factory<Bloon> GetFactory(this Bloon bloon) => InGame.instance.GetFactory<Bloon>();
+
     /// <summary>
     /// Return the existing BloonToSimulation for this specific Bloon.
     /// </summary>
@@ -87,10 +76,8 @@ public static class BloonExt
     /// <param name="bloon"></param>
     /// <param name="projectile"></param>
     /// <returns></returns>
-    public static bool WillPopBloon(this Bloon bloon, Projectile projectile)
-    {
-        return bloon.WillPopBloon(projectile.projectileModel.GetDamageModel());
-    }
+    public static bool WillPopBloon(this Bloon bloon, Projectile projectile) =>
+        bloon.WillPopBloon(projectile.projectileModel.GetDamageModel());
 
     /// <summary>
     /// Returns whether or not the bloon was popped rather than leaked.

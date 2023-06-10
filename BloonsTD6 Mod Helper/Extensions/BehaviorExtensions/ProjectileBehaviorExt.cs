@@ -10,26 +10,20 @@ public static class ProjectileBehaviorExt
     /// <summary>
     /// Check if this has a specific Behavior
     /// </summary>
-    public static bool HasProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior
-    {
-        return projectile.projectileBehaviors.HasItemsOfType<ProjectileBehavior, T>();
-    }
+    public static bool HasProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior =>
+        projectile.projectileBehaviors.HasItemsOfType<ProjectileBehavior, T>();
 
     /// <summary>
     /// Return the first Behavior of type T
     /// </summary>
-    public static T GetProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior
-    {
-        return projectile.projectileBehaviors.GetItemOfType<ProjectileBehavior, T>();
-    }
+    public static T GetProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior =>
+        projectile.projectileBehaviors.GetItemOfType<ProjectileBehavior, T>();
 
     /// <summary>
     /// Return all Behaviors of type T
     /// </summary>
-    public static List<T> GetProjectileBehaviors<T>(this Projectile projectile) where T : ProjectileBehavior
-    {
-        return projectile.projectileBehaviors.GetItemsOfType<ProjectileBehavior, T>();
-    }
+    public static List<T> GetProjectileBehaviors<T>(this Projectile projectile) where T : ProjectileBehavior =>
+        projectile.projectileBehaviors.GetItemsOfType<ProjectileBehavior, T>();
 
     /// <summary>
     /// Add a Behavior to this

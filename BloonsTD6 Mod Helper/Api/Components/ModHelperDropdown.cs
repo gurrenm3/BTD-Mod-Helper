@@ -18,6 +18,7 @@ public class ModHelperDropdown : ModHelperComponent
     public ModHelperDropdown(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The Image being displayed
     /// </summary>

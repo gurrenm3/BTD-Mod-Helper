@@ -42,10 +42,7 @@ public static class Il2CppReferenceArray
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static bool Any<T>(this Il2CppReferenceArray<T> source) where T : Object
-    {
-        return source.Count > 0;
-    }
+    public static bool Any<T>(this Il2CppReferenceArray<T> source) where T : Object => source.Count > 0;
 
     /// <summary>
     /// Return whether or not there are any elements in this that match the predicate

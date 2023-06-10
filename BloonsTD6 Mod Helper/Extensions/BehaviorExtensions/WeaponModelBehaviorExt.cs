@@ -15,10 +15,7 @@ public static class WeaponModelBehaviorExt
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static bool HasBehavior<T>(this WeaponModel model) where T : Model
-    {
-        return ModelBehaviorExt.HasBehavior<T>(model);
-    }
+    public static bool HasBehavior<T>(this WeaponModel model) where T : Model => ModelBehaviorExt.HasBehavior<T>(model);
 
     /// <summary>
     /// Return the first Behavior of type T
@@ -26,10 +23,7 @@ public static class WeaponModelBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static T GetBehavior<T>(this WeaponModel model) where T : Model
-    {
-        return ModelBehaviorExt.GetBehavior<T>(model);
-    }
+    public static T GetBehavior<T>(this WeaponModel model) where T : Model => ModelBehaviorExt.GetBehavior<T>(model);
 
     /// <summary>
     /// Return all Behaviors of type T
@@ -37,10 +31,8 @@ public static class WeaponModelBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static List<T> GetBehaviors<T>(this WeaponModel model) where T : Model
-    {
-        return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
-    }
+    public static List<T> GetBehaviors<T>(this WeaponModel model) where T : Model =>
+        ModelBehaviorExt.GetBehaviors<T>(model).ToList();
 
     /// <summary>
     /// Add a Behavior to this

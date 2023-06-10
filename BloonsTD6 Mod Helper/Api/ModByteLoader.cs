@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppInterop.Runtime;
 using Il2CppSystem;
 using Il2CppSystem.Threading.Tasks;
 using Action = System.Action;
+using Array = System.Array;
 using Exception = System.Exception;
 namespace BTD_Mod_Helper.Api;
 
@@ -124,7 +124,7 @@ public abstract class ModByteLoader : ModContent
     /// <returns></returns>
     public sealed override IEnumerable<ModContent> Load()
     {
-        var streamName = System.Array.Find(mod.GetAssembly().GetManifestResourceNames(), s => s.EndsWith(BytesFileName));
+        var streamName = Array.Find(mod.GetAssembly().GetManifestResourceNames(), s => s.EndsWith(BytesFileName));
         if (streamName == null)
         {
             ModHelper.Warning($"Couldn't find bytes file {BytesFileName} in Assembly {mod.GetModName()}. " +
@@ -228,6 +228,7 @@ public abstract class ModByteLoader : ModContent
         using var writer = new StreamWriter(convertedLoader);
         writer.Write(loader);
     }
+
     /// <summary>
     /// Generates a ModByteLoader class and corresponding .bytes file within the BloonsTD6 directory
     /// </summary>

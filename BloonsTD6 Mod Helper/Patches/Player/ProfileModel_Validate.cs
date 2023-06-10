@@ -17,7 +17,9 @@ internal class ProfileModel_Validate
     [HarmonyPostfix]
     internal static void Postfix(ProfileModel __instance)
     {
-        foreach (var modTowerId in ModContent.GetContent<ModTower>().Where(modTower => modTower is not ModHero && !__instance.unlockedTowers.Contains(modTower.Id)).Select(modTower => modTower.Id))
+        foreach (var modTowerId in ModContent.GetContent<ModTower>()
+                     .Where(modTower => modTower is not ModHero && !__instance.unlockedTowers.Contains(modTower.Id))
+                     .Select(modTower => modTower.Id))
         {
             __instance.unlockedTowers.Add(modTowerId);
             __instance.acquiredUpgrades.Add(modTowerId);

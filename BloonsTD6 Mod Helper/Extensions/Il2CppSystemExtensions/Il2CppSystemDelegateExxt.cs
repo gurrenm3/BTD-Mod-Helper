@@ -10,8 +10,5 @@ public static class Il2CppSystemDelegateExxt
     /// Create a new and seperate copy of this object. Same as using:  .Clone().Cast();
     /// </summary>
     /// <typeparam name="T">Type of object you want to cast to when duplicating. Done automatically</typeparam>
-    public static T Duplicate<T>(this Delegate del) where T : Il2CppObjectBase
-    {
-        return del.Clone().Cast<T>();
-    }
+    public static T Duplicate<T>(this Delegate del) where T : Il2CppObjectBase => del.Clone().Cast<T>();
 }

@@ -131,16 +131,12 @@ internal class ResourceHandler
         return CreateTexture(id);
     }
 
-    internal static byte[] GetTextureBytes(string guid)
-    {
-        return Resources.TryGetValue(guid, out var bytes) ? bytes : Array.Empty<byte>();
-    }
+    internal static byte[] GetTextureBytes(string guid) =>
+        Resources.TryGetValue(guid, out var bytes) ? bytes : Array.Empty<byte>();
 
-    internal static Sprite CreateSprite(Texture2D texture, float pixelsPerUnit = 10.8f)
-    {
-        return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
-            new Vector2(0.5f, 0.5f), pixelsPerUnit);
-    }
+    internal static Sprite CreateSprite(Texture2D texture, float pixelsPerUnit = 10.8f) => Sprite.Create(texture,
+        new Rect(0, 0, texture.width, texture.height),
+        new Vector2(0.5f, 0.5f), pixelsPerUnit);
 
     internal static Sprite CreateSprite(string id, float pixelsPerUnit = 10.8f)
     {

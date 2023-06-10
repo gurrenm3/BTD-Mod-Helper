@@ -26,6 +26,7 @@ internal partial class MelonMain : BloonsTD6Mod
 {
 
     private bool scheduledInGamePatch;
+
     public override void OnInitialize()
     {
         ModContentInstances.AddInstance(GetType(), this);

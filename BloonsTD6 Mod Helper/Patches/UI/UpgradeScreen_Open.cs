@@ -19,8 +19,5 @@ internal class UpgradeScreen_Open
     }
 
     [HarmonyPrefix]
-    internal static bool Prefix(UpgradeScreen __instance)
-    {
-        return false;
-    }
+    internal static bool Prefix(UpgradeScreen __instance) => false;
 }

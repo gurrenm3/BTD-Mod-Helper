@@ -18,6 +18,7 @@ internal class ModsMenuMod : ModHelperComponent
     public ModsMenuMod(IntPtr ptr) : base(ptr)
     {
     }
+
     public ModHelperButton MainButton => GetDescendent<ModHelperButton>("MainButton");
     public ModHelperImage Icon => GetDescendent<ModHelperImage>("Icon");
     public ModHelperText Name => GetDescendent<ModHelperText>("Name");

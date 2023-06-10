@@ -37,20 +37,15 @@ public static class ModModelExt
     /// Return the first Mutator of type T, or null if there isn't one
     /// </summary>
     /// <typeparam name="T">The Mutator you want</typeparam>
-    public static T GetMutator<T>(this ModModel model) where T : MutatorModModel
-    {
-        return model.GetMutators<T>()?.FirstOrDefault();
-    }
+    public static T GetMutator<T>(this ModModel model) where T : MutatorModModel => model.GetMutators<T>()?.FirstOrDefault();
 
 
     /// <summary>
     /// Return the index'th Mutator of type T, or null
     /// </summary>
     /// <typeparam name="T">The Mutator you want</typeparam>
-    public static T GetMutator<T>(this ModModel model, int index) where T : MutatorModModel
-    {
-        return model.GetMutators<T>()?.Skip(index).FirstOrDefault();
-    }
+    public static T GetMutator<T>(this ModModel model, int index) where T : MutatorModModel =>
+        model.GetMutators<T>()?.Skip(index).FirstOrDefault();
 
     /// <summary>
     /// Return the first Mutator of type T whose name contains the given string, or null

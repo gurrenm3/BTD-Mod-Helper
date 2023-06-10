@@ -35,6 +35,7 @@ public static class RoundSetChanger
     private static List<ModRoundSet> modRoundSets;
 
     private static ModHelperPanel invisibleCancel;
+
     /// <summary>
     /// The round set override currently chosen, or null
     /// </summary>
@@ -251,6 +252,7 @@ public static class RoundSetChanger
         {
             var gameMenu = MenuManager.instance.GetCurrentMenu();
             if (gameMenu == null) return;
+
             var blockClicks = gameMenu.transform.GetComponentFromChildrenByName<RectTransform>("BlockClicks");
             if (blockClicks != null && !blockClicks.gameObject.HasComponent<Button>())
             {

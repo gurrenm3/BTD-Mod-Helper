@@ -20,10 +20,7 @@ public static class FileIOHelper
     /// <summary>
     /// Same as the original FileIOUtil.GetSandboxPath(), INCLUDES A SLASH AT THE END
     /// </summary>
-    public static string GetSandboxPath()
-    {
-        return sandboxRoot;
-    }
+    public static string GetSandboxPath() => sandboxRoot;
 
     /// <summary>
     /// Saves an il2cpp object directly to the sandbox path like the original FileIOUtil.SaveObject

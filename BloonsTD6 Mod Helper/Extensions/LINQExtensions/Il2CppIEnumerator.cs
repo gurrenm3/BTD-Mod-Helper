@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Il2CppSystem;
 using Il2CppSystem.Collections;
+using ArgumentNullException = System.ArgumentNullException;
 using Exception = System.Exception;
-using NullReferenceException = System.NullReferenceException;
-using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -92,6 +91,7 @@ public static class Il2CppIEnumerator
         {
             if (predicate(source.Current.Cast<T>()))
                 return i;
+
             i++;
         }
 

@@ -11,6 +11,7 @@ public abstract class ModLoadTask : NamedModContent
     private IEnumerator iEnumerator;
 
     private float progress;
+
     /// <inheritdoc />
     public sealed override string DisplayNamePlural => base.DisplayNamePlural;
 

@@ -14,6 +14,7 @@ public class ModHelperImage : ModHelperComponent
     public ModHelperImage(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The Image being displayed
     /// </summary>

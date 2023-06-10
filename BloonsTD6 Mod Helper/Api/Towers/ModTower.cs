@@ -58,6 +58,7 @@ public abstract class ModTower : NamedModContent
     protected ModTower()
     {
     }
+
     /// <summary>
     /// ModTowers register third
     /// </summary>
@@ -69,6 +70,7 @@ public abstract class ModTower : NamedModContent
 
     internal virtual string[] DefaultMods =>
         new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
+
     internal virtual ModTowerSet ModTowerSet => null;
     internal virtual int UpgradePaths => 3;
 
@@ -158,12 +160,14 @@ public abstract class ModTower : NamedModContent
     /// How many of this tower you can buy at once during a game. By default -1 for no limit.
     /// </summary>
     public virtual int ShopTowerCount => -1;
+
     /// <summary>
     /// Defines whether / how this ModTower has a Paragon
     /// </summary>
     public virtual ParagonMode ParagonMode => ParagonMode.None;
 
     internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
+
     internal virtual bool ShouldCreateParagon =>
         paragonUpgrade != null &&
         TopPathUpgrades == 5 &&
@@ -298,10 +302,7 @@ public abstract class ModTower : NamedModContent
     /// <seealso cref="Use2DModel" />
     /// <seealso cref="Get2DTexture(int[])" />
     /// </summary>
-    public virtual float Get2DScale(int[] tiers)
-    {
-        return 1f;
-    }
+    public virtual float Get2DScale(int[] tiers) => 1f;
 
     /// <summary>
     /// Gets the portrait reference this tower should use for the given tiers
@@ -434,10 +435,8 @@ public abstract class ModTower : NamedModContent
     /// <param name="modUpgrade">The upgrade</param>
     /// <param name="newTiers">The new desired tiers of the tower</param>
     /// <returns></returns>
-    public virtual UpgradePathModel GetUpgradePathModel(ModUpgrade modUpgrade, int[] newTiers)
-    {
-        return new UpgradePathModel(modUpgrade.Id, TowerId(newTiers));
-    }
+    public virtual UpgradePathModel GetUpgradePathModel(ModUpgrade modUpgrade, int[] newTiers) =>
+        new(modUpgrade.Id, TowerId(newTiers));
 
 
     /// <summary>
@@ -447,10 +446,7 @@ public abstract class ModTower : NamedModContent
     /// <param name="path">What path this is for</param>
     /// <param name="defaultMax">The default maximum</param>
     /// <returns>The new maximum amount of upgrade pips, or null for no change</returns>
-    public virtual int? MaxUpgradePips(TowerToSimulation tower, int path, int defaultMax)
-    {
-        return null;
-    }
+    public virtual int? MaxUpgradePips(TowerToSimulation tower, int path, int defaultMax) => null;
 
     /// <summary>
     /// Allows you to override whether an UpgradePath should be closed or not for a tower
@@ -459,10 +455,7 @@ public abstract class ModTower : NamedModContent
     /// <param name="path">What path this is for</param>
     /// <param name="defaultClosed">Whether it'd be naturally closed or not</param>
     /// <returns>Whether the upgrade path should be closed, or null for no change</returns>
-    public virtual bool? IsUpgradePathClosed(TowerToSimulation tower, int path, bool defaultClosed)
-    {
-        return null;
-    }
+    public virtual bool? IsUpgradePathClosed(TowerToSimulation tower, int path, bool defaultClosed) => null;
 
     /// <summary>
     /// Allows you to change the base TowerModel your tower will use at different tiers. Note that you'd need to be
@@ -478,12 +471,9 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     /// <param name="tiers">Length 3 array of Top/Mid/Bot tiers</param>
     /// <returns>The base TowerModel to use</returns>
-    public virtual TowerModel GetBaseTowerModel(int[] tiers)
-    {
-        return !string.IsNullOrEmpty(BaseTower)
-            ? BaseTowerModel.MakeCopy(Id)
-            : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
-    }
+    public virtual TowerModel GetBaseTowerModel(int[] tiers) => !string.IsNullOrEmpty(BaseTower)
+        ? BaseTowerModel.MakeCopy(Id)
+        : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
 }
 
 /// <summary>

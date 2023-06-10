@@ -28,18 +28,13 @@ public static class TowerModelExt
     /// </summary>
     /// <param name="towerModel"></param>
     /// <returns></returns>
-    public static string GetBaseId(this TowerModel towerModel)
-    {
-        return towerModel.baseId;
-    }
+    public static string GetBaseId(this TowerModel towerModel) => towerModel.baseId;
 
     /// <summary>
     /// Has player already unlocked this TowerModel
     /// </summary>
-    public static bool? IsTowerUnlocked(this TowerModel towerModel)
-    {
-        return Game.instance?.GetBtd6Player()?.HasUnlockedTower(towerModel.GetBaseId());
-    }
+    public static bool? IsTowerUnlocked(this TowerModel towerModel) =>
+        Game.instance?.GetBtd6Player()?.HasUnlockedTower(towerModel.GetBaseId());
 
     /// <summary>
     /// Return all TowerToSimulations with this TowerModel
@@ -55,44 +50,31 @@ public static class TowerModelExt
     /// <summary>
     /// Return all AbilityModel behaviors from this tower, if it has any
     /// </summary>
-    public static List<AbilityModel> GetAbilities(this TowerModel towerModel)
-    {
-        return towerModel.GetBehaviors<AbilityModel>().ToList();
-    }
+    public static List<AbilityModel> GetAbilities(this TowerModel towerModel) =>
+        towerModel.GetBehaviors<AbilityModel>().ToList();
 
     /// <summary>
     /// Return the first ability on the tower
     /// </summary>
-    public static AbilityModel GetAbility(this TowerModel towerModel)
-    {
-        return towerModel.GetAbilities().FirstOrDefault();
-    }
+    public static AbilityModel GetAbility(this TowerModel towerModel) => towerModel.GetAbilities().FirstOrDefault();
 
     /// <summary>
     /// Return a specific Ability of the tower.
     /// </summary>
     /// <param name="towerModel">the TowerModel</param>
     /// <param name="index">Index of the ability you want.</param>
-    public static AbilityModel GetAbility(this TowerModel towerModel, int index)
-    {
-        return towerModel.GetAbilities()[index];
-    }
+    public static AbilityModel GetAbility(this TowerModel towerModel, int index) => towerModel.GetAbilities()[index];
 
     /// <summary>
     /// Return all AttackModel behaviors for this TowerModel
     /// </summary>
-    public static List<AttackModel> GetAttackModels(this TowerModel towerModel)
-    {
-        return towerModel.GetBehaviors<AttackModel>().ToList();
-    }
+    public static List<AttackModel> GetAttackModels(this TowerModel towerModel) =>
+        towerModel.GetBehaviors<AttackModel>().ToList();
 
     /// <summary>
     /// Return the first AttackModel from this TowerModel, if it has one
     /// </summary>
-    public static AttackModel GetAttackModel(this TowerModel towerModel)
-    {
-        return towerModel.GetAttackModels().FirstOrDefault();
-    }
+    public static AttackModel GetAttackModel(this TowerModel towerModel) => towerModel.GetAttackModels().FirstOrDefault();
 
     /// <summary>
     /// Return the first AttackModel whose name contains the given string
@@ -107,10 +89,7 @@ public static class TowerModelExt
     /// </summary>
     /// <param name="towerModel">The TowerModel</param>
     /// <param name="index">Index of the AttackModel you want</param>
-    public static AttackModel GetAttackModel(this TowerModel towerModel, int index)
-    {
-        return towerModel.GetAttackModels()[index];
-    }
+    public static AttackModel GetAttackModel(this TowerModel towerModel, int index) => towerModel.GetAttackModels()[index];
 
     /// <summary>
     /// Recursively get every WeaponModels this TowerModel has
@@ -138,18 +117,12 @@ public static class TowerModelExt
     /// </summary>
     /// <param name="towerModel">The TowerModel</param>
     /// <param name="index">Index of WeaponModel that you want</param>
-    public static WeaponModel GetWeapon(this TowerModel towerModel, int index)
-    {
-        return towerModel.GetWeapons()[index];
-    }
+    public static WeaponModel GetWeapon(this TowerModel towerModel, int index) => towerModel.GetWeapons()[index];
 
     /// <summary>
     /// Return the first WeaponModel this TowerModel has, if it has one.
     /// </summary>
-    public static WeaponModel GetWeapon(this TowerModel towerModel)
-    {
-        return towerModel.GetWeapons().FirstOrDefault();
-    }
+    public static WeaponModel GetWeapon(this TowerModel towerModel) => towerModel.GetWeapons().FirstOrDefault();
 
     /// <summary>
     /// Sell every tower that uses this TowerModel
@@ -166,10 +139,7 @@ public static class TowerModelExt
     /// </summary>
     /// <param name="towerModel"></param>
     /// <returns></returns>
-    public static string GetTowerId(this TowerModel towerModel)
-    {
-        return towerModel.name;
-    }
+    public static string GetTowerId(this TowerModel towerModel) => towerModel.name;
 
     /// <summary>
     /// Duplicate this TowerModel with a unique name. Very useful for making custom TowerModels
@@ -199,10 +169,8 @@ public static class TowerModelExt
     /// If there is no associated ModTower, returns null
     /// </summary>
     /// <returns></returns>
-    public static ModTower GetModTower(this TowerModel towerModel)
-    {
-        return ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
-    }
+    public static ModTower GetModTower(this TowerModel towerModel) =>
+        ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
 
     /// <summary>
     /// Gets the specific ModTower associated with this TowerModel
@@ -210,10 +178,7 @@ public static class TowerModelExt
     /// If there is no associated ModTower, returns null
     /// </summary>
     /// <returns></returns>
-    public static T GetModTower<T>(this TowerModel towerModel) where T : ModTower
-    {
-        return (T) GetModTower(towerModel);
-    }
+    public static T GetModTower<T>(this TowerModel towerModel) where T : ModTower => (T) GetModTower(towerModel);
 
     /// <summary>
     /// Increase the range of a tower and all its attacks by the given amount
@@ -228,6 +193,7 @@ public static class TowerModelExt
             attackModel.range += rangeIncrease;
         }
     }
+
     /// <summary>
     /// Not Tested. Use to set the maximum allowed number of this tower
     /// </summary>
@@ -251,10 +217,8 @@ public static class TowerModelExt
     /// <summary>
     /// Return the TowerPurchaseButton for this TowerModel.
     /// </summary>
-    public static TowerPurchaseButton GetTowerPurchaseButton(this TowerModel towerModel)
-    {
-        return ShopMenu.instance.GetTowerButtonFromBaseId(towerModel.GetBaseId());
-    }
+    public static TowerPurchaseButton GetTowerPurchaseButton(this TowerModel towerModel) =>
+        ShopMenu.instance.GetTowerButtonFromBaseId(towerModel.GetBaseId());
 
     /// <summary>
     /// Return the number position of this TowerModel in the list of all tower models
@@ -281,18 +245,13 @@ public static class TowerModelExt
     /// </summary>
     /// <param name="towerModel">the TowerModel</param>
     /// <param name="path">What tier of upgrade is currently applied to tower</param>
-    public static int GetUpgradeLevel(this TowerModel towerModel, int path)
-    {
-        return towerModel.tiers[path];
-    }
+    public static int GetUpgradeLevel(this TowerModel towerModel, int path) => towerModel.tiers[path];
 
     /// <summary>
     /// If this TowerModel is for a Hero, is this Hero unlocked?
     /// </summary>
-    public static bool? IsHeroUnlocked(this TowerModel towerModel)
-    {
-        return Game.instance.GetBtd6Player()?.HasUnlockedHero(towerModel.GetBaseId());
-    }
+    public static bool? IsHeroUnlocked(this TowerModel towerModel) =>
+        Game.instance.GetBtd6Player()?.HasUnlockedHero(towerModel.GetBaseId());
 
     /// <summary>
     /// Has a specific upgrade for this TowerModel been unlocked already?
@@ -320,18 +279,14 @@ public static class TowerModelExt
     /// <summary>
     /// Check if an upgrade has been applied
     /// </summary>
-    public static bool HasUpgrade(this TowerModel towerModel, int path, int tier)
-    {
-        return HasUpgrade(towerModel, towerModel.GetUpgrade(path, tier)!);
-    }
+    public static bool HasUpgrade(this TowerModel towerModel, int path, int tier) =>
+        HasUpgrade(towerModel, towerModel.GetUpgrade(path, tier)!);
 
     /// <summary>
     /// Check if an upgrade has been applied
     /// </summary>
-    public static bool HasUpgrade(this TowerModel towerModel, UpgradeModel upgradeModel)
-    {
-        return towerModel.GetAppliedUpgrades().Contains(upgradeModel);
-    }
+    public static bool HasUpgrade(this TowerModel towerModel, UpgradeModel upgradeModel) =>
+        towerModel.GetAppliedUpgrades().Contains(upgradeModel);
 
     /// <summary>
     /// Return all UpgradeModels that are currently applied to this TowerModel
@@ -369,10 +324,7 @@ public static class TowerModelExt
     /// <summary>
     /// If this TowerModel is a Hero, return the HeroModel behavior
     /// </summary>
-    public static HeroModel GetHeroModel(this TowerModel towerModel)
-    {
-        return towerModel.GetBehavior<HeroModel>();
-    }
+    public static HeroModel GetHeroModel(this TowerModel towerModel) => towerModel.GetBehavior<HeroModel>();
 
     /// <summary>
     /// Duplicate this TowerModel with a unique name. Very useful for making custom TowerModels
@@ -400,10 +352,8 @@ public static class TowerModelExt
     /// <param name="tier2"></param>
     /// <param name="tier3"></param>
     /// <returns></returns>
-    public static bool HasTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0)
-    {
-        return towerModel.tiers[0] == tier1 && towerModel.tiers[1] == tier2 && towerModel.tiers[2] == tier3;
-    }
+    public static bool HasTiers(this TowerModel towerModel, int tier1 = 0, int tier2 = 0, int tier3 = 0) =>
+        towerModel.tiers[0] == tier1 && towerModel.tiers[1] == tier2 && towerModel.tiers[2] == tier3;
 
 
     /// <summary>
@@ -458,18 +408,13 @@ public static class TowerModelExt
     /// </summary>
     /// <param name="towerModel"></param>
     /// <returns></returns>
-    public static string GetTowerSet(this TowerModel towerModel)
-    {
-        return towerModel.GetModTower()?.ModTowerSet?.Id ?? towerModel.towerSet.ToString();
-    }
+    public static string GetTowerSet(this TowerModel towerModel) =>
+        towerModel.GetModTower()?.ModTowerSet?.Id ?? towerModel.towerSet.ToString();
 
     /// <summary>
     /// Gets whether a Tower/Hero is a base one added by the vanilla game.
     /// </summary>
-    public static bool IsVanillaTower(this TowerModel towerModel)
-    {
-        return VanillaSprites.ByName.ContainsKey(towerModel.IsHero()
-            ? "HeroIcon" + towerModel.baseId
-            : towerModel.baseId.Replace(TowerType.WizardMonkey, "Wizard") + "000");
-    }
+    public static bool IsVanillaTower(this TowerModel towerModel) => VanillaSprites.ByName.ContainsKey(towerModel.IsHero()
+        ? "HeroIcon" + towerModel.baseId
+        : towerModel.baseId.Replace(TowerType.WizardMonkey, "Wizard") + "000");
 }

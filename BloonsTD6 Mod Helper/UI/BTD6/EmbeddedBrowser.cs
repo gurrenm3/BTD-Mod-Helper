@@ -91,45 +91,7 @@ internal static class EmbeddedBrowser
         rectTransform.localPosition = Vector3.zero;
     }
 
-
-    /// <summary>
-    /// Use a RawImage to render if available so that objects can be displayed on top of it
-    /// </summary>
-    [HarmonyPatch(typeof(SteamWebView), nameof(SteamWebView.OnGUI))]
-    internal static class SteamWebView_OnGUI
-    {
-        public static bool UsingRawImage { get; private set; }
-
-        [HarmonyPrefix]
-        private static void Prefix(SteamWebView __instance)
-        {
-            if (__instance.gameObject.HasComponent(out RawImage image))
-            {
-                UsingRawImage = true;
-                image.texture = __instance.texture;
-                image.enabled = !__instance.hidden && __instance.browserReady;
-            }
-        }
-
-        [HarmonyPostfix]
-        private static void PostFix()
-        {
-            UsingRawImage = false;
-        }
-    }
-
-    /// <summary>
-    /// Don't draw the SteamWebView on the entire screen when using the RawImage
-    /// </summary>
-    [HarmonyPatch(typeof(GUI), nameof(GUI.DrawTexture), typeof(Rect), typeof(Texture))]
-    internal static class GUI_DrawTexture
-    {
-        [HarmonyPrefix]
-        private static bool Prefix()
-        {
-            return !SteamWebView_OnGUI.UsingRawImage;
-        }
-    }
+    #region Nested type: Event_get_current
 
     /// <summary>
     /// Block clicks to objects above the webview
@@ -162,6 +124,22 @@ internal static class EmbeddedBrowser
         }
     }
 
+    #endregion
+    #region Nested type: GUI_DrawTexture
+
+    /// <summary>
+    /// Don't draw the SteamWebView on the entire screen when using the RawImage
+    /// </summary>
+    [HarmonyPatch(typeof(GUI), nameof(GUI.DrawTexture), typeof(Rect), typeof(Texture))]
+    internal static class GUI_DrawTexture
+    {
+        [HarmonyPrefix]
+        private static bool Prefix() => !SteamWebView_OnGUI.UsingRawImage;
+    }
+
+    #endregion
+    #region Nested type: HTML_URLChanged_t_OnResultWithInfo
+
     /// <summary>
     /// Keep the CurrentUrl up to date
     /// </summary>
@@ -182,6 +160,66 @@ internal static class EmbeddedBrowser
         }
     }
 
+    #endregion
+    #region Nested type: HtmlSurface_OnFileOpenDialogAPI
+
+    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnFileOpenDialogAPI))]
+    internal static class HtmlSurface_OnFileOpenDialogAPI
+    {
+        [HarmonyPrefix]
+        private static bool Prefix(HtmlSurface __instance, HTML_FileOpenDialog_t callbackdata)
+        {
+            var nativeHtmlSurface = __instance.client.native.htmlSurface;
+
+            return false;
+        }
+    }
+
+    #endregion
+    #region Nested type: HtmlSurface_OnJSAlertAPI
+
+    /// <summary>
+    /// Implement JS alerts using Ok popups
+    /// </summary>
+    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnJSAlertAPI))]
+    internal static class HtmlSurface_OnJSAlertAPI
+    {
+        [HarmonyPrefix]
+        private static bool Prefix(HtmlSurface __instance, HTML_JSAlert_t callbackdata)
+        {
+            var nativeHtmlSurface = __instance.client.native.htmlSurface;
+
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(callbackdata.PchMessage,
+                new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, true))));
+            return false;
+        }
+    }
+
+    #endregion
+    #region Nested type: HtmlSurface_OnJSConfirmAPI
+
+    /// <summary>
+    /// Implement JS confirms using Ok/Cancel popups
+    /// </summary>
+    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnJSConfirmAPI))]
+    internal static class HtmlSurface_OnJSConfirmAPI
+    {
+        [HarmonyPrefix]
+        private static bool Prefix(HtmlSurface __instance, HTML_JSConfirm_t callbackdata)
+        {
+            var nativeHtmlSurface = __instance.client.native.htmlSurface;
+
+            PopupScreen.instance.SafelyQueue(screen =>
+                screen.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm", callbackdata.PchMessage,
+                    new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, true)), "Ok",
+                    new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, false)), "Cancel",
+                    Popup.TransitionAnim.Scale));
+            return false;
+        }
+    }
+
+    #endregion
+    #region Nested type: HtmlSurface_OnStartRequestAPI
 
     /// <summary>
     /// Allow mod files to be downloaded through the browser
@@ -207,52 +245,34 @@ internal static class EmbeddedBrowser
         }
     }
 
-    /// <summary>
-    /// Implement JS alerts using Ok popups
-    /// </summary>
-    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnJSAlertAPI))]
-    internal static class HtmlSurface_OnJSAlertAPI
-    {
-        [HarmonyPrefix]
-        private static bool Prefix(HtmlSurface __instance, HTML_JSAlert_t callbackdata)
-        {
-            var nativeHtmlSurface = __instance.client.native.htmlSurface;
-
-            PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(callbackdata.PchMessage,
-                new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, true))));
-            return false;
-        }
-    }
+    #endregion
+    #region Nested type: SteamWebView_OnGUI
 
     /// <summary>
-    /// Implement JS confirms using Ok/Cancel popups
+    /// Use a RawImage to render if available so that objects can be displayed on top of it
     /// </summary>
-    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnJSConfirmAPI))]
-    internal static class HtmlSurface_OnJSConfirmAPI
+    [HarmonyPatch(typeof(SteamWebView), nameof(SteamWebView.OnGUI))]
+    internal static class SteamWebView_OnGUI
     {
-        [HarmonyPrefix]
-        private static bool Prefix(HtmlSurface __instance, HTML_JSConfirm_t callbackdata)
-        {
-            var nativeHtmlSurface = __instance.client.native.htmlSurface;
+        public static bool UsingRawImage { get; private set; }
 
-            PopupScreen.instance.SafelyQueue(screen =>
-                screen.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm", callbackdata.PchMessage,
-                    new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, true)), "Ok",
-                    new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, false)), "Cancel",
-                    Popup.TransitionAnim.Scale));
-            return false;
+        [HarmonyPrefix]
+        private static void Prefix(SteamWebView __instance)
+        {
+            if (__instance.gameObject.HasComponent(out RawImage image))
+            {
+                UsingRawImage = true;
+                image.texture = __instance.texture;
+                image.enabled = !__instance.hidden && __instance.browserReady;
+            }
+        }
+
+        [HarmonyPostfix]
+        private static void PostFix()
+        {
+            UsingRawImage = false;
         }
     }
 
-    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnFileOpenDialogAPI))]
-    internal static class HtmlSurface_OnFileOpenDialogAPI
-    {
-        [HarmonyPrefix]
-        private static bool Prefix(HtmlSurface __instance, HTML_FileOpenDialog_t callbackdata)
-        {
-            var nativeHtmlSurface = __instance.client.native.htmlSurface;
-
-            return false;
-        }
-    }
+    #endregion
 }

@@ -42,8 +42,5 @@ public static class TitleScreenUI
     /// <summary>
     /// Gets the Intermediate Button if on the Map Select Menu, or null
     /// </summary>
-    public static Button GetStartButton()
-    {
-        return GetCanvas()?.GetComponent<Button>("ScreenBoxer/TitleScreen/Start");
-    }
+    public static Button GetStartButton() => GetCanvas()?.GetComponent<Button>("ScreenBoxer/TitleScreen/Start");
 }

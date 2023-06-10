@@ -58,19 +58,15 @@ internal static class ModHelperGithub
 
     public static IEnumerable<ModHelperData> VisibleMods => Mods.Where(ModIsVisible);
 
-    public static bool ModIsVisible(this ModHelperData data)
-    {
-        return data.RepoName != ModHelper.RepoName &&
-               !BannedModders.Contains(data.RepoOwner) &&
-               !BannedMods.Contains(data.Identifier) &&
-               (!VerifiedOnly || VerifiedModders.Contains(data.RepoOwner)) &&
-               (!MelonMain.HideBrokenMods || !data.ModIsBroken());
-    }
+    public static bool ModIsVisible(this ModHelperData data) => data.RepoName != ModHelper.RepoName &&
+                                                                !BannedModders.Contains(data.RepoOwner) &&
+                                                                !BannedMods.Contains(data.Identifier) &&
+                                                                (!VerifiedOnly ||
+                                                                 VerifiedModders.Contains(data.RepoOwner)) &&
+                                                                (!MelonMain.HideBrokenMods || !data.ModIsBroken());
 
-    public static bool ModIsBroken(this ModHelperData data)
-    {
-        return !SemVersion.TryParse(data.WorksOnVersion, out var semver) || semver.Major < 34;
-    }
+    public static bool ModIsBroken(this ModHelperData data) =>
+        !SemVersion.TryParse(data.WorksOnVersion, out var semver) || semver.Major < 34;
 
     public static void Init()
     {
@@ -266,10 +262,8 @@ internal static class ModHelperGithub
         UpdateRateLimit();
     }
 
-    private static string ParseReleaseMessage(string body)
-    {
-        return Regex.Split(body ?? "", @"<!--Mod Browser Message Start-->[\r\n\s]*").LastOrDefault() ?? "";
-    }
+    private static string ParseReleaseMessage(string body) =>
+        Regex.Split(body ?? "", @"<!--Mod Browser Message Start-->[\r\n\s]*").LastOrDefault() ?? "";
 
     private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease,
         bool showPopup)
@@ -364,7 +358,7 @@ internal static class ModHelperGithub
                     var directoryInfo = await ModHelperHttp.DownloadZip(releaseAsset.BrowserDownloadUrl);
                     if (directoryInfo != null)
                     {
-                        var file = Array.Find(directoryInfo.GetFiles(),info => info.Name.EndsWith(mod.DllName!));
+                        var file = Array.Find(directoryInfo.GetFiles(), info => info.Name.EndsWith(mod.DllName!));
                         if (file == null)
                         {
                             ModHelper.Warning($"Couldn't find file in Zip that matched DllName {mod.DllName}");

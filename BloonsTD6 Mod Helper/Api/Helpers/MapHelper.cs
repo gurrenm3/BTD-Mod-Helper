@@ -20,20 +20,14 @@ public class MapHelper
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(float x, float y)
-    {
-        return CreatePointInfo(new Vector3(x, y));
-    }
+    public static PointInfo CreatePointInfo(float x, float y) => CreatePointInfo(new Vector3(x, y));
 
     /// <summary>
     /// Create a <see cref="PointInfo" /> out of a Vector2.
     /// </summary>
     /// <param name="point"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(Vector2 point)
-    {
-        return CreatePointInfo(new Vector3(point.x, point.y));
-    }
+    public static PointInfo CreatePointInfo(Vector2 point) => CreatePointInfo(new Vector3(point.x, point.y));
 
     /// <summary>
     /// Create a <see cref="PointInfo" /> out of X, Y, Z coords.
@@ -42,30 +36,24 @@ public class MapHelper
     /// <param name="y"></param>
     /// <param name="z"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(float x, float y, float z)
-    {
-        return CreatePointInfo(new Vector3(x, y, z));
-    }
+    public static PointInfo CreatePointInfo(float x, float y, float z) => CreatePointInfo(new Vector3(x, y, z));
 
     /// <summary>
     /// Create a <see cref="PointInfo" /> out of a Vector3.
     /// </summary>
     /// <param name="point"></param>
     /// <returns></returns>
-    public static PointInfo CreatePointInfo(Vector3 point)
+    public static PointInfo CreatePointInfo(Vector3 point) => new()
     {
-        return new PointInfo
-        {
-            point = point,
-            rotation = 0,
-            distance = 1,
-            bloonScale = 1,
-            moabScale = 1,
-            moabsInvulnerable = false,
-            bloonsInvulnerable = false,
-            id = rand.NextDouble().ToString()
-        };
-    }
+        point = point,
+        rotation = 0,
+        distance = 1,
+        bloonScale = 1,
+        moabScale = 1,
+        moabsInvulnerable = false,
+        bloonsInvulnerable = false,
+        id = rand.NextDouble().ToString()
+    };
 
     /// <summary>
     /// Creates a default PathModel out of list of Vector2 points
@@ -107,18 +95,13 @@ public class MapHelper
         return new PathSpawnerModel("", new SplitterModel("", pathNames), new SplitterModel("", pathNames));
     }
 
-    internal static Texture2D ResizeForGame(Texture2D texture2D)
-    {
+    internal static Texture2D ResizeForGame(Texture2D texture2D) =>
         // float divx = 2;
         // float divy = 1.21f;
         // int marginx = 450;
         // int marginy = 890;
-
         //var dup = texture2D.Duplicate();
-
-
         //TextureScale.Bilinear(dup, marginx, marginy);
-
         // this is slow AF. Trying something else.
         /*var old = texture2D.ToImage().Resize(1652, 1064);
         Bitmap newImage = new Bitmap(old.Width + marginx, old.Height + marginy);
@@ -130,7 +113,5 @@ public class MapHelper
             graphics.DrawImage(old, x, y);
             ImageConversion.LoadImage(texture2D, newImage.GetBytes());
         }*/
-
-        return texture2D;
-    }
+        texture2D;
 }

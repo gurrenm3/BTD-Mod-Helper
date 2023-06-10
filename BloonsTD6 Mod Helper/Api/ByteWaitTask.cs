@@ -14,6 +14,7 @@ internal class ByteWaitTask : ModLoadTask
         Instance = this;
         mod = ModHelper.Main;
     }
+
     /// <inheritdoc />
     public override string DisplayName => "Waiting for ByteLoaders...";
 
@@ -25,10 +26,7 @@ internal class ByteWaitTask : ModLoadTask
     /// Don't load this like a normal task
     /// </summary>
     /// <returns></returns>
-    public override IEnumerable<ModContent> Load()
-    {
-        return Enumerable.Empty<ModContent>();
-    }
+    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
     /// <summary>
     /// Wait for the bytes to all be loaded

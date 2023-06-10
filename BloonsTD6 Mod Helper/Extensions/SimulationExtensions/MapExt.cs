@@ -11,8 +11,5 @@ public static partial class MapExt
     /// <summary>
     /// Gets the Map's rectangle
     /// </summary>
-    public static RectTransform GetMapRect(this Map map)
-    {
-        return InGame.instance.mapRect;
-    }
+    public static RectTransform GetMapRect(this Map map) => InGame.instance.mapRect;
 }

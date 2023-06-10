@@ -20,15 +20,9 @@ internal class BackupCreator
         _maxBackups = max;
     }
 
-    private FileInfo[] GetAllBackups()
-    {
-        return new DirectoryInfo(_backupDir).GetFiles();
-    }
+    private FileInfo[] GetAllBackups() => new DirectoryInfo(_backupDir).GetFiles();
 
-    private bool IsOverMaxBackups()
-    {
-        return GetAllBackups().Length > _maxBackups;
-    }
+    private bool IsOverMaxBackups() => GetAllBackups().Length > _maxBackups;
 
     [Obsolete]
     public void CreateBackup()

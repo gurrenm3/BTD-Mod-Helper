@@ -328,20 +328,17 @@ public readonly struct Info
     /// <summary>
     /// Creates a new Info with all the same properties as this
     /// </summary>
-    public Info Duplicate(string name)
+    public Info Duplicate(string name) => new(name)
     {
-        return new Info(name)
-        {
-            Position = position,
-            SizeDelta = sizeDelta,
-            Pivot = Pivot,
-            AnchorMin = AnchorMin,
-            AnchorMax = AnchorMax,
-            FlexWidth = FlexWidth,
-            FlexHeight = FlexHeight,
-            Scale = Scale
-        };
-    }
+        Position = position,
+        SizeDelta = sizeDelta,
+        Pivot = Pivot,
+        AnchorMin = AnchorMin,
+        AnchorMax = AnchorMax,
+        FlexWidth = FlexWidth,
+        FlexHeight = FlexHeight,
+        Scale = Scale
+    };
 }
 
 /// <summary>

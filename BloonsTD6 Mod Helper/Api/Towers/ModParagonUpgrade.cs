@@ -44,6 +44,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// By default, remove any abilities from the Paragon tower
     /// </summary>
     public virtual bool RemoveAbilities => true;
+
     /// <inheritdoc />
     protected internal override void AssignToModTower()
     {
@@ -62,10 +63,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
     /// <summary>
     /// No loading of multiple ModParagonUpgrades
     /// </summary>
-    public sealed override IEnumerable<ModContent> Load()
-    {
-        return base.Load();
-    }
+    public sealed override IEnumerable<ModContent> Load() => base.Load();
 
     /// <summary>
     /// Modify the PowerDegreeMutator of the Paragon

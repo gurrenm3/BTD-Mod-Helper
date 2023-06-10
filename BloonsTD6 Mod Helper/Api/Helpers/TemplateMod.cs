@@ -8,6 +8,7 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Microsoft.VisualBasic.FileIO;
 using SearchOption = System.IO.SearchOption;
+#pragma warning disable CS4014
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
@@ -80,7 +81,10 @@ public static class TemplateMod
                     FileSystem.CopyDirectory(directory.FullName, path, true);
                     directory.Delete(true);
                 }
-                else throw;
+                else
+                {
+                    throw;
+                }
             }
 
             await ReplaceInAllFiles(path, name);

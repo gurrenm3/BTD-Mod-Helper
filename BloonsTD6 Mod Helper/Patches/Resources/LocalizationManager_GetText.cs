@@ -6,8 +6,5 @@ namespace BTD_Mod_Helper.Patches.Resources;
 internal static class LocalizationManager_GetText
 {
     [HarmonyPrefix]
-    private static bool Prefix(string key, ref string __result)
-    {
-        return !ModTextOverride.TryGetOverride(key, out __result);
-    }
+    private static bool Prefix(string key, ref string __result) => !ModTextOverride.TryGetOverride(key, out __result);
 }

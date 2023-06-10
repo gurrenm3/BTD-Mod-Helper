@@ -71,12 +71,10 @@ public static class RendererExt
     /// </summary>
     /// <param name="skinnedMeshRenderer"></param>
     /// <returns></returns>
-    public static List<Vector3> GetVertices(this SkinnedMeshRenderer skinnedMeshRenderer)
-    {
-        return skinnedMeshRenderer.sharedMesh.isReadable
+    public static List<Vector3> GetVertices(this SkinnedMeshRenderer skinnedMeshRenderer) =>
+        skinnedMeshRenderer.sharedMesh.isReadable
             ? skinnedMeshRenderer.sharedMesh.vertices.ToList()
             : skinnedMeshRenderer.BakedMesh().vertices.ToList();
-    }
 
     /// <summary>
     /// Gets the list of triangles for a Mesh, even if its not marked as isReadable
@@ -86,10 +84,8 @@ public static class RendererExt
     /// <param name="skinnedMeshRenderer"></param>
     /// <param name="submesh"></param>
     /// <returns></returns>
-    public static List<int> GetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, int submesh = 0)
-    {
-        return skinnedMeshRenderer.sharedMesh.GetTrianglesImpl(submesh, false).ToList();
-    }
+    public static List<int> GetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, int submesh = 0) =>
+        skinnedMeshRenderer.sharedMesh.GetTrianglesImpl(submesh, false).ToList();
 
     /// <summary>
     /// </summary>
@@ -125,6 +121,7 @@ public static class RendererExt
 
         return -1;
     }
+
     /// <summary>
     /// Experimental method of messing with mesh renderers at runtime
     /// </summary>

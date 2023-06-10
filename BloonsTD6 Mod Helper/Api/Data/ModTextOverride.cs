@@ -9,6 +9,7 @@ public abstract class ModTextOverride : ModContent
 {
 
     internal static readonly Dictionary<string, SortedSet<ModTextOverride>> Cache = new();
+
     /// <inheritdoc />
     public override int RegisterPerFrame => 100;
 
@@ -27,10 +28,7 @@ public abstract class ModTextOverride : ModContent
     /// </summary>
     public abstract string TextValue { get; }
 
-    internal virtual string TextValueForKey(string key)
-    {
-        return TextValue;
-    }
+    internal virtual string TextValueForKey(string key) => TextValue;
 
     private protected static void AddToCache(string key, ModTextOverride textOverride)
     {

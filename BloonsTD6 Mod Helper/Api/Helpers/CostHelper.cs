@@ -62,10 +62,8 @@ public class CostHelper
     /// <param name="cost">The default cost</param>
     /// <param name="inGame">Current instance of InGame</param>
     /// <returns>The modified cost</returns>
-    public static int CostForDifficulty(int cost, InGame inGame)
-    {
-        return CostForDifficulty(cost, inGame.SelectedDifficulty);
-    }
+    public static int CostForDifficulty(int cost, InGame inGame) => CostForDifficulty(cost, inGame.SelectedDifficulty);
+
     /// <summary>
     /// Scales a base (medium) cost to the given difficulty
     /// </summary>

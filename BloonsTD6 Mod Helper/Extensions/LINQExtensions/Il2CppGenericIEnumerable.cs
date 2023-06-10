@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
-using Exception = System.Exception;
-using Object = Il2CppSystem.Object;
+using InvalidOperationException = System.InvalidOperationException;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -110,7 +108,7 @@ public static class Il2CppGenericIEnumerable
         {
             return enumerator.Current.Cast<T>();
         }
-        
+
         throw new InvalidOperationException();
     }
 

@@ -36,40 +36,22 @@ public class ModSettingInt : ModSettingNumber<long> //it's a long because of JSO
     /// <summary>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
-    public static implicit operator ModSettingInt(int value)
-    {
-        return new ModSettingInt(value);
-    }
+    public static implicit operator ModSettingInt(int value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator int(ModSettingInt modSettingInt)
-    {
-        return (int) modSettingInt.value;
-    }
+    public static implicit operator int(ModSettingInt modSettingInt) => (int) modSettingInt.value;
 
     /// <inheritdoc />
-    protected override string ToString(long input)
-    {
-        return input.ToString();
-    }
+    protected override string ToString(long input) => input.ToString();
 
     /// <inheritdoc />
-    protected override long FromString(string s)
-    {
-        return int.TryParse(s, out var result) ? result : 0;
-    }
+    protected override long FromString(string s) => int.TryParse(s, out var result) ? result : 0;
 
     /// <inheritdoc />
-    protected override float ToFloat(long input)
-    {
-        return input;
-    }
+    protected override float ToFloat(long input) => input;
 
     /// <inheritdoc />
-    protected override long FromFloat(float f)
-    {
-        return (long) Math.Round(f);
-    }
+    protected override long FromFloat(float f) => (long) Math.Round(f);
 }

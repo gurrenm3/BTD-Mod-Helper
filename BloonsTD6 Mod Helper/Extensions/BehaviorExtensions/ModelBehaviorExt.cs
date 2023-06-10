@@ -165,10 +165,8 @@ internal static class ModelBehaviorExt
     /// Return the index'th Behavior of type T, or null
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>
-    public static T GetBehavior<T>(this Model model, int index) where T : Model
-    {
-        return model.GetBehaviors<T>().Skip(index).FirstOrDefault();
-    }
+    public static T GetBehavior<T>(this Model model, int index) where T : Model =>
+        model.GetBehaviors<T>().Skip(index).FirstOrDefault();
 
     /// <summary>
     /// Return the first Behavior of type T whose name contains the given string, or null

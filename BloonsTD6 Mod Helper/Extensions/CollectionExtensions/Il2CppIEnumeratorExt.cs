@@ -38,6 +38,7 @@ public static class Il2CppIEnumeratorExt
         {
             if (i == index)
                 return enumerator.Current;
+
             i++;
         }
 

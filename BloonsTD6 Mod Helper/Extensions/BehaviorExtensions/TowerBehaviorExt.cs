@@ -10,26 +10,20 @@ public static class TowerBehaviorExt
     /// <summary>
     /// Check if this has a specific Behavior
     /// </summary>
-    public static bool HasTowerBehavior<T>(this Tower tower) where T : TowerBehavior
-    {
-        return tower.towerBehaviors.HasItemsOfType<TowerBehavior, T>();
-    }
+    public static bool HasTowerBehavior<T>(this Tower tower) where T : TowerBehavior =>
+        tower.towerBehaviors.HasItemsOfType<TowerBehavior, T>();
 
     /// <summary>
     /// Return the first Behavior of type T
     /// </summary>
-    public static T GetTowerBehavior<T>(this Tower tower) where T : TowerBehavior
-    {
-        return tower.towerBehaviors.GetItemOfType<TowerBehavior, T>();
-    }
+    public static T GetTowerBehavior<T>(this Tower tower) where T : TowerBehavior =>
+        tower.towerBehaviors.GetItemOfType<TowerBehavior, T>();
 
     /// <summary>
     /// Return all Behaviors of type T
     /// </summary>
-    public static List<T> GetTowerBehaviors<T>(this Tower tower) where T : TowerBehavior
-    {
-        return tower.towerBehaviors.GetItemsOfType<TowerBehavior, T>();
-    }
+    public static List<T> GetTowerBehaviors<T>(this Tower tower) where T : TowerBehavior =>
+        tower.towerBehaviors.GetItemsOfType<TowerBehavior, T>();
 
     /// <summary>
     /// Add a Behavior to this

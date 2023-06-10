@@ -39,10 +39,7 @@ public class MessageUtils
     /// Assumes message is sent as JSON. (via <see cref="CreateMessageEx{T}" />)
     /// </summary>
     /// <param name="message">Message received from the network.</param>
-    public static T ReadMessage<T>(Message message)
-    {
-        return ReadMessage<T>(message.bytes);
-    }
+    public static T ReadMessage<T>(Message message) => ReadMessage<T>(message.bytes);
 
     #region Backwards Binary Compatibility
 
@@ -54,10 +51,8 @@ public class MessageUtils
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     [System.Obsolete($"For backwards compatibility reasons only, please use {nameof(CreateMessageEx)}")]
-    public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Object
-    {
-        return CreateMessageEx(objectToSend, code);
-    }
+    public static Message CreateMessage<T>(T objectToSend, string code = "") where T : Object =>
+        CreateMessageEx(objectToSend, code);
 
     #endregion
 }

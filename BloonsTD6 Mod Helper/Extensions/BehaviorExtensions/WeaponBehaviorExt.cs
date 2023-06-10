@@ -13,10 +13,8 @@ public static class WeaponBehaviorExt
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="weapon"></param>
     /// <returns></returns>
-    public static bool HasWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior
-    {
-        return weapon.weaponBehaviors.HasItemsOfType<WeaponBehavior, T>();
-    }
+    public static bool HasWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior =>
+        weapon.weaponBehaviors.HasItemsOfType<WeaponBehavior, T>();
 
     /// <summary>
     /// Return the first Behavior of type T
@@ -24,10 +22,8 @@ public static class WeaponBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="weapon"></param>
     /// <returns></returns>
-    public static T GetWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior
-    {
-        return weapon.weaponBehaviors.GetItemOfType<WeaponBehavior, T>();
-    }
+    public static T GetWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior =>
+        weapon.weaponBehaviors.GetItemOfType<WeaponBehavior, T>();
 
     /// <summary>
     /// Return all Behaviors of type T
@@ -35,10 +31,8 @@ public static class WeaponBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="weapon"></param>
     /// <returns></returns>
-    public static List<T> GetWeaponBehaviors<T>(this Weapon weapon) where T : WeaponBehavior
-    {
-        return weapon.weaponBehaviors.GetItemsOfType<WeaponBehavior, T>();
-    }
+    public static List<T> GetWeaponBehaviors<T>(this Weapon weapon) where T : WeaponBehavior =>
+        weapon.weaponBehaviors.GetItemsOfType<WeaponBehavior, T>();
 
     /// <summary>
     /// Add a Behavior to this

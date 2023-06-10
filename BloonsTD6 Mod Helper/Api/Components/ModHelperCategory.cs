@@ -22,6 +22,7 @@ public class ModHelperCategory : ModHelperOption
     public ModHelperCategory(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The panel that holds all the mod settings
     /// </summary>

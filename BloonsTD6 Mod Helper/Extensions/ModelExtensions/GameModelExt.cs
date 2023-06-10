@@ -203,10 +203,8 @@ public static class GameModelExt
     /// <summary>
     /// Return all TowerDetailModels
     /// </summary>
-    public static Il2CppSystem.Collections.Generic.List<TowerDetailsModel> GetAllTowerDetails(this GameModel model)
-    {
-        return model.towerSet.ToIl2CppList();
-    }
+    public static Il2CppSystem.Collections.Generic.List<TowerDetailsModel> GetAllTowerDetails(this GameModel model) =>
+        model.towerSet.ToIl2CppList();
 
     /// <summary>
     /// Return all ShopTowerDetailModels
@@ -253,10 +251,7 @@ public static class GameModelExt
     /// <param name="number">Number of Bloons in this emission</param>
     /// <param name="spacing">Space between each bloon in this emission</param>
     public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissions(this GameModel model,
-        BloonModel bloonModel, int number, float spacing)
-    {
-        return model.CreateBloonEmissions(bloonModel.name, number, spacing);
-    }
+        BloonModel bloonModel, int number, float spacing) => model.CreateBloonEmissions(bloonModel.name, number, spacing);
 
     /// <summary>
     /// Create a BloonEmissionModel from a bloon's name
@@ -282,10 +277,8 @@ public static class GameModelExt
     /// <param name="model">the GameModel instance</param>
     /// <param name="bloonName">Name of this bloon. Example: "Red"</param>
     /// <param name="time">Time the bloon should be spawned</param>
-    public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time)
-    {
-        return new BloonEmissionModel("", time, bloonName);
-    }
+    public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time) =>
+        new("", time, bloonName);
 
     /// <summary>
     /// Create a single BloonEmission
@@ -298,11 +291,9 @@ public static class GameModelExt
     /// <exclude />
     public static BloonEmissionModel CreateBloonEmission(this GameModel model, string bloonName, float time,
         Il2CppSystem.Collections.Generic.List<Bloon.ChargedMutator> chargedMutators,
-        Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators)
-    {
+        Il2CppSystem.Collections.Generic.List<BehaviorMutator> behaviorMutators) =>
         //return new BloonEmissionModel("", time, bloonName, chargedMutators, behaviorMutators); // removed in update 25.0
-        return new BloonEmissionModel("", time, bloonName);
-    }
+        new("", time, bloonName);
 
     /// <summary>
     /// Creates a BloonGroup
@@ -417,6 +408,7 @@ public static class GameModelExt
     {
         return model.towerSet.FirstOrDefault(tower => tower.towerId == towerDetailsName);
     }
+
     /// <summary>
     /// Returns whether or not a bloon exists with this name
     /// </summary>

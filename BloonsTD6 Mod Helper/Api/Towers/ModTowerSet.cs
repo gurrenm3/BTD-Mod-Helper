@@ -105,19 +105,14 @@ public abstract class ModTowerSet : NamedModContent
     /// </summary>
     /// <param name="towerSets">The current towerSets that already exist</param>
     /// <returns></returns>
-    public virtual int GetTowerSetIndex(List<TowerSet> towerSets)
-    {
-        return towerSets.Count;
-    }
+    public virtual int GetTowerSetIndex(List<TowerSet> towerSets) => towerSets.Count;
 
     /// <summary>
     /// No loading multiple instances of a ModTowerSet
     /// </summary>
     /// <returns></returns>
-    public sealed override IEnumerable<ModContent> Load()
-    {
-        return base.Load();
-    }
+    public sealed override IEnumerable<ModContent> Load() => base.Load();
+
     /// <summary>
     /// The position to start placing ModTowers of this ModTowerSet in relation to other towers
     /// <br />

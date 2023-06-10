@@ -7,8 +7,12 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class SliderEventExt
 {
+    #region Delegates
+
     /// <inheritdoc />
     public delegate void Function(float value);
+
+    #endregion
 
     /// <summary>
     /// Adds a listener to a slider event

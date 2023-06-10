@@ -14,26 +14,18 @@ public static class ProjectileExt
     /// Get the DisplayNode for this Projectile
     /// </summary>
     /// <returns></returns>
-    public static DisplayNode GetDisplayNode(this Projectile projectile)
-    {
-        return projectile.Node;
-    }
+    public static DisplayNode GetDisplayNode(this Projectile projectile) => projectile.Node;
 
     /// <summary>
     /// Get the UnityDisplayNode for this Projectile. Is apart of DisplayNode. Needed to modify sprites
     /// </summary>
     /// <returns></returns>
-    public static UnityDisplayNode GetUnityDisplayNode(this Projectile projectile)
-    {
-        return projectile.GetDisplayNode()?.graphic;
-    }
+    public static UnityDisplayNode GetUnityDisplayNode(this Projectile projectile) => projectile.GetDisplayNode()?.graphic;
+
     /// <summary>
     /// Return the Factory that creates Projectiles
     /// </summary>
     /// <param name="projectile"></param>
     /// <returns></returns>
-    public static Factory<Projectile> GetFactory(this Projectile projectile)
-    {
-        return InGame.instance.GetFactory<Projectile>();
-    }
+    public static Factory<Projectile> GetFactory(this Projectile projectile) => InGame.instance.GetFactory<Projectile>();
 }

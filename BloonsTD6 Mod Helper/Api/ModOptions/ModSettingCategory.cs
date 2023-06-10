@@ -54,16 +54,10 @@ public class ModSettingCategory
     /// <summary>
     /// Gets the name from a category
     /// </summary>
-    public static implicit operator string(ModSettingCategory category)
-    {
-        return category.displayName;
-    }
+    public static implicit operator string(ModSettingCategory category) => category.displayName;
 
     /// <summary>
     /// Creates a new category with the given name
     /// </summary>
-    public static implicit operator ModSettingCategory(string displayName)
-    {
-        return new ModSettingCategory(displayName);
-    }
+    public static implicit operator ModSettingCategory(string displayName) => new(displayName);
 }

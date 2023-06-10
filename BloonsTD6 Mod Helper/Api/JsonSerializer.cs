@@ -17,10 +17,8 @@ public class JsonSerializer
     /// <summary>
     /// Serialize a il2cpp object
     /// </summary>
-    public string Il2CppSerializeJson<T>(T il2cppObject, bool shouldIndent = true) where T : Object
-    {
-        return JsonUtility.ToJson(il2cppObject, shouldIndent);
-    }
+    public string Il2CppSerializeJson<T>(T il2cppObject, bool shouldIndent = true) where T : Object =>
+        JsonUtility.ToJson(il2cppObject, shouldIndent);
 
     /// <summary>
     /// Serialize a non-il2cpp object
@@ -48,18 +46,12 @@ public class JsonSerializer
     /// <summary>
     /// Deserialize an Il2cpp object
     /// </summary>
-    public T Il2CppDeserializeJson<T>(string text)
-    {
-        return JsonUtility.FromJson<T>(text);
-    }
+    public T Il2CppDeserializeJson<T>(string text) => JsonUtility.FromJson<T>(text);
 
     /// <summary>
     /// Deserialize a non-Il2cpp object
     /// </summary>
-    public T DeserializeJson<T>(string text)
-    {
-        return JsonConvert.DeserializeObject<T>(text);
-    }
+    public T DeserializeJson<T>(string text) => JsonConvert.DeserializeObject<T>(text);
 
 
     /// <summary>

@@ -41,8 +41,5 @@ public abstract class ModMultiTextOverride : ModTextOverride
         }
     }
 
-    internal override string TextValueForKey(string key)
-    {
-        return table[key];
-    }
+    internal override string TextValueForKey(string key) => table[key];
 }

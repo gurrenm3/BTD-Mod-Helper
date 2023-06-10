@@ -111,26 +111,17 @@ public static class ModHelper
     /// <summary>
     /// Gets the instance of a specific BloonsTD6Mod by its type
     /// </summary>
-    public static T GetMod<T>() where T : BloonsTD6Mod
-    {
-        return Melon<T>.Instance;
-    }
+    public static T GetMod<T>() where T : BloonsTD6Mod => Melon<T>.Instance;
 
     /// <summary>
     /// Returns whether a mod with the given name is installed
     /// </summary>
-    public static bool HasMod(string name)
-    {
-        return GetMod(name) != null;
-    }
+    public static bool HasMod(string name) => GetMod(name) != null;
 
     /// <summary>
     /// Returns whether a mod with the given name is installed, and pass it to the out param if it is
     /// </summary>
-    public static bool HasMod(string name, out BloonsTD6Mod BloonsTD6Mod)
-    {
-        return (BloonsTD6Mod = GetMod(name)) != null;
-    }
+    public static bool HasMod(string name, out BloonsTD6Mod BloonsTD6Mod) => (BloonsTD6Mod = GetMod(name)) != null;
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsTD6Mod
     {

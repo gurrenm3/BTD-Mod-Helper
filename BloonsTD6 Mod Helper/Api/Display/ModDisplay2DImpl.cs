@@ -31,6 +31,7 @@ internal sealed class ModDisplay2DImpl : ModDisplay2D
 
         Register();
     }
+
     public override string BaseDisplay { get; }
 
     public override DisplayCategory DisplayCategory { get; }

@@ -101,10 +101,7 @@ public static class LockedList
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static bool Any<T>(this LockList<T> source) where T : Object
-    {
-        return source.Count > 0;
-    }
+    public static bool Any<T>(this LockList<T> source) where T : Object => source.Count > 0;
 
     /// <summary>
     /// Return whether or not there are any elements in this that match the predicate
@@ -130,10 +127,7 @@ public static class LockedList
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T Last<T>(this LockList<T> source)
-    {
-        return source.list.Last();
-    }
+    public static T Last<T>(this LockList<T> source) => source.list.Last();
 
     /// <summary>
     /// Return the last item in the collection that meets the condition, or return default
@@ -161,10 +155,7 @@ public static class LockedList
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T First<T>(this LockList<T> source)
-    {
-        return source.list.First();
-    }
+    public static T First<T>(this LockList<T> source) => source.list.First();
 
     /// <summary>
     /// Return the first element in the collection, or return default if it's null
@@ -172,8 +163,5 @@ public static class LockedList
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this LockList<T> source)
-    {
-        return source.list.FirstOrDefault();
-    }
+    public static T FirstOrDefault<T>(this LockList<T> source) => source.list.FirstOrDefault();
 }

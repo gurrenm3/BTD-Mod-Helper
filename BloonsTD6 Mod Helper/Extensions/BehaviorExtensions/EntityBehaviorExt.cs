@@ -14,10 +14,8 @@ public static class EntityBehaviorExt
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public static bool HasBehavior<T>(this Entity entity) where T : Model
-    {
-        return entity.behaviors.HasItemsOfType<RootBehavior, T>();
-    }
+    public static bool HasBehavior<T>(this Entity entity) where T : Model =>
+        entity.behaviors.HasItemsOfType<RootBehavior, T>();
 
     /// <summary>
     /// Return the first Behavior of type T
@@ -36,10 +34,8 @@ public static class EntityBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public static List<T> GetBehaviors<T>(this Entity entity) where T : Model
-    {
-        return entity.behaviors.GetItemsOfType<RootBehavior, T>();
-    }
+    public static List<T> GetBehaviors<T>(this Entity entity) where T : Model =>
+        entity.behaviors.GetItemsOfType<RootBehavior, T>();
 
     /// <summary>
     /// Add a Behavior to this

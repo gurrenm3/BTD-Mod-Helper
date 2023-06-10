@@ -5,10 +5,7 @@ namespace BTD_Mod_Helper.Patches.Maps;
 internal class MapInfoPane_Init
 {
     [HarmonyPrefix]
-    internal static bool Prefix(MapButton __instance)
-    {
-        return true;
-    }
+    internal static bool Prefix(MapButton __instance) => true;
 
     [HarmonyPostfix]
     internal static void Postfix(MapButton __instance, string mapId)

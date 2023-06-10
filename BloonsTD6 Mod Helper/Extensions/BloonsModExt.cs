@@ -12,10 +12,8 @@ public static class BloonsTD6ModExt
     /// <summary>
     /// Get the name of this mod from it's dll name
     /// </summary>
-    public static string GetModName(this BloonsTD6Mod BloonsTD6Mod)
-    {
-        return BloonsTD6Mod.GetAssembly()?.GetName().Name ?? BloonsTD6Mod.Info.Name;
-    }
+    public static string GetModName(this BloonsTD6Mod BloonsTD6Mod) =>
+        BloonsTD6Mod.GetAssembly()?.GetName().Name ?? BloonsTD6Mod.Info.Name;
 
     /// <summary>
     /// Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods.
@@ -23,10 +21,8 @@ public static class BloonsTD6ModExt
     /// </summary>
     /// <param name="BloonsTD6Mod"></param>
     /// <returns></returns>
-    public static string GetModDirectory(this BloonsTD6Mod BloonsTD6Mod)
-    {
-        return Path.Combine(MelonEnvironment.ModsDirectory, BloonsTD6Mod.GetModName());
-    }
+    public static string GetModDirectory(this BloonsTD6Mod BloonsTD6Mod) =>
+        Path.Combine(MelonEnvironment.ModsDirectory, BloonsTD6Mod.GetModName());
 
     /// <summary>
     /// Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods.
@@ -48,10 +44,8 @@ public static class BloonsTD6ModExt
     /// </summary>
     /// <param name="BloonsTD6Mod"></param>
     /// <returns></returns>
-    public static string GetModSettingsDir(this BloonsTD6Mod BloonsTD6Mod)
-    {
-        return Path.Combine(BloonsTD6Mod.GetModDirectory(), "Mod Settings");
-    }
+    public static string GetModSettingsDir(this BloonsTD6Mod BloonsTD6Mod) =>
+        Path.Combine(BloonsTD6Mod.GetModDirectory(), "Mod Settings");
 
     /// <summary>
     /// Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod
@@ -67,13 +61,8 @@ public static class BloonsTD6ModExt
         return path;
     }
 
-    internal static ModHelperData GetModHelperData(this MelonMod mod)
-    {
-        return ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
-    }
+    internal static ModHelperData GetModHelperData(this MelonMod mod) =>
+        ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
 
-    internal static Assembly GetAssembly(this MelonMod mod)
-    {
-        return mod.MelonAssembly.Assembly;
-    }
+    internal static Assembly GetAssembly(this MelonMod mod) => mod.MelonAssembly.Assembly;
 }

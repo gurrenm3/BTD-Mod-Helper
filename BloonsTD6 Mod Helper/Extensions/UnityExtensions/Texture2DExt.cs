@@ -76,10 +76,8 @@ public static class Texture2DExt
     /// </summary>
     /// <param name="texture2D"></param>
     /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
-    public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit)
-    {
-        return texture2D.CreateSpriteFromTexture(pixelsPerUnit, new Vector2(0.5f, 0.5f));
-    }
+    public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit) =>
+        texture2D.CreateSpriteFromTexture(pixelsPerUnit, new Vector2(0.5f, 0.5f));
 
     /// <summary>
     /// Create a Sprite from this Texture2D
@@ -87,8 +85,6 @@ public static class Texture2DExt
     /// <param name="texture2D"></param>
     /// <param name="pixelsPerUnit">Number of pixels you want in each unit. More pixels means bigger sprite in game</param>
     /// <param name="pivot"></param>
-    public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit, Vector2 pivot)
-    {
-        return Sprite.Create(texture2D, new Rect(0f, 0f, texture2D.width, texture2D.height), pivot, pixelsPerUnit);
-    }
+    public static Sprite CreateSpriteFromTexture(this Texture2D texture2D, float pixelsPerUnit, Vector2 pivot) =>
+        Sprite.Create(texture2D, new Rect(0f, 0f, texture2D.width, texture2D.height), pivot, pixelsPerUnit);
 }

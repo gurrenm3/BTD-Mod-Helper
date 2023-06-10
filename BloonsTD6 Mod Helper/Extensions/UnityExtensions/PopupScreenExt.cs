@@ -14,20 +14,16 @@ public static class PopupScreenExt
     /// </summary>
     /// <param name="popupScreen"></param>
     /// <returns></returns>
-    public static TMP_InputField GetTMP_InputField(this PopupScreen popupScreen)
-    {
-        return popupScreen.GetFirstActivePopup()?.GetComponentInChildren<TMP_InputField>();
-    }
+    public static TMP_InputField GetTMP_InputField(this PopupScreen popupScreen) =>
+        popupScreen.GetFirstActivePopup()?.GetComponentInChildren<TMP_InputField>();
 
     /// <summary>
     /// Gets the NK_TextMeshProUGUI of the ActivePopup, or null
     /// </summary>
     /// <param name="popupScreen"></param>
     /// <returns></returns>
-    public static NK_TextMeshProUGUI GetBodyText(this PopupScreen popupScreen)
-    {
-        return popupScreen.GetFirstActivePopup()?.gameObject.GetComponentInChildrenByName<NK_TextMeshProUGUI>("Body");
-    }
+    public static NK_TextMeshProUGUI GetBodyText(this PopupScreen popupScreen) => popupScreen.GetFirstActivePopup()
+        ?.gameObject.GetComponentInChildrenByName<NK_TextMeshProUGUI>("Body");
 
     /// <summary>
     /// Modifies the NK_TextMeshProUGUI of the most recently created popup

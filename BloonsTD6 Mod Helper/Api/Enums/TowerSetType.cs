@@ -44,8 +44,5 @@ public static class TowerSetType
     /// <summary>
     /// Gets the ID to use for a custom tower set
     /// </summary>
-    public static string Custom<T>() where T : ModTowerSet
-    {
-        return ModContent.GetInstance<T>().Id;
-    }
+    public static string Custom<T>() where T : ModTowerSet => ModContent.GetInstance<T>().Id;
 }

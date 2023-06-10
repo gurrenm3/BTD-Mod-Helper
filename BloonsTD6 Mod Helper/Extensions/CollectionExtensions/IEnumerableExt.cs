@@ -37,10 +37,7 @@ public static class IEnumerableExt
     /// <returns></returns>
     public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(
         this System.Collections.Generic.IEnumerable<T> enumerable)
-        where T : Object
-    {
-        return enumerable as T[] ?? enumerable.ToArray();
-    }
+        where T : Object => enumerable as T[] ?? enumerable.ToArray();
 
     /// <summary>
     /// Return as LockList
@@ -117,6 +114,7 @@ public static class IEnumerableExt
 
         if (!first)
             return result;
+
         throw new ArgumentException(@"Can't compute ArgMax on empty sequence.", nameof(source));
     }
 

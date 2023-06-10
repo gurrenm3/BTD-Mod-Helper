@@ -11,6 +11,7 @@ internal static class ModContentInstances
         Instances = new Dictionary<Type, List<IModContent>>();
         Actions = new Dictionary<Type, Action<List<IModContent>>>();
     }
+
     internal static Dictionary<Type, List<IModContent>> Instances { get; }
 
     internal static Dictionary<Type, Action<List<IModContent>>> Actions { get; }
@@ -58,6 +59,7 @@ internal static class ModContentInstance<T> where T : IModContent
             AddInstances(instances);
         }
     }
+
     internal static T Instance { get; private set; }
 
     internal static List<T> Instances { get; private set; } = new();

@@ -45,8 +45,8 @@ namespace BTD_Mod_Helper;
 /// </summary>
 public abstract class BloonsTD6Mod : MelonMod, IModContent
 {
-
-    internal readonly HashSet<Type> GotModTooSoon = new();
+    internal static readonly HashSet<Type> GotModTooSoon = new();
+    
     internal readonly List<string> loadErrors = new();
     private List<ModContent> content;
 
@@ -148,10 +148,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     /// <param name="operation">A string for the name of the operation that another mods wants to call</param>
     /// <param name="parameters">The parameters that another mod has provided</param>
     /// <returns>A possible result of this call</returns>
-    public virtual object Call(string operation, params object[] parameters)
-    {
-        return null;
-    }
+    public virtual object Call(string operation, params object[] parameters) => null;
 
     /// <summary>
     /// Manually adds new ModContent to the mod. Does not directly call <see cref="ModContent.Load()" /> or
@@ -306,10 +303,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     /// Otherwise, return false. Seriously.
     /// Note: Only invoked if <see cref="BloonsTD6Mod.CheatMod" /> == true.
     /// </summary>
-    public virtual bool ActOnMessage(Message message)
-    {
-        return false;
-    }
+    public virtual bool ActOnMessage(Message message) => false;
 
     #endregion
 
@@ -450,10 +444,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     /// <param name="name"></param>
     /// <param name="result"></param>
     /// <returns></returns>
-    public virtual bool PreSpriteLoaded(SpriteAtlas spriteAtlas, ref string name, ref Sprite result)
-    {
-        return true;
-    }
+    public virtual bool PreSpriteLoaded(SpriteAtlas spriteAtlas, ref string name, ref Sprite result) => true;
 
     /// <summary>
     /// Called after a sprite is loaded from a SpriteAtlas
@@ -535,6 +526,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     public virtual void OnMatchEnd()
     {
     }
+
     /// <summary>
     /// Called when the pause screen is opened
     /// <br />
@@ -566,10 +558,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     /// <br />
     /// Equivalent to a HarmonyPreFix on Bloon.Leaked
     /// </summary>
-    public virtual bool PreBloonLeaked(Bloon bloon)
-    {
-        return true;
-    }
+    public virtual bool PreBloonLeaked(Bloon bloon) => true;
 
     /// <summary>
     /// Called right after a Bloon leaks.
@@ -819,10 +808,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     /// <param name="inGame"></param>
     /// <param name="round">the current round</param>
     /// <param name="text">the text the hint will have, passed as a ref to allow changes</param>
-    public virtual bool GetRoundHint(InGame inGame, int round, ref string text)
-    {
-        return true;
-    }
+    public virtual bool GetRoundHint(InGame inGame, int round, ref string text) => true;
 
     /// <summary>
     /// Called after a Removeable is destroyed
@@ -918,6 +904,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     public virtual void OnGameObjectsReset()
     {
     }
+
     /// <summary>
     /// Called after a TowerPurchaseButton is created
     /// <br />
@@ -982,6 +969,7 @@ public abstract class BloonsTD6Mod : MelonMod, IModContent
     public virtual void OnButtonClicked(Button button, PointerEventData clickData)
     {
     }
+
     /// <summary>
     /// Called after the mouse goes over a selectable ui element
     /// <br />

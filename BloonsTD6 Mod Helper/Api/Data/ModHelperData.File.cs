@@ -65,10 +65,7 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToEnabledModsFolder()
-    {
-        return MoveToFolder(MelonEnvironment.ModsDirectory);
-    }
+    public bool MoveToEnabledModsFolder() => MoveToFolder(MelonEnvironment.ModsDirectory);
 
     public bool Delete()
     {

@@ -15,10 +15,7 @@ public static class TowerModelBehaviorExt
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static bool HasBehavior<T>(this TowerModel model) where T : Model
-    {
-        return ModelBehaviorExt.HasBehavior<T>(model);
-    }
+    public static bool HasBehavior<T>(this TowerModel model) where T : Model => ModelBehaviorExt.HasBehavior<T>(model);
 
     /// <summary>
     /// Check if this has a specific Behavior
@@ -27,10 +24,8 @@ public static class TowerModelBehaviorExt
     /// <param name="model"></param>
     /// <param name="behavior"></param>
     /// <returns></returns>
-    public static bool HasBehavior<T>(this TowerModel model, out T behavior) where T : Model
-    {
-        return ModelBehaviorExt.HasBehavior(model, out behavior);
-    }
+    public static bool HasBehavior<T>(this TowerModel model, out T behavior) where T : Model =>
+        ModelBehaviorExt.HasBehavior(model, out behavior);
 
     /// <summary>
     /// Return the first Behavior of type T
@@ -38,10 +33,7 @@ public static class TowerModelBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static T GetBehavior<T>(this TowerModel model) where T : Model
-    {
-        return ModelBehaviorExt.GetBehavior<T>(model);
-    }
+    public static T GetBehavior<T>(this TowerModel model) where T : Model => ModelBehaviorExt.GetBehavior<T>(model);
 
     /// <summary>
     /// Return all Behaviors of type T
@@ -49,10 +41,8 @@ public static class TowerModelBehaviorExt
     /// <typeparam name="T">The Behavior you want</typeparam>
     /// <param name="model"></param>
     /// <returns></returns>
-    public static List<T> GetBehaviors<T>(this TowerModel model) where T : Model
-    {
-        return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
-    }
+    public static List<T> GetBehaviors<T>(this TowerModel model) where T : Model =>
+        ModelBehaviorExt.GetBehaviors<T>(model).ToList();
 
     /// <summary>
     /// Add a Behavior to this

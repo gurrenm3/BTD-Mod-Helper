@@ -10,22 +10,14 @@ namespace BTD_Mod_Helper.Extensions;
 public static class PetModelBehaviorExt
 {
     /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static bool HasBehavior<T>(this PetModel model) where T : Model
-    {
-        return ModelBehaviorExt.HasBehavior<T>(model);
-    }
+    public static bool HasBehavior<T>(this PetModel model) where T : Model => ModelBehaviorExt.HasBehavior<T>(model);
 
     /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static T GetBehavior<T>(this PetModel model) where T : Model
-    {
-        return ModelBehaviorExt.GetBehavior<T>(model);
-    }
+    public static T GetBehavior<T>(this PetModel model) where T : Model => ModelBehaviorExt.GetBehavior<T>(model);
 
     /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}" />
-    public static List<T> GetBehaviors<T>(this PetModel model) where T : Model
-    {
-        return ModelBehaviorExt.GetBehaviors<T>(model).ToList();
-    }
+    public static List<T> GetBehaviors<T>(this PetModel model) where T : Model =>
+        ModelBehaviorExt.GetBehaviors<T>(model).ToList();
 
     /// <inheritdoc cref="ModelBehaviorExt.AddBehavior" />
     public static void AddBehavior<T>(this PetModel model, T behavior) where T : PetBehaviorModel

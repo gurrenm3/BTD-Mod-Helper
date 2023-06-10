@@ -26,18 +26,12 @@ public class ModSettingFolder : ModSetting<string>
     /// <summary>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
-    public static implicit operator ModSettingFolder(string value)
-    {
-        return new ModSettingFolder(value);
-    }
+    public static implicit operator ModSettingFolder(string value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator string(ModSettingFolder modSettingFolder)
-    {
-        return modSettingFolder.value;
-    }
+    public static implicit operator string(ModSettingFolder modSettingFolder) => modSettingFolder.value;
 
     /// <inheritdoc />
     public override void SetValue(object val)

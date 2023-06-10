@@ -19,10 +19,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="referenceArray"></param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> Empty<T>(this Il2CppReferenceArray<T> referenceArray)
-        where T : Object
-    {
-        return new Il2CppReferenceArray<T>(0);
-    }
+        where T : Object => new(0);
 
     /// <summary>
     /// Sets all elements in the <see cref="Il2CppReferenceArray{T}" /> to the default value of each element type.
@@ -40,10 +37,8 @@ public static partial class Il2CppReferenceArrayExt
     /// <summary>
     /// Return as System.List
     /// </summary>
-    public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Object
-    {
-        return referenceArray != null ? new List<T>(referenceArray) : Array.Empty<T>().ToList();
-    }
+    public static List<T> ToList<T>(this Il2CppReferenceArray<T> referenceArray) where T : Object =>
+        referenceArray != null ? new List<T>(referenceArray) : Array.Empty<T>().ToList();
 
     /// <summary>
     /// Return as Il2CppSystem.List
@@ -62,10 +57,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <summary>
     /// Return as a System.Array
     /// </summary>
-    public static T[] ToArray<T>(this Il2CppReferenceArray<T> referenceArray) where T : Object
-    {
-        return referenceArray;
-    }
+    public static T[] ToArray<T>(this Il2CppReferenceArray<T> referenceArray) where T : Object => referenceArray;
 
     /// <summary>
     /// Return as LockList
@@ -104,10 +96,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static Il2CppReferenceArray<TCast> DuplicateAs<TSource, TCast>(this Il2CppReferenceArray<TSource> list)
-        where TSource : Object where TCast : Object
-    {
-        return list.CastAll<TSource, TCast>().ToIl2CppReferenceArray();
-    }
+        where TSource : Object where TCast : Object => list.CastAll<TSource, TCast>().ToIl2CppReferenceArray();
 
     /// <summary>
     /// Return this with an additional Item added to it
@@ -161,10 +150,7 @@ public static partial class Il2CppReferenceArrayExt
     /// <param name="objectsToAdd">Items to add</param>
     /// <returns></returns>
     public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray,
-        List<T> objectsToAdd) where T : Object
-    {
-        return referenceArray.AddTo(objectsToAdd.ToIl2CppReferenceArray());
-    }
+        List<T> objectsToAdd) where T : Object => referenceArray.AddTo(objectsToAdd.ToIl2CppReferenceArray());
 
 
     /// <summary>

@@ -26,42 +26,27 @@ public static class InGameExt
     /// </summary>
     /// <param name="inGame"></param>
     /// <returns></returns>
-    public static bool IsInGame(this InGame inGame)
-    {
-        return inGame.GetSimulation() != null;
-    }
+    public static bool IsInGame(this InGame inGame) => inGame.GetSimulation() != null;
 
     /// <summary>
     /// Get the current Map
     /// </summary>
-    public static Map GetMap(this InGame inGame)
-    {
-        return inGame.GetSimulation()?.Map;
-    }
+    public static Map GetMap(this InGame inGame) => inGame.GetSimulation()?.Map;
 
     /// <summary>
     /// Get the current Simulation for this InGame session
     /// </summary>
-    public static Simulation GetSimulation(this InGame inGame)
-    {
-        return inGame.GetUnityToSimulation()?.simulation;
-    }
+    public static Simulation GetSimulation(this InGame inGame) => inGame.GetUnityToSimulation()?.simulation;
 
     /// <summary>
     /// The Game.model that is being used for this InGame.instance
     /// </summary>
-    public static GameModel GetGameModel(this InGame inGame)
-    {
-        return inGame.GetSimulation()?.model;
-    }
+    public static GameModel GetGameModel(this InGame inGame) => inGame.GetSimulation()?.model;
 
     /// <summary>
     /// Get the main Factory that creates and manages all other Factories
     /// </summary>
-    public static FactoryFactory GetMainFactory(this InGame inGame)
-    {
-        return inGame.GetSimulation().factory;
-    }
+    public static FactoryFactory GetMainFactory(this InGame inGame) => inGame.GetSimulation().factory;
 
     /// <summary>
     /// Get the Factory for a specific Type. Ex: Getting the Factory that makes Towers
@@ -69,10 +54,8 @@ public static class InGameExt
     /// <typeparam name="T"></typeparam>
     /// <param name="inGame"></param>
     /// <returns></returns>
-    public static Factory<T> GetFactory<T>(this InGame inGame) where T : RootObject, new()
-    {
-        return inGame.GetMainFactory().GetFactory<T>();
-    }
+    public static Factory<T> GetFactory<T>(this InGame inGame) where T : RootObject, new() =>
+        inGame.GetMainFactory().GetFactory<T>();
 
     /// <summary>
     /// Get every Tower that has been created through the Tower Factory
@@ -111,62 +94,43 @@ public static class InGameExt
     /// </summary>
     /// <param name="inGame"></param>
     /// <returns></returns>
-    public static List<Bloon> GetBloons(this InGame inGame)
-    {
-
-        return inGame.GetFactory<Bloon>().up.ToList(); // TODO check this
-
-    }
+    public static List<Bloon> GetBloons(this InGame inGame) => inGame.GetFactory<Bloon>().up.ToList(); // TODO check this
 
     /// <summary>
     /// Get's all existing BloonToSimulations
     /// </summary>
     /// <param name="inGame"></param>
     /// <returns></returns>
-    public static List<BloonToSimulation> GetAllBloonToSim(this InGame inGame)
-    {
+    public static List<BloonToSimulation> GetAllBloonToSim(this InGame inGame) =>
         //return SessionData.Instance.bloonTracker.currentBloonToSims.Values.ToList();
-        return inGame.GetUnityToSimulation().GetAllBloons().ToList();
-    }
+        inGame.GetUnityToSimulation().GetAllBloons().ToList();
 
     /// <summary>
     /// Get's all existing Projectiles on the map
     /// </summary>
     /// <param name="inGame"></param>
     /// <returns></returns>
-    public static List<Projectile> GetProjectiles(this InGame inGame)
-    {
-        return inGame.GetAllObjectsOfType<Projectile>();
-    }
+    public static List<Projectile> GetProjectiles(this InGame inGame) => inGame.GetAllObjectsOfType<Projectile>();
 
     /// <summary>
     /// Get the current TowerManager for this game session
     /// </summary>
-    public static TowerManager GetTowerManager(this InGame inGame)
-    {
-        return inGame.GetSimulation().towerManager;
-    }
+    public static TowerManager GetTowerManager(this InGame inGame) => inGame.GetSimulation().towerManager;
 
     /// <summary>
     /// Get's all AbilityToSimulations currently in the game
     /// </summary>
     /// <param name="inGame"></param>
     /// <returns></returns>
-    public static List<AbilityToSimulation> GetAbilities(this InGame inGame)
-    {
-
-        return inGame.GetUnityToSimulation()?.GetAllAbilities(false)?.ToList();
-    }
+    public static List<AbilityToSimulation> GetAbilities(this InGame inGame) =>
+        inGame.GetUnityToSimulation()?.GetAllAbilities(false)?.ToList();
 
     /// <summary>
     /// Get's the UnityToSimulation for this game
     /// </summary>
     /// <param name="inGame"></param>
     /// <returns></returns>
-    public static UnityToSimulation GetUnityToSimulation(this InGame inGame)
-    {
-        return inGame.bridge;
-    }
+    public static UnityToSimulation GetUnityToSimulation(this InGame inGame) => inGame.bridge;
 
 
     /// <summary>
@@ -196,6 +160,7 @@ public static class InGameExt
     {
         inGame.SellTower(tower.GetTowerToSim());
     }
+
     /// <summary>
     /// Returns true if the initial co-op handshake has finished and user has co-op game details.
     /// </summary>
@@ -241,18 +206,13 @@ public static class InGameExt
     /// </summary>
     /// <param name="inGame">InGame instance</param>
     /// <param name="index">Index of the cash manager. Default is 0</param>
-    public static Simulation.CashManager GetCashManager(this InGame inGame, int index = 0)
-    {
-        return inGame.GetSimulation()?.cashManagers?._entries[index]?.value;
-    }
+    public static Simulation.CashManager GetCashManager(this InGame inGame, int index = 0) =>
+        inGame.GetSimulation()?.cashManagers?._entries[index]?.value;
 
     /// <summary>
     /// Get the Player's current cash
     /// </summary>
-    public static double GetCash(this InGame inGame)
-    {
-        return inGame.GetCashManager().cash.Value;
-    }
+    public static double GetCash(this InGame inGame) => inGame.GetCashManager().cash.Value;
 
     /// <summary>
     /// Add cash to the Player's wallet
@@ -279,10 +239,7 @@ public static class InGameExt
     /// <summary>
     /// Get the Player's current health
     /// </summary>
-    public static double GetHealth(this InGame inGame)
-    {
-        return inGame.GetSimulation().health.Value;
-    }
+    public static double GetHealth(this InGame inGame) => inGame.GetSimulation().health.Value;
 
     /// <summary>
     /// Add health to the players current health
@@ -307,10 +264,7 @@ public static class InGameExt
     /// <summary>
     /// Get the player's max health
     /// </summary>
-    public static double GetMaxHealth(this InGame inGame)
-    {
-        return inGame.GetSimulation().maxHealth.Value;
-    }
+    public static double GetMaxHealth(this InGame inGame) => inGame.GetSimulation().maxHealth.Value;
 
     /// <summary>
     /// Add to the player's max health
@@ -336,18 +290,13 @@ public static class InGameExt
     /// Get collection of popped bloons in this game. Right now only works for current games. Does not store results from
     /// loaded games
     /// </summary>
-    public static Dictionary<string, int> GetPoppedBloons(this InGame inGame)
-    {
-        return SessionData.Instance.PoppedBloons;
-    }
+    public static Dictionary<string, int> GetPoppedBloons(this InGame inGame) => SessionData.Instance.PoppedBloons;
 
     /// <summary>
     /// Get the current instance of TowerInventory being used in this game session
     /// </summary>
-    public static TowerInventory GetTowerInventory(this InGame inGame)
-    {
-        return inGame.bridge.simulation.GetTowerInventory(inGame.bridge.GetInputId());
-    }
+    public static TowerInventory GetTowerInventory(this InGame inGame) =>
+        inGame.bridge.simulation.GetTowerInventory(inGame.bridge.GetInputId());
 
 
     // This has been removed so it can be tested further.

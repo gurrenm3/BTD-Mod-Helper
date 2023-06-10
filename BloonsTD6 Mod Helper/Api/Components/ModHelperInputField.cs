@@ -16,6 +16,7 @@ public class ModHelperInputField : ModHelperComponent
     public ModHelperInputField(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The InputField component
     /// </summary>

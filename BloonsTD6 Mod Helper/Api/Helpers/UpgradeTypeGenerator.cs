@@ -29,7 +29,7 @@ internal static class UpgradeTypeGenerator
         );
 
 
-        foreach (var upgrade in Game.instance.model.upgrades.Select(x=>x.name))
+        foreach (var upgrade in Game.instance.model.upgrades.Select(x => x.name))
         {
             var p = Overrides.TryGetValue(upgrade, out var overriden)
                 ? overriden

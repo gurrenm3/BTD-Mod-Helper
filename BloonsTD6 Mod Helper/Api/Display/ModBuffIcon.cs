@@ -63,11 +63,8 @@ public abstract class ModBuffIcon : NamedModContent
     /// </summary>
     public string BuffIconName => Id;
 
-    private BuffIndicatorModel CreateBuffIndicatorModel()
-    {
-        return new BuffIndicatorModel($"BuffIndicatorModel_{Id}-{Icon}", Icon, Id, GlobalRange,
-            MaxStackSize, OnlyShowBuffIfMutated);
-    }
+    private BuffIndicatorModel CreateBuffIndicatorModel() => new($"BuffIndicatorModel_{Id}-{Icon}", Icon, Id, GlobalRange,
+        MaxStackSize, OnlyShowBuffIfMutated);
 
     /// <summary>
     /// Makes a support model use this as its buff indicator

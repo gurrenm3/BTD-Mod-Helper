@@ -61,7 +61,11 @@ internal class ProfileManagement
         SeenEvents.Clear();
         profile.seenEvents?.RemoveWhere(new Func<string, bool>(s =>
         {
-            if ((from paragonEvent in ParagonEvents where s.StartsWith(paragonEvent) let tower = s.Replace(paragonEvent, "") where Clean(paragonEvent, towers, current)(tower) select paragonEvent).Any())
+            if ((from paragonEvent in ParagonEvents
+                    where s.StartsWith(paragonEvent)
+                    let tower = s.Replace(paragonEvent, "")
+                    where Clean(paragonEvent, towers, current)(tower)
+                    select paragonEvent).Any())
             {
                 SeenEvents.Add(s);
                 return true;

@@ -24,6 +24,7 @@ public class ModHelperSlider : ModHelperComponent
     public ModHelperSlider(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The actual Slider component
     /// </summary>

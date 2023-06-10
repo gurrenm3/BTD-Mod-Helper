@@ -11,8 +11,5 @@ public static class Vector3Ext
     /// </summary>
     /// <param name="vector3"></param>
     /// <returns></returns>
-    public static Vector3 ToSMathVector(this UnityEngine.Vector3 vector3)
-    {
-        return new Vector3(vector3);
-    }
+    public static Vector3 ToSMathVector(this UnityEngine.Vector3 vector3) => new(vector3);
 }

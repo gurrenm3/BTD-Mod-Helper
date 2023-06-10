@@ -12,10 +12,8 @@ public static class GameObjectExt
     /// <summary>
     /// Finds a component with the given path and type
     /// </summary>
-    public static T GetComponent<T>(this GameObject gameObject, string componentPath)
-    {
-        return gameObject.transform.Find(componentPath).GetComponent<T>();
-    }
+    public static T GetComponent<T>(this GameObject gameObject, string componentPath) =>
+        gameObject.transform.Find(componentPath).GetComponent<T>();
 
     /// <summary>
     /// Try to get a component in a child of this GameObject by it's name. Equivelant to a foreach with GetComponentsInChildren
@@ -110,10 +108,8 @@ public static class GameObjectExt
     /// <summary>
     /// Returns whether a component of the given type exists on a game object
     /// </summary>
-    public static bool HasComponent<T>(this GameObject gameObject) where T : Component
-    {
-        return gameObject.GetComponent<T>() != null;
-    }
+    public static bool HasComponent<T>(this GameObject gameObject) where T : Component =>
+        gameObject.GetComponent<T>() != null;
 
     /// <summary>
     /// Returns whether a component of the given type exists on a game object, and puts it in the out param
@@ -167,19 +163,15 @@ public static class GameObjectExt
     /// <inheritdoc cref="ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info)" />
     public static ModHelperPanel AddModHelperPanel(this GameObject gameObject, Info info,
         string backgroundSprite = null, RectTransform.Axis? layoutAxis = null, float spacing = 50,
-        int padding = 0)
-    {
-        return gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis, spacing,
-            padding));
-    }
+        int padding = 0) => gameObject.AddModHelperComponent(ModHelperPanel.Create(info, backgroundSprite, layoutAxis,
+        spacing,
+        padding));
 
     /// <inheritdoc cref="ModHelperComponent.AddScrollPanel(BTD_Mod_Helper.Api.Components.Info)" />
     public static ModHelperScrollPanel AddModHelperScrollPanel(this GameObject gameObject, Info info,
-        RectTransform.Axis? axis, string backgroundSprite = null, float spacing = 0, int padding = 0)
-    {
-        return gameObject.AddModHelperComponent(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing,
+        RectTransform.Axis? axis, string backgroundSprite = null, float spacing = 0, int padding = 0) =>
+        gameObject.AddModHelperComponent(ModHelperScrollPanel.Create(info, axis, backgroundSprite, spacing,
             padding));
-    }
 
     /// <summary>
     /// Destroys all children of a game object
@@ -193,10 +185,7 @@ public static class GameObjectExt
     /// <summary>
     /// Used to null check unity objects without bypassing the lifecycle
     /// </summary>
-    public static T Exists<T>(this T obj) where T : Object
-    {
-        return obj == null ? null : obj;
-    }
+    public static T Exists<T>(this T obj) where T : Object => obj == null ? null : obj;
 
     /// <summary>
     /// Used to null check unity objects without bypassing the lifecycle

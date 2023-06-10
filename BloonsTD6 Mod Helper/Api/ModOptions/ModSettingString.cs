@@ -55,18 +55,12 @@ public class ModSettingString : ModSetting<string>
     /// <summary>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
-    public static implicit operator ModSettingString(string value)
-    {
-        return new ModSettingString(value);
-    }
+    public static implicit operator ModSettingString(string value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator string(ModSettingString modSettingString)
-    {
-        return modSettingString.value;
-    }
+    public static implicit operator string(ModSettingString modSettingString) => modSettingString.value;
 
     /// <inheritdoc />
     internal override ModHelperOption CreateComponent()

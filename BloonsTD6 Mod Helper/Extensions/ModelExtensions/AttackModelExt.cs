@@ -70,10 +70,8 @@ public static class AttackModelExt
     /// <param name="attackModel"></param>
     /// <returns></returns>
     [Obsolete("Use GetDescendants<ProjectileModel>() instead")]
-    public static List<ProjectileModel> GetAllProjectiles(this AttackModel attackModel)
-    {
-        return attackModel.GetDescendants<ProjectileModel>().ToList();
-    }
+    public static List<ProjectileModel> GetAllProjectiles(this AttackModel attackModel) =>
+        attackModel.GetDescendants<ProjectileModel>().ToList();
 
     /// <summary>
     /// Applies the given ModDisplay to the index'th (or first) DisplayModel in the behaviors of the AttackModel.

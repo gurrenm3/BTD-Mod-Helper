@@ -46,16 +46,10 @@ public abstract class ModSetting<T> : ModSetting
     public List<Action<T>> OnValueChanged { get; set; } = new();
 
     /// <inheritdoc />
-    public override object GetValue()
-    {
-        return value;
-    }
+    public override object GetValue() => value;
 
     /// <inheritdoc />
-    public override object GetDefaultValue()
-    {
-        return defaultValue;
-    }
+    public override object GetDefaultValue() => defaultValue;
 
     /// <inheritdoc />
     public override void SetValue(object val)
@@ -109,10 +103,7 @@ public abstract class ModSetting<T> : ModSetting
         }
     }
 
-    internal override Type GetSettingType()
-    {
-        return typeof(T);
-    }
+    internal override Type GetSettingType() => typeof(T);
 }
 
 /// <summary>
@@ -157,19 +148,13 @@ public abstract class ModSetting
     /// Gets the current value that this ModSetting holds
     /// </summary>
     /// <returns>The value</returns>
-    public virtual object GetValue()
-    {
-        return null;
-    }
+    public virtual object GetValue() => null;
 
     /// <summary>
     /// Gets the default value for this ModSetting
     /// </summary>
     /// <returns>The default value</returns>
-    public virtual object GetDefaultValue()
-    {
-        return null;
-    }
+    public virtual object GetDefaultValue() => null;
 
     /// <summary>
     /// Sets the current value of this ModSetting
@@ -190,20 +175,14 @@ public abstract class ModSetting
     /// Validates the current value using the customValidation function, if there is one.
     /// If there were no issues, performs the onSave action
     /// </summary>
-    internal virtual bool OnSave()
-    {
-        return true;
-    }
+    internal virtual bool OnSave() => true;
 
     internal virtual void Load(object value)
     {
 
     }
 
-    internal virtual Type GetSettingType()
-    {
-        return typeof(object);
-    }
+    internal virtual Type GetSettingType() => typeof(object);
 
     /// <summary>
     /// Creates a base ModHelperOption component based on the name, description and icon of this

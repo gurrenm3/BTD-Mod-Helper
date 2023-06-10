@@ -12,6 +12,7 @@ public partial class SessionData
     /// How much cash each bloon is worth when completely popped
     /// </summary>
     public readonly Dictionary<string, int> bloonPopValues = new();
+
     /// <summary>
     /// Singleton instance of SessionData
     /// </summary>

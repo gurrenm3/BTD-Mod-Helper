@@ -15,6 +15,7 @@ public class ModHelperCheckbox : ModHelperComponent
     public ModHelperCheckbox(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The Toggle component
     /// </summary>

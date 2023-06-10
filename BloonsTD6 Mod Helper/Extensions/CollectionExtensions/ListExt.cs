@@ -125,10 +125,8 @@ public static partial class ListExt
     /// <param name="list"></param>
     /// <param name="filePath">FilePath of the saved List</param>
     /// <returns>The loaded List if successful, otherwise default value</returns>
-    public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath)
-    {
-        return list.LoadFromFile(filePath, out _);
-    }
+    public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath) =>
+        list.LoadFromFile(filePath, out _);
 
     /// <summary>
     /// Load a List from a FilePath

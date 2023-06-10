@@ -60,6 +60,7 @@ public abstract class ModDisplay : ModContent
     /// If you modify the unity Object and not just the DisplayNode attached to it, then set this to true
     /// </summary>
     [Obsolete("No longer required")] public virtual bool ModifiesUnityObject => false;
+
     /// <summary>
     /// The DisplayCategory to use for the DisplayModel
     /// </summary>
@@ -150,11 +151,8 @@ public abstract class ModDisplay : ModContent
     /// Gets a new DisplayModel based on this ModDisplay
     /// </summary>
     /// <returns></returns>
-    public DisplayModel GetDisplayModel()
-    {
-        return new DisplayModel($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, DisplayCategory,
-            PositionOffset, Scale);
-    }
+    public DisplayModel GetDisplayModel() => new($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, DisplayCategory,
+        PositionOffset, Scale);
 
     /// <summary>
     /// Gets the Display for a given tower, optionally for the given tiers
@@ -164,10 +162,8 @@ public abstract class ModDisplay : ModContent
     /// <param name="mid">Path 2 tier</param>
     /// <param name="bot">Path 3 tier</param>
     /// <returns>The display GUID</returns>
-    protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0)
-    {
-        return Game.instance.model.GetTower(tower, top, mid, bot).display.GUID;
-    }
+    protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0) =>
+        Game.instance.model.GetTower(tower, top, mid, bot).display.GUID;
 
     /// <summary>
     /// Gets a UnityDisplayNode for a different guid

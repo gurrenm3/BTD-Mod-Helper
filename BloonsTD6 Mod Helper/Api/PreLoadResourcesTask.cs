@@ -35,10 +35,7 @@ internal class PreLoadResourcesTask : ModLoadTask
     /// Don't load this like a normal task
     /// </summary>
     /// <returns></returns>
-    public override IEnumerable<ModContent> Load()
-    {
-        return Enumerable.Empty<ModContent>();
-    }
+    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
     public override IEnumerator Coroutine()
     {

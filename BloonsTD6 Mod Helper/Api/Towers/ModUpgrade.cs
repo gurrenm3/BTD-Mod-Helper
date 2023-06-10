@@ -261,10 +261,7 @@ public abstract class ModUpgrade : NamedModContent
     /// </summary>
     /// <param name="tower"></param>
     /// <returns>If </returns>
-    public virtual bool RestrictUpgrading(Tower tower)
-    {
-        return false;
-    }
+    public virtual bool RestrictUpgrading(Tower tower) => false;
 }
 
 /// <summary>

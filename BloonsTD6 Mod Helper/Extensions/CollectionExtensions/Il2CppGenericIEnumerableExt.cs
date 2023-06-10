@@ -16,10 +16,8 @@ public static class Il2CppGenericIEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable)
-    {
-        return enumerable.GetEnumerator().Cast<IEnumerator>();
-    }
+    public static IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable) =>
+        enumerable.GetEnumerator().Cast<IEnumerator>();
 
     /// <summary>
     /// Get the total number of elements
@@ -52,6 +50,7 @@ public static class Il2CppGenericIEnumerableExt
         {
             if (i == index)
                 return enumerator.Current;
+
             i++;
         }
 

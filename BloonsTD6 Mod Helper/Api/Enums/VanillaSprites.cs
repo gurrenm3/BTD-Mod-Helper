@@ -4557,6 +4557,7 @@ public static class VanillaSprites
     public const string ZOMGIcon = "6c6d7a6058e4c4cf2961090ba4315d87";
 
     public static readonly Dictionary<string, string> ByName;
+
     static VanillaSprites()
     {
         ByName = new Dictionary<string, string>

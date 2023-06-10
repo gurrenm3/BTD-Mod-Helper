@@ -12,8 +12,5 @@ public static class TowerToSimulationExt
     /// </summary>
     /// <param name="towerToSim"></param>
     /// <returns></returns>
-    public static Tower GetTower(this TowerToSimulation towerToSim)
-    {
-        return towerToSim.tower;
-    }
+    public static Tower GetTower(this TowerToSimulation towerToSim) => towerToSim.tower;
 }

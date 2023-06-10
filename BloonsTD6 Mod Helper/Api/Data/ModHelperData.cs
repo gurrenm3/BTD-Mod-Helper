@@ -106,9 +106,9 @@ internal partial class ModHelperData
         // ReSharper disable once ConstantNullCoalescingCondition
         var iconPath = Icon ?? DefaultIcon;
         var assemblyPath = "." + Path.GetFileName(iconPath);
-        var resource =Array.Find(mod.GetAssembly()
-            .GetManifestResourceNames(),
-        s => s.EndsWith(assemblyPath));
+        var resource = Array.Find(mod.GetAssembly()
+                .GetManifestResourceNames(),
+            s => s.EndsWith(assemblyPath));
         if (resource != null)
         {
             IconBytes = mod.GetAssembly().GetManifestResourceStream(resource)?.GetByteArray();
@@ -185,6 +185,7 @@ internal partial class ModHelperData
     // Values to be displayed in the GUI
     internal string DisplayName => Name.NullIfEmpty() ?? Mod?.Info.Name.NullIfEmpty() ?? RepoName ?? "No Name Provided";
     internal string DisplayAuthor => Author?.ToLower() == "unknown" ? RepoOwner ?? Author : Author ?? RepoOwner;
+
     internal string DisplayDescription =>
         (Description.NullIfEmpty() ?? Repository?.Description.NullIfEmpty() ?? "No description provided.")
         .Replace("\\n", "\n");

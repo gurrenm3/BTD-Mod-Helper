@@ -93,6 +93,7 @@ public static class TaskScheduler
                 while (amountToWait >= count)
                 {
                     yield return new WaitForSecondsRealtime(1);
+
                     count++;
                 }
 
@@ -102,6 +103,7 @@ public static class TaskScheduler
                 while (amountToWait >= count)
                 {
                     yield return new WaitForEndOfFrame();
+
                     count++;
                 }
                 break;

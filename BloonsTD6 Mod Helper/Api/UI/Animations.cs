@@ -34,8 +34,6 @@ public static class Animations
     /// <summary>
     /// Gets an AnimationController by its name, or null if there isn't one with that name
     /// </summary>
-    public static RuntimeAnimatorController Get(string name)
-    {
-        return AnimationsByName.TryGetValue(name, out var anim) ? anim : null;
-    }
+    public static RuntimeAnimatorController Get(string name) =>
+        AnimationsByName.TryGetValue(name, out var anim) ? anim : null;
 }

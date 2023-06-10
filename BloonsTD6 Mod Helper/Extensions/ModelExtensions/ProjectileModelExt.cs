@@ -17,10 +17,8 @@ public static class ProjectileModelExt
     /// <summary>
     /// Get the DamageModel behavior from the list of behaviors
     /// </summary>
-    public static DamageModel GetDamageModel(this ProjectileModel projectileModel)
-    {
-        return projectileModel.GetBehavior<DamageModel>();
-    }
+    public static DamageModel GetDamageModel(this ProjectileModel projectileModel) =>
+        projectileModel.GetBehavior<DamageModel>();
 
     /// <summary>
     /// Get all Projectile Simulations that have this ProjectileModel

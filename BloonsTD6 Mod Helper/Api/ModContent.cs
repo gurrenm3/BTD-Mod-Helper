@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using BTD_Mod_Helper.Api.Bloons;
-using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Scenarios;
-using BTD_Mod_Helper.Api.Towers;
-using Il2CppAssets.Scripts.Models.Towers;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
-using UnityEngine;
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -36,6 +28,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// The BloonsTD6Mod that this content was added by
     /// </summary>
     public BloonsTD6Mod mod;
+
     /// <summary>
     /// The name that will be at the end of the ID for this ModContent, by default the class name
     /// </summary>
@@ -72,6 +65,8 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// <exclude />
     public virtual int RegisterPerFrame => 20;
 
+    #region IComparable<ModContent> Members
+
     /// <inheritdoc />
     public int CompareTo(ModContent other)
     {
@@ -90,6 +85,8 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
         }
         return compareTo;
     }
+
+    #endregion
 
     /// <summary>
     /// Used for when you want to programmatically create multiple instances of a given ModContent
@@ -123,13 +120,10 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
             .ToList();
     }
 
-    private static bool CanLoadType(Type type)
-    {
-        return !type.IsAbstract &&
-               !type.ContainsGenericParameters &&
-               typeof(ModContent).IsAssignableFrom(type) &&
-               type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) != null;
-    }
+    private static bool CanLoadType(Type type) => !type.IsAbstract &&
+                                                  !type.ContainsGenericParameters &&
+                                                  typeof(ModContent).IsAssignableFrom(type) &&
+                                                  type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) != null;
 
     private static ModContent CreateInstance(Type type, BloonsTD6Mod mod)
     {
@@ -184,9 +178,5 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     }
 
 
-    internal int GetOrder()
-    {
-        return Order;
-    }
-
+    internal int GetOrder() => Order;
 }

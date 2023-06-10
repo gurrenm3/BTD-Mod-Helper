@@ -14,6 +14,7 @@ public class ModHelperText : ModHelperComponent
     public ModHelperText(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The component that handles the Text rendering
     /// </summary>

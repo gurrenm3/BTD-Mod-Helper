@@ -32,6 +32,7 @@ public abstract class ModVanillaTower : ModVanillaContent<TowerModel>
     /// Changes the base cost
     /// </summary>
     public virtual int Cost => -1;
+
     /// <inheritdoc />
     public override void Register()
     {
@@ -79,10 +80,7 @@ public abstract class ModVanillaTower : ModVanillaContent<TowerModel>
     }
 
     /// <inheritdoc />
-    public override IEnumerable<TowerModel> GetAffected(GameModel gameModel)
-    {
-        return gameModel.GetTowersWithBaseId(TowerId);
-    }
+    public override IEnumerable<TowerModel> GetAffected(GameModel gameModel) => gameModel.GetTowersWithBaseId(TowerId);
 }
 
 /// <summary>

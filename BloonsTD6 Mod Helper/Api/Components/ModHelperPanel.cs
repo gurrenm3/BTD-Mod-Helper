@@ -14,6 +14,7 @@ public class ModHelperPanel : ModHelperComponent
     public ModHelperPanel(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The background image
     /// </summary>
@@ -29,10 +30,8 @@ public class ModHelperPanel : ModHelperComponent
     /// <param name="padding">The layout group's padding</param>
     /// <returns>The created ModHelperPanel</returns>
     public static ModHelperPanel Create(Info info, string backgroundSprite = null,
-        RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
-    {
-        return Create<ModHelperPanel>(info, backgroundSprite, layoutAxis, spacing, padding);
-    }
+        RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0) =>
+        Create<ModHelperPanel>(info, backgroundSprite, layoutAxis, spacing, padding);
 
     /// <inheritdoc cref="Create" />
     protected static T Create<T>(Info info, string backgroundSprite = null,

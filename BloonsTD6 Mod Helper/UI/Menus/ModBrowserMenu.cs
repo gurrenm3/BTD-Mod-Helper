@@ -316,6 +316,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         }).ToList();
     }
 
+    #region Nested type: SortingMethod
+
     private enum SortingMethod
     {
         RecentlyUpdated,
@@ -324,4 +326,6 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         New,
         Old
     }
+
+    #endregion
 }

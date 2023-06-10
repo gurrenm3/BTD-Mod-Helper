@@ -10,10 +10,7 @@ public static partial class ModelExt
     /// Create a new and separate copy of this object. Same as using:  .Clone().Cast();
     /// </summary>
     /// <typeparam name="T">Type of object you want to cast to when duplicating. Done automatically</typeparam>
-    public static T Duplicate<T>(this T model) where T : Model
-    {
-        return model.Clone().Cast<T>();
-    }
+    public static T Duplicate<T>(this T model) where T : Model => model.Clone().Cast<T>();
 
     /// <summary>
     /// Turns any descendants with "_" as their name into unique named models

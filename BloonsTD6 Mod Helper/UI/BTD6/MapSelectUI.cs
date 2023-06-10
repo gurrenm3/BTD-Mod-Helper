@@ -41,40 +41,29 @@ public static class MapSelectUI
     /// <summary>
     /// Gets the Beginner Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle GetBeginnerButton()
-    {
-        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/BeginnerBtn");
-    }
+    public static Toggle GetBeginnerButton() =>
+        GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/BeginnerBtn");
 
     /// <summary>
     /// Gets the Intermediate Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle GetIntermediateButton()
-    {
-        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/IntermediateBtn");
-    }
+    public static Toggle GetIntermediateButton() =>
+        GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/IntermediateBtn");
 
     /// <summary>
     /// Gets the Advanced Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle GetAdvancedButton()
-    {
-        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/AdvancedBtn");
-    }
+    public static Toggle GetAdvancedButton() =>
+        GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/AdvancedBtn");
 
     /// <summary>
     /// Gets the Expert Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle GetExpertButton()
-    {
-        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExpertBtn");
-    }
+    public static Toggle GetExpertButton() => GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExpertBtn");
 
     /// <summary>
     /// Gets the Extreme Button if on the Map Select Menu, or null
     /// </summary>
-    public static Toggle GetExtremeButton()
-    {
-        return GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExtremeBtn");
-    }
+    public static Toggle GetExtremeButton() =>
+        GetCanvas()?.GetComponent<Toggle>("MapSelectScreen/MapDifficulties/ExtremeBtn");
 }

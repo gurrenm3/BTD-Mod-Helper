@@ -14,6 +14,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
     /// Number of different Paragon displays that are used by default
     /// </summary>
     protected const int TotalParagonDisplays = 5;
+
     /// <inheritdoc />
     public override DisplayCategory DisplayCategory => DisplayCategory.Tower;
 
@@ -91,10 +92,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
     /// </summary>
     /// <param name="tiers"></param>
     /// <returns></returns>
-    protected bool IsParagon(int[] tiers)
-    {
-        return tiers[0] == 6;
-    }
+    protected bool IsParagon(int[] tiers) => tiers[0] == 6;
 }
 
 /// <summary>

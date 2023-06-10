@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using BTD_Mod_Helper.Api.Components;
 using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Unity.Audio;
@@ -109,10 +108,9 @@ public abstract class ModGameMenu : ModContent
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    protected static string MenuName<T>() where T : GameMenu
-    {
-        return Types.TryGetValue(typeof(T), out var menuName) ? menuName : typeof(T).Name.Replace("Screen", "UI");
-    }
+    protected static string MenuName<T>() where T : GameMenu => Types.TryGetValue(typeof(T), out var menuName)
+        ? menuName
+        : typeof(T).Name.Replace("Screen", "UI");
 
     internal static bool CheckOpen(GameMenu gameMenu, Object data, out Object outData)
     {
@@ -167,15 +165,10 @@ public abstract class ModGameMenu : ModContent
         }
     }
 
-    private static bool Patch_data(GameMenu __instance, ref Object data)
-    {
-        return CheckOpen(__instance, data, out data);
-    }
+    private static bool Patch_data(GameMenu __instance, ref Object data) => CheckOpen(__instance, data, out data);
 
-    private static bool Patch_menuData(GameMenu __instance, ref Object menuData)
-    {
-        return CheckOpen(__instance, menuData, out menuData);
-    }
+    private static bool Patch_menuData(GameMenu __instance, ref Object menuData) =>
+        CheckOpen(__instance, menuData, out menuData);
 }
 
 /// <summary>

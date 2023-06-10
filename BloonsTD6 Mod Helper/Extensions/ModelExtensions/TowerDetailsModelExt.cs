@@ -49,19 +49,14 @@ public static class TowerDetailsModelExt
     /// <summary>
     /// Get the ShopTowerDetails for this TowerDetailModel
     /// </summary>
-    public static ShopTowerDetailsModel GetShopTowerDetails(this TowerDetailsModel towerDetailsModel)
-    {
-        return towerDetailsModel.TryCast<ShopTowerDetailsModel>();
-    }
+    public static ShopTowerDetailsModel GetShopTowerDetails(this TowerDetailsModel towerDetailsModel) =>
+        towerDetailsModel.TryCast<ShopTowerDetailsModel>();
 
     /// <summary>
     /// Makes a copy of this TowerDetailsModel with a new name
     /// </summary>
     public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsModel, string newName,
-        bool addToGame = false)
-    {
-        return towerDetailsModel.MakeCopy(newName, towerDetailsModel.towerIndex, addToGame);
-    }
+        bool addToGame = false) => towerDetailsModel.MakeCopy(newName, towerDetailsModel.towerIndex, addToGame);
 
     /// <summary>
     /// Makes a copy of this TowerDetailsModel with a new name and index
@@ -112,8 +107,6 @@ public static class TowerDetailsModelExt
     /// <summary>
     /// Gets the TowerModel for this TowerDetailsModel
     /// </summary>
-    public static TowerModel GetTower(this TowerDetailsModel towerDetailsModel)
-    {
-        return Game.instance.model.GetTowerWithName(towerDetailsModel.towerId);
-    }
+    public static TowerModel GetTower(this TowerDetailsModel towerDetailsModel) =>
+        Game.instance.model.GetTowerWithName(towerDetailsModel.towerId);
 }

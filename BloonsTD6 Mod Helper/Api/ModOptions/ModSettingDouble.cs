@@ -44,48 +44,27 @@ public class ModSettingDouble : ModSettingNumber<double>
     /// <summary>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
-    public static implicit operator ModSettingDouble(double value)
-    {
-        return new ModSettingDouble(value);
-    }
+    public static implicit operator ModSettingDouble(double value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator double(ModSettingDouble modSettingDouble)
-    {
-        return modSettingDouble.value;
-    }
+    public static implicit operator double(ModSettingDouble modSettingDouble) => modSettingDouble.value;
 
     /// <summary>
     /// Gets the current value out of a ModSetting
     /// </summary>
-    public static implicit operator float(ModSettingDouble modSettingDouble)
-    {
-        return (float) modSettingDouble.value;
-    }
+    public static implicit operator float(ModSettingDouble modSettingDouble) => (float) modSettingDouble.value;
 
     /// <inheritdoc />
-    protected override string ToString(double input)
-    {
-        return Math.Round(Math.Round(input / stepSize) * stepSize, 3).ToString();
-    }
+    protected override string ToString(double input) => Math.Round(Math.Round(input / stepSize) * stepSize, 3).ToString();
 
     /// <inheritdoc />
-    protected override double FromString(string s)
-    {
-        return double.TryParse(s, out var result) ? result : 0;
-    }
+    protected override double FromString(string s) => double.TryParse(s, out var result) ? result : 0;
 
     /// <inheritdoc />
-    protected override float ToFloat(double input)
-    {
-        return (float) input;
-    }
+    protected override float ToFloat(double input) => (float) input;
 
     /// <inheritdoc />
-    protected override double FromFloat(float f)
-    {
-        return f;
-    }
+    protected override double FromFloat(float f) => f;
 }

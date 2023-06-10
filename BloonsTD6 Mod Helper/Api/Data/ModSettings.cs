@@ -14,6 +14,7 @@ public abstract class ModSettings : ModContent
     public override IEnumerable<ModContent> Load()
     {
         yield return this;
+
         ModSettingsHandler.GetModSettings(this, mod);
     }
 

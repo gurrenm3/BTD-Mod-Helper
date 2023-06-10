@@ -24,6 +24,27 @@ namespace BTD_Mod_Helper.UI.Menus;
 public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 {
 
+    internal const int Padding = 50;
+
+    internal const int MenuWidth = 3600;
+    internal const int MenuHeight = 1900;
+
+    internal const int LeftMenuWidth = 1750;
+    internal const int RightMenuWidth = 1750;
+
+    internal const int ModNameWidth = 1000;
+
+    internal const int ModIconSize = 250;
+    internal const int ModPanelHeight = 200;
+    internal const int ModNameHeight = 150;
+    internal const int OtherHeight = 100;
+
+    internal const int FontSmall = 52;
+    internal const int FontMedium = 69;
+    internal const int FontLarge = 80;
+
+    internal const string DefaultDescription = "No description given";
+
     private static Dictionary<ModHelperData, ModsMenuMod> modPanels = new();
 
     private static ModHelperScrollPanel modsList;
@@ -585,25 +606,4 @@ public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             MenuManager.instance.buttonClickSound.Play("ClickSounds");
         }
     }
-
-    internal const int Padding = 50;
-
-    internal const int MenuWidth = 3600;
-    internal const int MenuHeight = 1900;
-
-    internal const int LeftMenuWidth = 1750;
-    internal const int RightMenuWidth = 1750;
-
-    internal const int ModNameWidth = 1000;
-
-    internal const int ModIconSize = 250;
-    internal const int ModPanelHeight = 200;
-    internal const int ModNameHeight = 150;
-    internal const int OtherHeight = 100;
-
-    internal const int FontSmall = 52;
-    internal const int FontMedium = 69;
-    internal const int FontLarge = 80;
-
-    internal const string DefaultDescription = "No description given";
 }

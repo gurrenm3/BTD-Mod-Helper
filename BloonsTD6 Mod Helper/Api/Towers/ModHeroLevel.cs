@@ -98,6 +98,7 @@ public abstract class ModHeroLevel : ModUpgrade
     /// e.g. "IndustrialFarmer-Portrait3"
     /// </summary>
     public override string Portrait => Hero.Portrait + Level;
+
     /// <inheritdoc />
     public override void RegisterText(Dictionary<string, string> textTable)
     {

@@ -11,6 +11,7 @@ internal class ModContentTask : ModLoadTask
 {
 
     private float? total;
+
     /// <inheritdoc />
     public override string DisplayName => $"Registering ModContent for {mod.Info.Name}...";
 
@@ -22,10 +23,7 @@ internal class ModContentTask : ModLoadTask
     /// Don't load this like a normal task
     /// </summary>
     /// <returns></returns>
-    public override IEnumerable<ModContent> Load()
-    {
-        return Enumerable.Empty<ModContent>();
-    }
+    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
 
     /// <summary>
     /// Registers ModContent from other mods

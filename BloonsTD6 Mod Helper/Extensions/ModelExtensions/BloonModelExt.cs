@@ -81,19 +81,13 @@ public static class BloonModelExt
     /// <param name="count">Number of bloons in this emission model</param>
     /// <param name="spacing">Space between each bloon in this emission model</param>
     public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissionModel(this BloonModel bloonModel,
-        int count, int spacing)
-    {
-        return Game.instance.model.CreateBloonEmissions(bloonModel, count, spacing);
-    }
+        int count, int spacing) => Game.instance.model.CreateBloonEmissions(bloonModel, count, spacing);
 
     /// <summary>
     /// Return all BloonToSimulations with this BloonModel
     /// </summary>
     [Obsolete("use GetAllBloonToSim instead")]
-    public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel)
-    {
-        return GetAllBloonToSim(bloonModel);
-    }
+    public static List<BloonToSimulation> GetBloonSims(this BloonModel bloonModel) => GetAllBloonToSim(bloonModel);
 
     /// <summary>
     /// Return all BloonToSimulations with this BloonModel
@@ -139,32 +133,21 @@ public static class BloonModelExt
     /// </summary>
     /// <param name="bloonModel"></param>
     /// <returns></returns>
-    public static string GetDisplayGUID(this BloonModel bloonModel)
-    {
-        return bloonModel.display.GUID;
-    }
+    public static string GetDisplayGUID(this BloonModel bloonModel) => bloonModel.display.GUID;
 
     /// <summary>
     /// Return the Base ID of this BloonModel
     /// </summary>
     /// <param name="bloonModel"></param>
     /// <returns></returns>
-    public static string GetBaseID(this BloonModel bloonModel)
-    {
-
-        return bloonModel.baseId;
-
-    }
+    public static string GetBaseID(this BloonModel bloonModel) => bloonModel.baseId;
 
     /// <summary>
     /// Returns whether or not this BloonModel is a Camo bloon.
     /// </summary>
     /// <param name="bloonModel"></param>
     /// <returns></returns>
-    public static bool IsCamoBloon(this BloonModel bloonModel)
-    {
-        return bloonModel.isCamo;
-    }
+    public static bool IsCamoBloon(this BloonModel bloonModel) => bloonModel.isCamo;
 
     /// <summary>
     /// Set whether or not this BloonModel is a Camo bloon.
@@ -192,10 +175,7 @@ public static class BloonModelExt
     /// </summary>
     /// <param name="bloonModel"></param>
     /// <returns></returns>
-    public static bool IsRegrowBloon(this BloonModel bloonModel)
-    {
-        return bloonModel.isGrow;
-    }
+    public static bool IsRegrowBloon(this BloonModel bloonModel) => bloonModel.isGrow;
 
     /// <summary>
     /// Set whether or not this BloonModel is a Regrow bloon.
@@ -253,12 +233,7 @@ public static class BloonModelExt
     /// </summary>
     /// <param name="bloonModel"></param>
     /// <returns></returns>
-    public static bool IsFortifiedBloon(this BloonModel bloonModel)
-    {
-
-        return bloonModel.isFortified;
-
-    }
+    public static bool IsFortifiedBloon(this BloonModel bloonModel) => bloonModel.isFortified;
 
     /// <summary>
     /// Set whether or not this BloonModel is a Fortified bloon.
@@ -286,10 +261,7 @@ public static class BloonModelExt
     /// </summary>
     /// <param name="bloonModel"></param>
     /// <returns></returns>
-    public static bool IsMoabBloon(this BloonModel bloonModel)
-    {
-        return bloonModel.isMoab;
-    }
+    public static bool IsMoabBloon(this BloonModel bloonModel) => bloonModel.isMoab;
 
     /// <summary>
     /// Set whether or not this BloonModel is a Fortified bloon.
@@ -500,10 +472,9 @@ public static class BloonModelExt
     /// <br />
     /// If there is no associated ModBloon, returns null
     /// </summary>
-    public static ModBloon GetModBloon(this BloonModel bloonModel)
-    {
-        return ModBloon.Cache.TryGetValue(bloonModel.name, out var modBloon) ? modBloon : null;
-    }
+    public static ModBloon GetModBloon(this BloonModel bloonModel) =>
+        ModBloon.Cache.TryGetValue(bloonModel.name, out var modBloon) ? modBloon : null;
+
     /// <summary>
     /// Adds a tag to the BloonModel, if it doesn't already exist
     /// </summary>
@@ -538,8 +509,6 @@ public static class BloonModelExt
     /// </summary>
     /// <param name="bloonGroupModel"></param>
     /// <returns></returns>
-    public static BloonModel GetBloonModel(this BloonGroupModel bloonGroupModel)
-    {
-        return Game.instance.model.GetBloon(bloonGroupModel.bloon);
-    }
+    public static BloonModel GetBloonModel(this BloonGroupModel bloonGroupModel) =>
+        Game.instance.model.GetBloon(bloonGroupModel.bloon);
 }

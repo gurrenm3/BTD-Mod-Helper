@@ -14,19 +14,14 @@ public static class Il2CppSystemObjectExt
     /// <param name="instance"></param>
     /// <param name="to">Object to compare to</param>
     /// <returns></returns>
-    public static bool ReferenceEquals(this Il2CppObjectBase instance, Il2CppObjectBase to)
-    {
-        return ReferenceEquals(instance, (object) to);
-    }
+    public static bool ReferenceEquals(this Il2CppObjectBase instance, Il2CppObjectBase to) =>
+        ReferenceEquals(instance, (object) to);
 
     /// <summary>
     /// Check if object is the same type as T
     /// </summary>
     /// <typeparam name="T">Type to check</typeparam>
-    public static bool IsType<T>(this Object instance) where T : Object
-    {
-        return instance?.TryCast<T>() != null;
-    }
+    public static bool IsType<T>(this Object instance) where T : Object => instance?.TryCast<T>() != null;
 
     /// <summary>
     /// Check if object is the same type as T
@@ -41,10 +36,7 @@ public static class Il2CppSystemObjectExt
     }
 
     /// <inheritdoc cref="IsType{T}(Il2CppSystem.Object)" />
-    public static bool Is<T>(this Il2CppObjectBase instance) where T : Il2CppObjectBase
-    {
-        return instance?.TryCast<T>() != null;
-    }
+    public static bool Is<T>(this Il2CppObjectBase instance) where T : Il2CppObjectBase => instance?.TryCast<T>() != null;
 
     /// <inheritdoc cref="IsType{T}(Il2CppSystem.Object,out T)" />
     public static bool Is<T>(this Il2CppObjectBase instance, out T castObject) where T : Il2CppObjectBase
@@ -56,32 +48,21 @@ public static class Il2CppSystemObjectExt
     /// <summary>
     /// Gets the exact il2cpp type name of an object
     /// </summary>
-    public static string TypeName(this Il2CppObjectBase obj)
-    {
-        return Marshal.PtrToStringAnsi(IL2CPP.il2cpp_class_get_name(IL2CPP.il2cpp_object_get_class(obj.Pointer)));
-    }
+    public static string TypeName(this Il2CppObjectBase obj) =>
+        Marshal.PtrToStringAnsi(IL2CPP.il2cpp_class_get_name(IL2CPP.il2cpp_object_get_class(obj.Pointer)));
 
     /// <summary>
     /// Box a float into an Il2cpp object
     /// </summary>
-    public static Object ToIl2Cpp(this float f)
-    {
-        return f;
-    }
+    public static Object ToIl2Cpp(this float f) => f;
 
     /// <summary>
     /// Box a int into an Il2cpp object
     /// </summary>
-    public static Object ToIl2Cpp(this int i)
-    {
-        return i;
-    }
+    public static Object ToIl2Cpp(this int i) => i;
 
     /// <summary>
     /// Box a bool into an Il2cpp object
     /// </summary>
-    public static Object ToIl2Cpp(this bool b)
-    {
-        return b;
-    }
+    public static Object ToIl2Cpp(this bool b) => b;
 }

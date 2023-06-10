@@ -14,6 +14,7 @@ public class ModHelperScrollPanel : ModHelperPanel
     public ModHelperScrollPanel(IntPtr ptr) : base(ptr)
     {
     }
+
     /// <summary>
     /// The ScrollContent object. This is the object that the children are actually part of,
     /// and is what actually moves up and down when scrolling.

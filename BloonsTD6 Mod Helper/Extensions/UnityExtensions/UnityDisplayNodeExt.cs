@@ -16,10 +16,8 @@ public static partial class UnityDisplayNodeExt
     /// </summary>
     /// <param name="unityDisplayNode"></param>
     /// <returns></returns>
-    public static List<Transform> Get3DModels(this UnityDisplayNode unityDisplayNode)
-    {
-        return unityDisplayNode.transform.parent.GetComponentsInChildren<Transform>().ToList();
-    }
+    public static List<Transform> Get3DModels(this UnityDisplayNode unityDisplayNode) =>
+        unityDisplayNode.transform.parent.GetComponentsInChildren<Transform>().ToList();
 
     /// <summary>
     /// Gets the first generic renderer of the specified type, recalculating the renderers if need be
@@ -57,10 +55,8 @@ public static partial class UnityDisplayNodeExt
     /// <param name="recalculate">Whether to recalculate renderers</param>
     /// <typeparam name="T">The type of Renderer you're looking for</typeparam>
     /// <returns></returns>
-    public static List<T> GetRenderers<T>(this UnityDisplayNode node, bool recalculate = true) where T : Renderer
-    {
-        return node.GetRenderers(recalculate).GetItemsOfType<Renderer, T>();
-    }
+    public static List<T> GetRenderers<T>(this UnityDisplayNode node, bool recalculate = true) where T : Renderer =>
+        node.GetRenderers(recalculate).GetItemsOfType<Renderer, T>();
 
     /// <summary>
     /// Gets the first (or an indexed) SkinnedMeshRenderer/MeshRenderer
@@ -69,10 +65,8 @@ public static partial class UnityDisplayNodeExt
     /// <param name="index"></param>
     /// <param name="recalculate"></param>
     /// <returns></returns>
-    public static Renderer GetMeshRenderer(this UnityDisplayNode node, int index = 0, bool recalculate = true)
-    {
-        return node.GetMeshRenderers(recalculate)[index];
-    }
+    public static Renderer GetMeshRenderer(this UnityDisplayNode node, int index = 0, bool recalculate = true) =>
+        node.GetMeshRenderers(recalculate)[index];
 
     /// <summary>
     /// Gets all renderers that are of type SkinnedMeshRenderer or MeshRenderer
@@ -138,10 +132,8 @@ public static partial class UnityDisplayNodeExt
     /// <summary>
     /// Gets the transform associated with the given bone
     /// </summary>
-    public static Transform GetBone(this UnityDisplayNode unityDisplayNode, string boneName)
-    {
-        return unityDisplayNode.gameObject.GetComponentInChildrenByName<Transform>(boneName);
-    }
+    public static Transform GetBone(this UnityDisplayNode unityDisplayNode, string boneName) =>
+        unityDisplayNode.gameObject.GetComponentInChildrenByName<Transform>(boneName);
 
     /// <summary>
     /// Saves the texture used for this node's mesh renderer

@@ -35,6 +35,9 @@ public abstract class ModVanillaBloon : ModVanillaContent<BloonModel>
                 yield return bloonModel;
             }
         }
-        else yield return gameModel.GetBloon(BloonId);
+        else
+        {
+            yield return gameModel.GetBloon(BloonId);
+        }
     }
 }

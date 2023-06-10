@@ -28,8 +28,6 @@ public class BloonModelUtils
     /// <param name="regrowsTo"></param>
     /// <param name="regrowRate"></param>
     /// <returns></returns>
-    public static GrowModel CreateGrowModel(string regrowsTo, float regrowRate)
-    {
-        return new GrowModel("GrowModel_", regrowRate, regrowsTo, null);
-    }
+    public static GrowModel CreateGrowModel(string regrowsTo, float regrowRate) =>
+        new("GrowModel_", regrowRate, regrowsTo, null);
 }

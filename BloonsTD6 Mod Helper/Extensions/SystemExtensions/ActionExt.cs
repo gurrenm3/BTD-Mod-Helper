@@ -12,10 +12,7 @@ public static class ActionExt
     /// </summary>
     /// <param name="action"></param>
     /// <returns></returns>
-    public static Action ToIl2CppSystemAction(this System.Action action)
-    {
-        return action;
-    }
+    public static Action ToIl2CppSystemAction(this System.Action action) => action;
 
     /// <summary>
     /// Invoke all actions in the list
