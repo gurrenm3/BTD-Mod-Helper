@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Unity;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Internal;
 
 internal class BackupCreator
 {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-namespace BTD_Mod_Helper.Api.Helpers;
+namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class VanillaSpriteGenerator
 {

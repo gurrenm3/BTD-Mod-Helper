@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
 /// Task to preload images and save them in the Unity scene so they can be accessed quickly
@@ -57,7 +57,7 @@ internal class PreLoadResourcesTask : ModLoadTask
                 parent = modHelperResources.transform
             }
         };
-        foreach (var modHelperData in ModHelperData.All)
+        foreach (var modHelperData in Api.Data.ModHelperData.All)
         {
             if (modHelperData.GetIcon() is Sprite sprite)
             {

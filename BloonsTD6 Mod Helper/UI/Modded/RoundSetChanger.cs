@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper.UI.Modded;
 /// <summary>
 /// Class controlling the in game Round Set override UI
 /// </summary>
-public static class RoundSetChanger
+public static class RoundSetChanger // TODO make this internal, add alt way to get RoundSetOverride
 {
 
     private const float AnimatorSpeed = .75f;

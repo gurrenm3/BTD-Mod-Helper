@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using MelonLoader.Utils;
-namespace BTD_Mod_Helper.Api.Helpers;
+namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModHelperFiles
 {

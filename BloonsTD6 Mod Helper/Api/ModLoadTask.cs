@@ -7,7 +7,6 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 public abstract class ModLoadTask : NamedModContent
 {
-
     private IEnumerator iEnumerator;
 
     private float progress;

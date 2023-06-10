@@ -8,6 +8,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.Main.Home;
 using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.UI;
+using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 namespace BTD_Mod_Helper.UI.Modded;
 
 internal static class ModsButton

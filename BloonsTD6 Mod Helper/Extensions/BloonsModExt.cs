@@ -2,6 +2,7 @@ using System.IO;
 using System.Reflection;
 using BTD_Mod_Helper.Api;
 using MelonLoader.Utils;
+using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

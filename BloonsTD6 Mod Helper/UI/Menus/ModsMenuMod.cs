@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Linq;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.UI.Menus;
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.InternalUtils;
 using UnityEngine;
 using UnityEngine.Events;
-namespace BTD_Mod_Helper.Api.Components;
+
+namespace BTD_Mod_Helper.UI.Menus;
 
 [RegisterTypeInIl2Cpp(false)]
 internal class ModsMenuMod : ModHelperComponent
 {
-
     public UnityAction toggleMod;
 
     public ModsMenuMod(IntPtr ptr) : base(ptr)

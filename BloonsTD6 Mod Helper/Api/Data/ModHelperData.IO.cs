@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
 {

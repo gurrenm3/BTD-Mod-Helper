@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Unity;
-namespace BTD_Mod_Helper.Api.Helpers;
+namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class UpgradeTypeGenerator
 {

@@ -9,12 +9,12 @@ using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Microsoft.VisualBasic.FileIO;
 using SearchOption = System.IO.SearchOption;
 #pragma warning disable CS4014
-namespace BTD_Mod_Helper.Api.Helpers;
+namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
 /// Handles the creation of an empty mod in the Mod Sources folder
 /// </summary>
-public static class TemplateMod
+internal static class TemplateMod
 {
     private const string ZipURL = "https://github.com/doombubbles/btd6-template-mod/archive/refs/heads/main.zip";
     private const string ZipArchivePrefix = "btd6-template-mod-main/";

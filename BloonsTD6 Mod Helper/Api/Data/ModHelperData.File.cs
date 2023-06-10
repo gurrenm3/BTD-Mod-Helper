@@ -4,7 +4,7 @@ using System.Linq;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using UnityEngine;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
 {
@@ -110,7 +110,7 @@ internal partial class ModHelperData
         {
             var dependents = FindDependents();
 
-            if (dependents.Any())
+            if (Enumerable.Any<ModHelperData>(dependents))
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
                     $"The following enabled mods list this mod as a dependency, and may not function without it: {dependents.Select(data => data.DisplayName).Join()}",

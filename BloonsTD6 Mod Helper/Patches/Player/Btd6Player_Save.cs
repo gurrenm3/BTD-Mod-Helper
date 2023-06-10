@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Player;
 namespace BTD_Mod_Helper.Patches;
 

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.UI.Menus;
 
 internal class BlatantFavoritism
 {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.PowerSets;
 using Il2CppAssets.Scripts.Models.Profile;
@@ -220,11 +221,6 @@ public static class GameExt
     /// game
     /// </summary>
     public static Factory GetDisplayFactory(this Game game) => game.scene?.factory;
-
-    /// <summary>
-    /// Gets a Json Serializer. Not necessary but can be useful
-    /// </summary>
-    public static JsonSerializer GetJsonSerializer(this Game game) => JsonSerializer.instance;
 
     /// <summary>
     /// Get the instance of PopupScreen

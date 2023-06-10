@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
 {

@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity;
 using MelonLoader.Utils;
+using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 namespace BTD_Mod_Helper;
 
 /// <summary>

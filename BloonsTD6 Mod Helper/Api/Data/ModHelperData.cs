@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MelonLoader.Utils;
 using UnityEngine;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Data;
 
 /// <summary>
 /// Class representing all the data ModHelper can utilize about a mod as separate from the MelonMod / .dll itself.
@@ -18,10 +18,6 @@ namespace BTD_Mod_Helper.Api;
 internal partial class ModHelperData
 {
     private const string DefaultIcon = "Icon.png";
-
-    private const string ObsoleteDownloadDescription = "This mod uses the old system for auto updating. " +
-                                                       "You can click the home page button to be taken to what the author previously marked as the latest download URL for the mod. " +
-                                                       "You can also check the Mod Browser to see if a new version has been added there.";
 
     /// <summary>
     /// The ModHelperData objects for currently enabled mods
@@ -117,27 +113,6 @@ internal partial class ModHelperData
         {
             HasNoIcon = true;
         }
-
-#pragma warning disable CS0618
-        if (string.IsNullOrEmpty(RepoOwner) &&
-            string.IsNullOrEmpty(RepoName) &&
-            mod is BloonsTD6Mod bloonsMod)
-        {
-            if (!string.IsNullOrEmpty(bloonsMod.LatestURL))
-            {
-                OldDownloadUrl = bloonsMod.LatestURL;
-            }
-            else if (!string.IsNullOrEmpty(bloonsMod.GithubReleaseURL))
-            {
-                OldDownloadUrl = bloonsMod.GithubReleaseURL.Replace("api.github.com/repos", "www.github.com");
-            }
-
-            if (!string.IsNullOrEmpty(OldDownloadUrl))
-            {
-                Description = ObsoleteDownloadDescription;
-            }
-        }
-#pragma warning restore CS0618
     }
 
     internal static IEnumerable<ModHelperData> All => Active.Concat(Inactive);

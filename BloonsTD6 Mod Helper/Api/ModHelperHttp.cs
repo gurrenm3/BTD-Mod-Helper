@@ -23,7 +23,7 @@ public class ModHelperHttp
     /// <summary>
     /// Initializes the HttpClient
     /// </summary>
-    public static void Init()
+    internal static void Init()
     {
         Client = new HttpClient();
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;

@@ -1,4 +1,5 @@
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Internal;
 using UnityEngine;
 using UnityEngine.U2D;
 namespace BTD_Mod_Helper.Patches.Resources;

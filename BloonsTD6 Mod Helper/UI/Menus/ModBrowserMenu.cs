@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Internal;
 using FuzzySharp.SimilarityRatio;
 using FuzzySharp.SimilarityRatio.Scorer;
 using FuzzySharp.SimilarityRatio.Scorer.Composite;
@@ -14,6 +15,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.UI.Menus;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModContentInstances
 {

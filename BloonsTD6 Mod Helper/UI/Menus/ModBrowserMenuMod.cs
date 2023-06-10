@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.BTD6;
-using BTD_Mod_Helper.UI.Menus;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.UI;
-namespace BTD_Mod_Helper.Api.Components;
+namespace BTD_Mod_Helper.UI.Menus;
 
 [RegisterTypeInIl2Cpp(false)]
 internal class ModBrowserMenuMod : ModHelperPanel
@@ -176,7 +178,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
 internal static class ModBrowserMenuModExt
 {
-    public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
+    public static void SetMod(this ModBrowserMenuMod mod, Api.Data.ModHelperData modHelperData)
     {
         mod.modName = modHelperData.Name;
         mod.Homepage.Button.SetOnClick(() => EmbeddedBrowser.OpenURL(modHelperData.ReadmeUrl!));
@@ -218,7 +220,7 @@ internal static class ModBrowserMenuModExt
                 var downloadTask = ModHelperGithub.DownloadLatest(modHelperData, false, filePath =>
                 {
                     modHelperData.SetFilePath(filePath);
-                    ModHelperData.Inactive.Add(modHelperData);
+                    Api.Data.ModHelperData.Inactive.Add(modHelperData);
                     if (mod != null && mod.gameObject.active && mod.modName == modHelperData.Name)
                     {
                         mod.Download.SetActive(false);

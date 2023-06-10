@@ -5,7 +5,7 @@ using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Internal;
 
 internal class ProfileManagement
 {

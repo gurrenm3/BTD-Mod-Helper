@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using BTD_Mod_Helper.Api;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.UI.Modded;
 
 internal class NkhText
 {

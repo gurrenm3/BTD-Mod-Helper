@@ -7,7 +7,9 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.BTD6;
+using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
@@ -15,13 +17,14 @@ using Il2CppFacepunch.Steamworks;
 using Il2CppTMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
+using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.UI.Menus;
 
 /// <summary>
 /// The ModGameMenu for the screen showing current mods
 /// </summary>
-public class ModsMenu : ModGameMenu<ExtraSettingsScreen>
+internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 {
 
     internal const int Padding = 50;

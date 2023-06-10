@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Profile;
 namespace BTD_Mod_Helper.Patches;
