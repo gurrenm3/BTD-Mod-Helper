@@ -130,7 +130,7 @@ internal partial class ModHelperData
 
             if (RepoName == ModHelper.RepoName)
             {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL("Shared/ModHelper.cs"));
+                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL("BloonsTD6 Mod Helper/ModHelper.cs"));
             }
             else if (SubPath != null &&
                      (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json") || SubPath.EndsWith(".cs")))
