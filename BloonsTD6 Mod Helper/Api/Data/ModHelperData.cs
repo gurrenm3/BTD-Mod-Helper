@@ -299,7 +299,7 @@ internal partial class ModHelperData
     public List<ModHelperData> FindDependents()
     {
         return Active
-            .Where(data => this != data && (data.Dependencies ?? "").Contains(Identifier))
+            .Where(data => this != data && (data.Dependencies ?? "").Split(",").Contains(Identifier))
             .ToList();
     }
 }

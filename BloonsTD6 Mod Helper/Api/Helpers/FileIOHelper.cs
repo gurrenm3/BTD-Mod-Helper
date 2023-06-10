@@ -52,7 +52,7 @@ public static class FileIOHelper
 
         // return JsonConvert.DeserializeObject<T>(text);
 
-        var jsonSerializer = Il2CppNewtonsoft.Json.JsonSerializer.CreateDefault(new JsonSerializerSettings());
+        var jsonSerializer = JsonSerializer.CreateDefault(new JsonSerializerSettings());
         var s = new StringReader(text);
         var reader = new JsonTextReader(s);
         var result = jsonSerializer.Deserialize<T>(reader);

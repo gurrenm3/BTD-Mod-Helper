@@ -110,7 +110,7 @@ internal partial class ModHelperData
         {
             var dependents = FindDependents();
 
-            if (Enumerable.Any<ModHelperData>(dependents))
+            if (dependents.Any())
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
                     $"The following enabled mods list this mod as a dependency, and may not function without it: {dependents.Select(data => data.DisplayName).Join()}",
