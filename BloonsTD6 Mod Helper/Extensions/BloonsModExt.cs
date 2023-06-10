@@ -12,28 +12,28 @@ public static class BloonsTD6ModExt
     /// <summary>
     /// Get the name of this mod from it's dll name
     /// </summary>
-    public static string GetModName(this BloonsTD6Mod BloonsTD6Mod) =>
-        BloonsTD6Mod.GetAssembly()?.GetName().Name ?? BloonsTD6Mod.Info.Name;
+    public static string GetModName(this BloonsTD6Mod bloonsMod) =>
+        bloonsMod.GetAssembly()?.GetName().Name ?? bloonsMod.Info.Name;
 
     /// <summary>
     /// Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods.
     /// Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
     /// </summary>
-    /// <param name="BloonsTD6Mod"></param>
+    /// <param name="bloonsMod"></param>
     /// <returns></returns>
-    public static string GetModDirectory(this BloonsTD6Mod BloonsTD6Mod) =>
-        Path.Combine(MelonEnvironment.ModsDirectory, BloonsTD6Mod.GetModName());
+    public static string GetModDirectory(this BloonsTD6Mod bloonsMod) =>
+        Path.Combine(MelonEnvironment.ModsDirectory, bloonsMod.GetModName());
 
     /// <summary>
     /// Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods.
     /// Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
     /// </summary>
-    /// <param name="BloonsTD6Mod"></param>
+    /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
-    public static string GetModDirectory(this BloonsTD6Mod BloonsTD6Mod, bool createIfNotExists)
+    public static string GetModDirectory(this BloonsTD6Mod bloonsMod, bool createIfNotExists)
     {
-        var path = $"{MelonEnvironment.ModsDirectory}\\{BloonsTD6Mod.GetModName()}";
+        var path = $"{MelonEnvironment.ModsDirectory}\\{bloonsMod.GetModName()}";
         if (createIfNotExists) Directory.CreateDirectory(path);
         return path;
     }
@@ -42,21 +42,21 @@ public static class BloonsTD6ModExt
     /// Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod
     /// Helper/settings.txt"
     /// </summary>
-    /// <param name="BloonsTD6Mod"></param>
+    /// <param name="bloonsMod"></param>
     /// <returns></returns>
-    public static string GetModSettingsDir(this BloonsTD6Mod BloonsTD6Mod) =>
-        Path.Combine(BloonsTD6Mod.GetModDirectory(), "Mod Settings");
+    public static string GetModSettingsDir(this BloonsTD6Mod bloonsMod) =>
+        Path.Combine(bloonsMod.GetModDirectory(), "Mod Settings");
 
     /// <summary>
     /// Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod
     /// Helper/settings.txt"
     /// </summary>
-    /// <param name="BloonsTD6Mod"></param>
+    /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
-    public static string GetModSettingsDir(this BloonsTD6Mod BloonsTD6Mod, bool createIfNotExists)
+    public static string GetModSettingsDir(this BloonsTD6Mod bloonsMod, bool createIfNotExists)
     {
-        var path = BloonsTD6Mod.GetModSettingsDir();
+        var path = bloonsMod.GetModSettingsDir();
         if (createIfNotExists) Directory.CreateDirectory(path);
         return path;
     }

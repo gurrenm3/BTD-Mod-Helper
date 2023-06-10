@@ -13,16 +13,16 @@ internal sealed class ModDisplay2DImpl : ModDisplay2D
     /// <summary>
     /// Creates a new Mod
     /// </summary>
-    /// <param name="BloonsTD6Mod">The mod this is for</param>
+    /// <param name="bloonsMod">The mod this is for</param>
     /// <param name="id">Id for the display to use</param>
     /// <param name="textureName">Texture name, not a guid</param>
     /// <param name="scale">Scale to use</param>
     /// <param name="baseDisplay"></param>
     /// <param name="displayCategory"></param>
-    public ModDisplay2DImpl(BloonsTD6Mod BloonsTD6Mod, string id, string textureName, float scale = 10f,
+    public ModDisplay2DImpl(BloonsTD6Mod bloonsMod, string id, string textureName, float scale = 10f,
         string baseDisplay = Generic2dDisplay, DisplayCategory displayCategory = DisplayCategory.Default)
     {
-        mod = BloonsTD6Mod;
+        mod = bloonsMod;
         ID = id;
         TextureName = textureName;
         Scale = scale;

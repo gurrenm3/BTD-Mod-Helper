@@ -68,9 +68,9 @@ internal class PreLoadResourcesTask : ModLoadTask
         yield return null;
 
         var totalMods = ModHelper.Mods.Count();
-        foreach (var BloonsTD6Mod in ModHelper.Mods)
+        foreach (var bloonsMod in ModHelper.Mods)
         {
-            var name = BloonsTD6Mod.GetModName();
+            var name = bloonsMod.GetModName();
             // Description = name;
 
             var modObject = new GameObject(name)
@@ -80,9 +80,9 @@ internal class PreLoadResourcesTask : ModLoadTask
                     parent = modHelperResources.transform
                 }
             };
-            foreach (var (key, bytes) in BloonsTD6Mod.Resources)
+            foreach (var (key, bytes) in bloonsMod.Resources)
             {
-                PreloadSprite(ResourceHandler.GetSprite(GetId(BloonsTD6Mod, key)), key, modObject);
+                PreloadSprite(ResourceHandler.GetSprite(GetId(bloonsMod, key)), key, modObject);
                 currentByteTotal += bytes.Length;
                 if (currentByteTotal > BytesPerFrame)
                 {

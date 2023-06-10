@@ -102,20 +102,20 @@ internal static class ModsMenuModExt
         mod.Settings.SetActive(false);
         mod.Warning.SetActive(false);
 
-        if (melonMod is BloonsTD6Mod BloonsTD6Mod)
+        if (melonMod is BloonsTD6Mod bloonsMod)
         {
-            if (BloonsTD6Mod.ModSettings.Any())
+            if (bloonsMod.ModSettings.Any())
             {
                 mod.Settings.SetActive(true);
             }
 
-            if (BloonsTD6Mod.loadErrors.Any())
+            if (bloonsMod.loadErrors.Any())
             {
                 mod.Warning.SetActive(true);
                 mod.Warning.Button.SetOnClick(() =>
                 {
                     PopupScreen.instance.SafelyQueue(screen =>
-                        screen.ShowOkPopup(BloonsTD6Mod.loadErrors.Join(null, "\n")));
+                        screen.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n")));
                 });
             }
         }

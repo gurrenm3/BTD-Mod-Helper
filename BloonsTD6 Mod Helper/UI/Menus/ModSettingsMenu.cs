@@ -17,7 +17,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     private CanvasGroup canvasGroup;
 
     private ModHelperScrollPanel scrollPanel;
-    public static BloonsTD6Mod BloonsTD6Mod { get; }
+    public static BloonsTD6Mod BloonsMod { get; private set; }
 
     public override bool OnMenuOpened(Object data)
     {
@@ -25,7 +25,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         gameObject.DestroyAllChildren();
         GameMenu.saved = true;
 
-        CommonForegroundHeader.SetText(BloonsTD6Mod.Info.Name);
+        CommonForegroundHeader.SetText(BloonsMod.Info.Name);
 
         scrollPanel = gameObject.AddModHelperScrollPanel(new Info("ScrollPanel", InfoPreset.FillParent),
             RectTransform.Axis.Vertical, null, 150, 300);
@@ -44,7 +44,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     public IEnumerator CreateMenuContent()
     {
-        foreach (var (category, modSettings) in BloonsTD6Mod.ModSettings.Values
+        foreach (var (category, modSettings) in BloonsMod.ModSettings.Values
                      .GroupBy(setting => setting.category)
                      .OrderBy(kvp => kvp.Key?.order ?? 0))
         {
@@ -87,7 +87,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     public override void OnMenuUpdate()
     {
-        if (Closing)
+        if (Closing && canvasGroup != null)
         {
             canvasGroup.alpha -= .07f;
         }
@@ -96,16 +96,16 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     public override void OnMenuClosed()
     {
         animator.Play("PopupSlideOut");
-        ModSettingsHandler.SaveModSettings(BloonsTD6Mod);
-        if (BloonsTD6Mod is MelonMain && !ModHelper.IsNet6)
+        ModSettingsHandler.SaveModSettings(BloonsMod);
+        if (BloonsMod is MelonMain && !ModHelper.IsNet6)
         {
             ModHelperHttp.UpdateSettings();
         }
     }
 
-    public static void Open(BloonsTD6Mod BloonsTD6Mod)
+    public static void Open(BloonsTD6Mod mod)
     {
-        //BloonsTD6Mod = BloonsTD6Mod;
+        BloonsMod = mod;
         Open<ModSettingsMenu>();
     }
 }

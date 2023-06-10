@@ -121,7 +121,7 @@ public static class ModHelper
     /// <summary>
     /// Returns whether a mod with the given name is installed, and pass it to the out param if it is
     /// </summary>
-    public static bool HasMod(string name, out BloonsTD6Mod BloonsTD6Mod) => (BloonsTD6Mod = GetMod(name)) != null;
+    public static bool HasMod(string name, out BloonsTD6Mod bloonsMod) => (bloonsMod = GetMod(name)) != null;
 
     private static void PerformHook<T>(Action<T> action) where T : BloonsTD6Mod
     {

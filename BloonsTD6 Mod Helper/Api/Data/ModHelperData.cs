@@ -121,15 +121,15 @@ internal partial class ModHelperData
 #pragma warning disable CS0618
         if (string.IsNullOrEmpty(RepoOwner) &&
             string.IsNullOrEmpty(RepoName) &&
-            mod is BloonsTD6Mod BloonsTD6Mod)
+            mod is BloonsTD6Mod bloonsMod)
         {
-            if (!string.IsNullOrEmpty(BloonsTD6Mod.LatestURL))
+            if (!string.IsNullOrEmpty(bloonsMod.LatestURL))
             {
-                OldDownloadUrl = BloonsTD6Mod.LatestURL;
+                OldDownloadUrl = bloonsMod.LatestURL;
             }
-            else if (!string.IsNullOrEmpty(BloonsTD6Mod.GithubReleaseURL))
+            else if (!string.IsNullOrEmpty(bloonsMod.GithubReleaseURL))
             {
-                OldDownloadUrl = BloonsTD6Mod.GithubReleaseURL.Replace("api.github.com/repos", "www.github.com");
+                OldDownloadUrl = bloonsMod.GithubReleaseURL.Replace("api.github.com/repos", "www.github.com");
             }
 
             if (!string.IsNullOrEmpty(OldDownloadUrl))

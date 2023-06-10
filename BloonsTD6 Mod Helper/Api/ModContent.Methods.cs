@@ -204,7 +204,7 @@ public abstract partial class ModContent
     /// <summary>
     /// Gets the id of a resource by appending the mod's ID prefix to its name
     /// </summary>
-    public static string GetId(BloonsTD6Mod BloonsTD6Mod, string name) => BloonsTD6Mod.IDPrefix + name;
+    public static string GetId(BloonsTD6Mod bloonsMod, string name) => bloonsMod.IDPrefix + name;
 
     /// <summary>
     /// Gets the id of a resource by appending the mod's ID prefix to its name
@@ -229,10 +229,10 @@ public abstract partial class ModContent
     /// <summary>
     /// Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
     /// </summary>
-    /// <param name="BloonsTD6Mod">The mod to look in</param>
+    /// <param name="bloonsMod">The mod to look in</param>
     /// <param name="name">The file name of your texture, without the extension</param>
-    public static bool TextureExists(BloonsTD6Mod BloonsTD6Mod, string name) =>
-        ResourceHandler.Resources.ContainsKey(GetId(BloonsTD6Mod, name));
+    public static bool TextureExists(BloonsTD6Mod bloonsMod, string name) =>
+        ResourceHandler.Resources.ContainsKey(GetId(bloonsMod, name));
 
     /// <summary>
     /// Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
@@ -250,11 +250,11 @@ public abstract partial class ModContent
     /// <summary>
     /// Constructs a Texture2D for a given texture name within a mod
     /// </summary>
-    /// <param name="BloonsTD6Mod">The mod that adds this texture</param>
+    /// <param name="bloonsMod">The mod that adds this texture</param>
     /// <param name="fileName">The file name of your texture, without the extension</param>
     /// <returns>A Texture2D</returns>
-    public static Texture2D GetTexture(BloonsTD6Mod BloonsTD6Mod, string fileName) =>
-        ResourceHandler.GetTexture(GetId(BloonsTD6Mod, fileName));
+    public static Texture2D GetTexture(BloonsTD6Mod bloonsMod, string fileName) =>
+        ResourceHandler.GetTexture(GetId(bloonsMod, fileName));
 
     /// <summary>
     /// Constructs a Texture2D for a given texture name within this mod
@@ -281,11 +281,11 @@ public abstract partial class ModContent
     /// <summary>
     /// Returns the Bytes associated with a texture.
     /// </summary>
-    /// <param name="BloonsTD6Mod">The mod that adds this texture.</param>
+    /// <param name="bloonsMod">The mod that adds this texture.</param>
     /// <param name="fileName">The file name of your texture, without the extension.</param>
     /// <returns>The bytes associated with the texture.</returns>
-    public static byte[] GetTextureBytes(BloonsTD6Mod BloonsTD6Mod, string fileName) =>
-        ResourceHandler.GetTextureBytes(GetTextureGUID(BloonsTD6Mod, fileName));
+    public static byte[] GetTextureBytes(BloonsTD6Mod bloonsMod, string fileName) =>
+        ResourceHandler.GetTextureBytes(GetTextureGUID(bloonsMod, fileName));
 
     /// <summary>
     /// Returns the Bytes associated with a texture.
@@ -381,7 +381,7 @@ public abstract partial class ModContent
     /// Returns whether a mod with the given name is installed, and pass it to the out param if it is
     /// </summary>
     [Obsolete("Use ModHelper.HasMod instead")]
-    public static bool HasMod(string name, out BloonsTD6Mod BloonsTD6Mod) => ModHelper.HasMod(name, out BloonsTD6Mod);
+    public static bool HasMod(string name, out BloonsTD6Mod bloonsMod) => ModHelper.HasMod(name, out bloonsMod);
 
     /// <summary>
     /// Gets the ID for the given ModBloon
