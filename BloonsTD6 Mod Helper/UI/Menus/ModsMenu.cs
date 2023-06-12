@@ -84,9 +84,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     };
 
     private static bool RestartRequired => ModHelperData.All.Any(data => data.RestartRequired) ||
-                                           ModHelper.Mods.Any(BloonsTD6Mod =>
-                                               BloonsTD6Mod.ModSettings.Values.Any(setting =>
-                                                   setting.needsRestartRightNow)
+                                           ModHelper.Mods.Any(bloonsMod =>
+                                               bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
                                            );
 
     /// <inheritdoc />
@@ -260,7 +259,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModUpdateButton.gameObject.SetActive(modSelected.UpdateAvailable);
 
-        selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsTD6Mod bloonsMod &&
+        selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
                                                        bloonsMod.ModSettings.Any());
 
         if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite)
@@ -563,7 +562,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModSettingsButton = buttonsRow.AddButton(
             new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
-            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod as BloonsTD6Mod)));
+            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod as BloonsMod)));
         selectedModSettingsButton.AddImage(
             new Info("Gear", ModNameHeight, ModNameHeight), VanillaSprites.SettingsIcon
         );

@@ -17,7 +17,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     private CanvasGroup canvasGroup;
 
     private ModHelperScrollPanel scrollPanel;
-    public static BloonsTD6Mod BloonsMod { get; private set; }
+    public static BloonsMod BloonsMod { get; private set; }
 
     public override bool OnMenuOpened(Object data)
     {
@@ -103,7 +103,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         }
     }
 
-    public static void Open(BloonsTD6Mod mod)
+    public static void Open(BloonsMod mod)
     {
         BloonsMod = mod;
         Open<ModSettingsMenu>();

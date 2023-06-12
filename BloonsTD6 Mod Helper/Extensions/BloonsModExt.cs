@@ -13,7 +13,7 @@ public static class BloonsTD6ModExt
     /// <summary>
     /// Get the name of this mod from it's dll name
     /// </summary>
-    public static string GetModName(this BloonsTD6Mod bloonsMod) =>
+    public static string GetModName(this BloonsMod bloonsMod) =>
         bloonsMod.GetAssembly()?.GetName().Name ?? bloonsMod.Info.Name;
 
     /// <summary>
@@ -22,7 +22,7 @@ public static class BloonsTD6ModExt
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
-    public static string GetModDirectory(this BloonsTD6Mod bloonsMod) =>
+    public static string GetModDirectory(this BloonsMod bloonsMod) =>
         Path.Combine(MelonEnvironment.ModsDirectory, bloonsMod.GetModName());
 
     /// <summary>
@@ -32,7 +32,7 @@ public static class BloonsTD6ModExt
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
-    public static string GetModDirectory(this BloonsTD6Mod bloonsMod, bool createIfNotExists)
+    public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists)
     {
         var path = $"{MelonEnvironment.ModsDirectory}\\{bloonsMod.GetModName()}";
         if (createIfNotExists) Directory.CreateDirectory(path);
@@ -45,7 +45,7 @@ public static class BloonsTD6ModExt
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
-    public static string GetModSettingsDir(this BloonsTD6Mod bloonsMod) =>
+    public static string GetModSettingsDir(this BloonsMod bloonsMod) =>
         Path.Combine(bloonsMod.GetModDirectory(), "Mod Settings");
 
     /// <summary>
@@ -55,7 +55,7 @@ public static class BloonsTD6ModExt
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
-    public static string GetModSettingsDir(this BloonsTD6Mod bloonsMod, bool createIfNotExists)
+    public static string GetModSettingsDir(this BloonsMod bloonsMod, bool createIfNotExists)
     {
         var path = bloonsMod.GetModSettingsDir();
         if (createIfNotExists) Directory.CreateDirectory(path);

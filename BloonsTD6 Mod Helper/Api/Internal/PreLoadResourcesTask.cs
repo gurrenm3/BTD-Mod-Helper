@@ -26,7 +26,7 @@ internal class PreLoadResourcesTask : ModLoadTask
     public override string DisplayName => "Pre-loading mod resources...";
 
     public override bool ShowProgressBar => showProgressBar ??=
-        ModHelper.Mods.SelectMany(BloonsTD6Mod => BloonsTD6Mod.Resources.Values).Sum(bytes => bytes.Length) >
+        ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values).Sum(bytes => bytes.Length) >
         BytesPerFrame * 5;
 
     internal static PreLoadResourcesTask Instance { get; private set; }

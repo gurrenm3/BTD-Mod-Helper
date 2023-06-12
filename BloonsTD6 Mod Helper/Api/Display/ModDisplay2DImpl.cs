@@ -19,7 +19,7 @@ internal sealed class ModDisplay2DImpl : ModDisplay2D
     /// <param name="scale">Scale to use</param>
     /// <param name="baseDisplay"></param>
     /// <param name="displayCategory"></param>
-    public ModDisplay2DImpl(BloonsTD6Mod bloonsMod, string id, string textureName, float scale = 10f,
+    public ModDisplay2DImpl(BloonsMod bloonsMod, string id, string textureName, float scale = 10f,
         string baseDisplay = Generic2dDisplay, DisplayCategory displayCategory = DisplayCategory.Default)
     {
         mod = bloonsMod;

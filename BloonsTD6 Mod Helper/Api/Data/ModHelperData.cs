@@ -233,7 +233,7 @@ internal partial class ModHelperData
         {
             foreach (var dependency in modHelperData.Dependencies.Split(","))
             {
-                if (!Active.Exists(data => data.Identifier == dependency) && modHelperData.Mod is BloonsTD6Mod mod)
+                if (!Active.Exists(data => data.Identifier == dependency) && modHelperData.Mod is BloonsMod mod)
                 {
                     mod.loadErrors.Add($"Missing dependency {dependency}");
                 }

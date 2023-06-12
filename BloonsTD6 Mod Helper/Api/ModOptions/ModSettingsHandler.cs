@@ -30,7 +30,7 @@ internal static class ModSettingsHandler
         }
     }
 
-    internal static void GetModSettings(object obj, BloonsTD6Mod mod)
+    internal static void GetModSettings(object obj, BloonsMod mod)
     {
         var fields = obj.GetType()
             .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
@@ -46,7 +46,7 @@ internal static class ModSettingsHandler
         LoadModSettings(mod);
     }
 
-    internal static void LoadModSettings(BloonsTD6Mod mod)
+    internal static void LoadModSettings(BloonsMod mod)
     {
         try
         {
@@ -80,7 +80,7 @@ internal static class ModSettingsHandler
         }
     }
 
-    internal static void SaveModSettings(BloonsTD6Mod mod, bool initialSave = false)
+    internal static void SaveModSettings(BloonsMod mod, bool initialSave = false)
     {
         Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
         var fileName = mod.SettingsFilePath;

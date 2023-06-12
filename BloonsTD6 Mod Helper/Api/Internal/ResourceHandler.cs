@@ -16,7 +16,7 @@ internal class ResourceHandler
 
     internal static readonly Dictionary<string, Sprite> SpriteCache = new();
 
-    internal static void LoadEmbeddedTextures(BloonsTD6Mod mod)
+    internal static void LoadEmbeddedTextures(BloonsMod mod)
     {
         mod.Resources = new Dictionary<string, byte[]>();
         foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
@@ -33,7 +33,7 @@ internal class ResourceHandler
         }
     }
 
-    internal static void LoadEmbeddedAudio(BloonsTD6Mod mod)
+    internal static void LoadEmbeddedAudio(BloonsMod mod)
     {
         mod.AudioClips = new Dictionary<string, AudioClip>();
 
@@ -73,7 +73,7 @@ internal class ResourceHandler
         }
     }
 
-    internal static void LoadEmbeddedBundles(BloonsTD6Mod mod)
+    internal static void LoadEmbeddedBundles(BloonsMod mod)
     {
         foreach (var name in mod.GetAssembly().GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
         {

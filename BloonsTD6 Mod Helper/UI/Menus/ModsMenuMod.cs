@@ -100,12 +100,12 @@ internal static class ModsMenuModExt
         mod.Version.SetText("v" + modHelperData.Version);
         // ReSharper disable once AsyncVoidLambda
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));
-        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open((BloonsTD6Mod) melonMod!));
+        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open((BloonsMod) melonMod!));
 
         mod.Settings.SetActive(false);
         mod.Warning.SetActive(false);
 
-        if (melonMod is BloonsTD6Mod bloonsMod)
+        if (melonMod is BloonsMod bloonsMod)
         {
             if (bloonsMod.ModSettings.Any())
             {
@@ -171,7 +171,7 @@ internal static class ModsMenuModExt
             background = VanillaSprites.MainBGPanelYellow;
         else if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) == false)
             background = VanillaSprites.MainBgPanelHematite;
-        else if (data.Mod != null && !(data.Mod is BloonsTD6Mod)) background = VanillaSprites.MainBGPanelBlueNotches;
+        else if (data.Mod != null && !(data.Mod is BloonsMod)) background = VanillaSprites.MainBGPanelBlueNotches;
         return background;
     }
 }

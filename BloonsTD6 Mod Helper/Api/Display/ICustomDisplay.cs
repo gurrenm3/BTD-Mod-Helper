@@ -34,7 +34,7 @@ internal static class ICustomDisplayExt
     /// <param name="display">this</param>
     /// <param name="mod">mod to look for the asset bundle in</param>
     /// <param name="onComplete">completion action</param>
-    internal static void GetBasePrototype(this ICustomDisplay display, BloonsTD6Mod mod,
+    internal static void GetBasePrototype(this ICustomDisplay display, BloonsMod mod,
         Action<UnityDisplayNode> onComplete)
     {
         var assetBundle = ModContent.GetBundle(mod, display.AssetBundleName);

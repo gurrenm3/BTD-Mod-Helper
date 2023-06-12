@@ -28,7 +28,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// <summary>
     /// The BloonsTD6Mod that this content was added by
     /// </summary>
-    public BloonsTD6Mod mod;
+    public BloonsMod mod;
 
     /// <summary>
     /// The name that will be at the end of the ID for this ModContent, by default the class name
@@ -106,7 +106,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     public abstract void Register();
 
 
-    internal static void LoadModContent(BloonsTD6Mod mod)
+    internal static void LoadModContent(BloonsMod mod)
     {
         mod.Content = mod.GetAssembly()
             .GetValidTypes()
@@ -126,7 +126,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
                                                   typeof(ModContent).IsAssignableFrom(type) &&
                                                   type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) != null;
 
-    private static ModContent CreateInstance(Type type, BloonsTD6Mod mod)
+    private static ModContent CreateInstance(Type type, BloonsMod mod)
     {
         ModContent instance;
         try

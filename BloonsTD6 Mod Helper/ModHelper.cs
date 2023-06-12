@@ -28,7 +28,7 @@ public static class ModHelper
 
     private static bool fallBackToOldLoading = true;
 
-    private static IEnumerable<BloonsTD6Mod> mods;
+    private static IEnumerable<BloonsMod> mods;
 
     /// <summary>
     /// Directory where the Mod Helper stores most of its extra info
@@ -66,8 +66,8 @@ public static class ModHelper
     /// <summary>
     /// Active mods that use ModHelper functionality
     /// </summary>
-    public static IEnumerable<BloonsTD6Mod> Mods =>
-        mods ??= Melons.OfType<BloonsTD6Mod>().OrderBy(mod => mod.Priority);
+    public static IEnumerable<BloonsMod> Mods =>
+        mods ??= Melons.OfType<BloonsMod>().OrderBy(mod => mod.Priority);
 
     /// <summary>
     /// All active mods, whether they're Mod Helper or not
@@ -105,15 +105,15 @@ public static class ModHelper
     /// In this case a mod's name is its Assembly Name, which is almost always the same as the file name, but for the
     /// Mod Helper due to compatibility reasons it is "BloonsTD6 Mod Helper" rather than "Btd6ModHelper"
     /// </summary>
-    public static BloonsTD6Mod GetMod(string name)
+    public static BloonsMod GetMod(string name)
     {
-        return Mods.FirstOrDefault(BloonsTD6Mod => BloonsTD6Mod.GetModName() == name);
+        return Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
     }
 
     /// <summary>
     /// Gets the instance of a specific BloonsTD6Mod by its type
     /// </summary>
-    public static T GetMod<T>() where T : BloonsTD6Mod => Melon<T>.Instance;
+    public static T GetMod<T>() where T : BloonsMod => Melon<T>.Instance;
 
     /// <summary>
     /// Returns whether a mod with the given name is installed
@@ -123,65 +123,34 @@ public static class ModHelper
     /// <summary>
     /// Returns whether a mod with the given name is installed, and pass it to the out param if it is
     /// </summary>
-    public static bool HasMod(string name, out BloonsTD6Mod bloonsMod) => (bloonsMod = GetMod(name)) != null;
-
-    private static void PerformHook<T>(Action<T> action) where T : BloonsTD6Mod
-    {
-        foreach (var mod in Mods.OfType<T>().OrderBy(mod => mod.Priority))
-        {
-
-            var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
-
-            if (canPerformHook)
-            {
-                try
-                {
-                    action.Invoke(mod);
-                }
-                catch (Exception e)
-                {
-                    mod.LoggerInstance.Error(e);
-                }
-            }
-        }
-    }
-
-    /*private static void PerformHook<T>(Action<T> action) where T : AdvancedBloonsTD6Mod
-    {
-        foreach (var mod in Mods.OfType<T>().OrderBy(mod => mod.Priority))
-        {
-
-            var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
-
-            if (canPerformHook)
-            {
-                try
-                {
-                    action.Invoke(mod);
-                }
-                catch (Exception e)
-                {
-                    mod.LoggerInstance.Error(e);
-                }
-            }
-        }
-    }*/
-
-
+    public static bool HasMod(string name, out BloonsMod bloonsMod) => (bloonsMod = GetMod(name)) != null;
 
     internal static void PerformHook(Action<BloonsTD6Mod> action)
     {
-        PerformHook<BloonsTD6Mod>(action);
+        foreach (var mod in Mods.OfType<BloonsTD6Mod>().OrderBy(mod => mod.Priority))
+        {
+            var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
+
+            if (canPerformHook)
+            {
+                try
+                {
+                    action.Invoke(mod);
+                }
+                catch (Exception e)
+                {
+                    mod.LoggerInstance.Error(e);
+                }
+            }
+        }
     }
-
-
 
     #region Console Messages
 
     /// <summary>
     /// Logs a message from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Log<T>(object obj) where T : BloonsTD6Mod
+    public static void Log<T>(object obj) where T : BloonsMod
     {
         GetMod<T>().LoggerInstance.Msg(obj ?? "null");
     }
@@ -189,7 +158,7 @@ public static class ModHelper
     /// <summary>
     /// Logs a message from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Msg<T>(object obj) where T : BloonsTD6Mod
+    public static void Msg<T>(object obj) where T : BloonsMod
     {
         GetMod<T>().LoggerInstance.Msg(obj ?? "null");
     }
@@ -198,7 +167,7 @@ public static class ModHelper
     /// <summary>
     /// Logs an error from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Error<T>(object obj) where T : BloonsTD6Mod
+    public static void Error<T>(object obj) where T : BloonsMod
     {
         GetMod<T>().LoggerInstance.Error(obj ?? "null");
     }
@@ -206,7 +175,7 @@ public static class ModHelper
     /// <summary>
     /// Logs a warning from the specified Mod's LoggerInstance
     /// </summary>
-    public static void Warning<T>(object obj) where T : BloonsTD6Mod
+    public static void Warning<T>(object obj) where T : BloonsMod
     {
         GetMod<T>().LoggerInstance.Warning(obj ?? "null");
     }
