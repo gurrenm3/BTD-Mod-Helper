@@ -1,9 +1,11 @@
-using System;
 using System.Linq;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.Scenarios;
+using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity.Scenes;
-using Il2CppNinjaKiwi.Common;
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(TitleScreen), nameof(TitleScreen.Start))]
@@ -26,21 +28,12 @@ internal class TitleScreen_Start
                 .Do(task => task.RunSync());
         }
 
-        var currentTable = LocalizationManager.Instance.textTable;
-        var defaultTable = LocalizationManager.Instance.defaultTable;
-        foreach (var namedModContent in ModContent.GetContent<NamedModContent>())
-        {
-            try
-            {
-                namedModContent.RegisterText(currentTable);
-                namedModContent.RegisterText(defaultTable);
-            }
-            catch (Exception e)
-            {
-                ModHelper.Log($"Failed to register text for {namedModContent}");
-                ModHelper.Error(e);
-            }
-        }
+        NamedModContent.RegisterAll();
+        ModSettingsHandler.SaveModSettings(true);
+        ModHelperData.SaveAll();
+        ModGameMode.ModifyDefaultGameModes(GameData.Instance);
+
+        // Tests.ModelSerializationTests.TestSerialization(Game.instance.model);
 
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
     }

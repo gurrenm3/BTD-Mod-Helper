@@ -78,6 +78,7 @@ public class ModSettingString : ModSetting<string>
         );
 
         option.SetResetAction(new Action(() => input.SetText(defaultValue)));
+        input.Text.Text.parseCtrlCharacters = false;
         modifyInput?.Invoke(input);
 
         return option;

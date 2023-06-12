@@ -7,8 +7,6 @@ namespace BTD_Mod_Helper.Patches.UI;
 [HarmonyPatch(typeof(HotkeysScreenField), nameof(HotkeysScreenField.UpdateUi))]
 internal static class HotkeysScreenField_UpdateUI
 {
-    [HarmonyPostfix]
-    private static void Postfix()
-    {
-    }
+    [HarmonyPrefix]
+    private static bool Prefix(HotkeysScreenField __instance) => __instance != null;
 }

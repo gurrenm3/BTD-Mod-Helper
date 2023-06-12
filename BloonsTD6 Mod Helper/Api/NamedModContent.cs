@@ -1,4 +1,6 @@
-﻿using Il2CppSystem.Collections.Generic;
+﻿using System;
+using Il2CppNinjaKiwi.Common;
+using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -32,5 +34,24 @@ public abstract class NamedModContent : ModContent
         textTable[Id] = DisplayName;
         textTable[Id + "s"] = DisplayNamePlural;
         textTable[Id + " Description"] = Description;
+    }
+
+    internal static void RegisterAll()
+    {
+        var currentTable = LocalizationManager.Instance.textTable;
+        var defaultTable = LocalizationManager.Instance.defaultTable;
+        foreach (var namedModContent in GetContent<NamedModContent>())
+        {
+            try
+            {
+                namedModContent.RegisterText(currentTable);
+                namedModContent.RegisterText(defaultTable);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Log($"Failed to register text for {namedModContent}");
+                ModHelper.Error(e);
+            }
+        }
     }
 }

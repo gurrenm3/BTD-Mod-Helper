@@ -120,4 +120,12 @@ internal partial class ModHelperData
             }
         }
     }
+
+    public static void SaveAll()
+    {
+        foreach (var modHelperData in Active)
+        {
+            modHelperData.SaveToJson(ModHelper.DataDirectory);
+        }
+    }
 }

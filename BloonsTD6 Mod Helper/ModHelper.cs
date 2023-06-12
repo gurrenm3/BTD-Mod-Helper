@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity;
 using MelonLoader.Utils;
-using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 namespace BTD_Mod_Helper;
 
 /// <summary>
@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper;
 public static class ModHelper
 {
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.1.8";
+    internal const string Version = "3.1.9";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =

@@ -8,6 +8,7 @@ internal class BlatantFavoritism
         return repoOwner switch
         {
             "doombubbles" => new Color32(200, 0, 255, 255),
+            "BTD6ModHelper" => new Color32(200, 75, 255, 255),
             "gurrenm3" => new Color32(200, 150, 255, 255),
             _ => Color.white
         };

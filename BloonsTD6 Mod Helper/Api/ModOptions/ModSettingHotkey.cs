@@ -13,12 +13,25 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 public class ModSettingHotkey : ModSetting<string>
 {
     private HotkeysScreenField currentField;
+
+    private readonly KeyCode defaultKey;
+    private readonly HotkeyModifier defaultModifier;
     private HotKey hotKey;
+
+    /// <inheritdoc />
+    public ModSettingHotkey() : base("-" + HotkeyModifier.None)
+    {
+        defaultKey = KeyCode.None;
+        defaultModifier = HotkeyModifier.None;
+        hotKey = new HotKey(HotkeyModifier.None, "");
+    }
 
     /// <inheritdoc />
     public ModSettingHotkey(KeyCode key, HotkeyModifier modifier = HotkeyModifier.None)
         : base(key.GetPath() + "-" + modifier)
     {
+        defaultKey = key;
+        defaultModifier = modifier;
         hotKey = new HotKey(modifier, key.GetPath());
     }
 
@@ -91,8 +104,10 @@ public class ModSettingHotkey : ModSetting<string>
     {
         var option = CreateBaseOption();
 
+        var unset = hotKey.modifierKey == HotkeyModifier.None && string.IsNullOrEmpty(hotKey.path);
+
         var buttonComponent = option.BottomRow.AddButton(
-            new Info("Button", 562, 200), VanillaSprites.GreenBtnLong, null
+            new Info("Button", 562, 200), unset ? VanillaSprites.RedBtnLong : VanillaSprites.GreenBtnLong, null
         );
         var text = buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), "", 69f);
 
@@ -112,6 +127,7 @@ public class ModSettingHotkey : ModSetting<string>
             hotkey.Initialise(displayName, hotKey, screen);
         }
 
+        option.SetResetAction(new Action(() => hotkey.Modify(defaultModifier, defaultKey.GetPath())));
 
         return option;
     }

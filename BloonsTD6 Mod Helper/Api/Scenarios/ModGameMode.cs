@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Gameplay.Mods;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Scenarios;
@@ -126,5 +129,31 @@ public abstract class ModGameMode : NamedModContent
     public virtual void ModifyGameModel(GameModel gameModel)
     {
 
+    }
+
+    internal static void ModifyDefaultGameModes(GameData gameData)
+    {
+        foreach (var gameMode in gameData.mods)
+        {
+            if (gameMode.name.EndsWith("Only"))
+            {
+                var mutatorModModels = gameMode.mutatorMods.ToList();
+                mutatorModModels.AddRange(GetContent<ModTowerSet>()
+                    .Where(set => !set.AllowInRestrictedModes)
+                    .Select(set => new LockTowerSetModModel(gameMode.name, set.Set)));
+                gameMode.mutatorMods = mutatorModModels.ToIl2CppReferenceArray();
+            }
+
+            if (gameMode.mutatorMods == null) continue;
+
+            foreach (var mutatorMod in gameMode.mutatorMods)
+            {
+                var typeName = mutatorMod.GetIl2CppType().Name;
+                if (!mutatorMod.name.StartsWith(typeName))
+                {
+                    mutatorMod.name = mutatorMod._name = typeName + "_" + mutatorMod.name;
+                }
+            }
+        }
     }
 }

@@ -20,6 +20,8 @@ internal static class KeyCodeExt
 
     internal static KeyCode GetKeyCode(this string path)
     {
+        if (string.IsNullOrWhiteSpace(path)) return KeyCode.None;
+
         var key = path.Split('/')[^1];
         if (int.TryParse(key, out _))
         {
