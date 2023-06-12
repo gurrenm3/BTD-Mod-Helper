@@ -26,7 +26,7 @@ internal static class ModHelperGithub
     private const string ProductName = "btd-mod-helper";
 
     private const string ModdersURL =
-        $"https://raw.githubusercontent.com/{ModHelper.RepoOwner}/{ModHelper.RepoName}/{ModHelper.Branch}/modders.json";
+        $"{RawUserContent}/{ModHelper.RepoOwner}/{ModHelper.RepoName}/{ModHelper.Branch}/modders.json";
 
     private const string DllContentType = "application/x-msdownload";
     private const string DllContentType2 = "application/octet-stream";

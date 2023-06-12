@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
@@ -114,7 +113,7 @@ internal partial class ModHelperData
 
     internal string GetContentURL(string name)
     {
-        var path = WebUtility.UrlEncode(name);
+        var path = Uri.EscapeDataString(name);
         if (SubPath != null && !(SubPath.EndsWith(".json") || SubPath.EndsWith(".cs") || SubPath.EndsWith(".txt")))
         {
             path = $"{SubPath}/{path}";
@@ -220,7 +219,7 @@ internal partial class ModHelperData
         }
         catch (Exception e)
         {
-            if (RepoOwner == MelonMain.GitHubUsername)
+            if (RepoOwner == MelonMain.GitHubUsername || RepoName == ModHelper.RepoName)
             {
                 ModHelper.Warning($"Failed to get ModHelperData for {Repository.FullName}");
                 ModHelper.Warning(e);

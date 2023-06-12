@@ -5,4 +5,4 @@
 - Fixed 2d towers for the new DisplayCategory
 - Fixed issue with custom heroes appearing in the shop multiple times
 - Fixed extraneous "cleaning acquiredUpgrade" messages after disabling mods
-- Fixed false positive warnings for disabling non-dependency mods
+- Fixed false positive warnings for disabling certain mods that weren't actually dependencies
