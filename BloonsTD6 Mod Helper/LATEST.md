@@ -1,8 +1,1 @@
-- Added `ModBloon.ModifyBloonModelForMatch` override like the ones for towers and upgrades
-- Create mod button will now work when your mods folder is on a different volume than your BTD6 install
-- Hotkeys can now be easily unset via pressing Escape while setting
-- Fixed ModVanillaParagon crash issue
-- Fixed 2d towers for the new DisplayCategory
-- Fixed issue with custom heroes appearing in the shop multiple times
-- Fixed extraneous "cleaning acquiredUpgrade" messages after disabling mods
-- Fixed false positive warnings for disabling certain mods that weren't actually dependencies
+- Fixed mod hotkeys sometimes not saving new values

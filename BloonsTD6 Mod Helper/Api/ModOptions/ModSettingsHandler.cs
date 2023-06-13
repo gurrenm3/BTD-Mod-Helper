@@ -89,21 +89,19 @@ internal static class ModSettingsHandler
 
         foreach (var (key, modSetting) in mod.ModSettings)
         {
-            var value = modSetting.GetValue();
-            if (value != null)
+            if (modSetting.GetValue() == null) continue;
+
+            try
             {
-                try
+                if (initialSave || modSetting.OnSave())
                 {
-                    if (initialSave || modSetting.OnSave())
-                    {
-                        json[key] = JToken.FromObject(value);
-                    }
+                    json[key] = JToken.FromObject(modSetting.GetValue());
                 }
-                catch (Exception e)
-                {
-                    ModHelper.Warning($"Failed to save {key} for {mod.GetModName()}");
-                    ModHelper.Warning(e);
-                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Failed to save {key} for {mod.GetModName()}");
+                ModHelper.Warning(e);
             }
         }
 
