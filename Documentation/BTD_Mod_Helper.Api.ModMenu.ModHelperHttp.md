@@ -98,13 +98,3 @@ public static System.Threading.Tasks.Task<System.IO.Compression.ZipArchive> GetZ
 
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.IO.Compression.ZipArchive](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Compression.ZipArchive 'System.IO.Compression.ZipArchive')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
-
-<a name='BTD_Mod_Helper.Api.ModMenu.ModHelperHttp.Init()'></a>
-
-## ModHelperHttp.Init() Method
-
-Initializes the HttpClient
-
-```csharp
-public static void Init();
-```

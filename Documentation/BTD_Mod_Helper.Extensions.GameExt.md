@@ -202,24 +202,6 @@ public static Il2CppReferenceArray<TowerDetailsModel> GetHeroDetailModels(this G
 #### Returns
 [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
-<a name='BTD_Mod_Helper.Extensions.GameExt.GetJsonSerializer(thisGame)'></a>
-
-## GameExt.GetJsonSerializer(this Game) Method
-
-Gets a Json Serializer. Not necessary but can be useful
-
-```csharp
-public static BTD_Mod_Helper.Api.JsonSerializer GetJsonSerializer(this Game game);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.GameExt.GetJsonSerializer(thisGame).game'></a>
-
-`game` [Il2CppAssets.Scripts.Unity.Game](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Game 'Il2CppAssets.Scripts.Unity.Game')
-
-#### Returns
-[JsonSerializer](BTD_Mod_Helper.Api.JsonSerializer.md 'BTD_Mod_Helper.Api.JsonSerializer')
-
 <a name='BTD_Mod_Helper.Extensions.GameExt.GetLocalizationManager(thisGame)'></a>
 
 ## GameExt.GetLocalizationManager(this Game) Method

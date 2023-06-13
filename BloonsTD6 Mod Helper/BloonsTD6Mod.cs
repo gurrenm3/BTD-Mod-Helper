@@ -182,7 +182,17 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br />
     /// Equivalent to a HarmonyPostFix on GameModel.CreatedModded
     /// </summary>
-    public virtual void OnNewGameModel(GameModel result, List<ModModel> mods)
+    [Obsolete("Use the method signature with the IReadOnlyList<ModModel> mods parameter")]
+    public virtual void OnNewGameModel(GameModel result, Il2CppSystem.Collections.Generic.List<ModModel> mods)
+    {
+    }
+
+    /// <summary>
+    /// Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers
+    /// <br />
+    /// Equivalent to a HarmonyPostFix on GameModel.CreatedModded
+    /// </summary>
+    public virtual void OnNewGameModel(GameModel result, IReadOnlyList<ModModel> mods)
     {
     }
 

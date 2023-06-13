@@ -137,7 +137,10 @@ internal static class GameModel_CreateModded
             modBloon.ModifyBloonModelForMatch(bloonModel, gameModes);
         }
 
-        ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods.ToList()));
+        ModHelper.PerformHook(mod => mod.OnNewGameModel(result, gameModes));
+#pragma warning disable CS0618
+        ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));
+#pragma warning restore CS0618
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result));
     }
 }

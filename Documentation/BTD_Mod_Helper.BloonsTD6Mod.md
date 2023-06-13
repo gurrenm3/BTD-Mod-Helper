@@ -6,160 +6,10 @@
 Extend this Class instead of MelonMod to gain access to dozens of easy to use built-in hooks
 
 ```csharp
-public abstract class BloonsTD6Mod :
-BTD_Mod_Helper.Api.IModContent
+public abstract class BloonsTD6Mod : BTD_Mod_Helper.BloonsMod
 ```
 
-Inheritance [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod') &#129106; BloonsTD6Mod
-
-Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent')
-### Properties
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AudioClips'></a>
-
-## BloonsTD6Mod.AudioClips Property
-
-Audio clips for the embedded sounds in this mod
-
-```csharp
-public System.Collections.Generic.Dictionary<string,AudioClip> AudioClips { get; set; }
-```
-
-#### Property Value
-[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.CheatMod'></a>
-
-## BloonsTD6Mod.CheatMod Property
-
-Setting this to true will prevent your BloonsTD6Mod hooks from executing if the player could get flagged for using mods  
-at that time.  
-<br/>  
-For example, using mods in public co-op
-
-```csharp
-public virtual bool CheatMod { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.Content'></a>
-
-## BloonsTD6Mod.Content Property
-
-All ModContent in ths mod
-
-```csharp
-public System.Collections.Generic.IReadOnlyList<BTD_Mod_Helper.Api.ModContent> Content { get; set; }
-```
-
-#### Property Value
-[System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.GithubReleaseURL'></a>
-
-## BloonsTD6Mod.GithubReleaseURL Property
-
-[https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29 'https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29')
-
-```csharp
-public virtual string GithubReleaseURL { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.IDPrefix'></a>
-
-## BloonsTD6Mod.IDPrefix Property
-
-The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods
-
-```csharp
-public virtual string IDPrefix { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.LatestURL'></a>
-
-## BloonsTD6Mod.LatestURL Property
-
-[https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29 'https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29')
-
-```csharp
-public virtual string LatestURL { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.MelonInfoCsURL'></a>
-
-## BloonsTD6Mod.MelonInfoCsURL Property
-
-[https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29 'https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Appearing-in-the-Mod-Browser-%28ModHelperData%29')
-
-```csharp
-public virtual string MelonInfoCsURL { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.ModSettings'></a>
-
-## BloonsTD6Mod.ModSettings Property
-
-The settings in this mod organized by name
-
-```csharp
-public System.Collections.Generic.Dictionary<string,BTD_Mod_Helper.Api.ModOptions.ModSetting> ModSettings { get; }
-```
-
-#### Property Value
-[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.ModSourcesPath'></a>
-
-## BloonsTD6Mod.ModSourcesPath Property
-
-The path that this mod would most likely be at in the Mod Sources folder
-
-```csharp
-public string ModSourcesPath { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OptionalPatches'></a>
-
-## BloonsTD6Mod.OptionalPatches Property
-
-Signifies that the game shouldn't crash / the mod shouldn't stop loading if one of its patches fails
-
-```csharp
-public virtual bool OptionalPatches { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.Resources'></a>
-
-## BloonsTD6Mod.Resources Property
-
-The embedded resources (textures) of this mod
-
-```csharp
-public System.Collections.Generic.Dictionary<string,byte[]> Resources { get; set; }
-```
-
-#### Property Value
-[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Byte](https://docs.microsoft.com/en-us/dotnet/api/System.Byte 'System.Byte')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+Inheritance [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod') &#129106; [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod') &#129106; BloonsTD6Mod
 ### Methods
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.ActOnMessage(Message)'></a>
@@ -172,7 +22,7 @@ Use [ReadMessage&lt;T&gt;(Message)](BTD_Mod_Helper.Api.Coop.MessageUtils.md#BTD_
 <br/>  
 If this is one of your messages and you're consuming and acting on it, return true.  
 Otherwise, return false. Seriously.  
-Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsTD6Mod.md#BTD_Mod_Helper.BloonsTD6Mod.CheatMod 'BTD_Mod_Helper.BloonsTD6Mod.CheatMod') == true.
+Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.CheatMod 'BTD_Mod_Helper.BloonsMod.CheatMod') == true.
 
 ```csharp
 public virtual bool ActOnMessage(Message message);
@@ -185,73 +35,6 @@ public virtual bool ActOnMessage(Message message);
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AddContent(BTD_Mod_Helper.Api.ModContent)'></a>
-
-## BloonsTD6Mod.AddContent(ModContent) Method
-
-Manually adds new ModContent to the mod. Does not directly call [BTD_Mod_Helper.Api.ModContent.Load](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Load 'BTD_Mod_Helper.Api.ModContent.Load') or  
-[BTD_Mod_Helper.Api.ModContent.Register](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Register 'BTD_Mod_Helper.Api.ModContent.Register'), but the latter will still end up being called if this is added before the  
-Registration phase.
-
-```csharp
-public void AddContent(BTD_Mod_Helper.Api.ModContent modContent);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AddContent(BTD_Mod_Helper.Api.ModContent).modContent'></a>
-
-`modContent` [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AddContent(System.Collections.Generic.IEnumerable_BTD_Mod_Helper.Api.ModContent_)'></a>
-
-## BloonsTD6Mod.AddContent(IEnumerable<ModContent>) Method
-
-Manually adds multiple new ModContent to the mod. Does not directly call [BTD_Mod_Helper.Api.ModContent.Load](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Load 'BTD_Mod_Helper.Api.ModContent.Load') or  
-[BTD_Mod_Helper.Api.ModContent.Register](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Register 'BTD_Mod_Helper.Api.ModContent.Register'), but the latter will still end up being called if this is added before the  
-Registration phase.
-
-```csharp
-public void AddContent(System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModContent> modContents);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.AddContent(System.Collections.Generic.IEnumerable_BTD_Mod_Helper.Api.ModContent_).modContents'></a>
-
-`modContents` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.Call(string,object[])'></a>
-
-## BloonsTD6Mod.Call(string, object[]) Method
-
-Allows you to define ways for other mods to interact with this mod. Other mods could do:  
-  
-```csharp  
-ModHelper.GetMod("YourModName")?.Call("YourOperationName", ...);  
-```  
-to execute functionality here.  
-<br/>
-
-```csharp
-public virtual object Call(string operation, params object[] parameters);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.Call(string,object[]).operation'></a>
-
-`operation` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-A string for the name of the operation that another mods wants to call
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.Call(string,object[]).parameters'></a>
-
-`parameters` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
-
-The parameters that another mod has provided
-
-#### Returns
-[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
-A possible result of this call
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.GetRoundHint(InGame,int,string)'></a>
 
@@ -549,7 +332,7 @@ public virtual void OnButtonClicked(Button button, PointerEventData clickData);
 ## BloonsTD6Mod.OnConnected(NKMultiGameInterface) Method
 
 Executed once the user has connected to a game session.  
-Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsTD6Mod.md#BTD_Mod_Helper.BloonsTD6Mod.CheatMod 'BTD_Mod_Helper.BloonsTD6Mod.CheatMod') == true.
+Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.CheatMod 'BTD_Mod_Helper.BloonsMod.CheatMod') == true.
 
 ```csharp
 public virtual void OnConnected(NKMultiGameInterface nkGi);
@@ -567,7 +350,7 @@ The interface used to interact with the game.
 ## BloonsTD6Mod.OnConnectFail(NKMultiGameInterface) Method
 
 Executed once the user has tried to connect to a server, but failed to do so.  
-Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsTD6Mod.md#BTD_Mod_Helper.BloonsTD6Mod.CheatMod 'BTD_Mod_Helper.BloonsTD6Mod.CheatMod') == true.
+Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.CheatMod 'BTD_Mod_Helper.BloonsMod.CheatMod') == true.
 
 ```csharp
 public virtual void OnConnectFail(NKMultiGameInterface nkGi);
@@ -597,7 +380,7 @@ public virtual void OnDefeat();
 ## BloonsTD6Mod.OnDisconnected(NKMultiGameInterface) Method
 
 Executed once the player has disconnected from a server.  
-Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsTD6Mod.md#BTD_Mod_Helper.BloonsTD6Mod.CheatMod 'BTD_Mod_Helper.BloonsTD6Mod.CheatMod') == true.
+Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.CheatMod 'BTD_Mod_Helper.BloonsMod.CheatMod') == true.
 
 ```csharp
 public virtual void OnDisconnected(NKMultiGameInterface nkGi);
@@ -684,23 +467,6 @@ public virtual void OnInGameLoaded(InGame inGame);
 
 `inGame` [Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame 'Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnLoadSettings(JObject)'></a>
-
-## BloonsTD6Mod.OnLoadSettings(JObject) Method
-
-Called when the settings for your mod are loaded
-
-```csharp
-public virtual void OnLoadSettings(JObject settings);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnLoadSettings(JObject).settings'></a>
-
-`settings` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
-
-The json representation of the settings that were just loaded
-
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnMainMenu()'></a>
 
 ## BloonsTD6Mod.OnMainMenu() Method
@@ -779,15 +545,43 @@ public virtual void OnModelLoaded(Factory factory, string ModelToLoad, System.Ac
 
 `action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnModOptionsOpened()'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel)'></a>
 
-## BloonsTD6Mod.OnModOptionsOpened() Method
+## BloonsTD6Mod.OnNewGameModel(GameModel) Method
 
-Called whenever the Mod Options Menu gets opened, after it finishes initializing
+Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
+<br/>  
+Equivalent to a HarmonyPostFix on GameModel.CreatedModded
 
 ```csharp
-public virtual void OnModOptionsOpened();
+public virtual void OnNewGameModel(GameModel result);
 ```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel).result'></a>
+
+`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,List_ModModel_)'></a>
+
+## BloonsTD6Mod.OnNewGameModel(GameModel, List<ModModel>) Method
+
+Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
+<br/>  
+Equivalent to a HarmonyPostFix on GameModel.CreatedModded
+
+```csharp
+public virtual void OnNewGameModel(GameModel result, List<ModModel> mods);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,List_ModModel_).result'></a>
+
+`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,List_ModModel_).mods'></a>
+
+`mods` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,MapModel)'></a>
 
@@ -810,43 +604,26 @@ public virtual void OnNewGameModel(GameModel result, MapModel map);
 
 `map` [Il2CppAssets.Scripts.Models.Map.MapModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.MapModel 'Il2CppAssets.Scripts.Models.Map.MapModel')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,System.Collections.Generic.List_ModModel_)'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,System.Collections.Generic.IReadOnlyList_ModModel_)'></a>
 
-## BloonsTD6Mod.OnNewGameModel(GameModel, List<ModModel>) Method
-
-Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
-<br/>  
-Equivalent to a HarmonyPostFix on GameModel.CreatedModded
-
-```csharp
-public virtual void OnNewGameModel(GameModel result, System.Collections.Generic.List<ModModel> mods);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,System.Collections.Generic.List_ModModel_).result'></a>
-
-`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,System.Collections.Generic.List_ModModel_).mods'></a>
-
-`mods` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel)'></a>
-
-## BloonsTD6Mod.OnNewGameModel(GameModel) Method
+## BloonsTD6Mod.OnNewGameModel(GameModel, IReadOnlyList<ModModel>) Method
 
 Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
 <br/>  
 Equivalent to a HarmonyPostFix on GameModel.CreatedModded
 
 ```csharp
-public virtual void OnNewGameModel(GameModel result);
+public virtual void OnNewGameModel(GameModel result, System.Collections.Generic.IReadOnlyList<ModModel> mods);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel).result'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,System.Collections.Generic.IReadOnlyList_ModModel_).result'></a>
 
 `result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,System.Collections.Generic.IReadOnlyList_ModModel_).mods'></a>
+
+`mods` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnPauseScreenClosed(PauseScreen)'></a>
 
@@ -887,7 +664,7 @@ public virtual void OnPauseScreenOpened(PauseScreen pauseScreen);
 ## BloonsTD6Mod.OnPeerConnected(NKMultiGameInterface, int) Method
 
 Executed when a new client has joined the game session.  
-Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsTD6Mod.md#BTD_Mod_Helper.BloonsTD6Mod.CheatMod 'BTD_Mod_Helper.BloonsTD6Mod.CheatMod') == true.
+Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.CheatMod 'BTD_Mod_Helper.BloonsMod.CheatMod') == true.
 
 ```csharp
 public virtual void OnPeerConnected(NKMultiGameInterface nkGi, int peerId);
@@ -911,7 +688,7 @@ Index of the peer in question.
 ## BloonsTD6Mod.OnPeerDisconnected(NKMultiGameInterface, int) Method
 
 Executed when a new client has left the game session.  
-Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsTD6Mod.md#BTD_Mod_Helper.BloonsTD6Mod.CheatMod 'BTD_Mod_Helper.BloonsTD6Mod.CheatMod') == true.
+Note: Only invoked if [CheatMod](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.CheatMod 'BTD_Mod_Helper.BloonsMod.CheatMod') == true.
 
 ```csharp
 public virtual void OnPeerDisconnected(NKMultiGameInterface nkGi, int peerId);
@@ -1087,23 +864,6 @@ Equivalent to a HarmonyPostFix on Simulation.OnRoundStart
 ```csharp
 public virtual void OnRoundStart();
 ```
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnSaveSettings(JObject)'></a>
-
-## BloonsTD6Mod.OnSaveSettings(JObject) Method
-
-Called when the settings for your mod are saved.
-
-```csharp
-public virtual void OnSaveSettings(JObject settings);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnSaveSettings(JObject).settings'></a>
-
-`settings` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
-
-The json representation of the settings about to be saved
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnSpriteLoad(SpriteReference,Image)'></a>
 

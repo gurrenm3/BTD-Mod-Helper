@@ -71,11 +71,11 @@ public static string ModHelperDirectory { get; }
 Active mods that use ModHelper functionality
 
 ```csharp
-public static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.BloonsTD6Mod> Mods { get; }
+public static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.BloonsMod> Mods { get; }
 ```
 
 #### Property Value
-[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 <a name='BTD_Mod_Helper.ModHelper.ModSourcesDirectory'></a>
 
@@ -99,7 +99,7 @@ Logs an error from the specified Mod's LoggerInstance
 
 ```csharp
 public static void Error<T>(object obj)
-    where T : BTD_Mod_Helper.BloonsTD6Mod;
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -122,7 +122,7 @@ In this case a mod's name is its Assembly Name, which is almost always the same 
 Mod Helper due to compatibility reasons it is "BloonsTD6 Mod Helper" rather than "Btd6ModHelper"
 
 ```csharp
-public static BTD_Mod_Helper.BloonsTD6Mod GetMod(string name);
+public static BTD_Mod_Helper.BloonsMod GetMod(string name);
 ```
 #### Parameters
 
@@ -131,7 +131,7 @@ public static BTD_Mod_Helper.BloonsTD6Mod GetMod(string name);
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
-[BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
+[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
 
 <a name='BTD_Mod_Helper.ModHelper.GetMod_T_()'></a>
 
@@ -141,7 +141,7 @@ Gets the instance of a specific BloonsTD6Mod by its type
 
 ```csharp
 public static T GetMod<T>()
-    where T : BTD_Mod_Helper.BloonsTD6Mod;
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -151,28 +151,6 @@ public static T GetMod<T>()
 
 #### Returns
 [T](BTD_Mod_Helper.ModHelper.md#BTD_Mod_Helper.ModHelper.GetMod_T_().T 'BTD_Mod_Helper.ModHelper.GetMod<T>().T')
-
-<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsTD6Mod)'></a>
-
-## ModHelper.HasMod(string, BloonsTD6Mod) Method
-
-Returns whether a mod with the given name is installed, and pass it to the out param if it is
-
-```csharp
-public static bool HasMod(string name, out BTD_Mod_Helper.BloonsTD6Mod BloonsTD6Mod);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsTD6Mod).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsTD6Mod).BloonsTD6Mod'></a>
-
-`BloonsTD6Mod` [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.ModHelper.HasMod(string)'></a>
 
@@ -192,6 +170,28 @@ public static bool HasMod(string name);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
+
+## ModHelper.HasMod(string, BloonsMod) Method
+
+Returns whether a mod with the given name is installed, and pass it to the out param if it is
+
+```csharp
+public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod).bloonsMod'></a>
+
+`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.ModHelper.Log_T_(object)'></a>
 
 ## ModHelper.Log<T>(object) Method
@@ -200,7 +200,7 @@ Logs a message from the specified Mod's LoggerInstance
 
 ```csharp
 public static void Log<T>(object obj)
-    where T : BTD_Mod_Helper.BloonsTD6Mod;
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -221,7 +221,7 @@ Logs a message from the specified Mod's LoggerInstance
 
 ```csharp
 public static void Msg<T>(object obj)
-    where T : BTD_Mod_Helper.BloonsTD6Mod;
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -242,7 +242,7 @@ Logs a warning from the specified Mod's LoggerInstance
 
 ```csharp
 public static void Warning<T>(object obj)
-    where T : BTD_Mod_Helper.BloonsTD6Mod;
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
