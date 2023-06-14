@@ -14,7 +14,6 @@ namespace BTD_Mod_Helper.Api;
 
 public abstract partial class ModContent
 {
-
     /// <summary>
     /// Gets the singleton instance of a particular ModContent or BloonsTD6Mod based on its type
     /// </summary>
@@ -397,44 +396,6 @@ public abstract partial class ModContent
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static string GetDisplayGUID<T>() where T : ModDisplay => GetInstance<T>().Id;
-
-    /// <summary>
-    /// Gets all loaded ModContent objects that are T or a subclass of T
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static List<T> GetContent<T>() where T : ModContent
-    {
-        return ModHelper.Mods
-            .SelectMany(bloonsMod => bloonsMod.Content)
-            .OfType<T>()
-            .ToList();
-    }
-
-    /// <summary>
-    /// Gets all loaded ModContent objects that are exactly of type T
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static List<T> GetInstances<T>() where T : ModContent => ModContentInstance<T>.Instances;
-
-    /// <summary>
-    /// Finds the loaded ModContent with the given Id and type T
-    /// </summary>
-    /// <param name="id"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static T Find<T>(string id) where T : ModContent
-    {
-        return GetContent<T>().Find(content => content.Id == id);
-    }
-
-    /// <inheritdoc cref="Find{T}(string)" />
-    public static bool TryFind<T>(string id, out T result) where T : ModContent
-    {
-        result = Find<T>(id);
-        return result != default;
-    }
 
     /// <summary>
     /// Gets an AudioClip from a mod by its name (no file extension included)

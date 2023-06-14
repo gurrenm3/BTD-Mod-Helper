@@ -2,6 +2,7 @@
 using System.Linq;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
@@ -175,6 +176,19 @@ public static class GameModelExporter
         }
 
         var resourcesPath = Path.Combine(FileIOHelper.sandboxRoot, "resources.json");
+        
+        
+        total = success = 0;
+        foreach (var geraldoItem in Game.instance.model.geraldoItemModels)
+        {
+            if (TryExport(geraldoItem, $"GeraldoItems/{geraldoItem.name}.json")) success++;
+            total++;
+        }
+        ModHelper.Log(
+            $"Exported {success}/{total} GeraldoItemModels to {Path.Combine(FileIOHelper.sandboxRoot, "GeraldoItems")}");
+        
+        Export(LocalizationManager.Instance.textTable, "textTable.json");
+        
         File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
         ModHelper.Log($"Exported resources to {resourcesPath}");
     }

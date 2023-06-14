@@ -15,7 +15,6 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 public abstract partial class ModContent : IModContent, IComparable<ModContent>
 {
-
     private const BindingFlags ConstructorFlags = BindingFlags.Instance |
                                                   BindingFlags.Public |
                                                   BindingFlags.NonPublic;
@@ -178,6 +177,39 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
         return content;
     }
 
+
+
+    /// <summary>
+    /// Gets all loaded ModContent objects that are T or a subclass of T
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static List<T> GetContent<T>() where T : ModContent => ModHelper.Mods
+        .SelectMany(bloonsMod => bloonsMod.Content)
+        .OfType<T>()
+        .ToList();
+
+    /// <summary>
+    /// Gets all loaded ModContent objects that are exactly of type T
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static List<T> GetInstances<T>() where T : ModContent => ModContentInstance<T>.Instances;
+
+    /// <summary>
+    /// Finds the loaded ModContent with the given Id and type T
+    /// </summary>
+    /// <param name="id"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T Find<T>(string id) where T : ModContent => GetContent<T>().Find(content => content.Id == id);
+
+    /// <inheritdoc cref="Find{T}(string)" />
+    public static bool TryFind<T>(string id, out T result) where T : ModContent
+    {
+        result = Find<T>(id);
+        return result != default;
+    }
 
     internal int GetOrder() => Order;
 }
