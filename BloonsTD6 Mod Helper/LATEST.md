@@ -1,1 +1,4 @@
 - Fixed mod hotkeys sometimes not saving new values
+- Fixed OnNewGameModel hook signature change
+  - This impacted some other mods such as Mega Knowledge
+- Fixed in game messages (like from Faster Forward) sometimes breaking after back to back matches
