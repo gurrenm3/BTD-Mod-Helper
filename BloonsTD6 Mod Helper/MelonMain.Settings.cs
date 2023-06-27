@@ -240,7 +240,7 @@ internal partial class MelonMain
     {
         if (!string.IsNullOrEmpty(ModHelperSourceFolder))
         {
-            var csFie = Path.Combine(ModHelperSourceFolder, "Shared", "Api", "Enums", "UpgradeType.cs");
+            var csFie = Path.Combine(ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums", "UpgradeType.cs");
             UpgradeTypeGenerator.GenerateVanillaUpgradeTypes(csFie);
         }
     })

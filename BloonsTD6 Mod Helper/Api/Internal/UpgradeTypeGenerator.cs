@@ -20,6 +20,7 @@ internal static class UpgradeTypeGenerator
 
         upgradeTypesFile.WriteLine(
             """
+            using System.Collections.Generic;
             #pragma warning disable 1591
             namespace BTD_Mod_Helper.Api.Enums;
 
@@ -28,6 +29,8 @@ internal static class UpgradeTypeGenerator
             """
         );
 
+
+        var byName = new HashSet<string>();
 
         foreach (var upgrade in Game.instance.model.upgrades.Select(x => x.name))
         {
@@ -42,7 +45,30 @@ internal static class UpgradeTypeGenerator
                     public const string {p} = "{upgrade}";
                 """
             );
+
+            byName.Add(p);
         }
+
+        upgradeTypesFile.WriteLine(
+            """
+                public static readonly Dictionary<string, string> ByName = new() 
+                {
+            """
+        );
+        foreach (var s in byName)
+        {
+            upgradeTypesFile.WriteLine(
+                $$"""
+                        { "{{s}}", {{s}} },
+                """
+            );
+        }
+        upgradeTypesFile.WriteLine(
+            """
+                };
+            """
+        );
+
 
         upgradeTypesFile.Write("}");
     }
