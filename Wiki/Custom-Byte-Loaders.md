@@ -1,8 +1,8 @@
 Certain mods that generate a lot of new TowerModels or other GameModel information (e.g. such as Ultimate Crosspathing) would rather generate all taht information once, export it, and load it each time the game starts rather than generating it new each time. This is where ModByteLoaders come in. They wrap the native BloonsTD6 FlatFileCodeGen system that the game itself uses to save and load the actual GameModel.
 
-## [ModByteLoader](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Api.ModByteLoader.md)
+## [ModByteLoader](/docs/BTD_Mod_Helper.Api.ModByteLoader)
 
-Unlike every other `Mod____` class, you don't just go create ModByteLoaders from scratch. Instead, you use the [ModByteLoader.Generate](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Api.ModByteLoader.md#modbyteloadergeneratet-string-string-method) method dynamically while your Mod is running and it will generate the file for you, along with a .bytes file for you to include in your project for it to load from.
+Unlike every other `Mod____` class, you don't just go create ModByteLoaders from scratch. Instead, you use the [ModByteLoader.Generate](/docs/BTD_Mod_Helper.Api.ModByteLoader#modbyteloadergeneratet-string-string-method) method dynamically while your Mod is running and it will generate the file for you, along with a .bytes file for you to include in your project for it to load from.
 
 ### Arguments
 

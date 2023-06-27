@@ -2,7 +2,7 @@
 
 A custom Game Mode is essentially a completely unrestricted challenge editor mode that is present in the GUI as a button alongside the vanilla game modes like Deflation, Apopalypse or Half-Cash.
 
-# [ModGameMode](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Api.Scenarios.ModGameMode.md)
+# [ModGameMode](/docs/BTD_Mod_Helper.Api.Scenarios.ModGameMode)
 
 ## Required Overrides
 
@@ -22,7 +22,7 @@ Add an Icon (512x512) for your Game Mode to use in the round changer by using in
 
 - Internally, the word "Mod" is used to describe Game Modes, which is why the type you edit is a `ModModel`
 
-- Use the Mod Helper's [extension methods](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Extensions.ModModelExt.md) for modifying the `ModModel`
+- Use the Mod Helper's [extension methods](/docs/BTD_Mod_Helper.Extensions.ModModelExt) for modifying the `ModModel`
 
 ## Example
 

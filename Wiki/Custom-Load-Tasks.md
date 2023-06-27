@@ -1,6 +1,6 @@
 Certain mods that have a big task that needs to performed when the game starts (such as Ultimate Crosspathing) can make use of Custom Load Tasks to add those tasks to the game's queue of tasks that run like Coroutines in Unity, happening over the course of multiple frames so that the game doesn't lock up.
 
-# [ModLoadTask](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Api.ModLoadTask.md)
+# [ModLoadTask](/docs/BTD_Mod_Helper.Api.ModLoadTask)
 
 ## Required Overrides
 
@@ -26,7 +26,7 @@ The fact that you used a Load Task should never be the lone reason why your mod 
 
 ## Example
 
-This task is used internally within the Mod Helper itself to wait for all the [ModByteLoader](https://github.com/gurrenm3/BTD-Mod-Helper/blob/3.0_Features/Documentation/BTD_Mod_Helper.Api.ModByteLoader.md)s to be finished before continuing with other Load tasks. Show cases how you can use your yield statements even inside loops.
+This task is used internally within the Mod Helper itself to wait for all the [ModByteLoader](/docs/BTD_Mod_Helper.Api.ModByteLoader)s to be finished before continuing with other Load tasks. Show cases how you can use your yield statements even inside loops.
 
 ```cs
 internal class ByteWaitTask : ModLoadTask
