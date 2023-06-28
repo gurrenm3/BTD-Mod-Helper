@@ -622,20 +622,6 @@ public static class UpgradeType
     public const string GeraldoUpgrade18 = "Geraldo Upgrade 18";
     public const string GeraldoUpgrade19 = "Geraldo Upgrade 19";
     public const string GeraldoUpgrade20 = "Geraldo Upgrade 20";
-    public const string PowersinshopBananafarmer = "PowersInShop-BananaFarmer";
-    public const string PowersinshopTechbot = "PowersInShop-TechBot";
-    public const string PowersinshopPontoon = "PowersInShop-Pontoon";
-    public const string PowersinshopPortablelake = "PowersInShop-PortableLake";
-    public const string PowersinshopEnergisingtotem = "PowersInShop-EnergisingTotem";
-    public const string PowersinshopRoadspikes = "PowersInShop-RoadSpikes";
-    public const string PowersinshopGluetrap = "PowersInShop-GlueTrap";
-    public const string PowersinshopCamotrap = "PowersInShop-CamoTrap";
-    public const string PowersinshopMoabmine = "PowersInShop-MoabMine";
-    public const string TornadowizardsMysticdisruption = "TornadoWizards-MysticDisruption";
-    public const string TornadowizardsLightningbolt = "TornadoWizards-LightningBolt";
-    public const string TornadowizardsSummonwhirlwind = "TornadoWizards-SummonWhirlwind";
-    public const string TornadowizardsElectricoverload = "TornadoWizards-ElectricOverload";
-    public const string TornadowizardsTempesttornado = "TornadoWizards-TempestTornado";
     public static readonly Dictionary<string, string> ByName = new() 
     {
         { "SharpShots", SharpShots },
@@ -1256,19 +1242,5 @@ public static class UpgradeType
         { "GeraldoUpgrade18", GeraldoUpgrade18 },
         { "GeraldoUpgrade19", GeraldoUpgrade19 },
         { "GeraldoUpgrade20", GeraldoUpgrade20 },
-        { "PowersinshopBananafarmer", PowersinshopBananafarmer },
-        { "PowersinshopTechbot", PowersinshopTechbot },
-        { "PowersinshopPontoon", PowersinshopPontoon },
-        { "PowersinshopPortablelake", PowersinshopPortablelake },
-        { "PowersinshopEnergisingtotem", PowersinshopEnergisingtotem },
-        { "PowersinshopRoadspikes", PowersinshopRoadspikes },
-        { "PowersinshopGluetrap", PowersinshopGluetrap },
-        { "PowersinshopCamotrap", PowersinshopCamotrap },
-        { "PowersinshopMoabmine", PowersinshopMoabmine },
-        { "TornadowizardsMysticdisruption", TornadowizardsMysticdisruption },
-        { "TornadowizardsLightningbolt", TornadowizardsLightningbolt },
-        { "TornadowizardsSummonwhirlwind", TornadowizardsSummonwhirlwind },
-        { "TornadowizardsElectricoverload", TornadowizardsElectricoverload },
-        { "TornadowizardsTempesttornado", TornadowizardsTempesttornado },
     };
 }

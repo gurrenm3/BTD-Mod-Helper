@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
@@ -203,11 +204,15 @@ public abstract class ModBloon : NamedModContent
         var i = 1f;
         foreach (var damageState in damageStates)
         {
-            var display = new ModDisplay2DImpl(mod, Id + i, damageState, Scale, ModDisplay.Bloon2dDisplay,
-                DisplayCategory.Bloon);
+            var guid = damageState;
+            if (!ModDisplay.Cache.ContainsKey(damageState) && TextureExists(mod, damageState))
+            {
+                guid = new ModDisplay2DImpl(mod, Id + i, damageState, Scale, ModDisplay.Bloon2dDisplay,
+                    DisplayCategory.Bloon).Id;
+            }
 
             displayStates.Add(new DamageStateModel($"DamageStateModel_damage_state_{i}",
-                CreatePrefabReference(display.Id), 1 - i / count));
+                CreatePrefabReference(guid), 1 - i / count));
             i++;
         }
 

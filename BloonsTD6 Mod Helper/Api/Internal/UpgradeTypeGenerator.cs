@@ -32,7 +32,9 @@ internal static class UpgradeTypeGenerator
 
         var byName = new HashSet<string>();
 
-        foreach (var upgrade in Game.instance.model.upgrades.Select(x => x.name))
+        foreach (var upgrade in Game.instance.model.upgrades
+                     .Where(model => !ModHelper.Mods.Any(mod => model.name.StartsWith(mod.IDPrefix)))
+                     .Select(x => x.name))
         {
             var p = Overrides.TryGetValue(upgrade, out var overriden)
                 ? overriden
