@@ -1,13 +1,13 @@
-﻿using System;
-using BTD_Mod_Helper.Api.Towers;
+using System;
+using BTD_Mod_Helper.Api.Bloons;
 using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>
-/// A ModCustomDisplay that will automatically apply to a ModTower for specific tiers
+/// A ModCustomDisplay that will automatically apply to a ModBloon
 /// </summary>
-public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
+public abstract class ModBloonCustomDisplay : ModBloonDisplay, ICustomDisplay
 {
     /// <summary>
     /// On a ModCustomDisplay, this property does nothing
@@ -18,8 +18,6 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
     /// On a ModCustomDisplay, this property does nothing
     /// </summary>
     public sealed override PrefabReference BaseDisplayReference => base.BaseDisplayReference;
-
-    #region ICustomDisplay Members
 
     /// <inheritdoc />
     public abstract string AssetBundleName { get; }
@@ -33,29 +31,15 @@ public abstract class ModTowerCustomDisplay : ModTowerDisplay, ICustomDisplay
     /// <inheritdoc />
     public virtual bool LoadAsync => false;
 
-    #endregion
-
-    /// <summary>
-    /// Performs alterations to the unity display node when it is created
-    /// </summary>
-    /// <param name="node"></param>
-    public override void ModifyDisplayNode(UnityDisplayNode node)
-    {
-
-    }
-
     internal override void GetBasePrototype(Factory factory, Action<UnityDisplayNode> onComplete)
     {
         this.GetBasePrototype(mod, onComplete);
     }
 }
 
-/// <summary>
-/// A convenient generic class for applying a ModTowerCustomDisplay to a ModTower
-/// </summary>
-/// <typeparam name="T"></typeparam>
-public abstract class ModTowerCustomDisplay<T> : ModTowerCustomDisplay where T : ModTower
+/// <inheritdoc />
+public abstract class ModBloonCustomDisplay<T> : ModBloonCustomDisplay where T : ModBloon
 {
     /// <inheritdoc />
-    public override ModTower Tower => GetInstance<T>();
+    public sealed override ModBloon Bloon => GetInstance<T>();
 }

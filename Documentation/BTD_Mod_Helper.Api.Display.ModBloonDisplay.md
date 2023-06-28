@@ -12,6 +12,7 @@ public abstract class ModBloonDisplay : BTD_Mod_Helper.Api.Display.ModDisplay
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay') &#129106; ModBloonDisplay
 
 Derived  
+&#8627; [ModBloonCustomDisplay](BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay')  
 &#8627; [ModBloonDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay<T>')
 ### Properties
 

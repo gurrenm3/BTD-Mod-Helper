@@ -41,6 +41,19 @@ public sealed override string BaseDisplay { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.BaseDisplayReference'></a>
+
+## ModTowerCustomDisplay.BaseDisplayReference Property
+
+On a ModCustomDisplay, this property does nothing
+
+```csharp
+public sealed override PrefabReference BaseDisplayReference { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+
 <a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.LoadAsync'></a>
 
 ## ModTowerCustomDisplay.LoadAsync Property
