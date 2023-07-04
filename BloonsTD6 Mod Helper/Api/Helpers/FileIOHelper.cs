@@ -34,7 +34,8 @@ public static class FileIOHelper
         var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
         {
             Formatting = Formatting.Indented,
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            TypeNameHandling = TypeNameHandling.Objects
         });
 
         SaveFile(fileName, text);

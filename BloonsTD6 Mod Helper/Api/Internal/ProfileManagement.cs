@@ -99,7 +99,7 @@ internal class ProfileManagement
                 {
                     if (player != null && Clean($"{id} primaryHero", heroes, current)(player.hero))
                     {
-                        MapPlayerHeroes[name] ??= new Dictionary<int, string>();
+                        MapPlayerHeroes.TryAdd(name, new Dictionary<int, string>());
                         MapPlayerHeroes[name][id] = player.hero;
                         player.hero = "Quincy";
                     }
