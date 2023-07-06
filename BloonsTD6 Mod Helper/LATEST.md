@@ -1,1 +1,5 @@
+- Added the IModSettings interface that controls if ModSettings will be added from that ModContent type
 - Fixed issue with custom 3d Bloons' damaged displays
+- Fixed Tower background in the challenge rules screen always being Magic
+- Fixed issue with Profile Cleaning for mod heroes
+- Fixed issue with ModSettingHotkey.JustReleased on Hotkeys without modifiers

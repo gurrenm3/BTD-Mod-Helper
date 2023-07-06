@@ -28,7 +28,7 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         ModContentInstances.AddInstance(GetType(), this);
 
-        // Mod Settings
+        // Create all and load default mod settings
         ModSettingsHandler.InitializeModSettings();
 
         try
@@ -46,6 +46,9 @@ internal partial class MelonMain : BloonsTD6Mod
 
         // Load Content from other mods
         ModHelper.LoadAllMods();
+
+        // Load any mod settings that were added from other types
+        ModSettingsHandler.LoadModSettings();
 
         // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);

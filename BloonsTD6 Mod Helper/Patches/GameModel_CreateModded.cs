@@ -22,7 +22,7 @@ namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(List<string>), typeof(ModModel),
     typeof(ActiveRelicKnowledge), typeof(MapModel), typeof(RoundSetModel))]
-internal partial class GameModel_CreateModde
+internal static class GameModel_CreateModded2
 {
     [HarmonyPostfix]
     internal static void Postfix(MapModel map, GameModel __result)

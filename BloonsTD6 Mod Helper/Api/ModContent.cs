@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.ModOptions;
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -107,8 +109,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
 
     internal static void LoadModContent(BloonsMod mod)
     {
-        mod.Content = mod.GetAssembly()
-            .GetValidTypes()
+        mod.Content = AccessTools.GetTypesFromAssembly(mod.GetAssembly())
             .Where(CanLoadType)
             .Select(type => CreateInstance(type, mod))
             .Where(content => content != null)
@@ -162,6 +163,11 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
                 if (instance.GetType().IsInstanceOfType(modContent))
                 {
                     instances.Add(modContent);
+                }
+
+                if (modContent is IModSettings modSettings)
+                {
+                    ModSettingsHandler.CreateModSettings(modSettings, modContent.mod);
                 }
             }
 

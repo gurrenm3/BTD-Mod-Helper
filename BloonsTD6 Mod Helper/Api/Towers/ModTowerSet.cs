@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Towers;
@@ -81,6 +82,17 @@ public abstract class ModTowerSet : NamedModContent
     /// </summary>
     [Obsolete("Only the Portrait property used")]
     public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
+
+    /// <summary>
+    /// Name of .png file for the seat to use in Odyssey mode (theoretically)
+    /// </summary>
+    public virtual string Seat => GetType().Name + "-Seat";
+
+    /// <summary>
+    /// SpriteReference for the Seat
+    /// </summary>
+    public virtual SpriteReference SeatReference =>
+        GetSpriteReferenceOrNull(Seat) ?? CreateSpriteReference(VanillaSprites.TowerSeatEmpty);
 
     /// <summary>
     /// Whether this Tower Set should still be allowed to appear in Primary Only, Military Only, Magic Only

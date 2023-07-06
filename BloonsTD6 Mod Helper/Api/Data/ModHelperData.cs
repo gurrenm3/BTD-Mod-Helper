@@ -50,9 +50,7 @@ internal partial class ModHelperData
 
         var data = mod is MelonMain
             ? typeof(ModHelper)
-            : mod.GetAssembly()
-                .GetValidTypes()
-                .FirstOrDefault(type => type.Name == nameof(ModHelperData));
+            : AccessTools.GetTypesFromAssembly(mod.GetAssembly()).FirstOrDefault(type => type.Name == nameof(ModHelperData));
 
         if (data != null)
         {

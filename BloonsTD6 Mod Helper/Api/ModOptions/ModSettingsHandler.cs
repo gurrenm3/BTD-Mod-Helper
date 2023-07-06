@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Api.ModOptions;
@@ -20,7 +21,8 @@ internal static class ModSettingsHandler
             mod.ModSettings.Clear();
             try
             {
-                GetModSettings(mod, mod);
+                CreateModSettings(mod, mod);
+                LoadModSettings(mod);
             }
             catch (Exception e)
             {
@@ -30,7 +32,7 @@ internal static class ModSettingsHandler
         }
     }
 
-    internal static void GetModSettings(object obj, BloonsMod mod)
+    internal static void CreateModSettings(IModSettings obj, BloonsMod mod)
     {
         var fields = obj.GetType()
             .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
@@ -41,9 +43,8 @@ internal static class ModSettingsHandler
             var modSetting = (ModSetting) field.GetValue(obj)!;
             mod.ModSettings[field.Name] = modSetting;
             modSetting.displayName ??= field.Name.Spaced();
+            modSetting.source = obj;
         }
-
-        LoadModSettings(mod);
     }
 
     internal static void LoadModSettings(BloonsMod mod)
@@ -152,6 +153,19 @@ internal static class ModSettingsHandler
             SaveModSettings(mod, initialSave);
         }
 
-        ModHelper.Msg("Successfully saved mod settings");
+        if (!initialSave)
+        {
+            ModHelper.Msg("Successfully saved mod settings");
+        }
+    }
+
+    internal static void LoadModSettings()
+    {
+        foreach (var mod in ModHelper.Mods)
+        {
+            if (!mod.ModSettings.Any()) continue;
+
+            LoadModSettings(mod);
+        }
     }
 }

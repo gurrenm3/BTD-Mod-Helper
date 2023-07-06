@@ -12,10 +12,10 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// </summary>
 public class ModSettingHotkey : ModSetting<string>
 {
-    private HotkeysScreenField currentField;
 
     private readonly KeyCode defaultKey;
     private readonly HotkeyModifier defaultModifier;
+    private HotkeysScreenField currentField;
     private HotKey hotKey;
 
     /// <inheritdoc />
@@ -84,8 +84,7 @@ public class ModSettingHotkey : ModSetting<string>
     /// <summary>
     /// Returns whether the Hotkey just went from being pressed to not being pressed on this frame
     /// </summary>
-    public bool JustReleased() => Modifier(Input.GetKey) && Input.GetKeyUp(hotKey.path.GetKeyCode()) ||
-                                  Modifier(Input.GetKeyUp) && Input.GetKey(hotKey.path.GetKeyCode());
+    public bool JustReleased() => Modifier(Input.GetKey) && Input.GetKeyUp(hotKey.path.GetKeyCode());
 
     /// <inheritdoc />
     internal override bool OnSave()

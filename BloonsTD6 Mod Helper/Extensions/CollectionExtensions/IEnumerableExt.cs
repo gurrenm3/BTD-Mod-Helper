@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime;
 using Il2CppSystem;
@@ -141,4 +142,14 @@ public static class IEnumerableExt
     {
         return enumerable.SelectMany(t => Enumerable.Repeat(t, n));
     }
+
+    /// <summary>
+    /// Filters the elements of the IEnumerable by if their Il2Cpp type is T
+    /// </summary>
+    /// <param name="ienumerable"></param>
+    /// <typeparam name="T">The Il2Cpp type to filter by</typeparam>
+    /// <returns></returns>
+    public static System.Collections.Generic.IEnumerable<T> OfIl2CppType<T>(this IEnumerable ienumerable)
+        where T : Il2CppObjectBase =>
+        ienumerable.OfType<Il2CppObjectBase>().Select(obj => obj.TryCast<T>()).Where(obj => obj != null);
 }

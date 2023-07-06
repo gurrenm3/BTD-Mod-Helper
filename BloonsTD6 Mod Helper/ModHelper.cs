@@ -6,7 +6,6 @@ using System.Reflection;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
-using Il2CppAssets.Scripts.Unity;
 using MelonLoader.Utils;
 namespace BTD_Mod_Helper;
 
@@ -129,18 +128,13 @@ public static class ModHelper
     {
         foreach (var mod in Mods.OfType<BloonsTD6Mod>().OrderBy(mod => mod.Priority))
         {
-            var canPerformHook = !mod.CheatMod || !Game.instance.CanGetFlagged();
-
-            if (canPerformHook)
+            try
             {
-                try
-                {
-                    action.Invoke(mod);
-                }
-                catch (Exception e)
-                {
-                    mod.LoggerInstance.Error(e);
-                }
+                action.Invoke(mod);
+            }
+            catch (Exception e)
+            {
+                mod.LoggerInstance.Error(e);
             }
         }
     }

@@ -7,13 +7,16 @@ namespace BTD_Mod_Helper.Patches.UI;
 [HarmonyPatch(typeof(StandardTowerPurchaseButton), nameof(StandardTowerPurchaseButton.DetermineBackgroundSprite))]
 internal class StandardTowerPurchaseButton_DetermineBackgroundSprite
 {
-    [HarmonyPostfix]
-    internal static void Postfix(StandardTowerPurchaseButton __instance, ref SpriteReference __result)
+    [HarmonyPrefix]
+    internal static bool Prefix(StandardTowerPurchaseButton __instance, ref SpriteReference __result)
     {
         if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
         {
             __result = modTowerSet.ContainerReference;
+            return false;
         }
+
+        return true;
     }
 }
 

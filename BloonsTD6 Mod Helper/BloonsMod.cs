@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
 using Newtonsoft.Json.Linq;
@@ -12,7 +13,7 @@ namespace BTD_Mod_Helper;
 /// <summary>
 /// Expanded version of MelonMod to suit the needs of BTD Mod Helper
 /// </summary>
-public abstract class BloonsMod : MelonMod, IModContent
+public abstract class BloonsMod : MelonMod, IModSettings
 {
     internal static readonly HashSet<Type> GotModTooSoon = new();
 
@@ -149,32 +150,38 @@ public abstract class BloonsMod : MelonMod, IModContent
         OnEarlyInitialize();
     }
 
+    /// <summary>
+    /// Tries to apply all Harmony Patches defined within a type. Logs a warning and adds a load error if any fail.
+    /// </summary>
+    /// <param name="type"></param>
+    public void ApplyHarmonyPatches(Type type)
+    {
+        try
+        {
+            HarmonyInstance.CreateClassProcessor(type).Patch();
+        }
+        catch (Exception e)
+        {
+            MelonLogger.Warning(
+                $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.InnerException?.Message ?? e.Message}\" " +
+                $"The mod might not function correctly. This needs to be fixed by {Info.Author}");
+
+            loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
+
+            /*if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
+            {
+                ModHelper.FallbackToOldLoading = true;
+                ModHelper.Msg("Falling back to old loading method");
+            }*/
+        }
+    }
+
     /// <inheritdoc />
     public sealed override void OnInitializeMelon()
     {
         if (modHelperPatchAll)
         {
-            AccessTools.GetTypesFromAssembly(this.GetAssembly()).Do(type =>
-            {
-                try
-                {
-                    HarmonyInstance.CreateClassProcessor(type).Patch();
-                }
-                catch (Exception e)
-                {
-                    MelonLogger.Warning(
-                        $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.InnerException?.Message ?? e.Message}\" " +
-                        $"The mod might not function correctly. This needs to be fixed by {Info.Author}");
-
-                    loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
-
-                    /*if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
-                    {
-                        ModHelper.FallbackToOldLoading = true;
-                        ModHelper.Msg("Falling back to old loading method");
-                    }*/
-                }
-            });
+            AccessTools.GetTypesFromAssembly(this.GetAssembly()).Do(ApplyHarmonyPatches);
         }
 
         if (GotModTooSoon.Contains(GetType()) && IDPrefix != this.GetAssembly().GetName().Name + "-")
@@ -228,6 +235,4 @@ public abstract class BloonsMod : MelonMod, IModContent
     }
 
     #endregion
-
-
 }

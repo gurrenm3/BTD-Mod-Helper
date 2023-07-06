@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Data;
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>
@@ -111,7 +112,6 @@ public abstract class ModSetting<T> : ModSetting
 /// </summary>
 public abstract class ModSetting
 {
-
     /// <summary>
     /// The category that this is part of, or null
     /// </summary>
@@ -143,6 +143,11 @@ public abstract class ModSetting
     /// Indicates to players that the effects of changing this setting will only take place after a restart
     /// </summary>
     public bool requiresRestart;
+
+    /// <summary>
+    /// The type where this ModSettings was defined
+    /// </summary>
+    public IModSettings source;
 
     /// <summary>
     /// Gets the current value that this ModSetting holds
