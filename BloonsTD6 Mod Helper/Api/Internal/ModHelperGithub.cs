@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
@@ -47,7 +48,7 @@ internal static class ModHelperGithub
 
     private static MiscellaneousRateLimit rateLimit;
 
-    public static List<Data.ModHelperData> Mods { get; private set; } = new();
+    public static List<ModHelperData> Mods { get; private set; } = new();
     private static bool ForceVerifiedOnly { get; set; }
 
     public static GitHubClient Client { get; private set; }
@@ -56,16 +57,16 @@ internal static class ModHelperGithub
 
     public static bool VerifiedOnly => ForceVerifiedOnly || !MelonMain.ShowUnverifiedModBrowserContent;
 
-    public static IEnumerable<Data.ModHelperData> VisibleMods => Mods.Where(ModIsVisible);
+    public static IEnumerable<ModHelperData> VisibleMods => Mods.Where(ModIsVisible);
 
-    public static bool ModIsVisible(this Data.ModHelperData data) => data.RepoName != ModHelper.RepoName &&
-                                                                     !BannedModders.Contains(data.RepoOwner) &&
-                                                                     !BannedMods.Contains(data.Identifier) &&
-                                                                     (!VerifiedOnly ||
-                                                                      VerifiedModders.Contains(data.RepoOwner)) &&
-                                                                     (!MelonMain.HideBrokenMods || !data.ModIsBroken());
+    public static bool ModIsVisible(this ModHelperData data) => data.RepoName != ModHelper.RepoName &&
+                                                                !BannedModders.Contains(data.RepoOwner) &&
+                                                                !BannedMods.Contains(data.Identifier) &&
+                                                                (!VerifiedOnly ||
+                                                                 VerifiedModders.Contains(data.RepoOwner)) &&
+                                                                (!MelonMain.HideBrokenMods || !data.ModIsBroken());
 
-    public static bool ModIsBroken(this Data.ModHelperData data) =>
+    public static bool ModIsBroken(this ModHelperData data) =>
         !SemVersion.TryParse(data.WorksOnVersion, out var semver) || semver.Major < 34;
 
     public static void Init()
@@ -86,18 +87,18 @@ internal static class ModHelperGithub
 
         // First, wait for the monorepo search and then kick off the loading tasks
         var monoRepoTasks = (await monoRepoSearchTask).Items
-            .Select(Data.ModHelperData.LoadFromMonoRepo)
+            .Select(ModHelperData.LoadFromMonoRepo)
             .ToArray();
 
         // Finish getting all normal mods, processing multiple pages if needed
-        var mods = new List<Data.ModHelperData>();
+        var mods = new List<ModHelperData>();
         var searchResult = await repoSearchTask;
         while (searchResult.TotalCount > mods.Count && searchResult.Items.Any())
         {
             mods.AddRange(searchResult.Items
                 .OrderBy(repo => repo.CreatedAt)
-                .Select(repo => new Data.ModHelperData(repo))
-                .Append(new Data.ModHelperData(await modHelperRepoSearchTask)));
+                .Select(repo => new ModHelperData(repo))
+                .Append(new ModHelperData(await modHelperRepoSearchTask)));
 
             searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
                 {PerPage = 100, Page = page++});
@@ -153,7 +154,7 @@ internal static class ModHelperGithub
         }
     }
 
-    public static async Task DownloadLatest(Data.ModHelperData mod, bool bypassPopup = false,
+    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false,
         Action<string> filePathCallback = null, Action<Task> taskCallback = null)
     {
         Release latestRelease = null;
@@ -265,7 +266,7 @@ internal static class ModHelperGithub
     private static string ParseReleaseMessage(string body) =>
         Regex.Split(body ?? "", @"<!--Mod Browser Message Start-->[\r\n\s]*").LastOrDefault() ?? "";
 
-    private static async Task Download(Data.ModHelperData mod, Action<string> callback, Release latestRelease,
+    private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease,
         bool showPopup)
     {
         Exception exception = null;
@@ -273,7 +274,8 @@ internal static class ModHelperGithub
         {
             var asset = mod.SubPath == null
                 ? latestRelease!.Assets.FirstOrDefault(asset =>
-                      asset.Name == mod.DllName || asset.Name == mod.ZipName) ??
+                      asset.Name == mod.DllName || asset.Name == mod.ZipName || asset.Name == mod.Mod?.FileName()
+                  ) ??
                   latestRelease.Assets[0]
                 : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
                     DateTimeOffset.Now, mod.GetContentURL(mod.ZipName ?? mod.DllName), null);
@@ -307,7 +309,7 @@ internal static class ModHelperGithub
         PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
     }
 
-    public static async Task<string> DownloadAsset(Data.ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true)
+    public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true)
     {
         if (mod.ManualDownload)
         {

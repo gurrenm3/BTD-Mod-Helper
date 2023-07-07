@@ -218,12 +218,16 @@ public abstract class ModUpgrade : NamedModContent
     /// The normal ApplyUpgrade effects for all upgrades will have already been applied on game start,
     /// so this will simply modify all the TowerModels for this ModTower that have this upgrade.
     /// </summary>
-    /// <param name="towerModel">The Tower Model</param>
-    /// <param name="gameModes">What GameModes are active for the match</param>
     public virtual void ApplyUpgradeForMatch(TowerModel towerModel, IReadOnlyList<ModModel> gameModes)
     {
 
     }
+
+    /// <inheritdoc cref="ApplyUpgradeForMatch(Il2CppAssets.Scripts.Models.Towers.TowerModel,System.Collections.Generic.IReadOnlyList{Il2CppAssets.Scripts.Models.ModModel})" />
+    public virtual void ApplyUpgradeForMatch(TowerModel towerModel, GameModel gameModel)
+    {
+    }
+
 
 
     /// <summary>

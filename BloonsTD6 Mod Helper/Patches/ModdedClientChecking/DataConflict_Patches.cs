@@ -1,7 +1,6 @@
-using BTD_Mod_Helper.Patches.ModdedClientChecking;
 using Il2CppAssets.Scripts.Unity.Player;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-namespace BTD_Mod_Helper.Patches;
+namespace BTD_Mod_Helper.Patches.ModdedClientChecking;
 
 [HarmonyPatch(typeof(DataConflict), nameof(DataConflict.ShowUpdatePopup))]
 internal static class DataConflict_ShowUpdatePopup

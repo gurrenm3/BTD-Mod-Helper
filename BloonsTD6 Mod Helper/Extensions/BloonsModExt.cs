@@ -66,4 +66,6 @@ public static class BloonsTD6ModExt
         ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
 
     internal static Assembly GetAssembly(this MelonMod mod) => mod.MelonAssembly.Assembly;
+
+    internal static string FileName(this MelonMod mod) => Path.GetFileName(mod.MelonAssembly.Location);
 }
