@@ -1,6 +1,7 @@
 ﻿using System;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Settings;
@@ -12,11 +13,10 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// </summary>
 public class ModSettingHotkey : ModSetting<string>
 {
-
     private readonly KeyCode defaultKey;
     private readonly HotkeyModifier defaultModifier;
     private HotkeysScreenField currentField;
-    private HotKey hotKey;
+    internal HotKey hotKey;
 
     /// <inheritdoc />
     public ModSettingHotkey() : base("-" + HotkeyModifier.None)
@@ -135,4 +135,26 @@ public class ModSettingHotkey : ModSetting<string>
     /// Creates a new ModSettingHotkey from a KeyCode
     /// </summary>
     public static implicit operator ModSettingHotkey(KeyCode key) => new(key);
+
+    internal void SyncTo(HotkeyButton hotkeyButton)
+    {
+        hotkeyButton.wasPressedThisFrame = JustPressed();
+        hotkeyButton.isPressed = IsPressed();
+        hotkeyButton.wasReleasedThisFrame = JustReleased();
+    }
+
+    internal static void HandleTowerHotkeys()
+    {
+        var buttonSet = InGame.instance.hotkeys.Exists()?.hotKeyButtonSet;
+        if (buttonSet == null) return;
+
+        foreach (var (towerBaseId, modTower) in ModTowerHelper.ModTowerCache)
+        {
+            if (modTower.Hotkey == null || !buttonSet.buttons.ContainsKey(towerBaseId)) continue;
+
+            var button = buttonSet.GetButton(towerBaseId);
+
+            modTower.Hotkey.SyncTo(button);
+        }
+    }
 }

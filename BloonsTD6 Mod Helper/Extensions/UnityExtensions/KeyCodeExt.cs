@@ -7,7 +7,12 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 internal static class KeyCodeExt
 {
-    internal static string GetPath(this KeyCode keyCode)
+    /// <summary>
+    /// Gets the path string for the given key code
+    /// </summary>
+    /// <param name="keyCode"></param>
+    /// <returns></returns>
+    public static string GetPath(this KeyCode keyCode)
     {
         var key = keyCode.ToString();
         if (key.Length == 1)
@@ -18,7 +23,12 @@ internal static class KeyCodeExt
         return $"<Keyboard>/{key}";
     }
 
-    internal static KeyCode GetKeyCode(this string path)
+    /// <summary>
+    /// Gets the Key code for a given path string
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public static KeyCode GetKeyCode(this string path)
     {
         if (string.IsNullOrWhiteSpace(path)) return KeyCode.None;
 
@@ -26,6 +36,10 @@ internal static class KeyCodeExt
         if (int.TryParse(key, out _))
         {
             key = "Alpha" + key;
+        }
+        if (key == "enter")
+        {
+            key = "return";
         }
         return Enum.TryParse(key, true, out KeyCode keyCode) ? keyCode : default;
     }

@@ -81,6 +81,7 @@ internal partial class MelonMain : BloonsTD6Mod
 
         NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
+        ModSettingHotkey.HandleTowerHotkeys();
 
 #if DEBUG
         if (TowerSelectionMenu.instance != null &&

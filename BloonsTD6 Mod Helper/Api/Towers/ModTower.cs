@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
@@ -165,6 +166,11 @@ public abstract class ModTower : NamedModContent
     /// Defines whether / how this ModTower has a Paragon
     /// </summary>
     public virtual ParagonMode ParagonMode => ParagonMode.None;
+
+    /// <summary>
+    /// Hotkey to use for placing this tower from the shop
+    /// </summary>
+    public virtual ModSettingHotkey Hotkey => null;
 
     internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
