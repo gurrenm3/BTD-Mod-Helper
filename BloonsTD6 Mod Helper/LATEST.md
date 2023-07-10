@@ -1,4 +1,5 @@
 - Added `ModTower.Hotkey` override to assign a `ModSettingHotkey` for placing your tower in game
+- Added the `Renderer.ApplyOutlineShader` extension to give a custom display's renderer the standard outlining / selection highlight that regular towers have
 - Added the `IModSettings` interface that controls if ModSettings will be added from that ModContent type
 - Fixed issue with custom 3d Bloons' damaged displays
 - Fixed Tower background in the challenge rules screen always being Magic

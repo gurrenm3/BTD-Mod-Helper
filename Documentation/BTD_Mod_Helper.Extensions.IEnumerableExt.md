@@ -110,6 +110,32 @@ public static void Deconstruct<K,V>(this System.Linq.IGrouping<K,V> grouping, ou
 
 `v` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[V](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.Deconstruct_K,V_(thisSystem.Linq.IGrouping_K,V_,K,System.Collections.Generic.List_V_).V 'BTD_Mod_Helper.Extensions.IEnumerableExt.Deconstruct<K,V>(this System.Linq.IGrouping<K,V>, K, System.Collections.Generic.List<V>).V')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.IEnumerableExt.OfIl2CppType_T_(thisSystem.Collections.IEnumerable)'></a>
+
+## IEnumerableExt.OfIl2CppType<T>(this IEnumerable) Method
+
+Filters the elements of the IEnumerable by if their Il2Cpp type is T
+
+```csharp
+public static System.Collections.Generic.IEnumerable<T> OfIl2CppType<T>(this System.Collections.IEnumerable ienumerable)
+    where T : Il2CppObjectBase;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.IEnumerableExt.OfIl2CppType_T_(thisSystem.Collections.IEnumerable).T'></a>
+
+`T`
+
+The Il2Cpp type to filter by
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.IEnumerableExt.OfIl2CppType_T_(thisSystem.Collections.IEnumerable).ienumerable'></a>
+
+`ienumerable` [System.Collections.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerable 'System.Collections.IEnumerable')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.OfIl2CppType_T_(thisSystem.Collections.IEnumerable).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.OfIl2CppType<T>(this System.Collections.IEnumerable).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
 <a name='BTD_Mod_Helper.Extensions.IEnumerableExt.Repeat_T_(thisSystem.Collections.Generic.IEnumerable_T_,int)'></a>
 
 ## IEnumerableExt.Repeat<T>(this IEnumerable<T>, int) Method

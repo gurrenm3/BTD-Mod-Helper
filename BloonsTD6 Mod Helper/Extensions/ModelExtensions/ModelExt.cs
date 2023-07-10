@@ -1,10 +1,11 @@
-﻿using Il2CppAssets.Scripts.Models;
+﻿using System;
+using Il2CppAssets.Scripts.Models;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Extensions for Models
 /// </summary>
-public static partial class ModelExt
+public static class ModelExt
 {
     /// <summary>
     /// Create a new and separate copy of this object. Same as using:  .Clone().Cast();
@@ -26,5 +27,21 @@ public static partial class ModelExt
                 m.name = m.GetIl2CppType().Name + "__" + i;
             }
         });
+    }
+
+    /// <summary>
+    /// Finds the first descendent of a given type whose name contains the specified string, or null if not found
+    /// </summary>
+    public static T FindDescendant<T>(this Model model, string nameContains) where T : Model
+    {
+        return model.GetDescendants<T>().FirstOrDefault(m => m != null && m.name.Contains(nameContains));
+    }
+    
+    /// <summary>
+    /// Finds the first descendent of a given type that matches the given condition, or null if not found
+    /// </summary>
+    public static T FindDescendant<T>(this Model model, Predicate<T> condition) where T : Model
+    {
+        return model.GetDescendants<T>().FirstOrDefault(m => m != null && condition(m));
     }
 }

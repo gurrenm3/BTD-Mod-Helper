@@ -155,6 +155,32 @@ public virtual SpriteReference PortraitReference { get; }
 #### Property Value
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Seat'></a>
+
+## ModTowerSet.Seat Property
+
+Name of .png file for the seat to use in Odyssey mode (theoretically)
+
+```csharp
+public virtual string Seat { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.SeatReference'></a>
+
+## ModTowerSet.SeatReference Property
+
+SpriteReference for the Seat
+
+```csharp
+public virtual SpriteReference SeatReference { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Set'></a>
 
 ## ModTowerSet.Set Property

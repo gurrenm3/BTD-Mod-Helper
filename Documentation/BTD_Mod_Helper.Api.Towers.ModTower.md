@@ -137,6 +137,19 @@ public virtual bool DontAddToShop { get; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.Hotkey'></a>
+
+## ModTower.Hotkey Property
+
+Hotkey to use for placing this tower from the shop
+
+```csharp
+public virtual BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey Hotkey { get; }
+```
+
+#### Property Value
+[ModSettingHotkey](BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.Icon'></a>
 
 ## ModTower.Icon Property
@@ -535,6 +548,29 @@ public abstract void ModifyBaseTowerModel(TowerModel towerModel);
 
 The Base Tower Model
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,GameModel)'></a>
+
+## ModTower.ModifyTowerModelForMatch(TowerModel, GameModel) Method
+
+Further modifies this tower when you go into a new match.  
+Useful for making conditional effects happen based on settings.  
+<br/>  
+The normal ApplyUpgrade effects for all upgrades will have already been applied on game start,  
+so this will simply modify all the TowerModels for this ModTower.
+
+```csharp
+public virtual void ModifyTowerModelForMatch(TowerModel towerModel, GameModel gameModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,GameModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,GameModel).gameModel'></a>
+
+`gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_)'></a>
 
 ## ModTower.ModifyTowerModelForMatch(TowerModel, IReadOnlyList<ModModel>) Method
@@ -554,13 +590,9 @@ public virtual void ModifyTowerModelForMatch(TowerModel towerModel, System.Colle
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
-The Base Tower Model
-
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.ModifyTowerModelForMatch(TowerModel,System.Collections.Generic.IReadOnlyList_ModModel_).gameModes'></a>
 
 `gameModes` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
-
-What GameModes are active for the match
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers()'></a>
 

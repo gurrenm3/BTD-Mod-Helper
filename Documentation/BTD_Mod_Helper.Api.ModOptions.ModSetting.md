@@ -93,6 +93,19 @@ public bool requiresRestart;
 
 #### Field Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.source'></a>
+
+## ModSetting.source Field
+
+The type where this ModSettings was defined
+
+```csharp
+public IModSettings source;
+```
+
+#### Field Value
+[IModSettings](BTD_Mod_Helper.Api.Data.IModSettings.md 'BTD_Mod_Helper.Api.Data.IModSettings')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.CreateBaseOption()'></a>

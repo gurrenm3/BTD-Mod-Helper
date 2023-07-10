@@ -95,8 +95,12 @@
 | Classes | |
 | :--- | :--- |
 | [ModMultiTextOverride](BTD_Mod_Helper.Api.Data.ModMultiTextOverride.md 'BTD_Mod_Helper.Api.Data.ModMultiTextOverride') | A bunch of ModTextOverrides that all share the same Active condition and don't require any on the fly determinations of<br/>their text |
-| [ModSettings](BTD_Mod_Helper.Api.Data.ModSettings.md 'BTD_Mod_Helper.Api.Data.ModSettings') | Another class outside of the main BloonsTD6Mod class that ModSettings can be defined in. Rules other work the same way |
+| [ModSettings](BTD_Mod_Helper.Api.Data.ModSettings.md 'BTD_Mod_Helper.Api.Data.ModSettings') | Another class outside of the main BloonsTD6Mod class that ModSettings can be defined in. Rules otherwise work the same<br/>way |
 | [ModTextOverride](BTD_Mod_Helper.Api.Data.ModTextOverride.md 'BTD_Mod_Helper.Api.Data.ModTextOverride') | Class for dynamically overriding In-Game text in a way that's compatible with other mods |
+
+| Interfaces | |
+| :--- | :--- |
+| [IModSettings](BTD_Mod_Helper.Api.Data.IModSettings.md 'BTD_Mod_Helper.Api.Data.IModSettings') | Interface to signify that [BTD_Mod_Helper.Api.ModOptions.ModSettingsHandler.CreateModSettings(BTD_Mod_Helper.Api.Data.IModSettings,BTD_Mod_Helper.BloonsMod)](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModOptions.ModSettingsHandler.CreateModSettings#BTD_Mod_Helper_Api_ModOptions_ModSettingsHandler_CreateModSettings_BTD_Mod_Helper_Api_Data_IModSettings,BTD_Mod_Helper_BloonsMod_ 'BTD_Mod_Helper.Api.ModOptions.ModSettingsHandler.CreateModSettings(BTD_Mod_Helper.Api.Data.IModSettings,BTD_Mod_Helper.BloonsMod)') should be called on this type |
 
 <a name='BTD_Mod_Helper.Api.Display'></a>
 

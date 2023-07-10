@@ -7,6 +7,7 @@ Expanded version of MelonMod to suit the needs of BTD Mod Helper
 
 ```csharp
 public abstract class BloonsMod :
+BTD_Mod_Helper.Api.Data.IModSettings,
 BTD_Mod_Helper.Api.IModContent
 ```
 
@@ -15,7 +16,7 @@ Inheritance [MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/M
 Derived  
 &#8627; [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
-Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent')
+Implements [IModSettings](BTD_Mod_Helper.Api.Data.IModSettings.md 'BTD_Mod_Helper.Api.Data.IModSettings'), [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent')
 ### Properties
 
 <a name='BTD_Mod_Helper.BloonsMod.AudioClips'></a>
@@ -159,6 +160,21 @@ public void AddContent(System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api
 <a name='BTD_Mod_Helper.BloonsMod.AddContent(System.Collections.Generic.IEnumerable_BTD_Mod_Helper.Api.ModContent_).modContents'></a>
 
 `modContents` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+<a name='BTD_Mod_Helper.BloonsMod.ApplyHarmonyPatches(System.Type)'></a>
+
+## BloonsMod.ApplyHarmonyPatches(Type) Method
+
+Tries to apply all Harmony Patches defined within a type. Logs a warning and adds a load error if any fail.
+
+```csharp
+public void ApplyHarmonyPatches(System.Type type);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsMod.ApplyHarmonyPatches(System.Type).type'></a>
+
+`type` [System.Type](https://docs.microsoft.com/en-us/dotnet/api/System.Type 'System.Type')
 
 <a name='BTD_Mod_Helper.BloonsMod.Call(string,object[])'></a>
 
