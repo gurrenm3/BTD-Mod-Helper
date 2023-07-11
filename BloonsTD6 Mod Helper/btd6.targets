@@ -41,9 +41,10 @@
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.IMGUIModule.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Il2CppFacepunch.Steamworks.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Il2CppUniWebView-CSharp.dll" Private="false"/>
-        <Reference Include="$(ManagedFolder)\UnityEngine.ParticleSystemModule" Private="false"/>
-        <Reference Include="$(ManagedFolder)\UnityEngine.PhysicsModule.dll" Private="false"/>
-        <Reference Include="$(ManagedFolder)\UnityEngine.VideoModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.ParticleSystemModule" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.PhysicsModule.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.VideoModule.dll" Private="false"/>
+
         <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppAssetBundleManager.dll" Private="false"/>
         <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppImageConversionManager.dll" Private="false"/>
         <Reference Include="$(ManagedFolder)\ValueTupleBridge.dll" Private="false"/>
