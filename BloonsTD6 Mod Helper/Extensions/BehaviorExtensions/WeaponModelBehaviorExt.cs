@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -74,5 +76,25 @@ public static class WeaponModelBehaviorExt
     public static void RemoveBehaviors<T>(this WeaponModel model) where T : Model
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
+    }
+
+    /// <summary>
+    /// Sets the emission for a WeaponModel, properly handling the child dependents 
+    /// </summary>
+    public static void SetProjectile(this WeaponModel weapon, ProjectileModel projectile)
+    {
+        weapon.RemoveChildDependant(weapon.projectile);
+        weapon.projectile = projectile;
+        weapon.AddChildDependant(projectile);
+    }
+
+    /// <summary>
+    /// Sets the emission for a WeaponModel, properly handling the child dependents 
+    /// </summary>
+    public static void SetEmission(this WeaponModel weapon, EmissionModel emission)
+    {
+        weapon.RemoveChildDependant(weapon.emission);
+        weapon.emission = emission;
+        weapon.AddChildDependant(emission);
     }
 }
