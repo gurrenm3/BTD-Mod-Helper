@@ -47,7 +47,7 @@ export const populateMods = async (
 ) => {
   const octokit = new Octokit();
 
-  let validMods = 0;
+  let validMods = new Set();
   let invalidMods = 0;
   let page = 1;
   let start = Date.now();
@@ -66,7 +66,7 @@ export const populateMods = async (
       searchResult.items.map(async (repo) => {
         const data = await loadDataFromRepo(repo as Repository);
         if (data && onModFound(data)) {
-          validMods++;
+          validMods.add(data.Identifier);
         } else {
           invalidMods++;
         }
@@ -103,7 +103,7 @@ export const populateMods = async (
       );
       for (let data of datas) {
         if (data && onModFound(data)) {
-          validMods++;
+          validMods.add(data.Identifier);
         } else {
           invalidMods++;
         }
@@ -111,7 +111,7 @@ export const populateMods = async (
     }
   }
 
-  setTotalCount(validMods);
+  setTotalCount(validMods.size);
 };
 
 export const downloadMod = async (

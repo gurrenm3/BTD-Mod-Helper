@@ -29,6 +29,7 @@ import {
   modDisplayName,
   modDisplayVersion,
   ModHelperData,
+  ModHelperRepoName,
   modIsOld,
   StoppedWorkingVersion,
 } from "../lib/mod-helper-data";
@@ -96,6 +97,7 @@ const DefaultTopic = "Filter Topic";
 export default () => {
   const router = useRouter();
   const height = use100vh() ?? 1000;
+  const [finished, setFinished] = useState(false);
 
   const moddersData = useRef({
     forceVerifiedOnly: false,
