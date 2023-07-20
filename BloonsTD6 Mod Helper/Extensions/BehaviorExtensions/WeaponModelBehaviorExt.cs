@@ -77,24 +77,4 @@ public static class WeaponModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
-
-    /// <summary>
-    /// Sets the emission for a WeaponModel, properly handling the child dependents 
-    /// </summary>
-    public static void SetProjectile(this WeaponModel weapon, ProjectileModel projectile)
-    {
-        weapon.RemoveChildDependant(weapon.projectile);
-        weapon.projectile = projectile;
-        weapon.AddChildDependant(projectile);
-    }
-
-    /// <summary>
-    /// Sets the emission for a WeaponModel, properly handling the child dependents 
-    /// </summary>
-    public static void SetEmission(this WeaponModel weapon, EmissionModel emission)
-    {
-        weapon.RemoveChildDependant(weapon.emission);
-        weapon.emission = emission;
-        weapon.AddChildDependant(emission);
-    }
 }

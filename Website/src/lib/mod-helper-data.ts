@@ -265,7 +265,9 @@ export const loadDataFromRepo = async (
   }
 
   if (!data) {
-    console.warn(`Didn't find any ModHelperData for ${modHelperData.RepoName}`);
+    console.warn(
+      `Didn't find any ModHelperData for ${modHelperData.RepoOwner}/${modHelperData.RepoName}`
+    );
     return undefined;
   }
 
@@ -279,6 +281,9 @@ export const loadDataFromRepo = async (
     console.warn(missingRepoData);
     console.warn(modHelperData);
     return undefined;
+  }
+  if (subPath) {
+    modHelperData.SubPath = subPath;
   }
 
   modHelperData.Topics = [
@@ -317,6 +322,7 @@ export const loadDataFromMonoRepo = async (
 
   return await Promise.all(
     modsJson.map(async (subPath) => {
+      console.log("Subpath " + subPath);
       const data = await loadDataFromRepo(repo, subPath);
       if (data) {
         data.CountOfMonoRepo = modsJson.length;

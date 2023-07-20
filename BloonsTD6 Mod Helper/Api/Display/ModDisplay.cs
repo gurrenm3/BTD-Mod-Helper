@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Effects;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
@@ -233,6 +234,23 @@ public abstract class ModDisplay : ModContent
         displayModel.positionOffset = PositionOffset;
         displayModel.scale = Scale;
     }
+    
+    /// <summary>
+    /// Applies this ModDisplay to a given EffectModel
+    /// </summary>
+    public virtual void Apply(EffectModel effectModel)
+    {
+        effectModel.assetId = CreatePrefabReference(Id);
+    }
+    
+    /// <summary>
+    /// Applies this ModDisplay to a given EffectModel
+    /// </summary>
+    public virtual void Apply(AssetPathModel assetPathModel)
+    {
+        assetPathModel.assetPath = CreatePrefabReference(Id);
+    }
+
 
     #endregion
 
@@ -314,7 +332,10 @@ public abstract class ModDisplay : ModContent
         {
             if (Scale is < 1f or > 1f)
             {
-                udn.transform.GetChild(0).transform.localScale = Scale * UnityEngine.Vector3.one;
+                for (var i = 0; i < udn.transform.childCount; i++)
+                {
+                    udn.transform.GetChild(i).localScale *= Scale;
+                }
             }
         }
         catch (Exception e)

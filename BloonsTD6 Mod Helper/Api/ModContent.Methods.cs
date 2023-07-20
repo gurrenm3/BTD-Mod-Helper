@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
@@ -499,4 +500,9 @@ public abstract partial class ModContent
     /// <typeparam name="T">The ModUpgrade type</typeparam>
     /// <returns>The upgrade name/id</returns>
     public static string UpgradeID<T>() where T : ModUpgrade => GetInstance<T>().Id;
+
+    /// <summary>
+    /// Gets the fabricated TowerSet enum value for a ModTowerSet
+    /// </summary>
+    public static TowerSet GetTowerSet<T>() where T : ModTowerSet => GetInstance<T>().Set;
 }

@@ -18,6 +18,15 @@ public static class AttackModelBehaviorExt
     public static bool HasBehavior<T>(this AttackModel model) where T : Model => ModelBehaviorExt.HasBehavior<T>(model);
 
     /// <summary>
+    /// Check if this has a specific Behavior
+    /// </summary>
+    /// <typeparam name="T">The Behavior you're checking for</typeparam>
+    /// <param name="model"></param>
+    /// <param name="behavior"></param>
+    /// <returns></returns>
+    public static bool HasBehavior<T>(this AttackModel model, out T behavior) where T : Model => ModelBehaviorExt.HasBehavior<T>(model, out behavior);
+
+    /// <summary>
     /// Return the first Behavior of type T
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>

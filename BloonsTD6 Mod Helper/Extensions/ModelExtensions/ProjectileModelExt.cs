@@ -2,11 +2,14 @@
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers.Filters;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -84,5 +87,75 @@ public static class ProjectileModelExt
                 filterInvisibleModel.isActive = !canHitCamo;
             }
         }
+    }
+
+    /// <summary>
+    /// Adds a new filter to this projectile model
+    /// </summary>
+    public static void AddFilter(this ProjectileModel projectile, FilterModel filter)
+    {
+        projectile.AddChildDependant(filter);
+        projectile.filters = projectile.filters.AddTo(filter);
+
+        if (projectile.HasBehavior(out ProjectileFilterModel projectileFilter))
+        {
+            projectileFilter.filters = projectileFilter.filters.AddTo(filter);
+            projectileFilter.AddChildDependant(filter);
+        }
+        else
+        {
+            projectile.AddBehavior(new ProjectileFilterModel("", new[] {filter}));
+        }
+    }
+
+    /// <summary>
+    /// Adds a new filter to this projectile model
+    /// </summary>
+    public static void RemoveFilter(this ProjectileModel projectile, FilterModel filter)
+    {
+        projectile.RemoveChildDependant(filter);
+        projectile.filters = projectile.filters.Where(f => f != filter).ToArray();
+
+        if (projectile.HasBehavior(out ProjectileFilterModel projectileFilter))
+        {
+            projectileFilter.RemoveChildDependant(filter);
+            projectileFilter.filters = projectileFilter.filters.RemoveItem(filter);
+        }
+    }
+
+    /// <summary>
+    /// Adds a new filter to this projectile model
+    /// </summary>
+    public static void RemoveFilter<T>(this ProjectileModel projectile) where T : FilterModel
+    {
+        var filter = projectile.filters.OfIl2CppType<T>().FirstOrDefault();
+        if (filter != null)
+        {
+            projectile.RemoveFilter(filter);
+        }
+    }
+
+    /// <summary>
+    /// Sets the display for this projectile
+    /// </summary>
+    public static void SetDisplay(this ProjectileModel projectileModel, PrefabReference display)
+    {
+        projectileModel.display = display;
+        if (projectileModel.HasBehavior(out DisplayModel displayModel))
+        {
+            displayModel.display = display;
+        }
+        else
+        {
+            projectileModel.AddBehavior(new DisplayModel("", display, 0, DisplayCategory.Projectile));
+        }
+    }
+
+    /// <summary>
+    /// Sets the display for this projectile
+    /// </summary>
+    public static void SetDisplay(this ProjectileModel projectileModel, string display)
+    {
+        projectileModel.SetDisplay(new PrefabReference {guidRef = display});
     }
 }

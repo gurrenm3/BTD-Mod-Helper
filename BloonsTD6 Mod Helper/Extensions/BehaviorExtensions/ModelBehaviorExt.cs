@@ -28,7 +28,6 @@ internal static class ModelBehaviorExt
     /// <returns></returns>
     public static IEnumerable<Model> GetBehaviors(this Model model)
     {
-
         if (model.IsType(out AbilityModel abilityModel))
             return abilityModel.behaviors ?? Enumerable.Empty<Model>();
         if (model.IsType(out ProjectileModel projectileModel))
@@ -83,15 +82,8 @@ internal static class ModelBehaviorExt
         var children = model.GetBehaviors();
         if (children != null && handleDependents)
         {
-            foreach (var child in children)
-            {
-                model.RemoveChildDependant(child);
-            }
-
-            foreach (var behavior in il2CppReferenceArray)
-            {
-                model.AddChildDependant(behavior);
-            }
+            model.RemoveChildDependants(children);
+            model.AddChildDependants(il2CppReferenceArray);
         }
 
 

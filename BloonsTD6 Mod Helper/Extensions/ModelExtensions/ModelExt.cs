@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppSystem.Linq;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -62,11 +63,13 @@ public static class ModelExt
     /// <summary>
     /// Finds the descendents of a given type
     /// </summary>
-    public static T[] FindDescendants<T>(this Model model) where T : Model => 
+    public static T[] FindDescendants<T>(this Model model) where T : Model =>
         model.GetDescendants<T>().ToArray();
-    
+
     /// <summary>
     /// Sets the name of this model, properly appending the type prefix to it.
+    /// <br/>
+    /// Also sets the id if it's a ProjectileModel
     /// <returns>The model itself</returns>
     /// </summary>
     public static T SetName<T>(this T model, string name) where T : Model
@@ -77,6 +80,10 @@ public static class ModelExt
             name = typePrefix + name;
         }
         model.name = name;
+        if (model.Is(out ProjectileModel projectile))
+        {
+            projectile.id = name;
+        }
         return model;
     }
 
@@ -86,4 +93,48 @@ public static class ModelExt
     /// <typeparam name="T">Type of object you want to cast to when duplicating. Done automatically</typeparam>
     public static T Duplicate<T>(this T model, string name) where T : Model => model.Duplicate().SetName(name);
 
+
+    /// <summary>
+    /// Remove multiple Child Dependants at the same time. Equivalent to calling the (weirdly non plural named) Model.RemoveChild
+    /// method but without having to do an ICollection cast
+    /// </summary>
+    public static void RemoveChildDependants<T>(this Model model, IEnumerable<T> children) where T : Model
+    {
+        model.RemoveChild(children.ToIl2CppList().Cast<Il2CppSystem.Collections.Generic.ICollection<T>>());
+    }
+
+    /// <summary>
+    /// Add multiple Child Dependants at the same time. Equivalent to calling the (weirdly non plural named) Model.AddChild
+    /// method but without having to do an ICollection cast
+    /// </summary>
+    public static void AddChildDependants<T>(this Model model, IEnumerable<T> children) where T : Model
+    {
+        model.AddChild(children.ToIl2CppList().Cast<Il2CppSystem.Collections.Generic.ICollection<T>>());
+    }
+
+    /// <summary>
+    /// Returns whether a model has a descendant of a given type
+    /// </summary>
+    public static bool HasDescendant<T>(this Model model) where T : Model
+    {
+        return model.GetDescendant<T>() != null;
+    }
+
+    /// <summary>
+    /// Returns whether a model has a descendant of a given type, providing it via the out parameter if so
+    /// </summary>
+    public static bool HasDescendant<T>(this Model model, out T t) where T : Model
+    {
+        t = model.GetDescendant<T>();
+        return t != null;
+    }
+
+    /// <summary>
+    /// Returns whether a model has a descendant of a given type with a filtered name, providing it via the out parameter if so
+    /// </summary>
+    public static bool HasDescendant<T>(this Model model, string nameContains, out T t) where T : Model
+    {
+        t = model.FindDescendant<T>(nameContains);
+        return t != null;
+    }
 }

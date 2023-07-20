@@ -108,11 +108,12 @@ public static partial class Il2CppReferenceArrayExt
     public static Il2CppReferenceArray<T> AddTo<T>(this Il2CppReferenceArray<T> referenceArray, T objectToAdd)
         where T : Object
     {
-        var newRef = new Il2CppReferenceArray<T>(referenceArray.Count + 1);
-        for (var i = 0; i < referenceArray.Count; i++)
-            newRef[i] = referenceArray[i];
+        var count = referenceArray?.Count ?? 0;
+        var newRef = new Il2CppReferenceArray<T>(count + 1);
+        for (var i = 0; i < count; i++)
+            newRef[i] = referenceArray![i];
 
-        newRef[newRef.Length - 1] = objectToAdd;
+        newRef[^1] = objectToAdd;
 
         return newRef;
     }
