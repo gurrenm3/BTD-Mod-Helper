@@ -280,6 +280,7 @@
 | [LockedList](BTD_Mod_Helper.Extensions.LockedList.md 'BTD_Mod_Helper.Extensions.LockedList') | Extensions for LockedLists |
 | [LockedListExt](BTD_Mod_Helper.Extensions.LockedListExt.md 'BTD_Mod_Helper.Extensions.LockedListExt') | Extensions for LockLists |
 | [MapExt](BTD_Mod_Helper.Extensions.MapExt.md 'BTD_Mod_Helper.Extensions.MapExt') | Extensions for Maps |
+| [MiscModelExt](BTD_Mod_Helper.Extensions.MiscModelExt.md 'BTD_Mod_Helper.Extensions.MiscModelExt') | Other miscellaneous extensions for various Model classes |
 | [ModelExt](BTD_Mod_Helper.Extensions.ModelExt.md 'BTD_Mod_Helper.Extensions.ModelExt') | Extensions for Models |
 | [ModModelExt](BTD_Mod_Helper.Extensions.ModModelExt.md 'BTD_Mod_Helper.Extensions.ModModelExt') | Extensions for the ModModel (GameMode) class |
 | [NK_TextMeshProUGUIExt](BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.md 'BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt') | Extensions for NK_TextMeshProUGuis |
@@ -319,6 +320,7 @@
 | [Vector3Ext](BTD_Mod_Helper.Extensions.Vector3Ext.md 'BTD_Mod_Helper.Extensions.Vector3Ext') | Extensions for Vectors |
 | [WeaponBehaviorExt](BTD_Mod_Helper.Extensions.WeaponBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponBehaviorExt') | Behavior extensions for Weapons |
 | [WeaponModelBehaviorExt](BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt') | Behavior extensions for WeaponModels |
+| [WeaponModelExt](BTD_Mod_Helper.Extensions.WeaponModelExt.md 'BTD_Mod_Helper.Extensions.WeaponModelExt') | Extensions for WeaponModels |
 
 | Delegates | |
 | :--- | :--- |

@@ -12,6 +12,25 @@ public static class AttackModelExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; AttackModelExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.AddFilter(thisAttackModel,FilterModel)'></a>
+
+## AttackModelExt.AddFilter(this AttackModel, FilterModel) Method
+
+Adds a new filter to this projectile model
+
+```csharp
+public static void AddFilter(this AttackModel attack, FilterModel filter);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.AddFilter(thisAttackModel,FilterModel).attack'></a>
+
+`attack` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.AddFilter(thisAttackModel,FilterModel).filter'></a>
+
+`filter` [Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel 'Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel')
+
 <a name='BTD_Mod_Helper.Extensions.AttackModelExt.AddWeapon(thisAttackModel,WeaponModel)'></a>
 
 ## AttackModelExt.AddWeapon(this AttackModel, WeaponModel) Method
@@ -79,6 +98,46 @@ public static System.Collections.Generic.List<ProjectileModel> GetAllProjectiles
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveFilter(thisAttackModel,FilterModel)'></a>
+
+## AttackModelExt.RemoveFilter(this AttackModel, FilterModel) Method
+
+Adds a new filter to this projectile model
+
+```csharp
+public static void RemoveFilter(this AttackModel attack, FilterModel filter);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveFilter(thisAttackModel,FilterModel).attack'></a>
+
+`attack` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveFilter(thisAttackModel,FilterModel).filter'></a>
+
+`filter` [Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel 'Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel')
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveFilter_T_(thisAttackModel)'></a>
+
+## AttackModelExt.RemoveFilter<T>(this AttackModel) Method
+
+Adds a new filter to this projectile model
+
+```csharp
+public static void RemoveFilter<T>(this AttackModel attack)
+    where T : FilterModel;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveFilter_T_(thisAttackModel).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveFilter_T_(thisAttackModel).attack'></a>
+
+`attack` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
 
 <a name='BTD_Mod_Helper.Extensions.AttackModelExt.RemoveWeapon(thisAttackModel,WeaponModel)'></a>
 

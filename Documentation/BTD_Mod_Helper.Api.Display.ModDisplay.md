@@ -137,6 +137,21 @@ public virtual float Scale { get; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(AssetPathModel)'></a>
+
+## ModDisplay.Apply(AssetPathModel) Method
+
+Applies this ModDisplay to a given EffectModel
+
+```csharp
+public virtual void Apply(AssetPathModel assetPathModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(AssetPathModel).assetPathModel'></a>
+
+`assetPathModel` [Il2CppAssets.Scripts.Models.Effects.AssetPathModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Effects.AssetPathModel 'Il2CppAssets.Scripts.Models.Effects.AssetPathModel')
+
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(BloonModel)'></a>
 
 ## ModDisplay.Apply(BloonModel) Method
@@ -166,6 +181,21 @@ public virtual void Apply(DisplayModel displayModel);
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(DisplayModel).displayModel'></a>
 
 `displayModel` [Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel')
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(EffectModel)'></a>
+
+## ModDisplay.Apply(EffectModel) Method
+
+Applies this ModDisplay to a given EffectModel
+
+```csharp
+public virtual void Apply(EffectModel effectModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(EffectModel).effectModel'></a>
+
+`effectModel` [Il2CppAssets.Scripts.Models.Effects.EffectModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Effects.EffectModel 'Il2CppAssets.Scripts.Models.Effects.EffectModel')
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(ProjectileModel)'></a>
 

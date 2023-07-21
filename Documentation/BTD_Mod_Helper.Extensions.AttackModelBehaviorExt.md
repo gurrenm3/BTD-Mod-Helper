@@ -117,6 +117,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel,T)'></a>
+
+## AttackModelBehaviorExt.HasBehavior<T>(this AttackModel, T) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasBehavior<T>(this AttackModel model, out T behavior)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel,T).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel,T).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel,T).behavior'></a>
+
+`behavior` [T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel,T).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior<T>(this AttackModel, T).T')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel)'></a>
 
 ## AttackModelBehaviorExt.RemoveBehavior<T>(this AttackModel) Method

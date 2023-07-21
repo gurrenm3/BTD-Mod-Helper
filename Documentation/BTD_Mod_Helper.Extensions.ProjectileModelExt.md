@@ -12,6 +12,25 @@ public static class ProjectileModelExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ProjectileModelExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.AddFilter(thisProjectileModel,FilterModel)'></a>
+
+## ProjectileModelExt.AddFilter(this ProjectileModel, FilterModel) Method
+
+Adds a new filter to this projectile model
+
+```csharp
+public static void AddFilter(this ProjectileModel projectile, FilterModel filter);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.AddFilter(thisProjectileModel,FilterModel).projectile'></a>
+
+`projectile` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.AddFilter(thisProjectileModel,FilterModel).filter'></a>
+
+`filter` [Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel 'Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel')
+
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.ApplyDisplay_T_(thisProjectileModel)'></a>
 
 ## ProjectileModelExt.ApplyDisplay<T>(this ProjectileModel) Method
@@ -88,6 +107,84 @@ public static System.Collections.Generic.List<Projectile> GetProjectileSims(this
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile 'Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.RemoveFilter(thisProjectileModel,FilterModel)'></a>
+
+## ProjectileModelExt.RemoveFilter(this ProjectileModel, FilterModel) Method
+
+Adds a new filter to this projectile model
+
+```csharp
+public static void RemoveFilter(this ProjectileModel projectile, FilterModel filter);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.RemoveFilter(thisProjectileModel,FilterModel).projectile'></a>
+
+`projectile` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.RemoveFilter(thisProjectileModel,FilterModel).filter'></a>
+
+`filter` [Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel 'Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.RemoveFilter_T_(thisProjectileModel)'></a>
+
+## ProjectileModelExt.RemoveFilter<T>(this ProjectileModel) Method
+
+Adds a new filter to this projectile model
+
+```csharp
+public static void RemoveFilter<T>(this ProjectileModel projectile)
+    where T : FilterModel;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.RemoveFilter_T_(thisProjectileModel).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.RemoveFilter_T_(thisProjectileModel).projectile'></a>
+
+`projectile` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,PrefabReference)'></a>
+
+## ProjectileModelExt.SetDisplay(this ProjectileModel, PrefabReference) Method
+
+Sets the display for this projectile
+
+```csharp
+public static void SetDisplay(this ProjectileModel projectileModel, PrefabReference display);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,PrefabReference).projectileModel'></a>
+
+`projectileModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,PrefabReference).display'></a>
+
+`display` [Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,string)'></a>
+
+## ProjectileModelExt.SetDisplay(this ProjectileModel, string) Method
+
+Sets the display for this projectile
+
+```csharp
+public static void SetDisplay(this ProjectileModel projectileModel, string display);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,string).projectileModel'></a>
+
+`projectileModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,string).display'></a>
+
+`display` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetHitCamo(thisProjectileModel,bool)'></a>
 

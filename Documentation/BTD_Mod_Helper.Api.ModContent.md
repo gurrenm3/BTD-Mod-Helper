@@ -1255,6 +1255,25 @@ The bottom path tier
 [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')  
 The tower name/id
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetTowerSet_T_()'></a>
+
+## ModContent.GetTowerSet<T>() Method
+
+Gets the fabricated TowerSet enum value for a ModTowerSet
+
+```csharp
+public static TowerSet GetTowerSet<T>()
+    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTowerSet_T_().T'></a>
+
+`T`
+
+#### Returns
+[Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
+
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
 
 ## ModContent.HasMod(string) Method
