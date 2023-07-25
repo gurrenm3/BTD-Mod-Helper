@@ -318,4 +318,12 @@ public abstract class ModByteLoader<T> : ModByteLoader where T : Object
         LoadTask?.Wait(); // Just in case the loading hasn't completed yet
         return result;
     }
+
+    /// <summary>
+    /// Perform additional memory clean up for the results
+    /// </summary>
+    public void Dispose()
+    {
+        result = null;
+    }
 }

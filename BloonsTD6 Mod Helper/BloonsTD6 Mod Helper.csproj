@@ -4,7 +4,7 @@
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
         <Configurations>Debug;Release</Configurations>
         <Nullable>warnings</Nullable>
-        <Optimize>true</Optimize>
+        <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <LangVersion>preview</LangVersion>
@@ -22,7 +22,6 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <Optimize>false</Optimize>
         <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
     </PropertyGroup>
 

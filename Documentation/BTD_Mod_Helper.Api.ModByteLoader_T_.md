@@ -19,6 +19,16 @@ public abstract class ModByteLoader<T> : BTD_Mod_Helper.Api.ModByteLoader
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModByteLoader](BTD_Mod_Helper.Api.ModByteLoader.md 'BTD_Mod_Helper.Api.ModByteLoader') &#129106; ModByteLoader<T>
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.ModByteLoader_T_.Dispose()'></a>
+
+## ModByteLoader<T>.Dispose() Method
+
+Perform additional memory clean up for the results
+
+```csharp
+public void Dispose();
+```
+
 <a name='BTD_Mod_Helper.Api.ModByteLoader_T_.Load(byte[])'></a>
 
 ## ModByteLoader<T>.Load(byte[]) Method
