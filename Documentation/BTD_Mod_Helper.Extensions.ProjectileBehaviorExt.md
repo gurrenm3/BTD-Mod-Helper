@@ -109,27 +109,6 @@ public static bool HasProjectileBehavior<T>(this Projectile projectile)
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile)'></a>
-
-## ProjectileBehaviorExt.RemoveProjectileBehavior<T>(this Projectile) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveProjectileBehavior<T>(this Projectile projectile)
-    where T : ProjectileBehavior;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile).projectile'></a>
-
-`projectile` [Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile 'Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile')
-
 <a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile,T)'></a>
 
 ## ProjectileBehaviorExt.RemoveProjectileBehavior<T>(this Projectile, T) Method
@@ -154,6 +133,27 @@ public static void RemoveProjectileBehavior<T>(this Projectile projectile, T beh
 <a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.md#BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile,T).T 'BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior<T>(this Projectile, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile)'></a>
+
+## ProjectileBehaviorExt.RemoveProjectileBehavior<T>(this Projectile) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveProjectileBehavior<T>(this Projectile projectile)
+    where T : ProjectileBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehavior_T_(thisProjectile).projectile'></a>
+
+`projectile` [Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile 'Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile')
 
 <a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.RemoveProjectileBehaviors_T_(thisProjectile)'></a>
 

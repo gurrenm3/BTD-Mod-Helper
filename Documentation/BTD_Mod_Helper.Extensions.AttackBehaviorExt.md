@@ -117,29 +117,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack)'></a>
-
-## AttackBehaviorExt.RemoveAttackBehavior<T>(this Attack) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveAttackBehavior<T>(this Attack attack)
-    where T : AttackBehavior;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).attack'></a>
-
-`attack` [Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack 'Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack')
-
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack,T)'></a>
 
 ## AttackBehaviorExt.RemoveAttackBehavior<T>(this Attack, T) Method
@@ -166,6 +143,29 @@ The Behavior you want to remove
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack,T).T 'BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior<T>(this Attack, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack)'></a>
+
+## AttackBehaviorExt.RemoveAttackBehavior<T>(this Attack) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveAttackBehavior<T>(this Attack attack)
+    where T : AttackBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).attack'></a>
+
+`attack` [Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack 'Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack')
 
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehaviors_T_(thisAttack)'></a>
 
