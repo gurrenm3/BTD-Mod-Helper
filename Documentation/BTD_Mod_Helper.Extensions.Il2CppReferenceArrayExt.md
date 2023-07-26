@@ -336,6 +336,37 @@ The specific Item to remove
 #### Returns
 [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_)'></a>
+
+## Il2CppReferenceArrayExt.RemoveItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
+
+Return this with the first Item of type TCast removed
+
+```csharp
+public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource> referenceArray)
+    where TSource : Object
+    where TCast : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TSource'></a>
+
+`TSource`
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TCast'></a>
+
+`TCast`
+
+The Type of the Item you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).referenceArray'></a>
+
+`referenceArray` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
+
+#### Returns
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
+
 <a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_,Model)'></a>
 
 ## Il2CppReferenceArrayExt.RemoveItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>, Model) Method
@@ -373,31 +404,31 @@ Model to remove the child dependents from
 #### Returns
 [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_)'></a>
 
-## Il2CppReferenceArrayExt.RemoveItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
+## Il2CppReferenceArrayExt.RemoveItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
 
-Return this with the first Item of type TCast removed
+Return this with all Items of type TCast removed
 
 ```csharp
-public static Il2CppReferenceArray<TSource> RemoveItemOfType<TSource,TCast>(this Il2CppReferenceArray<TSource> referenceArray)
+public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource> referenceArray)
     where TSource : Object
     where TCast : Object;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TSource'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TSource'></a>
 
 `TSource`
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TCast'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TCast'></a>
 
 `TCast`
 
-The Type of the Item you want to remove
+The Type of the Items that you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).referenceArray'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).referenceArray'></a>
 
 `referenceArray` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
@@ -437,37 +468,6 @@ The Type of the Items that you want to remove
 `removeChildFrom` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
 
 Model to remove the child dependents from
-
-#### Returns
-[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_)'></a>
-
-## Il2CppReferenceArrayExt.RemoveItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource>) Method
-
-Return this with all Items of type TCast removed
-
-```csharp
-public static Il2CppReferenceArray<TSource> RemoveItemsOfType<TSource,TCast>(this Il2CppReferenceArray<TSource> referenceArray)
-    where TSource : Object
-    where TCast : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TSource'></a>
-
-`TSource`
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).TCast'></a>
-
-`TCast`
-
-The Type of the Items that you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArrayExt.RemoveItemsOfType_TSource,TCast_(thisIl2CppReferenceArray_TSource_).referenceArray'></a>
-
-`referenceArray` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
 #### Returns
 [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')

@@ -207,6 +207,7 @@ internal partial class MelonMain
 
     #region Debug
 
+#if DEBUG
     private static readonly ModSettingCategory Debug = new("Debug");
 
     private static readonly ModSettingFolder ModHelperSourceFolder = new("")
@@ -255,6 +256,8 @@ internal partial class MelonMain
         category = Debug,
         description = "While in game, exports the exact TowerModel being used by the selected tower."
     };
+
+#endif
 
     #endregion
 }

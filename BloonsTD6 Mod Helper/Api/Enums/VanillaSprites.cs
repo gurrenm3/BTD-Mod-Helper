@@ -1,7 +1,9 @@
+using Il2CppAssets.Scripts.Utils;
 using System.Collections.Generic;
+
 #pragma warning disable CS1591
 namespace BTD_Mod_Helper.Api.Enums;
-
+    
 public static class VanillaSprites
 {
     public const string Alchemist000 = "650013dbd97ece449914f1581aa55304";
@@ -74,7 +76,6 @@ public static class VanillaSprites
     public const string HeliPilotInsta001 = "c17c5e9858edc4290b2926622d50b947";
     public const string IceMonkey001 = "0a7d1fb9e9f92484181fadcb7eb97c4b";
     public const string IceMonkeyInsta001 = "f709c2088c6b34c1a9f775c9ff1cde41";
-    public const string MonkeyAcademy001 = "ea1d647a4f31b934f901ba32e097ab6a";
     public const string MonkeyAce001 = "48e19e2c671671448963e6037cd30933";
     public const string MonkeyAceInsta001 = "b2c5a0373188a499fa32d6e28f35145a";
     public const string MonkeyBuccaneer001 = "7fa21f4afb4a9644385663b10aa28858";
@@ -748,14 +749,14 @@ public static class VanillaSprites
     public const string AbilityBramble = "UiEmoteIcons[AbilityBramble]";
     public const string AbilityCocktail = "UiEmoteIcons[AbilityCocktail]";
     public const string AbilityConcussive = "UiEmoteIcons[AbilityConcussive]";
-    public const string AbilityCooldownReductionDecreaseIcon =
-        "ChallengeRulesIcons[AbilityCooldownReductionDecreaseIcon]";
-    public const string AbilityCooldownReductionIncreaseIcon =
-        "ChallengeRulesIcons[AbilityCooldownReductionIncreaseIcon]";
+    public const string AbilityCooldownReductionDecreaseIcon = "ChallengeRulesIcons[AbilityCooldownReductionDecreaseIcon]";
+    public const string AbilityCooldownReductionIncreaseIcon = "ChallengeRulesIcons[AbilityCooldownReductionIncreaseIcon]";
     public const string AbilityDisciplineIcon = "MonkeyKnowledgeUi[AbilityDisciplineIcon]";
     public const string AbilityMasteryIcon = "MonkeyKnowledgeUi[AbilityMasteryIcon]";
     public const string AbsoluteZeroUpgradeIcon = "302d17c6cad43c44eb8ae8800a078f78";
     public const string AcceleratedAerodartsIcon = "MonkeyKnowledgeUi[AcceleratedAerodartsIcon]";
+    public const string AccessibilityFxIconOn = "Ui[AccessibilityFxIconOn]";
+    public const string AccessibilityIcon = "Ui[AccessibilityIcon]";
     public const string AchievementsBtn = "MainMenuUiAtlas[AchievementsBtn]";
     public const string AchievementsGoogleBtn = "MainMenuUiAtlas[AchievementsGoogleBtn]";
     public const string AchievementsGoogleMainBtn = "MainMenuUiAtlas[AchievementsGoogleMainBtn]";
@@ -816,6 +817,13 @@ public static class VanillaSprites
     public const string AllRegenIcon = "ChallengeRulesIcons[AllRegenIcon]";
     public const string AlternateBloonsBtn = "6f3dad688cf41764f97f8bd217e1802b";
     public const string AlternateBloonsIcon = "f1872f17471224f6b90ed6c63c4e1a83";
+    public const string AmbientFxConfettiIcon = "a7e0e6f59e537964ba7e9425d4920bf3";
+    public const string AmbientFxDustIcon = "213504308e3ec8245a66d748fbe6f195";
+    public const string AmbientFxFogBlueIcon = "e9ea5a13ae95a2142810be44dd23da63";
+    public const string AmbientFxFogGreenIcon = "8e7b3d8a3a6a7be4cbbbb2d34f853b5f";
+    public const string AmbientFxLeafAutumnIcon = "ec399cae304f2494a9d555a765b34088";
+    public const string AmbientFxLeafPinkIcon = "8b1f1a4ec3494064d8da59459d3c14e2";
+    public const string AmbientFxRainIcon = "659cc6f46312f334db18a39412e9d728";
     public const string AmbiRangIconEquipped = "IngameUi[AmbiRangIconEquipped]";
     public const string AmbushTechIcon = "MonkeyKnowledgeUi[AmbushTechIcon]";
     public const string ApacheDartshipUpgradeIcon = "d65f4d02c2b39e643851858acda5c844";
@@ -828,6 +836,7 @@ public static class VanillaSprites
     public const string ArcaneBlastUpgradeIcon = "de9f4ca45087c41e6b6a45278ad7f771";
     public const string ArcaneImpaleIcon = "MonkeyKnowledgeUi[ArcaneImpaleIcon]";
     public const string ArcaneMasteryUpgradeIcon = "7cbe341de4d5b451fbaf8e584d110259";
+    public const string ArcaneMetamorphosisIconAA = "6e77f65bac6a9b44c89391d6e29c8701";
     public const string ArcaneSpikeUpgradeIcon = "132d67a40e06a4af3a0aecd04fa24c13";
     public const string ArchmageUpgradeIcon = "288bed543ba0f491bbcf57104d6f4e31";
     public const string ArcticWindUpgradeIcon = "14e1a804a8cd54c498317f9cf1853e9d";
@@ -874,8 +883,8 @@ public static class VanillaSprites
     public const string BadBloonIcon = "d0df65b56631b40daab49cdf46e305ad";
     public const string BadConnectionBtn = "e3bb574d4e78a4945adcec0e41a2f898";
     public const string BadFortifiedIcon = "UiBloonIcons[BadFortifiedIcon]";
-    public const string BadIcon = "UiBloonIcons[BadIcon]";
     public const string BADIcon = "782649f94b71c4e1e906572a88ed6809";
+    public const string BadIcon = "UiBloonIcons[BadIcon]";
     public const string BadMaimMoabParticle = "Bloons[BadMaimMoabParticle]";
     public const string BallisticMissileUpgradeIcon = "eb4cd4ae94d648b42b233139d0019869";
     public const string BallLightningUpgradeIcon = "2839dd76ceecd024291cf9c489473e30";
@@ -895,6 +904,7 @@ public static class VanillaSprites
     public const string BananaFarmPresents = "86619c7b96056154e909a27c875fbb00";
     public const string BananaIcon = "IngameUi[BananaIcon]";
     public const string BananaPlantationUpgradeIcon = "ae0d37eda56fc4562bb33530a9cbdca2";
+    public const string BananaPoolFloatPropIcon = "268bde6aff37fd649bcb74a8be676cee";
     public const string BananaResearchFacilityUpgradeIcon = "4891aeadec4634d8ba7bd69d184cb8ce";
     public const string BananaSalvageUpgradeIcon = "c3818bcf489484d5a83ffdd914c30d44";
     public const string BankDepositsIcon = "MonkeyKnowledgeUi[BankDepositsIcon]";
@@ -974,8 +984,6 @@ public static class VanillaSprites
     public const string BhHeaderFeather2 = "0331f0935a9a5894996c07a337175f08";
     public const string BhHeaderFeathers = "e9ad9b822a52c3d4e960b08d66d8d7fd";
     public const string BhTargetIconBird = "IngameUi[BhTargetIconBird]";
-    public const string BhTargetIconDino = "IngameUi[BhTargetIconDino]";
-    public const string BhTargetIconFish = "IngameUi[BhTargetIconFish]";
     public const string BigBloonBlueprintsIcon = "MonkeyKnowledgeUi[BigBloonBlueprintsIcon]";
     public const string BigBloonModeIcon = "18bf304617e91488c85b2c9a56fbb723";
     public const string BigBloonModeIcon2 = "Ui[BigBloonModeIcon]";
@@ -1095,6 +1103,7 @@ public static class VanillaSprites
     public const string BlueRibbonShop = "c05277515040f46d0b107537893ba21c";
     public const string BlueRoundPlayBtn = "MainMenuUiAtlas[BlueRoundPlayBtn]";
     public const string BlueTitleScreen = "TitleScreenUi[BlueTitleScreen]";
+    public const string BoatMoabIcon = "9d3675489275e264a9b122ecef986e2b";
     public const string BoatPanelShort = "38f9bc1173770ae4c908ae9d7feeb1a5";
     public const string Body1 = "UiEmoteIcons[Body1]";
     public const string Body2 = "UiEmoteIcons[Body2]";
@@ -1107,6 +1116,7 @@ public static class VanillaSprites
     public const string Bombshooter = "TitleScreenBg[Bombshooter]";
     public const string BombShooterIcon = "MonkeyIcons[BombShooterIcon]";
     public const string BombShooterPumpkinBombsIcon = "bc56a28d8aa321d469b6c4c4bcff8c85";
+    public const string BombshooterTortoisePetIcon = "416aa7a1ec818cf45b19fe69d7f91387";
     public const string BoneDartGreenSprite = "1d32b0738c6df09498930f451e2e4fcd";
     public const string BoneDartSprite = "11e1965b94100194988d89f9741e1eb2";
     public const string BonesBadIcon = "41edba85688a0964bac56e5a68cc6129";
@@ -1130,9 +1140,7 @@ public static class VanillaSprites
     public const string BoomProjectile = "c37cfd90ed8952741819af30574af67c";
     public const string BoostChevronWhite = "abe23e2a35cc79040803f656c9a6a0b6";
     public const string BossBarGradient = "b3ac427fa7a2b944e84569540986861d";
-    public const string BossBoostIcon = "ChallengeRulesIcons[BossBoostIcon]";
     public const string BossContainerGlow = "f928c50e166536d4187d3b1215d5cc5c";
-    public const string BossDecreaseHPIcon = "ChallengeRulesIcons[BossDecreaseHPIcon]";
     public const string BossDefeatBanner = "73a55add22a34b0498a499962c416f63";
     public const string BossDefeatBannerEnd = "84c9f71df2d72054fb6347c4bf92888e";
     public const string BossDefeatBannerNotch = "2dda20986f621874abc36d7ab6278bd4";
@@ -1213,7 +1221,6 @@ public static class VanillaSprites
     public const string BuffIconBiohack = "UiBuffIcons[BuffIconBiohack]";
     public const string BuffIconBlastChain = "UiBuffIcons[BuffIconBlastChain]";
     public const string BuffIconBloodSacrifice = "UiBuffIcons[BuffIconBloodSacrifice]";
-    public const string BuffIconBoomerangParagon = "UiBuffIcons[BuffIconBoomerangParagon]";
     public const string BuffIconBuccaneer5xx = "UiBuffIcons[BuffIconBuccaneer5xx]";
     public const string BuffIconBuccaneerxx5 = "UiBuffIcons[BuffIconBuccaneerxx5]";
     public const string BuffIconComeOnEverybodyPrice = "UiBuffIcons[BuffIconComeOnEverybodyPrice]";
@@ -1261,6 +1268,12 @@ public static class VanillaSprites
     public const string BuffIconVillagexx4 = "UiBuffIcons[BuffIconVillagexx4]";
     public const string BuffIconVillagexx5 = "UiBuffIcons[BuffIconVillagexx5]";
     public const string BuffIconWizardxx5 = "UiBuffIcons[BuffIconWizardxx5]";
+    public const string BunchTreeIcon = "ee17109ee54b13846bb3e14ff45e7d17";
+    public const string BunchTreeIconOrange = "61046d8c0b2487246875dfe30435cf77";
+    public const string BunchTreeIconOrangeYellow = "2084bb197bfdb1142af95119c8a1803a";
+    public const string BunchTreeIconPink = "4052eceb0df9f2a4ba3737f6788a415a";
+    public const string BunchTreeIconPinkDark = "c63b3da7ccb4fff41b15426b38086b72";
+    public const string BunchTreeIconYellow = "17c806d6638aea747bc6d11746aa5ff0";
     public const string BundledBloonjaminsIcon = "Ui[BundledBloonjaminsIcon]";
     public const string BunnyEarsBloonsIcon = "5621e5cad4e202f4eb5272a3cd29a214";
     public const string BunnyEarsSprite = "Bloons[BunnyEarsSprite]";
@@ -1277,6 +1290,7 @@ public static class VanillaSprites
     public const string CamoTargetIconCross = "IngameUi[CamoTargetIconCross]";
     public const string CamoTrap = "1ee65e16b3293d64eb5f7ee2d264ccbd";
     public const string CamoTrapIcon = "PowerIcons[CamoTrapIcon]";
+    public const string CamoTrapSprinklerIcon = "c1caa987b472d4040881369803e1a9dd";
     public const string CampfirePropIcon = "9f6f412ef284fff46a5a9207300cd299";
     public const string CandleGlow = "62538125318edd64d92e0f34adfdee33";
     public const string CandyCorn = "26a18d5c966cbb04a9ccdfa2124af25e";
@@ -1389,6 +1403,7 @@ public static class VanillaSprites
     public const string Circle2 = "Ui[Circle]";
     public const string CircleInsert = "Ui[CircleInsert]";
     public const string CircleRing = "Ui[CircleRing]";
+    public const string CircleUi = "f9037ab81e979504f8ed345e77671a80";
     public const string CircusGwendolinIcon = "MonkeyIcons[CircusGwendolinIcon]";
     public const string CircusGwendolinPortrait = "61d8f2bcc14f97c4a81029c6fd3fe2fb";
     public const string CircusGwendolinPortraitLvl10 = "87b24c66105dc1349bb92116b4dce970";
@@ -1417,6 +1432,7 @@ public static class VanillaSprites
     public const string CollectingEventEasterBtn = "UiEventsCollection[CollectingEventEasterBtn]";
     public const string CollectingEventFireworksBtn = "UiEventsCollection[CollectingEventFireworksBtn]";
     public const string CollectingEventHalloweenBtn = "UiEventsCollection[CollectingEventHalloweenBtn]";
+    public const string CollectingEventPartyTimeBtn = "UiEventsCollection[CollectingEventPartyTimeBtn]";
     public const string CollectingEventTotemBtn = "UiEventsCollection[CollectingEventTotemBtn]";
     public const string CollectionEventLootIconChristmas = "Ui[CollectionEventLootIconChristmas]";
     public const string CollectionEventLootIconEaster = "Ui[CollectionEventLootIconEaster]";
@@ -1427,6 +1443,9 @@ public static class VanillaSprites
     public const string ComancheCommanderUpgradeIcon = "30147fcf728de7c4ca283477908589f6";
     public const string ComancheDefenseUpgradeIcon = "0e137d79da7542447bbd898cd7cbc8ec";
     public const string ComeOnEverybodyIcon = "MonkeyKnowledgeUi[ComeOnEverybodyIcon]";
+    public const string CompetitiveModeIcon = "380ce8163768a994a8fe764a0684dfff";
+    public const string CompetitiveModeMessage = "48b5a9875458cab4e943909c78f534da";
+    public const string CompetitiveModeTick = "b4a707f7d2158a440993b01ddf0ae2c1";
     public const string ConcussiveProjectile = "ed93bf7210a387743bd576daf62bb74c";
     public const string ConcussiveShellAA = "113c40d70f7a97e4a9a27f4813163ad0";
     public const string ConfettiIcon = "e0890f5e11b1340e0946b7209b020e98";
@@ -1434,6 +1453,8 @@ public static class VanillaSprites
     public const string ConnectionBar = "IngameUi[ConnectionBar]";
     public const string ConnectionIcon = "IngameUi[ConnectionIcon]";
     public const string ConquestedTerritoryIcon = "b79fa8abfd3960443a17f9a7830a04a4";
+    public const string ConstellationLinesSprite = "a1ae3e717ee5bc6488d914121d83fc4f";
+    public const string ConstellationSprite = "b568132ad41f0954f9801d84f88bc07d";
     public const string ContestedLeaderboardBtn = "d22607befcade954b9d9f858ea332093";
     public const string ContestedPlayBtn = "b6c0b27f63f79b64fa7d93d8e6d7f08b";
     public const string ContestedPlayBtnSmall = "07f72a988de59bf458a17656807612e4";
@@ -1503,6 +1524,7 @@ public static class VanillaSprites
     public const string CtBlueMainRibbon = "2cfc18f1ed1109f45bd459ab095327e2";
     public const string CtBlueRibbon = "c2655b6e50712994fa7484ace7dfb63d";
     public const string CtBubblePoint = "662cae9aa1b8e8a4cb1dd163071e8145";
+    public const string CtCompetitiveRibbon = "3e44a14c3a7bd5a46bed931d0fbfdb81";
     public const string CTCosyMonkeyIcon = "80230b8d281863c4a84034b3954bded2";
     public const string CtDailyRewardIcon = "ad15a6a87017e6542a61cf16015c0377";
     public const string CtGlobalPlayerBronzeMedal = "97b6508bd4674da449d6a86e464aa413";
@@ -1532,6 +1554,7 @@ public static class VanillaSprites
     public const string CtLocalTeamDiamondMedal = "ac8579a1ef6560c4ab65f5634761bf77";
     public const string CtLocalTeamDoubleGoldMedal = "711c4017da8766b478d0254a2b7b7411";
     public const string CtLocalTeamSilverMedal = "755c1e503ee0a7940a0ea9afe320feb0";
+    public const string CtMainCompetitiveRibbon = "8570b22316dc76043a8141ba128e14ef";
     public const string CtMonkeyPortrait = "de0e321c3efed2a4291d133b00f581c0";
     public const string CtPanelInner = "593bc2dae219f824b9c9e2be6c4559bd";
     public const string CTPointsBanner = "f560dbd95987cdf4b9af6c8c146e1535";
@@ -1618,8 +1641,6 @@ public static class VanillaSprites
     public const string DiamondBoxIcon = "4b9ee0fdfd6a04dfc97f64053916fed7";
     public const string DinoSpringEggIcon = "a88358280a9dce64392c5e19de162b02";
     public const string DirectedSpikesUpgradeIcon = "6524993f309b54d43add144993de7958";
-    public const string DirtChunk = "657eb50af5671dc43b66ace510b01378";
-    public const string DirtChunkGrey = "1de8bedd8300f5242a80ca1664cb4b28";
     public const string DiscoBallIcon = "0291b9d3eef4a4f289e59a9cf63b4194";
     public const string DisguiseGlassesBloonsIcon = "3daa09f278b8601479b36b4e3e6ae3b4";
     public const string DisguseHat = "Bloons[DisguseHat]";
@@ -1728,7 +1749,6 @@ public static class VanillaSprites
     public const string EmoteGwendolin = "UiEmoteIcons[EmoteGwendolin]";
     public const string EmoteGwendolinCircus = "UiEmoteIcons[EmoteGwendolinCircus]";
     public const string EmoteGwendolinSkin = "UiEmoteIcons[EmoteGwendolinSkin]";
-    public const string EmoteKaijuPat = "UiEmoteIcons[EmoteKaijuPat]";
     public const string EmoteLeadBloon = "UiEmoteIcons[EmoteLeadBloon]";
     public const string EmoteMountainObynSkin = "UiEmoteIcons[EmoteMountainObynSkin]";
     public const string EmoteObyn = "UiEmoteIcons[EmoteObyn]";
@@ -1822,6 +1842,9 @@ public static class VanillaSprites
     public const string EventMysteryBoxWoodenBottom = "UiEventsCollection[EventMysteryBoxWoodenBottom]";
     public const string EventMysteryBoxWoodenIcon = "UiEventsCollection[EventMysteryBoxWoodenIcon]";
     public const string EventMysteryBoxWoodenTop = "UiEventsCollection[EventMysteryBoxWoodenTop]";
+    public const string EventPartyTimeLootIcon = "UiEventsCollection[EventPartyTimeLootIcon]";
+    public const string EventPartyTimePatternBg = "3991941472ae85a419de695b66bceafe";
+    public const string EventPartyTimeTitleBanner = "UiEventsCollection[EventPartyTimeTitleBanner]";
     public const string EventRaceBtn = "9996f3ca95117436ba013f80f1583f6f";
     public const string EventRaceFlagIcon = "73e0bdcaa222b414c8a8b860e212bfde";
     public const string EventRaceIcon = "464f33f16da3f49888cbf2437acfaffa";
@@ -1883,7 +1906,6 @@ public static class VanillaSprites
     public const string FarmSubsidyIcon = "MonkeyKnowledgeUi[FarmSubsidyIcon]";
     public const string FasterBarrelSpinUpgradeIcon = "d791470ecdbd741bf95e6d4fbce19af1";
     public const string FasterBloonsIcon = "ChallengeRulesIcons[FasterBloonsIcon]";
-    public const string FasterBossIcon = "ChallengeRulesIcons[FasterBossIcon]";
     public const string FasterDartsUpgradeIcon = "d2ec16a5106dab247af3324ce1b43479";
     public const string FasterEngineeringUpgradeIcon = "51eeafda3cb950c448d89640e15be086";
     public const string FasterFiringUpgradeIcon = "873d3190eb29f024d9a68b90c8f5bf33";
@@ -1924,6 +1946,7 @@ public static class VanillaSprites
     public const string FirestormAA = "51f0dc8b3bad6fb42bb81542c7066702";
     public const string FireworksMonkeyPortrait = "UiEventsCollection[FireworksMonkeyPortrait]";
     public const string FireworksUpgradeFxIcon = "3b0e984ce233fd742b22aa7721e78b2a";
+    public const string FiringRangePineTreeIcon = "6c182c18df62a3444a5229ebdaa01cb1";
     public const string FirstLineOfDefenseIcon = "MonkeyKnowledgeUi[FirstLineOfDefenseIcon]";
     public const string FirstStrikeCapabilityUpgradeIcon = "4fbfe623cf6c86648894c86cf36afeb7";
     public const string FirstStrikeCapabilityUpgradeIconAA = "8bcc33cf99cafc542b6c4edb05ae1ab6";
@@ -1987,6 +2010,7 @@ public static class VanillaSprites
     public const string FocusMarker = "3f0760758fd513a44bd5c734cacc1431";
     public const string FogFx = "7568c377f7b9b4380bc7307e694d15b2";
     public const string ForceVsForceIcon = "MonkeyKnowledgeUi[ForceVsForceIcon]";
+    public const string ForestTreeIcon = "512171dd3959c71459ed56a1b2f341df";
     public const string FortifiedBloonIcon = "f36b0efe61a2d4b9daf011aa1582aaf3";
     public const string FortifiedBloonsIcon = "62150687cdfa745a29872ce96f05ec93";
     public const string Fortifried = "74043b7f6e3ec184f9e37ffcc101f381";
@@ -1998,6 +2022,7 @@ public static class VanillaSprites
     public const string FragPiece2 = "e828c90fbc28bd341b0c8b56c84fb553";
     public const string FrameBrick1 = "b7b756aeacfe8b044b46d5b2292ae082";
     public const string FrameWhite = "983f21739cf1d7e4ea78d7d4a1379f0b";
+    public const string FrameWhiteAlt = "8a0be74228764bf49bfc40c4de8e918a";
     public const string FreezeBomb = "5f5e419fd8bacbd46b63c541c0ef6ac0";
     public const string FriendAddedIcon = "Ui[FriendAddedIcon]";
     public const string FriendDemoted = "8b93070d00b7b974387ab869fa7b53a9";
@@ -2014,6 +2039,11 @@ public static class VanillaSprites
     public const string FustyTheSnowmanPortraitLvl20 = "fe0d9f212af6f6a4295a03a97979d406";
     public const string FustyTheSnowmanPortraitLvl3 = "1cac6c280e5097e409f0c4e9dc803ede";
     public const string FustyTheSnowmanPortraitLvl5 = "ff84991b9071aae41ac413b72bb0f403";
+    public const string FxCrystalGlowIcon = "b65a21f9b13f1e3489131dff573be446";
+    public const string FxFirefliesIcon = "ec3b67c6a9001d94086acdc06ea71682";
+    public const string FxPortalIcon = "20ae873e87c54f446b51fb57c2089bf6";
+    public const string FxSparksIcon = "2faf27417f289e94ca077d3107a2d4bb";
+    public const string FxSteamVentIcon = "2627c83c4d3d70c4ba98f6ff109a34e1";
     public const string GalaxiliPortraitLvl1 = "ec597911e001d724191690706a5f5f6a";
     public const string GalaxiliPortraitLvl10 = "454eff69873fc2d409cefa1731c0b935";
     public const string GalaxiliPortraitLvl16 = "bda44032ca749534cbb883e36b6a3892";
@@ -2023,6 +2053,10 @@ public static class VanillaSprites
     public const string GalaxiliTotem = "de6277ccc66e55b41b272ec51f797d82";
     public const string GalaxilliCurseEffect = "96d178ef7a42e2142b4c17a2d746c7e8";
     public const string GalaxilliCurseEffectRegrow = "97cdeab68a62def4182fb0674d326bd6";
+    public const string GardenFlowerIconOrange = "1ddca670dd810cc49bd814edb8738658";
+    public const string GardenFlowerIconPurple = "402ad7e85f2523544b663214e459ded3";
+    public const string GardenFlowerIconWhite = "c80f588e3daf3b44fb207dd38a6fc534";
+    public const string GardenFlowerIconYellow = "e8697cc0e290c1547b5aaf6ff2423c26";
     public const string GateBolt = "6af44552d3e6c0f46911b6fe2ecbd8d1";
     public const string GatePanel = "5eb4c4999bb6b9246a9dd70ac491d45c";
     public const string GateSpike = "13a863088b47304488f226f818c23d34";
@@ -2045,6 +2079,7 @@ public static class VanillaSprites
     public const string GeraldoLightningSmall1 = "0b87479c7eb5d4f4da9444e2fc3be6e4";
     public const string GeraldoLightningSmall2 = "81dc540f5e3ce2945bc6c2cf802e76d7";
     public const string GeraldoLightningSmall3 = "7e97f256110a597498e8c31ce4714220";
+    public const string GeraldoPackMulePet = "2ef446a025c7ec84ebeef2541d94c91b";
     public const string GeraldoPortrait = "d99082aef95951d43a04870dcd152dde";
     public const string GeraldoPortraitLvl10 = "37997a80546cbc7499d8abfe3510083a";
     public const string GeraldoPortraitLvl20 = "5b7f58a11b093294f815c2593cea5421";
@@ -2124,6 +2159,7 @@ public static class VanillaSprites
     public const string GoldenBloonGlow = "Bloons[GoldenBloonGlow]";
     public const string GoldenBloonGlowStar = "Bloons[GoldenBloonGlowStar]";
     public const string GoldenBloonGlowUi = "MainMenuUiAtlas[GoldenBloonGlowUi]";
+    public const string GoldenBloonGlowUi2 = "Ui[GoldenBloonGlowUi]";
     public const string GoldenBloonHitfx = "Bloons[GoldenBloonHitfx]";
     public const string GoldenBloonIcon = "e5fb5659e004f8c4393341f1e9c09692";
     public const string GoldenBloonIcon2 = "ff4f34da24aeb584082fe238bb1d5200";
@@ -2167,8 +2203,11 @@ public static class VanillaSprites
     public const string GrandSaboteurUpgradeIcon = "f10101da2d1a543108cb9a0b0abd87be";
     public const string GrapeShot = "72c1b3a078b8d2b469b7477a81340c17";
     public const string GrapeShotUpgradeIcon = "da4bd565fc5106f4e9084fa5faaca35f";
+    public const string GraplingHookRope = "6b97ecbd4e3779b4f9615a28dd4ee38b";
     public const string GraveGhost = "66320b68a4901a4478cc9c9a95145082";
+    public const string GraveyardBarFill = "Ui[GraveyardBarFill]";
     public const string GraveyardIcon = "IngameUi[GraveyardIcon]";
+    public const string GraveyardIconGlow = "IngameUi[GraveyardIconGlow]";
     public const string GreaterProductionUpgradeIcon = "3dd1f4a42ec8345ef82d7334c92b44a7";
     public const string GreatWhiteUpgradeIcon = "fa64ff4a08322a04fa4dddb2dad7e5b0";
     public const string Green = "Bloons[Green]";
@@ -2231,6 +2270,7 @@ public static class VanillaSprites
     public const string HardTacksIcon = "MonkeyKnowledgeUi[HardTacksIcon]";
     public const string HardThornsUpgradeIcon = "18b4a8fa0faa0994483645151874adb2";
     public const string HatchetBloonsIcon = "bed404fddff37d842b2978f35d6569a7";
+    public const string HatConstellationCircles = "52f9ea9c518164b44af49c2b80e66af0";
     public const string Head = "UiEmoteIcons[Head]";
     public const string Head1 = "UiEmoteIcons[Head1]";
     public const string Head2 = "UiEmoteIcons[Head2]";
@@ -2249,6 +2289,8 @@ public static class VanillaSprites
     public const string HeavyBombsUpgradeIcon = "fc6f328519b418a449e722b06ca5a88f";
     public const string HeavyKnockbackIcon = "MonkeyKnowledgeUi[HeavyKnockbackIcon]";
     public const string HeavyShellsUpgradeIcon = "711c66803ccf446e4a39e6e3bcf4eda6";
+    public const string HedgeBushIcon = "c5022f61c6821004e814982ebb9716cb";
+    public const string HedgeRectanglularIcon = "68cc64946abd2624d8d1291b97f5cf8a";
     public const string Helipilot = "TitleScreenBg[Helipilot]";
     public const string HeliPilotIcon = "MonkeyIcons[HeliPilotIcon]";
     public const string HeliPilotPetHummingbirdIcon = "c7b11b4f3325bf34fad6bb15e8b746ec";
@@ -2260,6 +2302,8 @@ public static class VanillaSprites
     public const string HeroIconAdmiralBrickell2 = "b5a8e48df55bf434db4274a73ab4f886";
     public const string HeroIconAdmiralBrickellDreadPirateBrickell = "38ac5dd70b5e56642b7abe6d089ce566";
     public const string HeroIconAdmiralBrickellDreadPirateBrickell2 = "42d36c61b4683d44792e4a1df38d5189";
+    public const string HeroIconAdmiralBrickellLifeguardBrickell = "a61a76da72884bf4a8be402fad791f39";
+    public const string HeroIconAdmiralBrickellLifeguardBrickell2 = "b68dae887bdad2e48b21ec9fffbcd36d";
     public const string HeroIconAdora = "312d2fb9c8e38814580e8f6d322410af";
     public const string HeroIconAdora2 = "ad415f9974769074fb2b1c582ae2c453";
     public const string HeroIconBenjamin = "8e5c56e9f36383a49946c6e031f435f9";
@@ -2314,6 +2358,8 @@ public static class VanillaSprites
     public const string HeroIconQuincyCyber2 = "afaa8cda59912e44d88bd2574d765199";
     public const string HeroIconSauda = "1609c80960a7b6d4fb49d6b1196ee7ca";
     public const string HeroIconSauda2 = "251eb804ae383794c837ac496db62dee";
+    public const string HeroIconSaudaJiangshi = "094b78b50bf3fa64487a443347c381ef";
+    public const string HeroIconSaudaJiangshi2 = "7573fbde1665e0143b4446805e0d1755";
     public const string HeroIconSaudaViking = "9398dd7ab2984b444b28cc2e45ad7280";
     public const string HeroIconSaudaViking2 = "c020fa52e7dafd245a3d81e013fdc77c";
     public const string HeroIconStrikerJones = "ae7c454731e40624097148dcf3d7cf5e";
@@ -2348,6 +2394,8 @@ public static class VanillaSprites
     public const string HideIconSmall = "Ui[HideIconSmall]";
     public const string Hit = "UiEmoteIcons[Hit]";
     public const string HiValueMinesIcon = "MonkeyKnowledgeUi[HiValueMinesIcon]";
+    public const string HollowLogIcon = "f508ef2f3774684459a406d228b94488";
+    public const string HollowLogKnobIcon = "abf5fc7c6cda16f45a3a26a9d7e4eae9";
     public const string HomeBtn = "IngameUi[HomeBtn]";
     public const string HomeBtnContainer = "MainMenuUiAtlas[HomeBtnContainer]";
     public const string HomeIcon = "IngameUi[HomeIcon]";
@@ -2415,6 +2463,7 @@ public static class VanillaSprites
     public const string IcyChillIcon = "MonkeyKnowledgeUi[IcyChillIcon]";
     public const string IFRUpgradeIcon = "1d0513816a809b74bae81189af2ae69d";
     public const string IMFLoanUpgradeIcon = "1728a8a7ee4434f589617ff0d2672b9c";
+    public const string ImmunityCamo = "513dbceede4cba34aa4a6d45ae743326";
     public const string ImmunityCeramic = "c9e934da4b021b34a8a1de8f37293cf9";
     public const string ImmunityLead = "b297c900e730bb84b93cfa717c4ce727";
     public const string ImmunityMagic = "1f09ede368eec974aa2bea21f78aae5c";
@@ -2473,6 +2522,10 @@ public static class VanillaSprites
     public const string IWillBeBackIcon = "be89029bbb11daa4eb699b606c151803";
     public const string JackOLanternZomgIcon = "e63e814f585705d4e9ebaf3e89cac846";
     public const string JarOfPickles = "b3dfbf93382b60b448e3b38966a4a811";
+    public const string JiangshiSaudaPortrait = "ad5ffb247f735da49b89510a4f13ef43";
+    public const string JiangshiSaudaPortraitLvl10 = "9ada2609ca499ee4aad250024acf9dcd";
+    public const string JiangshiSaudaPortraitLvl20 = "551043f107ca7934dbab8bc8df3419ff";
+    public const string JiangshiSaudaPortraitLvl3 = "d3cec743de470ff4887afd2adfaf2f66";
     public const string JoanOfArcPortrait = "6aa5368151a81224e885be90f097512b";
     public const string JoanOfArcPortraitLvl10 = "5146e5b339211014caf7bc370b33a823";
     public const string JoanOfArcPortraitLvl20 = "6593d0957c362f4468ac4defb8c7490a";
@@ -2482,6 +2535,8 @@ public static class VanillaSprites
     public const string JoanOfArcPortraitLvl7 = "1d9b0fca4f86f1b429c6291862b30962";
     public const string JuggernautUpgradeIcon = "6e7dec7330a5def4bb0611d2acd517e5";
     public const string JukeboxIcon = "MainMenuUiAtlas[JukeboxIcon]";
+    public const string JungleBushIcon = "6494d60990ff4fa428bb77a6609ab6ef";
+    public const string JungleBushIconDark = "cded4bdde10291f4d97dbacdc25f41be";
     public const string JungleDrumsUpgradeIcon = "f33569226695a40d79bf3ed73313625c";
     public const string JunglesBountyUpgradeIcon = "9541c67b8e047be4e946a69d299b4682";
     public const string JunglesBountyUpgradeIconAA = "f688ec8804cbe404997d17e850b6d600";
@@ -2489,9 +2544,14 @@ public static class VanillaSprites
     public const string JungleVine02 = "09e2f0048b61f9246997eaa1f792482b";
     public const string JungleVine03 = "759386701dc81c74888379f35c15a756";
     public const string JungleVine04 = "78ad87463678e1a4faa9442a72f1bfb7";
+    public const string JungleVineGreen01 = "b15cd616dce430043b6f4df7ea3287a1";
+    public const string JungleVineGreen02 = "1964e7515489d7647bd449875e71d4f6";
+    public const string JungleVineGreen03 = "8e23dd6e25b1c644fa4ffc8813c13c63";
+    public const string JungleVineGreen04 = "c5696fc9a4f108241a44ea7ed550008a";
     public const string JungleVineGrow01 = "ad0331922472ead4899f353128cefb4c";
     public const string JungleVineGrow02 = "a663b2285e8b13f45bda62435079fa56";
     public const string JungleVineGrow03 = "cda11d57af3c4114cb9bb7f69af44ac9";
+    public const string JungleVineGrowGreen03 = "1b045fb910b113e418d41ff17b9f55ea";
     public const string JustOneMoreIcon = "MonkeyKnowledgeUi[JustOneMoreIcon]";
     public const string KaijuPatIcon = "a537203809819e242afd93687f127fba";
     public const string KaijuPatPortrait = "d1138473a332c7e42a85a30e977025a5";
@@ -2577,6 +2637,11 @@ public static class VanillaSprites
     public const string LegendOfTheNightUpgradeIcon = "c36442b03c0931048bacc9e31ce81d68";
     public const string LegExtension = "fb9dcde6dafeef64ea283c5dae37aed0";
     public const string LegExtension2 = "643e703c3f67f064a9413cfc45520257";
+    public const string LifeguardBrickellPortrait = "ed549f212e239f34b9911be82dac6975";
+    public const string LifeguardBrickellPortraitLvl10 = "c7376f492dc6ba24e92e8c416163340d";
+    public const string LifeguardBrickellPortraitLvl20 = "a1a085dbc8972994eaaf9f759bec4b9e";
+    public const string LifeguardBrickellPortraitLvl3 = "4bfe5f41999f45946863053d6f1afcaf";
+    public const string LifeguardBrickellPortraitLvl7 = "c82fc7a9ddaa2aa4c91f3551e6d95709";
     public const string LighthouseKeeperPropIcon = "fb76a680f5b5c43478269547eaea1a6e";
     public const string LighthousePropIcon = "84dc8f5bdbecadc4092aae106d72e035";
     public const string LightningBall_0 = "c60cef3cca673d54c91dfc9a7ae18153";
@@ -2633,8 +2698,11 @@ public static class VanillaSprites
     public const string LockedCenterParagon = "Ui[LockedCenterParagon]";
     public const string LockIcon = "Ui[LockIcon]";
     public const string LockIconOpen = "Ui[LockIconOpen]";
+    public const string LogNotchedIcon = "8ed2505eb79a5b24398c0a08deef0553";
     public const string LogoShatterA = "4c10493229e2b854a820cc063bb57656";
     public const string LogoShatterB = "3f0d46be0751cba4f94d6a85170d1768";
+    public const string LogTwoKnobsIcon = "f909fb2cffce1f246af0e487bdcdd25d";
+    public const string LogWithKnobIcon = "a11922f0aa2222140bc5e3586b8f648a";
     public const string LongCalibreUpgradeIcon = "1332e0c07130f407f87aa85b86b5c515";
     public const string LongerBoostsIcon = "MonkeyKnowledgeUi[LongerBoostsIcon]";
     public const string LongerDartTimeIcon = "MonkeyKnowledgeUi[LongerDartTimeIcon]";
@@ -2672,16 +2740,21 @@ public static class VanillaSprites
     public const string MADUpgradeIconAA = "b2cd8f0700b1a4d3aa0591b1c5f7e87d";
     public const string MagicBtn = "0c18ebd28608b324199507e19195a9ca";
     public const string MagicBtn2 = "MainMenuUiAtlas[MagicBtn]";
+    public const string MagicCircleFX = "07884f948ccc15b4c94bd137f292d393";
     public const string MagicKnowledgeBtn = "MonkeyKnowledgeUi[MagicKnowledgeBtn]";
     public const string MagicMonkeyICon = "f4b36c3937c654e12ad06b47db35916f";
     public const string MagicMonkeys = "27458817d1d4eac469287556ae54df44";
+    public const string MagicSigil = "dfd0c789d79135648a74afb7db056b5a";
     public const string MagicTricksIcon = "MonkeyKnowledgeUi[MagicTricksIcon]";
+    public const string MagusPerfectusCloud = "f2f315fbd41c8524bb1738cb50226e06";
+    public const string MagusPerfectusUpgradeIcon = "48e18ca7bb56c1c429c530f5d79832fe";
     public const string MaimMoabUpgradeIcon = "cee9c5b1ce7084425ad042eafb5baeb0";
     public const string MainBgPanel = "Ui[MainBgPanel]";
     public const string MainBGPanelBlue = "Ui[MainBGPanelBlue]";
     public const string MainBGPanelBlueInitialAsset = "d20613e6e5c93724a87b73d6240b6ecf";
     public const string MainBGPanelBlueNotches = "Ui[MainBGPanelBlueNotches]";
     public const string MainBGPanelBlueNotchesShadow = "Ui[MainBGPanelBlueNotchesShadow]";
+    public const string MainBGPanelBronze = "Ui[MainBGPanelBronze]";
     public const string MainBgPanelCT = "081d45be2d7814e48bce501d11c5319e";
     public const string MainBgPanelCTBasic = "4fc2dc262c113394cbe78b377d99fc89";
     public const string MainBGPanelGradient = "Ui[MainBGPanelGradient]";
@@ -2699,7 +2772,6 @@ public static class VanillaSprites
     public const string MapAdvancedBtn = "MainMenuUiAtlas[MapAdvancedBtn]";
     public const string MapBeginnerBtn = "MainMenuUiAtlas[MapBeginnerBtn]";
     public const string MapBorder = "43e7c3192c60b6640957e72e1a443f2a";
-    public const string MapBuffIconCamo = "UiBuffIcons[MapBuffIconCamo]";
     public const string MapBuffIconDamage = "UiBuffIcons[MapBuffIconDamage]";
     public const string MapBuffIconPierce = "UiBuffIcons[MapBuffIconPierce]";
     public const string MapBuffIconRange = "UiBuffIcons[MapBuffIconRange]";
@@ -2710,6 +2782,7 @@ public static class VanillaSprites
     public const string MapCoopP2Icon = "MainMenuUiAtlas[MapCoopP2Icon]";
     public const string MapCoopP3Icon = "MainMenuUiAtlas[MapCoopP3Icon]";
     public const string MapCoopP4Icon = "MainMenuUiAtlas[MapCoopP4Icon]";
+    public const string MapEditorBtn = "d0c35b0628af0fc42b658061fb736bf4";
     public const string MapExpertBtn = "MainMenuUiAtlas[MapExpertBtn]";
     public const string MapExtremeBtn = "MainMenuUiAtlas[MapExtremeBtn]";
     public const string MapFrameWoodEdge = "db3cd05b04f50ea40938ffbd4cafa2b1";
@@ -2735,7 +2808,6 @@ public static class VanillaSprites
     public const string MapSelectCrackedButton = "MapImages[MapSelectCrackedButton]";
     public const string MapSelectCubismButton = "MapImages[MapSelectCubismButton]";
     public const string MapSelectDarkCastleButton = "MapImages[MapSelectDarkCastleButton]";
-    public const string MapSelectDarkDungeonsButton = "MapImages[MapSelectDarkDungeonsButton]";
     public const string MapSelectDownstreamButton = "MapImages[MapSelectDownstreamButton]";
     public const string MapSelectEncryptedButton = "MapImages[MapSelectEncryptedButton]";
     public const string MapSelectEndOfTheRoadButton = "MapImages[MapSelectEndOfTheRoadButton]";
@@ -2753,7 +2825,6 @@ public static class VanillaSprites
     public const string MapSelectLogsButton = "MapImages[MapSelectLogsButton]";
     public const string MapSelectLotusIslandButton = "MapImages[MapSelectLotusIslandButton]";
     public const string MapSelectMesaButton = "MapImages[MapSelectMesaButton]";
-    public const string MapSelectMiddleOfTheRoadMapButton = "MapImages[MapSelectMiddleOfTheRoadMapButton]";
     public const string MapSelectMidnightMansionMapButton = "MapImages[MapSelectMidnightMansionMapButton]";
     public const string MapSelectMonkeyMeadowButton = "MapImages[MapSelectMonkeyMeadowButton]";
     public const string MapSelectMoonLandingButton = "MapImages[MapSelectMoonLandingButton]";
@@ -2763,7 +2834,6 @@ public static class VanillaSprites
     public const string MapSelectParkPathButton = "MapImages[MapSelectParkPathButton]";
     public const string MapSelectPatsPondButton = "MapImages[MapSelectPatsPondButton]";
     public const string MapSelectPeninsulaButton = "MapImages[MapSelectPeninsulaButton]";
-    public const string MapSelectPolyphemusMapButton = "MapImages[MapSelectPolyphemusMapButton]";
     public const string MapSelectQuadButton = "MapImages[MapSelectQuadButton]";
     public const string MapSelectQuarryMapButton = "MapImages[MapSelectQuarryMapButton]";
     public const string MapSelectQuietSteetMapButton = "MapImages[MapSelectQuietSteetMapButton]";
@@ -2852,11 +2922,9 @@ public static class VanillaSprites
     public const string MegamineAA = "e60869caf8fd343119c6935398cf92a2";
     public const string MegaMonkeyCompendiumPackShop = "79b32e7751b8d3547a7c835aef3624a6";
     public const string MerchantmanUpgradeIcon = "a5a03704d4accd542a39454eba688fb5";
-    public const string MergeArrowBtn = "Ui[MergeArrowBtn]";
     public const string MergeBtn = "Ui[MergeBtn]";
     public const string MergeCostBanner = "Ui[MergeCostBanner]";
     public const string MergedPanel = "Ui[MergedPanel]";
-    public const string MergeIcon = "Ui[MergeIcon]";
     public const string MergeIconSingle = "Ui[MergeIconSingle]";
     public const string MetalFreezeUpgradeIcon = "337c7c30ed5744543a6cfed237186735";
     public const string MetropolisUpgradeIcon = "6bcf8dc34ff294fe5bdf6f358a6eb62f";
@@ -2890,8 +2958,8 @@ public static class VanillaSprites
     public const string MOABGlaiveRang = "155a23172558cf44faccbaff45f32d45";
     public const string MoabGlueUpgradeIcon = "352fdb3487af05a448c09b73566c6fd1";
     public const string MoabHexAA = "8e24e9f47b1d148609f88852355b1230";
-    public const string MOABIcon = "080471fa334264e7fae8b36b4827c33f";
     public const string MoabIcon = "UiBloonIcons[MoabIcon]";
+    public const string MOABIcon = "080471fa334264e7fae8b36b4827c33f";
     public const string MoabMaulerMoabIcon = "f629bd6b490878140886c779b6b0c8ca";
     public const string MoabMaulerUpgradeIcon = "4f11d9b6f8bd4ec4fb1ef1cde5baf163";
     public const string MoabMine = "a10b8b98cab94ee4d8beec9d0a74ce84";
@@ -2983,6 +3051,8 @@ public static class VanillaSprites
     public const string MouthSad = "UiEmoteIcons[MouthSad]";
     public const string MouthScream = "UiEmoteIcons[MouthScream]";
     public const string MouthSmile = "UiEmoteIcons[MouthSmile]";
+    public const string MushroomIcon = "ea6551e01267edc41bcedbc75ccfdd30";
+    public const string MushrromIconPurple = "a2c5286d340e78143a0dcc0c77d60bb9";
     public const string MysticStoneFx = "bd967a4335cf00a47a66a1fd76212816";
     public const string Nail = "9da47c22e85f79e4f950fe0dd0a9fd37";
     public const string NailFoam = "be2f125093d982f44a7e64d30cf13266";
@@ -3050,8 +3120,8 @@ public static class VanillaSprites
     public const string NotifyRed = "Ui[NotifyRed]";
     public const string NotLackingCriticalInformation = "9db122d8d7b9083439c796519a48f481";
     public const string ObynBunnyPetIcon = "4007670464693364c98eb35d8a545268";
-    public const string Obyngreenfoot = "TitleScreenBg[Obyngreenfoot]";
     public const string ObynGreenFoot = "a4eb9aac3d881d1489316044b1538bfc";
+    public const string Obyngreenfoot = "TitleScreenBg[Obyngreenfoot]";
     public const string ObynGreenFootIcon = "MonkeyIcons[ObynGreenFootIcon]";
     public const string ObynGreenfootLv10 = "cf545d09fc64f7c47af9e34774f2c23c";
     public const string ObynGreenfootLv20 = "b3d1f4d5df5a9be44a04326155d04d90";
@@ -3127,6 +3197,8 @@ public static class VanillaSprites
     public const string OpenSeason = "6027ba7ee0cd0ae469ef1eada7db4008";
     public const string OperationDartStormUpgradeIcon = "2cd5eea7ad5b5f043a38df0bfdafd649";
     public const string OptionsBtn = "MainMenuUiAtlas[OptionsBtn]";
+    public const string OrbitalInnerSprite = "87c96b3c205cac54997a64110989a12c";
+    public const string OrbitalOuterSprite = "fa7ab1137699fc448a0d4f9dd9fbf45e";
     public const string OrcaUpgradeIcon = "1ab5a742b32dc414b8e87d7ffa380291";
     public const string OverclockUpgradeIcon = "c101127fbd522584dbcce02cdb22afdb";
     public const string OverdriveUpgradeIcon = "babd98fd2b86bcf4094da342b75a54ce";
@@ -3140,6 +3212,8 @@ public static class VanillaSprites
     public const string PanelFrame = "Ui[PanelFrame]";
     public const string PanelQuest = "636b690659f17e745bf22be009d861c6";
     public const string PanicMonkeyEmoteIcon = "e3a78644a09d6144684d4dc1c56eca89";
+    public const string ParaBeamTexture = "a445155e4ac88ad4cbb61e31248ccf39";
+    public const string ParaDrainOffIcon = "IngameUi[ParaDrainOffIcon]";
     public const string ParadropPlaneShadow = "2590bffb5c660eb47aee50d0ad3f0312";
     public const string ParagonMasterBuilder = "596c3a3ced092cb4cb34c89d60dbdd1d";
     public const string ParagonApexPlasmaMaster = "3906afef12a8fab4db780428c3b8a50b";
@@ -3149,6 +3223,8 @@ public static class VanillaSprites
     public const string ParagonArrowBtn = "Ui[ParagonArrowBtn]";
     public const string ParagonBlop = "21f1624acc4acf54c9bab80cd3bf9f09";
     public const string ParagonBtnLong = "Ui[ParagonBtnLong]";
+    public const string ParagonDrainingBeamIconOn = "IngameUi[ParagonDrainingBeamIconOn]";
+    public const string ParagonDrainingBtn = "Ui[ParagonDrainingBtn]";
     public const string ParagonGlaiveDominus = "980cbe6ba66478140850db9a98f8ba9f";
     public const string ParagonGlaiveDominusGlaiveLvl1 = "84b9e0615d2daef4fbadd46c8d5dbbdb";
     public const string ParagonGlaiveDominusGlaiveLvl5 = "1c2e4585adaeffa47a5ca35b5a72cd4c";
@@ -3157,12 +3233,16 @@ public static class VanillaSprites
     public const string ParagonGoliathDoomshipDart = "74287ef6d6ef8ce459eecc4f2e405f0a";
     public const string ParagonIcon = "56a54befdd6fa422d87006ca40840131";
     public const string ParagonIcon2 = "bf37a18457ecf46e29998a6009a1423a";
+    public const string ParagonMagusPerfectus = "220dafce6b156704b8c8d2bebc175352";
     public const string paragonpattern01 = "Ui[paragonpattern01]";
     public const string paragonpattern02 = "Ui[paragonpattern02]";
     public const string ParagonPip = "Ui[ParagonPip]";
     public const string ParagonPowerTotem = "44ec3db93dc5cb847aaf730cea6c6084";
     public const string ParagonPowerTotemPortrait = "4ae4478e638364a429e8ef400bd6cd8a";
     public const string ParagonTransformOrb = "e42bfdfc4d21c1a43a868d2bd63977c3";
+    public const string PartyHatBloonsIcon = "12fd578e2113e5a40b2fd857543fffc2";
+    public const string PartyHatSprite = "Bloons[PartyHatSprite]";
+    public const string PartyTimeEventMonkey = "UiEventsCollection[PartyTimeEventMonkey]";
     public const string PatchNoteMonkeyPortrait = "d5ea9eef4134960458f04d187633c67b";
     public const string PatchNotesMonkeyIcon = "d3a52a4a1d5aed943b93ee9c2972e8c8";
     public const string PatFlexIcon = "8395d9b9b9329cc42944d69ad418aa96";
@@ -3189,9 +3269,23 @@ public static class VanillaSprites
     public const string PermaSpikeUpgradeIcon = "a995e822a57e04493a21d5fa38fa658f";
     public const string PetRabbit = "de55f58d4f49f824eb2d760ba2f2514c";
     public const string PewpewPopFxIcon = "34697d021bea42e4483675a8154d9dc0";
+    public const string PhayzeAmbientCornerFx = "838f1f15b4339e644a67ac37a262f5b3";
+    public const string PhayzeBadge = "8ca748534020b544db84fd83f52fe7be";
+    public const string PhayzeBtn = "d4577af5964d1e443bea4c2800c70ac0";
+    public const string PhayzeBtnElite = "808f6fd71127ec2438b66451e1e94c6f";
+    public const string PhayzeEliteBadge = "95200a2deda391f48b675c3cd761f896";
+    public const string PhayzeEventIcon = "cfda970921e14ef48984b2e71c86abe9";
+    public const string PhayzeHealthbarEnd = "2f61b1ec03ca51947b43a6b1438d6fb1";
+    public const string PhayzeHealthBarTile = "c39d57dbeda5c204e8f95ee7f2c95160";
+    public const string PhayzePortrait = "f3c1ad998ad39df4c831170c9cdb723e";
+    public const string PhayzePortraitDefeat = "3ca8fa7be752cc04ab5ffc9a6714b7d7";
+    public const string PhayzePortraitElite = "587bb919d651d0a4ea9eb3d82a504f7b";
+    public const string PhayzePortraitEliteDefeat = "7e8fafe2e63b7bf42b1adab8cce3ca01";
+    public const string PhayzeTitle = "452dc0f23ac22644181ff2904e1df655";
     public const string PhilBeardsBloonsIcon = "76f05b6601d3f0846990d3a186bd6c6b";
     public const string PhilsBeard = "Bloons[PhilsBeard]";
     public const string PhoenixPropIcon = "24b61610152b55f4c84aa3bd29d20800";
+    public const string PhoenixRebirthIconAA = "6348ca7e8e78844d6af27e404a0d80fb";
     public const string Piggy = "UiEmoteIcons[Piggy]";
     public const string PileOMonkeyMoneyShop = "453b9b5d60451df40bb87106d0cf01c0";
     public const string PinataBadIcon = "4fb2d00ff673aa64a845eaa0dbff973f";
@@ -3245,7 +3339,6 @@ public static class VanillaSprites
     public const string Player4Green = "UiEmoteIcons[Player4Green]";
     public const string PlayerNumbersIcon = "116977f9a37831a44a508e32794df339";
     public const string PlayerXPIcon = "c96f3aeb0a8a3430aac61b8b6cf84434";
-    public const string Plus = "Ui[Plus]";
     public const string PontoonIcebergPortrait = "56b158ab0559d7443ab17ad51a6677af";
     public const string PontoonIcon = "PowerIcons[PontoonIcon]";
     public const string PontoonPortrait = "8be040ba9a5e57845b7c932297cd53ef";
@@ -3382,6 +3475,11 @@ public static class VanillaSprites
     public const string ProfileAvatar74 = "4773ed8bc9582de45b974df1eb193f78";
     public const string ProfileAvatar75 = "e0019d5aea603f34c8c58dd6fb07aa03";
     public const string ProfileAvatar76 = "a5d96909de7669f45ad0620c9ac328cf";
+    public const string ProfileAvatar77 = "891c18f003f99494ab3fa6df5d6753f6";
+    public const string ProfileAvatar78 = "6b345974802a5bf47bfcd3869b553c02";
+    public const string ProfileAvatar79 = "d50eec5aab6da184a9e53bb9bf20d12e";
+    public const string ProfileAvatar80 = "62cab45b92e828f40aca9919b8ac02a6";
+    public const string ProfileAvatar81 = "41b806420c4bb1a41a5020c4162e0f6d";
     public const string ProfileBanner1 = "1e5c72175c3c90d44984c3fe6bcee633";
     public const string ProfileBanner10 = "21db6e2b1b2e92a43b802e809a13f4e7";
     public const string ProfileBanner10Icon = "8eb61fd2c8a4b6d499032db0cb804bbd";
@@ -3452,6 +3550,15 @@ public static class VanillaSprites
     public const string ProfileBanner30 = "ca6ca2f2075c1fa49929d8445b17c69b";
     public const string ProfileBanner30Icon = "2f2f0938dabd6884788c2feac4d11c54";
     public const string ProfileBanner30Small = "fcda2f4f465aabd4997bb1471d005885";
+    public const string ProfileBanner31 = "6ad17cc7c1a25f5428135a43fb1d7419";
+    public const string ProfileBanner31Icon = "cfbb323ddb0dbb54b99a39cbf5b19ddc";
+    public const string ProfileBanner31Small = "75ea17fc7ea628c4f92d076aaea2ccd4";
+    public const string ProfileBanner32 = "8500483a8d59c9b41a16ae7c3fc5d9fa";
+    public const string ProfileBanner32Icon = "adcf255a8d33f29489c9537a8ca5cf3c";
+    public const string ProfileBanner32Small = "415957a19571e1f4d80be69e81561790";
+    public const string ProfileBanner33 = "254cbf03bfcfe9d459c6f42a3776c810";
+    public const string ProfileBanner33Icon = "82508dc4172509347904ba8237555928";
+    public const string ProfileBanner33Small = "409bf2a83aaae3147abbdc045c492b6f";
     public const string ProfileBanner3Icon = "86f9e51d2d0358a40bf9b5b29f22c534";
     public const string ProfileBanner3Small = "4452cc65d32bdc147adf3ff714170cf2";
     public const string ProfileBanner4 = "7ad6b31a524e3c341829221aeb80a84a";
@@ -3520,6 +3627,7 @@ public static class VanillaSprites
     public const string PsiPsionicFx = "eee02d982146f4c7e92282a8a88de1d6";
     public const string PsiVision = "f93ab521ea47b614ebf4452026ee83c2";
     public const string PsychicBlastAA = "8a27ca25be56a0b4d9a72b203aa852a5";
+    public const string PuddleIcon = "ac2b1ae254f78c14e951ecebc17efdc1";
     public const string PufferFishMoabIcon = "42ec09fece3aca84797594d3aa889f2a";
     public const string PumpkinBigBomb = "508b5bd3e2eacbb409f33a5962ea9f77";
     public const string PumpkinBomb = "573156dc7d7650144bfbf789c528d7ed";
@@ -3550,12 +3658,23 @@ public static class VanillaSprites
     public const string QuestHeaderScrollMid = "47842c5e685c1d44ca938053e2783e68";
     public const string QuestIcon = "ef7bc99b779cb2747837144f678ae04e";
     public const string QuestIconBikerBonesRace = "7474fc46451ceea448481fe05d823ba9";
+    public const string QuestIconBirthdayParty = "accfd36efaed8cf47859cb5fa47c7e77";
+    public const string QuestIconBladeSaudaNowhere = "42511cf59eaa14a4ca75a82a733514d1";
+    public const string QuestIconBrickell = "4fbf7e7c3e42d664096330686e3ec0b2";
     public const string QuestIconEpicBeastQuest = "32aa09986872b73479246c9234b9c732";
+    public const string QuestIconGwendolin = "8a9828fd9b5caa34da30aebb6f4c04d1";
+    public const string QuestIconLogsChimps = "73bc37e6a232ab040af7790edb02536e";
     public const string QuestIconQuincyTestOfQuincy = "35b3cd339c3edac47b90d3b3d678933c";
+    public const string QuestIconScoopsTale1 = "70645e54a63417e4fbaad7bac8529112";
+    public const string QuestIconStrikenBad = "8d73dcfe83969914595717c7bb0e895f";
     public const string QuestLeafBunch = "646a92ae110b8594ab9675c85162096a";
+    public const string QuestModeRush = "55b18a20f62bdf4459a0fc39640ff90c";
     public const string QuestPlatform = "86cf293ca9e914c43b2b8657f5279b9a";
     public const string QuestPlatformChristmas = "ddd81f2d7e980ec4aaa3758589e41e08";
     public const string QuestPlatformHalloween = "7c3d1d13157d0ae41b156ac7eee0e523";
+    public const string QuestScoopsTale1 = "d5f971834da64cc4c9fc0d179f809a9c";
+    public const string QuestScoopsTale2 = "3f9d66b13ada0844dbe9fb24c5fbd6db";
+    public const string QuestScoopsTale3 = "67a80d4f2d419bf409feed01920ff987";
     public const string QuickHandsIcon = "MonkeyKnowledgeUi[QuickHandsIcon]";
     public const string QuickShotsUpgradeIcon = "73bb016e92de3ad4388ce20e8970a5a1";
     public const string Quincy = "TitleScreenBg[Quincy]";
@@ -3566,11 +3685,13 @@ public static class VanillaSprites
     public const string QuincyCyberPortraitLvl3 = "36f1aa205ddee3b45aeefc2421165523";
     public const string QuincyCyberPortraitLvl7 = "ecc1328fe76cde74eaa22a07d88e73de";
     public const string QuincyIcon = "MonkeyIcons[QuincyIcon]";
+    public const string QuincyPlacementLaser = "e4f30694d24358f43871488102aafb7d";
     public const string QuincyPortrait = "f49307e95b921974cb9e1baadf2352fb";
     public const string QuincyPortraitLvl10 = "9f09f9e47a9e71a4fa8e607df6077456";
     public const string QuincyPortraitLvl20 = "ec7590b408bb7014d93b3481c1873f93";
     public const string QuincyPortraitLvl3 = "9ab0f5e080bdcc64aa05f13996e32fe9";
     public const string QuincyPortraitLvl7 = "4e77bdcfb2c17d04eb9e379e4ef6ef1c";
+    public const string QuincySpecialForcesPlacementIcon = "3b67beed2f11b0a4da458f4421b63e4a";
     public const string QuincyWolfpackIcon = "MonkeyIcons[QuincyWolfpackIcon]";
     public const string RaceIcon = "61ad4eb78452f4987b12b09c6caa5026";
     public const string RacePassIconSmall = "Ui[RacePassIconSmall]";
@@ -3679,6 +3800,11 @@ public static class VanillaSprites
     public const string RocketStormRocket = "3bc70ba1640b38548a854acc7704d22f";
     public const string RocketStormUpgradeIcon = "57ee31b95ecb64082b8dddd1af96eed8";
     public const string RocketStormUpgradeIconAA = "36503d379357745b9ad50fe6b801e3dc";
+    public const string RockPointyFlatIcon = "88dbd7831ed42474b83fc7f216e3566d";
+    public const string RockPointyFlatSmallIcon = "06b70f10230636e48b2b80283856218b";
+    public const string RockPointyFlatTallIcon = "ec04e0d4b7d1d7d4ca7c17e70bc2a382";
+    public const string RockPointyFlatVShapeIcon = "44d93a21df2ea8f428a2d29ff485c9a0";
+    public const string RockPointyFlatWingShapeIcon = "fd59b0a3f5bbbde479af575e33da1b97";
     public const string Roll1 = "UiEmoteIcons[Roll1]";
     public const string RoundCornerMask = "Ui[RoundCornerMask]";
     public const string RoundingUp = "61506e2d9440a4e2e911a8280d582eec";
@@ -3801,11 +3927,11 @@ public static class VanillaSprites
     public const string SleighTankShellArmourPiercing = "58ed808f317e1e74995326663207b0fe";
     public const string SliderMarker = "MainMenuUiAtlas[SliderMarker]";
     public const string SlowerBloonsIcon = "ChallengeRulesIcons[SlowerBloonsIcon]";
-    public const string SlowerBossIcon = "ChallengeRulesIcons[SlowerBossIcon]";
     public const string SlowerMoabIcon = "ChallengeRulesIcons[SlowerMoabIcon]";
     public const string SmallArrow = "Ui[SmallArrow]";
     public const string SmallBloonModeIcon = "ea3c7f0f7557648fcb5a11abf4fa466a";
     public const string SmallBloonModeIcon2 = "Ui[SmallBloonModeIcon]";
+    public const string SmallestFrame = "Ui[SmallestFrame]";
     public const string SmallFrame = "Ui[SmallFrame]";
     public const string SmallMonkeysModeIcon = "Ui[SmallMonkeysModeIcon]";
     public const string SmallPanelGlow = "Ui[SmallPanelGlow]";
@@ -4019,6 +4145,8 @@ public static class VanillaSprites
     public const string SummonPhoenixUpgradeIcon = "340a93d8d262f4cddb567bbc40407680";
     public const string Sun = "9b51d6b5f527c2e42a26b6a6509d412c";
     public const string SunAvatarUpgradeIcon = "349e26a7177707840b25ed118ed9df65";
+    public const string Sunglasses = "Bloons[Sunglasses]";
+    public const string SunGlassesBloonsIcon = "57b0072c9c97e8e4aa0652c174f8c447";
     public const string SunGodBeamPart = "ae8bc434ac08ed346b7043f9df89738b";
     public const string SunTempleBlast = "33391ce2e2e30414c9ee40c0552417b1";
     public const string SunTempleBlast555 = "4cf7adf4d6ba17345978ac011a256077";
@@ -4117,6 +4245,8 @@ public static class VanillaSprites
     public const string TeamFrame15 = "cea088ab8fc75a145aa377c4c2b1e64f";
     public const string TeamFrame16 = "1e705bee0e8749a488c8104f0942ff94";
     public const string TeamFrame17 = "950fb7059f2bdcb48b7317ad93fe2c7b";
+    public const string TeamFrame18 = "891cd186375c7984d8b910e5df383b5b";
+    public const string TeamFrame19 = "f63e3f0b23c38ff48925ae08694698c5";
     public const string TeamFrame2 = "4a7103a6b46da7143b24badfcf38c02f";
     public const string TeamFrame3 = "3bcda7f6980deb246b060f59069f1a78";
     public const string TeamFrame4 = "4ccc84e911700ec4f8419c1a93e28197";
@@ -4138,6 +4268,8 @@ public static class VanillaSprites
     public const string TeamIcon19 = "99f1c84f0331e494aabbb4fa73a999d8";
     public const string TeamIcon2 = "0d6e4559bd6bfd94487c437f4fddde38";
     public const string TeamIcon20 = "970f0eaf04b25c14b8917ef09658da96";
+    public const string TeamIcon21 = "6880170979e77774994d95e989f330df";
+    public const string TeamIcon22 = "a32a4652124b5744ebc5642761218cb0";
     public const string TeamIcon3 = "b88473e5ea524e04ebe84db0ad570e07";
     public const string TeamIcon4 = "b8b82ad80db896e4b94884d9e0d55b90";
     public const string TeamIcon5 = "5ae0f5c70713f6b46a88dc17c1fac675";
@@ -4149,6 +4281,9 @@ public static class VanillaSprites
     public const string TeamsBanner10 = "221350a7506ad8f40be4b33c3e2c8945";
     public const string TeamsBanner10Icon = "a252ec580d8284148af3fa498a2de2d2";
     public const string TeamsBanner10Small = "c1604a5446779e1418fde5815a3f512d";
+    public const string TeamsBanner11 = "06259c1b398bb434198d0bce3d3f32d0";
+    public const string TeamsBanner11Icon = "a6cd9d17ecd7f674da295eda9ca57179";
+    public const string TeamsBanner11Small = "856ffedd9a528e6479d7ea33c153b58d";
     public const string TeamsBanner1Icon = "9c7fee36ca5361249b72df7174d0d060";
     public const string TeamsBanner1Small = "10dcc6a30b2fc1541a321ed0e83c5221";
     public const string TeamsBanner2 = "8be2052c6a517134596b815e4917366a";
@@ -4218,7 +4353,6 @@ public static class VanillaSprites
     public const string ThinkHand = "UiEmoteIcons[ThinkHand]";
     public const string ThinkingMonkeyIcon = "426b97648d5b70440a9ab43bb74e9798";
     public const string Thorn = "3d4c768c27652d34fa21dd3834bac982";
-    public const string ThornParticleGreen = "5e034f24766abf648a0d665b19b82766";
     public const string ThornSwarmUpgradeIcon = "d5a98992fe389824e9b695614441fe31";
     public const string Thrive = "8b428d727e638f849b336e38d6dece20";
     public const string ThriveIcon = "PowerIcons[ThriveIcon]";
@@ -4280,6 +4414,11 @@ public static class VanillaSprites
     public const string TowersSidePanelBg_03 = "IngameUi[TowersSidePanelBg_03]";
     public const string TowersSidePanelBg_04 = "IngameUi[TowersSidePanelBg_04]";
     public const string TowersSidePanelBg_05 = "IngameUi[TowersSidePanelBg_05]";
+    public const string TowerTypeMagic = "UiEmoteIcons[TowerTypeMagic]";
+    public const string TowerTypeMilitary = "UiEmoteIcons[TowerTypeMilitary]";
+    public const string TowerTypePrimary = "UiEmoteIcons[TowerTypePrimary]";
+    public const string TowerTypesIcon = "4216127fa163bdb4189db120d35f19d2";
+    public const string TowerTypeSupport = "UiEmoteIcons[TowerTypeSupport]";
     public const string Tracer = "f19069a8bee040645b52a819ec9304ae";
     public const string TrackArrowSmall = "d24006e7770094094a23840ce816822c";
     public const string TrackRemovableIcon = "a17d3f8b6d0da4ce4bf3d9c7f014d55a";
@@ -4288,6 +4427,7 @@ public static class VanillaSprites
     public const string TrailFx = "5d3ac7036b5ba48dd9607d1e54ed9b1d";
     public const string TrainingDummyPropIcon = "09f56d24ce75e904688c76e28aef725f";
     public const string TransformingTonicUpgradeIcon = "59ac80f186243e94eac1b4cca930b1c3";
+    public const string TreasureChestPropIcon = "ed44808f4e6f04040bd517c910a7ceba";
     public const string TreasurePile = "f4d4737823498aa45be2f9b21233f283";
     public const string treasurepileL = "2b562472cb2d14b9cb17501a577f6985";
     public const string TRexStompAA = "658aa732cb6b643229e928273bf09dbb";
@@ -4358,7 +4498,9 @@ public static class VanillaSprites
     public const string UltraJuggernautUpgradeIcon = "af30ded6d528cc34083020fdacc6c541";
     public const string UltraVisionUpgradeIcon = "1410abee48d2ac34bb252865408ba35f";
     public const string UnpoppedArmy = "Bloons[UnpoppedArmy]";
+    public const string UnpoppedArmyPhoenix = "Bloons[UnpoppedArmyPhoenix]";
     public const string UnpoppedArmyZombie = "Bloons[UnpoppedArmyZombie]";
+    public const string UnpoppedArmyZombiePhoenix = "Bloons[UnpoppedArmyZombiePhoenix]";
     public const string UnstableConcoctionUpgradeIcon = "910f86fb0a8dc3d4db2d1b6d222008ba";
     public const string UpArrowOutline = "4339b3c295d4cc94987f27180ef0e0e7";
     public const string UpdateAnnouncementImage = "813a94dfd10f2264ab811c40281e9012";
@@ -4385,6 +4527,7 @@ public static class VanillaSprites
     public const string UpgradesSlideoutBg_02 = "IngameUi[UpgradesSlideoutBg_02]";
     public const string UpgradesSlideoutBg_03 = "IngameUi[UpgradesSlideoutBg_03]";
     public const string UpgradesSlideoutBg_04 = "IngameUi[UpgradesSlideoutBg_04]";
+    public const string UpoppedIconSmall = "IngameUi[UpoppedIconSmall]";
     public const string ValuableBananasUpgradeIcon = "5d6d757ef4de541e59100208d0f35f45";
     public const string VampireCape = "Bloons[VampireCape]";
     public const string VampireCapeRegrow = "Bloons[VampireCapeRegrow]";
@@ -4415,6 +4558,7 @@ public static class VanillaSprites
     public const string VillageNZFlag = "4db87eb7d756d6e428b269ab9abb0f15";
     public const string VillagePrideFlag = "3d56c4f7eb783394a817b9c31139447b";
     public const string VillageScotlandFlag = "2b8b7eed22134a14ab3f1c7e3c45960a";
+    public const string VillageSwedenFlag = "2a71c69e72f55a24b8c3a9d3d8a4b40f";
     public const string VillageUKFlag = "8773721c49c99e34d8f45daabee90214";
     public const string VillageUSAFlag = "00323453ea0413547a8b2c6798a43361";
     public const string VineRuptureIcon = "MonkeyKnowledgeUi[VineRuptureIcon]";
@@ -4460,7 +4604,6 @@ public static class VanillaSprites
     public const string WarningTapeRight = "71aefbc0979c70c41ab61f4801f158c3";
     public const string WaterBloonPopIcon = "0a36027f414804949a1457f433476ba2";
     public const string WatermelonZomgIcon = "4d0bb959a33e02a4c835347930cecef7";
-    public const string WaterRush = "7836a76b507a20d4186dd1f2eb8e92b4";
     public const string WeakPointIcon = "MonkeyKnowledgeUi[WeakPointIcon]";
     public const string WhaleBadIcon = "57e310bfc48a37a4da9969d059daec00";
     public const string White = "Bloons[White]";
@@ -4507,6 +4650,7 @@ public static class VanillaSprites
     public const string WolfpackQuincyPortraitLvl3 = "eb726df2ea777764c9221eaf818064f2";
     public const string WolfpackQuincyPortraitLvl7 = "f7a2ad519481d204a822d69bb0d01443";
     public const string WoodenRoundButton = "Ui[WoodenRoundButton]";
+    public const string WoodFenceIcon = "f4287312ed3233b41ae78534279c8fef";
     public const string WorldLeagueTrainingIcon = "99e174e4a9eac42748828aaa87cad28c";
     public const string WornHerosCape = "10dca2eace562524ab7cf7eea24c6fdb";
     public const string XboxOne_Dpad = "Gamepad[XboxOne_Dpad]";
@@ -4557,7 +4701,6 @@ public static class VanillaSprites
     public const string ZOMGIcon = "6c6d7a6058e4c4cf2961090ba4315d87";
 
     public static readonly Dictionary<string, string> ByName;
-
     static VanillaSprites()
     {
         ByName = new Dictionary<string, string>
@@ -4632,7 +4775,6 @@ public static class VanillaSprites
             ["HeliPilotInsta001"] = HeliPilotInsta001,
             ["IceMonkey001"] = IceMonkey001,
             ["IceMonkeyInsta001"] = IceMonkeyInsta001,
-            ["MonkeyAcademy001"] = MonkeyAcademy001,
             ["MonkeyAce001"] = MonkeyAce001,
             ["MonkeyAceInsta001"] = MonkeyAceInsta001,
             ["MonkeyBuccaneer001"] = MonkeyBuccaneer001,
@@ -5312,6 +5454,8 @@ public static class VanillaSprites
             ["AbilityMasteryIcon"] = AbilityMasteryIcon,
             ["AbsoluteZeroUpgradeIcon"] = AbsoluteZeroUpgradeIcon,
             ["AcceleratedAerodartsIcon"] = AcceleratedAerodartsIcon,
+            ["AccessibilityFxIconOn"] = AccessibilityFxIconOn,
+            ["AccessibilityIcon"] = AccessibilityIcon,
             ["AchievementsBtn"] = AchievementsBtn,
             ["AchievementsGoogleBtn"] = AchievementsGoogleBtn,
             ["AchievementsGoogleMainBtn"] = AchievementsGoogleMainBtn,
@@ -5372,6 +5516,13 @@ public static class VanillaSprites
             ["AllRegenIcon"] = AllRegenIcon,
             ["AlternateBloonsBtn"] = AlternateBloonsBtn,
             ["AlternateBloonsIcon"] = AlternateBloonsIcon,
+            ["AmbientFxConfettiIcon"] = AmbientFxConfettiIcon,
+            ["AmbientFxDustIcon"] = AmbientFxDustIcon,
+            ["AmbientFxFogBlueIcon"] = AmbientFxFogBlueIcon,
+            ["AmbientFxFogGreenIcon"] = AmbientFxFogGreenIcon,
+            ["AmbientFxLeafAutumnIcon"] = AmbientFxLeafAutumnIcon,
+            ["AmbientFxLeafPinkIcon"] = AmbientFxLeafPinkIcon,
+            ["AmbientFxRainIcon"] = AmbientFxRainIcon,
             ["AmbiRangIconEquipped"] = AmbiRangIconEquipped,
             ["AmbushTechIcon"] = AmbushTechIcon,
             ["ApacheDartshipUpgradeIcon"] = ApacheDartshipUpgradeIcon,
@@ -5384,6 +5535,7 @@ public static class VanillaSprites
             ["ArcaneBlastUpgradeIcon"] = ArcaneBlastUpgradeIcon,
             ["ArcaneImpaleIcon"] = ArcaneImpaleIcon,
             ["ArcaneMasteryUpgradeIcon"] = ArcaneMasteryUpgradeIcon,
+            ["ArcaneMetamorphosisIconAA"] = ArcaneMetamorphosisIconAA,
             ["ArcaneSpikeUpgradeIcon"] = ArcaneSpikeUpgradeIcon,
             ["ArchmageUpgradeIcon"] = ArchmageUpgradeIcon,
             ["ArcticWindUpgradeIcon"] = ArcticWindUpgradeIcon,
@@ -5430,8 +5582,8 @@ public static class VanillaSprites
             ["BadBloonIcon"] = BadBloonIcon,
             ["BadConnectionBtn"] = BadConnectionBtn,
             ["BadFortifiedIcon"] = BadFortifiedIcon,
-            ["BadIcon"] = BadIcon,
             ["BADIcon"] = BADIcon,
+            ["BadIcon"] = BadIcon,
             ["BadMaimMoabParticle"] = BadMaimMoabParticle,
             ["BallisticMissileUpgradeIcon"] = BallisticMissileUpgradeIcon,
             ["BallLightningUpgradeIcon"] = BallLightningUpgradeIcon,
@@ -5451,6 +5603,7 @@ public static class VanillaSprites
             ["BananaFarmPresents"] = BananaFarmPresents,
             ["BananaIcon"] = BananaIcon,
             ["BananaPlantationUpgradeIcon"] = BananaPlantationUpgradeIcon,
+            ["BananaPoolFloatPropIcon"] = BananaPoolFloatPropIcon,
             ["BananaResearchFacilityUpgradeIcon"] = BananaResearchFacilityUpgradeIcon,
             ["BananaSalvageUpgradeIcon"] = BananaSalvageUpgradeIcon,
             ["BankDepositsIcon"] = BankDepositsIcon,
@@ -5530,8 +5683,6 @@ public static class VanillaSprites
             ["BhHeaderFeather2"] = BhHeaderFeather2,
             ["BhHeaderFeathers"] = BhHeaderFeathers,
             ["BhTargetIconBird"] = BhTargetIconBird,
-            ["BhTargetIconDino"] = BhTargetIconDino,
-            ["BhTargetIconFish"] = BhTargetIconFish,
             ["BigBloonBlueprintsIcon"] = BigBloonBlueprintsIcon,
             ["BigBloonModeIcon"] = BigBloonModeIcon,
             ["BigBloonModeIcon2"] = BigBloonModeIcon2,
@@ -5651,6 +5802,7 @@ public static class VanillaSprites
             ["BlueRibbonShop"] = BlueRibbonShop,
             ["BlueRoundPlayBtn"] = BlueRoundPlayBtn,
             ["BlueTitleScreen"] = BlueTitleScreen,
+            ["BoatMoabIcon"] = BoatMoabIcon,
             ["BoatPanelShort"] = BoatPanelShort,
             ["Body1"] = Body1,
             ["Body2"] = Body2,
@@ -5663,6 +5815,7 @@ public static class VanillaSprites
             ["Bombshooter"] = Bombshooter,
             ["BombShooterIcon"] = BombShooterIcon,
             ["BombShooterPumpkinBombsIcon"] = BombShooterPumpkinBombsIcon,
+            ["BombshooterTortoisePetIcon"] = BombshooterTortoisePetIcon,
             ["BoneDartGreenSprite"] = BoneDartGreenSprite,
             ["BoneDartSprite"] = BoneDartSprite,
             ["BonesBadIcon"] = BonesBadIcon,
@@ -5686,9 +5839,7 @@ public static class VanillaSprites
             ["BoomProjectile"] = BoomProjectile,
             ["BoostChevronWhite"] = BoostChevronWhite,
             ["BossBarGradient"] = BossBarGradient,
-            ["BossBoostIcon"] = BossBoostIcon,
             ["BossContainerGlow"] = BossContainerGlow,
-            ["BossDecreaseHPIcon"] = BossDecreaseHPIcon,
             ["BossDefeatBanner"] = BossDefeatBanner,
             ["BossDefeatBannerEnd"] = BossDefeatBannerEnd,
             ["BossDefeatBannerNotch"] = BossDefeatBannerNotch,
@@ -5769,7 +5920,6 @@ public static class VanillaSprites
             ["BuffIconBiohack"] = BuffIconBiohack,
             ["BuffIconBlastChain"] = BuffIconBlastChain,
             ["BuffIconBloodSacrifice"] = BuffIconBloodSacrifice,
-            ["BuffIconBoomerangParagon"] = BuffIconBoomerangParagon,
             ["BuffIconBuccaneer5xx"] = BuffIconBuccaneer5xx,
             ["BuffIconBuccaneerxx5"] = BuffIconBuccaneerxx5,
             ["BuffIconComeOnEverybodyPrice"] = BuffIconComeOnEverybodyPrice,
@@ -5817,6 +5967,12 @@ public static class VanillaSprites
             ["BuffIconVillagexx4"] = BuffIconVillagexx4,
             ["BuffIconVillagexx5"] = BuffIconVillagexx5,
             ["BuffIconWizardxx5"] = BuffIconWizardxx5,
+            ["BunchTreeIcon"] = BunchTreeIcon,
+            ["BunchTreeIconOrange"] = BunchTreeIconOrange,
+            ["BunchTreeIconOrangeYellow"] = BunchTreeIconOrangeYellow,
+            ["BunchTreeIconPink"] = BunchTreeIconPink,
+            ["BunchTreeIconPinkDark"] = BunchTreeIconPinkDark,
+            ["BunchTreeIconYellow"] = BunchTreeIconYellow,
             ["BundledBloonjaminsIcon"] = BundledBloonjaminsIcon,
             ["BunnyEarsBloonsIcon"] = BunnyEarsBloonsIcon,
             ["BunnyEarsSprite"] = BunnyEarsSprite,
@@ -5833,6 +5989,7 @@ public static class VanillaSprites
             ["CamoTargetIconCross"] = CamoTargetIconCross,
             ["CamoTrap"] = CamoTrap,
             ["CamoTrapIcon"] = CamoTrapIcon,
+            ["CamoTrapSprinklerIcon"] = CamoTrapSprinklerIcon,
             ["CampfirePropIcon"] = CampfirePropIcon,
             ["CandleGlow"] = CandleGlow,
             ["CandyCorn"] = CandyCorn,
@@ -5945,6 +6102,7 @@ public static class VanillaSprites
             ["Circle2"] = Circle2,
             ["CircleInsert"] = CircleInsert,
             ["CircleRing"] = CircleRing,
+            ["CircleUi"] = CircleUi,
             ["CircusGwendolinIcon"] = CircusGwendolinIcon,
             ["CircusGwendolinPortrait"] = CircusGwendolinPortrait,
             ["CircusGwendolinPortraitLvl10"] = CircusGwendolinPortraitLvl10,
@@ -5973,6 +6131,7 @@ public static class VanillaSprites
             ["CollectingEventEasterBtn"] = CollectingEventEasterBtn,
             ["CollectingEventFireworksBtn"] = CollectingEventFireworksBtn,
             ["CollectingEventHalloweenBtn"] = CollectingEventHalloweenBtn,
+            ["CollectingEventPartyTimeBtn"] = CollectingEventPartyTimeBtn,
             ["CollectingEventTotemBtn"] = CollectingEventTotemBtn,
             ["CollectionEventLootIconChristmas"] = CollectionEventLootIconChristmas,
             ["CollectionEventLootIconEaster"] = CollectionEventLootIconEaster,
@@ -5983,6 +6142,9 @@ public static class VanillaSprites
             ["ComancheCommanderUpgradeIcon"] = ComancheCommanderUpgradeIcon,
             ["ComancheDefenseUpgradeIcon"] = ComancheDefenseUpgradeIcon,
             ["ComeOnEverybodyIcon"] = ComeOnEverybodyIcon,
+            ["CompetitiveModeIcon"] = CompetitiveModeIcon,
+            ["CompetitiveModeMessage"] = CompetitiveModeMessage,
+            ["CompetitiveModeTick"] = CompetitiveModeTick,
             ["ConcussiveProjectile"] = ConcussiveProjectile,
             ["ConcussiveShellAA"] = ConcussiveShellAA,
             ["ConfettiIcon"] = ConfettiIcon,
@@ -5990,6 +6152,8 @@ public static class VanillaSprites
             ["ConnectionBar"] = ConnectionBar,
             ["ConnectionIcon"] = ConnectionIcon,
             ["ConquestedTerritoryIcon"] = ConquestedTerritoryIcon,
+            ["ConstellationLinesSprite"] = ConstellationLinesSprite,
+            ["ConstellationSprite"] = ConstellationSprite,
             ["ContestedLeaderboardBtn"] = ContestedLeaderboardBtn,
             ["ContestedPlayBtn"] = ContestedPlayBtn,
             ["ContestedPlayBtnSmall"] = ContestedPlayBtnSmall,
@@ -6059,6 +6223,7 @@ public static class VanillaSprites
             ["CtBlueMainRibbon"] = CtBlueMainRibbon,
             ["CtBlueRibbon"] = CtBlueRibbon,
             ["CtBubblePoint"] = CtBubblePoint,
+            ["CtCompetitiveRibbon"] = CtCompetitiveRibbon,
             ["CTCosyMonkeyIcon"] = CTCosyMonkeyIcon,
             ["CtDailyRewardIcon"] = CtDailyRewardIcon,
             ["CtGlobalPlayerBronzeMedal"] = CtGlobalPlayerBronzeMedal,
@@ -6088,6 +6253,7 @@ public static class VanillaSprites
             ["CtLocalTeamDiamondMedal"] = CtLocalTeamDiamondMedal,
             ["CtLocalTeamDoubleGoldMedal"] = CtLocalTeamDoubleGoldMedal,
             ["CtLocalTeamSilverMedal"] = CtLocalTeamSilverMedal,
+            ["CtMainCompetitiveRibbon"] = CtMainCompetitiveRibbon,
             ["CtMonkeyPortrait"] = CtMonkeyPortrait,
             ["CtPanelInner"] = CtPanelInner,
             ["CTPointsBanner"] = CTPointsBanner,
@@ -6174,8 +6340,6 @@ public static class VanillaSprites
             ["DiamondBoxIcon"] = DiamondBoxIcon,
             ["DinoSpringEggIcon"] = DinoSpringEggIcon,
             ["DirectedSpikesUpgradeIcon"] = DirectedSpikesUpgradeIcon,
-            ["DirtChunk"] = DirtChunk,
-            ["DirtChunkGrey"] = DirtChunkGrey,
             ["DiscoBallIcon"] = DiscoBallIcon,
             ["DisguiseGlassesBloonsIcon"] = DisguiseGlassesBloonsIcon,
             ["DisguseHat"] = DisguseHat,
@@ -6284,7 +6448,6 @@ public static class VanillaSprites
             ["EmoteGwendolin"] = EmoteGwendolin,
             ["EmoteGwendolinCircus"] = EmoteGwendolinCircus,
             ["EmoteGwendolinSkin"] = EmoteGwendolinSkin,
-            ["EmoteKaijuPat"] = EmoteKaijuPat,
             ["EmoteLeadBloon"] = EmoteLeadBloon,
             ["EmoteMountainObynSkin"] = EmoteMountainObynSkin,
             ["EmoteObyn"] = EmoteObyn,
@@ -6378,6 +6541,9 @@ public static class VanillaSprites
             ["EventMysteryBoxWoodenBottom"] = EventMysteryBoxWoodenBottom,
             ["EventMysteryBoxWoodenIcon"] = EventMysteryBoxWoodenIcon,
             ["EventMysteryBoxWoodenTop"] = EventMysteryBoxWoodenTop,
+            ["EventPartyTimeLootIcon"] = EventPartyTimeLootIcon,
+            ["EventPartyTimePatternBg"] = EventPartyTimePatternBg,
+            ["EventPartyTimeTitleBanner"] = EventPartyTimeTitleBanner,
             ["EventRaceBtn"] = EventRaceBtn,
             ["EventRaceFlagIcon"] = EventRaceFlagIcon,
             ["EventRaceIcon"] = EventRaceIcon,
@@ -6439,7 +6605,6 @@ public static class VanillaSprites
             ["FarmSubsidyIcon"] = FarmSubsidyIcon,
             ["FasterBarrelSpinUpgradeIcon"] = FasterBarrelSpinUpgradeIcon,
             ["FasterBloonsIcon"] = FasterBloonsIcon,
-            ["FasterBossIcon"] = FasterBossIcon,
             ["FasterDartsUpgradeIcon"] = FasterDartsUpgradeIcon,
             ["FasterEngineeringUpgradeIcon"] = FasterEngineeringUpgradeIcon,
             ["FasterFiringUpgradeIcon"] = FasterFiringUpgradeIcon,
@@ -6480,6 +6645,7 @@ public static class VanillaSprites
             ["FirestormAA"] = FirestormAA,
             ["FireworksMonkeyPortrait"] = FireworksMonkeyPortrait,
             ["FireworksUpgradeFxIcon"] = FireworksUpgradeFxIcon,
+            ["FiringRangePineTreeIcon"] = FiringRangePineTreeIcon,
             ["FirstLineOfDefenseIcon"] = FirstLineOfDefenseIcon,
             ["FirstStrikeCapabilityUpgradeIcon"] = FirstStrikeCapabilityUpgradeIcon,
             ["FirstStrikeCapabilityUpgradeIconAA"] = FirstStrikeCapabilityUpgradeIconAA,
@@ -6543,6 +6709,7 @@ public static class VanillaSprites
             ["FocusMarker"] = FocusMarker,
             ["FogFx"] = FogFx,
             ["ForceVsForceIcon"] = ForceVsForceIcon,
+            ["ForestTreeIcon"] = ForestTreeIcon,
             ["FortifiedBloonIcon"] = FortifiedBloonIcon,
             ["FortifiedBloonsIcon"] = FortifiedBloonsIcon,
             ["Fortifried"] = Fortifried,
@@ -6554,6 +6721,7 @@ public static class VanillaSprites
             ["FragPiece2"] = FragPiece2,
             ["FrameBrick1"] = FrameBrick1,
             ["FrameWhite"] = FrameWhite,
+            ["FrameWhiteAlt"] = FrameWhiteAlt,
             ["FreezeBomb"] = FreezeBomb,
             ["FriendAddedIcon"] = FriendAddedIcon,
             ["FriendDemoted"] = FriendDemoted,
@@ -6570,6 +6738,11 @@ public static class VanillaSprites
             ["FustyTheSnowmanPortraitLvl20"] = FustyTheSnowmanPortraitLvl20,
             ["FustyTheSnowmanPortraitLvl3"] = FustyTheSnowmanPortraitLvl3,
             ["FustyTheSnowmanPortraitLvl5"] = FustyTheSnowmanPortraitLvl5,
+            ["FxCrystalGlowIcon"] = FxCrystalGlowIcon,
+            ["FxFirefliesIcon"] = FxFirefliesIcon,
+            ["FxPortalIcon"] = FxPortalIcon,
+            ["FxSparksIcon"] = FxSparksIcon,
+            ["FxSteamVentIcon"] = FxSteamVentIcon,
             ["GalaxiliPortraitLvl1"] = GalaxiliPortraitLvl1,
             ["GalaxiliPortraitLvl10"] = GalaxiliPortraitLvl10,
             ["GalaxiliPortraitLvl16"] = GalaxiliPortraitLvl16,
@@ -6579,6 +6752,10 @@ public static class VanillaSprites
             ["GalaxiliTotem"] = GalaxiliTotem,
             ["GalaxilliCurseEffect"] = GalaxilliCurseEffect,
             ["GalaxilliCurseEffectRegrow"] = GalaxilliCurseEffectRegrow,
+            ["GardenFlowerIconOrange"] = GardenFlowerIconOrange,
+            ["GardenFlowerIconPurple"] = GardenFlowerIconPurple,
+            ["GardenFlowerIconWhite"] = GardenFlowerIconWhite,
+            ["GardenFlowerIconYellow"] = GardenFlowerIconYellow,
             ["GateBolt"] = GateBolt,
             ["GatePanel"] = GatePanel,
             ["GateSpike"] = GateSpike,
@@ -6601,6 +6778,7 @@ public static class VanillaSprites
             ["GeraldoLightningSmall1"] = GeraldoLightningSmall1,
             ["GeraldoLightningSmall2"] = GeraldoLightningSmall2,
             ["GeraldoLightningSmall3"] = GeraldoLightningSmall3,
+            ["GeraldoPackMulePet"] = GeraldoPackMulePet,
             ["GeraldoPortrait"] = GeraldoPortrait,
             ["GeraldoPortraitLvl10"] = GeraldoPortraitLvl10,
             ["GeraldoPortraitLvl20"] = GeraldoPortraitLvl20,
@@ -6680,6 +6858,7 @@ public static class VanillaSprites
             ["GoldenBloonGlow"] = GoldenBloonGlow,
             ["GoldenBloonGlowStar"] = GoldenBloonGlowStar,
             ["GoldenBloonGlowUi"] = GoldenBloonGlowUi,
+            ["GoldenBloonGlowUi2"] = GoldenBloonGlowUi2,
             ["GoldenBloonHitfx"] = GoldenBloonHitfx,
             ["GoldenBloonIcon"] = GoldenBloonIcon,
             ["GoldenBloonIcon2"] = GoldenBloonIcon2,
@@ -6723,8 +6902,11 @@ public static class VanillaSprites
             ["GrandSaboteurUpgradeIcon"] = GrandSaboteurUpgradeIcon,
             ["GrapeShot"] = GrapeShot,
             ["GrapeShotUpgradeIcon"] = GrapeShotUpgradeIcon,
+            ["GraplingHookRope"] = GraplingHookRope,
             ["GraveGhost"] = GraveGhost,
+            ["GraveyardBarFill"] = GraveyardBarFill,
             ["GraveyardIcon"] = GraveyardIcon,
+            ["GraveyardIconGlow"] = GraveyardIconGlow,
             ["GreaterProductionUpgradeIcon"] = GreaterProductionUpgradeIcon,
             ["GreatWhiteUpgradeIcon"] = GreatWhiteUpgradeIcon,
             ["Green"] = Green,
@@ -6787,6 +6969,7 @@ public static class VanillaSprites
             ["HardTacksIcon"] = HardTacksIcon,
             ["HardThornsUpgradeIcon"] = HardThornsUpgradeIcon,
             ["HatchetBloonsIcon"] = HatchetBloonsIcon,
+            ["HatConstellationCircles"] = HatConstellationCircles,
             ["Head"] = Head,
             ["Head1"] = Head1,
             ["Head2"] = Head2,
@@ -6805,6 +6988,8 @@ public static class VanillaSprites
             ["HeavyBombsUpgradeIcon"] = HeavyBombsUpgradeIcon,
             ["HeavyKnockbackIcon"] = HeavyKnockbackIcon,
             ["HeavyShellsUpgradeIcon"] = HeavyShellsUpgradeIcon,
+            ["HedgeBushIcon"] = HedgeBushIcon,
+            ["HedgeRectanglularIcon"] = HedgeRectanglularIcon,
             ["Helipilot"] = Helipilot,
             ["HeliPilotIcon"] = HeliPilotIcon,
             ["HeliPilotPetHummingbirdIcon"] = HeliPilotPetHummingbirdIcon,
@@ -6816,6 +7001,8 @@ public static class VanillaSprites
             ["HeroIconAdmiralBrickell2"] = HeroIconAdmiralBrickell2,
             ["HeroIconAdmiralBrickellDreadPirateBrickell"] = HeroIconAdmiralBrickellDreadPirateBrickell,
             ["HeroIconAdmiralBrickellDreadPirateBrickell2"] = HeroIconAdmiralBrickellDreadPirateBrickell2,
+            ["HeroIconAdmiralBrickellLifeguardBrickell"] = HeroIconAdmiralBrickellLifeguardBrickell,
+            ["HeroIconAdmiralBrickellLifeguardBrickell2"] = HeroIconAdmiralBrickellLifeguardBrickell2,
             ["HeroIconAdora"] = HeroIconAdora,
             ["HeroIconAdora2"] = HeroIconAdora2,
             ["HeroIconBenjamin"] = HeroIconBenjamin,
@@ -6870,6 +7057,8 @@ public static class VanillaSprites
             ["HeroIconQuincyCyber2"] = HeroIconQuincyCyber2,
             ["HeroIconSauda"] = HeroIconSauda,
             ["HeroIconSauda2"] = HeroIconSauda2,
+            ["HeroIconSaudaJiangshi"] = HeroIconSaudaJiangshi,
+            ["HeroIconSaudaJiangshi2"] = HeroIconSaudaJiangshi2,
             ["HeroIconSaudaViking"] = HeroIconSaudaViking,
             ["HeroIconSaudaViking2"] = HeroIconSaudaViking2,
             ["HeroIconStrikerJones"] = HeroIconStrikerJones,
@@ -6904,6 +7093,8 @@ public static class VanillaSprites
             ["HideIconSmall"] = HideIconSmall,
             ["Hit"] = Hit,
             ["HiValueMinesIcon"] = HiValueMinesIcon,
+            ["HollowLogIcon"] = HollowLogIcon,
+            ["HollowLogKnobIcon"] = HollowLogKnobIcon,
             ["HomeBtn"] = HomeBtn,
             ["HomeBtnContainer"] = HomeBtnContainer,
             ["HomeIcon"] = HomeIcon,
@@ -6971,6 +7162,7 @@ public static class VanillaSprites
             ["IcyChillIcon"] = IcyChillIcon,
             ["IFRUpgradeIcon"] = IFRUpgradeIcon,
             ["IMFLoanUpgradeIcon"] = IMFLoanUpgradeIcon,
+            ["ImmunityCamo"] = ImmunityCamo,
             ["ImmunityCeramic"] = ImmunityCeramic,
             ["ImmunityLead"] = ImmunityLead,
             ["ImmunityMagic"] = ImmunityMagic,
@@ -7029,6 +7221,10 @@ public static class VanillaSprites
             ["IWillBeBackIcon"] = IWillBeBackIcon,
             ["JackOLanternZomgIcon"] = JackOLanternZomgIcon,
             ["JarOfPickles"] = JarOfPickles,
+            ["JiangshiSaudaPortrait"] = JiangshiSaudaPortrait,
+            ["JiangshiSaudaPortraitLvl10"] = JiangshiSaudaPortraitLvl10,
+            ["JiangshiSaudaPortraitLvl20"] = JiangshiSaudaPortraitLvl20,
+            ["JiangshiSaudaPortraitLvl3"] = JiangshiSaudaPortraitLvl3,
             ["JoanOfArcPortrait"] = JoanOfArcPortrait,
             ["JoanOfArcPortraitLvl10"] = JoanOfArcPortraitLvl10,
             ["JoanOfArcPortraitLvl20"] = JoanOfArcPortraitLvl20,
@@ -7038,6 +7234,8 @@ public static class VanillaSprites
             ["JoanOfArcPortraitLvl7"] = JoanOfArcPortraitLvl7,
             ["JuggernautUpgradeIcon"] = JuggernautUpgradeIcon,
             ["JukeboxIcon"] = JukeboxIcon,
+            ["JungleBushIcon"] = JungleBushIcon,
+            ["JungleBushIconDark"] = JungleBushIconDark,
             ["JungleDrumsUpgradeIcon"] = JungleDrumsUpgradeIcon,
             ["JunglesBountyUpgradeIcon"] = JunglesBountyUpgradeIcon,
             ["JunglesBountyUpgradeIconAA"] = JunglesBountyUpgradeIconAA,
@@ -7045,9 +7243,14 @@ public static class VanillaSprites
             ["JungleVine02"] = JungleVine02,
             ["JungleVine03"] = JungleVine03,
             ["JungleVine04"] = JungleVine04,
+            ["JungleVineGreen01"] = JungleVineGreen01,
+            ["JungleVineGreen02"] = JungleVineGreen02,
+            ["JungleVineGreen03"] = JungleVineGreen03,
+            ["JungleVineGreen04"] = JungleVineGreen04,
             ["JungleVineGrow01"] = JungleVineGrow01,
             ["JungleVineGrow02"] = JungleVineGrow02,
             ["JungleVineGrow03"] = JungleVineGrow03,
+            ["JungleVineGrowGreen03"] = JungleVineGrowGreen03,
             ["JustOneMoreIcon"] = JustOneMoreIcon,
             ["KaijuPatIcon"] = KaijuPatIcon,
             ["KaijuPatPortrait"] = KaijuPatPortrait,
@@ -7133,6 +7336,11 @@ public static class VanillaSprites
             ["LegendOfTheNightUpgradeIcon"] = LegendOfTheNightUpgradeIcon,
             ["LegExtension"] = LegExtension,
             ["LegExtension2"] = LegExtension2,
+            ["LifeguardBrickellPortrait"] = LifeguardBrickellPortrait,
+            ["LifeguardBrickellPortraitLvl10"] = LifeguardBrickellPortraitLvl10,
+            ["LifeguardBrickellPortraitLvl20"] = LifeguardBrickellPortraitLvl20,
+            ["LifeguardBrickellPortraitLvl3"] = LifeguardBrickellPortraitLvl3,
+            ["LifeguardBrickellPortraitLvl7"] = LifeguardBrickellPortraitLvl7,
             ["LighthouseKeeperPropIcon"] = LighthouseKeeperPropIcon,
             ["LighthousePropIcon"] = LighthousePropIcon,
             ["LightningBall_0"] = LightningBall_0,
@@ -7189,8 +7397,11 @@ public static class VanillaSprites
             ["LockedCenterParagon"] = LockedCenterParagon,
             ["LockIcon"] = LockIcon,
             ["LockIconOpen"] = LockIconOpen,
+            ["LogNotchedIcon"] = LogNotchedIcon,
             ["LogoShatterA"] = LogoShatterA,
             ["LogoShatterB"] = LogoShatterB,
+            ["LogTwoKnobsIcon"] = LogTwoKnobsIcon,
+            ["LogWithKnobIcon"] = LogWithKnobIcon,
             ["LongCalibreUpgradeIcon"] = LongCalibreUpgradeIcon,
             ["LongerBoostsIcon"] = LongerBoostsIcon,
             ["LongerDartTimeIcon"] = LongerDartTimeIcon,
@@ -7228,16 +7439,21 @@ public static class VanillaSprites
             ["MADUpgradeIconAA"] = MADUpgradeIconAA,
             ["MagicBtn"] = MagicBtn,
             ["MagicBtn2"] = MagicBtn2,
+            ["MagicCircleFX"] = MagicCircleFX,
             ["MagicKnowledgeBtn"] = MagicKnowledgeBtn,
             ["MagicMonkeyICon"] = MagicMonkeyICon,
             ["MagicMonkeys"] = MagicMonkeys,
+            ["MagicSigil"] = MagicSigil,
             ["MagicTricksIcon"] = MagicTricksIcon,
+            ["MagusPerfectusCloud"] = MagusPerfectusCloud,
+            ["MagusPerfectusUpgradeIcon"] = MagusPerfectusUpgradeIcon,
             ["MaimMoabUpgradeIcon"] = MaimMoabUpgradeIcon,
             ["MainBgPanel"] = MainBgPanel,
             ["MainBGPanelBlue"] = MainBGPanelBlue,
             ["MainBGPanelBlueInitialAsset"] = MainBGPanelBlueInitialAsset,
             ["MainBGPanelBlueNotches"] = MainBGPanelBlueNotches,
             ["MainBGPanelBlueNotchesShadow"] = MainBGPanelBlueNotchesShadow,
+            ["MainBGPanelBronze"] = MainBGPanelBronze,
             ["MainBgPanelCT"] = MainBgPanelCT,
             ["MainBgPanelCTBasic"] = MainBgPanelCTBasic,
             ["MainBGPanelGradient"] = MainBGPanelGradient,
@@ -7255,7 +7471,6 @@ public static class VanillaSprites
             ["MapAdvancedBtn"] = MapAdvancedBtn,
             ["MapBeginnerBtn"] = MapBeginnerBtn,
             ["MapBorder"] = MapBorder,
-            ["MapBuffIconCamo"] = MapBuffIconCamo,
             ["MapBuffIconDamage"] = MapBuffIconDamage,
             ["MapBuffIconPierce"] = MapBuffIconPierce,
             ["MapBuffIconRange"] = MapBuffIconRange,
@@ -7266,6 +7481,7 @@ public static class VanillaSprites
             ["MapCoopP2Icon"] = MapCoopP2Icon,
             ["MapCoopP3Icon"] = MapCoopP3Icon,
             ["MapCoopP4Icon"] = MapCoopP4Icon,
+            ["MapEditorBtn"] = MapEditorBtn,
             ["MapExpertBtn"] = MapExpertBtn,
             ["MapExtremeBtn"] = MapExtremeBtn,
             ["MapFrameWoodEdge"] = MapFrameWoodEdge,
@@ -7291,7 +7507,6 @@ public static class VanillaSprites
             ["MapSelectCrackedButton"] = MapSelectCrackedButton,
             ["MapSelectCubismButton"] = MapSelectCubismButton,
             ["MapSelectDarkCastleButton"] = MapSelectDarkCastleButton,
-            ["MapSelectDarkDungeonsButton"] = MapSelectDarkDungeonsButton,
             ["MapSelectDownstreamButton"] = MapSelectDownstreamButton,
             ["MapSelectEncryptedButton"] = MapSelectEncryptedButton,
             ["MapSelectEndOfTheRoadButton"] = MapSelectEndOfTheRoadButton,
@@ -7309,7 +7524,6 @@ public static class VanillaSprites
             ["MapSelectLogsButton"] = MapSelectLogsButton,
             ["MapSelectLotusIslandButton"] = MapSelectLotusIslandButton,
             ["MapSelectMesaButton"] = MapSelectMesaButton,
-            ["MapSelectMiddleOfTheRoadMapButton"] = MapSelectMiddleOfTheRoadMapButton,
             ["MapSelectMidnightMansionMapButton"] = MapSelectMidnightMansionMapButton,
             ["MapSelectMonkeyMeadowButton"] = MapSelectMonkeyMeadowButton,
             ["MapSelectMoonLandingButton"] = MapSelectMoonLandingButton,
@@ -7319,7 +7533,6 @@ public static class VanillaSprites
             ["MapSelectParkPathButton"] = MapSelectParkPathButton,
             ["MapSelectPatsPondButton"] = MapSelectPatsPondButton,
             ["MapSelectPeninsulaButton"] = MapSelectPeninsulaButton,
-            ["MapSelectPolyphemusMapButton"] = MapSelectPolyphemusMapButton,
             ["MapSelectQuadButton"] = MapSelectQuadButton,
             ["MapSelectQuarryMapButton"] = MapSelectQuarryMapButton,
             ["MapSelectQuietSteetMapButton"] = MapSelectQuietSteetMapButton,
@@ -7408,11 +7621,9 @@ public static class VanillaSprites
             ["MegamineAA"] = MegamineAA,
             ["MegaMonkeyCompendiumPackShop"] = MegaMonkeyCompendiumPackShop,
             ["MerchantmanUpgradeIcon"] = MerchantmanUpgradeIcon,
-            ["MergeArrowBtn"] = MergeArrowBtn,
             ["MergeBtn"] = MergeBtn,
             ["MergeCostBanner"] = MergeCostBanner,
             ["MergedPanel"] = MergedPanel,
-            ["MergeIcon"] = MergeIcon,
             ["MergeIconSingle"] = MergeIconSingle,
             ["MetalFreezeUpgradeIcon"] = MetalFreezeUpgradeIcon,
             ["MetropolisUpgradeIcon"] = MetropolisUpgradeIcon,
@@ -7446,8 +7657,8 @@ public static class VanillaSprites
             ["MOABGlaiveRang"] = MOABGlaiveRang,
             ["MoabGlueUpgradeIcon"] = MoabGlueUpgradeIcon,
             ["MoabHexAA"] = MoabHexAA,
-            ["MOABIcon"] = MOABIcon,
             ["MoabIcon"] = MoabIcon,
+            ["MOABIcon"] = MOABIcon,
             ["MoabMaulerMoabIcon"] = MoabMaulerMoabIcon,
             ["MoabMaulerUpgradeIcon"] = MoabMaulerUpgradeIcon,
             ["MoabMine"] = MoabMine,
@@ -7539,6 +7750,8 @@ public static class VanillaSprites
             ["MouthSad"] = MouthSad,
             ["MouthScream"] = MouthScream,
             ["MouthSmile"] = MouthSmile,
+            ["MushroomIcon"] = MushroomIcon,
+            ["MushrromIconPurple"] = MushrromIconPurple,
             ["MysticStoneFx"] = MysticStoneFx,
             ["Nail"] = Nail,
             ["NailFoam"] = NailFoam,
@@ -7606,8 +7819,8 @@ public static class VanillaSprites
             ["NotifyRed"] = NotifyRed,
             ["NotLackingCriticalInformation"] = NotLackingCriticalInformation,
             ["ObynBunnyPetIcon"] = ObynBunnyPetIcon,
-            ["Obyngreenfoot"] = Obyngreenfoot,
             ["ObynGreenFoot"] = ObynGreenFoot,
+            ["Obyngreenfoot"] = Obyngreenfoot,
             ["ObynGreenFootIcon"] = ObynGreenFootIcon,
             ["ObynGreenfootLv10"] = ObynGreenfootLv10,
             ["ObynGreenfootLv20"] = ObynGreenfootLv20,
@@ -7683,6 +7896,8 @@ public static class VanillaSprites
             ["OpenSeason"] = OpenSeason,
             ["OperationDartStormUpgradeIcon"] = OperationDartStormUpgradeIcon,
             ["OptionsBtn"] = OptionsBtn,
+            ["OrbitalInnerSprite"] = OrbitalInnerSprite,
+            ["OrbitalOuterSprite"] = OrbitalOuterSprite,
             ["OrcaUpgradeIcon"] = OrcaUpgradeIcon,
             ["OverclockUpgradeIcon"] = OverclockUpgradeIcon,
             ["OverdriveUpgradeIcon"] = OverdriveUpgradeIcon,
@@ -7696,6 +7911,8 @@ public static class VanillaSprites
             ["PanelFrame"] = PanelFrame,
             ["PanelQuest"] = PanelQuest,
             ["PanicMonkeyEmoteIcon"] = PanicMonkeyEmoteIcon,
+            ["ParaBeamTexture"] = ParaBeamTexture,
+            ["ParaDrainOffIcon"] = ParaDrainOffIcon,
             ["ParadropPlaneShadow"] = ParadropPlaneShadow,
             ["ParagonMasterBuilder"] = ParagonMasterBuilder,
             ["ParagonApexPlasmaMaster"] = ParagonApexPlasmaMaster,
@@ -7705,6 +7922,8 @@ public static class VanillaSprites
             ["ParagonArrowBtn"] = ParagonArrowBtn,
             ["ParagonBlop"] = ParagonBlop,
             ["ParagonBtnLong"] = ParagonBtnLong,
+            ["ParagonDrainingBeamIconOn"] = ParagonDrainingBeamIconOn,
+            ["ParagonDrainingBtn"] = ParagonDrainingBtn,
             ["ParagonGlaiveDominus"] = ParagonGlaiveDominus,
             ["ParagonGlaiveDominusGlaiveLvl1"] = ParagonGlaiveDominusGlaiveLvl1,
             ["ParagonGlaiveDominusGlaiveLvl5"] = ParagonGlaiveDominusGlaiveLvl5,
@@ -7713,12 +7932,16 @@ public static class VanillaSprites
             ["ParagonGoliathDoomshipDart"] = ParagonGoliathDoomshipDart,
             ["ParagonIcon"] = ParagonIcon,
             ["ParagonIcon2"] = ParagonIcon2,
+            ["ParagonMagusPerfectus"] = ParagonMagusPerfectus,
             ["paragonpattern01"] = paragonpattern01,
             ["paragonpattern02"] = paragonpattern02,
             ["ParagonPip"] = ParagonPip,
             ["ParagonPowerTotem"] = ParagonPowerTotem,
             ["ParagonPowerTotemPortrait"] = ParagonPowerTotemPortrait,
             ["ParagonTransformOrb"] = ParagonTransformOrb,
+            ["PartyHatBloonsIcon"] = PartyHatBloonsIcon,
+            ["PartyHatSprite"] = PartyHatSprite,
+            ["PartyTimeEventMonkey"] = PartyTimeEventMonkey,
             ["PatchNoteMonkeyPortrait"] = PatchNoteMonkeyPortrait,
             ["PatchNotesMonkeyIcon"] = PatchNotesMonkeyIcon,
             ["PatFlexIcon"] = PatFlexIcon,
@@ -7745,9 +7968,23 @@ public static class VanillaSprites
             ["PermaSpikeUpgradeIcon"] = PermaSpikeUpgradeIcon,
             ["PetRabbit"] = PetRabbit,
             ["PewpewPopFxIcon"] = PewpewPopFxIcon,
+            ["PhayzeAmbientCornerFx"] = PhayzeAmbientCornerFx,
+            ["PhayzeBadge"] = PhayzeBadge,
+            ["PhayzeBtn"] = PhayzeBtn,
+            ["PhayzeBtnElite"] = PhayzeBtnElite,
+            ["PhayzeEliteBadge"] = PhayzeEliteBadge,
+            ["PhayzeEventIcon"] = PhayzeEventIcon,
+            ["PhayzeHealthbarEnd"] = PhayzeHealthbarEnd,
+            ["PhayzeHealthBarTile"] = PhayzeHealthBarTile,
+            ["PhayzePortrait"] = PhayzePortrait,
+            ["PhayzePortraitDefeat"] = PhayzePortraitDefeat,
+            ["PhayzePortraitElite"] = PhayzePortraitElite,
+            ["PhayzePortraitEliteDefeat"] = PhayzePortraitEliteDefeat,
+            ["PhayzeTitle"] = PhayzeTitle,
             ["PhilBeardsBloonsIcon"] = PhilBeardsBloonsIcon,
             ["PhilsBeard"] = PhilsBeard,
             ["PhoenixPropIcon"] = PhoenixPropIcon,
+            ["PhoenixRebirthIconAA"] = PhoenixRebirthIconAA,
             ["Piggy"] = Piggy,
             ["PileOMonkeyMoneyShop"] = PileOMonkeyMoneyShop,
             ["PinataBadIcon"] = PinataBadIcon,
@@ -7801,7 +8038,6 @@ public static class VanillaSprites
             ["Player4Green"] = Player4Green,
             ["PlayerNumbersIcon"] = PlayerNumbersIcon,
             ["PlayerXPIcon"] = PlayerXPIcon,
-            ["Plus"] = Plus,
             ["PontoonIcebergPortrait"] = PontoonIcebergPortrait,
             ["PontoonIcon"] = PontoonIcon,
             ["PontoonPortrait"] = PontoonPortrait,
@@ -7938,6 +8174,11 @@ public static class VanillaSprites
             ["ProfileAvatar74"] = ProfileAvatar74,
             ["ProfileAvatar75"] = ProfileAvatar75,
             ["ProfileAvatar76"] = ProfileAvatar76,
+            ["ProfileAvatar77"] = ProfileAvatar77,
+            ["ProfileAvatar78"] = ProfileAvatar78,
+            ["ProfileAvatar79"] = ProfileAvatar79,
+            ["ProfileAvatar80"] = ProfileAvatar80,
+            ["ProfileAvatar81"] = ProfileAvatar81,
             ["ProfileBanner1"] = ProfileBanner1,
             ["ProfileBanner10"] = ProfileBanner10,
             ["ProfileBanner10Icon"] = ProfileBanner10Icon,
@@ -8008,6 +8249,15 @@ public static class VanillaSprites
             ["ProfileBanner30"] = ProfileBanner30,
             ["ProfileBanner30Icon"] = ProfileBanner30Icon,
             ["ProfileBanner30Small"] = ProfileBanner30Small,
+            ["ProfileBanner31"] = ProfileBanner31,
+            ["ProfileBanner31Icon"] = ProfileBanner31Icon,
+            ["ProfileBanner31Small"] = ProfileBanner31Small,
+            ["ProfileBanner32"] = ProfileBanner32,
+            ["ProfileBanner32Icon"] = ProfileBanner32Icon,
+            ["ProfileBanner32Small"] = ProfileBanner32Small,
+            ["ProfileBanner33"] = ProfileBanner33,
+            ["ProfileBanner33Icon"] = ProfileBanner33Icon,
+            ["ProfileBanner33Small"] = ProfileBanner33Small,
             ["ProfileBanner3Icon"] = ProfileBanner3Icon,
             ["ProfileBanner3Small"] = ProfileBanner3Small,
             ["ProfileBanner4"] = ProfileBanner4,
@@ -8076,6 +8326,7 @@ public static class VanillaSprites
             ["PsiPsionicFx"] = PsiPsionicFx,
             ["PsiVision"] = PsiVision,
             ["PsychicBlastAA"] = PsychicBlastAA,
+            ["PuddleIcon"] = PuddleIcon,
             ["PufferFishMoabIcon"] = PufferFishMoabIcon,
             ["PumpkinBigBomb"] = PumpkinBigBomb,
             ["PumpkinBomb"] = PumpkinBomb,
@@ -8106,12 +8357,23 @@ public static class VanillaSprites
             ["QuestHeaderScrollMid"] = QuestHeaderScrollMid,
             ["QuestIcon"] = QuestIcon,
             ["QuestIconBikerBonesRace"] = QuestIconBikerBonesRace,
+            ["QuestIconBirthdayParty"] = QuestIconBirthdayParty,
+            ["QuestIconBladeSaudaNowhere"] = QuestIconBladeSaudaNowhere,
+            ["QuestIconBrickell"] = QuestIconBrickell,
             ["QuestIconEpicBeastQuest"] = QuestIconEpicBeastQuest,
+            ["QuestIconGwendolin"] = QuestIconGwendolin,
+            ["QuestIconLogsChimps"] = QuestIconLogsChimps,
             ["QuestIconQuincyTestOfQuincy"] = QuestIconQuincyTestOfQuincy,
+            ["QuestIconScoopsTale1"] = QuestIconScoopsTale1,
+            ["QuestIconStrikenBad"] = QuestIconStrikenBad,
             ["QuestLeafBunch"] = QuestLeafBunch,
+            ["QuestModeRush"] = QuestModeRush,
             ["QuestPlatform"] = QuestPlatform,
             ["QuestPlatformChristmas"] = QuestPlatformChristmas,
             ["QuestPlatformHalloween"] = QuestPlatformHalloween,
+            ["QuestScoopsTale1"] = QuestScoopsTale1,
+            ["QuestScoopsTale2"] = QuestScoopsTale2,
+            ["QuestScoopsTale3"] = QuestScoopsTale3,
             ["QuickHandsIcon"] = QuickHandsIcon,
             ["QuickShotsUpgradeIcon"] = QuickShotsUpgradeIcon,
             ["Quincy"] = Quincy,
@@ -8122,11 +8384,13 @@ public static class VanillaSprites
             ["QuincyCyberPortraitLvl3"] = QuincyCyberPortraitLvl3,
             ["QuincyCyberPortraitLvl7"] = QuincyCyberPortraitLvl7,
             ["QuincyIcon"] = QuincyIcon,
+            ["QuincyPlacementLaser"] = QuincyPlacementLaser,
             ["QuincyPortrait"] = QuincyPortrait,
             ["QuincyPortraitLvl10"] = QuincyPortraitLvl10,
             ["QuincyPortraitLvl20"] = QuincyPortraitLvl20,
             ["QuincyPortraitLvl3"] = QuincyPortraitLvl3,
             ["QuincyPortraitLvl7"] = QuincyPortraitLvl7,
+            ["QuincySpecialForcesPlacementIcon"] = QuincySpecialForcesPlacementIcon,
             ["QuincyWolfpackIcon"] = QuincyWolfpackIcon,
             ["RaceIcon"] = RaceIcon,
             ["RacePassIconSmall"] = RacePassIconSmall,
@@ -8235,6 +8499,11 @@ public static class VanillaSprites
             ["RocketStormRocket"] = RocketStormRocket,
             ["RocketStormUpgradeIcon"] = RocketStormUpgradeIcon,
             ["RocketStormUpgradeIconAA"] = RocketStormUpgradeIconAA,
+            ["RockPointyFlatIcon"] = RockPointyFlatIcon,
+            ["RockPointyFlatSmallIcon"] = RockPointyFlatSmallIcon,
+            ["RockPointyFlatTallIcon"] = RockPointyFlatTallIcon,
+            ["RockPointyFlatVShapeIcon"] = RockPointyFlatVShapeIcon,
+            ["RockPointyFlatWingShapeIcon"] = RockPointyFlatWingShapeIcon,
             ["Roll1"] = Roll1,
             ["RoundCornerMask"] = RoundCornerMask,
             ["RoundingUp"] = RoundingUp,
@@ -8357,11 +8626,11 @@ public static class VanillaSprites
             ["SleighTankShellArmourPiercing"] = SleighTankShellArmourPiercing,
             ["SliderMarker"] = SliderMarker,
             ["SlowerBloonsIcon"] = SlowerBloonsIcon,
-            ["SlowerBossIcon"] = SlowerBossIcon,
             ["SlowerMoabIcon"] = SlowerMoabIcon,
             ["SmallArrow"] = SmallArrow,
             ["SmallBloonModeIcon"] = SmallBloonModeIcon,
             ["SmallBloonModeIcon2"] = SmallBloonModeIcon2,
+            ["SmallestFrame"] = SmallestFrame,
             ["SmallFrame"] = SmallFrame,
             ["SmallMonkeysModeIcon"] = SmallMonkeysModeIcon,
             ["SmallPanelGlow"] = SmallPanelGlow,
@@ -8575,6 +8844,8 @@ public static class VanillaSprites
             ["SummonPhoenixUpgradeIcon"] = SummonPhoenixUpgradeIcon,
             ["Sun"] = Sun,
             ["SunAvatarUpgradeIcon"] = SunAvatarUpgradeIcon,
+            ["Sunglasses"] = Sunglasses,
+            ["SunGlassesBloonsIcon"] = SunGlassesBloonsIcon,
             ["SunGodBeamPart"] = SunGodBeamPart,
             ["SunTempleBlast"] = SunTempleBlast,
             ["SunTempleBlast555"] = SunTempleBlast555,
@@ -8673,6 +8944,8 @@ public static class VanillaSprites
             ["TeamFrame15"] = TeamFrame15,
             ["TeamFrame16"] = TeamFrame16,
             ["TeamFrame17"] = TeamFrame17,
+            ["TeamFrame18"] = TeamFrame18,
+            ["TeamFrame19"] = TeamFrame19,
             ["TeamFrame2"] = TeamFrame2,
             ["TeamFrame3"] = TeamFrame3,
             ["TeamFrame4"] = TeamFrame4,
@@ -8694,6 +8967,8 @@ public static class VanillaSprites
             ["TeamIcon19"] = TeamIcon19,
             ["TeamIcon2"] = TeamIcon2,
             ["TeamIcon20"] = TeamIcon20,
+            ["TeamIcon21"] = TeamIcon21,
+            ["TeamIcon22"] = TeamIcon22,
             ["TeamIcon3"] = TeamIcon3,
             ["TeamIcon4"] = TeamIcon4,
             ["TeamIcon5"] = TeamIcon5,
@@ -8705,6 +8980,9 @@ public static class VanillaSprites
             ["TeamsBanner10"] = TeamsBanner10,
             ["TeamsBanner10Icon"] = TeamsBanner10Icon,
             ["TeamsBanner10Small"] = TeamsBanner10Small,
+            ["TeamsBanner11"] = TeamsBanner11,
+            ["TeamsBanner11Icon"] = TeamsBanner11Icon,
+            ["TeamsBanner11Small"] = TeamsBanner11Small,
             ["TeamsBanner1Icon"] = TeamsBanner1Icon,
             ["TeamsBanner1Small"] = TeamsBanner1Small,
             ["TeamsBanner2"] = TeamsBanner2,
@@ -8774,7 +9052,6 @@ public static class VanillaSprites
             ["ThinkHand"] = ThinkHand,
             ["ThinkingMonkeyIcon"] = ThinkingMonkeyIcon,
             ["Thorn"] = Thorn,
-            ["ThornParticleGreen"] = ThornParticleGreen,
             ["ThornSwarmUpgradeIcon"] = ThornSwarmUpgradeIcon,
             ["Thrive"] = Thrive,
             ["ThriveIcon"] = ThriveIcon,
@@ -8836,6 +9113,11 @@ public static class VanillaSprites
             ["TowersSidePanelBg_03"] = TowersSidePanelBg_03,
             ["TowersSidePanelBg_04"] = TowersSidePanelBg_04,
             ["TowersSidePanelBg_05"] = TowersSidePanelBg_05,
+            ["TowerTypeMagic"] = TowerTypeMagic,
+            ["TowerTypeMilitary"] = TowerTypeMilitary,
+            ["TowerTypePrimary"] = TowerTypePrimary,
+            ["TowerTypesIcon"] = TowerTypesIcon,
+            ["TowerTypeSupport"] = TowerTypeSupport,
             ["Tracer"] = Tracer,
             ["TrackArrowSmall"] = TrackArrowSmall,
             ["TrackRemovableIcon"] = TrackRemovableIcon,
@@ -8844,6 +9126,7 @@ public static class VanillaSprites
             ["TrailFx"] = TrailFx,
             ["TrainingDummyPropIcon"] = TrainingDummyPropIcon,
             ["TransformingTonicUpgradeIcon"] = TransformingTonicUpgradeIcon,
+            ["TreasureChestPropIcon"] = TreasureChestPropIcon,
             ["TreasurePile"] = TreasurePile,
             ["treasurepileL"] = treasurepileL,
             ["TRexStompAA"] = TRexStompAA,
@@ -8914,7 +9197,9 @@ public static class VanillaSprites
             ["UltraJuggernautUpgradeIcon"] = UltraJuggernautUpgradeIcon,
             ["UltraVisionUpgradeIcon"] = UltraVisionUpgradeIcon,
             ["UnpoppedArmy"] = UnpoppedArmy,
+            ["UnpoppedArmyPhoenix"] = UnpoppedArmyPhoenix,
             ["UnpoppedArmyZombie"] = UnpoppedArmyZombie,
+            ["UnpoppedArmyZombiePhoenix"] = UnpoppedArmyZombiePhoenix,
             ["UnstableConcoctionUpgradeIcon"] = UnstableConcoctionUpgradeIcon,
             ["UpArrowOutline"] = UpArrowOutline,
             ["UpdateAnnouncementImage"] = UpdateAnnouncementImage,
@@ -8941,6 +9226,7 @@ public static class VanillaSprites
             ["UpgradesSlideoutBg_02"] = UpgradesSlideoutBg_02,
             ["UpgradesSlideoutBg_03"] = UpgradesSlideoutBg_03,
             ["UpgradesSlideoutBg_04"] = UpgradesSlideoutBg_04,
+            ["UpoppedIconSmall"] = UpoppedIconSmall,
             ["ValuableBananasUpgradeIcon"] = ValuableBananasUpgradeIcon,
             ["VampireCape"] = VampireCape,
             ["VampireCapeRegrow"] = VampireCapeRegrow,
@@ -8971,6 +9257,7 @@ public static class VanillaSprites
             ["VillageNZFlag"] = VillageNZFlag,
             ["VillagePrideFlag"] = VillagePrideFlag,
             ["VillageScotlandFlag"] = VillageScotlandFlag,
+            ["VillageSwedenFlag"] = VillageSwedenFlag,
             ["VillageUKFlag"] = VillageUKFlag,
             ["VillageUSAFlag"] = VillageUSAFlag,
             ["VineRuptureIcon"] = VineRuptureIcon,
@@ -9016,7 +9303,6 @@ public static class VanillaSprites
             ["WarningTapeRight"] = WarningTapeRight,
             ["WaterBloonPopIcon"] = WaterBloonPopIcon,
             ["WatermelonZomgIcon"] = WatermelonZomgIcon,
-            ["WaterRush"] = WaterRush,
             ["WeakPointIcon"] = WeakPointIcon,
             ["WhaleBadIcon"] = WhaleBadIcon,
             ["White"] = White,
@@ -9063,6 +9349,7 @@ public static class VanillaSprites
             ["WolfpackQuincyPortraitLvl3"] = WolfpackQuincyPortraitLvl3,
             ["WolfpackQuincyPortraitLvl7"] = WolfpackQuincyPortraitLvl7,
             ["WoodenRoundButton"] = WoodenRoundButton,
+            ["WoodFenceIcon"] = WoodFenceIcon,
             ["WorldLeagueTrainingIcon"] = WorldLeagueTrainingIcon,
             ["WornHerosCape"] = WornHerosCape,
             ["XboxOne_Dpad"] = XboxOne_Dpad,
@@ -9110,7 +9397,7 @@ public static class VanillaSprites
             ["ZomgBloonIcon"] = ZomgBloonIcon,
             ["ZomgFortifiedIcon"] = ZomgFortifiedIcon,
             ["ZomgIcon"] = ZomgIcon,
-            ["ZOMGIcon"] = ZOMGIcon
+            ["ZOMGIcon"] = ZOMGIcon,
         };
     }
 }
