@@ -24,7 +24,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private const int SearchCutoff = 50;
     private const int TypingCooldown = 30;
 
-    private static bool modsNeedRefreshing;
+    private bool modsNeedRefreshing;
 
     private static readonly List<SortingMethod> SortingMethods =
         Enum.GetValues(typeof(SortingMethod)).Cast<SortingMethod>().ToList();
@@ -50,7 +50,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
-    public override bool OnMenuOpened(Object obj)
+    public override bool OnMenuOpened(Object data)
     {
         mods = new ModBrowserMenuMod[ModsPerPage];
         sortingMethod = SortingMethod.RecentlyUpdated;
@@ -86,6 +86,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
         modsNeedRefreshing = true;
+        SetPage(0);
+        currentSearch = "";
 
         return false;
     }
@@ -151,6 +153,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             new Action<int>(i =>
             {
                 sortingMethod = SortingMethods[i];
+                SetPage(0);
+                currentSearch = "";
                 RecalculateCurrentMods();
             }), VanillaSprites.BlueInsertPanelRound, 80f);
 
@@ -162,6 +166,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 {
                     currentSearch = s;
                     typingCooldown = TypingCooldown;
+                    SetPage(0);
                 }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft, "Search...",
             50);
 
@@ -171,6 +176,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             new Action<int>(i =>
             {
                 currentTopic = topics[i];
+                currentSearch = "";
                 SetPage(0);
                 RecalculateCurrentMods();
             }), VanillaSprites.BlueInsertPanelRound, 80f);

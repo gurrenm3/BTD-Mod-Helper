@@ -50,7 +50,7 @@ public class ModHelperHttp
                 Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimitMb * 1e6);
             }
             var response = await Client.GetAsync(url);
-            using var fs = new FileStream(filePath, FileMode.Create);
+            await using var fs = new FileStream(filePath, FileMode.Create);
             await response.Content.CopyToAsync(fs);
 
             return true;

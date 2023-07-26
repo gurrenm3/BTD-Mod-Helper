@@ -545,23 +545,6 @@ public virtual void OnModelLoaded(Factory factory, string ModelToLoad, System.Ac
 
 `action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel)'></a>
-
-## BloonsTD6Mod.OnNewGameModel(GameModel) Method
-
-Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
-<br/>  
-Equivalent to a HarmonyPostFix on GameModel.CreatedModded
-
-```csharp
-public virtual void OnNewGameModel(GameModel result);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel).result'></a>
-
-`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
-
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,List_ModModel_)'></a>
 
 ## BloonsTD6Mod.OnNewGameModel(GameModel, List<ModModel>) Method
@@ -624,6 +607,23 @@ public virtual void OnNewGameModel(GameModel result, System.Collections.Generic.
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel,System.Collections.Generic.IReadOnlyList_ModModel_).mods'></a>
 
 `mods` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel)'></a>
+
+## BloonsTD6Mod.OnNewGameModel(GameModel) Method
+
+Called when a new GameModel is created, aka when things like Monkey Knowledge are applied to towers  
+<br/>  
+Equivalent to a HarmonyPostFix on GameModel.CreatedModded
+
+```csharp
+public virtual void OnNewGameModel(GameModel result);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnNewGameModel(GameModel).result'></a>
+
+`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnPauseScreenClosed(PauseScreen)'></a>
 

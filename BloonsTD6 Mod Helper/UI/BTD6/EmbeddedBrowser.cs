@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Net.Http;
-using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
@@ -27,7 +26,7 @@ internal static class EmbeddedBrowser
     {
         var player = Game.Player;
         var controller = player.webviewLiNKAccountController ??=
-            new MobileWebviewLiNKAccountController(player.LiNKAccountController);
+            new MobileWebviewLiNKAccountController(player.LiNKAccountController, SkuSettings.instance.settings.webviewVersion);
         controller.createEverything().ContinueWith(new Action<Task>(task =>
         {
             if (task.Status != TaskStatus.RanToCompletion) return;
@@ -162,7 +161,7 @@ internal static class EmbeddedBrowser
     }
 
     #endregion
-    #region Nested type: HtmlSurface_OnFileOpenDialogAPI
+    /*#region Nested type: HtmlSurface_OnFileOpenDialogAPI
 
     [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnFileOpenDialogAPI))]
     internal static class HtmlSurface_OnFileOpenDialogAPI
@@ -176,7 +175,7 @@ internal static class EmbeddedBrowser
         }
     }
 
-    #endregion
+    #endregion*/
     #region Nested type: HtmlSurface_OnJSAlertAPI
 
     /// <summary>
