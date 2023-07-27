@@ -6,10 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Shared\Shared Project.projitems*{33f3cad7-6d69-4c86-8117-f5b3bbb81bb2}*SharedItemsImports = 5
-		Shared\Shared Project.projitems*{45cb0af9-eb5f-4d6a-846c-830dd4f60b49}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
