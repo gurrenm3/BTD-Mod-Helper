@@ -30,7 +30,8 @@
     "Interesting-exe"
   ],
   "bannedMods" : [
-    "Jonyboylovespie/EverythingIsFree"
+    "Jonyboylovespie/EverythingIsFree",
+    "MaliciousFiles/EditPlayerData"
   ],
   "topics": [
     "new-towers",
