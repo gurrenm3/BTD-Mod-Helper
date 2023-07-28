@@ -12,7 +12,6 @@ on:
 
 env:
   PROJECT_NAME: Btd6ModHelper
-  MELONLOADER_BRANCH: alpha-development
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
 
@@ -24,8 +23,12 @@ jobs:
     steps:
       - name: Clone Repo
         uses: actions/checkout@master
-        
-        
+
+      - name: Validate JSON
+        uses: walbo/validate-json@v1.1.0
+        with:
+          files: modders.json
+          
       - name: Download Latest MelonLoader
         if: env.MELONLOADER_BRANCH == ''
         uses: robinraju/release-downloader@v1.4

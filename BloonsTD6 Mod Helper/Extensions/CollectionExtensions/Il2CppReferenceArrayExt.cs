@@ -165,16 +165,7 @@ public static partial class Il2CppReferenceArrayExt
         where TSource : Object
         where TCast : Object
     {
-        try
-        {
-            var result = referenceArray.First(item => item.IsType<TCast>());
-        }
-        catch (Exception)
-        {
-            return false;
-        }
-
-        return true;
+        return referenceArray.Any(item => item.IsType<TCast>());
     }
 
     /// <summary>
