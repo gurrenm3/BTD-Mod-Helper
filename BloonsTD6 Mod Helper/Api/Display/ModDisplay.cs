@@ -199,7 +199,7 @@ public abstract class ModDisplay : ModContent
     /// <summary>
     /// Applies this ModDisplay to a given BloonModel
     /// </summary>
-    public void Apply(BloonModel bloonModel)
+    public virtual void Apply(BloonModel bloonModel)
     {
         bloonModel.SetDisplayGUID(Id);
         Apply(bloonModel.GetBehavior<DisplayModel>()!);
