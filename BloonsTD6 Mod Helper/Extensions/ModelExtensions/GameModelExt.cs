@@ -308,7 +308,7 @@ public static class GameModelExt
     /// <summary>
     /// Return all AttackModels from every TowerModel in the game
     /// </summary>
-    public static List<AttackModel> GetAllAttackModels(this GameModel model)
+    public static IEnumerable<AttackModel> GetAllAttackModels(this GameModel model)
     {
         var attackModels = new List<AttackModel>();
         var towers = model.towers;

@@ -22,8 +22,6 @@ namespace BTD_Mod_Helper;
 
 internal partial class MelonMain : BloonsTD6Mod
 {
-    private bool scheduledInGamePatch;
-
     public override void OnInitialize()
     {
         ModContentInstances.AddInstance(GetType(), this);
@@ -84,19 +82,17 @@ internal partial class MelonMain : BloonsTD6Mod
         ModSettingHotkey.HandleTowerHotkeys();
 
 #if DEBUG
-        if (TowerSelectionMenu.instance != null &&
-            TowerSelectionMenu.instance.selectedTower != null &&
-            ExportSelectedTower.JustPressed())
+        if (ExportSelectedTower.JustPressed() && TowerSelectionMenu.instance != null &&
+            TowerSelectionMenu.instance.selectedTower != null)
         {
             GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
         }
 #endif
-
     }
 
     public override void OnTitleScreen()
     {
-        if (!scheduledInGamePatch) Schedule_InGame_Loaded();
+        Schedule_InGame_Loaded();
     }
 
     private void Schedule_GameModel_Loaded()
@@ -108,14 +104,8 @@ internal partial class MelonMain : BloonsTD6Mod
 
     private void Schedule_InGame_Loaded()
     {
-        scheduledInGamePatch = true;
         TaskScheduler.ScheduleTask(() => ModHelper.PerformHook(mod => mod.OnInGameLoaded(InGame.instance)),
             () => InGame.instance && InGame.instance.GetSimulation() != null);
-    }
-
-    public override void OnInGameLoaded(InGame inGame)
-    {
-        scheduledInGamePatch = false;
     }
 
     public void Schedule_GameData_Loaded()

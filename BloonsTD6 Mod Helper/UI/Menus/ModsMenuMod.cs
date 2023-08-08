@@ -13,6 +13,7 @@ using UnityEngine.Events;
 
 namespace BTD_Mod_Helper.UI.Menus;
 
+
 [RegisterTypeInIl2Cpp(false)]
 internal class ModsMenuMod : ModHelperComponent
 {
@@ -43,8 +44,7 @@ internal class ModsMenuMod : ModHelperComponent
 
         panel.AddImage(new Info("Icon", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, new Vector2(0, 0.5f)),
             VanillaSprites.UISprite);
-
-
+        
         panel.AddImage(new Info("Restart", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, ModsMenu.ModIconSize,
             new Vector2(0, 0.5f)), VanillaSprites.RestartIcon);
 
@@ -64,7 +64,7 @@ internal class ModsMenuMod : ModHelperComponent
             new Vector2(0, 1)), VanillaSprites.NoticeBtn, null);
 
         mod.SetActive(false);
-
+        
         return mod;
     }
 }
