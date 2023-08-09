@@ -16,6 +16,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppFacepunch.Steamworks;
 using Il2CppTMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Image = UnityEngine.UI.Image;
 using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 using Object = Il2CppSystem.Object;
@@ -239,6 +240,24 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     /// <inheritdoc />
     public override void OnMenuUpdate()
     {
+        if (Input.GetMouseButtonUp(1))
+        {
+            var raycastResults = new Il2CppSystem.Collections.Generic.List<RaycastResult>();
+            EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current)
+            {
+                position = Input.mousePosition
+            }, raycastResults);
+            
+            foreach (var result in raycastResults)
+            {
+                var parent = result.gameObject.transform.parent;
+                if (parent != null && parent.gameObject.HasComponent(out ModsMenuMod modsMenuMod))
+                {
+                    modsMenuMod.toggleMod?.Invoke();
+                    break;
+                }
+            }
+        }
         if (selectedModLoadingSpinner != null)
         {
             selectedModLoadingSpinner.transform.Rotate(0, 0, -2);
