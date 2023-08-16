@@ -6,6 +6,8 @@ using Il2CppAssets.Scripts.Unity;
 using NfdSharp;
 namespace BTD_Mod_Helper.Tests;
 
+#if DEBUG
+
 internal class BlocklyTests
 {
     private static string BlocklyOut => Path.Combine(MelonMain.ModHelperSourceFolder, "Website", "out");
@@ -77,3 +79,5 @@ internal class BlocklyTests
         }
     }
 }
+
+#endif

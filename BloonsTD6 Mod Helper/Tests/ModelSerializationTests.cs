@@ -6,6 +6,8 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 namespace BTD_Mod_Helper.Tests;
 
+#if DEBUG
+
 internal static class ModelSerializationTests
 {
     public static void SaveLoadTest()
@@ -73,3 +75,5 @@ internal static class ModelSerializationTests
         }
     }
 }
+
+#endif
