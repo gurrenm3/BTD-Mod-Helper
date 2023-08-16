@@ -206,6 +206,35 @@ internal partial class MelonMain
             onSave = ModHelperFiles.CreateTargetsFile
         };
 
+    public static readonly ModSettingHotkey SandboxExportTowerModel = new(KeyCode.C, HotkeyModifier.Alt)
+    {
+        category = ModMaking,
+        description =
+            "If in sandbox mode, copies the root model of the selected tower to the clipboard, allowing you to paste it in the BTD6 Tower Editor or other places."
+    };
+
+    public static readonly ModSettingHotkey SandboxImportTowerModel = new(KeyCode.V, HotkeyModifier.Alt)
+    {
+        category = ModMaking,
+        description =
+            "If in sandbox mode and the clipboard contents are a valid tower model, applies it onto the current selected tower. " +
+            "You can do this after copying/cutting your TowerModel within the BTD6 Tower editor."
+    };
+
+    public static readonly ModSettingHotkey SandboxQuickEditTower = new(KeyCode.Backslash)
+    {
+        category = ModMaking,
+        description =
+            "If in sandbox mode, opens a text editor window where you can make quick edits to the selected tower's root model."
+    };
+
+    public static readonly ModSettingString QuickEditProgram = new("")
+    {
+        category = ModMaking,
+        description = "Choose a different program/command to edit the file with other than the default notepad.\n" +
+                      "If you have VSCode installed, a good option is \"code -w -n\"."
+    };
+
     #region Debug
 
 #if DEBUG
@@ -276,20 +305,12 @@ internal partial class MelonMain
         category = Debug,
         buttonText = "Run"
     };
-    
+
     private static readonly ModSettingButton BlockyTestOneFile = new(Tests.BlocklyTests.TestChoose)
     {
         category = Debug,
         buttonText = "Choose"
     };
-
-    private static readonly ModSettingHotkey ExportSelectedTower = new(KeyCode.Backslash, HotkeyModifier.Shift)
-    {
-        category = Debug,
-        description = "While in game, exports the exact TowerModel being used by the selected tower."
-    };
-
-
 #endif
 
     #endregion

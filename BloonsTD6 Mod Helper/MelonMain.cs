@@ -88,14 +88,7 @@ internal partial class MelonMain : BloonsTD6Mod
         NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
         ModSettingHotkey.HandleTowerHotkeys();
-
-#if DEBUG
-        if (ExportSelectedTower.JustPressed() && TowerSelectionMenu.instance != null &&
-            TowerSelectionMenu.instance.selectedTower != null)
-        {
-            GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
-        }
-#endif
+        TowerEditing.OnUpdate();
     }
 
     public override void OnTitleScreen()
