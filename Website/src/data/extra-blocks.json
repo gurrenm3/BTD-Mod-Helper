@@ -1,0 +1,174 @@
+[
+  {
+    "type": "Shadow",
+    "output": null,
+    "message0": "%1",
+    "args0": [
+      {
+        "type": "field_label",
+        "name": "name",
+        "text": "Model"
+      }
+    ],
+    "data": "null"
+  },
+  {
+    "type": "string",
+    "output": "string",
+    "message0": "%1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "$data",
+        "text": "null"
+      }
+    ]
+  },
+  {
+    "type": "string_shadow",
+    "output": null,
+    "message0": "%1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "$data",
+        "text": "null"
+      }
+    ]
+  },
+  {
+    "type": "TowerWithTiers",
+    "output": [
+      "Tower",
+      "string"
+    ],
+    "category": "Towers",
+    "colour": "300",
+    "inputsInline": true,
+    "message0": "%1%2%3%4",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "baseId",
+        "check": [
+          "Tower"
+        ],
+        "shadow": {
+          "type": "string_shadow",
+          "fields": {
+            "$data": "Tower"
+          }
+        }
+      },
+      {
+        "type": "field_number",
+        "name": "top",
+        "value": 0,
+        "precision": 1,
+        "min": 0,
+        "max": 5
+      },
+      {
+        "type": "field_number",
+        "name": "mid",
+        "value": 0,
+        "precision": 1,
+        "min": 0,
+        "max": 5
+      },
+      {
+        "type": "field_number",
+        "name": "bot",
+        "value": 0,
+        "precision": 1,
+        "min": 0,
+        "max": 5
+      }
+    ],
+    "data": "BLOCKLY_TOWER_TIERS"
+  },
+  {
+    "type": "HeroWithLevel",
+    "output": [
+      "Tower",
+      "string"
+    ],
+    "category": "Towers",
+    "colour": "53",
+    "inputsInline": true,
+    "message0": "%1 level %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "baseId",
+        "check": [
+          "Hero"
+        ],
+        "shadow": {
+          "type": "string_shadow",
+          "fields": {
+            "$data": "Hero"
+          }
+        }
+      },
+      {
+        "type": "field_number",
+        "name": "level",
+        "value": 1,
+        "precision": 1,
+        "min": 0,
+        "max": 20
+      }
+    ],
+    "data": "BLOCKLY_HERO_LEVEL"
+  },
+  {
+    "type": "Upgrade[]",
+    "previousStatement": "Upgrade[]",
+    "category": "Other",
+    "subcategory": null,
+    "colour": 330,
+    "message0": "%1%2",
+    "args0": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "$data",
+        "options": [
+          [
+            "null",
+            "null"
+          ],
+          [
+            "empty",
+            "[]"
+          ]
+        ]
+      }
+    ],
+    "message1": "%1%2%3",
+    "args1": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_minus"
+      },
+      {
+        "name": "i",
+        "type": "input_value",
+        "check": "Upgrade",
+        "shadow": {
+          "type": "string_shadow",
+          "fields": {
+            "$data": "null"
+          }
+        }
+      }
+    ],
+    "data": "BLOCKLY_ARRAY",
+    "mutator": "plus_minus_rows"
+  }
+]

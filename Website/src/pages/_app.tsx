@@ -1,9 +1,10 @@
 import { AppProps } from "next/app";
-import React, { useEffect, useRef } from "react";
+import React, { createContext, useRef } from "react";
 import "../css/bootstrap.scss";
 import "../css/fonts.scss";
 import "../css/global.scss";
 import "../css/btd6.scss";
+import "../css/blockly.scss";
 import { Btd6Styles } from "../components/btd6-ui";
 import { SSRProvider } from "react-bootstrap";
 import ModHelperHelmet from "../components/helmet";
@@ -11,11 +12,16 @@ import { use100vh } from "react-div-100vh";
 import BackgroundImage, {
   backgroundOnScroll,
 } from "../components/background-image";
-import cx from "classnames";
-import SkipLink from "../components/skip-link";
-import { ModHelperFooter, ModHelperNavBar } from "../components/navbar";
 import { ModHelperScrollBars, ScrollBarsContext } from "../components/layout";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { useUpdate } from "react-use";
+
+type Theme = "light" | "dark" | string | undefined;
+
+export const ThemeContext = createContext<{
+  theme: Theme;
+  refreshTheme: () => void;
+}>(undefined);
 
 const DefaultTitle = "BTD Mod Helper";
 const DefaultDescription =
@@ -25,6 +31,15 @@ export default ({ Component, pageProps }: AppProps) => {
   const height = use100vh() ?? 1000;
   const scrollbars = useRef<Scrollbars>(null);
   const background = useRef<HTMLDivElement>(null);
+
+  const theme =
+    typeof document !== "undefined"
+      ? document.documentElement.getAttribute("data-theme") || "light"
+      : typeof localStorage !== "undefined"
+      ? localStorage.getItem("theme") || "light"
+      : "light";
+
+  const refreshTheme = useUpdate();
 
   return (
     <SSRProvider>
@@ -36,9 +51,11 @@ export default ({ Component, pageProps }: AppProps) => {
         onUpdate={(values) => backgroundOnScroll(values, background.current!)}
       >
         <ScrollBarsContext.Provider value={scrollbars.current}>
-          <BackgroundImage ref={background}>
-            <Component {...pageProps} />
-          </BackgroundImage>
+          <ThemeContext.Provider value={{ theme, refreshTheme }}>
+            <BackgroundImage ref={background}>
+              <Component {...pageProps} />
+            </BackgroundImage>
+          </ThemeContext.Provider>
         </ScrollBarsContext.Provider>
       </ModHelperScrollBars>
     </SSRProvider>

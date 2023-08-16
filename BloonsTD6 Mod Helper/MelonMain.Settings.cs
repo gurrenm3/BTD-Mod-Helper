@@ -4,6 +4,7 @@ using System.IO;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
@@ -210,7 +211,7 @@ internal partial class MelonMain
 #if DEBUG
     private static readonly ModSettingCategory Debug = new("Debug");
 
-    private static readonly ModSettingFolder ModHelperSourceFolder = new("")
+    internal static readonly ModSettingFolder ModHelperSourceFolder = new("")
     {
         category = Debug,
         description = "Location of Mod Helper Source code"
@@ -251,11 +252,43 @@ internal partial class MelonMain
         buttonText = "Generate"
     };
 
+    private static readonly ModSettingButton GenerateBlockly = new(() =>
+    {
+        var folder = Path.Combine(ModHelperSourceFolder, "Website", "src", "data");
+        BlocklyGenerator.Generate(folder);
+    })
+    {
+        category = Debug,
+        description = "Generates the Blockly editor blocks. " +
+                      "NOTE: Click this button after having already gone into a game with Monkey Knowledge on!",
+        buttonText = "Generate"
+    };
+
+    private static readonly ModSettingButton ModelSerializationTests =
+        new(() => Tests.ModelSerializationTests.TestSerialization(Game.instance.model))
+        {
+            category = Debug,
+            buttonText = "Run"
+        };
+
+    private static readonly ModSettingButton BlockyTests = new(Tests.BlocklyTests.TestAll)
+    {
+        category = Debug,
+        buttonText = "Run"
+    };
+    
+    private static readonly ModSettingButton BlockyTestOneFile = new(Tests.BlocklyTests.TestChoose)
+    {
+        category = Debug,
+        buttonText = "Choose"
+    };
+
     private static readonly ModSettingHotkey ExportSelectedTower = new(KeyCode.Backslash, HotkeyModifier.Shift)
     {
         category = Debug,
         description = "While in game, exports the exact TowerModel being used by the selected tower."
     };
+
 
 #endif
 

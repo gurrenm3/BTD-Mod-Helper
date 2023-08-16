@@ -7,10 +7,18 @@ using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
-using Il2CppNewtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Formatting = Il2CppNewtonsoft.Json.Formatting;
+using JsonConvert = Il2CppNewtonsoft.Json.JsonConvert;
+using JsonSerializerSettings = Il2CppNewtonsoft.Json.JsonSerializerSettings;
+using ReferenceLoopHandling = Il2CppNewtonsoft.Json.ReferenceLoopHandling;
+using TypeNameHandling = Il2CppNewtonsoft.Json.TypeNameHandling;
 using ValueType = Il2CppSystem.ValueType;
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -19,24 +27,45 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class ModelSerializer
 {
-    private static readonly JsonSerializerSettings Settings = new()
+    private static readonly bool InferParams = false;
+
+    internal static readonly JsonSerializerSettings Settings = new()
     {
         Formatting = Formatting.Indented,
-        PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+        // PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
         TypeNameHandling = TypeNameHandling.Objects
     };
 
     private static readonly Dictionary<string, object> Index = new();
 
-    private static readonly Dictionary<string, string> CommonFixes = new()
+    internal static readonly Dictionary<string, string> ParamFixes = new()
     {
-        {"id", "name"}
+        {"id", "name"},
+        {"damageAddative", "damageAdditive"},
+        {"custonName", "customName"},
+        {"mustIncludeAllTags", "mustIncludeAllStates"},
+        {"roundsUntilManaDecay", "roundUntilManaDecay"},
+        {"addBerserkerBrewToProjectile", "addBerserkerBrewToProjectileModel"},
+        {"smallEffectModel", "smallGlowEffectModel"},
+        {"targetProjectileId", "targetCPOEPId"},
+        {"addEffectToTowersAffected", "displayModel"},
+        {"animationState", "triggerState"},
+        {"tag", "bloonTag"},
+        {"targets", "splits"},
+        {"delaySpawnDuration", "lifespan"},
+        {"onlyAquireNewTargetIfInvalid", "constantlyAquireNewTarget"},
+        {"guid", "guidRef"}
     };
 
-    private static readonly Dictionary<Type, Dictionary<string, string>> ParamFixes = new();
-
-    private static object GenerateBaseType(JValue value, Type valueType) =>
-        value.ToObject(valueType);
+    private static object GenerateBaseType(JValue value, Type valueType)
+    {
+        if (value.Type == JTokenType.Boolean && valueType == typeof(string))
+        {
+            return value.ToString().ToLower();
+        }
+        return value.ToObject(valueType);
+    }
 
     private static object GenerateArray(JArray jArray, Type type)
     {
@@ -79,7 +108,7 @@ public static class ModelSerializer
             type = Type.GetType(typePath, true)!;
         }
 
-        var ctor = GetMainConstructor(type, jObject);
+        var ctor = GetMainConstructor(type, jObject.Properties().Select(property => property.Name));
         if (ctor == null)
         {
             // TODO
@@ -112,15 +141,17 @@ public static class ModelSerializer
             var name = param.Name ?? throw new ArgumentException(param.ToString());
             if (!jObject.ContainsKey(name))
             {
-                if (ParamFixes.TryGetValue(type, out var fixes) && fixes.TryGetValue(name, out var value))
+                if (jObject.Properties()
+                        .FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.InvariantCultureIgnoreCase)) is
+                    { } p)
+                {
+                    name = p.Name;
+                }
+                else if (ParamFixes.TryGetValue(name, out var value) && extraFields.ContainsKey(value))
                 {
                     name = value;
                 }
-                else if (CommonFixes.TryGetValue(name, out value) && extraFields.ContainsKey(value))
-                {
-                    name = value;
-                }
-                else
+                else if (InferParams)
                 {
                     var bestChoice = extraFields.Values
                         .Where(p => param.ParameterType.IsAssignableTo(p.PropertyType))
@@ -128,6 +159,7 @@ public static class ModelSerializer
 
                     if (bestChoice != null)
                     {
+                        ModHelper.Msg($"Using bestChoice {bestChoice.Name} for param {name} on type {type.Name}");
                         name = bestChoice.Name;
                         extraFields.Remove(name);
                     }
@@ -141,19 +173,21 @@ public static class ModelSerializer
         // Go in order of the fields
         foreach (var (name, param) in paramsByKey.OrderBy(pair => orderedFields.IndexOf(pair.Key)))
         {
+            if (param.ParameterType.IsAssignableTo(typeof(BehaviorMutator))) continue;
+
             var jToken = jObject[name];
 
             // Convert TargetType, etc to String
             if (type.GetProperty(name)?.PropertyType is { } field &&
                 !field.IsAssignableTo(param.ParameterType) &&
-                IsValueType(field) &&
+                IsIl2CppValueType(field) &&
                 field.GetProperties().FirstOrDefault(p => p.PropertyType.IsAssignableTo(param.ParameterType)) is { } prop)
             {
                 jToken = jToken![prop.Name];
             }
 
             // This simply doesn't save the values it uses within the model, lol
-            if (type == typeof(CallToArmsModel))
+            if (type == typeof(CallToArmsModel) && jObject["Mutator"] != null)
             {
                 var buffIndicator = jObject["Mutator"]!["buffIndicator"]!;
                 jToken = name switch
@@ -166,14 +200,14 @@ public static class ModelSerializer
 
             object value;
 
-            if (name != "name" && param.IsOptional && fakeFields.Contains(name))
+            if (name != "name" && param.IsOptional && fakeFields.Contains(name) || !jObject.ContainsKey(name))
             {
                 // Don't calculate generated parameters
                 value = param.DefaultValue;
             }
             else
             {
-                value = Generate(jToken, param.ParameterType, param.Name);
+                value = Generate(jToken ?? new JValue(param.DefaultValue), param.ParameterType, param.Name);
                 if (name == "name" && (string) value == $"{type.Name}_")
                 {
                     value = "";
@@ -204,7 +238,9 @@ public static class ModelSerializer
 
     private static object GenerateValueType(JObject jObject, Type type)
     {
-        if (jObject.TryGetValue("$ref", out var reference) && Index.TryGetValue(reference.ToString(), out var cached))
+        if (jObject != null &&
+            jObject.TryGetValue("$ref", out var reference) &&
+            Index.TryGetValue(reference.ToString(), out var cached))
         {
             return cached;
         }
@@ -213,18 +249,16 @@ public static class ModelSerializer
 
         var result = ctor.Invoke(null);
 
-        foreach (var property in type.GetProperties().Where(p => p.CanWrite))
+        if (jObject != null)
         {
-            var value = Generate(jObject[property.Name], property.PropertyType, property.Name);
-            property.SetValue(result, value);
-
-            if (property.Name == "actionOnCreate")
+            foreach (var property in type.GetProperties().Where(p => p.CanWrite))
             {
-                ModHelper.Msg("here");
+                var value = Generate(jObject[property.Name], property.PropertyType, property.Name);
+                property.SetValue(result, value);
             }
         }
 
-        if (jObject.TryGetValue("$id", out var index))
+        if (jObject != null && jObject.TryGetValue("$id", out var index))
         {
             Index[index.ToString()] = result;
         }
@@ -272,27 +306,27 @@ public static class ModelSerializer
         return result;
     }
 
-    private static bool IsNullable(Type type) =>
+    internal static bool IsIl2CppNullable(this Type type) =>
         type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Il2CppSystem.Nullable<>);
 
-    private static bool IsDictionary(Type type) =>
+    internal static bool IsIl2CppDictionary(this Type type) =>
         type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Il2CppSystem.Collections.Generic.Dictionary<,>);
 
-    private static bool IsValueType(Type type) => type.IsAssignableTo(typeof(ValueType));
+    internal static bool IsIl2CppValueType(this Type type) => type.IsAssignableTo(typeof(ValueType));
 
     private static object Generate(JToken jToken, Type type, string key = null)
     {
         try
         {
-            if (jToken == null) return null;
-
             return jToken switch
             {
+                null when IsIl2CppValueType(type) => GenerateValueType(null, type),
+                null => null,
                 JValue value => GenerateBaseType(value, type),
                 JArray jArray => GenerateArray(jArray, type),
-                JObject jObject when IsNullable(type) => GenerateNullable(jObject, type),
-                JObject jObject when IsValueType(type) => GenerateValueType(jObject, type),
-                JObject jObject when IsDictionary(type) => GenerateDictionary(jObject, type),
+                JObject jObject when IsIl2CppNullable(type) => GenerateNullable(jObject, type),
+                JObject jObject when IsIl2CppValueType(type) => GenerateValueType(jObject, type),
+                JObject jObject when IsIl2CppDictionary(type) => GenerateDictionary(jObject, type),
                 JObject jObject => GenerateObject(jObject, type, key),
                 _ => null
             };
@@ -306,19 +340,26 @@ public static class ModelSerializer
         }
     }
 
-    private static ConstructorInfo GetMainConstructor(Type type) => type.GetConstructors()
+    internal static ConstructorInfo GetMainConstructor(Type type, bool allowValueTypeParams = false) => type
+        .GetConstructors()
         .Where(c => c.GetParameters().All(p => p.ParameterType != typeof(IntPtr)))
-        .Where(c => type.IsAssignableTo(typeof(ValueType)) ? c.GetParameters().Length == 0 : c.GetParameters().Length > 0)
+        .Where(c => type.IsAssignableTo(typeof(ValueType)) && !allowValueTypeParams
+            ? c.GetParameters().Length == 0
+            : c.GetParameters().Length > 0)
         .OrderByDescending(c => c.GetParameters().Length)
         .ThenBy(c => c.GetParameters().Any(p => p.ParameterType.IsGenericType))
         .FirstOrDefault();
 
-    private static ConstructorInfo GetMainConstructor(Type type, JObject jObject) => type.GetConstructors()
+    internal static ConstructorInfo GetMainConstructor(Type type, IEnumerable<string> propertyMatches,
+        bool allowValueTypeParams = false) => type
+        .GetConstructors()
         .Where(c => c.GetParameters().All(p => p.ParameterType != typeof(IntPtr)))
-        .Where(c => type.IsAssignableTo(typeof(ValueType)) ? c.GetParameters().Length == 0 : c.GetParameters().Length > 0)
+        .Where(c => type.IsAssignableTo(typeof(ValueType)) && !allowValueTypeParams
+            ? c.GetParameters().Length == 0
+            : c.GetParameters().Length > 0)
         .MaxBy(c => c.GetParameters()
             .Select(info => info.Name)
-            .Intersect(jObject.Properties().Select(property => property.Name))
+            .Intersect(propertyMatches)
             .Count()
         );
 
@@ -358,13 +399,52 @@ public static class ModelSerializer
     internal static void MakeConsistent(Model model)
     {
         // NK stores this as null for no reason
-        model.GetDescendants<StripChildrenModel>().ForEach(stripChildrenModel =>
+        model.GetDescendants<StripChildrenModel>().ForEach(stripChildren =>
         {
-            stripChildrenModel.Mutator.destroyOnDegradeModel ??= new DestroyOnDegradeModel("DestroyBloon");
+            stripChildren.Mutator.destroyOnDegradeModel ??= new DestroyOnDegradeModel("DestroyBloon");
+        });
+
+        // Why purposefully store NaN values ???
+        model.GetDescendants<TravelStraitModel>().ForEach(travelStrait =>
+        {
+            if (float.IsNaN(travelStrait.Lifespan))
+            {
+                travelStrait.Lifespan = 0;
+            }
+        });
+
+        model.GetDescendants<CallToArmsModel>().ForEach(callToArms =>
+        {
+            if (callToArms.buffIconName == null && callToArms.Mutator?.buffIndicator?.iconName is var buffIconName)
+            {
+                callToArms.buffIconName = buffIconName;
+            }
+            if (callToArms.buffLocsName == null && callToArms.Mutator?.buffIndicator?.buffName is var buffLocsName)
+            {
+                callToArms.buffLocsName = buffLocsName;
+            }
         });
 
         model.GetDescendants<TowerModel>().ForEach(MakeConsistent);
+        
+        model.GetDescendants<GyrfalconPatternModel>().ForEach(gyrfalconPattern =>
+        {
+            gyrfalconPattern.cooldownFrames = (int) Math.Round(gyrfalconPattern.cooldown * 60);
+        });
+        
+        model.GetDescendants<LatchToBloonModel>().ForEach(latchToBloon =>
+        {
+            latchToBloon.postBloonDestroyTimeFrames = (int) Math.Round(latchToBloon.postBloonDestroyTime * 60);
+        });
 
+        model.GetDescendants<AttackModel>().ForEach(attack =>
+        {
+            if (attack.targetProvider.Is(out GyrfalconPatternModel gyrfalconPattern))
+            {
+                gyrfalconPattern.cooldownFrames = (int) Math.Round(gyrfalconPattern.cooldown * 60);
+            }
+        });
+        
         // This will happen eventually anyway
         if (model.Is(out TowerModel towerModel))
         {
