@@ -4,14 +4,13 @@ import React, {
   FunctionComponent,
   HTMLAttributes,
   PropsWithChildren,
-  useRef,
 } from "react";
-import BackgroundImage, { backgroundOnScroll } from "./background-image";
 import { ScrollbarProps, Scrollbars } from "react-custom-scrollbars-2";
 import { use100vh } from "react-div-100vh";
 import { ModHelperFooter, ModHelperNavBar } from "./navbar";
 import SkipLink from "./skip-link";
 import cx from "classnames";
+import { useUpdate } from "react-use";
 
 export const switchSize = "lg";
 
@@ -62,7 +61,9 @@ export const ModHelperScrollBars = forwardRef<Scrollbars, ScrollbarProps>(
 interface LayoutProps
   extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
   backToTop?: () => void;
+  headerClassName?: string;
   footerClassName?: string;
+  fitHeight?: boolean;
 }
 
 const Layout: FunctionComponent<LayoutProps> = ({
@@ -70,19 +71,21 @@ const Layout: FunctionComponent<LayoutProps> = ({
   className,
   style,
   backToTop,
+  headerClassName,
   footerClassName,
+  fitHeight,
   ...props
 }) => {
-  const height = use100vh() ?? 1000;
+  const minHeight = use100vh() ?? 1000;
 
   return (
     <div
       className={cx("d-flex", "flex-column", className)}
-      style={{ minHeight: height, ...style }}
+      style={{ minHeight: minHeight, ...style }}
       {...props}
     >
       <SkipLink />
-      <ModHelperNavBar />
+      <ModHelperNavBar className={headerClassName} />
       {children}
       <ModHelperFooter backToTop={backToTop} className={footerClassName} />
     </div>

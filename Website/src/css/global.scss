@@ -116,9 +116,9 @@ html[data-theme="dark"] {
   }
 }
 
-input::placeholder {
+/*input::placeholder {
   color: lightgray !important;
-}
+}*/
 
 .fs-smaller {
   font-size: smaller;
@@ -143,4 +143,20 @@ input::placeholder {
 
 .nav-link {
   user-select: none;
+}
+
+input, select, textarea {
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border: none !important;
+}
+
+.injectionDiv {
+  border-radius: .5rem;
+}
+
+.blocklyMainBackground {
+  stroke: none
 }

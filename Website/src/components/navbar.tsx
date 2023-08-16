@@ -17,7 +17,6 @@ import { useRouter } from "next/router";
 import NavbarToggle from "react-bootstrap/NavbarToggle";
 import { ModHelperScrollBars, ScrollBarsContext, switchSize } from "./layout";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { useUpdate } from "react-use";
 import DropdownToggle from "react-bootstrap/DropdownToggle";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
 import maps from "../data/maps.json";
@@ -25,6 +24,8 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import { BackgroundContext } from "./background-image";
 import { List } from "react-bootstrap-icons";
 import cx from "classnames";
+import { useUpdate } from "react-use";
+import { ThemeContext } from "../pages/_app";
 
 const ModHelperNavItem: FunctionComponent<
   Omit<NavLinkProps, "active"> & LinkProps & { path: string; active?: string }
@@ -46,21 +47,19 @@ const ModHelperNavItem: FunctionComponent<
   </NavItem>
 );
 
-export const ModHelperNavBar: FunctionComponent = () => {
+export const ModHelperNavBar: FunctionComponent<{
+  className?: string;
+}> = ({ className }) => {
   const router = useRouter();
   const path = router?.asPath ?? "";
 
-  const theme =
-    typeof document !== "undefined"
-      ? document.documentElement.getAttribute("data-theme") || "light"
-      : typeof localStorage !== "undefined"
-      ? localStorage.getItem("theme") || "light"
-      : "light";
-
-  const update = useUpdate();
+  const { theme, refreshTheme } = useContext(ThemeContext);
 
   return (
-    <Container fluid={switchSize} className={`p-0 my-${switchSize}-4`}>
+    <Container
+      fluid={switchSize}
+      className={cx("p-0", `my-${switchSize}-4`, className)}
+    >
       <Navbar
         variant={"dark"}
         expand={"md"}
@@ -94,9 +93,10 @@ export const ModHelperNavBar: FunctionComponent = () => {
               const newTheme = theme === "dark" ? "light" : "dark";
               localStorage.setItem("theme", newTheme);
               document.documentElement.setAttribute("data-theme", newTheme);
-              update();
+              refreshTheme();
             }}
             size={"2rem"}
+            style={{ userSelect: "none" }}
           />
         </div>
         <NavbarToggle label={"toggle"} className={"btd6-button blue p-2"}>

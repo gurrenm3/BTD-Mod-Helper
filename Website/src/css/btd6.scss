@@ -2,6 +2,7 @@
   border-image-slice: 60 fill;
   border-image-width: 1rem;
   padding: .75rem;
+  color: white;
 }
 
 @media (min-width: 992px) {
@@ -11,7 +12,6 @@
 }
 
 [data-theme="light"] .btd6-panel {
-  color: white;
   background-color: transparent;
   border-radius: 1.2rem;
   border-color: transparent !important;
@@ -51,4 +51,12 @@
 
 .btd6-panel.blue-insert-round {
   border-image-width: 2rem;
+}
+
+[data-theme="light"] .form-control {
+  color: white !important;
+}
+
+[data-theme="dark"] .form-control {
+  color: black !important;
 }

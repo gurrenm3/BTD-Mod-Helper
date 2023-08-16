@@ -254,7 +254,7 @@ export default () => {
 
   return (
     <Layout
-      style={{ height: height }}
+      style={{ height }}
       backToTop={() => scrollbars.current?.scrollTop(0)}
       footerClassName={`d-none d-${switchSize}-flex`}
     >
