@@ -159,7 +159,7 @@ public virtual void Apply(AssetPathModel assetPathModel);
 Applies this ModDisplay to a given BloonModel
 
 ```csharp
-public void Apply(BloonModel bloonModel);
+public virtual void Apply(BloonModel bloonModel);
 ```
 #### Parameters
 

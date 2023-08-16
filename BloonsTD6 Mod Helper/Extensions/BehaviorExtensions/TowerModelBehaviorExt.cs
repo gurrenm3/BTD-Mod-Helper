@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 namespace BTD_Mod_Helper.Extensions;
@@ -85,4 +86,10 @@ public static class TowerModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+
+    public static void AddBehavior(this TowerModel model, ModelHelper behavior)
+    {
+        ModelBehaviorExt.AddBehavior(model, behavior.Model);
+    }
+
 }

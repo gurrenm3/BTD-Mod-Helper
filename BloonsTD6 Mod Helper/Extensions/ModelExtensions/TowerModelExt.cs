@@ -414,7 +414,15 @@ public static class TowerModelExt
     /// <summary>
     /// Gets whether a Tower/Hero is a base one added by the vanilla game.
     /// </summary>
-    public static bool IsVanillaTower(this TowerModel towerModel) => VanillaSprites.ByName.ContainsKey(towerModel.IsHero()
-        ? "HeroIcon" + towerModel.baseId
-        : towerModel.baseId.Replace(TowerType.WizardMonkey, "Wizard") + "000");
+    public static bool IsVanillaTower(this TowerModel towerModel)
+    {
+        var baseId = towerModel.baseId
+            .Replace(TowerType.WizardMonkey, "Wizard")
+            .Replace(TowerType.NinjaMonkey, "NInjaMonkey")
+            .Replace(TowerType.ObynGreenfoot, "ObynGreenFoot");
+
+        return VanillaSprites.ByName.ContainsKey(towerModel.IsHero()
+            ? "HeroIcon" + baseId
+            : baseId + "000");
+    }
 }

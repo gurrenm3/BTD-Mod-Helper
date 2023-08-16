@@ -100,6 +100,8 @@ public static class ModelExt
     /// </summary>
     public static void RemoveChildDependants<T>(this Model model, IEnumerable<T> children) where T : Model
     {
+        if (children == null) return;
+
         model.RemoveChild(children.ToIl2CppList().Cast<Il2CppSystem.Collections.Generic.ICollection<T>>());
     }
 
@@ -109,6 +111,7 @@ public static class ModelExt
     /// </summary>
     public static void AddChildDependants<T>(this Model model, IEnumerable<T> children) where T : Model
     {
+        if (children == null) return;
         model.AddChild(children.ToIl2CppList().Cast<Il2CppSystem.Collections.Generic.ICollection<T>>());
     }
 
