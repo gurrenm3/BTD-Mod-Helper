@@ -6,6 +6,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.UI.BTD6;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
@@ -66,6 +67,11 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning("Could not create .targets file in Mod Sources. " +
                               "If you have no intention of making mods, you can ignore this.");
             ModHelper.Warning(e);
+        }
+
+        if (!ModHelper.IsEpic)
+        {
+            HarmonyInstance.CreateClassProcessor(typeof(EmbeddedBrowser.SteamWebView_OnGUI), true).Patch();
         }
     }
 

@@ -5,7 +5,9 @@ using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.UI.BTD6;
 using MelonLoader.Utils;
 namespace BTD_Mod_Helper;
 
@@ -55,6 +57,14 @@ public static class ModHelper
     /// Gets whether this is running on net6 MelonLoader
     /// </summary>
     public static bool IsNet6 => Environment.Version.Major >= 6;
+
+    /// <summary>
+    /// Gets whether the game is running as the Epic Store version
+    /// <br/>
+    /// This checks that the <see cref="MelonGameAttribute"/> has been properly changed by
+    /// <a href="https://github.com/GrahamKracker/BTD6EpicGamesModCompat">BTD6EpicGamesModCompat</a>
+    /// </summary>
+    public static bool IsEpic => Main.Games.Any(attribute => attribute.Name == "BloonsTD6-Epic");
 
     internal static bool FallbackToOldLoading
     {

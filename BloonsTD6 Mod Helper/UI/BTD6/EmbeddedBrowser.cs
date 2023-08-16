@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
@@ -176,7 +177,6 @@ internal static class EmbeddedBrowser
     }
 
     #endregion*/
-    #region Nested type: HtmlSurface_OnJSAlertAPI
 
     /// <summary>
     /// Implement JS alerts using Ok popups
@@ -194,9 +194,6 @@ internal static class EmbeddedBrowser
             return false;
         }
     }
-
-    #endregion
-    #region Nested type: HtmlSurface_OnJSConfirmAPI
 
     /// <summary>
     /// Implement JS confirms using Ok/Cancel popups
@@ -217,9 +214,6 @@ internal static class EmbeddedBrowser
             return false;
         }
     }
-
-    #endregion
-    #region Nested type: HtmlSurface_OnStartRequestAPI
 
     /// <summary>
     /// Allow mod files to be downloaded through the browser
@@ -245,15 +239,16 @@ internal static class EmbeddedBrowser
         }
     }
 
-    #endregion
-    #region Nested type: SteamWebView_OnGUI
-
     /// <summary>
     /// Use a RawImage to render if available so that objects can be displayed on top of it
     /// </summary>
-    [HarmonyPatch(typeof(SteamWebView), nameof(SteamWebView.OnGUI))]
     internal static class SteamWebView_OnGUI
     {
+        private static System.Collections.Generic.IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(typeof(SteamWebView), nameof(SteamWebView.OnGUI));
+        }
+        
         public static bool UsingRawImage { get; private set; }
 
         [HarmonyPrefix]
@@ -273,6 +268,4 @@ internal static class EmbeddedBrowser
             UsingRawImage = false;
         }
     }
-
-    #endregion
 }

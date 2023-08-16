@@ -218,10 +218,19 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             var march32 = bottomButtonGroup.AddButton(new Info("March32ndButton")
             {
                 Width = 1000, Height = 250, Y = Padding, Anchor = new Vector2(0.5f, 0), Pivot = new Vector2(0.5f, 0)
-            }, VanillaSprites.GreenBtnLong, new Action(() => EmbeddedBrowser.OpenURL(
-                "https://www.youtube.com/watch?v=dQw4w9WgXcQ?autoplay=1",
-                view => view.Surface.KeyDown(0x0D /* VK_RETURN */, HTMLKeyModifiers.None))
-            ));
+            }, VanillaSprites.GreenBtnLong, new Action(() =>
+            {
+                if (ModHelper.IsEpic)
+                {
+                    ProcessHelper.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ?autoplay=1");
+                }
+                else
+                {
+                    EmbeddedBrowser.OpenURL(
+                        "https://www.youtube.com/watch?v=dQw4w9WgXcQ?autoplay=1",
+                        view => view.Surface.KeyDown(0x0D /* VK_RETURN */, HTMLKeyModifiers.None));
+                }
+            }));
             march32.AddText(new Info("Text", InfoPreset.FillParent), "Get 100 Trophies", 80f);
             march32.AddImage(new Info("TrophyL", -475, 0, 300), VanillaSprites.TrophyIcon);
             march32.AddImage(new Info("TrophyR", 475, 0, 300), VanillaSprites.TrophyIcon);
@@ -247,7 +256,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             {
                 position = Input.mousePosition
             }, raycastResults);
-            
+
             foreach (var result in raycastResults)
             {
                 var parent = result.gameObject.transform.parent;
@@ -500,7 +509,17 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModHomeButton = firstRow.AddButton(new Info("HomePage")
         {
             Size = ModNameHeight
-        }, VanillaSprites.HomeBtn, new Action(() => EmbeddedBrowser.OpenURL(selectedMod.ReadmeUrl!)));
+        }, VanillaSprites.HomeBtn, new Action(() =>
+        {
+            if (ModHelper.IsEpic)
+            {
+                ProcessHelper.OpenURL(selectedMod.ReadmeUrl!);
+            }
+            else
+            {
+                EmbeddedBrowser.OpenURL(selectedMod.ReadmeUrl!);
+            }
+        }));
 
         // ReSharper disable once AsyncVoidLambda
         selectedModUpdateButton = firstRow.AddButton(

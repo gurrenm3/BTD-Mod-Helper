@@ -181,7 +181,17 @@ internal static class ModBrowserMenuModExt
     public static void SetMod(this ModBrowserMenuMod mod, Api.Data.ModHelperData modHelperData)
     {
         mod.modName = modHelperData.Name;
-        mod.Homepage.Button.SetOnClick(() => EmbeddedBrowser.OpenURL(modHelperData.ReadmeUrl!));
+        mod.Homepage.Button.SetOnClick(() =>
+        {
+            if (ModHelper.IsEpic)
+            {
+                ProcessHelper.OpenURL(modHelperData.ReadmeUrl!);
+            }
+            else
+            {
+                EmbeddedBrowser.OpenURL(modHelperData.ReadmeUrl!);
+            }
+        });
         mod.Description.Text.SetText(modHelperData.DisplayDescription);
         mod.InfoButton.Button.SetOnClick(() =>
         {

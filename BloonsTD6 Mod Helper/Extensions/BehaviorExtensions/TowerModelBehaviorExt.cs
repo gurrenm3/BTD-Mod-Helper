@@ -87,9 +87,11 @@ public static class TowerModelBehaviorExt
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
 
+    /// <summary>
+    /// Adds a wrapped behavior from a ModelHelper to this tower
+    /// </summary>
     public static void AddBehavior(this TowerModel model, ModelHelper behavior)
     {
         ModelBehaviorExt.AddBehavior(model, behavior.Model);
     }
-
 }

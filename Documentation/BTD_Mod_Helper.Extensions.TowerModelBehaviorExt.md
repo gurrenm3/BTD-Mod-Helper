@@ -12,6 +12,25 @@ public static class TowerModelBehaviorExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; TowerModelBehaviorExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior(thisTowerModel,BTD_Mod_Helper.Api.Helpers.ModelHelper)'></a>
+
+## TowerModelBehaviorExt.AddBehavior(this TowerModel, ModelHelper) Method
+
+Adds a wrapped behavior from a ModelHelper to this tower
+
+```csharp
+public static void AddBehavior(this TowerModel model, BTD_Mod_Helper.Api.Helpers.ModelHelper behavior);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior(thisTowerModel,BTD_Mod_Helper.Api.Helpers.ModelHelper).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior(thisTowerModel,BTD_Mod_Helper.Api.Helpers.ModelHelper).behavior'></a>
+
+`behavior` [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior_T_(thisTowerModel,T)'></a>
 
 ## TowerModelBehaviorExt.AddBehavior<T>(this TowerModel, T) Method

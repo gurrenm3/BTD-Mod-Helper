@@ -141,13 +141,18 @@
 | Classes | |
 | :--- | :--- |
 | [ActionHelper](BTD_Mod_Helper.Api.Helpers.ActionHelper.md 'BTD_Mod_Helper.Api.Helpers.ActionHelper') | Class for converting actions and functions |
+| [AttackHelper](BTD_Mod_Helper.Api.Helpers.AttackHelper.md 'BTD_Mod_Helper.Api.Helpers.AttackHelper') | A wrapper around AttackModels for making them easier to create |
 | [CostHelper](BTD_Mod_Helper.Api.Helpers.CostHelper.md 'BTD_Mod_Helper.Api.Helpers.CostHelper') | Helper for scaling costs to difficulties |
 | [FileDialogHelper](BTD_Mod_Helper.Api.Helpers.FileDialogHelper.md 'BTD_Mod_Helper.Api.Helpers.FileDialogHelper') | Class to help with the usage of Native File Dialogs |
 | [FileIOHelper](BTD_Mod_Helper.Api.Helpers.FileIOHelper.md 'BTD_Mod_Helper.Api.Helpers.FileIOHelper') | Class replacing the original functionality of FileIOUtil before BTD6 update 33.0 |
 | [GameModelExporter](BTD_Mod_Helper.Api.Helpers.GameModelExporter.md 'BTD_Mod_Helper.Api.Helpers.GameModelExporter') | Class for handily exporting elements of the GameModel to json files |
 | [MapHelper](BTD_Mod_Helper.Api.Helpers.MapHelper.md 'BTD_Mod_Helper.Api.Helpers.MapHelper') | Contains helper methods for working with maps and custom maps. |
 | [MatchScale](BTD_Mod_Helper.Api.Helpers.MatchScale.md 'BTD_Mod_Helper.Api.Helpers.MatchScale') | Component to make this transform continuously match the scale of another transform |
+| [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') | A wrapper class around a Model |
+| [ModelHelper&lt;T&gt;](BTD_Mod_Helper.Api.Helpers.ModelHelper_T_.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper<T>') | A wrapper class around a Model |
 | [ProcessHelper](BTD_Mod_Helper.Api.Helpers.ProcessHelper.md 'BTD_Mod_Helper.Api.Helpers.ProcessHelper') | Helper methods for processes |
+| [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper') | A wrapper around ProjectileModels for making them easier to create |
+| [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
 
 <a name='BTD_Mod_Helper.Api.ModMenu'></a>
 

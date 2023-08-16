@@ -25,6 +25,22 @@ public static string DisabledModsDirectory { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.ModHelper.IsEpic'></a>
+
+## ModHelper.IsEpic Property
+
+Gets whether the game is running as the Epic Store version  
+<br/>  
+This checks that the [MelonLoader.MelonGameAttribute](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonGameAttribute 'MelonLoader.MelonGameAttribute') has been properly changed by  
+<a href="https://github.com/GrahamKracker/BTD6EpicGamesModCompat">BTD6EpicGamesModCompat</a>
+
+```csharp
+public static bool IsEpic { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.ModHelper.IsNet6'></a>
 
 ## ModHelper.IsNet6 Property
