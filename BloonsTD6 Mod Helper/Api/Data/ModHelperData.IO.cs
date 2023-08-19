@@ -32,6 +32,7 @@ internal partial class ModHelperData
     private const string ExtraTopicsRegex = "\\bExtraTopics\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string WorksOnVersionRegex = "\\bWorksOnVersion\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string DependenciesRegex = "\\bDependencies\\s*=\\s*\"(.+)\";?[\n\r]+";
+    private const string PluginRegex = "\\bPlugin\\s*=\\s*(false|true);?[\n\r]+";
 
     private static readonly Dictionary<string, MethodInfo> Setters;
     private static readonly Dictionary<string, MethodInfo> Getters;
@@ -88,6 +89,7 @@ internal partial class ModHelperData
         ExtraTopics = GetRegexMatch<string>(data, ExtraTopicsRegex);
         WorksOnVersion = GetRegexMatch<string>(data, WorksOnVersionRegex);
         Dependencies = GetRegexMatch<string>(data, DependenciesRegex);
+        Plugin = GetRegexMatch<bool>(data, PluginRegex);
     }
 
     private void ReadValuesFromJson(string data, bool allowRepo = true)

@@ -13,6 +13,8 @@ internal partial class ModHelperData
     /// </summary>
     internal string FilePath { get; private set; }
 
+    internal string EnabledFolder => Plugin ? MelonEnvironment.PluginsDirectory : MelonEnvironment.ModsDirectory;
+
     public void SetFilePath(string filePath)
     {
         FilePath = filePath;
@@ -65,7 +67,7 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToEnabledModsFolder() => MoveToFolder(MelonEnvironment.ModsDirectory);
+    public bool MoveToEnabledModsFolder() => MoveToFolder(EnabledFolder);
 
     public bool Delete()
     {

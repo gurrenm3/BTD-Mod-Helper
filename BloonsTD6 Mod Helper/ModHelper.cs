@@ -8,6 +8,7 @@ using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.BTD6;
+using MelonLoader.InternalUtils;
 using MelonLoader.Utils;
 namespace BTD_Mod_Helper;
 
@@ -60,11 +61,8 @@ public static class ModHelper
 
     /// <summary>
     /// Gets whether the game is running as the Epic Store version
-    /// <br/>
-    /// This checks that the <see cref="MelonGameAttribute"/> has been properly changed by
-    /// <a href="https://github.com/GrahamKracker/BTD6EpicGamesModCompat">BTD6EpicGamesModCompat</a>
     /// </summary>
-    public static bool IsEpic => Main.Games.Any(attribute => attribute.Name == "BloonsTD6-Epic");
+    public static bool IsEpic => UnityInformationHandler.GameName == EpicCompatibility.GameName;
 
     internal static bool FallbackToOldLoading
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
@@ -16,6 +17,7 @@ using Newtonsoft.Json.Linq;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
+[assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-1000)]
 [assembly: MelonOptionalDependencies("NAudio.WinMM", "NAudio.Wasapi")] // Avoids the warning about these not getting ILRepacked; they're not needed
 
@@ -132,5 +134,14 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnSaveSettings(JObject settings)
     {
         settings["Version"] = ModHelper.Version;
+    }
+
+    public override void OnMainMenu()
+    {
+        if (ModHelper.IsEpic &&
+            MelonBase.RegisteredMelons.All(melon => melon.GetName() != EpicCompatibility.RepoName))
+        {
+            EpicCompatibility.PromptDownloadPlugin();
+        }
     }
 }

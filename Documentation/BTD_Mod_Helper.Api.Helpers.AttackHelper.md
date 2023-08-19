@@ -12,22 +12,26 @@ public class AttackHelper : BTD_Mod_Helper.Api.Helpers.ModelHelper<AttackModel>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') &#129106; [BTD_Mod_Helper.Api.Helpers.ModelHelper&lt;](BTD_Mod_Helper.Api.Helpers.ModelHelper_T_.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper<T>')[Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')[&gt;](BTD_Mod_Helper.Api.Helpers.ModelHelper_T_.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper<T>') &#129106; AttackHelper
 ### Constructors
 
-<a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AttackHelper(string)'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AttackHelper(string,bool)'></a>
 
-## AttackHelper(string) Constructor
+## AttackHelper(string, bool) Constructor
 
 Begins construction of a new AttackModel with sensible default values
 
 ```csharp
-public AttackHelper(string name="");
+public AttackHelper(string name="", bool airUnit=false);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AttackHelper(string).name'></a>
+<a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AttackHelper(string,bool).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The model name (don't need the AttackModel_ part)
+
+<a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AttackHelper(string,bool).airUnit'></a>
+
+`airUnit` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AddToSharedGrid'></a>

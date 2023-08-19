@@ -176,45 +176,52 @@ internal partial class ModHelperData
             else ReadValuesFromString(data, false);
 
 
-            if (RequiredRepoDataError == null)
+            if (RequiredRepoDataError != null)
             {
-                RepoDataSuccess = true;
-                RepoVersion = Version;
+                if (RepoOwner == MelonMain.GitHubUsername)
+                {
+                    ModHelper.Warning(
+                        $"{Repository.FullName} {SubPath} did not have all required ModHelperData: {RequiredRepoDataError}");
+                }
+                return;
+            }
+
+            RepoDataSuccess = true;
+            RepoVersion = Version;
+
+            if (RepoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Log($"Successfully found mod {Repository.FullName} {SubPath} for browser");
+            }
+
+            if (ModInstalledLocally(out var modHelperData))
+            {
+                modHelperData.Repository = Repository;
+                modHelperData.RepoVersion = Version;
+                modHelperData.Branch = Branch;
+                modHelperData.RepoDataSuccess = true;
+            }
+
+            if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
+            {
+                ManualDownload = true;
 
                 if (RepoOwner == MelonMain.GitHubUsername)
                 {
-                    ModHelper.Log($"Successfully found mod {Repository.FullName} {SubPath} for browser");
-                }
-
-                if (ModInstalledLocally(out var modHelperData))
-                {
-                    modHelperData.Repository = Repository;
-                    modHelperData.RepoVersion = Version;
-                    modHelperData.Branch = Branch;
-                    modHelperData.RepoDataSuccess = true;
-                }
-
-                if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
-                {
-                    ManualDownload = true;
-
-                    if (RepoOwner == MelonMain.GitHubUsername)
-                    {
-                        ModHelper.Warning(
-                            $"Overriding {Repository.FullName} {SubPath} to be ManualDownload because it doesn't specify the DllName alongside the ZipName");
-                    }
-                }
-
-                Topics = Repository.Topics.ToList();
-                if (!string.IsNullOrEmpty(ExtraTopics))
-                {
-                    Topics.AddRange(ExtraTopics.Split(','));
+                    ModHelper.Warning(
+                        $"Overriding {Repository.FullName} {SubPath} to be ManualDownload because it doesn't specify the DllName alongside the ZipName");
                 }
             }
-            else if (RepoOwner == MelonMain.GitHubUsername)
+
+            Topics = Repository.Topics.ToList();
+            if (!string.IsNullOrEmpty(ExtraTopics))
             {
-                ModHelper.Warning(
-                    $"{Repository.FullName} {SubPath} did not have all required ModHelperData: {RequiredRepoDataError}");
+                Topics.AddRange(ExtraTopics.Split(','));
+            }
+
+            if (RepoName == "BTD6EpicGamesModCompat")
+            {
+                Plugin = true;
             }
         }
         catch (Exception e)

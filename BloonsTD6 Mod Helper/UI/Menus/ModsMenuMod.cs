@@ -13,7 +13,6 @@ using UnityEngine.Events;
 
 namespace BTD_Mod_Helper.UI.Menus;
 
-
 [RegisterTypeInIl2Cpp(false)]
 internal class ModsMenuMod : ModHelperComponent
 {
@@ -44,7 +43,7 @@ internal class ModsMenuMod : ModHelperComponent
 
         panel.AddImage(new Info("Icon", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, new Vector2(0, 0.5f)),
             VanillaSprites.UISprite);
-        
+
         panel.AddImage(new Info("Restart", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, ModsMenu.ModIconSize,
             new Vector2(0, 0.5f)), VanillaSprites.RestartIcon);
 
@@ -64,14 +63,14 @@ internal class ModsMenuMod : ModHelperComponent
             new Vector2(0, 1)), VanillaSprites.NoticeBtn, null);
 
         mod.SetActive(false);
-        
+
         return mod;
     }
 }
 
 internal static class ModsMenuModExt
 {
-    public static void SetMod(this ModsMenuMod mod, ModHelperData modHelperData, MelonMod melonMod = null)
+    public static void SetMod(this ModsMenuMod mod, ModHelperData modHelperData, MelonBase melonMod = null)
     {
         mod.MainButton.Image.SetSprite(GetBackground(modHelperData));
         mod.MainButton.Button.SetOnClick(() =>
@@ -164,14 +163,17 @@ internal static class ModsMenuModExt
 
     public static string GetBackground(ModHelperData data)
     {
-        var background = VanillaSprites.MainBGPanelBlue;
         if (!data.Enabled)
-            background = VanillaSprites.MainBGPanelGrey;
-        else if (data.Mod == ModContent.GetInstance<MelonMain>())
-            background = VanillaSprites.MainBGPanelYellow;
-        else if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) == false)
-            background = VanillaSprites.MainBgPanelHematite;
-        else if (data.Mod != null && !(data.Mod is BloonsMod)) background = VanillaSprites.MainBGPanelBlueNotches;
-        return background;
+            return VanillaSprites.MainBGPanelGrey;
+        if (data.Mod == ModContent.GetInstance<MelonMain>())
+            return VanillaSprites.MainBGPanelYellow;
+        if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) == false)
+            return VanillaSprites.MainBgPanelHematite;
+        if (data.Mod is MelonPlugin)
+            return VanillaSprites.MainBgPanelJukebox;
+        if (data.Mod != null && data.Mod is not BloonsMod)
+            return VanillaSprites.MainBGPanelBlueNotches;
+
+        return VanillaSprites.MainBGPanelBlue;
     }
 }

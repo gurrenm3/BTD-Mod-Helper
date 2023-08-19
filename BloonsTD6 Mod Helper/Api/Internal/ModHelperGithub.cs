@@ -112,7 +112,8 @@ internal static class ModHelperGithub
         Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
 
         var time = DateTime.Now - start;
-        ModHelper.Msg($"Finished getting mods from github, found {Mods.Count} mods in {time.TotalSeconds:F1} seconds");
+        ModHelper.Msg(
+            $"Finished getting mods from github in background, found {Mods.Count} mods over {time.TotalSeconds:F1} seconds");
 
         UpdateRateLimit();
     }
@@ -323,7 +324,7 @@ internal static class ModHelperGithub
             name = $"{mod.Mod.GetAssembly().GetName().Name}.dll";
         }
 
-        var downloadFilePath = Path.Combine(MelonEnvironment.ModsDirectory, name);
+        var downloadFilePath = Path.Combine(mod.EnabledFolder, name);
         var oldModsFilePath = Path.Combine(ModHelper.OldModsDirectory, name);
 
         try

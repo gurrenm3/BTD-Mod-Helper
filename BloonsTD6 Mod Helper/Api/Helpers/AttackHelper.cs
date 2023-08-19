@@ -60,7 +60,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         }
     }
 
-    
+
     /// <seealso cref="AttackFilterModel.filters"/>
     public FilterModel[] Filters
     {
@@ -156,14 +156,24 @@ public class AttackHelper : ModelHelper<AttackModel>
     /// Begins construction of a new AttackModel with sensible default values
     /// </summary>
     /// <param name="name">The model name (don't need the AttackModel_ part)</param>
-    public AttackHelper(string name = "") : this(new AttackModel(name,
-        new Il2CppReferenceArray<WeaponModel>(0), 0, new[]
-        {
-            new AttackFilterModel(name, new[]
+    /// <param name="airUnit"></param>
+    public AttackHelper(string name = "", bool airUnit = false) : this(airUnit
+        ? new AttackAirUnitModel(name,
+            new Il2CppReferenceArray<WeaponModel>(0), 0, new[]
             {
-                new FilterInvisibleModel("", true, false)
-            })
-        }, null, 0, 0, 0, false, false, 0, false, 0))
+                new AttackFilterModel(name, new[]
+                {
+                    new FilterInvisibleModel("", true, false)
+                })
+            }, null, 0, 0, 0, false, false, 0, false, 0, null)
+        : new AttackModel(name,
+            new Il2CppReferenceArray<WeaponModel>(0), 0, new[]
+            {
+                new AttackFilterModel(name, new[]
+                {
+                    new FilterInvisibleModel("", true, false)
+                })
+            }, null, 0, 0, 0, false, false, 0, false, 0))
     {
     }
 
@@ -171,7 +181,7 @@ public class AttackHelper : ModelHelper<AttackModel>
     /// Unwraps the model
     /// </summary>
     public static implicit operator AttackModel(AttackHelper helper) => helper.Model;
-    
+
     /// <summary>
     /// Wraps a model
     /// </summary>

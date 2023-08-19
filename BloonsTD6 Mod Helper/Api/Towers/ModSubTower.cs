@@ -30,8 +30,14 @@ public abstract class ModSubTower : ModTower
     {
         var towerModel = base.GetDefaultTowerModel(tiers);
         towerModel.isSubTower = true;
-        towerModel.AddBehavior(new TowerExpireOnParentDestroyedModel("TowerExpireOnParentDestroyedModel_"));
-        towerModel.AddBehavior(new CreditPopsToParentTowerModel("CreditPopsToParentTowerModel_"));
+        if (!towerModel.HasBehavior<TowerExpireOnParentDestroyedModel>())
+        {
+            towerModel.AddBehavior(new TowerExpireOnParentDestroyedModel(""));
+        }
+        if (!towerModel.HasBehavior<CreditPopsToParentTowerModel>())
+        {
+            towerModel.AddBehavior(new CreditPopsToParentTowerModel(""));
+        }
         return towerModel;
     }
 }

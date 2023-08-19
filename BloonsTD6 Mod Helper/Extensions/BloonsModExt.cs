@@ -61,11 +61,4 @@ public static class BloonsTD6ModExt
         if (createIfNotExists) Directory.CreateDirectory(path);
         return path;
     }
-
-    internal static ModHelperData GetModHelperData(this MelonMod mod) =>
-        ModHelperData.Cache.TryGetValue(mod, out var data) ? data : null;
-
-    internal static Assembly GetAssembly(this MelonMod mod) => mod.MelonAssembly.Assembly;
-
-    internal static string FileName(this MelonMod mod) => Path.GetFileName(mod.MelonAssembly.Location);
 }

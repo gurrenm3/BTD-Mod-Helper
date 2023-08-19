@@ -1,41 +1,9 @@
-- Fixed a crash that could happen on Linux (thanks @GrahamKracker)
-- 
+- Now natively works on Epic Games version, and prompts user to download the compatability plugin to make other mods work if they don't have it
+- Added ModHelperData `bool Plugin` field for mods that are MelonPlugins
 - Fixed SteamWebView usage on the Epic Games version
-  - Reminder: You still need https://github.com/GrahamKracker/BTD6EpicGamesModCompat for Epic Games
+- Fixed a crash that could happen on Linux (thanks @GrahamKracker)
+- Fixed more crashes from TowerInventory / subtower interactions (thanks @Onixiya)
 - Added new `AttackHelper`, `WeaponHelper` and `ProjectileHelper` that can be used to more easily create those models
   from scratch
     - The classes will implicitly convert themselves to their respective models
-    - Make easy use of the object initialization syntax
-      ```csharp
-      var effect = ability.GetBehavior<CreateEffectOnAbilityModel>().effectModel;
-      var buff = ability.GetBehavior<ActivateTowerDamageSupportZoneModel>();
-      model.AddBehavior(new AttackHelper("WeakeningRoar")
-      {
-          Range = buff.range,
-          AttackThroughWalls = true,
-          CanSeeCamo = true,
-          Weapon = new WeaponHelper("WeakeningRoar")
-          {
-              Animation = 3,
-              Rate = ability.Cooldown / Factor,
-              Behaviors = new WeaponBehaviorModel[]
-              {
-                  new EjectEffectModel("", effect.assetId, effect, effect.lifespan, effect.fullscreen, false, false,
-                      false, false)
-              },
-              Projectile = new ProjectileHelper("WeakeningRoar")
-              {
-                  Radius = buff.range,
-                  Pierce = 1000,
-                  CanHitCamo = true,
-                  Behaviors = new Model[]
-                  {
-                      new AgeModel("", .05f, 0, false, null),
-                      new AddBonusDamagePerHitToBloonModel("", "WeakeningRoar", buff.lifespan / Factor,
-                          buff.damageIncrease, 99999, true, false, false)
-                  }
-              }
-          }
-      });
-      ```
-    - Don't need to specific a bunch of extra fields, will use sensible defaults
+    - Make use of the object initialization syntax; don't need to specific every single field, will use sensible defaults

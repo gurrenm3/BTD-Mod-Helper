@@ -29,10 +29,7 @@ public static string DisabledModsDirectory { get; }
 
 ## ModHelper.IsEpic Property
 
-Gets whether the game is running as the Epic Store version  
-<br/>  
-This checks that the [MelonLoader.MelonGameAttribute](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonGameAttribute 'MelonLoader.MelonGameAttribute') has been properly changed by  
-<a href="https://github.com/GrahamKracker/BTD6EpicGamesModCompat">BTD6EpicGamesModCompat</a>
+Gets whether the game is running as the Epic Store version
 
 ```csharp
 public static bool IsEpic { get; }

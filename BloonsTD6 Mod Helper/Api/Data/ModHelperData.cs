@@ -22,7 +22,7 @@ internal partial class ModHelperData
     /// <summary>
     /// The ModHelperData objects for currently enabled mods
     /// </summary>
-    internal static readonly Dictionary<MelonMod, ModHelperData> Cache = new();
+    internal static readonly Dictionary<MelonBase, ModHelperData> Cache = new();
 
     /// <summary>
     /// ModHelperData for mods that are present in the Mods folder
@@ -40,7 +40,7 @@ internal partial class ModHelperData
     {
     }
 
-    public ModHelperData(MelonMod mod)
+    public ModHelperData(MelonBase mod)
     {
         Mod = mod;
         Name = mod.Info.Name;
@@ -111,6 +111,7 @@ internal partial class ModHelperData
         {
             HasNoIcon = true;
         }
+        Plugin = mod is MelonPlugin;
     }
 
     internal static IEnumerable<ModHelperData> All => Active.Concat(Inactive);
@@ -134,18 +135,19 @@ internal partial class ModHelperData
     public string ExtraTopics { get; protected set; }
     public string WorksOnVersion { get; protected set; }
     public string Dependencies { get; protected set; }
+    public bool Plugin { get; protected set; }
 
     /// <summary>
     /// The currently active mod that this is associated with, if any
     /// </summary>
-    internal MelonMod Mod { get; }
+    internal MelonBase Mod { get; }
 
     /// <summary>
     /// Whether this mod is correctly in the Enabled mods folder
     /// </summary>
     internal bool Enabled => FilePath != null &&
                              DllName != null &&
-                             FilePath == Path.Combine(MelonEnvironment.ModsDirectory, DllName);
+                             FilePath == Path.Combine(EnabledFolder, DllName);
 
     /// <summary>
     /// Either a Mod's "Enabled" status is different from whether or not it's loaded into the game,
@@ -166,7 +168,7 @@ internal partial class ModHelperData
     internal string OldDownloadUrl { get; }
 
 
-    public static void Load(MelonMod mod)
+    public static void Load(MelonBase mod)
     {
         var modHelperData = new ModHelperData(mod);
         Cache[mod] = modHelperData;
@@ -215,7 +217,7 @@ internal partial class ModHelperData
 
     public static void LoadAll()
     {
-        foreach (var melonMod in ModHelper.Melons.OrderByDescending(mod => mod is MelonMain))
+        foreach (var melonMod in MelonBase.RegisteredMelons.OrderByDescending(mod => mod is MelonMain))
         {
             try
             {
