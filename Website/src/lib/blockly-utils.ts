@@ -310,4 +310,15 @@ export const getBlockInfo = (type: string) =>
     ...(Blockly.Blocks[type].json?.hat ? { extraState: { $hat: true } } : {}),
     inputs: getBlockInputs(type),
     next: Blockly.Blocks[type]?.json?.next,
+    ...(Blockly.Blocks[type].json?.comment
+      ? {
+          icons: {
+            comment: {
+              text: Blockly.Blocks[type].json?.comment,
+              height: 50,
+              width: 300,
+            },
+          },
+        }
+      : {}),
   } as BlockInfo);

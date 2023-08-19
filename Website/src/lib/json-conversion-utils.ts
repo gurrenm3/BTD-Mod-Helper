@@ -1,6 +1,6 @@
 import { BlockArgDef, BlockDef } from "./blockly-types";
 import Blockly, { Block } from "blockly";
-import { argsList, getBlockInputs } from "./blockly-utils";
+import { argsList, getBlockInfo, getBlockInputs } from "./blockly-utils";
 import { merge } from "lodash";
 import {
   audioSourceReferenceMap,
@@ -49,7 +49,9 @@ export const recursiveSetCollapsed = (
           input.connection || input.fieldRow.some((field) => field.EDITABLE)
       ))
   ) {
+    Blockly.Events.setRecordUndo(false);
     block.setCollapsed(collapsed);
+    Blockly.Events.setRecordUndo(true);
   }
 
   for (let input of block.inputList) {
@@ -318,7 +320,7 @@ const modelToBlockState = (
       model["guidRef"] in audioSourceReferenceMap) ||
     (type.endsWith("SpriteReference") && model["guidRef"] in spriteReferenceMap)
   ) {
-    return { type: `${type}_${model["guidRef"]}` };
+    return getBlockInfo(`${type}_${model["guidRef"]}`);
   }
 
   const argsByKey = Object.fromEntries(
@@ -334,7 +336,7 @@ const modelToBlockState = (
 
   // Handle args
   for (let [key, value] of Object.entries(model)) {
-    if (key === "$type") continue;
+    if (key.startsWith("$")) continue;
     if (!(key in argsByKey)) {
       key = Object.keys(argsByKey).find(
         (k) => k.toLowerCase() == key.toLowerCase()
@@ -351,6 +353,13 @@ const modelToBlockState = (
     }
 
     handleArg(block, arg, key, value);
+  }
+
+  if ("$x" in model) {
+    block.x = parseInt(String(model["$x"]));
+  }
+  if ("$y" in model) {
+    block.y = parseInt(String(model["$y"]));
   }
 
   return block;

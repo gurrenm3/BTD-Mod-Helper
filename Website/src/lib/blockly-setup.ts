@@ -1,6 +1,7 @@
 import Blockly, {
   Block,
   BlockSvg,
+  clipboard,
   CollapsibleToolboxCategory,
   ContextMenuRegistry,
   ToolboxCategory,
@@ -59,7 +60,23 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
     )
       continue;
 
-    let category: StaticCategoryInfo;
+    console.log(block.category);
+
+    let category = (categories[block.category] ??= {
+      kind:
+        block.category === "Upgrades"
+          ? ToolboxSearchCategory.registrationName
+          : "category",
+      name: block.category,
+      contents: [],
+    } as StaticCategoryInfo);
+
+    if (
+      !category.colour ||
+      parseInt(block.colour) < parseInt(category.colour)
+    ) {
+      category.colour = String(block.colour);
+    }
 
     if (block.subcategory) {
       const subcategory = (subcategories[block.category] ??= {});
@@ -70,18 +87,9 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
         name: block.subcategory,
         contents: [],
       } as StaticCategoryInfo;
-    } else {
-      category = categories[block.category] ??= {
-        kind:
-          block.category === "Upgrades"
-            ? ToolboxSearchCategory.registrationName
-            : "category",
-        name: block.category,
-        contents: [],
-      } as StaticCategoryInfo;
+      category.colour ||= String(block.colour);
     }
 
-    category.colour ||= String(block.colour);
     category.contents.push(getBlockInfo(block.type));
   }
 
@@ -165,6 +173,14 @@ export const registerAll = () => {
     ctrlV,
     Blockly.ShortcutItems.names.PASTE
   );
+  const altV = Blockly.ShortcutRegistry.registry.createSerializedKey(
+    Blockly.utils.KeyCodes.V,
+    [Blockly.utils.KeyCodes.ALT]
+  );
+  Blockly.ShortcutRegistry.registry.addKeyMapping(
+    altV,
+    Blockly.ShortcutItems.names.PASTE
+  );
 
   Blockly.ShortcutRegistry.registry.unregister(
     Blockly.ShortcutItems.names.COPY
@@ -176,6 +192,14 @@ export const registerAll = () => {
   );
   Blockly.ShortcutRegistry.registry.addKeyMapping(
     ctrlC,
+    Blockly.ShortcutItems.names.COPY
+  );
+  const altC = Blockly.ShortcutRegistry.registry.createSerializedKey(
+    Blockly.utils.KeyCodes.C,
+    [Blockly.utils.KeyCodes.ALT]
+  );
+  Blockly.ShortcutRegistry.registry.addKeyMapping(
+    altC,
     Blockly.ShortcutItems.names.COPY
   );
 
@@ -223,7 +247,9 @@ export const pasteBlockFromText = (workspace: WorkspaceSvg, text: string) => {
   try {
     const json = JSON.parse(text);
     const blockState = JsonConversionUtils.modelToBlockState(json);
-    blockState.extraState["$hat"] = true;
+    if (blockState.type.endsWith(".TowerModel")) {
+      blockState.extraState["$hat"] = true;
+    }
     const block = workspace.paste(blockState) as unknown as Block;
     recursiveSetCollapsed(block, true, false);
     block.setCollapsed(false);
@@ -356,13 +382,14 @@ const workspacePaste: KeyboardShortcut = {
   callback: (workspace: WorkspaceSvg, event) => {
     event.preventDefault();
 
-    navigator.clipboard.readText().then((text) => {
-      if (pasteBlockFromText(workspace, text)) {
-        return true;
-      }
-
-      return !!Blockly.clipboard.paste();
-    });
+    navigator.clipboard
+      .readText()
+      .then((text) => {
+        if (!pasteBlockFromText(workspace, text)) {
+          Blockly.clipboard.paste();
+        }
+      })
+      .catch(() => Blockly.clipboard.paste());
 
     return true;
   },
@@ -375,33 +402,43 @@ const workspaceCopy: KeyboardShortcut = {
     return (
       !workspace.options.readOnly &&
       !Blockly.Gesture.inProgress() &&
-      selected != null &&
-      selected.isDeletable() &&
-      selected.isMovable()
+      (!selected || (selected.isDeletable() && selected.isMovable()))
     );
   },
   callback(workspace: WorkspaceSvg, event) {
     event.preventDefault();
     workspace.hideChaff();
 
-    const selected = Blockly.getSelected();
+    let selected =
+      Blockly.getSelected() ??
+      workspace
+        .getTopBlocks(true)
+        .find((block) => block.type.endsWith(".TowerModel"));
+
+    if (!selected) return false;
+
     Blockly.clipboard.copy(selected);
 
-    if (selected instanceof Block) {
-      const blockState = Blockly.serialization.blocks.save(selected);
+    if (!(selected instanceof Block)) return false;
 
-      try {
-        const model = JsonConversionUtils.blockStateToModel(blockState);
+    const blockState = Blockly.serialization.blocks.save(selected, {
+      addCoordinates: true,
+    });
 
-        navigator.clipboard.writeText(JSON.stringify(model, null, 2));
-      } catch (e) {
-        if (process.env.NODE_ENV !== "production") {
-          console.warn(e);
-        }
+    try {
+      const model = JsonConversionUtils.blockStateToModel(blockState);
+
+      model["$x"] = blockState.x;
+      model["$y"] = blockState.y;
+
+      navigator.clipboard.writeText(JSON.stringify(model, null, 2));
+      return true;
+    } catch (e) {
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(e);
       }
+      return false;
     }
-
-    return true;
   },
 };
 

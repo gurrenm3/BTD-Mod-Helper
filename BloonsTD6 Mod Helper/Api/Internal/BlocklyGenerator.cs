@@ -6,6 +6,7 @@ using System.Reflection;
 using BTD_Mod_Helper.Api.Helpers;
 using FuzzySharp;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
@@ -13,8 +14,12 @@ using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
 using Il2CppAssets.Scripts.Models.Towers.Filters;
+using Il2CppAssets.Scripts.Models.Towers.Mods;
+using Il2CppAssets.Scripts.Models.Towers.Mutators;
+using Il2CppAssets.Scripts.Models.Towers.Pets;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.TowerFilters;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
 using Il2CppAssets.Scripts.Simulation.Objects;
@@ -133,7 +138,7 @@ internal static class BlocklyGenerator
         var members = type.GetMembers(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
         var ctor = ModelSerializer.GetMainConstructor(type, members.Select(info => info.Name), true);
-        
+
         var il2CppType = Il2CppType.From(type);
         var badFields = il2CppType.GetProperties().Select(info => info.Name)
             .Concat(il2CppType.GetFields().Where(info => info.IsNotSerialized).Select(info => info.Name))
@@ -387,7 +392,7 @@ internal static class BlocklyGenerator
             color = 0;
             return "Base";
         }
-        if (type.IsAssignableTo(typeof(TowerBehaviorModel)))
+        if (type.IsAssignableTo(typeof(TowerBehaviorModel)) || type.IsAssignableTo(typeof(ApplyModModel)))
         {
             color = 30;
             if (type.IsAssignableTo(typeof(SupportModel)))
@@ -412,7 +417,7 @@ internal static class BlocklyGenerator
             }
             return "Tower Behaviors";
         }
-        if (type.IsAssignableTo(typeof(AttackBehaviorModel)))
+        if (type.IsAssignableTo(typeof(AttackBehaviorModel)) || type.IsAssignableTo(typeof(WeaponModel)))
         {
             color = 60;
             if (type.IsAssignableTo(typeof(TargetSupplierModel)))
@@ -422,7 +427,7 @@ internal static class BlocklyGenerator
             }
             return "Attack Behaviors";
         }
-        if (type.IsAssignableTo(typeof(WeaponBehaviorModel)))
+        if (type.IsAssignableTo(typeof(WeaponBehaviorModel)) || type.IsAssignableTo(typeof(ProjectileModel)))
         {
             color = 90;
             return "Weapon Behaviors";
@@ -431,6 +436,12 @@ internal static class BlocklyGenerator
         {
             color = 100;
             subCategory = "Emissions";
+            return "Weapon Behaviors";
+        }
+        if (type.IsAssignableTo(typeof(EmissionBehaviorModel)))
+        {
+            color = 110;
+            subCategory = "Emission Behaviors";
             return "Weapon Behaviors";
         }
         if (type.IsAssignableTo(typeof(ProjectileBehaviorModel)))
@@ -461,16 +472,40 @@ internal static class BlocklyGenerator
         if (type.IsAssignableTo(typeof(AbilityBehaviorModel)))
         {
             color = 150;
-            return "Ability Behaviors";
+            subCategory = "Ability Behaviors";
+            return "Other Behaviors";
+        }
+        if (type.IsAssignableTo(typeof(BloonBehaviorModel)))
+        {
+            color = 160;
+            subCategory = "Bloon Behaviors";
+            return "Other Behaviors";
+        }
+        if (type.IsAssignableTo(typeof(PetBehaviorModel)))
+        {
+            color = 170;
+            subCategory = "Pet Behaviors";
+            return "Other Behaviors";
         }
         if (type.IsAssignableTo(typeof(FilterModel)))
         {
             color = 180;
             return "Filters";
         }
+        if (type.IsAssignableTo(typeof(TowerFilterModel)))
+        {
+            color = 190;
+            subCategory = "Tower Filters";
+            return "Filters";
+        }
         if (type.IsAssignableTo(typeof(Model)))
         {
             color = 210;
+            if (type.IsAssignableTo(typeof(TowerMutatorModel)))
+            {
+                color = 220;
+                subCategory = "Mutators";
+            }
             return "Misc Models";
         }
 
@@ -719,8 +754,11 @@ internal static class BlocklyGenerator
         }
         foreach (var type in typeof(Model).Assembly.GetTypes().Where(t =>
                      t.IsAssignableTo(typeof(Model)) &&
+                     !t.IsAssignableTo(typeof(ModModel)) &&
+                     !t.IsAssignableTo(typeof(MutatorModModel)) &&
                      t.Namespace!.Contains("Scripts.Models.Towers") &&
-                     !BaseTypes.Contains(t)))
+                     !BaseTypes.Contains(t) &&
+                     !Il2CppType.From(t).IsAbstract))
         {
             Types.TryAdd(type, 1);
         }

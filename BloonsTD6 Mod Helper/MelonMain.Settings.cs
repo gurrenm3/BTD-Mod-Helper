@@ -232,12 +232,12 @@ internal partial class MelonMain
     {
         category = ModMaking,
         description = "Choose a different program/command to edit the file with other than the default notepad.\n" +
-                      "If you have VSCode installed, a good option is \"code -w -n\"."
+                      "If you have VSCode installed,\na good option is \"code -w -n\"."
     };
 
+#if DEBUG
     #region Debug
 
-#if DEBUG
     private static readonly ModSettingCategory Debug = new("Debug");
 
     internal static readonly ModSettingFolder ModHelperSourceFolder = new("")
@@ -311,7 +311,7 @@ internal partial class MelonMain
         category = Debug,
         buttonText = "Choose"
     };
-#endif
 
     #endregion
+#endif
 }
