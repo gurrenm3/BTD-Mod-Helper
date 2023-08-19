@@ -33,7 +33,8 @@
   "bannedMods" : [
     "Jonyboylovespie/EverythingIsFree",
     "MaliciousFiles/EditPlayerData",
-    "GrahamKracker/BTD6EpicGamesModCompat"
+    "GrahamKracker/BTD6EpicGamesModCompat",
+    "hkarargi/Multitool"
   ],
   "topics": [
     "new-towers",
