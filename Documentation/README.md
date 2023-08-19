@@ -150,6 +150,7 @@
 | [MatchScale](BTD_Mod_Helper.Api.Helpers.MatchScale.md 'BTD_Mod_Helper.Api.Helpers.MatchScale') | Component to make this transform continuously match the scale of another transform |
 | [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') | A wrapper class around a Model |
 | [ModelHelper&lt;T&gt;](BTD_Mod_Helper.Api.Helpers.ModelHelper_T_.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper<T>') | A wrapper class around a Model |
+| [ModelSerializer](BTD_Mod_Helper.Api.Helpers.ModelSerializer.md 'BTD_Mod_Helper.Api.Helpers.ModelSerializer') | Handles serializing and deserializing models in a way that utilizes their actual constructors |
 | [ProcessHelper](BTD_Mod_Helper.Api.Helpers.ProcessHelper.md 'BTD_Mod_Helper.Api.Helpers.ProcessHelper') | Helper methods for processes |
 | [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper') | A wrapper around ProjectileModels for making them easier to create |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |

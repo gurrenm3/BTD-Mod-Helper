@@ -30,6 +30,7 @@ const createResourceBlock =
           value: guid,
         },
       ],
+      comment: guid,
     } as BlockDef);
 
 export const prefabReferenceMap = prefabReferences as Record<string, string>;
@@ -81,7 +82,7 @@ export const upgradeBlocks = Object.entries(upgradeIds).map(
       type: `Upgrade_${id}`,
       output: ["Upgrade", "string"],
       category: "Upgrades",
-      colour: "330",
+      colour: "#888888",
       message0: name,
       args0: [],
       data: id,

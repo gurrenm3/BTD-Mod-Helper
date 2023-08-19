@@ -92,7 +92,7 @@ export default () => {
                 minScale: 0.5,
                 maxScale: 2.0,
                 pinch: true,
-                startScale: 0.75,
+                startScale: 0.8,
               },
               move: {
                 wheel: true,

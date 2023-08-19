@@ -43,7 +43,7 @@
       "string"
     ],
     "category": "Towers",
-    "colour": "300",
+    "colour": "#888888",
     "inputsInline": true,
     "message0": "%1%2%3%4",
     "args0": [
