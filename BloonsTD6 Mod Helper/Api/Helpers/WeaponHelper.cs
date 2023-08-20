@@ -9,6 +9,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public class WeaponHelper : ModelHelper<WeaponModel>
 {
+    /// Default 1
     /// <seealso cref="WeaponModel.animation"/>
     public int Animation
     {
@@ -16,6 +17,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.animation = value;
     }
 
+    /// Default 1
     /// <seealso cref="WeaponModel.Rate"/>
     public float Rate
     {
@@ -23,6 +25,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.Rate = value;
     }
 
+    /// Default null
     /// <seealso cref="WeaponModel.projectile"/>
     public ProjectileModel Projectile
     {
@@ -30,6 +33,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.SetProjectile(value);
     }
 
+    /// Default (0, 0, 0)
     /// <seealso cref="WeaponModel.ejectX"/>
     /// <seealso cref="WeaponModel.ejectY"/>
     /// <seealso cref="WeaponModel.ejectZ"/>
@@ -39,6 +43,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.SetEject(value);
     }
 
+    /// Default .2
     /// <seealso cref="WeaponModel.animationOffset"/>
     public float AnimationOffset
     {
@@ -50,6 +55,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         }
     }
 
+    /// Default false
     /// <seealso cref="WeaponModel.fireWithoutTarget"/>
     public bool FireWithoutTarget
     {
@@ -57,6 +63,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.fireWithoutTarget = value;
     }
 
+    /// Default false
     /// <seealso cref="WeaponModel.fireBetweenRounds"/>
     public bool FireBetweenRounds
     {
@@ -64,6 +71,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.fireBetweenRounds = value;
     }
 
+    /// Default SingleEmissionModel
     /// <seealso cref="WeaponModel.emission"/>
     public EmissionModel Emission
     {
@@ -71,6 +79,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.SetEmission(value);
     }
 
+    /// Default null
     /// <seealso cref="WeaponModel.behaviors"/>
     public WeaponBehaviorModel[] Behaviors
     {
@@ -83,6 +92,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         }
     }
 
+    /// Default false
     /// <seealso cref="WeaponModel.useAttackPosition"/>
     public bool UseAttackPosition
     {
@@ -90,6 +100,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.useAttackPosition = value;
     }
 
+    /// Default false
     /// <seealso cref="WeaponModel.startInCooldown"/>
     public bool StartInCooldown
     {
@@ -97,6 +108,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         set => Model.startInCooldown = value;
     }
 
+    /// Default 0
     /// <seealso cref="WeaponModel.customStartCooldown"/>
     public float CustomStartCooldown
     {
@@ -108,6 +120,7 @@ public class WeaponHelper : ModelHelper<WeaponModel>
         }
     }
 
+    /// Default false
     /// <seealso cref="WeaponModel.animateOnMainAttack"/>
     public bool AnimateOnMainAttack
     {

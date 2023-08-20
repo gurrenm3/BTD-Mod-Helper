@@ -23,6 +23,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
     /// </summary>
     public DisplayModel DisplayModel => Model.GetBehavior<DisplayModel>();
 
+    /// Default ""
     /// <seealso cref="ProjectileModel.display"/>
     public string Display
     {
@@ -30,6 +31,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.display.guidRef = Model.GetBehavior<DisplayModel>().display.guidRef = value;
     }
 
+    /// Default { guidRef = "" }
     /// <seealso cref="ProjectileModel.display"/>
     public PrefabReference DisplayReference
     {
@@ -37,6 +39,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.display = Model.GetBehavior<DisplayModel>().display = value;
     }
 
+    /// Default .01
     /// <seealso cref="ProjectileModel.radius"/>
     public float Radius
     {
@@ -44,6 +47,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.radius = value;
     }
 
+    /// Default 0
     /// <seealso cref="ProjectileModel.vsBlockerRadius"/>
     public float VsBlockerRadius
     {
@@ -51,6 +55,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.vsBlockerRadius = value;
     }
 
+    /// Default 1
     /// <seealso cref="ProjectileModel.pierce"/>
     public float Pierce
     {
@@ -58,6 +63,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.pierce = value;
     }
 
+    /// Default 0 (uncapped)
     /// <seealso cref="ProjectileModel.maxPierce"/>
     public float MaxPierce
     {
@@ -65,6 +71,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.maxPierce = value;
     }
 
+    /// Default the required ProjectileFilterModel and DisplayModel
     /// <seealso cref="ProjectileModel.behaviors"/>
     public Model[] Behaviors
     {
@@ -81,6 +88,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         }
     }
 
+    /// Default just the required FilterInvisibleModel
     /// <seealso cref="ProjectileFilterModel.filters"/>
     public FilterModel[] Filters
     {
@@ -96,6 +104,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         }
     }
 
+    /// Default false
     /// <seealso cref="ProjectileModel.ignoreBlockers"/>
     public bool IgnoreBlockers
     {
@@ -103,6 +112,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.ignoreBlockers = value;
     }
 
+    /// Default false
     /// <seealso cref="ProjectileModel.usePointCollisionWithBloons"/>
     public bool UsePointCollisionWithBloons
     {
@@ -110,6 +120,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.usePointCollisionWithBloons = value;
     }
 
+    /// Default false
     /// <seealso cref="ProjectileModel.canCollisionBeBlockedByMapLos"/>
     public bool CanCollisionBeBlockedByMapLos
     {
@@ -117,6 +128,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.canCollisionBeBlockedByMapLos = value;
     }
 
+    /// Default 1
     /// <seealso cref="ProjectileModel.scale"/>
     public float Scale
     {
@@ -124,6 +136,8 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.scale = value;
     }
 
+    /// Don't manually set these, they will be populated when the Helper is converted
+    /// into a model
     /// <seealso cref="ProjectileModel.collisionPasses"/>
     public int[] CollissionPasses
     {
@@ -131,7 +145,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.collisionPasses = value;
     }
 
-    
+    /// Default false
     /// <seealso cref="ProjectileModel.dontUseCollisionChecker"/>
     public bool DontUseCollisionChecker
     {
@@ -139,6 +153,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.dontUseCollisionChecker = value;
     }
 
+    /// Default 0
     /// <seealso cref="ProjectileModel.checkCollisionFrames"/>
     public int CheckCollisionFrames
     {
@@ -146,6 +161,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.checkCollisionFrames = value;
     }
 
+    /// Default false
     /// <seealso cref="ProjectileModel.ignoreNonTargetable"/>
     public bool IgnoreNonTargetable
     {
@@ -153,6 +169,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.ignoreNonTargetable = value;
     }
 
+    /// Default false
     /// <seealso cref="ProjectileModel.ignorePierceExhaustion"/>
     public bool IgnorePierceExhaustion
     {
@@ -160,6 +177,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.ignorePierceExhaustion = value;
     }
 
+    /// Default the name provided
     /// <seealso cref="ProjectileModel.saveId"/>
     public string SaveId
     {
@@ -167,6 +185,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
         set => Model.saveId = value;
     }
 
+    /// Default false
     /// <seealso cref="FilterInvisibleModel.isActive"/>
     public bool CanHitCamo
     {
@@ -202,7 +221,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
     }
 
     /// <summary>
-    /// Unwraps the model (and updates collission passes)
+    /// Unwraps the model (and updates collision passes)
     /// </summary>
     public static implicit operator ProjectileModel(ProjectileHelper helper)
     {

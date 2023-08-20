@@ -32,6 +32,8 @@ The model name (don't need the AttackModel_ part)
 <a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AttackHelper(string,bool).airUnit'></a>
 
 `airUnit` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Create an AttackAirUnitModel instead of an AttackModel
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Helpers.AttackHelper.AddToSharedGrid'></a>

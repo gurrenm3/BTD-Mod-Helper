@@ -345,7 +345,7 @@ public static BTD_Mod_Helper.Api.Helpers.ProjectileHelper implicit operator Proj
 
 ## ProjectileHelper.implicit operator ProjectileModel(ProjectileHelper) Operator
 
-Unwraps the model (and updates collission passes)
+Unwraps the model (and updates collision passes)
 
 ```csharp
 public static ProjectileModel implicit operator ProjectileModel(BTD_Mod_Helper.Api.Helpers.ProjectileHelper helper);

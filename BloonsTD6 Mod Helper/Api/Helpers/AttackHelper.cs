@@ -17,6 +17,7 @@ public class AttackHelper : ModelHelper<AttackModel>
     /// </summary>
     public AttackFilterModel Filter => Model.GetBehavior<AttackFilterModel>();
 
+    /// Default null
     /// <seealso cref="AttackModel.weapons"/>
     public WeaponModel Weapon
     {
@@ -29,6 +30,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         }
     }
 
+    /// Default empty
     /// <seealso cref="AttackModel.weapons"/>
     public WeaponModel[] Weapons
     {
@@ -41,6 +43,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         }
     }
 
+    /// Default 0
     /// <seealso cref="AttackModel.range"/>
     public float Range
     {
@@ -48,6 +51,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         set => Model.range = value;
     }
 
+    /// Default null
     /// <seealso cref="AttackModel.behaviors"/>
     public Model[] Behaviors
     {
@@ -59,8 +63,8 @@ public class AttackHelper : ModelHelper<AttackModel>
             Model.AddChildDependants(Model.behaviors);
         }
     }
-
-
+    
+    /// Default includes the required FilterInvisibleModel
     /// <seealso cref="AttackFilterModel.filters"/>
     public FilterModel[] Filters
     {
@@ -75,6 +79,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         }
     }
 
+    /// Default null
     /// <seealso cref="AttackModel.targetProvider"/>
     public TargetSupplierModel TargetProvider
     {
@@ -87,10 +92,10 @@ public class AttackHelper : ModelHelper<AttackModel>
                 Model.AddBehavior(value);
             }
             Model.targetProvider = value;
-            Model.AddChildDependant(value);
         }
     }
 
+    /// Default (0, 0, 0)
     /// <seealso cref="AttackModel.offsetX"/>
     /// <seealso cref="AttackModel.offsetY"/>
     /// <seealso cref="AttackModel.offsetZ"/>
@@ -105,6 +110,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         }
     }
 
+    /// Default false
     /// <seealso cref="AttackModel.attackThroughWalls"/>
     public bool AttackThroughWalls
     {
@@ -112,6 +118,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         set => Model.attackThroughWalls = value;
     }
 
+    /// Default false
     /// <seealso cref="AttackModel.fireWithoutTarget"/>
     public bool FireWithoutTarget
     {
@@ -119,7 +126,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         set => Model.fireWithoutTarget = value;
     }
 
-
+    /// Default 0
     /// <seealso cref="AttackModel.framesBeforeRetarget"/>
     public int FramesBeforeRetarget
     {
@@ -127,6 +134,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         set => Model.framesBeforeRetarget = value;
     }
 
+    /// Default true
     /// <seealso cref="AttackModel.addsToSharedGrid"/>
     public bool AddToSharedGrid
     {
@@ -134,6 +142,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         set => Model.addsToSharedGrid = value;
     }
 
+    /// Default 0
     /// <seealso cref="AttackModel.sharedGridRange"/>
     public float SharedGridRange
     {
@@ -141,6 +150,7 @@ public class AttackHelper : ModelHelper<AttackModel>
         set => Model.sharedGridRange = value;
     }
 
+    /// Default false
     /// <seealso cref="FilterInvisibleModel.isActive"/>
     public bool CanSeeCamo
     {
@@ -156,7 +166,7 @@ public class AttackHelper : ModelHelper<AttackModel>
     /// Begins construction of a new AttackModel with sensible default values
     /// </summary>
     /// <param name="name">The model name (don't need the AttackModel_ part)</param>
-    /// <param name="airUnit"></param>
+    /// <param name="airUnit">Create an AttackAirUnitModel instead of an AttackModel</param>
     public AttackHelper(string name = "", bool airUnit = false) : this(airUnit
         ? new AttackAirUnitModel(name,
             new Il2CppReferenceArray<WeaponModel>(0), 0, new[]
@@ -165,7 +175,7 @@ public class AttackHelper : ModelHelper<AttackModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 })
-            }, null, 0, 0, 0, false, false, 0, false, 0, null)
+            }, null, 0, 0, 0, false, false, 0, true, 0, null)
         : new AttackModel(name,
             new Il2CppReferenceArray<WeaponModel>(0), 0, new[]
             {
@@ -173,7 +183,7 @@ public class AttackHelper : ModelHelper<AttackModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 })
-            }, null, 0, 0, 0, false, false, 0, false, 0))
+            }, null, 0, 0, 0, false, false, 0, true, 0))
     {
     }
 
