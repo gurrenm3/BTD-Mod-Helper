@@ -2,15 +2,18 @@
   {
     "type": "Shadow",
     "output": null,
-    "message0": "%1",
+    "message0": "%1%2",
     "args0": [
       {
-        "type": "field_label",
-        "name": "name",
-        "text": "Model"
+        "type": "field_hidden",
+        "name": "$data",
+        "value": "null"
+      },
+      {
+        "type": "field_data"
       }
     ],
-    "data": "null"
+    "data": "Model"
   },
   {
     "type": "string",

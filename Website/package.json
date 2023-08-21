@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@blockly/theme-dark": "^6.0.0",
+    "@blockly/zoom-to-fit": "^5.0.3",
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "@mit-app-inventor/blockly-plugin-workspace-multiselect": "^0.1.7",
     "@popperjs/core": "^2.11.6",
     "blockly": "^10.0.2",
     "bootstrap": "^5.1.3",

@@ -564,10 +564,7 @@ internal static class BlocklyGenerator
                 arg["shadow"] = new JObject
                 {
                     ["type"] = "string",
-                    ["fields"] = new JObject
-                    {
-                        ["$data"] = new JValue(defaultValue?.ToString() ?? "null")
-                    }
+                    ["data"] = new JValue(defaultValue?.ToString() ?? "null")
                 };
             }
             else
@@ -655,10 +652,7 @@ internal static class BlocklyGenerator
             arg["shadow"] = new JObject
             {
                 ["type"] = "Shadow",
-                ["fields"] = new JObject
-                {
-                    ["name"] = rowType.Name
-                }
+                ["data"] = rowType.Name
             };
         }
 
@@ -802,6 +796,8 @@ internal static class BlocklyGenerator
         if (type.IsAssignableTo(typeof(TowerModel)) && name == nameof(TowerModel.appliedUpgrades))
             check = "Upgrade";
 
+        if (type.IsAssignableTo(typeof(FilterInBaseTowerIdModel)) && name == nameof(FilterInBaseTowerIdModel.baseIds))
+            check = "Tower";
 
         return check != null;
     }

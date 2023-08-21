@@ -1,9 +1,12 @@
 import Blockly, {
   Block,
+  BlocklyOptions,
   BlockSvg,
-  clipboard,
   CollapsibleToolboxCategory,
   ContextMenuRegistry,
+  hasBubble,
+  ISelectableToolboxItem,
+  Toolbox,
   ToolboxCategory,
   Workspace,
   WorkspaceSvg,
@@ -37,6 +40,16 @@ import { CustomVerticalFlyout } from "../components/blockly/custom-vertical-flyo
 import { CustomHorizontalFlyout } from "../components/blockly/custom-horizontal-flyout";
 import { allJsonBlocks, towerSetColors } from "./blockly-json";
 import { KeyboardShortcut } from "blockly/core/shortcut_registry";
+import { CustomCollapsibleCategory } from "../components/blockly/custom-collapsible-category";
+import { FieldData } from "../components/blockly/field-data";
+import { ZoomToFitControl } from "@blockly/zoom-to-fit";
+
+import {
+  Multiselect,
+  MultiselectBlockDragger,
+} from "@mit-app-inventor/blockly-plugin-workspace-multiselect";
+import ScopeType = ContextMenuRegistry.ScopeType;
+import { block } from "blockly/core/tooltip";
 
 export const initBlocks = () => {
   for (let block of allJsonBlocks) {
@@ -59,8 +72,6 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
       !block.category
     )
       continue;
-
-    console.log(block.category);
 
     let category = (categories[block.category] ??= {
       kind:
@@ -118,6 +129,7 @@ export const registerAll = () => {
   Blockly.fieldRegistry.register(FieldPlus.type, FieldPlus);
   Blockly.fieldRegistry.register(FieldMinus.type, FieldMinus);
   Blockly.fieldRegistry.register(FieldMultiDropdown.type, FieldMultiDropdown);
+  Blockly.fieldRegistry.register(FieldData.type, FieldData);
 
   Blockly.fieldRegistry.unregister("field_input");
   Blockly.fieldRegistry.unregister("field_number");
@@ -138,6 +150,15 @@ export const registerAll = () => {
     Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX,
     CustomVerticalFlyout.name,
     CustomVerticalFlyout
+  );
+  Blockly.registry.unregister(
+    Blockly.registry.Type.TOOLBOX_ITEM,
+    CollapsibleToolboxCategory.registrationName
+  );
+  Blockly.registry.register(
+    Blockly.registry.Type.TOOLBOX_ITEM,
+    CollapsibleToolboxCategory.registrationName,
+    CustomCollapsibleCategory
   );
 
   Blockly.Extensions.registerMutator(
@@ -160,59 +181,21 @@ export const registerAll = () => {
   ContextMenuRegistry.registry.register(loadFromJson);
   ContextMenuRegistry.registry.register(saveToJson);
   ContextMenuRegistry.registry.register(toggleHat);
+  Blockly.ContextMenuRegistry.registry.register(saveWorkspaceOption);
 
-  Blockly.ShortcutRegistry.registry.unregister(
-    Blockly.ShortcutItems.names.PASTE
-  );
-  Blockly.ShortcutRegistry.registry.register(workspacePaste);
-  const ctrlV = Blockly.ShortcutRegistry.registry.createSerializedKey(
-    Blockly.utils.KeyCodes.V,
+  Blockly.ShortcutRegistry.registry.register(saveWorkspaceShortcut);
+  const ctrlS = Blockly.ShortcutRegistry.registry.createSerializedKey(
+    Blockly.utils.KeyCodes.S,
     [Blockly.utils.KeyCodes.CTRL]
   );
-  Blockly.ShortcutRegistry.registry.addKeyMapping(
-    ctrlV,
-    Blockly.ShortcutItems.names.PASTE
-  );
-  const altV = Blockly.ShortcutRegistry.registry.createSerializedKey(
-    Blockly.utils.KeyCodes.V,
-    [Blockly.utils.KeyCodes.ALT]
-  );
-  Blockly.ShortcutRegistry.registry.addKeyMapping(
-    altV,
-    Blockly.ShortcutItems.names.PASTE
-  );
+  Blockly.ShortcutRegistry.registry.addKeyMapping(ctrlS, "save");
 
-  Blockly.ShortcutRegistry.registry.unregister(
-    Blockly.ShortcutItems.names.COPY
-  );
-  Blockly.ShortcutRegistry.registry.register(workspaceCopy);
-  const ctrlC = Blockly.ShortcutRegistry.registry.createSerializedKey(
-    Blockly.utils.KeyCodes.C,
+  Blockly.ShortcutRegistry.registry.register(openJsonShortcut);
+  const ctrlO = Blockly.ShortcutRegistry.registry.createSerializedKey(
+    Blockly.utils.KeyCodes.O,
     [Blockly.utils.KeyCodes.CTRL]
   );
-  Blockly.ShortcutRegistry.registry.addKeyMapping(
-    ctrlC,
-    Blockly.ShortcutItems.names.COPY
-  );
-  const altC = Blockly.ShortcutRegistry.registry.createSerializedKey(
-    Blockly.utils.KeyCodes.C,
-    [Blockly.utils.KeyCodes.ALT]
-  );
-  Blockly.ShortcutRegistry.registry.addKeyMapping(
-    altC,
-    Blockly.ShortcutItems.names.COPY
-  );
-
-  Blockly.ShortcutRegistry.registry.unregister(Blockly.ShortcutItems.names.CUT);
-  Blockly.ShortcutRegistry.registry.register(workspaceCut);
-  const ctrlX = Blockly.ShortcutRegistry.registry.createSerializedKey(
-    Blockly.utils.KeyCodes.X,
-    [Blockly.utils.KeyCodes.CTRL]
-  );
-  Blockly.ShortcutRegistry.registry.addKeyMapping(
-    ctrlX,
-    Blockly.ShortcutItems.names.CUT
-  );
+  Blockly.ShortcutRegistry.registry.addKeyMapping(ctrlO, "open");
 };
 
 export const plugins = {
@@ -220,28 +203,148 @@ export const plugins = {
     CustomHorizontalFlyout.name,
   [Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX.toString()]:
     CustomVerticalFlyout.name,
+  [Blockly.registry.Type.BLOCK_DRAGGER.toString()]: MultiselectBlockDragger,
 };
 
-export const initWorkspace = (workspace: WorkspaceSvg) => {
-  workspace.addChangeListener((event: Blockly.Events.Click) => {
-    if (event.type !== Blockly.Events.CLICK || event.targetType !== "block")
-      return;
+export const initWorkspace =
+  (options: BlocklyOptions) => (workspace: WorkspaceSvg) => {
+    new ZoomToFitControl(workspace).init();
+    new Multiselect(workspace).init({
+      ...options,
+      useDoubleClick: false,
+      multiselectIcon: {
+        hideIcon: true,
+      },
+      multiselectCopyPaste: {
+        crossTab: false,
+        menu: false,
+      },
+    });
 
-    const workspace = Blockly.Workspace.getById(event.workspaceId);
-    const block = workspace.getBlockById(event.blockId);
+    Blockly.ShortcutRegistry.registry.unregister(
+      Blockly.ShortcutItems.names.PASTE
+    );
+    Blockly.ShortcutRegistry.registry.register(workspacePaste);
+    const ctrlV = Blockly.ShortcutRegistry.registry.createSerializedKey(
+      Blockly.utils.KeyCodes.V,
+      [Blockly.utils.KeyCodes.CTRL]
+    );
+    Blockly.ShortcutRegistry.registry.addKeyMapping(
+      ctrlV,
+      Blockly.ShortcutItems.names.PASTE
+    );
+    const altV = Blockly.ShortcutRegistry.registry.createSerializedKey(
+      Blockly.utils.KeyCodes.V,
+      [Blockly.utils.KeyCodes.ALT]
+    );
+    Blockly.ShortcutRegistry.registry.addKeyMapping(
+      altV,
+      Blockly.ShortcutItems.names.PASTE
+    );
 
-    if (block.isInFlyout || !block.isMovable() || !workspace.options.collapse)
-      return;
+    Blockly.ShortcutRegistry.registry.unregister(
+      Blockly.ShortcutItems.names.COPY
+    );
+    Blockly.ShortcutRegistry.registry.register(workspaceCopy);
+    const ctrlC = Blockly.ShortcutRegistry.registry.createSerializedKey(
+      Blockly.utils.KeyCodes.C,
+      [Blockly.utils.KeyCodes.CTRL]
+    );
+    Blockly.ShortcutRegistry.registry.addKeyMapping(
+      ctrlC,
+      Blockly.ShortcutItems.names.COPY
+    );
+    const altC = Blockly.ShortcutRegistry.registry.createSerializedKey(
+      Blockly.utils.KeyCodes.C,
+      [Blockly.utils.KeyCodes.ALT]
+    );
+    Blockly.ShortcutRegistry.registry.addKeyMapping(
+      altC,
+      Blockly.ShortcutItems.names.COPY
+    );
 
-    const now = Date.now();
+    Blockly.ShortcutRegistry.registry.unregister(
+      Blockly.ShortcutItems.names.CUT
+    );
+    Blockly.ShortcutRegistry.registry.register(workspaceCut);
+    const ctrlX = Blockly.ShortcutRegistry.registry.createSerializedKey(
+      Blockly.utils.KeyCodes.X,
+      [Blockly.utils.KeyCodes.CTRL]
+    );
+    Blockly.ShortcutRegistry.registry.addKeyMapping(
+      ctrlX,
+      Blockly.ShortcutItems.names.CUT
+    );
 
-    if (now - (block["_lastClickTime"] ?? 0) < 300) {
-      block.setCollapsed(!block.isCollapsed());
-    }
+    // This is better than the MIT one because it ignores clicks on block icons, shadow blocks, etc
+    workspace.addChangeListener((event: Blockly.Events.Click) => {
+      if (event.type !== Blockly.Events.CLICK || event.targetType !== "block")
+        return;
 
-    block["_lastClickTime"] = now;
-  });
-};
+      const workspace = Blockly.Workspace.getById(event.workspaceId);
+      const block = workspace.getBlockById(event.blockId) as BlockSvg;
+
+      if (block.isInFlyout || !block.isMovable() || !workspace.options.collapse)
+        return;
+
+      const now = Date.now();
+
+      if (now - (block["_lastClickTime"] ?? 0) < 300) {
+        block.setCollapsed(!block.isCollapsed());
+      }
+
+      block["_lastClickTime"] = now;
+    });
+
+    // Click on workspace to close mutator bubbles
+    workspace.addChangeListener((event: Blockly.Events.Click) => {
+      if (
+        event.type !== Blockly.Events.CLICK ||
+        event.targetType !== "workspace"
+      )
+        return;
+
+      const workspace = Blockly.Workspace.getById(
+        event.workspaceId
+      ) as WorkspaceSvg;
+
+      if (workspace.isMutator) return;
+
+      workspace.getAllBlocks(false).forEach((block) => {
+        for (let icon of block.getIcons()) {
+          if (hasBubble(icon) && icon.bubbleIsVisible()) {
+            icon.setBubbleVisible(false);
+          }
+        }
+      });
+    });
+
+    workspace.addChangeListener((event: Blockly.Events.ToolboxItemSelect) => {
+      if (event.type !== Blockly.Events.TOOLBOX_ITEM_SELECT) return;
+
+      const workspace = Blockly.Workspace.getById(
+        event.workspaceId
+      ) as WorkspaceSvg;
+      const toolbox = workspace.getToolbox() as Toolbox;
+      const oldItem = toolbox
+        .getToolboxItems()
+        .find(
+          (item: ISelectableToolboxItem) => item.getName() == event.oldItem
+        );
+      const newItem = toolbox
+        .getToolboxItems()
+        .find(
+          (item: ISelectableToolboxItem) => item.getName() == event.newItem
+        );
+
+      if (oldItem instanceof CustomCollapsibleCategory && !newItem) {
+        if (oldItem.canCollapse) {
+          oldItem.setExpanded(false);
+          toolbox.clearSelection();
+        }
+      }
+    });
+  };
 
 export const pasteBlockFromText = (workspace: WorkspaceSvg, text: string) => {
   try {
@@ -251,7 +354,7 @@ export const pasteBlockFromText = (workspace: WorkspaceSvg, text: string) => {
       blockState.extraState["$hat"] = true;
     }
     const block = workspace.paste(blockState) as unknown as Block;
-    recursiveSetCollapsed(block, true, false);
+    recursiveSetCollapsed(block, true);
     block.setCollapsed(false);
     return true;
   } catch (e) {
@@ -277,7 +380,8 @@ const collapseAll: ContextMenuRegistry.RegistryItem = {
   preconditionFn: ({ block }) =>
     !block!.isInFlyout &&
     block!.isMovable() &&
-    block!.workspace.options.collapse
+    block!.workspace.options.collapse &&
+    block.inputList.some((input) => input.connection?.targetBlock())
       ? "enabled"
       : "hidden",
   callback: ({ block }) => {
@@ -289,7 +393,6 @@ const collapseAll: ContextMenuRegistry.RegistryItem = {
           !input.connection?.targetBlock()?.isCollapsed() &&
           input.connection?.targetBlock()?.isMovable()
       ),
-      true,
       true
     );
     block.setCollapsed(collapsed);
@@ -310,17 +413,12 @@ const showInToolbox: ContextMenuRegistry.RegistryItem = {
   },
 };
 
-const loadFromJson: ContextMenuRegistry.RegistryItem = {
-  id: "loadFromJson",
-  displayText: "Load From Json",
-  weight: 6,
-  scopeType: ContextMenuRegistry.ScopeType.WORKSPACE,
-  preconditionFn: () => "enabled",
-  callback: ({ workspace }) => {
-    openFile(".json", (result) => {
-      const modelJson = JSON.parse(result);
+const openJson = (workspace: Workspace) =>
+  openFile(".json", (result) => {
+    const json = JSON.parse(result);
 
-      const blockState = JsonConversionUtils.modelToBlockState(modelJson);
+    if ("$type" in json) {
+      const blockState = JsonConversionUtils.modelToBlockState(json);
       blockState.extraState["$hat"] = true;
 
       const block = Blockly.serialization.blocks.append(blockState, workspace);
@@ -328,8 +426,26 @@ const loadFromJson: ContextMenuRegistry.RegistryItem = {
       recursiveSetCollapsed(block, true, false);
 
       block.setCollapsed(false);
-    });
-  },
+    } else if (
+      "blocks" in json &&
+      (workspace.getTopBlocks(false).length == 0 ||
+        confirm(
+          "NOTE: You are loading a workspace. This replaces your current workspace and everything unsaved here will be lost. Continue?"
+        ))
+    ) {
+      Blockly.serialization.workspaces.load(json, workspace, {
+        recordUndo: true,
+      });
+    }
+  });
+
+const loadFromJson: ContextMenuRegistry.RegistryItem = {
+  id: "loadFromJson",
+  displayText: "Load Model/Workspace",
+  weight: 7,
+  scopeType: ContextMenuRegistry.ScopeType.WORKSPACE,
+  preconditionFn: () => "enabled",
+  callback: ({ workspace }) => openJson(workspace),
 };
 
 const saveToJson: ContextMenuRegistry.RegistryItem = {
@@ -463,6 +579,52 @@ const workspaceCut: KeyboardShortcut = {
     if (selected instanceof Block) {
       (selected as BlockSvg).checkAndDelete();
     }
+
+    return true;
+  },
+};
+
+const saveWorkspace = (workspace: Workspace) => {
+  if (workspace.getTopBlocks(false).length === 0) return false;
+
+  const json = Blockly.serialization.workspaces.save(workspace);
+
+  saveFile(
+    JSON.stringify(json, null, 2),
+    "json",
+    `workspace ${new Date().toISOString()}.json`
+  );
+
+  return true;
+};
+
+const saveWorkspaceShortcut: KeyboardShortcut = {
+  name: "save",
+  callback(workspace, event, shortcut) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    return saveWorkspace(workspace);
+  },
+};
+
+const saveWorkspaceOption: ContextMenuRegistry.RegistryItem = {
+  id: "save",
+  displayText: "Save Workspace",
+  weight: 6,
+  scopeType: ScopeType.WORKSPACE,
+  preconditionFn: ({ workspace }) =>
+    workspace.getTopBlocks(false).length > 0 ? "enabled" : "disabled",
+  callback: ({ workspace }) => saveWorkspace(workspace),
+};
+
+const openJsonShortcut: KeyboardShortcut = {
+  name: "open",
+  callback(workspace, event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    openJson(workspace);
 
     return true;
   },
