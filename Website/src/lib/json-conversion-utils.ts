@@ -35,14 +35,14 @@ export const addBlockToMap = (block: BlockDef) => {
 export const recursiveSetCollapsed = (
   block?: Block,
   collapsed: boolean = true,
-  doArrays = true,
   doAll = false
 ) => {
   if (!block) return;
 
   if (
     !block.isShadow() &&
-    (doArrays || !block.type.includes("[]")) &&
+    !block.type.endsWith(".Model[]") &&
+    block.type !== "int[]" &&
     (doAll ||
       block.inputList.some(
         (input) =>
@@ -55,12 +55,7 @@ export const recursiveSetCollapsed = (
   }
 
   for (let input of block.inputList) {
-    recursiveSetCollapsed(
-      input.connection?.targetBlock(),
-      collapsed,
-      doArrays,
-      doAll
-    );
+    recursiveSetCollapsed(input.connection?.targetBlock(), collapsed, doAll);
   }
 };
 

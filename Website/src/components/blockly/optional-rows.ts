@@ -41,15 +41,23 @@ export const OptionalRowsMixin: OptionalRowsMutator = {
     const block = newBlock(workspace, this.type + "_container");
     (block as BlockSvg).initSvg();
 
-    for (let [arg, enabled] of Object.entries(this.args)) {
+    const { $hat, ...args } = this.args;
+
+    for (let [arg, enabled] of Object.entries(args)) {
       block.setFieldValue(enabled, arg);
     }
 
     return block;
   },
   compose(block): void {
-    for (let arg of Object.keys(this.args)) {
-      this.args[arg] = block.getFieldValue(arg) == "TRUE";
+    const { $hat, ...args } = this.args;
+
+    const json = Blockly.Blocks[this.type].json as BlockDef;
+    const options = json.mutatorOptions as OptionalRowsOptions;
+    options.defaults ??= {};
+
+    for (let arg of Object.values(options.optional)) {
+      this.args[arg] = block.getFieldValue(arg)?.toUpperCase() == "TRUE";
     }
 
     this.rebuildShape_();
@@ -121,7 +129,7 @@ export const addMutatorBlock = (block: BlockDef) => {
   const args = {} as Record<string, boolean>;
 
   for (let value of Object.values(options.optional)) {
-    args[value] = options.defaults?.[value] ?? true;
+    args[value] = options.defaults?.[value] ?? defaultShow;
   }
 
   const argLength = Object.values(args).length;

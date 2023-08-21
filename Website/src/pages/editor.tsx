@@ -8,7 +8,11 @@ import SimpleReactBlockly, {
 import cx from "classnames";
 import { ToolboxInfo } from "blockly/core/utils/toolbox";
 import useComponentDidMount from "../hooks/use-component-did-mount";
-import Blockly, { getMainWorkspace, WorkspaceSvg } from "blockly";
+import Blockly, {
+  BlocklyOptions,
+  getMainWorkspace,
+  WorkspaceSvg,
+} from "blockly";
 import { ToolboxSearchCategory } from "../components/blockly/toolbox-search-category";
 import BlocklySetup, {
   initWorkspace,
@@ -74,6 +78,25 @@ export default () => {
     },
   });
 
+  const options: BlocklyOptions = {
+    disable: false,
+    zoom: {
+      controls: true,
+      minScale: 0.2,
+      maxScale: 2.0,
+      pinch: true,
+      startScale: 0.8,
+    },
+    move: {
+      wheel: true,
+    },
+    oneBasedIndex: false,
+    toolbox: toolbox.current,
+    renderer: CustomRenderer.name,
+    theme: theme === "light" ? Blockly.Themes.Classic : DarkTheme,
+    plugins,
+  };
+
   return (
     <Layout style={{ height }}>
       <ModHelperHelmet
@@ -85,26 +108,9 @@ export default () => {
           <SimpleReactBlockly
             workspaceDidChange={onWorkspaceChanged}
             wrapperDivClassName={cx("h-100")}
-            workspaceConfiguration={{
-              disable: false,
-              zoom: {
-                controls: true,
-                minScale: 0.5,
-                maxScale: 2.0,
-                pinch: true,
-                startScale: 0.8,
-              },
-              move: {
-                wheel: true,
-              },
-              oneBasedIndex: false,
-              toolbox: toolbox.current,
-              renderer: CustomRenderer.name,
-              theme: theme === "light" ? Blockly.Themes.Classic : DarkTheme,
-              plugins,
-            }}
+            workspaceConfiguration={options}
             ref={blocklyEditor}
-            init={initWorkspace}
+            init={initWorkspace(options)}
           />
         ) : (
           <div className={"h-100"} />
