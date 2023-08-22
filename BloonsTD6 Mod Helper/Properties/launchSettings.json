@@ -9,7 +9,7 @@
       "commandName": "Executable",
       "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
       "workingDirectory": "$(BloonsTD6)",
-      "commandLineArgs": "--melonloader.debug"
+      "commandLineArgs": "--melonloader.launchdebugger"
     }
   }
 }

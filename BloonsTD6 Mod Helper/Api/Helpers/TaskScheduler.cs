@@ -36,7 +36,7 @@ public static class TaskScheduler
     /// <param name="amountToWait">The amount you want to wait</param>
     /// ///
     /// <param name="waitCondition">Wait for this to be true before executing task</param>
-    public static void ScheduleTask(Action action, ScheduleType scheduleType, int amountToWait,
+    public static void ScheduleTask(Action action, ScheduleType scheduleType, float amountToWait,
         Func<bool> waitCondition = null)
     {
         try
@@ -60,7 +60,7 @@ public static class TaskScheduler
     /// <param name="amountToWait"></param>
     /// <param name="waitCondition"></param>
     /// <returns></returns>
-    internal static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait,
+    internal static IEnumerator Coroutine(Action action, ScheduleType scheduleType, float amountToWait,
         Func<bool> waitCondition = null)
     {
         if (waitCondition is null)
@@ -84,7 +84,7 @@ public static class TaskScheduler
     /// <param name="scheduleType"></param>
     /// <param name="amountToWait"></param>
     /// <returns></returns>
-    private static IEnumerator WaiterCoroutine(ScheduleType scheduleType, int amountToWait)
+    private static IEnumerator WaiterCoroutine(ScheduleType scheduleType, float amountToWait)
     {
         switch (scheduleType)
         {

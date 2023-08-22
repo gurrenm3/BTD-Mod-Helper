@@ -1,4 +1,6 @@
-﻿using Il2CppAssets.Scripts.Simulation.Bloons;
+﻿using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Data;
+using Il2CppAssets.Scripts.Simulation.Bloons;
 namespace BTD_Mod_Helper.Patches.Bloons;
 
 [HarmonyPatch(typeof(Bloon), nameof(Bloon.Degrade))]
@@ -13,5 +15,19 @@ internal class Bloon_Degrade
 
         SessionData.Instance.PoppedBloons[__instance.bloonModel.id] = amountPopped + 1;
         return true;
+    }
+    
+    [HarmonyPostfix]
+    internal static void Postfix(Bloon __instance)
+    {
+        try
+        {
+            if (ModBoss.Cache.TryGetValue(__instance.bloonModel.name, out var value))
+                value.OnPop(__instance);
+        }
+        catch (System.Exception e)
+        {
+            ModHelper.Error(e);
+        }
     }
 }

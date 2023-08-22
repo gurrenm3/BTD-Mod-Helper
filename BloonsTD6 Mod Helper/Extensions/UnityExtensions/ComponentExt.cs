@@ -14,7 +14,7 @@ public static class ComponentExt
         component.transform.Find(componentPath).GetComponent<T>();
 
     /// <summary>
-    /// Try to get a component in a child of this Component by it's name. Equivelant to a foreach with GetComponentsInChildren
+    /// Try to get a component in a child of this Component by it's name. Equivalent to a foreach with GetComponentsInChildren
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="component"></param>
@@ -24,6 +24,19 @@ public static class ComponentExt
         where T : Component
     {
         return component.transform.GetComponentsInChildren<T>().FirstOrDefault(comp => comp.name == componentName);
+    }
+    
+    /// <summary>
+    /// Tries to get all component in a child of this Component by it's name. Equivalent to a foreach with GetComponentsInChildren
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="component"></param>
+    /// <param name="componentName"></param>
+    /// <returns></returns>
+    public static T[] GetComponentsFromChildrenByName<T>(this Component component, string componentName)
+        where T : Component
+    {
+        return component.transform.GetComponentsInChildren<T>().Where(comp => comp.name == componentName).ToArray();
     }
 
     /// <summary>

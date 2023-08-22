@@ -1,7 +1,6 @@
-﻿using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-namespace BTD_Mod_Helper.Patches;
+﻿namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(InGame), nameof(InGame.OnVictory))]
+[HarmonyPatch(typeof(Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame), nameof(Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame.OnVictory))]
 internal class InGame_OnVictory
 {
     [HarmonyPostfix]

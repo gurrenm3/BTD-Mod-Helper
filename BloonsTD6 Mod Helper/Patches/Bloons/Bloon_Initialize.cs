@@ -1,5 +1,4 @@
-﻿using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Simulation.Bloons;
+﻿using Il2CppAssets.Scripts.Simulation.Bloons;
 namespace BTD_Mod_Helper.Patches.Bloons;
 
 [HarmonyPatch(typeof(Bloon), nameof(Bloon.Initialise))]
@@ -7,10 +6,10 @@ internal class Bloon_Initialize
 {
 
     [HarmonyPrefix]
-    internal static bool Prefix(Bloon __instance, Model modelToUse) => true;
+    internal static bool Prefix(Bloon __instance, Il2CppAssets.Scripts.Models.Model modelToUse) => true;
 
     [HarmonyPostfix]
-    internal static void Postfix(Bloon __instance, Model modelToUse)
+    internal static void Postfix(Bloon __instance, Il2CppAssets.Scripts.Models.Model modelToUse)
     {
         // removed from update 28.0
         //SessionData.Instance.bloonTracker.TrackBloon(__instance);
