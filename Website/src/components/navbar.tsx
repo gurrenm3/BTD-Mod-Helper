@@ -131,9 +131,10 @@ export const ModHelperNavBar: FunctionComponent<{
 };
 
 export const ModHelperFooter: FunctionComponent<{
-  backToTop?: () => void;
+  buttonName?: string;
+  buttonOnClick?: () => void;
   className?: string;
-}> = ({ backToTop, className }) => {
+}> = ({ buttonName, buttonOnClick, className }) => {
   const scrollbars = useContext(ScrollBarsContext);
   const [map, setMap] = useContext(BackgroundContext);
 
@@ -150,12 +151,15 @@ export const ModHelperFooter: FunctionComponent<{
       <Button
         variant={"outline-light"}
         onClick={() => {
-          scrollbars?.scrollTop(0);
-          backToTop?.();
+          if (buttonOnClick) {
+            buttonOnClick();
+          } else {
+            scrollbars?.scrollTop(0);
+          }
         }}
         className={"btd6-button blue long align-self-stretch p-3"}
       >
-        Back to Top
+        {buttonName || "Back to Top"}
       </Button>
       <div className={`text-center d-none d-sm-block fs-larger`}>
         To learn how to download BTD Mod Helper and install mods,{" "}

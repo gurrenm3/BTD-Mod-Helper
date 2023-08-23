@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using FuzzySharp;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
@@ -22,6 +23,7 @@ using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.TowerFilters;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
+using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -623,7 +625,7 @@ internal static class BlocklyGenerator
         }
         else if (rowType.IsEnum)
         {
-            if (rowType.GetCustomAttribute<FlagsAttribute>() != null && AllowMultiDropdown(parentType, name))
+            if (rowType.GetCustomAttribute<FlagsAttribute>() != null && AllowMultiDropdown(rowType))
             {
                 arg["type"] = "field_multi_dropdown";
                 arg["bitmap"] = true;
@@ -802,13 +804,5 @@ internal static class BlocklyGenerator
         return check != null;
     }
 
-    private static bool AllowMultiDropdown(Type type, string name)
-    {
-        if (type == null) return true;
-
-        if (type.IsAssignableTo(typeof(TowerModel)) && name == nameof(TowerModel.towerSet))
-            return false;
-
-        return true;
-    }
+    private static bool AllowMultiDropdown(Type type) => type != typeof(TowerSet) && type != typeof(DisplayCategory);
 }

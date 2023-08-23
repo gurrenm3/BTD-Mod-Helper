@@ -4,8 +4,9 @@ import Blockly, { BlocklyOptions, Theme, WorkspaceSvg } from "blockly";
 export interface SimpleReactBlocklyProps {
   wrapperDivClassName: string;
   workspaceConfiguration: BlocklyOptions;
-  workspaceDidChange: () => void;
-  init?: (workspace: WorkspaceSvg) => void;
+  workspaceDidChange?: () => void;
+  init?: (workspace: WorkspaceSvg, isFirst?: boolean) => void;
+  dispose?: (workspace: WorkspaceSvg) => void;
 }
 
 export interface SimpleReactBlocklyRef {
@@ -24,7 +25,9 @@ export default forwardRef<SimpleReactBlocklyRef, SimpleReactBlocklyProps>(
         innerBlocklyDiv.current!,
         props.workspaceConfiguration
       );
-      workspace.addChangeListener(props.workspaceDidChange);
+      if (props.workspaceDidChange) {
+        workspace.addChangeListener(props.workspaceDidChange);
+      }
       props.init?.(workspace);
 
       const state = { workspace, innerBlocklyDiv: innerBlocklyDiv.current };
@@ -42,16 +45,19 @@ export default forwardRef<SimpleReactBlocklyRef, SimpleReactBlocklyProps>(
         const workspace = ref.current!.workspace;
         const state = Blockly.serialization.workspaces.save(workspace);
         const scale = workspace.getScale();
+        props.dispose?.(workspace);
         workspace.dispose();
 
         const newWorkspace = Blockly.inject(
           innerBlocklyDiv.current!,
           props.workspaceConfiguration
         );
-        newWorkspace.addChangeListener(props.workspaceDidChange);
+        if (props.workspaceDidChange) {
+          newWorkspace.addChangeListener(props.workspaceDidChange);
+        }
         Blockly.serialization.workspaces.load(state, newWorkspace);
         newWorkspace.setScale(scale);
-        props.init?.(newWorkspace);
+        props.init?.(newWorkspace, false);
 
         ref.current = {
           workspace: newWorkspace,

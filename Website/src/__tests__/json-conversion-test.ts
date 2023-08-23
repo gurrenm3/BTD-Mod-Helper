@@ -22,8 +22,8 @@ import BlocklySetup from "../lib/blockly-setup";
 import path from "path";
 import * as fs from "fs";
 import * as os from "os";
-import JsonConversionUtils from "../lib/json-conversion-utils";
 import { globSync } from "glob";
+import {blockStateToModel, modelToBlockState} from "../lib/json-conversion-utils";
 
 console.log = tempConsoleLog;
 console.warn = tempConsoleWarn;
@@ -79,7 +79,7 @@ describe("JSON Conversion", () => {
         .toString()
     );
 
-    const blockState = JsonConversionUtils.modelToBlockState(tower);
+    const blockState = modelToBlockState(tower);
 
     fs.writeFileSync(
       path.join(outputPath, "blockState.json"),
@@ -90,7 +90,7 @@ describe("JSON Conversion", () => {
 
     const block = Blockly.serialization.blocks.append(blockState, workspace);
 
-    const json = JsonConversionUtils.blockStateToModel(
+    const json = blockStateToModel(
       Blockly.serialization.blocks.save(block)
     );
 
@@ -109,7 +109,7 @@ describe("JSON Conversion", () => {
       (await fs.promises.readFile(towerPath)).toString()
     );
 
-    const blockState = JsonConversionUtils.modelToBlockState(tower);
+    const blockState = modelToBlockState(tower);
 
     await saveFile(
       path.join(outputPath, relativePath.replace("Towers", "BlockStates")),
@@ -120,7 +120,7 @@ describe("JSON Conversion", () => {
 
     const block = Blockly.serialization.blocks.append(blockState, workspace);
 
-    const json = JsonConversionUtils.blockStateToModel(
+    const json = blockStateToModel(
       Blockly.serialization.blocks.save(block)
     );
 
