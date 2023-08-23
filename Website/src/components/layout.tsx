@@ -60,7 +60,8 @@ export const ModHelperScrollBars = forwardRef<Scrollbars, ScrollbarProps>(
 
 interface LayoutProps
   extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
-  backToTop?: () => void;
+  bottomLeftButton?: string;
+  bottomLeftOnClick?: () => void;
   headerClassName?: string;
   footerClassName?: string;
   fitHeight?: boolean;
@@ -70,7 +71,8 @@ const Layout: FunctionComponent<LayoutProps> = ({
   children,
   className,
   style,
-  backToTop,
+  bottomLeftButton,
+  bottomLeftOnClick,
   headerClassName,
   footerClassName,
   fitHeight,
@@ -87,7 +89,11 @@ const Layout: FunctionComponent<LayoutProps> = ({
       <SkipLink />
       <ModHelperNavBar className={headerClassName} />
       {children}
-      <ModHelperFooter backToTop={backToTop} className={footerClassName} />
+      <ModHelperFooter
+        buttonName={bottomLeftButton}
+        buttonOnClick={bottomLeftOnClick}
+        className={footerClassName}
+      />
     </div>
   );
 };

@@ -126,6 +126,55 @@
     "data": "BLOCKLY_HERO_LEVEL"
   },
   {
+    "type": "Tower[]",
+    "previousStatement": "Tower[]",
+    "category": "Other",
+    "subcategory": null,
+    "colour": "#888888",
+    "message0": "%1%2",
+    "args0": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "$data",
+        "options": [
+          [
+            "null",
+            "null"
+          ],
+          [
+            "empty",
+            "[]"
+          ]
+        ]
+      }
+    ],
+    "message1": "%1%2%3",
+    "args1": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_minus"
+      },
+      {
+        "name": "i",
+        "type": "input_value",
+        "check": "Tower",
+        "shadow": {
+          "type": "string_shadow",
+          "fields": {
+            "$data": "null"
+          }
+        }
+      }
+    ],
+    "data": "BLOCKLY_ARRAY",
+    "mutator": "plus_minus_rows"
+  },
+  {
     "type": "Upgrade[]",
     "previousStatement": "Upgrade[]",
     "category": "Other",

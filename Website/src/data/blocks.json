@@ -1209,8 +1209,7 @@
     "args5": [
       {
         "name": "category",
-        "type": "field_multi_dropdown",
-        "bitmap": true,
+        "type": "field_dropdown",
         "options": [
           [
             "None",
@@ -4303,209 +4302,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileCollisionModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileCollisionModel"
-    ],
-    "category": "Projectile Behaviors",
-    "subcategory": "Sound",
-    "colour": 129,
-    "message0": "%1CreateSoundOnProjectileCollisionModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileCollisionModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "sound1",
-        "2": "sound2",
-        "3": "sound3",
-        "4": "sound4",
-        "5": "sound5"
-      }
-    },
-    "message1": "sound1%1",
-    "args1": [
-      {
-        "name": "sound1",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "SoundModel"
-        }
-      }
-    ],
-    "message2": "sound2%1",
-    "args2": [
-      {
-        "name": "sound2",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "SoundModel"
-        }
-      }
-    ],
-    "message3": "sound3%1",
-    "args3": [
-      {
-        "name": "sound3",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "SoundModel"
-        }
-      }
-    ],
-    "message4": "sound4%1",
-    "args4": [
-      {
-        "name": "sound4",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "SoundModel"
-        }
-      }
-    ],
-    "message5": "sound5%1",
-    "args5": [
-      {
-        "name": "sound5",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "SoundModel"
-        }
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnContactModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnContactModel"
-    ],
-    "category": "Projectile Behaviors",
-    "subcategory": null,
-    "colour": 120,
-    "message0": "%1CreateProjectileOnContactModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnContactModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "passOnCollidedWith",
-        "2": "dontCreateAtBloon",
-        "3": "passOnDirectionToContact",
-        "4": "projectile",
-        "5": "emission"
-      }
-    },
-    "message1": "passOnCollidedWith%1",
-    "args1": [
-      {
-        "name": "passOnCollidedWith",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message2": "dontCreateAtBloon%1",
-    "args2": [
-      {
-        "name": "dontCreateAtBloon",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message3": "passOnDirectionToContact%1",
-    "args3": [
-      {
-        "name": "passOnDirectionToContact",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message4": "projectile%1",
-    "args4": [
-      {
-        "name": "projectile",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "ProjectileModel"
-        }
-      }
-    ],
-    "message5": "emission%1",
-    "args5": [
-      {
-        "name": "emission",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "EmissionModel"
-        }
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateEffectOnAbilityModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -4638,6 +4434,68 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterWithTagsModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel",
+      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterWithTagsModel"
+    ],
+    "category": "Filters",
+    "subcategory": null,
+    "colour": 180,
+    "message0": "%1FilterWithTagsModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Filters.FilterWithTagsModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "inclusive",
+        "2": "tags",
+        "3": "tags"
+      }
+    },
+    "message1": "inclusive%1",
+    "args1": [
+      {
+        "name": "inclusive",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message2": "tags",
+    "args2": [],
+    "message3": "%1",
+    "args3": [
+      {
+        "name": "tags",
+        "type": "input_statement",
+        "check": "string[]",
+        "shadow": {
+          "type": "string[]"
+        }
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectOnExhaustFractionModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -4760,45 +4618,21 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireFromAirUnitModel",
+    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileCollisionModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireFromAirUnitModel"
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileCollisionModel"
     ],
-    "category": "Weapon Behaviors",
-    "subcategory": null,
-    "colour": 90,
-    "message0": "%1FireFromAirUnitModel%2",
+    "category": "Projectile Behaviors",
+    "subcategory": "Sound",
+    "colour": 129,
+    "message0": "%1CreateSoundOnProjectileCollisionModel%2",
     "args0": [
       {
         "type": "field_hidden",
         "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Weapons.Behaviors.FireFromAirUnitModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterWithTagsModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel",
-      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterWithTagsModel"
-    ],
-    "category": "Filters",
-    "subcategory": null,
-    "colour": 180,
-    "message0": "%1FilterWithTagsModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Filters.FilterWithTagsModel, Assembly-CSharp"
+        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileCollisionModel, Assembly-CSharp"
       },
       {
         "type": "field_input",
@@ -4809,15 +4643,129 @@
     "mutator": "optional_rows",
     "mutatorOptions": {
       "optional": {
-        "1": "inclusive",
-        "2": "tags",
-        "3": "tags"
+        "1": "sound1",
+        "2": "sound2",
+        "3": "sound3",
+        "4": "sound4",
+        "5": "sound5"
       }
     },
-    "message1": "inclusive%1",
+    "message1": "sound1%1",
     "args1": [
       {
-        "name": "inclusive",
+        "name": "sound1",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "SoundModel"
+        }
+      }
+    ],
+    "message2": "sound2%1",
+    "args2": [
+      {
+        "name": "sound2",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "SoundModel"
+        }
+      }
+    ],
+    "message3": "sound3%1",
+    "args3": [
+      {
+        "name": "sound3",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "SoundModel"
+        }
+      }
+    ],
+    "message4": "sound4%1",
+    "args4": [
+      {
+        "name": "sound4",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "SoundModel"
+        }
+      }
+    ],
+    "message5": "sound5%1",
+    "args5": [
+      {
+        "name": "sound5",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Audio.SoundModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "SoundModel"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": "Emissions",
+    "colour": 100,
+    "message0": "%1ArcEmissionModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "angle",
+        "2": "offset",
+        "3": "useProjectileRotation",
+        "4": "useAirUnitRotation",
+        "5": "Count",
+        "6": "behaviors",
+        "7": "behaviors"
+      }
+    },
+    "message1": "angle%1",
+    "args1": [
+      {
+        "name": "angle",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "offset%1",
+    "args2": [
+      {
+        "name": "offset",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "useProjectileRotation%1",
+    "args3": [
+      {
+        "name": "useProjectileRotation",
         "type": "field_dropdown",
         "options": [
           [
@@ -4831,16 +4779,396 @@
         ]
       }
     ],
-    "message2": "tags",
+    "message4": "useAirUnitRotation%1",
+    "args4": [
+      {
+        "name": "useAirUnitRotation",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "Count%1",
+    "args5": [
+      {
+        "name": "Count",
+        "type": "field_number",
+        "value": 0,
+        "precision": 1
+      }
+    ],
+    "message6": "behaviors",
+    "args6": [],
+    "message7": "%1",
+    "args7": [
+      {
+        "name": "behaviors",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnContactModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnContactModel"
+    ],
+    "category": "Projectile Behaviors",
+    "subcategory": null,
+    "colour": 120,
+    "message0": "%1CreateProjectileOnContactModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnContactModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "passOnCollidedWith",
+        "2": "dontCreateAtBloon",
+        "3": "passOnDirectionToContact",
+        "4": "projectile",
+        "5": "emission"
+      }
+    },
+    "message1": "passOnCollidedWith%1",
+    "args1": [
+      {
+        "name": "passOnCollidedWith",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message2": "dontCreateAtBloon%1",
+    "args2": [
+      {
+        "name": "dontCreateAtBloon",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message3": "passOnDirectionToContact%1",
+    "args3": [
+      {
+        "name": "passOnDirectionToContact",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message4": "projectile%1",
+    "args4": [
+      {
+        "name": "projectile",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "ProjectileModel"
+        }
+      }
+    ],
+    "message5": "emission%1",
+    "args5": [
+      {
+        "name": "emission",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "EmissionModel"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustFractionModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustFractionModel"
+    ],
+    "category": "Projectile Behaviors",
+    "subcategory": null,
+    "colour": 120,
+    "message0": "%1CreateProjectileOnExhaustFractionModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustFractionModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "fraction",
+        "2": "durationfraction",
+        "3": "canCreateInBetweenRounds",
+        "4": "collideOnSubProjectile",
+        "5": "passOnCollidedWith",
+        "6": "projectile",
+        "7": "emission"
+      }
+    },
+    "message1": "fraction%1",
+    "args1": [
+      {
+        "name": "fraction",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "durationfraction%1",
+    "args2": [
+      {
+        "name": "durationfraction",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "canCreateInBetweenRounds%1",
+    "args3": [
+      {
+        "name": "canCreateInBetweenRounds",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message4": "collideOnSubProjectile%1",
+    "args4": [
+      {
+        "name": "collideOnSubProjectile",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "passOnCollidedWith%1",
+    "args5": [
+      {
+        "name": "passOnCollidedWith",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message6": "projectile%1",
+    "args6": [
+      {
+        "name": "projectile",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "ProjectileModel"
+        }
+      }
+    ],
+    "message7": "emission%1",
+    "args7": [
+      {
+        "name": "emission",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "EmissionModel"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ThrowMarkerOffsetModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ThrowMarkerOffsetModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": null,
+    "colour": 90,
+    "message0": "%1ThrowMarkerOffsetModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Weapons.Behaviors.ThrowMarkerOffsetModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "ejectX",
+        "2": "ejectY",
+        "3": "ejectZ",
+        "4": "rotation"
+      }
+    },
+    "message1": "ejectX%1",
+    "args1": [
+      {
+        "name": "ejectX",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "ejectY%1",
+    "args2": [
+      {
+        "name": "ejectY",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "ejectZ%1",
+    "args3": [
+      {
+        "name": "ejectZ",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message4": "rotation%1",
+    "args4": [
+      {
+        "name": "rotation",
+        "type": "field_number",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmmisionTowardsTargetModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmmisionTowardsTargetModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": "Emissions",
+    "colour": 100,
+    "message0": "%1SingleEmmisionTowardsTargetModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmmisionTowardsTargetModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "offset",
+        "2": "behaviors",
+        "3": "behaviors"
+      }
+    },
+    "message1": "offset%1",
+    "args1": [
+      {
+        "name": "offset",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "behaviors",
     "args2": [],
     "message3": "%1",
     "args3": [
       {
-        "name": "tags",
+        "name": "behaviors",
         "type": "input_statement",
-        "check": "string[]",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
         "shadow": {
-          "type": "string[]"
+          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
         }
       }
     ]
@@ -4992,237 +5320,26 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel",
+    "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterAllExceptTargetModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel"
+      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel",
+      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterAllExceptTargetModel"
     ],
-    "category": "Weapon Behaviors",
-    "subcategory": "Emissions",
-    "colour": 100,
-    "message0": "%1ArcEmissionModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "angle",
-        "2": "offset",
-        "3": "useProjectileRotation",
-        "4": "useAirUnitRotation",
-        "5": "Count",
-        "6": "behaviors",
-        "7": "behaviors"
-      }
-    },
-    "message1": "angle%1",
-    "args1": [
-      {
-        "name": "angle",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "offset%1",
-    "args2": [
-      {
-        "name": "offset",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "useProjectileRotation%1",
-    "args3": [
-      {
-        "name": "useProjectileRotation",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message4": "useAirUnitRotation%1",
-    "args4": [
-      {
-        "name": "useAirUnitRotation",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message5": "Count%1",
-    "args5": [
-      {
-        "name": "Count",
-        "type": "field_number",
-        "value": 0,
-        "precision": 1
-      }
-    ],
-    "message6": "behaviors",
-    "args6": [],
-    "message7": "%1",
-    "args7": [
-      {
-        "name": "behaviors",
-        "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
-        "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
-        }
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustFractionModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustFractionModel"
-    ],
-    "category": "Projectile Behaviors",
+    "category": "Filters",
     "subcategory": null,
-    "colour": 120,
-    "message0": "%1CreateProjectileOnExhaustFractionModel%2",
+    "colour": 180,
+    "message0": "%1FilterAllExceptTargetModel%2",
     "args0": [
       {
         "type": "field_hidden",
         "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustFractionModel, Assembly-CSharp"
+        "value": "Assets.Scripts.Models.Towers.Filters.FilterAllExceptTargetModel, Assembly-CSharp"
       },
       {
         "type": "field_input",
         "name": "name",
         "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "fraction",
-        "2": "durationfraction",
-        "3": "canCreateInBetweenRounds",
-        "4": "collideOnSubProjectile",
-        "5": "passOnCollidedWith",
-        "6": "projectile",
-        "7": "emission"
-      }
-    },
-    "message1": "fraction%1",
-    "args1": [
-      {
-        "name": "fraction",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "durationfraction%1",
-    "args2": [
-      {
-        "name": "durationfraction",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "canCreateInBetweenRounds%1",
-    "args3": [
-      {
-        "name": "canCreateInBetweenRounds",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message4": "collideOnSubProjectile%1",
-    "args4": [
-      {
-        "name": "collideOnSubProjectile",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message5": "passOnCollidedWith%1",
-    "args5": [
-      {
-        "name": "passOnCollidedWith",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message6": "projectile%1",
-    "args6": [
-      {
-        "name": "projectile",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "ProjectileModel"
-        }
-      }
-    ],
-    "message7": "emission%1",
-    "args7": [
-      {
-        "name": "emission",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "EmissionModel"
-        }
       }
     ]
   },
@@ -5265,148 +5382,6 @@
           "type": "Shadow",
           "data": "EffectModel"
         }
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ThrowMarkerOffsetModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ThrowMarkerOffsetModel"
-    ],
-    "category": "Weapon Behaviors",
-    "subcategory": null,
-    "colour": 90,
-    "message0": "%1ThrowMarkerOffsetModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Weapons.Behaviors.ThrowMarkerOffsetModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "ejectX",
-        "2": "ejectY",
-        "3": "ejectZ",
-        "4": "rotation"
-      }
-    },
-    "message1": "ejectX%1",
-    "args1": [
-      {
-        "name": "ejectX",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "ejectY%1",
-    "args2": [
-      {
-        "name": "ejectY",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "ejectZ%1",
-    "args3": [
-      {
-        "name": "ejectZ",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message4": "rotation%1",
-    "args4": [
-      {
-        "name": "rotation",
-        "type": "field_number",
-        "value": 0
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmmisionTowardsTargetModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmmisionTowardsTargetModel"
-    ],
-    "category": "Weapon Behaviors",
-    "subcategory": "Emissions",
-    "colour": 100,
-    "message0": "%1SingleEmmisionTowardsTargetModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmmisionTowardsTargetModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "offset",
-        "2": "behaviors",
-        "3": "behaviors"
-      }
-    },
-    "message1": "offset%1",
-    "args1": [
-      {
-        "name": "offset",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "behaviors",
-    "args2": [],
-    "message3": "%1",
-    "args3": [
-      {
-        "name": "behaviors",
-        "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
-        "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
-        }
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterAllExceptTargetModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel",
-      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterAllExceptTargetModel"
-    ],
-    "category": "Filters",
-    "subcategory": null,
-    "colour": 180,
-    "message0": "%1FilterAllExceptTargetModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Filters.FilterAllExceptTargetModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
       }
     ]
   },
@@ -5664,127 +5639,6 @@
     "args2": [
       {
         "name": "isOnSubTower",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SlowModifierForTagModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SlowModifierForTagModel"
-    ],
-    "category": "Projectile Behaviors",
-    "subcategory": null,
-    "colour": 120,
-    "message0": "%1SlowModifierForTagModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.SlowModifierForTagModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "tag",
-        "2": "slowId",
-        "3": "slowMultiplier",
-        "4": "resetToUnmodified",
-        "5": "preventMutation",
-        "6": "lifespanOverride",
-        "7": "makeNotTag"
-      }
-    },
-    "message1": "tag%1",
-    "args1": [
-      {
-        "name": "tag",
-        "type": "field_input",
-        "text": "null",
-        "spellcheck": false
-      }
-    ],
-    "message2": "slowId%1",
-    "args2": [
-      {
-        "name": "slowId",
-        "type": "field_input",
-        "text": "null",
-        "spellcheck": false
-      }
-    ],
-    "message3": "slowMultiplier%1",
-    "args3": [
-      {
-        "name": "slowMultiplier",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message4": "resetToUnmodified%1",
-    "args4": [
-      {
-        "name": "resetToUnmodified",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message5": "preventMutation%1",
-    "args5": [
-      {
-        "name": "preventMutation",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message6": "lifespanOverride%1",
-    "args6": [
-      {
-        "name": "lifespanOverride",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message7": "makeNotTag%1",
-    "args7": [
-      {
-        "name": "makeNotTag",
         "type": "field_dropdown",
         "options": [
           [
@@ -6429,6 +6283,127 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SlowModifierForTagModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SlowModifierForTagModel"
+    ],
+    "category": "Projectile Behaviors",
+    "subcategory": null,
+    "colour": 120,
+    "message0": "%1SlowModifierForTagModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.SlowModifierForTagModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "tag",
+        "2": "slowId",
+        "3": "slowMultiplier",
+        "4": "resetToUnmodified",
+        "5": "preventMutation",
+        "6": "lifespanOverride",
+        "7": "makeNotTag"
+      }
+    },
+    "message1": "tag%1",
+    "args1": [
+      {
+        "name": "tag",
+        "type": "field_input",
+        "text": "null",
+        "spellcheck": false
+      }
+    ],
+    "message2": "slowId%1",
+    "args2": [
+      {
+        "name": "slowId",
+        "type": "field_input",
+        "text": "null",
+        "spellcheck": false
+      }
+    ],
+    "message3": "slowMultiplier%1",
+    "args3": [
+      {
+        "name": "slowMultiplier",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message4": "resetToUnmodified%1",
+    "args4": [
+      {
+        "name": "resetToUnmodified",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "preventMutation%1",
+    "args5": [
+      {
+        "name": "preventMutation",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message6": "lifespanOverride%1",
+    "args6": [
+      {
+        "name": "lifespanOverride",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message7": "makeNotTag%1",
+    "args7": [
+      {
+        "name": "makeNotTag",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterBloonIfDamageTypeModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -6506,6 +6481,30 @@
           "type": "Shadow",
           "data": "DamageModel"
         }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireFromAirUnitModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireFromAirUnitModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": null,
+    "colour": 90,
+    "message0": "%1FireFromAirUnitModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Weapons.Behaviors.FireFromAirUnitModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
       }
     ]
   },
@@ -7654,140 +7653,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FigureEightPatternModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FigureEightPatternModel"
-    ],
-    "category": "Attack Behaviors",
-    "subcategory": "Target Suppliers",
-    "colour": 63,
-    "message0": "%1FigureEightPatternModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FigureEightPatternModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "radius",
-        "2": "isSelectable",
-        "3": "rotated",
-        "4": "displayCount",
-        "5": "useTowerPosition",
-        "6": "isOnSubTower",
-        "7": "display"
-      }
-    },
-    "message1": "radius%1",
-    "args1": [
-      {
-        "name": "radius",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "isSelectable%1",
-    "args2": [
-      {
-        "name": "isSelectable",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message3": "rotated%1",
-    "args3": [
-      {
-        "name": "rotated",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message4": "displayCount%1",
-    "args4": [
-      {
-        "name": "displayCount",
-        "type": "field_number",
-        "value": 0,
-        "precision": 1
-      }
-    ],
-    "message5": "useTowerPosition%1",
-    "args5": [
-      {
-        "name": "useTowerPosition",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message6": "isOnSubTower%1",
-    "args6": [
-      {
-        "name": "isOnSubTower",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message7": "display%1",
-    "args7": [
-      {
-        "name": "display",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
-        "shadow": {
-          "type": "Shadow",
-          "data": "PrefabReference"
-        }
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterWithTagModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -7880,47 +7745,6 @@
         "type": "field_number",
         "value": 0,
         "precision": 1
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Effects.AssetPathModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Effects.AssetPathModel"
-    ],
-    "category": "Misc Models",
-    "subcategory": null,
-    "colour": 210,
-    "message0": "%1AssetPathModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Effects.AssetPathModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "assetPath"
-      }
-    },
-    "message1": "assetPath%1",
-    "args1": [
-      {
-        "name": "assetPath",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
-        "shadow": {
-          "type": "Shadow",
-          "data": "PrefabReference"
-        }
       }
     ]
   },
@@ -8116,201 +7940,6 @@
         "shadow": {
           "type": "Shadow",
           "data": "ProjectileModel"
-        }
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackAirUnitModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackAirUnitModel"
-    ],
-    "category": "Tower Behaviors",
-    "subcategory": null,
-    "colour": 30,
-    "message0": "%1AttackAirUnitModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.AttackAirUnitModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "range",
-        "2": "offsetX",
-        "3": "offsetY",
-        "4": "offsetZ",
-        "5": "attackThroughWalls",
-        "6": "fireWithoutTarget",
-        "7": "framesBeforeRetarget",
-        "8": "addsToSharedGrid",
-        "9": "sharedGridRange",
-        "10": "displayAirUnitModel",
-        "11": "targetProvider",
-        "12": "weapons",
-        "13": "weapons",
-        "14": "behaviors",
-        "15": "behaviors"
-      }
-    },
-    "message1": "range%1",
-    "args1": [
-      {
-        "name": "range",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "offsetX%1",
-    "args2": [
-      {
-        "name": "offsetX",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "offsetY%1",
-    "args3": [
-      {
-        "name": "offsetY",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message4": "offsetZ%1",
-    "args4": [
-      {
-        "name": "offsetZ",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message5": "attackThroughWalls%1",
-    "args5": [
-      {
-        "name": "attackThroughWalls",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message6": "fireWithoutTarget%1",
-    "args6": [
-      {
-        "name": "fireWithoutTarget",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message7": "framesBeforeRetarget%1",
-    "args7": [
-      {
-        "name": "framesBeforeRetarget",
-        "type": "field_number",
-        "value": 0,
-        "precision": 1
-      }
-    ],
-    "message8": "addsToSharedGrid%1",
-    "args8": [
-      {
-        "name": "addsToSharedGrid",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message9": "sharedGridRange%1",
-    "args9": [
-      {
-        "name": "sharedGridRange",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message10": "displayAirUnitModel%1",
-    "args10": [
-      {
-        "name": "displayAirUnitModel",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "DisplayModel"
-        }
-      }
-    ],
-    "message11": "targetProvider%1",
-    "args11": [
-      {
-        "name": "targetProvider",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "TargetSupplierModel"
-        }
-      }
-    ],
-    "message12": "weapons",
-    "args12": [],
-    "message13": "%1",
-    "args13": [
-      {
-        "name": "weapons",
-        "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel[]",
-        "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel[]"
-        }
-      }
-    ],
-    "message14": "behaviors",
-    "args14": [],
-    "message15": "%1",
-    "args15": [
-      {
-        "name": "behaviors",
-        "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Model[]",
-        "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Model[]"
         }
       }
     ]
@@ -8643,72 +8272,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel"
-    ],
-    "category": "Tower Behaviors",
-    "subcategory": null,
-    "colour": 30,
-    "message0": "%1AirUnitModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.AirUnitModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "displayScale",
-        "2": "display",
-        "3": "behaviors",
-        "4": "behaviors"
-      }
-    },
-    "message1": "displayScale%1",
-    "args1": [
-      {
-        "name": "displayScale",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "display%1",
-    "args2": [
-      {
-        "name": "display",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
-        "shadow": {
-          "type": "Shadow",
-          "data": "PrefabReference"
-        }
-      }
-    ],
-    "message3": "behaviors",
-    "args3": [],
-    "message4": "%1",
-    "args4": [
-      {
-        "name": "behaviors",
-        "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]",
-        "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]"
-        }
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.RectangleFootprintModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -8831,81 +8394,6 @@
         "type": "field_input",
         "name": "name",
         "text": ""
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockbackModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockbackModel"
-    ],
-    "category": "Projectile Behaviors",
-    "subcategory": null,
-    "colour": 120,
-    "message0": "%1KnockbackModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.KnockbackModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "moabMultiplier",
-        "2": "heavyMultiplier",
-        "3": "lightMultiplier",
-        "4": "mutationId",
-        "5": "lifespan"
-      }
-    },
-    "message1": "moabMultiplier%1",
-    "args1": [
-      {
-        "name": "moabMultiplier",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "heavyMultiplier%1",
-    "args2": [
-      {
-        "name": "heavyMultiplier",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "lightMultiplier%1",
-    "args3": [
-      {
-        "name": "lightMultiplier",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message4": "mutationId%1",
-    "args4": [
-      {
-        "name": "mutationId",
-        "type": "field_input",
-        "text": "null",
-        "spellcheck": false
-      }
-    ],
-    "message5": "lifespan%1",
-    "args5": [
-      {
-        "name": "lifespan",
-        "type": "field_number",
-        "value": 0
       }
     ]
   },
@@ -9149,8 +8637,7 @@
     "args2": [
       {
         "name": "towerSet",
-        "type": "field_multi_dropdown",
-        "bitmap": true,
+        "type": "field_dropdown",
         "options": [
           [
             "None",
@@ -9248,8 +8735,7 @@
     "args2": [
       {
         "name": "towerSet",
-        "type": "field_multi_dropdown",
-        "bitmap": true,
+        "type": "field_dropdown",
         "options": [
           [
             "None",
@@ -9436,22 +8922,22 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstAirUnitModel",
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackAirUnitModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstAirUnitModel"
+      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackAirUnitModel"
     ],
-    "category": "Attack Behaviors",
-    "subcategory": "Target Suppliers",
-    "colour": 63,
-    "message0": "%1TargetFirstAirUnitModel%2",
+    "category": "Tower Behaviors",
+    "subcategory": null,
+    "colour": 30,
+    "message0": "%1AttackAirUnitModel%2",
     "args0": [
       {
         "type": "field_hidden",
         "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstAirUnitModel, Assembly-CSharp"
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.AttackAirUnitModel, Assembly-CSharp"
       },
       {
         "type": "field_input",
@@ -9462,14 +8948,59 @@
     "mutator": "optional_rows",
     "mutatorOptions": {
       "optional": {
-        "1": "isSelectable",
-        "2": "isOnSubTower"
+        "1": "range",
+        "2": "offsetX",
+        "3": "offsetY",
+        "4": "offsetZ",
+        "5": "attackThroughWalls",
+        "6": "fireWithoutTarget",
+        "7": "framesBeforeRetarget",
+        "8": "addsToSharedGrid",
+        "9": "sharedGridRange",
+        "10": "displayAirUnitModel",
+        "11": "targetProvider",
+        "12": "weapons",
+        "13": "weapons",
+        "14": "behaviors",
+        "15": "behaviors"
       }
     },
-    "message1": "isSelectable%1",
+    "message1": "range%1",
     "args1": [
       {
-        "name": "isSelectable",
+        "name": "range",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "offsetX%1",
+    "args2": [
+      {
+        "name": "offsetX",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "offsetY%1",
+    "args3": [
+      {
+        "name": "offsetY",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message4": "offsetZ%1",
+    "args4": [
+      {
+        "name": "offsetZ",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message5": "attackThroughWalls%1",
+    "args5": [
+      {
+        "name": "attackThroughWalls",
         "type": "field_dropdown",
         "options": [
           [
@@ -9483,10 +9014,10 @@
         ]
       }
     ],
-    "message2": "isOnSubTower%1",
-    "args2": [
+    "message6": "fireWithoutTarget%1",
+    "args6": [
       {
-        "name": "isOnSubTower",
+        "name": "fireWithoutTarget",
         "type": "field_dropdown",
         "options": [
           [
@@ -9498,6 +9029,90 @@
             "true"
           ]
         ]
+      }
+    ],
+    "message7": "framesBeforeRetarget%1",
+    "args7": [
+      {
+        "name": "framesBeforeRetarget",
+        "type": "field_number",
+        "value": 0,
+        "precision": 1
+      }
+    ],
+    "message8": "addsToSharedGrid%1",
+    "args8": [
+      {
+        "name": "addsToSharedGrid",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message9": "sharedGridRange%1",
+    "args9": [
+      {
+        "name": "sharedGridRange",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message10": "displayAirUnitModel%1",
+    "args10": [
+      {
+        "name": "displayAirUnitModel",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "DisplayModel"
+        }
+      }
+    ],
+    "message11": "targetProvider%1",
+    "args11": [
+      {
+        "name": "targetProvider",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "TargetSupplierModel"
+        }
+      }
+    ],
+    "message12": "weapons",
+    "args12": [],
+    "message13": "%1",
+    "args13": [
+      {
+        "name": "weapons",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel[]"
+        }
+      }
+    ],
+    "message14": "behaviors",
+    "args14": [],
+    "message15": "%1",
+    "args15": [
+      {
+        "name": "behaviors",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Model[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Model[]"
+        }
       }
     ]
   },
@@ -9801,21 +9416,20 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ParallelEmissionModel",
+    "type": "Il2CppAssets.Scripts.Models.Effects.AssetPathModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ParallelEmissionModel"
+      "Il2CppAssets.Scripts.Models.Effects.AssetPathModel"
     ],
-    "category": "Weapon Behaviors",
-    "subcategory": "Emissions",
-    "colour": 100,
-    "message0": "%1ParallelEmissionModel%2",
+    "category": "Misc Models",
+    "subcategory": null,
+    "colour": 210,
+    "message0": "%1AssetPathModel%2",
     "args0": [
       {
         "type": "field_hidden",
         "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.ParallelEmissionModel, Assembly-CSharp"
+        "value": "Assets.Scripts.Models.Effects.AssetPathModel, Assembly-CSharp"
       },
       {
         "type": "field_input",
@@ -9826,66 +9440,84 @@
     "mutator": "optional_rows",
     "mutatorOptions": {
       "optional": {
-        "1": "spreadLength",
-        "2": "yOffset",
-        "3": "count",
-        "4": "linear",
-        "5": "behaviors",
-        "6": "behaviors"
+        "1": "assetPath"
       }
     },
-    "message1": "spreadLength%1",
+    "message1": "assetPath%1",
     "args1": [
       {
-        "name": "spreadLength",
+        "name": "assetPath",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "PrefabReference"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel"
+    ],
+    "category": "Tower Behaviors",
+    "subcategory": null,
+    "colour": 30,
+    "message0": "%1AirUnitModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.AirUnitModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "displayScale",
+        "2": "display",
+        "3": "behaviors",
+        "4": "behaviors"
+      }
+    },
+    "message1": "displayScale%1",
+    "args1": [
+      {
+        "name": "displayScale",
         "type": "field_number",
         "value": 0
       }
     ],
-    "message2": "yOffset%1",
+    "message2": "display%1",
     "args2": [
       {
-        "name": "yOffset",
-        "type": "field_number",
-        "value": 0
+        "name": "display",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "PrefabReference"
+        }
       }
     ],
-    "message3": "count%1",
-    "args3": [
-      {
-        "name": "count",
-        "type": "field_number",
-        "value": 0,
-        "precision": 1
-      }
-    ],
-    "message4": "linear%1",
+    "message3": "behaviors",
+    "args3": [],
+    "message4": "%1",
     "args4": [
-      {
-        "name": "linear",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message5": "behaviors",
-    "args5": [],
-    "message6": "%1",
-    "args6": [
       {
         "name": "behaviors",
         "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
+        "check": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]",
         "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
+          "type": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]"
         }
       }
     ]
@@ -10176,171 +9808,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.PathMovementModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.PathMovementModel"
-    ],
-    "category": "Tower Behaviors",
-    "subcategory": "Movement",
-    "colour": 42,
-    "message0": "%1PathMovementModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.PathMovementModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "speed",
-        "2": "rotation",
-        "3": "bankRotation",
-        "4": "bankRotationMul",
-        "5": "ignoreTargetType",
-        "6": "catchUpSpeed",
-        "7": "takeOffTime",
-        "8": "takeOffExponent",
-        "9": "takeOffAnimTime",
-        "10": "takeOffScale",
-        "11": "takeOffScaleExponent",
-        "12": "takeOffPitch",
-        "13": "takeOffPitchExponent",
-        "14": "fixedPathSupplierId"
-      }
-    },
-    "message1": "speed%1",
-    "args1": [
-      {
-        "name": "speed",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "rotation%1",
-    "args2": [
-      {
-        "name": "rotation",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "bankRotation%1",
-    "args3": [
-      {
-        "name": "bankRotation",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message4": "bankRotationMul%1",
-    "args4": [
-      {
-        "name": "bankRotationMul",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message5": "ignoreTargetType%1",
-    "args5": [
-      {
-        "name": "ignoreTargetType",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message6": "catchUpSpeed%1",
-    "args6": [
-      {
-        "name": "catchUpSpeed",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message7": "takeOffTime%1",
-    "args7": [
-      {
-        "name": "takeOffTime",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message8": "takeOffExponent%1",
-    "args8": [
-      {
-        "name": "takeOffExponent",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message9": "takeOffAnimTime%1",
-    "args9": [
-      {
-        "name": "takeOffAnimTime",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message10": "takeOffScale%1",
-    "args10": [
-      {
-        "name": "takeOffScale",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message11": "takeOffScaleExponent%1",
-    "args11": [
-      {
-        "name": "takeOffScaleExponent",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message12": "takeOffPitch%1",
-    "args12": [
-      {
-        "name": "takeOffPitch",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message13": "takeOffPitchExponent%1",
-    "args13": [
-      {
-        "name": "takeOffPitchExponent",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message14": "fixedPathSupplierId%1",
-    "args14": [
-      {
-        "name": "fixedPathSupplierId",
-        "type": "field_input",
-        "text": "null",
-        "spellcheck": false
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FadeProjectileModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -10438,22 +9905,22 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomArcEmissionModel",
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FigureEightPatternModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomArcEmissionModel"
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FigureEightPatternModel"
     ],
-    "category": "Weapon Behaviors",
-    "subcategory": "Emissions",
-    "colour": 100,
-    "message0": "%1RandomArcEmissionModel%2",
+    "category": "Attack Behaviors",
+    "subcategory": "Target Suppliers",
+    "colour": 63,
+    "message0": "%1FigureEightPatternModel%2",
     "args0": [
       {
         "type": "field_hidden",
         "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.RandomArcEmissionModel, Assembly-CSharp"
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FigureEightPatternModel, Assembly-CSharp"
       },
       {
         "type": "field_input",
@@ -10464,66 +9931,109 @@
     "mutator": "optional_rows",
     "mutatorOptions": {
       "optional": {
-        "1": "randomAngle",
-        "2": "startOffset",
-        "3": "angle",
-        "4": "offset",
-        "5": "Count",
-        "6": "behaviors",
-        "7": "behaviors"
+        "1": "radius",
+        "2": "isSelectable",
+        "3": "rotated",
+        "4": "displayCount",
+        "5": "useTowerPosition",
+        "6": "isOnSubTower",
+        "7": "display"
       }
     },
-    "message1": "randomAngle%1",
+    "message1": "radius%1",
     "args1": [
       {
-        "name": "randomAngle",
+        "name": "radius",
         "type": "field_number",
         "value": 0
       }
     ],
-    "message2": "startOffset%1",
+    "message2": "isSelectable%1",
     "args2": [
       {
-        "name": "startOffset",
-        "type": "field_number",
-        "value": 0
+        "name": "isSelectable",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
       }
     ],
-    "message3": "angle%1",
+    "message3": "rotated%1",
     "args3": [
       {
-        "name": "angle",
-        "type": "field_number",
-        "value": 0
+        "name": "rotated",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
       }
     ],
-    "message4": "offset%1",
+    "message4": "displayCount%1",
     "args4": [
       {
-        "name": "offset",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message5": "Count%1",
-    "args5": [
-      {
-        "name": "Count",
+        "name": "displayCount",
         "type": "field_number",
         "value": 0,
         "precision": 1
       }
     ],
-    "message6": "behaviors",
-    "args6": [],
-    "message7": "%1",
+    "message5": "useTowerPosition%1",
+    "args5": [
+      {
+        "name": "useTowerPosition",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message6": "isOnSubTower%1",
+    "args6": [
+      {
+        "name": "isOnSubTower",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message7": "display%1",
     "args7": [
       {
-        "name": "behaviors",
-        "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
+        "name": "display",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
         "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
+          "type": "Shadow",
+          "data": "PrefabReference"
         }
       }
     ]
@@ -11185,174 +10695,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritMultiplierModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritMultiplierModel"
-    ],
-    "category": "Weapon Behaviors",
-    "subcategory": null,
-    "colour": 90,
-    "message0": "%1CritMultiplierModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Weapons.Behaviors.CritMultiplierModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "damage",
-        "2": "lower",
-        "3": "upper",
-        "4": "distributeToChildren",
-        "5": "displayModel"
-      }
-    },
-    "message1": "damage%1",
-    "args1": [
-      {
-        "name": "damage",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "lower%1",
-    "args2": [
-      {
-        "name": "lower",
-        "type": "field_number",
-        "value": 0,
-        "precision": 1
-      }
-    ],
-    "message3": "upper%1",
-    "args3": [
-      {
-        "name": "upper",
-        "type": "field_number",
-        "value": 0,
-        "precision": 1
-      }
-    ],
-    "message4": "distributeToChildren%1",
-    "args4": [
-      {
-        "name": "distributeToChildren",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message5": "displayModel%1",
-    "args5": [
-      {
-        "name": "displayModel",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "DisplayModel"
-        }
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel"
-    ],
-    "category": "Projectile Behaviors",
-    "subcategory": null,
-    "colour": 120,
-    "message0": "%1ShowTextOnHitModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "lifespan",
-        "2": "useTowerPosition",
-        "3": "text",
-        "4": "assetId"
-      }
-    },
-    "message1": "lifespan%1",
-    "args1": [
-      {
-        "name": "lifespan",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "useTowerPosition%1",
-    "args2": [
-      {
-        "name": "useTowerPosition",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message3": "text%1",
-    "args3": [
-      {
-        "name": "text",
-        "type": "field_input",
-        "text": "null",
-        "spellcheck": false
-      }
-    ],
-    "message4": "assetId%1",
-    "args4": [
-      {
-        "name": "assetId",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
-        "shadow": {
-          "type": "Shadow",
-          "data": "PrefabReference"
-        }
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireAlternateWeaponModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -11502,6 +10844,81 @@
         "type": "field_number",
         "value": 0,
         "precision": 1
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockbackModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockbackModel"
+    ],
+    "category": "Projectile Behaviors",
+    "subcategory": null,
+    "colour": 120,
+    "message0": "%1KnockbackModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.KnockbackModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "moabMultiplier",
+        "2": "heavyMultiplier",
+        "3": "lightMultiplier",
+        "4": "mutationId",
+        "5": "lifespan"
+      }
+    },
+    "message1": "moabMultiplier%1",
+    "args1": [
+      {
+        "name": "moabMultiplier",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "heavyMultiplier%1",
+    "args2": [
+      {
+        "name": "heavyMultiplier",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "lightMultiplier%1",
+    "args3": [
+      {
+        "name": "lightMultiplier",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message4": "mutationId%1",
+    "args4": [
+      {
+        "name": "mutationId",
+        "type": "field_input",
+        "text": "null",
+        "spellcheck": false
+      }
+    ],
+    "message5": "lifespan%1",
+    "args5": [
+      {
+        "name": "lifespan",
+        "type": "field_number",
+        "value": 0
       }
     ]
   },
@@ -11938,272 +11355,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.LineProjectileEmissionModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.LineProjectileEmissionModel"
-    ],
-    "category": "Weapon Behaviors",
-    "subcategory": "Emissions",
-    "colour": 100,
-    "message0": "%1LineProjectileEmissionModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.LineProjectileEmissionModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "useTargetAsEndPoint",
-        "2": "displayLength",
-        "3": "displayLifetime",
-        "4": "ignoreBlockers",
-        "5": "effectAtEndRate",
-        "6": "dontUseTowerPosition",
-        "7": "useTowerRotation",
-        "8": "useLengthSpeed",
-        "9": "lengthSpeed",
-        "10": "endProjectileSharesPierce",
-        "11": "displayPath",
-        "12": "effectAtEndModel",
-        "13": "effectAtStartModel",
-        "14": "projectileInitialHitModel",
-        "15": "projectileAtEndModel",
-        "16": "emissionAtEndModel",
-        "17": "behaviors",
-        "18": "behaviors"
-      }
-    },
-    "message1": "useTargetAsEndPoint%1",
-    "args1": [
-      {
-        "name": "useTargetAsEndPoint",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message2": "displayLength%1",
-    "args2": [
-      {
-        "name": "displayLength",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "displayLifetime%1",
-    "args3": [
-      {
-        "name": "displayLifetime",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message4": "ignoreBlockers%1",
-    "args4": [
-      {
-        "name": "ignoreBlockers",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message5": "effectAtEndRate%1",
-    "args5": [
-      {
-        "name": "effectAtEndRate",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message6": "dontUseTowerPosition%1",
-    "args6": [
-      {
-        "name": "dontUseTowerPosition",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message7": "useTowerRotation%1",
-    "args7": [
-      {
-        "name": "useTowerRotation",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message8": "useLengthSpeed%1",
-    "args8": [
-      {
-        "name": "useLengthSpeed",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message9": "lengthSpeed%1",
-    "args9": [
-      {
-        "name": "lengthSpeed",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message10": "endProjectileSharesPierce%1",
-    "args10": [
-      {
-        "name": "endProjectileSharesPierce",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message11": "displayPath%1",
-    "args11": [
-      {
-        "name": "displayPath",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Effects.AssetPathModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "AssetPathModel"
-        }
-      }
-    ],
-    "message12": "effectAtEndModel%1",
-    "args12": [
-      {
-        "name": "effectAtEndModel",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Effects.EffectModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "EffectModel"
-        }
-      }
-    ],
-    "message13": "effectAtStartModel%1",
-    "args13": [
-      {
-        "name": "effectAtStartModel",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Effects.EffectModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "EffectModel"
-        }
-      }
-    ],
-    "message14": "projectileInitialHitModel%1",
-    "args14": [
-      {
-        "name": "projectileInitialHitModel",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "ProjectileModel"
-        }
-      }
-    ],
-    "message15": "projectileAtEndModel%1",
-    "args15": [
-      {
-        "name": "projectileAtEndModel",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "ProjectileModel"
-        }
-      }
-    ],
-    "message16": "emissionAtEndModel%1",
-    "args16": [
-      {
-        "name": "emissionAtEndModel",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "EmissionModel"
-        }
-      }
-    ],
-    "message17": "behaviors",
-    "args17": [],
-    "message18": "%1",
-    "args18": [
-      {
-        "name": "behaviors",
-        "type": "input_statement",
-        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
-        "shadow": {
-          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
-        }
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetPointerModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -12410,72 +11561,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongAirUnitModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongAirUnitModel"
-    ],
-    "category": "Attack Behaviors",
-    "subcategory": "Target Suppliers",
-    "colour": 63,
-    "message0": "%1TargetStrongAirUnitModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongAirUnitModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "isSelectable",
-        "2": "isOnSubTower"
-      }
-    },
-    "message1": "isSelectable%1",
-    "args1": [
-      {
-        "name": "isSelectable",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message2": "isOnSubTower%1",
-    "args2": [
-      {
-        "name": "isOnSubTower",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.UseTowerRangeModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -12545,162 +11630,6 @@
         "type": "field_number",
         "value": 0,
         "precision": 1
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel"
-    ],
-    "category": "Attack Behaviors",
-    "subcategory": "Target Suppliers",
-    "colour": 63,
-    "message0": "%1CenterElipsePatternModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "widthRadius",
-        "2": "heightRadius",
-        "3": "isSelectable",
-        "4": "reverse",
-        "5": "displayCount",
-        "6": "canSelectPoint",
-        "7": "isOnSubTower",
-        "8": "display",
-        "9": "pointDisplay"
-      }
-    },
-    "message1": "widthRadius%1",
-    "args1": [
-      {
-        "name": "widthRadius",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "heightRadius%1",
-    "args2": [
-      {
-        "name": "heightRadius",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message3": "isSelectable%1",
-    "args3": [
-      {
-        "name": "isSelectable",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message4": "reverse%1",
-    "args4": [
-      {
-        "name": "reverse",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message5": "displayCount%1",
-    "args5": [
-      {
-        "name": "displayCount",
-        "type": "field_number",
-        "value": 0,
-        "precision": 1
-      }
-    ],
-    "message6": "canSelectPoint%1",
-    "args6": [
-      {
-        "name": "canSelectPoint",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message7": "isOnSubTower%1",
-    "args7": [
-      {
-        "name": "isOnSubTower",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message8": "display%1",
-    "args8": [
-      {
-        "name": "display",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
-        "shadow": {
-          "type": "Shadow",
-          "data": "PrefabReference"
-        }
-      }
-    ],
-    "message9": "pointDisplay%1",
-    "args9": [
-      {
-        "name": "pointDisplay",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
-        "shadow": {
-          "type": "Shadow",
-          "data": "PrefabReference"
-        }
       }
     ]
   },
@@ -12990,99 +11919,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.CircleFootprintModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.FootprintModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.CircleFootprintModel"
-    ],
-    "category": "Tower Behaviors",
-    "subcategory": null,
-    "colour": 30,
-    "message0": "%1CircleFootprintModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.CircleFootprintModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "radius",
-        "2": "doesntBlockTowerPlacement",
-        "3": "ignoresPlacementCheck",
-        "4": "ignoresTowerOverlap"
-      }
-    },
-    "message1": "radius%1",
-    "args1": [
-      {
-        "name": "radius",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "doesntBlockTowerPlacement%1",
-    "args2": [
-      {
-        "name": "doesntBlockTowerPlacement",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message3": "ignoresPlacementCheck%1",
-    "args3": [
-      {
-        "name": "ignoresPlacementCheck",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message4": "ignoresTowerOverlap%1",
-    "args4": [
-      {
-        "name": "ignoresTowerOverlap",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ZeroRotationModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -13103,6 +11939,96 @@
         "type": "field_input",
         "name": "name",
         "text": ""
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ParallelEmissionModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ParallelEmissionModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": "Emissions",
+    "colour": 100,
+    "message0": "%1ParallelEmissionModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.ParallelEmissionModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "spreadLength",
+        "2": "yOffset",
+        "3": "count",
+        "4": "linear",
+        "5": "behaviors",
+        "6": "behaviors"
+      }
+    },
+    "message1": "spreadLength%1",
+    "args1": [
+      {
+        "name": "spreadLength",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "yOffset%1",
+    "args2": [
+      {
+        "name": "yOffset",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "count%1",
+    "args3": [
+      {
+        "name": "count",
+        "type": "field_number",
+        "value": 0,
+        "precision": 1
+      }
+    ],
+    "message4": "linear%1",
+    "args4": [
+      {
+        "name": "linear",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "behaviors",
+    "args5": [],
+    "message6": "%1",
+    "args6": [
+      {
+        "name": "behaviors",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
+        }
       }
     ]
   },
@@ -14344,6 +13270,171 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.PathMovementModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.PathMovementModel"
+    ],
+    "category": "Tower Behaviors",
+    "subcategory": "Movement",
+    "colour": 42,
+    "message0": "%1PathMovementModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.PathMovementModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "speed",
+        "2": "rotation",
+        "3": "bankRotation",
+        "4": "bankRotationMul",
+        "5": "ignoreTargetType",
+        "6": "catchUpSpeed",
+        "7": "takeOffTime",
+        "8": "takeOffExponent",
+        "9": "takeOffAnimTime",
+        "10": "takeOffScale",
+        "11": "takeOffScaleExponent",
+        "12": "takeOffPitch",
+        "13": "takeOffPitchExponent",
+        "14": "fixedPathSupplierId"
+      }
+    },
+    "message1": "speed%1",
+    "args1": [
+      {
+        "name": "speed",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "rotation%1",
+    "args2": [
+      {
+        "name": "rotation",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "bankRotation%1",
+    "args3": [
+      {
+        "name": "bankRotation",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message4": "bankRotationMul%1",
+    "args4": [
+      {
+        "name": "bankRotationMul",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message5": "ignoreTargetType%1",
+    "args5": [
+      {
+        "name": "ignoreTargetType",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message6": "catchUpSpeed%1",
+    "args6": [
+      {
+        "name": "catchUpSpeed",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message7": "takeOffTime%1",
+    "args7": [
+      {
+        "name": "takeOffTime",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message8": "takeOffExponent%1",
+    "args8": [
+      {
+        "name": "takeOffExponent",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message9": "takeOffAnimTime%1",
+    "args9": [
+      {
+        "name": "takeOffAnimTime",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message10": "takeOffScale%1",
+    "args10": [
+      {
+        "name": "takeOffScale",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message11": "takeOffScaleExponent%1",
+    "args11": [
+      {
+        "name": "takeOffScaleExponent",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message12": "takeOffPitch%1",
+    "args12": [
+      {
+        "name": "takeOffPitch",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message13": "takeOffPitchExponent%1",
+    "args13": [
+      {
+        "name": "takeOffPitchExponent",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message14": "fixedPathSupplierId%1",
+    "args14": [
+      {
+        "name": "fixedPathSupplierId",
+        "type": "field_input",
+        "text": "null",
+        "spellcheck": false
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomTargetSpreadModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -14551,6 +13642,97 @@
             "true"
           ]
         ]
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomArcEmissionModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ArcEmissionModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomArcEmissionModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": "Emissions",
+    "colour": 100,
+    "message0": "%1RandomArcEmissionModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.RandomArcEmissionModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "randomAngle",
+        "2": "startOffset",
+        "3": "angle",
+        "4": "offset",
+        "5": "Count",
+        "6": "behaviors",
+        "7": "behaviors"
+      }
+    },
+    "message1": "randomAngle%1",
+    "args1": [
+      {
+        "name": "randomAngle",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "startOffset%1",
+    "args2": [
+      {
+        "name": "startOffset",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "angle%1",
+    "args3": [
+      {
+        "name": "angle",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message4": "offset%1",
+    "args4": [
+      {
+        "name": "offset",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message5": "Count%1",
+    "args5": [
+      {
+        "name": "Count",
+        "type": "field_number",
+        "value": 0,
+        "precision": 1
+      }
+    ],
+    "message6": "behaviors",
+    "args6": [],
+    "message7": "%1",
+    "args7": [
+      {
+        "name": "behaviors",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
+        }
       }
     ]
   },
@@ -14881,53 +14063,6 @@
         "type": "field_number",
         "value": 0,
         "precision": 1
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterTargetAngleModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel",
-      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterTargetAngleModel"
-    ],
-    "category": "Filters",
-    "subcategory": null,
-    "colour": 180,
-    "message0": "%1FilterTargetAngleModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Filters.FilterTargetAngleModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "fieldOfView",
-        "2": "baseTowerRotationOffset"
-      }
-    },
-    "message1": "fieldOfView%1",
-    "args1": [
-      {
-        "name": "fieldOfView",
-        "type": "field_number",
-        "value": 0
-      }
-    ],
-    "message2": "baseTowerRotationOffset%1",
-    "args2": [
-      {
-        "name": "baseTowerRotationOffset",
-        "type": "field_number",
-        "value": 0
       }
     ]
   },
@@ -17383,6 +16518,174 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritMultiplierModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritMultiplierModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": null,
+    "colour": 90,
+    "message0": "%1CritMultiplierModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Weapons.Behaviors.CritMultiplierModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "damage",
+        "2": "lower",
+        "3": "upper",
+        "4": "distributeToChildren",
+        "5": "displayModel"
+      }
+    },
+    "message1": "damage%1",
+    "args1": [
+      {
+        "name": "damage",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "lower%1",
+    "args2": [
+      {
+        "name": "lower",
+        "type": "field_number",
+        "value": 0,
+        "precision": 1
+      }
+    ],
+    "message3": "upper%1",
+    "args3": [
+      {
+        "name": "upper",
+        "type": "field_number",
+        "value": 0,
+        "precision": 1
+      }
+    ],
+    "message4": "distributeToChildren%1",
+    "args4": [
+      {
+        "name": "distributeToChildren",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "displayModel%1",
+    "args5": [
+      {
+        "name": "displayModel",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "DisplayModel"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel"
+    ],
+    "category": "Projectile Behaviors",
+    "subcategory": null,
+    "colour": 120,
+    "message0": "%1ShowTextOnHitModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "lifespan",
+        "2": "useTowerPosition",
+        "3": "text",
+        "4": "assetId"
+      }
+    },
+    "message1": "lifespan%1",
+    "args1": [
+      {
+        "name": "lifespan",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "useTowerPosition%1",
+    "args2": [
+      {
+        "name": "useTowerPosition",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message3": "text%1",
+    "args3": [
+      {
+        "name": "text",
+        "type": "field_input",
+        "text": "null",
+        "spellcheck": false
+      }
+    ],
+    "message4": "assetId%1",
+    "args4": [
+      {
+        "name": "assetId",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "PrefabReference"
+        }
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetIndependantModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -17639,6 +16942,72 @@
         "type": "field_input",
         "name": "name",
         "text": ""
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstAirUnitModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstAirUnitModel"
+    ],
+    "category": "Attack Behaviors",
+    "subcategory": "Target Suppliers",
+    "colour": 63,
+    "message0": "%1TargetFirstAirUnitModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstAirUnitModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "isSelectable",
+        "2": "isOnSubTower"
+      }
+    },
+    "message1": "isSelectable%1",
+    "args1": [
+      {
+        "name": "isSelectable",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message2": "isOnSubTower%1",
+    "args2": [
+      {
+        "name": "isOnSubTower",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
       }
     ]
   },
@@ -20528,6 +19897,162 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel"
+    ],
+    "category": "Attack Behaviors",
+    "subcategory": "Target Suppliers",
+    "colour": 63,
+    "message0": "%1CenterElipsePatternModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "widthRadius",
+        "2": "heightRadius",
+        "3": "isSelectable",
+        "4": "reverse",
+        "5": "displayCount",
+        "6": "canSelectPoint",
+        "7": "isOnSubTower",
+        "8": "display",
+        "9": "pointDisplay"
+      }
+    },
+    "message1": "widthRadius%1",
+    "args1": [
+      {
+        "name": "widthRadius",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "heightRadius%1",
+    "args2": [
+      {
+        "name": "heightRadius",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "isSelectable%1",
+    "args3": [
+      {
+        "name": "isSelectable",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message4": "reverse%1",
+    "args4": [
+      {
+        "name": "reverse",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "displayCount%1",
+    "args5": [
+      {
+        "name": "displayCount",
+        "type": "field_number",
+        "value": 0,
+        "precision": 1
+      }
+    ],
+    "message6": "canSelectPoint%1",
+    "args6": [
+      {
+        "name": "canSelectPoint",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message7": "isOnSubTower%1",
+    "args7": [
+      {
+        "name": "isOnSubTower",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message8": "display%1",
+    "args8": [
+      {
+        "name": "display",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "PrefabReference"
+        }
+      }
+    ],
+    "message9": "pointDisplay%1",
+    "args9": [
+      {
+        "name": "pointDisplay",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "PrefabReference"
+        }
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterOnlyCamoInModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -21134,72 +20659,6 @@
         "type": "field_number",
         "value": 0,
         "precision": 1
-      }
-    ]
-  },
-  {
-    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseAirUnitModel",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Model",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
-      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseAirUnitModel"
-    ],
-    "category": "Attack Behaviors",
-    "subcategory": "Target Suppliers",
-    "colour": 63,
-    "message0": "%1TargetCloseAirUnitModel%2",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseAirUnitModel, Assembly-CSharp"
-      },
-      {
-        "type": "field_input",
-        "name": "name",
-        "text": ""
-      }
-    ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "isSelectable",
-        "2": "isOnSubTower"
-      }
-    },
-    "message1": "isSelectable%1",
-    "args1": [
-      {
-        "name": "isSelectable",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message2": "isOnSubTower%1",
-    "args2": [
-      {
-        "name": "isOnSubTower",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
       }
     ]
   },
@@ -22265,6 +21724,99 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.CircleFootprintModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.FootprintModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.CircleFootprintModel"
+    ],
+    "category": "Tower Behaviors",
+    "subcategory": null,
+    "colour": 30,
+    "message0": "%1CircleFootprintModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.CircleFootprintModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "radius",
+        "2": "doesntBlockTowerPlacement",
+        "3": "ignoresPlacementCheck",
+        "4": "ignoresTowerOverlap"
+      }
+    },
+    "message1": "radius%1",
+    "args1": [
+      {
+        "name": "radius",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "doesntBlockTowerPlacement%1",
+    "args2": [
+      {
+        "name": "doesntBlockTowerPlacement",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message3": "ignoresPlacementCheck%1",
+    "args3": [
+      {
+        "name": "ignoresPlacementCheck",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message4": "ignoresTowerOverlap%1",
+    "args4": [
+      {
+        "name": "ignoresTowerOverlap",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRateSupportZoneModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -22439,6 +21991,72 @@
         "shadow": {
           "type": "Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[]"
         }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongAirUnitModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongAirUnitModel"
+    ],
+    "category": "Attack Behaviors",
+    "subcategory": "Target Suppliers",
+    "colour": 63,
+    "message0": "%1TargetStrongAirUnitModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongAirUnitModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "isSelectable",
+        "2": "isOnSubTower"
+      }
+    },
+    "message1": "isSelectable%1",
+    "args1": [
+      {
+        "name": "isSelectable",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message2": "isOnSubTower%1",
+    "args2": [
+      {
+        "name": "isOnSubTower",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
       }
     ]
   },
@@ -30487,6 +30105,272 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.LineProjectileEmissionModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.LineProjectileEmissionModel"
+    ],
+    "category": "Weapon Behaviors",
+    "subcategory": "Emissions",
+    "colour": 100,
+    "message0": "%1LineProjectileEmissionModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Emissions.LineProjectileEmissionModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "useTargetAsEndPoint",
+        "2": "displayLength",
+        "3": "displayLifetime",
+        "4": "ignoreBlockers",
+        "5": "effectAtEndRate",
+        "6": "dontUseTowerPosition",
+        "7": "useTowerRotation",
+        "8": "useLengthSpeed",
+        "9": "lengthSpeed",
+        "10": "endProjectileSharesPierce",
+        "11": "displayPath",
+        "12": "effectAtEndModel",
+        "13": "effectAtStartModel",
+        "14": "projectileInitialHitModel",
+        "15": "projectileAtEndModel",
+        "16": "emissionAtEndModel",
+        "17": "behaviors",
+        "18": "behaviors"
+      }
+    },
+    "message1": "useTargetAsEndPoint%1",
+    "args1": [
+      {
+        "name": "useTargetAsEndPoint",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message2": "displayLength%1",
+    "args2": [
+      {
+        "name": "displayLength",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message3": "displayLifetime%1",
+    "args3": [
+      {
+        "name": "displayLifetime",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message4": "ignoreBlockers%1",
+    "args4": [
+      {
+        "name": "ignoreBlockers",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "effectAtEndRate%1",
+    "args5": [
+      {
+        "name": "effectAtEndRate",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message6": "dontUseTowerPosition%1",
+    "args6": [
+      {
+        "name": "dontUseTowerPosition",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message7": "useTowerRotation%1",
+    "args7": [
+      {
+        "name": "useTowerRotation",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message8": "useLengthSpeed%1",
+    "args8": [
+      {
+        "name": "useLengthSpeed",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message9": "lengthSpeed%1",
+    "args9": [
+      {
+        "name": "lengthSpeed",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message10": "endProjectileSharesPierce%1",
+    "args10": [
+      {
+        "name": "endProjectileSharesPierce",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message11": "displayPath%1",
+    "args11": [
+      {
+        "name": "displayPath",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Effects.AssetPathModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "AssetPathModel"
+        }
+      }
+    ],
+    "message12": "effectAtEndModel%1",
+    "args12": [
+      {
+        "name": "effectAtEndModel",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Effects.EffectModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "EffectModel"
+        }
+      }
+    ],
+    "message13": "effectAtStartModel%1",
+    "args13": [
+      {
+        "name": "effectAtStartModel",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Effects.EffectModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "EffectModel"
+        }
+      }
+    ],
+    "message14": "projectileInitialHitModel%1",
+    "args14": [
+      {
+        "name": "projectileInitialHitModel",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "ProjectileModel"
+        }
+      }
+    ],
+    "message15": "projectileAtEndModel%1",
+    "args15": [
+      {
+        "name": "projectileAtEndModel",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "ProjectileModel"
+        }
+      }
+    ],
+    "message16": "emissionAtEndModel%1",
+    "args16": [
+      {
+        "name": "emissionAtEndModel",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "EmissionModel"
+        }
+      }
+    ],
+    "message17": "behaviors",
+    "args17": [],
+    "message18": "%1",
+    "args18": [
+      {
+        "name": "behaviors",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionBehaviorModel[]"
+        }
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.RateSupportBombExpertModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -30915,6 +30799,72 @@
         "type": "field_input",
         "text": "null",
         "spellcheck": false
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseAirUnitModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackBehaviorModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSupplierModel",
+      "Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseAirUnitModel"
+    ],
+    "category": "Attack Behaviors",
+    "subcategory": "Target Suppliers",
+    "colour": 63,
+    "message0": "%1TargetCloseAirUnitModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseAirUnitModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "isSelectable",
+        "2": "isOnSubTower"
+      }
+    },
+    "message1": "isSelectable%1",
+    "args1": [
+      {
+        "name": "isSelectable",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message2": "isOnSubTower%1",
+    "args2": [
+      {
+        "name": "isOnSubTower",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
       }
     ]
   },
@@ -41886,6 +41836,53 @@
     ]
   },
   {
+    "type": "Il2CppAssets.Scripts.Models.Towers.Filters.FilterTargetAngleModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel",
+      "Il2CppAssets.Scripts.Models.Towers.Filters.FilterTargetAngleModel"
+    ],
+    "category": "Filters",
+    "subcategory": null,
+    "colour": 180,
+    "message0": "%1FilterTargetAngleModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.Filters.FilterTargetAngleModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "1": "fieldOfView",
+        "2": "baseTowerRotationOffset"
+      }
+    },
+    "message1": "fieldOfView%1",
+    "args1": [
+      {
+        "name": "fieldOfView",
+        "type": "field_number",
+        "value": 0
+      }
+    ],
+    "message2": "baseTowerRotationOffset%1",
+    "args2": [
+      {
+        "name": "baseTowerRotationOffset",
+        "type": "field_number",
+        "value": 0
+      }
+    ]
+  },
+  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.PathMovementFromScreenCenterModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -46461,9 +46458,9 @@
       {
         "name": "baseIds",
         "type": "input_statement",
-        "check": "string[]",
+        "check": "Tower[]",
         "shadow": {
-          "type": "string[]"
+          "type": "Tower[]"
         }
       }
     ]
@@ -47598,8 +47595,7 @@
     "args2": [
       {
         "name": "towerSet",
-        "type": "field_multi_dropdown",
-        "bitmap": true,
+        "type": "field_dropdown",
         "options": [
           [
             "None",
@@ -50281,8 +50277,7 @@
     "args1": [
       {
         "name": "towerGroup",
-        "type": "field_multi_dropdown",
-        "bitmap": true,
+        "type": "field_dropdown",
         "options": [
           [
             "None",
@@ -51947,8 +51942,7 @@
     "args2": [
       {
         "name": "towerSet",
-        "type": "field_multi_dropdown",
-        "bitmap": true,
+        "type": "field_dropdown",
         "options": [
           [
             "None",
@@ -55557,53 +55551,6 @@
     "mutator": "plus_minus_rows"
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]",
-    "previousStatement": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]",
-    "category": "Tower Behaviors",
-    "subcategory": null,
-    "colour": 30,
-    "message0": "%1%2",
-    "args0": [
-      {
-        "type": "field_plus"
-      },
-      {
-        "type": "field_dropdown",
-        "name": "$data",
-        "options": [
-          [
-            "null",
-            "null"
-          ],
-          [
-            "empty",
-            "[]"
-          ]
-        ]
-      }
-    ],
-    "message1": "%1%2%3",
-    "args1": [
-      {
-        "type": "field_plus"
-      },
-      {
-        "type": "field_minus"
-      },
-      {
-        "name": "i",
-        "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
-        "shadow": {
-          "type": "Shadow",
-          "data": "TowerBehaviorModel"
-        }
-      }
-    ],
-    "data": "BLOCKLY_ARRAY",
-    "mutator": "plus_minus_rows"
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Mutators.TowerMutatorModel[]",
     "previousStatement": "Il2CppAssets.Scripts.Models.Towers.Mutators.TowerMutatorModel[]",
     "category": "Misc Models",
@@ -55644,6 +55591,53 @@
         "shadow": {
           "type": "Shadow",
           "data": "TowerMutatorModel"
+        }
+      }
+    ],
+    "data": "BLOCKLY_ARRAY",
+    "mutator": "plus_minus_rows"
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]",
+    "previousStatement": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[]",
+    "category": "Tower Behaviors",
+    "subcategory": null,
+    "colour": 30,
+    "message0": "%1%2",
+    "args0": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "$data",
+        "options": [
+          [
+            "null",
+            "null"
+          ],
+          [
+            "empty",
+            "[]"
+          ]
+        ]
+      }
+    ],
+    "message1": "%1%2%3",
+    "args1": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_minus"
+      },
+      {
+        "name": "i",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "TowerBehaviorModel"
         }
       }
     ],
@@ -55874,8 +55868,7 @@
       },
       {
         "name": "i",
-        "type": "field_multi_dropdown",
-        "bitmap": true,
+        "type": "field_dropdown",
         "options": [
           [
             "None",

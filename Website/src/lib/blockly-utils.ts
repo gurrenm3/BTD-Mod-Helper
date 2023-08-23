@@ -8,6 +8,7 @@ import Blockly, {
   WorkspaceSvg,
 } from "blockly";
 import * as JsonConversionUtils from "./json-conversion-utils";
+import { extraBlockInfo } from "./json-conversion-utils";
 import {
   addMutatorBlock,
   OptionalRows,
@@ -303,22 +304,17 @@ export const getBlockInputs = (type: string, allowNonShadow = true) => {
   return inputs;
 };
 
-export const getBlockInfo = (type: string) =>
-  (Blockly.Blocks[type].toolboxInfo ??= {
+export const getBlockInfo = (type: string) => {
+  if (!(type in Blockly.Blocks)) {
+    console.error(`Tried to get info for block ${type} which does not exist`);
+    return { type, kind: "block" };
+  }
+
+  return (Blockly.Blocks[type].toolboxInfo ??= {
     type,
     kind: "block",
-    ...(Blockly.Blocks[type].json?.hat ? { extraState: { $hat: true } } : {}),
     inputs: getBlockInputs(type),
     next: Blockly.Blocks[type]?.json?.next,
-    ...(Blockly.Blocks[type].json?.comment
-      ? {
-          icons: {
-            comment: {
-              text: Blockly.Blocks[type].json?.comment,
-              height: 50,
-              width: 300,
-            },
-          },
-        }
-      : {}),
+    ...extraBlockInfo(type),
   } as BlockInfo);
+};

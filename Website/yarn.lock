@@ -309,11 +309,6 @@
   resolved "https://registry.yarnpkg.com/@blockly/theme-dark/-/theme-dark-6.0.0.tgz#3a2a16a10c64d82382a48ad8cab6e5d73e8f22cc"
   integrity sha512-BipmTIYehNHI6lT2EgTmePyYWw6U6eLtoz74yxMWxpDM8QMTU511cmkHAIBSzEORw1Wh2vk87fRW5mtKpDrE1g==
 
-"@blockly/zoom-to-fit@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@blockly/zoom-to-fit/-/zoom-to-fit-5.0.3.tgz#83dcc6c0faa37fa569424141267640c080d24055"
-  integrity sha512-UKKyz5vUNkiqEzr0qouMMfPVOeZr4pwYNJgMsY4TIk4RPXVh9fEATJ6vPVmEdmgPAsyzbWB018gkRgGqqekPzg==
-
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz#00629c35a688e05a88b1cda684fb9d5e73f000a1"
@@ -580,13 +575,6 @@
   integrity sha512-gqaTIGC8My3LVSnU38IwjHVKJC94HSonjvFHDk8/aSrApL8v4uWgm8zJkK7MJIIbHuNOr/+Mv2KkQKcxs6LEZA==
   dependencies:
     unist-util-visit "^1.4.1"
-
-"@mit-app-inventor/blockly-plugin-workspace-multiselect@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@mit-app-inventor/blockly-plugin-workspace-multiselect/-/blockly-plugin-workspace-multiselect-0.1.7.tgz#5628f02b9bd56345a771a84a6074cbc7e1c98ccc"
-  integrity sha512-0NEW8r492uo9dQBePfHjEgL3OkbIG0f6GHK9JQdkbyCoG2v2co2hyqk3gL9bVCHE5rRFc4cHrTG2BcsaJLr/wg==
-  dependencies:
-    dragselect "^2.7.4"
 
 "@next/env@13.3.0":
   version "13.3.0"
@@ -1982,11 +1970,6 @@ domexception@^4.0.0:
   integrity sha512-A2is4PLG+eeSfoTMA95/s4pvAoSo2mKtiM5jlHkAVewmiO8ISFTFKZjH7UAM1Atli/OT/7JHOrJRJiMKUZKYBw==
   dependencies:
     webidl-conversions "^7.0.0"
-
-dragselect@^2.7.4:
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/dragselect/-/dragselect-2.7.4.tgz#54838390212d2d954909bf42aa2213df29317b4a"
-  integrity sha512-j0qFl4xvsyImlSTn9erDCCT4SSPUMssgKAYuKqhsPr8WPphLghHfjDd4WR2jLjL91fTQQlbbIJ/7T2qwD2hghQ==
 
 ecdsa-sig-formatter@1.0.11:
   version "1.0.11"

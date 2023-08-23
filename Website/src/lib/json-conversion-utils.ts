@@ -1,5 +1,5 @@
 import { BlockArgDef, BlockDef } from "./blockly-types";
-import Blockly, { Block } from "blockly";
+import Blockly, { Block, WorkspaceSvg } from "blockly";
 import { argsList, getBlockInfo, getBlockInputs } from "./blockly-utils";
 import { merge } from "lodash";
 import {
@@ -41,13 +41,14 @@ export const recursiveSetCollapsed = (
 
   if (
     !block.isShadow() &&
-    !block.type.endsWith(".Model[]") &&
     block.type !== "int[]" &&
     (doAll ||
-      block.inputList.some(
+      (block.inputList.some(
         (input) =>
           input.connection || input.fieldRow.some((field) => field.EDITABLE)
-      ))
+      ) &&
+        !block.type.endsWith(".Model[]") &&
+        !block.type.endsWith(".WeaponModel[]")))
   ) {
     Blockly.Events.setRecordUndo(false);
     block.setCollapsed(collapsed);
@@ -291,7 +292,7 @@ const handleInput = (
   }
 };
 
-const modelToBlockState = (
+export const modelToBlockState = (
   model: object
 ): Blockly.serialization.blocks.State => {
   const fullType = model["$type"];
@@ -360,7 +361,9 @@ const modelToBlockState = (
   return block;
 };
 
-export function blockStateToModel(block: Blockly.serialization.blocks.State) {
+export const blockStateToModel = (
+  block: Blockly.serialization.blocks.State
+) => {
   let model = {} as any;
 
   // Add the fields
@@ -430,6 +433,38 @@ export function blockStateToModel(block: Blockly.serialization.blocks.State) {
   }
 
   return model;
-}
+};
 
-export default { modelToBlockState, blockStateToModel };
+export const pasteBlockFromText = (workspace: WorkspaceSvg, text: string) => {
+  try {
+    const json = JSON.parse(text);
+    const blockState = modelToBlockState(json);
+    if (blockState.type.endsWith(".TowerModel")) {
+      blockState.extraState["$hat"] = true;
+    }
+    const block = workspace.paste(blockState) as unknown as Block;
+    recursiveSetCollapsed(block, true);
+    block.setCollapsed(false);
+    return true;
+  } catch (e) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(e);
+    }
+  }
+  return false;
+};
+
+export const extraBlockInfo = (type) => ({
+  ...(Blockly.Blocks[type].json?.hat ? { extraState: { $hat: true } } : {}),
+  ...(Blockly.Blocks[type].json?.comment
+    ? {
+        icons: {
+          comment: {
+            text: Blockly.Blocks[type].json?.comment,
+            height: 50,
+            width: 300,
+          },
+        },
+      }
+    : {}),
+});

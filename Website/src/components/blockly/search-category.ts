@@ -67,7 +67,8 @@ export abstract class SearchCategory extends Blockly.ToolboxCategory {
 
       this.matchBlocks();
     });
-    this.rowContents_.replaceChildren(this.searchField);
+    this.rowContents_.innerHTML = "";
+    this.rowContents_.appendChild(this.searchField);
     return dom;
   }
 

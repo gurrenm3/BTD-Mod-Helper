@@ -142,3 +142,38 @@
 .blocklyMinimalBody {
   background-color: #d3d3d3 !important;
 }
+
+.blockly-ws-search {
+  border-radius: .5rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+}
+
+.blockly-ws-search input {
+  outline: none;
+  padding-left: 5px;
+}
+
+[data-theme="dark"] .blockly-ws-search {
+  background-color: rgb(92, 92, 92);
+  border-color: black;
+}
+
+[data-theme="dark"] .blockly-ws-search-input input {
+  background-color: rgb(92, 92, 92);
+  color: white;
+}
+
+[data-theme="dark"] .blockly-ws-search-input input::placeholder {
+  color: white
+}
+
+.blockly-ws-search-btn {
+  width: 20px;
+  border-radius: .5rem;
+}
+
+.blockly-ws-search-btn:hover {
+  background-color: rgb(200, 200, 200);
+}
