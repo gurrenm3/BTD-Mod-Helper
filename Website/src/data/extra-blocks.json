@@ -40,6 +40,22 @@
     ]
   },
   {
+    "type": "NextShadow",
+    "previousStatement": null,
+    "message0": "%1%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$data",
+        "value": "null"
+      },
+      {
+        "type": "field_data"
+      }
+    ],
+    "data": "Model"
+  },
+  {
     "type": "TowerWithTiers",
     "output": [
       "Tower",
@@ -222,5 +238,157 @@
     ],
     "data": "BLOCKLY_ARRAY",
     "mutator": "plus_minus_rows"
+  },
+  {
+    "type": "CustomTower",
+    "previousStatement": "CustomTower",
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 5,
+    "message0": "Custom Tower",
+    "args0": [],
+    "message1": "Display Name %1",
+    "args1": [
+      {
+        "type": "field_input",
+        "name": "displayName",
+        "text": "Name"
+      }
+    ],
+    "message2": "Description %1",
+    "args2": [
+      {
+        "type": "field_multilinetext",
+        "name": "description",
+        "text": "Description"
+      }
+    ]
+  },
+  {
+    "type": "CustomUpgrade",
+    "previousStatement": "CustomUpgrade",
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 5,
+    "message0": "Custom Upgrade",
+    "args0": [],
+    "message1": "For Tower %1",
+    "args1": [
+      {
+        "type": "field_input",
+        "name": "tower",
+        "text": "baseId"
+      }
+    ],
+    "message2": "Display Name %1",
+    "args2": [
+      {
+        "type": "field_input",
+        "name": "displayName",
+        "text": "Name"
+      }
+    ],
+    "message3": "Description %1",
+    "args3": [
+      {
+        "type": "field_multilinetext",
+        "name": "description",
+        "text": "Description"
+      }
+    ],
+    "message4": "%1",
+    "args4": [
+      {
+        "type": "input_statement",
+        "name": "effects",
+        "check": "CustomUpgradeEffect",
+        "shadow": {
+          "type": "NextShadow",
+          "data": "Upgrade Effects"
+        }
+      }
+    ],
+    "data": "BLOCKLY_CUSTOM"
+  },
+  {
+    "type": "CustomUpgradeEffect_Merge",
+    "previousStatement": "CustomUpgradeEffect",
+    "nextStatement": "CustomUpgradeEffect",
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 10,
+    "message0": "%1 Merge In %2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "BloonsTD6 Mod Helper.Api.Internal.CustomUpgradeEffects.Merge, BTD Mod Helper"
+      },
+      {
+        "type": "input_value",
+        "name": "tower",
+        "check": "Il2CppAssets.Scripts.Models.Towers.TowerModel",
+        "block": {
+          "type": "CustomTowerModel"
+        }
+      }
+    ]
+  },
+  {
+    "type": "CustomUpgradeEffect_IfAppliedUpgrade",
+    "previousStatement": "CustomUpgradeEffect",
+    "nextStatement": "CustomUpgradeEffect",
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 10,
+    "message0": "%1 If Has Upgrade %2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "BloonsTD6 Mod Helper.Api.Internal.CustomUpgradeEffects.IfAppliedUpgrade, BTD Mod Helper"
+      },
+      {
+        "type": "field_input",
+        "name": "upgrade",
+        "text": "Upgrade"
+      }
+    ],
+    "message1": "%1",
+    "args1": [
+      {
+        "type": "input_statement",
+        "name": "effects",
+        "check": "CustomUpgradeEffect",
+        "shadow": {
+          "type": "NextShadow",
+          "data": "Upgrade Effects"
+        }
+      }
+    ]
+  },
+  {
+    "type": "CustomUpgradeEffect_Delete",
+    "output": "Il2CppAssets.Scripts.Models.Model",
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 10,
+    "message0": "%1 Delete %2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "BloonsTD6 Mod Helper.Api.Internal.CustomUpgradeEffects.Delete, BTD Mod Helper"
+      },
+      {
+        "type": "input_value",
+        "name": "value",
+        "check": "Il2CppAssets.Scripts.Models.Model",
+        "shadow": {
+          "type": "Shadow",
+          "data": "Model"
+        }
+      }
+    ]
   }
 ]

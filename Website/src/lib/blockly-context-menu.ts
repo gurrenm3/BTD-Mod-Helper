@@ -49,7 +49,7 @@ export const showInToolbox: ContextMenuRegistry.RegistryItem = {
   displayText: "Show In Toolbox",
   weight: 6,
   scopeType: ContextMenuRegistry.ScopeType.BLOCK,
-  preconditionFn: ({ block }) => (!block.isInFlyout ? "enabled" : "hidden"),
+  preconditionFn: () => "enabled",
   callback: ({ block }) => {
     searchToolbox(
       block.type,
@@ -70,7 +70,6 @@ export const loadFromJson: ContextMenuRegistry.RegistryItem = {
 
       if ("$type" in json) {
         const blockState = modelToBlockState(json);
-        blockState.extraState["$hat"] = true;
 
         const block = Blockly.serialization.blocks.append(
           blockState,
@@ -114,27 +113,6 @@ export const saveToJson: ContextMenuRegistry.RegistryItem = {
       "application/json",
       modelJson.name + ".json"
     );
-  },
-};
-
-export const toggleHat: ContextMenuRegistry.RegistryItem = {
-  id: "toggleHat",
-  displayText: "Toggle Hat",
-  weight: 5,
-  scopeType: ContextMenuRegistry.ScopeType.BLOCK,
-  preconditionFn: ({ block }) =>
-    !block.isInFlyout &&
-    Blockly.Blocks[block.type].json?.hat &&
-    Blockly.Blocks[block.type].json?.mutator === OptionalRows
-      ? "enabled"
-      : "hidden",
-  callback: ({ block }) => {
-    if (block.hat) {
-      block.hat = undefined;
-    } else {
-      block.hat = "cap";
-    }
-    block.loadExtraState(block.saveExtraState());
   },
 };
 

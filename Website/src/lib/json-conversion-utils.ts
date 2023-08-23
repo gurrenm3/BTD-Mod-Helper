@@ -439,9 +439,6 @@ export const pasteBlockFromText = (workspace: WorkspaceSvg, text: string) => {
   try {
     const json = JSON.parse(text);
     const blockState = modelToBlockState(json);
-    if (blockState.type.endsWith(".TowerModel")) {
-      blockState.extraState["$hat"] = true;
-    }
     const block = workspace.paste(blockState) as unknown as Block;
     recursiveSetCollapsed(block, true);
     block.setCollapsed(false);
@@ -455,7 +452,6 @@ export const pasteBlockFromText = (workspace: WorkspaceSvg, text: string) => {
 };
 
 export const extraBlockInfo = (type) => ({
-  ...(Blockly.Blocks[type].json?.hat ? { extraState: { $hat: true } } : {}),
   ...(Blockly.Blocks[type].json?.comment
     ? {
         icons: {

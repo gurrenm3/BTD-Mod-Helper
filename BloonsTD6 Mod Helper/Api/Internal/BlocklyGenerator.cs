@@ -125,6 +125,7 @@ internal static class BlocklyGenerator
         if (BaseTypes.Contains(type))
         {
             block["hat"] = "cap";
+            block["extensions"] = new JArray {"toggle_hat"};
         }
         if (type.IsAssignableTo(typeof(Model)))
         {

@@ -33,7 +33,7 @@ const defaultToolbox = {
   contents: [
     {
       kind: ToolboxSearchCategory.registrationName,
-      name: "Search All Blocks",
+      name: "Search Blocks",
       colour: "rgb(85, 119, 238)",
       contents: [],
     },
@@ -55,7 +55,7 @@ export default () => {
         "workspace",
         JSON.stringify(Blockly.serialization.workspaces.save(workspace))
       ),
-    5000
+    2000
   );
 
   const toolbox = useRef<ToolboxInfo>(defaultToolbox);
@@ -117,7 +117,7 @@ export default () => {
 
   const [tips, showTips] = useState(false);
 
-  const init = (workspace: WorkspaceSvg, isFirst: boolean) => {
+  const init = (workspace: WorkspaceSvg) => {
     new WorkspaceSearch(workspace).init();
     new CustomWorkspaceControl(
       workspace,
@@ -126,23 +126,23 @@ export default () => {
       fullscreenSvg
     ).init();
 
-    if (!Blockly["loaded"]) {
-      Blockly["loaded"] = true;
-      const savedWorkspace = localStorage.getItem("workspace");
-      if (workspace && savedWorkspace) {
-        try {
-          Blockly.serialization.workspaces.load(
-            JSON.parse(savedWorkspace),
-            workspace
-          );
-        } catch (e) {
-          console.warn(e);
-        }
-      }
-    }
     workspace.addChangeListener(() => debouncedSave(workspace));
+    workspace.addChangeListener(() => {
+      const savedWorkspace = localStorage.getItem("workspace");
+      if (!savedWorkspace || Blockly["loaded"]) return;
+      Blockly["loaded"] = true;
 
-    initWorkspace(workspace, isFirst);
+      try {
+        Blockly.serialization.workspaces.load(
+          JSON.parse(savedWorkspace),
+          workspace
+        );
+      } catch (e) {
+        console.warn(e);
+      }
+    });
+
+    initWorkspace(workspace);
   };
 
   const xs = !useBreakpoint("sm", "up");
@@ -221,7 +221,7 @@ export default () => {
             </li>
             <li>
               Most blocks will be collapsed by default, double click to expand
-              them. Use Ctrl+F to search blocks, including collapsed ones..
+              them. Use Ctrl+F to search blocks, including collapsed ones.
             </li>
             <li>
               When you've done your edits, select the outer TowerModel block and

@@ -57,5 +57,6 @@ export type BlocklyShadowState = {
 export type BlockShadowDef = {
   type: string;
   fields?: object;
+  movable?: boolean;
   toolbox?: Maybe<boolean>;
 };
