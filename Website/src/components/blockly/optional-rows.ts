@@ -27,31 +27,25 @@ const defaultShow = false;
 export const OptionalRowsMixin: OptionalRowsMutator = {
   args: undefined,
   saveExtraState() {
-    return { ...this.args, $hat: !!this.hat };
+    return this.args;
   },
-  loadExtraState({ $hat, ...state }) {
+  loadExtraState(state) {
     this.args = state;
     this.rebuildShape_();
-    if ($hat) {
-      this.hat = "cap";
-      this.setOutput(false);
-    }
   },
   decompose(workspace): Block {
     const block = newBlock(workspace, this.type + "_container");
     (block as BlockSvg).initSvg();
 
-    const { $hat, ...args } = this.args;
-
-    for (let [arg, enabled] of Object.entries(args)) {
-      block.setFieldValue(enabled, arg);
+    for (let [arg, enabled] of Object.entries(this.args)) {
+      if (block.getField(arg)) {
+        block.setFieldValue(enabled, arg);
+      }
     }
 
     return block;
   },
   compose(block): void {
-    const { $hat, ...args } = this.args;
-
     const json = Blockly.Blocks[this.type].json as BlockDef;
     const options = json.mutatorOptions as OptionalRowsOptions;
     options.defaults ??= {};
@@ -66,7 +60,6 @@ export const OptionalRowsMixin: OptionalRowsMutator = {
     const block = JSON.parse(
       JSON.stringify(Blockly.Blocks[this.type].json)
     ) as BlockDef;
-    delete block.mutator;
 
     // Rebuild block with only toggled args
     const options = block.mutatorOptions as OptionalRowsOptions;
@@ -128,8 +121,10 @@ export const addMutatorBlock = (block: BlockDef) => {
 
   const args = {} as Record<string, boolean>;
 
-  for (let value of Object.values(options.optional)) {
-    args[value] = options.defaults?.[value] ?? defaultShow;
+  for (let [key, value] of Object.entries(options.optional)) {
+    if (block[`message${key}`]?.trim() && block[`args${key}`]) {
+      args[value] = options.defaults?.[value] ?? defaultShow;
+    }
   }
 
   const argLength = Object.values(args).length;

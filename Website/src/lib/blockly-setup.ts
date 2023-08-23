@@ -41,7 +41,6 @@ import {
   saveToJson,
   saveWorkspace,
   showInToolbox,
-  toggleHat,
 } from "./blockly-context-menu";
 import {
   openJsonShortcut,
@@ -50,12 +49,25 @@ import {
   workspaceCut,
   workspacePaste,
 } from "./blockly-shortcuts";
-import { WorkspaceSearch } from "../components/blockly/workspace-search";
-import { CustomWorkspaceControl } from "../components/blockly/custom-workspace-control";
-import { NextRouter } from "next/router";
+import { ToggleHat, ToggleHatMixin } from "../components/blockly/toggle-hat";
+
+const allowCustomBlocks = process.env.NODE_ENV === "development";
 
 export const initBlocks = () => {
   for (let block of allJsonBlocks) {
+    if (allowCustomBlocks) {
+      switch (block.type) {
+        case "Il2CppAssets.Scripts.Models.Towers.TowerModel":
+          block.nextStatement = "CustomTower";
+          break;
+        case "Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel":
+          block.nextStatement = "CustomUpgrade";
+          break;
+      }
+    } else if (block.subcategory === "Custom") {
+      continue;
+    }
+
     addBlock(block);
   }
 };
@@ -72,7 +84,8 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
     if (
       block.type.includes("[]") ||
       block.type.includes("<>") ||
-      !block.category
+      !block.category ||
+      (block.subcategory === "Custom" && !allowCustomBlocks)
     )
       continue;
 
@@ -125,8 +138,6 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
 };
 
 export const registerAll = () => {
-  console.log("Registering types in blockly");
-
   Blockly.utils.colour.setHsvSaturation(0.66);
   ToolboxCategory.nestedPadding = 10;
 
@@ -176,6 +187,7 @@ export const registerAll = () => {
     PlusMinusRowsMixin,
     PlusMinusRowsFn
   );
+  Blockly.Extensions.registerMixin(ToggleHat, ToggleHatMixin);
 
   Blockly.blockRendering.register(CustomRenderer.name, CustomRenderer);
 
@@ -185,7 +197,6 @@ export const registerAll = () => {
   ContextMenuRegistry.registry.register(showInToolbox);
   ContextMenuRegistry.registry.register(loadFromJson);
   ContextMenuRegistry.registry.register(saveToJson);
-  ContextMenuRegistry.registry.register(toggleHat);
   Blockly.ContextMenuRegistry.registry.register(saveWorkspace);
 
   Blockly.ShortcutRegistry.registry.unregister(
@@ -269,7 +280,7 @@ export const plugins = {
     CustomVerticalFlyout.name,
 };
 
-export const initWorkspace = (workspace: WorkspaceSvg, isFirst: boolean) => {
+export const initWorkspace = (workspace: WorkspaceSvg) => {
   // This is better than the MIT one because it ignores clicks on block icons, shadow blocks, etc
   workspace.addChangeListener((event: Blockly.Events.Click) => {
     if (event.type !== Blockly.Events.CLICK || event.targetType !== "block")
@@ -333,6 +344,15 @@ export const initWorkspace = (workspace: WorkspaceSvg, isFirst: boolean) => {
       oldItem.setExpanded(false);
       toolbox.clearSelection();
     }
+  });
+
+  workspace.addChangeListener((event: Blockly.Events.BlockCreate) => {
+    if (event.type !== Blockly.Events.BLOCK_CREATE) return;
+
+    const workspace = Blockly.Workspace.getById(event.workspaceId);
+    const block = workspace.getBlockById(event.blockId);
+
+    block?.["onCreate"]?.();
   });
 };
 

@@ -1,4 +1,4 @@
-import { BlockDef } from "./blockly-types";
+import { BlockArgDef, BlockDef } from "./blockly-types";
 
 import blocks from "../data/blocks.json";
 import extraBlocks from "../data/extra-blocks.json";
@@ -7,6 +7,8 @@ import audioSourceReferences from "../data/audio-source-references.json";
 import spriteReferences from "../data/sprite-references.json";
 import towers from "../data/towers.json";
 import upgrades from "../data/upgrades.json";
+import { rowsList } from "./blockly-utils";
+import { cloneDeep } from "lodash";
 
 const createResourceBlock =
   (type: string) =>
@@ -89,12 +91,37 @@ export const upgradeBlocks = Object.entries(upgradeIds).map(
     } as BlockDef)
 );
 
+const towerModel = blocks.find(
+  (block) => block.type === "Il2CppAssets.Scripts.Models.Towers.TowerModel"
+) as BlockDef;
+
+const customTowerModel = cloneDeep(towerModel) as BlockDef;
+
+const remove = ["baseId", "tiers", "tier", "cost", "isSubTower", "mods"];
+
+customTowerModel.type = "CustomTowerModel";
+delete customTowerModel.category;
+delete customTowerModel.extensions;
+
+customTowerModel.message0 = "%1TowerModel";
+customTowerModel.args0 = [customTowerModel.args0[0]];
+
+for (let [i, name] of Object.entries(
+  customTowerModel.mutatorOptions.optional
+)) {
+  if (remove.includes(name as string)) {
+    customTowerModel[`message${i}`] = " ";
+    customTowerModel[`args${i}`] = [];
+  }
+}
+
 export const allJsonBlocks = [
-  ...extraBlocks,
   ...blocks,
+  ...extraBlocks,
   ...prefabBlocks,
   ...audioSourceBlocks,
   ...spriteBlocks,
   ...towerBlocks,
   ...upgradeBlocks,
+  customTowerModel,
 ] as BlockDef[];

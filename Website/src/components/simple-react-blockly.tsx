@@ -5,7 +5,7 @@ export interface SimpleReactBlocklyProps {
   wrapperDivClassName: string;
   workspaceConfiguration: BlocklyOptions;
   workspaceDidChange?: () => void;
-  init?: (workspace: WorkspaceSvg, isFirst?: boolean) => void;
+  init?: (workspace: WorkspaceSvg) => void;
   dispose?: (workspace: WorkspaceSvg) => void;
 }
 
@@ -57,7 +57,7 @@ export default forwardRef<SimpleReactBlocklyRef, SimpleReactBlocklyProps>(
         }
         Blockly.serialization.workspaces.load(state, newWorkspace);
         newWorkspace.setScale(scale);
-        props.init?.(newWorkspace, false);
+        props.init?.(newWorkspace);
 
         ref.current = {
           workspace: newWorkspace,
@@ -70,18 +70,6 @@ export default forwardRef<SimpleReactBlocklyRef, SimpleReactBlocklyProps>(
       if (typeof ref !== "function" && ref.current?.workspace) {
         if (props.workspaceConfiguration?.theme instanceof Theme) {
           ref.current.workspace.setTheme(props.workspaceConfiguration.theme);
-          for (let block of ref.current.workspace.getTopBlocks(false)) {
-            if (block.saveExtraState) {
-              const extraState = block.saveExtraState();
-              if (typeof extraState === "object" && "$hat" in extraState) {
-                block.hat = "cap";
-              }
-            }
-
-            if (block.hat) {
-              block.setOutput(false);
-            }
-          }
         }
       }
     }, [props.workspaceConfiguration?.theme, ref]);

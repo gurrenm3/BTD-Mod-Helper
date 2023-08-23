@@ -22,6 +22,9 @@
       }
     ],
     "hat": "cap",
+    "extensions": [
+      "toggle_hat"
+    ],
     "mutator": "optional_rows",
     "mutatorOptions": {
       "optional": {
@@ -697,6 +700,9 @@
       }
     ],
     "hat": "cap",
+    "extensions": [
+      "toggle_hat"
+    ],
     "mutator": "optional_rows",
     "mutatorOptions": {
       "optional": {

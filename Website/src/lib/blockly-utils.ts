@@ -16,6 +16,7 @@ import {
 import { BlockInfo, FlyoutItemInfo } from "blockly/core/utils/toolbox";
 import { ConnectionState } from "blockly/core/serialization/blocks";
 import { ToolboxSearchCategory } from "../components/blockly/toolbox-search-category";
+import { cloneDeep } from "lodash";
 
 /**
  * Returns a list of the all the arguments in a block's json
@@ -40,7 +41,7 @@ export const argsList = (
  * Gets all the rows (message/arg pairs) on a block
  * @param block
  */
-export const rowsList = (block: BlockDef) => {
+export function rowsList(block: BlockDef) {
   const list = [] as [string, BlockArgDef[]][];
 
   for (
@@ -52,7 +53,7 @@ export const rowsList = (block: BlockDef) => {
   }
 
   return list;
-};
+}
 
 /**
  * initializes the json specified shadow blocks of a block on the workspace
@@ -78,10 +79,6 @@ export const manuallyAddShadowBlocks = (
     block.next,
     allowNonShadow
   );
-
-  if (thisBlock.hat) {
-    thisBlock.setOutput(false);
-  }
 };
 
 export const addShadowBlocksToConnection = (
@@ -115,6 +112,9 @@ export const addShadowBlocksToConnection = (
  * @param state
  */
 export const reInitBlock = (block: Block, state: BlockDef) => {
+  delete state.mutator;
+  delete state.extensions;
+
   // Save connections / fields / shadow blocks
   const connections = {} as Record<string, Connection | undefined>;
   const fields = {} as Record<string, any>;
@@ -149,6 +149,7 @@ export const reInitBlock = (block: Block, state: BlockDef) => {
   manuallyAddShadowBlocks(block, state, false);
 
   block.bumpNeighbours();
+  block["onInit"]?.();
 };
 
 /**
@@ -192,6 +193,7 @@ export const addBlock = (block: BlockDef) => {
       if (block.inputsInline === undefined || block.inputsInline === null) {
         this.setInputsInline(false);
       }
+      this["onInit"]?.();
     },
     json,
     data: block.data,
@@ -280,22 +282,17 @@ export const getBlockInputs = (type: string, allowNonShadow = true) => {
 
       if (arg.block && allowNonShadow) {
         const input = (inputs[name] ??= {} as any);
-        input.block = JSON.parse(JSON.stringify(arg.block));
+        input.block = cloneDeep(arg.block);
         input.block.inputs = getBlockInfo(input.block.type).inputs;
 
-        if (
-          !arg.shadow &&
-          !Object.values(input.block.inputs).some(
-            (input: ConnectionState) => input.block
-          )
-        ) {
-          input.shadow = input.block;
+        if (!arg.shadow) {
+          input.block.movable = false;
         }
       }
 
       if (arg.shadow) {
         const input = (inputs[name] ??= {} as any);
-        input.shadow = JSON.parse(JSON.stringify(arg.shadow));
+        input.shadow = cloneDeep(arg.shadow);
         input.shadow.inputs = getBlockInfo(input.shadow.type).inputs;
       }
     }

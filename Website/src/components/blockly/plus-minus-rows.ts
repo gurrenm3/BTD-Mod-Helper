@@ -2,6 +2,7 @@ import { ExtensionMixin, MutatorFn } from "./mutators";
 import Blockly, { Block } from "blockly";
 import { BlockArgDef, BlockDef } from "../../lib/blockly-types";
 import { reInitBlock, rowsList } from "../../lib/blockly-utils";
+import { cloneDeep } from "lodash";
 
 interface PlusMinusOptions {
   itemCount?: number;
@@ -41,7 +42,6 @@ export const PlusMinusRowsMixin: PlusMinusRowsMutator = {
     const block = JSON.parse(
       JSON.stringify(Blockly.Blocks[this.type].json)
     ) as BlockDef;
-    delete block.mutator;
 
     const emptyMessage = block.message0;
     const emptyArgs = block.args0;
@@ -58,7 +58,7 @@ export const PlusMinusRowsMixin: PlusMinusRowsMutator = {
     const rows = [] as [string, BlockArgDef[]][];
 
     const argNumbers = (args: BlockArgDef[], i: number) => {
-      const newArgs = JSON.parse(JSON.stringify(args)) as BlockArgDef[];
+      const newArgs = cloneDeep(args);
       newArgs.forEach((arg) => {
         if (arg.name && !arg.name.startsWith("$")) {
           arg.name += i;
