@@ -7,7 +7,7 @@ export const ToggleHat = "toggle_hat";
 export const ToggleHatMixin = {
   changeHat,
   onInit,
-  onCreate,
+  postInit,
 };
 
 type ToggleHatBlock = Block & typeof ToggleHatMixin;
@@ -34,7 +34,7 @@ function onInit(this: ToggleHatBlock) {
   }
 }
 
-function onCreate(this: ToggleHatBlock) {
+function postInit(this: ToggleHatBlock) {
   const field = this.getField("isSubTower");
   if (field) {
     field.setValidator((isSubTower) =>

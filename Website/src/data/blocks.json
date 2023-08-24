@@ -904,13 +904,6 @@
         "text": ""
       }
     ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "isActive",
-        "2": "ignoreBroadPhase"
-      }
-    },
     "message1": "isActive%1",
     "args1": [
       {
@@ -928,6 +921,12 @@
         ]
       }
     ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "2": "ignoreBroadPhase"
+      }
+    },
     "message2": "ignoreBroadPhase%1",
     "args2": [
       {
@@ -13233,13 +13232,6 @@
         "text": ""
       }
     ],
-    "mutator": "optional_rows",
-    "mutatorOptions": {
-      "optional": {
-        "1": "isActive",
-        "2": "ignoreBroadPhase"
-      }
-    },
     "message1": "isActive%1",
     "args1": [
       {
@@ -13257,6 +13249,12 @@
         ]
       }
     ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "2": "ignoreBroadPhase"
+      }
+    },
     "message2": "ignoreBroadPhase%1",
     "args2": [
       {

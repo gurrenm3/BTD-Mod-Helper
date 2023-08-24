@@ -1,629 +1,3030 @@
 {
-  "Sharp Shots": "Sharp Shots",
-  "Razor Sharp Shots": "Razor Sharp Shots",
-  "Spike-o-pult": "Spike-o-pult",
-  "Juggernaut": "Juggernaut",
-  "Ultra-Juggernaut": "Ultra-Juggernaut",
-  "Quick Shots": "Quick Shots",
-  "Very Quick Shots": "Very Quick Shots",
-  "Triple Shot": "Triple Shot",
-  "Super Monkey Fan Club": "Super Monkey Fan Club",
-  "Plasma Monkey Fan Club": "Plasma Monkey Fan Club",
-  "Long Range Darts": "Long Range Darts",
-  "Enhanced Eyesight": "Enhanced Eyesight",
-  "Crossbow": "Crossbow",
-  "Sharp Shooter": "Sharp Shooter",
-  "Crossbow Master": "Crossbow Master",
-  "DartMonkey Paragon": "Apex Plasma Master",
-  "Improved Rangs": "Improved Rangs",
-  "Glaives": "Glaives",
-  "Glaive Ricochet": "Glaive Ricochet",
-  "M.O.A.R Glaives": "M.O.A.R Glaives",
-  "Glaive Lord": "Glaive Lord",
-  "Faster Throwing": "Faster Throwing",
-  "Faster Rangs": "Faster Rangs",
-  "Bionc Boomerang": "Bionic Boomerang",
-  "Turbo Charge": "Turbo Charge",
-  "Perma Charge": "Perma Charge",
-  "Long Range Rangs": "Long Range Rangs",
-  "Red Hot Rangs": "Red Hot Rangs",
-  "Kylie Boomerang": "Kylie Boomerang",
-  "MOAB Press": "MOAB Press",
-  "MOAB Domination": "MOAB Domination",
-  "BoomerangMonkey Paragon": "Glaive Dominus",
-  "Bigger Bombs": "Bigger Bombs",
-  "Heavy Bombs": "Heavy Bombs",
-  "Really Big Bombs": "Really Big Bombs",
-  "Bloon Impact": "Bloon Impact",
-  "Bloon Crush": "Bloon Crush",
-  "Faster Reload": "Faster Reload",
-  "Missile Launcher": "Missile Launcher",
-  "MOAB Mauler": "MOAB Mauler",
-  "MOAB Assassin": "MOAB Assassin",
-  "MOAB Eliminator": "MOAB Eliminator",
-  "Extra Range": "Extra Range",
-  "Frag Bombs": "Frag Bombs",
-  "Cluster Bombs": "Cluster Bombs",
-  "Recursive Cluster": "Recursive Cluster",
-  "Bomb Blitz": "Bomb Blitz",
-  "Faster Shooting": "Faster Shooting",
-  "Even Faster Shooting": "Even Faster Shooting",
-  "Hot Shots": "Hot Shots",
-  "Ring of Fire": "Ring of Fire",
-  "Inferno Ring": "Inferno Ring",
-  "Long Range Tacks": "Long Range Tacks",
-  "Super Range Tacks": "Super Range Tacks",
-  "Blade Shooter": "Blade Shooter",
-  "Blade Maelstrom": "Blade Maelstrom",
-  "Super Maelstrom": "Super Maelstrom",
-  "More Tacks": "More Tacks",
-  "Even More Tacks": "Even More Tacks",
-  "Tack Sprayer": "Tack Sprayer",
-  "Overdrive": "Overdrive",
-  "The Tack Zone": "The Tack Zone",
-  "Permafrost": "Permafrost",
-  "Metal Freeze": "Cold Snap",
-  "Ice Shards": "Ice Shards",
-  "Embrittlement": "Embrittlement",
-  "Super Brittle": "Super Brittle",
-  "Enhanced Freeze": "Enhanced Freeze",
-  "Deep Freeze": "Deep Freeze",
-  "Arctic Wind": "Arctic Wind",
-  "Snowstorm": "Snowstorm",
-  "Absolute Zero": "Absolute Zero",
-  "Larger Radius": "Larger Radius",
-  "Re-Freeze": "Re-Freeze",
-  "Cryo Cannon": "Cryo Cannon",
-  "Icicles": "Icicles",
-  "Icicle Impale": "Icicle Impale",
-  "Glue Soak": "Glue Soak",
-  "Corrosive Glue": "Corrosive Glue",
-  "Bloon Dissolver": "Bloon Dissolver",
-  "Bloon Liquefier": "Bloon Liquefier",
-  "The Bloon Solver": "The Bloon Solver",
-  "Bigger Globs": "Bigger Globs",
-  "Glue Splatter": "Glue Splatter",
-  "Glue Hose": "Glue Hose",
-  "Glue Strike": "Glue Strike",
-  "Glue Storm": "Glue Storm",
-  "Stickier Glue": "Stickier Glue",
-  "Stronger Glue": "Stronger Glue",
-  "MOAB Glue": "MOAB Glue",
-  "Relentless Glue": "Relentless Glue",
-  "Super Glue": "Super Glue",
-  "Full Metal Jacket": "Full Metal Jacket",
-  "Large Calibre": "Large Calibre",
-  "Deadly Precision": "Deadly Precision",
-  "Maim MOAB": "Maim MOAB",
-  "Cripple MOAB": "Cripple MOAB",
-  "Night Vision Goggles": "Night Vision Goggles",
-  "Shrapnel Shot": "Shrapnel Shot",
-  "Bouncing Bullet": "Bouncing Bullet",
-  "Supply Drop": "Supply Drop",
-  "Elite Sniper": "Elite Sniper",
-  "Fast Firing": "Fast Firing",
-  "Even Faster Firing": "Even Faster Firing",
-  "Semi-Automatic": "Semi-Automatic",
-  "Full Auto Rifle": "Full Auto Rifle",
-  "Elite Defender": "Elite Defender",
-  "Longer Range": "Longer Range",
-  "Advanced Intel": "Advanced Intel",
-  "Submerge and Support": "Submerge and Support",
-  "Bloontonium Reactor": "Bloontonium Reactor",
-  "Energizer": "Energizer",
-  "Barbed Darts": "Barbed Darts",
-  "Heat-tipped Darts": "Heat-tipped Darts",
-  "Ballistic Missile": "Ballistic Missile",
-  "First Strike Capability": "First Strike Capability",
-  "Pre-emptive Strike": "Pre-emptive Strike",
-  "Twin Guns": "Twin Guns",
-  "Airburst Darts": "Airburst Darts",
-  "Triple Guns": "Triple Guns",
-  "Armor Piercing Darts": "Armor Piercing Darts",
-  "Sub Commander": "Sub Commander",
-  "Buccaneer-Faster Shooting": "Faster Shooting",
-  "Buccaneer-Double Shot": "Double Shot",
-  "Buccaneer-Destroyer": "Destroyer",
-  "Buccaneer-Aircraft Carrier": "Aircraft Carrier",
-  "Buccaneer-Carrier Flagship": "Carrier Flagship",
-  "Buccaneer-Grape Shot": "Grape Shot",
-  "Buccaneer-Hot Shot": "Hot Shot",
-  "Buccaneer-Cannon Ship": "Cannon Ship",
-  "Buccaneer-Monkey Pirates": "Monkey Pirates",
-  "Buccaneer-Pirate Lord": "Pirate Lord",
-  "Buccaneer-Long Range": "Long Range",
-  "Buccaneer-Crow's Nest": "Crow's Nest",
-  "Buccaneer-Merchantman": "Merchantman",
-  "Buccaneer-Favored Trades": "Favored Trades",
-  "Buccaneer-Trade Empire": "Trade Empire",
-  "MonkeyBuccaneer Paragon": "Navarch of the Seas",
-  "Rapid Fire": "Rapid Fire",
-  "Lots More Darts": "Lots More Darts",
-  "Fighter Plane": "Fighter Plane",
-  "Operation: Dart Storm": "Operation: Dart Storm",
-  "Sky Shredder": "Sky Shredder",
-  "Exploding Pineapple": "Exploding Pineapple",
-  "Spy Plane": "Spy Plane",
-  "Bomber Ace": "Bomber Ace",
-  "Ground Zero": "Ground Zero",
-  "Tsar Bomba": "Tsar Bomba",
-  "Sharper Darts": "Sharper Darts",
-  "Centered Path": "Centered Path",
-  "Neva-Miss Targeting": "Neva-Miss Targeting",
-  "Spectre": "Spectre",
-  "Flying Fortress": "Flying Fortress",
-  "MonkeyAce Paragon": "Goliath Doomship",
-  "Quad Darts": "Quad Darts",
-  "Pursuit": "Pursuit",
-  "Razor Rotors": "Razor Rotors",
-  "Apache Dartship": "Apache Dartship",
-  "Apache Prime": "Apache Prime",
-  "Bigger Jets": "Bigger Jets",
-  "IFR": "IFR",
-  "Downdraft": "Downdraft",
-  "Support Chinook": "Support Chinook",
-  "Special Poperations": "Special Poperations",
-  "Faster Darts": "Faster Darts",
-  "Faster Firing": "Faster Firing",
-  "MOAB Shove": "MOAB Shove",
-  "Comanche Defense": "Comanche Defense",
-  "Comanche Commander": "Comanche Commander",
-  "Bigger Blast": "Bigger Blast",
-  "Bloon Buster": "Bloon Buster",
-  "Shockwave": "Shell Shock",
-  "The Big One": "The Big One",
-  "The Biggest One": "The Biggest One",
-  "Mortar Faster Reload": "Faster Reload",
-  "Mortar Rapid Reload": "Rapid Reload",
-  "Heavy Shells": "Heavy Shells",
-  "Artillery Battery": "Artillery Battery",
-  "Pop and Awe": "Pop and Awe",
-  "Increased Accuracy": "Increased Accuracy",
-  "Burny Stuff": "Burny Stuff",
-  "Signal Flare": "Signal Flare",
-  "Shattering Shells": "Shattering Shells",
-  "Blooncineration": "Blooncineration",
-  "Focused Firing": "Focused Firing",
-  "Laser Shock": "Laser Shock",
-  "Laser Cannon": "Laser Cannon",
-  "Plasma Accelerator": "Plasma Accelerator",
-  "Ray of Doom": "Ray of Doom",
-  "Advanced Targeting": "Advanced Targeting",
-  "Faster Barrel Spin": "Faster Barrel Spin",
-  "Hydra Rocket Pods": "Hydra Rocket Pods",
-  "Rocket Storm": "Rocket Storm",
-  "M.A.D": "M.A.D",
-  "Faster Swivel": "Faster Swivel",
-  "Powerful Darts": "Powerful Darts",
-  "Buckshot": "Buckshot",
-  "Bloon Area Denial System": "Bloon Area Denial System",
-  "Bloon Exclusion Zone": "Bloon Exclusion Zone",
-  "Guided Magic": "Guided Magic",
-  "Arcane Blast": "Arcane Blast",
-  "Arcane Mastery": "Arcane Mastery",
-  "Arcane Spike": "Arcane Spike",
-  "Archmage": "Archmage",
-  "Fireball": "Fireball",
-  "Wall of Fire": "Wall of Fire",
-  "Dragon's Breath": "Dragon's Breath",
-  "Summon Phoenix": "Summon Phoenix",
-  "Wizard Lord Phoenix": "Wizard Lord Phoenix",
-  "Intense Magic": "Intense Magic",
-  "Monkey Sense": "Monkey Sense",
-  "Shimmer": "Shimmer",
-  "Necromancer: Unpopped Army": "Necromancer: Unpopped Army",
-  "Soulbind": "Prince of Darkness",
-  "WizardMonkey Paragon": "Magus Perfectus",
-  "Laser Blasts": "Laser Blasts",
-  "Plasma Blasts": "Plasma Blasts",
-  "Sun Avatar": "Sun Avatar",
-  "Sun Temple": "Sun Temple",
-  "True Sun God": "True Sun God",
-  "Super Range": "Super Range",
-  "Epic Range": "Epic Range",
-  "Robo Monkey": "Robo Monkey",
-  "Tech Terror": "Tech Terror",
-  "The Anti-Bloon": "The Anti-Bloon",
-  "Knockback": "Knockback",
-  "Ultravision": "Ultravision",
-  "Dark Knight": "Dark Knight",
-  "Dark Champion": "Dark Champion",
-  "Legend of the Night": "Legend of the Night",
-  "Ninja Discipline": "Ninja Discipline",
-  "Sharp Shurikens": "Sharp Shurikens",
-  "Double Shot": "Double Shot",
-  "Bloonjitsu": "Bloonjitsu",
-  "Grandmaster Ninja": "Grandmaster Ninja",
-  "Distraction": "Distraction",
-  "Counter-Espionage": "Counter-Espionage",
-  "Shinobi Tactics": "Shinobi Tactics",
-  "Bloon Sabotage": "Bloon Sabotage",
-  "Grand Saboteur": "Grand Saboteur",
-  "Seeking Shuriken": "Seeking Shuriken",
-  "Caltrops": "Caltrops",
-  "Flash Bomb": "Flash Bomb",
-  "Sticky Bomb": "Sticky Bomb",
-  "Master Bomber": "Master Bomber",
-  "NinjaMonkey Paragon": "Ascended Shadow",
-  "Larger Potions": "Larger Potions",
-  "Acidic Mixture Dip": "Acidic Mixture Dip",
-  "Berserker Brew": "Berserker Brew",
-  "Stronger Stimulant": "Stronger Stimulant",
-  "Permanent Brew": "Permanent Brew",
-  "Stronger Acid": "Stronger Acid",
-  "Perishing Potions": "Perishing Potions",
-  "Unstable Concoction": "Unstable Concoction",
-  "Transforming Tonic": "Transforming Tonic",
-  "Total Transformation": "Total Transformation",
-  "Alchemist Faster Throwing": "Faster Throwing",
-  "Acid Pool": "Acid Pool",
-  "Lead to Gold": "Lead to Gold",
-  "Rubber to Gold": "Rubber to Gold",
-  "Bloon Master Alchemist": "Bloon Master Alchemist",
-  "Hard Thorns": "Hard Thorns",
-  "Heart of Thunder": "Heart of Thunder",
-  "Druid of the Storm": "Druid of the Storm",
-  "Ball Lightning": "Ball Lightning",
-  "Superstorm": "Superstorm",
-  "Thorn Swarm": "Thorn Swarm",
-  "Heart of Oak": "Heart of Oak",
-  "Druid of the Jungle": "Druid of the Jungle",
-  "Jungle's Bounty": "Jungle's Bounty",
-  "Spirit of the Forest": "Spirit of the Forest",
-  "Druidic Reach": "Druidic Reach",
-  "Heart of Vengeance": "Heart of Vengeance",
-  "Druid of Wrath": "Druid of Wrath",
-  "Poplust": "Poplust",
-  "Avatar of Wrath": "Avatar of Wrath",
-  "Increased Production": "Increased Production",
-  "Greater Production": "Greater Production",
-  "Banana Plantation": "Banana Plantation",
-  "Banana Research Facility": "Banana Research Facility",
-  "Banana Central": "Banana Central",
-  "Long Life Bananas": "Long Life Bananas",
-  "Valuable Bananas": "Valuable Bananas",
-  "Monkey Bank": "Monkey Bank",
-  "IMF loan": "IMF Loan",
-  "Monkey-Nomics": "Monkey-Nomics",
-  "EZ Collect": "EZ Collect",
-  "Banana Salvage": "Banana Salvage",
-  "Marketplace": "Marketplace",
-  "Central Market": "Central Market",
-  "Monkey Wall Street": "Monkey Wall Street",
-  "Bigger Stacks": "Bigger Stacks",
-  "White Hot Spikes": "White Hot Spikes",
-  "Spiked Balls": "Spiked Balls",
-  "Spiked Mines": "Spiked Mines",
-  "Super Mines": "Super Mines",
-  "Faster Production": "Faster Production",
-  "Even Faster Production": "Even Faster Production",
-  "MOAB SHREDR": "MOAB SHREDR",
-  "Spike Storm": "Spike Storm",
-  "Carpet of Spikes": "Carpet of Spikes",
-  "Long Reach": "Long Reach",
-  "Directed Spikes": "Smart Spikes",
-  "Long Life Spikes": "Long Life Spikes",
-  "Deadly Spikes": "Deadly Spikes",
-  "Perma-Spike": "Perma-Spike",
-  "Bigger Radius": "Bigger Radius",
-  "Jungle Drums": "Jungle Drums",
-  "Primary Training": "Primary Training",
-  "Primary Mentoring": "Primary Mentoring",
-  "Primary Expertise": "Primary Expertise",
-  "Grow Blocker": "Grow Blocker",
-  "Radar Scanner": "Radar Scanner",
-  "Monkey Intelligence Bureau": "Monkey Intelligence Bureau",
-  "Call to Arms": "Call to Arms",
-  "Homeland Defense": "Homeland Defense",
-  "Monkey Business": "Monkey Business",
-  "Monkey Commerce": "Monkey Commerce",
-  "Monkey Town": "Monkey Town",
-  "Monkey City": "Monkey City",
-  "Monkeyopolis": "Monkeyopolis",
-  "Sentry Gun": "Sentry Gun",
-  "Faster Engineering": "Faster Engineering",
-  "Sprockets": "Sprockets",
-  "Sentry Expert": "Sentry Expert",
-  "Sentry Paragon": "Sentry Champion",
-  "Larger Service Area": "Larger Service Area",
-  "Deconstruction": "Deconstruction",
-  "Cleansing Foam": "Cleansing Foam",
-  "Overclock": "Overclock",
-  "Ultraboost": "Ultraboost",
-  "Oversize Nails": "Oversize Nails",
-  "Pin": "Pin",
-  "Double Gun": "Double Gun",
-  "Bloon Trap": "Bloon Trap",
-  "XXXL Trap": "XXXL Trap",
-  "EngineerMonkey Paragon": "Master Builder",
-  "Piranha": "Piranha",
-  "Barracuda": "Barracuda",
-  "Great White": "Great White",
-  "Orca": "Orca",
-  "Megalodon": "Megalodon",
-  "Microraptor": "Microraptor",
-  "Adasaurus": "Adasaurus",
-  "Velociraptor": "Velociraptor",
-  "Tyrannosaurus Rex": "Tyrannosaurus Rex",
-  "Giganotosaurus": "Giganotosaurus",
-  "Gyrfalcon": "Gyrfalcon",
-  "Horned Owl": "Horned Owl",
-  "Golden Eagle": "Golden Eagle",
-  "Giant Condor": "Giant Condor",
-  "Pouakai": "Pouākai",
-  "Quincy Ricochet 4": "Quincy Ricochet 4",
-  "Quincy Rapid Shot": "Quincy Rapid Shot",
-  "Quincy Twin Shot": "Quincy Twin Shot",
-  "Quincy Target Camo": "Quincy Target Camo",
-  "Quincy Slightly Longer Range": "Quincy Slightly Longer Range",
-  "Quincy Exploding Arrow": "Quincy Exploding Arrow",
-  "Quincy Deadshot": "Quincy Deadshot",
-  "Quincy Ricochet 5": "Quincy Ricochet 5",
-  "Quincy Storm of Arrows": "Quincy Storm of Arrows",
-  "Quincy Attack Speed": "Quincy Attack Speed",
-  "Quincy Pierce": "Quincy Pierce",
-  "Quincy Range": "Quincy Range",
-  "Quincy Deadshot+": "Quincy Deadshot+",
-  "Quincy Rapid Shot+": "Quincy Rapid Shot+",
-  "Quincy Attack Speed+": "Quincy Attack Speed+",
-  "Quincy Projectile Lifespan": "Quincy Projectile Lifespan",
-  "Quincy Storm of Arrows+": "Quincy Storm of Arrows+",
-  "Quincy Pierce+": "Quincy Pierce+",
-  "Quincy Storm of Arrows++": "Quincy Storm of Arrows++",
-  "Blast Radius": "Blast Radius",
-  "Concussive Shell": "Concussive Shell",
-  "Bomb Speed Boost": "Bomb Speed Boost",
-  "Attack Speed": "Attack Speed",
-  "Bigger Explosion": "Bigger Explosion",
-  "Coordinated Shots": "Coordinated Shots",
-  "Bomb Expert": "Bomb Expert",
-  "Black Resistance": "Black Resistance",
-  "Artillery Command": "Artillery Command",
-  "Attack Speed 2": "Attack Speed 2",
-  "Range": "Range",
-  "Attack Speed 3": "Attack Speed 3",
-  "Concussive Shell 2": "Concussive Shell 2",
-  "Concussive Shell 3": "Concussive Shell 3",
-  "Attack Speed 4": "Attack Speed 4",
-  "Range and Damage": "Range and Damage",
-  "Bomb Speed Boost 2": "Bomb Speed Boost 2",
-  "Attack Speed 5": "Attack Speed 5",
-  "Artillery Command 2": "Artillery Command 2",
-  "Ezili Range": "Ezili Range",
-  "Ezili Heartstopper": "Ezili Heartstopper",
-  "Ezili Splash Attack": "Ezili Splash Attack",
-  "Ezili MOAB Damage": "Ezili MOAB Damage",
-  "Ezili Damage Over Time": "Ezili Damage Over Time",
-  "Ezili Sacrificial Totem": "Ezili Sacrificial Totem",
-  "Ezili Attack Speed": "Ezili Attack Speed",
-  "Ezili Strip Modifiers": "Ezili Strip Modifiers",
-  "Ezili MOAB Hex": "Ezili MOAB Hex",
-  "Ezili Attack Range": "Ezili Attack Range",
-  "Ezili Heartstopper+": "Ezili Heartstopper+",
-  "Ezili Splash Attack+": "Ezili Splash Attack+",
-  "Ezili Damage Over Time+": "Ezili Damage Over Time+",
-  "Ezili Range+": "Ezili Range+",
-  "Ezili Sacrificial Totem+": "Ezili Sacrificial Totem+",
-  "Ezili Splash Attack++": "Ezili Splash Attack++",
-  "Ezili Attack Speed+": "Ezili Attack Speed+",
-  "Ezili Damage Over Time++": "Ezili Damage Over Time++",
-  "Ezili MOAB Hex+": "Ezili MOAB Hex+",
-  "Churchill Pierce": "Churchill Pierce",
-  "Churchill Armor Piercing Shells": "Churchill Armor Piercing Shells",
-  "Churchill Range": "Churchill Range",
-  "Churchill Machine Gun": "Churchill Machine Gun",
-  "Churchill Binoculars": "Churchill Binoculars",
-  "Churchill Shell Explosion": "Churchill Shell Explosion",
-  "Churchill Attack Speed": "Churchill Attack Speed",
-  "Churchill Shell Explosion 2": "Churchill Shell Explosion 2",
-  "Churchill MOAB Barage": "Churchill MOAB Barage",
-  "Churchill Pierce 2": "Churchill Pierce 2",
-  "Churchill Shell Explosion 3": "Churchill Shell Explosion 3",
-  "Churchill Armor Piercing Shells 2": "Churchill Armor Piercing Shells 2",
-  "Churchill Machine Gun Damage": "Churchill Machine Gun Damage",
-  "Churchill Fortified Bloon Damage": "Churchill Fortified Bloon Damage",
-  "Churchill Attack Speed 2": "Churchill Attack Speed 2",
-  "Churchill Armor Piercing Shells 3": "Churchill Armor Piercing Shells 3",
-  "Churchill Tank Shell Damage": "Churchill Tank Shell Damage",
-  "Churchill Shell Explosion 4": "Churchill Shell Explosion 4",
-  "Churchill MOAB Barage 2": "Churchill MOAB Barage 2",
-  "gwendolin pierce": "gwendolin pierce",
-  "gwendolin wall of fire": "gwendolin wall of fire",
-  "gwendolin heat it up": "gwendolin heat it up",
-  "gwendolin pierce+": "gwendolin pierce+",
-  "gwendolin burn damage": "gwendolin burn damage",
-  "gwendolin heat it up range": "gwendolin heat it up range",
-  "gwendolin twin shot": "gwendolin twin shot",
-  "gwendolin damage": "gwendolin damage",
-  "gwendolin firestorm": "gwendolin firestorm",
-  "gwendolin range": "gwendolin range",
-  "gwendolin reload speed": "gwendolin reload speed",
-  "gwendolin popping power": "gwendolin popping power",
-  "gwendolin wall of fire+": "gwendolin wall of fire+",
-  "gwendolin reload speed+": "gwendolin reload speed+",
-  "gwendolin firestorm+": "gwendolin firestorm+",
-  "gwendolin heat it up damage": "gwendolin heat it up damage",
-  "gwendolin reload speed++": "gwendolin reload speed++",
-  "gwendolin triple shot": "gwendolin triple shot",
-  "gwendolin firestorm++": "gwendolin firestorm++",
-  "Benjamin level 2": "Benjamin level 2",
-  "Benjamin level 3": "Benjamin level 3",
-  "Benjamin level 4": "Benjamin level 4",
-  "Benjamin level 5": "Benjamin level 5",
-  "Benjamin level 6": "Benjamin level 6",
-  "Benjamin level 7": "Benjamin level 7",
-  "Benjamin level 8": "Benjamin level 8",
-  "Benjamin level 9": "Benjamin level 9",
-  "Benjamin level 10": "Benjamin level 10",
-  "Benjamin level 11": "Benjamin level 11",
-  "Benjamin level 12": "Benjamin level 12",
-  "Benjamin level 13": "Benjamin level 13",
-  "Benjamin level 14": "Benjamin level 14",
-  "Benjamin level 15": "Benjamin level 15",
-  "Benjamin level 16": "Benjamin level 16",
-  "Benjamin level 17": "Benjamin level 17",
-  "Benjamin level 18": "Benjamin level 18",
-  "Benjamin level 19": "Benjamin level 19",
-  "Benjamin level 20": "Benjamin level 20",
-  "2 PatFusty slam radius+": "2 PatFusty slam radius+",
-  "3 PatFusty roar": "3 PatFusty roar",
-  "4 PatFusty attack+": "4 PatFusty attack+",
-  "5 PatFusty bloon slap": "5 PatFusty bloon slap",
-  "6 PatFusty stun": "6 PatFusty stun",
-  "7 PatFusty pierce+": "7 PatFusty pierce+",
-  "8 PatFusty attack+": "8 PatFusty attack+",
-  "9 PatFusty range+": "9 PatFusty range+",
-  "10 PatFusty crush ability": "10 PatFusty crush ability",
-  "11 PatFusty damage+": "11 PatFusty damage+",
-  "12 PatFusty speed+": "12 PatFusty speed+",
-  "13 PatFusty stun+": "13 PatFusty stun+",
-  "14 PatFusty rawr+": "14 PatFusty rawr+",
-  "15 PatFusty slap+": "15 PatFusty slap+",
-  "16 PatFusty range+": "16 PatFusty range+",
-  "17 PatFusty speed+": "17 PatFusty speed+",
-  "18 PatFusty pierce+": "18 PatFusty pierce+",
-  "19 PatFusty damage+": "19 PatFusty damage+",
-  "20 PatFusty squeeze+": "20 PatFusty squeeze+",
-  "ObynGreenfoot-2-DruidOfWrath+": "ObynGreenfoot-2-DruidOfWrath+",
-  "ObynGreenfoot-3-Brambles+": "ObynGreenfoot-3-Brambles+",
-  "ObynGreenfoot-4-NaturesWard+": "ObynGreenfoot-4-NaturesWard+",
-  "ObynGreenfoot-5-ReloadReduce+": "ObynGreenfoot-5-ReloadReduce+",
-  "ObynGreenfoot-6-Pierce+": "ObynGreenfoot-6-Pierce+",
-  "ObynGreenfoot-7-Brambles++": "ObynGreenfoot-7-Brambles++",
-  "ObynGreenfoot-8-NaturesWard++": "ObynGreenfoot-8-NaturesWard++",
-  "ObynGreenfoot-9-Damage+": "ObynGreenfoot-9-Damage+",
-  "ObynGreenfoot-10-WallOfTrees": "ObynGreenfoot-10-WallOfTrees",
-  "ObynGreenfoot-11-Range+": "ObynGreenfoot-11-Range+",
-  "ObynGreenfoot-12-AttackSpeed+": "ObynGreenfoot-12-AttackSpeed+",
-  "ObynGreenfoot-13-Pierce+": "ObynGreenfoot-13-Pierce+",
-  "ObynGreenfoot-14-Damage+": "ObynGreenfoot-14-Damage+",
-  "ObynGreenfoot-15-NaturesWard++": "ObynGreenfoot-15-NaturesWard++",
-  "ObynGreenfoot-16-Brambles++": "ObynGreenfoot-16-Brambles++",
-  "ObynGreenfoot-17-ReloadSpeed+": "ObynGreenfoot-17-ReloadSpeed+",
-  "ObynGreenfoot-18-DruidOfWrath++": "ObynGreenfoot-18-DruidOfWrath++",
-  "ObynGreenfoot-19-Damage+": "ObynGreenfoot-19-Damage+",
-  "ObynGreenfoot-20-WallOfTrees+": "ObynGreenfoot-20-WallOfTrees+",
-  "Adora Upgrade 2": "Adora Upgrade 2",
-  "Adora Upgrade 3": "Adora Upgrade 3",
-  "Adora Upgrade 4": "Adora Upgrade 4",
-  "Adora Upgrade 5": "Adora Upgrade 5",
-  "Adora Upgrade 6": "Adora Upgrade 6",
-  "Adora Upgrade 7": "Adora Upgrade 7",
-  "Adora Upgrade 8": "Adora Upgrade 8",
-  "Adora Upgrade 9": "Adora Upgrade 9",
-  "Adora Upgrade 10": "Adora Upgrade 10",
-  "Adora Upgrade 11": "Adora Upgrade 11",
-  "Adora Upgrade 12": "Adora Upgrade 12",
-  "Adora Upgrade 13": "Adora Upgrade 13",
-  "Adora Upgrade 14": "Adora Upgrade 14",
-  "Adora Upgrade 15": "Adora Upgrade 15",
-  "Adora Upgrade 16": "Adora Upgrade 16",
-  "Adora Upgrade 17": "Adora Upgrade 17",
-  "Adora Upgrade 18": "Adora Upgrade 18",
-  "Adora Upgrade 19": "Adora Upgrade 19",
-  "Adora Upgrade 20": "Adora Upgrade 20",
-  "AdmiralBrickell Upgrade 2": "AdmiralBrickell Upgrade 2",
-  "AdmiralBrickell Upgrade 3": "AdmiralBrickell Upgrade 3",
-  "AdmiralBrickell Upgrade 4": "AdmiralBrickell Upgrade 4",
-  "AdmiralBrickell Upgrade 5": "AdmiralBrickell Upgrade 5",
-  "AdmiralBrickell Upgrade 6": "AdmiralBrickell Upgrade 6",
-  "AdmiralBrickell Upgrade 7": "AdmiralBrickell Upgrade 7",
-  "AdmiralBrickell Upgrade 8": "AdmiralBrickell Upgrade 8",
-  "AdmiralBrickell Upgrade 9": "AdmiralBrickell Upgrade 9",
-  "AdmiralBrickell Upgrade 10": "AdmiralBrickell Upgrade 10",
-  "AdmiralBrickell Upgrade 11": "AdmiralBrickell Upgrade 11",
-  "AdmiralBrickell Upgrade 12": "AdmiralBrickell Upgrade 12",
-  "AdmiralBrickell Upgrade 13": "AdmiralBrickell Upgrade 13",
-  "AdmiralBrickell Upgrade 14": "AdmiralBrickell Upgrade 14",
-  "AdmiralBrickell Upgrade 15": "AdmiralBrickell Upgrade 15",
-  "AdmiralBrickell Upgrade 16": "AdmiralBrickell Upgrade 16",
-  "AdmiralBrickell Upgrade 17": "AdmiralBrickell Upgrade 17",
-  "AdmiralBrickell Upgrade 18": "AdmiralBrickell Upgrade 18",
-  "AdmiralBrickell Upgrade 19": "AdmiralBrickell Upgrade 19",
-  "AdmiralBrickell Upgrade 20": "AdmiralBrickell Upgrade 20",
-  "Etienne Upgrade 2": "Etienne Upgrade 2",
-  "Etienne Upgrade 3": "Etienne Upgrade 3",
-  "Etienne Upgrade 4": "Etienne Upgrade 4",
-  "Etienne Upgrade 5": "Etienne Upgrade 5",
-  "Etienne Upgrade 6": "Etienne Upgrade 6",
-  "Etienne Upgrade 7": "Etienne Upgrade 7",
-  "Etienne Upgrade 8": "Etienne Upgrade 8",
-  "Etienne Upgrade 9": "Etienne Upgrade 9",
-  "Etienne Upgrade 10": "Etienne Upgrade 10",
-  "Etienne Upgrade 11": "Etienne Upgrade 11",
-  "Etienne Upgrade 12": "Etienne Upgrade 12",
-  "Etienne Upgrade 13": "Etienne Upgrade 13",
-  "Etienne Upgrade 14": "Etienne Upgrade 14",
-  "Etienne Upgrade 15": "Etienne Upgrade 15",
-  "Etienne Upgrade 16": "Etienne Upgrade 16",
-  "Etienne Upgrade 17": "Etienne Upgrade 17",
-  "Etienne Upgrade 18": "Etienne Upgrade 18",
-  "Etienne Upgrade 19": "Etienne Upgrade 19",
-  "Etienne Upgrade 20": "Etienne Upgrade 20",
-  "Sauda Upgrade 2": "Sauda Upgrade 2",
-  "Sauda Upgrade 3": "Sauda Upgrade 3",
-  "Sauda Upgrade 4": "Sauda Upgrade 4",
-  "Sauda Upgrade 5": "Sauda Upgrade 5",
-  "Sauda Upgrade 6": "Sauda Upgrade 6",
-  "Sauda Upgrade 7": "Sauda Upgrade 7",
-  "Sauda Upgrade 8": "Sauda Upgrade 8",
-  "Sauda Upgrade 9": "Sauda Upgrade 9",
-  "Sauda Upgrade 10": "Sauda Upgrade 10",
-  "Sauda Upgrade 11": "Sauda Upgrade 11",
-  "Sauda Upgrade 12": "Sauda Upgrade 12",
-  "Sauda Upgrade 13": "Sauda Upgrade 13",
-  "Sauda Upgrade 14": "Sauda Upgrade 14",
-  "Sauda Upgrade 15": "Sauda Upgrade 15",
-  "Sauda Upgrade 16": "Sauda Upgrade 16",
-  "Sauda Upgrade 17": "Sauda Upgrade 17",
-  "Sauda Upgrade 18": "Sauda Upgrade 18",
-  "Sauda Upgrade 19": "Sauda Upgrade 19",
-  "Sauda Upgrade 20": "Sauda Upgrade 20",
-  "Psi Upgrade 2": "Psi Upgrade 2",
-  "Psi Upgrade 3": "Psi Upgrade 3",
-  "Psi Upgrade 4": "Psi Upgrade 4",
-  "Psi Upgrade 5": "Psi Upgrade 5",
-  "Psi Upgrade 6": "Psi Upgrade 6",
-  "Psi Upgrade 7": "Psi Upgrade 7",
-  "Psi Upgrade 8": "Psi Upgrade 8",
-  "Psi Upgrade 9": "Psi Upgrade 9",
-  "Psi Upgrade 10": "Psi Upgrade 10",
-  "Psi Upgrade 11": "Psi Upgrade 11",
-  "Psi Upgrade 12": "Psi Upgrade 12",
-  "Psi Upgrade 13": "Psi Upgrade 13",
-  "Psi Upgrade 14": "Psi Upgrade 14",
-  "Psi Upgrade 15": "Psi Upgrade 15",
-  "Psi Upgrade 16": "Psi Upgrade 16",
-  "Psi Upgrade 17": "Psi Upgrade 17",
-  "Psi Upgrade 18": "Psi Upgrade 18",
-  "Psi Upgrade 19": "Psi Upgrade 19",
-  "Psi Upgrade 20": "Psi Upgrade 20",
-  "Geraldo Upgrade 2": "Geraldo Upgrade 2",
-  "Geraldo Upgrade 3": "Geraldo Upgrade 3",
-  "Geraldo Upgrade 4": "Geraldo Upgrade 4",
-  "Geraldo Upgrade 5": "Geraldo Upgrade 5",
-  "Geraldo Upgrade 6": "Geraldo Upgrade 6",
-  "Geraldo Upgrade 7": "Geraldo Upgrade 7",
-  "Geraldo Upgrade 8": "Geraldo Upgrade 8",
-  "Geraldo Upgrade 9": "Geraldo Upgrade 9",
-  "Geraldo Upgrade 10": "Geraldo Upgrade 10",
-  "Geraldo Upgrade 11": "Geraldo Upgrade 11",
-  "Geraldo Upgrade 12": "Geraldo Upgrade 12",
-  "Geraldo Upgrade 13": "Geraldo Upgrade 13",
-  "Geraldo Upgrade 14": "Geraldo Upgrade 14",
-  "Geraldo Upgrade 15": "Geraldo Upgrade 15",
-  "Geraldo Upgrade 16": "Geraldo Upgrade 16",
-  "Geraldo Upgrade 17": "Geraldo Upgrade 17",
-  "Geraldo Upgrade 18": "Geraldo Upgrade 18",
-  "Geraldo Upgrade 19": "Geraldo Upgrade 19",
-  "Geraldo Upgrade 20": "Geraldo Upgrade 20",
-  "PowersInShop-RoadSpikes": "Road Spikes",
-  "PowersInShop-MoabMine": "MOAB Mine",
-  "PowersInShop-GlueTrap": "Glue Trap",
-  "PowersInShop-CamoTrap": "Camo Trap",
-  "PowersInShop-BananaFarmer": "Banana Farmer",
-  "PowersInShop-TechBot": "Tech Bot",
-  "PowersInShop-EnergisingTotem": "Energizing Totem",
-  "PowersInShop-Pontoon": "Pontoon",
-  "PowersInShop-PortableLake": "Portable Lake"
+  "Sharp Shots": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Razor Sharp Shots": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Spike-o-pult": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Juggernaut": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Ultra-Juggernaut": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Quick Shots": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Very Quick Shots": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Triple Shot": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Super Monkey Fan Club": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Plasma Monkey Fan Club": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Long Range Darts": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Enhanced Eyesight": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Crossbow": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Sharp Shooter": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "Crossbow Master": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary"
+  },
+  "DartMonkey Paragon": {
+    "towerId": "DartMonkey",
+    "towerName": "Dart Monkey",
+    "towerSet": "Primary",
+    "displayName": "Apex Plasma Master"
+  },
+  "Improved Rangs": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Glaives": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Glaive Ricochet": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "M.O.A.R Glaives": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Glaive Lord": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Faster Throwing": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Faster Rangs": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Bionc Boomerang": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary",
+    "displayName": "Bionic Boomerang"
+  },
+  "Turbo Charge": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Perma Charge": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Long Range Rangs": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Red Hot Rangs": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "Kylie Boomerang": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "MOAB Press": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "MOAB Domination": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary"
+  },
+  "BoomerangMonkey Paragon": {
+    "towerId": "BoomerangMonkey",
+    "towerName": "Boomerang Monkey",
+    "towerSet": "Primary",
+    "displayName": "Glaive Dominus"
+  },
+  "Bigger Bombs": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Heavy Bombs": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Really Big Bombs": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Bloon Impact": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Bloon Crush": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Faster Reload": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Missile Launcher": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "MOAB Mauler": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "MOAB Assassin": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "MOAB Eliminator": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Extra Range": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Frag Bombs": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Cluster Bombs": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Recursive Cluster": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Bomb Blitz": {
+    "towerId": "BombShooter",
+    "towerName": "Bomb Shooter",
+    "towerSet": "Primary"
+  },
+  "Faster Shooting": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Even Faster Shooting": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Hot Shots": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Ring of Fire": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Inferno Ring": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Long Range Tacks": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Super Range Tacks": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Blade Shooter": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Blade Maelstrom": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Super Maelstrom": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "More Tacks": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Even More Tacks": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Tack Sprayer": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Overdrive": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "The Tack Zone": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary"
+  },
+  "Permafrost": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Metal Freeze": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary",
+    "displayName": "Cold Snap"
+  },
+  "Ice Shards": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Embrittlement": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Super Brittle": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Enhanced Freeze": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Deep Freeze": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Arctic Wind": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Snowstorm": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Absolute Zero": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Larger Radius": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Re-Freeze": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Cryo Cannon": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Icicles": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Icicle Impale": {
+    "towerId": "IceMonkey",
+    "towerName": "Ice Monkey",
+    "towerSet": "Primary"
+  },
+  "Glue Soak": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Corrosive Glue": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Bloon Dissolver": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Bloon Liquefier": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "The Bloon Solver": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Bigger Globs": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Glue Splatter": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Glue Hose": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Glue Strike": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Glue Storm": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Stickier Glue": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Stronger Glue": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "MOAB Glue": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Relentless Glue": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Super Glue": {
+    "towerId": "GlueGunner",
+    "towerName": "Glue Gunner",
+    "towerSet": "Primary"
+  },
+  "Full Metal Jacket": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Large Calibre": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Deadly Precision": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Maim MOAB": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Cripple MOAB": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Night Vision Goggles": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Shrapnel Shot": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Bouncing Bullet": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Supply Drop": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Elite Sniper": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Fast Firing": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Even Faster Firing": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Semi-Automatic": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Full Auto Rifle": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Elite Defender": {
+    "towerId": "SniperMonkey",
+    "towerName": "Sniper Monkey",
+    "towerSet": "Military"
+  },
+  "Longer Range": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Advanced Intel": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Submerge and Support": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Bloontonium Reactor": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Energizer": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Barbed Darts": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Heat-tipped Darts": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Ballistic Missile": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "First Strike Capability": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Pre-emptive Strike": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Twin Guns": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Airburst Darts": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Triple Guns": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Armor Piercing Darts": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Sub Commander": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military"
+  },
+  "Buccaneer-Faster Shooting": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Faster Shooting"
+  },
+  "Buccaneer-Double Shot": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Double Shot"
+  },
+  "Buccaneer-Destroyer": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Destroyer"
+  },
+  "Buccaneer-Aircraft Carrier": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Aircraft Carrier"
+  },
+  "Buccaneer-Carrier Flagship": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Carrier Flagship"
+  },
+  "Buccaneer-Grape Shot": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Grape Shot"
+  },
+  "Buccaneer-Hot Shot": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Hot Shot"
+  },
+  "Buccaneer-Cannon Ship": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Cannon Ship"
+  },
+  "Buccaneer-Monkey Pirates": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Monkey Pirates"
+  },
+  "Buccaneer-Pirate Lord": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Pirate Lord"
+  },
+  "Buccaneer-Long Range": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Long Range"
+  },
+  "Buccaneer-Crow's Nest": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Crow's Nest"
+  },
+  "Buccaneer-Merchantman": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Merchantman"
+  },
+  "Buccaneer-Favored Trades": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Favored Trades"
+  },
+  "Buccaneer-Trade Empire": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Trade Empire"
+  },
+  "MonkeyBuccaneer Paragon": {
+    "towerId": "MonkeyBuccaneer",
+    "towerName": "Monkey Buccaneer",
+    "towerSet": "Military",
+    "displayName": "Navarch of the Seas"
+  },
+  "Rapid Fire": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Lots More Darts": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Fighter Plane": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Operation: Dart Storm": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Sky Shredder": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Exploding Pineapple": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Spy Plane": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Bomber Ace": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Ground Zero": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Tsar Bomba": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Sharper Darts": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Centered Path": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Neva-Miss Targeting": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Spectre": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "Flying Fortress": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military"
+  },
+  "MonkeyAce Paragon": {
+    "towerId": "MonkeyAce",
+    "towerName": "Monkey Ace",
+    "towerSet": "Military",
+    "displayName": "Goliath Doomship"
+  },
+  "Quad Darts": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Pursuit": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Razor Rotors": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Apache Dartship": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Apache Prime": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Bigger Jets": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "IFR": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Downdraft": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Support Chinook": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Special Poperations": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Faster Darts": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Faster Firing": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "MOAB Shove": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Comanche Defense": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Comanche Commander": {
+    "towerId": "HeliPilot",
+    "towerName": "Heli Pilot",
+    "towerSet": "Military"
+  },
+  "Bigger Blast": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Bloon Buster": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Shockwave": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military",
+    "displayName": "Shell Shock"
+  },
+  "The Big One": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "The Biggest One": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Mortar Faster Reload": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military",
+    "displayName": "Faster Reload"
+  },
+  "Mortar Rapid Reload": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military",
+    "displayName": "Rapid Reload"
+  },
+  "Heavy Shells": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Artillery Battery": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Pop and Awe": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Increased Accuracy": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Burny Stuff": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Signal Flare": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Shattering Shells": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Blooncineration": {
+    "towerId": "MortarMonkey",
+    "towerName": "Mortar Monkey",
+    "towerSet": "Military"
+  },
+  "Focused Firing": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Laser Shock": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Laser Cannon": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Plasma Accelerator": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Ray of Doom": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Advanced Targeting": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Faster Barrel Spin": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Hydra Rocket Pods": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Rocket Storm": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "M.A.D": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Faster Swivel": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Powerful Darts": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Buckshot": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Bloon Area Denial System": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Bloon Exclusion Zone": {
+    "towerId": "DartlingGunner",
+    "towerName": "Dartling Gunner",
+    "towerSet": "Military"
+  },
+  "Guided Magic": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Arcane Blast": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Arcane Mastery": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Arcane Spike": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Archmage": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Fireball": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Wall of Fire": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Dragon's Breath": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Summon Phoenix": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Wizard Lord Phoenix": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Intense Magic": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Monkey Sense": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Shimmer": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Necromancer: Unpopped Army": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic"
+  },
+  "Soulbind": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic",
+    "displayName": "Prince of Darkness"
+  },
+  "WizardMonkey Paragon": {
+    "towerId": "WizardMonkey",
+    "towerName": "Wizard Monkey",
+    "towerSet": "Magic",
+    "displayName": "Magus Perfectus"
+  },
+  "Laser Blasts": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Plasma Blasts": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Sun Avatar": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Sun Temple": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "True Sun God": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Super Range": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Epic Range": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Robo Monkey": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Tech Terror": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "The Anti-Bloon": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Knockback": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Ultravision": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Dark Knight": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Dark Champion": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Legend of the Night": {
+    "towerId": "SuperMonkey",
+    "towerName": "Super Monkey",
+    "towerSet": "Magic"
+  },
+  "Ninja Discipline": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Sharp Shurikens": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Double Shot": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Bloonjitsu": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Grandmaster Ninja": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Distraction": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Counter-Espionage": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Shinobi Tactics": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Bloon Sabotage": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Grand Saboteur": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Seeking Shuriken": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Caltrops": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Flash Bomb": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Sticky Bomb": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "Master Bomber": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic"
+  },
+  "NinjaMonkey Paragon": {
+    "towerId": "NinjaMonkey",
+    "towerName": "Ninja Monkey",
+    "towerSet": "Magic",
+    "displayName": "Ascended Shadow"
+  },
+  "Larger Potions": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Acidic Mixture Dip": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Berserker Brew": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Stronger Stimulant": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Permanent Brew": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Stronger Acid": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Perishing Potions": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Unstable Concoction": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Transforming Tonic": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Total Transformation": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Alchemist Faster Throwing": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic",
+    "displayName": "Faster Throwing"
+  },
+  "Acid Pool": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Lead to Gold": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Rubber to Gold": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Bloon Master Alchemist": {
+    "towerId": "Alchemist",
+    "towerName": "Alchemist",
+    "towerSet": "Magic"
+  },
+  "Hard Thorns": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Heart of Thunder": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Druid of the Storm": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Ball Lightning": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Superstorm": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Thorn Swarm": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Heart of Oak": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Druid of the Jungle": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Jungle's Bounty": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Spirit of the Forest": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Druidic Reach": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Heart of Vengeance": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Druid of Wrath": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Poplust": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Avatar of Wrath": {
+    "towerId": "Druid",
+    "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Increased Production": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Greater Production": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Banana Plantation": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Banana Research Facility": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Banana Central": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Long Life Bananas": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Valuable Bananas": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Monkey Bank": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "IMF loan": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support",
+    "displayName": "IMF Loan"
+  },
+  "Monkey-Nomics": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "EZ Collect": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Banana Salvage": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Marketplace": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Central Market": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Monkey Wall Street": {
+    "towerId": "BananaFarm",
+    "towerName": "Banana Farm",
+    "towerSet": "Support"
+  },
+  "Bigger Stacks": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "White Hot Spikes": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Spiked Balls": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Spiked Mines": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Super Mines": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Faster Production": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Even Faster Production": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "MOAB SHREDR": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Spike Storm": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Carpet of Spikes": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Long Reach": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Directed Spikes": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support",
+    "displayName": "Smart Spikes"
+  },
+  "Long Life Spikes": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Deadly Spikes": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Perma-Spike": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support"
+  },
+  "Bigger Radius": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Jungle Drums": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Primary Training": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Primary Mentoring": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Primary Expertise": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Grow Blocker": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Radar Scanner": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Monkey Intelligence Bureau": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Call to Arms": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Homeland Defense": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Monkey Business": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Monkey Commerce": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Monkey Town": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Monkey City": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Monkeyopolis": {
+    "towerId": "MonkeyVillage",
+    "towerName": "Monkey Village",
+    "towerSet": "Support"
+  },
+  "Sentry Gun": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Faster Engineering": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Sprockets": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Sentry Expert": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Sentry Paragon": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support",
+    "displayName": "Sentry Champion"
+  },
+  "Larger Service Area": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Deconstruction": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Cleansing Foam": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Overclock": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Ultraboost": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Oversize Nails": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Pin": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Double Gun": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "Bloon Trap": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "XXXL Trap": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support"
+  },
+  "EngineerMonkey Paragon": {
+    "towerId": "EngineerMonkey",
+    "towerName": "Engineer Monkey",
+    "towerSet": "Support",
+    "displayName": "Master Builder"
+  },
+  "Piranha": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Barracuda": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Great White": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Orca": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Megalodon": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Microraptor": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Adasaurus": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Velociraptor": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Tyrannosaurus Rex": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Giganotosaurus": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Gyrfalcon": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Horned Owl": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Golden Eagle": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Giant Condor": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support"
+  },
+  "Pouakai": {
+    "towerId": "BeastHandler",
+    "towerName": "Beast Handler",
+    "towerSet": "Support",
+    "displayName": "Pouākai"
+  },
+  "Quincy Ricochet 4": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Rapid Shot": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Twin Shot": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Target Camo": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Slightly Longer Range": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Exploding Arrow": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Deadshot": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Ricochet 5": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Storm of Arrows": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Attack Speed": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Pierce": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Range": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Deadshot+": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Rapid Shot+": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Attack Speed+": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Projectile Lifespan": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Storm of Arrows+": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Pierce+": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Quincy Storm of Arrows++": {
+    "towerId": "Quincy",
+    "towerName": "Quincy",
+    "towerSet": "Hero"
+  },
+  "Blast Radius": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Concussive Shell": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Bomb Speed Boost": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Attack Speed": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Bigger Explosion": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Coordinated Shots": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Bomb Expert": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Black Resistance": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Artillery Command": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Attack Speed 2": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Range": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Attack Speed 3": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Concussive Shell 2": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Concussive Shell 3": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Attack Speed 4": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Range and Damage": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Bomb Speed Boost 2": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Attack Speed 5": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Artillery Command 2": {
+    "towerId": "StrikerJones",
+    "towerName": "Striker Jones",
+    "towerSet": "Hero"
+  },
+  "Ezili Range": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Heartstopper": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Splash Attack": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili MOAB Damage": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Damage Over Time": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Sacrificial Totem": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Attack Speed": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Strip Modifiers": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili MOAB Hex": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Attack Range": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Heartstopper+": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Splash Attack+": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Damage Over Time+": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Range+": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Sacrificial Totem+": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Splash Attack++": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Attack Speed+": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili Damage Over Time++": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "Ezili MOAB Hex+": {
+    "towerId": "Ezili",
+    "towerName": "Ezili",
+    "towerSet": "Hero"
+  },
+  "gwendolin pierce": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin wall of fire": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin heat it up": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin pierce+": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin burn damage": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin heat it up range": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin twin shot": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin damage": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin firestorm": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin range": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin reload speed": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin popping power": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin wall of fire+": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin reload speed+": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin firestorm+": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin heat it up damage": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin reload speed++": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin triple shot": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "gwendolin firestorm++": {
+    "towerId": "Gwendolin",
+    "towerName": "Gwendolin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 2": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 3": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 4": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 5": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 6": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 7": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 8": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 9": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 10": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 11": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 12": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 13": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 14": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 15": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 16": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 17": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 18": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 19": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "Benjamin level 20": {
+    "towerId": "Benjamin",
+    "towerName": "Benjamin",
+    "towerSet": "Hero"
+  },
+  "2 PatFusty slam radius+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "3 PatFusty roar": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "4 PatFusty attack+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "5 PatFusty bloon slap": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "6 PatFusty stun": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "7 PatFusty pierce+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "8 PatFusty attack+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "9 PatFusty range+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "10 PatFusty crush ability": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "11 PatFusty damage+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "12 PatFusty speed+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "13 PatFusty stun+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "14 PatFusty rawr+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "15 PatFusty slap+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "16 PatFusty range+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "17 PatFusty speed+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "18 PatFusty pierce+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "19 PatFusty damage+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "20 PatFusty squeeze+": {
+    "towerId": "PatFusty",
+    "towerName": "Pat Fusty",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-2-DruidOfWrath+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-3-Brambles+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-4-NaturesWard+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-5-ReloadReduce+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-6-Pierce+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-7-Brambles++": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-8-NaturesWard++": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-9-Damage+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-10-WallOfTrees": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-11-Range+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-12-AttackSpeed+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-13-Pierce+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-14-Damage+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-15-NaturesWard++": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-16-Brambles++": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-17-ReloadSpeed+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-18-DruidOfWrath++": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-19-Damage+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "ObynGreenfoot-20-WallOfTrees+": {
+    "towerId": "ObynGreenfoot",
+    "towerName": "Obyn Greenfoot",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 2": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 3": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 4": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 5": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 6": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 7": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 8": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 9": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 10": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 11": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 12": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 13": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 14": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 15": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 16": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 17": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 18": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 19": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "Adora Upgrade 20": {
+    "towerId": "Adora",
+    "towerName": "Adora",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 2": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 3": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 4": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 5": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 6": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 7": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 8": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 9": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 10": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 11": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 12": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 13": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 14": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 15": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 16": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 17": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 18": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 19": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "AdmiralBrickell Upgrade 20": {
+    "towerId": "AdmiralBrickell",
+    "towerName": "Admiral Brickell",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 2": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 3": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 4": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 5": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 6": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 7": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 8": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 9": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 10": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 11": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 12": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 13": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 14": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 15": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 16": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 17": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 18": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 19": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Etienne Upgrade 20": {
+    "towerId": "Etienne",
+    "towerName": "Etienne",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 2": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 3": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 4": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 5": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 6": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 7": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 8": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 9": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 10": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 11": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 12": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 13": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 14": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 15": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 16": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 17": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 18": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 19": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Sauda Upgrade 20": {
+    "towerId": "Sauda",
+    "towerName": "Sauda",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 2": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 3": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 4": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 5": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 6": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 7": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 8": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 9": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 10": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 11": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 12": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 13": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 14": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 15": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 16": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 17": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 18": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 19": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Psi Upgrade 20": {
+    "towerId": "Psi",
+    "towerName": "Psi",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 2": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 3": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 4": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 5": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 6": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 7": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 8": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 9": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 10": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 11": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 12": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 13": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 14": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 15": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 16": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 17": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 18": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 19": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Geraldo Upgrade 20": {
+    "towerId": "Geraldo",
+    "towerName": "Geraldo",
+    "towerSet": "Hero"
+  }
 }

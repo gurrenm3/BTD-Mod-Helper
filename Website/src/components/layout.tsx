@@ -4,6 +4,7 @@ import React, {
   FunctionComponent,
   HTMLAttributes,
   PropsWithChildren,
+  ReactNode,
 } from "react";
 import { ScrollbarProps, Scrollbars } from "react-custom-scrollbars-2";
 import { use100vh } from "react-div-100vh";
@@ -64,6 +65,7 @@ interface LayoutProps
   bottomLeftOnClick?: () => void;
   headerClassName?: string;
   footerClassName?: string;
+  footerBody?: ReactNode;
   fitHeight?: boolean;
 }
 
@@ -76,6 +78,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
   headerClassName,
   footerClassName,
   fitHeight,
+  footerBody,
   ...props
 }) => {
   const minHeight = use100vh() ?? 1000;
@@ -93,6 +96,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
         buttonName={bottomLeftButton}
         buttonOnClick={bottomLeftOnClick}
         className={footerClassName}
+        body={footerBody}
       />
     </div>
   );
