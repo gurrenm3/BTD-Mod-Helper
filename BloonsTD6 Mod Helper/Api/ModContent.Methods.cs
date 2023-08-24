@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.Scenarios;

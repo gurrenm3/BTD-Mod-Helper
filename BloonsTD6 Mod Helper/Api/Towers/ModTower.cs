@@ -69,7 +69,7 @@ public abstract class ModTower : NamedModContent
     /// <inheritdoc />
     public sealed override int RegisterPerFrame => 1;
 
-    internal virtual string[] DefaultMods =>
+    internal virtual IEnumerable<string> DefaultMods =>
         new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
 
     internal virtual ModTowerSet ModTowerSet => null;
@@ -123,7 +123,7 @@ public abstract class ModTower : NamedModContent
     /// <summary>
     /// The family of Monkeys that your Tower should be put in.
     /// <br />
-    /// For now, just use one of the default constants provided of PRIMARY, MILITARY, MAGIC, or SUPPORT.
+    /// Use the built in <see cref="Il2CppAssets.Scripts.Models.TowerSets.TowerSet"/> enum for this.
     /// </summary>
     public abstract TowerSet TowerSet { get; }
 

@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 namespace BTD_Mod_Helper.Patches.Bloons;
 
@@ -8,9 +9,9 @@ internal class Bloon_Damage
     [HarmonyPostfix]
     internal static void Postfix(Bloon __instance, float totalAmount)
     {
-        if (ModBoss.Cache.TryGetValue(__instance.bloonModel.id, out var boss))
+        if (ModBossTier.Cache.TryGetValue(__instance.bloonModel.id, out var boss))
         {
-            boss.OnDamage(__instance, totalAmount);
+            boss.Boss.OnDamage(__instance, totalAmount);
         }
     }
 }

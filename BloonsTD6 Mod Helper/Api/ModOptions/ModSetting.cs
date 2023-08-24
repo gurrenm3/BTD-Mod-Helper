@@ -10,8 +10,6 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// <typeparam name="T">The type that this ModSetting holds</typeparam>
 public abstract class ModSetting<T> : ModSetting
 {
-
-
     /// <summary>
     /// Will only save the result and run onSave if this custom function validates the value
     /// </summary>

@@ -1,7 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using BTD_Mod_Helper.Api.Components;
 using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Bloons;
+using Il2CppAssets.Scripts.Unity;
 using UnityEngine;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.Api.Bloons;
@@ -11,10 +16,11 @@ namespace BTD_Mod_Helper.Api.Bloons;
 /// </summary>
 public abstract class ModBossTier : ModContent
 {
-    /// <summary>
-    /// The ingame boss panel for this tier, may be null
-    /// </summary>
-    public ModHelperPanel BossPanel { get; set; }
+    internal static readonly Dictionary<string, ModBossTier> Cache = new();
+
+    /// <inheritdoc />
+    protected override float RegistrationPriority => 5; // Bosses should register after tiers
+
     /// <summary>
     /// Tier of the boss on this round, if not specified, it will automatically be set based on the round
     /// </summary>
@@ -33,12 +39,12 @@ public abstract class ModBossTier : ModContent
     /// Modifies the base boss bloon
     /// </summary>
     /// <param name="bossModel"></param>
-    public abstract void ModifyBossBloonModel(BloonModel bossModel);
+    public abstract void ModifyBaseBoss(BloonModel bossModel);
 
     /// <summary>
     /// The boss this tier belongs to
     /// </summary>
-    protected abstract ModBoss Boss { get; }
+    public abstract ModBoss Boss { get; }
     
     /// <summary>
     /// Called when the boss is spawned
@@ -66,35 +72,13 @@ public abstract class ModBossTier : ModContent
     public virtual void OnDamage(Bloon bloon, float totalAmount)
     {
     }
-    
-    /// <summary>
-    /// Called when the UI should update after taking damage, only override this if you have custom ui, otherwise use <see cref="OnDamage"/>
-    /// </summary>
-    /// <param name="bloon"></param>
-    /// <param name="totalAmount"></param>
-    public virtual void OnDamageUI(Bloon bloon, float totalAmount)
-    {
-        BossPanel.GetComponentFromChildrenByName<Image>("FillArea").fillAmount =
-            bloon.health / bloon.bloonModel.maxHealth;
-            
-        ModBoss.SetHPText(Mathf.FloorToInt(bloon.health), bloon.bloonModel.maxHealth, BossPanel.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("HealthText"));
-    }
-    
+
     /// <summary>
     /// Called when the boss reaches a skull
     /// </summary>
     /// <param name="bloon"></param>
     public virtual void SkullReached(Bloon bloon)
     {
-    }
-
-    /// <summary>
-    /// Called when the boss should get a skull removed from the UI, only override this if you have custom ui, otherwise use <see cref="SkullReached"/>
-    /// </summary>
-    /// <param name="bloon"></param>
-    public virtual void SkullReachedUI(Bloon bloon)
-    {
-        BossPanel.GetComponentsFromChildrenByName<ModHelperImage>("Skull")[0].DeleteObject();
     }
     
     /// <summary>
@@ -112,6 +96,37 @@ public abstract class ModBossTier : ModContent
     /// If not specified, the skulls' position will be placed evenly (3 skulls => 0.75, 0.5, 0.25)
     /// </remarks>
     public virtual float[] PercentageValues { get; internal set; }
+
+    internal void SetupSkulls(BloonModel bossModel)
+    {
+        if (PercentageValues == null)
+        {
+            var skullsCount = Skulls;
+            var pV = new List<float>();
+            if (skullsCount > 0)
+            {
+                for (int i = 1; i <= skullsCount; i++)
+                {
+                    pV.Add(1f - 1f / (skullsCount + 1) * i);
+                }
+            }
+            PercentageValues = pV.ToArray();
+        }
+
+        bossModel.AddBehavior(new HealthPercentTriggerModel(Name + "-SkullEffect", false, PercentageValues,
+            new[] {Name + "SkullEffect"}, PreventFallThrough));
+    }
+
+    internal void SetupTimer(BloonModel bossModel)
+    {
+        if (Interval != null)
+        {
+            bossModel.AddBehavior(new TimeTriggerModel(Name + "-TimerTick", Interval.Value, TriggerImmediately, new[]
+            {
+                Name + "TimerTick"
+            }));
+        }
+    }
 
     /// <summary>
     /// Determines if the boss's health should go down while it's skull effect is on
@@ -135,6 +150,7 @@ public abstract class ModBossTier : ModContent
         Boss.tiersByRound.Add(Round, this);
         if (Tier > Boss.highestTier)
             Boss.highestTier = Tier;
+
     }
 }
 /// <summary>
@@ -144,5 +160,5 @@ public abstract class ModBossTier : ModContent
 public abstract class ModBossTier<T> : ModBossTier where T : ModBoss
 {    
     /// <inheritdoc />
-    protected override ModBoss Boss => GetInstance<T>();
+    public override ModBoss Boss => GetInstance<T>();
 }

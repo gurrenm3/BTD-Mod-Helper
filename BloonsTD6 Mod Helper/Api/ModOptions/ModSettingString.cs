@@ -70,11 +70,7 @@ public class ModSettingString : ModSetting<string>
 
         var input = option.BottomRow.AddInputField(
             new Info("Input", 1500, 150), value, VanillaSprites.BlueInsertPanelRound,
-            new Action<string>(s =>
-            {
-                SetValue(s);
-                // ModHelper.Log("value is a changin");
-            }), 80f, characterValidation
+            new Action<string>(SetValue), 80f, characterValidation
         );
 
         option.SetResetAction(new Action(() => input.SetText(defaultValue)));

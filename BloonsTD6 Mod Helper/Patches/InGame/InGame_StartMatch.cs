@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using BTD_Mod_Helper.UI.Modded;
 namespace BTD_Mod_Helper.Patches;
 
@@ -6,12 +7,8 @@ namespace BTD_Mod_Helper.Patches;
 internal class InGame_StartMatch
 {
     [HarmonyPostfix]
-    internal static void Postfix(Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame __instance)
+    internal static void Postfix()
     {
-        if (ModBoss.Cache.Count > 0)
-        {
-            ModBossUI.Init();
-        }
         ModHelper.PerformHook(mod => mod.OnMatchStart());
     }
 }

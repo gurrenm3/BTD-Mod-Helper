@@ -15,7 +15,8 @@ namespace BTD_Mod_Helper.Api.Towers;
 public abstract class ModHero : ModTower
 {
 
-    internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
+    /// <inheritdoc />
+    internal override IEnumerable<string> DefaultMods => base.DefaultMods.Concat(new[]
     {
         "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands",
         "Scholarships", "SelfTaughtHeroes", "WeakPoint"

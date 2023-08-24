@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Simulation.Bloons.Behaviors;
 namespace BTD_Mod_Helper.Patches.Bloons.Behaviors;
 
@@ -8,9 +9,9 @@ internal static class TimeTrigger_Trigger
     [HarmonyPrefix]
     private static void Prefix(TimeTrigger __instance)
     {
-        if (ModBoss.Cache.TryGetValue(__instance.bloon.bloonModel.name, out var boss))
+        if (ModBossTier.Cache.TryGetValue(__instance.bloon.bloonModel.name, out var modBossTier))
         {
-            boss.currentTier.TimerTick(__instance.bloon);
+            modBossTier.TimerTick(__instance.bloon);
         }
     }
 }

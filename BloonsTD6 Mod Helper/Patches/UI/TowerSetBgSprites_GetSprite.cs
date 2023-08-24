@@ -11,7 +11,7 @@ internal class TowerSetBgSprites_GetSprite
     [HarmonyPrefix]
     internal static bool Prefix(TowerSet ts, ref Sprite __result)
     {
-        if (ModContent.GetContent<ModTowerSet>().FirstOrDefault(set => set.Set == ts) is ModTowerSet modTowerSet)
+        if (ModContent.GetContent<ModTowerSet>().Find(set => set.Set == ts) is ModTowerSet modTowerSet)
         {
             __result = ModContent.GetSprite(modTowerSet.mod, modTowerSet.Container);
             return false;
