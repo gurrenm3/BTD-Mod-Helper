@@ -48,7 +48,8 @@ export const recursiveSetCollapsed = (
           input.connection || input.fieldRow.some((field) => field.EDITABLE)
       ) &&
         !block.type.endsWith(".Model[]") &&
-        !block.type.endsWith(".WeaponModel[]")))
+        !block.type.endsWith(".WeaponModel[]") &&
+        !block.type.endsWith(".AreaType[]")))
   ) {
     Blockly.Events.setRecordUndo(false);
     block.setCollapsed(collapsed);
@@ -255,7 +256,12 @@ const handleArg = (
     const input = block.inputs[key];
     handleInput(input, arg, value);
     if (isOptional) {
-      block.extraState[key] = true;
+      if (input.shadow && !input.block && !input.shadow.fields) {
+        delete block.inputs[key];
+        block.extraState[key] = false;
+      } else {
+        block.extraState[key] = true;
+      }
     }
   } else {
     console.warn(

@@ -104,7 +104,8 @@
         "max": 5
       }
     ],
-    "data": "BLOCKLY_TOWER_TIERS"
+    "data": "BLOCKLY_TOWER_TIERS",
+    "extensions": ["match_wrapped_color"]
   },
   {
     "type": "HeroWithLevel",
@@ -195,7 +196,7 @@
     "previousStatement": "Upgrade[]",
     "category": "Other",
     "subcategory": null,
-    "colour": 330,
+    "colour": "#888888",
     "message0": "%1%2",
     "args0": [
       {
@@ -237,7 +238,8 @@
       }
     ],
     "data": "BLOCKLY_ARRAY",
-    "mutator": "plus_minus_rows"
+    "mutator": "plus_minus_rows",
+    "extensions": ["match_wrapped_color"]
   },
   {
     "type": "CustomTower",

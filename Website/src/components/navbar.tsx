@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, { FunctionComponent, ReactNode, useContext } from "react";
 import {
   Button,
   Container,
@@ -134,7 +134,8 @@ export const ModHelperFooter: FunctionComponent<{
   buttonName?: string;
   buttonOnClick?: () => void;
   className?: string;
-}> = ({ buttonName, buttonOnClick, className }) => {
+  body?: ReactNode;
+}> = ({ buttonName, buttonOnClick, className, body }) => {
   const scrollbars = useContext(ScrollBarsContext);
   const [map, setMap] = useContext(BackgroundContext);
 
@@ -162,8 +163,12 @@ export const ModHelperFooter: FunctionComponent<{
         {buttonName || "Back to Top"}
       </Button>
       <div className={`text-center d-none d-sm-block fs-larger`}>
-        To learn how to download BTD Mod Helper and install mods,{" "}
-        <Link href={"/wiki/Install-Guide#main-content"}>click here</Link>
+        {body || (
+          <>
+            To learn how to download BTD Mod Helper and install mods,{" "}
+            <Link href={"/wiki/Install-Guide#main-content"}>click here</Link>
+          </>
+        )}
       </div>
       <Dropdown drop={"up"} align={"end"} className={"text-end"}>
         <DropdownToggle

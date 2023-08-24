@@ -27,6 +27,7 @@ import useDebouncedCallback from "@restart/hooks/useDebouncedCallback";
 import { WorkspaceSearch } from "../components/blockly/workspace-search";
 import { CustomWorkspaceControl } from "../components/blockly/custom-workspace-control";
 import useBreakpoint from "@restart/hooks/useBreakpoint";
+import { TowerImportCategory } from "../components/blockly/tower-import-category";
 
 const defaultToolbox = {
   kind: "categoryToolbox",
@@ -35,6 +36,12 @@ const defaultToolbox = {
       kind: ToolboxSearchCategory.registrationName,
       name: "Search Blocks",
       colour: "rgb(85, 119, 238)",
+      contents: [],
+    },
+    {
+      kind: TowerImportCategory.registrationName,
+      name: "Import Towers",
+      colour: "#888888",
       contents: [],
     },
   ],
@@ -151,9 +158,10 @@ export default () => {
     disable: false,
     zoom: {
       controls: true,
-      minScale: 0.2,
-      maxScale: 2.0,
+      wheel: true,
       pinch: true,
+      minScale: 0.2,
+      maxScale: 1.5,
       startScale: 0.8,
     },
     move: {
@@ -174,6 +182,19 @@ export default () => {
       footerClassName={cx(fullscreen && "d-none")}
       bottomLeftButton={"Editor Tips"}
       bottomLeftOnClick={() => showTips(true)}
+      footerBody={
+        <>
+          To make use of the editor, download the{" "}
+          <a
+            href={
+              "https://nightly.link/gurrenm3/BTD-Mod-Helper/workflows/build/preview/Btd6ModHelper.dll.zip"
+            }
+          >
+            latest preview build of Mod Helper
+          </a>
+          . See Editor Tips for more details.
+        </>
+      }
     >
       <ModHelperHelmet
         title={"BTD6 Tower Editor"}
@@ -220,10 +241,6 @@ export default () => {
               the editor as blocks.
             </li>
             <li>
-              Most blocks will be collapsed by default, double click to expand
-              them. Use Ctrl+F to search blocks, including collapsed ones.
-            </li>
-            <li>
               When you've done your edits, select the outer TowerModel block and
               do Ctrl+C // Alt+C to copy the edited TowerModel to the clipboard
               (or Ctrl+X / Alt+X to also delete the blocks).
@@ -232,6 +249,20 @@ export default () => {
               Back in your sandbox game, press the Import Tower Model shortcut
               (Alt+V by default) to apply the changed TowerModel to your
               selected tower.
+            </li>
+          </ul>
+          <h4>Tips</h4>
+          <ul>
+            <li>
+              Double click on blocks to expand them when they're collapsed.
+            </li>
+            <li>
+              Use Ctrl+F to search for blocks in the workspace, including
+              collapsed ones.
+            </li>
+            <li>
+              Press the gear icon on Blocks to control which fields you want to
+              set on them. Fields that aren't shown have their default value.
             </li>
           </ul>
           <h4>Custom Towers</h4>

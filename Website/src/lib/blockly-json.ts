@@ -1,4 +1,4 @@
-import { BlockArgDef, BlockDef } from "./blockly-types";
+import { BlockDef } from "./blockly-types";
 
 import blocks from "../data/blocks.json";
 import extraBlocks from "../data/extra-blocks.json";
@@ -7,7 +7,6 @@ import audioSourceReferences from "../data/audio-source-references.json";
 import spriteReferences from "../data/sprite-references.json";
 import towers from "../data/towers.json";
 import upgrades from "../data/upgrades.json";
-import { rowsList } from "./blockly-utils";
 import { cloneDeep } from "lodash";
 
 const createResourceBlock =
@@ -77,15 +76,18 @@ export const towerBlocks = Object.entries(towerIds).map(
     } as BlockDef)
 );
 
-export const upgradeIds = upgrades as Record<string, string>;
+export const upgradeIds = upgrades as Record<
+  string,
+  { towerName: string; towerSet: string; displayName?: string }
+>;
 export const upgradeBlocks = Object.entries(upgradeIds).map(
-  ([id, name]) =>
+  ([id, { towerName, towerSet, displayName }]) =>
     ({
       type: `Upgrade_${id}`,
       output: ["Upgrade", "string"],
       category: "Upgrades",
-      colour: "#888888",
-      message0: name,
+      colour: towerSetColors[towerSet],
+      message0: `${displayName ?? id}`,
       args0: [],
       data: id,
     } as BlockDef)

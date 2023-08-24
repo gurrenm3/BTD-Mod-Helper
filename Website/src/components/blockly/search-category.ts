@@ -28,6 +28,8 @@ export abstract class SearchCategory extends Blockly.ToolboxCategory {
   protected noResultsMessage: string;
   protected hasQueried = false;
 
+  protected isMatching = false;
+
   /**
    * Initializes a ToolboxSearchCategory.
    * @param categoryDef The information needed to create a category in the
@@ -138,9 +140,12 @@ export abstract class SearchCategory extends Blockly.ToolboxCategory {
     const query = this.searchField.value;
     const hasQuery = query.length >= 3;
 
+    if (this.isMatching) return;
+
+    this.isMatching = true;
+
     this.getBlocks().then((blocks) => {
       {
-        this.hasQueried = true;
         this.flyoutItems_ = blocks ?? [];
         if (!this.flyoutItems_.length) {
           this.flyoutItems_.push({
@@ -161,6 +166,8 @@ export abstract class SearchCategory extends Blockly.ToolboxCategory {
           });
         }
 
+        this.isMatching = false;
+        this.hasQueried = true;
         this.parentToolbox_.refreshSelection();
       }
     });

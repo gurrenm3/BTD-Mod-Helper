@@ -11,7 +11,7 @@ export class CustomHorizontalFlyout extends HorizontalFlyout {
         const workspace = Blockly.Workspace.getById(event.workspaceId);
         const block = workspace.getBlockById(event.blockId);
 
-        block?.["onCreate"]?.();
+        block?.["postInit"]?.();
       }
     );
   }

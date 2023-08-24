@@ -50,6 +50,15 @@ import {
   workspacePaste,
 } from "./blockly-shortcuts";
 import { ToggleHat, ToggleHatMixin } from "../components/blockly/toggle-hat";
+import {
+  MatchWrappedColor,
+  MatchWrappedColorExtension,
+} from "../components/blockly/match-wrapped-color";
+import {
+  importTower,
+  TowerImportCategory,
+} from "../components/blockly/tower-import-category";
+import { FlyoutButton } from "blockly/core";
 
 const allowCustomBlocks = process.env.NODE_ENV === "development";
 
@@ -120,6 +129,8 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
     category.contents.push(getBlockInfo(block.type));
   }
 
+  categories["Upgrades"].colour = "#888888";
+
   for (let [name, category] of Object.entries(categories)) {
     if (!(name in subcategories)) continue;
 
@@ -140,6 +151,8 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
 export const registerAll = () => {
   Blockly.utils.colour.setHsvSaturation(0.66);
   ToolboxCategory.nestedPadding = 10;
+  FlyoutButton.TEXT_MARGIN_Y = 6;
+  FlyoutButton.TEXT_MARGIN_X = 7;
 
   Blockly.fieldRegistry.register(FieldHidden.type, FieldHidden);
   Blockly.fieldRegistry.register(FieldPlus.type, FieldPlus);
@@ -156,6 +169,11 @@ export const registerAll = () => {
     Blockly.registry.Type.TOOLBOX_ITEM,
     ToolboxSearchCategory.registrationName,
     ToolboxSearchCategory
+  );
+  Blockly.registry.register(
+    Blockly.registry.Type.TOOLBOX_ITEM,
+    TowerImportCategory.registrationName,
+    TowerImportCategory
   );
   Blockly.registry.register(
     Blockly.registry.Type.FLYOUTS_HORIZONTAL_TOOLBOX,
@@ -188,6 +206,7 @@ export const registerAll = () => {
     PlusMinusRowsFn
   );
   Blockly.Extensions.registerMixin(ToggleHat, ToggleHatMixin);
+  Blockly.Extensions.register(MatchWrappedColor, MatchWrappedColorExtension);
 
   Blockly.blockRendering.register(CustomRenderer.name, CustomRenderer);
 
@@ -352,8 +371,10 @@ export const initWorkspace = (workspace: WorkspaceSvg) => {
     const workspace = Blockly.Workspace.getById(event.workspaceId);
     const block = workspace.getBlockById(event.blockId);
 
-    block?.["onCreate"]?.();
+    block?.["postInit"]?.();
   });
+
+  workspace.registerButtonCallback(importTower.name, importTower);
 };
 
 export default { registerAll, initBlocks, initToolbox };

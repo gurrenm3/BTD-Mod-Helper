@@ -95,6 +95,7 @@ internal static class BlocklyGenerator
             CreateReferenceMap(typeof(SpriteReference)).ToString(Formatting.Indented));
         File.WriteAllText(Path.Combine(folder, "towers.json"), GetTowerIds().ToString(Formatting.Indented));
         File.WriteAllText(Path.Combine(folder, "upgrades.json"), GetUpgradeIds().ToString(Formatting.Indented));
+        File.WriteAllText(Path.Combine(folder, "all-towers.json"), GetAllTowers().ToString(Formatting.Indented));
         ModHelper.Msg("Finished generating resources");
 
         ModHelper.Msg($"Saved jsons to {folder}");
@@ -177,7 +178,7 @@ internal static class BlocklyGenerator
             {
                 var isArray = member.GetUnderlyingType().IsIl2CppArray(out _);
 
-                if (param is {HasDefaultValue: true} && AllowOptionalRows(type))
+                if (param is {HasDefaultValue: true} && AllowOptional(type, member.Name))
                 {
                     if (!block.ContainsKey("mutator"))
                     {
@@ -376,14 +377,48 @@ internal static class BlocklyGenerator
 
     private static JObject GetUpgradeIds()
     {
-        var jobject = new JObject();
+        var jObject = new JObject();
         var local = LocalizationManager.Instance;
 
-        foreach (var upgrade in Game.instance.model.upgrades)
+        foreach (var tower in Game.instance.model.towers.Where(tower => !tower.isSubTower && tower.IsVanillaTower()))
         {
-            jobject[upgrade.name] = local.GetTextEnglish(upgrade.localizedNameOverride.NullIfEmpty() ?? upgrade.name);
+            foreach (var upgradeId in tower.appliedUpgrades)
+            {
+                if (jObject.ContainsKey(upgradeId)) continue;
+
+                var upgrade = Game.instance.model.GetUpgrade(upgradeId);
+                var displayName = local.GetTextEnglish(upgrade.localizedNameOverride.NullIfEmpty() ?? upgrade.name);
+
+                var upgradeEntry = jObject[upgradeId] = new JObject
+                {
+                    ["towerId"] = tower.baseId,
+                    ["towerName"] = local.GetTextEnglish(tower.baseId),
+                    ["towerSet"] = tower.towerSet.ToString()
+                };
+
+                if (upgradeId != displayName)
+                {
+                    upgradeEntry["displayName"] = displayName;
+                }
+            }
         }
 
+        return jObject;
+    }
+
+    private static JObject GetAllTowers()
+    {
+        var jobject = new JObject();
+        foreach (var tower in Game.instance.model.towers.Where(model => model.IsVanillaTower())
+                     .OrderBy(model => model.isSubTower))
+        {
+            jobject[tower.name] = new JObject
+            {
+                ["towerSet"] = tower.towerSet.ToString(),
+                ["path"] = tower.baseId + "/" + tower.name + ".json",
+                ["appliedUpgrades"] = new JArray(tower.appliedUpgrades.Select(LocalizationManager.Instance.GetTextEnglish))
+            };
+        }
         return jobject;
     }
 
@@ -732,8 +767,10 @@ internal static class BlocklyGenerator
 
     private static bool IsValueType(this Type type) => type.IsValueType || type.IsIl2CppValueType();
 
-    private static bool AllowOptionalRows(Type type) =>
-        !type.IsValueType() && !type.IsAssignableTo(typeof(UpgradePathModel));
+    private static bool AllowOptional(Type type, string key) =>
+        !type.IsValueType() &&
+        !type.IsAssignableTo(typeof(UpgradePathModel)) &&
+        !(type.IsAssignableTo(typeof(FilterModel)) && key == "isActive");
 
     internal static void GetAllTypes(GameModel gameModel = null)
     {

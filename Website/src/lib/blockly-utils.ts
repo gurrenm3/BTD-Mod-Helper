@@ -150,6 +150,9 @@ export const reInitBlock = (block: Block, state: BlockDef) => {
 
   block.bumpNeighbours();
   block["onInit"]?.();
+  if (block.rendered) {
+    block["postInit"]?.();
+  }
 };
 
 /**
