@@ -1,20 +1,18 @@
 ﻿using Il2CppAssets.Scripts.Unity.UI_New.GameOver;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-
 namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
 
-[HarmonyPatch(typeof(BossDefeatScreen), nameof(BossDefeatScreen.CanPlayAgain), MethodType.Getter)]
-internal static class BossDefeatScreen_CanPlayAgain
+[HarmonyPatch(typeof(BossVictoryScreen), nameof(BossVictoryScreen.PlayAgainClicked))]
+internal static class BossVictoryScreen_PlayAgainClicked
 {
     [HarmonyPrefix]
-    private static bool Prefix(ref bool __result)
+    private static bool Prefix(BossVictoryScreen __instance)
     {
         if (InGameData.CurrentGame.gameEventId == ModBoss.EventId)
         {
-            __result = true;
+            InGame.instance.bridge.Restart();
             return false;
         }
-
         return true;
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Models.Rounds;
 using UnityEngine;
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
 /// Class for scheduling Tasks using MelonCoroutines
@@ -48,6 +49,7 @@ public static class TaskScheduler
             if (ex.Message.Contains("trampoline"))
                 ModHelper.Warning("Notice: Melonloader Coroutine had a trampoline error." +
                                   " This shouldn't have any impact on the mod.");
+
         }
     }
 
@@ -89,22 +91,12 @@ public static class TaskScheduler
         switch (scheduleType)
         {
             case ScheduleType.WaitForSeconds:
-                var count = 0;
-                while (amountToWait >= count)
-                {
-                    yield return new WaitForSecondsRealtime(1);
-
-                    count++;
-                }
-
+                yield return new WaitForSecondsRealtime(amountToWait);
                 break;
             case ScheduleType.WaitForFrames:
-                count = 0;
-                while (amountToWait >= count)
+                for (var i = 0; i <= amountToWait; i++)
                 {
                     yield return new WaitForEndOfFrame();
-
-                    count++;
                 }
                 break;
         }

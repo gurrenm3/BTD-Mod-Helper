@@ -2,6 +2,7 @@
 using BTD_Mod_Helper.Api.Bloons.Bosses;
 using BTD_Mod_Helper.Api.Data;
 using Il2CppAssets.Scripts.Simulation.Bloons;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 namespace BTD_Mod_Helper.Patches.Bloons;
 
 [HarmonyPatch(typeof(Bloon), nameof(Bloon.Leaked))]
@@ -21,9 +22,9 @@ internal class Blooon_Leaked
     internal static void Postfix(Bloon __instance)
     {
         ModHelper.PerformHook(mod => mod.PostBloonLeaked(__instance));
-        if (ModBossTier.Cache.TryGetValue(__instance.bloonModel.id, out var modBossTier))
+        if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var modBossTier))
         {
-            modBossTier.Boss.OnLeak(__instance);
+            modBossTier.OnLeakCallback(__instance);
         }
     }
 }

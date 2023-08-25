@@ -55,7 +55,10 @@ internal class ResourceHandler
 
                 reader.ToSampleProvider().Read(data, 0, totalSamples);
 
-                var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
+                //var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels,waveFormat.SampleRate, false);
+
+                //todo: test bug with music track 2nd half being completely silent and see if its just music tracks
+                var audioClip = AudioClip.Create(id, totalSamples / waveFormat.Channels, waveFormat.Channels, waveFormat.SampleRate, false);
 
                 if (audioClip.SetData(data, 0))
                 {

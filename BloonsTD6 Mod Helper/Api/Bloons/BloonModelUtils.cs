@@ -9,13 +9,6 @@ namespace BTD_Mod_Helper.Api.Bloons;
 public class BloonModelUtils
 {
     /// <summary>
-    /// Converts the <see cref="BloonModel.speed"/> from a BloonModel to <see cref="BloonModel.speedFrames"/>
-    /// </summary>
-    /// <param name="speed"></param>
-    /// <returns></returns>
-    public static float SpeedToSpeedFrames(float speed) => speed * 0.416667f / 25f;
-    
-    /// <summary>
     /// Constructs an accurate BloonID for a BloonModel based off of it's statuses.
     /// </summary>
     /// <param name="bloonName"></param>

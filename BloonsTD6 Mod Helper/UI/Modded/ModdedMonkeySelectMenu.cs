@@ -301,7 +301,7 @@ internal class ModdedMonkeySelectMenu
         customMonkeyGroupButtons.Clear();
     }
 
-    #region Nested type: MainMenu_Awake
+    #region Nested type: MainMenu_Start
 
     [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Start))]
     internal class MainMenu_Awake

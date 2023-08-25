@@ -6,7 +6,6 @@ namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
 /// <summary>
 /// Save the boss type / eliteness to the map save metadata
 /// </summary>
-[HarmonyPatch(typeof(BossBloonManager), nameof(BossBloonManager.SetSaveMetaData))]
 [HarmonyPatch(typeof(BossBloonManager), nameof(BossBloonManager.GetSaveMetaData))]
 internal static class BossBloonManager_GetSaveMetaData
 {

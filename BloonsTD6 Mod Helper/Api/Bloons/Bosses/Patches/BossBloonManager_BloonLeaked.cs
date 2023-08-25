@@ -8,9 +8,9 @@ internal static class BossBloonManager_BloonLeaked
     [HarmonyPrefix]
     private static bool Prefix(BossBloonManager __instance)
     {
-        if(ModBossTier.Cache.TryGetValue(__instance.currentBoss.bloonModel.name, out var boss))
+        if(ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
-            boss.Boss.OnLeak(__instance.currentBoss);
+            boss.OnLeakCallback(__instance.currentBoss);
         }
         return !InGame.instance.bridge.IsSandboxMode();
     }

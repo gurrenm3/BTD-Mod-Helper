@@ -22,7 +22,7 @@ internal static class ContinueGamePanel_ContinueClicked
             bool.TryParse(map.metaData[ModBoss.IsEliteKey], out var isElite))
         {
             var inGameData = InGameData.Editable;
-            if (ModBoss.BossesByInt.TryGetValue((int) bossType, out var boss))
+            if (ModBoss.Cache.TryGetValue((int) bossType, out var boss))
             {
                 inGameData.SetupBoss(ModBoss.EventId, bossType, isElite, false,
                     boss.SpawnRounds.ToArray(), new DailyChallengeModel

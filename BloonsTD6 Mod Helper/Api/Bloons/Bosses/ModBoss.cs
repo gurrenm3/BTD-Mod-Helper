@@ -3,16 +3,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Api.Internal;
-using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data.Boss;
 using Il2CppAssets.Scripts.Models.Bloons;
-using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Bloons.Bosses;
@@ -22,26 +19,24 @@ namespace BTD_Mod_Helper.Api.Bloons.Bosses;
 /// </summary>
 public abstract class ModBoss : ModBloon
 {
-    internal static readonly new Dictionary<string, ModBoss> Cache = new();
-    internal static readonly Dictionary<int, ModBoss> BossesByInt = new();
+    internal static readonly new Dictionary<int, ModBoss> Cache = new();
 
     internal static int NextBossType { get; private set; } = (int) (Enum.GetValues<BossType>()[^1] + 1);
     internal int BossTypeInt { get; private set; }
     internal BossType BossType => (BossType) BossTypeInt;
 
-    public const string EventId = "ModBoss";
-    public const string BossTypeKey = "ModBoss-BossType";
-    public const string IsEliteKey = "ModBoss-IsElite";
+    internal const string EventId = "ModBoss";
+    internal const string BossTypeKey = "ModBoss-BossType";
+    internal const string IsEliteKey = "ModBoss-IsElite";
 
-    internal List<ModBossTier> tiers = new();
-    internal SortedList<int, ModBossTier> tiersByRound = new();
+    internal readonly List<ModBossTier> tiers = new();
+    internal readonly SortedList<int, ModBossTier> tiersByRound = new();
     internal int highestTier = 0;
 
     /// <summary>
     /// The current spawned tier of the boss, may be null
     /// </summary>
-    public ModBossTier CurrentTier { get; internal set; }
-
+    public ModBossTier CurrentTier { get; internal set; } //todo: get this set on save continue
 
     /// <summary>
     /// Apply your custom modifications to the base bloonModel
@@ -49,37 +44,103 @@ public abstract class ModBoss : ModBloon
     /// <param name="bloonModel"></param>
     public abstract void ModifyBaseBloon(BloonModel bloonModel);
 
-    internal void OnSpawn(Bloon bloon)
-    {
-        CurrentTier.OnSpawn(bloon);
-    }
-
-    internal void OnLeak(Bloon bloon)
-    {
-        CurrentTier.OnLeak(bloon);
-    }
-
-    internal void OnPop(Bloon bloon)
-    {
-        CurrentTier.OnPop(bloon);
-    }
-
-    internal void OnDamage(Bloon bloon, float totalAmount)
-    {
-        CurrentTier.OnDamage(bloon, totalAmount);
-    }
-
     /// <summary>
-    /// Called to modify any/all rounds from 1 to a maximum of 139/>
+    /// Called to modify rounds for the boss roundset/>
     /// </summary>
+    /// <remarks>
+    /// Used in the same way as <see cref="ModRoundSet.ModifyRoundModels"/>
+    /// </remarks>
     public virtual void ModifyRoundModels(RoundModel roundModel, int round)
     {
     }
 
-    #region Icons
+    internal void OnSpawnCallback(Bloon bloon)
+    {
+        CurrentTier.OnSpawn(bloon);
+        OnSpawn(bloon);
+    }
+
+    internal void OnLeakCallback(Bloon bloon)
+    {
+        CurrentTier.OnLeak(bloon);
+        OnLeak(bloon);
+    }
+
+    internal void OnPopCallback(Bloon bloon)
+    {
+        CurrentTier.OnPop(bloon);
+        OnPop(bloon);
+    }
+
+    internal void OnDamageCallback(Bloon bloon, float totalAmount)
+    {
+        CurrentTier.OnDamage(bloon, totalAmount);
+        OnDamage(bloon, totalAmount);
+    }
+
+    internal void SkullReachedCallback(Bloon bloon)
+    {
+        CurrentTier.SkullReached(bloon);
+        SkullReached(bloon);
+    }
+
+    internal void TimerTickCallback(Bloon bloon)
+    {
+        CurrentTier.TimerTick(bloon);
+        TimerTick(bloon);
+    }
 
     /// <summary>
-    /// The Portrait used when the boss has been defeated
+    /// Called when the boss is spawned, will be called after the current tier's <see cref="ModBossTier.OnSpawn"/>
+    /// </summary>
+    /// <param name="bloon"></param>
+    public virtual void OnSpawn(Bloon bloon) //todo: fix this not getting called on retry last round
+    {
+    }
+
+    /// <summary>
+    /// Called when the boss is leaked, will be called after the current tier's <see cref="ModBossTier.OnLeak"/>
+    /// </summary>
+    /// <param name="bloon"></param>
+    public virtual void OnLeak(Bloon bloon)
+    {
+    }
+
+    /// <summary>
+    /// Called when the boss is popped, will be called after the current tier's <see cref="ModBossTier.OnPop"/>
+    /// </summary>
+    /// <param name="bloon"></param>
+    public virtual void OnPop(Bloon bloon)
+    {
+    }
+
+    /// <summary>
+    /// Called when the boss takes damage, will be called after the current tier's <see cref="ModBossTier.OnDamage"/>
+    /// </summary>
+    /// <param name="bloon"></param>
+    /// <param name="totalAmount"></param>
+    public virtual void OnDamage(Bloon bloon, float totalAmount)
+    {
+    }
+
+    /// <summary>
+    /// Called when the boss reaches a skull, will be called after the current tier's <see cref="ModBossTier.SkullReached"/>
+    /// </summary>
+    /// <param name="bloon"></param>
+    public virtual void SkullReached(Bloon bloon)
+    {
+    }
+
+    /// <summary>
+    /// Called when the boss timer triggers, only called if <see cref="ModBossTier.Interval"/> is not null. Will be called after the current tier's <see cref="ModBossTier.SkullReached"/>
+    /// </summary>
+    /// <param name="bloon"></param>
+    public virtual void TimerTick(Bloon bloon)
+    {
+    }
+
+    /// <summary>
+    /// The Portrait used in the game over screen when the boss has been defeated
     /// <br />
     /// (Name of .png or .jpg, not including file extension)
     /// </summary>
@@ -91,7 +152,7 @@ public abstract class ModBoss : ModBloon
     public virtual SpriteReference DefeatedPortraitReference => GetSpriteReferenceOrDefault(DefeatedPortrait);
 
     /// <summary>
-    /// The Portrait used when the boss defeats the player
+    /// The Portrait used in the game over screen when the boss defeats the player
     /// <br />
     /// (Name of .png or .jpg, not including file extension)
     /// </summary>
@@ -103,7 +164,7 @@ public abstract class ModBoss : ModBloon
     public virtual SpriteReference AlivePortraitReference => GetSpriteReferenceOrDefault(AlivePortrait);
 
     /// <summary>
-    /// The icon used for the "Boss Appears in X rounds" panel and health bar //todo: confirm this
+    /// The icon used for the "Boss Appears in X rounds" panel and health bar
     /// <br />
     /// (Name of .png or .jpg, not including file extension)
     /// </summary>
@@ -124,7 +185,26 @@ public abstract class ModBoss : ModBloon
     /// </summary>
     public virtual string BossMusicName => DisplayName + "-Music";
 
-    #endregion
+    //todo: figure out exactly how these will be specified, since they use MapLoader.AddAsset, maybe a new display class?
+    /// <summary>
+    /// The object that will be placed on the boss' spawn point on the track
+    /// </summary>
+    public virtual string TrackFX => "";
+
+    /// <summary>
+    /// If you're not going to use a custom display for your TrackFX, use this to directly control its SpriteReference
+    /// </summary>
+    public virtual PrefabReference TrackFXReference => CreatePrefabReference(TrackFX);
+
+    /// <summary>
+    /// The object that will be placed on the boss' spawn point on the track
+    /// </summary>
+    public virtual string AmbientMapFX => "";
+
+    /// <summary>
+    /// If you're not going to use a custom display for your TrackFX, use this to directly control its SpriteReference
+    /// </summary>
+    public virtual PrefabReference AmbientMapFXReference => CreatePrefabReference(AmbientMapFX);
 
     /// <summary>
     /// The rounds the boss should spawn on
@@ -147,6 +227,13 @@ public abstract class ModBoss : ModBloon
         ModifyBaseBloon(bloonModel);
     }
 
+    /// <inheritdoc />
+    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
+    {
+        base.RegisterText(textTable);
+        if (BossMusic != null)
+            textTable[BossMusic.GetName()] = BossMusicName;
+    }
 
     /// <inheritdoc />
     public override void Register()
@@ -155,7 +242,7 @@ public abstract class ModBoss : ModBloon
             return;
         base.Register();
         BossTypeInt = NextBossType;
-        BossesByInt[BossTypeInt] = this;
+        Cache[BossTypeInt] = this;
 
         NextBossType++;
 
@@ -170,21 +257,16 @@ public abstract class ModBoss : ModBloon
             tierBloonModel.name = tierBloonModel.id = BossTypeInt.ToString() + tier.Tier;
             tierBloonModel.baseId = bloonModel.id;
 
-
             Game.instance.model.bloons = Game.instance.model.bloons.AddTo(tierBloonModel);
             Game.instance.model.AddChildDependant(tierBloonModel);
             Game.instance.model.bloonsByName[tierBloonModel.name] = tierBloonModel;
             BloonModelCache[tierBloonModel.name] = tierBloonModel;
-            ModBossTier.Cache[tierBloonModel.name] = tier;
         }
-        Cache[bloonModel.name] = this;
+        ModBloon.Cache[bloonModel.name] = this;
 
-        var normal = new BossRoundSet(BossType, false);
-        //var elite = new BossRoundSet(BossType, true);
-        ModHelper.GetMod<MelonMain>().AddContent(normal);
-        //ModHelper.GetMod<MelonMain>().AddContent(elite);
-        normal.Register();
-        //elite.Register();
+        var roundSet = new ModBossRoundSet(BossType, false);
+        ModHelper.GetMod<MelonMain>().AddContent(roundSet);
+        roundSet.Register();
     }
 
     /// <inheritdoc />

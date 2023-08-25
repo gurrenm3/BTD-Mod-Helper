@@ -14,7 +14,7 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Newtonsoft.Json.Linq;
-using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
+using TaskScheduler = BTD_Mod_Helper.Api.Helpers.TaskScheduler;
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]

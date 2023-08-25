@@ -17,7 +17,7 @@ internal static class ModeScreen_OnModeSelected
     [HarmonyPrefix]
     private static void Prefix(string modeType)
     {
-        if (!BossRoundSet.Cache.TryGetValue(RoundSetChanger.RoundSetOverride, out var bossRoundset)) return;
+        if (!ModBossRoundSet.Cache.TryGetValue(RoundSetChanger.RoundSetOverride, out var bossRoundset)) return;
 
         var inGameData = InGameData.Editable;
         var dcm = new DailyChallengeModel
@@ -62,20 +62,5 @@ internal static class ModeScreen_OnModeSelected
             checkpointRounds.Add(round-1);
         }
         inGameData.checkpointRounds = checkpointRounds.ToArray();
-    }
-}
-
-[HarmonyPatch(typeof(BossGameData), nameof(BossGameData.TierCount), MethodType.Getter)]
-internal static class BossGameData_OnModeSelected
-{
-    [HarmonyPrefix]
-    private static bool Prefix(BossGameData __instance, ref int __result)
-    {
-        if (ModBoss.BossesByInt.TryGetValue((int) __instance.bossBloon, out var boss))
-        {
-            __result = boss.highestTier;
-            return false;
-        }
-        return true;
     }
 }

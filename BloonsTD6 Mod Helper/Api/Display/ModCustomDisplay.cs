@@ -7,7 +7,6 @@ namespace BTD_Mod_Helper.Api.Display;
 /// </summary>
 public abstract class ModCustomDisplay : ModDisplay, ICustomDisplay
 {
-
     /// <summary>
     /// On a ModCustomDisplay, this property does nothing
     /// </summary>

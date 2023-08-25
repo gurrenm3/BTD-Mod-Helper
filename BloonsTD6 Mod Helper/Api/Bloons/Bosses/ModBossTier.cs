@@ -1,30 +1,21 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using BTD_Mod_Helper.Api.Bloons.Bosses;
-using BTD_Mod_Helper.Api.Components;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Bloons;
-using Il2CppAssets.Scripts.Unity;
-using UnityEngine;
-using UnityEngine.UI;
-namespace BTD_Mod_Helper.Api.Bloons;
+namespace BTD_Mod_Helper.Api.Bloons.Bosses;
 
 /// <summary>
 /// Base class for a boss tier
 /// </summary>
 public abstract class ModBossTier : ModContent
 {
-    internal static readonly Dictionary<string, ModBossTier> Cache = new();
-
     /// <inheritdoc />
     protected override float RegistrationPriority => 5; // Bosses should register after tiers
 
     /// <summary>
-    /// Tier of the boss on this round, if not specified, it will automatically be set based on the round
+    /// Tier of the boss on this round, if not specified, it will automatically be set based on the round,
     /// </summary>
-    public virtual int Tier => Boss.tiersByRound.IndexOfValue(this)+1;
+    internal int Tier => Boss.tiersByRound.IndexOfValue(this)+1;
     
     /// <summary>
     /// Amount of skulls the boss has
@@ -82,10 +73,10 @@ public abstract class ModBossTier : ModContent
     }
     
     /// <summary>
-    /// Called when the boss timer triggers
+    /// Called when the boss timer triggers, only called if <see cref="Interval"/> is not null
     /// </summary>
-    /// <param name="boss"></param>
-    public virtual void TimerTick(Bloon boss)
+    /// <param name="bloon"></param>
+    public virtual void TimerTick(Bloon bloon)
     {
     }
 
@@ -95,11 +86,11 @@ public abstract class ModBossTier : ModContent
     /// <remarks>
     /// If not specified, the skulls' position will be placed evenly (3 skulls => 0.75, 0.5, 0.25)
     /// </remarks>
-    public virtual float[] PercentageValues { get; internal set; }
+    public virtual float[] SkullPositions { get; internal set; }
 
     internal void SetupSkulls(BloonModel bossModel)
     {
-        if (PercentageValues == null)
+        if (SkullPositions == null)
         {
             var skullsCount = Skulls;
             var pV = new List<float>();
@@ -110,10 +101,10 @@ public abstract class ModBossTier : ModContent
                     pV.Add(1f - 1f / (skullsCount + 1) * i);
                 }
             }
-            PercentageValues = pV.ToArray();
+            SkullPositions = pV.ToArray();
         }
 
-        bossModel.AddBehavior(new HealthPercentTriggerModel(Name + "-SkullEffect", false, PercentageValues,
+        bossModel.AddBehavior(new HealthPercentTriggerModel(Name + "-SkullEffect", false, SkullPositions,
             new[] {Name + "SkullEffect"}, PreventFallThrough));
     }
 
@@ -139,7 +130,7 @@ public abstract class ModBossTier : ModContent
     public virtual bool TriggerImmediately => false;
 
     /// <summary>
-    /// Interval between ticks
+    /// Interval between ticks for the boss' timer, if null, the timer will not be created
     /// </summary>
     public virtual float? Interval => null;
 
@@ -150,7 +141,6 @@ public abstract class ModBossTier : ModContent
         Boss.tiersByRound.Add(Round, this);
         if (Tier > Boss.highestTier)
             Boss.highestTier = Tier;
-
     }
 }
 /// <summary>
@@ -158,7 +148,7 @@ public abstract class ModBossTier : ModContent
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public abstract class ModBossTier<T> : ModBossTier where T : ModBoss
-{    
+{
     /// <inheritdoc />
     public override ModBoss Boss => GetInstance<T>();
 }

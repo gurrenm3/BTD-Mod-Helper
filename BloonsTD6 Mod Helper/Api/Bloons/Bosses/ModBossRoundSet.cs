@@ -3,42 +3,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Data.Boss;
-using Il2CppAssets.Scripts.Data.Gameplay;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Bloons.Bosses;
 
-/// <summary>
-/// Class for a boss roundset
-/// </summary>
-internal class BossRoundSet : ModRoundSet
+internal class ModBossRoundSet : ModRoundSet
 {
-    internal static readonly Dictionary<string, BossRoundSet> Cache = new();
+    internal static readonly new Dictionary<string, ModBossRoundSet> Cache = new();
 
     public readonly BossType bossType;
     public readonly bool elite;
     public readonly ModBoss? modBoss;
 
-    // ReSharper disable once UnusedMember.Global gotta have empty constructor for any ModContent
-    /// <inheritdoc />
-    public BossRoundSet()
+    // ReSharper disable once UnusedMember.Global
+    // gotta have empty constructor for any ModContent
+    public ModBossRoundSet()
     {
     }
 
     /// <inheritdoc />
-    public BossRoundSet(BossType bossType, bool elite)
+    public ModBossRoundSet(BossType bossType, bool elite)
     {
         this.bossType = bossType;
         this.elite = elite;
-        var boss = ModBoss.Cache.Values.FirstOrDefault(x => x.BossTypeInt == (int) bossType);
-        if (boss != null)
-        {
-            modBoss = boss;
-        }
+        modBoss = ModBoss.Cache.FirstOrDefault(x => x.Key == (int) bossType).Value;
     }
 
     /// <inheritdoc />
@@ -55,11 +47,6 @@ internal class BossRoundSet : ModRoundSet
     {
         get
         {
-            if (modBoss != null)
-            {
-                return modBoss.Icon;
-            }
-
             var eliteStr = elite ? "Elite" : "";
             return VanillaSprites.ByName.TryGetValue(bossType + "Btn" + eliteStr, out var icon)
                 ? icon
@@ -67,16 +54,24 @@ internal class BossRoundSet : ModRoundSet
         }
     }
 
-    /// <summary>
-    /// Load a BossRoundSet for each boss type / eliteness
-    /// </summary>
-    /// <returns></returns>
+    /// <inheritdoc />
+    public override SpriteReference IconReference
+    {
+        get {
+            if (modBoss != null)
+            {
+                return modBoss.IconReference;
+            }
+            return base.IconReference;
+        }
+    }
+
     public override IEnumerable<ModContent> Load()
     {
         foreach (var boss in Enum.GetValues(typeof(BossType)).Cast<BossType>())
         {
-            yield return new BossRoundSet(boss, false);
-            yield return new BossRoundSet(boss, true);
+            yield return new ModBossRoundSet(boss, false);
+            yield return new ModBossRoundSet(boss, true);
         }
     }
 
