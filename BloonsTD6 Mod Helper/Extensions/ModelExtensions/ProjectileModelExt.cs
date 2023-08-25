@@ -68,9 +68,9 @@ public static class ProjectileModelExt
         var projectileFilterModel = projectileModel.GetBehavior<ProjectileFilterModel>();
         if (projectileFilterModel == null)
         {
-            projectileModel.AddBehavior(new ProjectileFilterModel("ProjectileFilterModel_" + projectileModel.name,
+            projectileModel.AddBehavior(new ProjectileFilterModel("" + projectileModel.name,
                 new Il2CppReferenceArray<FilterModel>(new FilterModel[]
-                    {new FilterInvisibleModel("FilterInvisibleModel_", !canHitCamo, false)})));
+                    {new FilterInvisibleModel("", !canHitCamo, false)})));
         }
         else
         {
@@ -79,8 +79,7 @@ public static class ProjectileModelExt
             if (filterInvisibleModel == null)
             {
                 projectileFilterModel.filters =
-                    projectileFilterModel.filters.AddTo(new FilterInvisibleModel("FilterInvisibleModel_",
-                        !canHitCamo, false));
+                    projectileFilterModel.filters.AddTo(new FilterInvisibleModel("", !canHitCamo, false));
             }
             else
             {

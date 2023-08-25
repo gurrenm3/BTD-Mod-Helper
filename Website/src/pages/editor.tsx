@@ -242,7 +242,7 @@ export default () => {
             </li>
             <li>
               When you've done your edits, select the outer TowerModel block and
-              do Ctrl+C // Alt+C to copy the edited TowerModel to the clipboard
+              do Ctrl+C / Alt+C to copy the edited TowerModel to the clipboard
               (or Ctrl+X / Alt+X to also delete the blocks).
             </li>
             <li>

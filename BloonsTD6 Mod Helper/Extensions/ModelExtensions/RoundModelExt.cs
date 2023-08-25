@@ -15,12 +15,12 @@ public static class RoundModelExt
     /// <param name="roundModel">The round model</param>
     /// <param name="bloonId">The id of the Bloon</param>
     /// <param name="count">How many Bloons will be emitted</param>
-    /// <param name="startTime">When this group starts emitting, in frames (seconds / 60)</param>
-    /// <param name="endTime">When this group stops emitting, in frames (seconds / 60)</param>
+    /// <param name="startTime">When this group starts emitting, in frames (seconds * 60)</param>
+    /// <param name="endTime">When this group stops emitting, in frames (seconds * 60)</param>
     public static void AddBloonGroup(this RoundModel roundModel, string bloonId, int count = 1,
         float startTime = 0f, float endTime = 60f)
     {
-        var groupModel = new BloonGroupModel("BloonGroupModel_", bloonId, startTime, endTime, count);
+        var groupModel = new BloonGroupModel("", bloonId, startTime, endTime, count);
 
         roundModel.groups = roundModel.groups.AddTo(groupModel);
         roundModel.AddChildDependant(groupModel);
@@ -38,8 +38,7 @@ public static class RoundModelExt
     public static void AddBloonGroup<T>(this RoundModel roundModel, int count = 1,
         float startTime = 0f, float endTime = 60f) where T : ModBloon
     {
-        var groupModel =
-            new BloonGroupModel("BloonGroupModel_", ModContent.BloonID<T>(), startTime, endTime, count);
+        var groupModel = new BloonGroupModel("", ModContent.BloonID<T>(), startTime, endTime, count);
 
         roundModel.groups = roundModel.groups.AddTo(groupModel);
         roundModel.AddChildDependant(groupModel);

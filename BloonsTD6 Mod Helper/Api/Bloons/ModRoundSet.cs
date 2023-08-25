@@ -75,27 +75,27 @@ public abstract class ModRoundSet : NamedModContent
         {
             try
             {
-                ModifyRoundModels(model.rounds[i], i);
+                ModifyRoundModels(model.rounds[i], i + 1);
 
                 switch (i)
                 {
-                    case <= 40:
-                        ModifyEasyRoundModels(model.rounds[i], i);
+                    case < 40:
+                        ModifyEasyRoundModels(model.rounds[i], i + 1);
                         break;
-                    case <= 60:
-                        ModifyMediumRoundModels(model.rounds[i], i);
+                    case < 60:
+                        ModifyMediumRoundModels(model.rounds[i], i + 1);
                         break;
-                    case <= 80:
-                        ModifyHardRoundModels(model.rounds[i], i);
+                    case < 80:
+                        ModifyHardRoundModels(model.rounds[i], i + 1);
                         break;
-                    case <= 100:
-                        ModifyImpoppableRoundModels(model.rounds[i], i);
+                    case < 100:
+                        ModifyImpoppableRoundModels(model.rounds[i], i + 1);
                         break;
                 }
             }
             catch (Exception)
             {
-                ModHelper.Error($"Failed to modify round {i} for round set {Id}");
+                ModHelper.Error($"Failed to modify round {i + 1} for round set {Id}");
                 throw;
             }
         }
@@ -201,7 +201,7 @@ public abstract class ModRoundSet : NamedModContent
         {
             roundSetModel.rounds[i] = i < baseRounds.Count
                 ? baseRounds[i].Duplicate()
-                : new RoundModel("RoundModel_", new Il2CppReferenceArray<BloonGroupModel>(0));
+                : new RoundModel("", new Il2CppReferenceArray<BloonGroupModel>(0));
             roundSetModel.rounds[i].emissions_ = null;
         }
 
