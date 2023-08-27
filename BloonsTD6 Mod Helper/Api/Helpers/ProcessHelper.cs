@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using BTD_Mod_Helper.UI.BTD6;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
@@ -40,7 +42,7 @@ public static class ProcessHelper
             FileName = linux ? "sh" : "cmd.exe",
             UseShellExecute = true
         });
-        
+
         MenuManager.instance.QuitGame();
     }
 
@@ -54,5 +56,30 @@ public static class ProcessHelper
         {
             UseShellExecute = true
         });
+    }
+
+    /// <summary>
+    /// Opens a folder in the file explorer
+    /// </summary>
+    /// <param name="folderPath">Folder to open</param>
+    public static void OpenFolder(string folderPath)
+    {
+        folderPath = folderPath.Replace('/', Path.DirectorySeparatorChar);
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Process.Start("explorer.exe", folderPath);
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            Process.Start("open", folderPath);
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            Process.Start("xdg-open", folderPath);
+        }
+        else
+        {
+            throw new NotSupportedException("Operating system not supported");
+        }
     }
 }

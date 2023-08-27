@@ -332,6 +332,15 @@ export const modelToBlockState = (
   let type = blocksByFullType[fullType] ?? fullType;
   if (type.endsWith(".TowerModel") && !model["name"]) {
     type = "CustomTowerModel";
+  } else if (model["$custom"]) {
+    if (type.endsWith(".SpriteReference")) {
+      type = "CustomTextureReference";
+      if (model["guidRef"] && typeof model["guidRef"] === "string") {
+        model["guidRef"] = model["guidRef"].match(/Ui\[(.+)]/)[1] ?? "";
+      }
+    } else if (type.endsWith(".PrefabReference")) {
+      type = "CustomDisplayReference";
+    }
   }
   const blockDef = Blockly.Blocks[type]?.json as BlockDef;
   if (!type || !blockDef) {
@@ -435,7 +444,8 @@ export const blockStateToModel = (
       name === "name" &&
       !block.type.endsWith(".TowerModel") &&
       !block.type.endsWith(".UpgradeModel") &&
-      !block.type.endsWith(".ApplyModModel")
+      !block.type.endsWith(".ApplyModModel") &&
+      !block.type.endsWith("CustomDisplay")
     ) {
       value =
         block.type.substring(block.type.lastIndexOf(".") + 1) + "_" + value;
@@ -513,6 +523,10 @@ export const blockStateToModel = (
     if (value) {
       model = { ...model, ...value };
     }
+  }
+
+  if (block.data === "BLOCKLY_CUSTOM_SPRITE_REFERENCE" && model.guidRef) {
+    model.guidRef = `Ui[${model.guidRef}]`;
   }
 
   const nextBlock = block.next?.block;

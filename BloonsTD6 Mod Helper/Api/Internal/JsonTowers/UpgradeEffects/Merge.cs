@@ -3,17 +3,17 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Api.Internal.JsonTowers.UpgradeEffects;
 
-[JsonObject(MemberSerialization.Fields)]
+[JsonObject(MemberSerialization.OptOut)]
 internal class Merge : JsonUpgradeEffect
 {
-    private JObject tower;
+    public JObject Model { get; init; }
 
-    public override void Apply(JObject towerModel)
+    public override void Apply(JObject model)
     {
-        MergeIn(towerModel, tower);
+        MergeIn(model, Model);
     }
 
-    private static void MergeIn(JToken source, JToken merge)
+    public static void MergeIn(JToken source, JToken merge)
     {
         switch (source)
         {

@@ -12,15 +12,27 @@ namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 [JsonObject(MemberSerialization.OptIn)]
 internal class ModJsonTower : ModTower
 {
-    [JsonProperty]
-    private string description;
-    [JsonProperty]
-    private string displayName;
-
     public JObject jObject;
     public TowerModel towerModel;
+    
+    // ReSharper disable once ConvertToPrimaryConstructor
+    public ModJsonTower
+    (
+        [JsonProperty] string displayName,
+        [JsonProperty] string description
+    )
+    {
+        DisplayName = displayName;
+        Description = description;
+    }
 
-    public List<ModJsonUpgrade> JsonUpgrades { get; init; } = new();
+    [JsonProperty]
+    public override string DisplayName { get; }
+
+    [JsonProperty]
+    public override string Description { get; }
+
+    public List<ModJsonUpgrade> JsonUpgrades { get; } = new();
 
     public override int TopPathUpgrades => JsonUpgrades.Count(upgrade => upgrade.Path == 0);
     public override int MiddlePathUpgrades => JsonUpgrades.Count(upgrade => upgrade.Path == 1);
@@ -33,15 +45,7 @@ internal class ModJsonTower : ModTower
     public override string Name => towerModel.baseId;
     public override SpriteReference IconReference => towerModel.icon;
     public override SpriteReference PortraitReference => towerModel.portrait;
-
-    public override string DisplayName => displayName;
-    public override string Description => description;
     private protected override string ID => Name;
-
-    public override IEnumerable<ModContent> Load()
-    {
-        yield break;
-    }
 
     public override TowerModel GetBaseTowerModel(int[] tiers)
     {

@@ -59,6 +59,7 @@ import {
   TowerImportCategory,
 } from "../components/blockly/tower-import-category";
 import { FlyoutButton } from "blockly/core";
+import { FieldColourHsvSliders } from "../components/blockly/field-colour-hsv-sliders";
 
 const allowCustomBlocks = process.env.NODE_ENV === "development";
 
@@ -159,6 +160,10 @@ export const registerAll = () => {
   Blockly.fieldRegistry.register(FieldMinus.type, FieldMinus);
   Blockly.fieldRegistry.register(FieldMultiDropdown.type, FieldMultiDropdown);
   Blockly.fieldRegistry.register(FieldData.type, FieldData);
+  Blockly.fieldRegistry.register(
+    FieldColourHsvSliders.type,
+    FieldColourHsvSliders
+  );
 
   Blockly.fieldRegistry.unregister("field_input");
   Blockly.fieldRegistry.unregister("field_number");

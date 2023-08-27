@@ -27,9 +27,7 @@ public static partial class UnityDisplayNodeExt
     /// <typeparam name="T">The type of Renderer you're looking for</typeparam>
     public static T GetRenderer<T>(this UnityDisplayNode node, bool recalculate = true) where T : Renderer
     {
-        return node.GetRenderers<T>(recalculate)
-            .OrderBy(renderer => renderer.name.StartsWith("FlatSkin") ? 0 : 1)
-            .FirstOrDefault();
+        return node.GetRenderers<T>(recalculate).MinBy(renderer => renderer.name.StartsWith("FlatSkin") ? 0 : 1);
     }
 
     /// <summary>

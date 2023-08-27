@@ -8,6 +8,7 @@ using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using MelonLoader.Utils;
+using NAudio.Wave;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
@@ -16,6 +17,7 @@ internal static class JsonTowers
 {
     private const string Tower = "Assets.Scripts.Models.Towers.TowerModel, Assembly-CSharp";
     private const string Upgrade = "Assets.Scripts.Models.Towers.Upgrades.UpgradeModel, Assembly-CSharp";
+    private const string CustomDisplay = "BTD_Mod_Helper.Api.Internal.JsonTowers.ModJsonDisplay, BloonsTD6 Mod Helper";
 
     private static readonly JsonSerializer Serializer = JsonSerializer.Create(ModelConverter.Settings);
 
@@ -23,9 +25,7 @@ internal static class JsonTowers
 
     private static readonly Dictionary<string, JObject> Towers = new();
     private static readonly Dictionary<string, JObject> Upgrades = new();
-    private static readonly Dictionary<string, JObject> Images = new();
     private static readonly Dictionary<string, JObject> Displays = new();
-    private static readonly Dictionary<string, JObject> Sounds = new();
 
     public static Task LoadTask { get; private set; }
 
@@ -40,16 +40,28 @@ internal static class JsonTowers
 
         foreach (var file in dir.EnumerateFiles())
         {
-            switch (file.Extension)
+            if (file.Name.StartsWith("workspace")) continue;
+
+            try
             {
-                case ".json":
-                    await LoadJson(file.FullName);
-                    break;
-                case ".png":
-                case ".jpg":
-                    break;
-                case ".wav":
-                    break;
+                switch (file.Extension)
+                {
+                    case ".json":
+                        await LoadJson(file);
+                        break;
+                    case ".png":
+                    case ".jpg":
+                        await LoadTexture(file);
+                        break;
+                    case ".wav":
+                        await LoadAudio(file);
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning("Failed to process file " + file.FullName);
+                ModHelper.Warning(e);
             }
         }
 
@@ -59,38 +71,42 @@ internal static class JsonTowers
         }
     }
 
-    private static async Task<JObject> LoadJson(string filePath)
+    private static async Task LoadJson(FileInfo file)
     {
-        try
+        var text = await File.ReadAllTextAsync(file.FullName);
+        var jObject = JObject.Parse(text);
+
+        if (!jObject.ContainsKey("$type") || !jObject.ContainsKey("name")) return;
+
+        var type = jObject.Value<string>("$type")!;
+        var name = jObject.Value<string>("name")!;
+
+        switch (type)
         {
-            var text = await File.ReadAllTextAsync(filePath);
-            var jObject = JObject.Parse(text);
-
-            if (!jObject.ContainsKey("$type") || !jObject.ContainsKey("name")) return null;
-
-            var type = jObject.Value<string>("$type")!;
-            var name = jObject.Value<string>("name")!;
-
-            jObject["$path"] = filePath;
-
-            switch (type)
-            {
-                case Tower:
-                    Towers[name] = jObject;
-                    break;
-                case Upgrade:
-                    Upgrades[name] = jObject;
-                    break;
-            }
-
-            return jObject;
+            case Tower:
+                Towers[name] = jObject;
+                break;
+            case Upgrade:
+                Upgrades[name] = jObject;
+                break;
+            case CustomDisplay:
+                Displays[name] = jObject;
+                break;
         }
-        catch (Exception e)
-        {
-            ModHelper.Warning("Failed to process file " + filePath);
-            ModHelper.Warning(e);
-            return null;
-        }
+    }
+
+    private static async Task LoadTexture(FileInfo fileInfo)
+    {
+        var name = fileInfo.NameWithoutExtension();
+        ResourceHandler.Resources[name] = await File.ReadAllBytesAsync(fileInfo.FullName);
+    }
+
+    private static async Task LoadAudio(FileInfo fileInfo)
+    {
+        var name = fileInfo.NameWithoutExtension();
+        await using var reader = new WaveFileReader(fileInfo.FullName);
+
+        ResourceHandler.CreateAudioClip(reader, name);
     }
 
     public static void ProcessAll(GameModel gameModel)
@@ -102,7 +118,12 @@ internal static class JsonTowers
         var vanillaUpgrades = Upgrades.Values.Where(o => upgradeIds.Contains(o.Value<string>("name")!));
         var moddedTowers = Towers.Values.Where(o => !towerIds.Contains(o.Value<string>("name")!));
         var moddedUpgrades = Upgrades.Values.Where(o => !upgradeIds.Contains(o.Value<string>("name")!));
-
+        
+        foreach (var (key, display) in Displays)
+        {
+            ModHelper.Main.AddContent(display.ToObject<ModJsonDisplay>(Serializer));
+        }
+        
         var jsonUpgrades = new List<ModJsonUpgrade>();
         foreach (var moddedUpgrade in moddedUpgrades)
         {
@@ -113,13 +134,13 @@ internal static class JsonTowers
         }
 
         var jsonUpgradesByTower = jsonUpgrades
-            .GroupBy(upgrade => upgrade.tower)
+            .GroupBy(upgrade => upgrade.TowerId)
             .ToDictionary(upgrades => upgrades.Key);
 
         foreach (var moddedTower in moddedTowers)
         {
             if (!ProcessModdedTower(moddedTower, out var jsonTower)) continue;
-            
+
             if (jsonUpgradesByTower.TryGetValue(jsonTower.Id, out var upgrades))
             {
                 foreach (var jsonUpgrade in upgrades)
@@ -129,7 +150,7 @@ internal static class JsonTowers
                     ModHelper.Main.AddContent(jsonUpgrade);
                 }
             }
-            
+
             ModHelper.Main.AddContent(jsonTower);
         }
     }
@@ -144,7 +165,7 @@ internal static class JsonTowers
             customTower = custom.ToObject<ModJsonTower>(Serializer)!;
             customTower.towerModel = ModelSerializer.DeserializeModel<TowerModel>(moddedTower);
             customTower.jObject = moddedTower;
-            
+
             return customTower.towerModel != null;
         }
         catch (Exception e)

@@ -105,7 +105,9 @@
       }
     ],
     "data": "BLOCKLY_TOWER_TIERS",
-    "extensions": ["match_wrapped_color"]
+    "extensions": [
+      "match_wrapped_color"
+    ]
   },
   {
     "type": "HeroWithLevel",
@@ -239,7 +241,9 @@
     ],
     "data": "BLOCKLY_ARRAY",
     "mutator": "plus_minus_rows",
-    "extensions": ["match_wrapped_color"]
+    "extensions": [
+      "match_wrapped_color"
+    ]
   },
   {
     "type": "CustomTower",
@@ -279,7 +283,7 @@
     "args1": [
       {
         "type": "field_input",
-        "name": "tower",
+        "name": "towerId",
         "text": "baseId"
       }
     ],
@@ -299,15 +303,15 @@
         "text": "Description"
       }
     ],
-    "message4": "%1",
+    "message4": "Effects %1",
     "args4": [
       {
         "type": "input_statement",
         "name": "effects",
-        "check": "CustomUpgradeEffect",
+        "check": "JsonUpgradeEffect",
         "shadow": {
           "type": "NextShadow",
-          "data": "Upgrade Effects"
+          "data": "Effects"
         }
       }
     ],
@@ -315,12 +319,12 @@
   },
   {
     "type": "CustomUpgradeEffect_Merge",
-    "previousStatement": "CustomUpgradeEffect",
-    "nextStatement": "CustomUpgradeEffect",
+    "previousStatement": "JsonUpgradeEffect",
+    "nextStatement": "JsonUpgradeEffect",
     "category": "Base",
     "subcategory": "Custom",
     "colour": 10,
-    "message0": "%1 Merge In %2",
+    "message0": "%1 Merge %2",
     "args0": [
       {
         "type": "field_hidden",
@@ -329,8 +333,12 @@
       },
       {
         "type": "input_value",
-        "name": "tower",
-        "check": "Il2CppAssets.Scripts.Models.Towers.TowerModel",
+        "name": "model",
+        "check": "Il2CppAssets.Scripts.Models.Model",
+        "shadow": {
+          "type": "Shadow",
+          "data": "Model"
+        },
         "block": {
           "type": "CustomTowerModel"
         }
@@ -338,9 +346,60 @@
     ]
   },
   {
+    "type": "CustomUpgradeEffect_ForEachDescendent",
+    "previousStatement": "JsonUpgradeEffect",
+    "nextStatement": "JsonUpgradeEffect",
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 10,
+    "message0": "%1 For %2 descendent %3",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.UpgradeEffects.ForEachDescendent, BloonsTD6 Mod Helper"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "first",
+        "options": [
+          [
+            "each",
+            "false"
+          ],
+          [
+            "the first",
+            "true"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "type",
+        "check": "Il2CppAssets.Scripts.Models.Model",
+        "shadow": {
+          "type": "Shadow",
+          "data": "Model"
+        }
+      }
+    ],
+    "message1": "do %1",
+    "args1": [
+      {
+        "type": "input_statement",
+        "name": "effects",
+        "check": "JsonUpgradeEffect",
+        "shadow": {
+          "type": "NextShadow",
+          "data": "Effects"
+        }
+      }
+    ]
+  },
+  {
     "type": "CustomUpgradeEffect_IfAppliedUpgrade",
-    "previousStatement": "CustomUpgradeEffect",
-    "nextStatement": "CustomUpgradeEffect",
+    "previousStatement": "JsonUpgradeEffect",
+    "nextStatement": "JsonUpgradeEffect",
     "category": "Base",
     "subcategory": "Custom",
     "colour": 10,
@@ -362,7 +421,7 @@
       {
         "type": "input_statement",
         "name": "effects",
-        "check": "CustomUpgradeEffect",
+        "check": "JsonUpgradeEffect",
         "shadow": {
           "type": "NextShadow",
           "data": "Upgrade Effects"
@@ -394,5 +453,265 @@
       }
     ],
     "data": "BLOCKLY_DELETE"
+  },
+  {
+    "type": "CustomDisplay",
+    "hat": "cap",
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 0,
+    "message0": "%1Custom Display%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.ModJsonDisplay, BloonsTD6 Mod Helper"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "message1": "Base Display %1",
+    "args1": [
+      {
+        "type": "input_value",
+        "name": "baseDisplay",
+        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "PrefabReference"
+        }
+      }
+    ],
+    "message2": "Scale %1",
+    "args2": [
+      {
+        "type": "field_number",
+        "name": "scale",
+        "value": 1,
+        "min": 0
+      }
+    ],
+    "message3": "Category %1",
+    "args3": [
+      {
+        "name": "category",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "None",
+            "0"
+          ],
+          [
+            "Default",
+            "1"
+          ],
+          [
+            "Bloon",
+            "2"
+          ],
+          [
+            "Tower",
+            "4"
+          ],
+          [
+            "Prop",
+            "8"
+          ],
+          [
+            "Projectile",
+            "16"
+          ],
+          [
+            "Effect",
+            "32"
+          ],
+          [
+            "Buff",
+            "64"
+          ],
+          [
+            "Overlay",
+            "128"
+          ],
+          [
+            "Pet",
+            "256"
+          ]
+        ]
+      }
+    ],
+    "message4": "%1",
+    "args4": [
+      {
+        "type": "input_statement",
+        "name": "changes",
+        "check": "JsonDisplayChange",
+        "shadow": {
+          "type": "NextShadow",
+          "data": "Display Changes"
+        }
+      }
+    ]
+  },
+  {
+    "type": "JsonDisplayChange_SetTexture",
+    "category": "Base",
+    "subcategory": "Custom",
+    "previousStatement": "JsonDisplayChange",
+    "nextStatement": "JsonDisplayChange",
+    "colour": 15,
+    "message0": "%1Change %2 at index %3",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.DisplayChanges.SetTexture, BloonsTD6 Mod Helper"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "rendererType",
+        "options": [
+          [
+            "MeshRenderer",
+            "MeshRenderer"
+          ],
+          [
+            "SpriteRenderer",
+            "SpriteRenderer"
+          ]
+        ]
+      },
+      {
+        "type": "field_number",
+        "name": "index",
+        "value": 0,
+        "min": 0,
+        "precision": 1
+      }
+    ],
+    "message1": "to have custom texture %1",
+    "args1": [
+      {
+        "type": "field_input",
+        "name": "texture",
+        "text": "Custom"
+      }
+    ]
+  },
+  {
+    "type": "JsonDisplayChange_SetOutlineColor",
+    "category": "Base",
+    "subcategory": "Custom",
+    "previousStatement": "JsonDisplayChange",
+    "nextStatement": "JsonDisplayChange",
+    "colour": 15,
+    "message0": "%1Change %2 at index %3",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.DisplayChanges.SetOutlineColor, BloonsTD6 Mod Helper"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "rendererType",
+        "options": [
+          [
+            "MeshRenderer",
+            "MeshRenderer"
+          ],
+          [
+            "SpriteRenderer",
+            "SpriteRenderer"
+          ],
+          [
+            "ParticleSystemRenderer",
+            "ParticleSystemRenderer"
+          ]
+        ]
+      },
+      {
+        "type": "field_number",
+        "name": "index",
+        "value": 0,
+        "min": 0,
+        "precision": 1
+      }
+    ],
+    "message1": "to have outline color %1",
+    "args1": [
+      {
+        "type": "field_colour_hsv_sliders",
+        "name": "color",
+        "colour": "#000000ff"
+      }
+    ]
+  },
+  {
+    "type": "CustomDisplayReference",
+    "output": [
+      "Il2CppAssets.Scripts.Utils.PrefabReference"
+    ],
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 240,
+    "message0": "%1PrefabReference%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Utils.PrefabReference, Assembly-CSharp"
+      },
+      {
+        "type": "field_hidden",
+        "name": "$custom",
+        "value": true
+      }
+    ],
+    "message1": "Custom Display %1",
+    "args1": [
+      {
+        "name": "guidRef",
+        "type": "field_input",
+        "text": "Name",
+        "spellcheck": false
+      }
+    ],
+    "data": "BLOCKLY_CUSTOM_PREFAB_REFERENCE"
+  },
+  {
+    "type": "CustomTextureReference",
+    "output": [
+      "Il2CppAssets.Scripts.Utils.SpriteReference"
+    ],
+    "category": "Base",
+    "subcategory": "Custom",
+    "colour": 240,
+    "message0": "%1SpriteReference%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Utils.SpriteReference, Assembly-CSharp"
+      },
+      {
+        "type": "field_hidden",
+        "name": "$custom",
+        "value": true
+      }
+    ],
+    "message1": "Custom Texture %1",
+    "args1": [
+      {
+        "name": "guidRef",
+        "type": "field_input",
+        "text": "Name",
+        "spellcheck": false
+      }
+    ],
+    "data": "BLOCKLY_CUSTOM_SPRITE_REFERENCE"
   }
 ]

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
@@ -11,13 +10,16 @@ namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 internal class ModJsonUpgrade : ModUpgrade
 {
     [JsonProperty]
-    public string tower;
+    public override string DisplayName { get; }
+
     [JsonProperty]
-    public string displayName;
+    public override string Description { get; }
+
     [JsonProperty]
-    public string description;
-    [JsonProperty]
-    public JsonUpgradeEffect[] effects;
+    public string TowerId { get; init; }
+
+    [JsonProperty] 
+    public JsonUpgradeEffect[] Effects { get; init; }
 
     public UpgradeModel UpgradeModel { get; set; }
 
@@ -31,14 +33,13 @@ internal class ModJsonUpgrade : ModUpgrade
     public override string Name => UpgradeModel.name;
     public override SpriteReference IconReference => UpgradeModel.icon;
     public override SpriteReference PortraitReference => null;
-
-    public override string DisplayName => displayName;
-    public override string Description => description;
     private protected override string ID => Name;
 
-    public override IEnumerable<ModContent> Load()
+    // ReSharper disable once ConvertToPrimaryConstructor
+    public ModJsonUpgrade([JsonProperty] string displayName, [JsonProperty] string description)
     {
-        yield break;
+        DisplayName = displayName;
+        Description = description;
     }
 
     public override void ApplyUpgrade(TowerModel towerModel)
@@ -47,7 +48,7 @@ internal class ModJsonUpgrade : ModUpgrade
 
     public void Apply(JObject jObject)
     {
-        foreach (var upgradeEffect in effects)
+        foreach (var upgradeEffect in Effects)
         {
             upgradeEffect.Apply(jObject);
         }

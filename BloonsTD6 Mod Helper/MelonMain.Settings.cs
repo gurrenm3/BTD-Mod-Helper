@@ -235,6 +235,11 @@ internal partial class MelonMain
                       "If you have VSCode installed,\na good option is \"code -w -n\"."
     };
 
+    public static readonly ModSettingHotkey ExportDisplay = new(KeyCode.F12, HotkeyModifier.Ctrl)
+    {
+        category = ModMaking
+    };
+
 #if DEBUG
     #region Debug
 

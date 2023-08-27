@@ -10,6 +10,7 @@ internal class ModelConverter : JsonConverter
 {
     public static readonly JsonSerializerSettings Settings = new()
     {
+        ContractResolver = new CamelCasePropertyNamesContractResolver(),
         Converters = {new ModelConverter()},
         TypeNameHandling = TypeNameHandling.Objects,
         SerializationBinder = new ModelSerializationBinder()
