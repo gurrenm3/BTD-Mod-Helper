@@ -264,7 +264,8 @@
         "name": "description",
         "text": "Description"
       }
-    ]
+    ],
+    "data": "BLOCKLY_CUSTOM"
   },
   {
     "type": "CustomUpgrade",
@@ -324,7 +325,7 @@
       {
         "type": "field_hidden",
         "name": "$type",
-        "value": "BloonsTD6 Mod Helper.Api.Internal.CustomUpgradeEffects.Merge, BTD Mod Helper"
+        "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.UpgradeEffects.Merge, BloonsTD6 Mod Helper"
       },
       {
         "type": "input_value",
@@ -348,7 +349,7 @@
       {
         "type": "field_hidden",
         "name": "$type",
-        "value": "BloonsTD6 Mod Helper.Api.Internal.CustomUpgradeEffects.IfAppliedUpgrade, BTD Mod Helper"
+        "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.UpgradeEffects.IfApplied, BloonsTD6 Mod Helper"
       },
       {
         "type": "field_input",
@@ -379,8 +380,8 @@
     "args0": [
       {
         "type": "field_hidden",
-        "name": "$type",
-        "value": "BloonsTD6 Mod Helper.Api.Internal.CustomUpgradeEffects.Delete, BTD Mod Helper"
+        "name": "$delete",
+        "value": true
       },
       {
         "type": "input_value",
@@ -391,6 +392,7 @@
           "data": "Model"
         }
       }
-    ]
+    ],
+    "data": "BLOCKLY_DELETE"
   }
 ]

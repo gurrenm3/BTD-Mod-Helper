@@ -99,10 +99,15 @@ export const saveToJson: ContextMenuRegistry.RegistryItem = {
   weight: 6,
   scopeType: ContextMenuRegistry.ScopeType.BLOCK,
   preconditionFn: ({ block }) =>
-    !block.isInFlyout && block.type.endsWith(".TowerModel")
+    !block.isInFlyout &&
+    (block.type.endsWith(".TowerModel") || block.type.endsWith(".UpgradeModel"))
       ? "enabled"
       : "hidden",
   callback: ({ block }) => {
+    if (block.getRootBlock()) {
+      block = block.getRootBlock();
+    }
+
     const blockState = Blockly.serialization.blocks.save(block);
 
     const modelJson = blockStateToModel(blockState);

@@ -749,7 +749,8 @@
         "name": "tier",
         "type": "field_number",
         "value": 0,
-        "precision": 1
+        "precision": 1,
+        "offset": -1
       }
     ],
     "message5": "locked%1",

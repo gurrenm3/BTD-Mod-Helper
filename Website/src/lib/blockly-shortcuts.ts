@@ -1,7 +1,11 @@
 import { KeyboardShortcut } from "blockly/core/shortcut_registry";
-import Blockly, { Block, BlockSvg, WorkspaceSvg } from "blockly";
+import Blockly, { Block, BlockSvg, WidgetDiv, WorkspaceSvg } from "blockly";
 import { blockStateToModel, pasteBlockFromText } from "./json-conversion-utils";
-import { loadFromJson, saveWorkspace } from "./blockly-context-menu";
+import {
+  loadFromJson,
+  saveToJson,
+  saveWorkspace,
+} from "./blockly-context-menu";
 import { LatestVersion } from "./mod-helper-data";
 
 export const workspacePaste: KeyboardShortcut = {
@@ -103,7 +107,15 @@ export const saveWorkspaceShortcut: KeyboardShortcut = {
   callback(workspace: WorkspaceSvg, event) {
     event.preventDefault();
     event.stopPropagation();
-    saveWorkspace.callback({ workspace });
+
+    const block = Blockly.getSelected();
+
+    if (block && block instanceof BlockSvg) {
+      saveToJson.callback({ block });
+    } else {
+      saveWorkspace.callback({ workspace });
+    }
+
     return true;
   },
 };

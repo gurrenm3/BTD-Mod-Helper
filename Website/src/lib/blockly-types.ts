@@ -47,6 +47,7 @@ export type BlockArgDef = {
   next?: Maybe<BlockShadowDef>;
   checked?: Maybe<boolean>;
   precision?: Maybe<number>;
+  offset?: Maybe<number>;
 } & BlocklyShadowState;
 
 export type BlocklyShadowState = {

@@ -30,7 +30,12 @@ function changeHat(this: ToggleHatBlock, hat: boolean) {
 
 function onInit(this: ToggleHatBlock) {
   if (!this.rendered) {
-    this.changeHat(this.isInFlyout);
+    if (this["json"].nextStatement !== undefined) {
+      this.setNextStatement(true, this["json"].nextStatement);
+    }
+    if (this["json"].output !== undefined) {
+      this.setOutput(true, this["json"].output);
+    }
   }
 }
 

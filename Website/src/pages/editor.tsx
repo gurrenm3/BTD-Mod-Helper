@@ -85,9 +85,10 @@ export default () => {
   const { theme } = useContext(ThemeContext);
 
   const onText = (text: string, e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    pasteBlockFromText(getMainWorkspace() as WorkspaceSvg, text);
+    if (pasteBlockFromText(getMainWorkspace() as WorkspaceSvg, text)) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   };
 
   useDrop({

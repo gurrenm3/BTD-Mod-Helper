@@ -172,7 +172,7 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     public virtual ModSettingHotkey Hotkey => null;
 
-    internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
+    internal virtual TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
     internal virtual bool ShouldCreateParagon =>
         paragonUpgrade != null &&

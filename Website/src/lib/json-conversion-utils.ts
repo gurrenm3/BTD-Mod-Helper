@@ -1,7 +1,7 @@
 import { BlockArgDef, BlockDef } from "./blockly-types";
 import Blockly, { Block, WorkspaceSvg } from "blockly";
 import { argsList, getBlockInfo, getBlockInputs } from "./blockly-utils";
-import { merge } from "lodash";
+import { isArray, keyBy, merge } from "lodash";
 import {
   audioSourceReferenceMap,
   prefabReferenceMap,
@@ -9,6 +9,7 @@ import {
   towerIds,
   upgradeIds,
 } from "./blockly-json";
+import { OptionalRows } from "../components/blockly/optional-rows";
 
 const blocksByFullType: Record<string, string> = {};
 
@@ -244,6 +245,10 @@ const handleArg = (
   const defaultValue = arg["value"] ?? arg["text"] ?? arg["options"]?.[0][1];
 
   if (arg.type.startsWith("field")) {
+    if (arg.offset) {
+      value = Number(value);
+      value -= arg.offset;
+    }
     value = String(value);
     const isNotDefault = value !== defaultValue;
     if (isOptional) {
@@ -253,15 +258,14 @@ const handleArg = (
       block.fields[key] = value;
     }
   } else if (arg.type.startsWith("input")) {
-    const input = block.inputs[key];
+    const input = (block.inputs[key] ??= {});
     handleInput(input, arg, value);
     if (isOptional) {
-      if (input.shadow && !input.block && !input.shadow.fields) {
-        delete block.inputs[key];
-        block.extraState[key] = false;
-      } else {
-        block.extraState[key] = true;
-      }
+      block.extraState[key] = !(
+        input.shadow &&
+        !input.block &&
+        !input.shadow.fields
+      );
     }
   } else {
     console.warn(
@@ -275,11 +279,11 @@ const handleInput = (
   arg: BlockArgDef,
   value: any
 ) => {
-  const expectedType = input.shadow.type;
-  if (expectedType.endsWith("[]")) {
+  const expectedType = input.shadow?.type;
+  if (expectedType?.endsWith("[]")) {
     delete input.shadow;
     merge(input, arrayToBlockState(value, expectedType));
-  } else if (expectedType.includes("<>")) {
+  } else if (expectedType?.includes("<>")) {
     delete input.shadow;
     merge(input, dictToBlockState(value, expectedType));
   } else if (value) {
@@ -292,6 +296,16 @@ const handleInput = (
         console.error("Did not expect string ", value);
         return null;
       }
+    } else if (isArray(value)) {
+      for (let v of value) {
+        handleInput(input, arg, v);
+        if (input.block) {
+          input = input.block.next = {};
+        }
+      }
+      if (input.block?.next && !input.block.next.block) {
+        delete input.block.next;
+      }
     } else {
       input.block = modelToBlockState(value);
     }
@@ -301,13 +315,24 @@ const handleInput = (
 export const modelToBlockState = (
   model: object
 ): Blockly.serialization.blocks.State => {
-  const fullType = model["$type"];
+  if (model["$delete"]) {
+    delete model["$delete"];
+    return modelToBlockState({
+      $type: "CustomUpgradeEffect_Delete",
+      value: model,
+    });
+  }
+
+  const fullType = model["$type"] as string;
   if (!fullType) {
     console.error("Not a valid model ", model);
     return null;
   }
 
-  const type = blocksByFullType[fullType];
+  let type = blocksByFullType[fullType] ?? fullType;
+  if (type.endsWith(".TowerModel") && !model["name"]) {
+    type = "CustomTowerModel";
+  }
   const blockDef = Blockly.Blocks[type]?.json as BlockDef;
   if (!type || !blockDef) {
     console.error("Couldn't find block with type", type);
@@ -357,11 +382,41 @@ export const modelToBlockState = (
     handleArg(block, arg, key, value);
   }
 
+  if (blockDef.mutator === OptionalRows) {
+    Object.values(blockDef.mutatorOptions?.optional).forEach(
+      (value: string) => {
+        if (
+          !block.extraState?.[value] &&
+          !blockDef.mutatorOptions.defaults?.[value]
+        ) {
+          delete block.fields[value];
+          delete block.inputs[value];
+        }
+      }
+    );
+  }
+
   if ("$x" in model) {
     block.x = parseInt(String(model["$x"]));
   }
   if ("$y" in model) {
     block.y = parseInt(String(model["$y"]));
+  }
+
+  if (typeof model["$custom"] === "object") {
+    let type: string;
+
+    if (fullType.includes("TowerModel")) {
+      type = "CustomTower";
+    } else if (fullType.includes("UpgradeModel")) {
+      type = "CustomUpgrade";
+    }
+
+    if (type) {
+      block.next = {
+        block: modelToBlockState({ $type: type, ...model["$custom"] }),
+      };
+    }
   }
 
   return block;
@@ -371,25 +426,39 @@ export const blockStateToModel = (
   block: Blockly.serialization.blocks.State
 ) => {
   let model = {} as any;
+  const blockDef = Blockly.Blocks[block.type].json;
+  const args = keyBy(argsList(blockDef), (value) => value.name);
 
   // Add the fields
   for (let [name, value] of Object.entries(block.fields ?? {})) {
     if (
       name === "name" &&
       !block.type.endsWith(".TowerModel") &&
+      !block.type.endsWith(".UpgradeModel") &&
       !block.type.endsWith(".ApplyModModel")
     ) {
       value =
         block.type.substring(block.type.lastIndexOf(".") + 1) + "_" + value;
     }
     model[name] = unstringify(value);
+    if (args[name]?.offset) {
+      model[name] += args[name].offset;
+    }
   }
 
   // Add the inputs
   for (let [name, input] of Object.entries(block.inputs ?? {})) {
     const childBlock = input.block ?? input.shadow;
 
-    model[name] = blockStateToModel(childBlock);
+    const value = (model[name] = blockStateToModel(childBlock));
+
+    if (args[name]?.type === "input_statement" && !isArray(value)) {
+      const childModels = [value];
+      for (let next = childBlock?.next?.block; next; next = next.next?.block) {
+        childModels.push(blockStateToModel(next));
+      }
+      model[name] = childModels;
+    }
   }
 
   // Handle custom block data
@@ -435,6 +504,21 @@ export const blockStateToModel = (
       model = `${baseId} ${level}`;
     } else {
       model = baseId;
+    }
+  }
+
+  if (block.data === "BLOCKLY_DELETE") {
+    const value = model.value;
+    delete model.value;
+    if (value) {
+      model = { ...model, ...value };
+    }
+  }
+
+  const nextBlock = block.next?.block;
+  if (nextBlock) {
+    if (nextBlock.data === "BLOCKLY_CUSTOM") {
+      model["$custom"] = blockStateToModel(nextBlock);
     }
   }
 

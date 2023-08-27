@@ -5,7 +5,6 @@ using System.Reflection;
 using FuzzySharp;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
-using Il2CppAssets.Scripts.Models.Effects;
 using Il2CppAssets.Scripts.Models.Knowledge;
 using Il2CppAssets.Scripts.Models.Powers.Mods;
 using Il2CppAssets.Scripts.Models.Towers;
@@ -16,14 +15,8 @@ using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
-using Il2CppSystem.Runtime.Serialization;
-using Newtonsoft.Json;
+using Il2CppNewtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Formatting = Il2CppNewtonsoft.Json.Formatting;
-using JsonConvert = Il2CppNewtonsoft.Json.JsonConvert;
-using JsonSerializerSettings = Il2CppNewtonsoft.Json.JsonSerializerSettings;
-using ReferenceLoopHandling = Il2CppNewtonsoft.Json.ReferenceLoopHandling;
-using TypeNameHandling = Il2CppNewtonsoft.Json.TypeNameHandling;
 using ValueType = Il2CppSystem.ValueType;
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -408,14 +401,31 @@ public static class ModelSerializer
     /// <param name="text">Serialized model JSON string</param>
     /// <typeparam name="T">The type of Model to deserialize this as</typeparam>
     /// <returns></returns>
-    public static T DeserializeModel<T>(string text) where T : Model
+    public static T DeserializeModel<T>(string text) where T : Model =>
+        DeserializeModel(JObject.Parse(text), typeof(T)) as T;
+
+    /// <summary>
+    /// Recreates a model from serialized JSON, attempting to exactly recreate its types and references
+    /// </summary>
+    /// <param name="jObject">Serialized model JSON</param>
+    /// <typeparam name="T">The type of Model to deserialize this as</typeparam>
+    /// <returns></returns>
+    public static T DeserializeModel<T>(JObject jObject) where T : Model => DeserializeModel(jObject, typeof(T)) as T;
+
+    /// <summary>
+    /// Recreates a model from serialized JSON, attempting to exactly recreate its types and references
+    /// </summary>
+    /// <param name="jObject">Serialized model JSON</param>
+    /// <param name="type">The type of Model to deserialize this as</param>
+    /// <returns></returns>
+    public static object DeserializeModel(JObject jObject, Type type)
     {
         Index.Clear();
-        var result = Generate(JObject.Parse(text), typeof(T)) as T;
+        var result = Generate(jObject, type);
         Index.Clear();
 
 #if DEBUG
-        MakeConsistent(result);
+        MakeConsistent(result as Model);
 #endif
 
         return result;
@@ -518,7 +528,8 @@ public static class ModelSerializer
             {
                 MakeConsistent(knowledgeModel, true);
             }
-        } else if (model.Is(out KnowledgeModel knowledgeModel))
+        }
+        else if (model.Is(out KnowledgeModel knowledgeModel))
         {
             knowledgeModel.GetDescendants<Model>().ForEach(m =>
             {

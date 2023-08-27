@@ -157,6 +157,10 @@ internal static class BlocklyGenerator
             {
                 var arg = GetArgForType(member.GetUnderlyingType(), member.Name, param?.DefaultValue, type);
                 rows.Add(new Tuple<MemberInfo, ParameterInfo, JObject>(member, param, arg));
+                if (type == typeof(UpgradeModel) && member.Name == nameof(UpgradeModel.tier))
+                {
+                    arg["offset"] = 1;
+                }
             }
         }
 
