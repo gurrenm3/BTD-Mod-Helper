@@ -41,7 +41,7 @@ internal static class UI_LoadGame
     [HarmonyPostfix]
     private static void Postfix(MapSaveDataModel mapSaveData)
     {
-        if (InGameData.CurrentGame?.gameEventId != ModBoss.EventId || mapSaveData is null)
+        if (InGameData.CurrentGame == null || InGameData.CurrentGame.gameEventId != ModBoss.EventId || mapSaveData is null)
         {
             return;
         }

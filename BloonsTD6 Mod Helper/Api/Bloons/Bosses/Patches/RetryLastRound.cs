@@ -20,6 +20,8 @@ internal static class RetryLastRound
     [HarmonyPostfix]
     private static void Postfix()
     {
+        if (InGameData.CurrentGame == null || InGameData.CurrentGame.gameEventId != ModBoss.EventId)
+            return;
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
             boss.CurrentTier = boss.tiers.First(x => x.Tier == InGame.instance.GetMap().spawner.bossBloonManager.CurrentBossTier);

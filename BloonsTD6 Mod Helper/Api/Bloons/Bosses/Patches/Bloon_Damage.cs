@@ -10,6 +10,8 @@ internal class Bloon_Damage
     [HarmonyPostfix]
     internal static void Postfix(Bloon __instance, float totalAmount)
     {
+        if (InGameData.CurrentGame == null || InGameData.CurrentGame.gameEventId != ModBoss.EventId)
+            return;
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss) && boss.bloonModel.name == __instance.bloonModel.name)
         {
             boss.OnDamageCallback(__instance, totalAmount);
