@@ -18,6 +18,7 @@ internal class ModBossRoundSet : ModRoundSet
     public readonly BossType bossType;
     public readonly bool elite;
     public readonly ModBoss? modBoss;
+    private readonly string description;
 
     // ReSharper disable once UnusedMember.Global
     // gotta have empty constructor for any ModContent
@@ -31,7 +32,11 @@ internal class ModBossRoundSet : ModRoundSet
         this.bossType = bossType;
         this.elite = elite;
         modBoss = ModBoss.Cache.FirstOrDefault(x => x.Key == (int) bossType).Value;
+        description = modBoss?.Description ?? "";
     }
+
+    /// <inheritdoc />
+    public override string Description => description;
 
     /// <inheritdoc />
     public override string BaseRoundSet => RoundSetType.Default;

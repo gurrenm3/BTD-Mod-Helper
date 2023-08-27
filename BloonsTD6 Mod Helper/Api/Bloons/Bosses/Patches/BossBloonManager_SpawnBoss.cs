@@ -11,10 +11,7 @@ internal static class BossBloonManager_SpawnBoss
     {
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
-            if (boss.tiersByRound.TryGetValue(InGame.Bridge.GetCurrentRound() + 1, out var tier))
-            {
-                boss.CurrentTier = tier;
-            }
+            boss.CurrentTier = boss.tiersByRound[InGame.Bridge.GetCurrentRound() + 1];
             boss.OnSpawnCallback(__instance.currentBoss);
         }
     }

@@ -9,6 +9,8 @@ namespace BTD_Mod_Helper.Api.Bloons.Bosses;
 /// </summary>
 public abstract class ModBossTier : ModContent
 {
+    internal BloonModel bloonModel { get; set; }
+
     /// <inheritdoc />
     protected override float RegistrationPriority => 5; // Bosses should register after tiers
 
@@ -40,6 +42,7 @@ public abstract class ModBossTier : ModContent
     /// <summary>
     /// Called when the boss is spawned
     /// </summary>
+    /// <remarks>Called when loading saves and continuing from checkpoints as well</remarks> //because bloon gets reset
     /// <param name="bloon"></param>
     public virtual void OnSpawn(Bloon bloon) { }
 

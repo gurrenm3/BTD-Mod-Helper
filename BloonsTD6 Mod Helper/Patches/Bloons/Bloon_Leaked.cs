@@ -17,14 +17,4 @@ internal class Blooon_Leaked
         ModHelper.PerformHook(mod => result &= mod.PreBloonLeaked(__instance));
         return result;
     }
-
-    [HarmonyPostfix]
-    internal static void Postfix(Bloon __instance)
-    {
-        ModHelper.PerformHook(mod => mod.PostBloonLeaked(__instance));
-        if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var modBossTier))
-        {
-            modBossTier.OnLeakCallback(__instance);
-        }
-    }
 }

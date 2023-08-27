@@ -76,7 +76,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
             try
             {
                 optionsPanel.AddScrollContent(
-                    CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.IconReference.guidRef)
+                    CreateRoundSetButton(modRoundSet.Id, modRoundSet.DisplayName, modRoundSet.Description, modRoundSet.IconReference.guidRef)
                 );
             }
             catch (Exception e)
@@ -87,15 +87,15 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         }
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.ABR, "Alternate", VanillaSprites.AlternateBloonsBtn)
+            CreateRoundSetButton(RoundSetType.ABR, "Alternate", null, VanillaSprites.AlternateBloonsBtn)
         );
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.Default, "Classic", VanillaSprites.BlueRoundPlayBtn)
+            CreateRoundSetButton(RoundSetType.Default, "Classic", null, VanillaSprites.BlueRoundPlayBtn)
         );
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.Empty, "No Change", VanillaSprites.WoodenRoundButton)
+            CreateRoundSetButton(RoundSetType.Empty, "No Change", null, VanillaSprites.WoodenRoundButton)
         );
 
 
@@ -108,9 +108,10 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         );
     }
 
-    private static ModHelperButton CreateRoundSetButton(string id, string displayName, string icon)
+    private static ModHelperButton CreateRoundSetButton(string id, string displayName, string description, string icon)
     {
-        var roundButton = ModHelperButton.Create(new Info(displayName, 300, 300),
+        ModHelperButton roundButton = null!;
+        roundButton = ModHelperButton.Create(new Info(displayName, 300, 300),
             icon, new Action(() =>
             {
                 StopOptionsMode();
@@ -126,6 +127,14 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         CheckMarks[id] = roundButton.AddImage(
             new Info("Tick", -75, -75, 100, 100, Vector2.one), VanillaSprites.SelectedTick
         );
+
+
+        if(!string.IsNullOrEmpty(description))
+        {
+            var roundSetButtonDescription = roundButton.AddComponent<RoundSetButtonDescription>();
+            roundSetButtonDescription.parent = optionsPanel;
+            roundSetButtonDescription.description = description;
+        }
 
         return roundButton;
     }
@@ -182,6 +191,10 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
 
     private static void RevealOptions()
     {
+        foreach (var panel in optionsPanel.ScrollContent.GetComponentsInChildren<RoundSetButtonDescription>(true))
+        {
+            panel.OnPointerExit(null);
+        }
         optionsPanel.SetActive(true);
         optionsPanel.GetComponent<Animator>().Play("PopupScaleIn");
         optionsPanel.ScrollContent.RectTransform.localPosition = new Vector3(-200, 0, 0);
@@ -190,10 +203,15 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
             image.SetActive(RoundSetOverride == id);
         }
         invisibleCancel.SetActive(true);
+
     }
 
     private static void HideOptions()
     {
+        foreach (var panel in optionsPanel.ScrollContent.GetComponentsInChildren<RoundSetButtonDescription>(true))
+        {
+            panel.OnPointerExit(null);
+        }
         optionsPanel.GetComponent<Animator>().Play("PopupScaleOut");
         TaskScheduler.ScheduleTask(() => optionsPanel.SetActive(false), ScheduleType.WaitForFrames, AnimationTicks);
         CommonForegroundScreen.instance.GetComponentInChildren<FriendLoginButton>(true).gameObject.SetActive(true);

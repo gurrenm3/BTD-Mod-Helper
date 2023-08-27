@@ -3,7 +3,7 @@ using System.Collections;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models.Rounds;
 using UnityEngine;
-namespace BTD_Mod_Helper.Api.Helpers;
+namespace BTD_Mod_Helper.Api;
 
 /// <summary>
 /// Class for scheduling Tasks using MelonCoroutines

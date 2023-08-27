@@ -318,7 +318,6 @@ internal partial class ModHelperData
             return true;
         }
 
-        // TODO might make it so that unverified mods can't have icons
         if (HasNoIcon /*|| !ModHelperGithub.VerifiedModders.Contains(RepoOwner)*/)
         {
             return false;

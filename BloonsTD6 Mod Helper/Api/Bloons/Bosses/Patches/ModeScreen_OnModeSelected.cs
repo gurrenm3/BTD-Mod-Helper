@@ -40,13 +40,11 @@ internal static class ModeScreen_OnModeSelected
         {
             inGameData.SetupBoss(ModBoss.EventId, bossRoundset.bossType, bossRoundset.elite, false,
             BossGameData.DefaultSpawnRounds, dcm, LeaderboardScoringType.GameTime);
-            inGameData.bossData.bossRankedMode = false;
             return;
         }
 
         inGameData.SetupBoss(ModBoss.EventId, bossRoundset.bossType, bossRoundset.elite, false,
             bossRoundset.modBoss.SpawnRounds.ToArray(), dcm, LeaderboardScoringType.GameTime);
-        inGameData.bossData.bossRankedMode = false;
 
         List<int> checkpointRounds = new(bossRoundset.modBoss.SpawnRounds.Count());
         foreach (var round in bossRoundset.modBoss.SpawnRounds)

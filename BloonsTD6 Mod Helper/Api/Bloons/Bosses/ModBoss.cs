@@ -6,6 +6,7 @@ using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Data.Boss;
 using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Unity;
@@ -20,7 +21,6 @@ namespace BTD_Mod_Helper.Api.Bloons.Bosses;
 public abstract class ModBoss : ModBloon
 {
     internal static readonly new Dictionary<int, ModBoss> Cache = new();
-
     internal static int NextBossType { get; private set; } = (int) (Enum.GetValues<BossType>()[^1] + 1);
     internal int BossTypeInt { get; private set; }
     internal BossType BossType => (BossType) BossTypeInt;
@@ -36,7 +36,7 @@ public abstract class ModBoss : ModBloon
     /// <summary>
     /// The current spawned tier of the boss, may be null
     /// </summary>
-    public ModBossTier CurrentTier { get; internal set; } //todo: get this set on save continue
+    public ModBossTier CurrentTier { get; internal set; }
 
     /// <summary>
     /// Apply your custom modifications to the base bloonModel
@@ -56,50 +56,52 @@ public abstract class ModBoss : ModBloon
 
     internal void OnSpawnCallback(Bloon bloon)
     {
-        CurrentTier.OnSpawn(bloon);
         OnSpawn(bloon);
+        CurrentTier.OnSpawn(bloon);
     }
 
     internal void OnLeakCallback(Bloon bloon)
     {
-        CurrentTier.OnLeak(bloon);
         OnLeak(bloon);
+        CurrentTier.OnLeak(bloon);
     }
 
     internal void OnPopCallback(Bloon bloon)
     {
-        CurrentTier.OnPop(bloon);
         OnPop(bloon);
+        CurrentTier.OnPop(bloon);
     }
 
     internal void OnDamageCallback(Bloon bloon, float totalAmount)
     {
-        CurrentTier.OnDamage(bloon, totalAmount);
         OnDamage(bloon, totalAmount);
+        CurrentTier.OnDamage(bloon, totalAmount);
     }
 
     internal void SkullReachedCallback(Bloon bloon)
     {
-        CurrentTier.SkullReached(bloon);
         SkullReached(bloon);
+        CurrentTier.SkullReached(bloon);
     }
 
     internal void TimerTickCallback(Bloon bloon)
     {
-        CurrentTier.TimerTick(bloon);
         TimerTick(bloon);
+        CurrentTier.TimerTick(bloon);
     }
 
     /// <summary>
-    /// Called when the boss is spawned, will be called after the current tier's <see cref="ModBossTier.OnSpawn"/>
+    /// Called when the boss is spawned, will be called before the current tier's <see cref="ModBossTier.OnSpawn"/>
     /// </summary>
+    /// <remarks>Called when loading saves and continuing from checkpoints as well</remarks> //because bloon gets reset
     /// <param name="bloon"></param>
-    public virtual void OnSpawn(Bloon bloon) //todo: fix this not getting called on retry last round
+    public virtual void OnSpawn(Bloon bloon)
     {
+        ModHelper.Msg($"{DisplayName} spawned");
     }
 
     /// <summary>
-    /// Called when the boss is leaked, will be called after the current tier's <see cref="ModBossTier.OnLeak"/>
+    /// Called when the boss is leaked, will be called before the current tier's <see cref="ModBossTier.OnLeak"/>
     /// </summary>
     /// <param name="bloon"></param>
     public virtual void OnLeak(Bloon bloon)
@@ -107,7 +109,7 @@ public abstract class ModBoss : ModBloon
     }
 
     /// <summary>
-    /// Called when the boss is popped, will be called after the current tier's <see cref="ModBossTier.OnPop"/>
+    /// Called when the boss is popped, will be called before the current tier's <see cref="ModBossTier.OnPop"/>
     /// </summary>
     /// <param name="bloon"></param>
     public virtual void OnPop(Bloon bloon)
@@ -115,7 +117,7 @@ public abstract class ModBoss : ModBloon
     }
 
     /// <summary>
-    /// Called when the boss takes damage, will be called after the current tier's <see cref="ModBossTier.OnDamage"/>
+    /// Called when the boss takes damage, will be called before the current tier's <see cref="ModBossTier.OnDamage"/>
     /// </summary>
     /// <param name="bloon"></param>
     /// <param name="totalAmount"></param>
@@ -124,7 +126,7 @@ public abstract class ModBoss : ModBloon
     }
 
     /// <summary>
-    /// Called when the boss reaches a skull, will be called after the current tier's <see cref="ModBossTier.SkullReached"/>
+    /// Called when the boss reaches a skull, will be called before the current tier's <see cref="ModBossTier.SkullReached"/>
     /// </summary>
     /// <param name="bloon"></param>
     public virtual void SkullReached(Bloon bloon)
@@ -132,7 +134,7 @@ public abstract class ModBoss : ModBloon
     }
 
     /// <summary>
-    /// Called when the boss timer triggers, only called if <see cref="ModBossTier.Interval"/> is not null. Will be called after the current tier's <see cref="ModBossTier.SkullReached"/>
+    /// Called when the boss timer triggers, only called if <see cref="ModBossTier.Interval"/> is not null. Will be called before the current tier's <see cref="ModBossTier.SkullReached"/>
     /// </summary>
     /// <param name="bloon"></param>
     public virtual void TimerTick(Bloon bloon)
@@ -256,13 +258,13 @@ public abstract class ModBoss : ModBloon
 
             tierBloonModel.name = tierBloonModel.id = BossTypeInt.ToString() + tier.Tier;
             tierBloonModel.baseId = bloonModel.id;
+            tier.bloonModel = tierBloonModel;
 
             Game.instance.model.bloons = Game.instance.model.bloons.AddTo(tierBloonModel);
             Game.instance.model.AddChildDependant(tierBloonModel);
             Game.instance.model.bloonsByName[tierBloonModel.name] = tierBloonModel;
             BloonModelCache[tierBloonModel.name] = tierBloonModel;
         }
-        ModBloon.Cache[bloonModel.name] = this;
 
         var roundSet = new ModBossRoundSet(BossType, false);
         ModHelper.GetMod<MelonMain>().AddContent(roundSet);
