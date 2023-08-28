@@ -1,6 +1,7 @@
-﻿using Il2CppAssets.Scripts.Unity.Bridge;
+﻿using BTD_Mod_Helper.Api.Bloons.Bosses;
+using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 /// <summary>
 /// Allow rewards for boss rounds games

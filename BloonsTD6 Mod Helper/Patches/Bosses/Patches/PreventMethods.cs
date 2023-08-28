@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Unity.Player;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 /// <summary>
 /// Prevent these methods for non real boss events

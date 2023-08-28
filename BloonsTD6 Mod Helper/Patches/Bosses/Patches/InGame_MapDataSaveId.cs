@@ -1,5 +1,6 @@
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 /// <summary>
 /// Make boss rounds games save to the maps and not the boss event

@@ -3,9 +3,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Data.Boss;
 using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Simulation.Bloons;
@@ -20,7 +22,11 @@ namespace BTD_Mod_Helper.Api.Bloons.Bosses;
 /// </summary>
 public abstract class ModBoss : ModBloon
 {
+    /// <summary>
+    /// <see cref="ModBoss"/>s that have been registered. Key is the <see cref="BossTypeInt"/>
+    /// </summary>
     internal static readonly new Dictionary<int, ModBoss> Cache = new();
+    internal readonly new List<ModBossTierDisplay> displays = new();
     internal static int NextBossType { get; private set; } = (int) (Enum.GetValues<BossType>()[^1] + 1);
     internal int BossTypeInt { get; private set; }
     internal BossType BossType => (BossType) BossTypeInt;
@@ -45,7 +51,7 @@ public abstract class ModBoss : ModBloon
     public abstract void ModifyBaseBloon(BloonModel bloonModel);
 
     /// <summary>
-    /// Called to modify rounds for the boss roundset/>
+    /// Called to modify rounds for the boss roundset
     /// </summary>
     /// <remarks>
     /// Used in the same way as <see cref="ModRoundSet.ModifyRoundModels"/>
@@ -78,10 +84,10 @@ public abstract class ModBoss : ModBloon
         CurrentTier.OnDamage(bloon, totalAmount);
     }
 
-    internal void SkullReachedCallback(Bloon bloon)
+    internal void SkullReachedCallback(Bloon bloon, int skullNumber)
     {
-        SkullReached(bloon);
-        CurrentTier.SkullReached(bloon);
+        SkullReached(bloon, skullNumber);
+        CurrentTier.SkullReached(bloon, skullNumber);
     }
 
     internal void TimerTickCallback(Bloon bloon)
@@ -97,7 +103,6 @@ public abstract class ModBoss : ModBloon
     /// <param name="bloon"></param>
     public virtual void OnSpawn(Bloon bloon)
     {
-        ModHelper.Msg($"{DisplayName} spawned");
     }
 
     /// <summary>
@@ -129,12 +134,13 @@ public abstract class ModBoss : ModBloon
     /// Called when the boss reaches a skull, will be called before the current tier's <see cref="ModBossTier.SkullReached"/>
     /// </summary>
     /// <param name="bloon"></param>
-    public virtual void SkullReached(Bloon bloon)
+    /// <param name="skullNumber"></param>
+    public virtual void SkullReached(Bloon bloon, int skullNumber)
     {
     }
 
     /// <summary>
-    /// Called when the boss timer triggers, only called if <see cref="ModBossTier.Interval"/> is not null. Will be called before the current tier's <see cref="ModBossTier.SkullReached"/>
+    /// Called when the boss timer triggers, only called if <see cref="ModBossTier.Interval"/> is not null. Will be called before the current tier's <see cref="ModBossTier.TimerTick"/>
     /// </summary>
     /// <param name="bloon"></param>
     public virtual void TimerTick(Bloon bloon)
@@ -146,7 +152,7 @@ public abstract class ModBoss : ModBloon
     /// <br />
     /// (Name of .png or .jpg, not including file extension)
     /// </summary>
-    public virtual string DefeatedPortrait => GetType().Name+"-DefeatedPortrait";
+    public virtual string DefeatedPortrait => GetType().Name + "-DefeatedPortrait";
 
     /// <summary>
     /// If you're not going to use a custom .png for your DefeatedPortrait, use this to directly control its SpriteReference
@@ -183,7 +189,7 @@ public abstract class ModBoss : ModBloon
     public virtual AudioClip BossMusic => null;
 
     /// <summary>
-    /// The name of the sound played when the boss spawns, will be shown in the pause menu
+    /// The display name of <see cref="BossMusic"/>, will be shown in the pause menu
     /// </summary>
     public virtual string BossMusicName => DisplayName + "-Music";
 
@@ -225,6 +231,7 @@ public abstract class ModBoss : ModBloon
         bloonModel.bloonProperties = BloonProperties.None;
         bloonModel.tags = new Il2CppStringArray(new[] {"Bad", "Moabs", "Boss"});
         bloonModel.isBoss = true;
+        bloonModel.damageDisplayStates = new Il2CppReferenceArray<DamageStateModel>(0);
 
         ModifyBaseBloon(bloonModel);
     }
@@ -260,11 +267,26 @@ public abstract class ModBoss : ModBloon
             tierBloonModel.baseId = bloonModel.id;
             tier.bloonModel = tierBloonModel;
 
+            if (tier.Tier > highestTier)
+                highestTier = tier.Tier;
+
+            displays.Find(display => display.Tiers.Contains(tier.Tier) && display.Damage == 0)?.Apply(tierBloonModel);
+            var damageDisplays = displays
+                .Where(display => display.Tiers.Contains(tier.Tier) && display.Damage > 0)
+                .OrderBy(display => display.Damage)
+                .ToList();
+            if (damageDisplays.Any())
+            {
+                ApplyDamageStates(tierBloonModel, damageDisplays.Select(display => display.Id).ToList());
+            }
+
             Game.instance.model.bloons = Game.instance.model.bloons.AddTo(tierBloonModel);
             Game.instance.model.AddChildDependant(tierBloonModel);
             Game.instance.model.bloonsByName[tierBloonModel.name] = tierBloonModel;
             BloonModelCache[tierBloonModel.name] = tierBloonModel;
         }
+
+
 
         var roundSet = new ModBossRoundSet(BossType, false);
         ModHelper.GetMod<MelonMain>().AddContent(roundSet);

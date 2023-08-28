@@ -49,6 +49,16 @@
 | [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon') | Allows you to easily modify the models of a specific vanilla Bloon |
 | [ModVanillaBloons](BTD_Mod_Helper.Api.Bloons.ModVanillaBloons.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloons') | Allows you to easily modify the models of multiple vanilla Bloons |
 
+<a name='BTD_Mod_Helper.Api.Bloons.Bosses'></a>
+
+## BTD_Mod_Helper.Api.Bloons.Bosses Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModBoss](BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.md 'BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss') | Class for adding a new boss to the game |
+| [ModBossTier](BTD_Mod_Helper.Api.Bloons.Bosses.ModBossTier.md 'BTD_Mod_Helper.Api.Bloons.Bosses.ModBossTier') | Base class for a boss tier |
+| [ModBossTier&lt;T&gt;](BTD_Mod_Helper.Api.Bloons.Bosses.ModBossTier_T_.md 'BTD_Mod_Helper.Api.Bloons.Bosses.ModBossTier<T>') | A convenient generic class for specifying the ModBoss that this ModBossTier uses |
+
 <a name='BTD_Mod_Helper.Api.Components'></a>
 
 ## BTD_Mod_Helper.Api.Components Namespace
@@ -112,6 +122,10 @@
 | [ModBloonCustomDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay<T>') | A ModCustomDisplay that will automatically apply to a ModBloon |
 | [ModBloonDisplay](BTD_Mod_Helper.Api.Display.ModBloonDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay') | A ModDisplay that will automatically apply to a ModBloon |
 | [ModBloonDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay<T>') | A convenient generic class for applying a ModBloonDisplay to a ModBloon |
+| [ModBossTierCustomDisplay](BTD_Mod_Helper.Api.Display.ModBossTierCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModBossTierCustomDisplay') | A ModCustomDisplay that will automatically apply to a ModBloon |
+| [ModBossTierCustomDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBossTierCustomDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBossTierCustomDisplay<T>') | A ModCustomDisplay that will automatically apply to a ModBloon |
+| [ModBossTierDisplay](BTD_Mod_Helper.Api.Display.ModBossTierDisplay.md 'BTD_Mod_Helper.Api.Display.ModBossTierDisplay') | A ModDisplay that will automatically apply to a ModBloon |
+| [ModBossTierDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBossTierDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBossTierDisplay<T>') | A convenient generic class for applying a ModBloonDisplay to a ModBloon |
 | [ModBuffIcon](BTD_Mod_Helper.Api.Display.ModBuffIcon.md 'BTD_Mod_Helper.Api.Display.ModBuffIcon') | Class for adding a new buff icon that can be displayed for towers |
 | [ModCustomDisplay](BTD_Mod_Helper.Api.Display.ModCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModCustomDisplay') | The custom version of a ModDisplay that loads in a model from a unity assetbundle |
 | [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay') | A custom Display that is a copy of an existing Display that can be modified |

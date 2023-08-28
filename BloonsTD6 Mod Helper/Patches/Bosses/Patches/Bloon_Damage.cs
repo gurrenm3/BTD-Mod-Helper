@@ -1,8 +1,7 @@
-﻿using BTD_Mod_Helper.Api.Bloons;
-using BTD_Mod_Helper.Api.Bloons.Bosses;
+﻿using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-namespace BTD_Mod_Helper.Patches.Bloons;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch(typeof(Bloon), nameof(Bloon.Damage))]
 internal class Bloon_Damage

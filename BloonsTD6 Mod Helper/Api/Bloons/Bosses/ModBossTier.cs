@@ -15,7 +15,7 @@ public abstract class ModBossTier : ModContent
     protected override float RegistrationPriority => 5; // Bosses should register after tiers
 
     /// <summary>
-    /// Tier of the boss on this round, if not specified, it will automatically be set based on the round,
+    /// Tier of the boss on this round, its automatically set based on the round
     /// </summary>
     internal int Tier => Boss.tiersByRound.IndexOfValue(this)+1;
     
@@ -23,6 +23,7 @@ public abstract class ModBossTier : ModContent
     /// Amount of skulls the boss has
     /// </summary>
     public abstract int Skulls { get; }
+
     /// <summary>
     /// The round this tier appears on
     /// </summary>
@@ -71,7 +72,8 @@ public abstract class ModBossTier : ModContent
     /// Called when the boss reaches a skull
     /// </summary>
     /// <param name="bloon"></param>
-    public virtual void SkullReached(Bloon bloon)
+    /// <param name="skullNumber"></param>
+    public virtual void SkullReached(Bloon bloon, int skullNumber)
     {
     }
     
@@ -125,12 +127,12 @@ public abstract class ModBossTier : ModContent
     /// <summary>
     /// Determines if the boss's health should go down while it's skull effect is on
     /// </summary>
-    public virtual bool PreventFallThrough => false;
+    public virtual bool PreventFallThrough => false; //todo: test this and see exactly what it does
     
     /// <summary>
     /// Determines if the timer starts immediately
     /// </summary>
-    public virtual bool TriggerImmediately => false;
+    public virtual bool TriggerImmediately => false; //todo: test this and see exactly what it does
 
     /// <summary>
     /// Interval between ticks for the boss' timer, if null, the timer will not be created
@@ -142,8 +144,6 @@ public abstract class ModBossTier : ModContent
     {
         Boss.tiers.Add(this);
         Boss.tiersByRound.Add(Round, this);
-        if (Tier > Boss.highestTier)
-            Boss.highestTier = Tier;
     }
 }
 /// <summary>

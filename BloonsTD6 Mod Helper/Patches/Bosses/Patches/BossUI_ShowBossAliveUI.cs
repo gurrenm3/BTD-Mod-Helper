@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.Races;
 using UnityEngine.UI;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch(typeof(BossUI), nameof(BossUI.ShowBossAliveUI))]
 internal static class BossUI_ShowBossAliveUI

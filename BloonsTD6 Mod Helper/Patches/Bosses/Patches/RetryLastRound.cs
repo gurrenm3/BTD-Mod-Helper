@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Unity.UI_New.GameOver;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Pause;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch]
 internal static class RetryLastRound

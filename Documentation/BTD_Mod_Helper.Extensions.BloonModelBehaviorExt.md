@@ -117,29 +117,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel)'></a>
-
-## BloonModelBehaviorExt.RemoveBehavior<T>(this BloonModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this BloonModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
-
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel,T)'></a>
 
 ## BloonModelBehaviorExt.RemoveBehavior<T>(this BloonModel, T) Method
@@ -166,6 +143,29 @@ The Behavior you want to remove
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel,T).T 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior<T>(this BloonModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel)'></a>
+
+## BloonModelBehaviorExt.RemoveBehavior<T>(this BloonModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this BloonModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
 
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehaviors_T_(thisBloonModel)'></a>
 

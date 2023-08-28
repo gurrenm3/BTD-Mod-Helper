@@ -115,29 +115,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel)'></a>
-
-## EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this EmissionModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
-
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel,T)'></a>
 
 ## EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel, T) Method
@@ -162,6 +139,29 @@ public static void RemoveBehavior<T>(this EmissionModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel,T).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel)'></a>
+
+## EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this EmissionModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
 
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehaviors_T_(thisEmissionModel)'></a>
 

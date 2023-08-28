@@ -1,7 +1,8 @@
-﻿using Il2CppAssets.Scripts.Simulation.Track;
+﻿using BTD_Mod_Helper.Api.Bloons.Bosses;
+using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppSystem.Collections.Generic;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 /// <summary>
 /// Save the boss type / eliteness to the map save metadata

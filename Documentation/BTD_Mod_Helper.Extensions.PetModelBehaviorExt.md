@@ -115,29 +115,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel)'></a>
-
-## PetModelBehaviorExt.RemoveBehavior<T>(this PetModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this PetModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
-
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel,T)'></a>
 
 ## PetModelBehaviorExt.RemoveBehavior<T>(this PetModel, T) Method
@@ -162,6 +139,29 @@ public static void RemoveBehavior<T>(this PetModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel,T).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior<T>(this PetModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel)'></a>
+
+## PetModelBehaviorExt.RemoveBehavior<T>(this PetModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this PetModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
 
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehaviors_T_(thisPetModel)'></a>
 

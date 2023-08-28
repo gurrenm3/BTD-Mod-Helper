@@ -1,7 +1,7 @@
-﻿using Il2CppAssets.Scripts.Simulation.Track;
+﻿using BTD_Mod_Helper.Api.Bloons.Bosses;
+using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using System.Linq;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch(typeof(BossBloonManager), nameof(BossBloonManager.SpawnBoss))]
 internal static class BossBloonManager_SpawnBoss

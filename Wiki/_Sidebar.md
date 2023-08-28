@@ -9,17 +9,17 @@
 
 ###### Mod Helper Features
 
+[**Appearing in the Mod Browser**](/wiki/Appearing-in-the-Mod-Browser)
+
 [**Making a Custom Tower**](/wiki/Making-a-Custom-Tower)
 
 [**Making a Custom Paragon**](/wiki/Making-a-Custom-Paragon)
 
 [**Making a Custom Hero**](/wiki/Making-a-Custom-Hero)
 
-###### 3.0 Features
-
-[**Appearing in the Mod Browser**](/wiki/Appearing-in-the-Mod-Browser)
-
 [Making a Custom Bloon](/wiki/Making-a-Custom-Bloon)
+
+[Making a Custom Boss](/wiki/Making-a-Custom-Boss)
 
 [Making a Custom Game Mode](/wiki/Making-a-Custom-Game-Mode)
 

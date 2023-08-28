@@ -1,5 +1,6 @@
-﻿using Il2CppAssets.Scripts.Data.Boss;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+﻿using BTD_Mod_Helper.Api.Bloons.Bosses;
+using Il2CppAssets.Scripts.Data.Boss;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch(typeof(BossData), nameof(BossData.LocsKey), MethodType.Getter)]
 internal static class BossData_LocsKey

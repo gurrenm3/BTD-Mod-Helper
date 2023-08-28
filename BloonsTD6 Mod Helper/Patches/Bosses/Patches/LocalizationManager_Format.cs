@@ -1,6 +1,7 @@
-﻿using Il2CppNinjaKiwi.Common;
+﻿using BTD_Mod_Helper.Api.Bloons.Bosses;
+using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch(typeof(LocalizationManager), nameof(LocalizationManager.Format), typeof(string),
     typeof(Il2CppReferenceArray<Object>))]

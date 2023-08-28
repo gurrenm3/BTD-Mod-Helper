@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Boss;
 using Il2CppAssets.Scripts.Data.Music;
@@ -8,7 +9,7 @@ using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch(typeof(BossBloonManager), nameof(BossBloonManager.Init))]
 internal class BossBloonManager_Init
@@ -19,7 +20,7 @@ internal class BossBloonManager_Init
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
             Il2CppAssets.Scripts.Data.Boss.Bosses bosses =
-                Resources.FindObjectsOfTypeAll<Il2CppAssets.Scripts.Data.Boss.Bosses>()[0];
+                UnityEngine.Resources.FindObjectsOfTypeAll<Il2CppAssets.Scripts.Data.Boss.Bosses>()[0];
             List<BossData> bossList = bosses.BossList.items.ToList();
 
             if (!bossList.Exists(x => x.id == boss.BossType))

@@ -42,7 +42,10 @@
 
     <ItemGroup>
         <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings" />
+
+
     </ItemGroup>
+
 
 
 

@@ -12,7 +12,7 @@ internal static class HealthPercentage_Trigger
     {
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
-            boss.SkullReachedCallback(__instance.bloon);
+            boss.SkullReachedCallback(__instance.bloon, boss.CurrentTier.Skulls - __instance.currentSkull);
         }
     }
 }

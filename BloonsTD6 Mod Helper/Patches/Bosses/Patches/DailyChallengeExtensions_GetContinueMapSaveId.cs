@@ -1,6 +1,7 @@
-﻿using Il2CppAssets.Scripts.Models.ServerEvents;
+﻿using BTD_Mod_Helper.Api.Bloons.Bosses;
+using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-namespace BTD_Mod_Helper.Api.Bloons.Bosses.Patches;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 /// <summary>
 /// Save matches into the map save slot, not into the special save slot for bosses

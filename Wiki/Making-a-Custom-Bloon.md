@@ -24,7 +24,7 @@ If you want to add a `ModBloon` to the game in a natural way, consider [Making a
 
 You should provide a [Name]-Icon png/jpg for your Bloons icon in menus / the non-MOAB Bloon itself.
 
-There's also the [ModBloonsDisplay](/docs/BTD_Mod_Helper.Api.Display.ModBloonDisplay) class you can use to more easily manage your MOAB class displays. Set `T` to be your `ModBloon` class, then set the `Damage` property to be the index that the display should be in `DamageStates`, so 0 = undamaged, increasing from that being more and more damaged.
+There's also the [ModBloonDisplay](/docs/BTD_Mod_Helper.Api.Display.ModBloonDisplay) class you can use to more easily manage your MOAB class displays. Set `T` to be your `ModBloon` class, then set the `Damage` property to be the index that the display should be in `DamageStates`, so 0 = undamaged, increasing from that being more and more damaged.
 
 ## Variations
 

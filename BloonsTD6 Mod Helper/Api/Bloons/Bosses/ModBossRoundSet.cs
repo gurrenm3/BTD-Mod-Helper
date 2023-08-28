@@ -60,16 +60,7 @@ internal class ModBossRoundSet : ModRoundSet
     }
 
     /// <inheritdoc />
-    public override SpriteReference IconReference
-    {
-        get {
-            if (modBoss != null)
-            {
-                return modBoss.IconReference;
-            }
-            return base.IconReference;
-        }
-    }
+    public override SpriteReference IconReference => modBoss != null ? modBoss.IconReference : base.IconReference;
 
     public override IEnumerable<ModContent> Load()
     {
