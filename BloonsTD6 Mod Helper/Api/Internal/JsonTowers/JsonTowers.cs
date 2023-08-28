@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using MelonLoader.Utils;
 using NAudio.Wave;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 
 internal static class JsonTowers
 {
-    private const string Tower = "Assets.Scripts.Models.Towers.TowerModel, Assembly-CSharp";
-    private const string Upgrade = "Assets.Scripts.Models.Towers.Upgrades.UpgradeModel, Assembly-CSharp";
-    private const string CustomDisplay = "BTD_Mod_Helper.Api.Internal.JsonTowers.ModJsonDisplay, BloonsTD6 Mod Helper";
-
-    private static readonly JsonSerializer Serializer = JsonSerializer.Create(ModelConverter.Settings);
-
     public static string TowersFolder => Path.Combine(MelonEnvironment.GameRootDirectory, "Towers");
 
-    private static readonly Dictionary<string, JObject> Towers = new();
-    private static readonly Dictionary<string, JObject> Upgrades = new();
-    private static readonly Dictionary<string, JObject> Displays = new();
+    private static readonly List<TowerModel> VanillaTowers = new();
+    private static readonly List<UpgradeModel> VanillaUpgrades = new();
+    private static readonly List<ModJsonTower> ModdedTowers = new();
+    private static readonly List<ModJsonUpgrade> ModdedUpgrades = new();
+    private static readonly List<ModJsonDisplay> Displays = new();
 
     public static Task LoadTask { get; private set; }
 
@@ -74,23 +68,24 @@ internal static class JsonTowers
     private static async Task LoadJson(FileInfo file)
     {
         var text = await File.ReadAllTextAsync(file.FullName);
-        var jObject = JObject.Parse(text);
-
-        if (!jObject.ContainsKey("$type") || !jObject.ContainsKey("name")) return;
-
-        var type = jObject.Value<string>("$type")!;
-        var name = jObject.Value<string>("name")!;
-
-        switch (type)
+        var obj = JsonConvert.DeserializeObject(text, ModelConverter.Settings);
+        
+        switch (obj)
         {
-            case Tower:
-                Towers[name] = jObject;
+            case TowerModel towerModel:
+                VanillaTowers.Add(towerModel);
                 break;
-            case Upgrade:
-                Upgrades[name] = jObject;
+            case UpgradeModel upgradeModel:
+                VanillaUpgrades.Add(upgradeModel);
                 break;
-            case CustomDisplay:
-                Displays[name] = jObject;
+            case ModJsonTower modJsonTower:
+                ModdedTowers.Add(modJsonTower);
+                break;
+            case ModJsonUpgrade modJsonUpgrade:
+                ModdedUpgrades.Add(modJsonUpgrade);
+                break;
+            case ModJsonDisplay modJsonDisplay:
+                Displays.Add(modJsonDisplay);
                 break;
         }
     }
@@ -111,37 +106,18 @@ internal static class JsonTowers
 
     public static void ProcessAll(GameModel gameModel)
     {
-        var towerIds = gameModel.towers.Select(tower => tower.name).ToHashSet();
-        var upgradeIds = gameModel.upgrades.Select(upgrade => upgrade.name).ToHashSet();
-
-        var vanillaTowers = Towers.Values.Where(o => towerIds.Contains(o.Value<string>("name")!));
-        var vanillaUpgrades = Upgrades.Values.Where(o => upgradeIds.Contains(o.Value<string>("name")!));
-        var moddedTowers = Towers.Values.Where(o => !towerIds.Contains(o.Value<string>("name")!));
-        var moddedUpgrades = Upgrades.Values.Where(o => !upgradeIds.Contains(o.Value<string>("name")!));
-        
-        foreach (var (key, display) in Displays)
+        foreach (var display in Displays)
         {
-            ModHelper.Main.AddContent(display.ToObject<ModJsonDisplay>(Serializer));
-        }
-        
-        var jsonUpgrades = new List<ModJsonUpgrade>();
-        foreach (var moddedUpgrade in moddedUpgrades)
-        {
-            if (ProcessModdedUpgrade(moddedUpgrade, out var jsonUpgrade))
-            {
-                jsonUpgrades.Add(jsonUpgrade);
-            }
+            ModHelper.Main.AddContent(display);
         }
 
-        var jsonUpgradesByTower = jsonUpgrades
+        var upgradesByTower = ModdedUpgrades
             .GroupBy(upgrade => upgrade.TowerId)
             .ToDictionary(upgrades => upgrades.Key);
 
-        foreach (var moddedTower in moddedTowers)
+        foreach (var jsonTower in ModdedTowers)
         {
-            if (!ProcessModdedTower(moddedTower, out var jsonTower)) continue;
-
-            if (jsonUpgradesByTower.TryGetValue(jsonTower.Id, out var upgrades))
+            if (upgradesByTower.TryGetValue(jsonTower.Id, out var upgrades))
             {
                 foreach (var jsonUpgrade in upgrades)
                 {
@@ -152,47 +128,6 @@ internal static class JsonTowers
             }
 
             ModHelper.Main.AddContent(jsonTower);
-        }
-    }
-
-    public static bool ProcessModdedTower(JObject moddedTower, out ModJsonTower customTower)
-    {
-        customTower = null;
-        try
-        {
-            if (moddedTower.GetValue("$custom") is not JObject custom) return false;
-
-            customTower = custom.ToObject<ModJsonTower>(Serializer)!;
-            customTower.towerModel = ModelSerializer.DeserializeModel<TowerModel>(moddedTower);
-            customTower.jObject = moddedTower;
-
-            return customTower.towerModel != null;
-        }
-        catch (Exception e)
-        {
-            ModHelper.Warning($"Failed processing custom JSON tower {moddedTower.Value<string>("name")}");
-            ModHelper.Warning(e);
-            return false;
-        }
-    }
-
-    public static bool ProcessModdedUpgrade(JObject moddedUpgrade, out ModJsonUpgrade customUpgrade)
-    {
-        customUpgrade = null;
-        try
-        {
-            if (moddedUpgrade.GetValue("$custom") is not JObject custom) return false;
-
-            customUpgrade = custom.ToObject<ModJsonUpgrade>(Serializer)!;
-            customUpgrade.UpgradeModel = ModelSerializer.DeserializeModel<UpgradeModel>(moddedUpgrade);
-
-            return customUpgrade.UpgradeModel != null;
-        }
-        catch (Exception e)
-        {
-            ModHelper.Warning($"Failed processing custom JSON upgrade {moddedUpgrade.Value<string>("name")}");
-            ModHelper.Warning(e);
-            return false;
         }
     }
 }

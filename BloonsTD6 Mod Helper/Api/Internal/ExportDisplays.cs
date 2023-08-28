@@ -37,6 +37,14 @@ internal static class ExportDisplays
                             }
 
                             i = 0;
+                            foreach (var renderer in node.GetRenderers<SkinnedMeshRenderer>())
+                            {
+                                renderer.material.mainTexture.TrySaveToPNG(Path.Combine(folder,
+                                    $"SkinnedMeshRenderer_{i}.png"));
+                                i++;
+                            }
+
+                            i = 0;
                             foreach (var renderer in node.GetRenderers<SpriteRenderer>())
                             {
                                 renderer.sprite.texture.TrySaveToPNG(Path.Combine(folder, $"SpriteRenderer_{i}.png"));

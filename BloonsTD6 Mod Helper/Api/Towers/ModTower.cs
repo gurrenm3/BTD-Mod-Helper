@@ -366,6 +366,7 @@ public abstract class ModTower : NamedModContent
     {
         tiers ??= new[] {0, 0, 0};
         var towerModel = GetBaseTowerModel(tiers);
+        towerModel.baseId = Id;
         towerModel.name = Id;
 
         towerModel.appliedUpgrades = new Il2CppStringArray(0);

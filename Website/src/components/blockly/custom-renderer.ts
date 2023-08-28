@@ -1,6 +1,7 @@
 import Blockly, { BlockSvg } from "blockly";
 import { Renderer } from "blockly/core/renderers/geras/renderer";
 import { RenderInfo } from "blockly/core/renderers/geras/info";
+import { InputRow } from "blockly/core/renderers/common/block_rendering";
 
 class CustomRenderer extends Blockly.geras.Renderer {
   constructor() {
@@ -44,7 +45,6 @@ class CustomRenderInfo extends Blockly.geras.RenderInfo {
   alignRowElements_() {
     let block = Blockly.Blocks[this.block_.type];
     if (!(block.json && block.json.type)) {
-      return super.alignRowElements_();
     }
 
     const Types = Blockly.blockRendering.Types;
@@ -102,8 +102,9 @@ class CustomRenderInfo extends Blockly.geras.RenderInfo {
         let desiredWidth = 0;
 
         if (Types.isSpacer(row)) {
-          let aboveRow = this.rows[i + 1];
-          let belowRow = this.rows[i - 1];
+          let aboveRow = this.rows[i - 1];
+          let belowRow = this.rows[i + 1];
+
           if (
             aboveRow &&
             !Types.isSpacer(aboveRow) &&
@@ -117,6 +118,9 @@ class CustomRenderInfo extends Blockly.geras.RenderInfo {
             !Types.isTopOrBottomRow(belowRow)
           ) {
             desiredWidth = belowRow.width;
+          }
+          if (belowRow?.hasStatement && aboveRow.width > belowRow.width) {
+            desiredWidth = aboveRow.width;
           }
         } else if (Types.isTopRow(row)) {
           desiredWidth = this.rows[2].width;
@@ -140,6 +144,18 @@ class CustomRenderInfo extends Blockly.geras.RenderInfo {
       ) {
         row.width = this.rows[i + 3].width;
       }
+    }
+  }
+
+  protected alignStatementRow_(row: InputRow) {
+    const statementInput = row.getLastInput();
+    if (!statementInput) return;
+    let currentWidth = row.width - statementInput.width;
+    let desiredWidth = this.statementEdge;
+    // Add padding before the statement input.
+    const missingSpace = desiredWidth - currentWidth;
+    if (missingSpace > 0) {
+      this.addAlignmentPadding_(row, missingSpace);
     }
   }
 }

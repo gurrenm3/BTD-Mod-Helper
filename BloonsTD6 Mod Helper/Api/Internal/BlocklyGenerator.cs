@@ -123,11 +123,11 @@ internal static class BlocklyGenerator
     private static JObject CreateBlock(Type type)
     {
         var block = CreateBaseBlock(type);
-        if (BaseTypes.Contains(type))
+        /*if (BaseTypes.Contains(type))
         {
             block["hat"] = "cap";
             block["extensions"] = new JArray {"toggle_hat"};
-        }
+        }*/
         if (type.IsAssignableTo(typeof(Model)))
         {
             block["message0"] += "%2";
@@ -431,7 +431,7 @@ internal static class BlocklyGenerator
         subCategory = null;
         if (BaseTypes.Contains(type))
         {
-            color = 0;
+            color = type == typeof(UpgradeModel) ? 220 : 0;
             return "Base";
         }
         if (type.IsAssignableTo(typeof(TowerBehaviorModel)) || type.IsAssignableTo(typeof(ApplyModModel)))
@@ -613,7 +613,6 @@ internal static class BlocklyGenerator
             {
                 arg["type"] = "field_input";
                 arg["text"] = new JValue(defaultValue?.ToString() ?? "null");
-                arg["spellcheck"] = false;
             }
         }
         else if (rowType.IsIl2CppArray(out var elementType))

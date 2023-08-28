@@ -142,7 +142,6 @@ export const addMutatorBlock = (block: BlockDef) => {
       .join(""),
     args0: [],
     colour: block.colour,
-    nextStatement: null,
   };
 
   let messageI = "";

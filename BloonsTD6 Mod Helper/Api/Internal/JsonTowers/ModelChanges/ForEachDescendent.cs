@@ -1,15 +1,15 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-namespace BTD_Mod_Helper.Api.Internal.JsonTowers.UpgradeEffects;
+namespace BTD_Mod_Helper.Api.Internal.JsonTowers.ModelChanges;
 
 [JsonObject(MemberSerialization.OptOut)]
-internal class ForEachDescendent : JsonUpgradeEffect
+internal class ForEachDescendent : JsonModelChange
 {
     public JObject Type { get; init; }
 
     public bool First { get; init; }
 
-    public JsonUpgradeEffect[] Effects { get; init; }
+    public JsonModelChange[] Changes { get; init; }
 
     public override void Apply(JObject model)
     {
@@ -44,9 +44,9 @@ internal class ForEachDescendent : JsonUpgradeEffect
     {
         if (Contains(model, Type))
         {
-            foreach (var effect in Effects)
+            foreach (var change in Changes)
             {
-                effect.Apply(model);
+                change.Apply(model);
             }
             return First;
         }

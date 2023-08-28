@@ -93,30 +93,6 @@ export const upgradeBlocks = Object.entries(upgradeIds).map(
     } as BlockDef)
 );
 
-const towerModel = blocks.find(
-  (block) => block.type === "Il2CppAssets.Scripts.Models.Towers.TowerModel"
-) as BlockDef;
-
-const customTowerModel = cloneDeep(towerModel) as BlockDef;
-
-const remove = ["baseId", "tiers", "tier", "cost", "isSubTower", "mods"];
-
-customTowerModel.type = "CustomTowerModel";
-delete customTowerModel.category;
-delete customTowerModel.extensions;
-
-customTowerModel.message0 = "%1TowerModel";
-customTowerModel.args0 = [customTowerModel.args0[0]];
-
-for (let [i, name] of Object.entries(
-  customTowerModel.mutatorOptions.optional
-)) {
-  if (remove.includes(name as string)) {
-    customTowerModel[`message${i}`] = " ";
-    customTowerModel[`args${i}`] = [];
-  }
-}
-
 export const allJsonBlocks = [
   ...blocks,
   ...extraBlocks,
@@ -125,5 +101,4 @@ export const allJsonBlocks = [
   ...spriteBlocks,
   ...towerBlocks,
   ...upgradeBlocks,
-  customTowerModel,
 ] as BlockDef[];

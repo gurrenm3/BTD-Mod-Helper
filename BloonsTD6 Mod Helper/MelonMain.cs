@@ -84,8 +84,6 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         ModByteLoader.OnUpdate();
         // InitialLoadTasks_MoveNext.Update();
-        
-        if (ExportDisplay.JustPressed()) ExportDisplays.Prompt();
 
         if (Game.instance is null || InGame.instance is null)
             return;

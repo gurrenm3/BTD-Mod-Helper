@@ -49,7 +49,6 @@ import {
   workspaceCut,
   workspacePaste,
 } from "./blockly-shortcuts";
-import { ToggleHat, ToggleHatMixin } from "../components/blockly/toggle-hat";
 import {
   MatchWrappedColor,
   MatchWrappedColorExtension,
@@ -60,24 +59,15 @@ import {
 } from "../components/blockly/tower-import-category";
 import { FlyoutButton } from "blockly/core";
 import { FieldColourHsvSliders } from "../components/blockly/field-colour-hsv-sliders";
-
-const allowCustomBlocks = process.env.NODE_ENV === "development";
+import { CustomFieldMultiline } from "../components/blockly/custom-field-multiline";
+import {
+  MatchDataColor,
+  MatchDataColorExtension,
+} from "../components/blockly/match-data-color";
+import { FieldInputDropdown } from "../components/blockly/field-input-dropdown";
 
 export const initBlocks = () => {
   for (let block of allJsonBlocks) {
-    if (allowCustomBlocks) {
-      switch (block.type) {
-        case "Il2CppAssets.Scripts.Models.Towers.TowerModel":
-          block.nextStatement = "CustomTower";
-          break;
-        case "Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel":
-          block.nextStatement = "CustomUpgrade";
-          break;
-      }
-    } else if (block.subcategory === "Custom") {
-      continue;
-    }
-
     addBlock(block);
   }
 };
@@ -94,8 +84,7 @@ export const initToolbox = (toolbox: ToolboxInfo) => {
     if (
       block.type.includes("[]") ||
       block.type.includes("<>") ||
-      !block.category ||
-      (block.subcategory === "Custom" && !allowCustomBlocks)
+      !block.category
     )
       continue;
 
@@ -164,9 +153,16 @@ export const registerAll = () => {
     FieldColourHsvSliders.type,
     FieldColourHsvSliders
   );
+  Blockly.fieldRegistry.register(FieldInputDropdown.type, FieldInputDropdown);
 
-  Blockly.fieldRegistry.unregister("field_input");
-  Blockly.fieldRegistry.unregister("field_number");
+  Blockly.fieldRegistry.unregister(CustomFieldMultiline.type);
+  Blockly.fieldRegistry.register(
+    CustomFieldMultiline.type,
+    CustomFieldMultiline
+  );
+
+  Blockly.fieldRegistry.unregister(FieldInputFixed.type);
+  Blockly.fieldRegistry.unregister(FieldNumberFixed.type);
   Blockly.fieldRegistry.register(FieldInputFixed.type, FieldInputFixed);
   Blockly.fieldRegistry.register(FieldNumberFixed.type, FieldNumberFixed);
 
@@ -210,8 +206,8 @@ export const registerAll = () => {
     PlusMinusRowsMixin,
     PlusMinusRowsFn
   );
-  Blockly.Extensions.registerMixin(ToggleHat, ToggleHatMixin);
   Blockly.Extensions.register(MatchWrappedColor, MatchWrappedColorExtension);
+  Blockly.Extensions.register(MatchDataColor, MatchDataColorExtension);
 
   Blockly.blockRendering.register(CustomRenderer.name, CustomRenderer);
 

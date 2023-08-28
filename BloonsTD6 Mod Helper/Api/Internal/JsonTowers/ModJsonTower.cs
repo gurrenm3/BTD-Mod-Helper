@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
@@ -12,19 +13,12 @@ namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 [JsonObject(MemberSerialization.OptIn)]
 internal class ModJsonTower : ModTower
 {
-    public JObject jObject;
-    public TowerModel towerModel;
-    
-    // ReSharper disable once ConvertToPrimaryConstructor
-    public ModJsonTower
-    (
-        [JsonProperty] string displayName,
-        [JsonProperty] string description
-    )
-    {
-        DisplayName = displayName;
-        Description = description;
-    }
+    protected virtual JObject TowerModel { get; set; }
+
+    public List<ModJsonUpgrade> JsonUpgrades { get; } = new();
+
+    [JsonProperty]
+    public override string Name { get; }
 
     [JsonProperty]
     public override string DisplayName { get; }
@@ -32,26 +26,69 @@ internal class ModJsonTower : ModTower
     [JsonProperty]
     public override string Description { get; }
 
-    public List<ModJsonUpgrade> JsonUpgrades { get; } = new();
+    [JsonProperty]
+    public override TowerSet TowerSet { get; }
+
+    [JsonProperty]
+    public override string BaseTower { get; }
+
+    [JsonProperty]
+    public override int Cost { get; }
+
+    [JsonProperty]
+    public override SpriteReference IconReference { get; }
+
+    [JsonProperty]
+    public override SpriteReference PortraitReference { get; }
+
+    [JsonProperty]
+    public JsonModelChange[] Changes { get; init; } = Array.Empty<JsonModelChange>();
+
+    // ReSharper disable once ConvertToPrimaryConstructor
+    public ModJsonTower
+    (
+        [JsonProperty] string name, [JsonProperty] string displayName, [JsonProperty] string description,
+        [JsonProperty] TowerSet towerSet, [JsonProperty] string baseTower, [JsonProperty] int cost,
+        [JsonProperty] SpriteReference iconReference, [JsonProperty] SpriteReference portraitReference
+    )
+    {
+        Name = name;
+        DisplayName = displayName;
+        Description = description;
+        TowerSet = towerSet;
+        BaseTower = baseTower;
+        Cost = cost;
+        IconReference = iconReference;
+        PortraitReference = portraitReference;
+    }
 
     public override int TopPathUpgrades => JsonUpgrades.Count(upgrade => upgrade.Path == 0);
     public override int MiddlePathUpgrades => JsonUpgrades.Count(upgrade => upgrade.Path == 1);
     public override int BottomPathUpgrades => JsonUpgrades.Count(upgrade => upgrade.Path == 2);
 
-    internal override TowerModel BaseTowerModel => towerModel;
-    public override TowerSet TowerSet => towerModel.towerSet;
-    public override string BaseTower => towerModel.name;
-    public override int Cost => (int) towerModel.cost;
-    public override string Name => towerModel.baseId;
-    public override SpriteReference IconReference => towerModel.icon;
-    public override SpriteReference PortraitReference => towerModel.portrait;
     private protected override string ID => Name;
+
+    public override void Register()
+    {
+        TowerModel ??= JObject.Parse(ModelSerializer.SerializeModel(base.BaseTowerModel.Duplicate()));
+        foreach (var change in Changes)
+        {
+            change.Apply(TowerModel);
+        }
+        base.Register();
+    }
+
+    private TowerModel baseTowerModel;
+
+    internal override TowerModel BaseTowerModel =>
+        baseTowerModel ??= ModelSerializer.DeserializeModel<TowerModel>(TowerModel);
 
     public override TowerModel GetBaseTowerModel(int[] tiers)
     {
-        if (tiers.SequenceEqual(new[] {0, 0, 0})) return towerModel.Duplicate();
+        if (tiers.SequenceEqual(new[] {0, 0, 0})) 
+            return BaseTowerModel.Duplicate();
 
-        var tower = (JObject) jObject.DeepClone();
+        var tower = (JObject) TowerModel.DeepClone();
 
         var upgrades = GetUpgradesForTiers(tiers).Cast<ModJsonUpgrade>().ToArray();
 

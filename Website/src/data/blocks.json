@@ -21,10 +21,6 @@
         "text": ""
       }
     ],
-    "hat": "cap",
-    "extensions": [
-      "toggle_hat"
-    ],
     "mutator": "optional_rows",
     "mutatorOptions": {
       "optional": {
@@ -84,8 +80,7 @@
       {
         "name": "baseId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "cost%1",
@@ -286,8 +281,7 @@
       {
         "name": "powerName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message15": "showPowerTowerBuffs%1",
@@ -320,8 +314,7 @@
       {
         "name": "towerSelectionMenuThemeId",
         "type": "field_input",
-        "text": "Default",
-        "spellcheck": false
+        "text": "Default"
       }
     ],
     "message18": "ignoreCoopAreas%1",
@@ -431,8 +424,7 @@
       {
         "name": "geraldoItemName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message25": "sellbackModifierAdd%1",
@@ -685,7 +677,7 @@
     ],
     "category": "Base",
     "subcategory": null,
-    "colour": 0,
+    "colour": 220,
     "message0": "%1UpgradeModel%2",
     "args0": [
       {
@@ -698,10 +690,6 @@
         "name": "name",
         "text": ""
       }
-    ],
-    "hat": "cap",
-    "extensions": [
-      "toggle_hat"
     ],
     "mutator": "optional_rows",
     "mutatorOptions": {
@@ -767,8 +755,7 @@
       {
         "name": "confirmation",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "localizedNameOverride%1",
@@ -776,8 +763,7 @@
       {
         "name": "localizedNameOverride",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "icon%1",
@@ -868,8 +854,7 @@
       {
         "name": "mod",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "target%1",
@@ -877,8 +862,7 @@
       {
         "name": "target",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -1338,8 +1322,7 @@
       {
         "name": "id",
         "type": "field_input",
-        "text": "",
-        "spellcheck": false
+        "text": ""
       }
     ],
     "message2": "maxPierce%1",
@@ -1498,8 +1481,7 @@
       {
         "name": "saveId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message15": "display%1",
@@ -2994,8 +2976,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "damageMultiplier%1",
@@ -3085,8 +3066,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "disableWhenSupportMutatorIDs",
@@ -3274,8 +3254,7 @@
       {
         "name": "buffName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "iconName%1",
@@ -3283,8 +3262,7 @@
       {
         "name": "iconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "maxStackSize%1",
@@ -3535,8 +3513,7 @@
       {
         "name": "displayName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "description%1",
@@ -3544,8 +3521,7 @@
       {
         "name": "description",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "activateOnPreLeak%1",
@@ -3587,8 +3563,7 @@
       {
         "name": "addedViaUpgrade",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "livesCost%1",
@@ -4082,8 +4057,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "layers%1",
@@ -4228,8 +4202,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message13": "filter%1",
@@ -6328,8 +6301,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "slowId%1",
@@ -6337,8 +6309,7 @@
       {
         "name": "slowId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "slowMultiplier%1",
@@ -6646,8 +6617,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "countGlueAchievement%1",
@@ -6688,8 +6658,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message12": "effectModel%1",
@@ -6952,8 +6921,7 @@
       {
         "name": "type",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "sound1%1",
@@ -7091,8 +7059,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "sound1%1",
@@ -7585,8 +7552,7 @@
       {
         "name": "areaType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "useInverted%1",
@@ -7636,8 +7602,7 @@
       {
         "name": "towerSet",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message12": "isOnSubTower%1",
@@ -7693,8 +7658,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "inclusive%1",
@@ -7824,8 +7788,7 @@
       {
         "name": "customName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "lockToInsideTowerRange%1",
@@ -7984,8 +7947,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -9159,8 +9121,7 @@
       {
         "name": "highestPriorityMutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "defaultMutationId%1",
@@ -9168,8 +9129,7 @@
       {
         "name": "defaultMutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "mutationOverideOrder",
@@ -9316,8 +9276,7 @@
       {
         "name": "bloonTag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "extraAmount%1",
@@ -9392,8 +9351,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "attackModel%1",
@@ -9708,8 +9666,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "percentChanceToFreeze%1",
@@ -9784,8 +9741,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "damageModel%1",
@@ -9887,8 +9843,7 @@
       {
         "name": "key",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "mutatorIds%1",
@@ -9896,8 +9851,7 @@
       {
         "name": "mutatorIds",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "collisionPass%1",
@@ -10097,8 +10051,7 @@
       {
         "name": "ignoreTowersList",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "placeOnlyForTowersList%1",
@@ -10106,8 +10059,7 @@
       {
         "name": "placeOnlyForTowersList",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -10275,8 +10227,7 @@
       {
         "name": "distanceScaleForTagsTags",
         "type": "field_input",
-        "text": "",
-        "spellcheck": false
+        "text": ""
       }
     ],
     "message7": "speedMultiplier%1",
@@ -10292,8 +10243,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -10474,8 +10424,7 @@
       {
         "name": "loopMode",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "sprites",
@@ -10526,8 +10475,7 @@
       {
         "name": "gameModes",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -10670,8 +10618,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "conditionalId%1",
@@ -10915,8 +10862,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "lifespan%1",
@@ -11221,8 +11167,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "isUnique%1",
@@ -11264,8 +11209,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "buffIconName%1",
@@ -11273,8 +11217,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "filters",
@@ -11415,8 +11358,7 @@
       {
         "name": "customName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "setOnAttached%1",
@@ -12160,8 +12102,7 @@
       {
         "name": "stackName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "groupName%1",
@@ -12169,8 +12110,7 @@
       {
         "name": "groupName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "affectSelf%1",
@@ -12221,8 +12161,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "buffIconName%1",
@@ -12230,8 +12169,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -12467,8 +12405,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message11": "projectileOnBloonDestroyModel%1",
@@ -12553,8 +12490,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "damagePerTick%1",
@@ -13434,8 +13370,7 @@
       {
         "name": "fixedPathSupplierId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -13610,8 +13545,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "buffIconName%1",
@@ -13619,8 +13553,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "maxStackSize%1",
@@ -13779,8 +13712,7 @@
       {
         "name": "bloonId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "damageMultiplier%1",
@@ -13871,8 +13803,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "conditionalId%1",
@@ -13962,8 +13893,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isUnique%1",
@@ -14005,8 +13935,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "buffIconName%1",
@@ -14014,8 +13943,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "filters",
@@ -14415,8 +14343,7 @@
       {
         "name": "lv7Tags",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "lv7NonMoabBonus%1",
@@ -14440,8 +14367,7 @@
       {
         "name": "lv11ExcludeTags",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "lv11NonMoabBonus%1",
@@ -14465,8 +14391,7 @@
       {
         "name": "lv19BloonTags",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "lv19NonMoabBonus%1",
@@ -14880,8 +14805,7 @@
       {
         "name": "chipTag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -15533,8 +15457,7 @@
       {
         "name": "baseSubTowerId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "maxNumberOfSubTowers%1",
@@ -16001,8 +15924,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "priority%1",
@@ -16036,8 +15958,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "buffIconName%1",
@@ -16045,8 +15966,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "onlyAffectParagon%1",
@@ -16120,8 +16040,7 @@
       {
         "name": "bloonState",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "damageMultiplier%1",
@@ -16346,8 +16265,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isUnique%1",
@@ -16372,8 +16290,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "behaviors",
@@ -16500,8 +16417,7 @@
       {
         "name": "loopMode",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "randomize%1",
@@ -16673,8 +16589,7 @@
       {
         "name": "text",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "assetId%1",
@@ -16861,8 +16776,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "conditionalId%1",
@@ -17055,8 +16969,7 @@
       {
         "name": "freezeId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "freezeTimeMultiplier%1",
@@ -17505,8 +17418,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "conditionalId%1",
@@ -17584,8 +17496,7 @@
       {
         "name": "saveId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -18110,8 +18021,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "damageIncrease%1",
@@ -18398,8 +18308,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "isUnique%1",
@@ -18521,8 +18430,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message12": "buffIconName%1",
@@ -18530,8 +18438,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message13": "displayModel%1",
@@ -18994,8 +18901,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "lifespan%1",
@@ -19019,8 +18925,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "effectModel%1",
@@ -19094,8 +18999,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isGlobal%1",
@@ -19120,8 +19024,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -19129,8 +19032,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "filters",
@@ -19192,8 +19094,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "cap%1",
@@ -19210,8 +19111,7 @@
       {
         "name": "ignoreList",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffLocsName%1",
@@ -19219,8 +19119,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -19228,8 +19127,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "assetId%1",
@@ -19358,8 +19256,7 @@
       {
         "name": "bloonId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "bloonTag%1",
@@ -19367,8 +19264,7 @@
       {
         "name": "bloonTag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "excluding%1",
@@ -19479,8 +19375,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message11": "countGlueAchievement%1",
@@ -19521,8 +19416,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message15": "effectModel%1",
@@ -19591,8 +19485,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -19636,8 +19529,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "lifespan%1",
@@ -19757,8 +19649,7 @@
       {
         "name": "bloonTag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "layers%1",
@@ -19775,8 +19666,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "isUnique%1",
@@ -19809,8 +19699,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -20143,8 +20032,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "conditionalId%1",
@@ -20213,8 +20101,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "conditionalId%1",
@@ -20490,8 +20377,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "priority%1",
@@ -20579,8 +20465,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "useTowerPosition%1",
@@ -20605,8 +20490,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -20614,8 +20498,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -20790,8 +20673,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "multiplierMOAB%1",
@@ -21163,8 +21045,7 @@
       {
         "name": "ignoreList",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "isSelectable%1",
@@ -21189,8 +21070,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "mustHaveWeapon%1",
@@ -21677,8 +21557,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "cash%1",
@@ -21711,8 +21590,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "filter%1",
@@ -21892,8 +21770,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "isUnique%1",
@@ -21960,8 +21837,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "buffIconName%1",
@@ -21969,8 +21845,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message11": "displayModel%1",
@@ -22817,8 +22692,7 @@
       {
         "name": "projectileId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "limit%1",
@@ -22964,8 +22838,7 @@
       {
         "name": "targetSupplierName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -23191,8 +23064,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "conditionalId%1",
@@ -23258,8 +23130,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isUnique%1",
@@ -23396,8 +23267,7 @@
       {
         "name": "ignoreList",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "mutationId%1",
@@ -23405,8 +23275,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "lifespan%1",
@@ -23462,8 +23331,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message11": "buffIconName%1",
@@ -23471,8 +23339,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message12": "mutatorsToRemove%1",
@@ -23480,8 +23347,7 @@
       {
         "name": "mutatorsToRemove",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message13": "assetId%1",
@@ -23715,8 +23581,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "buffIconName%1",
@@ -23724,8 +23589,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "maxStackSize%1",
@@ -24345,8 +24209,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "lifespan%1",
@@ -24638,8 +24501,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "projectileModel%1",
@@ -24721,8 +24583,7 @@
       {
         "name": "targetCPOEPId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -24795,8 +24656,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -24804,8 +24664,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "effectModel%1",
@@ -25153,8 +25012,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isUnique%1",
@@ -25220,8 +25078,7 @@
       {
         "name": "bloonTag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "inclusive%1",
@@ -25398,8 +25255,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "isGlobal%1",
@@ -25424,8 +25280,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "buffIconName%1",
@@ -25433,8 +25288,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "filters",
@@ -25868,8 +25722,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isUnique%1",
@@ -25894,8 +25747,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -25903,8 +25755,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "filters",
@@ -25988,8 +25839,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "priority%1",
@@ -26006,8 +25856,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "buffIconName%1",
@@ -26015,8 +25864,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "filters",
@@ -26086,8 +25934,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isUnique%1",
@@ -26156,8 +26003,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "buffIconName%1",
@@ -26165,8 +26011,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "filters",
@@ -26266,8 +26111,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -26344,8 +26188,7 @@
       {
         "name": "mutatorIdRange",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "mutatorIdProjectileRadius%1",
@@ -26353,8 +26196,7 @@
       {
         "name": "mutatorIdProjectileRadius",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "mutatorIdMoabDamage%1",
@@ -26362,8 +26204,7 @@
       {
         "name": "mutatorIdMoabDamage",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "mutatorIdCooldownMultiplier%1",
@@ -26371,8 +26212,7 @@
       {
         "name": "mutatorIdCooldownMultiplier",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -26448,8 +26288,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "isUnique%1",
@@ -26516,8 +26355,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "buffIconName%1",
@@ -26525,8 +26363,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message11": "displayModel%1",
@@ -26761,8 +26598,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "buffIconName%1",
@@ -26770,8 +26606,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "submergeAttackModel%1",
@@ -27949,8 +27784,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffLocsName%1",
@@ -27958,8 +27792,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -27967,8 +27800,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "filters",
@@ -28390,8 +28222,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "behaviorModel%1",
@@ -28908,8 +28739,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "immuneBloonProperties%1",
@@ -28972,8 +28802,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -28981,8 +28810,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "filters",
@@ -29042,8 +28870,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "removeScriptWithSupportMutatorId%1",
@@ -29051,8 +28878,7 @@
       {
         "name": "removeScriptWithSupportMutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isGlobal%1",
@@ -29102,8 +28928,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "buffIconName%1",
@@ -29111,8 +28936,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "filters",
@@ -29170,8 +28994,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "buffLocsName%1",
@@ -29179,8 +29002,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "buffIconName%1",
@@ -29188,8 +29010,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "behaviors",
@@ -29537,8 +29358,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "isGlobal%1",
@@ -29724,8 +29544,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -29766,8 +29585,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "cashPerTier%1",
@@ -29783,8 +29601,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -29867,8 +29684,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "buffIconName%1",
@@ -29876,8 +29692,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "bonusMultiplierPerSacrifice%1",
@@ -30029,8 +29844,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -30038,8 +29852,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -30536,8 +30349,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "isUnique%1",
@@ -30604,8 +30416,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "buffIconName%1",
@@ -30613,8 +30424,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "displayModel%1",
@@ -30802,8 +30612,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -31078,8 +30887,7 @@
       {
         "name": "groupName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "maxStacks%1",
@@ -31607,8 +31415,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "hex%1",
@@ -31736,8 +31543,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "damageOverTimeModel%1",
@@ -32052,8 +31858,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "multiplier%1",
@@ -32086,8 +31891,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "ignoreTags",
@@ -33169,8 +32973,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "psiEffectModel%1",
@@ -33370,8 +33173,7 @@
       {
         "name": "ignoreWithMutators",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message14": "display%1",
@@ -33586,8 +33388,7 @@
       {
         "name": "bloonId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -34584,8 +34385,7 @@
       {
         "name": "templeId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "transformationAnimation%1",
@@ -34763,8 +34563,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "conditionalId%1",
@@ -34825,8 +34624,7 @@
       {
         "name": "stackName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "groupName%1",
@@ -34834,8 +34632,7 @@
       {
         "name": "groupName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "stackLimit%1",
@@ -34882,8 +34679,7 @@
       {
         "name": "bloonTag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -34933,8 +34729,7 @@
       {
         "name": "abilityId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "layers%1",
@@ -35019,8 +34814,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "lifespan%1",
@@ -35044,8 +34838,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message11": "effectModel%1",
@@ -35254,8 +35047,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "maxStacks%1",
@@ -35288,8 +35080,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "buffIconName%1",
@@ -35297,8 +35088,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -35418,8 +35208,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "maxStackCount%1",
@@ -35436,8 +35225,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -35445,8 +35233,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -35488,8 +35275,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "upgrade%1",
@@ -35627,8 +35413,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message7": "buffIconName%1",
@@ -35636,8 +35421,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "onlyShowBuffIfMutated%1",
@@ -35734,8 +35518,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffIconName%1",
@@ -35743,8 +35526,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "lifespan%1",
@@ -35802,8 +35584,7 @@
       {
         "name": "towerId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "multiplier%1",
@@ -35819,8 +35600,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -35889,8 +35669,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffIconName%1",
@@ -35898,8 +35677,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "filters",
@@ -36078,8 +35856,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "mutatorSaveId%1",
@@ -36087,8 +35864,7 @@
       {
         "name": "mutatorSaveId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "maxStacks%1",
@@ -36105,8 +35881,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "buffIconName%1",
@@ -36114,8 +35889,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "selectionObjectPath%1",
@@ -36343,8 +36117,7 @@
       {
         "name": "projectileId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -36802,8 +36575,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "priority%1",
@@ -36882,8 +36654,7 @@
       {
         "name": "bloonTag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "lifespan%1",
@@ -36916,8 +36687,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "priority%1",
@@ -37336,8 +37106,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -37345,8 +37114,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "isGlobalRange%1",
@@ -37541,8 +37309,7 @@
       {
         "name": "towerFilter",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "useTowerRange%1",
@@ -37655,8 +37422,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "damage%1",
@@ -37971,8 +37737,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "buffLocsName%1",
@@ -37980,8 +37745,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "buffIconName%1",
@@ -37989,8 +37753,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "isGlobalRange%1",
@@ -38390,8 +38153,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "targetSupplier%1",
@@ -38454,8 +38216,7 @@
       {
         "name": "abilityToFind",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -38723,8 +38484,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message8": "buffIconName%1",
@@ -38732,8 +38492,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message9": "filters",
@@ -39371,8 +39130,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "isUnique%1",
@@ -39588,8 +39346,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffIconName%1",
@@ -39597,8 +39354,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "isGlobalRange%1",
@@ -39801,8 +39557,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "isUnique%1",
@@ -39936,8 +39691,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "isUnique%1",
@@ -40178,8 +39932,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "mutateAll%1",
@@ -40247,8 +40000,7 @@
       {
         "name": "affectList",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "resetOnDefeatScreen%1",
@@ -40273,8 +40025,7 @@
       {
         "name": "ignoreWithMutators",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message12": "lifespan%1",
@@ -40368,8 +40119,7 @@
       {
         "name": "bloonId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -41013,8 +40763,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "buffLocsName%1",
@@ -41022,8 +40771,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffIconName%1",
@@ -41031,8 +40779,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "isGlobalRange%1",
@@ -41219,8 +40966,7 @@
       {
         "name": "towerFilter",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -41262,8 +41008,7 @@
       {
         "name": "filterTower",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "valueRequiredForCrate%1",
@@ -41523,8 +41268,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "buffIconName%1",
@@ -41532,8 +41276,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -41598,8 +41341,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "firstPath%1",
@@ -41818,8 +41560,7 @@
       {
         "name": "priorityBloonTags",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isOnSubTower%1",
@@ -42878,8 +42619,7 @@
       {
         "name": "distanceScaleForTagsTags",
         "type": "field_input",
-        "text": "",
-        "spellcheck": false
+        "text": ""
       }
     ],
     "message8": "speedMultiplier%1",
@@ -42895,8 +42635,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message10": "stunDurationMoab%1",
@@ -43628,8 +43367,7 @@
       {
         "name": "initialTargetType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "useParentForClose%1",
@@ -45307,8 +45045,7 @@
       {
         "name": "targetDamageId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -45650,8 +45387,7 @@
       {
         "name": "towerId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -47504,8 +47240,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "towerModel%1",
@@ -47642,8 +47377,7 @@
       {
         "name": "templeType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -48058,8 +47792,7 @@
       {
         "name": "upgradeIndicatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "projectiles",
@@ -48262,8 +47995,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "lifespan%1",
@@ -48491,8 +48223,7 @@
       {
         "name": "maxGrabBloonName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "bitingAnimationState%1",
@@ -48711,8 +48442,7 @@
       {
         "name": "modifier",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "damageMultiplier%1",
@@ -48893,8 +48623,7 @@
       {
         "name": "bloon",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -49192,8 +48921,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -49348,8 +49076,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "priority%1",
@@ -49397,8 +49124,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "mutatorKey%1",
@@ -49406,8 +49132,7 @@
       {
         "name": "mutatorKey",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -49640,8 +49365,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "priority%1",
@@ -49779,8 +49503,7 @@
       {
         "name": "bloonTagFilter",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -49931,8 +49654,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -50110,8 +49832,7 @@
       {
         "name": "bloonTags",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "projectileModel%1",
@@ -50364,8 +50085,7 @@
       {
         "name": "mutationId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -50593,8 +50313,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "isUnique%1",
@@ -50692,8 +50411,7 @@
       {
         "name": "blockId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -50888,8 +50606,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffIconName%1",
@@ -50897,8 +50614,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "filters",
@@ -50949,8 +50665,7 @@
       {
         "name": "ignoreId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -50992,8 +50707,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "displayDegree%1",
@@ -51027,8 +50741,7 @@
       {
         "name": "overlayType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -51103,8 +50816,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message6": "priority%1",
@@ -51153,8 +50865,7 @@
       {
         "name": "wererabbitTowerId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "mergeAmountRequired%1",
@@ -51395,8 +51106,7 @@
       {
         "name": "towerBaseId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -51434,8 +51144,7 @@
       {
         "name": "mutatorIds",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -51488,8 +51197,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "buffLocsName%1",
@@ -51497,8 +51205,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "buffIconName%1",
@@ -51506,8 +51213,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "filters",
@@ -51568,8 +51274,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -51618,8 +51323,7 @@
       {
         "name": "stackName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "filters",
@@ -51700,8 +51404,7 @@
       {
         "name": "targetTypeId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -51771,8 +51474,7 @@
       {
         "name": "displayAssetName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "scaleOn%1",
@@ -52035,8 +51737,7 @@
       {
         "name": "buffLocsName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "buffIconName%1",
@@ -52044,8 +51745,7 @@
       {
         "name": "buffIconName",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message3": "maxStackSize%1",
@@ -52241,8 +51941,7 @@
       {
         "name": "blockId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message5": "blockAllUpgrades%1",
@@ -52344,8 +52043,7 @@
       {
         "name": "targetType",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -53548,8 +53246,7 @@
       {
         "name": "ignoreList",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "ignorePrevious%1",
@@ -53574,8 +53271,7 @@
       {
         "name": "previousId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message4": "useRange%1",
@@ -53734,8 +53430,7 @@
       {
         "name": "tag",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "isSelectable%1",
@@ -54106,8 +53801,7 @@
       {
         "name": "filterTower",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -54233,8 +53927,7 @@
       {
         "name": "mutatorId",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -54610,8 +54303,7 @@
       {
         "name": "guidRef",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -54636,8 +54328,7 @@
       {
         "name": "guidRef",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -54709,8 +54400,7 @@
       {
         "name": "guidRef",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ]
   },
@@ -54772,8 +54462,7 @@
       {
         "name": "id",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "message2": "isActionable%1",
@@ -55317,8 +55006,7 @@
       {
         "name": "i",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       }
     ],
     "data": "BLOCKLY_ARRAY",
@@ -56380,8 +56068,7 @@
       {
         "name": "key",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       },
       {
         "name": "value",
@@ -56436,8 +56123,7 @@
       {
         "name": "key",
         "type": "field_input",
-        "text": "null",
-        "spellcheck": false
+        "text": "null"
       },
       {
         "name": "value",

@@ -235,9 +235,12 @@ internal partial class MelonMain
                       "If you have VSCode installed,\na good option is \"code -w -n\"."
     };
 
-    public static readonly ModSettingHotkey ExportDisplay = new(KeyCode.F12, HotkeyModifier.Ctrl)
+    public static readonly ModSettingButton ExportDisplay = new(ExportDisplays.Prompt)
     {
-        category = ModMaking
+        category = ModMaking,
+        description = "Export the textures for a particular display after inputting its GUID. " +
+                      "In the Tower Editor, hidden GUIDs can be seen within the (?) comment icons on certain blocks.",
+        buttonText = "Choose"
     };
 
 #if DEBUG

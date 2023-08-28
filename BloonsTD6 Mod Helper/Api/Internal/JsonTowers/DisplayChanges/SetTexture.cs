@@ -13,14 +13,16 @@ internal class SetTexture : JsonDisplayChange
     public override void Apply(UnityDisplayNode node)
     {
         var renderer = GetRenderer(node, RendererType, Index);
-        var texture = ResourceHandler.GetTexture(Texture);
         switch (RendererType)
         {
             case RendererType.MeshRenderer:
-                renderer.Cast<MeshRenderer>().SetMainTexture(texture);
+                renderer.Cast<MeshRenderer>().SetMainTexture(ResourceHandler.GetTexture(Texture));
+                break;
+            case RendererType.SkinnedMeshRenderer:
+                renderer.Cast<SkinnedMeshRenderer>().SetMainTexture(ResourceHandler.GetTexture(Texture));
                 break;
             case RendererType.SpriteRenderer:
-                renderer.Cast<SpriteRenderer>().sprite.SetTexture(texture);
+                renderer.Cast<SpriteRenderer>().sprite = ResourceHandler.GetSprite(Texture);
                 break;
         }
     }

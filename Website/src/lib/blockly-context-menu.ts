@@ -1,4 +1,4 @@
-import Blockly, { ContextMenuRegistry } from "blockly";
+import Blockly, { BlockSvg, ContextMenuRegistry } from "blockly";
 import {
   blockStateToModel,
   modelToBlockState,
@@ -10,16 +10,18 @@ import { openFile, saveFile } from "./file-dialogs";
 import ScopeType = ContextMenuRegistry.ScopeType;
 import { LatestVersion } from "./mod-helper-data";
 
+const shouldCollapseAll = (block: BlockSvg) =>
+  block.inputList.filter(
+    (input) =>
+      !input.connection?.targetBlock()?.isCollapsed() &&
+      input.connection?.targetBlock()?.isMovable()
+  ).length >
+  block.inputList.filter((input) => input.connection?.targetBlock()).length / 2;
+
 export const collapseAll: ContextMenuRegistry.RegistryItem = {
   id: "blockCollapseExpandAll",
   displayText: ({ block }) =>
-    block.inputList.some(
-      (input) =>
-        !input.connection?.targetBlock()?.isCollapsed() &&
-        input.connection?.targetBlock()?.isMovable()
-    )
-      ? "Collapse Children"
-      : "Expand Children",
+    shouldCollapseAll(block) ? "Collapse Children" : "Expand Children",
   weight: 5,
   scopeType: ContextMenuRegistry.ScopeType.BLOCK,
   preconditionFn: ({ block }) =>
@@ -31,15 +33,7 @@ export const collapseAll: ContextMenuRegistry.RegistryItem = {
       : "hidden",
   callback: ({ block }) => {
     const collapsed = block.isCollapsed();
-    recursiveSetCollapsed(
-      block,
-      block.inputList.some(
-        (input) =>
-          !input.connection?.targetBlock()?.isCollapsed() &&
-          input.connection?.targetBlock()?.isMovable()
-      ),
-      true
-    );
+    recursiveSetCollapsed(block, shouldCollapseAll(block), true);
     block.setCollapsed(collapsed);
   },
 };
@@ -100,7 +94,8 @@ export const saveToJson: ContextMenuRegistry.RegistryItem = {
   scopeType: ContextMenuRegistry.ScopeType.BLOCK,
   preconditionFn: ({ block }) =>
     !block.isInFlyout &&
-    (block.type.endsWith(".TowerModel") || block.type.endsWith(".UpgradeModel"))
+    Blockly.Blocks[block.type]?.json?.category === "Base" &&
+    !Blockly.Blocks[block.type]?.json?.subcategory
       ? "enabled"
       : "hidden",
   callback: ({ block }) => {
@@ -116,7 +111,7 @@ export const saveToJson: ContextMenuRegistry.RegistryItem = {
     saveFile(
       JSON.stringify(modelJson, null, 2),
       "application/json",
-      modelJson.name + ".json"
+      (modelJson.name ?? modelJson?.baseTowerModel?.name) + ".json"
     );
   },
 };

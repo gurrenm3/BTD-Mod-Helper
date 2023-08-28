@@ -60,6 +60,7 @@ export const recursiveSetCollapsed = (
   for (let input of block.inputList) {
     recursiveSetCollapsed(input.connection?.targetBlock(), collapsed, doAll);
   }
+  recursiveSetCollapsed(block.getNextBlock(), collapsed, doAll);
 };
 
 const arrayToBlockState = (
@@ -330,10 +331,10 @@ export const modelToBlockState = (
   }
 
   let type = blocksByFullType[fullType] ?? fullType;
-  if (type.endsWith(".TowerModel") && !model["name"]) {
-    type = "CustomTowerModel";
-  } else if (model["$custom"]) {
-    if (type.endsWith(".SpriteReference")) {
+  if (model["$custom"]) {
+    if (model["guidRef"] === "9dccc16d26c1c8a45b129e2a8cbd17ba") {
+      type = "Generic2dDisplay";
+    } else if (type.endsWith(".SpriteReference")) {
       type = "CustomTextureReference";
       if (model["guidRef"] && typeof model["guidRef"] === "string") {
         model["guidRef"] = model["guidRef"].match(/Ui\[(.+)]/)[1] ?? "";
@@ -445,7 +446,9 @@ export const blockStateToModel = (
       !block.type.endsWith(".TowerModel") &&
       !block.type.endsWith(".UpgradeModel") &&
       !block.type.endsWith(".ApplyModModel") &&
-      !block.type.endsWith("CustomDisplay")
+      !block.type.startsWith("CustomTower") &&
+      !block.type.startsWith("CustomUpgrade") &&
+      !block.type.startsWith("CustomDisplay")
     ) {
       value =
         block.type.substring(block.type.lastIndexOf(".") + 1) + "_" + value;

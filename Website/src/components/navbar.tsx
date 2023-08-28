@@ -75,6 +75,7 @@ export const ModHelperNavBar: FunctionComponent<{
             width={50}
             height={50}
             loading={"eager"}
+            priority={true}
           />
         </NavbarBrand>
         <NavbarBrand

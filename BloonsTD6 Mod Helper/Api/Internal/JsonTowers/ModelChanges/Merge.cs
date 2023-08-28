@@ -1,10 +1,10 @@
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-namespace BTD_Mod_Helper.Api.Internal.JsonTowers.UpgradeEffects;
+namespace BTD_Mod_Helper.Api.Internal.JsonTowers.ModelChanges;
 
 [JsonObject(MemberSerialization.OptOut)]
-internal class Merge : JsonUpgradeEffect
+internal class Merge : JsonModelChange
 {
     public JObject Model { get; init; }
 
@@ -38,7 +38,7 @@ internal class Merge : JsonUpgradeEffect
             if (element is JObject objectElement && objectElement.TryGetValue("name", out var name))
             {
                 var sourceElement = sourceArray.FirstOrDefault(token =>
-                    token is JObject sourceElement && sourceElement["name"] == name);
+                    token is JObject sourceElement && sourceElement.Value<string>("name") == name.ToString());
                 if (sourceElement != null)
                 {
                     if (objectElement.ContainsKey("$delete"))
@@ -66,6 +66,8 @@ internal class Merge : JsonUpgradeEffect
     {
         foreach (var (key, token) in mergeObject)
         {
+            if (key == "name") continue;
+            
             if (sourceObject.TryGetValue(key, out var sourceToken))
             {
                 if (sourceToken is JValue)

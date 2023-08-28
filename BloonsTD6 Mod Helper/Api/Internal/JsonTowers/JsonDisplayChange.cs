@@ -10,7 +10,7 @@ internal abstract class JsonDisplayChange
     protected static Renderer GetRenderer(UnityDisplayNode node, RendererType rendererType, int index) =>
         node.GetRenderers().Where(renderer => rendererType switch
         {
-
+            RendererType.SkinnedMeshRenderer => renderer.Is<SkinnedMeshRenderer>(),
             RendererType.MeshRenderer => renderer.Is<MeshRenderer>(),
             RendererType.SpriteRenderer => renderer.Is<SpriteRenderer>(),
             RendererType.ParticleSystemRenderer => renderer.Is<ParticleSystemRenderer>(),
@@ -21,6 +21,7 @@ internal abstract class JsonDisplayChange
 
 internal enum RendererType
 {
+    SkinnedMeshRenderer,
     MeshRenderer,
     SpriteRenderer,
     ParticleSystemRenderer

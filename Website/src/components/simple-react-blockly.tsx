@@ -71,7 +71,7 @@ export default forwardRef<SimpleReactBlocklyRef, SimpleReactBlocklyProps>(
         if (props.workspaceConfiguration?.theme instanceof Theme) {
           ref.current.workspace.setTheme(props.workspaceConfiguration.theme);
           for (let block of ref.current.workspace.getTopBlocks(false)) {
-            block["postInit"]?.();
+            block.hat = Blockly.Blocks[block.type]?.json?.hat;
           }
         }
       }

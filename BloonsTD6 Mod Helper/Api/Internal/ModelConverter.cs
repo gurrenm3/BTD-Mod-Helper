@@ -15,6 +15,8 @@ internal class ModelConverter : JsonConverter
         TypeNameHandling = TypeNameHandling.Objects,
         SerializationBinder = new ModelSerializationBinder()
     };
+    
+    public static readonly JsonSerializer Serializer = JsonSerializer.Create(Settings);
 
     public override bool CanConvert(Type objectType) => objectType.IsAssignableTo(typeof(Model));
 
