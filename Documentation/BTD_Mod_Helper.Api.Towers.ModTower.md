@@ -278,7 +278,7 @@ public abstract int TopPathUpgrades { get; }
 
 The family of Monkeys that your Tower should be put in.  
 <br/>  
-For now, just use one of the default constants provided of PRIMARY, MILITARY, MAGIC, or SUPPORT.
+Use the built in [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet') enum for this.
 
 ```csharp
 public abstract TowerSet TowerSet { get; }

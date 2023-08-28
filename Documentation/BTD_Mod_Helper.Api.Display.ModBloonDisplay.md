@@ -13,7 +13,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Derived  
 &#8627; [ModBloonCustomDisplay](BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay')  
-&#8627; [ModBloonDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay<T>')
+&#8627; [ModBloonDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay<T>')  
+&#8627; [ModBossTierDisplay](BTD_Mod_Helper.Api.Display.ModBossTierDisplay.md 'BTD_Mod_Helper.Api.Display.ModBossTierDisplay')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Display.ModBloonDisplay.Bloon'></a>

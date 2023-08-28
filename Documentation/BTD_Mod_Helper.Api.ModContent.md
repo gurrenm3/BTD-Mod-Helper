@@ -19,6 +19,7 @@ System.IComparable<BTD_Mod_Helper.Api.ModContent>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModContent
 
 Derived  
+&#8627; [ModBossTier](BTD_Mod_Helper.Api.Bloons.Bosses.ModBossTier.md 'BTD_Mod_Helper.Api.Bloons.Bosses.ModBossTier')  
 &#8627; [ModSettings](BTD_Mod_Helper.Api.Data.ModSettings.md 'BTD_Mod_Helper.Api.Data.ModSettings')  
 &#8627; [ModTextOverride](BTD_Mod_Helper.Api.Data.ModTextOverride.md 'BTD_Mod_Helper.Api.Data.ModTextOverride')  
 &#8627; [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')  
@@ -1274,24 +1275,6 @@ public static TowerSet GetTowerSet<T>()
 #### Returns
 [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
-
-## ModContent.HasMod(string) Method
-
-Returns whether a mod with the given name is installed
-
-```csharp
-public static bool HasMod(string name);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
 
 ## ModContent.HasMod(string, BloonsMod) Method
@@ -1310,6 +1293,24 @@ public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod).bloonsMod'></a>
 
 `bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
+
+## ModContent.HasMod(string) Method
+
+Returns whether a mod with the given name is installed
+
+```csharp
+public static bool HasMod(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

@@ -12,21 +12,6 @@ public static class TowerModelExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; TowerModelExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.AddTiersToName(thisTowerModel)'></a>
-
-## TowerModelExt.AddTiersToName(this TowerModel) Method
-
-Format's the tower's name with its tiers
-
-```csharp
-public static void AddTiersToName(this TowerModel towerModel);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.AddTiersToName(thisTowerModel).towerModel'></a>
-
-`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
-
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.AddTiersToName(thisTowerModel,int,int,int)'></a>
 
 ## TowerModelExt.AddTiersToName(this TowerModel, int, int, int) Method
@@ -53,6 +38,21 @@ public static void AddTiersToName(this TowerModel towerModel, int tier1, int tie
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.AddTiersToName(thisTowerModel,int,int,int).tier3'></a>
 
 `tier3` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.AddTiersToName(thisTowerModel)'></a>
+
+## TowerModelExt.AddTiersToName(this TowerModel) Method
+
+Format's the tower's name with its tiers
+
+```csharp
+public static void AddTiersToName(this TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.AddTiersToName(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.ApplyDisplay_T_(thisTowerModel)'></a>
 
@@ -95,24 +95,6 @@ public static System.Collections.Generic.List<AbilityModel> GetAbilities(this To
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAbility(thisTowerModel)'></a>
-
-## TowerModelExt.GetAbility(this TowerModel) Method
-
-Return the first ability on the tower
-
-```csharp
-public static AbilityModel GetAbility(this TowerModel towerModel);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAbility(thisTowerModel).towerModel'></a>
-
-`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
-
-#### Returns
-[Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
-
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAbility(thisTowerModel,int)'></a>
 
 ## TowerModelExt.GetAbility(this TowerModel, int) Method
@@ -135,6 +117,24 @@ the TowerModel
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 Index of the ability you want.
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAbility(thisTowerModel)'></a>
+
+## TowerModelExt.GetAbility(this TowerModel) Method
+
+Return the first ability on the tower
+
+```csharp
+public static AbilityModel GetAbility(this TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAbility(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 #### Returns
 [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
@@ -174,24 +174,6 @@ public static System.Collections.Generic.List<UpgradeModel> GetAppliedUpgrades(t
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel 'Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAttackModel(thisTowerModel)'></a>
-
-## TowerModelExt.GetAttackModel(this TowerModel) Method
-
-Return the first AttackModel from this TowerModel, if it has one
-
-```csharp
-public static AttackModel GetAttackModel(this TowerModel towerModel);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAttackModel(thisTowerModel).towerModel'></a>
-
-`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
-
-#### Returns
-[Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAttackModel(thisTowerModel,int)'></a>
 
@@ -237,6 +219,24 @@ public static AttackModel GetAttackModel(this TowerModel towerModel, string name
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAttackModel(thisTowerModel,string).nameContains'></a>
 
 `nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAttackModel(thisTowerModel)'></a>
+
+## TowerModelExt.GetAttackModel(this TowerModel) Method
+
+Return the first AttackModel from this TowerModel, if it has one
+
+```csharp
+public static AttackModel GetAttackModel(this TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetAttackModel(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 #### Returns
 [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
@@ -483,24 +483,6 @@ What tier of upgrade is currently applied to tower
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetWeapon(thisTowerModel)'></a>
-
-## TowerModelExt.GetWeapon(this TowerModel) Method
-
-Return the first WeaponModel this TowerModel has, if it has one.
-
-```csharp
-public static WeaponModel GetWeapon(this TowerModel towerModel);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetWeapon(thisTowerModel).towerModel'></a>
-
-`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
-
-#### Returns
-[Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
-
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetWeapon(thisTowerModel,int)'></a>
 
 ## TowerModelExt.GetWeapon(this TowerModel, int) Method
@@ -523,6 +505,24 @@ The TowerModel
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 Index of WeaponModel that you want
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetWeapon(thisTowerModel)'></a>
+
+## TowerModelExt.GetWeapon(this TowerModel) Method
+
+Return the first WeaponModel this TowerModel has, if it has one.
+
+```csharp
+public static WeaponModel GetWeapon(this TowerModel towerModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetWeapon(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 #### Returns
 [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')

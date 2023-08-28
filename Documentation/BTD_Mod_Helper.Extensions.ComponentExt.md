@@ -58,7 +58,7 @@ public static T GetComponent<T>(this Component component, string componentPath);
 
 ## ComponentExt.GetComponentFromChildrenByName<T>(this Component, string) Method
 
-Try to get a component in a child of this Component by it's name. Equivelant to a foreach with GetComponentsInChildren
+Try to get a component in a child of this Component by it's name. Equivalent to a foreach with GetComponentsInChildren
 
 ```csharp
 public static T GetComponentFromChildrenByName<T>(this Component component, string componentName)
@@ -81,6 +81,34 @@ public static T GetComponentFromChildrenByName<T>(this Component component, stri
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ComponentExt.md#BTD_Mod_Helper.Extensions.ComponentExt.GetComponentFromChildrenByName_T_(thisComponent,string).T 'BTD_Mod_Helper.Extensions.ComponentExt.GetComponentFromChildrenByName<T>(this Component, string).T')
+
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.GetComponentsFromChildrenByName_T_(thisComponent,string)'></a>
+
+## ComponentExt.GetComponentsFromChildrenByName<T>(this Component, string) Method
+
+Tries to get all component in a child of this Component by it's name. Equivalent to a foreach with GetComponentsInChildren
+
+```csharp
+public static T[] GetComponentsFromChildrenByName<T>(this Component component, string componentName)
+    where T : Component;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.GetComponentsFromChildrenByName_T_(thisComponent,string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.GetComponentsFromChildrenByName_T_(thisComponent,string).component'></a>
+
+`component` [UnityEngine.Component](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Component 'UnityEngine.Component')
+
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.GetComponentsFromChildrenByName_T_(thisComponent,string).componentName'></a>
+
+`componentName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.ComponentExt.md#BTD_Mod_Helper.Extensions.ComponentExt.GetComponentsFromChildrenByName_T_(thisComponent,string).T 'BTD_Mod_Helper.Extensions.ComponentExt.GetComponentsFromChildrenByName<T>(this Component, string).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 <a name='BTD_Mod_Helper.Extensions.ComponentExt.Hide(thisComponent)'></a>
 
