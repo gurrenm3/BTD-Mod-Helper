@@ -15,7 +15,7 @@ internal static class InGame_CheckGameType
     [HarmonyPrefix]
     private static void Prefix(InGame __instance)
     {
-        if (__instance.GameType == GameType.BossBloon &&ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
+        if (__instance.GameType == GameType.BossBloon && ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
             if (AmbientMapFXDisplay.Cache.TryGetValue(boss.AmbientMapFXReference.guidRef ?? "", out var ambientMapFXDisplay))
             {

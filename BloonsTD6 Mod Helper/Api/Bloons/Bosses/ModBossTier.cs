@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Bloons;
@@ -30,7 +32,7 @@ public abstract class ModBossTier : ModContent
     public abstract int Round { get; }
     
     /// <summary>
-    /// Modifies the base boss bloon
+    /// Modifies the base boss bloonModel
     /// </summary>
     /// <param name="bossModel"></param>
     public abstract void ModifyBaseBoss(BloonModel bossModel);
@@ -43,45 +45,45 @@ public abstract class ModBossTier : ModContent
     /// <summary>
     /// Called when the boss is spawned
     /// </summary>
-    /// <remarks>Called when loading saves and continuing from checkpoints as well</remarks> //because bloon gets reset
-    /// <param name="bloon"></param>
-    public virtual void OnSpawn(Bloon bloon) { }
+    /// <remarks>Called when loading saves and continuing from checkpoints as well</remarks>
+    /// <param name="boss"></param>
+    public virtual void OnSpawn(Bloon boss) { }
 
     /// <summary>
     /// Called when the boss is leaked
     /// </summary>
-    /// <param name="bloon"></param>
-    public virtual void OnLeak(Bloon bloon) { }
+    /// <param name="boss"></param>
+    public virtual void OnLeak(Bloon boss) { }
 
     /// <summary>
     /// Called when the boss is popped
     /// </summary>
-    /// <param name="bloon"></param>
-    public virtual void OnPop(Bloon bloon) { }
+    /// <param name="boss"></param>
+    public virtual void OnPop(Bloon boss) { }
 
     /// <summary>
     /// Called when the boss takes damage
     /// </summary>
-    /// <param name="bloon"></param>
+    /// <param name="boss"></param>
     /// <param name="totalAmount"></param>
-    public virtual void OnDamage(Bloon bloon, float totalAmount)
+    public virtual void OnDamage(Bloon boss, float totalAmount)
     {
     }
 
     /// <summary>
     /// Called when the boss reaches a skull
     /// </summary>
-    /// <param name="bloon"></param>
+    /// <param name="boss"></param>
     /// <param name="skullNumber"></param>
-    public virtual void SkullReached(Bloon bloon, int skullNumber)
+    public virtual void SkullReached(Bloon boss, int skullNumber)
     {
     }
     
     /// <summary>
     /// Called when the boss timer triggers, only called if <see cref="Interval"/> is not null
     /// </summary>
-    /// <param name="bloon"></param>
-    public virtual void TimerTick(Bloon bloon)
+    /// <param name="boss"></param>
+    public virtual void TimerTick(Bloon boss)
     {
     }
 
@@ -110,29 +112,36 @@ public abstract class ModBossTier : ModContent
         }
 
         bossModel.AddBehavior(new HealthPercentTriggerModel(Name + "-SkullEffect", false, SkullPositions,
-            new[] {Name + "SkullEffect"}, PreventFallThrough));
+            CustomSkullActionIDs.AddItem(Name + "-SkullEffect").ToArray(), PreventFallThrough));
     }
 
     internal void SetupTimer(BloonModel bossModel)
     {
         if (Interval != null)
         {
-            bossModel.AddBehavior(new TimeTriggerModel(Name + "-TimerTick", Interval.Value, TriggerImmediately, new[]
-            {
-                Name + "TimerTick"
-            }));
+            bossModel.AddBehavior(new TimeTriggerModel(Name + "-TimerTick", Interval.Value, TriggerImmediately, CustomTimerActionIDs.AddItem(Name + "-TimerTick").ToArray()));
         }
     }
 
     /// <summary>
-    /// Determines if the boss's health should go down while it's skull effect is on
+    /// Custom actions that are triggered when the boss reaches a skull, look at ingame boss bloons for valid ids
     /// </summary>
-    public virtual bool PreventFallThrough => false; //todo: test this and see exactly what it does
-    
+    public virtual IEnumerable<string> CustomSkullActionIDs => Array.Empty<string>();
+
     /// <summary>
-    /// Determines if the timer starts immediately
+    /// Determines if the boss's health should go down while it's skull effect is active (only applicable to existing, ingame actions)
     /// </summary>
-    public virtual bool TriggerImmediately => false; //todo: test this and see exactly what it does
+    public virtual bool PreventFallThrough => false;
+
+    /// <summary>
+    /// Custom actions that are triggered when the boss timer triggers, look at ingame boss bloons for valid ids
+    /// </summary>
+    public virtual IEnumerable<string> CustomTimerActionIDs => Array.Empty<string>();
+
+    /// <summary>
+    /// Determines if the timer triggers when the boss is spawned (only applicable to existing, ingame actions)
+    /// </summary>
+    public virtual bool TriggerImmediately => false;
 
     /// <summary>
     /// Interval between ticks for the boss' timer, if null, the timer will not be created

@@ -60,90 +60,90 @@ public abstract class ModBoss : ModBloon
     {
     }
 
-    internal void OnSpawnCallback(Bloon bloon)
+    internal void OnSpawnCallback(Bloon boss)
     {
-        OnSpawn(bloon);
-        CurrentTier.OnSpawn(bloon);
+        OnSpawn(boss);
+        CurrentTier.OnSpawn(boss);
     }
 
-    internal void OnLeakCallback(Bloon bloon)
+    internal void OnLeakCallback(Bloon boss)
     {
-        OnLeak(bloon);
-        CurrentTier.OnLeak(bloon);
+        OnLeak(boss);
+        CurrentTier.OnLeak(boss);
     }
 
-    internal void OnPopCallback(Bloon bloon)
+    internal void OnPopCallback(Bloon boss)
     {
-        OnPop(bloon);
-        CurrentTier.OnPop(bloon);
+        OnPop(boss);
+        CurrentTier.OnPop(boss);
     }
 
-    internal void OnDamageCallback(Bloon bloon, float totalAmount)
+    internal void OnDamageCallback(Bloon boss, float totalAmount)
     {
-        OnDamage(bloon, totalAmount);
-        CurrentTier.OnDamage(bloon, totalAmount);
+        OnDamage(boss, totalAmount);
+        CurrentTier.OnDamage(boss, totalAmount);
     }
 
-    internal void SkullReachedCallback(Bloon bloon, int skullNumber)
+    internal void SkullReachedCallback(Bloon boss, int skullNumber)
     {
-        SkullReached(bloon, skullNumber);
-        CurrentTier.SkullReached(bloon, skullNumber);
+        SkullReached(boss, skullNumber);
+        CurrentTier.SkullReached(boss, skullNumber);
     }
 
-    internal void TimerTickCallback(Bloon bloon)
+    internal void TimerTickCallback(Bloon boss)
     {
-        TimerTick(bloon);
-        CurrentTier.TimerTick(bloon);
+        TimerTick(boss);
+        CurrentTier.TimerTick(boss);
     }
 
     /// <summary>
     /// Called when the boss is spawned, will be called before the current tier's <see cref="ModBossTier.OnSpawn"/>
     /// </summary>
-    /// <remarks>Called when loading saves and continuing from checkpoints as well</remarks> //because bloon gets reset
-    /// <param name="bloon"></param>
-    public virtual void OnSpawn(Bloon bloon)
+    /// <remarks>Called when loading saves and continuing from checkpoints as well</remarks>
+    /// <param name="boss"></param>
+    public virtual void OnSpawn(Bloon boss)
     {
     }
 
     /// <summary>
     /// Called when the boss is leaked, will be called before the current tier's <see cref="ModBossTier.OnLeak"/>
     /// </summary>
-    /// <param name="bloon"></param>
-    public virtual void OnLeak(Bloon bloon)
+    /// <param name="boss"></param>
+    public virtual void OnLeak(Bloon boss)
     {
     }
 
     /// <summary>
     /// Called when the boss is popped, will be called before the current tier's <see cref="ModBossTier.OnPop"/>
     /// </summary>
-    /// <param name="bloon"></param>
-    public virtual void OnPop(Bloon bloon)
+    /// <param name="boss"></param>
+    public virtual void OnPop(Bloon boss)
     {
     }
 
     /// <summary>
     /// Called when the boss takes damage, will be called before the current tier's <see cref="ModBossTier.OnDamage"/>
     /// </summary>
-    /// <param name="bloon"></param>
+    /// <param name="boss"></param>
     /// <param name="totalAmount"></param>
-    public virtual void OnDamage(Bloon bloon, float totalAmount)
+    public virtual void OnDamage(Bloon boss, float totalAmount)
     {
     }
 
     /// <summary>
     /// Called when the boss reaches a skull, will be called before the current tier's <see cref="ModBossTier.SkullReached"/>
     /// </summary>
-    /// <param name="bloon"></param>
+    /// <param name="boss"></param>
     /// <param name="skullNumber"></param>
-    public virtual void SkullReached(Bloon bloon, int skullNumber)
+    public virtual void SkullReached(Bloon boss, int skullNumber)
     {
     }
 
     /// <summary>
     /// Called when the boss timer triggers, only called if <see cref="ModBossTier.Interval"/> is not null. Will be called before the current tier's <see cref="ModBossTier.TimerTick"/>
     /// </summary>
-    /// <param name="bloon"></param>
-    public virtual void TimerTick(Bloon bloon)
+    /// <param name="boss"></param>
+    public virtual void TimerTick(Bloon boss)
     {
     }
 
