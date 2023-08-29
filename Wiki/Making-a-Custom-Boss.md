@@ -73,9 +73,9 @@ For every tier you want to add, you need to create a class that extends `ModBoss
 
 `SkullPositions`: The positions of the skulls on the boss's health bar, as a float from 0 to 1, if not set, the skulls will be evenly spaced out.
 
-`PreventFallThrough`: Determines if the boss's health should go down while it's skull effect is active.
+`PreventFallThrough`: Determines if the boss's health should go down while it's skull effect is active (only applicable to existing, ingame actions).
 
-`TriggerImmediately`: Determines if the timer starts immediately
+`TriggerImmediately`: Determines if the timer triggers when the boss is spawned (only applicable to existing, ingame actions)
 
 # Example
 

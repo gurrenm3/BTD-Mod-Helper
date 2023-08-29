@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppInterop.Runtime.Attributes;
@@ -19,8 +18,9 @@ internal class RoundSetButtonDescription : EventTrigger
 
     public ModHelperScrollPanel parent;
     public ModHelperPanel descriptionPanel;
-    public string description;
+    public string description = "";
     private const float delay = .2f;
+
     private bool shouldShow = true;
 
     private void Start()
