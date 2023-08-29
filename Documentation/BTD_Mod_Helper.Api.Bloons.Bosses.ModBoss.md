@@ -40,24 +40,11 @@ public virtual SpriteReference AlivePortraitReference { get; }
 #### Property Value
 [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
 
-<a name='BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.AmbientMapFX'></a>
-
-## ModBoss.AmbientMapFX Property
-
-The object that will be placed on the boss' spawn point on the track
-
-```csharp
-public virtual string AmbientMapFX { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.AmbientMapFXReference'></a>
 
 ## ModBoss.AmbientMapFXReference Property
 
-If you're not going to use a custom display for your TrackFX, use this to directly control its SpriteReference
+If you're not going to use a [AmbientMapFXDisplay](BTD_Mod_Helper.Api.Display.AmbientMapFXDisplay.md 'BTD_Mod_Helper.Api.Display.AmbientMapFXDisplay') for your AmbientMapFX, use this to directly control its PrefabReference
 
 ```csharp
 public virtual PrefabReference AmbientMapFXReference { get; }
@@ -226,24 +213,11 @@ public sealed override string RegrowsTo { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.TrackFX'></a>
-
-## ModBoss.TrackFX Property
-
-The object that will be placed on the boss' spawn point on the track
-
-```csharp
-public virtual string TrackFX { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.TrackFXReference'></a>
 
 ## ModBoss.TrackFXReference Property
 
-If you're not going to use a custom display for your TrackFX, use this to directly control its SpriteReference
+If you're not going to use a [TrackFXDisplay](BTD_Mod_Helper.Api.Display.TrackFXDisplay.md 'BTD_Mod_Helper.Api.Display.TrackFXDisplay') for your TrackFX, use this to directly control its PrefabReference
 
 ```csharp
 public virtual PrefabReference TrackFXReference { get; }

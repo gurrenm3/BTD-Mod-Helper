@@ -193,24 +193,17 @@ public abstract class ModBoss : ModBloon
     /// </summary>
     public virtual string BossMusicName => DisplayName + "-Music";
 
-    //todo: figure out exactly how these will be specified, since they use MapLoader.AddAsset, maybe a new display class?
-    /// <summary>
-    /// The object that will be placed on the boss' spawn point on the track
-    /// </summary>
-    public virtual string TrackFX => "";
+    internal string TrackFX {get; set; }
 
     /// <summary>
-    /// If you're not going to use a custom display for your TrackFX, use this to directly control its SpriteReference
+    /// If you're not going to use a <see cref="TrackFXDisplay"/> for your TrackFX, use this to directly control its PrefabReference
     /// </summary>
     public virtual PrefabReference TrackFXReference => CreatePrefabReference(TrackFX);
 
-    /// <summary>
-    /// The object that will be placed on the boss' spawn point on the track
-    /// </summary>
-    public virtual string AmbientMapFX => "";
+    internal string AmbientMapFX { get; set; }
 
     /// <summary>
-    /// If you're not going to use a custom display for your TrackFX, use this to directly control its SpriteReference
+    /// If you're not going to use a <see cref="AmbientMapFXDisplay"/> for your AmbientMapFX, use this to directly control its PrefabReference
     /// </summary>
     public virtual PrefabReference AmbientMapFXReference => CreatePrefabReference(AmbientMapFX);
 

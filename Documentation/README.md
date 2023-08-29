@@ -118,6 +118,8 @@
 
 | Classes | |
 | :--- | :--- |
+| [AmbientMapFXDisplay](BTD_Mod_Helper.Api.Display.AmbientMapFXDisplay.md 'BTD_Mod_Helper.Api.Display.AmbientMapFXDisplay') | The display for the [AmbientMapFXReference](BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.md#BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.AmbientMapFXReference 'BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.AmbientMapFXReference') for a boss |
+| [AmbientMapFXDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.AmbientMapFXDisplay_T_.md 'BTD_Mod_Helper.Api.Display.AmbientMapFXDisplay<T>') | A convenient generic class for applying a AmbientMapFXDisplay to a ModBoss |
 | [ModBloonCustomDisplay](BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay') | A ModCustomDisplay that will automatically apply to a ModBloon |
 | [ModBloonCustomDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay<T>') | A ModCustomDisplay that will automatically apply to a ModBloon |
 | [ModBloonDisplay](BTD_Mod_Helper.Api.Display.ModBloonDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay') | A ModDisplay that will automatically apply to a ModBloon |
@@ -134,6 +136,8 @@
 | [ModTowerCustomDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay<T>') | A convenient generic class for applying a ModTowerCustomDisplay to a ModTower |
 | [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay') | A ModDisplay that will automatically apply to a ModTower for specific tiers |
 | [ModTowerDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModTowerDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay<T>') | A convenient generic class for applying a ModTowerDisplay to a ModTower |
+| [TrackFXDisplay](BTD_Mod_Helper.Api.Display.TrackFXDisplay.md 'BTD_Mod_Helper.Api.Display.TrackFXDisplay') | The display for the [TrackFXReference](BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.md#BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.TrackFXReference 'BTD_Mod_Helper.Api.Bloons.Bosses.ModBoss.TrackFXReference') for a boss |
+| [TrackFXDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.TrackFXDisplay_T_.md 'BTD_Mod_Helper.Api.Display.TrackFXDisplay<T>') | A convenient generic class for applying a TrackFXDisplay to a ModBoss |
 
 <a name='BTD_Mod_Helper.Api.Enums'></a>
 
