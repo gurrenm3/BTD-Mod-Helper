@@ -12,10 +12,12 @@ namespace BTD_Mod_Helper.Patches.Resources;
 [HarmonyPatch(typeof(InGame), nameof(InGame.CheckGameType))]
 internal static class InGame_CheckGameType
 {
+    private static bool patched;
     [HarmonyPrefix]
     private static void Prefix(InGame __instance)
     {
-        if (__instance.GameType == GameType.BossBloon && ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
+        patched = true;
+        if (__instance.GameType == GameType.BossBloon &&ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
             if (AmbientMapFXDisplay.Cache.TryGetValue(boss.AmbientMapFXReference.guidRef ?? "", out var ambientMapFXDisplay))
             {
@@ -26,14 +28,16 @@ internal static class InGame_CheckGameType
                         operation =>
                         {
                             var request = operation.Cast<AssetBundleRequest>();
-                            var gameObject = Object.Instantiate(request.GetResult().Cast<GameObject>(), Game.instance.GetMapLoader().currentMap.transform, false);
+                            var gameObject = Object.Instantiate(request.GetResult().Cast<GameObject>(),
+                                Game.instance.GetMapLoader().currentMap.transform, false);
                             gameObject.transform.SetPositionAndRotation(Vector3.zero,
                                 Quaternion.identity);
                         }));
                 }
                 else
                 {
-                    var gameObject = Object.Instantiate(assetBundle.LoadAsset(ambientMapFXDisplay.PrefabName).Cast<GameObject>(),
+                    var gameObject = Object.Instantiate(
+                        assetBundle.LoadAsset(ambientMapFXDisplay.PrefabName).Cast<GameObject>(),
                         Game.instance.GetMapLoader().GetCurrentMap().transform, false);
                     gameObject.transform.SetPositionAndRotation(__instance.bridge.GetBossSpawnLocation(),
                         Quaternion.identity);
@@ -49,19 +53,31 @@ internal static class InGame_CheckGameType
                         operation =>
                         {
                             var request = operation.Cast<AssetBundleRequest>();
-                            var gameObject = Object.Instantiate(request.GetResult().Cast<GameObject>(), Game.instance.GetMapLoader().currentMap.transform, false);
+                            var gameObject = Object.Instantiate(request.GetResult().Cast<GameObject>(),
+                                Game.instance.GetMapLoader().currentMap.transform, false);
                             gameObject.transform.SetPositionAndRotation(InGame.instance.bridge.GetBossSpawnLocation(),
                                 Quaternion.identity);
                         }));
                 }
                 else
                 {
-                    var gameObject = Object.Instantiate(assetBundle.LoadAsset(trackFXDisplay.PrefabName).Cast<GameObject>(), Game.instance.GetMapLoader().GetCurrentMap().transform, false);
+                    var gameObject = Object.Instantiate(assetBundle.LoadAsset(trackFXDisplay.PrefabName).Cast<GameObject>(),
+                        Game.instance.GetMapLoader().GetCurrentMap().transform, false);
                     gameObject.transform.SetPositionAndRotation(__instance.bridge.GetBossSpawnLocation(),
                         Quaternion.identity);
                 }
             }
         }
+    }
 
+    [HarmonyFinalizer]
+    private static Exception Finalizer(Exception __exception)
+    {
+        if (patched && __exception.Message.Contains("MapLoader.AddAsset"))
+        {
+            patched = false;
+            return null;
+        }
+        return __exception;
     }
 }
