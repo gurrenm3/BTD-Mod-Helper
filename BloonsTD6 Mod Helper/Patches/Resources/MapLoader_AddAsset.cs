@@ -16,11 +16,12 @@ internal static class InGame_CheckGameType
     [HarmonyPrefix]
     private static void Prefix(InGame __instance)
     {
-        patched = true;
+        patched = false;
         if (__instance.GameType == GameType.BossBloon &&ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
             if (AmbientMapFXDisplay.Cache.TryGetValue(boss.AmbientMapFXReference.guidRef ?? "", out var ambientMapFXDisplay))
             {
+                patched = true;
                 var assetBundle = ModContent.GetBundle(ambientMapFXDisplay.mod, ambientMapFXDisplay.AssetBundleName);
                 if (ambientMapFXDisplay.LoadAsync)
                 {
@@ -45,7 +46,7 @@ internal static class InGame_CheckGameType
             }
             if (TrackFXDisplay.Cache.TryGetValue(boss.TrackFXReference.guidRef ?? "", out var trackFXDisplay))
             {
-                ModHelper.Msg("trackFXDisplay: " + trackFXDisplay.PrefabName);
+                patched = true;
                 var assetBundle = ModContent.GetBundle(trackFXDisplay.mod, trackFXDisplay.AssetBundleName);
                 if (trackFXDisplay.LoadAsync)
                 {
