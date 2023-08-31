@@ -396,12 +396,17 @@
     "category": "Base",
     "colour": 0,
     "hat": "cap",
-    "message0": "%1Custom Tower",
+    "message0": "%1Custom Tower%2",
     "args0": [
       {
         "type": "field_hidden",
         "name": "$type",
         "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.ModJsonTowerModel, BloonsTD6 Mod Helper"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": "Id"
       }
     ],
     "message1": "Display Name %1",
@@ -745,9 +750,12 @@
         "value": "BTD_Mod_Helper.Api.Internal.JsonTowers.ModelChanges.IfApplied, BloonsTD6 Mod Helper"
       },
       {
-        "type": "field_input",
+        "type": "field_input_dropdown",
         "name": "upgrade",
-        "text": "Upgrade"
+        "text": "Upgrade",
+        "options": [
+          ["CustomUpgrade", "name"]
+        ]
       }
     ],
     "message1": "%1",
@@ -769,7 +777,7 @@
     "category": "Base",
     "subcategory": "Model Changes",
     "colour": 280,
-    "message0": "%1 Delete %2",
+    "message0": "%1 Delete from list %2",
     "args0": [
       {
         "type": "field_hidden",

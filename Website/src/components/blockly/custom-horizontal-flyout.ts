@@ -1,5 +1,7 @@
-import Blockly, { HorizontalFlyout } from "blockly";
+import Blockly, { HorizontalFlyout, WorkspaceSvg } from "blockly";
 import { FlyoutItem } from "blockly/core/flyout_base";
+import { FlyoutButton } from "blockly/core";
+import { CustomFlyoutButton } from "./custom-flyout-button";
 
 export class CustomHorizontalFlyout extends HorizontalFlyout {
   constructor(workspaceOptions: Blockly.Options) {
@@ -14,6 +16,8 @@ export class CustomHorizontalFlyout extends HorizontalFlyout {
         block?.["postInit"]?.();
       }
     );
+
+    super["createButton"] = this.createCustomButton;
   }
 
   getFlyoutScale(): number {
@@ -45,5 +49,17 @@ export class CustomHorizontalFlyout extends HorizontalFlyout {
           svg.setAttribute("style", `fill: ${style.colourPrimary};`);
       }
     }
+  }
+
+  private createCustomButton(
+    btnInfo: Blockly.utils.toolbox.ButtonOrLabelInfo,
+    isLabel: boolean
+  ): FlyoutButton {
+    return new CustomFlyoutButton(
+      this.workspace_,
+      this.targetWorkspace as WorkspaceSvg,
+      btnInfo,
+      isLabel
+    );
   }
 }

@@ -78,10 +78,14 @@ class CustomRenderInfo extends Blockly.geras.RenderInfo {
     // rows with no inputs/statements still have full width
     for (let i = 0, row; (row = this.rows[i]); i++) {
       if (
-        row.hasDummyInput &&
-        !row.hasStatement &&
-        !row.hasInlineInput &&
-        !row.hasExternalInput
+        (row.hasDummyInput &&
+          !row.hasStatement &&
+          !row.hasInlineInput &&
+          !row.hasExternalInput) ||
+        (Types.isBottomRow(row) && this.rows[i - 2].hasStatement) ||
+        (this.rows[i + 1] &&
+          Types.isBottomRow(this.rows[i + 1]) &&
+          this.rows[i - 1].hasStatement)
       ) {
         const currentWidth = row.width;
         const desiredWidth = this.getDesiredRowWidth_(row);
