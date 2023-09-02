@@ -44,6 +44,13 @@ public static class Il2CppSystemObjectExt
         castObject = instance?.TryCast<T>();
         return castObject != null;
     }
+    
+    /// <inheritdoc cref="IsType{T}(Il2CppSystem.Object,out T)" />
+    public static bool Is<T>(this T instance, out T castObject) where T : Il2CppObjectBase
+    {
+        castObject = instance?.TryCast<T>();
+        return castObject != null;
+    }
 
     /// <summary>
     /// Gets the exact il2cpp type name of an object
