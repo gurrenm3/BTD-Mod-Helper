@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Bloons.Bosses;
+using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data.Boss;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -56,22 +58,30 @@ internal static class ContinueGamePanel_ContinueClicked
                     checkpointRounds.Add(round - 1);
                 }
                 inGameData.checkpointRounds = checkpointRounds.ToArray();
-                return;
             }
+            else
+            {
+                inGameData.SetupBoss(ModBoss.EventId, bossType, isElite, false,
+                    BossGameData.DefaultSpawnRounds, new DailyChallengeModel
+                    {
+                        difficulty = map.mapDifficulty,
+                        map = map.mapName,
+                        mode = map.modeName,
+                        chalType = ChallengeType.BossBloon,
+                        eventID = ModBoss.EventId,
+                        endTimeUTC = Il2CppSystem.DateTime.MaxValue,
+                        startTimeUTC = Il2CppSystem.DateTime.MinValue,
+                        hasDailyChallengeStats = false,
+                    }, LeaderboardScoringType.GameTime);
+                inGameData.checkpointRounds = BossGameData.DefaultCheckpointRounds
+                    .Cast<Il2CppSystem.Collections.Generic.IEnumerable<int>>().ToArray().ToArray();
+            }
+        }
 
-            inGameData.SetupBoss(ModBoss.EventId, bossType, isElite, false,
-                BossGameData.DefaultSpawnRounds, new DailyChallengeModel
-                {
-                    difficulty = map.mapDifficulty,
-                    map = map.mapName,
-                    mode = map.modeName,
-                    chalType = ChallengeType.BossBloon,
-                    eventID = ModBoss.EventId,
-                    endTimeUTC = Il2CppSystem.DateTime.MaxValue,
-                    startTimeUTC = Il2CppSystem.DateTime.MinValue,
-                    hasDailyChallengeStats = false,
-                }, LeaderboardScoringType.GameTime);
-            inGameData.checkpointRounds = BossGameData.DefaultCheckpointRounds.Cast<Il2CppSystem.Collections.Generic.IEnumerable<int>>().ToArray().ToArray();
+        if (map != null && map.metaData.ContainsKey("RoundSet") && ModRoundSet.Cache.TryGetValue(map.metaData["RoundSet"], out var roundSet))
+        {
+            RoundSetChanger.RoundSetOverride = map.metaData["RoundSet"];
+            RoundSetChanger.button.Image.SetSprite(roundSet.IconReference.guidRef);
         }
     }
 }

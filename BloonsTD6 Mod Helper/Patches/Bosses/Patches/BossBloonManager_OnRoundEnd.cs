@@ -26,7 +26,6 @@ internal static class BossBloonManager_OnRoundEnd
         {
             __instance.checkForVictory = false;
             __instance.sim.gameLost = false;
-
             __instance.sim.OnLost = __state;
         }
     }

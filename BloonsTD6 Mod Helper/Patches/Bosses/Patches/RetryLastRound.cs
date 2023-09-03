@@ -25,14 +25,14 @@ internal static class RetryLastRound
             return;
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
-            boss.CurrentTier = boss.tiers.First(x => x.Tier == InGame.instance.GetMap().spawner.bossBloonManager.CurrentBossTier);
+            boss.CurrentTier = boss.tiers.Find(x => x.Tier == InGame.instance.GetMap().spawner.bossBloonManager.CurrentBossTier);
         }
     }
 
     [HarmonyPostfix]
     private static void Postfix()
     {
-        if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
+        if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss) && boss.CurrentTier != null)
         {
             boss.OnSpawnCallback(InGame.instance.GetMap().spawner.bossBloonManager.currentBoss);
         }
