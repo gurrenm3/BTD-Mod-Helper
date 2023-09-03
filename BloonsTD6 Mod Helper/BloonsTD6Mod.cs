@@ -793,4 +793,28 @@ public abstract class BloonsTD6Mod : BloonsMod
     }
 
     #endregion
+
+
+    /// <summary>
+    /// Called when you load a save file and the map's save data get loaded for the map
+    /// <br />
+    /// Use saveData.metaData to load custom information
+    /// <br />
+    /// Equivalent to a HarmonyPostFix on Map.SetSavedData
+    /// </summary>
+    public virtual void OnMapDataLoaded(MapSaveDataModel saveData)
+    {
+    }
+
+    /// <summary>
+    /// Called at the end of each round when the map's data is saved
+    /// <br />
+    /// Use saveData.metaData to save custom information
+    /// <br />
+    /// Equivalent to a HarmonyPostFix on Map.GetSavedData
+    /// </summary>
+    public virtual void OnMapDataSaved(MapSaveDataModel saveData)
+    {
+    }
+
 }

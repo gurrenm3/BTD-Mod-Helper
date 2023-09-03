@@ -9,9 +9,11 @@ using Il2CppAssets.Scripts.Data.Knowledge;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Map;
+using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
+using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppInterop.Runtime;
@@ -86,9 +88,7 @@ internal static class GameModel_CreateModded
             result.SetRoundSet(GameData.Instance.RoundSetByName(RoundSetChanger.RoundSetOverride));
         }
 
-
-        foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>()
-                     .Where(content => !content.AffectBaseGameModel && content.ShouldApply))
+        foreach (var modVanillaContent in ModContent.GetContent<ModVanillaContent>().Where(content => !content.AffectBaseGameModel && content.ShouldApply))
         {
             foreach (var affectedTower in modVanillaContent.GetAffectedModels(result))
             {

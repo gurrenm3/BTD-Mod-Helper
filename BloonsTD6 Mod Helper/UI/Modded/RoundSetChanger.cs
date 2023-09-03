@@ -40,7 +40,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
     /// <summary>
     /// The round set override currently chosen, or null
     /// </summary>
-    public static string RoundSetOverride { get; private set; }
+    public static string RoundSetOverride { get; internal set; }
 
     private static void CreatePanel(GameObject screen)
     {
