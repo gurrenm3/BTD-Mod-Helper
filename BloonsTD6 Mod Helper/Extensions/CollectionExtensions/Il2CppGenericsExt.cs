@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for generic il2cpp lists
 /// </summary>
-public static partial class Il2CppGenericsExt
+public static class Il2CppGenericsExt
 {
     /// <summary>
     /// Return as System.List
@@ -32,12 +32,12 @@ public static partial class Il2CppGenericsExt
     /// <returns></returns>
     public static T[] ToArray<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList)
     {
-        var newArray = new T[] { };
+        var newArray = Array.Empty<T>();
 
         foreach (var item in il2CppList)
         {
             Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item;
+            newArray[^1] = item;
         }
 
         return newArray;

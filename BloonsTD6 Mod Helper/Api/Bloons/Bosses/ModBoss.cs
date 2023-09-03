@@ -8,11 +8,9 @@ using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Data.Boss;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
-using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Bloons.Bosses;
@@ -208,6 +206,62 @@ public abstract class ModBoss : ModBloon
     public virtual PrefabReference AmbientMapFXReference => CreatePrefabReference(AmbientMapFX);
 
     /// <summary>
+    /// Custom actions that are triggered when the boss reaches a skull, look at ingame boss bloons for valid ids
+    /// </summary>
+    /// <remarks>
+    /// Will be completely overriden by the current tier's <see cref="ModBossTier.CustomSkullActionIDs"/>, if it is set
+    /// </remarks>
+    public virtual IEnumerable<string> CustomSkullActionIDs => Array.Empty<string>();
+
+    /// <summary>
+    /// Amount of skulls the boss has
+    /// </summary>
+    /// <remarks>
+    /// Will be completely overriden by the current tier's <see cref="ModBossTier.Skulls"/>, if it is set
+    /// </remarks>
+    public virtual int Skulls => 0;
+
+    /// <summary>
+    /// Positions of the skulls as a float from 0 to 1
+    /// </summary>
+    /// <remarks>
+    /// If not specified, the skulls' position will be placed evenly (3 skulls => 0.75, 0.5, 0.25)
+    /// </remarks>
+    public virtual float[] SkullPositions { get; set; }
+
+    /// <summary>
+    /// Determines if the boss's health should go down while it's skull effect is active (only applicable to existing, ingame actions)
+    /// </summary>
+    /// <remarks>
+    /// Will be completely overriden by the current tier's <see cref="ModBossTier.PreventFallThrough"/>, if it is set
+    /// </remarks>
+    public virtual bool PreventFallThrough => false;
+
+    /// <summary>
+    /// Custom actions that are triggered when the boss timer triggers, look at ingame boss bloons for valid ids
+    /// </summary>
+    /// <remarks>
+    /// Will be completely overriden by the current tier's <see cref="ModBossTier.CustomTimerActionIDs"/>, if it is set
+    /// </remarks>
+    public virtual IEnumerable<string> CustomTimerActionIDs => Array.Empty<string>();
+
+    /// <summary>
+    /// Determines if the timer triggers when the boss is spawned (only applicable to existing, ingame actions)
+    /// </summary>
+    /// <remarks>
+    /// Will be completely overriden by the current tier's <see cref="ModBossTier.TriggerImmediately"/>, if it is set
+    /// </remarks>
+    public virtual bool TriggerImmediately => false;
+
+    /// <summary>
+    /// Interval between ticks for the boss' timer, if null, the timer will not be created
+    /// </summary>
+    /// <remarks>
+    /// Will be completely overriden by the current tier's <see cref="ModBossTier.Interval"/>, if it is set
+    /// </remarks>
+    public virtual float? Interval => null;
+
+    /// <summary>
     /// The rounds the boss should spawn on
     /// </summary>
     internal IEnumerable<int> SpawnRounds => tiers.Select(x => x.Round - 1);
@@ -278,8 +332,6 @@ public abstract class ModBoss : ModBloon
             Game.instance.model.bloonsByName[tierBloonModel.name] = tierBloonModel;
             BloonModelCache[tierBloonModel.name] = tierBloonModel;
         }
-
-
 
         var roundSet = new ModBossRoundSet(BossType, false);
         ModHelper.GetMod<MelonMain>().AddContent(roundSet);

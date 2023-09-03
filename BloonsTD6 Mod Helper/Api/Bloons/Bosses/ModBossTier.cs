@@ -14,23 +14,18 @@ public abstract class ModBossTier : ModContent
     internal BloonModel bloonModel { get; set; }
 
     /// <inheritdoc />
-    protected override float RegistrationPriority => 5; // Bosses should register after tiers
+    protected override float RegistrationPriority => 5;
 
     /// <summary>
-    /// Tier of the boss on this round, its automatically set based on the round
+    /// Tier of the boss, its automatically set based on the round
     /// </summary>
-    internal int Tier => Boss.tiersByRound.IndexOfValue(this)+1;
-    
-    /// <summary>
-    /// Amount of skulls the boss has
-    /// </summary>
-    public abstract int Skulls { get; }
+    public int Tier => Boss.tiersByRound.IndexOfValue(this) + 1;
 
     /// <summary>
     /// The round this tier appears on
     /// </summary>
     public abstract int Round { get; }
-    
+
     /// <summary>
     /// Modifies the base boss bloonModel
     /// </summary>
@@ -41,25 +36,31 @@ public abstract class ModBossTier : ModContent
     /// The boss this tier belongs to
     /// </summary>
     public abstract ModBoss Boss { get; }
-    
+
     /// <summary>
     /// Called when the boss is spawned
     /// </summary>
     /// <remarks>Called when loading saves and continuing from checkpoints as well</remarks>
     /// <param name="boss"></param>
-    public virtual void OnSpawn(Bloon boss) { }
+    public virtual void OnSpawn(Bloon boss)
+    {
+    }
 
     /// <summary>
     /// Called when the boss is leaked
     /// </summary>
     /// <param name="boss"></param>
-    public virtual void OnLeak(Bloon boss) { }
+    public virtual void OnLeak(Bloon boss)
+    {
+    }
 
     /// <summary>
     /// Called when the boss is popped
     /// </summary>
     /// <param name="boss"></param>
-    public virtual void OnPop(Bloon boss) { }
+    public virtual void OnPop(Bloon boss)
+    {
+    }
 
     /// <summary>
     /// Called when the boss takes damage
@@ -78,7 +79,7 @@ public abstract class ModBossTier : ModContent
     public virtual void SkullReached(Bloon boss, int skullNumber)
     {
     }
-    
+
     /// <summary>
     /// Called when the boss timer triggers, only called if <see cref="Interval"/> is not null
     /// </summary>
@@ -86,6 +87,11 @@ public abstract class ModBossTier : ModContent
     public virtual void TimerTick(Bloon boss)
     {
     }
+
+    /// <summary>
+    /// Amount of skulls the boss has
+    /// </summary>
+    public virtual int Skulls => 0;
 
     /// <summary>
     /// Positions of the skulls as a float from 0 to 1
@@ -97,20 +103,32 @@ public abstract class ModBossTier : ModContent
 
     internal void SetupSkulls(BloonModel bossModel)
     {
-        if (SkullPositions == null)
+        if (SkullPositions == null && Skulls > 0)
         {
             var skullsCount = Skulls;
             var pV = new List<float>();
-            if (skullsCount > 0)
+
+            for (int i = 1; i <= skullsCount; i++)
             {
-                for (int i = 1; i <= skullsCount; i++)
-                {
-                    pV.Add(1f - 1f / (skullsCount + 1) * i);
-                }
+                pV.Add(1f - 1f / (skullsCount + 1) * i);
             }
+
             SkullPositions = pV.ToArray();
+            bossModel.AddBehavior(new HealthPercentTriggerModel(Name + "-SkullEffect", false, SkullPositions,
+                CustomSkullActionIDs.AddItem(Name + "-SkullEffect").ToArray(), PreventFallThrough));
+            return;
         }
 
+        var bossSkullsCount = Boss.Skulls;
+        var bosspV = new List<float>();
+        if (bossSkullsCount > 0)
+        {
+            for (int i = 1; i <= bossSkullsCount; i++)
+            {
+                bosspV.Add(1f - 1f / (bossSkullsCount + 1) * i);
+            }
+        }
+        Boss.SkullPositions = SkullPositions = bosspV.ToArray();
         bossModel.AddBehavior(new HealthPercentTriggerModel(Name + "-SkullEffect", false, SkullPositions,
             CustomSkullActionIDs.AddItem(Name + "-SkullEffect").ToArray(), PreventFallThrough));
     }
@@ -119,7 +137,13 @@ public abstract class ModBossTier : ModContent
     {
         if (Interval != null)
         {
-            bossModel.AddBehavior(new TimeTriggerModel(Name + "-TimerTick", Interval.Value, TriggerImmediately, CustomTimerActionIDs.AddItem(Name + "-TimerTick").ToArray()));
+            bossModel.AddBehavior(new TimeTriggerModel(Name + "-TimerTick", Interval.Value, TriggerImmediately,
+                CustomTimerActionIDs.AddItem(Name + "-TimerTick").ToArray()));
+        }
+        else if (Boss.Interval != null)
+        {
+            bossModel.AddBehavior(new TimeTriggerModel(Boss.Name + "-TimerTick", Boss.Interval.Value,
+                Boss.TriggerImmediately, Boss.CustomTimerActionIDs.AddItem(Name + "-TimerTick").ToArray()));
         }
     }
 
@@ -155,6 +179,7 @@ public abstract class ModBossTier : ModContent
         Boss.tiersByRound.Add(Round, this);
     }
 }
+
 /// <summary>
 /// A convenient generic class for specifying the ModBoss that this ModBossTier uses
 /// </summary>

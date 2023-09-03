@@ -17,8 +17,7 @@ internal static class UI_LoadGame
 
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
-            var bloon = mapSaveData.bloons.FirstOrDefault(bloonSaveDataModel =>
-                boss.tiers.Exists(modBossTier => modBossTier.bloonModel.id == bloonSaveDataModel.modelId));
+            var bloon = mapSaveData.bloons.FirstOrDefault(bloonSaveDataModel => boss.tiers.Exists(modBossTier => modBossTier.bloonModel.id == bloonSaveDataModel.modelId));
             if (bloon is null)
             {
                 return;

@@ -50,7 +50,7 @@ internal class BossBloonManager_Init
     private static MusicItem GetBossMusicItem(ModBoss boss)
     {
         var existingMusicItem = GameData.Instance.audioJukeBox.musicTrackData.Find(new Func<MusicItem, bool>(x => x.id == boss.BossMusic.GetName()));
-        if (existingMusicItem is null && !existingMusicItem)
+        if (existingMusicItem is null)
         {
             var musicItem = ScriptableObject.CreateInstance<MusicItem>();
 

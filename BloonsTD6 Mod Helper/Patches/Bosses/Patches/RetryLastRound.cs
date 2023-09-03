@@ -18,14 +18,22 @@ internal static class RetryLastRound
             .__c__DisplayClass12_0._ContinueFromCheckpointClicked_b__0));
     }
 
-    [HarmonyPostfix]
-    private static void Postfix()
+    [HarmonyPrefix]
+    private static void Prefix()
     {
         if (InGameData.CurrentGame == null || InGameData.CurrentGame.gameEventId != ModBoss.EventId)
             return;
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
             boss.CurrentTier = boss.tiers.First(x => x.Tier == InGame.instance.GetMap().spawner.bossBloonManager.CurrentBossTier);
+        }
+    }
+
+    [HarmonyPostfix]
+    private static void Postfix()
+    {
+        if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
+        {
             boss.OnSpawnCallback(InGame.instance.GetMap().spawner.bossBloonManager.currentBoss);
         }
     }

@@ -259,11 +259,11 @@ public static class ArrayExt
     /// <returns></returns>
     public static T[] Duplicate<T>(this T[] array)
     {
-        var newArray = new T[] { };
+        var newArray = Array.Empty<T>();
         foreach (var item in array)
         {
             Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item;
+            newArray[^1] = item;
         }
 
         return newArray;
@@ -279,11 +279,11 @@ public static class ArrayExt
     public static TCast[] DuplicateAs<TSource, TCast>(this TSource[] array)
         where TSource : Object where TCast : Object
     {
-        var newArray = new TCast[] { };
+        var newArray = Array.Empty<TCast>();
         foreach (var item in array)
         {
             Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item.TryCast<TCast>();
+            newArray[^1] = item.TryCast<TCast>();
         }
 
         return newArray;
@@ -299,7 +299,7 @@ public static class ArrayExt
     public static T[] AddTo<T>(this T[] array, T objectToAdd) where T : Object
     {
         if (array is null)
-            array = new T[0];
+            array = Array.Empty<T>();
 
         var list = array.ToList();
         list.Add(objectToAdd);
@@ -316,7 +316,7 @@ public static class ArrayExt
     public static T[] AddTo<T>(this T[] array, T[] objectsToAdd) where T : Object
     {
         if (array is null)
-            array = new T[0];
+            array = Array.Empty<T>();
 
         var size = array.Length + objectsToAdd.Length;
         var newReference = new T[size];

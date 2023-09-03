@@ -47,12 +47,12 @@ public static partial class RootObjectLockList
     /// <returns></returns>
     public static T[] ToArray<T>(this RootObjectLockList<T> lockList) where T : RootObject
     {
-        var newArray = new T[] { };
+        var newArray = Array.Empty<T>();
         for (var i = 0; i < lockList.Count; i++)
         {
             var item = lockList.list.Get(i);
             Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item;
+            newArray[^1] = item;
         }
 
         return newArray;

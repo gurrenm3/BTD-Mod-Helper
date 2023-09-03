@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.Races;
+using Il2CppInterop.Runtime;
+using UnityEngine;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
@@ -13,8 +16,10 @@ internal static class BossUI_ShowBossAliveUI
     {
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
-            var star = __instance.stars[0].Duplicate();
-            var parent = __instance.stars[0].transform.parent;
+            var star = new GameObject("StarPrefab", Il2CppType.Of<RectTransform>(), Il2CppType.Of<Image>()).GetComponent<Image>();
+            star.SetSprite(ModContent.GetSpriteReference<MelonMain>("BossStar"));
+
+            var parent = __instance.bossHealthTxt.transform.parent.FindChild("StarsOn");
             __instance.stars.ForEach(x => x.gameObject.Destroy());
 
             List<Image> stars = new();
@@ -23,7 +28,7 @@ internal static class BossUI_ShowBossAliveUI
                 var newStar = star.Duplicate(parent);
                 var gameObject = newStar.gameObject;
                 gameObject.SetActive(true);
-                newStar.name = gameObject.name = "Star" + i;
+                newStar.name = gameObject.name = "Star" + (i + 1);
                 newStar.color = __instance.starColorOff;
                 stars.Add(newStar);
             }
@@ -34,6 +39,29 @@ internal static class BossUI_ShowBossAliveUI
             {
                 stars[i].color = __instance.starColorOn;
             }
+
+            for (var i = boss.highestTier; i < 5; i++) //matches ingame behavior
+            {
+                var newStar = star.Duplicate(parent);
+                var gameObject = newStar.gameObject;
+                gameObject.SetActive(true);
+                newStar.name = gameObject.name = "Star" + (i + 1);
+                newStar.color = __instance.starColorOff;
+                newStar.enabled = false;
+                stars.Add(newStar);
+            }
+
+            TaskScheduler.ScheduleTask(() =>
+            {
+                stars.ForEach(starImage =>
+                {
+                    var transform = starImage.transform;
+                    transform.localPosition = transform.localPosition with
+                    {
+                        y = 9.4806f
+                    };
+                });
+            });
 
             __instance.stars = stars.ToArray();
         }

@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for Il2CppReferenceArrays
 /// </summary>
-public static partial class Il2CppReferenceArrayExt
+public static class Il2CppReferenceArrayExt
 {
     /// <summary>
     /// Returns an empty <see cref="Il2CppReferenceArray{T}" />

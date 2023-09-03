@@ -9,12 +9,17 @@ internal static class BossBloonManager_BloonDestroyed
     [HarmonyPrefix]
     private static void Prefix(BossBloonManager __instance, ref ModBoss __state)
     {
-        if(InGameData.CurrentGame.gameEventId == ModBoss.EventId)
+        if (InGameData.CurrentGame.gameEventId == ModBoss.EventId)
             __instance.BossDefeatedEvent = null;
-        if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var modBossTier))
+
+        if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var modBoss))
         {
-            modBossTier.OnPopCallback(__instance.currentBoss);
-            __state = modBossTier;
+            modBoss.OnPopCallback(__instance.currentBoss);
+            __state = modBoss;
+            if (__instance.CurrentBossTier < modBoss.highestTier)
+            {
+                __instance.checkForVictory = false;
+            }
         }
     }
 

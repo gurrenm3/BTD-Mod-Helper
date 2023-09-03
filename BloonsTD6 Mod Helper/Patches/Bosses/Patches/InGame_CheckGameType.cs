@@ -7,21 +7,18 @@ using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using UnityEngine;
 using Object = UnityEngine.Object;
-namespace BTD_Mod_Helper.Patches.Resources;
+namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 [HarmonyPatch(typeof(InGame), nameof(InGame.CheckGameType))]
 internal static class InGame_CheckGameType
 {
-    private static bool patched;
     [HarmonyPrefix]
     private static void Prefix(InGame __instance)
     {
-        patched = false;
-        if (__instance.GameType == GameType.BossBloon &&ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
+        if (__instance.GameType == GameType.BossBloon && ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var boss))
         {
             if (AmbientMapFXDisplay.Cache.TryGetValue(boss.AmbientMapFXReference.guidRef ?? "", out var ambientMapFXDisplay))
             {
-                patched = true;
                 var assetBundle = ModContent.GetBundle(ambientMapFXDisplay.mod, ambientMapFXDisplay.AssetBundleName);
                 if (ambientMapFXDisplay.LoadAsync)
                 {
@@ -46,7 +43,6 @@ internal static class InGame_CheckGameType
             }
             if (TrackFXDisplay.Cache.TryGetValue(boss.TrackFXReference.guidRef ?? "", out var trackFXDisplay))
             {
-                patched = true;
                 var assetBundle = ModContent.GetBundle(trackFXDisplay.mod, trackFXDisplay.AssetBundleName);
                 if (trackFXDisplay.LoadAsync)
                 {
@@ -74,9 +70,8 @@ internal static class InGame_CheckGameType
     [HarmonyFinalizer]
     private static Exception Finalizer(Exception __exception)
     {
-        if (patched && __exception.Message.Contains("MapLoader.AddAsset"))
+        if (__exception.Message.Contains("MapLoader.AddAsset") && __exception.Message.Contains("ResourceLoader.InstantiateAsync") && __exception.Message.Contains("System.NullReferenceException: Object reference not set to an instance of an object."))
         {
-            patched = false;
             return null;
         }
         return __exception;

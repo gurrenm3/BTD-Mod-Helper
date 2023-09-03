@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using BTD_Mod_Helper.Api.Bloons.Bosses;
 using Il2CppAssets.Scripts.Data.Boss;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppSystem.Linq;
+using UnityEngine;
 namespace BTD_Mod_Helper.Patches.Bosses.Patches;
 
 /// <summary>
@@ -30,17 +34,44 @@ internal static class ContinueGamePanel_ContinueClicked
                     {
                         difficulty = map.mapDifficulty,
                         map = map.mapName,
-                        mode = map.modeName
+                        mode = map.modeName,
+                        chalType = ChallengeType.BossBloon,
+                        eventID = ModBoss.EventId,
+                        endTimeUTC = Il2CppSystem.DateTime.MaxValue,
+                        startTimeUTC = Il2CppSystem.DateTime.MinValue,
+                        hasDailyChallengeStats = false,
                     }, LeaderboardScoringType.GameTime);
+                inGameData.bossData.spawnRounds = boss.SpawnRounds.ToArray();
+                List<int> checkpointRounds = new(boss.SpawnRounds.Count());
+                foreach (var round in boss.SpawnRounds)
+                {
+                    if (boss.SpawnRounds.First() == round)
+                    {
+                        var newRound = Mathf.FloorToInt((round) / 2f);
+                        if (newRound > 0)
+                        {
+                            checkpointRounds.Add(newRound);
+                        }
+                    }
+                    checkpointRounds.Add(round - 1);
+                }
+                inGameData.checkpointRounds = checkpointRounds.ToArray();
                 return;
             }
+
             inGameData.SetupBoss(ModBoss.EventId, bossType, isElite, false,
                 BossGameData.DefaultSpawnRounds, new DailyChallengeModel
                 {
                     difficulty = map.mapDifficulty,
                     map = map.mapName,
-                    mode = map.modeName
+                    mode = map.modeName,
+                    chalType = ChallengeType.BossBloon,
+                    eventID = ModBoss.EventId,
+                    endTimeUTC = Il2CppSystem.DateTime.MaxValue,
+                    startTimeUTC = Il2CppSystem.DateTime.MinValue,
+                    hasDailyChallengeStats = false,
                 }, LeaderboardScoringType.GameTime);
+            inGameData.checkpointRounds = BossGameData.DefaultCheckpointRounds.Cast<Il2CppSystem.Collections.Generic.IEnumerable<int>>().ToArray().ToArray();
         }
     }
 }

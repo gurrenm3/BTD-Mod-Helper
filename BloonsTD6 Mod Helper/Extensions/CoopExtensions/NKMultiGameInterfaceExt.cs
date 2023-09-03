@@ -69,7 +69,7 @@ public static class NKMultiGameInterfaceExt
     public static void SendMessage(this NKMultiGameInterface nkGI, String objectToSend, byte? peerId = null,
         string code = "")
     {
-        var message = MessageUtils.CreateMessage(objectToSend, code);
+        var message = MessageUtils.CreateMessageEx(objectToSend, code);
         if (peerId.HasValue)
             nkGI.SendToPeer(peerId.Value, message);
         else
@@ -93,20 +93,6 @@ public static class NKMultiGameInterfaceExt
     /// <param name="message">Message you want to read</param>
     public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Message message) =>
         MessageUtils.ReadMessage<T>(message.GetBytes());
-
-    /*/// <summary>
-    /// Used to read messages from BTD6 InGameChat Mod. If Message is a ChatMessage, will be converted to a Chat_Message object
-    /// </summary>
-    /// <param name="message"></param>
-    public static Chat_Message ReadChatMessage(this NKMultiGameInterface nkGI, Message message)
-    {
-        if (message.Code != Chat_Message.chatCoopCode)
-            return null;
-
-        string json = nkGI.ReadMessage<string>(message.bytes);
-        Chat_Message deserialized = Game.instance.GetJsonSerializer().DeserializeJson<Chat_Message>(json);
-        return deserialized;
-    }*/
 
     #region Backwards Binary Compatibility
 

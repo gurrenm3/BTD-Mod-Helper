@@ -10,7 +10,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extensions for non il2cpp Lists
 /// </summary>
-public static partial class ListExt
+public static class ListExt
 {
     /// <summary>
     /// Return as Il2CppSystem.List

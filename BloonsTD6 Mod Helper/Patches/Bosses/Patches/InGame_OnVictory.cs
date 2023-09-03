@@ -24,6 +24,8 @@ internal static class InGame_OnVictory
         if (InGameData.CurrentGame.gameEventId == ModBoss.EventId)
         {
             InGameData.CurrentGame.gameType = GameType.BossBloon;
+            foreach (var boss in ModBoss.Cache.Values)
+                boss.CurrentTier = null;
         }
     }
 }

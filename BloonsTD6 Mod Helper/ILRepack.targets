@@ -18,7 +18,7 @@
     <!--When in Debug mode, copy the libraries into UserLibs-->
     <Target Name="DebugCopyLibs" AfterTargets="Build" DependsOnTargets="Definitons" Condition="'$(Configuration)' == 'Debug'">
         <Message Text="Copying Nuget Assemblies to UserLibs folder..." Importance="high"/>
-        <Copy SourceFiles="@(NugetAssemblies)" DestinationFolder="$(BloonsTD6)\UserLibs"/>
+        <Copy SourceFiles="@(NugetAssemblies)" DestinationFolder="$(BloonsTD6)\UserLibs" Retries="1" ContinueOnError="true"/>
     </Target>
 
     <!--When in Release mode, pack the libraries into the dll-->

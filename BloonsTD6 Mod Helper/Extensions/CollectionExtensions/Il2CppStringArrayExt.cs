@@ -18,7 +18,7 @@ public static class Il2CppStringArrayExt
         {
             newArray[i] = array[i];
         }
-        newArray[newArray.Length - 1] = itemToAdd;
+        newArray[^1] = itemToAdd;
         return newArray;
     }
 }
