@@ -31,7 +31,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
 
     private static ModHelperPanel buttonPanel;
     private static ModHelperScrollPanel optionsPanel;
-    private static ModHelperButton button;
+    internal static ModHelperButton button;
     private static readonly Dictionary<string, ModHelperImage> CheckMarks = new();
     private static List<ModRoundSet> modRoundSets;
 
@@ -110,8 +110,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
 
     private static ModHelperButton CreateRoundSetButton(string id, string displayName, string description, string icon)
     {
-        ModHelperButton roundButton = null!;
-        roundButton = ModHelperButton.Create(new Info(displayName, 300, 300),
+        var roundButton = ModHelperButton.Create(new Info(displayName, 300, 300),
             icon, new Action(() =>
             {
                 StopOptionsMode();
