@@ -68,8 +68,14 @@ internal static class InGame_CheckGameType
     }
 
     [HarmonyFinalizer]
-    private static Exception Finalizer(Exception __exception)
+    private static Exception Finalizer(InGame __instance, Exception __exception)
     {
+        if (__instance.GameType != GameType.BossBloon ||
+            !ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out _))
+        {
+            return __exception;
+        }
+
         if (__exception.Message.Contains("MapLoader.AddAsset") && __exception.Message.Contains("ResourceLoader.InstantiateAsync") && __exception.Message.Contains("System.NullReferenceException: Object reference not set to an instance of an object."))
         {
             return null;

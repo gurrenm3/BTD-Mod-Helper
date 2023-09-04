@@ -9,6 +9,8 @@ internal static class Simulation_SetVictory
     [HarmonyPrefix]
     private static bool Prefix(Simulation __instance, ref bool __result)
     {
+        if (InGameData.CurrentGame == null || InGameData.CurrentGame.gameEventId != ModBoss.EventId)
+            return true;
         if (ModBoss.Cache.TryGetValue((int) InGameData.CurrentGame.bossData.bossBloon, out var modBoss) &&
             InGame.instance.GetMap().spawner.bossBloonManager.CurrentBossTier < modBoss.highestTier)
         {

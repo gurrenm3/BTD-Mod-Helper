@@ -31,16 +31,31 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
 
     private static ModHelperPanel buttonPanel;
     private static ModHelperScrollPanel optionsPanel;
-    internal static ModHelperButton button;
+    private static ModHelperButton button;
     private static readonly Dictionary<string, ModHelperImage> CheckMarks = new();
     private static List<ModRoundSet> modRoundSets;
 
     private static ModHelperPanel invisibleCancel;
 
+    private static string roundSetOverride;
+
     /// <summary>
     /// The round set override currently chosen, or null
     /// </summary>
-    public static string RoundSetOverride { get; internal set; }
+    public static string RoundSetOverride
+    {
+        get => roundSetOverride;
+        internal set
+        {
+            PreviousRoundSetOverride = roundSetOverride;
+            roundSetOverride = value;
+        }
+    }
+
+    /// <summary>
+    /// The round set override previously chosen, or null
+    /// </summary>
+    internal static string PreviousRoundSetOverride { get; private set; }
 
     private static void CreatePanel(GameObject screen)
     {

@@ -43,7 +43,6 @@ internal static class ContinueGamePanel_ContinueClicked
                         startTimeUTC = Il2CppSystem.DateTime.MinValue,
                         hasDailyChallengeStats = false,
                     }, LeaderboardScoringType.GameTime);
-                inGameData.bossData.spawnRounds = boss.SpawnRounds.ToArray();
                 List<int> checkpointRounds = new(boss.SpawnRounds.Count());
                 foreach (var round in boss.SpawnRounds)
                 {
@@ -78,10 +77,9 @@ internal static class ContinueGamePanel_ContinueClicked
             }
         }
 
-        if (map != null && map.metaData.ContainsKey("RoundSet") && ModRoundSet.Cache.TryGetValue(map.metaData["RoundSet"], out var roundSet))
+        if (map != null && map.metaData.ContainsKey("RoundSet") && ModRoundSet.Cache.TryGetValue(map.metaData["RoundSet"], out _))
         {
             RoundSetChanger.RoundSetOverride = map.metaData["RoundSet"];
-            RoundSetChanger.button.Image.SetSprite(roundSet.IconReference.guidRef);
         }
     }
 }
