@@ -126,6 +126,11 @@ internal partial class MelonMain : BloonsTD6Mod
             () => GameData.Instance != null);
     }
 
+    public override void OnInGameLoaded(InGame inGame)
+    {
+        inGame.gameObject.AddComponent<Instances>();
+    }
+
     public override void OnLoadSettings(JObject settings)
     {
         var version = settings["Version"];
