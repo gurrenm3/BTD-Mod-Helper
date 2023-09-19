@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
@@ -91,13 +92,25 @@ internal partial class MelonMain
         icon = DangerSoonIcon
     };
 
+    public static readonly ModSettingBool PopulateOnStartup = new(true)
+    {
+        description = "Whether to begin fetching mod info from GitHub in the background as the game starts, " +
+                      "rather than waiting until you open the browser for the first time. " +
+                      "Disabling this leads to ~1 second faster startup time, " +
+                      "but a 5s - 10s delay when first opening the browser",
+        category = ModBrowserSettings,
+        icon = AutoStartIcon,
+        requiresRestart = true
+    };
+
     public static readonly ModSettingInt ModsPerPage = new(15)
     {
         description =
             "How many mods to display in each page of the Mod Browser. Lower amounts would marginally improve performance.",
         category = ModBrowserSettings,
         min = 5,
-        max = 100
+        max = 100,
+        icon = TrophyGameUiIcon
     };
 
     public static readonly ModSettingDouble RequestTimeout = new(30)

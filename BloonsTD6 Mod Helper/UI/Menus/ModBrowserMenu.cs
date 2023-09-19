@@ -89,6 +89,11 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         SetPage(0);
         currentSearch = "";
 
+        if (!ModHelperGithub.Mods.Any())
+        {
+            RefreshMods();
+        }
+
         return false;
     }
 
@@ -300,7 +305,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         GameMenu.searchingImg.gameObject.SetActive(true);
         foreach (var menuMod in mods)
         {
-            menuMod.SetActive(false);
+            menuMod.Exists()?.SetActive(false);
         }
 
         Task.Run(async () =>
