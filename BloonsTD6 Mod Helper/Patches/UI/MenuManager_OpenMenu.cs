@@ -8,6 +8,6 @@ internal static class MenuManager_OpenMenu
     [HarmonyPrefix]
     private static void Prefix(MenuManager __instance, string menuName)
     {
-        RoundSetChanger.OnMenuChanged(__instance.GetCurrentMenu().Exists()?.name ?? "", menuName);
+        // RoundSetChanger.OnMenuChanged(__instance.GetCurrentMenu().Exists()?.name ?? "", menuName);
     }
 }

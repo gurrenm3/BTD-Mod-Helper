@@ -1,4 +1,5 @@
 using Il2CppNewtonsoft.Json;
+using Il2CppSystem;
 using Il2CppSystem.IO;
 using UnityEngine;
 using Directory = System.IO.Directory;
@@ -34,8 +35,8 @@ public static class FileIOHelper
         var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
         {
             Formatting = Formatting.Indented,
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            TypeNameHandling = TypeNameHandling.Objects
+            TypeNameHandling = TypeNameHandling.Objects,
+            _referenceLoopHandling = new Nullable<ReferenceLoopHandling> {value = ReferenceLoopHandling.Ignore}
         });
 
         SaveFile(fileName, text);

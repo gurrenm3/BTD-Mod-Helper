@@ -11,6 +11,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.Coop;
 using Il2CppAssets.Scripts.Unity.UI_New.GameEvents;
 using Il2CppAssets.Scripts.Unity.UI_New.HeroInGame;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.EditorMenus;
 using Il2CppAssets.Scripts.Unity.UI_New.LevelUp;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.PowersSelect;
 using Il2CppAssets.Scripts.Unity.UI_New.Settings;
@@ -38,7 +39,9 @@ public abstract class ModGameMenu : ModContent
         {typeof(GameEventsScreen), SceneNames.GameEventsUI},
         {typeof(HeroInGameScreen), SceneNames.HeroInGameUI},
         {typeof(LevelUpScreen), SceneNames.LevelUpUI},
-        {typeof(ContentBrowser), SceneNames.ContentBrowser}
+        {typeof(ContentBrowser), SceneNames.ContentBrowser},
+        {typeof(MapEditorScreen), SceneNames.MapEditorUI},
+        {typeof(ChallengeEditorPlay), SceneNames.ChallengeEditorPlay}
     };
 
 

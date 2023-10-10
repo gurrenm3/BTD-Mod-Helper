@@ -12,18 +12,9 @@ internal static class TowerCreateTower_OnDestroy
     [HarmonyPrefix]
     private static void Prefix(TowerCreateTower __instance)
     {
-        if (__instance.towerAdded && !__instance.tower.IsDestroyed)
+        if (__instance.tower is {IsDestroyed: false} && __instance.createdTower is {IsDestroyed: false})
         {
-            var baseId = __instance.createTowerModel.towerModel.baseId;
-            var tower = __instance.Sim.towerManager
-                .GetChildTowers(__instance.tower)
-                .ToList()
-                .OrderBy(t => t.createdAt)
-                .FirstOrDefault(tower => tower.towerModel.baseId == baseId);
-            if (tower != null)
-            {
-                __instance.Sim.DestroyTower(tower, tower.owner);
-            }
+            __instance.Sim.DestroyTower(__instance.createdTower, __instance.createdTower.owner);
         }
     }
 }

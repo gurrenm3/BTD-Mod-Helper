@@ -5,8 +5,10 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Facebook;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
 using UnityEngine;
@@ -24,8 +26,8 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
 
     private static readonly string[] ShowOnMenus =
     {
-        "MapSelectUI", "DifficultySelectUI", "ModeSelectUI",
-        "MapSelectScreen", "DifficultySelectScreen", "ModeSelectScreen"
+        "DifficultySelectUI", "ModeSelectUI",
+        "DifficultySelectScreen", "ModeSelectScreen"
     };
 
     private static ModHelperPanel buttonPanel;
@@ -35,6 +37,8 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
     private static List<ModRoundSet> modRoundSets;
 
     private static ModHelperPanel invisibleCancel;
+
+    private static bool lastShowing;
 
     /// <summary>
     /// The round set override currently chosen, or null
@@ -204,6 +208,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         Init();
         RevealButton();
         optionsPanel.SetActive(false);
+        lastShowing = true;
     }
 
     private static void Hide()
@@ -211,6 +216,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         Init();
         HideButton();
         HideOptions();
+        lastShowing = false;
     }
 
     internal static void EnsureHidden()
@@ -224,11 +230,38 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         {
             optionsPanel.SetActive(false);
         }
+
+        lastShowing = false;
+    }
+
+    internal static void OnUpdate()
+    {
+        if (!MelonMain.ShowRoundsetChanger || MenuManager.instance == null) return;
+
+        if (InGame.instance != null)
+        {
+            EnsureHidden();
+            return;
+        }
+
+        var shouldShow = ShowOnMenus.Contains(MenuManager.instance.GetCurrentMenuName());
+
+        if (shouldShow != lastShowing)
+        {
+            if (shouldShow)
+            {
+                Show();
+                ModifyBlockClicks();
+            }
+            else
+            {
+                Hide();
+            }
+        }
     }
 
     internal static void OnMenuChanged(string currentMenu, string newMenu)
     {
-        if (!MelonMain.ShowRoundsetChanger) return;
 
         if (ShowOnMenus.Contains(newMenu))
         {

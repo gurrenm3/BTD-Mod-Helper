@@ -203,7 +203,7 @@ public abstract class ModHero : ModTower
     /// Gets the font material for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
+    public virtual string GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
         skinsByName.TryGetValue(NameStyle, out var dataForFont)
             ? dataForFont.fontMaterial
             : skinsByName[TowerType.Quincy].fontMaterial;

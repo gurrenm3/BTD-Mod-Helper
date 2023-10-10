@@ -5,7 +5,7 @@ using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Unity.Menu;
 namespace BTD_Mod_Helper.Patches.UI;
 
-[HarmonyPatch(typeof(MenuManager), nameof(MenuManager.CloseCurrentMenuIfPossible))]
+[HarmonyPatch(typeof(MenuManager), nameof(MenuManager.CloseCurrentMenu))]
 internal static class MenuManager_CloseCurrentMenu
 {
     [HarmonyPrefix]
@@ -26,7 +26,6 @@ internal static class MenuManager_CloseCurrentMenu
             modGameMenu.OnMenuClosed();
         }
 
-        RoundSetChanger.OnMenuChanged(__state.Exists()?.name ?? "",
-            __instance.menuStack.ToList().SkipLast(1).LastOrDefault()?.Item1 ?? "");
+        // RoundSetChanger.OnMenuChanged(__state.Exists()?.name ?? "", __instance.menuStack.ToList().SkipLast(1).LastOrDefault()?.Item1 ?? "");
     }
 }

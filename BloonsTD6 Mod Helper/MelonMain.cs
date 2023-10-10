@@ -83,6 +83,7 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
+        RoundSetChanger.OnUpdate();
         // InitialLoadTasks_MoveNext.Update();
 
         if (Game.instance is null || InGame.instance is null)
