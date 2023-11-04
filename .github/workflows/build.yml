@@ -86,7 +86,7 @@ jobs:
       
       
       - name: Upload Mod Documentation
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3
         with:
           # Artifact name
           name: ${{ env.PROJECT_NAME }}.xml
