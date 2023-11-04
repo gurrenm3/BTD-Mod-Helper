@@ -42,4 +42,10 @@ public static class EmissionModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this EmissionModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }

@@ -45,4 +45,10 @@ public static class AddBehaviorToBloonModelExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this AddBehaviorToBloonModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }

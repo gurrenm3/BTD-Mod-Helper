@@ -77,4 +77,10 @@ public static class WeaponModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this WeaponModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }

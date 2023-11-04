@@ -75,4 +75,10 @@ public static class BloonModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this BloonModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }

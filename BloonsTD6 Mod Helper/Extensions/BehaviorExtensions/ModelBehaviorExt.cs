@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
@@ -252,5 +253,13 @@ internal static class ModelBehaviorExt
         {
             model.SetBehaviors(behaviors.Where(b => !b.IsType<T>()));
         }
+    }
+    
+    /// <summary>
+    /// Remove all Behaviors
+    /// </summary>
+    public static void RemoveBehaviors(this Model model)
+    {
+        model.SetBehaviors(Array.Empty<Model>());
     }
 }

@@ -42,4 +42,10 @@ public static class PetModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this PetModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }

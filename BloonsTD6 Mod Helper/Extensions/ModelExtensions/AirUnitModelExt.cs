@@ -85,4 +85,11 @@ public static class AirUnitModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this AirUnitModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
+
 }

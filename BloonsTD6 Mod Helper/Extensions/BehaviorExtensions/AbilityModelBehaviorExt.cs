@@ -42,4 +42,10 @@ public static class AbilityModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this AbilityModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }
