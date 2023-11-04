@@ -1,1 +1,3 @@
+- The `TopPathUpgrades`, `MiddlePathUpgrades` and `BottomPathUpgrades` properties no longer need to be manually specified for `ModTower`s, they will be inferred
+- Same goes for `MaxLevel` in `ModHero`
 - Fixed a possible visual error with ModSettingFile and ModSettingFolder

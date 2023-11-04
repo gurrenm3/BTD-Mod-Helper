@@ -7,6 +7,7 @@ using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Utils;
 using UnityEngine;
+#pragma warning disable CS0618 // Type or member is obsolete
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -22,6 +23,7 @@ public abstract class ModHero : ModTower
     }).ToArray();
 
     internal sealed override int UpgradePaths => 1;
+    internal override int StartTier => 1;
 
     /// <summary>
     /// Heroes aren't in the default shop
@@ -46,7 +48,7 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// Putting all the hero level upgrades in the top path
     /// </summary>
-    public sealed override int TopPathUpgrades => MaxLevel;
+    public sealed override int TopPathUpgrades => base.TopPathUpgrades;
 
     /// <summary>
     /// No other upgrade paths used
@@ -113,7 +115,7 @@ public abstract class ModHero : ModTower
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
     /// that you've actually created for your Hero.
     /// </summary>
-    public abstract int MaxLevel { get; }
+    public virtual int MaxLevel => TopPathUpgrades;
 
     /// <summary>
     /// XpRatio to use when determining the default xp costs of the levels.

@@ -93,8 +93,8 @@ public static class ModTowerHelper
         towerModel.name = modTower.TowerId(tiers);
 
         // add the names to applied upgrades
-        towerModel.appliedUpgrades = modTower.Upgrades.Cast<ModUpgrade>()
-            .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
+        towerModel.appliedUpgrades = modTower.AllUpgrades
+            .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier)
             .Select(modUpgrade => modUpgrade.Id)
             .ToArray();
 
@@ -116,7 +116,7 @@ public static class ModTowerHelper
 
                 if (modTowerTiers.Exists(t => t.SequenceEqual(newTiers)))
                 {
-                    var modUpgrade = modTower.Upgrades[i, newTiers[i] - 1];
+                    var modUpgrade = modTower.Upgrades[i][newTiers[i] - 1];
                     if (modUpgrade == null)
                     {
                         ModHelper.Warning($"{modTower.Name} has missing upgrade in path {i} tier {newTiers[i] - 1}");

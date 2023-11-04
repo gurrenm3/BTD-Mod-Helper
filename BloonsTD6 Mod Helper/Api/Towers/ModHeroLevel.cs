@@ -69,7 +69,7 @@ public abstract class ModHeroLevel : ModUpgrade
     /// <summary>
     /// All hero upgrades count as top path
     /// </summary>
-    public sealed override int Path => TOP;
+    public sealed override int Path => Top;
 
     /// <summary>
     /// What level this
