@@ -86,7 +86,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} RoundModels to {Path.Combine(FileIOHelper.sandboxRoot, "Rounds")}");
 
         total = success = 0;
-        foreach (var mapSetMap in GameData.Instance.mapSet.maps)
+        foreach (var mapSetMap in GameData.Instance.mapSet.Maps.items)
         {
             if (TryExport(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json")) success++;
             total++;

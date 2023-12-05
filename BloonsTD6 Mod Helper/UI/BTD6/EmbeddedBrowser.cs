@@ -27,7 +27,7 @@ internal static class EmbeddedBrowser
     {
         var player = Game.Player;
         var controller = player.webviewLiNKAccountController ??=
-            new MobileWebviewLiNKAccountController(player.LiNKAccountController, SkuSettings.instance.settings.webviewVersion);
+            new MobileWebviewLiNKAccountController(player.LiNKAccountController, SkuSettings.instance.settings.webviewVersion, new Action(() => {}));
         controller.createEverything().ContinueWith(new Action<Task>(task =>
         {
             if (task.Status != TaskStatus.RanToCompletion) return;
