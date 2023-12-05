@@ -167,6 +167,14 @@ public abstract class ModDisplay : ModContent
         Game.instance.model.GetTower(tower, top, mid, bot).display.GUID;
 
     /// <summary>
+    /// Gets the Display for a given bloon
+    /// <summary>
+    /// <param name="bloon"> The bloon base id</param>
+    /// <returns>The display GUID</returns>
+    protected string GetBloonDisplay(string bloon) => 
+        Game.instance.model.GetBloon(bloon).display.GUID;
+    
+    /// <summary>
     /// Gets a UnityDisplayNode for a different guid
     /// </summary>
     /// <param name="guid">The asset reference guid to get the node from</param>
