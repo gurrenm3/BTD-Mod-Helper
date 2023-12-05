@@ -96,9 +96,8 @@ public static class TowerModelBehaviorExt
     }
     
     /// <summary>
-    /// Remove all Behaviors of type T
+    /// Remove all Behaviors
     /// </summary>
-    /// <typeparam name="T">The Behavior you want to remove</typeparam>
     /// <param name="model"></param>
     public static void RemoveBehaviors(this TowerModel model)
     {

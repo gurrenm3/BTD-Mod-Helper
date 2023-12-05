@@ -109,7 +109,7 @@ public static class ProjectileModelExt
     }
 
     /// <summary>
-    /// Adds a new filter to this projectile model
+    /// Removes a specific filter from this projectile model
     /// </summary>
     public static void RemoveFilter(this ProjectileModel projectile, FilterModel filter)
     {
@@ -124,7 +124,7 @@ public static class ProjectileModelExt
     }
 
     /// <summary>
-    /// Adds a new filter to this projectile model
+    /// Removes the first filter of the given type from this projectile model
     /// </summary>
     public static void RemoveFilter<T>(this ProjectileModel projectile) where T : FilterModel
     {

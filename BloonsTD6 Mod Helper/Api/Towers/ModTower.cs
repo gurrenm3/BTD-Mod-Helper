@@ -207,14 +207,14 @@ public abstract class ModTower : NamedModContent
     {
     }
 
-    internal List<ModUpgrade> GetUpgradesForTiers(int[] tiers) => AllUpgrades
+    internal List<ModUpgrade> GetUpgradesForTiers(params int[] tiers) => AllUpgrades
         .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier)
         .OrderByDescending(modUpgrade => modUpgrade.Priority)
         .ThenBy(modUpgrade => modUpgrade.Tier)
         .ThenBy(modUpgrade => modUpgrade.Path)
         .ToList();
 
-    internal virtual string TowerId(int[] tiers)
+    internal virtual string TowerId(params int[] tiers)
     {
         var id = Id;
         if (tiers.Sum() > 0)
@@ -253,7 +253,7 @@ public abstract class ModTower : NamedModContent
     /// <br />
     /// Used in the default implementation of <see cref="TowerTiers()" />
     /// </summary>
-    public virtual bool IsValidCrosspath(int[] tiers)
+    public virtual bool IsValidCrosspath(params int[] tiers)
     {
         var sorted = tiers.OrderByDescending(num => num).ToArray();
         return sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0;
@@ -267,7 +267,7 @@ public abstract class ModTower : NamedModContent
     /// <seealso cref="Use2DModel" />
     /// <see cref="Get2DScale" />
     /// </summary>
-    public virtual string Get2DTexture(int[] tiers)
+    public virtual string Get2DTexture(params int[] tiers)
     {
         var name = $"{Name}-{tiers.Printed()}";
         if (TextureExists(name))
@@ -306,7 +306,7 @@ public abstract class ModTower : NamedModContent
     /// <seealso cref="Use2DModel" />
     /// <seealso cref="Get2DTexture(int[])" />
     /// </summary>
-    public virtual float Get2DScale(int[] tiers) => 1f;
+    public virtual float Get2DScale(params int[] tiers) => 1f;
 
     /// <summary>
     /// Gets the portrait reference this tower should use for the given tiers
@@ -316,7 +316,7 @@ public abstract class ModTower : NamedModContent
     /// falling back to the tower's own base <see cref="PortraitReference" /> by default.
     /// </summary>
     /// <param name="tiers"></param>
-    public SpriteReference GetPortraitReferenceForTiers(int[] tiers) => AllUpgrades
+    public SpriteReference GetPortraitReferenceForTiers(params int[] tiers) => AllUpgrades
         .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier && modUpgrade.PortraitReference is not null)
         .OrderByDescending(modUpgrade => modUpgrade.Tier)
         .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
@@ -482,7 +482,7 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     /// <param name="tiers">Length 3 array of Top/Mid/Bot tiers</param>
     /// <returns>The base TowerModel to use</returns>
-    public virtual TowerModel GetBaseTowerModel(int[] tiers) => !string.IsNullOrEmpty(BaseTower)
+    public virtual TowerModel GetBaseTowerModel(params int[] tiers) => !string.IsNullOrEmpty(BaseTower)
         ? BaseTowerModel.MakeCopy(Id)
         : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
 }

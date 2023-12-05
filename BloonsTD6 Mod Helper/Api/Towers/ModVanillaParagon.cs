@@ -96,7 +96,7 @@ public abstract class ModVanillaParagon : ModTower
     {
     }
 
-    internal override string TowerId(int[] tiers) => BaseTowerModel.baseId + "-Paragon";
+    internal override string TowerId(params int[] tiers) => BaseTowerModel.baseId + "-Paragon";
 
     /// <summary>
     /// Doesn't generate any of the tower on its own

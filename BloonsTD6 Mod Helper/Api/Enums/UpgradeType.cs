@@ -622,6 +622,25 @@ public static class UpgradeType
     public const string GeraldoUpgrade18 = "Geraldo Upgrade 18";
     public const string GeraldoUpgrade19 = "Geraldo Upgrade 19";
     public const string GeraldoUpgrade20 = "Geraldo Upgrade 20";
+    public const string CorvusUpgrade2 = "Corvus Upgrade 2";
+    public const string CorvusUpgrade3 = "Corvus Upgrade 3";
+    public const string CorvusUpgrade4 = "Corvus Upgrade 4";
+    public const string CorvusUpgrade5 = "Corvus Upgrade 5";
+    public const string CorvusUpgrade6 = "Corvus Upgrade 6";
+    public const string CorvusUpgrade7 = "Corvus Upgrade 7";
+    public const string CorvusUpgrade8 = "Corvus Upgrade 8";
+    public const string CorvusUpgrade9 = "Corvus Upgrade 9";
+    public const string CorvusUpgrade10 = "Corvus Upgrade 10";
+    public const string CorvusUpgrade11 = "Corvus Upgrade 11";
+    public const string CorvusUpgrade12 = "Corvus Upgrade 12";
+    public const string CorvusUpgrade13 = "Corvus Upgrade 13";
+    public const string CorvusUpgrade14 = "Corvus Upgrade 14";
+    public const string CorvusUpgrade15 = "Corvus Upgrade 15";
+    public const string CorvusUpgrade16 = "Corvus Upgrade 16";
+    public const string CorvusUpgrade17 = "Corvus Upgrade 17";
+    public const string CorvusUpgrade18 = "Corvus Upgrade 18";
+    public const string CorvusUpgrade19 = "Corvus Upgrade 19";
+    public const string CorvusUpgrade20 = "Corvus Upgrade 20";
     public static readonly Dictionary<string, string> ByName = new() 
     {
         { "SharpShots", SharpShots },
@@ -1242,5 +1261,24 @@ public static class UpgradeType
         { "GeraldoUpgrade18", GeraldoUpgrade18 },
         { "GeraldoUpgrade19", GeraldoUpgrade19 },
         { "GeraldoUpgrade20", GeraldoUpgrade20 },
+        { "CorvusUpgrade2", CorvusUpgrade2 },
+        { "CorvusUpgrade3", CorvusUpgrade3 },
+        { "CorvusUpgrade4", CorvusUpgrade4 },
+        { "CorvusUpgrade5", CorvusUpgrade5 },
+        { "CorvusUpgrade6", CorvusUpgrade6 },
+        { "CorvusUpgrade7", CorvusUpgrade7 },
+        { "CorvusUpgrade8", CorvusUpgrade8 },
+        { "CorvusUpgrade9", CorvusUpgrade9 },
+        { "CorvusUpgrade10", CorvusUpgrade10 },
+        { "CorvusUpgrade11", CorvusUpgrade11 },
+        { "CorvusUpgrade12", CorvusUpgrade12 },
+        { "CorvusUpgrade13", CorvusUpgrade13 },
+        { "CorvusUpgrade14", CorvusUpgrade14 },
+        { "CorvusUpgrade15", CorvusUpgrade15 },
+        { "CorvusUpgrade16", CorvusUpgrade16 },
+        { "CorvusUpgrade17", CorvusUpgrade17 },
+        { "CorvusUpgrade18", CorvusUpgrade18 },
+        { "CorvusUpgrade19", CorvusUpgrade19 },
+        { "CorvusUpgrade20", CorvusUpgrade20 },
     };
 }

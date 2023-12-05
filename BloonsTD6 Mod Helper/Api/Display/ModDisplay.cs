@@ -168,7 +168,7 @@ public abstract class ModDisplay : ModContent
 
     /// <summary>
     /// Gets the Display for a given bloon
-    /// <summary>
+    /// </summary>
     /// <param name="bloon"> The bloon base id</param>
     /// <returns>The display GUID</returns>
     protected string GetBloonDisplay(string bloon) => 

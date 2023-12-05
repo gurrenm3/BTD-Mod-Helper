@@ -190,7 +190,7 @@ public abstract class ModHero : ModTower
         return baseTowerModel;
     }
 
-    internal override string TowerId(int[] tiers)
+    internal override string TowerId(params int[] tiers)
     {
         var id = Id;
         if (tiers[0] > 0)

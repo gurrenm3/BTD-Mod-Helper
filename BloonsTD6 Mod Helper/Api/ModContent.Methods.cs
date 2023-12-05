@@ -480,7 +480,7 @@ public abstract partial class ModContent
     /// <returns>The tower name/id</returns>
     public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
     {
-        return GetInstance<T>().TowerId(new[] {top, mid, bot});
+        return GetInstance<T>().TowerId(top, mid, bot);
     }
 
     /// <summary>

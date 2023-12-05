@@ -63,7 +63,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
     /// </summary>
     /// <param name="tiers">The potential tiers of the tower</param>
     /// <returns>If the Tower should have this display</returns>
-    public abstract bool UseForTower(int[] tiers);
+    public abstract bool UseForTower(params int[] tiers);
 
     /// <summary>
     /// Applies this ModTowerDisplay to the towerModel. Override to change how this applies, i.e. making it
@@ -92,7 +92,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
     /// </summary>
     /// <param name="tiers"></param>
     /// <returns></returns>
-    protected bool IsParagon(int[] tiers) => tiers[0] == 6;
+    protected bool IsParagon(params int[] tiers) => tiers[0] == 6;
 }
 
 /// <summary>
