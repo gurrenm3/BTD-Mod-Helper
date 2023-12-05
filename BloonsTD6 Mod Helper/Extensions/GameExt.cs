@@ -167,7 +167,7 @@ public static class GameExt
     /// <summary>
     /// Returns the current lobby connection.
     /// </summary>
-    public static LobbyConnection GetCoopLobbyConnection(this Game game) => game.GetCoopLobbyScreen()?.lobbyConnection;
+    public static LobbyConnection GetCoopLobbyConnection(this Game game) => game.GetCoopLobbyScreen()?.coopLobbyData.lobbyConnection;
 
     /// <summary>
     /// Returns the directory where the Player's Profile.save file is located.
