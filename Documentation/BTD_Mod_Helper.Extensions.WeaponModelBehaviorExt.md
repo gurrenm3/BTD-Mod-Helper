@@ -167,6 +167,21 @@ The Behavior you want to remove
 
 `behavior` [T](BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.md#BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.RemoveBehavior_T_(thisWeaponModel,T).T 'BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.RemoveBehavior<T>(this WeaponModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.RemoveBehaviors(thisWeaponModel)'></a>
+
+## WeaponModelBehaviorExt.RemoveBehaviors(this WeaponModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this WeaponModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.RemoveBehaviors(thisWeaponModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
+
 <a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.RemoveBehaviors_T_(thisWeaponModel)'></a>
 
 ## WeaponModelBehaviorExt.RemoveBehaviors<T>(this WeaponModel) Method

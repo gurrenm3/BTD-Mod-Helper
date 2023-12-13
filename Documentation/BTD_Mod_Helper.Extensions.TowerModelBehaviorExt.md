@@ -216,6 +216,21 @@ The Behavior you want to remove
 
 `behavior` [T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,T).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior<T>(this TowerModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehaviors(thisTowerModel)'></a>
+
+## TowerModelBehaviorExt.RemoveBehaviors(this TowerModel) Method
+
+Remove all Behaviors
+
+```csharp
+public static void RemoveBehaviors(this TowerModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehaviors(thisTowerModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehaviors_T_(thisTowerModel)'></a>
 
 ## TowerModelBehaviorExt.RemoveBehaviors<T>(this TowerModel) Method

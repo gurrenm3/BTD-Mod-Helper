@@ -163,6 +163,21 @@ public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model, T behav
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md#BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(thisAddBehaviorToBloonModel,T).T 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior<T>(this AddBehaviorToBloonModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehaviors(thisAddBehaviorToBloonModel)'></a>
+
+## AddBehaviorToBloonModelExt.RemoveBehaviors(this AddBehaviorToBloonModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this AddBehaviorToBloonModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehaviors(thisAddBehaviorToBloonModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel')
+
 <a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehaviors_T_(thisAddBehaviorToBloonModel)'></a>
 
 ## AddBehaviorToBloonModelExt.RemoveBehaviors<T>(this AddBehaviorToBloonModel) Method

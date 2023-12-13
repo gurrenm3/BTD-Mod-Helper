@@ -18,6 +18,7 @@ public abstract class ModelHelper<T> : BTD_Mod_Helper.Api.Helpers.ModelHelper
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') &#129106; ModelHelper<T>
 
 Derived  
+&#8627; [AbilityHelper](BTD_Mod_Helper.Api.Helpers.AbilityHelper.md 'BTD_Mod_Helper.Api.Helpers.AbilityHelper')  
 &#8627; [AttackHelper](BTD_Mod_Helper.Api.Helpers.AttackHelper.md 'BTD_Mod_Helper.Api.Helpers.AttackHelper')  
 &#8627; [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper')  
 &#8627; [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper')

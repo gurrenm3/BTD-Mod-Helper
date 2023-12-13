@@ -227,6 +227,27 @@ public virtual void Apply(TowerModel towerModel);
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.GetBloonDisplay(string)'></a>
+
+## ModDisplay.GetBloonDisplay(string) Method
+
+Gets the Display for a given bloon
+
+```csharp
+protected string GetBloonDisplay(string bloon);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.GetBloonDisplay(string).bloon'></a>
+
+`bloon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The bloon base id
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The display GUID
+
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.GetDisplay(string,int,int,int)'></a>
 
 ## ModDisplay.GetDisplay(string, int, int, int) Method

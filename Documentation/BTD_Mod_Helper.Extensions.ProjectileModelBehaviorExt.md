@@ -197,6 +197,21 @@ The Behavior you want to remove
 
 `behavior` [T](BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.RemoveBehavior_T_(thisProjectileModel,T).T 'BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.RemoveBehavior<T>(this ProjectileModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.RemoveBehaviors(thisProjectileModel)'></a>
+
+## ProjectileModelBehaviorExt.RemoveBehaviors(this ProjectileModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this ProjectileModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.RemoveBehaviors(thisProjectileModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.RemoveBehaviors_T_(thisProjectileModel)'></a>
 
 ## ProjectileModelBehaviorExt.RemoveBehaviors<T>(this ProjectileModel) Method

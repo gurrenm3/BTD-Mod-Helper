@@ -77,7 +77,7 @@ jobs:
 
 
       - name: Upload Mod DLL
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3
         with:
           # Artifact name
           name: ${{ env.PROJECT_NAME }}.dll

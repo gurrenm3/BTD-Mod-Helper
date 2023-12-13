@@ -98,7 +98,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         var panel = panelTransform.gameObject;
         panel.DestroyAllChildren();
 
-        var modsMenu = panel.AddModHelperPanel(new Info("ModsMenu", MenuWidth, MenuHeight));
+        var modsMenu = panel.AddModHelperPanel(new Info("ModsMenu", 0, 100, MenuWidth, MenuHeight));
 
         CreateLeftMenu(modsMenu);
         CreateRightMenu(modsMenu);

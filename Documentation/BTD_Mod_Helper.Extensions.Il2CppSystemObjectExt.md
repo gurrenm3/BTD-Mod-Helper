@@ -70,6 +70,38 @@ The casted object if this is of type T
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisT,T)'></a>
+
+## Il2CppSystemObjectExt.Is<T>(this T, T) Method
+
+Check if object is the same type as T
+
+```csharp
+public static bool Is<T>(this T instance, out T castObject)
+    where T : Il2CppObjectBase;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisT,T).T'></a>
+
+`T`
+
+Type to check
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisT,T).instance'></a>
+
+`instance` [T](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisT,T).T 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is<T>(this T, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisT,T).castObject'></a>
+
+`castObject` [T](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is_T_(thisT,T).T 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.Is<T>(this T, T).T')
+
+The casted object if this is of type T
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.IsType_T_(thisObject)'></a>
 
 ## Il2CppSystemObjectExt.IsType<T>(this Object) Method

@@ -163,6 +163,21 @@ public static void RemoveBehavior<T>(this PetModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel,T).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior<T>(this PetModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehaviors(thisPetModel)'></a>
+
+## PetModelBehaviorExt.RemoveBehaviors(this PetModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this PetModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehaviors(thisPetModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
+
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehaviors_T_(thisPetModel)'></a>
 
 ## PetModelBehaviorExt.RemoveBehaviors<T>(this PetModel) Method

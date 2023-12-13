@@ -105,7 +105,7 @@ public abstract string BaseTower { get; }
 The number of upgrades the tower has in it's 3rd / bottom path
 
 ```csharp
-public abstract int BottomPathUpgrades { get; }
+public virtual int BottomPathUpgrades { get; }
 ```
 
 #### Property Value
@@ -185,7 +185,7 @@ public virtual SpriteReference IconReference { get; }
 The number of upgrades the tower has in it's 2nd / middle path
 
 ```csharp
-public abstract int MiddlePathUpgrades { get; }
+public virtual int MiddlePathUpgrades { get; }
 ```
 
 #### Property Value
@@ -266,7 +266,7 @@ public virtual int ShopTowerCount { get; }
 The number of upgrades the tower has in it's 1st / top path
 
 ```csharp
-public abstract int TopPathUpgrades { get; }
+public virtual int TopPathUpgrades { get; }
 ```
 
 #### Property Value
@@ -310,7 +310,7 @@ Gets the scale to use for a 2d tower at the given tiers
 <seealso cref="P:BTD_Mod_Helper.Api.Towers.ModTower.Use2DModel"/><seealso cref="M:BTD_Mod_Helper.Api.Towers.ModTower.Get2DTexture(System.Int32[])"/>
 
 ```csharp
-public virtual float Get2DScale(int[] tiers);
+public virtual float Get2DScale(params int[] tiers);
 ```
 #### Parameters
 
@@ -332,7 +332,7 @@ CardMonkey-230, CardMonkey-X3X, CardMonkey-2XX, CardMonkey
 <seealso cref="P:BTD_Mod_Helper.Api.Towers.ModTower.Use2DModel"/>[Get2DScale(int[])](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.Get2DScale(int[]) 'BTD_Mod_Helper.Api.Towers.ModTower.Get2DScale(int[])')
 
 ```csharp
-public virtual string Get2DTexture(int[] tiers);
+public virtual string Get2DTexture(params int[] tiers);
 ```
 #### Parameters
 
@@ -360,7 +360,7 @@ public override void ApplyUpgrade(TowerModel towerModel) {
 ```
 
 ```csharp
-public virtual TowerModel GetBaseTowerModel(int[] tiers);
+public virtual TowerModel GetBaseTowerModel(params int[] tiers);
 ```
 #### Parameters
 
@@ -385,7 +385,7 @@ Looks for the highest tier [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 
 falling back to the tower's own base [PortraitReference](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference 'BTD_Mod_Helper.Api.Towers.ModTower.PortraitReference') by default.
 
 ```csharp
-public SpriteReference GetPortraitReferenceForTiers(int[] tiers);
+public SpriteReference GetPortraitReferenceForTiers(params int[] tiers);
 ```
 #### Parameters
 
@@ -485,7 +485,7 @@ most 5, the next highest is at most 2, and the last one is 0
 Used in the default implementation of [TowerTiers()](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers() 'BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers()')
 
 ```csharp
-public virtual bool IsValidCrosspath(int[] tiers);
+public virtual bool IsValidCrosspath(params int[] tiers);
 ```
 #### Parameters
 

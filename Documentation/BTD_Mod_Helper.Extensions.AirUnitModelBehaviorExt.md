@@ -197,6 +197,21 @@ The Behavior you want to remove
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.RemoveBehavior_T_(thisAirUnitModel,T).T 'BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.RemoveBehavior<T>(this AirUnitModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.RemoveBehaviors(thisAirUnitModel)'></a>
+
+## AirUnitModelBehaviorExt.RemoveBehaviors(this AirUnitModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this AirUnitModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.RemoveBehaviors(thisAirUnitModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel')
+
 <a name='BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.RemoveBehaviors_T_(thisAirUnitModel)'></a>
 
 ## AirUnitModelBehaviorExt.RemoveBehaviors<T>(this AirUnitModel) Method

@@ -163,6 +163,21 @@ public static void RemoveBehavior<T>(this PowerModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior_T_(thisPowerModel,T).T 'BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehavior<T>(this PowerModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehaviors(thisPowerModel)'></a>
+
+## PowerModelBehaviorExt.RemoveBehaviors(this PowerModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this PowerModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehaviors(thisPowerModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Powers.PowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Powers.PowerModel 'Il2CppAssets.Scripts.Models.Powers.PowerModel')
+
 <a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.RemoveBehaviors_T_(thisPowerModel)'></a>
 
 ## PowerModelBehaviorExt.RemoveBehaviors<T>(this PowerModel) Method

@@ -10,6 +10,9 @@ public class ModSettingDouble : BTD_Mod_Helper.Api.ModOptions.ModSettingNumber<d
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') &#129106; [BTD_Mod_Helper.Api.ModOptions.ModSetting&lt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>')[System.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System.Double')[&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>') &#129106; [BTD_Mod_Helper.Api.ModOptions.ModSettingNumber&lt;](BTD_Mod_Helper.Api.ModOptions.ModSettingNumber_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingNumber<T>')[System.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System.Double')[&gt;](BTD_Mod_Helper.Api.ModOptions.ModSettingNumber_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingNumber<T>') &#129106; ModSettingDouble
+
+Derived  
+&#8627; [ModSettingFloat](BTD_Mod_Helper.Api.ModOptions.ModSettingFloat.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingFloat')
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.isSlider'></a>
@@ -143,6 +146,24 @@ public static BTD_Mod_Helper.Api.ModOptions.ModSettingDouble implicit operator M
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingDouble(double).value'></a>
 
 `value` [System.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System.Double')
+
+#### Returns
+[ModSettingDouble](BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingDouble')
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingDouble(float)'></a>
+
+## ModSettingDouble.implicit operator ModSettingDouble(float) Operator
+
+Constructs a new ModSetting with the given value as default
+
+```csharp
+public static BTD_Mod_Helper.Api.ModOptions.ModSettingDouble implicit operator ModSettingDouble(float value);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.op_ImplicitBTD_Mod_Helper.Api.ModOptions.ModSettingDouble(float).value'></a>
+
+`value` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Returns
 [ModSettingDouble](BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingDouble')

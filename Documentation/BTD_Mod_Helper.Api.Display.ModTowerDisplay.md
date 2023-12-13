@@ -105,7 +105,7 @@ public virtual void ApplyToTower(TowerModel towerModel);
 If the tower tiers make it count as a Paragon
 
 ```csharp
-protected bool IsParagon(int[] tiers);
+protected bool IsParagon(params int[] tiers);
 ```
 #### Parameters
 
@@ -142,7 +142,7 @@ The UnityDisplayNode
 Returns true if this display should be used by its Tower for the given tiers
 
 ```csharp
-public abstract bool UseForTower(int[] tiers);
+public abstract bool UseForTower(params int[] tiers);
 ```
 #### Parameters
 

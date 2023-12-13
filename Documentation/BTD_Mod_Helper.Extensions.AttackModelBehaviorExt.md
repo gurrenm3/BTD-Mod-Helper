@@ -197,6 +197,21 @@ The Behavior you want to remove
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel,T).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior<T>(this AttackModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehaviors(thisAttackModel)'></a>
+
+## AttackModelBehaviorExt.RemoveBehaviors(this AttackModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this AttackModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehaviors(thisAttackModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehaviors_T_(thisAttackModel)'></a>
 
 ## AttackModelBehaviorExt.RemoveBehaviors<T>(this AttackModel) Method

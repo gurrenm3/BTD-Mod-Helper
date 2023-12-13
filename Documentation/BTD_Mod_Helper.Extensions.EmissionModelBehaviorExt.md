@@ -163,6 +163,21 @@ public static void RemoveBehavior<T>(this EmissionModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel,T).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehaviors(thisEmissionModel)'></a>
+
+## EmissionModelBehaviorExt.RemoveBehaviors(this EmissionModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this EmissionModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehaviors(thisEmissionModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
+
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehaviors_T_(thisEmissionModel)'></a>
 
 ## EmissionModelBehaviorExt.RemoveBehaviors<T>(this EmissionModel) Method

@@ -140,12 +140,15 @@
 
 | Classes | |
 | :--- | :--- |
+| [AbilityHelper](BTD_Mod_Helper.Api.Helpers.AbilityHelper.md 'BTD_Mod_Helper.Api.Helpers.AbilityHelper') | A wrapper around AbilityModels for making them easier to create |
 | [ActionHelper](BTD_Mod_Helper.Api.Helpers.ActionHelper.md 'BTD_Mod_Helper.Api.Helpers.ActionHelper') | Class for converting actions and functions |
 | [AttackHelper](BTD_Mod_Helper.Api.Helpers.AttackHelper.md 'BTD_Mod_Helper.Api.Helpers.AttackHelper') | A wrapper around AttackModels for making them easier to create |
 | [CostHelper](BTD_Mod_Helper.Api.Helpers.CostHelper.md 'BTD_Mod_Helper.Api.Helpers.CostHelper') | Helper for scaling costs to difficulties |
 | [FileDialogHelper](BTD_Mod_Helper.Api.Helpers.FileDialogHelper.md 'BTD_Mod_Helper.Api.Helpers.FileDialogHelper') | Class to help with the usage of Native File Dialogs |
 | [FileIOHelper](BTD_Mod_Helper.Api.Helpers.FileIOHelper.md 'BTD_Mod_Helper.Api.Helpers.FileIOHelper') | Class replacing the original functionality of FileIOUtil before BTD6 update 33.0 |
 | [GameModelExporter](BTD_Mod_Helper.Api.Helpers.GameModelExporter.md 'BTD_Mod_Helper.Api.Helpers.GameModelExporter') | Class for handily exporting elements of the GameModel to json files |
+| [Instances](BTD_Mod_Helper.Api.Helpers.Instances.md 'BTD_Mod_Helper.Api.Helpers.Instances') | Provides quick access to many major BTD6 singleton classes |
+| [Lists](BTD_Mod_Helper.Api.Helpers.Lists.md 'BTD_Mod_Helper.Api.Helpers.Lists') | Provides quick access to many major BTD6 object lists |
 | [MapHelper](BTD_Mod_Helper.Api.Helpers.MapHelper.md 'BTD_Mod_Helper.Api.Helpers.MapHelper') | Contains helper methods for working with maps and custom maps. |
 | [MatchScale](BTD_Mod_Helper.Api.Helpers.MatchScale.md 'BTD_Mod_Helper.Api.Helpers.MatchScale') | Component to make this transform continuously match the scale of another transform |
 | [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') | A wrapper class around a Model |
@@ -176,6 +179,7 @@
 | [ModSettingDouble](BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingDouble') | ModSetting for a decimal value |
 | [ModSettingEnum&lt;T&gt;](BTD_Mod_Helper.Api.ModOptions.ModSettingEnum_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingEnum<T>') | ModSetting for an Enum value |
 | [ModSettingFile](BTD_Mod_Helper.Api.ModOptions.ModSettingFile.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingFile') | ModSetting for selecting a specific file on the host computer |
+| [ModSettingFloat](BTD_Mod_Helper.Api.ModOptions.ModSettingFloat.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingFloat') | Alias for [ModSettingDouble](BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingDouble') |
 | [ModSettingFolder](BTD_Mod_Helper.Api.ModOptions.ModSettingFolder.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingFolder') | ModSetting for selecting a specific folder on the host computer |
 | [ModSettingHotkey](BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey') | ModSetting for a customizable Hotkey |
 | [ModSettingInt](BTD_Mod_Helper.Api.ModOptions.ModSettingInt.md 'BTD_Mod_Helper.Api.ModOptions.ModSettingInt') | ModSetting for int values |

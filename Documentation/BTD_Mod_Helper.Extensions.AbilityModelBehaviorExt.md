@@ -163,6 +163,21 @@ public static void RemoveBehavior<T>(this AbilityModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior_T_(thisAbilityModel,T).T 'BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehavior<T>(this AbilityModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehaviors(thisAbilityModel)'></a>
+
+## AbilityModelBehaviorExt.RemoveBehaviors(this AbilityModel) Method
+
+Remove all Behaviors of type T
+
+```csharp
+public static void RemoveBehaviors(this AbilityModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehaviors(thisAbilityModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
+
 <a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.RemoveBehaviors_T_(thisAbilityModel)'></a>
 
 ## AbilityModelBehaviorExt.RemoveBehaviors<T>(this AbilityModel) Method

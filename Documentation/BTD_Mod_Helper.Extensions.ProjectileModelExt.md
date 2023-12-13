@@ -112,7 +112,7 @@ public static System.Collections.Generic.List<Projectile> GetProjectileSims(this
 
 ## ProjectileModelExt.RemoveFilter(this ProjectileModel, FilterModel) Method
 
-Adds a new filter to this projectile model
+Removes a specific filter from this projectile model
 
 ```csharp
 public static void RemoveFilter(this ProjectileModel projectile, FilterModel filter);
@@ -131,7 +131,7 @@ public static void RemoveFilter(this ProjectileModel projectile, FilterModel fil
 
 ## ProjectileModelExt.RemoveFilter<T>(this ProjectileModel) Method
 
-Adds a new filter to this projectile model
+Removes the first filter of the given type from this projectile model
 
 ```csharp
 public static void RemoveFilter<T>(this ProjectileModel projectile)

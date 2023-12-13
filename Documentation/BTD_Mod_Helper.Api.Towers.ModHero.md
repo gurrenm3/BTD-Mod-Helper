@@ -139,7 +139,7 @@ The total number of levels this hero has. Do not set this to anything other than
 that you've actually created for your Hero.
 
 ```csharp
-public abstract int MaxLevel { get; }
+public virtual int MaxLevel { get; }
 ```
 
 #### Property Value
@@ -369,7 +369,7 @@ Existing hero skins by their skin/tower name
 Gets the font material for the default SkinData
 
 ```csharp
-public virtual Material GetFontMaterial(System.Collections.Generic.Dictionary<string,SkinData> skinsByName);
+public virtual string GetFontMaterial(System.Collections.Generic.Dictionary<string,SkinData> skinsByName);
 ```
 #### Parameters
 
@@ -380,7 +380,7 @@ public virtual Material GetFontMaterial(System.Collections.Generic.Dictionary<st
 Existing hero skins by their skin/tower name
 
 #### Returns
-[UnityEngine.Material](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Material 'UnityEngine.Material')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.GetHeroIndex(System.Collections.Generic.List_HeroDetailsModel_)'></a>
 
