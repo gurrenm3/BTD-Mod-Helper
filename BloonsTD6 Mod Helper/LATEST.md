@@ -1,8 +1,1 @@
-- Preliminary fixes for v40.0 (thanks @KosmicShovel!)
-- Updates for v40.0 UpgradeTypes, VanillaSprites, etc
-- The `TopPathUpgrades`, `MiddlePathUpgrades` and `BottomPathUpgrades` properties no longer need to be manually specified for `ModTower`s, they will be inferred
-  - Same goes for `MaxLevel` in `ModHero`
-- Added a `Model.RemoveBehaviors()` extension (no type argument) that simply clears all behaviors
-- Fixed a possible visual error with ModSettingFile and ModSettingFolder
-- Let a number of api methods use params arguments
-- Added GetBloonDisplay method to ModDisplay.cs (thanks @DarkTerraYT!)
+- Fixed hints for custom round sets

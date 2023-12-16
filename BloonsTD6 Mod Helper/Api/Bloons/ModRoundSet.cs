@@ -64,7 +64,13 @@ public abstract class ModRoundSet : NamedModContent
     /// <summary>
     /// Whether these rounds should have custom hints, like Alternate Bloons Rounds does
     /// </summary>
+    [Obsolete("No longer needs to be specified, just use return non null from GetHint")]
     public virtual bool CustomHints => false;
+
+    /// <summary>
+    /// Whether to bypass the base game hints settings. Useful for using your own ModSetting to control hints.
+    /// </summary>
+    public virtual bool AlwaysShowHints => false;
 
     /// <inheritdoc />
     public override void Register()
@@ -121,24 +127,6 @@ public abstract class ModRoundSet : NamedModContent
 
     }
 
-    /// <inheritdoc />
-    public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
-    {
-        base.RegisterText(textTable);
-
-        if (CustomHints)
-        {
-            for (var round = 0; round < DefinedRounds; round++)
-            {
-                var hint = GetHint(round);
-                if (hint != null)
-                {
-                    textTable.Add(HintKey(round), hint);
-                }
-            }
-        }
-    }
-
     /// <summary>
     /// Called to modify any/all rounds from 1 to <see cref="DefinedRounds" />
     /// </summary>
@@ -175,7 +163,7 @@ public abstract class ModRoundSet : NamedModContent
     }
 
     /// <summary>
-    /// Gets the custom hint for a specific round. Make sure <see cref="CustomHints" /> is overriden as true.
+    /// Gets the custom hint for a specific round. This will be shown at the <b>end</b> of that round.
     /// <br />
     /// For no hint, return null.
     /// </summary>
@@ -189,8 +177,6 @@ public abstract class ModRoundSet : NamedModContent
     {
 
     }
-
-    internal string HintKey(int round) => $"{Id} Hint {round}";
 
     internal RoundSetModel GetDefaultRoundSetModel()
     {
