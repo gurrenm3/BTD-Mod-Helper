@@ -28,6 +28,19 @@ public abstract string BaseBloon { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.BaseModBloon'></a>
+
+## ModBloon.BaseModBloon Property
+
+The ModBloon that this is based off of, or null if not based on a ModBloon
+
+```csharp
+protected virtual BTD_Mod_Helper.Api.Bloons.ModBloon BaseModBloon { get; }
+```
+
+#### Property Value
+[ModBloon](BTD_Mod_Helper.Api.Bloons.ModBloon.md 'BTD_Mod_Helper.Api.Bloons.ModBloon')
+
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Camo'></a>
 
 ## ModBloon.Camo Property

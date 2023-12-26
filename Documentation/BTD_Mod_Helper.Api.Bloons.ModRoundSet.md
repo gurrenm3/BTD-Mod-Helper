@@ -25,6 +25,19 @@ public virtual bool AddToOverrideMenu { get; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.AlwaysShowHints'></a>
+
+## ModRoundSet.AlwaysShowHints Property
+
+Whether to bypass the base game hints settings. Useful for using your own ModSetting to control hints.
+
+```csharp
+public virtual bool AlwaysShowHints { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.BaseRounds'></a>
 
 ## ModRoundSet.BaseRounds Property
@@ -124,7 +137,7 @@ public virtual SpriteReference IconReference { get; }
 
 ## ModRoundSet.GetHint(int) Method
 
-Gets the custom hint for a specific round. Make sure [CustomHints](BTD_Mod_Helper.Api.Bloons.ModRoundSet.md#BTD_Mod_Helper.Api.Bloons.ModRoundSet.CustomHints 'BTD_Mod_Helper.Api.Bloons.ModRoundSet.CustomHints') is overriden as true.  
+Gets the custom hint for a specific round. This will be shown at the <b>end</b> of that round.  
 <br/>  
 For no hint, return null.
 
