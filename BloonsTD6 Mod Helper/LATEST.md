@@ -1,1 +1,4 @@
+- Fixes for BTD6 v41.0
+- Updated VanillaSprites and UpgradeTypes for v41.0
 - Fixed hints for custom round sets
+- Fixed some more crashes for Linux / Wine / Proton users

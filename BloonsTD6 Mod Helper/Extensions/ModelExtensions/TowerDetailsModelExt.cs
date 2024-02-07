@@ -2,6 +2,7 @@
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
+using UnityEngine;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

@@ -218,7 +218,7 @@ public static class TowerModelExt
     /// Return the TowerPurchaseButton for this TowerModel.
     /// </summary>
     public static TowerPurchaseButton GetTowerPurchaseButton(this TowerModel towerModel) =>
-        ShopMenu.instance.GetTowerButtonFromBaseId(towerModel.GetBaseId());
+        ShopMenu.instance.GetTowerButtonFromBaseId(towerModel.GetBaseId()).GetComponent<TowerPurchaseButton>();
 
     /// <summary>
     /// Return the number position of this TowerModel in the list of all tower models

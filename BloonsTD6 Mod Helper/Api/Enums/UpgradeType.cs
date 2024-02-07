@@ -126,6 +126,7 @@ public static class UpgradeType
     public const string TripleGuns = "Triple Guns";
     public const string ArmorPiercingDarts = "Armor Piercing Darts";
     public const string SubCommander = "Sub Commander";
+    public const string MonkeysubParagon = "MonkeySub Paragon";
     public const string FasterShootingBuccaneer = "Buccaneer-Faster Shooting";
     public const string DoubleShotBuccaneer = "Buccaneer-Double Shot";
     public const string Destroyer = "Buccaneer-Destroyer";
@@ -765,6 +766,7 @@ public static class UpgradeType
         { "TripleGuns", TripleGuns },
         { "ArmorPiercingDarts", ArmorPiercingDarts },
         { "SubCommander", SubCommander },
+        { "MonkeysubParagon", MonkeysubParagon },
         { "FasterShootingBuccaneer", FasterShootingBuccaneer },
         { "DoubleShotBuccaneer", DoubleShotBuccaneer },
         { "Destroyer", Destroyer },

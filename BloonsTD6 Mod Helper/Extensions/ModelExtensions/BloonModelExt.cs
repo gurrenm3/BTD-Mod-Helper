@@ -80,8 +80,11 @@ public static class BloonModelExt
     /// <param name="bloonModel"></param>
     /// <param name="count">Number of bloons in this emission model</param>
     /// <param name="spacing">Space between each bloon in this emission model</param>
-    public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissionModel(this BloonModel bloonModel,
-        int count, int spacing) => Game.instance.model.CreateBloonEmissions(bloonModel, count, spacing);
+    public static Il2CppReferenceArray<BloonEmissionModel> CreateBloonEmissionModel
+    (
+        this BloonModel bloonModel,
+        int count, int spacing
+    ) => Game.instance.model.CreateBloonEmissions(bloonModel, count, spacing);
 
     /// <summary>
     /// Return all BloonToSimulations with this BloonModel
@@ -101,9 +104,9 @@ public static class BloonModelExt
 
         var bloonSims = InGame.instance.GetUnityToSimulation()?.GetAllBloons();
         if (bloonSims is null || !bloonSims.Any())
-            return Array.Empty<BloonToSimulation>().ToList();
+            return new List<BloonToSimulation>();
 
-        var results = bloonSims.Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
+        var results = bloonSims.ToList().Where(b => b.GetBaseModel().IsEqual(bloonModel)).ToList();
         return results;
     }
 

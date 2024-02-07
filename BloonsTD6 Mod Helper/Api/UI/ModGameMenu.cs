@@ -155,7 +155,16 @@ public abstract class ModGameMenu : ModContent
     {
         foreach (var type in Types.Keys)
         {
-            if (MelonUtils.IsUnderWineOrSteamProton() && type == typeof(AchievementsScreen)) continue;
+            if (MelonUtils.IsUnderWineOrSteamProton() &&
+                (type == typeof(AchievementsScreen) ||
+                 type == typeof(GameEventsScreen) ||
+                 type == typeof(CollectionEventUI) ||
+                 type == typeof(PlaySocialScreen) ||
+                 type == typeof(HeroInGameScreen) ||
+                 type == typeof(LevelUpScreen)))
+            {
+                continue;
+            }
 
             var data = DataNames.GetValueOrDefault(type, "data");
             try

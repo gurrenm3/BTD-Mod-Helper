@@ -172,8 +172,11 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <param name="towerInventory"></param>
     /// <param name="allTowersInTheGame"></param>
     [Obsolete("No longer implemented.")]
-    public virtual void OnTowerInventoryInitialized(TowerInventory towerInventory,
-        List<TowerDetailsModel> allTowersInTheGame)
+    public virtual void OnTowerInventoryInitialized
+    (
+        TowerInventory towerInventory,
+        List<TowerDetailsModel> allTowersInTheGame
+    )
     {
     }
 
@@ -417,10 +420,13 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// Equivalent to a HarmonyPostFix on Bloon.Damaged
     /// </summary>
     [Obsolete("No longer implemented")]
-    public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile,
+    public virtual void PostBloonDamaged
+    (
+        Bloon bloon, float totalAmount, Projectile projectile,
         bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower,
         [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true,
-        bool ignoreNonTargetable = false, bool blockSpawnChildren = false)
+        bool ignoreNonTargetable = false, bool blockSpawnChildren = false
+    )
     {
     }
 
@@ -433,8 +439,11 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <param name="newEmissions"></param>
     /// <param name="round"></param>
     /// <param name="index"></param>
-    public virtual void OnBloonEmissionsAdded(Spawner spawner, Il2CppReferenceArray<BloonEmissionModel> newEmissions,
-        int round, int index = 0)
+    public virtual void OnBloonEmissionsAdded
+    (
+        Spawner spawner, Il2CppReferenceArray<BloonEmissionModel> newEmissions,
+        int round, int index = 0
+    )
     {
     }
 
@@ -449,8 +458,11 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <param name="index"></param>
     /// <param name="startingDist"></param>
     /// <param name="bloon"></param>
-    public virtual void OnBloonEmitted(Spawner spawner, BloonModel bloonModel, int round, int index, float startingDist,
-        ref Bloon bloon)
+    public virtual void OnBloonEmitted
+    (
+        Spawner spawner, BloonModel bloonModel, int round, int index, float startingDist,
+        ref Bloon bloon
+    )
     {
     }
 
@@ -560,8 +572,11 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br />
     /// Equivalent to a HarmonyPostFix on Simulation.AddCash
     /// </summary>
-    public virtual void OnCashAdded(double amount, Simulation.CashType from,
-        int cashIndex, Simulation.CashSource source, Tower tower)
+    public virtual void OnCashAdded
+    (
+        double amount, Simulation.CashType from,
+        int cashIndex, Simulation.CashSource source, Tower tower
+    )
     {
     }
 
@@ -570,8 +585,11 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br />
     /// Equivalent to a HarmonyPostFix on Simulation.RemoveCash
     /// </summary>
-    public virtual void OnCashRemoved(double amount, Simulation.CashType from, int cashIndex,
-        Simulation.CashSource source)
+    public virtual void OnCashRemoved
+    (
+        double amount, Simulation.CashType from, int cashIndex,
+        Simulation.CashSource source
+    )
     {
     }
 
@@ -715,8 +733,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <param name="index"></param>
     /// <param name="showAmount"></param>
     /// <param name="button"></param>
-    public virtual void OnTowerButtonCreated(TowerModel tower, int index, bool showAmount,
-        ref TowerPurchaseButton button)
+    public virtual void OnTowerButtonCreated(TowerModel tower, int index, bool showAmount, ref ITowerPurchaseButton button)
     {
     }
 
@@ -728,8 +745,11 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <param name="towerInventory"></param>
     /// <param name="baseTowers"></param>
     /// <returns></returns>
-    public virtual void PreTowerInventoryInit(TowerInventory towerInventory,
-        ref IEnumerable<TowerDetailsModel> baseTowers)
+    public virtual void PreTowerInventoryInit
+    (
+        TowerInventory towerInventory,
+        ref IEnumerable<TowerDetailsModel> baseTowers
+    )
     {
     }
 

@@ -898,34 +898,34 @@ Equivalent to a HarmonyPostFix on TitleScreen.Start
 public virtual void OnTitleScreen();
 ```
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,TowerPurchaseButton)'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,ITowerPurchaseButton)'></a>
 
-## BloonsTD6Mod.OnTowerButtonCreated(TowerModel, int, bool, TowerPurchaseButton) Method
+## BloonsTD6Mod.OnTowerButtonCreated(TowerModel, int, bool, ITowerPurchaseButton) Method
 
 Called after a TowerPurchaseButton is created  
 <br/>  
 Equivalent to a HarmonyPostfix on ShopMenu.CreateTowerButton
 
 ```csharp
-public virtual void OnTowerButtonCreated(TowerModel tower, int index, bool showAmount, ref TowerPurchaseButton button);
+public virtual void OnTowerButtonCreated(TowerModel tower, int index, bool showAmount, ref ITowerPurchaseButton button);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,TowerPurchaseButton).tower'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,ITowerPurchaseButton).tower'></a>
 
 `tower` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,TowerPurchaseButton).index'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,ITowerPurchaseButton).index'></a>
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,TowerPurchaseButton).showAmount'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,ITowerPurchaseButton).showAmount'></a>
 
 `showAmount` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,TowerPurchaseButton).button'></a>
+<a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerButtonCreated(TowerModel,int,bool,ITowerPurchaseButton).button'></a>
 
-`button` [Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton 'Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton')
+`button` [Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.ITowerPurchaseButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.ITowerPurchaseButton 'Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.ITowerPurchaseButton')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnTowerCreated(Tower,Entity,Model)'></a>
 
