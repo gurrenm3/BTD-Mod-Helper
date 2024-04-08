@@ -5,7 +5,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.UI.Menus;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Home;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using UnityEngine.UI;
 using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;

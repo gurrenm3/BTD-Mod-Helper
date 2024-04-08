@@ -1,7 +1,7 @@
 using System;
 using BTD_Mod_Helper.Api.Bloons;
 using Il2CppAssets.Scripts.Unity.Display;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>

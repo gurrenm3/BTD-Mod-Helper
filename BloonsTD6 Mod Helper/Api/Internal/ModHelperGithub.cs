@@ -11,7 +11,6 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;

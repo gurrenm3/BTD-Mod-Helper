@@ -5,7 +5,7 @@ using Il2CppAssets.Scripts.Data.Skins;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 #pragma warning disable CS0618 // Type or member is obsolete
 namespace BTD_Mod_Helper.Api.Towers;

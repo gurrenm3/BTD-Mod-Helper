@@ -165,7 +165,7 @@ public static void SetDisplay(this ProjectileModel projectileModel, PrefabRefere
 
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,PrefabReference).display'></a>
 
-`display` [Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+`display` [Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,string)'></a>
 

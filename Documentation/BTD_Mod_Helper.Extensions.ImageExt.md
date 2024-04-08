@@ -29,7 +29,7 @@ public static void LoadSprite(this Image image, SpriteReference spriteReference)
 
 <a name='BTD_Mod_Helper.Extensions.ImageExt.LoadSprite(thisImage,SpriteReference).spriteReference'></a>
 
-`spriteReference` [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+`spriteReference` [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Extensions.ImageExt.SaveToPNG(thisImage,string)'></a>
 
@@ -91,7 +91,7 @@ public static void SetSprite(this Image image, SpriteReference spriteReference);
 
 <a name='BTD_Mod_Helper.Extensions.ImageExt.SetSprite(thisImage,SpriteReference).spriteReference'></a>
 
-`spriteReference` [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+`spriteReference` [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 Sprite to change image to
 

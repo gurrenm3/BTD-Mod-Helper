@@ -262,7 +262,7 @@ public SpriteReference IconReference { get; set; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 ### See Also
 - [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.icon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.icon 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.icon')

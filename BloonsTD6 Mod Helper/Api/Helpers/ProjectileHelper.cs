@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
@@ -5,7 +6,8 @@ using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers.Filters;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
+
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
@@ -17,7 +19,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
     /// This ProjectileModel's ProjectileFilterModel
     /// </summary>
     public ProjectileFilterModel Filter => Model.GetBehavior<ProjectileFilterModel>();
-    
+
     /// <summary>
     /// This ProjectileModel's DisplayModel
     /// </summary>
@@ -154,11 +156,20 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
     }
 
     /// Default 0
-    /// <seealso cref="ProjectileModel.checkCollisionFrames"/>
+    /// <seealso cref="ProjectileModel.checkCollisionIntervalFrames"/>
+    [Obsolete]
     public int CheckCollisionFrames
     {
-        get => Model.checkCollisionFrames;
-        set => Model.checkCollisionFrames = value;
+        get => Model.checkCollisionIntervalFrames;
+        set => Model.checkCollisionIntervalFrames = value;
+    }
+
+    /// Default 0
+    /// <seealso cref="ProjectileModel.checkCollisionIntervalFrames"/>
+    public int CheckCollisionIntervalFrames
+    {
+        get => Model.checkCollisionIntervalFrames;
+        set => Model.checkCollisionIntervalFrames = value;
     }
 
     /// Default false

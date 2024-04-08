@@ -130,7 +130,7 @@ public virtual SpriteReference IconReference { get; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.GetHint(int)'></a>

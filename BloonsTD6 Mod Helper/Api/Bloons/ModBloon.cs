@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Bloons;
 
 /// <summary>

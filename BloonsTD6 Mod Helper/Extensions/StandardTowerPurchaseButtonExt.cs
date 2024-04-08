@@ -1,7 +1,4 @@
-﻿using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
-using UnityEngine;
-using UnityEngine.UI;
-namespace BTD_Mod_Helper.Extensions;
+﻿namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// Extensions for StandardTowerPurchaseButtons

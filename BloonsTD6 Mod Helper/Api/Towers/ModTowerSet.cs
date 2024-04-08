@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>

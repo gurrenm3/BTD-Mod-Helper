@@ -73,7 +73,7 @@ public static TowerModel GetTower(this TowerDetailsModel towerDetailsModel);
 Get the TowerPurchaseButton that is used to buy this specific TowerDetailModel
 
 ```csharp
-public static Transform GetTowerPurchaseButton(this TowerDetailsModel towerDetailsModel);
+public static TowerPurchaseButton GetTowerPurchaseButton(this TowerDetailsModel towerDetailsModel);
 ```
 #### Parameters
 
@@ -82,7 +82,7 @@ public static Transform GetTowerPurchaseButton(this TowerDetailsModel towerDetai
 `towerDetailsModel` [Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel 'Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel')
 
 #### Returns
-[UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
+[Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton 'Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton')
 
 <a name='BTD_Mod_Helper.Extensions.TowerDetailsModelExt.IsHero(thisTowerDetailsModel)'></a>
 

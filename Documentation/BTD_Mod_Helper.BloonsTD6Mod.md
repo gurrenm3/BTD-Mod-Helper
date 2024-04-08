@@ -880,7 +880,7 @@ public virtual void OnSpriteLoad(SpriteReference spriteref, Image image);
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnSpriteLoad(SpriteReference,Image).spriteref'></a>
 
-`spriteref` [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+`spriteref` [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnSpriteLoad(SpriteReference,Image).image'></a>
 

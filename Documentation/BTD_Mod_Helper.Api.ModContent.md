@@ -124,7 +124,7 @@ public static AudioSourceReference CreateAudioSourceReference(string guid);
 The guid that you'd like to assign to the AudioSourceReference
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreateAudioSourceReference_T_(string)'></a>
 
@@ -152,7 +152,7 @@ The mod
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference(string)'></a>
@@ -173,7 +173,7 @@ public static PrefabReference CreatePrefabReference(string guid);
 The guid that you'd like to assign to the PrefabReference
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference_T_()'></a>
 
@@ -192,7 +192,7 @@ public static PrefabReference CreatePrefabReference<T>()
 `T`
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(string)'></a>
 
@@ -212,7 +212,7 @@ public static SpriteReference CreateSpriteReference(string guid);
 The guid that you'd like to assign to the SpriteReference
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.Find_T_(string)'></a>
 
@@ -356,7 +356,7 @@ public static AudioSourceReference GetAudioSourceReference(BTD_Mod_Helper.Bloons
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(string)'></a>
@@ -377,7 +377,7 @@ public AudioSourceReference GetAudioSourceReference(string name);
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference_T_(string)'></a>
@@ -406,7 +406,7 @@ The mod
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -770,7 +770,7 @@ The BloonsTD6Mod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(string)'></a>
@@ -791,7 +791,7 @@ protected SpriteReference GetSpriteReference(string name);
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference_T_(string)'></a>
@@ -820,7 +820,7 @@ Your mod's main BloonsTD6Mod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -848,7 +848,7 @@ The BloonsTD6Mod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(string)'></a>
@@ -870,7 +870,7 @@ protected SpriteReference GetSpriteReferenceOrDefault(string name);
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault_T_(string)'></a>
@@ -900,7 +900,7 @@ Your mod's main BloonsTD6Mod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -928,7 +928,7 @@ The BloonsTD6Mod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(string)'></a>
@@ -950,7 +950,7 @@ protected SpriteReference GetSpriteReferenceOrNull(string name);
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull_T_(string)'></a>
@@ -980,7 +980,7 @@ Your mod's main BloonsTD6Mod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string)'></a>

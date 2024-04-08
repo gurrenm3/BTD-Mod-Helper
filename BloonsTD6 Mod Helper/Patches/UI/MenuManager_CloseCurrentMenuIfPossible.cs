@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using BTD_Mod_Helper.Api;
+﻿using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
-using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Unity.Menu;
 namespace BTD_Mod_Helper.Patches.UI;
 

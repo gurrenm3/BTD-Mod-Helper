@@ -1,4 +1,4 @@
-﻿using Il2CppAssets.Scripts.Utils;
+﻿using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Api.Towers;
 

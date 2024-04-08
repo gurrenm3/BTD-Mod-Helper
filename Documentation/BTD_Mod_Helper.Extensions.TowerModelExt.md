@@ -402,7 +402,7 @@ public static string GetTowerId(this TowerModel towerModel);
 Return the TowerPurchaseButton for this TowerModel.
 
 ```csharp
-public static Transform GetTowerPurchaseButton(this TowerModel towerModel);
+public static TowerPurchaseButton GetTowerPurchaseButton(this TowerModel towerModel);
 ```
 #### Parameters
 
@@ -411,7 +411,7 @@ public static Transform GetTowerPurchaseButton(this TowerModel towerModel);
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
 #### Returns
-[UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
+[Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton 'Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu.TowerPurchaseButton')
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.GetTowerSet(thisTowerModel)'></a>
 

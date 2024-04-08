@@ -21,6 +21,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppNinjaKiwi.Common;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppNinjaKiwi.LiNK;
 using Il2CppNinjaKiwi.LiNK.Lobbies;
 using Il2CppNinjaKiwi.NKMulti;

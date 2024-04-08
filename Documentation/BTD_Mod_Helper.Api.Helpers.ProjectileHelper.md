@@ -84,7 +84,21 @@ public int CheckCollisionFrames { get; set; }
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 ### See Also
-- [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionFrames](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionFrames 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionFrames')
+- [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionIntervalFrames](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionIntervalFrames 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionIntervalFrames')
+
+<a name='BTD_Mod_Helper.Api.Helpers.ProjectileHelper.CheckCollisionIntervalFrames'></a>
+
+## ProjectileHelper.CheckCollisionIntervalFrames Property
+
+```csharp
+public int CheckCollisionIntervalFrames { get; set; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+### See Also
+- [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionIntervalFrames](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionIntervalFrames 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.checkCollisionIntervalFrames')
 
 <a name='BTD_Mod_Helper.Api.Helpers.ProjectileHelper.CollissionPasses'></a>
 
@@ -136,7 +150,7 @@ public PrefabReference DisplayReference { get; set; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 ### See Also
 - [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.display](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.display 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.display')
