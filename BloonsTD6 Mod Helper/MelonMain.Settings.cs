@@ -4,7 +4,9 @@ using System.IO;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using UnityEngine;
 using static BTD_Mod_Helper.Api.Enums.VanillaSprites;
 
 namespace BTD_Mod_Helper;
