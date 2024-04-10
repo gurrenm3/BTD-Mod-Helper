@@ -4,9 +4,6 @@
   "private": true,
   "description": "BTD Mods",
   "author": "doombubbles",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
     "dev": "next dev",
     "prebuild": "ts-node src/scripts/prebuild.ts",

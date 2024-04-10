@@ -29,4 +29,4 @@ To be able to see all this documentation from within your IDE, all you have to d
 
 Then, you should be able to see helpful comments like on Mod Helper methods like this
 
- ![Screenshot of doc comment popup](https://media.discordapp.net/attachments/800115046134186026/859521355521982484/unknown.png)
+ ![Screenshot of doc comment popup](images/doc-comment.png)

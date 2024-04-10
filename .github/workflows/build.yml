@@ -6,6 +6,8 @@ on:
       - '*'
     tags:
       - '*'
+    paths:
+      - BloonsTD6 Mod Helper/**
   pull_request:
     branches:
       - '*'

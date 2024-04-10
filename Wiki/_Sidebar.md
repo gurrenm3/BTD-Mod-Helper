@@ -1,5 +1,7 @@
 ##### [Home](/wiki/Home)
 
+##### [Install Guide](/wiki/Install-Guide)
+
 ###### Starting BTD Modding
 
 [Prerequisites](/wiki/Prerequisites)
