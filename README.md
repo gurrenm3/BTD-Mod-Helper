@@ -1,9 +1,10 @@
+
+<h1 align="center">
 <a href="https://github.com/gurrenm3/BTD-Mod-Helper/releases/latest/download/Btd6ModHelper.dll">
     <img id="mod-icon" align="left" alt="Icon" height="90" src="https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/master/BloonsTD6%20Mod%20Helper/Icon.png">
     <img id="download-icon" align="right" alt="Download" height="75" src="https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/master/BloonsTD6%20Mod%20Helper/Resources/DownloadBtn.png">
 </a>
 
-<h1 align="center">
 BTD Mod Helper
 
 [![total downloads](https://img.shields.io/github/downloads/gurrenm3/BTD-Mod-Helper/total 'total downloads for API')](https://github.com/gurrenm3/BTD-Mod-Helper/releases)
