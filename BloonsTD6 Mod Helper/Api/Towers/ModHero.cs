@@ -48,7 +48,7 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// Putting all the hero level upgrades in the top path
     /// </summary>
-    public sealed override int TopPathUpgrades => base.TopPathUpgrades;
+    public sealed override int TopPathUpgrades => base.TopPathUpgrades + 1;
 
     /// <summary>
     /// No other upgrade paths used
