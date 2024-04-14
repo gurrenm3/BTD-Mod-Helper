@@ -364,29 +364,6 @@ The UnityDisplayNode
 
 The name of the texture, without .png
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color)'></a>
-
-## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color) Method
-
-Sets the outline color for the first mesh renderer in the given node
-
-```csharp
-protected void SetMeshOutlineColor(UnityDisplayNode node, Color color);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).node'></a>
-
-`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
-
-The UnityDisplayNode
-
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).color'></a>
-
-`color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
-
-The color for it to be outlined (when not highlighted)
-
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color,int)'></a>
 
 ## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color, int) Method
@@ -416,28 +393,28 @@ The color for it to be outlined (when not highlighted)
 
 What index of mesh renderer to use
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color)'></a>
 
-## ModDisplay.SetMeshTexture(UnityDisplayNode, string) Method
+## ModDisplay.SetMeshOutlineColor(UnityDisplayNode, Color) Method
 
-Sets the mesh texture to that of a named png
+Sets the outline color for the first mesh renderer in the given node
 
 ```csharp
-protected void SetMeshTexture(UnityDisplayNode node, string textureName);
+protected void SetMeshOutlineColor(UnityDisplayNode node, Color color);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).node'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).node'></a>
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
 The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).textureName'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshOutlineColor(UnityDisplayNode,Color).color'></a>
 
-`textureName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`color` [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color')
 
-The name of the texture, without .png
+The color for it to be outlined (when not highlighted)
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string,int)'></a>
 
@@ -468,28 +445,28 @@ The name of the texture, without .png
 
 The index to set at
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_)'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string)'></a>
 
-## ModDisplay.UseNode(string, Action<UnityDisplayNode>) Method
+## ModDisplay.SetMeshTexture(UnityDisplayNode, string) Method
 
-Gets a UnityDisplayNode for a different guid
+Sets the mesh texture to that of a named png
 
 ```csharp
-protected void UseNode(string guid, System.Action<UnityDisplayNode> action);
+protected void SetMeshTexture(UnityDisplayNode node, string textureName);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_).guid'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).node'></a>
 
-`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
-The asset reference guid to get the node from
+The UnityDisplayNode
 
-<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_).action'></a>
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.SetMeshTexture(UnityDisplayNode,string).textureName'></a>
 
-`action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+`textureName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-What to do with the node
+The name of the texture, without .png
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_,DisplayCategory)'></a>
 
@@ -517,3 +494,26 @@ What to do with the node
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_,DisplayCategory).displayCategory'></a>
 
 `displayCategory` [Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory 'Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory')
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_)'></a>
+
+## ModDisplay.UseNode(string, Action<UnityDisplayNode>) Method
+
+Gets a UnityDisplayNode for a different guid
+
+```csharp
+protected void UseNode(string guid, System.Action<UnityDisplayNode> action);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_).guid'></a>
+
+`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The asset reference guid to get the node from
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseNode(string,System.Action_UnityDisplayNode_).action'></a>
+
+`action` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+
+What to do with the node

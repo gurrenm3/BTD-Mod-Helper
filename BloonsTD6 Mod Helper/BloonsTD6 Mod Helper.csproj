@@ -7,7 +7,7 @@
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <LangVersion>preview</LangVersion>
+        <LangVersion>11</LangVersion>
 
         <!--ILRepack settings-->
         <DoILRepack>false</DoILRepack> <!--so that our custom ILRepack.targets is used instead-->

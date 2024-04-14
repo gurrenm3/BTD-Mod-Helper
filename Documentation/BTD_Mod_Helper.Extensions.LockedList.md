@@ -12,30 +12,6 @@ public static class LockedList
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; LockedList
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_)'></a>
-
-## LockedList.Any<T>(this LockList<T>) Method
-
-Return whether or not there are any elements in this
-
-```csharp
-public static bool Any<T>(this LockList<T> source)
-    where T : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_).source'></a>
-
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_,System.Func_T,bool_)'></a>
 
 ## LockedList.Any<T>(this LockList<T>, Func<T,bool>) Method
@@ -60,6 +36,30 @@ public static bool Any<T>(this LockList<T> source, System.Func<T,bool> predicate
 <a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_,System.Func_T,bool_).predicate'></a>
 
 `predicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.LockedList.Any<T>(this LockList<T>, System.Func<T,bool>).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_)'></a>
+
+## LockedList.Any<T>(this LockList<T>) Method
+
+Return whether or not there are any elements in this
+
+```csharp
+public static bool Any<T>(this LockList<T> source)
+    where T : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_).source'></a>
+
+`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -92,29 +92,6 @@ public static int FindIndex<T>(this LockList<T> source, System.Func<T,bool> pred
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_)'></a>
-
-## LockedList.First<T>(this LockList<T>) Method
-
-Return the first element in the collection
-
-```csharp
-public static T First<T>(this LockList<T> source);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).source'></a>
-
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedList.First<T>(this LockList<T>).T')
-
 <a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_,System.Func_T,bool_)'></a>
 
 ## LockedList.First<T>(this LockList<T>, Func<T,bool>) Method
@@ -143,28 +120,28 @@ public static T First<T>(this LockList<T> source, System.Func<T,bool> predicate)
 #### Returns
 [T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.LockedList.First<T>(this LockList<T>, System.Func<T,bool>).T')
 
-<a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_)'></a>
+<a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_)'></a>
 
-## LockedList.FirstOrDefault<T>(this LockList<T>) Method
+## LockedList.First<T>(this LockList<T>) Method
 
-Return the first element in the collection, or return default if it's null
+Return the first element in the collection
 
 ```csharp
-public static T FirstOrDefault<T>(this LockList<T> source);
+public static T First<T>(this LockList<T> source);
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).T'></a>
+<a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).source'></a>
+<a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).source'></a>
 
 `source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
 
 #### Returns
-[T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault<T>(this LockList<T>).T')
+[T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedList.First<T>(this LockList<T>).T')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_,System.Func_T,bool_)'></a>
 
@@ -193,6 +170,29 @@ public static T FirstOrDefault<T>(this LockList<T> source, System.Func<T,bool> p
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault<T>(this LockList<T>, System.Func<T,bool>).T')
+
+<a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_)'></a>
+
+## LockedList.FirstOrDefault<T>(this LockList<T>) Method
+
+Return the first element in the collection, or return default if it's null
+
+```csharp
+public static T FirstOrDefault<T>(this LockList<T> source);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).source'></a>
+
+`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault<T>(this LockList<T>).T')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.ForEach_T_(thisLockList_T_,System.Action_T_)'></a>
 
