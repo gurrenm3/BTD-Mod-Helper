@@ -69,7 +69,7 @@ public static class NKMultiGameInterfaceExt
     public static void SendMessage(this NKMultiGameInterface nkGI, String objectToSend, byte? peerId = null,
         string code = "")
     {
-        var message = MessageUtils.CreateMessage(objectToSend, code);
+        var message = MessageUtils.CreateMessageEx(objectToSend, code);
         if (peerId.HasValue)
             nkGI.SendToPeer(peerId.Value, message);
         else
