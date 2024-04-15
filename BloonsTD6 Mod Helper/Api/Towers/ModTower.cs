@@ -182,7 +182,7 @@ public abstract class ModTower : NamedModContent
 
     internal readonly SortedDictionary<int, ModUpgrade>[] Upgrades = {new(), new(), new()};
     internal IEnumerable<ModUpgrade> AllUpgrades => Upgrades.SelectMany(upgrades => upgrades.Values);
-    internal int[] TierMaxes => new[] {TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades};
+    internal int[] TierMaxes => [TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades];
 
     /// <summary>
     /// Implemented by a ModTower to modify the base tower model before applying any/all ModUpgrades

@@ -7,7 +7,7 @@
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <LangVersion>11</LangVersion>
+        <LangVersion>preview</LangVersion>
 
         <!--btd6.targets settings-->
         <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
