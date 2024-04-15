@@ -170,11 +170,11 @@ public abstract class ModHero : ModTower
     /// <returns></returns>
     public sealed override IEnumerable<int[]> TowerTiers()
     {
-        yield return new[] {0, 0, 0};
+        yield return [0, 0, 0];
 
         for (var i = 2; i <= MaxLevel; i++)
         {
-            yield return new[] {i, 0, 0};
+            yield return [i, 0, 0];
         }
     }
 
