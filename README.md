@@ -20,9 +20,9 @@ A powerful and easy to use API for modding Bloons Tower Defense 6.
 
 ### [Get BTD6 on Steam](https://store.steampowered.com/app/960090/Bloons_TD_6/)
 
-### [Installing BTD Mod Helper](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Install-Guide)
+### [Installing BTD Mod Helper](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Install-Guide)
 
-### [Creating Mods with BTD Mod Helper](https://github.com/gurrenm3/BTD-Mod-Helper/wiki)
+### [Creating Mods with BTD Mod Helper](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Home)
 
 ## Player Features
 
