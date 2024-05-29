@@ -313,6 +313,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br />
     /// Equivalent to a HarmonyPostFix on TimeManager.SetFastForward
     /// </summary>
+    [Obsolete("TimeManager.SetFastForward was removed")]
     public virtual void OnFastForwardChanged(bool newValue)
     {
     }

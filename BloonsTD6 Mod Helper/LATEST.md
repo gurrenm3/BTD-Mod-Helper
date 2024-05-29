@@ -1,1 +1,1 @@
-- Fixed a bug preventing modded heroes from reaching level 20
+- Initial fixes for BTD6 v43.0

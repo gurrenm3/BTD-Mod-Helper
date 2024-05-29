@@ -642,6 +642,25 @@ public static class UpgradeType
     public const string CorvusUpgrade18 = "Corvus Upgrade 18";
     public const string CorvusUpgrade19 = "Corvus Upgrade 19";
     public const string CorvusUpgrade20 = "Corvus Upgrade 20";
+    public const string RosaliaUpgrade2 = "Rosalia Upgrade 2";
+    public const string RosaliaUpgrade3 = "Rosalia Upgrade 3";
+    public const string RosaliaUpgrade4 = "Rosalia Upgrade 4";
+    public const string RosaliaUpgrade5 = "Rosalia Upgrade 5";
+    public const string RosaliaUpgrade6 = "Rosalia Upgrade 6";
+    public const string RosaliaUpgrade7 = "Rosalia Upgrade 7";
+    public const string RosaliaUpgrade8 = "Rosalia Upgrade 8";
+    public const string RosaliaUpgrade9 = "Rosalia Upgrade 9";
+    public const string RosaliaUpgrade10 = "Rosalia Upgrade 10";
+    public const string RosaliaUpgrade11 = "Rosalia Upgrade 11";
+    public const string RosaliaUpgrade12 = "Rosalia Upgrade 12";
+    public const string RosaliaUpgrade13 = "Rosalia Upgrade 13";
+    public const string RosaliaUpgrade14 = "Rosalia Upgrade 14";
+    public const string RosaliaUpgrade15 = "Rosalia Upgrade 15";
+    public const string RosaliaUpgrade16 = "Rosalia Upgrade 16";
+    public const string RosaliaUpgrade17 = "Rosalia Upgrade 17";
+    public const string RosaliaUpgrade18 = "Rosalia Upgrade 18";
+    public const string RosaliaUpgrade19 = "Rosalia Upgrade 19";
+    public const string RosaliaUpgrade20 = "Rosalia Upgrade 20";
     public static readonly Dictionary<string, string> ByName = new() 
     {
         { "SharpShots", SharpShots },
@@ -1282,5 +1301,24 @@ public static class UpgradeType
         { "CorvusUpgrade18", CorvusUpgrade18 },
         { "CorvusUpgrade19", CorvusUpgrade19 },
         { "CorvusUpgrade20", CorvusUpgrade20 },
+        { "RosaliaUpgrade2", RosaliaUpgrade2 },
+        { "RosaliaUpgrade3", RosaliaUpgrade3 },
+        { "RosaliaUpgrade4", RosaliaUpgrade4 },
+        { "RosaliaUpgrade5", RosaliaUpgrade5 },
+        { "RosaliaUpgrade6", RosaliaUpgrade6 },
+        { "RosaliaUpgrade7", RosaliaUpgrade7 },
+        { "RosaliaUpgrade8", RosaliaUpgrade8 },
+        { "RosaliaUpgrade9", RosaliaUpgrade9 },
+        { "RosaliaUpgrade10", RosaliaUpgrade10 },
+        { "RosaliaUpgrade11", RosaliaUpgrade11 },
+        { "RosaliaUpgrade12", RosaliaUpgrade12 },
+        { "RosaliaUpgrade13", RosaliaUpgrade13 },
+        { "RosaliaUpgrade14", RosaliaUpgrade14 },
+        { "RosaliaUpgrade15", RosaliaUpgrade15 },
+        { "RosaliaUpgrade16", RosaliaUpgrade16 },
+        { "RosaliaUpgrade17", RosaliaUpgrade17 },
+        { "RosaliaUpgrade18", RosaliaUpgrade18 },
+        { "RosaliaUpgrade19", RosaliaUpgrade19 },
+        { "RosaliaUpgrade20", RosaliaUpgrade20 },
     };
 }
