@@ -1,5 +1,5 @@
-- Initial fixes for BTD6 v43.0
+- Initial fixes for BTD6 v44
+- Removed the BypassSavingRestrictions settings as it's no longer needed (hurray!)
+  - Also removed the AutoHideModdedClientPopup setting as the new popup requests
 
-### Notes for Modders
-
-- For any place where you previously used `InGame.instance.UnityToSimulation`, just switch it now to either `InGame.instance.bridge` or `InGame.Bridge` or `InGame.instance.GetUnityToSimulation()`
+- Added a new String extension for GetBtd6Localization (thanks @DarkTerraYT !)

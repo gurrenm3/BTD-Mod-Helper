@@ -282,7 +282,7 @@ public static class ModTowerHelper
         if (index >= 0)
         {
             var heroDetailsModel =
-                new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, false);
+                new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0,false);
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
 
             var skinsData = GameData.Instance.skinsData;

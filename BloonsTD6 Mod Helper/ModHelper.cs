@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper;
 public static class ModHelper
 {
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.1.21";
+    internal const string Version = "3.1.22";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =
@@ -65,7 +65,7 @@ public static class ModHelper
     internal static bool FallbackToOldLoading
     {
         set => fallBackToOldLoading = value;
-        get => fallBackToOldLoading || MelonMain.UseOldLoading;
+        get => fallBackToOldLoading /*|| MelonMain.UseOldLoading*/;
     }
 
     /// <summary>

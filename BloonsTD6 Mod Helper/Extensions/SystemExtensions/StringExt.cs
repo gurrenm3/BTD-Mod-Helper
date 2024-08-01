@@ -42,20 +42,12 @@ public static class StringExt
         {
             return LocalizationManager.Instance.textTable[id];
         }
-        else if (LocalizationManager.Instance.defaultTable.ContainsKey(id))
+        
+        if (LocalizationManager.Instance.defaultTable.ContainsKey(id))
         {
             return LocalizationManager.Instance.defaultTable[id];
         }
-        else
-        {
-            if (returnAsSpacedIfNoEntry)
-            {
-                return id.Spaced();
-            }
-            else
-            {
-                return id;
-            }
-        }
+        
+        return returnAsSpacedIfNoEntry ? id.Spaced() : id;
     }
 }

@@ -27,26 +27,12 @@ internal partial class MelonMain
         icon = AlternateBloonsBtn
     };
 
-    public static readonly ModSettingBool BypassSavingRestrictions = new(true)
-    {
-        description =
-            "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
-            "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
-            "So, this setting overrides that restriction and will allow progress to be saved once more.",
-        category = General,
-        icon = SaveGameIcon
-    };
-
-    internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
+    /*internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already.",
-        icon = HideIcon,
-        onValueChanged = x =>
-        {
-            PopupScreen.instance.hasSeenModderWarning = x;
-        }
-    };
+        icon = HideIcon
+    };*/
 
     public static readonly ModSettingBool CleanProfile = new(true)
     {
@@ -58,7 +44,7 @@ internal partial class MelonMain
         icon = CleansingFoamUpgradeIcon
     };
 
-    public static readonly ModSettingBool UseOldLoading = new(false)
+    /*public static readonly ModSettingBool UseOldLoading = new(false)
     {
         description =
             "Switches back to the old system of loading all mod content all at once as soon as the Title Screen is reached " +
@@ -67,7 +53,7 @@ internal partial class MelonMain
         category = General,
         requiresRestart = true,
         icon = RetroTechbotIcon
-    };
+    };*/
 
     private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
     {

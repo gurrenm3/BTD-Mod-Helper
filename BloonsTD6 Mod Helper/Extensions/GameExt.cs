@@ -55,8 +55,7 @@ public static class GameExt
     /// <returns></returns>
     public static bool IsAccountFlagged(this Game game)
     {
-        var hackerStatus = game.GetBtd6Player().Hakxr;
-        return hackerStatus.genrl || hackerStatus.ledrbrd;
+        return game.GetBtd6Player().IsFlagged;
     }
 
     /// <summary>
