@@ -200,7 +200,7 @@ internal class ModdedMonkeySelectMenu
         var scale = menu.monkeyGroupButtons[0].transform.lossyScale;
         var monkeyGroupButtonsPos = menu.monkeyGroupButtons[0].transform.parent.position;
 
-        pipHolder.transform.position = monkeyGroupButtonsPos + new Vector3(0, 125, 0) * scale.x;
+        pipHolder.transform.position = monkeyGroupButtonsPos + new Vector3(0, 350, 0) * scale.x;
         pipHolder.transform.localScale = new Vector3(1, 1, 1);
 
         for (var i = 0; i < TotalPages; i++)

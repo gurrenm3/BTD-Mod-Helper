@@ -281,6 +281,21 @@ public static class UpgradeType
     public const string DruidOfWrath = "Druid of Wrath";
     public const string Poplust = "Poplust";
     public const string AvatarOfWrath = "Avatar of Wrath";
+    public const string TridentEfficiency = "Trident Efficiency";
+    public const string TridentSwiftness = "Trident Swiftness";
+    public const string AbyssDweller = "Abyss Dweller";
+    public const string AbyssalWarrior = "Abyssal Warrior";
+    public const string LordOfTheAbyss = "Lord of the Abyss";
+    public const string SharperProngs = "Sharper Prongs";
+    public const string TidalChill = "Tidal Chill";
+    public const string RiptideChampion = "Riptide Champion";
+    public const string ArcticKnight = "Arctic Knight";
+    public const string Popseidon = "Popseidon";
+    public const string EchosensePrecision = "Echosense Precision";
+    public const string EchosenseNetwork = "Echosense Network";
+    public const string AlluringMelody = "Alluring Melody";
+    public const string SymphonicResonance = "Symphonic Resonance";
+    public const string TheFinalHarmonic = "The Final Harmonic";
     public const string IncreasedProduction = "Increased Production";
     public const string GreaterProduction = "Greater Production";
     public const string BananaPlantation = "Banana Plantation";
@@ -940,6 +955,21 @@ public static class UpgradeType
         { "DruidOfWrath", DruidOfWrath },
         { "Poplust", Poplust },
         { "AvatarOfWrath", AvatarOfWrath },
+        { "TridentEfficiency", TridentEfficiency },
+        { "TridentSwiftness", TridentSwiftness },
+        { "AbyssDweller", AbyssDweller },
+        { "AbyssalWarrior", AbyssalWarrior },
+        { "LordOfTheAbyss", LordOfTheAbyss },
+        { "SharperProngs", SharperProngs },
+        { "TidalChill", TidalChill },
+        { "RiptideChampion", RiptideChampion },
+        { "ArcticKnight", ArcticKnight },
+        { "Popseidon", Popseidon },
+        { "EchosensePrecision", EchosensePrecision },
+        { "EchosenseNetwork", EchosenseNetwork },
+        { "AlluringMelody", AlluringMelody },
+        { "SymphonicResonance", SymphonicResonance },
+        { "TheFinalHarmonic", TheFinalHarmonic },
         { "IncreasedProduction", IncreasedProduction },
         { "GreaterProduction", GreaterProduction },
         { "BananaPlantation", BananaPlantation },
