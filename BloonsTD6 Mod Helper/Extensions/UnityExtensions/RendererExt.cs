@@ -11,6 +11,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class RendererExt
 {
+    private const string DefaultShader = "NinjaKiwi/SimpleUnlitOutline";
     private static readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
 
     /// <summary>
@@ -125,7 +126,7 @@ public static class RendererExt
     /// </summary>
     public static void ApplyOutlineShader(this Renderer renderer)
     {
-        var shader = Resources.FindObjectsOfTypeAll<Shader>().First(shader => shader.name == "NinjaKiwi/BTD6/LitOutline");
+        var shader = Resources.FindObjectsOfTypeAll<Shader>().First(shader => shader.name == DefaultShader);
         renderer.material.shader = shader;
         renderer.gameObject.layer = LayerMask.NameToLayer("Towers");
     }
