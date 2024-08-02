@@ -1,2 +1,2 @@
 - Fixed ApplyOutlineShader
-- Updated UpgradeTypes and VanillaSprites enum for Mermonkey
+- Updated UpgradeTypes and VanillaSprites enums for Mermonkey
