@@ -1,2 +1,1 @@
-- Fixed ApplyOutlineShader
-- Updated UpgradeTypes and VanillaSprites enums for Mermonkey
+- Removed a no longer needed patch that had side effects with X/3+/X Mermonkey damage calculations
