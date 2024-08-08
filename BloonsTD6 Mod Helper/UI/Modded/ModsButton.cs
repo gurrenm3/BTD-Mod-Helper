@@ -38,6 +38,13 @@ internal static class ModsButton
         indicator.Find("Glow").GetComponent<Image>().color = Color.green;
         indicator.Find("Icon").GetComponent<Image>().SetSprite(VanillaSprites.UpgradeBtn);
 
+        var error = indicator.gameObject.Duplicate(indicator.parent);
+        error.transform.localPosition = error.transform.localPosition with {x = error.transform.localPosition.x * -1};
+        error.gameObject.SetActive(ModHelper.Mods.Any(mod => mod.loadErrors.Any()));
+        error.transform.Find("Glow").gameObject.SetActive(false);
+        error.transform.Find("Icon").GetComponent<Image>().SetSprite(VanillaSprites.NoticeBtn);
+        error.GetComponentInChildren<CustomScaleAnimator>().enabled = false;
+
         var matchLocalPosition = modsButton.transform.GetChild(0).gameObject.AddComponent<MatchLocalPosition>();
         matchLocalPosition.transformToCopy = copyLocalFrom.transform.GetChild(0);
 

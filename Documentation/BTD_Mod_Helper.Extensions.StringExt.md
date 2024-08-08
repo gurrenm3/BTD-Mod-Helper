@@ -12,6 +12,33 @@ public static class StringExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; StringExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.StringExt.GetBtd6Localization(thisstring,bool)'></a>
+
+## StringExt.GetBtd6Localization(this string, bool) Method
+
+Gets the localization from the current localization text table, or the default one if it's not present in the current one.   
+If the id is not present in any of these, returned as spaced or not spaced depending on parameters.
+
+```csharp
+public static string GetBtd6Localization(this string id, bool returnAsSpacedIfNoEntry=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.StringExt.GetBtd6Localization(thisstring,bool).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The ID of the thing you're trying to get the localization of.
+
+<a name='BTD_Mod_Helper.Extensions.StringExt.GetBtd6Localization(thisstring,bool).returnAsSpacedIfNoEntry'></a>
+
+`returnAsSpacedIfNoEntry` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Should this return the id with spaces if there's no localization present?
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Extensions.StringExt.NullIfEmpty(thisstring)'></a>
 
 ## StringExt.NullIfEmpty(this string) Method

@@ -1,1 +1,3 @@
-- Removed a no longer needed patch that had side effects with X/3+/X Mermonkey damage calculations
+- An error indicator will now show on the main menu Mods Button if any mods have load errors
+- Added a new load error for not being on MelonLoader 0.6.1
+- Fixed unneeded errors on Epic about Il2CppFacepunch.Steamworks

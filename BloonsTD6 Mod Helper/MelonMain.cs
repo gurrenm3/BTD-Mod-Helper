@@ -12,14 +12,14 @@ using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
+using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-1000)]
-[assembly: MelonOptionalDependencies("NAudio.WinMM", "NAudio.Wasapi")] // Avoids the warning about these not getting ILRepacked; they're not needed
+[assembly: MelonOptionalDependencies("NAudio.WinMM", "NAudio.Wasapi", "Il2CppFacepunch.Steamworks")]
 
 namespace BTD_Mod_Helper;
 
@@ -77,6 +77,12 @@ internal partial class MelonMain : BloonsTD6Mod
         if (!ModHelper.IsEpic)
         {
             HarmonyInstance.CreateClassProcessor(typeof(EmbeddedBrowser.SteamWebView_OnGUI), true).Patch();
+        }
+
+        if (typeof(MelonEnvironment).Assembly.GetName().Version is {Minor: 6, Build: > 1})
+        {
+            loadErrors.Add("MelonLoader versions higher than 0.6.1 are not yet considered stable for BloonsTD6. " +
+                           "Please downgrade to MelonLoader 0.6.1 via its installer for best results.");
         }
     }
 
