@@ -32,7 +32,7 @@ internal class TitleScreen_Start
                 .Do(task => task.RunSync());
         }
 
-        NamedModContent.RegisterAll();
+        NamedModContent.RegisterAllText();
         ModSettingsHandler.SaveModSettings(true);
         ModHelperData.SaveAll();
         ModGameMode.ModifyDefaultGameModes(GameData.Instance);

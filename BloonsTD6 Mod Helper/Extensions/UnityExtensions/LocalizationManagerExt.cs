@@ -13,4 +13,9 @@ public static class LocalizationManagerExt
     /// <param name="localization"></param>
     /// <returns></returns>
     public static Dictionary<string, string> GetTextTable(this LocalizationManager localization) => localization.textTable;
+
+    internal static void MiscFixes()
+    {
+        LocalizationManager.Instance.textTable["Round"] = LocalizationManager.Instance.textTable["Round"].ToUpper();
+    }
 }

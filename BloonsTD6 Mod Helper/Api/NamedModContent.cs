@@ -36,7 +36,7 @@ public abstract class NamedModContent : ModContent
         textTable[Id + " Description"] = Description;
     }
 
-    internal static void RegisterAll()
+    internal static void RegisterAllText()
     {
         var currentTable = LocalizationManager.Instance.textTable;
         var defaultTable = LocalizationManager.Instance.defaultTable;
@@ -53,5 +53,6 @@ public abstract class NamedModContent : ModContent
                 ModHelper.Error(e);
             }
         }
+        LocalizationManagerExt.MiscFixes();
     }
 }
