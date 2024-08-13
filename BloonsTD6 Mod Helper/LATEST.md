@@ -1,3 +1,2 @@
-- An error indicator will now show on the main menu Mods Button if any mods have load errors
-- Added a new load error for not being on MelonLoader 0.6.1
-- Fixed unneeded errors on Epic about Il2CppFacepunch.Steamworks
+- Re-fixed the ApplyOutlineShader method to work even if no other displays caused the Shader to already be loaded
+- The space bar can now be used to skip the Title Screen animation and press the Start button

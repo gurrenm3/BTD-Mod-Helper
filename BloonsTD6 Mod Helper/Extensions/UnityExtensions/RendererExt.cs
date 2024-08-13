@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -126,8 +131,17 @@ public static class RendererExt
     /// </summary>
     public static void ApplyOutlineShader(this Renderer renderer)
     {
-        var shader = Resources.FindObjectsOfTypeAll<Shader>().First(shader => shader.name == DefaultShader);
-        renderer.material.shader = shader;
+        var shader = Resources.FindObjectsOfTypeAll<Shader>().FirstOrDefault(shader => shader.name == DefaultShader);
+        if (shader == null)
+        {
+            var dummyDisplay = Game.instance.model.GetTowerWithName(TowerType.DartMonkey).display;
+            Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(dummyDisplay, DisplayCategory.Default,
+                new Action<UnityDisplayNode>(udn => renderer.material.shader = udn.GetRenderers().First().material.shader));
+        }
+        else
+        {
+            renderer.material.shader = shader;
+        }
         renderer.gameObject.layer = LayerMask.NameToLayer("Towers");
     }
 }
