@@ -22,7 +22,7 @@ is or `C:\Program Files\Epic Games\BloonsTD6`.
 
 ### Note: Currently, MelonLoader v0.6.1 is the specific version you should use.
 
-![Melonloader Installer Version Select Screenshot](Images/ml-version-select.png)
+![Melonloader Installer Version Select Screenshot](images/ml-version-select.png)
 
 When installing, you will need to uncheck the "Latest" checkbox as seen above and choose v0.6.1 from the list.
 
