@@ -15,6 +15,8 @@ internal static class ModsButton
 {
     private static SpriteReference Sprite => ModContent.GetSpriteReference<MelonMain>("ModsBtn");
 
+    internal static readonly string Mods = ModHelper.Localize(nameof(Mods), "Mods");
+    
     public static void Create(MainMenu mainMenu)
     {
         var mainMenuTransform = mainMenu.transform.Cast<RectTransform>();
@@ -30,7 +32,7 @@ internal static class ModsButton
         modsButton.RemoveComponent<PipEventChecker>();
         modsButton.GetComponentInChildrenByName<RectTransform>("NewRibbon").gameObject.SetActive(false);
         modsButton.GetComponentInChildrenByName<Image>("Button").SetSprite(Sprite);
-        modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = $"   Mods ({ModHelper.Melons.Count()})";
+        modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = $"   [{Mods}] ({ModHelper.Melons.Count()})";
         modsButton.GetComponentInChildren<Button>().SetOnClick(() => ModGameMenu.Open<ModsMenu>());
 
         var indicator = modsButton.GetComponentInChildrenByName<RectTransform>("ParagonAvailable");

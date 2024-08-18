@@ -74,6 +74,7 @@
         <EmbeddedResource Condition="Exists('ModHelperData.json')" Include="ModHelperData.json"/>
         <EmbeddedResource Condition="Exists('ModHelperData.txt')" Include="ModHelperData.txt"/>
         <EmbeddedResource Remove="**/Screenshot*.png"/>
+        <EmbeddedResource Include="Localization/**/*.json"/>
     </ItemGroup>
 
     <!--Post build events to copy dll/xml to mods folder. Works even if game is currently running-->

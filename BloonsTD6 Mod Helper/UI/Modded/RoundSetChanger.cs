@@ -39,6 +39,11 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
 
     private static bool lastShowing;
 
+    private static readonly string ChangeRounds = ModHelper.Localize(nameof(ChangeRounds), "Change Rounds");
+    private static readonly string RoundChangerAlternate = ModHelper.Localize(nameof(RoundChangerAlternate), "Alternate");
+    private static readonly string RoundChangerClassic = ModHelper.Localize(nameof(RoundChangerClassic), "Classic");
+    private static readonly string RoundChangerNoChange = ModHelper.Localize(nameof(RoundChangerNoChange), "No Change");
+
     /// <summary>
     /// The round set override currently chosen, or null
     /// </summary>
@@ -89,15 +94,15 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         }
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.ABR, "Alternate", VanillaSprites.AlternateBloonsBtn)
+            CreateRoundSetButton(RoundSetType.ABR, RoundChangerAlternate, VanillaSprites.AlternateBloonsBtn)
         );
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.Default, "Classic", VanillaSprites.BlueRoundPlayBtn)
+            CreateRoundSetButton(RoundSetType.Default, RoundChangerClassic, VanillaSprites.BlueRoundPlayBtn)
         );
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.Empty, "No Change", VanillaSprites.WoodenRoundButton)
+            CreateRoundSetButton(RoundSetType.Empty, RoundChangerNoChange, VanillaSprites.WoodenRoundButton)
         );
 
 
@@ -106,7 +111,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
             VanillaSprites.WoodenRoundButton, new Action(StartOptionsMode));
 
         button.AddText(
-            new Info("Text", 0, -175, 500, 100), "Change Rounds", 60f
+            new Info("Text", 0, -175, 500, 100), ChangeRounds, 60f
         );
     }
 

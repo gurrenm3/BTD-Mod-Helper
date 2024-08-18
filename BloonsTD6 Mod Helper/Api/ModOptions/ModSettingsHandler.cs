@@ -29,6 +29,14 @@ internal static class ModSettingsHandler
                 ModHelper.Warning($"Error initializing ModSettings for {mod.Info.Name}");
                 ModHelper.Warning(e);
             }
+            foreach (var (key, value) in mod.ModSettings)
+            {
+                value.displayNameKey = ModContent.Localize(mod, key + " Setting Name", value.displayName);
+                if (!string.IsNullOrEmpty(value.description))
+                {
+                    value.descriptionKey = ModContent.Localize(mod, key + " Setting Description", value.description);
+                }
+            }
         }
     }
 
@@ -41,8 +49,9 @@ internal static class ModSettingsHandler
         foreach (var field in fields)
         {
             var modSetting = (ModSetting) field.GetValue(obj)!;
-            mod.ModSettings[field.Name] = modSetting;
-            modSetting.displayName ??= field.Name.Spaced();
+            modSetting.Name = field.Name;
+            mod.ModSettings[modSetting.Name] = modSetting;
+            modSetting.displayName ??= modSetting.Name.Spaced();
             modSetting.source = obj;
         }
     }

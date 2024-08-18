@@ -35,12 +35,12 @@ public abstract class ModTowerSet : NamedModContent
     /// <summary>
     /// Unused
     /// </summary>
-    public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+    public sealed override string DisplayNamePlural => null;
 
     /// <summary>
     /// Unused
     /// </summary>
-    public sealed override string Description => base.Description;
+    public sealed override string Description => null;
 
     /// <summary>
     /// Name of .png file for the background for towers in the Monkeys menu and the in game shop

@@ -142,7 +142,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
             typeof(MelonAssembly)
                 .GetProperty(nameof(MelonAssembly.HarmonyDontPatchAll))!
                 .GetSetMethod(true)!
-                .Invoke(MelonAssembly, new object[] {true});
+                .Invoke(MelonAssembly, [true]);
 
             modHelperPatchAll = true;
         }

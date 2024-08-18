@@ -9,6 +9,7 @@ using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api;
@@ -505,4 +506,45 @@ public abstract partial class ModContent
     /// Gets the fabricated TowerSet enum value for a ModTowerSet
     /// </summary>
     public static TowerSet GetTowerSet<T>() where T : ModTowerSet => GetInstance<T>().Set;
+
+
+    /// <summary>
+    /// Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with
+    /// the built in language system. NK texts components will <see cref="NK_TextMeshProUGUI.AutoLocalize"/> your keys.
+    /// </summary>
+    /// <param name="mod">The mod</param>
+    /// <param name="key">The localization key</param>
+    /// <param name="text">The default English text</param>
+    /// <returns>The Localization key</returns>
+    public static string Localize(BloonsMod mod, string key, string text)
+    {
+        var id = GetId(mod, key);
+        if (LocalizationManager.Instance != null && LocalizationManager.Instance.defaultTable != null)
+        {
+            LocalizationManager.Instance.defaultTable[id] = text;
+        }
+        else
+        {
+            TaskScheduler.ScheduleTask(() => Localize(mod, key, text),
+                () => LocalizationManager.Instance?.defaultTable != null);
+        }
+
+        return id;
+    }
+
+    /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
+    public static string Localize(BloonsMod mod, string keyAndText) => Localize(mod, keyAndText, keyAndText);
+
+    /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
+    public static string Localize<T>(string key, string text) where T : BloonsMod =>
+        Localize(GetInstance<T>(), key, text);
+
+    /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
+    public static string Localize<T>(string keyAndText) where T : BloonsMod => Localize<T>(keyAndText, keyAndText);
+
+    /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
+    public string Localize(string key, string text) => Localize(mod, key, text);
+
+    /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
+    public string Localize(string keyAndText) => Localize(mod, keyAndText, keyAndText);
 }

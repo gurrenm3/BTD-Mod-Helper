@@ -29,8 +29,6 @@ public static class Fonts
                 FontsByName[fontAsset.name] = fontAsset;
             }
         }
-        
-        LocalizationManager.Instance.textTable["Sell"] = LocalizationManager.Instance.textTable["Sell"].ToUpper();
     }
 
     /// <summary>

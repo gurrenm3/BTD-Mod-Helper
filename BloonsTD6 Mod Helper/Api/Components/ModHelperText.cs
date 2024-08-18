@@ -1,4 +1,5 @@
 ﻿using System;
+using Il2CppNinjaKiwi.Common;
 using Il2CppTMPro;
 namespace BTD_Mod_Helper.Api.Components;
 
@@ -25,7 +26,8 @@ public class ModHelperText : ModHelperComponent
     /// </summary>
     public void SetText(string text)
     {
-        Text.SetText(text);
+        Text.localizeKey = text;
+        Text.SetText(text.Localize());
     }
 
     /// <summary>
@@ -43,7 +45,9 @@ public class ModHelperText : ModHelperComponent
 
         var textMesh = modHelperText.AddComponent<NK_TextMeshProUGUI>();
 
-        textMesh.SetText(text);
+        textMesh.AutoLocalize = true;
+        textMesh.localizeKey = text;
+        textMesh.SetText(text.Localize());
         textMesh.alignment = align;
         textMesh.fontSize = fontSize;
         textMesh.font = Fonts.Btd6FontTitle;

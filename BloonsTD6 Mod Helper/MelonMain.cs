@@ -64,7 +64,6 @@ internal partial class MelonMain : BloonsTD6Mod
 
 
         Schedule_GameModel_Loaded();
-        Schedule_GameModel_Loaded();
         Schedule_GameData_Loaded();
 
         try
@@ -141,6 +140,7 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnInGameLoaded(InGame inGame)
     {
         inGame.gameObject.AddComponent<Instances>();
+        TaskScheduler.ScheduleTask(Schedule_InGame_Loaded, () => !InGame.instance);
     }
 
     public override void OnLoadSettings(JObject settings)

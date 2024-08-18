@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
@@ -21,6 +22,7 @@ internal partial class MelonMain
 
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
+        displayName = "Show Round Set Changer",
         description =
             "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
         category = General,
@@ -54,6 +56,16 @@ internal partial class MelonMain
         requiresRestart = true,
         icon = RetroTechbotIcon
     };*/
+
+    public static readonly ModSettingBool EnableModHelperLocalization = new(true)
+    {
+        description = """
+                      Enable or disable Mod Helper's own localization for its text into non-English languages.
+                      """,
+        category = General,
+        requiresRestart = true,
+        icon = LangUniversalIcon
+    };
 
     private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
     {
@@ -194,8 +206,7 @@ internal partial class MelonMain
     };
 
     public static readonly ModSettingFolder ModSourcesFolder =
-        new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "BTD6 Mod Sources"))
+        new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BTD6 Mod Sources"))
         {
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",

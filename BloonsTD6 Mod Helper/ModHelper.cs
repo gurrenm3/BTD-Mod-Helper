@@ -144,6 +144,12 @@ public static class ModHelper
             }
         }
     }
+    
+    /// <inheritdoc cref="ModContent.Localize(string,string)"/>
+    internal static string Localize(string key, string text) => ModContent.Localize(Main, key, text);
+    
+    /// <inheritdoc cref="ModContent.Localize(string,string)"/>
+    internal static string Localize(string keyAndText) => ModContent.Localize(Main, keyAndText);
 
     #region Console Messages
 

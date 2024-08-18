@@ -46,6 +46,14 @@ internal static class ModHelperGithub
     public static readonly HashSet<string> BannedMods = new();
 
     private static MiscellaneousRateLimit rateLimit;
+    private static readonly string DoYouWantToDownload =
+        ModHelper.Localize(nameof(DoYouWantToDownload), "Do you want to download");
+    private static readonly string AlsoDownloadDeps =
+        ModHelper.Localize(nameof(AlsoDownloadDeps), "Also Download Dependencies?");
+    private static readonly string AlsoDownloadDepsBody = ModHelper.Localize(nameof(AlsoDownloadDepsBody),
+        "has dependencies that it may not function without. Would you like to download these as well?");
+    private static readonly string DownloadDepsSuccess = ModHelper.Localize(nameof(DownloadDepsSuccess),
+        "Successfully downloaded dependencies! Remember to restart to apply changes.");
 
     public static List<ModHelperData> Mods { get; private set; } = new();
     private static bool ForceVerifiedOnly { get; set; }
@@ -216,7 +224,7 @@ internal static class ModHelperGithub
             PopupScreen.instance.SafelyQueue(screen =>
             {
                 screen.ShowPopup(PopupScreen.Placement.menuCenter,
-                    $"Do you want to download\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
+                    $"{DoYouWantToDownload.Localize()}\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                     ParseReleaseMessage(mod.SubPath == null
                         ? latestRelease!.Body
                         : latestCommit!.Commit.Message),
@@ -228,21 +236,24 @@ internal static class ModHelperGithub
 
                         if (dependencies.Any())
                         {
-                            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(
-                                PopupScreen.Placement.menuCenter, "Also Download Dependencies?",
-                                $"{mod.DisplayName} also has the following dependencies that it may not function without: {dependencies.Select(data => data.DisplayName).Join()}. Would you like to download these as well?",
-                                new Action(async () =>
-                                {
-                                    foreach (var modHelperData in dependencies)
+                            PopupScreen.instance.SafelyQueue(screen =>
+                            {
+                                screen.ShowPopup(
+                                    PopupScreen.Placement.menuCenter, AlsoDownloadDeps.Localize(),
+                                    $"{mod.DisplayName} {AlsoDownloadDepsBody.Localize()}\n{dependencies.Select(data => data.DisplayName).Join()}. ",
+                                    new Action(async () =>
                                     {
-                                        ModHelper.Msg($"Also downloading dependency {modHelperData.DisplayName}");
-                                        downloadTask = DownloadLatest(modHelperData, true);
-                                        taskCallback?.Invoke(downloadTask);
-                                        await downloadTask;
-                                    }
-                                    PopupScreen.instance.SafelyQueue(popupScreen => popupScreen.ShowOkPopup(
-                                        "Successfully downloaded dependencies! Remember to restart to apply changes."));
-                                }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true));
+                                        foreach (var modHelperData in dependencies)
+                                        {
+                                            ModHelper.Msg($"Also downloading dependency {modHelperData.DisplayName}");
+                                            downloadTask = DownloadLatest(modHelperData, true);
+                                            taskCallback?.Invoke(downloadTask);
+                                            await downloadTask;
+                                        }
+                                        PopupScreen.instance.SafelyQueue(popupScreen =>
+                                            popupScreen.ShowOkPopup(DownloadDepsSuccess.Localize()));
+                                    }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
+                            });
                         }
                     }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
 

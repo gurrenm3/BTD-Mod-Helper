@@ -95,7 +95,7 @@ internal static class ModsMenuModExt
             mod.Icon.Image.SetSprite(sprite);
         }
 
-        mod.Name.SetText(modHelperData.Name);
+        mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
         // ReSharper disable once AsyncVoidLambda
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));

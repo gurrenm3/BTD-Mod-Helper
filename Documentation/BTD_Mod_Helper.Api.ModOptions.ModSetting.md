@@ -106,6 +106,20 @@ public IModSettings source;
 
 #### Field Value
 [IModSettings](BTD_Mod_Helper.Api.Data.IModSettings.md 'BTD_Mod_Helper.Api.Data.IModSettings')
+### Properties
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.Name'></a>
+
+## ModSetting.Name Property
+
+The name of this mod setting, gotten from the field name
+
+```csharp
+public string Name { get; set; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.CreateBaseOption()'></a>

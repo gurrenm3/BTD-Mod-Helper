@@ -39,6 +39,27 @@ Should this return the id with spaces if there's no localization present?
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Extensions.StringExt.Localize(thisstring)'></a>
+
+## StringExt.Localize(this string) Method
+
+Gets the localization from the current localization text table, or the default one if it's not present in the current one.   
+If the id is not present in any of these, returned as spaced or not spaced depending on parameters.
+
+```csharp
+public static string Localize(this string id);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.StringExt.Localize(thisstring).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The ID of the thing you're trying to get the localization of.
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Extensions.StringExt.NullIfEmpty(thisstring)'></a>
 
 ## StringExt.NullIfEmpty(this string) Method

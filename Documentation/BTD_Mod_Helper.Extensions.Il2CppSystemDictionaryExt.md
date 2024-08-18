@@ -44,6 +44,33 @@ public static void Deconstruct<K,V>(this KeyValuePair<K,V> kvp, out K k, out V v
 
 `v` [V](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Deconstruct_K,V_(thisKeyValuePair_K,V_,K,V).V 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Deconstruct<K,V>(this KeyValuePair<K,V>, K, V).V')
 
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.GetKeys_TKey,TValue_(thisDictionary_TKey,TValue_)'></a>
+
+## Il2CppSystemDictionaryExt.GetKeys<TKey,TValue>(this Dictionary<TKey,TValue>) Method
+
+Get all of the keys from this Dictionary as a list
+
+```csharp
+public static List<TKey> GetKeys<TKey,TValue>(this Dictionary<TKey,TValue> keyValuePairs);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.GetKeys_TKey,TValue_(thisDictionary_TKey,TValue_).TKey'></a>
+
+`TKey`
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.GetKeys_TKey,TValue_(thisDictionary_TKey,TValue_).TValue'></a>
+
+`TValue`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.GetKeys_TKey,TValue_(thisDictionary_TKey,TValue_).keyValuePairs'></a>
+
+`keyValuePairs` [Il2CppSystem.Collections.Generic.Dictionary](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary 'Il2CppSystem.Collections.Generic.Dictionary')
+
+#### Returns
+[Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
 <a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.GetValues_TKey,TValue_(thisDictionary_TKey,TValue_)'></a>
 
 ## Il2CppSystemDictionaryExt.GetValues<TKey,TValue>(this Dictionary<TKey,TValue>) Method
@@ -70,3 +97,57 @@ public static List<TValue> GetValues<TKey,TValue>(this Dictionary<TKey,TValue> k
 
 #### Returns
 [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys_TKey,TValue_(thisDictionary_TKey,TValue_)'></a>
+
+## Il2CppSystemDictionaryExt.Keys<TKey,TValue>(this Dictionary<TKey,TValue>) Method
+
+Get all of the keys from this Dictionary
+
+```csharp
+public static System.Collections.Generic.IReadOnlyCollection<TKey> Keys<TKey,TValue>(this Dictionary<TKey,TValue> keyValuePairs);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys_TKey,TValue_(thisDictionary_TKey,TValue_).TKey'></a>
+
+`TKey`
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys_TKey,TValue_(thisDictionary_TKey,TValue_).TValue'></a>
+
+`TValue`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys_TKey,TValue_(thisDictionary_TKey,TValue_).keyValuePairs'></a>
+
+`keyValuePairs` [Il2CppSystem.Collections.Generic.Dictionary](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary 'Il2CppSystem.Collections.Generic.Dictionary')
+
+#### Returns
+[System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[TKey](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys_TKey,TValue_(thisDictionary_TKey,TValue_).TKey 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys<TKey,TValue>(this Dictionary<TKey,TValue>).TKey')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_)'></a>
+
+## Il2CppSystemDictionaryExt.Values<TKey,TValue>(this Dictionary<TKey,TValue>) Method
+
+Get all of the values from this Dictionary
+
+```csharp
+public static System.Collections.Generic.IReadOnlyCollection<TValue> Values<TKey,TValue>(this Dictionary<TKey,TValue> keyValuePairs);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_).TKey'></a>
+
+`TKey`
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_).TValue'></a>
+
+`TValue`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_).keyValuePairs'></a>
+
+`keyValuePairs` [Il2CppSystem.Collections.Generic.Dictionary](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary 'Il2CppSystem.Collections.Generic.Dictionary')
+
+#### Returns
+[System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[TValue](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_).TValue 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values<TKey,TValue>(this Dictionary<TKey,TValue>).TValue')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')

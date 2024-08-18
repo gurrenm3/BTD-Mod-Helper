@@ -41,6 +41,10 @@
         <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Localization\" />
+    </ItemGroup>
+
     <!--Use the btd6.targets from the Mod Sources folder if this is placed there, otherwise use the included one-->
     <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets"/>
     <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>

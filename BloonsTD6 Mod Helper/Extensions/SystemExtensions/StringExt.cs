@@ -38,16 +38,15 @@ public static class StringExt
     /// <returns></returns>
     public static string GetBtd6Localization(this string id, bool returnAsSpacedIfNoEntry = true)
     {
-        if (LocalizationManager.Instance.textTable.ContainsKey(id))
+        if (!LocalizationManager.Instance.textTable.ContainsKey(id) &&
+            !LocalizationManager.Instance.defaultTable.ContainsKey(id))
         {
-            return LocalizationManager.Instance.textTable[id];
+            return returnAsSpacedIfNoEntry ? id.Spaced() : id;
         }
-        
-        if (LocalizationManager.Instance.defaultTable.ContainsKey(id))
-        {
-            return LocalizationManager.Instance.defaultTable[id];
-        }
-        
-        return returnAsSpacedIfNoEntry ? id.Spaced() : id;
+
+        return LocalizationManager.Instance.GetText(id);
     }
+
+    /// <inheritdoc cref="GetBtd6Localization"/>
+    public static string Localize(this string id) => GetBtd6Localization(id);
 }

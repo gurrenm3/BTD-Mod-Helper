@@ -15,6 +15,35 @@ public static class Il2CppSystemDictionaryExt
         return keyValuePairs._entries.Select(entry => entry.value).Take(keyValuePairs.Count).ToIl2CppList();
     }
 
+    /// <summary>
+    /// Get all of the values from this Dictionary
+    /// </summary>
+    public static System.Collections.Generic.IReadOnlyCollection<TValue> Values<TKey, TValue>(
+        this Dictionary<TKey, TValue> keyValuePairs)
+    {
+        return keyValuePairs._entries.Select(entry => entry.value).Take(keyValuePairs.Count).ToList();
+    }
+
+    /// <summary>
+    /// Get all of the keys from this Dictionary as a list
+    /// </summary>
+    public static List<TKey> GetKeys<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs)
+    {
+        return keyValuePairs._entries.Select(entry => entry.key).Take(keyValuePairs.Count).ToIl2CppList();
+    }
+
+    /// <summary>
+    /// Get all of the keys from this Dictionary
+    /// </summary>
+    public static System.Collections.Generic.IReadOnlyCollection<TKey> Keys<TKey, TValue>(
+        this Dictionary<TKey, TValue> keyValuePairs)
+    {
+        return keyValuePairs._entries.Select(entry => entry.key).Take(keyValuePairs.Count).ToList();
+    }
+
+
+
+
 
     /// <summary>
     /// Deconstruct method of IL2CPP KeyValuePairs

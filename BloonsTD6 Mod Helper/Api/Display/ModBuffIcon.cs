@@ -18,13 +18,13 @@ public abstract class ModBuffIcon : NamedModContent
     protected sealed override float RegistrationPriority => 1f;
 
     /// <inheritdoc />
-    public sealed override string DisplayName => base.DisplayName;
+    public sealed override string DisplayName => null;
 
     /// <inheritdoc />
-    public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+    public sealed override string DisplayNamePlural => null;
 
     /// <inheritdoc />
-    public sealed override string Description => base.Description;
+    public sealed override string Description => null;
 
     /// <summary>
     /// The Icon for to display for the buff

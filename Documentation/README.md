@@ -149,6 +149,7 @@
 | [GameModelExporter](BTD_Mod_Helper.Api.Helpers.GameModelExporter.md 'BTD_Mod_Helper.Api.Helpers.GameModelExporter') | Class for handily exporting elements of the GameModel to json files |
 | [Instances](BTD_Mod_Helper.Api.Helpers.Instances.md 'BTD_Mod_Helper.Api.Helpers.Instances') | Provides quick access to many major BTD6 singleton classes |
 | [Lists](BTD_Mod_Helper.Api.Helpers.Lists.md 'BTD_Mod_Helper.Api.Helpers.Lists') | Provides quick access to many major BTD6 object lists |
+| [LocalizationHelper](BTD_Mod_Helper.Api.Helpers.LocalizationHelper.md 'BTD_Mod_Helper.Api.Helpers.LocalizationHelper') | Helps mods more easily support additional localization for their mod texts |
 | [MapHelper](BTD_Mod_Helper.Api.Helpers.MapHelper.md 'BTD_Mod_Helper.Api.Helpers.MapHelper') | Contains helper methods for working with maps and custom maps. |
 | [MatchScale](BTD_Mod_Helper.Api.Helpers.MatchScale.md 'BTD_Mod_Helper.Api.Helpers.MatchScale') | Component to make this transform continuously match the scale of another transform |
 | [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') | A wrapper class around a Model |
