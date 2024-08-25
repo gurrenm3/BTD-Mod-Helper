@@ -18,7 +18,20 @@ public class ModHelperSlider : ModHelperComponent
     /// </summary>
     public float defaultValue;
 
-    private float scaleFactor = 1;
+    /// <summary>
+    /// The scale factor used for the step size of this slider
+    /// </summary>
+    public float ScaleFactor { get; private set; } = 1;
+    
+    /// <summary>
+    /// The min value of this slider, adjusted for internal scale factor
+    /// </summary>
+    private float MinValue => Slider.minValue / ScaleFactor;
+    
+    /// <summary>
+    /// The min value of this slider, adjusted for internal scale factor
+    /// </summary>
+    private float MaxValue => Slider.maxValue / ScaleFactor;
 
     /// <inheritdoc />
     public ModHelperSlider(IntPtr ptr) : base(ptr)
@@ -38,7 +51,7 @@ public class ModHelperSlider : ModHelperComponent
     /// <summary>
     /// The real current value, scaled by the appropriate scale factor
     /// </summary>
-    public float CurrentValue => Slider.value / scaleFactor;
+    private float CurrentValue => Slider.value / ScaleFactor;
 
     /// <summary>
     /// The image showing where the default value is on the slider
@@ -57,7 +70,7 @@ public class ModHelperSlider : ModHelperComponent
     /// <param name="sendCallback">Whether the onValueChanged listener should fire</param>
     public void SetCurrentValue(float value, bool sendCallback = true)
     {
-        Slider.Set(value * scaleFactor, sendCallback);
+        Slider.Set(value * ScaleFactor, sendCallback);
     }
 
     /// <summary>
@@ -84,13 +97,13 @@ public class ModHelperSlider : ModHelperComponent
 
         if (stepSize > 0)
         {
-            modHelperSlider.scaleFactor = 1 / stepSize;
+            modHelperSlider.ScaleFactor = 1 / stepSize;
             slider.wholeNumbers = true;
         }
 
         modHelperSlider.defaultValue = defaultValue;
-        slider.minValue = minValue * modHelperSlider.scaleFactor;
-        slider.maxValue = maxValue * modHelperSlider.scaleFactor;
+        slider.minValue = minValue * modHelperSlider.ScaleFactor;
+        slider.maxValue = maxValue * modHelperSlider.ScaleFactor;
         var background = modHelperSlider.AddPanel(new Info("Background", InfoPreset.FillParent),
             VanillaSprites.SmallSquareWhite);
         background.Background.color = new Color(.219f, .125f, .058f);
@@ -119,16 +132,16 @@ public class ModHelperSlider : ModHelperComponent
         slider.handleRect = pip;
         slider.m_HandleContainerRect = handleContainer;
 
-        var label = pip.AddText(new Info("Label", 0, handleSize.y / 2 + fontSize, 200, fontSize * 2),
+        var label = pip.AddText(new Info("Label", 0, handleSize.y / 2 + fontSize, 250, fontSize * 2),
             (startingValue ?? defaultValue).ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize);
 
         slider.onValueChanged.AddListener(new Action<float>(value =>
-            label.SetText((value / modHelperSlider.scaleFactor).ToString(CultureInfo.InvariantCulture) + labelSuffix)));
+            label.SetText((value / modHelperSlider.ScaleFactor).ToString(CultureInfo.InvariantCulture) + labelSuffix)));
 
         modHelperSlider.SetCurrentValue(startingValue ?? defaultValue);
 
         slider.onValueChanged.AddListener(new Action<float>(value =>
-            onValueChanged?.Invoke(value / modHelperSlider.scaleFactor)));
+            onValueChanged?.Invoke(value / modHelperSlider.ScaleFactor)));
 
         return modHelperSlider;
     }

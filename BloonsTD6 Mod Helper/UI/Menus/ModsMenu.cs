@@ -318,10 +318,10 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     {
         selectedMod = modSelected;
 
-        selectedModName.SetText(modSelected.DisplayNameKey);
+        selectedModName.SetText(modSelected.DisplayNameKey ?? modSelected.DisplayName);
         selectedModAuthor.SetText(modSelected.DisplayAuthor);
         selectedModVersion.SetText("v" + modSelected.Version);
-        selectedModDescription.SetText(modSelected.DisplayDescriptionKey);
+        selectedModDescription.SetText(modSelected.DisplayDescriptionKey ?? modSelected.DisplayDescription);
 
         selectedModAuthor.Text.SetFaceColor(BlatantFavoritism.GetColor(modSelected.RepoOwner));
 

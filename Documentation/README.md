@@ -351,6 +351,14 @@
 | [MapSelectUI](BTD_Mod_Helper.UI.BTD6.MapSelectUI.md 'BTD_Mod_Helper.UI.BTD6.MapSelectUI') | Class to access the game's Map Select UI |
 | [TitleScreenUI](BTD_Mod_Helper.UI.BTD6.TitleScreenUI.md 'BTD_Mod_Helper.UI.BTD6.TitleScreenUI') | Class to access the Title Screen UI |
 
+<a name='BTD_Mod_Helper.UI.Menus'></a>
+
+## BTD_Mod_Helper.UI.Menus Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModSettingsMenu](BTD_Mod_Helper.UI.Menus.ModSettingsMenu.md 'BTD_Mod_Helper.UI.Menus.ModSettingsMenu') | The ModGameMenu for Mod Settings |
+
 <a name='BTD_Mod_Helper.UI.Modded'></a>
 
 ## BTD_Mod_Helper.UI.Modded Namespace

@@ -171,6 +171,11 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     public virtual ModSettingHotkey Hotkey => null;
 
+    /// <summary>
+    /// Whether this tower should be allowed to be included in Monkey Teams
+    /// </summary>
+    public virtual bool IncludeInMonkeyTeams => true;
+
     internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
     internal virtual bool ShouldCreateParagon =>

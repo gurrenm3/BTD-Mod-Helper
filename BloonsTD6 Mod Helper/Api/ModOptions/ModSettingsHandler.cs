@@ -29,14 +29,6 @@ internal static class ModSettingsHandler
                 ModHelper.Warning($"Error initializing ModSettings for {mod.Info.Name}");
                 ModHelper.Warning(e);
             }
-            foreach (var (key, value) in mod.ModSettings)
-            {
-                value.displayNameKey = ModContent.Localize(mod, key + " Setting Name", value.displayName);
-                if (!string.IsNullOrEmpty(value.description))
-                {
-                    value.descriptionKey = ModContent.Localize(mod, key + " Setting Description", value.description);
-                }
-            }
         }
     }
 
@@ -81,6 +73,15 @@ internal static class ModSettingsHandler
                     }
                 }
                 mod.OnLoadSettings(json);
+            }
+            
+            foreach (var (key, value) in mod.ModSettings)
+            {
+                value.displayNameKey = ModContent.Localize(mod, key + " Setting Name", value.displayName);
+                if (!string.IsNullOrEmpty(value.description))
+                {
+                    value.descriptionKey = ModContent.Localize(mod, key + " Setting Description", value.description);
+                }
             }
         }
         catch (Exception e)

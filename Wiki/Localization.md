@@ -1,6 +1,6 @@
 ### Export Localization Button
 
-Mod Helper 3.2 added a new button in the Mods Menu to export a mod's localization to a json file, which can be edited to
+Mod Helper adds a new button in the Mods Menu to export a mod's localization to a json file, which can be edited to
 change its supported displayed text for your language
 
 - This goes to a newly added subfolder `Mods/BloonsTD6 Mod Helper/Localization/[Language]`
@@ -39,18 +39,12 @@ added options by mod helper (apart from just editing `LocalizationManager.Instan
 private static readonly string DoTheThing = ModContent.Localize<MyMod>(nameof(DoTheThing), "Do The Thing!");
 ```
 
-Or if already within a ModContent descendent class
-
-```csharp
-private readonly string DoTheThing = ModContent.Localize(nameof(DoTheThing), "Do The Thing!");
-```
-
 The result assigned to the `DoTheThing` is your mod specific localization key, that you can use in a
 `ModHelperText.SetText(...)` directly or as `DoTheThing.Localize()` otherwise
 
-Generally speaking you'd want to use `ModContent.Localize` exactly as above, either a static variable anywhere,
-or an instanced variable inside a ModContent class. Other usages than that would still work, but would not make their
-localization key appear for purposes of the Export Localization button.
+Generally speaking you'd want to use `ModContent.Localize` exactly as above, as a static variable.
+Other usages than that would still work, but would only make their localization key appear for purposes of the Export
+Localization button if they got executed before the mods menu opened.
 
 #### NamedModContent.RegisterText Override
 

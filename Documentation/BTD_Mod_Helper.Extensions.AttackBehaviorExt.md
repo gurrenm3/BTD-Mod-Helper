@@ -91,6 +91,38 @@ The Behavior you want
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackBehaviorExt.GetAttackBehaviors_T_(thisAttack).T 'BTD_Mod_Helper.Extensions.AttackBehaviorExt.GetAttackBehaviors<T>(this Attack).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack,T)'></a>
+
+## AttackBehaviorExt.HasAttackBehavior<T>(this Attack, T) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasAttackBehavior<T>(this Attack attack, out T item)
+    where T : AttackBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack,T).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack,T).attack'></a>
+
+`attack` [Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack 'Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack')
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack,T).item'></a>
+
+`item` [T](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack,T).T 'BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior<T>(this Attack, T).T')
+
+The returned item, if it exists
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack)'></a>
 
 ## AttackBehaviorExt.HasAttackBehavior<T>(this Attack) Method

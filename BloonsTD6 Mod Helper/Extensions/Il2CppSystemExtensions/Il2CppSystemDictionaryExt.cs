@@ -10,35 +10,37 @@ public static class Il2CppSystemDictionaryExt
     /// <summary>
     /// Get all of the values from this Dictionary as a list
     /// </summary>
-    public static List<TValue> GetValues<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs)
-    {
-        return keyValuePairs._entries.Select(entry => entry.value).Take(keyValuePairs.Count).ToIl2CppList();
-    }
+    public static List<TValue> GetValues<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs) =>
+        keyValuePairs.Values().ToIl2CppList();
 
     /// <summary>
     /// Get all of the values from this Dictionary
     /// </summary>
-    public static System.Collections.Generic.IReadOnlyCollection<TValue> Values<TKey, TValue>(
+    public static System.Collections.Generic.IEnumerable<TValue> Values<TKey, TValue>(
         this Dictionary<TKey, TValue> keyValuePairs)
     {
-        return keyValuePairs._entries.Select(entry => entry.value).Take(keyValuePairs.Count).ToList();
+        foreach (var (_, v) in keyValuePairs)
+        {
+            yield return v;
+        }
     }
 
     /// <summary>
     /// Get all of the keys from this Dictionary as a list
     /// </summary>
-    public static List<TKey> GetKeys<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs)
-    {
-        return keyValuePairs._entries.Select(entry => entry.key).Take(keyValuePairs.Count).ToIl2CppList();
-    }
+    public static List<TKey> GetKeys<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs) =>
+        keyValuePairs.Keys().ToIl2CppList();
 
     /// <summary>
     /// Get all of the keys from this Dictionary
     /// </summary>
-    public static System.Collections.Generic.IReadOnlyCollection<TKey> Keys<TKey, TValue>(
+    public static System.Collections.Generic.IEnumerable<TKey> Keys<TKey, TValue>(
         this Dictionary<TKey, TValue> keyValuePairs)
     {
-        return keyValuePairs._entries.Select(entry => entry.key).Take(keyValuePairs.Count).ToList();
+        foreach (var (k, _) in keyValuePairs)
+        {
+            yield return k;
+        }
     }
 
 

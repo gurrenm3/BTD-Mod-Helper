@@ -12,6 +12,12 @@ public static class TowerBehaviorExt
     /// </summary>
     public static bool HasTowerBehavior<T>(this Tower tower) where T : TowerBehavior =>
         tower.towerBehaviors.HasItemsOfType<TowerBehavior, T>();
+    
+    /// <summary>
+    /// Check if this has a specific Behavior
+    /// </summary>
+    public static bool HasTowerBehavior<T>(this Tower tower, out T item) where T : TowerBehavior =>
+        tower.towerBehaviors.HasItemsOfType<TowerBehavior, T>(out item);
 
     /// <summary>
     /// Return the first Behavior of type T

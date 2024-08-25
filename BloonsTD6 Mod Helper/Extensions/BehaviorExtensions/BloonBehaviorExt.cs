@@ -17,6 +17,20 @@ public static class BloonBehaviorExt
         bloon.bloonBehaviors.HasItemsOfType<BloonBehavior, T>();
 
     /// <summary>
+    /// Check if this has a specific Behavior
+    /// </summary>
+    /// <typeparam name="T">The Behavior you're checking for</typeparam>
+    /// <param name="bloon"></param>
+    /// <param name="item">The found item, if any</param>
+    /// <returns></returns>
+    public static bool HasBloonBehavior<T>(this Bloon bloon, out T item) where T : BloonBehavior
+    {
+        item = bloon.GetBloonBehavior<T>();
+        return item != null;
+    }
+
+
+    /// <summary>
     /// Return the first Behavior of type T
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>

@@ -189,6 +189,8 @@ public static class GameModelExporter
         
         Export(LocalizationManager.Instance.textTable, "textTable.json");
         
+        Export(Game.instance.model.paragonDegreeDataModel, "paragonDegreeData.json");
+        
         File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
         ModHelper.Log($"Exported resources to {resourcesPath}");
     }

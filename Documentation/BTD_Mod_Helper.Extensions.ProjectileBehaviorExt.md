@@ -85,6 +85,34 @@ public static System.Collections.Generic.List<T> GetProjectileBehaviors<T>(this 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.md#BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.GetProjectileBehaviors_T_(thisProjectile).T 'BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.GetProjectileBehaviors<T>(this Projectile).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.HasProjectileBehavior_T_(thisProjectile,T)'></a>
+
+## ProjectileBehaviorExt.HasProjectileBehavior<T>(this Projectile, T) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasProjectileBehavior<T>(this Projectile projectile, out T item)
+    where T : ProjectileBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.HasProjectileBehavior_T_(thisProjectile,T).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.HasProjectileBehavior_T_(thisProjectile,T).projectile'></a>
+
+`projectile` [Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile 'Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.HasProjectileBehavior_T_(thisProjectile,T).item'></a>
+
+`item` [T](BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.md#BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.HasProjectileBehavior_T_(thisProjectile,T).T 'BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.HasProjectileBehavior<T>(this Projectile, T).T')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.HasProjectileBehavior_T_(thisProjectile)'></a>
 
 ## ProjectileBehaviorExt.HasProjectileBehavior<T>(this Projectile) Method

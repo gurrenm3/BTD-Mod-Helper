@@ -105,7 +105,7 @@ public static List<TValue> GetValues<TKey,TValue>(this Dictionary<TKey,TValue> k
 Get all of the keys from this Dictionary
 
 ```csharp
-public static System.Collections.Generic.IReadOnlyCollection<TKey> Keys<TKey,TValue>(this Dictionary<TKey,TValue> keyValuePairs);
+public static System.Collections.Generic.IEnumerable<TKey> Keys<TKey,TValue>(this Dictionary<TKey,TValue> keyValuePairs);
 ```
 #### Type parameters
 
@@ -123,7 +123,7 @@ public static System.Collections.Generic.IReadOnlyCollection<TKey> Keys<TKey,TVa
 `keyValuePairs` [Il2CppSystem.Collections.Generic.Dictionary](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary 'Il2CppSystem.Collections.Generic.Dictionary')
 
 #### Returns
-[System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[TKey](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys_TKey,TValue_(thisDictionary_TKey,TValue_).TKey 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys<TKey,TValue>(this Dictionary<TKey,TValue>).TKey')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[TKey](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys_TKey,TValue_(thisDictionary_TKey,TValue_).TKey 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Keys<TKey,TValue>(this Dictionary<TKey,TValue>).TKey')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_)'></a>
 
@@ -132,7 +132,7 @@ public static System.Collections.Generic.IReadOnlyCollection<TKey> Keys<TKey,TVa
 Get all of the values from this Dictionary
 
 ```csharp
-public static System.Collections.Generic.IReadOnlyCollection<TValue> Values<TKey,TValue>(this Dictionary<TKey,TValue> keyValuePairs);
+public static System.Collections.Generic.IEnumerable<TValue> Values<TKey,TValue>(this Dictionary<TKey,TValue> keyValuePairs);
 ```
 #### Type parameters
 
@@ -150,4 +150,4 @@ public static System.Collections.Generic.IReadOnlyCollection<TValue> Values<TKey
 `keyValuePairs` [Il2CppSystem.Collections.Generic.Dictionary](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary 'Il2CppSystem.Collections.Generic.Dictionary')
 
 #### Returns
-[System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[TValue](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_).TValue 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values<TKey,TValue>(this Dictionary<TKey,TValue>).TValue')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[TValue](BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.md#BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values_TKey,TValue_(thisDictionary_TKey,TValue_).TValue 'BTD_Mod_Helper.Extensions.Il2CppSystemDictionaryExt.Values<TKey,TValue>(this Dictionary<TKey,TValue>).TValue')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')

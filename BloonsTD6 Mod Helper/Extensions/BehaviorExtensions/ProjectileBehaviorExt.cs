@@ -12,6 +12,15 @@ public static class ProjectileBehaviorExt
     /// </summary>
     public static bool HasProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior =>
         projectile.projectileBehaviors.HasItemsOfType<ProjectileBehavior, T>();
+    
+    /// <summary>
+    /// Check if this has a specific Behavior
+    /// </summary>
+    public static bool HasProjectileBehavior<T>(this Projectile projectile, out T item) where T : ProjectileBehavior
+    {
+        item = projectile.GetProjectileBehavior<T>();
+        return item != null;
+    }
 
     /// <summary>
     /// Return the first Behavior of type T

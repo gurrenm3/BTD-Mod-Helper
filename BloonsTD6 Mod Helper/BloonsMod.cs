@@ -198,6 +198,11 @@ public abstract class BloonsMod : MelonMod, IModSettings
         OnInitialize();
     }
 
+    /// <summary>
+    /// Saves the current mod settings for this mod
+    /// </summary>
+    public void SaveModSettings() => ModSettingsHandler.SaveModSettings(this);
+
     /// <inheritdoc cref="OnInitializeMelon" />
     public new virtual void OnApplicationStart()
     {
