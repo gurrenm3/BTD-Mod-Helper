@@ -5,6 +5,7 @@
 - Added a button in the Mods Menu that can display the SHA 256 hashes of active mods
 - Added a new `ModTower.IncludeInMonkeyTeams` override
 - Fixed some inconsistencies where some simulation behavior extensions would throw exceptions instead of just returning null
+- ModHelperData now supports multiline raw strings for descriptions, [example](https://github.com/doombubbles/ability-choice/blob/699658591855043372a128294de679670600e3c1/ModHelperData.cs#L10)
 
 ## Localization Updates
 
