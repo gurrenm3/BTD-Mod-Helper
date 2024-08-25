@@ -74,13 +74,18 @@ internal static class ModSettingsHandler
                 }
                 mod.OnLoadSettings(json);
             }
-            
+
             foreach (var (key, value) in mod.ModSettings)
             {
                 value.displayNameKey = ModContent.Localize(mod, key + " Setting Name", value.displayName);
                 if (!string.IsNullOrEmpty(value.description))
                 {
                     value.descriptionKey = ModContent.Localize(mod, key + " Setting Description", value.description);
+                }
+                if (value.category is {displayNameKey: null})
+                {
+                    value.category.displayNameKey = ModContent.Localize(mod, value.category.displayName + " Category",
+                        value.category.displayName);
                 }
             }
         }
