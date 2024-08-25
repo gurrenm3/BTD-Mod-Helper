@@ -12,7 +12,9 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.BTD6;
 using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppFacepunch.Steamworks;
 using Il2CppNinjaKiwi.Common;
@@ -20,9 +22,12 @@ using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI.Extensions;
+using Color = UnityEngine.Color;
 using Image = UnityEngine.UI.Image;
 using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 using Object = Il2CppSystem.Object;
+using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 namespace BTD_Mod_Helper.UI.Menus;
 
 /// <summary>
@@ -92,6 +97,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                                                bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
                                            );
 
+    internal static bool ShowHashes { get; private set; }
 
 
     private static readonly string NoDescription = ModHelper.Localize(nameof(NoDescription), "No description given");
@@ -133,6 +139,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     /// <inheritdoc />
     public override bool OnMenuOpened(Object data)
     {
+        GameMenu.anim.updateMode = AnimatorUpdateMode.UnscaledTime;
         CommonForegroundHeader.SetText("Mods");
 
         var panelTransform = GameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
@@ -150,6 +157,19 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         SetSelectedMod(selectedMod!);
 
         MelonCoroutines.Start(CreateModPanels());
+
+        if (InGame.instance != null)
+        {
+            var clickBlock = GameMenu.gameObject.GetComponentInChildrenByName<NonDrawingGraphic>("ClickBlock").gameObject;
+            clickBlock.RemoveComponent<NonDrawingGraphic>();
+
+            TaskScheduler.ScheduleTask(() =>
+            {
+                var image = clickBlock.AddComponent<Image>();
+                image.color = new Color(0, 0, 0, 0.75f);
+                clickBlock.AddComponent<Lightbox>();
+            });
+        }
 
         return false;
     }
@@ -206,6 +226,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }, VanillaSprites.WoodenRoundButton, new Action(() => Open<ModBrowserMenu>()));
         modBrowserButton.AddImage(new Info("ComputerMonkey", InfoPreset.FillParent), VanillaSprites.BenjaminIcon);
         modBrowserButton.AddText(new Info("Text", 0, -200, 500, 150), BrowseMods, 60f);
+        modBrowserButton.SetActive(InGame.instance == null);
 
         var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, Padding, 400)
         {
@@ -230,6 +251,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }));
 
         createModButton.AddText(new Info("Text", 0, -200, 500, 100), CreateMod, 60f);
+
+        createModButton.SetActive(InGame.instance == null);
 
 
         restartPanel = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350)
@@ -490,6 +513,22 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }
 
         topRow.Mask.enabled = true;
+
+        var hashBtn = leftMenu.AddButton(new Info("HashesButton")
+        {
+            Size = 100,
+            X = -25,
+            Y = 25,
+            Anchor = new Vector2(1, 0)
+        }, VanillaSprites.EnterCodeIcon2, new Action(() =>
+        {
+            ShowHashes = !ShowHashes;
+            foreach (var modPanel in modPanels.Values)
+            {
+                modPanel.Hash.SetActive(ShowHashes);
+            }
+        }));
+        hashBtn.LayoutElement.ignoreLayout = true;
     }
 
     private static void Refresh()

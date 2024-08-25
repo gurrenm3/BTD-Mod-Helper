@@ -66,7 +66,7 @@ internal partial class MelonMain
         requiresRestart = true,
         icon = LangUniversalIcon
     };
-
+    
     private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
     {
         icon = BenjaminIcon

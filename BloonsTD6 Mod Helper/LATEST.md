@@ -1,3 +1,11 @@
+## Misc Updates
+
+- Added a button that lets you open the Mods Menu from the In Game Pause Screen
+  - This includes opening Mod Settings menus, but not many settings yet will probably live update in a game
+- Added a button in the Mods Menu that can display the SHA 256 hashes of active mods
+- Added a new `ModTower.IncludeInMonkeyTeams` override
+- Fixed some inconsistencies where some simulation behavior extensions would throw exceptions instead of just returning null
+
 ## Localization Updates
 
 ### General
@@ -48,9 +56,3 @@
       textTable[Id + " Long Description"] = LongDescription; // More specific stuff to your ModContent
   }
   ```
-
-## Other stuff
-
-- Fixed some inconsistencies where some simulation behavior extensions would throw exceptions instead of just returning null
-- Added a new `ModTower.IncludeInMonkeyTeams` override
-- 

@@ -215,6 +215,11 @@ const Translate = () => {
             />
           </Col>
         </Row>
+        <p>
+          Paste in BTD6 Localization .json content into the left side to
+          translate to different languages. These .json files can be generated
+          my the small button at the top right of the Mod Helper mods menu.
+        </p>
       </Container>
     </Layout>
   );
