@@ -1,4 +1,5 @@
-﻿using BTD_Mod_Helper.Api;
+﻿using System.Linq;
+using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Unity.UI_New.Pause;
@@ -68,7 +69,7 @@ internal static class PauseScreen_Open
         image.SetSprite(sprite);
         
         var modsText = modsBtn.GetComponentInChildren<NK_TextMeshProUGUI>();
-        modsText.localizeKey = ModsButton.Mods;
+        modsText.localizeKey = $"[{ModsButton.Mods}] ({ModHelper.Melons.Count()})";
         modsText.SetText(ModsButton.Mods.Localize());
         
     }

@@ -88,6 +88,15 @@ internal partial class MelonMain : BloonsTD6Mod
             loadErrors.Add("MelonLoader versions higher than 0.6.1 are not yet considered stable for BloonsTD6. " +
                            "Please downgrade to MelonLoader 0.6.1 via its installer for best results.");
         }
+
+        try
+        {
+            FileDialogHelper.PrepareNativeDlls();
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
     }
 
     public override void OnUpdate()
