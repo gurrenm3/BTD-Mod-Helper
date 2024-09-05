@@ -5,16 +5,28 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsTD6 Mod Helper", "BloonsTD6 Mod Helper\BloonsTD6 Mod Helper.csproj", "{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{72A06E52-D302-452F-9F55-C4FC0F14C12A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Installer|Steam = Installer|Steam
+		Installer|Epic = Installer|Epic
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Installer|Epic.ActiveCfg = Installer|Epic
+		{33F3CAD7-6D69-4C86-8117-F5B3BBB81BB2}.Installer|Steam.ActiveCfg = Installer|Steam
+		{72A06E52-D302-452F-9F55-C4FC0F14C12A}.Installer|Steam.ActiveCfg = Installer|Steam
+		{72A06E52-D302-452F-9F55-C4FC0F14C12A}.Installer|Steam.Build.0 = Installer|Steam
+		{72A06E52-D302-452F-9F55-C4FC0F14C12A}.Installer|Epic.ActiveCfg = Installer|Epic
+		{72A06E52-D302-452F-9F55-C4FC0F14C12A}.Installer|Epic.Build.0 = Installer|Epic
+		{72A06E52-D302-452F-9F55-C4FC0F14C12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A06E52-D302-452F-9F55-C4FC0F14C12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

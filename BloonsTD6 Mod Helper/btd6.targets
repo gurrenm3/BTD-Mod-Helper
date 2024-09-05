@@ -58,9 +58,11 @@
     <ItemGroup Condition="$(DontReferenceModHelper) != 'true'">
         <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\Btd6ModHelper.dll')" Private="false">
             <HintPath>$(BloonsTD6)\Mods\Btd6ModHelper.dll</HintPath>
+            <SpecificVersion>false</SpecificVersion>
         </Reference>
         <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll')" Private="false">
             <HintPath>$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll</HintPath>
+            <SpecificVersion>false</SpecificVersion>
         </Reference>
     </ItemGroup>
 

@@ -2,12 +2,12 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>BTD_Mod_Helper</RootNamespace>
-        <Configurations>Debug;Release</Configurations>
+        <Configurations>Debug;Release;Installer</Configurations>
         <Nullable>warnings</Nullable>
         <Optimize>false</Optimize>
         <DebugType>embedded</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <LangVersion>preview</LangVersion>
+        <LangVersion>latest</LangVersion>
 
         <!--btd6.targets settings-->
         <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
@@ -15,7 +15,7 @@
 
         <!--Documentation Settings-->
         <DocumentationFile>bin\Debug\Btd6ModHelper.xml</DocumentationFile>
-        <Platforms>AnyCPU</Platforms>
+        <Platforms>AnyCPU;Steam;Epic</Platforms>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

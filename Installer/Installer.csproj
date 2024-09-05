@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <UseWindowsForms>true</UseWindowsForms>
+        <Configurations>Debug;Release;Installer</Configurations>
+        <Platforms>AnyCPU;Steam;Epic</Platforms>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Installer|Steam' ">
+        <DefineConstants>STEAM</DefineConstants>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Installer|Epic' ">
+      <DefineConstants>EPIC</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="*.msi"/>
+        <None Remove="*.exe"/>
+        <None Remove="*.wxs"/>
+        <None Remove="*.wixpdb"/>
+        <None Remove="*.wixobj"/>
+        <None Remove="wix\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="WixSharp_wix4" Version="2.3.2"/>
+        <PackageReference Include="NSIS-Tool" Version="3.0.6.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="wix\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="wix\**" />
+    </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="cd .\&#xD;&#xA;set ide=true&#xD;&#xA;&quot;$(TargetPath)&quot;"/>
+    </Target>
+
+</Project>
