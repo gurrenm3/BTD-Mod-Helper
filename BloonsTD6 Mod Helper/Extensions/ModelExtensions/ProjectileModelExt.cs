@@ -2,14 +2,13 @@
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
-using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers.Filters;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -108,7 +107,7 @@ public static class ProjectileModelExt
     }
 
     /// <summary>
-    /// Adds a new filter to this projectile model
+    /// Removes a specific filter from this projectile model
     /// </summary>
     public static void RemoveFilter(this ProjectileModel projectile, FilterModel filter)
     {
@@ -123,7 +122,7 @@ public static class ProjectileModelExt
     }
 
     /// <summary>
-    /// Adds a new filter to this projectile model
+    /// Removes the first filter of the given type from this projectile model
     /// </summary>
     public static void RemoveFilter<T>(this ProjectileModel projectile) where T : FilterModel
     {

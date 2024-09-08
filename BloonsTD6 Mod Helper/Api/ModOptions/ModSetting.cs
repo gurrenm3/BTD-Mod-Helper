@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Data;
+using Il2CppNinjaKiwi.Common;
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>
@@ -10,8 +11,6 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// <typeparam name="T">The type that this ModSetting holds</typeparam>
 public abstract class ModSetting<T> : ModSetting
 {
-
-
     /// <summary>
     /// Will only save the result and run onSave if this custom function validates the value
     /// </summary>
@@ -51,6 +50,9 @@ public abstract class ModSetting<T> : ModSetting
 
     /// <inheritdoc />
     public override object GetDefaultValue() => defaultValue;
+    
+    /// <inheritdoc />
+    public override object GetLastSavedValue() => lastSavedValue;
 
     /// <inheritdoc />
     public override void SetValue(object val)
@@ -120,6 +122,11 @@ public abstract class ModSetting
     internal ModHelperOption currentOption;
 
     /// <summary>
+    /// The name of this mod setting, gotten from the field name
+    /// </summary>
+    public string Name { get; internal set; }
+
+    /// <summary>
     /// The description / explanation of this mod setting
     /// </summary>
     public string description;
@@ -127,6 +134,9 @@ public abstract class ModSetting
     /// The exact name displayed for this mod setting. If unset, will use the variable name.
     /// </summary>
     public string displayName;
+
+    internal string displayNameKey;
+    internal string descriptionKey;
 
     /// <summary>
     /// Icon to display alongside the setting
@@ -160,6 +170,12 @@ public abstract class ModSetting
     /// </summary>
     /// <returns>The default value</returns>
     public virtual object GetDefaultValue() => null;
+    
+    /// <summary>
+    /// Gets the last saved value for this ModSetting
+    /// </summary>
+    /// <returns>The last saved value</returns>
+    public virtual object GetLastSavedValue() => null;
 
     /// <summary>
     /// Sets the current value of this ModSetting
@@ -194,7 +210,8 @@ public abstract class ModSetting
     /// </summary>
     protected ModHelperOption CreateBaseOption()
     {
-        var modHelperOption = ModHelperOption.Create(displayName, description, icon);
+        var modHelperOption =
+            ModHelperOption.Create(displayNameKey ?? displayName, description == null ? null : descriptionKey, icon);
         modifyOption?.Invoke(modHelperOption);
         modHelperOption.RestartIcon.SetActive(needsRestartRightNow);
         return modHelperOption;

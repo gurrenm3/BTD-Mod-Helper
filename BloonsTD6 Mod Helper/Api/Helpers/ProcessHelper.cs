@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using BTD_Mod_Helper.UI.BTD6;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
@@ -14,6 +13,8 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class ProcessHelper
 {
+    private static readonly string EpicLauncherWarning = ModHelper.Localize(nameof(EpicLauncherWarning),
+        "For the Epic Games version, you need to manually rerun the game from the Epic Launcher");
     private const int WaitSeconds = 10;
 
     /// <summary>
@@ -25,7 +26,7 @@ public static class ProcessHelper
         if (ModHelper.IsEpic)
         {
             PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(
-                "For the Epic Games version, you need to manually rerun the game from the Epic Launcher",
+                EpicLauncherWarning.Localize(),
                 new Action(() => MenuManager.instance.QuitGame())));
             return;
         }

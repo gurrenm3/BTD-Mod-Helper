@@ -41,7 +41,7 @@ import {
 } from "../lib/mod-browser";
 import { useParam, useParamBool, useParamInt } from "../lib/routing";
 import { useRouter } from "next/router";
-import { chain, rangeRight } from "lodash";
+import { chain, flow, rangeRight, sortBy } from "lodash";
 import DropdownToggle from "react-bootstrap/DropdownToggle";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
 import DropdownItem from "react-bootstrap/DropdownItem";
@@ -183,19 +183,24 @@ export default () => {
 
   const filteredMods = useMemo(
     () =>
-      chain(search ? fuse.search(search).map((value) => value.item) : mods)
-        .filter((data) => !modIsOld(data, oldCutoff))
-        .filter(
-          (data) =>
-            (showUnverified && !moddersData.current.forceVerifiedOnly) ||
-            moddersData.current.verified.includes(data.RepoOwner)
-        )
-        .filter(
-          (data) =>
-            !topic || topic === DefaultTopic || data.Topics.includes(topic)
-        )
-        .sortBy(sortMods(sortingMethod || SortingMethod.RecentlyUpdated))
-        .value(),
+      flow(
+        (mods) =>
+          search ? fuse.search(search).map((value) => value.item) : mods,
+        (mods) => mods.filter((data) => !modIsOld(data, oldCutoff)),
+        (mods) =>
+          mods.filter(
+            (data) =>
+              (showUnverified && !moddersData.current.forceVerifiedOnly) ||
+              moddersData.current.verified.includes(data.RepoOwner)
+          ),
+        (mods) =>
+          mods.filter(
+            (data) =>
+              !topic || topic === DefaultTopic || data.Topics.includes(topic)
+          ),
+        (mods) =>
+          sortBy(mods, sortMods(sortingMethod || SortingMethod.RecentlyUpdated))
+      )(mods),
     [mods, sortingMethod, topic, search, showUnverified, oldCutoff]
   );
 

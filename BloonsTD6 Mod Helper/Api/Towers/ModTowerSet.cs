@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -35,12 +35,12 @@ public abstract class ModTowerSet : NamedModContent
     /// <summary>
     /// Unused
     /// </summary>
-    public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+    public sealed override string DisplayNamePlural => null;
 
     /// <summary>
     /// Unused
     /// </summary>
-    public sealed override string Description => base.Description;
+    public sealed override string Description => null;
 
     /// <summary>
     /// Name of .png file for the background for towers in the Monkeys menu and the in game shop

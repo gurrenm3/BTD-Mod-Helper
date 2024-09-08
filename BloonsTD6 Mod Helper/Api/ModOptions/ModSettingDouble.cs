@@ -45,6 +45,11 @@ public class ModSettingDouble : ModSettingNumber<double>
     /// Constructs a new ModSetting with the given value as default
     /// </summary>
     public static implicit operator ModSettingDouble(double value) => new(value);
+    
+    /// <summary>
+    /// Constructs a new ModSetting with the given value as default
+    /// </summary>
+    public static implicit operator ModSettingDouble(float value) => new(value);
 
     /// <summary>
     /// Gets the current value out of a ModSetting

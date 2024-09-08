@@ -4,7 +4,6 @@ using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppSystem;
 using Array = System.Array;
-using Exception = System.Exception;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>

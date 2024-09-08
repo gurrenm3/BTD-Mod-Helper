@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
@@ -22,32 +23,19 @@ internal partial class MelonMain
 
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
+        displayName = "Show Round Set Changer",
         description =
             "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
         category = General,
         icon = AlternateBloonsBtn
     };
 
-    public static readonly ModSettingBool BypassSavingRestrictions = new(true)
-    {
-        description =
-            "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
-            "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
-            "So, this setting overrides that restriction and will allow progress to be saved once more.",
-        category = General,
-        icon = SaveGameIcon
-    };
-
-    internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
+    /*internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already.",
-        icon = HideIcon,
-        onValueChanged = x =>
-        {
-            PopupScreen.instance.hasSeenModderWarning = x;
-        }
-    };
+        icon = HideIcon
+    };*/
 
     public static readonly ModSettingBool CleanProfile = new(true)
     {
@@ -59,7 +47,7 @@ internal partial class MelonMain
         icon = CleansingFoamUpgradeIcon
     };
 
-    public static readonly ModSettingBool UseOldLoading = new(false)
+    /*public static readonly ModSettingBool UseOldLoading = new(false)
     {
         description =
             "Switches back to the old system of loading all mod content all at once as soon as the Title Screen is reached " +
@@ -68,8 +56,18 @@ internal partial class MelonMain
         category = General,
         requiresRestart = true,
         icon = RetroTechbotIcon
-    };
+    };*/
 
+    public static readonly ModSettingBool EnableModHelperLocalization = new(true)
+    {
+        description = """
+                      Enable or disable Mod Helper's own localization for its text into non-English languages.
+                      """,
+        category = General,
+        requiresRestart = true,
+        icon = LangUniversalIcon
+    };
+    
     private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
     {
         icon = BenjaminIcon
@@ -92,13 +90,25 @@ internal partial class MelonMain
         icon = DangerSoonIcon
     };
 
+    public static readonly ModSettingBool PopulateOnStartup = new(true)
+    {
+        description = "Whether to begin fetching mod info from GitHub in the background as the game starts, " +
+                      "rather than waiting until you open the browser for the first time. " +
+                      "Disabling this leads to ~1 second faster startup time, " +
+                      "but a 5s - 10s delay when first opening the browser",
+        category = ModBrowserSettings,
+        icon = AutoStartIcon,
+        requiresRestart = true
+    };
+
     public static readonly ModSettingInt ModsPerPage = new(15)
     {
         description =
             "How many mods to display in each page of the Mod Browser. Lower amounts would marginally improve performance.",
         category = ModBrowserSettings,
         min = 5,
-        max = 100
+        max = 100,
+        icon = TrophyGameUiIcon
     };
 
     public static readonly ModSettingDouble RequestTimeout = new(30)
@@ -197,8 +207,7 @@ internal partial class MelonMain
     };
 
     public static readonly ModSettingFolder ModSourcesFolder =
-        new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "BTD6 Mod Sources"))
+        new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BTD6 Mod Sources"))
         {
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",

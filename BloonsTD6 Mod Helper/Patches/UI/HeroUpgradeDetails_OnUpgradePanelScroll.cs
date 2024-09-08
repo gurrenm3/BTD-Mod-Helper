@@ -10,7 +10,7 @@ internal static class HeroUpgradeDetails_OnUpgradePanelScroll
     private static bool Prefix(HeroUpgradeDetails __instance, ref Il2CppReferenceArray<HeroUpgradeButton> __state)
     {
         __state = __instance.heroUpgrades;
-        if (ModTowerHelper.ModTowerCache.TryGetValue(__instance.selectedHeroId, out var tower) &&
+        if (ModTowerHelper.ModTowerCache.TryGetValue(__instance.SelectedHeroId, out var tower) &&
             tower is ModHero {MaxLevel: < 20} hero)
         {
             __instance.heroUpgrades = __instance.heroUpgrades.Take(hero.MaxLevel).ToIl2CppReferenceArray();

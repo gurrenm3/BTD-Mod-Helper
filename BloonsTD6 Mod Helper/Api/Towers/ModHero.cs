@@ -5,8 +5,9 @@ using Il2CppAssets.Scripts.Data.Skins;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
+#pragma warning disable CS0618 // Type or member is obsolete
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -15,13 +16,13 @@ namespace BTD_Mod_Helper.Api.Towers;
 public abstract class ModHero : ModTower
 {
 
-    internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
-    {
+    internal override string[] DefaultMods => base.DefaultMods.Concat([
         "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands",
         "Scholarships", "SelfTaughtHeroes", "WeakPoint"
-    }).ToArray();
+    ]).ToArray();
 
     internal sealed override int UpgradePaths => 1;
+    internal override int StartTier => 1;
 
     /// <summary>
     /// Heroes aren't in the default shop
@@ -46,7 +47,7 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// Putting all the hero level upgrades in the top path
     /// </summary>
-    public sealed override int TopPathUpgrades => MaxLevel;
+    public sealed override int TopPathUpgrades => base.TopPathUpgrades + 1;
 
     /// <summary>
     /// No other upgrade paths used
@@ -57,6 +58,11 @@ public abstract class ModHero : ModTower
     /// No other upgrade paths used
     /// </summary>
     public sealed override int BottomPathUpgrades => 0;
+    
+    /// <summary>
+    /// Not a thing anyway
+    /// </summary>
+    public sealed override bool IncludeInMonkeyTeams => false;
 
     /// <summary>
     /// The other hero that has the same colored name in the Heroes menu as you want to use
@@ -103,9 +109,9 @@ public abstract class ModHero : ModTower
     public virtual Dictionary<int, SpriteReference> SelectScreenPortraits => new()
     {
         {1, PortraitReference},
-        {3, GetPortraitReferenceForTiers(new[] {3, 0, 0})},
-        {10, GetPortraitReferenceForTiers(new[] {10, 0, 0})},
-        {20, GetPortraitReferenceForTiers(new[] {20, 0, 0})}
+        {3, GetPortraitReferenceForTiers(3, 0, 0)},
+        {10, GetPortraitReferenceForTiers(10, 0, 0)},
+        {20, GetPortraitReferenceForTiers(20, 0, 0)}
     };
 
 
@@ -113,7 +119,7 @@ public abstract class ModHero : ModTower
     /// The total number of levels this hero has. Do not set this to anything other than number of ModHeroLevels
     /// that you've actually created for your Hero.
     /// </summary>
-    public abstract int MaxLevel { get; }
+    public virtual int MaxLevel => TopPathUpgrades;
 
     /// <summary>
     /// XpRatio to use when determining the default xp costs of the levels.
@@ -168,11 +174,11 @@ public abstract class ModHero : ModTower
     /// <returns></returns>
     public sealed override IEnumerable<int[]> TowerTiers()
     {
-        yield return new[] {0, 0, 0};
+        yield return [0, 0, 0];
 
         for (var i = 2; i <= MaxLevel; i++)
         {
-            yield return new[] {i, 0, 0};
+            yield return [i, 0, 0];
         }
     }
 
@@ -188,7 +194,7 @@ public abstract class ModHero : ModTower
         return baseTowerModel;
     }
 
-    internal override string TowerId(int[] tiers)
+    internal override string TowerId(params int[] tiers)
     {
         var id = Id;
         if (tiers[0] > 0)
@@ -203,7 +209,7 @@ public abstract class ModHero : ModTower
     /// Gets the font material for the default SkinData
     /// </summary>
     /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual Material GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
+    public virtual string GetFontMaterial(Dictionary<string, SkinData> skinsByName) =>
         skinsByName.TryGetValue(NameStyle, out var dataForFont)
             ? dataForFont.fontMaterial
             : skinsByName[TowerType.Quincy].fontMaterial;

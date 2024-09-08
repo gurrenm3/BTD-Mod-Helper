@@ -49,7 +49,7 @@ public virtual SpriteReference ButtonReference { get; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Container'></a>
 
@@ -88,7 +88,7 @@ public virtual SpriteReference ContainerLargeReference { get; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.ContainerReference'></a>
 
@@ -101,7 +101,7 @@ public virtual SpriteReference ContainerReference { get; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Description'></a>
 
@@ -153,7 +153,7 @@ public virtual SpriteReference PortraitReference { get; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Seat'></a>
 
@@ -179,7 +179,7 @@ public virtual SpriteReference SeatReference { get; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.Set'></a>
 

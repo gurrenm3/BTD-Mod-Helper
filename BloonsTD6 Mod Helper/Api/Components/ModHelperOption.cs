@@ -120,13 +120,12 @@ public class ModHelperOption : ModHelperComponent
         var infoPanel = topRow.AddPanel(new Info("InfoPanel", RowHeight));
         if (description != null)
         {
-
             modHelperOption.InfoButton = infoPanel.AddButton(
                 new Info("Info", TextHeight + 25),
                 VanillaSprites.InfoBtn2,
                 string.IsNullOrEmpty(description)
                     ? null
-                    : new Action(() => PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(description)))
+                    : new Action(() => PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(description.Localize())))
             );
         }
 

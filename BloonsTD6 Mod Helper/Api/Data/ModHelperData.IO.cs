@@ -33,6 +33,7 @@ internal partial class ModHelperData
     private const string WorksOnVersionRegex = "\\bWorksOnVersion\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string DependenciesRegex = "\\bDependencies\\s*=\\s*\"(.+)\";?[\n\r]+";
     private const string PluginRegex = "\\bPlugin\\s*=\\s*(false|true);?[\n\r]+";
+    private const string DescRegex2 = "\\bDescription\\s*=\\s+\"{3}\\n(?:^\\s*([^\"{3}\\n]*\\n+))+\\s*\"{3};?[\\n\\r]+";
 
     private static readonly Dictionary<string, MethodInfo> Setters;
     private static readonly Dictionary<string, MethodInfo> Getters;
@@ -73,7 +74,7 @@ internal partial class ModHelperData
     {
         Version = GetRegexMatch<string>(data, VersionRegex);
         Name = GetRegexMatch<string>(data, NameRegex);
-        Description = GetRegexMatch<string>(data, DescRegex, true);
+        Description = GetRegexMatch<string>(data, DescRegex2, true) ?? GetRegexMatch<string>(data, DescRegex, true);
         Icon = GetRegexMatch<string>(data, IconRegex);
         DllName = GetRegexMatch<string>(data, DllRegex);
         ManualDownload = GetRegexMatch<bool>(data, ManualDownloadRegex);
@@ -101,7 +102,7 @@ internal partial class ModHelperData
             {
                 try
                 {
-                    set.Invoke(this, new object[] {json[key]?.ToObject<bool>()});
+                    set.Invoke(this, [json[key]?.ToObject<bool>()]);
                 }
                 catch (Exception)
                 {
@@ -110,7 +111,7 @@ internal partial class ModHelperData
 
                 try
                 {
-                    set.Invoke(this, new object[] {json[key]?.ToObject<string>()});
+                    set.Invoke(this, [json[key]?.ToObject<string>()]);
                 }
                 catch (Exception)
                 {
@@ -122,7 +123,7 @@ internal partial class ModHelperData
 
     private static T GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
     {
-        if (Regex.Match(data, regex) is {Success: true} match)
+        if (Regex.Match(data, regex, RegexOptions.Multiline) is {Success: true} match)
         {
             var matchGroup = match.Groups[1];
             var result = allowMultiline

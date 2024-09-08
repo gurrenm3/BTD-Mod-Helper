@@ -27,7 +27,7 @@ internal static class EmbeddedBrowser
     {
         var player = Game.Player;
         var controller = player.webviewLiNKAccountController ??=
-            new MobileWebviewLiNKAccountController(player.LiNKAccountController, SkuSettings.instance.settings.webviewVersion);
+            new MobileWebviewLiNKAccountController(player.LiNKAccountController, SkuSettings.instance.settings.webviewVersion, new Action(() => {}));
         controller.createEverything().ContinueWith(new Action<Task>(task =>
         {
             if (task.Status != TaskStatus.RanToCompletion) return;
@@ -177,43 +177,6 @@ internal static class EmbeddedBrowser
     }
 
     #endregion*/
-
-    /// <summary>
-    /// Implement JS alerts using Ok popups
-    /// </summary>
-    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnJSAlertAPI))]
-    internal static class HtmlSurface_OnJSAlertAPI
-    {
-        [HarmonyPrefix]
-        private static bool Prefix(HtmlSurface __instance, HTML_JSAlert_t callbackdata)
-        {
-            var nativeHtmlSurface = __instance.client.native.htmlSurface;
-
-            PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(callbackdata.PchMessage,
-                new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, true))));
-            return false;
-        }
-    }
-
-    /// <summary>
-    /// Implement JS confirms using Ok/Cancel popups
-    /// </summary>
-    [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnJSConfirmAPI))]
-    internal static class HtmlSurface_OnJSConfirmAPI
-    {
-        [HarmonyPrefix]
-        private static bool Prefix(HtmlSurface __instance, HTML_JSConfirm_t callbackdata)
-        {
-            var nativeHtmlSurface = __instance.client.native.htmlSurface;
-
-            PopupScreen.instance.SafelyQueue(screen =>
-                screen.ShowPopup(PopupScreen.Placement.menuCenter, "Confirm", callbackdata.PchMessage,
-                    new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, true)), "Ok",
-                    new Action(() => nativeHtmlSurface.JSDialogResponse(callbackdata.UnBrowserHandle, false)), "Cancel",
-                    Popup.TransitionAnim.Scale));
-            return false;
-        }
-    }
 
     /// <summary>
     /// Allow mod files to be downloaded through the browser

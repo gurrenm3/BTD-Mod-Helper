@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using FuzzySharp.SimilarityRatio;
 using FuzzySharp.SimilarityRatio.Scorer;
@@ -29,6 +30,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private static readonly List<SortingMethod> SortingMethods =
         Enum.GetValues(typeof(SortingMethod)).Cast<SortingMethod>().ToList();
 
+    private static readonly List<string> SortingMethodNames =
+        SortingMethods.Select(method => ModHelper.Localize(method.ToString(), method.ToString().Spaced())).ToList();
+
     private readonly IRatioScorer scorer = ScorerCache.Get<WeightedRatioScorer>();
 
     private IList<ModHelperData> currentMods;
@@ -50,13 +54,16 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private int TotalPages => 1 + ((currentMods?.Count ?? 1) - 1) / ModsPerPage;
 
+    private static readonly string FilterByTopic = ModHelper.Localize(nameof(FilterByTopic), "Filter by Topic");
+    private static readonly string ModBrowser = ModHelper.Localize(nameof(ModBrowser), "Mod Browser");
+
     public override bool OnMenuOpened(Object data)
     {
         mods = new ModBrowserMenuMod[ModsPerPage];
         sortingMethod = SortingMethod.RecentlyUpdated;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
-        var modTopics = ModHelperGithub.VisibleMods.SelectMany(data => data.Topics)
+        var modTopics = ModHelperGithub.VisibleMods.SelectMany(visibleMod => visibleMod.Topics)
             .Where(s =>
                 s != ModHelperGithub.RepoTopic &&
                 s != ModHelperGithub.MonoRepoTopic &&
@@ -72,7 +79,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         topicLabels = modTopics
             .OrderByDescending(pair => pair.Value)
             .Select(pair => $"{pair.Key} ({pair.Value})")
-            .Prepend("Filter by Topic")
+            .Prepend(FilterByTopic)
             .ToList();
 
         ModifyExistingElements();
@@ -88,6 +95,11 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         modsNeedRefreshing = true;
         SetPage(0);
         currentSearch = "";
+
+        if (!ModHelperGithub.Mods.Any())
+        {
+            RefreshMods();
+        }
 
         return false;
     }
@@ -116,7 +128,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     public void ModifyExistingElements()
     {
-        GameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("Title").SetText("Mod Browser");
+        GameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("Title").localizeKey = ModBrowser;
 
         GameMenu.GetComponentFromChildrenByName<RectTransform>("TopBar").gameObject.active = false;
         GameMenu.GetComponentFromChildrenByName<RectTransform>("Tabs").gameObject.active = false;
@@ -148,8 +160,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                 AnchorMin = new Vector2(0, 1), AnchorMax = new Vector2(1, 1)
             }, layoutAxis: RectTransform.Axis.Horizontal, padding: 50);
 
-        topArea.AddDropdown(new Info("Sorting", 1000, 150),
-            SortingMethods.Select(method => method.ToString().Spaced()).ToIl2CppList(), 600,
+        topArea.AddDropdown(new Info("Sorting", 1000, 150), SortingMethodNames.ToIl2CppList(), 600,
             new Action<int>(i =>
             {
                 sortingMethod = SortingMethods[i];
@@ -167,7 +178,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
                     currentSearch = s;
                     typingCooldown = TypingCooldown;
                     SetPage(0);
-                }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft, "Search...",
+                }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft,
+            LocalizationHelper.SearchText.Localize(),
             50);
 
         topArea.AddPanel(new Info("Filler 2", InfoPreset.Flex));
@@ -300,7 +312,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         GameMenu.searchingImg.gameObject.SetActive(true);
         foreach (var menuMod in mods)
         {
-            menuMod.SetActive(false);
+            menuMod.Exists()?.SetActive(false);
         }
 
         Task.Run(async () =>

@@ -25,7 +25,7 @@ public static string GetGUID(this SpriteReference spriteReference);
 
 <a name='BTD_Mod_Helper.Extensions.SpriteReferenceExt.GetGUID(thisSpriteReference).spriteReference'></a>
 
-`spriteReference` [Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+`spriteReference` [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

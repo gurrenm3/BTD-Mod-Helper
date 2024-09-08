@@ -106,6 +106,20 @@ public IModSettings source;
 
 #### Field Value
 [IModSettings](BTD_Mod_Helper.Api.Data.IModSettings.md 'BTD_Mod_Helper.Api.Data.IModSettings')
+### Properties
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.Name'></a>
+
+## ModSetting.Name Property
+
+The name of this mod setting, gotten from the field name
+
+```csharp
+public string Name { get; set; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.CreateBaseOption()'></a>
@@ -134,6 +148,20 @@ public virtual object GetDefaultValue();
 #### Returns
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 The default value
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.GetLastSavedValue()'></a>
+
+## ModSetting.GetLastSavedValue() Method
+
+Gets the last saved value for this ModSetting
+
+```csharp
+public virtual object GetLastSavedValue();
+```
+
+#### Returns
+[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
+The last saved value
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.GetValue()'></a>
 

@@ -25,11 +25,24 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 The BaseBloon is the same as its base's
 
 ```csharp
-public override string BaseBloon { get; }
+public sealed override string BaseBloon { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon_T_.BaseModBloon'></a>
+
+## ModBloon<T>.BaseModBloon Property
+
+The ModBloon that this is based off of, or null if not based on a ModBloon
+
+```csharp
+protected sealed override BTD_Mod_Helper.Api.Bloons.ModBloon BaseModBloon { get; }
+```
+
+#### Property Value
+[ModBloon](BTD_Mod_Helper.Api.Bloons.ModBloon.md 'BTD_Mod_Helper.Api.Bloons.ModBloon')
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon_T_.KeepBaseId'></a>
 

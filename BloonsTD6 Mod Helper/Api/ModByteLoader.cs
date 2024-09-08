@@ -219,10 +219,12 @@ public abstract class ModByteLoader : ModContent
 
         foreach (var assetReference in AssetRefTypes)
         {
-            loader = Regex.Replace(loader, $"new Il2CppAssets\\.Scripts\\.Utils\\.{assetReference}\\((.+)\\)",
+            loader = Regex.Replace(loader, $"new NinjaKiwi\\.Common\\.ResourceUtils\\.{assetReference}\\((.+)\\)",
                 $"ModContent.Create{assetReference}($1)");
-            loader = loader.Replace($"(Il2CppReferenceArray<Il2CppAssets.Scripts.Utils.{assetReference}>)",
-                $"(Il2CppAssets.Scripts.Utils.{assetReference}[])");
+            loader = loader.Replace($"(Il2CppReferenceArray<NinjaKiwi.Common.ResourceUtils.{assetReference}>)",
+                $"(Il2CppNinjaKiwi.Common.ResourceUtils.{assetReference}[])");
+            loader = loader.Replace($"new NinjaKiwi.Common.ResourceUtils.{assetReference}[",
+                $"new Il2CppNinjaKiwi.Common.ResourceUtils.{assetReference}[");
         }
 
         using var writer = new StreamWriter(convertedLoader);

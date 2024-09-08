@@ -158,6 +158,27 @@ public static partial class RootObjectLockList
     }
 
     /// <summary>
+    /// Check if this has any items of type TCast
+    /// </summary>
+    /// <typeparam name="TSource"></typeparam>
+    /// <typeparam name="TCast">The Type you're checking for</typeparam>
+    /// <param name="lockList"></param>
+    /// <param name="item">The found item, if any</param>
+    /// <returns></returns>
+    public static bool HasItemsOfType<TSource, TCast>(this RootObjectLockList<TSource> lockList, out TCast item)
+        where TSource : RootObject
+        where TCast : RootObject
+    {
+        item = default;
+        for (var i = 0; i < lockList.Count; i++)
+        {
+            if (lockList.list.Get(i).Is(out item)) return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
     /// Return all Items of type TCast
     /// </summary>
     /// <typeparam name="TSource"></typeparam>

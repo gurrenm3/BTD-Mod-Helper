@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper;
 public static class ModHelper
 {
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.2.0-alpha";
+    internal const string Version = "3.2.1";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =
@@ -65,7 +65,7 @@ public static class ModHelper
     internal static bool FallbackToOldLoading
     {
         set => fallBackToOldLoading = value;
-        get => fallBackToOldLoading || MelonMain.UseOldLoading;
+        get => fallBackToOldLoading /*|| MelonMain.UseOldLoading*/;
     }
 
     /// <summary>
@@ -144,6 +144,12 @@ public static class ModHelper
             }
         }
     }
+    
+    /// <inheritdoc cref="ModContent.Localize(string,string)"/>
+    internal static string Localize(string key, string text) => ModContent.Localize(Main, key, text);
+    
+    /// <inheritdoc cref="ModContent.Localize(string,string)"/>
+    internal static string Localize(string keyAndText) => ModContent.Localize(Main, keyAndText);
 
     #region Console Messages
 

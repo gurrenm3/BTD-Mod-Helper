@@ -12,30 +12,6 @@ public static class Il2CppGenericIEnumerable
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Il2CppGenericIEnumerable
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.Any_T_(thisIEnumerable_T_)'></a>
-
-## Il2CppGenericIEnumerable.Any<T>(this IEnumerable<T>) Method
-
-Return whether or not there are any elements in this
-
-```csharp
-public static bool Any<T>(this IEnumerable<T> source)
-    where T : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.Any_T_(thisIEnumerable_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.Any_T_(thisIEnumerable_T_).source'></a>
-
-`source` [Il2CppSystem.Collections.Generic.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable 'Il2CppSystem.Collections.Generic.IEnumerable')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.Any_T_(thisIEnumerable_T_,System.Func_T,bool_)'></a>
 
 ## Il2CppGenericIEnumerable.Any<T>(this IEnumerable<T>, Func<T,bool>) Method
@@ -64,6 +40,30 @@ public static bool Any<T>(this IEnumerable<T> source, System.Func<T,bool> predic
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.Any_T_(thisIEnumerable_T_)'></a>
+
+## Il2CppGenericIEnumerable.Any<T>(this IEnumerable<T>) Method
+
+Return whether or not there are any elements in this
+
+```csharp
+public static bool Any<T>(this IEnumerable<T> source)
+    where T : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.Any_T_(thisIEnumerable_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.Any_T_(thisIEnumerable_T_).source'></a>
+
+`source` [Il2CppSystem.Collections.Generic.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable 'Il2CppSystem.Collections.Generic.IEnumerable')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.First_T_(thisIEnumerable_T_)'></a>
 
 ## Il2CppGenericIEnumerable.First<T>(this IEnumerable<T>) Method
@@ -87,30 +87,6 @@ public static T First<T>(this IEnumerable<T> source)
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.First_T_(thisIEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.First<T>(this IEnumerable<T>).T')
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_)'></a>
-
-## Il2CppGenericIEnumerable.FirstOrDefault<T>(this IEnumerable<T>) Method
-
-Return the first element in the collection, or return default if it's null
-
-```csharp
-public static T FirstOrDefault<T>(this IEnumerable<T> source)
-    where T : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_).source'></a>
-
-`source` [Il2CppSystem.Collections.Generic.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable 'Il2CppSystem.Collections.Generic.IEnumerable')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault<T>(this IEnumerable<T>).T')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_,System.Func_T,bool_)'></a>
 
@@ -139,6 +115,30 @@ public static T FirstOrDefault<T>(this IEnumerable<T> source, System.Func<T,bool
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault<T>(this IEnumerable<T>, System.Func<T,bool>).T')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_)'></a>
+
+## Il2CppGenericIEnumerable.FirstOrDefault<T>(this IEnumerable<T>) Method
+
+Return the first element in the collection, or return default if it's null
+
+```csharp
+public static T FirstOrDefault<T>(this IEnumerable<T> source)
+    where T : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_).source'></a>
+
+`source` [Il2CppSystem.Collections.Generic.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable 'Il2CppSystem.Collections.Generic.IEnumerable')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault_T_(thisIEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.FirstOrDefault<T>(this IEnumerable<T>).T')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.ForEach_T_(thisIEnumerable_T_,System.Action_T_)'></a>
 

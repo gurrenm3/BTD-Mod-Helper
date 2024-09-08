@@ -94,4 +94,13 @@ public static class TowerModelBehaviorExt
     {
         ModelBehaviorExt.AddBehavior(model, behavior.Model);
     }
+    
+    /// <summary>
+    /// Remove all Behaviors
+    /// </summary>
+    /// <param name="model"></param>
+    public static void RemoveBehaviors(this TowerModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }

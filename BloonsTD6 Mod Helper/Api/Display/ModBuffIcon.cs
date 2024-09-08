@@ -4,7 +4,7 @@ using Il2CppAssets.Scripts.Data.Global;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Display;
 
 /// <summary>
@@ -18,13 +18,13 @@ public abstract class ModBuffIcon : NamedModContent
     protected sealed override float RegistrationPriority => 1f;
 
     /// <inheritdoc />
-    public sealed override string DisplayName => base.DisplayName;
+    public sealed override string DisplayName => null;
 
     /// <inheritdoc />
-    public sealed override string DisplayNamePlural => base.DisplayNamePlural;
+    public sealed override string DisplayNamePlural => null;
 
     /// <inheritdoc />
-    public sealed override string Description => base.Description;
+    public sealed override string Description => null;
 
     /// <summary>
     /// The Icon for to display for the buff

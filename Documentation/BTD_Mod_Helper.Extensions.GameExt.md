@@ -73,7 +73,7 @@ public static SpriteReference CreateSpriteReference(this Game game, string guid)
 `guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Extensions.GameExt.GetBtd6Player(thisGame)'></a>
 

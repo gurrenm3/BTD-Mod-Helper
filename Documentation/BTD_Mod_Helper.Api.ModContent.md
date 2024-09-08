@@ -124,7 +124,7 @@ public static AudioSourceReference CreateAudioSourceReference(string guid);
 The guid that you'd like to assign to the AudioSourceReference
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreateAudioSourceReference_T_(string)'></a>
 
@@ -152,7 +152,7 @@ The mod
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference(string)'></a>
@@ -173,7 +173,7 @@ public static PrefabReference CreatePrefabReference(string guid);
 The guid that you'd like to assign to the PrefabReference
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference_T_()'></a>
 
@@ -192,7 +192,7 @@ public static PrefabReference CreatePrefabReference<T>()
 `T`
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreateSpriteReference(string)'></a>
 
@@ -212,7 +212,7 @@ public static SpriteReference CreateSpriteReference(string guid);
 The guid that you'd like to assign to the SpriteReference
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.Find_T_(string)'></a>
 
@@ -356,7 +356,7 @@ public static AudioSourceReference GetAudioSourceReference(BTD_Mod_Helper.Bloons
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(string)'></a>
@@ -377,7 +377,7 @@ public AudioSourceReference GetAudioSourceReference(string name);
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference_T_(string)'></a>
@@ -406,7 +406,7 @@ The mod
 Sound name (no .wav)
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.AudioSourceReference 'Il2CppAssets.Scripts.Utils.AudioSourceReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -770,7 +770,7 @@ The BloonsTD6Mod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference(string)'></a>
@@ -791,7 +791,7 @@ protected SpriteReference GetSpriteReference(string name);
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReference_T_(string)'></a>
@@ -820,7 +820,7 @@ Your mod's main BloonsTD6Mod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -848,7 +848,7 @@ The BloonsTD6Mod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault(string)'></a>
@@ -870,7 +870,7 @@ protected SpriteReference GetSpriteReferenceOrDefault(string name);
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrDefault_T_(string)'></a>
@@ -900,7 +900,7 @@ Your mod's main BloonsTD6Mod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -928,7 +928,7 @@ The BloonsTD6Mod that the texture is from
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull(string)'></a>
@@ -950,7 +950,7 @@ protected SpriteReference GetSpriteReferenceOrNull(string name);
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSpriteReferenceOrNull_T_(string)'></a>
@@ -980,7 +980,7 @@ Your mod's main BloonsTD6Mod extending class
 The file name of your texture, without the extension
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.SpriteReference 'Il2CppAssets.Scripts.Utils.SpriteReference')  
+[Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string)'></a>
@@ -1274,24 +1274,6 @@ public static TowerSet GetTowerSet<T>()
 #### Returns
 [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
-
-## ModContent.HasMod(string) Method
-
-Returns whether a mod with the given name is installed
-
-```csharp
-public static bool HasMod(string name);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
 
 ## ModContent.HasMod(string, BloonsMod) Method
@@ -1314,6 +1296,24 @@ public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
+
+## ModContent.HasMod(string) Method
+
+Returns whether a mod with the given name is installed
+
+```csharp
+public static bool HasMod(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModContent.Load(BTD_Mod_Helper.Api.ModContent)'></a>
 
 ## ModContent.Load(ModContent) Method
@@ -1331,6 +1331,174 @@ private static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModCont
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string,string)'></a>
+
+## ModContent.Localize(BloonsMod, string, string) Method
+
+Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
+the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
+
+```csharp
+public static string Localize(BTD_Mod_Helper.BloonsMod mod, string key, string text);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string,string).mod'></a>
+
+`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+The mod
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string,string).key'></a>
+
+`key` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string,string).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The default English text
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string)'></a>
+
+## ModContent.Localize(BloonsMod, string) Method
+
+Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
+the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
+
+```csharp
+public static string Localize(BTD_Mod_Helper.BloonsMod mod, string keyAndText);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+
+`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+The mod
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string).keyAndText'></a>
+
+`keyAndText` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(string,string)'></a>
+
+## ModContent.Localize(string, string) Method
+
+Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
+the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
+
+```csharp
+public string Localize(string key, string text);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(string,string).key'></a>
+
+`key` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(string,string).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The default English text
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(string)'></a>
+
+## ModContent.Localize(string) Method
+
+Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
+the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
+
+```csharp
+public string Localize(string keyAndText);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(string).keyAndText'></a>
+
+`keyAndText` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string,string)'></a>
+
+## ModContent.Localize<T>(string, string) Method
+
+Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
+the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
+
+```csharp
+public static string Localize<T>(string key, string text)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string,string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string,string).key'></a>
+
+`key` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string,string).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The default English text
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Localization key
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string)'></a>
+
+## ModContent.Localize<T>(string) Method
+
+Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
+the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
+
+```csharp
+public static string Localize<T>(string keyAndText)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string).keyAndText'></a>
+
+`keyAndText` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Localization key
 
 <a name='BTD_Mod_Helper.Api.ModContent.RoundSetId_T_()'></a>
 

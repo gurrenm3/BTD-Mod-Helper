@@ -1,6 +1,7 @@
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.Internal.JsonTowers;
 using BTD_Mod_Helper.Api.ModOptions;
@@ -8,6 +9,8 @@ using BTD_Mod_Helper.Api.Scenarios;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Scenes;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(TitleScreen), nameof(TitleScreen.Start))]
@@ -34,10 +37,17 @@ internal class TitleScreen_Start
                 .Do(task => task.RunSync());
         }
 
-        NamedModContent.RegisterAll();
+        NamedModContent.RegisterAllText();
+        LocalizationHelper.Initialize();
         ModSettingsHandler.SaveModSettings(true);
         ModHelperData.SaveAll();
         ModGameMode.ModifyDefaultGameModes(GameData.Instance);
+        
+        
+        var gameObject = new GameObject("ModHelperQuickAccess");
+        SceneManager.MoveGameObjectToScene(gameObject, Game.instance.gameObject.scene);
+        gameObject.AddComponent<Instances>();
+        gameObject.AddComponent<Lists>();
 
         // Tests.ModelSerializationTests.TestSerialization(Game.instance.model);
 

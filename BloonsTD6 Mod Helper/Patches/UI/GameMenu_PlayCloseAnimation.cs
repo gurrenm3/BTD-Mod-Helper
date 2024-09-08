@@ -11,7 +11,8 @@ internal static class GameMenu_PlayCloseAnimation
     {
         if (state == 1 &&
             __instance.gameObject.HasComponent<ModGameMenuTracker>(out var tracker) &&
-            ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu))
+            ModGameMenu.Cache.TryGetValue(tracker.modGameMenuId ?? "", out var modGameMenu) &&
+            !modGameMenu.Closing)
         {
             modGameMenu.Closing = true;
             modGameMenu.OnMenuClosed();

@@ -7,7 +7,6 @@ namespace BTD_Mod_Helper.Api.Data;
 /// </summary>
 public abstract class ModTextOverride : ModContent
 {
-
     internal static readonly Dictionary<string, SortedSet<ModTextOverride>> Cache = new();
 
     /// <inheritdoc />
@@ -34,7 +33,7 @@ public abstract class ModTextOverride : ModContent
     {
         if (!Cache.ContainsKey(key))
         {
-            Cache[key] = new SortedSet<ModTextOverride>();
+            Cache[key] = [];
         }
 
         if (!Cache[key].Add(textOverride))

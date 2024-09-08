@@ -1,4 +1,4 @@
-﻿using Il2CppAssets.Scripts.Utils;
+﻿using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -9,10 +9,10 @@ public abstract class ModHeroLevel : ModUpgrade
 {
 
     private static readonly int[] DefaultXp =
-    {
+    [
         0, 0, 180, 460, 1000, 1860, 3280, 5180, 8320, 9380, 13620, 16380,
         14400, 16650, 14940, 16380, 17820, 19260, 20700, 16470, 17280
-    };
+    ];
 
     /// <summary>
     /// Internal naming scheme for hero levels
@@ -69,7 +69,7 @@ public abstract class ModHeroLevel : ModUpgrade
     /// <summary>
     /// All hero upgrades count as top path
     /// </summary>
-    public sealed override int Path => TOP;
+    public sealed override int Path => Top;
 
     /// <summary>
     /// What level this

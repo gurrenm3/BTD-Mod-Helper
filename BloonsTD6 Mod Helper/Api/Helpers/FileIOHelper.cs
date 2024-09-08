@@ -1,4 +1,5 @@
 using Il2CppNewtonsoft.Json;
+using Il2CppSystem;
 using Il2CppSystem.IO;
 using UnityEngine;
 using Directory = System.IO.Directory;
@@ -12,6 +13,13 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class FileIOHelper
 {
+    internal static readonly JsonSerializerSettings Settings = new()
+    {
+        Formatting = Formatting.Indented,
+        TypeNameHandling = TypeNameHandling.Objects,
+        _referenceLoopHandling = new Nullable<ReferenceLoopHandling> {value = ReferenceLoopHandling.Ignore}
+    };
+
     /// <summary>
     /// Same as the original FileIOUtil.sandboxRoot, INCLUDES A SLASH AT THE END
     /// </summary>
@@ -31,12 +39,7 @@ public static class FileIOHelper
     /// <param name="data"></param>
     public static void SaveObject(string fileName, Object data)
     {
-        var text = JsonConvert.SerializeObject(data, new JsonSerializerSettings
-        {
-            Formatting = Formatting.Indented,
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            TypeNameHandling = TypeNameHandling.Objects
-        });
+        var text = JsonConvert.SerializeObject(data, Settings);
 
         SaveFile(fileName, text);
     }

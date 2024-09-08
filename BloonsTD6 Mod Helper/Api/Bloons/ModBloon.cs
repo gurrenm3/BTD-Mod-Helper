@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
-using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Bloons;
 
 /// <summary>
@@ -31,7 +30,10 @@ public abstract class ModBloon : NamedModContent
     /// <exclude />
     protected override float RegistrationPriority => (BaseModBloon?.RegistrationPriority ?? 5) + 1;
 
-    internal virtual ModBloon BaseModBloon => null;
+    /// <summary>
+    /// The ModBloon that this is based off of, or null if not based on a ModBloon
+    /// </summary>
+    protected virtual ModBloon BaseModBloon => null;
 
 
     private protected override string ID => KeepBaseId
@@ -249,7 +251,8 @@ public abstract class ModBloon<T> : ModBloon where T : ModBloon
     /// <summary>
     /// The BaseBloon is the same as its base's
     /// </summary>
-    public override string BaseBloon => BloonID<T>();
+    public sealed override string BaseBloon => BloonID<T>();
 
-    internal override ModBloon BaseModBloon => GetInstance<T>();
+    /// <inheritdoc />
+    protected sealed override ModBloon BaseModBloon => GetInstance<T>();
 }

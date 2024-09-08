@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using MelonLoader.Utils;
+using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Data;
 
@@ -159,6 +159,7 @@ internal partial class ModHelperData
 
     // Values to be displayed in the GUI
     internal string DisplayName => Name.NullIfEmpty() ?? Mod?.Info.Name.NullIfEmpty() ?? RepoName ?? "No Name Provided";
+
     internal string DisplayAuthor => Author?.ToLower() == "unknown" ? RepoOwner ?? Author : Author ?? RepoOwner;
 
     internal string DisplayDescription =>
@@ -167,12 +168,23 @@ internal partial class ModHelperData
 
     internal string OldDownloadUrl { get; }
 
+    internal string DisplayNameKey { get; private set; }
+    internal string DisplayDescriptionKey { get; private set; }
 
     public static void Load(MelonBase mod)
     {
         var modHelperData = new ModHelperData(mod);
         Cache[mod] = modHelperData;
         Active.Add(modHelperData);
+
+        if (mod is BloonsMod bloonsMod)
+        {
+            modHelperData.DisplayNameKey =
+                ModContent.Localize(bloonsMod, bloonsMod.GetModName() + " DisplayName", modHelperData.DisplayName);
+            modHelperData.DisplayDescriptionKey =
+                ModContent.Localize(bloonsMod, bloonsMod.GetModName() + " DisplayDescription",
+                    modHelperData.DisplayDescription);
+        }
     }
 
 

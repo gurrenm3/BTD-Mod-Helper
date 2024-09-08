@@ -80,5 +80,5 @@ public static class TowerExt
     /// </summary>
     /// <returns></returns>
     public static MonkeyAnimationController GetMonkeyAnimController(this Tower tower) =>
-        tower.GetUnityDisplayNode()?.monkeyAnimationController;
+        tower.GetUnityDisplayNode()?.animationController.TryCast<MonkeyAnimationController>();
 }

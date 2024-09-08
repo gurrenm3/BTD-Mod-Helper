@@ -1,7 +1,6 @@
-using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Audio;
-namespace BTD_Mod_Helper.Patches;
+namespace BTD_Mod_Helper.Patches.Resources;
 
 [HarmonyPatch(typeof(AudioFactory), nameof(AudioFactory.Start))]
 internal class AudioFactory_Start

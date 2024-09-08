@@ -1,5 +1,7 @@
 ##### [Home](/wiki/Home)
 
+##### [Install Guide](/wiki/Install-Guide)
+
 ###### Starting BTD Modding
 
 [Prerequisites](/wiki/Prerequisites)
@@ -15,9 +17,9 @@
 
 [**Making a Custom Hero**](/wiki/Making-a-Custom-Hero)
 
-###### 3.0 Features
-
 [**Appearing in the Mod Browser**](/wiki/Appearing-in-the-Mod-Browser)
+
+[Localization](/wiki/Localization)
 
 [Making a Custom Bloon](/wiki/Making-a-Custom-Bloon)
 

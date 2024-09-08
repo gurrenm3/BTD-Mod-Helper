@@ -112,6 +112,20 @@ public override object GetDefaultValue();
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 The default value
 
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.GetLastSavedValue()'></a>
+
+## ModSetting<T>.GetLastSavedValue() Method
+
+Gets the last saved value for this ModSetting
+
+```csharp
+public override object GetLastSavedValue();
+```
+
+#### Returns
+[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
+The last saved value
+
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.GetValue()'></a>
 
 ## ModSetting<T>.GetValue() Method

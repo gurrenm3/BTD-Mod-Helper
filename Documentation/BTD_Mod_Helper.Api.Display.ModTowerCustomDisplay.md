@@ -52,7 +52,7 @@ public sealed override PrefabReference BaseDisplayReference { get; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.Display.ModTowerCustomDisplay.LoadAsync'></a>
 

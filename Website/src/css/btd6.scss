@@ -5,6 +5,10 @@
   color: white;
 }
 
+.btd6-panel textarea {
+  outline: none !important;
+}
+
 @media (min-width: 992px) {
   .btd6-panel.main-panel {
     box-shadow: 0 .125rem .25rem .25rem rgba(0, 0, 0, 0.2);

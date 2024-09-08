@@ -8,8 +8,8 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MonkeySelect;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -200,7 +200,7 @@ internal class ModdedMonkeySelectMenu
         var scale = menu.monkeyGroupButtons[0].transform.lossyScale;
         var monkeyGroupButtonsPos = menu.monkeyGroupButtons[0].transform.parent.position;
 
-        pipHolder.transform.position = monkeyGroupButtonsPos + new Vector3(0, 125, 0) * scale.x;
+        pipHolder.transform.position = monkeyGroupButtonsPos + new Vector3(0, 350, 0) * scale.x;
         pipHolder.transform.localScale = new Vector3(1, 1, 1);
 
         for (var i = 0; i < TotalPages; i++)

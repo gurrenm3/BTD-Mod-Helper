@@ -8,8 +8,7 @@ internal static class ShopMenu_CreateTowerButton
 {
 
     [HarmonyPostfix]
-    private static void Postfix(TowerModel model, int buttonIndex, bool showCounts,
-        ref TowerPurchaseButton __result)
+    private static void Postfix(TowerModel model, int buttonIndex, bool showCounts, ref ITowerPurchaseButton __result)
     {
         var unref__result = __result;
         ModHelper.PerformHook(mod =>

@@ -178,6 +178,13 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
 internal static class ModBrowserMenuModExt
 {
+    private static readonly string VerifiedExplanation = ModHelper.Localize(nameof(VerifiedExplanation), """
+        This modder has been manually verified with the maintainers of BTD Mod Helper. 
+        Their work is trusted to not be unsafe, exploitative, obscene, or malicious.
+        """);
+    private static readonly string CoolKidsClub = ModHelper.Localize(nameof(CoolKidsClub),
+        "Additionally, the special color indicates they are a significant Mod Helper contributor.");
+
     public static void SetMod(this ModBrowserMenuMod mod, Api.Data.ModHelperData modHelperData)
     {
         mod.modName = modHelperData.Name;
@@ -192,7 +199,7 @@ internal static class ModBrowserMenuModExt
                 EmbeddedBrowser.OpenURL(modHelperData.ReadmeUrl!);
             }
         });
-        mod.Description.Text.SetText(modHelperData.DisplayDescription);
+        mod.Description.SetText(modHelperData.DisplayDescription);
         mod.InfoButton.Button.SetOnClick(() =>
         {
             mod.SetDescriptionShowing(!mod.descriptionShowing);
@@ -273,11 +280,7 @@ internal static class ModBrowserMenuModExt
         mod.Verified.SetActive(ModHelperGithub.VerifiedModders.Contains(modHelperData.RepoOwner));
         var coolKidsClub = BlatantFavoritism.GetColor(modHelperData.RepoOwner) != Color.white;
         mod.Verified.Button.SetOnClick(() => PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(
-            "This modder has been manually verified with the maintainers of BTD Mod Helper. " +
-            "Their work is trusted to not be unsafe, exploitative, obscene, or malicious. " +
-            (coolKidsClub
-                ? " Additionally, the special color indicates they are a significant Mod Helper contributor."
-                : ""))
+            VerifiedExplanation.Localize() + (coolKidsClub ? "\n" + CoolKidsClub.Localize() : ""))
         ));
         mod.Verified.Image.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
         mod.SetDescriptionShowing(false);

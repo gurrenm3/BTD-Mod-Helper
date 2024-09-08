@@ -126,6 +126,7 @@ public static class UpgradeType
     public const string TripleGuns = "Triple Guns";
     public const string ArmorPiercingDarts = "Armor Piercing Darts";
     public const string SubCommander = "Sub Commander";
+    public const string MonkeysubParagon = "MonkeySub Paragon";
     public const string FasterShootingBuccaneer = "Buccaneer-Faster Shooting";
     public const string DoubleShotBuccaneer = "Buccaneer-Double Shot";
     public const string Destroyer = "Buccaneer-Destroyer";
@@ -280,6 +281,21 @@ public static class UpgradeType
     public const string DruidOfWrath = "Druid of Wrath";
     public const string Poplust = "Poplust";
     public const string AvatarOfWrath = "Avatar of Wrath";
+    public const string TridentEfficiency = "Trident Efficiency";
+    public const string TridentSwiftness = "Trident Swiftness";
+    public const string AbyssDweller = "Abyss Dweller";
+    public const string AbyssalWarrior = "Abyssal Warrior";
+    public const string LordOfTheAbyss = "Lord of the Abyss";
+    public const string SharperProngs = "Sharper Prongs";
+    public const string TidalChill = "Tidal Chill";
+    public const string RiptideChampion = "Riptide Champion";
+    public const string ArcticKnight = "Arctic Knight";
+    public const string Popseidon = "Popseidon";
+    public const string EchosensePrecision = "Echosense Precision";
+    public const string EchosenseNetwork = "Echosense Network";
+    public const string AlluringMelody = "Alluring Melody";
+    public const string SymphonicResonance = "Symphonic Resonance";
+    public const string TheFinalHarmonic = "The Final Harmonic";
     public const string IncreasedProduction = "Increased Production";
     public const string GreaterProduction = "Greater Production";
     public const string BananaPlantation = "Banana Plantation";
@@ -622,6 +638,44 @@ public static class UpgradeType
     public const string GeraldoUpgrade18 = "Geraldo Upgrade 18";
     public const string GeraldoUpgrade19 = "Geraldo Upgrade 19";
     public const string GeraldoUpgrade20 = "Geraldo Upgrade 20";
+    public const string CorvusUpgrade2 = "Corvus Upgrade 2";
+    public const string CorvusUpgrade3 = "Corvus Upgrade 3";
+    public const string CorvusUpgrade4 = "Corvus Upgrade 4";
+    public const string CorvusUpgrade5 = "Corvus Upgrade 5";
+    public const string CorvusUpgrade6 = "Corvus Upgrade 6";
+    public const string CorvusUpgrade7 = "Corvus Upgrade 7";
+    public const string CorvusUpgrade8 = "Corvus Upgrade 8";
+    public const string CorvusUpgrade9 = "Corvus Upgrade 9";
+    public const string CorvusUpgrade10 = "Corvus Upgrade 10";
+    public const string CorvusUpgrade11 = "Corvus Upgrade 11";
+    public const string CorvusUpgrade12 = "Corvus Upgrade 12";
+    public const string CorvusUpgrade13 = "Corvus Upgrade 13";
+    public const string CorvusUpgrade14 = "Corvus Upgrade 14";
+    public const string CorvusUpgrade15 = "Corvus Upgrade 15";
+    public const string CorvusUpgrade16 = "Corvus Upgrade 16";
+    public const string CorvusUpgrade17 = "Corvus Upgrade 17";
+    public const string CorvusUpgrade18 = "Corvus Upgrade 18";
+    public const string CorvusUpgrade19 = "Corvus Upgrade 19";
+    public const string CorvusUpgrade20 = "Corvus Upgrade 20";
+    public const string RosaliaUpgrade2 = "Rosalia Upgrade 2";
+    public const string RosaliaUpgrade3 = "Rosalia Upgrade 3";
+    public const string RosaliaUpgrade4 = "Rosalia Upgrade 4";
+    public const string RosaliaUpgrade5 = "Rosalia Upgrade 5";
+    public const string RosaliaUpgrade6 = "Rosalia Upgrade 6";
+    public const string RosaliaUpgrade7 = "Rosalia Upgrade 7";
+    public const string RosaliaUpgrade8 = "Rosalia Upgrade 8";
+    public const string RosaliaUpgrade9 = "Rosalia Upgrade 9";
+    public const string RosaliaUpgrade10 = "Rosalia Upgrade 10";
+    public const string RosaliaUpgrade11 = "Rosalia Upgrade 11";
+    public const string RosaliaUpgrade12 = "Rosalia Upgrade 12";
+    public const string RosaliaUpgrade13 = "Rosalia Upgrade 13";
+    public const string RosaliaUpgrade14 = "Rosalia Upgrade 14";
+    public const string RosaliaUpgrade15 = "Rosalia Upgrade 15";
+    public const string RosaliaUpgrade16 = "Rosalia Upgrade 16";
+    public const string RosaliaUpgrade17 = "Rosalia Upgrade 17";
+    public const string RosaliaUpgrade18 = "Rosalia Upgrade 18";
+    public const string RosaliaUpgrade19 = "Rosalia Upgrade 19";
+    public const string RosaliaUpgrade20 = "Rosalia Upgrade 20";
     public static readonly Dictionary<string, string> ByName = new() 
     {
         { "SharpShots", SharpShots },
@@ -746,6 +800,7 @@ public static class UpgradeType
         { "TripleGuns", TripleGuns },
         { "ArmorPiercingDarts", ArmorPiercingDarts },
         { "SubCommander", SubCommander },
+        { "MonkeysubParagon", MonkeysubParagon },
         { "FasterShootingBuccaneer", FasterShootingBuccaneer },
         { "DoubleShotBuccaneer", DoubleShotBuccaneer },
         { "Destroyer", Destroyer },
@@ -900,6 +955,21 @@ public static class UpgradeType
         { "DruidOfWrath", DruidOfWrath },
         { "Poplust", Poplust },
         { "AvatarOfWrath", AvatarOfWrath },
+        { "TridentEfficiency", TridentEfficiency },
+        { "TridentSwiftness", TridentSwiftness },
+        { "AbyssDweller", AbyssDweller },
+        { "AbyssalWarrior", AbyssalWarrior },
+        { "LordOfTheAbyss", LordOfTheAbyss },
+        { "SharperProngs", SharperProngs },
+        { "TidalChill", TidalChill },
+        { "RiptideChampion", RiptideChampion },
+        { "ArcticKnight", ArcticKnight },
+        { "Popseidon", Popseidon },
+        { "EchosensePrecision", EchosensePrecision },
+        { "EchosenseNetwork", EchosenseNetwork },
+        { "AlluringMelody", AlluringMelody },
+        { "SymphonicResonance", SymphonicResonance },
+        { "TheFinalHarmonic", TheFinalHarmonic },
         { "IncreasedProduction", IncreasedProduction },
         { "GreaterProduction", GreaterProduction },
         { "BananaPlantation", BananaPlantation },
@@ -1242,5 +1312,43 @@ public static class UpgradeType
         { "GeraldoUpgrade18", GeraldoUpgrade18 },
         { "GeraldoUpgrade19", GeraldoUpgrade19 },
         { "GeraldoUpgrade20", GeraldoUpgrade20 },
+        { "CorvusUpgrade2", CorvusUpgrade2 },
+        { "CorvusUpgrade3", CorvusUpgrade3 },
+        { "CorvusUpgrade4", CorvusUpgrade4 },
+        { "CorvusUpgrade5", CorvusUpgrade5 },
+        { "CorvusUpgrade6", CorvusUpgrade6 },
+        { "CorvusUpgrade7", CorvusUpgrade7 },
+        { "CorvusUpgrade8", CorvusUpgrade8 },
+        { "CorvusUpgrade9", CorvusUpgrade9 },
+        { "CorvusUpgrade10", CorvusUpgrade10 },
+        { "CorvusUpgrade11", CorvusUpgrade11 },
+        { "CorvusUpgrade12", CorvusUpgrade12 },
+        { "CorvusUpgrade13", CorvusUpgrade13 },
+        { "CorvusUpgrade14", CorvusUpgrade14 },
+        { "CorvusUpgrade15", CorvusUpgrade15 },
+        { "CorvusUpgrade16", CorvusUpgrade16 },
+        { "CorvusUpgrade17", CorvusUpgrade17 },
+        { "CorvusUpgrade18", CorvusUpgrade18 },
+        { "CorvusUpgrade19", CorvusUpgrade19 },
+        { "CorvusUpgrade20", CorvusUpgrade20 },
+        { "RosaliaUpgrade2", RosaliaUpgrade2 },
+        { "RosaliaUpgrade3", RosaliaUpgrade3 },
+        { "RosaliaUpgrade4", RosaliaUpgrade4 },
+        { "RosaliaUpgrade5", RosaliaUpgrade5 },
+        { "RosaliaUpgrade6", RosaliaUpgrade6 },
+        { "RosaliaUpgrade7", RosaliaUpgrade7 },
+        { "RosaliaUpgrade8", RosaliaUpgrade8 },
+        { "RosaliaUpgrade9", RosaliaUpgrade9 },
+        { "RosaliaUpgrade10", RosaliaUpgrade10 },
+        { "RosaliaUpgrade11", RosaliaUpgrade11 },
+        { "RosaliaUpgrade12", RosaliaUpgrade12 },
+        { "RosaliaUpgrade13", RosaliaUpgrade13 },
+        { "RosaliaUpgrade14", RosaliaUpgrade14 },
+        { "RosaliaUpgrade15", RosaliaUpgrade15 },
+        { "RosaliaUpgrade16", RosaliaUpgrade16 },
+        { "RosaliaUpgrade17", RosaliaUpgrade17 },
+        { "RosaliaUpgrade18", RosaliaUpgrade18 },
+        { "RosaliaUpgrade19", RosaliaUpgrade19 },
+        { "RosaliaUpgrade20", RosaliaUpgrade20 },
     };
 }

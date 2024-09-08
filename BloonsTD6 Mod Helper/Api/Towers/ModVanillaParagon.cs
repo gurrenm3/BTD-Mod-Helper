@@ -5,7 +5,7 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -96,7 +96,7 @@ public abstract class ModVanillaParagon : ModTower
     {
     }
 
-    internal override string TowerId(int[] tiers) => BaseTowerModel.baseId + "-Paragon";
+    internal override string TowerId(params int[] tiers) => BaseTowerModel.baseId + "-Paragon";
 
     /// <summary>
     /// Doesn't generate any of the tower on its own

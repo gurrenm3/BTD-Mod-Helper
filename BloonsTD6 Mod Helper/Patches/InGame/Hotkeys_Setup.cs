@@ -12,7 +12,7 @@ internal static class Hotkeys_Setup
     {
         foreach (var towerPurchaseButton in ShopMenu.instance.ActiveTowerButtons)
         {
-            var towerBaseId = towerPurchaseButton.towerModel.baseId;
+            var towerBaseId = towerPurchaseButton.TowerModel.baseId;
 
             if (!ModTowerHelper.ModTowerCache.TryGetValue(towerBaseId, out var modTower) || modTower.Hotkey == null)
                 continue;

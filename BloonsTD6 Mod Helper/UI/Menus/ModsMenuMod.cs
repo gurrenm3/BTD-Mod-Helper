@@ -30,6 +30,7 @@ internal class ModsMenuMod : ModHelperComponent
     public ModHelperButton Settings => GetDescendent<ModHelperButton>("Settings");
     public ModHelperImage Restart => GetDescendent<ModHelperImage>("Restart");
     public ModHelperButton Warning => GetDescendent<ModHelperButton>("Warning");
+    public ModHelperText Hash => GetDescendent<ModHelperText>("Hash");
 
     public static ModsMenuMod CreateTemplate()
     {
@@ -61,6 +62,11 @@ internal class ModsMenuMod : ModHelperComponent
 
         panel.AddButton(new Info("Warning", ModsMenu.Padding / 2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
             new Vector2(0, 1)), VanillaSprites.NoticeBtn, null);
+
+        panel.AddText(new Info("Hash", ModsMenu.ModNameWidth, 50)
+        {
+            Y = -75
+        }, "Hash", 25);
 
         mod.SetActive(false);
 
@@ -95,7 +101,7 @@ internal static class ModsMenuModExt
             mod.Icon.Image.SetSprite(sprite);
         }
 
-        mod.Name.SetText(modHelperData.Name);
+        mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
         // ReSharper disable once AsyncVoidLambda
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));
@@ -120,8 +126,12 @@ internal static class ModsMenuModExt
                         screen.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n")));
                 });
             }
+            
         }
-
+        
+        mod.Hash.SetText(melonMod?.MelonAssembly?.Hash ?? "");
+        
+        mod.Hash.SetActive(ModsMenu.ShowHashes);
 
         mod.Refresh(modHelperData);
 

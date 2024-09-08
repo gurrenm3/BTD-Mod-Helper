@@ -6,7 +6,6 @@ import "../css/global.scss";
 import "../css/btd6.scss";
 import "../css/blockly.scss";
 import { Btd6Styles } from "../components/btd6-ui";
-import { SSRProvider } from "react-bootstrap";
 import ModHelperHelmet from "../components/helmet";
 import { use100vh } from "react-div-100vh";
 import BackgroundImage, {
@@ -42,7 +41,7 @@ export default ({ Component, pageProps }: AppProps) => {
   const refreshTheme = useUpdate();
 
   return (
-    <SSRProvider>
+    <>
       <Btd6Styles />
       <ModHelperHelmet title={DefaultTitle} description={DefaultDescription} />
       <ModHelperScrollBars
@@ -58,6 +57,6 @@ export default ({ Component, pageProps }: AppProps) => {
           </ThemeContext.Provider>
         </ScrollBarsContext.Provider>
       </ModHelperScrollBars>
-    </SSRProvider>
+    </>
   );
 };

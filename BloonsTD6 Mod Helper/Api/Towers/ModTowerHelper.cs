@@ -10,7 +10,7 @@ using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -93,8 +93,8 @@ public static class ModTowerHelper
         towerModel.name = modTower.TowerId(tiers);
 
         // add the names to applied upgrades
-        towerModel.appliedUpgrades = modTower.Upgrades.Cast<ModUpgrade>()
-            .Where(modUpgrade => modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
+        towerModel.appliedUpgrades = modTower.AllUpgrades
+            .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier)
             .Select(modUpgrade => modUpgrade.Id)
             .ToArray();
 
@@ -116,7 +116,7 @@ public static class ModTowerHelper
 
                 if (modTowerTiers.Exists(t => t.SequenceEqual(newTiers)))
                 {
-                    var modUpgrade = modTower.Upgrades[i, newTiers[i] - 1];
+                    var modUpgrade = modTower.Upgrades[i][newTiers[i] - 1];
                     if (modUpgrade == null)
                     {
                         ModHelper.Warning($"{modTower.Name} has missing upgrade in path {i} tier {newTiers[i] - 1}");
@@ -282,7 +282,7 @@ public static class ModTowerHelper
         if (index >= 0)
         {
             var heroDetailsModel =
-                new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, false);
+                new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0,false);
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
 
             var skinsData = GameData.Instance.skinsData;
@@ -300,8 +300,7 @@ public static class ModTowerHelper
     {
         var sprite = Il2CppSystem.Nullable<SpriteReference>.Unbox(ModContent.CreateSpriteReference(""));
         var display = ModContent.CreatePrefabReference("");
-        return new TowerModel(name, baseId ?? name, towerSet, display,
-            icon: sprite, portrait: sprite, instaIcon: sprite, emoteSpriteSmall: sprite, emoteSpriteLarge: sprite
-        );
+        return new TowerModel(name, baseId ?? name, towerSet, display, icon: sprite, portrait: sprite, instaIcon: sprite,
+            emoteSpriteSmall: sprite, emoteSpriteLarge: sprite, secondarySelectionMenu: display);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Il2CppNinjaKiwi.Common;
 using Il2CppTMPro;
 using UnityEngine;
 #pragma warning disable CS1591
@@ -21,13 +22,11 @@ public static class Fonts
     {
         if (FontsByName.Count == 0)
         {
-
             var fontAssets = Resources.FindObjectsOfTypeAll<TMP_FontAsset>();
 
             foreach (var fontAsset in fontAssets)
             {
                 FontsByName[fontAsset.name] = fontAsset;
-                // ModHelper.Msg("Font: " + fontAsset.name);
             }
         }
     }
@@ -35,5 +34,5 @@ public static class Fonts
     /// <summary>
     /// Gets an AnimationController by its name, or null if there isn't one with that name
     /// </summary>
-    public static TMP_FontAsset Get(string name) => FontsByName.TryGetValue(name, out var anim) ? anim : null;
+    public static TMP_FontAsset Get(string name) => FontsByName.GetValueOrDefault(name);
 }

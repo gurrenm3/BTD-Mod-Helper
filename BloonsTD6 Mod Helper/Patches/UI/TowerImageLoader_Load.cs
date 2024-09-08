@@ -1,5 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Towers;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(TowerImageLoader), nameof(TowerImageLoader.Load))]

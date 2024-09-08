@@ -7,7 +7,6 @@ using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Filters;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
-using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -110,7 +109,7 @@ public static class AttackModelExt
     }
 
     /// <summary>
-    /// Adds a new filter to this projectile model
+    /// Removes a specific filter from this attack model
     /// </summary>
     public static void RemoveFilter(this AttackModel attack, FilterModel filter)
     {
@@ -122,7 +121,7 @@ public static class AttackModelExt
     }
 
     /// <summary>
-    /// Adds a new filter to this projectile model
+    /// Removes the first filter of a given type from this attack model
     /// </summary>
     public static void RemoveFilter<T>(this AttackModel attack) where T : FilterModel
     {

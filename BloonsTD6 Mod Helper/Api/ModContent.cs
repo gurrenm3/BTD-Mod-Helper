@@ -70,7 +70,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     #region IComparable<ModContent> Members
 
     /// <inheritdoc />
-    public int CompareTo(ModContent other)
+    public virtual int CompareTo(ModContent other)
     {
         var compareTo = Order.CompareTo(other.Order);
         if (compareTo == 0)
@@ -113,7 +113,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
             .Where(CanLoadType)
             .Select(type => CreateInstance(type, mod))
             .Where(content => content != null)
-            .OrderBy<ModContent, float>(content => content.RegistrationPriority)
+            .OrderBy(content => content.RegistrationPriority)
             .ThenBy(content => content.Order)
             .SelectMany(Load)
             .OrderBy(content => content.RegistrationPriority)

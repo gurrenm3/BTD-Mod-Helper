@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
-using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -76,5 +74,11 @@ public static class WeaponModelBehaviorExt
     public static void RemoveBehaviors<T>(this WeaponModel model) where T : Model
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
+    }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this WeaponModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
     }
 }

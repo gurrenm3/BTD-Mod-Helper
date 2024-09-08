@@ -7,7 +7,7 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Color = UnityEngine.Color;
@@ -166,6 +166,14 @@ public abstract class ModDisplay : ModContent
     protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0) =>
         Game.instance.model.GetTower(tower, top, mid, bot).display.GUID;
 
+    /// <summary>
+    /// Gets the Display for a given bloon
+    /// </summary>
+    /// <param name="bloon"> The bloon base id</param>
+    /// <returns>The display GUID</returns>
+    protected string GetBloonDisplay(string bloon) => 
+        Game.instance.model.GetBloon(bloon).display.GUID;
+    
     /// <summary>
     /// Gets a UnityDisplayNode for a different guid
     /// </summary>

@@ -7,12 +7,12 @@ namespace BTD_Mod_Helper.Patches.Spawners;
 internal static class Spawner_Emit
 {
     [HarmonyPostfix]
-    private static void Postfix(Spawner __instance, BloonModel bloon, int roundNumber, int emissionIndex,
+    private static void Postfix(Spawner __instance, BloonModel bloonModel, int roundNumber, int emissionIndex,
         float startingDist, ref Bloon __result)
     {
         var unref__result = __result;
         ModHelper.PerformHook(mod =>
-            mod.OnBloonEmitted(__instance, bloon, roundNumber, emissionIndex, startingDist, ref unref__result));
+            mod.OnBloonEmitted(__instance, bloonModel, roundNumber, emissionIndex, startingDist, ref unref__result));
         __result = unref__result;
     }
 }

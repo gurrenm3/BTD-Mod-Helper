@@ -16,6 +16,8 @@ public class ModSettingCategory
     /// Name of the category
     /// </summary>
     public string displayName;
+    
+    internal string displayNameKey;
 
     /// <summary>
     /// Icon of the category, if any
@@ -46,7 +48,7 @@ public class ModSettingCategory
     /// <returns></returns>
     public ModHelperCategory Create()
     {
-        var modHelperCategory = ModHelperCategory.Create(displayName, collapsed, icon);
+        var modHelperCategory = ModHelperCategory.Create(displayNameKey ?? displayName, collapsed, icon);
         modifyCategory?.Invoke(modHelperCategory);
         return modHelperCategory;
     }

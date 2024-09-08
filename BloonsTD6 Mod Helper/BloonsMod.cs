@@ -142,7 +142,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
             typeof(MelonAssembly)
                 .GetProperty(nameof(MelonAssembly.HarmonyDontPatchAll))!
                 .GetSetMethod(true)!
-                .Invoke(MelonAssembly, new object[] {true});
+                .Invoke(MelonAssembly, [true]);
 
             modHelperPatchAll = true;
         }
@@ -162,8 +162,12 @@ public abstract class BloonsMod : MelonMod, IModSettings
         }
         catch (Exception e)
         {
+            var message = e.InnerException?.Message ?? e.Message;
+            
+            if (ModHelper.IsEpic && message.Contains("Il2CppFacepunch.Steamworks")) return;
+
             MelonLogger.Warning(
-                $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{e.InnerException?.Message ?? e.Message}\" " +
+                $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{message}\" " +
                 $"The mod might not function correctly. This needs to be fixed by {Info.Author}");
 
             loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
@@ -193,6 +197,11 @@ public abstract class BloonsMod : MelonMod, IModSettings
         OnApplicationStart();
         OnInitialize();
     }
+
+    /// <summary>
+    /// Saves the current mod settings for this mod
+    /// </summary>
+    public void SaveModSettings() => ModSettingsHandler.SaveModSettings(this);
 
     /// <inheritdoc cref="OnInitializeMelon" />
     public new virtual void OnApplicationStart()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Map.Spawners;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// <summary>
 /// Contains helper methods for working with maps and custom maps.
 /// </summary>
+[Obsolete]
 public class MapHelper
 {
     private static readonly Random rand = new();
@@ -92,7 +94,7 @@ public class MapHelper
         for (var i = 0; i < paths.Length; i++)
             pathNames[i] = paths[i].pathId;
 
-        return new PathSpawnerModel("", new SplitterModel("", pathNames), new SplitterModel("", pathNames));
+        return new PathSpawnerModel("", new SplitterModel("", pathNames, ""), new SplitterModel("", pathNames, ""));
     }
 
     internal static Texture2D ResizeForGame(Texture2D texture2D) =>

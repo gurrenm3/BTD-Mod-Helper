@@ -1,6 +1,6 @@
 ﻿using System;
 using BTD_Mod_Helper.Api;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.Extensions;

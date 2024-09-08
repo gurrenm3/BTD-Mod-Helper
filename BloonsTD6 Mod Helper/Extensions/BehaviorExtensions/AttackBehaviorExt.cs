@@ -17,6 +17,19 @@ public static class AttackBehaviorExt
         attack.attackBehaviors.HasItemsOfType<AttackBehavior, T>();
 
     /// <summary>
+    /// Check if this has a specific Behavior
+    /// </summary>
+    /// <typeparam name="T">The Behavior you're checking for</typeparam>
+    /// <param name="attack"></param>
+    /// <param name="item">The returned item, if it exists</param>
+    /// <returns></returns>
+    public static bool HasAttackBehavior<T>(this Attack attack, out T item) where T : AttackBehavior
+    {
+        item = attack.GetAttackBehavior<T>();
+        return item != null;
+    }
+
+    /// <summary>
     /// Return the first Behavior of type T
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>

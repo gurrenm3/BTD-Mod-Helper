@@ -103,7 +103,7 @@ public static System.Collections.Generic.List<ProjectileModel> GetAllProjectiles
 
 ## AttackModelExt.RemoveFilter(this AttackModel, FilterModel) Method
 
-Adds a new filter to this projectile model
+Removes a specific filter from this attack model
 
 ```csharp
 public static void RemoveFilter(this AttackModel attack, FilterModel filter);
@@ -122,7 +122,7 @@ public static void RemoveFilter(this AttackModel attack, FilterModel filter);
 
 ## AttackModelExt.RemoveFilter<T>(this AttackModel) Method
 
-Adds a new filter to this projectile model
+Removes the first filter of a given type from this attack model
 
 ```csharp
 public static void RemoveFilter<T>(this AttackModel attack)

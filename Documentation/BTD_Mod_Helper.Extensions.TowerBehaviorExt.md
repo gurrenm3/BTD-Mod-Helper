@@ -85,6 +85,34 @@ public static System.Collections.Generic.List<T> GetTowerBehaviors<T>(this Tower
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.TowerBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerBehaviorExt.GetTowerBehaviors_T_(thisTower).T 'BTD_Mod_Helper.Extensions.TowerBehaviorExt.GetTowerBehaviors<T>(this Tower).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.HasTowerBehavior_T_(thisTower,T)'></a>
+
+## TowerBehaviorExt.HasTowerBehavior<T>(this Tower, T) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasTowerBehavior<T>(this Tower tower, out T item)
+    where T : TowerBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.HasTowerBehavior_T_(thisTower,T).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.HasTowerBehavior_T_(thisTower,T).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
+
+<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.HasTowerBehavior_T_(thisTower,T).item'></a>
+
+`item` [T](BTD_Mod_Helper.Extensions.TowerBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerBehaviorExt.HasTowerBehavior_T_(thisTower,T).T 'BTD_Mod_Helper.Extensions.TowerBehaviorExt.HasTowerBehavior<T>(this Tower, T).T')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.HasTowerBehavior_T_(thisTower)'></a>
 
 ## TowerBehaviorExt.HasTowerBehavior<T>(this Tower) Method
@@ -108,27 +136,6 @@ public static bool HasTowerBehavior<T>(this Tower tower)
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower)'></a>
-
-## TowerBehaviorExt.RemoveTowerBehavior<T>(this Tower) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveTowerBehavior<T>(this Tower tower)
-    where T : TowerBehavior;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower).tower'></a>
-
-`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
 
 <a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower,T)'></a>
 
@@ -154,6 +161,27 @@ public static void RemoveTowerBehavior<T>(this Tower tower, T behavior)
 <a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.TowerBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower,T).T 'BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior<T>(this Tower, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower)'></a>
+
+## TowerBehaviorExt.RemoveTowerBehavior<T>(this Tower) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveTowerBehavior<T>(this Tower tower)
+    where T : TowerBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehavior_T_(thisTower).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
 
 <a name='BTD_Mod_Helper.Extensions.TowerBehaviorExt.RemoveTowerBehaviors_T_(thisTower)'></a>
 

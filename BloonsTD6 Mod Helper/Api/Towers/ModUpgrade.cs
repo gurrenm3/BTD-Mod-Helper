@@ -5,7 +5,7 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -13,9 +13,8 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// </summary>
 public abstract class ModUpgrade : NamedModContent
 {
-
     /// <summary>
-    /// Path ID for the Top path
+    /// Path ID for the Top path 
     /// </summary>
     protected const int TOP = 0;
 
@@ -28,6 +27,22 @@ public abstract class ModUpgrade : NamedModContent
     /// Path ID for the Bottom path
     /// </summary>
     protected const int BOTTOM = 2;
+
+    /// <summary>
+    /// Path ID for the Top path
+    /// </summary>
+    protected internal const int Top = 0;
+
+    /// <summary>
+    /// Path ID for the Middle path
+    /// </summary>
+    protected internal const int Middle = 1;
+
+    /// <summary>
+    /// Path ID for the Bottom path
+    /// </summary>
+    protected internal const int Bottom = 2;
+
     internal static readonly Dictionary<string, ModUpgrade> Cache = new();
     internal static readonly Dictionary<string, UpgradeModel> UpgradeModelCache = new();
 
@@ -177,25 +192,16 @@ public abstract class ModUpgrade : NamedModContent
     /// </summary>
     protected internal virtual void AssignToModTower()
     {
-        if (Path is >= 0 and < 3 && Tower.TierMaxes[Path] >= Tier)
+        if (Path < Top) throw new Exception($"Path of {Id} can't be negative");
+        if (Path > Bottom) throw new Exception($"Path of {Id} can't be 3 or more, use Paths++ to add more paths");
+        if (Tier <= Tower.StartTier) throw new Exception($"Tier of {Id} must be greater than {Tower.StartTier}");
+        if (Tier > 5 && this is not ModHeroLevel)
+            throw new Exception($"Tier of {Id} can't be more than 5, use Paths++ to add more tiers");
+
+        var upgrades = Tower.Upgrades[Path];
+        if (!upgrades.TryAdd(Tier - 1, this))
         {
-            try
-            {
-                Tower.Upgrades[Path, Tier - 1] = this;
-            }
-            catch (Exception)
-            {
-                ModHelper.Error("Failed to assign ModUpgrade " + Name + " to ModTower's upgrades");
-                ModHelper.Error(
-                    "Double check that all Path and Tier values are correct");
-                throw;
-            }
-        }
-        else
-        {
-            ModHelper.Warning("Failed to assign ModUpgrade " + Name + $" to ModTower {Tower.Name}'s upgrades");
-            ModHelper.Warning("Double check that all Path and Tier values are correct");
-            ModHelper.Warning($"{Tower.TierMaxes[Path]} compared to {Tier}");
+            throw new Exception($"Tier {Tier} of {Tower.Id} is used by both {Id} and {upgrades[Tier].Id}");
         }
     }
 

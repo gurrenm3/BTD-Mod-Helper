@@ -10,7 +10,8 @@ using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Bridge;
-using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
+
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -46,11 +47,8 @@ public abstract class ModTower : NamedModContent
     internal readonly List<ModTowerDisplay> displays = new();
     internal UpgradeModel dummyUpgrade;
     internal ModParagonUpgrade paragonUpgrade;
-    private int[] tierMaxes;
 
     internal List<TowerModel> towerModels;
-
-    private ModUpgrade[,] upgrades;
 
     /// <summary>
     /// Constructor for ModTower, used implicitly by ModContent.Create
@@ -74,6 +72,7 @@ public abstract class ModTower : NamedModContent
 
     internal virtual ModTowerSet ModTowerSet => null;
     internal virtual int UpgradePaths => 3;
+    internal virtual int StartTier => 0;
 
     /// <summary>
     /// The Portrait for the 0-0-0 tower, by default "[Name]-Portrait"
@@ -140,17 +139,17 @@ public abstract class ModTower : NamedModContent
     /// <summary>
     /// The number of upgrades the tower has in it's 1st / top path
     /// </summary>
-    public abstract int TopPathUpgrades { get; }
+    public virtual int TopPathUpgrades => Upgrades[0].Count;
 
     /// <summary>
     /// The number of upgrades the tower has in it's 2nd / middle path
     /// </summary>
-    public abstract int MiddlePathUpgrades { get; }
+    public virtual int MiddlePathUpgrades => Upgrades[1].Count;
 
     /// <summary>
     /// The number of upgrades the tower has in it's 3rd / bottom path
     /// </summary>
-    public abstract int BottomPathUpgrades { get; }
+    public virtual int BottomPathUpgrades => Upgrades[2].Count;
 
     /// <summary>
     /// Whether to always make this tower be included in challenges / Bosses / Odysseys etc
@@ -172,6 +171,11 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     public virtual ModSettingHotkey Hotkey => null;
 
+    /// <summary>
+    /// Whether this tower should be allowed to be included in Monkey Teams
+    /// </summary>
+    public virtual bool IncludeInMonkeyTeams => true;
+
     internal virtual TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
     internal virtual bool ShouldCreateParagon =>
@@ -181,8 +185,9 @@ public abstract class ModTower : NamedModContent
         BottomPathUpgrades == 5 &&
         ParagonMode != ParagonMode.None;
 
-    internal ModUpgrade[,] Upgrades => upgrades ??= new ModUpgrade[UpgradePaths, TierMaxes.Max()];
-    internal int[] TierMaxes => tierMaxes ??= new[] {TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades};
+    internal readonly SortedDictionary<int, ModUpgrade>[] Upgrades = {new(), new(), new()};
+    internal IEnumerable<ModUpgrade> AllUpgrades => Upgrades.SelectMany(upgrades => upgrades.Values);
+    internal int[] TierMaxes => [TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades];
 
     /// <summary>
     /// Implemented by a ModTower to modify the base tower model before applying any/all ModUpgrades
@@ -208,18 +213,14 @@ public abstract class ModTower : NamedModContent
     {
     }
 
-    internal List<ModUpgrade> GetUpgradesForTiers(int[] tiers)
-    {
-        return Upgrades.Cast<ModUpgrade>()
-            .Where(modUpgrade =>
-                modUpgrade != null && tiers[modUpgrade.Path] >= modUpgrade.Tier)
-            .OrderByDescending(modUpgrade => modUpgrade.Priority)
-            .ThenBy(modUpgrade => modUpgrade.Tier)
-            .ThenBy(modUpgrade => modUpgrade.Path)
-            .ToList();
-    }
+    internal List<ModUpgrade> GetUpgradesForTiers(params int[] tiers) => AllUpgrades
+        .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier)
+        .OrderByDescending(modUpgrade => modUpgrade.Priority)
+        .ThenBy(modUpgrade => modUpgrade.Tier)
+        .ThenBy(modUpgrade => modUpgrade.Path)
+        .ToList();
 
-    internal virtual string TowerId(int[] tiers)
+    internal virtual string TowerId(params int[] tiers)
     {
         var id = Id;
         if (tiers.Sum() > 0)
@@ -258,7 +259,7 @@ public abstract class ModTower : NamedModContent
     /// <br />
     /// Used in the default implementation of <see cref="TowerTiers()" />
     /// </summary>
-    public virtual bool IsValidCrosspath(int[] tiers)
+    public virtual bool IsValidCrosspath(params int[] tiers)
     {
         var sorted = tiers.OrderByDescending(num => num).ToArray();
         return sorted[0] <= 5 && sorted[1] <= 2 && sorted[2] == 0;
@@ -272,7 +273,7 @@ public abstract class ModTower : NamedModContent
     /// <seealso cref="Use2DModel" />
     /// <see cref="Get2DScale" />
     /// </summary>
-    public virtual string Get2DTexture(int[] tiers)
+    public virtual string Get2DTexture(params int[] tiers)
     {
         var name = $"{Name}-{tiers.Printed()}";
         if (TextureExists(name))
@@ -311,7 +312,7 @@ public abstract class ModTower : NamedModContent
     /// <seealso cref="Use2DModel" />
     /// <seealso cref="Get2DTexture(int[])" />
     /// </summary>
-    public virtual float Get2DScale(int[] tiers) => 1f;
+    public virtual float Get2DScale(params int[] tiers) => 1f;
 
     /// <summary>
     /// Gets the portrait reference this tower should use for the given tiers
@@ -321,23 +322,30 @@ public abstract class ModTower : NamedModContent
     /// falling back to the tower's own base <see cref="PortraitReference" /> by default.
     /// </summary>
     /// <param name="tiers"></param>
-    public SpriteReference GetPortraitReferenceForTiers(int[] tiers)
-    {
-        return Upgrades.Cast<ModUpgrade>()
-            .Where(modUpgrade => modUpgrade != null &&
-                                 tiers[modUpgrade.Path] >= modUpgrade.Tier &&
-                                 modUpgrade.PortraitReference is not null)
-            .OrderByDescending(modUpgrade => modUpgrade.Tier)
-            .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
-            .ThenBy(modUpgrade => modUpgrade.Path)
-            .Select(upgrade => upgrade.PortraitReference)
-            .DefaultIfEmpty(PortraitReference)
-            .First();
-    }
+    public SpriteReference GetPortraitReferenceForTiers(params int[] tiers) => AllUpgrades
+        .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier && modUpgrade.PortraitReference is not null)
+        .OrderByDescending(modUpgrade => modUpgrade.Tier)
+        .ThenByDescending(modUpgrade => modUpgrade.Path % 2)
+        .ThenBy(modUpgrade => modUpgrade.Path)
+        .Select(upgrade => upgrade.PortraitReference)
+        .DefaultIfEmpty(PortraitReference)
+        .First();
 
     /// <inheritdoc />
     public override void Register()
     {
+        for (var path = ModUpgrade.Top; path <= ModUpgrade.Bottom; path++)
+        {
+            var highest = Upgrades[path].Values.Select(upgrade => upgrade.Tier).DefaultIfEmpty(0).Max();
+            for (var tier = StartTier; tier < highest; tier++)
+            {
+                if (!Upgrades[path].ContainsKey(tier))
+                {
+                    throw new Exception($"Tower {Id} is missing upgrade for tier {tier + 1}");
+                }
+            }
+        }
+
         towerModels = ModTowerHelper.AddTower(this);
 
         foreach (var towerModel in towerModels)
@@ -350,7 +358,7 @@ public abstract class ModTower : NamedModContent
             var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
             if (index >= 0)
             {
-                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, ShopTowerCount, 0);
+                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, ShopTowerCount);
                 Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
             }
         }
@@ -432,7 +440,7 @@ public abstract class ModTower : NamedModContent
         towerModel.appliedUpgrades = new Il2CppStringArray(6);
         for (var i = 0; i < 5; i++)
         {
-            towerModel.appliedUpgrades[i] = Upgrades[0, i].Id;
+            towerModel.appliedUpgrades[i] = Upgrades[0][i].Id;
         }
 
         return towerModel;
@@ -481,7 +489,7 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     /// <param name="tiers">Length 3 array of Top/Mid/Bot tiers</param>
     /// <returns>The base TowerModel to use</returns>
-    public virtual TowerModel GetBaseTowerModel(int[] tiers) => !string.IsNullOrEmpty(BaseTower)
+    public virtual TowerModel GetBaseTowerModel(params int[] tiers) => !string.IsNullOrEmpty(BaseTower)
         ? BaseTowerModel.MakeCopy(Id)
         : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
 }

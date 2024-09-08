@@ -42,4 +42,10 @@ public static class PowerModelBehaviorExt
     {
         ModelBehaviorExt.RemoveBehaviors<T>(model);
     }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this PowerModel model)
+    {
+        ModelBehaviorExt.RemoveBehaviors(model);
+    }
 }

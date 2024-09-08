@@ -112,7 +112,7 @@ public static System.Collections.Generic.List<Projectile> GetProjectileSims(this
 
 ## ProjectileModelExt.RemoveFilter(this ProjectileModel, FilterModel) Method
 
-Adds a new filter to this projectile model
+Removes a specific filter from this projectile model
 
 ```csharp
 public static void RemoveFilter(this ProjectileModel projectile, FilterModel filter);
@@ -131,7 +131,7 @@ public static void RemoveFilter(this ProjectileModel projectile, FilterModel fil
 
 ## ProjectileModelExt.RemoveFilter<T>(this ProjectileModel) Method
 
-Adds a new filter to this projectile model
+Removes the first filter of the given type from this projectile model
 
 ```csharp
 public static void RemoveFilter<T>(this ProjectileModel projectile)
@@ -165,7 +165,7 @@ public static void SetDisplay(this ProjectileModel projectileModel, PrefabRefere
 
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,PrefabReference).display'></a>
 
-`display` [Il2CppAssets.Scripts.Utils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.PrefabReference 'Il2CppAssets.Scripts.Utils.PrefabReference')
+`display` [Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,string)'></a>
 

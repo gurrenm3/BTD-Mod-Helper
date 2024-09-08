@@ -21,6 +21,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppNinjaKiwi.Common;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppNinjaKiwi.LiNK;
 using Il2CppNinjaKiwi.LiNK.Lobbies;
 using Il2CppNinjaKiwi.NKMulti;
@@ -54,8 +55,7 @@ public static class GameExt
     /// <returns></returns>
     public static bool IsAccountFlagged(this Game game)
     {
-        var hackerStatus = game.GetBtd6Player().Hakxr;
-        return hackerStatus.genrl || hackerStatus.ledrbrd;
+        return game.GetBtd6Player().IsFlagged;
     }
 
     /// <summary>
@@ -167,7 +167,7 @@ public static class GameExt
     /// <summary>
     /// Returns the current lobby connection.
     /// </summary>
-    public static LobbyConnection GetCoopLobbyConnection(this Game game) => game.GetCoopLobbyScreen()?.lobbyConnection;
+    public static LobbyConnection GetCoopLobbyConnection(this Game game) => game.GetCoopLobbyScreen()?.coopLobbyData.lobbyConnection;
 
     /// <summary>
     /// Returns the directory where the Player's Profile.save file is located.

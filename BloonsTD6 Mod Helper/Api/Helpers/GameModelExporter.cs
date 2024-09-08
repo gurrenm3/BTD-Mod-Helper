@@ -87,7 +87,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} RoundModels to {Path.Combine(FileIOHelper.sandboxRoot, "Rounds")}");
 
         total = success = 0;
-        foreach (var mapSetMap in GameData.Instance.mapSet.maps)
+        foreach (var mapSetMap in GameData.Instance.mapSet.Maps.items)
         {
             if (TryExport(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json")) success++;
             total++;
@@ -189,6 +189,8 @@ public static class GameModelExporter
             $"Exported {success}/{total} GeraldoItemModels to {Path.Combine(FileIOHelper.sandboxRoot, "GeraldoItems")}");
         
         Export(LocalizationManager.Instance.textTable, "textTable.json");
+        
+        Export(Game.instance.model.paragonDegreeDataModel, "paragonDegreeData.json");
         
         File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
         ModHelper.Log($"Exported resources to {resourcesPath}");
