@@ -30,8 +30,7 @@ public static class ModelSerializer
     internal static readonly JsonSerializerSettings Settings = new()
     {
         Formatting = Formatting.Indented,
-        // PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        _referenceLoopHandling = new Il2CppSystem.Nullable<ReferenceLoopHandling> {value = ReferenceLoopHandling.Ignore},
         TypeNameHandling = TypeNameHandling.Objects
     };
 

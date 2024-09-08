@@ -30,6 +30,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

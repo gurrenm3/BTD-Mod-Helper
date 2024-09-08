@@ -2,6 +2,7 @@ using BTD_Mod_Helper.Api.Display;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Newtonsoft.Json;
 namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 
