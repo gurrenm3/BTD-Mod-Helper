@@ -7,5 +7,6 @@ namespace BTD_Mod_Helper.Api.Enums;
 public enum ScheduleType
 {
     WaitForSeconds,
-    WaitForFrames
+    WaitForFrames,
+    WaitForSecondsScaled
 }

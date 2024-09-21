@@ -96,7 +96,7 @@ public static class GameExt
     public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait,
         Func<bool> waitCondition = null)
     {
-        MelonCoroutines.Start(TaskScheduler.Coroutine(action, scheduleType, amountToWait, waitCondition));
+        TaskScheduler.ScheduleTask(action, scheduleType, amountToWait, waitCondition);
     }
 
 

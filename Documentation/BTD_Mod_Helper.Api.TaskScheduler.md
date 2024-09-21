@@ -85,24 +85,32 @@ public static void ScheduleTask(System.Collections.IEnumerator iEnumerator);
 
 `iEnumerator` [System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')
 
-<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(BTD_Mod_Helper.Api.Enums.ScheduleType,int)'></a>
+<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_)'></a>
 
-## TaskScheduler.WaiterCoroutine(ScheduleType, int) Method
+## TaskScheduler.WaiterCoroutine(Action, ScheduleType, int, Func<bool>) Method
 
 This coroutine will wait for amountToWait before finishing
 
 ```csharp
-private static System.Collections.IEnumerator WaiterCoroutine(BTD_Mod_Helper.Api.Enums.ScheduleType scheduleType, int amountToWait);
+private static System.Collections.IEnumerator WaiterCoroutine(System.Action action, BTD_Mod_Helper.Api.Enums.ScheduleType scheduleType, int amountToWait, System.Func<bool> waitCondition=null);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(BTD_Mod_Helper.Api.Enums.ScheduleType,int).scheduleType'></a>
+<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).action'></a>
+
+`action` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
+
+<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).scheduleType'></a>
 
 `scheduleType` [ScheduleType](BTD_Mod_Helper.Api.Enums.ScheduleType.md 'BTD_Mod_Helper.Api.Enums.ScheduleType')
 
-<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(BTD_Mod_Helper.Api.Enums.ScheduleType,int).amountToWait'></a>
+<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).amountToWait'></a>
 
 `amountToWait` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Api.TaskScheduler.WaiterCoroutine(System.Action,BTD_Mod_Helper.Api.Enums.ScheduleType,int,System.Func_bool_).waitCondition'></a>
+
+`waitCondition` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
 #### Returns
 [System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')

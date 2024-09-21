@@ -41,7 +41,7 @@ public static class TaskScheduler
     {
         try
         {
-            MelonCoroutines.Start(Coroutine(action, scheduleType, amountToWait, waitCondition));
+            MelonCoroutines.Start(WaiterCoroutine(action, scheduleType, amountToWait, waitCondition));
         }
         catch (Exception ex)
         {
@@ -50,56 +50,27 @@ public static class TaskScheduler
                                   " This shouldn't have any impact on the mod.");
         }
     }
-
-    /// <summary>
-    /// Will wait for amountToWait before executing your Action. If a waitCondition is specified it will continue waiting
-    /// amountToWait until waitCondition is true
-    /// </summary>
-    /// <param name="action"></param>
-    /// <param name="scheduleType"></param>
-    /// <param name="amountToWait"></param>
-    /// <param name="waitCondition"></param>
-    /// <returns></returns>
-    internal static IEnumerator Coroutine(Action action, ScheduleType scheduleType, int amountToWait,
-        Func<bool> waitCondition = null)
-    {
-        if (waitCondition is null)
-        {
-            yield return WaiterCoroutine(scheduleType, amountToWait);
-        }
-        else
-        {
-            while (!waitCondition.Invoke())
-            {
-                yield return WaiterCoroutine(scheduleType, amountToWait);
-            }
-        }
-
-        action.Invoke();
-    }
-
     /// <summary>
     /// This coroutine will wait for amountToWait before finishing
     /// </summary>
-    /// <param name="scheduleType"></param>
-    /// <param name="amountToWait"></param>
-    /// <returns></returns>
-    private static IEnumerator WaiterCoroutine(ScheduleType scheduleType, int amountToWait)
+    private static IEnumerator WaiterCoroutine(Action action, ScheduleType scheduleType, int amountToWait,
+        Func<bool> waitCondition = null)
     {
+        if (waitCondition != null)
+        {
+            while (!waitCondition())
+            {
+                yield return null;
+            }
+        }
+        
+        var count = 0;
         switch (scheduleType)
         {
             case ScheduleType.WaitForSeconds:
-                var count = 0;
-                while (amountToWait >= count)
-                {
-                    yield return new WaitForSecondsRealtime(1);
-
-                    count++;
-                }
-
+                yield return new WaitForSecondsRealtime(amountToWait);
                 break;
             case ScheduleType.WaitForFrames:
-                count = 0;
                 while (amountToWait >= count)
                 {
                     yield return new WaitForEndOfFrame();
@@ -107,6 +78,11 @@ public static class TaskScheduler
                     count++;
                 }
                 break;
+            case ScheduleType.WaitForSecondsScaled:
+                yield return new WaitForSeconds(amountToWait);
+                break;
         }
+        
+        action.Invoke();
     }
 }
