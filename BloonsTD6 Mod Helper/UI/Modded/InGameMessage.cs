@@ -321,11 +321,8 @@ internal static class NotificationMgr
             // TOD0 why does this fix things lol
             InGame.instance.GetComponentFromChildrenByName<RectTransform>("BlackBarL").Find("Tiled/Edge").SetAsFirstSibling();
         }
-        catch (Exception e)
+        catch (Exception)
         {
-#if DEBUG
-            ModHelper.Warning(e);
-#endif
             // ignored
         }
     }
