@@ -72,6 +72,13 @@ public abstract class ModRoundSet : NamedModContent
     /// </summary>
     public virtual bool AlwaysShowHints => false;
 
+    /// <summary>
+    /// Whether to use 1-Indexed rounds in ModifyRoundsModels methods instead of 0 indexed
+    /// <br/>
+    /// TODO this will default to true in a future Mod Helper update
+    /// </summary>
+    public virtual bool Rounds1Index => false;
+
     /// <inheritdoc />
     public override void Register()
     {
@@ -79,29 +86,30 @@ public abstract class ModRoundSet : NamedModContent
 
         for (var i = 0; i < model.rounds.Count; i++)
         {
+            var round = Rounds1Index ? i + 1 : i;
             try
             {
-                ModifyRoundModels(model.rounds[i], i);
+                ModifyRoundModels(model.rounds[i], round);
 
                 switch (i)
                 {
-                    case <= 40:
-                        ModifyEasyRoundModels(model.rounds[i], i);
+                    case < 40:
+                        ModifyEasyRoundModels(model.rounds[i], round);
                         break;
-                    case <= 60:
-                        ModifyMediumRoundModels(model.rounds[i], i);
+                    case < 60:
+                        ModifyMediumRoundModels(model.rounds[i], round);
                         break;
-                    case <= 80:
-                        ModifyHardRoundModels(model.rounds[i], i);
+                    case < 80:
+                        ModifyHardRoundModels(model.rounds[i], round);
                         break;
-                    case <= 100:
-                        ModifyImpoppableRoundModels(model.rounds[i], i);
+                    case < 100:
+                        ModifyImpoppableRoundModels(model.rounds[i], round);
                         break;
                 }
             }
             catch (Exception)
             {
-                ModHelper.Error($"Failed to modify round {i} for round set {Id}");
+                ModHelper.Error($"Failed to modify round {round} for round set {Id}");
                 throw;
             }
         }
@@ -187,7 +195,7 @@ public abstract class ModRoundSet : NamedModContent
         {
             roundSetModel.rounds[i] = i < baseRounds.Count
                 ? baseRounds[i].Duplicate()
-                : new RoundModel("RoundModel_", new Il2CppReferenceArray<BloonGroupModel>(0));
+                : new RoundModel("", new Il2CppReferenceArray<BloonGroupModel>(0));
             roundSetModel.rounds[i].emissions_ = null;
         }
 
