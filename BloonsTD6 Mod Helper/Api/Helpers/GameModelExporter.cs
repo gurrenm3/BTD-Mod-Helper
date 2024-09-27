@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
@@ -203,6 +204,12 @@ public static class GameModelExporter
     {
         try
         {
+#if DEBUG
+            if (data != null && data.Is(out Model model))
+            {
+                ModelSerializer.MakeConsistent(model);
+            }   
+#endif
             FileIOHelper.SaveObject(path, data);
             return true;
         }

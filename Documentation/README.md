@@ -63,7 +63,7 @@
 | [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') | Base for a helper component for making custom UIs in the same style as Vanilla ones |
 | [ModHelperComponentExt](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt') | Extensions for mod helper components, for using generics and based on restricts for il2cpp objects |
 | [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown') | ModHelperComponent for a |
-| [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage') | ModHelperComponent for a |
+| [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage') | ModHelperComponent for an image element |
 | [ModHelperInputField](BTD_Mod_Helper.Api.Components.ModHelperInputField.md 'BTD_Mod_Helper.Api.Components.ModHelperInputField') | ModHelperComponent for a text input field |
 | [ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption') | ModHelperComponent that's the base panel for the visual representation of a ModSetting |
 | [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel') | ModHelperComponent for a background panel |
@@ -154,9 +154,18 @@
 | [MatchScale](BTD_Mod_Helper.Api.Helpers.MatchScale.md 'BTD_Mod_Helper.Api.Helpers.MatchScale') | Component to make this transform continuously match the scale of another transform |
 | [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') | A wrapper class around a Model |
 | [ModelHelper&lt;T&gt;](BTD_Mod_Helper.Api.Helpers.ModelHelper_T_.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper<T>') | A wrapper class around a Model |
+| [ModelSerializer](BTD_Mod_Helper.Api.Helpers.ModelSerializer.md 'BTD_Mod_Helper.Api.Helpers.ModelSerializer') | Handles serializing and deserializing models in a way that utilizes their actual constructors |
 | [ProcessHelper](BTD_Mod_Helper.Api.Helpers.ProcessHelper.md 'BTD_Mod_Helper.Api.Helpers.ProcessHelper') | Helper methods for processes |
 | [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper') | A wrapper around ProjectileModels for making them easier to create |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
+
+<a name='BTD_Mod_Helper.Api.Internal'></a>
+
+## BTD_Mod_Helper.Api.Internal Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModelConverter](BTD_Mod_Helper.Api.Internal.ModelConverter.md 'BTD_Mod_Helper.Api.Internal.ModelConverter') | A Custom Json Converter that can convert Models<br/><br/><br/>Note that this is NOT an Il2CppNewtonsoft Json converter |
 
 <a name='BTD_Mod_Helper.Api.ModMenu'></a>
 

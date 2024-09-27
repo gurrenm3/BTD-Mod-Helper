@@ -62,7 +62,6 @@ internal partial class MelonMain : BloonsTD6Mod
         // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
 
-
         Schedule_GameModel_Loaded();
         Schedule_GameData_Loaded();
 
@@ -111,15 +110,7 @@ internal partial class MelonMain : BloonsTD6Mod
         NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
         ModSettingHotkey.HandleTowerHotkeys();
-
-#if DEBUG
-        if (ExportSelectedTower.JustPressed() &&
-            TowerSelectionMenu.instance != null &&
-            TowerSelectionMenu.instance.selectedTower != null)
-        {
-            GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
-        }
-#endif
+        TowerEditing.OnUpdate();
     }
 
     public override void OnTitleScreen()

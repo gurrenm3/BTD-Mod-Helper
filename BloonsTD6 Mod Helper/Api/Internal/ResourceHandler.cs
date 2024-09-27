@@ -48,23 +48,8 @@ internal class ResourceHandler
             {
                 using var stream = mod.GetAssembly().GetManifestResourceStream(fileName);
                 using var reader = new WaveFileReader(stream);
-                var waveFormat = reader.WaveFormat;
 
-                var totalSamples = (int) (reader.SampleCount * waveFormat.Channels);
-                var data = new float[totalSamples];
-
-                reader.ToSampleProvider().Read(data, 0, totalSamples);
-
-                var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
-
-                if (audioClip.SetData(data, 0))
-                {
-                    AudioClips[id] = mod.AudioClips[name] = audioClip;
-                }
-                else
-                {
-                    ModHelper.Warning($"Failed to set data for audio clip {fileName}");
-                }
+                mod.AudioClips[name] = CreateAudioClip(reader, id);
             }
             catch (Exception e)
             {
@@ -109,6 +94,34 @@ internal class ResourceHandler
             Bundles[guid] = bundle;
             // ModHelper.Msg("Successfully loaded bundle " + guid);
         }
+    }
+
+    internal static AudioClip CreateAudioClip(WaveFileReader reader, string id)
+    {
+        try
+        {
+            var waveFormat = reader.WaveFormat;
+
+            var totalSamples = (int) (reader.SampleCount * waveFormat.Channels);
+            var data = new float[totalSamples];
+
+            reader.ToSampleProvider().Read(data, 0, totalSamples);
+
+            var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
+
+            if (audioClip.SetData(data, 0))
+            {
+                return AudioClips[id] = audioClip;
+            }
+
+            ModHelper.Warning($"Failed to set data for audio clip {id}");
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+        return null;
     }
 
     internal static Texture2D CreateTexture(string guid)

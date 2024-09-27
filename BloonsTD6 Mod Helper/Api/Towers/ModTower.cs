@@ -176,7 +176,7 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     public virtual bool IncludeInMonkeyTeams => true;
 
-    internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
+    internal virtual TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
     internal virtual bool ShouldCreateParagon =>
         paragonUpgrade != null &&
@@ -374,6 +374,7 @@ public abstract class ModTower : NamedModContent
     {
         tiers ??= new[] {0, 0, 0};
         var towerModel = GetBaseTowerModel(tiers);
+        towerModel.baseId = Id;
         towerModel.name = Id;
 
         towerModel.appliedUpgrades = new Il2CppStringArray(0);

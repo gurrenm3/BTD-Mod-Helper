@@ -5,6 +5,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
@@ -66,7 +67,7 @@ internal partial class MelonMain
         requiresRestart = true,
         icon = LangUniversalIcon
     };
-    
+
     private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
     {
         icon = BenjaminIcon
@@ -214,12 +215,42 @@ internal partial class MelonMain
             onSave = ModHelperFiles.CreateTargetsFile
         };
 
-    #region Debug
+    /*public static readonly ModSettingHotkey SandboxExportTowerModel = new(KeyCode.C, HotkeyModifier.Alt)
+    {
+        category = ModMaking,
+        description =
+            "If in sandbox mode, copies the root model of the selected tower to the clipboard, allowing you to paste it in the BTD6 Tower Editor or other places."
+    };
+
+    public static readonly ModSettingHotkey SandboxImportTowerModel = new(KeyCode.V, HotkeyModifier.Alt)
+    {
+        category = ModMaking,
+        description =
+            "If in sandbox mode and the clipboard contents are a valid tower model, applies it onto the current selected tower. " +
+            "You can do this after copying/cutting your TowerModel within the BTD6 Tower editor."
+    };*/
+
+    public static readonly ModSettingHotkey SandboxQuickEditTower = new(KeyCode.Backslash)
+    {
+        category = ModMaking,
+        description =
+            "If in sandbox mode, opens a text editor window where you can make quick edits to the selected tower's root model."
+    };
+
+    public static readonly ModSettingString QuickEditProgram = new("")
+    {
+        category = ModMaking,
+        description = "Choose a different program/command to edit the file with other than the default notepad.\n" +
+                      "If you have VSCode installed,\na good option is \"code -w -n\".\n" +
+                      "If you have JetBrains Rider, you can put its bin folder in your Path environment variable and do \"rider64 --wait\"."
+    };
 
 #if DEBUG
+    #region Debug
+
     private static readonly ModSettingCategory Debug = new("Debug");
 
-    private static readonly ModSettingFolder ModHelperSourceFolder = new("")
+    internal static readonly ModSettingFolder ModHelperSourceFolder = new("")
     {
         category = Debug,
         description = "Location of Mod Helper Source code"
@@ -260,13 +291,13 @@ internal partial class MelonMain
         buttonText = "Generate"
     };
 
-    private static readonly ModSettingHotkey ExportSelectedTower = new(KeyCode.Backslash, HotkeyModifier.Shift)
-    {
-        category = Debug,
-        description = "While in game, exports the exact TowerModel being used by the selected tower."
-    };
-
-#endif
+    private static readonly ModSettingButton ModelSerializationTests =
+        new(() => Tests.ModelSerializationTests.TestSerialization(Game.instance.model))
+        {
+            category = Debug,
+            buttonText = "Run"
+        };
 
     #endregion
+#endif
 }
