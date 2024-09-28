@@ -171,9 +171,9 @@ public abstract class ModDisplay : ModContent
     /// </summary>
     /// <param name="bloon"> The bloon base id</param>
     /// <returns>The display GUID</returns>
-    protected string GetBloonDisplay(string bloon) => 
+    protected string GetBloonDisplay(string bloon) =>
         Game.instance.model.GetBloon(bloon).display.GUID;
-    
+
     /// <summary>
     /// Gets a UnityDisplayNode for a different guid
     /// </summary>
@@ -201,7 +201,7 @@ public abstract class ModDisplay : ModContent
     {
         UseNode(guid, action, DisplayCategory.Default);
     }
-
+    
     #region Applying Methods
 
     /// <summary>
@@ -242,7 +242,7 @@ public abstract class ModDisplay : ModContent
         displayModel.positionOffset = PositionOffset;
         displayModel.scale = Scale;
     }
-    
+
     /// <summary>
     /// Applies this ModDisplay to a given EffectModel
     /// </summary>
@@ -250,7 +250,7 @@ public abstract class ModDisplay : ModContent
     {
         effectModel.assetId = CreatePrefabReference(Id);
     }
-    
+
     /// <summary>
     /// Applies this ModDisplay to a given EffectModel
     /// </summary>
@@ -258,7 +258,6 @@ public abstract class ModDisplay : ModContent
     {
         assetPathModel.assetPath = CreatePrefabReference(Id);
     }
-
 
     #endregion
 
@@ -419,4 +418,5 @@ public abstract class ModDisplay : ModContent
 #pragma warning restore CS1591
 
     #endregion
+
 }

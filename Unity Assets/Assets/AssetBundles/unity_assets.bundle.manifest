@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 4107016089
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d8fe04b3d85c2f2f59e3955901da2807
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 87b0bba9d18ffc75f60c50b410bd4a4e
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/HSVAdjust.shader
+- Assets/ColorReplace.shader
+Dependencies: []

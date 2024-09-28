@@ -80,6 +80,29 @@ public static partial class UnityDisplayNodeExt
     }
 
     /// <summary>
+    /// Gets the first generic renderer whose name contains the specified string, recalculating the renderers if need be
+    /// </summary>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="nameContains">String that renderer name must contain</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
+    public static Renderer GetRenderer(this UnityDisplayNode node, string nameContains, bool recalculate = true)
+    {
+        return node.GetRenderers(recalculate).FirstOrDefault(renderer => renderer.name.Contains(nameContains));
+    }
+
+    /// <summary>
+    /// Gets the first generic renderer of the specified type whose name contains the specified string, recalculating the renderers if need be
+    /// </summary>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="nameContains">String that renderer name must contain</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
+    /// <typeparam name="T">The type of Renderer you're looking for</typeparam>
+    public static T GetRenderer<T>(this UnityDisplayNode node, string nameContains, bool recalculate = true) where T : Renderer
+    {
+        return node.GetRenderers<T>(recalculate).FirstOrDefault(renderer => renderer.name.Contains(nameContains));
+    }
+
+    /// <summary>
     /// Prints relevant info about this node to the console
     /// </summary>
     /// <param name="node"></param>
