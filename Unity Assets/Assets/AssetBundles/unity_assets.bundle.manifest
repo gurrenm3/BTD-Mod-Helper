@@ -1,18 +1,50 @@
 ManifestFileVersion: 0
-CRC: 4107016089
+CRC: 822271204
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d8fe04b3d85c2f2f59e3955901da2807
+    Hash: ee9a9df80509012ae4754dc9484d0b15
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 87b0bba9d18ffc75f60c50b410bd4a4e
+    Hash: 05bc8c7e7d4c214cb656080e1db8593a
 HashAppended: 0
 ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
 Assets:
+- Assets/TextMesh Pro/Shaders/TMP_SDF.shader
+- Assets/Inconsolata Atlas.texture2D
 - Assets/HSVAdjust.shader
 - Assets/ColorReplace.shader
+- Assets/Inconsolata.asset
+- Assets/Inconsolata Material.mat
 Dependencies: []
