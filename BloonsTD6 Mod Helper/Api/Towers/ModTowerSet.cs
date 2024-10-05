@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Towers;
@@ -92,7 +93,7 @@ public abstract class ModTowerSet : NamedModContent
     /// SpriteReference for the Seat
     /// </summary>
     public virtual SpriteReference SeatReference =>
-        GetSpriteReferenceOrNull(Seat) ?? CreateSpriteReference(VanillaSprites.TowerSeatEmpty);
+        GetSpriteReferenceOrNull(Seat) ?? GameData.Instance.towerBackgroundSprites.primarySpriteRound;
 
     /// <summary>
     /// Whether this Tower Set should still be allowed to appear in Primary Only, Military Only, Magic Only

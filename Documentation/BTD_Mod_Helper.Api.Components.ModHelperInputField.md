@@ -56,7 +56,7 @@ public BTD_Mod_Helper.Api.Components.ModHelperText Text { get; }
 
 ## ModHelperInputField.OnUpdate() Method
 
-Unity Component Update
+Unity Component OnUpdate
 
 ```csharp
 protected override void OnUpdate();

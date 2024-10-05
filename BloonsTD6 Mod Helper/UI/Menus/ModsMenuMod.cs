@@ -26,7 +26,7 @@ internal class ModsMenuMod : ModHelperComponent
     public ModHelperImage Icon => GetDescendent<ModHelperImage>("Icon");
     public ModHelperText Name => GetDescendent<ModHelperText>("Name");
     public ModHelperText Version => GetDescendent<ModHelperText>("Version");
-    public ModHelperButton Update => GetDescendent<ModHelperButton>("Update");
+    public ModHelperButton Update => GetDescendent<ModHelperButton>("OnUpdate");
     public ModHelperButton Settings => GetDescendent<ModHelperButton>("Settings");
     public ModHelperImage Restart => GetDescendent<ModHelperImage>("Restart");
     public ModHelperButton Warning => GetDescendent<ModHelperButton>("Warning");
@@ -40,10 +40,9 @@ internal class ModsMenuMod : ModHelperComponent
             FlexWidth = 1
         });
 
-        var panel = mod.AddButton(new Info("MainButton", InfoPreset.FillParent), VanillaSprites.UISprite, null);
+        var panel = mod.AddButton(new Info("MainButton", InfoPreset.FillParent), "", null);
 
-        panel.AddImage(new Info("Icon", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, new Vector2(0, 0.5f)),
-            VanillaSprites.UISprite);
+        panel.AddImage(new Info("Icon", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, new Vector2(0, 0.5f)), "");
 
         panel.AddImage(new Info("Restart", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, ModsMenu.ModIconSize,
             new Vector2(0, 0.5f)), VanillaSprites.RestartIcon);
@@ -54,7 +53,7 @@ internal class ModsMenuMod : ModHelperComponent
         panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
             new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
 
-        panel.AddButton(new Info("Update", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
+        panel.AddButton(new Info("OnUpdate", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
             new Vector2(1, 1)), VanillaSprites.UpgradeBtn, null);
 
         panel.AddButton(new Info("Settings", ModsMenu.Padding / -2f, ModsMenu.Padding / 2f,
@@ -126,11 +125,11 @@ internal static class ModsMenuModExt
                         screen.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n")));
                 });
             }
-            
+
         }
-        
+
         mod.Hash.SetText(melonMod?.MelonAssembly?.Hash ?? "");
-        
+
         mod.Hash.SetActive(ModsMenu.ShowHashes);
 
         mod.Refresh(modHelperData);

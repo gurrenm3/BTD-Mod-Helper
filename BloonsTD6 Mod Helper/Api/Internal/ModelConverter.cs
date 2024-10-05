@@ -11,7 +11,7 @@ namespace BTD_Mod_Helper.Api.Internal;
 /// <br/>
 /// Note that this is NOT an Il2CppNewtonsoft Json converter
 /// </summary>
-public class ModelConverter : JsonConverter
+internal class ModelConverter : JsonConverter
 {
     public static readonly JsonSerializerSettings Settings = new()
     {

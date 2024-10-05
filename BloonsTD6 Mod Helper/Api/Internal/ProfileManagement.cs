@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Profile;
+using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Internal;
@@ -102,6 +103,35 @@ internal class ProfileManagement
                         MapPlayerHeroes.TryAdd(name, new Dictionary<int, string>());
                         MapPlayerHeroes[name][id] = player.hero;
                         player.hero = "Quincy";
+                    }
+                }
+            }
+        }
+
+        if (profile.savedNamedMonkeyStats != null)
+        {
+            foreach (var key in profile.savedNamedMonkeyStats.GetKeys())
+            {
+                if (ModHelper.Mods.Any(mod => key.StartsWith(mod.IDPrefix)))
+                {
+                    profile.savedNamedMonkeyStats.Remove(key);
+                }
+            }
+        }
+
+        if (profile.odysseysEditorData?.rules != null)
+        {
+            foreach (var rules in profile.odysseysEditorData.rules.GetValues())
+            {
+                rules.availableTowers?.RemoveAll(new Func<TowerData, bool>(towerData =>
+                    ModHelper.Mods.Any(mod => towerData.tower.StartsWith(mod.IDPrefix))));
+
+                if (rules.challenges != null)
+                {
+                    foreach (var dcm in rules.challenges)
+                    {
+                        dcm.towers?.RemoveAll(new Func<TowerData, bool>(towerData =>
+                            ModHelper.Mods.Any(mod => towerData.tower.StartsWith(mod.IDPrefix))));
                     }
                 }
             }

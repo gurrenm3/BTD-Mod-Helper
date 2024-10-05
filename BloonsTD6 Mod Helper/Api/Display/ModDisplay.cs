@@ -227,7 +227,6 @@ public abstract class ModDisplay : ModContent
     /// </summary>
     public virtual void Apply(ProjectileModel projectileModel)
     {
-
         projectileModel.display = CreatePrefabReference(Id);
         Apply(projectileModel.GetBehavior<DisplayModel>()!);
     }

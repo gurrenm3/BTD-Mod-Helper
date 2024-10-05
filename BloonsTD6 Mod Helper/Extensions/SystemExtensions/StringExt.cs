@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Il2CppNinjaKiwi.Common;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -49,4 +50,31 @@ public static class StringExt
 
     /// <inheritdoc cref="GetBtd6Localization"/>
     public static string Localize(this string id) => GetBtd6Localization(id);
+
+    /// <summary>
+    /// Splits the string on spaces, but preserves strings of words with spaces if surround by quotes
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string[] SplitRespectingQuotes(this string input)
+    {
+        const string pattern = @"(?<=\s|^)([""'])(.+?)\1|[^""'\s]+";
+
+        var matches = Regex.Matches(input, pattern);
+
+        var result = new List<string>();
+
+        foreach (Match match in matches)
+        {
+            var value = match.Value.Trim();
+            // If the section is quoted, remove the quotes
+            if (value.StartsWith("\"") && value.EndsWith("\"") || value.StartsWith("'") && value.EndsWith("'"))
+            {
+                value = value.Substring(1, value.Length - 2);
+            }
+            result.Add(value);
+        }
+
+        return result.ToArray();
+    }
 }

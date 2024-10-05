@@ -1015,7 +1015,7 @@ public T GetDescendent<T>(string s="")
 
 ## ModHelperComponent.OnUpdate() Method
 
-Unity Component Update
+Unity Component OnUpdate
 
 ```csharp
 protected virtual void OnUpdate();

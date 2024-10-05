@@ -24,14 +24,19 @@ internal static class TowerEditing
 
         var tower = TowerSelectionMenu.instance.selectedTower.tower;
 
-        if (MelonMain.SandboxQuickEditTower.JustPressed())
+        if (MelonMain.QuickEditTowerModel.JustPressed())
         {
             QuickEdit(tower);
+        }
+        
+        if (MelonMain.QuickEditMutatedModel.JustPressed())
+        {
+            QuickEdit(tower, true);
         }
 
         /*if (MelonMain.SandboxExportTowerModel.JustPressed())
         {
-            ExportTower(tower);
+            ExportCommand(tower);
         }
 
         if (MelonMain.SandboxImportTowerModel.JustPressed())
@@ -40,7 +45,7 @@ internal static class TowerEditing
         }*/
     }
 
-    /*public static void ExportTower(Tower tower)
+    /*public static void ExportCommand(Tower tower)
     {
         var model = tower.rootModel;
 
@@ -69,56 +74,23 @@ internal static class TowerEditing
         }
     }*/
 
-    public static void QuickEdit(Tower tower)
+    public static bool QuickEdit(Tower tower, bool editMutated = false)
     {
         var model = tower.rootModel;
 
-        if (Input.GetKey(KeyCode.LeftAlt))
+        if (editMutated)
         {
             model = tower.towerModel;
         }
 
         var text = ModelSerializer.SerializeModel(model);
 
-        FileIOHelper.SaveFile(FileName, text);
-
-        var path = Path.Combine(FileIOHelper.sandboxRoot, FileName);
-
-        var linux = MelonUtils.IsUnderWineOrSteamProton();
-
-        var command = linux ? "nano" : "notepad";
-
-        if (!string.IsNullOrWhiteSpace(MelonMain.QuickEditProgram))
-        {
-            command = MelonMain.QuickEditProgram;
-        }
-
-        var process = Process.Start(new ProcessStartInfo
-        {
-            FileName = linux ? "sh" : "cmd.exe",
-            Arguments = $"{(linux ? "-c" : "/C")} {command} \"{path}\"",
-            CreateNoWindow = command == "nano",
-            WindowStyle = command == "nano" ? ProcessWindowStyle.Normal : ProcessWindowStyle.Hidden,
-            UseShellExecute = true,
-        });
-
-        if (process == null)
-        {
-            ModHelper.Warning("Failed to start process");
-            return;
-        }
-
-        ModHelper.Msg($"Editing {model.name} at {path}. Game will resume once editor closes the file.");
-
-        process.WaitForExit();
-
-        var newText = FileIOHelper.LoadFile(FileName);
-
-        File.Delete(path);
+        var newText = Helpers.QuickEdit.EditText(text, FileName);
 
         if (newText == text)
         {
             ModHelper.Msg("No Edits Made");
+            return false;
         }
 
         var newModel = ModelSerializer.DeserializeModel<TowerModel>(newText);
@@ -130,5 +102,7 @@ internal static class TowerEditing
         {
             tower.UpdateRootModel(newModel.Duplicate());
         }
+
+        return true;
     }
 }

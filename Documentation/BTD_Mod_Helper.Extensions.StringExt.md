@@ -122,6 +122,24 @@ public static string Spaced(this string s);
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Extensions.StringExt.SplitRespectingQuotes(thisstring)'></a>
+
+## StringExt.SplitRespectingQuotes(this string) Method
+
+Splits the string on spaces, but preserves strings of words with spaces if surround by quotes
+
+```csharp
+public static string[] SplitRespectingQuotes(this string input);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.StringExt.SplitRespectingQuotes(thisstring).input'></a>
+
+`input` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
 <a name='BTD_Mod_Helper.Extensions.StringExt.ToTitleCase(thisstring)'></a>
 
 ## StringExt.ToTitleCase(this string) Method

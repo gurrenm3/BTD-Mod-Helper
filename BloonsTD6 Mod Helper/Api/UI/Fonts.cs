@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppNinjaKiwi.Common;
 using Il2CppTMPro;
 using UnityEngine;
@@ -16,7 +17,24 @@ public static class Fonts
     public static TMP_FontAsset Btd6FontBody => Get("Btd6FontBodySDF");
     public static TMP_FontAsset Btd6FontTitle => Get("Btd6FontTitleSDF");
     public static TMP_FontAsset CurrencyExtras => Get("CurrencyExtrasSDF");
-    public static TMP_FontAsset LiberationSans => Get("CurrencyExtrasSDF");
+    public static TMP_FontAsset LiberationSans => Get("LiberationSans");
+
+    private static TMP_FontAsset inconsolata;
+    public static TMP_FontAsset Inconsolata
+    {
+        get
+        {
+            if (inconsolata != null) return inconsolata;
+            
+            var unityAssets = ModContent.GetBundle<MelonMain>("unity_assets");
+
+            inconsolata = unityAssets.LoadAsset("Inconsolata").Cast<TMP_FontAsset>();
+            inconsolata.material = unityAssets.LoadAsset("Inconsolata Material").Cast<Material>();
+            inconsolata.material.mainTexture = inconsolata.atlas = unityAssets.LoadAsset("Inconsolata Atlas").Cast<Texture2D>();
+
+            return inconsolata;
+        }
+    }
 
     internal static void Load()
     {

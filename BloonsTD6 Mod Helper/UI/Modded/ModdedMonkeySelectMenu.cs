@@ -51,7 +51,7 @@ internal class ModdedMonkeySelectMenu
         ModTowerSet.Cache.TryGetValue(s, out var modTowerSet) ? modTowerSet.Set : TowerSet.None;
 
     /// <summary>
-    /// Update the currentTowerSet tracker, and change the state if need be
+    /// OnUpdate the currentTowerSet tracker, and change the state if need be
     /// </summary>
     /// <param name="__instance"></param>
     /// <param name="offset"></param>

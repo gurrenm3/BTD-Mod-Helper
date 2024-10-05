@@ -173,7 +173,20 @@ internal partial class MelonMain
         category = ModMaking,
         icon = NamedMonkeyIcon
     };
+    
+    public static readonly ModSettingHotkey OpenConsole = new(KeyCode.Slash, HotkeyModifier.Shift)
+    {
+        displayName = "Open Console",
+        description = "Hotkey that opens a command console where specific mod actions can be triggered.",
+        category = ModMaking,
+    };
 
+    public static readonly ModSettingBool ShiftShiftOpensConsole = new(false)
+    {
+        description = "Makes it so that pressing Shift twice in a row also opens the console",
+        category = ModMaking
+    };
+    
     private static readonly ModSettingButton OpenLocalDirectory = new()
     {
         displayName = "Open Local Files Directory",
@@ -215,22 +228,14 @@ internal partial class MelonMain
             onSave = ModHelperFiles.CreateTargetsFile
         };
 
-    /*public static readonly ModSettingHotkey SandboxExportTowerModel = new(KeyCode.C, HotkeyModifier.Alt)
+    public static readonly ModSettingHotkey QuickEditTowerModel = new(KeyCode.Backslash, HotkeyModifier.Shift)
     {
         category = ModMaking,
         description =
-            "If in sandbox mode, copies the root model of the selected tower to the clipboard, allowing you to paste it in the BTD6 Tower Editor or other places."
+            "If in sandbox mode, opens a text editor window where you can make quick edits to the selected tower's root model."
     };
-
-    public static readonly ModSettingHotkey SandboxImportTowerModel = new(KeyCode.V, HotkeyModifier.Alt)
-    {
-        category = ModMaking,
-        description =
-            "If in sandbox mode and the clipboard contents are a valid tower model, applies it onto the current selected tower. " +
-            "You can do this after copying/cutting your TowerModel within the BTD6 Tower editor."
-    };*/
-
-    public static readonly ModSettingHotkey SandboxQuickEditTower = new(KeyCode.Backslash)
+    
+    public static readonly ModSettingHotkey QuickEditMutatedModel = new(KeyCode.Backslash, HotkeyModifier.Ctrl)
     {
         category = ModMaking,
         description =
@@ -244,60 +249,10 @@ internal partial class MelonMain
                       "If you have VSCode installed,\na good option is \"code -w -n\".\n" +
                       "If you have JetBrains Rider, you can put its bin folder in your Path environment variable and do \"rider64 --wait\"."
     };
-
-#if DEBUG
-    #region Debug
-
-    private static readonly ModSettingCategory Debug = new("Debug");
-
+    
     internal static readonly ModSettingFolder ModHelperSourceFolder = new("")
     {
-        category = Debug,
-        description = "Location of Mod Helper Source code"
+        category = ModMaking,
+        description = "Location of Mod Helper Source code for development purposes"
     };
-
-    private static readonly ModSettingFolder AssetStudioDump = new("")
-    {
-        category = Debug,
-        description = "Folder where Asset Studio has dumped all the Sprite information"
-    };
-
-    private static readonly ModSettingButton GenerateVanillaSprites = new(() =>
-    {
-        if (!string.IsNullOrEmpty(ModHelperSourceFolder) && !string.IsNullOrEmpty(AssetStudioDump))
-        {
-            VanillaSpriteGenerator.GenerateVanillaSprites(
-                Path.Combine(ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums", "VanillaSprites.cs"),
-                AssetStudioDump);
-        }
-    })
-    {
-        category = Debug,
-        description = "Generates the VanillaSprites.cs file based on the previous two settings",
-        buttonText = "Generate"
-    };
-
-    private static readonly ModSettingButton GenerateUpgradeTypes = new(() =>
-    {
-        if (!string.IsNullOrEmpty(ModHelperSourceFolder))
-        {
-            var csFie = Path.Combine(ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums", "UpgradeType.cs");
-            UpgradeTypeGenerator.GenerateVanillaUpgradeTypes(csFie);
-        }
-    })
-    {
-        category = Debug,
-        description = "Generates the UpgradeType.cs file",
-        buttonText = "Generate"
-    };
-
-    private static readonly ModSettingButton ModelSerializationTests =
-        new(() => Tests.ModelSerializationTests.TestSerialization(Game.instance.model))
-        {
-            category = Debug,
-            buttonText = "Run"
-        };
-
-    #endregion
-#endif
 }

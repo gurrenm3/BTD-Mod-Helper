@@ -49,6 +49,16 @@
 | [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon') | Allows you to easily modify the models of a specific vanilla Bloon |
 | [ModVanillaBloons](BTD_Mod_Helper.Api.Bloons.ModVanillaBloons.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloons') | Allows you to easily modify the models of multiple vanilla Bloons |
 
+<a name='BTD_Mod_Helper.Api.Commands'></a>
+
+## BTD_Mod_Helper.Api.Commands Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ExportCommand](BTD_Mod_Helper.Api.Commands.ExportCommand.md 'BTD_Mod_Helper.Api.Commands.ExportCommand') | Root command for exporting information to files |
+| [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') | |
+| [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | |
+
 <a name='BTD_Mod_Helper.Api.Components'></a>
 
 ## BTD_Mod_Helper.Api.Components Namespace
@@ -132,6 +142,7 @@
 
 | Enums | |
 | :--- | :--- |
+| [CustomShader](BTD_Mod_Helper.Api.Enums.CustomShader.md 'BTD_Mod_Helper.Api.Enums.CustomShader') | Custom Shaders added by Mod Helper |
 | [ScheduleType](BTD_Mod_Helper.Api.Enums.ScheduleType.md 'BTD_Mod_Helper.Api.Enums.ScheduleType') | Controls how you want to wait the Task Scheduler to wait for your tasks |
 
 <a name='BTD_Mod_Helper.Api.Helpers'></a>
@@ -157,15 +168,8 @@
 | [ModelSerializer](BTD_Mod_Helper.Api.Helpers.ModelSerializer.md 'BTD_Mod_Helper.Api.Helpers.ModelSerializer') | Handles serializing and deserializing models in a way that utilizes their actual constructors |
 | [ProcessHelper](BTD_Mod_Helper.Api.Helpers.ProcessHelper.md 'BTD_Mod_Helper.Api.Helpers.ProcessHelper') | Helper methods for processes |
 | [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper') | A wrapper around ProjectileModels for making them easier to create |
+| [QuickEdit](BTD_Mod_Helper.Api.Helpers.QuickEdit.md 'BTD_Mod_Helper.Api.Helpers.QuickEdit') | Utility for allowing the user to quickly edit some input in an external program |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
-
-<a name='BTD_Mod_Helper.Api.Internal'></a>
-
-## BTD_Mod_Helper.Api.Internal Namespace
-
-| Classes | |
-| :--- | :--- |
-| [ModelConverter](BTD_Mod_Helper.Api.Internal.ModelConverter.md 'BTD_Mod_Helper.Api.Internal.ModelConverter') | A Custom Json Converter that can convert Models<br/><br/><br/>Note that this is NOT an Il2CppNewtonsoft Json converter |
 
 <a name='BTD_Mod_Helper.Api.ModMenu'></a>
 

@@ -7,6 +7,7 @@ using Il2CppAssets.Scripts.Models.Powers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
+using Il2CppNewtonsoft.Json.Utilities;
 namespace BTD_Mod_Helper.Tests;
 
 #if DEBUG
@@ -78,7 +79,7 @@ internal static class ModelSerializationTests
         }
     }
 
-    public static void TestSerialization(GameModel gameModel)
+    public static bool TestSerialization(GameModel gameModel)
     {
         var model = gameModel.Duplicate();
         // model.RemoveChildDependants(model.towers);
@@ -103,6 +104,8 @@ internal static class ModelSerializationTests
         FileIOHelper.SaveFile("Tests/recreated_game_model.json", recreatedGameModelText);
 
         ModHelper.Msg(entireGameModelText == recreatedGameModelText ? "matched" : "not matched");
+        
+        return entireGameModelText.Trim() == recreatedGameModelText.Trim();
     }
 }
 

@@ -192,7 +192,7 @@ public class ModHelperComponent : MonoBehaviour
     }
 
     /// <summary>
-    /// Unity Component Update
+    /// Unity Component OnUpdate
     /// </summary>
     protected virtual void OnUpdate()
     {

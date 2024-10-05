@@ -14,9 +14,10 @@ internal static class UpgradeTypeGenerator
         {"Buccaneer-Double Shot", "DoubleShotBuccaneer"}
     };
 
-    public static void GenerateVanillaUpgradeTypes(string upgradeTypesCs)
+    public static string GenerateVanillaUpgradeTypes()
     {
-        using var upgradeTypesFile = new StreamWriter(upgradeTypesCs);
+        var file = Path.Combine(MelonMain.ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums", "UpgradeType.cs");
+        using var upgradeTypesFile = new StreamWriter(file);
 
         upgradeTypesFile.WriteLine(
             """
@@ -44,8 +45,8 @@ internal static class UpgradeTypeGenerator
 
             upgradeTypesFile.WriteLine(
                 $"""
-                    public const string {p} = "{upgrade}";
-                """
+                     public const string {p} = "{upgrade}";
+                 """
             );
 
             byName.Add(p);
@@ -61,8 +62,8 @@ internal static class UpgradeTypeGenerator
         {
             upgradeTypesFile.WriteLine(
                 $$"""
-                        { "{{s}}", {{s}} },
-                """
+                          { "{{s}}", {{s}} },
+                  """
             );
         }
         upgradeTypesFile.WriteLine(
@@ -73,5 +74,7 @@ internal static class UpgradeTypeGenerator
 
 
         upgradeTypesFile.Write("}");
+
+        return file;
     }
 }

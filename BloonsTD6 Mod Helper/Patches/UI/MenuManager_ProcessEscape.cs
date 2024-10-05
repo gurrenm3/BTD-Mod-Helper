@@ -1,3 +1,4 @@
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Settings;
@@ -13,6 +14,12 @@ internal static class MenuManager_ProcessEscape
         {
             hotkeysScreen.rebindingOperation?.Dispose();
             hotkeysScreen.ChangeField(hotkeysScreen.fieldBeingChanged, HotkeyModifier.None, "");
+            return false;
+        }
+
+        if (ConsoleHandler.ConsoleShowing)
+        {
+            ConsoleHandler.ProcessEscape();
             return false;
         }
 

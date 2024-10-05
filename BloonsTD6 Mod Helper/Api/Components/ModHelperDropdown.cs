@@ -99,7 +99,7 @@ public class ModHelperDropdown : ModHelperComponent
 
         var template = modHelperDropdown.AddScrollPanel(
             new Info("Template", 0, height / -2 - realHeight / 2, width, realHeight),
-            RectTransform.Axis.Vertical, VanillaSprites.UISprite);
+            RectTransform.Axis.Vertical, "");
 
         template.Background.color = new Color(0.262f, 0.435f, 0.658f);
         dropdown.template = template;

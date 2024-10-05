@@ -102,7 +102,8 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         ModByteLoader.OnUpdate();
         RoundSetChanger.OnUpdate();
-        // InitialLoadTasks_MoveNext.Update();
+        ConsoleHandler.OnUpdate();
+        // InitialLoadTasks_MoveNext.OnUpdate();
 
         if (Game.instance is null || InGame.instance is null)
             return;
