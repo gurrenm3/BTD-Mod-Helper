@@ -8,6 +8,7 @@ on:
       - '*'
     paths:
       - BloonsTD6 Mod Helper/**
+      - .github/workflows/build.yml
   pull_request:
     branches:
       - '*'
@@ -16,7 +17,6 @@ env:
   PROJECT_NAME: Btd6ModHelper
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
-  MELONLOADER_BRANCH: 0.6.1
 
 jobs:
   build:
