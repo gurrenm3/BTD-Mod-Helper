@@ -16,6 +16,7 @@ env:
   PROJECT_NAME: Btd6ModHelper
   CSPROJ: "./BloonsTD6 Mod Helper/BloonsTD6 Mod Helper.csproj"
   BLOONSTD6: ./BloonsTD6
+  MELONLOADER_BRANCH: 0.6.1
 
 jobs:
   build:
@@ -31,7 +32,7 @@ jobs:
         with:
           files: modders.json
           
-      - name: Download Latest MelonLoader
+      - name: Download MelonLoader Release
         if: env.MELONLOADER_BRANCH == ''
         uses: robinraju/release-downloader@v1.4
         with:
@@ -40,14 +41,14 @@ jobs:
           fileName: MelonLoader.x64.zip
           tarBall: false
           zipBall: false
-          latest: true
-      - name: Extract Latest MelonLoader
+          tag: v0.6.1
+      - name: Extract MelonLoader
         if: env.MELONLOADER_BRANCH == ''
         shell: bash
         run: unzip MelonLoader.x64.zip -d ${{ env.BLOONSTD6 }}
 
 
-      - name: Download Specific MelonLoader
+      - name: Download MelonLoader Artifact
         if: env.MELONLOADER_BRANCH != ''
         uses: dawidd6/action-download-artifact@v2
         with:
