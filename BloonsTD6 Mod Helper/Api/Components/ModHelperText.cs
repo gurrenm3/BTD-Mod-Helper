@@ -26,8 +26,15 @@ public class ModHelperText : ModHelperComponent
     /// </summary>
     public void SetText(string text)
     {
-        Text.localizeKey = text;
-        Text.SetText(text.Localize());
+        if (Text.AutoLocalize)
+        {
+            Text.localizeKey = text;
+            Text.SetText(text.Localize());
+        }
+        else
+        {
+            Text.SetText(text);
+        }
     }
 
     /// <summary>
@@ -53,6 +60,7 @@ public class ModHelperText : ModHelperComponent
         textMesh.font = Fonts.Btd6FontTitle;
         textMesh.overflowMode = TextOverflowModes.Ellipsis;
         textMesh.lineSpacing = fontSize / 2;
+        textMesh.parseCtrlCharacters = false;
 
         return modHelperText;
     }

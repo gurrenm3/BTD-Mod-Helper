@@ -177,9 +177,9 @@ internal static class ConsoleHandler
         UpdateSuggestions();
     }
 
-    private static readonly Color ErrorColor = Color.red;
-    private static readonly Color SuccessColor = Color.green;
-    private static readonly Color UnavailableColor = new(.7f, .7f, .7f);
+    internal static readonly Color ErrorColor = Color.red;
+    internal static readonly Color SuccessColor = Color.green;
+    internal static readonly Color UnavailableColor = new(.7f, .7f, .7f);
 
     public static string Highlight(string text, string color) =>
         $"<color={color}>{text}</color>";
@@ -306,7 +306,7 @@ internal static class ConsoleHandler
                 !s.Text.StartsWith(tokens.Last()) && !(s.AltText != null && s.AltText.StartsWith(tokens.Last())));
         }
 
-        Console.Suggestions = CurrentSuggestions.Select(suggestion => suggestion.DisplayText).Join(delimiter: "\n");
+        Console.Suggestions = CurrentSuggestions.Select(suggestion => suggestion.SuggestionLine).Join(delimiter: "\n");
     }
 
     public static void TryAutocomplete(bool invert = false)
@@ -359,9 +359,8 @@ internal static class ConsoleHandler
         Console.CaretPosition = Console.Text.Length;
     }
 
-    public record Suggestion(string Text, string SuggestionLine, string AltText = null, bool Available = true)
+    public record Suggestion(string Text, string SuggestionLine, string AltText = null)
     {
-        public string DisplayText => Available ? SuggestionLine : Highlight(SuggestionLine, UnavailableColor);
     }
 
     public static Suggestion SuggestionLine(this OptionAttribute o) => new("--" + o.LongName,

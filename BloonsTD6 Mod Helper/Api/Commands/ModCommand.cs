@@ -8,7 +8,7 @@ using CommandLine;
 namespace BTD_Mod_Helper.Api.Commands;
 
 /// <summary>
-/// 
+/// Defines a command that can be run from within the Mod Helper developer console
 /// </summary>
 public abstract class ModCommand : ModContent
 {
@@ -65,9 +65,12 @@ public abstract class ModCommand : ModContent
     /// <summary>
     /// Line of text that appears as a suggestion
     /// </summary>
-    public string SuggestionLine => Command + " - " + Help;
+    public string SuggestionLine =>
+        new(ConsoleHandler.Highlight(Command, Available ? ConsoleHandler.SuccessColor : ConsoleHandler.UnavailableColor) +
+            " - " +
+            Help);
 
-    internal ConsoleHandler.Suggestion Suggestion => new(Command, SuggestionLine, Available: IsAvailable);
+    internal ConsoleHandler.Suggestion Suggestion => new(Command, SuggestionLine);
 
     /// <summary>
     /// Optional arguments for this command
@@ -187,7 +190,10 @@ public abstract class ModCommand : ModContent
     }
 }
 
-/// <inheritdoc cref="ModCommand"/>
+/// <summary>
+/// Defines a ModCommand that is a subcommand of the specified other command
+/// </summary>
+/// <typeparam name="T">The root command this is a sub command of</typeparam>
 public abstract class ModCommand<T> : ModCommand where T : ModCommand
 {
     /// <inheritdoc />

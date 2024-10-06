@@ -15,6 +15,8 @@ internal class ResourceHandler
     internal static readonly Dictionary<string, Texture2D> TextureCache = new();
 
     internal static readonly Dictionary<string, Sprite> SpriteCache = new();
+    
+    internal static readonly List<RenderTexture> RenderTexturesToRelease = [];
 
     internal static void LoadEmbeddedTextures(BloonsMod mod)
     {

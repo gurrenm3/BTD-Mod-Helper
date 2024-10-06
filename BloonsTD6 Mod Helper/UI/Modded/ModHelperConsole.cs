@@ -101,6 +101,7 @@ internal class ModHelperConsole : ModHelperComponent
             Height = 2000
         }, "", 52f, TextAlignmentOptions.BottomLeft);
         console.suggestions.Text.font = Fonts.Inconsolata;
+        console.suggestions.Text.AutoLocalize = false;
 
         console.results = console.AddText(new Info("Results")
         {
@@ -111,13 +112,14 @@ internal class ModHelperConsole : ModHelperComponent
             Height = 500
         }, "", 52f, TextAlignmentOptions.TopLeft);
         console.results.Text.font = Fonts.Inconsolata;
+        console.results.Text.AutoLocalize = false;
 
         console.close = console.AddButton(new Info("Close", 100)
         {
             X = -100,
             Anchor = new Vector2(0, 0)
-        }, VanillaSprites.CloseBtn, new Action(ConsoleHandler.HideConsole));;
-            
+        }, VanillaSprites.CloseBtn, new Action(ConsoleHandler.HideConsole));
+
         console.run = console.AddButton(new Info("Run", 100)
         {
             X = 100,

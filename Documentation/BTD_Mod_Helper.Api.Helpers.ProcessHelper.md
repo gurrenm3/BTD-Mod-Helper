@@ -12,6 +12,23 @@ public static class ProcessHelper
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ProcessHelper
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.Helpers.ProcessHelper.OpenFile(string)'></a>
+
+## ProcessHelper.OpenFile(string) Method
+
+Opens a file in the default app for it
+
+```csharp
+public static void OpenFile(string filePath);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Helpers.ProcessHelper.OpenFile(string).filePath'></a>
+
+`filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+File path
+
 <a name='BTD_Mod_Helper.Api.Helpers.ProcessHelper.OpenFolder(string)'></a>
 
 ## ProcessHelper.OpenFolder(string) Method

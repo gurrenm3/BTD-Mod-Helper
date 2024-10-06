@@ -3,6 +3,8 @@
 
 ## ModCommand<T> Class
 
+Defines a ModCommand that is a subcommand of the specified other command
+
 ```csharp
 public abstract class ModCommand<T> : BTD_Mod_Helper.Api.Commands.ModCommand
     where T : BTD_Mod_Helper.Api.Commands.ModCommand
@@ -13,7 +15,12 @@ public abstract class ModCommand<T> : BTD_Mod_Helper.Api.Commands.ModCommand
 
 `T`
 
+The root command this is a sub command of
+
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') &#129106; ModCommand<T>
+
+Derived  
+&#8627; [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.OpenFolderCommand')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Commands.ModCommand_T_.ParentCommand'></a>

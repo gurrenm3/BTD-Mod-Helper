@@ -3,6 +3,8 @@
 
 ## ModCommand Class
 
+Defines a command that can be run from within the Mod Helper developer console
+
 ```csharp
 public abstract class ModCommand : BTD_Mod_Helper.Api.ModContent
 ```
@@ -12,6 +14,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Derived  
 &#8627; [ExportCommand](BTD_Mod_Helper.Api.Commands.ExportCommand.md 'BTD_Mod_Helper.Api.Commands.ExportCommand')  
 &#8627; [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>')  
+&#8627; [OpenCommand](BTD_Mod_Helper.Api.Commands.OpenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenCommand')  
 &#8627; [TestCommand](BTD_Mod_Helper.Api.Commands.TestCommand.md 'BTD_Mod_Helper.Api.Commands.TestCommand')
 ### Fields
 

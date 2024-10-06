@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Internal;
 using UnityEngine;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -117,6 +118,7 @@ public static class Texture2DExt
 
         var renderTexture = new RenderTexture(texture.width, texture.height, 0, RenderTextureFormat.ARGB32);
         renderTexture.Create();
+        ResourceHandler.RenderTexturesToRelease.Add(renderTexture);
 
         Graphics.Blit(texture, renderTexture, material);
 

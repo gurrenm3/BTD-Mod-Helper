@@ -55,3 +55,5 @@ internal class VolcanoThemeBTD5 : ModJukeboxTrack
 You should have the result
 
 ![Jukebox Example](images/jukebox-example.png)
+
+Being able to see and add the newly added Jukebox tracks to your playlist

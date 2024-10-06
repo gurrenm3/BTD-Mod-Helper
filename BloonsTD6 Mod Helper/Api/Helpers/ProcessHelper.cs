@@ -58,6 +58,20 @@ public static class ProcessHelper
             UseShellExecute = true
         });
     }
+    
+    /// <summary>
+    /// Opens a file in the default app for it
+    /// </summary>
+    /// <param name="filePath">File path</param>
+    public static void OpenFile(string filePath)
+    {
+        filePath = filePath.Replace('/', Path.DirectorySeparatorChar);
+        Process.Start(new ProcessStartInfo(filePath)
+        {
+            UseShellExecute = true
+        });
+    }
+
 
     /// <summary>
     /// Opens a folder in the file explorer

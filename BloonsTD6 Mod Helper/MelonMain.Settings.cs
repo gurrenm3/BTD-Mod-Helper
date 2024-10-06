@@ -174,7 +174,7 @@ internal partial class MelonMain
         icon = NamedMonkeyIcon
     };
     
-    public static readonly ModSettingHotkey OpenConsole = new(KeyCode.Slash, HotkeyModifier.Shift)
+    public static readonly ModSettingHotkey OpenConsole = new(KeyCode.F8)
     {
         displayName = "Open Console",
         description = "Hotkey that opens a command console where specific mod actions can be triggered.",
