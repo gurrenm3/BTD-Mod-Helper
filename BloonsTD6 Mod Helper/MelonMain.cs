@@ -24,7 +24,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-1000)]
-[assembly: MelonOptionalDependencies("NAudio.WinMM", "NAudio.Wasapi", "Il2CppFacepunch.Steamworks")]
+[assembly: MelonOptionalDependencies("NAudio.WinMM", "NAudio.Wasapi", "NAudio.WinMM", "Il2CppFacepunch.Steamworks")]
 
 namespace BTD_Mod_Helper;
 

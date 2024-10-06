@@ -38,18 +38,31 @@ internal class ResourceHandler
         mod.AudioClips = new Dictionary<string, AudioClip>();
 
         foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
-                     .Where(s => s.EndsWith(".wav")))
+                     .Where(s => s.EndsWith(".wav") || s.EndsWith(".mp3")))
         {
             var split = fileName.Split('.');
+            var extension = split[^1];
             var name = split[^2];
             var id = ModContent.GetId(mod, name);
 
             try
             {
                 using var stream = mod.GetAssembly().GetManifestResourceStream(fileName);
-                using var reader = new WaveFileReader(stream);
 
-                mod.AudioClips[name] = CreateAudioClip(reader, id);
+                if (extension == "wav")
+                {
+                    using var reader = new WaveFileReader(stream);
+                    mod.AudioClips[name] = CreateAudioClip(reader, id);
+                } else if (extension == "mp3")
+                {
+                    using var reader = new Mp3FileReader(stream);
+                    mod.AudioClips[name] = CreateAudioClip(reader, id);
+                }
+                else
+                {
+                    ModHelper.Warning($"Invalid for audio extension {extension} for {fileName}");
+                    return;
+                }
             }
             catch (Exception e)
             {
@@ -103,6 +116,34 @@ internal class ResourceHandler
             var waveFormat = reader.WaveFormat;
 
             var totalSamples = (int) (reader.SampleCount * waveFormat.Channels);
+            var data = new float[totalSamples];
+
+            reader.ToSampleProvider().Read(data, 0, totalSamples);
+
+            var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
+
+            if (audioClip.SetData(data, 0))
+            {
+                return AudioClips[id] = audioClip;
+            }
+
+            ModHelper.Warning($"Failed to set data for audio clip {id}");
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+        return null;
+    }
+    
+    internal static AudioClip CreateAudioClip(Mp3FileReader reader, string id)
+    {
+        try
+        {
+            var waveFormat = reader.WaveFormat;
+
+            var totalSamples = (int)(reader.Length / (waveFormat.BitsPerSample / 8)) * waveFormat.Channels;
             var data = new float[totalSamples];
 
             reader.ToSampleProvider().Read(data, 0, totalSamples);

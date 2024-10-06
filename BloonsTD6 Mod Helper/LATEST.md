@@ -3,7 +3,13 @@
 - Added a `ModRoundSet.Rounds1Index` override that changes the behavior of the `ModifyRoundModels` methods to match the
   player facing 1, 2, 3 and not the internal 0, 1, 2.
   - This will become the default in a later Mod Helper update
-- Updated the way VanillaSprites.cs is generated, so it no longer includes many "false positives" of Sprites that have GUIDs but aren't properly in the addressables system to be loaded on demand
+- Updated the way VanillaSprites.cs is generated, so it no longer includes many "false positives" of Sprites that have GUIDs but aren't properly able to be loaded on demand
+
+### Custom Jukebox Tracks
+
+- Added a `ModJukeboxTrack` class that lets you easily add your own jukebox music from custom audio
+- Also updated resource embedding behavior to also automatically embed .mp3 files in your project in addition to .wav files
+- See the [wiki page](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-Jukebox-Track) for more info
 
 ### Model Serialize / Tower Quick Edit
 

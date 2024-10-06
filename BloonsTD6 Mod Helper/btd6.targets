@@ -69,6 +69,7 @@
         <EmbeddedResource Include="**/*.png"/>
         <EmbeddedResource Include="**/*.jpg"/>
         <EmbeddedResource Include="**/*.wav"/>
+        <EmbeddedResource Include="**/*.mp3"/>
         <EmbeddedResource Include="**/*.bundle"/>
         <EmbeddedResource Include="**/*.bytes"/>
         <EmbeddedResource Condition="Exists('ModHelperData.json')" Include="ModHelperData.json"/>

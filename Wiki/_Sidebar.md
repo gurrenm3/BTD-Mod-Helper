@@ -27,6 +27,8 @@
 
 [Making a Custom Round Set](/wiki/Making-a-Custom-Round-Set)
 
+[Making a Custom Jukebox Track](/wiki/Making-a-Custom-Jukebox-Track)
+
 [Custom UI (ModHelperComponents)](/wiki/Custom-UI)
 
 [Custom Menu Screens](/wiki/Custom-Menu-Screens)

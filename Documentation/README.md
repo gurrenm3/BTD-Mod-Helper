@@ -36,6 +36,14 @@
 | :--- | :--- |
 | [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent') | Dummy interface to unite ModContent and BloonsTD6Mod |
 
+<a name='BTD_Mod_Helper.Api.Audio'></a>
+
+## BTD_Mod_Helper.Api.Audio Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModJukeboxTrack](BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.md 'BTD_Mod_Helper.Api.Audio.ModJukeboxTrack') | Class that lets you add custom Jukebox Tracks from embedded audio |
+
 <a name='BTD_Mod_Helper.Api.Bloons'></a>
 
 ## BTD_Mod_Helper.Api.Bloons Namespace
@@ -58,6 +66,7 @@
 | [ExportCommand](BTD_Mod_Helper.Api.Commands.ExportCommand.md 'BTD_Mod_Helper.Api.Commands.ExportCommand') | Root command for exporting information to files |
 | [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') | |
 | [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | |
+| [TestCommand](BTD_Mod_Helper.Api.Commands.TestCommand.md 'BTD_Mod_Helper.Api.Commands.TestCommand') | Root command where test related actions are |
 
 <a name='BTD_Mod_Helper.Api.Components'></a>
 
