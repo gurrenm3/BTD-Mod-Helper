@@ -154,8 +154,10 @@ internal static class VanillaSpriteGenerator
 
         foreach (var atlasName in spriteAtlases)
         {
+            if (atlasName == "AssetLibraryAtlas") continue;
+            
             var atlas = ResourceLoader.LoadAtlas(atlasName).WaitForCompletion();
-
+            
             var dummyArray = new Il2CppReferenceArray<Sprite>(atlas.spriteCount);
             atlas.GetSprites(dummyArray);
 

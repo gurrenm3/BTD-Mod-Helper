@@ -246,11 +246,11 @@ public abstract class ModHero : ModTower
         skinData.iconSquare = SquareReference;
         skinData.isDefaultTowerSkin = true;
 
-        skinData.unlockedEventSound = new AudioSourceReference
+        skinData.unlockedEventSound = new AudioClipReference
         {
             guidRef = SelectSound
         };
-        skinData.unlockedVoiceSound = new AudioSourceReference
+        skinData.unlockedVoiceSound = new AudioClipReference
         {
             guidRef = ""
         };

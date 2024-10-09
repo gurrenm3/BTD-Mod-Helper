@@ -136,7 +136,7 @@ public static class BloonModelExt
     /// </summary>
     /// <param name="bloonModel"></param>
     /// <returns></returns>
-    public static string GetDisplayGUID(this BloonModel bloonModel) => bloonModel.display.GUID;
+    public static string GetDisplayGUID(this BloonModel bloonModel) => bloonModel.display.AssetGUID;
 
     /// <summary>
     /// Return the Base ID of this BloonModel

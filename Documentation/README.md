@@ -330,7 +330,6 @@
 | [RendererExt](BTD_Mod_Helper.Extensions.RendererExt.md 'BTD_Mod_Helper.Extensions.RendererExt') | Extensions for unity renderers |
 | [RootObjectLockList](BTD_Mod_Helper.Extensions.RootObjectLockList.md 'BTD_Mod_Helper.Extensions.RootObjectLockList') | Extensions for RootObjectLockLists |
 | [RoundModelExt](BTD_Mod_Helper.Extensions.RoundModelExt.md 'BTD_Mod_Helper.Extensions.RoundModelExt') | Extensions for RoundModels |
-| [SelectableObjectExt](BTD_Mod_Helper.Extensions.SelectableObjectExt.md 'BTD_Mod_Helper.Extensions.SelectableObjectExt') | Extensions for Selectable Objects |
 | [SliderEventExt](BTD_Mod_Helper.Extensions.SliderEventExt.md 'BTD_Mod_Helper.Extensions.SliderEventExt') | Extensions for SliderEvents |
 | [SpawnerExt](BTD_Mod_Helper.Extensions.SpawnerExt.md 'BTD_Mod_Helper.Extensions.SpawnerExt') | Extensions for Spawners |
 | [SpriteExt](BTD_Mod_Helper.Extensions.SpriteExt.md 'BTD_Mod_Helper.Extensions.SpriteExt') | Extensions for Sprites |

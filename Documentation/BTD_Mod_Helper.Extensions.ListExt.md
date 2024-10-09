@@ -432,7 +432,7 @@ Return as LockList
 
 ```csharp
 public static RootObjectLockList<T> ToRootObjectLockList<T>(this System.Collections.Generic.List<T> list)
-    where T : RootObject;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 

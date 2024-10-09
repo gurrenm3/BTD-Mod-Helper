@@ -11,5 +11,5 @@ public static class SpriteReferenceExt
     /// </summary>
     /// <param name="spriteReference"></param>
     /// <returns></returns>
-    public static string GetGUID(this SpriteReference spriteReference) => spriteReference.GUID;
+    public static string GetGUID(this SpriteReference spriteReference) => spriteReference.AssetGUID;
 }

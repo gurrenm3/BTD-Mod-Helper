@@ -11,13 +11,13 @@ internal class Tower_Initialise
     internal static void Postfix(Tower __instance, Entity target, Model modelToUse)
     {
         // This is a bugfix. Doing this makes the display behavior more accessible. I added extra checks for redundency
-        if (__instance.display is null)
+        if (__instance.Display is null)
         {
             if (__instance.entity.displayBehaviorCache is null)
                 __instance.entity.displayBehaviorCache = __instance.entity.GetBehavior<DisplayBehavior>();
 
             if (__instance.entity.displayBehaviorCache != null)
-                __instance.display = __instance.entity.displayBehaviorCache;
+                __instance.Display = __instance.entity.displayBehaviorCache;
         }
         // end of bugfix
 

@@ -82,12 +82,6 @@ internal partial class MelonMain : BloonsTD6Mod
             HarmonyInstance.CreateClassProcessor(typeof(EmbeddedBrowser.SteamWebView_OnGUI), true).Patch();
         }
 
-        if (typeof(MelonEnvironment).Assembly.GetName().Version is {Minor: 6, Build: > 1})
-        {
-            loadErrors.Add("MelonLoader versions higher than 0.6.1 are not yet considered stable for BloonsTD6. " +
-                           "Please downgrade to MelonLoader 0.6.1 via its installer for best results.");
-        }
-
         try
         {
             FileDialogHelper.PrepareNativeDlls();

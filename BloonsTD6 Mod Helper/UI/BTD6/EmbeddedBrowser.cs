@@ -10,7 +10,7 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppFacepunch.Steamworks;
-using Il2CppNinjaKiwi.Players.LiNKAccountControllers;
+using Il2CppNinjaKiwi.LiNK.Client.LiNKAccountControllers;
 using Il2CppSteamNative;
 using Il2CppSystem.Collections.Generic;
 using Il2CppSystem.Threading.Tasks;
@@ -28,7 +28,7 @@ internal static class EmbeddedBrowser
         var player = Game.Player;
         var controller = player.webviewLiNKAccountController ??=
             new MobileWebviewLiNKAccountController(player.LiNKAccountController, SkuSettings.instance.settings.webviewVersion, new Action(() => {}));
-        controller.createEverything().ContinueWith(new Action<Task>(task =>
+        controller.CreateEverything().ContinueWith(new Action<Task>(task =>
         {
             if (task.Status != TaskStatus.RanToCompletion) return;
 
@@ -49,7 +49,7 @@ internal static class EmbeddedBrowser
                     Pivot = new Vector2(0, 1), Height = 150
                 }, null, RectTransform.Axis.Horizontal, 25, 25);
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("CloseButton", 100),
-                    VanillaSprites.CloseBtn, new Action(() => controller.destroyEverything())));
+                    VanillaSprites.CloseBtn, new Action(() => controller.DestroyEverything())));
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("BackButton", 100),
                     VanillaSprites.BackBtn, new Action(() => webview.RunJavascript("history.back()"))));
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("RefreshButton", 100),

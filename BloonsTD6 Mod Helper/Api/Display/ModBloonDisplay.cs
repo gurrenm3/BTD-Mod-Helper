@@ -43,7 +43,7 @@ public abstract class ModBloonDisplay : ModDisplay
         }
 
         var damageStateModels = bloonModel.damageDisplayStates;
-        return damageStateModels[damagedAmount - 1].displayPath.GUID;
+        return damageStateModels[damagedAmount - 1].displayPath.AssetGUID;
     }
 }
 

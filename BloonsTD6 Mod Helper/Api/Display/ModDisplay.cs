@@ -164,7 +164,7 @@ public abstract class ModDisplay : ModContent
     /// <param name="bot">Path 3 tier</param>
     /// <returns>The display GUID</returns>
     protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0) =>
-        Game.instance.model.GetTower(tower, top, mid, bot).display.GUID;
+        Game.instance.model.GetTower(tower, top, mid, bot).display.AssetGUID;
 
     /// <summary>
     /// Gets the Display for a given bloon
@@ -172,7 +172,7 @@ public abstract class ModDisplay : ModContent
     /// <param name="bloon"> The bloon base id</param>
     /// <returns>The display GUID</returns>
     protected string GetBloonDisplay(string bloon) =>
-        Game.instance.model.GetBloon(bloon).display.GUID;
+        Game.instance.model.GetBloon(bloon).display.AssetGUID;
 
     /// <summary>
     /// Gets a UnityDisplayNode for a different guid

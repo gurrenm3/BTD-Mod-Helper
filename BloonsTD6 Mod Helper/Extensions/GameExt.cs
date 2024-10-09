@@ -98,12 +98,7 @@ public static class GameExt
     {
         TaskScheduler.ScheduleTask(action, scheduleType, amountToWait, waitCondition);
     }
-
-
-    /// <summary>
-    /// Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
-    /// </summary>
-    public static LiNKAccount GetPlayerLiNKAccount(this Game game) => game.GetPlayerService()?.Player?.LiNKAccount;
+    
 
     /// <summary>
     /// Get the ProfileModel for the Player

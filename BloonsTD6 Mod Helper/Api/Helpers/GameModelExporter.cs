@@ -113,15 +113,15 @@ public static class GameModelExporter
                 ["description"] = data.description,
                 ["baseTowerName"] = data.baseTowerName,
                 ["mmCost"] = data.mmCost,
-                ["icon"] = data.icon.GUID,
-                ["iconSquare"] = data.iconSquare.GUID,
+                ["icon"] = data.icon.AssetGUID,
+                ["iconSquare"] = data.iconSquare.AssetGUID,
                 ["isDefaultTowerSkin"] = data.isDefaultTowerSkin,
                 ["textMaterialId"] = data.textMaterialId,
                 ["StorePortraitsContainer"] = new JArray(
                     data.StorePortraitsContainer?.items?.ToList()?.Select(portrait =>
                         new JObject
                         {
-                            ["asset"] = portrait.asset?.GUID,
+                            ["asset"] = portrait.asset?.AssetGUID,
                             ["levelText"] = portrait.levelTxt
                         }) ??
                     Array.Empty<JObject>()

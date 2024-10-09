@@ -15,6 +15,6 @@ public static class AudioClipExtensions
     /// <param name="groupId">TODO group stuff</param>
     public static void Play(this AudioClip audioClip, string groupId = "FX", float volume = 1f)
     {
-        Game.instance.audioFactory.PlaySoundFromUnity(audioClip, audioClip.GetName(), groupId, 0, volume);
+        Game.instance.audioFactory.PlaySoundFromUnity(audioClip, groupId, -1, 0, volume);
     }
 }

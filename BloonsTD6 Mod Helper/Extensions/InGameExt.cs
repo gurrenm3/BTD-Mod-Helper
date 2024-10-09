@@ -223,7 +223,7 @@ public static class InGameExt
     public static void AddCash(this InGame inGame, double amount)
     {
         inGame.GetCashManager().cash.Value += amount;
-        InGame.instance.bridge.OnCashChangedSim();
+        InGame.instance.bridge.Simulation.hasCashChanged = true;
     }
 
     /// <summary>
@@ -234,7 +234,7 @@ public static class InGameExt
     public static void SetCash(this InGame inGame, double amount)
     {
         inGame.GetCashManager().cash.Value = amount;
-        InGame.instance.bridge.OnCashChangedSim();
+        InGame.instance.bridge.Simulation.hasCashChanged = true;
     }
 
     /// <summary>

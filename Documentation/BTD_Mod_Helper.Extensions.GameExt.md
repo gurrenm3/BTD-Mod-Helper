@@ -310,24 +310,6 @@ public static NKMultiGameInterface GetNkGI(this Game game);
 #### Returns
 [Il2CppNinjaKiwi.NKMulti.NKMultiGameInterface](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.NKMulti.NKMultiGameInterface 'Il2CppNinjaKiwi.NKMulti.NKMultiGameInterface')
 
-<a name='BTD_Mod_Helper.Extensions.GameExt.GetPlayerLiNKAccount(thisGame)'></a>
-
-## GameExt.GetPlayerLiNKAccount(this Game) Method
-
-Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
-
-```csharp
-public static LiNKAccount GetPlayerLiNKAccount(this Game game);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.GameExt.GetPlayerLiNKAccount(thisGame).game'></a>
-
-`game` [Il2CppAssets.Scripts.Unity.Game](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Game 'Il2CppAssets.Scripts.Unity.Game')
-
-#### Returns
-[Il2CppNinjaKiwi.LiNK.LiNKAccount](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.LiNK.LiNKAccount 'Il2CppNinjaKiwi.LiNK.LiNKAccount')
-
 <a name='BTD_Mod_Helper.Extensions.GameExt.GetPlayerProfile(thisGame)'></a>
 
 ## GameExt.GetPlayerProfile(this Game) Method

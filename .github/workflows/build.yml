@@ -41,7 +41,7 @@ jobs:
           fileName: MelonLoader.x64.zip
           tarBall: false
           zipBall: false
-          tag: v0.6.1
+          latest: true
       - name: Extract MelonLoader
         if: env.MELONLOADER_BRANCH == ''
         shell: bash

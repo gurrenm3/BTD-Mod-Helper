@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.MapEditorBehaviors;
 using Il2CppAssets.Scripts.Models.Powers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;

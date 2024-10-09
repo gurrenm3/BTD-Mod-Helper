@@ -11,7 +11,7 @@ internal class OpenProfileFolderCommand : ModCommand<OpenFolderCommand>
     
     public override bool Execute(ref string resultText)
     {
-        ProcessHelper.OpenFolder(Path.GetDirectoryName(Game.Player.DataFile.File.Path));
+        ProcessHelper.OpenFolder(Path.GetDirectoryName(Game.Player.dataFile.file.path));
         return true;
     }
 }

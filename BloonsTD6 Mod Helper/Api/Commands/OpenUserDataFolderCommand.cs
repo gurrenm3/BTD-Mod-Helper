@@ -11,7 +11,7 @@ internal class OpenUserDataFolderCommand : ModCommand<OpenFolderCommand>
 
     public override bool Execute(ref string resultText)
     {
-        ProcessHelper.OpenFolder(Game.instance.playerService.Configuration.PlayerDataRootPath);
+        ProcessHelper.OpenFolder(Game.instance.playerService.configuration.playerDataRootPath);
         return true;
     }
 }

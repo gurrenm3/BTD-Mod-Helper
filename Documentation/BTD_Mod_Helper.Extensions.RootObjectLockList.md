@@ -20,8 +20,8 @@ Return this with an additional Item added to it
 
 ```csharp
 public static RootObjectLockList<TSource> AddTo<TSource,TCast>(this RootObjectLockList<TSource> lockList, TCast objectToAdd)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -81,8 +81,8 @@ Return a duplicate of this as type TCast
 
 ```csharp
 public static RootObjectLockList<TCast> DuplicateAs<TSource,TCast>(this RootObjectLockList<TSource> list)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -108,8 +108,8 @@ public static RootObjectLockList<TCast> DuplicateAs<TSource,TCast>(this RootObje
 
 ```csharp
 public static TCast GetItemOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -137,8 +137,8 @@ Return all Items of type TCast
 
 ```csharp
 public static System.Collections.Generic.List<TCast> GetItemsOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -168,8 +168,8 @@ Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList, out TCast item)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -205,8 +205,8 @@ Check if this has any items of type TCast
 
 ```csharp
 public static bool HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -236,8 +236,8 @@ Return this with the first Item of type TCast removed
 
 ```csharp
 public static RootObjectLockList<TSource> RemoveItem<TSource,TCast>(this RootObjectLockList<TSource> lockList, TCast itemToRemove)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -273,8 +273,8 @@ Return this with the first Item of type TCast removed
 
 ```csharp
 public static RootObjectLockList<TSource> RemoveItemOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -304,8 +304,8 @@ Return this with all Items of type TCast removed
 
 ```csharp
 public static RootObjectLockList<TSource> RemoveItemsOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList)
-    where TSource : RootObject
-    where TCast : RootObject;
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
 ```
 #### Type parameters
 

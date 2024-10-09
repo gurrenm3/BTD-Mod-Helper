@@ -100,7 +100,7 @@ Return the first element that matches the predicate
 
 ```csharp
 public static T First<T>(this LockList<T> source, System.Func<T,bool> predicate)
-    where T : Object;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 

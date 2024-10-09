@@ -11,7 +11,7 @@ public static class ProjectileBehaviorExt
     /// Check if this has a specific Behavior
     /// </summary>
     public static bool HasProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior =>
-        projectile.projectileBehaviors.HasItemsOfType<ProjectileBehavior, T>();
+        projectile.projectileBehaviors.HasItemsOfType<IProjectileBehavior, T>();
     
     /// <summary>
     /// Check if this has a specific Behavior
@@ -26,20 +26,20 @@ public static class ProjectileBehaviorExt
     /// Return the first Behavior of type T
     /// </summary>
     public static T GetProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior =>
-        projectile.projectileBehaviors.GetItemOfType<ProjectileBehavior, T>();
+        projectile.projectileBehaviors.GetItemOfType<IProjectileBehavior, T>();
 
     /// <summary>
     /// Return all Behaviors of type T
     /// </summary>
     public static List<T> GetProjectileBehaviors<T>(this Projectile projectile) where T : ProjectileBehavior =>
-        projectile.projectileBehaviors.GetItemsOfType<ProjectileBehavior, T>();
+        projectile.projectileBehaviors.GetItemsOfType<IProjectileBehavior, T>();
 
     /// <summary>
     /// Add a Behavior to this
     /// </summary>
     public static void AddProjectileBehavior<T>(this Projectile projectile, T behavior) where T : ProjectileBehavior
     {
-        projectile.projectileBehaviors.Add(behavior);
+        projectile.projectileBehaviors.Add(behavior.Cast<IProjectileBehavior>());
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public static class ProjectileBehaviorExt
     /// </summary>
     public static void RemoveProjectileBehavior<T>(this Projectile projectile) where T : ProjectileBehavior
     {
-        projectile.projectileBehaviors = projectile.projectileBehaviors.RemoveItemOfType<ProjectileBehavior, T>();
+        projectile.projectileBehaviors = projectile.projectileBehaviors.RemoveItemOfType<IProjectileBehavior, T>();
     }
 
     /// <summary>
@@ -63,6 +63,6 @@ public static class ProjectileBehaviorExt
     /// </summary>
     public static void RemoveProjectileBehaviors<T>(this Projectile projectile) where T : ProjectileBehavior
     {
-        projectile.projectileBehaviors = projectile.projectileBehaviors.RemoveItemsOfType<ProjectileBehavior, T>();
+        projectile.projectileBehaviors = projectile.projectileBehaviors.RemoveItemsOfType<IProjectileBehavior, T>();
     }
 }
