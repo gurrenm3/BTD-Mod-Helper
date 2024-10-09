@@ -180,6 +180,7 @@
 | [ProcessHelper](BTD_Mod_Helper.Api.Helpers.ProcessHelper.md 'BTD_Mod_Helper.Api.Helpers.ProcessHelper') | Helper methods for processes |
 | [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper') | A wrapper around ProjectileModels for making them easier to create |
 | [QuickEdit](BTD_Mod_Helper.Api.Helpers.QuickEdit.md 'BTD_Mod_Helper.Api.Helpers.QuickEdit') | Utility for allowing the user to quickly edit some input in an external program |
+| [TimeHelper](BTD_Mod_Helper.Api.Helpers.TimeHelper.md 'BTD_Mod_Helper.Api.Helpers.TimeHelper') | Properties and methods for helping change in game time / time related values |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
 
 <a name='BTD_Mod_Helper.Api.ModMenu'></a>

@@ -107,6 +107,26 @@ public static string BloonID<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.ModContent.CreateAudioClipReference(string)'></a>
+
+## ModContent.CreateAudioClipReference(string) Method
+
+Returns a new AudioClipReference that uses the given guid
+
+```csharp
+public static AudioClipReference CreateAudioClipReference(string guid);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.CreateAudioClipReference(string).guid'></a>
+
+`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The guid that you'd like to assign to the AudioClipReference
+
+#### Returns
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference')
+
 <a name='BTD_Mod_Helper.Api.ModContent.CreateAudioSourceReference(string)'></a>
 
 ## ModContent.CreateAudioSourceReference(string) Method

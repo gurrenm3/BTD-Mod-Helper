@@ -94,7 +94,7 @@ Return as Il2CppSystem.List
 
 ```csharp
 public static List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable)
-    where T : Object;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 

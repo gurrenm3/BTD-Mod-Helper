@@ -1,10 +1,12 @@
+## NOTE: BTD6 v45 will require MelonLoader v0.6.5 to work
+- Fixed for BTD6 v45.0
 - Fixed a performance issue with the background Task Scheduler
   - Also added new `ScheduleType.WaitForSecondsScaled` that is affected by fast-forward mode
 - Added a `ModRoundSet.Rounds1Index` override that changes the behavior of the `ModifyRoundModels` methods to match the
   player facing 1, 2, 3 and not the internal 0, 1, 2.
   - This will become the default in a later Mod Helper update
-- Updated the way VanillaSprites.cs is generated, so it no longer includes many "false positives" of Sprites that have
-  GUIDs but aren't properly able to be loaded on demand
+- Updated the way VanillaSprites.cs is generated, so it no longer includes some duplicates and many "false positives" of
+  Sprites that have GUIDs but aren't properly able to be loaded on demand
 - Added a Renderer extension `.ReplaceColor(Color targetColor, Color replacementColor, float threshold)` that
   replaces all the colors in the main texture within a certain threshold of the target with a new color.
 - Added a Renderer extension `.AdjustHSV(float hueAdjust, float saturationAdjust, float valueAdjust)` that edits
@@ -12,6 +14,7 @@
   - Can also do
     `.AdjustHSV(float hueAdjust, float saturationAdjust, float valueAdjust, Color targetColor, float threshold)` to only
     apply the adjustment to certain colors in the texture
+- Added `TimeHelper` class with properties `OverrideFastForwardTimeScale` and `OverrideMaxSimulationStepsPerUpdate`
 
 ### Custom Jukebox Tracks
 

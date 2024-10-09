@@ -63,7 +63,7 @@ public static class Il2CppGenericIEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
-    public static List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable) where T : Object
+    public static List<T> ToIl2CppList<T>(this IEnumerable<T> enumerable) where T : Il2CppObjectBase
     {
         var il2CppList = new List<T>();
 

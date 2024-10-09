@@ -138,6 +138,15 @@ public abstract partial class ModContent
     {
         guidRef = guid
     };
+    
+    /// <summary>
+    /// Returns a new AudioClipReference that uses the given guid
+    /// </summary>
+    /// <param name="guid">The guid that you'd like to assign to the AudioClipReference</param>
+    public static AudioClipReference CreateAudioClipReference(string guid) => new()
+    {
+        guidRef = guid
+    };
 
     /// <summary>
     /// Creates a Prefab Reference for a ModDisplay

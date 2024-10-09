@@ -27,7 +27,7 @@ public static void Play(this AudioClip audioClip, string groupId="FX", float vol
 
 `audioClip` [UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')
 
-The audio clip to play
+The audio audioClip to play
 
 <a name='BTD_Mod_Helper.Extensions.AudioClipExtensions.Play(thisAudioClip,string,float).groupId'></a>
 
