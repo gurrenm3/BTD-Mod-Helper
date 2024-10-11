@@ -32,17 +32,20 @@ internal static class ConsoleHandler
             ShowConsole();
         }
 
-        shiftTimer = Math.Max(0, shiftTimer - 1);
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        if (MelonMain.ShiftShiftOpensConsole)
         {
-            if (shiftTimer > 0)
+            shiftTimer = Math.Max(0, shiftTimer - 1);
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
             {
-                ToggleConsole();
-                shiftTimer = 0;
-            }
-            else
-            {
-                shiftTimer = 15;
+                if (shiftTimer > 0)
+                {
+                    ToggleConsole();
+                    shiftTimer = 0;
+                }
+                else
+                {
+                    shiftTimer = 15;
+                }
             }
         }
 

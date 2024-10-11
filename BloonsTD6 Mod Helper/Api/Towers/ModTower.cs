@@ -372,7 +372,7 @@ public abstract class ModTower : NamedModContent
     /// <returns>The 0-0-0 TowerModel for this Tower</returns>
     internal virtual TowerModel GetDefaultTowerModel(int[] tiers = null)
     {
-        tiers ??= new[] {0, 0, 0};
+        tiers ??= [0, 0, 0];
         var towerModel = GetBaseTowerModel(tiers);
         towerModel.baseId = Id;
         towerModel.name = Id;
