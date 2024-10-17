@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
@@ -8,6 +9,7 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Il2CppNewtonsoft.Json.Utilities;
+using Il2CppNinjaKiwi.Common;
 namespace BTD_Mod_Helper.Tests;
 
 #if DEBUG
@@ -34,19 +36,28 @@ internal static class ModelSerializationTests
 
     public static bool TestSerialization(TowerModel towerModel)
     {
-        var expected = ModelSerializer.SerializeModel(towerModel);
-        var result = ModelSerializer.DeserializeModel<TowerModel>(expected);
-        var actual = ModelSerializer.SerializeModel(result);
-
-        var success = actual == expected;
-
-        if (!success)
+        try
         {
-            FileIOHelper.SaveFile($"Test/{towerModel.name}.expected.json", expected);
-            FileIOHelper.SaveFile($"Test/{towerModel.name}.actual.json", actual);
-        }
+            var expected = ModelSerializer.SerializeModel(towerModel);
+            var result = ModelSerializer.DeserializeModel<TowerModel>(expected);
+            var actual = ModelSerializer.SerializeModel(result);
 
-        return success;
+            var success = actual == expected;
+
+            if (!success)
+            {
+                FileIOHelper.SaveFile($"Test/{towerModel.name}.expected.json", expected);
+                FileIOHelper.SaveFile($"Test/{towerModel.name}.actual.json", actual);
+            }
+
+            return success;
+
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+            return false;
+        }
     }
 
 

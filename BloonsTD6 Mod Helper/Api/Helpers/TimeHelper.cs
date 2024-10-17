@@ -1,3 +1,4 @@
+using System;
 using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Api.Helpers;
@@ -13,7 +14,8 @@ public static class TimeHelper
     public static double OverrideFastForwardTimeScale { get; set; } = Constants.fastForwardTimeScaleMultiplier;
 
     /// <summary>
-    /// Override for <see cref="TimeManager.MaxSimulationStepsPerUpdate"/>
+    /// Former override for TimeManager.MaxSimulationStepsPerUpdate
     /// </summary>
-    public static double OverrideMaxSimulationStepsPerUpdate { get; set; } = Constants.maxSimulationStepsPerUpdate;
+    [Obsolete("Removed as of BTD6 v45.2")]
+    public static double OverrideMaxSimulationStepsPerUpdate { get; set; } = 3;
 }

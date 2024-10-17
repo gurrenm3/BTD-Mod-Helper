@@ -10,7 +10,8 @@ internal class TestModelSerialization : ModCommand<TestCommand>
 
     public override bool Execute(ref string resultText)
     {
-        return ModelSerializationTests.TestSerialization(Game.instance.model);
+        ModelSerializationTests.TestTowerSerialization(Game.instance.model);
+        return true;
     }
 }
 #endif

@@ -218,7 +218,7 @@ public static class ModelSerializer
             {
                 // Don't calculate generated parameters
                 value = param.DefaultValue;
-                if (param.ParameterType.IsValueType && value is null or DBNull)
+                if (value is DBNull)
                 {
                     value = Activator.CreateInstance(param.ParameterType);
                 }

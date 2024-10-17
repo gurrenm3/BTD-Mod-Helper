@@ -29,7 +29,7 @@ public static double OverrideFastForwardTimeScale { get; set; }
 
 ## TimeHelper.OverrideMaxSimulationStepsPerUpdate Property
 
-Override for [Il2CppAssets.Scripts.Utils.TimeManager.MaxSimulationStepsPerUpdate](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.TimeManager.MaxSimulationStepsPerUpdate 'Il2CppAssets.Scripts.Utils.TimeManager.MaxSimulationStepsPerUpdate')
+Former override for TimeManager.MaxSimulationStepsPerUpdate
 
 ```csharp
 public static double OverrideMaxSimulationStepsPerUpdate { get; set; }

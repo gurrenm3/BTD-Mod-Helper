@@ -183,6 +183,14 @@
 | [TimeHelper](BTD_Mod_Helper.Api.Helpers.TimeHelper.md 'BTD_Mod_Helper.Api.Helpers.TimeHelper') | Properties and methods for helping change in game time / time related values |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
 
+<a name='BTD_Mod_Helper.Api.Internal'></a>
+
+## BTD_Mod_Helper.Api.Internal Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ResourceHandler](BTD_Mod_Helper.Api.Internal.ResourceHandler.md 'BTD_Mod_Helper.Api.Internal.ResourceHandler') | Handles embedded resources within Mod Helper mods |
+
 <a name='BTD_Mod_Helper.Api.ModMenu'></a>
 
 ## BTD_Mod_Helper.Api.ModMenu Namespace
