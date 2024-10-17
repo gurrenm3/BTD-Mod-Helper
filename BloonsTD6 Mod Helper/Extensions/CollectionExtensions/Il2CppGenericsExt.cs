@@ -122,7 +122,7 @@ public static partial class Il2CppGenericsExt
     /// <returns></returns>
     public static TCast GetItemOfType<TSource, TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
         where TCast : Object
-        where TSource : Object => list.FirstOrDefault(o => o.IsType<TCast>()).Cast<TCast>();
+        where TSource : Object => list.FirstOrDefault(o => o.IsType<TCast>())?.Cast<TCast>();
 
     /// <summary>
     /// Return all Items of type TCast

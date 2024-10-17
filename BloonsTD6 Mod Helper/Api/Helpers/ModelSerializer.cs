@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FuzzySharp;
+using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.Knowledge;
@@ -217,6 +218,10 @@ public static class ModelSerializer
             {
                 // Don't calculate generated parameters
                 value = param.DefaultValue;
+                if (param.ParameterType.IsValueType && value is null or DBNull)
+                {
+                    value = Activator.CreateInstance(param.ParameterType);
+                }
             }
             else
             {
@@ -304,7 +309,7 @@ public static class ModelSerializer
         {
             if (key.StartsWith("$")) continue;
 
-            add.Invoke(result, new[] {key, Generate(value, valueType, key)});
+            add.Invoke(result, [key, Generate(value, valueType, key)]);
         }
 
         if (jObject.TryGetValue("$id", out var index))
@@ -322,9 +327,9 @@ public static class ModelSerializer
         var realType = type.GenericTypeArguments[0];
         var value = Generate(jToken, realType);
 
-        var result = unbox.Invoke(null, new[] {value});
+        var result = unbox.Invoke(null, [value]);
 
-        setValue.Invoke(result, new[] {value});
+        setValue.Invoke(result, [value]);
 
         return result;
     }
@@ -368,7 +373,7 @@ public static class ModelSerializer
         .Where(c => c.GetParameters().All(p => p.ParameterType != typeof(IntPtr)))
         .Where(c => !type.IsAssignableTo(typeof(ValueType)) || allowValueTypeParams || c.GetParameters().Length == 0)
         .OrderByDescending(c => c.GetParameters().Length)
-        .ThenBy(c => c.GetParameters().Any(p => p.ParameterType.IsGenericType))
+        .ThenBy(c => c.GetParameters().Select(p => p.ParameterType).Any(p => p.IsGenericType || p.IsArray))
         .FirstOrDefault();
 
     internal static ConstructorInfo GetMainConstructor(Type type, IEnumerable<string> propertyMatches,

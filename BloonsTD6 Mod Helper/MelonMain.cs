@@ -97,12 +97,12 @@ internal partial class MelonMain : BloonsTD6Mod
         ModByteLoader.OnUpdate();
         RoundSetChanger.OnUpdate();
         ConsoleHandler.OnUpdate();
+        NotificationMgr.CheckForNotifications();
         // InitialLoadTasks_MoveNext.OnUpdate();
 
         if (Game.instance is null || InGame.instance is null)
             return;
 
-        NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
         ModSettingHotkey.HandleTowerHotkeys();
         TowerEditing.OnUpdate();

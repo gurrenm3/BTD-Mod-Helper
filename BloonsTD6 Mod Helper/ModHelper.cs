@@ -89,9 +89,7 @@ public static class ModHelper
         {
             try
             {
-                ResourceHandler.LoadEmbeddedTextures(mod);
-                ResourceHandler.LoadEmbeddedAudio(mod);
-                ResourceHandler.LoadEmbeddedBundles(mod);
+                ResourceHandler.LoadEmbeddedResources(mod);
                 ModContent.LoadModContent(mod);
             }
             catch (Exception e)

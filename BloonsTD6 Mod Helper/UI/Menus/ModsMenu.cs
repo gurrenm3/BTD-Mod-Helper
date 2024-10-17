@@ -166,7 +166,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             TaskScheduler.ScheduleTask(() =>
             {
                 var image = clickBlock.AddComponent<Image>();
-                image.color = new Color(0, 0, 0, 0.75f);
+                image.color = new Color(0, 0, 0, 0.5f);
                 clickBlock.AddComponent<Lightbox>();
             });
         }
