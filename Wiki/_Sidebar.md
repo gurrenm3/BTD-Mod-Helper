@@ -17,15 +17,17 @@
 
 [**Making a Custom Hero**](/wiki/Making-a-Custom-Hero)
 
-###### 3.0 Features
-
 [**Appearing in the Mod Browser**](/wiki/Appearing-in-the-Mod-Browser)
+
+[Localization](/wiki/Localization)
 
 [Making a Custom Bloon](/wiki/Making-a-Custom-Bloon)
 
 [Making a Custom Game Mode](/wiki/Making-a-Custom-Game-Mode)
 
 [Making a Custom Round Set](/wiki/Making-a-Custom-Round-Set)
+
+[Making a Custom Jukebox Track](/wiki/Making-a-Custom-Jukebox-Track)
 
 [Custom UI (ModHelperComponents)](/wiki/Custom-UI)
 

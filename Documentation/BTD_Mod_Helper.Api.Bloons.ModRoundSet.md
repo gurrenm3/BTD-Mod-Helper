@@ -131,6 +131,21 @@ public virtual SpriteReference IconReference { get; }
 
 #### Property Value
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.Rounds1Index'></a>
+
+## ModRoundSet.Rounds1Index Property
+
+Whether to use 1-Indexed rounds in ModifyRoundsModels methods instead of 0 indexed  
+<br/>  
+TODO this will default to true in a future Mod Helper update
+
+```csharp
+public virtual bool Rounds1Index { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.GetHint(int)'></a>

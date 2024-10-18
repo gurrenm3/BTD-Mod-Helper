@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using UnityEngine;
@@ -8,6 +9,13 @@ namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
 {
+    private static readonly string DisableModHelperWarning = ModHelper.Localize(nameof(DisableModHelperWarning), """
+        Disabling Mod Helper will mean you will no longer see this mods menu. 
+        You would have to manually re-enable this / any other mods by dragging their .dll files out of the Disabled folder within your mods directory.
+        """);
+    private static readonly string StillRequiredDependency = ModHelper.Localize(nameof(StillRequiredDependency),
+        "The following enabled mods list this mod as a dependency, and may not function without it: ");
+
     /// <summary>
     /// The place that the .dll file for this mod is on the local machine, if any
     /// </summary>
@@ -102,11 +110,10 @@ internal partial class ModHelperData
     {
         if (Mod is MelonMain)
         {
-            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
-                "Disabling Mod Helper will mean you will no longer see this mods menu. " +
-                "You would have to manually re-enable this / any other mods by dragging their .dll files " +
-                "out of the Disabled folder within your mods directory.", null, "Ok",
-                reEnable, "Re-enable", Popup.TransitionAnim.Scale));
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                LocalizationHelper.Warning.Localize(),
+                DisableModHelperWarning.Localize(), null, LocalizationHelper.Ok.Localize(),
+                reEnable, LocalizationHelper.Cancel.Localize(), Popup.TransitionAnim.Scale));
         }
         else
         {
@@ -114,11 +121,11 @@ internal partial class ModHelperData
 
             if (dependents.Any())
             {
-                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Warning",
-                    $"The following enabled mods list this mod as a dependency, and may not function without it: {dependents.Select(data => data.DisplayName).Join()}",
-                    null, "Ok",
-                    reEnable,
-                    "Re-enable", Popup.TransitionAnim.Scale));
+                PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                    LocalizationHelper.Warning.Localize(),
+                    StillRequiredDependency.Localize() + dependents.Select(data => data.DisplayName).Join(),
+                    null, LocalizationHelper.Ok.Localize(),
+                    reEnable, LocalizationHelper.Cancel.Localize(), Popup.TransitionAnim.Scale));
             }
         }
     }

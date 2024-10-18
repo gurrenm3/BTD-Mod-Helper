@@ -119,6 +119,38 @@ public static System.Collections.Generic.List<Renderer> GetMeshRenderers(this Un
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer(thisUnityDisplayNode,string,bool)'></a>
+
+## UnityDisplayNodeExt.GetRenderer(this UnityDisplayNode, string, bool) Method
+
+Gets the first generic renderer whose name contains the specified string, recalculating the renderers if need be
+
+```csharp
+public static Renderer GetRenderer(this UnityDisplayNode node, string nameContains, bool recalculate=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer(thisUnityDisplayNode,string,bool).node'></a>
+
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer(thisUnityDisplayNode,string,bool).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+String that renderer name must contain
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer(thisUnityDisplayNode,string,bool).recalculate'></a>
+
+`recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
+
+#### Returns
+[UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')
+
 <a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,bool)'></a>
 
 ## UnityDisplayNodeExt.GetRenderer<T>(this UnityDisplayNode, bool) Method
@@ -152,6 +184,46 @@ Whether to recalculate renderers
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.md#BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,bool).T 'BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer<T>(this UnityDisplayNode, bool).T')
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,string,bool)'></a>
+
+## UnityDisplayNodeExt.GetRenderer<T>(this UnityDisplayNode, string, bool) Method
+
+Gets the first generic renderer of the specified type whose name contains the specified string, recalculating the renderers if need be
+
+```csharp
+public static T GetRenderer<T>(this UnityDisplayNode node, string nameContains, bool recalculate=true)
+    where T : Renderer;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,string,bool).T'></a>
+
+`T`
+
+The type of Renderer you're looking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,string,bool).node'></a>
+
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,string,bool).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+String that renderer name must contain
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,string,bool).recalculate'></a>
+
+`recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.md#BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer_T_(thisUnityDisplayNode,string,bool).T 'BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderer<T>(this UnityDisplayNode, string, bool).T')
 
 <a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderers(thisUnityDisplayNode,bool)'></a>
 

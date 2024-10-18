@@ -33,7 +33,7 @@ public float defaultValue;
 The real current value, scaled by the appropriate scale factor
 
 ```csharp
-public float CurrentValue { get; }
+private float CurrentValue { get; }
 ```
 
 #### Property Value
@@ -77,6 +77,45 @@ public BTD_Mod_Helper.Api.Components.ModHelperText Label { get; }
 
 #### Property Value
 [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.MaxValue'></a>
+
+## ModHelperSlider.MaxValue Property
+
+The min value of this slider, adjusted for internal scale factor
+
+```csharp
+private float MaxValue { get; }
+```
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.MinValue'></a>
+
+## ModHelperSlider.MinValue Property
+
+The min value of this slider, adjusted for internal scale factor
+
+```csharp
+private float MinValue { get; }
+```
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.ScaleFactor'></a>
+
+## ModHelperSlider.ScaleFactor Property
+
+The scale factor used for the step size of this slider
+
+```csharp
+public float ScaleFactor { get; set; }
+```
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Slider'></a>
 

@@ -5,12 +5,14 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Facebook;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.UI.Modded;
 
@@ -25,8 +27,9 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
 
     private static readonly string[] ShowOnMenus =
     {
-        "DifficultySelectUI", "ModeSelectUI",
-        "DifficultySelectScreen", "ModeSelectScreen"
+        SceneNames.DifficultySelectUI,
+        SceneNames.ModeSelectUI,
+        SceneNames.ChallengeEditorPlay
     };
 
     private static ModHelperPanel buttonPanel;
@@ -38,6 +41,11 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
     private static ModHelperPanel invisibleCancel;
 
     private static bool lastShowing;
+
+    private static readonly string ChangeRounds = ModHelper.Localize(nameof(ChangeRounds), "Change Rounds");
+    private static readonly string RoundChangerAlternate = ModHelper.Localize(nameof(RoundChangerAlternate), "Alternate");
+    private static readonly string RoundChangerClassic = ModHelper.Localize(nameof(RoundChangerClassic), "Classic");
+    private static readonly string RoundChangerNoChange = ModHelper.Localize(nameof(RoundChangerNoChange), "No Change");
 
     /// <summary>
     /// The round set override currently chosen, or null
@@ -89,15 +97,15 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
         }
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.ABR, "Alternate", VanillaSprites.AlternateBloonsBtn)
+            CreateRoundSetButton(RoundSetType.ABR, RoundChangerAlternate, VanillaSprites.AlternateBloonsBtn)
         );
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.Default, "Classic", VanillaSprites.BlueRoundPlayBtn)
+            CreateRoundSetButton(RoundSetType.Default, RoundChangerClassic, VanillaSprites.BlueRoundPlayBtn)
         );
 
         optionsPanel.AddScrollContent(
-            CreateRoundSetButton(RoundSetType.Empty, "No Change", VanillaSprites.WoodenRoundButton)
+            CreateRoundSetButton(RoundSetType.Empty, RoundChangerNoChange, VanillaSprites.WoodenRoundButton)
         );
 
 
@@ -106,7 +114,7 @@ public static class RoundSetChanger // TODO make this internal, add alt way to g
             VanillaSprites.WoodenRoundButton, new Action(StartOptionsMode));
 
         button.AddText(
-            new Info("Text", 0, -175, 500, 100), "Change Rounds", 60f
+            new Info("Text", 0, -175, 500, 100), ChangeRounds, 60f
         );
     }
 

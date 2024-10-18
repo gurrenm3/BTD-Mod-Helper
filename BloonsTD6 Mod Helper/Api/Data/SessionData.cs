@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppNinjaKiwi.NKMulti;
+
+// ReSharper disable once CheckNamespace
 namespace BTD_Mod_Helper;
 
 /// <summary>
@@ -65,12 +67,10 @@ public class SessionData
     /// </summary>
     public static SessionData Instance { get; set; } = new();
 
-
-    //internal BloonTracker bloonTracker = new BloonTracker();
-
     /// <summary>
     /// Keeping track of popped bloons
     /// </summary>
+    [Obsolete("No longer being populated")]
     public Dictionary<string, int> PoppedBloons { get; set; } = new();
 
     /// <summary>

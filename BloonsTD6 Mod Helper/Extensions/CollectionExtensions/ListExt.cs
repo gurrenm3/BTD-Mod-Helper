@@ -55,7 +55,7 @@ public static partial class ListExt
     /// Return as LockList
     /// </summary>
     public static RootObjectLockList<T> ToRootObjectLockList<T>(this System.Collections.Generic.List<T> list)
-        where T : RootObject
+        where T : Il2CppObjectBase
     {
         var lockList = new RootObjectLockList<T>();
         foreach (var item in list)

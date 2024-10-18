@@ -28,7 +28,7 @@ public static class LockedList
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T First<T>(this LockList<T> source, Func<T, bool> predicate) where T : Object
+    public static T First<T>(this LockList<T> source, Func<T, bool> predicate) where T : Il2CppObjectBase
     {
         for (var i = 0; i < source.Count; i++)
         {

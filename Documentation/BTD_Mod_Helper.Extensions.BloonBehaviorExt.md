@@ -91,6 +91,38 @@ The Behavior you want
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.BloonBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonBehaviorExt.GetBloonBehaviors_T_(thisBloon).T 'BTD_Mod_Helper.Extensions.BloonBehaviorExt.GetBloonBehaviors<T>(this Bloon).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.BloonBehaviorExt.HasBloonBehavior_T_(thisBloon,T)'></a>
+
+## BloonBehaviorExt.HasBloonBehavior<T>(this Bloon, T) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasBloonBehavior<T>(this Bloon bloon, out T item)
+    where T : BloonBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonBehaviorExt.HasBloonBehavior_T_(thisBloon,T).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonBehaviorExt.HasBloonBehavior_T_(thisBloon,T).bloon'></a>
+
+`bloon` [Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')
+
+<a name='BTD_Mod_Helper.Extensions.BloonBehaviorExt.HasBloonBehavior_T_(thisBloon,T).item'></a>
+
+`item` [T](BTD_Mod_Helper.Extensions.BloonBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonBehaviorExt.HasBloonBehavior_T_(thisBloon,T).T 'BTD_Mod_Helper.Extensions.BloonBehaviorExt.HasBloonBehavior<T>(this Bloon, T).T')
+
+The found item, if any
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.BloonBehaviorExt.HasBloonBehavior_T_(thisBloon)'></a>
 
 ## BloonBehaviorExt.HasBloonBehavior<T>(this Bloon) Method

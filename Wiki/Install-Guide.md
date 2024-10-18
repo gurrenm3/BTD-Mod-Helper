@@ -13,18 +13,14 @@ It is **required** for MelonLoader to work for IL2CPP games like BTD6.
 
 ## 3. Install MelonLoader
 
-BTD Mod Helper requires <u>MelonLoader v0.6.1</u>. You should follow
+BTD Mod Helper requires <u>MelonLoader</u>. You should follow
 the [instructions here](https://melonwiki.xyz/#/?id=automated-installation) for downloading and using the MelonLoader
 installer. By default your BloonsTD6 folder will be located somewhere
 like `C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6`. If that's not correct, you can right click the game in
 your Steam library and select "Manage" > "Browse Local Files" to see where they are. For Epic, the default install path
 is or `C:\Program Files\Epic Games\BloonsTD6`.
 
-### Note: Currently, MelonLoader v0.6.1 is the specific version you should use.
-
-![Melonloader Installer Version Select Screenshot](Images/ml-version-select.png)
-
-When installing, you will need to uncheck the "Latest" checkbox as seen above and choose v0.6.1 from the list.
+![Melonloader Installer Version Select Screenshot](images/ml-version-select.png)
 
 After the installation, tour BloonsTD6 Folder should then look something like this:
 
@@ -88,7 +84,6 @@ making any/all of the following changes
 
 - Run the MelonLoader installer as Administrator
 - Temporarily disable any anti virus software your computer uses
-- Use a different minor version of MelonLoader (e.g. choose 0.6.1 in the dropdown instead of 0.6.2)
 
 ## Other Tips
 

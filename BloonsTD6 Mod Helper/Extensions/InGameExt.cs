@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Rounds;
 using Il2CppAssets.Scripts.Simulation;
@@ -222,7 +223,7 @@ public static class InGameExt
     public static void AddCash(this InGame inGame, double amount)
     {
         inGame.GetCashManager().cash.Value += amount;
-        InGame.instance.bridge.OnCashChangedSim();
+        InGame.instance.bridge.Simulation.hasCashChanged = true;
     }
 
     /// <summary>
@@ -233,7 +234,7 @@ public static class InGameExt
     public static void SetCash(this InGame inGame, double amount)
     {
         inGame.GetCashManager().cash.Value = amount;
-        InGame.instance.bridge.OnCashChangedSim();
+        InGame.instance.bridge.Simulation.hasCashChanged = true;
     }
 
     /// <summary>
@@ -290,6 +291,7 @@ public static class InGameExt
     /// Get collection of popped bloons in this game. Right now only works for current games. Does not store results from
     /// loaded games
     /// </summary>
+    [Obsolete("No longer being populated")]
     public static Dictionary<string, int> GetPoppedBloons(this InGame inGame) => SessionData.Instance.PoppedBloons;
 
     /// <summary>

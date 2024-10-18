@@ -16,11 +16,10 @@ namespace BTD_Mod_Helper.Api.Towers;
 public abstract class ModHero : ModTower
 {
 
-    internal override string[] DefaultMods => base.DefaultMods.Concat(new[]
-    {
+    internal override string[] DefaultMods => base.DefaultMods.Concat([
         "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands",
         "Scholarships", "SelfTaughtHeroes", "WeakPoint"
-    }).ToArray();
+    ]).ToArray();
 
     internal sealed override int UpgradePaths => 1;
     internal override int StartTier => 1;
@@ -59,6 +58,11 @@ public abstract class ModHero : ModTower
     /// No other upgrade paths used
     /// </summary>
     public sealed override int BottomPathUpgrades => 0;
+    
+    /// <summary>
+    /// Not a thing anyway
+    /// </summary>
+    public sealed override bool IncludeInMonkeyTeams => false;
 
     /// <summary>
     /// The other hero that has the same colored name in the Heroes menu as you want to use
@@ -105,9 +109,9 @@ public abstract class ModHero : ModTower
     public virtual Dictionary<int, SpriteReference> SelectScreenPortraits => new()
     {
         {1, PortraitReference},
-        {3, GetPortraitReferenceForTiers(new[] {3, 0, 0})},
-        {10, GetPortraitReferenceForTiers(new[] {10, 0, 0})},
-        {20, GetPortraitReferenceForTiers(new[] {20, 0, 0})}
+        {3, GetPortraitReferenceForTiers(3, 0, 0)},
+        {10, GetPortraitReferenceForTiers(10, 0, 0)},
+        {20, GetPortraitReferenceForTiers(20, 0, 0)}
     };
 
 
@@ -242,11 +246,11 @@ public abstract class ModHero : ModTower
         skinData.iconSquare = SquareReference;
         skinData.isDefaultTowerSkin = true;
 
-        skinData.unlockedEventSound = new AudioSourceReference
+        skinData.unlockedEventSound = new AudioClipReference
         {
             guidRef = SelectSound
         };
-        skinData.unlockedVoiceSound = new AudioSourceReference
+        skinData.unlockedVoiceSound = new AudioClipReference
         {
             guidRef = ""
         };

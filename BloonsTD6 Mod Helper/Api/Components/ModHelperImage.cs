@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
-/// ModHelperComponent for a
+/// ModHelperComponent for an image element
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperImage : ModHelperComponent

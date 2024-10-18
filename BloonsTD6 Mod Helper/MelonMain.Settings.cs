@@ -1,9 +1,11 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
@@ -21,32 +23,19 @@ internal partial class MelonMain
 
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
+        displayName = "Show Round Set Changer",
         description =
             "Toggles showing the the UI at the bottom right of the map select screen that lets you override which RoundSet to use for the mode you're playing.",
         category = General,
         icon = AlternateBloonsBtn
     };
 
-    public static readonly ModSettingBool BypassSavingRestrictions = new(true)
-    {
-        description =
-            "With BTD6 v30.0, Ninja Kiwi made it so that progress can not be saved on your profile if it detects that you have mods, or even just MelonLoader, installed. " +
-            "We think that they have gone too far with this change, and that it is not consistent with their stated goal in the patch notes of trying 'not to detract from modding'. " +
-            "So, this setting overrides that restriction and will allow progress to be saved once more.",
-        category = General,
-        icon = SaveGameIcon
-    };
-
-    internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
+    /*internal static readonly ModSettingBool AutoHideModdedClientPopup = new(false)
     {
         category = General,
         description = "Removes the popup telling you that you're using a modded client. Like, we get it already.",
-        icon = HideIcon,
-        onValueChanged = x =>
-        {
-            PopupScreen.instance.hasSeenModderWarning = x;
-        }
-    };
+        icon = HideIcon
+    };*/
 
     public static readonly ModSettingBool CleanProfile = new(true)
     {
@@ -58,7 +47,7 @@ internal partial class MelonMain
         icon = CleansingFoamUpgradeIcon
     };
 
-    public static readonly ModSettingBool UseOldLoading = new(false)
+    /*public static readonly ModSettingBool UseOldLoading = new(false)
     {
         description =
             "Switches back to the old system of loading all mod content all at once as soon as the Title Screen is reached " +
@@ -67,6 +56,16 @@ internal partial class MelonMain
         category = General,
         requiresRestart = true,
         icon = RetroTechbotIcon
+    };*/
+
+    public static readonly ModSettingBool EnableModHelperLocalization = new(true)
+    {
+        description = """
+                      Enable or disable Mod Helper's own localization for its text into non-English languages.
+                      """,
+        category = General,
+        requiresRestart = true,
+        icon = LangUniversalIcon
     };
 
     private static readonly ModSettingCategory ModBrowserSettings = new("Mod Browser Settings")
@@ -174,7 +173,20 @@ internal partial class MelonMain
         category = ModMaking,
         icon = NamedMonkeyIcon
     };
+    
+    public static readonly ModSettingHotkey OpenConsole = new(KeyCode.F8)
+    {
+        displayName = "Open Console",
+        description = "Hotkey that opens a command console where specific mod actions can be triggered.",
+        category = ModMaking,
+    };
 
+    public static readonly ModSettingBool ShiftShiftOpensConsole = new(false)
+    {
+        description = "Makes it so that pressing Shift twice in a row also opens the console",
+        category = ModMaking
+    };
+    
     private static readonly ModSettingButton OpenLocalDirectory = new()
     {
         displayName = "Open Local Files Directory",
@@ -208,8 +220,7 @@ internal partial class MelonMain
     };
 
     public static readonly ModSettingFolder ModSourcesFolder =
-        new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "BTD6 Mod Sources"))
+        new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BTD6 Mod Sources"))
         {
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",
@@ -217,59 +228,31 @@ internal partial class MelonMain
             onSave = ModHelperFiles.CreateTargetsFile
         };
 
-    #region Debug
-
-#if DEBUG
-    private static readonly ModSettingCategory Debug = new("Debug");
-
-    private static readonly ModSettingFolder ModHelperSourceFolder = new("")
+    public static readonly ModSettingHotkey QuickEditTowerModel = new(KeyCode.Backslash, HotkeyModifier.Shift)
     {
-        category = Debug,
-        description = "Location of Mod Helper Source code"
+        category = ModMaking,
+        description =
+            "If in sandbox mode, opens a text editor window where you can make quick edits to the selected tower's root model."
+    };
+    
+    public static readonly ModSettingHotkey QuickEditMutatedModel = new(KeyCode.Backslash, HotkeyModifier.Ctrl)
+    {
+        category = ModMaking,
+        description =
+            "If in sandbox mode, opens a text editor window where you can make quick edits to the selected tower's root model."
     };
 
-    private static readonly ModSettingFolder AssetStudioDump = new("")
+    public static readonly ModSettingString QuickEditProgram = new("")
     {
-        category = Debug,
-        description = "Folder where Asset Studio has dumped all the Sprite information"
+        category = ModMaking,
+        description = "Choose a different program/command to edit the file with other than the default notepad.\n" +
+                      "If you have VSCode installed,\na good option is \"code -w -n\".\n" +
+                      "If you have JetBrains Rider, you can put its bin folder in your Path environment variable and do \"rider64 --wait\"."
     };
-
-    private static readonly ModSettingButton GenerateVanillaSprites = new(() =>
+    
+    internal static readonly ModSettingFolder ModHelperSourceFolder = new("")
     {
-        if (!string.IsNullOrEmpty(ModHelperSourceFolder) && !string.IsNullOrEmpty(AssetStudioDump))
-        {
-            VanillaSpriteGenerator.GenerateVanillaSprites(
-                Path.Combine(ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums", "VanillaSprites.cs"),
-                AssetStudioDump);
-        }
-    })
-    {
-        category = Debug,
-        description = "Generates the VanillaSprites.cs file based on the previous two settings",
-        buttonText = "Generate"
+        category = ModMaking,
+        description = "Location of Mod Helper Source code for development purposes"
     };
-
-    private static readonly ModSettingButton GenerateUpgradeTypes = new(() =>
-    {
-        if (!string.IsNullOrEmpty(ModHelperSourceFolder))
-        {
-            var csFie = Path.Combine(ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums", "UpgradeType.cs");
-            UpgradeTypeGenerator.GenerateVanillaUpgradeTypes(csFie);
-        }
-    })
-    {
-        category = Debug,
-        description = "Generates the UpgradeType.cs file",
-        buttonText = "Generate"
-    };
-
-    private static readonly ModSettingHotkey ExportSelectedTower = new(KeyCode.Backslash, HotkeyModifier.Shift)
-    {
-        category = Debug,
-        description = "While in game, exports the exact TowerModel being used by the selected tower."
-    };
-
-#endif
-
-    #endregion
 }

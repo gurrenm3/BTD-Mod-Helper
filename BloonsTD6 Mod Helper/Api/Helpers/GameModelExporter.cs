@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
@@ -112,15 +113,15 @@ public static class GameModelExporter
                 ["description"] = data.description,
                 ["baseTowerName"] = data.baseTowerName,
                 ["mmCost"] = data.mmCost,
-                ["icon"] = data.icon.GUID,
-                ["iconSquare"] = data.iconSquare.GUID,
+                ["icon"] = data.icon.AssetGUID,
+                ["iconSquare"] = data.iconSquare.AssetGUID,
                 ["isDefaultTowerSkin"] = data.isDefaultTowerSkin,
                 ["textMaterialId"] = data.textMaterialId,
                 ["StorePortraitsContainer"] = new JArray(
                     data.StorePortraitsContainer?.items?.ToList()?.Select(portrait =>
                         new JObject
                         {
-                            ["asset"] = portrait.asset?.GUID,
+                            ["asset"] = portrait.asset?.AssetGUID,
                             ["levelText"] = portrait.levelTxt
                         }) ??
                     Array.Empty<JObject>()
@@ -189,6 +190,8 @@ public static class GameModelExporter
         
         Export(LocalizationManager.Instance.textTable, "textTable.json");
         
+        Export(Game.instance.model.paragonDegreeDataModel, "paragonDegreeData.json");
+        
         File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
         ModHelper.Log($"Exported resources to {resourcesPath}");
     }
@@ -201,6 +204,12 @@ public static class GameModelExporter
     {
         try
         {
+#if DEBUG
+            if (data != null && data.Is(out Model model))
+            {
+                ModelSerializer.MakeConsistent(model);
+            }   
+#endif
             FileIOHelper.SaveObject(path, data);
             return true;
         }

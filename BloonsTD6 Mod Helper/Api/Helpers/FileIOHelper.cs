@@ -13,7 +13,10 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class FileIOHelper
 {
-    internal static readonly JsonSerializerSettings Settings = new()
+    /// <summary>
+    /// JSON Serializer settings used for methods in this class
+    /// </summary>
+    public static readonly JsonSerializerSettings Settings = new()
     {
         Formatting = Formatting.Indented,
         TypeNameHandling = TypeNameHandling.Objects,
@@ -54,16 +57,7 @@ public static class FileIOHelper
     {
         var text = LoadFile(fileName);
 
-        // return JsonConvert.DeserializeObject<T>(text);
-
-        var jsonSerializer = JsonSerializer.CreateDefault(new JsonSerializerSettings());
-        var s = new StringReader(text);
-        var reader = new JsonTextReader(s);
-        var result = jsonSerializer.Deserialize<T>(reader);
-        s.Close();
-        reader.Close();
-
-        return result;
+        return JsonConvert.DeserializeObject<T>(text);
     }
 
     /// <summary>

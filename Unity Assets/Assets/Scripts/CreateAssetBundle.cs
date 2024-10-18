@@ -14,7 +14,7 @@ public class CreateAssetBundles
                                         BuildAssetBundleOptions.None,
                                         BuildTarget.StandaloneWindows);
 
-        File.Copy(assetBundleDirectory + "/modoptions.bundle", "../BloonsTD6 Mod Helper/Resources/modoptions.bundle", true);
+        File.Copy(assetBundleDirectory + "/unity_assets.bundle", "../BloonsTD6 Mod Helper/Resources/unity_assets.bundle", true);
     }
 }
 #endif

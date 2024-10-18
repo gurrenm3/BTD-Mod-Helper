@@ -10,6 +10,20 @@ public static class FileIOHelper
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; FileIOHelper
+### Fields
+
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.Settings'></a>
+
+## FileIOHelper.Settings Field
+
+JSON Serializer settings used for methods in this class
+
+```csharp
+public static readonly JsonSerializerSettings Settings;
+```
+
+#### Field Value
+[Il2CppNewtonsoft.Json.JsonSerializerSettings](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNewtonsoft.Json.JsonSerializerSettings 'Il2CppNewtonsoft.Json.JsonSerializerSettings')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.sandboxRoot'></a>

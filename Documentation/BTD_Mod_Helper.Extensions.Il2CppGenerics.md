@@ -20,7 +20,7 @@ Return whether or not there are any elements in this that match the predicate
 
 ```csharp
 public static bool Any<T>(this List<T> source, System.Func<T,bool> predicate)
-    where T : Object;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -72,7 +72,7 @@ Return the index of the element that matches the predicate
 
 ```csharp
 public static int FindIndex<T>(this List<T> source, System.Func<T,bool> predicate)
-    where T : Object;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -100,7 +100,7 @@ Return the first element that matches the predicate
 
 ```csharp
 public static T First<T>(this List<T> source, System.Func<T,bool> predicate)
-    where T : Object;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -151,7 +151,7 @@ Return the first element that matches the predicate, or return default
 
 ```csharp
 public static T FirstOrDefault<T>(this List<T> source, System.Func<T,bool> predicate)
-    where T : Object;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 
@@ -252,7 +252,7 @@ Return all elements that match the predicate
 
 ```csharp
 public static List<T> Where<T>(this List<T> source, System.Func<T,bool> predicate)
-    where T : Object;
+    where T : Il2CppObjectBase;
 ```
 #### Type parameters
 

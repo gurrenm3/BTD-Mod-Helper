@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class FileDialogHelper
 {
-    private static readonly string[] Dlls = {"nfd.dll", "nfd_x86.dll"};
+    private static readonly string[] Dlls = ["nfd.dll", "nfd_x86.dll"];
 
     /// <summary>
     /// Ensure that the NFD native dlls are present in the game root folder

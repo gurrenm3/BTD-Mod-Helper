@@ -252,3 +252,13 @@ public virtual void OnSaveSettings(JObject settings);
 `settings` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
 
 The json representation of the settings about to be saved
+
+<a name='BTD_Mod_Helper.BloonsMod.SaveModSettings()'></a>
+
+## BloonsMod.SaveModSettings() Method
+
+Saves the current mod settings for this mod
+
+```csharp
+public void SaveModSettings();
+```

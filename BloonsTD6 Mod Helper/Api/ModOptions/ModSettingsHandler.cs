@@ -41,8 +41,9 @@ internal static class ModSettingsHandler
         foreach (var field in fields)
         {
             var modSetting = (ModSetting) field.GetValue(obj)!;
-            mod.ModSettings[field.Name] = modSetting;
-            modSetting.displayName ??= field.Name.Spaced();
+            modSetting.Name = field.Name;
+            mod.ModSettings[modSetting.Name] = modSetting;
+            modSetting.displayName ??= modSetting.Name.Spaced();
             modSetting.source = obj;
         }
     }
@@ -72,6 +73,20 @@ internal static class ModSettingsHandler
                     }
                 }
                 mod.OnLoadSettings(json);
+            }
+
+            foreach (var (key, value) in mod.ModSettings)
+            {
+                value.displayNameKey = ModContent.Localize(mod, key + " Setting Name", value.displayName);
+                if (!string.IsNullOrEmpty(value.description))
+                {
+                    value.descriptionKey = ModContent.Localize(mod, key + " Setting Description", value.description);
+                }
+                if (value.category is {displayNameKey: null})
+                {
+                    value.category.displayNameKey = ModContent.Localize(mod, value.category.displayName + " Category",
+                        value.category.displayName);
+                }
             }
         }
         catch (Exception e)

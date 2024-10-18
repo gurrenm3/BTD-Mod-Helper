@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
@@ -11,6 +13,8 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class ProcessHelper
 {
+    private static readonly string EpicLauncherWarning = ModHelper.Localize(nameof(EpicLauncherWarning),
+        "For the Epic Games version, you need to manually rerun the game from the Epic Launcher");
     private const int WaitSeconds = 10;
 
     /// <summary>
@@ -22,7 +26,7 @@ public static class ProcessHelper
         if (ModHelper.IsEpic)
         {
             PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(
-                "For the Epic Games version, you need to manually rerun the game from the Epic Launcher",
+                EpicLauncherWarning.Localize(),
                 new Action(() => MenuManager.instance.QuitGame())));
             return;
         }
@@ -39,7 +43,7 @@ public static class ProcessHelper
             FileName = linux ? "sh" : "cmd.exe",
             UseShellExecute = true
         });
-        
+
         MenuManager.instance.QuitGame();
     }
 
@@ -53,5 +57,44 @@ public static class ProcessHelper
         {
             UseShellExecute = true
         });
+    }
+    
+    /// <summary>
+    /// Opens a file in the default app for it
+    /// </summary>
+    /// <param name="filePath">File path</param>
+    public static void OpenFile(string filePath)
+    {
+        filePath = filePath.Replace('/', Path.DirectorySeparatorChar);
+        Process.Start(new ProcessStartInfo(filePath)
+        {
+            UseShellExecute = true
+        });
+    }
+
+
+    /// <summary>
+    /// Opens a folder in the file explorer
+    /// </summary>
+    /// <param name="folderPath">Folder to open</param>
+    public static void OpenFolder(string folderPath)
+    {
+        folderPath = folderPath.Replace('/', Path.DirectorySeparatorChar);
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Process.Start("explorer.exe", folderPath);
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            Process.Start("open", folderPath);
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            Process.Start("xdg-open", folderPath);
+        }
+        else
+        {
+            throw new NotSupportedException("Operating system not supported");
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
@@ -12,14 +13,18 @@ using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
+using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
+#if DEBUG
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
+#endif
+
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-1000)]
-[assembly: MelonOptionalDependencies("NAudio.WinMM", "NAudio.Wasapi")] // Avoids the warning about these not getting ILRepacked; they're not needed
+[assembly: MelonOptionalDependencies("NAudio.Wasapi", "Il2CppFacepunch.Steamworks")]
 
 namespace BTD_Mod_Helper;
 
@@ -57,8 +62,6 @@ internal partial class MelonMain : BloonsTD6Mod
         // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
 
-
-        Schedule_GameModel_Loaded();
         Schedule_GameModel_Loaded();
         Schedule_GameData_Loaded();
 
@@ -78,29 +81,31 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             HarmonyInstance.CreateClassProcessor(typeof(EmbeddedBrowser.SteamWebView_OnGUI), true).Patch();
         }
+
+        try
+        {
+            FileDialogHelper.PrepareNativeDlls();
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
     }
 
     public override void OnUpdate()
     {
         ModByteLoader.OnUpdate();
         RoundSetChanger.OnUpdate();
-        // InitialLoadTasks_MoveNext.Update();
+        ConsoleHandler.OnUpdate();
+        NotificationMgr.CheckForNotifications();
+        // InitialLoadTasks_MoveNext.OnUpdate();
 
         if (Game.instance is null || InGame.instance is null)
             return;
 
-        NotificationMgr.CheckForNotifications();
         RoundSetChanger.EnsureHidden();
         ModSettingHotkey.HandleTowerHotkeys();
-
-#if DEBUG
-        if (ExportSelectedTower.JustPressed() &&
-            TowerSelectionMenu.instance != null &&
-            TowerSelectionMenu.instance.selectedTower != null)
-        {
-            GameModelExporter.Export(TowerSelectionMenu.instance.selectedTower.tower.towerModel, "selected_tower.json");
-        }
-#endif
+        TowerEditing.OnUpdate();
     }
 
     public override void OnTitleScreen()
@@ -130,6 +135,7 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnInGameLoaded(InGame inGame)
     {
         inGame.gameObject.AddComponent<Instances>();
+        TaskScheduler.ScheduleTask(Schedule_InGame_Loaded, () => !InGame.instance);
     }
 
     public override void OnLoadSettings(JObject settings)

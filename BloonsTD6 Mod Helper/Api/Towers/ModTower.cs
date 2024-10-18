@@ -171,7 +171,12 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     public virtual ModSettingHotkey Hotkey => null;
 
-    internal TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
+    /// <summary>
+    /// Whether this tower should be allowed to be included in Monkey Teams
+    /// </summary>
+    public virtual bool IncludeInMonkeyTeams => true;
+
+    internal virtual TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
     internal virtual bool ShouldCreateParagon =>
         paragonUpgrade != null &&
@@ -353,7 +358,7 @@ public abstract class ModTower : NamedModContent
             var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
             if (index >= 0)
             {
-                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, ShopTowerCount, 0);
+                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, ShopTowerCount);
                 Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
             }
         }
@@ -367,8 +372,9 @@ public abstract class ModTower : NamedModContent
     /// <returns>The 0-0-0 TowerModel for this Tower</returns>
     internal virtual TowerModel GetDefaultTowerModel(int[] tiers = null)
     {
-        tiers ??= new[] {0, 0, 0};
+        tiers ??= [0, 0, 0];
         var towerModel = GetBaseTowerModel(tiers);
+        towerModel.baseId = Id;
         towerModel.name = Id;
 
         towerModel.appliedUpgrades = new Il2CppStringArray(0);

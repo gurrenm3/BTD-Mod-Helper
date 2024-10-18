@@ -187,23 +187,6 @@ public virtual void OnBloonCreated(Bloon bloon);
 
 `bloon` [Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')
 
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnBloonDestroy(Bloon)'></a>
-
-## BloonsTD6Mod.OnBloonDestroy(Bloon) Method
-
-Called right after a Bloon is destroyed  
-<br/>  
-Equivalent to a HarmonyPostFix on Bloon.OnDestroy
-
-```csharp
-public virtual void OnBloonDestroy(Bloon bloon);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnBloonDestroy(Bloon).bloon'></a>
-
-`bloon` [Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')
-
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnBloonEmissionsAdded(Spawner,Il2CppReferenceArray_BloonEmissionModel_,int,int)'></a>
 
 ## BloonsTD6Mod.OnBloonEmissionsAdded(Spawner, Il2CppReferenceArray<BloonEmissionModel>, int, int) Method
@@ -290,21 +273,6 @@ public virtual void OnBloonModelUpdated(Bloon bloon, Model model);
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnBloonModelUpdated(Bloon,Model).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnBloonPopped(Bloon)'></a>
-
-## BloonsTD6Mod.OnBloonPopped(Bloon) Method
-
-Called right after a Bloon is destroyed, but only when it's popped and not leaked
-
-```csharp
-public virtual void OnBloonPopped(Bloon bloon);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.OnBloonPopped(Bloon).bloon'></a>
-
-`bloon` [Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnButtonClicked(Button,PointerEventData)'></a>
 
@@ -1249,63 +1217,6 @@ public virtual void OnWeaponModelChanged(Weapon weapon, Model newModel);
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnWeaponModelChanged(Weapon,Model).newModel'></a>
 
 `newModel` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool)'></a>
-
-## BloonsTD6Mod.PostBloonDamaged(Bloon, float, Projectile, bool, bool, bool, Tower, BloonProperties, bool, bool, bool) Method
-
-Called right after a Bloon is damaged  
-<br/>  
-Equivalent to a HarmonyPostFix on Bloon.Damaged
-
-```csharp
-public virtual void PostBloonDamaged(Bloon bloon, float totalAmount, Projectile projectile, bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, Tower tower, BloonProperties immuneBloonProperties, bool canDestroyProjectile=true, bool ignoreNonTargetable=false, bool blockSpawnChildren=false);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).bloon'></a>
-
-`bloon` [Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).totalAmount'></a>
-
-`totalAmount` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).projectile'></a>
-
-`projectile` [Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile 'Il2CppAssets.Scripts.Simulation.Towers.Projectiles.Projectile')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).distributeToChildren'></a>
-
-`distributeToChildren` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).overrideDistributeBlocker'></a>
-
-`overrideDistributeBlocker` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).createEffect'></a>
-
-`createEffect` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).tower'></a>
-
-`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).immuneBloonProperties'></a>
-
-`immuneBloonProperties` [Il2Cpp.BloonProperties](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.BloonProperties 'Il2Cpp.BloonProperties')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).canDestroyProjectile'></a>
-
-`canDestroyProjectile` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).ignoreNonTargetable'></a>
-
-`ignoreNonTargetable` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonDamaged(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,bool,bool,bool).blockSpawnChildren'></a>
-
-`blockSpawnChildren` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.BloonsTD6Mod.PostBloonLeaked(Bloon)'></a>
 

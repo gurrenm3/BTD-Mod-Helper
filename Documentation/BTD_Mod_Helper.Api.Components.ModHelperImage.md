@@ -3,7 +3,7 @@
 
 ## ModHelperImage Class
 
-ModHelperComponent for a
+ModHelperComponent for an image element
 
 ```csharp
 public class ModHelperImage : BTD_Mod_Helper.Api.Components.ModHelperComponent

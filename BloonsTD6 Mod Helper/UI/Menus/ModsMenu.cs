@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api;
@@ -10,15 +12,22 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.BTD6;
 using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppFacepunch.Steamworks;
+using Il2CppNinjaKiwi.Common;
 using Il2CppTMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
+using UnityEngine.UI.Extensions;
+using Color = UnityEngine.Color;
 using Image = UnityEngine.UI.Image;
 using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 using Object = Il2CppSystem.Object;
+using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 namespace BTD_Mod_Helper.UI.Menus;
 
 /// <summary>
@@ -46,8 +55,6 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     internal const int FontMedium = 69;
     internal const int FontLarge = 80;
 
-    internal const string DefaultDescription = "No description given";
-
     private static Dictionary<ModHelperData, ModsMenuMod> modPanels = new();
 
     private static ModHelperScrollPanel modsList;
@@ -65,6 +72,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static ModHelperButton updateAllButton;
     private static ModHelperImage selectedModIcon;
     private static ModHelperImage selectedModLoadingSpinner;
+    private static ModHelperButton selectedModLocalization;
+
     private static ModsMenuMod modTemplate;
     private static int currentSort;
     private static ModHelperPanel restartPanel;
@@ -76,21 +85,61 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     internal static ModHelperData selectedMod;
 
     private static readonly string[] SortOptions =
-    {
-        "All",
-        "Active",
-        "Inactive",
-        "Updates"
-    };
+    [
+        ModHelper.Localize("AllMods", "All"),
+        ModHelper.Localize("ActiveMods", "Active"),
+        ModHelper.Localize("InactiveMods", "Inactive"),
+        ModHelper.Localize("ModUpdates", "Updates")
+    ];
 
     private static bool RestartRequired => ModHelperData.All.Any(data => data.RestartRequired) ||
                                            ModHelper.Mods.Any(bloonsMod =>
                                                bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
                                            );
 
+    internal static bool ShowHashes { get; private set; }
+
+
+    private static readonly string NoDescription = ModHelper.Localize(nameof(NoDescription), "No description given");
+    private static readonly string DeleteMod = ModHelper.Localize(nameof(DeleteMod), "Delete Mod");
+    private static readonly string DeleteModWarning = ModHelper.Localize(nameof(DeleteModWarning),
+        "Are you sure you want to delete this mod? This action cannot be undone.");
+    private static readonly string CreateMod = ModHelper.Localize(nameof(CreateMod), "Create Mod");
+    private static readonly string CreateModDescription = ModHelper.Localize(nameof(CreateModDescription), """
+        Name of mod to create/upgrade. 
+        Example: 'TitleCaseButWithoutSpaces'
+        """);
+    private static readonly string RestartRequiredPopup = ModHelper.Localize(nameof(RestartRequiredPopup),
+        "Changes you've made will require restarting the game to take effect. Would you like to do that now?");
+    private static readonly string AprilFoolsTrophies = ModHelper.Localize(nameof(AprilFoolsTrophies), "Get 100 Trophies");
+    private static readonly string ConfirmUpdateAllMods = ModHelper.Localize(nameof(ConfirmUpdateAllMods),
+        "Confirm OnUpdate All Mods?");
+    private static readonly string UpdateAllModsBody = ModHelper.Localize(nameof(UpdateAllModsBody),
+        "This will update all mods to latest versions with no further confirmation.");
+    private static readonly string UpdateAll = ModHelper.Localize(nameof(UpdateAll), "OnUpdate All");
+    private static readonly string BrowseMods = ModHelper.Localize(nameof(BrowseMods), "Browse Mods");
+    private static readonly string ModUpdateSuccess = ModHelper.Localize(nameof(ModUpdateSuccess),
+        "Successfully updated mods, remember to restart to apply changes.");
+    private static readonly string DisableAll = ModHelper.Localize(nameof(DisableAll), "Disable All");
+    private static readonly string EnableAll = ModHelper.Localize(nameof(EnableAll), "Enable All");
+    private static readonly string Version = ModHelper.Localize(nameof(Version), "Version");
+    private static readonly string ExportLocalization = ModHelper.Localize(nameof(ExportLocalization),
+        "Export Localization");
+    private static readonly string ExportLocalizationBody = ModHelper.Localize(nameof(ExportLocalizationBody), """
+        Would you like to export this mod's current localization? 
+        A file will be created that can be edited to change this mod's text for your language.
+        """);
+    private static readonly string LocalizationGenerated = ModHelper.Localize(nameof(LocalizationGenerated),
+        "Localization Generated");
+    private static readonly string LocalizationGeneratedBody =
+        ModHelper.Localize(nameof(LocalizationGeneratedBody), "Would you like to view the generated file?");
+    private static readonly string LocalizationFailed = ModHelper.Localize(nameof(LocalizationFailed),
+        "Localization failed to generate, see console for details.");
+
     /// <inheritdoc />
     public override bool OnMenuOpened(Object data)
     {
+        GameMenu.anim.updateMode = AnimatorUpdateMode.UnscaledTime;
         CommonForegroundHeader.SetText("Mods");
 
         var panelTransform = GameMenu.gameObject.GetComponentInChildrenByName<RectTransform>("Panel");
@@ -108,6 +157,19 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         SetSelectedMod(selectedMod!);
 
         MelonCoroutines.Start(CreateModPanels());
+
+        if (InGame.instance != null)
+        {
+            var clickBlock = GameMenu.gameObject.GetComponentInChildrenByName<NonDrawingGraphic>("ClickBlock").gameObject;
+            clickBlock.RemoveComponent<NonDrawingGraphic>();
+
+            TaskScheduler.ScheduleTask(() =>
+            {
+                var image = clickBlock.AddComponent<Image>();
+                image.color = new Color(0, 0, 0, 0.25f);
+                clickBlock.AddComponent<Lightbox>();
+            });
+        }
 
         return false;
     }
@@ -163,7 +225,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Pivot = new Vector2(0.5f, 0)
         }, VanillaSprites.WoodenRoundButton, new Action(() => Open<ModBrowserMenu>()));
         modBrowserButton.AddImage(new Info("ComputerMonkey", InfoPreset.FillParent), VanillaSprites.BenjaminIcon);
-        modBrowserButton.AddText(new Info("Text", 0, -200, 500, 100), "Browse Mods", 60f);
+        modBrowserButton.AddText(new Info("Text", 0, -200, 500, 150), BrowseMods, 60f);
+        modBrowserButton.SetActive(InGame.instance == null);
 
         var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, Padding, 400)
         {
@@ -171,8 +234,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Pivot = new Vector2(0.5f, 0)
         }, VanillaSprites.EditChallengeIcon, new Action(() =>
         {
-            PopupScreen.instance.SafelyQueue(screen => screen.ShowSetNamePopup("Create/Upgrade Mod",
-                "Name of mod to create/upgrade. \n Example: 'TitleCaseButWithoutSpaces'", new Action<string>(s =>
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowSetNamePopup(CreateMod.Localize(),
+                CreateModDescription.Localize(), new Action<string>(s =>
                 {
                     if (!string.IsNullOrEmpty(s))
                     {
@@ -187,7 +250,9 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             }));
         }));
 
-        createModButton.AddText(new Info("Text", 0, -200, 500, 100), "Create Mod", 60f);
+        createModButton.AddText(new Info("Text", 0, -200, 500, 100), CreateMod, 60f);
+
+        createModButton.SetActive(InGame.instance == null);
 
 
         restartPanel = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350)
@@ -204,9 +269,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Action(() =>
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
-                    "Restart Required",
-                    "Changes you've made will require restarting the game to take effect. " +
-                    "Would you like to do that now?", new Action(ProcessHelper.RestartGame),
+                    LocalizationHelper.RestartRequired.Localize(),
+                    RestartRequiredPopup.Localize(), new Action(ProcessHelper.RestartGame),
                     "Yes", null, "No", Popup.TransitionAnim.Scale));
             }));
         restartPanel.AddText(new Info("Text", 0, -200, 500, 100), "Restart", FontMedium);
@@ -230,7 +294,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                         view => view.Surface.KeyDown(0x0D /* VK_RETURN */, HTMLKeyModifiers.None));
                 }
             }));
-            march32.AddText(new Info("Text", InfoPreset.FillParent), "Get 100 Trophies", 80f);
+            march32.AddText(new Info("Text", InfoPreset.FillParent), AprilFoolsTrophies, 80f);
             march32.AddImage(new Info("TrophyL", -475, 0, 300), VanillaSprites.TrophyIcon);
             march32.AddImage(new Info("TrophyR", 475, 0, 300), VanillaSprites.TrophyIcon);
         }
@@ -277,10 +341,10 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     {
         selectedMod = modSelected;
 
-        selectedModName.Text.SetText(modSelected.DisplayName);
-        selectedModAuthor.Text.SetText(modSelected.DisplayAuthor);
-        selectedModVersion.Text.SetText("v" + modSelected.Version);
-        selectedModDescription.Text.SetText(modSelected.DisplayDescription);
+        selectedModName.SetText(modSelected.DisplayNameKey ?? modSelected.DisplayName);
+        selectedModAuthor.SetText(modSelected.DisplayAuthor);
+        selectedModVersion.SetText("v" + modSelected.Version);
+        selectedModDescription.SetText(modSelected.DisplayDescriptionKey ?? modSelected.DisplayDescription);
 
         selectedModAuthor.Text.SetFaceColor(BlatantFavoritism.GetColor(modSelected.RepoOwner));
 
@@ -362,8 +426,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             VanillaSprites.GreenBtnLong, new Action(() =>
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
-                    "Confirm Update All Mods?",
-                    "This will update all mods to latest versions with no further confirmation.", new Action(
+                    ConfirmUpdateAllMods.Localize(),
+                    UpdateAllModsBody.Localize(), new Action(
                         async () =>
                         {
                             foreach (var (data, panel) in modPanels
@@ -374,13 +438,13 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                             }
 
                             Refresh();
-                            PopupScreen.instance.SafelyQueue(popupScreen => popupScreen.ShowOkPopup(
-                                "Successfully updated mods, remember to restart to apply changes."));
+                            PopupScreen.instance.SafelyQueue(popupScreen =>
+                                popupScreen.ShowOkPopup(ModUpdateSuccess.Localize()));
                         }), "Yes", null, "No", Popup.TransitionAnim.Scale));
             })
         );
         updateAllButton.SetActive(false);
-        updateAllButton.AddText(new Info("UpdateAllText", InfoPreset.FillParent), "Update All", FontSmall);
+        updateAllButton.AddText(new Info("UpdateAllText", InfoPreset.FillParent), UpdateAll, FontSmall);
 
         var disableAll = topRow.ScrollContent.AddButton(
             new Info("DisableAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
@@ -395,7 +459,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     SortMods(currentSort);
                     MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 }));
-        disableAll.AddText(new Info("Text", InfoPreset.FillParent), "Disable All", FontSmall);
+        disableAll.AddText(new Info("Text", InfoPreset.FillParent), DisableAll, FontSmall);
 
         var enableAll = topRow.ScrollContent.AddButton(
             new Info("EnableAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
@@ -415,7 +479,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                         MenuManager.instance.buttonClickSound.Play("ClickSounds");
                     }
                 }));
-        enableAll.AddText(new Info("Text", InfoPreset.FillParent), "Enable All", FontSmall);
+        enableAll.AddText(new Info("Text", InfoPreset.FillParent), EnableAll, FontSmall);
 
         topRow.ScrollContent.AddButton(new Info("ResetAll", ModNameHeight), VanillaSprites.RestartBtn,
             new Action(
@@ -449,6 +513,22 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }
 
         topRow.Mask.enabled = true;
+
+        var hashBtn = leftMenu.AddButton(new Info("HashesButton")
+        {
+            Size = 100,
+            X = -25,
+            Y = 25,
+            Anchor = new Vector2(1, 0)
+        }, VanillaSprites.EnterCodeIcon2, new Action(() =>
+        {
+            ShowHashes = !ShowHashes;
+            foreach (var modPanel in modPanels.Values)
+            {
+                modPanel.Hash.SetActive(ShowHashes);
+            }
+        }));
+        hashBtn.LayoutElement.ignoreLayout = true;
     }
 
     private static void Refresh()
@@ -556,8 +636,41 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         {
             Width = -Padding,
             Height = -Padding
-        }, "Version");
+        }, Version);
         selectedModVersion.Text.enableAutoSizing = true;
+
+        selectedModLocalization = secondRow.AddButton(new Info("LocalizationButton", OtherHeight),
+            VanillaSprites.BlueBtnSquareSmall, new Action(() => PopupScreen.instance.SafelyQueue(screen =>
+                screen.ShowPopup(PopupScreen.Placement.inGameCenter, ExportLocalization.Localize(),
+                    ExportLocalizationBody.Localize(),
+                    new Action(() =>
+                        {
+                            var result = LocalizationHelper.ExportCurrentLocalization(selectedMod.Mod as BloonsMod);
+                            if (result != null)
+                            {
+                                var viewFile = new Action(() => Process.Start(new ProcessStartInfo
+                                {
+                                    FileName = new FileInfo(result).DirectoryName,
+                                    UseShellExecute = true,
+                                    Verb = "open"
+                                }));
+
+                                PopupScreen.instance.SafelyQueue(s => s.ShowPopup(PopupScreen.Placement.menuCenter,
+                                    LocalizationGenerated.Localize(), LocalizationGeneratedBody.Localize(),
+                                    viewFile, LocalizationHelper.Yes.Localize(), null, LocalizationHelper.No.Localize(),
+                                    Popup.TransitionAnim.Scale));
+                            }
+                            else
+                            {
+                                PopupScreen.instance.SafelyQueue(s => s.ShowOkPopup(LocalizationFailed.Localize()));
+
+                            }
+                        }
+                    ), "Yes", null, "No", Popup.TransitionAnim.Scale))));
+        selectedModLocalization.AddImage(new Info("Icon", InfoPreset.FillParent)
+        {
+            Width = -Padding / 2f, Height = -Padding / 2f, Y = Padding / 10f
+        }, VanillaSprites.LangUniversalIcon);
 
 
         var descriptionPanel = selectedModPanel.AddScrollPanel(new Info("DescriptionPanel", InfoPreset.Flex),
@@ -566,7 +679,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModDescription = ModHelperText.Create(new Info("DescriptionText")
         {
             Width = RightMenuWidth - Padding * 4
-        }, DefaultDescription, FontSmall, TextAlignmentOptions.TopLeft);
+        }, NoDescription, FontSmall, TextAlignmentOptions.TopLeft);
         descriptionPanel.AddScrollContent(selectedModDescription);
         selectedModDescription.LayoutElement.preferredHeight = -1;
         selectedModDescription.Text.enableAutoSizing = true;
@@ -611,8 +724,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private static void DeleteSelectedMod()
     {
-        PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter, "Delete Mod",
-            "Are you sure you want to delete this mod? This action cannot be undone.", new Action(() =>
+        PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
+            DeleteMod.Localize(), DeleteModWarning.Localize(), new Action(() =>
             {
                 if (selectedMod.Delete())
                 {
@@ -622,7 +735,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                     SortMods(currentSort);
                     MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 }
-            }), "Yes", null, "No", Popup.TransitionAnim.Scale));
+            }), LocalizationHelper.Yes.Localize(), null, LocalizationHelper.No.Localize(), Popup.TransitionAnim.Scale));
     }
 
     internal static void DisableSelectedMod()

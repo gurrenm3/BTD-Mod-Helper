@@ -162,7 +162,7 @@ public static TowerDetailsModel MakeCopy(this TowerDetailsModel towerDetailsMode
 
 ## TowerDetailsModelExt.SetName(this TowerDetailsModel, string) Method
 
-Sets the name of this TowerDetailsModel, following the naming convention of ofther TowerDetailModels.  
+Sets the name of this TowerDetailsModel, following the naming convention of other TowerDetailModels.  
 Example, using "NewMonkey" will set the name to "TowerDetailsModel_NewMonkey"
 
 ```csharp

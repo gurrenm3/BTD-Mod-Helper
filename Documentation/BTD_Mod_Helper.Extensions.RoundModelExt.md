@@ -45,13 +45,13 @@ How many Bloons will be emitted
 
 `startTime` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-When this group starts emitting, in frames (seconds / 60)
+When this group starts emitting, in frames (seconds * 60)
 
 <a name='BTD_Mod_Helper.Extensions.RoundModelExt.AddBloonGroup(thisRoundModel,string,int,float,float).endTime'></a>
 
 `endTime` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-When this group stops emitting, in frames (seconds / 60)
+When this group stops emitting, in frames (seconds * 60)
 
 <a name='BTD_Mod_Helper.Extensions.RoundModelExt.AddBloonGroup_T_(thisRoundModel,int,float,float)'></a>
 

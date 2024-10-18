@@ -1,6 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Helpers;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,6 +20,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// </summary>
 public static class RendererExt
 {
+    private const string DefaultShader = "NinjaKiwi/SimpleUnlitOutline";
     private static readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
 
     /// <summary>
@@ -125,8 +135,32 @@ public static class RendererExt
     /// </summary>
     public static void ApplyOutlineShader(this Renderer renderer)
     {
-        var shader = Resources.FindObjectsOfTypeAll<Shader>().First(shader => shader.name == "NinjaKiwi/BTD6/LitOutline");
-        renderer.material.shader = shader;
+        var shader = Resources.FindObjectsOfTypeAll<Shader>().FirstOrDefault(shader => shader.name == DefaultShader);
+        if (shader == null)
+        {
+            var dummyDisplay = Game.instance.model.GetTowerWithName(TowerType.DartMonkey).display;
+            Game.instance.GetDisplayFactory().FindAndSetupPrototypeAsync(dummyDisplay, DisplayCategory.Default,
+                new Action<UnityDisplayNode>(udn => renderer.material.shader = udn.GetRenderers().First().material.shader));
+        }
+        else
+        {
+            renderer.material.shader = shader;
+        }
         renderer.gameObject.layer = LayerMask.NameToLayer("Towers");
     }
+
+    /// <inheritdoc cref="Texture2DExt.ApplyCustomShader"/>
+    public static void ApplyCustomShader(this Renderer renderer, CustomShader customShader,
+        Action<Material> modifyMaterial = null) =>
+        renderer.material.mainTexture = renderer.material.mainTexture.ApplyCustomShader(customShader, modifyMaterial);
+
+    /// <inheritdoc cref="Texture2DExt.ReplaceColor"/>
+    public static void ReplaceColor(this Renderer renderer, Color targetColor, Color replacementColor,
+        float threshold = 0.05f) =>
+        renderer.material.mainTexture = renderer.material.mainTexture.ReplaceColor(targetColor, replacementColor, threshold);
+
+    /// <inheritdoc cref="Texture2DExt.AdjustHSV"/>
+    public static void AdjustHSV(this Renderer renderer, float hueAdjust, float saturationAdjust, float valueAdjust,
+        Color? targetColor = null, float threshold = 0.05f) => renderer.material.mainTexture =
+        renderer.material.mainTexture.AdjustHSV(hueAdjust, saturationAdjust, valueAdjust, targetColor, threshold);
 }

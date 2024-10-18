@@ -12,7 +12,7 @@ internal static class InGame_CheckAndShowHintMessage
         if (!ModRoundSet.Cache.TryGetValue(__instance.GetGameModel().roundSet.name, out var modRoundSet)) return true;
 
         if ((modRoundSet.AlwaysShowHints || Game.Player.Data.inGameSettings.gameHints) &&
-            modRoundSet.GetHint(__instance.UnityToSimulation.GetCurrentRound() + 1) is string hint)
+            modRoundSet.GetHint(__instance.bridge.GetCurrentRound() + 1) is string hint)
         {
             __instance.roundHintTxt.SetText(hint);
             __instance.roundHintAnimator.SetIntegerString("AnimIndex", 1);

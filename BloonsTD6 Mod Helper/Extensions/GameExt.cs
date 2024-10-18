@@ -55,8 +55,7 @@ public static class GameExt
     /// <returns></returns>
     public static bool IsAccountFlagged(this Game game)
     {
-        var hackerStatus = game.GetBtd6Player().Hakxr;
-        return hackerStatus.genrl || hackerStatus.ledrbrd;
+        return game.GetBtd6Player().IsFlagged;
     }
 
     /// <summary>
@@ -97,14 +96,9 @@ public static class GameExt
     public static void ScheduleTask(this Game game, Action action, ScheduleType scheduleType, int amountToWait,
         Func<bool> waitCondition = null)
     {
-        MelonCoroutines.Start(TaskScheduler.Coroutine(action, scheduleType, amountToWait, waitCondition));
+        TaskScheduler.ScheduleTask(action, scheduleType, amountToWait, waitCondition);
     }
-
-
-    /// <summary>
-    /// Get Player LinkAccount. Contains limited info about player's NinjaKiwi account
-    /// </summary>
-    public static LiNKAccount GetPlayerLiNKAccount(this Game game) => game.GetPlayerService()?.Player?.LiNKAccount;
+    
 
     /// <summary>
     /// Get the ProfileModel for the Player

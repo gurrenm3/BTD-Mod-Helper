@@ -21,28 +21,29 @@ public abstract class ModByteLoader : ModContent
     internal static Task currentLoadTask;
 
     private static readonly string[] References =
-    {
+    [
         "Il2CppAssets.Scripts.Models.Towers.TargetType"
-    };
+    ];
 
     private static readonly string[] Structs =
-    {
+    [
         "Il2CppAssets.Scripts.Simulation.SMath.Vector3"
-    };
+    ];
 
     private static readonly string[] Enums =
-    {
+    [
         "Il2CppAssets.Scripts.Models.Towers.TowerModel.TowerSize",
         "Il2CppAssets.Scripts.Models.Map.AreaType",
         "Il2CppAssets.Scripts.Models.TowerSets.TowerSet"
-    };
+    ];
 
     private static readonly string[] AssetRefTypes =
-    {
+    [
         "SpriteReference",
         "PrefabReference",
-        "AudioSourceReference"
-    };
+        "AudioSourceReference",
+        "AudioClipReference"
+    ];
 
     /// <summary>
     /// The array of object that NinjaKiwi programmed the loader to utilize

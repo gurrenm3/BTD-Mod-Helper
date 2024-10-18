@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 4205426378
+CRC: 3221700999
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: modoptions.bundle
+      Name: unity_assets.bundle
       Dependencies: {}

@@ -76,7 +76,7 @@ public static class TowerDetailsModelExt
     }
 
     /// <summary>
-    /// Sets the name of this TowerDetailsModel, following the naming convention of ofther TowerDetailModels.
+    /// Sets the name of this TowerDetailsModel, following the naming convention of other TowerDetailModels.
     /// Example, using "NewMonkey" will set the name to "TowerDetailsModel_NewMonkey"
     /// </summary>
     /// <param name="towerDetailsModel"></param>

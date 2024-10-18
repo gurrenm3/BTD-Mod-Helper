@@ -118,6 +118,19 @@ public virtual string GlowStyle { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.IncludeInMonkeyTeams'></a>
+
+## ModHero.IncludeInMonkeyTeams Property
+
+Not a thing anyway
+
+```csharp
+public sealed override bool IncludeInMonkeyTeams { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.Level1Description'></a>
 
 ## ModHero.Level1Description Property

@@ -5,16 +5,44 @@ using NAudio.Wave;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Internal;
 
-internal class ResourceHandler
+/// <summary>
+/// Handles embedded resources within Mod Helper mods
+/// </summary>
+public static class ResourceHandler
 {
-    internal static readonly Dictionary<string, byte[]> Resources = new();
-    internal static readonly Dictionary<string, AudioClip> AudioClips = new();
+    /// <summary>
+    /// Map of raw embedded resource data by Id
+    /// </summary>
+    public static readonly Dictionary<string, byte[]> Resources = new();
 
+    /// <summary>
+    /// Map of created Audio Clips by Id
+    /// </summary>
+    public static readonly Dictionary<string, AudioClip> AudioClips = new();
+
+    /// <summary>
+    /// Map of loaded Asset Bundles by Id
+    /// </summary>
     public static readonly Dictionary<string, AssetBundle> Bundles = new();
 
+    /// <summary>
+    /// Cache of created Textures by Id
+    /// </summary>
     internal static readonly Dictionary<string, Texture2D> TextureCache = new();
 
+    /// <summary>
+    /// Cache of created Sprites by Id
+    /// </summary>
     internal static readonly Dictionary<string, Sprite> SpriteCache = new();
+
+    internal static readonly List<RenderTexture> RenderTexturesToRelease = [];
+
+    internal static void LoadEmbeddedResources(BloonsMod mod)
+    {
+        LoadEmbeddedTextures(mod);
+        LoadEmbeddedAudio(mod);
+        LoadEmbeddedBundles(mod);
+    }
 
     internal static void LoadEmbeddedTextures(BloonsMod mod)
     {
@@ -38,32 +66,31 @@ internal class ResourceHandler
         mod.AudioClips = new Dictionary<string, AudioClip>();
 
         foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
-                     .Where(s => s.EndsWith(".wav")))
+                     .Where(s => s.EndsWith(".wav") || s.EndsWith(".mp3")))
         {
             var split = fileName.Split('.');
+            var extension = split[^1];
             var name = split[^2];
             var id = ModContent.GetId(mod, name);
 
             try
             {
                 using var stream = mod.GetAssembly().GetManifestResourceStream(fileName);
-                using var reader = new WaveFileReader(stream);
-                var waveFormat = reader.WaveFormat;
 
-                var totalSamples = (int) (reader.SampleCount * waveFormat.Channels);
-                var data = new float[totalSamples];
-
-                reader.ToSampleProvider().Read(data, 0, totalSamples);
-
-                var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
-
-                if (audioClip.SetData(data, 0))
+                if (extension == "wav")
                 {
-                    AudioClips[id] = mod.AudioClips[name] = audioClip;
+                    using var reader = new WaveFileReader(stream);
+                    mod.AudioClips[name] = CreateAudioClip(reader, id);
+                }
+                else if (extension == "mp3")
+                {
+                    using var reader = new Mp3FileReader(stream);
+                    mod.AudioClips[name] = CreateAudioClip(reader, id);
                 }
                 else
                 {
-                    ModHelper.Warning($"Failed to set data for audio clip {fileName}");
+                    ModHelper.Warning($"Invalid for audio extension {extension} for {fileName}");
+                    return;
                 }
             }
             catch (Exception e)
@@ -111,12 +138,81 @@ internal class ResourceHandler
         }
     }
 
+    /// <summary>
+    /// Create an AudioClip from a wav file
+    /// </summary>
+    /// <param name="reader">Wav file reader</param>
+    /// <param name="id">Id for AudioClip</param>
+    /// <returns>new AudioClip, or null if unsuccessful</returns>
+    public static AudioClip CreateAudioClip(WaveFileReader reader, string id)
+    {
+        try
+        {
+            var waveFormat = reader.WaveFormat;
+
+            var totalSamples = (int) (reader.SampleCount * waveFormat.Channels);
+            var data = new float[totalSamples];
+
+            reader.ToSampleProvider().Read(data, 0, totalSamples);
+
+            var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
+
+            if (audioClip.SetData(data, 0))
+            {
+                return AudioClips[id] = audioClip;
+            }
+
+            ModHelper.Warning($"Failed to set data for audio clip {id}");
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+        return null;
+    }
+
+
+    /// <summary>
+    /// Create an AudioClip from an mp3 file
+    /// </summary>
+    /// <param name="reader">mp3 file reader</param>
+    /// <param name="id">Id for AudioClip</param>
+    /// <returns>new AudioClip, or null if unsuccessful</returns>
+    public static AudioClip CreateAudioClip(Mp3FileReader reader, string id)
+    {
+        try
+        {
+            var waveFormat = reader.WaveFormat;
+
+            var totalSamples = (int) (reader.Length / (waveFormat.BitsPerSample / 8)) * waveFormat.Channels;
+            var data = new float[totalSamples];
+
+            reader.ToSampleProvider().Read(data, 0, totalSamples);
+
+            var audioClip = AudioClip.Create(id, totalSamples, waveFormat.Channels, waveFormat.SampleRate, false);
+
+            if (audioClip.SetData(data, 0))
+            {
+                return AudioClips[id] = audioClip;
+            }
+
+            ModHelper.Warning($"Failed to set data for audio clip {id}");
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+        return null;
+    }
+
     internal static Texture2D CreateTexture(string guid)
     {
         if (Resources.TryGetValue(guid, out var bytes))
         {
             var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -.5f};
-            ImageConversion.LoadImage(texture, bytes);
+            texture.LoadImage(bytes);
             TextureCache[guid] = texture;
             return texture;
         }
@@ -124,7 +220,12 @@ internal class ResourceHandler
         return null;
     }
 
-    internal static Texture2D GetTexture(string id)
+    /// <summary>
+    /// Creates or gets a texture from its Id
+    /// </summary>
+    /// <param name="id">Texture id "ModName-FileName" (no file extension)</param>
+    /// <returns>The texture </returns>
+    public static Texture2D GetTexture(string id)
     {
         if (TextureCache.TryGetValue(id, out var texture2d) && texture2d != null) return texture2d;
 
@@ -134,7 +235,13 @@ internal class ResourceHandler
     internal static byte[] GetTextureBytes(string guid) =>
         Resources.TryGetValue(guid, out var bytes) ? bytes : Array.Empty<byte>();
 
-    internal static Sprite CreateSprite(Texture2D texture, float pixelsPerUnit = 10.8f) => Sprite.Create(texture,
+    /// <summary>
+    /// Creates a Sprite from a Texture2D
+    /// </summary>
+    /// <param name="texture">Texture</param>
+    /// <param name="pixelsPerUnit">Pixels per Unit to use</param>
+    /// <returns>new Sprite</returns>
+    public static Sprite CreateSprite(this Texture2D texture, float pixelsPerUnit = 10.8f) => Sprite.Create(texture,
         new Rect(0, 0, texture.width, texture.height),
         new Vector2(0.5f, 0.5f), pixelsPerUnit);
 
@@ -150,6 +257,12 @@ internal class ResourceHandler
         return null;
     }
 
+    /// <summary>
+    /// Creates or gets a sprite from its Id
+    /// </summary>
+    /// <param name="id">Sprite id "ModName-FileName" (no file extension)</param>
+    /// <param name="pixelsPerUnit">Pixels per Unit to use</param>
+    /// <returns>The texture </returns>
     internal static Sprite GetSprite(string id, float pixelsPerUnit = 10.8f)
     {
         if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null) return sprite;

@@ -21,8 +21,8 @@ internal static class UnityToSimulation_UpgradeTower_Impl
     private static void Prefix(UnityToSimulation __instance, ObjectId id, int pathIndex)
     {
         var towerManager = __instance.simulation.towerManager;
-        var tower = towerManager.GetTowerById(id).towerModel;
-        var upgrade = tower.upgrades.FirstOrDefault(model => model.GetUpgrade()?.path == pathIndex);
+        var tower = towerManager.GetTowerById(id)?.towerModel;
+        var upgrade = tower?.upgrades.FirstOrDefault(model => model.GetUpgrade()?.path == pathIndex);
         if (upgrade != null)
         {
             GameModel_GetTower.overrideTower = upgrade.tower;

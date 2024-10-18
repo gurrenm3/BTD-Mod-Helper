@@ -313,6 +313,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br />
     /// Equivalent to a HarmonyPostFix on TimeManager.SetFastForward
     /// </summary>
+    [Obsolete("TimeManager.SetFastForward was removed")]
     public virtual void OnFastForwardChanged(bool newValue)
     {
     }
@@ -393,42 +394,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     public virtual void OnBloonModelUpdated(Bloon bloon, Model model)
     {
     }
-
-    /// <summary>
-    /// Called right after a Bloon is destroyed
-    /// <br />
-    /// Equivalent to a HarmonyPostFix on Bloon.OnDestroy
-    /// </summary>
-    [Obsolete("No longer implemented.")]
-    public virtual void OnBloonDestroy(Bloon bloon)
-    {
-    }
-
-    /// <summary>
-    /// Called right after a Bloon is destroyed, but only when it's popped and not leaked
-    /// </summary>
-    /// <param name="bloon"></param>
-    [Obsolete("No longer implemented")]
-    public virtual void OnBloonPopped(Bloon bloon)
-    {
-    }
-
-    /// <summary>
-    /// Called right after a Bloon is damaged
-    /// <br />
-    /// Equivalent to a HarmonyPostFix on Bloon.Damaged
-    /// </summary>
-    [Obsolete("No longer implemented")]
-    public virtual void PostBloonDamaged
-    (
-        Bloon bloon, float totalAmount, Projectile projectile,
-        bool distributeToChildren, bool overrideDistributeBlocker, bool createEffect, [Optional] Tower tower,
-        [Optional] BloonProperties immuneBloonProperties, bool canDestroyProjectile = true,
-        bool ignoreNonTargetable = false, bool blockSpawnChildren = false
-    )
-    {
-    }
-
+    
     /// <summary>
     /// Called after a new bloon emission is added to the spawner
     /// <br />

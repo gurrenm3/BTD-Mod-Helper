@@ -15,6 +15,8 @@ internal static class ModsButton
 {
     private static SpriteReference Sprite => ModContent.GetSpriteReference<MelonMain>("ModsBtn");
 
+    internal static readonly string Mods = ModHelper.Localize(nameof(Mods), "Mods");
+    
     public static void Create(MainMenu mainMenu)
     {
         var mainMenuTransform = mainMenu.transform.Cast<RectTransform>();
@@ -28,14 +30,22 @@ internal static class ModsButton
         modsButton.name = "Mods";
         modsButton.transform.localPosition = new Vector3(1600, 0, 0);
         modsButton.RemoveComponent<PipEventChecker>();
+        modsButton.GetComponentInChildrenByName<RectTransform>("NewRibbon").gameObject.SetActive(false);
         modsButton.GetComponentInChildrenByName<Image>("Button").SetSprite(Sprite);
-        modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = $"   Mods ({ModHelper.Melons.Count()})";
+        modsButton.GetComponentInChildren<NK_TextMeshProUGUI>().localizeKey = $"   [{Mods}] ({ModHelper.Melons.Count()})";
         modsButton.GetComponentInChildren<Button>().SetOnClick(() => ModGameMenu.Open<ModsMenu>());
 
         var indicator = modsButton.GetComponentInChildrenByName<RectTransform>("ParagonAvailable");
         indicator.gameObject.SetActive(ModHelperData.All.Any(data => data.UpdateAvailable));
         indicator.Find("Glow").GetComponent<Image>().color = Color.green;
         indicator.Find("Icon").GetComponent<Image>().SetSprite(VanillaSprites.UpgradeBtn);
+
+        var error = indicator.gameObject.Duplicate(indicator.parent);
+        error.transform.localPosition = error.transform.localPosition with {x = error.transform.localPosition.x * -1};
+        error.gameObject.SetActive(ModHelper.Mods.Any(mod => mod.loadErrors.Any()));
+        error.transform.Find("Glow").gameObject.SetActive(false);
+        error.transform.Find("Icon").GetComponent<Image>().SetSprite(VanillaSprites.NoticeBtn);
+        error.GetComponentInChildren<CustomScaleAnimator>().enabled = false;
 
         var matchLocalPosition = modsButton.transform.GetChild(0).gameObject.AddComponent<MatchLocalPosition>();
         matchLocalPosition.transformToCopy = copyLocalFrom.transform.GetChild(0);

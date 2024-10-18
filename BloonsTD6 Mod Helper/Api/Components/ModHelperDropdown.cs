@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppSystem.Collections.Generic;
 using Il2CppTMPro;
@@ -81,7 +82,7 @@ public class ModHelperDropdown : ModHelperComponent
         var dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
         dropdown.captionText = text.Text;
         dropdown.ClearOptions();
-        dropdown.AddOptions(options);
+        dropdown.AddOptions(options.ToArray().Select(o => o.Localize()).ToIl2CppList());
 
         if (onValueChanged != null)
         {
@@ -98,7 +99,7 @@ public class ModHelperDropdown : ModHelperComponent
 
         var template = modHelperDropdown.AddScrollPanel(
             new Info("Template", 0, height / -2 - realHeight / 2, width, realHeight),
-            RectTransform.Axis.Vertical, VanillaSprites.UISprite);
+            RectTransform.Axis.Vertical, "");
 
         template.Background.color = new Color(0.262f, 0.435f, 0.658f);
         dropdown.template = template;
@@ -123,6 +124,8 @@ public class ModHelperDropdown : ModHelperComponent
         dropdown.itemText = itemLabel.Text;
 
         template.AddScrollContent(item);
+        
+        template.ScrollRect.SetVerticalNormalizedPosition(0);
 
         return modHelperDropdown;
     }

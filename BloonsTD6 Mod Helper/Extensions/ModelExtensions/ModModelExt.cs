@@ -163,7 +163,7 @@ public static class ModModelExt
     public static void UseRoundSet(this ModModel model, string roundSetName)
     {
         model.RemoveMutators<RoundSetModModel>();
-        model.AddMutator(new RoundSetModModel("_", roundSetName));
+        model.AddMutator(new RoundSetModModel("", roundSetName));
     }
 
     /// <summary>
@@ -184,7 +184,7 @@ public static class ModModelExt
     public static void SetStartingCash(this ModModel model, int baseCash = 0, int addCash = 0, float multCash = 0)
     {
         model.RemoveMutators<StartingCashModModel>();
-        model.AddMutator(new StartingCashModModel("_", baseCash, addCash, multCash));
+        model.AddMutator(new StartingCashModModel("", baseCash, addCash, multCash));
     }
 
     /// <summary>
@@ -193,7 +193,7 @@ public static class ModModelExt
     public static void SetStartingHealth(this ModModel model, int health)
     {
         model.RemoveMutators<StartingHealthModModel>();
-        model.AddMutator(new StartingHealthModModel("_", 0, health));
+        model.AddMutator(new StartingHealthModModel("", 0, health));
     }
 
     /// <summary>
@@ -202,7 +202,7 @@ public static class ModModelExt
     public static void SetMaxHealth(this ModModel model, int health)
     {
         model.RemoveMutators<MaxHealthModModel>();
-        model.AddMutator(new MaxHealthModModel("_", 1, 0, health));
+        model.AddMutator(new MaxHealthModModel("", 1, 0, health));
     }
 
     /// <summary>
@@ -211,7 +211,7 @@ public static class ModModelExt
     public static void SetStartingRound(this ModModel model, int startingRound)
     {
         model.RemoveMutators<StartingRoundModModel>();
-        model.AddMutator(new StartingRoundModModel("_", startingRound));
+        model.AddMutator(new StartingRoundModModel("", startingRound));
     }
 
     /// <summary>
@@ -220,7 +220,7 @@ public static class ModModelExt
     public static void SetEndingRound(this ModModel model, int endingRound)
     {
         model.RemoveMutators<EndRoundModModel>();
-        model.AddMutator(new EndRoundModModel("_", endingRound));
+        model.AddMutator(new EndRoundModModel("", endingRound));
     }
 
     /// <summary>
@@ -229,7 +229,7 @@ public static class ModModelExt
     public static void SetMkEnabled(this ModModel model, bool enabled)
     {
         model.RemoveMutator<DisableMonkeyKnowledgeModModel>();
-        if (!enabled) model.AddMutator(new DisableMonkeyKnowledgeModModel("_"));
+        if (!enabled) model.AddMutator(new DisableMonkeyKnowledgeModModel(""));
     }
 
     /// <summary>
@@ -249,7 +249,7 @@ public static class ModModelExt
     public static void SetContinuesEnabled(this ModModel model, bool enabled)
     {
         model.RemoveMutator<DisableContinueModModel>();
-        if (!enabled) model.AddMutator(new DisableContinueModModel("_"));
+        if (!enabled) model.AddMutator(new DisableContinueModModel(""));
     }
 
     /// <summary>
@@ -258,7 +258,7 @@ public static class ModModelExt
     public static void SetSellingEnabled(this ModModel model, bool enabled)
     {
         model.RemoveMutator<DisableSellTowerModModel>();
-        if (!enabled) model.AddMutator(new DisableSellTowerModModel("_"));
+        if (!enabled) model.AddMutator(new DisableSellTowerModModel(""));
     }
 
     /// <summary>
@@ -267,7 +267,7 @@ public static class ModModelExt
     public static void SetIncomeEnabled(this ModModel model, bool enabled)
     {
         model.RemoveMutator<ChimpsModModel>();
-        if (!enabled) model.AddMutator(new ChimpsModModel("_"));
+        if (!enabled) model.AddMutator(new ChimpsModModel(""));
     }
 
     /// <summary>
@@ -279,7 +279,7 @@ public static class ModModelExt
     public static void SetBloonHealth(this ModModel model, float mult, string tag)
     {
         model.RemoveMutators(modModel => modModel.Is(out BloonHealthModel b) && b.bloonTag == tag);
-        model.AddMutator(new BloonHealthModel("_", mult, tag));
+        model.AddMutator(new BloonHealthModel("", mult, tag));
     }
 
     /// <summary>
@@ -293,7 +293,7 @@ public static class ModModelExt
         model.RemoveMutators(modModel => modModel.Is(out LockTowerSetModModel m) && m.towerSetToLock == towerSet);
         if (locked)
         {
-            model.AddMutator(new LockTowerSetModModel("_", towerSet));
+            model.AddMutator(new LockTowerSetModModel("", towerSet));
         }
     }
 
@@ -303,7 +303,7 @@ public static class ModModelExt
     public static void SetImpoppable(this ModModel model, bool impoppable = true)
     {
         model.RemoveMutators<ImpoppableModel>();
-        if (impoppable) model.AddMutator(new ImpoppableModel("_"));
+        if (impoppable) model.AddMutator(new ImpoppableModel(""));
     }
 
     /// <summary>
@@ -312,7 +312,7 @@ public static class ModModelExt
     public static void SetReversed(this ModModel model, bool reversed = true)
     {
         model.RemoveMutators<ReverseModel>();
-        if (reversed) model.AddMutator(new ReverseModel("_"));
+        if (reversed) model.AddMutator(new ReverseModel(""));
     }
 
     /// <summary>
@@ -321,7 +321,7 @@ public static class ModModelExt
     public static void SetAllCashMultiplier(this ModModel model, float mult)
     {
         model.RemoveMutators<ModifyAllCashModModel>();
-        model.AddMutator(new ModifyAllCashModModel("_", mult));
+        model.AddMutator(new ModifyAllCashModModel("", mult));
     }
 
     /// <summary>
@@ -330,6 +330,6 @@ public static class ModModelExt
     public static void SetSellMultiplier(this ModModel model, float mult)
     {
         model.RemoveMutators<SellMultiplierModModel>();
-        model.AddMutator(new SellMultiplierModModel("_", 0, mult));
+        model.AddMutator(new SellMultiplierModModel("", 0, mult));
     }
 }

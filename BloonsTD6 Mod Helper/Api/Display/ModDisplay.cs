@@ -164,16 +164,16 @@ public abstract class ModDisplay : ModContent
     /// <param name="bot">Path 3 tier</param>
     /// <returns>The display GUID</returns>
     protected string GetDisplay(string tower, int top = 0, int mid = 0, int bot = 0) =>
-        Game.instance.model.GetTower(tower, top, mid, bot).display.GUID;
+        Game.instance.model.GetTower(tower, top, mid, bot).display.AssetGUID;
 
     /// <summary>
     /// Gets the Display for a given bloon
     /// </summary>
     /// <param name="bloon"> The bloon base id</param>
     /// <returns>The display GUID</returns>
-    protected string GetBloonDisplay(string bloon) => 
-        Game.instance.model.GetBloon(bloon).display.GUID;
-    
+    protected string GetBloonDisplay(string bloon) =>
+        Game.instance.model.GetBloon(bloon).display.AssetGUID;
+
     /// <summary>
     /// Gets a UnityDisplayNode for a different guid
     /// </summary>
@@ -201,7 +201,7 @@ public abstract class ModDisplay : ModContent
     {
         UseNode(guid, action, DisplayCategory.Default);
     }
-
+    
     #region Applying Methods
 
     /// <summary>
@@ -227,7 +227,6 @@ public abstract class ModDisplay : ModContent
     /// </summary>
     public virtual void Apply(ProjectileModel projectileModel)
     {
-
         projectileModel.display = CreatePrefabReference(Id);
         Apply(projectileModel.GetBehavior<DisplayModel>()!);
     }
@@ -242,7 +241,7 @@ public abstract class ModDisplay : ModContent
         displayModel.positionOffset = PositionOffset;
         displayModel.scale = Scale;
     }
-    
+
     /// <summary>
     /// Applies this ModDisplay to a given EffectModel
     /// </summary>
@@ -250,7 +249,7 @@ public abstract class ModDisplay : ModContent
     {
         effectModel.assetId = CreatePrefabReference(Id);
     }
-    
+
     /// <summary>
     /// Applies this ModDisplay to a given EffectModel
     /// </summary>
@@ -258,7 +257,6 @@ public abstract class ModDisplay : ModContent
     {
         assetPathModel.assetPath = CreatePrefabReference(Id);
     }
-
 
     #endregion
 
@@ -419,4 +417,5 @@ public abstract class ModDisplay : ModContent
 #pragma warning restore CS1591
 
     #endregion
+
 }

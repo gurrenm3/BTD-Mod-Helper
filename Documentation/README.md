@@ -36,6 +36,14 @@
 | :--- | :--- |
 | [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent') | Dummy interface to unite ModContent and BloonsTD6Mod |
 
+<a name='BTD_Mod_Helper.Api.Audio'></a>
+
+## BTD_Mod_Helper.Api.Audio Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModJukeboxTrack](BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.md 'BTD_Mod_Helper.Api.Audio.ModJukeboxTrack') | Class that lets you add custom Jukebox Tracks from embedded audio |
+
 <a name='BTD_Mod_Helper.Api.Bloons'></a>
 
 ## BTD_Mod_Helper.Api.Bloons Namespace
@@ -48,6 +56,19 @@
 | [ModRoundSet](BTD_Mod_Helper.Api.Bloons.ModRoundSet.md 'BTD_Mod_Helper.Api.Bloons.ModRoundSet') | Class for a custom RoundSet |
 | [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon') | Allows you to easily modify the models of a specific vanilla Bloon |
 | [ModVanillaBloons](BTD_Mod_Helper.Api.Bloons.ModVanillaBloons.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloons') | Allows you to easily modify the models of multiple vanilla Bloons |
+
+<a name='BTD_Mod_Helper.Api.Commands'></a>
+
+## BTD_Mod_Helper.Api.Commands Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ExportCommand](BTD_Mod_Helper.Api.Commands.ExportCommand.md 'BTD_Mod_Helper.Api.Commands.ExportCommand') | Root command for exporting information to files |
+| [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') | Defines a command that can be run from within the Mod Helper developer console |
+| [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | Defines a ModCommand that is a subcommand of the specified other command |
+| [OpenCommand](BTD_Mod_Helper.Api.Commands.OpenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenCommand') | Commands for opening specific files / folders |
+| [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.OpenFolderCommand') | Opens specific folders within file explorer |
+| [TestCommand](BTD_Mod_Helper.Api.Commands.TestCommand.md 'BTD_Mod_Helper.Api.Commands.TestCommand') | Root command where test related actions are |
 
 <a name='BTD_Mod_Helper.Api.Components'></a>
 
@@ -63,7 +84,7 @@
 | [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') | Base for a helper component for making custom UIs in the same style as Vanilla ones |
 | [ModHelperComponentExt](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt') | Extensions for mod helper components, for using generics and based on restricts for il2cpp objects |
 | [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown') | ModHelperComponent for a |
-| [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage') | ModHelperComponent for a |
+| [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage') | ModHelperComponent for an image element |
 | [ModHelperInputField](BTD_Mod_Helper.Api.Components.ModHelperInputField.md 'BTD_Mod_Helper.Api.Components.ModHelperInputField') | ModHelperComponent for a text input field |
 | [ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption') | ModHelperComponent that's the base panel for the visual representation of a ModSetting |
 | [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel') | ModHelperComponent for a background panel |
@@ -132,6 +153,7 @@
 
 | Enums | |
 | :--- | :--- |
+| [CustomShader](BTD_Mod_Helper.Api.Enums.CustomShader.md 'BTD_Mod_Helper.Api.Enums.CustomShader') | Custom Shaders added by Mod Helper |
 | [ScheduleType](BTD_Mod_Helper.Api.Enums.ScheduleType.md 'BTD_Mod_Helper.Api.Enums.ScheduleType') | Controls how you want to wait the Task Scheduler to wait for your tasks |
 
 <a name='BTD_Mod_Helper.Api.Helpers'></a>
@@ -149,13 +171,25 @@
 | [GameModelExporter](BTD_Mod_Helper.Api.Helpers.GameModelExporter.md 'BTD_Mod_Helper.Api.Helpers.GameModelExporter') | Class for handily exporting elements of the GameModel to json files |
 | [Instances](BTD_Mod_Helper.Api.Helpers.Instances.md 'BTD_Mod_Helper.Api.Helpers.Instances') | Provides quick access to many major BTD6 singleton classes |
 | [Lists](BTD_Mod_Helper.Api.Helpers.Lists.md 'BTD_Mod_Helper.Api.Helpers.Lists') | Provides quick access to many major BTD6 object lists |
+| [LocalizationHelper](BTD_Mod_Helper.Api.Helpers.LocalizationHelper.md 'BTD_Mod_Helper.Api.Helpers.LocalizationHelper') | Helps mods more easily support additional localization for their mod texts |
 | [MapHelper](BTD_Mod_Helper.Api.Helpers.MapHelper.md 'BTD_Mod_Helper.Api.Helpers.MapHelper') | Contains helper methods for working with maps and custom maps. |
 | [MatchScale](BTD_Mod_Helper.Api.Helpers.MatchScale.md 'BTD_Mod_Helper.Api.Helpers.MatchScale') | Component to make this transform continuously match the scale of another transform |
 | [ModelHelper](BTD_Mod_Helper.Api.Helpers.ModelHelper.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper') | A wrapper class around a Model |
 | [ModelHelper&lt;T&gt;](BTD_Mod_Helper.Api.Helpers.ModelHelper_T_.md 'BTD_Mod_Helper.Api.Helpers.ModelHelper<T>') | A wrapper class around a Model |
+| [ModelSerializer](BTD_Mod_Helper.Api.Helpers.ModelSerializer.md 'BTD_Mod_Helper.Api.Helpers.ModelSerializer') | Handles serializing and deserializing models in a way that utilizes their actual constructors |
 | [ProcessHelper](BTD_Mod_Helper.Api.Helpers.ProcessHelper.md 'BTD_Mod_Helper.Api.Helpers.ProcessHelper') | Helper methods for processes |
 | [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper') | A wrapper around ProjectileModels for making them easier to create |
+| [QuickEdit](BTD_Mod_Helper.Api.Helpers.QuickEdit.md 'BTD_Mod_Helper.Api.Helpers.QuickEdit') | Utility for allowing the user to quickly edit some input in an external program |
+| [TimeHelper](BTD_Mod_Helper.Api.Helpers.TimeHelper.md 'BTD_Mod_Helper.Api.Helpers.TimeHelper') | Properties and methods for helping change in game time / time related values |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
+
+<a name='BTD_Mod_Helper.Api.Internal'></a>
+
+## BTD_Mod_Helper.Api.Internal Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ResourceHandler](BTD_Mod_Helper.Api.Internal.ResourceHandler.md 'BTD_Mod_Helper.Api.Internal.ResourceHandler') | Handles embedded resources within Mod Helper mods |
 
 <a name='BTD_Mod_Helper.Api.ModMenu'></a>
 
@@ -305,7 +339,6 @@
 | [RendererExt](BTD_Mod_Helper.Extensions.RendererExt.md 'BTD_Mod_Helper.Extensions.RendererExt') | Extensions for unity renderers |
 | [RootObjectLockList](BTD_Mod_Helper.Extensions.RootObjectLockList.md 'BTD_Mod_Helper.Extensions.RootObjectLockList') | Extensions for RootObjectLockLists |
 | [RoundModelExt](BTD_Mod_Helper.Extensions.RoundModelExt.md 'BTD_Mod_Helper.Extensions.RoundModelExt') | Extensions for RoundModels |
-| [SelectableObjectExt](BTD_Mod_Helper.Extensions.SelectableObjectExt.md 'BTD_Mod_Helper.Extensions.SelectableObjectExt') | Extensions for Selectable Objects |
 | [SliderEventExt](BTD_Mod_Helper.Extensions.SliderEventExt.md 'BTD_Mod_Helper.Extensions.SliderEventExt') | Extensions for SliderEvents |
 | [SpawnerExt](BTD_Mod_Helper.Extensions.SpawnerExt.md 'BTD_Mod_Helper.Extensions.SpawnerExt') | Extensions for Spawners |
 | [SpriteExt](BTD_Mod_Helper.Extensions.SpriteExt.md 'BTD_Mod_Helper.Extensions.SpriteExt') | Extensions for Sprites |
@@ -349,6 +382,14 @@
 | [MainMenuUI](BTD_Mod_Helper.UI.BTD6.MainMenuUI.md 'BTD_Mod_Helper.UI.BTD6.MainMenuUI') | Class to access the game's Main Menu UI |
 | [MapSelectUI](BTD_Mod_Helper.UI.BTD6.MapSelectUI.md 'BTD_Mod_Helper.UI.BTD6.MapSelectUI') | Class to access the game's Map Select UI |
 | [TitleScreenUI](BTD_Mod_Helper.UI.BTD6.TitleScreenUI.md 'BTD_Mod_Helper.UI.BTD6.TitleScreenUI') | Class to access the Title Screen UI |
+
+<a name='BTD_Mod_Helper.UI.Menus'></a>
+
+## BTD_Mod_Helper.UI.Menus Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModSettingsMenu](BTD_Mod_Helper.UI.Menus.ModSettingsMenu.md 'BTD_Mod_Helper.UI.Menus.ModSettingsMenu') | The ModGameMenu for Mod Settings |
 
 <a name='BTD_Mod_Helper.UI.Modded'></a>
 

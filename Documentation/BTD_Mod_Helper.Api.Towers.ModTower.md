@@ -178,6 +178,19 @@ public virtual SpriteReference IconReference { get; }
 #### Property Value
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IncludeInMonkeyTeams'></a>
+
+## ModTower.IncludeInMonkeyTeams Property
+
+Whether this tower should be allowed to be included in Monkey Teams
+
+```csharp
+public virtual bool IncludeInMonkeyTeams { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.MiddlePathUpgrades'></a>
 
 ## ModTower.MiddlePathUpgrades Property

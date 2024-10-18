@@ -15,7 +15,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T First<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object =>
+    public static T First<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase =>
         source.Cast<IEnumerable<T>>().First(predicate);
 
     /// <summary>
@@ -25,7 +25,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object =>
+    public static T FirstOrDefault<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase =>
         Enumerable.FirstOrDefault(source.Cast<IEnumerable<T>>(), predicate);
 
     /// <summary>
@@ -35,7 +35,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static List<T> Where<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object =>
+    public static List<T> Where<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase =>
         source.Cast<IEnumerable<T>>().Where(predicate).ToIl2CppList();
 
     /// <summary>
@@ -45,7 +45,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static int FindIndex<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object =>
+    public static int FindIndex<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase =>
         source.FindIndex(predicate);
 
     /// <summary>
@@ -63,7 +63,7 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this List<T> source, System.Func<T, bool> predicate) where T : Object
+    public static bool Any<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase
     {
         foreach (var _ in source.Where(predicate))
         {

@@ -9,16 +9,23 @@ using UnityEngine;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.UI.Menus;
 
-internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
+/// <summary>
+/// The ModGameMenu for Mod Settings
+/// </summary>
+public class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 {
-
     private Animator animator;
 
     private CanvasGroup canvasGroup;
 
     private ModHelperScrollPanel scrollPanel;
+
+    /// <summary>
+    /// The most recent mod with opened settings
+    /// </summary>
     public static BloonsMod BloonsMod { get; private set; }
 
+    /// <inheritdoc />
     public override bool OnMenuOpened(Object data)
     {
         var gameObject = GameMenu.gameObject;
@@ -42,7 +49,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         return true;
     }
 
-    public IEnumerator CreateMenuContent()
+    internal IEnumerator CreateMenuContent()
     {
         foreach (var (category, modSettings) in BloonsMod.ModSettings.Values
                      .GroupBy(setting => setting.category)
@@ -85,6 +92,7 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         }
     }
 
+    /// <inheritdoc />
     public override void OnMenuUpdate()
     {
         if (Closing && canvasGroup != null)
@@ -93,9 +101,10 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         }
     }
 
+    /// <inheritdoc />
     public override void OnMenuClosed()
     {
-        animator.Play("PopupSlideOut");
+        animator?.Play("PopupSlideOut");
         ModSettingsHandler.SaveModSettings(BloonsMod);
         if (BloonsMod is MelonMain && !ModHelper.IsNet6)
         {
@@ -103,6 +112,10 @@ internal class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         }
     }
 
+    /// <summary>
+    /// Opens the Mod Settings for a specific mod
+    /// </summary>
+    /// <param name="mod"></param>
     public static void Open(BloonsMod mod)
     {
         BloonsMod = mod;

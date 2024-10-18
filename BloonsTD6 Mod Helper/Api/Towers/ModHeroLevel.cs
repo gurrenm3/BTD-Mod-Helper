@@ -9,10 +9,10 @@ public abstract class ModHeroLevel : ModUpgrade
 {
 
     private static readonly int[] DefaultXp =
-    {
+    [
         0, 0, 180, 460, 1000, 1860, 3280, 5180, 8320, 9380, 13620, 16380,
         14400, 16650, 14940, 16380, 17820, 19260, 20700, 16470, 17280
-    };
+    ];
 
     /// <summary>
     /// Internal naming scheme for hero levels

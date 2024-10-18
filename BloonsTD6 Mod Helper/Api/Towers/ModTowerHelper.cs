@@ -282,7 +282,7 @@ public static class ModTowerHelper
         if (index >= 0)
         {
             var heroDetailsModel =
-                new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, 0, false);
+                new HeroDetailsModel(modHero.Id, index, 20, 1, 0, 0, false);
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
 
             var skinsData = GameData.Instance.skinsData;
@@ -299,8 +299,9 @@ public static class ModTowerHelper
     public static TowerModel CreateTowerModel(string name, string baseId = null, TowerSet towerSet = TowerSet.None)
     {
         var sprite = Il2CppSystem.Nullable<SpriteReference>.Unbox(ModContent.CreateSpriteReference(""));
+        var prefab = Il2CppSystem.Nullable<PrefabReference>.Unbox(ModContent.CreatePrefabReference(""));
         var display = ModContent.CreatePrefabReference("");
         return new TowerModel(name, baseId ?? name, towerSet, display, icon: sprite, portrait: sprite, instaIcon: sprite,
-            emoteSpriteSmall: sprite, emoteSpriteLarge: sprite, secondarySelectionMenu: display);
+            emoteSpriteSmall: sprite, emoteSpriteLarge: sprite, secondarySelectionMenu: display, icon3D: prefab);
     }
 }

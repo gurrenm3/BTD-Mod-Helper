@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using BTD_Mod_Helper.Api;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.Stats;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -70,7 +72,7 @@ internal class Notification
         /*img = canvas.transform.Find("Image").GetComponent<Image>();
         title = canvas.transform.Find("Image/Title").GetComponent<Text>();
         body = canvas.transform.Find("Image/Body").GetComponent<Text>();
-       
+
         gameObject = GameObject.Instantiate(img.gameObject, mainMenuUI.GetRootGameObjects()[0].transform);*/
 
 
@@ -303,6 +305,25 @@ internal static class NotificationMgr
                     NotificationQueue.Dequeue();
                 }
             }
+        }
+    }
+
+    internal static void Initialise()
+    {
+        lock (Notifications)
+        {
+            Notifications.Clear();
+            NotificationQueue.Clear();
+        }
+
+        try
+        {
+            // TOD0 why does this fix things lol
+            InGame.instance.GetComponentFromChildrenByName<RectTransform>("BlackBarL").Find("Tiled/Edge").SetAsFirstSibling();
+        }
+        catch (Exception)
+        {
+            // ignored
         }
     }
 }

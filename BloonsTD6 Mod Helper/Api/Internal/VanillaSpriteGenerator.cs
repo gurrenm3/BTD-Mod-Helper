@@ -1,7 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using BTD_Mod_Helper.Api.Components;
+using CommandLine;
+using Il2CppInterop.Runtime;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
+using Il2CppSystem.Linq;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.U2D;
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class VanillaSpriteGenerator
@@ -22,27 +33,12 @@ internal static class VanillaSpriteGenerator
     /// </list>
     /// in Asset Studio. Then, select all assets of type Sprite, and in the menu do Export -> Dump -> Selected assets
     /// </summary>
-    internal static void GenerateVanillaSprites(string vanillaSpritesCs, string folder)
+    internal static void GenerateVanillaSprites()
     {
-        if (!Directory.Exists(folder))
-        {
-            ModHelper.Error($"No directory {folder}");
-            return;
-        }
+        var vanillaSpritesCs = Path.Combine(MelonMain.ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums",
+            "VanillaSprites.cs");
 
-        var files = Directory.GetFiles(folder);
-        foreach (var file in files)
-        {
-            if (ParseFile(file, out var name, out var guid))
-            {
-                if (!SpriteReferences.ContainsKey(name))
-                {
-                    SpriteReferences[name] = new SortedSet<string>();
-                }
-
-                SpriteReferences[name].Add(guid);
-            }
-        }
+        PopulateFromAddressables();
 
         var realNames = new HashSet<string>();
 
@@ -61,16 +57,16 @@ internal static class VanillaSpriteGenerator
                 """
             );
 
-            foreach (var (name, guids) in SpriteReferences)
+            foreach (var (name, guids) in SpriteReferences.OrderBy(pair => pair.Key))
             {
                 var i = 1;
                 foreach (var guid in guids)
                 {
-                    var realName = name + (i > 1 ? i.ToString() : "");
+                    var realName = FixName(name) + (i > 1 ? i.ToString() : "");
                     vanillaSpritesFile.WriteLine(
                         $"""
-                            public const string {realName} = "{guid}";
-                        """
+                             public const string {realName} = "{guid}";
+                         """
                     );
                     i++;
                     realNames.Add(realName);
@@ -91,8 +87,8 @@ internal static class VanillaSpriteGenerator
             {
                 vanillaSpritesFile.WriteLine(
                     $"""
-                                ["{realName}"] = {realName},
-                    """
+                                 ["{realName}"] = {realName},
+                     """
                 );
             }
             vanillaSpritesFile.WriteLine(
@@ -105,56 +101,6 @@ internal static class VanillaSpriteGenerator
         }
 
         SpriteReferences.Clear();
-    }
-
-    private static bool ParseFile(string file, out string name, out string guid)
-    {
-        name = "";
-        guid = "";
-        string originalName = null;
-        using var spriteDump = new StreamReader(file);
-        while (spriteDump.ReadLine() is string line)
-        {
-            if (line.Contains("string m_Name"))
-            {
-                originalName = line.Split('"')[1];
-                name = FixName(originalName);
-            }
-
-            if (line.Contains("GUID first") && !string.IsNullOrEmpty(name))
-            {
-                var ints = new uint[4];
-                for (var i = 0; i < 4; i++)
-                {
-                    var intLine = spriteDump.ReadLine();
-                    var intString = intLine?.Split('=')[1].Trim();
-                    ints[i] = uint.Parse(intString ?? "");
-                }
-
-                for (var i = 0; i < 3; i++)
-                {
-                    spriteDump.ReadLine();
-                }
-
-                var atlasLine = spriteDump.ReadLine();
-                if (atlasLine?.Contains('1') == true)
-                {
-                    spriteDump.ReadLine();
-                    var atlas = spriteDump.ReadLine()?.Split('"')[1];
-
-                    guid = $"{atlas}[{originalName}]";
-                    return true;
-                }
-
-                var spriteReference = ModContent.CreateSpriteReferenceFromBytes(ints);
-
-                guid = spriteReference.GetGUID();
-
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private static string FixName(string name)
@@ -177,5 +123,54 @@ internal static class VanillaSpriteGenerator
         name = Regex.Replace(name, @"[^A-Za-z0-9_]", "");
 
         return name;
+    }
+
+    public static void PopulateFromAddressables()
+    {
+        var resourceMap = Addressables.ResourceLocators.First().Cast<ResourceLocationMap>();
+
+        foreach (var (key, list) in resourceMap.Locations)
+        {
+            var guid = key.ToString();
+            if (!Guid.TryParse(guid, out _)) continue;
+
+            var spriteLocation = list.Cast<Il2CppReferenceArray<IResourceLocation>>()
+                .FirstOrDefault(location => location.ResourceType == Il2CppType.Of<Sprite>());
+
+            if (spriteLocation != null)
+            {
+                var name = Path.GetFileNameWithoutExtension(spriteLocation.InternalId);
+
+                SpriteReferences.TryAdd(name, []);
+                SpriteReferences[name].Add(guid);
+            }
+        }
+        
+        var spriteAtlases = resourceMap.Locations.Values()
+            .SelectMany(list => list.Cast<Il2CppReferenceArray<IResourceLocation>>())
+            .Where(location => location.ResourceType == Il2CppType.Of<SpriteAtlas>())
+            .Select(location => location.PrimaryKey)
+            .Distinct();
+
+        foreach (var atlasName in spriteAtlases)
+        {
+            if (atlasName == "AssetLibraryAtlas") continue;
+            
+            var atlas = ResourceLoader.LoadAtlas(atlasName).WaitForCompletion();
+            
+            var dummyArray = new Il2CppReferenceArray<Sprite>(atlas.spriteCount);
+            atlas.GetSprites(dummyArray);
+
+            foreach (var sprite in dummyArray)
+            {
+                var name = sprite.name.Replace("(Clone)", "");
+                var guid = $"{atlasName}[{name}]";
+
+                SpriteReferences.TryAdd(name, []);
+                SpriteReferences[name].Add(guid);
+            }
+        }
+
+
     }
 }

@@ -8,6 +8,7 @@ on:
       - '*'
     paths:
       - BloonsTD6 Mod Helper/**
+      - .github/workflows/build.yml
   pull_request:
     branches:
       - '*'
@@ -31,7 +32,7 @@ jobs:
         with:
           files: modders.json
           
-      - name: Download Latest MelonLoader
+      - name: Download MelonLoader Release
         if: env.MELONLOADER_BRANCH == ''
         uses: robinraju/release-downloader@v1.4
         with:
@@ -41,13 +42,13 @@ jobs:
           tarBall: false
           zipBall: false
           latest: true
-      - name: Extract Latest MelonLoader
+      - name: Extract MelonLoader
         if: env.MELONLOADER_BRANCH == ''
         shell: bash
         run: unzip MelonLoader.x64.zip -d ${{ env.BLOONSTD6 }}
 
 
-      - name: Download Specific MelonLoader
+      - name: Download MelonLoader Artifact
         if: env.MELONLOADER_BRANCH != ''
         uses: dawidd6/action-download-artifact@v2
         with:
