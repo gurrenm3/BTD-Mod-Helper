@@ -334,7 +334,7 @@ internal static class ModHelperGithub
             name = $"{mod.Mod.GetAssembly().GetName().Name}.dll";
         }
 
-        var downloadFilePath = Path.Combine(mod.EnabledFolder, name);
+        var downloadFilePath = Path.Combine(mod.Enabled ? mod.EnabledFolder : ModHelper.DisabledModsDirectory, name);
         var oldModsFilePath = Path.Combine(ModHelper.OldModsDirectory, name);
 
         try
