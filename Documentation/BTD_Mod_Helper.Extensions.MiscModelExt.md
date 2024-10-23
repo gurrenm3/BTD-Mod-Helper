@@ -54,6 +54,27 @@ public static void ApplyDisplay<T>(this EffectModel effectModel)
 
 `effectModel` [Il2CppAssets.Scripts.Models.Effects.EffectModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Effects.EffectModel 'Il2CppAssets.Scripts.Models.Effects.EffectModel')
 
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyOverlay_T_(thisProjectileBehaviorWithOverlayModel)'></a>
+
+## MiscModelExt.ApplyOverlay<T>(this ProjectileBehaviorWithOverlayModel) Method
+
+Applies the given ModBloonOverlay to this behavior
+
+```csharp
+public static void ApplyOverlay<T>(this ProjectileBehaviorWithOverlayModel projectileBehaviorWithOverlayModel)
+    where T : BTD_Mod_Helper.Api.Display.ModBloonOverlay;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyOverlay_T_(thisProjectileBehaviorWithOverlayModel).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyOverlay_T_(thisProjectileBehaviorWithOverlayModel).projectileBehaviorWithOverlayModel'></a>
+
+`projectileBehaviorWithOverlayModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel')
+
 <a name='BTD_Mod_Helper.Extensions.MiscModelExt.GetDamageMult(thisDamageModifierModel,Bloon)'></a>
 
 ## MiscModelExt.GetDamageMult(this DamageModifierModel, Bloon) Method

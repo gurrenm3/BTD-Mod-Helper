@@ -133,6 +133,7 @@
 | [ModBloonCustomDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay<T>') | A ModCustomDisplay that will automatically apply to a ModBloon |
 | [ModBloonDisplay](BTD_Mod_Helper.Api.Display.ModBloonDisplay.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay') | A ModDisplay that will automatically apply to a ModBloon |
 | [ModBloonDisplay&lt;T&gt;](BTD_Mod_Helper.Api.Display.ModBloonDisplay_T_.md 'BTD_Mod_Helper.Api.Display.ModBloonDisplay<T>') | A convenient generic class for applying a ModBloonDisplay to a ModBloon |
+| [ModBloonOverlay](BTD_Mod_Helper.Api.Display.ModBloonOverlay.md 'BTD_Mod_Helper.Api.Display.ModBloonOverlay') | A special ModDisplay for Bloon Overlays. Handles automatically loading different instances of itself for each BloonOverlayClass |
 | [ModBuffIcon](BTD_Mod_Helper.Api.Display.ModBuffIcon.md 'BTD_Mod_Helper.Api.Display.ModBuffIcon') | Class for adding a new buff icon that can be displayed for towers |
 | [ModCustomDisplay](BTD_Mod_Helper.Api.Display.ModCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModCustomDisplay') | The custom version of a ModDisplay that loads in a model from a unity assetbundle |
 | [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay') | A custom Display that is a copy of an existing Display that can be modified |

@@ -155,7 +155,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
         var content = new List<ModContent>();
         try
         {
-            content.AddRange(instance.Load());
+            content.AddRange(instance.Load().Where(mc => mc != null));
             var instances = new List<ModContent>();
             foreach (var modContent in content)
             {

@@ -177,8 +177,8 @@ public static class GameModelExporter
         }
 
         var resourcesPath = Path.Combine(FileIOHelper.sandboxRoot, "resources.json");
-        
-        
+
+
         total = success = 0;
         foreach (var geraldoItem in Game.instance.model.geraldoItemModels)
         {
@@ -187,11 +187,22 @@ public static class GameModelExporter
         }
         ModHelper.Log(
             $"Exported {success}/{total} GeraldoItemModels to {Path.Combine(FileIOHelper.sandboxRoot, "GeraldoItems")}");
-        
+
+
+        total = success = 0;
+        foreach (var overlayType in GameData.Instance.bloonOverlays.overlayTypes.keys)
+        {
+            if (TryExport(GameData.Instance.bloonOverlays.overlayTypes[overlayType],
+                    $"BloonOverlays/{overlayType}.json")) success++;
+            total++;
+        }
+        ModHelper.Log(
+            $"Exported {success}/{total} BloonOverlays to {Path.Combine(FileIOHelper.sandboxRoot, "BloonOverlays")}");
+
         Export(LocalizationManager.Instance.textTable, "textTable.json");
-        
+
         Export(Game.instance.model.paragonDegreeDataModel, "paragonDegreeData.json");
-        
+
         File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
         ModHelper.Log($"Exported resources to {resourcesPath}");
     }
@@ -208,7 +219,7 @@ public static class GameModelExporter
             if (data != null && data.Is(out Model model))
             {
                 ModelSerializer.MakeConsistent(model);
-            }   
+            }
 #endif
             FileIOHelper.SaveObject(path, data);
             return true;

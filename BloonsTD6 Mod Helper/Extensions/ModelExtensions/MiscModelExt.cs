@@ -81,4 +81,12 @@ public static class MiscModelExt
     {
         parallelEmissionModel.offsetStart = (1 - parallelEmissionModel.count) * parallelEmissionModel.spreadLength * 0.5f;
     }
+
+    /// <summary>
+    /// Applies the given ModBloonOverlay to this behavior
+    /// </summary>
+    public static void ApplyOverlay<T>(this ProjectileBehaviorWithOverlayModel projectileBehaviorWithOverlayModel) where T : ModBloonOverlay
+    {
+        ModContent.GetInstance<T>().Apply(projectileBehaviorWithOverlayModel);
+    }
 }

@@ -5,7 +5,6 @@ namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModContentInstances
 {
-
     static ModContentInstances()
     {
         Instances = new Dictionary<Type, List<IModContent>>();
@@ -18,19 +17,14 @@ internal static class ModContentInstances
 
     internal static void AddInstance(Type type, IModContent instance)
     {
-        AddInstances(type, new List<IModContent> {instance});
+        AddInstances(type, [instance]);
     }
 
-    internal static void AddInstances(Type type, List<ModContent> instances)
-    {
-        AddInstances(type, instances.Cast<IModContent>().ToList());
-    }
-
-    internal static void AddInstances(Type type, List<IModContent> instances)
+    internal static void AddInstances(Type type, IEnumerable<IModContent> instances)
     {
         if (typeof(IModContent).IsAssignableFrom(type))
         {
-            if (!Instances.TryGetValue(type, out var list)) list = Instances[type] = new List<IModContent>();
+            if (!Instances.TryGetValue(type, out var list)) list = Instances[type] = [];
             list.AddRange(instances);
             if (Actions.TryGetValue(type, out var action))
             {
@@ -50,7 +44,6 @@ internal static class ModContentInstances
 /// <typeparam name="T"></typeparam>
 internal static class ModContentInstance<T> where T : IModContent
 {
-
     static ModContentInstance()
     {
         ModContentInstances.Actions[typeof(T)] = AddInstances;
@@ -62,11 +55,11 @@ internal static class ModContentInstance<T> where T : IModContent
 
     internal static T Instance { get; private set; }
 
-    internal static List<T> Instances { get; private set; } = new();
+    internal static List<T> Instances { get; private set; } = [];
 
     private static void AddInstances(IEnumerable<IModContent> instances)
     {
-        Instances ??= new List<T>();
+        Instances ??= [];
         Instances.AddRange(instances.Cast<T>());
         Instance ??= Instances[0];
     }
