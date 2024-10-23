@@ -26,7 +26,7 @@ public abstract class ModBloonOverlay : ModDisplay
     /// </summary>
     protected static SerializableDictionary<string, BloonOverlayScriptable> AllOverlayTypes =>
         GameData.Instance.bloonOverlays.overlayTypes;
-    
+
     /// <summary>
     /// The overlay class that this is for
     /// </summary>
@@ -37,7 +37,7 @@ public abstract class ModBloonOverlay : ModDisplay
     /// <br/>
     /// These come from the <see cref="ProjectileBehaviorWithOverlayModel.overlayType"/> fields of certain projectile behavior models
     /// <br/>
-    /// To not copy from any Base Overlay, override this to be null/empty and modify <see cref="ModDisplay.BaseDisplay"/> or <see cref="ModDisplay.BaseDisplayReference"/> instead
+    /// To not copy from any Base Overlay, keep this as null/empty and modify <see cref="ModDisplay.BaseDisplay"/> or <see cref="ModDisplay.BaseDisplayReference"/> instead
     /// </summary>
     public virtual string BaseOverlay => null;
 
@@ -91,8 +91,10 @@ public abstract class ModBloonOverlay : ModDisplay
     /// Which overlay type this Overlay uses
     /// </summary>
     public string OverlayType => WorksOnCurrentMelonLoader ? BaseId : BaseOverlay;
-
-    /// <inheritdoc />
+    
+    /// <summary>
+    /// Load different instances of this type for each difference BloonOverlayClass within <see cref="BloonOverlayClasses"/>
+    /// </summary>
     public override IEnumerable<ModContent> Load() => WorksOnCurrentMelonLoader
         ? BloonOverlayClasses.Select(bc =>
         {

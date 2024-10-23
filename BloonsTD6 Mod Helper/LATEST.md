@@ -1,3 +1,3 @@
-- Fixed a TimeManager patch for BTD6 v45.2 (fixes Faster Forward)
-- Made some methods in ResourceHandler public
-- Fixed a bug with the Shift+Shift to open console setting
+- Added a ModBloonOverlay class for making custom Bloon Overlays
+  - NOTE: Due to a MelonLoader bug, these won't properly display unless you're on ML 0.6.6 or higher
+- Accounted for a Unity bug that was affecting the internal durations of embedded AudioClips
