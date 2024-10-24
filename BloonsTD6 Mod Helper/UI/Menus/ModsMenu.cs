@@ -135,6 +135,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         ModHelper.Localize(nameof(LocalizationGeneratedBody), "Would you like to view the generated file?");
     private static readonly string LocalizationFailed = ModHelper.Localize(nameof(LocalizationFailed),
         "Localization failed to generate, see console for details.");
+    private static readonly string ModSources = ModHelper.Localize(nameof(ModSources), "Mod Sources");
 
     /// <inheritdoc />
     public override bool OnMenuOpened(Object data)
@@ -227,6 +228,19 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         modBrowserButton.AddImage(new Info("ComputerMonkey", InfoPreset.FillParent), VanillaSprites.BenjaminIcon);
         modBrowserButton.AddText(new Info("Text", 0, -200, 500, 150), BrowseMods, 60f);
         modBrowserButton.SetActive(InGame.instance == null);
+
+        var modSourcesButton = bottomButtonGroup.AddButton(new("ModSourcesButton", 225, Padding * 2 + 400, 400)
+        {
+            Anchor = Vector2.zero,
+            Pivot = new Vector2(0.5f, 0)
+        }, VanillaSprites.WoodenRoundButton, new Action(() =>
+        {
+            Open<ModSourcesMenu>();
+        }));
+
+        modSourcesButton.AddImage(new("ChallengesIcon", InfoPreset.FillParent), VanillaSprites.ChallengesIcon);
+
+        modSourcesButton.AddText(new("Text", 0, -200, 500, 100), ModSources, 60f);
 
         var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, Padding, 400)
         {
