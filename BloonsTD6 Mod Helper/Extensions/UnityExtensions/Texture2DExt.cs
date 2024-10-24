@@ -66,8 +66,7 @@ public static class Texture2DExt
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            ModHelper.Warning(e);
         }
     }
 
@@ -156,7 +155,7 @@ public static class Texture2DExt
         material.SetFloat(SaturationAdjust, saturationAdjust);
         material.SetFloat(ValueAdjust, valueAdjust);
         material.SetColor(TargetColor, targetColor ?? Color.white);
-        material.SetFloat(Threshold, threshold);
+        material.SetFloat(Threshold, targetColor == null ? 1 :threshold);
     });
 
 }

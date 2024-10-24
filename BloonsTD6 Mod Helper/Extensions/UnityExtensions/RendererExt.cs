@@ -151,16 +151,39 @@ public static class RendererExt
 
     /// <inheritdoc cref="Texture2DExt.ApplyCustomShader"/>
     public static void ApplyCustomShader(this Renderer renderer, CustomShader customShader,
-        Action<Material> modifyMaterial = null) =>
+        Action<Material> modifyMaterial = null)
+    {
+        if (renderer.material?.mainTexture == null)
+        {
+            ModHelper.Warning("Can't ApplyCustomShader, renderer has no material texture");
+            return;
+        }
         renderer.material.mainTexture = renderer.material.mainTexture.ApplyCustomShader(customShader, modifyMaterial);
+    }
 
     /// <inheritdoc cref="Texture2DExt.ReplaceColor"/>
     public static void ReplaceColor(this Renderer renderer, Color targetColor, Color replacementColor,
-        float threshold = 0.05f) =>
+        float threshold = 0.05f)
+    {
+        if (renderer.material?.mainTexture == null)
+        {
+            ModHelper.Warning("Can't ReplaceColor, renderer has no material texture");
+            return;
+        }
         renderer.material.mainTexture = renderer.material.mainTexture.ReplaceColor(targetColor, replacementColor, threshold);
+    }
 
     /// <inheritdoc cref="Texture2DExt.AdjustHSV"/>
     public static void AdjustHSV(this Renderer renderer, float hueAdjust, float saturationAdjust, float valueAdjust,
-        Color? targetColor = null, float threshold = 0.05f) => renderer.material.mainTexture =
-        renderer.material.mainTexture.AdjustHSV(hueAdjust, saturationAdjust, valueAdjust, targetColor, threshold);
+        Color? targetColor = null, float threshold = 0.05f)
+    {
+        if (renderer.material?.mainTexture == null)
+        {
+            ModHelper.Warning("Can't AdjustHSV, renderer has no material texture");
+            return;
+        }
+        renderer.material.mainTexture =
+            renderer.material.mainTexture.AdjustHSV(hueAdjust, saturationAdjust, valueAdjust, targetColor, threshold);
+    }
+
 }
