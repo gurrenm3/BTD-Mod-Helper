@@ -47,7 +47,7 @@ The base Bloon Overlay to copy from.
 <br/>  
 These come from the [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel.overlayType](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel.overlayType 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel.overlayType') fields of certain projectile behavior models  
 <br/>  
-To not copy from any Base Overlay, override this to be null/empty and modify [BaseDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md#BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay 'BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay') or [BaseDisplayReference](BTD_Mod_Helper.Api.Display.ModDisplay.md#BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplayReference 'BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplayReference') instead
+To not copy from any Base Overlay, keep this as null/empty and modify [BaseDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md#BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay 'BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplay') or [BaseDisplayReference](BTD_Mod_Helper.Api.Display.ModDisplay.md#BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplayReference 'BTD_Mod_Helper.Api.Display.ModDisplay.BaseDisplayReference') instead
 
 ```csharp
 public virtual string BaseOverlay { get; }
@@ -166,3 +166,16 @@ public virtual void Apply(ProjectileBehaviorWithOverlayModel projectileBehaviorW
 `projectileBehaviorWithOverlayModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel')
 
 model to add to
+
+<a name='BTD_Mod_Helper.Api.Display.ModBloonOverlay.Load()'></a>
+
+## ModBloonOverlay.Load() Method
+
+Load different instances of this type for each difference BloonOverlayClass within [BloonOverlayClasses](BTD_Mod_Helper.Api.Display.ModBloonOverlay.md#BTD_Mod_Helper.Api.Display.ModBloonOverlay.BloonOverlayClasses 'BTD_Mod_Helper.Api.Display.ModBloonOverlay.BloonOverlayClasses')
+
+```csharp
+public override System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModContent> Load();
+```
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')

@@ -21,7 +21,7 @@ public static class SpriteExt
     /// <summary>
     /// Attempts to save a Sprite to a PNG at the given filePath, even if it isn't marked as readable
     /// </summary>
-    public static void TrySaveToPNG(this Sprite sprite, string filePath)
+    public static bool TrySaveToPNG(this Sprite sprite, string filePath)
     {
         try
         {
@@ -39,10 +39,12 @@ public static class SpriteExt
             RenderTexture.ReleaseTemporary(tmp);
             var bytes = myTexture2D.EncodeToPNG();
             File.WriteAllBytes(filePath, bytes);
+            return true;
         }
         catch (Exception e)
         {
             ModHelper.Warning(e);
+            return false;
         }
     }
 

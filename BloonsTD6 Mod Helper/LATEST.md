@@ -2,3 +2,4 @@
   - NOTE: Due to a MelonLoader bug, these won't properly display unless you're on ML 0.6.6 or higher
 - Accounted for a Unity bug that was affecting the internal durations of embedded AudioClips
 - Added a Sprite.TrySaveToPNG() extension like the one for Textures except accounting for position and size within a larger texture atlas
+- Added `export image` console commands that exports all UI images underneath your mouse cursor to png files
