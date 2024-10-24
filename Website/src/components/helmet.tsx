@@ -15,20 +15,16 @@ const ModHelperHelmet: FunctionComponent<ModHelperHelmetProps> = ({
   <Head {...props}>
     {title && <title key={"title"}>{title}</title>}
     {description && (
-      <meta
-        key={"description"}
-        property={"description"}
-        content={description}
-      />
+      <meta key={"description"} name={"description"} content={description} />
     )}
     <meta
       key={"apple-mobile-web-app-capable"}
-      property="apple-mobile-web-app-capable"
+      name="apple-mobile-web-app-capable"
       content="yes"
     />
     <meta
       key={"apple-mobile-web-app-status-bar-style"}
-      property="apple-mobile-web-app-status-bar-style"
+      name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
     <link
@@ -36,25 +32,30 @@ const ModHelperHelmet: FunctionComponent<ModHelperHelmetProps> = ({
       rel={"icon"}
       href={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/ModHelper.ico`}
     />
-    {title && <meta key={"og:title"} property={"og:title"} content={title} />}
+    {title && <meta key={"og:title"} name={"og:title"} content={title} />}
     {description && (
       <meta
         key={"og:description"}
-        property={"og:description"}
+        name={"og:description"}
         content={description}
       />
     )}
     <meta
       key={"og:image"}
-      property={"og:image"}
+      name={"og:image"}
       content={`https://${ModHelperRepoOwner}.github.io/${ModHelperRepoName}/images/ModHelper.png`}
     />
     <meta
       key={"og:site_name"}
-      property={"og:site_name"}
+      name={"og:site_name"}
       content={"BTD Mod Helper"}
     />
-    <meta key={"og:type"} property="og:type" content="website" />
+    <meta key={"og:type"} name="og:type" content="website" />
+    <meta
+      key={"viewport"}
+      name={"viewport"}
+      content={"width=device-width, initial-scale=1.0, viewport-fit=cover"}
+    />
   </Head>
 );
 

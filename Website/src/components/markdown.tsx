@@ -17,6 +17,7 @@ import rehypeSanitize from "rehype-sanitize";
 import { HtmlElementNode, TextNode, toc } from "@jsdevtools/rehype-toc";
 import { Parent } from "unist";
 import cx from "classnames";
+import { Link45deg } from "react-bootstrap-icons";
 
 const rewrittenUrl = (href: string, basePath?: string) => {
   // Migrate Wiki links
@@ -98,7 +99,11 @@ export const markdownToHtml = (linkBasePath?: string, imgBasePath?: string) =>
     })
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
-      properties: { "aria-hidden": "true", tabIndex: -1, className: [""] },
+      properties: {
+        "aria-hidden": "true",
+        tabIndex: -1,
+        className: ["position-relative"],
+      },
     })
     .use(rehypeRewrite, rewrite(linkBasePath, imgBasePath))
     .use(rehypeStringify);
@@ -120,6 +125,14 @@ export const htmlToReact = (sanitize?: boolean) =>
             />
           ) : (
             <a className={className} {...props} />
+          ),
+        span: ({ className, children, ...props }) =>
+          className === "icon icon-link" && !children ? (
+            <Link45deg
+              className={"hide-unless-hover position-absolute ms-1 mt-1 end-0"}
+            />
+          ) : (
+            <span className={className} children={children} {...props} />
           ),
       },
     } as Options);

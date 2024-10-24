@@ -1,5 +1,4 @@
 import React, {
-  createElement,
   Fragment,
   FunctionComponent,
   PropsWithChildren,
@@ -7,20 +6,16 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { Helmet } from "react-helmet";
 import { Button, Container, Offcanvas } from "react-bootstrap";
 import { List, ListUl } from "react-bootstrap-icons";
 import { OffcanvasPlacement } from "react-bootstrap/Offcanvas";
-import Layout, { switchSize } from "./layout";
+import Layout, { ModHelperScrollBars, switchSize } from "./layout";
 import { MainContentMarker } from "./skip-link";
-import { rehype } from "rehype";
-import rehypeParse from "rehype-parse";
-import rehypeReact, { Options } from "rehype-react";
-import Link from "next/link";
 import { getMarkdownContent } from "../lib/markdown";
 import { htmlToReact } from "./markdown";
 import ModHelperHelmet from "./helmet";
 import cx from "classnames";
+import { use100vh } from "react-div-100vh";
 
 const ModHelperOffCanvas: FunctionComponent<
   PropsWithChildren<{
@@ -30,28 +25,35 @@ const ModHelperOffCanvas: FunctionComponent<
     placement: OffcanvasPlacement;
   }>
 > = ({ show, setShowing, title, placement, children }) => {
+  const maxHeight = use100vh() || "100vh";
+
   return (
     <Offcanvas
       show={show}
       responsive={switchSize}
       onHide={() => setShowing(false)}
       scroll={true}
-      className={"main-panel w-auto btd6-panel blue"}
+      className={
+        "main-panel w-auto btd6-panel blue p-0 overflow-hidden sticky-top-lg"
+      }
       restoreFocus={false}
       placement={placement}
+      style={{ maxHeight }}
     >
-      <Offcanvas.Header
-        className={"pt-2 pb-0 px-3"}
-        closeButton={true}
-        closeVariant={"white"}
-      >
-        <Offcanvas.Title>{title}</Offcanvas.Title>
-      </Offcanvas.Header>
-      <Offcanvas.Body
-        className={"py-2 px-3 d-block btd6-panel blue-insert-round"}
-      >
-        {children}
-      </Offcanvas.Body>
+      <ModHelperScrollBars autoHeightMax={maxHeight}>
+        <Offcanvas.Header
+          className={"pt-2 pb-0 ps-3 pe-4"}
+          closeButton={true}
+          closeVariant={"white"}
+        >
+          <Offcanvas.Title>{title}</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body
+          className={"py-2 px-3 d-block btd6-panel blue-insert-round"}
+        >
+          {children}
+        </Offcanvas.Body>
+      </ModHelperScrollBars>
     </Offcanvas>
   );
 };
@@ -148,7 +150,7 @@ export const MarkdownLayout: FunctionComponent<
                   <div
                     className={`text-center text-${switchSize}-start mt-1 mt-${switchSize}-start`}
                   >
-                    {data?.title}
+                    {data?.title?.replace(/\./g, "\u200B.")}
                   </div>
                   <div className={`flex-1 d-${switchSize}-none text-end`}>
                     {sidebar && (

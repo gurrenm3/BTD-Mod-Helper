@@ -10,11 +10,10 @@ import { use100vh } from "react-div-100vh";
 import BackgroundImage, {
   backgroundOnScroll,
 } from "../components/background-image";
-import cx from "classnames";
-import SkipLink from "../components/skip-link";
-import { ModHelperFooter, ModHelperNavBar } from "../components/navbar";
 import { ModHelperScrollBars, ScrollBarsContext } from "../components/layout";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { usePathname } from "next/navigation";
+import { useUpdateEffect } from "react-use";
 
 const DefaultTitle = "BTD Mod Helper";
 const DefaultDescription =
@@ -24,6 +23,11 @@ export default ({ Component, pageProps }: AppProps) => {
   const height = use100vh() ?? 1000;
   const scrollbars = useRef<Scrollbars>(null);
   const background = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  useUpdateEffect(() => {
+    scrollbars.current?.scrollToTop();
+  }, [pathname]);
 
   return (
     <>

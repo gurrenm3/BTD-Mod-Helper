@@ -4,9 +4,7 @@ import React, {
   FunctionComponent,
   HTMLAttributes,
   PropsWithChildren,
-  useRef,
 } from "react";
-import BackgroundImage, { backgroundOnScroll } from "./background-image";
 import { ScrollbarProps, Scrollbars } from "react-custom-scrollbars-2";
 import { use100vh } from "react-div-100vh";
 import { ModHelperFooter, ModHelperNavBar } from "./navbar";
@@ -25,6 +23,7 @@ export const ModHelperScrollBars = forwardRef<Scrollbars, ScrollbarProps>(
         universal
         autoHeight
         autoHide
+        hideTracksWhenNotNeeded={true}
         autoHideTimeout={1000}
         autoHideDuration={200}
         renderTrackVertical={({ style, ...props }) => (

@@ -144,3 +144,21 @@ input::placeholder {
 .nav-link {
   user-select: none;
 }
+
+@media (min-width: 992px) {
+  .sticky-top-lg {
+    //noinspection CssInvalidPropertyValue
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
+}
+
+.hide-unless-hover {
+  opacity: 0;
+}
+
+:is(h1:hover,h2:hover,h3:hover,h4:hover,h5:hover,h6:hover) .hide-unless-hover {
+  opacity: 1;
+}
