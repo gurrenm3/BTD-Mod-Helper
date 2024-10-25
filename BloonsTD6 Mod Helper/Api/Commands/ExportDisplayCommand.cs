@@ -63,7 +63,7 @@ internal class ExportDisplayCommand : ModCommand<ExportCommand>
                 var i = 0;
                 foreach (var frame in customSpriteFrameAnimator.frames)
                 {
-                    var path = Path.Combine(FileIOHelper.sandboxRoot, renderer.name + ".png");
+                    var path = Path.Combine(FileIOHelper.sandboxRoot, $"{renderer.name}_{i}.png");
                     frame.TrySaveToPNG(path);
                     ModHelper.Msg($"Saved {path}");
                     i++;
@@ -71,7 +71,7 @@ internal class ExportDisplayCommand : ModCommand<ExportCommand>
             }
             else
             {
-                var path = Path.Combine(FileIOHelper.sandboxRoot, renderer.name + ".png");
+                var path = Path.Combine(FileIOHelper.sandboxRoot, $"{renderer.name}.png");
                 if (renderer.Is(out SpriteRenderer spriteRenderer))
                 {
                     spriteRenderer.sprite.texture?.TrySaveToPNG(path);
