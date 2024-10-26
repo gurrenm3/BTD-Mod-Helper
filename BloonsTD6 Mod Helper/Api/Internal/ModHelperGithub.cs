@@ -233,6 +233,8 @@ internal static class ModHelperGithub
                         var downloadTask = Download(mod, filePathCallback, latestRelease, !dependencies.Any());
                         taskCallback?.Invoke(downloadTask);
                         await downloadTask;
+                        
+                        mod.SaveToJson(ModHelper.DataDirectory);
 
                         if (dependencies.Any())
                         {
@@ -334,7 +336,8 @@ internal static class ModHelperGithub
             name = $"{mod.Mod.GetAssembly().GetName().Name}.dll";
         }
 
-        var downloadFilePath = Path.Combine(mod.Enabled ? mod.EnabledFolder : ModHelper.DisabledModsDirectory, name);
+        var disabled = mod.ModInstalledLocally(out _) && !mod.Enabled;
+        var downloadFilePath = Path.Combine(disabled ? ModHelper.DisabledModsDirectory : mod.EnabledFolder, name);
         var oldModsFilePath = Path.Combine(ModHelper.OldModsDirectory, name);
 
         try
@@ -382,8 +385,10 @@ internal static class ModHelperGithub
                             }
                         }
 
-                        if (file != null)
+                        var folderPath = Path.GetDirectoryName(downloadFilePath);
+                        if (file != null && folderPath != null)
                         {
+                            if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
                             File.Copy(file.FullName, downloadFilePath);
                             success = true;
                         }

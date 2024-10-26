@@ -163,7 +163,8 @@ internal static class ModsMenuModExt
         mod.Version.Text.color = modHelperData.OutOfDate
             ? Color.red
             : Color.white;
-
+        mod.Version.SetText("v" + modHelperData.Version);
+        
         mod.Icon.SetActive(!modHelperData.HasNoIcon);
         mod.Icon.RectTransform.sizeDelta = modHelperData.SquareIcon
             ? new Vector2(ModsMenu.ModPanelHeight - 4, ModsMenu.ModPanelHeight - 4)

@@ -1,5 +1,1 @@
-- Fixed an issue that made embedded audio clips be loaded with extra silence at the end of them
-- Added a `ModBloonOverlay` class for making custom Bloon Overlays
-  - NOTE: Due to a MelonLoader bug, these won't display correctly on ML 0.6.5, but work again starting with [0.6.6 / nightly versions](https://nightly.link/LavaGang/MelonLoader/workflows/build/master)
-- Added a `Sprite.TrySaveToPNG()` extension like the one for Textures except accounting for the Sprite's position and size within its texture atlas
-- Added `export image` console command that exports all UI images underneath your mouse cursor to png files
+- Fixed an issue with downloading new mods from the Mod Browser when the disabled mods folder didn't exist

@@ -39,7 +39,7 @@ public class ModHelperHttp
     /// </summary>
     /// <param name="url">URL to download from</param>
     /// <param name="filePath">File path for the resulting file</param>
-    /// <returns>Whether it was sucessful</returns>
+    /// <returns>Whether it was successful</returns>
     public static async Task<bool> DownloadFile(string url, string filePath)
     {
         LastException = null;
@@ -49,6 +49,14 @@ public class ModHelperHttp
             {
                 Client.MaxResponseContentBufferSize = (long) (MelonMain.ModRequestLimitMb * 1e6);
             }
+            
+            var folderPath = Path.GetDirectoryName(filePath);
+            if (folderPath == null) return false;
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            
             var response = await Client.GetAsync(url);
             await using var fs = new FileStream(filePath, FileMode.Create);
             await response.Content.CopyToAsync(fs);
