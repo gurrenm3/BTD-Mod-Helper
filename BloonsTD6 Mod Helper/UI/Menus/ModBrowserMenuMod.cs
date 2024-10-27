@@ -32,7 +32,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModHelperButton InfoButton => GetDescendent<ModHelperButton>("Info");
     public ModHelperButton Homepage => GetDescendent<ModHelperButton>("Homepage");
     public ModHelperButton Download => GetDescendent<ModHelperButton>("Download");
-    public ModHelperButton Update => GetDescendent<ModHelperButton>("OnUpdate");
+    public ModHelperButton Update => GetDescendent<ModHelperButton>("Update");
     public ModHelperText Description => GetDescendent<ModHelperText>("Description");
     public ModHelperPanel IconPanel => GetDescendent<ModHelperPanel>("IconPanel");
     public ModHelperPanel LackOfIconPanel => GetDescendent<ModHelperPanel>("LackOfIconPanel");
@@ -143,7 +143,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
 
         var rightButton = mainPanel.AddPanel(new Info("RightButton", 200));
         rightButton.AddButton(new Info("Download", 200), ModContent.GetTextureGUID<MelonMain>("DownloadBtn"), null);
-        var update = rightButton.AddButton(new Info("OnUpdate", 200), VanillaSprites.GreenBtn, null);
+        var update = rightButton.AddButton(new Info("Update", 200), VanillaSprites.GreenBtn, null);
         update.AddImage(new Info("UpdateIcon", 133), VanillaSprites.UpgradeIcon2);
         var spinner = rightButton.AddImage(new Info("Spinner", 200), VanillaSprites.LoadingWheel);
         spinner.SetActive(false);

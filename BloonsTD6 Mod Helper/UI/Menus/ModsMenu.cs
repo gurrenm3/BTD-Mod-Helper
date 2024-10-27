@@ -113,10 +113,10 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         "Changes you've made will require restarting the game to take effect. Would you like to do that now?");
     private static readonly string AprilFoolsTrophies = ModHelper.Localize(nameof(AprilFoolsTrophies), "Get 100 Trophies");
     private static readonly string ConfirmUpdateAllMods = ModHelper.Localize(nameof(ConfirmUpdateAllMods),
-        "Confirm OnUpdate All Mods?");
+        "Confirm Update All Mods?");
     private static readonly string UpdateAllModsBody = ModHelper.Localize(nameof(UpdateAllModsBody),
         "This will update all mods to latest versions with no further confirmation.");
-    private static readonly string UpdateAll = ModHelper.Localize(nameof(UpdateAll), "OnUpdate All");
+    private static readonly string UpdateAll = ModHelper.Localize(nameof(UpdateAll), "Update All");
     private static readonly string BrowseMods = ModHelper.Localize(nameof(BrowseMods), "Browse Mods");
     private static readonly string ModUpdateSuccess = ModHelper.Localize(nameof(ModUpdateSuccess),
         "Successfully updated mods, remember to restart to apply changes.");
