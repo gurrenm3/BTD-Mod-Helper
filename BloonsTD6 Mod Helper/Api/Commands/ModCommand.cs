@@ -149,7 +149,7 @@ public abstract class ModCommand : ModContent
         }
         catch (Exception e)
         {
-            ModHelper.Error(e);
+            ModHelper.Error(e.Message);
         }
 
         if (string.IsNullOrEmpty(resultText)) resultText = "Command failed.";

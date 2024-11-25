@@ -51,7 +51,7 @@ File path for the resulting file
 
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
-Whether it was sucessful
+Whether it was successful
 
 <a name='BTD_Mod_Helper.Api.ModMenu.ModHelperHttp.DownloadZip(string,string)'></a>
 

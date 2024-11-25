@@ -20,16 +20,25 @@ internal static class ResourceLoader_OnSpriteLoaded
     internal static void Prefix(ref AsyncOperationHandle<Sprite> handle)
     {
         if (handle.Succeeded() &&
-            handle.Result == null &&
-            handle.LocationName.Contains(ModContent.HijackSpriteAtlas + ".spriteatlasv2"))
+            handle.Result == null)
         {
-            var name = handle.LocationName
-                [(handle.LocationName.IndexOf("[", StringComparison.Ordinal) + 1)..^1];
-            if (ResourceHandler.GetSprite(name) is Sprite spr)
+            if (handle.LocationName.Contains(ModContent.HijackSpriteAtlas + ".spriteatlasv2"))
             {
-                handle = Addressables.Instance.ResourceManager.CreateCompletedOperation(spr, "");
+                var name = handle.LocationName
+                    [(handle.LocationName.IndexOf("[", StringComparison.Ordinal) + 1)..^1];
+                if (ResourceHandler.GetSprite(name) is Sprite spr)
+                {
+                    handle = Addressables.Instance.ResourceManager.CreateCompletedOperation(spr, "");
+                }
+                else
+                {
+                    ModHelper.Error(name);
+                }
+            }
+            else
+            {
+                ModHelper.Warning(handle.LocationName);
             }
         }
-
     }
 }
