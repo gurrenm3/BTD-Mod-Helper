@@ -50,7 +50,7 @@ jobs:
 
       - name: Download MelonLoader Artifact
         if: env.MELONLOADER_BRANCH != ''
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow: build.yml
