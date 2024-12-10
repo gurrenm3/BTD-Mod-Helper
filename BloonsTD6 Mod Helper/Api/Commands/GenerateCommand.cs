@@ -1,6 +1,6 @@
+#if DEBUG
 namespace BTD_Mod_Helper.Api.Commands;
 
-#if DEBUG
 internal class GenerateCommand : ModCommand
 {
     public override string Command => "generate";

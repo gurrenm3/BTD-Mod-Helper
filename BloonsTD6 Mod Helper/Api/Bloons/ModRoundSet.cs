@@ -196,7 +196,7 @@ public abstract class ModRoundSet : NamedModContent
             roundSetModel.rounds[i] = i < baseRounds.Count
                 ? baseRounds[i].Duplicate()
                 : new RoundModel("", new Il2CppReferenceArray<BloonGroupModel>(0));
-            roundSetModel.rounds[i].emissions_ = null;
+            roundSetModel.rounds[i]!.emissions_ = null;
         }
 
         return roundSetModel;

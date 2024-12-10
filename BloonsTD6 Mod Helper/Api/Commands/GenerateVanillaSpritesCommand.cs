@@ -1,7 +1,7 @@
+#if DEBUG
 using BTD_Mod_Helper.Api.Internal;
 namespace BTD_Mod_Helper.Api.Commands;
 
-#if DEBUG
 internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
 {
     public override string Command => "sprites";
