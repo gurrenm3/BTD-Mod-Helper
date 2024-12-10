@@ -1,1 +1,1 @@
-- Fixed an issue with downloading new mods from the Mod Browser when the disabled mods folder didn't exist
+- Fixed for BTD6 v46 (thanks @GrahamKracker !)
