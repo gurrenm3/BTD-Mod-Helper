@@ -1,4 +1,5 @@
 ﻿using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
 using Il2CppSystem.Collections;
 using Il2CppSystem.Collections.Generic;

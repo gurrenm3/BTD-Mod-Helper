@@ -2,6 +2,7 @@
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
 using Array = System.Array;
 namespace BTD_Mod_Helper.Extensions;
