@@ -66,6 +66,7 @@ public static class UpgradeType
     public const string TackSprayer = "Tack Sprayer";
     public const string Overdrive = "Overdrive";
     public const string TheTackZone = "The Tack Zone";
+    public const string TackshooterParagon = "TackShooter Paragon";
     public const string Permafrost = "Permafrost";
     public const string ColdSnap = "Metal Freeze";
     public const string IceShards = "Ice Shards";
@@ -740,6 +741,7 @@ public static class UpgradeType
         { "TackSprayer", TackSprayer },
         { "Overdrive", Overdrive },
         { "TheTackZone", TheTackZone },
+        { "TackshooterParagon", TackshooterParagon },
         { "Permafrost", Permafrost },
         { "ColdSnap", ColdSnap },
         { "IceShards", IceShards },
