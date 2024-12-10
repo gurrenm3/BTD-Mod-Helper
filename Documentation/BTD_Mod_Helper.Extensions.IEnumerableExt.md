@@ -231,4 +231,4 @@ public static LockList<T> ToLockList<T>(this System.Collections.Generic.IEnumera
 `enumerable` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.IEnumerableExt.md#BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList_T_(thisSystem.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.IEnumerableExt.ToLockList<T>(this System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')

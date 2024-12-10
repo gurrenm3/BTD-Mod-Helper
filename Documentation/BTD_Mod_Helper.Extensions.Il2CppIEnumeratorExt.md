@@ -122,7 +122,7 @@ public static LockList<Object> ToLockList(this IEnumerator enumerator);
 `enumerator` [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppIEnumeratorExt.ToRootObjectLockList(thisIEnumerator)'></a>
 

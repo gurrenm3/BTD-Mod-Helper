@@ -31,7 +31,7 @@ public static bool Any<T>(this LockList<T> source, System.Func<T,bool> predicate
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_,System.Func_T,bool_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_,System.Func_T,bool_).predicate'></a>
 
@@ -59,7 +59,7 @@ public static bool Any<T>(this LockList<T> source)
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.Any_T_(thisLockList_T_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -83,7 +83,7 @@ public static int FindIndex<T>(this LockList<T> source, System.Func<T,bool> pred
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.FindIndex_T_(thisLockList_T_,System.Func_T,bool_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.FindIndex_T_(thisLockList_T_,System.Func_T,bool_).predicate'></a>
 
@@ -111,7 +111,7 @@ public static T First<T>(this LockList<T> source, System.Func<T,bool> predicate)
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_,System.Func_T,bool_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_,System.Func_T,bool_).predicate'></a>
 
@@ -138,7 +138,7 @@ public static T First<T>(this LockList<T> source);
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.First_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedList.First<T>(this LockList<T>).T')
@@ -162,7 +162,7 @@ public static T FirstOrDefault<T>(this LockList<T> source, System.Func<T,bool> p
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_,System.Func_T,bool_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_,System.Func_T,bool_).predicate'></a>
 
@@ -189,7 +189,7 @@ public static T FirstOrDefault<T>(this LockList<T> source);
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedList.FirstOrDefault<T>(this LockList<T>).T')
@@ -212,7 +212,7 @@ public static void ForEach<T>(this LockList<T> source, System.Action<T> action);
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.ForEach_T_(thisLockList_T_,System.Action_T_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.ForEach_T_(thisLockList_T_,System.Action_T_).action'></a>
 
@@ -238,7 +238,7 @@ public static T Last<T>(this LockList<T> source);
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.Last_T_(thisLockList_T_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.LockedList.md#BTD_Mod_Helper.Extensions.LockedList.Last_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedList.Last<T>(this LockList<T>).T')
@@ -261,7 +261,7 @@ public static T LastOrDefault<T>(this LockList<T> source, System.Func<T,bool> pr
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.LastOrDefault_T_(thisLockList_T_,System.Func_T,bool_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.LastOrDefault_T_(thisLockList_T_,System.Func_T,bool_).predicate'></a>
 
@@ -289,7 +289,7 @@ public static System.Collections.Generic.List<T> Where<T>(this LockList<T> sourc
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.Where_T_(thisLockList_T_,System.Func_T,bool_).source'></a>
 
-`source` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`source` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedList.Where_T_(thisLockList_T_,System.Func_T,bool_).predicate'></a>
 

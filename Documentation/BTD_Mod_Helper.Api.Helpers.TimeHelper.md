@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## TimeHelper.OverrideFastForwardTimeScale Property
 
-Override for [Il2CppAssets.Scripts.Utils.TimeManager.FastForwardTimeScale](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.TimeManager.FastForwardTimeScale 'Il2CppAssets.Scripts.Utils.TimeManager.FastForwardTimeScale')
+Override for [Il2CppAssets.Scripts.Simulation.TimeManager.FastForwardTimeScale](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.TimeManager.FastForwardTimeScale 'Il2CppAssets.Scripts.Simulation.TimeManager.FastForwardTimeScale')
 
 ```csharp
 public static double OverrideFastForwardTimeScale { get; set; }

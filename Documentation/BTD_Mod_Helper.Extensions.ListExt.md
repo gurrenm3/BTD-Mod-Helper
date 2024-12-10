@@ -422,7 +422,7 @@ public static LockList<T> ToLockList<T>(this System.Collections.Generic.List<T> 
 `list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.ToLockList_T_(thisSystem.Collections.Generic.List_T_).T 'BTD_Mod_Helper.Extensions.ListExt.ToLockList<T>(this System.Collections.Generic.List<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.ListExt.ToRootObjectLockList_T_(thisSystem.Collections.Generic.List_T_)'></a>
 

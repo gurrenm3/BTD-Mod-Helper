@@ -77,11 +77,11 @@ public float AnimationOffset { get; set; }
 ## WeaponHelper.Behaviors Property
 
 ```csharp
-public WeaponBehaviorModel[] Behaviors { get; set; }
+public Model[] Behaviors { get; set; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+[Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 ### See Also
 - [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel.behaviors](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel.behaviors 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel.behaviors')

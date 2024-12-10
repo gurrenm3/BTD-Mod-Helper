@@ -872,7 +872,7 @@ public static LockList<T> ToLockList<T>(this T[] array);
 `array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.ToLockList_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.ToLockList<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.TryCast_T_(Il2CppObjectBase,T)'></a>
 

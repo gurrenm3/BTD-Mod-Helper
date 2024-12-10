@@ -38,7 +38,7 @@ The Type of the Item to add
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.AddTo_TSource,TCast_(thisLockList_TSource_,TCast).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.AddTo_TSource,TCast_(thisLockList_TSource_,TCast).objectToAdd'></a>
 
@@ -47,7 +47,7 @@ The Type of the Item to add
 Item to add
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.Duplicate_T_(thisLockList_T_)'></a>
 
@@ -67,10 +67,10 @@ public static LockList<T> Duplicate<T>(this LockList<T> list);
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.Duplicate_T_(thisLockList_T_).list'></a>
 
-`list` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`list` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.DuplicateAs_TSource,TCast_(thisLockList_TSource_)'></a>
 
@@ -96,10 +96,10 @@ public static LockList<TCast> DuplicateAs<TSource,TCast>(this LockList<TSource> 
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.DuplicateAs_TSource,TCast_(thisLockList_TSource_).list'></a>
 
-`list` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`list` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.GetItemsOfType_TSource,TCast_(thisLockList_TSource_)'></a>
 
@@ -127,7 +127,7 @@ The Type of the Items you want
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.GetItemsOfType_TSource,TCast_(thisLockList_TSource_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[TCast](BTD_Mod_Helper.Extensions.LockedListExt.md#BTD_Mod_Helper.Extensions.LockedListExt.GetItemsOfType_TSource,TCast_(thisLockList_TSource_).TCast 'BTD_Mod_Helper.Extensions.LockedListExt.GetItemsOfType<TSource,TCast>(this LockList<TSource>).TCast')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
@@ -158,7 +158,7 @@ The Type you're checking for
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.HasItemsOfType_TSource,TCast_(thisLockList_TSource_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -189,7 +189,7 @@ The Type of the Item you want to remove
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.RemoveItem_TSource,TCast_(thisLockList_TSource_,TCast).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.RemoveItem_TSource,TCast_(thisLockList_TSource_,TCast).itemToRemove'></a>
 
@@ -198,7 +198,7 @@ The Type of the Item you want to remove
 The specific Item to remove
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.RemoveItemOfType_TSource,TCast_(thisLockList_TSource_)'></a>
 
@@ -226,10 +226,10 @@ The Type of the Item you want to remove
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.RemoveItemOfType_TSource,TCast_(thisLockList_TSource_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.RemoveItemsOfType_TSource,TCast_(thisLockList_TSource_)'></a>
 
@@ -257,10 +257,10 @@ The Type of the Items that you want to remove
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.RemoveItemsOfType_TSource,TCast_(thisLockList_TSource_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
-[Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+[Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.ToArray_T_(thisLockList_T_)'></a>
 
@@ -280,7 +280,7 @@ public static T[] ToArray<T>(this LockList<T> lockList);
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.ToArray_T_(thisLockList_T_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.LockedListExt.md#BTD_Mod_Helper.Extensions.LockedListExt.ToArray_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedListExt.ToArray<T>(this LockList<T>).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
@@ -303,7 +303,7 @@ public static List<T> ToIl2CppList<T>(this LockList<T> lockList);
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.ToIl2CppList_T_(thisLockList_T_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
@@ -327,7 +327,7 @@ public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this LockList<T>
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.ToIl2CppReferenceArray_T_(thisLockList_T_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
@@ -350,7 +350,7 @@ public static System.Collections.Generic.List<T> ToList<T>(this LockList<T> lock
 
 <a name='BTD_Mod_Helper.Extensions.LockedListExt.ToList_T_(thisLockList_T_).lockList'></a>
 
-`lockList` [Il2CppAssets.Scripts.Utils.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Utils.LockList 'Il2CppAssets.Scripts.Utils.LockList')
+`lockList` [Il2CppNinjaKiwi.Common.LockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LockList 'Il2CppNinjaKiwi.Common.LockList')
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.LockedListExt.md#BTD_Mod_Helper.Extensions.LockedListExt.ToList_T_(thisLockList_T_).T 'BTD_Mod_Helper.Extensions.LockedListExt.ToList<T>(this LockList<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
