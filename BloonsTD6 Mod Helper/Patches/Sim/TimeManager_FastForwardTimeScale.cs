@@ -1,6 +1,7 @@
 using System;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts;
+using Il2CppAssets.Scripts.Simulation;
 using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Patches.Sim;
 

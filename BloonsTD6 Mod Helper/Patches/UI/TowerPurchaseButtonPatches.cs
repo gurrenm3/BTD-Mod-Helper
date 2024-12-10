@@ -4,7 +4,8 @@ using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.Patches.UI;
 
-[HarmonyPatch(typeof(TowerPurchaseButton2D), nameof(TowerPurchaseButton2D.DetermineBackgroundSprite))]
+//todo: test whether custom towerset backgrounds still work
+/*[HarmonyPatch(typeof(TowerPurchaseButton2D), nameof(TowerPurchaseButton2D.UpdateDisplay))]
 internal class TowerPurchaseButton2D_DetermineBackgroundSprite
 {
     [HarmonyPrefix]
@@ -13,12 +14,13 @@ internal class TowerPurchaseButton2D_DetermineBackgroundSprite
         if (__instance.towerModel.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet)
         {
             __result = modTowerSet.ContainerReference;
+            ModHelper.Log($"TowerPurchaseButton2D_DetermineBackgroundSprite: {modTowerSet.ContainerReference}");
             return false;
         }
 
         return true;
     }
-}
+}*/
 
 [HarmonyPatch(typeof(TowerPurchaseButton2D), nameof(TowerPurchaseButton2D.UpdateDisplay))]
 internal class TowerPurchaseButton2D_UpdateTowerDisplay

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common;
 using Object = Il2CppSystem.Object;
 namespace BTD_Mod_Helper.Extensions;
 

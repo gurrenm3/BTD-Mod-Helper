@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Il2CppAssets.Scripts.Utils;
+using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
 using Array = System.Array;
 using Exception = System.Exception;

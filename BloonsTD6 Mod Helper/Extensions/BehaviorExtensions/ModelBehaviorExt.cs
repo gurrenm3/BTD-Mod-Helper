@@ -42,9 +42,9 @@ internal static class ModelBehaviorExt
             return attackModel.behaviors ?? Enumerable.Empty<Model>();
         if (model.IsType(out PropModel propModel))
             return propModel.behaviors ?? Enumerable.Empty<Model>();
-
         if (model.IsType(out WeaponModel weaponModel))
-            return weaponModel.behaviors.CastAll<WeaponBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return weaponModel.behaviors ?? Enumerable.Empty<Model>();
+
         if (model.IsType(out PowerModel powerModel))
             return powerModel.behaviors.CastAll<PowerBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
         if (model.IsType(out EmissionModel emissionModel))
@@ -101,9 +101,9 @@ internal static class ModelBehaviorExt
             attackModel.behaviors = il2CppReferenceArray;
         else if (model.IsType(out PropModel propModel))
             propModel.behaviors = il2CppReferenceArray;
-
         else if (model.IsType(out WeaponModel weaponModel))
-            weaponModel.behaviors = il2CppReferenceArray.DuplicateAs<Model, WeaponBehaviorModel>();
+            weaponModel.behaviors = il2CppReferenceArray;
+
         else if (model.IsType(out PowerModel powerModel))
             powerModel.behaviors = il2CppReferenceArray.DuplicateAs<Model, PowerBehaviorModel>();
         else if (model.IsType(out EmissionModel emissionModel))

@@ -1,3 +1,4 @@
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
@@ -81,9 +82,9 @@ public class WeaponHelper : ModelHelper<WeaponModel>
 
     /// Default null
     /// <seealso cref="WeaponModel.behaviors"/>
-    public WeaponBehaviorModel[] Behaviors
+    public Model[] Behaviors
     {
-        get => Model.behaviors ?? new Il2CppReferenceArray<WeaponBehaviorModel>(0);
+        get => Model.behaviors ?? new Il2CppReferenceArray<Model>(0);
         set
         {
             Model.RemoveChildDependants(Model.behaviors);

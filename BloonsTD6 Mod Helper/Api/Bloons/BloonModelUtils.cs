@@ -1,5 +1,5 @@
-﻿using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
-using Il2CppAssets.Scripts.Utils;
+﻿using Il2CppAssets.Scripts.Models.Bloons;
+using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 namespace BTD_Mod_Helper.Api.Bloons;
 
 /// <summary>
@@ -19,7 +19,7 @@ public class BloonModelUtils
     {
         var baseName = bloonName.Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", "");
 
-        return BloonTypeUtility.BloonType(baseName, camo, regrow, fortified);
+        return BloonType.Construct(baseName, camo, regrow, fortified);
     }
 
     /// <summary>
