@@ -38,6 +38,37 @@ public class ModHelperText : ModHelperComponent
     }
 
     /// <summary>
+    /// Enables auto sizing on the text component
+    /// </summary>
+    public void EnableAutoSizing()
+    {
+        Text.enableAutoSizing = true;
+    }
+
+    /// <summary>
+    /// Enables auto sizing on the text component.
+    /// Changes the maximum font size.
+    /// </summary>
+    /// <param name="fontSizeMax">New max font size</param>
+    public void EnableAutoSizing(float fontSizeMax)
+    {
+        EnableAutoSizing();
+        Text.fontSizeMax = fontSizeMax;
+    }
+
+    /// <summary>
+    /// Enables auto sizing on the text component.
+    /// Changes the maximum and minimum font size.
+    /// </summary>
+    /// <param name="fontSizeMax">New max font size</param>
+    /// <param name="fontSizeMin">New min font size</param>
+    public void EnableAutoSizing(float fontSizeMax, float fontSizeMin)
+    {
+        EnableAutoSizing(fontSizeMax);
+        Text.fontSizeMin = fontSizeMin;
+    }
+
+    /// <summary>
     /// Creates a new ModHelperText
     /// </summary>
     /// <param name="info">The name/position/size info</param>
