@@ -20,32 +20,17 @@ public static class PowerModelBehaviorExt
         ModelBehaviorExt.GetBehaviors<T>(model).ToList();
 
     /// <inheritdoc cref="ModelBehaviorExt.AddBehavior" />
-    public static void AddBehavior<T>(this PowerModel model, T behavior) where T : PowerBehaviorModel
-    {
-        ModelBehaviorExt.AddBehavior(model, behavior);
-    }
+    public static void AddBehavior<T>(this PowerModel model, T behavior) where T : PowerBehaviorModel => ModelBehaviorExt.AddBehavior(model, behavior);
 
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static void RemoveBehavior<T>(this PowerModel model) where T : Model
-    {
-        ModelBehaviorExt.RemoveBehavior<T>(model);
-    }
+    public static void RemoveBehavior<T>(this PowerModel model) where T : Model => ModelBehaviorExt.RemoveBehavior<T>(model);
 
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior" />
-    public static void RemoveBehavior<T>(this PowerModel model, T behavior) where T : Model
-    {
-        ModelBehaviorExt.RemoveBehavior(model, behavior);
-    }
+    public static void RemoveBehavior<T>(this PowerModel model, T behavior) where T : Model => ModelBehaviorExt.RemoveBehavior(model, behavior);
 
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors<T>(this PowerModel model) where T : Model
-    {
-        ModelBehaviorExt.RemoveBehaviors<T>(model);
-    }
-    
+    public static void RemoveBehaviors<T>(this PowerModel model) where T : Model => ModelBehaviorExt.RemoveBehaviors<T>(model);
+
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors(this PowerModel model)
-    {
-        ModelBehaviorExt.RemoveBehaviors(model);
-    }
+    public static void RemoveBehaviors(this PowerModel model) => ModelBehaviorExt.RemoveBehaviors(model);
 }

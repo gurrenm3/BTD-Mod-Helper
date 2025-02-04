@@ -41,6 +41,12 @@ You'll want to include 4 images for your base hero:
 
 Also for the revamped hero select screen, you can override the `NameStyle`, `BackgroundStyle` and `GlowStyle` properties to be the `TowerType.___` of the heroes you'd like to copy the respective elements of.
 
+## Other Properties
+
+`RogueStarterArtifact`: The artifact Id that this hero will start with for Rogue Legends runs. If not specified, the hero will use Starting Strong Common
+
+`RogueStarterInstas`: The insta towers that this hero will start with for Rogue Legends runs. If not specified, the hero will use a 2-0-0 Ninja Monkey and 2-0-0 Alchemist 
+
 ## Example
 
 A full example from the Industrial Farmer mod
@@ -59,18 +65,19 @@ public class IndustrialFarmer : ModHero
     public override string Description =>
         "Norman collects your Bananas and helps you expand your farming operations.";
 
-
     public override string NameStyle => TowerType.Gwendolin; // Yellow colored
     public override string BackgroundStyle => TowerType.Etienne; // Yellow colored
     public override string GlowStyle => TowerType.StrikerJones; // Yellow colored
 
-
-    public override int MaxLevel => 20;
     public override float XpRatio => 1.0f;
 
-    public override int Abilities => 2;
+    public override string RogueStarterArtifact => "TheUnspokenHeroes1";
+    public override IEnumerable<(string, int[])> RogueStarterInstas =>
+    [
+        (TowerType.BananaFarm, [0, 0, 0]),
+        (TowerType.EngineerMonkey, [0, 0, 2])
+    ];
 }
-
 ```
 
 # ModHeroLevel

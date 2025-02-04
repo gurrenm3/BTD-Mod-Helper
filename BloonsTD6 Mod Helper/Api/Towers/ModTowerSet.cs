@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
+
 namespace BTD_Mod_Helper.Api.Towers;
 
 /// <summary>
@@ -14,8 +14,8 @@ public abstract class ModTowerSet : NamedModContent
 {
     internal static readonly Dictionary<string, ModTowerSet> Cache = new();
 
-    internal readonly List<ModTower> towers = new();
-    internal static int NextTowerSet { get; private set; } = 2 * (int) Enum.GetValues<TowerSet>()[^1];
+    internal readonly List<ModTower> towers = [];
+    internal static int NextTowerSet { get; private set; } = 2 * (int) Enum.GetValues<TowerSet>().Max();
 
     /// <summary>
     /// Internal int enum value used for this ModdedTowerSet

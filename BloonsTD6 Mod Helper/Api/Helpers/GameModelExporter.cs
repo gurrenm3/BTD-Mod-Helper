@@ -203,6 +203,16 @@ public static class GameModelExporter
 
         Export(Game.instance.model.paragonDegreeDataModel, "paragonDegreeData.json");
 
+
+        total = success = 0;
+        foreach (var (id, artifact) in GameData.Instance.artifactsData.artifactDatas)
+        {
+            if (TryExport(artifact, $"Artifacts/{id}.json")) success++;
+            total++;
+        }
+        ModHelper.Log(
+            $"Exported {success}/{total} Artifacts to {Path.Combine(FileIOHelper.sandboxRoot, "Artifacts")}");
+
         File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
         ModHelper.Log($"Exported resources to {resourcesPath}");
     }
