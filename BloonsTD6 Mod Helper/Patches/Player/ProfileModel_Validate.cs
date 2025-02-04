@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Profile;
 namespace BTD_Mod_Helper.Patches;
@@ -37,6 +38,18 @@ internal class ProfileModel_Validate
             __instance.unlockedHeroes.Add(modHeroId);
             __instance.seenUnlockedHeroes.Add(modHeroId);
             __instance.seenNewHeroNotification.Add(modHeroId);
+
+        }
+
+        if (__instance.legendsData is {unlockedStarterArtifacts: not null})
+        {
+            foreach (var modArtifact in ModContent.GetContent<ModArtifact>().Where(artifact => artifact.ShouldUnlock))
+            {
+                foreach (var (_, index) in modArtifact.Tiers)
+                {
+                    __instance.legendsData.unlockedStarterArtifacts.Add(modArtifact.GetId(index));
+                }
+            }
         }
 
         ModHelper.PerformHook(mod => mod.OnProfileLoaded(__instance));

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
@@ -10,23 +12,23 @@ namespace BTD_Mod_Helper.Api.Internal;
 
 internal class ProfileManagement
 {
-    private static readonly string[] ParagonEvents = {"ParagonPanelViewed", "ParagonUpgradeAvailable"};
+    private static readonly string[] ParagonEvents = ["ParagonPanelViewed", "ParagonUpgradeAvailable"];
 
-    private static readonly HashSet<string> UnlockedTowers = new();
+    private static readonly HashSet<string> UnlockedTowers = [];
     private static readonly Dictionary<string, KonFuze> TowersPlacedByBaseName = new();
 
     private static readonly Dictionary<string, KonFuze_NoShuffle> TowerXp = new();
 
-    private static readonly HashSet<string> AcquiredUpgrades = new();
+    private static readonly HashSet<string> AcquiredUpgrades = [];
 
-    private static readonly HashSet<string> UnlockedHeroes = new();
-    private static readonly HashSet<string> SeenUnlockedNotification = new();
-    private static readonly HashSet<string> SeenUnlockedHeroes = new();
-    private static readonly HashSet<string> SeenNewHeroNotification = new();
+    private static readonly HashSet<string> UnlockedHeroes = [];
+    private static readonly HashSet<string> SeenUnlockedNotification = [];
+    private static readonly HashSet<string> SeenUnlockedHeroes = [];
+    private static readonly HashSet<string> SeenNewHeroNotification = [];
     private static readonly Dictionary<string, KonFuze> HeroesPlacedByName = new();
     private static readonly Dictionary<string, KonFuze> HeroLevelsByName = new();
 
-    private static readonly HashSet<string> SeenEvents = new();
+    private static readonly HashSet<string> SeenEvents = [];
 
     private static string primaryHero;
 
@@ -34,8 +36,11 @@ internal class ProfileManagement
 
     private static readonly Dictionary<string, string> SelectedTowerSkinData = new();
 
+    private static readonly HashSet<string> UnlockedStarterArtifacts = [];
+
     private static void CleanProfile(ProfileModel profile, IReadOnlyCollection<string> towers,
-        IReadOnlyCollection<string> upgrades, IReadOnlyCollection<string> heroes, bool current)
+        IReadOnlyCollection<string> upgrades, IReadOnlyCollection<string> heroes, IReadOnlyCollection<string> artifacts,
+        bool current)
     {
         ModHelper.PerformHook(mod => mod.PreCleanProfile(profile));
 
@@ -136,6 +141,12 @@ internal class ProfileManagement
                 }
             }
         }
+
+        if (profile.legendsData is {unlockedStarterArtifacts: not null})
+        {
+            CleanHashSet(profile.legendsData.unlockedStarterArtifacts, Clean("unlockedStarterArtifacts", artifacts, current),
+                UnlockedStarterArtifacts);
+        }
     }
 
     internal static void CleanPastProfile(ProfileModel profile)
@@ -150,8 +161,9 @@ internal class ProfileManagement
         var towers = Game.instance.model.towerSet.Select(model => model.towerId).ToList();
         var upgrades = Game.instance.model.upgrades.Select(model => model.name).ToList();
         var heroes = Game.instance.model.heroSet.Select(model => model.towerId).ToList();
+        var artifacts = GameData.Instance.artifactsData.artifactDatas.Keys().ToList();
 
-        CleanProfile(profile, towers, upgrades, heroes, false);
+        CleanProfile(profile, towers, upgrades, heroes, artifacts, false);
 
         // FileIOUtil.SaveObject("profile.json", profile);
     }
@@ -168,12 +180,13 @@ internal class ProfileManagement
         var towers = ModContent.GetContent<ModTower>().Select(tower => tower.Id).ToList();
         var upgrades = ModContent.GetContent<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();
         var heroes = ModContent.GetContent<ModHero>().Select(hero => hero.Id).ToList();
+        var artifacts = ModContent.GetContent<ModArtifact>().Select(artifact => artifact.Id).ToList();
 
         // handle dummy upgrades
         upgrades.AddRange(towers);
         upgrades.AddRange(heroes);
 
-        CleanProfile(profile, towers, upgrades, heroes, true);
+        CleanProfile(profile, towers, upgrades, heroes, artifacts, true);
     }
 
     internal static void UnCleanProfile(ProfileModel profile)

@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Data.Skins;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -58,7 +62,7 @@ public abstract class ModHero : ModTower
     /// No other upgrade paths used
     /// </summary>
     public sealed override int BottomPathUpgrades => 0;
-    
+
     /// <summary>
     /// Not a thing anyway
     /// </summary>
@@ -152,11 +156,48 @@ public abstract class ModHero : ModTower
     [Obsolete("No longer required to manually specify")]
     public virtual int Abilities { get; }
 
+    /// <summary>
+    /// The starting artifact this hero should have in Rogue Legends
+    /// </summary>
+    public virtual string RogueStarterArtifact => "StartingStrong1";
+
+    /// <summary>
+    /// The starting insta towers this hero should have in Rogue Legends.
+    /// </summary>
+    public virtual IEnumerable<(string baseId, int[] tiers)> RogueStarterInstas =>
+    [
+        (TowerType.NinjaMonkey, [2, 0, 0]),
+        (TowerType.Alchemist, [2, 0, 0])
+    ];
+
     /// <inheritdoc />
     public override void Register()
     {
         base.Register();
         ModTowerHelper.FinalizeHero(this);
+
+        try
+        {
+            var starterKit = new RogueHeroStarterKit
+            {
+                heroID = Id,
+                artifactData = GameData.Instance.artifactsData.GetArtifactData(RogueStarterArtifact),
+                startingInstas = RogueStarterInstas.Select(tuple => new RogueInstaMonkey
+                {
+                    baseId = tuple.baseId,
+                    tiers = tuple.tiers,
+                    lootType = RogueLootType.permanent,
+                    currentCooldown = 0,
+                }).ToIl2CppList()
+            };
+
+            GameData.Instance.rogueData.rogueHeroStarterKits.Add(starterKit);
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Failed to setup Rogue Legends starter kit for hero {Id}");
+            ModHelper.Warning(e);
+        }
     }
 
     /// <inheritdoc />

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Artifacts;
+using Il2CppAssets.Scripts.Models.Artifacts.Behaviors;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.MapEditorBehaviors;
 using Il2CppAssets.Scripts.Models.Powers;
@@ -65,6 +67,12 @@ internal static class ModelBehaviorExt
         if (model.IsType(out AddbehaviorToWeaponModel addModel5))
             return addModel5.behaviors.CastAll<WeaponBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
 
+        if (model.IsType(out ItemArtifactModel itemArtifactModel))
+            return itemArtifactModel.artifactBehaviors ?? Enumerable.Empty<Model>();
+        if (model.IsType(out BoostArtifactModel boostArtifactModel))
+            return boostArtifactModel.artifactBehaviors ?? Enumerable.Empty<Model>();
+        if (model.IsType(out MapArtifactModel mapArtifactModel))
+            return mapArtifactModel.artifactBehaviors ?? Enumerable.Empty<Model>();
 
         ModHelper.Warning($"Type {model.GetIl2CppType().Name} does not have behaviors");
 
@@ -124,7 +132,12 @@ internal static class ModelBehaviorExt
         else if (model.IsType(out AddbehaviorToWeaponModel addModel5))
             addModel5.behaviors = il2CppReferenceArray.DuplicateAs<Model, WeaponBehaviorModel>();
 
-
+        else if (model.IsType(out ItemArtifactModel itemArtifactModel))
+            itemArtifactModel.artifactBehaviors = il2CppReferenceArray.DuplicateAs<Model, ItemArtifactBehaviorModel>();
+        else if (model.IsType(out BoostArtifactModel boostArtifactModel))
+            boostArtifactModel.artifactBehaviors = il2CppReferenceArray.DuplicateAs<Model, BoostArtifactBehaviorModel>();
+        else if (model.IsType(out MapArtifactModel mapArtifactModel))
+            mapArtifactModel.artifactBehaviors = il2CppReferenceArray.DuplicateAs<Model, MapArtifactBehaviorModel>();
     }
 
     /// <summary>
@@ -255,7 +268,7 @@ internal static class ModelBehaviorExt
             model.SetBehaviors(behaviors.Where(b => !b.IsType<T>()));
         }
     }
-    
+
     /// <summary>
     /// Remove all Behaviors
     /// </summary>

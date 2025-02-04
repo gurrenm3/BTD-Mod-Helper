@@ -29,6 +29,8 @@
 
 [Making a Custom Jukebox Track](/wiki/Making-a-Custom-Jukebox-Track)
 
+[Making a Custom Artifact](wiki/Making-a-Custom-Artifact)
+
 [Custom UI (ModHelperComponents)](/wiki/Custom-UI)
 
 [Custom Menu Screens](/wiki/Custom-Menu-Screens)

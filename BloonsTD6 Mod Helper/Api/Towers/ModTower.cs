@@ -44,7 +44,7 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     [Obsolete("Use TowerSetType.Support")]
     protected const string SUPPORT = "Support";
-    internal readonly List<ModTowerDisplay> displays = new();
+    internal readonly List<ModTowerDisplay> displays = [];
     internal UpgradeModel dummyUpgrade;
     internal ModParagonUpgrade paragonUpgrade;
 
@@ -68,7 +68,7 @@ public abstract class ModTower : NamedModContent
     public sealed override int RegisterPerFrame => 1;
 
     internal virtual string[] DefaultMods =>
-        new[] {"GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"};
+        ["GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"];
 
     internal virtual ModTowerSet ModTowerSet => null;
     internal virtual int UpgradePaths => 3;
@@ -176,6 +176,11 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     public virtual bool IncludeInMonkeyTeams => true;
 
+    /// <summary>
+    /// Whether this tower should be allowed to show up as an insta in Rogue Legends
+    /// </summary>
+    public virtual bool IncludeInRogueLegends => false;
+
     internal virtual TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
     internal virtual bool ShouldCreateParagon =>
@@ -185,7 +190,7 @@ public abstract class ModTower : NamedModContent
         BottomPathUpgrades == 5 &&
         ParagonMode != ParagonMode.None;
 
-    internal readonly SortedDictionary<int, ModUpgrade>[] Upgrades = {new(), new(), new()};
+    internal readonly SortedDictionary<int, ModUpgrade>[] Upgrades = [new(), new(), new()];
     internal IEnumerable<ModUpgrade> AllUpgrades => Upgrades.SelectMany(upgrades => upgrades.Values);
     internal int[] TierMaxes => [TopPathUpgrades, MiddlePathUpgrades, BottomPathUpgrades];
 
@@ -427,10 +432,10 @@ public abstract class ModTower : NamedModContent
         switch (ParagonMode)
         {
             case ParagonMode.Base000:
-                towerModel = ModTowerHelper.CreateTowerModel(this, new[] {0, 0, 0});
+                towerModel = ModTowerHelper.CreateTowerModel(this, [0, 0, 0]);
                 break;
             case ParagonMode.Base555:
-                towerModel = ModTowerHelper.CreateTowerModel(this, new[] {5, 5, 5});
+                towerModel = ModTowerHelper.CreateTowerModel(this, [5, 5, 5]);
                 break;
             case ParagonMode.None:
             default:

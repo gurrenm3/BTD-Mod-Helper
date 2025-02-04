@@ -159,7 +159,7 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             EpicCompatibility.PromptDownloadPlugin();
         }
-        
+
         foreach (var renderTexture in ResourceHandler.RenderTexturesToRelease)
         {
             if (renderTexture != null)

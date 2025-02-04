@@ -5,6 +5,7 @@
 - Content whose only purpose is hacking / cheating progression within the game
 - Content not appropriate for all ages
 - Content promoting hatred / discrimination
+- **Content that attempts to bypass purchase requirements for DLC**
 
 _This is the Monkey vs Balloon game we're talking about here people_
 
@@ -106,7 +107,7 @@ If you do use the *.cs way, you can also then directly use the values in your Me
 
 ## Updating
 
-If an installed mod has `ModHelperData.cs` in their code or `ModHelperData.json / `ModHelperData.txt` included as an embedded resource, it will be used to populate that mods information in the Mods Screen.
+If an installed mod has `ModHelperData.cs` in their code or `ModHelperData.json` / `ModHelperData.txt` included as an embedded resource, it will be used to populate that mods information in the Mods Screen.
 
 If it has both a valid `RepoOwner` and `RepoName`, it will check the mod's current version against the version specified in that Repo's `ModHelperData`. If it's an update, this will be indicated to the user and they will then have the option to fetch the latest GitHub release for the repository. The title and message of this release will be shown to the user and, if they accept, they'll download the release artifact specified by `DllName` or `ZipName` or just the first dll file included.
 
