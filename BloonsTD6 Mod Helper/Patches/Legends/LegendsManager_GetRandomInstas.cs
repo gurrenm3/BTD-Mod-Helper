@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Reflection;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Unity.UI_New.Legends;
@@ -6,9 +8,13 @@ using Il2CppSystem.Collections.Generic;
 
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch(typeof(LegendsManager), nameof(LegendsManager._GetRandomInstas_b__34_1))]
+[HarmonyPatch]
 internal class LegendsManager__GetRandomInstas_b__34_1
 {
+    private static System.Collections.Generic.IEnumerable<MethodBase> TargetMethods() => AccessTools
+        .GetDeclaredMethods(typeof(LegendsManager)).Where(method =>
+            method.Name.Contains("_" + nameof(LegendsManager.GetRandomInstas) + "_"));
+
     [HarmonyPrefix]
     internal static bool Prefix(LegendsManager __instance, string x, ref bool __result)
     {
