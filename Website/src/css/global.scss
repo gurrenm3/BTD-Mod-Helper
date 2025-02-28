@@ -162,3 +162,7 @@ input::placeholder {
 :is(h1:hover,h2:hover,h3:hover,h4:hover,h5:hover,h6:hover) .hide-unless-hover {
   opacity: 1;
 }
+
+[data-theme="dark"] .form-control {
+  color: black !important;
+}
