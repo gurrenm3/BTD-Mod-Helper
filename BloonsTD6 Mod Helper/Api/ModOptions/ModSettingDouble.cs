@@ -30,6 +30,11 @@ public class ModSettingDouble : ModSettingNumber<double>
     /// </summary>
     public float stepSize = .01f;
 
+    /// <summary>
+    /// Maximum digits of precision to round to
+    /// </summary>
+    public int precisionDigits = 3;
+
     /// <inheritdoc />
     public ModSettingDouble(double value) : base(value)
     {
@@ -62,7 +67,7 @@ public class ModSettingDouble : ModSettingNumber<double>
     public static implicit operator float(ModSettingDouble modSettingDouble) => (float) modSettingDouble.value;
 
     /// <inheritdoc />
-    protected override string ToString(double input) => Math.Round(Math.Round(input / stepSize) * stepSize, 3).ToString();
+    protected override string ToString(double input) => Math.Round(Math.Round(input / stepSize) * stepSize, precisionDigits).ToString();
 
     /// <inheritdoc />
     protected override double FromString(string s) => double.TryParse(s, out var result) ? result : 0;
