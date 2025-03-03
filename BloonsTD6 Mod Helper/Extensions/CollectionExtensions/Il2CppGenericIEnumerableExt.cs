@@ -1,8 +1,10 @@
-﻿using Il2CppAssets.Scripts.Utils;
+﻿using System;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppNinjaKiwi.Common;
-using Il2CppSystem;
 using Il2CppSystem.Collections;
 using Il2CppSystem.Collections.Generic;
+using Object = Il2CppSystem.Object;
+
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -17,8 +19,18 @@ public static class Il2CppGenericIEnumerableExt
     /// <typeparam name="T"></typeparam>
     /// <param name="enumerable"></param>
     /// <returns></returns>
+    [Obsolete("Please use GetIl2CppEnumerator instead, that version works with using statements")]
     public static IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumerable) =>
         enumerable.GetEnumerator().Cast<IEnumerator>();
+
+    /// <summary>
+    /// Gets an Il2Cpp Enumerator wrapper for an enumerable
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns>il2cpp enumerator wrapper</returns>
+    // ReSharper disable once NotDisposedResourceIsReturned
+    public static Il2CppEnumerator<T> GetIl2CppEnumerator<T>(this IEnumerable<T> enumerable) => enumerable.GetEnumerator();
 
     /// <summary>
     /// Get the total number of elements
@@ -29,7 +41,7 @@ public static class Il2CppGenericIEnumerableExt
     public static int Count<T>(this IEnumerable<T> enumerable)
     {
         var length = 0;
-        var enumerator = enumerable.GetEnumeratorCollections();
+        using var enumerator = enumerable.GetIl2CppEnumerator();
         while (enumerator.MoveNext())
             length++;
 
@@ -43,10 +55,10 @@ public static class Il2CppGenericIEnumerableExt
     /// <param name="enumerable"></param>
     /// <param name="index"></param>
     /// <returns></returns>
-    public static Object GetItem<T>(this IEnumerable<T> enumerable, int index)
+    public static T GetItem<T>(this IEnumerable<T> enumerable, int index)
     {
         var i = 0;
-        var enumerator = enumerable.GetEnumeratorCollections();
+        using var enumerator = enumerable.GetIl2CppEnumerator();
         while (enumerator.MoveNext())
         {
             if (i == index)
@@ -55,7 +67,7 @@ public static class Il2CppGenericIEnumerableExt
             i++;
         }
 
-        return null;
+        return default;
     }
 
     /// <summary>
@@ -68,9 +80,9 @@ public static class Il2CppGenericIEnumerableExt
     {
         var il2CppList = new List<T>();
 
-        var enumerator = enumerable.GetEnumeratorCollections();
+        using var enumerator = enumerable.GetIl2CppEnumerator();
         while (enumerator.MoveNext())
-            il2CppList.Add(enumerator.Current.Cast<T>());
+            il2CppList.Add(enumerator.Current);
 
         return il2CppList;
     }
@@ -85,9 +97,9 @@ public static class Il2CppGenericIEnumerableExt
     {
         var list = new System.Collections.Generic.List<T>();
 
-        var enumerator = enumerable.GetEnumeratorCollections();
+        using var enumerator = enumerable.GetIl2CppEnumerator();
         while (enumerator.MoveNext())
-            list.Add(enumerator.Current.Cast<T>());
+            list.Add(enumerator.Current);
 
         return list;
     }
@@ -103,10 +115,10 @@ public static class Il2CppGenericIEnumerableExt
         var il2cppArray = new Il2CppReferenceArray<T>(enumerable.Count());
 
         var i = 0;
-        var enumerator = enumerable.GetEnumeratorCollections();
+        using var enumerator = enumerable.GetIl2CppEnumerator();
         while (enumerator.MoveNext())
         {
-            il2cppArray[i] = enumerator.Current.Cast<T>();
+            il2cppArray[i] = enumerator.Current;
             i++;
         }
 
@@ -119,9 +131,9 @@ public static class Il2CppGenericIEnumerableExt
     public static LockList<T> ToLockList<T>(this IEnumerable<T> enumerable) where T : Object
     {
         var lockList = new LockList<T>();
-        var enumerator = enumerable.GetEnumeratorCollections();
+        using var enumerator = enumerable.GetIl2CppEnumerator();
         while (enumerator.MoveNext())
-            lockList.Add(enumerator.Current.Cast<T>());
+            lockList.Add(enumerator.Current);
 
         return lockList;
     }

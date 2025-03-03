@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Il2CppAssets.Scripts.Simulation.Objects;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
 using Il2CppSystem.Collections;
+
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -79,8 +79,7 @@ public static class Il2CppIEnumeratorExt
     /// </summary>
     public static Il2CppReferenceArray<Object> ToIl2CppReferenceArray(this IEnumerator enumerator)
     {
-        var il2cppArray =
-            new Il2CppReferenceArray<Object>(enumerator.Count());
+        var il2cppArray = new Il2CppReferenceArray<Object>(enumerator.Count());
 
         var i = 0;
         while (enumerator.MoveNext())

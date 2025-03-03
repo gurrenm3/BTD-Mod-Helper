@@ -26,7 +26,7 @@ public static class Il2CppGenerics
     /// <param name="predicate"></param>
     /// <returns></returns>
     public static T FirstOrDefault<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase =>
-        Enumerable.FirstOrDefault(source.Cast<IEnumerable<T>>(), predicate);
+        source.Cast<IEnumerable<T>>().FirstOrDefault(predicate);
 
     /// <summary>
     /// Return all elements that match the predicate
@@ -63,14 +63,8 @@ public static class Il2CppGenerics
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase
-    {
-        foreach (var _ in source.Where(predicate))
-        {
-            return true;
-        }
-        return false;
-    }
+    public static bool Any<T>(this List<T> source, System.Func<T, bool> predicate) where T : Il2CppObjectBase =>
+        source.Cast<IEnumerable<T>>().Any(predicate);
 
 
     /// <summary>

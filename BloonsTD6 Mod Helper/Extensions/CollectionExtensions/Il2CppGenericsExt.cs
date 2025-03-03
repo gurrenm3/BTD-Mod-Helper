@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
-using Array = System.Array;
+using Il2CppSystem.Linq;
+
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -16,14 +16,7 @@ public static partial class Il2CppGenericsExt
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
     /// <returns></returns>
-    public static List<T> ToList<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList)
-    {
-        var newList = new List<T>();
-        foreach (var item in il2CppList)
-            newList.Add(item);
-
-        return newList;
-    }
+    public static List<T> ToList<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList) => [..il2CppList];
 
     /// <summary>
     /// Return as an Array
@@ -31,18 +24,7 @@ public static partial class Il2CppGenericsExt
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
     /// <returns></returns>
-    public static T[] ToArray<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList)
-    {
-        var newArray = new T[] { };
-
-        foreach (var item in il2CppList)
-        {
-            Array.Resize(ref newArray, newArray.Length + 1);
-            newArray[newArray.Length - 1] = item;
-        }
-
-        return newArray;
-    }
+    public static T[] ToArray<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList) => [..il2CppList];
 
     /// <summary>
     /// Return as Il2CppReferenceArray
@@ -50,8 +32,8 @@ public static partial class Il2CppGenericsExt
     /// <typeparam name="T"></typeparam>
     /// <param name="il2CppList"></param>
     /// <returns></returns>
-    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(
-        this Il2CppSystem.Collections.Generic.List<T> il2CppList) where T : Object => new(il2CppList.ToArray());
+    public static Il2CppReferenceArray<T> ToIl2CppReferenceArray<T>(this Il2CppSystem.Collections.Generic.List<T> il2CppList)
+        where T : Object => new(ToArray(il2CppList));
 
     /// <summary>
     /// Return as LockList
@@ -71,15 +53,8 @@ public static partial class Il2CppGenericsExt
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static Il2CppSystem.Collections.Generic.List<T> Duplicate<T>(
-        this Il2CppSystem.Collections.Generic.List<T> list)
-    {
-        var newList = new Il2CppSystem.Collections.Generic.List<T>();
-        foreach (var item in list)
-            newList.Add(item);
-
-        return newList;
-    }
+    public static Il2CppSystem.Collections.Generic.List<T> Duplicate<T>(this Il2CppSystem.Collections.Generic.List<T> list)
+        => new(list.Cast<Il2CppSystem.Collections.Generic.IEnumerable<T>>());
 
     /// <summary>
     /// Return a duplicate of this list as type TCast
@@ -108,8 +83,7 @@ public static partial class Il2CppGenericsExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static bool HasItemsOfType<TSource, TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
-        where TSource : Object
-        where TCast : Object
+        where TSource : Object where TCast : Object
     {
         return list.Any(o => o.IsType<TCast>());
     }
@@ -122,8 +96,10 @@ public static partial class Il2CppGenericsExt
     /// <param name="list"></param>
     /// <returns></returns>
     public static TCast GetItemOfType<TSource, TCast>(this Il2CppSystem.Collections.Generic.List<TSource> list)
-        where TCast : Object
-        where TSource : Object => list.FirstOrDefault(o => o.IsType<TCast>())?.Cast<TCast>();
+        where TCast : Object where TSource : Object
+    {
+        return list.FirstOrDefault(o => o.IsType<TCast>())?.Cast<TCast>();
+    }
 
     /// <summary>
     /// Return all Items of type TCast
@@ -148,8 +124,7 @@ public static partial class Il2CppGenericsExt
     /// <returns></returns>
     public static Il2CppSystem.Collections.Generic.List<TSource> RemoveItemOfType<TSource, TCast>(
         this Il2CppSystem.Collections.Generic.List<TSource> list)
-        where TSource : Object
-        where TCast : Object
+        where TSource : Object where TCast : Object
     {
         var item = GetItemOfType<TSource, TCast>(list);
         return RemoveItem(list, item);

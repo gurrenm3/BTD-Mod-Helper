@@ -1,6 +1,7 @@
 ﻿using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
-using InvalidOperationException = System.InvalidOperationException;
+using Il2CppSystem.Linq;
+
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -16,9 +17,10 @@ public static class Il2CppGenericIEnumerable
     /// <param name="action">Action to preform on each element</param>
     public static void ForEach<T>(this IEnumerable<T> source, System.Action<T> action) where T : Object
     {
-        var enumerator = source.GetEnumeratorCollections();
+        using var enumerator = source.GetIl2CppEnumerator();
+
         while (enumerator.MoveNext())
-            action.Invoke(enumerator.Current.Cast<T>());
+            action.Invoke(enumerator.Current);
     }
 
     /// <summary>
@@ -27,13 +29,7 @@ public static class Il2CppGenericIEnumerable
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static bool Any<T>(this IEnumerable<T> source) where T : Object
-    {
-        while (source.GetEnumeratorCollections().MoveNext())
-            return true;
-
-        return false;
-    }
+    public static bool Any<T>(this IEnumerable<T> source) where T : Object => Enumerable.Any(source);
 
     /// <summary>
     /// Return whether or not there are any elements in this that match the predicate
@@ -42,17 +38,8 @@ public static class Il2CppGenericIEnumerable
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static bool Any<T>(this IEnumerable<T> source, System.Func<T, bool> predicate) where T : Object
-    {
-        var enumerator = source.GetEnumeratorCollections();
-        while (enumerator.MoveNext())
-        {
-            if (predicate(enumerator.Current.Cast<T>()))
-                return true;
-        }
-
-        return false;
-    }
+    public static bool Any<T>(this IEnumerable<T> source, System.Func<T, bool> predicate) where T : Object =>
+        Enumerable.Any(source, predicate);
 
     /// <summary>
     /// Return the last item in the collection
@@ -60,17 +47,7 @@ public static class Il2CppGenericIEnumerable
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T Last<T>(this IEnumerable<T> source) where T : Object
-    {
-        var enumerator = source.GetEnumeratorCollections();
-        T last = default;
-
-        while (enumerator.MoveNext())
-        {
-            last = enumerator.Current.Cast<T>();
-        }
-        return last;
-    }
+    public static T Last<T>(this IEnumerable<T> source) where T : Object => Enumerable.Last(source);
 
     /// <summary>
     /// Return the last item in the collection that meets the condition, or return default
@@ -79,20 +56,8 @@ public static class Il2CppGenericIEnumerable
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T LastOrDefault<T>(this IEnumerable<T> source, System.Func<T, bool> predicate) where T : Object
-    {
-        var enumerator = source.GetEnumeratorCollections();
-        T last = default;
-
-        while (enumerator.MoveNext())
-        {
-            var item = enumerator.Current.Cast<T>();
-            if (predicate(item))
-                last = item;
-        }
-
-        return last;
-    }
+    public static T LastOrDefault<T>(this IEnumerable<T> source, System.Func<T, bool> predicate) where T : Object =>
+        Enumerable.LastOrDefault(source, predicate);
 
     /// <summary>
     /// Return the first element in the collection
@@ -100,17 +65,7 @@ public static class Il2CppGenericIEnumerable
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T First<T>(this IEnumerable<T> source) where T : Object
-    {
-        var enumerator = source.GetEnumeratorCollections();
-
-        while (enumerator.MoveNext())
-        {
-            return enumerator.Current.Cast<T>();
-        }
-
-        throw new InvalidOperationException();
-    }
+    public static T First<T>(this IEnumerable<T> source) where T : Object => Enumerable.First(source);
 
     /// <summary>
     /// Return the first element in the collection, or return default if it's null
@@ -118,19 +73,7 @@ public static class Il2CppGenericIEnumerable
     /// <typeparam name="T"></typeparam>
     /// <param name="source"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this IEnumerable<T> source) where T : Object
-    {
-        var enumerator = source.GetEnumeratorCollections();
-        if (enumerator is null)
-            return default;
-
-        while (enumerator.MoveNext())
-        {
-            return enumerator.Current.Cast<T>();
-        }
-
-        return default;
-    }
+    public static T FirstOrDefault<T>(this IEnumerable<T> source) where T : Object => Enumerable.FirstOrDefault(source);
 
     /// <summary>
     /// Return the first element that matches the predicate, or return default
@@ -139,16 +82,6 @@ public static class Il2CppGenericIEnumerable
     /// <param name="source"></param>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public static T FirstOrDefault<T>(this IEnumerable<T> source, System.Func<T, bool> predicate) where T : Object
-    {
-        var enumerator = source.GetEnumeratorCollections();
-        while (enumerator.MoveNext())
-        {
-            var item = enumerator.Current.Cast<T>();
-            if (predicate(item))
-                return item;
-        }
-
-        return default;
-    }
+    public static T FirstOrDefault<T>(this IEnumerable<T> source, System.Func<T, bool> predicate) where T : Object =>
+        Enumerable.FirstOrDefault(source, predicate);
 }
