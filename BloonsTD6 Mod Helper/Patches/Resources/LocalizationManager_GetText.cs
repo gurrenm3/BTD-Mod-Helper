@@ -12,6 +12,8 @@ internal static class LocalizationManager_GetText
     {
         yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.GetText));
         yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.GetTextEnglish));
+        yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.Format), [typeof(string), typeof(Il2CppSystem.Object[])]);
+        yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.Format), [typeof(string), typeof(Il2CppReferenceArray<Il2CppSystem.Object>)]);
     }
 
     [HarmonyPrefix]

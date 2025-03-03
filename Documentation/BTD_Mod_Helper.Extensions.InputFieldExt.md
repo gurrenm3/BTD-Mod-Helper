@@ -29,7 +29,7 @@ public static void AddOnValueChangedEvent(this InputField inputField, BTD_Mod_He
 
 <a name='BTD_Mod_Helper.Extensions.InputFieldExt.AddOnValueChangedEvent(thisInputField,BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function).funcToExecute'></a>
 
-`funcToExecute` [Function(string)](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string).md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string)')
+`funcToExecute` [BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function')
 
 <a name='BTD_Mod_Helper.Extensions.InputFieldExt.AddOnValueChangeEvent(thisInputField,BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function)'></a>
 
@@ -48,7 +48,7 @@ public static void AddOnValueChangeEvent(this InputField inputField, BTD_Mod_Hel
 
 <a name='BTD_Mod_Helper.Extensions.InputFieldExt.AddOnValueChangeEvent(thisInputField,BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function).funcToExecute'></a>
 
-`funcToExecute` [Function(string)](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string).md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string)')
+`funcToExecute` [BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function')
 
 <a name='BTD_Mod_Helper.Extensions.InputFieldExt.AddSubmitEvent(thisInputField,BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function)'></a>
 
@@ -67,4 +67,4 @@ public static void AddSubmitEvent(this InputField inputField, BTD_Mod_Helper.Ext
 
 <a name='BTD_Mod_Helper.Extensions.InputFieldExt.AddSubmitEvent(thisInputField,BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function).funcToExecute'></a>
 
-`funcToExecute` [Function(string)](BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function(string).md 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function(string)')
+`funcToExecute` [BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function')

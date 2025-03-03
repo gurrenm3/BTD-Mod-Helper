@@ -92,7 +92,7 @@ public MusicItem MusicItem { get; set; }
 ```
 
 #### Property Value
-[Il2CppAssets.Scripts.Data.Music.MusicItem](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Music.MusicItem 'Il2CppAssets.Scripts.Data.Music.MusicItem')
+[Il2CppAssets.Scripts.Data.Audio.MusicItem](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Audio.MusicItem 'Il2CppAssets.Scripts.Data.Audio.MusicItem')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.CreateMusicItem()'></a>
@@ -106,5 +106,5 @@ public virtual MusicItem CreateMusicItem();
 ```
 
 #### Returns
-[Il2CppAssets.Scripts.Data.Music.MusicItem](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Music.MusicItem 'Il2CppAssets.Scripts.Data.Music.MusicItem')  
+[Il2CppAssets.Scripts.Data.Audio.MusicItem](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Audio.MusicItem 'Il2CppAssets.Scripts.Data.Audio.MusicItem')  
 the MusicItem

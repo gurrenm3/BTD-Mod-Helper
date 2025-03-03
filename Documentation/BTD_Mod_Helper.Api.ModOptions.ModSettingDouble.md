@@ -54,6 +54,19 @@ public Nullable<double> minValue;
 #### Field Value
 [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System.Double')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.precisionDigits'></a>
+
+## ModSettingDouble.precisionDigits Field
+
+Maximum digits of precision to round to
+
+```csharp
+public int precisionDigits;
+```
+
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingDouble.stepSize'></a>
 
 ## ModSettingDouble.stepSize Field

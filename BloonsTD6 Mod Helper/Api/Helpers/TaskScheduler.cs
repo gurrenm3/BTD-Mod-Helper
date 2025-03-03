@@ -50,20 +50,45 @@ public static class TaskScheduler
                                   " This shouldn't have any impact on the mod.");
         }
     }
+
+    /// <summary>
+    /// Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
+    /// </summary>
+    /// <param name="action">The action you want to execute once it's time to run your task</param>
+    /// <param name="waitCondition">Wait for this to be true before executing task</param>
+    /// <param name="stopCondition">Stop waiting if this becomes true</param>
+    public static void ScheduleTask(Action action, Func<bool> waitCondition, Func<bool> stopCondition)
+    {
+        try
+        {
+            MelonCoroutines.Start(WaiterCoroutine(action, ScheduleType.WaitForFrames, 0, waitCondition, stopCondition));
+        }
+        catch (Exception ex)
+        {
+            if (ex.Message.Contains("trampoline"))
+                ModHelper.Warning("Notice: Melonloader Coroutine had a trampoline error." +
+                                  " This shouldn't have any impact on the mod.");
+        }
+    }
+
     /// <summary>
     /// This coroutine will wait for amountToWait before finishing
     /// </summary>
     private static IEnumerator WaiterCoroutine(Action action, ScheduleType scheduleType, int amountToWait,
-        Func<bool> waitCondition = null)
+        Func<bool> waitCondition = null, Func<bool> stopCondition = null)
     {
         if (waitCondition != null)
         {
             while (!waitCondition())
             {
+                if (stopCondition != null && stopCondition())
+                {
+                    yield break;
+                }
                 yield return null;
             }
         }
-        
+
         var count = 0;
         switch (scheduleType)
         {
@@ -82,7 +107,7 @@ public static class TaskScheduler
                 yield return new WaitForSeconds(amountToWait);
                 break;
         }
-        
+
         action.Invoke();
     }
 }

@@ -191,6 +191,19 @@ public virtual bool IncludeInMonkeyTeams { get; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.IncludeInRogueLegends'></a>
+
+## ModTower.IncludeInRogueLegends Property
+
+Whether this tower should be allowed to show up as an insta in Rogue Legends
+
+```csharp
+public virtual bool IncludeInRogueLegends { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.MiddlePathUpgrades'></a>
 
 ## ModTower.MiddlePathUpgrades Property

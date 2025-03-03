@@ -191,7 +191,8 @@ internal partial class ModHelperData
 
             if (RepoOwner == MelonMain.GitHubUsername)
             {
-                ModHelper.Log($"Successfully found mod {Repository.FullName} {SubPath} for browser");
+                ModHelper.Log(
+                    $"Successfully found mod {Repository.FullName}{(string.IsNullOrEmpty(SubPath) ? "" : "/")}{SubPath} for browser");
             }
 
             if (ModInstalledLocally(out var modHelperData))

@@ -1,12 +1,14 @@
 ﻿using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Bloons;
+using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Knowledge;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Artifacts;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Rounds;
@@ -14,6 +16,7 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.Legends;
 using Il2CppInterop.Runtime;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
@@ -144,5 +147,15 @@ internal static class GameModel_CreateModded
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result, mods));
 #pragma warning restore CS0618
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result));
+
+        if (InGameData.CurrentGame?.rogueData == null || LegendsManager.instance?.RogueSaveData == null) return;
+
+        foreach (var artifactLoot in LegendsManager.instance.RogueSaveData.artifactsInventory)
+        {
+            if (ModArtifact.ArtifactCache.TryGetValue(artifactLoot.artifactName, out var tuple))
+            {
+                tuple.Item1.ModifyGameModel(result, tuple.Item2);
+            }
+        }
     }
 }

@@ -64,6 +64,7 @@
 | Classes | |
 | :--- | :--- |
 | [ExportCommand](BTD_Mod_Helper.Api.Commands.ExportCommand.md 'BTD_Mod_Helper.Api.Commands.ExportCommand') | Root command for exporting information to files |
+| [GenerateCommand](BTD_Mod_Helper.Api.Commands.GenerateCommand.md 'BTD_Mod_Helper.Api.Commands.GenerateCommand') | Root command for generating source code files for mods |
 | [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') | Defines a command that can be run from within the Mod Helper developer console |
 | [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | Defines a ModCommand that is a subcommand of the specified other command |
 | [OpenCommand](BTD_Mod_Helper.Api.Commands.OpenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenCommand') | Commands for opening specific files / folders |
@@ -170,6 +171,7 @@
 | [FileDialogHelper](BTD_Mod_Helper.Api.Helpers.FileDialogHelper.md 'BTD_Mod_Helper.Api.Helpers.FileDialogHelper') | Class to help with the usage of Native File Dialogs |
 | [FileIOHelper](BTD_Mod_Helper.Api.Helpers.FileIOHelper.md 'BTD_Mod_Helper.Api.Helpers.FileIOHelper') | Class replacing the original functionality of FileIOUtil before BTD6 update 33.0 |
 | [GameModelExporter](BTD_Mod_Helper.Api.Helpers.GameModelExporter.md 'BTD_Mod_Helper.Api.Helpers.GameModelExporter') | Class for handily exporting elements of the GameModel to json files |
+| [Il2CppEnumerator&lt;T&gt;](BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator_T_.md 'BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator<T>') | Wrapper for il2cpp enumerator so that it actually extends the normal System enumerator |
 | [Instances](BTD_Mod_Helper.Api.Helpers.Instances.md 'BTD_Mod_Helper.Api.Helpers.Instances') | Provides quick access to many major BTD6 singleton classes |
 | [Lists](BTD_Mod_Helper.Api.Helpers.Lists.md 'BTD_Mod_Helper.Api.Helpers.Lists') | Provides quick access to many major BTD6 object lists |
 | [LocalizationHelper](BTD_Mod_Helper.Api.Helpers.LocalizationHelper.md 'BTD_Mod_Helper.Api.Helpers.LocalizationHelper') | Helps mods more easily support additional localization for their mod texts |
@@ -191,6 +193,18 @@
 | Classes | |
 | :--- | :--- |
 | [ResourceHandler](BTD_Mod_Helper.Api.Internal.ResourceHandler.md 'BTD_Mod_Helper.Api.Internal.ResourceHandler') | Handles embedded resources within Mod Helper mods |
+
+<a name='BTD_Mod_Helper.Api.Legends'></a>
+
+## BTD_Mod_Helper.Api.Legends Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModArtifact](BTD_Mod_Helper.Api.Legends.ModArtifact.md 'BTD_Mod_Helper.Api.Legends.ModArtifact') | Class for adding a custom Artifact to the Rogue Legends mode |
+| [ModArtifact&lt;TData,TModel&gt;](BTD_Mod_Helper.Api.Legends.ModArtifact_TData,TModel_.md 'BTD_Mod_Helper.Api.Legends.ModArtifact<TData,TModel>') | <inheritdoc cref="T:BTD_Mod_Helper.Api.Legends.ModArtifact"/> |
+| [ModBoostArtifact](BTD_Mod_Helper.Api.Legends.ModBoostArtifact.md 'BTD_Mod_Helper.Api.Legends.ModBoostArtifact') | Class for adding a custom Boost Artifact to the Rogue Legends mode |
+| [ModItemArtifact](BTD_Mod_Helper.Api.Legends.ModItemArtifact.md 'BTD_Mod_Helper.Api.Legends.ModItemArtifact') | Class for adding a custom Permanent/Item Artifact to the Rogue Legends mode |
+| [ModMapArtifact](BTD_Mod_Helper.Api.Legends.ModMapArtifact.md 'BTD_Mod_Helper.Api.Legends.ModMapArtifact') | Class for adding a custom Map Artifact to the Rogue Legends mode |
 
 <a name='BTD_Mod_Helper.Api.ModMenu'></a>
 
@@ -271,6 +285,7 @@
 | [AddBehaviorToBloonModelExt](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt') | Extensions for AddBehaviorToBloonModels |
 | [AirUnitModelBehaviorExt](BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt') | Behavior extensions for AirUnitModels |
 | [ArrayExt](BTD_Mod_Helper.Extensions.ArrayExt.md 'BTD_Mod_Helper.Extensions.ArrayExt') | Extensions for arrays |
+| [ArtifactModelBehaviorExt](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt') | Behavior extensions for ItemArtifactModels and BoostArtifactModels |
 | [AssemblyExt](BTD_Mod_Helper.Extensions.AssemblyExt.md 'BTD_Mod_Helper.Extensions.AssemblyExt') | Extensions for Assemblies |
 | [AttackBehaviorExt](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackBehaviorExt') | Behavior extensions for attacks |
 | [AttackModelBehaviorExt](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt') | Behavior Extensions for AttackModel |
@@ -369,10 +384,6 @@
 | :--- | :--- |
 | [Function()](BTD_Mod_Helper.Extensions.Function().md 'BTD_Mod_Helper.Extensions.Function()') | |
 | [Function&lt;T&gt;()](BTD_Mod_Helper.Extensions.Function_T_().md 'BTD_Mod_Helper.Extensions.Function<T>()') | |
-| [InputFieldOnValueChanged.Function(string)](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string).md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
-| [InputFieldSubmitEvent.Function(string)](BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function(string).md 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function(string)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
-| [SliderEventExt.Function(float)](BTD_Mod_Helper.Extensions.SliderEventExt.Function(float).md 'BTD_Mod_Helper.Extensions.SliderEventExt.Function(float)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
-| [ToggleEventExt.Function(bool)](BTD_Mod_Helper.Extensions.ToggleEventExt.Function(bool).md 'BTD_Mod_Helper.Extensions.ToggleEventExt.Function(bool)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
 
 <a name='BTD_Mod_Helper.UI.BTD6'></a>
 

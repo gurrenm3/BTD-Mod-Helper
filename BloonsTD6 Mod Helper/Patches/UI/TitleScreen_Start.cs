@@ -3,6 +3,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Scenarios;
 using Il2CppAssets.Scripts.Data;
@@ -19,6 +20,8 @@ internal class TitleScreen_Start
     [HarmonyPriority(Priority.High)]
     internal static void Postfix()
     {
+        ModArtifact.FixVanillaArtifactDependants();
+
         if (ModHelper.FallbackToOldLoading)
         {
             if (ModByteLoader.currentLoadTask != null) ModByteLoader.currentLoadTask.Wait();

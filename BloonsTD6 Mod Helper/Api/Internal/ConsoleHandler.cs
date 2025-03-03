@@ -56,17 +56,17 @@ internal static class ConsoleHandler
             Console.input.InputField.ActivateInputField();
         }
 
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             TryAutocomplete(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
         }
 
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             HistoryUp();
         }
 
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             HistoryDown();
         }
@@ -249,7 +249,8 @@ internal static class ConsoleHandler
             {
                 foreach (var error in errors)
                 {
-                    Console.Results += Highlight(error.ToString(), SuccessColor);
+                    ModHelper.Error(error);
+                    Console.Results += Highlight(error.ToString(), ErrorColor);
                 }
             }
         }

@@ -11,17 +11,6 @@ public class ModSettingButton : BTD_Mod_Helper.Api.ModOptions.ModSetting
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') &#129106; ModSettingButton
-### Constructors
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingButton.ModSettingButton()'></a>
-
-## ModSettingButton() Constructor
-
-Initializes a new instance of the [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') class.
-
-```csharp
-public ModSettingButton();
-```
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingButton.action'></a>

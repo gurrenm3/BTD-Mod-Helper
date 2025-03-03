@@ -15,9 +15,9 @@ namespace BTD_Mod_Helper;
 /// </summary>
 public abstract class BloonsMod : MelonMod, IModSettings
 {
-    internal static readonly HashSet<Type> GotModTooSoon = new();
+    internal static readonly HashSet<Type> GotModTooSoon = [];
 
-    internal readonly List<string> loadErrors = new();
+    internal readonly List<string> loadErrors = [];
     private List<ModContent> content;
 
     private ModLoadTask loadContentTask;
@@ -64,6 +64,13 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// For example, using mods in public co-op
     /// </summary>
     public virtual bool CheatMod => true;
+
+    /// <summary>
+    /// The artifact models stored in the GameData don't have a proper setup of descendents like usual models in the GameModel.
+    /// Generating the descendents can add an extra second to start time, so it will only be done if at least one mod says
+    /// that it requires them.
+    /// </summary>
+    public virtual bool UsesArtifactDependants => false;
 
     internal string SettingsFilePath
     {
@@ -163,7 +170,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
         catch (Exception e)
         {
             var message = e.InnerException?.Message ?? e.Message;
-            
+
             if (ModHelper.IsEpic && message.Contains("Il2CppFacepunch.Steamworks")) return;
 
             MelonLogger.Warning(

@@ -171,6 +171,5 @@ internal static class VanillaSpriteGenerator
             }
         }
 
-
     }
 }

@@ -29,4 +29,4 @@ public static void AddOnValueChanged(this Toggle toggle, BTD_Mod_Helper.Extensio
 
 <a name='BTD_Mod_Helper.Extensions.ToggleExt.AddOnValueChanged(thisToggle,BTD_Mod_Helper.Extensions.ToggleEventExt.Function).funcToExecute'></a>
 
-`funcToExecute` [Function(bool)](BTD_Mod_Helper.Extensions.ToggleEventExt.Function(bool).md 'BTD_Mod_Helper.Extensions.ToggleEventExt.Function(bool)')
+`funcToExecute` [BTD_Mod_Helper.Extensions.ToggleEventExt.Function](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Extensions.ToggleEventExt.Function 'BTD_Mod_Helper.Extensions.ToggleEventExt.Function')

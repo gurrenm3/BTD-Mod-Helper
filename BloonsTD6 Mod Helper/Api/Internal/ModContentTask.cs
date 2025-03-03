@@ -23,7 +23,7 @@ internal class ModContentTask : ModLoadTask
     /// Don't load this like a normal task
     /// </summary>
     /// <returns></returns>
-    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
+    public override IEnumerable<ModContent> Load() => [];
 
     /// <summary>
     /// Registers ModContent from other mods
@@ -35,7 +35,7 @@ internal class ModContentTask : ModLoadTask
             ModHelper.Log(DisplayName);
         }
         var current = 0f;
-        foreach (var modContent in mod.Content)
+        foreach (var modContent in mod.Content.ToArray())
         {
             var weight = 1f / modContent.RegisterPerFrame;
             current += weight;

@@ -197,6 +197,32 @@ public sealed override BTD_Mod_Helper.Api.Towers.ParagonMode ParagonMode { get; 
 #### Property Value
 [ParagonMode](BTD_Mod_Helper.Api.Towers.ParagonMode.md 'BTD_Mod_Helper.Api.Towers.ParagonMode')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.RogueStarterArtifact'></a>
+
+## ModHero.RogueStarterArtifact Property
+
+The starting artifact this hero should have in Rogue Legends
+
+```csharp
+public virtual string RogueStarterArtifact { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModHero.RogueStarterInstas'></a>
+
+## ModHero.RogueStarterInstas Property
+
+The starting insta towers this hero should have in Rogue Legends.
+
+```csharp
+public virtual System.Collections.Generic.IEnumerable<(string baseId,int[] tiers)> RogueStarterInstas { get; }
+```
+
+#### Property Value
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System.ValueTuple')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System.ValueTuple')[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System.ValueTuple')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModHero.SelectScreenPortraits'></a>
 
 ## ModHero.SelectScreenPortraits Property

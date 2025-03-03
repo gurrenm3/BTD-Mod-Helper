@@ -125,6 +125,21 @@ public System.Collections.Generic.Dictionary<string,byte[]> Resources { get; set
 
 #### Property Value
 [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Byte](https://docs.microsoft.com/en-us/dotnet/api/System.Byte 'System.Byte')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+
+<a name='BTD_Mod_Helper.BloonsMod.UsesArtifactDependants'></a>
+
+## BloonsMod.UsesArtifactDependants Property
+
+The artifact models stored in the GameData don't have a proper setup of descendents like usual models in the GameModel.  
+Generating the descendents can add an extra second to start time, so it will only be done if at least one mod says  
+that it requires them.
+
+```csharp
+public virtual bool UsesArtifactDependants { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.BloonsMod.AddContent(BTD_Mod_Helper.Api.ModContent)'></a>

@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// <summary>
 /// Helper for scaling costs to difficulties
 /// </summary>
-public class CostHelper
+public static class CostHelper
 {
     /// <summary>
     /// Gets a modified cost for a given set of ModModels that are used to setup a match

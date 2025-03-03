@@ -210,8 +210,7 @@ public static class GameModelExporter
             if (TryExport(artifact, $"Artifacts/{id}.json")) success++;
             total++;
         }
-        ModHelper.Log(
-            $"Exported {success}/{total} Artifacts to {Path.Combine(FileIOHelper.sandboxRoot, "Artifacts")}");
+        ModHelper.Log($"Exported {success}/{total} Artifacts to {Path.Combine(FileIOHelper.sandboxRoot, "Artifacts")}");
 
         File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
         ModHelper.Log($"Exported resources to {resourcesPath}");

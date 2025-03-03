@@ -59,6 +59,30 @@ public static IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumer
 #### Returns
 [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
 
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetIl2CppEnumerator_T_(thisIEnumerable_T_)'></a>
+
+## Il2CppGenericIEnumerableExt.GetIl2CppEnumerator<T>(this IEnumerable<T>) Method
+
+Gets an Il2Cpp Enumerator wrapper for an enumerable
+
+```csharp
+public static BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator<T> GetIl2CppEnumerator<T>(this IEnumerable<T> enumerable);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetIl2CppEnumerator_T_(thisIEnumerable_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetIl2CppEnumerator_T_(thisIEnumerable_T_).enumerable'></a>
+
+`enumerable` [Il2CppSystem.Collections.Generic.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable 'Il2CppSystem.Collections.Generic.IEnumerable')
+
+#### Returns
+[BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator&lt;](BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator_T_.md 'BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator<T>')[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetIl2CppEnumerator_T_(thisIEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetIl2CppEnumerator<T>(this IEnumerable<T>).T')[&gt;](BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator_T_.md 'BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator<T>')  
+il2cpp enumerator wrapper
+
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetItem_T_(thisIEnumerable_T_,int)'></a>
 
 ## Il2CppGenericIEnumerableExt.GetItem<T>(this IEnumerable<T>, int) Method
@@ -66,7 +90,7 @@ public static IEnumerator GetEnumeratorCollections<T>(this IEnumerable<T> enumer
 Return the Item at a specific index
 
 ```csharp
-public static Object GetItem<T>(this IEnumerable<T> enumerable, int index);
+public static T GetItem<T>(this IEnumerable<T> enumerable, int index);
 ```
 #### Type parameters
 
@@ -84,7 +108,7 @@ public static Object GetItem<T>(this IEnumerable<T> enumerable, int index);
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 #### Returns
-[Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetItem_T_(thisIEnumerable_T_,int).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.GetItem<T>(this IEnumerable<T>, int).T')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.ToIl2CppList_T_(thisIEnumerable_T_)'></a>
 

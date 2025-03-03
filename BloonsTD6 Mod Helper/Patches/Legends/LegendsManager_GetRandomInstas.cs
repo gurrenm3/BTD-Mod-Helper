@@ -9,7 +9,7 @@ using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch]
-internal class LegendsManager__GetRandomInstas_b__34_1
+internal class LegendsManager__GetRandomInstas
 {
     private static System.Collections.Generic.IEnumerable<MethodBase> TargetMethods() => AccessTools
         .GetDeclaredMethods(typeof(LegendsManager)).Where(method =>

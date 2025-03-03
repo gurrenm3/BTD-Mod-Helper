@@ -1,13 +1,15 @@
-- Minor fix for BTD6 v47
+- Added a new `export assets` command that locally exports all the addressable sprite textures in an organized way
+- Added a `precisionDigits` field to `ModSettingDouble` / `ModSettingFloat` to control rounding
+- Cleaned up the internals of some il2cpp extensions
 
-## Rogue Legends
+### ModArtifact
 
-- Added a preliminary version of custom artifacts via `ModItemArtifact` and `ModBoostArtifact`
-  - Read more on the [wiki page](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-Artifact)
-  - Vanilla artifact data will also now be included in Mod Helper's Export Game Data output
-    - Viewable online [here](https://github.com/Btd6ModHelper/btd6-game-data/tree/main/Artifacts)
-- Added new `ModHero` properties `RogueStarterArtifact` and `RogueStarterInstas` for defining custom loadouts
-  - If not specified, defaults to Starting Strong Common with a 2-0-0 Ninja Monkey and 2-0-0 Alchemist
-  - See the [wiki page](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-Hero#example) for more info
-- Added new `ModTower` property `IncludeInRogueLegends` to control if a custom tower should be allowed to appear in Rogue Legends
-  - Defaults to false
+- Added a new property `SmallIcon` that can be overriden to resize the icon so using most VanillaSprites will be framed
+  correctly
+- Added overrides for `OnActivated(Simulation simulation, int tier)` and
+  `ModifyGameModel(GameModel gameModel, int tier)` for easier custom artifact effects
+- Added new methods `string InstaMonkey(int tier)` and `int[] InstaTiers(int tier)` that can be overriden to set up
+  artifact's Insta Monkey and automatically adds it to the description
+- Added new ArtifactModel extension methods `AddTowerBehavior`, `AddTowerBehaviors`, `AddProjectileBehavior`,
+  `AddProjectileBehaviors` that work similar to `AddBoostBehavior` but via `AddTowerBehaviorsArtifactModel` and
+  `AddProjectileBehaviorsArtifactModel`

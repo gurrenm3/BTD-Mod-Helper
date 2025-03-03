@@ -90,6 +90,7 @@ internal class ModHelperConsole : ModHelperComponent
         console.input.Text.Text.font = Fonts.Inconsolata;
 
         console.text = console.input.Text.Duplicate(console.input.Text.parent);
+        console.text.Text.AutoLocalize = false;
         console.input.Text.Text.color = new Color(0, 0, 0, 0);
 
         console.suggestions = console.AddText(new Info("Suggestions")

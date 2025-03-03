@@ -16,7 +16,7 @@ namespace BTD_Mod_Helper;
 public static class ModHelper
 {
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.4.0";
+    internal const string Version = "3.4.1";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =
@@ -108,10 +108,7 @@ public static class ModHelper
     /// In this case a mod's name is its Assembly Name, which is almost always the same as the file name, but for the
     /// Mod Helper due to compatibility reasons it is "BloonsTD6 Mod Helper" rather than "Btd6ModHelper"
     /// </summary>
-    public static BloonsMod GetMod(string name)
-    {
-        return Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
-    }
+    public static BloonsMod GetMod(string name) => Mods.FirstOrDefault(bloonsMod => bloonsMod.GetModName() == name);
 
     /// <summary>
     /// Gets the instance of a specific BloonsTD6Mod by its type
@@ -128,9 +125,12 @@ public static class ModHelper
     /// </summary>
     public static bool HasMod(string name, out BloonsMod bloonsMod) => (bloonsMod = GetMod(name)) != null;
 
+    private static BloonsTD6Mod[] hookMods;
+
     internal static void PerformHook(Action<BloonsTD6Mod> action)
     {
-        foreach (var mod in Mods.OfType<BloonsTD6Mod>().OrderBy(mod => mod.Priority))
+        hookMods ??= Mods.OfType<BloonsTD6Mod>().OrderBy(mod => mod.Priority).ToArray();
+        foreach (var mod in hookMods)
         {
             try
             {
@@ -142,10 +142,10 @@ public static class ModHelper
             }
         }
     }
-    
+
     /// <inheritdoc cref="ModContent.Localize(string,string)"/>
     internal static string Localize(string key, string text) => ModContent.Localize(Main, key, text);
-    
+
     /// <inheritdoc cref="ModContent.Localize(string,string)"/>
     internal static string Localize(string keyAndText) => ModContent.Localize(Main, keyAndText);
 
