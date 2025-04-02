@@ -327,6 +327,7 @@ public static class UpgradeType
     public const string LongLifeSpikes = "Long Life Spikes";
     public const string DeadlySpikes = "Deadly Spikes";
     public const string PermaSpike = "Perma-Spike";
+    public const string SpikefactoryParagon = "SpikeFactory Paragon";
     public const string BiggerRadius = "Bigger Radius";
     public const string JungleDrums = "Jungle Drums";
     public const string PrimaryTraining = "Primary Training";
@@ -1002,6 +1003,7 @@ public static class UpgradeType
         { "LongLifeSpikes", LongLifeSpikes },
         { "DeadlySpikes", DeadlySpikes },
         { "PermaSpike", PermaSpike },
+        { "SpikefactoryParagon", SpikefactoryParagon },
         { "BiggerRadius", BiggerRadius },
         { "JungleDrums", JungleDrums },
         { "PrimaryTraining", PrimaryTraining },

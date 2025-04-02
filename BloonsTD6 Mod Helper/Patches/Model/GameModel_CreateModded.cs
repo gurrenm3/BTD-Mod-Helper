@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Knowledge;
+using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Artifacts;
 using Il2CppAssets.Scripts.Models.Bloons;
@@ -24,7 +25,7 @@ using Exception = System.Exception;
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(List<string>), typeof(ModModel),
-    typeof(ActiveRelicKnowledge), typeof(MapModel), typeof(RoundSetModel))]
+    typeof(ActiveRelicKnowledge), typeof(MapModel), typeof(RoundSetModel), typeof(List<ArtifactLoot>))]
 internal static class GameModel_CreateModded2
 {
     [HarmonyPostfix]

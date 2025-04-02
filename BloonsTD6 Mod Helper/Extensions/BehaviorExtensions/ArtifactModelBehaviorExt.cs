@@ -131,7 +131,8 @@ public static class ArtifactModelBehaviorExt
         IEnumerable<BoostArtifactBehaviorModel> boostBehaviors, Action<BoostArtifactModel> modifyBoost = null)
     {
         var boost = new BoostArtifactModel("", 0, "", boostBehaviors.ToIl2CppReferenceArray(), "", "",
-            new SpriteReference(""), "", new Il2CppStringArray(0), false, new Il2CppStructArray<TowerSet>(0), false,
+            new Il2CppStringArray(0), new SpriteReference(""), "", new Il2CppStringArray(0), false,
+            new Il2CppStructArray<TowerSet>(0), false,
             new Il2CppStructArray<int>(0), false, false);
         modifyBoost?.Invoke(boost);
         var invokeBoost = new InvokeBoostBuffBehaviorModel("", boost);
@@ -163,7 +164,7 @@ public static class ArtifactModelBehaviorExt
         var boost = new AddTowerBehaviorsArtifactModel("", new Il2CppStringArray(0),
             new Il2CppStringArray(0), new Il2CppStringArray(0), new Il2CppStringArray(0),
             new Il2CppStringArray([]), false, new Il2CppStructArray<TowerSet>(0), false,
-            new Il2CppStructArray<int>([]), false, false)
+            new Il2CppStructArray<int>([]), false, false, false)
         {
             behaviorModels = towerBehaviors.ToIl2CppReferenceArray()
         };
@@ -191,12 +192,13 @@ public static class ArtifactModelBehaviorExt
     /// <param name="projectileBehaviors">Projectile behaviors to add</param>
     /// <param name="modifyBoost">function for modifying the boost, like for filtering it to specific projectiles</param>
     public static void AddProjectileBehaviors(this ItemArtifactModel artifact,
-        IEnumerable<ProjectileBehaviorModel> projectileBehaviors, Action<AddProjectileBehaviorsArtifactModel> modifyBoost = null)
+        IEnumerable<ProjectileBehaviorModel> projectileBehaviors,
+        Action<AddProjectileBehaviorsArtifactModel> modifyBoost = null)
     {
         var boost = new AddProjectileBehaviorsArtifactModel("", new Il2CppStringArray(0),
             new Il2CppStringArray(0), new Il2CppStringArray(0), new Il2CppStringArray(0),
             new Il2CppStringArray([]), false, new Il2CppStructArray<TowerSet>(0), false,
-            new Il2CppStructArray<int>([]), false, false)
+            new Il2CppStructArray<int>([]), false, false, false)
         {
             behaviorModels = projectileBehaviors.ToIl2CppReferenceArray()
         };
