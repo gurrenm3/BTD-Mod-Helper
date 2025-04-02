@@ -237,6 +237,19 @@ public virtual SpriteReference IconReference { get; }
 #### Property Value
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
 
+<a name='BTD_Mod_Helper.Api.Legends.ModArtifact.Ids'></a>
+
+## ModArtifact.Ids Property
+
+All the ArtifactIds that this will be adding
+
+```csharp
+public System.Collections.Generic.IEnumerable<string> Ids { get; }
+```
+
+#### Property Value
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
 <a name='BTD_Mod_Helper.Api.Legends.ModArtifact.MaxTier'></a>
 
 ## ModArtifact.MaxTier Property

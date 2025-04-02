@@ -203,6 +203,20 @@ public abstract class ModArtifact : NamedModContent
         }
     }
 
+    /// <summary>
+    /// All the ArtifactIds that this will be adding
+    /// </summary>
+    public System.Collections.Generic.IEnumerable<string> Ids
+    {
+        get
+        {
+            foreach (var (_, index) in Tiers)
+            {
+                yield return GetId(index);
+            }
+        }
+    }
+
     /// <inheritdoc />
     public sealed override void RegisterText(Dictionary<string, string> textTable)
     {

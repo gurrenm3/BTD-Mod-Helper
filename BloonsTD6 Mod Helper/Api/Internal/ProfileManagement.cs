@@ -4,6 +4,7 @@ using System.Linq;
 using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
@@ -147,6 +148,35 @@ internal class ProfileManagement
             CleanHashSet(profile.legendsData.unlockedStarterArtifacts, Clean("unlockedStarterArtifacts", artifacts, current),
                 UnlockedStarterArtifacts);
         }
+
+        if (current) return;
+
+        var artifactLists = new List<Il2CppSystem.Collections.Generic.List<ArtifactLoot>>();
+
+        if (profile.legendsData is {selectedStarterArtifacts: not null})
+        {
+            artifactLists.Add(profile.legendsData.selectedStarterArtifacts);
+        }
+
+        if (profile.legendsData is {rogueSaves: not null})
+        {
+            foreach (var (_, save) in profile.legendsData.rogueSaves)
+            {
+                if (save is {artifactsInventory: not null})
+                {
+                    artifactLists.Add(save.artifactsInventory);
+                }
+            }
+        }
+
+        var amount = artifactLists.Sum(artifactList =>
+            artifactList.RemoveAll(new Func<ArtifactLoot, bool>(loot => !artifacts.Contains(loot.artifactName))));
+
+        if (amount > 0)
+        {
+            ModHelper.Msg(
+                $"Cleaned {amount} artifact{(amount != 1 ? "s" : "")} that no longer exist{(amount != 1 ? "" : "s")}");
+        }
     }
 
     internal static void CleanPastProfile(ProfileModel profile)
@@ -180,7 +210,7 @@ internal class ProfileManagement
         var towers = ModContent.GetContent<ModTower>().Select(tower => tower.Id).ToList();
         var upgrades = ModContent.GetContent<ModUpgrade>().Select(upgrade => upgrade.Id).ToList();
         var heroes = ModContent.GetContent<ModHero>().Select(hero => hero.Id).ToList();
-        var artifacts = ModContent.GetContent<ModArtifact>().Select(artifact => artifact.Id).ToList();
+        var artifacts = ModContent.GetContent<ModArtifact>().SelectMany(artifact => artifact.Ids).ToList();
 
         // handle dummy upgrades
         upgrades.AddRange(towers);
@@ -283,30 +313,35 @@ internal class ProfileManagement
             }
         }
 
+        if (profile.legendsData is {unlockedStarterArtifacts: not null})
+        {
+            foreach (var artifact in UnlockedStarterArtifacts)
+            {
+                profile.legendsData.unlockedStarterArtifacts.Add(artifact);
+            }
+        }
+
         ModHelper.PerformHook(mod => mod.PostCleanProfile(profile));
     }
 
-    private static Func<string, bool> Clean(string name, IReadOnlyCollection<string> things, bool current)
+    private static Func<T, bool> Clean<T>(string name, IReadOnlyCollection<T> things, bool current) => thing =>
     {
-        return thing =>
+        if (thing is null || thing is "" || things == null)
         {
-            if (string.IsNullOrEmpty(thing) || things == null)
-            {
-                return false;
-            }
+            return false;
+        }
 
-            var shouldRemove = current ? things.Contains(thing) : !things.Contains(thing);
-            if (shouldRemove && !current)
-            {
-                ModHelper.Log($"Cleaning {name} {thing}");
-            }
+        var shouldRemove = current ? things.Contains(thing) : !things.Contains(thing);
+        if (shouldRemove && !current)
+        {
+            ModHelper.Log($"Cleaning {name} {thing}");
+        }
 
-            return shouldRemove;
-        };
-    }
+        return shouldRemove;
+    };
 
-    private static void CleanHashSet(Il2CppSystem.Collections.Generic.HashSet<string> hashSet,
-        Func<string, bool> clean, HashSet<string> storage)
+    private static void CleanHashSet<T>(Il2CppSystem.Collections.Generic.HashSet<T> hashSet,
+        Func<T, bool> clean, HashSet<T> storage)
     {
         storage.Clear();
         if (hashSet == null)
@@ -328,8 +363,8 @@ internal class ProfileManagement
         }
     }
 
-    private static void CleanDictionary<T>(Il2CppSystem.Collections.Generic.Dictionary<string, T> dictionary,
-        Func<string, bool> clean, Dictionary<string, T> storage)
+    private static void CleanDictionary<K, V>(Il2CppSystem.Collections.Generic.Dictionary<K, V> dictionary,
+        Func<K, bool> clean, Dictionary<K, V> storage)
     {
         storage.Clear();
         if (dictionary == null)
