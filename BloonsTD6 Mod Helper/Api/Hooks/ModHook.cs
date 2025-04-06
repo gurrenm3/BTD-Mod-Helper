@@ -48,7 +48,7 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// The setter only sets the value if it is not already set.
     /// </summary>
     protected nint MethodInfo {
-        get;
+        get => field;
         set {
             if (field == default) {
                 field = value;
