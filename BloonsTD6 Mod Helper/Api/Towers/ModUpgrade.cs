@@ -278,7 +278,7 @@ public abstract class ModUpgrade : NamedModContent
 /// A convenient generic class for specifying the ModTower that this ModUpgrade is for
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModUpgrade<T> : ModUpgrade where T : ModTower
+public abstract class ModUpgrade<T> : ModUpgrade where T : ModTower, new()
 {
     /// <inheritdoc />
     public override ModTower Tower => GetInstance<T>();

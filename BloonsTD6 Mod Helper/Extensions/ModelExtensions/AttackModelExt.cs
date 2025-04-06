@@ -83,7 +83,7 @@ public static class AttackModelExt
     /// <param name="attackModel"></param>
     /// <param name="index"></param>
     /// <typeparam name="T"></typeparam>
-    public static void ApplyDisplay<T>(this AttackModel attackModel, int index = 0) where T : ModDisplay
+    public static void ApplyDisplay<T>(this AttackModel attackModel, int index = 0) where T : ModDisplay, new()
     {
         var displayModels = attackModel.GetBehaviors<DisplayModel>().ToList();
         if (displayModels.Count > 0 && index >= 0 && index < displayModels.Count)

@@ -13,7 +13,7 @@ public static class SupportModelExt
     /// </summary>
     /// <param name="supportModel">The support model to apply to</param>
     /// <typeparam name="T">The ModBuffIcon type</typeparam>
-    public static SupportModel ApplyBuffIcon<T>(this SupportModel supportModel) where T : ModBuffIcon
+    public static SupportModel ApplyBuffIcon<T>(this SupportModel supportModel) where T : ModBuffIcon, new()
     {
         ModContent.GetInstance<T>().ApplyTo(supportModel);
         return supportModel;

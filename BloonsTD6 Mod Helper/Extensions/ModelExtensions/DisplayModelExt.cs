@@ -12,7 +12,7 @@ public static class DisplayModelExt
     /// Applies a given ModDisplay to this DisplayModel
     /// </summary>
     /// <typeparam name="T">The type of ModDisplay</typeparam>
-    public static void ApplyDisplay<T>(this DisplayModel displayModel) where T : ModDisplay
+    public static void ApplyDisplay<T>(this DisplayModel displayModel) where T : ModDisplay, new()
     {
         ModContent.GetInstance<T>().Apply(displayModel);
     }
