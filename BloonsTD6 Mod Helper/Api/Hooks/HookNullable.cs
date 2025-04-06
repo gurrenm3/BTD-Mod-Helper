@@ -16,4 +16,22 @@ public struct HookNullable<T> where T : unmanaged {
     /// Access this value only when <see cref="HasValue"/> indicates that a value is present
     /// </summary>
     public T Value;
+
+
+    /// <summary>
+    /// Adds a quick way to get whatever value is contained
+    /// </summary>
+    /// <returns>If <see cref="HasValue"/> is non-zero, <see cref="Value"/>, otherwise default</returns>
+    public T GetValueOrDefault() {
+        return HasValue > 0 ? Value : default;
+    }
+
+    /// <summary>
+    /// Constructor that takes in the value set
+    /// </summary>
+    /// <param name="value">Value to contain</param>
+    public HookNullable(T value) { 
+        Value = value;
+        HasValue = 1;
+    }
 }
