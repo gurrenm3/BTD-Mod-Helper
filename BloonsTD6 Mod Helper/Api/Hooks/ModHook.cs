@@ -43,15 +43,17 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// </summary>
     protected Dictionary<int, List<TM>> PostfixList = [];
 
+    private nint methodInfo;
+
     /// <summary>
     /// Gets or sets the method information pointer for the hooked method.
     /// The setter only sets the value if it is not already set.
     /// </summary>
     protected nint MethodInfo {
-        get => field;
+        get => methodInfo;
         set {
-            if (field == default) {
-                field = value;
+            if (methodInfo == default) {
+                methodInfo = value;
             }
         }
     }
