@@ -167,7 +167,7 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// <returns>A byte value where true is 1 and false is 0.</returns>
     protected static byte GetBoolValue(bool value) => (byte)(value ? 1 : 0);
     private static class TrampolineInvoker {
-        private static readonly Func<TN, object[], nint, object?> Invoker;
+        private static readonly Func<TN, object[], nint, object> Invoker;
 
         static TrampolineInvoker() {
             var delegateType = typeof(TN);
@@ -193,7 +193,7 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
                 ? (Expression) Expression.Block(callExpr, Expression.Constant(null))
                 : Expression.Convert(callExpr, typeof(object));
 
-            Invoker = Expression.Lambda<Func<TN, object[], nint, object?>>(
+            Invoker = Expression.Lambda<Func<TN, object[], nint, object>>(
                 body,
                 delParam,
                 argsParam,
