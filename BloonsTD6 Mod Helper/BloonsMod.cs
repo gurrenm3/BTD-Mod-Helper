@@ -26,6 +26,8 @@ public abstract class BloonsMod : MelonMod, IModSettings
     internal readonly List<string> loadErrors = [];
     private List<ModContent> content;
 
+    private ModLoadTask loadContentTask;
+
     /// <summary>
     /// Lets the ModHelper control patching, allowing for individual patches to fail without the entire mod getting
     /// unloaded.
@@ -86,7 +88,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
         }
     }
 
-    internal ModLoadTask LoadContentTask => field ??= new ModContentTask {mod = this};
+    internal ModLoadTask LoadContentTask => loadContentTask ??= new ModContentTask {mod = this};
 
     /// <summary>
     /// The path that this mod would most likely be at in the Mod Sources folder
