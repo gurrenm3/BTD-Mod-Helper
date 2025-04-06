@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
@@ -165,91 +166,47 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// <param name="value">The boolean value to convert.</param>
     /// <returns>A byte value where true is 1 and false is 0.</returns>
     protected static byte GetBoolValue(bool value) => (byte)(value ? 1 : 0);
-
     private static class TrampolineInvoker {
-        private static readonly Func<TN, object[], nint, object> Invoker;
-        // ReSharper disable once StaticMemberInGenericType
-        private static readonly int ExpectedUserArgCount;
+        private static readonly Func<TN, object[], nint, object?> Invoker;
 
         static TrampolineInvoker() {
             var delegateType = typeof(TN);
-            var invokeMethod = delegateType.GetMethod("Invoke")
-                ?? throw new InvalidOperationException("Delegate has no Invoke method.");
+            var invokeMethod = delegateType.GetMethod("Invoke")!;
             var parameters = invokeMethod.GetParameters();
-            ExpectedUserArgCount = parameters.Length - 1;
 
-            var dynamicMethod = new DynamicMethod(
-                "TrampolineInvoke",
-                typeof(object), [delegateType, typeof(object[]), typeof(nint)],
-                delegateType.Module,
-                true);
+            var expectedUserArgCount = parameters.Length - 1;
 
-            var il = dynamicMethod.GetILGenerator();
+            var delParam = Expression.Parameter(delegateType, "del");
+            var argsParam = Expression.Parameter(typeof(object[]), "args");
+            var methodInfoParam = Expression.Parameter(typeof(nint), "methodInfo");
 
-            il.Emit(OpCodes.Ldarg_0);
-            for (var i = 0; i < ExpectedUserArgCount; i++) {
-                il.Emit(OpCodes.Ldarg_1);
-                EmitLoadConstant(il, i);
-                il.Emit(OpCodes.Ldelem_Ref);
-                EmitCastOrUnbox(il, parameters[i].ParameterType);
+            var argExpressions = new Expression[parameters.Length];
+            for (var i = 0; i < expectedUserArgCount; i++) {
+                var indexExpr = Expression.Constant(i);
+                var argAccess = Expression.ArrayIndex(argsParam, indexExpr);
+                argExpressions[i] = Expression.Convert(argAccess, parameters[i].ParameterType);
             }
-            il.Emit(OpCodes.Ldarg_2);
+            argExpressions[expectedUserArgCount] = methodInfoParam;
 
-            il.Emit(OpCodes.Callvirt, invokeMethod);
+            var callExpr = Expression.Invoke(delParam, argExpressions);
+            var body = (invokeMethod.ReturnType == typeof(void))
+                ? (Expression) Expression.Block(callExpr, Expression.Constant(null))
+                : Expression.Convert(callExpr, typeof(object));
 
-            if (invokeMethod.ReturnType == typeof(void))
-                il.Emit(OpCodes.Ldnull);
-            else if (invokeMethod.ReturnType.IsValueType)
-                il.Emit(OpCodes.Box, invokeMethod.ReturnType);
-
-            il.Emit(OpCodes.Ret);
-
-            Invoker = (Func<TN, object[], nint, object>) dynamicMethod.CreateDelegate(typeof(Func<TN, object[], nint, object>));
+            Invoker = Expression.Lambda<Func<TN, object[], nint, object?>>(
+                body,
+                delParam,
+                argsParam,
+                methodInfoParam
+            ).Compile();
         }
 
         public static object Invoke(TN del, object[] args, nint methodInfo) {
-            if (args.Length != ExpectedUserArgCount)
-                throw new ArgumentException($"Expected {ExpectedUserArgCount} arguments, but received {args.Length}.");
+            var expectedArgs = typeof(TN).GetMethod("Invoke")!.GetParameters().Length - 1;
+            if (args.Length != expectedArgs)
+                throw new ArgumentException($"Expected {expectedArgs} arguments, but received {args.Length}.");
+
             return Invoker(del, args, methodInfo);
-        }
-
-        private static void EmitLoadConstant(ILGenerator il, int value) {
-            switch (value) {
-                case 0:
-                    il.Emit(OpCodes.Ldc_I4_0);
-                    break;
-                case 1:
-                    il.Emit(OpCodes.Ldc_I4_1);
-                    break;
-                case 2:
-                    il.Emit(OpCodes.Ldc_I4_2);
-                    break;
-                case 3:
-                    il.Emit(OpCodes.Ldc_I4_3);
-                    break;
-                case 4:
-                    il.Emit(OpCodes.Ldc_I4_4);
-                    break;
-                case 5:
-                    il.Emit(OpCodes.Ldc_I4_5);
-                    break;
-                case 6:
-                    il.Emit(OpCodes.Ldc_I4_6);
-                    break;
-                case 7:
-                    il.Emit(OpCodes.Ldc_I4_7);
-                    break;
-                case 8:
-                    il.Emit(OpCodes.Ldc_I4_8);
-                    break;
-                default:
-                    il.Emit(OpCodes.Ldc_I4, value);
-                    break;
-            }
-        }
-
-        private static void EmitCastOrUnbox(ILGenerator il, Type type) {
-            il.Emit(type.IsValueType ? OpCodes.Unbox_Any : OpCodes.Castclass, type);
         }
     }
 }
