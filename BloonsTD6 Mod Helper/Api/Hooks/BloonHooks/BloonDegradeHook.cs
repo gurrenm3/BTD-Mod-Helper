@@ -5,20 +5,21 @@ using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Simulation.Towers.Projectiles;
 using Il2CppInterop.Runtime;
-
 using static BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook;
 
 namespace BTD_Mod_Helper.Api.Hooks.BloonHooks;
+
 /// <summary>
 /// Provides a mod hook for intercepting the behavior of the Bloon.Degrade method
 /// </summary>
-public class BloonDegradeHook : ModHook<BloonDamageDelegate, BloonDamageManagedDelegate> {
-
+public class BloonDegradeHook : ModHook<BloonDegradeDelegate, BloonDegradeManagedDelegate>
+{
     /// <summary>
     /// Delegate matching the unmanaged signature for Bloon damage
     /// </summary>
+    /// <exclude/>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void BloonDamageDelegate(nint @this, nint projectile, byte createEffect,
+    public delegate void BloonDegradeDelegate(nint @this, nint projectile, byte createEffect,
         nint tower, byte blockSpawnChildren, HookNullable<int> powerActivatedByPlayerId, nint methodInfo);
 
     /// <summary>
@@ -27,13 +28,13 @@ public class BloonDegradeHook : ModHook<BloonDamageDelegate, BloonDamageManagedD
     /// <returns>
     /// Returns false if further processing should be stopped, otherwise, true
     /// </returns>
-    public delegate bool BloonDamageManagedDelegate(ref Bloon @this, ref Projectile projectile, ref bool createEffect,
+    public delegate bool BloonDegradeManagedDelegate(ref Bloon @this, ref Projectile projectile, ref bool createEffect,
         ref Tower tower, ref bool blockSpawnChildren, ref HookNullable<int> powerActivatedByPlayerId);
 
     /// <summary>
     /// Gets the unmanaged hook method that intercepts Bloon.Degrade
     /// </summary>
-    protected override BloonDamageDelegate HookMethod => BloonDegrade;
+    protected override BloonDegradeDelegate HookMethod => BloonDegrade;
 
     /// <summary>
     /// Gets the target method info, the Bloon.Degrade method
@@ -41,7 +42,8 @@ public class BloonDegradeHook : ModHook<BloonDamageDelegate, BloonDamageManagedD
     protected override MethodInfo TargetMethod => AccessTools.Method(typeof(Bloon), nameof(Bloon.Degrade));
 
     private void BloonDegrade(nint @this, nint projectile, byte createEffect,
-        nint tower, byte blockSpawnChildren, HookNullable<int> powerActivatedByPlayerId, nint methodInfo) {
+        nint tower, byte blockSpawnChildren, HookNullable<int> powerActivatedByPlayerId, nint methodInfo)
+    {
         MethodInfo = methodInfo;
 
         var bloonValue = IL2CPP.PointerToValueGeneric<Bloon>(@this, false, false);
@@ -54,20 +56,25 @@ public class BloonDegradeHook : ModHook<BloonDamageDelegate, BloonDamageManagedD
 
         var stopEarly = false;
 
-        foreach (var (_, value) in PrefixList.OrderByDescending(prefix => prefix.Key)) {
-            foreach (var bloonDamageManagedDelegate in value) {
-                stopEarly |= !bloonDamageManagedDelegate(ref bloonValue, ref projectileValue, ref createEffectBool,
+        foreach (var (_, value) in PrefixList.OrderByDescending(prefix => prefix.Key))
+        {
+            foreach (var BloonDegradeManagedDelegate in value)
+            {
+                stopEarly |= !BloonDegradeManagedDelegate(ref bloonValue, ref projectileValue, ref createEffectBool,
                     ref towerValue, ref blockSpawnChildrenBool, ref powerActivatedByPlayerId);
                 if (stopEarly)
                     return;
             }
-        } 
+        }
 
-        _ = CallOriginalMethod(bloonValue?.Pointer, projectileValue?.Pointer, GetBoolValue(createEffectBool), towerValue?.Pointer, GetBoolValue(blockSpawnChildrenBool), powerActivatedByPlayerId);
+        _ = CallOriginalMethod(bloonValue?.Pointer, projectileValue?.Pointer, GetBoolValue(createEffectBool),
+            towerValue?.Pointer, GetBoolValue(blockSpawnChildrenBool), powerActivatedByPlayerId);
 
-        foreach (var (_, value) in PostfixList.OrderByDescending(postfix => postfix.Key)) {
-            foreach (var bloonDamageManagedDelegate in value) {
-                stopEarly |= !bloonDamageManagedDelegate(ref bloonValue, ref projectileValue, ref createEffectBool,
+        foreach (var (_, value) in PostfixList.OrderByDescending(postfix => postfix.Key))
+        {
+            foreach (var BloonDegradeManagedDelegate in value)
+            {
+                stopEarly |= !BloonDegradeManagedDelegate(ref bloonValue, ref projectileValue, ref createEffectBool,
                     ref towerValue, ref blockSpawnChildrenBool, ref powerActivatedByPlayerId);
                 if (stopEarly)
                     return;

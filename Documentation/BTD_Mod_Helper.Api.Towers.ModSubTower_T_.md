@@ -7,7 +7,7 @@ Helper class for making a subtower for a specific other ModTower
 
 ```csharp
 public abstract class ModSubTower<T> : BTD_Mod_Helper.Api.Towers.ModSubTower
-    where T : BTD_Mod_Helper.Api.Towers.ModTower
+    where T : BTD_Mod_Helper.Api.Towers.ModTower, new()
 ```
 #### Type parameters
 

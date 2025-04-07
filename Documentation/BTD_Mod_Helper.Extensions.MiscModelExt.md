@@ -20,7 +20,7 @@ Applies the given ModDisplay to this asset path
 
 ```csharp
 public static void ApplyDisplay<T>(this AssetPathModel effectModel)
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
 ```
 #### Type parameters
 
@@ -41,7 +41,7 @@ Applies the given ModDisplay to this effect
 
 ```csharp
 public static void ApplyDisplay<T>(this EffectModel effectModel)
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
 ```
 #### Type parameters
 
@@ -62,7 +62,7 @@ Applies the given ModBloonOverlay to this behavior
 
 ```csharp
 public static void ApplyOverlay<T>(this ProjectileBehaviorWithOverlayModel projectileBehaviorWithOverlayModel)
-    where T : BTD_Mod_Helper.Api.Display.ModBloonOverlay;
+    where T : BTD_Mod_Helper.Api.Display.ModBloonOverlay, new();
 ```
 #### Type parameters
 

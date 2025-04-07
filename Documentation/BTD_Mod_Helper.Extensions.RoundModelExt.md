@@ -61,7 +61,7 @@ Adds a new group of Bloons to this round
 
 ```csharp
 public static void AddBloonGroup<T>(this RoundModel roundModel, int count=1, float startTime=0f, float endTime=60f)
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon;
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new();
 ```
 #### Type parameters
 
@@ -186,7 +186,7 @@ Replaces BloonGroups of a certain bloonId with ones for a new Id
 
 ```csharp
 public static void ReplaceBloonInGroups<T>(this RoundModel roundModel, string oldBloonId, bool byBaseId=false)
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon;
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new();
 ```
 #### Type parameters
 

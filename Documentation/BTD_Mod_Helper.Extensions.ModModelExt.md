@@ -696,7 +696,7 @@ Makes this GameMode use the given RoundSet
 
 ```csharp
 public static void UseRoundSet<T>(this ModModel model)
-    where T : BTD_Mod_Helper.Api.Bloons.ModRoundSet;
+    where T : BTD_Mod_Helper.Api.Bloons.ModRoundSet, new();
 ```
 #### Type parameters
 

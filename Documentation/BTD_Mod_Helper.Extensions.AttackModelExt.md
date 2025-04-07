@@ -64,7 +64,7 @@ If there are no DisplayModels, then this does nothing
 
 ```csharp
 public static void ApplyDisplay<T>(this AttackModel attackModel, int index=0)
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
 ```
 #### Type parameters
 

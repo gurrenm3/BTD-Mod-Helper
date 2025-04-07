@@ -191,6 +191,16 @@ public void ApplyHarmonyPatches(System.Type type);
 
 `type` [System.Type](https://docs.microsoft.com/en-us/dotnet/api/System.Type 'System.Type')
 
+<a name='BTD_Mod_Helper.BloonsMod.ApplyModHooks()'></a>
+
+## BloonsMod.ApplyModHooks() Method
+
+Tries to apply all mod hooks in the calling assembly, failing gracefully on errors.
+
+```csharp
+public void ApplyModHooks();
+```
+
 <a name='BTD_Mod_Helper.BloonsMod.Call(string,object[])'></a>
 
 ## BloonsMod.Call(string, object[]) Method

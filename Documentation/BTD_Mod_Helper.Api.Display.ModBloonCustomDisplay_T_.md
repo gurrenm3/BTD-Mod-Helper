@@ -7,7 +7,7 @@ A ModCustomDisplay that will automatically apply to a ModBloon
 
 ```csharp
 public abstract class ModBloonCustomDisplay<T> : BTD_Mod_Helper.Api.Display.ModBloonCustomDisplay
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new()
 ```
 #### Type parameters
 

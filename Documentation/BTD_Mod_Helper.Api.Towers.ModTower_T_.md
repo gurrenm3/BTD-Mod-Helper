@@ -7,7 +7,7 @@ A convenient generic class for specifying the ModTowerSet that a ModTower uses
 
 ```csharp
 public abstract class ModTower<T> : BTD_Mod_Helper.Api.Towers.ModTower
-    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet
+    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet, new()
 ```
 #### Type parameters
 

@@ -7,7 +7,7 @@ Class for a ModBloon which has a different ModBloon as its base
 
 ```csharp
 public abstract class ModBloon<T> : BTD_Mod_Helper.Api.Bloons.ModBloon
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new()
 ```
 #### Type parameters
 

@@ -7,7 +7,7 @@ A convenient generic class for applying a ModTowerDisplay to a ModTower
 
 ```csharp
 public abstract class ModTowerDisplay<T> : BTD_Mod_Helper.Api.Display.ModTowerDisplay
-    where T : BTD_Mod_Helper.Api.Towers.ModTower
+    where T : BTD_Mod_Helper.Api.Towers.ModTower, new()
 ```
 #### Type parameters
 

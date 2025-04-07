@@ -7,7 +7,7 @@ A convenient generic class for specifying the ModTower that this ModUpgrade is f
 
 ```csharp
 public abstract class ModUpgrade<T> : BTD_Mod_Helper.Api.Towers.ModUpgrade
-    where T : BTD_Mod_Helper.Api.Towers.ModTower
+    where T : BTD_Mod_Helper.Api.Towers.ModTower, new()
 ```
 #### Type parameters
 

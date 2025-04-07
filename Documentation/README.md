@@ -186,6 +186,42 @@
 | [TimeHelper](BTD_Mod_Helper.Api.Helpers.TimeHelper.md 'BTD_Mod_Helper.Api.Helpers.TimeHelper') | Properties and methods for helping change in game time / time related values |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
 
+<a name='BTD_Mod_Helper.Api.Hooks'></a>
+
+## BTD_Mod_Helper.Api.Hooks Namespace
+
+| Classes | |
+| :--- | :--- |
+| [HookPriorityAttribute](BTD_Mod_Helper.Api.Hooks.HookPriorityAttribute.md 'BTD_Mod_Helper.Api.Hooks.HookPriorityAttribute') | Specifies the priority of this hook compared to others |
+| [HookTargetAttribute](BTD_Mod_Helper.Api.Hooks.HookTargetAttribute.md 'BTD_Mod_Helper.Api.Hooks.HookTargetAttribute') | Specifies the target type and hook type for a method hook. |
+| [ModHook&lt;TN,TM&gt;](BTD_Mod_Helper.Api.Hooks.ModHook_TN,TM_.md 'BTD_Mod_Helper.Api.Hooks.ModHook<TN,TM>') | Provides a base mod hook for intercepting and modifying method calls using prefix and postfix hooks |
+
+| Structs | |
+| :--- | :--- |
+| [HookNullable&lt;T&gt;](BTD_Mod_Helper.Api.Hooks.HookNullable_T_.md 'BTD_Mod_Helper.Api.Hooks.HookNullable<T>') | Provides a simplified nullable type for unmanaged types, used as a replacement for Il2CPP's nullable implementation |
+
+| Enums | |
+| :--- | :--- |
+| [HookTargetAttribute.EHookType](BTD_Mod_Helper.Api.Hooks.HookTargetAttribute.EHookType.md 'BTD_Mod_Helper.Api.Hooks.HookTargetAttribute.EHookType') | Represents the type of hook to apply |
+
+| Delegates | |
+| :--- | :--- |
+| [ModHook&lt;TN,TM&gt;.GetIl2CppMethodInfoPointerFieldForGeneratedMethod(MethodInfo)](BTD_Mod_Helper.Api.Hooks.ModHook_TN,TM_.GetIl2CppMethodInfoPointerFieldForGeneratedMethod(System.Reflection.MethodInfo).md 'BTD_Mod_Helper.Api.Hooks.ModHook<TN,TM>.GetIl2CppMethodInfoPointerFieldForGeneratedMethod(System.Reflection.MethodInfo)') | Delegate for retrieving the FieldInfo pointer for a generated method's Il2Cpp method info |
+
+<a name='BTD_Mod_Helper.Api.Hooks.BloonHooks'></a>
+
+## BTD_Mod_Helper.Api.Hooks.BloonHooks Namespace
+
+| Classes | |
+| :--- | :--- |
+| [BloonDamageHook](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook.md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook') | Provides a mod hook for intercepting the behavior of the Bloon.Damage method |
+| [BloonDegradeHook](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook.md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook') | Provides a mod hook for intercepting the behavior of the Bloon.Degrade method |
+
+| Delegates | |
+| :--- | :--- |
+| [BloonDamageHook.BloonDamageManagedDelegate(Bloon, float, Projectile, bool, bool, bool, Tower, BloonProperties, BloonProperties, bool, bool, bool, bool, HookNullable&lt;int&gt;)](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook.BloonDamageManagedDelegate(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,BloonProperties,bool,bool,bool,bool,BTD_Mod_Helper.Api.Hooks.HookNullable_int_).md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook.BloonDamageManagedDelegate(Bloon, float, Projectile, bool, bool, bool, Tower, BloonProperties, BloonProperties, bool, bool, bool, bool, BTD_Mod_Helper.Api.Hooks.HookNullable<int>)') | Delegate matching the managed signature for processing Bloon damage |
+| [BloonDegradeHook.BloonDegradeManagedDelegate(Bloon, Projectile, bool, Tower, bool, HookNullable&lt;int&gt;)](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook.BloonDegradeManagedDelegate(Bloon,Projectile,bool,Tower,bool,BTD_Mod_Helper.Api.Hooks.HookNullable_int_).md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook.BloonDegradeManagedDelegate(Bloon, Projectile, bool, Tower, bool, BTD_Mod_Helper.Api.Hooks.HookNullable<int>)') | Delegate matching the managed signature for processing Bloon damage |
+
 <a name='BTD_Mod_Helper.Api.Internal'></a>
 
 ## BTD_Mod_Helper.Api.Internal Namespace

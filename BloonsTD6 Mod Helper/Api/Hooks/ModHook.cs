@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
 namespace BTD_Mod_Helper.Api.Hooks;
+
 /// <summary>
 /// Provides a base mod hook for intercepting and modifying method calls using prefix and postfix hooks
 /// </summary>
 /// <typeparam name="TN">The type of the unmanaged delegate</typeparam>
 /// <typeparam name="TM">The type of the managed delegate</typeparam>
-public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM : Delegate {
+public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM : Delegate
+{
     /// <summary>
     /// Gets the target method information that this mod hook intercepts
     /// </summary>
@@ -50,10 +51,13 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// Gets or sets the method information pointer for the hooked method.
     /// The setter only sets the value if it is not already set.
     /// </summary>
+    /// <exclude/>
     protected nint MethodInfo {
         get => methodInfo;
-        set {
-            if (methodInfo == default) {
+        set
+        {
+            if (methodInfo == default)
+            {
                 methodInfo = value;
             }
         }
@@ -63,14 +67,16 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// Adds a prefix hook method to be executed before the original method
     /// </summary>
     /// <param name="method">The prefix hook method</param>
-    public void AddPrefix(TM method) {
+    public void AddPrefix(TM method)
+    {
         if (!attached)
             CreateAndAttachHook();
 
         var hookPriority = method.Method.GetCustomAttribute<HookPriorityAttribute>();
         var priority = hookPriority?.Priority ?? 0;
 
-        if (!PrefixList.ContainsKey(priority)) {
+        if (!PrefixList.ContainsKey(priority))
+        {
             PrefixList[priority] = [];
         }
 
@@ -82,14 +88,16 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// Adds a postfix hook method to be executed after the original method
     /// </summary>
     /// <param name="method">The postfix hook method</param>
-    public void AddPostfix(TM method) {
+    public void AddPostfix(TM method)
+    {
         if (!attached)
             CreateAndAttachHook();
 
         var hookPriority = method.Method.GetCustomAttribute<HookPriorityAttribute>();
         var priority = hookPriority?.Priority ?? 0;
 
-        if (!PostfixList.ContainsKey(priority)) {
+        if (!PostfixList.ContainsKey(priority))
+        {
             PostfixList[priority] = [];
         }
 
@@ -99,7 +107,9 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// <summary>
     /// Unused
     /// </summary>
-    public override void Register() { }
+    public override void Register()
+    {
+    }
 
     /// <summary>
     /// Calls the original (trampoline) method with the specified arguments
@@ -120,25 +130,29 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// Creates and attaches the native hook to the target method.
     /// Validates the delegate type and attaches the hook if valid.
     /// </summary>
-    public void CreateAndAttachHook() {
+    public void CreateAndAttachHook()
+    {
         attached = true;
         var delegateType = typeof(TN);
 
         var attribute = delegateType.GetCustomAttribute<UnmanagedFunctionPointerAttribute>(inherit: false);
 
-        if (attribute == null) {
+        if (attribute == null)
+        {
             ModHelper.Error($"Mod Hook {Name}'s delegate type lacking an UnmanagedFunctionPointer attribute.");
             return;
         }
 
-        if (attribute.CallingConvention != CallingConvention.Cdecl) {
+        if (attribute.CallingConvention != CallingConvention.Cdecl)
+        {
             ModHelper.Error($"Mod Hook {Name}'s delegate type's Calling Convention is not Cdecl.");
             return;
         }
 
-        unsafe {
-            var getIl2CppMethodInfoPointerFieldForGeneratedMethod = AccessTools.
-                MethodDelegate<GetIl2CppMethodInfoPointerFieldForGeneratedMethod>(
+        unsafe
+        {
+            var getIl2CppMethodInfoPointerFieldForGeneratedMethod =
+                AccessTools.MethodDelegate<GetIl2CppMethodInfoPointerFieldForGeneratedMethod>(
                     AccessTools.Method(AccessTools.TypeByName("Il2CppInterop.Common.Il2CppInteropUtils"),
                         "GetIl2CppMethodInfoPointerFieldForGeneratedMethod"));
 
@@ -152,9 +166,9 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
             );
 
             Hook = new MelonLoader.NativeUtils.NativeHook<TN>(
-                    originalMethod,
-                    delegatePointer
-                );
+                originalMethod,
+                delegatePointer
+            );
 
             Hook.Attach();
         }
@@ -165,11 +179,14 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// </summary>
     /// <param name="value">The boolean value to convert.</param>
     /// <returns>A byte value where true is 1 and false is 0.</returns>
-    protected static byte GetBoolValue(bool value) => (byte)(value ? 1 : 0);
-    private static class TrampolineInvoker {
+    protected static byte GetBoolValue(bool value) => (byte) (value ? 1 : 0);
+
+    private static class TrampolineInvoker
+    {
         private static readonly Func<TN, object[], nint, object> Invoker;
 
-        static TrampolineInvoker() {
+        static TrampolineInvoker()
+        {
             var delegateType = typeof(TN);
             var invokeMethod = delegateType.GetMethod("Invoke")!;
             var parameters = invokeMethod.GetParameters();
@@ -181,7 +198,8 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
             var methodInfoParam = Expression.Parameter(typeof(nint), "methodInfo");
 
             var argExpressions = new Expression[parameters.Length];
-            for (var i = 0; i < expectedUserArgCount; i++) {
+            for (var i = 0; i < expectedUserArgCount; i++)
+            {
                 var indexExpr = Expression.Constant(i);
                 var argAccess = Expression.ArrayIndex(argsParam, indexExpr);
                 argExpressions[i] = Expression.Convert(argAccess, parameters[i].ParameterType);
@@ -201,7 +219,8 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
             ).Compile();
         }
 
-        public static object Invoke(TN del, object[] args, nint methodInfo) {
+        public static object Invoke(TN del, object[] args, nint methodInfo)
+        {
             var expectedArgs = typeof(TN).GetMethod("Invoke")!.GetParameters().Length - 1;
             if (args.Length != expectedArgs)
                 throw new ArgumentException($"Expected {expectedArgs} arguments, but received {args.Length}.");

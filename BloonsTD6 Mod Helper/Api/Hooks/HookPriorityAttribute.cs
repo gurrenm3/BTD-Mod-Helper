@@ -6,8 +6,8 @@ namespace BTD_Mod_Helper.Api.Hooks;
 /// Specifies the priority of this hook compared to others
 /// </summary>
 [AttributeUsage(AttributeTargets.Method)]
-public class HookPriorityAttribute : Attribute {
-    
+public class HookPriorityAttribute : Attribute
+{
     /// <summary>
     /// Backing priority value for sorting
     /// </summary>

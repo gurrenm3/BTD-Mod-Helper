@@ -39,7 +39,7 @@ Applies a given ModDisplay to this ProjectileModel
 
 ```csharp
 public static void ApplyDisplay<T>(this ProjectileModel projectileModel)
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
 ```
 #### Type parameters
 
