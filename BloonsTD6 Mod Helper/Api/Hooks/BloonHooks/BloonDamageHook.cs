@@ -31,6 +31,7 @@ public class BloonDamageHook : ModHook<BloonDamageDelegate, BloonDamageManagedDe
     /// <returns>
     /// Returns false if further processing should be stopped, otherwise, true
     /// </returns>
+    /// <exclude/>
     public delegate bool BloonDamageManagedDelegate(ref Bloon @this, ref float totalAmount, ref Projectile projectile,
         ref bool distributeToChildren, ref bool overrideDistributeBlocker, ref bool createEffect, ref Tower tower,
         ref BloonProperties immuneBloonProperties, ref BloonProperties originalImmuneBloonProperties,

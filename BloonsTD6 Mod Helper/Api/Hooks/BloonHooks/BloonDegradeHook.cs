@@ -28,6 +28,7 @@ public class BloonDegradeHook : ModHook<BloonDegradeDelegate, BloonDegradeManage
     /// <returns>
     /// Returns false if further processing should be stopped, otherwise, true
     /// </returns>
+    /// <exclude/>
     public delegate bool BloonDegradeManagedDelegate(ref Bloon @this, ref Projectile projectile, ref bool createEffect,
         ref Tower tower, ref bool blockSpawnChildren, ref HookNullable<int> powerActivatedByPlayerId);
 

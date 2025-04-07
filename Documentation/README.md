@@ -217,11 +217,6 @@
 | [BloonDamageHook](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook.md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook') | Provides a mod hook for intercepting the behavior of the Bloon.Damage method |
 | [BloonDegradeHook](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook.md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook') | Provides a mod hook for intercepting the behavior of the Bloon.Degrade method |
 
-| Delegates | |
-| :--- | :--- |
-| [BloonDamageHook.BloonDamageManagedDelegate(Bloon, float, Projectile, bool, bool, bool, Tower, BloonProperties, BloonProperties, bool, bool, bool, bool, HookNullable&lt;int&gt;)](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook.BloonDamageManagedDelegate(Bloon,float,Projectile,bool,bool,bool,Tower,BloonProperties,BloonProperties,bool,bool,bool,bool,BTD_Mod_Helper.Api.Hooks.HookNullable_int_).md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDamageHook.BloonDamageManagedDelegate(Bloon, float, Projectile, bool, bool, bool, Tower, BloonProperties, BloonProperties, bool, bool, bool, bool, BTD_Mod_Helper.Api.Hooks.HookNullable<int>)') | Delegate matching the managed signature for processing Bloon damage |
-| [BloonDegradeHook.BloonDegradeManagedDelegate(Bloon, Projectile, bool, Tower, bool, HookNullable&lt;int&gt;)](BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook.BloonDegradeManagedDelegate(Bloon,Projectile,bool,Tower,bool,BTD_Mod_Helper.Api.Hooks.HookNullable_int_).md 'BTD_Mod_Helper.Api.Hooks.BloonHooks.BloonDegradeHook.BloonDegradeManagedDelegate(Bloon, Projectile, bool, Tower, bool, BTD_Mod_Helper.Api.Hooks.HookNullable<int>)') | Delegate matching the managed signature for processing Bloon damage |
-
 <a name='BTD_Mod_Helper.Api.Internal'></a>
 
 ## BTD_Mod_Helper.Api.Internal Namespace
