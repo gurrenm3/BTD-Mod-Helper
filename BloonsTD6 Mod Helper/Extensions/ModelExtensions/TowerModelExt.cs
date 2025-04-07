@@ -158,7 +158,7 @@ public static class TowerModelExt
     /// Applies a given ModDisplay to this TowerModel
     /// </summary>
     /// <typeparam name="T">The type of ModDisplay</typeparam>
-    public static void ApplyDisplay<T>(this TowerModel towerModel) where T : ModDisplay
+    public static void ApplyDisplay<T>(this TowerModel towerModel) where T : ModDisplay, new()
     {
         ModContent.GetInstance<T>().Apply(towerModel);
     }

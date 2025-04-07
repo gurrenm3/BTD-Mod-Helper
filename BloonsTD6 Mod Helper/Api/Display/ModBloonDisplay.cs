@@ -50,7 +50,7 @@ public abstract class ModBloonDisplay : ModDisplay
 /// <summary>
 /// A convenient generic class for applying a ModBloonDisplay to a ModBloon
 /// </summary>
-public abstract class ModBloonDisplay<T> : ModBloonDisplay where T : ModBloon
+public abstract class ModBloonDisplay<T> : ModBloonDisplay where T : ModBloon, new()
 {
     /// <inheritdoc />
     public override ModBloon Bloon => GetInstance<T>();

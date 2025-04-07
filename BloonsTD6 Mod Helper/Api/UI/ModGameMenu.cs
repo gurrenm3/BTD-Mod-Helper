@@ -144,7 +144,7 @@ public abstract class ModGameMenu : ModContent
     /// code
     /// </param>
     /// <typeparam name="T">The custom menu type to open</typeparam>
-    public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu
+    public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu, new()
     {
         var modGameMenu = GetInstance<T>();
         modGameMenu.IsOpen = true;

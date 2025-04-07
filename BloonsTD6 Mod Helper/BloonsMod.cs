@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.Hooks;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
 using Newtonsoft.Json.Linq;
+using Octokit;
 using UnityEngine;
+
 namespace BTD_Mod_Helper;
 
 /// <summary>
@@ -187,6 +193,118 @@ public abstract class BloonsMod : MelonMod, IModSettings
         }
     }
 
+    /// <summary>
+    /// Tries to apply all mod hooks in the calling assembly, failing gracefully on errors.
+    /// </summary>
+    public void ApplyModHooks() {
+        foreach (var (methodInfo, hook) in GetType().Assembly.DefinedTypes.AsParallel()
+                     .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
+                     .Where(method => method.IsDefined(typeof(HookTargetAttribute), false))
+                     .Select(method => (method, hook: method.GetCustomAttribute<HookTargetAttribute>()))
+                     .Where(data => data.hook != null)
+                     .Where(data => {
+                         var assignableToModHook = data.hook!.TargetType.IsAssignableToGenericType(typeof(ModHook<,>));
+                         if (!assignableToModHook)
+                             MelonLogger.Warning($"Failed to apply hook of method ({data.method.Name}) with the target type of {data.hook.TargetType.FullName}");
+                         return assignableToModHook;
+                     }).AsSequential()) {
+            try {
+                var hookTypeGenericArgs = hook!.TargetType.BaseType!.GetGenericArguments();
+                var delegateType = hookTypeGenericArgs[1];
+
+                Delegate hookDelegate;
+                var delegateInvoke = delegateType.GetMethod("Invoke");
+                if (delegateInvoke == null) {
+                    MelonLogger.Error($"Delegate type for hook method {methodInfo.Name} has no Invoke method.");
+                    continue;
+                }
+
+                if (methodInfo.GetParameters().Length < delegateInvoke.GetParameters().Length) {
+                    var invokeMethod = delegateType.GetMethod("Invoke");
+                    if (invokeMethod == null) {
+                        MelonLogger.Error($"Not a valid delegate for hook method: {methodInfo.Name}");
+                        continue;
+                    }
+                    var fullParams = invokeMethod.GetParameters();
+                    var userParams = methodInfo.GetParameters();
+
+                    var parameterExpressions = fullParams.Select(p => Expression.Parameter(p.ParameterType, p.Name)).ToArray();
+
+                    var fullParamExprDict = fullParams
+                        .Select((p, i) => new { p.Name, Expr = parameterExpressions[i] })
+                        .ToDictionary(x => x.Name!, x => x.Expr, StringComparer.OrdinalIgnoreCase);
+
+                    var callArgs = new Expression[userParams.Length];
+
+                    for (var i = 0; i < userParams.Length; i++) {
+                        var userParam = userParams[i];
+                        ParameterExpression fullParamExpr;
+
+                        if (userParam.Name is "@this" or "__instance") {
+                            if (!fullParamExprDict.TryGetValue("@this", out fullParamExpr) &&
+                                !fullParamExprDict.TryGetValue("__instance", out fullParamExpr)) {
+                                fullParamExpr = parameterExpressions.FirstOrDefault();
+                                if (fullParamExpr == null) {
+                                    MelonLogger.Error($"Could not bind instance parameter '{userParam.Name}' for hook method {methodInfo.Name}.");
+                                    throw new InvalidOperationException($"Could not bind instance parameter '{userParam.Name}'.");
+                                }
+                            }
+                        } else {
+                            if (!fullParamExprDict.TryGetValue(userParam.Name!, out fullParamExpr)) {
+                                MelonLogger.Error($"Could not find matching delegate parameter for user parameter '{userParam.Name}' in hook method {methodInfo.Name}.");
+                                throw new InvalidOperationException($"Could not find matching delegate parameter for user parameter '{userParam.Name}'.");
+                            }
+                        }
+
+                        if (fullParamExpr.Type.IsByRef) {
+                            var elementType = fullParamExpr.Type.GetElementType();
+                            if (userParam.ParameterType.IsByRef) {
+                                callArgs[i] = fullParamExpr;
+                            } else {
+                                if (!userParam.ParameterType.IsAssignableFrom(elementType)) {
+                                    MelonLogger.Error($"Type mismatch for parameter '{userParam.Name}' in hook method {methodInfo.Name}.");
+                                    throw new InvalidOperationException(
+                                        $"Type mismatch for parameter '{userParam.Name}': delegate provides '{elementType}', " +
+                                        $"but user method expects '{userParam.ParameterType}'.");
+                                }
+                                callArgs[i] = Expression.Convert(fullParamExpr, userParam.ParameterType);
+                            }
+                        } else {
+                            if (!fullParamExpr.Type.IsAssignableTo(userParam.ParameterType)) {
+                                MelonLogger.Error($"Type mismatch for parameter '{userParam.Name}' in hook method {methodInfo.Name}.");
+                                throw new InvalidOperationException(
+                                    $"Type mismatch for parameter '{userParam.Name}': delegate parameter is '{fullParamExpr.Type}', " +
+                                    $"but user method expects '{userParam.ParameterType}'.");
+                            }
+                            callArgs[i] = fullParamExpr;
+                        }
+                    }
+
+                    Expression callExpr = Expression.Call(methodInfo, callArgs);
+                    if (invokeMethod.ReturnType != methodInfo.ReturnType) {
+                        callExpr = Expression.Convert(callExpr, invokeMethod.ReturnType);
+                    }
+                    var lambda = Expression.Lambda(delegateType, callExpr, parameterExpressions);
+                    hookDelegate = lambda.Compile(true);
+                } else {
+                    hookDelegate = methodInfo.CreateDelegate(delegateType);
+                }
+
+                var hookInstance = ModContent.GetInstance(hook.TargetType);
+                var addMethodName = $"Add{(hook.HookType == HookTargetAttribute.EHookType.Prefix ? "Prefix" : "Postfix")}";
+                var addMethod = hook.TargetType.GetMethod(addMethodName, BindingFlags.Public | BindingFlags.Instance);
+                if (addMethod == null) {
+                    MelonLogger.Error($"Could not find method '{addMethodName}' on type {hook.TargetType.FullName} for hook method {methodInfo.Name}.");
+                    continue;
+                }
+                addMethod.Invoke(hookInstance, [hookDelegate]);
+            } catch (Exception ex) {
+                MelonLogger.Error($"Exception while applying hook method {methodInfo.Name}: {ex.Message}");
+            }
+        }
+    }
+
+
     /// <inheritdoc />
     public sealed override void OnInitializeMelon()
     {
@@ -200,6 +318,8 @@ public abstract class BloonsMod : MelonMod, IModSettings
             // Happens when trying to get a custom embedded resource during the static constructor phase
             LoggerInstance.Warning("Tried to get mod id prefix too soon, used default value at least once");
         }
+
+        ApplyModHooks();
 
         OnApplicationStart();
         OnInitialize();

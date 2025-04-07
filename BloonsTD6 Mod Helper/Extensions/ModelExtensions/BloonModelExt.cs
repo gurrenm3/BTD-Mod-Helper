@@ -283,7 +283,7 @@ public static class BloonModelExt
     /// Applies a given ModDisplay to this TowerModel
     /// </summary>
     /// <typeparam name="T">The type of ModDisplay</typeparam>
-    public static void ApplyDisplay<T>(this BloonModel bloonModel) where T : ModDisplay
+    public static void ApplyDisplay<T>(this BloonModel bloonModel) where T : ModDisplay, new()
     {
         ModContent.GetInstance<T>().Apply(bloonModel);
     }
@@ -291,7 +291,7 @@ public static class BloonModelExt
     /// <summary>
     /// Adds a child to be spawned from the Bloon
     /// </summary>
-    public static void AddToChildren<T>(this BloonModel bloonModel, int amount = 1) where T : ModBloon
+    public static void AddToChildren<T>(this BloonModel bloonModel, int amount = 1) where T : ModBloon, new()
     {
         bloonModel.AddToChildren(ModContent.BloonID<T>(), amount);
     }
@@ -381,7 +381,7 @@ public static class BloonModelExt
     /// <summary>
     /// Replaces all spawned child Bloons that have id oldId with the given ModBloon
     /// </summary>
-    public static void ReplaceInChildren<T>(this BloonModel bloonModel, string oldId) where T : ModBloon
+    public static void ReplaceInChildren<T>(this BloonModel bloonModel, string oldId) where T : ModBloon, new()
     {
         bloonModel.ReplaceInChildren(oldId, ModContent.BloonID<T>());
     }
@@ -392,7 +392,7 @@ public static class BloonModelExt
     /// <param name="bloonModel"></param>
     /// <param name="id"></param>
     public static void ReplaceInChildren<TOld, TNew>(this BloonModel bloonModel, string id)
-        where TOld : ModBloon where TNew : ModBloon
+        where TOld : ModBloon, new() where TNew : ModBloon, new()
     {
         bloonModel.ReplaceInChildren(ModContent.BloonID<TOld>(), ModContent.BloonID<TNew>());
     }
