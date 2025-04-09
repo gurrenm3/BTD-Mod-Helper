@@ -64,4 +64,38 @@ public class ModHelperText : ModHelperComponent
 
         return modHelperText;
     }
+
+
+    /// <summary>
+    /// Enables auto sizing for this <see cref="Text"/> component
+    /// </summary>
+    public void EnableAutoSizing()
+    {
+        Text.enableAutoSizing = true;
+    }
+
+    /// <summary>
+    /// Enables or disables auto sizing for this <see cref="Text"/> component
+    /// </summary>
+    public void EnableAutoSizing(bool enabled)
+    {
+        Text.enableAutoSizing = enabled;
+    }
+    /// <summary>
+    /// Enables auto sizing for this <see cref="Text"/> component
+    /// </summary>
+    public void EnableAutoSizing(float fontSizeMax)
+    {
+        Text.enableAutoSizing = true;
+        Text.fontSizeMax = fontSizeMax;
+    }
+    /// <summary>
+    /// Enables auto sizing for <see cref="Text"/> 
+    /// </summary>
+    public void EnableAutoSizing(float fontSizeMax, float fontSizeMin)
+    {
+        Text.enableAutoSizing = true;
+        Text.fontSizeMax = fontSizeMax;
+        Text.fontSizeMin = fontSizeMin;
+    }
 }
