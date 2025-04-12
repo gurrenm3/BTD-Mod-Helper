@@ -1,3 +1,4 @@
+using System;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using Il2CppAssets.Scripts.Models.Effects;
@@ -31,6 +32,7 @@ public static class MiscModelExt
     /// <summary>
     /// Gets the damageMultiplier field for a DamageModifierModel
     /// </summary>
+    [Obsolete("Now a real method on damage modifiers")]
     public static float GetDamageMult(this DamageModifierModel model, Bloon bloon)
     {
         var before = 1f;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
@@ -124,7 +125,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     private static bool CanLoadType(Type type) => !type.IsAbstract &&
                                                   !type.ContainsGenericParameters &&
                                                   typeof(ModContent).IsAssignableFrom(type) &&
-                                                  type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) != null;
+                                                  type.GetCustomAttribute<DontLoadAttribute>() == null;
 
     private static ModContent CreateInstance(Type type, BloonsMod mod)
     {

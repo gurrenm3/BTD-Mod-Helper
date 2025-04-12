@@ -1,3 +1,4 @@
+using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
@@ -7,9 +8,9 @@ namespace BTD_Mod_Helper.Api.Display;
 /// Class used internally to represent displays for <see cref="ModTower" />s using <see cref="ModTower.Use2DModel" />
 /// and <see cref="ModBloon" />s using <see cref="ModBloon.UseIconAsDisplay" />
 /// </summary>
+[DontLoad]
 internal sealed class ModDisplay2DImpl : ModDisplay2D
 {
-
     /// <summary>
     /// Creates a new Mod
     /// </summary>

@@ -38,12 +38,12 @@ internal static class ModHelperGithub
         "Please try again at a later time. If issues stil persist for this mod and not others, contact the mod developer.";
 
     internal static readonly string[] AllContentTypes =
-        {DllContentType, DllContentType2, DllContentType3, ZipContentType, ZipContentType2};
+        [DllContentType, DllContentType2, DllContentType3, ZipContentType, ZipContentType2];
 
-    public static readonly HashSet<string> VerifiedModders = new();
-    public static readonly HashSet<string> BannedModders = new();
-    public static readonly HashSet<string> VerifiedTopics = new();
-    public static readonly HashSet<string> BannedMods = new();
+    public static readonly HashSet<string> VerifiedModders = [];
+    public static readonly HashSet<string> BannedModders = [];
+    public static readonly HashSet<string> VerifiedTopics = [];
+    public static readonly HashSet<string> BannedMods = [];
 
     private static MiscellaneousRateLimit rateLimit;
     private static readonly string DoYouWantToDownload =
@@ -55,7 +55,7 @@ internal static class ModHelperGithub
     private static readonly string DownloadDepsSuccess = ModHelper.Localize(nameof(DownloadDepsSuccess),
         "Successfully downloaded dependencies! Remember to restart to apply changes.");
 
-    public static List<ModHelperData> Mods { get; private set; } = new();
+    public static List<ModHelperData> Mods { get; private set; } = [];
     private static bool ForceVerifiedOnly { get; set; }
 
     public static GitHubClient Client { get; private set; }

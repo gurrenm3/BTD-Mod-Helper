@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Data.Skins;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common;
@@ -11,8 +12,9 @@ using Newtonsoft.Json.Linq;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.ResourceLocations;
-using Array = System.Array;
 using Exception = System.Exception;
+using JsonConvert = Il2CppNewtonsoft.Json.JsonConvert;
+
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
@@ -20,6 +22,8 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class GameModelExporter
 {
+    private static JToken Parse(Object obj) => JToken.Parse(JsonConvert.SerializeObject(obj, FileIOHelper.Settings));
+
     /// <summary>
     /// Exports every bit of GameModel and GameData info of note to the local folder
     /// </summary>
@@ -104,32 +108,36 @@ public static class GameModelExporter
             $"Exported {success}/{total} BuffIndicatorModels to {Path.Combine(FileIOHelper.sandboxRoot, "Buffs")}");
 
         total = success = 0;
-        GameData.Instance.skinsData.SkinList.items.ForEach(data =>
+        foreach (var data in GameData.Instance.skinsData.SkinList.items.ToArray())
         {
-            var jobject = new JObject
-            {
-                ["name"] = data.name,
-                ["skinName"] = data.skinName,
-                ["description"] = data.description,
-                ["baseTowerName"] = data.baseTowerName,
-                ["mmCost"] = data.mmCost,
-                ["icon"] = data.icon.AssetGUID,
-                ["iconSquare"] = data.iconSquare.AssetGUID,
-                ["isDefaultTowerSkin"] = data.isDefaultTowerSkin,
-                ["textMaterialId"] = data.textMaterialId,
-                ["StorePortraitsContainer"] = new JArray(
-                    data.StorePortraitsContainer?.items?.ToList()?.Select(portrait =>
-                        new JObject
-                        {
-                            ["asset"] = portrait.asset?.AssetGUID,
-                            ["levelText"] = portrait.levelTxt
-                        }) ??
-                    Array.Empty<JObject>()
-                )
-            };
-
             try
             {
+                var jobject = new JObject
+                {
+                    [nameof(SkinData.name)] = data.name,
+                    [nameof(SkinData.skinName)] = data.skinName,
+                    [nameof(SkinData.description)] = data.description,
+                    [nameof(SkinData.baseTowerName)] = data.baseTowerName,
+                    [nameof(SkinData.mmCost)] = data.mmCost,
+                    [nameof(SkinData.icon)] = data.icon.AssetGUID,
+                    [nameof(SkinData.iconSquare)] = data.iconSquare.AssetGUID,
+                    [nameof(SkinData.isDefaultTowerSkin)] = data.isDefaultTowerSkin,
+                    [nameof(SkinData.textMaterialId)] = data.textMaterialId,
+                    [nameof(SkinData.backgroundBanner)] = data.backgroundBanner.AssetGUID,
+                    [nameof(SkinData.isHiddenWhenLocked)] = data.isHiddenWhenLocked,
+                    [nameof(SkinData.iapName)] = data.iapName,
+                    [nameof(SkinData.unlockScreenName)] = data.unlockScreenName,
+                    [nameof(SkinData.unlockScreenSound)] = data.unlockScreenSound.AssetGUID,
+                    [nameof(SkinData.unlockedEventSound)] = data.unlockedEventSound.AssetGUID,
+                    [nameof(SkinData.Portraits)] = Parse(data.StorePortraitsContainer.items),
+                    [nameof(SkinData.SwapAudio)] = Parse(data.SwapAudioContainer.items),
+                    [nameof(SkinData.SwapPrefab)] = Parse(data.SwapPrefabContainer.items),
+                    [nameof(SkinData.SwapOverlay)] = Parse(data.SwapOverlayContainer.items),
+                    [nameof(SkinData.SwapProjectileSpriteGroup)] = Parse(data.SwapProjectileSpriteGroupContainer.items),
+                    [nameof(SkinData.SwapShopProjectilePrefab)] = Parse(data.SwapShopProjectilePrefabContainer.items),
+                    [nameof(SkinData.SwapShopSprite)] = Parse(data.SwapShopSpriteContainer.items),
+                    [nameof(SkinData.SwapSprite)] = Parse(data.SwapSpriteContainer.items)
+                };
 
                 Directory.CreateDirectory(Path.Combine(FileIOHelper.sandboxRoot, "Skins", data.baseTowerName));
                 var path = $"Skins/{data.baseTowerName}/{data.name}.json";
@@ -141,7 +149,7 @@ public static class GameModelExporter
                 // ignored
             }
             total++;
-        });
+        }
         ModHelper.Log(
             $"Exported {success}/{total} SkinDatas to {Path.Combine(FileIOHelper.sandboxRoot, "Skins")}");
 

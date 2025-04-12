@@ -12,8 +12,10 @@ internal static class LocalizationManager_GetText
     {
         yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.GetText));
         yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.GetTextEnglish));
-        yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.Format), [typeof(string), typeof(Il2CppSystem.Object[])]);
-        yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.Format), [typeof(string), typeof(Il2CppReferenceArray<Il2CppSystem.Object>)]);
+        yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.Format),
+            [typeof(string), typeof(Il2CppSystem.Object[])]);
+        yield return AccessTools.Method(typeof(LocalizationManager), nameof(LocalizationManager.Format),
+            [typeof(string), typeof(Il2CppReferenceArray<Il2CppSystem.Object>)]);
     }
 
     [HarmonyPrefix]
@@ -22,7 +24,7 @@ internal static class LocalizationManager_GetText
     [HarmonyPostfix]
     private static void Postfix(LocalizationManager __instance, string key, ref string __result, MethodBase __originalMethod)
     {
-        if (!__result.Contains('[') || !__result.Contains(']')) return;
+        if (__result == null || !__result.Contains('[') || !__result.Contains(']')) return;
 
         __result = Regex.Replace(__result, @"\[(.*?)\]", match =>
         {
