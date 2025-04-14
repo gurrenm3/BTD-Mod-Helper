@@ -57,6 +57,8 @@
 
 [In Game Mod Settings](/wiki/Mod-Settings)
 
+[Mod Hooks](/wiki/ModHooks)
+
 ###### Extension Methods
 
 [Common Extension Methods](/wiki/Common-Extension-Methods)
