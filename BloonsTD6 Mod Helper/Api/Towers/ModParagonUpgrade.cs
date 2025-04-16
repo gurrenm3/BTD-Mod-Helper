@@ -101,7 +101,7 @@ public abstract class ModParagonUpgrade : ModUpgrade
 /// A convenient generic class for specifying the ModTower that this ModParagonUpgrade is for
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModParagonUpgrade<T> : ModParagonUpgrade where T : ModTower, new()
+public abstract class ModParagonUpgrade<T> : ModParagonUpgrade where T : ModTower
 {
     /// <inheritdoc />
     public override ModTower Tower => GetInstance<T>();

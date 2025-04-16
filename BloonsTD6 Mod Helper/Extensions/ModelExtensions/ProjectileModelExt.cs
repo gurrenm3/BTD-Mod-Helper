@@ -37,7 +37,7 @@ public static class ProjectileModelExt
     /// Applies a given ModDisplay to this ProjectileModel
     /// </summary>
     /// <typeparam name="T">The type of ModDisplay</typeparam>
-    public static void ApplyDisplay<T>(this ProjectileModel projectileModel) where T : ModDisplay, new()
+    public static void ApplyDisplay<T>(this ProjectileModel projectileModel) where T : ModDisplay
     {
         ModContent.GetInstance<T>().Apply(projectileModel);
     }
