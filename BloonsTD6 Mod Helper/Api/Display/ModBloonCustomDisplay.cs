@@ -38,7 +38,7 @@ public abstract class ModBloonCustomDisplay : ModBloonDisplay, ICustomDisplay
 }
 
 /// <inheritdoc />
-public abstract class ModBloonCustomDisplay<T> : ModBloonCustomDisplay where T : ModBloon
+public abstract class ModBloonCustomDisplay<T> : ModBloonCustomDisplay where T : ModBloon, new()
 {
     /// <inheritdoc />
     public sealed override ModBloon Bloon => GetInstance<T>();

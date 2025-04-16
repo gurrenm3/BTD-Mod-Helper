@@ -45,7 +45,7 @@ public abstract class ModSubTower : ModTower
 /// <summary>
 /// Helper class for making a subtower for a specific other ModTower
 /// </summary>
-public abstract class ModSubTower<T> : ModSubTower where T : ModTower
+public abstract class ModSubTower<T> : ModSubTower where T : ModTower, new()
 {
     /// <inheritdoc />
     protected override int Order => GetOrder() - 1;

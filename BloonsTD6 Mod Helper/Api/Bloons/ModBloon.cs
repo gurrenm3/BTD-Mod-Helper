@@ -243,7 +243,7 @@ public abstract class ModBloon : NamedModContent
 /// Class for a ModBloon which has a different ModBloon as its base
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModBloon<T> : ModBloon where T : ModBloon
+public abstract class ModBloon<T> : ModBloon where T : ModBloon, new()
 {
     /// <inheritdoc />
     public override bool KeepBaseId => true;

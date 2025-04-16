@@ -194,7 +194,7 @@ public abstract class ModCommand : ModContent
 /// Defines a ModCommand that is a subcommand of the specified other command
 /// </summary>
 /// <typeparam name="T">The root command this is a sub command of</typeparam>
-public abstract class ModCommand<T> : ModCommand where T : ModCommand
+public abstract class ModCommand<T> : ModCommand where T : ModCommand, new()
 {
     /// <inheritdoc />
     public sealed override ModCommand ParentCommand => GetInstance<T>();

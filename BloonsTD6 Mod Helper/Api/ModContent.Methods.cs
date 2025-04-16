@@ -37,7 +37,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReference<T>(string name) where T : BloonsMod =>
+    public static SpriteReference GetSpriteReference<T>(string name) where T : BloonsMod, new() =>
         CreateSpriteReference(GetTextureGUID<T>(name));
 
     /// <summary>
@@ -63,7 +63,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReferenceOrNull<T>(string name) where T : BloonsMod =>
+    public static SpriteReference GetSpriteReferenceOrNull<T>(string name) where T : BloonsMod, new() =>
         GetSpriteReferenceOrNull(GetInstance<T>(), name);
 
     /// <summary>
@@ -101,7 +101,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReferenceOrDefault<T>(string name) where T : BloonsMod =>
+    public static SpriteReference GetSpriteReferenceOrDefault<T>(string name) where T : BloonsMod, new() =>
         GetSpriteReferenceOrDefault(GetInstance<T>(), name);
 
     /// <summary>
@@ -151,7 +151,7 @@ public abstract partial class ModContent
     /// <summary>
     /// Creates a Prefab Reference for a ModDisplay
     /// </summary>
-    public static PrefabReference CreatePrefabReference<T>() where T : ModDisplay =>
+    public static PrefabReference CreatePrefabReference<T>() where T : ModDisplay, new() =>
         CreatePrefabReference(GetInstance<T>().Id);
 
     /// <summary>
@@ -191,7 +191,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>The texture's GUID</returns>
-    public static string GetTextureGUID<T>(string name) where T : BloonsMod
+    public static string GetTextureGUID<T>(string name) where T : BloonsMod, new()
     {
         var mod = GetInstance<T>();
         if (mod == null)
@@ -220,7 +220,7 @@ public abstract partial class ModContent
     /// <summary>
     /// Gets the id of a resource by appending the mod's ID prefix to its name
     /// </summary>
-    public static string GetId<T>(string name) where T : BloonsMod
+    public static string GetId<T>(string name) where T : BloonsMod, new()
     {
         var mod = GetInstance<T>();
         if (mod == null)
@@ -250,7 +250,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">The mod to look in</typeparam>
-    public static bool TextureExists<T>(string name) where T : BloonsMod => TextureExists(GetInstance<T>(), name);
+    public static bool TextureExists<T>(string name) where T : BloonsMod, new() => TextureExists(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
@@ -279,7 +279,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="fileName">The file name of your texture, without the extension</param>
     /// <returns>A Texture2D</returns>
-    public static Texture2D GetTexture<T>(string fileName) where T : BloonsMod =>
+    public static Texture2D GetTexture<T>(string fileName) where T : BloonsMod, new() =>
         GetTexture(GetInstance<T>(), fileName);
 
     /// <summary>
@@ -303,7 +303,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="fileName">The file name of your texture, without the extension.</param>
     /// <returns>The bytes associated with the texture.</returns>
-    public static byte[] GetTextureBytes<T>(string fileName) where T : BloonsMod =>
+    public static byte[] GetTextureBytes<T>(string fileName) where T : BloonsMod, new() =>
         GetTextureBytes(GetInstance<T>(), fileName);
 
     /// <summary>
@@ -322,7 +322,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
     /// <returns>A Sprite</returns>
-    public static Sprite GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod =>
+    public static Sprite GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod, new() =>
         GetSprite(GetInstance<T>(), name, pixelsPerUnit);
 
     /// <summary>
@@ -368,7 +368,7 @@ public abstract partial class ModContent
     /// Gets a bundle from the mod T with the specified name (no file extension)
     /// </summary>
     /// <param name="name"></param>
-    public static AssetBundle GetBundle<T>(string name) where T : BloonsMod => GetBundle(GetInstance<T>(), name);
+    public static AssetBundle GetBundle<T>(string name) where T : BloonsMod, new() => GetBundle(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets a bundle from your mod with the specified name (no file extension)
@@ -399,14 +399,14 @@ public abstract partial class ModContent
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string BloonID<T>() where T : ModBloon => GetInstance<T>().Id;
+    public static string BloonID<T>() where T : ModBloon, new() => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string GetDisplayGUID<T>() where T : ModDisplay => GetInstance<T>().Id;
+    public static string GetDisplayGUID<T>() where T : ModDisplay, new() => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets an AudioClip from a mod by its name (no file extension included)
@@ -422,7 +422,7 @@ public abstract partial class ModContent
     /// <param name="name">Sound name (no .wav)</param>
     /// <typeparam name="T">The mod</typeparam>
     /// <returns>a playable AudioClip</returns>
-    public static AudioClip GetAudioClip<T>(string name) where T : BloonsMod => GetAudioClip(GetInstance<T>(), name);
+    public static AudioClip GetAudioClip<T>(string name) where T : BloonsMod, new() => GetAudioClip(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets an AudioClip from this mod by its name (no file extension included)
@@ -447,7 +447,7 @@ public abstract partial class ModContent
     /// <typeparam name="T">The mod</typeparam>
     /// <returns>An AudioSoundReference</returns>
     [Obsolete("Use GetAudioSourceReference")]
-    public static AudioSourceReference CreateAudioSourceReference<T>(string name) where T : BloonsMod =>
+    public static AudioSourceReference CreateAudioSourceReference<T>(string name) where T : BloonsMod, new() =>
         GetAudioSourceReference(GetInstance<T>(), name);
 
     /// <summary>
@@ -456,7 +456,7 @@ public abstract partial class ModContent
     /// <param name="name">Sound name (no .wav)</param>
     /// <typeparam name="T">The mod</typeparam>
     /// <returns>An AudioSoundReference</returns>
-    public static AudioSourceReference GetAudioSourceReference<T>(string name) where T : BloonsMod =>
+    public static AudioSourceReference GetAudioSourceReference<T>(string name) where T : BloonsMod, new() =>
         GetAudioSourceReference(GetInstance<T>(), name);
 
     /// <summary>
@@ -471,14 +471,14 @@ public abstract partial class ModContent
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string GameModeId<T>() where T : ModGameMode => GetInstance<T>().Id;
+    public static string GameModeId<T>() where T : ModGameMode, new() => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the ID for the given ModRoundSet
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string RoundSetId<T>() where T : ModRoundSet => GetInstance<T>().Id;
+    public static string RoundSetId<T>() where T : ModRoundSet, new() => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the internal tower name/id for a ModTower
@@ -488,7 +488,7 @@ public abstract partial class ModContent
     /// <param name="bot">The bottom path tier</param>
     /// <typeparam name="T">The ModTower type</typeparam>
     /// <returns>The tower name/id</returns>
-    public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower
+    public static string TowerID<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower, new()
     {
         return GetInstance<T>().TowerId(top, mid, bot);
     }
@@ -501,7 +501,7 @@ public abstract partial class ModContent
     /// <param name="bot">The bottom path tier</param>
     /// <typeparam name="T">The ModTower type</typeparam>
     /// <returns>The tower name/id</returns>
-    public static TowerModel GetTowerModel<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower =>
+    public static TowerModel GetTowerModel<T>(int top = 0, int mid = 0, int bot = 0) where T : ModTower, new() =>
         Game.instance.model.GetTowerFromId(TowerID<T>(top, mid, bot));
 
     /// <summary>
@@ -509,12 +509,12 @@ public abstract partial class ModContent
     /// </summary>
     /// <typeparam name="T">The ModUpgrade type</typeparam>
     /// <returns>The upgrade name/id</returns>
-    public static string UpgradeID<T>() where T : ModUpgrade => GetInstance<T>().Id;
+    public static string UpgradeID<T>() where T : ModUpgrade, new() => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the fabricated TowerSet enum value for a ModTowerSet
     /// </summary>
-    public static TowerSet GetTowerSet<T>() where T : ModTowerSet => GetInstance<T>().Set;
+    public static TowerSet GetTowerSet<T>() where T : ModTowerSet, new() => GetInstance<T>().Set;
 
 
     /// <summary>
@@ -545,11 +545,11 @@ public abstract partial class ModContent
     public static string Localize(BloonsMod mod, string keyAndText) => Localize(mod, keyAndText, keyAndText);
 
     /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
-    public static string Localize<T>(string key, string text) where T : BloonsMod =>
+    public static string Localize<T>(string key, string text) where T : BloonsMod, new() =>
         Localize(GetInstance<T>(), key, text);
 
     /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
-    public static string Localize<T>(string keyAndText) where T : BloonsMod => Localize<T>(keyAndText, keyAndText);
+    public static string Localize<T>(string keyAndText) where T : BloonsMod, new() => Localize<T>(keyAndText, keyAndText);
 
     /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
     public string Localize(string key, string text) => Localize(mod, key, text);
