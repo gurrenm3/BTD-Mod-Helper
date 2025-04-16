@@ -1,2 +1,2 @@
-- Fixed an issue with profile cleaning where Legends starter artifacts weren't getting properly removed once they no
-  longer existed within installed mods
+- Added a new `ModHook` system that can be used to work around patching some specific methods that harmony currently
+  can't, read more on the wiki page https://gurrenm3.github.io/BTD-Mod-Helper/wiki/ModHooks
