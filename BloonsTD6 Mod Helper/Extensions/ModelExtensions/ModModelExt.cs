@@ -169,7 +169,7 @@ public static class ModModelExt
     /// <summary>
     /// Makes this GameMode use the given RoundSet
     /// </summary>
-    public static void UseRoundSet<T>(this ModModel model) where T : ModRoundSet, new()
+    public static void UseRoundSet<T>(this ModModel model) where T : ModRoundSet
     {
         model.UseRoundSet(ModContent.GetInstance<T>().Id);
     }

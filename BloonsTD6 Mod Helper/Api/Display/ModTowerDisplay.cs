@@ -98,7 +98,7 @@ public abstract partial class ModTowerDisplay : ModDisplay
 /// <summary>
 /// A convenient generic class for applying a ModTowerDisplay to a ModTower
 /// </summary>
-public abstract class ModTowerDisplay<T> : ModTowerDisplay where T : ModTower, new()
+public abstract class ModTowerDisplay<T> : ModTowerDisplay where T : ModTower
 {
     /// <inheritdoc />
     public override ModTower Tower => GetInstance<T>();

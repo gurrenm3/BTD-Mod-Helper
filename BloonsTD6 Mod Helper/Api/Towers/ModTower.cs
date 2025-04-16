@@ -503,7 +503,7 @@ public abstract class ModTower : NamedModContent
 /// A convenient generic class for specifying the ModTowerSet that a ModTower uses
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModTower<T> : ModTower where T : ModTowerSet, new()
+public abstract class ModTower<T> : ModTower where T : ModTowerSet
 {
     internal override ModTowerSet ModTowerSet => GetInstance<T>();
 

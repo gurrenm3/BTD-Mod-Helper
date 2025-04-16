@@ -15,7 +15,7 @@ public static class MiscModelExt
     /// <summary>
     /// Applies the given ModDisplay to this effect
     /// </summary>
-    public static void ApplyDisplay<T>(this EffectModel effectModel) where T : ModDisplay, new()
+    public static void ApplyDisplay<T>(this EffectModel effectModel) where T : ModDisplay
     {
         ModContent.GetInstance<T>().Apply(effectModel);
     }
@@ -23,7 +23,7 @@ public static class MiscModelExt
     /// <summary>
     /// Applies the given ModDisplay to this asset path
     /// </summary>
-    public static void ApplyDisplay<T>(this AssetPathModel effectModel) where T : ModDisplay, new()
+    public static void ApplyDisplay<T>(this AssetPathModel effectModel) where T : ModDisplay
     {
         ModContent.GetInstance<T>().Apply(effectModel);
     }
@@ -85,7 +85,7 @@ public static class MiscModelExt
     /// <summary>
     /// Applies the given ModBloonOverlay to this behavior
     /// </summary>
-    public static void ApplyOverlay<T>(this ProjectileBehaviorWithOverlayModel projectileBehaviorWithOverlayModel) where T : ModBloonOverlay, new()
+    public static void ApplyOverlay<T>(this ProjectileBehaviorWithOverlayModel projectileBehaviorWithOverlayModel) where T : ModBloonOverlay
     {
         ModContent.GetInstance<T>().Apply(projectileBehaviorWithOverlayModel);
     }
