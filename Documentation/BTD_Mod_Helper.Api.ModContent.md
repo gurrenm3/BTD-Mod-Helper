@@ -97,7 +97,7 @@ Gets the ID for the given ModBloon
 
 ```csharp
 public static string BloonID<T>()
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new();
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon;
 ```
 #### Type parameters
 
@@ -156,7 +156,7 @@ Gets an AudioSource reference for a given sound within a mod
 
 ```csharp
 public static AudioSourceReference CreateAudioSourceReference<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -205,7 +205,7 @@ Creates a Prefab Reference for a ModDisplay
 
 ```csharp
 public static PrefabReference CreatePrefabReference<T>()
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
 ```
 #### Type parameters
 
@@ -268,7 +268,7 @@ Gets the ID for the given ModGameMode
 
 ```csharp
 public static string GameModeId<T>()
-    where T : BTD_Mod_Helper.Api.Scenarios.ModGameMode, new();
+    where T : BTD_Mod_Helper.Api.Scenarios.ModGameMode;
 ```
 #### Type parameters
 
@@ -335,7 +335,7 @@ Gets an AudioClip from a mod by its name (no file extension included)
 
 ```csharp
 public static AudioClip GetAudioClip<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -410,7 +410,7 @@ Gets an AudioSource reference for a given sound within a mod
 
 ```csharp
 public static AudioSourceReference GetAudioSourceReference<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -479,7 +479,7 @@ Gets a bundle from the mod T with the specified name (no file extension)
 
 ```csharp
 public static AssetBundle GetBundle<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -522,7 +522,7 @@ Gets the GUID (thing that should be used in the display field for things) for a 
 
 ```csharp
 public static string GetDisplayGUID<T>()
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
 ```
 #### Type parameters
 
@@ -581,7 +581,7 @@ Gets the id of a resource by appending the mod's ID prefix to its name
 
 ```csharp
 public static string GetId<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -743,7 +743,7 @@ Constructs a Sprite for a given texture name within a given mod
 
 ```csharp
 public static Sprite GetSprite<T>(string name, float pixelsPerUnit=10f)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -824,7 +824,7 @@ Gets a sprite reference by name for a specific mod
 
 ```csharp
 public static SpriteReference GetSpriteReference<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -904,7 +904,7 @@ treats it as a vanilla sprite reference
 
 ```csharp
 public static SpriteReference GetSpriteReferenceOrDefault<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -984,7 +984,7 @@ loaded instead of an invalid SpriteReference
 
 ```csharp
 public static SpriteReference GetSpriteReferenceOrNull<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -1061,7 +1061,7 @@ Constructs a Texture2D for a given texture name within a mod
 
 ```csharp
 public static Texture2D GetTexture<T>(string fileName)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -1136,7 +1136,7 @@ Returns the Bytes associated with a texture.
 
 ```csharp
 public static byte[] GetTextureBytes<T>(string fileName)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -1215,7 +1215,7 @@ Returns null if a Texture hasn't been loaded with that name
 
 ```csharp
 public static string GetTextureGUID<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -1244,7 +1244,7 @@ Gets the TowerModel for a ModTower at a specific tier level
 
 ```csharp
 public static TowerModel GetTowerModel<T>(int top=0, int mid=0, int bot=0)
-    where T : BTD_Mod_Helper.Api.Towers.ModTower, new();
+    where T : BTD_Mod_Helper.Api.Towers.ModTower;
 ```
 #### Type parameters
 
@@ -1285,7 +1285,7 @@ Gets the fabricated TowerSet enum value for a ModTowerSet
 
 ```csharp
 public static TowerSet GetTowerSet<T>()
-    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet, new();
+    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet;
 ```
 #### Type parameters
 
@@ -1471,7 +1471,7 @@ the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGU
 
 ```csharp
 public static string Localize<T>(string key, string text)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -1505,7 +1505,7 @@ the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGU
 
 ```csharp
 public static string Localize<T>(string keyAndText)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -1530,7 +1530,7 @@ Gets the ID for the given ModRoundSet
 
 ```csharp
 public static string RoundSetId<T>()
-    where T : BTD_Mod_Helper.Api.Bloons.ModRoundSet, new();
+    where T : BTD_Mod_Helper.Api.Bloons.ModRoundSet;
 ```
 #### Type parameters
 
@@ -1595,7 +1595,7 @@ Gets whether a texture with a given name has been loaded by the Mod Helper for a
 
 ```csharp
 public static bool TextureExists<T>(string name)
-    where T : BTD_Mod_Helper.BloonsMod, new();
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
 #### Type parameters
 
@@ -1623,7 +1623,7 @@ Gets the internal tower name/id for a ModTower
 
 ```csharp
 public static string TowerID<T>(int top=0, int mid=0, int bot=0)
-    where T : BTD_Mod_Helper.Api.Towers.ModTower, new();
+    where T : BTD_Mod_Helper.Api.Towers.ModTower;
 ```
 #### Type parameters
 
@@ -1692,7 +1692,7 @@ Gets the internal upgrade name/id for a ModUpgrade
 
 ```csharp
 public static string UpgradeID<T>()
-    where T : BTD_Mod_Helper.Api.Towers.ModUpgrade, new();
+    where T : BTD_Mod_Helper.Api.Towers.ModUpgrade;
 ```
 #### Type parameters
 
