@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -149,29 +150,26 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
             return;
         }
 
-        unsafe
-        {
-            var getIl2CppMethodInfoPointerFieldForGeneratedMethod =
-                AccessTools.MethodDelegate<GetIl2CppMethodInfoPointerFieldForGeneratedMethod>(
-                    AccessTools.Method(AccessTools.TypeByName("Il2CppInterop.Common.Il2CppInteropUtils"),
-                        "GetIl2CppMethodInfoPointerFieldForGeneratedMethod"));
+        var getIl2CppMethodInfoPointerFieldForGeneratedMethod =
+            AccessTools.MethodDelegate<GetIl2CppMethodInfoPointerFieldForGeneratedMethod>(
+                AccessTools.Method(AccessTools.TypeByName("Il2CppInterop.Common.Il2CppInteropUtils"),
+                    "GetIl2CppMethodInfoPointerFieldForGeneratedMethod"));
+        var pointerField = getIl2CppMethodInfoPointerFieldForGeneratedMethod(TargetMethod);
+        var rawPtr = (nint) pointerField.GetValue(null)!;
+        var originalMethod = Marshal.ReadIntPtr(rawPtr);
 
-            var originalMethod = *(nint*)
-                (nint) getIl2CppMethodInfoPointerFieldForGeneratedMethod(TargetMethod).GetValue(null)!;
+        HookDelegate = HookMethod;
 
-            HookDelegate = HookMethod;
+        nint delegatePointer = Marshal.GetFunctionPointerForDelegate(
+            HookDelegate
+        );
 
-            nint delegatePointer = Marshal.GetFunctionPointerForDelegate(
-                HookDelegate
-            );
+        Hook = new MelonLoader.NativeUtils.NativeHook<TN>(
+            originalMethod,
+            delegatePointer
+        );
 
-            Hook = new MelonLoader.NativeUtils.NativeHook<TN>(
-                originalMethod,
-                delegatePointer
-            );
-
-            Hook.Attach();
-        }
+        Hook.Attach();
     }
 
     /// <summary>
@@ -181,51 +179,70 @@ public abstract class ModHook<TN, TM> : ModContent where TN : Delegate where TM 
     /// <returns>A byte value where true is 1 and false is 0.</returns>
     protected static byte GetBoolValue(bool value) => (byte) (value ? 1 : 0);
 
-    private static class TrampolineInvoker
-    {
+    private static class TrampolineInvoker {
         private static readonly Func<TN, object[], nint, object> Invoker;
 
-        static TrampolineInvoker()
-        {
+        // ReSharper disable StaticMemberInGenericType
+        private static readonly ParameterInfo[] Parameters;
+        private static readonly int UserArgCount;
+
+        static TrampolineInvoker() {
             var delegateType = typeof(TN);
             var invokeMethod = delegateType.GetMethod("Invoke")!;
-            var parameters = invokeMethod.GetParameters();
-
-            var expectedUserArgCount = parameters.Length - 1;
+            Parameters = invokeMethod.GetParameters();
+            UserArgCount = Parameters.Length - 1;
 
             var delParam = Expression.Parameter(delegateType, "del");
             var argsParam = Expression.Parameter(typeof(object[]), "args");
             var methodInfoParam = Expression.Parameter(typeof(nint), "methodInfo");
 
-            var argExpressions = new Expression[parameters.Length];
-            for (var i = 0; i < expectedUserArgCount; i++)
-            {
-                var indexExpr = Expression.Constant(i);
-                var argAccess = Expression.ArrayIndex(argsParam, indexExpr);
-                argExpressions[i] = Expression.Convert(argAccess, parameters[i].ParameterType);
+            var callArgs = new Expression[Parameters.Length];
+            for (var i = 0; i < UserArgCount; i++) {
+                callArgs[i] = Expression.Convert(
+                    Expression.ArrayIndex(argsParam, Expression.Constant(i)),
+                    Parameters[i].ParameterType
+                );
             }
-            argExpressions[expectedUserArgCount] = methodInfoParam;
+            callArgs[UserArgCount] = methodInfoParam;
 
-            var callExpr = Expression.Invoke(delParam, argExpressions);
-            var body = (invokeMethod.ReturnType == typeof(void))
-                ? (Expression) Expression.Block(callExpr, Expression.Constant(null))
-                : Expression.Convert(callExpr, typeof(object));
+            var invokeExpr = Expression.Invoke(delParam, callArgs);
+            Expression body = invokeMethod.ReturnType == typeof(void)
+                ? Expression.Block(invokeExpr, Expression.Constant(null, typeof(object)))
+                : Expression.Convert(invokeExpr, typeof(object));
 
-            Invoker = Expression.Lambda<Func<TN, object[], nint, object>>(
-                body,
-                delParam,
-                argsParam,
-                methodInfoParam
-            ).Compile();
+            Invoker = Expression.Lambda<Func<TN, object[], nint, object>>(body, delParam, argsParam, methodInfoParam).Compile();
         }
 
-        public static object Invoke(TN del, object[] args, nint methodInfo)
-        {
-            var expectedArgs = typeof(TN).GetMethod("Invoke")!.GetParameters().Length - 1;
-            if (args.Length != expectedArgs)
-                throw new ArgumentException($"Expected {expectedArgs} arguments, but received {args.Length}.");
+        public static object Invoke(TN del, object[] args, nint methodInfo) {
+            if (args.Length != UserArgCount)
+                throw new ArgumentException(
+                    $"Expected {UserArgCount} arguments, but received {args.Length}.",
+                    nameof(args));
 
-            return Invoker(del, args, methodInfo);
+            var pool = ArrayPool<object>.Shared;
+            var scratch = pool.Rent(UserArgCount);
+
+            try {
+                for (var i = 0; i < UserArgCount; i++) {
+                    var paramType = Parameters[i].ParameterType;
+                    var arg = args[i];
+
+                    if (arg is null) {
+                        scratch[i] = paramType.IsValueType ? Activator.CreateInstance(paramType)! : null!;
+                    } else if (!paramType.IsInstanceOfType(arg) && arg is IConvertible conv) {
+                        var target = Nullable.GetUnderlyingType(paramType) ?? paramType;
+                        scratch[i] = Convert.ChangeType(conv, target);
+                    } else {
+                        scratch[i] = arg;
+                    }
+                }
+
+                return Invoker(del, scratch, methodInfo);
+            } finally {
+                for (var i = 0; i < UserArgCount; i++)
+                    scratch[i] = null!;
+                pool.Return(scratch);
+            }
         }
     }
 }
