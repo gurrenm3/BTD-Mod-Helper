@@ -1,2 +1,1 @@
-- Added a new `ModHook` system that can be used to work around patching some specific methods that harmony currently
-  can't, read more on the wiki page https://gurrenm3.github.io/BTD-Mod-Helper/wiki/ModHooks
+- Internal fixes and improvements for the ModHook system from @MatthewOGuerra
