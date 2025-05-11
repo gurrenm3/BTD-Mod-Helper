@@ -36,7 +36,7 @@ public static class RoundModelExt
     /// <param name="startTime">When this group starts emitting, in frames (seconds / 60)</param>
     /// <param name="endTime">When this group stops emitting, in frames (seconds / 60)</param>
     public static void AddBloonGroup<T>(this RoundModel roundModel, int count = 1,
-        float startTime = 0f, float endTime = 60f) where T : ModBloon, new()
+        float startTime = 0f, float endTime = 60f) where T : ModBloon
     {
         var groupModel = new BloonGroupModel("", ModContent.BloonID<T>(), startTime, endTime, count);
 
@@ -116,7 +116,7 @@ public static class RoundModelExt
     /// Replaces BloonGroups of a certain bloonId with ones for a new Id
     /// </summary>
     public static void ReplaceBloonInGroups<T>(this RoundModel roundModel, string oldBloonId, bool byBaseId = false)
-        where T : ModBloon, new()
+        where T : ModBloon
     {
         foreach (var roundModelGroup in roundModel.groups)
         {

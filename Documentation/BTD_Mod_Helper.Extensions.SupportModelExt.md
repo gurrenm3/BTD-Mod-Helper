@@ -20,7 +20,7 @@ Makes a support model use a particular ModBuffIcon as its display
 
 ```csharp
 public static SupportModel ApplyBuffIcon<T>(this SupportModel supportModel)
-    where T : BTD_Mod_Helper.Api.Display.ModBuffIcon, new();
+    where T : BTD_Mod_Helper.Api.Display.ModBuffIcon;
 ```
 #### Type parameters
 

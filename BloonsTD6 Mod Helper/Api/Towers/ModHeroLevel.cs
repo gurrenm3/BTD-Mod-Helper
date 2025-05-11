@@ -119,7 +119,7 @@ public abstract class ModHeroLevel : ModUpgrade
 /// Convenient generic class for specifying the ModHero that this ModHeroLevel is for
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ModHeroLevel<T> : ModHeroLevel where T : ModHero, new()
+public abstract class ModHeroLevel<T> : ModHeroLevel where T : ModHero
 {
     /// <inheritdoc />
     public override ModHero Hero => GetInstance<T>();

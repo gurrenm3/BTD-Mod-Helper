@@ -87,7 +87,7 @@ Gets the ID to use for a custom tower set
 
 ```csharp
 public static string Custom<T>()
-    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet, new();
+    where T : BTD_Mod_Helper.Api.Towers.ModTowerSet;
 ```
 #### Type parameters
 

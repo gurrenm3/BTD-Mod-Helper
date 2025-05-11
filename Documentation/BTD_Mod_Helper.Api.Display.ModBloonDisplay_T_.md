@@ -7,7 +7,7 @@ A convenient generic class for applying a ModBloonDisplay to a ModBloon
 
 ```csharp
 public abstract class ModBloonDisplay<T> : BTD_Mod_Helper.Api.Display.ModBloonDisplay
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new()
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon
 ```
 #### Type parameters
 

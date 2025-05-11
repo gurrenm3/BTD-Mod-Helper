@@ -107,7 +107,7 @@ internal static class VanillaSpriteGenerator
     {
         if (Regex.Match(name, @"^\d\d\d-").Success)
         {
-            name = string.Concat(name.Split('-').AsEnumerable().Reverse());
+            name = string.Concat(name.Split('-').Reverse());
         }
 
         if (name.Contains('#'))

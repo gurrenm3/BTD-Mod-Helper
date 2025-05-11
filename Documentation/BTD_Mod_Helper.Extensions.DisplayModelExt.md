@@ -20,7 +20,7 @@ Applies a given ModDisplay to this DisplayModel
 
 ```csharp
 public static void ApplyDisplay<T>(this DisplayModel displayModel)
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
 ```
 #### Type parameters
 

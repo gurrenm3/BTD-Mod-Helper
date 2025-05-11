@@ -135,7 +135,7 @@ Opens a custom menu
 
 ```csharp
 public static void Open<T>(Object data=null, Object baseData=null)
-    where T : BTD_Mod_Helper.Api.ModGameMenu, new();
+    where T : BTD_Mod_Helper.Api.ModGameMenu;
 ```
 #### Type parameters
 

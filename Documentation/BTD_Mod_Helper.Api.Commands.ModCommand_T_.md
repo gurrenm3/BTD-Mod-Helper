@@ -7,7 +7,7 @@ Defines a ModCommand that is a subcommand of the specified other command
 
 ```csharp
 public abstract class ModCommand<T> : BTD_Mod_Helper.Api.Commands.ModCommand
-    where T : BTD_Mod_Helper.Api.Commands.ModCommand, new()
+    where T : BTD_Mod_Helper.Api.Commands.ModCommand
 ```
 #### Type parameters
 

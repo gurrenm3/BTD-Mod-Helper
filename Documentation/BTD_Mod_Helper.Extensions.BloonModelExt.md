@@ -62,7 +62,7 @@ Adds a child to be spawned from the Bloon
 
 ```csharp
 public static void AddToChildren<T>(this BloonModel bloonModel, int amount=1)
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new();
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon;
 ```
 #### Type parameters
 
@@ -87,7 +87,7 @@ Applies a given ModDisplay to this TowerModel
 
 ```csharp
 public static void ApplyDisplay<T>(this BloonModel bloonModel)
-    where T : BTD_Mod_Helper.Api.Display.ModDisplay, new();
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
 ```
 #### Type parameters
 
@@ -554,7 +554,7 @@ Replaces all spawned child Bloons that have id oldId with the given ModBloon
 
 ```csharp
 public static void ReplaceInChildren<T>(this BloonModel bloonModel, string oldId)
-    where T : BTD_Mod_Helper.Api.Bloons.ModBloon, new();
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloon;
 ```
 #### Type parameters
 
@@ -579,8 +579,8 @@ Replaces all spawned child Bloons of the first ModBloon type with the second Mod
 
 ```csharp
 public static void ReplaceInChildren<TOld,TNew>(this BloonModel bloonModel, string id)
-    where TOld : BTD_Mod_Helper.Api.Bloons.ModBloon, new()
-    where TNew : BTD_Mod_Helper.Api.Bloons.ModBloon, new();
+    where TOld : BTD_Mod_Helper.Api.Bloons.ModBloon
+    where TNew : BTD_Mod_Helper.Api.Bloons.ModBloon;
 ```
 #### Type parameters
 

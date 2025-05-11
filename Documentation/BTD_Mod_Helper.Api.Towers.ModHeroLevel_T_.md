@@ -7,7 +7,7 @@ Convenient generic class for specifying the ModHero that this ModHeroLevel is fo
 
 ```csharp
 public abstract class ModHeroLevel<T> : BTD_Mod_Helper.Api.Towers.ModHeroLevel
-    where T : BTD_Mod_Helper.Api.Towers.ModHero, new()
+    where T : BTD_Mod_Helper.Api.Towers.ModHero
 ```
 #### Type parameters
 
