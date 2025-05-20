@@ -149,6 +149,28 @@ public abstract partial class ModContent
     };
 
     /// <summary>
+    /// Gets an AudioClip reference for a given sound within a mod
+    /// </summary>
+    /// <param name="name">Sound name (no .wav)</param>
+    /// <returns>An AudioClipReference</returns>
+    protected AudioClipReference GetAudioClipReference(string name) => GetAudioClipReference(mod, name);
+
+    /// <summary>
+    /// Gets an AudioClip reference for a given sound within a mod
+    /// </summary>
+    /// <param name="mod"></param>
+    /// <param name="name">Sound name (no .wav)</param>
+    /// <returns>An AudioClipReference</returns>
+    public static AudioClipReference GetAudioClipReference(BloonsMod mod, string name) => CreateAudioClipReference(GetId(mod, name));
+
+    /// <summary>
+    /// Gets an AudioClip reference for a given sound within a mod
+    /// </summary>
+    /// <param name="name">Sound name (no .wav)</param>
+    /// <returns>An AudioClipReference</returns>
+    public static AudioClipReference GetAudioClipReference<T>(string name) where T : BloonsMod => GetAudioClipReference(GetInstance<T>(), name);
+
+    /// <summary>
     /// Creates a Prefab Reference for a ModDisplay
     /// </summary>
     public static PrefabReference CreatePrefabReference<T>() where T : ModDisplay =>

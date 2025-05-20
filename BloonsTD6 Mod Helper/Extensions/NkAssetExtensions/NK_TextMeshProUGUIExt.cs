@@ -27,4 +27,37 @@ public static class NK_TextMeshProUGUIExt
         text.localizeKey = localizeKey;
         //text.LocalizeTextAsync();    // broken in update 27.0. Not sure what to do to fix it
     }
+
+    /// <summary>
+    /// Enables auto sizing for this <see cref="NK_TextMeshProUGUI"/> component
+    /// </summary>
+    public static void EnableAutoSizing(this NK_TextMeshProUGUI text)
+    {
+        text.enableAutoSizing = true;
+    }
+
+    /// <summary>
+    /// Enables or disables auto sizing for this <see cref="NK_TextMeshProUGUI"/> component
+    /// </summary>
+    public static void EnableAutoSizing(this NK_TextMeshProUGUI text, bool enabled)
+    {
+        text.enableAutoSizing = enabled;
+    }
+    /// <summary>
+    /// Enables auto sizing for this <see cref="NK_TextMeshProUGUI"/> component
+    /// </summary>
+    public static void EnableAutoSizing(this NK_TextMeshProUGUI text, float fontSizeMax)
+    {
+        text.enableAutoSizing = true;
+        text.fontSizeMax = fontSizeMax;
+    }
+    /// <summary>
+    /// Enables auto sizing for this <see cref="NK_TextMeshProUGUI"/> component
+    /// </summary>
+    public static void EnableAutoSizing(this NK_TextMeshProUGUI text, float fontSizeMax, float fontSizeMin)
+    {
+        text.enableAutoSizing = true;
+        text.fontSizeMax = fontSizeMax;
+        text.fontSizeMin = fontSizeMin;
+    }
 }
