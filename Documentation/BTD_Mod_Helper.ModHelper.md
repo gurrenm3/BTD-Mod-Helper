@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## ModHelper.DisabledModsDirectory Property
 
-Directory for where disabled mods are stored
+Directory where disabled mods are stored
 
 ```csharp
 public static string DisabledModsDirectory { get; }
@@ -68,7 +68,7 @@ public static System.Collections.Generic.IEnumerable<MelonMod> Melons { get; }
 
 ## ModHelper.ModHelperDirectory Property
 
-Directory where the Mod Helper stores most of its extra info
+Directory where Mod Helper stores most of its extra info
 
 ```csharp
 public static string ModHelperDirectory { get; }

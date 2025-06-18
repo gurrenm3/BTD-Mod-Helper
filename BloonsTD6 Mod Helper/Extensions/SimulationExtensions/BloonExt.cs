@@ -77,7 +77,7 @@ public static class BloonExt
     /// <param name="projectile"></param>
     /// <returns></returns>
     public static bool WillPopBloon(this Bloon bloon, Projectile projectile) =>
-        bloon.WillPopBloon(projectile.projectileModel.GetDamageModel());
+        bloon.WillPopBloon(projectile.projectileModel.GetDamageModel(), projectile);
 
     /// <summary>
     /// Returns whether or not the bloon was popped rather than leaked.

@@ -399,7 +399,7 @@ public abstract class ModItemArtifact : ModArtifact<ItemArtifactData, ItemArtifa
                 baseId = insta,
                 tiers = new Il2CppStructArray<int>(tiers)
             }
-            : new RogueInstaMonkey());
+            : new RogueInstaMonkey(), 1);
 }
 
 /// <summary>
@@ -436,5 +436,5 @@ public abstract class ModMapArtifact : ModArtifact<MapArtifactData, MapArtifactM
     /// <inheritdoc />
     protected sealed override MapArtifactModel CreateArtifactModel(int tier, int index) => new(GetId(index),
         tier, Id, new Il2CppReferenceArray<MapArtifactBehaviorModel>(0), GetId(index),
-        GetId(index) + "Description", new Il2CppStringArray(0), GetIcon(tier), RarityFrameType.ToString(), false, false);
+        GetId(index) + "Description", new Il2CppStringArray(0), GetIcon(tier), RarityFrameType.ToString(), false, false, 1);
 }

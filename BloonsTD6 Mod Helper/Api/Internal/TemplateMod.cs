@@ -4,9 +4,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using Microsoft.VisualBasic.FileIO;
 using SearchOption = System.IO.SearchOption;
 #pragma warning disable CS4014
 namespace BTD_Mod_Helper.Api.Internal;
@@ -78,7 +78,7 @@ internal static class TemplateMod
             {
                 if (e.Message.Contains("across volumes"))
                 {
-                    FileSystem.CopyDirectory(directory.FullName, path, true);
+                    FileIOHelper.CopyDirectory(directory.FullName, path);
                     directory.Delete(true);
                 }
                 else

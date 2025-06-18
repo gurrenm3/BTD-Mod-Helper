@@ -33,6 +33,7 @@ internal partial class MelonMain : BloonsTD6Mod
     public override void OnInitialize()
     {
         ModContentInstances.AddInstance(GetType(), this);
+        ModHelper.MigrateFolders();
 
         // Create all and load default mod settings
         ModSettingsHandler.InitializeModSettings();

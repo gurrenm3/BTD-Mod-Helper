@@ -40,6 +40,36 @@ public static string sandboxRoot { get; }
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.CopyDirectory(string,string,bool)'></a>
+
+## FileIOHelper.CopyDirectory(string, string, bool) Method
+
+Recursively copies all files and subdirectories from the source directory  
+to the destination directory. Creates directories as needed.
+
+```csharp
+public static void CopyDirectory(string sourceDir, string destinationDir, bool overwrite=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.CopyDirectory(string,string,bool).sourceDir'></a>
+
+`sourceDir` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The path to the directory to copy from.
+
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.CopyDirectory(string,string,bool).destinationDir'></a>
+
+`destinationDir` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The path to the directory to copy to.
+
+<a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.CopyDirectory(string,string,bool).overwrite'></a>
+
+`overwrite` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+If true, existing files in the destination will be overwritten.
+
 <a name='BTD_Mod_Helper.Api.Helpers.FileIOHelper.GetSandboxPath()'></a>
 
 ## FileIOHelper.GetSandboxPath() Method

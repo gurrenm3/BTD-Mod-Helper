@@ -84,4 +84,31 @@ public static class FileIOHelper
         var path = Path.Combine(sandboxRoot, fileName);
         return File.Exists(path) ? File.ReadAllText(path) : null;
     }
+
+    /// <summary>
+    /// Recursively copies all files and subdirectories from the source directory
+    /// to the destination directory. Creates directories as needed.
+    /// </summary>
+    /// <param name="sourceDir">The path to the directory to copy from.</param>
+    /// <param name="destinationDir">The path to the directory to copy to.</param>
+    /// <param name="overwrite">If true, existing files in the destination will be overwritten.</param>
+    public static void CopyDirectory(string sourceDir, string destinationDir, bool overwrite = true)
+    {
+        Directory.CreateDirectory(destinationDir);
+
+        foreach (var filePath in Directory.GetFiles(sourceDir))
+        {
+            var fileName = Path.GetFileName(filePath);
+            var destFilePath = Path.Combine(destinationDir, fileName);
+            File.Copy(filePath, destFilePath, overwrite);
+        }
+
+        foreach (var dirPath in Directory.GetDirectories(sourceDir))
+        {
+            var dirName = Path.GetFileName(dirPath);
+            var destSubDir = Path.Combine(destinationDir, dirName);
+            CopyDirectory(dirPath, destSubDir, overwrite);
+        }
+    }
+
 }

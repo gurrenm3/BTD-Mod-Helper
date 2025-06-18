@@ -9,14 +9,14 @@ using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch]
-internal class LegendsManager__GetRandomInstas
+internal class RogueLegendsManager__GetRandomInstas
 {
     private static System.Collections.Generic.IEnumerable<MethodBase> TargetMethods() => AccessTools
-        .GetDeclaredMethods(typeof(LegendsManager)).Where(method =>
-            method.Name.Contains("_" + nameof(LegendsManager.GetRandomInstas) + "_"));
+        .GetDeclaredMethods(typeof(RogueLegendsManager)).Where(method =>
+            method.Name.Contains("_" + nameof(RogueLegendsManager.GetRandomInstas) + "_"));
 
     [HarmonyPrefix]
-    internal static bool Prefix(LegendsManager __instance, string x, ref bool __result)
+    internal static bool Prefix(RogueLegendsManager __instance, string x, ref bool __result)
     {
         if (ModTowerHelper.ModTowerCache.TryGetValue(x, out var tower) && !tower.IncludeInRogueLegends)
         {
@@ -28,8 +28,8 @@ internal class LegendsManager__GetRandomInstas
     }
 }
 
-[HarmonyPatch(typeof(LegendsManager), nameof(LegendsManager.GetRandomInstas))]
-internal static class LegendsManager_GetRandomInstas
+[HarmonyPatch(typeof(RogueLegendsManager), nameof(RogueLegendsManager.GetRandomInstas))]
+internal static class RogueLegendsManager_GetRandomInstas
 {
     [HarmonyPostfix]
     internal static void Postfix(List<RogueInstaMonkey> __result)

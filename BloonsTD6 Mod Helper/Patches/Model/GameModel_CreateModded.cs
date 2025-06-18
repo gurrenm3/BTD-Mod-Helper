@@ -149,9 +149,9 @@ internal static class GameModel_CreateModded
 #pragma warning restore CS0618
         ModHelper.PerformHook(mod => mod.OnNewGameModel(result));
 
-        if (InGameData.CurrentGame?.rogueData == null || LegendsManager.instance?.RogueSaveData == null) return;
+        if (InGameData.CurrentGame?.rogueData == null || RogueLegendsManager.instance?.RogueSaveData == null) return;
 
-        foreach (var artifactLoot in LegendsManager.instance.RogueSaveData.artifactsInventory)
+        foreach (var artifactLoot in RogueLegendsManager.instance.RogueSaveData.artifactsInventory)
         {
             if (ModArtifact.ArtifactCache.TryGetValue(artifactLoot.artifactName, out var tuple))
             {

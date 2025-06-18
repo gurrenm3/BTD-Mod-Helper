@@ -183,7 +183,7 @@ public class AttackHelper : ModelHelper<AttackModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 })
-            }, null, 0, 0, 0, false, false, 0, true, 0))
+            }, null, 0, 0, 0, false, false, 0, true, 0, false)) // TODO should this be true
     {
     }
 

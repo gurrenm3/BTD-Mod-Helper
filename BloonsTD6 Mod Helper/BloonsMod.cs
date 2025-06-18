@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Hooks;
@@ -196,13 +195,15 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <summary>
     /// Tries to apply all mod hooks in the calling assembly, failing gracefully on errors.
     /// </summary>
-    public void ApplyModHooks() {
+    public void ApplyModHooks()
+    {
         var allHookMethods =
             GetType().Assembly.DefinedTypes
                 .SelectMany(t => t.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-                                  .Select(m => (Method: m, Attr: m.GetCustomAttribute<HookTargetAttribute>())))
+                    .Select(m => (Method: m, Attr: m.GetCustomAttribute<HookTargetAttribute>())))
                 .Where(x => x.Attr != null)
-                .Where(x => {
+                .Where(x =>
+                {
                     var ok = x.Attr!.TargetType.IsAssignableToGenericType(typeof(ModHook<,>));
                     if (!ok)
                         MelonLogger.Warning(
@@ -210,29 +211,34 @@ public abstract class BloonsMod : MelonMod, IModSettings
                     return ok;
                 });
 
-        foreach (var (methodInfo, hook) in allHookMethods) {
-            try {
+        foreach (var (methodInfo, hook) in allHookMethods)
+        {
+            try
+            {
                 var hookType = hook!.TargetType;
                 var genArgs = hookType.BaseType!.GetGenericArguments();
                 var delegateType = genArgs[1];
-                var invokeInfo = delegateType.GetMethod("Invoke")
-                                 ?? throw new InvalidOperationException($"Delegate {delegateType} has no Invoke()");
+                var invokeInfo = delegateType.GetMethod("Invoke") ??
+                                 throw new InvalidOperationException($"Delegate {delegateType} has no Invoke()");
 
                 var userParams = methodInfo.GetParameters();
                 var delegateParams = invokeInfo.GetParameters();
 
-                var exactMatch = userParams.Length == delegateParams.Length
-                                  && !delegateParams.Where((dp, i) =>
-                                      dp.ParameterType.IsByRef != userParams[i].ParameterType.IsByRef
-                                      || (
-                                          dp.ParameterType != userParams[i].ParameterType
-                                          && dp.ParameterType.GetElementType() != userParams[i].ParameterType.GetElementType()
-                                      )).Any();
+                var exactMatch = userParams.Length == delegateParams.Length &&
+                                 !delegateParams.Where((dp, i) =>
+                                     dp.ParameterType.IsByRef != userParams[i].ParameterType.IsByRef ||
+                                     (
+                                         dp.ParameterType != userParams[i].ParameterType &&
+                                         dp.ParameterType.GetElementType() != userParams[i].ParameterType.GetElementType()
+                                     )).Any();
 
                 Delegate hookDelegate;
-                if (exactMatch) {
+                if (exactMatch)
+                {
                     hookDelegate = methodInfo.CreateDelegate(delegateType);
-                } else {
+                }
+                else
+                {
                     var lambdaParams = delegateParams
                         .Select(p => Expression.Parameter(p.ParameterType, p.Name ?? $"arg{p.Position}"))
                         .ToArray();
@@ -240,15 +246,19 @@ public abstract class BloonsMod : MelonMod, IModSettings
                     var byName = lambdaParams.ToDictionary(pe => pe.Name!, pe => pe, StringComparer.OrdinalIgnoreCase);
 
                     var instEntry = byName
-                        .FirstOrDefault(kvp => kvp.Key.Equals("instance", StringComparison.OrdinalIgnoreCase)
-                                               || kvp.Key.Equals("this", StringComparison.OrdinalIgnoreCase));
-                    if (instEntry.Value != null) {
+                        .FirstOrDefault(kvp =>
+                            kvp.Key.Equals("instance", StringComparison.OrdinalIgnoreCase) ||
+                            kvp.Key.Equals("this", StringComparison.OrdinalIgnoreCase));
+                    if (instEntry.Value != null)
+                    {
                         byName["@this"] = instEntry.Value;
                         byName["__instance"] = instEntry.Value;
                     }
 
-                    var resEntry = byName.FirstOrDefault(kvp => kvp.Key.Equals("result", StringComparison.OrdinalIgnoreCase));
-                    if (resEntry.Value != null) {
+                    var resEntry =
+                        byName.FirstOrDefault(kvp => kvp.Key.Equals("result", StringComparison.OrdinalIgnoreCase));
+                    if (resEntry.Value != null)
+                    {
                         byName["@result"] = resEntry.Value;
                         byName["__result"] = resEntry.Value;
                     }
@@ -257,7 +267,8 @@ public abstract class BloonsMod : MelonMod, IModSettings
                     var preAssigns = new List<Expression>();
                     var callArgs = new Expression[userParams.Length];
 
-                    for (var i = 0; i < userParams.Length; i++) {
+                    for (var i = 0; i < userParams.Length; i++)
+                    {
                         var up = userParams[i];
                         if (!byName.TryGetValue(up.Name!, out var src))
                             throw new InvalidOperationException($"Cannot bind parameter '{up.Name}' in {methodInfo.Name}");
@@ -265,20 +276,24 @@ public abstract class BloonsMod : MelonMod, IModSettings
                         var srcType = src.Type;
                         var tgtType = up.ParameterType;
 
-                        switch (srcType.IsByRef) {
-                            case true when !tgtType.IsByRef: {
+                        switch (srcType.IsByRef)
+                        {
+                            case true when !tgtType.IsByRef:
+                            {
                                 var elem = srcType.GetElementType()!;
                                 var unary = Expression.Convert(src, elem);
                                 callArgs[i] = elem != tgtType ? Expression.Convert(unary, tgtType) : (Expression) unary;
                                 break;
                             }
-                            case true when tgtType.IsByRef: {
+                            case true when tgtType.IsByRef:
+                            {
                                 if (tgtType.GetElementType() != srcType.GetElementType())
                                     throw new InvalidOperationException($"Mismatched by-ref for '{up.Name}'");
                                 callArgs[i] = src;
                                 break;
                             }
-                            case false when tgtType.IsByRef: {
+                            case false when tgtType.IsByRef:
+                            {
                                 var elem = tgtType.GetElementType()!;
                                 var localVar = Expression.Variable(elem, up.Name + "_local");
                                 locals.Add(localVar);
@@ -299,7 +314,8 @@ public abstract class BloonsMod : MelonMod, IModSettings
                     if (methodInfo.ReturnType != invokeInfo.ReturnType)
                         body = Expression.Convert(body, invokeInfo.ReturnType);
 
-                    if (locals.Count > 0) {
+                    if (locals.Count > 0)
+                    {
                         var blockExpressions = new List<Expression>();
                         blockExpressions.AddRange(preAssigns);
                         blockExpressions.Add(body);
@@ -312,13 +328,16 @@ public abstract class BloonsMod : MelonMod, IModSettings
                 var addName = hook.HookType == HookTargetAttribute.EHookType.Prefix
                     ? "AddPrefix"
                     : "AddPostfix";
-                var addMethod = hook.TargetType.GetMethod(addName, BindingFlags.Instance | BindingFlags.Public)
-                             ?? throw new MissingMethodException(hook.TargetType.FullName, addName);
+                var addMethod = hook.TargetType.GetMethod(addName, BindingFlags.Instance | BindingFlags.Public) ??
+                                throw new MissingMethodException(hook.TargetType.FullName, addName);
 
                 var hookInstance = ModContent.GetInstance(hook.TargetType)!;
                 addMethod.Invoke(hookInstance, [hookDelegate]);
-            } catch (Exception ex) {
-                MelonLogger.Error($"Exception while applying hook {methodInfo.DeclaringType!.FullName}::{methodInfo.Name}: {ex}");
+            }
+            catch (Exception ex)
+            {
+                MelonLogger.Error(
+                    $"Exception while applying hook {methodInfo.DeclaringType!.FullName}::{methodInfo.Name}: {ex}");
             }
         }
     }
@@ -348,6 +367,12 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// Saves the current mod settings for this mod
     /// </summary>
     public void SaveModSettings() => ModSettingsHandler.SaveModSettings(this);
+
+    internal void LoadError(object message)
+    {
+        LoggerInstance.Error(message);
+        loadErrors.Add(message?.ToString());
+    }
 
     /// <inheritdoc cref="OnInitializeMelon" />
     public new virtual void OnApplicationStart()
