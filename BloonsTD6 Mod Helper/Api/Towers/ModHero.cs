@@ -276,8 +276,8 @@ public abstract class ModHero : ModTower
     /// <summary>
     /// Creates the SkinData for the default tower
     /// </summary>
-    /// <param name="skinsByName">Existing hero skins by their skin/tower name</param>
-    public virtual SkinData CreateDefaultSkin(Dictionary<string, SkinData> skinsByName)
+    /// <param name="skins">Existing hero skins</param>
+    public virtual SkinData CreateDefaultSkin(SkinData[]skins)
     {
         var skinData = ScriptableObject.CreateInstance<SkinData>();
         skinData.name = skinData.baseTowerName = Id;
@@ -297,9 +297,9 @@ public abstract class ModHero : ModTower
         };
 
         skinData.textMaterialId = NameStyle;
-        skinData.fontMaterial = GetFontMaterial(skinsByName);
-        skinData.backgroundBanner = GetBackgroundBanner(skinsByName);
-        skinData.backgroundColourTintOverride = GetBackgroundColor(skinsByName);
+        skinData.fontMaterial=skins.First(skin=>skin.name==NameStyle).fontMaterial;
+        skinData.backgroundBanner = skins.First(skin=>skin.name==BackgroundStyle).backgroundBanner;
+        skinData.backgroundColourTintOverride = skins.First(skin=>skin.name==GlowStyle).backgroundColourTintOverride;
 
         skinData.StorePortraitsContainer = new PortraitContainer
         {

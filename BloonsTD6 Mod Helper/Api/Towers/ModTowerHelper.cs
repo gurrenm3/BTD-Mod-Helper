@@ -286,8 +286,7 @@ public static class ModTowerHelper
             Game.instance.model.AddHeroDetails(heroDetailsModel, index);
 
             var skinsData = GameData.Instance.skinsData;
-            var skinsByName = skinsData.SkinList.items.ToDictionary(data => data.name, data => data);
-            var skinData = modHero.CreateDefaultSkin(skinsByName);
+            var skinData = modHero.CreateDefaultSkin(skinsData.SkinList.items);
             skinsData.AddSkins(new[] {skinData});
         }
     }
