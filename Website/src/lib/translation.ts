@@ -1,5 +1,5 @@
-import { GoogleTranslator } from "@translate-tools/core/translators/GoogleTranslator";
-import { Language } from "./lanugage";
+import {Language} from "./lanugage";
+import {GoogleTranslator} from "anylang/translators";
 
 const translator = new GoogleTranslator();
 
