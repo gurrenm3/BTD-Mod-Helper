@@ -35,6 +35,27 @@ internal static class GameModel_CreateModded2
     }
 }
 
+[HarmonyPatch(typeof(GameModel),nameof(GameModel.GetHeroWithNameAndLevel))]
+internal static class GameModel_GetHeroWithNameAndLevel{
+    public static bool Prefix(GameModel __instance, string name, int tier, ref TowerModel __result){
+        if(ModTowerHelper.TowerCache.ContainsKey(name))
+        {
+            if(tier == 1)
+            {
+                __result = __instance.GetTowerFromId(name);
+            }
+            else
+            {
+                __result=__instance.GetTowerFromId(name+" "+tier);
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+}
+
 [HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(GameModel), typeof(List<ModModel>),
     typeof(List<RelicKnowledgeItemBase>))]
 internal static class GameModel_CreateModded
