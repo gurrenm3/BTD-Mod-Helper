@@ -215,9 +215,7 @@ public abstract class ModHero : ModTower
     /// <returns></returns>
     public sealed override IEnumerable<int[]> TowerTiers()
     {
-        yield return [0, 0, 0];
-
-        for (var i = 2; i <= MaxLevel; i++)
+        for (var i = 1; i <= MaxLevel; i++)
         {
             yield return [i, 0, 0];
         }
@@ -238,7 +236,7 @@ public abstract class ModHero : ModTower
     internal override string TowerId(params int[] tiers)
     {
         var id = Id;
-        if (tiers[0] > 0)
+        if (tiers[0] > 1)
         {
             id += " " + tiers[0];
         }

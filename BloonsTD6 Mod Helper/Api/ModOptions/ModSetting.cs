@@ -50,7 +50,7 @@ public abstract class ModSetting<T> : ModSetting
 
     /// <inheritdoc />
     public override object GetDefaultValue() => defaultValue;
-    
+
     /// <inheritdoc />
     public override object GetLastSavedValue() => lastSavedValue;
 
@@ -170,7 +170,7 @@ public abstract class ModSetting
     /// </summary>
     /// <returns>The default value</returns>
     public virtual object GetDefaultValue() => null;
-    
+
     /// <summary>
     /// Gets the last saved value for this ModSetting
     /// </summary>
@@ -210,8 +210,7 @@ public abstract class ModSetting
     /// </summary>
     protected ModHelperOption CreateBaseOption()
     {
-        var modHelperOption =
-            ModHelperOption.Create(displayNameKey ?? displayName, description == null ? null : descriptionKey, icon);
+        var modHelperOption = ModHelperOption.Create(displayNameKey ?? displayName, descriptionKey ?? description, icon);
         modifyOption?.Invoke(modHelperOption);
         modHelperOption.RestartIcon.SetActive(needsRestartRightNow);
         return modHelperOption;
