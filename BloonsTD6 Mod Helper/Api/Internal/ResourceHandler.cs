@@ -155,7 +155,7 @@ public static class ResourceHandler
 
             var readSamples = reader.ToSampleProvider().Read(data, 0, totalSamples);
 
-            var audioClip = AudioClip.Create(id, readSamples / 2, waveFormat.Channels, waveFormat.SampleRate, false);
+            var audioClip = AudioClip.Create(id, readSamples / waveFormat.Channels, waveFormat.Channels, waveFormat.SampleRate, false);
 
             if (audioClip.SetData(data, 0))
             {
@@ -190,7 +190,7 @@ public static class ResourceHandler
 
             var readSamples = reader.ToSampleProvider().Read(data, 0, totalSamples);
 
-            var audioClip = AudioClip.Create(id, readSamples / 2, waveFormat.Channels, waveFormat.SampleRate, false);
+            var audioClip = AudioClip.Create(id, readSamples / waveFormat.Channels, waveFormat.Channels, waveFormat.SampleRate, false);
 
             if (audioClip.SetData(data, 0))
             {
