@@ -13,4 +13,4 @@
     - [ModHelperPopupOption](https://gurrenm3.github.io/BTD-Mod-Helper/docs/BTD_Mod_Helper.Api.Components.ModHelperPopupOption) -
       ModHelperComponent for the entries to popup menus
     - [ModHelperPopDown](https://gurrenm3.github.io/BTD-Mod-Helper/docs/BTD_Mod_Helper.Api.Components.ModHelperPopdown) -
-      ModHelperComponent that is an alternatively implemented ModHelperDropdown using a ModHelperPopUpMenu
+      ModHelperComponent that is an alternatively implemented ModHelperDropdown using a ModHelperPopupMenu
