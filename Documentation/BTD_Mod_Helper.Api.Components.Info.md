@@ -381,6 +381,32 @@ public float AnchorMinY { get; set; }
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
+<a name='BTD_Mod_Helper.Api.Components.Info.AnchorX'></a>
+
+## Info.AnchorX Property
+
+Sets both AnchorMinX and AnchorMaxX to the given value
+
+```csharp
+public float AnchorX { set; }
+```
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Components.Info.AnchorY'></a>
+
+## Info.AnchorY Property
+
+Sets both AnchorMinY and AnchorMaxY to the given value
+
+```csharp
+public float AnchorY { set; }
+```
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='BTD_Mod_Helper.Api.Components.Info.Flex'></a>
 
 ## Info.Flex Property
@@ -489,7 +515,7 @@ public float PivotY { get; set; }
 
 ## Info.Position Property
 
-The localPosition field, by default relative to the parent's center unless anchors are changed
+The anchoredPosition field, by default relative to the parent's center unless anchors are changed
 
 ```csharp
 public Vector2 Position { get; set; }
@@ -554,7 +580,7 @@ public float Width { get; set; }
 
 ## Info.X Property
 
-The localPosition x field, by default relative to the parent's center unless anchors are changed
+The anchoredPosition x field, by default relative to the parent's center unless anchors are changed
 
 ```csharp
 public float X { get; set; }
@@ -567,7 +593,7 @@ public float X { get; set; }
 
 ## Info.Y Property
 
-The localPosition y field, by default relative to the parent's center unless anchors are changed
+The anchoredPosition y field, by default relative to the parent's center unless anchors are changed
 
 ```csharp
 public float Y { get; set; }

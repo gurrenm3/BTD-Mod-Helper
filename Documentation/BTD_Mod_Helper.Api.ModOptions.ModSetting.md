@@ -193,3 +193,26 @@ public virtual void SetValue(object val);
 `val` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
 The new value
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.SetValueAndSave(object,bool)'></a>
+
+## ModSetting.SetValueAndSave(object, bool) Method
+
+Sets the current value of this ModSetting, and immediately saves the settings for the mod
+
+```csharp
+public virtual void SetValueAndSave(object val, bool logSuccess=false);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.SetValueAndSave(object,bool).val'></a>
+
+`val` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
+
+The new value
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.SetValueAndSave(object,bool).logSuccess'></a>
+
+`logSuccess` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to log the message success for when mod settings are saved

@@ -12,6 +12,24 @@ public static class SpriteExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SpriteExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.SpriteExt.GetReadableTexture(thisSprite)'></a>
+
+## SpriteExt.GetReadableTexture(this Sprite) Method
+
+Creates a readable copy of this sprites texture
+
+```csharp
+public static Texture2D GetReadableTexture(this Sprite sprite);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.SpriteExt.GetReadableTexture(thisSprite).sprite'></a>
+
+`sprite` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+#### Returns
+[UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
+
 <a name='BTD_Mod_Helper.Extensions.SpriteExt.SetTexture(thisSprite,Texture2D)'></a>
 
 ## SpriteExt.SetTexture(this Sprite, Texture2D) Method

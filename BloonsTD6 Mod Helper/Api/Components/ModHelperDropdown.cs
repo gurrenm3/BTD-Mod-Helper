@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
-/// ModHelperComponent for a
+/// ModHelperComponent for a dropdown element with options to choose from
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperDropdown : ModHelperComponent
@@ -105,10 +105,9 @@ public class ModHelperDropdown : ModHelperComponent
         dropdown.template = template;
         template.disableNextFrame = true;
 
-        var item =
-            ModHelperPanel.Create(new Info("Item", width, height));
+        var item = ModHelperPanel.Create(new Info("Item", width, height));
         var toggle = item.AddComponent<Toggle>();
-        toggle.transition = (Selectable.Transition) Toggle.ToggleTransition.Fade;
+        toggle.transition = Selectable.Transition.ColorTint;
 
         var itemBackground = item.AddPanel(new Info("ItemBackground", width, height));
         var backgroundImage = itemBackground.AddComponent<Image>();

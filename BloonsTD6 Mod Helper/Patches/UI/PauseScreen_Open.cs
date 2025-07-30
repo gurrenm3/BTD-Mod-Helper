@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Unity.UI_New.Pause;
@@ -22,7 +23,7 @@ internal static class PauseScreen_Open
         {
             y = 0
         };
-        
+
         var buttonGroup = __instance.sidePanel.transform.GetChild(0).gameObject;
 
         for (var i = 0; i < buttonGroup.transform.childCount; i++)
@@ -57,20 +58,20 @@ internal static class PauseScreen_Open
         var modsBtn = buttonGroup.GetComponentInChildrenByName<RectTransform>("Hotkeys").gameObject
             .Duplicate(buttonGroup.transform);
         modsBtn.name = "ModsBtn";
-        
+
         var modsButton = modsBtn.GetComponent<Button>();
         modsButton.SetOnClick(() => ModGameMenu.Open<ModsMenu>());
-        
+
         var image = modsBtn.GetComponentInChildrenByName<Image>("Image");
         image.transform.Cast<RectTransform>().sizeDelta = new Vector2(180, 180);
-        
-        var sprite = ModContent.GetSprite<MelonMain>("IconMinimal");
+
+        var sprite = ModContent.GetSprite<MelonMain>(nameof(ModHelperSprites.IconMinimal));
         sprite.texture.mipMapBias = 0;
         image.SetSprite(sprite);
-        
+
         var modsText = modsBtn.GetComponentInChildren<NK_TextMeshProUGUI>();
         modsText.localizeKey = $"[{ModsButton.Mods}] ({ModHelper.Melons.Count()})";
         modsText.SetText(ModsButton.Mods.Localize());
-        
+
     }
 }

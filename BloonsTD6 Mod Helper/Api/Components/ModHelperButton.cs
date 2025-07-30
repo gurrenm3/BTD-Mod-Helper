@@ -5,7 +5,7 @@ using Action = Il2CppSystem.Action;
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
-/// ModHelperComponent for a background panel
+/// ModHelperComponent for a button
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperButton : ModHelperComponent

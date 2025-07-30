@@ -37,7 +37,7 @@ internal class TitleScreen_Start
 
         NamedModContent.RegisterAllText();
         LocalizationHelper.Initialize();
-        ModSettingsHandler.SaveModSettings(true);
+        ModSettingsHandler.SaveModSettings(false, false);
         ModHelperData.SaveAll();
         ModGameMode.ModifyDefaultGameModes(GameData.Instance);
         

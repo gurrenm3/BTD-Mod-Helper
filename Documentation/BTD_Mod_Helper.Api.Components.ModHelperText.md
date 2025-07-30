@@ -12,6 +12,19 @@ public class ModHelperText : BTD_Mod_Helper.Api.Components.ModHelperComponent
 Inheritance [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') &#129106; ModHelperText
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.SizingWidthToText'></a>
+
+## ModHelperText.SizingWidthToText Property
+
+Makes the width of this object scale with the text its holding
+
+```csharp
+public bool SizingWidthToText { get; set; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperText.Text'></a>
 
 ## ModHelperText.Text Property
@@ -65,6 +78,75 @@ Alignment of text
 [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
 The created ModHelperText
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing()'></a>
+
+## ModHelperText.EnableAutoSizing() Method
+
+Enables auto sizing for this [Text](BTD_Mod_Helper.Api.Components.ModHelperText.md#BTD_Mod_Helper.Api.Components.ModHelperText.Text 'BTD_Mod_Helper.Api.Components.ModHelperText.Text') component
+
+```csharp
+public void EnableAutoSizing();
+```
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(bool)'></a>
+
+## ModHelperText.EnableAutoSizing(bool) Method
+
+Enables or disables auto sizing for this [Text](BTD_Mod_Helper.Api.Components.ModHelperText.md#BTD_Mod_Helper.Api.Components.ModHelperText.Text 'BTD_Mod_Helper.Api.Components.ModHelperText.Text') component
+
+```csharp
+public void EnableAutoSizing(bool enable);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(bool).enable'></a>
+
+`enable` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float,float)'></a>
+
+## ModHelperText.EnableAutoSizing(float, float) Method
+
+Enables auto sizing for [Text](BTD_Mod_Helper.Api.Components.ModHelperText.md#BTD_Mod_Helper.Api.Components.ModHelperText.Text 'BTD_Mod_Helper.Api.Components.ModHelperText.Text')
+
+```csharp
+public void EnableAutoSizing(float fontSizeMax, float fontSizeMin);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float,float).fontSizeMax'></a>
+
+`fontSizeMax` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float,float).fontSizeMin'></a>
+
+`fontSizeMin` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float)'></a>
+
+## ModHelperText.EnableAutoSizing(float) Method
+
+Enables auto sizing for this [Text](BTD_Mod_Helper.Api.Components.ModHelperText.md#BTD_Mod_Helper.Api.Components.ModHelperText.Text 'BTD_Mod_Helper.Api.Components.ModHelperText.Text') component
+
+```csharp
+public void EnableAutoSizing(float fontSizeMax);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float).fontSizeMax'></a>
+
+`fontSizeMax` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.OnUpdate()'></a>
+
+## ModHelperText.OnUpdate() Method
+
+Unity Component OnUpdate
+
+```csharp
+protected override void OnUpdate();
+```
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperText.SetText(string)'></a>
 
 ## ModHelperText.SetText(string) Method
@@ -79,3 +161,18 @@ public void SetText(string text);
 <a name='BTD_Mod_Helper.Api.Components.ModHelperText.SetText(string).text'></a>
 
 `text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.SizeWidthToText(bool)'></a>
+
+## ModHelperText.SizeWidthToText(bool) Method
+
+Makes the width of this object scale with the text its holding
+
+```csharp
+public void SizeWidthToText(bool sizeWidthToText=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.SizeWidthToText(bool).sizeWidthToText'></a>
+
+`sizeWidthToText` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

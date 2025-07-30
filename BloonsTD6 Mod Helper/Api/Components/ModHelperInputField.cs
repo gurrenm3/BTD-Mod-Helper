@@ -33,6 +33,11 @@ public class ModHelperInputField : ModHelperComponent
     public string CurrentValue => Text.Text.text;
 
     /// <summary>
+    /// The Text ModHelperComponent
+    /// </summary>
+    public ModHelperPanel Viewport => GetDescendent<ModHelperPanel>("TextViewport");
+
+    /// <summary>
     /// Sets the current value of this
     /// </summary>
     /// <param name="text">The new text</param>

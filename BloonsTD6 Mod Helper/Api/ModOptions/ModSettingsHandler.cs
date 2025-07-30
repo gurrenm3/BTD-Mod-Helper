@@ -45,6 +45,7 @@ internal static class ModSettingsHandler
             mod.ModSettings[modSetting.Name] = modSetting;
             modSetting.displayName ??= modSetting.Name.Spaced();
             modSetting.source = obj;
+            modSetting.mod = mod;
         }
     }
 
@@ -96,7 +97,7 @@ internal static class ModSettingsHandler
         }
     }
 
-    internal static void SaveModSettings(BloonsMod mod, bool initialSave = false)
+    internal static void SaveModSettings(BloonsMod mod, bool runOnSave = true, bool logSuccess = true)
     {
         Directory.CreateDirectory(ModHelper.ModSettingsDirectory);
         var fileName = mod.SettingsFilePath;
@@ -109,7 +110,7 @@ internal static class ModSettingsHandler
 
             try
             {
-                if (initialSave || modSetting.OnSave())
+                if (!runOnSave || modSetting.OnSave())
                 {
                     json[key] = JToken.FromObject(modSetting.GetValue());
                 }
@@ -153,22 +154,22 @@ internal static class ModSettingsHandler
             }
         }
 
-        if (!initialSave)
+        if (logSuccess)
         {
             ModHelper.Msg($"Saved to {fileName}");
         }
     }
 
-    internal static void SaveModSettings(bool initialSave = false)
+    internal static void SaveModSettings(bool runOnSave = true, bool logSuccess = true)
     {
         foreach (var mod in ModHelper.Mods)
         {
             if (!mod.ModSettings.Any()) continue;
 
-            SaveModSettings(mod, initialSave);
+            SaveModSettings(mod, runOnSave, logSuccess);
         }
 
-        if (!initialSave)
+        if (logSuccess)
         {
             ModHelper.Msg("Successfully saved mod settings");
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+
+// ReSharper disable once CheckNamespace
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>

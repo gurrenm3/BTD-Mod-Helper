@@ -74,6 +74,13 @@ public abstract class ModSetting<T> : ModSetting
     }
 
     /// <inheritdoc />
+    public override void SetValueAndSave(object val, bool logSuccess = false)
+    {
+        SetValue(val);
+        ModSettingsHandler.SaveModSettings(mod, true, logSuccess);
+    }
+
+    /// <inheritdoc />
     internal override bool OnSave()
     {
         if (customValidation != null && !customValidation(value))
@@ -120,6 +127,8 @@ public abstract class ModSetting
     public ModSettingCategory category;
 
     internal ModHelperOption currentOption;
+
+    internal BloonsMod mod;
 
     /// <summary>
     /// The name of this mod setting, gotten from the field name
@@ -183,7 +192,15 @@ public abstract class ModSetting
     /// <param name="val">The new value</param>
     public virtual void SetValue(object val)
     {
+    }
 
+    /// <summary>
+    /// Sets the current value of this ModSetting, and immediately saves the settings for the mod
+    /// </summary>
+    /// <param name="val">The new value</param>
+    /// <param name="logSuccess">Whether to log the message success for when mod settings are saved</param>
+    public virtual void SetValueAndSave(object val, bool logSuccess = false)
+    {
     }
 
     /// <summary>

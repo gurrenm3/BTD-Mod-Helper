@@ -64,6 +64,19 @@ public static System.Collections.Generic.IEnumerable<MelonMod> Melons { get; }
 #### Property Value
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[MelonLoader.MelonMod](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonMod 'MelonLoader.MelonMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
+<a name='BTD_Mod_Helper.ModHelper.Mod'></a>
+
+## ModHelper.Mod Property
+
+ModHelper's BloonsTD6 mod class
+
+```csharp
+public static BTD_Mod_Helper.BloonsTD6Mod Mod { get; }
+```
+
+#### Property Value
+[BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
+
 <a name='BTD_Mod_Helper.ModHelper.ModHelperDirectory'></a>
 
 ## ModHelper.ModHelperDirectory Property

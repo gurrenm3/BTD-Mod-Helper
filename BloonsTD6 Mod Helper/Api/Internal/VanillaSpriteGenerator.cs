@@ -42,63 +42,62 @@ internal static class VanillaSpriteGenerator
 
         var realNames = new HashSet<string>();
 
-        using (var vanillaSpritesFile = new StreamWriter(vanillaSpritesCs))
+        using var vanillaSpritesFile = new StreamWriter(vanillaSpritesCs);
+
+        vanillaSpritesFile.WriteLine(
+            """
+            using Il2CppAssets.Scripts.Utils;
+            using System.Collections.Generic;
+
+            #pragma warning disable CS1591
+            namespace BTD_Mod_Helper.Api.Enums;
+                
+            public static class VanillaSprites
+            {
+            """
+        );
+
+        foreach (var (name, guids) in SpriteReferences.OrderBy(pair => pair.Key))
         {
-            vanillaSpritesFile.WriteLine(
-                """
-                using Il2CppAssets.Scripts.Utils;
-                using System.Collections.Generic;
-
-                #pragma warning disable CS1591
-                namespace BTD_Mod_Helper.Api.Enums;
-                    
-                public static class VanillaSprites
-                {
-                """
-            );
-
-            foreach (var (name, guids) in SpriteReferences.OrderBy(pair => pair.Key))
+            var i = 1;
+            foreach (var guid in guids)
             {
-                var i = 1;
-                foreach (var guid in guids)
-                {
-                    var realName = FixName(name) + (i > 1 ? i.ToString() : "");
-                    vanillaSpritesFile.WriteLine(
-                        $"""
-                             public const string {realName} = "{guid}";
-                         """
-                    );
-                    i++;
-                    realNames.Add(realName);
-                }
-            }
-
-            vanillaSpritesFile.WriteLine();
-            vanillaSpritesFile.WriteLine(
-                """
-                    public static readonly Dictionary<string, string> ByName;
-                    static VanillaSprites()
-                    {
-                        ByName = new Dictionary<string, string>
-                        {
-                """
-            );
-            foreach (var realName in realNames)
-            {
+                var realName = FixName(name) + (i > 1 ? i.ToString() : "");
                 vanillaSpritesFile.WriteLine(
                     $"""
-                                 ["{realName}"] = {realName},
+                         public const string {realName} = "{guid}";
                      """
                 );
+                i++;
+                realNames.Add(realName);
             }
+        }
+
+        vanillaSpritesFile.WriteLine();
+        vanillaSpritesFile.WriteLine(
+            """
+                public static readonly Dictionary<string, string> ByName;
+                static VanillaSprites()
+                {
+                    ByName = new Dictionary<string, string>
+                    {
+            """
+        );
+        foreach (var realName in realNames)
+        {
             vanillaSpritesFile.WriteLine(
-                """
-                        };
-                    }
-                }
-                """
+                $"""
+                             ["{realName}"] = {realName},
+                 """
             );
         }
+        vanillaSpritesFile.WriteLine(
+            """
+                    };
+                }
+            }
+            """
+        );
 
         SpriteReferences.Clear();
     }
@@ -145,7 +144,7 @@ internal static class VanillaSpriteGenerator
                 SpriteReferences[name].Add(guid);
             }
         }
-        
+
         var spriteAtlases = resourceMap.Locations.Values()
             .SelectMany(list => list.Cast<Il2CppReferenceArray<IResourceLocation>>())
             .Where(location => location.ResourceType == Il2CppType.Of<SpriteAtlas>())
@@ -155,9 +154,9 @@ internal static class VanillaSpriteGenerator
         foreach (var atlasName in spriteAtlases)
         {
             if (atlasName == "AssetLibraryAtlas") continue;
-            
+
             var atlas = ResourceLoader.LoadAtlas(atlasName).WaitForCompletion();
-            
+
             var dummyArray = new Il2CppReferenceArray<Sprite>(atlas.spriteCount);
             atlas.GetSprites(dummyArray);
 

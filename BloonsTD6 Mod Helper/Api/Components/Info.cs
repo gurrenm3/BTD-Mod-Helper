@@ -22,7 +22,7 @@ public readonly struct Info
     public string Name { get; }
 
     /// <summary>
-    /// The localPosition field, by default relative to the parent's center unless anchors are changed
+    /// The anchoredPosition field, by default relative to the parent's center unless anchors are changed
     /// </summary>
     public Vector2 Position
     {
@@ -31,7 +31,7 @@ public readonly struct Info
     }
 
     /// <summary>
-    /// The localPosition x field, by default relative to the parent's center unless anchors are changed
+    /// The anchoredPosition x field, by default relative to the parent's center unless anchors are changed
     /// </summary>
     public float X
     {
@@ -40,7 +40,7 @@ public readonly struct Info
     }
 
     /// <summary>
-    /// The localPosition y field, by default relative to the parent's center unless anchors are changed
+    /// The anchoredPosition y field, by default relative to the parent's center unless anchors are changed
     /// </summary>
     public float Y
     {
@@ -165,6 +165,22 @@ public readonly struct Info
     }
 
     /// <summary>
+    /// Sets both AnchorMinX and AnchorMaxX to the given value
+    /// </summary>
+    public float AnchorX
+    {
+        init => AnchorMinX = AnchorMaxX = value;
+    }
+
+    /// <summary>
+    /// Sets both AnchorMinY and AnchorMaxY to the given value
+    /// </summary>
+    public float AnchorY
+    {
+        init => AnchorMinY = AnchorMaxY = value;
+    }
+
+    /// <summary>
     /// The local scale field to initialize width
     /// </summary>
     public Vector3 Scale { get; init; }
@@ -241,8 +257,8 @@ public readonly struct Info
     }
 
     /// <inheritdoc cref="Info(string, float)" />
-    /// <param name="x">The localPosition x field, by default relative to the parent's center unless anchors are changed</param>
-    /// <param name="y">The localPosition y field, by default relative to the parent's center unless anchors are changed</param>
+    /// <param name="x">The anchoredPosition x field, by default relative to the parent's center unless anchors are changed</param>
+    /// <param name="y">The anchoredPosition y field, by default relative to the parent's center unless anchors are changed</param>
     public Info(string name, float x, float y, float size) : this(name, size)
     {
         X = x;
@@ -250,8 +266,8 @@ public readonly struct Info
     }
 
     /// <inheritdoc cref="Info(string, float, float)" />
-    /// <param name="x">The localPosition x field, by default relative to the parent's center unless anchors are changed</param>
-    /// <param name="y">The localPosition y field, by default relative to the parent's center unless anchors are changed</param>
+    /// <param name="x">The anchoredPosition x field, by default relative to the parent's center unless anchors are changed</param>
+    /// <param name="y">The anchoredPosition y field, by default relative to the parent's center unless anchors are changed</param>
     public Info(string name, float x, float y, float width, float height) : this(name, width, height)
     {
         X = x;
@@ -320,7 +336,6 @@ public readonly struct Info
         rectTransform.anchorMin = AnchorMin;
         rectTransform.localScale = Scale;
         rectTransform.sizeDelta = SizeDelta;
-        rectTransform.localPosition = Position;
         rectTransform.anchoredPosition = Position;
         rectTransform.pivot = Pivot;
     }

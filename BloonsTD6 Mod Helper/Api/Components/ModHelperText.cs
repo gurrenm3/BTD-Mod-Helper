@@ -9,7 +9,10 @@ namespace BTD_Mod_Helper.Api.Components;
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperText : ModHelperComponent
 {
-
+    /// <summary>
+    /// Makes the width of this object scale with the text its holding
+    /// </summary>
+    public bool SizingWidthToText { get; set; }
 
     /// <inheritdoc />
     public ModHelperText(IntPtr ptr) : base(ptr)
@@ -34,6 +37,25 @@ public class ModHelperText : ModHelperComponent
         else
         {
             Text.SetText(text);
+        }
+    }
+
+    /// <inheritdoc />
+    protected override void OnUpdate()
+    {
+        if (!SizingWidthToText) return;
+
+        if (LayoutElement is { } layoutElement)
+        {
+            layoutElement.minWidth = Text.minWidth;
+            layoutElement.preferredWidth = Text.preferredWidth;
+        }
+        else
+        {
+            RectTransform.sizeDelta = RectTransform.sizeDelta with
+            {
+                x = Text.preferredWidth
+            };
         }
     }
 
@@ -77,10 +99,11 @@ public class ModHelperText : ModHelperComponent
     /// <summary>
     /// Enables or disables auto sizing for this <see cref="Text"/> component
     /// </summary>
-    public void EnableAutoSizing(bool enabled)
+    public void EnableAutoSizing(bool enable)
     {
-        Text.enableAutoSizing = enabled;
+        Text.enableAutoSizing = enable;
     }
+
     /// <summary>
     /// Enables auto sizing for this <see cref="Text"/> component
     /// </summary>
@@ -89,6 +112,7 @@ public class ModHelperText : ModHelperComponent
         Text.enableAutoSizing = true;
         Text.fontSizeMax = fontSizeMax;
     }
+
     /// <summary>
     /// Enables auto sizing for <see cref="Text"/> 
     /// </summary>
@@ -97,5 +121,14 @@ public class ModHelperText : ModHelperComponent
         Text.enableAutoSizing = true;
         Text.fontSizeMax = fontSizeMax;
         Text.fontSizeMin = fontSizeMin;
+    }
+
+    /// <summary>
+    /// Makes the width of this object scale with the text its holding
+    /// </summary>
+    public void SizeWidthToText(bool sizeWidthToText = true)
+    {
+        SizingWidthToText = sizeWidthToText;
+        if (sizeWidthToText) OnUpdate();
     }
 }

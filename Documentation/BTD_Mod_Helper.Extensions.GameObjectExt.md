@@ -176,6 +176,26 @@ public static T Exists<T>(this T obj)
 #### Returns
 [T](BTD_Mod_Helper.Extensions.GameObjectExt.md#BTD_Mod_Helper.Extensions.GameObjectExt.Exists_T_(thisT).T 'BTD_Mod_Helper.Extensions.GameObjectExt.Exists<T>(this T).T')
 
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.GetChildren(thisGameObject)'></a>
+
+## GameObjectExt.GetChildren(this GameObject) Method
+
+Gets the direct children of this gameobject
+
+```csharp
+public static System.Collections.Generic.IEnumerable<GameObject> GetChildren(this GameObject gameObject);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.GetChildren(thisGameObject).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+this
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
 <a name='BTD_Mod_Helper.Extensions.GameObjectExt.GetComponent_T_(thisGameObject,string)'></a>
 
 ## GameObjectExt.GetComponent<T>(this GameObject, string) Method

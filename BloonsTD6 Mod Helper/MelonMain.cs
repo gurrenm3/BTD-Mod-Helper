@@ -8,6 +8,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.UI;
 using BTD_Mod_Helper.UI.BTD6;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
@@ -107,6 +108,7 @@ internal partial class MelonMain : BloonsTD6Mod
         RoundSetChanger.EnsureHidden();
         ModSettingHotkey.HandleTowerHotkeys();
         TowerEditing.OnUpdate();
+        ModWindow.Update();
     }
 
     public override void OnTitleScreen()

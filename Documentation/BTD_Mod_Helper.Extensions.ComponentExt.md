@@ -27,6 +27,41 @@ public static void Destroy(this Component component);
 
 `component` [UnityEngine.Component](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Component 'UnityEngine.Component')
 
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.DestroyImmediate(thisComponent)'></a>
+
+## ComponentExt.DestroyImmediate(this Component) Method
+
+Destroys this Component immediately
+
+```csharp
+public static void DestroyImmediate(this Component component);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.DestroyImmediate(thisComponent).component'></a>
+
+`component` [UnityEngine.Component](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Component 'UnityEngine.Component')
+
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.GetChildren(thisComponent)'></a>
+
+## ComponentExt.GetChildren(this Component) Method
+
+Gets the direct children of this gameobject
+
+```csharp
+public static System.Collections.Generic.IEnumerable<Transform> GetChildren(this Component component);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ComponentExt.GetChildren(thisComponent).component'></a>
+
+`component` [UnityEngine.Component](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Component 'UnityEngine.Component')
+
+this
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
 <a name='BTD_Mod_Helper.Extensions.ComponentExt.GetComponent_T_(thisComponent,string)'></a>
 
 ## ComponentExt.GetComponent<T>(this Component, string) Method

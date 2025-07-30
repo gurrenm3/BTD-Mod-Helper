@@ -142,7 +142,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
         mainPanel.AddButton(new Info("Homepage", 200), VanillaSprites.HomeBtn, null);
 
         var rightButton = mainPanel.AddPanel(new Info("RightButton", 200));
-        rightButton.AddButton(new Info("Download", 200), ModContent.GetTextureGUID<MelonMain>("DownloadBtn"), null);
+        rightButton.AddButton(new Info("Download", 200), ModHelperSprites.DownloadBtn, null);
         var update = rightButton.AddButton(new Info("Update", 200), VanillaSprites.GreenBtn, null);
         update.AddImage(new Info("UpdateIcon", 133), VanillaSprites.UpgradeIcon2);
         var spinner = rightButton.AddImage(new Info("Spinner", 200), VanillaSprites.LoadingWheel);

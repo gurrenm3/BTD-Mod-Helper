@@ -81,3 +81,14 @@ public void AddScrollContent(BTD_Mod_Helper.Api.Components.ModHelperComponent ch
 <a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.AddScrollContent(BTD_Mod_Helper.Api.Components.ModHelperComponent).child'></a>
 
 `child` [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.UseInnerViewport()'></a>
+
+## ModHelperScrollPanel.UseInnerViewport() Method
+
+By default, ModHelperScrollPanels use themselves as the scroll viewport. This method separates it into  
+two different objects. Useful for having the viewport change size based on scrollbar presence.
+
+```csharp
+public void UseInnerViewport();
+```

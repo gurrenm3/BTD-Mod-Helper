@@ -50,7 +50,35 @@ public Toggle Toggle { get; }
 
 #### Property Value
 [UnityEngine.UI.Toggle](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Toggle 'UnityEngine.UI.Toggle')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.UnCheck'></a>
+
+## ModHelperCheckbox.UnCheck Property
+
+The ModHelperImage for the un checked indicator, if there is one
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperImage UnCheck { get; }
+```
+
+#### Property Value
+[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')
 ### Methods
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.AddUnCheckedIcon(string)'></a>
+
+## ModHelperCheckbox.AddUnCheckedIcon(string) Method
+
+Adds an icon that appears when the checkbox is unchecked, such as an X
+
+```csharp
+public void AddUnCheckedIcon(string icon);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.AddUnCheckedIcon(string).icon'></a>
+
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Create(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int)'></a>
 

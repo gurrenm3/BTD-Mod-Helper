@@ -5,7 +5,7 @@ namespace BTD_Mod_Helper.Api.Commands;
 internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
 {
     public override string Command => "sprites";
-    public override string Help => "Generates the Mod Helper VanillaSprites.cs file";
+    public override string Help => "Generates the Mod Helper sprites list files";
 
     public override bool Execute(ref string resultText)
     {
@@ -14,8 +14,9 @@ internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
             resultText = "Mod Helper Source Folder has not been set";
             return false;
         }
-        
+
         VanillaSpriteGenerator.GenerateVanillaSprites();
+        ModHelperSpriteGenerator.GenerateModHelperSprites();
 
         return true;
     }

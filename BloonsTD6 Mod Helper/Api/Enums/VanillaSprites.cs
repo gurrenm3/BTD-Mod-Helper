@@ -1322,6 +1322,7 @@ public static class VanillaSprites
     public const string BoostToughness = "f4ebf193fc5714c59a49ef7e8b655a44";
     public const string BoostVelocity = "fa4023bf8a4cc4d22a869fe8aad78e23";
     public const string BossBoostIcon = "ChallengeRulesIcons[BossBoostIcon]";
+    public const string BossChallenge = "5742b430185e09d4d83177910e9a056a";
     public const string BossDecreaseHPIcon = "ChallengeRulesIcons[BossDecreaseHPIcon]";
     public const string BossEliteT5Icon = "c62cfddc5578c4c65937c2ce33e3c294";
     public const string BossMedalEventBlackDiamondMedal = "7d91ad4b5ae0fd441bd77163cd82b002";
@@ -6567,6 +6568,7 @@ public static class VanillaSprites
             ["BoostToughness"] = BoostToughness,
             ["BoostVelocity"] = BoostVelocity,
             ["BossBoostIcon"] = BossBoostIcon,
+            ["BossChallenge"] = BossChallenge,
             ["BossDecreaseHPIcon"] = BossDecreaseHPIcon,
             ["BossEliteT5Icon"] = BossEliteT5Icon,
             ["BossMedalEventBlackDiamondMedal"] = BossMedalEventBlackDiamondMedal,

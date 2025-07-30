@@ -3,7 +3,7 @@
 
 ## ModHelperButton Class
 
-ModHelperComponent for a background panel
+ModHelperComponent for a button
 
 ```csharp
 public class ModHelperButton : BTD_Mod_Helper.Api.Components.ModHelperComponent

@@ -21,7 +21,9 @@ Derived
 &#8627; [ModGameMode](BTD_Mod_Helper.Api.Scenarios.ModGameMode.md 'BTD_Mod_Helper.Api.Scenarios.ModGameMode')  
 &#8627; [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower')  
 &#8627; [ModTowerSet](BTD_Mod_Helper.Api.Towers.ModTowerSet.md 'BTD_Mod_Helper.Api.Towers.ModTowerSet')  
-&#8627; [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade')
+&#8627; [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade')  
+&#8627; [ModStartMenuEntry](BTD_Mod_Helper.Api.UI.ModStartMenuEntry.md 'BTD_Mod_Helper.Api.UI.ModStartMenuEntry')  
+&#8627; [ModWindowColor](BTD_Mod_Helper.Api.UI.ModWindowColor.md 'BTD_Mod_Helper.Api.UI.ModWindowColor')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.NamedModContent.Description'></a>

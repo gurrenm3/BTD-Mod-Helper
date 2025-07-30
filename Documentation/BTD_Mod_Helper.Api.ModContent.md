@@ -356,6 +356,79 @@ Sound name (no .wav)
 [UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')  
 a playable AudioClip
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference(BTD_Mod_Helper.BloonsMod,string)'></a>
+
+## ModContent.GetAudioClipReference(BloonsMod, string) Method
+
+Gets an AudioClip reference for a given sound within a mod
+
+```csharp
+public static AudioClipReference GetAudioClipReference(BTD_Mod_Helper.BloonsMod mod, string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+
+`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference(BTD_Mod_Helper.BloonsMod,string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Sound name (no .wav)
+
+#### Returns
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference')  
+An AudioClipReference
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference(string)'></a>
+
+## ModContent.GetAudioClipReference(string) Method
+
+Gets an AudioClip reference for a given sound within a mod
+
+```csharp
+protected AudioClipReference GetAudioClipReference(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Sound name (no .wav)
+
+#### Returns
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference')  
+An AudioClipReference
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference_T_(string)'></a>
+
+## ModContent.GetAudioClipReference<T>(string) Method
+
+Gets an AudioClip reference for a given sound within a mod
+
+```csharp
+public static AudioClipReference GetAudioClipReference<T>(string name)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference_T_(string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetAudioClipReference_T_(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Sound name (no .wav)
+
+#### Returns
+[Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference')  
+An AudioClipReference
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetAudioSourceReference(BTD_Mod_Helper.BloonsMod,string)'></a>
 
 ## ModContent.GetAudioSourceReference(BloonsMod, string) Method

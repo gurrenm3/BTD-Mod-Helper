@@ -50,6 +50,19 @@ public BTD_Mod_Helper.Api.Components.ModHelperText Text { get; }
 
 #### Property Value
 [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperInputField.Viewport'></a>
+
+## ModHelperInputField.Viewport Property
+
+The Text ModHelperComponent
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperPanel Viewport { get; }
+```
+
+#### Property Value
+[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperInputField.OnUpdate()'></a>

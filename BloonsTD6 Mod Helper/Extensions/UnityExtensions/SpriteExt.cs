@@ -19,9 +19,11 @@ public static class SpriteExt
     }
 
     /// <summary>
-    /// Attempts to save a Sprite to a PNG at the given filePath, even if it isn't marked as readable
+    /// Creates a readable copy of this sprites texture
     /// </summary>
-    public static bool TrySaveToPNG(this Sprite sprite, string filePath)
+    /// <param name="sprite"></param>
+    /// <returns></returns>
+    public static Texture2D GetReadableTexture(this Sprite sprite)
     {
         try
         {
@@ -37,6 +39,27 @@ public static class SpriteExt
             myTexture2D.Apply();
             RenderTexture.active = previous;
             RenderTexture.ReleaseTemporary(tmp);
+
+            return myTexture2D;
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Attempts to save a Sprite to a PNG at the given filePath, even if it isn't marked as readable
+    /// </summary>
+    public static bool TrySaveToPNG(this Sprite sprite, string filePath)
+    {
+        try
+        {
+            var myTexture2D = sprite.GetReadableTexture();
+
+            if (myTexture2D == null) return false;
+
             var bytes = myTexture2D.EncodeToPNG();
             File.WriteAllBytes(filePath, bytes);
             return true;

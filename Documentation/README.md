@@ -79,20 +79,27 @@
 | :--- | :--- |
 | [MatchLocalPosition](BTD_Mod_Helper.Api.Components.MatchLocalPosition.md 'BTD_Mod_Helper.Api.Components.MatchLocalPosition') | Component to make this transform continuously match the position of another transform |
 | [ModGameMenuTracker](BTD_Mod_Helper.Api.Components.ModGameMenuTracker.md 'BTD_Mod_Helper.Api.Components.ModGameMenuTracker') | Component to track that a instance of a GameMenu's gameObject actually is the same ModGameMenu as was opened,<br/>as direct comparison on the Unity Objects does not work reliably |
-| [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton') | ModHelperComponent for a background panel |
+| [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton') | ModHelperComponent for a button |
 | [ModHelperCategory](BTD_Mod_Helper.Api.Components.ModHelperCategory.md 'BTD_Mod_Helper.Api.Components.ModHelperCategory') | ModHelperComponent for a category in the mod settings menu |
 | [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox') | ModHelperComponent for a Checkbox |
 | [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') | Base for a helper component for making custom UIs in the same style as Vanilla ones |
 | [ModHelperComponentExt](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt') | Extensions for mod helper components, for using generics and based on restricts for il2cpp objects |
-| [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown') | ModHelperComponent for a |
+| [ModHelperDock](BTD_Mod_Helper.Api.Components.ModHelperDock.md 'BTD_Mod_Helper.Api.Components.ModHelperDock') | ModHelperComponent controlling the Dock used for [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')s |
+| [ModHelperDockButton](BTD_Mod_Helper.Api.Components.ModHelperDockButton.md 'BTD_Mod_Helper.Api.Components.ModHelperDockButton') | |
+| [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown') | ModHelperComponent for a dropdown element with options to choose from |
 | [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage') | ModHelperComponent for an image element |
 | [ModHelperInputField](BTD_Mod_Helper.Api.Components.ModHelperInputField.md 'BTD_Mod_Helper.Api.Components.ModHelperInputField') | ModHelperComponent for a text input field |
 | [ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption') | ModHelperComponent that's the base panel for the visual representation of a ModSetting |
 | [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel') | ModHelperComponent for a background panel |
+| [ModHelperPopdown](BTD_Mod_Helper.Api.Components.ModHelperPopdown.md 'BTD_Mod_Helper.Api.Components.ModHelperPopdown') | A ModHelperComponent for a dropdown menu that utilizes a [ModHelperPopupMenu](BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupMenu') |
+| [ModHelperPopupMenu](BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupMenu') | ModHelperComponent for a PopUp menu similar to desktop right click menus |
+| [ModHelperPopupOption](BTD_Mod_Helper.Api.Components.ModHelperPopupOption.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupOption') | An option for a [ModHelperPopupMenu](BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupMenu') |
 | [ModHelperScrollPanel](BTD_Mod_Helper.Api.Components.ModHelperScrollPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperScrollPanel') | ModHelperComponent for a background panel |
 | [ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider') | ModHelperComponent for a sliding input |
 | [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText') | ModHelperComponent for a background panel |
+| [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow') | A ModHelperComponent for a custom Window that can be opened in game and behaves similarly to a desktop Window |
 | [ScaleOverride](BTD_Mod_Helper.Api.Components.ScaleOverride.md 'BTD_Mod_Helper.Api.Components.ScaleOverride') | Custom component to keep the scale of a transform permanently at 0, even if an Animator tries to change it |
+| [WindowColorSetter](BTD_Mod_Helper.Api.Components.WindowColorSetter.md 'BTD_Mod_Helper.Api.Components.WindowColorSetter') | Custom component used to easily keep track of Window Color themes and updating them |
 
 | Structs | |
 | :--- | :--- |
@@ -150,6 +157,7 @@
 
 | Classes | |
 | :--- | :--- |
+| [ModHelperSprites](BTD_Mod_Helper.Api.Enums.ModHelperSprites.md 'BTD_Mod_Helper.Api.Enums.ModHelperSprites') | Texture GUIDs for the couple sprites added by ModHelper |
 | [RoundSetType](BTD_Mod_Helper.Api.Enums.RoundSetType.md 'BTD_Mod_Helper.Api.Enums.RoundSetType') | In game IDs for the round sets included in BTD6 |
 | [TowerSetType](BTD_Mod_Helper.Api.Enums.TowerSetType.md 'BTD_Mod_Helper.Api.Enums.TowerSetType') | Enum-like class for the different tower set types |
 
@@ -304,6 +312,24 @@
 | :--- | :--- |
 | [ParagonMode](BTD_Mod_Helper.Api.Towers.ParagonMode.md 'BTD_Mod_Helper.Api.Towers.ParagonMode') | Defines the Paragon behavior for a ModTower |
 
+<a name='BTD_Mod_Helper.Api.UI'></a>
+
+## BTD_Mod_Helper.Api.UI Namespace
+
+| Classes | |
+| :--- | :--- |
+| [AspectRatios](BTD_Mod_Helper.Api.UI.AspectRatios.md 'BTD_Mod_Helper.Api.UI.AspectRatios') | The aspect ratios BTD6 runs at natively |
+| [ModStartMenuEntry](BTD_Mod_Helper.Api.UI.ModStartMenuEntry.md 'BTD_Mod_Helper.Api.UI.ModStartMenuEntry') | ModContent representing an entry that will be added to the custom "Start Menu" in game, primarily used to open custom Windows |
+| [ModStartMenuEntry&lt;T&gt;](BTD_Mod_Helper.Api.UI.ModStartMenuEntry_T_.md 'BTD_Mod_Helper.Api.UI.ModStartMenuEntry<T>') | Helper class for a ModStartMenuEntry that is nested beneath another entry |
+| [ModWindow](BTD_Mod_Helper.Api.UI.ModWindow.md 'BTD_Mod_Helper.Api.UI.ModWindow') | Defines a kind of Window that can be opened in game from the custom Mod Helper start menu with specific name and content |
+| [ModWindow&lt;T&gt;](BTD_Mod_Helper.Api.UI.ModWindow_T_.md 'BTD_Mod_Helper.Api.UI.ModWindow<T>') | Helper class for defining a ModWindow whose start menu entry is nested beneath another |
+| [ModWindowColor](BTD_Mod_Helper.Api.UI.ModWindowColor.md 'BTD_Mod_Helper.Api.UI.ModWindowColor') | Defines a Window Color theme for [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')s and related UI components |
+
+| Enums | |
+| :--- | :--- |
+| [AspectRatio](BTD_Mod_Helper.Api.UI.AspectRatio.md 'BTD_Mod_Helper.Api.UI.AspectRatio') | The aspect ratios BTD6 runs at natively |
+| [ModWindowColor.PanelType](BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType.md 'BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType') | The different panel types that require different textures |
+
 <a name='BTD_Mod_Helper.Extensions'></a>
 
 ## BTD_Mod_Helper.Extensions Namespace
@@ -383,9 +409,11 @@
 | [ProjectileExt](BTD_Mod_Helper.Extensions.ProjectileExt.md 'BTD_Mod_Helper.Extensions.ProjectileExt') | Extensions for Projectiles |
 | [ProjectileModelBehaviorExt](BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt') | Behavior Extensions for ProjectileModels |
 | [ProjectileModelExt](BTD_Mod_Helper.Extensions.ProjectileModelExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelExt') | Extensions for ProjectileModels |
+| [RectTransformExt](BTD_Mod_Helper.Extensions.RectTransformExt.md 'BTD_Mod_Helper.Extensions.RectTransformExt') | Extensions for RectTransforms |
 | [RendererExt](BTD_Mod_Helper.Extensions.RendererExt.md 'BTD_Mod_Helper.Extensions.RendererExt') | Extensions for unity renderers |
 | [RootObjectLockList](BTD_Mod_Helper.Extensions.RootObjectLockList.md 'BTD_Mod_Helper.Extensions.RootObjectLockList') | Extensions for RootObjectLockLists |
 | [RoundModelExt](BTD_Mod_Helper.Extensions.RoundModelExt.md 'BTD_Mod_Helper.Extensions.RoundModelExt') | Extensions for RoundModels |
+| [SelectableExt](BTD_Mod_Helper.Extensions.SelectableExt.md 'BTD_Mod_Helper.Extensions.SelectableExt') | Extensions for Selectable |
 | [SliderEventExt](BTD_Mod_Helper.Extensions.SliderEventExt.md 'BTD_Mod_Helper.Extensions.SliderEventExt') | Extensions for SliderEvents |
 | [SpawnerExt](BTD_Mod_Helper.Extensions.SpawnerExt.md 'BTD_Mod_Helper.Extensions.SpawnerExt') | Extensions for Spawners |
 | [SpriteExt](BTD_Mod_Helper.Extensions.SpriteExt.md 'BTD_Mod_Helper.Extensions.SpriteExt') | Extensions for Sprites |

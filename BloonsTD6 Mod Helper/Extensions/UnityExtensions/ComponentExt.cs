@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -63,5 +64,30 @@ public static class ComponentExt
     public static void Destroy(this Component component)
     {
         Object.Destroy(component);
+    }
+
+    /// <summary>
+    /// Destroys this Component immediately
+    /// </summary>
+    public static void DestroyImmediate(this Component component)
+    {
+        Object.DestroyImmediate(component);
+    }
+
+
+    /// <summary>
+    /// Gets the direct children of this gameobject
+    /// </summary>
+    /// <param name="component">this</param>
+    /// <returns></returns>
+    public static IEnumerable<Transform> GetChildren(this Component component)
+    {
+        foreach (var o in component.transform)
+        {
+            if (o.Is(out Transform transform))
+            {
+                yield return transform;
+            }
+        }
     }
 }

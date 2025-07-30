@@ -27,9 +27,24 @@ public class ModHelperCheckbox : ModHelperComponent
     public ModHelperImage Check => GetDescendent<ModHelperImage>("Check");
 
     /// <summary>
+    /// The ModHelperImage for the un checked indicator, if there is one
+    /// </summary>
+    public ModHelperImage UnCheck => GetDescendent<ModHelperImage>("X");
+
+    /// <summary>
     /// Whether it is currently checked or not
     /// </summary>
     public bool CurrentValue => Toggle.isOn;
+
+    /// <summary>
+    /// Adds an icon that appears when the checkbox is unchecked, such as an X
+    /// </summary>
+    /// <param name="icon"></param>
+    public void AddUnCheckedIcon(string icon)
+    {
+        var x = AddImage(Check.initialInfo.Duplicate("X"), icon);
+        x.SetActive(!CurrentValue);
+    }
 
     /// <summary>
     /// Sets the current value of this
@@ -60,19 +75,21 @@ public class ModHelperCheckbox : ModHelperComponent
         backgroundImage.type = Image.Type.Sliced;
         backgroundImage.SetSprite(background);
 
-        ModHelperImage check;
-
-        check = modHelperCheckbox.AddImage(new Info("Check", InfoPreset.FillParent)
+        var check = modHelperCheckbox.AddImage(new Info("Check", InfoPreset.FillParent)
         {
             Size = padding * -2
         }, checkImage ?? VanillaSprites.TickGreenIcon);
 
         var toggle = modHelperCheckbox.AddComponent<Toggle>();
         toggle.graphic = check.Image;
-        if (onValueChanged != null)
+        toggle.onValueChanged.AddListener(value =>
         {
-            toggle.onValueChanged.AddListener(onValueChanged);
-        }
+            if (modHelperCheckbox.UnCheck != null)
+            {
+                modHelperCheckbox.UnCheck.SetActive(!value);
+            }
+            onValueChanged?.Invoke(value);
+        });
 
         toggle.isOn = defaultValue;
 

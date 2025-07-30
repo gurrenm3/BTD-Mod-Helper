@@ -94,6 +94,11 @@ public static class ModHelper
     /// </summary>
     public static IEnumerable<MelonMod> Melons => MelonBase.RegisteredMelons.OfType<MelonMod>();
 
+    /// <summary>
+    /// ModHelper's BloonsTD6 mod class
+    /// </summary>
+    public static BloonsTD6Mod Mod => Main;
+
     internal static MelonMain Main => ModContent.GetInstance<MelonMain>();
     internal static Assembly MainAssembly => Main.GetAssembly();
 

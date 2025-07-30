@@ -3,7 +3,7 @@
 
 ## ModHelperDropdown Class
 
-ModHelperComponent for a
+ModHelperComponent for a dropdown element with options to choose from
 
 ```csharp
 public class ModHelperDropdown : BTD_Mod_Helper.Api.Components.ModHelperComponent

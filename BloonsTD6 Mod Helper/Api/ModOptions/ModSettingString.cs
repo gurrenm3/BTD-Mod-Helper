@@ -9,26 +9,28 @@ namespace BTD_Mod_Helper.Api.ModOptions;
 /// </summary>
 public class ModSettingString : ModSetting<string>
 {
-
-
     /// <summary>
     /// Allow all characters
     /// </summary>
+    [Obsolete("Use characterValidation instead")]
     public static readonly string None = TMP_InputField.CharacterValidation.None.ToString();
 
     /// <summary>
     /// Allow only alphanumeric characters
     /// </summary>
+    [Obsolete("Use characterValidation instead")]
     public static readonly string Alphanumeric = TMP_InputField.CharacterValidation.Alphanumeric.ToString();
 
     /// <summary>
     /// Allow only valid decimals
     /// </summary>
+    [Obsolete("Use characterValidation instead")]
     public static readonly string Decimal = TMP_InputField.CharacterValidation.Decimal.ToString();
 
     /// <summary>
     /// Allow only valid integers
     /// </summary>
+    [Obsolete("Use characterValidation instead")]
     public static readonly string Integer = TMP_InputField.CharacterValidation.Integer.ToString();
 
     /// <summary>
@@ -67,14 +69,9 @@ public class ModSettingString : ModSetting<string>
     {
         var option = CreateBaseOption();
 
-
         var input = option.BottomRow.AddInputField(
             new Info("Input", 1500, 150), value, VanillaSprites.BlueInsertPanelRound,
-            new Action<string>(s =>
-            {
-                SetValue(s);
-                // ModHelper.Log("value is a changin");
-            }), 80f, characterValidation
+            new Action<string>(SetValue), 80f, characterValidation
         );
 
         option.SetResetAction(new Action(() => input.SetText(defaultValue)));

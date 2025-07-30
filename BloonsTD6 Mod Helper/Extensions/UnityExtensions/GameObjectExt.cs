@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BTD_Mod_Helper.Api.Components;
 using Il2CppNinjaKiwi.Common;
 using UnityEngine;
@@ -102,7 +103,7 @@ public static class GameObjectExt
     /// </summary>
     public static void RemoveComponent<T>(this GameObject gameObject) where T : Component
     {
-        gameObject.GetComponent<T>()?.Destroy();
+        gameObject.GetComponent<T>()?.DestroyImmediate();
     }
 
     /// <summary>
@@ -194,5 +195,21 @@ public static class GameObjectExt
     {
         result = obj;
         return obj != null;
+    }
+
+    /// <summary>
+    /// Gets the direct children of this gameobject
+    /// </summary>
+    /// <param name="gameObject">this</param>
+    /// <returns></returns>
+    public static IEnumerable<GameObject> GetChildren(this GameObject gameObject)
+    {
+        foreach (var o in gameObject.transform)
+        {
+            if (o.Is(out Transform transform))
+            {
+                yield return transform.gameObject;
+            }
+        }
     }
 }
