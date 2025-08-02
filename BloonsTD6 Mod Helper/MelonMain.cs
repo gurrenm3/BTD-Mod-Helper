@@ -15,6 +15,7 @@ using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using MelonLoader.Utils;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 #if DEBUG
@@ -148,11 +149,22 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             ModHelperHttp.DownloadDocumentationXml();
         }
+
+        if (!settings.TryGetValue("SavedWindows", out var savedWindows)) return;
+
+        foreach (var savedWindow in savedWindows.OfType<JObject>())
+        {
+            if (!savedWindow.TryGetValue("ID", out var id)) continue;
+
+            ModWindow.SavedWindows[id.Value<string>()!] = savedWindow.ToObject<SavedModWindow>();
+        }
     }
 
     public override void OnSaveSettings(JObject settings)
     {
         settings["Version"] = ModHelper.Version;
+
+        settings["SavedWindows"] = new JArray(ModWindow.SavedWindows.Values.Select(window => JObject.FromObject(window)));
     }
 
     public override void OnMainMenu()
@@ -171,5 +183,11 @@ internal partial class MelonMain : BloonsTD6Mod
             }
         }
         ResourceHandler.RenderTexturesToRelease.Clear();
+
+        if (ModWindow.saveSettingsAfterGame)
+        {
+            ModSettingsHandler.SaveModSettings(this, true, false);
+            ModWindow.saveSettingsAfterGame = false;
+        }
     }
 }

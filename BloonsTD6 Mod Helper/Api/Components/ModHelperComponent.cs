@@ -1,4 +1,6 @@
 ﻿using System;
+using BTD_Mod_Helper.Api.UI;
+using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppInterop.Runtime;
 using Il2CppSystem.Collections.Generic;
 using Il2CppTMPro;
@@ -94,7 +96,7 @@ public class ModHelperComponent : MonoBehaviour
     {
         parent = newParent;
 
-        if (newParent.LayoutGroup != null && !gameObject.HasComponent<ContentSizeFitter>())
+        if (newParent.GetComponent<LayoutGroup>() != null && !gameObject.HasComponent<ContentSizeFitter>())
         {
             AddLayoutElement();
         }
@@ -161,8 +163,8 @@ public class ModHelperComponent : MonoBehaviour
     /// Gets a descendent component with the given name
     /// </summary>
     public T GetDescendent<T>(string s = "") where T : Component => string.IsNullOrEmpty(s)
-        ? gameObject.GetComponentInChildren<T>()
-        : gameObject.GetComponentInChildrenByName<T>(s);
+                                                                        ? gameObject.GetComponentInChildren<T>()
+                                                                        : gameObject.GetComponentInChildrenByName<T>(s);
 
     /// <summary>
     /// Sets whether or not this is active
@@ -174,7 +176,10 @@ public class ModHelperComponent : MonoBehaviour
 
     internal static T Create<T>(Info info) where T : ModHelperComponent
     {
-        var newGameObject = new GameObject(info.Name, Il2CppType.Of<RectTransform>());
+        var newGameObject = new GameObject(info.Name, Il2CppType.Of<RectTransform>())
+        {
+            layer = CommonLayerNames.kUI
+        };
         var modHelperComponent = newGameObject.AddComponent<T>();
         modHelperComponent.initialInfo = info;
         info.Apply(modHelperComponent);
@@ -451,5 +456,19 @@ public static class ModHelperComponentExt
 
         newComponent.SetInfo(component.initialInfo.Duplicate(name));
         return newComponent;
+    }
+
+    /// <summary>
+    /// Applies a ModWindowColor theme to this component
+    /// </summary>
+    /// <param name="component">this</param>
+    /// <param name="color">window theme</param>
+    /// <param name="type">panel type</param>
+    /// <returns>this</returns>
+    public static T ApplyColor<T>(this T component, ModWindowColor color, ModWindowColor.PanelType type)
+        where T : ModHelperComponent
+    {
+        color.Apply(component.gameObject, type);
+        return component;
     }
 }

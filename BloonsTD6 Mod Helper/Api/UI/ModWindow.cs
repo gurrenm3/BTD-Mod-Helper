@@ -3,7 +3,10 @@ using System.Collections.Immutable;
 using System.Linq;
 using BTD_Mod_Helper.Api.Components;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppSystem;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
+using Exception = System.Exception;
 
 namespace BTD_Mod_Helper.Api.UI;
 
@@ -12,6 +15,8 @@ namespace BTD_Mod_Helper.Api.UI;
 /// </summary>
 public abstract class ModWindow : ModStartMenuEntry
 {
+    internal static readonly Dictionary<string, SavedModWindow> SavedWindows = new();
+    internal static bool saveSettingsAfterGame;
     internal static readonly Dictionary<string, ModWindow> Cache = new();
 
     /// <summary>
@@ -217,6 +222,95 @@ public abstract class ModWindow : ModStartMenuEntry
     /// <param name="newPos">the new position of the window</param>
     public virtual void OnMove(ModHelperWindow window, Vector2 oldPos, Vector2 newPos)
     {
+    }
+
+    internal void SaveWindow(ModHelperWindow window)
+    {
+        var saveData = new JObject();
+        if (!SaveWindow(window, ref saveData)) return;
+
+        SavedWindows[window.id.ToString()] = new SavedModWindow
+        {
+            ID = window.id.ToString(),
+            ModWindow = window.ModWindow.Id,
+            X = window.RectTransform.anchoredPosition.x,
+            Y = window.RectTransform.anchoredPosition.y,
+            Width = window.RectTransform.sizeDelta.x,
+            Height = window.RectTransform.sizeDelta.y,
+            Color = window.WindowColor,
+            Locked = window.locked,
+            BackgroundOpacity = window.rootCanvas.alpha,
+            ForegroundOpacity = window.contentCanvas.alpha,
+            Data = saveData
+        };
+
+        saveSettingsAfterGame = true;
+    }
+
+    /// <summary>
+    /// Called when this window is saved for reuse
+    /// </summary>
+    /// <param name="window">the ModHelperWindow instance</param>
+    /// <param name="saveData">necessary save data</param>
+    /// <returns>whether the window should be saved or not</returns>
+    public virtual bool SaveWindow(ModHelperWindow window, ref JObject saveData)
+    {
+        return true;
+    }
+
+    internal static void LoadAllWindows()
+    {
+        foreach (var savedWindow in SavedWindows.Values)
+        {
+            ModHelperWindow window = null;
+            try
+            {
+                LoadWindow(savedWindow, out window);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+                window?.DestroyImmediate();
+            }
+        }
+    }
+
+    internal static void LoadWindow(SavedModWindow savedWindow, out ModHelperWindow window)
+    {
+        window = null;
+        if (!Cache.TryGetValue(savedWindow.ModWindow, out var modWindow)) return;
+
+        window = modWindow.Open();
+
+        modWindow.LoadWindow(window, savedWindow);
+    }
+
+    internal void LoadWindow(ModHelperWindow window, SavedModWindow savedWindow)
+    {
+        window.id = Guid.Parse(savedWindow.ID);
+        window.RectTransform.anchoredPosition = new Vector2(savedWindow.X, savedWindow.Y);
+        window.RectTransform.sizeDelta = new Vector2(savedWindow.Width, savedWindow.Height);
+        window.UpdateWindowColor(savedWindow.Color);
+        if (window.locked != savedWindow.Locked)
+        {
+            window.ToggleLocked();
+        }
+        window.rootCanvas.alpha = Math.Clamp(savedWindow.BackgroundOpacity, .25f, 1);
+        window.contentCanvas.alpha = Math.Clamp(savedWindow.ForegroundOpacity, .25f, 1);
+
+        LoadWindow(window, savedWindow.Data);
+
+        window.ToggleMinimized();
+    }
+
+    /// <summary>
+    /// Called when this window is loaded in a new match because it was saved
+    /// </summary>
+    /// <param name="window">the ModHelperWindow instance</param>
+    /// <param name="saveData">the save data for the window</param>
+    public virtual void LoadWindow(ModHelperWindow window, JObject saveData)
+    {
+
     }
 
     /// <summary>

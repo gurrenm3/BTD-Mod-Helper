@@ -72,6 +72,45 @@ public static T AddTo<T>(this T modHelperComponent, Transform parent)
 #### Returns
 [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo<T>(this T, Transform).T')
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor_T_(thisT,BTD_Mod_Helper.Api.UI.ModWindowColor,BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType)'></a>
+
+## ModHelperComponentExt.ApplyColor<T>(this T, ModWindowColor, PanelType) Method
+
+Applies a ModWindowColor theme to this component
+
+```csharp
+public static T ApplyColor<T>(this T component, BTD_Mod_Helper.Api.UI.ModWindowColor color, BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType type)
+    where T : BTD_Mod_Helper.Api.Components.ModHelperComponent;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor_T_(thisT,BTD_Mod_Helper.Api.UI.ModWindowColor,BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor_T_(thisT,BTD_Mod_Helper.Api.UI.ModWindowColor,BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).component'></a>
+
+`component` [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor_T_(thisT,BTD_Mod_Helper.Api.UI.ModWindowColor,BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor<T>(this T, BTD_Mod_Helper.Api.UI.ModWindowColor, BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).T')
+
+this
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor_T_(thisT,BTD_Mod_Helper.Api.UI.ModWindowColor,BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).color'></a>
+
+`color` [ModWindowColor](BTD_Mod_Helper.Api.UI.ModWindowColor.md 'BTD_Mod_Helper.Api.UI.ModWindowColor')
+
+window theme
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor_T_(thisT,BTD_Mod_Helper.Api.UI.ModWindowColor,BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).type'></a>
+
+`type` [PanelType](BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType.md 'BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType')
+
+panel type
+
+#### Returns
+[T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor_T_(thisT,BTD_Mod_Helper.Api.UI.ModWindowColor,BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.ApplyColor<T>(this T, BTD_Mod_Helper.Api.UI.ModWindowColor, BTD_Mod_Helper.Api.UI.ModWindowColor.PanelType).T')  
+this
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.Duplicate_T_(thisT,string)'></a>
 
 ## ModHelperComponentExt.Duplicate<T>(this T, string) Method

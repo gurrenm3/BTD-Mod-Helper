@@ -85,6 +85,7 @@ public abstract class ModStartMenuEntry : NamedModContent
         if (hasChildren)
         {
             menu = option.AddSubMenu(new Info(Name + " Options"));
+            menu.ApplyColor(MelonMain.CurrentDefaultWindowColor, ModWindowColor.PanelType.Main);
             foreach (var childEntry in ChildEntries)
             {
                 childEntry.AddEntry(menu);

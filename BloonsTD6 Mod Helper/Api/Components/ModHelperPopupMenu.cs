@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BTD_Mod_Helper.Api.Enums;
 using Il2CppInterop.Runtime.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -62,6 +61,10 @@ public class ModHelperPopupMenu : ModHelperPanel
     /// </summary>
     public void Show()
     {
+        foreach (var option in Options)
+        {
+            option.gameObject.SetActive(true);
+        }
         gameObject.SetActive(true);
 
         if (parentComponent != null &&
@@ -150,14 +153,14 @@ public class ModHelperPopupMenu : ModHelperPanel
     /// <summary>
     /// Adds a horizontal separation line to the menu
     /// </summary>
-    /// <returns>the panel for the line</returns>
-    public ModHelperPanel AddSeparator(int height = 2)
+    /// <returns>this</returns>
+    public ModHelperPopupMenu AddSeparator(int height = 2)
     {
         var panel = AddPanel(new Info("Separator", 50, height), "");
 
         panel.Background.color = PressedColor;
 
-        return panel;
+        return this;
     }
 
     /// <summary>

@@ -175,8 +175,8 @@ public class ModHelperPopdown : ModHelperPanel
 
         TaskScheduler.ScheduleTask(() =>
         {
-            dropdown.onValueChanged.Invoke(0);
-        });
+            dropdown.onValueChanged.Invoke(dropdown.value);
+        }, () => dropdown.transform.parent != null && dropdown.isActiveAndEnabled, stopCondition: () => dropdown == null);
 
         popdown.Add(menu);
 

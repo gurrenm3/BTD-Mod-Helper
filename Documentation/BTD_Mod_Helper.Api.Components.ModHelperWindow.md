@@ -12,19 +12,6 @@ public class ModHelperWindow : BTD_Mod_Helper.Api.Components.ModHelperPanel
 Inheritance [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') &#129106; [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel') &#129106; ModHelperWindow
 ### Fields
 
-<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.canvasGroup'></a>
-
-## ModHelperWindow.canvasGroup Field
-
-The CanvasGroup at the root of this Window
-
-```csharp
-public CanvasGroup canvasGroup;
-```
-
-#### Field Value
-[UnityEngine.CanvasGroup](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.CanvasGroup 'UnityEngine.CanvasGroup')
-
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.closeButton'></a>
 
 ## ModHelperWindow.closeButton Field
@@ -42,7 +29,7 @@ public ModHelperButton closeButton;
 
 ## ModHelperWindow.content Field
 
-The main content panel of the Window
+The content panel of the Window where most UI should be added to
 
 ```csharp
 public ModHelperPanel content;
@@ -50,6 +37,19 @@ public ModHelperPanel content;
 
 #### Field Value
 [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.contentCanvas'></a>
+
+## ModHelperWindow.contentCanvas Field
+
+The CanvasGroup of the content
+
+```csharp
+public CanvasGroup contentCanvas;
+```
+
+#### Field Value
+[UnityEngine.CanvasGroup](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.CanvasGroup 'UnityEngine.CanvasGroup')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.dockButton'></a>
 
@@ -89,6 +89,32 @@ public ModHelperImage icon;
 
 #### Field Value
 [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.locked'></a>
+
+## ModHelperWindow.locked Field
+
+Whether this window is locked
+
+```csharp
+public bool locked;
+```
+
+#### Field Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.main'></a>
+
+## ModHelperWindow.main Field
+
+The main inset panel of the Window
+
+```csharp
+public ModHelperPanel main;
+```
+
+#### Field Value
+[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.Margin'></a>
 
@@ -167,6 +193,19 @@ public ModHelperPopupMenu rightClickMenu;
 
 #### Field Value
 [ModHelperPopupMenu](BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupMenu')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.rootCanvas'></a>
+
+## ModHelperWindow.rootCanvas Field
+
+The CanvasGroup at the root of this Window
+
+```csharp
+public CanvasGroup rootCanvas;
+```
+
+#### Field Value
+[UnityEngine.CanvasGroup](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.CanvasGroup 'UnityEngine.CanvasGroup')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.settingsButton'></a>
 

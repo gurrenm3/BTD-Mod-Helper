@@ -39,6 +39,8 @@ public class WindowColorSetter : MonoBehaviour
     /// <param name="windowColor">the WindowColor Name</param>
     public void SetColor(string windowColor)
     {
+        if ((image ??= GetComponent<Image>()) == null) return;
+
         if (basePixelMult == 0)
         {
             basePixelMult = image.pixelsPerUnitMultiplier;

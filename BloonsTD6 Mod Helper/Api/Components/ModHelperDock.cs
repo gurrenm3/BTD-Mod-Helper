@@ -6,9 +6,12 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.AbilitiesMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Utils;
 using UnityEngine;
 using UnityEngine.UI;
+using Math = Il2CppAssets.Scripts.Simulation.SMath.Math;
+using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api.Components;
 
@@ -174,6 +177,23 @@ public sealed class ModHelperDock : ModHelperPanel
         Instance.SetParent(parent);
     }
 
+    internal void ShowStartMenu()
+    {
+        startMenu.Show();
+        startMenu.transform.SetAsLastSibling();
+
+        var rowHeight = AbilityMenu.instance.showingAbilities
+                            ? Math.Ceil(AbilityMenu.instance.abilityCount / (float) AbilityMenu.instance.abilitiesPerRow)
+                            : 1;
+
+        startMenu.RectTransform.anchoredPosition = startMenu.RectTransform.anchoredPosition with
+        {
+            y = AbilityMenu.instance != null && AbilityMenu.instance.showing
+                    ? ModHelperWindow.Margin * 9 * rowHeight
+                    : ModHelperWindow.Margin
+        };
+    }
+
     internal static void Setup()
     {
         var dock = Create<ModHelperDock>(new Info("Dock"), null, RectTransform.Axis.Vertical, 10);
@@ -233,8 +253,10 @@ public sealed class ModHelperDock : ModHelperPanel
 
             startMenu.AddOption(new Info("Options"), icon: VanillaSprites.SettingsIcon, subMenu:
                 ModHelperPopupMenu.Create(new Info("Options Options"))
-                    .AddOption(new Info("Visibility"), subMenu:
-                        ModHelperPopupMenu.Create(new Info("Visibility Options"))
+                    .ApplyColor(MelonMain.CurrentDefaultWindowColor, ModWindowColor.PanelType.Main)
+                    .AddOption(new Info("Dock Visibility"), subMenu:
+                        ModHelperPopupMenu.Create(new Info("Visibility"))
+                            .ApplyColor(MelonMain.CurrentDefaultWindowColor, ModWindowColor.PanelType.Main)
                             .AddOption(new Info("Default"),
                                 action: new Action(() => MelonMain.DockVisibility.SetValueAndSave(Visibility.Default)),
                                 isSelected: new Func<bool>(() => MelonMain.DockVisibility == Visibility.Default)
@@ -251,19 +273,31 @@ public sealed class ModHelperDock : ModHelperPanel
                                 isSelected: new Func<bool>(() => MelonMain.DockVisibility == Visibility.Never)
                             )
                     )
+                    .AddOption(new Info("Default Color"), subMenu: ModHelperWindow.CreateColorsMenu(color =>
+                        {
+                            MelonMain.DefaultWindowColor.SetValueAndSave(color.Name);
+                            foreach (var setter in FindObjectsOfType<WindowColorSetter>(true))
+                            {
+                                if (setter.window is null)
+                                {
+                                    setter.SetColor(color);
+                                }
+                            }
+                        }, color => MelonMain.CurrentDefaultWindowColor == color)
+                        .ApplyColor(MelonMain.CurrentDefaultWindowColor, ModWindowColor.PanelType.Main)
+                    )
+                    .AddOption(new Info("Close All"), action: new Action(() =>
+                        FindObjectsOfType<ModHelperWindow>().ToArray().ForEach(window => window.Close()))
+                    )
             );
 
-            var startButton = dock.startButton = dock.AddButton(new Info("Start", 60),
-                                  VanillaSprites.SmallSquareWhiteGradient, new Action(() =>
-                                  {
-                                      startMenu.Show();
-                                      startMenu.transform.SetAsLastSibling();
-                                  }));
-            startButton.AddImage(new Info("Image", InfoPreset.FillParent),
+            dock.startButton = dock.AddButton(new Info("Start", 60), VanillaSprites.SmallSquareWhiteGradient,
+                new Action(dock.ShowStartMenu));
+            dock.startButton.AddImage(new Info("Image", InfoPreset.FillParent),
                 ModContent.GetTextureGUID<MelonMain>("IconMinimal"));
-            startButton.Button.UseBackgroundTint();
+            dock.startButton.Button.UseBackgroundTint();
 
-            startMenu.parentComponent = startButton;
+            startMenu.parentComponent = dock.startButton;
         }
         else
         {
@@ -279,6 +313,7 @@ public sealed class ModHelperDock : ModHelperPanel
         }
 
         UpdatePosition(screenSize.currentWidth, screenSize.currentHeight);
-    }
 
+        ModWindow.LoadAllWindows();
+    }
 }

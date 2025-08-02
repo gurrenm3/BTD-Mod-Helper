@@ -79,12 +79,18 @@ public static class TaskScheduler
     {
         if (waitCondition != null)
         {
-            while (!waitCondition())
+            while (true)
             {
                 if (stopCondition != null && stopCondition())
                 {
                     yield break;
                 }
+
+                if (waitCondition())
+                {
+                    break;
+                }
+
                 yield return null;
             }
         }

@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
+using Guid = Il2CppSystem.Guid;
 
 namespace BTD_Mod_Helper.Api.Components;
 
@@ -41,7 +42,12 @@ public class ModHelperWindow : ModHelperPanel
     public ModHelperPanel topCenterGroup;
 
     /// <summary>
-    /// The main content panel of the Window
+    /// The main inset panel of the Window
+    /// </summary>
+    public ModHelperPanel main;
+
+    /// <summary>
+    /// The content panel of the Window where most UI should be added to
     /// </summary>
     public ModHelperPanel content;
 
@@ -58,7 +64,12 @@ public class ModHelperWindow : ModHelperPanel
     /// <summary>
     /// The CanvasGroup at the root of this Window
     /// </summary>
-    public CanvasGroup canvasGroup;
+    public CanvasGroup rootCanvas;
+
+    /// <summary>
+    /// The CanvasGroup of the content
+    /// </summary>
+    public CanvasGroup contentCanvas;
 
     private bool isDragging;
     private Vector2 dragOffset;
@@ -70,6 +81,8 @@ public class ModHelperWindow : ModHelperPanel
     private Vector2 initialMousePosition;
     private Vector2 initialWindowSize;
     private Vector2 initialWindowPosition;
+
+    internal Guid id;
 
     /// <summary>
     /// The button in the <see cref="topRightGroup"/> that can <see cref="Close"/> the window
@@ -91,7 +104,10 @@ public class ModHelperWindow : ModHelperPanel
     /// </summary>
     public ModHelperDockButton dockButton;
 
-    private bool locked;
+    /// <summary>
+    /// Whether this window is locked
+    /// </summary>
+    public bool locked;
 
     /// <summary>
     /// The height of the topBar of the window
@@ -127,7 +143,7 @@ public class ModHelperWindow : ModHelperPanel
     /// <summary>
     /// The lock / unlock option within the options menu
     /// </summary>
-    public ModHelperPopupOption LockOption => rightClickMenu.GetComponentFromChildrenByName<ModHelperPopupOption>("Locked");
+    public ModHelperPopupOption LockOption => rightClickMenu.GetComponentFromChildrenByName<ModHelperPopupOption>("Lock");
 
     private bool nonRightClickOpened;
 
@@ -165,7 +181,6 @@ public class ModHelperWindow : ModHelperPanel
     /// </summary>
     public const int EdgeThreshold = 10;
 
-
     /// <inheritdoc />
     public ModHelperWindow(IntPtr ptr) : base(ptr)
     {
@@ -173,6 +188,18 @@ public class ModHelperWindow : ModHelperPanel
 
     private void OnDestroy()
     {
+        if (ModWindow != null)
+        {
+            if (InGame.instance == null || InGame.instance.quitting)
+            {
+                ModWindow?.SaveWindow(this);
+            }
+            else if (ModWindow.SavedWindows.Remove(id.ToString()))
+            {
+                ModWindow.saveSettingsAfterGame = true;
+            }
+        }
+
         ModWindow?.openedWindows.Remove(this);
         ModWindow?.OnClose(this);
         dockButton.gameObject.Destroy();
@@ -219,7 +246,7 @@ public class ModHelperWindow : ModHelperPanel
         window.Background.pixelsPerUnitMultiplier = 2;
         window.ApplyWindowColor(window, ModWindowColor.PanelType.Main);
 
-        window.canvasGroup = window.AddComponent<CanvasGroup>();
+        window.rootCanvas = window.AddComponent<CanvasGroup>();
 
         window.topBarHeight = topBarHeight;
         var topBar = window.topBar = window.AddPanel(new Info("TopBar")
@@ -312,17 +339,22 @@ public class ModHelperWindow : ModHelperPanel
         minButton.AddImage(new Info("Image", InfoPreset.FillParent), ModHelperSprites.Minus);
         minButton.Button.UseBackgroundTint();
 
-
-
-        var content = window.content = window.AddPanel(new Info("Content")
+        var main = window.main = window.AddPanel(new Info("Main")
         {
             AnchorMin = new Vector2(0, 0),
             AnchorMax = new Vector2(1, 1),
             Pivot = new Vector2(0.5f, 1)
         }, "");
-        window.ApplyWindowColor(content, ModWindowColor.PanelType.Insert);
-        content.RectTransform.offsetMin = new Vector2(0, 0);
-        content.RectTransform.offsetMax = new Vector2(0, -Margin - topBarHeight);
+        window.ApplyWindowColor(main, ModWindowColor.PanelType.Insert);
+        main.RectTransform.offsetMin = new Vector2(0, 0);
+        main.RectTransform.offsetMax = new Vector2(0, -Margin - topBarHeight);
+
+        var content = window.content = main.AddPanel(new Info("Content", InfoPreset.FillParent)
+        {
+            Pivot = new Vector2(0.5f, 1)
+        });
+        var contentCanvas = window.contentCanvas = content.AddComponent<CanvasGroup>();
+        contentCanvas.ignoreParentGroups = true;
 
 
         var resizeIndicators = window.resizeIndicators = window.AddPanel(new Info("ResizeIndicators"));
@@ -341,30 +373,40 @@ public class ModHelperWindow : ModHelperPanel
         window.resizeBot.transform.localRotation = Quaternion.Euler(0, 0, -90);
 
 
-        var rightClickMenu = window.rightClickMenu = ModHelperPopupMenu.Create(new Info("RightClickMenu"));
-        window.Add(rightClickMenu);
+        window.rightClickMenu = ModHelperPopupMenu.Create(new Info("RightClickMenu"));
+        window.Add(window.rightClickMenu);
         window.ApplyWindowColor(window.rightClickMenu, ModWindowColor.PanelType.Main);
 
         var colorsMenu = CreateColorsMenu(color => window.UpdateWindowColor(color), color => window.WindowColor == color);
         window.ApplyWindowColor(colorsMenu, ModWindowColor.PanelType.Main);
 
-        rightClickMenu.AddOption(new Info("Color"), "Color", icon: window.WindowColor.MainPanelSprite, subMenu: colorsMenu);
-        rightClickMenu.AddOption(new Info("Locked"), "Lock", VanillaSprites.LockIcon, new Action(window.ToggleLocked));
+        window.rightClickMenu.AddOption(new Info("Color"), icon: window.WindowColor.MainPanelSprite, subMenu: colorsMenu);
+        window.rightClickMenu.AddOption(new Info("Lock"), icon: VanillaSprites.LockIcon,
+            action: new Action(window.ToggleLocked));
 
         var opacityMenu = ModHelperPopupMenu.Create(new Info("Opacity"));
-        foreach (var opacity in (float[]) [1f, .75f, .5f, .25f])
+        foreach (var (kind, canvas) in new[] {("Background", window.rootCanvas), ("Foreground", window.contentCanvas)})
         {
-            opacityMenu.AddOption(new Info($"Opacity {opacity:P0}"), $"{opacity:P0}",
-                action: new Action(() => window.canvasGroup.alpha = opacity),
-                isSelected: new Func<bool>(() => Mathf.Approximately(window.canvasGroup.alpha, opacity)));
+            foreach (var opacity in (float[]) [1f, .75f, .5f, .25f])
+            {
+                opacityMenu.AddOption(new Info($"{kind} {opacity:P0}"),
+                    action: new Action(() => canvas.alpha = opacity),
+                    isSelected: new Func<bool>(() => Mathf.Approximately(canvas.alpha, opacity)));
+            }
+            if (kind != "Foreground")
+            {
+                opacityMenu.AddSeparator();
+            }
         }
         window.ApplyWindowColor(opacityMenu, ModWindowColor.PanelType.Main);
 
-        rightClickMenu.AddOption(new Info("Opacity"), "Opacity", ModHelperSprites.Transparency, subMenu: opacityMenu);
+        window.rightClickMenu.AddOption(new Info("Opacity"), icon: ModHelperSprites.Transparency, subMenu: opacityMenu);
 
+        window.rightClickMenu.AddComponent<CanvasGroup>().ignoreParentGroups = true;
 
         window.dockButton = ModHelperDockButton.Create(ModHelperDock.Instance, window, icon, iconScale, dockTitle);
 
+        window.id = Guid.NewGuid();
 
         return window;
     }
@@ -401,7 +443,7 @@ public class ModHelperWindow : ModHelperPanel
     /// <summary>
     /// Whether this window is minimized or not
     /// </summary>
-    public bool IsMinimized => !gameObject.activeInHierarchy;
+    public bool IsMinimized => !gameObject.active;
 
     /// <summary>
     /// Toggles whether this window is minimized to the dock
@@ -416,6 +458,7 @@ public class ModHelperWindow : ModHelperPanel
         else
         {
             ModWindow?.OnUnMinimized(this);
+            HandleTopBarOverlap();
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
         }
@@ -477,6 +520,7 @@ public class ModHelperWindow : ModHelperPanel
         FixRightClickMenuPosition();
 
         rightClickMenu.parentComponent = nonRightClickOpened ? settingsButton : null;
+        // rightClickMenu.GetComponent<CanvasGroup>().alpha = contentCanvas.alpha;
 
         rightClickMenu.Show();
 
@@ -520,8 +564,6 @@ public class ModHelperWindow : ModHelperPanel
 
     private void Update()
     {
-        canvasGroup.blocksRaycasts = !locked || rightClickMenu.gameObject.active;
-
         HandleResizing();
         HandleDragging();
         HandleFocus();
@@ -673,14 +715,17 @@ public class ModHelperWindow : ModHelperPanel
         if (oldSize == newSize) return;
 
         ModWindow?.OnResize(this, oldSize, newSize);
+        HandleTopBarOverlap();
+    }
 
+    private void HandleTopBarOverlap()
+    {
         if (ModWindow?.HideOverlappingTopBarItems == false) return;
 
         foreach (var child in topLeftGroup.GetChildren().OfIl2CppType<RectTransform>())
         {
-            if (child == icon?.RectTransform) continue;
-
-            if (!topBar.RectTransform.FullyContains(child) || child.OverlapsWith(topRightGroup))
+            if (!topBar.RectTransform.FullyContains(child) && child != icon?.RectTransform ||
+                child.OverlapsWith(topRightGroup))
             {
                 var cg = child.gameObject.GetComponentOrAdd<CanvasGroup>();
                 cg.alpha = 0;
@@ -698,6 +743,9 @@ public class ModHelperWindow : ModHelperPanel
 
     private void HandleFocus()
     {
+        rootCanvas.blocksRaycasts = !locked || rightClickMenu.gameObject.active;
+        contentCanvas.blocksRaycasts = !locked || rightClickMenu.gameObject.active;
+
         if (Input.GetMouseButton((int) MouseButton.Left) &&
             RaycastedGameObject is { } target &&
             target.transform.IsChildOf(transform))
@@ -710,12 +758,12 @@ public class ModHelperWindow : ModHelperPanel
     {
         if (!Input.GetMouseButtonUp((int) MouseButton.Right)) return;
 
-        var prev = canvasGroup.blocksRaycasts;
-        canvasGroup.blocksRaycasts = true;
+        var prev = rootCanvas.blocksRaycasts;
+        rootCanvas.blocksRaycasts = true;
         var targeted = RaycastedGameObject is { } target &&
                        target.transform.IsChildOf(transform) &&
                        !target.transform.IsChildOf(rightClickMenu.transform);
-        canvasGroup.blocksRaycasts = prev;
+        rootCanvas.blocksRaycasts = prev;
 
         if (targeted)
         {

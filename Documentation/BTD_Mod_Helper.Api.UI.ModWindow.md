@@ -250,6 +250,29 @@ public virtual BTD_Mod_Helper.Api.Components.Info WindowInfo { get; }
 [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.LoadWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow,JObject)'></a>
+
+## ModWindow.LoadWindow(ModHelperWindow, JObject) Method
+
+Called when this window is loaded in a new match because it was saved
+
+```csharp
+public virtual void LoadWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow window, JObject saveData);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.LoadWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow,JObject).window'></a>
+
+`window` [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')
+
+the ModHelperWindow instance
+
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.LoadWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow,JObject).saveData'></a>
+
+`saveData` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
+
+the save data for the window
+
 <a name='BTD_Mod_Helper.Api.UI.ModWindow.ModifyOptionsMenu(BTD_Mod_Helper.Api.Components.ModHelperWindow,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu)'></a>
 
 ## ModWindow.ModifyOptionsMenu(ModHelperWindow, ModHelperPopupMenu) Method
@@ -441,6 +464,33 @@ public BTD_Mod_Helper.Api.Components.ModHelperWindow Open();
 #### Returns
 [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')  
 the ModModHelperWindow
+
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.SaveWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow,JObject)'></a>
+
+## ModWindow.SaveWindow(ModHelperWindow, JObject) Method
+
+Called when this window is saved for reuse
+
+```csharp
+public virtual bool SaveWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow window, ref JObject saveData);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.SaveWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow,JObject).window'></a>
+
+`window` [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')
+
+the ModHelperWindow instance
+
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.SaveWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow,JObject).saveData'></a>
+
+`saveData` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
+
+necessary save data
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+whether the window should be saved or not
 
 <a name='BTD_Mod_Helper.Api.UI.ModWindow.StartMenuEntryClicked()'></a>
 

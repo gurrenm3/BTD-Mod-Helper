@@ -145,7 +145,7 @@ this
 Adds a horizontal separation line to the menu
 
 ```csharp
-public BTD_Mod_Helper.Api.Components.ModHelperPanel AddSeparator(int height=2);
+public BTD_Mod_Helper.Api.Components.ModHelperPopupMenu AddSeparator(int height=2);
 ```
 #### Parameters
 
@@ -154,8 +154,8 @@ public BTD_Mod_Helper.Api.Components.ModHelperPanel AddSeparator(int height=2);
 `height` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 #### Returns
-[ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')  
-the panel for the line
+[ModHelperPopupMenu](BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupMenu')  
+this
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.Create(BTD_Mod_Helper.Api.Components.Info,bool)'></a>
 

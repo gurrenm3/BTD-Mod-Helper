@@ -9,15 +9,7 @@ For creating custom UI, it's highly recommended that you use the [UnityExplorer]
 
 `ModHelperComponent`s are custom Unity components that wrap / control base Unity components like Buttons, Scroll Panels, Dropdowns etc. Using them alongside the new `VanillaSprites` list lets you create UI elements just like default BloonsTD6 ones much more easily.
 
-All `ModHelperComponent`s can easily add any other as a child using their `AddX(...)` methods like `AddPanel(...)`. 
-
-
-### ModHelperPanel
-
-
-
-### ModHelperScrollPanel
-
+`ModHelperComponent`s can easily add other ModHelperComponents as a child using their `AddX(...)` methods like `AddPanel(...)`.
 
 ## The Info struct
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppTMPro;
 using UnityEngine;
@@ -54,6 +55,7 @@ public class ModHelperPopupOption : ModHelperPanel
     }
 
     private Il2CppSystem.Func<bool> getSelected;
+    private Il2CppSystem.Func<bool> getHidden;
 
     private bool IsSelected => toggle.currentSelectionState is Selectable.SelectionState.Highlighted
                                    or Selectable.SelectionState.Pressed;
@@ -99,6 +101,11 @@ public class ModHelperPopupOption : ModHelperPanel
     private void OnEnable()
     {
         SetSelected(getSelected?.Invoke() ?? false);
+
+        if (getHidden != null)
+        {
+            SetActive(!getHidden.Invoke());
+        }
     }
 
     private void Start()
@@ -106,6 +113,11 @@ public class ModHelperPopupOption : ModHelperPanel
         if (getSelected != null)
         {
             SetSelected(getSelected?.Invoke() ?? false);
+        }
+
+        if (getHidden != null)
+        {
+            SetActive(!getHidden.Invoke());
         }
     }
 
@@ -178,7 +190,9 @@ public class ModHelperPopupOption : ModHelperPanel
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(subMenu);
 
-        if (ModHelperWindow.IsOutsideScreenRight(subMenu))
+        var parents = GetComponentsInParent<ModHelperPopupMenu>();
+
+        if (ModHelperWindow.IsOutsideScreenRight(subMenu) || parents.Any(menu => subMenu.RectTransform.OverlapsWith(menu)))
         {
             subMenu.RectTransform.pivot = new Vector2(1, 1);
             subMenu.RectTransform.anchorMin = new Vector2(0, 1);
@@ -257,9 +271,11 @@ public class ModHelperPopupOption : ModHelperPanel
     /// <param name="action">Action to perform when this option is clicked</param>
     /// <param name="subMenu">Sub menu that this option opens</param>
     /// <param name="isSelected">Function to determine if this option should display as selected or not</param>
+    /// <param name="isHidden">Function to determine if this option should be visible or should be hidden</param>
     /// <returns></returns>
     public static ModHelperPopupOption Create(Info info, string text = null, string icon = null, UnityAction action = null,
-        ModHelperPopupMenu subMenu = null, Il2CppSystem.Func<bool> isSelected = null)
+        ModHelperPopupMenu subMenu = null, Il2CppSystem.Func<bool> isSelected = null,
+        Il2CppSystem.Func<bool> isHidden = null)
     {
         if (info.Height == 0)
         {
@@ -332,6 +348,7 @@ public class ModHelperPopupOption : ModHelperPanel
         }
 
         option.getSelected = isSelected;
+        option.getHidden = isHidden;
 
         return option;
     }

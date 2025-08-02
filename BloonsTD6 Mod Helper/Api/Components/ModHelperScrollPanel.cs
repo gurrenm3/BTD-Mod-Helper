@@ -57,7 +57,7 @@ public class ModHelperScrollPanel : ModHelperPanel
         {
             AnchorMin = new Vector2(0, 0),
             AnchorMax = new Vector2(1, 1),
-            Pivot = new Vector2(1, 1)
+            Pivot = new Vector2(0, 1)
         });
         viewport.AddComponent<Image>();
         var mask = viewport.AddComponent<Mask>();
