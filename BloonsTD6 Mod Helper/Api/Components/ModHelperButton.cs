@@ -44,7 +44,14 @@ public class ModHelperButton : ModHelperComponent
 
         var image = modHelperButton.AddComponent<Image>();
         image.type = Image.Type.Sliced;
-        image.SetSprite(sprite);
+        if (sprite != null)
+        {
+            image.SetSprite(sprite);
+        }
+        else
+        {
+            image.enabled = false;
+        }
 
         var button = modHelperButton.AddComponent<Button>();
         if (onClick != null)

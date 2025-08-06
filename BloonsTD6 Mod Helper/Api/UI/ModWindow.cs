@@ -107,6 +107,16 @@ public abstract class ModWindow : ModStartMenuEntry
     /// </summary>
     public virtual ModWindowColor DefaultWindowColor => MelonMain.CurrentDefaultWindowColor;
 
+    /// <summary>
+    /// Whether in game hotkeys should not happen while this window is being actively interacted with
+    /// </summary>
+    public virtual bool BlockHotkeysWhileFocused => false;
+
+    /// <summary>
+    /// Whether the options menu can be opened from right clicking on window content
+    /// </summary>
+    public virtual bool RightClickOnContent => true;
+
     /// <inheritdoc />
     public override void StartMenuEntryClicked()
     {
@@ -330,6 +340,9 @@ public abstract class ModWindow : ModStartMenuEntry
             modWindow.OnUpdate();
         }
     }
+
+    /// <inheritdoc />
+    public override bool IsHidden() => !AllowMultiple && OpenedWindows.Any();
 }
 
 /// <summary>

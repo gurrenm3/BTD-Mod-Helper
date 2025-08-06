@@ -27,7 +27,8 @@ internal static class EmbeddedBrowser
     {
         var player = Game.Player;
         var controller = player.webviewLiNKAccountController ??=
-            new MobileWebviewLiNKAccountController(player.LiNKAccountController, SkuSettings.instance.settings.webviewVersion, new Action(() => {}));
+                             new MobileWebviewLiNKAccountController(player.LiNKAccountController,
+                                 SkuSettings.instance.settings.webviewVersion, new Action(() => { }));
         controller.CreateEverything().ContinueWith(new Action<Task>(task =>
         {
             if (task.Status != TaskStatus.RanToCompletion) return;
@@ -191,14 +192,21 @@ internal static class EmbeddedBrowser
 
             var url = callbackdata.PchURL;
 
-            ModHelperHttp.Client.SendAsync(new HttpRequestMessage(HttpMethod.Head, url)).ContinueWith(task =>
+            try
             {
-                var result = task.Result;
-                if (ModHelperGithub.AllContentTypes.Contains(result.Content.Headers.ContentType?.ToString()))
+                ModHelperHttp.Client.SendAsync(new HttpRequestMessage(HttpMethod.Head, url)).ContinueWith(task =>
                 {
-                    ProcessHelper.OpenURL(callbackdata.PchURL);
-                }
-            });
+                    var result = task.Result;
+                    if (ModHelperGithub.AllContentTypes.Contains(result.Content.Headers.ContentType?.ToString()))
+                    {
+                        ProcessHelper.OpenURL(callbackdata.PchURL);
+                    }
+                });
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 

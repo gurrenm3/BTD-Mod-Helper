@@ -1,4 +1,8 @@
-﻿using Il2CppAssets.Scripts.Simulation.SMath;
+﻿
+using Il2CppSystem.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -11,5 +15,11 @@ public static class Vector3Ext
     /// </summary>
     /// <param name="vector3"></param>
     /// <returns></returns>
-    public static Vector3 ToSMathVector(this UnityEngine.Vector3 vector3) => new(vector3);
+    public static Il2CppAssets.Scripts.Simulation.SMath.Vector3 ToSMathVector(this Vector3 vector3) => new(vector3);
+
+    /// <inheritdoc cref="Vector2Ext.Raycast"/>
+    public static List<RaycastResult> Raycast(this Vector3 vector)
+    {
+        return ((Vector2) vector).Raycast();
+    }
 }

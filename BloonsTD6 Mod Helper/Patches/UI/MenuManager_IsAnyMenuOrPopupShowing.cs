@@ -1,3 +1,4 @@
+using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Menu;
 
@@ -9,12 +10,12 @@ internal static class MenuManager_IsAnyMenuOrPopupShowing
     [HarmonyPrefix]
     internal static bool Prefix(ref bool __result)
     {
-        if (ConsoleHandler.ConsoleShowing)
+        if (ConsoleHandler.ConsoleShowing || ModHelperWindow.AnyWindowFocused)
         {
             __result = true;
             return false;
         }
-        
+
         return true;
     }
 }

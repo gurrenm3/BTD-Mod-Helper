@@ -12,6 +12,32 @@ public class ModHelperWindow : BTD_Mod_Helper.Api.Components.ModHelperPanel
 Inheritance [UnityEngine.MonoBehaviour](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.MonoBehaviour 'UnityEngine.MonoBehaviour') &#129106; [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent') &#129106; [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel') &#129106; ModHelperWindow
 ### Fields
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.blockHotkeysWhileFocused'></a>
+
+## ModHelperWindow.blockHotkeysWhileFocused Field
+
+Whether in game hotkeys should not happen while this window is being actively interacted with
+
+```csharp
+public bool blockHotkeysWhileFocused;
+```
+
+#### Field Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.blockRightClickOnContent'></a>
+
+## ModHelperWindow.blockRightClickOnContent Field
+
+Whether the options menu can be opened from right clicking on window content
+
+```csharp
+public bool blockRightClickOnContent;
+```
+
+#### Field Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.closeButton'></a>
 
 ## ModHelperWindow.closeButton Field
@@ -311,6 +337,19 @@ public BTD_Mod_Helper.Api.Components.ModHelperPopupOption ColorOption { get; }
 
 #### Property Value
 [ModHelperPopupOption](BTD_Mod_Helper.Api.Components.ModHelperPopupOption.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupOption')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.IsFocused'></a>
+
+## ModHelperWindow.IsFocused Property
+
+Whether the window is currently focused, it's on top of all other windows and the user is interacting with it instead of the game
+
+```csharp
+public bool IsFocused { get; set; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.IsMinimized'></a>
 

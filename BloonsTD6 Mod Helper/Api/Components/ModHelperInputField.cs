@@ -67,12 +67,14 @@ public class ModHelperInputField : ModHelperComponent
         TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
     {
         var modHelperInputField = Create<ModHelperInputField>(info);
-        modHelperInputField.AddComponent<Mask>();
 
-
-        var backgroundImage = modHelperInputField.AddComponent<Image>();
-        backgroundImage.type = Image.Type.Sliced;
-        backgroundImage.SetSprite(background);
+        if (background != null)
+        {
+            modHelperInputField.AddComponent<Mask>();
+            var backgroundImage = modHelperInputField.AddComponent<Image>();
+            backgroundImage.type = Image.Type.Sliced;
+            backgroundImage.SetSprite(background);
+        }
 
         var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", InfoPreset.FillParent));
 

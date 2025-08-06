@@ -54,6 +54,19 @@ public virtual bool AllowResizing { get; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.BlockHotkeysWhileFocused'></a>
+
+## ModWindow.BlockHotkeysWhileFocused Property
+
+Whether in game hotkeys should not happen while this window is being actively interacted with
+
+```csharp
+public virtual bool BlockHotkeysWhileFocused { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.UI.ModWindow.DefaultHeight'></a>
 
 ## ModWindow.DefaultHeight Property
@@ -171,6 +184,19 @@ public System.Collections.Generic.IReadOnlyList<BTD_Mod_Helper.Api.Components.Mo
 #### Property Value
 [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
 
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.RightClickOnContent'></a>
+
+## ModWindow.RightClickOnContent Property
+
+Whether the options menu can be opened from right clicking on window content
+
+```csharp
+public virtual bool RightClickOnContent { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.UI.ModWindow.RotateDockIcon'></a>
 
 ## ModWindow.RotateDockIcon Property
@@ -249,6 +275,20 @@ public virtual BTD_Mod_Helper.Api.Components.Info WindowInfo { get; }
 #### Property Value
 [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
 ### Methods
+
+<a name='BTD_Mod_Helper.Api.UI.ModWindow.IsHidden()'></a>
+
+## ModWindow.IsHidden() Method
+
+Whether this start menu entry should not appear in the menu at this time
+
+```csharp
+public override bool IsHidden();
+```
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+whether it's hidden or not
 
 <a name='BTD_Mod_Helper.Api.UI.ModWindow.LoadWindow(BTD_Mod_Helper.Api.Components.ModHelperWindow,JObject)'></a>
 
