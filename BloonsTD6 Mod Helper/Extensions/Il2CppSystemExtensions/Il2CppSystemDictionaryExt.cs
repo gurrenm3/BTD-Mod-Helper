@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using Il2CppSystem.Collections.Generic;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -43,8 +44,17 @@ public static class Il2CppSystemDictionaryExt
         }
     }
 
-
-
+    /// <summary>
+    /// Get all of the entries from this Dictionary
+    /// </summary>
+    public static System.Collections.Generic.IEnumerable<(TKey key, TValue value)> Entries<TKey, TValue>(
+        this Dictionary<TKey, TValue> keyValuePairs)
+    {
+        foreach (var (k, v) in keyValuePairs)
+        {
+            yield return (k, v);
+        }
+    }
 
 
     /// <summary>

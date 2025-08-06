@@ -21,6 +21,12 @@ namespace BTD_Mod_Helper.Api.Components;
 [RegisterTypeInIl2Cpp(false)]
 public class ModHelperWindow : ModHelperPanel
 {
+    [HideFromIl2Cpp]
+    internal static List<ModHelperWindow> ActiveWindows { get; } = [];
+
+    internal static bool AnyWindowFocused =>
+        ActiveWindows.Any(window => window.IsFocused && window.blockHotkeysWhileFocused);
+
     /// <summary>
     /// The top row of the window
     /// </summary>
@@ -129,6 +135,20 @@ public class ModHelperWindow : ModHelperPanel
     /// </summary>
     public bool noResizing;
 
+    /// <summary>
+    /// Whether in game hotkeys should not happen while this window is being actively interacted with
+    /// </summary>
+    public bool blockHotkeysWhileFocused;
+
+    /// <summary>
+    /// Whether the options menu can be opened from right clicking on window content
+    /// </summary>
+    public bool blockRightClickOnContent;
+
+    /// <summary>
+    /// Whether the window is currently focused, it's on top of all other windows and the user is interacting with it instead of the game
+    /// </summary>
+    public bool IsFocused { get; private set; }
 
     /// <summary>
     /// The options menu for the window
@@ -188,6 +208,8 @@ public class ModHelperWindow : ModHelperPanel
 
     private void OnDestroy()
     {
+        ActiveWindows.Remove(this);
+
         if (ModWindow != null)
         {
             if (InGame.instance == null || InGame.instance.quitting)
@@ -201,7 +223,14 @@ public class ModHelperWindow : ModHelperPanel
         }
 
         ModWindow?.openedWindows.Remove(this);
-        ModWindow?.OnClose(this);
+        try
+        {
+            ModWindow?.OnClose(this);
+        }
+        catch (Exception e)
+        {
+            ModHelper.Error(e);
+        }
         dockButton.gameObject.Destroy();
     }
 
@@ -220,6 +249,8 @@ public class ModHelperWindow : ModHelperPanel
         window.minHeight = modWindow.MinimumHeight;
         window.minWidth = modWindow.MinimumWidth;
         window.noResizing = !modWindow.AllowResizing;
+        window.blockHotkeysWhileFocused = modWindow.BlockHotkeysWhileFocused;
+        window.blockRightClickOnContent = !modWindow.RightClickOnContent;
 
         window.UpdateWindowColor(modWindow.DefaultWindowColor);
 
@@ -408,6 +439,8 @@ public class ModHelperWindow : ModHelperPanel
 
         window.id = Guid.NewGuid();
 
+        ActiveWindows.Add(window);
+
         return window;
     }
 
@@ -433,6 +466,10 @@ public class ModHelperWindow : ModHelperPanel
     public void ToggleLocked()
     {
         locked = !locked;
+        if (locked)
+        {
+            IsFocused = false;
+        }
 
         if (locked && nonRightClickOpened)
         {
@@ -452,12 +489,28 @@ public class ModHelperWindow : ModHelperPanel
     {
         if (gameObject.active)
         {
-            ModWindow?.OnMinimized(this);
+            IsFocused = false;
+            try
+            {
+                ModWindow?.OnMinimized(this);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error(e);
+            }
             gameObject.SetActive(false);
         }
         else
         {
-            ModWindow?.OnUnMinimized(this);
+            IsFocused = true;
+            try
+            {
+                ModWindow?.OnUnMinimized(this);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error(e);
+            }
             HandleTopBarOverlap();
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
@@ -491,20 +544,7 @@ public class ModHelperWindow : ModHelperPanel
 
     private Vector2 LocalMousePos => transform.parent.Cast<RectTransform>().MousePositionLocal(true);
 
-    internal static GameObject RaycastedGameObject
-    {
-        get
-        {
-            var raycastResults = new Il2CppSystem.Collections.Generic.List<RaycastResult>();
-            var data = new PointerEventData(EventSystem.current)
-            {
-                position = Input.mousePosition
-            };
-            EventSystem.current.RaycastAll(data, raycastResults);
-
-            return raycastResults.FirstOrDefault()?.gameObject;
-        }
-    }
+    internal static GameObject RaycastedGameObject => Input.mousePosition.Raycast().FirstOrDefault()?.gameObject;
 
     /// <summary>
     /// Open the Options Menu for this window at the current mouse position. Will handle changing the menu's position
@@ -571,7 +611,14 @@ public class ModHelperWindow : ModHelperPanel
 
         if (InGame.instance is not null && InGame.Bridge is not null)
         {
-            ModWindow?.OnUpdate(this);
+            try
+            {
+                ModWindow?.OnUpdate(this);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error(e);
+            }
         }
     }
 
@@ -591,7 +638,14 @@ public class ModHelperWindow : ModHelperPanel
             RectTransform.localPosition = localMousePos - dragOffset;
             var newPos = RectTransform.anchoredPosition;
 
-            ModWindow?.OnMove(this, oldPos, newPos);
+            try
+            {
+                ModWindow?.OnMove(this, oldPos, newPos);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error(e);
+            }
         }
 
         if (Input.GetMouseButtonDown((int) MouseButton.Left) && !isResizing)
@@ -714,7 +768,14 @@ public class ModHelperWindow : ModHelperPanel
 
         if (oldSize == newSize) return;
 
-        ModWindow?.OnResize(this, oldSize, newSize);
+        try
+        {
+            ModWindow?.OnResize(this, oldSize, newSize);
+        }
+        catch (Exception e)
+        {
+            ModHelper.Error(e);
+        }
         HandleTopBarOverlap();
     }
 
@@ -746,11 +807,18 @@ public class ModHelperWindow : ModHelperPanel
         rootCanvas.blocksRaycasts = !locked || rightClickMenu.gameObject.active;
         contentCanvas.blocksRaycasts = !locked || rightClickMenu.gameObject.active;
 
-        if (Input.GetMouseButton((int) MouseButton.Left) &&
-            RaycastedGameObject is { } target &&
-            target.transform.IsChildOf(transform))
+        if (!Input.GetMouseButton((int) MouseButton.Left)) return;
+
+        if (RaycastedGameObject is { } target &&
+            target.transform.IsChildOf(transform) &&
+            !locked)
         {
+            IsFocused = true;
             transform.SetAsLastSibling();
+        }
+        else
+        {
+            IsFocused = false;
         }
     }
 
@@ -762,7 +830,8 @@ public class ModHelperWindow : ModHelperPanel
         rootCanvas.blocksRaycasts = true;
         var targeted = RaycastedGameObject is { } target &&
                        target.transform.IsChildOf(transform) &&
-                       !target.transform.IsChildOf(rightClickMenu.transform);
+                       !target.transform.IsChildOf(rightClickMenu.transform) &&
+                       !(blockRightClickOnContent && target.transform.IsChildOf(content));
         rootCanvas.blocksRaycasts = prev;
 
         if (targeted)

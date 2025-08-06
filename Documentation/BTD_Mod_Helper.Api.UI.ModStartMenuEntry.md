@@ -121,6 +121,20 @@ public virtual float StartMenuEntryWidth { get; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.UI.ModStartMenuEntry.IsHidden()'></a>
+
+## ModStartMenuEntry.IsHidden() Method
+
+Whether this start menu entry should not appear in the menu at this time
+
+```csharp
+public virtual bool IsHidden();
+```
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+whether it's hidden or not
+
 <a name='BTD_Mod_Helper.Api.UI.ModStartMenuEntry.IsSelected()'></a>
 
 ## ModStartMenuEntry.IsSelected() Method
@@ -133,7 +147,7 @@ public virtual bool IsSelected();
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-whether it's selected or not,
+whether it's selected or not
 
 <a name='BTD_Mod_Helper.Api.UI.ModStartMenuEntry.StartMenuEntryClicked()'></a>
 

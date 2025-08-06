@@ -91,6 +91,10 @@ public sealed class ModHelperDockButton : ModHelperPanel
         {
             var text = dockButton.text = button.AddText(new Info("Text", InfoPreset.FillParent), dockTitle, 32);
             text.EnableAutoSizing(32);
+            text.Text.margin = text.Text.margin with
+            {
+                z = 10
+            };
 
             if (dockButton.icon is not null)
             {

@@ -73,7 +73,9 @@ public abstract class ModStartMenuEntry : NamedModContent
     {
         var hasChildren = ChildEntries.Any();
         var option = ModHelperPopupOption.Create(StartMenuEntry, DisplayName, Icon,
-            hasChildren ? null : new Action(StartMenuEntryClicked), isSelected: new Func<bool>(IsSelected));
+            hasChildren ? null : new Action(StartMenuEntryClicked),
+            isSelected: new Func<bool>(IsSelected),
+            isHidden: new Func<bool>(IsHidden));
         menu.AddOption(option);
         if (option.icon is not null)
         {
@@ -98,8 +100,14 @@ public abstract class ModStartMenuEntry : NamedModContent
     /// <summary>
     /// Whether this start menu entry should appear as selected in the menu.
     /// </summary>
-    /// <returns>whether it's selected or not,</returns>
+    /// <returns>whether it's selected or not</returns>
     public virtual bool IsSelected() => false;
+
+    /// <summary>
+    /// Whether this start menu entry should not appear in the menu at this time
+    /// </summary>
+    /// <returns>whether it's hidden or not</returns>
+    public virtual bool IsHidden() => false;
 }
 
 /// <summary>

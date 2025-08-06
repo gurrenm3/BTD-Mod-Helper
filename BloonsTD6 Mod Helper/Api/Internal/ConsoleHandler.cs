@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Commands;
-using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.UI.Modded;
 using CommandLine;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -27,7 +27,7 @@ internal static class ConsoleHandler
 
     public static void OnUpdate()
     {
-        if (MelonMain.OpenConsole.JustPressed() && !ConsoleShowing)
+        if (MelonMain.OpenConsole.JustPressed() && !ConsoleShowing && !ModHelperWindow.AnyWindowFocused)
         {
             ShowConsole();
         }
@@ -147,14 +147,7 @@ internal static class ConsoleHandler
 
         Console.input.InputField.ActivateInputField();
 
-        if (InGame.instance != null)
-        {
-            Console.SetParent(InGamePosition);
-        }
-        else
-        {
-            Console.SetParent(MenuPosition);
-        }
+        Console.SetParent(InGame.instance != null ? InGamePosition : MenuPosition);
 
         ClearConsole();
     }
@@ -165,7 +158,7 @@ internal static class ConsoleHandler
 
         ConsoleShowing = false;
         Console.SetActive(false);
-        
+
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -356,8 +349,8 @@ internal static class ConsoleHandler
             var lastSpace = Console.Text.LastIndexOf(" ", StringComparison.Ordinal);
 
             Console.Text = lastSpace == -1
-                ? desiredSuggestion.Text
-                : Console.Text[..(lastSpace + 1)] + desiredSuggestion.Text;
+                               ? desiredSuggestion.Text
+                               : Console.Text[..(lastSpace + 1)] + desiredSuggestion.Text;
         }
 
         Console.CaretPosition = Console.Text.Length;

@@ -434,6 +434,7 @@
 | [TypeExt](BTD_Mod_Helper.Extensions.TypeExt.md 'BTD_Mod_Helper.Extensions.TypeExt') | Extensions for Type |
 | [UnityDisplayNodeExt](BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.md 'BTD_Mod_Helper.Extensions.UnityDisplayNodeExt') | Extensions for UnityDisplayNodes |
 | [UpgradeModelExt](BTD_Mod_Helper.Extensions.UpgradeModelExt.md 'BTD_Mod_Helper.Extensions.UpgradeModelExt') | Extensions for UpgradeModels |
+| [Vector2Ext](BTD_Mod_Helper.Extensions.Vector2Ext.md 'BTD_Mod_Helper.Extensions.Vector2Ext') | Extensions for Vectors |
 | [Vector3Ext](BTD_Mod_Helper.Extensions.Vector3Ext.md 'BTD_Mod_Helper.Extensions.Vector3Ext') | Extensions for Vectors |
 | [WeaponBehaviorExt](BTD_Mod_Helper.Extensions.WeaponBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponBehaviorExt') | Behavior extensions for Weapons |
 | [WeaponModelBehaviorExt](BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt') | Behavior extensions for WeaponModels |
