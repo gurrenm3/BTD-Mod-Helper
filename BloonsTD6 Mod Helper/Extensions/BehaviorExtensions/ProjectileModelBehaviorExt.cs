@@ -1,94 +1,69 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
+
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
-/// Behavior Extensions for ProjectileModels
+/// Extensions for ProjectileModels
 /// </summary>
-public static class ProjectileModelBehaviorExt
+public static partial class ProjectileModelBehaviorExt
 {
-    /// <summary>
-    /// Check if this has a specific Behavior
-    /// </summary>
-    /// <typeparam name="T">The Behavior you're checking for</typeparam>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    public static bool HasBehavior<T>(this ProjectileModel model) where T : Model => ModelBehaviorExt.HasBehavior<T>(model);
-
-    /// <summary>
-    /// Check if this has a specific Behavior
-    /// </summary>
-    /// <typeparam name="T">The Behavior you're checking for</typeparam>
-    /// <param name="model"></param>
-    /// <param name="behavior"></param>
-    /// <returns></returns>
+    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
+    public static bool HasBehavior<T>(this ProjectileModel model) where T : Model => 
+        ModelBehaviorExt.HasBehavior<T>(model);
+            
+    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,out T)" />
     public static bool HasBehavior<T>(this ProjectileModel model, out T behavior) where T : Model =>
-        ModelBehaviorExt.HasBehavior(model, out behavior);
+        ModelBehaviorExt.HasBehavior<T>(model, out behavior);
 
-    /// <summary>
-    /// Return the first Behavior of type T
-    /// </summary>
-    /// <typeparam name="T">The Behavior you want</typeparam>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    public static T GetBehavior<T>(this ProjectileModel model) where T : Model => ModelBehaviorExt.GetBehavior<T>(model);
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
+    public static T GetBehavior<T>(this ProjectileModel model) where T : Model => 
+        ModelBehaviorExt.GetBehavior<T>(model);
 
-    /// <summary>
-    /// Return all Behaviors of type T
-    /// </summary>
-    /// <typeparam name="T">The Behavior you want</typeparam>
-    /// <param name="model"></param>
-    /// <returns></returns>
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model,int)" />
+    public static T GetBehavior<T>(this ProjectileModel model, int index) where T : Model =>
+        ModelBehaviorExt.GetBehavior<T>(model, index);
+
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model,string)" />
+    public static T GetBehavior<T>(this ProjectileModel model, string nameContains) where T : Model =>
+        ModelBehaviorExt.GetBehavior<T>(model, nameContains);
+
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}" />
     public static List<T> GetBehaviors<T>(this ProjectileModel model) where T : Model =>
         ModelBehaviorExt.GetBehaviors<T>(model).ToList();
 
-    /// <summary>
-    /// Add a Behavior to this
-    /// </summary>
-    /// <typeparam name="T">The Behavior you want to add</typeparam>
-    /// <param name="model"></param>
-    /// <param name="behavior"></param>
-    public static void AddBehavior<T>(this ProjectileModel model, T behavior) where T : Model
-    {
+    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior(Il2CppAssets.Scripts.Models.Model,Il2CppAssets.Scripts.Models.Model)" />
+    public static void AddBehavior<T>(this ProjectileModel model, T behavior) where T : Model => 
         ModelBehaviorExt.AddBehavior(model, behavior);
-    }
 
-    /// <summary>
-    /// Remove the first Behavior of Type T
-    /// </summary>
-    /// <typeparam name="T">The Behavior you want to remove</typeparam>
-    /// <param name="model"></param>
-    public static void RemoveBehavior<T>(this ProjectileModel model) where T : Model
-    {
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
+    public static void RemoveBehavior<T>(this ProjectileModel model) where T : Model => 
         ModelBehaviorExt.RemoveBehavior<T>(model);
-    }
 
-    /// <summary>
-    /// Remove the first Behavior of type T
-    /// </summary>
-    /// <typeparam name="T">The Behavior you want to remove</typeparam>
-    /// <param name="model"></param>
-    /// <param name="behavior"></param>
-    public static void RemoveBehavior<T>(this ProjectileModel model, T behavior) where T : Model
-    {
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior" />
+    public static void RemoveBehavior<T>(this ProjectileModel model, T behavior) where T : Model => 
         ModelBehaviorExt.RemoveBehavior(model, behavior);
-    }
-
-    /// <summary>
-    /// Remove all Behaviors of type T
-    /// </summary>
-    /// <typeparam name="T">The Behavior you want to remove</typeparam>
-    /// <param name="model"></param>
-    public static void RemoveBehaviors<T>(this ProjectileModel model) where T : Model
-    {
-        ModelBehaviorExt.RemoveBehaviors<T>(model);
-    }
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model,int)" />
+    public static void RemoveBehavior<T>(this ProjectileModel model, int index) where T : Model =>
+        ModelBehaviorExt.RemoveBehavior<T>(model, index);
+    
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model,string)" />
+    public static void RemoveBehavior<T>(this ProjectileModel model, string nameContains) where T : Model =>
+        ModelBehaviorExt.RemoveBehavior<T>(model, nameContains);
     
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors(this ProjectileModel model)
-    {
+    public static void RemoveBehaviors<T>(this ProjectileModel model) where T : Model => 
+        ModelBehaviorExt.RemoveBehaviors<T>(model);
+
+    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
+    public static void RemoveBehaviors(this ProjectileModel model) => 
         ModelBehaviorExt.RemoveBehaviors(model);
-    }
+
+    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior(Il2CppAssets.Scripts.Models.Model,BTD_Mod_Helper.Api.Helpers.ModelHelper)"/>
+    public static void AddBehavior(this ProjectileModel model, ModelHelper behavior) => 
+        ModelBehaviorExt.AddBehavior(model, behavior);
 }

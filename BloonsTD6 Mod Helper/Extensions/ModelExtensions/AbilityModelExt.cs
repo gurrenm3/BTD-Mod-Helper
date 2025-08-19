@@ -24,4 +24,20 @@ public static class AbilityModelExt
         var abilities = InGame.instance.GetAbilities();
         return abilities.Where(sim => sim.ability.abilityModel.IsEqual(abiltyModel)).ToList();
     }
+
+    /// <summary>
+    /// Gets the effective cooldown of this ability factoring in its <see cref="AbilityModel.CooldownSpeedScale"/>
+    /// </summary>
+    /// <param name="abiltyModel"></param>
+    /// <returns></returns>
+    public static float EffectiveCooldown(this AbilityModel abiltyModel) =>
+        abiltyModel.Cooldown * (1 - abiltyModel.cooldownSpeedScale);
+
+    /// <summary>
+    /// Gets the effective cooldown of this ability factoring in its <see cref="AbilityModel.CooldownSpeedScale"/>
+    /// </summary>
+    /// <param name="abiltyModel"></param>
+    /// <returns></returns>
+    public static int EffectiveCooldownFrames(this AbilityModel abiltyModel) =>
+        (int) (abiltyModel.cooldownFrames * (1 - abiltyModel.cooldownSpeedScale));
 }

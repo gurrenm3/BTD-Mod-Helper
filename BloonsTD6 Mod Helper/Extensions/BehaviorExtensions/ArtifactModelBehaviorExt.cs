@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Artifacts;
 using Il2CppAssets.Scripts.Models.Artifacts.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers;
@@ -12,103 +14,8 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Behavior extensions for ItemArtifactModels and BoostArtifactModels
 /// </summary>
-public static class ArtifactModelBehaviorExt
+public static partial class ArtifactModelBehaviorExt
 {
-    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static bool HasBehavior<T>(this ItemArtifactModel model) where T : ItemArtifactBehaviorModel =>
-        ModelBehaviorExt.HasBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static T GetBehavior<T>(this ItemArtifactModel model) where T : ItemArtifactBehaviorModel =>
-        ModelBehaviorExt.GetBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}" />
-    public static List<T> GetBehaviors<T>(this ItemArtifactModel model) where T : ItemArtifactBehaviorModel =>
-        ModelBehaviorExt.GetBehaviors<T>(model).ToList();
-
-    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior" />
-    public static void AddBehavior<T>(this ItemArtifactModel model, T behavior) where T : ItemArtifactBehaviorModel =>
-        ModelBehaviorExt.AddBehavior(model, behavior);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static void RemoveBehavior<T>(this ItemArtifactModel model) where T : ItemArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior" />
-    public static void RemoveBehavior<T>(this ItemArtifactModel model, T behavior) where T : ItemArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehavior(model, behavior);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors<T>(this ItemArtifactModel model) where T : ItemArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehaviors<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors(this ItemArtifactModel model) => ModelBehaviorExt.RemoveBehaviors(model);
-
-
-    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static bool HasBehavior<T>(this BoostArtifactModel model) where T : BoostArtifactBehaviorModel =>
-        ModelBehaviorExt.HasBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static T GetBehavior<T>(this BoostArtifactModel model) where T : BoostArtifactBehaviorModel =>
-        ModelBehaviorExt.GetBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}" />
-    public static List<T> GetBehaviors<T>(this BoostArtifactModel model) where T : BoostArtifactBehaviorModel =>
-        ModelBehaviorExt.GetBehaviors<T>(model).ToList();
-
-    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior" />
-    public static void AddBehavior<T>(this BoostArtifactModel model, T behavior) where T : BoostArtifactBehaviorModel =>
-        ModelBehaviorExt.AddBehavior(model, behavior);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static void RemoveBehavior<T>(this BoostArtifactModel model) where T : BoostArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior" />
-    public static void RemoveBehavior<T>(this BoostArtifactModel model, T behavior) where T : BoostArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehavior(model, behavior);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors<T>(this BoostArtifactModel model) where T : BoostArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehaviors<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors(this BoostArtifactModel model) => ModelBehaviorExt.RemoveBehaviors(model);
-
-
-    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static bool HasBehavior<T>(this MapArtifactModel model) where T : MapArtifactBehaviorModel =>
-        ModelBehaviorExt.HasBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static T GetBehavior<T>(this MapArtifactModel model) where T : MapArtifactBehaviorModel =>
-        ModelBehaviorExt.GetBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}" />
-    public static List<T> GetBehaviors<T>(this MapArtifactModel model) where T : MapArtifactBehaviorModel =>
-        ModelBehaviorExt.GetBehaviors<T>(model).ToList();
-
-    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior" />
-    public static void AddBehavior<T>(this MapArtifactModel model, T behavior) where T : MapArtifactBehaviorModel =>
-        ModelBehaviorExt.AddBehavior(model, behavior);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static void RemoveBehavior<T>(this MapArtifactModel model) where T : MapArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehavior<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior" />
-    public static void RemoveBehavior<T>(this MapArtifactModel model, T behavior) where T : MapArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehavior(model, behavior);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors<T>(this MapArtifactModel model) where T : MapArtifactBehaviorModel =>
-        ModelBehaviorExt.RemoveBehaviors<T>(model);
-
-    /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors(this MapArtifactModel model) => ModelBehaviorExt.RemoveBehaviors(model);
-
     /// <summary>
     /// Helper method for ItemArtifacts to easily add BoostArtifactBehaviorModels via InvokeBoostBuffBehaviorModel like many vanilla items do
     /// </summary>

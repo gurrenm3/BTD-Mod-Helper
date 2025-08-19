@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Artifacts;
 using Il2CppAssets.Scripts.Models.Artifacts.Behaviors;
@@ -16,8 +17,8 @@ using Il2CppAssets.Scripts.Models.Towers.Mutators;
 using Il2CppAssets.Scripts.Models.Towers.Pets;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Il2CppAssets.Scripts.Models.Towers.Props;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
+
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -48,24 +49,24 @@ internal static class ModelBehaviorExt
             return weaponModel.behaviors ?? Enumerable.Empty<Model>();
 
         if (model.IsType(out PowerModel powerModel))
-            return powerModel.behaviors.CastAll<PowerBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return powerModel.behaviors.OfIl2CppType<PowerBehaviorModel>() ?? [];
         if (model.IsType(out EmissionModel emissionModel))
-            return emissionModel.behaviors.CastAll<EmissionBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return emissionModel.behaviors.OfIl2CppType<EmissionBehaviorModel>() ?? [];
         if (model.IsType(out AirUnitModel airUnitModel))
-            return airUnitModel.behaviors.CastAll<TowerBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return airUnitModel.behaviors.OfIl2CppType<TowerBehaviorModel>() ?? [];
         if (model.IsType(out PetModel petModel))
-            return petModel.behaviors.CastAll<PetBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return petModel.behaviors.OfIl2CppType<PetBehaviorModel>() ?? [];
 
         if (model.IsType(out AddBehaviorToTowerMutatorModel addModel))
-            return addModel.behaviors.CastAll<TowerBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return addModel.behaviors.OfIl2CppType<TowerBehaviorModel>() ?? [];
         if (model.IsType(out AddBehaviorToTowerSupportModel addModel2))
-            return addModel2.behaviors.CastAll<TowerBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return addModel2.behaviors.OfIl2CppType<TowerBehaviorModel>() ?? [];
         if (model.IsType(out AddBehaviorToBloonInZoneModel addModel3))
-            return addModel3.behaviors.CastAll<BloonBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return addModel3.behaviors.OfIl2CppType<BloonBehaviorModel>() ?? [];
         if (model.IsType(out AddBehaviorToBloonModel addModel4))
-            return addModel4.behaviors.CastAll<BloonBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return addModel4.behaviors.OfIl2CppType<BloonBehaviorModel>() ?? [];
         if (model.IsType(out AddbehaviorToWeaponModel addModel5))
-            return addModel5.behaviors.CastAll<WeaponBehaviorModel, Model>() ?? Enumerable.Empty<Model>();
+            return addModel5.behaviors.OfIl2CppType<WeaponBehaviorModel>() ?? [];
 
         if (model.IsType(out ItemArtifactModel itemArtifactModel))
             return itemArtifactModel.artifactBehaviors ?? Enumerable.Empty<Model>();
@@ -87,73 +88,74 @@ internal static class ModelBehaviorExt
     /// <param name="handleDependents">Whether this should handle adding and removing dependents itself</param>
     public static void SetBehaviors(this Model model, IEnumerable<Model> behaviors, bool handleDependents = true)
     {
-        var il2CppReferenceArray = behaviors.ToIl2CppReferenceArray();
-
         var children = model.GetBehaviors();
         if (children != null && handleDependents)
         {
             model.RemoveChildDependants(children);
-            model.AddChildDependants(il2CppReferenceArray);
         }
 
-
         if (model.IsType(out AbilityModel abilityModel))
-            abilityModel.behaviors = il2CppReferenceArray;
+            abilityModel.behaviors = behaviors.ToIl2CppReferenceArray();
         else if (model.IsType(out ProjectileModel projectileModel))
-            projectileModel.behaviors = il2CppReferenceArray;
+            projectileModel.behaviors = behaviors.ToIl2CppReferenceArray();
         else if (model.IsType(out TowerModel towerModel))
-            towerModel.behaviors = il2CppReferenceArray;
+            towerModel.behaviors = behaviors.ToIl2CppReferenceArray();
         else if (model.IsType(out BloonModel bloonModel))
-            bloonModel.behaviors = il2CppReferenceArray;
+            bloonModel.behaviors = behaviors.ToIl2CppReferenceArray();
         else if (model.IsType(out AttackModel attackModel))
-            attackModel.behaviors = il2CppReferenceArray;
+            attackModel.behaviors = behaviors.ToIl2CppReferenceArray();
         else if (model.IsType(out PropModel propModel))
-            propModel.behaviors = il2CppReferenceArray;
+            propModel.behaviors = behaviors.ToIl2CppReferenceArray();
         else if (model.IsType(out WeaponModel weaponModel))
-            weaponModel.behaviors = il2CppReferenceArray;
+            weaponModel.behaviors = behaviors.ToIl2CppReferenceArray();
 
         else if (model.IsType(out PowerModel powerModel))
-            powerModel.behaviors = il2CppReferenceArray.DuplicateAs<Model, PowerBehaviorModel>();
+            powerModel.behaviors = behaviors.OfIl2CppType<PowerBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out EmissionModel emissionModel))
-            emissionModel.behaviors = il2CppReferenceArray.DuplicateAs<Model, EmissionBehaviorModel>();
+            emissionModel.behaviors = behaviors.OfIl2CppType<EmissionBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out AirUnitModel airUnitModel))
-            airUnitModel.behaviors = il2CppReferenceArray.DuplicateAs<Model, TowerBehaviorModel>();
+            airUnitModel.behaviors = behaviors.OfIl2CppType<TowerBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out PetModel petModel))
-            petModel.behaviors = il2CppReferenceArray.DuplicateAs<Model, PetBehaviorModel>();
+            petModel.behaviors = behaviors.OfIl2CppType<PetBehaviorModel>().ToIl2CppReferenceArray();
 
         else if (model.IsType(out AddBehaviorToTowerMutatorModel addModel))
-            addModel.behaviors = il2CppReferenceArray.DuplicateAs<Model, TowerBehaviorModel>();
+            addModel.behaviors = behaviors.OfIl2CppType<TowerBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out AddBehaviorToTowerSupportModel addModel2))
-            addModel2.behaviors = il2CppReferenceArray.DuplicateAs<Model, TowerBehaviorModel>();
+            addModel2.behaviors = behaviors.OfIl2CppType<TowerBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out AddBehaviorToBloonInZoneModel addModel3))
-            addModel3.behaviors = il2CppReferenceArray.DuplicateAs<Model, BloonBehaviorModel>();
+            addModel3.behaviors = behaviors.OfIl2CppType<BloonBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out AddBehaviorToBloonModel addModel4))
-            addModel4.behaviors = il2CppReferenceArray.DuplicateAs<Model, BloonBehaviorModel>();
+            addModel4.behaviors = behaviors.OfIl2CppType<BloonBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out AddbehaviorToWeaponModel addModel5))
-            addModel5.behaviors = il2CppReferenceArray.DuplicateAs<Model, WeaponBehaviorModel>();
+            addModel5.behaviors = behaviors.OfIl2CppType<WeaponBehaviorModel>().ToIl2CppReferenceArray();
 
         else if (model.IsType(out ItemArtifactModel itemArtifactModel))
-            itemArtifactModel.artifactBehaviors = il2CppReferenceArray.DuplicateAs<Model, ItemArtifactBehaviorModel>();
+            itemArtifactModel.artifactBehaviors =
+                behaviors.OfIl2CppType<ItemArtifactBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out BoostArtifactModel boostArtifactModel))
-            boostArtifactModel.artifactBehaviors = il2CppReferenceArray.DuplicateAs<Model, BoostArtifactBehaviorModel>();
+            boostArtifactModel.artifactBehaviors =
+                behaviors.OfIl2CppType<BoostArtifactBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out MapArtifactModel mapArtifactModel))
-            mapArtifactModel.artifactBehaviors = il2CppReferenceArray.DuplicateAs<Model, MapArtifactBehaviorModel>();
+            mapArtifactModel.artifactBehaviors = behaviors.OfIl2CppType<MapArtifactBehaviorModel>().ToIl2CppReferenceArray();
+
+        if (handleDependents)
+        {
+            model.AddChildDependants(model.GetBehaviors());
+        }
     }
 
     /// <summary>
     /// Check if this has a specific Behavior
     /// </summary>
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
-    public static bool HasBehavior<T>(this Model model) where T : Model
-    {
-        return model.GetBehaviors().Any(b => b.IsType<T>());
-    }
+    public static bool HasBehavior<T>(this Model model) where T : Model =>
+        model.GetBehaviors().Any(b => b.Is<T>());
 
     /// <summary>
     /// Check if this has a specific Behavior and return it
     /// </summary>
     /// <typeparam name="T">The Behavior you're checking for</typeparam>
-    public static bool HasBehavior<T>(this Model model, out T behavior) where T : Model
+    public static bool HasBehavior<T>(this Model model, [NotNullWhen(true)] out T behavior) where T : Model
     {
         behavior = model.GetBehavior<T>();
         return behavior != null;
@@ -163,10 +165,8 @@ internal static class ModelBehaviorExt
     /// Return the first Behavior of type T, or null if there isn't one
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>
-    public static T GetBehavior<T>(this Model model) where T : Model
-    {
-        return model.GetBehaviors().FirstOrDefault(m => m.IsType<T>())?.Cast<T>();
-    }
+    public static T GetBehavior<T>(this Model model) where T : Model =>
+        model.GetBehaviors().FirstOrDefault(m => m.Is<T>())?.Cast<T>();
 
     /// <summary>
     /// Return the index'th Behavior of type T, or null
@@ -179,19 +179,15 @@ internal static class ModelBehaviorExt
     /// Return the first Behavior of type T whose name contains the given string, or null
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>
-    public static T GetBehavior<T>(this Model model, string nameContains) where T : Model
-    {
-        return model.GetBehaviors<T>()?.FirstOrDefault(m => m.name.Contains(nameContains));
-    }
+    public static T GetBehavior<T>(this Model model, string nameContains) where T : Model =>
+        model.GetBehaviors().FirstOrDefault(m => m.Is<T>() && m.name.Contains(nameContains))?.Cast<T>();
 
     /// <summary>
     /// Return all Behaviors of type T
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>
-    public static IEnumerable<T> GetBehaviors<T>(this Model model) where T : Model
-    {
-        return model.GetBehaviors().Select(b => b?.TryCast<T>()).Where(b => b != null);
-    }
+    public static IEnumerable<T> GetBehaviors<T>(this Model model) where T : Model =>
+        model.GetBehaviors().Select(b => b?.TryCast<T>()).Where(b => b != null);
 
     /// <summary>
     /// Add a Behavior to this model
@@ -272,8 +268,10 @@ internal static class ModelBehaviorExt
     /// <summary>
     /// Remove all Behaviors
     /// </summary>
-    public static void RemoveBehaviors(this Model model)
-    {
-        model.SetBehaviors(Array.Empty<Model>());
-    }
+    public static void RemoveBehaviors(this Model model) => model.SetBehaviors([]);
+
+    /// <summary>
+    /// Adds a wrapped behavior from a ModelHelper to this tower
+    /// </summary>
+    public static void AddBehavior(this Model model, ModelHelper behavior) => AddBehavior(model, behavior.Model);
 }

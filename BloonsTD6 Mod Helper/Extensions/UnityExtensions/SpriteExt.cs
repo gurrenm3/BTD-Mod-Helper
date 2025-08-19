@@ -25,20 +25,20 @@ public static class SpriteExt
     /// <returns></returns>
     public static Texture2D GetReadableTexture(this Sprite sprite)
     {
+        RenderTexture tmp = null;
+        RenderTexture previous = null;
         try
         {
             var texture = sprite.texture;
             var spriteRect = sprite.textureRect;
-            var tmp = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default,
+            tmp = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default,
                 RenderTextureReadWrite.Linear);
             Graphics.Blit(texture, tmp);
-            var previous = RenderTexture.active;
+            previous = RenderTexture.active;
             RenderTexture.active = tmp;
             var myTexture2D = new Texture2D((int) spriteRect.width, (int) spriteRect.height);
             myTexture2D.ReadPixels(new Rect(spriteRect.x, spriteRect.y, spriteRect.width, spriteRect.height), 0, 0);
             myTexture2D.Apply();
-            RenderTexture.active = previous;
-            RenderTexture.ReleaseTemporary(tmp);
 
             return myTexture2D;
         }
@@ -46,6 +46,11 @@ public static class SpriteExt
         {
             ModHelper.Warning(e);
             return null;
+        }
+        finally
+        {
+            if (previous != null) RenderTexture.active = previous;
+            if (tmp != null) RenderTexture.ReleaseTemporary(tmp);
         }
     }
 

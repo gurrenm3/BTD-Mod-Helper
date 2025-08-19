@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
@@ -18,37 +19,38 @@ public static class AddBehaviorToBloonModelExt
     public static T GetBehavior<T>(this AddBehaviorToBloonModel model) where T : Model =>
         ModelBehaviorExt.GetBehavior<T>(model);
 
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model,int)" />
+    public static T GetBehavior<T>(this AddBehaviorToBloonModel model, int index) where T : Model =>
+        ModelBehaviorExt.GetBehavior<T>(model, index);
+
+    /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model,string)" />
+    public static T GetBehavior<T>(this AddBehaviorToBloonModel model, string nameContains) where T : Model =>
+        ModelBehaviorExt.GetBehavior<T>(model, nameContains);
+
     /// <inheritdoc cref="ModelBehaviorExt.GetBehaviors{T}" />
     public static List<T> GetBehaviors<T>(this AddBehaviorToBloonModel model) where T : Model =>
         ModelBehaviorExt.GetBehaviors<T>(model).ToList();
 
-    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior" />
-    public static void AddBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : BloonBehaviorModel
-    {
+    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior(Il2CppAssets.Scripts.Models.Model,Il2CppAssets.Scripts.Models.Model)" />
+    public static void AddBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : BloonBehaviorModel =>
         ModelBehaviorExt.AddBehavior(model, behavior);
-    }
 
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
-    public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model) where T : Model
-    {
+    public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model) where T : Model =>
         ModelBehaviorExt.RemoveBehavior<T>(model);
-    }
 
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehavior" />
-    public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : Model
-    {
+    public static void RemoveBehavior<T>(this AddBehaviorToBloonModel model, T behavior) where T : Model =>
         ModelBehaviorExt.RemoveBehavior(model, behavior);
-    }
 
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors<T>(this AddBehaviorToBloonModel model) where T : Model
-    {
+    public static void RemoveBehaviors<T>(this AddBehaviorToBloonModel model) where T : Model =>
         ModelBehaviorExt.RemoveBehaviors<T>(model);
-    }
-    
+
     /// <inheritdoc cref="ModelBehaviorExt.RemoveBehaviors{T}" />
-    public static void RemoveBehaviors(this AddBehaviorToBloonModel model)
-    {
-        ModelBehaviorExt.RemoveBehaviors(model);
-    }
+    public static void RemoveBehaviors(this AddBehaviorToBloonModel model) => ModelBehaviorExt.RemoveBehaviors(model);
+
+    /// <inheritdoc cref="ModelBehaviorExt.AddBehavior(Il2CppAssets.Scripts.Models.Model,BTD_Mod_Helper.Api.Helpers.ModelHelper)"/>
+    public static void AddBehavior(this AddBehaviorToBloonModel model, ModelHelper behavior) =>
+        ModelBehaviorExt.AddBehavior(model, behavior);
 }
