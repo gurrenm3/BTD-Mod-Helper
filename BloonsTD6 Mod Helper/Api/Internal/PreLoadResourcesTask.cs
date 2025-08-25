@@ -1,8 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.Enums;
+using BTD_Mod_Helper.Api.Helpers;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
+using Il2CppSystem.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.Api.Internal;
 
@@ -26,16 +35,21 @@ internal class PreLoadResourcesTask : ModLoadTask
     public override string DisplayName => "Pre-loading mod resources...";
 
     public override bool ShowProgressBar => showProgressBar ??=
-        ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values).Sum(bytes => bytes.Length) >
-        BytesPerFrame * 5;
+                                                ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values)
+                                                    .Sum(bytes => bytes.Length) >
+                                                BytesPerFrame * 5;
 
     internal static PreLoadResourcesTask Instance { get; private set; }
+
+    private static GameObject resizedSpritesParent;
 
     /// <summary>
     /// Don't load this like a normal task
     /// </summary>
     /// <returns></returns>
     public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
+
+    public static bool Complete { get; private set; }
 
     public override IEnumerator Coroutine()
     {
@@ -57,7 +71,7 @@ internal class PreLoadResourcesTask : ModLoadTask
                 parent = modHelperResources.transform
             }
         };
-        foreach (var modHelperData in Api.Data.ModHelperData.All)
+        foreach (var modHelperData in ModHelperData.All)
         {
             if (modHelperData.GetIcon() is Sprite sprite)
             {
@@ -93,9 +107,61 @@ internal class PreLoadResourcesTask : ModLoadTask
 
             Progress += 1f / totalMods;
         }
+
+        resizedSpritesParent = new GameObject("resizedVanillaSprites")
+        {
+            transform =
+            {
+                parent = modHelperResources.transform
+            }
+        };
+
+        foreach (var (guid, (orig, scale, square)) in SpriteResizer.GUIDs)
+        {
+            PreloadResizedSprite(guid, orig, scale, square);
+        }
+
+        Complete = true;
     }
 
-    private static void PreloadSprite(Sprite sprite, string name, GameObject parent)
+    internal static void PreloadResizedSprite(string guid, string origGuid, Vector2 scale, bool square)
+    {
+        try
+        {
+            var gameObject = new GameObject(guid)
+            {
+                transform =
+                {
+                    parent = resizedSpritesParent.transform
+                }
+            };
+            gameObject.SetActive(false);
+            var image = gameObject.AddComponent<Image>();
+
+            ResourceLoader.LoadSpriteFromSpriteReferenceAsync(new SpriteReference(origGuid), image);
+
+            TaskScheduler.ScheduleTask(() =>
+            {
+                var sprite = SpriteResizer.SpriteCache[guid] = image.sprite.PadSpriteToScale(scale.x, scale.y);
+                SpriteResizer.TextureCache[guid] = sprite.texture;
+
+                if (square)
+                {
+                    sprite = sprite.PadSpriteToSquare();
+                }
+
+                image.SetSprite(sprite);
+            }, () => image.sprite != null);
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Failed to resize sprite {origGuid} to scale {scale.ToString()}");
+            ModHelper.Warning(e);
+        }
+
+    }
+
+    internal static void PreloadSprite(Sprite sprite, string name, GameObject parent)
     {
         var gameObject = new GameObject(name)
         {

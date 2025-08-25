@@ -19,8 +19,7 @@ internal static class ResourceLoader_OnSpriteLoaded
     [HarmonyPrefix]
     internal static void Prefix(ref AsyncOperationHandle<Sprite> handle)
     {
-        if (handle.Succeeded() &&
-            handle.Result == null)
+        if (handle.Succeeded() && handle.Result == null)
         {
             if (handle.LocationName.Contains(ModContent.HijackSpriteAtlas + ".spriteatlasv2"))
             {

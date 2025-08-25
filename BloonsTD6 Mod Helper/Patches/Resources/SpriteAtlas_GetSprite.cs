@@ -1,7 +1,9 @@
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using UnityEngine;
 using UnityEngine.U2D;
+
 namespace BTD_Mod_Helper.Patches.Resources;
 
 [HarmonyPatch(typeof(SpriteAtlas), nameof(SpriteAtlas.GetSprite))]
@@ -19,11 +21,28 @@ internal static class SpriteAtlas_GetSprite
         name = unrefname;
         __result = unref__result;
 
-        if (__instance.name == ModContent.HijackSpriteAtlas && ResourceHandler.GetSprite(name) is Sprite spr)
+        if (__instance.name == ModContent.HijackSpriteAtlas)
         {
-            spr.texture.mipMapBias = -1;
-            __result = spr;
-            result = false;
+            if (ResourceHandler.GetSprite(name) is Sprite spr)
+            {
+                spr.texture.mipMapBias = -1;
+                __result = spr;
+                result = false;
+            }
+            else if (SpriteResizer.SpriteCache.TryGetValue(name, out var sprite) && sprite != null && sprite.texture != null)
+            {
+                __result = Sprite.Create(
+                    sprite.texture,
+                    sprite.rect,
+                    sprite.pivot,
+                    sprite.pixelsPerUnit,
+                    0,
+                    SpriteMeshType.FullRect,
+                    sprite.border
+                );
+                __result.texture.mipMapBias = -1;
+                result = false;
+            }
         }
 
 
