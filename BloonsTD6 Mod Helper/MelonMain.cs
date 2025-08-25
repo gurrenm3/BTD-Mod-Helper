@@ -14,8 +14,8 @@ using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 #if DEBUG
@@ -173,6 +173,24 @@ internal partial class MelonMain : BloonsTD6Mod
             MelonBase.RegisteredMelons.All(melon => melon.GetName() != EpicCompatibility.RepoName))
         {
             EpicCompatibility.PromptDownloadPlugin();
+        }
+
+        var version = typeof(MelonEnvironment).Assembly.GetName().Version!;
+        var versionString = $"{version.Major}.{version.Minor}.{version.Build}";
+
+        if (ModHelperGithub.UnstableMelonLoaderVersions.Contains(versionString))
+        {
+            PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                "Unstable MelonLoader Version",
+                """
+                The currently installed version of MelonLoader is not considered stable for BTD6.
+                Would you like to view the install guide to see the currently recommended version?
+                """,
+                new Action(() =>
+                {
+                    ProcessHelper.OpenURL(
+                        $"https://{ModHelper.RepoOwner}.github.io/{ModHelper.RepoName}/wiki/Install-Guide#recommended-version");
+                }), "OK", null, "No", Popup.TransitionAnim.Scale));
         }
 
         foreach (var renderTexture in ResourceHandler.RenderTexturesToRelease)

@@ -40,10 +40,11 @@ internal static class ModHelperGithub
     internal static readonly string[] AllContentTypes =
         {DllContentType, DllContentType2, DllContentType3, ZipContentType, ZipContentType2};
 
-    public static readonly HashSet<string> VerifiedModders = new();
-    public static readonly HashSet<string> BannedModders = new();
-    public static readonly HashSet<string> VerifiedTopics = new();
-    public static readonly HashSet<string> BannedMods = new();
+    public static readonly HashSet<string> VerifiedModders = [];
+    public static readonly HashSet<string> BannedModders = [];
+    public static readonly HashSet<string> VerifiedTopics = [];
+    public static readonly HashSet<string> BannedMods = [];
+    public static readonly HashSet<string> UnstableMelonLoaderVersions = [];
 
     private static MiscellaneousRateLimit rateLimit;
     private static readonly string DoYouWantToDownload =
@@ -55,7 +56,7 @@ internal static class ModHelperGithub
     private static readonly string DownloadDepsSuccess = ModHelper.Localize(nameof(DownloadDepsSuccess),
         "Successfully downloaded dependencies! Remember to restart to apply changes.");
 
-    public static List<ModHelperData> Mods { get; private set; } = new();
+    public static List<ModHelperData> Mods { get; private set; } = [];
     private static bool ForceVerifiedOnly { get; set; }
 
     public static GitHubClient Client { get; private set; }
@@ -108,7 +109,7 @@ internal static class ModHelperGithub
                 .Append(new ModHelperData(await modHelperRepoSearchTask)));
 
             searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-                {PerPage = 100, Page = page++});
+                               {PerPage = 100, Page = page++});
         }
 
         // Finish getting monorepo mods
@@ -152,6 +153,14 @@ internal static class ModHelperGithub
                 foreach (var jToken in jobject.GetValue("topics")!)
                 {
                     VerifiedTopics.Add(jToken.ToObject<string>());
+                }
+            }
+
+            if (jobject.ContainsKey("unstableMelonLoaderVersions"))
+            {
+                foreach (var jToken in jobject.GetValue("unstableMelonLoaderVersions")!)
+                {
+                    UnstableMelonLoaderVersions.Add(jToken.ToObject<string>());
                 }
             }
         }
@@ -226,14 +235,14 @@ internal static class ModHelperGithub
                 screen.ShowPopup(PopupScreen.Placement.menuCenter,
                     $"{DoYouWantToDownload.Localize()}\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                     ParseReleaseMessage(mod.SubPath == null
-                        ? latestRelease!.Body
-                        : latestCommit!.Commit.Message),
+                                            ? latestRelease!.Body
+                                            : latestCommit!.Commit.Message),
                     new Action(async () =>
                     {
                         var downloadTask = Download(mod, filePathCallback, latestRelease, !dependencies.Any());
                         taskCallback?.Invoke(downloadTask);
                         await downloadTask;
-                        
+
                         mod.SaveToJson(ModHelper.DataDirectory);
 
                         if (dependencies.Any())
@@ -286,12 +295,12 @@ internal static class ModHelperGithub
         try
         {
             var asset = mod.SubPath == null
-                ? latestRelease!.Assets.FirstOrDefault(asset =>
-                      asset.Name == mod.DllName || asset.Name == mod.ZipName || asset.Name == mod.Mod?.FileName()
-                  ) ??
-                  latestRelease.Assets[0]
-                : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
-                    DateTimeOffset.Now, mod.GetContentURL(mod.ZipName ?? mod.DllName), null);
+                            ? latestRelease!.Assets.FirstOrDefault(asset =>
+                                  asset.Name == mod.DllName || asset.Name == mod.ZipName || asset.Name == mod.Mod?.FileName()
+                              ) ??
+                              latestRelease.Assets[0]
+                            : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
+                                DateTimeOffset.Now, mod.GetContentURL(mod.ZipName ?? mod.DllName), null);
             var resultFile = await DownloadAsset(mod, asset, showPopup);
             if (resultFile != null)
             {
