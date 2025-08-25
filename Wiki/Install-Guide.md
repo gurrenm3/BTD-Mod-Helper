@@ -20,9 +20,13 @@ like `C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6`. If that's not co
 your Steam library and select "Manage" > "Browse Local Files" to see where they are. For Epic, the default install path
 is or `C:\Program Files\Epic Games\BloonsTD6`.
 
+### Recommended Version
+
+The current recommended MelonLoader version is **0.7.0**.
+
 ![Melonloader Installer Version Select Screenshot](images/ml-version-select.png)
 
-After the installation, tour BloonsTD6 Folder should then look something like this:
+After the installation, your BloonsTD6 Folder should then look something like this:
 
 ![BloonsTD6 Folder Screenshot before running MelonLoader](images/mods-folder-before.png)
 
