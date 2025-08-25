@@ -67,13 +67,4 @@ public class ModHelperButton : ModHelperComponent
 
         return modHelperButton;
     }
-
-    private void OnDestroy()
-    {
-        var button = GetComponent<Button>();
-        if (button != null)
-        {
-            button.onClick.RemoveAllListeners();
-        }
-    }
 }

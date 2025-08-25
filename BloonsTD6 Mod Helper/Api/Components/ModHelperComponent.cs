@@ -204,6 +204,47 @@ public class ModHelperComponent : MonoBehaviour
     }
 
     /// <summary>
+    /// Unity Component OnDestroy
+    /// </summary>
+    protected virtual void OnDestroy()
+    {
+        if (gameObject.HasComponent(out Button button))
+        {
+            button.onClick.RemoveAllListeners();
+        }
+
+        if (gameObject.HasComponent(out Toggle toggle))
+        {
+            toggle.onValueChanged.RemoveAllListeners();
+        }
+
+        if (gameObject.HasComponent(out Slider slider))
+        {
+            slider.onValueChanged.RemoveAllListeners();
+        }
+
+        if (gameObject.HasComponent(out Dropdown dropdown))
+        {
+            dropdown.onValueChanged.RemoveAllListeners();
+        }
+
+        if (gameObject.HasComponent(out InputField inputField))
+        {
+            inputField.onValueChanged.RemoveAllListeners();
+        }
+
+        if (gameObject.HasComponent(out Scrollbar scrollbar))
+        {
+            scrollbar.onValueChanged.RemoveAllListeners();
+        }
+
+        if (gameObject.HasComponent(out ScrollRect scrollRect))
+        {
+            scrollRect.onValueChanged.RemoveAllListeners();
+        }
+    }
+
+    /// <summary>
     /// Deletes the underlying GameObject this is attached to, not just the component
     /// </summary>
     public void DeleteObject()

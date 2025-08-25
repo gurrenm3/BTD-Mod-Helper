@@ -42,10 +42,17 @@ internal static class ModSettingsHandler
         {
             var modSetting = (ModSetting) field.GetValue(obj)!;
             modSetting.Name = field.Name;
-            mod.ModSettings[modSetting.Name] = modSetting;
-            modSetting.displayName ??= modSetting.Name.Spaced();
-            modSetting.source = obj;
-            modSetting.mod = mod;
+            if (mod.ModSettings.TryAdd(modSetting.Name, modSetting))
+            {
+                mod.ModSettings[modSetting.Name] = modSetting;
+                modSetting.displayName ??= modSetting.Name.Spaced();
+                modSetting.source = obj;
+                modSetting.mod = mod;
+            }
+            else
+            {
+                mod.loadErrors.Add($"Duplicate mod setting \"{modSetting.Name}\"");
+            }
         }
     }
 

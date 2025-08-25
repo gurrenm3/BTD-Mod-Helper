@@ -206,8 +206,11 @@ public class ModHelperWindow : ModHelperPanel
     {
     }
 
-    private void OnDestroy()
+    /// <inheritdoc />
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
+
         ActiveWindows.Remove(this);
 
         if (ModWindow != null)

@@ -5,6 +5,7 @@ using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.TowerSets;
@@ -70,7 +71,11 @@ public abstract class ModTower : NamedModContent
     internal virtual string[] DefaultMods =>
         ["GlobalAbilityCooldowns", "MonkeyEducation", "BetterSellDeals", "VeteranMonkeyTraining"];
 
-    internal virtual ModTowerSet ModTowerSet => null;
+    /// <summary>
+    /// The ModTowerSet that this belongs to, if any
+    /// </summary>
+    public virtual ModTowerSet ModTowerSet => null;
+
     internal virtual int UpgradePaths => 3;
     internal virtual int StartTier => 0;
 
@@ -406,6 +411,8 @@ public abstract class ModTower : NamedModContent
         towerModel.portrait = PortraitReference;
         towerModel.icon = IconReference;
 
+        towerModel.footprint ??= new CircleFootprintModel("", 0, true, true, true);
+
         return towerModel;
     }
 
@@ -494,9 +501,8 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     /// <param name="tiers">Length 3 array of Top/Mid/Bot tiers</param>
     /// <returns>The base TowerModel to use</returns>
-    public virtual TowerModel GetBaseTowerModel(params int[] tiers) => !string.IsNullOrEmpty(BaseTower)
-        ? BaseTowerModel.MakeCopy(Id)
-        : new TowerModel(Id, Id, TowerSet, CreatePrefabReference(""));
+    public virtual TowerModel GetBaseTowerModel(params int[] tiers) =>
+        !string.IsNullOrEmpty(BaseTower) ? BaseTowerModel.MakeCopy(Id) : ModTowerHelper.CreateTowerModel(Id, Id, TowerSet);
 }
 
 /// <summary>
@@ -505,7 +511,8 @@ public abstract class ModTower : NamedModContent
 /// <typeparam name="T"></typeparam>
 public abstract class ModTower<T> : ModTower where T : ModTowerSet
 {
-    internal override ModTowerSet ModTowerSet => GetInstance<T>();
+    /// <inheritdoc />
+    public override ModTowerSet ModTowerSet => GetInstance<T>();
 
     /// <summary>
     /// The custom tower set that this ModTower uses

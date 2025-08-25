@@ -352,6 +352,4 @@ public class ModHelperPopupOption : ModHelperPanel
 
         return option;
     }
-
-
 }

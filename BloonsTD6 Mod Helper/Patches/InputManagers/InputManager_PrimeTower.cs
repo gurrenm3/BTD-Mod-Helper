@@ -8,8 +8,7 @@ internal class InputManager_PrimeTower
     [HarmonyPostfix]
     internal static void Postfix(InputManager __instance)
     {
-        if (InGame.instance == null)
-            return;
+        if (InGame.instance == null) return;
 
         var graphics = __instance.placementGraphics.ToList();
 
