@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
+using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -22,5 +24,24 @@ public static class AssemblyExt
     {
         stream = GetEmbeddedResource(assembly, endsWith);
         return stream != null;
+    }
+
+    /// <summary>
+    /// Gets the contents of an embedded file in this assembly as plain text (UTF8)
+    /// </summary>
+    public static string GetEmbeddedText(this Assembly assembly, string endsWith)
+    {
+        using var stream = GetEmbeddedResource(assembly, endsWith);
+        using var reader = new StreamReader(stream, Encoding.UTF8);
+
+        return reader.ReadToEnd();
+    }
+
+    /// <summary>
+    /// Gets the contents of an embedded file in this assembly as json object
+    /// </summary>
+    public static JObject GetEmbeddedJson(this Assembly assembly, string endsWith)
+    {
+        return JObject.Parse(assembly.GetEmbeddedText(endsWith));
     }
 }

@@ -31,7 +31,7 @@ public static class AbilityModelExt
     /// <param name="abiltyModel"></param>
     /// <returns></returns>
     public static float EffectiveCooldown(this AbilityModel abiltyModel) =>
-        abiltyModel.Cooldown * (1 - abiltyModel.cooldownSpeedScale);
+        abiltyModel.Cooldown * (1 - abiltyModel.CooldownSpeedScale);
 
     /// <summary>
     /// Gets the effective cooldown of this ability factoring in its <see cref="AbilityModel.CooldownSpeedScale"/>
@@ -39,5 +39,5 @@ public static class AbilityModelExt
     /// <param name="abiltyModel"></param>
     /// <returns></returns>
     public static int EffectiveCooldownFrames(this AbilityModel abiltyModel) =>
-        (int) (abiltyModel.cooldownFrames * (1 - abiltyModel.cooldownSpeedScale));
+        (int) (abiltyModel.cooldownFrames * (1 - abiltyModel.CooldownSpeedScale));
 }

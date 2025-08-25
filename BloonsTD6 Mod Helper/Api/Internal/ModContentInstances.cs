@@ -62,5 +62,6 @@ internal static class ModContentInstance<T> where T : IModContent
         Instances ??= [];
         Instances.AddRange(instances.Cast<T>());
         Instance ??= Instances[0];
+        ModContent.InvalidateContentList();
     }
 }

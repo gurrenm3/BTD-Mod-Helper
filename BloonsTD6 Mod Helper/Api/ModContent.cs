@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+
 namespace BTD_Mod_Helper.Api;
 
 /// <summary>
@@ -114,10 +116,10 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
             .Select(type => CreateInstance(type, mod))
             .Where(content => content != null)
             .OrderBy(content => content.RegistrationPriority)
-            .ThenBy(content => content.Order)
+            .ThenBy(content => content, SafeComparer)
             .SelectMany(Load)
             .OrderBy(content => content.RegistrationPriority)
-            .ThenBy(content => content.Order)
+            .ThenBy(content => content, SafeComparer)
             .ToList();
     }
 
@@ -183,17 +185,34 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
         return content;
     }
 
+    private static List<ModContent> allContent;
+    private static readonly Dictionary<Type, IList> ContentByType = [];
+    private static readonly Dictionary<Type, Dictionary<string, ModContent>> ContentById = [];
 
+    internal static void InvalidateContentList()
+    {
+        allContent = null;
+        ContentByType.Clear();
+        ContentById.Clear();
+    }
 
     /// <summary>
     /// Gets all loaded ModContent objects that are T or a subclass of T
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static List<T> GetContent<T>() where T : ModContent => ModHelper.Mods
-        .SelectMany(bloonsMod => bloonsMod.Content)
-        .OfType<T>()
-        .ToList();
+    public static List<T> GetContent<T>() where T : ModContent // TODO breaking change make this an IEnumerable
+    {
+        allContent ??= ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Content).ToList();
+
+        if (!ContentByType.TryGetValue(typeof(T), out var content) || content is not List<T> list)
+        {
+            list = allContent.OfType<T>().ToList();
+            ContentByType[typeof(T)] = list;
+        }
+
+        return list;
+    }
 
     /// <summary>
     /// Gets all loaded ModContent objects that are exactly of type T
@@ -201,6 +220,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static List<T> GetInstances<T>() where T : ModContent => ModContentInstance<T>.Instances;
+    // TODO breaking change make this an IEnumerable ^
 
     /// <summary>
     /// Finds the loaded ModContent with the given Id and type T
@@ -208,14 +228,46 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// <param name="id"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static T Find<T>(string id) where T : ModContent => GetContent<T>().Find(content => content.Id == id);
+    public static T Find<T>(string id) where T : ModContent
+    {
+        if (!ContentById.TryGetValue(typeof(T), out var content))
+        {
+            content = ContentById[typeof(T)] = [];
+        }
+
+        if (!content.TryGetValue(id, out var result) || result is not T value)
+        {
+            value = GetContent<T>().FirstOrDefault(modContent => modContent.Id == id)!;
+            content[id] = value;
+        }
+
+        return value;
+    }
 
     /// <inheritdoc cref="Find{T}(string)" />
     public static bool TryFind<T>(string id, out T result) where T : ModContent
     {
         result = Find<T>(id);
-        return result != default;
+        return result != null;
     }
 
     internal int GetOrder() => Order;
+
+    internal static readonly Comparer SafeComparer = new();
+
+    internal class Comparer : Comparer<ModContent>
+    {
+        public override int Compare(ModContent x, ModContent y)
+        {
+            try
+            {
+                return x.CompareTo(y);
+            }
+            catch (Exception e)
+            {
+                x.mod.LoggerInstance.Warning(e);
+                return 0;
+            }
+        }
+    }
 }

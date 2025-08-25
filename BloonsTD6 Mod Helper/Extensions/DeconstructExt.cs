@@ -35,4 +35,34 @@ public static class DeconstructExt
         t1 = kvp.Key;
         t2 = kvp.Value;
     }
+
+    /// <summary>
+    /// Deconstruct arrays
+    /// </summary>
+    public static void Deconstruct<T>(this T[] array, out T first, out T second)
+    {
+        first = array[0];
+        second = array[1];
+    }
+
+    /// <summary>
+    /// Deconstruct arrays
+    /// </summary>
+    public static void Deconstruct<T>(this T[] array, out T first, out T second, out T third)
+    {
+        first = array[0];
+        second = array[1];
+        third = array[2];
+    }
+
+    /// <summary>
+    /// Deconstruct arrays
+    /// </summary>
+    public static void Deconstruct<T>(this T[] array, out T first, out T second,  out T third, out T fourth)
+    {
+        first = array[0];
+        second = array[1];
+        third = array[2];
+        fourth = array[3];
+    }
 }

@@ -49,19 +49,20 @@ internal partial class ModHelperData
         FilePath = mod.GetAssembly().Location;
 
         var data = mod is MelonMain
-            ? typeof(ModHelper)
-            : AccessTools.GetTypesFromAssembly(mod.GetAssembly()).FirstOrDefault(type => type.Name == nameof(ModHelperData));
+                       ? typeof(ModHelper)
+                       : AccessTools.GetTypesFromAssembly(mod.GetAssembly())
+                           .FirstOrDefault(type => type.Name == nameof(ModHelperData));
 
         if (data != null)
         {
             foreach (var fieldInfo in data
                          .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static)
-                         .Where(info => info.IsLiteral && !info.IsInitOnly && Setters.ContainsKey(info.Name)))
+                         .Where(info => info is {IsLiteral: true, IsInitOnly: false} && Setters.ContainsKey(info.Name)))
             {
                 var rawConstantValue = fieldInfo.GetRawConstantValue()!;
                 try
                 {
-                    Setters[fieldInfo.Name].Invoke(this, new[] {rawConstantValue});
+                    Setters[fieldInfo.Name].Invoke(this, [rawConstantValue]);
                 }
                 catch (Exception)
                 {

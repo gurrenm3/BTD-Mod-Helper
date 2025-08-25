@@ -88,12 +88,29 @@ public static class Il2CppGenericIEnumerable
     /// <summary>
     /// Converts this Il2cpp IEnumerable to a non il2cpp IEnumerable
     /// </summary>
-    /// <param name="source"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
     public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this IEnumerable<T> source)
     {
         using var enumerator = source.GetIl2CppEnumerator();
+        while (enumerator.MoveNext())
+            yield return enumerator.Current;
+    }
+
+    /// <summary>
+    /// Converts this Il2cpp ICollection to a non il2cpp IEnumerable
+    /// </summary>
+    public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this ICollection<T> source)
+    {
+        using var enumerator = source.Cast<IEnumerable<T>>().GetIl2CppEnumerator();
+        while (enumerator.MoveNext())
+            yield return enumerator.Current;
+    }
+
+    /// <summary>
+    /// Converts this Il2cpp IList to a non il2cpp IEnumerable
+    /// </summary>
+    public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this IList<T> source)
+    {
+        using var enumerator = source.Cast<IEnumerable<T>>().GetIl2CppEnumerator();
         while (enumerator.MoveNext())
             yield return enumerator.Current;
     }

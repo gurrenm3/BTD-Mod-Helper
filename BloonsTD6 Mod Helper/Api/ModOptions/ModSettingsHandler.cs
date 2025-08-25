@@ -106,7 +106,7 @@ internal static class ModSettingsHandler
 
         foreach (var (key, modSetting) in mod.ModSettings)
         {
-            if (modSetting.GetValue() == null) continue;
+            if (modSetting.GetValue() == null || Equals(modSetting.GetValue(), modSetting.GetDefaultValue())) continue;
 
             try
             {

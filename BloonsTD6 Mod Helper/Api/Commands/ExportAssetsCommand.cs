@@ -47,7 +47,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
                 try
                 {
                     sprite.Result.TrySaveToPNG(path);
-                    ModHelper.Msg($"Successfully saved {path}");
+                    // ModHelper.Msg($"Successfully saved {path}");
                 }
                 catch (Exception e)
                 {
@@ -84,7 +84,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
                 try
                 {
                     sprite.TrySaveToPNG(path);
-                    ModHelper.Msg($"Successfully saved {path}");
+                    // ModHelper.Msg($"Successfully saved {path}");
                 }
                 catch (Exception e)
                 {
