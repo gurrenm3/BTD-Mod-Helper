@@ -49,24 +49,24 @@ internal static class ModelBehaviorExt
             return weaponModel.behaviors ?? Enumerable.Empty<Model>();
 
         if (model.IsType(out PowerModel powerModel))
-            return powerModel.behaviors.OfIl2CppType<PowerBehaviorModel>() ?? [];
+            return powerModel.behaviors?.OfIl2CppType<PowerBehaviorModel>() ?? [];
         if (model.IsType(out EmissionModel emissionModel))
-            return emissionModel.behaviors.OfIl2CppType<EmissionBehaviorModel>() ?? [];
+            return emissionModel.behaviors?.OfIl2CppType<EmissionBehaviorModel>() ?? [];
         if (model.IsType(out AirUnitModel airUnitModel))
-            return airUnitModel.behaviors.OfIl2CppType<TowerBehaviorModel>() ?? [];
+            return airUnitModel.behaviors?.OfIl2CppType<TowerBehaviorModel>() ?? [];
         if (model.IsType(out PetModel petModel))
-            return petModel.behaviors.OfIl2CppType<PetBehaviorModel>() ?? [];
+            return petModel.behaviors?.OfIl2CppType<PetBehaviorModel>() ?? [];
 
         if (model.IsType(out AddBehaviorToTowerMutatorModel addModel))
-            return addModel.behaviors.OfIl2CppType<TowerBehaviorModel>() ?? [];
+            return addModel.behaviors?.OfIl2CppType<TowerBehaviorModel>() ?? [];
         if (model.IsType(out AddBehaviorToTowerSupportModel addModel2))
-            return addModel2.behaviors.OfIl2CppType<TowerBehaviorModel>() ?? [];
+            return addModel2.behaviors?.OfIl2CppType<TowerBehaviorModel>() ?? [];
         if (model.IsType(out AddBehaviorToBloonInZoneModel addModel3))
-            return addModel3.behaviors.OfIl2CppType<BloonBehaviorModel>() ?? [];
+            return addModel3.behaviors?.OfIl2CppType<BloonBehaviorModel>() ?? [];
         if (model.IsType(out AddBehaviorToBloonModel addModel4))
-            return addModel4.behaviors.OfIl2CppType<BloonBehaviorModel>() ?? [];
+            return addModel4.behaviors?.OfIl2CppType<BloonBehaviorModel>() ?? [];
         if (model.IsType(out AddbehaviorToWeaponModel addModel5))
-            return addModel5.behaviors.OfIl2CppType<WeaponBehaviorModel>() ?? [];
+            return addModel5.behaviors?.OfIl2CppType<WeaponBehaviorModel>() ?? [];
 
         if (model.IsType(out ItemArtifactModel itemArtifactModel))
             return itemArtifactModel.artifactBehaviors ?? Enumerable.Empty<Model>();
