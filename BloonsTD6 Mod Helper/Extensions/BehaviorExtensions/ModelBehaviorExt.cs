@@ -162,6 +162,17 @@ internal static class ModelBehaviorExt
     }
 
     /// <summary>
+    /// Check if this has a specific named Behavior and return it
+    /// </summary>
+    /// <typeparam name="T">The Behavior you're checking for</typeparam>
+    public static bool HasBehavior<T>(this Model model, string nameContains, [NotNullWhen(true)] out T behavior)
+        where T : Model
+    {
+        behavior = model.GetBehavior<T>(nameContains);
+        return behavior != null;
+    }
+
+    /// <summary>
     /// Return the first Behavior of type T, or null if there isn't one
     /// </summary>
     /// <typeparam name="T">The Behavior you want</typeparam>

@@ -73,6 +73,10 @@ internal class ModelExtGenerator
                     /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,out T)" />
                     public static bool HasBehavior<T>(this {{type.Name}} model, [NotNullWhen(true)] out T behavior) where T : Model =>
                         ModelBehaviorExt.HasBehavior<T>(model, out behavior);
+                        
+                    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,string,out T)" />
+                    public static bool HasBehavior<T>(this {{type.Name}} model, string nameContains, [NotNullWhen(true)] out T behavior) where T : Model =>
+                        ModelBehaviorExt.HasBehavior<T>(model, nameContains, out behavior);
 
                     /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
                     public static T GetBehavior<T>(this {{type.Name}} model) where T : Model => 

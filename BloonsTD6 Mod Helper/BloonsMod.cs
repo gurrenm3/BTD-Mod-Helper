@@ -197,19 +197,18 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// </summary>
     public void ApplyModHooks()
     {
-        var allHookMethods =
-            GetType().Assembly.DefinedTypes
-                .SelectMany(t => t.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-                    .Select(m => (Method: m, Attr: m.GetCustomAttribute<HookTargetAttribute>())))
-                .Where(x => x.Attr != null)
-                .Where(x =>
-                {
-                    var ok = x.Attr!.TargetType.IsAssignableToGenericType(typeof(ModHook<,>));
-                    if (!ok)
-                        MelonLogger.Warning(
-                            $"Failed to apply hook {x.Method.Name}: {x.Attr!.TargetType.FullName} is not a ModHook<,>");
-                    return ok;
-                });
+        var allHookMethods = AccessTools.GetTypesFromAssembly(GetType().Assembly)
+            .SelectMany(t => t.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+                .Select(m => (Method: m, Attr: m.GetCustomAttribute<HookTargetAttribute>())))
+            .Where(x => x.Attr != null)
+            .Where(x =>
+            {
+                var ok = x.Attr!.TargetType.IsAssignableToGenericType(typeof(ModHook<,>));
+                if (!ok)
+                    MelonLogger.Warning(
+                        $"Failed to apply hook {x.Method.Name}: {x.Attr!.TargetType.FullName} is not a ModHook<,>");
+                return ok;
+            });
 
         foreach (var (methodInfo, hook) in allHookMethods)
         {
@@ -326,8 +325,8 @@ public abstract class BloonsMod : MelonMod, IModSettings
                 }
 
                 var addName = hook.HookType == HookTargetAttribute.EHookType.Prefix
-                    ? "AddPrefix"
-                    : "AddPostfix";
+                                  ? "AddPrefix"
+                                  : "AddPostfix";
                 var addMethod = hook.TargetType.GetMethod(addName, BindingFlags.Instance | BindingFlags.Public) ??
                                 throw new MissingMethodException(hook.TargetType.FullName, addName);
 

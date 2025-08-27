@@ -163,12 +163,7 @@ public abstract class ModFakeTower : ModTower
 
         if (PlacementEffect is not null)
         {
-            var entity = sim.SpawnEffect(PlacementEffect.assetId,
-                PlacementEffect.useCenterPosition ? Vector3.zero : position, 0,
-                PlacementEffect.scale, PlacementEffect.lifespan, PlacementEffect.fullscreen, root,
-                PlacementEffect.useTransformPosition, PlacementEffect.useTransformPosition,
-                PlacementEffect.destroyOnTransformDestroy, PlacementEffect.alwaysUseAge,
-                useRoundTime: PlacementEffect.useRoundTime);
+            var entity = sim.SpawnEffect(PlacementEffect, position, root);
 
             var time = InGame.Bridge.ElapsedTime;
             TaskScheduler.ScheduleTask(() => entity.Destroy(),

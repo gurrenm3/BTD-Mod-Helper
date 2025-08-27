@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
@@ -16,8 +17,12 @@ public static partial class ProjectileModelBehaviorExt
         ModelBehaviorExt.HasBehavior<T>(model);
             
     /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,out T)" />
-    public static bool HasBehavior<T>(this ProjectileModel model, out T behavior) where T : Model =>
+    public static bool HasBehavior<T>(this ProjectileModel model, [NotNullWhen(true)] out T behavior) where T : Model =>
         ModelBehaviorExt.HasBehavior<T>(model, out behavior);
+        
+    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,string,out T)" />
+    public static bool HasBehavior<T>(this ProjectileModel model, string nameContains, [NotNullWhen(true)] out T behavior) where T : Model =>
+        ModelBehaviorExt.HasBehavior<T>(model, nameContains, out behavior);
 
     /// <inheritdoc cref="ModelBehaviorExt.GetBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
     public static T GetBehavior<T>(this ProjectileModel model) where T : Model => 
