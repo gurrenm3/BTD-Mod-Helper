@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppNinjaKiwi.Common;
 using Il2CppTMPro;
@@ -20,17 +21,29 @@ public static class Fonts
     public static TMP_FontAsset LiberationSans => Get("LiberationSans");
 
     private static TMP_FontAsset inconsolata;
+
     public static TMP_FontAsset Inconsolata
     {
         get
         {
             if (inconsolata != null) return inconsolata;
-            
-            var unityAssets = ModContent.GetBundle<MelonMain>("unity_assets");
 
-            inconsolata = unityAssets.LoadAsset("Inconsolata").Cast<TMP_FontAsset>();
-            inconsolata.material = unityAssets.LoadAsset("Inconsolata Material").Cast<Material>();
-            inconsolata.material.mainTexture = inconsolata.atlas = unityAssets.LoadAsset("Inconsolata Atlas").Cast<Texture2D>();
+            try
+            {
+                var unityAssets = ModContent.GetBundle<MelonMain>("unity_assets");
+
+                inconsolata = unityAssets.LoadAsset("Inconsolata").Cast<TMP_FontAsset>();
+                inconsolata.material = unityAssets.LoadAsset("Inconsolata Material").Cast<Material>();
+                inconsolata.material.mainTexture =
+                    inconsolata.atlas = unityAssets.LoadAsset("Inconsolata Atlas").Cast<Texture2D>();
+
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning("Failed to load Inconsolata font");
+                ModHelper.Warning(e);
+                inconsolata = LiberationSans;
+            }
 
             return inconsolata;
         }

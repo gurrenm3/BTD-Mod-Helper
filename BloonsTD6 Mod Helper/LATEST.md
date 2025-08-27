@@ -1,3 +1,4 @@
+- Initial fixes for BTD6 v50
 - Added a class `ModFakeTower` that is a variant of `ModTower` that allows for custom functionality when purchased from the shop instead of actually placing a tower
   - Most important overrides are `OnPlace` for determining what happens when purchased, and `CanPlaceAt` to determine if it's a valid spot
   - Also has `PlacementSound` and `PlacementEffect` effect overrides

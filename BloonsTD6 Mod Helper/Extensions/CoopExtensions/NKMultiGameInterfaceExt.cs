@@ -92,7 +92,7 @@ public static class NKMultiGameInterfaceExt
     /// <param name="nkGI"></param>
     /// <param name="message">Message you want to read</param>
     public static T ReadMessage<T>(this NKMultiGameInterface nkGI, Message message) =>
-        MessageUtils.ReadMessage<T>(message.GetBytes());
+        MessageUtils.ReadMessage<T>(message.bytes);
 
     /*/// <summary>
     /// Used to read messages from BTD6 InGameChat Mod. If Message is a ChatMessage, will be converted to a Chat_Message object

@@ -110,11 +110,19 @@ public static class ModHelper
             try
             {
                 ResourceHandler.LoadEmbeddedResources(mod);
-                ModContent.LoadModContent(mod);
             }
             catch (Exception e)
             {
                 Error("Critical failure when loading resources for mod " + mod.Info.Name);
+                Error(e);
+            }
+            try
+            {
+                ModContent.LoadModContent(mod);
+            }
+            catch (Exception e)
+            {
+                Error("Critical failure when loading content for mod " + mod.Info.Name);
                 Error(e);
             }
         }

@@ -9,7 +9,7 @@ internal class Btd6Player_Save
     internal static bool Prefix(Btd6Player __instance, ref bool __state)
     {
         __state = __instance.IsPendingSave;
-        if (__state && __instance.Data?.HasCompletedTutorial == true)
+        if (__state && __instance.Data?.HasStartedTutorial == true)
         {
             ProfileManagement.CleanCurrentProfile(__instance.Data);
         }
@@ -21,7 +21,7 @@ internal class Btd6Player_Save
     [HarmonyPostfix]
     internal static void Postfix(Btd6Player __instance, ref bool __state)
     {
-        if (__state && __instance.Data?.HasCompletedTutorial == true)
+        if (__state && __instance.Data?.HasStartedTutorial == true)
         {
             ProfileManagement.UnCleanProfile(__instance.Data);
         }

@@ -37,7 +37,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
 
             if (spriteLocation != null)
             {
-                var sprite = Addressables.LoadAsset<Sprite>(spriteLocation);
+                var sprite = Addressables.LoadAssetAsync<Sprite>(spriteLocation);
 
                 yield return sprite;
 

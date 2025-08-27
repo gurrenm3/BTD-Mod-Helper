@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppSystem.IO;
 using NAudio.Wave;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Internal;
@@ -105,12 +106,11 @@ public static class ResourceHandler
         foreach (var name in mod.GetAssembly().GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
         {
             var bytes = mod.GetAssembly().GetManifestResourceStream(name).GetByteArray();
-            if (bytes == null)
-            {
-                continue;
-            }
+            if (bytes == null) continue;
 
-            var bundle = AssetBundle.LoadFromMemory(bytes);
+            var stream = new MemoryStream(bytes);
+            var bundle = AssetBundle.LoadFromStream(stream);
+            stream.Dispose();
             var guid = mod.IDPrefix;
             if (bundle == null)
             {

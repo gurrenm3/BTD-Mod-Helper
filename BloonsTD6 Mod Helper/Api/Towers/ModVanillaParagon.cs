@@ -129,6 +129,7 @@ public abstract class ModVanillaParagon : ModTower
     internal void AddUpgradesToRealTowers()
     {
         foreach (var towerModel in Game.instance.model.GetTowersWithBaseId(BaseTowerModel.baseId)
+                     .AsIEnumerable()
                      .Where(towerModel => towerModel.tier == 5))
         {
             towerModel.paragonUpgrade = new UpgradePathModel(paragonUpgrade.Id, $"{towerModel.baseId}-Paragon");

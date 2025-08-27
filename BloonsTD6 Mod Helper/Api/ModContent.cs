@@ -203,7 +203,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// <returns></returns>
     public static List<T> GetContent<T>() where T : ModContent // TODO breaking change make this an IEnumerable
     {
-        allContent ??= ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Content).ToList();
+        allContent ??= ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Content ?? []).ToList();
 
         if (!ContentByType.TryGetValue(typeof(T), out var content) || content is not List<T> list)
         {

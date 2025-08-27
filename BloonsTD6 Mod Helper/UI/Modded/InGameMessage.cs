@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using BTD_Mod_Helper.Api;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.Stats;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -281,8 +280,16 @@ internal static class NotificationMgr
                 break;
             }
 
-            var notification = new Notification(slot, msg);
-            Notifications.Add(notification);
+            try
+            {
+                var notification = new Notification(slot, msg);
+                Notifications.Add(notification);
+            }
+            catch (Exception)
+            {
+                ModHelper.Msg($"{msg.NkhText.Title}");
+                ModHelper.Msg($"{msg.NkhText.BodyColor}");
+            }
         }
     }
 
@@ -319,7 +326,8 @@ internal static class NotificationMgr
         try
         {
             // TOD0 why does this fix things lol
-            InGame.instance.GetComponentFromChildrenByName<RectTransform>("BlackBarL").Find("Tiled/Edge").SetAsFirstSibling();
+            InGame.instance.GetComponentFromChildrenByName<RectTransform>("BlackBarL").Find("Tiled/Edge")
+                .SetAsFirstSibling();
         }
         catch (Exception)
         {

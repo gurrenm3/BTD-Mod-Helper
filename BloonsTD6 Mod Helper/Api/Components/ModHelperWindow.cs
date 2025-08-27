@@ -8,7 +8,6 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppInterop.Runtime.Attributes;
 using Il2CppNinjaKiwi.Common;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 using Guid = Il2CppSystem.Guid;

@@ -4,7 +4,7 @@
 /// Provides a simplified nullable type for unmanaged types, used as a replacement for Il2CPP's nullable implementation
 /// </summary>
 /// <typeparam name="T">The underlying unmanaged type</typeparam>
-public struct HookNullable<T> where T : unmanaged
+public struct HookNullable<T>
 {
     /// <summary>
     /// Indicates whether a value is present

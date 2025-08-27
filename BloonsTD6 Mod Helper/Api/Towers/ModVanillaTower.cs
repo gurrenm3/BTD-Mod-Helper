@@ -80,7 +80,8 @@ public abstract class ModVanillaTower : ModVanillaContent<TowerModel>
     }
 
     /// <inheritdoc />
-    public override IEnumerable<TowerModel> GetAffected(GameModel gameModel) => gameModel.GetTowersWithBaseId(TowerId);
+    public override IEnumerable<TowerModel> GetAffected(GameModel gameModel) =>
+        gameModel.GetTowersWithBaseId(TowerId).AsIEnumerable();
 }
 
 /// <summary>
