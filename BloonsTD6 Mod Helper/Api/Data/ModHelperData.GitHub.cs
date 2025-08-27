@@ -381,12 +381,12 @@ internal partial class ModHelperData
             }
         }
 
-        return Enumerable.Empty<ModHelperData>();
+        return [];
     }
 
     public List<ModHelperData> FindDependencies(List<ModHelperData> ignored = null)
     {
-        if (string.IsNullOrEmpty(Dependencies)) return new List<ModHelperData>();
+        if (string.IsNullOrEmpty(Dependencies)) return [];
 
         var list = new List<ModHelperData>();
         try

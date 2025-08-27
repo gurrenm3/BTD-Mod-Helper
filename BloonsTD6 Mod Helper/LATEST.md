@@ -1,1 +1,2 @@
 - Fixed an issue with ModSettingHotkeys not saving changed values
+- Updated VanillaSprites and UpgradeType lists, fixed the `export assets` command 

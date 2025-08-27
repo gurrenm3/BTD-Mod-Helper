@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using BTD_Mod_Helper.Api.Components;
-using CommandLine;
 using Il2CppInterop.Runtime;
+using Il2CppNinjaKiwi.Common.Linq;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
-using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.U2D;
 
 namespace BTD_Mod_Helper.Api.Internal;
@@ -23,16 +20,6 @@ internal static class VanillaSpriteGenerator
 
     /// <summary>
     /// Generate the VanillaSprites.cs file
-    /// <br />
-    /// To get the necessary files, from the "...\BloonsTD6\BloonsTD6_Data\StreamingAssets\aa\StandaloneWindows64\Full\"
-    /// folder, choose:
-    /// <list type="">
-    ///     <item>asset_references_assets_all_[...].bundle</item>
-    ///     <item>initial_loading_ui_scenes_all_all_[...].bundle</item>
-    ///     <item>sprite_atlases_assets_all_[...].bundle</item>
-    ///     <item>ui_scenes_all_[...].bundle</item>
-    /// </list>
-    /// in Asset Studio. Then, select all assets of type Sprite, and in the menu do Export -> Dump -> Selected assets
     /// </summary>
     internal static void GenerateVanillaSprites()
     {
@@ -129,15 +116,13 @@ internal static class VanillaSpriteGenerator
     {
         var resourceMap = Addressables.ResourceLocators.First();
 
-        var allLocations = resourceMap.AllLocations.ToArray();
+        var keys = resourceMap.Keys.ToArray().Select(o => o.ToString()).ToArray();
 
-        var resourceDict = allLocations.GroupBy(location => location.PrimaryKey);
-
-        foreach (var (guid, list) in resourceDict)
+        foreach (var guid in keys)
         {
-            if (!Guid.TryParse(guid, out _)) continue;
+            if (!Guid.TryParse(guid, out _) || !resourceMap.Locate(guid, Il2CppType.Of<Sprite>(), out var list)) continue;
 
-            var spriteLocation = list.FirstOrDefault(location => location.ResourceType == Il2CppType.Of<Sprite>());
+            var spriteLocation = list.FirstOrDefault();
 
             if (spriteLocation != null)
             {
@@ -148,7 +133,8 @@ internal static class VanillaSpriteGenerator
             }
         }
 
-        var spriteAtlases = allLocations
+        var spriteAtlases = resourceMap.AllLocations
+            .ToArray()
             .Where(location => location.ResourceType == Il2CppType.Of<SpriteAtlas>())
             .Select(location => location.PrimaryKey)
             .Distinct();

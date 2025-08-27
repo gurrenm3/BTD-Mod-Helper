@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppInterop.Runtime;
+using Il2CppNinjaKiwi.Common.Linq;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using UnityEngine;
@@ -26,14 +27,17 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
 
     public static IEnumerator ExportAllImages()
     {
+        var total = 0;
+
         var resourceMap = Addressables.ResourceLocators.First();
 
-        var allLocations = resourceMap.AllLocations.ToArray();
+        var keys = resourceMap.Keys.ToArray().Select(o => o.ToString()).ToArray();
 
-        var resourceDict = allLocations.GroupBy(location => location.PrimaryKey);
-
-        foreach (var spriteLocation in allLocations.Where(location => location.ResourceType == Il2CppType.Of<Sprite>()))
+        foreach (var key in keys)
         {
+            if (!resourceMap.Locate(key, Il2CppType.Of<Sprite>(), out var list)) continue;
+            var spriteLocation = list.FirstOrDefault();
+
             var sprite = Addressables.LoadAssetAsync<Sprite>(spriteLocation);
 
             yield return sprite;
@@ -44,6 +48,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
             try
             {
                 sprite.Result.TrySaveToPNG(path);
+                ReportProgress(ref total);
                 // ModHelper.Msg($"Successfully saved {path}");
             }
             catch (Exception e)
@@ -52,6 +57,8 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
                 ModHelper.Warning(e);
             }
         }
+
+        var allLocations = resourceMap.AllLocations.ToArray();
 
         var spriteAtlases = allLocations
             .Where(location => location.ResourceType == Il2CppType.Of<SpriteAtlas>())
@@ -79,6 +86,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
                 try
                 {
                     sprite.TrySaveToPNG(path);
+                    ReportProgress(ref total);
                     // ModHelper.Msg($"Successfully saved {path}");
                 }
                 catch (Exception e)
@@ -90,5 +98,15 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
         }
 
         ModHelper.Msg("All assets exported.");
+    }
+
+    public static void ReportProgress(ref int howMany)
+    {
+        howMany++;
+
+        if (howMany % 500 == 0)
+        {
+            ModHelper.Msg($"Exported {howMany} images so far...");
+        }
     }
 }

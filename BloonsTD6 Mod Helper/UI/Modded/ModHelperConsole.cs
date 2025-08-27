@@ -53,6 +53,13 @@ internal class ModHelperConsole : ModHelperComponent
 
     }
 
+    private void OnEnable()
+    {
+        input.GetComponent<Image>().SetSprite(VanillaSprites.BlueInsertPanel);
+        close.Image.SetSprite(VanillaSprites.CloseBtn);
+        run.Image.SetSprite(VanillaSprites.ContinueBtn);
+    }
+
     public static ModHelperConsole Create()
     {
         var console = ModHelperComponent.Create<ModHelperConsole>(new Info("ModHelperConsole", 2000, 500)

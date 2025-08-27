@@ -693,6 +693,43 @@ public static class UpgradeType
     public const string RosaliaUpgrade18 = "Rosalia Upgrade 18";
     public const string RosaliaUpgrade19 = "Rosalia Upgrade 19";
     public const string RosaliaUpgrade20 = "Rosalia Upgrade 20";
+    public const string SilasUpgrade2 = "Silas Upgrade 2";
+    public const string SilasUpgrade3 = "Silas Upgrade 3";
+    public const string SilasUpgrade4 = "Silas Upgrade 4";
+    public const string SilasUpgrade5 = "Silas Upgrade 5";
+    public const string SilasUpgrade6 = "Silas Upgrade 6";
+    public const string SilasUpgrade7 = "Silas Upgrade 7";
+    public const string SilasUpgrade8 = "Silas Upgrade 8";
+    public const string SilasUpgrade9 = "Silas Upgrade 9";
+    public const string SilasUpgrade10 = "Silas Upgrade 10";
+    public const string SilasUpgrade11 = "Silas Upgrade 11";
+    public const string SilasUpgrade12 = "Silas Upgrade 12";
+    public const string SilasUpgrade13 = "Silas Upgrade 13";
+    public const string SilasUpgrade14 = "Silas Upgrade 14";
+    public const string SilasUpgrade15 = "Silas Upgrade 15";
+    public const string SilasUpgrade16 = "Silas Upgrade 16";
+    public const string SilasUpgrade17 = "Silas Upgrade 17";
+    public const string SilasUpgrade18 = "Silas Upgrade 18";
+    public const string SilasUpgrade19 = "Silas Upgrade 19";
+    public const string SilasUpgrade20 = "Silas Upgrade 20";
+    public const string BananaVacuum = "Banana Vacuum";
+    public const string BananaPeels = "Banana Peels";
+    public const string RoboFarmer = "Robo Farmer";
+    public const string CamoBananas = "Camo Bananas";
+    public const string RegrowBananas = "Regrow Bananas";
+    public const string BananaIntelligenceBureau = "Banana Intelligence Bureau";
+    public const string AdaptiveWorkers = "Adaptive Workers";
+    public const string MonkeyBanker = "Monkey Banker";
+    public const string BananaFinancier = "Banana Financier";
+    public const string ChargedBeacon = "Charged Beacon";
+    public const string StormTremors = "Storm Tremors";
+    public const string Reverberation = "Reverberation";
+    public const string MiniStormcaller = "Mini Stormcaller";
+    public const string RapidRecharge = "Rapid Recharge";
+    public const string BeaconOfLegends = "Beacon of Legends";
+    public const string HighImpact = "High Impact";
+    public const string BewilderingStorm = "Bewildering Storm";
+    public const string PiercingWind = "Piercing Wind";
     public static readonly Dictionary<string, string> ByName = new() 
     {
         { "SharpShots", SharpShots },
@@ -1384,5 +1421,42 @@ public static class UpgradeType
         { "RosaliaUpgrade18", RosaliaUpgrade18 },
         { "RosaliaUpgrade19", RosaliaUpgrade19 },
         { "RosaliaUpgrade20", RosaliaUpgrade20 },
+        { "SilasUpgrade2", SilasUpgrade2 },
+        { "SilasUpgrade3", SilasUpgrade3 },
+        { "SilasUpgrade4", SilasUpgrade4 },
+        { "SilasUpgrade5", SilasUpgrade5 },
+        { "SilasUpgrade6", SilasUpgrade6 },
+        { "SilasUpgrade7", SilasUpgrade7 },
+        { "SilasUpgrade8", SilasUpgrade8 },
+        { "SilasUpgrade9", SilasUpgrade9 },
+        { "SilasUpgrade10", SilasUpgrade10 },
+        { "SilasUpgrade11", SilasUpgrade11 },
+        { "SilasUpgrade12", SilasUpgrade12 },
+        { "SilasUpgrade13", SilasUpgrade13 },
+        { "SilasUpgrade14", SilasUpgrade14 },
+        { "SilasUpgrade15", SilasUpgrade15 },
+        { "SilasUpgrade16", SilasUpgrade16 },
+        { "SilasUpgrade17", SilasUpgrade17 },
+        { "SilasUpgrade18", SilasUpgrade18 },
+        { "SilasUpgrade19", SilasUpgrade19 },
+        { "SilasUpgrade20", SilasUpgrade20 },
+        { "BananaVacuum", BananaVacuum },
+        { "BananaPeels", BananaPeels },
+        { "RoboFarmer", RoboFarmer },
+        { "CamoBananas", CamoBananas },
+        { "RegrowBananas", RegrowBananas },
+        { "BananaIntelligenceBureau", BananaIntelligenceBureau },
+        { "AdaptiveWorkers", AdaptiveWorkers },
+        { "MonkeyBanker", MonkeyBanker },
+        { "BananaFinancier", BananaFinancier },
+        { "ChargedBeacon", ChargedBeacon },
+        { "StormTremors", StormTremors },
+        { "Reverberation", Reverberation },
+        { "MiniStormcaller", MiniStormcaller },
+        { "RapidRecharge", RapidRecharge },
+        { "BeaconOfLegends", BeaconOfLegends },
+        { "HighImpact", HighImpact },
+        { "BewilderingStorm", BewilderingStorm },
+        { "PiercingWind", PiercingWind },
     };
 }
