@@ -5,6 +5,7 @@ using System.Reflection;
 using BTD_Mod_Helper.Api.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 internal static class ModSettingsHandler
@@ -113,14 +114,21 @@ internal static class ModSettingsHandler
 
         foreach (var (key, modSetting) in mod.ModSettings)
         {
+            try
+            {
+                if (runOnSave && !modSetting.OnSave()) continue;
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Failed to run on save for {key} for {mod.GetModName()}");
+                ModHelper.Warning(e);
+            }
+
             if (modSetting.GetValue() == null || Equals(modSetting.GetValue(), modSetting.GetDefaultValue())) continue;
 
             try
             {
-                if (!runOnSave || modSetting.OnSave())
-                {
-                    json[key] = JToken.FromObject(modSetting.GetValue());
-                }
+                json[key] = JToken.FromObject(modSetting.GetValue());
             }
             catch (Exception e)
             {
@@ -129,13 +137,16 @@ internal static class ModSettingsHandler
             }
         }
 
-        try
+        if (runOnSave)
         {
-            mod.OnSaveSettings(json);
-        }
-        catch (Exception e)
-        {
-            ModHelper.Warning(e);
+            try
+            {
+                mod.OnSaveSettings(json);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
         }
 
         File.WriteAllText(fileName, json.ToString(Formatting.Indented));

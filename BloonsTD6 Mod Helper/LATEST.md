@@ -1,12 +1,1 @@
-- Initial fixes for BTD6 v50
-- Added a class `ModFakeTower` that is a variant of `ModTower` that allows for custom functionality when purchased from the shop instead of actually placing a tower
-  - Most important overrides are `OnPlace` for determining what happens when purchased, and `CanPlaceAt` to determine if it's a valid spot
-  - Also has `PlacementSound` and `PlacementEffect` effect overrides
-  - The `Icon` is what's displayed when trying to place it, akin to a Power
-- Added a static class SpriteResizer with methods aimed at helping use resized versions of Vanilla Sprites
-  - Call `SpriteResizer.Scaled(VanillaSprites.XYZ, scale)` to get a new sprite GUID for a resized version of that sprite
-    - e.g. `SpriteResizer.Scaled(VanillaSprites.DartMonkeyIcon, .5f)` gets a Dart Monkey Icon that is half as large without having to resize the Unity UI Image it gets loaded on
-  - You can also directly call the extension methods on a Sprite itself for `.PadSpriteToScale(...)` for resizing and `.PadSpriteToSquare()` for making it 1:1 total aspect ratio
-- Added an `.AsIEnumerable()` extension for easily converting an IL2CPP IEnumerable/ICollection/IList into a standard IEnumerable that can be iterated normally
-- Added an `.EffectiveCooldown()` extension for AbilityModels that factors in the `CooldownSpeedScale`
-- Normalized some model extensions so that all supported classes have access to `.GetBehavior<T>(stringNameContains)` and `.HasBehavior(out BehaviorModel behaviorModel)`
+- Fixed an issue with ModSettingHotkeys not saving changed values
