@@ -156,16 +156,16 @@ public static class GameModelExporter
 
 
         var resourcesJson = new JObject();
-        var resourceLocationMap = Addressables.ResourceLocators.First().Cast<ResourceLocationMap>();
+        var resourceLocationMap = Addressables.ResourceLocators.First();
 
-        foreach (var (o, locations) in resourceLocationMap.Locations)
+        var allLocations = resourceLocationMap.AllLocations.ToArray();
+        var resourceDict = allLocations.GroupBy(location => location.PrimaryKey);
+
+        foreach (var (key, locations) in resourceDict)
         {
-            var key = o.ToString();
-
             if (!Guid.TryParse(key, out _)) continue;
 
             var list = locations
-                .Cast<Il2CppReferenceArray<IResourceLocation>>()
                 .Select(location => location.InternalId)
                 .Distinct()
                 .Where(s => s != key)

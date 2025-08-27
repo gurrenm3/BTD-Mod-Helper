@@ -108,7 +108,7 @@ public static class Texture2DExt
     public static RenderTexture ApplyCustomShader(this Texture texture, CustomShader customShader,
         Action<Material> modifyMaterial = null)
     {
-        var shader = ModContent.GetBundle<MelonMain>("unity_assets").LoadAsset(customShader.ToString()).Cast<Shader>();
+        var shader = ModContent.GetBundle<MelonMain>("unity_assets").LoadAssetSync<Shader>(customShader.ToString());
 
         var material = new Material(shader);
         modifyMaterial?.Invoke(material);

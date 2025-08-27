@@ -72,6 +72,23 @@ public static class TaskScheduler
     }
 
     /// <summary>
+    /// Waits for a yield instruction and then completes with an action
+    /// </summary>
+    /// <param name="yieldInstruction"></param>
+    /// <param name="onComplete"></param>
+    /// <typeparam name="T"></typeparam>
+    public static void ContinueWith<T>(this T yieldInstruction, Action<T> onComplete) where T : YieldInstruction
+    {
+        MelonCoroutines.Start(WaiterCoroutine(yieldInstruction, onComplete));
+    }
+
+    private static IEnumerator WaiterCoroutine<T>(T yieldInstruction, Action<T> onComplete)
+    {
+        yield return yieldInstruction;
+        onComplete(yieldInstruction);
+    }
+
+    /// <summary>
     /// This coroutine will wait for amountToWait before finishing
     /// </summary>
     private static IEnumerator WaiterCoroutine(Action action, ScheduleType scheduleType, int amountToWait,

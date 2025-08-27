@@ -29,8 +29,8 @@ internal class NkhMsg
 internal class Notification
 {
 
-    private static AssetBundle assetBundle;
-    private static GameObject canvas;
+    internal static AssetBundle assetBundle;
+    internal static GameObject canvas;
     //private readonly int defaultWidth = 345;
     private readonly int defaultWidth = 500;
     private readonly int maxX = 15;
@@ -57,7 +57,7 @@ internal class Notification
         }
         if (canvas == null)
         {
-            canvas = assetBundle.LoadAsset("Canvas").Cast<GameObject>();
+            canvas = assetBundle.LoadAssetSync<GameObject>("Canvas");
         }
 
         this.slot = slot;

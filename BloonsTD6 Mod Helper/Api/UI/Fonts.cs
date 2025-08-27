@@ -32,10 +32,10 @@ public static class Fonts
             {
                 var unityAssets = ModContent.GetBundle<MelonMain>("unity_assets");
 
-                inconsolata = unityAssets.LoadAsset("Inconsolata").Cast<TMP_FontAsset>();
-                inconsolata.material = unityAssets.LoadAsset("Inconsolata Material").Cast<Material>();
+                inconsolata = unityAssets.LoadAssetSync<TMP_FontAsset>("Inconsolata");
+                inconsolata.material = unityAssets.LoadAssetSync<Material>("Inconsolata Material");
                 inconsolata.material.mainTexture =
-                    inconsolata.atlas = unityAssets.LoadAsset("Inconsolata Atlas").Cast<Texture2D>();
+                    inconsolata.atlas = unityAssets.LoadAssetSync<Texture2D>("Inconsolata Atlas");
 
             }
             catch (Exception e)

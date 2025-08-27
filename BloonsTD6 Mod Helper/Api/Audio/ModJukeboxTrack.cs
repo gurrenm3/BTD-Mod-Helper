@@ -29,7 +29,7 @@ public abstract class ModJukeboxTrack : NamedModContent
     /// </summary>
     public virtual AudioClip AudioClip => string.IsNullOrEmpty(AssetBundleName)
         ? GetAudioClip(mod, AudioClipName)
-        : GetBundle(mod, AssetBundleName).LoadAsset(AudioClipName).Cast<AudioClip>();
+        : GetBundle(mod, AssetBundleName).LoadAssetSync<AudioClip>(AudioClipName);
 
     /// <summary>
     /// The BTD6 MusicItem that gets created for this track

@@ -49,7 +49,7 @@ internal static class ICustomDisplayExt
         }
         else
         {
-            var gameObject = assetBundle.LoadAsset(display.PrefabName).Cast<GameObject>();
+            var gameObject = assetBundle.LoadAssetSync<GameObject>(display.PrefabName);
             CompletePrototype(display, gameObject, assetBundle, onComplete);
         }
     }
@@ -71,7 +71,7 @@ internal static class ICustomDisplayExt
         {
             try
             {
-                var material = assetBundle.LoadAsset(display.MaterialName).Cast<Material>();
+                var material = assetBundle.LoadAssetSync<Material>(display.MaterialName);
                 baseNode.genericRenderers[0].SetMaterial(material);
             }
             catch (Exception e)

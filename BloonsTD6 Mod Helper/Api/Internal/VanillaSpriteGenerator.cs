@@ -13,6 +13,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.U2D;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class VanillaSpriteGenerator
@@ -106,7 +107,7 @@ internal static class VanillaSpriteGenerator
     {
         if (Regex.Match(name, @"^\d\d\d-").Success)
         {
-            name = string.Concat(name.Split('-').Reverse());
+            name = string.Concat(name.Split('-').AsEnumerable().Reverse());
         }
 
         if (name.Contains('#'))
@@ -126,15 +127,17 @@ internal static class VanillaSpriteGenerator
 
     public static void PopulateFromAddressables()
     {
-        var resourceMap = Addressables.ResourceLocators.First().Cast<ResourceLocationMap>();
+        var resourceMap = Addressables.ResourceLocators.First();
 
-        foreach (var (key, list) in resourceMap.Locations)
+        var allLocations = resourceMap.AllLocations.ToArray();
+
+        var resourceDict = allLocations.GroupBy(location => location.PrimaryKey);
+
+        foreach (var (guid, list) in resourceDict)
         {
-            var guid = key.ToString();
             if (!Guid.TryParse(guid, out _)) continue;
 
-            var spriteLocation = list.Cast<Il2CppReferenceArray<IResourceLocation>>()
-                .FirstOrDefault(location => location.ResourceType == Il2CppType.Of<Sprite>());
+            var spriteLocation = list.FirstOrDefault(location => location.ResourceType == Il2CppType.Of<Sprite>());
 
             if (spriteLocation != null)
             {
@@ -145,8 +148,7 @@ internal static class VanillaSpriteGenerator
             }
         }
 
-        var spriteAtlases = resourceMap.Locations.Values()
-            .SelectMany(list => list.Cast<Il2CppReferenceArray<IResourceLocation>>())
+        var spriteAtlases = allLocations
             .Where(location => location.ResourceType == Il2CppType.Of<SpriteAtlas>())
             .Select(location => location.PrimaryKey)
             .Distinct();

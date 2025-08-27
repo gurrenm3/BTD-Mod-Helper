@@ -8,8 +8,6 @@ using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
-using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.U2D;
 
 namespace BTD_Mod_Helper.Api.Commands;
@@ -28,37 +26,34 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
 
     public static IEnumerator ExportAllImages()
     {
-        var resourceMap = Addressables.ResourceLocators.First().Cast<ResourceLocationMap>();
+        var resourceMap = Addressables.ResourceLocators.First();
 
-        foreach (var list in resourceMap.Locations.Values())
+        var allLocations = resourceMap.AllLocations.ToArray();
+
+        var resourceDict = allLocations.GroupBy(location => location.PrimaryKey);
+
+        foreach (var spriteLocation in allLocations.Where(location => location.ResourceType == Il2CppType.Of<Sprite>()))
         {
-            var spriteLocation = list.Cast<Il2CppReferenceArray<IResourceLocation>>()
-                .FirstOrDefault(location => location.ResourceType == Il2CppType.Of<Sprite>());
+            var sprite = Addressables.LoadAssetAsync<Sprite>(spriteLocation);
 
-            if (spriteLocation != null)
+            yield return sprite;
+
+            var path = Path.Combine(FileIOHelper.sandboxRoot, spriteLocation.InternalId);
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+
+            try
             {
-                var sprite = Addressables.LoadAssetAsync<Sprite>(spriteLocation);
-
-                yield return sprite;
-
-                var path = Path.Combine(FileIOHelper.sandboxRoot, spriteLocation.InternalId);
-                Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-
-                try
-                {
-                    sprite.Result.TrySaveToPNG(path);
-                    // ModHelper.Msg($"Successfully saved {path}");
-                }
-                catch (Exception e)
-                {
-                    ModHelper.Warning($"Failed to save {path}");
-                    ModHelper.Warning(e);
-                }
+                sprite.Result.TrySaveToPNG(path);
+                // ModHelper.Msg($"Successfully saved {path}");
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Failed to save {path}");
+                ModHelper.Warning(e);
             }
         }
 
-        var spriteAtlases = resourceMap.Locations.Values()
-            .SelectMany(list => list.Cast<Il2CppReferenceArray<IResourceLocation>>())
+        var spriteAtlases = allLocations
             .Where(location => location.ResourceType == Il2CppType.Of<SpriteAtlas>())
             .DistinctBy(location => location.PrimaryKey)
             .ToDictionary(location => location.PrimaryKey, location => location.InternalId);
