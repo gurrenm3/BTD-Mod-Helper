@@ -18,6 +18,19 @@ public abstract class ModTower<T> : BTD_Mod_Helper.Api.Towers.ModTower
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; [ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower') &#129106; ModTower<T>
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower_T_.ModTowerSet'></a>
+
+## ModTower<T>.ModTowerSet Property
+
+The ModTowerSet that this belongs to, if any
+
+```csharp
+public override BTD_Mod_Helper.Api.Towers.ModTowerSet ModTowerSet { get; }
+```
+
+#### Property Value
+[ModTowerSet](BTD_Mod_Helper.Api.Towers.ModTowerSet.md 'BTD_Mod_Helper.Api.Towers.ModTowerSet')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower_T_.TowerSet'></a>
 
 ## ModTower<T>.TowerSet Property

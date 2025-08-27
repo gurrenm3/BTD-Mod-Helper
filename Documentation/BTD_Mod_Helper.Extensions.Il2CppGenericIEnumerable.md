@@ -64,6 +64,75 @@ public static bool Any<T>(this IEnumerable<T> source)
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisICollection_T_)'></a>
+
+## Il2CppGenericIEnumerable.AsIEnumerable<T>(this ICollection<T>) Method
+
+Converts this Il2cpp ICollection to a non il2cpp IEnumerable
+
+```csharp
+public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this ICollection<T> source);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisICollection_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisICollection_T_).source'></a>
+
+`source` [Il2CppSystem.Collections.Generic.ICollection](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.ICollection 'Il2CppSystem.Collections.Generic.ICollection')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisICollection_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable<T>(this ICollection<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIEnumerable_T_)'></a>
+
+## Il2CppGenericIEnumerable.AsIEnumerable<T>(this IEnumerable<T>) Method
+
+Converts this Il2cpp IEnumerable to a non il2cpp IEnumerable
+
+```csharp
+public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this IEnumerable<T> source);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIEnumerable_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIEnumerable_T_).source'></a>
+
+`source` [Il2CppSystem.Collections.Generic.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IEnumerable 'Il2CppSystem.Collections.Generic.IEnumerable')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIEnumerable_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable<T>(this IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIList_T_)'></a>
+
+## Il2CppGenericIEnumerable.AsIEnumerable<T>(this IList<T>) Method
+
+Converts this Il2cpp IList to a non il2cpp IEnumerable
+
+```csharp
+public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this IList<T> source);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIList_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIList_T_).source'></a>
+
+`source` [Il2CppSystem.Collections.Generic.IList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.IList 'Il2CppSystem.Collections.Generic.IList')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md#BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable_T_(thisIList_T_).T 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.AsIEnumerable<T>(this IList<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
 <a name='BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.First_T_(thisIEnumerable_T_)'></a>
 
 ## Il2CppGenericIEnumerable.First<T>(this IEnumerable<T>) Method

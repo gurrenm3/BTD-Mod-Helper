@@ -191,6 +191,7 @@
 | [ProcessHelper](BTD_Mod_Helper.Api.Helpers.ProcessHelper.md 'BTD_Mod_Helper.Api.Helpers.ProcessHelper') | Helper methods for processes |
 | [ProjectileHelper](BTD_Mod_Helper.Api.Helpers.ProjectileHelper.md 'BTD_Mod_Helper.Api.Helpers.ProjectileHelper') | A wrapper around ProjectileModels for making them easier to create |
 | [QuickEdit](BTD_Mod_Helper.Api.Helpers.QuickEdit.md 'BTD_Mod_Helper.Api.Helpers.QuickEdit') | Utility for allowing the user to quickly edit some input in an external program |
+| [SpriteResizer](BTD_Mod_Helper.Api.Helpers.SpriteResizer.md 'BTD_Mod_Helper.Api.Helpers.SpriteResizer') | Helper class for getting resized versions of Sprites |
 | [TimeHelper](BTD_Mod_Helper.Api.Helpers.TimeHelper.md 'BTD_Mod_Helper.Api.Helpers.TimeHelper') | Properties and methods for helping change in game time / time related values |
 | [WeaponHelper](BTD_Mod_Helper.Api.Helpers.WeaponHelper.md 'BTD_Mod_Helper.Api.Helpers.WeaponHelper') | A wrapper around WeaponModels for making them easier to create |
 
@@ -288,6 +289,8 @@
 
 | Classes | |
 | :--- | :--- |
+| [ModFakeTower](BTD_Mod_Helper.Api.Towers.ModFakeTower.md 'BTD_Mod_Helper.Api.Towers.ModFakeTower') | Defines a "fake" tower that will be added as an entry to the shop but instead of placing down as normal, will just show its<br/>icon being placed with custom conditions and an action upon placement |
+| [ModFakeTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModFakeTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModFakeTower<T>') | Defines a "fake" tower that will be added as an entry to the shop but instead of placing down as normal, will just show its<br/>icon being placed with custom conditions and an action upon placement |
 | [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero') | Class for adding a custom Hero to the game. Use alongside [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') to give multiple levels. |
 | [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') | Class representing the UpgradeModel and changes for a particular Level for a ModHero |
 | [ModHeroLevel&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModHeroLevel_T_.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel<T>') | Convenient generic class for specifying the ModHero that this ModHeroLevel is for |
@@ -339,18 +342,20 @@
 | [AbilityModelBehaviorExt](BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt') | Extensions for AbilityModels |
 | [AbilityModelExt](BTD_Mod_Helper.Extensions.AbilityModelExt.md 'BTD_Mod_Helper.Extensions.AbilityModelExt') | Extensions for AbilityModels |
 | [ActionExt](BTD_Mod_Helper.Extensions.ActionExt.md 'BTD_Mod_Helper.Extensions.ActionExt') | Extension methods for System.Action |
+| [AddBehaviorToBloonModelBehaviorExt](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelBehaviorExt') | Extensions for AddBehaviorToBloonModels |
 | [AddBehaviorToBloonModelExt](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt') | Extensions for AddBehaviorToBloonModels |
 | [AirUnitModelBehaviorExt](BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AirUnitModelBehaviorExt') | Behavior extensions for AirUnitModels |
 | [ArrayExt](BTD_Mod_Helper.Extensions.ArrayExt.md 'BTD_Mod_Helper.Extensions.ArrayExt') | Extensions for arrays |
 | [ArtifactModelBehaviorExt](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt') | Behavior extensions for ItemArtifactModels and BoostArtifactModels |
 | [AssemblyExt](BTD_Mod_Helper.Extensions.AssemblyExt.md 'BTD_Mod_Helper.Extensions.AssemblyExt') | Extensions for Assemblies |
+| [AssetBundleExt](BTD_Mod_Helper.Extensions.AssetBundleExt.md 'BTD_Mod_Helper.Extensions.AssetBundleExt') | Extensions for AssetBundles |
 | [AttackBehaviorExt](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackBehaviorExt') | Behavior extensions for attacks |
-| [AttackModelBehaviorExt](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt') | Behavior Extensions for AttackModel |
+| [AttackModelBehaviorExt](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt') | Extensions for AttackModels |
 | [AttackModelExt](BTD_Mod_Helper.Extensions.AttackModelExt.md 'BTD_Mod_Helper.Extensions.AttackModelExt') | Extensions for AttackModels |
 | [AudioClipExtensions](BTD_Mod_Helper.Extensions.AudioClipExtensions.md 'BTD_Mod_Helper.Extensions.AudioClipExtensions') | Extensions for unity audio clips |
 | [BloonBehaviorExt](BTD_Mod_Helper.Extensions.BloonBehaviorExt.md 'BTD_Mod_Helper.Extensions.BloonBehaviorExt') | Extensions for getting bloon behaviors |
 | [BloonExt](BTD_Mod_Helper.Extensions.BloonExt.md 'BTD_Mod_Helper.Extensions.BloonExt') | Extensions for Bloons |
-| [BloonModelBehaviorExt](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt') | Behavior extensions for BloonModels |
+| [BloonModelBehaviorExt](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt') | Extensions for BloonModels |
 | [BloonModelExt](BTD_Mod_Helper.Extensions.BloonModelExt.md 'BTD_Mod_Helper.Extensions.BloonModelExt') | Extensions for BloonModels |
 | [BloonsTD6ModExt](BTD_Mod_Helper.Extensions.BloonsTD6ModExt.md 'BTD_Mod_Helper.Extensions.BloonsTD6ModExt') | Extensions for BloonsTD6Mods (for some reason lol) |
 | [BloonToSimulationExt](BTD_Mod_Helper.Extensions.BloonToSimulationExt.md 'BTD_Mod_Helper.Extensions.BloonToSimulationExt') | Extensions for the BloonToSimulation |
@@ -403,17 +408,18 @@
 | [NKMultiGameInterfaceExt](BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.md 'BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt') | Extensions for sending and receiving data in coop |
 | [PetModelBehaviorExt](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt') | Extensions for PetModels |
 | [PopupScreenExt](BTD_Mod_Helper.Extensions.PopupScreenExt.md 'BTD_Mod_Helper.Extensions.PopupScreenExt') | Extensions for PopupScreen |
-| [PowerModelBehaviorExt](BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.PowerModelBehaviorExt') | Behavior extensions for PowerModels |
+| [PowerModelBehaviorExt](BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.PowerModelBehaviorExt') | Extensions for PowerModels |
 | [ProfileModelExt](BTD_Mod_Helper.Extensions.ProfileModelExt.md 'BTD_Mod_Helper.Extensions.ProfileModelExt') | Extensions for ProfileModels |
 | [ProjectileBehaviorExt](BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.md 'BTD_Mod_Helper.Extensions.ProjectileBehaviorExt') | Behavior extensions for projectiles |
 | [ProjectileExt](BTD_Mod_Helper.Extensions.ProjectileExt.md 'BTD_Mod_Helper.Extensions.ProjectileExt') | Extensions for Projectiles |
-| [ProjectileModelBehaviorExt](BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt') | Behavior Extensions for ProjectileModels |
+| [ProjectileModelBehaviorExt](BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt') | Extensions for ProjectileModels |
 | [ProjectileModelExt](BTD_Mod_Helper.Extensions.ProjectileModelExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelExt') | Extensions for ProjectileModels |
 | [RectTransformExt](BTD_Mod_Helper.Extensions.RectTransformExt.md 'BTD_Mod_Helper.Extensions.RectTransformExt') | Extensions for RectTransforms |
 | [RendererExt](BTD_Mod_Helper.Extensions.RendererExt.md 'BTD_Mod_Helper.Extensions.RendererExt') | Extensions for unity renderers |
 | [RootObjectLockList](BTD_Mod_Helper.Extensions.RootObjectLockList.md 'BTD_Mod_Helper.Extensions.RootObjectLockList') | Extensions for RootObjectLockLists |
 | [RoundModelExt](BTD_Mod_Helper.Extensions.RoundModelExt.md 'BTD_Mod_Helper.Extensions.RoundModelExt') | Extensions for RoundModels |
 | [SelectableExt](BTD_Mod_Helper.Extensions.SelectableExt.md 'BTD_Mod_Helper.Extensions.SelectableExt') | Extensions for Selectable |
+| [SimulationExt](BTD_Mod_Helper.Extensions.SimulationExt.md 'BTD_Mod_Helper.Extensions.SimulationExt') | Extensions for [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation') |
 | [SliderEventExt](BTD_Mod_Helper.Extensions.SliderEventExt.md 'BTD_Mod_Helper.Extensions.SliderEventExt') | Extensions for SliderEvents |
 | [SpawnerExt](BTD_Mod_Helper.Extensions.SpawnerExt.md 'BTD_Mod_Helper.Extensions.SpawnerExt') | Extensions for Spawners |
 | [SpriteExt](BTD_Mod_Helper.Extensions.SpriteExt.md 'BTD_Mod_Helper.Extensions.SpriteExt') | Extensions for Sprites |
@@ -428,7 +434,7 @@
 | [TowerBehaviorExt](BTD_Mod_Helper.Extensions.TowerBehaviorExt.md 'BTD_Mod_Helper.Extensions.TowerBehaviorExt') | Behavior extensions for Towers |
 | [TowerDetailsModelExt](BTD_Mod_Helper.Extensions.TowerDetailsModelExt.md 'BTD_Mod_Helper.Extensions.TowerDetailsModelExt') | Extensions for TowerDetailsModels |
 | [TowerExt](BTD_Mod_Helper.Extensions.TowerExt.md 'BTD_Mod_Helper.Extensions.TowerExt') | Extensions for Towers |
-| [TowerModelBehaviorExt](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt') | Behavior extensions for TowerModels |
+| [TowerModelBehaviorExt](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt') | Extensions for TowerModels |
 | [TowerModelExt](BTD_Mod_Helper.Extensions.TowerModelExt.md 'BTD_Mod_Helper.Extensions.TowerModelExt') | Extensions for TowerModels |
 | [TowerToSimulationExt](BTD_Mod_Helper.Extensions.TowerToSimulationExt.md 'BTD_Mod_Helper.Extensions.TowerToSimulationExt') | Extensions for TowerToSimulation |
 | [TypeExt](BTD_Mod_Helper.Extensions.TypeExt.md 'BTD_Mod_Helper.Extensions.TypeExt') | Extensions for Type |
@@ -437,7 +443,7 @@
 | [Vector2Ext](BTD_Mod_Helper.Extensions.Vector2Ext.md 'BTD_Mod_Helper.Extensions.Vector2Ext') | Extensions for Vectors |
 | [Vector3Ext](BTD_Mod_Helper.Extensions.Vector3Ext.md 'BTD_Mod_Helper.Extensions.Vector3Ext') | Extensions for Vectors |
 | [WeaponBehaviorExt](BTD_Mod_Helper.Extensions.WeaponBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponBehaviorExt') | Behavior extensions for Weapons |
-| [WeaponModelBehaviorExt](BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt') | Behavior extensions for WeaponModels |
+| [WeaponModelBehaviorExt](BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt') | Extensions for WeaponModels |
 | [WeaponModelExt](BTD_Mod_Helper.Extensions.WeaponModelExt.md 'BTD_Mod_Helper.Extensions.WeaponModelExt') | Extensions for WeaponModels |
 
 | Delegates | |

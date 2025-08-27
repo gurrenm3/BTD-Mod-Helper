@@ -7,7 +7,6 @@ Provides a simplified nullable type for unmanaged types, used as a replacement f
 
 ```csharp
 public struct HookNullable<T>
-    where T : unmanaged, System.ValueType, System.ValueType
 ```
 #### Type parameters
 

@@ -1011,6 +1011,16 @@ public T GetDescendent<T>(string s="")
 #### Returns
 [T](BTD_Mod_Helper.Api.Components.ModHelperComponent.md#BTD_Mod_Helper.Api.Components.ModHelperComponent.GetDescendent_T_(string).T 'BTD_Mod_Helper.Api.Components.ModHelperComponent.GetDescendent<T>(string).T')
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.OnDestroy()'></a>
+
+## ModHelperComponent.OnDestroy() Method
+
+Unity Component OnDestroy
+
+```csharp
+protected virtual void OnDestroy();
+```
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.OnUpdate()'></a>
 
 ## ModHelperComponent.OnUpdate() Method

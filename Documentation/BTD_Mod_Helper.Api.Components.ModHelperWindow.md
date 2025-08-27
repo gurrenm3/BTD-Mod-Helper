@@ -510,6 +510,16 @@ ModWindow definition
 [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')  
 the created ModHelperWindow
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.OnDestroy()'></a>
+
+## ModHelperWindow.OnDestroy() Method
+
+Unity Component OnDestroy
+
+```csharp
+protected override void OnDestroy();
+```
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.OpenRightClickMenu()'></a>
 
 ## ModHelperWindow.OpenRightClickMenu() Method

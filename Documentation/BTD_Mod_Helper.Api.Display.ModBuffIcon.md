@@ -178,3 +178,16 @@ public void ApplyTo(TowerBehaviorBuffModel model);
 `model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel')
 
 The support model to apply to
+
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.CreateBuffIndicatorModel()'></a>
+
+## ModBuffIcon.CreateBuffIndicatorModel() Method
+
+Creates a BuffIndicatorModel for this custom icon
+
+```csharp
+public BuffIndicatorModel CreateBuffIndicatorModel();
+```
+
+#### Returns
+[Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel 'Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel')

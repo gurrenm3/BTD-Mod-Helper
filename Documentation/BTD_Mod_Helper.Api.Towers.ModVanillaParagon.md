@@ -103,6 +103,19 @@ public sealed override int MiddlePathUpgrades { get; }
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.ModTowerSet'></a>
+
+## ModVanillaParagon.ModTowerSet Property
+
+The ModTowerSet that this belongs to, if any
+
+```csharp
+public sealed override BTD_Mod_Helper.Api.Towers.ModTowerSet ModTowerSet { get; }
+```
+
+#### Property Value
+[ModTowerSet](BTD_Mod_Helper.Api.Towers.ModTowerSet.md 'BTD_Mod_Helper.Api.Towers.ModTowerSet')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaParagon.Name'></a>
 
 ## ModVanillaParagon.Name Property

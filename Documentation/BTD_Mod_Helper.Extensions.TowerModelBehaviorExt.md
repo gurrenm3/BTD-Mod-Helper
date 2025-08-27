@@ -3,7 +3,7 @@
 
 ## TowerModelBehaviorExt Class
 
-Behavior extensions for TowerModels
+Extensions for TowerModels
 
 ```csharp
 public static class TowerModelBehaviorExt
@@ -35,7 +35,7 @@ public static void AddBehavior(this TowerModel model, BTD_Mod_Helper.Api.Helpers
 
 ## TowerModelBehaviorExt.AddBehavior<T>(this TowerModel, T) Method
 
-Add a Behavior to this
+Add a Behavior to this model
 
 ```csharp
 public static void AddBehavior<T>(this TowerModel model, T behavior)
@@ -46,8 +46,6 @@ public static void AddBehavior<T>(this TowerModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior_T_(thisTowerModel,T).T'></a>
 
 `T`
-
-The Behavior you want to add
 #### Parameters
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior_T_(thisTowerModel,T).model'></a>
@@ -58,11 +56,71 @@ The Behavior you want to add
 
 `behavior` [T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior_T_(thisTowerModel,T).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.AddBehavior<T>(this TowerModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,int)'></a>
+
+## TowerModelBehaviorExt.GetBehavior<T>(this TowerModel, int) Method
+
+Return the index'th Behavior of type T, or null
+
+```csharp
+public static T GetBehavior<T>(this TowerModel model, int index)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,int).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,int).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,int).index'></a>
+
+`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,int).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior<T>(this TowerModel, int).T')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,string)'></a>
+
+## TowerModelBehaviorExt.GetBehavior<T>(this TowerModel, string) Method
+
+Return the first Behavior of type T whose name contains the given string, or null
+
+```csharp
+public static T GetBehavior<T>(this TowerModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,string).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel,string).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior<T>(this TowerModel, string).T')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehavior_T_(thisTowerModel)'></a>
 
 ## TowerModelBehaviorExt.GetBehavior<T>(this TowerModel) Method
 
-Return the first Behavior of type T
+Return the first Behavior of type T, or null if there isn't one
 
 ```csharp
 public static T GetBehavior<T>(this TowerModel model)
@@ -110,11 +168,45 @@ The Behavior you want
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehaviors_T_(thisTowerModel).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.GetBehaviors<T>(this TowerModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,string,T)'></a>
+
+## TowerModelBehaviorExt.HasBehavior<T>(this TowerModel, string, T) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this TowerModel model, string nameContains, out T behavior)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,string,T).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,string,T).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,string,T).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,string,T).behavior'></a>
+
+`behavior` [T](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md#BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,string,T).T 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior<T>(this TowerModel, string, T).T')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.HasBehavior_T_(thisTowerModel,T)'></a>
 
 ## TowerModelBehaviorExt.HasBehavior<T>(this TowerModel, T) Method
 
-Check if this has a specific Behavior
+Check if this has a specific Behavior and return it
 
 ```csharp
 public static bool HasBehavior<T>(this TowerModel model, out T behavior)
@@ -166,6 +258,60 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,int)'></a>
+
+## TowerModelBehaviorExt.RemoveBehavior<T>(this TowerModel, int) Method
+
+Remove the index'th Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this TowerModel model, int index)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,int).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,int).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,int).index'></a>
+
+`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,string)'></a>
+
+## TowerModelBehaviorExt.RemoveBehavior<T>(this TowerModel, string) Method
+
+Remove the first Behavior of Type T whose name contains a certain string
+
+```csharp
+public static void RemoveBehavior<T>(this TowerModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,string).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,T)'></a>
 
 ## TowerModelBehaviorExt.RemoveBehavior<T>(this TowerModel, T) Method
@@ -181,8 +327,6 @@ public static void RemoveBehavior<T>(this TowerModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,T).T'></a>
 
 `T`
-
-The Behavior you want to remove
 #### Parameters
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehavior_T_(thisTowerModel,T).model'></a>
@@ -220,7 +364,7 @@ The Behavior you want to remove
 
 ## TowerModelBehaviorExt.RemoveBehaviors(this TowerModel) Method
 
-Remove all Behaviors
+Remove all Behaviors of type T
 
 ```csharp
 public static void RemoveBehaviors(this TowerModel model);
@@ -246,8 +390,6 @@ public static void RemoveBehaviors<T>(this TowerModel model)
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehaviors_T_(thisTowerModel).T'></a>
 
 `T`
-
-The Behavior you want to remove
 #### Parameters
 
 <a name='BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.RemoveBehaviors_T_(thisTowerModel).model'></a>

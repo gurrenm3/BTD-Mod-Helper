@@ -19,8 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Get all of the values from this Dictionary as a list
 
 ```csharp
-public static System.Collections.Generic.List<TValue> GetValues<TKey,TValue>(this System.Collections.Generic.Dictionary<TKey,TValue> keyValuePairs)
-    where TKey : notnull;
+public static System.Collections.Generic.List<TValue> GetValues<TKey,TValue>(this System.Collections.Generic.Dictionary<TKey,TValue> keyValuePairs);
 ```
 #### Type parameters
 

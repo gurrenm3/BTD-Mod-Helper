@@ -13,6 +13,7 @@ public abstract class ModTower : BTD_Mod_Helper.Api.NamedModContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModTower
 
 Derived  
+&#8627; [ModFakeTower](BTD_Mod_Helper.Api.Towers.ModFakeTower.md 'BTD_Mod_Helper.Api.Towers.ModFakeTower')  
 &#8627; [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero')  
 &#8627; [ModSubTower](BTD_Mod_Helper.Api.Towers.ModSubTower.md 'BTD_Mod_Helper.Api.Towers.ModSubTower')  
 &#8627; [ModTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModTower<T>')  
@@ -216,6 +217,19 @@ public virtual int MiddlePathUpgrades { get; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.ModTowerSet'></a>
+
+## ModTower.ModTowerSet Property
+
+The ModTowerSet that this belongs to, if any
+
+```csharp
+public virtual BTD_Mod_Helper.Api.Towers.ModTowerSet ModTowerSet { get; }
+```
+
+#### Property Value
+[ModTowerSet](BTD_Mod_Helper.Api.Towers.ModTowerSet.md 'BTD_Mod_Helper.Api.Towers.ModTowerSet')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode'></a>
 
