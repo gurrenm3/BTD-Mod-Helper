@@ -156,7 +156,7 @@ internal partial class ModHelperData
     /// </summary>
     internal bool RestartRequired =>
         Enabled == (Mod == null) ||
-        Mod != null && Version != null && Version == RepoVersion && IsUpdate(Mod.Info.Version, Version, RepoOwner);
+        Mod != null && Version != null && Version == RepoVersion && IsUpdate(Mod.Info.Version, Version, RepoWorksOnVersion);
 
     // Values to be displayed in the GUI
     internal string DisplayName => Name.NullIfEmpty() ?? Mod?.Info.Name.NullIfEmpty() ?? RepoName ?? "No Name Provided";

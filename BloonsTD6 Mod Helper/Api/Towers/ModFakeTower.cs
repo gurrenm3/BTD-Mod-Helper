@@ -58,8 +58,10 @@ public abstract class ModFakeTower : ModTower
         towerModel.showBuffs = false;
     }
 
-
-
+    /// <summary>
+    /// Enables tracking placements of these fake towers in the tower inventory
+    /// </summary>
+    public virtual bool TowerInventoryEnabled => true;
 
 
     /// <inheritdoc />
@@ -111,6 +113,19 @@ public abstract class ModFakeTower : ModTower
     /// <param name="cost"></param>
     public abstract void OnPlace(Vector2 at, TowerModel towerModelFake, Tower hoveredTower, float cost);
 
+    internal float GetCost(TowerModel towerModelFake, Vector2 at)
+    {
+        var owner = InGame.Bridge.MyPlayerNumber;
+        var sim = InGame.Bridge.Simulation;
+
+        var height = sim.Map.GetTerrainHeight(new Il2CppAssets.Scripts.Simulation.SMath.Vector2(at));
+        var pos = new Vector3(at.x, at.y, height);
+
+        var towerInventory = sim.GetTowerInventory(owner);
+        var cost = sim.towerManager.GetTowerCost(towerModelFake, pos, towerInventory, owner);
+
+        return cost;
+    }
 
     /// <summary>
     /// Purchases this fake tower at a specific spot
@@ -122,12 +137,10 @@ public abstract class ModFakeTower : ModTower
     {
         var owner = InGame.Bridge.MyPlayerNumber;
         var sim = InGame.Bridge.Simulation;
-
         var height = sim.Map.GetTerrainHeight(new Il2CppAssets.Scripts.Simulation.SMath.Vector2(at));
         var pos = new Vector3(at.x, at.y, height);
 
-        var towerInventory = sim.GetTowerInventory(owner);
-        var cost = sim.towerManager.GetTowerCost(towerModelFake, pos, towerInventory, owner);
+        var cost = GetCost(towerModelFake, at);
 
         sim.RemoveCash(cost, Simulation.CashType.Normal, owner, Simulation.CashSource.TowerBrought);
 
@@ -143,10 +156,13 @@ public abstract class ModFakeTower : ModTower
 
         PlacementSideEffects(hoveredTower?.Position ?? pos, hoveredTower?.Transform.Cast<IRootBehavior>());
 
-        var inventory = InGame.Bridge.Simulation.GetTowerInventory(InGame.Bridge.MyPlayerNumber);
-        if (inventory.towerMaxes.TryGetValue(Id, out var max) && max > 0)
+        if (TowerInventoryEnabled)
         {
-            inventory.towerMaxes[Id]--;
+            var inventory = InGame.Bridge.Simulation.GetTowerInventory(InGame.Bridge.MyPlayerNumber);
+            if (inventory.towerCounts.TryGetValue(Id, out var count))
+            {
+                inventory.towerCounts[Id]++;
+            }
         }
     }
 

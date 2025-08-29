@@ -82,18 +82,14 @@ jobs:
       - name: Upload Mod DLL
         uses: actions/upload-artifact@v4
         with:
-          # Artifact name
           name: ${{ env.PROJECT_NAME }}.dll
-          # A file, directory or wildcard pattern that describes what to upload
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
       
       
       - name: Upload Mod Documentation
         uses: actions/upload-artifact@v4
         with:
-          # Artifact name
           name: ${{ env.PROJECT_NAME }}.xml
-          # A file, directory or wildcard pattern that describes what to upload
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
           
           

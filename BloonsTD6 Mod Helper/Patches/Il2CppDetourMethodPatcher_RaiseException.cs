@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 namespace BTD_Mod_Helper.Patches;
 
-[HarmonyPatch]
+/*[HarmonyPatch]
 internal static class Il2CppDetourMethodPatcher_RaiseException
 {
     private static IEnumerable<MethodBase> TargetMethods()
@@ -16,6 +16,6 @@ internal static class Il2CppDetourMethodPatcher_RaiseException
     [HarmonyPostfix]
     private static void Postfix(Exception ex)
     {
-        ModHelper.Error(ex);
+        Console.WriteLine(ex);
     }
-}
+}*/

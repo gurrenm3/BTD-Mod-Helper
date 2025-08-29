@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
+using Application = UnityEngine.Application;
 namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
@@ -55,13 +56,14 @@ internal partial class ModHelperData
     internal string Branch { get; private set; }
     internal string DataPath { get; }
     internal List<string> Topics { get; private set; }
+    internal string RepoWorksOnVersion { get; private set; }
 
     internal bool UpdateAvailable =>
         Version != null &&
         !RestartRequired &&
         RepoDataSuccess &&
         RepoVersion != null &&
-        IsUpdate(Version, RepoVersion, RepoOwner);
+        IsUpdate(Version, RepoVersion, RepoWorksOnVersion);
 
     internal bool OutOfDate => UpdateAvailable || OldDownloadUrl != null;
 
@@ -188,6 +190,7 @@ internal partial class ModHelperData
 
             RepoDataSuccess = true;
             RepoVersion = Version;
+            RepoWorksOnVersion = WorksOnVersion;
 
             if (RepoOwner == MelonMain.GitHubUsername)
             {
@@ -201,6 +204,7 @@ internal partial class ModHelperData
                 modHelperData.RepoVersion = Version;
                 modHelperData.Branch = Branch;
                 modHelperData.RepoDataSuccess = true;
+                modHelperData.RepoWorksOnVersion = WorksOnVersion;
             }
 
             if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
@@ -281,8 +285,9 @@ internal partial class ModHelperData
             }
 
             return LatestCommit =
-                (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository.Id, new CommitRequest {Path = path}))
-                [0];
+                       (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository.Id,
+                            new CommitRequest {Path = path}))
+                       [0];
         }
         catch (Exception e)
         {
@@ -296,10 +301,17 @@ internal partial class ModHelperData
         }
     }
 
-    public static bool IsUpdate(string currentVersion, string latestVersion, string repoOwner = null)
+    public static bool IsUpdate(string currentVersion, string latestVersion, string latestWorksOnVersion = null)
     {
         if (!SemVersion.TryParse(latestVersion, out var latestSemver) ||
             !SemVersion.TryParse(currentVersion, out var currentSemver))
+        {
+            return false;
+        }
+
+        if (SemVersion.TryParse(latestWorksOnVersion, out var worksOnVersion) &&
+            SemVersion.TryParse(Application.version, out var gameVersion) &&
+            gameVersion < worksOnVersion)
         {
             return false;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Simulation.Towers;
@@ -134,6 +135,11 @@ public abstract class ModUpgrade : NamedModContent
     /// The tower that this is an upgrade for
     /// </summary>
     public abstract ModTower Tower { get; }
+
+    /// <summary>
+    /// Whether this upgrade should be unlocked or not
+    /// </summary>
+    public virtual bool ShouldAcquireUpgrade(ProfileModel profileModel) => true;
 
     /// <inheritdoc />
     public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)

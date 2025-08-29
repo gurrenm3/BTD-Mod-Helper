@@ -5,6 +5,7 @@ using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Data.Skins;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;

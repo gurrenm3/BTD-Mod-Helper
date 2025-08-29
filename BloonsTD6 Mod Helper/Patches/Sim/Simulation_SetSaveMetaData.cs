@@ -1,8 +1,10 @@
+using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Simulation;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppSystem.Collections.Generic;
+
 namespace BTD_Mod_Helper.Patches.Sim;
 
 [HarmonyPatch(typeof(Simulation), nameof(Simulation.SetSaveMetaData))]
@@ -13,11 +15,11 @@ internal static class Simulation_SetSaveMetaData
     {
         var inventory = __instance.GetTowerInventory(InGame.Bridge.MyPlayerNumber);
 
-        foreach (var modFakeTower in ModContent.GetContent<ModFakeTower>())
+        foreach (var modFakeTower in ModContent.GetContent<ModFakeTower>().Where(tower => tower.TowerInventoryEnabled))
         {
-            if (metaData.TryGetValue(modFakeTower.Id, out var max) && int.TryParse(max, out var maxInt))
+            if (metaData.TryGetValue(modFakeTower.Id, out var c) && int.TryParse(c, out var count))
             {
-                inventory.towerMaxes[modFakeTower.Id] = maxInt;
+                inventory.towerCounts[modFakeTower.Id] = count;
             }
         }
     }

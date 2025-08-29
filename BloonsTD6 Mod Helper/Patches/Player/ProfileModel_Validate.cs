@@ -20,20 +20,29 @@ internal class ProfileModel_Validate
     internal static void Postfix(ProfileModel __instance)
     {
         foreach (var modTowerId in ModContent.GetContent<ModTower>()
-                     .Where(modTower => modTower is not ModHero && !__instance.unlockedTowers.Contains(modTower.Id))
+                     .Where(modTower => modTower is not ModHero &&
+                                        !__instance.unlockedTowers.Contains(modTower.Id) &&
+                                        modTower.ShouldUnlockTower(__instance))
                      .Select(modTower => modTower.Id))
         {
             __instance.unlockedTowers.Add(modTowerId);
             __instance.acquiredUpgrades.Add(modTowerId);
         }
 
-        foreach (var modUpgrade in ModContent.GetContent<ModUpgrade>()
-                     .Where(modUpgrade => !__instance.acquiredUpgrades.Contains(modUpgrade.Id)))
+        foreach (var modUpgradeId in ModContent.GetContent<ModUpgrade>()
+                     .Where(modUpgrade => modUpgrade.ShouldAcquireUpgrade(__instance))
+                     .Select(upgrade => upgrade.Id)
+                )
         {
-            __instance.acquiredUpgrades.Add(modUpgrade.Id);
+            if (!__instance.acquiredUpgrades.Contains(modUpgradeId))
+            {
+                __instance.acquiredUpgrades.Add(modUpgradeId);
+            }
         }
 
-        foreach (var modHeroId in ModContent.GetContent<ModHero>().Select(modHero => modHero.Id))
+        foreach (var modHeroId in ModContent.GetContent<ModHero>()
+                     .Where(hero => hero.ShouldUnlockTower(__instance))
+                     .Select(modHero => modHero.Id))
         {
             __instance.unlockedHeroes.Add(modHeroId);
             __instance.seenUnlockedHeroes.Add(modHeroId);

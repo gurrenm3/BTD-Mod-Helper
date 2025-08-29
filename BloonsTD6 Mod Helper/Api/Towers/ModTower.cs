@@ -4,6 +4,7 @@ using System.Linq;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
@@ -186,6 +187,16 @@ public abstract class ModTower : NamedModContent
     /// </summary>
     public virtual bool IncludeInRogueLegends => false;
 
+    /// <summary>
+    /// Set to true to disable the default handling of ModUpgrades for this tower controlling its <see cref="TowerModel.upgrades"/> and <see cref="TowerModel.appliedUpgrades"/>
+    /// </summary>
+    public virtual bool DontApplyModUpgrades => false;
+
+    /// <summary>
+    /// Whether this tower should be unlocked or not
+    /// </summary>
+    public virtual bool ShouldUnlockTower(ProfileModel profileModel) => true;
+
     internal virtual TowerModel BaseTowerModel => Game.instance.model.GetTowerFromId(BaseTower);
 
     internal virtual bool ShouldCreateParagon =>
@@ -363,17 +374,40 @@ public abstract class ModTower : NamedModContent
             ModTowerHelper.FinalizeTowerModel(this, towerModel);
         }
 
-        if (!DontAddToShop)
+        AddOrRemoveFromShop();
+
+        ModTowerSet?.towers.Add(this);
+    }
+
+    /// <summary>
+    /// Synchronizes whether this tower is actually in the shop with its <see cref="DontAddToShop"/> property
+    /// </summary>
+    public void AddOrRemoveFromShop()
+    {
+        var gameModel = Game.instance.model;
+        switch (DontAddToShop)
         {
-            var index = GetTowerIndex(Game.instance.model.towerSet.ToList());
-            if (index >= 0)
+            case true when TowerType.towers.Contains(Id):
+                TowerType.towers = TowerType.towers.RemoveFrom(Id);
+                gameModel.towerSet = gameModel.towerSet.Where(model => model.towerId != Id).ToArray();
+
+                for (var i = 0; i < gameModel.towerSet.Count; i++)
+                {
+                    gameModel.towerSet[i]!.towerIndex = i;
+                }
+                break;
+            case false when !TowerType.towers.Contains(Id):
             {
-                var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, ShopTowerCount);
-                Game.instance.model.AddTowerDetails(shopTowerDetailsModel, index);
+                var index = GetTowerIndex(gameModel.towerSet.ToList());
+                if (index >= 0)
+                {
+                    var shopTowerDetailsModel = new ShopTowerDetailsModel(Id, index, 5, 5, 5, ShopTowerCount);
+                    gameModel.AddTowerDetails(shopTowerDetailsModel, index);
+                }
+                break;
             }
         }
 
-        ModTowerSet?.towers.Add(this);
     }
 
     /// <summary>
@@ -387,8 +421,11 @@ public abstract class ModTower : NamedModContent
         towerModel.baseId = Id;
         towerModel.name = Id;
 
-        towerModel.appliedUpgrades = new Il2CppStringArray(0);
-        towerModel.upgrades = new Il2CppReferenceArray<UpgradePathModel>(0);
+        if (!DontApplyModUpgrades)
+        {
+            towerModel.appliedUpgrades = new Il2CppStringArray(0);
+            towerModel.upgrades = new Il2CppReferenceArray<UpgradePathModel>(0);
+        }
         towerModel.towerSet = TowerSet;
         towerModel.cost = Cost;
         towerModel.dontDisplayUpgrades = false;

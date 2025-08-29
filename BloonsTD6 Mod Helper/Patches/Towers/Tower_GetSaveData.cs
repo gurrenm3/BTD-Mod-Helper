@@ -8,6 +8,7 @@ internal class Tower_GetSaveData
     [HarmonyPostfix]
     internal static void Postfix(Tower __instance, TowerSaveDataModel __result)
     {
+        if (__instance == null) return;
         ModHelper.PerformHook(mod => mod.OnTowerSaved(__instance, __result));
     }
 }

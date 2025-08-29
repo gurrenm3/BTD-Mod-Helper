@@ -112,6 +112,19 @@ internal static class ModSettingsHandler
 
         var json = new JObject();
 
+        // Keep old / custom settings around just in case
+        if (File.Exists(fileName))
+        {
+            try
+            {
+                json = JObject.Parse(File.ReadAllText(fileName));
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
         foreach (var (key, modSetting) in mod.ModSettings)
         {
             try
@@ -124,7 +137,11 @@ internal static class ModSettingsHandler
                 ModHelper.Warning(e);
             }
 
-            if (modSetting.GetValue() == null || Equals(modSetting.GetValue(), modSetting.GetDefaultValue())) continue;
+            if (modSetting.GetValue() == null || Equals(modSetting.GetValue(), modSetting.GetDefaultValue()))
+            {
+                json.Remove(key);
+                continue;
+            }
 
             try
             {

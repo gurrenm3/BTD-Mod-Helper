@@ -17,7 +17,10 @@ internal static class InputManager_TryPlace
         string helpMessage = null;
         if (fakeTower.CanPlaceAt(at, tower, ref helpMessage))
         {
-            fakeTower.Purchase(at, __instance.towerModel, tower);
+            if (fakeTower.GetCost(__instance.towerModel, at) <= InGame.Bridge.GetCash())
+            {
+                fakeTower.Purchase(at, __instance.towerModel, tower);
+            }
 
             __instance.towerButton?.SetDirty();
             __instance.ExitPlacementMode();

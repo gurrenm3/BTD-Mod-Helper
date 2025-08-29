@@ -18,7 +18,33 @@ public static class Il2CppStringArrayExt
         {
             newArray[i] = array[i];
         }
-        newArray[newArray.Length - 1] = itemToAdd;
+        newArray[^1] = itemToAdd;
+        return newArray;
+    }
+
+
+    /// <summary>
+    /// Return this with an Item removed from it
+    /// </summary>
+    /// <param name="array"></param>
+    /// <param name="itemToRemove"></param>
+    /// <returns></returns>
+    public static Il2CppStringArray RemoveFrom(this Il2CppStringArray array, string itemToRemove)
+    {
+        var index = array.IndexOf(itemToRemove);
+        if (index < 0) return array;
+
+        var newArray = new Il2CppStringArray(array.Length - 1);
+
+        for (var i = 0; i < index; i++)
+        {
+            newArray[i] = array[i];
+        }
+        for (var i = index + 1; i < array.Length; i++)
+        {
+            newArray[i - 1] = array[i];
+        }
+
         return newArray;
     }
 }

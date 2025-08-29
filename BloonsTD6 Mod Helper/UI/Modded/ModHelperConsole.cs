@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
@@ -55,9 +56,12 @@ internal class ModHelperConsole : ModHelperComponent
 
     private void OnEnable()
     {
-        input.GetComponent<Image>().SetSprite(VanillaSprites.BlueInsertPanel);
-        close.Image.SetSprite(VanillaSprites.CloseBtn);
-        run.Image.SetSprite(VanillaSprites.ContinueBtn);
+        TaskScheduler.ScheduleTask(() =>
+        {
+            input.GetComponent<Image>().SetSprite(VanillaSprites.BlueInsertPanel);
+            close.Image.SetSprite(VanillaSprites.CloseBtn);
+            run.Image.SetSprite(VanillaSprites.ContinueBtn);
+        });
     }
 
     public static ModHelperConsole Create()

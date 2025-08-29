@@ -1,3 +1,4 @@
+using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Simulation;
@@ -13,11 +14,11 @@ internal static class Simulation_GetSaveMetaData
     {
         var inventory = __instance.GetTowerInventory(InGame.Bridge.MyPlayerNumber);
 
-        foreach (var modFakeTower in ModContent.GetContent<ModFakeTower>())
+        foreach (var modFakeTower in ModContent.GetContent<ModFakeTower>().Where(tower => tower.TowerInventoryEnabled))
         {
-            if (inventory.towerMaxes.TryGetValue(modFakeTower.Id, out var max))
+            if (inventory.towerCounts.TryGetValue(modFakeTower.Id, out var count))
             {
-                metaData[modFakeTower.Id] = max.ToString();
+                metaData[modFakeTower.Id] = count.ToString();
             }
         }
     }

@@ -92,6 +92,11 @@ public static class ModTowerHelper
         var towerModel = modTower.GetDefaultTowerModel(tiers).Duplicate();
         towerModel.name = modTower.TowerId(tiers);
 
+        // set the tower's portrait
+        towerModel.portrait = modTower.GetPortraitReferenceForTiers(tiers);
+
+        if (modTower.DontApplyModUpgrades) return towerModel;
+
         // add the names to applied upgrades
         towerModel.appliedUpgrades = modTower.AllUpgrades
             .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier)
@@ -134,9 +139,6 @@ public static class ModTowerHelper
                 new UpgradePathModel(modTower.paragonUpgrade.Id, $"{towerModel.baseId}-Paragon");
         }
 
-        // set the tower's portrait
-        towerModel.portrait = modTower.GetPortraitReferenceForTiers(tiers);
-
         return towerModel;
     }
 
@@ -168,47 +170,50 @@ public static class ModTowerHelper
 
         // actually apply the upgrades
 
-        var modUpgrades = modTower.GetUpgradesForTiers(towerModel.tiers);
-
-        foreach (var modUpgrade in modUpgrades)
+        if (!modTower.DontApplyModUpgrades)
         {
-            try
-            {
-                modUpgrade.EarlyApplyUpgrade(towerModel);
-            }
-            catch (Exception)
-            {
-                ModHelper.Error(
-                    $"Failed to EarlyApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
-                throw;
-            }
-        }
+            var modUpgrades = modTower.GetUpgradesForTiers(towerModel.tiers);
 
-        foreach (var modUpgrade in modUpgrades)
-        {
-            try
+            foreach (var modUpgrade in modUpgrades)
             {
-                modUpgrade.ApplyUpgrade(towerModel);
+                try
+                {
+                    modUpgrade.EarlyApplyUpgrade(towerModel);
+                }
+                catch (Exception)
+                {
+                    ModHelper.Error(
+                        $"Failed to EarlyApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
+                    throw;
+                }
             }
-            catch (Exception)
-            {
-                ModHelper.Error(
-                    $"Failed to ApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
-                throw;
-            }
-        }
 
-        foreach (var modUpgrade in modUpgrades)
-        {
-            try
+            foreach (var modUpgrade in modUpgrades)
             {
-                modUpgrade.LateApplyUpgrade(towerModel);
+                try
+                {
+                    modUpgrade.ApplyUpgrade(towerModel);
+                }
+                catch (Exception)
+                {
+                    ModHelper.Error(
+                        $"Failed to ApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
+                    throw;
+                }
             }
-            catch (Exception)
+
+            foreach (var modUpgrade in modUpgrades)
             {
-                ModHelper.Error(
-                    $"Failed to LateApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
-                throw;
+                try
+                {
+                    modUpgrade.LateApplyUpgrade(towerModel);
+                }
+                catch (Exception)
+                {
+                    ModHelper.Error(
+                        $"Failed to LateApplyUpgrade {modUpgrade.Name} to TowerModel {towerModel.name}");
+                    throw;
+                }
             }
         }
 
