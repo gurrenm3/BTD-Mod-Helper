@@ -52,7 +52,7 @@ internal static class ModSettingsHandler
             }
             else
             {
-                mod.loadErrors.Add($"Duplicate mod setting \"{modSetting.Name}\"");
+                mod.LoadError($"Duplicate mod setting \"{modSetting.Name}\"");
             }
         }
     }

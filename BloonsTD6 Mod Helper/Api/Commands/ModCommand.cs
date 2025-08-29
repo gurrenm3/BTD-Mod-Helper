@@ -96,7 +96,7 @@ public abstract class ModCommand : ModContent
 
         if (commands.ContainsKey(Command))
         {
-            mod.loadErrors.Add($"Command {Command} already registered");
+            mod.LoadError($"Command {Command} already registered");
         }
         else
         {

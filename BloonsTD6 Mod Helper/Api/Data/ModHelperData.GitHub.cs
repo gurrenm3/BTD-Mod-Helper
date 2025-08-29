@@ -146,12 +146,11 @@ internal partial class ModHelperData
 
             try
             {
-                data ??= await WhenFirstSucceededOrAllFailed(new[]
-                {
+                data ??= await WhenFirstSucceededOrAllFailed([
                     ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs)),
                     ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson)),
                     ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt))
-                });
+                ]);
             }
             catch (Exception e)
             {

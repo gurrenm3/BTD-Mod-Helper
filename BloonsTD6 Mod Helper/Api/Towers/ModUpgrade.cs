@@ -170,9 +170,7 @@ public abstract class ModUpgrade : NamedModContent
         {
             if (Cache.ContainsKey(upgradeModel.name))
             {
-                var message = $"Duplicate Upgrade {upgradeModel.name}";
-                ModHelper.Error(message);
-                mod.loadErrors.Add(message);
+                mod.LoadError($"Duplicate Upgrade {upgradeModel.name}");
             }
             else
             {
@@ -269,7 +267,7 @@ public abstract class ModUpgrade : NamedModContent
     public virtual UpgradeModel GetUpgradeModel()
     {
         return upgradeModel ??= new UpgradeModel(Id, Cost, XpCost, IconReference ?? DefaultIcon,
-            Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
+                   Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
     }
 
     /// <summary>

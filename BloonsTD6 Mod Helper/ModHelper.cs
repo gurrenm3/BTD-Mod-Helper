@@ -11,15 +11,18 @@ using MelonLoader.Utils;
 using Directory = System.IO.Directory;
 using Path = System.IO.Path;
 
+// ReSharper disable UnusedMember.Global
+
 namespace BTD_Mod_Helper;
 
 /// <summary>
-/// Catch-all class for non-extension static methods
+/// Catch-all class for non-extension static methods and accessors, as well as the ModHelperData for this mod
 /// </summary>
 public static class ModHelper
 {
+    internal const string WorksOnVersion = "50.0";
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.4.10";
+    internal const string Version = "3.4.11";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =
@@ -31,14 +34,24 @@ public static class ModHelper
 
     private static bool fallBackToOldLoading = true;
 
+    /// <summary>
+    /// The current installed version of Mod Helper
+    /// </summary>
+    public static string InstalledVersion => Version;
+
+    /// <summary>
+    /// The version of Mod Helper that this mod was compiled with
+    /// </summary>
+    public const string CompiledVersion = Version;
+
     private static IEnumerable<BloonsMod> mods;
 
     /// <summary>
     /// Directory where Mod Helper stores most of its extra info
     /// </summary>
     public static string ModHelperDirectory => Directory.Exists(PreviousModHelperDirectory)
-        ? PreviousModHelperDirectory
-        : NewModHelperDirectory;
+                                                   ? PreviousModHelperDirectory
+                                                   : NewModHelperDirectory;
 
     internal static string NewModHelperDirectory =>
         Path.Combine(MelonEnvironment.GameRootDirectory, DllName.Replace(".dll", ""));
@@ -50,8 +63,8 @@ public static class ModHelper
     /// Directory where disabled mods are stored
     /// </summary>
     public static string DisabledModsDirectory => Directory.Exists(PreviousDisabledModsDirectory)
-        ? PreviousDisabledModsDirectory
-        : NewDisabledModDirectory;
+                                                      ? PreviousDisabledModsDirectory
+                                                      : NewDisabledModDirectory;
 
     internal static string PreviousDisabledModsDirectory => Path.Combine(MelonEnvironment.ModsDirectory, "Disabled");
     internal static string NewDisabledModDirectory => Path.Combine(MelonEnvironment.GameRootDirectory, "Disabled Mods");

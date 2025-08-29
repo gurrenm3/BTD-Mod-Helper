@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Il2CppNinjaKiwi.Common;
+using Semver;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Data;
 
@@ -27,12 +27,12 @@ internal partial class ModHelperData
     /// <summary>
     /// ModHelperData for mods that are present in the Mods folder
     /// </summary>
-    internal static readonly List<ModHelperData> Active = new();
+    internal static readonly List<ModHelperData> Active = [];
 
     /// <summary>
     /// ModHelperData for mods that are in the disabled mods folder
     /// </summary>
-    internal static readonly List<ModHelperData> Inactive = new();
+    internal static readonly List<ModHelperData> Inactive = [];
 
     private Sprite icon;
 
@@ -248,8 +248,19 @@ internal partial class ModHelperData
             {
                 if (!Active.Exists(data => data.Identifier == dependency) && modHelperData.Mod is BloonsMod mod)
                 {
-                    mod.loadErrors.Add($"Missing dependency {dependency}");
+                    mod.LoadError($"Missing dependency {dependency}");
                 }
+            }
+        }
+
+        foreach (var modHelperData in Active)
+        {
+            if (SemVersion.TryParse(modHelperData.WorksOnVersion, out var worksOnVersion) &&
+                SemVersion.TryParse(Application.version, out var gameVersion) &&
+                gameVersion < worksOnVersion &&
+                modHelperData.Mod is BloonsMod mod)
+            {
+                mod.LoadError($"This mod is meant for BTD6 v{modHelperData.WorksOnVersion} or higher");
             }
         }
 

@@ -1,3 +1,6 @@
+- If an installed mod has a higher WorksOnVersion than the current installed version of the game, an explicit load error will be shown
+- If a mod update has a higher WorksOnVersion than the current installed version of the game, no update button will be shown
 - Fixed an issue with ModSettingHotkeys not saving changed values
 - Updated VanillaSprites and UpgradeType lists, fixed the `export assets` command
 - Fixed AddBehaviorToBloonModel extensions having ambiguous invocation errors
+- Added some new overrides: `ModTower.DontApplyModUpgrades`, `ModTower.ShouldUnlockTower(...)`, `ModUpgrade.ShouldAcquireUpgrade(...)`

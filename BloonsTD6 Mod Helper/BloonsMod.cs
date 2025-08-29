@@ -178,11 +178,9 @@ public abstract class BloonsMod : MelonMod, IModSettings
 
             if (ModHelper.IsEpic && message.Contains("Il2CppFacepunch.Steamworks")) return;
 
-            MelonLogger.Warning(
-                $"Failed to apply {Info.Name} patch(es) in {type.Name}: \"{message}\" " +
-                $"The mod might not function correctly. This needs to be fixed by {Info.Author}");
-
-            loadErrors.Add($"Failed to apply patch(es) in {type.Name}");
+            LoadError($"Failed to apply patch(es) in {type.Name}");
+            LoggerInstance.Error(message);
+            LoggerInstance.Error($"The mod might not function correctly. This needs to be fixed by {Info.Author}");
 
             /*if (type == typeof(Task_EnumerateAction) || type == typeof(Main_GetInitialLoadTasks))
             {
