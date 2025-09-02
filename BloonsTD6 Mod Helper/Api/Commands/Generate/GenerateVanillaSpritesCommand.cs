@@ -1,6 +1,6 @@
 #if DEBUG
 using BTD_Mod_Helper.Api.Internal;
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Generate;
 
 internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
 {

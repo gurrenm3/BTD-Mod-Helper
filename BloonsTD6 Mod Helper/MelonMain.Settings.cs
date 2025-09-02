@@ -321,38 +321,4 @@ internal partial class MelonMain
         category = ModMaking,
         description = "Location of Mod Helper Source code for development purposes"
     };
-
-    private static readonly ModSettingButton GenerateBlockly = new(() =>
-    {
-        var folder = Path.Combine(ModHelperSourceFolder, "Website", "src", "data");
-        BlocklyGenerator.Generate(folder);
-    })
-    {
-        category = Debug,
-        description = "Generates the Blockly editor blocks. " +
-                      "NOTE: Click this button after having already gone into a game with Monkey Knowledge on!",
-        buttonText = "Generate"
-    };
-
-    private static readonly ModSettingButton ModelSerializationTests =
-        new(() => Tests.ModelSerializationTests.TestSerialization(Game.instance.model))
-        {
-            category = Debug,
-            buttonText = "Run"
-        };
-
-    private static readonly ModSettingButton BlockyTests = new(Tests.BlocklyTests.TestAll)
-    {
-        category = Debug,
-        buttonText = "Run"
-    };
-
-    private static readonly ModSettingButton BlockyTestOneFile = new(Tests.BlocklyTests.TestChoose)
-    {
-        category = Debug,
-        buttonText = "Choose"
-    };
-
-    #endregion
-#endif
 }

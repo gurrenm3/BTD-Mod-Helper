@@ -5,6 +5,7 @@
   "TackShooter": "Primary",
   "IceMonkey": "Primary",
   "GlueGunner": "Primary",
+  "Desperado": "Primary",
   "SniperMonkey": "Military",
   "MonkeySub": "Military",
   "MonkeyBuccaneer": "Military",
@@ -17,6 +18,7 @@
   "NinjaMonkey": "Magic",
   "Alchemist": "Magic",
   "Druid": "Magic",
+  "Mermonkey": "Magic",
   "BananaFarm": "Support",
   "SpikeFactory": "Support",
   "MonkeyVillage": "Support",
@@ -34,5 +36,8 @@
   "Etienne": "Hero",
   "Sauda": "Hero",
   "Psi": "Hero",
-  "Geraldo": "Hero"
+  "Geraldo": "Hero",
+  "Corvus": "Hero",
+  "Rosalia": "Hero",
+  "Silas": "Hero"
 }

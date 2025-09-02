@@ -1,9 +1,9 @@
 using BTD_Mod_Helper.Tests;
 using Il2CppAssets.Scripts.Unity;
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Test;
 
 #if DEBUG
-internal class TestModelSerialization : ModCommand<TestCommand>
+internal class TestModelSerializationCommand : ModCommand<TestCommand>
 {
     public override string Command => "serialization";
     public override string Help => "Tests the ModelSerializer";

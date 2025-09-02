@@ -29,12 +29,13 @@ export class CustomVerticalFlyout extends VerticalFlyout {
 
     for (let { button, block } of contents) {
       if (block) {
-        for (let icon of block.icons) {
+        // TODO why was this needed?
+        /*for (let icon of block.icons) {
           const clone = icon["svgRoot"].cloneNode(true);
           icon["svgRoot"].parentNode.replaceChild(clone, icon["svgRoot"]);
           // @ts-ignore
           icon["svgRoot"] = clone;
-        }
+        }*/
       } else if (button && button.info["colour"]) {
         const { style } = this.getWorkspace()
           .getRenderer()

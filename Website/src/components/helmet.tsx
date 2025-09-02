@@ -18,13 +18,13 @@ const ModHelperHelmet: FunctionComponent<ModHelperHelmetProps> = ({
       <meta key={"description"} name={"description"} content={description} />
     )}
     <meta
-      key={"apple-mobile-web-app-capable"}
-      name="apple-mobile-web-app-capable"
+      key={"mobile-web-app-capable"}
+      name="mobile-web-app-capable"
       content="yes"
     />
     <meta
-      key={"apple-mobile-web-app-status-bar-style"}
-      name="apple-mobile-web-app-status-bar-style"
+      key={"mobile-web-app-status-bar-style"}
+      name="mobile-web-app-status-bar-style"
       content="black-translucent"
     />
     <link

@@ -190,19 +190,7 @@ export default () => {
       bottomLeftOnClick={() => showTips(true)}
       footerBody={
         <>
-          For sandbox editing, use the{" "}
-          <a
-            href={
-              "https://nightly.link/gurrenm3/BTD-Mod-Helper/workflows/build/preview/Btd6ModHelper.dll.zip"
-            }
-          >
-            latest Mod Helper preview build.
-          </a>
-          . For custom towers, see{" "}
-          <a target={"_blank"} href={"https://ko-fi.com/doombubbles"}>
-            my Ko-Fi
-          </a>
-          . View Editor Tips for more details.
+          TODO new footer
         </>
       }
     >
@@ -254,11 +242,7 @@ export default () => {
             </li>
           </ul>
           <h4>
-            Custom Towers (
-            <a target={"_blank"} href={"https://ko-fi.com/doombubbles"}>
-              Ko-Fi Early Access
-            </a>
-            )
+            Custom Towers (VERY WIP)
           </h4>
           <ul>
             <li>
@@ -300,14 +284,7 @@ export default () => {
             </li>
           </ul>
           <h4>
-            Sandbox Testing (
-            <a
-              href={
-                "https://nightly.link/gurrenm3/BTD-Mod-Helper/workflows/build/preview/Btd6ModHelper.dll.zip"
-              }
-            >
-              Public Alpha
-            </a>
+            Sandbox Testing
             )
           </h4>
           <ul>

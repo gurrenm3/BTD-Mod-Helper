@@ -5,7 +5,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Export;
 
 internal class ExportImageCommand : ModCommand<ExportCommand>
 {

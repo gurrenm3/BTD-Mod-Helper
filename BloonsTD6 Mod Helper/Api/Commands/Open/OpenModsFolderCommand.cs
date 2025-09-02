@@ -1,6 +1,6 @@
 using BTD_Mod_Helper.Api.Helpers;
 using MelonLoader.Utils;
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Open;
 
 internal class OpenModsFolderCommand : ModCommand<OpenFolderCommand>
 {

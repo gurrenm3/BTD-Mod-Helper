@@ -15,11 +15,11 @@ internal static class JsonTowers
 {
     public static string TowersFolder => Path.Combine(MelonEnvironment.GameRootDirectory, "Towers");
 
-    private static readonly List<TowerModel> VanillaTowers = new();
-    private static readonly List<UpgradeModel> VanillaUpgrades = new();
-    private static readonly List<ModJsonTower> ModdedTowers = new();
-    private static readonly List<ModJsonUpgrade> ModdedUpgrades = new();
-    private static readonly List<ModJsonDisplay> Displays = new();
+    private static readonly List<TowerModel> VanillaTowers = [];
+    private static readonly List<UpgradeModel> VanillaUpgrades = [];
+    private static readonly List<ModJsonTower> ModdedTowers = [];
+    private static readonly List<ModJsonUpgrade> ModdedUpgrades = [];
+    private static readonly List<ModJsonDisplay> Displays = [];
 
     public static Task LoadTask { get; private set; }
 
@@ -31,6 +31,8 @@ internal static class JsonTowers
     private static async Task TraverseFiles(string path)
     {
         var dir = new DirectoryInfo(path);
+
+        if (!dir.Exists) return;
 
         foreach (var file in dir.EnumerateFiles())
         {

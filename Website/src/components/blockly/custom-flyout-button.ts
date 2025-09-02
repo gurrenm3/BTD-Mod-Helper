@@ -104,7 +104,7 @@ export class CustomFlyoutButton extends FlyoutButton {
         fontFamily
       ));
     this.height = fontMetrics.height;
-    console.log(fontSize, fontMetrics);
+    // console.log(fontSize, fontMetrics);
 
     if (!this["isLabel_"]) {
       this.width += 2 * FlyoutButton.TEXT_MARGIN_X;

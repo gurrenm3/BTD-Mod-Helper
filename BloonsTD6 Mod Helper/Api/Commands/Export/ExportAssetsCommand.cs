@@ -10,8 +10,7 @@ using Il2CppSystem.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.U2D;
-
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Export;
 
 internal class ExportAssetsCommand : ModCommand<ExportCommand>
 {

@@ -312,6 +312,12 @@
     "towerName": "Tack Shooter",
     "towerSet": "Primary"
   },
+  "TackShooter Paragon": {
+    "towerId": "TackShooter",
+    "towerName": "Tack Shooter",
+    "towerSet": "Primary",
+    "displayName": "Crucible of Steel and Flame"
+  },
   "Permafrost": {
     "towerId": "IceMonkey",
     "towerName": "Ice Monkey",
@@ -463,6 +469,81 @@
     "towerName": "Glue Gunner",
     "towerSet": "Primary"
   },
+  "Quickdraw": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Standoff": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Big Iron": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Twin Sixes": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "The Blazing Sun": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Eagle Eye": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Bullseye": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Deadeye": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Bounty Hunter": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Golden Justice": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Wanderer": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Nomad": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Enforcer": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "Avenger": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
+  "The Desert Phantom": {
+    "towerId": "Desperado",
+    "towerName": "Desperado",
+    "towerSet": "Primary"
+  },
   "Full Metal Jacket": {
     "towerId": "SniperMonkey",
     "towerName": "Sniper Monkey",
@@ -612,6 +693,12 @@
     "towerId": "MonkeySub",
     "towerName": "Monkey Sub",
     "towerSet": "Military"
+  },
+  "MonkeySub Paragon": {
+    "towerId": "MonkeySub",
+    "towerName": "Monkey Sub",
+    "towerSet": "Military",
+    "displayName": "Nautic Siege Core"
   },
   "Buccaneer-Faster Shooting": {
     "towerId": "MonkeyBuccaneer",
@@ -1355,7 +1442,8 @@
   "Superstorm": {
     "towerId": "Druid",
     "towerName": "Druid",
-    "towerSet": "Magic"
+    "towerSet": "Magic",
+    "displayName": "Monarch of Storms"
   },
   "Thorn Swarm": {
     "towerId": "Druid",
@@ -1405,6 +1493,81 @@
   "Avatar of Wrath": {
     "towerId": "Druid",
     "towerName": "Druid",
+    "towerSet": "Magic"
+  },
+  "Trident Efficiency": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Trident Swiftness": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Abyss Dweller": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Abyssal Warrior": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Lord of the Abyss": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Sharper Prongs": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Tidal Chill": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Riptide Champion": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Arctic Knight": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Popseidon": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Echosense Precision": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Echosense Network": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Alluring Melody": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "Symphonic Resonance": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
+    "towerSet": "Magic"
+  },
+  "The Final Harmonic": {
+    "towerId": "Mermonkey",
+    "towerName": "Mermonkey",
     "towerSet": "Magic"
   },
   "Increased Production": {
@@ -1558,6 +1721,12 @@
     "towerId": "SpikeFactory",
     "towerName": "Spike Factory",
     "towerSet": "Support"
+  },
+  "SpikeFactory Paragon": {
+    "towerId": "SpikeFactory",
+    "towerName": "Spike Factory",
+    "towerSet": "Support",
+    "displayName": "Mega Massive Munitions Factory"
   },
   "Bigger Radius": {
     "towerId": "MonkeyVillage",
@@ -3025,6 +3194,291 @@
   "Geraldo Upgrade 20": {
     "towerId": "Geraldo",
     "towerName": "Geraldo",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 2": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 3": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 4": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 5": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 6": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 7": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 8": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 9": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 10": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 11": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 12": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 13": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 14": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 15": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 16": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 17": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 18": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 19": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Corvus Upgrade 20": {
+    "towerId": "Corvus",
+    "towerName": "Corvus",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 2": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 3": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 4": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 5": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 6": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 7": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 8": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 9": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 10": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 11": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 12": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 13": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 14": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 15": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 16": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 17": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 18": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 19": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Rosalia Upgrade 20": {
+    "towerId": "Rosalia",
+    "towerName": "Rosalia",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 2": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 3": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 4": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 5": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 6": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 7": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 8": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 9": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 10": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 11": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 12": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 13": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 14": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 15": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 16": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 17": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 18": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 19": {
+    "towerId": "Silas",
+    "towerName": "Silas",
+    "towerSet": "Hero"
+  },
+  "Silas Upgrade 20": {
+    "towerId": "Silas",
+    "towerName": "Silas",
     "towerSet": "Hero"
   }
 }

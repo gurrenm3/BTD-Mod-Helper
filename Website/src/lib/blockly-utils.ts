@@ -245,7 +245,7 @@ export const searchToolbox = (blockType, mainWorkspace: WorkspaceSvg) => {
         );
       }
 
-      toolbox.setSelectedItem(category);
+      // toolbox.setSelectedItem(category);
 
       const flyOut = toolbox.getFlyout();
 

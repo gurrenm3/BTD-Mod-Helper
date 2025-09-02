@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FuzzySharp;
-using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.Knowledge;
@@ -28,6 +27,7 @@ public static class ModelSerializer
 {
     private const bool InferParams = true;
 
+    // IL2CPP json settings
     internal static readonly JsonSerializerSettings Settings = new()
     {
         Formatting = Formatting.Indented,
@@ -59,7 +59,14 @@ public static class ModelSerializer
         {"projMod", "projectileModel"},
         {"ignoreBaseTowerRotation", "ignoreTowerRotation"},
         {"icon", "defaultIcon"},
-        {"iconSwaps", "defaultIconSwaps"}
+        {"iconSwaps", "defaultIconSwaps"},
+        {"slowId", "mutatorId"},
+        {"spawnMaker", "spawnMarker"},
+        {"usingSharedRange", "isUsingSharedRange"},
+        {"lifeSpan", "projectileLifeSpan"},
+        {"tags", "effectMutationIds"},
+        {"speed", "timeScale"},
+        {"projectile", "icewallProjectile"}
     };
 
     private static object GenerateBaseType(JValue value, Type valueType)
@@ -523,10 +530,11 @@ public static class ModelSerializer
             });
         }
 
-        // This will happen eventually anyway
         if (model.Is(out TowerModel towerModel))
         {
+            // This will happen eventually anyway
             towerModel.UpdateTargetProviders();
+            towerModel.RadiusSquared = towerModel.radius * towerModel.radius;
         }
         else if (model.Is(out GameModel gameModel))
         {

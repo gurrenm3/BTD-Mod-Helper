@@ -1,4 +1,4 @@
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Open;
 
 /// <summary>
 /// Opens specific folders within file explorer

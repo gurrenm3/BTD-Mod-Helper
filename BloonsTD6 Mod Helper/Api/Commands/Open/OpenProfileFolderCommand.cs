@@ -1,8 +1,6 @@
-using System.IO;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Unity;
-
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Open;
 
 internal class OpenProfileFolderCommand : ModCommand<OpenFolderCommand>
 {

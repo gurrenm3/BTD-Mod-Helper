@@ -2671,6 +2671,18 @@
       "The Tack Zone"
     ]
   },
+  "TackShooter-Paragon": {
+    "towerSet": "Primary",
+    "path": "TackShooter/TackShooter-Paragon.json",
+    "appliedUpgrades": [
+      "Faster Shooting",
+      "Even Faster Shooting",
+      "Hot Shots",
+      "Ring of Fire",
+      "Inferno Ring",
+      "Crucible of Steel and Flame"
+    ]
+  },
   "IceMonkey": {
     "towerSet": "Primary",
     "path": "IceMonkey/IceMonkey.json",
@@ -3995,6 +4007,668 @@
       "Super Glue"
     ]
   },
+  "Desperado": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado.json",
+    "appliedUpgrades": []
+  },
+  "Desperado-100": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-100.json",
+    "appliedUpgrades": [
+      "Quickdraw"
+    ]
+  },
+  "Desperado-200": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-200.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff"
+    ]
+  },
+  "Desperado-300": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-300.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron"
+    ]
+  },
+  "Desperado-400": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-400.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Twin Sixes"
+    ]
+  },
+  "Desperado-500": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-500.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Twin Sixes",
+      "The Blazing Sun"
+    ]
+  },
+  "Desperado-010": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-010.json",
+    "appliedUpgrades": [
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-020": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-020.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye"
+    ]
+  },
+  "Desperado-030": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-030.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye"
+    ]
+  },
+  "Desperado-040": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-040.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter"
+    ]
+  },
+  "Desperado-050": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-050.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter",
+      "Golden Justice"
+    ]
+  },
+  "Desperado-001": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-001.json",
+    "appliedUpgrades": [
+      "Wanderer"
+    ]
+  },
+  "Desperado-002": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-002.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad"
+    ]
+  },
+  "Desperado-003": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-003.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer"
+    ]
+  },
+  "Desperado-004": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-004.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger"
+    ]
+  },
+  "Desperado-005": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-005.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger",
+      "The Desert Phantom"
+    ]
+  },
+  "Desperado-110": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-110.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-101": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-101.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Wanderer"
+    ]
+  },
+  "Desperado-011": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-011.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Wanderer"
+    ]
+  },
+  "Desperado-210": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-210.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-201": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-201.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer"
+    ]
+  },
+  "Desperado-021": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-021.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer"
+    ]
+  },
+  "Desperado-120": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-120.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-102": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-102.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-012": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-012.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-220": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-220.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye",
+      "Bullseye"
+    ]
+  },
+  "Desperado-202": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-202.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer",
+      "Nomad"
+    ]
+  },
+  "Desperado-022": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-022.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer",
+      "Nomad"
+    ]
+  },
+  "Desperado-310": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-310.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-320": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-320.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye",
+      "Bullseye",
+      "Big Iron"
+    ]
+  },
+  "Desperado-301": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-301.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Wanderer"
+    ]
+  },
+  "Desperado-302": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-302.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer",
+      "Nomad",
+      "Big Iron"
+    ]
+  },
+  "Desperado-130": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-130.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-230": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-230.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye"
+    ]
+  },
+  "Desperado-031": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-031.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Wanderer"
+    ]
+  },
+  "Desperado-032": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-032.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer",
+      "Nomad",
+      "Deadeye"
+    ]
+  },
+  "Desperado-103": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-103.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-203": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-203.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer",
+      "Nomad",
+      "Enforcer"
+    ]
+  },
+  "Desperado-013": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-013.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-023": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-023.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer",
+      "Nomad",
+      "Enforcer"
+    ]
+  },
+  "Desperado-410": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-410.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Twin Sixes",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-420": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-420.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye",
+      "Bullseye",
+      "Big Iron",
+      "Twin Sixes"
+    ]
+  },
+  "Desperado-401": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-401.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Twin Sixes",
+      "Wanderer"
+    ]
+  },
+  "Desperado-402": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-402.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer",
+      "Nomad",
+      "Big Iron",
+      "Twin Sixes"
+    ]
+  },
+  "Desperado-140": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-140.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-240": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-240.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter"
+    ]
+  },
+  "Desperado-041": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-041.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter",
+      "Wanderer"
+    ]
+  },
+  "Desperado-042": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-042.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer",
+      "Nomad",
+      "Deadeye",
+      "Bounty Hunter"
+    ]
+  },
+  "Desperado-104": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-104.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-204": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-204.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger"
+    ]
+  },
+  "Desperado-014": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-014.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-024": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-024.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger"
+    ]
+  },
+  "Desperado-510": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-510.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Twin Sixes",
+      "The Blazing Sun",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-520": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-520.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye",
+      "Bullseye",
+      "Big Iron",
+      "Twin Sixes",
+      "The Blazing Sun"
+    ]
+  },
+  "Desperado-501": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-501.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Big Iron",
+      "Twin Sixes",
+      "The Blazing Sun",
+      "Wanderer"
+    ]
+  },
+  "Desperado-502": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-502.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer",
+      "Nomad",
+      "Big Iron",
+      "Twin Sixes",
+      "The Blazing Sun"
+    ]
+  },
+  "Desperado-150": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-150.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter",
+      "Golden Justice",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-250": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-250.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter",
+      "Golden Justice"
+    ]
+  },
+  "Desperado-051": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-051.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Deadeye",
+      "Bounty Hunter",
+      "Golden Justice",
+      "Wanderer"
+    ]
+  },
+  "Desperado-052": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-052.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer",
+      "Nomad",
+      "Deadeye",
+      "Bounty Hunter",
+      "Golden Justice"
+    ]
+  },
+  "Desperado-105": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-105.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger",
+      "The Desert Phantom",
+      "Quickdraw"
+    ]
+  },
+  "Desperado-205": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-205.json",
+    "appliedUpgrades": [
+      "Quickdraw",
+      "Standoff",
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger",
+      "The Desert Phantom"
+    ]
+  },
+  "Desperado-015": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-015.json",
+    "appliedUpgrades": [
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger",
+      "The Desert Phantom",
+      "Eagle Eye"
+    ]
+  },
+  "Desperado-025": {
+    "towerSet": "Primary",
+    "path": "Desperado/Desperado-025.json",
+    "appliedUpgrades": [
+      "Eagle Eye",
+      "Bullseye",
+      "Wanderer",
+      "Nomad",
+      "Enforcer",
+      "Avenger",
+      "The Desert Phantom"
+    ]
+  },
   "SniperMonkey": {
     "towerSet": "Military",
     "path": "SniperMonkey/SniperMonkey.json",
@@ -5317,6 +5991,18 @@
       "Triple Guns",
       "Armor Piercing Darts",
       "Sub Commander"
+    ]
+  },
+  "MonkeySub-Paragon": {
+    "towerSet": "Military",
+    "path": "MonkeySub/MonkeySub-Paragon.json",
+    "appliedUpgrades": [
+      "Longer Range",
+      "Advanced Intel",
+      "Submerge and Support",
+      "Bloontonium Reactor",
+      "Energizer",
+      "Nautic Siege Core"
     ]
   },
   "MonkeyBuccaneer": {
@@ -11387,7 +12073,7 @@
       "Heart of Thunder",
       "Druid of the Storm",
       "Ball Lightning",
-      "Superstorm"
+      "Monarch of Storms"
     ]
   },
   "Druid-010": {
@@ -11860,7 +12546,7 @@
       "Heart of Thunder",
       "Druid of the Storm",
       "Ball Lightning",
-      "Superstorm",
+      "Monarch of Storms",
       "Thorn Swarm"
     ]
   },
@@ -11874,7 +12560,7 @@
       "Heart of Thunder",
       "Druid of the Storm",
       "Ball Lightning",
-      "Superstorm"
+      "Monarch of Storms"
     ]
   },
   "Druid-501": {
@@ -11885,7 +12571,7 @@
       "Heart of Thunder",
       "Druid of the Storm",
       "Ball Lightning",
-      "Superstorm",
+      "Monarch of Storms",
       "Druidic Reach"
     ]
   },
@@ -11899,7 +12585,7 @@
       "Heart of Vengeance",
       "Druid of the Storm",
       "Ball Lightning",
-      "Superstorm"
+      "Monarch of Storms"
     ]
   },
   "Druid-150": {
@@ -12000,6 +12686,668 @@
       "Druid of Wrath",
       "Poplust",
       "Avatar of Wrath"
+    ]
+  },
+  "Mermonkey": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey.json",
+    "appliedUpgrades": []
+  },
+  "Mermonkey-100": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-100.json",
+    "appliedUpgrades": [
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-200": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-200.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness"
+    ]
+  },
+  "Mermonkey-300": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-300.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller"
+    ]
+  },
+  "Mermonkey-400": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-400.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior"
+    ]
+  },
+  "Mermonkey-500": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-500.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior",
+      "Lord of the Abyss"
+    ]
+  },
+  "Mermonkey-010": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-010.json",
+    "appliedUpgrades": [
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-020": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-020.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill"
+    ]
+  },
+  "Mermonkey-030": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-030.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion"
+    ]
+  },
+  "Mermonkey-040": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-040.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Arctic Knight"
+    ]
+  },
+  "Mermonkey-050": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-050.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Arctic Knight",
+      "Popseidon"
+    ]
+  },
+  "Mermonkey-001": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-001.json",
+    "appliedUpgrades": [
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-002": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-002.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network"
+    ]
+  },
+  "Mermonkey-003": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-003.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody"
+    ]
+  },
+  "Mermonkey-004": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-004.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance"
+    ]
+  },
+  "Mermonkey-005": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-005.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance",
+      "The Final Harmonic"
+    ]
+  },
+  "Mermonkey-101": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-101.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-110": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-110.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-011": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-011.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-120": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-120.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-210": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-210.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-201": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-201.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-202": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-202.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision",
+      "Echosense Network"
+    ]
+  },
+  "Mermonkey-102": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-102.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-220": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-220.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency",
+      "Trident Swiftness"
+    ]
+  },
+  "Mermonkey-021": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-021.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-012": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-012.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-022": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-022.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision",
+      "Echosense Network"
+    ]
+  },
+  "Mermonkey-310": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-310.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-320": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-320.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller"
+    ]
+  },
+  "Mermonkey-301": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-301.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-302": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-302.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision",
+      "Echosense Network",
+      "Abyss Dweller"
+    ]
+  },
+  "Mermonkey-130": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-130.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-230": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-230.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Riptide Champion"
+    ]
+  },
+  "Mermonkey-031": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-031.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-032": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-032.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision",
+      "Echosense Network",
+      "Riptide Champion"
+    ]
+  },
+  "Mermonkey-103": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-103.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-203": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-203.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody"
+    ]
+  },
+  "Mermonkey-013": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-013.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-023": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-023.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody"
+    ]
+  },
+  "Mermonkey-410": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-410.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-420": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-420.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior"
+    ]
+  },
+  "Mermonkey-401": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-401.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-402": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-402.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision",
+      "Echosense Network",
+      "Abyss Dweller",
+      "Abyssal Warrior"
+    ]
+  },
+  "Mermonkey-140": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-140.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Arctic Knight",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-240": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-240.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Riptide Champion",
+      "Arctic Knight"
+    ]
+  },
+  "Mermonkey-041": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-041.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Arctic Knight",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-042": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-042.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision",
+      "Echosense Network",
+      "Riptide Champion",
+      "Arctic Knight"
+    ]
+  },
+  "Mermonkey-104": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-104.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-204": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-204.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance"
+    ]
+  },
+  "Mermonkey-014": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-014.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-024": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-024.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance"
+    ]
+  },
+  "Mermonkey-510": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-510.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior",
+      "Lord of the Abyss",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-520": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-520.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior",
+      "Lord of the Abyss"
+    ]
+  },
+  "Mermonkey-501": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-501.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Abyss Dweller",
+      "Abyssal Warrior",
+      "Lord of the Abyss",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-502": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-502.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision",
+      "Echosense Network",
+      "Abyss Dweller",
+      "Abyssal Warrior",
+      "Lord of the Abyss"
+    ]
+  },
+  "Mermonkey-150": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-150.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Arctic Knight",
+      "Popseidon",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-250": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-250.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Riptide Champion",
+      "Arctic Knight",
+      "Popseidon"
+    ]
+  },
+  "Mermonkey-051": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-051.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Riptide Champion",
+      "Arctic Knight",
+      "Popseidon",
+      "Echosense Precision"
+    ]
+  },
+  "Mermonkey-052": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-052.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision",
+      "Echosense Network",
+      "Riptide Champion",
+      "Arctic Knight",
+      "Popseidon"
+    ]
+  },
+  "Mermonkey-105": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-105.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance",
+      "The Final Harmonic",
+      "Trident Efficiency"
+    ]
+  },
+  "Mermonkey-205": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-205.json",
+    "appliedUpgrades": [
+      "Trident Efficiency",
+      "Trident Swiftness",
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance",
+      "The Final Harmonic"
+    ]
+  },
+  "Mermonkey-015": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-015.json",
+    "appliedUpgrades": [
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance",
+      "The Final Harmonic",
+      "Sharper Prongs"
+    ]
+  },
+  "Mermonkey-025": {
+    "towerSet": "Magic",
+    "path": "Mermonkey/Mermonkey-025.json",
+    "appliedUpgrades": [
+      "Sharper Prongs",
+      "Tidal Chill",
+      "Echosense Precision",
+      "Echosense Network",
+      "Alluring Melody",
+      "Symphonic Resonance",
+      "The Final Harmonic"
     ]
   },
   "BananaFarm": {
@@ -13324,6 +14672,18 @@
       "Long Life Spikes",
       "Deadly Spikes",
       "Perma-Spike"
+    ]
+  },
+  "SpikeFactory-Paragon": {
+    "towerSet": "Support",
+    "path": "SpikeFactory/SpikeFactory-Paragon.json",
+    "appliedUpgrades": [
+      "Bigger Stacks",
+      "White Hot Spikes",
+      "Spiked Balls",
+      "Spiked Mines",
+      "Super Mines",
+      "Mega Massive Munitions Factory"
     ]
   },
   "MonkeyVillage": {
@@ -19339,6 +20699,933 @@
       "Geraldo Upgrade 18",
       "Geraldo Upgrade 19",
       "Geraldo Upgrade 20"
+    ]
+  },
+  "Corvus": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus.json",
+    "appliedUpgrades": []
+  },
+  "Corvus 2": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 2.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2"
+    ]
+  },
+  "Corvus 3": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 3.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3"
+    ]
+  },
+  "Corvus 4": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 4.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4"
+    ]
+  },
+  "Corvus 5": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 5.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5"
+    ]
+  },
+  "Corvus 6": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 6.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6"
+    ]
+  },
+  "Corvus 7": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 7.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7"
+    ]
+  },
+  "Corvus 8": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 8.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8"
+    ]
+  },
+  "Corvus 9": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 9.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9"
+    ]
+  },
+  "Corvus 10": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 10.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10"
+    ]
+  },
+  "Corvus 11": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 11.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11"
+    ]
+  },
+  "Corvus 12": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 12.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12"
+    ]
+  },
+  "Corvus 13": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 13.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13"
+    ]
+  },
+  "Corvus 14": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 14.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13",
+      "Corvus Upgrade 14"
+    ]
+  },
+  "Corvus 15": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 15.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13",
+      "Corvus Upgrade 14",
+      "Corvus Upgrade 15"
+    ]
+  },
+  "Corvus 16": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 16.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13",
+      "Corvus Upgrade 14",
+      "Corvus Upgrade 15",
+      "Corvus Upgrade 16"
+    ]
+  },
+  "Corvus 17": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 17.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13",
+      "Corvus Upgrade 14",
+      "Corvus Upgrade 15",
+      "Corvus Upgrade 16",
+      "Corvus Upgrade 17"
+    ]
+  },
+  "Corvus 18": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 18.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13",
+      "Corvus Upgrade 14",
+      "Corvus Upgrade 15",
+      "Corvus Upgrade 16",
+      "Corvus Upgrade 17",
+      "Corvus Upgrade 18"
+    ]
+  },
+  "Corvus 19": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 19.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13",
+      "Corvus Upgrade 14",
+      "Corvus Upgrade 15",
+      "Corvus Upgrade 16",
+      "Corvus Upgrade 17",
+      "Corvus Upgrade 18",
+      "Corvus Upgrade 19"
+    ]
+  },
+  "Corvus 20": {
+    "towerSet": "Hero",
+    "path": "Corvus/Corvus 20.json",
+    "appliedUpgrades": [
+      "Corvus Upgrade 2",
+      "Corvus Upgrade 3",
+      "Corvus Upgrade 4",
+      "Corvus Upgrade 5",
+      "Corvus Upgrade 6",
+      "Corvus Upgrade 7",
+      "Corvus Upgrade 8",
+      "Corvus Upgrade 9",
+      "Corvus Upgrade 10",
+      "Corvus Upgrade 11",
+      "Corvus Upgrade 12",
+      "Corvus Upgrade 13",
+      "Corvus Upgrade 14",
+      "Corvus Upgrade 15",
+      "Corvus Upgrade 16",
+      "Corvus Upgrade 17",
+      "Corvus Upgrade 18",
+      "Corvus Upgrade 19",
+      "Corvus Upgrade 20"
+    ]
+  },
+  "Rosalia": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia.json",
+    "appliedUpgrades": []
+  },
+  "Rosalia 2": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 2.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2"
+    ]
+  },
+  "Rosalia 3": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 3.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3"
+    ]
+  },
+  "Rosalia 4": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 4.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4"
+    ]
+  },
+  "Rosalia 5": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 5.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5"
+    ]
+  },
+  "Rosalia 6": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 6.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6"
+    ]
+  },
+  "Rosalia 7": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 7.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7"
+    ]
+  },
+  "Rosalia 8": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 8.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8"
+    ]
+  },
+  "Rosalia 9": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 9.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9"
+    ]
+  },
+  "Rosalia 10": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 10.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10"
+    ]
+  },
+  "Rosalia 11": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 11.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11"
+    ]
+  },
+  "Rosalia 12": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 12.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12"
+    ]
+  },
+  "Rosalia 13": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 13.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13"
+    ]
+  },
+  "Rosalia 14": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 14.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13",
+      "Rosalia Upgrade 14"
+    ]
+  },
+  "Rosalia 15": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 15.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13",
+      "Rosalia Upgrade 14",
+      "Rosalia Upgrade 15"
+    ]
+  },
+  "Rosalia 16": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 16.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13",
+      "Rosalia Upgrade 14",
+      "Rosalia Upgrade 15",
+      "Rosalia Upgrade 16"
+    ]
+  },
+  "Rosalia 17": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 17.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13",
+      "Rosalia Upgrade 14",
+      "Rosalia Upgrade 15",
+      "Rosalia Upgrade 16",
+      "Rosalia Upgrade 17"
+    ]
+  },
+  "Rosalia 18": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 18.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13",
+      "Rosalia Upgrade 14",
+      "Rosalia Upgrade 15",
+      "Rosalia Upgrade 16",
+      "Rosalia Upgrade 17",
+      "Rosalia Upgrade 18"
+    ]
+  },
+  "Rosalia 19": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 19.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13",
+      "Rosalia Upgrade 14",
+      "Rosalia Upgrade 15",
+      "Rosalia Upgrade 16",
+      "Rosalia Upgrade 17",
+      "Rosalia Upgrade 18",
+      "Rosalia Upgrade 19"
+    ]
+  },
+  "Rosalia 20": {
+    "towerSet": "Hero",
+    "path": "Rosalia/Rosalia 20.json",
+    "appliedUpgrades": [
+      "Rosalia Upgrade 2",
+      "Rosalia Upgrade 3",
+      "Rosalia Upgrade 4",
+      "Rosalia Upgrade 5",
+      "Rosalia Upgrade 6",
+      "Rosalia Upgrade 7",
+      "Rosalia Upgrade 8",
+      "Rosalia Upgrade 9",
+      "Rosalia Upgrade 10",
+      "Rosalia Upgrade 11",
+      "Rosalia Upgrade 12",
+      "Rosalia Upgrade 13",
+      "Rosalia Upgrade 14",
+      "Rosalia Upgrade 15",
+      "Rosalia Upgrade 16",
+      "Rosalia Upgrade 17",
+      "Rosalia Upgrade 18",
+      "Rosalia Upgrade 19",
+      "Rosalia Upgrade 20"
+    ]
+  },
+  "Silas": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas.json",
+    "appliedUpgrades": []
+  },
+  "Silas 2": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 2.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2"
+    ]
+  },
+  "Silas 3": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 3.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3"
+    ]
+  },
+  "Silas 4": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 4.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4"
+    ]
+  },
+  "Silas 5": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 5.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5"
+    ]
+  },
+  "Silas 6": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 6.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6"
+    ]
+  },
+  "Silas 7": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 7.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7"
+    ]
+  },
+  "Silas 8": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 8.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8"
+    ]
+  },
+  "Silas 9": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 9.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9"
+    ]
+  },
+  "Silas 10": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 10.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10"
+    ]
+  },
+  "Silas 11": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 11.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11"
+    ]
+  },
+  "Silas 12": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 12.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12"
+    ]
+  },
+  "Silas 13": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 13.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13"
+    ]
+  },
+  "Silas 14": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 14.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13",
+      "Silas Upgrade 14"
+    ]
+  },
+  "Silas 15": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 15.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13",
+      "Silas Upgrade 14",
+      "Silas Upgrade 15"
+    ]
+  },
+  "Silas 16": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 16.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13",
+      "Silas Upgrade 14",
+      "Silas Upgrade 15",
+      "Silas Upgrade 16"
+    ]
+  },
+  "Silas 17": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 17.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13",
+      "Silas Upgrade 14",
+      "Silas Upgrade 15",
+      "Silas Upgrade 16",
+      "Silas Upgrade 17"
+    ]
+  },
+  "Silas 18": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 18.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13",
+      "Silas Upgrade 14",
+      "Silas Upgrade 15",
+      "Silas Upgrade 16",
+      "Silas Upgrade 17",
+      "Silas Upgrade 18"
+    ]
+  },
+  "Silas 19": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 19.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13",
+      "Silas Upgrade 14",
+      "Silas Upgrade 15",
+      "Silas Upgrade 16",
+      "Silas Upgrade 17",
+      "Silas Upgrade 18",
+      "Silas Upgrade 19"
+    ]
+  },
+  "Silas 20": {
+    "towerSet": "Hero",
+    "path": "Silas/Silas 20.json",
+    "appliedUpgrades": [
+      "Silas Upgrade 2",
+      "Silas Upgrade 3",
+      "Silas Upgrade 4",
+      "Silas Upgrade 5",
+      "Silas Upgrade 6",
+      "Silas Upgrade 7",
+      "Silas Upgrade 8",
+      "Silas Upgrade 9",
+      "Silas Upgrade 10",
+      "Silas Upgrade 11",
+      "Silas Upgrade 12",
+      "Silas Upgrade 13",
+      "Silas Upgrade 14",
+      "Silas Upgrade 15",
+      "Silas Upgrade 16",
+      "Silas Upgrade 17",
+      "Silas Upgrade 18",
+      "Silas Upgrade 19",
+      "Silas Upgrade 20"
     ]
   },
   "ComancheDefenceHeli": {

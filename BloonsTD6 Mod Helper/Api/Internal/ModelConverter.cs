@@ -15,12 +15,11 @@ internal class ModelConverter : JsonConverter
 {
     public static readonly JsonSerializerSettings Settings = new()
     {
-        ContractResolver = new CamelCasePropertyNamesContractResolver(),
         Converters = {new ModelConverter()},
         TypeNameHandling = TypeNameHandling.Objects,
         SerializationBinder = new ModelSerializationBinder()
     };
-    
+
     public static readonly JsonSerializer Serializer = JsonSerializer.Create(Settings);
 
     public override bool CanConvert(Type objectType) => objectType.IsAssignableTo(typeof(Model));

@@ -34,6 +34,7 @@ using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.ResourceLocations;
@@ -65,9 +66,9 @@ internal static class BlocklyGenerator
     };
 
     private static readonly Dictionary<Type, int> Types = new();
-    private static readonly HashSet<Type> ExtraTypes = new();
-    private static readonly HashSet<Type> ArrayTypes = new();
-    private static readonly HashSet<Type> DictionaryTypes = new();
+    private static readonly HashSet<Type> ExtraTypes = [];
+    private static readonly HashSet<Type> ArrayTypes = [];
+    private static readonly HashSet<Type> DictionaryTypes = [];
 
     internal static void Generate(string folder)
     {
@@ -81,7 +82,6 @@ internal static class BlocklyGenerator
         ModHelper.Msg("Generating blocks...");
         blocks.AddRange(BaseTypes.Select(CreateBlock));
         blocks.AddRange(Types.Keys.OrderByDescending(type => Types[type]).Select(CreateBlock));
-        blocks.AddRange(ExtraTypes.Select(CreateBlock));
         blocks.AddRange(ArrayTypes.Select(CreateArrayBlock));
         blocks.AddRange(DictionaryTypes.Select(CreateDictionaryBlock));
         File.WriteAllText(Path.Combine(folder, "blocks.json"), new JArray(blocks).ToString(Formatting.Indented));
@@ -321,18 +321,19 @@ internal static class BlocklyGenerator
     private static JObject CreateReferenceMap(Type ofType)
     {
         var map = new JObject();
-        var resourceLocationMap = Addressables.ResourceLocators.First().Cast<ResourceLocationMap>();
 
-        foreach (var (o, locations) in resourceLocationMap.Locations)
+        var resourceLocationMap = Addressables.ResourceLocators.First();
+
+        foreach (var key in resourceLocationMap.Keys.ToArray())
         {
-            var key = o.ToString();
-            if (map.ContainsKey(key)) continue;
-
-            if (!Guid.TryParse(key, out _)) continue;
+            if (!Guid.TryParse(key.ToString(), out _) ||
+                map.ContainsKey(key.ToString()) ||
+                !resourceLocationMap.Locate(key, Il2CppType.Of<Object>(), out var locations)) continue;
 
             var resources = locations
-                .Cast<Il2CppReferenceArray<IResourceLocation>>()
-                .Where(location => location.InternalId != key && location.InternalId.StartsWith("Assets/"));
+                .Cast<Il2CppSystem.Collections.Generic.IEnumerable<IResourceLocation>>()
+                .ToArray()
+                .Where(location => location.InternalId != key.ToString() && location.InternalId.StartsWith("Assets/"));
 
             foreach (var resource in resources)
             {
@@ -357,7 +358,7 @@ internal static class BlocklyGenerator
 
                 if (type == null || type != ofType) continue;
 
-                map[key] = name
+                map[key.ToString()] = name
                     .Replace("Assets/Generated/", "")
                     .Replace("Assets/", "")
                     .Replace("ResizedImages/", "")

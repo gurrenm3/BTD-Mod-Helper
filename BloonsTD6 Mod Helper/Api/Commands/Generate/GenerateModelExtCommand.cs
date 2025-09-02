@@ -1,12 +1,12 @@
-#if DEBUG
 using BTD_Mod_Helper.Api.Internal;
+#if DEBUG
+namespace BTD_Mod_Helper.Api.Commands.Generate;
 
-namespace BTD_Mod_Helper.Api.Commands;
-
-internal class GenerateUpgradeTypesCommand : ModCommand<GenerateCommand>
+internal class GenerateModelExtCommand : ModCommand<GenerateCommand>
 {
-    public override string Command => "upgrades";
-    public override string Help => "Generates the Mod Helper UpgradeTypes.cs file";
+    public override string Command => "ext";
+
+    public override string Help => "Generates many ModelExt files";
 
     public override bool Execute(ref string resultText)
     {
@@ -16,9 +16,10 @@ internal class GenerateUpgradeTypesCommand : ModCommand<GenerateCommand>
             return false;
         }
 
-        UpgradeTypeGenerator.GenerateVanillaUpgradeTypes();
+        ModelExtGenerator.GenerateAll();
 
         return true;
     }
 }
+
 #endif

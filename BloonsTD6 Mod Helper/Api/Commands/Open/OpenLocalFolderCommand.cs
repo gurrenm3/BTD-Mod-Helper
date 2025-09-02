@@ -1,5 +1,5 @@
 using BTD_Mod_Helper.Api.Helpers;
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Open;
 
 internal class OpenLocalFolderCommand : ModCommand<OpenFolderCommand>
 {

@@ -9,7 +9,7 @@ using Il2CppAssets.Scripts.Unity.Display.Animation;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Export;
 
 internal class ExportDisplayCommand : ModCommand<ExportCommand>
 {
