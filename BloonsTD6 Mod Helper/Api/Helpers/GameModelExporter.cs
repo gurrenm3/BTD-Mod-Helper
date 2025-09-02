@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Immutable;
+using System.IO;
 using System.Linq;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Skins;
@@ -29,11 +30,12 @@ public static class GameModelExporter
     /// <summary>
     /// Exports every bit of GameModel and GameData info of note to the local folder
     /// </summary>
-    internal static void ExportAll()
+    internal static void ExportAll(bool clean = false)
     {
         var total = 0;
         var success = 0;
         ModHelper.Msg("Exporting game data, this will take a couple seconds...");
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Towers"), true);
         foreach (var tower in Game.instance.model.towers)
         {
             if (TryExport(tower, $"Towers/{tower.baseId}/{tower.name}.json")) success++;
@@ -48,6 +50,7 @@ public static class GameModelExporter
 
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Upgrades"), true);
         foreach (var upgrade in Game.instance.model.upgrades)
         {
             if (TryExport(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json")) success++;
@@ -57,6 +60,7 @@ public static class GameModelExporter
             $"Exported {success}/{total} UpgradeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Upgrades")}");
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Bloons"), true);
         foreach (var bloon in Game.instance.model.bloons)
         {
             if (TryExport(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json")) success++;
@@ -66,6 +70,7 @@ public static class GameModelExporter
 
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Powers"), true);
         foreach (var model in Game.instance.model.powers)
         {
             if (TryExport(model, $"Powers/{model.name}.json")) success++;
@@ -74,6 +79,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} PowerModels to {Path.Combine(FileIOHelper.sandboxRoot, "Powers")}");
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Mods"), true);
         foreach (var model in GameData.Instance.mods)
         {
             if (TryExport(model, $"Mods/{model.name}.json")) success++;
@@ -82,6 +88,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} ModModels to {Path.Combine(FileIOHelper.sandboxRoot, "Mods")}");
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Rounds"), true);
         foreach (var roundSet in GameData.Instance.roundSets)
         {
             for (var i = 0; i < roundSet.rounds.Count; i++)
@@ -93,6 +100,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} RoundModels to {Path.Combine(FileIOHelper.sandboxRoot, "Rounds")}");
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Maps"), true);
         foreach (var mapSetMap in GameData.Instance.mapSet.Maps.items)
         {
             if (TryExport(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json")) success++;
@@ -101,6 +109,7 @@ public static class GameModelExporter
         ModHelper.Log($"Exported {success}/{total} MapDetails to {Path.Combine(FileIOHelper.sandboxRoot, "Maps")}");
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Buffs"), true);
         foreach (var indicatorModel in Game.instance.model.buffIndicatorModels)
         {
             if (TryExport(indicatorModel, $"Buffs/{indicatorModel.name}.json")) success++;
@@ -110,6 +119,7 @@ public static class GameModelExporter
             $"Exported {success}/{total} BuffIndicatorModels to {Path.Combine(FileIOHelper.sandboxRoot, "Buffs")}");
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Skins"), true);
         foreach (var data in GameData.Instance.skinsData.SkinList.items.ToArray())
         {
             try
@@ -156,40 +166,43 @@ public static class GameModelExporter
             $"Exported {success}/{total} SkinDatas to {Path.Combine(FileIOHelper.sandboxRoot, "Skins")}");
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Knowledge"), true);
         foreach (var knowledgeModel in Game.instance.model.allKnowledge)
         {
             if (TryExport(knowledgeModel, $"Knowledge/{knowledgeModel.name}.json")) success++;
             total++;
         }
         ModHelper.Log(
-            $"Exported {success}/{total} KnowledeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Knowledge")}");
+            $"Exported {success}/{total} KnowledgeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Knowledge")}");
 
 
         var resourcesJson = new JObject();
         var resourceLocationMap = Addressables.ResourceLocators.First();
 
-        var allLocations = resourceLocationMap.AllLocations.ToArray();
-        var resourceDict = allLocations.GroupBy(location => location.PrimaryKey);
-
-        foreach (var (key, locations) in resourceDict)
+        foreach (var key in resourceLocationMap.Keys.ToArray())
         {
-            if (!Guid.TryParse(key, out _)) continue;
+            if (!Guid.TryParse(key.ToString(), out _) ||
+                !resourceLocationMap.Locate(key, Il2CppType.Of<Object>(), out var locations)) continue;
 
             var list = locations
+                .Cast<IEnumerable<IResourceLocation>>()
+                .ToArray()
                 .Select(location => location.InternalId)
                 .Distinct()
-                .Where(s => s != key)
+                .Where(s => s != key.ToString())
                 .ToArray();
 
             if (list.Length == 0) continue;
 
-            resourcesJson[key] = list.Length > 1 ? JArray.FromObject(list) : list[0];
+            resourcesJson[key.ToString()] = list.Length > 1 ? JArray.FromObject(list) : list[0];
         }
-
         var resourcesPath = Path.Combine(FileIOHelper.sandboxRoot, "resources.json");
+        File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
+        ModHelper.Log($"Exported resources to {resourcesPath}");
 
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "GeraldoItems"), true);
         foreach (var geraldoItem in Game.instance.model.geraldoItemModels)
         {
             if (TryExport(geraldoItem, $"GeraldoItems/{geraldoItem.name}.json")) success++;
@@ -200,6 +213,7 @@ public static class GameModelExporter
 
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "BloonOverlays"), true);
         foreach (var overlayType in GameData.Instance.bloonOverlays.overlayTypes.keys)
         {
             if (TryExport(GameData.Instance.bloonOverlays.overlayTypes[overlayType],
@@ -215,15 +229,13 @@ public static class GameModelExporter
 
 
         total = success = 0;
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Artifacts"), true);
         foreach (var (id, artifact) in GameData.Instance.artifactsData.artifactDatas)
         {
             if (TryExport(artifact, $"Artifacts/{id}.json")) success++;
             total++;
         }
         ModHelper.Log($"Exported {success}/{total} Artifacts to {Path.Combine(FileIOHelper.sandboxRoot, "Artifacts")}");
-
-        File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
-        ModHelper.Log($"Exported resources to {resourcesPath}");
     }
 
     /// <summary>

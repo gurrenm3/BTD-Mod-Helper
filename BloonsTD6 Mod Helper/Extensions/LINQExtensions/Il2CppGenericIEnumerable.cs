@@ -100,9 +100,7 @@ public static class Il2CppGenericIEnumerable
     /// </summary>
     public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this ICollection<T> source)
     {
-        using var enumerator = source.Cast<IEnumerable<T>>().GetIl2CppEnumerator();
-        while (enumerator.MoveNext())
-            yield return enumerator.Current;
+        return source.Cast<IEnumerable<T>>().AsIEnumerable();
     }
 
     /// <summary>
@@ -110,8 +108,6 @@ public static class Il2CppGenericIEnumerable
     /// </summary>
     public static System.Collections.Generic.IEnumerable<T> AsIEnumerable<T>(this IList<T> source)
     {
-        using var enumerator = source.Cast<IEnumerable<T>>().GetIl2CppEnumerator();
-        while (enumerator.MoveNext())
-            yield return enumerator.Current;
+        return source.Cast<IEnumerable<T>>().AsIEnumerable();
     }
 }

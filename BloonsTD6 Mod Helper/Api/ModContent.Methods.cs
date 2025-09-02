@@ -21,7 +21,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <typeparam name="T">The type to get the instance of</typeparam>
     /// <returns>The singleton instance of it</returns>
-    public static T GetInstance<T>() where T : IModContent, new() => ModContentInstance<T>.Instance;
+    public static T GetInstance<T>() where T : IModContent => ModContentInstance<T>.Instance;
 
     /// <summary>
     /// Gets the official instance of a particular ModContent or BloonsTD6Mod based on its type

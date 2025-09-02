@@ -153,6 +153,11 @@ public abstract class ModSetting
     public string icon;
 
     /// <summary>
+    /// Function to retrieve the icon guid at the time the setting loads
+    /// </summary>
+    public Func<string> getIcon = null;
+
+    /// <summary>
     /// Action to modify the ModHelperOption after it's created
     /// </summary>
     public Action<ModHelperOption> modifyOption;
@@ -227,7 +232,8 @@ public abstract class ModSetting
     /// </summary>
     protected ModHelperOption CreateBaseOption()
     {
-        var modHelperOption = ModHelperOption.Create(displayNameKey ?? displayName, descriptionKey ?? description, icon);
+        var modHelperOption = ModHelperOption.Create(displayNameKey ?? displayName, descriptionKey ?? description,
+            getIcon?.Invoke() ?? icon);
         modifyOption?.Invoke(modHelperOption);
         modHelperOption.RestartIcon.SetActive(needsRestartRightNow);
         return modHelperOption;

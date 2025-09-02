@@ -134,6 +134,13 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
         ModContent instance;
         try
         {
+            if (type.GetConstructor(ConstructorFlags, null, Type.EmptyTypes, null) == null)
+            {
+                ModHelper.Warning($"Tried to load type {type.FullName} but it did not have a default constructor. " +
+                                  $"If this is intended, please add the [DontLoad] attribute to the class.");
+                return null;
+            }
+
             instance = (ModContent) Activator.CreateInstance(type)!;
             instance.mod = mod;
             ModContentInstances.AddInstance(type, instance);
