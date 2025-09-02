@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.Internal;
 using Semver;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Data;
@@ -155,8 +156,12 @@ internal partial class ModHelperData
     /// or the data Version matches the repo's version and not the current version
     /// </summary>
     internal bool RestartRequired =>
-        Enabled == (Mod == null) ||
-        Mod != null && Version != null && Version == RepoVersion && IsUpdate(Mod.Info.Version, Version, RepoWorksOnVersion);
+        !this.IsUpdaterPlugin() &&
+        (Enabled == (Mod == null) ||
+         Mod != null &&
+         Version != null &&
+         Version == RepoVersion &&
+         IsUpdate(Mod.Info.Version, Version, RepoWorksOnVersion));
 
     // Values to be displayed in the GUI
     internal string DisplayName => Name.NullIfEmpty() ?? Mod?.Info.Name.NullIfEmpty() ?? RepoName ?? "No Name Provided";

@@ -57,6 +57,7 @@ internal partial class ModHelperData
     internal string DataPath { get; }
     internal List<string> Topics { get; private set; }
     internal string RepoWorksOnVersion { get; private set; }
+    internal string ModHelperDataUrl { get; private set; }
 
     internal bool UpdateAvailable =>
         Version != null &&
@@ -124,32 +125,58 @@ internal partial class ModHelperData
         return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Branch}/{path}";
     }
 
+    internal async Task<string> RetrieveData(string name = null)
+    {
+        var url = name == null ? ModHelperDataUrl : GetContentURL(name);
+
+        try
+        {
+            var data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs));
+
+            if (!string.IsNullOrEmpty(data))
+            {
+                ModHelperDataUrl = url;
+            }
+
+            return data;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
     public async Task LoadDataFromRepoAsync()
     {
         try
         {
             string data = null;
 
+            if (ModHelperDataUrl != null)
+            {
+                data ??= await RetrieveData();
+            }
+
             if (RepoName == ModHelper.RepoName)
             {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL("BloonsTD6 Mod Helper/ModHelper.cs"));
+                data ??= await RetrieveData("BloonsTD6 Mod Helper/ModHelper.cs");
             }
             else if (SubPath != null &&
                      (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json") || SubPath.EndsWith(".cs")))
             {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(SubPath));
+                data ??= await RetrieveData(SubPath);
             }
             else if (DataPath != null)
             {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(DataPath));
+                data ??= await RetrieveData(DataPath);
             }
 
             try
             {
                 data ??= await WhenFirstSucceededOrAllFailed([
-                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs)),
-                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson)),
-                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt))
+                    RetrieveData(ModHelperDataCs),
+                    RetrieveData(ModHelperDataJson),
+                    RetrieveData(ModHelperDataTxt)
                 ]);
             }
             catch (Exception e)

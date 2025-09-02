@@ -1,15 +1,12 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.UI;
-using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
@@ -26,6 +23,24 @@ internal partial class MelonMain
     {
         collapsed = false,
         icon = SettingsIcon
+    };
+
+    public static readonly ModSettingBool AutoUpdate = new(true)
+    {
+        category = General,
+        icon = ModHelperSprites.DownloadBtn,
+        description = "Installs a plugin that will keep Mod Helper up to date on startup",
+        onSave = enabled =>
+        {
+            if (enabled)
+            {
+                UpdaterPlugin.Enable();
+            }
+            else
+            {
+                UpdaterPlugin.Disable();
+            }
+        }
     };
 
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)

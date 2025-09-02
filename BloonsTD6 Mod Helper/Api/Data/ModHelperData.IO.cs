@@ -121,14 +121,14 @@ internal partial class ModHelperData
         }
     }
 
-    private static T GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
+    internal static T GetRegexMatch<T>(string data, string regex, bool allowMultiline = false)
     {
         if (Regex.Match(data, regex, RegexOptions.Multiline) is {Success: true} match)
         {
             var matchGroup = match.Groups[1];
             var result = allowMultiline
-                ? matchGroup.Captures.Select(c => c.Value).Join(delimiter: "")
-                : matchGroup.Value;
+                             ? matchGroup.Captures.Select(c => c.Value).Join(delimiter: "")
+                             : matchGroup.Value;
             if (typeof(T) == typeof(string))
             {
                 return (T) (object) result;
@@ -189,6 +189,11 @@ internal partial class ModHelperData
                     _ => json[result]
                 };
             }
+        }
+
+        if (!string.IsNullOrEmpty(ModHelperDataUrl))
+        {
+            json[nameof(ModHelperDataUrl)] = ModHelperDataUrl;
         }
 
         File.WriteAllText(filePath, json.ToString(Formatting.Indented));

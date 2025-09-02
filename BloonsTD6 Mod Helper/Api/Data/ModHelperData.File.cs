@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using UnityEngine;
@@ -52,7 +53,7 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToDisabledModsFolder(bool quick = false)
+    public bool MoveToDisabledFolder(bool quick = false)
     {
         if (!MoveToFolder(ModHelper.DisabledModsDirectory)) return false;
 
@@ -75,7 +76,7 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToEnabledModsFolder() => MoveToFolder(EnabledFolder);
+    public bool MoveToEnabledFolder() => MoveToFolder(EnabledFolder);
 
     public bool Delete()
     {

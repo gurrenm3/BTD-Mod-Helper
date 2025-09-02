@@ -15,6 +15,7 @@ using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
 using UnityEngine;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModHelperGithub
@@ -267,18 +268,7 @@ internal static class ModHelperGithub
                             });
                         }
                     }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
-
-                screen.ModifyBodyText(field =>
-                {
-                    var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
-                        InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
-                    scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
-
-                    var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
-                    newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
-
-                    field.Destroy();
-                });
+                screen.MakeTextScrollable();
             });
         }
 

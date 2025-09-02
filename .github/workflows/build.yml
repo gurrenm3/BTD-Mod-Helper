@@ -84,7 +84,12 @@ jobs:
         with:
           name: ${{ env.PROJECT_NAME }}.dll
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
-      
+
+      - name: Upload Plugin DLL
+        uses: actions/upload-artifact@v4
+        with:
+          name: UpdaterPlugin.dll
+          path: ${{ env.BLOONSTD6 }}/Plugins/UpdaterPlugin.dll
       
       - name: Upload Mod Documentation
         uses: actions/upload-artifact@v4
@@ -99,6 +104,7 @@ jobs:
         with:
           files: |
             ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
+            ${{ env.BLOONSTD6 }}/Plugins/UpdaterPlugin.dll
             ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
           body_path: ./BloonsTD6 Mod Helper/LATEST.md
           fail_on_unmatched_files: true
