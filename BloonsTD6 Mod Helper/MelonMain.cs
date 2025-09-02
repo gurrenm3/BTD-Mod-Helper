@@ -6,6 +6,7 @@ using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.Internal.JsonTowers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.UI;
@@ -64,6 +65,9 @@ internal partial class MelonMain : BloonsTD6Mod
 
         // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
+
+        // Start loading json files in the background
+        JsonTowers.LoadAllAsync();
 
         Schedule_GameModel_Loaded();
         Schedule_GameData_Loaded();

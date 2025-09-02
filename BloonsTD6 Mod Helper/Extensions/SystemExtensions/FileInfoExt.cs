@@ -58,4 +58,12 @@ public static class FileInfoExt
         var references = fileInfo.GetAllReferences();
         return references is not null && references.Any(reference => reference.Name == "MelonLoader.ModHandler");
     }
+
+
+    /// <summary>
+    /// Gets the name of this file without the extension
+    /// </summary>
+    /// <param name="fileInfo"></param>
+    /// <returns></returns>
+    public static string NameWithoutExtension(this FileInfo fileInfo) => Path.GetFileNameWithoutExtension(fileInfo.FullName);
 }

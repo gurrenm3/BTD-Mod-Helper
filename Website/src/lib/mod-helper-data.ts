@@ -186,7 +186,7 @@ const hasMissingRepoData = (data: ModHelperData) => {
   return null;
 };
 
-const RawUserContent = "https://raw.githubusercontent.com";
+export const RawUserContent = "https://raw.githubusercontent.com";
 
 export const getContentUrl = (
   data: Pick<ModHelperData, "SubPath" | "RepoOwner" | "RepoName" | "Branch">,

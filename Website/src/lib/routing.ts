@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { isArray, isNaN } from "lodash";
+import { useCallback } from "react";
 
 export const useParam = <T extends string>(
   router: ReturnType<typeof useRouter>,
@@ -51,7 +52,7 @@ export const useParamBool = (
   const queryParam = router.query[param];
   return [
     queryParam !== null && queryParam !== undefined
-      ? queryParam == "true"
+      ? queryParam != "false"
       : def,
     (val: boolean) =>
       router.replace(

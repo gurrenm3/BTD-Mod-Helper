@@ -1,0 +1,179 @@
+// Blockly
+
+.blocklyCommentTextarea {
+  color: black;
+  caret-color: black;
+  font-size: 12pt;
+  background-color: lightgray;
+}
+
+.blocklyTooltipDiv {
+  opacity: 1;
+  font-size: 10pt;
+}
+
+.blackText {
+  fill: #000 !important;
+}
+
+.blocklyHtmlTextAreaInput {
+  background-color: white !important;
+  color: black !important;
+}
+
+
+/*
+.blocklyToolboxContents {
+  height: 100%;
+}
+*/
+
+.blocklyTreeRow {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: unset;
+}
+
+.blocklySepFill {
+  margin: auto;
+}
+
+
+@media (min-width: 576px) {
+  .blocklyTreeRow {
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .blocklyToolboxDiv {
+    max-height: 105px !important;
+  }
+
+  .blocklyTreeRow {
+    border-right: none !important;
+    border-left: none !important;
+    border-top: none !important;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-bottom: 0;
+
+    /*border-width: 2px !important;
+    padding: 2px;*/
+  }
+
+  .blocklyToolboxCategory[aria-expanded=true] > .blocklyToolboxContents {
+    display: flex !important;
+    flex-direction: row;
+
+    left: 0;
+    right: 0;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .blocklyToolboxCategory > .blocklyToolboxContents > .blocklyToolboxCategory {
+  }
+
+  .markdown img {
+    max-width: 90vw;
+  }
+
+  .blocklyToolboxContents {
+    padding: 0 5px 0 5px
+  }
+
+  .blocklyTreeRow input {
+    text-align: center;
+  }
+}
+
+.blocklyTreeRow input {
+  // border-radius: 4px;
+  margin-left: 10px !important;
+  padding-left: 10px !important;
+  padding-right: 0px !important;
+  margin-right: 10px;
+  --placeholder-color: black;
+  font-size: 16px;
+  outline: none;
+}
+
+.blocklyTreeRow input::placeholder {
+  color: black
+}
+
+[data-theme="dark"] .blocklyTreeRow input::placeholder {
+  color: white
+}
+
+[data-theme="dark"] .blocklyTreeRow input {
+  color: white
+}
+
+.blocklyTreeRow:not(.blocklyTreeSelected):not(:hover) input {
+  background-color: transparent;
+}
+
+.blocklyTreeRow:not(.blocklyTreeSelected):hover input {
+  background-color: transparent;
+}
+
+.blocklyTreeRow.blocklyTreeSelected input {
+  background-color: rgb(228, 228, 228);
+}
+
+[data-theme="dark"] .blocklyTreeRow.blocklyTreeSelected input {
+  background-color: rgb(92, 92, 92);
+}
+
+.blocklyToolboxDiv[layout="h"] .blocklyTreeSeparator {
+  margin: 0 !important;
+}
+
+.blocklyToolboxDiv {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.blocklyMinimalBody {
+  background-color: #d3d3d3 !important;
+}
+
+.blockly-ws-search {
+  border-radius: .5rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+}
+
+.blockly-ws-search input {
+  outline: none;
+  padding-left: 5px;
+}
+
+[data-theme="dark"] .blockly-ws-search {
+  background-color: rgb(92, 92, 92);
+  border-color: black;
+}
+
+[data-theme="dark"] .blockly-ws-search-input input {
+  background-color: rgb(92, 92, 92);
+  color: white;
+}
+
+[data-theme="dark"] .blockly-ws-search-input input::placeholder {
+  color: white
+}
+
+.blockly-ws-search-btn {
+  width: 20px;
+  border-radius: .5rem;
+}
+
+.blockly-ws-search-btn:hover {
+  background-color: rgb(200, 200, 200);
+}

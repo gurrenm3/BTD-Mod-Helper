@@ -58,7 +58,7 @@ public static class ProcessHelper
             UseShellExecute = true
         });
     }
-    
+
     /// <summary>
     /// Opens a file in the default app for it
     /// </summary>

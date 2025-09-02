@@ -1,9 +1,10 @@
 import { AppProps } from "next/app";
-import React, { useEffect, useRef } from "react";
+import React, { createContext, useRef } from "react";
 import "../css/bootstrap.scss";
 import "../css/fonts.scss";
 import "../css/global.scss";
 import "../css/btd6.scss";
+import "../css/blockly.scss";
 import { Btd6Styles } from "../components/btd6-ui";
 import ModHelperHelmet from "../components/helmet";
 import { use100vh } from "react-div-100vh";
@@ -14,6 +15,14 @@ import { ModHelperScrollBars, ScrollBarsContext } from "../components/layout";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { usePathname } from "next/navigation";
 import { useUpdateEffect } from "react-use";
+import { useUpdate } from "react-use";
+
+type Theme = "light" | "dark" | string | undefined;
+
+export const ThemeContext = createContext<{
+  theme: Theme;
+  refreshTheme: () => void;
+}>(undefined);
 
 const DefaultTitle = "BTD Mod Helper";
 const DefaultDescription =
@@ -29,6 +38,15 @@ export default ({ Component, pageProps }: AppProps) => {
     scrollbars.current?.scrollToTop();
   }, [pathname]);
 
+  const theme =
+    typeof document !== "undefined"
+      ? document.documentElement.getAttribute("data-theme") || "light"
+      : typeof localStorage !== "undefined"
+      ? localStorage.getItem("theme") || "light"
+      : "light";
+
+  const refreshTheme = useUpdate();
+
   return (
     <>
       <Btd6Styles />
@@ -39,9 +57,11 @@ export default ({ Component, pageProps }: AppProps) => {
         onUpdate={(values) => backgroundOnScroll(values, background.current!)}
       >
         <ScrollBarsContext.Provider value={scrollbars.current}>
-          <BackgroundImage ref={background}>
-            <Component {...pageProps} />
-          </BackgroundImage>
+          <ThemeContext.Provider value={{ theme, refreshTheme }}>
+            <BackgroundImage ref={background}>
+              <Component {...pageProps} />
+            </BackgroundImage>
+          </ThemeContext.Provider>
         </ScrollBarsContext.Provider>
       </ModHelperScrollBars>
     </>

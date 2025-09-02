@@ -3,6 +3,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.Internal.JsonTowers;
 using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Scenarios;
@@ -24,8 +25,12 @@ internal class TitleScreen_Start
 
         if (ModHelper.FallbackToOldLoading)
         {
-            if (ModByteLoader.currentLoadTask != null) ModByteLoader.currentLoadTask.Wait();
+            ModByteLoader.currentLoadTask?.Wait();
             ModContent.GetContent<ModByteLoader>().Where(loader => !loader.Loaded).Do(loader => loader.LoadAllBytes());
+
+            JsonTowers.LoadTask?.Wait();
+            JsonTowers.ProcessAll(Game.instance.model);
+
             PreLoadResourcesTask.Instance.RunSync();
 
             ModHelper.Mods

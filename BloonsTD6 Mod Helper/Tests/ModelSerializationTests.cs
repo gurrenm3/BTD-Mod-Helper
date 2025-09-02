@@ -42,15 +42,15 @@ internal static class ModelSerializationTests
             var result = ModelSerializer.DeserializeModel<TowerModel>(expected);
             var actual = ModelSerializer.SerializeModel(result);
 
-            var success = actual == expected;
+        var success = actual == expected;
 
-            if (!success)
-            {
-                FileIOHelper.SaveFile($"Test/{towerModel.name}.expected.json", expected);
-                FileIOHelper.SaveFile($"Test/{towerModel.name}.actual.json", actual);
-            }
+        if (!success)
+        {
+            FileIOHelper.SaveFile($"Test/{towerModel.name}.expected.json", expected);
+            FileIOHelper.SaveFile($"Test/{towerModel.name}.actual.json", actual);
+        }
 
-            return success;
+        return success;
 
         }
         catch (Exception e)
@@ -115,7 +115,7 @@ internal static class ModelSerializationTests
         FileIOHelper.SaveFile("Tests/recreated_game_model.json", recreatedGameModelText);
 
         ModHelper.Msg(entireGameModelText == recreatedGameModelText ? "matched" : "not matched");
-        
+
         return entireGameModelText.Trim() == recreatedGameModelText.Trim();
     }
 }

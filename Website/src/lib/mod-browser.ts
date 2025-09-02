@@ -33,7 +33,7 @@ export const populateSpecificMod = async (selectedMod: string) => {
   const [owner, repo, subpath] = selectedMod.split("/");
   const selectedRepo = await octokit.rest.repos.get({ owner, repo });
   if (selectedRepo.data) {
-    return await loadDataFromRepo(selectedRepo.data as Repository, subpath);
+    return await loadDataFromRepo(selectedRepo.data as unknown as Repository, subpath);
   }
 
   return undefined;

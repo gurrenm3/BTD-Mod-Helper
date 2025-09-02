@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, { FunctionComponent, ReactNode, useContext } from "react";
 import {
   Button,
   Container,
@@ -17,7 +17,6 @@ import { useRouter } from "next/router";
 import NavbarToggle from "react-bootstrap/NavbarToggle";
 import { ModHelperScrollBars, ScrollBarsContext, switchSize } from "./layout";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { useUpdate } from "react-use";
 import DropdownToggle from "react-bootstrap/DropdownToggle";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
 import maps from "../data/maps.json";
@@ -25,6 +24,8 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import { BackgroundContext } from "./background-image";
 import { List } from "react-bootstrap-icons";
 import cx from "classnames";
+import { useUpdate } from "react-use";
+import { ThemeContext } from "../pages/_app";
 
 const ModHelperNavItem: FunctionComponent<
   Omit<NavLinkProps, "active"> & LinkProps & { path: string; active?: string }
@@ -46,21 +47,19 @@ const ModHelperNavItem: FunctionComponent<
   </NavItem>
 );
 
-export const ModHelperNavBar: FunctionComponent = () => {
+export const ModHelperNavBar: FunctionComponent<{
+  className?: string;
+}> = ({ className }) => {
   const router = useRouter();
   const path = router?.asPath ?? "";
 
-  const theme =
-    typeof document !== "undefined"
-      ? document.documentElement.getAttribute("data-theme") || "light"
-      : typeof localStorage !== "undefined"
-      ? localStorage.getItem("theme") || "light"
-      : "light";
-
-  const update = useUpdate();
+  const { theme, refreshTheme } = useContext(ThemeContext);
 
   return (
-    <Container fluid={switchSize} className={`p-0 my-${switchSize}-4`}>
+    <Container
+      fluid={switchSize}
+      className={cx("p-0", `my-${switchSize}-4`, className)}
+    >
       <Navbar
         variant={"dark"}
         expand={"md"}
@@ -76,6 +75,7 @@ export const ModHelperNavBar: FunctionComponent = () => {
             width={50}
             height={50}
             loading={"eager"}
+            priority={true}
           />
         </NavbarBrand>
         <NavbarBrand
@@ -94,9 +94,10 @@ export const ModHelperNavBar: FunctionComponent = () => {
               const newTheme = theme === "dark" ? "light" : "dark";
               localStorage.setItem("theme", newTheme);
               document.documentElement.setAttribute("data-theme", newTheme);
-              update();
+              refreshTheme();
             }}
             size={"2rem"}
+            style={{ userSelect: "none" }}
           />
         </div>
         <NavbarToggle label={"toggle"} className={"btd6-button blue p-2"}>
@@ -131,9 +132,11 @@ export const ModHelperNavBar: FunctionComponent = () => {
 };
 
 export const ModHelperFooter: FunctionComponent<{
-  backToTop?: () => void;
+  buttonName?: string;
+  buttonOnClick?: () => void;
   className?: string;
-}> = ({ backToTop, className }) => {
+  body?: ReactNode;
+}> = ({ buttonName, buttonOnClick, className, body }) => {
   const scrollbars = useContext(ScrollBarsContext);
   const [map, setMap] = useContext(BackgroundContext);
 
@@ -150,16 +153,23 @@ export const ModHelperFooter: FunctionComponent<{
       <Button
         variant={"outline-light"}
         onClick={() => {
-          scrollbars?.scrollTop(0);
-          backToTop?.();
+          if (buttonOnClick) {
+            buttonOnClick();
+          } else {
+            scrollbars?.scrollTop(0);
+          }
         }}
         className={"btd6-button blue long align-self-stretch p-3"}
       >
-        Back to Top
+        {buttonName || "Back to Top"}
       </Button>
       <div className={`text-center d-none d-sm-block fs-larger`}>
-        To learn how to download BTD Mod Helper and install mods,{" "}
-        <Link href={"/wiki/Install-Guide#main-content"}>click here</Link>
+        {body || (
+          <>
+            To learn how to download BTD Mod Helper and install mods,{" "}
+            <Link href={"/wiki/Install-Guide#main-content"}>click here</Link>
+          </>
+        )}
       </div>
       <Dropdown drop={"up"} align={"end"} className={"text-end"}>
         <DropdownToggle

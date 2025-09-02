@@ -77,7 +77,6 @@ internal static class GameModel_CreateModded
             }
         }
 
-
         return true;
     }
 

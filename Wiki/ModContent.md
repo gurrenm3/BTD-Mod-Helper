@@ -5,7 +5,7 @@ All the different `ModContent` classes that you put in your mod will be automati
 
 Because of this, the `ModContent` class comes with many static methods that you can use to access the different loaded elements.
 
-## Helpeful Methods
+## Helpful Methods
 
 `ModContent.GetInstance<T>()` gets the primary instance of the type `T`, which is either a `ModContent` or a `BloonsMod`. For those new to C# this might seem a little odd, but the gist of why we do this is because we want to let people use Method and Property overrides while still having the classes behave pretty much statically. 
 

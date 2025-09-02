@@ -29,7 +29,6 @@ import {
   modDisplayName,
   modDisplayVersion,
   ModHelperData,
-  ModHelperRepoName,
   modIsOld,
   StoppedWorkingVersion,
 } from "../lib/mod-helper-data";
@@ -259,8 +258,8 @@ export default () => {
 
   return (
     <Layout
-      style={{ height: height }}
-      backToTop={() => scrollbars.current?.scrollTop(0)}
+      style={{ height }}
+      bottomLeftOnClick={() => scrollbars.current?.scrollTop(0)}
       footerClassName={`d-none d-${switchSize}-flex`}
     >
       <ModHelperHelmet

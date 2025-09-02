@@ -4,12 +4,14 @@ import React, {
   FunctionComponent,
   HTMLAttributes,
   PropsWithChildren,
+  ReactNode,
 } from "react";
 import { ScrollbarProps, Scrollbars } from "react-custom-scrollbars-2";
 import { use100vh } from "react-div-100vh";
 import { ModHelperFooter, ModHelperNavBar } from "./navbar";
 import SkipLink from "./skip-link";
 import cx from "classnames";
+import { useUpdate } from "react-use";
 
 export const switchSize = "lg";
 
@@ -60,30 +62,43 @@ export const ModHelperScrollBars = forwardRef<Scrollbars, ScrollbarProps>(
 
 interface LayoutProps
   extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
-  backToTop?: () => void;
+  bottomLeftButton?: string;
+  bottomLeftOnClick?: () => void;
+  headerClassName?: string;
   footerClassName?: string;
+  footerBody?: ReactNode;
+  fitHeight?: boolean;
 }
 
 const Layout: FunctionComponent<LayoutProps> = ({
   children,
   className,
   style,
-  backToTop,
+  bottomLeftButton,
+  bottomLeftOnClick,
+  headerClassName,
   footerClassName,
+  fitHeight,
+  footerBody,
   ...props
 }) => {
-  const height = use100vh() ?? 1000;
+  const minHeight = use100vh() ?? 1000;
 
   return (
     <div
       className={cx("d-flex", "flex-column", className)}
-      style={{ minHeight: height, ...style }}
+      style={{ minHeight: minHeight, ...style }}
       {...props}
     >
       <SkipLink />
-      <ModHelperNavBar />
+      <ModHelperNavBar className={headerClassName} />
       {children}
-      <ModHelperFooter backToTop={backToTop} className={footerClassName} />
+      <ModHelperFooter
+        buttonName={bottomLeftButton}
+        buttonOnClick={bottomLeftOnClick}
+        className={footerClassName}
+        body={footerBody}
+      />
     </div>
   );
 };
