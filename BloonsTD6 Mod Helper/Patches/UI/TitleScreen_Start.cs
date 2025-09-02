@@ -47,11 +47,6 @@ internal class TitleScreen_Start
         gameObject.AddComponent<Instances>();
         gameObject.AddComponent<Lists>();
 
-        if (MelonMain.AutoUpdate && UpdaterPlugin.ShouldDownload)
-        {
-            UpdaterPlugin.DownloadLatest();
-        }
-
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
     }
 }

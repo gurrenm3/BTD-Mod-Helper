@@ -1,1 +1,2 @@
-- Fixed for BTD6 v50.1
+- Created a new Updater Plugin that Mod Helper can automatically download and put in your Plugins folder. 
+- On startup, this plugin will check if there's a new version of Mod Helper and download it it without requiring a restart

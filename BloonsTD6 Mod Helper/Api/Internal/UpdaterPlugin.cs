@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using BTD_Mod_Helper.Api.Data;
@@ -34,7 +35,14 @@ internal static class UpdaterPlugin
 
     public static void DownloadLatest()
     {
-        Updater?.MoveToDisabledFolder();
+        try
+        {
+            Updater?.MoveToDisabledFolder();
+        }
+        catch (Exception)
+        {
+            // ignored
+        }
 
         if (didDownloadAlready) return;
 
@@ -44,6 +52,11 @@ internal static class UpdaterPlugin
             {
                 didDownloadAlready = true;
                 ModHelper.Msg("Successfully downloaded updater plugin");
+
+                if (Updater is { } plugin)
+                {
+                    plugin.SetFilePath(FilePath);
+                }
             }
         });
     }

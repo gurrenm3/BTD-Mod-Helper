@@ -48,7 +48,7 @@ internal partial class MelonMain : BloonsTD6Mod
             Task.Run(ModHelperGithub.GetVerifiedModders);
             if (PopulateOnStartup)
             {
-                Task.Run(ModHelperGithub.PopulateMods);
+                ModHelperGithub.populatingMods = Task.Run(ModHelperGithub.PopulateMods);
             }
         }
         catch (Exception e)
@@ -92,6 +92,11 @@ internal partial class MelonMain : BloonsTD6Mod
         catch (Exception e)
         {
             ModHelper.Warning(e);
+        }
+
+        if (AutoUpdate && UpdaterPlugin.ShouldDownload)
+        {
+            UpdaterPlugin.DownloadLatest();
         }
     }
 

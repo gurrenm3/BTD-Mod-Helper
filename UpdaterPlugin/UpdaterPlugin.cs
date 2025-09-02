@@ -59,7 +59,7 @@ public class UpdaterPlugin : MelonPlugin
 
             var download = DownloadLatestModHelper();
 
-            download.Wait(5000);
+            download.Wait();
 
             if (download.IsCompletedSuccessfully)
             {

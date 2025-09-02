@@ -129,21 +129,14 @@ internal partial class ModHelperData
     {
         var url = name == null ? ModHelperDataUrl : GetContentURL(name);
 
-        try
-        {
-            var data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs));
+        var data = await ModHelperHttp.Client.GetStringAsync(url);
 
-            if (!string.IsNullOrEmpty(data))
-            {
-                ModHelperDataUrl = url;
-            }
-
-            return data;
-        }
-        catch (Exception)
+        if (!string.IsNullOrEmpty(data))
         {
-            return null;
+            ModHelperDataUrl = url;
         }
+
+        return data;
     }
 
     public async Task LoadDataFromRepoAsync()
@@ -231,6 +224,7 @@ internal partial class ModHelperData
                 modHelperData.Branch = Branch;
                 modHelperData.RepoDataSuccess = true;
                 modHelperData.RepoWorksOnVersion = WorksOnVersion;
+                modHelperData.ModHelperDataUrl = ModHelperDataUrl;
             }
 
             if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)

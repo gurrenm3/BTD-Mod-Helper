@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using Semver;
 using UnityEngine;
@@ -102,14 +103,12 @@ internal partial class ModHelperData
         // ReSharper disable once ConstantNullCoalescingCondition
         var iconPath = Icon ?? DefaultIcon;
         var assemblyPath = "." + Path.GetFileName(iconPath);
-        var resource = Array.Find(mod.GetAssembly()
-                .GetManifestResourceNames(),
-            s => s.EndsWith(assemblyPath));
+        var resource = Array.Find(mod.GetAssembly().GetManifestResourceNames(), s => s.EndsWith(assemblyPath));
         if (resource != null)
         {
             IconBytes = mod.GetAssembly().GetManifestResourceStream(resource)?.GetByteArray();
         }
-        else
+        else if (!this.IsUpdaterPlugin())
         {
             HasNoIcon = true;
         }
@@ -211,6 +210,11 @@ internal partial class ModHelperData
         if (icon != null)
         {
             return icon;
+        }
+
+        if (this.IsUpdaterPlugin())
+        {
+            return icon = ResourceHandler.GetSprite("BloonsTD6 Mod Helper-DownloadBtn").PadSpriteToScale(.85f);
         }
 
         if (IconBytes != null)

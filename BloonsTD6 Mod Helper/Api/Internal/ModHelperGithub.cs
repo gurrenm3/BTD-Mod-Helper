@@ -78,6 +78,8 @@ internal static class ModHelperGithub
     public static bool ModIsBroken(this ModHelperData data) =>
         !SemVersion.TryParse(data.WorksOnVersion, out var semver) || semver.Major < 34;
 
+    internal static Task populatingMods;
+
     public static void Init()
     {
         Client = new GitHubClient(new ProductHeaderValue(ProductName));
@@ -85,46 +87,54 @@ internal static class ModHelperGithub
 
     public static async Task PopulateMods()
     {
-        var page = 1;
-        var start = DateTime.Now;
-
-        // Start initial GitHub searches
-        var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-            {PerPage = 100, Page = page++});
-        var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
-        var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
-
-        // First, wait for the monorepo search and then kick off the loading tasks
-        var monoRepoTasks = (await monoRepoSearchTask).Items
-            .Select(ModHelperData.LoadFromMonoRepo)
-            .ToArray();
-
-        // Finish getting all normal mods, processing multiple pages if needed
-        var mods = new List<ModHelperData>();
-        var searchResult = await repoSearchTask;
-        while (searchResult.TotalCount > mods.Count && searchResult.Items.Any())
+        try
         {
-            mods.AddRange(searchResult.Items
-                .OrderBy(repo => repo.CreatedAt)
-                .Select(repo => new ModHelperData(repo))
-                .Append(new ModHelperData(await modHelperRepoSearchTask)));
+            var page = 1;
+            var start = DateTime.Now;
 
-            searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-                               {PerPage = 100, Page = page++});
+            // Start initial GitHub searches
+            var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
+                {PerPage = 100, Page = page++});
+            var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
+            var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
+
+            // First, wait for the monorepo search and then kick off the loading tasks
+            var monoRepoTasks = (await monoRepoSearchTask).Items
+                .Select(ModHelperData.LoadFromMonoRepo)
+                .ToArray();
+
+            // Finish getting all normal mods, processing multiple pages if needed
+            var mods = new List<ModHelperData>();
+            var searchResult = await repoSearchTask;
+            while (searchResult.TotalCount > mods.Count && searchResult.Items.Any())
+            {
+                mods.AddRange(searchResult.Items
+                    .OrderBy(repo => repo.CreatedAt)
+                    .Select(repo => new ModHelperData(repo))
+                    .Append(new ModHelperData(await modHelperRepoSearchTask)));
+
+                searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
+                                   {PerPage = 100, Page = page++});
+            }
+
+            // Finish getting monorepo mods
+            mods.AddRange((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d));
+
+            // Load all the ModHelperData for the retrieved mods
+            Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
+            Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
+
+            var time = DateTime.Now - start;
+            ModHelper.Msg(
+                $"Finished getting mods from github in background, found {Mods.Count} mods over {time.TotalSeconds:F1} seconds");
+
+            UpdateRateLimit();
         }
-
-        // Finish getting monorepo mods
-        mods.AddRange((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d));
-
-        // Load all the ModHelperData for the retrieved mods
-        Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
-        Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
-
-        var time = DateTime.Now - start;
-        ModHelper.Msg(
-            $"Finished getting mods from github in background, found {Mods.Count} mods over {time.TotalSeconds:F1} seconds");
-
-        UpdateRateLimit();
+        catch (Exception e)
+        {
+            ModHelper.Warning("Error while populating mods");
+            ModHelper.Warning(e);
+        }
     }
 
     public static async Task GetVerifiedModders()

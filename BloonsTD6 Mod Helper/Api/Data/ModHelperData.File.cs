@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
@@ -133,9 +134,16 @@ internal partial class ModHelperData
 
     public static void SaveAll()
     {
-        foreach (var modHelperData in Active)
+        if (ModHelperGithub.populatingMods is {Status: TaskStatus.Running})
         {
-            modHelperData.SaveToJson(ModHelper.DataDirectory);
+            ModHelperGithub.populatingMods.ContinueWith(_ => SaveAll());
+        }
+        else
+        {
+            foreach (var modHelperData in Active)
+            {
+                modHelperData.SaveToJson(ModHelper.DataDirectory);
+            }
         }
     }
 }
