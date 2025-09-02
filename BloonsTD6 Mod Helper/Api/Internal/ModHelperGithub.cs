@@ -38,7 +38,7 @@ internal static class ModHelperGithub
         "Please try again at a later time. If issues stil persist for this mod and not others, contact the mod developer.";
 
     internal static readonly string[] AllContentTypes =
-        {DllContentType, DllContentType2, DllContentType3, ZipContentType, ZipContentType2};
+        [DllContentType, DllContentType2, DllContentType3, ZipContentType, ZipContentType2];
 
     public static readonly HashSet<string> VerifiedModders = [];
     public static readonly HashSet<string> BannedModders = [];

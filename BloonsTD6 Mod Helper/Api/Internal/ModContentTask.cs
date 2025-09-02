@@ -2,14 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using BTD_Mod_Helper.Api.Attributes;
 namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
 /// Initial task to register ModContent from other mods
 /// </summary>
+[DontLoad]
 internal class ModContentTask : ModLoadTask
 {
-
     private float? total;
 
     /// <inheritdoc />
@@ -18,12 +20,6 @@ internal class ModContentTask : ModLoadTask
     public override bool ShowProgressBar => Total > 5;
 
     public float Total => total ??= mod.Content.Sum(content => 1f / content.RegisterPerFrame);
-
-    /// <summary>
-    /// Don't load this like a normal task
-    /// </summary>
-    /// <returns></returns>
-    public override IEnumerable<ModContent> Load() => [];
 
     /// <summary>
     /// Registers ModContent from other mods
@@ -37,6 +33,8 @@ internal class ModContentTask : ModLoadTask
         var current = 0f;
         foreach (var modContent in mod.Content.ToArray())
         {
+            if (modContent.GetType().GetCustomAttribute<DontRegisterAttribute>() != null) continue;
+
             var weight = 1f / modContent.RegisterPerFrame;
             current += weight;
             if (current >= 1f)
