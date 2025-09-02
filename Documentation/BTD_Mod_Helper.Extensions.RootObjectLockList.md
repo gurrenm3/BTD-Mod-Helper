@@ -160,6 +160,37 @@ The Type of the Items you want
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[TCast](BTD_Mod_Helper.Extensions.RootObjectLockList.md#BTD_Mod_Helper.Extensions.RootObjectLockList.GetItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_).TCast 'BTD_Mod_Helper.Extensions.RootObjectLockList.GetItemsOfType<TSource,TCast>(this RootObjectLockList<TSource>).TCast')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_)'></a>
+
+## RootObjectLockList.HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource>) Method
+
+Check if this has any items of type TCast
+
+```csharp
+public static bool HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList)
+    where TSource : Il2CppObjectBase
+    where TCast : Il2CppObjectBase;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_).TSource'></a>
+
+`TSource`
+
+<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_).TCast'></a>
+
+`TCast`
+
+The Type you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_).lockList'></a>
+
+`lockList` [Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList 'Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_,TCast)'></a>
 
 ## RootObjectLockList.HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource>, TCast) Method
@@ -193,37 +224,6 @@ The Type you're checking for
 `item` [TCast](BTD_Mod_Helper.Extensions.RootObjectLockList.md#BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_,TCast).TCast 'BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource>, TCast).TCast')
 
 The found item, if any
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_)'></a>
-
-## RootObjectLockList.HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource>) Method
-
-Check if this has any items of type TCast
-
-```csharp
-public static bool HasItemsOfType<TSource,TCast>(this RootObjectLockList<TSource> lockList)
-    where TSource : Il2CppObjectBase
-    where TCast : Il2CppObjectBase;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_).TSource'></a>
-
-`TSource`
-
-<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_).TCast'></a>
-
-`TCast`
-
-The Type you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.RootObjectLockList.HasItemsOfType_TSource,TCast_(thisRootObjectLockList_TSource_).lockList'></a>
-
-`lockList` [Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList 'Il2CppAssets.Scripts.Simulation.Objects.RootObjectLockList')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

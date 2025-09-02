@@ -103,6 +103,21 @@ public void EnableAutoSizing(bool enable);
 
 `enable` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float)'></a>
+
+## ModHelperText.EnableAutoSizing(float) Method
+
+Enables auto sizing for this [Text](BTD_Mod_Helper.Api.Components.ModHelperText.md#BTD_Mod_Helper.Api.Components.ModHelperText.Text 'BTD_Mod_Helper.Api.Components.ModHelperText.Text') component
+
+```csharp
+public void EnableAutoSizing(float fontSizeMax);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float).fontSizeMax'></a>
+
+`fontSizeMax` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float,float)'></a>
 
 ## ModHelperText.EnableAutoSizing(float, float) Method
@@ -121,21 +136,6 @@ public void EnableAutoSizing(float fontSizeMax, float fontSizeMin);
 <a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float,float).fontSizeMin'></a>
 
 `fontSizeMin` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float)'></a>
-
-## ModHelperText.EnableAutoSizing(float) Method
-
-Enables auto sizing for this [Text](BTD_Mod_Helper.Api.Components.ModHelperText.md#BTD_Mod_Helper.Api.Components.ModHelperText.Text 'BTD_Mod_Helper.Api.Components.ModHelperText.Text') component
-
-```csharp
-public void EnableAutoSizing(float fontSizeMax);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperText.EnableAutoSizing(float).fontSizeMax'></a>
-
-`fontSizeMax` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperText.OnUpdate()'></a>
 

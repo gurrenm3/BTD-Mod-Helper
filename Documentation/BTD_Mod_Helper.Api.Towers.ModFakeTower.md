@@ -186,6 +186,19 @@ public sealed override int TopPathUpgrades { get; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModFakeTower.TowerInventoryEnabled'></a>
+
+## ModFakeTower.TowerInventoryEnabled Property
+
+Enables tracking placements of these fake towers in the tower inventory
+
+```csharp
+public virtual bool TowerInventoryEnabled { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Towers.ModFakeTower.CanPlaceAt(Vector2,Tower,string)'></a>

@@ -370,3 +370,21 @@ public virtual bool RestrictUpgrading(Tower tower);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
 If
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ShouldAcquireUpgrade(ProfileModel)'></a>
+
+## ModUpgrade.ShouldAcquireUpgrade(ProfileModel) Method
+
+Whether this upgrade should be unlocked or not
+
+```csharp
+public virtual bool ShouldAcquireUpgrade(ProfileModel profileModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ShouldAcquireUpgrade(ProfileModel).profileModel'></a>
+
+`profileModel` [Il2CppAssets.Scripts.Models.Profile.ProfileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Profile.ProfileModel 'Il2CppAssets.Scripts.Models.Profile.ProfileModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

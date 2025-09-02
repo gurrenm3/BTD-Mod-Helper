@@ -318,6 +318,32 @@ Tower behaviors to add
 
 function for modifying the boost, like for filtering it to specific towers
 
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel)'></a>
+
+## ArtifactModelBehaviorExt.GetBehavior<T>(this BoostArtifactModel) Method
+
+Return the first Behavior of type T, or null if there isn't one
+
+```csharp
+public static T GetBehavior<T>(this BoostArtifactModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this BoostArtifactModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel,int)'></a>
 
 ## ArtifactModelBehaviorExt.GetBehavior<T>(this BoostArtifactModel, int) Method
@@ -378,31 +404,31 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel,string).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this BoostArtifactModel, string).T')
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel)'></a>
 
-## ArtifactModelBehaviorExt.GetBehavior<T>(this BoostArtifactModel) Method
+## ArtifactModelBehaviorExt.GetBehavior<T>(this ItemArtifactModel) Method
 
 Return the first Behavior of type T, or null if there isn't one
 
 ```csharp
-public static T GetBehavior<T>(this BoostArtifactModel model)
+public static T GetBehavior<T>(this ItemArtifactModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel).T'></a>
 
 `T`
 
 The Behavior you want
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel')
+`model` [Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel')
 
 #### Returns
-[T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisBoostArtifactModel).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this BoostArtifactModel).T')
+[T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this ItemArtifactModel).T')
 
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel,int)'></a>
 
@@ -464,31 +490,31 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel,string).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this ItemArtifactModel, string).T')
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel)'></a>
 
-## ArtifactModelBehaviorExt.GetBehavior<T>(this ItemArtifactModel) Method
+## ArtifactModelBehaviorExt.GetBehavior<T>(this MapArtifactModel) Method
 
 Return the first Behavior of type T, or null if there isn't one
 
 ```csharp
-public static T GetBehavior<T>(this ItemArtifactModel model)
+public static T GetBehavior<T>(this MapArtifactModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel).T'></a>
 
 `T`
 
 The Behavior you want
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel')
+`model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
 
 #### Returns
-[T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisItemArtifactModel).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this ItemArtifactModel).T')
+[T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this MapArtifactModel).T')
 
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel,int)'></a>
 
@@ -549,32 +575,6 @@ The Behavior you want
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel,string).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this MapArtifactModel, string).T')
-
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel)'></a>
-
-## ArtifactModelBehaviorExt.GetBehavior<T>(this MapArtifactModel) Method
-
-Return the first Behavior of type T, or null if there isn't one
-
-```csharp
-public static T GetBehavior<T>(this MapArtifactModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel).T'></a>
-
-`T`
-
-The Behavior you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior_T_(thisMapArtifactModel).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehavior<T>(this MapArtifactModel).T')
 
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehaviors_T_(thisBoostArtifactModel)'></a>
 
@@ -654,6 +654,32 @@ The Behavior you want
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehaviors_T_(thisMapArtifactModel).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.GetBehaviors<T>(this MapArtifactModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel)'></a>
+
+## ArtifactModelBehaviorExt.HasBehavior<T>(this BoostArtifactModel) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasBehavior<T>(this BoostArtifactModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel,string,T)'></a>
 
 ## ArtifactModelBehaviorExt.HasBehavior<T>(this BoostArtifactModel, string, T) Method
@@ -718,28 +744,28 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel)'></a>
 
-## ArtifactModelBehaviorExt.HasBehavior<T>(this BoostArtifactModel) Method
+## ArtifactModelBehaviorExt.HasBehavior<T>(this ItemArtifactModel) Method
 
 Check if this has a specific Behavior
 
 ```csharp
-public static bool HasBehavior<T>(this BoostArtifactModel model)
+public static bool HasBehavior<T>(this ItemArtifactModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel).T'></a>
 
 `T`
 
 The Behavior you're checking for
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel')
+`model` [Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -808,28 +834,28 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel)'></a>
 
-## ArtifactModelBehaviorExt.HasBehavior<T>(this ItemArtifactModel) Method
+## ArtifactModelBehaviorExt.HasBehavior<T>(this MapArtifactModel) Method
 
 Check if this has a specific Behavior
 
 ```csharp
-public static bool HasBehavior<T>(this ItemArtifactModel model)
+public static bool HasBehavior<T>(this MapArtifactModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel).T'></a>
 
 `T`
 
 The Behavior you're checking for
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel')
+`model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -898,31 +924,28 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel)'></a>
 
-## ArtifactModelBehaviorExt.HasBehavior<T>(this MapArtifactModel) Method
+## ArtifactModelBehaviorExt.RemoveBehavior<T>(this BoostArtifactModel) Method
 
-Check if this has a specific Behavior
+Remove the first Behavior of Type T
 
 ```csharp
-public static bool HasBehavior<T>(this MapArtifactModel model)
+public static void RemoveBehavior<T>(this BoostArtifactModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel).T'></a>
 
 `T`
 
-The Behavior you're checking for
+The Behavior you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`model` [Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel')
 
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel,int)'></a>
 
@@ -1003,28 +1026,28 @@ public static void RemoveBehavior<T>(this BoostArtifactModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel,T).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior<T>(this BoostArtifactModel, T).T')
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel)'></a>
 
-## ArtifactModelBehaviorExt.RemoveBehavior<T>(this BoostArtifactModel) Method
+## ArtifactModelBehaviorExt.RemoveBehavior<T>(this ItemArtifactModel) Method
 
 Remove the first Behavior of Type T
 
 ```csharp
-public static void RemoveBehavior<T>(this BoostArtifactModel model)
+public static void RemoveBehavior<T>(this ItemArtifactModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel).T'></a>
 
 `T`
 
 The Behavior you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisBoostArtifactModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel')
+`model` [Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel')
 
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel,int)'></a>
 
@@ -1105,28 +1128,28 @@ public static void RemoveBehavior<T>(this ItemArtifactModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel,T).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior<T>(this ItemArtifactModel, T).T')
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel)'></a>
 
-## ArtifactModelBehaviorExt.RemoveBehavior<T>(this ItemArtifactModel) Method
+## ArtifactModelBehaviorExt.RemoveBehavior<T>(this MapArtifactModel) Method
 
 Remove the first Behavior of Type T
 
 ```csharp
-public static void RemoveBehavior<T>(this ItemArtifactModel model)
+public static void RemoveBehavior<T>(this MapArtifactModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel).T'></a>
 
 `T`
 
 The Behavior you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisItemArtifactModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel).model'></a>
 
-`model` [Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel')
+`model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
 
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel,int)'></a>
 
@@ -1206,29 +1229,6 @@ public static void RemoveBehavior<T>(this MapArtifactModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md#BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel,T).T 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior<T>(this MapArtifactModel, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel)'></a>
-
-## ArtifactModelBehaviorExt.RemoveBehavior<T>(this MapArtifactModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this MapArtifactModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehavior_T_(thisMapArtifactModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
 
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.RemoveBehaviors(thisBoostArtifactModel)'></a>
 

@@ -33,3 +33,25 @@ public static Il2CppStringArray AddTo(this Il2CppStringArray array, string itemT
 
 #### Returns
 [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppStringArrayExt.RemoveFrom(thisIl2CppStringArray,string)'></a>
+
+## Il2CppStringArrayExt.RemoveFrom(this Il2CppStringArray, string) Method
+
+Return this with an Item removed from it
+
+```csharp
+public static Il2CppStringArray RemoveFrom(this Il2CppStringArray array, string itemToRemove);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppStringArrayExt.RemoveFrom(thisIl2CppStringArray,string).array'></a>
+
+`array` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppStringArrayExt.RemoveFrom(thisIl2CppStringArray,string).itemToRemove'></a>
+
+`itemToRemove` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray')

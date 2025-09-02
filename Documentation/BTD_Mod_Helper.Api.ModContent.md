@@ -1369,6 +1369,24 @@ public static TowerSet GetTowerSet<T>()
 #### Returns
 [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
+
+## ModContent.HasMod(string) Method
+
+Returns whether a mod with the given name is installed
+
+```csharp
+public static bool HasMod(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModContent.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
 
 ## ModContent.HasMod(string, BloonsMod) Method
@@ -1391,24 +1409,6 @@ public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string)'></a>
-
-## ModContent.HasMod(string) Method
-
-Returns whether a mod with the given name is installed
-
-```csharp
-public static bool HasMod(string name);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.HasMod(string).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Api.ModContent.Load(BTD_Mod_Helper.Api.ModContent)'></a>
 
 ## ModContent.Load(ModContent) Method
@@ -1426,6 +1426,32 @@ private static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModCont
 
 #### Returns
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string)'></a>
+
+## ModContent.Localize(BloonsMod, string) Method
+
+Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
+the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
+
+```csharp
+public static string Localize(BTD_Mod_Helper.BloonsMod mod, string keyAndText);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string).mod'></a>
+
+`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+The mod
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string).keyAndText'></a>
+
+`keyAndText` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Localization key
 
 <a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string,string)'></a>
 
@@ -1461,25 +1487,19 @@ The default English text
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 The Localization key
 
-<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(string)'></a>
 
-## ModContent.Localize(BloonsMod, string) Method
+## ModContent.Localize(string) Method
 
 Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
 the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
 
 ```csharp
-public static string Localize(BTD_Mod_Helper.BloonsMod mod, string keyAndText);
+public string Localize(string keyAndText);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string).mod'></a>
-
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
-
-The mod
-
-<a name='BTD_Mod_Helper.Api.ModContent.Localize(BTD_Mod_Helper.BloonsMod,string).keyAndText'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.Localize(string).keyAndText'></a>
 
 `keyAndText` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1515,19 +1535,25 @@ The default English text
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 The Localization key
 
-<a name='BTD_Mod_Helper.Api.ModContent.Localize(string)'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string)'></a>
 
-## ModContent.Localize(string) Method
+## ModContent.Localize<T>(string) Method
 
 Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
 the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
 
 ```csharp
-public string Localize(string keyAndText);
+public static string Localize<T>(string keyAndText)
+    where T : BTD_Mod_Helper.BloonsMod;
 ```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string).T'></a>
+
+`T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.ModContent.Localize(string).keyAndText'></a>
+<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string).keyAndText'></a>
 
 `keyAndText` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1564,32 +1590,6 @@ The localization key
 `text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The default English text
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The Localization key
-
-<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string)'></a>
-
-## ModContent.Localize<T>(string) Method
-
-Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with  
-the built in language system. NK texts components will [Il2Cpp.NK_TextMeshProUGUI.AutoLocalize](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI.AutoLocalize 'Il2Cpp.NK_TextMeshProUGUI.AutoLocalize') your keys.
-
-```csharp
-public static string Localize<T>(string keyAndText)
-    where T : BTD_Mod_Helper.BloonsMod;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModContent.Localize_T_(string).keyAndText'></a>
-
-`keyAndText` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  

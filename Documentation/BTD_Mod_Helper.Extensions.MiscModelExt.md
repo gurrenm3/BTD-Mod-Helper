@@ -75,6 +75,28 @@ public static void ApplyOverlay<T>(this ProjectileBehaviorWithOverlayModel proje
 
 `projectileBehaviorWithOverlayModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorWithOverlayModel')
 
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.GetDamageMult(thisDamageModifierModel,Bloon)'></a>
+
+## MiscModelExt.GetDamageMult(this DamageModifierModel, Bloon) Method
+
+Gets the damageMultiplier field for a DamageModifierModel
+
+```csharp
+public static float GetDamageMult(this DamageModifierModel model, Bloon bloon);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.GetDamageMult(thisDamageModifierModel,Bloon).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.DamageModifierModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.DamageModifierModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.DamageModifierModel')
+
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.GetDamageMult(thisDamageModifierModel,Bloon).bloon'></a>
+
+`bloon` [Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')
+
+#### Returns
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='BTD_Mod_Helper.Extensions.MiscModelExt.UpdateOffset(thisParallelEmissionModel)'></a>
 
 ## MiscModelExt.UpdateOffset(this ParallelEmissionModel) Method

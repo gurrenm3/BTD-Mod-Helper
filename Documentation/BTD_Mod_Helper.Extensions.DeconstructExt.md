@@ -66,6 +66,66 @@ public static void Deconstruct(this Vector2 vector2, out float x, out float y);
 
 `y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T)'></a>
+
+## DeconstructExt.Deconstruct<T>(this T[], T, T) Method
+
+Deconstruct arrays
+
+```csharp
+public static void Deconstruct<T>(this T[] array, out T first, out T second);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).array'></a>
+
+`array` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).first'></a>
+
+`first` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).second'></a>
+
+`second` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T)'></a>
+
+## DeconstructExt.Deconstruct<T>(this T[], T, T, T) Method
+
+Deconstruct arrays
+
+```csharp
+public static void Deconstruct<T>(this T[] array, out T first, out T second, out T third);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).array'></a>
+
+`array` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).first'></a>
+
+`first` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).second'></a>
+
+`second` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).third'></a>
+
+`third` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')
+
 <a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T,T)'></a>
 
 ## DeconstructExt.Deconstruct<T>(this T[], T, T, T, T) Method
@@ -101,66 +161,6 @@ public static void Deconstruct<T>(this T[] array, out T first, out T second, out
 <a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T,T).fourth'></a>
 
 `fourth` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T)'></a>
-
-## DeconstructExt.Deconstruct<T>(this T[], T, T, T) Method
-
-Deconstruct arrays
-
-```csharp
-public static void Deconstruct<T>(this T[] array, out T first, out T second, out T third);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).array'></a>
-
-`array` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).first'></a>
-
-`first` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).second'></a>
-
-`second` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).third'></a>
-
-`third` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T)'></a>
-
-## DeconstructExt.Deconstruct<T>(this T[], T, T) Method
-
-Deconstruct arrays
-
-```csharp
-public static void Deconstruct<T>(this T[] array, out T first, out T second);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).array'></a>
-
-`array` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).first'></a>
-
-`first` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).second'></a>
-
-`second` [T](BTD_Mod_Helper.Extensions.DeconstructExt.md#BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T_(thisT[],T,T).T 'BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct<T>(this T[], T, T).T')
 
 <a name='BTD_Mod_Helper.Extensions.DeconstructExt.Deconstruct_T1,T2_(thisSystem.Collections.Generic.KeyValuePair_T1,T2_,T1,T2)'></a>
 

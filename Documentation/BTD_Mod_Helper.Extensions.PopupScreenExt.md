@@ -48,6 +48,21 @@ public static TMP_InputField GetTMP_InputField(this PopupScreen popupScreen);
 #### Returns
 [Il2CppTMPro.TMP_InputField](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TMP_InputField 'Il2CppTMPro.TMP_InputField')
 
+<a name='BTD_Mod_Helper.Extensions.PopupScreenExt.MakeTextScrollable(thisPopupScreen)'></a>
+
+## PopupScreenExt.MakeTextScrollable(this PopupScreen) Method
+
+Modifies the TMP InputField to be a scroll panel
+
+```csharp
+public static void MakeTextScrollable(this PopupScreen screen);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PopupScreenExt.MakeTextScrollable(thisPopupScreen).screen'></a>
+
+`screen` [Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen 'Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen')
+
 <a name='BTD_Mod_Helper.Extensions.PopupScreenExt.ModifyBodyText(thisPopupScreen,System.Action_NK_TextMeshProUGUI_)'></a>
 
 ## PopupScreenExt.ModifyBodyText(this PopupScreen, Action<NK_TextMeshProUGUI>) Method

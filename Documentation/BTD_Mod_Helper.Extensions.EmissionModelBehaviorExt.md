@@ -56,6 +56,32 @@ public static void AddBehavior<T>(this EmissionModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.AddBehavior_T_(thisEmissionModel,T).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.AddBehavior<T>(this EmissionModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel)'></a>
+
+## EmissionModelBehaviorExt.GetBehavior<T>(this EmissionModel) Method
+
+Return the first Behavior of type T, or null if there isn't one
+
+```csharp
+public static T GetBehavior<T>(this EmissionModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior<T>(this EmissionModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel,int)'></a>
 
 ## EmissionModelBehaviorExt.GetBehavior<T>(this EmissionModel, int) Method
@@ -116,32 +142,6 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel,string).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior<T>(this EmissionModel, string).T')
 
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel)'></a>
-
-## EmissionModelBehaviorExt.GetBehavior<T>(this EmissionModel) Method
-
-Return the first Behavior of type T, or null if there isn't one
-
-```csharp
-public static T GetBehavior<T>(this EmissionModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel).T'></a>
-
-`T`
-
-The Behavior you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior_T_(thisEmissionModel).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehavior<T>(this EmissionModel).T')
-
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehaviors_T_(thisEmissionModel)'></a>
 
 ## EmissionModelBehaviorExt.GetBehaviors<T>(this EmissionModel) Method
@@ -167,6 +167,32 @@ The Behavior you want
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehaviors_T_(thisEmissionModel).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.GetBehaviors<T>(this EmissionModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel)'></a>
+
+## EmissionModelBehaviorExt.HasBehavior<T>(this EmissionModel) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasBehavior<T>(this EmissionModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel,string,T)'></a>
 
@@ -232,31 +258,28 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel)'></a>
 
-## EmissionModelBehaviorExt.HasBehavior<T>(this EmissionModel) Method
+## EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel) Method
 
-Check if this has a specific Behavior
+Remove the first Behavior of Type T
 
 ```csharp
-public static bool HasBehavior<T>(this EmissionModel model)
+public static void RemoveBehavior<T>(this EmissionModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).T'></a>
 
 `T`
 
-The Behavior you're checking for
+The Behavior you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel,int)'></a>
 
@@ -336,29 +359,6 @@ public static void RemoveBehavior<T>(this EmissionModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel,T).T 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel)'></a>
-
-## EmissionModelBehaviorExt.RemoveBehavior<T>(this EmissionModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this EmissionModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehavior_T_(thisEmissionModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
 
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.RemoveBehaviors(thisEmissionModel)'></a>
 
