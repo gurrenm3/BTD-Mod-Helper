@@ -75,9 +75,8 @@ jobs:
           dotnet-version: 8.0.x
 
 
-      - name: Build
+      - name: Build Mod
         run: dotnet build -c BTD6_Release "${{ env.CSPROJ }}" -p:BloonsTD6="../BloonsTD6"
-
 
       - name: Upload Mod DLL
         uses: actions/upload-artifact@v4
@@ -85,19 +84,23 @@ jobs:
           name: ${{ env.PROJECT_NAME }}.dll
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.dll
 
-      - name: Upload Plugin DLL
-        uses: actions/upload-artifact@v4
-        with:
-          name: UpdaterPlugin.dll
-          path: ${{ env.BLOONSTD6 }}/Plugins/UpdaterPlugin.dll
-      
       - name: Upload Mod Documentation
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROJECT_NAME }}.xml
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.PROJECT_NAME }}.xml
-          
-          
+
+
+      - name: Build Plugin
+        run: dotnet build -c BTD6_Release "./UpdaterPlugin/UpdaterPlugin.csproj" -p:BloonsTD6="../BloonsTD6"
+
+      - name: Upload Plugin DLL
+        uses: actions/upload-artifact@v4
+        with:
+          name: UpdaterPlugin.dll
+          path: ${{ env.BLOONSTD6 }}/Plugins/UpdaterPlugin.dll
+
+
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
