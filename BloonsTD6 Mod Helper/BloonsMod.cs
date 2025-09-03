@@ -25,8 +25,6 @@ public abstract class BloonsMod : MelonMod, IModSettings
     internal readonly List<string> loadErrors = [];
     private List<ModContent> content;
 
-    private ModLoadTask loadContentTask;
-
     /// <summary>
     /// Lets the ModHelper control patching, allowing for individual patches to fail without the entire mod getting
     /// unloaded.
@@ -77,17 +75,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// </summary>
     public virtual bool UsesArtifactDependants => false;
 
-    internal string SettingsFilePath
-    {
-        get
-        {
-            var oldPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{Info.Name}.json");
-            var newPath = Path.Combine(ModHelper.ModSettingsDirectory, $"{this.GetAssembly().GetName().Name}.json");
-            return File.Exists(oldPath) ? oldPath : newPath;
-        }
-    }
-
-    internal ModLoadTask LoadContentTask => loadContentTask ??= new ModContentTask {mod = this};
+    internal ModLoadTask LoadContentTask => field ??= new ModContentTask {mod = this};
 
     /// <summary>
     /// The path that this mod would most likely be at in the Mod Sources folder
@@ -323,8 +311,8 @@ public abstract class BloonsMod : MelonMod, IModSettings
                 }
 
                 var addName = hook.HookType == HookTargetAttribute.EHookType.Prefix
-                                  ? "AddPrefix"
-                                  : "AddPostfix";
+                    ? "AddPrefix"
+                    : "AddPostfix";
                 var addMethod = hook.TargetType.GetMethod(addName, BindingFlags.Instance | BindingFlags.Public) ??
                                 throw new MissingMethodException(hook.TargetType.FullName, addName);
 

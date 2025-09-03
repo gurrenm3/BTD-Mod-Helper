@@ -9,8 +9,6 @@ public abstract class ModLoadTask : NamedModContent
 {
     private IEnumerator iEnumerator;
 
-    private float progress;
-
     /// <inheritdoc />
     public sealed override string DisplayNamePlural => base.DisplayNamePlural;
 
@@ -24,8 +22,8 @@ public abstract class ModLoadTask : NamedModContent
     /// </summary>
     public float Progress
     {
-        get => progress;
-        protected set => progress = Math.Clamp(value, 0, 1);
+        get;
+        protected set => field = Math.Clamp(value, 0, 1);
     }
 
     /// <summary>

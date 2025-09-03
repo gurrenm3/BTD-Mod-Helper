@@ -351,7 +351,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModUpdateButton.gameObject.SetActive(modSelected.UpdateAvailable);
 
         selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
-                                                       bloonsMod.ModSettings.Any());
+                                                       bloonsMod.ModSettings.Any() ||
+                                                       modSelected.IsUpdaterPlugin());
 
         if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite)
         {
@@ -427,20 +428,19 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             {
                 PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
                     ConfirmUpdateAllMods.Localize(),
-                    UpdateAllModsBody.Localize(), new Action(
-                        async () =>
+                    UpdateAllModsBody.Localize(), new Action(async () =>
+                    {
+                        foreach (var (data, panel) in modPanels
+                                     .Where(kvp => kvp.Key.UpdateAvailable))
                         {
-                            foreach (var (data, panel) in modPanels
-                                         .Where(kvp => kvp.Key.UpdateAvailable))
-                            {
-                                await ModHelperGithub.DownloadLatest(data, true, null, task => updateTask = task);
-                                panel.Refresh(data);
-                            }
+                            await ModHelperGithub.DownloadLatest(data, true, null, task => updateTask = task);
+                            panel.Refresh(data);
+                        }
 
-                            Refresh();
-                            PopupScreen.instance.SafelyQueue(popupScreen =>
-                                popupScreen.ShowOkPopup(ModUpdateSuccess.Localize()));
-                        }), "Yes", null, "No", Popup.TransitionAnim.Scale));
+                        Refresh();
+                        PopupScreen.instance.SafelyQueue(popupScreen =>
+                            popupScreen.ShowOkPopup(ModUpdateSuccess.Localize()));
+                    }), "Yes", null, "No", Popup.TransitionAnim.Scale));
             })
         );
         updateAllButton.SetActive(false);
@@ -448,58 +448,55 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         var disableAll = topRow.ScrollContent.AddButton(
             new Info("DisableAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
-            VanillaSprites.RedBtnLong, new Action(
-                () =>
+            VanillaSprites.RedBtnLong, new Action(() =>
+            {
+                foreach (var modHelperData in ModHelperData.All.Where(data =>
+                             data.Enabled && data.Mod is not MelonMain))
                 {
-                    foreach (var modHelperData in ModHelperData.All.Where(data =>
-                                 data.Enabled && data.Mod is not MelonMain))
-                    {
-                        modHelperData.MoveToDisabledModsFolder(true);
-                    }
-                    SortMods(currentSort);
-                    MenuManager.instance.buttonClickSound.Play("ClickSounds");
-                }));
+                    modHelperData.MoveToDisabledFolder(true);
+                }
+                SortMods(currentSort);
+                MenuManager.instance.buttonClickSound.Play("ClickSounds");
+            }));
         disableAll.AddText(new Info("Text", InfoPreset.FillParent), DisableAll, FontSmall);
 
         var enableAll = topRow.ScrollContent.AddButton(
             new Info("EnableAll", height: ModNameHeight, width: ModNameHeight * ModHelperButton.LongBtnRatio),
-            VanillaSprites.GreenBtnLong, new Action(
-                () =>
+            VanillaSprites.GreenBtnLong, new Action(() =>
+            {
+                var any = false;
+                foreach (var modHelperData in ModHelperData.All.Where(data =>
+                             !data.Enabled && data.Mod is not MelonMain))
                 {
-                    var any = false;
-                    foreach (var modHelperData in ModHelperData.All.Where(data =>
-                                 !data.Enabled && data.Mod is not MelonMain))
-                    {
-                        modHelperData.MoveToEnabledModsFolder();
-                        any = true;
-                    }
-                    if (any)
-                    {
-                        SortMods(currentSort);
-                        MenuManager.instance.buttonClickSound.Play("ClickSounds");
-                    }
-                }));
+                    modHelperData.MoveToEnabledFolder();
+                    any = true;
+                }
+                if (any)
+                {
+                    SortMods(currentSort);
+                    MenuManager.instance.buttonClickSound.Play("ClickSounds");
+                }
+            }));
         enableAll.AddText(new Info("Text", InfoPreset.FillParent), EnableAll, FontSmall);
 
         topRow.ScrollContent.AddButton(new Info("ResetAll", ModNameHeight), VanillaSprites.RestartBtn,
-            new Action(
-                () =>
+            new Action(() =>
+            {
+                foreach (var modHelperData in ModHelperData.All.Where(data => data.Mod is not MelonMain))
                 {
-                    foreach (var modHelperData in ModHelperData.All.Where(data => data.Mod is not MelonMain))
+                    switch (modHelperData.Enabled)
                     {
-                        switch (modHelperData.Enabled)
-                        {
-                            case true when modHelperData.Mod is null:
-                                modHelperData.MoveToDisabledModsFolder();
-                                break;
-                            case false when modHelperData.Mod is not null:
-                                modHelperData.MoveToEnabledModsFolder();
-                                break;
-                        }
+                        case true when modHelperData.Mod is null:
+                            modHelperData.MoveToDisabledFolder();
+                            break;
+                        case false when modHelperData.Mod is not null:
+                            modHelperData.MoveToEnabledFolder();
+                            break;
                     }
-                    SortMods(currentSort);
-                    MenuManager.instance.buttonClickSound.Play("ClickSounds");
-                }));
+                }
+                SortMods(currentSort);
+                MenuManager.instance.buttonClickSound.Play("ClickSounds");
+            }));
 
         modsList = leftMenu.AddScrollPanel(new Info("ModListScroll", InfoPreset.Flex), RectTransform.Axis.Vertical,
             VanillaSprites.BlueInsertPanelRound, Padding, Padding);
@@ -637,6 +634,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Width = -Padding,
             Height = -Padding
         }, Version);
+        selectedModVersion.Text.fontStyle = FontStyles.SmallCaps;
         selectedModVersion.Text.enableAutoSizing = true;
 
         selectedModLocalization = secondRow.AddButton(new Info("LocalizationButton", OtherHeight),
@@ -712,7 +710,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModSettingsButton = buttonsRow.AddButton(
             new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
-            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod as BloonsMod)));
+            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod)));
         selectedModSettingsButton.AddImage(
             new Info("Gear", ModNameHeight, ModNameHeight), VanillaSprites.SettingsIcon
         );
@@ -740,22 +738,30 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     internal static void DisableSelectedMod()
     {
-        if (selectedMod.MoveToDisabledModsFolder())
+        if (!selectedMod.MoveToDisabledFolder()) return;
+
+        SetSelectedMod(selectedMod);
+        SortMods(currentSort);
+        MenuManager.instance.buttonClickSound.Play("ClickSounds");
+        selectedMod.WarningsFromDisabling(EnableSelectedMod);
+
+        if (selectedMod.IsUpdaterPlugin())
         {
-            SetSelectedMod(selectedMod);
-            SortMods(currentSort);
-            MenuManager.instance.buttonClickSound.Play("ClickSounds");
-            selectedMod.WarningsFromDisabling(EnableSelectedMod);
+            MelonMain.AutoUpdate.SetValue(false);
         }
     }
 
     internal static void EnableSelectedMod()
     {
-        if (selectedMod.MoveToEnabledModsFolder())
+        if (!selectedMod.MoveToEnabledFolder()) return;
+
+        SetSelectedMod(selectedMod);
+        SortMods(currentSort);
+        MenuManager.instance.buttonClickSound.Play("ClickSounds");
+
+        if (selectedMod.IsUpdaterPlugin())
         {
-            SetSelectedMod(selectedMod);
-            SortMods(currentSort);
-            MenuManager.instance.buttonClickSound.Play("ClickSounds");
+            MelonMain.AutoUpdate.SetValue(true);
         }
     }
 }

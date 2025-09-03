@@ -11,6 +11,5 @@ internal class MainMenu_Open
         SessionData.Reset();
         Animations.Load();
         Fonts.Load();
-        ModHelper.PerformHook(mod => mod.OnMainMenu());
     }
 }

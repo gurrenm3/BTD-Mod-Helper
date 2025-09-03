@@ -4,9 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.Internal;
 using Semver;
 using UnityEngine;
+
 namespace BTD_Mod_Helper.Api.Data;
 
 /// <summary>
@@ -36,10 +38,6 @@ internal partial class ModHelperData
 
     private Sprite icon;
 
-    public ModHelperData()
-    {
-    }
-
     public ModHelperData(MelonBase mod)
     {
         Mod = mod;
@@ -49,27 +47,14 @@ internal partial class ModHelperData
         FilePath = mod.GetAssembly().Location;
 
         var data = mod is MelonMain
-                       ? typeof(ModHelper)
-                       : AccessTools.GetTypesFromAssembly(mod.GetAssembly())
-                           .FirstOrDefault(type => type.Name == nameof(ModHelperData));
+            ? typeof(ModHelper)
+            : AccessTools.GetTypesFromAssembly(mod.GetAssembly())
+                .FirstOrDefault(type =>
+                    type.Name == (this.IsUpdaterPlugin() ? nameof(ModHelper) : nameof(ModHelperData)));
 
         if (data != null)
         {
-            foreach (var fieldInfo in data
-                         .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static)
-                         .Where(info => info is {IsLiteral: true, IsInitOnly: false} && Setters.ContainsKey(info.Name)))
-            {
-                var rawConstantValue = fieldInfo.GetRawConstantValue()!;
-                try
-                {
-                    Setters[fieldInfo.Name].Invoke(this, [rawConstantValue]);
-                }
-                catch (Exception)
-                {
-                    ModHelper.Warning(
-                        $"The {fieldInfo.Name} of {mod.Info.Name}'s ModHelperData has incorrect type {rawConstantValue.GetType().Name}");
-                }
-            }
+            ReadValuesFromType(data);
         }
         else if (mod.GetAssembly().TryGetEmbeddedResource(ModHelperDataJson, out var jsonStream))
         {
@@ -101,14 +86,12 @@ internal partial class ModHelperData
         // ReSharper disable once ConstantNullCoalescingCondition
         var iconPath = Icon ?? DefaultIcon;
         var assemblyPath = "." + Path.GetFileName(iconPath);
-        var resource = Array.Find(mod.GetAssembly()
-                .GetManifestResourceNames(),
-            s => s.EndsWith(assemblyPath));
+        var resource = Array.Find(mod.GetAssembly().GetManifestResourceNames(), s => s.EndsWith(assemblyPath));
         if (resource != null)
         {
             IconBytes = mod.GetAssembly().GetManifestResourceStream(resource)?.GetByteArray();
         }
-        else
+        else if (!this.IsUpdaterPlugin())
         {
             HasNoIcon = true;
         }
@@ -119,24 +102,6 @@ internal partial class ModHelperData
 
     internal byte[] IconBytes { get; private set; }
     internal bool HasNoIcon { get; private set; }
-
-    // These public properties are the serialized ones
-    public string Version { get; protected set; }
-    public string Name { get; protected set; }
-    public string Description { get; protected set; }
-    public string Icon { get; protected set; }
-    public string DllName { get; protected set; }
-    public string RepoName { get; protected set; }
-    public string RepoOwner { get; protected set; }
-    public bool ManualDownload { get; protected set; }
-    public string ZipName { get; protected set; }
-    public string Author { get; protected set; }
-    public string SubPath { get; protected set; }
-    public bool SquareIcon { get; protected set; }
-    public string ExtraTopics { get; protected set; }
-    public string WorksOnVersion { get; protected set; }
-    public string Dependencies { get; protected set; }
-    public bool Plugin { get; protected set; }
 
     /// <summary>
     /// The currently active mod that this is associated with, if any
@@ -155,8 +120,12 @@ internal partial class ModHelperData
     /// or the data Version matches the repo's version and not the current version
     /// </summary>
     internal bool RestartRequired =>
-        Enabled == (Mod == null) ||
-        Mod != null && Version != null && Version == RepoVersion && IsUpdate(Mod.Info.Version, Version, RepoWorksOnVersion);
+        !this.IsUpdaterPlugin() &&
+        (Enabled == (Mod == null) ||
+         Mod != null &&
+         Version != null &&
+         Version == RepoVersion &&
+         IsUpdate(Mod.Info.Version, Version, RepoWorksOnVersion));
 
     // Values to be displayed in the GUI
     internal string DisplayName => Name.NullIfEmpty() ?? Mod?.Info.Name.NullIfEmpty() ?? RepoName ?? "No Name Provided";
@@ -208,10 +177,15 @@ internal partial class ModHelperData
             return icon;
         }
 
+        if (this.IsUpdaterPlugin())
+        {
+            return icon = ResourceHandler.GetSprite("BloonsTD6 Mod Helper-DownloadBtn").PadSpriteToScale(.7f);
+        }
+
         if (IconBytes != null)
         {
             var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -1};
-            ImageConversion.LoadImage(texture, IconBytes);
+            texture.LoadImage(IconBytes);
             var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
                 new Vector2(0.5f, 0.5f), 10f);
             sprite.name = Name;
@@ -221,12 +195,6 @@ internal partial class ModHelperData
 
         return null;
     }
-
-    public void SetVersion(string version)
-    {
-        Version = version;
-    }
-
 
     public static void LoadAll()
     {
@@ -265,10 +233,10 @@ internal partial class ModHelperData
         }
 
 
-        Task.Run(LoadDisabledMods);
+        LoadDisabledMods();
     }
 
-    private static async Task LoadDisabledMods()
+    private static void LoadDisabledMods()
     {
         var disabledMods = new DirectoryInfo(ModHelper.DisabledModsDirectory);
         if (disabledMods.Exists)
@@ -288,8 +256,7 @@ internal partial class ModHelperData
 
                 try
                 {
-                    using var fs = new StreamReader(dataFile);
-                    var contents = await fs.ReadToEndAsync();
+                    var contents = File.ReadAllText(dataFile);
                     var data = new ModHelperData();
                     data.ReadValuesFromJson(contents);
 

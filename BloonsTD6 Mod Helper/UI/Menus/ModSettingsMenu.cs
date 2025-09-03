@@ -2,6 +2,7 @@
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Unity.UI_New.Settings;
@@ -23,7 +24,7 @@ public class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     /// <summary>
     /// The most recent mod with opened settings
     /// </summary>
-    public static BloonsMod BloonsMod { get; private set; }
+    public static MelonBase Melon { get; private set; }
 
     /// <inheritdoc />
     public override bool OnMenuOpened(Object data)
@@ -32,7 +33,7 @@ public class ModSettingsMenu : ModGameMenu<HotkeysScreen>
         gameObject.DestroyAllChildren();
         GameMenu.saved = true;
 
-        CommonForegroundHeader.SetText(BloonsMod.Info.Name);
+        CommonForegroundHeader.SetText(Melon.Info.Name);
 
         scrollPanel = gameObject.AddModHelperScrollPanel(new Info("ScrollPanel", InfoPreset.FillParent),
             RectTransform.Axis.Vertical, null, 150, 300);
@@ -51,7 +52,7 @@ public class ModSettingsMenu : ModGameMenu<HotkeysScreen>
 
     internal IEnumerator CreateMenuContent()
     {
-        foreach (var (category, modSettings) in BloonsMod.ModSettings.Values
+        foreach (var (category, modSettings) in Melon.GetModSettings().Values
                      .GroupBy(setting => setting.category)
                      .OrderBy(kvp => kvp.Key?.order ?? 0))
         {
@@ -105,8 +106,9 @@ public class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     public override void OnMenuClosed()
     {
         animator?.Play("PopupSlideOut");
-        ModSettingsHandler.SaveModSettings(BloonsMod);
-        if (BloonsMod is MelonMain && !ModHelper.IsNet6)
+        ModSettingsHandler.SaveModSettings(Melon);
+
+        if (Melon is MelonMain && !ModHelper.IsNet6)
         {
             ModHelperHttp.UpdateSettings();
         }
@@ -115,10 +117,9 @@ public class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     /// <summary>
     /// Opens the Mod Settings for a specific mod
     /// </summary>
-    /// <param name="mod"></param>
-    public static void Open(BloonsMod mod)
+    public static void Open(MelonBase melon)
     {
-        BloonsMod = mod;
+        Melon = melon;
         Open<ModSettingsMenu>();
     }
 }

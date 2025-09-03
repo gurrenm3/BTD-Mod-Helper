@@ -5,16 +5,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Data;
-using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
-using UnityEngine;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModHelperGithub
@@ -77,53 +75,78 @@ internal static class ModHelperGithub
     public static bool ModIsBroken(this ModHelperData data) =>
         !SemVersion.TryParse(data.WorksOnVersion, out var semver) || semver.Major < 34;
 
+    internal static Task populatingMods;
+
+    public static bool FullyPopulated { get; private set; }
+
     public static void Init()
     {
         Client = new GitHubClient(new ProductHeaderValue(ProductName));
     }
 
-    public static async Task PopulateMods()
+    public static async Task PopulateMods(bool localOnly)
     {
-        var page = 1;
-        var start = DateTime.Now;
-
-        // Start initial GitHub searches
-        var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-            {PerPage = 100, Page = page++});
-        var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
-        var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
-
-        // First, wait for the monorepo search and then kick off the loading tasks
-        var monoRepoTasks = (await monoRepoSearchTask).Items
-            .Select(ModHelperData.LoadFromMonoRepo)
-            .ToArray();
-
-        // Finish getting all normal mods, processing multiple pages if needed
-        var mods = new List<ModHelperData>();
-        var searchResult = await repoSearchTask;
-        while (searchResult.TotalCount > mods.Count && searchResult.Items.Any())
+        Mods.Clear();
+        try
         {
-            mods.AddRange(searchResult.Items
-                .OrderBy(repo => repo.CreatedAt)
-                .Select(repo => new ModHelperData(repo))
-                .Append(new ModHelperData(await modHelperRepoSearchTask)));
+            var page = 1;
+            var start = DateTime.Now;
 
-            searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-                               {PerPage = 100, Page = page++});
+            // Finish getting all normal mods, processing multiple pages if needed
+            var mods = new List<ModHelperData>();
+
+            if (localOnly)
+            {
+                mods.AddRange(ModHelperData.All
+                    .Where(data => !string.IsNullOrEmpty(data.RepoOwner) && !string.IsNullOrEmpty(data.RepoName))
+                    .Select(data => new ModHelperData(data)));
+            }
+            else
+            {
+                // Start initial GitHub searches
+                var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
+                    {PerPage = 100, Page = page++});
+                var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
+                var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
+
+                // First, wait for the monorepo search and then kick off the loading tasks
+                var monoRepoTasks = (await monoRepoSearchTask).Items
+                    .Select(ModHelperData.LoadFromMonoRepo)
+                    .ToArray();
+
+                var searchResult = await repoSearchTask;
+                while (searchResult.TotalCount > mods.Count && searchResult.Items.Any())
+                {
+                    mods.AddRange(searchResult.Items
+                        .OrderBy(repo => repo.CreatedAt)
+                        .Select(repo => new ModHelperData(repo))
+                        .Append(new ModHelperData(await modHelperRepoSearchTask)));
+
+                    searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
+                        {PerPage = 100, Page = page++});
+                }
+
+                // Finish getting monorepo mods
+                mods.AddRange((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d));
+            }
+
+            // Load all the ModHelperData for the retrieved mods
+            Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync().ContinueWith(data.FinalizeRepoData))).Wait();
+            Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
+
+            var time = DateTime.Now - start;
+            ModHelper.Msg(
+                $"Finished getting mods from github in background, found {Mods.Count} mods over {time.TotalSeconds:F1} seconds");
+
+            FullyPopulated = !localOnly;
+
+            UpdateRateLimit();
         }
-
-        // Finish getting monorepo mods
-        mods.AddRange((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d));
-
-        // Load all the ModHelperData for the retrieved mods
-        Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync())).Wait();
-        Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
-
-        var time = DateTime.Now - start;
-        ModHelper.Msg(
-            $"Finished getting mods from github in background, found {Mods.Count} mods over {time.TotalSeconds:F1} seconds");
-
-        UpdateRateLimit();
+        catch (Exception e)
+        {
+            ModHelper.Warning("Error while populating mods");
+            ModHelper.Warning(e);
+        }
     }
 
     public static async Task GetVerifiedModders()
@@ -235,8 +258,8 @@ internal static class ModHelperGithub
                 screen.ShowPopup(PopupScreen.Placement.menuCenter,
                     $"{DoYouWantToDownload.Localize()}\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                     ParseReleaseMessage(mod.SubPath == null
-                                            ? latestRelease!.Body
-                                            : latestCommit!.Commit.Message),
+                        ? latestRelease!.Body
+                        : latestCommit!.Commit.Message),
                     new Action(async () =>
                     {
                         var downloadTask = Download(mod, filePathCallback, latestRelease, !dependencies.Any());
@@ -267,18 +290,7 @@ internal static class ModHelperGithub
                             });
                         }
                     }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
-
-                screen.ModifyBodyText(field =>
-                {
-                    var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
-                        InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
-                    scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
-
-                    var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
-                    newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
-
-                    field.Destroy();
-                });
+                screen.MakeTextScrollable();
             });
         }
 
@@ -295,12 +307,12 @@ internal static class ModHelperGithub
         try
         {
             var asset = mod.SubPath == null
-                            ? latestRelease!.Assets.FirstOrDefault(asset =>
-                                  asset.Name == mod.DllName || asset.Name == mod.ZipName || asset.Name == mod.Mod?.FileName()
-                              ) ??
-                              latestRelease.Assets[0]
-                            : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
-                                DateTimeOffset.Now, mod.GetContentURL(mod.ZipName ?? mod.DllName), null);
+                ? latestRelease!.Assets.FirstOrDefault(asset =>
+                      asset.Name == mod.DllName || asset.Name == mod.ZipName || asset.Name == mod.Mod?.FileName()
+                  ) ??
+                  latestRelease.Assets[0]
+                : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
+                    DateTimeOffset.Now, mod.GetContentURL(mod.ZipName ?? mod.DllName), null);
             var resultFile = await DownloadAsset(mod, asset, showPopup);
             if (resultFile != null)
             {
@@ -415,7 +427,7 @@ internal static class ModHelperGithub
                     PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(message.Replace(",", "\n")));
                 }
 
-                mod.SetVersion(mod.RepoVersion!);
+                mod.Version = mod.RepoVersion;
                 return downloadFilePath;
             }
         }

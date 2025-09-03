@@ -55,6 +55,19 @@ public string displayName;
 #### Field Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.getIcon'></a>
+
+## ModSetting.getIcon Field
+
+Function to retrieve the icon guid at the time the setting loads
+
+```csharp
+public Func<string> getIcon;
+```
+
+#### Field Value
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSetting.icon'></a>
 
 ## ModSetting.icon Field

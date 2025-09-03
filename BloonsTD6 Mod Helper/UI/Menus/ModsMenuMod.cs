@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppTMPro;
 using MelonLoader.InternalUtils;
 using UnityEngine;
 using UnityEngine.Events;
@@ -50,8 +51,10 @@ internal class ModsMenuMod : ModHelperComponent
         panel.AddText(new Info("Name", ModsMenu.ModNameWidth, ModsMenu.ModNameHeight), "Name",
             ModsMenu.FontMedium);
 
-        panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
+        var version = panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f,
+            ModsMenu.ModNameHeight,
             new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
+        version.Text.fontStyle = FontStyles.SmallCaps;
 
         panel.AddButton(new Info("Update", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
             new Vector2(1, 1)), VanillaSprites.UpgradeBtn, null);
@@ -104,7 +107,7 @@ internal static class ModsMenuModExt
         mod.Version.SetText("v" + modHelperData.Version);
         // ReSharper disable once AsyncVoidLambda
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));
-        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open((BloonsMod) melonMod!));
+        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open(melonMod));
 
         mod.Settings.SetActive(false);
         mod.Warning.SetActive(false);
@@ -122,10 +125,16 @@ internal static class ModsMenuModExt
                 mod.Warning.Button.SetOnClick(() =>
                 {
                     PopupScreen.instance.SafelyQueue(screen =>
-                        screen.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n")));
+                    {
+                        screen.ShowOkPopup(bloonsMod.loadErrors.Join(null, "\n"));
+                        screen.MakeTextScrollable();
+                    });
                 });
             }
-
+        }
+        else if (modHelperData.IsUpdaterPlugin())
+        {
+            mod.Settings.SetActive(true);
         }
 
         mod.Hash.SetText(melonMod?.MelonAssembly?.Hash ?? "");
@@ -143,11 +152,11 @@ internal static class ModsMenuModExt
             switch (modHelperData.Enabled)
             {
                 case false:
-                    modHelperData.MoveToEnabledModsFolder();
+                    modHelperData.MoveToEnabledFolder();
                     break;
                 case true:
-                    modHelperData.MoveToDisabledModsFolder();
-                    modHelperData.WarningsFromDisabling(() => modHelperData.MoveToEnabledModsFolder());
+                    modHelperData.MoveToDisabledFolder();
+                    modHelperData.WarningsFromDisabling(() => modHelperData.MoveToEnabledFolder());
                     break;
             }
             mod.Refresh(modHelperData);
@@ -164,7 +173,7 @@ internal static class ModsMenuModExt
             ? Color.red
             : Color.white;
         mod.Version.SetText("v" + modHelperData.Version);
-        
+
         mod.Icon.SetActive(!modHelperData.HasNoIcon);
         mod.Icon.RectTransform.sizeDelta = modHelperData.SquareIcon
             ? new Vector2(ModsMenu.ModPanelHeight - 4, ModsMenu.ModPanelHeight - 4)

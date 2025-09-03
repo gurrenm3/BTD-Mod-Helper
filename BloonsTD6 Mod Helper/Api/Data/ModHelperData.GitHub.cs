@@ -7,16 +7,10 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Semver;
-using Application = UnityEngine.Application;
 namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
 {
-    private const string ModHelperDataCs = "ModHelperData.cs";
-    private const string ModHelperDataJson = "ModHelperData.json";
-    private const string ModHelperDataTxt = "ModHelperData.txt";
-    private const string ModHelperModsJson = "ModHelperMods.json";
-
     private const string DescriptionBranchRegex = "Mod\\s+Browser\\s+Branch\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/]+)\"";
     private const string DescriptionDataPathRegex = "Mod\\s*Helper\\s*Data\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/ ]+)\"";
     private float splittingStarsAmongst = 1;
@@ -53,8 +47,6 @@ internal partial class ModHelperData
     internal string RepoVersion { get; private set; }
     internal Release LatestRelease { get; private set; }
     internal GitHubCommit LatestCommit { get; private set; }
-    internal string Branch { get; private set; }
-    internal string DataPath { get; }
     internal List<string> Topics { get; private set; }
     internal string RepoWorksOnVersion { get; private set; }
 
@@ -113,148 +105,6 @@ internal partial class ModHelperData
 
     internal string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
 
-    internal string GetContentURL(string name)
-    {
-        var path = Uri.EscapeDataString(name);
-        if (SubPath != null && !(SubPath.EndsWith(".json") || SubPath.EndsWith(".cs") || SubPath.EndsWith(".txt")))
-        {
-            path = $"{SubPath}/{path}";
-        }
-
-        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Branch}/{path}";
-    }
-
-    public async Task LoadDataFromRepoAsync()
-    {
-        try
-        {
-            string data = null;
-
-            if (RepoName == ModHelper.RepoName)
-            {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL("BloonsTD6 Mod Helper/ModHelper.cs"));
-            }
-            else if (SubPath != null &&
-                     (SubPath.EndsWith(".txt") || SubPath.EndsWith(".json") || SubPath.EndsWith(".cs")))
-            {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(SubPath));
-            }
-            else if (DataPath != null)
-            {
-                data = await ModHelperHttp.Client.GetStringAsync(GetContentURL(DataPath));
-            }
-
-            try
-            {
-                data ??= await WhenFirstSucceededOrAllFailed([
-                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataCs)),
-                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataJson)),
-                    ModHelperHttp.Client.GetStringAsync(GetContentURL(ModHelperDataTxt))
-                ]);
-            }
-            catch (Exception e)
-            {
-                if (RepoOwner == MelonMain.GitHubUsername)
-                {
-                    ModHelper.Warning(e);
-                }
-            }
-
-            if (data == null)
-            {
-                if (RepoOwner == MelonMain.GitHubUsername)
-                {
-                    ModHelper.Warning(
-                        $"Did not find any mod data for {Repository.FullName} {SubPath} branch {Branch} ");
-                }
-
-                return;
-            }
-
-            var json = data.TrimStart().StartsWith('{');
-
-            if (json) ReadValuesFromJson(data, false);
-            else ReadValuesFromString(data, false);
-
-
-            if (RequiredRepoDataError != null)
-            {
-                if (RepoOwner == MelonMain.GitHubUsername)
-                {
-                    ModHelper.Warning(
-                        $"{Repository.FullName} {SubPath} did not have all required ModHelperData: {RequiredRepoDataError}");
-                }
-                return;
-            }
-
-            RepoDataSuccess = true;
-            RepoVersion = Version;
-            RepoWorksOnVersion = WorksOnVersion;
-
-            if (RepoOwner == MelonMain.GitHubUsername)
-            {
-                ModHelper.Log(
-                    $"Successfully found mod {Repository.FullName}{(string.IsNullOrEmpty(SubPath) ? "" : "/")}{SubPath} for browser");
-            }
-
-            if (ModInstalledLocally(out var modHelperData))
-            {
-                modHelperData.Repository = Repository;
-                modHelperData.RepoVersion = Version;
-                modHelperData.Branch = Branch;
-                modHelperData.RepoDataSuccess = true;
-                modHelperData.RepoWorksOnVersion = WorksOnVersion;
-            }
-
-            if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
-            {
-                ManualDownload = true;
-
-                if (RepoOwner == MelonMain.GitHubUsername)
-                {
-                    ModHelper.Warning(
-                        $"Overriding {Repository.FullName} {SubPath} to be ManualDownload because it doesn't specify the DllName alongside the ZipName");
-                }
-            }
-
-            Topics = Repository.Topics.ToList();
-            if (!string.IsNullOrEmpty(ExtraTopics))
-            {
-                Topics.AddRange(ExtraTopics.Split(','));
-            }
-
-            if (RepoName == "BTD6EpicGamesModCompat")
-            {
-                Plugin = true;
-            }
-        }
-        catch (Exception e)
-        {
-            if (RepoOwner == MelonMain.GitHubUsername || RepoName == ModHelper.RepoName)
-            {
-                ModHelper.Warning($"Failed to get ModHelperData for {Repository.FullName}");
-                ModHelper.Warning(e);
-            }
-        }
-    }
-
-    private static async Task<T> WhenFirstSucceededOrAllFailed<T>(IEnumerable<Task<T>> tasks)
-    {
-        var taskList = new List<Task<T>>(tasks);
-        while (taskList.Count > 0)
-        {
-            var firstCompleted = await Task.WhenAny(taskList).ConfigureAwait(false);
-            if (firstCompleted.Status == TaskStatus.RanToCompletion)
-            {
-                return firstCompleted.Result;
-            }
-
-            taskList.Remove(firstCompleted);
-        }
-
-        return default;
-    }
-
     public async Task<Release> GetLatestRelease()
     {
         try
@@ -298,24 +148,6 @@ internal partial class ModHelperData
         {
             ModHelperGithub.UpdateRateLimit();
         }
-    }
-
-    public static bool IsUpdate(string currentVersion, string latestVersion, string latestWorksOnVersion = null)
-    {
-        if (!SemVersion.TryParse(latestVersion, out var latestSemver) ||
-            !SemVersion.TryParse(currentVersion, out var currentSemver))
-        {
-            return false;
-        }
-
-        if (SemVersion.TryParse(latestWorksOnVersion, out var worksOnVersion) &&
-            SemVersion.TryParse(Application.version, out var gameVersion) &&
-            gameVersion < worksOnVersion)
-        {
-            return false;
-        }
-
-        return latestSemver > currentSemver;
     }
 
 
@@ -431,5 +263,64 @@ internal partial class ModHelperData
         }
 
         return list;
+    }
+
+    public void FinalizeRepoData(Task<string> loadTask)
+    {
+        var data = loadTask.Result;
+        if (!loadTask.IsCompletedSuccessfully || string.IsNullOrEmpty(data)) return;
+
+        ReadValues(data, false);
+
+        if (RequiredRepoDataError != null)
+        {
+            if (RepoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Warning(
+                    $"{RepoOwner}/{RepoName} {SubPath} did not have all required ModHelperData: {RequiredRepoDataError}");
+            }
+            return;
+        }
+
+        RepoDataSuccess = true;
+        RepoVersion = Version;
+        RepoWorksOnVersion = WorksOnVersion;
+
+        if (RepoOwner == MelonMain.GitHubUsername)
+        {
+            ModHelper.Log(
+                $"Successfully found mod {RepoOwner}/{RepoName}{(string.IsNullOrEmpty(SubPath) ? "" : "/")}{SubPath} for browser");
+        }
+
+        if (ModInstalledLocally(out var modHelperData))
+        {
+            modHelperData.Repository = Repository;
+            modHelperData.RepoVersion = Version;
+            modHelperData.Branch = Branch;
+            modHelperData.RepoDataSuccess = true;
+            modHelperData.RepoWorksOnVersion = WorksOnVersion;
+            modHelperData.ModHelperDataUrl = ModHelperDataUrl;
+        }
+
+        if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
+        {
+            ManualDownload = true;
+
+            if (RepoOwner == MelonMain.GitHubUsername)
+            {
+                ModHelper.Warning(
+                    $"Overriding {RepoOwner}/{RepoName} {SubPath} to be ManualDownload because it doesn't specify the DllName alongside the ZipName");
+            }
+        }
+
+        if (Repository != null)
+        {
+            Topics = Repository.Topics.ToList();
+        }
+
+        if (!string.IsNullOrEmpty(ExtraTopics))
+        {
+            Topics.AddRange(ExtraTopics.Split(','));
+        }
     }
 }

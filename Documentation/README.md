@@ -11,7 +11,7 @@
 | :--- | :--- |
 | [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod') | Expanded version of MelonMod to suit the needs of BTD Mod Helper |
 | [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod') | Extend this Class instead of MelonMod to gain access to dozens of easy to use built-in hooks |
-| [ModHelper](BTD_Mod_Helper.ModHelper.md 'BTD_Mod_Helper.ModHelper') | Catch-all class for non-extension static methods |
+| [ModHelper](BTD_Mod_Helper.ModHelper.md 'BTD_Mod_Helper.ModHelper') | Catch-all class for non-extension static methods and accessors, as well as the ModHelperData for this mod |
 
 <a name='BTD_Mod_Helper.Api'></a>
 
@@ -35,6 +35,15 @@
 | Interfaces | |
 | :--- | :--- |
 | [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent') | Dummy interface to unite ModContent and BloonsTD6Mod |
+
+<a name='BTD_Mod_Helper.Api.Attributes'></a>
+
+## BTD_Mod_Helper.Api.Attributes Namespace
+
+| Classes | |
+| :--- | :--- |
+| [DontLoadAttribute](BTD_Mod_Helper.Api.Attributes.DontLoadAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontLoadAttribute') | Signals that this ModContent should not be automatically loaded by Mod Helper.<br/>Will also skip the Registration phase |
+| [DontRegisterAttribute](BTD_Mod_Helper.Api.Attributes.DontRegisterAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontRegisterAttribute') | Signals that this ModContent should not be automatically registered by Mod Helper.<br/>Use [DontLoadAttribute](BTD_Mod_Helper.Api.Attributes.DontLoadAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontLoadAttribute') for skipping the loading phase as well |
 
 <a name='BTD_Mod_Helper.Api.Audio'></a>
 
@@ -377,6 +386,7 @@
 | [GameObjectExt](BTD_Mod_Helper.Extensions.GameObjectExt.md 'BTD_Mod_Helper.Extensions.GameObjectExt') | Extensions for GameObjects |
 | [GrowModelExt](BTD_Mod_Helper.Extensions.GrowModelExt.md 'BTD_Mod_Helper.Extensions.GrowModelExt') | Extension methods for [Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel'). |
 | [HarmonyExt](BTD_Mod_Helper.Extensions.HarmonyExt.md 'BTD_Mod_Helper.Extensions.HarmonyExt') | Extensions for Harmony stuff |
+| [HttpClientExtensions](BTD_Mod_Helper.Extensions.HttpClientExtensions.md 'BTD_Mod_Helper.Extensions.HttpClientExtensions') | Extensions for HttpClient |
 | [IEnumerableExt](BTD_Mod_Helper.Extensions.IEnumerableExt.md 'BTD_Mod_Helper.Extensions.IEnumerableExt') | Extensions for the normal System IEnumerable class |
 | [Il2CppGenericIEnumerable](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable') | Extensions for Il2cpp Ienumerables |
 | [Il2CppGenericIEnumerableExt](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt') | Extensions for il2cpp ienumerables |

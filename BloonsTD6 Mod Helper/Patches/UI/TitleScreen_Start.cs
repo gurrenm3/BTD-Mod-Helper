@@ -45,14 +45,12 @@ internal class TitleScreen_Start
         ModSettingsHandler.SaveModSettings(false, false);
         ModHelperData.SaveAll();
         ModGameMode.ModifyDefaultGameModes(GameData.Instance);
-        
-        
+
+
         var gameObject = new GameObject("ModHelperQuickAccess");
         SceneManager.MoveGameObjectToScene(gameObject, Game.instance.gameObject.scene);
         gameObject.AddComponent<Instances>();
         gameObject.AddComponent<Lists>();
-
-        // Tests.ModelSerializationTests.TestSerialization(Game.instance.model);
 
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
     }

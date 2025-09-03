@@ -91,6 +91,32 @@ The Behavior you want
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackBehaviorExt.GetAttackBehaviors_T_(thisAttack).T 'BTD_Mod_Helper.Extensions.AttackBehaviorExt.GetAttackBehaviors<T>(this Attack).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
 
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack)'></a>
+
+## AttackBehaviorExt.HasAttackBehavior<T>(this Attack) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasAttackBehavior<T>(this Attack attack)
+    where T : AttackBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack).attack'></a>
+
+`attack` [Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack 'Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack,T)'></a>
 
 ## AttackBehaviorExt.HasAttackBehavior<T>(this Attack, T) Method
@@ -123,31 +149,28 @@ The returned item, if it exists
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack)'></a>
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack)'></a>
 
-## AttackBehaviorExt.HasAttackBehavior<T>(this Attack) Method
+## AttackBehaviorExt.RemoveAttackBehavior<T>(this Attack) Method
 
-Check if this has a specific Behavior
+Remove the first Behavior of Type T
 
 ```csharp
-public static bool HasAttackBehavior<T>(this Attack attack)
+public static void RemoveAttackBehavior<T>(this Attack attack)
     where T : AttackBehavior;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack).T'></a>
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).T'></a>
 
 `T`
 
-The Behavior you're checking for
+The Behavior you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.HasAttackBehavior_T_(thisAttack).attack'></a>
+<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).attack'></a>
 
 `attack` [Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack 'Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack,T)'></a>
 
@@ -175,29 +198,6 @@ The Behavior you want to remove
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack,T).T 'BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior<T>(this Attack, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack)'></a>
-
-## AttackBehaviorExt.RemoveAttackBehavior<T>(this Attack) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveAttackBehavior<T>(this Attack attack)
-    where T : AttackBehavior;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehavior_T_(thisAttack).attack'></a>
-
-`attack` [Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack 'Il2CppAssets.Scripts.Simulation.Towers.Behaviors.Attack.Attack')
 
 <a name='BTD_Mod_Helper.Extensions.AttackBehaviorExt.RemoveAttackBehaviors_T_(thisAttack)'></a>
 

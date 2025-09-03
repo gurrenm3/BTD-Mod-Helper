@@ -20,9 +20,9 @@ namespace BTD_Mod_Helper;
 /// </summary>
 public static class ModHelper
 {
-    internal const string WorksOnVersion = "50.0";
+    internal const string WorksOnVersion = "50.1";
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.4.11";
+    internal const string Version = "3.4.12";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =
@@ -31,6 +31,7 @@ public static class ModHelper
     internal const string XmlName = "Btd6ModHelper.xml";
     internal const string Author = "Gurrenm4 and Doombubbles";
     internal const string Branch = "master";
+    internal const string UpdaterVersion = "1.0.1";
 
     private static bool fallBackToOldLoading = true;
 
@@ -96,6 +97,8 @@ public static class ModHelper
         get => fallBackToOldLoading /*|| MelonMain.UseOldLoading*/;
     }
 
+    internal static string MyGithubUsername => MelonMain.GitHubUsername;
+
     /// <summary>
     /// Active mods that use ModHelper functionality
     /// </summary>
@@ -139,8 +142,6 @@ public static class ModHelper
                 Error(e);
             }
         }
-
-        ModHelperData.LoadAll();
     }
 
     /// <summary>

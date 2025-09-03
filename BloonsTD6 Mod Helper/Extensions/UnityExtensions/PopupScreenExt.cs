@@ -1,7 +1,10 @@
 ﻿using System;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
+using UnityEngine;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -57,5 +60,24 @@ public static class PopupScreenExt
             () => action(popupScreen),
             () => popupScreen != null && !popupScreen.IsPopupActive()
         );
+    }
+
+    /// <summary>
+    /// Modifies the TMP InputField to be a scroll panel
+    /// </summary>
+    public static void MakeTextScrollable(this PopupScreen screen)
+    {
+        screen.ModifyBodyText(field =>
+        {
+            var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
+                InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
+            scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
+            scrollPanel.ScrollRect.inertia = false;
+
+            var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
+            newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();
+
+            field.Destroy();
+        });
     }
 }

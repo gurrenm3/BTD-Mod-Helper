@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
@@ -10,7 +8,6 @@ using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Unity;
 using BTD_Mod_Helper.Api.UI;
-using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
@@ -27,6 +24,24 @@ internal partial class MelonMain
     {
         collapsed = false,
         icon = SettingsIcon
+    };
+
+    public static readonly ModSettingBool AutoUpdate = new(true)
+    {
+        category = General,
+        icon = ModHelperSprites.DownloadBtn,
+        description = "Installs a plugin that will keep Mod Helper and other mods up to date on startup",
+        onSave = enabled =>
+        {
+            if (enabled)
+            {
+                UpdaterPlugin.Enable();
+            }
+            else
+            {
+                UpdaterPlugin.Disable();
+            }
+        }
     };
 
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
@@ -156,11 +171,11 @@ internal partial class MelonMain
         icon = DangerSoonIcon
     };
 
-    public static readonly ModSettingBool PopulateOnStartup = new(true)
+    public static readonly ModSettingBool PopulateOnStartup = new(false)
     {
-        description = "Whether to begin fetching mod info from GitHub in the background as the game starts, " +
-                      "rather than waiting until you open the browser for the first time. " +
-                      "Disabling this leads to ~1 second faster startup time, " +
+        description = "Whether to begin fetching all mod info from GitHub in the background as the game starts, " +
+                      "rather than just your local mods until you open the browser for the first time. " +
+                      "Disabling this leads to 1-2 seconds faster startup time, " +
                       "but a 5s - 10s delay when first opening the browser",
         category = ModBrowserSettings,
         icon = AutoStartIcon,

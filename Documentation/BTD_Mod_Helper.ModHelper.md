@@ -3,13 +3,27 @@
 
 ## ModHelper Class
 
-Catch-all class for non-extension static methods
+Catch-all class for non-extension static methods and accessors, as well as the ModHelperData for this mod
 
 ```csharp
 public static class ModHelper
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModHelper
+### Fields
+
+<a name='BTD_Mod_Helper.ModHelper.CompiledVersion'></a>
+
+## ModHelper.CompiledVersion Field
+
+The version of Mod Helper that this mod was compiled with
+
+```csharp
+public const string CompiledVersion = "3.4.12";
+```
+
+#### Field Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Properties
 
 <a name='BTD_Mod_Helper.ModHelper.DisabledModsDirectory'></a>
@@ -20,6 +34,19 @@ Directory where disabled mods are stored
 
 ```csharp
 public static string DisabledModsDirectory { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.ModHelper.InstalledVersion'></a>
+
+## ModHelper.InstalledVersion Property
+
+The current installed version of Mod Helper
+
+```csharp
+public static string InstalledVersion { get; }
 ```
 
 #### Property Value
@@ -178,6 +205,24 @@ public static T GetMod<T>()
 #### Returns
 [T](BTD_Mod_Helper.ModHelper.md#BTD_Mod_Helper.ModHelper.GetMod_T_().T 'BTD_Mod_Helper.ModHelper.GetMod<T>().T')
 
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string)'></a>
+
+## ModHelper.HasMod(string) Method
+
+Returns whether a mod with the given name is installed
+
+```csharp
+public static bool HasMod(string name);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.ModHelper.HasMod(string).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod)'></a>
 
 ## ModHelper.HasMod(string, BloonsMod) Method
@@ -196,24 +241,6 @@ public static bool HasMod(string name, out BTD_Mod_Helper.BloonsMod bloonsMod);
 <a name='BTD_Mod_Helper.ModHelper.HasMod(string,BTD_Mod_Helper.BloonsMod).bloonsMod'></a>
 
 `bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.ModHelper.HasMod(string)'></a>
-
-## ModHelper.HasMod(string) Method
-
-Returns whether a mod with the given name is installed
-
-```csharp
-public static bool HasMod(string name);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.ModHelper.HasMod(string).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

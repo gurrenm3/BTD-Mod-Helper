@@ -1,9 +1,13 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Data;
 
@@ -52,7 +56,7 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToDisabledModsFolder(bool quick = false)
+    public bool MoveToDisabledFolder(bool quick = false)
     {
         if (!MoveToFolder(ModHelper.DisabledModsDirectory)) return false;
 
@@ -75,7 +79,7 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToEnabledModsFolder() => MoveToFolder(EnabledFolder);
+    public bool MoveToEnabledFolder() => MoveToFolder(EnabledFolder);
 
     public bool Delete()
     {
@@ -132,9 +136,43 @@ internal partial class ModHelperData
 
     public static void SaveAll()
     {
-        foreach (var modHelperData in Active)
+        if (ModHelperGithub.populatingMods is {Status: TaskStatus.Running})
         {
-            modHelperData.SaveToJson(ModHelper.DataDirectory);
+            ModHelperGithub.populatingMods.ContinueWith(_ => SaveAll());
+        }
+        else
+        {
+            foreach (var modHelperData in Active)
+            {
+                modHelperData.SaveToJson(ModHelper.DataDirectory);
+            }
+        }
+    }
+
+    public void SaveToTxt(string filePath)
+    {
+        using var fs = new StreamWriter(filePath);
+        foreach (var (name, getter) in Getters)
+        {
+            var result = getter.Invoke(this, null);
+            if (result != null)
+            {
+                string rightSide;
+                switch (result)
+                {
+                    case string s:
+                        rightSide = $"\"{s}\"";
+                        break;
+                    case bool b:
+                        rightSide = b.ToString().ToLowerInvariant();
+                        break;
+                    default:
+                        ModHelper.Warning($"Haven't implemented support for {result.GetType().Name}");
+                        continue;
+                }
+
+                fs.WriteLine($"{name} = {rightSide}");
+            }
         }
     }
 }

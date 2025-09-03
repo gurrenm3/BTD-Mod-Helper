@@ -100,11 +100,9 @@ public class ModHelperOption : ModHelperComponent
 
 
         var iconPanel = topRow.AddPanel(new Info("IconPanel", RowHeight));
-        if (icon != null)
-        {
-            modHelperOption.Icon = iconPanel.AddImage(new Info("Icon", RowHeight), icon);
-            modHelperOption.Icon.Image.color = Color.white;
-        }
+        modHelperOption.Icon = iconPanel.AddImage(new Info("Icon", RowHeight), icon);
+        modHelperOption.Icon.Image.color = Color.white;
+        modHelperOption.Icon.gameObject.SetActive(!string.IsNullOrEmpty(icon));
 
         var restart = modHelperOption.RestartIcon =
             iconPanel.AddImage(new Info("Restart", RowHeight), VanillaSprites.RestartIcon);
@@ -125,7 +123,8 @@ public class ModHelperOption : ModHelperComponent
                 VanillaSprites.InfoBtn2,
                 string.IsNullOrEmpty(description)
                     ? null
-                    : new Action(() => PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(description.Localize())))
+                    : new Action(() =>
+                        PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(description.Localize())))
             );
         }
 

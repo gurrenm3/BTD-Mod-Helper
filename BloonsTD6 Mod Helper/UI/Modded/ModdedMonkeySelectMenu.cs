@@ -303,7 +303,7 @@ internal class ModdedMonkeySelectMenu
 
     #region Nested type: MainMenu_Awake
 
-    [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Start))]
+    [HarmonyPatch(typeof(MainMenu), nameof(MainMenu.Awake))]
     internal class MainMenu_Awake
     {
         [HarmonyPostfix]

@@ -56,6 +56,32 @@ public static void AddBehavior<T>(this AttackModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.AddBehavior_T_(thisAttackModel,T).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.AddBehavior<T>(this AttackModel, T).T')
 
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel)'></a>
+
+## AttackModelBehaviorExt.GetBehavior<T>(this AttackModel) Method
+
+Return the first Behavior of type T, or null if there isn't one
+
+```csharp
+public static T GetBehavior<T>(this AttackModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior<T>(this AttackModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel,int)'></a>
 
 ## AttackModelBehaviorExt.GetBehavior<T>(this AttackModel, int) Method
@@ -116,32 +142,6 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel,string).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior<T>(this AttackModel, string).T')
 
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel)'></a>
-
-## AttackModelBehaviorExt.GetBehavior<T>(this AttackModel) Method
-
-Return the first Behavior of type T, or null if there isn't one
-
-```csharp
-public static T GetBehavior<T>(this AttackModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel).T'></a>
-
-`T`
-
-The Behavior you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior_T_(thisAttackModel).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehavior<T>(this AttackModel).T')
-
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehaviors_T_(thisAttackModel)'></a>
 
 ## AttackModelBehaviorExt.GetBehaviors<T>(this AttackModel) Method
@@ -167,6 +167,32 @@ The Behavior you want
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehaviors_T_(thisAttackModel).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.GetBehaviors<T>(this AttackModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel)'></a>
+
+## AttackModelBehaviorExt.HasBehavior<T>(this AttackModel) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasBehavior<T>(this AttackModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel,string,T)'></a>
 
@@ -232,31 +258,28 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel)'></a>
 
-## AttackModelBehaviorExt.HasBehavior<T>(this AttackModel) Method
+## AttackModelBehaviorExt.RemoveBehavior<T>(this AttackModel) Method
 
-Check if this has a specific Behavior
+Remove the first Behavior of Type T
 
 ```csharp
-public static bool HasBehavior<T>(this AttackModel model)
+public static void RemoveBehavior<T>(this AttackModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel).T'></a>
 
 `T`
 
-The Behavior you're checking for
+The Behavior you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.HasBehavior_T_(thisAttackModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel,int)'></a>
 
@@ -336,29 +359,6 @@ public static void RemoveBehavior<T>(this AttackModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md#BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel,T).T 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior<T>(this AttackModel, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel)'></a>
-
-## AttackModelBehaviorExt.RemoveBehavior<T>(this AttackModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this AttackModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehavior_T_(thisAttackModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel')
 
 <a name='BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.RemoveBehaviors(thisAttackModel)'></a>
 
