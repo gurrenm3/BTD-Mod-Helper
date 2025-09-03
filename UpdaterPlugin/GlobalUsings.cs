@@ -1,5 +1,6 @@
 ﻿global using HarmonyLib;
 global using MelonLoader;
+global using UpdaterPlugin;
 
 using System.ComponentModel;
 

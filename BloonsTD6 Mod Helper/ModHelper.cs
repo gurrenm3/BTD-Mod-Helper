@@ -97,6 +97,8 @@ public static class ModHelper
         get => fallBackToOldLoading /*|| MelonMain.UseOldLoading*/;
     }
 
+    internal static string MyGithubUsername => MelonMain.GitHubUsername;
+
     /// <summary>
     /// Active mods that use ModHelper functionality
     /// </summary>
@@ -140,8 +142,6 @@ public static class ModHelper
                 Error(e);
             }
         }
-
-        ModHelperData.LoadAll();
     }
 
     /// <summary>

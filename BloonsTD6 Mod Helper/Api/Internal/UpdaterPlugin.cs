@@ -13,7 +13,7 @@ internal static class UpdaterPlugin
     private const string DllName = $"{nameof(UpdaterPlugin)}.dll";
 
     public static bool IsUpdaterPlugin(this ModHelperData data) =>
-        data?.Mod?.GetName() == nameof(UpdaterPlugin) && data.Author == "doombubbles";
+        data.Name == "Updater Plugin" && data.Author == "doombubbles";
 
     public static ModHelperData Updater => ModHelperData.All.FirstOrDefault(IsUpdaterPlugin);
 

@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using Semver;
 using UnityEngine;
+
 namespace BTD_Mod_Helper.Api.Data;
 
 /// <summary>
@@ -38,10 +38,6 @@ internal partial class ModHelperData
 
     private Sprite icon;
 
-    public ModHelperData()
-    {
-    }
-
     public ModHelperData(MelonBase mod)
     {
         Mod = mod;
@@ -51,9 +47,10 @@ internal partial class ModHelperData
         FilePath = mod.GetAssembly().Location;
 
         var data = mod is MelonMain
-                       ? typeof(ModHelper)
-                       : AccessTools.GetTypesFromAssembly(mod.GetAssembly())
-                           .FirstOrDefault(type => type.Name == nameof(ModHelperData));
+            ? typeof(ModHelper)
+            : AccessTools.GetTypesFromAssembly(mod.GetAssembly())
+                .FirstOrDefault(type =>
+                    type.Name == (this.IsUpdaterPlugin() ? nameof(ModHelper) : nameof(ModHelperData)));
 
         if (data != null)
         {
@@ -119,24 +116,6 @@ internal partial class ModHelperData
 
     internal byte[] IconBytes { get; private set; }
     internal bool HasNoIcon { get; private set; }
-
-    // These public properties are the serialized ones
-    public string Version { get; protected set; }
-    public string Name { get; protected set; }
-    public string Description { get; protected set; }
-    public string Icon { get; protected set; }
-    public string DllName { get; protected set; }
-    public string RepoName { get; protected set; }
-    public string RepoOwner { get; protected set; }
-    public bool ManualDownload { get; protected set; }
-    public string ZipName { get; protected set; }
-    public string Author { get; protected set; }
-    public string SubPath { get; protected set; }
-    public bool SquareIcon { get; protected set; }
-    public string ExtraTopics { get; protected set; }
-    public string WorksOnVersion { get; protected set; }
-    public string Dependencies { get; protected set; }
-    public bool Plugin { get; protected set; }
 
     /// <summary>
     /// The currently active mod that this is associated with, if any
@@ -214,7 +193,7 @@ internal partial class ModHelperData
 
         if (this.IsUpdaterPlugin())
         {
-            return icon = ResourceHandler.GetSprite("BloonsTD6 Mod Helper-DownloadBtn").PadSpriteToScale(.85f);
+            return icon = ResourceHandler.GetSprite("BloonsTD6 Mod Helper-DownloadBtn").PadSpriteToScale(.75f);
         }
 
         if (IconBytes != null)
@@ -274,10 +253,10 @@ internal partial class ModHelperData
         }
 
 
-        Task.Run(LoadDisabledMods);
+        LoadDisabledMods();
     }
 
-    private static async Task LoadDisabledMods()
+    private static void LoadDisabledMods()
     {
         var disabledMods = new DirectoryInfo(ModHelper.DisabledModsDirectory);
         if (disabledMods.Exists)
@@ -297,8 +276,7 @@ internal partial class ModHelperData
 
                 try
                 {
-                    using var fs = new StreamReader(dataFile);
-                    var contents = await fs.ReadToEndAsync();
+                    var contents = File.ReadAllText(dataFile);
                     var data = new ModHelperData();
                     data.ReadValuesFromJson(contents);
 

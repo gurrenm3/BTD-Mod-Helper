@@ -386,6 +386,7 @@
 | [GameObjectExt](BTD_Mod_Helper.Extensions.GameObjectExt.md 'BTD_Mod_Helper.Extensions.GameObjectExt') | Extensions for GameObjects |
 | [GrowModelExt](BTD_Mod_Helper.Extensions.GrowModelExt.md 'BTD_Mod_Helper.Extensions.GrowModelExt') | Extension methods for [Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel'). |
 | [HarmonyExt](BTD_Mod_Helper.Extensions.HarmonyExt.md 'BTD_Mod_Helper.Extensions.HarmonyExt') | Extensions for Harmony stuff |
+| [HttpClientExtensions](BTD_Mod_Helper.Extensions.HttpClientExtensions.md 'BTD_Mod_Helper.Extensions.HttpClientExtensions') | Extensions for HttpClient |
 | [IEnumerableExt](BTD_Mod_Helper.Extensions.IEnumerableExt.md 'BTD_Mod_Helper.Extensions.IEnumerableExt') | Extensions for the normal System IEnumerable class |
 | [Il2CppGenericIEnumerable](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable') | Extensions for Il2cpp Ienumerables |
 | [Il2CppGenericIEnumerableExt](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt') | Extensions for il2cpp ienumerables |

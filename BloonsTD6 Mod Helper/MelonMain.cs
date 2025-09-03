@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
@@ -40,16 +40,16 @@ internal partial class MelonMain : BloonsTD6Mod
         // Create all and load default mod settings
         ModSettingsHandler.InitializeModSettings();
 
+        ModHelperData.LoadAll();
+
         try
         {
             ModHelperHttp.Init();
             ModHelperGithub.Init();
 
             Task.Run(ModHelperGithub.GetVerifiedModders);
-            if (PopulateOnStartup)
-            {
-                ModHelperGithub.populatingMods = Task.Run(ModHelperGithub.PopulateMods);
-            }
+
+            ModHelperGithub.populatingMods = Task.Run(() => ModHelperGithub.PopulateMods(!PopulateOnStartup));
         }
         catch (Exception e)
         {

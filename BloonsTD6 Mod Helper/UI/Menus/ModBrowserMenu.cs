@@ -60,6 +60,11 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     public override bool OnMenuOpened(Object data)
     {
         mods = new ModBrowserMenuMod[ModsPerPage];
+        if (!ModHelperGithub.FullyPopulated)
+        {
+            RefreshMods();
+        }
+
         sortingMethod = SortingMethod.RecentlyUpdated;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
@@ -92,14 +97,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         lastMods = ModHelperGithub.Mods;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
-        modsNeedRefreshing = true;
+        modsNeedRefreshing = ModHelperGithub.FullyPopulated;
         SetPage(0);
         currentSearch = "";
-
-        if (!ModHelperGithub.Mods.Any())
-        {
-            RefreshMods();
-        }
 
         return false;
     }
@@ -172,13 +172,12 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         topArea.AddPanel(new Info("Filler 1", InfoPreset.Flex));
 
         topArea.AddInputField(new Info("Searching", 1500, 150), currentSearch,
-            VanillaSprites.BlueInsertPanelRound, new Action<string>(
-                s =>
-                {
-                    currentSearch = s;
-                    typingCooldown = TypingCooldown;
-                    SetPage(0);
-                }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft,
+            VanillaSprites.BlueInsertPanelRound, new Action<string>(s =>
+            {
+                currentSearch = s;
+                typingCooldown = TypingCooldown;
+                SetPage(0);
+            }), 80f, TMP_InputField.CharacterValidation.None, TextAlignmentOptions.CaplineLeft,
             LocalizationHelper.SearchText.Localize(),
             50);
 
@@ -315,9 +314,11 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             menuMod.Exists()?.SetActive(false);
         }
 
+        var populate = ModHelperGithub.PopulateMods(false);
+
         Task.Run(async () =>
         {
-            await ModHelperGithub.PopulateMods();
+            await populate;
             currentPage = 0;
             RecalculateCurrentMods();
         });

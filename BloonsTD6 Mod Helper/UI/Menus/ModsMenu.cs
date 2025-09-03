@@ -633,6 +633,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Width = -Padding,
             Height = -Padding
         }, Version);
+        selectedModVersion.Text.fontStyle = FontStyles.SmallCaps;
         selectedModVersion.Text.enableAutoSizing = true;
 
         selectedModLocalization = secondRow.AddButton(new Info("LocalizationButton", OtherHeight),

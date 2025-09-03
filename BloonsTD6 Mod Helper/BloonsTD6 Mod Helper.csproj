@@ -17,6 +17,8 @@
         <!--Documentation Settings-->
         <DocumentationFile>bin\Debug\Btd6ModHelper.xml</DocumentationFile>
         <Platforms>AnyCPU</Platforms>
+        
+        <DefineConstants>MOD_HELPER</DefineConstants>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

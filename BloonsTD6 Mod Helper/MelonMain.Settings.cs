@@ -170,11 +170,11 @@ internal partial class MelonMain
         icon = DangerSoonIcon
     };
 
-    public static readonly ModSettingBool PopulateOnStartup = new(true)
+    public static readonly ModSettingBool PopulateOnStartup = new(false)
     {
-        description = "Whether to begin fetching mod info from GitHub in the background as the game starts, " +
-                      "rather than waiting until you open the browser for the first time. " +
-                      "Disabling this leads to ~1 second faster startup time, " +
+        description = "Whether to begin fetching all mod info from GitHub in the background as the game starts, " +
+                      "rather than just your local mods until you open the browser for the first time. " +
+                      "Disabling this leads to 1-2 seconds faster startup time, " +
                       "but a 5s - 10s delay when first opening the browser",
         category = ModBrowserSettings,
         icon = AutoStartIcon,

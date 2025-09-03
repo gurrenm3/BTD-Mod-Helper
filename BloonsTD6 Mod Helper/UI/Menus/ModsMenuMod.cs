@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppTMPro;
 using MelonLoader.InternalUtils;
 using UnityEngine;
 using UnityEngine.Events;
@@ -50,8 +51,9 @@ internal class ModsMenuMod : ModHelperComponent
         panel.AddText(new Info("Name", ModsMenu.ModNameWidth, ModsMenu.ModNameHeight), "Name",
             ModsMenu.FontMedium);
 
-        panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
+        var version = panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
             new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
+        version.Text.fontStyle = FontStyles.SmallCaps;
 
         panel.AddButton(new Info("Update", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
             new Vector2(1, 1)), VanillaSprites.UpgradeBtn, null);

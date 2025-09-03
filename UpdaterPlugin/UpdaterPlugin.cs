@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Net;
-using System.Net.Http;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Extensions;
+using MelonLoader.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Semver;
-using UnityEngine;
-using UpdaterPlugin;
 using Ping = System.Net.NetworkInformation.Ping;
 
-[assembly: MelonInfo(typeof(UpdaterPlugin.UpdaterPlugin), ModHelperData.Name, ModHelperData.Version, ModHelperData.Author)]
+[assembly: MelonInfo(typeof(UpdaterPlugin.UpdaterPlugin), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-1000)]
@@ -23,48 +20,14 @@ namespace UpdaterPlugin;
 
 public class UpdaterPlugin : MelonPlugin
 {
-    private static SemVersion currentModHelperVersion;
-    private static SemVersion latestModHelperVersion;
-    private static SemVersion latestModHelperWorksOnVersion;
-
-    private static readonly HttpClient Client = new();
-
-    public override void OnApplicationEarlyStart()
+    public override void OnPreModsLoaded()
     {
         var start = DateTimeOffset.Now;
         try
         {
-            var task = TaskHelpers.WhenAllFailFast([
-                CheckPing,
-                GetCurrentModHelperVersion,
-                GetLatestModHelperVersion
-            ]);
+            if (!CheckPing()) return;
 
-            task.Wait(2000);
-
-            if (!task.Result) return;
-
-            if (currentModHelperVersion >= latestModHelperVersion)
-            {
-                LoggerInstance.Msg("Mod Helper is up to date");
-                return;
-            }
-
-            if (SemVersion.TryParse(Application.version, out var currentVersion) &&
-                latestModHelperWorksOnVersion > currentVersion)
-            {
-                LoggerInstance.Msg("Not updating Mod Helper because installed BTD6 version isn't high enough");
-                return;
-            }
-
-            var download = DownloadLatestModHelper();
-
-            download.Wait();
-
-            if (download.IsCompletedSuccessfully)
-            {
-                LoggerInstance.Msg($"Successfully downloaded Mod Helper {latestModHelperVersion}");
-            }
+            UpdateMods().Wait(15000);
         }
         finally
         {
@@ -76,80 +39,95 @@ public class UpdaterPlugin : MelonPlugin
         }
     }
 
-    private static async Task CheckPing(CancellationToken ct)
+    private static bool CheckPing(CancellationToken ct = default)
     {
         using var ping = new Ping();
         try
         {
-            var reply = await ping.SendPingAsync("8.8.8.8", 1000);
+            var reply = ping.Send("8.8.8.8", 1000);
 
-            if (reply.Status == IPStatus.Success) return;
+            if (reply?.Status == IPStatus.Success) return true;
         }
         catch (Exception)
         {
-            // ignored
+            //ignored
         }
 
-        throw new WebException("Not connected to internet");
+        return false;
     }
 
-    private static async Task GetCurrentModHelperVersion(CancellationToken ct)
+    private static async Task UpdateMods(CancellationToken ct = default)
     {
-        var path = Path.Combine(ModHelper.DataDirectory, "Btd6ModHelper.json");
+        if (!Directory.Exists(ModHelper.DataDirectory)) return;
 
-        if (!File.Exists(path))
+        await Task.WhenAll(Directory.EnumerateFiles(ModHelper.DataDirectory, "*.json").Select(async path =>
         {
-            currentModHelperVersion = new SemVersion(0, 0, 0);
-            return;
-        }
+            try
+            {
+                var file = await File.ReadAllTextAsync(path, ct);
 
-        var file = await File.ReadAllTextAsync(path, ct);
+                using var stringReader = new StringReader(file);
+                await using var reader = new JsonTextReader(stringReader);
 
-        using var stringReader = new StringReader(file);
-        await using var reader = new JsonTextReader(stringReader);
+                var json = await JObject.LoadAsync(reader, ct);
 
-        var json = await JObject.LoadAsync(reader, ct);
+                var data = new ModHelperData();
+                data.ReadValuesFromJson(json.ToString());
 
-        if (!json.TryGetValue("Version", out var version))
-        {
-            throw new KeyNotFoundException("No version key in ModHelper json");
-        }
+                if (data.Plugin || data.ManualDownload) return;
 
-        if (!SemVersion.TryParse(version.ToString(), out currentModHelperVersion))
-        {
-            throw new VersionNotFoundException("Installed Mod Helper Version was not a valid semantic version");
-        }
-    }
+                var enabledDllPath = Path.Combine(MelonEnvironment.ModsDirectory, data.DllName);
+                var disabledDllPath = Path.Combine(ModHelper.DisabledModsDirectory, data.DllName);
 
-    private static async Task GetLatestModHelperVersion(CancellationToken ct)
-    {
-        var url = ModHelper.GetContentURL("BloonsTD6 Mod Helper/ModHelper.cs");
-        var contents = await Client.GetStringAsync(url, ct);
+                if (!(data.RepoName == ModHelper.RepoName && data.RepoOwner == ModHelper.RepoOwner) &&
+                    !File.Exists(enabledDllPath) &&
+                    !File.Exists(disabledDllPath)) return;
 
-        var version = ModHelperData.GetRegexMatch<string>(contents, ModHelperData.VersionRegex);
+                var repoData = new ModHelperData(data);
+                var remoteData = await repoData.LoadDataFromRepoAsync(ct);
 
-        if (version == null) throw new VersionNotFoundException("Could not get version from ModHelper.cs");
+                if (string.IsNullOrEmpty(remoteData)) return;
 
-        if (!SemVersion.TryParse(version, out latestModHelperVersion))
-        {
-            throw new VersionNotFoundException("Latest Mod Helper Version was not a valid semantic version");
-        }
+                repoData.ReadValues(remoteData);
 
-        var worksOnVersion = ModHelperData.GetRegexMatch<string>(contents, ModHelperData.WorksOnVersionRegex);
+                if (!ModHelperData.IsUpdate(data.Version, repoData.Version, repoData.WorksOnVersion)) return;
 
-        if (worksOnVersion == null) throw new VersionNotFoundException("Could not get worksOnVersion from ModHelper.cs");
+                var url = $"https://github.com/{data.RepoOwner}/{data.RepoName}/releases/latest/download/{data.DllName}";
 
-        if (!SemVersion.TryParse(version, out latestModHelperWorksOnVersion))
-        {
-            throw new VersionNotFoundException("Latest Mod Helper WorksOnVersion was not a valid semantic version");
-        }
-    }
+                var downloadUrl = repoData.DownloadUrl ?? data.DownloadUrl ?? url;
+                var auth = repoData.Authorization ?? data.Authorization;
 
-    private static async Task DownloadLatestModHelper()
-    {
-        var bytes = await Client.GetByteArrayAsync(ModHelper.DownloadUrl);
+                ModHelper.Msg($"Downloading {data.RepoOwner}/{data.RepoName} {data.Version}");
+                var bytes = await ModHelperHttp.Client.GetBytesWithAuthAsync(downloadUrl, auth, ct);
 
-        await File.WriteAllBytesAsync(ModHelper.DllLocation, bytes);
+                var enabled = false;
+                if (File.Exists(enabledDllPath))
+                {
+                    enabled = true;
+                    if (File.Exists(disabledDllPath)) File.Delete(disabledDllPath);
+                    File.Move(enabledDllPath, disabledDllPath);
+                }
+
+                try
+                {
+                    await File.WriteAllBytesAsync(enabled ? enabledDllPath : disabledDllPath, bytes, ct);
+                    repoData.SaveToJson(ModHelper.DataDirectory);
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Warning($"Failed to download {data.RepoOwner}/{data.RepoName} {data.Version}");
+                    ModHelper.Warning(e);
+                    if (enabled)
+                    {
+                        File.Move(disabledDllPath, enabledDllPath);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
+        }));
     }
 
 }

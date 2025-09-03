@@ -6,6 +6,8 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Data;
 
@@ -143,6 +145,33 @@ internal partial class ModHelperData
             foreach (var modHelperData in Active)
             {
                 modHelperData.SaveToJson(ModHelper.DataDirectory);
+            }
+        }
+    }
+
+    public void SaveToTxt(string filePath)
+    {
+        using var fs = new StreamWriter(filePath);
+        foreach (var (name, getter) in Getters)
+        {
+            var result = getter.Invoke(this, null);
+            if (result != null)
+            {
+                string rightSide;
+                switch (result)
+                {
+                    case string s:
+                        rightSide = $"\"{s}\"";
+                        break;
+                    case bool b:
+                        rightSide = b.ToString().ToLowerInvariant();
+                        break;
+                    default:
+                        ModHelper.Warning($"Haven't implemented support for {result.GetType().Name}");
+                        continue;
+                }
+
+                fs.WriteLine($"{name} = {rightSide}");
             }
         }
     }
