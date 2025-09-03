@@ -193,7 +193,7 @@ internal partial class ModHelperData
 
         if (this.IsUpdaterPlugin())
         {
-            return icon = ResourceHandler.GetSprite("BloonsTD6 Mod Helper-DownloadBtn").PadSpriteToScale(.75f);
+            return icon = ResourceHandler.GetSprite("BloonsTD6 Mod Helper-DownloadBtn").PadSpriteToScale(.7f);
         }
 
         if (IconBytes != null)

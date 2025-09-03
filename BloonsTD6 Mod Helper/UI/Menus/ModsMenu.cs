@@ -351,7 +351,8 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModUpdateButton.gameObject.SetActive(modSelected.UpdateAvailable);
 
         selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
-                                                       bloonsMod.ModSettings.Any());
+                                                       bloonsMod.ModSettings.Any() ||
+                                                       modSelected.IsUpdaterPlugin());
 
         if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite)
         {
@@ -709,7 +710,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModSettingsButton = buttonsRow.AddButton(
             new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
-            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod as BloonsMod)));
+            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod)));
         selectedModSettingsButton.AddImage(
             new Info("Gear", ModNameHeight, ModNameHeight), VanillaSprites.SettingsIcon
         );

@@ -51,7 +51,8 @@ internal class ModsMenuMod : ModHelperComponent
         panel.AddText(new Info("Name", ModsMenu.ModNameWidth, ModsMenu.ModNameHeight), "Name",
             ModsMenu.FontMedium);
 
-        var version = panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f, ModsMenu.ModNameHeight,
+        var version = panel.AddText(new Info("Version", ModsMenu.Padding * -3, 0, ModsMenu.ModNameWidth / 5f,
+            ModsMenu.ModNameHeight,
             new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
         version.Text.fontStyle = FontStyles.SmallCaps;
 
@@ -106,7 +107,7 @@ internal static class ModsMenuModExt
         mod.Version.SetText("v" + modHelperData.Version);
         // ReSharper disable once AsyncVoidLambda
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));
-        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open((BloonsMod) melonMod!));
+        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open(melonMod));
 
         mod.Settings.SetActive(false);
         mod.Warning.SetActive(false);
@@ -130,7 +131,10 @@ internal static class ModsMenuModExt
                     });
                 });
             }
-
+        }
+        else if (modHelperData.IsUpdaterPlugin())
+        {
+            mod.Settings.SetActive(true);
         }
 
         mod.Hash.SetText(melonMod?.MelonAssembly?.Hash ?? "");
@@ -166,14 +170,14 @@ internal static class ModsMenuModExt
         mod.Update.SetActive(modHelperData.UpdateAvailable);
         mod.Restart.SetActive(modHelperData.RestartRequired);
         mod.Version.Text.color = modHelperData.OutOfDate
-                                     ? Color.red
-                                     : Color.white;
+            ? Color.red
+            : Color.white;
         mod.Version.SetText("v" + modHelperData.Version);
 
         mod.Icon.SetActive(!modHelperData.HasNoIcon);
         mod.Icon.RectTransform.sizeDelta = modHelperData.SquareIcon
-                                               ? new Vector2(ModsMenu.ModPanelHeight - 4, ModsMenu.ModPanelHeight - 4)
-                                               : new Vector2(ModsMenu.ModIconSize, ModsMenu.ModIconSize);
+            ? new Vector2(ModsMenu.ModPanelHeight - 4, ModsMenu.ModPanelHeight - 4)
+            : new Vector2(ModsMenu.ModIconSize, ModsMenu.ModIconSize);
     }
 
     public static string GetBackground(ModHelperData data)

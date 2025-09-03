@@ -94,9 +94,13 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning(e);
         }
 
-        if (AutoUpdate && UpdaterPlugin.ShouldDownload)
+        if (AutoUpdate)
         {
-            UpdaterPlugin.DownloadLatest();
+            if (UpdaterPlugin.ShouldDownload)
+            {
+                UpdaterPlugin.DownloadLatest();
+            }
+            UpdaterPlugin.PopulateSettings();
         }
     }
 

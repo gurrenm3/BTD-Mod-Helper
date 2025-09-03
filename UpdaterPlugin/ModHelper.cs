@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using MelonLoader.Utils;
 
@@ -7,19 +6,19 @@ namespace UpdaterPlugin;
 public static class ModHelper
 {
     internal static string ModHelperDirectory =>
-        Path.Combine(MelonEnvironment.GameRootDirectory, DllName.Replace(".dll", ""));
+        Path.Combine(MelonEnvironment.GameRootDirectory, "Btd6ModHelper");
 
     internal static string DisabledModsDirectory => Path.Combine(MelonEnvironment.GameRootDirectory, "Disabled Mods");
-
     internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
+    internal static string ModSettingsDirectory => Path.Combine(ModHelperDirectory, "Mod Settings");
 
     internal const string Name = "Updater Plugin";
     internal const string Author = "doombubbles";
-    internal const string Version = "1.0.0";
-    internal const string Description = "Keeps Mod Helper up to date on startup";
+    internal const string Version = "1.0.1";
+    internal const string Description = "Keeps Mod Helper and other mods up to date on startup";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
-    internal const string DllName = "Btd6ModHelper.dll";
+    internal const string DllName = "UpdaterPlugin.dll";
     internal const string Branch = "master";
     internal const string MyGithubUsername = "";
 

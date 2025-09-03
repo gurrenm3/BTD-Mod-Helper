@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using BTD_Mod_Helper.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Semver;
@@ -14,6 +13,8 @@ using UnityEngine;
 #if MOD_HELPER
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
+#else
+using BTD_Mod_Helper.Extensions;
 #endif
 
 namespace BTD_Mod_Helper.Api.Data;
@@ -143,11 +144,6 @@ internal partial class ModHelperData
         ZipName = GetRegexMatch<string>(data, ZipRegex) ?? ZipName;
         Author = GetRegexMatch<string>(data, AuthorRegex) ?? Author;
         SubPath = GetRegexMatch<string>(data, SubPathRegex) ?? SubPath;
-        if (allowRepo)
-        {
-            RepoName = GetRegexMatch<string>(data, RepoNameRegex) ?? RepoName;
-            RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex) ?? RepoOwner;
-        }
         SquareIcon = GetRegexMatch<bool>(data, SquareIconRegex);
         ExtraTopics = GetRegexMatch<string>(data, ExtraTopicsRegex) ?? ExtraTopics;
         WorksOnVersion = GetRegexMatch<string>(data, WorksOnVersionRegex) ?? WorksOnVersion;
@@ -157,6 +153,12 @@ internal partial class ModHelperData
         Branch = GetRegexMatch<string>(data, BranchRegex) ?? Branch;
         DownloadUrl = GetRegexMatch<string>(data, DownloadUrlRegex) ?? DownloadUrl;
         Authorization = GetRegexMatch<string>(data, AuthorizationRegex) ?? Authorization;
+
+        if (allowRepo)
+        {
+            RepoName = GetRegexMatch<string>(data, RepoNameRegex) ?? RepoName;
+            RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex) ?? RepoOwner;
+        }
     }
 
     internal void ReadValuesFromJson(string data, bool allowRepo = true)

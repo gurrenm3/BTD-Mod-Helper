@@ -29,7 +29,7 @@ internal partial class MelonMain
     {
         category = General,
         icon = ModHelperSprites.DownloadBtn,
-        description = "Installs a plugin that will keep Mod Helper up to date on startup",
+        description = "Installs a plugin that will keep Mod Helper and other mods up to date on startup",
         onSave = enabled =>
         {
             if (enabled)

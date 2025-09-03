@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.Menus;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
@@ -46,5 +47,10 @@ internal static class MainMenu_OnEnable
         ModsMenu.selectedMod = null;
         ModdedMonkeySelectMenu.ResetGameModel();
         ModHelper.PerformHook(mod => mod.OnMainMenu());
+
+        if (MelonMain.AutoUpdate)
+        {
+            UpdaterPlugin.CheckUpdatedMods();
+        }
     }
 }
