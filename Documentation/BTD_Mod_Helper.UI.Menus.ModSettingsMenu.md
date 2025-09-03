@@ -12,18 +12,18 @@ public class ModSettingsMenu : BTD_Mod_Helper.Api.ModGameMenu<HotkeysScreen>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModGameMenu](BTD_Mod_Helper.Api.ModGameMenu.md 'BTD_Mod_Helper.Api.ModGameMenu') &#129106; [BTD_Mod_Helper.Api.ModGameMenu&lt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>')[Il2CppAssets.Scripts.Unity.UI_New.Settings.HotkeysScreen](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.Settings.HotkeysScreen 'Il2CppAssets.Scripts.Unity.UI_New.Settings.HotkeysScreen')[&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') &#129106; ModSettingsMenu
 ### Properties
 
-<a name='BTD_Mod_Helper.UI.Menus.ModSettingsMenu.BloonsMod'></a>
+<a name='BTD_Mod_Helper.UI.Menus.ModSettingsMenu.Melon'></a>
 
-## ModSettingsMenu.BloonsMod Property
+## ModSettingsMenu.Melon Property
 
 The most recent mod with opened settings
 
 ```csharp
-public static BTD_Mod_Helper.BloonsMod BloonsMod { get; set; }
+public static MelonBase Melon { get; set; }
 ```
 
 #### Property Value
-[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+[MelonLoader.MelonBase](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonBase 'MelonLoader.MelonBase')
 ### Methods
 
 <a name='BTD_Mod_Helper.UI.Menus.ModSettingsMenu.OnMenuClosed()'></a>
@@ -66,17 +66,17 @@ Runs every time that your custom menu updates
 public override void OnMenuUpdate();
 ```
 
-<a name='BTD_Mod_Helper.UI.Menus.ModSettingsMenu.Open(BTD_Mod_Helper.BloonsMod)'></a>
+<a name='BTD_Mod_Helper.UI.Menus.ModSettingsMenu.Open(MelonBase)'></a>
 
-## ModSettingsMenu.Open(BloonsMod) Method
+## ModSettingsMenu.Open(MelonBase) Method
 
 Opens the Mod Settings for a specific mod
 
 ```csharp
-public static void Open(BTD_Mod_Helper.BloonsMod mod);
+public static void Open(MelonBase melon);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.UI.Menus.ModSettingsMenu.Open(BTD_Mod_Helper.BloonsMod).mod'></a>
+<a name='BTD_Mod_Helper.UI.Menus.ModSettingsMenu.Open(MelonBase).melon'></a>
 
-`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+`melon` [MelonLoader.MelonBase](https://docs.microsoft.com/en-us/dotnet/api/MelonLoader.MelonBase 'MelonLoader.MelonBase')

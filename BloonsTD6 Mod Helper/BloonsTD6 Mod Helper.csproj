@@ -21,7 +21,7 @@
         <DefineConstants>MOD_HELPER</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug' Or '$(CI)' != ''">
         <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
     </PropertyGroup>
 

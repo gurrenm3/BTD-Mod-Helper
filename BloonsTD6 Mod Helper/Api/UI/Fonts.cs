@@ -20,32 +20,30 @@ public static class Fonts
     public static TMP_FontAsset CurrencyExtras => Get("CurrencyExtrasSDF");
     public static TMP_FontAsset LiberationSans => Get("LiberationSans");
 
-    private static TMP_FontAsset inconsolata;
-
     public static TMP_FontAsset Inconsolata
     {
         get
         {
-            if (inconsolata != null) return inconsolata;
+            if (field != null) return field;
 
             try
             {
                 var unityAssets = ModContent.GetBundle<MelonMain>("unity_assets");
 
-                inconsolata = unityAssets.LoadAssetSync<TMP_FontAsset>("Inconsolata");
-                inconsolata.material = unityAssets.LoadAssetSync<Material>("Inconsolata Material");
-                inconsolata.material.mainTexture =
-                    inconsolata.atlas = unityAssets.LoadAssetSync<Texture2D>("Inconsolata Atlas");
+                field = unityAssets.LoadAssetSync<TMP_FontAsset>("Inconsolata");
+                field.material = unityAssets.LoadAssetSync<Material>("Inconsolata Material");
+                field.material.mainTexture =
+                    field.atlas = unityAssets.LoadAssetSync<Texture2D>("Inconsolata Atlas");
 
             }
             catch (Exception e)
             {
                 ModHelper.Warning("Failed to load Inconsolata font");
                 ModHelper.Warning(e);
-                inconsolata = LiberationSans;
+                field = LiberationSans;
             }
 
-            return inconsolata;
+            return field;
         }
     }
 

@@ -76,7 +76,7 @@ jobs:
 
 
       - name: Build Mod
-        run: dotnet build -c BTD6_Release "${{ env.CSPROJ }}" -p:BloonsTD6="../BloonsTD6"
+        run: dotnet build -c Release "${{ env.CSPROJ }}" -p:BloonsTD6="../BloonsTD6"
 
       - name: Upload Mod DLL
         uses: actions/upload-artifact@v4
@@ -92,7 +92,7 @@ jobs:
 
 
       - name: Build Plugin
-        run: dotnet build -c BTD6_Release "./UpdaterPlugin/UpdaterPlugin.csproj" -p:BloonsTD6="../BloonsTD6"
+        run: dotnet build -c Release "./UpdaterPlugin/UpdaterPlugin.csproj" -p:BloonsTD6="../BloonsTD6"
 
       - name: Upload Plugin DLL
         uses: actions/upload-artifact@v4
