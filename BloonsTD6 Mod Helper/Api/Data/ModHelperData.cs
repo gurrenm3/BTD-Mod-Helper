@@ -54,21 +54,7 @@ internal partial class ModHelperData
 
         if (data != null)
         {
-            foreach (var fieldInfo in data
-                         .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static)
-                         .Where(info => info is {IsLiteral: true, IsInitOnly: false} && Setters.ContainsKey(info.Name)))
-            {
-                var rawConstantValue = fieldInfo.GetRawConstantValue()!;
-                try
-                {
-                    Setters[fieldInfo.Name].Invoke(this, [rawConstantValue]);
-                }
-                catch (Exception)
-                {
-                    ModHelper.Warning(
-                        $"The {fieldInfo.Name} of {mod.Info.Name}'s ModHelperData has incorrect type {rawConstantValue.GetType().Name}");
-                }
-            }
+            ReadValuesFromType(data);
         }
         else if (mod.GetAssembly().TryGetEmbeddedResource(ModHelperDataJson, out var jsonStream))
         {
@@ -199,7 +185,7 @@ internal partial class ModHelperData
         if (IconBytes != null)
         {
             var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -1};
-            ImageConversion.LoadImage(texture, IconBytes);
+            texture.LoadImage(IconBytes);
             var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
                 new Vector2(0.5f, 0.5f), 10f);
             sprite.name = Name;
@@ -209,12 +195,6 @@ internal partial class ModHelperData
 
         return null;
     }
-
-    public void SetVersion(string version)
-    {
-        Version = version;
-    }
-
 
     public static void LoadAll()
     {

@@ -427,7 +427,7 @@ internal static class ModHelperGithub
                     PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(message.Replace(",", "\n")));
                 }
 
-                mod.SetVersion(mod.RepoVersion!);
+                mod.Version = mod.RepoVersion;
                 return downloadFilePath;
             }
         }

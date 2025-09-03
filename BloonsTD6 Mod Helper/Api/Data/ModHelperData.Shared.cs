@@ -101,34 +101,80 @@ internal partial class ModHelperData
     }
 
     // These public properties are the serialized ones
-    public string Version { get; protected set; }
-    public string Name { get; protected set; }
-    public string Description { get; protected set; }
-    public string Icon { get; protected set; }
-    public string DllName { get; protected set; }
-    public string RepoName { get; protected set; }
-    public string RepoOwner { get; protected set; }
-    public bool ManualDownload { get; protected set; }
-    public string ZipName { get; protected set; }
-    public string Author { get; protected set; }
-    public string SubPath { get; protected set; }
-    public bool SquareIcon { get; protected set; }
-    public string ExtraTopics { get; protected set; }
-    public string WorksOnVersion { get; protected set; }
-    public string Dependencies { get; protected set; }
-    public bool Plugin { get; protected set; }
-    public string Branch { get; protected set; }
-    public string ModHelperDataUrl { get; protected set; }
-    public string DownloadUrl { get; protected set; }
-    public string Authorization { get; protected set; }
-
+    public string Version { get; internal set; }
+    public string Name { get; internal set; }
+    public string Description { get; internal set; }
+    public string Icon { get; internal set; }
+    public string DllName { get; internal set; }
+    public string RepoName { get; internal set; }
+    public string RepoOwner { get; internal set; }
+    public bool ManualDownload { get; internal set; }
+    public string ZipName { get; internal set; }
+    public string Author { get; internal set; }
+    public string SubPath { get; internal set; }
+    public bool SquareIcon { get; internal set; }
+    public string ExtraTopics { get; internal set; }
+    public string WorksOnVersion { get; internal set; }
+    public string Dependencies { get; internal set; }
+    public bool Plugin { get; internal set; }
+    public string Branch { get; internal set; }
+    public string ModHelperDataUrl { get; internal set; }
+    public string DownloadUrl { get; internal set; }
+    public string Authorization { get; internal set; }
 
     internal string DataPath { get; }
+
+    public void ReadValuesFromType(Type data)
+    {
+        foreach (var fieldInfo in data
+                     .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static)
+                     .Where(info => info is {IsLiteral: true, IsInitOnly: false} && Setters.ContainsKey(info.Name)))
+        {
+            var rawConstantValue = fieldInfo.GetRawConstantValue()!;
+            try
+            {
+                Setters[fieldInfo.Name].Invoke(this, [rawConstantValue]);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"The {fieldInfo.Name} of {data.Assembly.FullName}'s ModHelperData failed to set");
+                ModHelper.Warning(e);
+            }
+        }
+    }
 
     internal void ReadValues(string data, bool allowRepo = true)
     {
         if (data.StartsWith("{")) ReadValuesFromJson(data, allowRepo);
         else ReadValuesFromString(data, allowRepo);
+    }
+
+    internal void ReadValuesFromJson(string data, bool allowRepo = true)
+    {
+        var json = JObject.Parse(data);
+        foreach (var (key, set) in Setters)
+        {
+            if (json.ContainsKey(key) && (allowRepo || !key.Contains("Repo")))
+            {
+                try
+                {
+                    set.Invoke(this, [json[key]?.ToObject<bool>()]);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+
+                try
+                {
+                    set.Invoke(this, [json[key]?.ToObject<string>()]);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+        }
     }
 
     internal void ReadValuesFromString(string data, bool allowRepo = true)
@@ -158,34 +204,6 @@ internal partial class ModHelperData
         {
             RepoName = GetRegexMatch<string>(data, RepoNameRegex) ?? RepoName;
             RepoOwner = GetRegexMatch<string>(data, RepoOwnerRegex) ?? RepoOwner;
-        }
-    }
-
-    internal void ReadValuesFromJson(string data, bool allowRepo = true)
-    {
-        var json = JObject.Parse(data);
-        foreach (var (key, set) in Setters)
-        {
-            if (json.ContainsKey(key) && (allowRepo || !key.Contains("Repo")))
-            {
-                try
-                {
-                    set.Invoke(this, [json[key]?.ToObject<bool>()]);
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-
-                try
-                {
-                    set.Invoke(this, [json[key]?.ToObject<string>()]);
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
         }
     }
 
@@ -319,7 +337,7 @@ internal partial class ModHelperData
         {
             if (RepoOwner == ModHelper.MyGithubUsername || RepoName == ModHelper.RepoName)
             {
-                ModHelper.Warning($"Failed to get ModHelperData for {RepoOwner}/{RepoName}");
+                ModHelper.Warning($"Failed to get ModHelperData for {Name}");
                 ModHelper.Warning(e);
             }
 

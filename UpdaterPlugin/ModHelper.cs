@@ -6,7 +6,7 @@ namespace UpdaterPlugin;
 public static class ModHelper
 {
     internal static string ModHelperDirectory =>
-        Path.Combine(MelonEnvironment.GameRootDirectory, "Btd6ModHelper");
+        Path.Combine(MelonEnvironment.GameRootDirectory, ModHelperDll.Replace(".dll", ""));
 
     internal static string DisabledModsDirectory => Path.Combine(MelonEnvironment.GameRootDirectory, "Disabled Mods");
     internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
@@ -21,6 +21,9 @@ public static class ModHelper
     internal const string DllName = "UpdaterPlugin.dll";
     internal const string Branch = "master";
     internal const string MyGithubUsername = "";
+
+    internal const string ModHelperDll = "Btd6ModHelper.dll";
+    internal const string ModHelperName = "BloonsTD6 Mod Helper";
 
     public static UpdaterPlugin Main => Melon<UpdaterPlugin>.Instance;
 

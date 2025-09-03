@@ -21,6 +21,7 @@ namespace UpdaterPlugin;
 
 public class UpdaterPlugin : MelonPlugin
 {
+    // ReSharper disable once CollectionNeverQueried.Global
     public static readonly List<string> UpdatedMods = [];
 
     internal static string SettingsFile =>
@@ -34,7 +35,7 @@ public class UpdaterPlugin : MelonPlugin
         {
             if (!CheckPing()) return;
 
-            UpdateMods().Wait(15000);
+            UpdateMods().Wait();
         }
         finally
         {
@@ -92,7 +93,7 @@ public class UpdaterPlugin : MelonPlugin
             }
         }
 
-        await Task.WhenAll(Directory.EnumerateFiles(ModHelper.DataDirectory, "*.json").Select(async path =>
+        var tasks = Directory.EnumerateFiles(ModHelper.DataDirectory, "*.json").Select(async path =>
         {
             try
             {
@@ -112,59 +113,79 @@ public class UpdaterPlugin : MelonPlugin
 
                 if (data.Plugin || data.ManualDownload) return;
 
-                var enabledDllPath = Path.Combine(MelonEnvironment.ModsDirectory, data.DllName);
-                var disabledDllPath = Path.Combine(ModHelper.DisabledModsDirectory, data.DllName);
-
-                if (!(data.RepoName == ModHelper.RepoName && data.RepoOwner == ModHelper.RepoOwner) &&
-                    !File.Exists(enabledDllPath) &&
-                    !File.Exists(disabledDllPath)) return;
-
-                var repoData = new ModHelperData(data);
-                var repoValues = await repoData.LoadDataFromRepoAsync(ct);
-
-                if (string.IsNullOrEmpty(repoValues)) return;
-
-                repoData.ReadValues(repoValues);
-
-                if (!ModHelperData.IsUpdate(data.Version, repoData.Version, repoData.WorksOnVersion)) return;
-
-                var url = $"https://github.com/{data.RepoOwner}/{data.RepoName}/releases/latest/download/{data.DllName}";
-
-                var downloadUrl = repoData.DownloadUrl ?? data.DownloadUrl ?? url;
-                var auth = repoData.Authorization ?? data.Authorization;
-
-                ModHelper.Msg($"Downloading {data.RepoOwner}/{data.RepoName} {repoData.Version}");
-                var bytes = await ModHelperHttp.Client.GetBytesWithAuthAsync(downloadUrl, auth, ct);
-
-                var enabled = false;
-                if (File.Exists(enabledDllPath))
-                {
-                    enabled = true;
-                    if (File.Exists(disabledDllPath)) File.Delete(disabledDllPath);
-                    File.Move(enabledDllPath, disabledDllPath);
-                }
-
-                try
-                {
-                    await File.WriteAllBytesAsync(enabled ? enabledDllPath : disabledDllPath, bytes, ct);
-                    repoData.SaveToJson(ModHelper.DataDirectory);
-                    UpdatedMods.Add(data.Name);
-                }
-                catch (Exception e)
-                {
-                    ModHelper.Warning($"Failed to download {data.RepoOwner}/{data.RepoName} {repoData.Version}");
-                    ModHelper.Warning(e);
-                    if (enabled)
-                    {
-                        File.Move(disabledDllPath, enabledDllPath);
-                    }
-                }
+                await UpdateMod(data, ct);
             }
             catch (Exception e)
             {
                 ModHelper.Warning(e);
             }
-        }));
+        }).ToList();
+
+        // If hasn't been installed, always update Mod Helper
+        if (!File.Exists(Path.Join(ModHelper.DataDirectory, ModHelper.ModHelperDll.Replace(".dll", ".json"))))
+        {
+            var data = new ModHelperData();
+            data.ReadValuesFromType(typeof(ModHelper));
+            data.Version = "0.0.0";
+            data.Name = ModHelper.ModHelperName;
+            data.DllName = ModHelper.ModHelperDll;
+            tasks.Add(UpdateMod(data, ct));
+        }
+
+        await Task.WhenAll(tasks);
+    }
+
+    private static async Task UpdateMod(ModHelperData data, CancellationToken ct)
+    {
+        var enabledDllPath = Path.Combine(MelonEnvironment.ModsDirectory, data.DllName);
+        var disabledDllPath = Path.Combine(ModHelper.DisabledModsDirectory, data.DllName);
+
+        var isModHelper = data.RepoName == ModHelper.RepoName && data.RepoOwner == ModHelper.RepoOwner;
+
+        if (!isModHelper && !File.Exists(enabledDllPath) && !File.Exists(disabledDllPath)) return;
+
+        var remoteData = new ModHelperData(data);
+        var remoteValues = await remoteData.LoadDataFromRepoAsync(ct);
+
+        if (string.IsNullOrEmpty(remoteValues)) return;
+
+        remoteData.ReadValues(remoteValues);
+
+        if (!ModHelperData.IsUpdate(data.Version, remoteData.Version, remoteData.WorksOnVersion)) return;
+
+        var url = string.IsNullOrEmpty(data.SubPath)
+            ? $"https://github.com/{data.RepoOwner}/{data.RepoName}/releases/latest/download/{data.DllName}"
+            : data.GetContentURL(data.DllName);
+
+        var downloadUrl = remoteData.DownloadUrl ?? data.DownloadUrl ?? url;
+        var auth = remoteData.Authorization ?? data.Authorization;
+
+        ModHelper.Msg($"Downloading {data.Name} {remoteData.Version}");
+        var bytes = await ModHelperHttp.Client.GetBytesWithAuthAsync(downloadUrl, auth, ct);
+
+        var enabled = isModHelper;
+        if (File.Exists(enabledDllPath))
+        {
+            enabled = true;
+            if (File.Exists(disabledDllPath)) File.Delete(disabledDllPath);
+            File.Move(enabledDllPath, disabledDllPath);
+        }
+
+        try
+        {
+            await File.WriteAllBytesAsync(enabled ? enabledDllPath : disabledDllPath, bytes, ct);
+            remoteData.SaveToJson(ModHelper.DataDirectory);
+            UpdatedMods.Add(data.Name);
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Failed to download {data.Name} {remoteData.Version}");
+            ModHelper.Warning(e);
+            if (enabled)
+            {
+                File.Move(disabledDllPath, enabledDllPath);
+            }
+        }
     }
 
 }

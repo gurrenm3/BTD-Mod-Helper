@@ -311,8 +311,8 @@ public abstract class BloonsMod : MelonMod, IModSettings
                 }
 
                 var addName = hook.HookType == HookTargetAttribute.EHookType.Prefix
-                                  ? "AddPrefix"
-                                  : "AddPostfix";
+                    ? "AddPrefix"
+                    : "AddPostfix";
                 var addMethod = hook.TargetType.GetMethod(addName, BindingFlags.Instance | BindingFlags.Public) ??
                                 throw new MissingMethodException(hook.TargetType.FullName, addName);
 
