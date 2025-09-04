@@ -70,7 +70,7 @@ internal static class JsonTowers
     private static async Task LoadJson(FileInfo file)
     {
         var text = await File.ReadAllTextAsync(file.FullName);
-        var obj = JsonConvert.DeserializeObject(text, ModelConverter.Settings);
+        var obj = JsonConvert.DeserializeObject(text, Il2CppJsonConvert.Settings);
         
         switch (obj)
         {

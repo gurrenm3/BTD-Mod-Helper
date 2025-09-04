@@ -1,3 +1,4 @@
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppNewtonsoft.Json;
 using Il2CppSystem;
 using Il2CppSystem.IO;
@@ -42,7 +43,7 @@ public static class FileIOHelper
     /// <param name="data"></param>
     public static void SaveObject(string fileName, Object data)
     {
-        var text = JsonConvert.SerializeObject(data, Settings);
+        var text = Il2CppJsonConvert.SerializeObject(data);
 
         SaveFile(fileName, text);
     }

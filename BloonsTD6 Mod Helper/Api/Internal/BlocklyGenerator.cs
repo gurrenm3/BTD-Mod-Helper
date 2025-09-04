@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api.Helpers;
-using FuzzySharp;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
@@ -27,16 +26,13 @@ using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using Object = Il2CppSystem.Object;
 using ValueType = Il2CppSystem.ValueType;
@@ -45,25 +41,30 @@ namespace BTD_Mod_Helper.Api.Internal;
 internal static class BlocklyGenerator
 {
     private static readonly Type[] BaseTypes =
-    {
+    [
         typeof(TowerModel), typeof(UpgradeModel)
-    };
+    ];
 
     private static readonly Type[] StopBefore =
-    {
+    [
         typeof(Object), typeof(ValueType)
-    };
+    ];
 
     private static readonly Type[] GenericArrayTypes =
-    {
+    [
         typeof(Il2CppStructArray<>), typeof(Il2CppReferenceArray<>), typeof(Il2CppArrayBase<>),
         typeof(Il2CppSystem.Collections.Generic.List<>)
-    };
+    ];
 
     private static readonly string[] IgnoreMembers =
-    {
+    [
         "name", "checkedImplementationType", "implementationType", "childDependants", "isWrapped"
-    };
+    ];
+
+    private static readonly string[] ExtraMembers =
+    [
+        "targetTypes"
+    ];
 
     private static readonly Dictionary<Type, int> Types = new();
     private static readonly HashSet<Type> ExtraTypes = [];
@@ -711,6 +712,8 @@ internal static class BlocklyGenerator
             badFields.Contains(member.Name) ||
             member.Name.StartsWith("_")) return false;
 
+        if (ExtraMembers.Contains(member.Name)) return true;
+
         var rowType = member switch
         {
             PropertyInfo property when property.SetMethod != null => property.PropertyType,
@@ -780,6 +783,7 @@ internal static class BlocklyGenerator
     internal static void GetAllTypes(GameModel gameModel = null)
     {
         gameModel ??= InGame.instance?.bridge?.Model ?? Game.instance.model;
+        Types[typeof(TargetType)] = 0;
         foreach (var tower in gameModel.towers)
         {
             tower.GetDescendants<Model>().ForEach(model =>
@@ -790,6 +794,7 @@ internal static class BlocklyGenerator
                     Types[type]++;
                 }
             });
+            Types[typeof(TargetType)]++;
         }
         foreach (var type in typeof(Model).Assembly.GetTypes().Where(t =>
                      t.IsAssignableTo(typeof(Model)) &&

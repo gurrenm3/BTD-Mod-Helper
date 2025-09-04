@@ -2,22 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Internal;
 using FuzzySharp;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Knowledge;
 using Il2CppAssets.Scripts.Models.Powers.Mods;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Weapons;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
 using Il2CppNewtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ValueType = Il2CppSystem.ValueType;
+
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
@@ -114,7 +121,11 @@ public static class ModelSerializer
 
         if (jObject.TryGetValue("$type", out var typeToken))
         {
-            var typePath = typeToken.ToString().Replace("Assets.", "Il2CppAssets.");
+            var typePath = typeToken.ToString();
+            if (typePath.StartsWith("Assets."))
+            {
+                typePath = "Il2Cpp" + typePath;
+            }
 
             type = Type.GetType(typePath, true)!;
         }
@@ -199,12 +210,13 @@ public static class ModelSerializer
             var jToken = jObject[name];
 
             // Convert TargetType, etc to String
-            if (type.GetProperty(name)?.PropertyType is { } field &&
+            if (type.GetProperty(name) is {PropertyType: { } field} property &&
                 !field.IsAssignableTo(param.ParameterType) &&
-                IsIl2CppValueType(field) &&
+                field.IsIl2CppValueType() &&
                 field.GetProperties().FirstOrDefault(p => p.PropertyType.IsAssignableTo(param.ParameterType)) is { } prop)
             {
                 jToken = jToken![prop.Name];
+                extraFields[property.Name] = property;
             }
 
             // This simply doesn't save the values it uses within the model, lol
@@ -247,7 +259,11 @@ public static class ModelSerializer
         // Override simple values that may be different from constructor
         foreach (var (name, prop) in extraFields)
         {
-            if (prop.PropertyType.IsValueType)
+            if (prop.GetUnderlyingType().IsIl2CppNullable())
+            {
+                // TODO handle this heere too
+            }
+            else if (prop.PropertyType.IsValueType || prop.PropertyType.IsIl2CppValueType())
             {
                 prop.SetValue(result, Generate(jObject[name], prop.PropertyType, name));
             }
@@ -288,7 +304,8 @@ public static class ModelSerializer
         {
             foreach (var property in type.GetProperties().Where(p => p.CanWrite))
             {
-                var value = Generate(jObject[property.Name], property.PropertyType, property.Name);
+                var jValue = jObject[property.Name] ?? jObject[property.Name.ToTitleCase()];
+                var value = Generate(jValue, property.PropertyType, property.Name);
                 property.SetValue(result, value);
             }
         }
@@ -341,27 +358,19 @@ public static class ModelSerializer
         return result;
     }
 
-    internal static bool IsIl2CppNullable(this Type type) =>
-        type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Il2CppSystem.Nullable<>);
-
-    internal static bool IsIl2CppDictionary(this Type type) =>
-        type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Il2CppSystem.Collections.Generic.Dictionary<,>);
-
-    internal static bool IsIl2CppValueType(this Type type) => type.IsAssignableTo(typeof(ValueType));
-
     private static object Generate(JToken jToken, Type type, string key = null)
     {
         try
         {
             return jToken switch
             {
-                null when IsIl2CppValueType(type) => GenerateValueType(null, type),
+                null when type.IsIl2CppValueType() => GenerateValueType(null, type),
                 null => null,
                 JValue value => GenerateBaseType(value, type),
                 JArray jArray => GenerateArray(jArray, type),
-                JObject jObject when IsIl2CppNullable(type) => GenerateNullable(jObject, type),
-                JObject jObject when IsIl2CppValueType(type) => GenerateValueType(jObject, type),
-                JObject jObject when IsIl2CppDictionary(type) => GenerateDictionary(jObject, type),
+                JObject jObject when type.IsIl2CppNullable() => GenerateNullable(jObject, type),
+                JObject jObject when type.IsIl2CppValueType() => GenerateValueType(jObject, type),
+                JObject jObject when type.IsIl2CppDictionary() => GenerateDictionary(jObject, type),
                 JObject jObject => GenerateObject(jObject, type),
                 _ => null
             };
@@ -405,7 +414,13 @@ public static class ModelSerializer
 #if DEBUG
         MakeConsistent(model);
 #endif
-        return JsonConvert.SerializeObject(model, Settings);
+
+        var result = Il2CppJsonConvert.SerializeObject(model);
+
+#if DEBUG
+        result = result.Replace("_BananaFarmerRegrowBananasModel_", "_");
+#endif
+        return result;
     }
 
     /// <summary>
@@ -444,8 +459,51 @@ public static class ModelSerializer
         return result;
     }
 
-    internal static void MakeConsistent(Model model, bool fixAllNames = false)
+    internal static void MakeConsistent(Model model)
     {
+        // Handling models whose descendants aren't properly set up by NK
+        model.GetDescendants<VineRuptureModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.projectileModel);
+            m.AddChildDependant(m.projectileModelHardThorns);
+            m.AddChildDependant(m.effectModel);
+        });
+        model.GetDescendants<SlowModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.effectModel);
+        });
+        model.GetDescendants<AgeModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.endOfRoundClearBypassModel);
+        });
+        model.GetDescendants<PreGamePrepModModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.projectileModel);
+        });
+        model.GetDescendants<CeramicShockModModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.slowModelToUse);
+        });
+        model.GetDescendants<AddAbilityToTowerModModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.abilityModel);
+        });
+        model.GetDescendants<SubmergeModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.submergeAttackModel);
+            m.AddChildDependant(m.submergeEffectModel);
+            m.AddChildDependant(m.submergeSound);
+        });
+        model.GetDescendants<LineProjectileEmissionModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.projectileAtEndModel);
+            m.AddChildDependant(m.projectileAtEndModel);
+        });
+        model.GetDescendants<TargetSelectedPointModel>().ForEach(m =>
+        {
+            m.AddChildDependant(m.projectileToExpireOnTargetChangeModel);
+        });
+
         // NK stores this as null for no reason
         model.GetDescendants<StripChildrenModel>().ForEach(stripChildren =>
         {
@@ -473,7 +531,7 @@ public static class ModelSerializer
             }
         });
 
-        model.GetDescendants<TowerModel>().ForEach(tower => MakeConsistent(tower));
+        model.GetDescendants<TowerModel>().ForEach(MakeConsistent);
 
         model.GetDescendants<GyrfalconPatternModel>().ForEach(gyrfalconPattern =>
         {
@@ -493,42 +551,25 @@ public static class ModelSerializer
             }
         });
 
-        // Handling models whose descendants aren't properly set up by NK
-        if (fixAllNames)
+        model.GetDescendants<WeaponModel>().ForEach(weapon =>
         {
-            model.GetDescendants<SlowModel>().ForEach(m =>
-            {
-                m.AddChildDependant(m.effectModel);
-                MakeConsistent(m, true);
-            });
-            model.GetDescendants<AgeModel>().ForEach(m =>
-            {
-                m.AddChildDependant(m.endOfRoundClearBypassModel);
-                MakeConsistent(m, true);
-            });
-            model.GetDescendants<PreGamePrepModModel>().ForEach(m =>
-            {
-                m.AddChildDependant(m.projectileModel);
-                MakeConsistent(m, true);
-            });
-            model.GetDescendants<CeramicShockModModel>().ForEach(m =>
-            {
-                m.AddChildDependant(m.slowModelToUse);
-                MakeConsistent(m, true);
-            });
-            model.GetDescendants<AddAbilityToTowerModModel>().ForEach(m =>
-            {
-                m.AddChildDependant(m.abilityModel);
-                MakeConsistent(m, true);
-            });
-            model.GetDescendants<VineRuptureModel>().ForEach(m =>
-            {
-                m.AddChildDependant(m.projectileModel);
-                m.AddChildDependant(m.projectileModelHardThorns);
-                m.AddChildDependant(m.effectModel);
-                MakeConsistent(m, true);
-            });
-        }
+            weapon.Rate = weapon.Rate;
+        });
+
+        model.GetDescendants<AgeModel>().ForEach(age =>
+        {
+            age.Lifespan = age.Lifespan;
+        });
+
+        model.GetDescendants<AddTagToBloonModel>().ForEach(addTag =>
+        {
+            addTag.Lifespan = addTag.Lifespan;
+        });
+
+        model.GetDescendants<GyrfalconPatternModel>().ForEach(gyrfalconPattern =>
+        {
+            gyrfalconPattern.moveWithAirUnitModel ??= new MoveWithAirUnitModel("Gyrfalcon");
+        });
 
         if (model.Is(out TowerModel towerModel))
         {
@@ -540,18 +581,27 @@ public static class ModelSerializer
         {
             foreach (var knowledgeModel in gameModel.allKnowledge)
             {
-                MakeConsistent(knowledgeModel, true);
+                MakeConsistent(knowledgeModel);
             }
         }
-        else if (model.Is(out KnowledgeModel knowledgeModel))
+
+        model.GetDescendants<Model>().ForEach(m =>
         {
-            knowledgeModel.GetDescendants<Model>().ForEach(m =>
+            if (m.name == "")
             {
-                if (m.name == "")
-                {
-                    m.name = m.GetIl2CppType().Name + "_";
-                }
-            });
-        }
+                m.name = m.GetIl2CppType().Name + "_";
+            }
+        });
+
+        model.GetDescendants<ProjectileModel>().ForEach(projectile =>
+        {
+            foreach (var displayModel in projectile.GetBehaviors<DisplayModel>()
+                         .Where(d => d.name == "DisplayModel_")
+                         .Skip(1))
+            {
+                projectile.RemoveBehavior(displayModel);
+            }
+
+        });
     }
 }

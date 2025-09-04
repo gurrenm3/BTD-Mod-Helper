@@ -23,7 +23,7 @@ const createResourceBlock =
         {
           type: "field_hidden",
           name: "$type",
-          value: `${type.replace("Il2Cpp", "")}, Assembly-CSharp`,
+          value: `${type}, Assembly-CSharp`,
         },
         {
           type: "field_hidden",

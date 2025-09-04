@@ -38,19 +38,19 @@ internal static class ModelSerializationTests
     {
         try
         {
-            var expected = ModelSerializer.SerializeModel(towerModel);
+            var expected = ModelSerializer.SerializeModel(towerModel.Duplicate());
             var result = ModelSerializer.DeserializeModel<TowerModel>(expected);
             var actual = ModelSerializer.SerializeModel(result);
 
-        var success = actual == expected;
+            var success = actual == expected;
 
-        if (!success)
-        {
-            FileIOHelper.SaveFile($"Test/{towerModel.name}.expected.json", expected);
-            FileIOHelper.SaveFile($"Test/{towerModel.name}.actual.json", actual);
-        }
+            if (!success)
+            {
+                FileIOHelper.SaveFile($"Test/{towerModel.baseId}/{towerModel.name}.expected.json", expected);
+                FileIOHelper.SaveFile($"Test/{towerModel.baseId}/{towerModel.name}.actual.json", actual);
+            }
 
-        return success;
+            return success;
 
         }
         catch (Exception e)
@@ -61,7 +61,7 @@ internal static class ModelSerializationTests
     }
 
 
-    public static void TestTowerSerialization(GameModel gameModel)
+    public static bool TestTowerSerialization(GameModel gameModel)
     {
         var results = new Dictionary<string, bool>();
 
@@ -87,7 +87,11 @@ internal static class ModelSerializationTests
                     ModHelper.Msg(name);
                 }
             }
+
+            return false;
         }
+
+        return true;
     }
 
     public static bool TestSerialization(GameModel gameModel)

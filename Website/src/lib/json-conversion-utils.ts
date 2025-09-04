@@ -27,6 +27,9 @@ export const addBlockToMap = (block: BlockDef) => {
   if (fullType && typeof fullType === "string") {
     if (!(fullType in blocksByFullType)) {
       blocksByFullType[fullType] = block.type;
+      if (!fullType.startsWith("Il2Cpp")) {
+        blocksByFullType["Il2Cpp" + fullType] = block.type;
+      }
     } else {
       // console.log("Duplicate ", fullType);
     }
