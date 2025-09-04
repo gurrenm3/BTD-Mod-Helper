@@ -28,8 +28,10 @@ internal class TitleScreen_Start
             ModByteLoader.currentLoadTask?.Wait();
             ModContent.GetContent<ModByteLoader>().Where(loader => !loader.Loaded).Do(loader => loader.LoadAllBytes());
 
+#if DEBUG
             JsonTowers.LoadTask?.Wait();
             JsonTowers.ProcessAll(Game.instance.model);
+#endif
 
             PreLoadResourcesTask.Instance.RunSync();
 

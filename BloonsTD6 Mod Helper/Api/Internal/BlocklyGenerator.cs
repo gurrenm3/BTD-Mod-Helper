@@ -83,8 +83,9 @@ internal static class BlocklyGenerator
         ModHelper.Msg("Generating blocks...");
         blocks.AddRange(BaseTypes.Select(CreateBlock));
         blocks.AddRange(Types.Keys.OrderByDescending(type => Types[type]).Select(CreateBlock));
-        blocks.AddRange(ArrayTypes.Select(CreateArrayBlock));
-        blocks.AddRange(DictionaryTypes.Select(CreateDictionaryBlock));
+        blocks.AddRange(ExtraTypes.EnumerateUntilStable().Select(CreateBlock));
+        blocks.AddRange(ArrayTypes.EnumerateUntilStable().Select(CreateArrayBlock));
+        blocks.AddRange(DictionaryTypes.EnumerateUntilStable().Select(CreateDictionaryBlock));
         File.WriteAllText(Path.Combine(folder, "blocks.json"), new JArray(blocks).ToString(Formatting.Indented));
         ModHelper.Msg("Finished generating blocks");
 
@@ -437,7 +438,9 @@ internal static class BlocklyGenerator
             color = type == typeof(UpgradeModel) ? 220 : 0;
             return "Base";
         }
-        if (type.IsAssignableTo(typeof(TowerBehaviorModel)) || type.IsAssignableTo(typeof(ApplyModModel)))
+        if (type.IsAssignableTo(typeof(TowerBehaviorModel)) ||
+            type.IsAssignableTo(typeof(ApplyModModel)) ||
+            type.IsAssignableTo(typeof(TargetType)))
         {
             color = 30;
             if (type.IsAssignableTo(typeof(SupportModel)))
@@ -783,7 +786,6 @@ internal static class BlocklyGenerator
     internal static void GetAllTypes(GameModel gameModel = null)
     {
         gameModel ??= InGame.instance?.bridge?.Model ?? Game.instance.model;
-        Types[typeof(TargetType)] = 0;
         foreach (var tower in gameModel.towers)
         {
             tower.GetDescendants<Model>().ForEach(model =>
@@ -794,7 +796,6 @@ internal static class BlocklyGenerator
                     Types[type]++;
                 }
             });
-            Types[typeof(TargetType)]++;
         }
         foreach (var type in typeof(Model).Assembly.GetTypes().Where(t =>
                      t.IsAssignableTo(typeof(Model)) &&

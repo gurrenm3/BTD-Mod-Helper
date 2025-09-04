@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
@@ -12,6 +13,7 @@ using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 
 [JsonObject(MemberSerialization.OptIn)]
+[DontLoad]
 internal class ModJsonTower : ModTower
 {
     protected virtual JObject TowerModel { get; set; }
@@ -43,9 +45,8 @@ internal class ModJsonTower : ModTower
     public override SpriteReference PortraitReference { get; }
 
     [JsonProperty]
-    public JsonModelChange[] Changes { get; init; } = Array.Empty<JsonModelChange>();
+    public JsonModelChange[] Changes { get; init; } = [];
 
-    // ReSharper disable once ConvertToPrimaryConstructor
     public ModJsonTower
     (
         [JsonProperty] string name, [JsonProperty] string displayName, [JsonProperty] string description,
@@ -79,14 +80,12 @@ internal class ModJsonTower : ModTower
         base.Register();
     }
 
-    private TowerModel baseTowerModel;
-
     internal override TowerModel BaseTowerModel =>
-        baseTowerModel ??= ModelSerializer.DeserializeModel<TowerModel>(TowerModel);
+        field ??= ModelSerializer.DeserializeModel<TowerModel>(TowerModel);
 
     public override TowerModel GetBaseTowerModel(int[] tiers)
     {
-        if (tiers.SequenceEqual(new[] {0, 0, 0})) 
+        if (tiers.SequenceEqual([0, 0, 0]))
             return BaseTowerModel.Duplicate();
 
         var tower = (JObject) TowerModel.DeepClone();

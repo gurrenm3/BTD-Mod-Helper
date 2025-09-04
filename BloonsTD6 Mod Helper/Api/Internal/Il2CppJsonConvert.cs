@@ -10,6 +10,7 @@ using Il2CppSystem.Collections;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Enumerable = Il2CppSystem.Linq.Enumerable;
+using FieldInfo = Il2CppSystem.Reflection.FieldInfo;
 using Object = Il2CppSystem.Object;
 using ValueType = Il2CppSystem.ValueType;
 
@@ -172,6 +173,7 @@ public static class Il2CppJsonConvert
                 .GetMembers(Il2CppSystem.Reflection.BindingFlags.Instance |
                             Il2CppSystem.Reflection.BindingFlags.Public |
                             Il2CppSystem.Reflection.BindingFlags.NonPublic)
+                .Where(info => !(info.Is(out FieldInfo fieldInfo) && fieldInfo.IsNotSerialized))
                 .Select(info => info.Name)
                 .ToHashSet();
 

@@ -23,7 +23,7 @@ const createResourceBlock =
         {
           type: "field_hidden",
           name: "$type",
-          value: `${type}, Assembly-CSharp`,
+          value: `${type.replace("Il2Cpp", "")}, Assembly-CSharp`,
         },
         {
           type: "field_hidden",
@@ -36,7 +36,7 @@ const createResourceBlock =
 
 export const prefabReferenceMap = prefabReferences as Record<string, string>;
 export const prefabBlocks = Object.entries(prefabReferences).map(
-  createResourceBlock("Il2CppAssets.Scripts.Utils.PrefabReference")
+  createResourceBlock("Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference")
 );
 
 export const audioSourceReferenceMap = prefabReferences as Record<
@@ -44,12 +44,14 @@ export const audioSourceReferenceMap = prefabReferences as Record<
   string
 >;
 export const audioSourceBlocks = Object.entries(audioSourceReferences).map(
-  createResourceBlock("Il2CppAssets.Scripts.Utils.AudioSourceReference")
+  createResourceBlock(
+    "Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference"
+  )
 );
 
 export const spriteReferenceMap = spriteReferences as Record<string, string>;
 export const spriteBlocks = Object.entries(spriteReferences).map(
-  createResourceBlock("Il2CppAssets.Scripts.Utils.SpriteReference")
+  createResourceBlock("Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference")
 );
 
 export const towerSetColors = {

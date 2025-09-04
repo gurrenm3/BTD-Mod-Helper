@@ -2558,82 +2558,6 @@
     ]
   },
   {
-    "type": "Il2CppAssets.Scripts.Models.Towers.TargetType",
-    "output": [
-      "Il2CppAssets.Scripts.Models.Towers.TargetType"
-    ],
-    "category": "Other",
-    "subcategory": null,
-    "colour": 240,
-    "message0": "%1TargetType",
-    "args0": [
-      {
-        "type": "field_hidden",
-        "name": "$type",
-        "value": "Assets.Scripts.Models.Towers.TargetType, Assembly-CSharp"
-      }
-    ],
-    "message1": "id%1",
-    "args1": [
-      {
-        "name": "id",
-        "type": "field_input",
-        "text": ""
-      }
-    ],
-    "message2": "isActionable%1",
-    "args2": [
-      {
-        "name": "isActionable",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message3": "actionOnCreate%1",
-    "args3": [
-      {
-        "name": "actionOnCreate",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ],
-    "message4": "continueToNextPriority%1",
-    "args4": [
-      {
-        "name": "continueToNextPriority",
-        "type": "field_dropdown",
-        "options": [
-          [
-            "false",
-            "false"
-          ],
-          [
-            "true",
-            "true"
-          ]
-        ]
-      }
-    ]
-  },
-  {
     "type": "Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnPlaceModel",
     "output": [
       "Il2CppAssets.Scripts.Models.Model",
@@ -64063,6 +63987,657 @@
     ]
   },
   {
+    "type": "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference",
+    "output": [
+      "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference"
+    ],
+    "category": "Other",
+    "subcategory": null,
+    "colour": 240,
+    "message0": "%1SpriteReference",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference, Il2CppNinjaKiwi.Common"
+      }
+    ],
+    "message1": "guidRef%1",
+    "args1": [
+      {
+        "name": "guidRef",
+        "type": "field_input",
+        "text": ""
+      }
+    ]
+  },
+  {
+    "type": "Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference",
+    "output": [
+      "Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference"
+    ],
+    "category": "Other",
+    "subcategory": null,
+    "colour": 240,
+    "message0": "%1PrefabReference",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference, Il2CppNinjaKiwi.Common"
+      }
+    ],
+    "message1": "guidRef%1",
+    "args1": [
+      {
+        "name": "guidRef",
+        "type": "field_input",
+        "text": ""
+      }
+    ]
+  },
+  {
+    "type": "Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference",
+    "output": [
+      "Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference"
+    ],
+    "category": "Other",
+    "subcategory": null,
+    "colour": 240,
+    "message0": "%1AudioClipReference",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference, Il2CppNinjaKiwi.Common"
+      }
+    ],
+    "message1": "guidRef%1",
+    "args1": [
+      {
+        "name": "guidRef",
+        "type": "field_input",
+        "text": ""
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Simulation.SMath.Vector3",
+    "output": [
+      "object",
+      "System.ValueType",
+      "Il2CppAssets.Scripts.Simulation.SMath.Vector3"
+    ],
+    "category": "Other",
+    "subcategory": null,
+    "colour": 240,
+    "message0": "%1Vector3",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Simulation.SMath.Vector3, Assembly-CSharp"
+      }
+    ],
+    "message1": "x %1 y %2 z %3",
+    "args1": [
+      {
+        "name": "x",
+        "type": "field_number",
+        "value": 0.0
+      },
+      {
+        "name": "y",
+        "type": "field_number",
+        "value": 0.0
+      },
+      {
+        "name": "z",
+        "type": "field_number",
+        "value": 0.0
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Towers.TargetType",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Towers.TargetType"
+    ],
+    "category": "Tower Behaviors",
+    "subcategory": null,
+    "colour": 30,
+    "message0": "%1TargetType",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.Towers.TargetType, Assembly-CSharp"
+      }
+    ],
+    "message1": "id%1",
+    "args1": [
+      {
+        "name": "id",
+        "type": "field_input",
+        "text": ""
+      }
+    ],
+    "message2": "isActionable%1",
+    "args2": [
+      {
+        "name": "isActionable",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message3": "actionOnCreate%1",
+    "args3": [
+      {
+        "name": "actionOnCreate",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message4": "continueToNextPriority%1",
+    "args4": [
+      {
+        "name": "continueToNextPriority",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Simulation.SMath.Vector2",
+    "output": [
+      "object",
+      "System.ValueType",
+      "Il2CppAssets.Scripts.Simulation.SMath.Vector2"
+    ],
+    "category": "Other",
+    "subcategory": null,
+    "colour": 240,
+    "message0": "%1Vector2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Simulation.SMath.Vector2, Assembly-CSharp"
+      }
+    ],
+    "message1": "x %1 y %2",
+    "args1": [
+      {
+        "name": "x",
+        "type": "field_number",
+        "value": 0.0
+      },
+      {
+        "name": "y",
+        "type": "field_number",
+        "value": 0.0
+      }
+    ]
+  },
+  {
+    "type": "double",
+    "output": [
+      "object",
+      "System.ValueType",
+      "double"
+    ],
+    "category": "Other",
+    "subcategory": null,
+    "colour": 240,
+    "message0": "%1Double",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "System.Double, System.Private.CoreLib"
+      }
+    ],
+    "message1": "",
+    "args1": []
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.MapEditorBehaviors.PropModel",
+    "output": [
+      "Il2CppAssets.Scripts.Models.Model",
+      "Il2CppAssets.Scripts.Models.Entities.EntityModel",
+      "Il2CppAssets.Scripts.Models.MapEditorBehaviors.EditorItemModel",
+      "Il2CppAssets.Scripts.Models.MapEditorBehaviors.PropModel"
+    ],
+    "category": "Misc Models",
+    "subcategory": null,
+    "colour": 210,
+    "message0": "%1PropModel%2",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.MapEditorBehaviors.PropModel, Assembly-CSharp"
+      },
+      {
+        "type": "field_input",
+        "name": "name",
+        "text": ""
+      }
+    ],
+    "message1": "tags%1",
+    "args1": [
+      {
+        "name": "tags",
+        "type": "field_multi_dropdown",
+        "bitmap": true,
+        "options": [
+          [
+            "Halloween",
+            "1"
+          ],
+          [
+            "Christmas",
+            "2"
+          ],
+          [
+            "Easter",
+            "4"
+          ],
+          [
+            "Meadow",
+            "256"
+          ],
+          [
+            "Swamp",
+            "512"
+          ],
+          [
+            "Ocean",
+            "1024"
+          ],
+          [
+            "Desert",
+            "2048"
+          ],
+          [
+            "Snow",
+            "4096"
+          ],
+          [
+            "Forest",
+            "8192"
+          ],
+          [
+            "Plains",
+            "16384"
+          ],
+          [
+            "Urban",
+            "32768"
+          ],
+          [
+            "Candy",
+            "65536"
+          ],
+          [
+            "Spring",
+            "131072"
+          ],
+          [
+            "Tree",
+            "16777216"
+          ],
+          [
+            "Shrub",
+            "33554432"
+          ],
+          [
+            "Fence",
+            "67108864"
+          ],
+          [
+            "Building",
+            "134217728"
+          ],
+          [
+            "Decoration",
+            "268435456"
+          ],
+          [
+            "Critter",
+            "536870912"
+          ],
+          [
+            "Pet",
+            "1073741824"
+          ],
+          [
+            "Effect",
+            "2147483648"
+          ],
+          [
+            "Plant",
+            "4294967296"
+          ],
+          [
+            "Rock",
+            "8589934592"
+          ],
+          [
+            "Platform",
+            "17179869184"
+          ],
+          [
+            "Blocking",
+            "34359738368"
+          ],
+          [
+            "Interactable",
+            "68719476736"
+          ],
+          [
+            "Quest",
+            "137438953472"
+          ],
+          [
+            "Removeable",
+            "274877906944"
+          ],
+          [
+            "ActionProp",
+            "549755813888"
+          ],
+          [
+            "CustomProp",
+            "1099511627776"
+          ]
+        ]
+      }
+    ],
+    "message2": "propSetType%1",
+    "args2": [
+      {
+        "name": "propSetType",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "defaultProp",
+            "0"
+          ],
+          [
+            "quest",
+            "1"
+          ],
+          [
+            "pet",
+            "2"
+          ],
+          [
+            "ambient",
+            "3"
+          ],
+          [
+            "fx",
+            "4"
+          ]
+        ]
+      }
+    ],
+    "message3": "linkedToTrophyStoreItemId%1",
+    "args3": [
+      {
+        "name": "linkedToTrophyStoreItemId",
+        "type": "field_input",
+        "text": ""
+      }
+    ],
+    "message4": "hasAnimationController%1",
+    "args4": [
+      {
+        "name": "hasAnimationController",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message5": "isSightAndPlacementBlockingDisabled%1",
+    "args5": [
+      {
+        "name": "isSightAndPlacementBlockingDisabled",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "mutator": "optional_rows",
+    "mutatorOptions": {
+      "optional": {
+        "6": "dontDestroyTowers",
+        "10": "radius",
+        "20": "behaviors",
+        "21": "behaviors"
+      }
+    },
+    "message6": "dontDestroyTowers%1",
+    "args6": [
+      {
+        "name": "dontDestroyTowers",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message7": "id%1",
+    "args7": [
+      {
+        "name": "id",
+        "type": "field_number",
+        "value": null,
+        "precision": 1
+      }
+    ],
+    "message8": "isNewItem%1",
+    "args8": [
+      {
+        "name": "isNewItem",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message9": "isPremiumItem%1",
+    "args9": [
+      {
+        "name": "isPremiumItem",
+        "type": "field_dropdown",
+        "options": [
+          [
+            "false",
+            "false"
+          ],
+          [
+            "true",
+            "true"
+          ]
+        ]
+      }
+    ],
+    "message10": "radius%1",
+    "args10": [
+      {
+        "name": "radius",
+        "type": "field_number",
+        "value": 5.0
+      }
+    ],
+    "message11": "itemVarientData%1",
+    "args11": [
+      {
+        "name": "itemVarientData",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData",
+        "shadow": {
+          "type": "Shadow",
+          "data": "ItemVarientData"
+        }
+      }
+    ],
+    "message12": "icon%1",
+    "args12": [
+      {
+        "name": "icon",
+        "type": "input_value",
+        "check": "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "SpriteReference"
+        }
+      }
+    ],
+    "message13": "display%1",
+    "args13": [
+      {
+        "name": "display",
+        "type": "input_value",
+        "check": "Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference",
+        "shadow": {
+          "type": "Shadow",
+          "data": "PrefabReference"
+        }
+      }
+    ],
+    "message14": "collections",
+    "args14": [],
+    "message15": "%1",
+    "args15": [
+      {
+        "name": "collections",
+        "type": "input_statement",
+        "check": "string[]",
+        "shadow": {
+          "type": "string[]"
+        }
+      }
+    ],
+    "message16": "areas",
+    "args16": [],
+    "message17": "%1",
+    "args17": [
+      {
+        "name": "areas",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Map.AreaModel[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Map.AreaModel[]"
+        }
+      }
+    ],
+    "message18": "targetTypes",
+    "args18": [],
+    "message19": "%1",
+    "args19": [
+      {
+        "name": "targetTypes",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Towers.TargetType[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Towers.TargetType[]"
+        }
+      }
+    ],
+    "message20": "behaviors",
+    "args20": [],
+    "message21": "%1",
+    "args21": [
+      {
+        "name": "behaviors",
+        "type": "input_statement",
+        "check": "Il2CppAssets.Scripts.Models.Model[]",
+        "shadow": {
+          "type": "Il2CppAssets.Scripts.Models.Model[]"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData",
+    "output": [
+      "Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData"
+    ],
+    "category": "Other",
+    "subcategory": null,
+    "colour": 240,
+    "message0": "%1ItemVarientData",
+    "args0": [
+      {
+        "type": "field_hidden",
+        "name": "$type",
+        "value": "Assets.Scripts.Models.MapEditorBehaviors.ItemVarientData, Assembly-CSharp"
+      }
+    ],
+    "message1": "",
+    "args1": []
+  },
+  {
     "type": "int[]",
     "previousStatement": "int[]",
     "category": "Other",
@@ -64275,9 +64850,9 @@
   {
     "type": "Il2CppAssets.Scripts.Models.Towers.TargetType[]",
     "previousStatement": "Il2CppAssets.Scripts.Models.Towers.TargetType[]",
-    "category": "Other",
+    "category": "Tower Behaviors",
     "subcategory": null,
-    "colour": 240,
+    "colour": 30,
     "message0": "%1%2",
     "args0": [
       {
@@ -65654,6 +66229,53 @@
         "shadow": {
           "type": "Shadow",
           "data": "EffectModel"
+        }
+      }
+    ],
+    "data": "BLOCKLY_ARRAY",
+    "mutator": "plus_minus_rows"
+  },
+  {
+    "type": "Il2CppAssets.Scripts.Models.Map.AreaModel[]",
+    "previousStatement": "Il2CppAssets.Scripts.Models.Map.AreaModel[]",
+    "category": "Misc Models",
+    "subcategory": null,
+    "colour": 210,
+    "message0": "%1%2",
+    "args0": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "$data",
+        "options": [
+          [
+            "null",
+            "null"
+          ],
+          [
+            "empty",
+            "[]"
+          ]
+        ]
+      }
+    ],
+    "message1": "%1%2%3",
+    "args1": [
+      {
+        "type": "field_plus"
+      },
+      {
+        "type": "field_minus"
+      },
+      {
+        "name": "i",
+        "type": "input_value",
+        "check": "Il2CppAssets.Scripts.Models.Map.AreaModel",
+        "shadow": {
+          "type": "Shadow",
+          "data": "AreaModel"
         }
       }
     ],

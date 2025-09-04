@@ -190,7 +190,8 @@ export default () => {
       bottomLeftOnClick={() => showTips(true)}
       footerBody={
         <>
-          TODO new footer
+          Note: This editor is a Work in Progress. Creations may break between
+          updates.
         </>
       }
     >
@@ -241,9 +242,7 @@ export default () => {
               set on them. Fields that aren't shown have their default value.
             </li>
           </ul>
-          <h4>
-            Custom Towers (VERY WIP)
-          </h4>
+          <h4>Custom Towers (VERY WIP)</h4>
           <ul>
             <li>
               Start with one of the Custom Tower blocks from the Base category.
@@ -283,10 +282,7 @@ export default () => {
               edits live in game (included with Ko-Fi version).
             </li>
           </ul>
-          <h4>
-            Sandbox Testing
-            )
-          </h4>
+          <h4>Sandbox Testing )</h4>
           <ul>
             <li>
               Within a sandbox game, use the Export Tower Model shortcut (Alt+C

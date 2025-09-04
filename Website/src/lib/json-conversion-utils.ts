@@ -346,7 +346,8 @@ export const modelToBlockState = (
       type = "CustomDisplayReference";
     }
   }
-  const blockDef = Blockly.Blocks[type]?.json as BlockDef;
+  const blockDef = (Blockly.Blocks[type]?.json ??
+    Blockly.Blocks[type.replace("Il2Cpp", "")]?.json) as BlockDef;
   if (!type || !blockDef) {
     console.error("Couldn't find block with type", type);
     return null;
@@ -381,7 +382,7 @@ export const modelToBlockState = (
       key = Object.keys(argsByKey).find(
         (k) => k.toLowerCase() == key.toLowerCase()
       );
-      if (!key) continue;
+      if (!key || key in model) continue;
     }
     const arg = argsByKey[key];
 

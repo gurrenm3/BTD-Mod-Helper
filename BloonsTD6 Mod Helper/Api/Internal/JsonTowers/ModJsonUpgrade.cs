@@ -1,3 +1,4 @@
+using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
@@ -8,6 +9,7 @@ using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 
 [JsonObject(MemberSerialization.OptIn)]
+[DontLoad]
 internal class ModJsonUpgrade : ModUpgrade
 {
     [JsonProperty]

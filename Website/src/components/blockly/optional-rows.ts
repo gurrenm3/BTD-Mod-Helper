@@ -23,6 +23,7 @@ interface OptionalRowsMutator
 export const OptionalRows = "optional_rows";
 
 const defaultShow = false;
+const maxWidth = 50;
 
 export const OptionalRowsMixin: OptionalRowsMutator = {
   args: undefined,
@@ -128,11 +129,11 @@ export const addMutatorBlock = (block: BlockDef) => {
   }
 
   const argLength = Object.values(args).length;
-  const columns = Math.ceil(argLength / 15);
 
-  if (columns == 0) {
+  if (argLength == 0) {
     return;
   }
+
   const newBlock: BlockDef = {
     type: block.type + "_container",
     inputsInline: false,
@@ -144,16 +145,19 @@ export const addMutatorBlock = (block: BlockDef) => {
     colour: block.colour,
   };
 
-  let messageI = "";
-  let argsI = [];
-  let row = 1;
-
+  /*const columns = Math.ceil(argLength / 15);
   Object.entries(args).forEach(([name, checked], index) => {
-    messageI += `${name}: %${(index % columns) + 1} `;
+    messageI += `${name}: %${2 * (index % columns) + 1} %${
+      2 * (index % columns) + 2
+    }`;
     argsI.push({
       type: "field_checkbox",
       name,
       checked,
+    });
+    argsI.push({
+      type: "field_label",
+      text: "   ",
     });
 
     if ((index + 1) % columns === 0 || index === argLength - 1) {
@@ -163,7 +167,31 @@ export const addMutatorBlock = (block: BlockDef) => {
       argsI = [];
       row++;
     }
-  });
+  });*/
+
+  let row = 1;
+  let argIndex = 1;
+
+  for (let [name, checked] of Object.entries(args)) {
+    newBlock[`message${row}`] ??= "";
+    newBlock[`args${row}`] ??= [];
+
+    newBlock[`message${row}`] += `${name}%${argIndex++} %${argIndex++}`;
+    newBlock[`args${row}`].push({
+      type: "field_checkbox",
+      name,
+      checked,
+    });
+    newBlock[`args${row}`].push({
+      type: "field_label",
+      text: "   ",
+    });
+
+    if (newBlock[`message${row}`].length > maxWidth) {
+      row++;
+      argIndex = 1;
+    }
+  }
 
   addBlock(newBlock);
 };

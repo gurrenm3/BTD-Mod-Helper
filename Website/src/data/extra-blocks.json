@@ -340,7 +340,7 @@
       {
         "name": "iconReference",
         "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.SpriteReference",
+        "check": "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference",
         "shadow": {
           "type": "Shadow",
           "data": "SpriteReference"
@@ -352,7 +352,7 @@
       {
         "name": "portraitReference",
         "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.SpriteReference",
+        "check": "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference",
         "shadow": {
           "type": "Shadow",
           "data": "SpriteReference"
@@ -537,7 +537,7 @@
       {
         "name": "iconReference",
         "type": "input_value",
-        "check": "Il2CppAssets.Scripts.Utils.SpriteReference",
+        "check": "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference",
         "shadow": {
           "type": "Shadow",
           "data": "SpriteReference"
@@ -581,7 +581,7 @@
       {
         "type": "input_value",
         "name": "baseDisplay",
-        "check": "Il2CppAssets.Scripts.Utils.PrefabReference",
+        "check": "Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference",
         "shadow": {
           "type": "Shadow",
           "data": "PrefabReference"
@@ -914,7 +914,7 @@
   {
     "type": "CustomDisplayReference",
     "output": [
-      "Il2CppAssets.Scripts.Utils.PrefabReference"
+      "Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference"
     ],
     "category": "Base",
     "subcategory": "Reference",
@@ -951,7 +951,7 @@
   {
     "type": "CustomTextureReference",
     "output": [
-      "Il2CppAssets.Scripts.Utils.SpriteReference"
+      "Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference"
     ],
     "category": "Base",
     "subcategory": "Reference",
@@ -983,7 +983,7 @@
   {
     "type": "Generic2dDisplay",
     "output": [
-      "Il2CppAssets.Scripts.Utils.PrefabReference"
+      "Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference"
     ],
     "category": "Base",
     "subcategory": "Reference",
