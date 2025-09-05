@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,24 +16,23 @@ using Ping = System.Net.NetworkInformation.Ping;
 [assembly: MelonInfo(typeof(UpdaterPlugin.UpdaterPlugin), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
-[assembly: MelonPriority(-1000)]
+[assembly: MelonPriority(-999)]
 
 namespace UpdaterPlugin;
 
 public class UpdaterPlugin : MelonPlugin
 {
     // ReSharper disable once CollectionNeverQueried.Global
-    public static readonly List<string> UpdatedMods = [];
+    public static readonly ConcurrentBag<string> UpdatedMods = [];
+
+    public static readonly ConcurrentDictionary<string, bool> InProgress = new();
 
     internal static string SettingsFile =>
         Path.Combine(ModHelper.ModSettingsDirectory, ModHelper.DllName.Replace(".dll", ".json"));
 
-
     public override void OnPreModsLoaded()
     {
-#if DEBUG
         var start = DateTimeOffset.Now;
-#endif
         try
         {
             if (!CheckPing()) return;
@@ -41,10 +41,8 @@ public class UpdaterPlugin : MelonPlugin
         }
         finally
         {
-#if DEBUG
             var end = DateTimeOffset.Now;
-            LoggerInstance.Msg($"UpdaterPlugin took {end - start}");
-#endif
+            ModHelper.Msg($"UpdaterPlugin took {end - start}");
         }
     }
 
@@ -126,7 +124,10 @@ public class UpdaterPlugin : MelonPlugin
                     var data = new ModHelperData();
                     data.ReadValuesFromJson(json.ToString());
 
-                    if (data.Plugin || data.ManualDownload) return;
+                    var repoMod = !string.IsNullOrEmpty(data.RepoName) && !string.IsNullOrEmpty(data.RepoOwner);
+                    var nonRepoMod = !string.IsNullOrEmpty(data.ModHelperDataUrl) && !string.IsNullOrEmpty(data.DownloadUrl);
+
+                    if (data.Plugin || data.ManualDownload || !repoMod && !nonRepoMod) return;
 
                     await UpdateMod(data, ct);
                 }
@@ -137,13 +138,23 @@ public class UpdaterPlugin : MelonPlugin
             }));
         }
 
+        using var progress = CancellationTokenSource.CreateLinkedTokenSource(ct);
         try
         {
+            _ = RunRepeatingAsync(TimeSpan.FromSeconds(2), () =>
+            {
+                if (InProgress.Any()) ModHelper.Msg($"Currently downloading: {InProgress.Keys.Join()}");
+            }, progress.Token);
+
             await Task.WhenAll(tasks);
         }
         catch (Exception e)
         {
             ModHelper.Warning(e);
+        }
+        finally
+        {
+            progress.Cancel();
         }
     }
 
@@ -172,22 +183,25 @@ public class UpdaterPlugin : MelonPlugin
         var downloadUrl = remoteData.DownloadUrl ?? data.DownloadUrl ?? url;
         var auth = remoteData.Authorization ?? data.Authorization;
 
-        ModHelper.Msg($"Downloading {data.Name} {remoteData.Version}");
-        var bytes = await ModHelperHttp.Client.GetBytesWithAuthAsync(downloadUrl, auth, ct);
-
         var enabled = isModHelper;
-        if (File.Exists(enabledDllPath))
-        {
-            enabled = true;
-            if (File.Exists(disabledDllPath)) File.Delete(disabledDllPath);
-            File.Move(enabledDllPath, disabledDllPath);
-        }
+        ModHelper.Msg($"Starting download of {data.Name} {remoteData.Version}");
 
         try
         {
+            InProgress[data.Name] = true;
+            var bytes = await ModHelperHttp.Client.GetBytesWithAuthAsync(downloadUrl, auth, ct);
+
+            if (File.Exists(enabledDllPath))
+            {
+                enabled = true;
+                if (File.Exists(disabledDllPath)) File.Delete(disabledDllPath);
+                File.Move(enabledDllPath, disabledDllPath);
+            }
+
             await File.WriteAllBytesAsync(enabled ? enabledDllPath : disabledDllPath, bytes, ct);
             remoteData.SaveToJson(ModHelper.DataDirectory);
             UpdatedMods.Add(data.Name);
+            ModHelper.Msg($"Successfully finished download of {data.Name} {remoteData.Version}");
         }
         catch (Exception e)
         {
@@ -198,6 +212,29 @@ public class UpdaterPlugin : MelonPlugin
                 File.Move(disabledDllPath, enabledDllPath);
             }
         }
+        finally
+        {
+            InProgress.Remove(data.Name, out _);
+        }
     }
 
+    private static async Task RunRepeatingAsync(
+        TimeSpan interval,
+        Action action,
+        CancellationToken ct)
+    {
+        using var timer = new PeriodicTimer(interval);
+
+        try
+        {
+            while (await timer.WaitForNextTickAsync(ct))
+            {
+                action();
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // clean exit
+        }
+    }
 }
