@@ -30,7 +30,9 @@ public class UpdaterPlugin : MelonPlugin
 
     public override void OnPreModsLoaded()
     {
+#if DEBUG
         var start = DateTimeOffset.Now;
+#endif
         try
         {
             if (!CheckPing()) return;
@@ -39,9 +41,8 @@ public class UpdaterPlugin : MelonPlugin
         }
         finally
         {
-            var end = DateTimeOffset.Now;
-
 #if DEBUG
+            var end = DateTimeOffset.Now;
             LoggerInstance.Msg($"UpdaterPlugin took {end - start}");
 #endif
         }
@@ -66,10 +67,9 @@ public class UpdaterPlugin : MelonPlugin
 
     private static async Task UpdateMods(CancellationToken ct = default)
     {
-        if (!Directory.Exists(ModHelper.DataDirectory)) return;
-
         var dontAutoUpdate = new HashSet<string>();
 
+        // Check auto update settings
         if (File.Exists(SettingsFile))
         {
             try
@@ -93,46 +93,58 @@ public class UpdaterPlugin : MelonPlugin
             }
         }
 
-        var tasks = Directory.EnumerateFiles(ModHelper.DataDirectory, "*.json").Select(async path =>
-        {
-            try
-            {
-                var name = Path.GetFileNameWithoutExtension(path);
+        var tasks = new List<Task>();
 
-                if (dontAutoUpdate.Contains(name)) return;
-
-                var file = await File.ReadAllTextAsync(path, ct);
-
-                using var stringReader = new StringReader(file);
-                await using var reader = new JsonTextReader(stringReader);
-
-                var json = await JObject.LoadAsync(reader, ct);
-
-                var data = new ModHelperData();
-                data.ReadValuesFromJson(json.ToString());
-
-                if (data.Plugin || data.ManualDownload) return;
-
-                await UpdateMod(data, ct);
-            }
-            catch (Exception e)
-            {
-                ModHelper.Warning(e);
-            }
-        }).ToList();
-
-        // If hasn't been installed, always update Mod Helper
+        // If it hasn't been installed, always update Mod Helper
         if (!File.Exists(Path.Join(ModHelper.DataDirectory, ModHelper.ModHelperDll.Replace(".dll", ".json"))))
         {
             var data = new ModHelperData();
             data.ReadValuesFromType(typeof(ModHelper));
-            data.Version = "0.0.0";
+            data.Version = "0.0.0"; // always update
             data.Name = ModHelper.ModHelperName;
             data.DllName = ModHelper.ModHelperDll;
             tasks.Add(UpdateMod(data, ct));
         }
 
-        await Task.WhenAll(tasks);
+        if (Directory.Exists(ModHelper.DataDirectory))
+        {
+            tasks.AddRange(Directory.EnumerateFiles(ModHelper.DataDirectory, "*.json").Select(async path =>
+            {
+                try
+                {
+                    var name = Path.GetFileNameWithoutExtension(path);
+
+                    if (dontAutoUpdate.Contains(name)) return;
+
+                    var file = await File.ReadAllTextAsync(path, ct);
+
+                    using var stringReader = new StringReader(file);
+                    await using var reader = new JsonTextReader(stringReader);
+
+                    var json = await JObject.LoadAsync(reader, ct);
+
+                    var data = new ModHelperData();
+                    data.ReadValuesFromJson(json.ToString());
+
+                    if (data.Plugin || data.ManualDownload) return;
+
+                    await UpdateMod(data, ct);
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Warning(e);
+                }
+            }));
+        }
+
+        try
+        {
+            await Task.WhenAll(tasks);
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
     }
 
     private static async Task UpdateMod(ModHelperData data, CancellationToken ct)

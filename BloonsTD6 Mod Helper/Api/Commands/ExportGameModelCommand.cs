@@ -12,7 +12,8 @@ internal class ExportGameModelCommand : ModCommand<ExportCommand>
 
     public override bool Execute(ref string resultText)
     {
-        GameModelExporter.ExportAll(Clean);
+        GameModelExporter.clean = Clean;
+        GameModelExporter.ExportAll();
 
         return true;
     }
