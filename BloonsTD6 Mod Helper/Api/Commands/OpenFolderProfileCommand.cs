@@ -1,10 +1,9 @@
-using System.IO;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Unity;
 
 namespace BTD_Mod_Helper.Api.Commands;
 
-internal class OpenProfileFolderCommand : ModCommand<OpenFolderCommand>
+internal class OpenFolderProfileCommand : ModCommand<OpenFolderCommand>
 {
     public override string Command => "profile";
     public override string Help => "Opens the folder where profile data is stored";

@@ -1,7 +1,7 @@
 using BTD_Mod_Helper.Api.Helpers;
 namespace BTD_Mod_Helper.Api.Commands;
 
-internal class OpenLocalFolderCommand : ModCommand<OpenFolderCommand>
+internal class OpenFolderLocalCommand : ModCommand<OpenFolderCommand>
 {
     public override string Command => "local";
     public override string Help => "Opens the local folder / \"Sandbox Root\" where most things get exported";

@@ -134,6 +134,20 @@ public abstract class ModGameMenu : ModContent
         return true;
     }
 
+    /// <summary>
+    /// Opens this menu
+    /// </summary>
+    /// <param name="data">The custom data to pass into your ModGameMenu's <see cref="OnMenuOpened" /> method</param>
+    /// <param name="baseData">
+    /// The data that you want to pass into the base menu's Open method, if you're still running the
+    /// code
+    /// </param>
+    public void Open(Object data = null, Object baseData = null)
+    {
+        IsOpen = true;
+        MenuManager.instance.OpenMenu(BaseMenu, new ModMenuData(Id, data, baseData));
+    }
+
 
     /// <summary>
     /// Opens a custom menu
@@ -146,9 +160,7 @@ public abstract class ModGameMenu : ModContent
     /// <typeparam name="T">The custom menu type to open</typeparam>
     public static void Open<T>(Object data = null, Object baseData = null) where T : ModGameMenu
     {
-        var modGameMenu = GetInstance<T>();
-        modGameMenu.IsOpen = true;
-        MenuManager.instance.OpenMenu(modGameMenu.BaseMenu, new ModMenuData(modGameMenu.Id, data, baseData));
+        GetInstance<T>().Open(data, baseData);
     }
 
     internal static void PatchAllTheOpens(HarmonyLib.Harmony harmony)

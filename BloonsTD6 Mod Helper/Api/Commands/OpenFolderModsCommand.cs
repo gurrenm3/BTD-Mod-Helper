@@ -2,7 +2,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using MelonLoader.Utils;
 namespace BTD_Mod_Helper.Api.Commands;
 
-internal class OpenModsFolderCommand : ModCommand<OpenFolderCommand>
+internal class OpenFolderModsCommand : ModCommand<OpenFolderCommand>
 {
     public override string Command => "mods";
     public override string Help => "Opens the MelonLoader mods folder";
