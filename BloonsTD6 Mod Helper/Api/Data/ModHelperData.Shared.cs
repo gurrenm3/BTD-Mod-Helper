@@ -126,6 +126,8 @@ internal partial class ModHelperData
     internal string DataPath { get; }
     internal string CachedModHelperData { get; private set; }
 
+    internal string DefaultBranch => RepoName == ModHelper.RepoName && RepoOwner == ModHelper.RepoOwner ? "master" : "main";
+
     public void ReadValuesFromType(Type data)
     {
         foreach (var fieldInfo in data
@@ -243,7 +245,7 @@ internal partial class ModHelperData
             path = $"{SubPath}/{path}";
         }
 
-        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Branch ?? "main"}/{path}";
+        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Branch ?? DefaultBranch}/{path}";
     }
 
 

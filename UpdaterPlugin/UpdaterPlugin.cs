@@ -162,10 +162,12 @@ public class UpdaterPlugin : MelonPlugin
     {
         var enabledDllPath = Path.Combine(MelonEnvironment.ModsDirectory, data.DllName);
         var disabledDllPath = Path.Combine(ModHelper.DisabledModsDirectory, data.DllName);
+        var oldDllPath = Path.Combine(ModHelper.OldModsDirectory, data.DllName);
+        var existingDllPath = File.Exists(enabledDllPath) ? enabledDllPath : disabledDllPath;
 
         var isModHelper = data.RepoName == ModHelper.RepoName && data.RepoOwner == ModHelper.RepoOwner;
 
-        if (!isModHelper && !File.Exists(enabledDllPath) && !File.Exists(disabledDllPath)) return;
+        if (!isModHelper && !File.Exists(existingDllPath)) return;
 
         var remoteData = new ModHelperData(data);
         var remoteValues = await remoteData.LoadDataFromRepoAsync(ct);
@@ -183,7 +185,8 @@ public class UpdaterPlugin : MelonPlugin
         var downloadUrl = remoteData.DownloadUrl ?? data.DownloadUrl ?? url;
         var auth = remoteData.Authorization ?? data.Authorization;
 
-        var enabled = isModHelper;
+
+        var enabled = isModHelper || File.Exists(enabledDllPath);
         ModHelper.Msg($"Starting download of {data.Name} {remoteData.Version}");
 
         try
@@ -191,11 +194,11 @@ public class UpdaterPlugin : MelonPlugin
             InProgress[data.Name] = true;
             var bytes = await ModHelperHttp.Client.GetBytesWithAuthAsync(downloadUrl, auth, ct);
 
-            if (File.Exists(enabledDllPath))
+            if (File.Exists(existingDllPath))
             {
-                enabled = true;
-                if (File.Exists(disabledDllPath)) File.Delete(disabledDllPath);
-                File.Move(enabledDllPath, disabledDllPath);
+                if (File.Exists(oldDllPath)) File.Delete(oldDllPath);
+                Directory.CreateDirectory(Path.GetDirectoryName(oldDllPath)!);
+                File.Move(existingDllPath, oldDllPath);
             }
 
             await File.WriteAllBytesAsync(enabled ? enabledDllPath : disabledDllPath, bytes, ct);
@@ -207,9 +210,9 @@ public class UpdaterPlugin : MelonPlugin
         {
             ModHelper.Warning($"Failed to download {data.Name} {remoteData.Version}");
             ModHelper.Warning(e);
-            if (enabled)
+            if (File.Exists(oldDllPath))
             {
-                File.Move(disabledDllPath, enabledDllPath);
+                File.Move(oldDllPath, existingDllPath);
             }
         }
         finally

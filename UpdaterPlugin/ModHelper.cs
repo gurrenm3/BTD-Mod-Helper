@@ -11,6 +11,7 @@ public static class ModHelper
     internal static string DisabledModsDirectory => Path.Combine(MelonEnvironment.GameRootDirectory, "Disabled Mods");
     internal static string DataDirectory => Path.Combine(ModHelperDirectory, "Data");
     internal static string ModSettingsDirectory => Path.Combine(ModHelperDirectory, "Mod Settings");
+    internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
 
     internal const string Name = "Updater Plugin";
     internal const string Author = "doombubbles";
