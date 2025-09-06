@@ -5,6 +5,7 @@ using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
 using UnityEngine;
+using UnityEngine.UI;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -71,8 +72,9 @@ public static class PopupScreenExt
         {
             var scrollPanel = field.gameObject.AddModHelperScrollPanel(new Info("ScrollPanel",
                 InfoPreset.FillParent), RectTransform.Axis.Vertical, VanillaSprites.WhiteSquareGradient);
-            scrollPanel.Background.color = new Color(0, 0, 0, 77 / 255f);
-            scrollPanel.ScrollRect.inertia = false;
+            scrollPanel.Background.color = new Color(1, 1, 1, 1);
+            scrollPanel.Mask.showMaskGraphic = false;
+            scrollPanel.ScrollRect.movementType = ScrollRect.MovementType.Clamped;
 
             var newBody = field.gameObject.Duplicate(scrollPanel.ScrollContent.transform);
             newBody.GetComponentInChildren<ModHelperScrollPanel>().gameObject.Destroy();

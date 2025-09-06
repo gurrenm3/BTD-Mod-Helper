@@ -30,6 +30,7 @@ internal partial class ModHelperData
     // From MelonLoader SemVersion
     private const string SemVerRegex =
         """(?:\d+)(?>\.(?:\d+))?(?>\.(?:\d+))?(?>\-(?:[0-9A-Za-z\-\.]+))?(?>\+(?:[0-9A-Za-z\-\.]+))?""";
+
     private const string VersionRegex = """\bVersion\s*=\s*"(""" + SemVerRegex + """)";?[\n\r]+""";
     private const string NameRegex = """\bName\s*=\s*"(.+)";?[\n\r]+""";
     private const string DescRegex = """\bDescription\s*=(?:[\s+]*"(.+)")+;?[\n\r]+""";
@@ -123,6 +124,7 @@ internal partial class ModHelperData
     public string Authorization { get; internal set; }
 
     internal string DataPath { get; }
+    internal string CachedModHelperData { get; private set; }
 
     public void ReadValuesFromType(Type data)
     {
@@ -151,6 +153,8 @@ internal partial class ModHelperData
 
     internal void ReadValuesFromJson(string data, bool allowRepo = true)
     {
+        CachedModHelperData = data;
+
         var json = JObject.Parse(data);
         foreach (var (key, set) in Setters)
         {
@@ -179,6 +183,8 @@ internal partial class ModHelperData
 
     internal void ReadValuesFromString(string data, bool allowRepo = true)
     {
+        CachedModHelperData = data;
+
         Version = GetRegexMatch<string>(data, VersionRegex) ?? Version;
         Name = GetRegexMatch<string>(data, NameRegex) ?? Name;
         Description = GetRegexMatch<string>(data, DescRegex2, true) ??

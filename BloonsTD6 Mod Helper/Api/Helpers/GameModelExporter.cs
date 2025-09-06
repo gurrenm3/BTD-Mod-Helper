@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Data;
-using Il2CppAssets.Scripts.Data.Skins;
+using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppInterop.Runtime;
@@ -74,6 +74,13 @@ public static class GameModelExporter
         Export(LocalizationManager.Instance.textTable, "textTable.json");
         Export(gameModel.paragonDegreeDataModel, "paragonDegreeData.json");
         Export(CreateResourceMap(), "resources.json");
+        Export(gameData.rogueData, "rogueData.json", o =>
+        {
+            o.Remove(nameof(RogueData.mapTemplates));
+            o.Remove(nameof(RogueData.RogueSaveData));
+            o.Remove(nameof(RogueData.LegendsData));
+            o.Value<JObject>(nameof(RogueData.featsData))!.Remove(nameof(RogueData.featsData.activeFeats));
+        });
 
 #if DEBUG
         FileIOHelper.SaveFile(".gitignore", gitIgnore);
@@ -191,6 +198,25 @@ public static class GameModelExporter
         }
     }
 
+    internal static void Export(Object data, string path, System.Action<JObject> modify)
+    {
+        AddFileToGitIgnore(path);
+
+        try
+        {
+            var jobject = JObject.FromObject(data, Il2CppJsonConvert.Serializer);
+            modify?.Invoke(jobject);
+
+            FileIOHelper.SaveFile(path, jobject.ToString(Formatting.Indented));
+            ModHelper.Log("Exported " + Path.Combine(FileIOHelper.sandboxRoot, path));
+        }
+        catch (Exception e)
+        {
+            ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
+            ModHelper.Warning(e);
+        }
+    }
+
     /// <summary>
     /// Exports a Model to the path, returning whether it was successful. Does not log anything.
     /// </summary>
@@ -199,12 +225,6 @@ public static class GameModelExporter
     {
         try
         {
-#if DEBUG
-            if (data != null && data.Is(out Model model))
-            {
-                ModelSerializer.MakeConsistent(model);
-            }
-#endif
             FileIOHelper.SaveObject(path, data);
             return true;
         }

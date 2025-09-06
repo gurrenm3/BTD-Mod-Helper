@@ -201,8 +201,6 @@ public static class Il2CppJsonConvert
 
     internal class Il2CppContractResolver : DefaultContractResolver
     {
-
-
         protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
         {
             if (member.GetUnderlyingType().IsIl2CppNullable())
@@ -232,7 +230,8 @@ public static class Il2CppJsonConvert
 
             return base
                 .GetSerializableMembers(objectType)
-                .Where(member => memberNames.Contains(member.Name))
+                .Where(member => memberNames.Contains(member.Name) &&
+                                 member.GetUnderlyingType() != typeof(IntPtr))
                 .ToList();
         }
     }

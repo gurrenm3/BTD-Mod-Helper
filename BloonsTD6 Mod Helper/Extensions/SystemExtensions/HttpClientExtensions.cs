@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -24,7 +25,14 @@ public static class HttpClientExtensions
         using var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct)
             .ConfigureAwait(false);
 
-        response.EnsureSuccessStatusCode();
+        try
+        {
+            response.EnsureSuccessStatusCode();
+        }
+        catch (Exception e)
+        {
+            throw new HttpRequestException($"Got error status code for request to {requestUri}", e);
+        }
         return await response.Content.ReadAsByteArrayAsync(ct).ConfigureAwait(false);
     }
 
@@ -43,7 +51,14 @@ public static class HttpClientExtensions
         using var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct)
             .ConfigureAwait(false);
 
-        response.EnsureSuccessStatusCode();
+        try
+        {
+            response.EnsureSuccessStatusCode();
+        }
+        catch (Exception e)
+        {
+            throw new HttpRequestException($"Got error status code for request to {requestUri}", e);
+        }
         return await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
     }
 }

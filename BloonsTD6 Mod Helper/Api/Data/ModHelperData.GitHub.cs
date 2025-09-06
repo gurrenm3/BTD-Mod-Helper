@@ -11,8 +11,10 @@ namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
 {
-    private const string DescriptionBranchRegex = "Mod\\s+Browser\\s+Branch\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/]+)\"";
-    private const string DescriptionDataPathRegex = "Mod\\s*Helper\\s*Data\\s*:\\s*\"([a-zA-Z0-9\\.\\-_\\/ ]+)\"";
+    private const string DescriptionBranchRegex = """Mod\s+Browser\s+Branch\s*:\s*"([a-zA-Z0-9\.\-_\/]+)""";
+    private const string DescriptionDataPathRegex = """Mod\s*Helper\s*Data\s*:\s*"([a-zA-Z0-9\.\-_\/ ]+)""";
+    internal const string UpdaterVersionRegex = """\bUpdaterVersion\s*=\s*"(""" + SemVerRegex + """)";?[\n\r]+""";
+
     private float splittingStarsAmongst = 1;
 
     public ModHelperData(Repository repository, string subPath = null)
@@ -134,9 +136,9 @@ internal partial class ModHelperData
             }
 
             return LatestCommit =
-                       (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository.Id,
-                            new CommitRequest {Path = path}))
-                       [0];
+                (await ModHelperGithub.Client.Repository.Commit.GetAll(Repository.Id,
+                    new CommitRequest {Path = path}))
+                [0];
         }
         catch (Exception e)
         {
@@ -300,6 +302,7 @@ internal partial class ModHelperData
             modHelperData.RepoDataSuccess = true;
             modHelperData.RepoWorksOnVersion = WorksOnVersion;
             modHelperData.ModHelperDataUrl = ModHelperDataUrl;
+            modHelperData.CachedModHelperData = CachedModHelperData;
         }
 
         if (!string.IsNullOrEmpty(ZipName) && string.IsNullOrEmpty(DllName) && !ManualDownload)
