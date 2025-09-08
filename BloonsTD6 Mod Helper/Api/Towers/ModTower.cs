@@ -236,7 +236,7 @@ public abstract class ModTower : NamedModContent
 
     internal List<ModUpgrade> GetUpgradesForTiers(params int[] tiers) => AllUpgrades
         .Where(modUpgrade => tiers[modUpgrade.Path] >= modUpgrade.Tier)
-        .OrderByDescending(modUpgrade => modUpgrade.Priority)
+        .OrderByDescending(modUpgrade => modUpgrade.Priority) // TODO the priority should be the other way around
         .ThenBy(modUpgrade => modUpgrade.Tier)
         .ThenBy(modUpgrade => modUpgrade.Path)
         .ToList();
