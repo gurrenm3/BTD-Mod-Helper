@@ -6,10 +6,10 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using MelonLoader.InternalUtils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Semver;
-using UnityEngine;
 #if MOD_HELPER
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
@@ -30,6 +30,7 @@ internal partial class ModHelperData
     // From MelonLoader SemVersion
     private const string SemVerRegex =
         """(?:\d+)(?>\.(?:\d+))?(?>\.(?:\d+))?(?>\-(?:[0-9A-Za-z\-\.]+))?(?>\+(?:[0-9A-Za-z\-\.]+))?""";
+
     private const string VersionRegex = """\bVersion\s*=\s*"(""" + SemVerRegex + """)";?[\n\r]+""";
     private const string NameRegex = """\bName\s*=\s*"(.+)";?[\n\r]+""";
     private const string DescRegex = """\bDescription\s*=(?:[\s+]*"(.+)")+;?[\n\r]+""";
@@ -123,6 +124,9 @@ internal partial class ModHelperData
     public string Authorization { get; internal set; }
 
     internal string DataPath { get; }
+    internal string CachedModHelperData { get; private set; }
+
+    internal string DefaultBranch => RepoName == ModHelper.RepoName && RepoOwner == ModHelper.RepoOwner ? "master" : "main";
 
     public void ReadValuesFromType(Type data)
     {
@@ -151,6 +155,8 @@ internal partial class ModHelperData
 
     internal void ReadValuesFromJson(string data, bool allowRepo = true)
     {
+        CachedModHelperData = data;
+
         var json = JObject.Parse(data);
         foreach (var (key, set) in Setters)
         {
@@ -179,6 +185,8 @@ internal partial class ModHelperData
 
     internal void ReadValuesFromString(string data, bool allowRepo = true)
     {
+        CachedModHelperData = data;
+
         Version = GetRegexMatch<string>(data, VersionRegex) ?? Version;
         Name = GetRegexMatch<string>(data, NameRegex) ?? Name;
         Description = GetRegexMatch<string>(data, DescRegex2, true) ??
@@ -237,7 +245,7 @@ internal partial class ModHelperData
             path = $"{SubPath}/{path}";
         }
 
-        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Branch ?? "main"}/{path}";
+        return $"{ModHelperGithub.RawUserContent}/{RepoOwner}/{RepoName}/{Branch ?? DefaultBranch}/{path}";
     }
 
 
@@ -263,7 +271,7 @@ internal partial class ModHelperData
         }
 
         if (SemVersion.TryParse(latestWorksOnVersion, out var worksOnVersion) &&
-            SemVersion.TryParse(Application.version, out var gameVersion) &&
+            SemVersion.TryParse(ModHelper.GameVersion, out var gameVersion) &&
             gameVersion < worksOnVersion)
         {
             return false;

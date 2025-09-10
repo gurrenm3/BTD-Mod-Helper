@@ -1,22 +1,21 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Data;
-using Il2CppAssets.Scripts.Data.Skins;
+using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
-using Il2CppSystem.Collections.Generic;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using Exception = System.Exception;
-using JsonConvert = Il2CppNewtonsoft.Json.JsonConvert;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -25,167 +24,80 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class GameModelExporter
 {
-    private static JToken Parse(Object obj) => JToken.Parse(JsonConvert.SerializeObject(obj, FileIOHelper.Settings));
+    private const string BaseGitIgnore =
+        """
+        *
+        !*/
+        !.gitignore
+        !README.md
+        """;
+
+    private static string gitIgnore;
+
+    private static void AddFileToGitIgnore(string path) => gitIgnore += $"\n!{path}";
+
+    private static void AddFolderToGitIgnore(string path, string ext = ".json") => gitIgnore += $"\n!{path}/**/*{ext}";
+
+    internal static bool clean;
+
 
     /// <summary>
     /// Exports every bit of GameModel and GameData info of note to the local folder
     /// </summary>
-    internal static void ExportAll(bool clean = false)
+    internal static void ExportAll()
     {
-        var total = 0;
-        var success = 0;
-        ModHelper.Msg("Exporting game data, this will take a couple seconds...");
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Towers"), true);
-        foreach (var tower in Game.instance.model.towers)
+        ModHelper.Msg("Exporting game data, this will take a little bit...");
+
+        gitIgnore = BaseGitIgnore;
+
+        var gameModel = Game.instance.model;
+        var gameData = GameData.Instance;
+
+        Export("Towers", gameModel.towers, tower => $"{tower.baseId}/{tower.name}");
+        Export("Upgrades", gameModel.upgrades, upgrade => $"{upgrade.name.Replace("/", "")}");
+        Export("Bloons", gameModel.bloons, bloon => $"{bloon.baseId}/{bloon.name}");
+        Export("Powers", gameModel.powers, power => $"{power.name}");
+        Export("Mods", gameData.mods, mod => $"{mod.name}");
+        Export("Rounds", gameData.roundSets, r => r.rounds, (r, _, i) => $"{r.name}/{i + 1}");
+        Export("Maps", gameData.mapSet.Maps.items, map => $"{map.difficulty}/{map.id}");
+        Export("Buffs", gameModel.buffIndicatorModels, buff => $"{buff.name}");
+        Export("Skins", gameData.skinsData.SkinList.items, skin => $"{skin.baseTowerName}/{skin.name}");
+        Export("Knowledge", gameModel.allKnowledge, knowledge => $"{knowledge.category}/{knowledge.name}");
+        Export("GeraldoItems", gameModel.geraldoItemModels, item => $"{item.name}");
+        Export("BloonOverlays", gameData.bloonOverlays.overlayTypes, (key, _) => $"{key}");
+        Export("Artifacts", gameData.artifactsData.artifactDatas, (id, _) => $"{id}");
+        Export("TrophyStoreItems", gameData.trophyStoreItems.storeItems, i => $"{i.storeFilter}/{i.subFilter}/{i.Id}");
+        Export("Achievements", gameData.achievements.achievements, achievement => $"{achievement.name}");
+        Export("IncomeSets", gameData.incomeSets, incomeSet => $"{incomeSet.name}");
+        Export("Bosses", gameData.bosses.BossList.items, boss => $"{boss.id}");
+
+        Export(LocalizationManager.Instance.textTable, "textTable.json");
+        Export(gameModel.paragonDegreeDataModel, "paragonDegreeData.json");
+        Export(CreateResourceMap(), "resources.json");
+        Export(gameData.rogueData, "rogueData.json", o =>
         {
-            if (TryExport(tower, $"Towers/{tower.baseId}/{tower.name}.json")) success++;
-            total++;
+            o.Remove(nameof(RogueData.mapTemplates));
+            o.Remove(nameof(RogueData.RogueSaveData));
+            o.Remove(nameof(RogueData.LegendsData));
+            o.Value<JObject>(nameof(RogueData.featsData))!.Remove(nameof(RogueData.featsData.activeFeats));
+        });
 
-            if (total % 500 == 0)
-            {
-                ModHelper.Msg($"{total} TowerModels in...");
-            }
-        }
-        ModHelper.Log($"Exported {success}/{total} TowerModels to {Path.Combine(FileIOHelper.sandboxRoot, "Towers")}");
+#if DEBUG
+        FileIOHelper.SaveFile(".gitignore", gitIgnore);
+#endif
+    }
 
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Upgrades"), true);
-        foreach (var upgrade in Game.instance.model.upgrades)
-        {
-            if (TryExport(upgrade, $"Upgrades/{upgrade.name.Replace("/", "")}.json")) success++;
-            total++;
-        }
-        ModHelper.Log(
-            $"Exported {success}/{total} UpgradeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Upgrades")}");
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Bloons"), true);
-        foreach (var bloon in Game.instance.model.bloons)
-        {
-            if (TryExport(bloon, $"Bloons/{bloon.baseId}/{bloon.name}.json")) success++;
-            total++;
-        }
-        ModHelper.Log($"Exported {success}/{total} BloonModels to {Path.Combine(FileIOHelper.sandboxRoot, "Bloons")}");
-
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Powers"), true);
-        foreach (var model in Game.instance.model.powers)
-        {
-            if (TryExport(model, $"Powers/{model.name}.json")) success++;
-            total++;
-        }
-        ModHelper.Log($"Exported {success}/{total} PowerModels to {Path.Combine(FileIOHelper.sandboxRoot, "Powers")}");
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Mods"), true);
-        foreach (var model in GameData.Instance.mods)
-        {
-            if (TryExport(model, $"Mods/{model.name}.json")) success++;
-            total++;
-        }
-        ModHelper.Log($"Exported {success}/{total} ModModels to {Path.Combine(FileIOHelper.sandboxRoot, "Mods")}");
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Rounds"), true);
-        foreach (var roundSet in GameData.Instance.roundSets)
-        {
-            for (var i = 0; i < roundSet.rounds.Count; i++)
-            {
-                if (TryExport(roundSet.rounds[i], $"Rounds/{roundSet.name}/{i + 1}.json")) success++;
-                total++;
-            }
-        }
-        ModHelper.Log($"Exported {success}/{total} RoundModels to {Path.Combine(FileIOHelper.sandboxRoot, "Rounds")}");
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Maps"), true);
-        foreach (var mapSetMap in GameData.Instance.mapSet.Maps.items)
-        {
-            if (TryExport(mapSetMap, $"Maps/{mapSetMap.difficulty.ToString()}/{mapSetMap.id}.json")) success++;
-            total++;
-        }
-        ModHelper.Log($"Exported {success}/{total} MapDetails to {Path.Combine(FileIOHelper.sandboxRoot, "Maps")}");
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Buffs"), true);
-        foreach (var indicatorModel in Game.instance.model.buffIndicatorModels)
-        {
-            if (TryExport(indicatorModel, $"Buffs/{indicatorModel.name}.json")) success++;
-            total++;
-        }
-        ModHelper.Log(
-            $"Exported {success}/{total} BuffIndicatorModels to {Path.Combine(FileIOHelper.sandboxRoot, "Buffs")}");
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Skins"), true);
-        foreach (var data in GameData.Instance.skinsData.SkinList.items.ToArray())
-        {
-            try
-            {
-                var jobject = new JObject
-                {
-                    [nameof(SkinData.name)] = data.name,
-                    [nameof(SkinData.skinName)] = data.skinName,
-                    [nameof(SkinData.description)] = data.description,
-                    [nameof(SkinData.baseTowerName)] = data.baseTowerName,
-                    [nameof(SkinData.mmCost)] = data.mmCost,
-                    [nameof(SkinData.icon)] = data.icon.AssetGUID,
-                    [nameof(SkinData.iconSquare)] = data.iconSquare.AssetGUID,
-                    [nameof(SkinData.isDefaultTowerSkin)] = data.isDefaultTowerSkin,
-                    [nameof(SkinData.textMaterialId)] = data.textMaterialId,
-                    [nameof(SkinData.backgroundBanner)] = data.backgroundBanner.AssetGUID,
-                    [nameof(SkinData.isHiddenWhenLocked)] = data.isHiddenWhenLocked,
-                    [nameof(SkinData.iapName)] = data.iapName,
-                    [nameof(SkinData.unlockScreenName)] = data.unlockScreenName,
-                    [nameof(SkinData.unlockScreenSound)] = data.unlockScreenSound.AssetGUID,
-                    [nameof(SkinData.unlockedEventSound)] = data.unlockedEventSound.AssetGUID,
-                    [nameof(SkinData.Portraits)] = Parse(data.StorePortraitsContainer.items),
-                    [nameof(SkinData.SwapAudio)] = Parse(data.SwapAudioContainer.items),
-                    [nameof(SkinData.SwapPrefab)] = Parse(data.SwapPrefabContainer.items),
-                    [nameof(SkinData.SwapOverlay)] = Parse(data.SwapOverlayContainer.items),
-                    [nameof(SkinData.SwapProjectileSpriteGroup)] = Parse(data.SwapProjectileSpriteGroupContainer.items),
-                    [nameof(SkinData.SwapShopProjectilePrefab)] = Parse(data.SwapShopProjectilePrefabContainer.items),
-                    [nameof(SkinData.SwapShopSprite)] = Parse(data.SwapShopSpriteContainer.items),
-                    [nameof(SkinData.SwapSprite)] = Parse(data.SwapSpriteContainer.items)
-                };
-
-                Directory.CreateDirectory(Path.Combine(FileIOHelper.sandboxRoot, "Skins", data.baseTowerName));
-                var path = $"Skins/{data.baseTowerName}/{data.name}.json";
-                File.WriteAllText(Path.Combine(FileIOHelper.sandboxRoot, path), jobject.ToString(Formatting.Indented));
-                success++;
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-            total++;
-        }
-        ModHelper.Log(
-            $"Exported {success}/{total} SkinDatas to {Path.Combine(FileIOHelper.sandboxRoot, "Skins")}");
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Knowledge"), true);
-        foreach (var knowledgeModel in Game.instance.model.allKnowledge)
-        {
-            if (TryExport(knowledgeModel, $"Knowledge/{knowledgeModel.name}.json")) success++;
-            total++;
-        }
-        ModHelper.Log(
-            $"Exported {success}/{total} KnowledgeModels to {Path.Combine(FileIOHelper.sandboxRoot, "Knowledge")}");
-
-
+    private static JObject CreateResourceMap()
+    {
         var resourcesJson = new JObject();
         var resourceLocationMap = Addressables.ResourceLocators.First();
-
         foreach (var key in resourceLocationMap.Keys.ToArray())
         {
             if (!Guid.TryParse(key.ToString(), out _) ||
                 !resourceLocationMap.Locate(key, Il2CppType.Of<Object>(), out var locations)) continue;
 
             var list = locations
-                .Cast<IEnumerable<IResourceLocation>>()
+                .Cast<Il2CppSystem.Collections.Generic.IEnumerable<IResourceLocation>>()
                 .ToArray()
                 .Select(location => location.InternalId)
                 .Distinct()
@@ -196,46 +108,113 @@ public static class GameModelExporter
 
             resourcesJson[key.ToString()] = list.Length > 1 ? JArray.FromObject(list) : list[0];
         }
-        var resourcesPath = Path.Combine(FileIOHelper.sandboxRoot, "resources.json");
-        File.WriteAllText(resourcesPath, resourcesJson.ToString(Formatting.Indented));
-        ModHelper.Log($"Exported resources to {resourcesPath}");
+        return resourcesJson;
+    }
 
+    internal static void Export<T>(string folder, IEnumerable<T> items, System.Func<T, string> getPath)
+        where T : Object =>
+        Export<T, T>(folder, items, o => [o], (o, _, _) => getPath(o));
 
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "GeraldoItems"), true);
-        foreach (var geraldoItem in Game.instance.model.geraldoItemModels)
+    internal static void Export<T>(string folder, Il2CppSystem.Collections.Generic.List<T> items,
+        System.Func<T, string> getPath) where T : Object =>
+        Export<T, T>(folder, items.ToArray(), o => [o], (o, _, _) => getPath(o));
+
+    internal static void Export<T, R>(string folder, IEnumerable<T> items,
+        System.Func<T, R> subItems, System.Func<T, R, string> getPath) where R : Object =>
+        Export<T, R>(folder, items, o => [subItems(o)], (t, o, _) => getPath(t, o));
+
+    internal static void Export<T, R>(string folder, SerializableDictionary<T, R> items,
+        System.Func<T, R, string> getPath) where R : Object =>
+        Export(folder, items.keys.ToArray(), key => items[key], getPath);
+
+    internal static void Export<T, R>(string folder, Il2CppSystem.Collections.Generic.Dictionary<T, R> items,
+        System.Func<T, R, string> getPath) where R : Object =>
+        Export(folder, items.Keys(), key => items[key], getPath);
+
+    internal static void Export<T, R>(string folder, IEnumerable<T> items,
+        System.Func<T, IEnumerable<R>> subItems, System.Func<T, R, int, string> getPath) where R : Object
+    {
+        AddFolderToGitIgnore(folder);
+
+        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, folder), true);
+
+        var total = 0;
+        var success = 0;
+        var start = DateTimeOffset.Now;
+        var seconds = 1;
+
+        foreach (var item in items)
         {
-            if (TryExport(geraldoItem, $"GeraldoItems/{geraldoItem.name}.json")) success++;
-            total++;
+            var i = 0;
+            foreach (var subItem in subItems(item))
+            {
+                if (TryExport(subItem, Path.Combine(folder, getPath(item, subItem, i) + ".json"))) success++;
+                total++;
+                i++;
+            }
+
+            if (DateTimeOffset.Now - start > TimeSpan.FromSeconds(seconds))
+            {
+                ModHelper.Log($"{total} {folder} processed...");
+                seconds++;
+            }
         }
-        ModHelper.Log(
-            $"Exported {success}/{total} GeraldoItemModels to {Path.Combine(FileIOHelper.sandboxRoot, "GeraldoItems")}");
 
+        ModHelper.Log($"Exported {success}/{total} {folder} to {Path.Combine(FileIOHelper.sandboxRoot, folder)}");
+    }
 
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "BloonOverlays"), true);
-        foreach (var overlayType in GameData.Instance.bloonOverlays.overlayTypes.keys)
+    internal static void Export(JObject jobject, string path)
+    {
+        AddFileToGitIgnore(path);
+
+        try
         {
-            if (TryExport(GameData.Instance.bloonOverlays.overlayTypes[overlayType],
-                    $"BloonOverlays/{overlayType}.json")) success++;
-            total++;
+            FileIOHelper.SaveFile(path, jobject.ToString(Formatting.Indented));
+            ModHelper.Log("Exported " + Path.Combine(FileIOHelper.sandboxRoot, path));
         }
-        ModHelper.Log(
-            $"Exported {success}/{total} BloonOverlays to {Path.Combine(FileIOHelper.sandboxRoot, "BloonOverlays")}");
-
-        Export(LocalizationManager.Instance.textTable, "textTable.json");
-
-        Export(Game.instance.model.paragonDegreeDataModel, "paragonDegreeData.json");
-
-
-        total = success = 0;
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, "Artifacts"), true);
-        foreach (var (id, artifact) in GameData.Instance.artifactsData.artifactDatas)
+        catch (Exception e)
         {
-            if (TryExport(artifact, $"Artifacts/{id}.json")) success++;
-            total++;
+            ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
+            ModHelper.Warning(e);
         }
-        ModHelper.Log($"Exported {success}/{total} Artifacts to {Path.Combine(FileIOHelper.sandboxRoot, "Artifacts")}");
+    }
+
+    /// <summary>
+    /// Tries to save a specific object and logs doing so
+    /// </summary>
+    public static void Export(Object data, string path)
+    {
+        AddFileToGitIgnore(path);
+
+        try
+        {
+            FileIOHelper.SaveObject(path, data);
+            ModHelper.Log("Exported " + Path.Combine(FileIOHelper.sandboxRoot, path));
+        }
+        catch (Exception e)
+        {
+            ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
+            ModHelper.Warning(e);
+        }
+    }
+
+    internal static void Export(Object data, string path, System.Action<JObject> modify)
+    {
+        AddFileToGitIgnore(path);
+
+        try
+        {
+            var jobject = JObject.FromObject(data, Il2CppJsonConvert.Serializer);
+            modify?.Invoke(jobject);
+
+            FileIOHelper.SaveFile(path, jobject.ToString(Formatting.Indented));
+            ModHelper.Log("Exported " + Path.Combine(FileIOHelper.sandboxRoot, path));
+        }
+        catch (Exception e)
+        {
+            ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
+            ModHelper.Warning(e);
+        }
     }
 
     /// <summary>
@@ -246,35 +225,12 @@ public static class GameModelExporter
     {
         try
         {
-#if DEBUG
-            if (data != null && data.Is(out Model model))
-            {
-                ModelSerializer.MakeConsistent(model);
-            }
-#endif
             FileIOHelper.SaveObject(path, data);
             return true;
         }
         catch (Exception)
         {
             return false;
-        }
-    }
-
-    /// <summary>
-    /// Tries to save a specific Model and logs doing so
-    /// </summary>
-    public static void Export(Object data, string path)
-    {
-        try
-        {
-            FileIOHelper.SaveObject(path, data);
-            ModHelper.Log("Saving " + Path.Combine(FileIOHelper.sandboxRoot, path));
-        }
-        catch (Exception e)
-        {
-            ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
-            ModHelper.Warning(e);
         }
     }
 }

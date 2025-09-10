@@ -1,6 +1,9 @@
 ﻿using System;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
+using UnityEngine;
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>
@@ -50,12 +53,6 @@ public class ModSettingBool : ModSetting<bool>
     {
     }
 
-
-    /// <summary>
-    /// Old way to do a button before ModSettingButton was a thing
-    /// </summary>
-    [Obsolete("Use ModSettingButton")] public bool IsButton { get; set; }
-
     /// <summary>
     /// Create a new ModSetting bool with the given value as default
     /// </summary>
@@ -103,8 +100,12 @@ public class ModSettingBool : ModSetting<bool>
             var buttonComponent = option.BottomRow.AddButton(
                 new Info("Button", 562, 200), value ? enabledButton : disabledButton, null
             );
-            buttonComponent.AddText(new Info("Text", InfoPreset.FillParent), value ? enabledText : disabledText,
-                80f);
+            var text = buttonComponent.AddText(new Info("Text", InfoPreset.FillParent)
+            {
+                Size = -50
+            }, value ? enabledText : disabledText, 80f);
+            text.EnableAutoSizing();
+            text.Text.lineSpacing = 10;
 
             currentAction = (_, butt) =>
             {
@@ -114,12 +115,12 @@ public class ModSettingBool : ModSetting<bool>
                     butt.GetDescendent<NK_TextMeshProUGUI>("Text").SetText(value ? enabledText : disabledText);
                 }
             };
-            buttonComponent.Button.onClick.AddListener(new Action(() =>
+            buttonComponent.Button.onClick.AddListener(() =>
             {
                 currentAction(!value, buttonComponent);
                 SetValue(!value);
-                // MenuManager.instance.buttonClickSound.Play("ClickSounds");
-            }));
+                MenuManager.instance.buttonClickSound.Play("ClickSounds");
+            });
 
             option.SetResetAction(new Action(() =>
             {
@@ -130,14 +131,15 @@ public class ModSettingBool : ModSetting<bool>
         }
         else
         {
-            var checkbox = option.BottomRow.AddCheckbox(
-                new Info("Checkbox", 200), value, VanillaSprites.BlueInsertPanelRound,
-                new Action<bool>(enabled =>
+            var checkbox = option.BottomRow.AddCheckbox(new Info("Checkbox", 200), value,
+                VanillaSprites.BlueInsertPanelRound, new Action<bool>(enabled =>
                 {
                     SetValue(enabled);
-                    // MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
-                })
-            );
+                }));
+            checkbox.Toggle.onValueChanged.AddListener(_ =>
+            {
+                ResourceLoader.LoadAsync<AudioClip>(VanillaAudioClips.UITick01).WaitForCompletion().Play("ClickSounds");
+            });
             option.SetResetAction(new Action(() => checkbox.SetChecked(defaultValue)));
             modifyCheckbox?.Invoke(checkbox);
         }

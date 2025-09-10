@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## GameModelExporter.Export(Object, string) Method
 
-Tries to save a specific Model and logs doing so
+Tries to save a specific object and logs doing so
 
 ```csharp
 public static void Export(Object data, string path);

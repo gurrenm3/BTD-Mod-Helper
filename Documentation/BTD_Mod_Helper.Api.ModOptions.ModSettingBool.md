@@ -102,20 +102,6 @@ public Action<ModHelperCheckbox> modifyCheckbox;
 
 #### Field Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
-### Properties
-
-<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingBool.IsButton'></a>
-
-## ModSettingBool.IsButton Property
-
-Old way to do a button before ModSettingButton was a thing
-
-```csharp
-public bool IsButton { get; set; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingBool.SetValue(object)'></a>

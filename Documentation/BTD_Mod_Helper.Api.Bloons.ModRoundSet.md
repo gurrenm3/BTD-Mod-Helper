@@ -137,8 +137,7 @@ public virtual SpriteReference IconReference { get; }
 ## ModRoundSet.Rounds1Index Property
 
 Whether to use 1-Indexed rounds in ModifyRoundsModels methods instead of 0 indexed  
-<br/>  
-TODO this will default to true in a future Mod Helper update
+<br/>
 
 ```csharp
 public virtual bool Rounds1Index { get; }

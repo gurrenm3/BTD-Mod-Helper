@@ -747,7 +747,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         if (selectedMod.IsUpdaterPlugin())
         {
-            MelonMain.AutoUpdate.SetValue(false);
+            MelonMain.AutoUpdate.SetValueAndSave(false);
         }
     }
 
@@ -761,7 +761,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         if (selectedMod.IsUpdaterPlugin())
         {
-            MelonMain.AutoUpdate.SetValue(true);
+            MelonMain.AutoUpdate.SetValueAndSave(true);
         }
     }
 }

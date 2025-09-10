@@ -8,9 +8,10 @@ using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
 using Il2CppSystem.Collections;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using UnityEngine;
 using Enumerable = Il2CppSystem.Linq.Enumerable;
-using FieldInfo = Il2CppSystem.Reflection.FieldInfo;
 using Object = Il2CppSystem.Object;
 using ValueType = Il2CppSystem.ValueType;
 
@@ -27,7 +28,7 @@ public static class Il2CppJsonConvert
     public static readonly JsonSerializerSettings Settings = new()
     {
         ContractResolver = new ModelContractResolver(),
-        Converters = {new Il2CppConverter()},
+        Converters = {new Il2CppConverter(), new UnityColorConverter()},
         TypeNameHandling = TypeNameHandling.Objects,
         SerializationBinder = new Il2CppSerializationBinder(),
         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
@@ -62,12 +63,14 @@ public static class Il2CppJsonConvert
                 return false;
             }
 
-            return objectType.IsAssignableTo(typeof(Object));
+            return objectType.IsAssignableTo(typeof(Il2CppObjectBase));
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value is not Object obj || obj.GetCSharpType() is not { } realType)
+            if (value is not Il2CppObjectBase baseObj ||
+                !baseObj.Is(out Object obj) ||
+                obj.GetCSharpType() is not { } realType)
             {
                 serializer.Serialize(writer, null);
                 return;
@@ -119,8 +122,59 @@ public static class Il2CppJsonConvert
 
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer) => null;
+        public override object ReadJson(JsonReader reader, Type type, object existing, JsonSerializer serializer) => null;
+    }
+
+    internal class UnityColorConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType) =>
+            objectType == typeof(Color) || objectType == typeof(Color?);
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value == null)
+            {
+                writer.WriteNull();
+                return;
+            }
+
+            var color = (Color) value;
+
+            writer.WriteStartObject();
+            if (serializer.TypeNameHandling is TypeNameHandling.Objects or TypeNameHandling.All)
+            {
+                writer.WritePropertyName("$type");
+                writer.WriteValue(value.GetType().AssemblyQualifiedName);
+            }
+            writer.WritePropertyName("r");
+            writer.WriteValue(color.r);
+            writer.WritePropertyName("g");
+            writer.WriteValue(color.g);
+            writer.WritePropertyName("b");
+            writer.WriteValue(color.b);
+            writer.WritePropertyName("a");
+            writer.WriteValue(color.a);
+            writer.WriteEndObject();
+        }
+
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null)
+                return objectType == typeof(Color?) ? null : default(Color);
+
+            if (reader.TokenType != JsonToken.StartObject)
+                throw new JsonSerializationException($"Expected StartObject for Color, got {reader.TokenType}.");
+
+            var jo = JObject.Load(reader);
+
+            var c = new Color(jo.TryGetValue("r", out var r) ? r.Value<float>() : 0f,
+                jo.TryGetValue("g", out var g) ? g.Value<float>() : 0f,
+                jo.TryGetValue("b", out var b) ? b.Value<float>() : 0f,
+                jo.TryGetValue("a", out var a) ? a.Value<float>() : 1f);
+
+            return objectType == typeof(Color?) ? (Color?) c : (object) c;
+        }
     }
 
     internal class Il2CppSerializationBinder : DefaultSerializationBinder
@@ -147,8 +201,6 @@ public static class Il2CppJsonConvert
 
     internal class Il2CppContractResolver : DefaultContractResolver
     {
-
-
         protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
         {
             if (member.GetUnderlyingType().IsIl2CppNullable())
@@ -173,13 +225,13 @@ public static class Il2CppJsonConvert
                 .GetMembers(Il2CppSystem.Reflection.BindingFlags.Instance |
                             Il2CppSystem.Reflection.BindingFlags.Public |
                             Il2CppSystem.Reflection.BindingFlags.NonPublic)
-                .Where(info => !(info.Is(out FieldInfo fieldInfo) && fieldInfo.IsNotSerialized))
                 .Select(info => info.Name)
                 .ToHashSet();
 
             return base
                 .GetSerializableMembers(objectType)
-                .Where(member => memberNames.Contains(member.Name))
+                .Where(member => memberNames.Contains(member.Name) &&
+                                 member.GetUnderlyingType() != typeof(IntPtr))
                 .ToList();
         }
     }

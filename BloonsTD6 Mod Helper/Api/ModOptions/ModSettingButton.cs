@@ -1,6 +1,7 @@
 ﻿using System;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Unity.Menu;
 namespace BTD_Mod_Helper.Api.ModOptions;
 
 /// <summary>
@@ -48,11 +49,17 @@ public class ModSettingButton : ModSetting
         var button = option.BottomRow.AddButton(
             new Info("Button", 562, 200), buttonSprite, new Action(() =>
             {
+                MenuManager.instance.buttonClickSound.Play("ClickSounds");
                 action?.Invoke();
             })
         );
 
-        button.AddText(new Info("Text", InfoPreset.FillParent), buttonText ?? "Dew It", 80f);
+        var text = button.AddText(new Info("Text", InfoPreset.FillParent)
+        {
+            Size = -50
+        }, buttonText ?? "Dew It", 80f);
+        text.EnableAutoSizing();
+        text.Text.lineSpacing = 10;
 
         option.ResetButton.gameObject.active = false;
 

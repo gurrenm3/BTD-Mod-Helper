@@ -127,6 +127,30 @@ Runs every time that your custom menu updates
 public virtual void OnMenuUpdate();
 ```
 
+<a name='BTD_Mod_Helper.Api.ModGameMenu.Open(Object,Object)'></a>
+
+## ModGameMenu.Open(Object, Object) Method
+
+Opens this menu
+
+```csharp
+public void Open(Object data=null, Object baseData=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModGameMenu.Open(Object,Object).data'></a>
+
+`data` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+
+The custom data to pass into your ModGameMenu's [OnMenuOpened(Object)](BTD_Mod_Helper.Api.ModGameMenu.md#BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Object) 'BTD_Mod_Helper.Api.ModGameMenu.OnMenuOpened(Object)') method
+
+<a name='BTD_Mod_Helper.Api.ModGameMenu.Open(Object,Object).baseData'></a>
+
+`baseData` [Il2CppSystem.Object](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Object 'Il2CppSystem.Object')
+
+The data that you want to pass into the base menu's Open method, if you're still running the  
+code
+
 <a name='BTD_Mod_Helper.Api.ModGameMenu.Open_T_(Object,Object)'></a>
 
 ## ModGameMenu.Open<T>(Object, Object) Method

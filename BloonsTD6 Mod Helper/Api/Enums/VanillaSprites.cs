@@ -1408,6 +1408,10 @@ public static class VanillaSprites
     public const string BuffIconEngineerx4x = "UiBuffIcons[BuffIconEngineerx4x]";
     public const string BuffIconEngineerx5x = "UiBuffIcons[BuffIconEngineerx5x]";
     public const string BuffIconEtienne = "UiBuffIcons[BuffIconEtienne]";
+    public const string BuffIconFarmerCamo = "UiBuffIcons[BuffIconFarmerCamo]";
+    public const string BuffIconFarmerFinancier = "UiBuffIcons[BuffIconFarmerFinancier]";
+    public const string BuffIconFarmerRegrow = "UiBuffIcons[BuffIconFarmerRegrow]";
+    public const string BuffIconFarmerWorkers = "UiBuffIcons[BuffIconFarmerWorkers]";
     public const string BuffIconFertilizer = "UiBuffIcons[BuffIconFertilizer]";
     public const string BuffIconFlintTips = "UiBuffIcons[BuffIconFlintTips]";
     public const string BuffIconGwendolin = "UiBuffIcons[BuffIconGwendolin]";
@@ -6719,6 +6723,10 @@ public static class VanillaSprites
             ["BuffIconEngineerx4x"] = BuffIconEngineerx4x,
             ["BuffIconEngineerx5x"] = BuffIconEngineerx5x,
             ["BuffIconEtienne"] = BuffIconEtienne,
+            ["BuffIconFarmerCamo"] = BuffIconFarmerCamo,
+            ["BuffIconFarmerFinancier"] = BuffIconFarmerFinancier,
+            ["BuffIconFarmerRegrow"] = BuffIconFarmerRegrow,
+            ["BuffIconFarmerWorkers"] = BuffIconFarmerWorkers,
             ["BuffIconFertilizer"] = BuffIconFertilizer,
             ["BuffIconFlintTips"] = BuffIconFlintTips,
             ["BuffIconGwendolin"] = BuffIconGwendolin,

@@ -15,7 +15,7 @@ internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
             return false;
         }
 
-        VanillaSpriteGenerator.GenerateVanillaSprites();
+        VanillaSpritesGenerator.GenerateVanillaSprites();
         ModHelperSpriteGenerator.GenerateModHelperSprites();
 
         return true;

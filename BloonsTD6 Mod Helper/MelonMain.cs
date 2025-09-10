@@ -102,10 +102,9 @@ internal partial class MelonMain : BloonsTD6Mod
 
         if (AutoUpdate)
         {
-            if (UpdaterPlugin.ShouldDownload)
-            {
-                UpdaterPlugin.DownloadLatest();
-            }
+            // ReSharper disable once ConstantNullCoalescingCondition
+            (ModHelperGithub.populatingMods ?? Task.CompletedTask).ContinueWith(_ => UpdaterPlugin.CheckForUpdates());
+
             UpdaterPlugin.PopulateSettings();
         }
     }
@@ -197,10 +196,10 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
                 "Unstable MelonLoader Version",
-                """
-                The currently installed version of MelonLoader is not considered stable for BTD6.
-                Would you like to view the install guide to see the currently recommended version?
-                """,
+                $"""
+                 MelonLoader {versionString} is not considered stable for BTD6.
+                 Would you like to view the install guide to see the currently recommended version?
+                 """,
                 new Action(() =>
                 {
                     ProcessHelper.OpenURL(

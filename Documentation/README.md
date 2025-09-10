@@ -78,6 +78,7 @@
 | [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | Defines a ModCommand that is a subcommand of the specified other command |
 | [OpenCommand](BTD_Mod_Helper.Api.Commands.OpenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenCommand') | Commands for opening specific files / folders |
 | [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.OpenFolderCommand') | Opens specific folders within file explorer |
+| [OpenScreenCommand](BTD_Mod_Helper.Api.Commands.OpenScreenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenScreenCommand') | Parent command for opening UI screens |
 | [TestCommand](BTD_Mod_Helper.Api.Commands.TestCommand.md 'BTD_Mod_Helper.Api.Commands.TestCommand') | Root command where test related actions are |
 
 <a name='BTD_Mod_Helper.Api.Components'></a>
@@ -188,6 +189,7 @@
 | [FileDialogHelper](BTD_Mod_Helper.Api.Helpers.FileDialogHelper.md 'BTD_Mod_Helper.Api.Helpers.FileDialogHelper') | Class to help with the usage of Native File Dialogs |
 | [FileIOHelper](BTD_Mod_Helper.Api.Helpers.FileIOHelper.md 'BTD_Mod_Helper.Api.Helpers.FileIOHelper') | Class replacing the original functionality of FileIOUtil before BTD6 update 33.0 |
 | [GameModelExporter](BTD_Mod_Helper.Api.Helpers.GameModelExporter.md 'BTD_Mod_Helper.Api.Helpers.GameModelExporter') | Class for handily exporting elements of the GameModel to json files |
+| [Il2CppEnumerator](BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator.md 'BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator') | Wrapper for il2cpp enumerator so that it actually extends the normal System enumerator |
 | [Il2CppEnumerator&lt;T&gt;](BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator_T_.md 'BTD_Mod_Helper.Api.Helpers.Il2CppEnumerator<T>') | Wrapper for il2cpp enumerator so that it actually extends the normal System enumerator |
 | [Instances](BTD_Mod_Helper.Api.Helpers.Instances.md 'BTD_Mod_Helper.Api.Helpers.Instances') | Provides quick access to many major BTD6 singleton classes |
 | [Lists](BTD_Mod_Helper.Api.Helpers.Lists.md 'BTD_Mod_Helper.Api.Helpers.Lists') | Provides quick access to many major BTD6 object lists |
@@ -241,6 +243,7 @@
 
 | Classes | |
 | :--- | :--- |
+| [Il2CppJsonConvert](BTD_Mod_Helper.Api.Internal.Il2CppJsonConvert.md 'BTD_Mod_Helper.Api.Internal.Il2CppJsonConvert') | A version of JsonConvert that uses modified settings for handling IL2Cpp types, in particular BTD6's Model types |
 | [ResourceHandler](BTD_Mod_Helper.Api.Internal.ResourceHandler.md 'BTD_Mod_Helper.Api.Internal.ResourceHandler') | Handles embedded resources within Mod Helper mods |
 
 <a name='BTD_Mod_Helper.Api.Legends'></a>

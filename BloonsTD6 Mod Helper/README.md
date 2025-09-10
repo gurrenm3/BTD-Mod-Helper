@@ -4,7 +4,7 @@ This is the C# project for BTD Mod Helper.
 
 ## Requirements
 
-Requires .NET SDK 8.0 or higher to build the project (however the built library itself will still only be targeting
+Requires .NET SDK 9.0 or higher to build the project (however the built library itself will still only be targeting
 .NET 6.0 because that's what MelonLoader supports)
 
 ## Build Configurations

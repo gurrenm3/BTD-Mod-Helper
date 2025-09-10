@@ -13,7 +13,7 @@ using UnityEngine.U2D;
 
 namespace BTD_Mod_Helper.Api.Internal;
 
-internal static class VanillaSpriteGenerator
+internal static class VanillaSpritesGenerator
 {
     // Some names map to multiple Sprites. Keep them sorted by their guid so that they'll always be given the same number
     internal static readonly Dictionary<string, SortedSet<string>> SpriteReferences = new();

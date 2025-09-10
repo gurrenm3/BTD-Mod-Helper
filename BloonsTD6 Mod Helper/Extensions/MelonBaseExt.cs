@@ -27,5 +27,5 @@ internal static class MelonBaseExt
 
     internal static Dictionary<string, ModSetting> GetModSettings(this MelonBase melonBase) =>
         melonBase is BloonsMod bloonsMod ? bloonsMod.ModSettings :
-        melonBase.GetModHelperData().IsUpdaterPlugin() ? UpdaterPlugin.AutoUpdateSettings : null;
+        melonBase.IsUpdaterPlugin() ? UpdaterPlugin.AutoUpdateSettings : null;
 }

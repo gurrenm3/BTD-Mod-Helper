@@ -233,6 +233,19 @@ public static Map Map { get; }
 #### Property Value
 [Il2CppAssets.Scripts.Simulation.Track.Map](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Track.Map 'Il2CppAssets.Scripts.Simulation.Track.Map')
 
+<a name='BTD_Mod_Helper.Api.Helpers.Instances.MenuManager'></a>
+
+## Instances.MenuManager Property
+
+The current instance of the MenuManager component, may be null
+
+```csharp
+public static MenuManager MenuManager { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Unity.Menu.MenuManager](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Menu.MenuManager 'Il2CppAssets.Scripts.Unity.Menu.MenuManager')
+
 <a name='BTD_Mod_Helper.Api.Helpers.Instances.NextInGameData'></a>
 
 ## Instances.NextInGameData Property
