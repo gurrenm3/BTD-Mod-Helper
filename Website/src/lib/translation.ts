@@ -1,5 +1,5 @@
-import {Language} from "./lanugage";
-import {GoogleTranslator} from "anylang/translators";
+import { Language } from "./lanugage";
+import { GoogleTranslator } from "anylang/translators";
 
 const translator = new GoogleTranslator();
 

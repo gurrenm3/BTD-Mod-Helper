@@ -11,7 +11,10 @@ internal class GenerateAllCommand : ModCommand<GenerateCommand>
     public override bool Execute(ref string resultText)
     {
         foreach (var command in GetContent<ModCommand>()
-                     .Where(command => command.ParentCommand is GenerateCommand && command != this && command.mod == mod))
+                     .Where(command => command.ParentCommand is GenerateCommand &&
+                                       command != this &&
+                                       command.mod == mod &&
+                                       command.IsAvailable))
         {
             command.Execute(ref resultText);
         }

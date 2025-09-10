@@ -2,12 +2,12 @@ import { BlockDef } from "./blockly-types";
 
 import blocks from "../data/blocks.json";
 import extraBlocks from "../data/extra-blocks.json";
+import customBlocks from "../data/custom-blocks.json";
 import prefabReferences from "../data/prefab-references.json";
 import audioSourceReferences from "../data/audio-source-references.json";
 import spriteReferences from "../data/sprite-references.json";
 import towers from "../data/towers.json";
 import upgrades from "../data/upgrades.json";
-import { cloneDeep } from "lodash";
 
 const createResourceBlock =
   (type: string) =>
@@ -103,4 +103,5 @@ export const allJsonBlocks = [
   ...spriteBlocks,
   ...towerBlocks,
   ...upgradeBlocks,
+  ...(process.env.NODE_ENV !== "production" ? customBlocks : []),
 ] as BlockDef[];

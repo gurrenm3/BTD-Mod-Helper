@@ -84,3 +84,21 @@ public static bool IsOlderMelonMod(this System.IO.FileInfo fileInfo);
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.FileInfoExt.NameWithoutExtension(thisSystem.IO.FileInfo)'></a>
+
+## FileInfoExt.NameWithoutExtension(this FileInfo) Method
+
+Gets the name of this file without the extension
+
+```csharp
+public static string NameWithoutExtension(this System.IO.FileInfo fileInfo);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.FileInfoExt.NameWithoutExtension(thisSystem.IO.FileInfo).fileInfo'></a>
+
+`fileInfo` [System.IO.FileInfo](https://docs.microsoft.com/en-us/dotnet/api/System.IO.FileInfo 'System.IO.FileInfo')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

@@ -443,25 +443,40 @@ internal static class BlocklyGenerator
             type.IsAssignableTo(typeof(TargetType)))
         {
             color = 30;
-            if (type.IsAssignableTo(typeof(SupportModel)))
+            if (type.Name.StartsWith("Attack"))
             {
                 color = 33;
+                subCategory = "Attack";
+            }
+            else if (type.IsAssignableTo(typeof(SupportModel)) || type.IsAssignableTo(typeof(TowerBehaviorBuffModel)))
+            {
+                color = 36;
                 subCategory = "Support";
             }
             else if (type.Name.Contains("CreateEffect"))
             {
-                color = 36;
+                color = 39;
                 subCategory = "Effect";
             }
             else if (type.Name.Contains("CreateSound"))
             {
-                color = 39;
+                color = 42;
                 subCategory = "Sound";
             }
             else if (type.Name.Contains("Movement"))
             {
-                color = 42;
+                color = 45;
                 subCategory = "Movement";
+            }
+            else if (type.IsAssignableTo(typeof(FootprintModel)))
+            {
+                color = 48;
+                subCategory = "Footprint";
+            }
+            else if ((type.FullName ?? type.Name).Contains("Corvus"))
+            {
+                color = 51;
+                subCategory = "Spell";
             }
             return "Tower Behaviors";
         }

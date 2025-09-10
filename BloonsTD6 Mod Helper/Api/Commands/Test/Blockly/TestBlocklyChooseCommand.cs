@@ -1,3 +1,4 @@
+#if DEBUG
 using BTD_Mod_Helper.Tests;
 namespace BTD_Mod_Helper.Api.Commands.Test.Blockly;
 
@@ -13,3 +14,4 @@ internal class TestBlocklyChooseCommand : ModCommand<TestBlocklyCommand>
         return true;
     }
 }
+#endif

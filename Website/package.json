@@ -9,7 +9,7 @@
     "dev": "next dev",
     "prebuild": "ts-node src/scripts/prebuild.ts",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "pages": "cross-env NODE_DEBUG=gh-pages gh-pages -t -d out",
     "deploy": "cross-env CI=true yarn build && yarn pages",
     "testDeploy": "yarn deploy -r https://github.com/doombubbles/BTD-Mod-Helper",
@@ -77,6 +77,9 @@
     "jest-environment-jsdom": "^29.6.2",
     "prettier": "^2.4.1",
     "ts-jest": "^29.1.1"
+  },
+  "resolutions": {
+    "query-string": "6.14.1"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

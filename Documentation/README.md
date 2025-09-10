@@ -77,9 +77,16 @@
 | [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') | Defines a command that can be run from within the Mod Helper developer console |
 | [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | Defines a ModCommand that is a subcommand of the specified other command |
 | [OpenCommand](BTD_Mod_Helper.Api.Commands.OpenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenCommand') | Commands for opening specific files / folders |
-| [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.OpenFolderCommand') | Opens specific folders within file explorer |
-| [OpenScreenCommand](BTD_Mod_Helper.Api.Commands.OpenScreenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenScreenCommand') | Parent command for opening UI screens |
 | [TestCommand](BTD_Mod_Helper.Api.Commands.TestCommand.md 'BTD_Mod_Helper.Api.Commands.TestCommand') | Root command where test related actions are |
+
+<a name='BTD_Mod_Helper.Api.Commands.Open'></a>
+
+## BTD_Mod_Helper.Api.Commands.Open Namespace
+
+| Classes | |
+| :--- | :--- |
+| [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.Open.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.Open.OpenFolderCommand') | Opens specific folders within file explorer |
+| [OpenScreenCommand](BTD_Mod_Helper.Api.Commands.Open.OpenScreenCommand.md 'BTD_Mod_Helper.Api.Commands.Open.OpenScreenCommand') | Parent command for opening UI screens |
 
 <a name='BTD_Mod_Helper.Api.Components'></a>
 
@@ -389,6 +396,7 @@
 | [GameObjectExt](BTD_Mod_Helper.Extensions.GameObjectExt.md 'BTD_Mod_Helper.Extensions.GameObjectExt') | Extensions for GameObjects |
 | [GrowModelExt](BTD_Mod_Helper.Extensions.GrowModelExt.md 'BTD_Mod_Helper.Extensions.GrowModelExt') | Extension methods for [Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel'). |
 | [HarmonyExt](BTD_Mod_Helper.Extensions.HarmonyExt.md 'BTD_Mod_Helper.Extensions.HarmonyExt') | Extensions for Harmony stuff |
+| [HashSetExt](BTD_Mod_Helper.Extensions.HashSetExt.md 'BTD_Mod_Helper.Extensions.HashSetExt') | Extensions for HashSets |
 | [HttpClientExtensions](BTD_Mod_Helper.Extensions.HttpClientExtensions.md 'BTD_Mod_Helper.Extensions.HttpClientExtensions') | Extensions for HttpClient |
 | [IEnumerableExt](BTD_Mod_Helper.Extensions.IEnumerableExt.md 'BTD_Mod_Helper.Extensions.IEnumerableExt') | Extensions for the normal System IEnumerable class |
 | [Il2CppGenericIEnumerable](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable') | Extensions for Il2cpp Ienumerables |

@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Array of BlockDefs",
+  "type": "array",
+  "items": { "$ref": "#/$defs/BlockDef" },
+  "$defs": {
+    "MaybeString": {
+      "anyOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "MaybeBoolean": {
+      "anyOf": [{ "type": "boolean" }, { "type": "null" }]
+    },
+    "MaybeNumber": {
+      "anyOf": [{ "type": "number" }, { "type": "null" }]
+    },
+
+    "StringOrStringArrayMaybe": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          }
+        }
+      ]
+    },
+
+    "ArrayOfStringsMaybe": {
+      "anyOf": [
+        { "type": "null" },
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      ]
+    },
+
+    "BlocklyShadowDef": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "fields": { "type": "object" },
+        "movable": { "type": "boolean" },
+        "toolbox": {
+          "anyOf": [{ "type": "boolean" }, { "type": "null" }]
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": true
+    },
+
+    "BlocklyShadowState": {
+      "type": "object",
+      "properties": {
+        "shadow": {
+          "anyOf": [
+            { "$ref": "#/$defs/BlocklyShadowDef" },
+            { "type": "null" }
+          ]
+        },
+        "block": {
+          "anyOf": [
+            { "$ref": "#/$defs/BlocklyShadowDef" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "BlockArgDefBase": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "#/$defs/MaybeString" },
+        "check": {
+          "anyOf": [
+            { "type": "null" },
+            { "type": "string" },
+            {
+              "type": "array",
+              "items": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }]
+              }
+            }
+          ]
+        },
+        "name": { "$ref": "#/$defs/MaybeString" },
+        "min": { "$ref": "#/$defs/MaybeNumber" },
+        "max": { "$ref": "#/$defs/MaybeNumber" },
+        "int": { "$ref": "#/$defs/MaybeBoolean" },
+        "text": { "$ref": "#/$defs/MaybeString" },
+        "options": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  { "type": "null" },
+                  {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [{ "type": "string" }, { "type": "null" }]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "width": { "$ref": "#/$defs/MaybeNumber" },
+        "height": { "$ref": "#/$defs/MaybeNumber" },
+        "alt": { "$ref": "#/$defs/MaybeString" },
+        "src": { "$ref": "#/$defs/MaybeString" },
+        "variable": { "$ref": "#/$defs/MaybeString" },
+        "variableTypes": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "array",
+              "items": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }]
+              }
+            }
+          ]
+        },
+        "defaultType": { "$ref": "#/$defs/MaybeString" },
+        "value": {
+          "anyOf": [
+            { "type": "null" },
+            { "type": "number" },
+            { "type": "string" },
+            { "type": "boolean" }
+          ]
+        },
+        "next": {
+          "anyOf": [
+            { "$ref": "#/$defs/BlocklyShadowDef" },
+            { "type": "null" }
+          ]
+        },
+        "checked": { "$ref": "#/$defs/MaybeBoolean" },
+        "precision": { "$ref": "#/$defs/MaybeNumber" },
+        "offset": { "$ref": "#/$defs/MaybeNumber" }
+      },
+      "additionalProperties": false
+    },
+
+    "BlockArgDef": {
+      "allOf": [
+        { "$ref": "#/$defs/BlockArgDefBase" },
+        { "$ref": "#/$defs/BlocklyShadowState" }
+      ]
+    },
+
+    "BlockDef": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "#/$defs/MaybeString" },
+        "output": { "$ref": "#/$defs/StringOrStringArrayMaybe" },
+        "colour": { "$ref": "#/$defs/MaybeString" },
+        "nextStatement": { "$ref": "#/$defs/StringOrStringArrayMaybe" },
+        "previousStatement": { "$ref": "#/$defs/StringOrStringArrayMaybe" },
+        "data": { "$ref": "#/$defs/MaybeString" },
+        "inputsInline": { "$ref": "#/$defs/MaybeBoolean" },
+        "hat": { "$ref": "#/$defs/MaybeString" },
+        "comment": { "$ref": "#/$defs/MaybeString" },
+        "category": { "$ref": "#/$defs/MaybeString" },
+        "subcategory": { "$ref": "#/$defs/MaybeString" },
+        "plural": { "$ref": "#/$defs/MaybeBoolean" },
+        "id": { "$ref": "#/$defs/MaybeString" },
+        "path": { "$ref": "#/$defs/MaybeString" },
+        "value": { "$ref": "#/$defs/MaybeNumber" },
+        "mutator": { "$ref": "#/$defs/MaybeString" },
+        "enableContextMenu": { "$ref": "#/$defs/MaybeBoolean" },
+        "mutatorOptions": {},
+
+        "next": { "$ref": "#/$defs/BlocklyShadowState" },
+
+        "extensions": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          ]
+        }
+      },
+
+      "patternProperties": {
+        "^message\\d+$": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+        "^args\\d+$": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/BlockArgDef" }
+            }
+          ]
+        }
+      },
+
+      "additionalProperties": false
+    }
+  }
+}

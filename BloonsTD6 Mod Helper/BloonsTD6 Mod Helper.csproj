@@ -41,6 +41,7 @@
         <EmbeddedResource Include="nfd.dll" />
         <EmbeddedResource Include="nfd_x86.dll" />
         <EmbeddedResource Include="btd6.targets" />
+        <Compile Condition="'$(Configuration)' != 'Debug'" Remove="Api/Internal/JsonTowers/**/*" />
     </ItemGroup>
 
     <ItemGroup>

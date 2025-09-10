@@ -3,7 +3,6 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
-using BTD_Mod_Helper.Api.Internal.JsonTowers;
 using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Scenarios;
@@ -12,6 +11,11 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Scenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+#if DEBUG
+using BTD_Mod_Helper.Api.Internal.JsonTowers;
+#endif
+
 namespace BTD_Mod_Helper.Patches.UI;
 
 [HarmonyPatch(typeof(TitleScreen), nameof(TitleScreen.Start))]

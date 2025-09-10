@@ -1,5 +1,11 @@
 import { KeyboardShortcut } from "blockly/core/shortcut_registry";
-import Blockly, { Block, BlockSvg, WidgetDiv, WorkspaceSvg } from "blockly";
+import Blockly, {
+  Block,
+  BlockSvg,
+  ICopyable,
+  WidgetDiv,
+  WorkspaceSvg,
+} from "blockly";
 import { blockStateToModel, pasteBlockFromText } from "./json-conversion-utils";
 import {
   loadFromJson,
@@ -50,7 +56,7 @@ export const workspaceCopy: KeyboardShortcut = {
 
     if (!selected) return false;
 
-    Blockly.clipboard.copy(selected);
+    Blockly.clipboard.copy(selected as ICopyable<any>);
 
     if (!(selected instanceof Block)) return false;
 
