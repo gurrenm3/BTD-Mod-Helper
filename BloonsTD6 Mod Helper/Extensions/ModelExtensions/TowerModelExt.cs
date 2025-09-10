@@ -293,7 +293,8 @@ public static class TowerModelExt
     /// </summary>
     public static List<UpgradeModel> GetAppliedUpgrades(this TowerModel towerModel)
     {
-        return towerModel.appliedUpgrades.Select(upgrade => Game.instance.model.GetUpgrade(upgrade)).ToList();
+        return (towerModel.appliedUpgrades ?? new Il2CppStringArray(0))
+            .Select(upgrade => Game.instance.model.GetUpgrade(upgrade)).ToList();
     }
 
     /// <summary>

@@ -61,6 +61,6 @@ public abstract class ModVanillaUpgrade : ModVanillaContent<TowerModel>
     /// <inheritdoc />
     public override IEnumerable<TowerModel> GetAffected(GameModel gameModel)
     {
-        return gameModel.towers.Where(model => model.appliedUpgrades.Contains(UpgradeId));
+        return gameModel.towers.Where(model => model.appliedUpgrades?.Contains(UpgradeId) == true);
     }
 }

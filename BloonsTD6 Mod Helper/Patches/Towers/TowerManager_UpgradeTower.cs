@@ -11,6 +11,7 @@ internal class TowerManager_UpgradeTower
         __state = null;
         foreach (var upgrade in def.appliedUpgrades)
         {
+            if (def.appliedUpgrades == null) return;
             if (!tower.towerModel.appliedUpgrades.Contains(upgrade))
             {
                 __state = upgrade;
