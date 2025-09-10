@@ -1,2 +1,7 @@
-- Created a new Updater Plugin that Mod Helper can automatically download and put in your Plugins folder. 
-- On startup, this plugin will check if there's a new version of Mod Helper and download it it without requiring a restart
+- Created a new Updater Plugin that keep Mod Helper and other mods automatically up to date when you start the game
+  - Enabled by default, use the "Auto Update" setting at the top of Mod Helper Settings to control whether this happens
+  - Mod Helper will automatically manage the download and installation of the Updater Plugin as long as the setting is enabled
+  - The Updater Plugin has its own settings page to control which mods you want to keep updated, if not all of them
+- For `ModRoundSet`, `Rounds1Index` will now finally be true by default
+- Added a VanillaAudioClips file listing all the GUIDs for game sounds
+- Updated the game data exporter to use a custom serializer implementation that does not fail on any towers (e.g. top path alchemists)

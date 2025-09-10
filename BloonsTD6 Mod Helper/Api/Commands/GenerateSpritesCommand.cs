@@ -2,7 +2,7 @@
 using BTD_Mod_Helper.Api.Internal;
 namespace BTD_Mod_Helper.Api.Commands;
 
-internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
+internal class GenerateSpritesCommand : ModCommand<GenerateCommand>
 {
     public override string Command => "sprites";
     public override string Help => "Generates the Mod Helper sprites list files";
@@ -15,7 +15,7 @@ internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
             return false;
         }
 
-        VanillaSpriteGenerator.GenerateVanillaSprites();
+        VanillaSpritesGenerator.GenerateVanillaSprites();
         ModHelperSpriteGenerator.GenerateModHelperSprites();
 
         return true;

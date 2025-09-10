@@ -78,6 +78,7 @@
 | [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | Defines a ModCommand that is a subcommand of the specified other command |
 | [OpenCommand](BTD_Mod_Helper.Api.Commands.OpenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenCommand') | Commands for opening specific files / folders |
 | [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.OpenFolderCommand') | Opens specific folders within file explorer |
+| [OpenScreenCommand](BTD_Mod_Helper.Api.Commands.OpenScreenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenScreenCommand') | Parent command for opening UI screens |
 | [TestCommand](BTD_Mod_Helper.Api.Commands.TestCommand.md 'BTD_Mod_Helper.Api.Commands.TestCommand') | Root command where test related actions are |
 
 <a name='BTD_Mod_Helper.Api.Components'></a>

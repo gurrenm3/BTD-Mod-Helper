@@ -9,6 +9,7 @@ using Il2CppAssets.Scripts.Simulation.Track;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.Network;
 using Il2CppAssets.Scripts.Unity.Player;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -141,6 +142,11 @@ public class Instances : MonoBehaviour
     /// The current instance of the ShopMenu component, may be null
     /// </summary>
     public static ShopMenu ShopMenu => ShopMenu.instance;
+
+    /// <summary>
+    /// The current instance of the MenuManager component, may be null
+    /// </summary>
+    public static MenuManager MenuManager => MenuManager.instance;
 
     // There's a bunch of other `.instance`s for other menus, but that's getting a bit niche to list them all
 

@@ -221,6 +221,7 @@ internal static class ConsoleHandler
     public static void ProcessCommand(string text)
     {
         if (string.IsNullOrWhiteSpace(text)) return;
+        SpotInHistory = -1;
         ConsoleHistory.Insert(0, text);
         Console.input.InputField.SetText("");
         Console.input.InputField.ForceLabelUpdate();

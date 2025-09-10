@@ -1,6 +1,8 @@
 ﻿using System;
 using BTD_Mod_Helper.Api.Enums;
+using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -138,9 +140,11 @@ public class ModHelperOption : ModHelperComponent
         bottomRow.LayoutGroup.reverseArrangement = true;
 
         // Below is what needs to be ported to BloonsAT
-        modHelperOption.ResetButton = bottomRow.AddButton(
-            new Info("Reset", ResetSize), VanillaSprites.RestartBtn, null
-        );
+        modHelperOption.ResetButton = bottomRow.AddButton(new Info("Reset", ResetSize), VanillaSprites.RestartBtn,
+            new Action(() =>
+            {
+                MenuManager.instance.returnSound.Play("ClickSounds");
+            }));
 
 
         return modHelperOption;

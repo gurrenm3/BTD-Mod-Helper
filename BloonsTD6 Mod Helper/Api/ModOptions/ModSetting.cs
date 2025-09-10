@@ -51,6 +51,8 @@ public abstract class ModSetting<T> : ModSetting
     /// <inheritdoc />
     public override object GetDefaultValue() => defaultValue;
 
+    internal void SetDefaultValue(T newDefaultValue) => defaultValue = newDefaultValue;
+
     /// <inheritdoc />
     public override object GetLastSavedValue() => lastSavedValue;
 

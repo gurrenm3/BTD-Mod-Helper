@@ -144,15 +144,46 @@ internal static class UpdaterPlugin
         }
     }
 
+    public static readonly ModSettingCategory AutoUpdateMods = new("Auto Update Mods")
+    {
+        collapsed = false
+    };
+
     public static void PopulateSettings()
     {
         if (Updater is not {Mod: { } mod}) return;
 
+        var defaultAutoUpdate = new ModSettingBool(true)
+        {
+            displayName = "Default Auto Update Setting",
+            description =
+                "Whether the default is to auto update a mod unless it's set not to, or not auto update a mod until it's set to",
+            onSave = b =>
+            {
+                foreach (var modSetting in AutoUpdateSettings.Values
+                             .Where(setting => setting.category == AutoUpdateMods)
+                             .OfType<ModSettingBool>())
+                {
+                    modSetting.SetDefaultValue(b);
+                }
+            },
+            button = true,
+            enabledText = "Auto Update",
+            disabledText = "Dont Auto Update"
+        };
+        AutoUpdateSettings["DefaultAutoUpdateSetting"] = defaultAutoUpdate;
+
+        ModSettingsHandler.LoadModSettings(mod);
+
+        var defaultValue = defaultAutoUpdate.value;
+
         foreach (var modHelperData in ModHelperData.All.Where(data => data.Mod is not MelonMain && !data.Plugin))
         {
-            AutoUpdateSettings[modHelperData.DllName.Replace(".dll", "")] = new ModSettingBool(true)
+            AutoUpdateSettings[modHelperData.DllName.Replace(".dll", "")] = new ModSettingBool(defaultValue)
             {
                 displayName = modHelperData.DisplayName,
+                category = AutoUpdateMods,
+                description = $"Whether {modHelperData.DisplayName} should automatically update on startup",
                 modifyOption = option =>
                 {
                     if (!modHelperData.HasNoIcon && modHelperData.GetIcon() is Sprite sprite)
@@ -162,7 +193,10 @@ internal static class UpdaterPlugin
                         option.Icon.Image.SetSprite(sprite);
                         option.Icon.Image.enabled = true;
                     }
-                }
+                },
+                button = true,
+                enabledText = "Auto Update",
+                disabledText = "Dont Auto Update"
             };
         }
 

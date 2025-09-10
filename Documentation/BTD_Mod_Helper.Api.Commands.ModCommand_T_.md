@@ -20,7 +20,8 @@ The root command this is a sub command of
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') &#129106; ModCommand<T>
 
 Derived  
-&#8627; [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.OpenFolderCommand')
+&#8627; [OpenFolderCommand](BTD_Mod_Helper.Api.Commands.OpenFolderCommand.md 'BTD_Mod_Helper.Api.Commands.OpenFolderCommand')  
+&#8627; [OpenScreenCommand](BTD_Mod_Helper.Api.Commands.OpenScreenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenScreenCommand')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Commands.ModCommand_T_.ParentCommand'></a>
