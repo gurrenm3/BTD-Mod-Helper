@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
@@ -22,7 +23,6 @@ using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.TowerFilters;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
-using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
@@ -32,38 +32,56 @@ using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.U2D;
 using Object = Il2CppSystem.Object;
 using ValueType = Il2CppSystem.ValueType;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class BlocklyGenerator
 {
+    /// <summary>
+    /// Types that go into the Base category
+    /// </summary>
     private static readonly Type[] BaseTypes =
     [
-        typeof(TowerModel), typeof(UpgradeModel)
+        typeof(TowerModel), typeof(UpgradeModel), typeof(BloonModel)
     ];
 
+    /// <summary>
+    /// When listing the types that a block is assignable to, stop once you reach any of these in the hierarchy
+    /// </summary>
     private static readonly Type[] StopBefore =
     [
-        typeof(Object), typeof(ValueType)
+        typeof(Object), typeof(ValueType), typeof(object)
     ];
 
+    /// <summary>
+    /// Il2cpp collection types
+    /// </summary>
     private static readonly Type[] GenericArrayTypes =
     [
         typeof(Il2CppStructArray<>), typeof(Il2CppReferenceArray<>), typeof(Il2CppArrayBase<>),
         typeof(Il2CppSystem.Collections.Generic.List<>)
     ];
 
+    /// <summary>
+    /// Members with these names should not be automatically included on Blockly blocks
+    /// </summary>
     private static readonly string[] IgnoreMembers =
     [
         "name", "checkedImplementationType", "implementationType", "childDependants", "isWrapped"
     ];
 
+    /// <summary>
+    /// Include members with these names on blocks even if they otherwise wouldn't be for some reason
+    /// </summary>
     private static readonly string[] ExtraMembers =
     [
-        "targetTypes"
+        "targetTypes", "saveId", "freezeLifespan"
     ];
 
     private static readonly Dictionary<Type, int> Types = new();
@@ -147,7 +165,7 @@ internal static class BlocklyGenerator
         var ctor = ModelSerializer.GetMainConstructor(type, members.Select(info => info.Name), true);
 
         var il2CppType = Il2CppType.From(type);
-        var badFields = il2CppType.GetProperties().Select(info => info.Name)
+        var badFields = il2CppType.GetProperties().Where(_ => !type.IsValueType).Select(info => info.Name)
             .Concat(il2CppType.GetFields().Where(info => info.IsNotSerialized).Select(info => info.Name))
             .ToList();
 
@@ -324,13 +342,13 @@ internal static class BlocklyGenerator
     {
         var map = new JObject();
 
-        var resourceLocationMap = Addressables.ResourceLocators.First();
+        var resourceMap = Addressables.ResourceLocators.First();
 
-        foreach (var key in resourceLocationMap.Keys.ToArray())
+        foreach (var key in resourceMap.Keys.ToArray())
         {
             if (!Guid.TryParse(key.ToString(), out _) ||
                 map.ContainsKey(key.ToString()) ||
-                !resourceLocationMap.Locate(key, Il2CppType.Of<Object>(), out var locations)) continue;
+                !resourceMap.Locate(key, Il2CppType.Of<Object>(), out var locations)) continue;
 
             var resources = locations
                 .Cast<Il2CppSystem.Collections.Generic.IEnumerable<IResourceLocation>>()
@@ -346,7 +364,7 @@ internal static class BlocklyGenerator
                 {
                     type = typeof(AudioSourceReference);
                 }
-                else if (name.EndsWith(".prefab") && name.Contains("Monkeys/"))
+                else if (name.EndsWith(".prefab") && (name.Contains("Monkeys/") || name.Contains("3DShelfTowers/")))
                 {
                     type = typeof(PrefabReference);
                 }
@@ -360,12 +378,34 @@ internal static class BlocklyGenerator
 
                 if (type == null || type != ofType) continue;
 
-                map[key.ToString()] = name
-                    .Replace("Assets/Generated/", "")
-                    .Replace("Assets/", "")
-                    .Replace("ResizedImages/", "")
-                    .Replace("SoundPrefabs/", "")
-                    .RegexReplace(@"\.(.*)", "");
+                map[key.ToString()] = name.RegexReplace(@"\.(.*)", "");
+            }
+        }
+
+        if (ofType == typeof(SpriteReference))
+        {
+            var spriteAtlases = resourceMap.AllLocations
+                .ToArray()
+                .Where(location => location.ResourceType == Il2CppType.Of<SpriteAtlas>())
+                .Select(location => location.PrimaryKey)
+                .Distinct();
+
+            foreach (var atlasName in spriteAtlases)
+            {
+                if (atlasName == "AssetLibraryAtlas") continue;
+
+                var atlas = ResourceLoader.LoadAtlas(atlasName).WaitForCompletion();
+
+                var dummyArray = new Il2CppReferenceArray<Sprite>(atlas.spriteCount);
+                atlas.GetSprites(dummyArray);
+
+                foreach (var sprite in dummyArray)
+                {
+                    var name = sprite.name.Replace("(Clone)", "");
+                    var guid = $"{atlasName}[{name}]";
+
+                    map[guid] = guid;
+                }
             }
         }
 
@@ -375,7 +415,7 @@ internal static class BlocklyGenerator
     private static JObject GetTowerIds()
     {
         var jobject = new JObject();
-        foreach (var tower in Game.instance.model.towers.Where(model => model.IsBaseTower && model.IsVanillaTower())
+        foreach (var tower in Game.instance.model.towers.Where(model => ModTowerHelper.VanillaTowerIds.Contains(model.name))
                      .OrderBy(model => model.isSubTower))
         {
             jobject[tower.baseId] = tower.towerSet.ToString();
@@ -388,8 +428,9 @@ internal static class BlocklyGenerator
         var jObject = new JObject();
         var local = LocalizationManager.Instance;
 
-        foreach (var tower in Game.instance.model.towers.Where(tower => !tower.isSubTower && tower.IsVanillaTower()))
+        foreach (var tower in Game.instance.model.towers.Where(model => ModTowerHelper.VanillaTowerIds.Contains(model.name)))
         {
+            if (tower.appliedUpgrades == null) continue;
             foreach (var upgradeId in tower.appliedUpgrades)
             {
                 if (jObject.ContainsKey(upgradeId)) continue;
@@ -417,14 +458,15 @@ internal static class BlocklyGenerator
     private static JObject GetAllTowers()
     {
         var jobject = new JObject();
-        foreach (var tower in Game.instance.model.towers.Where(model => model.IsVanillaTower())
+        foreach (var tower in Game.instance.model.towers.Where(model => ModTowerHelper.VanillaTowerIds.Contains(model.name))
                      .OrderBy(model => model.isSubTower))
         {
             jobject[tower.name] = new JObject
             {
                 ["towerSet"] = tower.towerSet.ToString(),
                 ["path"] = tower.baseId + "/" + tower.name + ".json",
-                ["appliedUpgrades"] = new JArray(tower.appliedUpgrades.Select(LocalizationManager.Instance.GetTextEnglish))
+                ["appliedUpgrades"] = new JArray((tower.appliedUpgrades ?? new Il2CppStringArray(0))
+                    .Select(LocalizationManager.Instance.GetTextEnglish))
             };
         }
         return jobject;
@@ -657,6 +699,13 @@ internal static class BlocklyGenerator
                 };
 
                 ArrayTypes.Add(elementType);
+
+                if (!Types.ContainsKey(elementType) &&
+                    !BaseTypes.Contains(elementType) &&
+                    !Il2CppType.From(elementType).IsAbstract)
+                {
+                    ExtraTypes.Add(elementType);
+                }
             }
 
         }
@@ -685,20 +734,26 @@ internal static class BlocklyGenerator
         }
         else if (rowType.IsEnum)
         {
+            var bitmap = false;
             if (rowType.GetCustomAttribute<FlagsAttribute>() != null && AllowMultiDropdown(rowType))
             {
                 arg["type"] = "field_multi_dropdown";
                 arg["bitmap"] = true;
+                bitmap = true;
             }
             else
             {
                 arg["type"] = "field_dropdown";
             }
-            arg["options"] = new JArray(rowType.GetEnumNames()
-                .Select((name, i) => new JArray
+            var enumEntries = rowType.GetEnumNames()
+                .Zip(Enum.GetValues(rowType).OfType<object>(), (name, value) => (name, value));
+
+            arg["options"] = new JArray(enumEntries
+                .Where(tuple => !bitmap || tuple.value.IsPowerOfTwo())
+                .Select(tuple => new JArray
                 {
-                    name,
-                    Convert.ChangeType(rowType.GetEnumValues().GetValue(i), rowType.GetEnumUnderlyingType())!.ToString()
+                    tuple.name,
+                    Convert.ChangeType(tuple.value, rowType.GetEnumUnderlyingType()).ToString()
                 })
                 .OrderByDescending(array => array[1].ToString() == defaultValue?.ToString()?.ToLower()));
         }
@@ -719,6 +774,24 @@ internal static class BlocklyGenerator
         }
 
         return arg;
+    }
+
+    private static bool IsPowerOfTwo(this object value)
+    {
+        try
+        {
+            var n = Convert.ToInt64(value);
+            return n switch
+            {
+                < 0 => false,
+                0 => true,
+                _ => (n & n - 1) == 0
+            };
+        }
+        catch (Exception)
+        {
+            return false;
+        }
     }
 
     private static bool IncludeMember(MemberInfo member, IEnumerable<string> badFields,
@@ -868,5 +941,5 @@ internal static class BlocklyGenerator
         return check != null;
     }
 
-    private static bool AllowMultiDropdown(Type type) => type != typeof(TowerSet) && type != typeof(DisplayCategory);
+    private static bool AllowMultiDropdown(Type type) => type != typeof(DisplayCategory);
 }

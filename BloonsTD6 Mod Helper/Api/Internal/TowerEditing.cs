@@ -28,7 +28,7 @@ internal static class TowerEditing
         {
             QuickEdit(tower);
         }
-        
+
         if (MelonMain.QuickEditMutatedModel.JustPressed())
         {
             QuickEdit(tower, true);
@@ -83,7 +83,7 @@ internal static class TowerEditing
             model = tower.towerModel;
         }
 
-        var text = ModelSerializer.SerializeModel(model);
+        var text = ModelSerializer.SerializeModel(model.Duplicate(), true);
 
         var newText = Helpers.QuickEdit.EditText(text, FileName);
 

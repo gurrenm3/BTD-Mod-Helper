@@ -310,4 +310,7 @@ public static class ModTowerHelper
             emoteSpriteSmall: sprite, emoteSpriteLarge: sprite, secondarySelectionMenu: display, icon3D: prefab,
             behaviors: new Il2CppReferenceArray<Model>(0));
     }
+
+    internal static readonly HashSet<string> VanillaTowerSet = [];
+    internal static readonly HashSet<string> VanillaTowerIds = [];
 }

@@ -469,7 +469,11 @@ export const blockStateToModel = (
 
     const value = (model[name] = blockStateToModel(childBlock));
 
-    if (args[name]?.type === "input_statement" && !isArray(value)) {
+    if (
+      args[name]?.type === "input_statement" &&
+      childBlock.data !== "BLOCKLY_ARRAY" &&
+      childBlock.data !== "BLOCKLY_DICTIONARY"
+    ) {
       const childModels = [value];
       for (let next = childBlock?.next?.block; next; next = next.next?.block) {
         childModels.push(blockStateToModel(next));
@@ -562,7 +566,9 @@ export const pasteBlockFromText = (workspace: WorkspaceSvg, text: string) => {
   return false;
 };
 
-export const extraBlockInfo = (type) => ({
+export const extraBlockInfo = (
+  type
+): Partial<Blockly.serialization.blocks.State> => ({
   ...(Blockly.Blocks[type].json?.comment
     ? {
         icons: {
@@ -572,6 +578,7 @@ export const extraBlockInfo = (type) => ({
             width: 300,
           },
         },
+        editable: false,
       }
     : {}),
 });

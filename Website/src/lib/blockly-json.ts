@@ -60,6 +60,7 @@ export const towerSetColors = {
   Magic: "262",
   Support: "34",
   Hero: "53",
+  Items: "42",
   None: "#888888",
 };
 

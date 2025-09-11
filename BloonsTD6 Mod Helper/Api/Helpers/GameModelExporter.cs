@@ -39,6 +39,7 @@ public static class GameModelExporter
     private static void AddFolderToGitIgnore(string path, string ext = ".json") => gitIgnore += $"\n!{path}/**/*{ext}";
 
     internal static bool clean;
+    internal static bool consistent;
 
 
     /// <summary>
@@ -225,6 +226,11 @@ public static class GameModelExporter
     {
         try
         {
+            if (consistent && data.Is(out Model model))
+            {
+                ModelSerializer.MakeConsistent(model);
+            }
+
             FileIOHelper.SaveObject(path, data);
             return true;
         }

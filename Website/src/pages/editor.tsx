@@ -190,8 +190,8 @@ export default () => {
       bottomLeftOnClick={() => showTips(true)}
       footerBody={
         <>
-          Note: This editor is a Work in Progress. Creations may break between
-          updates.
+          Note: This editor is a Work in Progress. Things may break, especially
+          between game updates.
         </>
       }
     >
@@ -231,6 +231,10 @@ export default () => {
           <h4>Tips</h4>
           <ul>
             <li>
+              Search for towers within the Import Towers category on the side to
+              add base game TowerModels to your workspace.
+            </li>
+            <li>
               Double click on blocks to expand them when they're collapsed.
             </li>
             <li>
@@ -242,7 +246,7 @@ export default () => {
               set on them. Fields that aren't shown have their default value.
             </li>
           </ul>
-          <h4>Custom Towers (VERY WIP)</h4>
+          {/*<h4>Custom Towers (VERY WIP)</h4>
           <ul>
             <li>
               Start with one of the Custom Tower blocks from the Base category.
@@ -281,27 +285,34 @@ export default () => {
               However, you can use the sandbox testing feature to test specific
               edits live in game (included with Ko-Fi version).
             </li>
-          </ul>
-          <h4>Sandbox Testing )</h4>
+          </ul>*/}
+          <h4>Sandbox Testing</h4>
           <ul>
             <li>
-              Within a sandbox game, use the Export Tower Model shortcut (Alt+C
-              by default) while selecting a tower to put its TowerModel in the
-              clipboard.
+              Within a sandbox game, while having a tower selected press F8 to
+              open the Mod Helper console and type the `quickedit` command.
             </li>
             <li>
-              On this site, press Ctrl+V / Alt+V to paste the TowerModel into
-              the editor as blocks.
+              Within the opened text editor press Ctrl+A and Ctrl+C to copy all
+              the file contents.
             </li>
             <li>
-              When you've done your edits, select the outer TowerModel block and
-              do Ctrl+C / Alt+C to copy the edited TowerModel to the clipboard
-              (or Ctrl+X / Alt+X to also delete the blocks).
+              On this site, press Ctrl+V to paste the TowerModel into the editor
+              as blocks.
             </li>
             <li>
-              Back in your sandbox game, press the Import Tower Model shortcut
-              (Alt+V by default) to apply the changed TowerModel to your
-              selected tower.
+              When you've done your edits to the blocks, select the outer
+              TowerModel block and do Ctrl+C to copy the edited TowerModel to
+              the clipboard (or Ctrl+X to also delete the blocks).
+            </li>
+            <li>
+              Back in the opened text file, press Ctrl+A and Ctrl+V to overwrite
+              the text contents with that of the modified TowerModel and close
+              the file.
+            </li>
+            <li>
+              In BTD6 your tower will now either be successfully edited, or an
+              error will display.
             </li>
           </ul>
         </Modal.Body>

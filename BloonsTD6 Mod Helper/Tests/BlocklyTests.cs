@@ -20,11 +20,18 @@ internal class BlocklyTests
             ModHelper.Msg(Test(path) ? "Succeeded" : "Failed");
         }
     }
-    
+
     public static void TestAll()
     {
         var success = 0;
         var fail = 0;
+
+        var testFolder = Path.Combine(FileIOHelper.sandboxRoot, "Test");
+        if (Directory.Exists(testFolder))
+        {
+            Directory.Delete(testFolder, true);
+        }
+
         TestAll(Path.Combine(BlocklyOut, "Towers"), ref success, ref fail);
 
         ModHelper.Msg($"Results: {success} success and {fail} fails");
@@ -32,6 +39,7 @@ internal class BlocklyTests
 
     private static void TestAll(string folder, ref int success, ref int fail)
     {
+
         foreach (var file in Directory.EnumerateFiles(folder))
         {
             if (Test(file))
@@ -66,7 +74,8 @@ internal class BlocklyTests
 
             if (!success)
             {
-                FileIOHelper.SaveFile($"Test/{actualModel.name}.json", actual);
+                FileIOHelper.SaveFile($"Test/{actualModel.baseId}/{actualModel.name}.actual.json", actual);
+                FileIOHelper.SaveFile($"Test/{expectedModel.baseId}/{expectedModel.name}.expected.json", expected);
             }
 
             return success;

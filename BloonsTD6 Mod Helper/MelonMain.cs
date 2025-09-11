@@ -8,10 +8,12 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Api.UI;
 using BTD_Mod_Helper.UI.BTD6;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
@@ -148,6 +150,18 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         TaskScheduler.ScheduleTask(() => ModHelper.PerformHook(mod => mod.OnGameDataLoaded(GameData.Instance)),
             () => GameData.Instance != null);
+    }
+
+    public override void OnGameModelLoaded(GameModel model)
+    {
+        foreach (var tower in model.towerSet.Concat(model.heroSet))
+        {
+            ModTowerHelper.VanillaTowerSet.Add(tower.towerId);
+        }
+        foreach (var tower in model.towers)
+        {
+            ModTowerHelper.VanillaTowerIds.Add(tower.name);
+        }
     }
 
     public override void OnInGameLoaded(InGame inGame)

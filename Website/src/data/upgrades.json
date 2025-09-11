@@ -2246,6 +2246,101 @@
     "towerName": "Ezili",
     "towerSet": "Hero"
   },
+  "Churchill Pierce": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Armor Piercing Shells": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Range": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Machine Gun": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Binoculars": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Shell Explosion": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Attack Speed": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Shell Explosion 2": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill MOAB Barage": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Pierce 2": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Shell Explosion 3": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Armor Piercing Shells 2": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Machine Gun Damage": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Fortified Bloon Damage": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Attack Speed 2": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Armor Piercing Shells 3": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Tank Shell Damage": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill Shell Explosion 4": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
+  "Churchill MOAB Barage 2": {
+    "towerId": "CaptainChurchill",
+    "towerName": "Captain Churchill",
+    "towerSet": "Hero"
+  },
   "gwendolin pierce": {
     "towerId": "Gwendolin",
     "towerName": "Gwendolin",
@@ -3480,5 +3575,95 @@
     "towerId": "Silas",
     "towerName": "Silas",
     "towerSet": "Hero"
+  },
+  "Banana Vacuum": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Banana Peels": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Robo Farmer": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Camo Bananas": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Regrow Bananas": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Banana Intelligence Bureau": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Adaptive Workers": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Monkey Banker": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Banana Financier": {
+    "towerId": "BananaFarmerPro",
+    "towerName": "Banana Farmer Pro",
+    "towerSet": "Items"
+  },
+  "Charged Beacon": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "Storm Tremors": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "Reverberation": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "Mini Stormcaller": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "Rapid Recharge": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "Beacon of Legends": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "High Impact": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "Bewildering Storm": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
+  },
+  "Piercing Wind": {
+    "towerId": "SuperMonkeyBeacon",
+    "towerName": "Super Monkey Beacon",
+    "towerSet": "Items"
   }
 }

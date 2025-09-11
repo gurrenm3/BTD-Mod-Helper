@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
@@ -28,7 +30,7 @@ public static class Il2CppJsonConvert
     public static readonly JsonSerializerSettings Settings = new()
     {
         ContractResolver = new ModelContractResolver(),
-        Converters = {new Il2CppConverter(), new UnityColorConverter()},
+        Converters = {new Il2CppConverter(), new UnityColorConverter(), new NegativeZeroConverter()},
         TypeNameHandling = TypeNameHandling.Objects,
         SerializationBinder = new Il2CppSerializationBinder(),
         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
@@ -78,7 +80,12 @@ public static class Il2CppJsonConvert
 
             if (realType.IsValueType || realType == typeof(string))
             {
-                writer.WriteRawValue(Il2CppNewtonsoft.Json.JsonConvert.SerializeObject(obj));
+                var il2cppJson = Il2CppNewtonsoft.Json.JsonConvert.SerializeObject(obj, FileIOHelper.Settings);
+
+                using var sr = new StringReader(il2cppJson);
+                using var jr = new JsonTextReader(sr);
+
+                writer.WriteToken(jr);
             }
             else if (obj.Is(out IDictionary dictionary))
             {
@@ -89,7 +96,7 @@ public static class Il2CppJsonConvert
                 if (serializer.TypeNameHandling is TypeNameHandling.Objects or TypeNameHandling.All)
                 {
                     writer.WritePropertyName("$type");
-                    writer.WriteValue(value.GetType().AssemblyQualifiedName); // TODO different name?
+                    writer.WriteValue(value.GetType().AssemblyQualifiedName);
                 }
 
                 foreach (var key in keys)
@@ -233,6 +240,79 @@ public static class Il2CppJsonConvert
                 .Where(member => memberNames.Contains(member.Name) &&
                                  member.GetUnderlyingType() != typeof(IntPtr))
                 .ToList();
+        }
+    }
+
+    internal class NegativeZeroConverter : JsonConverter
+    {
+        public override bool CanRead => true;
+        public override bool CanWrite => true;
+
+        public override bool CanConvert(Type objectType) =>
+            objectType == typeof(float) ||
+            objectType == typeof(double) ||
+            objectType == typeof(decimal) ||
+            objectType == typeof(float?) ||
+            objectType == typeof(double?) ||
+            objectType == typeof(decimal?);
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value == null)
+            {
+                writer.WriteNull();
+                return;
+            }
+
+            switch (value)
+            {
+                case double d:
+                    writer.WriteValue(d == 0.0 ? 0.0 : d);
+                    break;
+                case float f:
+                    writer.WriteValue(f == 0f ? 0f : f);
+                    break;
+                case decimal m:
+                    writer.WriteValue(m == 0m ? 0m : m);
+                    break;
+                default:
+                    serializer.Serialize(writer, value);
+                    break;
+            }
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null)
+            {
+                return Nullable.GetUnderlyingType(objectType) != null
+                    ? null
+                    : throw new JsonSerializationException($"Cannot convert null to {objectType}.");
+            }
+
+            if (reader.TokenType != JsonToken.Float && reader.TokenType != JsonToken.Integer)
+                throw new JsonSerializationException($"Unexpected token {reader.TokenType} when parsing {objectType}.");
+
+            if (objectType == typeof(double) || objectType == typeof(double?))
+            {
+                var d = Convert.ToDouble(reader.Value);
+                return d == 0.0 ? 0.0 : d;
+            }
+
+            if (objectType == typeof(float) || objectType == typeof(float?))
+            {
+                var f = Convert.ToSingle(reader.Value);
+                return f == 0f ? 0f : f;
+            }
+
+            if (objectType == typeof(decimal) || objectType == typeof(decimal?))
+            {
+                var m = Convert.ToDecimal(reader.Value);
+                return m == 0m ? 0m : m;
+            }
+
+            throw new JsonSerializationException($"Unsupported type {objectType} in NegativeZeroConverter.");
         }
     }
 

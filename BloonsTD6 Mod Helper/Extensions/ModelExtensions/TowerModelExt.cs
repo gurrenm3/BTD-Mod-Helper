@@ -4,6 +4,7 @@ using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
@@ -415,15 +416,6 @@ public static class TowerModelExt
     /// <summary>
     /// Gets whether a Tower/Hero is a base one added by the vanilla game.
     /// </summary>
-    public static bool IsVanillaTower(this TowerModel towerModel)
-    {
-        var baseId = towerModel.baseId
-            .Replace(TowerType.WizardMonkey, "Wizard")
-            .Replace(TowerType.NinjaMonkey, "NInjaMonkey")
-            .Replace(TowerType.ObynGreenfoot, "ObynGreenFoot");
-
-        return VanillaSprites.ByName.ContainsKey(towerModel.IsHero()
-            ? "HeroIcon" + baseId
-            : baseId + "000");
-    }
+    public static bool IsVanillaTower(this TowerModel towerModel) =>
+        ModTowerHelper.VanillaTowerSet.Contains(towerModel.baseId);
 }

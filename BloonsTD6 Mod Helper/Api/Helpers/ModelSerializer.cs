@@ -407,19 +407,34 @@ public static class ModelSerializer
     /// <summary>
     /// Serializes a model to JSON, preserving types and references
     /// </summary>
-    /// <param name="model"></param>
-    /// <returns></returns>
     public static string SerializeModel(Model model)
     {
 #if DEBUG
-        MakeConsistent(model);
+        const bool consistent = true;
+#else
+        const bool consistent = false;
 #endif
+
+        return SerializeModel(model, consistent);
+    }
+
+    /// <summary>
+    /// Serializes a model to JSON, preserving types and references
+    /// </summary>
+    public static string SerializeModel(Model model, bool consistent)
+    {
+        if (consistent)
+        {
+            MakeConsistent(model);
+        }
 
         var result = Il2CppJsonConvert.SerializeObject(model);
 
-#if DEBUG
-        result = result.Replace("_BananaFarmerRegrowBananasModel_", "_");
-#endif
+        if (consistent)
+        {
+            result = result.Replace("_BananaFarmerRegrowBananasModel_", "_");
+        }
+
         return result;
     }
 
@@ -571,6 +586,16 @@ public static class ModelSerializer
             gyrfalconPattern.moveWithAirUnitModel ??= new MoveWithAirUnitModel("Gyrfalcon");
         });
 
+        model.GetDescendants<EatBloonModel>().ForEach(eatBloon =>
+        {
+            eatBloon.timeUntilCloseFrames = (int) Math.Round(eatBloon.timeUntilClose * 60);
+        });
+
+        model.GetDescendants<TargetWererabbitModel>().ForEach(targetWererabbit =>
+        {
+            targetWererabbit.timeUntilIdleFrames = (int) Math.Round(targetWererabbit.timeUntilIdle * 60);
+        });
+
         if (model.Is(out TowerModel towerModel))
         {
             // This will happen eventually anyway
@@ -587,9 +612,10 @@ public static class ModelSerializer
 
         model.GetDescendants<Model>().ForEach(m =>
         {
-            if (m.name == "")
+            var typeName = m.GetIl2CppType().Name;
+            if (!m.name.StartsWith(typeName))
             {
-                m.name = m.GetIl2CppType().Name + "_";
+                m.name = $"{typeName}_{m.name}";
             }
         });
 

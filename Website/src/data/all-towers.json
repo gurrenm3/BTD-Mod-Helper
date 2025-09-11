@@ -17611,6 +17611,315 @@
       "Ezili MOAB Hex+"
     ]
   },
+  "CaptainChurchill": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill.json",
+    "appliedUpgrades": []
+  },
+  "CaptainChurchill 2": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 2.json",
+    "appliedUpgrades": [
+      "Churchill Pierce"
+    ]
+  },
+  "CaptainChurchill 3": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 3.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells"
+    ]
+  },
+  "CaptainChurchill 4": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 4.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range"
+    ]
+  },
+  "CaptainChurchill 5": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 5.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun"
+    ]
+  },
+  "CaptainChurchill 6": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 6.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars"
+    ]
+  },
+  "CaptainChurchill 7": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 7.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion"
+    ]
+  },
+  "CaptainChurchill 8": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 8.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed"
+    ]
+  },
+  "CaptainChurchill 9": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 9.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2"
+    ]
+  },
+  "CaptainChurchill 10": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 10.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage"
+    ]
+  },
+  "CaptainChurchill 11": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 11.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2"
+    ]
+  },
+  "CaptainChurchill 12": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 12.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3"
+    ]
+  },
+  "CaptainChurchill 13": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 13.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2"
+    ]
+  },
+  "CaptainChurchill 14": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 14.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2",
+      "Churchill Machine Gun Damage"
+    ]
+  },
+  "CaptainChurchill 15": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 15.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2",
+      "Churchill Machine Gun Damage",
+      "Churchill Fortified Bloon Damage"
+    ]
+  },
+  "CaptainChurchill 16": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 16.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2",
+      "Churchill Machine Gun Damage",
+      "Churchill Fortified Bloon Damage",
+      "Churchill Attack Speed 2"
+    ]
+  },
+  "CaptainChurchill 17": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 17.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2",
+      "Churchill Machine Gun Damage",
+      "Churchill Fortified Bloon Damage",
+      "Churchill Attack Speed 2",
+      "Churchill Armor Piercing Shells 3"
+    ]
+  },
+  "CaptainChurchill 18": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 18.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2",
+      "Churchill Machine Gun Damage",
+      "Churchill Fortified Bloon Damage",
+      "Churchill Attack Speed 2",
+      "Churchill Armor Piercing Shells 3",
+      "Churchill Tank Shell Damage"
+    ]
+  },
+  "CaptainChurchill 19": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 19.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2",
+      "Churchill Machine Gun Damage",
+      "Churchill Fortified Bloon Damage",
+      "Churchill Attack Speed 2",
+      "Churchill Armor Piercing Shells 3",
+      "Churchill Tank Shell Damage",
+      "Churchill Shell Explosion 4"
+    ]
+  },
+  "CaptainChurchill 20": {
+    "towerSet": "Hero",
+    "path": "CaptainChurchill/CaptainChurchill 20.json",
+    "appliedUpgrades": [
+      "Churchill Pierce",
+      "Churchill Armor Piercing Shells",
+      "Churchill Range",
+      "Churchill Machine Gun",
+      "Churchill Binoculars",
+      "Churchill Shell Explosion",
+      "Churchill Attack Speed",
+      "Churchill Shell Explosion 2",
+      "Churchill MOAB Barage",
+      "Churchill Pierce 2",
+      "Churchill Shell Explosion 3",
+      "Churchill Armor Piercing Shells 2",
+      "Churchill Machine Gun Damage",
+      "Churchill Fortified Bloon Damage",
+      "Churchill Attack Speed 2",
+      "Churchill Armor Piercing Shells 3",
+      "Churchill Tank Shell Damage",
+      "Churchill Shell Explosion 4",
+      "Churchill MOAB Barage 2"
+    ]
+  },
   "Gwendolin": {
     "towerSet": "Hero",
     "path": "Gwendolin/Gwendolin.json",
@@ -21628,9 +21937,428 @@
       "Silas Upgrade 20"
     ]
   },
+  "BananaFarmerPro": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro.json",
+    "appliedUpgrades": []
+  },
+  "BananaFarmerPro-100": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-100.json",
+    "appliedUpgrades": [
+      "Banana Vacuum"
+    ]
+  },
+  "BananaFarmerPro-200": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-200.json",
+    "appliedUpgrades": [
+      "Banana Vacuum",
+      "Banana Peels"
+    ]
+  },
+  "BananaFarmerPro-300": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-300.json",
+    "appliedUpgrades": [
+      "Banana Vacuum",
+      "Banana Peels",
+      "Robo Farmer"
+    ]
+  },
+  "BananaFarmerPro-010": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-010.json",
+    "appliedUpgrades": [
+      "Camo Bananas"
+    ]
+  },
+  "BananaFarmerPro-020": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-020.json",
+    "appliedUpgrades": [
+      "Camo Bananas",
+      "Regrow Bananas"
+    ]
+  },
+  "BananaFarmerPro-030": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-030.json",
+    "appliedUpgrades": [
+      "Camo Bananas",
+      "Regrow Bananas",
+      "Banana Intelligence Bureau"
+    ]
+  },
+  "BananaFarmerPro-001": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-001.json",
+    "appliedUpgrades": [
+      "Adaptive Workers"
+    ]
+  },
+  "BananaFarmerPro-002": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-002.json",
+    "appliedUpgrades": [
+      "Adaptive Workers",
+      "Monkey Banker"
+    ]
+  },
+  "BananaFarmerPro-003": {
+    "towerSet": "Items",
+    "path": "BananaFarmerPro/BananaFarmerPro-003.json",
+    "appliedUpgrades": [
+      "Adaptive Workers",
+      "Monkey Banker",
+      "Banana Financier"
+    ]
+  },
+  "SuperMonkeyBeacon": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon.json",
+    "appliedUpgrades": []
+  },
+  "SuperMonkeyBeacon-100": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-100.json",
+    "appliedUpgrades": [
+      "Charged Beacon"
+    ]
+  },
+  "SuperMonkeyBeacon-200": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-200.json",
+    "appliedUpgrades": [
+      "Charged Beacon",
+      "Storm Tremors"
+    ]
+  },
+  "SuperMonkeyBeacon-300": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-300.json",
+    "appliedUpgrades": [
+      "Charged Beacon",
+      "Storm Tremors",
+      "Reverberation"
+    ]
+  },
+  "SuperMonkeyBeacon-010": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-010.json",
+    "appliedUpgrades": [
+      "Mini Stormcaller"
+    ]
+  },
+  "SuperMonkeyBeacon-020": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-020.json",
+    "appliedUpgrades": [
+      "Mini Stormcaller",
+      "Rapid Recharge"
+    ]
+  },
+  "SuperMonkeyBeacon-030": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-030.json",
+    "appliedUpgrades": [
+      "Mini Stormcaller",
+      "Rapid Recharge",
+      "Beacon of Legends"
+    ]
+  },
+  "SuperMonkeyBeacon-001": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-001.json",
+    "appliedUpgrades": [
+      "High Impact"
+    ]
+  },
+  "SuperMonkeyBeacon-002": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-002.json",
+    "appliedUpgrades": [
+      "High Impact",
+      "Bewildering Storm"
+    ]
+  },
+  "SuperMonkeyBeacon-003": {
+    "towerSet": "Items",
+    "path": "SuperMonkeyBeacon/SuperMonkeyBeacon-003.json",
+    "appliedUpgrades": [
+      "High Impact",
+      "Bewildering Storm",
+      "Piercing Wind"
+    ]
+  },
+  "BuccaneerPlane": {
+    "towerSet": "Military",
+    "path": "BuccaneerPlane/BuccaneerPlane.json",
+    "appliedUpgrades": []
+  },
+  "BuccaneerParagonPlane": {
+    "towerSet": "Military",
+    "path": "BuccaneerParagonPlane/BuccaneerParagonPlane.json",
+    "appliedUpgrades": []
+  },
+  "Marine": {
+    "towerSet": "Military",
+    "path": "Marine/Marine.json",
+    "appliedUpgrades": []
+  },
   "ComancheDefenceHeli": {
     "towerSet": "Military",
     "path": "HeliPilot/ComancheDefenceHeli.json",
+    "appliedUpgrades": []
+  },
+  "Phoenix": {
+    "towerSet": "Magic",
+    "path": "Phoenix/Phoenix.json",
+    "appliedUpgrades": []
+  },
+  "PermaPhoenix": {
+    "towerSet": "Magic",
+    "path": "PermaPhoenix/PermaPhoenix.json",
+    "appliedUpgrades": []
+  },
+  "LordPhoenix": {
+    "towerSet": "Magic",
+    "path": "LordPhoenix/LordPhoenix.json",
+    "appliedUpgrades": []
+  },
+  "DarkPhoenixV1": {
+    "towerSet": "Magic",
+    "path": "DarkPhoenix/DarkPhoenixV1.json",
+    "appliedUpgrades": []
+  },
+  "DarkPhoenixV2": {
+    "towerSet": "Magic",
+    "path": "DarkPhoenix/DarkPhoenixV2.json",
+    "appliedUpgrades": []
+  },
+  "DarkPhoenixV3": {
+    "towerSet": "Magic",
+    "path": "DarkPhoenix/DarkPhoenixV3.json",
+    "appliedUpgrades": []
+  },
+  "DarkPhoenixV4": {
+    "towerSet": "Magic",
+    "path": "DarkPhoenix/DarkPhoenixV4.json",
+    "appliedUpgrades": []
+  },
+  "DarkPhoenixV5": {
+    "towerSet": "Magic",
+    "path": "DarkPhoenix/DarkPhoenixV5.json",
+    "appliedUpgrades": []
+  },
+  "SunAvatarMini": {
+    "towerSet": "Magic",
+    "path": "SunAvatarMini/SunAvatarMini.json",
+    "appliedUpgrades": []
+  },
+  "TrueSunAvatarMini": {
+    "towerSet": "Magic",
+    "path": "TrueSunAvatarMini/TrueSunAvatarMini.json",
+    "appliedUpgrades": []
+  },
+  "SpectreA": {
+    "towerSet": "Military",
+    "path": "SpectreA/SpectreA.json",
+    "appliedUpgrades": []
+  },
+  "SpectreC": {
+    "towerSet": "Military",
+    "path": "SpectreC/SpectreC.json",
+    "appliedUpgrades": []
+  },
+  "SpectreVA": {
+    "towerSet": "Military",
+    "path": "SpectreVA/SpectreVA.json",
+    "appliedUpgrades": []
+  },
+  "SpectreVC": {
+    "towerSet": "Military",
+    "path": "SpectreVC/SpectreVC.json",
+    "appliedUpgrades": []
+  },
+  "TranceTotem": {
+    "towerSet": "Magic",
+    "path": "TranceTotem/TranceTotem.json",
+    "appliedUpgrades": []
+  },
+  "Sentry": {
+    "towerSet": "Support",
+    "path": "Sentry/Sentry.json",
+    "appliedUpgrades": []
+  },
+  "SentryCrushing": {
+    "towerSet": "Support",
+    "path": "SentryCrushing/SentryCrushing.json",
+    "appliedUpgrades": []
+  },
+  "SentryBoom": {
+    "towerSet": "Support",
+    "path": "SentryBoom/SentryBoom.json",
+    "appliedUpgrades": []
+  },
+  "SentryCold": {
+    "towerSet": "Support",
+    "path": "SentryCold/SentryCold.json",
+    "appliedUpgrades": []
+  },
+  "SentryEnergy": {
+    "towerSet": "Support",
+    "path": "SentryEnergy/SentryEnergy.json",
+    "appliedUpgrades": []
+  },
+  "SentryParagon": {
+    "towerSet": "Support",
+    "path": "SentryParagon/SentryParagon.json",
+    "appliedUpgrades": []
+  },
+  "SentryParagonGreen": {
+    "towerSet": "Support",
+    "path": "SentryParagonGreen/SentryParagonGreen.json",
+    "appliedUpgrades": []
+  },
+  "SentryParagonRed": {
+    "towerSet": "Support",
+    "path": "SentryParagonRed/SentryParagonRed.json",
+    "appliedUpgrades": []
+  },
+  "SentryParagonBlue": {
+    "towerSet": "Support",
+    "path": "SentryParagonBlue/SentryParagonBlue.json",
+    "appliedUpgrades": []
+  },
+  "SentryParagonChild": {
+    "towerSet": "Support",
+    "path": "SentryParagonChild/SentryParagonChild.json",
+    "appliedUpgrades": []
+  },
+  "Piranha": {
+    "towerSet": "Support",
+    "path": "Piranha/Piranha.json",
+    "appliedUpgrades": []
+  },
+  "Microraptor": {
+    "towerSet": "Support",
+    "path": "Microraptor/Microraptor.json",
+    "appliedUpgrades": []
+  },
+  "Gyrfalcon": {
+    "towerSet": "Support",
+    "path": "Gyrfalcon/Gyrfalcon.json",
+    "appliedUpgrades": []
+  },
+  "SacrificialTotem": {
+    "towerSet": "Support",
+    "path": "SacrificialTotem/SacrificialTotem.json",
+    "appliedUpgrades": []
+  },
+  "NaturesWardTotem": {
+    "towerSet": "Support",
+    "path": "NaturesWardTotem/NaturesWardTotem.json",
+    "appliedUpgrades": []
+  },
+  "BallOfLightTower": {
+    "towerSet": "Hero",
+    "path": "BallOfLight-Tower/BallOfLightTower.json",
+    "appliedUpgrades": []
+  },
+  "Drone": {
+    "towerSet": "Hero",
+    "path": "Drone/Drone.json",
+    "appliedUpgrades": []
+  },
+  "DroneSwarmDrone": {
+    "towerSet": "Hero",
+    "path": "Drone/DroneSwarmDrone.json",
+    "appliedUpgrades": []
+  },
+  "UAV": {
+    "towerSet": "Hero",
+    "path": "UAV/UAV.json",
+    "appliedUpgrades": []
+  },
+  "UCAV": {
+    "towerSet": "Hero",
+    "path": "UCAV/UCAV.json",
+    "appliedUpgrades": []
+  },
+  "UCAVPerma": {
+    "towerSet": "Hero",
+    "path": "UCAV/UCAVPerma.json",
+    "appliedUpgrades": []
+  },
+  "ShootyTurretTower": {
+    "towerSet": "Hero",
+    "path": "ShootyTurret/ShootyTurretTower.json",
+    "appliedUpgrades": []
+  },
+  "ShootyTurretTowerV2": {
+    "towerSet": "Hero",
+    "path": "ShootyTurret/ShootyTurretTowerV2.json",
+    "appliedUpgrades": []
+  },
+  "CreepyIdolTower": {
+    "towerSet": "Hero",
+    "path": "CreepyIdol/CreepyIdolTower.json",
+    "appliedUpgrades": []
+  },
+  "CreepyIdolTowerV2": {
+    "towerSet": "Hero",
+    "path": "CreepyIdol/CreepyIdolTowerV2.json",
+    "appliedUpgrades": []
+  },
+  "CreepyIdolTowerV3": {
+    "towerSet": "Hero",
+    "path": "CreepyIdol/CreepyIdolTowerV3.json",
+    "appliedUpgrades": []
+  },
+  "RareQuincyActionFigureTower": {
+    "towerSet": "Hero",
+    "path": "RareQuincyActionFigure/RareQuincyActionFigureTower.json",
+    "appliedUpgrades": []
+  },
+  "HotSauceCreatureTower": {
+    "towerSet": "Hero",
+    "path": "HotSauceCreature/HotSauceCreatureTower.json",
+    "appliedUpgrades": []
+  },
+  "HotSauceCreatureTowerV2": {
+    "towerSet": "Hero",
+    "path": "HotSauceCreature/HotSauceCreatureTowerV2.json",
+    "appliedUpgrades": []
+  },
+  "WererabbitTower": {
+    "towerSet": "Hero",
+    "path": "WererabbitTower/WererabbitTower.json",
+    "appliedUpgrades": []
+  },
+  "GenieBottleTower": {
+    "towerSet": "Hero",
+    "path": "GenieBottle/GenieBottleTower.json",
+    "appliedUpgrades": []
+  },
+  "GenieBottleTowerV2": {
+    "towerSet": "Hero",
+    "path": "GenieBottle/GenieBottleTowerV2.json",
+    "appliedUpgrades": []
+  },
+  "ParagonPowerTotemTower": {
+    "towerSet": "Hero",
+    "path": "ParagonPowerTotem/ParagonPowerTotemTower.json",
+    "appliedUpgrades": []
+  },
+  "SpiritTower": {
+    "towerSet": "Hero",
+    "path": "Spirit-Tower/SpiritTower.json",
+    "appliedUpgrades": []
+  },
+  "PetRabbitBase": {
+    "towerSet": "None",
+    "path": "PetRabbitBase/PetRabbitBase.json",
     "appliedUpgrades": []
   }
 }
