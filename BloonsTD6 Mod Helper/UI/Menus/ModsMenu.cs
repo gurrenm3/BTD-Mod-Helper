@@ -683,6 +683,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModDescription.Text.enableAutoSizing = true;
         selectedModDescription.Text.lineSpacing = Padding / 2f;
         selectedModDescription.Text.font = Fonts.Btd6FontBody;
+        selectedModDescription.Text.gameObject.AddComponent<ModHelperLinkSupport>();
 
         var buttonsRow = selectedModPanel.AddPanel(new Info("ButtonRow")
         {
