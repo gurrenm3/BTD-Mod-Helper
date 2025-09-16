@@ -40,7 +40,7 @@
     "react-bootstrap-icons": "^1.10.3",
     "react-custom-scrollbars-2": "^4.5.0",
     "react-div-100vh": "^0.7.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "18.2.0",
     "react-simple-code-editor": "^0.14.1",
     "react-toggle-dark-mode": "^1.1.1",
     "react-use": "^17.4.0",
