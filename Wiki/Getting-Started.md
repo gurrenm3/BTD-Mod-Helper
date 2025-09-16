@@ -1,5 +1,7 @@
 # NOTE: This page is mostly obsolesced by the "Create Mod" button in Mod Helper, which automatically creates a mod for you using [this template](https://github.com/doombubbles/btd6-template-mod/archive/refs/heads/main.zip). If either the button or that zip work for you, then the steps on this page will have already been done for you.
 
+---
+
 # Creating a new Mod Project
 
 You'll want to make a new project of the type "Class Library (.NET Framework)"
