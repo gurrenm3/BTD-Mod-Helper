@@ -184,3 +184,19 @@ input, select, textarea {
 .blocklyMainBackground {
   stroke: none
 }
+
+.toc a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.sidebar a {
+    text-decoration: none;
+    
+}
+[data-theme="dark"] .sidebar a {
+    color: #8ea9e7;
+}
+[data-theme="light"] .sidebar a {
+    color: #dadada;
+}

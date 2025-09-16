@@ -85,6 +85,7 @@ export const MarkdownLayout: FunctionComponent<
     () => htmlToReact().processSync(sidebar?.contentHtml).result,
     [sidebar?.contentHtml]
   ) as ReactElement;
+  console.log(sidebarContent)
 
   // noinspection JSVoidFunctionReturnValueUsed
   const tableOfContents = useMemo(
@@ -114,7 +115,7 @@ export const MarkdownLayout: FunctionComponent<
           )}
         </div>
         <div
-          className={`d-flex flex-1 justify-content-start align-items-start ps-${switchSize}-4 pe-${switchSize}-4 order-1`}
+          className={`sidebar d-flex flex-1 justify-content-start align-items-start ps-${switchSize}-4 pe-${switchSize}-4 order-1`}
         >
           {sidebar && (
             <ModHelperOffCanvas
