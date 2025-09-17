@@ -85,7 +85,8 @@ export const MarkdownLayout: FunctionComponent<
     () => htmlToReact().processSync(sidebar?.contentHtml).result,
     [sidebar?.contentHtml]
   ) as ReactElement;
-  console.log(sidebarContent)
+
+  // console.log(sidebarContent)
 
   // noinspection JSVoidFunctionReturnValueUsed
   const tableOfContents = useMemo(

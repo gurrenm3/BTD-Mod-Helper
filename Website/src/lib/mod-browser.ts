@@ -80,8 +80,8 @@ export const populateMods = async (
       page,
     });
 
-    console.log(result.headers);
-    console.log(result.status);
+    // console.log(result.headers);
+    // console.log(result.status);
 
     searchResult = result.data;
   }
