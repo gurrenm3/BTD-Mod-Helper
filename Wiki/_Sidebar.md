@@ -2,14 +2,14 @@
 
 ##### [Install Guide](/wiki/Install-Guide)
 
-###### Starting BTD Modding
+##### **Starting BTD Modding**
 
 [Prerequisites](/wiki/Prerequisites)
 
 [Getting Started](/wiki/Getting-Started)
 
 
-###### Mod Helper Features
+##### **Mod Helper Features**
 
 [**Making a Custom Tower**](/wiki/Making-a-Custom-Tower)
 
@@ -37,7 +37,7 @@
 
 [Custom Byte Loaders](/wiki/Custom-Byte-Loaders)
 
-###### BTD Modding Info
+##### **BTD Modding Info**
 
 [BTD6 Internal Structure](/wiki/BTD6-Internal-Structure)
 
@@ -47,7 +47,7 @@
 
 [Useful Resources](/wiki/Useful-Resources)
 
-###### Mod Helper Utilities
+##### **Mod Helper Utilities**
 
 [Using Mod Helper Hooks](/wiki/Using-Mod-Helper-Hooks)
 
@@ -59,7 +59,7 @@
 
 [Mod Hooks](/wiki/ModHooks)
 
-###### Extension Methods
+##### **Extension Methods**
 
 [Common Extension Methods](/wiki/Common-Extension-Methods)
 

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const Themes = ["light", "dark"];
-const DefaultTheme = "light";
+const DefaultTheme = "dark";
 
 export const Btd6Styles = () => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH;

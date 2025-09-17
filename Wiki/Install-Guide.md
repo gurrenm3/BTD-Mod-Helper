@@ -1,21 +1,21 @@
-## 0. Be using Windows or Linux
+## Use Windows or Linux
 
-Windows and Linux (via Proton)
+Linux via Proton
 
-## 1. Have a valid copy of BTD6 on Steam (Windows/Linux) or Epic (Windows Only)
+## Have a valid copy of BTD6 on Steam (Windows/Linux) or Epic (Windows Only)
 
 We can't help you if you don't own a legitimately acquired copy of BTD6 on Steam or Epic.
 
 **Mods for MacOS, Android, IOS, or pirated clients are not supported.**
 
-## 2 Download the .NET Runtime
+## Download the .NET Runtime
 
 If you don't have or are unsure whether you have the .NET 6.0 (or higher) runtime, you
 should [download it from Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.29-windows-x64-installer)
 
 It is **required** for MelonLoader to work for IL2CPP games like BTD6.
 
-## 3. Install MelonLoader
+## Install MelonLoader
 
 BTD Mod Helper requires <u>MelonLoader</u>. You should follow
 the [instructions here](https://melonwiki.xyz/#/?id=automated-installation) for downloading and using the MelonLoader
@@ -45,7 +45,7 @@ Mods folder within your BloonsTD6 folder. It oughta look similar to
 
 ![BloonsTD6 Folder Screenshot after running MelonLoader](images/mods-folder-after.png)
 
-## 4. Install BTD Mod Helper
+## Install BTD Mod Helper
 
 Download the latest `BTD6ModHelper.dll` from the [GitHub releases](https://github.com/gurrenm3/BTD-Mod-Helper/releases).
 You can also press the shiny green button on the main page or just
@@ -57,7 +57,7 @@ like having a (1) at the end or any spaces added anywhere in the file name.
 If you've done everything right, you should see a new "Mods" button in the bottom right corner of the BTD6 main menu
 when you run the game. (Remember that you need to restart to change mods!)
 
-## 5. Install more Mods
+## Install more Mods
 
 You can use the in-game Mod Browser to view mods that have been published on GitHub.
 

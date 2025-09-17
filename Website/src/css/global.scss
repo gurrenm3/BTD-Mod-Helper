@@ -13,8 +13,10 @@ html {
 }
 
 .text-outline-black {
-  -webkit-text-stroke: .1rem black;
-  text-stroke: .1rem black;
+//   -webkit-text-stroke: .1rem black;
+//   text-stroke: .1rem black;
+    text-shadow: 2px 0 #000,-2px 0 #000,0 2px #000,0 -2px #000,1px 1px #000,-1px -1px #000,1px -1px #000,-1px 1px #000;
+
 }
 
 pre {
@@ -181,4 +183,20 @@ input, select, textarea {
 
 .blocklyMainBackground {
   stroke: none
+}
+
+.toc a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.sidebar a {
+    text-decoration: none;
+    
+}
+[data-theme="dark"] .sidebar a {
+    color: #8ea9e7;
+}
+[data-theme="light"] .sidebar a {
+    color: #dadada;
 }
