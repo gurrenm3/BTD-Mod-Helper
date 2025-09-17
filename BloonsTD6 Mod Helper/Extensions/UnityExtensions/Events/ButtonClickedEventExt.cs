@@ -13,7 +13,7 @@ public static class ButtonClickedEventExt
     /// </summary>
     public static void AddListener(this ButtonClickedEvent clickEvent, Function funcToExecute)
     {
-        clickEvent.AddListener(new Action(() => { funcToExecute(); }));
+        clickEvent.AddListener(new Action(funcToExecute));
     }
 
     /// <summary>

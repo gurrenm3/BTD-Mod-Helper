@@ -58,7 +58,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <summary>
     /// The prefix used for the IDs of towers, upgrades, etc for this mod to prevent conflicts with other mods
     /// </summary>
-    public virtual string IDPrefix => this.GetAssembly().GetName().Name + "-";
+    public virtual string IDPrefix => field ??= this.GetAssembly().GetName().Name + "-";
 
     /// <summary>
     /// Setting this to true will prevent your BloonsTD6Mod hooks from executing if the player could get flagged for using mods

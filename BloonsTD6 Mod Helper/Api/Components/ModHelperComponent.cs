@@ -40,7 +40,7 @@ public class ModHelperComponent : MonoBehaviour
     /// <summary>
     /// The ModHelperComponent that this is a child of, if any
     /// </summary>
-    public ModHelperComponent parent;
+    public ModHelperComponent parent => transform.parent.GetComponent<ModHelperComponent>();
 
     /// <summary>
     /// The Info object that this was defined with, determining its initial name, position and size
@@ -94,8 +94,6 @@ public class ModHelperComponent : MonoBehaviour
     /// </summary>
     public void SetParent(ModHelperComponent newParent)
     {
-        parent = newParent;
-
         if (newParent.GetComponent<LayoutGroup>() != null && !gameObject.HasComponent<ContentSizeFitter>())
         {
             AddLayoutElement();

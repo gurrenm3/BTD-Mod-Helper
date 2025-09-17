@@ -35,7 +35,10 @@ public class ModHelperScrollPanel : ModHelperPanel
     /// The ContentSizeFitter component which makes sure that the ScrollContent
     /// is the right size to hold all the scrollable items.
     /// </summary>
-    public ContentSizeFitter ContentSizeFitter { get; private set; }
+    // ReSharper disable once ConvertToAutoPropertyWithPrivateSetter
+    public ContentSizeFitter ContentSizeFitter => contentSizeFitter;
+
+    private ContentSizeFitter contentSizeFitter;
 
     /// <summary>
     /// Adds a child to the ScrollContent of this panel
@@ -210,7 +213,7 @@ public class ModHelperScrollPanel : ModHelperPanel
 
         if (axis != null)
         {
-            var contentSizeFitter = newPanel.ContentSizeFitter = scrollContent.AddComponent<ContentSizeFitter>();
+            var contentSizeFitter = newPanel.contentSizeFitter = scrollContent.AddComponent<ContentSizeFitter>();
             if (axis == RectTransform.Axis.Horizontal)
             {
                 scrollRect.vertical = false;

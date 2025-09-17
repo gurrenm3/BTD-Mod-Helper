@@ -66,20 +66,24 @@ internal class ProfileManagement
             HeroLevelsByName);
 
         SeenEvents.Clear();
-        profile.seenEvents?.RemoveWhere(new Func<string, bool>(s =>
+        if (profile.seenEvents != null)
         {
-            if ((from paragonEvent in ParagonEvents
-                    where s.StartsWith(paragonEvent)
-                    let tower = s.Replace(paragonEvent, "")
-                    where Clean(paragonEvent, towers, current)(tower)
-                    select paragonEvent).Any())
+            foreach (var s in profile.seenEvents)
             {
-                SeenEvents.Add(s);
-                return true;
+                if ((from paragonEvent in ParagonEvents
+                        where s.StartsWith(paragonEvent)
+                        let tower = s.Replace(paragonEvent, "")
+                        where Clean(paragonEvent, towers, current)(tower)
+                        select paragonEvent).Any())
+                {
+                    SeenEvents.Add(s);
+                }
+                foreach (var seenEvent in SeenEvents)
+                {
+                    profile.seenEvents.Remove(seenEvent);
+                }
             }
-
-            return false;
-        }));
+        }
 
         CleanDictionary(profile.instaTowers, Clean("instaTowers", towers, current),
             new Dictionary<string, Il2CppSystem.Collections.Generic.List<InstaTowerModel>>());
@@ -129,15 +133,28 @@ internal class ProfileManagement
         {
             foreach (var rules in profile.odysseysEditorData.rules.GetValues())
             {
-                rules.availableTowers?.RemoveAll(new Func<TowerData, bool>(towerData =>
-                    ModHelper.Mods.Any(mod => towerData.tower.StartsWith(mod.IDPrefix))));
+                if (rules.availableTowers != null)
+                {
+                    foreach (var towerData in rules.availableTowers
+                                 .Where(towerData => ModHelper.Mods.Any(mod => towerData.tower.StartsWith(mod.IDPrefix)))
+                                 .ToArray())
+                    {
+                        rules.availableTowers.Remove(towerData);
+                    }
+                }
 
                 if (rules.challenges != null)
                 {
                     foreach (var dcm in rules.challenges)
                     {
-                        dcm.towers?.RemoveAll(new Func<TowerData, bool>(towerData =>
-                            ModHelper.Mods.Any(mod => towerData.tower.StartsWith(mod.IDPrefix))));
+                        if (dcm.towers == null) continue;
+
+                        foreach (var towerData in dcm.towers
+                                     .Where(towerData => ModHelper.Mods.Any(mod => towerData.tower.StartsWith(mod.IDPrefix)))
+                                     .ToArray())
+                        {
+                            dcm.towers.Remove(towerData);
+                        }
                     }
                 }
             }
@@ -169,8 +186,16 @@ internal class ProfileManagement
             }
         }
 
-        var amount = artifactLists.Sum(artifactList =>
-            artifactList.RemoveAll(new Func<ArtifactLoot, bool>(loot => !artifacts.Contains(loot.artifactName))));
+        var amount = 0;
+        foreach (var artifactList in artifactLists)
+        {
+            var toRemove = artifactList.Where(loot => !artifacts.Contains(loot.artifactName)).ToArray();
+            foreach (var artifactLoot in toRemove)
+            {
+                artifactList.Remove(artifactLoot);
+                amount++;
+            }
+        }
 
         if (amount > 0)
         {
