@@ -213,8 +213,10 @@ internal static class ModBrowserMenuModExt
         });
         mod.IconPanel.SetActive(false);
         mod.LackOfIconPanel.SetActive(true);
+        mod.Name.Text.AutoLocalize = false;
         mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
+        mod.Author.Text.AutoLocalize = false;
         mod.Author.SetText(modHelperData.DisplayAuthor);
         mod.Author.Text.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
 

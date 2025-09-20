@@ -20,12 +20,19 @@
     <ItemGroup>
         <Compile Include="..\BloonsTD6 Mod Helper\Api\Data\ModHelperData.Shared.cs"/>
         <Compile Include="..\BloonsTD6 Mod Helper\Extensions\SystemExtensions\HttpClientExtensions.cs"/>
+        <Compile Include="..\BloonsTD6 Mod Helper\Api\ModHelperHttp.cs"/>
     </ItemGroup>
     
     <ItemGroup>
         <Reference Include="$(BloonsTD6)\MelonLoader\net6\MelonLoader.dll" Private="false"/>
         <Reference Include="$(BloonsTD6)\MelonLoader\net6\0Harmony.dll" Private="false"/>
+        <Reference Include="$(BloonsTD6)\MelonLoader\net6\AssetRipper.VersionUtilities.dll" Private="false"/>
         <Reference Include="$(ManagedFolder)\Newtonsoft.Json.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\UnityEngine.CoreModule.dll" Private="false"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="TinyDialogsNet" Version="2.0.0" />
     </ItemGroup>
 
     <Target Name="MoveDllToPlugins" AfterTargets="Build" Condition="Exists('$(TargetDir)$(TargetName).dll')">

@@ -46,8 +46,6 @@ public static class ModHelper
     /// </summary>
     public const string CompiledVersion = Version;
 
-    internal static string GameVersion => Application.version;
-
     private static IEnumerable<BloonsMod> mods;
 
     /// <summary>

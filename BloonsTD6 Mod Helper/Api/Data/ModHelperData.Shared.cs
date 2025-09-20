@@ -6,13 +6,13 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using MelonLoader.InternalUtils;
+using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Semver;
+using UnityEngine;
 #if MOD_HELPER
 using BTD_Mod_Helper.Api.Internal;
-using BTD_Mod_Helper.Api.ModMenu;
 #else
 using BTD_Mod_Helper.Extensions;
 #endif
@@ -271,7 +271,7 @@ internal partial class ModHelperData
         }
 
         if (SemVersion.TryParse(latestWorksOnVersion, out var worksOnVersion) &&
-            SemVersion.TryParse(ModHelper.GameVersion, out var gameVersion) &&
+            SemVersion.TryParse(Application.version, out var gameVersion) &&
             gameVersion < worksOnVersion)
         {
             return false;

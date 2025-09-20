@@ -7,7 +7,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// </summary>
 public static class FileDialogHelper
 {
-    private static readonly string[] Dlls = ["nfd.dll", "nfd_x86.dll"];
+    private static readonly string[] Dlls = ["nfd.dll"/*, "nfd_x86.dll"*/];
 
     /// <summary>
     /// Ensure that the NFD native dlls are present in the game root folder
@@ -16,7 +16,7 @@ public static class FileDialogHelper
     {
         foreach (var dll in Dlls)
         {
-            var nfd = Path.Combine(MelonEnvironment.GameRootDirectory, dll);
+            var nfd = Path.Combine(MelonEnvironment.UserLibsDirectory, dll);
             if (!File.Exists(nfd) && ModHelper.MainAssembly.TryGetEmbeddedResource(dll, out var stream))
             {
                 using (stream)

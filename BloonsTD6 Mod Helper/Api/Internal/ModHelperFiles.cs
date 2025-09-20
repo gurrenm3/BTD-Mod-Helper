@@ -1,6 +1,9 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.ModMenu;
 using MelonLoader.Utils;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModHelperFiles
@@ -28,5 +31,25 @@ internal static class ModHelperFiles
             @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",
             MelonEnvironment.GameRootDirectory);
         fs.Write(text);
+    }
+
+    internal static void DownloadDocumentationXml()
+    {
+        const string url =
+            $"https://github.com/{ModHelper.RepoOwner}/{ModHelper.RepoName}/releases/download/{ModHelper.Version}/{ModHelper.XmlName}";
+        Task.Run(async () =>
+        {
+            try
+            {
+                if (await ModHelperHttp.DownloadFile(url, Path.Combine(MelonEnvironment.ModsDirectory, ModHelper.XmlName)))
+                {
+                    ModHelper.Msg($"Downloaded {ModHelper.XmlName} for v{ModHelper.Version}");
+                }
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
+        });
     }
 }

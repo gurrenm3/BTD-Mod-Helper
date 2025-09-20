@@ -7,9 +7,9 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader.Utils;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Ping = System.Net.NetworkInformation.Ping;
 
@@ -17,6 +17,7 @@ using Ping = System.Net.NetworkInformation.Ping;
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-999)]
+[assembly: MelonOptionalDependencies("UnityEngine.CoreModule")]
 
 namespace UpdaterPlugin;
 
@@ -29,6 +30,13 @@ public class UpdaterPlugin : MelonPlugin
 
     internal static string SettingsFile =>
         Path.Combine(ModHelper.ModSettingsDirectory, ModHelper.DllName.Replace(".dll", ".json"));
+
+    public override void OnPreInitialization()
+    {
+        if (!CheckPing()) return;
+        ModHelperHttp.Init();
+        Message.CheckForMessages().Wait();
+    }
 
     public override void OnPreModsLoaded()
     {
@@ -73,9 +81,7 @@ public class UpdaterPlugin : MelonPlugin
             try
             {
                 var file = await File.ReadAllTextAsync(SettingsFile, ct);
-                using var stringReader = new StringReader(file);
-                await using var reader = new JsonTextReader(stringReader);
-                var json = await JObject.LoadAsync(reader, ct);
+                var json = await JObject.LoadAsync(file, ct);
 
                 foreach (var (key, value) in json)
                 {
@@ -115,11 +121,7 @@ public class UpdaterPlugin : MelonPlugin
                     if (dontAutoUpdate.Contains(name)) return;
 
                     var file = await File.ReadAllTextAsync(path, ct);
-
-                    using var stringReader = new StringReader(file);
-                    await using var reader = new JsonTextReader(stringReader);
-
-                    var json = await JObject.LoadAsync(reader, ct);
+                    var json = await JObject.LoadAsync(file, ct);
 
                     var data = new ModHelperData();
                     data.ReadValuesFromJson(json.ToString());

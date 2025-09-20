@@ -175,7 +175,7 @@ internal partial class MelonMain : BloonsTD6Mod
         var version = settings["Version"];
         if (version == null || version.ToString() != ModHelper.Version)
         {
-            ModHelperHttp.DownloadDocumentationXml();
+            ModHelperFiles.DownloadDocumentationXml();
         }
 
         if (!settings.TryGetValue("SavedWindows", out var savedWindows)) return;

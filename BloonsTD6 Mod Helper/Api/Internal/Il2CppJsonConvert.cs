@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
 using Il2CppSystem.Collections;
@@ -171,7 +172,7 @@ public static class Il2CppJsonConvert
                 return objectType == typeof(Color?) ? null : default(Color);
 
             if (reader.TokenType != JsonToken.StartObject)
-                throw new JsonSerializationException($"Expected StartObject for Color, got {reader.TokenType}.");
+                throw new JsonSerializationException($"Expected StartObject for {nameof(Color)}, got {reader.TokenType}.");
 
             var jo = JObject.Load(reader);
 

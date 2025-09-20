@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppNinjaKiwi.Common;
+
 namespace BTD_Mod_Helper.Api.Data;
 
 /// <summary>
@@ -29,6 +31,27 @@ public abstract class ModTextOverride : ModContent
 
     internal virtual string TextValueForKey(string key) => TextValue;
 
+    internal bool disableOverride;
+
+    /// <summary>
+    /// The original text value being overriden
+    /// </summary>
+    protected string OriginalText
+    {
+        get
+        {
+            try
+            {
+                disableOverride = true;
+                return LocalizationManager.Instance.GetText(LocalizationKey);
+            }
+            finally
+            {
+                disableOverride = false;
+            }
+        }
+    }
+
     private protected static void AddToCache(string key, ModTextOverride textOverride)
     {
         if (!Cache.ContainsKey(key))
@@ -53,7 +76,7 @@ public abstract class ModTextOverride : ModContent
         text = default;
         if (!Cache.TryGetValue(key, out var overrides)) return false;
 
-        var modTextOverride = overrides.FirstOrDefault(o => o.Active);
+        var modTextOverride = overrides.FirstOrDefault(o => o.Active && !o.disableOverride);
         if (modTextOverride == null) return false;
 
         text = modTextOverride.TextValueForKey(key);

@@ -194,7 +194,7 @@ internal static class ModHelperGithub
         }
     }
 
-    public static async Task DownloadLatest(ModHelperData mod, bool bypassPopup = false,
+    public static async Task<string> DownloadLatest(ModHelperData mod, bool bypassPopup = false,
         Action<string> filePathCallback = null, Action<Task> taskCallback = null)
     {
         Release latestRelease = null;
@@ -211,7 +211,7 @@ internal static class ModHelperGithub
                     PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
                 }
 
-                return;
+                return null;
             }
         }
         else
@@ -226,7 +226,7 @@ internal static class ModHelperGithub
                     PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
                 }
 
-                return;
+                return null;
             }
 
             if (latestRelease.TagName != mod.RepoVersion)
@@ -243,64 +243,78 @@ internal static class ModHelperGithub
         {
             var downloadTask = Download(mod, filePathCallback, latestRelease, false);
             taskCallback?.Invoke(downloadTask);
-            await downloadTask;
+            var resultFile = await downloadTask;
 
             foreach (var modHelperData in dependencies)
             {
                 ModHelper.Msg($"Also downloading dependency {modHelperData.DisplayName}");
                 await DownloadLatest(modHelperData, true);
             }
+
+            return resultFile;
         }
-        else
+
+        PopupScreen.instance.SafelyQueue(screen =>
         {
-            PopupScreen.instance.SafelyQueue(screen =>
-            {
-                screen.ShowPopup(PopupScreen.Placement.menuCenter,
-                    $"{DoYouWantToDownload.Localize()}\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
-                    ParseReleaseMessage(mod.SubPath == null
-                        ? latestRelease!.Body
-                        : latestCommit!.Commit.Message),
-                    new Action(async () =>
+            screen.ShowPopup(PopupScreen.Placement.menuCenter,
+                $"{DoYouWantToDownload.Localize()}\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
+                ParseReleaseMessage(mod.SubPath == null
+                    ? latestRelease!.Body
+                    : latestCommit!.Commit.Message),
+                new Action(async () =>
+                {
+                    var downloadTask = Download(mod, filePathCallback, latestRelease, !dependencies.Any());
+                    taskCallback?.Invoke(downloadTask);
+                    var resultFile = await downloadTask;
+
+                    try
                     {
-                        var downloadTask = Download(mod, filePathCallback, latestRelease, !dependencies.Any());
-                        taskCallback?.Invoke(downloadTask);
-                        await downloadTask;
-
-                        mod.SaveToJson(ModHelper.DataDirectory);
-
-                        if (dependencies.Any())
+                        if (!string.IsNullOrEmpty(resultFile))
                         {
-                            PopupScreen.instance.SafelyQueue(screen =>
+                            if (resultFile.EndsWith(".dll"))
                             {
-                                screen.ShowPopup(
-                                    PopupScreen.Placement.menuCenter, AlsoDownloadDeps.Localize(),
-                                    $"{mod.DisplayName} {AlsoDownloadDepsBody.Localize()}\n{dependencies.Select(data => data.DisplayName).Join()}. ",
-                                    new Action(async () =>
-                                    {
-                                        foreach (var modHelperData in dependencies)
-                                        {
-                                            ModHelper.Msg($"Also downloading dependency {modHelperData.DisplayName}");
-                                            downloadTask = DownloadLatest(modHelperData, true);
-                                            taskCallback?.Invoke(downloadTask);
-                                            await downloadTask;
-                                        }
-                                        PopupScreen.instance.SafelyQueue(popupScreen =>
-                                            popupScreen.ShowOkPopup(DownloadDepsSuccess.Localize()));
-                                    }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
-                            });
+                                mod.DllName = Path.GetFileName(resultFile);
+                            }
+                            mod.SaveToJson(ModHelper.DataDirectory);
                         }
-                    }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
-                screen.MakeTextScrollable();
-            });
-        }
+                    }
+                    catch (Exception e)
+                    {
+                        ModHelper.Warning(e);
+                    }
 
-        UpdateRateLimit();
+                    if (dependencies.Any())
+                    {
+                        PopupScreen.instance.SafelyQueue(screen =>
+                        {
+                            screen.ShowPopup(
+                                PopupScreen.Placement.menuCenter, AlsoDownloadDeps.Localize(),
+                                $"{mod.DisplayName} {AlsoDownloadDepsBody.Localize()}\n{dependencies.Select(data => data.DisplayName).Join()}. ",
+                                new Action(async () =>
+                                {
+                                    foreach (var modHelperData in dependencies)
+                                    {
+                                        ModHelper.Msg($"Also downloading dependency {modHelperData.DisplayName}");
+                                        downloadTask = DownloadLatest(modHelperData, true);
+                                        taskCallback?.Invoke(downloadTask);
+                                        await downloadTask;
+                                    }
+                                    PopupScreen.instance.SafelyQueue(popupScreen =>
+                                        popupScreen.ShowOkPopup(DownloadDepsSuccess.Localize()));
+                                }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
+                        });
+                    }
+                }), "Yes", null, "No", Popup.TransitionAnim.Scale, instantClose: true);
+            screen.MakeTextScrollable();
+        });
+
+        return null;
     }
 
     private static string ParseReleaseMessage(string body) =>
         Regex.Split(body ?? "", @"<!--Mod Browser Message Start-->[\r\n\s]*").LastOrDefault() ?? "";
 
-    private static async Task Download(ModHelperData mod, Action<string> callback, Release latestRelease,
+    private static async Task<string> Download(ModHelperData mod, Action<string> callback, Release latestRelease,
         bool showPopup)
     {
         Exception exception = null;
@@ -321,7 +335,7 @@ internal static class ModHelperGithub
                     callback(resultFile);
                 }
 
-                return;
+                return resultFile;
             }
         }
         catch (Exception e)
@@ -341,6 +355,7 @@ internal static class ModHelperGithub
         };
         ModHelper.Error(errorMessage);
         PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
+        return null;
     }
 
     public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true)
