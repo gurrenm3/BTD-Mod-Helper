@@ -87,19 +87,6 @@ public Info initialInfo;
 
 #### Field Value
 [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
-
-<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.parent'></a>
-
-## ModHelperComponent.parent Field
-
-The ModHelperComponent that this is a child of, if any
-
-```csharp
-public ModHelperComponent parent;
-```
-
-#### Field Value
-[ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.LayoutElement'></a>
@@ -127,6 +114,19 @@ public HorizontalOrVerticalLayoutGroup LayoutGroup { get; }
 
 #### Property Value
 [UnityEngine.UI.HorizontalOrVerticalLayoutGroup](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.HorizontalOrVerticalLayoutGroup 'UnityEngine.UI.HorizontalOrVerticalLayoutGroup')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.parent'></a>
+
+## ModHelperComponent.parent Property
+
+The ModHelperComponent that this is a child of, if any
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperComponent parent { get; }
+```
+
+#### Property Value
+[ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.RectTransform'></a>
 

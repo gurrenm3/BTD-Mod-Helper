@@ -111,3 +111,25 @@ public static string SerializeModel(Model model);
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.Helpers.ModelSerializer.SerializeModel(Model,bool)'></a>
+
+## ModelSerializer.SerializeModel(Model, bool) Method
+
+Serializes a model to JSON, preserving types and references
+
+```csharp
+public static string SerializeModel(Model model, bool consistent);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Helpers.ModelSerializer.SerializeModel(Model,bool).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
+
+<a name='BTD_Mod_Helper.Api.Helpers.ModelSerializer.SerializeModel(Model,bool).consistent'></a>
+
+`consistent` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

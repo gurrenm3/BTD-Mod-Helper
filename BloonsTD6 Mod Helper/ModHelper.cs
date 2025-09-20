@@ -8,7 +8,6 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using MelonLoader.InternalUtils;
 using MelonLoader.Utils;
-using UnityEngine;
 using Directory = System.IO.Directory;
 using Path = System.IO.Path;
 
@@ -32,7 +31,7 @@ public static class ModHelper
     internal const string XmlName = "Btd6ModHelper.xml";
     internal const string Author = "Gurrenm4 and Doombubbles";
     internal const string Branch = "master";
-    internal const string UpdaterVersion = "1.0.2";
+    internal const string UpdaterVersion = "1.0.3";
 
     private static bool fallBackToOldLoading = true;
 

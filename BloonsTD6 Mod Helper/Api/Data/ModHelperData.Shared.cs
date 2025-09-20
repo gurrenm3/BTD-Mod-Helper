@@ -6,11 +6,11 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Semver;
-using UnityEngine;
 #if MOD_HELPER
 using BTD_Mod_Helper.Api.Internal;
 #else
@@ -271,7 +271,7 @@ internal partial class ModHelperData
         }
 
         if (SemVersion.TryParse(latestWorksOnVersion, out var worksOnVersion) &&
-            SemVersion.TryParse(Application.version, out var gameVersion) &&
+            SemVersion.TryParse(VersionCompat.GameVersion, out var gameVersion) &&
             gameVersion < worksOnVersion)
         {
             return false;

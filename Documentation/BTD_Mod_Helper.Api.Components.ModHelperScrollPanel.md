@@ -20,7 +20,7 @@ The ContentSizeFitter component which makes sure that the ScrollContent
 is the right size to hold all the scrollable items.
 
 ```csharp
-public ContentSizeFitter ContentSizeFitter { get; set; }
+public ContentSizeFitter ContentSizeFitter { get; }
 ```
 
 #### Property Value

@@ -2,15 +2,16 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using AssetRipper.VersionUtilities;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using MelonLoader.InternalUtils;
 using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using Semver;
 using TinyDialogsNet;
-using UnityEngine;
+
 namespace UpdaterPlugin;
 
 public class Message
@@ -26,10 +27,9 @@ public class Message
     private const string MessageName = "messages.json";
     private const string File = "tinyfiledialogs";
 
-    private static bool applicationVersionSafe;
     private static bool dialogWorks;
 
-    private static readonly string GithubUrl =
+    private const string GithubUrl =
         $"{ModHelperGithub.RawUserContent}/{ModHelper.RepoOwner}/{ModHelper.RepoName}/{ModHelper.Branch}";
 
     public MelonStage Stage { get; init; } = MelonStage.OnPreModsLoaded;
@@ -40,7 +40,7 @@ public class Message
 
     public string Id { get; init; }
 
-    public string Title { get; init; } = "Message from Mod Helper";
+    public string Title { get; init; } = "Message from BTD6 Mod Helper";
 
     public string Body { get; init; } = "Default";
 
@@ -60,48 +60,35 @@ public class Message
 
     public bool ShouldShow()
     {
-        if (!string.IsNullOrEmpty(UnityVersionMax))
+        if (!string.IsNullOrEmpty(UnityVersionMax) || !string.IsNullOrEmpty(UnityVersionMin))
         {
             try
             {
-                var unityVersionMax = UnityVersion.Parse(UnityVersionMax);
-
-                if (UnityInformationHandler.EngineVersion > unityVersionMax)
+                if (SemVersion.TryParse(VersionCompat.UnityVersionWithoutType, out var unityVersion))
                 {
-                    return false;
+                    if (!string.IsNullOrEmpty(UnityVersionMax) &&
+                        SemVersion.TryParse(VersionCompat.RemoveUnityInfo(UnityVersionMax), out var unityVersionMax) &&
+                        unityVersion > unityVersionMax)
+                    {
+                        return false;
+                    }
+
+                    if (!string.IsNullOrEmpty(UnityVersionMin) &&
+                        SemVersion.TryParse(VersionCompat.RemoveUnityInfo(UnityVersionMin), out var unityVersionMin) &&
+                        unityVersion < unityVersionMin)
+                    {
+                        return false;
+                    }
                 }
             }
             catch (Exception e)
             {
-                ModHelper.Warning($"Failed to parse warning {nameof(UnityVersionMax)}");
-                ModHelper.Warning(e);
                 return false;
             }
         }
 
-        if (!string.IsNullOrEmpty(UnityVersionMin))
-        {
-            try
-            {
-                var unityVersionMin = UnityVersion.Parse(UnityVersionMin);
 
-                if (UnityInformationHandler.EngineVersion < unityVersionMin)
-                {
-                    return false;
-                }
-            }
-            catch (Exception e)
-            {
-                ModHelper.Warning($"Failed to parse warning {nameof(UnityVersionMin)}");
-                ModHelper.Warning(e);
-                return false;
-            }
-        }
-
-        var version = typeof(MelonEnvironment).Assembly.GetName().Version!;
-        var versionString = $"{version.Major}.{version.Minor}.{version.Build}";
-
-        if (SemVersion.TryParse(versionString, out var melonLoaderVersion))
+        if (SemVersion.TryParse(VersionCompat.MelonLoaderVersion, out var melonLoaderVersion))
         {
             if (!string.IsNullOrEmpty(MelonLoaderVersionMax) &&
                 SemVersion.TryParse(MelonLoaderVersionMax, out var melonLoaderVersionMax) &&
@@ -120,9 +107,7 @@ public class Message
 
         if (!string.IsNullOrEmpty(GameVersionMax) || !string.IsNullOrEmpty(GameVersionMin))
         {
-            var gameVersionString = applicationVersionSafe ? Application.version : UnityInformationHandler.GameVersion;
-
-            if (SemVersion.TryParse(gameVersionString, out var gameVersion))
+            if (SemVersion.TryParse(VersionCompat.GameVersion, out var gameVersion))
             {
                 if (!string.IsNullOrEmpty(GameVersionMax) &&
                     SemVersion.TryParse(GameVersionMax, out var gameVersionMax) &&
@@ -140,7 +125,7 @@ public class Message
             }
             else
             {
-                ModHelper.Warning($"Unknown game version: {gameVersionString}");
+                ModHelper.Warning($"Unknown game version: {VersionCompat.GameVersion}");
             }
         }
 
@@ -157,7 +142,8 @@ public class Message
                 MessageBoxDialogType.Ok => MessageBoxButton.Ok,
                 MessageBoxDialogType.OkCancel => MessageBoxButton.Cancel,
                 MessageBoxDialogType.YesNo => MessageBoxButton.No,
-                MessageBoxDialogType.YesNoCancel => MessageBoxButton.Cancel
+                MessageBoxDialogType.YesNoCancel => MessageBoxButton.Cancel,
+                _ => throw new ArgumentOutOfRangeException()
             };
 
             var successButton = Dialog switch
@@ -165,7 +151,8 @@ public class Message
                 MessageBoxDialogType.Ok => MessageBoxButton.Ok,
                 MessageBoxDialogType.OkCancel => MessageBoxButton.Ok,
                 MessageBoxDialogType.YesNo => MessageBoxButton.Yes,
-                MessageBoxDialogType.YesNoCancel => MessageBoxButton.Yes
+                MessageBoxDialogType.YesNoCancel => MessageBoxButton.Yes,
+                _ => throw new ArgumentOutOfRangeException()
             };
 
             var result = TinyDialogs.MessageBox(Title, Body, Dialog, Type, defaultButton);
@@ -207,7 +194,6 @@ public class Message
 
     public static async Task CheckForMessages()
     {
-        MelonEvents.OnPreModsLoaded.Subscribe(() => applicationVersionSafe = true);
         try
         {
             var file = await ModHelperHttp.Client.GetStringAsync(Path.Combine(GithubUrl, MessageName));

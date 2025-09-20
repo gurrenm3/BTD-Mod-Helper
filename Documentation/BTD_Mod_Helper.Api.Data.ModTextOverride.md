@@ -41,6 +41,19 @@ public abstract string LocalizationKey { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Data.ModTextOverride.OriginalText'></a>
+
+## ModTextOverride.OriginalText Property
+
+The original text value being overriden
+
+```csharp
+protected string OriginalText { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Api.Data.ModTextOverride.TextValue'></a>
 
 ## ModTextOverride.TextValue Property

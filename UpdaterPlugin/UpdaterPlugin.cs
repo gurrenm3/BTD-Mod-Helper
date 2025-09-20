@@ -7,6 +7,7 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Extensions;
 using MelonLoader.Utils;
@@ -17,7 +18,6 @@ using Ping = System.Net.NetworkInformation.Ping;
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-999)]
-[assembly: MelonOptionalDependencies("UnityEngine.CoreModule")]
 
 namespace UpdaterPlugin;
 
@@ -40,6 +40,7 @@ public class UpdaterPlugin : MelonPlugin
 
     public override void OnPreModsLoaded()
     {
+        VersionCompat.safeToGetVersionFromUnity = true;
         var start = DateTimeOffset.Now;
         try
         {
@@ -50,7 +51,9 @@ public class UpdaterPlugin : MelonPlugin
         finally
         {
             var end = DateTimeOffset.Now;
+#if DEBUG
             ModHelper.Msg($"UpdaterPlugin took {end - start}");
+#endif
         }
     }
 
