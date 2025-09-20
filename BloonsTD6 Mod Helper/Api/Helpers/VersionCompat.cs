@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-using BuildInfo = MelonLoader.Properties.BuildInfo;
 
 #if MOD_HELPER
 using UnityEngine;
@@ -7,6 +6,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using MelonLoader.InternalUtils;
+using MelonLoader.Utils;
 #endif
 
 namespace BTD_Mod_Helper.Api.Helpers;
@@ -19,6 +19,13 @@ internal static class VersionCompat
     private static Type Application =>
         AccessTools.AllTypes().FirstOrDefault(type => type.FullName == "UnityEngine.Application");
 
+    private static Type BuildInfo => AccessTools.AllTypes().FirstOrDefault(type =>
+        type.FullName != null && type.FullName.StartsWith("MelonLoader") && type.FullName.EndsWith("BuildInfo"));
+
+    public static string MelonLoaderVersion =>
+        BuildInfo is { } type && type.GetProperty("Version") is { } version
+            ? version.GetValue(null) as string
+            : typeof(MelonEnvironment).Assembly.GetName().Version!.ToString();
 #endif
 
     public static string GameVersion
@@ -57,7 +64,4 @@ internal static class VersionCompat
     public static string UnityVersionWithoutType => RemoveUnityInfo(UnityVersion);
 
     public static string RemoveUnityInfo(string version) => Regex.Replace(version, "[a-z].*", "");
-
-    public static string MelonLoaderVersion => BuildInfo.Version;
-
 }

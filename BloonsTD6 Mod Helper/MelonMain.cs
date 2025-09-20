@@ -19,7 +19,6 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
-using BuildInfo = MelonLoader.Properties.BuildInfo;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 #if DEBUG
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
@@ -204,7 +203,7 @@ internal partial class MelonMain : BloonsTD6Mod
             EpicCompatibility.PromptDownloadPlugin();
         }
 
-        var version = BuildInfo.VersionNumber;
+        var version = typeof(MelonEnvironment).Assembly.GetName().Version!;
         var versionString = $"{version.Major}.{version.Minor}.{version.Build}";
 
         if (ModHelperGithub.UnstableMelonLoaderVersions.Contains(versionString))

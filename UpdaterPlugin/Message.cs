@@ -146,17 +146,22 @@ public class Message
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            var successButton = Dialog switch
+            try
             {
-                MessageBoxDialogType.Ok => MessageBoxButton.Ok,
-                MessageBoxDialogType.OkCancel => MessageBoxButton.Ok,
-                MessageBoxDialogType.YesNo => MessageBoxButton.Yes,
-                MessageBoxDialogType.YesNoCancel => MessageBoxButton.Yes,
-                _ => throw new ArgumentOutOfRangeException()
-            };
+                var result = TinyDialogs.MessageBox(Title, Body, Dialog, Type, defaultButton);
+                if (result is MessageBoxButton.Cancel or MessageBoxButton.No)
+                {
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+#if DEBUG
+                ModHelper.Warning(e);
+#endif
+            }
 
-            var result = TinyDialogs.MessageBox(Title, Body, Dialog, Type, defaultButton);
-            if (result == successButton && !string.IsNullOrEmpty(URL))
+            if (!string.IsNullOrEmpty(URL))
             {
                 Process.Start(new ProcessStartInfo(URL)
                 {
