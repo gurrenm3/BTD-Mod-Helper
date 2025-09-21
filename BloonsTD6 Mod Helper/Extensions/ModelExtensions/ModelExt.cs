@@ -19,6 +19,7 @@ public static class ModelExt
     /// <summary>
     /// Turns any descendants with "_" as their name into unique named models
     /// </summary>
+    [Obsolete("Just use empty names, it will happen automatically")]
     internal static void GenerateDescendentNames(this Model model)
     {
         var i = 0;

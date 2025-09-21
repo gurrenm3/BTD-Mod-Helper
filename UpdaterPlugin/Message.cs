@@ -2,15 +2,14 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
-using MelonLoader.InternalUtils;
 using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using Semver;
 using TinyDialogsNet;
+// ReSharper disable UnusedAutoPropertyAccessor.Global AutoPropertyCanBeMadeGetOnly.Global
 
 namespace UpdaterPlugin;
 
@@ -81,7 +80,7 @@ public class Message
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -271,14 +270,13 @@ public class Message
 
     private static async Task<bool> PrepareNativeDlls()
     {
-        string url;
         try
         {
             var path = Path.Combine(MelonEnvironment.UserLibsDirectory, GetDllName());
 
             if (System.IO.File.Exists(path)) return true;
 
-            url = GetDllUrl();
+            var url = GetDllUrl();
 
             return await ModHelperHttp.DownloadFile(url, path);
         }

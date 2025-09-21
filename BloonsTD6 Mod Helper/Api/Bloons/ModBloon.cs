@@ -126,8 +126,6 @@ public abstract class ModBloon : NamedModContent
         }
         bloonModel.updateChildBloonModels = true;
 
-        bloonModel.GenerateDescendentNames();
-
         displays.Find(display => display.Damage == 0)?.Apply(bloonModel);
         var damageDisplays = displays
             .Where(display => display.Damage > 0)

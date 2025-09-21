@@ -113,8 +113,6 @@ public abstract class ModRoundSet : NamedModContent
             }
         }
 
-        model.GenerateDescendentNames();
-
         try
         {
             GameData.Instance.roundSets = GameData.Instance.roundSets.AddTo(model);

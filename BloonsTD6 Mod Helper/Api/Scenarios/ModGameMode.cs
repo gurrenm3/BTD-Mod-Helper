@@ -80,8 +80,6 @@ public abstract class ModGameMode : NamedModContent
             throw;
         }
 
-        model.GenerateDescendentNames();
-
         try
         {
             GameData.Instance.mods = GameData.Instance.mods.AddTo(model);
