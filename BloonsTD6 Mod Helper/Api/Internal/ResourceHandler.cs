@@ -29,12 +29,12 @@ public static class ResourceHandler
     /// <summary>
     /// Cache of created Textures by Id
     /// </summary>
-    internal static readonly Dictionary<string, Texture2D> TextureCache = new();
+    public static readonly Dictionary<string, Texture2D> TextureCache = new();
 
     /// <summary>
     /// Cache of created Sprites by Id
     /// </summary>
-    internal static readonly Dictionary<string, Sprite> SpriteCache = new();
+    public static readonly Dictionary<string, Sprite> SpriteCache = new();
 
     internal static readonly List<RenderTexture> RenderTexturesToRelease = [];
 
@@ -213,7 +213,7 @@ public static class ResourceHandler
         {
             var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -.5f};
             texture.LoadImage(bytes);
-            TextureCache[guid] = texture;
+            AddTexture(guid, texture);
             return texture;
         }
 
@@ -224,7 +224,7 @@ public static class ResourceHandler
     /// Creates or gets a texture from its Id
     /// </summary>
     /// <param name="id">Texture id "ModName-FileName" (no file extension)</param>
-    /// <returns>The texture </returns>
+    /// <returns>The texture</returns>
     public static Texture2D GetTexture(string id)
     {
         if (TextureCache.TryGetValue(id, out var texture2d) && texture2d != null) return texture2d;
@@ -232,8 +232,17 @@ public static class ResourceHandler
         return CreateTexture(id);
     }
 
-    internal static byte[] GetTextureBytes(string guid) =>
-        Resources.TryGetValue(guid, out var bytes) ? bytes : Array.Empty<byte>();
+    /// <summary>
+    /// Adds a texture that can be accessed as a Sprite via the given guid
+    /// </summary>
+    /// <param name="guid">Texture id "ModName-TextureName"</param>
+    /// <param name="texture">The texture</param>
+    public static void AddTexture(string guid, Texture2D texture)
+    {
+        TextureCache[guid] = texture;
+    }
+
+    internal static byte[] GetTextureBytes(string guid) => Resources.TryGetValue(guid, out var bytes) ? bytes : [];
 
     /// <summary>
     /// Creates a Sprite from a Texture2D
@@ -263,7 +272,7 @@ public static class ResourceHandler
     /// <param name="id">Sprite id "ModName-FileName" (no file extension)</param>
     /// <param name="pixelsPerUnit">Pixels per Unit to use</param>
     /// <returns>The texture </returns>
-    internal static Sprite GetSprite(string id, float pixelsPerUnit = 10.8f)
+    public static Sprite GetSprite(string id, float pixelsPerUnit = 10.8f)
     {
         if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null) return sprite;
 

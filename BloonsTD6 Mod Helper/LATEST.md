@@ -9,3 +9,4 @@
 - Added a VanillaAudioClips file listing all the GUIDs for game sounds
 - Updated the game data exporter to use a custom serializer implementation that does not fail on any towers (e.g. top
   path alchemists)
+- Made some more members of `ResourceHandler` be public, and added `ResourceHandler.AddTexture(guid, texture2d)`
