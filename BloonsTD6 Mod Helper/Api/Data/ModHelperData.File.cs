@@ -56,16 +56,22 @@ internal partial class ModHelperData
         return false;
     }
 
-    public bool MoveToDisabledFolder(bool quick = false)
+    public bool MoveToDisabledFolder(bool dontSaveIcon = false)
     {
         if (!MoveToFolder(ModHelper.DisabledModsDirectory)) return false;
 
         try
         {
             SaveToJson(ModHelper.DataDirectory);
-            if (!quick && GetIcon() is Sprite sprite)
+            if (!dontSaveIcon)
             {
-                sprite.texture.TrySaveToPNG(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".png")));
+                TaskScheduler.ScheduleTask(() =>
+                {
+                    if (GetIcon() is Sprite sprite)
+                    {
+                        sprite.texture.TrySaveToPNG(Path.Combine(ModHelper.DataDirectory, DllName.Replace(".dll", ".png")));
+                    }
+                });
             }
 
             return true;

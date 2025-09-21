@@ -63,7 +63,7 @@ internal static class UpdaterPlugin
     {
         try
         {
-            Updater?.MoveToDisabledFolder();
+            Updater?.MoveToDisabledFolder(true);
         }
         catch (Exception)
         {
