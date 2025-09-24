@@ -6,7 +6,7 @@
     "Body": "BTD6 has just updated to a new Unity Version that does not work with MelonLoader 0.7.1 or below, so the game is about to crash.\n\nTo play with mods on this version we must wait until MelonLoader releases a fix. If you want to keep playing with mods right now, you will need to downgrade BTD6 to the version before this update.\n\nPress OK to view a guide on downgrading BTD6",
     "UnityVersionMin": "6000.0.58f1",
     "GameVersionMin": "58.2",
-    "MelonLoaderVersionMax": "0.7.2-ci.2334",
+    "MelonLoaderVersionMax": "0.7.2-ci.2332",
     "URL": "https://github.com/doombubbles/old-btd6-helper?tab=readme-ov-file#how-to-download-old-versions"
   }
 ]

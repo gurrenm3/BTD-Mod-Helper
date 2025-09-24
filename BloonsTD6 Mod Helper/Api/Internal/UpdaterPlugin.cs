@@ -61,6 +61,8 @@ internal static class UpdaterPlugin
 
     public static void DownloadLatest()
     {
+        if (didDownloadAlready) return;
+
         try
         {
             Updater?.MoveToDisabledFolder(true);
@@ -69,8 +71,6 @@ internal static class UpdaterPlugin
         {
             // ignored
         }
-
-        if (didDownloadAlready) return;
 
         ModHelperHttp.DownloadFile(DownloadUrl, FilePath).ContinueWith(task =>
         {
