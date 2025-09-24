@@ -39,6 +39,7 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         ModContentInstances.AddInstance(GetType(), this);
         ModHelper.MigrateFolders();
+        ModHelperHttp.Init();
 
         // Create all and load default mod settings
         ModSettingsHandler.InitializeModSettings();
@@ -47,11 +48,8 @@ internal partial class MelonMain : BloonsTD6Mod
 
         try
         {
-            ModHelperHttp.Init();
             ModHelperGithub.Init();
-
             Task.Run(ModHelperGithub.GetVerifiedModders);
-
             ModHelperGithub.populatingMods = Task.Run(() => ModHelperGithub.PopulateMods(!PopulateOnStartup));
         }
         catch (Exception e)

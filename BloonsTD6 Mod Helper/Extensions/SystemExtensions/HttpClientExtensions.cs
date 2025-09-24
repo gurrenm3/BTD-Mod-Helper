@@ -1,8 +1,11 @@
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -60,5 +63,15 @@ public static class HttpClientExtensions
             throw new HttpRequestException($"Got error status code for request to {requestUri}", e);
         }
         return await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+    }
+
+    extension(JObject)
+    {
+        internal static async Task<JObject> LoadAsync(string text, CancellationToken ct = default)
+        {
+            using var stringReader = new StringReader(text);
+            await using var reader = new JsonTextReader(stringReader);
+            return await JObject.LoadAsync(reader, ct);
+        }
     }
 }

@@ -22,7 +22,7 @@ public static class ModHelper
 {
     internal const string WorksOnVersion = "50.2";
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.4.12";
+    internal const string Version = "3.5.0";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =
@@ -31,7 +31,7 @@ public static class ModHelper
     internal const string XmlName = "Btd6ModHelper.xml";
     internal const string Author = "Gurrenm4 and Doombubbles";
     internal const string Branch = "master";
-    internal const string UpdaterVersion = "1.0.3";
+    internal const string UpdaterVersion = "1.0.4";
 
     private static bool fallBackToOldLoading = true;
 

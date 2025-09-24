@@ -31,6 +31,7 @@ internal static class UpdaterPlugin
 
     private static string FilePath => Path.Combine(MelonEnvironment.PluginsDirectory, DllName);
     private static string FilePathDisabled => Path.Combine(ModHelper.DisabledModsDirectory, DllName);
+    private static string WrongFilePath => Path.Combine(MelonEnvironment.ModsDirectory, DllName);
 
     private static bool didDownloadAlready;
 
@@ -48,6 +49,17 @@ internal static class UpdaterPlugin
 
     public static void CheckForUpdates()
     {
+        if (File.Exists(WrongFilePath))
+        {
+            if (!File.Exists(FilePath))
+            {
+                File.Move(WrongFilePath, FilePath);
+                return;
+            }
+
+            File.Delete(WrongFilePath);
+        }
+
         if (ModHelper.Main.GetModHelperData() is {CachedModHelperData: { } data})
         {
             latestVersionString = ModHelperData.GetRegexMatch<string>(data, ModHelperData.UpdaterVersionRegex);
@@ -81,6 +93,7 @@ internal static class UpdaterPlugin
 
                 if (Updater is { } plugin)
                 {
+                    plugin.Version = latestVersionString ?? ModHelper.UpdaterVersion;
                     plugin.SetFilePath(FilePath);
                 }
             }

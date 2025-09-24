@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.Menus;
@@ -13,7 +14,9 @@ internal static class MainMenu_OnEnable
 {
     private static IEnumerable<MethodBase> TargetMethods()
     {
-        var start = AccessTools.Method(typeof(MainMenu), "Start");
+        var methods = typeof(MainMenu).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+        var start = methods.FirstOrDefault(x => x.Name == "Start");
 
         if (start != null)
         {
@@ -21,15 +24,14 @@ internal static class MainMenu_OnEnable
             yield break;
         }
 
-        var awake = AccessTools.Method(typeof(MainMenu), "Awake");
-
+        var awake = methods.FirstOrDefault(x => x.Name == "Awake");
         if (awake != null)
         {
             yield return awake;
             yield break;
         }
 
-        var onEnable = AccessTools.Method(typeof(MainMenu), "OnEnable");
+        var onEnable = methods.FirstOrDefault(x => x.Name == "OnEnable");
         if (onEnable != null)
         {
             yield return onEnable;

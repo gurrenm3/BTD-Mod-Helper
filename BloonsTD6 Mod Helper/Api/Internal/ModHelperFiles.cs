@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
 using MelonLoader.Utils;
+using Newtonsoft.Json.Linq;
 
 namespace BTD_Mod_Helper.Api.Internal;
 
@@ -33,8 +34,12 @@ internal static class ModHelperFiles
         fs.Write(text);
     }
 
+    private static bool downloaded;
+
     internal static void DownloadDocumentationXml()
     {
+        if (downloaded) return;
+
         const string url =
             $"https://github.com/{ModHelper.RepoOwner}/{ModHelper.RepoName}/releases/download/{ModHelper.Version}/{ModHelper.XmlName}";
         Task.Run(async () =>
@@ -43,6 +48,7 @@ internal static class ModHelperFiles
             {
                 if (await ModHelperHttp.DownloadFile(url, Path.Combine(MelonEnvironment.ModsDirectory, ModHelper.XmlName)))
                 {
+                    downloaded = true;
                     ModHelper.Msg($"Downloaded {ModHelper.XmlName} for v{ModHelper.Version}");
                 }
             }
