@@ -19,6 +19,7 @@ using BTD_Mod_Helper.Extensions;
 
 namespace BTD_Mod_Helper.Api.Data;
 
+[JsonObject(MemberSerialization.OptIn)]
 internal partial class ModHelperData
 {
     private const string ModHelperDataCs = "ModHelperData.cs";
@@ -102,26 +103,26 @@ internal partial class ModHelperData
     }
 
     // These public properties are the serialized ones
-    public string Version { get; internal set; }
-    public string Name { get; internal set; }
-    public string Description { get; internal set; }
-    public string Icon { get; internal set; }
-    public string DllName { get; internal set; }
-    public string RepoName { get; internal set; }
-    public string RepoOwner { get; internal set; }
-    public bool ManualDownload { get; internal set; }
-    public string ZipName { get; internal set; }
-    public string Author { get; internal set; }
-    public string SubPath { get; internal set; }
-    public bool SquareIcon { get; internal set; }
-    public string ExtraTopics { get; internal set; }
-    public string WorksOnVersion { get; internal set; }
-    public string Dependencies { get; internal set; }
-    public bool Plugin { get; internal set; }
-    public string Branch { get; internal set; }
-    public string ModHelperDataUrl { get; internal set; }
-    public string DownloadUrl { get; internal set; }
-    public string Authorization { get; internal set; }
+    [JsonProperty] public string Version { get; internal set; }
+    [JsonProperty] public string Name { get; internal set; }
+    [JsonProperty] public string Description { get; internal set; }
+    [JsonProperty] public string Icon { get; internal set; }
+    [JsonProperty] public string DllName { get; internal set; }
+    [JsonProperty] public string RepoName { get; internal set; }
+    [JsonProperty] public string RepoOwner { get; internal set; }
+    [JsonProperty] public bool ManualDownload { get; internal set; }
+    [JsonProperty] public string ZipName { get; internal set; }
+    [JsonProperty] public string Author { get; internal set; }
+    [JsonProperty] public string SubPath { get; internal set; }
+    [JsonProperty] public bool SquareIcon { get; internal set; }
+    [JsonProperty] public string ExtraTopics { get; internal set; }
+    [JsonProperty] public string WorksOnVersion { get; internal set; }
+    [JsonProperty] public string Dependencies { get; internal set; }
+    [JsonProperty] public bool Plugin { get; internal set; }
+    [JsonProperty] public string Branch { get; internal set; }
+    [JsonProperty] public string ModHelperDataUrl { get; internal set; }
+    [JsonProperty] public string DownloadUrl { get; internal set; }
+    [JsonProperty] public string Authorization { get; internal set; }
 
     internal string DataPath { get; }
     internal string CachedModHelperData { get; private set; }
@@ -158,29 +159,16 @@ internal partial class ModHelperData
         CachedModHelperData = data;
 
         var json = JObject.Parse(data);
-        foreach (var (key, set) in Setters)
-        {
-            if (json.ContainsKey(key) && (allowRepo || !key.Contains("Repo")))
-            {
-                try
-                {
-                    set.Invoke(this, [json[key]?.ToObject<bool>()]);
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
 
-                try
-                {
-                    set.Invoke(this, [json[key]?.ToObject<string>()]);
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
+        if (!allowRepo)
+        {
+            json.Remove(nameof(RepoName));
+            json.Remove(nameof(RepoOwner));
         }
+
+        using var reader = json.CreateReader();
+        var serializer = JsonSerializer.CreateDefault();
+        serializer.Populate(reader, this);
     }
 
     internal void ReadValuesFromString(string data, bool allowRepo = true)

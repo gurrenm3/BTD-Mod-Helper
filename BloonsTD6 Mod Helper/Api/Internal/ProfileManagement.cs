@@ -6,9 +6,9 @@ using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Models.Profile;
-using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Utils;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal class ProfileManagement
@@ -78,10 +78,10 @@ internal class ProfileManagement
                 {
                     SeenEvents.Add(s);
                 }
-                foreach (var seenEvent in SeenEvents)
-                {
-                    profile.seenEvents.Remove(seenEvent);
-                }
+            }
+            foreach (var seenEvent in SeenEvents)
+            {
+                profile.seenEvents.Remove(seenEvent);
             }
         }
 

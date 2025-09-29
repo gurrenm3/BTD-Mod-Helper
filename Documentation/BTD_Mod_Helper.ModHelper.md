@@ -19,7 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 The version of Mod Helper that this mod was compiled with
 
 ```csharp
-public const string CompiledVersion = "3.4.12";
+public const string CompiledVersion = "3.5.1";
 ```
 
 #### Field Value

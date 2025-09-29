@@ -65,6 +65,11 @@ public static class HttpClientExtensions
         return await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
     }
 
+
+    /// <summary>
+    /// Static async JObject.LoadAsync extension
+    /// </summary>
+    // ReSharper disable once UnusedType.Global
     extension(JObject)
     {
         internal static async Task<JObject> LoadAsync(string text, CancellationToken ct = default)

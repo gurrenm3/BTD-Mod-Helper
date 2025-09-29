@@ -16,7 +16,7 @@ public static class ModHelper
 
     internal const string Name = "Updater Plugin";
     internal const string Author = "doombubbles";
-    internal const string Version = "1.0.4";
+    internal const string Version = "1.0.5";
     internal const string Description = "Keeps Mod Helper and other mods up to date on startup";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
