@@ -26,9 +26,8 @@ public class ModHelperHttp
     internal static void Init()
     {
         Client = new HttpClient();
-        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-        Client.DefaultRequestHeaders.Add("user-agent",
-            " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+        Client.DefaultRequestHeaders.UserAgent.ParseAdd(
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0");
         Client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
         UpdateSettings();

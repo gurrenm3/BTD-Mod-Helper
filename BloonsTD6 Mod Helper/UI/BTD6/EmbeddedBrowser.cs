@@ -22,13 +22,21 @@ namespace BTD_Mod_Helper.UI.BTD6;
 
 internal static class EmbeddedBrowser
 {
+    public const bool CurrentlyWorking = false;
+
     public static string CurrentUrl { get; private set; }
 
-    internal static void OpenURL(string url, Action<SteamWebView> onPageLoad = null)
+    internal static void OpenURL(string url)
     {
+        if (!CurrentlyWorking)
+        {
+            ProcessHelper.OpenURL(url);
+            return;
+        }
+
         var player = Game.Player;
         var controller = player.webviewLiNKAccountController ??=
-                             new MobileWebviewLiNKAccountController(player.LiNKAccountController, new Action(() => { }));
+            new MobileWebviewLiNKAccountController(player.LiNKAccountController, new Action(() => { }));
         controller.CreateEverything().ContinueWith(new Action<Task>(task =>
         {
             if (task.Status != TaskStatus.RanToCompletion) return;
@@ -37,8 +45,6 @@ internal static class EmbeddedBrowser
 
             controller.viewGameObject.transform.Cast<RectTransform>().sizeDelta = new Vector2(0, -1000);
             var webview = controller.webview;
-            var steamWebView = webview.uniWebview;
-            steamWebView.onlyShowNK = false;
             controller.PerformLoadTask(webview.ShowPage(url)).ContinueWith(new Action<Task>(t =>
             {
                 if (t.Status != TaskStatus.RanToCompletion) return;
@@ -54,7 +60,7 @@ internal static class EmbeddedBrowser
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("BackButton", 100),
                     VanillaSprites.BackBtn, new Action(() => webview.RunJavascript("history.back()"))));
                 panel.AddModHelperComponent(ModHelperButton.Create(new Info("RefreshButton", 100),
-                    VanillaSprites.RestartBtn, new Action(() => steamWebView.Reload())));
+                    VanillaSprites.RestartBtn, new Action(() => {/* steamWebView.Reload() */})));
                 var open = panel.AddModHelperComponent(ModHelperButton.Create(new Info("OpenButton", 100),
                     VanillaSprites.BlueBtn, new Action(() => ProcessHelper.OpenURL(CurrentUrl))));
                 var exit = open.AddImage(new Info("Exit", 70), VanillaSprites.ExitIcon);
@@ -76,8 +82,7 @@ internal static class EmbeddedBrowser
                 webViewTransform.localScale = new Vector3(-1, 1, 1);
                 rawImage.enabled = false;
 
-                steamWebView.OnPageFinished +=
-                    new Action<UniWebView, int, string>((_, _, _) => onPageLoad?.Invoke(steamWebView));
+                // steamWebView.OnPageFinished += new Action<UniWebView, int, string>((_, _, _) => onPageLoad?.Invoke(steamWebView));
             }));
         }));
 
@@ -93,7 +98,7 @@ internal static class EmbeddedBrowser
         rectTransform.localPosition = Vector3.zero;
     }
 
-    #region Nested type: Event_get_current
+    /*
 
     /// <summary>
     /// Block clicks to objects above the webview
@@ -126,8 +131,6 @@ internal static class EmbeddedBrowser
         }
     }
 
-    #endregion
-    #region Nested type: GUI_DrawTexture
 
     /// <summary>
     /// Don't draw the SteamWebView on the entire screen when using the RawImage
@@ -139,7 +142,7 @@ internal static class EmbeddedBrowser
         private static bool Prefix() => !SteamWebView_OnGUI.UsingRawImage;
     }
 
-    #endregion
+
     #region Nested type: HTML_URLChanged_t_OnResultWithInfo
 
     /// <summary>
@@ -161,10 +164,6 @@ internal static class EmbeddedBrowser
             }
         }
     }
-
-    #endregion
-    /*#region Nested type: HtmlSurface_OnFileOpenDialogAPI
-
     [HarmonyPatch(typeof(HtmlSurface), nameof(HtmlSurface.OnFileOpenDialogAPI))]
     internal static class HtmlSurface_OnFileOpenDialogAPI
     {
@@ -176,8 +175,6 @@ internal static class EmbeddedBrowser
             return false;
         }
     }
-
-    #endregion*/
 
     /// <summary>
     /// Allow mod files to be downloaded through the browser
@@ -239,4 +236,5 @@ internal static class EmbeddedBrowser
             UsingRawImage = false;
         }
     }
+    */
 }

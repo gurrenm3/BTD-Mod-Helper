@@ -28,7 +28,7 @@ public static class StringExt
     /// <summary>
     /// <inheritdoc cref="TextInfo.ToTitleCase" />
     /// </summary>
-    public static string ToTitleCase(this string input) => new CultureInfo("en-US", false).TextInfo.ToTitleCase(input);
+    public static string ToTitleCase(this string input) => CultureInfo.InvariantCulture.TextInfo.ToTitleCase(input);
 
     /// <summary>
     /// Gets the localization from the current localization text table, or the default one if it's not present in the current one. 

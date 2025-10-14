@@ -51,18 +51,16 @@ public class UpdaterPlugin : MelonPlugin
         finally
         {
             var end = DateTimeOffset.Now;
-#if DEBUG
             ModHelper.Msg($"UpdaterPlugin took {end - start}");
-#endif
         }
     }
 
-    private static bool CheckPing(CancellationToken ct = default)
+    private static bool CheckPing(string host = "raw.githubusercontent.com", CancellationToken ct = default)
     {
         using var ping = new Ping();
         try
         {
-            var reply = ping.Send("8.8.8.8", 1000);
+            var reply = ping.Send(host, 1000);
 
             if (reply?.Status == IPStatus.Success) return true;
         }
@@ -70,6 +68,8 @@ public class UpdaterPlugin : MelonPlugin
         {
             //ignored
         }
+
+        ModHelper.Warning($"CheckPing failed for {host}, assuming there is no interest connection");
 
         return false;
     }

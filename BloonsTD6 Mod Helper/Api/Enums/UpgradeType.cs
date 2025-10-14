@@ -51,6 +51,7 @@ public static class UpgradeType
     public const string ClusterBombs = "Cluster Bombs";
     public const string RecursiveCluster = "Recursive Cluster";
     public const string BombBlitz = "Bomb Blitz";
+    public const string BombshooterParagon = "BombShooter Paragon";
     public const string FasterShooting = "Faster Shooting";
     public const string EvenFasterShooting = "Even Faster Shooting";
     public const string HotShots = "Hot Shots";
@@ -779,6 +780,7 @@ public static class UpgradeType
         { "ClusterBombs", ClusterBombs },
         { "RecursiveCluster", RecursiveCluster },
         { "BombBlitz", BombBlitz },
+        { "BombshooterParagon", BombshooterParagon },
         { "FasterShooting", FasterShooting },
         { "EvenFasterShooting", EvenFasterShooting },
         { "HotShots", HotShots },

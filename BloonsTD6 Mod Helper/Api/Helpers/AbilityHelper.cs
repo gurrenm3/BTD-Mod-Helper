@@ -200,7 +200,7 @@ public class AbilityHelper : ModelHelper<AbilityModel>
     /// </summary>
     public AbilityHelper
         (string name = "") : base(new AbilityModel(name, name, name, -1, 0, new SpriteReference {guidRef = ""}, 0, null,
-        false, false, "", 0, 0, -1, false, false))
+        false, false, "", 0, 0, -1, -1, false, false))
     {
     }
 

@@ -71,10 +71,10 @@ public class ModSettingBool : ModSetting<bool>
         base.SetValue(val);
         try
         {
-            if (currentOption is not null)
+            if (currentOption != null)
             {
                 var butt = currentOption.GetDescendent<ModHelperButton>("Button");
-                if (butt is not null)
+                if (butt !=null)
                 {
                     currentAction?.Invoke((bool) val, butt);
                 }

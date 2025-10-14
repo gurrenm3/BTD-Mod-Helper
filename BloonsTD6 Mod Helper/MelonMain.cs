@@ -88,7 +88,7 @@ internal partial class MelonMain : BloonsTD6Mod
 
         if (!ModHelper.IsEpic)
         {
-            HarmonyInstance.CreateClassProcessor(typeof(EmbeddedBrowser.SteamWebView_OnGUI), true).Patch();
+            // HarmonyInstance.CreateClassProcessor(typeof(EmbeddedBrowser.SteamWebView_OnGUI), true).Patch();
         }
 
         try

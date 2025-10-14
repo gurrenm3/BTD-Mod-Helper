@@ -289,9 +289,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                 }
                 else
                 {
-                    EmbeddedBrowser.OpenURL(
-                        "https://www.youtube.com/watch?v=dQw4w9WgXcQ?autoplay=1",
-                        view => view.Surface.KeyDown(0x0D /* VK_RETURN */, HTMLKeyModifiers.None));
+                    EmbeddedBrowser.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ?autoplay=1");
                 }
             }));
             march32.AddText(new Info("Text", InfoPreset.FillParent), AprilFoolsTrophies, 80f);
