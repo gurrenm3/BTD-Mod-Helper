@@ -183,9 +183,10 @@ public class UpdaterPlugin : MelonPlugin
 
         if (!ModHelperData.IsUpdate(data.Version, remoteData.Version, remoteData.WorksOnVersion)) return;
 
+        var repoDllName = !string.IsNullOrEmpty(remoteData.DllName) ? remoteData.DllName : data.DllName;
         var url = string.IsNullOrEmpty(data.SubPath)
-            ? $"https://github.com/{data.RepoOwner}/{data.RepoName}/releases/latest/download/{data.DllName}"
-            : data.GetContentURL(data.DllName);
+            ? $"https://github.com/{data.RepoOwner}/{data.RepoName}/releases/latest/download/{repoDllName}"
+            : data.GetContentURL(repoDllName);
 
         var downloadUrl = remoteData.DownloadUrl ?? data.DownloadUrl ?? url;
         var auth = remoteData.Authorization ?? data.Authorization;
