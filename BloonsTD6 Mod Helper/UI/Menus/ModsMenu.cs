@@ -16,7 +16,6 @@ using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using Il2CppFacepunch.Steamworks;
 using Il2CppNinjaKiwi.Common;
 using Il2CppTMPro;
 using UnityEngine;
