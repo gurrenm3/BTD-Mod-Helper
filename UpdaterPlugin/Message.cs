@@ -28,7 +28,7 @@ public class Message
 
     private static bool dialogWorks;
 
-    private const string GithubUrl =
+    private static string GithubUrl =>
         $"{ModHelperGithub.RawUserContent}/{ModHelper.RepoOwner}/{ModHelper.RepoName}/{ModHelper.Branch}";
 
     public MelonStage Stage { get; init; } = MelonStage.OnPreModsLoaded;
@@ -153,12 +153,17 @@ public class Message
                     return;
                 }
             }
+#if DEBUG
             catch (Exception e)
             {
-#if DEBUG
                 ModHelper.Warning(e);
-#endif
             }
+#else
+            catch (Exception)
+            {
+                // ignored
+            }
+#endif
 
             if (!string.IsNullOrEmpty(URL))
             {

@@ -17,13 +17,14 @@ namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModHelperGithub
 {
-    public const string RawUserContent = "https://raw.githubusercontent.com";
+    public static string RawUserContent =>
+        MelonMain.ProxyGitHubContent ? MelonMain.ProxyGitHubContentURL : "https://raw.githubusercontent.com";
 
     internal const string RepoTopic = "btd6-mod";
     internal const string MonoRepoTopic = "btd6-mods";
     private const string ProductName = "btd-mod-helper";
 
-    private const string ModdersURL =
+    private static string ModdersURL =>
         $"{RawUserContent}/{ModHelper.RepoOwner}/{ModHelper.RepoName}/{ModHelper.Branch}/modders.json";
 
     private const string DllContentType = "application/x-msdownload";

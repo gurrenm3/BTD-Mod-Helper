@@ -241,6 +241,24 @@ internal partial class MelonMain
         icon = LocalNetworkIcon
     };
 
+    public static readonly ModSettingBool ProxyGitHubContent = new(false)
+    {
+        displayName = "Proxy GitHub Content",
+        description =
+            "Some people have issues using the Mod Browser ingame from the real raw.githubusercontent URLs." +
+            " Enabling this setting switches those to use the proxy URL specified below instead",
+        category = ModBrowserSettings,
+    };
+
+    public static readonly ModSettingString ProxyGitHubContentURL = new("https://rawgithubusercontent.deno.dev")
+    {
+        displayName = "Proxy GitHub Content URL",
+        description =
+            "If the above setting is enabled, then this proxy URL will be used as the base for raw.githubusercontent requests instead.",
+        category = ModBrowserSettings,
+        customValidation = s => s.StartsWith("https://")
+    };
+
     private static readonly ModSettingCategory ModMaking = new("Mod Making")
     {
         icon = EditChallengeIcon

@@ -28,11 +28,37 @@ public class UpdaterPlugin : MelonPlugin
 
     public static readonly ConcurrentDictionary<string, bool> InProgress = new();
 
-    internal static string SettingsFile =>
+    internal static string ModHelperSettings =>
+        Path.Combine(ModHelper.ModSettingsDirectory, "BloonsTD6 Mod Helper.json");
+
+    internal static string UpdaterSettings =>
         Path.Combine(ModHelper.ModSettingsDirectory, ModHelper.DllName.Replace(".dll", ".json"));
 
     public override void OnPreInitialization()
     {
+        try
+        {
+            if (File.Exists(ModHelperSettings))
+            {
+                var text = File.ReadAllText(ModHelperSettings);
+                var settings = JObject.Parse(text);
+                if (settings.TryGetValue("ProxyGitHubContent", out var b) &&
+                    b.Value<bool>())
+                {
+                    ModHelperGithub.RawUserContent = settings.TryGetValue("ProxyGitHubContentURL", out var s) &&
+                                                     s.Value<string>() is { } proxyGitHubContentURL
+                        ? proxyGitHubContentURL
+                        : "https://rawgithubusercontent.deno.dev";
+                    ModHelper.Msg($"Using proxy {ModHelperGithub.RawUserContent}");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Failed to read mod helper settings from {ModHelperSettings}");
+            ModHelper.Warning(e);
+        }
+
         if (!CheckPing()) return;
         ModHelperHttp.Init();
         Message.CheckForMessages().Wait();
@@ -55,8 +81,9 @@ public class UpdaterPlugin : MelonPlugin
         }
     }
 
-    private static bool CheckPing(string host = "raw.githubusercontent.com", CancellationToken ct = default)
+    private static bool CheckPing(string host = null, CancellationToken ct = default)
     {
+        host ??= "8.8.8.8";
         using var ping = new Ping();
         try
         {
@@ -64,9 +91,9 @@ public class UpdaterPlugin : MelonPlugin
 
             if (reply?.Status == IPStatus.Success) return true;
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            //ignored
+            ModHelper.Warning(e);
         }
 
         ModHelper.Warning($"CheckPing failed for {host}, assuming there is no interest connection");
@@ -79,11 +106,11 @@ public class UpdaterPlugin : MelonPlugin
         var dontAutoUpdate = new HashSet<string>();
 
         // Check auto update settings
-        if (File.Exists(SettingsFile))
+        if (File.Exists(UpdaterSettings))
         {
             try
             {
-                var file = await File.ReadAllTextAsync(SettingsFile, ct);
+                var file = await File.ReadAllTextAsync(UpdaterSettings, ct);
                 var json = await JObject.LoadAsync(file, ct);
 
                 foreach (var (key, value) in json)

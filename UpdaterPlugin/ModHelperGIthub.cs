@@ -2,5 +2,5 @@ namespace UpdaterPlugin;
 
 internal static class ModHelperGithub
 {
-    public const string RawUserContent = "https://raw.githubusercontent.com";
+    public static string RawUserContent { get; internal set; } = "https://raw.githubusercontent.com";
 }
