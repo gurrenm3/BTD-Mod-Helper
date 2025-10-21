@@ -31,7 +31,7 @@ public static class ModHelper
     internal const string XmlName = "Btd6ModHelper.xml";
     internal const string Author = "Gurrenm4 and Doombubbles";
     internal const string Branch = "master";
-    internal const string UpdaterVersion = "1.0.6";
+    internal const string UpdaterVersion = "1.0.7";
 
     private static bool fallBackToOldLoading = true;
 

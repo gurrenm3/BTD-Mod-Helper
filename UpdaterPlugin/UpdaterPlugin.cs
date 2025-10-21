@@ -137,7 +137,7 @@ public class UpdaterPlugin : MelonPlugin
             data.Version = "0.0.0"; // always update
             data.Name = ModHelper.ModHelperName;
             data.DllName = ModHelper.ModHelperDll;
-            tasks.Add(UpdateMod(data, ct));
+            tasks.Add(UpdateMod(data, null, ct));
         }
 
         if (Directory.Exists(ModHelper.DataDirectory))
@@ -161,7 +161,7 @@ public class UpdaterPlugin : MelonPlugin
 
                     if (data.Plugin || data.ManualDownload || !repoMod && !nonRepoMod) return;
 
-                    await UpdateMod(data, ct);
+                    await UpdateMod(data, path, ct);
                 }
                 catch (Exception e)
                 {
@@ -190,16 +190,30 @@ public class UpdaterPlugin : MelonPlugin
         }
     }
 
-    private static async Task UpdateMod(ModHelperData data, CancellationToken ct)
+    private static async Task UpdateMod(ModHelperData data, string dataPath, CancellationToken ct)
     {
         var enabledDllPath = Path.Combine(MelonEnvironment.ModsDirectory, data.DllName);
         var disabledDllPath = Path.Combine(ModHelper.DisabledModsDirectory, data.DllName);
         var oldDllPath = Path.Combine(ModHelper.OldModsDirectory, data.DllName);
         var existingDllPath = File.Exists(enabledDllPath) ? enabledDllPath : disabledDllPath;
 
-        var isModHelper = data.RepoName == ModHelper.RepoName && data.RepoOwner == ModHelper.RepoOwner;
+        var isModHelper = data.DllName == ModHelper.ModHelperDll;
 
-        if (!isModHelper && !File.Exists(existingDllPath)) return;
+        if (!isModHelper && !File.Exists(existingDllPath))
+        {
+            if (!string.IsNullOrEmpty(dataPath) && File.Exists(dataPath))
+            {
+                try
+                {
+                    File.Delete(dataPath);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+            return;
+        }
 
         var remoteData = new ModHelperData(data);
         var remoteValues = await remoteData.LoadDataFromRepoAsync(ct);
