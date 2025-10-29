@@ -1,3 +1,6 @@
+# See the updated [Getting Started page](/wiki/Getting-Started-Modding), Old Content below
+---
+
 This page covers what you need to have before you get started with BTD modding.
 
 ## Owning BTD6

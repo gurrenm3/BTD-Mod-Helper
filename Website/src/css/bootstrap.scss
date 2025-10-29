@@ -23,6 +23,8 @@ $theme-colors: (
         "gray": $gray-500
 );
 
+$font-family-sans-serif: 'Liberation Sans', Arial, sans-serif;
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 .dropdown-menu {

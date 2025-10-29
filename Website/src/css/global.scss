@@ -1,7 +1,7 @@
 @use "sass:meta";
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 [data-theme="dark"] body {
@@ -78,12 +78,31 @@ img#mod-icon {
   margin-left: -.5rem;
 }
 
+h1 {
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
 h2 {
-  margin-bottom: 1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
 }
 
 h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h4 {
   margin-bottom: .75rem;
+}
+
+h5 {
+  margin-bottom: .5rem;
+}
+
+h6 {
+  margin-bottom: .25rem;
 }
 
 img {

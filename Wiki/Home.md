@@ -7,4 +7,4 @@ Here you'll find valuable information that we've gathered together to help you u
 
 Use the Sidebar to the right to navigate to where you want to go.
 
-If you're new to Mod Making and looking to make your first mod, just go through the "Starting BTD Modding" category.
+If you're new to Mod Making and looking to make your first mod, see the page **[Getting Started Modding](/wiki/Getting-Started-Modding)**.

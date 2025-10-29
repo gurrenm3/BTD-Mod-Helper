@@ -6,7 +6,7 @@
   "author": "doombubbles",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "ts-node src/scripts/prebuild.ts && next dev",
     "prebuild": "ts-node src/scripts/prebuild.ts",
     "build": "next build",
     "start": "npx serve@latest out",

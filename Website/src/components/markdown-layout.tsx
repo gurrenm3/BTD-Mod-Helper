@@ -34,7 +34,7 @@ const ModHelperOffCanvas: FunctionComponent<
       onHide={() => setShowing(false)}
       scroll={true}
       className={
-        "main-panel w-auto btd6-panel blue p-0 overflow-hidden sticky-top-lg"
+        "main-panel w-auto btd6-panel blue overflow-hidden sticky-top-lg"
       }
       restoreFocus={false}
       placement={placement}
@@ -137,7 +137,7 @@ export const MarkdownLayout: FunctionComponent<
           {!(noTitle && !hasToc && !sidebar) && (
             <>
               <div className={"my-1 btd6-panel blue-insert-round"}>
-                <h1 className={"d-flex"}>
+                <h1 className={"d-flex m-0"}>
                   <div className={`flex-1 d-${switchSize}-none text-start`}>
                     {hasToc && (
                       <Button
@@ -150,7 +150,7 @@ export const MarkdownLayout: FunctionComponent<
                     )}
                   </div>
                   <div
-                    className={`text-center text-${switchSize}-start mt-1 mt-${switchSize}-start`}
+                    className={`text-center text-${switchSize}-start mt-1 mt-${switchSize}-start `}
                   >
                     {data?.title?.replace(/\./g, "\u200B.")}
                   </div>
@@ -168,7 +168,7 @@ export const MarkdownLayout: FunctionComponent<
                 </h1>
                 {data?.subtitle && <div>{data.subtitle}</div>}
               </div>
-              <hr />
+              <hr className={"mt-0 mb-2"} />
             </>
           )}
           {children || (

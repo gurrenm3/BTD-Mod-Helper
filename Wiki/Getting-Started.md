@@ -1,5 +1,4 @@
-# NOTE: This page is mostly obsolesced by the "Create Mod" button in Mod Helper, which automatically creates a mod for you using [this template](https://github.com/doombubbles/btd6-template-mod/archive/refs/heads/main.zip). If either the button or that zip work for you, then the steps on this page will have already been done for you.
-
+# See the updated [Getting Started page](/wiki/Getting-Started-Modding), Old Content below
 ---
 
 # Creating a new Mod Project

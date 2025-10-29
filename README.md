@@ -30,8 +30,6 @@ A powerful and easy to use API for modding Bloons Tower Defense 6.
 
 - ### An In-Game Mods Menu with customizable Mod Settings alongside enabled/disabling/deleting etc
 
-- ### Re-enabling profile progress saving for specific single-player situations
-
 ## Mod Creator Features
 
 - ### Many new API Classes for adding new BTD6 Content
@@ -92,5 +90,3 @@ Others who have made notable suggestions/contributions include but are not limit
 ## Contact
 
 Mod Helper contributors are most active on the [BTD6 Mods & Discussion Discord Server](https://discord.gg/NnD6nRH).
-
-Discord names gurrenm4#2395 and doombubbles#1701
