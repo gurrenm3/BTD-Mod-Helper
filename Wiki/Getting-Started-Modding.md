@@ -28,7 +28,7 @@ Rider used to cost money after 30 days, but now it's free!
 User the installer for Rider as normal. When you get to the Installation Options step, it's recommended to check the
 boxes for all the file association as well as for adding the "bin" to the PATH.
 
-![Rider Install](Images/rider-install.png)
+![Rider Install](images/rider-install.png)
 
 ### [Visual Studio <br/> <img alt="Visual Studio" width=500 src="https://devblogs.microsoft.com/visualstudio/wp-content/uploads/sites/4/2021/11/VSFeatureImage.png">](https://visualstudio.microsoft.com/vs/community/)
 
@@ -41,7 +41,7 @@ development tools" Workload.
 
 Within BTD6, go into Mod Helper's Mods Menu and press the Create Mod button that's in the bottom left.
 
-![Create Mod](Images/create-mod.png)
+![Create Mod](images/create-mod.png)
 
 When prompted, enter the name of your mod. After creation, you'll be prompted to open the newly created mod using your
 IDE (this depends on the .sln file being associated with your IDE). By default, it creates your mod folder within the "
@@ -51,7 +51,7 @@ BTD6 Mod Sources" folder in your Documents folder.
 
 To build your mod to its DLL file, press the Build Solution button within your IDE. For Rider, that looks like:
 
-![Rider Build](Images/rider-build.png)
+![Rider Build](images/rider-build.png)
 
 If everything is set up correctly, this will build your mod and copy the DLL automatically to your BTD6 mods folder.
 You'll need to do this each time after you make changes to your mods's code in order for the changes to apply in game.
@@ -62,7 +62,7 @@ One huge benefit of using an IDE is the ability to debug your code while it's ru
 top bar to start BTD6 with the debugger attached for your mod. You will then be able to create breakpoints in your code
 to pause execution and view the running state of your code. For Rider, that looks like:
 
-![Rider Debug](Images/rider-debug2.png)
+![Rider Debug](images/rider-debug2.png)
 
 # Next Steps
 
