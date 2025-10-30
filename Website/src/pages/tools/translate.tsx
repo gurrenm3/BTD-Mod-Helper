@@ -12,7 +12,7 @@ import DropdownMenu from "react-bootstrap/DropdownMenu";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import { Language } from "../../lib/lanugage";
 import { highlight, languages } from "prismjs/components/prism-core";
-import Editor from "react-simple-code-editor"; //Example style, you can use another
+import Editor from "react-simple-code-editor";
 import "prismjs/components/prism-json";
 import "prismjs/themes/prism.css";
 import { saveFile } from "../../lib/download";

@@ -58,12 +58,12 @@ export const ModHelperNavBar: FunctionComponent<{
   return (
     <Container
       fluid={switchSize}
-      className={cx("p-0", `my-${switchSize}-4`, className)}
+      className={cx("p-0", "mb-2", `my-${switchSize}-4`, className)}
     >
       <Navbar
         variant={"dark"}
         expand={"md"}
-        className={"luckiest-guy d-flex main-panel btd6-panel blue"}
+        className={"luckiest-guy d-flex main-panel btd6-panel blue header"}
       >
         <NavbarBrand
           href={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/"}
@@ -144,7 +144,7 @@ export const ModHelperFooter: FunctionComponent<{
     <Container
       fluid={switchSize}
       className={cx(
-        "main-panel btd6-panel blue",
+        "main-panel btd6-panel blue mt-2 footer",
         `my-${switchSize}-4`,
         "d-flex justify-content-between align-items-center",
         className
@@ -156,10 +156,13 @@ export const ModHelperFooter: FunctionComponent<{
           if (buttonOnClick) {
             buttonOnClick();
           } else {
-            scrollbars?.scrollTop(0);
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth", // or "auto"
+            });
           }
         }}
-        className={"btd6-button blue long align-self-stretch p-3 text-white"}
+        className={"btd6-button blue long  p-3 text-white"}
       >
         {buttonName || "Back to Top"}
       </Button>

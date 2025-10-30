@@ -51,19 +51,19 @@ export default ({ Component, pageProps }: AppProps) => {
     <>
       <Btd6Styles />
       <ModHelperHelmet title={DefaultTitle} description={DefaultDescription} />
-      <ModHelperScrollBars
+      {/*<ModHelperScrollBars
         ref={scrollbars}
         autoHeightMax={height}
         onUpdate={(values) => backgroundOnScroll(values, background.current!)}
       >
-        <ScrollBarsContext.Provider value={scrollbars.current}>
-          <ThemeContext.Provider value={{ theme, refreshTheme }}>
-            <BackgroundImage ref={background}>
-              <Component {...pageProps} />
-            </BackgroundImage>
-          </ThemeContext.Provider>
-        </ScrollBarsContext.Provider>
-      </ModHelperScrollBars>
+        <ScrollBarsContext.Provider value={scrollbars.current}>*/}
+      <ThemeContext.Provider value={{ theme, refreshTheme }}>
+        <BackgroundImage ref={background}>
+          <Component {...pageProps} />
+        </BackgroundImage>
+      </ThemeContext.Provider>
+      {/*</ScrollBarsContext.Provider>
+      </ModHelperScrollBars>*/}
     </>
   );
 };
