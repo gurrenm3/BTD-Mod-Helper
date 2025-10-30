@@ -15,7 +15,6 @@ internal class ProfileModel_Validate
         ProfileManagement.CleanPastProfile(__instance);
     }
 
-
     [HarmonyPostfix]
     internal static void Postfix(ProfileModel __instance)
     {
@@ -29,14 +28,17 @@ internal class ProfileModel_Validate
             __instance.acquiredUpgrades.Add(modTowerId);
         }
 
-        foreach (var modUpgradeId in ModContent.GetContent<ModUpgrade>()
-                     .Where(modUpgrade => modUpgrade.ShouldAcquireUpgrade(__instance))
-                     .Select(upgrade => upgrade.Id)
-                )
+        foreach (var modUpgrade in ModContent.GetContent<ModUpgrade>()
+                     .Where(modUpgrade => modUpgrade.ShouldAcquireUpgrade(__instance)))
         {
-            if (!__instance.acquiredUpgrades.Contains(modUpgradeId))
+            if (!__instance.acquiredUpgrades.Contains(modUpgrade.Id))
             {
-                __instance.acquiredUpgrades.Add(modUpgradeId);
+                __instance.acquiredUpgrades.Add(modUpgrade.Id);
+            }
+
+            if (modUpgrade is ModParagonUpgrade & !__instance.paragonUpgradesPurchased.Contains(modUpgrade.Id))
+            {
+                __instance.paragonUpgradesPurchased.Add(modUpgrade.Id);
             }
         }
 
@@ -47,7 +49,6 @@ internal class ProfileModel_Validate
             __instance.unlockedHeroes.Add(modHeroId);
             __instance.seenUnlockedHeroes.Add(modHeroId);
             __instance.seenNewHeroNotification.Add(modHeroId);
-
         }
 
         if (__instance.legendsData is {unlockedStarterArtifacts: not null})

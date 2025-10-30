@@ -74,7 +74,7 @@ public abstract class ModTextOverride : ModContent
     internal static bool TryGetOverride(string key, out string text)
     {
         text = default;
-        if (!Cache.TryGetValue(key, out var overrides)) return false;
+        if (key == null || !Cache.TryGetValue(key, out var overrides)) return false;
 
         var modTextOverride = overrides.FirstOrDefault(o => o.Active && !o.disableOverride);
         if (modTextOverride == null) return false;

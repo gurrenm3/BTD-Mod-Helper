@@ -103,7 +103,7 @@ public abstract class ModVanillaParagon : ModTower
     /// Doesn't generate any of the tower on its own
     /// </summary>
     /// <returns></returns>
-    public sealed override IEnumerable<int[]> TowerTiers() => Array.Empty<int[]>();
+    public sealed override IEnumerable<int[]> TowerTiers() => [];
 
     /// <summary>
     /// Tower index doesn't apply

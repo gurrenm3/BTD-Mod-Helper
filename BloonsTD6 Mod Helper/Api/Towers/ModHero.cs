@@ -4,14 +4,12 @@ using System.Linq;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Data.Skins;
-using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
+
 #pragma warning disable CS0618 // Type or member is obsolete
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -20,7 +18,6 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// </summary>
 public abstract class ModHero : ModTower
 {
-
     internal override string[] DefaultMods => base.DefaultMods.Concat([
         "EmpoweredHeroes", "HeroicReach", "HeroicVelocity", "QuickHands",
         "Scholarships", "SelfTaughtHeroes", "WeakPoint"

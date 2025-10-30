@@ -12,6 +12,7 @@ internal class DebugSetImage : MonoBehaviour
     }
 
     private string sprite;
+    private Image Image => field ??= GetComponent<Image>();
 
     public string SpriteGuid
     {
@@ -23,6 +24,18 @@ internal class DebugSetImage : MonoBehaviour
         }
     }
 
+    public bool Sliced
+    {
+        get => Image.type == Image.Type.Sliced;
+        set => Image.type = value ? Image.Type.Sliced : Image.Type.Simple;
+    }
+
+    public float PixelsPerUnit
+    {
+        get => Image.pixelsPerUnitMultiplier;
+        set => Image.pixelsPerUnitMultiplier = value;
+    }
+
     public string SpriteName
     {
         set => SpriteGuid = VanillaSprites.ByName[value];
@@ -30,6 +43,6 @@ internal class DebugSetImage : MonoBehaviour
 
     public void RefreshImage()
     {
-        GetComponent<Image>().SetSprite(sprite);
+        Image.SetSprite(sprite);
     }
 }
