@@ -142,7 +142,7 @@ export default () => {
 
     populateMods(onModFound, (count) => {
       setTotalCount(count);
-      console.log(`Setting count to ${count}`);
+      // console.log(`Setting count to ${count}`);
     }).then(() => console.log("Finished populating mods"));
   };
 
@@ -511,7 +511,7 @@ export default () => {
         onHide={() => setSelectedMod("")}
         dialogClassName={cx("main-panel btd6-panel blue")}
         contentClassName={cx(
-          "main-panel btd6-panel blue-insert-round pb-0 shadow-none"
+          "btd6-panel blue-insert-round pb-0 shadow-none bg-transparent border-0"
         )}
       >
         <Modal.Header closeButton={true} closeVariant={"white"}>

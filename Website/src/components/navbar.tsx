@@ -159,7 +159,7 @@ export const ModHelperFooter: FunctionComponent<{
             scrollbars?.scrollTop(0);
           }
         }}
-        className={"btd6-button blue long align-self-stretch p-3"}
+        className={"btd6-button blue long align-self-stretch p-3 text-white"}
       >
         {buttonName || "Back to Top"}
       </Button>

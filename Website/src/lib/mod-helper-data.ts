@@ -13,6 +13,9 @@ const VersionRegex = '\\bVersion\\s*=\\s*"(' + ".*" + ')";?[\n\r]+';
 const NameRegex = '\\bName\\s*=\\s*"(.+)";?[\n\r]+';
 const DescRegex =
   '\\bDescription\\s*=(?:[\\s+]*"(.+)")(?:[\\s+]*"(.+)")?(?:[\\s+]*"(.+)")?(?:[\\s+]*"(.+)")?(?:[\\s+]*"(.+)")?(?:[\\s+]*"(.+)")?(?:[\\s+]*"(.+)")?;?[\n\r]+';
+
+const DescRegex2 = `\\bDescription\\s*=\\s+[\\n\\r]*\\s+"{3}[\\n\\r]*(?:\\s*(.*[\\r\\n]))+\\s*"{3};?[\\n\\r]+`;
+
 const IconRegex = '\\bIcon\\s*=\\s*"(.+\\.png)";?[\n\r]+';
 const DllRegex = '\\bDllName\\s*=\\s*"(.+\\.dll)";?[\n\r]+';
 const RepoNameRegex = '\\bRepoName\\s*=\\s*"(.+)";?[\n\r]+';
@@ -104,7 +107,9 @@ const readValuesFromString = (
   allowRepo = false
 ) => {
   result.Name = getRegexMatch("string", data, NameRegex);
-  result.Description = getRegexMatch("string", data, DescRegex, true);
+  result.Description =
+    getRegexMatch("string", data, DescRegex2, true) ??
+    getRegexMatch("string", data, DescRegex, true);
   result.Icon = getRegexMatch("string", data, IconRegex);
   result.DllName = getRegexMatch("string", data, DllRegex);
   result.ManualDownload = getRegexMatch("boolean", data, ManualDownloadRegex);

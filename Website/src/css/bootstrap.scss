@@ -28,7 +28,7 @@ $font-family-sans-serif: 'Liberation Sans', Arial, sans-serif;
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 .dropdown-menu {
-  --bs-dropdown-link-hover-bg: gray;
+  --bs-dropdown-link-hover-bg: hsl(200 100% 60% / 0.3);
 }
 
 [data-theme="light"] {
@@ -37,20 +37,11 @@ $font-family-sans-serif: 'Liberation Sans', Arial, sans-serif;
 }
 
 .fs-5 {
-   font-size: calc(1.25rem + .2vw) !important;
- }
+  font-size: calc(1.25rem + .2vw) !important;
+}
 
 @media (min-width: 1200px) {
   .fs-5 {
     font-size: 1.5rem !important;
   }
-}
-
-[data-theme="dark"] .non-main-panel {
-  border: 1px solid $gray-300;
-  border-radius: 1rem;
-}
-
-.btn-outline-light {
-  color: white !important;
 }

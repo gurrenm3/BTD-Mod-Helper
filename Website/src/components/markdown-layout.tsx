@@ -34,25 +34,27 @@ const ModHelperOffCanvas: FunctionComponent<
       onHide={() => setShowing(false)}
       scroll={true}
       className={
-        "main-panel w-auto btd6-panel blue overflow-hidden sticky-top-lg"
+        "main-panel w-auto btd6-panel blue overflow-hidden sticky-top-lg p-0"
       }
       restoreFocus={false}
       placement={placement}
       style={{ maxHeight }}
     >
       <ModHelperScrollBars autoHeightMax={maxHeight}>
-        <Offcanvas.Header
-          className={"pt-2 pb-0 ps-3 pe-4"}
-          closeButton={true}
-          closeVariant={"white"}
-        >
-          <Offcanvas.Title>{title}</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body
-          className={"py-2 px-3 d-block btd6-panel blue-insert-round"}
-        >
-          {children}
-        </Offcanvas.Body>
+        <div className={"p-2"}>
+          <Offcanvas.Header
+            className={"pt-2 pb-0 ps-3 pe-4"}
+            closeButton={true}
+            closeVariant={"white"}
+          >
+            <Offcanvas.Title>{title}</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body
+            className={"py-2 px-3 d-block btd6-panel blue-insert-round"}
+          >
+            {children}
+          </Offcanvas.Body>
+        </div>
       </ModHelperScrollBars>
     </Offcanvas>
   );

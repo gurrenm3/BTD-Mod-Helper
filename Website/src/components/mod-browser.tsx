@@ -79,7 +79,7 @@ export const ModEntry: FunctionComponent<ModEntryProps> = ({
           ref={panel}
           key={mod.Identifier}
           className={cx(
-            "non-main-panel bg-black bg-opacity-50 btd6-panel blue",
+            "non-main-panel btd6-panel blue",
             "user-select-none",
             "flex-fill mx-0 p-md-0 gap-3 gap-md-0 gx-0 gx-md-3",
             "align-items-center align-content-around",
@@ -248,9 +248,10 @@ export const ModEntry: FunctionComponent<ModEntryProps> = ({
         <div
           style={{
             width: panel.current?.clientWidth,
+            zIndex: 10,
           }}
           className={
-            "main-panel non-main-panel bg-black btd6-panel blue-insert text-white"
+            "non-main-panel bg-black btd6-panel blue-insert text-white"
           }
         >
           {descriptionBody}

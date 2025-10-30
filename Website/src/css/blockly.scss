@@ -1,5 +1,15 @@
 // Blockly
 
+.blocklyToolboxDiv {
+  input, select, textarea {
+    padding: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border: none !important;
+  }
+}
+
 .blocklyCommentTextarea {
   color: black;
   caret-color: black;

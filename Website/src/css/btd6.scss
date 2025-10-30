@@ -1,6 +1,6 @@
 .btd6-panel {
-  border-image-slice: 60 fill;
-  border-image-width: 1rem;
+  border-image-slice: 60 fill !important;
+  border-image-width: 1rem !important;
   padding: .75rem;
   color: white;
 }
@@ -37,10 +37,6 @@
   background-color: transparent !important;
   border-color: transparent !important;
   color: white !important;
-}
-
-[data-theme="dark"] .btd6-button {
-  border-color: white;
 }
 
 .btd6-button.long {
