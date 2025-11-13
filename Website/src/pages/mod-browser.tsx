@@ -63,6 +63,7 @@ enum SortingMethod {
   Alphabetical = "Alphabetical",
   New = "New",
   Old = "Old",
+  Relevance = "Relevance",
 }
 
 const sortMods = (method: SortingMethod) => (mod: ModHelperData) => {
@@ -85,6 +86,8 @@ const sortMods = (method: SortingMethod) => (mod: ModHelperData) => {
       return createdAt;
     case SortingMethod.New:
       return -createdAt;
+    case SortingMethod.Relevance:
+      return 0; // just do in place because already sorted by score
     case SortingMethod.RecentlyUpdated:
     default:
       return -updatedAt;
@@ -96,7 +99,6 @@ const DefaultTopic = "Filter Topic";
 export default () => {
   const router = useRouter();
   const height = use100vh() ?? 1000;
-  const [finished, setFinished] = useState(false);
 
   const moddersData = useRef({
     forceVerifiedOnly: false,
@@ -114,7 +116,15 @@ export default () => {
   const [fuse] = useState(
     () =>
       new Fuse([] as ModHelperData[], {
-        keys: ["Name", "RepoName", "RepoOwner", "Author"],
+        keys: [
+          "Name",
+          "RepoName",
+          "RepoOwner",
+          "Author",
+          "Description",
+          "DllName",
+          "Topics",
+        ],
       })
   );
 
@@ -167,7 +177,18 @@ export default () => {
     "old",
     StoppedWorkingVersion
   );
-  useDebounce(() => setSearch(searchbar), 500, [searchbar]);
+  useDebounce(
+    () => {
+      setSearch(searchbar);
+      if (searchbar) {
+        setSortingMethod(SortingMethod.Relevance);
+      } else if (sortingMethod === SortingMethod.Relevance) {
+        setSortingMethod(SortingMethod.Popularity);
+      }
+    },
+    500,
+    [searchbar]
+  );
   useEffect(() => setSearchbar(search), [search]);
 
   useEffect(() => {

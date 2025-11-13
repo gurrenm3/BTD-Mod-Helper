@@ -598,7 +598,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                 await ModHelperGithub.DownloadLatest(selectedMod, false, _ => Refresh(), task => updateTask = task))
         );
         selectedModUpdateButton.AddImage(
-            new Info("UpgradeIcon", ModNameHeight - Padding), VanillaSprites.UpgradeIcon2
+            new Info("UpgradeIcon", ModNameHeight - Padding), VanillaSprites.UpgradeIcon
         );
         selectedModLoadingSpinner = selectedModUpdateButton.AddImage(
             new Info("Spinner", ModNameHeight), VanillaSprites.LoadingWheel
@@ -679,6 +679,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModDescription.Text.lineSpacing = Padding / 2f;
         selectedModDescription.Text.font = Fonts.Btd6FontBody;
         selectedModDescription.Text.gameObject.AddComponent<ModHelperLinkSupport>();
+        selectedModDescription.Text.raycastTarget = false;
 
         var buttonsRow = selectedModPanel.AddPanel(new Info("ButtonRow")
         {
