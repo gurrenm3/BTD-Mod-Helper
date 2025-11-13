@@ -15,6 +15,10 @@ public static partial class BloonModelBehaviorExt
     /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
     public static bool HasBehavior<T>(this BloonModel model) where T : Model => 
         ModelBehaviorExt.HasBehavior<T>(model);
+        
+    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,string,out T)" />
+    public static bool HasBehavior<T>(this BloonModel model, string nameContains) where T : Model =>
+        ModelBehaviorExt.HasBehavior<T>(model, nameContains);
             
     /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,out T)" />
     public static bool HasBehavior<T>(this BloonModel model, [NotNullWhen(true)] out T behavior) where T : Model =>

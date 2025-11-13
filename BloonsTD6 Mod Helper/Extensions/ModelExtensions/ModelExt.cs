@@ -11,10 +11,25 @@ namespace BTD_Mod_Helper.Extensions;
 public static class ModelExt
 {
     /// <summary>
-    /// Create a new and separate copy of this object. Same as using:  .Clone().Cast();
+    /// Create a new and separate copy of this object. Same as using: .Clone().Cast();
     /// </summary>
     /// <typeparam name="T">Type of object you want to cast to when duplicating. Done automatically</typeparam>
     public static T Duplicate<T>(this T model) where T : Model => model.Clone().Cast<T>();
+
+    /// <summary>
+    /// Duplicates a model and also runs a function on it
+    /// </summary>
+    public static T Duplicate<T>(this T model, Action<T> with) where T : Model
+    {
+        var dup = model.Duplicate();
+        with(dup);
+        return dup;
+    }
+
+    /// <summary>
+    /// Duplicates a model and also runs a function on it
+    /// </summary>
+    public static T Duplicate<T>(this T model, Func<T, T> with) where T : Model => with(model.Duplicate());
 
     /// <summary>
     /// Turns any descendants with "_" as their name into unique named models
@@ -131,6 +146,14 @@ public static class ModelExt
     {
         t = model.GetDescendant<T>();
         return t != null;
+    }
+
+    /// <summary>
+    /// Returns whether a model has a descendant of a given type with a filtered name
+    /// </summary>
+    public static bool HasDescendant<T>(this Model model, string nameContains) where T : Model
+    {
+        return model.FindDescendant<T>(nameContains) != null;
     }
 
     /// <summary>

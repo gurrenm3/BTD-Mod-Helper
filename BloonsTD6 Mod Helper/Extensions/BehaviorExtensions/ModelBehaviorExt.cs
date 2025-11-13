@@ -152,6 +152,16 @@ internal static class ModelBehaviorExt
         model.GetBehaviors().Any(b => b.Is<T>());
 
     /// <summary>
+    /// Check if this has a specific named Behavior
+    /// </summary>
+    /// <typeparam name="T">The Behavior you're checking for</typeparam>
+    public static bool HasBehavior<T>(this Model model, string nameContains) where T : Model
+    {
+        var behavior = model.GetBehavior<T>(nameContains);
+        return behavior != null;
+    }
+
+    /// <summary>
     /// Check if this has a specific Behavior and return it
     /// </summary>
     /// <typeparam name="T">The Behavior you're checking for</typeparam>

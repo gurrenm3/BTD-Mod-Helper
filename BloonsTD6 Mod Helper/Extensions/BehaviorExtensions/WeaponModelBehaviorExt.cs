@@ -15,6 +15,10 @@ public static partial class WeaponModelBehaviorExt
     /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model)" />
     public static bool HasBehavior<T>(this WeaponModel model) where T : Model => 
         ModelBehaviorExt.HasBehavior<T>(model);
+        
+    /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,string,out T)" />
+    public static bool HasBehavior<T>(this WeaponModel model, string nameContains) where T : Model =>
+        ModelBehaviorExt.HasBehavior<T>(model, nameContains);
             
     /// <inheritdoc cref="ModelBehaviorExt.HasBehavior{T}(Il2CppAssets.Scripts.Models.Model,out T)" />
     public static bool HasBehavior<T>(this WeaponModel model, [NotNullWhen(true)] out T behavior) where T : Model =>

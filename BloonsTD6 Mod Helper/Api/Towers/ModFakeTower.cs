@@ -172,18 +172,18 @@ public abstract class ModFakeTower : ModTower
     public void PlacementSideEffects(Vector3 position, IRootBehavior root = null)
     {
         var sim = InGame.Bridge.Simulation;
-        if (PlacementSound is not null)
+        if (PlacementSound is {} placementSound)
         {
-            sim.audioManager.PlaySound(PlacementSound, groupId: Name, groupLimit: 1);
+            sim.audioManager.PlaySound(placementSound, groupId: Name, groupLimit: 1);
         }
 
-        if (PlacementEffect is not null)
+        if (PlacementEffect is {} placementEffect)
         {
-            var entity = sim.SpawnEffect(PlacementEffect, position, root);
+            var entity = sim.SpawnEffect(placementEffect, position, root);
 
             var time = InGame.Bridge.ElapsedTime;
             TaskScheduler.ScheduleTask(() => entity.Destroy(),
-                () => InGame.Bridge.ElapsedTime > time + PlacementEffect.lifespan * 60,
+                () => InGame.Bridge.ElapsedTime > time + placementEffect.lifespan * 60,
                 () => InGame.instance == null || InGame.Bridge is null || entity == null || entity.IsDestroyed);
         }
     }
