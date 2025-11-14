@@ -61,10 +61,9 @@ export const ModEntry: FunctionComponent<ModEntryProps> = ({
   const descriptionBody = useMemo(
     () =>
       htmlToReact(true).processSync(
-        (mod.Description || "No Description Provided").replaceAll(
-          "\\n",
-          "<br/>"
-        )
+        (mod.Description || "No Description Provided")
+          .replaceAll("\\n", "<br/>")
+          .replaceAll("\n", "<br/>")
       ).result,
     [mod.Description]
   );

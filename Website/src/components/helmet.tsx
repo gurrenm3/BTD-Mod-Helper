@@ -30,7 +30,21 @@ const ModHelperHelmet: FunctionComponent<ModHelperHelmetProps> = ({
     <link
       key={"icon"}
       rel={"icon"}
-      href={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/ModHelper.ico`}
+      href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.ico`}
+    />
+    <link
+      key={"icon2"}
+      rel={"icon"}
+      href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon-32.png`}
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      key={"icon3"}
+      rel={"icon"}
+      href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon-16.png`}
+      type="image/png"
+      sizes="16x16"
     />
     {title && <meta key={"og:title"} name={"og:title"} content={title} />}
     {description && (
