@@ -46,6 +46,11 @@ const ModHelperHelmet: FunctionComponent<ModHelperHelmetProps> = ({
       type="image/png"
       sizes="16x16"
     />
+    <meta
+      key="google-site-verification"
+      name="google-site-verification"
+      content="8DwKXJQq71931r8NqcsVa4A9OaulAugH83ha5ghbda4"
+    />
     {title && <meta key={"og:title"} name={"og:title"} content={title} />}
     {description && (
       <meta
