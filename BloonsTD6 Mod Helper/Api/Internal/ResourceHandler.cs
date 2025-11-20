@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using Il2CppSystem.IO;
+using NAudio.Vorbis;
 using NAudio.Wave;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Internal;
@@ -67,7 +69,7 @@ public static class ResourceHandler
         mod.AudioClips = new Dictionary<string, AudioClip>();
 
         foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
-                     .Where(s => s.EndsWith(".wav") || s.EndsWith(".mp3")))
+                     .Where(s => s.EndsWith(".wav") || s.EndsWith(".mp3") || s.EndsWith(".ogg")))
         {
             var split = fileName.Split('.');
             var extension = split[^1];
@@ -78,20 +80,27 @@ public static class ResourceHandler
             {
                 using var stream = mod.GetAssembly().GetManifestResourceStream(fileName);
 
-                if (extension == "wav")
+                WaveStream waveStream;
+
+                switch (extension)
                 {
-                    using var reader = new WaveFileReader(stream);
-                    mod.AudioClips[name] = CreateAudioClip(reader, id);
+                    case "wav":
+                        waveStream = new WaveFileReader(stream);
+                        break;
+                    case "mp3":
+                        waveStream = new Mp3FileReader(stream);
+                        break;
+                    case "ogg":
+                        waveStream = new VorbisWaveReader(stream);
+                        break;
+                    default:
+                        ModHelper.Warning($"Invalid for audio extension {extension} for {fileName}");
+                        return;
                 }
-                else if (extension == "mp3")
+
+                using (waveStream)
                 {
-                    using var reader = new Mp3FileReader(stream);
-                    mod.AudioClips[name] = CreateAudioClip(reader, id);
-                }
-                else
-                {
-                    ModHelper.Warning($"Invalid for audio extension {extension} for {fileName}");
-                    return;
+                    mod.AudioClips[name] = CreateAudioClip(waveStream, id);
                 }
             }
             catch (Exception e)
@@ -138,26 +147,51 @@ public static class ResourceHandler
         }
     }
 
+
     /// <summary>
-    /// Create an AudioClip from a wav file
+    /// Create an AudioClip from a wavestream
     /// </summary>
-    /// <param name="reader">Wav file reader</param>
+    /// <param name="reader">Wave Stream</param>
     /// <param name="id">Id for AudioClip</param>
     /// <returns>new AudioClip, or null if unsuccessful</returns>
-    public static AudioClip CreateAudioClip(WaveFileReader reader, string id)
+    public static AudioClip CreateAudioClip(WaveStream reader, string id)
     {
         try
         {
-            var waveFormat = reader.WaveFormat;
+            var sampleProvider = reader.ToSampleProvider();
 
-            var totalSamples = (int) (reader.SampleCount * waveFormat.Channels);
-            var data = new float[totalSamples];
+            var capacity = 4096;
+            var buffer = new float[capacity];
+            var array = ArrayPool<float>.Shared.Rent(capacity);
+            var count = 0;
+            int read;
 
-            var readSamples = reader.ToSampleProvider().Read(data, 0, totalSamples);
+            while ((read = sampleProvider.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                if (count + read > capacity)
+                {
+                    var newCap = capacity * 2;
+                    var newArray = ArrayPool<float>.Shared.Rent(newCap);
 
-            var audioClip = AudioClip.Create(id, readSamples / waveFormat.Channels, waveFormat.Channels, waveFormat.SampleRate, false);
+                    Array.Copy(array, newArray, count);
+                    ArrayPool<float>.Shared.Return(array);
 
-            if (audioClip.SetData(data, 0))
+                    array = newArray;
+                    capacity = newCap;
+                }
+
+                Array.Copy(buffer, 0, array, count, read);
+                count += read;
+            }
+
+            var result = new float[count];
+            Array.Copy(array, result, count);
+            ArrayPool<float>.Shared.Return(array);
+
+            var format = reader.WaveFormat;
+            var audioClip = AudioClip.Create(id, result.Length / format.Channels, format.Channels, format.SampleRate, false);
+
+            if (audioClip.SetData(result, 0))
             {
                 return AudioClips[id] = audioClip;
             }
@@ -172,6 +206,14 @@ public static class ResourceHandler
         return null;
     }
 
+    /// <summary>
+    /// Create an AudioClip from a wav file
+    /// </summary>
+    /// <param name="reader">Wav file reader</param>
+    /// <param name="id">Id for AudioClip</param>
+    /// <returns>new AudioClip, or null if unsuccessful</returns>
+    [Obsolete("Use the WaveStream overload instead")]
+    public static AudioClip CreateAudioClip(WaveFileReader reader, string id) => CreateAudioClip(reader as WaveStream, id);
 
     /// <summary>
     /// Create an AudioClip from an mp3 file
@@ -179,33 +221,18 @@ public static class ResourceHandler
     /// <param name="reader">mp3 file reader</param>
     /// <param name="id">Id for AudioClip</param>
     /// <returns>new AudioClip, or null if unsuccessful</returns>
-    public static AudioClip CreateAudioClip(Mp3FileReader reader, string id)
-    {
-        try
-        {
-            var waveFormat = reader.WaveFormat;
+    [Obsolete("Use the WaveStream overload instead")]
+    public static AudioClip CreateAudioClip(Mp3FileReader reader, string id) => CreateAudioClip(reader as WaveStream, id);
 
-            var totalSamples = (int) (reader.Length / (waveFormat.BitsPerSample / 8)) * waveFormat.Channels;
-            var data = new float[totalSamples];
+    /// <summary>
+    /// Create an AudioClip from an ogg file
+    /// </summary>
+    /// <param name="reader">mp3 file reader</param>
+    /// <param name="id">Id for AudioClip</param>
+    /// <returns>new AudioClip, or null if unsuccessful</returns>
+    [Obsolete("Use the WaveStream overload instead")]
+    public static AudioClip CreateAudioClip(VorbisWaveReader reader, string id) => CreateAudioClip(reader as WaveStream, id);
 
-            var readSamples = reader.ToSampleProvider().Read(data, 0, totalSamples);
-
-            var audioClip = AudioClip.Create(id, readSamples / waveFormat.Channels, waveFormat.Channels, waveFormat.SampleRate, false);
-
-            if (audioClip.SetData(data, 0))
-            {
-                return AudioClips[id] = audioClip;
-            }
-
-            ModHelper.Warning($"Failed to set data for audio clip {id}");
-        }
-        catch (Exception e)
-        {
-            ModHelper.Warning(e);
-        }
-
-        return null;
-    }
 
     internal static Texture2D CreateTexture(string guid)
     {

@@ -15,7 +15,6 @@ internal class AudioFactory_Start
         {
             __instance.audioClipHandles[new AudioClipReference(id)] =
                 Addressables.Instance.ResourceManager.CreateCompletedOperation(clip, "");
-            // TODO does this work?
         }
 
         ModHelper.PerformHook(mod => mod.OnAudioFactoryStart(__instance));

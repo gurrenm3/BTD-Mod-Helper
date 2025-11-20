@@ -12,6 +12,8 @@
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio'"/>
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio.Core'"/>
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio.WinMM'"/>
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NAudio.Vorbis.Latest'"/>
+            <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'NVorbis'"/>
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'CommandLine'"/>
             <NugetAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'TextCopy'"/>
             <InputAssemblies Include="@(NugetAssemblies)"/>
