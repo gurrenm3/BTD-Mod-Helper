@@ -194,6 +194,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.HasBehavior_T_(thisWeaponModel,string)'></a>
+
+## WeaponModelBehaviorExt.HasBehavior<T>(this WeaponModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this WeaponModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.HasBehavior_T_(thisWeaponModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.HasBehavior_T_(thisWeaponModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.HasBehavior_T_(thisWeaponModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.HasBehavior_T_(thisWeaponModel,string,T)'></a>
 
 ## WeaponModelBehaviorExt.HasBehavior<T>(this WeaponModel, string, T) Method

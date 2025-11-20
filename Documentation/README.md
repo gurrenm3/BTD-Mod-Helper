@@ -382,6 +382,9 @@
 | [ButtonClickedEventExt](BTD_Mod_Helper.Extensions.ButtonClickedEventExt.md 'BTD_Mod_Helper.Extensions.ButtonClickedEventExt') | Extensions for ButtonClickedEvents |
 | [ButtonExt](BTD_Mod_Helper.Extensions.ButtonExt.md 'BTD_Mod_Helper.Extensions.ButtonExt') | Extensions for Buttons |
 | [ComponentExt](BTD_Mod_Helper.Extensions.ComponentExt.md 'BTD_Mod_Helper.Extensions.ComponentExt') | Extensions for Component |
+| [CoroutineExtensions](BTD_Mod_Helper.Extensions.CoroutineExtensions.md 'BTD_Mod_Helper.Extensions.CoroutineExtensions') | Extensions related to Coroutines |
+| [CoroutineExtensions.&lt;G&gt;$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB](BTD_Mod_Helper.Extensions.CoroutineExtensions._G_$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB.md 'BTD_Mod_Helper.Extensions.CoroutineExtensions.<G>$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB') | |
+| [CoroutineExtensions.&lt;G&gt;$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB.&lt;M&gt;$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB](BTD_Mod_Helper.Extensions.CoroutineExtensions._G_$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB._M_$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB.md 'BTD_Mod_Helper.Extensions.CoroutineExtensions.<G>$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB.<M>$B5F45DF6D4AB7AA0499CBCAFE7FCDCDB') | Extensions for MelonCoroutines |
 | [DeconstructExt](BTD_Mod_Helper.Extensions.DeconstructExt.md 'BTD_Mod_Helper.Extensions.DeconstructExt') | Adding more deconstruct methods to things |
 | [DictionaryExt](BTD_Mod_Helper.Extensions.DictionaryExt.md 'BTD_Mod_Helper.Extensions.DictionaryExt') | Extensions for normal System Dictionaries |
 | [DirectoryInfoExt](BTD_Mod_Helper.Extensions.DirectoryInfoExt.md 'BTD_Mod_Helper.Extensions.DirectoryInfoExt') | Extensions for DirectoryInfo |
@@ -399,6 +402,8 @@
 | [HarmonyExt](BTD_Mod_Helper.Extensions.HarmonyExt.md 'BTD_Mod_Helper.Extensions.HarmonyExt') | Extensions for Harmony stuff |
 | [HashSetExt](BTD_Mod_Helper.Extensions.HashSetExt.md 'BTD_Mod_Helper.Extensions.HashSetExt') | Extensions for HashSets |
 | [HttpClientExtensions](BTD_Mod_Helper.Extensions.HttpClientExtensions.md 'BTD_Mod_Helper.Extensions.HttpClientExtensions') | Extensions for HttpClient |
+| [HttpClientExtensions.&lt;G&gt;$E72F5683C860FEBD9E2DA889016900B3](BTD_Mod_Helper.Extensions.HttpClientExtensions._G_$E72F5683C860FEBD9E2DA889016900B3.md 'BTD_Mod_Helper.Extensions.HttpClientExtensions.<G>$E72F5683C860FEBD9E2DA889016900B3') | |
+| [HttpClientExtensions.&lt;G&gt;$E72F5683C860FEBD9E2DA889016900B3.&lt;M&gt;$E72F5683C860FEBD9E2DA889016900B3](BTD_Mod_Helper.Extensions.HttpClientExtensions._G_$E72F5683C860FEBD9E2DA889016900B3._M_$E72F5683C860FEBD9E2DA889016900B3.md 'BTD_Mod_Helper.Extensions.HttpClientExtensions.<G>$E72F5683C860FEBD9E2DA889016900B3.<M>$E72F5683C860FEBD9E2DA889016900B3') | Static async JObject.LoadAsync extension |
 | [IEnumerableExt](BTD_Mod_Helper.Extensions.IEnumerableExt.md 'BTD_Mod_Helper.Extensions.IEnumerableExt') | Extensions for the normal System IEnumerable class |
 | [Il2CppGenericIEnumerable](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerable') | Extensions for Il2cpp Ienumerables |
 | [Il2CppGenericIEnumerableExt](BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt.md 'BTD_Mod_Helper.Extensions.Il2CppGenericIEnumerableExt') | Extensions for il2cpp ienumerables |

@@ -680,6 +680,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel,string)'></a>
+
+## ArtifactModelBehaviorExt.HasBehavior<T>(this BoostArtifactModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this BoostArtifactModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel')
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisBoostArtifactModel,string,T)'></a>
 
 ## ArtifactModelBehaviorExt.HasBehavior<T>(this BoostArtifactModel, string, T) Method
@@ -770,6 +800,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel,string)'></a>
+
+## ArtifactModelBehaviorExt.HasBehavior<T>(this ItemArtifactModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this ItemArtifactModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel')
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisItemArtifactModel,string,T)'></a>
 
 ## ArtifactModelBehaviorExt.HasBehavior<T>(this ItemArtifactModel, string, T) Method
@@ -856,6 +916,36 @@ The Behavior you're checking for
 <a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel,string)'></a>
+
+## ArtifactModelBehaviorExt.HasBehavior<T>(this MapArtifactModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this MapArtifactModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel 'Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel')
+
+<a name='BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.HasBehavior_T_(thisMapArtifactModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

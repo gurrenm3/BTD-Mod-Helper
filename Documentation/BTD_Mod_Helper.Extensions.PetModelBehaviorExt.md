@@ -194,6 +194,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string)'></a>
+
+## PetModelBehaviorExt.HasBehavior<T>(this PetModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this PetModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string,T)'></a>
 
 ## PetModelBehaviorExt.HasBehavior<T>(this PetModel, string, T) Method

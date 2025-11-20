@@ -101,6 +101,33 @@ Texture id "ModName-TextureName"
 
 The texture
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Vorbis.VorbisWaveReader,string)'></a>
+
+## ResourceHandler.CreateAudioClip(VorbisWaveReader, string) Method
+
+Create an AudioClip from an ogg file
+
+```csharp
+public static AudioClip CreateAudioClip(NAudio.Vorbis.VorbisWaveReader reader, string id);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Vorbis.VorbisWaveReader,string).reader'></a>
+
+`reader` [NAudio.Vorbis.VorbisWaveReader](https://docs.microsoft.com/en-us/dotnet/api/NAudio.Vorbis.VorbisWaveReader 'NAudio.Vorbis.VorbisWaveReader')
+
+mp3 file reader
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Vorbis.VorbisWaveReader,string).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Id for AudioClip
+
+#### Returns
+[UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')  
+new AudioClip, or null if unsuccessful
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Wave.Mp3FileReader,string)'></a>
 
 ## ResourceHandler.CreateAudioClip(Mp3FileReader, string) Method

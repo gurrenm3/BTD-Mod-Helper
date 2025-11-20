@@ -42,7 +42,7 @@ public static void AddChildDependants<T>(this Model model, System.Collections.Ge
 
 ## ModelExt.Duplicate<T>(this T) Method
 
-Create a new and separate copy of this object. Same as using:  .Clone().Cast();
+Create a new and separate copy of this object. Same as using: .Clone().Cast();
 
 ```csharp
 public static T Duplicate<T>(this T model)
@@ -93,6 +93,62 @@ Type of object you want to cast to when duplicating. Done automatically
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,string).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, string).T')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Action_T_)'></a>
+
+## ModelExt.Duplicate<T>(this T, Action<T>) Method
+
+Duplicates a model and also runs a function on it
+
+```csharp
+public static T Duplicate<T>(this T model, System.Action<T> with)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Action_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Action_T_).model'></a>
+
+`model` [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Action_T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Action<T>).T')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Action_T_).with'></a>
+
+`with` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Action_T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Action<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Action_T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Action<T>).T')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_)'></a>
+
+## ModelExt.Duplicate<T>(this T, Func<T,T>) Method
+
+Duplicates a model and also runs a function on it
+
+```csharp
+public static T Duplicate<T>(this T model, System.Func<T,T> with)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).model'></a>
+
+`model` [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Func<T,T>).T')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).with'></a>
+
+`with` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Func<T,T>).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Func<T,T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Func<T,T>).T')
 
 <a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendant_T_(thisModel,string)'></a>
 
@@ -250,6 +306,34 @@ public static bool HasDescendant<T>(this Model model)
 <a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string)'></a>
+
+## ModelExt.HasDescendant<T>(this Model, string) Method
+
+Returns whether a model has a descendant of a given type with a filtered name
+
+```csharp
+public static bool HasDescendant<T>(this Model model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

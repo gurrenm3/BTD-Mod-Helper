@@ -194,6 +194,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel,string)'></a>
+
+## EmissionModelBehaviorExt.HasBehavior<T>(this EmissionModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this EmissionModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel')
+
+<a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.HasBehavior_T_(thisEmissionModel,string,T)'></a>
 
 ## EmissionModelBehaviorExt.HasBehavior<T>(this EmissionModel, string, T) Method

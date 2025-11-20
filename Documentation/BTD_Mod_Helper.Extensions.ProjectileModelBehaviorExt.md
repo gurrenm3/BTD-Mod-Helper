@@ -194,6 +194,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.HasBehavior_T_(thisProjectileModel,string)'></a>
+
+## ProjectileModelBehaviorExt.HasBehavior<T>(this ProjectileModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this ProjectileModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.HasBehavior_T_(thisProjectileModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.HasBehavior_T_(thisProjectileModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.HasBehavior_T_(thisProjectileModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.HasBehavior_T_(thisProjectileModel,string,T)'></a>
 
 ## ProjectileModelBehaviorExt.HasBehavior<T>(this ProjectileModel, string, T) Method

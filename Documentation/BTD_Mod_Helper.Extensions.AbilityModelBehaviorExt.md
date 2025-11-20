@@ -194,6 +194,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.HasBehavior_T_(thisAbilityModel,string)'></a>
+
+## AbilityModelBehaviorExt.HasBehavior<T>(this AbilityModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this AbilityModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.HasBehavior_T_(thisAbilityModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.HasBehavior_T_(thisAbilityModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel')
+
+<a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.HasBehavior_T_(thisAbilityModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.HasBehavior_T_(thisAbilityModel,string,T)'></a>
 
 ## AbilityModelBehaviorExt.HasBehavior<T>(this AbilityModel, string, T) Method

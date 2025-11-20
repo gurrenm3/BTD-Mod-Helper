@@ -194,6 +194,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string)'></a>
+
+## BloonModelBehaviorExt.HasBehavior<T>(this BloonModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this BloonModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string,T)'></a>
 
 ## BloonModelBehaviorExt.HasBehavior<T>(this BloonModel, string, T) Method

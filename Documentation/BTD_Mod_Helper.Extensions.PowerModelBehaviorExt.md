@@ -194,6 +194,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.HasBehavior_T_(thisPowerModel,string)'></a>
+
+## PowerModelBehaviorExt.HasBehavior<T>(this PowerModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this PowerModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.HasBehavior_T_(thisPowerModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.HasBehavior_T_(thisPowerModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Powers.PowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Powers.PowerModel 'Il2CppAssets.Scripts.Models.Powers.PowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.HasBehavior_T_(thisPowerModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.PowerModelBehaviorExt.HasBehavior_T_(thisPowerModel,string,T)'></a>
 
 ## PowerModelBehaviorExt.HasBehavior<T>(this PowerModel, string, T) Method
