@@ -12,6 +12,19 @@ public abstract class ModGameMode : BTD_Mod_Helper.Api.NamedModContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModGameMode
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ApplyChallengeRules'></a>
+
+## ModGameMode.ApplyChallengeRules Property
+
+Whether this Game Mode should always apply custom challenge rules to the match via a DailyChallengeModel
+
+```csharp
+public virtual bool ApplyChallengeRules { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.BaseGameMode'></a>
 
 ## ModGameMode.BaseGameMode Property
@@ -77,19 +90,6 @@ public virtual SpriteReference IconReference { get; }
 
 #### Property Value
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
-
-<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.PreApplies'></a>
-
-## ModGameMode.PreApplies Property
-
-Whether this GameMode ...
-
-```csharp
-protected virtual bool PreApplies { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(ModModel)'></a>
@@ -106,6 +106,27 @@ public abstract void ModifyBaseGameModeModel(ModModel gameModeModel);
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(ModModel).gameModeModel'></a>
 
 `gameModeModel` [Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyChallengeRules(DailyChallengeModel)'></a>
+
+## ModGameMode.ModifyChallengeRules(DailyChallengeModel) Method
+
+Modifies the DailyChallengeModel used for the challenge rules of the match.  
+If this mode is used in a custom challenge, this will override the settings of that challenge.  
+<br/>  
+For normal matches, the DailyChallengeModel is null.  
+To make normal matches have challenge rules, set the [ApplyChallengeRules](BTD_Mod_Helper.Api.Scenarios.ModGameMode.md#BTD_Mod_Helper.Api.Scenarios.ModGameMode.ApplyChallengeRules 'BTD_Mod_Helper.Api.Scenarios.ModGameMode.ApplyChallengeRules') property to true
+
+```csharp
+public virtual void ModifyChallengeRules(DailyChallengeModel challengeModel);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyChallengeRules(DailyChallengeModel).challengeModel'></a>
+
+`challengeModel` [Il2CppAssets.Scripts.Models.ServerEvents.DailyChallengeModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ServerEvents.DailyChallengeModel 'Il2CppAssets.Scripts.Models.ServerEvents.DailyChallengeModel')
+
+dcm
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(GameModel)'></a>
 

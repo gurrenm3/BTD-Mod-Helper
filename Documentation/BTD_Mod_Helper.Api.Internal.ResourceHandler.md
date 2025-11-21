@@ -182,6 +182,33 @@ Id for AudioClip
 [UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')  
 new AudioClip, or null if unsuccessful
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Wave.WaveStream,string)'></a>
+
+## ResourceHandler.CreateAudioClip(WaveStream, string) Method
+
+Create an AudioClip from a wavestream
+
+```csharp
+public static AudioClip CreateAudioClip(NAudio.Wave.WaveStream reader, string id);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Wave.WaveStream,string).reader'></a>
+
+`reader` [NAudio.Wave.WaveStream](https://docs.microsoft.com/en-us/dotnet/api/NAudio.Wave.WaveStream 'NAudio.Wave.WaveStream')
+
+Wave Stream
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Wave.WaveStream,string).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Id for AudioClip
+
+#### Returns
+[UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')  
+new AudioClip, or null if unsuccessful
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateSprite(thisTexture2D,float)'></a>
 
 ## ResourceHandler.CreateSprite(this Texture2D, float) Method

@@ -79,11 +79,33 @@ public static void AddToChildren<T>(this BloonModel bloonModel, int amount=1)
 
 `amount` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Extensions.BloonModelExt.ApplyDisplay(thisBloonModel,BTD_Mod_Helper.Api.Display.ModDisplay)'></a>
+
+## BloonModelExt.ApplyDisplay(this BloonModel, ModDisplay) Method
+
+Applies a given ModDisplay to this BloonModel
+
+```csharp
+public static BloonModel ApplyDisplay(this BloonModel bloonModel, BTD_Mod_Helper.Api.Display.ModDisplay display);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelExt.ApplyDisplay(thisBloonModel,BTD_Mod_Helper.Api.Display.ModDisplay).bloonModel'></a>
+
+`bloonModel` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelExt.ApplyDisplay(thisBloonModel,BTD_Mod_Helper.Api.Display.ModDisplay).display'></a>
+
+`display` [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
 <a name='BTD_Mod_Helper.Extensions.BloonModelExt.ApplyDisplay_T_(thisBloonModel)'></a>
 
 ## BloonModelExt.ApplyDisplay<T>(this BloonModel) Method
 
-Applies a given ModDisplay to this TowerModel
+Applies a given ModDisplay to this BloonModel
 
 ```csharp
 public static void ApplyDisplay<T>(this BloonModel bloonModel)

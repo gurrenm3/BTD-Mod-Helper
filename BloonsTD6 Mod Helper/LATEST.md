@@ -5,3 +5,6 @@
 - Added support for using .ogg files for audio
   - btd6.targets will now automatically mark .ogg files as Embedded Resources
 - Fixed issue where custom sounds could stop being available via PrefabReference from the AudioFactory after quitting a match
+- Added better support for ModGameModes using and modifying `DailyChallengeModel`s for games
+  - Override `ApplyChallengeRules` to true to make normal games have challenge rules (since they otherwise don't)
+  - Override `ModifyChallengeRules(DailyChallengeModel)` to edit challenge rules

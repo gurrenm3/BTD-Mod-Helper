@@ -9,7 +9,7 @@ internal static class TowerImageLoader_Load
     private static void Postfix(TowerImageLoader __instance, string towerID, bool useRoundBg)
     {
         if (ModTowerHelper.ModTowerCache.TryGetValue(towerID, out var modTower) &&
-            modTower.ModTowerSet is var modTowerSet &&
+            modTower.ModTowerSet is { } modTowerSet &&
             __instance.bg != null)
         {
             ResourceLoader.LoadSpriteFromSpriteReferenceAsync(

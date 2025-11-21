@@ -54,6 +54,28 @@ public static void AddTiersToName(this TowerModel towerModel, int tier1, int tie
 
 `tier3` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.ApplyDisplay(thisTowerModel,BTD_Mod_Helper.Api.Display.ModDisplay)'></a>
+
+## TowerModelExt.ApplyDisplay(this TowerModel, ModDisplay) Method
+
+Applies a given ModDisplay to this TowerModel
+
+```csharp
+public static TowerModel ApplyDisplay(this TowerModel towerModel, BTD_Mod_Helper.Api.Display.ModDisplay display);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.ApplyDisplay(thisTowerModel,BTD_Mod_Helper.Api.Display.ModDisplay).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.ApplyDisplay(thisTowerModel,BTD_Mod_Helper.Api.Display.ModDisplay).display'></a>
+
+`display` [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.ApplyDisplay_T_(thisTowerModel)'></a>
 
 ## TowerModelExt.ApplyDisplay<T>(this TowerModel) Method

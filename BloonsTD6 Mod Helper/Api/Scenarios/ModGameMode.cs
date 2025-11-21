@@ -5,6 +5,7 @@ using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Gameplay.Mods;
+using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Scenarios;
@@ -39,12 +40,6 @@ public abstract class ModGameMode : NamedModContent
     public abstract string BaseGameMode { get; }
 
     /// <summary>
-    /// Whether this GameMode ...
-    /// </summary>
-    [Obsolete("Field removed by NK")]
-    protected virtual bool PreApplies => false;
-
-    /// <summary>
     /// The Icon for the Button for this Mode within the UI, by default looking for the same name as the file
     /// </summary>
     public virtual string Icon => GetType().Name;
@@ -53,6 +48,11 @@ public abstract class ModGameMode : NamedModContent
     /// If you're not going to use a custom .png for your Icon, use this to directly control its SpriteReference
     /// </summary>
     public virtual SpriteReference IconReference => GetSpriteReferenceOrDefault(Icon);
+
+    /// <summary>
+    /// Whether this Game Mode should always apply custom challenge rules to the match via a DailyChallengeModel
+    /// </summary>
+    public virtual bool ApplyChallengeRules => false;
 
     /// <inheritdoc />
     public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
@@ -125,6 +125,19 @@ public abstract class ModGameMode : NamedModContent
     /// </summary>
     /// <param name="gameModel"></param>
     public virtual void ModifyGameModel(GameModel gameModel)
+    {
+
+    }
+
+    /// <summary>
+    /// Modifies the DailyChallengeModel used for the challenge rules of the match.
+    /// If this mode is used in a custom challenge, this will override the settings of that challenge.
+    /// <br/>
+    /// For normal matches, the DailyChallengeModel is null.
+    /// To make normal matches have challenge rules, set the <see cref="ApplyChallengeRules"/> property to true
+    /// </summary>
+    /// <param name="challengeModel">dcm</param>
+    public virtual void ModifyChallengeRules(DailyChallengeModel challengeModel)
     {
 
     }

@@ -226,6 +226,7 @@ public static class ModModelExt
     /// <summary>
     /// Sets whether Monkey Knowledge is enabled for a gamemode
     /// </summary>
+    [Obsolete("This functionality is unfortunately currently hard coded by NK for game modes")]
     public static void SetMkEnabled(this ModModel model, bool enabled)
     {
         model.RemoveMutator<DisableMonkeyKnowledgeModModel>();
@@ -235,9 +236,10 @@ public static class ModModelExt
     /// <summary>
     /// Sets whether Powers are enabled for a game mode
     /// </summary>
+    [Obsolete("This functionality is unfortunately currently hard coded by NK for game modes")]
     public static void SetPowersEnabled(this ModModel model, bool enabled)
     {
-        /* TODO powers
+        /*
         model.RemoveMutator<PowerModModel>();
         if (!enabled) model.AddMutator(new DisablePowersModModel("_"));
         */
