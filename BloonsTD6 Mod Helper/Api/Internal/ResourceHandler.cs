@@ -78,7 +78,7 @@ public static class ResourceHandler
 
             try
             {
-                using var stream = mod.GetAssembly().GetManifestResourceStream(fileName);
+                using var stream = mod.GetAssembly().GetManifestResourceStream(fileName)!;
 
                 WaveStream waveStream;
 

@@ -49,9 +49,6 @@ internal static class JsonTowers
                     case ".jpg":
                         await LoadTexture(file);
                         break;
-                    case ".wav":
-                        await LoadAudio(file);
-                        break;
                 }
             }
             catch (Exception e)
@@ -98,13 +95,6 @@ internal static class JsonTowers
         ResourceHandler.Resources[name] = await File.ReadAllBytesAsync(fileInfo.FullName);
     }
 
-    private static async Task LoadAudio(FileInfo fileInfo)
-    {
-        var name = fileInfo.NameWithoutExtension();
-        await using var reader = new WaveFileReader(fileInfo.FullName);
-
-        ResourceHandler.CreateAudioClip(reader, name);
-    }
 
     public static void ProcessAll(GameModel gameModel)
     {

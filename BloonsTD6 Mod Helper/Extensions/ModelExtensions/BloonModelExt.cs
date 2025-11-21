@@ -280,12 +280,21 @@ public static class BloonModelExt
     }
 
     /// <summary>
-    /// Applies a given ModDisplay to this TowerModel
+    /// Applies a given ModDisplay to this BloonModel
     /// </summary>
     /// <typeparam name="T">The type of ModDisplay</typeparam>
     public static void ApplyDisplay<T>(this BloonModel bloonModel) where T : ModDisplay
     {
         ModContent.GetInstance<T>().Apply(bloonModel);
+    }
+
+    /// <summary>
+    /// Applies a given ModDisplay to this BloonModel
+    /// </summary>
+    public static BloonModel ApplyDisplay(this BloonModel bloonModel, ModDisplay display)
+    {
+        display.Apply(bloonModel);
+        return bloonModel;
     }
 
     /// <summary>

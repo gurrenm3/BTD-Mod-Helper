@@ -16,4 +16,13 @@ public static class DisplayModelExt
     {
         ModContent.GetInstance<T>().Apply(displayModel);
     }
+
+    /// <summary>
+    /// Applies a given ModDisplay to this DisplayModel
+    /// </summary>
+    public static DisplayModel ApplyDisplay(this DisplayModel displayModel, ModDisplay display)
+    {
+        display.Apply(displayModel);
+        return displayModel;
+    }
 }

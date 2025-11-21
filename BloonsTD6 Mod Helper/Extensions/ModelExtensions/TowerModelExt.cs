@@ -165,6 +165,15 @@ public static class TowerModelExt
     }
 
     /// <summary>
+    /// Applies a given ModDisplay to this TowerModel
+    /// </summary>
+    public static TowerModel ApplyDisplay(this TowerModel towerModel, ModDisplay display)
+    {
+        display.Apply(towerModel);
+        return towerModel;
+    }
+
+    /// <summary>
     /// Gets the ModTower associated with this TowerModel
     /// <br />
     /// If there is no associated ModTower, returns null

@@ -152,7 +152,7 @@ public abstract class ModDisplay : ModContent
     /// Gets a new DisplayModel based on this ModDisplay
     /// </summary>
     /// <returns></returns>
-    public DisplayModel GetDisplayModel() => new($"DisplayModel_{Name}", CreatePrefabReference(Id), 0, DisplayCategory,
+    public DisplayModel GetDisplayModel() => new(Name, CreatePrefabReference(Id), 0, DisplayCategory,
         PositionOffset, Scale);
 
     /// <summary>
@@ -210,7 +210,14 @@ public abstract class ModDisplay : ModContent
     public virtual void Apply(BloonModel bloonModel)
     {
         bloonModel.SetDisplayGUID(Id);
-        Apply(bloonModel.GetBehavior<DisplayModel>()!);
+        if (bloonModel.HasBehavior(out DisplayModel displayModel))
+        {
+            Apply(displayModel);
+        }
+        else
+        {
+            bloonModel.AddBehavior(GetDisplayModel());
+        }
     }
 
     /// <summary>
@@ -219,7 +226,14 @@ public abstract class ModDisplay : ModContent
     public virtual void Apply(TowerModel towerModel)
     {
         towerModel.display = CreatePrefabReference(Id);
-        Apply(towerModel.GetBehavior<DisplayModel>()!);
+        if (towerModel.HasBehavior(out DisplayModel displayModel))
+        {
+            Apply(displayModel);
+        }
+        else
+        {
+            towerModel.AddBehavior(GetDisplayModel());
+        }
     }
 
     /// <summary>
@@ -228,7 +242,14 @@ public abstract class ModDisplay : ModContent
     public virtual void Apply(ProjectileModel projectileModel)
     {
         projectileModel.display = CreatePrefabReference(Id);
-        Apply(projectileModel.GetBehavior<DisplayModel>()!);
+        if (projectileModel.HasBehavior(out DisplayModel displayModel))
+        {
+            Apply(displayModel);
+        }
+        else
+        {
+            projectileModel.AddBehavior(GetDisplayModel());
+        }
     }
 
     /// <summary>

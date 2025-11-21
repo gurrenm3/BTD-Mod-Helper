@@ -4,3 +4,4 @@
 
 - Added support for using .ogg files for audio
   - btd6.targets will now automatically mark .ogg files as Embedded Resources
+- Fixed issue where custom sounds could stop being available via PrefabReference from the AudioFactory after quitting a match
