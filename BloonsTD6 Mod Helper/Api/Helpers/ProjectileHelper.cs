@@ -30,7 +30,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
     public string Display
     {
         get => Model.display.guidRef;
-        set => Model.display = Model.displayModel.display = DisplayModel.display = new PrefabReference(value);
+        set => Model.display = DisplayModel.display = new PrefabReference(value);
     }
 
     /// Default { guidRef = "" }
@@ -38,7 +38,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
     public PrefabReference DisplayReference
     {
         get => Model.display;
-        set => Model.display = Model.displayModel.display = DisplayModel.display = value;
+        set => Model.display = DisplayModel.display = value;
     }
 
     /// Default .01
@@ -87,7 +87,6 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
             Model.behaviors = newBehaviors.ToIl2CppReferenceArray();
             Model.AddChildDependants(Model.behaviors);
             Model.hasDamageModifiers = value.OfIl2CppType<DamageModifierModel>().Any();
-            Model.displayModel = DisplayModel;
         }
     }
 
@@ -129,6 +128,14 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
     {
         get => Model.canCollisionBeBlockedByMapLos;
         set => Model.canCollisionBeBlockedByMapLos = value;
+    }
+
+    /// Default true
+    /// <seealso cref="ProjectileModel.canCollideWithBloons"/>
+    public bool CanCollideWithBloons
+    {
+        get => Model.canCollideWithBloons;
+        set => Model.canCollideWithBloons = value;
     }
 
     /// Default 1
@@ -215,7 +222,6 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
 
     private static ProjectileModel Default(string name = "")
     {
-        var displayModel = new DisplayModel("", new PrefabReference {guidRef = ""}, 0, DisplayCategory.Projectile);
         return new ProjectileModel(
             new PrefabReference {guidRef = ""}, name, behaviors: new Model[]
             {
@@ -223,18 +229,21 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 }),
-                displayModel
+                new DisplayModel("ProjectileDisplay", new PrefabReference {guidRef = ""}, 0, DisplayCategory.Projectile)
             }, filters: new[]
             {
                 new FilterInvisibleModel("", true, false)
-            }, collisionPasses: new[] {0}, maxPierce: 0, vsBlockerRadius: 0, displayModel: displayModel);
+            }, collisionPasses: new[] {0}, maxPierce: 0, vsBlockerRadius: 0)
+        {
+            canCollideWithBloons = true
+        };
     }
 
     /// <summary>
     /// Begins construction of a new ProjectileModel with sensible default values
     /// </summary>
     /// <param name="name">The model name (don't need the ProjectileModel_ part)</param>
-    public ProjectileHelper(string name = "") : this(Default())
+    public ProjectileHelper(string name = "") : this(Default(name))
     {
     }
 

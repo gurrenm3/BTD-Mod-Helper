@@ -5,26 +5,25 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common.Linq;
-using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.U2D;
 
 namespace BTD_Mod_Helper.Api.Internal;
 
-internal static class VanillaAudioClipsGenerator
+internal static class VanillaPrefabsGenerator
 {
     // Some names map to multiple Sprites. Keep them sorted by their guid so that they'll always be given the same number
-    internal static readonly Dictionary<string, string> AudioClipReferences = new();
+    internal static readonly Dictionary<string, string> PrefabReferences = new();
+    internal static readonly Dictionary<string, string> PrefabReferences2 = new();
 
     /// <summary>
     /// Generate the VanillaSprites.cs file
     /// </summary>
-    internal static void GenerateVanillaAudioClips()
+    internal static void GenereateVanillaPrefabs()
     {
         var csFile = Path.Combine(MelonMain.ModHelperSourceFolder, "BloonsTD6 Mod Helper", "Api", "Enums",
-            "VanillaAudioClips.cs");
+            "VanillaPrefabs.cs");
 
         PopulateFromAddressables();
 
@@ -40,15 +39,16 @@ internal static class VanillaAudioClipsGenerator
             #pragma warning disable CS1591
             namespace BTD_Mod_Helper.Api.Enums;
                 
-            public static class VanillaAudioClips
+            public static class VanillaPrefabs
             {
             """
         );
 
-        foreach (var (name, guid) in AudioClipReferences.OrderBy(pair => pair.Key))
+        foreach (var (name, guid) in PrefabReferences.OrderBy(pair => pair.Key))
         {
             var i = 1;
             var realName = FixName(name) + (i > 1 ? i.ToString() : "");
+            if (string.IsNullOrEmpty(realName)) continue;
             vanillaSpritesFile.WriteLine(
                 $"""
                      public const string {realName} = "{guid}";
@@ -62,7 +62,7 @@ internal static class VanillaAudioClipsGenerator
         vanillaSpritesFile.WriteLine(
             """
                 public static readonly Dictionary<string, string> ByName;
-                static VanillaAudioClips()
+                static VanillaPrefabs()
                 {
                     ByName = new Dictionary<string, string>
                     {
@@ -84,29 +84,27 @@ internal static class VanillaAudioClipsGenerator
             """
         );
 
-        AudioClipReferences.Clear();
+        PrefabReferences.Clear();
     }
 
     private static string FixName(string name)
     {
-        if (Regex.Match(name, @"^\d\d\d-").Success)
-        {
-            name = string.Concat(name.Split('-').AsEnumerable().Reverse());
-        }
-
-        if (name.Contains('#'))
-        {
-            name = string.Concat(name.Split('#')[0].Trim());
-        }
-
-        if (Regex.IsMatch(name, @"^\d.+"))
-        {
-            name = "The" + name;
-        }
-
-        name = Regex.Replace(name, @"[^A-Za-z0-9_]", "");
-
-        return name;
+        return name
+            .RegexReplace(@"(\d\d\d)-([^\.]+)\.", "$2$1.")
+            .Replace("Generated/", "")
+            .Replace("Graphics/", "")
+            .Replace("Assets/", "")
+            .Replace("Combinations/", "")
+            .Replace("path01/", "")
+            .Replace("path02/", "")
+            .Replace("path03/", "")
+            .Replace("Prefabs/", "")
+            .Replace("AssetBundleMaps/", "")
+            .Replace("/", "_")
+            .Replace("-", "")
+            .Replace(" ", "")
+            .Replace("#", "")
+            .Replace(".prefab", "");
     }
 
     public static void PopulateFromAddressables()
@@ -117,15 +115,19 @@ internal static class VanillaAudioClipsGenerator
 
         foreach (var guid in keys)
         {
-            if (!Guid.TryParse(guid, out _) || !resourceMap.Locate(guid, Il2CppType.Of<AudioClip>(), out var list)) continue;
+            if (!Guid.TryParse(guid, out _) ||
+                !resourceMap.Locate(guid, Il2CppType.Of<GameObject>(), out var list)) continue;
 
             var location = list.FirstOrDefault();
 
-            if (location != null)
+            if (location != null &&
+                Path.GetExtension(location.InternalId) == ".prefab" &&
+                !(location.InternalId.Contains("/UI")))
             {
-                var name = Path.GetFileNameWithoutExtension(location.InternalId);
-
-                AudioClipReferences[name] = guid;
+                // var name = Path.GetFileNameWithoutExtension(location.InternalId);
+                if (!PrefabReferences.TryAdd(location.InternalId, guid))
+                {
+                }
             }
         }
     }

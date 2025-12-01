@@ -42,8 +42,12 @@
 
 | Classes | |
 | :--- | :--- |
+| [AudioNameAttribute](BTD_Mod_Helper.Api.Attributes.AudioNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.AudioNameAttribute') | Marks that this string is the name of an embedded audio resource |
+| [BundleNameAttribute](BTD_Mod_Helper.Api.Attributes.BundleNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.BundleNameAttribute') | Marks that this string is the name of an embedded bundle resource |
 | [DontLoadAttribute](BTD_Mod_Helper.Api.Attributes.DontLoadAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontLoadAttribute') | Signals that this ModContent should not be automatically loaded by Mod Helper.<br/>Will also skip the Registration phase |
 | [DontRegisterAttribute](BTD_Mod_Helper.Api.Attributes.DontRegisterAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontRegisterAttribute') | Signals that this ModContent should not be automatically registered by Mod Helper.<br/>Use [DontLoadAttribute](BTD_Mod_Helper.Api.Attributes.DontLoadAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontLoadAttribute') for skipping the loading phase as well |
+| [ResourceNameAttribute](BTD_Mod_Helper.Api.Attributes.ResourceNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.ResourceNameAttribute') | Marks that this string is the name of an embedded resource |
+| [SpriteNameAttribute](BTD_Mod_Helper.Api.Attributes.SpriteNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.SpriteNameAttribute') | Marks that this string is the name of an embedded sprite resource |
 
 <a name='BTD_Mod_Helper.Api.Audio'></a>
 

@@ -45,7 +45,7 @@ public class AbilityHelper : ModelHelper<AbilityModel>
     public string Icon
     {
         get => Model.icon.guidRef;
-        set => Model.icon.guidRef = value;
+        set => Model.icon = new SpriteReference(value);
     }
 
     /// Default { guidRef = "" }

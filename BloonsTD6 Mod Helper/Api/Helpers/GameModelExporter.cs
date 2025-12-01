@@ -107,7 +107,7 @@ public static class GameModelExporter
 
             if (list.Length == 0) continue;
 
-            resourcesJson[key.ToString()] = list.Length > 1 ? JArray.FromObject(list) : list[0];
+            resourcesJson[key.ToString()] = list[0];
         }
         return resourcesJson;
     }

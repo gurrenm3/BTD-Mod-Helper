@@ -11,11 +11,7 @@ internal class AudioFactory_Start
     [HarmonyPostfix]
     public static void Postfix(AudioFactory __instance)
     {
-        foreach (var (id, clip) in ResourceHandler.AudioClips)
-        {
-            __instance.audioClipHandles[new AudioClipReference(id)] =
-                Addressables.Instance.ResourceManager.CreateCompletedOperation(clip, "");
-        }
+        ResourceHandler.PopulateAudioFactory(__instance);
 
         ModHelper.PerformHook(mod => mod.OnAudioFactoryStart(__instance));
     }

@@ -5,7 +5,7 @@ namespace BTD_Mod_Helper.Api.Commands.Generate;
 internal class GenerateVanillaSpritesCommand : ModCommand<GenerateCommand>
 {
     public override string Command => "sprites";
-    public override string Help => "Generates the Mod Helper sprites list files";
+    public override string Help => "Generates the Mod Helper vanilla sprites list files";
 
     public override bool Execute(ref string resultText)
     {

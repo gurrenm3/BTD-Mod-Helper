@@ -2,10 +2,10 @@
 using BTD_Mod_Helper.Api.Internal;
 namespace BTD_Mod_Helper.Api.Commands.Generate;
 
-internal class GenerateAudioClipsCommand : ModCommand<GenerateCommand>
+internal class GenerateVanillaPrefabsCommand : ModCommand<GenerateCommand>
 {
-    public override string Command => "audioclips";
-    public override string Help => "Generates the Mod Helper vanilla audioclips list files";
+    public override string Command => "prefabs";
+    public override string Help => "Generates the Mod Helper vanilla prefabs list files";
 
     public override bool Execute(ref string resultText)
     {
@@ -15,7 +15,7 @@ internal class GenerateAudioClipsCommand : ModCommand<GenerateCommand>
             return false;
         }
 
-        VanillaAudioClipsGenerator.GenerateVanillaAudioClips();
+        VanillaPrefabsGenerator.GenereateVanillaPrefabs();
 
         return true;
     }

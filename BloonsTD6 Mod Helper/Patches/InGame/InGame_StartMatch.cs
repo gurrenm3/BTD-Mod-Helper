@@ -10,6 +10,7 @@ internal class InGame_StartMatch
     [HarmonyPostfix]
     internal static void Postfix(InGame __instance)
     {
+        __instance.sceneCamera.gameObject.tag = "MainCamera";
         ModHelper.PerformHook(mod => mod.OnMatchStart());
         NotificationMgr.Initialise();
         ModHelperDock.Setup();

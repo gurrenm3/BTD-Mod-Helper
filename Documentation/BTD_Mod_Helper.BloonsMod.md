@@ -278,6 +278,30 @@ public virtual void OnSaveSettings(JObject settings);
 
 The json representation of the settings about to be saved
 
+<a name='BTD_Mod_Helper.BloonsMod.RegisterRandomizedAudioClip(string,string[])'></a>
+
+## BloonsMod.RegisterRandomizedAudioClip(string, string[]) Method
+
+Adds a new randomized audio clip list for the given name to [RandomAudioClipIds](BTD_Mod_Helper.Api.Internal.ResourceHandler.md#BTD_Mod_Helper.Api.Internal.ResourceHandler.RandomAudioClipIds 'BTD_Mod_Helper.Api.Internal.ResourceHandler.RandomAudioClipIds').  
+Will include the mod Id in the name.
+
+```csharp
+public void RegisterRandomizedAudioClip(string name, params string[] clipNames);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsMod.RegisterRandomizedAudioClip(string,string[]).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Name to use for the randomized clip
+
+<a name='BTD_Mod_Helper.BloonsMod.RegisterRandomizedAudioClip(string,string[]).clipNames'></a>
+
+`clipNames` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+Names of audio clips within this mod
+
 <a name='BTD_Mod_Helper.BloonsMod.SaveModSettings()'></a>
 
 ## BloonsMod.SaveModSettings() Method

@@ -8,3 +8,16 @@
 - Added better support for ModGameModes using and modifying `DailyChallengeModel`s for games
   - Override `ApplyChallengeRules` to true to make normal games have challenge rules (since they otherwise don't)
   - Override `ModifyChallengeRules(DailyChallengeModel)` to edit challenge rules
+- Added the ability to register sound GUIDs that will correspond to a different random sound from a list each time they're played, for example to make "CustomSound" choose from any of CustomSound1.mp3, CustomSound2.mp3 or CustomSound3.mp3 in your mod you can do
+
+```csharp
+public override void OnTitleScreen()
+{
+    RegisterRandomizedAudioClip("CustomSound", "CustomSound1", "CustomSound2", "CustomSound3");
+}
+
+...
+  
+GetAudioClipReference<MyMod>("CustomSound")
+```
+- 

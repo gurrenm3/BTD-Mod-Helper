@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BTD_Mod_Helper.Api.Attributes;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Towers;
@@ -66,6 +67,7 @@ public abstract class ModUpgrade : NamedModContent
     /// <br />
     /// By default is the same file name as the tower followed by -Portrait
     /// </summary>
+    [SpriteName]
     public virtual string Portrait => GetType().Name + "-Portrait";
 
     /// <summary>
@@ -76,6 +78,7 @@ public abstract class ModUpgrade : NamedModContent
     /// <br />
     /// By default is the same file name as the tower followed by -Icon
     /// </summary>
+    [SpriteName]
     public virtual string Icon => GetType().Name + "-Icon";
 
     /// <summary>

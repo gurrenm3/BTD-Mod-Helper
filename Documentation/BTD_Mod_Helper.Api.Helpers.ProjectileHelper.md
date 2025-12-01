@@ -44,6 +44,20 @@ public Model[] Behaviors { get; set; }
 ### See Also
 - [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.behaviors](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.behaviors 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.behaviors')
 
+<a name='BTD_Mod_Helper.Api.Helpers.ProjectileHelper.CanCollideWithBloons'></a>
+
+## ProjectileHelper.CanCollideWithBloons Property
+
+```csharp
+public bool CanCollideWithBloons { get; set; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+### See Also
+- [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.canCollideWithBloons](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.canCollideWithBloons 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel.canCollideWithBloons')
+
 <a name='BTD_Mod_Helper.Api.Helpers.ProjectileHelper.CanCollisionBeBlockedByMapLos'></a>
 
 ## ProjectileHelper.CanCollisionBeBlockedByMapLos Property

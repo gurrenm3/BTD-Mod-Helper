@@ -400,4 +400,17 @@ public abstract class BloonsMod : MelonMod, IModSettings
     }
 
     #endregion
+
+    /// <summary>
+    /// Adds a new randomized audio clip list for the given name to <see cref="ResourceHandler.RandomAudioClipIds"/>.
+    /// Will include the mod Id in the name.
+    /// </summary>
+    /// <param name="name">Name to use for the randomized clip</param>
+    /// <param name="clipNames">Names of audio clips within this mod</param>
+    public void RegisterRandomizedAudioClip(string name, params string[] clipNames)
+    {
+        ResourceHandler.RandomAudioClipIds[ModContent.GetId(this, name)] = clipNames
+            .Select(clipName => AudioClips[clipName])
+            .ToArray();
+    }
 }

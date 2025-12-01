@@ -2,10 +2,13 @@
 using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppAssets.Scripts.Unity.Audio;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.IO;
 using NAudio.Vorbis;
 using NAudio.Wave;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
@@ -37,6 +40,12 @@ public static class ResourceHandler
     /// Cache of created Sprites by Id
     /// </summary>
     public static readonly Dictionary<string, Sprite> SpriteCache = new();
+
+    /// <summary>
+    /// Defines a list of IDs that can be used for AudioClipReferences to refer to a random audio clip from the list
+    /// </summary>
+    public static readonly Dictionary<string, IList<AudioClip>> RandomAudioClipIds = [];
+
 
     internal static readonly List<RenderTexture> RenderTexturesToRelease = [];
 
@@ -304,5 +313,20 @@ public static class ResourceHandler
         if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null) return sprite;
 
         return CreateSprite(id, pixelsPerUnit);
+    }
+
+    internal static void PopulateAudioFactory(AudioFactory audioFactory)
+    {
+        foreach (var (id, clip) in AudioClips)
+        {
+            audioFactory.audioClipHandles[new AudioClipReference(id)] =
+                Addressables.Instance.ResourceManager.CreateCompletedOperation(clip, "");
+        }
+
+        foreach (var (id, audioClips) in RandomAudioClipIds)
+        {
+            audioFactory.audioClipHandles[new AudioClipReference(id)] =
+                Addressables.Instance.ResourceManager.CreateCompletedOperation(audioClips.First(), "");
+        }
     }
 }

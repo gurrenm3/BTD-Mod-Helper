@@ -12,6 +12,33 @@ public static class Vector3Ext
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Vector3Ext
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.Vector3Ext.Deconstruct(thisVector3,float,float,float)'></a>
+
+## Vector3Ext.Deconstruct(this Vector3, float, float, float) Method
+
+Deconstruct for Vector3
+
+```csharp
+public static void Deconstruct(this Vector3 vector, out float x, out float y, out float z);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Vector3Ext.Deconstruct(thisVector3,float,float,float).vector'></a>
+
+`vector` [UnityEngine.Vector3](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector3 'UnityEngine.Vector3')
+
+<a name='BTD_Mod_Helper.Extensions.Vector3Ext.Deconstruct(thisVector3,float,float,float).x'></a>
+
+`x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Extensions.Vector3Ext.Deconstruct(thisVector3,float,float,float).y'></a>
+
+`y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Extensions.Vector3Ext.Deconstruct(thisVector3,float,float,float).z'></a>
+
+`z` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='BTD_Mod_Helper.Extensions.Vector3Ext.Raycast(thisVector3)'></a>
 
 ## Vector3Ext.Raycast(this Vector3) Method

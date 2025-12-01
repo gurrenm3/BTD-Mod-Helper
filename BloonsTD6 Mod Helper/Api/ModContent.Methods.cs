@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Bloons;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Internal;
@@ -37,7 +38,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReference<T>(string name) where T : BloonsMod =>
+    public static SpriteReference GetSpriteReference<T>([SpriteName] string name) where T : BloonsMod =>
         CreateSpriteReference(GetTextureGUID<T>(name));
 
     /// <summary>
@@ -45,7 +46,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <returns>A new SpriteReference</returns>
-    protected SpriteReference GetSpriteReference(string name) => CreateSpriteReference(GetTextureGUID(name));
+    protected SpriteReference GetSpriteReference([SpriteName] string name) => CreateSpriteReference(GetTextureGUID(name));
 
     /// <summary>
     /// Gets a sprite reference by name for a specific mod
@@ -53,7 +54,7 @@ public abstract partial class ModContent
     /// <param name="mod">The BloonsTD6Mod that the texture is from</param>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReference(BloonsMod mod, string name) =>
+    public static SpriteReference GetSpriteReference(BloonsMod mod, [SpriteName] string name) =>
         CreateSpriteReference(GetTextureGUID(mod, name));
 
     /// <summary>
@@ -63,7 +64,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReferenceOrNull<T>(string name) where T : BloonsMod =>
+    public static SpriteReference GetSpriteReferenceOrNull<T>([SpriteName] string name) where T : BloonsMod =>
         GetSpriteReferenceOrNull(GetInstance<T>(), name);
 
     /// <summary>
@@ -72,7 +73,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <returns>A new SpriteReference</returns>
-    protected SpriteReference GetSpriteReferenceOrNull(string name) => GetSpriteReferenceOrNull(mod, name);
+    protected SpriteReference GetSpriteReferenceOrNull([SpriteName] string name) => GetSpriteReferenceOrNull(mod, name);
 
     /// <summary>
     /// Gets a sprite reference by name for a specific mod, returning null if the texture hasn't currently been
@@ -81,7 +82,7 @@ public abstract partial class ModContent
     /// <param name="mod">The BloonsTD6Mod that the texture is from</param>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReferenceOrNull(BloonsMod mod, string name) =>
+    public static SpriteReference GetSpriteReferenceOrNull(BloonsMod mod, [SpriteName] string name) =>
         TextureExists(mod, name) ? GetSpriteReference(mod, name) : null;
 
     /// <summary>
@@ -91,7 +92,7 @@ public abstract partial class ModContent
     /// <param name="mod">The BloonsTD6Mod that the texture is from</param>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReferenceOrDefault(BloonsMod mod, string name) =>
+    public static SpriteReference GetSpriteReferenceOrDefault(BloonsMod mod, [SpriteName] string name) =>
         TextureExists(mod, name) ? GetSpriteReference(mod, name) : CreateSpriteReference(name);
 
     /// <summary>
@@ -101,7 +102,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>A new SpriteReference</returns>
-    public static SpriteReference GetSpriteReferenceOrDefault<T>(string name) where T : BloonsMod =>
+    public static SpriteReference GetSpriteReferenceOrDefault<T>([SpriteName] string name) where T : BloonsMod =>
         GetSpriteReferenceOrDefault(GetInstance<T>(), name);
 
     /// <summary>
@@ -110,7 +111,8 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <returns>A new SpriteReference</returns>
-    protected SpriteReference GetSpriteReferenceOrDefault(string name) => GetSpriteReferenceOrDefault(mod, name);
+    protected SpriteReference GetSpriteReferenceOrDefault([SpriteName] string name) =>
+        GetSpriteReferenceOrDefault(mod, name);
 
     /// <summary>
     /// Returns a new SpriteReference that uses the given guid
@@ -153,7 +155,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">Sound name (no .wav)</param>
     /// <returns>An AudioClipReference</returns>
-    protected AudioClipReference GetAudioClipReference(string name) => GetAudioClipReference(mod, name);
+    protected AudioClipReference GetAudioClipReference([AudioName] string name) => GetAudioClipReference(mod, name);
 
     /// <summary>
     /// Gets an AudioClip reference for a given sound within a mod
@@ -161,14 +163,16 @@ public abstract partial class ModContent
     /// <param name="mod"></param>
     /// <param name="name">Sound name (no .wav)</param>
     /// <returns>An AudioClipReference</returns>
-    public static AudioClipReference GetAudioClipReference(BloonsMod mod, string name) => CreateAudioClipReference(GetId(mod, name));
+    public static AudioClipReference GetAudioClipReference(BloonsMod mod, [AudioName] string name) =>
+        CreateAudioClipReference(GetId(mod, name));
 
     /// <summary>
     /// Gets an AudioClip reference for a given sound within a mod
     /// </summary>
     /// <param name="name">Sound name (no .wav)</param>
     /// <returns>An AudioClipReference</returns>
-    public static AudioClipReference GetAudioClipReference<T>(string name) where T : BloonsMod => GetAudioClipReference(GetInstance<T>(), name);
+    public static AudioClipReference GetAudioClipReference<T>([AudioName] string name) where T : BloonsMod =>
+        GetAudioClipReference(GetInstance<T>(), name);
 
     /// <summary>
     /// Creates a Prefab Reference for a ModDisplay
@@ -203,7 +207,7 @@ public abstract partial class ModContent
     /// <param name="mod">The BloonsTD6Mod that the texture is from</param>
     /// <param name="fileName">The file name of your texture, without the extension</param>
     /// <returns>The texture's GUID</returns>
-    public static string GetTextureGUID(BloonsMod mod, string fileName) => WrapGuid(GetId(mod, fileName));
+    public static string GetTextureGUID(BloonsMod mod, [SpriteName] string fileName) => WrapGuid(GetId(mod, fileName));
 
     /// <summary>
     /// Gets a texture's GUID by name for a specific mod, to be used in SpriteReferences
@@ -213,7 +217,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">Your mod's main BloonsTD6Mod extending class</typeparam>
     /// <returns>The texture's GUID</returns>
-    public static string GetTextureGUID<T>(string name) where T : BloonsMod
+    public static string GetTextureGUID<T>([SpriteName] string name) where T : BloonsMod
     {
         var mod = GetInstance<T>();
         if (mod == null)
@@ -232,7 +236,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <returns>The texture's GUID</returns>
-    public string GetTextureGUID(string name) => GetTextureGUID(mod, name);
+    public string GetTextureGUID([SpriteName] string name) => GetTextureGUID(mod, name);
 
     /// <summary>
     /// Gets the id of a resource by appending the mod's ID prefix to its name
@@ -264,7 +268,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="bloonsMod">The mod to look in</param>
     /// <param name="name">The file name of your texture, without the extension</param>
-    public static bool TextureExists(BloonsMod bloonsMod, string name) =>
+    public static bool TextureExists(BloonsMod bloonsMod, [SpriteName] string name) =>
         ResourceHandler.Resources.ContainsKey(GetId(bloonsMod, name));
 
     /// <summary>
@@ -272,13 +276,13 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">The mod to look in</typeparam>
-    public static bool TextureExists<T>(string name) where T : BloonsMod => TextureExists(GetInstance<T>(), name);
+    public static bool TextureExists<T>([SpriteName] string name) where T : BloonsMod => TextureExists(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
-    protected bool TextureExists(string name) => TextureExists(mod, name);
+    protected bool TextureExists([SpriteName] string name) => TextureExists(mod, name);
 
     /// <summary>
     /// Constructs a Texture2D for a given texture name within a mod
@@ -286,7 +290,7 @@ public abstract partial class ModContent
     /// <param name="bloonsMod">The mod that adds this texture</param>
     /// <param name="fileName">The file name of your texture, without the extension</param>
     /// <returns>A Texture2D</returns>
-    public static Texture2D GetTexture(BloonsMod bloonsMod, string fileName) =>
+    public static Texture2D GetTexture([SpriteName] BloonsMod bloonsMod, string fileName) =>
         ResourceHandler.GetTexture(GetId(bloonsMod, fileName));
 
     /// <summary>
@@ -294,14 +298,14 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="fileName">The file name of your texture, without the extension</param>
     /// <returns>A Texture2D</returns>
-    protected Texture2D GetTexture(string fileName) => GetTexture(mod, fileName);
+    protected Texture2D GetTexture([SpriteName] string fileName) => GetTexture(mod, fileName);
 
     /// <summary>
     /// Constructs a Texture2D for a given texture name within a mod
     /// </summary>
     /// <param name="fileName">The file name of your texture, without the extension</param>
     /// <returns>A Texture2D</returns>
-    public static Texture2D GetTexture<T>(string fileName) where T : BloonsMod =>
+    public static Texture2D GetTexture<T>([SpriteName] string fileName) where T : BloonsMod =>
         GetTexture(GetInstance<T>(), fileName);
 
     /// <summary>
@@ -309,7 +313,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="fileName">The file name of your texture, without the extension.</param>
     /// <returns>The bytes associated with the texture.</returns>
-    protected byte[] GetTextureBytes(string fileName) => GetTextureBytes(mod, fileName);
+    protected byte[] GetTextureBytes([SpriteName] string fileName) => GetTextureBytes(mod, fileName);
 
     /// <summary>
     /// Returns the Bytes associated with a texture.
@@ -317,7 +321,7 @@ public abstract partial class ModContent
     /// <param name="bloonsMod">The mod that adds this texture.</param>
     /// <param name="fileName">The file name of your texture, without the extension.</param>
     /// <returns>The bytes associated with the texture.</returns>
-    public static byte[] GetTextureBytes(BloonsMod bloonsMod, string fileName) =>
+    public static byte[] GetTextureBytes(BloonsMod bloonsMod, [SpriteName] string fileName) =>
         ResourceHandler.GetTextureBytes(GetTextureGUID(bloonsMod, fileName));
 
     /// <summary>
@@ -325,7 +329,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="fileName">The file name of your texture, without the extension.</param>
     /// <returns>The bytes associated with the texture.</returns>
-    public static byte[] GetTextureBytes<T>(string fileName) where T : BloonsMod =>
+    public static byte[] GetTextureBytes<T>([SpriteName] string fileName) where T : BloonsMod =>
         GetTextureBytes(GetInstance<T>(), fileName);
 
     /// <summary>
@@ -335,7 +339,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
     /// <returns>A Sprite</returns>
-    public static Sprite GetSprite(BloonsMod mod, string name, float pixelsPerUnit = 10f) =>
+    public static Sprite GetSprite(BloonsMod mod, [SpriteName] string name, float pixelsPerUnit = 10f) =>
         ResourceHandler.GetSprite(GetId(mod, name), pixelsPerUnit);
 
     /// <summary>
@@ -344,7 +348,7 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
     /// <returns>A Sprite</returns>
-    public static Sprite GetSprite<T>(string name, float pixelsPerUnit = 10f) where T : BloonsMod =>
+    public static Sprite GetSprite<T>([SpriteName] string name, float pixelsPerUnit = 10f) where T : BloonsMod =>
         GetSprite(GetInstance<T>(), name, pixelsPerUnit);
 
     /// <summary>
@@ -353,14 +357,14 @@ public abstract partial class ModContent
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
     /// <returns>A Sprite</returns>
-    protected Sprite GetSprite(string name, float pixelsPerUnit = 10f) => GetSprite(mod, name, pixelsPerUnit);
+    protected Sprite GetSprite([SpriteName] string name, float pixelsPerUnit = 10f) => GetSprite(mod, name, pixelsPerUnit);
 
     /// <summary>
     /// Gets a bundle from a mod with the specified name (no file extension)
     /// </summary>
     /// <param name="mod"></param>
     /// <param name="name"></param>
-    public static AssetBundle GetBundle(BloonsMod mod, string name)
+    public static AssetBundle GetBundle(BloonsMod mod, [BundleName] string name)
     {
         if (ResourceHandler.Bundles.TryGetValue(GetId(mod, name), out var bundle))
         {
@@ -390,13 +394,13 @@ public abstract partial class ModContent
     /// Gets a bundle from the mod T with the specified name (no file extension)
     /// </summary>
     /// <param name="name"></param>
-    public static AssetBundle GetBundle<T>(string name) where T : BloonsMod => GetBundle(GetInstance<T>(), name);
+    public static AssetBundle GetBundle<T>([BundleName] string name) where T : BloonsMod => GetBundle(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets a bundle from your mod with the specified name (no file extension)
     /// </summary>
     /// <param name="name"></param>
-    protected AssetBundle GetBundle(string name) => GetBundle(mod, name);
+    protected AssetBundle GetBundle([BundleName] string name) => GetBundle(mod, name);
 
     /// <summary>
     /// Gets a BloonsTD6Mod by its name, or returns null if none are loaded with that name
@@ -436,7 +440,7 @@ public abstract partial class ModContent
     /// <param name="mod">The mod</param>
     /// <param name="name">Sound name (no .wav)</param>
     /// <returns>a playable AudioClip</returns>
-    public static AudioClip GetAudioClip(BloonsMod mod, string name) => mod.AudioClips.GetValueOrDefault(name);
+    public static AudioClip GetAudioClip(BloonsMod mod, [AudioName] string name) => mod.AudioClips.GetValueOrDefault(name);
 
     /// <summary>
     /// Gets an AudioClip from a mod by its name (no file extension included)
@@ -444,14 +448,14 @@ public abstract partial class ModContent
     /// <param name="name">Sound name (no .wav)</param>
     /// <typeparam name="T">The mod</typeparam>
     /// <returns>a playable AudioClip</returns>
-    public static AudioClip GetAudioClip<T>(string name) where T : BloonsMod => GetAudioClip(GetInstance<T>(), name);
+    public static AudioClip GetAudioClip<T>([AudioName] string name) where T : BloonsMod => GetAudioClip(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets an AudioClip from this mod by its name (no file extension included)
     /// </summary>
     /// <param name="name">Sound name (no .wav)</param>
     /// <returns>a playable AudioClip</returns>
-    public AudioClip GetAudioClip(string name) => GetAudioClip(mod, name);
+    public AudioClip GetAudioClip([AudioName] string name) => GetAudioClip(mod, name);
 
     /// <summary>
     /// Gets an AudioSource reference for a given sound within a mod
@@ -459,7 +463,7 @@ public abstract partial class ModContent
     /// <param name="mod"></param>
     /// <param name="name">Sound name (no .wav)</param>
     /// <returns>An AudioSoundReference</returns>
-    public static AudioSourceReference GetAudioSourceReference(BloonsMod mod, string name) =>
+    public static AudioSourceReference GetAudioSourceReference(BloonsMod mod, [AudioName] string name) =>
         CreateAudioSourceReference(GetId(mod, name));
 
     /// <summary>
@@ -469,7 +473,7 @@ public abstract partial class ModContent
     /// <typeparam name="T">The mod</typeparam>
     /// <returns>An AudioSoundReference</returns>
     [Obsolete("Use GetAudioSourceReference")]
-    public static AudioSourceReference CreateAudioSourceReference<T>(string name) where T : BloonsMod =>
+    public static AudioSourceReference CreateAudioSourceReference<T>([AudioName] string name) where T : BloonsMod =>
         GetAudioSourceReference(GetInstance<T>(), name);
 
     /// <summary>
@@ -478,7 +482,7 @@ public abstract partial class ModContent
     /// <param name="name">Sound name (no .wav)</param>
     /// <typeparam name="T">The mod</typeparam>
     /// <returns>An AudioSoundReference</returns>
-    public static AudioSourceReference GetAudioSourceReference<T>(string name) where T : BloonsMod =>
+    public static AudioSourceReference GetAudioSourceReference<T>([AudioName] string name) where T : BloonsMod =>
         GetAudioSourceReference(GetInstance<T>(), name);
 
     /// <summary>
@@ -486,7 +490,7 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">Sound name (no .wav)</param>
     /// <returns>An AudioSoundReference</returns>
-    public AudioSourceReference GetAudioSourceReference(string name) => GetAudioSourceReference(mod, name);
+    public AudioSourceReference GetAudioSourceReference([AudioName] string name) => GetAudioSourceReference(mod, name);
 
     /// <summary>
     /// Gets the ID for the given ModGameMode

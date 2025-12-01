@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Models;
@@ -85,6 +86,7 @@ public abstract class ModTower : NamedModContent
     /// <br />
     /// (Name of .png or .jpg, not including file extension)
     /// </summary>
+    [SpriteName]
     public virtual string Portrait => GetType().Name + "-Portrait";
 
     /// <summary>
@@ -92,6 +94,7 @@ public abstract class ModTower : NamedModContent
     /// <br />
     /// (Name of .png or .jpg, not including file extension)
     /// </summary>
+    [SpriteName]
     public virtual string Icon => GetType().Name + "-Icon";
 
     /// <summary>
