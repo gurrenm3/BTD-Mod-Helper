@@ -1,0 +1,321 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using BTD_Mod_Helper.Api.Helpers;
+using Il2CppAssets.Scripts;
+using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppInterop.Runtime;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
+using Il2CppSystem.Linq;
+
+namespace BTD_Mod_Helper.Api.Internal;
+
+internal static class ModelCreatesGenerator
+{
+    private static string Folder => Path.Combine(MelonMain.ModHelperSourceFolder,
+        "BloonsTD6 Mod Helper", "Extensions", "ModelExtensions");
+
+    private const string FileName = "CreateModelExt.cs";
+
+    private static readonly Il2CppJsonConvert.Il2CppContractResolver Resolver = new();
+
+    public static void Generate()
+    {
+        var allowedModelNames = Game.instance.model
+            .GetDescendants<Model>()
+            .ToArray()
+            .Select(model => model.GetIl2CppType().Name)
+            .ToHashSet();
+
+        var modelTypes = AccessTools.GetTypesFromAssembly(typeof(Model).Assembly).Where(type =>
+        {
+            try
+            {
+                return allowedModelNames.Contains(type.Name) &&
+                       type.IsAssignableTo(typeof(Model)) &&
+                       !type.IsAssignableTo(typeof(GameModel)) &&
+                       !Il2CppType.From(type).IsAbstract &&
+                       !type.IsGenericType;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }).GroupBy(type => type.Name);
+
+        var modelTypeDict = new SortedDictionary<string, Type>();
+        foreach (var group in modelTypes)
+        {
+            if (group.Count() == 1)
+            {
+                modelTypeDict.Add(group.Key, group.Single());
+            }
+            else
+            {
+                foreach (var type in group)
+                {
+                    var folders = type.Namespace!.Split(".").ToList();
+                    folders.RemoveAll(f => group.Any(t => t != type && t.Namespace!.Contains(f)));
+
+                    modelTypeDict.Add(folders.Join(delimiter: "") + group.Key, type);
+                }
+            }
+        }
+
+        var text =
+            $$"""
+
+              // ReSharper disable InconsistentNaming
+              // ReSharper disable PreferConcreteValueOverDefault
+              #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+              namespace BTD_Mod_Helper.Extensions;
+
+              public record ModelArgs<T> where T : Il2CppAssets.Scripts.Models.Model
+              {
+                  public string name { get; set; } = "";
+              }
+
+              {{modelTypeDict.Select(GenerateFor).Join(delimiter: "\n\n")}}
+
+              """;
+
+
+        File.WriteAllText(Path.Combine(Folder, FileName), text);
+    }
+
+    private static string GenerateFor(KeyValuePair<string, Type> nameAndType)
+    {
+        var (name, type) = nameAndType;
+        var ctor = ModelSerializer.GetMainConstructor(type);
+
+        var properties = Resolver.GetAllSerializableMembers(type)
+            .OfType<PropertyInfo>()
+            .Where(p => p.CanWrite && p.Name != nameof(Model.childDependants))
+            .ToArray();
+        var remainingProperties = properties.ToList();
+        var paramsByProp = properties.ToDictionary(p => p, _ => null as ParameterInfo);
+
+        var paramDefaultValues = new List<string>();
+        var propDefaultValues = properties.ToDictionary(p => p, p => "args." + p.Name);
+        foreach (var param in ctor.GetParameters())
+        {
+            var property = properties.FirstOrDefault(p => p.Name.Equals(param.Name, StringComparison.OrdinalIgnoreCase));
+
+            if (property == null && ModelSerializer.ParamFixes.TryGetValue(param.Name!, out var fix))
+            {
+                property = properties.FirstOrDefault(p => p.Name.Equals(fix, StringComparison.OrdinalIgnoreCase));
+            }
+
+            var defaultValue = "default";
+
+            if (property == null)
+            {
+                if (param.ParameterType != typeof(ObjectId) && type != typeof(CreateLightningEffectModel))
+                {
+                    ModHelper.Warning($"Found no match for param {param.Name} on {type.RealFullName}");
+                }
+            }
+            else
+            {
+                paramsByProp[property] = param;
+                remainingProperties.Remove(property);
+
+                defaultValue = $"args.{property.Name}";
+
+                if (param.ParameterType.IsIl2CppNullable() && !property.PropertyType.IsIl2CppNullable())
+                {
+                    defaultValue = $"Il2CppSystem.Nullable<{property.PropertyType.RealFullName}>.Unbox({defaultValue})";
+                }
+                propDefaultValues[property] = defaultValue;
+            }
+
+            paramDefaultValues.Add(defaultValue);
+        }
+
+
+        var propertyDefaultValues = new Dictionary<PropertyInfo, string>();
+        foreach (var prop in properties)
+        {
+            var param = paramsByProp[prop];
+
+            var defaultValue = "default";
+            var propType = prop.PropertyType;
+
+            if (param?.HasDefaultValue == true && !propType.IsIl2CppNullable())
+            {
+                defaultValue = DefaultValue(param.RawDefaultValue);
+            }
+            else
+            {
+                if (propType.IsIl2CppNullable())
+                {
+                    propType = propType.GenericTypeArguments.First();
+                }
+
+                if (propType == typeof(string))
+                {
+                    defaultValue = "\"\"";
+                }
+                else if (propType == typeof(int) ||
+                         propType == typeof(int?) ||
+                         propType == typeof(long) ||
+                         propType == typeof(long?) ||
+                         propType == typeof(float) ||
+                         propType == typeof(float?) ||
+                         propType == typeof(double) ||
+                         propType == typeof(double?))
+                {
+                    defaultValue = "0";
+                }
+                else if (propType == typeof(PrefabReference) ||
+                         propType == typeof(AudioClipReference) ||
+                         propType == typeof(SpriteReference) ||
+                         propType == typeof(AudioSourceReference) ||
+                         propType == typeof(AnimationClipReference))
+                {
+                    defaultValue = $"new {propType.RealFullName}(\"\")";
+                }
+            }
+
+            if (prop.PropertyType.IsIl2CppNullable())
+            {
+                defaultValue = $"Il2CppSystem.Nullable<{propType.RealFullName}>.Unbox({defaultValue})";
+            }
+
+            propertyDefaultValues[prop] = defaultValue;
+        }
+
+
+        var propertyArgTypes = new Dictionary<PropertyInfo, string>();
+        foreach (var prop in properties)
+        {
+            var argType = prop.PropertyType.RealFullName;
+            var paramType = paramsByProp[prop]?.ParameterType;
+            if (prop.PropertyType == typeof(Il2CppStringArray))
+            {
+                argType = "string[]";
+            }
+            else if (prop.PropertyType.IsGenericType)
+            {
+                var baseType = prop.PropertyType.GetGenericTypeDefinition();
+
+                if (baseType.IsAssignableTo(typeof(Il2CppArrayBase)))
+                {
+                    var genType = prop.PropertyType.GenericTypeArguments.First();
+                    if (baseType == typeof(Il2CppArrayBase<>))
+                    {
+                        argType = argType.Replace(nameof(Il2CppArrayBase), genType.IsValueType || genType.IsIl2CppValueType()
+                            ? nameof(Il2CppStructArray<>)
+                            : nameof(Il2CppReferenceArray<>));
+                    }
+                    else
+                    {
+                        argType = genType.RealFullName + "[]";
+                    }
+                }
+            }
+            else if (prop.PropertyType == typeof(TargetType) && paramType == typeof(string))
+            {
+                argType = "string";
+            }
+
+            propertyArgTypes[prop] = argType;
+        }
+
+        ModHelper.Msg($"Generated {type.RealFullName}");
+
+        return $$"""
+                 public static class Create{{name}}Ext
+                 {
+                     extension({{type.RealFullName}}) 
+                     {
+                         public static {{type.RealFullName}} Create() => new Args();
+                         public static {{type.RealFullName}} Create(Args args) => args;
+                     }
+
+                     public record Args : ModelArgs<{{type.RealFullName}}>
+                     {
+                         {{properties
+                             .Where(p => p.Name != "name")
+                             .Select(p => $$"""public {{propertyArgTypes[p]}} {{p.Name}} { get; set; } = {{propertyDefaultValues[p]}};""")
+                             .Join(delimiter: "\n        ")}}
+                         
+                         public static implicit operator {{type.RealFullName}}(Args args)
+                         {
+                             var result = new {{type.RealFullName}}({{paramDefaultValues.Join(delimiter: ", ")}});
+                             {{remainingProperties.Select(p => $"result.{p.Name} = {propDefaultValues[p]};").Join(delimiter: "\n            ")}}
+                             return result;   
+                         }
+                     }
+                 }
+                 """;
+    }
+
+    private static string DefaultValue(object obj) => obj switch
+    {
+        string s => $"\"{s}\"",
+        int i => $"{i}",
+        long l => $"{l}l",
+        float f => $"{f}f",
+        double d => $"{d}d",
+        bool b => $"{b.ToString().ToLower()}",
+        Enum e => $"{e.GetType().RealFullName}.{e.ToString()}",
+        _ => "default"
+    };
+
+    extension(Type type)
+    {
+        private string RealFullName
+        {
+            get
+            {
+                if (type.IsGenericType)
+                {
+                    var baseName = type.Name;
+                    if (baseName.Contains('`')) baseName = baseName[..baseName.IndexOf('`')];
+                    return $"{type.Namespace}.{baseName}<{type.GetGenericArguments().Join(t => t.RealFullName)}>";
+                }
+
+                if (type.IsNested)
+                {
+                    return $"{type.DeclaringType!.RealFullName}.{type.Name}";
+                }
+
+                if (type.IsArray)
+                {
+                    return $"{type.GetElementType()!.RealFullName}[{new string(',', type.GetArrayRank() - 1)}]";
+                }
+
+                if (Nullable.GetUnderlyingType(type) is Type underlying)
+                    return $"{underlying.RealFullName}?";
+
+                return type switch
+                {
+                    _ when type == typeof(int) => "int",
+                    _ when type == typeof(string) => "string",
+                    _ when type == typeof(bool) => "bool",
+                    _ when type == typeof(void) => "void",
+                    _ when type == typeof(object) => "object",
+                    _ when type == typeof(byte) => "byte",
+                    _ when type == typeof(sbyte) => "sbyte",
+                    _ when type == typeof(short) => "short",
+                    _ when type == typeof(ushort) => "ushort",
+                    _ when type == typeof(long) => "long",
+                    _ when type == typeof(ulong) => "ulong",
+                    _ when type == typeof(char) => "char",
+                    _ when type == typeof(float) => "float",
+                    _ when type == typeof(double) => "double",
+                    _ when type == typeof(decimal) => "decimal",
+                    _ => type.FullName ?? type.Name
+                };
+            }
+        }
+    }
+
+}

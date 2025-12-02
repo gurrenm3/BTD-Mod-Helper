@@ -74,7 +74,22 @@ public static class ModelSerializer
         {"lifeSpan", "projectileLifeSpan"},
         {"tags", "effectMutationIds"},
         {"speed", "timeScale"},
-        {"projectile", "icewallProjectile"}
+        {"projectile", "icewallProjectile"},
+        {"overridesExisitingCrit", "overridesExistingCrit"},
+        {"addedRerolls", "addedBanAmounts"},
+        {"percentOFTrack", "percentOfTrack"},
+        {"healPercent", "heatPercent"},
+        {"baseTower", "tower"},
+        {"buffIndicator", "buffIndicatorModel"},
+        {"areaName", "name"},
+        {"playerIndex", "areaIndex"},
+        {"baseCost", "costIncrease"},
+        {"rotatingModels", "rotationActions"},
+        {"bloonTag", "bloonTags"},
+        {"disableAutoplay", "settingDisableAutoplay"},
+        {"mutator", "_mutator"},
+        {"mutatorParam", "mutator"},
+        {"hookId", "name"}
     };
 
     private static object GenerateBaseType(JValue value, Type valueType)

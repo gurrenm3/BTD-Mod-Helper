@@ -242,6 +242,8 @@ public static class Il2CppJsonConvert
                                  member.GetUnderlyingType() != typeof(IntPtr))
                 .ToList();
         }
+
+        public List<MemberInfo> GetAllSerializableMembers(Type objectType) => GetSerializableMembers(objectType);
     }
 
     internal class NegativeZeroConverter : JsonConverter
