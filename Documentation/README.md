@@ -363,6 +363,9 @@
 
 | Classes | |
 | :--- | :--- |
+| [AbilityMenuExt](BTD_Mod_Helper.Extensions.AbilityMenuExt.md 'BTD_Mod_Helper.Extensions.AbilityMenuExt') | AbilityMenu extensions |
+| [AbilityMenuExt.&lt;G&gt;$767C9E1839AB5CA3898F1BEE01475F84](BTD_Mod_Helper.Extensions.AbilityMenuExt._G_$767C9E1839AB5CA3898F1BEE01475F84.md 'BTD_Mod_Helper.Extensions.AbilityMenuExt.<G>$767C9E1839AB5CA3898F1BEE01475F84') | |
+| [AbilityMenuExt.&lt;G&gt;$767C9E1839AB5CA3898F1BEE01475F84.&lt;M&gt;$767C9E1839AB5CA3898F1BEE01475F84](BTD_Mod_Helper.Extensions.AbilityMenuExt._G_$767C9E1839AB5CA3898F1BEE01475F84._M_$767C9E1839AB5CA3898F1BEE01475F84.md 'BTD_Mod_Helper.Extensions.AbilityMenuExt.<G>$767C9E1839AB5CA3898F1BEE01475F84.<M>$767C9E1839AB5CA3898F1BEE01475F84') | AbilityMenu extensions |
 | [AbilityModelBehaviorExt](BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AbilityModelBehaviorExt') | Extensions for AbilityModels |
 | [AbilityModelExt](BTD_Mod_Helper.Extensions.AbilityModelExt.md 'BTD_Mod_Helper.Extensions.AbilityModelExt') | Extensions for AbilityModels |
 | [ActionExt](BTD_Mod_Helper.Extensions.ActionExt.md 'BTD_Mod_Helper.Extensions.ActionExt') | Extension methods for System.Action |
@@ -423,6 +426,11 @@
 | [Il2CppSystemObjectExt](BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt.md 'BTD_Mod_Helper.Extensions.Il2CppSystemObjectExt') | Extensions for Il2cpp objects |
 | [ImageExt](BTD_Mod_Helper.Extensions.ImageExt.md 'BTD_Mod_Helper.Extensions.ImageExt') | Extensions for Images |
 | [InGameExt](BTD_Mod_Helper.Extensions.InGameExt.md 'BTD_Mod_Helper.Extensions.InGameExt') | Extensions for the InGame class |
+| [InGameExt.&lt;G&gt;$F3349357083AAA6442A8A6FC8EC6B1C9](BTD_Mod_Helper.Extensions.InGameExt._G_$F3349357083AAA6442A8A6FC8EC6B1C9.md 'BTD_Mod_Helper.Extensions.InGameExt.<G>$F3349357083AAA6442A8A6FC8EC6B1C9') | |
+| [InGameExt.&lt;G&gt;$F3349357083AAA6442A8A6FC8EC6B1C9.&lt;M&gt;$E0E9853422AFA165EC2E3CDFB2278A02](BTD_Mod_Helper.Extensions.InGameExt._G_$F3349357083AAA6442A8A6FC8EC6B1C9._M_$E0E9853422AFA165EC2E3CDFB2278A02.md 'BTD_Mod_Helper.Extensions.InGameExt.<G>$F3349357083AAA6442A8A6FC8EC6B1C9.<M>$E0E9853422AFA165EC2E3CDFB2278A02') | Extensions for the InGame class |
+| [InGameObjectsExt](BTD_Mod_Helper.Extensions.InGameObjectsExt.md 'BTD_Mod_Helper.Extensions.InGameObjectsExt') | InGameObjects extensions |
+| [InGameObjectsExt.&lt;G&gt;$55F7AEAC359F59E373FDB302F2AE67F2](BTD_Mod_Helper.Extensions.InGameObjectsExt._G_$55F7AEAC359F59E373FDB302F2AE67F2.md 'BTD_Mod_Helper.Extensions.InGameObjectsExt.<G>$55F7AEAC359F59E373FDB302F2AE67F2') | |
+| [InGameObjectsExt.&lt;G&gt;$55F7AEAC359F59E373FDB302F2AE67F2.&lt;M&gt;$55F7AEAC359F59E373FDB302F2AE67F2](BTD_Mod_Helper.Extensions.InGameObjectsExt._G_$55F7AEAC359F59E373FDB302F2AE67F2._M_$55F7AEAC359F59E373FDB302F2AE67F2.md 'BTD_Mod_Helper.Extensions.InGameObjectsExt.<G>$55F7AEAC359F59E373FDB302F2AE67F2.<M>$55F7AEAC359F59E373FDB302F2AE67F2') | InGameObjects extensions |
 | [InputFieldExt](BTD_Mod_Helper.Extensions.InputFieldExt.md 'BTD_Mod_Helper.Extensions.InputFieldExt') | Extensions for InputFields |
 | [InputFieldOnValueChanged](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged') | Extension for OnChangeEvent |
 | [InputFieldSubmitEvent](BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.md 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent') | Extensions for InputFieldSubmitEvents |
@@ -431,6 +439,12 @@
 | [LocalizationManagerExt](BTD_Mod_Helper.Extensions.LocalizationManagerExt.md 'BTD_Mod_Helper.Extensions.LocalizationManagerExt') | Extension methods for the Localization Manager. |
 | [LockedList](BTD_Mod_Helper.Extensions.LockedList.md 'BTD_Mod_Helper.Extensions.LockedList') | Extensions for LockedLists |
 | [LockedListExt](BTD_Mod_Helper.Extensions.LockedListExt.md 'BTD_Mod_Helper.Extensions.LockedListExt') | Extensions for LockLists |
+| [MainHudLeftAlignExt](BTD_Mod_Helper.Extensions.MainHudLeftAlignExt.md 'BTD_Mod_Helper.Extensions.MainHudLeftAlignExt') | MainHudLeftAlign extensions |
+| [MainHudLeftAlignExt.&lt;G&gt;$6D0A548055BA0B6350F16DD11B188112](BTD_Mod_Helper.Extensions.MainHudLeftAlignExt._G_$6D0A548055BA0B6350F16DD11B188112.md 'BTD_Mod_Helper.Extensions.MainHudLeftAlignExt.<G>$6D0A548055BA0B6350F16DD11B188112') | |
+| [MainHudLeftAlignExt.&lt;G&gt;$6D0A548055BA0B6350F16DD11B188112.&lt;M&gt;$6D0A548055BA0B6350F16DD11B188112](BTD_Mod_Helper.Extensions.MainHudLeftAlignExt._G_$6D0A548055BA0B6350F16DD11B188112._M_$6D0A548055BA0B6350F16DD11B188112.md 'BTD_Mod_Helper.Extensions.MainHudLeftAlignExt.<G>$6D0A548055BA0B6350F16DD11B188112.<M>$6D0A548055BA0B6350F16DD11B188112') | MainHudLeftAlign extensions |
+| [MainHudRightAlignExt](BTD_Mod_Helper.Extensions.MainHudRightAlignExt.md 'BTD_Mod_Helper.Extensions.MainHudRightAlignExt') | MainHudRightAlign extensions |
+| [MainHudRightAlignExt.&lt;G&gt;$5931AA57DC36C39C773546159EB00AAF](BTD_Mod_Helper.Extensions.MainHudRightAlignExt._G_$5931AA57DC36C39C773546159EB00AAF.md 'BTD_Mod_Helper.Extensions.MainHudRightAlignExt.<G>$5931AA57DC36C39C773546159EB00AAF') | |
+| [MainHudRightAlignExt.&lt;G&gt;$5931AA57DC36C39C773546159EB00AAF.&lt;M&gt;$5931AA57DC36C39C773546159EB00AAF](BTD_Mod_Helper.Extensions.MainHudRightAlignExt._G_$5931AA57DC36C39C773546159EB00AAF._M_$5931AA57DC36C39C773546159EB00AAF.md 'BTD_Mod_Helper.Extensions.MainHudRightAlignExt.<G>$5931AA57DC36C39C773546159EB00AAF.<M>$5931AA57DC36C39C773546159EB00AAF') | MainHudRightAlign extensions |
 | [MapExt](BTD_Mod_Helper.Extensions.MapExt.md 'BTD_Mod_Helper.Extensions.MapExt') | Extensions for Maps |
 | [MiscModelExt](BTD_Mod_Helper.Extensions.MiscModelExt.md 'BTD_Mod_Helper.Extensions.MiscModelExt') | Other miscellaneous extensions for various Model classes |
 | [ModelExt](BTD_Mod_Helper.Extensions.ModelExt.md 'BTD_Mod_Helper.Extensions.ModelExt') | Extensions for Models |
@@ -450,6 +464,9 @@
 | [RootObjectLockList](BTD_Mod_Helper.Extensions.RootObjectLockList.md 'BTD_Mod_Helper.Extensions.RootObjectLockList') | Extensions for RootObjectLockLists |
 | [RoundModelExt](BTD_Mod_Helper.Extensions.RoundModelExt.md 'BTD_Mod_Helper.Extensions.RoundModelExt') | Extensions for RoundModels |
 | [SelectableExt](BTD_Mod_Helper.Extensions.SelectableExt.md 'BTD_Mod_Helper.Extensions.SelectableExt') | Extensions for Selectable |
+| [ShopMenuExt](BTD_Mod_Helper.Extensions.ShopMenuExt.md 'BTD_Mod_Helper.Extensions.ShopMenuExt') | ShopMenu extensions |
+| [ShopMenuExt.&lt;G&gt;$79FCFF556C63276FE0AC1FAD3EE2CE0D](BTD_Mod_Helper.Extensions.ShopMenuExt._G_$79FCFF556C63276FE0AC1FAD3EE2CE0D.md 'BTD_Mod_Helper.Extensions.ShopMenuExt.<G>$79FCFF556C63276FE0AC1FAD3EE2CE0D') | |
+| [ShopMenuExt.&lt;G&gt;$79FCFF556C63276FE0AC1FAD3EE2CE0D.&lt;M&gt;$79FCFF556C63276FE0AC1FAD3EE2CE0D](BTD_Mod_Helper.Extensions.ShopMenuExt._G_$79FCFF556C63276FE0AC1FAD3EE2CE0D._M_$79FCFF556C63276FE0AC1FAD3EE2CE0D.md 'BTD_Mod_Helper.Extensions.ShopMenuExt.<G>$79FCFF556C63276FE0AC1FAD3EE2CE0D.<M>$79FCFF556C63276FE0AC1FAD3EE2CE0D') | ShopMenu extensions |
 | [SimulationExt](BTD_Mod_Helper.Extensions.SimulationExt.md 'BTD_Mod_Helper.Extensions.SimulationExt') | Extensions for [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation') |
 | [SliderEventExt](BTD_Mod_Helper.Extensions.SliderEventExt.md 'BTD_Mod_Helper.Extensions.SliderEventExt') | Extensions for SliderEvents |
 | [SpawnerExt](BTD_Mod_Helper.Extensions.SpawnerExt.md 'BTD_Mod_Helper.Extensions.SpawnerExt') | Extensions for Spawners |
@@ -467,6 +484,9 @@
 | [TowerExt](BTD_Mod_Helper.Extensions.TowerExt.md 'BTD_Mod_Helper.Extensions.TowerExt') | Extensions for Towers |
 | [TowerModelBehaviorExt](BTD_Mod_Helper.Extensions.TowerModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.TowerModelBehaviorExt') | Extensions for TowerModels |
 | [TowerModelExt](BTD_Mod_Helper.Extensions.TowerModelExt.md 'BTD_Mod_Helper.Extensions.TowerModelExt') | Extensions for TowerModels |
+| [TowerSelectionMenuExt](BTD_Mod_Helper.Extensions.TowerSelectionMenuExt.md 'BTD_Mod_Helper.Extensions.TowerSelectionMenuExt') | TowerSelectionMenu extensions |
+| [TowerSelectionMenuExt.&lt;G&gt;$56C4B11812CCCA0BFFB6AE8A3F2DC90D](BTD_Mod_Helper.Extensions.TowerSelectionMenuExt._G_$56C4B11812CCCA0BFFB6AE8A3F2DC90D.md 'BTD_Mod_Helper.Extensions.TowerSelectionMenuExt.<G>$56C4B11812CCCA0BFFB6AE8A3F2DC90D') | |
+| [TowerSelectionMenuExt.&lt;G&gt;$56C4B11812CCCA0BFFB6AE8A3F2DC90D.&lt;M&gt;$56C4B11812CCCA0BFFB6AE8A3F2DC90D](BTD_Mod_Helper.Extensions.TowerSelectionMenuExt._G_$56C4B11812CCCA0BFFB6AE8A3F2DC90D._M_$56C4B11812CCCA0BFFB6AE8A3F2DC90D.md 'BTD_Mod_Helper.Extensions.TowerSelectionMenuExt.<G>$56C4B11812CCCA0BFFB6AE8A3F2DC90D.<M>$56C4B11812CCCA0BFFB6AE8A3F2DC90D') | TowerSelectionMenu extensions |
 | [TowerToSimulationExt](BTD_Mod_Helper.Extensions.TowerToSimulationExt.md 'BTD_Mod_Helper.Extensions.TowerToSimulationExt') | Extensions for TowerToSimulation |
 | [TypeExt](BTD_Mod_Helper.Extensions.TypeExt.md 'BTD_Mod_Helper.Extensions.TypeExt') | Extensions for Type |
 | [UnityDisplayNodeExt](BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.md 'BTD_Mod_Helper.Extensions.UnityDisplayNodeExt') | Extensions for UnityDisplayNodes |

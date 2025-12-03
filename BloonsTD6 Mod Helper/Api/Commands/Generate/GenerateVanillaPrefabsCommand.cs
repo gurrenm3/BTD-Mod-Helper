@@ -1,4 +1,4 @@
-#if DEBUG
+#if VANILLA_PREFABS
 using BTD_Mod_Helper.Api.Internal;
 namespace BTD_Mod_Helper.Api.Commands.Generate;
 

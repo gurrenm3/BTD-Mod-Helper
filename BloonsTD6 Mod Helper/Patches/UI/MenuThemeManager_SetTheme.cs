@@ -13,7 +13,7 @@ internal class MenuThemeManager_SetTheme
     [HarmonyPostfix]
     internal static void Postfix(MenuThemeManager __instance, BaseTSMTheme newTheme)
     {
-        if (__instance.selectionMenu.Is(out TowerSelectionMenu menu) &&
+        if (__instance.PlayerContext.towerSelectionMenu.Is(out TowerSelectionMenu menu) &&
             menu.selectedTower.Def.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet &&
             !menu.selectedTower.IsParagon &&
             newTheme.Is(out TSMThemeDefault defaultTheme))

@@ -83,6 +83,7 @@ public static class UpgradeType
     public const string CryoCannon = "Cryo Cannon";
     public const string Icicles = "Icicles";
     public const string IcicleImpale = "Icicle Impale";
+    public const string IcemonkeyParagon = "IceMonkey Paragon";
     public const string GlueSoak = "Glue Soak";
     public const string CorrosiveGlue = "Corrosive Glue";
     public const string BloonDissolver = "Bloon Dissolver";
@@ -812,6 +813,7 @@ public static class UpgradeType
         { "CryoCannon", CryoCannon },
         { "Icicles", Icicles },
         { "IcicleImpale", IcicleImpale },
+        { "IcemonkeyParagon", IcemonkeyParagon },
         { "GlueSoak", GlueSoak },
         { "CorrosiveGlue", CorrosiveGlue },
         { "BloonDissolver", BloonDissolver },

@@ -71,7 +71,7 @@ public static partial class ArtifactModelBehaviorExt
         var boost = new AddTowerBehaviorsArtifactModel("", new Il2CppStringArray(0),
             new Il2CppStringArray(0), new Il2CppStringArray(0), new Il2CppStringArray(0),
             new Il2CppStringArray([]), false, new Il2CppStructArray<TowerSet>(0), false,
-            new Il2CppStructArray<int>([]), false, false, false, false)
+            new Il2CppStructArray<int>([]), false, false, false, false, "")
         {
             behaviorModels = towerBehaviors.ToIl2CppReferenceArray()
         };
@@ -105,7 +105,7 @@ public static partial class ArtifactModelBehaviorExt
         var boost = new AddProjectileBehaviorsArtifactModel("", new Il2CppStringArray(0),
             new Il2CppStringArray(0), new Il2CppStringArray(0), new Il2CppStringArray(0),
             new Il2CppStringArray([]), false, new Il2CppStructArray<TowerSet>(0), false,
-            new Il2CppStructArray<int>([]), false, false, false, false)
+            new Il2CppStructArray<int>([]), false, false, false, false, "")
         {
             behaviorModels = projectileBehaviors.ToIl2CppReferenceArray()
         };

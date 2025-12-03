@@ -102,7 +102,7 @@ public class ProjectileHelper : ModelHelper<ProjectileModel>
             Filter.filters = value.OfIl2CppType<FilterInvisibleModel>().Any()
                 ? value
                 : value.Prepend(invis).ToArray();
-            Filter.AddChildDependants(Model.behaviors);
+            Filter.AddChildDependants(Filter.filters);
         }
     }
 

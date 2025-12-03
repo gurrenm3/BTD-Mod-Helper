@@ -385,4 +385,14 @@ public static class InGameExt
             : model.freeplayGroups[index].bloonEmissions;
         inGame.SpawnBloons(emissions);
     }
+
+    /// <inheritdoc cref="InGameExt"/>
+    extension(InGame inGame)
+    {
+        /// <summary>
+        /// Gets the main InputManager instance
+        /// </summary>
+        public Il2CppAssets.Scripts.Unity.UI_New.InGame.InputManager InputManager =>
+            inGame?.playerContexts?.FirstOrDefault().inputManager;
+    }
 }

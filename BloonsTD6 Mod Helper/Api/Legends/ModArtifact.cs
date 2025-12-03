@@ -392,7 +392,7 @@ public abstract class ModItemArtifact : ModArtifact<ItemArtifactData, ItemArtifa
     protected sealed override ItemArtifactModel CreateArtifactModel(int tier, int index) => new(GetId(index), tier,
         Id, new Il2CppReferenceArray<ItemArtifactBehaviorModel>(0), GetId(index), GetId(index) + "Description",
         new Il2CppStringArray(0), GetIcon(tier), RarityFrameType.ToString(), false, false,
-        InstaMonkey(tier) is { } insta && InstaTiers(tier) is { } tiers
+        false, InstaMonkey(tier) is { } insta && InstaTiers(tier) is { } tiers
             ? new RogueInstaMonkey
             {
                 lootType = RogueLootType.permanent,
@@ -436,5 +436,6 @@ public abstract class ModMapArtifact : ModArtifact<MapArtifactData, MapArtifactM
     /// <inheritdoc />
     protected sealed override MapArtifactModel CreateArtifactModel(int tier, int index) => new(GetId(index),
         tier, Id, new Il2CppReferenceArray<MapArtifactBehaviorModel>(0), GetId(index),
-        GetId(index) + "Description", new Il2CppStringArray(0), GetIcon(tier), RarityFrameType.ToString(), false, false, 1);
+        GetId(index) + "Description", new Il2CppStringArray(0), GetIcon(tier), RarityFrameType.ToString(), false, false,
+        false, 1);
 }

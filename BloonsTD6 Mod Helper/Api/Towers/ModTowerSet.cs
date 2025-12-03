@@ -136,7 +136,9 @@ public abstract class ModTowerSet : NamedModContent
     /// <returns></returns>
     public virtual int GetTowerStartIndex(List<TowerDetailsModel> towerSet)
     {
-        var towerSets = towerSet.Select(model => model.GetTower().towerSet);
+        var towerSets = towerSet.Select(model => model?.GetTower()?.towerSet)
+            .Where(set => set.HasValue)
+            .Select(set => set!.Value);
 
         // Group the towers into chunks of the same tower set
         var towerSetChunks = new List<Tuple<TowerSet, int>>();

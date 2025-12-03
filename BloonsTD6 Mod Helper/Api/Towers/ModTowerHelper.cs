@@ -308,7 +308,7 @@ public static class ModTowerHelper
         var sprite = Il2CppSystem.Nullable<SpriteReference>.Unbox(ModContent.CreateSpriteReference(""));
         var prefab = Il2CppSystem.Nullable<PrefabReference>.Unbox(ModContent.CreatePrefabReference(""));
         var display = ModContent.CreatePrefabReference("");
-        return new TowerModel(name, baseId ?? name, towerSet, display, icon: sprite, portrait: sprite, instaIcon: sprite,
+        return new TowerModel(name, baseId ?? name, towerSet, "", display, icon: sprite, portrait: sprite, instaIcon: sprite,
             emoteSpriteSmall: sprite, emoteSpriteLarge: sprite, secondarySelectionMenu: display, icon3D: prefab,
             behaviors: new Il2CppReferenceArray<Model>(0));
     }

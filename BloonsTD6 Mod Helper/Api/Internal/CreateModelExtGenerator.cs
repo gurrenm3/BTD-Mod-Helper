@@ -34,7 +34,7 @@ internal static class CreateModelExtGenerator
         {
             try
             {
-                return allowedModelNames.Contains(type.Name) &&
+                return !(type.Namespace ?? "").Contains(".Artifacts.") &&
                        type.IsAssignableTo(typeof(Model)) &&
                        !type.IsAssignableTo(typeof(GameModel)) &&
                        !Il2CppType.From(type).IsAbstract &&
@@ -149,7 +149,7 @@ internal static class CreateModelExtGenerator
 
             if (param?.HasDefaultValue == true && !propType.IsIl2CppNullable())
             {
-                defaultValue = DefaultValue(param.RawDefaultValue);
+                defaultValue = DefaultValue(param.DefaultValue);
             }
             else
             {
@@ -231,7 +231,7 @@ internal static class CreateModelExtGenerator
         ModHelper.Msg($"Generated {type.RealFullName}");
 
         return $$"""
-                 public static class Create{{name}}Ext
+                 public static partial class Create{{name}}Ext
                  {
                      extension({{type.RealFullName}}) 
                      {
@@ -239,7 +239,7 @@ internal static class CreateModelExtGenerator
                          public static {{type.RealFullName}} Create(Args args) => args;
                      }
 
-                     public class Args : ModelArgs<{{type.RealFullName}}>
+                     public partial class Args : ModelArgs<{{type.RealFullName}}>
                      {
                          {{properties
                              .Where(p => p.Name != "name")

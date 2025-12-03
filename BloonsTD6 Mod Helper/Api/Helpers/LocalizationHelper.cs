@@ -103,7 +103,7 @@ public class LocalizationHelper
         }
 
         LastImportedLanguage = language;
-        LocalizationManager.Instance.UpdateAllTextObjectsForLanguageAsync(language);
+        LocalizationManager.Instance.UpdateAllTextObjectsForLanguageAsync();
     }
 
     internal static int ImportLocalization(FileInfo file, bool refresh = false)
@@ -121,7 +121,7 @@ public class LocalizationHelper
             {
                 ModHelper.Msg($"Updated localization from {fileName}");
                 TaskScheduler.ScheduleTask(() =>
-                    LocalizationManager.Instance.UpdateAllTextObjectsForLanguageAsync(language));
+                    LocalizationManager.Instance.UpdateAllTextObjectsForLanguageAsync());
             }
 
             return result;

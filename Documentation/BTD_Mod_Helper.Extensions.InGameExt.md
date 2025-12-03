@@ -81,6 +81,24 @@ InGame instance
 
 Amount to add to the player's max health
 
+<a name='BTD_Mod_Helper.Extensions.InGameExt.get_InputManager(InGame)'></a>
+
+## InGameExt.get_InputManager(InGame) Method
+
+Gets the main InputManager instance
+
+```csharp
+public static InputManager get_InputManager(InGame inGame);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.InGameExt.get_InputManager(InGame).inGame'></a>
+
+`inGame` [Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame 'Il2CppAssets.Scripts.Unity.UI_New.InGame.InGame')
+
+#### Returns
+[Il2CppAssets.Scripts.Unity.UI_New.InGame.InputManager](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.InputManager 'Il2CppAssets.Scripts.Unity.UI_New.InGame.InputManager')
+
 <a name='BTD_Mod_Helper.Extensions.InGameExt.GetAbilities(thisInGame)'></a>
 
 ## InGameExt.GetAbilities(this InGame) Method

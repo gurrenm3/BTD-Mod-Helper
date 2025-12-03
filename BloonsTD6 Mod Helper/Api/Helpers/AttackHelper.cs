@@ -63,7 +63,7 @@ public class AttackHelper : ModelHelper<AttackModel>
             Model.AddChildDependants(Model.behaviors);
         }
     }
-    
+
     /// Default includes the required FilterInvisibleModel
     /// <seealso cref="AttackFilterModel.filters"/>
     public FilterModel[] Filters
@@ -71,11 +71,11 @@ public class AttackHelper : ModelHelper<AttackModel>
         get => Filter.filters;
         set
         {
-            Filter.RemoveChildDependants(Model.behaviors);
+            Filter.RemoveChildDependants(Filter.filters);
             Filter.filters = value.OfIl2CppType<FilterInvisibleModel>().Any()
                 ? value
-                : value.Prepend(Filter.GetChild<FilterInvisibleModel>()).ToArray();
-            Filter.AddChildDependants(Model.behaviors);
+                : value.Prepend(Filter.filters.OfIl2CppType<FilterInvisibleModel>().First()).ToArray();
+            Filter.AddChildDependants(Filter.filters);
         }
     }
 
@@ -175,7 +175,7 @@ public class AttackHelper : ModelHelper<AttackModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 })
-            }, null, 0, 0, 0, false, false, 0, true, 0, null)
+            }, null, 0, 0, 0, false, false, 0, true, 0, null, false)
         : new AttackModel(name,
             new Il2CppReferenceArray<WeaponModel>(0), 0, new[]
             {
@@ -183,7 +183,7 @@ public class AttackHelper : ModelHelper<AttackModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 })
-            }, null, 0, 0, 0, false, false, 0, true, 0, false)) // TODO should this be true
+            }, null, 0, 0, 0, false, false, 0, true, 0, false, false))
     {
     }
 

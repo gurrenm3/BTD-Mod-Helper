@@ -1,3 +1,4 @@
+#if DEBUG
 using BTD_Mod_Helper.Api.Internal;
 namespace BTD_Mod_Helper.Api.Commands.Generate;
 
@@ -13,3 +14,4 @@ internal class GenerateModelCreatesCommand : ModCommand<GenerateCommand>
         return true;
     }
 }
+#endif

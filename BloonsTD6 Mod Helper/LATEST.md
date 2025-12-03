@@ -2,6 +2,7 @@
 
 <!--Mod Browser Message Start-->
 
+- Initial fixes for BTD6 v52
 - Added support for using .ogg files for audio
   - btd6.targets will now automatically mark .ogg files as Embedded Resources
 - Fixed issue where custom sounds could stop being available via PrefabReference from the AudioFactory after quitting a match
@@ -20,4 +21,12 @@ public override void OnTitleScreen()
   
 GetAudioClipReference<MyMod>("CustomSound")
 ```
-- 
+- Using the new C# 14 static extensions feature, added new static .Create() methods for many Models. These have the benefit of not breaking if the constructor for the model gets changed by an update
+```csharp
+new DamageModel("", 2, 0, true, false, false, Lead | Frozen, Lead | Frozen, false, false)
+// ... now can instead do
+DamageModel.Create(new()
+{
+    damage = 2, distributeToChildren = true, immuneBloonProperties = Lead | Frozen, immuneBloonPropertiesOriginal = Lead | Frozen
+}),
+```

@@ -8,7 +8,7 @@ internal class UpgradeObject_CheckBlockedPath
     [HarmonyPostfix]
     internal static void Postfix(UpgradeObject __instance, ref int __result)
     {
-        var towerModel = __instance.tts?.Def;
+        var towerModel = __instance.tts?.tower?.towerModel;
         if (towerModel?.GetModTower() is ModTower modTower &&
             modTower.MaxUpgradePips(__instance.tts, __instance.path, __result) is int newMax)
         {

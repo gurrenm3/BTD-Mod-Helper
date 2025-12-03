@@ -465,7 +465,7 @@ public abstract class ModTower : NamedModContent
     /// <returns></returns>
     public virtual int GetTowerIndex(List<TowerDetailsModel> towerSet)
     {
-        if (towerSet.LastOrDefault(details => details.GetTower().towerSet == TowerSet) is { } tower)
+        if (towerSet.LastOrDefault(details => details?.GetTower()?.towerSet == TowerSet) is { } tower)
         {
             return tower.towerIndex + 1;
         }

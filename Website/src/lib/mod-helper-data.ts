@@ -44,7 +44,7 @@ export const ModHelperRepoName = "BTD-Mod-Helper";
 export const ModHelperRepoBranch = "master";
 
 export const StoppedWorkingVersion = 34;
-export const LatestVersion = 51;
+export const LatestVersion = 52;
 
 export type ModHelperData = {
   // Serialized
