@@ -1,6 +1,8 @@
+#if BLOCKLY
 using System.IO;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+
 namespace BTD_Mod_Helper.Api.Commands.Generate;
 
 internal class GenerateBlocklyCommand : ModCommand<GenerateCommand>
@@ -20,3 +22,4 @@ internal class GenerateBlocklyCommand : ModCommand<GenerateCommand>
         return true;
     }
 }
+#endif

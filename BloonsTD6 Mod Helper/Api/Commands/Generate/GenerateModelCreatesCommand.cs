@@ -9,7 +9,7 @@ internal class GenerateModelCreatesCommand : ModCommand<GenerateCommand>
 
     public override bool Execute(ref string resultText)
     {
-        ModelCreatesGenerator.Generate();
+        CreateModelExtGenerator.Generate();
         return true;
     }
 }

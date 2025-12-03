@@ -114,6 +114,7 @@ public static class ResourceHandler
             }
             catch (Exception e)
             {
+                ModHelper.Warning("Failed to load audio clip " + fileName);
                 ModHelper.Warning(e);
             }
         }
@@ -209,6 +210,7 @@ public static class ResourceHandler
         }
         catch (Exception e)
         {
+            ModHelper.Warning("Failed to load audio clip " + id);
             ModHelper.Warning(e);
         }
 
