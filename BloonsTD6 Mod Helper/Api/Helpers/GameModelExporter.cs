@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Xml.Linq;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Legends;
@@ -16,6 +15,7 @@ using Newtonsoft.Json.Linq;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using Exception = System.Exception;
+using Type = System.Type;
 
 namespace BTD_Mod_Helper.Api.Helpers;
 
@@ -75,6 +75,7 @@ public static class GameModelExporter
         Export(LocalizationManager.Instance.textTable, "textTable.json");
         Export(gameModel.paragonDegreeDataModel, "paragonDegreeData.json");
         Export(CreateResourceMap(), "resources.json");
+
         Export(gameData.rogueData, "rogueData.json", o =>
         {
             o.Remove(nameof(RogueData.mapTemplates));
@@ -82,10 +83,45 @@ public static class GameModelExporter
             o.Remove(nameof(RogueData.LegendsData));
             o.Value<JObject>(nameof(RogueData.featsData))!.Remove(nameof(RogueData.featsData.activeFeats));
         });
+        Export(gameData.frontierData, "frontierData.json", o =>
+        {
+            o.Remove(nameof(FrontierData.assetData));
+            o.Remove(nameof(FrontierData.FrontierSaveData));
+            o.Remove(nameof(FrontierData.LegendsData));
+            o.Value<JObject>(nameof(FrontierData.featsData))!.Remove(nameof(FrontierData.featsData.activeFeats));
+        });
 
 #if DEBUG
         FileIOHelper.SaveFile(".gitignore", gitIgnore);
 #endif
+    }
+
+
+    internal static readonly JsonSerializer Serializer = JsonSerializer.Create(new()
+    {
+        ContractResolver = new ExporterContractResolver(),
+        Converters =
+        {
+            new Il2CppJsonConvert.Il2CppConverter(), new Il2CppJsonConvert.UnityColorConverter(),
+            new Il2CppJsonConvert.NegativeZeroConverter()
+        },
+        TypeNameHandling = TypeNameHandling.Objects,
+        SerializationBinder = new Il2CppJsonConvert.Il2CppSerializationBinder(),
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        Formatting = Formatting.Indented
+    });
+
+    internal class ExporterContractResolver : Il2CppJsonConvert.ModelContractResolver
+    {
+        protected override bool AllowedMemberType(Type type) =>
+            !type.IsAssignableTo(typeof(LegendsQuestData)) &&
+            !type.IsAssignableTo(typeof(FrontierCampaignData)) &&
+            !type.IsAssignableTo(typeof(FrontierBloonRushData)) &&
+            !type.IsAssignableTo(typeof(FrontierGameSaveData)) &&
+            !type.IsAssignableTo(typeof(LegendsData)) &&
+            !type.IsAssignableTo(typeof(LegendsTileAssetData)) &&
+            !type.IsAssignableTo(typeof(FrontierLevelData)) &&
+            base.AllowedMemberType(type);
     }
 
     private static JObject CreateResourceMap()
@@ -205,7 +241,7 @@ public static class GameModelExporter
 
         try
         {
-            var jobject = JObject.FromObject(data, Il2CppJsonConvert.Serializer);
+            var jobject = JObject.FromObject(data, Serializer);
             modify?.Invoke(jobject);
 
             FileIOHelper.SaveFile(path, jobject.ToString(Formatting.Indented));

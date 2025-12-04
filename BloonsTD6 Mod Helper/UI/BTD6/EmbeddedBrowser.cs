@@ -32,6 +32,8 @@ internal static class EmbeddedBrowser
             return;
         }
 
+#pragma warning disable CS0162 // Unreachable code detected
+
         var player = Game.Player;
         var controller = player.webviewLiNKAccountController ??=
             new MobileWebviewLiNKAccountController(player.LiNKAccountController, new Action(() => { }));

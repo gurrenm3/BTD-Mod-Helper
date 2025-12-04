@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
 using Il2CppSystem.Collections;
@@ -321,12 +320,12 @@ public static class Il2CppJsonConvert
 
     internal class ModelContractResolver : Il2CppContractResolver
     {
-        private bool AllowedMemberType(Type type) =>
+        protected virtual bool AllowedMemberType(Type type) =>
             !type.IsAssignableTo(typeof(BehaviorMutator)) &&
             !type.IsAssignableTo(typeof(Il2CppAssets.Scripts.ObjectId)) &&
             !(type.IsGenericType && type.GenericTypeArguments.Any(t => !AllowedMemberType(t)));
 
-        private bool AllowedMember(MemberInfo member) =>
+        protected bool AllowedMember(MemberInfo member) =>
             AllowedMemberType(member.GetUnderlyingType()) &&
             member.Name != nameof(Model.childDependants) &&
             member.Name != nameof(Model.ImplementationType);
