@@ -1,5 +1,6 @@
 ﻿using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
+using Il2CppAssets.Scripts.Unity;
 namespace BTD_Mod_Helper.Api.Bloons;
 
 /// <summary>
@@ -18,6 +19,11 @@ public class BloonModelUtils
     public static string ConstructBloonId(string bloonName, bool camo, bool regrow, bool fortified)
     {
         var baseName = bloonName.Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", "");
+
+        if (Game.instance.model == null)
+        {
+            return bloonName + (regrow ? "Regrow" : "") + (fortified ? "Fortified" : "") + (camo ? "Camo" : "");
+        }
 
         return BloonType.Construct(baseName, camo, regrow, fortified);
     }

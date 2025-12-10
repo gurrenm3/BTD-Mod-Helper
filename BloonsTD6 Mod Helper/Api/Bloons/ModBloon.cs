@@ -15,10 +15,10 @@ namespace BTD_Mod_Helper.Api.Bloons;
 /// </summary>
 public abstract class ModBloon : NamedModContent
 {
-    internal static readonly Dictionary<string, ModBloon> Cache = new();
+    internal static readonly Dictionary<string, ModBloon> Cache = [];
 
-    internal static readonly Dictionary<string, BloonModel> BloonModelCache = new();
-    internal readonly List<ModBloonDisplay> displays = new();
+    internal static readonly Dictionary<string, BloonModel> BloonModelCache = [];
+    internal readonly List<ModBloonDisplay> displays = [];
     internal BloonModel bloonModel;
 
     /// <inheritdoc />
@@ -217,13 +217,6 @@ public abstract class ModBloon : NamedModContent
         }
 
         model.damageDisplayStates = displayStates.ToIl2CppReferenceArray();
-
-        /* No longer included as of v32.0
-        foreach (var damageStateModel in displayStates)
-        {
-            model.AddBehavior(damageStateModel);
-        }
-        */
     }
 
     /// <summary>
