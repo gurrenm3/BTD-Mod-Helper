@@ -356,7 +356,7 @@ public static class Il2CppJsonConvert
     {
         var name = il2cppType.AssemblyQualifiedName
             .Replace("Assets.Scripts", "Il2CppAssets.Scripts")
-            .Replace("NinjaKiwi.Common", "Il2CppNinjaKiwi.Common");
+            .Replace("NinjaKiwi.", "Il2CppNinjaKiwi.");
 
         return Type.GetType(name);
     }

@@ -24,6 +24,7 @@ internal class ExportImageCommand : ModCommand<ExportCommand>
             }, raycastResults);
 
             var imagesFolder = Path.Combine(FileIOHelper.sandboxRoot, "Images");
+            Directory.CreateDirectory(imagesFolder);
 
             foreach (var result in raycastResults)
             {

@@ -22559,6 +22559,7 @@ public static partial class CreateOverclockModelExt
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
         public float[] tierBasedDurationMultiplier { get; set; } = default;
+        public float paragonDurationMultiplier { get; set; } = 0;
         public bool isParagonMode { get; set; } = false;
         public float paragonZoneRange { get; set; } = 0f;
         public int paragonZoneLifespanFrames { get; set; } = 0;
@@ -22566,7 +22567,7 @@ public static partial class CreateOverclockModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.OverclockModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.OverclockModel(args.name, args.lifespanFrames, args.rateModifier, args.villageRangeModifier, args.mutatorId, args.mutatorSaveId, args.maxStacks, args.selectionObjectPath, args.buffDisplayPath, args.initialEffect, args.tierBasedDurationMultiplier, args.buffLocsName, args.buffIconName, args.isParagonMode, args.paragonZoneRange, args.paragonZoneLifespanFrames);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.OverclockModel(args.name, args.lifespanFrames, args.rateModifier, args.villageRangeModifier, args.mutatorId, args.mutatorSaveId, args.maxStacks, args.selectionObjectPath, args.buffDisplayPath, args.initialEffect, args.tierBasedDurationMultiplier, args.paragonDurationMultiplier, args.buffLocsName, args.buffIconName, args.isParagonMode, args.paragonZoneRange, args.paragonZoneLifespanFrames);
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutator != default) result.mutator = args.mutator;
             return result;   

@@ -1,18 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Internal;
-using Il2CppAssets.Scripts.Unity.Menu;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 
 namespace BTD_Mod_Helper.Patches.UI;
 
-[HarmonyPatch]
-internal static class MenuManager_IsAnyMenuOrPopupShowing
+[HarmonyPatch(typeof(PopupScreen), nameof(PopupScreen.IsPopupActive))]
+internal static class PopupScreen_IsPopupActive
 {
-    private static IEnumerable<MethodBase> TargetMethods() => typeof(MenuManager).GetMethods()
-        .Where(info => info.Name == nameof(MenuManager.IsAnyMenuOrPopupShowing));
-
     [HarmonyPrefix]
     internal static bool Prefix(ref bool __result)
     {
