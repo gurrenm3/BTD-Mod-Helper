@@ -24,7 +24,10 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
                                                   BindingFlags.Public |
                                                   BindingFlags.NonPublic;
 
-    internal const string HijackSpriteAtlas = "Ui";
+    /// <summary>
+    /// The Sprite Atlas Mod Helper hijacks for loading modded sprites
+    /// </summary>
+    public const string HijackSpriteAtlas = "Ui";
 
 
     internal readonly Stack<Action> rollbackActions = new();

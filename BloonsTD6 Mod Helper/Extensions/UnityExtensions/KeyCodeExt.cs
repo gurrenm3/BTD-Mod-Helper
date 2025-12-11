@@ -5,7 +5,7 @@ namespace BTD_Mod_Helper.Extensions;
 /// <summary>
 /// Extension methods for keycodes
 /// </summary>
-internal static class KeyCodeExt
+public static class KeyCodeExt
 {
     /// <summary>
     /// Gets the path string for the given key code

@@ -32,6 +32,19 @@ Derived
 Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent'), [System.IComparable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')
 ### Fields
 
+<a name='BTD_Mod_Helper.Api.ModContent.HijackSpriteAtlas'></a>
+
+## ModContent.HijackSpriteAtlas Field
+
+The Sprite Atlas Mod Helper hijacks for loading modded sprites
+
+```csharp
+public const string HijackSpriteAtlas = "Ui";
+```
+
+#### Field Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Api.ModContent.mod'></a>
 
 ## ModContent.mod Field

@@ -98,6 +98,7 @@
 
 | Classes | |
 | :--- | :--- |
+| [MatchAnchoredPosition](BTD_Mod_Helper.Api.Components.MatchAnchoredPosition.md 'BTD_Mod_Helper.Api.Components.MatchAnchoredPosition') | Component to make this transform continuously match the position of another transform |
 | [MatchLocalPosition](BTD_Mod_Helper.Api.Components.MatchLocalPosition.md 'BTD_Mod_Helper.Api.Components.MatchLocalPosition') | Component to make this transform continuously match the position of another transform |
 | [ModGameMenuTracker](BTD_Mod_Helper.Api.Components.ModGameMenuTracker.md 'BTD_Mod_Helper.Api.Components.ModGameMenuTracker') | Component to track that a instance of a GameMenu's gameObject actually is the same ModGameMenu as was opened,<br/>as direct comparison on the Unity Objects does not work reliably |
 | [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton') | ModHelperComponent for a button |
@@ -434,6 +435,7 @@
 | [InputFieldExt](BTD_Mod_Helper.Extensions.InputFieldExt.md 'BTD_Mod_Helper.Extensions.InputFieldExt') | Extensions for InputFields |
 | [InputFieldOnValueChanged](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged') | Extension for OnChangeEvent |
 | [InputFieldSubmitEvent](BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.md 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent') | Extensions for InputFieldSubmitEvents |
+| [KeyCodeExt](BTD_Mod_Helper.Extensions.KeyCodeExt.md 'BTD_Mod_Helper.Extensions.KeyCodeExt') | Extension methods for keycodes |
 | [LayoutGroupExt](BTD_Mod_Helper.Extensions.LayoutGroupExt.md 'BTD_Mod_Helper.Extensions.LayoutGroupExt') | Extensions for LayoutGroups |
 | [ListExt](BTD_Mod_Helper.Extensions.ListExt.md 'BTD_Mod_Helper.Extensions.ListExt') | Extensions for non il2cpp Lists |
 | [LocalizationManagerExt](BTD_Mod_Helper.Extensions.LocalizationManagerExt.md 'BTD_Mod_Helper.Extensions.LocalizationManagerExt') | Extension methods for the Localization Manager. |
