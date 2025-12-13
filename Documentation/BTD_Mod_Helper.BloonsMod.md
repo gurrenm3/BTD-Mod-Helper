@@ -234,6 +234,44 @@ The parameters that another mod has provided
 [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')  
 A possible result of this call
 
+<a name='BTD_Mod_Helper.BloonsMod.Call_T_(string,object[])'></a>
+
+## BloonsMod.Call<T>(string, object[]) Method
+
+Allows you to define ways for other mods to interact with this mod. Other mods could do:  
+  
+```csharp  
+ModHelper.GetMod("YourModName")?.Call("YourOperationName", ...);  
+```  
+to execute functionality here.  
+<br/>
+
+```csharp
+public T Call<T>(string operation, params object[] parameters);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.BloonsMod.Call_T_(string,object[]).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsMod.Call_T_(string,object[]).operation'></a>
+
+`operation` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+A string for the name of the operation that another mods wants to call
+
+<a name='BTD_Mod_Helper.BloonsMod.Call_T_(string,object[]).parameters'></a>
+
+`parameters` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+The parameters that another mod has provided
+
+#### Returns
+[T](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.Call_T_(string,object[]).T 'BTD_Mod_Helper.BloonsMod.Call<T>(string, object[]).T')  
+A possible result of this call
+
 <a name='BTD_Mod_Helper.BloonsMod.OnLoadSettings(JObject)'></a>
 
 ## BloonsMod.OnLoadSettings(JObject) Method

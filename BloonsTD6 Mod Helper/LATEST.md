@@ -2,6 +2,5 @@
 
 <!--Mod Browser Message Start-->
 
-- Updated extensions for BTD6 v52.1
-- Fixed an error with ModBloons using `KeepBaseId`
-- Frontier Data is now also exported with Export Game Data
+- Fixed the patch that ensured only vanilla towers were rewarded as Insta Monkeys from including the Sheriff tower
+  - The extension `towerModel.IsVanillaTower()` will still return true for the Sheriff, but the new extension `towerModel.IsStandardVanillaTower()` will return false

@@ -19,7 +19,7 @@ internal static class RandomInstaMonkeyLoot_Convert
             var towers = gameModel.towerSet
                 .Where(details => details.Is<ShopTowerDetailsModel>())
                 .Select(details => gameModel.GetTowerFromId(details.towerId))
-                .Where(tower => tower.IsVanillaTower() && (towerSet == TowerSet.None || tower.towerSet == towerSet))
+                .Where(tower => tower.IsStandardVanillaTower() && (towerSet == TowerSet.None || tower.towerSet == towerSet))
                 .Select(tower => tower.baseId)
                 .ToArray();
 

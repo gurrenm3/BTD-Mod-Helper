@@ -427,4 +427,11 @@ public static class TowerModelExt
     /// </summary>
     public static bool IsVanillaTower(this TowerModel towerModel) =>
         ModTowerHelper.VanillaTowerSet.Contains(towerModel.baseId);
+
+    /// <summary>
+    /// Gets whether a Tower/Hero is a base one added by the vanilla game, and whether it's usable in standard game modes
+    /// rather than Legends or the like
+    /// </summary>
+    public static bool IsStandardVanillaTower(this TowerModel towerModel) =>
+        towerModel.IsVanillaTower() && string.IsNullOrEmpty(towerModel.towerTheme);
 }

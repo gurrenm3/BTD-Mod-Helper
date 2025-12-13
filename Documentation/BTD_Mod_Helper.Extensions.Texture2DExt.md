@@ -94,6 +94,38 @@ changes to make to the material
 #### Returns
 [UnityEngine.RenderTexture](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RenderTexture 'UnityEngine.RenderTexture')
 
+<a name='BTD_Mod_Helper.Extensions.Texture2DExt.ApplyCustomShader(thisTexture,Shader,System.Action_Material_)'></a>
+
+## Texture2DExt.ApplyCustomShader(this Texture, Shader, Action<Material>) Method
+
+Applies a custom shader, creating a new Texture with its effects baked in
+
+```csharp
+public static RenderTexture ApplyCustomShader(this Texture texture, Shader shader, System.Action<Material> modifyMaterial=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Texture2DExt.ApplyCustomShader(thisTexture,Shader,System.Action_Material_).texture'></a>
+
+`texture` [UnityEngine.Texture](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture 'UnityEngine.Texture')
+
+this
+
+<a name='BTD_Mod_Helper.Extensions.Texture2DExt.ApplyCustomShader(thisTexture,Shader,System.Action_Material_).shader'></a>
+
+`shader` [UnityEngine.Shader](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Shader 'UnityEngine.Shader')
+
+Mod Helper custom shader
+
+<a name='BTD_Mod_Helper.Extensions.Texture2DExt.ApplyCustomShader(thisTexture,Shader,System.Action_Material_).modifyMaterial'></a>
+
+`modifyMaterial` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[UnityEngine.Material](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Material 'UnityEngine.Material')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+
+changes to make to the material
+
+#### Returns
+[UnityEngine.RenderTexture](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RenderTexture 'UnityEngine.RenderTexture')
+
 <a name='BTD_Mod_Helper.Extensions.Texture2DExt.CreateFromColor(thisTexture2D,Color)'></a>
 
 ## Texture2DExt.CreateFromColor(this Texture2D, Color) Method

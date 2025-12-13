@@ -101,6 +101,9 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <returns>A possible result of this call</returns>
     public virtual object Call(string operation, params object[] parameters) => null;
 
+    /// <inheritdoc cref="Call" />
+    public T Call<T>(string operation, params object[] parameters) => (T) Call(operation, parameters);
+
     /// <summary>
     /// Manually adds new ModContent to the mod. Does not directly call <see cref="ModContent.Load()" /> or
     /// <see cref="ModContent.Register" />, but the latter will still end up being called if this is added before the

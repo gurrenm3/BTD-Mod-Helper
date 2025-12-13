@@ -109,7 +109,18 @@ public static class Texture2DExt
         Action<Material> modifyMaterial = null)
     {
         var shader = ModContent.GetBundle<MelonMain>("unity_assets").LoadAssetSync<Shader>(customShader.ToString());
+        return texture.ApplyCustomShader(shader, modifyMaterial);
+    }
 
+    /// <summary>
+    /// Applies a custom shader, creating a new Texture with its effects baked in
+    /// </summary>
+    /// <param name="texture">this</param>
+    /// <param name="shader">Mod Helper custom shader</param>
+    /// <param name="modifyMaterial">changes to make to the material</param>
+    public static RenderTexture ApplyCustomShader(this Texture texture, Shader shader,
+        Action<Material> modifyMaterial = null)
+    {
         var material = new Material(shader);
         modifyMaterial?.Invoke(material);
 
@@ -155,7 +166,7 @@ public static class Texture2DExt
         material.SetFloat(SaturationAdjust, saturationAdjust);
         material.SetFloat(ValueAdjust, valueAdjust);
         material.SetColor(TargetColor, targetColor ?? Color.white);
-        material.SetFloat(Threshold, targetColor == null ? 1 :threshold);
+        material.SetFloat(Threshold, targetColor == null ? 1 : threshold);
     });
 
 }
