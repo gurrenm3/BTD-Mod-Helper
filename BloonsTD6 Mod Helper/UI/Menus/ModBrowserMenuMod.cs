@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
@@ -27,6 +28,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
     {
     }
+    public ModHelperData mod;
 
     public ModHelperPanel InfoPanel => GetDescendent<ModHelperPanel>("InfoPanel");
     public ModHelperButton InfoButton => GetDescendent<ModHelperButton>("Info");
@@ -191,8 +193,14 @@ internal static class ModBrowserMenuModExt
     private static readonly string CoolKidsClub = ModHelper.Localize(nameof(CoolKidsClub),
         "Additionally, the special color indicates they are a significant Mod Helper contributor.");
 
-    public static void SetMod(this ModBrowserMenuMod mod, Api.Data.ModHelperData modHelperData)
+    public static void SetMod(this ModBrowserMenuMod mod, ModHelperData modHelperData)
     {
+        mod.SetActive(true);
+
+        if (mod.mod == modHelperData) return;
+
+        mod.mod = modHelperData;
+
         mod.modName = modHelperData.Name;
         mod.Homepage.Button.SetOnClick(() =>
         {
@@ -292,7 +300,5 @@ internal static class ModBrowserMenuModExt
         ));
         mod.Verified.Image.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
         mod.SetDescriptionShowing(false);
-
-        mod.SetActive(true);
     }
 }

@@ -149,7 +149,7 @@ public static class RendererExt
         renderer.gameObject.layer = LayerMask.NameToLayer("Towers");
     }
 
-    /// <inheritdoc cref="Texture2DExt.ApplyCustomShader"/>
+    /// <inheritdoc cref="Texture2DExt.ApplyCustomShader(Texture,CustomShader,Action{Material})"/>
     public static void ApplyCustomShader(this Renderer renderer, CustomShader customShader,
         Action<Material> modifyMaterial = null)
     {
@@ -159,6 +159,18 @@ public static class RendererExt
             return;
         }
         renderer.material.mainTexture = renderer.material.mainTexture.ApplyCustomShader(customShader, modifyMaterial);
+    }
+
+    /// <inheritdoc cref="Texture2DExt.ApplyCustomShader(Texture,Shader,Action{Material})"/>
+    public static void ApplyCustomShader(this Renderer renderer, Shader shader,
+        Action<Material> modifyMaterial = null)
+    {
+        if (renderer.material?.mainTexture == null)
+        {
+            ModHelper.Warning("Can't ApplyCustomShader, renderer has no material texture");
+            return;
+        }
+        renderer.material.mainTexture = renderer.material.mainTexture.ApplyCustomShader(shader, modifyMaterial);
     }
 
     /// <inheritdoc cref="Texture2DExt.ReplaceColor"/>

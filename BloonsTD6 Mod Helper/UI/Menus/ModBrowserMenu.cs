@@ -39,7 +39,6 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private static int currentPage;
     private static string currentSearch = "";
     private string currentTopic;
-    private static IReadOnlyCollection<ModHelperData> lastMods;
 
     private static ModBrowserMenuMod[] mods;
 
@@ -64,7 +63,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         mods = new ModBrowserMenuMod[ModsPerPage];
         if (!ModHelperGithub.FullyPopulated)
         {
-            RefreshMods();
+            RefreshMods().StartCoroutine();
         }
 
         var modTopics = ModHelperGithub.VerifiedTopics;
@@ -76,10 +75,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         AddNewElements();
 
         templatesCreated = false;
-        MelonCoroutines.Start(CreateModTemplates());
+        CreateModTemplates().StartCoroutine();
 
         sortingMethod = SortingMethod.RecentlyUpdated;
-        lastMods = ModHelperGithub.Mods;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
         modsNeedRefreshing = ModHelperGithub.FullyPopulated;
@@ -129,7 +127,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         GameMenu.searchingImg.gameObject.SetActive(true);
         GameMenu.requiresInternetObj.SetActive(ModHelperGithub.VerifiedModders.Count == 0);
 
-        GameMenu.refreshBtn.SetOnClick(RefreshMods);
+        GameMenu.refreshBtn.SetOnClick(() => RefreshMods().StartCoroutine());
         GameMenu.firstPageBtn.SetOnClick(() => SetPage(0));
         GameMenu.previousPageBtn.SetOnClick(() => SetPage(currentPage - 1));
         GameMenu.nextPageBtn.SetOnClick(() => SetPage(currentPage + 1));
@@ -179,17 +177,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     public override void OnMenuUpdate()
     {
-        if (!ReferenceEquals(lastMods, ModHelperGithub.Mods))
+        if (modsNeedRefreshing && templatesCreated && currentMods.Any())
         {
-            ModHelper.Msg("Successfully refreshing after mod population");
-            currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
-            modsNeedRefreshing = true;
-        }
-        lastMods = ModHelperGithub.Mods;
-
-        if (modsNeedRefreshing && currentMods.Any())
-        {
-            MelonCoroutines.Start(UpdateModList());
+            UpdateModList();
             modsNeedRefreshing = false;
         }
 
@@ -243,16 +233,10 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         });
     }
 
-    private IEnumerator UpdateModList()
+    private void UpdateModList()
     {
         GameMenu.searchingImg.gameObject.SetActive(false);
         GameMenu.requiresInternetObj.SetActive(ModHelperGithub.VerifiedModders.Count == 0);
-        while (!templatesCreated)
-        {
-            yield return null;
-
-            if (Closing) yield break;
-        }
 
         UpdatePagination();
         foreach (var modBrowserMenuMod in mods)
@@ -260,19 +244,28 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             modBrowserMenuMod.SetActive(false);
         }
 
-        yield return null;
+        var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage).ToArray();
 
-        if (Closing) yield break;
-
-        var pageMods = currentMods.Skip(currentPage * ModsPerPage).Take(ModsPerPage);
-        var i = 0;
-        foreach (var modHelperData in pageMods)
+        var modsList = mods.ToList();
+        for (var i = 0; i < pageMods.Length; i++)
         {
-            mods[i].SetMod(modHelperData);
-            i++;
-            yield return null;
+            var modHelperData = pageMods[i];
+            if (modsList.Find(m => m.mod == modHelperData) is { } menuMod)
+            {
+                modsList.Remove(menuMod);
+                modsList.Insert(i, menuMod);
+            }
+        }
+        mods = modsList.ToArray();
+        for (var i = 0; i < mods.Length; i++)
+        {
+            var m = mods[i];
+            m.transform.SetSiblingIndex(i);
+        }
 
-            if (Closing) yield break;
+        for (var i = 0; i < pageMods.Length; i++)
+        {
+            mods[i].SetMod(pageMods[i]);
         }
     }
 
@@ -309,8 +302,10 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         }
     }
 
-    private void RefreshMods()
+    private IEnumerator RefreshMods()
     {
+        if (ModHelperGithub.populatingMods != null && !ModHelperGithub.populatingMods.IsCompleted) yield break;
+
         GameMenu.refreshBtn.interactable = false;
         GameMenu.searchingImg.gameObject.SetActive(true);
         foreach (var menuMod in mods)
@@ -318,29 +313,27 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             menuMod.Exists()?.SetActive(false);
         }
 
-        var populate = ModHelperGithub.PopulateMods(false);
+        ModHelperGithub.populatingMods = ModHelperGithub.PopulateMods(false);
 
-        Task.Run(async () =>
+        var lastCount = 0;
+        while (!ModHelperGithub.populatingMods.IsCompleted)
         {
-            var lastCount = 0;
-            while (!populate.IsCompleted)
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            var newCount = ModHelperGithub.VisibleMods.Count();
+            if (newCount > lastCount)
             {
-                var newCount = ModHelperGithub.VisibleMods.Count();
+                lastCount = newCount;
 
-                if (newCount > lastCount)
-                {
-                    lastCount = newCount;
-
-                    currentPage = 0;
-                    RecalculateCurrentMods();
-                }
+                currentPage = 0;
+                RecalculateCurrentMods();
             }
+        }
 
-            await populate;
-            currentPage = 0;
-            RecalculateCurrentMods();
-        });
+        currentPage = 0;
+        RecalculateCurrentMods();
     }
+
 
     private static List<ModHelperData> Sort(IEnumerable<ModHelperData> data, SortingMethod sort) => (sort switch
     {

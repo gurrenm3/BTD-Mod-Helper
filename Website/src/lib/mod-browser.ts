@@ -33,7 +33,10 @@ export const populateSpecificMod = async (selectedMod: string) => {
   const [owner, repo, subpath] = selectedMod.split("/");
   const selectedRepo = await octokit.rest.repos.get({ owner, repo });
   if (selectedRepo.data) {
-    return await loadDataFromRepo(selectedRepo.data as unknown as Repository, subpath);
+    return await loadDataFromRepo(
+      selectedRepo.data as unknown as Repository,
+      subpath
+    );
   }
 
   return undefined;
@@ -50,11 +53,11 @@ export const populateMods = async (
   let validMods = new Set();
   let invalidMods = 0;
   let page = 1;
-  let start = Date.now();
   const repoSearch = octokit.rest.search.repos({
     q: `topic:${RepoTopic}`,
     per_page: PerPage,
     page: page,
+    sort: "updated",
   });
 
   let searchResult = (await repoSearch).data;
@@ -79,9 +82,6 @@ export const populateMods = async (
       per_page: PerPage,
       page,
     });
-
-    // console.log(result.headers);
-    // console.log(result.status);
 
     searchResult = result.data;
   }

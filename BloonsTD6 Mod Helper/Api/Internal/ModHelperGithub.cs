@@ -57,8 +57,8 @@ internal static class ModHelperGithub
         "Successfully downloaded dependencies! Remember to restart to apply changes.");
 
     private static readonly List<Task> loadTasks = [];
-    private static readonly ConcurrentBag<ModHelperData> mods = [];
-    public static IReadOnlyCollection<ModHelperData> Mods => mods;
+    private static readonly ConcurrentDictionary<string, ModHelperData> mods = [];
+    public static ICollection<ModHelperData> Mods => mods.Values;
     private static bool ForceVerifiedOnly { get; set; }
 
     public static GitHubClient Client { get; private set; }
@@ -107,7 +107,7 @@ internal static class ModHelperGithub
             {
                 // Start initial GitHub searches
                 var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-                    {PerPage = 100, Page = page++});
+                    {PerPage = 100, Page = page++, SortField = RepoSearchSort.Updated});
                 var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
                 var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
 
@@ -120,7 +120,6 @@ internal static class ModHelperGithub
                 while (searchResult.Items.Any())
                 {
                     LoadMods(searchResult.Items
-                        .OrderBy(repo => repo.CreatedAt)
                         .Select(repo => new ModHelperData(repo))
                         .Append(new ModHelperData(await modHelperRepoSearchTask)));
 
@@ -157,7 +156,7 @@ internal static class ModHelperGithub
             data.FinalizeRepoData(await data.LoadDataFromRepoAsync());
             if (data.RepoDataSuccess && data.Mod is not MelonMain)
             {
-                mods.Add(data);
+                mods.TryAdd(data.Identifier, data);
             }
         }));
     }
