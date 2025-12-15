@@ -240,7 +240,7 @@ internal partial class ModHelperData
             {
                 try
                 {
-                    var data = ModHelperGithub.Mods.Find(data => data.Identifier == dependency);
+                    var data = ModHelperGithub.Mods.FirstOrDefault(data => data.Identifier == dependency);
 
                     if (data != null &&
                         !data.ModInstalledLocally(out _) &&
@@ -267,10 +267,9 @@ internal partial class ModHelperData
         return list;
     }
 
-    public void FinalizeRepoData(Task<string> loadTask)
+    public void FinalizeRepoData(string data)
     {
-        var data = loadTask.Result;
-        if (!loadTask.IsCompletedSuccessfully || string.IsNullOrEmpty(data)) return;
+        if (string.IsNullOrEmpty(data)) return;
 
         ReadValues(data, false);
 

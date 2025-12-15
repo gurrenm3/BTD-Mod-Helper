@@ -39,7 +39,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     private static int currentPage;
     private static string currentSearch = "";
     private string currentTopic;
-    private static IList<ModHelperData> lastMods;
+    private static IReadOnlyCollection<ModHelperData> lastMods;
 
     private static ModBrowserMenuMod[] mods;
 
@@ -322,21 +322,35 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         Task.Run(async () =>
         {
+            var lastCount = 0;
+            while (!populate.IsCompleted)
+            {
+                var newCount = ModHelperGithub.VisibleMods.Count();
+
+                if (newCount > lastCount)
+                {
+                    lastCount = newCount;
+
+                    currentPage = 0;
+                    RecalculateCurrentMods();
+                }
+            }
+
             await populate;
             currentPage = 0;
             RecalculateCurrentMods();
         });
     }
 
-    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> mods, SortingMethod sort) => (sort switch
+    private static List<ModHelperData> Sort(IEnumerable<ModHelperData> data, SortingMethod sort) => (sort switch
     {
-        SortingMethod.Popularity => mods.OrderByDescending(data => data.Stars),
-        SortingMethod.Alphabetical => mods.OrderBy(data => data.DisplayName),
-        SortingMethod.RecentlyUpdated => mods.OrderByDescending(data => data.UpdatedAtUtc),
-        SortingMethod.New => mods.OrderByDescending(data => data.Repository.CreatedAt),
-        SortingMethod.Old => mods.OrderBy(data => data.Repository.CreatedAt),
-        SortingMethod.Relevance => mods.OrderByDescending(Score).ThenByDescending(data => data.Stars),
-        _ => mods
+        SortingMethod.Popularity => data.OrderByDescending(mod => mod.Stars),
+        SortingMethod.Alphabetical => data.OrderBy(mod => mod.DisplayName),
+        SortingMethod.RecentlyUpdated => data.OrderByDescending(mod => mod.UpdatedAtUtc),
+        SortingMethod.New => data.OrderByDescending(mod => mod.Repository.CreatedAt),
+        SortingMethod.Old => data.OrderBy(mod => mod.Repository.CreatedAt),
+        SortingMethod.Relevance => data.OrderByDescending(Score).ThenByDescending(mod => mod.Stars),
+        _ => data
     }).ToList();
 
     private enum SortingMethod

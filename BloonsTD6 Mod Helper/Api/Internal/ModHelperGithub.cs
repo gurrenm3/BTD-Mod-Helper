@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -55,7 +56,9 @@ internal static class ModHelperGithub
     private static readonly string DownloadDepsSuccess = ModHelper.Localize(nameof(DownloadDepsSuccess),
         "Successfully downloaded dependencies! Remember to restart to apply changes.");
 
-    public static List<ModHelperData> Mods { get; private set; } = [];
+    private static readonly List<Task> loadTasks = [];
+    private static readonly ConcurrentBag<ModHelperData> mods = [];
+    public static IReadOnlyCollection<ModHelperData> Mods => mods;
     private static bool ForceVerifiedOnly { get; set; }
 
     public static GitHubClient Client { get; private set; }
@@ -87,18 +90,16 @@ internal static class ModHelperGithub
 
     public static async Task PopulateMods(bool localOnly)
     {
-        Mods.Clear();
+        loadTasks.Clear();
+        mods.Clear();
         try
         {
             var page = 1;
             var start = DateTime.Now;
 
-            // Finish getting all normal mods, processing multiple pages if needed
-            var mods = new List<ModHelperData>();
-
             if (localOnly)
             {
-                mods.AddRange(ModHelperData.All
+                LoadMods(ModHelperData.All
                     .Where(data => !string.IsNullOrEmpty(data.RepoOwner) && !string.IsNullOrEmpty(data.RepoName))
                     .Select(data => new ModHelperData(data)));
             }
@@ -116,9 +117,9 @@ internal static class ModHelperGithub
                     .ToArray();
 
                 var searchResult = await repoSearchTask;
-                while (searchResult.TotalCount > mods.Count && searchResult.Items.Any())
+                while (searchResult.Items.Any())
                 {
-                    mods.AddRange(searchResult.Items
+                    LoadMods(searchResult.Items
                         .OrderBy(repo => repo.CreatedAt)
                         .Select(repo => new ModHelperData(repo))
                         .Append(new ModHelperData(await modHelperRepoSearchTask)));
@@ -128,12 +129,11 @@ internal static class ModHelperGithub
                 }
 
                 // Finish getting monorepo mods
-                mods.AddRange((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d));
+                LoadMods((await Task.WhenAll(monoRepoTasks)).SelectMany(d => d));
             }
 
             // Load all the ModHelperData for the retrieved mods
-            Task.WhenAll(mods.Select(data => data.LoadDataFromRepoAsync().ContinueWith(data.FinalizeRepoData))).Wait();
-            Mods = mods.Where(mod => mod.RepoDataSuccess && mod.Mod is not MelonMain).ToList();
+            await Task.WhenAll(loadTasks);
 
             var time = DateTime.Now - start;
             ModHelper.Msg(
@@ -147,6 +147,26 @@ internal static class ModHelperGithub
         {
             ModHelper.Warning("Error while populating mods");
             ModHelper.Warning(e);
+        }
+    }
+
+    public static void LoadMod(ModHelperData data)
+    {
+        loadTasks.Add(Task.Run(async () =>
+        {
+            data.FinalizeRepoData(await data.LoadDataFromRepoAsync());
+            if (data.RepoDataSuccess && data.Mod is not MelonMain)
+            {
+                mods.Add(data);
+            }
+        }));
+    }
+
+    public static void LoadMods(IEnumerable<ModHelperData> data)
+    {
+        foreach (var mod in data)
+        {
+            LoadMod(mod);
         }
     }
 
