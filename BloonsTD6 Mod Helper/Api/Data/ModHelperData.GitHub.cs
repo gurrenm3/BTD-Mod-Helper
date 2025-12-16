@@ -81,6 +81,8 @@ internal partial class ModHelperData
     {
         get
         {
+            if (Repository == null) return 0;
+
             var updatedAt = (Repository.PushedAt ?? Repository.CreatedAt).ToUnixTimeSeconds();
             if (splittingStarsAmongst > 1)
             {

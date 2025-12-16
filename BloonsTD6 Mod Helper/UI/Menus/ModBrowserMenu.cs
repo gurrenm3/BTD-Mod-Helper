@@ -61,15 +61,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
     public override bool OnMenuOpened(Object data)
     {
         mods = new ModBrowserMenuMod[ModsPerPage];
-        if (!ModHelperGithub.FullyPopulated)
-        {
-            RefreshMods().StartCoroutine();
-        }
 
-        var modTopics = ModHelperGithub.VerifiedTopics;
-
-        topics = modTopics.Prepend(null).ToList();
-        topicLabels = modTopics.Prepend(FilterByTopic).ToList();
+        topics = ModHelperGithub.VerifiedTopics.Prepend(null).ToList();
+        topicLabels = ModHelperGithub.VerifiedTopics.Prepend(FilterByTopic).ToList();
 
         ModifyExistingElements();
         AddNewElements();
@@ -80,9 +74,19 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         sortingMethod = SortingMethod.RecentlyUpdated;
         currentMods = Sort(ModHelperGithub.VisibleMods, sortingMethod);
 
-        modsNeedRefreshing = ModHelperGithub.FullyPopulated;
         SetPage(0);
         currentSearch = "";
+
+        if (ModHelperGithub.FullyPopulated)
+        {
+            GameMenu.refreshBtn.interactable = true;
+            modsNeedRefreshing = true;
+        }
+        else
+        {
+            GameMenu.refreshBtn.interactable = false;
+            RefreshMods().StartCoroutine();
+        }
 
         return false;
     }
@@ -220,17 +224,13 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private void RecalculateCurrentMods()
     {
-        Task.Run(() =>
-        {
-            // ModHelper.Log($"Recalculating for '{currentSearch}' and {sortingMethod.ToString()}");
-            var filteredMods = ModHelperGithub.VisibleMods
-                .Where(data => string.IsNullOrEmpty(currentTopic) || data.Topics.Contains(currentTopic))
-                .Where(data => string.IsNullOrEmpty(currentSearch) || Score(data) >= SearchCutoff)
-                .ToList();
+        var filteredMods = ModHelperGithub.VisibleMods
+            .Where(data => (string.IsNullOrEmpty(currentTopic) || data.Topics.Contains(currentTopic)) &&
+                           (string.IsNullOrEmpty(currentSearch) || Score(data) >= SearchCutoff))
+            .ToList();
 
-            currentMods = Sort(filteredMods, sortingMethod);
-            modsNeedRefreshing = true;
-        });
+        currentMods = Sort(filteredMods, sortingMethod);
+        modsNeedRefreshing = true;
     }
 
     private void UpdateModList()
@@ -271,8 +271,6 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private void UpdatePagination()
     {
-        GameMenu.refreshBtn.interactable = true;
-
         GameMenu.firstPageBtn.interactable = TotalPages >= 2 && currentPage > 0;
         GameMenu.previousPageBtn.interactable = TotalPages >= 2 && currentPage > 0;
 
@@ -325,13 +323,13 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
             {
                 lastCount = newCount;
 
-                currentPage = 0;
                 RecalculateCurrentMods();
             }
         }
 
-        currentPage = 0;
         RecalculateCurrentMods();
+
+        GameMenu.refreshBtn.interactable = true;
     }
 
 

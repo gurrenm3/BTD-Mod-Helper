@@ -124,7 +124,7 @@ internal static class ModHelperGithub
                         .Append(new ModHelperData(await modHelperRepoSearchTask)));
 
                     searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-                        {PerPage = 100, Page = page++});
+                        {PerPage = 100, Page = page++, SortField = RepoSearchSort.Updated});
                 }
 
                 // Finish getting monorepo mods

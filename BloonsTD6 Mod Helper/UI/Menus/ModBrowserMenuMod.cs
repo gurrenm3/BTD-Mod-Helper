@@ -28,6 +28,7 @@ internal class ModBrowserMenuMod : ModHelperPanel
     public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
     {
     }
+
     public ModHelperData mod;
 
     public ModHelperPanel InfoPanel => GetDescendent<ModHelperPanel>("InfoPanel");
@@ -225,7 +226,10 @@ internal static class ModBrowserMenuModExt
         mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
         mod.Author.Text.AutoLocalize = false;
-        mod.Author.SetText(modHelperData.DisplayAuthor);
+
+        var author = modHelperData.DisplayAuthor;
+        if (author.Length > 20) author = author[..20] + "...";
+        mod.Author.SetText(author);
         mod.Author.Text.color = BlatantFavoritism.GetColor(modHelperData.RepoOwner);
 
         mod.Icon.RectTransform.sizeDelta = modHelperData.SquareIcon
@@ -253,7 +257,7 @@ internal static class ModBrowserMenuModExt
                 var downloadTask = ModHelperGithub.DownloadLatest(modHelperData, false, filePath =>
                 {
                     modHelperData.SetFilePath(filePath);
-                    Api.Data.ModHelperData.Inactive.Add(modHelperData);
+                    ModHelperData.Inactive.Add(modHelperData);
                     if (mod != null && mod.gameObject.active && mod.modName == modHelperData.Name)
                     {
                         mod.Download.SetActive(false);

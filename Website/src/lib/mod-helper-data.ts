@@ -143,8 +143,13 @@ const readValuesFromJson = (
 export const modDisplayName = (data?: ModHelperData) =>
   data?.Name || data?.RepoName || "";
 
-export const modDisplayAuthor = (data?: ModHelperData) =>
-  data?.Author || data?.RepoOwner || "";
+export const modDisplayAuthor = (data?: ModHelperData) => {
+  let author = data?.Author || data?.RepoOwner || "";
+  if (author.length > 20) {
+    author = author.slice(0, 20) + "...";
+  }
+  return author;
+};
 
 export const modDisplayDescription = (data?: ModHelperData) =>
   data?.Description || data?.RepoName || "No Description Provided";

@@ -81,6 +81,7 @@ export const populateMods = async (
       q: `topic:${RepoTopic}`,
       per_page: PerPage,
       page,
+      sort: "updated",
     });
 
     searchResult = result.data;
