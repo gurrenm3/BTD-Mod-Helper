@@ -542,7 +542,11 @@ public abstract partial class ModContent
     /// </summary>
     public static TowerSet GetTowerSet<T>() where T : ModTowerSet => GetInstance<T>().Set;
 
-
+    /// <summary>
+    /// Gets the BloonProperties enum value for a ModBloonProperty
+    /// </summary>
+    public static BloonProperties GetBloonProperties<T>() where T : ModBloonProperty => GetInstance<T>().Property;
+    
     /// <summary>
     /// Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with
     /// the built in language system. NK texts components will <see cref="NK_TextMeshProUGUI.AutoLocalize"/> your keys.
