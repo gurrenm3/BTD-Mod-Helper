@@ -20,7 +20,7 @@ public class BloonModelUtils
     {
         var baseName = bloonName.Replace("Camo", "").Replace("Regrow", "").Replace("Fortified", "");
 
-        if (Game.instance.model == null)
+        if (Game.instance == null || Game.instance.model == null)
         {
             return bloonName + (regrow ? "Regrow" : "") + (fortified ? "Fortified" : "") + (camo ? "Camo" : "");
         }
