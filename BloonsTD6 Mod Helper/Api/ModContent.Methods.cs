@@ -542,6 +542,9 @@ public abstract partial class ModContent
     /// </summary>
     public static TowerSet GetTowerSet<T>() where T : ModTowerSet => GetInstance<T>().Set;
 
+    /// <summary>
+    /// Gets the BloonProperties enum value for a ModBloonProperty
+    /// </summary>
     public static BloonProperties GetBloonProperties<T>() where T : ModBloonProperty => GetInstance<T>().Property;
     
     /// <summary>
