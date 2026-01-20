@@ -7648,7 +7648,7 @@ public static partial class CreateCreateLightningEffectModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateLightningEffectModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateLightningEffectModel(args.name, args.lifeSpan, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateLightningEffectModel(args.name, args.lifeSpan, args.displayPaths[0], args.displayLengths[0], args.displayPaths[1], args.displayLengths[1], args.displayPaths[2], args.displayLengths[2], args.displayPaths[3], args.displayLengths[3], args.displayPaths[4], args.displayLengths[4], args.displayPaths[5], args.displayLengths[5], args.displayPaths[6], args.displayLengths[6], args.displayPaths[7], args.displayLengths[7], args.displayPaths[8], args.displayLengths[8]);
             if (args.displayPaths != default) result.displayPaths = args.displayPaths;
             if (args.displayLengths != default) result.displayLengths = args.displayLengths;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;

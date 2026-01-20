@@ -190,6 +190,14 @@ public class AbilityHelper : ModelHelper<AbilityModel>
         set => Model.restrictAbilityAfterMaxRoundTimer = value;
     }
 
+    /// Default false
+    /// <seealso cref="AbilityModel.alwaysSetAnimationState" />
+    public bool AlwaysSetAnimationState
+    {
+        get => Model.alwaysSetAnimationState;
+        set => Model.alwaysSetAnimationState = value;
+    }
+
     private AbilityHelper(AbilityModel model) : base(model)
     {
     }

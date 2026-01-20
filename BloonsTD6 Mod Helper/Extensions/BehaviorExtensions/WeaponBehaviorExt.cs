@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Il2CppAssets.Scripts.Simulation.Towers.Weapons;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -15,7 +16,7 @@ public static class WeaponBehaviorExt
     /// <returns></returns>
     public static bool HasWeaponBehavior<T>(this Weapon weapon) where T : WeaponBehavior =>
         weapon.weaponBehaviors.HasItemsOfType<WeaponBehavior, T>();
-    
+
     /// <summary>
     /// Check if this has a specific Behavior
     /// </summary>
@@ -23,7 +24,21 @@ public static class WeaponBehaviorExt
     /// <param name="weapon"></param>
     /// <param name="item">The returned item, if it exists</param>
     /// <returns></returns>
+    [Obsolete("Incorrectly named")]
     public static bool HasAttackBehavior<T>(this Weapon weapon, out T item) where T : WeaponBehavior
+    {
+        item = weapon.GetWeaponBehavior<T>();
+        return item != null;
+    }
+
+    /// <summary>
+    /// Check if this has a specific Behavior
+    /// </summary>
+    /// <typeparam name="T">The Behavior you're checking for</typeparam>
+    /// <param name="weapon"></param>
+    /// <param name="item">The returned item, if it exists</param>
+    /// <returns></returns>
+    public static bool HasWeaponBehavior<T>(this Weapon weapon, out T item) where T : WeaponBehavior
     {
         item = weapon.GetWeaponBehavior<T>();
         return item != null;

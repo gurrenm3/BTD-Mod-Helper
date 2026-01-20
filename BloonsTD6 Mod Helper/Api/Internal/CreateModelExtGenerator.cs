@@ -120,6 +120,32 @@ internal static class CreateModelExtGenerator
                 {
                     ModHelper.Warning($"Found no match for param {param.Name} on {type.RealFullName}");
                 }
+
+                if (type == typeof(CreateLightningEffectModel))
+                {
+                    defaultValue = param.Name switch
+                    {
+                        "displayPath1Small" => "args.displayPaths[0]",
+                        "displayPath2Small" => "args.displayPaths[1]",
+                        "displayPath3Small" => "args.displayPaths[2]",
+                        "displayPath1Medium" => "args.displayPaths[3]",
+                        "displayPath2Medium" => "args.displayPaths[4]",
+                        "displayPath3Medium" => "args.displayPaths[5]",
+                        "displayPath1Large" => "args.displayPaths[6]",
+                        "displayPath2Large" => "args.displayPaths[7]",
+                        "displayPath3Large" => "args.displayPaths[8]",
+                        "displayLength1Small" => "args.displayLengths[0]",
+                        "displayLength2Small" => "args.displayLengths[1]",
+                        "displayLength3Small" => "args.displayLengths[2]",
+                        "displayLength1Medium" => "args.displayLengths[3]",
+                        "displayLength2Medium" => "args.displayLengths[4]",
+                        "displayLength3Medium" => "args.displayLengths[5]",
+                        "displayLength1Large" => "args.displayLengths[6]",
+                        "displayLength2Large" => "args.displayLengths[7]",
+                        "displayLength3Large" => "args.displayLengths[8]",
+                        _ => "default"
+                    };
+                }
             }
             else
             {
@@ -180,6 +206,10 @@ internal static class CreateModelExtGenerator
                          propType == typeof(AnimationClipReference))
                 {
                     defaultValue = $"new {propType.RealFullName}(\"\")";
+                }
+                else if (prop.Name == "scale")
+                {
+                    defaultValue = "1";
                 }
             }
 
