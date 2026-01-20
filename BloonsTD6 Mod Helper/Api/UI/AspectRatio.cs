@@ -39,8 +39,8 @@ public static class AspectRatios
     /// <returns>aspect ratio</returns>
     public static AspectRatio From(int width, int height) => ((float) width / height) switch
     {
-        < 1.5f => AspectRatio.NonWidescreen,
-        < 1.7f => AspectRatio.TallWidescreen,
+        < 1.545f => AspectRatio.NonWidescreen,
+        < 1.709f => AspectRatio.TallWidescreen,
         _ => AspectRatio.Widescreen
     };
 }
