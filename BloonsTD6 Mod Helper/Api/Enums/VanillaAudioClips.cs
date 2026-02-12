@@ -17,6 +17,7 @@ public static class VanillaAudioClips
     public const string Activated10EtienneBookwyrmVO01 = "d78baf7e8a0e15d488dbf25e52a51914";
     public const string Activated10EtienneBookwyrmVO02 = "22223c95869803843aadc2b8851c0065";
     public const string Activated10EtienneBookwyrmVO03 = "ddf4cf8109bbc94468847c1c7fd653db";
+    public const string Activated10GwenFirecracker = "9626450611a6c874cbcef778170ed905";
     public const string Activated10PsiPsimbals = "1ce7228c348d869468aed6b0b564e29f";
     public const string Activated10RosaliaTinker01 = "69dd9e40fe9ad4e4cbde416e2ccb8986";
     public const string Activated10RosaliaTinker02 = "a1595999420646b4d8666248e4b0e1d2";
@@ -32,6 +33,7 @@ public static class VanillaAudioClips
     public const string Activated3EtienneBookwyrmNoVO01 = "1f7a4af38962da64a887fe5fb293ecbb";
     public const string Activated3EtienneBookwyrmVO01 = "990520a787c2ffc40a56e272278ac1eb";
     public const string Activated3EtienneBookwyrmVO02 = "f3085edf13307364582c934b9a07d8af";
+    public const string Activated3GwenFirecracker = "163c988a331e30e42bff0c1c13061e79";
     public const string Activated3ObynSkeletorVO02 = "6510b209eb89d82479a6e66272789696";
     public const string Activated3PsiPsimbals = "dc22d6c9431e08542b70289d5162b0db";
     public const string Activated3RosaliaTinker01 = "11f3ae01d6ed9e548ae03f43b193daf5";
@@ -127,6 +129,7 @@ public static class VanillaAudioClips
     public const string ActivatedFanClub = "9a5fb8d8e22ca6346a4e053384acabd3";
     public const string ActivatedFireStormHarleyGwen = "fbbdd646cf698e44fb576059ea78b0c2";
     public const string ActivatedFirestorm = "d5b5face766eead48a9506ba25e98f27";
+    public const string ActivatedFirestormGwenFirecrackerNoVO = "79d96d55b56a1a242aee6cf3339b22c0";
     public const string ActivatedFirestormNoVO = "1aa3bd2f7f285564ab6b60c8429785ab";
     public const string ActivatedFirestormScience = "7108b27b1b1ff1d4690ebe0cde54bb3e";
     public const string ActivatedFirstStrike = "110d592fa6b53934aa906210c3786249";
@@ -362,6 +365,7 @@ public static class VanillaAudioClips
     public const string BadWarningGeraldo = "682a361eb7f6adb4daef98a3999d4f11";
     public const string BadWarningGeraldoGadgeteer = "86af82b5966e7324080f3f7b03316ca5";
     public const string BadWarningGwen = "38fcc950ab33a0442b31b85947da6326";
+    public const string BadWarningGwenFirecracker = "8d7c7fb8759aa6b43b75dcba71dec319";
     public const string BadWarningHarleyGwen = "ff24b3c73ad6e4b4f9a191ac36b80230";
     public const string BadWarningJones = "6ec7534e60d05b34fa05b6ed9c5314af";
     public const string BadWarningJonesBiker = "d2e1f05277ed53946aeb3890d1ab2218";
@@ -417,6 +421,7 @@ public static class VanillaAudioClips
     public const string BfbWarningGeraldo = "f4ba88e3c64f4624b9a433639f1befec";
     public const string BfbWarningGeraldoGadgeteer = "4c7bd92e2bb570f4a9a8355221ed86d5";
     public const string BfbWarningGwen = "eb6fa066e6c4e9a4784cbcd59aaf8169";
+    public const string BfbWarningGwenFirecracker = "8008b5fff4af1c94a9af9d69eb259bf1";
     public const string BfbWarningHarleyGwen = "8f1142b52269dd44cb085599b01ef3cf";
     public const string BfbWarningJones = "9f2a458d3c86be241bd34b6610f607b0";
     public const string BfbWarningObyn = "db164c12330eb5f4882ee21ad4f7d607";
@@ -532,6 +537,7 @@ public static class VanillaAudioClips
     public const string DdtWarningGeraldo = "d45b4f330786c644b8741f0710948eb0";
     public const string DdtWarningGeraldoGadgeteer = "cb02cd0380e7225408132ca844ecdd4a";
     public const string DdtWarningGwen = "a278c342ee8f0994d86da1aca8ea3d0c";
+    public const string DdtWarningGwenFirecracker = "02e0eb4eb90de40439039cf4302701b2";
     public const string DdtWarningJones = "68958b4e78836a3469695e0fce8ea39f";
     public const string DdtWarningObyn = "53c28b5e6d0c13f46bfe49f014f81720";
     public const string DdtWarningObynSkeletor = "0fda5f710b2afea4ea8a7e509bbc7be2";
@@ -560,6 +566,7 @@ public static class VanillaAudioClips
     public const string Explosion03 = "5b1ee796433122141a0db034af251f15";
     public const string Explosion04 = "f5f616027b9887c4db5b1341a614b352";
     public const string Explosion05 = "9a36e64ca09a7ef42bd4af49c1cf4ef6";
+    public const string ExplosionFireworks = "620a93694c4acb0419c9056a9fa00579";
     public const string ExplosionFrost01 = "ebbb90c484a266640a19ef6cc87a5240";
     public const string ExplosionFrost02 = "c5deaa817f23d324bb5cd73c73da5993";
     public const string ExplosionFrost03 = "28595038f12c19041b840b4a983431aa";
@@ -702,6 +709,8 @@ public static class VanillaAudioClips
     public const string LeakGeraldoGadgeteer02 = "10ab85e016d157f4c987218034dfc845";
     public const string LeakGwen01 = "5cfefd104a19e99478eda7ad4692751e";
     public const string LeakGwen02 = "dec346f056908e844b01d2c63af54877";
+    public const string LeakGwenFirecracker01 = "505525a1acde01f45a5a02438ee17f2b";
+    public const string LeakGwenFirecracker02 = "d5626f6ab7d92404191a09a513f4aef0";
     public const string LeakGwenScience01 = "72c0dacc7dec3484da800950b33bdb86";
     public const string LeakHarleyGwen01 = "820f19967f703af468a15f12ab71115b";
     public const string LeakJones01 = "dea8a7af0f22d21408bcc7ab2f2b9f67";
@@ -812,6 +821,8 @@ public static class VanillaAudioClips
     public const string MoabDestroyedGeraldoGadgeteer02 = "cc040cd996715414b9c5c54401ca3f9d";
     public const string MoabDestroyedGwen01 = "70dd94abff68f1c4887847dd1463af6a";
     public const string MoabDestroyedGwen02 = "5b554bcc85179ae498d79df68c3232ff";
+    public const string MoabDestroyedGwenFirecracker01 = "009ed8eccb557774f9e8104122ab3d50";
+    public const string MoabDestroyedGwenFirecracker02 = "099a750b54030234baa07ef1466bb712";
     public const string MoabDestroyedGwenScience01 = "e19361f8087ed1342835e851a12bd702";
     public const string MoabDestroyedHarleyGwen = "f0a68647f740e5c418cbecd8319f791c";
     public const string MoabDestroyedJones01 = "ab42f8b38f3540c4db4e824d5ff3b184";
@@ -885,6 +896,7 @@ public static class VanillaAudioClips
     public const string MoabWarningGeraldo = "924dfd33a66add94888b2f1f0ceead9a";
     public const string MoabWarningGeraldoGadgeteer = "e5c8d8471af97ce489b5193bda4aefc6";
     public const string MoabWarningGwen = "7447b835e43095945ad4950a7d9d1048";
+    public const string MoabWarningGwenFirecracker = "b68f5dc886e3fac42baf167161c87743";
     public const string MoabWarningGwenScience = "ed02df911017965418c1bde5f7eb2b90";
     public const string MoabWarningHarleyGwen = "e44533ed7ce173846aea1ce26ae56615";
     public const string MoabWarningJones = "7ba413fd75e422a4299e5c9cdcf77027";
@@ -1224,6 +1236,8 @@ public static class VanillaAudioClips
     public const string PlaceGwen02 = "bdf35463071a2bb40b4ec8eb88ec1dd0";
     public const string PlaceGwenFireNoVO01 = "18ecfa4644c63db43b777067714aef6a";
     public const string PlaceGwenFireNoVO02 = "4f41d77a21fec9a41a9de469dd808ebd";
+    public const string PlaceGwenFirecracker01 = "bc7643a6a800fc247852c9366f19dae4";
+    public const string PlaceGwenFirecracker02 = "8d3bc39415ba5c042acb105aeacbca41";
     public const string PlaceGwenScience01 = "8425d0ef656273f4d9c4c85b07c0dc09";
     public const string PlaceGwenScience02 = "d684f1721efba6348a5e1e5cbb97206b";
     public const string PlaceHarleyGwen01 = "3f7a3f9b9221d594fa83a0dcc8fc5e95";
@@ -1425,6 +1439,7 @@ public static class VanillaAudioClips
     public const string PotionBuff03 = "14cc37a7948c962438e79b9eed6b9a42";
     public const string PotionBuff04 = "1ef2c1d54d4857f47b18c9721b5c1a6a";
     public const string PotionBuff05 = "e4513cf32bb362e4586e6cdb3deedbd5";
+    public const string QuestNotification = "ebe6152e20f78764bb95c559c81efdc1";
     public const string ReactSheRaSkeletor = "98976051a92b6c446ade7bf93391a90c";
     public const string ReactSkeletorDarkSheRa = "1b64c605ad2aab04cb909e59c6f2b2a8";
     public const string ReactSkeletorSheRa = "9fec0ac62f4ab1e479c74c5482932838";
@@ -1505,6 +1520,8 @@ public static class VanillaAudioClips
     public const string SelectAltGeraldoGadgeteer02 = "08d3ef7c842414b478b748311aecbca6";
     public const string SelectAltGwen01 = "de585685bcf8b3642a460fbd747da507";
     public const string SelectAltGwen02 = "18b01ee560879b84c86ee69fb44b0a5e";
+    public const string SelectAltGwenFirecracker01 = "624c5fe235571a540af90f8640e89fc4";
+    public const string SelectAltGwenFirecracker02 = "7cf3054df5d9e194a9b6eeba4105030f";
     public const string SelectAltGwenScience01 = "95184c833aeb21042abe86ee77391ed2";
     public const string SelectAltGwenScience02 = "a340b41ca931c514485d22f3c6d2302e";
     public const string SelectAltHarleyGwen01 = "b507ad73eaa158e4da092017a99dd83d";
@@ -1690,6 +1707,12 @@ public static class VanillaAudioClips
     public const string SelectGwen04 = "ee613403d31fff94291b79ef7ad5d65d";
     public const string SelectGwen05 = "bdf053378c49aa64ab7eafcf39c02762";
     public const string SelectGwen06 = "308f7d4d39f98474b9d9c943082cde9c";
+    public const string SelectGwenFirecracker01 = "25437557712608941a851c548c651387";
+    public const string SelectGwenFirecracker02 = "ffbcaf439dfef8d4b86dc22cd64b1520";
+    public const string SelectGwenFirecracker03 = "293abe1ffd1a5a0478a667adcf6e7d6a";
+    public const string SelectGwenFirecracker04 = "7a98cc22b51674949ad95bd9dc33add1";
+    public const string SelectGwenFirecracker05 = "313f577f2fd912c488969d8c9e1c9d64";
+    public const string SelectGwenFirecracker06 = "d9376304df369e84192d36b3c4b6fdab";
     public const string SelectGwenScience01 = "c1e3712dc20909c46b13f3fef0d8608c";
     public const string SelectGwenScience02 = "3a0d808cad2ec85429242bb382934da0";
     public const string SelectGwenScience03 = "0a5527a8078d2ae48aaacb0af1d76e65";
@@ -1853,6 +1876,7 @@ public static class VanillaAudioClips
     public const string SwapLaserRosaliaVO01 = "5d3afb7eb671e8b4ebedb58862a53216";
     public const string SwapLaserRosaliaVO02 = "62589349a7bb15f448f16f3b0efe5460";
     public const string Thrive = "7a7abcfb2fdccb748a29cd845d1b6789";
+    public const string ThrowObject01 = "d095a0403d675d143ae039bf1bf8566c";
     public const string TiletypeBattleBoss = "c577d7611e7109344b6cd3801fdd5cec";
     public const string TiletypeBattleMiniBoss = "ee96fa411b53b354ea7376515a425b13";
     public const string TiletypeBattleStandard = "9c17113b57e3f094c9c9b14d0e6c54e5";
@@ -1912,6 +1936,7 @@ public static class VanillaAudioClips
     public const string UIRune2 = "463dfe8801510274b9447be0232dc187";
     public const string UISell = "a8c789893d4275749af12c1efda9dd3e";
     public const string UISnap = "e730310195e84534b9d7d9cbb89080be";
+    public const string UIStar = "281c8992204c3b045bf4ec69230afc91";
     public const string UISuccess = "acabcbdc433a14f4c90b3b93f9bf61d4";
     public const string UITextTick = "90174fd3968ea8543b51b1578928d91a";
     public const string UITick01 = "b7cdae923ada28641abfdd07c5f00562";
@@ -1935,6 +1960,7 @@ public static class VanillaAudioClips
     public const string UnlockEziliGalaxili = "d131da49e8bc83c4ead2bca0d351ad97";
     public const string UnlockGeraldoGadgeteer = "8f2eb24be777c154c9e38c6db4ec17b1";
     public const string UnlockGwen = "8890d8ab1890cf247abeaf4ca5ca3829";
+    public const string UnlockGwenFirecracker = "2d3d0af6104963f4c8e3bf1dfb30a9c4";
     public const string UnlockGwenScience = "fd4796977ab4d0e4b927725ccadded92";
     public const string UnlockHarleyGwen = "be28bef94ed3b2b48a95bfbd460d78d6";
     public const string UnlockObyn = "0ede2f117631d46409fd01b6c6fe3b01";
@@ -2124,6 +2150,15 @@ public static class VanillaAudioClips
     public const string UpgradeGwen06 = "63261571d3925e5418c42cf19d5b685e";
     public const string UpgradeGwen07 = "c896337ceab84ed40afc24a119e4cf9b";
     public const string UpgradeGwen08 = "20fba92f85cd86b4db172922b7b0fbc7";
+    public const string UpgradeGwenFirecracker01 = "3c8546591253800468844ab7dd6ae3e8";
+    public const string UpgradeGwenFirecracker02 = "8905d4db6334c9a4bb243923bbed76cd";
+    public const string UpgradeGwenFirecracker03 = "a367016bd9725444bbbc76d64da2764b";
+    public const string UpgradeGwenFirecracker04 = "fb661b2443f7e8841aee1e768683472a";
+    public const string UpgradeGwenFirecracker05 = "0311882b6c106b948a604fef1f3395f4";
+    public const string UpgradeGwenFirecracker06 = "a1d1549d437341e438f42924c2da0eed";
+    public const string UpgradeGwenFirecracker07 = "864d65f988abd1d408b6d13f15ae5824";
+    public const string UpgradeGwenFirecracker08 = "8653fd380c1157a44866962cf459bbc1";
+    public const string UpgradeGwenFirecrackerMaxLevel = "211ab5cfdbe4e1740a107248cfcf8f5e";
     public const string UpgradeGwenMaxLevel = "e23554c10cd51ac4190fc95f2c77c509";
     public const string UpgradeGwenScience01 = "a296c2e719ce66a40805267b2825e289";
     public const string UpgradeGwenScience02 = "02d87b159c5141c4c902c91457171709";
@@ -2327,6 +2362,7 @@ public static class VanillaAudioClips
     public const string VampireCoffinSpawn = "379e76cb5593e8545bdae20e8c7c0afb";
     public const string VampireGarlic01 = "37f94df51f611834a8fd64fb65413ca7";
     public const string VampireGarlic02 = "7cf6f0848a2b90f47ac73fa09b397ed8";
+    public const string VictoryCampaign = "816a9e93071dd5a438d6bf329296c34c";
     public const string VineRupture01 = "a8f247c8972251e47990079605261fca";
     public const string VineRupture02 = "b5d23d77291d8184bb1a1a519f7dd124";
     public const string VineRupture03 = "4cb567c57004d894496f8381b3e99d4c";
@@ -2363,6 +2399,7 @@ public static class VanillaAudioClips
     public const string ZomgWarningGeraldo = "efa55ad0a451fc74da98ae4db2e5d2d4";
     public const string ZomgWarningGeraldoGadgeteer = "039b302677fdf734383b62258061708a";
     public const string ZomgWarningGwen = "1b67e06990c7d8d409fa2aa267e884d1";
+    public const string ZomgWarningGwenFirecracker = "231ce6110c5e7984aa7470bb10d7603f";
     public const string ZomgWarningJones = "0dc0cd188b269bc4ab6c07bdf93837f8";
     public const string ZomgWarningObyn = "e4bfb747da34e5143b095a48bc6e57af";
     public const string ZomgWarningObynMountain = "2d1eef7c67700e84bb258088b3027853";
@@ -2402,6 +2439,7 @@ public static class VanillaAudioClips
             ["Activated10EtienneBookwyrmVO01"] = Activated10EtienneBookwyrmVO01,
             ["Activated10EtienneBookwyrmVO02"] = Activated10EtienneBookwyrmVO02,
             ["Activated10EtienneBookwyrmVO03"] = Activated10EtienneBookwyrmVO03,
+            ["Activated10GwenFirecracker"] = Activated10GwenFirecracker,
             ["Activated10PsiPsimbals"] = Activated10PsiPsimbals,
             ["Activated10RosaliaTinker01"] = Activated10RosaliaTinker01,
             ["Activated10RosaliaTinker02"] = Activated10RosaliaTinker02,
@@ -2417,6 +2455,7 @@ public static class VanillaAudioClips
             ["Activated3EtienneBookwyrmNoVO01"] = Activated3EtienneBookwyrmNoVO01,
             ["Activated3EtienneBookwyrmVO01"] = Activated3EtienneBookwyrmVO01,
             ["Activated3EtienneBookwyrmVO02"] = Activated3EtienneBookwyrmVO02,
+            ["Activated3GwenFirecracker"] = Activated3GwenFirecracker,
             ["Activated3ObynSkeletorVO02"] = Activated3ObynSkeletorVO02,
             ["Activated3PsiPsimbals"] = Activated3PsiPsimbals,
             ["Activated3RosaliaTinker01"] = Activated3RosaliaTinker01,
@@ -2512,6 +2551,7 @@ public static class VanillaAudioClips
             ["ActivatedFanClub"] = ActivatedFanClub,
             ["ActivatedFireStormHarleyGwen"] = ActivatedFireStormHarleyGwen,
             ["ActivatedFirestorm"] = ActivatedFirestorm,
+            ["ActivatedFirestormGwenFirecrackerNoVO"] = ActivatedFirestormGwenFirecrackerNoVO,
             ["ActivatedFirestormNoVO"] = ActivatedFirestormNoVO,
             ["ActivatedFirestormScience"] = ActivatedFirestormScience,
             ["ActivatedFirstStrike"] = ActivatedFirstStrike,
@@ -2747,6 +2787,7 @@ public static class VanillaAudioClips
             ["BadWarningGeraldo"] = BadWarningGeraldo,
             ["BadWarningGeraldoGadgeteer"] = BadWarningGeraldoGadgeteer,
             ["BadWarningGwen"] = BadWarningGwen,
+            ["BadWarningGwenFirecracker"] = BadWarningGwenFirecracker,
             ["BadWarningHarleyGwen"] = BadWarningHarleyGwen,
             ["BadWarningJones"] = BadWarningJones,
             ["BadWarningJonesBiker"] = BadWarningJonesBiker,
@@ -2802,6 +2843,7 @@ public static class VanillaAudioClips
             ["BfbWarningGeraldo"] = BfbWarningGeraldo,
             ["BfbWarningGeraldoGadgeteer"] = BfbWarningGeraldoGadgeteer,
             ["BfbWarningGwen"] = BfbWarningGwen,
+            ["BfbWarningGwenFirecracker"] = BfbWarningGwenFirecracker,
             ["BfbWarningHarleyGwen"] = BfbWarningHarleyGwen,
             ["BfbWarningJones"] = BfbWarningJones,
             ["BfbWarningObyn"] = BfbWarningObyn,
@@ -2917,6 +2959,7 @@ public static class VanillaAudioClips
             ["DdtWarningGeraldo"] = DdtWarningGeraldo,
             ["DdtWarningGeraldoGadgeteer"] = DdtWarningGeraldoGadgeteer,
             ["DdtWarningGwen"] = DdtWarningGwen,
+            ["DdtWarningGwenFirecracker"] = DdtWarningGwenFirecracker,
             ["DdtWarningJones"] = DdtWarningJones,
             ["DdtWarningObyn"] = DdtWarningObyn,
             ["DdtWarningObynSkeletor"] = DdtWarningObynSkeletor,
@@ -2945,6 +2988,7 @@ public static class VanillaAudioClips
             ["Explosion03"] = Explosion03,
             ["Explosion04"] = Explosion04,
             ["Explosion05"] = Explosion05,
+            ["ExplosionFireworks"] = ExplosionFireworks,
             ["ExplosionFrost01"] = ExplosionFrost01,
             ["ExplosionFrost02"] = ExplosionFrost02,
             ["ExplosionFrost03"] = ExplosionFrost03,
@@ -3087,6 +3131,8 @@ public static class VanillaAudioClips
             ["LeakGeraldoGadgeteer02"] = LeakGeraldoGadgeteer02,
             ["LeakGwen01"] = LeakGwen01,
             ["LeakGwen02"] = LeakGwen02,
+            ["LeakGwenFirecracker01"] = LeakGwenFirecracker01,
+            ["LeakGwenFirecracker02"] = LeakGwenFirecracker02,
             ["LeakGwenScience01"] = LeakGwenScience01,
             ["LeakHarleyGwen01"] = LeakHarleyGwen01,
             ["LeakJones01"] = LeakJones01,
@@ -3197,6 +3243,8 @@ public static class VanillaAudioClips
             ["MoabDestroyedGeraldoGadgeteer02"] = MoabDestroyedGeraldoGadgeteer02,
             ["MoabDestroyedGwen01"] = MoabDestroyedGwen01,
             ["MoabDestroyedGwen02"] = MoabDestroyedGwen02,
+            ["MoabDestroyedGwenFirecracker01"] = MoabDestroyedGwenFirecracker01,
+            ["MoabDestroyedGwenFirecracker02"] = MoabDestroyedGwenFirecracker02,
             ["MoabDestroyedGwenScience01"] = MoabDestroyedGwenScience01,
             ["MoabDestroyedHarleyGwen"] = MoabDestroyedHarleyGwen,
             ["MoabDestroyedJones01"] = MoabDestroyedJones01,
@@ -3270,6 +3318,7 @@ public static class VanillaAudioClips
             ["MoabWarningGeraldo"] = MoabWarningGeraldo,
             ["MoabWarningGeraldoGadgeteer"] = MoabWarningGeraldoGadgeteer,
             ["MoabWarningGwen"] = MoabWarningGwen,
+            ["MoabWarningGwenFirecracker"] = MoabWarningGwenFirecracker,
             ["MoabWarningGwenScience"] = MoabWarningGwenScience,
             ["MoabWarningHarleyGwen"] = MoabWarningHarleyGwen,
             ["MoabWarningJones"] = MoabWarningJones,
@@ -3609,6 +3658,8 @@ public static class VanillaAudioClips
             ["PlaceGwen02"] = PlaceGwen02,
             ["PlaceGwenFireNoVO01"] = PlaceGwenFireNoVO01,
             ["PlaceGwenFireNoVO02"] = PlaceGwenFireNoVO02,
+            ["PlaceGwenFirecracker01"] = PlaceGwenFirecracker01,
+            ["PlaceGwenFirecracker02"] = PlaceGwenFirecracker02,
             ["PlaceGwenScience01"] = PlaceGwenScience01,
             ["PlaceGwenScience02"] = PlaceGwenScience02,
             ["PlaceHarleyGwen01"] = PlaceHarleyGwen01,
@@ -3810,6 +3861,7 @@ public static class VanillaAudioClips
             ["PotionBuff03"] = PotionBuff03,
             ["PotionBuff04"] = PotionBuff04,
             ["PotionBuff05"] = PotionBuff05,
+            ["QuestNotification"] = QuestNotification,
             ["ReactSheRaSkeletor"] = ReactSheRaSkeletor,
             ["ReactSkeletorDarkSheRa"] = ReactSkeletorDarkSheRa,
             ["ReactSkeletorSheRa"] = ReactSkeletorSheRa,
@@ -3890,6 +3942,8 @@ public static class VanillaAudioClips
             ["SelectAltGeraldoGadgeteer02"] = SelectAltGeraldoGadgeteer02,
             ["SelectAltGwen01"] = SelectAltGwen01,
             ["SelectAltGwen02"] = SelectAltGwen02,
+            ["SelectAltGwenFirecracker01"] = SelectAltGwenFirecracker01,
+            ["SelectAltGwenFirecracker02"] = SelectAltGwenFirecracker02,
             ["SelectAltGwenScience01"] = SelectAltGwenScience01,
             ["SelectAltGwenScience02"] = SelectAltGwenScience02,
             ["SelectAltHarleyGwen01"] = SelectAltHarleyGwen01,
@@ -4075,6 +4129,12 @@ public static class VanillaAudioClips
             ["SelectGwen04"] = SelectGwen04,
             ["SelectGwen05"] = SelectGwen05,
             ["SelectGwen06"] = SelectGwen06,
+            ["SelectGwenFirecracker01"] = SelectGwenFirecracker01,
+            ["SelectGwenFirecracker02"] = SelectGwenFirecracker02,
+            ["SelectGwenFirecracker03"] = SelectGwenFirecracker03,
+            ["SelectGwenFirecracker04"] = SelectGwenFirecracker04,
+            ["SelectGwenFirecracker05"] = SelectGwenFirecracker05,
+            ["SelectGwenFirecracker06"] = SelectGwenFirecracker06,
             ["SelectGwenScience01"] = SelectGwenScience01,
             ["SelectGwenScience02"] = SelectGwenScience02,
             ["SelectGwenScience03"] = SelectGwenScience03,
@@ -4238,6 +4298,7 @@ public static class VanillaAudioClips
             ["SwapLaserRosaliaVO01"] = SwapLaserRosaliaVO01,
             ["SwapLaserRosaliaVO02"] = SwapLaserRosaliaVO02,
             ["Thrive"] = Thrive,
+            ["ThrowObject01"] = ThrowObject01,
             ["TiletypeBattleBoss"] = TiletypeBattleBoss,
             ["TiletypeBattleMiniBoss"] = TiletypeBattleMiniBoss,
             ["TiletypeBattleStandard"] = TiletypeBattleStandard,
@@ -4297,6 +4358,7 @@ public static class VanillaAudioClips
             ["UIRune2"] = UIRune2,
             ["UISell"] = UISell,
             ["UISnap"] = UISnap,
+            ["UIStar"] = UIStar,
             ["UISuccess"] = UISuccess,
             ["UITextTick"] = UITextTick,
             ["UITick01"] = UITick01,
@@ -4320,6 +4382,7 @@ public static class VanillaAudioClips
             ["UnlockEziliGalaxili"] = UnlockEziliGalaxili,
             ["UnlockGeraldoGadgeteer"] = UnlockGeraldoGadgeteer,
             ["UnlockGwen"] = UnlockGwen,
+            ["UnlockGwenFirecracker"] = UnlockGwenFirecracker,
             ["UnlockGwenScience"] = UnlockGwenScience,
             ["UnlockHarleyGwen"] = UnlockHarleyGwen,
             ["UnlockObyn"] = UnlockObyn,
@@ -4509,6 +4572,15 @@ public static class VanillaAudioClips
             ["UpgradeGwen06"] = UpgradeGwen06,
             ["UpgradeGwen07"] = UpgradeGwen07,
             ["UpgradeGwen08"] = UpgradeGwen08,
+            ["UpgradeGwenFirecracker01"] = UpgradeGwenFirecracker01,
+            ["UpgradeGwenFirecracker02"] = UpgradeGwenFirecracker02,
+            ["UpgradeGwenFirecracker03"] = UpgradeGwenFirecracker03,
+            ["UpgradeGwenFirecracker04"] = UpgradeGwenFirecracker04,
+            ["UpgradeGwenFirecracker05"] = UpgradeGwenFirecracker05,
+            ["UpgradeGwenFirecracker06"] = UpgradeGwenFirecracker06,
+            ["UpgradeGwenFirecracker07"] = UpgradeGwenFirecracker07,
+            ["UpgradeGwenFirecracker08"] = UpgradeGwenFirecracker08,
+            ["UpgradeGwenFirecrackerMaxLevel"] = UpgradeGwenFirecrackerMaxLevel,
             ["UpgradeGwenMaxLevel"] = UpgradeGwenMaxLevel,
             ["UpgradeGwenScience01"] = UpgradeGwenScience01,
             ["UpgradeGwenScience02"] = UpgradeGwenScience02,
@@ -4712,6 +4784,7 @@ public static class VanillaAudioClips
             ["VampireCoffinSpawn"] = VampireCoffinSpawn,
             ["VampireGarlic01"] = VampireGarlic01,
             ["VampireGarlic02"] = VampireGarlic02,
+            ["VictoryCampaign"] = VictoryCampaign,
             ["VineRupture01"] = VineRupture01,
             ["VineRupture02"] = VineRupture02,
             ["VineRupture03"] = VineRupture03,
@@ -4748,6 +4821,7 @@ public static class VanillaAudioClips
             ["ZomgWarningGeraldo"] = ZomgWarningGeraldo,
             ["ZomgWarningGeraldoGadgeteer"] = ZomgWarningGeraldoGadgeteer,
             ["ZomgWarningGwen"] = ZomgWarningGwen,
+            ["ZomgWarningGwenFirecracker"] = ZomgWarningGwenFirecracker,
             ["ZomgWarningJones"] = ZomgWarningJones,
             ["ZomgWarningObyn"] = ZomgWarningObyn,
             ["ZomgWarningObynMountain"] = ZomgWarningObynMountain,

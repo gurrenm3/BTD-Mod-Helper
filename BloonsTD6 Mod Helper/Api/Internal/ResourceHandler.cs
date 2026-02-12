@@ -289,8 +289,7 @@ public static class ResourceHandler
     /// <param name="pixelsPerUnit">Pixels per Unit to use</param>
     /// <returns>new Sprite</returns>
     public static Sprite CreateSprite(this Texture2D texture, float pixelsPerUnit = 10.8f) => Sprite.Create(texture,
-        new Rect(0, 0, texture.width, texture.height),
-        new Vector2(0.5f, 0.5f), pixelsPerUnit);
+        new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f), pixelsPerUnit);
 
     internal static Sprite CreateSprite(string id, float pixelsPerUnit = 10.8f)
     {

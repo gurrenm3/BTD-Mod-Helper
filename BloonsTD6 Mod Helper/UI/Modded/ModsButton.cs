@@ -8,10 +8,12 @@ using BTD_Mod_Helper.UI.Menus;
 using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Home;
+using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using UnityEngine.UI;
 using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
+using Object = UnityEngine.Object;
 namespace BTD_Mod_Helper.UI.Modded;
 
 internal static class ModsButton
@@ -54,19 +56,19 @@ internal static class ModsButton
         currentMatchLocalPosition = modsButton.transform.GetChild(0).gameObject.AddComponent<MatchLocalPosition>();
         currentMatchLocalPosition.transformToCopy = copyLocalFrom.transform.GetChild(0);
 
-        var screenSize = ScreenResizeDetector.Instance;
+        var screenSize = Object.FindObjectOfType<ScreenResizeDetector>();
 
         SetPosition(screenSize.currentWidth, screenSize.currentHeight);
 
         if (!createdBefore)
         {
-            ScreenResizeDetector.Instance.onScreenSizeChanged += new Action<int, int>(SetPosition);
+            Messaging<OnScreenSizeDidChange>.Register(new Action<int, int, bool>(SetPosition));
         }
 
         createdBefore = true;
     }
 
-    private static void SetPosition(int width, int height)
+    private static void SetPosition(int width, int height, bool isFullscreen = false)
     {
         if (currentMatchLocalPosition == null) return;
 

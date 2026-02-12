@@ -9,6 +9,7 @@ using Il2CppAssets.Scripts.Models.Artifacts.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation;
+using Il2CppAssets.Scripts.Unity.UI_New.Legends;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Collections.Generic;

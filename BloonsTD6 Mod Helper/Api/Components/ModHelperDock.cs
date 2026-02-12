@@ -8,6 +8,7 @@ using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.AbilitiesMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Utils;
+using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using UnityEngine.UI;
 using Math = Il2CppAssets.Scripts.Simulation.SMath.Math;
@@ -80,7 +81,7 @@ public sealed class ModHelperDock : ModHelperPanel
         canvasGroup.interactable = showing;
     }
 
-    internal static void UpdatePosition(int width, int height)
+    internal static void UpdatePosition(int width, int height, bool isFullscreen = false)
     {
         if (InGame.instance == null) return;
 
@@ -305,10 +306,10 @@ public sealed class ModHelperDock : ModHelperPanel
             dock.startMenu = null;
         }
 
-        var screenSize = ScreenResizeDetector.Instance;
+        var screenSize = FindObjectOfType<ScreenResizeDetector>();
         if (!setupBefore)
         {
-            screenSize.onScreenSizeChanged += new Action<int, int>(UpdatePosition);
+            Messaging<OnScreenSizeDidChange>.Register(new Action<int, int, bool>(UpdatePosition));
             setupBefore = true;
         }
 

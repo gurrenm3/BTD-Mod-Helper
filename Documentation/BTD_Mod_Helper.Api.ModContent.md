@@ -19,6 +19,7 @@ System.IComparable<BTD_Mod_Helper.Api.ModContent>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModContent
 
 Derived  
+&#8627; [ModBloonProperty](BTD_Mod_Helper.Api.Bloons.ModBloonProperty.md 'BTD_Mod_Helper.Api.Bloons.ModBloonProperty')  
 &#8627; [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand')  
 &#8627; [ModSettings](BTD_Mod_Helper.Api.Data.ModSettings.md 'BTD_Mod_Helper.Api.Data.ModSettings')  
 &#8627; [ModTextOverride](BTD_Mod_Helper.Api.Data.ModTextOverride.md 'BTD_Mod_Helper.Api.Data.ModTextOverride')  
@@ -516,6 +517,25 @@ Sound name (no .wav)
 #### Returns
 [Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetBloonProperties_T_()'></a>
+
+## ModContent.GetBloonProperties<T>() Method
+
+Gets the BloonProperties enum value for a ModBloonProperty
+
+```csharp
+public static BloonProperties GetBloonProperties<T>()
+    where T : BTD_Mod_Helper.Api.Bloons.ModBloonProperty;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetBloonProperties_T_().T'></a>
+
+`T`
+
+#### Returns
+[Il2Cpp.BloonProperties](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.BloonProperties 'Il2Cpp.BloonProperties')
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetBundle(BTD_Mod_Helper.BloonsMod,string)'></a>
 

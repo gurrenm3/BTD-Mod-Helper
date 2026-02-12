@@ -103,7 +103,7 @@ public sealed class ModHelperDockButton : ModHelperPanel
         }
 
 
-        var screenSize = ScreenResizeDetector.Instance;
+        var screenSize = FindObjectOfType<ScreenResizeDetector>();
         dockButton.UpdatePosition(screenSize.currentWidth, screenSize.currentHeight);
 
         return dockButton;

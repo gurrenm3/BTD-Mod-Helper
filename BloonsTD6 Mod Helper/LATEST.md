@@ -2,5 +2,4 @@
 
 <!--Mod Browser Message Start-->
 
-- Fixed the patch that ensured only vanilla towers were rewarded as Insta Monkeys from including the Sheriff tower
-  - The extension `towerModel.IsVanillaTower()` will still return true for the Sheriff, but the new extension `towerModel.IsStandardVanillaTower()` will return false
+- Initial fixes for BTD6 v53

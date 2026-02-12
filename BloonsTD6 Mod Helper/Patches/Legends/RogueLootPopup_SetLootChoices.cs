@@ -1,6 +1,7 @@
 using System.Linq;
 using BTD_Mod_Helper.Api.Legends;
 using Il2CppAssets.Scripts.Data.Legends;
+using Il2CppAssets.Scripts.Unity.UI_New.Legends;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 
 namespace BTD_Mod_Helper.Patches;
