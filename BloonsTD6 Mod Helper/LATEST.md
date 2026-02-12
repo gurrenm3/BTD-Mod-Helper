@@ -2,4 +2,5 @@
 
 <!--Mod Browser Message Start-->
 
-- Initial fixes for BTD6 v53
+- Fixed an issue with some people's BTD6 localization tables not getting fully setup which lead to many different problems with mods
+- Fixed the Mod Browser screen not being properly renamed from Content Browser

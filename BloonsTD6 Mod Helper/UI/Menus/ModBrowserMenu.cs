@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
@@ -115,7 +114,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     public void ModifyExistingElements()
     {
-        GameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("Title").localizeKey = ModBrowser;
+        var title = GameMenu.GetComponentFromChildrenByName<NK_TextMeshProUGUI>("Title");
+        title.localizeKey = ModBrowser;
+        title.UpdateText(ModBrowser.Localize());
 
         GameMenu.GetComponentFromChildrenByName<RectTransform>("TopBar").gameObject.active = false;
         GameMenu.GetComponentFromChildrenByName<RectTransform>("Tabs").gameObject.active = false;
@@ -329,6 +330,7 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
         RecalculateCurrentMods();
 
+        if (GameMenu == null || GameMenu.refreshBtn == null) yield break;
         GameMenu.refreshBtn.interactable = true;
     }
 

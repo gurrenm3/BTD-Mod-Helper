@@ -9,6 +9,7 @@ using BTD_Mod_Helper.Api.Scenarios;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Scenes;
+using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +26,9 @@ internal class TitleScreen_Start
     [HarmonyPriority(Priority.High)]
     internal static void Postfix()
     {
+        // Fix some peoples' textTable sometimes not being initialized by this point TODO is there a better fix for this?
+        LocalizationManager.Instance.textTable ??= LocalizationManager.Instance.defaultTable;
+
         ModArtifact.FixVanillaArtifactDependants();
 
         if (ModHelper.FallbackToOldLoading)
