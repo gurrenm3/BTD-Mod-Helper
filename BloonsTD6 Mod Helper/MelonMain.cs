@@ -29,7 +29,6 @@ using BTD_Mod_Helper.Api.Internal.JsonTowers;
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 [assembly: MelonPriority(-1000)]
-[assembly: MelonOptionalDependencies("NAudio.Wasapi")]
 
 namespace BTD_Mod_Helper;
 

@@ -9,6 +9,7 @@ using NAudio.Vorbis;
 using NAudio.Wave;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Stream = System.IO.Stream;
 namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
@@ -46,6 +47,15 @@ public static class ResourceHandler
     /// </summary>
     public static readonly Dictionary<string, IList<AudioClip>> RandomAudioClipIds = [];
 
+    /// <summary>
+    /// Allowed file extensions for images
+    /// </summary>
+    public static readonly string[] ImageExtensions = [".png", ".jpg"];
+
+    /// <summary>
+    /// Allowed file extensions for audio
+    /// </summary>
+    public static readonly string[] AudioExtensions = [".wav", ".mp3", ".ogg", ".flac", ".aac", ".wma", ".m4a"];
 
     internal static readonly List<RenderTexture> RenderTexturesToRelease = [];
 
@@ -59,8 +69,7 @@ public static class ResourceHandler
     internal static void LoadEmbeddedTextures(BloonsMod mod)
     {
         mod.Resources = new Dictionary<string, byte[]>();
-        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
-                     .Where(s => s.EndsWith(".png") || s.EndsWith(".jpg")))
+        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames().Where(s => ImageExtensions.Any(s.EndsWith)))
         {
             var resource = mod.GetAssembly().GetManifestResourceStream(fileName).GetByteArray();
             if (resource == null) continue;
@@ -77,8 +86,7 @@ public static class ResourceHandler
     {
         mod.AudioClips = new Dictionary<string, AudioClip>();
 
-        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames()
-                     .Where(s => s.EndsWith(".wav") || s.EndsWith(".mp3") || s.EndsWith(".ogg")))
+        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames().Where(s => AudioExtensions.Any(s.EndsWith)))
         {
             var split = fileName.Split('.');
             var extension = split[^1];
@@ -89,28 +97,6 @@ public static class ResourceHandler
             {
                 using var stream = mod.GetAssembly().GetManifestResourceStream(fileName)!;
 
-                WaveStream waveStream;
-
-                switch (extension)
-                {
-                    case "wav":
-                        waveStream = new WaveFileReader(stream);
-                        break;
-                    case "mp3":
-                        waveStream = new Mp3FileReader(stream);
-                        break;
-                    case "ogg":
-                        waveStream = new VorbisWaveReader(stream);
-                        break;
-                    default:
-                        ModHelper.Warning($"Invalid for audio extension {extension} for {fileName}");
-                        return;
-                }
-
-                using (waveStream)
-                {
-                    mod.AudioClips[name] = CreateAudioClip(waveStream, id);
-                }
             }
             catch (Exception e)
             {
@@ -156,6 +142,31 @@ public static class ResourceHandler
             // ModHelper.Msg("Successfully loaded bundle " + guid);
         }
     }
+
+
+    /// <summary>
+    /// Turns a stream into a WaveStream based on file extension
+    /// </summary>
+    public static WaveStream GetWaveStream(Stream stream, string extension) => extension.Replace(".", "") switch
+    {
+        "wav" => new WaveFileReader(stream),
+        "mp3" => new Mp3FileReader(stream),
+        "ogg" => new VorbisWaveReader(stream),
+        "flac" or "wma" or "aac" or "m4a" => new StreamMediaFoundationReader(stream),
+        _ => throw new FormatException($"Invalid for audio extension {extension}")
+    };
+
+    /// <summary>
+    /// Gets a WaveStream from a file path
+    /// </summary>
+    public static WaveStream GetWaveStream(string filePath) => Path.GetExtension(filePath).Replace(".", "") switch
+    {
+        "wav" => new WaveFileReader(filePath),
+        "mp3" => new Mp3FileReader(filePath),
+        "ogg" => new VorbisWaveReader(filePath),
+        "flac" or "wma" or "aac" or "m4a" => new MediaFoundationReader(filePath),
+        _ => throw new FormatException($"Invalid for audio extension {Path.GetExtension(filePath)}")
+    };
 
 
     /// <summary>

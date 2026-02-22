@@ -2,5 +2,4 @@
 
 <!--Mod Browser Message Start-->
 
-- Fixed an issue with some people's BTD6 localization tables not getting fully setup which lead to many different problems with mods
-- Fixed the Mod Browser screen not being properly renamed from Content Browser
+- Added support for .flac, .aac, .wma, .m4a audio files
