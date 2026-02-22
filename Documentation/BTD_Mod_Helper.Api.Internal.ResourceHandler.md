@@ -25,6 +25,19 @@ public static readonly Dictionary<string,AudioClip> AudioClips;
 #### Field Value
 [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.AudioExtensions'></a>
+
+## ResourceHandler.AudioExtensions Field
+
+Allowed file extensions for audio
+
+```csharp
+public static readonly string[] AudioExtensions;
+```
+
+#### Field Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.Bundles'></a>
 
 ## ResourceHandler.Bundles Field
@@ -37,6 +50,19 @@ public static readonly Dictionary<string,AssetBundle> Bundles;
 
 #### Field Value
 [System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[UnityEngine.AssetBundle](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AssetBundle 'UnityEngine.AssetBundle')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.ImageExtensions'></a>
+
+## ResourceHandler.ImageExtensions Field
+
+Allowed file extensions for images
+
+```csharp
+public static readonly string[] ImageExtensions;
+```
+
+#### Field Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.RandomAudioClipIds'></a>
 
@@ -296,3 +322,43 @@ Texture id "ModName-FileName" (no file extension)
 #### Returns
 [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
 The texture
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetWaveStream(string)'></a>
+
+## ResourceHandler.GetWaveStream(string) Method
+
+Gets a WaveStream from a file path
+
+```csharp
+public static NAudio.Wave.WaveStream GetWaveStream(string filePath);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetWaveStream(string).filePath'></a>
+
+`filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[NAudio.Wave.WaveStream](https://docs.microsoft.com/en-us/dotnet/api/NAudio.Wave.WaveStream 'NAudio.Wave.WaveStream')
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetWaveStream(System.IO.Stream,string)'></a>
+
+## ResourceHandler.GetWaveStream(Stream, string) Method
+
+Turns a stream into a WaveStream based on file extension
+
+```csharp
+public static NAudio.Wave.WaveStream GetWaveStream(System.IO.Stream stream, string extension);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetWaveStream(System.IO.Stream,string).stream'></a>
+
+`stream` [System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Stream 'System.IO.Stream')
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetWaveStream(System.IO.Stream,string).extension'></a>
+
+`extension` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[NAudio.Wave.WaveStream](https://docs.microsoft.com/en-us/dotnet/api/NAudio.Wave.WaveStream 'NAudio.Wave.WaveStream')

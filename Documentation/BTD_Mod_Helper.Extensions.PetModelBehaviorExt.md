@@ -56,32 +56,6 @@ public static void AddBehavior<T>(this PetModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.AddBehavior_T_(thisPetModel,T).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.AddBehavior<T>(this PetModel, T).T')
 
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel)'></a>
-
-## PetModelBehaviorExt.GetBehavior<T>(this PetModel) Method
-
-Return the first Behavior of type T, or null if there isn't one
-
-```csharp
-public static T GetBehavior<T>(this PetModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel).T'></a>
-
-`T`
-
-The Behavior you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior<T>(this PetModel).T')
-
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel,int)'></a>
 
 ## PetModelBehaviorExt.GetBehavior<T>(this PetModel, int) Method
@@ -142,6 +116,32 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel,string).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior<T>(this PetModel, string).T')
 
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel)'></a>
+
+## PetModelBehaviorExt.GetBehavior<T>(this PetModel) Method
+
+Return the first Behavior of type T, or null if there isn't one
+
+```csharp
+public static T GetBehavior<T>(this PetModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior_T_(thisPetModel).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehavior<T>(this PetModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehaviors_T_(thisPetModel)'></a>
 
 ## PetModelBehaviorExt.GetBehaviors<T>(this PetModel) Method
@@ -167,62 +167,6 @@ The Behavior you want
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehaviors_T_(thisPetModel).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.GetBehaviors<T>(this PetModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel)'></a>
-
-## PetModelBehaviorExt.HasBehavior<T>(this PetModel) Method
-
-Check if this has a specific Behavior
-
-```csharp
-public static bool HasBehavior<T>(this PetModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string)'></a>
-
-## PetModelBehaviorExt.HasBehavior<T>(this PetModel, string) Method
-
-Check if this has a specific named Behavior and return it
-
-```csharp
-public static bool HasBehavior<T>(this PetModel model, string nameContains)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
-
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).nameContains'></a>
-
-`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string,T)'></a>
 
@@ -258,6 +202,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string)'></a>
+
+## PetModelBehaviorExt.HasBehavior<T>(this PetModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this PetModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel,T)'></a>
 
 ## PetModelBehaviorExt.HasBehavior<T>(this PetModel, T) Method
@@ -288,28 +262,31 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel)'></a>
 
-## PetModelBehaviorExt.RemoveBehavior<T>(this PetModel) Method
+## PetModelBehaviorExt.HasBehavior<T>(this PetModel) Method
 
-Remove the first Behavior of Type T
+Check if this has a specific Behavior
 
 ```csharp
-public static void RemoveBehavior<T>(this PetModel model)
+public static bool HasBehavior<T>(this PetModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel).T'></a>
 
 `T`
 
-The Behavior you want to remove
+The Behavior you're checking for
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.HasBehavior_T_(thisPetModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel,int)'></a>
 
@@ -389,6 +366,29 @@ public static void RemoveBehavior<T>(this PetModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md#BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel,T).T 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior<T>(this PetModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel)'></a>
+
+## PetModelBehaviorExt.RemoveBehavior<T>(this PetModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this PetModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehavior_T_(thisPetModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Pets.PetModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Pets.PetModel 'Il2CppAssets.Scripts.Models.Towers.Pets.PetModel')
 
 <a name='BTD_Mod_Helper.Extensions.PetModelBehaviorExt.RemoveBehaviors(thisPetModel)'></a>
 

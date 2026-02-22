@@ -12,21 +12,6 @@ public static class NK_TextMeshProUGUIExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; NK_TextMeshProUGUIExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI)'></a>
-
-## NK_TextMeshProUGUIExt.EnableAutoSizing(this NK_TextMeshProUGUI) Method
-
-Enables auto sizing for this [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI') component
-
-```csharp
-public static void EnableAutoSizing(this NK_TextMeshProUGUI text);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI).text'></a>
-
-`text` [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI')
-
 <a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,bool)'></a>
 
 ## NK_TextMeshProUGUIExt.EnableAutoSizing(this NK_TextMeshProUGUI, bool) Method
@@ -45,25 +30,6 @@ public static void EnableAutoSizing(this NK_TextMeshProUGUI text, bool enabled);
 <a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,bool).enabled'></a>
 
 `enabled` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float)'></a>
-
-## NK_TextMeshProUGUIExt.EnableAutoSizing(this NK_TextMeshProUGUI, float) Method
-
-Enables auto sizing for this [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI') component
-
-```csharp
-public static void EnableAutoSizing(this NK_TextMeshProUGUI text, float fontSizeMax);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float).text'></a>
-
-`text` [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI')
-
-<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float).fontSizeMax'></a>
-
-`fontSizeMax` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 <a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float,float)'></a>
 
@@ -87,6 +53,40 @@ public static void EnableAutoSizing(this NK_TextMeshProUGUI text, float fontSize
 <a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float,float).fontSizeMin'></a>
 
 `fontSizeMin` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float)'></a>
+
+## NK_TextMeshProUGUIExt.EnableAutoSizing(this NK_TextMeshProUGUI, float) Method
+
+Enables auto sizing for this [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI') component
+
+```csharp
+public static void EnableAutoSizing(this NK_TextMeshProUGUI text, float fontSizeMax);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float).text'></a>
+
+`text` [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI')
+
+<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI,float).fontSizeMax'></a>
+
+`fontSizeMax` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI)'></a>
+
+## NK_TextMeshProUGUIExt.EnableAutoSizing(this NK_TextMeshProUGUI) Method
+
+Enables auto sizing for this [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI') component
+
+```csharp
+public static void EnableAutoSizing(this NK_TextMeshProUGUI text);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.EnableAutoSizing(thisNK_TextMeshProUGUI).text'></a>
+
+`text` [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI')
 
 <a name='BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.GetText(thisNK_TextMeshProUGUI)'></a>
 

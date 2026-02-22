@@ -109,25 +109,6 @@ public static void ClearBloonGroups(this RoundModel roundModel);
 
 `roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
 
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string)'></a>
-
-## RoundModelExt.RemoveBloonGroup(this RoundModel, string) Method
-
-Removes all Bloon Groups where the id is as specified
-
-```csharp
-public static void RemoveBloonGroup(this RoundModel roundModel, string bloonId);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string).roundModel'></a>
-
-`roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
-
-<a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string).bloonId'></a>
-
-`bloonId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string,int)'></a>
 
 ## RoundModelExt.RemoveBloonGroup(this RoundModel, string, int) Method
@@ -150,6 +131,25 @@ public static void RemoveBloonGroup(this RoundModel roundModel, string bloonId, 
 <a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string,int).index'></a>
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string)'></a>
+
+## RoundModelExt.RemoveBloonGroup(this RoundModel, string) Method
+
+Removes all Bloon Groups where the id is as specified
+
+```csharp
+public static void RemoveBloonGroup(this RoundModel roundModel, string bloonId);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string).roundModel'></a>
+
+`roundModel` [Il2CppAssets.Scripts.Models.Rounds.RoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Rounds.RoundModel 'Il2CppAssets.Scripts.Models.Rounds.RoundModel')
+
+<a name='BTD_Mod_Helper.Extensions.RoundModelExt.RemoveBloonGroup(thisRoundModel,string).bloonId'></a>
+
+`bloonId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='BTD_Mod_Helper.Extensions.RoundModelExt.ReplaceBloonInGroups(thisRoundModel,string,string,bool)'></a>
 

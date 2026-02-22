@@ -12,25 +12,6 @@ public static class BloonsTD6ModExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; BloonsTD6ModExt
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModDirectory(thisBTD_Mod_Helper.BloonsMod)'></a>
-
-## BloonsTD6ModExt.GetModDirectory(this BloonsMod) Method
-
-Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods.  
-Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
-
-```csharp
-public static string GetModDirectory(this BTD_Mod_Helper.BloonsMod bloonsMod);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModDirectory(thisBTD_Mod_Helper.BloonsMod).bloonsMod'></a>
-
-`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModDirectory(thisBTD_Mod_Helper.BloonsMod,bool)'></a>
 
 ## BloonsTD6ModExt.GetModDirectory(this BloonsMod, bool) Method
@@ -56,6 +37,25 @@ Create the mod's directory if it doesn't exist yet?
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModDirectory(thisBTD_Mod_Helper.BloonsMod)'></a>
+
+## BloonsTD6ModExt.GetModDirectory(this BloonsMod) Method
+
+Get the personal mod directory for this specific mod. Useful for keeping this mod's files seperate from other mods.  
+Example: "BloonsTD6/Mods/BloonsTD6 Mod Helper/settings.txt"
+
+```csharp
+public static string GetModDirectory(this BTD_Mod_Helper.BloonsMod bloonsMod);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModDirectory(thisBTD_Mod_Helper.BloonsMod).bloonsMod'></a>
+
+`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModName(thisBTD_Mod_Helper.BloonsMod)'></a>
 
 ## BloonsTD6ModExt.GetModName(this BloonsMod) Method
@@ -68,25 +68,6 @@ public static string GetModName(this BTD_Mod_Helper.BloonsMod bloonsMod);
 #### Parameters
 
 <a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModName(thisBTD_Mod_Helper.BloonsMod).bloonsMod'></a>
-
-`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModSettingsDir(thisBTD_Mod_Helper.BloonsMod)'></a>
-
-## BloonsTD6ModExt.GetModSettingsDir(this BloonsMod) Method
-
-Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod  
-Helper/settings.txt"
-
-```csharp
-public static string GetModSettingsDir(this BTD_Mod_Helper.BloonsMod bloonsMod);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModSettingsDir(thisBTD_Mod_Helper.BloonsMod).bloonsMod'></a>
 
 `bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
 
@@ -114,6 +95,25 @@ public static string GetModSettingsDir(this BTD_Mod_Helper.BloonsMod bloonsMod, 
 `createIfNotExists` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 Create the mod's directory if it doesn't exist yet?
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModSettingsDir(thisBTD_Mod_Helper.BloonsMod)'></a>
+
+## BloonsTD6ModExt.GetModSettingsDir(this BloonsMod) Method
+
+Gets the directory where this mod's settings are or will be stored. Example: "BloonsTD6/Mods/BloonsTD6 Mod  
+Helper/settings.txt"
+
+```csharp
+public static string GetModSettingsDir(this BTD_Mod_Helper.BloonsMod bloonsMod);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonsTD6ModExt.GetModSettingsDir(thisBTD_Mod_Helper.BloonsMod).bloonsMod'></a>
+
+`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

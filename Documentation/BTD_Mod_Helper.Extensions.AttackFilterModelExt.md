@@ -56,32 +56,6 @@ public static void AddFilter<T>(this AttackFilterModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md#BTD_Mod_Helper.Extensions.AttackFilterModelExt.AddFilter_T_(thisAttackFilterModel,T).T 'BTD_Mod_Helper.Extensions.AttackFilterModelExt.AddFilter<T>(this AttackFilterModel, T).T')
 
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel)'></a>
-
-## AttackFilterModelExt.GetFilter<T>(this AttackFilterModel) Method
-
-Return the first Behavior of type T, or null if there isn't one
-
-```csharp
-public static T GetFilter<T>(this AttackFilterModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel).T'></a>
-
-`T`
-
-The Behavior you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md#BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel).T 'BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter<T>(this AttackFilterModel).T')
-
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel,int)'></a>
 
 ## AttackFilterModelExt.GetFilter<T>(this AttackFilterModel, int) Method
@@ -142,6 +116,32 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md#BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel,string).T 'BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter<T>(this AttackFilterModel, string).T')
 
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel)'></a>
+
+## AttackFilterModelExt.GetFilter<T>(this AttackFilterModel) Method
+
+Return the first Behavior of type T, or null if there isn't one
+
+```csharp
+public static T GetFilter<T>(this AttackFilterModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md#BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter_T_(thisAttackFilterModel).T 'BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilter<T>(this AttackFilterModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilters_T_(thisAttackFilterModel)'></a>
 
 ## AttackFilterModelExt.GetFilters<T>(this AttackFilterModel) Method
@@ -167,62 +167,6 @@ The Behavior you want
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md#BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilters_T_(thisAttackFilterModel).T 'BTD_Mod_Helper.Extensions.AttackFilterModelExt.GetFilters<T>(this AttackFilterModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel)'></a>
-
-## AttackFilterModelExt.HasFilter<T>(this AttackFilterModel) Method
-
-Check if this has a specific Behavior
-
-```csharp
-public static bool HasFilter<T>(this AttackFilterModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string)'></a>
-
-## AttackFilterModelExt.HasFilter<T>(this AttackFilterModel, string) Method
-
-Check if this has a specific named Behavior and return it
-
-```csharp
-public static bool HasFilter<T>(this AttackFilterModel model, string nameContains)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string).nameContains'></a>
-
-`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string,T)'></a>
 
@@ -258,6 +202,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string)'></a>
+
+## AttackFilterModelExt.HasFilter<T>(this AttackFilterModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasFilter<T>(this AttackFilterModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel,T)'></a>
 
 ## AttackFilterModelExt.HasFilter<T>(this AttackFilterModel, T) Method
@@ -288,6 +262,32 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel)'></a>
+
+## AttackFilterModelExt.HasFilter<T>(this AttackFilterModel) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasFilter<T>(this AttackFilterModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.HasFilter_T_(thisAttackFilterModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter(thisAttackFilterModel)'></a>
 
 ## AttackFilterModelExt.RemoveFilter(this AttackFilterModel) Method
@@ -300,29 +300,6 @@ public static void RemoveFilter(this AttackFilterModel model);
 #### Parameters
 
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter(thisAttackFilterModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel)'></a>
-
-## AttackFilterModelExt.RemoveFilter<T>(this AttackFilterModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveFilter<T>(this AttackFilterModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
 
@@ -404,6 +381,29 @@ public static void RemoveFilter<T>(this AttackFilterModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md#BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel,T).T 'BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter<T>(this AttackFilterModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel)'></a>
+
+## AttackFilterModelExt.RemoveFilter<T>(this AttackFilterModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveFilter<T>(this AttackFilterModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilter_T_(thisAttackFilterModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel')
 
 <a name='BTD_Mod_Helper.Extensions.AttackFilterModelExt.RemoveFilters_T_(thisAttackFilterModel)'></a>
 
