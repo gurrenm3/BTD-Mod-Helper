@@ -73,6 +73,10 @@
         <EmbeddedResource Include="**/*.wav"/>
         <EmbeddedResource Include="**/*.mp3"/>
         <EmbeddedResource Include="**/*.ogg"/>
+        <EmbeddedResource Include="**/*.flac"/>
+        <EmbeddedResource Include="**/*.aac"/>
+        <EmbeddedResource Include="**/*.wma"/>
+        <EmbeddedResource Include="**/*.m4a"/>
         <EmbeddedResource Include="**/*.bundle"/>
         <EmbeddedResource Include="**/*.bytes"/>
         <EmbeddedResource Condition="Exists('ModHelperData.json')" Include="ModHelperData.json"/>

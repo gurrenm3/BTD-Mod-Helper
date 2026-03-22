@@ -68,30 +68,6 @@ public static int FindIndex<T>(this IEnumerator source, System.Func<T,bool> pred
 #### Returns
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator)'></a>
-
-## Il2CppIEnumerator.First<T>(this IEnumerator) Method
-
-Return the first element in the collection
-
-```csharp
-public static T First<T>(this IEnumerator source)
-    where T : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator).source'></a>
-
-`source` [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.Il2CppIEnumerator.md#BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator).T 'BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First<T>(this IEnumerator).T')
-
 <a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator,System.Func_T,bool_)'></a>
 
 ## Il2CppIEnumerator.First<T>(this IEnumerator, Func<T,bool>) Method
@@ -120,29 +96,29 @@ public static T First<T>(this IEnumerator source, System.Func<T,bool> predicate)
 #### Returns
 [T](BTD_Mod_Helper.Extensions.Il2CppIEnumerator.md#BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First<T>(this IEnumerator, System.Func<T,bool>).T')
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator)'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator)'></a>
 
-## Il2CppIEnumerator.FirstOrDefault<T>(this IEnumerator) Method
+## Il2CppIEnumerator.First<T>(this IEnumerator) Method
 
-Return the first element in the collection, or return default if it's null
+Return the first element in the collection
 
 ```csharp
-public static T FirstOrDefault<T>(this IEnumerator source)
+public static T First<T>(this IEnumerator source)
     where T : Object;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator).T'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator).source'></a>
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator).source'></a>
 
 `source` [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
 
 #### Returns
-[T](BTD_Mod_Helper.Extensions.Il2CppIEnumerator.md#BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator).T 'BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault<T>(this IEnumerator).T')
+[T](BTD_Mod_Helper.Extensions.Il2CppIEnumerator.md#BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First_T_(thisIEnumerator).T 'BTD_Mod_Helper.Extensions.Il2CppIEnumerator.First<T>(this IEnumerator).T')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator,System.Func_T,bool_)'></a>
 
@@ -171,6 +147,30 @@ public static T FirstOrDefault<T>(this IEnumerator source, System.Func<T,bool> p
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.Il2CppIEnumerator.md#BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault<T>(this IEnumerator, System.Func<T,bool>).T')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator)'></a>
+
+## Il2CppIEnumerator.FirstOrDefault<T>(this IEnumerator) Method
+
+Return the first element in the collection, or return default if it's null
+
+```csharp
+public static T FirstOrDefault<T>(this IEnumerator source)
+    where T : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator).source'></a>
+
+`source` [Il2CppSystem.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.IEnumerator 'Il2CppSystem.Collections.IEnumerator')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.Il2CppIEnumerator.md#BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault_T_(thisIEnumerator).T 'BTD_Mod_Helper.Extensions.Il2CppIEnumerator.FirstOrDefault<T>(this IEnumerator).T')
 
 <a name='BTD_Mod_Helper.Extensions.Il2CppIEnumerator.ForEach_T_(thisIEnumerator,System.Action_T_)'></a>
 

@@ -324,8 +324,10 @@ public abstract class BloonsMod : MelonMod, IModSettings
             }
             catch (Exception ex)
             {
-                MelonLogger.Error(
-                    $"Exception while applying hook {methodInfo.DeclaringType!.FullName}::{methodInfo.Name}: {ex}");
+                var message = $"Exception while applying hook {methodInfo.DeclaringType!.FullName}::{methodInfo.Name}";
+                loadErrors.Add(message);
+                MelonLogger.Error(message);
+                MelonLogger.Error(ex);
             }
         }
     }

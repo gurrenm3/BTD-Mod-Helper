@@ -12,7 +12,9 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
+using Il2CppAssets.Scripts.Models.Towers.Filters;
 using Il2CppAssets.Scripts.Models.Towers.Mutators;
 using Il2CppAssets.Scripts.Models.Towers.Pets;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
@@ -67,6 +69,11 @@ internal static class ModelBehaviorExt
             return addModel4.behaviors?.OfIl2CppType<BloonBehaviorModel>() ?? [];
         if (model.IsType(out AddbehaviorToWeaponModel addModel5))
             return addModel5.behaviors?.OfIl2CppType<WeaponBehaviorModel>() ?? [];
+
+        if (model.IsType(out AttackFilterModel attackFilterModel))
+            return attackFilterModel.filters;
+        if (model.IsType(out ProjectileFilterModel projectileFilterModel))
+            return projectileFilterModel.filters;
 
         if (model.IsType(out ItemArtifactModel itemArtifactModel))
             return itemArtifactModel.artifactBehaviors ?? Enumerable.Empty<Model>();
@@ -128,6 +135,11 @@ internal static class ModelBehaviorExt
             addModel4.behaviors = behaviors.OfIl2CppType<BloonBehaviorModel>().ToIl2CppReferenceArray();
         else if (model.IsType(out AddbehaviorToWeaponModel addModel5))
             addModel5.behaviors = behaviors.OfIl2CppType<WeaponBehaviorModel>().ToIl2CppReferenceArray();
+
+        else if (model.IsType(out AttackFilterModel attackFilterModel))
+            attackFilterModel.filters = behaviors.OfIl2CppType<FilterModel>().ToIl2CppReferenceArray();
+        else if (model.IsType(out ProjectileFilterModel projectileFilterModel))
+            projectileFilterModel.filters = behaviors.OfIl2CppType<FilterModel>().ToIl2CppReferenceArray();
 
         else if (model.IsType(out ItemArtifactModel itemArtifactModel))
             itemArtifactModel.artifactBehaviors =

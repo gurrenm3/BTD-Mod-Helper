@@ -30,27 +30,6 @@ public static string GetRegrowBloon(this GrowModel growModel);
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Extensions.GrowModelExt.SetRegrowBloon(thisGrowModel,string)'></a>
-
-## GrowModelExt.SetRegrowBloon(this GrowModel, string) Method
-
-Sets which bloon this should regrow into.
-
-```csharp
-public static void SetRegrowBloon(this GrowModel growModel, string regrowsTo);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.GrowModelExt.SetRegrowBloon(thisGrowModel,string).growModel'></a>
-
-`growModel` [Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel')
-
-<a name='BTD_Mod_Helper.Extensions.GrowModelExt.SetRegrowBloon(thisGrowModel,string).regrowsTo'></a>
-
-`regrowsTo` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The ID of the bloon this should regrow into
-
 <a name='BTD_Mod_Helper.Extensions.GrowModelExt.SetRegrowBloon(thisGrowModel,string,float)'></a>
 
 ## GrowModelExt.SetRegrowBloon(this GrowModel, string, float) Method
@@ -77,3 +56,24 @@ The ID of the bloon this should regrow into
 `regrowRate` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The rate at which this regrows.
+
+<a name='BTD_Mod_Helper.Extensions.GrowModelExt.SetRegrowBloon(thisGrowModel,string)'></a>
+
+## GrowModelExt.SetRegrowBloon(this GrowModel, string) Method
+
+Sets which bloon this should regrow into.
+
+```csharp
+public static void SetRegrowBloon(this GrowModel growModel, string regrowsTo);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GrowModelExt.SetRegrowBloon(thisGrowModel,string).growModel'></a>
+
+`growModel` [Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel')
+
+<a name='BTD_Mod_Helper.Extensions.GrowModelExt.SetRegrowBloon(thisGrowModel,string).regrowsTo'></a>
+
+`regrowsTo` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The ID of the bloon this should regrow into

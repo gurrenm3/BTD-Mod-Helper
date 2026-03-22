@@ -117,29 +117,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity)'></a>
-
-## EntityBehaviorExt.RemoveBehavior<T>(this Entity) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(this Entity entity)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity).entity'></a>
-
-`entity` [Il2CppAssets.Scripts.Simulation.Objects.Entity](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Entity 'Il2CppAssets.Scripts.Simulation.Objects.Entity')
-
 <a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity,T)'></a>
 
 ## EntityBehaviorExt.RemoveBehavior<T>(this Entity, T) Method
@@ -166,6 +143,29 @@ The Behavior you want to remove
 <a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.EntityBehaviorExt.md#BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity,T).T 'BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior<T>(this Entity, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity)'></a>
+
+## EntityBehaviorExt.RemoveBehavior<T>(this Entity) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this Entity entity)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehavior_T_(thisEntity).entity'></a>
+
+`entity` [Il2CppAssets.Scripts.Simulation.Objects.Entity](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Entity 'Il2CppAssets.Scripts.Simulation.Objects.Entity')
 
 <a name='BTD_Mod_Helper.Extensions.EntityBehaviorExt.RemoveBehaviors_T_(thisEntity)'></a>
 

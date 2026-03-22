@@ -12,30 +12,6 @@ public static class SpriteResizer
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SpriteResizer
 ### Methods
 
-<a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float)'></a>
-
-## SpriteResizer.PadSpriteToScale(this Sprite, float) Method
-
-Create a new Sprite that appears scaled by (scaleX, scaleY) inside a fixed UI rect  
-by adding transparent padding around the original sprite.  
-Works even if src.texture is not readable.
-
-```csharp
-public static Sprite PadSpriteToScale(this Sprite src, float uniformScale);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float).src'></a>
-
-`src` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
-
-<a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float).uniformScale'></a>
-
-`uniformScale` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-#### Returns
-[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
-
 <a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float,float)'></a>
 
 ## SpriteResizer.PadSpriteToScale(this Sprite, float, float) Method
@@ -60,6 +36,30 @@ public static Sprite PadSpriteToScale(this Sprite src, float scaleX, float scale
 <a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float,float).scaleY'></a>
 
 `scaleY` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+#### Returns
+[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+<a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float)'></a>
+
+## SpriteResizer.PadSpriteToScale(this Sprite, float) Method
+
+Create a new Sprite that appears scaled by (scaleX, scaleY) inside a fixed UI rect  
+by adding transparent padding around the original sprite.  
+Works even if src.texture is not readable.
+
+```csharp
+public static Sprite PadSpriteToScale(this Sprite src, float uniformScale);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float).src'></a>
+
+`src` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+<a name='BTD_Mod_Helper.Api.Helpers.SpriteResizer.PadSpriteToScale(thisSprite,float).uniformScale'></a>
+
+`uniformScale` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Returns
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')

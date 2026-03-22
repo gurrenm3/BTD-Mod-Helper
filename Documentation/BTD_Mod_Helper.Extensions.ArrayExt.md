@@ -108,29 +108,6 @@ Items you want to add
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.AddTo_T_(thisT[],T[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.AddTo<T>(this T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[])'></a>
-
-## ArrayExt.Any<T>(this T[]) Method
-
-Return whether or not there are any elements in this
-
-```csharp
-public static bool Any<T>(this T[] array);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[]).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[]).array'></a>
-
-`array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.Any<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[],System.Func_T,bool_)'></a>
 
 ## ArrayExt.Any<T>(this T[], Func<T,bool>) Method
@@ -154,6 +131,29 @@ public static bool Any<T>(this T[] array, System.Func<T,bool> predicate);
 <a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[],System.Func_T,bool_).predicate'></a>
 
 `predicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[],System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.ArrayExt.Any<T>(this T[], System.Func<T,bool>).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[])'></a>
+
+## ArrayExt.Any<T>(this T[]) Method
+
+Return whether or not there are any elements in this
+
+```csharp
+public static bool Any<T>(this T[] array);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[]).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[]).array'></a>
+
+`array` [T](BTD_Mod_Helper.Extensions.ArrayExt.md#BTD_Mod_Helper.Extensions.ArrayExt.Any_T_(thisT[]).T 'BTD_Mod_Helper.Extensions.ArrayExt.Any<T>(this T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

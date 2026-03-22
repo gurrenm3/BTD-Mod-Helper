@@ -56,32 +56,6 @@ public static void AddBehavior<T>(this BloonModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.AddBehavior_T_(thisBloonModel,T).T 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.AddBehavior<T>(this BloonModel, T).T')
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel)'></a>
-
-## BloonModelBehaviorExt.GetBehavior<T>(this BloonModel) Method
-
-Return the first Behavior of type T, or null if there isn't one
-
-```csharp
-public static T GetBehavior<T>(this BloonModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel).T'></a>
-
-`T`
-
-The Behavior you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel).T 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior<T>(this BloonModel).T')
-
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel,int)'></a>
 
 ## BloonModelBehaviorExt.GetBehavior<T>(this BloonModel, int) Method
@@ -142,6 +116,32 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel,string).T 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior<T>(this BloonModel, string).T')
 
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel)'></a>
+
+## BloonModelBehaviorExt.GetBehavior<T>(this BloonModel) Method
+
+Return the first Behavior of type T, or null if there isn't one
+
+```csharp
+public static T GetBehavior<T>(this BloonModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior_T_(thisBloonModel).T 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehavior<T>(this BloonModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehaviors_T_(thisBloonModel)'></a>
 
 ## BloonModelBehaviorExt.GetBehaviors<T>(this BloonModel) Method
@@ -167,62 +167,6 @@ The Behavior you want
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehaviors_T_(thisBloonModel).T 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.GetBehaviors<T>(this BloonModel).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel)'></a>
-
-## BloonModelBehaviorExt.HasBehavior<T>(this BloonModel) Method
-
-Check if this has a specific Behavior
-
-```csharp
-public static bool HasBehavior<T>(this BloonModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string)'></a>
-
-## BloonModelBehaviorExt.HasBehavior<T>(this BloonModel, string) Method
-
-Check if this has a specific named Behavior and return it
-
-```csharp
-public static bool HasBehavior<T>(this BloonModel model, string nameContains)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
-
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).nameContains'></a>
-
-`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string,T)'></a>
 
@@ -258,6 +202,36 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string)'></a>
+
+## BloonModelBehaviorExt.HasBehavior<T>(this BloonModel, string) Method
+
+Check if this has a specific named Behavior and return it
+
+```csharp
+public static bool HasBehavior<T>(this BloonModel model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel,T)'></a>
 
 ## BloonModelBehaviorExt.HasBehavior<T>(this BloonModel, T) Method
@@ -288,28 +262,31 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel)'></a>
 
-## BloonModelBehaviorExt.RemoveBehavior<T>(this BloonModel) Method
+## BloonModelBehaviorExt.HasBehavior<T>(this BloonModel) Method
 
-Remove the first Behavior of Type T
+Check if this has a specific Behavior
 
 ```csharp
-public static void RemoveBehavior<T>(this BloonModel model)
+public static bool HasBehavior<T>(this BloonModel model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel).T'></a>
 
 `T`
 
-The Behavior you want to remove
+The Behavior you're checking for
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.HasBehavior_T_(thisBloonModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel,int)'></a>
 
@@ -389,6 +366,29 @@ public static void RemoveBehavior<T>(this BloonModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md#BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel,T).T 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior<T>(this BloonModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel)'></a>
+
+## BloonModelBehaviorExt.RemoveBehavior<T>(this BloonModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(this BloonModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehavior_T_(thisBloonModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Bloons.BloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.BloonModel 'Il2CppAssets.Scripts.Models.Bloons.BloonModel')
 
 <a name='BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.RemoveBehaviors(thisBloonModel)'></a>
 

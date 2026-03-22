@@ -84,6 +84,33 @@ Mod Helper custom shader
 
 changes to make to the material
 
+<a name='BTD_Mod_Helper.Extensions.RendererExt.ApplyCustomShader(thisRenderer,Shader,System.Action_Material_)'></a>
+
+## RendererExt.ApplyCustomShader(this Renderer, Shader, Action<Material>) Method
+
+Applies a custom shader, creating a new Texture with its effects baked in
+
+```csharp
+public static void ApplyCustomShader(this Renderer renderer, Shader shader, System.Action<Material> modifyMaterial=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.RendererExt.ApplyCustomShader(thisRenderer,Shader,System.Action_Material_).renderer'></a>
+
+`renderer` [UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')
+
+<a name='BTD_Mod_Helper.Extensions.RendererExt.ApplyCustomShader(thisRenderer,Shader,System.Action_Material_).shader'></a>
+
+`shader` [UnityEngine.Shader](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Shader 'UnityEngine.Shader')
+
+Mod Helper custom shader
+
+<a name='BTD_Mod_Helper.Extensions.RendererExt.ApplyCustomShader(thisRenderer,Shader,System.Action_Material_).modifyMaterial'></a>
+
+`modifyMaterial` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[UnityEngine.Material](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Material 'UnityEngine.Material')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+
+changes to make to the material
+
 <a name='BTD_Mod_Helper.Extensions.RendererExt.ApplyOutlineShader(thisRenderer)'></a>
 
 ## RendererExt.ApplyOutlineShader(this Renderer) Method

@@ -30,6 +30,24 @@ public static NK_TextMeshProUGUI GetBodyText(this PopupScreen popupScreen);
 #### Returns
 [Il2Cpp.NK_TextMeshProUGUI](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.NK_TextMeshProUGUI 'Il2Cpp.NK_TextMeshProUGUI')
 
+<a name='BTD_Mod_Helper.Extensions.PopupScreenExt.GetFirstActivePopup(thisPopupScreen)'></a>
+
+## PopupScreenExt.GetFirstActivePopup(this PopupScreen) Method
+
+Recreates the previous GetFirstActivePopup method that existed before v53
+
+```csharp
+public static Popup GetFirstActivePopup(this PopupScreen popupScreen);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.PopupScreenExt.GetFirstActivePopup(thisPopupScreen).popupScreen'></a>
+
+`popupScreen` [Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen 'Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen')
+
+#### Returns
+[Il2CppAssets.Scripts.Unity.UI_New.Popups.Popup](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.Popups.Popup 'Il2CppAssets.Scripts.Unity.UI_New.Popups.Popup')
+
 <a name='BTD_Mod_Helper.Extensions.PopupScreenExt.GetTMP_InputField(thisPopupScreen)'></a>
 
 ## PopupScreenExt.GetTMP_InputField(this PopupScreen) Method

@@ -1,5 +1,6 @@
 using BTD_Mod_Helper.Api.Legends;
 using Il2CppAssets.Scripts.Models.Artifacts;
+using Il2CppAssets.Scripts.Unity.UI_New.Legends;
 using UnityEngine;
 
 namespace BTD_Mod_Helper.Patches;

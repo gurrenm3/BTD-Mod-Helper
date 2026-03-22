@@ -19,9 +19,7 @@ public static class StringExt
     /// </summary>
     public static string NullIfEmpty(this string s) => string.IsNullOrWhiteSpace(s) ? null : s;
 
-    /// <summary>
     /// <inheritdoc cref="Regex.Replace(string,string,string)" />
-    /// </summary>
     public static string RegexReplace(this string input, string pattern, string replacement) =>
         Regex.Replace(input, pattern, replacement);
 

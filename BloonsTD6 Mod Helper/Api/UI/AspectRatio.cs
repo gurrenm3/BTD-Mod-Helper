@@ -1,4 +1,5 @@
 using Il2CppAssets.Scripts.Unity.Display;
+using UnityEngine;
 namespace BTD_Mod_Helper.Api.UI;
 
 /// <summary>
@@ -28,8 +29,14 @@ public static class AspectRatios
     /// <summary>
     /// The current AspectRatio the game is running at
     /// </summary>
-    public static AspectRatio Current =>
-        From(ScreenResizeDetector.Instance.currentWidth, ScreenResizeDetector.Instance.currentHeight);
+    public static AspectRatio Current
+    {
+        get
+        {
+            var screenResizeDetector = Object.FindObjectOfType<ScreenResizeDetector>();
+            return From(screenResizeDetector.currentWidth, screenResizeDetector.currentHeight);
+        }
+    }
 
     /// <summary>
     /// Gets the BTD6 aspect ratio based on the screen width and height
@@ -39,8 +46,8 @@ public static class AspectRatios
     /// <returns>aspect ratio</returns>
     public static AspectRatio From(int width, int height) => ((float) width / height) switch
     {
-        < 1.5f => AspectRatio.NonWidescreen,
-        < 1.7f => AspectRatio.TallWidescreen,
+        < 1.545f => AspectRatio.NonWidescreen,
+        < 1.709f => AspectRatio.TallWidescreen,
         _ => AspectRatio.Widescreen
     };
 }

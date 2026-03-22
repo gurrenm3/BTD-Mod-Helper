@@ -78,32 +78,6 @@ public static string NullIfEmpty(this string s);
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='BTD_Mod_Helper.Extensions.StringExt.RegexReplace(thisstring,string,string)'></a>
-
-## StringExt.RegexReplace(this string, string, string) Method
-
-<inheritdoc cref="M:System.Text.RegularExpressions.Regex.Replace(System.String,System.String,System.String)"/>
-
-```csharp
-public static string RegexReplace(this string input, string pattern, string replacement);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.StringExt.RegexReplace(thisstring,string,string).input'></a>
-
-`input` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Extensions.StringExt.RegexReplace(thisstring,string,string).pattern'></a>
-
-`pattern` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Extensions.StringExt.RegexReplace(thisstring,string,string).replacement'></a>
-
-`replacement` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
 <a name='BTD_Mod_Helper.Extensions.StringExt.Spaced(thisstring)'></a>
 
 ## StringExt.Spaced(this string) Method

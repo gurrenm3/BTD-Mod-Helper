@@ -85,6 +85,20 @@ public string AddedViaUpgrade { get; set; }
 ### See Also
 - [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.addedViaUpgrade](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.addedViaUpgrade 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.addedViaUpgrade')
 
+<a name='BTD_Mod_Helper.Api.Helpers.AbilityHelper.AlwaysSetAnimationState'></a>
+
+## AbilityHelper.AlwaysSetAnimationState Property
+
+```csharp
+public bool AlwaysSetAnimationState { get; set; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+### See Also
+- [Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.alwaysSetAnimationState](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.alwaysSetAnimationState 'Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel.alwaysSetAnimationState')
+
 <a name='BTD_Mod_Helper.Api.Helpers.AbilityHelper.AnimateOnMainAttackDisplay'></a>
 
 ## AbilityHelper.AnimateOnMainAttackDisplay Property

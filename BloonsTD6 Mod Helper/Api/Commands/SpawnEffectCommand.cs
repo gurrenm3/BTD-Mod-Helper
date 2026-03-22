@@ -35,7 +35,7 @@ internal class SpawnEffect : ModCommand
 
         var inputManager = InGame.instance.InputManager;
 
-        var height = inputManager.Bridge.Simulation.Map.GetTerrainHeight(new(inputManager.CursorPositionWorld));
+        var height = inputManager.Bridge.Simulation.Map.GetTerrainHeight(new(inputManager.CursorPositionWorld)) + 10;
 
         var position = new Vector3(inputManager.CursorPositionWorld.x, inputManager.CursorPositionWorld.y, height);
 

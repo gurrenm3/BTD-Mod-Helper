@@ -12,30 +12,6 @@ public static class Il2CppReferenceArray
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Il2CppReferenceArray
 ### Methods
 
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_)'></a>
-
-## Il2CppReferenceArray.Any<T>(this Il2CppReferenceArray<T>) Method
-
-Return whether or not there are any elements in this
-
-```csharp
-public static bool Any<T>(this Il2CppReferenceArray<T> source)
-    where T : Object;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_).source'></a>
-
-`source` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_,System.Func_T,bool_)'></a>
 
 ## Il2CppReferenceArray.Any<T>(this Il2CppReferenceArray<T>, Func<T,bool>) Method
@@ -60,6 +36,30 @@ public static bool Any<T>(this Il2CppReferenceArray<T> source, System.Func<T,boo
 <a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_,System.Func_T,bool_).predicate'></a>
 
 `predicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](BTD_Mod_Helper.Extensions.Il2CppReferenceArray.md#BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_,System.Func_T,bool_).T 'BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any<T>(this Il2CppReferenceArray<T>, System.Func<T,bool>).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_)'></a>
+
+## Il2CppReferenceArray.Any<T>(this Il2CppReferenceArray<T>) Method
+
+Return whether or not there are any elements in this
+
+```csharp
+public static bool Any<T>(this Il2CppReferenceArray<T> source)
+    where T : Object;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.Il2CppReferenceArray.Any_T_(thisIl2CppReferenceArray_T_).source'></a>
+
+`source` [Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray](https://docs.microsoft.com/en-us/dotnet/api/Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray 'Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

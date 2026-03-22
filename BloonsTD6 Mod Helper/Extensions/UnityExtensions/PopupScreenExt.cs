@@ -14,6 +14,12 @@ namespace BTD_Mod_Helper.Extensions;
 public static class PopupScreenExt
 {
     /// <summary>
+    /// Recreates the previous GetFirstActivePopup method that existed before v53
+    /// </summary>
+    public static Popup GetFirstActivePopup(this PopupScreen popupScreen) =>
+        popupScreen.TryGetActivePopup(out var popup) ? popup : null;
+
+    /// <summary>
     /// Gets the InputField of the ActivePopup, or null
     /// </summary>
     /// <param name="popupScreen"></param>

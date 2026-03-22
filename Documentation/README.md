@@ -66,6 +66,7 @@
 | [BloonModelUtils](BTD_Mod_Helper.Api.Bloons.BloonModelUtils.md 'BTD_Mod_Helper.Api.Bloons.BloonModelUtils') | Provides Utility methods for dealing with BloonModels |
 | [ModBloon](BTD_Mod_Helper.Api.Bloons.ModBloon.md 'BTD_Mod_Helper.Api.Bloons.ModBloon') | Class for adding in a new Bloon to the game |
 | [ModBloon&lt;T&gt;](BTD_Mod_Helper.Api.Bloons.ModBloon_T_.md 'BTD_Mod_Helper.Api.Bloons.ModBloon<T>') | Class for a ModBloon which has a different ModBloon as its base |
+| [ModBloonProperty](BTD_Mod_Helper.Api.Bloons.ModBloonProperty.md 'BTD_Mod_Helper.Api.Bloons.ModBloonProperty') | Mod content class for creating [Il2Cpp.BloonProperties](https://docs.microsoft.com/en-us/dotnet/api/Il2Cpp.BloonProperties 'Il2Cpp.BloonProperties') |
 | [ModRoundSet](BTD_Mod_Helper.Api.Bloons.ModRoundSet.md 'BTD_Mod_Helper.Api.Bloons.ModRoundSet') | Class for a custom RoundSet |
 | [ModVanillaBloon](BTD_Mod_Helper.Api.Bloons.ModVanillaBloon.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloon') | Allows you to easily modify the models of a specific vanilla Bloon |
 | [ModVanillaBloons](BTD_Mod_Helper.Api.Bloons.ModVanillaBloons.md 'BTD_Mod_Helper.Api.Bloons.ModVanillaBloons') | Allows you to easily modify the models of multiple vanilla Bloons |
@@ -378,6 +379,7 @@
 | [AssemblyExt](BTD_Mod_Helper.Extensions.AssemblyExt.md 'BTD_Mod_Helper.Extensions.AssemblyExt') | Extensions for Assemblies |
 | [AssetBundleExt](BTD_Mod_Helper.Extensions.AssetBundleExt.md 'BTD_Mod_Helper.Extensions.AssetBundleExt') | Extensions for AssetBundles |
 | [AttackBehaviorExt](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackBehaviorExt') | Behavior extensions for attacks |
+| [AttackFilterModelExt](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md 'BTD_Mod_Helper.Extensions.AttackFilterModelExt') | Extensions for AttackFilterModels |
 | [AttackModelBehaviorExt](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt') | Extensions for AttackModels |
 | [AttackModelExt](BTD_Mod_Helper.Extensions.AttackModelExt.md 'BTD_Mod_Helper.Extensions.AttackModelExt') | Extensions for AttackModels |
 | [AudioClipExtensions](BTD_Mod_Helper.Extensions.AudioClipExtensions.md 'BTD_Mod_Helper.Extensions.AudioClipExtensions') | Extensions for unity audio clips |
@@ -398,6 +400,7 @@
 | [DirectoryInfoExt](BTD_Mod_Helper.Extensions.DirectoryInfoExt.md 'BTD_Mod_Helper.Extensions.DirectoryInfoExt') | Extensions for DirectoryInfo |
 | [DisplayModelExt](BTD_Mod_Helper.Extensions.DisplayModelExt.md 'BTD_Mod_Helper.Extensions.DisplayModelExt') | Extensions for DisplayModel |
 | [DumpNodeExt](BTD_Mod_Helper.Extensions.DumpNodeExt.md 'BTD_Mod_Helper.Extensions.DumpNodeExt') | Extension for dumping textures from UnityDisplayNodes |
+| [EmissionBehaviorExt](BTD_Mod_Helper.Extensions.EmissionBehaviorExt.md 'BTD_Mod_Helper.Extensions.EmissionBehaviorExt') | Behavior extensions for Emissions |
 | [EmissionModelBehaviorExt](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt') | Extensions for EmissionModels |
 | [EntityBehaviorExt](BTD_Mod_Helper.Extensions.EntityBehaviorExt.md 'BTD_Mod_Helper.Extensions.EntityBehaviorExt') | Behavior extensions for Entities |
 | [EntityExt](BTD_Mod_Helper.Extensions.EntityExt.md 'BTD_Mod_Helper.Extensions.EntityExt') | Extensions for Entities |
@@ -459,6 +462,7 @@
 | [ProfileModelExt](BTD_Mod_Helper.Extensions.ProfileModelExt.md 'BTD_Mod_Helper.Extensions.ProfileModelExt') | Extensions for ProfileModels |
 | [ProjectileBehaviorExt](BTD_Mod_Helper.Extensions.ProjectileBehaviorExt.md 'BTD_Mod_Helper.Extensions.ProjectileBehaviorExt') | Behavior extensions for projectiles |
 | [ProjectileExt](BTD_Mod_Helper.Extensions.ProjectileExt.md 'BTD_Mod_Helper.Extensions.ProjectileExt') | Extensions for Projectiles |
+| [ProjectileFilterModelExt](BTD_Mod_Helper.Extensions.ProjectileFilterModelExt.md 'BTD_Mod_Helper.Extensions.ProjectileFilterModelExt') | Extensions for ProjectileFilterModels |
 | [ProjectileModelBehaviorExt](BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelBehaviorExt') | Extensions for ProjectileModels |
 | [ProjectileModelExt](BTD_Mod_Helper.Extensions.ProjectileModelExt.md 'BTD_Mod_Helper.Extensions.ProjectileModelExt') | Extensions for ProjectileModels |
 | [RectTransformExt](BTD_Mod_Helper.Extensions.RectTransformExt.md 'BTD_Mod_Helper.Extensions.RectTransformExt') | Extensions for RectTransforms |

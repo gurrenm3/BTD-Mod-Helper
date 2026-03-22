@@ -38,32 +38,6 @@ public static void AddChildDependants<T>(this Model model, System.Collections.Ge
 
 `children` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.AddChildDependants_T_(thisModel,System.Collections.Generic.IEnumerable_T_).T 'BTD_Mod_Helper.Extensions.ModelExt.AddChildDependants<T>(this Model, System.Collections.Generic.IEnumerable<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
-<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT)'></a>
-
-## ModelExt.Duplicate<T>(this T) Method
-
-Create a new and separate copy of this object. Same as using: .Clone().Cast();
-
-```csharp
-public static T Duplicate<T>(this T model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).T'></a>
-
-`T`
-
-Type of object you want to cast to when duplicating. Done automatically
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).model'></a>
-
-`model` [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T).T')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T).T')
-
 <a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,string)'></a>
 
 ## ModelExt.Duplicate<T>(this T, string) Method
@@ -150,6 +124,32 @@ public static T Duplicate<T>(this T model, System.Func<T,T> with)
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT,System.Func_T,T_).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T, System.Func<T,T>).T')
 
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT)'></a>
+
+## ModelExt.Duplicate<T>(this T) Method
+
+Create a new and separate copy of this object. Same as using: .Clone().Cast();
+
+```csharp
+public static T Duplicate<T>(this T model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).T'></a>
+
+`T`
+
+Type of object you want to cast to when duplicating. Done automatically
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).model'></a>
+
+`model` [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T).T')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.Duplicate_T_(thisT).T 'BTD_Mod_Helper.Extensions.ModelExt.Duplicate<T>(this T).T')
+
 <a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendant_T_(thisModel,string)'></a>
 
 ## ModelExt.FindDescendant<T>(this Model, string) Method
@@ -205,30 +205,6 @@ public static T FindDescendant<T>(this Model model, System.Predicate<T> conditio
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.FindDescendant_T_(thisModel,System.Predicate_T_).T 'BTD_Mod_Helper.Extensions.ModelExt.FindDescendant<T>(this Model, System.Predicate<T>).T')
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel)'></a>
-
-## ModelExt.FindDescendants<T>(this Model) Method
-
-Finds the descendents of a given type
-
-```csharp
-public static T[] FindDescendants<T>(this Model model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel).T 'BTD_Mod_Helper.Extensions.ModelExt.FindDescendants<T>(this Model).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 <a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel,string)'></a>
 
@@ -286,57 +262,29 @@ public static T[] FindDescendants<T>(this Model model, System.Predicate<T> condi
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel,System.Predicate_T_).T 'BTD_Mod_Helper.Extensions.ModelExt.FindDescendants<T>(this Model, System.Predicate<T>).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
-<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel)'></a>
+<a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel)'></a>
 
-## ModelExt.HasDescendant<T>(this Model) Method
+## ModelExt.FindDescendants<T>(this Model) Method
 
-Returns whether a model has a descendant of a given type
+Finds the descendents of a given type
 
 ```csharp
-public static bool HasDescendant<T>(this Model model)
+public static T[] FindDescendants<T>(this Model model)
     where T : Model;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel).T'></a>
+<a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel).T'></a>
 
 `T`
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel).model'></a>
+<a name='BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel).model'></a>
 
 `model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string)'></a>
-
-## ModelExt.HasDescendant<T>(this Model, string) Method
-
-Returns whether a model has a descendant of a given type with a filtered name
-
-```csharp
-public static bool HasDescendant<T>(this Model model, string nameContains)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
-
-<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).nameContains'></a>
-
-`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.FindDescendants_T_(thisModel).T 'BTD_Mod_Helper.Extensions.ModelExt.FindDescendants<T>(this Model).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 <a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string,T)'></a>
 
@@ -370,6 +318,34 @@ public static bool HasDescendant<T>(this Model model, string nameContains, out T
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string)'></a>
+
+## ModelExt.HasDescendant<T>(this Model, string) Method
+
+Returns whether a model has a descendant of a given type with a filtered name
+
+```csharp
+public static bool HasDescendant<T>(this Model model, string nameContains)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,string).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,T)'></a>
 
 ## ModelExt.HasDescendant<T>(this Model, T) Method
@@ -394,6 +370,30 @@ public static bool HasDescendant<T>(this Model model, out T t)
 <a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,T).t'></a>
 
 `t` [T](BTD_Mod_Helper.Extensions.ModelExt.md#BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel,T).T 'BTD_Mod_Helper.Extensions.ModelExt.HasDescendant<T>(this Model, T).T')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel)'></a>
+
+## ModelExt.HasDescendant<T>(this Model) Method
+
+Returns whether a model has a descendant of a given type
+
+```csharp
+public static bool HasDescendant<T>(this Model model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ModelExt.HasDescendant_T_(thisModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Model](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Model 'Il2CppAssets.Scripts.Models.Model')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
