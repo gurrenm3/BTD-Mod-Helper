@@ -11,6 +11,8 @@ using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Simulation;
+using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
@@ -543,6 +545,26 @@ public abstract class ModTower : NamedModContent
     /// <returns>The base TowerModel to use</returns>
     public virtual TowerModel GetBaseTowerModel(params int[] tiers) =>
         !string.IsNullOrEmpty(BaseTower) ? BaseTowerModel.MakeCopy(Id) : ModTowerHelper.CreateTowerModel(Id, Id, TowerSet);
+
+    /// <summary>
+    /// Runs each tick of the simulation for each tower placed down regardless of upgrades.
+    /// </summary>
+    /// <param name="ticks">The number of ticks run through the simulation (60/s)</param>
+    /// <param name="sim">The current simulation</param>
+    /// <param name="tower">The current tower.</param>
+    protected virtual void Tick(int ticks, Simulation sim, Tower tower)
+    {
+        
+    }
+
+    /// <inheritdoc/>
+    protected sealed override void Tick(int ticks, Simulation sim)
+    {
+        foreach (var tower in sim.towerManager.GetTowers().ToList().Where(tower => tower.towerModel.GetModTower().Id == Id))
+        {
+            Tick(ticks, sim, tower);
+        }
+    }
 }
 
 /// <summary>

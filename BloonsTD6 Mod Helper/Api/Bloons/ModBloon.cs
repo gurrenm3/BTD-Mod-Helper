@@ -6,7 +6,10 @@ using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Simulation;
+using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Bloons;
 
@@ -227,6 +230,26 @@ public abstract class ModBloon : NamedModContent
     /// <param name="gameModes">What GameModes are active for the match</param>
     public virtual void ModifyBloonModelForMatch(BloonModel model, IReadOnlyList<ModModel> gameModes)
     {
+    }
+
+    /// <summary>
+    /// Runs each tick of the simulation for each bloon currently alive.
+    /// </summary>
+    /// <param name="ticks">The number of ticks run through the simulation (60/s)</param>
+    /// <param name="sim">The current simulation</param>
+    /// <param name="bloon">The current bloon.</param>
+    protected virtual void Tick(int ticks, Simulation sim, Bloon bloon)
+    {
+        
+    }
+    
+    /// <inheritdoc/>
+    protected sealed override void Tick(int ticks, Simulation sim)
+    {
+        foreach (var bloon in InGame.instance.GetBloons())
+        {
+            Tick(ticks, sim, bloon);
+        }
     }
 }
 
