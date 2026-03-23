@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppAssets.Scripts.Simulation;
 
 namespace BTD_Mod_Helper.Api;
 
@@ -197,7 +198,38 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
 
         return content;
     }
+    
+    /// <summary>
+    /// If <see cref="Tick"/> should run. False by default
+    /// </summary>
+    public virtual bool DoesTick => false;
+    
+    /// <summary>
+    /// Runs each tick of the simulation assuming <see cref="DoesTick"/> is true (false by default).
+    /// </summary>
+    /// <param name="ticks">The number of ticks run through the simulation (60/s)</param>
+    /// <param name="sim">The current simulation.</param>
+    protected virtual void Tick(int ticks, Simulation sim)
+    {
+        
+    }
 
+    internal static void TickAll(Simulation sim)
+    {
+        foreach (var content in allContent.Where(content => content.DoesTick))
+        {
+            try
+            {
+                content.Tick(sim.time.elapsed, sim);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error($"Error ticking {content.Id}!");
+                ModHelper.Error(e);
+            }
+        }
+    }
+    
     private static List<ModContent> allContent;
     private static readonly Dictionary<Type, IList> ContentByType = [];
     private static readonly Dictionary<Type, Dictionary<string, ModContent>> ContentById = [];
