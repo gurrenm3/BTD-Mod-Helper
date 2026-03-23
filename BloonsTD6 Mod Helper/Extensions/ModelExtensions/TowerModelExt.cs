@@ -434,4 +434,20 @@ public static class TowerModelExt
     /// </summary>
     public static bool IsStandardVanillaTower(this TowerModel towerModel) =>
         towerModel.IsVanillaTower() && string.IsNullOrEmpty(towerModel.towerTheme);
+
+    /// <summary>
+    /// Checks the applied upgrades to see if the provided mod upgrade has been applied.
+    /// </summary>
+    /// <param name="upgrade">The mod upgrade to check</param>
+    public static bool IsModUpgradeApplied(this TowerModel towerModel, ModUpgrade upgrade)
+    {
+        return towerModel.appliedUpgrades.Contains(upgrade.Id);
+    }
+
+    /// <summary>
+    /// Checks the applied upgrades to see if the provided mod upgrade has been applied.
+    /// </summary>
+    /// <typeparam name="T">Type of the mod upgrade to check</typeparam>
+    public static bool IsModUpgradeApplied<T>(this TowerModel towerModel) where T : ModUpgrade =>
+        towerModel.IsModUpgradeApplied(ModContent.GetInstance<T>());
 }

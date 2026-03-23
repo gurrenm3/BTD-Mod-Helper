@@ -200,12 +200,12 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     }
     
     /// <summary>
-    /// If <see cref="Tick"/> should run. True by default
+    /// If <see cref="Tick"/> should run. False by default
     /// </summary>
-    public virtual bool DoesTick => true;
+    public virtual bool DoesTick => false;
     
     /// <summary>
-    /// Runs each tick of the simulation assuming <see cref="DoesTick"/> is true (true by default).
+    /// Runs each tick of the simulation assuming <see cref="DoesTick"/> is true (false by default).
     /// </summary>
     /// <param name="ticks">The number of ticks run through the simulation (60/s)</param>
     /// <param name="sim">The current simulation.</param>
