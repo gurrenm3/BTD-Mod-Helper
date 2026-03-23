@@ -22,7 +22,7 @@ internal static class LocalizationManager_GetText
     private static bool Prefix(string key, ref string __result) => !ModTextOverride.TryGetOverride(key, out __result);
 
     [HarmonyPostfix]
-    private static void Postfix(LocalizationManager __instance, string key, ref string __result, MethodBase __originalMethod)
+    private static void Postfix(LocalizationManager __instance, string key, ref string __result)
     {
         if (__result == null || !__result.Contains('[') || !__result.Contains(']')) return;
 
@@ -30,7 +30,7 @@ internal static class LocalizationManager_GetText
         {
             var subKey = match.Groups[1].Value;
             return subKey != key && __instance.ContainsKey(subKey)
-                ? (string) __originalMethod.Invoke(__instance, [subKey])!
+                ? __instance.GetText(subKey)
                 : $"[{subKey}]";
         }, RegexOptions.Compiled);
     }
