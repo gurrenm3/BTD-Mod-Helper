@@ -561,7 +561,7 @@ public abstract class ModTower : NamedModContent
     /// There is another Tick method for Mod Towers/Upgrades with a Tower parameter. Override this if you don't want that to run.
     protected override void Tick(int ticks, Simulation sim)
     {
-        foreach (var tower in sim.towerManager.GetTowers().ToList().Where(tower => tower != null && tower.towerModel.GetModTower().Id == Id))
+        foreach (var tower in sim.towerManager.GetTowers().ToList().Where(tower => tower.towerModel.GetModTower()?.Id == Id))
         {
             Tick(ticks, sim, tower);
         }

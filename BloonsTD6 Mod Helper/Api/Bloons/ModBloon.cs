@@ -247,7 +247,7 @@ public abstract class ModBloon : NamedModContent
     /// There is another Tick method for Mod Upgrades with a Bloon parameter. Override this if you don't want that to run.
     protected sealed override void Tick(int ticks, Simulation sim)
     {
-        foreach (var bloon in InGame.instance.GetBloons())
+        foreach (var bloon in InGame.instance.GetBloons().Where(bloon => bloon.bloonModel.GetModBloon()?.Id == Id))
         {
             Tick(ticks, sim, bloon);
         }
