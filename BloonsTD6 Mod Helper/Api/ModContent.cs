@@ -218,7 +218,15 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     {
         foreach (var content in allContent.Where(content => content.DoesTick))
         {
-            content.Tick(sim.time.elapsed, sim);
+            try
+            {
+                content.Tick(sim.time.elapsed, sim);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error($"Error ticking {content.Id}!");
+                ModHelper.Error(e);
+            }
         }
     }
     
