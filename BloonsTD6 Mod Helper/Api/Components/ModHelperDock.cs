@@ -12,7 +12,6 @@ using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using UnityEngine.UI;
 using Math = Il2CppAssets.Scripts.Simulation.SMath.Math;
-using Object = UnityEngine.Object;
 
 namespace BTD_Mod_Helper.Api.Components;
 

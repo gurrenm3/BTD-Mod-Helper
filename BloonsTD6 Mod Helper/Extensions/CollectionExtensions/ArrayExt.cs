@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem.Collections.Generic;

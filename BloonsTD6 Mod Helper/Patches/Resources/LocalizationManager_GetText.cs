@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using BTD_Mod_Helper.Api.Data;
-using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Localization;
 namespace BTD_Mod_Helper.Patches.Resources;
 

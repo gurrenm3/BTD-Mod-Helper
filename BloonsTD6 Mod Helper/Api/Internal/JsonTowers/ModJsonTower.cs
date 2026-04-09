@@ -6,7 +6,6 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

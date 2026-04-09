@@ -3,7 +3,6 @@ using System.IO;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
 using MelonLoader.Utils;
-using Newtonsoft.Json.Linq;
 
 namespace BTD_Mod_Helper.Api.Internal;
 

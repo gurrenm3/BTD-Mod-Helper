@@ -1,19 +1,12 @@
 using System;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
-using BTD_Mod_Helper.Api.Internal;
-using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppNinjaKiwi.LiNK.Client.LiNKAccountControllers;
-using Il2CppSystem.Collections.Generic;
 using Il2CppSystem.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace BTD_Mod_Helper.UI.BTD6;

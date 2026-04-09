@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Bloons;
-using Il2CppAssets.Scripts.Models.Powers;
 using Il2CppAssets.Scripts.Models.Towers;
-using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
-using Il2CppNewtonsoft.Json.Utilities;
-using Il2CppNinjaKiwi.Common;
 namespace BTD_Mod_Helper.Tests;
 
 #if DEBUG

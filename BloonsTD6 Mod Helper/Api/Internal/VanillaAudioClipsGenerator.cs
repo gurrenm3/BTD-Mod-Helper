@@ -5,11 +5,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common.Linq;
-using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.U2D;
 
 namespace BTD_Mod_Helper.Api.Internal;
 

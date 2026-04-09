@@ -1,5 +1,4 @@
 using Il2CppAssets.Scripts.Unity.Player;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 namespace BTD_Mod_Helper.Patches.ModdedClientChecking;
 
 [HarmonyPatch(typeof(DataConflict), nameof(DataConflict.ReportIncompatibleDataVersion))]

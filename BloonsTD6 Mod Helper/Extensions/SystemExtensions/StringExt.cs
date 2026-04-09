@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Il2CppNinjaKiwi.Common;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Il2CppNinjaKiwi.Localization;

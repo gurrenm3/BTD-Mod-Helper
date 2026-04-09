@@ -27,7 +27,6 @@ using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppInterop.Runtime;
-using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppNinjaKiwi.Localization;
 using Il2CppSystem.Linq;

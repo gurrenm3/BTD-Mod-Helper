@@ -9,7 +9,6 @@ using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Home;
 using Il2CppNinjaKiwi.Common;
-using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using UnityEngine.UI;
 using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;

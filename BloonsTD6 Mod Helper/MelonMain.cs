@@ -10,7 +10,6 @@ using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Api.UI;
-using BTD_Mod_Helper.UI.BTD6;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
@@ -21,7 +20,6 @@ using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 #if DEBUG
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using BTD_Mod_Helper.Api.Internal.JsonTowers;
 #endif
 

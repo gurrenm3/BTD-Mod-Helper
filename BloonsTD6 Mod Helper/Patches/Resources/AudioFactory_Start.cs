@@ -1,7 +1,5 @@
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.Audio;
-using Il2CppNinjaKiwi.Common.ResourceUtils;
-using UnityEngine.AddressableAssets;
 
 namespace BTD_Mod_Helper.Patches.Resources;
 

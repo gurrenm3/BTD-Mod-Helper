@@ -12,7 +12,6 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.Facebook;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.MapSelect;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 namespace BTD_Mod_Helper.UI.Modded;
 

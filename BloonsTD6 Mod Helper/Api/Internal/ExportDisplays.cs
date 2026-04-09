@@ -5,7 +5,6 @@ using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppTMPro;
 using UnityEngine;

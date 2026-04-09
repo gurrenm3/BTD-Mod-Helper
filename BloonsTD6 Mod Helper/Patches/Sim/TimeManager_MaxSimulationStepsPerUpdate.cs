@@ -1,5 +1,3 @@
-using BTD_Mod_Helper.Api.Helpers;
-using Il2CppAssets.Scripts.Utils;
 namespace BTD_Mod_Helper.Patches.Sim;
 
 /*[HarmonyPatch(typeof(TimeManager), nameof(TimeManager.MaxSimulationStepsPerUpdate), MethodType.Getter)]

@@ -10,7 +10,6 @@ using Il2CppAssets.Scripts.Data.Knowledge;
 using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Data.SocialSeasons;
 using Il2CppAssets.Scripts.Models;
-using Il2CppAssets.Scripts.Models.Artifacts;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Map;
 using Il2CppAssets.Scripts.Models.Rounds;

@@ -1,5 +1,4 @@
 ﻿using System;
-using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Localization;
 using Il2CppSystem.Collections.Generic;
 

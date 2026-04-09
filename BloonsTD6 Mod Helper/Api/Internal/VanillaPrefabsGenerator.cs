@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common.Linq;
 using Il2CppSystem.Linq;

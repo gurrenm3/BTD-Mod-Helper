@@ -7,7 +7,6 @@ using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using MelonLoader.Utils;
-using NAudio.Wave;
 using Newtonsoft.Json;
 namespace BTD_Mod_Helper.Api.Internal.JsonTowers;
 

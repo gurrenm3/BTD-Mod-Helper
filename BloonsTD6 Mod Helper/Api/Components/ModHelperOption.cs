@@ -2,7 +2,6 @@
 using BTD_Mod_Helper.Api.Enums;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

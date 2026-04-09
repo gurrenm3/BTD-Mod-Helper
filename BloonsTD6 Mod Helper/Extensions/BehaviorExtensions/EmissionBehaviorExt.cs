@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Il2CppAssets.Scripts.Simulation;
-using Il2CppAssets.Scripts.Simulation.Objects;
+﻿using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Simulation.Towers.Emissions;
 namespace BTD_Mod_Helper.Extensions;
 

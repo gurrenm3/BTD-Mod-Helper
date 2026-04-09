@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Il2CppAssets.Scripts.Simulation.Objects;
-using Il2CppAssets.Scripts.Utils;
 using Il2CppNinjaKiwi.Common;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
