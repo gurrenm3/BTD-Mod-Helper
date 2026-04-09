@@ -198,12 +198,12 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
 
         return content;
     }
-    
+
     /// <summary>
     /// If <see cref="Tick"/> should run. False by default
     /// </summary>
     public virtual bool DoesTick => false;
-    
+
     /// <summary>
     /// Runs each tick of the simulation assuming <see cref="DoesTick"/> is true (false by default).
     /// </summary>
@@ -216,7 +216,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
 
     internal static void TickAll(Simulation sim)
     {
-        foreach (var content in allContent.Where(content => content.DoesTick))
+        foreach (var content in AllContent.Where(content => content.DoesTick))
         {
             try
             {
@@ -229,14 +229,19 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
             }
         }
     }
-    
-    private static List<ModContent> allContent;
+
+    private static List<ModContent> AllContent
+    {
+        get => field ??= ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Content ?? []).ToList();
+        set;
+    }
+
     private static readonly Dictionary<Type, IList> ContentByType = [];
     private static readonly Dictionary<Type, Dictionary<string, ModContent>> ContentById = [];
 
     internal static void InvalidateContentList()
     {
-        allContent = null;
+        AllContent = null;
         ContentByType.Clear();
         ContentById.Clear();
     }
@@ -248,11 +253,9 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// <returns></returns>
     public static List<T> GetContent<T>() where T : ModContent // TODO breaking change make this an IEnumerable
     {
-        allContent ??= ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Content ?? []).ToList();
-
         if (!ContentByType.TryGetValue(typeof(T), out var content) || content is not List<T> list)
         {
-            list = allContent.OfType<T>().ToList();
+            list = AllContent.OfType<T>().ToList();
             ContentByType[typeof(T)] = list;
         }
 

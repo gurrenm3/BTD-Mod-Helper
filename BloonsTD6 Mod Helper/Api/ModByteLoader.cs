@@ -164,11 +164,15 @@ public abstract class ModByteLoader : ModContent
         loader = loader.Replace("Assets", "Il2CppAssets");
         loader = loader.Replace("using System", "using Il2CppSystem");
         loader = loader.Replace("using Il2CppSystem.IO", "using System.IO");
+        loader = loader.Replace("using NinjaKiwi.Common", "using Il2CppNinjaKiwi.Common");
         loader = Regex.Replace(loader, @"private void (.*)<T>\(\) {",
             @"private void $1<T>() where T : Il2CppObjectBase {");
 
         loader = loader.Replace("samplesField.SetValue(v,(System.Single[]) m[br.ReadInt32()]);",
             "v.samples = (System.Single[]) m[br.ReadInt32()];");
+
+        loader = loader.Replace("stunMutatorsField.SetValue(v,(Il2CppStringArray) m[br.ReadInt32()])",
+            "v.stunMutators = (Il2CppStringArray) m[br.ReadInt32()];");
 
         loader = loader.Replace("T[]", "Il2CppReferenceArray<T>");
         loader = loader.Replace("new string[arrCount]", "new Il2CppStringArray(arrCount)");
@@ -189,8 +193,10 @@ public abstract class ModByteLoader : ModContent
             "v.targetType.id = br.ReadString();\n\t\t\tv.targetType.actionOnCreate = br.ReadBoolean();");
 
         loader = loader.Replace("\tpublic", "\tprotected override");
-        loader = loader.Replace("object[] m;",
+        loader = loader.Replace("private object[] m;",
             $"protected override string BytesFileName => \"{bytesFileName}\";");
+
+        loader = loader.Replace("String.", "string.");
 
         foreach (var r in References)
         {
