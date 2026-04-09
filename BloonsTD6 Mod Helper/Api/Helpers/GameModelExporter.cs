@@ -8,6 +8,7 @@ using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common;
+using Il2CppNinjaKiwi.Localization;
 using Il2CppSystem;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
@@ -79,7 +80,6 @@ public static class GameModelExporter
         Export(gameData.rogueData, "rogueData.json", o =>
         {
             o.Remove(nameof(RogueData.mapTemplates));
-            o.Remove(nameof(RogueData.RogueSaveData));
             o.Remove(nameof(RogueData.LegendsData));
             o.Value<JObject>(nameof(RogueData.featsData))!.Remove(nameof(RogueData.featsData.activeFeats));
         });

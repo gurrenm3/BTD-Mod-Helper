@@ -299,6 +299,7 @@ public static class UpgradeType
     public const string DruidOfWrath = "Druid of Wrath";
     public const string Poplust = "Poplust";
     public const string AvatarOfWrath = "Avatar of Wrath";
+    public const string DruidParagon = "Druid Paragon";
     public const string TridentEfficiency = "Trident Efficiency";
     public const string TridentSwiftness = "Trident Swiftness";
     public const string AbyssDweller = "Abyss Dweller";
@@ -732,6 +733,24 @@ public static class UpgradeType
     public const string HighImpact = "High Impact";
     public const string BewilderingStorm = "Bewildering Storm";
     public const string PiercingWind = "Piercing Wind";
+    public const string Cheer = "Cheer";
+    public const string Looksharp = "LookSharp";
+    public const string Monkeyspirit = "MonkeySpirit";
+    public const string Resistance = "Resistance";
+    public const string Highreps = "HighReps";
+    public const string Noquit = "NoQuit";
+    public const string Condition = "Condition";
+    public const string Intensity = "Intensity";
+    public const string Maxoutput = "MaxOutput";
+    public const string Initiatelinkamp = "InitiateLinkAMP";
+    public const string Chainlink = "ChainLink";
+    public const string Leadthestorm = "LeadTheStorm";
+    public const string AUT0M8 = "AUT0M8";
+    public const string NEUR0MAP = "NEUR0MAP";
+    public const string Cmdrch1p = "CMDRCh1p";
+    public const string Droneambusnetwork = "DroneAmbusNetwork";
+    public const string Triggerhappydrones = "TriggerHappyDrones";
+    public const string Ohboyicantwait = "OhBoyICantWait";
     public static readonly Dictionary<string, string> ByName = new() 
     {
         { "SharpShots", SharpShots },
@@ -1029,6 +1048,7 @@ public static class UpgradeType
         { "DruidOfWrath", DruidOfWrath },
         { "Poplust", Poplust },
         { "AvatarOfWrath", AvatarOfWrath },
+        { "DruidParagon", DruidParagon },
         { "TridentEfficiency", TridentEfficiency },
         { "TridentSwiftness", TridentSwiftness },
         { "AbyssDweller", AbyssDweller },
@@ -1462,5 +1482,23 @@ public static class UpgradeType
         { "HighImpact", HighImpact },
         { "BewilderingStorm", BewilderingStorm },
         { "PiercingWind", PiercingWind },
+        { "Cheer", Cheer },
+        { "Looksharp", Looksharp },
+        { "Monkeyspirit", Monkeyspirit },
+        { "Resistance", Resistance },
+        { "Highreps", Highreps },
+        { "Noquit", Noquit },
+        { "Condition", Condition },
+        { "Intensity", Intensity },
+        { "Maxoutput", Maxoutput },
+        { "Initiatelinkamp", Initiatelinkamp },
+        { "Chainlink", Chainlink },
+        { "Leadthestorm", Leadthestorm },
+        { "AUT0M8", AUT0M8 },
+        { "NEUR0MAP", NEUR0MAP },
+        { "Cmdrch1p", Cmdrch1p },
+        { "Droneambusnetwork", Droneambusnetwork },
+        { "Triggerhappydrones", Triggerhappydrones },
+        { "Ohboyicantwait", Ohboyicantwait },
     };
 }

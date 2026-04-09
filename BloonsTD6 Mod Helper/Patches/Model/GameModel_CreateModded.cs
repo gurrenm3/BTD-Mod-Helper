@@ -27,7 +27,7 @@ namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(GameModel), nameof(GameModel.CreateModded), typeof(List<string>), typeof(ModModel),
     typeof(ActiveRelicKnowledge), typeof(MapModel), typeof(RoundSetModel), typeof(List<ArtifactLoot>),
-    typeof(List<SeasonPerkItem>))]
+    typeof(HashSet<SeasonPerkItem>))]
 internal static class GameModel_CreateModded2
 {
     [HarmonyPostfix]

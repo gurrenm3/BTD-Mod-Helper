@@ -228,6 +228,11 @@ public static class Il2CppJsonConvert
         {
             var il2cppType = Il2CppType.From(objectType, false);
 
+            if (il2cppType == null)
+            {
+                return [];
+            }
+
             var memberNames = il2cppType
                 .GetMembers(Il2CppSystem.Reflection.BindingFlags.Instance |
                             Il2CppSystem.Reflection.BindingFlags.Public |

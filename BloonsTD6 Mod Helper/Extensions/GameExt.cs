@@ -24,6 +24,7 @@ using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppNinjaKiwi.LiNK;
 using Il2CppNinjaKiwi.LiNK.Lobbies;
+using Il2CppNinjaKiwi.Localization;
 using Il2CppNinjaKiwi.NKMulti;
 namespace BTD_Mod_Helper.Extensions;
 

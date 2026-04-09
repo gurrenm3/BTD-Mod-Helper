@@ -123,6 +123,8 @@ public static class VanillaAudioClips
     public const string ActivatedDroneSwarmETN = "1b65cc8569048d04082844c667074bea";
     public const string ActivatedDroneSwarmETNNoVO = "aa7b21b16ecf6aa44a2c5d98535ac2ed";
     public const string ActivatedDroneSwarmNoVO = "8c397e8f4664ef24bbc2d71d8d5ac6fa";
+    public const string ActivatedDruidParagonActive = "400cb5384939e744982eca4521b22729";
+    public const string ActivatedDruidParagonInactive = "b249dca4d938bbe40bcd7b100d6ac49c";
     public const string ActivatedEmergencyUnlock = "3e00c351120db0740b7d975547893fc1";
     public const string ActivatedEnergizingTotemRecharge = "1dff0041c0f66fc4aa32466af2d073e4";
     public const string ActivatedEnergizingTotemRechargeChristmas = "2c80a8a380562374b83e2756b9b40fe0";
@@ -135,6 +137,7 @@ public static class VanillaAudioClips
     public const string ActivatedFirstStrike = "110d592fa6b53934aa906210c3786249";
     public const string ActivatedFrosty10 = "c8a57550aec3625458c31a330e15902e";
     public const string ActivatedFrosty3 = "c1880200e1b407246a209dc30b3ebba1";
+    public const string ActivatedGenericRecharge = "520a25af76d488941a197ee74af6390a";
     public const string ActivatedGlueStorm = "ac18a71f980c657498b791d7e64ae546";
     public const string ActivatedGlueStrike = "03b0a4913d627e14b93798ac01660a93";
     public const string ActivatedHeartStopperGalaxili = "2999f21976f62ea489d47b594cea7808";
@@ -143,7 +146,7 @@ public static class VanillaAudioClips
     public const string ActivatedHeartstopperCatt = "3eaffbf5c494d83499e8aad3bb44738a";
     public const string ActivatedHeartstopperNoVO = "06b570601bac3d4458b5566cef282d6a";
     public const string ActivatedIceParagonEclipse = "04bfc9b3b7e940f47801316e1f8c012e";
-    public const string ActivatedJunglesBounty = "e3b73472f91c1484bb803abcb4f5d68e";
+    public const string ActivatedJunglesBounty = "980e9d93d2bfe8e409800056a776285f";
     public const string ActivatedLeapingSword = "45c3757c0b192594897d95876c0f891e";
     public const string ActivatedLeapingSword02 = "dfdeafd0b2ab0264b9c0b6c6b5198278";
     public const string ActivatedLeapingSwordJiangshiLanding = "238c1fa83e14e524e8ad930f1fd5bc1e";
@@ -258,6 +261,8 @@ public static class VanillaAudioClips
     public const string ActivatedTechBotRetroLink = "85d82005ce386d14ba8fdadadcc61506";
     public const string ActivatedTechBotRetroLinkConfirmed = "2c9e9505ffad3f44cbd0814228423890";
     public const string ActivatedTechTerror = "e2c8e933e9904af49958cdbd7773c472";
+    public const string ActivatedTechbotPrimeAbility = "a6f88e8d36ab94d43acf51350ef2935a";
+    public const string ActivatedTechbotPrimeAmbushTech = "a5b7f882daf35d04ba02d3d4674a4682";
     public const string ActivatedTransform = "dcb84b74ee9a6d44d98950a4ab1c43cb";
     public const string ActivatedTurboCharge = "d47fbdfd4a8f03d44914d8bd36689fbf";
     public const string ActivatedUcav = "97d768c70dabd694a8b9cf25fa0ec255";
@@ -925,6 +930,8 @@ public static class VanillaAudioClips
     public const string MoabWarningSilas = "b68d2ae0d096b7a4294cdcaecd02ad25";
     public const string ModeEmerge = "4442323d2b0d19a47afcc7d275cebeb4";
     public const string ModeSubmerge = "2d5a11d3b1f705d40abb0f91c64e298f";
+    public const string MoneybagsClose = "db6e717a7e2200d439ae2101f7f0b0c7";
+    public const string MoneybagsOpen = "bff73b4e2ae5107489a3519fc95a0dab";
     public const string MonkeyBoost = "a9677851f6984a143bf81752d9c28c54";
     public const string MonkeyBoostFireworks = "d8281b8be82f42645885bd56a080e606";
     public const string MusicBMCStreetParty = "c015febbcca62fc4f8b34dee07f9aaee";
@@ -1251,6 +1258,7 @@ public static class VanillaAudioClips
     public const string PlaceJonesBiker02 = "24ea50aa7bdc6af48a312c3ce38ec76b";
     public const string PlaceMOABMine = "6d7c6b060c67fbb4eba2f9f942494391";
     public const string PlaceMOABMineBauble = "0e98840596fbf9841b717f64de5d344f";
+    public const string PlaceMoneybags = "2f03dbe7f86e4384d9d9c1e14ec74498";
     public const string PlaceMonkeyStorm = "3d81b1e6b8340a64ab49a555d5f27773";
     public const string PlaceObyn01 = "17b51ac693f1ff0438ed0062e5b110cd";
     public const string PlaceObyn02 = "d89d1288dd8971b4fabe74ecc0f27403";
@@ -1430,6 +1438,10 @@ public static class VanillaAudioClips
     public const string PopPewPew02 = "2c08ba5b0fa518d47bba33f8da0113a8";
     public const string PopPewPew03 = "906dd3ffcc054b74dabc04930789e595";
     public const string PopPewPew04 = "6a0d793bf32588547ac70fc6a2ea9ef2";
+    public const string PopStone01 = "7b7a397f54947f24aa548ed2a4cd0832";
+    public const string PopStone02 = "5f4fe35155ec7f147895b2be59d0bc15";
+    public const string PopStone03 = "398b0b62d3388254eb3de5ddf5c9f1ef";
+    public const string PopStone04 = "d706169615e3ebc42b77be6213ad3ab8";
     public const string PopWestern01 = "6dbfa46ab692ce746ad5995221b3aa52";
     public const string PopWestern02 = "37c9a60c5118b024d8f85a575624e1cc";
     public const string PopWestern03 = "94a7677ec067eed4bb4570259a4b8d5d";
@@ -1926,6 +1938,7 @@ public static class VanillaAudioClips
     public const string UIPropKiwiFoot03 = "8a05315ad02af3a46b5eb7c190484d01";
     public const string UIPropKiwiFoot04 = "d15f15306a4138f4bb8861a6222861c9";
     public const string UIPropKiwiFoot05 = "44d2414131b566745b6ffe6029791f39";
+    public const string UIPropMagicImpact = "2a691e93856337a4991c917357486a97";
     public const string UIPropSmallGlitch01 = "74916fa13412cfd49a02e767a922c0bc";
     public const string UIPropSmallGlitch02 = "f47e3bca56ddccb428bbda74af688b77";
     public const string UIPropSmallGlitch03 = "f6717312be63a4549b766e19cc790de1";
@@ -2545,6 +2558,8 @@ public static class VanillaAudioClips
             ["ActivatedDroneSwarmETN"] = ActivatedDroneSwarmETN,
             ["ActivatedDroneSwarmETNNoVO"] = ActivatedDroneSwarmETNNoVO,
             ["ActivatedDroneSwarmNoVO"] = ActivatedDroneSwarmNoVO,
+            ["ActivatedDruidParagonActive"] = ActivatedDruidParagonActive,
+            ["ActivatedDruidParagonInactive"] = ActivatedDruidParagonInactive,
             ["ActivatedEmergencyUnlock"] = ActivatedEmergencyUnlock,
             ["ActivatedEnergizingTotemRecharge"] = ActivatedEnergizingTotemRecharge,
             ["ActivatedEnergizingTotemRechargeChristmas"] = ActivatedEnergizingTotemRechargeChristmas,
@@ -2557,6 +2572,7 @@ public static class VanillaAudioClips
             ["ActivatedFirstStrike"] = ActivatedFirstStrike,
             ["ActivatedFrosty10"] = ActivatedFrosty10,
             ["ActivatedFrosty3"] = ActivatedFrosty3,
+            ["ActivatedGenericRecharge"] = ActivatedGenericRecharge,
             ["ActivatedGlueStorm"] = ActivatedGlueStorm,
             ["ActivatedGlueStrike"] = ActivatedGlueStrike,
             ["ActivatedHeartStopperGalaxili"] = ActivatedHeartStopperGalaxili,
@@ -2680,6 +2696,8 @@ public static class VanillaAudioClips
             ["ActivatedTechBotRetroLink"] = ActivatedTechBotRetroLink,
             ["ActivatedTechBotRetroLinkConfirmed"] = ActivatedTechBotRetroLinkConfirmed,
             ["ActivatedTechTerror"] = ActivatedTechTerror,
+            ["ActivatedTechbotPrimeAbility"] = ActivatedTechbotPrimeAbility,
+            ["ActivatedTechbotPrimeAmbushTech"] = ActivatedTechbotPrimeAmbushTech,
             ["ActivatedTransform"] = ActivatedTransform,
             ["ActivatedTurboCharge"] = ActivatedTurboCharge,
             ["ActivatedUcav"] = ActivatedUcav,
@@ -3347,6 +3365,8 @@ public static class VanillaAudioClips
             ["MoabWarningSilas"] = MoabWarningSilas,
             ["ModeEmerge"] = ModeEmerge,
             ["ModeSubmerge"] = ModeSubmerge,
+            ["MoneybagsClose"] = MoneybagsClose,
+            ["MoneybagsOpen"] = MoneybagsOpen,
             ["MonkeyBoost"] = MonkeyBoost,
             ["MonkeyBoostFireworks"] = MonkeyBoostFireworks,
             ["MusicBMCStreetParty"] = MusicBMCStreetParty,
@@ -3673,6 +3693,7 @@ public static class VanillaAudioClips
             ["PlaceJonesBiker02"] = PlaceJonesBiker02,
             ["PlaceMOABMine"] = PlaceMOABMine,
             ["PlaceMOABMineBauble"] = PlaceMOABMineBauble,
+            ["PlaceMoneybags"] = PlaceMoneybags,
             ["PlaceMonkeyStorm"] = PlaceMonkeyStorm,
             ["PlaceObyn01"] = PlaceObyn01,
             ["PlaceObyn02"] = PlaceObyn02,
@@ -3852,6 +3873,10 @@ public static class VanillaAudioClips
             ["PopPewPew02"] = PopPewPew02,
             ["PopPewPew03"] = PopPewPew03,
             ["PopPewPew04"] = PopPewPew04,
+            ["PopStone01"] = PopStone01,
+            ["PopStone02"] = PopStone02,
+            ["PopStone03"] = PopStone03,
+            ["PopStone04"] = PopStone04,
             ["PopWestern01"] = PopWestern01,
             ["PopWestern02"] = PopWestern02,
             ["PopWestern03"] = PopWestern03,
@@ -4348,6 +4373,7 @@ public static class VanillaAudioClips
             ["UIPropKiwiFoot03"] = UIPropKiwiFoot03,
             ["UIPropKiwiFoot04"] = UIPropKiwiFoot04,
             ["UIPropKiwiFoot05"] = UIPropKiwiFoot05,
+            ["UIPropMagicImpact"] = UIPropMagicImpact,
             ["UIPropSmallGlitch01"] = UIPropSmallGlitch01,
             ["UIPropSmallGlitch02"] = UIPropSmallGlitch02,
             ["UIPropSmallGlitch03"] = UIPropSmallGlitch03,

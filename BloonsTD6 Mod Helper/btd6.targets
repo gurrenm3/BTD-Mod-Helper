@@ -47,6 +47,7 @@
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.VideoModule.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\UnityEngine.ScreenCaptureModule.dll" Private="false"/>
         <Reference Include="$(Il2CppAssemblies)\Unity.RenderPipelines.Universal.Runtime.dll" Private="false"/>
+        <Reference Include="$(Il2CppAssemblies)\Il2CppNinjaKiwi.Localization.dll" Private="false"/>
 
         <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppAssetBundleManager.dll" Private="false"/>
         <Reference Include="$(ManagedFolder)\UnityEngine.Il2CppImageConversionManager.dll" Private="false"/>

@@ -218,7 +218,7 @@ public static LocalizationManager GetLocalizationManager(this Game game);
 `game` [Il2CppAssets.Scripts.Unity.Game](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Game 'Il2CppAssets.Scripts.Unity.Game')
 
 #### Returns
-[Il2CppNinjaKiwi.Common.LocalizationManager](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LocalizationManager 'Il2CppNinjaKiwi.Common.LocalizationManager')
+[Il2CppNinjaKiwi.Localization.LocalizationManager](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Localization.LocalizationManager 'Il2CppNinjaKiwi.Localization.LocalizationManager')
 
 <a name='BTD_Mod_Helper.Extensions.GameExt.GetMapLoader(thisGame)'></a>
 

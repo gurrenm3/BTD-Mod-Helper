@@ -180,7 +180,7 @@ public static class TowerModelExt
     /// </summary>
     /// <returns></returns>
     public static ModTower GetModTower(this TowerModel towerModel) =>
-        ModTowerHelper.ModTowerCache.TryGetValue(towerModel.name, out var modTower) ? modTower : null;
+        ModTowerHelper.ModTowerCache.GetValueOrDefault(towerModel.name);
 
     /// <summary>
     /// Gets the specific ModTower associated with this TowerModel
@@ -438,6 +438,7 @@ public static class TowerModelExt
     /// <summary>
     /// Checks the applied upgrades to see if the provided mod upgrade has been applied.
     /// </summary>
+    /// <param name="towerModel">this tower</param>
     /// <param name="upgrade">The mod upgrade to check</param>
     public static bool IsModUpgradeApplied(this TowerModel towerModel, ModUpgrade upgrade)
     {

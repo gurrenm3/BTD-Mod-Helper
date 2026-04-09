@@ -388,3 +388,55 @@ public virtual bool ShouldAcquireUpgrade(ProfileModel profileModel);
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tick(int,Simulation,Tower)'></a>
+
+## ModUpgrade.Tick(int, Simulation, Tower) Method
+
+Runs each tick of the simulation for each tower placed down with this upgrade applied regardless if it is the current highest tier in the path or not. Be sure to override [DoesTick](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.DoesTick 'BTD_Mod_Helper.Api.ModContent.DoesTick') to true as it is false by default.
+
+```csharp
+protected virtual void Tick(int ticks, Simulation sim, Tower tower);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tick(int,Simulation,Tower).ticks'></a>
+
+`ticks` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The number of ticks run through the simulation (60/s)
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tick(int,Simulation,Tower).sim'></a>
+
+`sim` [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
+
+The current simulation
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tick(int,Simulation,Tower).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
+
+The current tower
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tick(int,Simulation)'></a>
+
+## ModUpgrade.Tick(int, Simulation) Method
+
+Runs each tick of the simulation assuming [DoesTick](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.DoesTick 'BTD_Mod_Helper.Api.ModContent.DoesTick') is true (false by default).
+
+```csharp
+protected override void Tick(int ticks, Simulation sim);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tick(int,Simulation).ticks'></a>
+
+`ticks` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The number of ticks run through the simulation (60/s)
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.Tick(int,Simulation).sim'></a>
+
+`sim` [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
+
+The current simulation.

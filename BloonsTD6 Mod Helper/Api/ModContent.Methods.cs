@@ -12,6 +12,7 @@ using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
+using Il2CppNinjaKiwi.Localization;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api;
 

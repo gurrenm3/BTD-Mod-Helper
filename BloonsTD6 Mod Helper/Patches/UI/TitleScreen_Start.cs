@@ -10,6 +10,7 @@ using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Scenes;
 using Il2CppNinjaKiwi.Common;
+using Il2CppNinjaKiwi.Localization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

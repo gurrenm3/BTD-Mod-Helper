@@ -32,11 +32,14 @@ This involves correctly setting up the environment variables / launch options.
 
 ### Recommended Version
 
-The current recommended MelonLoader version is **Latest Nightly Build of 0.7.2**.
+The current recommended MelonLoader version is **0.7.2**.
 
+<!--
 **Click "Enable Nightly builds" as shown below and use the latest one**
 
 ![Melonloader Installer Version Select Screenshot](images/ml-version-select-nightly.png)
+
+-->
 
 After the installation, your BloonsTD6 Folder should then look something like this:
 

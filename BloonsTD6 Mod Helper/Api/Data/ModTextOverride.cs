@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Il2CppNinjaKiwi.Common;
+using Il2CppNinjaKiwi.Localization;
 
 namespace BTD_Mod_Helper.Api.Data;
 

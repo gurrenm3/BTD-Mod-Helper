@@ -25,7 +25,7 @@ public static Dictionary<string,string> GetTextTable(this LocalizationManager lo
 
 <a name='BTD_Mod_Helper.Extensions.LocalizationManagerExt.GetTextTable(thisLocalizationManager).localization'></a>
 
-`localization` [Il2CppNinjaKiwi.Common.LocalizationManager](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.LocalizationManager 'Il2CppNinjaKiwi.Common.LocalizationManager')
+`localization` [Il2CppNinjaKiwi.Localization.LocalizationManager](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Localization.LocalizationManager 'Il2CppNinjaKiwi.Localization.LocalizationManager')
 
 #### Returns
 [Il2CppSystem.Collections.Generic.Dictionary](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.Dictionary 'Il2CppSystem.Collections.Generic.Dictionary')

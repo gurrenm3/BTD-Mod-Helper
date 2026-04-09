@@ -682,6 +682,58 @@ public static System.Nullable<bool> IsHeroUnlocked(this TowerModel towerModel);
 #### Returns
 [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsModUpgradeApplied(thisTowerModel,BTD_Mod_Helper.Api.Towers.ModUpgrade)'></a>
+
+## TowerModelExt.IsModUpgradeApplied(this TowerModel, ModUpgrade) Method
+
+Checks the applied upgrades to see if the provided mod upgrade has been applied.
+
+```csharp
+public static bool IsModUpgradeApplied(this TowerModel towerModel, BTD_Mod_Helper.Api.Towers.ModUpgrade upgrade);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsModUpgradeApplied(thisTowerModel,BTD_Mod_Helper.Api.Towers.ModUpgrade).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+this tower
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsModUpgradeApplied(thisTowerModel,BTD_Mod_Helper.Api.Towers.ModUpgrade).upgrade'></a>
+
+`upgrade` [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade')
+
+The mod upgrade to check
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsModUpgradeApplied_T_(thisTowerModel)'></a>
+
+## TowerModelExt.IsModUpgradeApplied<T>(this TowerModel) Method
+
+Checks the applied upgrades to see if the provided mod upgrade has been applied.
+
+```csharp
+public static bool IsModUpgradeApplied<T>(this TowerModel towerModel)
+    where T : BTD_Mod_Helper.Api.Towers.ModUpgrade;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsModUpgradeApplied_T_(thisTowerModel).T'></a>
+
+`T`
+
+Type of the mod upgrade to check
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsModUpgradeApplied_T_(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.IsStandardVanillaTower(thisTowerModel)'></a>
 
 ## TowerModelExt.IsStandardVanillaTower(this TowerModel) Method

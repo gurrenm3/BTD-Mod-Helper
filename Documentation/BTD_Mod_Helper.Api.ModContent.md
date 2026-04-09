@@ -60,6 +60,19 @@ public BloonsMod mod;
 [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.ModContent.DoesTick'></a>
+
+## ModContent.DoesTick Property
+
+If [Tick(int, Simulation)](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.Tick(int,Simulation) 'BTD_Mod_Helper.Api.ModContent.Tick(int, Simulation)') should run. False by default
+
+```csharp
+public virtual bool DoesTick { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModContent.Id'></a>
 
 ## ModContent.Id Property
@@ -1720,6 +1733,29 @@ The file name of your texture, without the extension
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.ModContent.Tick(int,Simulation)'></a>
+
+## ModContent.Tick(int, Simulation) Method
+
+Runs each tick of the simulation assuming [DoesTick](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.DoesTick 'BTD_Mod_Helper.Api.ModContent.DoesTick') is true (false by default).
+
+```csharp
+protected virtual void Tick(int ticks, Simulation sim);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.Tick(int,Simulation).ticks'></a>
+
+`ticks` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The number of ticks run through the simulation (60/s)
+
+<a name='BTD_Mod_Helper.Api.ModContent.Tick(int,Simulation).sim'></a>
+
+`sim` [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
+
+The current simulation.
 
 <a name='BTD_Mod_Helper.Api.ModContent.TowerID_T_(int,int,int)'></a>
 

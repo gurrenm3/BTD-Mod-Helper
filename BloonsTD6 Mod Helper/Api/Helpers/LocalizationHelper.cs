@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Il2CppNinjaKiwi.Common;
+using Il2CppNinjaKiwi.Localization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using static System.IO.WatcherChangeTypes;
