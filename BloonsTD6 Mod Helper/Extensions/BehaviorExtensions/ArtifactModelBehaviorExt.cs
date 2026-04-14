@@ -36,7 +36,7 @@ public static partial class ArtifactModelBehaviorExt
     {
         var boost = new BoostArtifactModel("", 0, "", boostBehaviors.ToIl2CppReferenceArray(), "", "",
             new Il2CppStringArray(0), new SpriteReference(""), "", new Il2CppStringArray(0), false,
-            new Il2CppStructArray<TowerSet>(0), false,
+            new Il2CppStructArray<TowerSet>(0), false, false,
             new Il2CppStructArray<int>(0), false, false);
         modifyBoost?.Invoke(boost);
         var invokeBoost = new InvokeBoostBuffBehaviorModel("", boost);

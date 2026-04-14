@@ -420,7 +420,7 @@ public abstract class ModBoostArtifact : ModArtifact<BoostArtifactData, BoostArt
         tier, Id, new Il2CppReferenceArray<BoostArtifactBehaviorModel>(0), GetId(index),
         GetId(index) + "Description", new Il2CppStringArray(0), GetIcon(tier), RarityFrameType.ToString(),
         new Il2CppStringArray(0), false,
-        new Il2CppStructArray<TowerSet>(0), false, new Il2CppStructArray<int>(0), false, false);
+        new Il2CppStructArray<TowerSet>(0), false, false, new Il2CppStructArray<int>(0), false, false);
 }
 
 /// <summary>

@@ -19,9 +19,9 @@ namespace BTD_Mod_Helper;
 /// </summary>
 public static class ModHelper
 {
-    internal const string WorksOnVersion = "54.0";
+    internal const string WorksOnVersion = "54.1";
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.5.11";
+    internal const string Version = "3.5.12";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =

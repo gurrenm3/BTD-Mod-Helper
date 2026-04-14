@@ -5178,6 +5178,7 @@ public static partial class CreateBoostArtifactModelExt
         public bool inverseTowerTypes { get; set; } = default;
         public Il2CppAssets.Scripts.Models.TowerSets.TowerSet[] towerSets { get; set; } = default;
         public Il2CppAssets.Scripts.Models.TowerSets.TowerSet towerSet { get; set; } = default;
+        public bool ignoreSubTowers { get; set; } = default;
         public bool inverseSets { get; set; } = default;
         public int[] tiers { get; set; } = default;
         public bool tiersMustBeEqual { get; set; } = default;
@@ -5198,7 +5199,7 @@ public static partial class CreateBoostArtifactModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel(args.name, args.tier, args.baseId, args.artifactBehaviors, args.nameLocKey, args.descriptionLocKey, args.descriptionParams, args.icon, args.rarityFrameType, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers);
+            var result = new Il2CppAssets.Scripts.Models.Artifacts.BoostArtifactModel(args.name, args.tier, args.baseId, args.artifactBehaviors, args.nameLocKey, args.descriptionLocKey, args.descriptionParams, args.icon, args.rarityFrameType, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.ignoreSubTowers, args.tiers, args.tiersMustBeEqual, args.inverseTiers);
             if (args.towerSet != default) result.towerSet = args.towerSet;
             if (args.monkeyKnowledgeModModels != default) result.monkeyKnowledgeModModels = args.monkeyKnowledgeModModels;
             if (args.isBossArtifact != default) result.isBossArtifact = args.isBossArtifact;
@@ -15475,6 +15476,27 @@ public static partial class CreateFilterProjectileCollisionIfTowerPausedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FilterProjectileCollisionIfTowerPausedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateFilterSubTowerModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterSubTowerModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterSubTowerModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterSubTowerModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterSubTowerModel>
+    {
+        public bool inclusive { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterSubTowerModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterSubTowerModel(args.name, args.inclusive);
+            
             return result;   
         }
     }
