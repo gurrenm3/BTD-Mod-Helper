@@ -26,8 +26,13 @@ internal class TitleScreen_Start
     [HarmonyPriority(Priority.High)]
     internal static void Postfix()
     {
-        // Fix some peoples' textTable sometimes not being initialized by this point TODO is there a better fix for this?
-        LocalizationManager.Instance.textTable ??= LocalizationManager.Instance.defaultTable;
+        // Fix some peoples' textTable sometimes not being initialized by this point
+        if (LocalizationManager.Instance.textTable == null)
+        {
+            ModHelper.Warning("The text table is null, replacing with default. This usually means a mod messed up the game's localization manager somehow");
+            LocalizationManager.Instance.textTable = LocalizationManager.Instance.defaultTable;
+        }
+
 
         ModArtifact.FixVanillaArtifactDependants();
 

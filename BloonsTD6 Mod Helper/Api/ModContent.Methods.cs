@@ -557,6 +557,7 @@ public abstract partial class ModContent
     /// <returns>The Localization key</returns>
     public static string Localize(BloonsMod mod, string key, string text)
     {
+        text ??= "";
         var id = GetId(mod, key);
         if (LocalizationManager.Instance != null && LocalizationManager.Instance.defaultTable != null)
         {
