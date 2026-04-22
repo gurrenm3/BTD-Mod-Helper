@@ -219,6 +219,7 @@ public static partial class CreateAbilityModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel>
     {
+        public string modelName { get; set; } = "";
         public string displayName { get; set; } = "";
         public string description { get; set; } = "";
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
@@ -257,6 +258,7 @@ public static partial class CreateAbilityModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.AbilityModel(args.name, args.displayName, args.description, args.animation, args.animationOffset, args.icon, args.cooldown, args.behaviors, args.activateOnPreLeak, args.activateOnLeak, args.addedViaUpgrade, args.cooldownSpeedScale, args.livesCost, args.maxActivationsPerRound, args.maxActivationsPerGame, args.resetCooldownOnTierUpgrade, args.activateOnLivesLost, args.enabled, args.canActivateBetweenRounds, args.sharedCooldown, args.dontShowStacked, args.animateOnMainAttackDisplay, args.restrictAbilityAfterMaxRoundTimer, args.additionalCharges, args.hideAbilityIfInCooldown, args.startOffCooldown, args.alwaysSetAnimationState, args.rechargeMonkeyMoneyCost, args.isHidden, args.activateOnRoundEnd);
+            if (args.modelName != default) result.modelName = args.modelName;
             if (args.animationOffsetFrames != default) result.animationOffsetFrames = args.animationOffsetFrames;
             if (args.cooldownFrames != default) result.cooldownFrames = args.cooldownFrames;
             if (args.CooldownSpeedScale != default) result.CooldownSpeedScale = args.CooldownSpeedScale;
@@ -1689,13 +1691,14 @@ public static partial class CreateAddBonusDamagePerHitToBloonModelExt
         public bool lastAppliesFirst { get; set; } = default;
         public bool cascadeMutators { get; set; } = default;
         public string overlayType { get; set; } = "";
+        public bool dontRemoveOnBloonDegrade { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel filter { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBonusDamagePerHitToBloonModel.Mutator _mutator { get; set; } = default;
         public int collisionPass { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBonusDamagePerHitToBloonModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBonusDamagePerHitToBloonModel(args.name, args.mutationId, args.priority, args.lifespan, args.perHitDamageAddition, args.layers, args.isUnique, args.lastAppliesFirst, args.cascadeMutators, args.overlayType, args.filter);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBonusDamagePerHitToBloonModel(args.name, args.mutationId, args.priority, args.lifespan, args.perHitDamageAddition, args.layers, args.isUnique, args.lastAppliesFirst, args.cascadeMutators, args.overlayType, args.dontRemoveOnBloonDegrade, args.filter);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args._mutator != default) result._mutator = args._mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
@@ -2135,6 +2138,7 @@ public static partial class CreateAddTowerBehaviorSimBehaviorModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorSimBehaviorModel>
     {
         public Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel> behaviorModels { get; set; } = default;
+        public string modelName { get; set; } = "";
         public string[] addOnlyIfScriptsExists { get; set; } = default;
         public string[] dontAddIfScriptsExists { get; set; } = default;
         public string[] replaceScriptNames { get; set; } = default;
@@ -2151,11 +2155,13 @@ public static partial class CreateAddTowerBehaviorSimBehaviorModelExt
         public bool ignorePowerTowers { get; set; } = default;
         public string modelNameToAddTo { get; set; } = "";
         public bool isAbilityBehavior { get; set; } = default;
+        public bool hasSaveData { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorSimBehaviorModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorSimBehaviorModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo, args.isAbilityBehavior);
+            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorSimBehaviorModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo, args.isAbilityBehavior, args.hasSaveData);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
+            if (args.modelName != default) result.modelName = args.modelName;
             if (args.towerSet != default) result.towerSet = args.towerSet;
             return result;   
         }
@@ -2173,6 +2179,7 @@ public static partial class CreateAddTowerBehaviorToFirstPlacedTowerSimBehaviorM
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorToFirstPlacedTowerSimBehaviorModel>
     {
         public Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel> behaviorModels { get; set; } = default;
+        public string modelName { get; set; } = "";
         public string[] addOnlyIfScriptsExists { get; set; } = default;
         public string[] dontAddIfScriptsExists { get; set; } = default;
         public string[] replaceScriptNames { get; set; } = default;
@@ -2189,11 +2196,13 @@ public static partial class CreateAddTowerBehaviorToFirstPlacedTowerSimBehaviorM
         public bool ignorePowerTowers { get; set; } = default;
         public string modelNameToAddTo { get; set; } = "";
         public bool isAbilityBehavior { get; set; } = default;
+        public bool hasSaveData { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorToFirstPlacedTowerSimBehaviorModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorToFirstPlacedTowerSimBehaviorModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo, args.isAbilityBehavior);
+            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddTowerBehaviorToFirstPlacedTowerSimBehaviorModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo, args.isAbilityBehavior, args.hasSaveData);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
+            if (args.modelName != default) result.modelName = args.modelName;
             if (args.towerSet != default) result.towerSet = args.towerSet;
             return result;   
         }
