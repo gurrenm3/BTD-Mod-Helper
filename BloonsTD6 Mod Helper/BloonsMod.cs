@@ -9,9 +9,13 @@ using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Hooks;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+using Il2CppAssets.Scripts.Models.Store.Loot;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
+using Il2CppSystem.Reflection;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using UnityEngine;
+using BindingFlags = System.Reflection.BindingFlags;
 
 namespace BTD_Mod_Helper;
 
@@ -336,6 +340,22 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <inheritdoc />
     public sealed override void OnInitializeMelon()
     {
+        // for some strange reason, making these reflection calls early in the load process prevents Fatal CLR errors that can sometimes happen
+        if (this is MelonMain)
+        {
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                try
+                {
+                    assembly.GetTypes();
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+        }
+
         if (modHelperPatchAll)
         {
             AccessTools.GetTypesFromAssembly(this.GetAssembly()).Do(ApplyHarmonyPatches);
