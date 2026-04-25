@@ -1,6 +1,8 @@
+using BTD_Mod_Helper.Patches.Sim;
 using Il2CppAssets.Scripts.Models.Effects;
 using Il2CppAssets.Scripts.Simulation;
 using Il2CppAssets.Scripts.Simulation.Objects;
+using Il2CppAssets.Scripts.Unity.Bridge;
 using Vector3 = Il2CppAssets.Scripts.Simulation.SMath.Vector3;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -31,5 +33,13 @@ public static class SimulationExt
         RootBehavior root = null)
     {
         return simulation.SpawnEffect(effect, position, root.Cast<IRootBehavior>());
+    }
+
+    extension(Simulation)
+    {
+        /// <summary>
+        /// The Simulation instance currently in the process of Simulating
+        /// </summary>
+        public static Simulation Current => Simulation_Simulate.Current ?? UnityToSimulation.Current?.Simulation;
     }
 }

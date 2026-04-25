@@ -408,6 +408,7 @@
 | [FunctionExt](BTD_Mod_Helper.Extensions.FunctionExt.md 'BTD_Mod_Helper.Extensions.FunctionExt') | Extensions for Functions |
 | [GameExt](BTD_Mod_Helper.Extensions.GameExt.md 'BTD_Mod_Helper.Extensions.GameExt') | Extensions for Game |
 | [GameModelExt](BTD_Mod_Helper.Extensions.GameModelExt.md 'BTD_Mod_Helper.Extensions.GameModelExt') | Extensions for the GameModel |
+| [GameModelExt.&lt;G&gt;$076984B86992B6A85254117AA174A89D](BTD_Mod_Helper.Extensions.GameModelExt._G_$076984B86992B6A85254117AA174A89D.md 'BTD_Mod_Helper.Extensions.GameModelExt.<G>$076984B86992B6A85254117AA174A89D') | |
 | [GameObjectExt](BTD_Mod_Helper.Extensions.GameObjectExt.md 'BTD_Mod_Helper.Extensions.GameObjectExt') | Extensions for GameObjects |
 | [GrowModelExt](BTD_Mod_Helper.Extensions.GrowModelExt.md 'BTD_Mod_Helper.Extensions.GrowModelExt') | Extension methods for [Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel 'Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel'). |
 | [HarmonyExt](BTD_Mod_Helper.Extensions.HarmonyExt.md 'BTD_Mod_Helper.Extensions.HarmonyExt') | Extensions for Harmony stuff |
@@ -474,6 +475,7 @@
 | [ShopMenuExt.&lt;G&gt;$79FCFF556C63276FE0AC1FAD3EE2CE0D](BTD_Mod_Helper.Extensions.ShopMenuExt._G_$79FCFF556C63276FE0AC1FAD3EE2CE0D.md 'BTD_Mod_Helper.Extensions.ShopMenuExt.<G>$79FCFF556C63276FE0AC1FAD3EE2CE0D') | |
 | [ShopMenuExt.&lt;G&gt;$79FCFF556C63276FE0AC1FAD3EE2CE0D.&lt;M&gt;$79FCFF556C63276FE0AC1FAD3EE2CE0D](BTD_Mod_Helper.Extensions.ShopMenuExt._G_$79FCFF556C63276FE0AC1FAD3EE2CE0D._M_$79FCFF556C63276FE0AC1FAD3EE2CE0D.md 'BTD_Mod_Helper.Extensions.ShopMenuExt.<G>$79FCFF556C63276FE0AC1FAD3EE2CE0D.<M>$79FCFF556C63276FE0AC1FAD3EE2CE0D') | ShopMenu extensions |
 | [SimulationExt](BTD_Mod_Helper.Extensions.SimulationExt.md 'BTD_Mod_Helper.Extensions.SimulationExt') | Extensions for [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation') |
+| [SimulationExt.&lt;G&gt;$3D909207424D2F4AB6D8A01CC85C7FBC](BTD_Mod_Helper.Extensions.SimulationExt._G_$3D909207424D2F4AB6D8A01CC85C7FBC.md 'BTD_Mod_Helper.Extensions.SimulationExt.<G>$3D909207424D2F4AB6D8A01CC85C7FBC') | |
 | [SliderEventExt](BTD_Mod_Helper.Extensions.SliderEventExt.md 'BTD_Mod_Helper.Extensions.SliderEventExt') | Extensions for SliderEvents |
 | [SpawnerExt](BTD_Mod_Helper.Extensions.SpawnerExt.md 'BTD_Mod_Helper.Extensions.SpawnerExt') | Extensions for Spawners |
 | [SpriteExt](BTD_Mod_Helper.Extensions.SpriteExt.md 'BTD_Mod_Helper.Extensions.SpriteExt') | Extensions for Sprites |
@@ -482,6 +484,7 @@
 | [StreamExt](BTD_Mod_Helper.Extensions.StreamExt.md 'BTD_Mod_Helper.Extensions.StreamExt') | Extensions for streams |
 | [StringExt](BTD_Mod_Helper.Extensions.StringExt.md 'BTD_Mod_Helper.Extensions.StringExt') | Extensions for strings |
 | [SupportModelExt](BTD_Mod_Helper.Extensions.SupportModelExt.md 'BTD_Mod_Helper.Extensions.SupportModelExt') | Extension methods for support models |
+| [TaskExt](BTD_Mod_Helper.Extensions.TaskExt.md 'BTD_Mod_Helper.Extensions.TaskExt') | Extensions for Il2Cpp Task |
 | [Texture2DExt](BTD_Mod_Helper.Extensions.Texture2DExt.md 'BTD_Mod_Helper.Extensions.Texture2DExt') | Extensions for Texture2Ds |
 | [ToggleEventExt](BTD_Mod_Helper.Extensions.ToggleEventExt.md 'BTD_Mod_Helper.Extensions.ToggleEventExt') | Extensions for ToggleEvents |
 | [ToggleExt](BTD_Mod_Helper.Extensions.ToggleExt.md 'BTD_Mod_Helper.Extensions.ToggleExt') | Extensions for Toggles |
@@ -496,6 +499,8 @@
 | [TowerToSimulationExt](BTD_Mod_Helper.Extensions.TowerToSimulationExt.md 'BTD_Mod_Helper.Extensions.TowerToSimulationExt') | Extensions for TowerToSimulation |
 | [TypeExt](BTD_Mod_Helper.Extensions.TypeExt.md 'BTD_Mod_Helper.Extensions.TypeExt') | Extensions for Type |
 | [UnityDisplayNodeExt](BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.md 'BTD_Mod_Helper.Extensions.UnityDisplayNodeExt') | Extensions for UnityDisplayNodes |
+| [UnityToSimulationExt](BTD_Mod_Helper.Extensions.UnityToSimulationExt.md 'BTD_Mod_Helper.Extensions.UnityToSimulationExt') | Extensions for [Il2CppAssets.Scripts.Unity.Bridge.UnityToSimulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Bridge.UnityToSimulation 'Il2CppAssets.Scripts.Unity.Bridge.UnityToSimulation') |
+| [UnityToSimulationExt.&lt;G&gt;$17EBDC75E1213760E55C4A7A45B59BDE](BTD_Mod_Helper.Extensions.UnityToSimulationExt._G_$17EBDC75E1213760E55C4A7A45B59BDE.md 'BTD_Mod_Helper.Extensions.UnityToSimulationExt.<G>$17EBDC75E1213760E55C4A7A45B59BDE') | |
 | [UpgradeModelExt](BTD_Mod_Helper.Extensions.UpgradeModelExt.md 'BTD_Mod_Helper.Extensions.UpgradeModelExt') | Extensions for UpgradeModels |
 | [Vector2Ext](BTD_Mod_Helper.Extensions.Vector2Ext.md 'BTD_Mod_Helper.Extensions.Vector2Ext') | Extensions for Vectors |
 | [Vector3Ext](BTD_Mod_Helper.Extensions.Vector3Ext.md 'BTD_Mod_Helper.Extensions.Vector3Ext') | Extensions for Vectors |

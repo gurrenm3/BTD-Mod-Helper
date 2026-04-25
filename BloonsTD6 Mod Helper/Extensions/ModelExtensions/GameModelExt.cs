@@ -12,8 +12,10 @@ using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
 using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Simulation;
 using Il2CppAssets.Scripts.Simulation.Bloons;
 using Il2CppAssets.Scripts.Simulation.Objects;
+using Il2CppAssets.Scripts.Unity;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -415,5 +417,13 @@ public static class GameModelExt
     public static bool DoesBloonExist(this GameModel gameModel, string bloonName)
     {
         return gameModel.bloons.Any(bloon => bloon.name == bloonName);
+    }
+
+    extension(GameModel)
+    {
+        /// <summary>
+        /// The current simulation's GameModel, or the base one if no simulation is active
+        /// </summary>
+        public static GameModel Current => Simulation.Current?.model ?? Game.instance.model;
     }
 }

@@ -12,6 +12,19 @@ public static class SimulationExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SimulationExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.SimulationExt.get_Current()'></a>
+
+## SimulationExt.get_Current() Method
+
+The Simulation instance currently in the process of Simulating
+
+```csharp
+public static Simulation get_Current();
+```
+
+#### Returns
+[Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
+
 <a name='BTD_Mod_Helper.Extensions.SimulationExt.SpawnEffect(thisSimulation,EffectModel,System.Nullable_Vector3_,IRootBehavior)'></a>
 
 ## SimulationExt.SpawnEffect(this Simulation, EffectModel, Nullable<Vector3>, IRootBehavior) Method

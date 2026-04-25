@@ -20,7 +20,7 @@ Add a Behavior to this
 
 ```csharp
 public static void AddBehavior<T>(this Entity entity, T behavior)
-    where T : Model;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -47,7 +47,7 @@ Return the first Behavior of type T
 
 ```csharp
 public static T GetBehavior<T>(this Entity entity)
-    where T : Model;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -73,7 +73,7 @@ Return all Behaviors of type T
 
 ```csharp
 public static System.Collections.Generic.List<T> GetBehaviors<T>(this Entity entity)
-    where T : Model;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -99,7 +99,7 @@ Check if this has a specific Behavior
 
 ```csharp
 public static bool HasBehavior<T>(this Entity entity)
-    where T : Model;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -125,7 +125,7 @@ Remove the first Behavior of type T
 
 ```csharp
 public static void RemoveBehavior<T>(this Entity entity, T behavior)
-    where T : Model;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -152,7 +152,7 @@ Remove the first Behavior of Type T
 
 ```csharp
 public static void RemoveBehavior<T>(this Entity entity)
-    where T : Model;
+    where T : Object;
 ```
 #### Type parameters
 
@@ -175,7 +175,7 @@ Remove all Behaviors of type T
 
 ```csharp
 public static void RemoveBehaviors<T>(this Entity entity)
-    where T : Model;
+    where T : Object;
 ```
 #### Type parameters
 

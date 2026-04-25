@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using MelonLoader.Utils;
 namespace BTD_Mod_Helper.Extensions;
@@ -19,6 +20,7 @@ public static class BloonsTD6ModExt
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
+    [Obsolete("Mods don't generally store information under the mods directory anymore")]
     public static string GetModDirectory(this BloonsMod bloonsMod) =>
         Path.Combine(MelonEnvironment.ModsDirectory, bloonsMod.GetModName());
 
@@ -29,6 +31,7 @@ public static class BloonsTD6ModExt
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
+    [Obsolete("Mods don't generally store information under the mods directory anymore")]
     public static string GetModDirectory(this BloonsMod bloonsMod, bool createIfNotExists)
     {
         var path = $"{MelonEnvironment.ModsDirectory}\\{bloonsMod.GetModName()}";
@@ -42,6 +45,7 @@ public static class BloonsTD6ModExt
     /// </summary>
     /// <param name="bloonsMod"></param>
     /// <returns></returns>
+    [Obsolete("Mods don't generally store information under the mods directory anymore")]
     public static string GetModSettingsDir(this BloonsMod bloonsMod) =>
         Path.Combine(bloonsMod.GetModDirectory(), "Mod Settings");
 
@@ -52,6 +56,7 @@ public static class BloonsTD6ModExt
     /// <param name="bloonsMod"></param>
     /// <param name="createIfNotExists">Create the mod's directory if it doesn't exist yet?</param>
     /// <returns></returns>
+    [Obsolete("Mods don't generally store information under the mods directory anymore")]
     public static string GetModSettingsDir(this BloonsMod bloonsMod, bool createIfNotExists)
     {
         var path = bloonsMod.GetModSettingsDir();

@@ -427,6 +427,19 @@ public static bool DoesTowerModelExist(this GameModel model, string towerId);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.GameModelExt.get_Current()'></a>
+
+## GameModelExt.get_Current() Method
+
+The current simulation's GameModel, or the base one if no simulation is active
+
+```csharp
+public static GameModel get_Current();
+```
+
+#### Returns
+[Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
 <a name='BTD_Mod_Helper.Extensions.GameModelExt.GetAllAbilityModels(thisGameModel)'></a>
 
 ## GameModelExt.GetAllAbilityModels(this GameModel) Method

@@ -5,6 +5,7 @@
         <Il2CppAssemblies>$(BloonsTD6)\MelonLoader\Il2CppAssemblies</Il2CppAssemblies>
         <ManagedFolder>$(BloonsTD6)\MelonLoader\net6</ManagedFolder>
         <OutputFolder Condition="'$(OutputFolder)' == ''">Mods</OutputFolder>
+        <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
 
     <!--References to MelonLoader dependencies-->

@@ -41,7 +41,7 @@ internal static class GameModel_CreateModded2
 internal static class GameModel_CreateModded
 {
     [HarmonyPrefix]
-    internal static bool Prefix()
+    internal static void Prefix()
     {
         Game.instance.model.searchCache ??= new Dictionary<Type, Dictionary<string, Model>>
         {
@@ -77,8 +77,6 @@ internal static class GameModel_CreateModded
                 bloonCache[key] = value;
             }
         }
-
-        return true;
     }
 
 
@@ -114,7 +112,8 @@ internal static class GameModel_CreateModded
             modRoundSet.ModifyGameModel(result);
         }
 
-        if (ModGameMode.Cache.TryGetValue(InGameData.CurrentGame.selectedMode, out var modGameMode))
+
+        if (ModGameMode.Cache.TryGetValue(InGameData.CurrentGame?.selectedMode ?? result.gameMode, out var modGameMode))
         {
             modGameMode.ModifyGameModel(result);
         }

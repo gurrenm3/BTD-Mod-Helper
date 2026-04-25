@@ -42,7 +42,7 @@ public static class InGameExt
     /// <summary>
     /// The Game.model that is being used for this InGame.instance
     /// </summary>
-    public static GameModel GetGameModel(this InGame inGame) => inGame.GetSimulation()?.model;
+    public static GameModel GetGameModel(this InGame inGame) => inGame?.GetSimulation()?.model;
 
     /// <summary>
     /// Get the main Factory that creates and manages all other Factories
