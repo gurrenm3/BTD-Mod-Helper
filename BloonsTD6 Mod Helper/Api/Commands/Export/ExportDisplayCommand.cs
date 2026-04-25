@@ -56,8 +56,6 @@ internal class ExportDisplayCommand : ModCommand<ExportCommand>
     {
         foreach (var renderer in node.GetRenderers())
         {
-            if (renderer?.material?.mainTexture == null) continue;
-
             if (renderer.gameObject.HasComponent(out CustomSpriteFrameAnimator customSpriteFrameAnimator))
             {
                 var i = 0;
