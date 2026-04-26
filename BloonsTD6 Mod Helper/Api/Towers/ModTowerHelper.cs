@@ -9,6 +9,7 @@ using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Upgrades;
+using Il2CppAssets.Scripts.Models.Towers.Weapons;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
@@ -278,8 +279,10 @@ public static class ModTowerHelper
             }
         }
 
-        towerModel.GetDescendants<ProjectileModel>().ForEach(projectile => projectile.UpdateCollisionPassList());
         towerModel.UpdateTargetProviders();
+        towerModel.GetDescendants<ProjectileModel>().ForEach(projectile => projectile.UpdateCollisionPassList());
+        towerModel.GetDescendants<AbilityModel>().ForEach(model => model.SetName(model.name));
+        towerModel.GetDescendants<WeaponModel>().ForEach(model => model.SetName(model.name));
     }
 
     internal static void FinalizeHero(ModHero modHero)

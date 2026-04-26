@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
+using Il2CppAssets.Scripts.Models.Towers.Weapons;
 using Il2CppSystem.Linq;
 namespace BTD_Mod_Helper.Extensions;
 
@@ -99,6 +101,14 @@ public static class ModelExt
         if (model.Is(out ProjectileModel projectile))
         {
             projectile.id = name;
+        }
+        else if (model.Is(out WeaponModel weapon))
+        {
+            weapon.modelName = name.Replace(typePrefix, "");
+        }
+        else if (model.Is(out AbilityModel ability))
+        {
+            ability.modelName = name.Replace(typePrefix, "");
         }
         return model;
     }
