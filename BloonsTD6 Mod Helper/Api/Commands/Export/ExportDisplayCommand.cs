@@ -61,9 +61,11 @@ internal class ExportDisplayCommand : ModCommand<ExportCommand>
                 var i = 0;
                 foreach (var frame in customSpriteFrameAnimator.frames)
                 {
-                    var path = Path.Combine(FileIOHelper.sandboxRoot, $"{renderer.name}_{i}.png");
-                    frame.TrySaveToPNG(path);
-                    ModHelper.Msg($"Saved {path}");
+                    var path = Path.Combine(FileIOHelper.sandboxRoot, $"{frame.name}_{i}.png");
+                    if (frame.TrySaveToPNG(path))
+                    {
+                        ModHelper.Msg($"Saved {path}");
+                    }
                     i++;
                 }
             }

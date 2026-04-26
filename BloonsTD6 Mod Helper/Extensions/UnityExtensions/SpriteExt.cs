@@ -30,16 +30,21 @@ public static class SpriteExt
         try
         {
             var texture = sprite.texture;
-            var spriteRect = sprite.textureRect;
+            var spriteRect = sprite.rect; // The full logical rect (with empty space)
+            var tightRect = sprite.textureRect; // The actual pixels in the texture
+            var offset = sprite.textureRectOffset; // The distance from bottom-left of rect to tightRect
+
             tmp = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default,
                 RenderTextureReadWrite.Linear);
             Graphics.Blit(texture, tmp);
             previous = RenderTexture.active;
             RenderTexture.active = tmp;
-            var myTexture2D = new Texture2D((int) spriteRect.width, (int) spriteRect.height);
-            myTexture2D.ReadPixels(new Rect(spriteRect.x, spriteRect.y, spriteRect.width, spriteRect.height), 0, 0);
-            myTexture2D.Apply();
 
+            var myTexture2D = new Texture2D((int) spriteRect.width, (int) spriteRect.height, TextureFormat.RGBA32, false);
+            myTexture2D.SetPixels(new Color[myTexture2D.width * myTexture2D.height]);
+            myTexture2D.ReadPixels(new Rect(tightRect.x, tightRect.y, tightRect.width, tightRect.height), (int) offset.x, (int) offset.y);
+
+            myTexture2D.Apply();
             return myTexture2D;
         }
         catch (Exception e)

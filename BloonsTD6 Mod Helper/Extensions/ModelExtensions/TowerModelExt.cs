@@ -3,6 +3,7 @@ using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
@@ -15,6 +16,7 @@ using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -169,6 +171,18 @@ public static class TowerModelExt
     {
         display.Apply(towerModel);
         return towerModel;
+    }
+
+    /// <summary>
+    /// Applies a given ModDisplay to this TowerModel
+    /// </summary>
+    public static void SetDisplay(this TowerModel towerModel, PrefabReference display)
+    {
+        towerModel.display = display;
+        if (towerModel.HasBehavior(out DisplayModel displayModel))
+        {
+            displayModel.display = display;
+        }
     }
 
     /// <summary>
