@@ -17,8 +17,10 @@
         <!--Documentation Settings-->
         <DocumentationFile>bin\Debug\Btd6ModHelper.xml</DocumentationFile>
         <Platforms>AnyCPU</Platforms>
-        
+
         <DefineConstants>MOD_HELPER</DefineConstants>
+
+        <IncludeLibs>Octokit,Ookii.Dialogs.WinForms,FuzzySharp,NfdSharp,NAudio,NAudio.Wasapi,NAudio.Core,NAudio.WinMM,NAudio.Vorbis,NVorbis,CommandLine,TextCopy</IncludeLibs>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug' Or '$(CI)' != ''">
@@ -26,30 +28,26 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommandLineParser" Version="2.9.1" />
-        <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1" PrivateAssets="all" />
-        <PackageReference Include="FuzzySharp" Version="2.0.2" />
-        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.29" />
-        <PackageReference Include="NfdSharp" Version="1.0.1" />
-        <PackageReference Include="Octokit" Version="4.0.3" />
-        <PackageReference Include="NAudio" Version="2.2.1" />
-        <PackageReference Include="NAudio.WinMM" Version="2.2.1" />
-        <PackageReference Include="NAudio.Vorbis.Latest" Version="1.5.1" />
-        <PackageReference Include="NVorbis" Version="0.10.5" />
-        <PackageReference Include="TextCopy" Version="6.2.1" />
+        <PackageReference Include="CommandLineParser" Version="2.9.1"/>
+        <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1" PrivateAssets="all"/>
+        <PackageReference Include="FuzzySharp" Version="2.0.2"/>
+        <PackageReference Include="NfdSharp" Version="1.0.1"/>
+        <PackageReference Include="Octokit" Version="4.0.3"/>
+        <PackageReference Include="NAudio" Version="2.2.1"/>
+        <PackageReference Include="NAudio.WinMM" Version="2.2.1"/>
+        <PackageReference Include="NAudio.Vorbis.Latest" Version="1.5.1"/>
+        <PackageReference Include="NVorbis" Version="0.10.5"/>
+        <PackageReference Include="TextCopy" Version="6.2.1"/>
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="nfd.dll" />
-        <EmbeddedResource Include="btd6.targets" />
-        <Compile Condition="'$(Configuration)' != 'Debug'" Remove="Api/Internal/JsonTowers/**/*" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings" />
+        <EmbeddedResource Include="nfd.dll"/>
+        <EmbeddedResource Include="btd6.targets"/>
+        <Compile Condition="'$(Configuration)' != 'Debug'" Remove="Api/Internal/JsonTowers/**/*"/>
+        <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings"/>
     </ItemGroup>
 
     <!--Use the btd6.targets from the Mod Sources folder if this is placed there, otherwise use the included one-->
-    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets" />
-    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets" />
+    <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets"/>
+    <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>
 </Project>

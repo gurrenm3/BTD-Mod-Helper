@@ -378,6 +378,7 @@
 | [ArtifactModelBehaviorExt](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt') | Behavior extensions for ItemArtifactModels and BoostArtifactModels |
 | [AssemblyExt](BTD_Mod_Helper.Extensions.AssemblyExt.md 'BTD_Mod_Helper.Extensions.AssemblyExt') | Extensions for Assemblies |
 | [AssetBundleExt](BTD_Mod_Helper.Extensions.AssetBundleExt.md 'BTD_Mod_Helper.Extensions.AssetBundleExt') | Extensions for AssetBundles |
+| [AsyncOperationHandleExt](BTD_Mod_Helper.Extensions.AsyncOperationHandleExt.md 'BTD_Mod_Helper.Extensions.AsyncOperationHandleExt') | Extensions for AsyncOperationHandles |
 | [AttackBehaviorExt](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackBehaviorExt') | Behavior extensions for attacks |
 | [AttackFilterModelExt](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md 'BTD_Mod_Helper.Extensions.AttackFilterModelExt') | Extensions for AttackFilterModels |
 | [AttackModelBehaviorExt](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt') | Extensions for AttackModels |

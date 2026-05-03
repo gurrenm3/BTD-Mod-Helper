@@ -27,7 +27,7 @@ public static class ArrayExt
         var num = IL2CPP.il2cpp_object_get_class(obj.Pointer);
         if (!IL2CPP.il2cpp_class_is_assignable_from(nativeClassPtr, num))
         {
-            ModHelper.Warning($"{obj.GetType()} is not a {typeof(T)}");
+            // ModHelper.Warning($"{obj.GetType()} is not a {typeof(T)}");
             return false;
         }
 
@@ -58,7 +58,7 @@ public static class ArrayExt
                 return true;
         }
 
-        ModHelper.Warning($"{obj.GetType()} is not a {typeof(T)}");
+        // ModHelper.Warning($"{obj.GetType()} is not a {typeof(T)}");
         t = default;
         return false;
     }

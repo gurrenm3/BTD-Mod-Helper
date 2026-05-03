@@ -1,5 +1,3 @@
-using System;
-using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
@@ -9,35 +7,26 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 namespace BTD_Mod_Helper.Patches.Resources;
 
 /// <summary>
-/// Fixes a weird bug that cropped up with v45 where custom sprites wouldn't always finish loading
-/// <br/>
-/// TODO investigate this further, fix initial flash of white square?
+/// Fixes white square issues from modded sprites failing to load
 /// </summary>
 [HarmonyPatch(typeof(ResourceLoader), nameof(ResourceLoader.OnSpriteLoaded))]
 internal static class ResourceLoader_OnSpriteLoaded
 {
     [HarmonyPrefix]
-    internal static void Prefix(ref AsyncOperationHandle<Sprite> handle)
+    internal static void Prefix(ResourceLoader.ISpriteRenderer image, ref AsyncOperationHandle<Sprite> handle)
     {
-        if (handle.Succeeded() && handle.Result == null)
+        if (!handle.Succeeded() || !handle.IsModded(out var name)) return;
+
+        // If it mistakenly thinks the image loading succeeded when it actually didn't
+        if (handle.Result == null && ResourceHandler.GetSprite(name) is Sprite spr)
         {
-            if (handle.LocationName.Contains(ModContent.HijackSpriteAtlas + ".spriteatlasv2"))
-            {
-                var name = handle.LocationName
-                    [(handle.LocationName.IndexOf("[", StringComparison.Ordinal) + 1)..^1];
-                if (ResourceHandler.GetSprite(name) is Sprite spr)
-                {
-                    handle = Addressables.Instance.ResourceManager.CreateCompletedOperation(spr, "");
-                }
-                else
-                {
-                    ModHelper.Error(name);
-                }
-            }
-            else
-            {
-                ModHelper.Warning(handle.LocationName);
-            }
+            handle = Addressables.Instance.ResourceManager.CreateCompletedOperation(spr, "");
+        }
+
+        // If it has a sprite releaser, the sprite will be eventually destroyed, so we don't want it in the cache anymore
+        if (image.Valid && image.gameObject.HasComponent<SpriteReleaser>())
+        {
+            ResourceHandler.SpriteCache.Remove(name);
         }
     }
 }

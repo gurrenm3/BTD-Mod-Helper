@@ -161,6 +161,14 @@ public static class ProjectileModelExt
     /// </summary>
     public static void SetDisplay<T>(this ProjectileModel projectileModel) where T : ModDisplay
     {
-        ModContent.GetInstance<T>().Apply(projectileModel);
+        projectileModel.SetDisplay(ModContent.GetInstance<T>());
+    }
+
+    /// <summary>
+    /// Sets the display for this projectile
+    /// </summary>
+    public static void SetDisplay(this ProjectileModel projectileModel, ModDisplay modDisplay)
+    {
+        projectileModel.SetDisplay(modDisplay.Id);
     }
 }
