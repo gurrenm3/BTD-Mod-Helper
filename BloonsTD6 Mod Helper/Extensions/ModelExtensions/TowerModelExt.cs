@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Display;
@@ -159,6 +160,7 @@ public static class TowerModelExt
     /// Applies a given ModDisplay to this TowerModel
     /// </summary>
     /// <typeparam name="T">The type of ModDisplay</typeparam>
+    [Obsolete("Use SetDisplay instead")]
     public static void ApplyDisplay<T>(this TowerModel towerModel) where T : ModDisplay
     {
         ModContent.GetInstance<T>().Apply(towerModel);
@@ -167,6 +169,7 @@ public static class TowerModelExt
     /// <summary>
     /// Applies a given ModDisplay to this TowerModel
     /// </summary>
+    [Obsolete("Use SetDisplay instead")]
     public static TowerModel ApplyDisplay(this TowerModel towerModel, ModDisplay display)
     {
         display.Apply(towerModel);
@@ -174,7 +177,7 @@ public static class TowerModelExt
     }
 
     /// <summary>
-    /// Applies a given ModDisplay to this TowerModel
+    /// Sets the display of this tower to a given PrefabReference
     /// </summary>
     public static void SetDisplay(this TowerModel towerModel, PrefabReference display)
     {
@@ -183,6 +186,30 @@ public static class TowerModelExt
         {
             displayModel.display = display;
         }
+    }
+
+    /// <summary>
+    /// Sets the display of this tower to a given GUID
+    /// </summary>
+    public static void SetDisplay(this TowerModel towerModel, string guid)
+    {
+        towerModel.SetDisplay(new PrefabReference(guid));
+    }
+
+    /// <summary>
+    /// Sets the display of this tower to a given PrefabReference
+    /// </summary>
+    public static void SetDisplay(this TowerModel towerModel, ModDisplay display)
+    {
+        towerModel.SetDisplay(display.Id);
+    }
+
+    /// <summary>
+    /// Sets the display of this tower to a given PrefabReference
+    /// </summary>
+    public static void SetDisplay<T>(this TowerModel towerModel) where T : ModDisplay
+    {
+        towerModel.SetDisplay(ModContent.GetInstance<T>());
     }
 
     /// <summary>

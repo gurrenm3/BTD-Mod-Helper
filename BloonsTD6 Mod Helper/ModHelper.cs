@@ -19,16 +19,16 @@ namespace BTD_Mod_Helper;
 /// </summary>
 public static class ModHelper
 {
-    internal const string WorksOnVersion = "54.2";
+    internal const string WorksOnVersion = "54.3";
     internal const string Name = "BloonsTD6 Mod Helper";
-    internal const string Version = "3.5.13";
+    internal const string Version = "3.5.14";
     internal const string RepoOwner = "gurrenm3";
     internal const string RepoName = "BTD-Mod-Helper";
     internal const string Description =
         "A powerful and easy to use API for modding BTD6. Also the mod that is allowing all of this UI to happen right now :P";
     internal const string DllName = "Btd6ModHelper.dll";
     internal const string XmlName = "Btd6ModHelper.xml";
-    internal const string Author = "Gurrenm4 and Doombubbles";
+    internal const string Author = "doombubbles and gurrenm3";
     internal const string Branch = "master";
     internal const string UpdaterVersion = "1.0.7";
 

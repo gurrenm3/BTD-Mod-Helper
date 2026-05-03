@@ -24,6 +24,10 @@ public abstract class NamedModContent : ModContent
     /// </summary>
     public virtual string Description => null;
 
+    /// <summary>
+    /// The detailed description of this, for any mod features that want to make use of it
+    /// </summary>
+    public virtual string DetailedDescription => null;
 
     /// <summary>
     /// Registers the text for this in the LocalizationManager
@@ -35,6 +39,7 @@ public abstract class NamedModContent : ModContent
         if (DisplayName != null) textTable[Id] = DisplayName;
         if (DisplayNamePlural != null) textTable[Id + "s"] = DisplayNamePlural;
         if (Description != null) textTable[Id + " Description"] = Description;
+        if (DetailedDescription != null) textTable[Id + " DetailedDescription"] = DetailedDescription;
     }
 
     internal static void RegisterAllText()

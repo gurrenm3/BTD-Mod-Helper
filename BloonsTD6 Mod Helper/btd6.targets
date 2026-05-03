@@ -62,10 +62,6 @@
             <SpecificVersion>False</SpecificVersion>
             <HintPath>$(BloonsTD6)\Mods\Btd6ModHelper.dll</HintPath>
         </Reference>
-        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll')" Private="false">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll</HintPath>
-        </Reference>
     </ItemGroup>
 
     <!--Automatic embeds-->
@@ -106,5 +102,59 @@
 
         <Copy SourceFiles="$(TargetDir)$(ProjectName).xml"
               DestinationFiles="$(BloonsTD6)\$(OutputFolder)\$(ProjectName).xml"/>
+    </Target>
+
+    <!-- ILRepack support -->
+
+    <ItemGroup Condition="$(IncludeLibs) != ''">
+        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.29"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition="$(IncludeLibs) != ''">
+        <ILRepackTargetsFile>$(MSBuildThisFileFullPath)</ILRepackTargetsFile>
+    </PropertyGroup>
+
+    <Target Name="Definitons" Condition="$(IncludeLibs) != ''">
+        <ItemGroup>
+            <AssemblyFile Include="$(TargetDir)$(TargetName).dll"/>
+            <InputAssemblies Include="@(AssemblyFile)"/>
+
+            <IncludedAssemblies Include="@(ReferencePathWithRefAssemblies)"
+                                Condition="$([System.String]::new(',$(IncludeLibs),').Contains(',%(filename),'))"/>
+            <InputAssemblies Include="@(IncludedAssemblies)"/>
+        </ItemGroup>
+    </Target>
+
+    <!--When in Debug mode, copy the libraries into UserLibs-->
+    <Target Name="DebugCopyLibs" AfterTargets="Build" DependsOnTargets="Definitons"
+            Condition="'$(Configuration)' == 'Debug' AND '$(IncludeLibs)' != ''">
+        <Message Text="Copying Included Libraries to UserLibs folder..." Importance="high"/>
+        <Copy SourceFiles="@(IncludedAssemblies)" DestinationFolder="$(BloonsTD6)\UserLibs"/>
+    </Target>
+
+    <!--When in Release mode, pack the libraries into the dll-->
+    <Target Name="ReleaseILRepack" AfterTargets="Build" BeforeTargets="MoveDllToMods" DependsOnTargets="Definitons"
+            Condition="'$(Configuration)' != 'Debug' AND '$(IncludeLibs)' != ''">
+        <Copy Condition="Exists('$(BloonsTD6)\Mods\Btd6ModHelper.dll') AND '$(DontReferenceModHelper)' != 'true'"
+              SourceFiles="$(BloonsTD6)\Mods\Btd6ModHelper.dll"
+              DestinationFiles="$(TargetDir)BloonsTD6 Mod Helper.dll"
+              SkipUnchangedFiles="true"/>
+        <ItemGroup>
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader"/>
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader\Managed"/>
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader\net6"/>
+            <LibraryPaths Include="$(BloonsTD6)\MelonLoader\Il2CppAssemblies"/>
+            <LibraryPaths Include="$(NetCoreRoot)packs\Microsoft.NETCore.App.Ref\6.0.0\ref\net6.0"/>
+            <LibraryPaths Include="$(BloonsTD6)\Mods"/>
+            <LibraryPaths Include="$(TargetDir)"/>
+        </ItemGroup>
+
+        <ILRepack
+                Parallel="true"
+                InputAssemblies="@(InputAssemblies)"
+                TargetKind="Dll"
+                OutputFile="@(AssemblyFile)"
+                Internalize="false"
+                LibraryPath="@(LibraryPaths)"/>
     </Target>
 </Project>

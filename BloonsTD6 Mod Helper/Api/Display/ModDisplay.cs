@@ -201,7 +201,7 @@ public abstract class ModDisplay : ModContent
     {
         UseNode(guid, action, DisplayCategory.Default);
     }
-    
+
     #region Applying Methods
 
     /// <summary>
@@ -260,7 +260,7 @@ public abstract class ModDisplay : ModContent
         displayModel.display = CreatePrefabReference(Id);
 
         displayModel.positionOffset = PositionOffset;
-        displayModel.scale = Scale;
+        displayModel.scale = Scale; // TODO this should no longer be applied here now that it manually scales the children
     }
 
     /// <summary>

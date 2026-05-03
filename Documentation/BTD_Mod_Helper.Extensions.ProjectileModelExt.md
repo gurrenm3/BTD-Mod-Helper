@@ -148,6 +148,25 @@ public static void RemoveFilter<T>(this ProjectileModel projectile)
 
 `projectile` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
 
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,BTD_Mod_Helper.Api.Display.ModDisplay)'></a>
+
+## ProjectileModelExt.SetDisplay(this ProjectileModel, ModDisplay) Method
+
+Sets the display for this projectile
+
+```csharp
+public static void SetDisplay(this ProjectileModel projectileModel, BTD_Mod_Helper.Api.Display.ModDisplay modDisplay);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,BTD_Mod_Helper.Api.Display.ModDisplay).projectileModel'></a>
+
+`projectileModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,BTD_Mod_Helper.Api.Display.ModDisplay).modDisplay'></a>
+
+`modDisplay` [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')
+
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,PrefabReference)'></a>
 
 ## ProjectileModelExt.SetDisplay(this ProjectileModel, PrefabReference) Method
@@ -185,6 +204,27 @@ public static void SetDisplay(this ProjectileModel projectileModel, string displ
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay(thisProjectileModel,string).display'></a>
 
 `display` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay_T_(thisProjectileModel)'></a>
+
+## ProjectileModelExt.SetDisplay<T>(this ProjectileModel) Method
+
+Sets the display for this projectile
+
+```csharp
+public static void SetDisplay<T>(this ProjectileModel projectileModel)
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay_T_(thisProjectileModel).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetDisplay_T_(thisProjectileModel).projectileModel'></a>
+
+`projectileModel` [Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel')
 
 <a name='BTD_Mod_Helper.Extensions.ProjectileModelExt.SetHitCamo(thisProjectileModel,bool)'></a>
 

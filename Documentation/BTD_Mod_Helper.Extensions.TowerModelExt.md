@@ -896,6 +896,84 @@ public static void SellAll(this TowerModel towerModel);
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,BTD_Mod_Helper.Api.Display.ModDisplay)'></a>
+
+## TowerModelExt.SetDisplay(this TowerModel, ModDisplay) Method
+
+Sets the display of this tower to a given PrefabReference
+
+```csharp
+public static void SetDisplay(this TowerModel towerModel, BTD_Mod_Helper.Api.Display.ModDisplay display);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,BTD_Mod_Helper.Api.Display.ModDisplay).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,BTD_Mod_Helper.Api.Display.ModDisplay).display'></a>
+
+`display` [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,PrefabReference)'></a>
+
+## TowerModelExt.SetDisplay(this TowerModel, PrefabReference) Method
+
+Sets the display of this tower to a given PrefabReference
+
+```csharp
+public static void SetDisplay(this TowerModel towerModel, PrefabReference display);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,PrefabReference).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,PrefabReference).display'></a>
+
+`display` [Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,string)'></a>
+
+## TowerModelExt.SetDisplay(this TowerModel, string) Method
+
+Sets the display of this tower to a given GUID
+
+```csharp
+public static void SetDisplay(this TowerModel towerModel, string guid);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,string).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay(thisTowerModel,string).guid'></a>
+
+`guid` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay_T_(thisTowerModel)'></a>
+
+## TowerModelExt.SetDisplay<T>(this TowerModel) Method
+
+Sets the display of this tower to a given PrefabReference
+
+```csharp
+public static void SetDisplay<T>(this TowerModel towerModel)
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay_T_(thisTowerModel).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetDisplay_T_(thisTowerModel).towerModel'></a>
+
+`towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
+
 <a name='BTD_Mod_Helper.Extensions.TowerModelExt.SetMaxAmount(thisTowerModel,int)'></a>
 
 ## TowerModelExt.SetMaxAmount(this TowerModel, int) Method

@@ -39,6 +39,19 @@ public virtual string Description { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.NamedModContent.DetailedDescription'></a>
+
+## NamedModContent.DetailedDescription Property
+
+The detailed description of this, for any mod features that want to make use of it
+
+```csharp
+public virtual string DetailedDescription { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Api.NamedModContent.DisplayName'></a>
 
 ## NamedModContent.DisplayName Property
