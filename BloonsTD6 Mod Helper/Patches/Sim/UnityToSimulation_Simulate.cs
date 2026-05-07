@@ -15,6 +15,6 @@ internal class UnityToSimulation_Simulate
     [HarmonyPostfix]
     internal static void Postfix(UnityToSimulation __instance)
     {
-        Current = __instance;
+        Current = null;
     }
 }

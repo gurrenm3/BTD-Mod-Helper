@@ -1,3 +1,4 @@
+using Il2CppAssets.Scripts.Utils;
 using System.Collections.Generic;
 
 #pragma warning disable CS1591
@@ -3973,6 +3974,9 @@ public static class VanillaSprites
     public const string ProfileAvatar125 = "6c8ccf5f1c645fd499edd9e637a63914";
     public const string ProfileAvatar126 = "c7913a8f6e5c3f94ab634329268fece4";
     public const string ProfileAvatar13 = "0247ba060cf49f945a1c77fc9cace482";
+    public const string ProfileAvatar131 = "cfec0b396f7734d40bc0a1c854c7bb35";
+    public const string ProfileAvatar132 = "cb964c6095c77314ebaa965156843625";
+    public const string ProfileAvatar133 = "cb4ca69c8cb68b448bb1d7e846ed0697";
     public const string ProfileAvatar14 = "ed60091e85967e7419816b9577350523";
     public const string ProfileAvatar15 = "36a0d8baa2f5293499be2370fab9435c";
     public const string ProfileAvatar16 = "d9fdf5127803886498747b8fba88133c";
@@ -4886,7 +4890,7 @@ public static class VanillaSprites
     public const string SocialSeasonsTier2Medal = "b8aeb5a1209b6ae46bc8ee14efa76c9c";
     public const string SocialSeasonsTier3Medal = "bb78b8797093b154fae80d16e835ffef";
     public const string SocialSeasonsTier4Medal = "ec5c32ff7011264469458c6bf8393fe9";
-    public const string SocialSeasonsUltimateMedal = "b50d1324b28a79246b42c86fb4232422";
+    public const string SocialSeasonsUltimateMedalScience = "b50d1324b28a79246b42c86fb4232422";
     public const string SortArrow = "Ui[SortArrow]";
     public const string SoulBarrier = "d3ab059cf9339474bad152be8e863f17";
     public const string SoulHarvestAA = "b35481c2d2e75564f86890aac01eab03";
@@ -5355,8 +5359,9 @@ public static class VanillaSprites
     public const string TheDailyReidIcon = "07daa5ca24aa9914bb262ec5f449f66b";
     public const string TheLongArmofLightAA = "68a4ad3c4022d418b99518023976fd6b";
     public const string TheTackZoneUpgradeIcon = "d6f1cd3a3db072c429e90f279ffb9711";
+    public const string ThemeBannerFeaturedScience = "8195e31027b520d4c980d8830d5151a6";
+    public const string ThemeBannerFullScience = "f9f92b181af17024eba0997db11e7921";
     public const string ThemeBannerMidScience = "fb4b817952bd6fe4ea6eeb4c194c97af";
-    public const string ThemeBannerScience = "f9f92b181af17024eba0997db11e7921";
     public const string ThemeBannerSmallScience = "9b224d8209ef82b4e91eeb83aece3774";
     public const string ThemeMonkeyScience = "503826d8a52ed474388ec0af648a5e03";
     public const string ThereCanBeOnlyOneIcon = "MonkeyKnowledgeUi[ThereCanBeOnlyOneIcon]";
@@ -9763,6 +9768,9 @@ public static class VanillaSprites
             ["ProfileAvatar125"] = ProfileAvatar125,
             ["ProfileAvatar126"] = ProfileAvatar126,
             ["ProfileAvatar13"] = ProfileAvatar13,
+            ["ProfileAvatar131"] = ProfileAvatar131,
+            ["ProfileAvatar132"] = ProfileAvatar132,
+            ["ProfileAvatar133"] = ProfileAvatar133,
             ["ProfileAvatar14"] = ProfileAvatar14,
             ["ProfileAvatar15"] = ProfileAvatar15,
             ["ProfileAvatar16"] = ProfileAvatar16,
@@ -10676,7 +10684,7 @@ public static class VanillaSprites
             ["SocialSeasonsTier2Medal"] = SocialSeasonsTier2Medal,
             ["SocialSeasonsTier3Medal"] = SocialSeasonsTier3Medal,
             ["SocialSeasonsTier4Medal"] = SocialSeasonsTier4Medal,
-            ["SocialSeasonsUltimateMedal"] = SocialSeasonsUltimateMedal,
+            ["SocialSeasonsUltimateMedalScience"] = SocialSeasonsUltimateMedalScience,
             ["SortArrow"] = SortArrow,
             ["SoulBarrier"] = SoulBarrier,
             ["SoulHarvestAA"] = SoulHarvestAA,
@@ -11145,8 +11153,9 @@ public static class VanillaSprites
             ["TheDailyReidIcon"] = TheDailyReidIcon,
             ["TheLongArmofLightAA"] = TheLongArmofLightAA,
             ["TheTackZoneUpgradeIcon"] = TheTackZoneUpgradeIcon,
+            ["ThemeBannerFeaturedScience"] = ThemeBannerFeaturedScience,
+            ["ThemeBannerFullScience"] = ThemeBannerFullScience,
             ["ThemeBannerMidScience"] = ThemeBannerMidScience,
-            ["ThemeBannerScience"] = ThemeBannerScience,
             ["ThemeBannerSmallScience"] = ThemeBannerSmallScience,
             ["ThemeMonkeyScience"] = ThemeMonkeyScience,
             ["ThereCanBeOnlyOneIcon"] = ThereCanBeOnlyOneIcon,
