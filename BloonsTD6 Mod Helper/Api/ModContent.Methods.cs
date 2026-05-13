@@ -264,6 +264,13 @@ public abstract partial class ModContent
     public string GetId(string name) => GetId(mod, name);
 
     /// <summary>
+    /// Gets ths id of a specific mod content
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static string GetId<T>() where T : ModContent => GetInstance<T>().Id;
+
+    /// <summary>
     /// Gets whether a texture with a given name has been loaded by the Mod Helper for a mod
     /// </summary>
     /// <param name="bloonsMod">The mod to look in</param>

@@ -315,6 +315,8 @@
 
 | Classes | |
 | :--- | :--- |
+| [ModBaseTsmTheme](BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme.md 'BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme') | Base ModContent for making Tower Selection Menu Theme related additions |
+| [ModCustomInput](BTD_Mod_Helper.Api.Towers.ModCustomInput.md 'BTD_Mod_Helper.Api.Towers.ModCustomInput') | ModContent for defining Custom Input that can be used in Tower Selection Menu Themes or via |
 | [ModFakeTower](BTD_Mod_Helper.Api.Towers.ModFakeTower.md 'BTD_Mod_Helper.Api.Towers.ModFakeTower') | Defines a "fake" tower that will be added as an entry to the shop but instead of placing down as normal, will just show its<br/>icon being placed with custom conditions and an action upon placement |
 | [ModFakeTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModFakeTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModFakeTower<T>') | Defines a "fake" tower that will be added as an entry to the shop but instead of placing down as normal, will just show its<br/>icon being placed with custom conditions and an action upon placement |
 | [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero') | Class for adding a custom Hero to the game. Use alongside [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') to give multiple levels. |
@@ -328,6 +330,7 @@
 | [ModTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModTower<T>') | A convenient generic class for specifying the ModTowerSet that a ModTower uses |
 | [ModTowerHelper](BTD_Mod_Helper.Api.Towers.ModTowerHelper.md 'BTD_Mod_Helper.Api.Towers.ModTowerHelper') | Class with helper methods for TowerModels / ModTowers<br/><br/><br/>Mostly used internally |
 | [ModTowerSet](BTD_Mod_Helper.Api.Towers.ModTowerSet.md 'BTD_Mod_Helper.Api.Towers.ModTowerSet') | A custom collection of ModTowers |
+| [ModTsmTheme](BTD_Mod_Helper.Api.Towers.ModTsmTheme.md 'BTD_Mod_Helper.Api.Towers.ModTsmTheme') | ModContent for defining a new Tower Selection Menu Theme that towers can use.<br/><example><br/><br/>towerModel.towerSelectionMenuThemeId = ModContent.GetId&lt;MyModTsmTheme&gt;();<br/></code> |
 | [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade') | A class used to create an Upgrade for a Tower |
 | [ModUpgrade&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModUpgrade_T_.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade<T>') | A convenient generic class for specifying the ModTower that this ModUpgrade is for |
 | [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent') | Class for changing Vanilla content within the game |
@@ -335,6 +338,7 @@
 | [ModVanillaParagon](BTD_Mod_Helper.Api.Towers.ModVanillaParagon.md 'BTD_Mod_Helper.Api.Towers.ModVanillaParagon') | Dummy ModTower that can be used to make a Paragon for a base tower. |
 | [ModVanillaTower](BTD_Mod_Helper.Api.Towers.ModVanillaTower.md 'BTD_Mod_Helper.Api.Towers.ModVanillaTower') | ModContent class for modifying all TowerModels for a given Tower |
 | [ModVanillaTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModVanillaTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModVanillaTower<T>') | Helper class for changing a vanilla tower to be part of a modded tower set |
+| [ModVanillaTsmTheme](BTD_Mod_Helper.Api.Towers.ModVanillaTsmTheme.md 'BTD_Mod_Helper.Api.Towers.ModVanillaTsmTheme') | ModContent for defining changes to existing Tower Selection Menu Themes |
 | [ModVanillaUpgrade](BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade') | ModContent class for modifying all TowerModels that have a given upgrade applied to them |
 
 | Enums | |

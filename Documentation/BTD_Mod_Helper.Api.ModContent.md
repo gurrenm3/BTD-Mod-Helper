@@ -28,6 +28,8 @@ Derived
 &#8627; [ModByteLoader](BTD_Mod_Helper.Api.ModByteLoader.md 'BTD_Mod_Helper.Api.ModByteLoader')  
 &#8627; [ModGameMenu](BTD_Mod_Helper.Api.ModGameMenu.md 'BTD_Mod_Helper.Api.ModGameMenu')  
 &#8627; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent')  
+&#8627; [ModBaseTsmTheme](BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme.md 'BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme')  
+&#8627; [ModCustomInput](BTD_Mod_Helper.Api.Towers.ModCustomInput.md 'BTD_Mod_Helper.Api.Towers.ModCustomInput')  
 &#8627; [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent')
 
 Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent'), [System.IComparable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')
@@ -688,6 +690,25 @@ public string GetId(string name);
 <a name='BTD_Mod_Helper.Api.ModContent.GetId(string).name'></a>
 
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId_T_()'></a>
+
+## ModContent.GetId<T>() Method
+
+Gets ths id of a specific mod content
+
+```csharp
+public static string GetId<T>()
+    where T : BTD_Mod_Helper.Api.ModContent;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetId_T_().T'></a>
+
+`T`
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

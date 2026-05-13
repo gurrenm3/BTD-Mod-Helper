@@ -171,9 +171,6 @@ public abstract class ModByteLoader : ModContent
         loader = loader.Replace("samplesField.SetValue(v,(System.Single[]) m[br.ReadInt32()]);",
             "v.samples = (System.Single[]) m[br.ReadInt32()];");
 
-        loader = loader.Replace("stunMutatorsField.SetValue(v,(Il2CppStringArray) m[br.ReadInt32()])",
-            "v.stunMutators = (Il2CppStringArray) m[br.ReadInt32()];");
-
         loader = loader.Replace("T[]", "Il2CppReferenceArray<T>");
         loader = loader.Replace("new string[arrCount]", "new Il2CppStringArray(arrCount)");
         loader = loader.Replace("System.String[]", "Il2CppStringArray");
@@ -233,6 +230,9 @@ public abstract class ModByteLoader : ModContent
             loader = loader.Replace($"new NinjaKiwi.Common.ResourceUtils.{assetReference}[",
                 $"new Il2CppNinjaKiwi.Common.ResourceUtils.{assetReference}[");
         }
+
+        loader = loader.Replace("stunMutatorsField.SetValue(v,(Il2CppStringArray) m[br.ReadInt32()]);",
+            "v.stunMutators = (Il2CppStringArray) m[br.ReadInt32()];");
 
         using var writer = new StreamWriter(convertedLoader);
         writer.Write(loader);
