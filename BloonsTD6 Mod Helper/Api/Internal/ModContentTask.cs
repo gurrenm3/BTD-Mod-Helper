@@ -30,8 +30,12 @@ internal class ModContentTask : ModLoadTask
             ModHelper.Log(DisplayName);
         }
         var current = 0f;
-        foreach (var modContent in mod.Content.ToArray())
+
+        // ReSharper disable once ForCanBeConvertedToForeach allow new content to be added while registering
+        for (var i = 0; i < mod.Content.Count; i++)
         {
+            var modContent = mod.Content[i];
+
             if (modContent.GetType().GetCustomAttribute<DontRegisterAttribute>() != null) continue;
 
             var weight = 1f / modContent.RegisterPerFrame;

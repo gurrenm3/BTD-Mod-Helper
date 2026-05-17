@@ -9,9 +9,11 @@ using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppNinjaKiwi.Localization;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api;
 
@@ -283,7 +285,8 @@ public abstract partial class ModContent
     /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <typeparam name="T">The mod to look in</typeparam>
-    public static bool TextureExists<T>([SpriteName] string name) where T : BloonsMod => TextureExists(GetInstance<T>(), name);
+    public static bool TextureExists<T>([SpriteName] string name) where T : BloonsMod =>
+        TextureExists(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets whether a texture with a given name has been loaded by the Mod Helper for this mod
@@ -401,7 +404,8 @@ public abstract partial class ModContent
     /// Gets a bundle from the mod T with the specified name (no file extension)
     /// </summary>
     /// <param name="name"></param>
-    public static AssetBundle GetBundle<T>([BundleName] string name) where T : BloonsMod => GetBundle(GetInstance<T>(), name);
+    public static AssetBundle GetBundle<T>([BundleName] string name) where T : BloonsMod =>
+        GetBundle(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets a bundle from your mod with the specified name (no file extension)
@@ -455,7 +459,8 @@ public abstract partial class ModContent
     /// <param name="name">Sound name (no .wav)</param>
     /// <typeparam name="T">The mod</typeparam>
     /// <returns>a playable AudioClip</returns>
-    public static AudioClip GetAudioClip<T>([AudioName] string name) where T : BloonsMod => GetAudioClip(GetInstance<T>(), name);
+    public static AudioClip GetAudioClip<T>([AudioName] string name) where T : BloonsMod =>
+        GetAudioClip(GetInstance<T>(), name);
 
     /// <summary>
     /// Gets an AudioClip from this mod by its name (no file extension included)
@@ -553,7 +558,7 @@ public abstract partial class ModContent
     /// Gets the BloonProperties enum value for a ModBloonProperty
     /// </summary>
     public static BloonProperties GetBloonProperties<T>() where T : ModBloonProperty => GetInstance<T>().Property;
-    
+
     /// <summary>
     /// Registers some text to the LocalizationManager using the given key (combined with your mod id) for use with
     /// the built in language system. NK texts components will <see cref="NK_TextMeshProUGUI.AutoLocalize"/> your keys.
@@ -594,4 +599,7 @@ public abstract partial class ModContent
 
     /// <inheritdoc cref="Localize(BTD_Mod_Helper.BloonsMod,string,string)"/>
     public string Localize(string keyAndText) => Localize(mod, keyAndText, keyAndText);
+
+    /// <inheritdoc cref="ModMutator.Create"/>
+    public static BehaviorMutator CreateMutator<T>(JToken data = null) where T : ModMutator => GetInstance<T>().Create();
 }

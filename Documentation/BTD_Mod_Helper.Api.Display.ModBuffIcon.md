@@ -191,3 +191,22 @@ public BuffIndicatorModel CreateBuffIndicatorModel();
 
 #### Returns
 [Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel 'Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel')
+### Operators
+
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.op_ImplicitBuffIndicatorModel(BTD_Mod_Helper.Api.Display.ModBuffIcon)'></a>
+
+## ModBuffIcon.implicit operator BuffIndicatorModel(ModBuffIcon) Operator
+
+Creates a BuffIndicatorModel for this custom icon
+
+```csharp
+public static BuffIndicatorModel implicit operator BuffIndicatorModel(BTD_Mod_Helper.Api.Display.ModBuffIcon icon);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Display.ModBuffIcon.op_ImplicitBuffIndicatorModel(BTD_Mod_Helper.Api.Display.ModBuffIcon).icon'></a>
+
+`icon` [ModBuffIcon](BTD_Mod_Helper.Api.Display.ModBuffIcon.md 'BTD_Mod_Helper.Api.Display.ModBuffIcon')
+
+#### Returns
+[Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel 'Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel')

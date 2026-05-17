@@ -79,10 +79,15 @@ public abstract class ModBaseTsmTheme : ModContent
     /// </summary>
     public const int DefaultIconSize = 128;
 
+    /// <summary>
+    /// Default spacing between <see cref="TSMButton"/>s when there are multiple
+    /// </summary>
+    public const int DefaultButtonSpacing = 198;
+
     internal static readonly Dictionary<string, ModBaseTsmTheme> ThemeCache = [];
 
     /// <inheritdoc />
-    public sealed override void Register()
+    public override void Register()
     {
         ThemeCache[Id] = this;
     }
@@ -214,6 +219,7 @@ public abstract class ModVanillaTsmTheme : ModBaseTsmTheme
         if (AppliesTo(theme.ThemeId))
         {
             SetupTheme(theme);
+            TowerChanged(theme, towerToSimulation);
         }
     }
 }

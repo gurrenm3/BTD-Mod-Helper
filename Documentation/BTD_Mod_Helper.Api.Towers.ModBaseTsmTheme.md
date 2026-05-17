@@ -42,6 +42,19 @@ public const int DefaultButtonSize = 180;
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme.DefaultButtonSpacing'></a>
+
+## ModBaseTsmTheme.DefaultButtonSpacing Field
+
+Default spacing between [Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes.TSMButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes.TSMButton 'Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes.TSMButton')s when there are multiple
+
+```csharp
+public const int DefaultButtonSpacing = 198;
+```
+
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme.DefaultIconSize'></a>
 
 ## ModBaseTsmTheme.DefaultIconSize Field

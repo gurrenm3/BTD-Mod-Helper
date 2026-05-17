@@ -52,6 +52,11 @@ public abstract class ModDisplay : ModContent
     public virtual float Scale => 1f;
 
     /// <summary>
+    /// Rescale the display by this amount
+    /// </summary>
+    public virtual Vector3 Rescale => Vector3.one;
+
+    /// <summary>
     /// How many pixels in a sprite texture should be equal to one unit
     /// </summary>
     [Obsolete("Due to resource pre loading you most likely want to use Scale instead")]
@@ -362,6 +367,15 @@ public abstract class ModDisplay : ModContent
                 for (var i = 0; i < udn.transform.childCount; i++)
                 {
                     udn.transform.GetChild(i).localScale *= Scale;
+                }
+            }
+            if (Rescale != Vector3.one)
+            {
+                for (var i = 0; i < udn.transform.childCount; i++)
+                {
+                    var child = udn.transform.GetChild(i);
+                    var (x, y, z) = child.localScale;
+                    child.localScale = new UnityEngine.Vector3(x * Rescale.x, y * Rescale.y, z * Rescale.z);
                 }
             }
         }

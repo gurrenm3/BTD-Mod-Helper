@@ -30,6 +30,7 @@ Derived
 &#8627; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent')  
 &#8627; [ModBaseTsmTheme](BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme.md 'BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme')  
 &#8627; [ModCustomInput](BTD_Mod_Helper.Api.Towers.ModCustomInput.md 'BTD_Mod_Helper.Api.Towers.ModCustomInput')  
+&#8627; [ModMutator](BTD_Mod_Helper.Api.Towers.ModMutator.md 'BTD_Mod_Helper.Api.Towers.ModMutator')  
 &#8627; [ModVanillaContent](BTD_Mod_Helper.Api.Towers.ModVanillaContent.md 'BTD_Mod_Helper.Api.Towers.ModVanillaContent')
 
 Implements [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent'), [System.IComparable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')[ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IComparable-1 'System.IComparable`1')
@@ -205,6 +206,33 @@ Sound name (no .wav)
 #### Returns
 [Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference 'Il2CppNinjaKiwi.Common.ResourceUtils.AudioSourceReference')  
 An AudioSoundReference
+
+<a name='BTD_Mod_Helper.Api.ModContent.CreateMutator_T_(JToken)'></a>
+
+## ModContent.CreateMutator<T>(JToken) Method
+
+Creates a BehaviorMutator for use with the specified custom data
+
+```csharp
+public static BehaviorMutator CreateMutator<T>(JToken data=null)
+    where T : BTD_Mod_Helper.Api.Towers.ModMutator;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.CreateMutator_T_(JToken).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.CreateMutator_T_(JToken).data'></a>
+
+`data` [Newtonsoft.Json.Linq.JToken](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JToken 'Newtonsoft.Json.Linq.JToken')
+
+custom data
+
+#### Returns
+[Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator 'Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator')  
+BehaviorMutator
 
 <a name='BTD_Mod_Helper.Api.ModContent.CreatePrefabReference(string)'></a>
 

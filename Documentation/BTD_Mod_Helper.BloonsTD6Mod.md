@@ -1023,7 +1023,7 @@ Called when you load a save file and a Tower's save data get loaded for the towe
 <br/>  
 Use saveData.metaData to load custom information  
 <br/>  
-Equivalent to a HarmonyPostFix on Tower.SetSavedData
+Equivalent to a HarmonyPostFix on Tower.SetSaveData
 
 ```csharp
 public virtual void OnTowerLoaded(Tower tower, TowerSaveDataModel saveData);
@@ -1067,7 +1067,7 @@ Called at the end of each round when a Tower's data is saved
 <br/>  
 Use saveData.metaData to save custom information  
 <br/>  
-Equivalent to a HarmonyPostFix on Tower.GetSavedData
+Equivalent to a HarmonyPostFix on Tower.GetSaveData
 
 ```csharp
 public virtual void OnTowerSaved(Tower tower, TowerSaveDataModel saveData);

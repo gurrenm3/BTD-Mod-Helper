@@ -509,7 +509,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br />
     /// Use saveData.metaData to save custom information
     /// <br />
-    /// Equivalent to a HarmonyPostFix on Tower.GetSavedData
+    /// Equivalent to a HarmonyPostFix on Tower.GetSaveData
     /// </summary>
     public virtual void OnTowerSaved(Tower tower, TowerSaveDataModel saveData)
     {
@@ -520,7 +520,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     /// <br />
     /// Use saveData.metaData to load custom information
     /// <br />
-    /// Equivalent to a HarmonyPostFix on Tower.SetSavedData
+    /// Equivalent to a HarmonyPostFix on Tower.SetSaveData
     /// </summary>
     public virtual void OnTowerLoaded(Tower tower, TowerSaveDataModel saveData)
     {

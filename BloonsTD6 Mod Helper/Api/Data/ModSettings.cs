@@ -10,7 +10,7 @@ public abstract class ModSettings : ModContent, IModSettings
     protected override float RegistrationPriority => 0;
 
     /// <inheritdoc />
-    public sealed override void Register()
+    public override void Register()
     {
     }
 }

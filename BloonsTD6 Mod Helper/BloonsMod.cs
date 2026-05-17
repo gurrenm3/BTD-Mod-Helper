@@ -111,7 +111,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <summary>
     /// Manually adds new ModContent to the mod. Does not directly call <see cref="ModContent.Load()" /> or
     /// <see cref="ModContent.Register" />, but the latter will still end up being called if this is added before the
-    /// Registration phase.
+    /// end of the Registration phase.
     /// </summary>
     /// <param name="modContent"></param>
     public void AddContent(ModContent modContent)
@@ -124,7 +124,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <summary>
     /// Manually adds multiple new ModContent to the mod. Does not directly call <see cref="ModContent.Load()" /> or
     /// <see cref="ModContent.Register" />, but the latter will still end up being called if this is added before the
-    /// Registration phase.
+    /// end of the Registration phase.
     /// </summary>
     public void AddContent(IEnumerable<ModContent> modContents)
     {

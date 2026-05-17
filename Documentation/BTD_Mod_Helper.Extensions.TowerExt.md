@@ -12,6 +12,104 @@ public static class TowerExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; TowerExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int)'></a>
+
+## TowerExt.AddMutatorFromParent<T>(this Tower, JToken, int, bool, bool, bool, bool, int) Method
+
+Calls [Il2CppAssets.Scripts.Simulation.Towers.Tower.AddMutatorFromParent(Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower.AddMutatorFromParent#Il2CppAssets_Scripts_Simulation_Towers_Tower_AddMutatorFromParent_Il2CppAssets_Scripts_Simulation_Objects_BehaviorMutator,System_Int32,System_Boolean,System_Boolean,System_Boolean,System_Boolean,System_Int32_ 'Il2CppAssets.Scripts.Simulation.Towers.Tower.AddMutatorFromParent(Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)') with a [ModMutator](BTD_Mod_Helper.Api.Towers.ModMutator.md 'BTD_Mod_Helper.Api.Towers.ModMutator')
+
+```csharp
+public static void AddMutatorFromParent<T>(this Tower tower, JToken data=null, int time=-1, bool updateDuration=true, bool applyMutation=true, bool onlyTimeoutWhenActive=false, bool useRoundTime=true, int roundsRemaining=-1)
+    where T : BTD_Mod_Helper.Api.Towers.ModMutator;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).data'></a>
+
+`data` [Newtonsoft.Json.Linq.JToken](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JToken 'Newtonsoft.Json.Linq.JToken')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).time'></a>
+
+`time` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).updateDuration'></a>
+
+`updateDuration` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).applyMutation'></a>
+
+`applyMutation` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).onlyTimeoutWhenActive'></a>
+
+`onlyTimeoutWhenActive` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).useRoundTime'></a>
+
+`useRoundTime` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorFromParent_T_(thisTower,JToken,int,bool,bool,bool,bool,int).roundsRemaining'></a>
+
+`roundsRemaining` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int)'></a>
+
+## TowerExt.AddMutatorIncludeSubTowers<T>(this Tower, JToken, int, bool, bool, bool, bool, int) Method
+
+Calls [Il2CppAssets.Scripts.Simulation.Towers.Tower.AddMutatorIncludeSubTowers(Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower.AddMutatorIncludeSubTowers#Il2CppAssets_Scripts_Simulation_Towers_Tower_AddMutatorIncludeSubTowers_Il2CppAssets_Scripts_Simulation_Objects_BehaviorMutator,System_Int32,System_Boolean,System_Boolean,System_Boolean,System_Boolean,System_Int32_ 'Il2CppAssets.Scripts.Simulation.Towers.Tower.AddMutatorIncludeSubTowers(Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)') with a [ModMutator](BTD_Mod_Helper.Api.Towers.ModMutator.md 'BTD_Mod_Helper.Api.Towers.ModMutator')
+
+```csharp
+public static void AddMutatorIncludeSubTowers<T>(this Tower tower, JToken data=null, int time=-1, bool updateDuration=true, bool applyMutation=true, bool onlyTimeoutWhenActive=false, bool useRoundTime=true, int roundsRemaining=-1)
+    where T : BTD_Mod_Helper.Api.Towers.ModMutator;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).data'></a>
+
+`data` [Newtonsoft.Json.Linq.JToken](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JToken 'Newtonsoft.Json.Linq.JToken')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).time'></a>
+
+`time` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).updateDuration'></a>
+
+`updateDuration` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).applyMutation'></a>
+
+`applyMutation` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).onlyTimeoutWhenActive'></a>
+
+`onlyTimeoutWhenActive` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).useRoundTime'></a>
+
+`useRoundTime` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.TowerExt.AddMutatorIncludeSubTowers_T_(thisTower,JToken,int,bool,bool,bool,bool,int).roundsRemaining'></a>
+
+`roundsRemaining` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
 <a name='BTD_Mod_Helper.Extensions.TowerExt.GetDisplayNode(thisTower)'></a>
 
 ## TowerExt.GetDisplayNode(this Tower) Method

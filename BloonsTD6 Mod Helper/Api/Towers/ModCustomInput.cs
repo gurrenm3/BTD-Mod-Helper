@@ -48,7 +48,7 @@ public abstract class ModCustomInput : ModContent
     }
 
     /// <inheritdoc />
-    public sealed override void Register()
+    public override void Register()
     {
         CustomInputById[Id] = this;
     }

@@ -95,6 +95,7 @@ internal static class TowerEditing
         }
         else
         {
+            newModel.UpdateTargetProviders();
             tower.UpdateRootModel(newModel.Duplicate());
         }
 

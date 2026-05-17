@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Simulation.Display;
 using Il2CppAssets.Scripts.Simulation.Factory;
@@ -8,6 +10,7 @@ using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.Display.Animation;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Newtonsoft.Json.Linq;
 namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
@@ -81,4 +84,38 @@ public static class TowerExt
     /// <returns></returns>
     public static MonkeyAnimationController GetMonkeyAnimController(this Tower tower) =>
         tower.GetUnityDisplayNode()?.animationController.TryCast<MonkeyAnimationController>();
+
+    /// <summary>
+    /// Calls <see cref="Tower.AddMutatorFromParent"/> with a <see cref="ModMutator"/>
+    /// </summary>
+    public static void AddMutatorFromParent<T>(this Tower tower,
+        JToken data = null,
+        int time = -1,
+        bool updateDuration = true,
+        bool applyMutation = true,
+        bool onlyTimeoutWhenActive = false,
+        bool useRoundTime = true,
+        int roundsRemaining = -1) where T : ModMutator
+    {
+        tower.AddMutatorFromParent(ModContent.CreateMutator<T>(data), time: time, updateDuration: updateDuration,
+            applyMutation: applyMutation, onlyTimeoutWhenActive: onlyTimeoutWhenActive,
+            useRoundTime: useRoundTime, roundsRemaining: roundsRemaining);
+    }
+
+    /// <summary>
+    /// Calls <see cref="Tower.AddMutatorIncludeSubTowers"/> with a <see cref="ModMutator"/>
+    /// </summary>
+    public static void AddMutatorIncludeSubTowers<T>(this Tower tower,
+        JToken data = null,
+        int time = -1,
+        bool updateDuration = true,
+        bool applyMutation = true,
+        bool onlyTimeoutWhenActive = false,
+        bool useRoundTime = true,
+        int roundsRemaining = -1) where T : ModMutator
+    {
+        tower.AddMutatorIncludeSubTowers(ModContent.CreateMutator<T>(data), time: time, updateDuration: updateDuration,
+            applyMutation: applyMutation, onlyTimeoutWhenActive: onlyTimeoutWhenActive,
+            useRoundTime: useRoundTime, roundsRemaining: roundsRemaining);
+    }
 }

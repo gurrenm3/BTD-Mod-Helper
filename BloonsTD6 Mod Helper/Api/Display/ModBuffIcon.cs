@@ -113,4 +113,7 @@ public abstract class ModBuffIcon : NamedModContent
             icon = IconReference
         });
     }
+
+    /// <inheritdoc cref="CreateBuffIndicatorModel"/>
+    public static implicit operator BuffIndicatorModel(ModBuffIcon icon) => icon.CreateBuffIndicatorModel();
 }

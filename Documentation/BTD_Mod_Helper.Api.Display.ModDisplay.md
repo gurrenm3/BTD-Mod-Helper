@@ -124,6 +124,19 @@ public virtual Vector3 PositionOffset { get; }
 #### Property Value
 [Il2CppAssets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector3 'Il2CppAssets.Scripts.Simulation.SMath.Vector3')
 
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.Rescale'></a>
+
+## ModDisplay.Rescale Property
+
+Rescale the display by this amount
+
+```csharp
+public virtual Vector3 Rescale { get; }
+```
+
+#### Property Value
+[Il2CppAssets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector3 'Il2CppAssets.Scripts.Simulation.SMath.Vector3')
+
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Scale'></a>
 
 ## ModDisplay.Scale Property

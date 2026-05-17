@@ -33,7 +33,7 @@ public abstract class ModWindowColor : NamedModContent
     public virtual float InsertPanelPixelMult => 1f;
 
     /// <inheritdoc />
-    public sealed override void Register()
+    public override void Register()
     {
         Cache[Name] = this;
     }

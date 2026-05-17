@@ -130,7 +130,7 @@ public abstract class ModWindow : ModStartMenuEntry
     }
 
     /// <inheritdoc />
-    public sealed override void Register()
+    public override void Register()
     {
         base.Register();
         Cache[Id] = this;

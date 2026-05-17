@@ -1,4 +1,5 @@
 <!--Mod Browser Message Start-->
 
-- Small fix for a null reference in a harmony patch 
-- Updated VanillaSprites
+- Added ModTsmTheme and ModVanillaTsmTheme
+- Added ModMutator
+- Minor ModContent registration change: content manually added by mod.AddContent(...) during a Register() method will still be Registered automatically

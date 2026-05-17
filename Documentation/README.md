@@ -322,6 +322,8 @@
 | [ModHero](BTD_Mod_Helper.Api.Towers.ModHero.md 'BTD_Mod_Helper.Api.Towers.ModHero') | Class for adding a custom Hero to the game. Use alongside [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') to give multiple levels. |
 | [ModHeroLevel](BTD_Mod_Helper.Api.Towers.ModHeroLevel.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel') | Class representing the UpgradeModel and changes for a particular Level for a ModHero |
 | [ModHeroLevel&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModHeroLevel_T_.md 'BTD_Mod_Helper.Api.Towers.ModHeroLevel<T>') | Convenient generic class for specifying the ModHero that this ModHeroLevel is for |
+| [ModMutator](BTD_Mod_Helper.Api.Towers.ModMutator.md 'BTD_Mod_Helper.Api.Towers.ModMutator') | ModContent that implements a custom version of a [Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator 'Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator') |
+| [ModMutator&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModMutator_T_.md 'BTD_Mod_Helper.Api.Towers.ModMutator<T>') | ModMutator that uses a strongly typed custom data object |
 | [ModParagonUpgrade](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade') | Defines the Paragon Upgrade for a ModTower. Remember to set the [ParagonMode](BTD_Mod_Helper.Api.Towers.ModTower.md#BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode 'BTD_Mod_Helper.Api.Towers.ModTower.ParagonMode') property. |
 | [ModParagonUpgrade&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModParagonUpgrade_T_.md 'BTD_Mod_Helper.Api.Towers.ModParagonUpgrade<T>') | A convenient generic class for specifying the ModTower that this ModParagonUpgrade is for |
 | [ModSubTower](BTD_Mod_Helper.Api.Towers.ModSubTower.md 'BTD_Mod_Helper.Api.Towers.ModSubTower') | Helper class for making a subtower |
@@ -388,6 +390,7 @@
 | [AttackModelBehaviorExt](BTD_Mod_Helper.Extensions.AttackModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackModelBehaviorExt') | Extensions for AttackModels |
 | [AttackModelExt](BTD_Mod_Helper.Extensions.AttackModelExt.md 'BTD_Mod_Helper.Extensions.AttackModelExt') | Extensions for AttackModels |
 | [AudioClipExtensions](BTD_Mod_Helper.Extensions.AudioClipExtensions.md 'BTD_Mod_Helper.Extensions.AudioClipExtensions') | Extensions for unity audio clips |
+| [BehaviorMutatorExt](BTD_Mod_Helper.Extensions.BehaviorMutatorExt.md 'BTD_Mod_Helper.Extensions.BehaviorMutatorExt') | Extensions for BehaviorMutators |
 | [BloonBehaviorExt](BTD_Mod_Helper.Extensions.BloonBehaviorExt.md 'BTD_Mod_Helper.Extensions.BloonBehaviorExt') | Extensions for getting bloon behaviors |
 | [BloonExt](BTD_Mod_Helper.Extensions.BloonExt.md 'BTD_Mod_Helper.Extensions.BloonExt') | Extensions for Bloons |
 | [BloonModelBehaviorExt](BTD_Mod_Helper.Extensions.BloonModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.BloonModelBehaviorExt') | Extensions for BloonModels |
@@ -460,6 +463,7 @@
 | [MiscModelExt](BTD_Mod_Helper.Extensions.MiscModelExt.md 'BTD_Mod_Helper.Extensions.MiscModelExt') | Other miscellaneous extensions for various Model classes |
 | [ModelExt](BTD_Mod_Helper.Extensions.ModelExt.md 'BTD_Mod_Helper.Extensions.ModelExt') | Extensions for Models |
 | [ModModelExt](BTD_Mod_Helper.Extensions.ModModelExt.md 'BTD_Mod_Helper.Extensions.ModModelExt') | Extensions for the ModModel (GameMode) class |
+| [MutableExt](BTD_Mod_Helper.Extensions.MutableExt.md 'BTD_Mod_Helper.Extensions.MutableExt') | Extensions for Mutables |
 | [NK_TextMeshProUGUIExt](BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt.md 'BTD_Mod_Helper.Extensions.NK_TextMeshProUGUIExt') | Extensions for NK_TextMeshProUGuis |
 | [NKMultiGameInterfaceExt](BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt.md 'BTD_Mod_Helper.Extensions.NKMultiGameInterfaceExt') | Extensions for sending and receiving data in coop |
 | [PetModelBehaviorExt](BTD_Mod_Helper.Extensions.PetModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.PetModelBehaviorExt') | Extensions for PetModels |

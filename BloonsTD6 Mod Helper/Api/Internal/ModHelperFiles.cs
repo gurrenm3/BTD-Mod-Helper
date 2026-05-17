@@ -35,7 +35,7 @@ internal static class ModHelperFiles
 
     private static bool downloaded;
 
-    internal static void DownloadDocumentationXml()
+    internal static void DownloadDocumentationXml(Action onComplete = null)
     {
         if (downloaded) return;
 
@@ -49,6 +49,7 @@ internal static class ModHelperFiles
                 {
                     downloaded = true;
                     ModHelper.Msg($"Downloaded {ModHelper.XmlName} for v{ModHelper.Version}");
+                    onComplete?.Invoke();
                 }
             }
             catch (Exception e)

@@ -8,10 +8,10 @@ namespace BTD_Mod_Helper.Patches;
 internal static class InGame_GetCustomInput
 {
     [HarmonyPrefix]
-    internal static bool Prefix(InGame __instance, InputManager inputManager, TowerToSimulation tower, string customInputId,
+    internal static bool Prefix(InputManager inputManager, TowerToSimulation tower, string customInputId,
         string buttonId, ref CustomInput __result)
     {
-        if (!ModCustomInput.CustomInputById.TryGetValue(customInputId, out var customInput)) return true;
+        if (!ModCustomInput.CustomInputById.TryGetValue(customInputId ?? "", out var customInput)) return true;
 
         __result = customInput.Activate(inputManager, tower, buttonId);
         return false;

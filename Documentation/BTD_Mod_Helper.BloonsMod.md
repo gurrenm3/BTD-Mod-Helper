@@ -148,7 +148,7 @@ public virtual bool UsesArtifactDependants { get; }
 
 Manually adds new ModContent to the mod. Does not directly call [BTD_Mod_Helper.Api.ModContent.Load](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Load 'BTD_Mod_Helper.Api.ModContent.Load') or  
 [BTD_Mod_Helper.Api.ModContent.Register](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Register 'BTD_Mod_Helper.Api.ModContent.Register'), but the latter will still end up being called if this is added before the  
-Registration phase.
+end of the Registration phase.
 
 ```csharp
 public void AddContent(BTD_Mod_Helper.Api.ModContent modContent);
@@ -165,7 +165,7 @@ public void AddContent(BTD_Mod_Helper.Api.ModContent modContent);
 
 Manually adds multiple new ModContent to the mod. Does not directly call [BTD_Mod_Helper.Api.ModContent.Load](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Load 'BTD_Mod_Helper.Api.ModContent.Load') or  
 [BTD_Mod_Helper.Api.ModContent.Register](https://docs.microsoft.com/en-us/dotnet/api/BTD_Mod_Helper.Api.ModContent.Register 'BTD_Mod_Helper.Api.ModContent.Register'), but the latter will still end up being called if this is added before the  
-Registration phase.
+end of the Registration phase.
 
 ```csharp
 public void AddContent(System.Collections.Generic.IEnumerable<BTD_Mod_Helper.Api.ModContent> modContents);

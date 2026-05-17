@@ -166,7 +166,7 @@ public abstract class ModArtifact : NamedModContent
     internal virtual string InstaDescription(int tier) => "";
 
     /// <inheritdoc />
-    public sealed override void Register()
+    public override void Register()
     {
         if (MinTier < Common) throw new ArgumentException($"StartsAtTier must be >= {Common}");
         if (MinTier > Legendary) throw new ArgumentException($"StartsAtTier must be <= {Legendary}");
@@ -218,7 +218,7 @@ public abstract class ModArtifact : NamedModContent
     }
 
     /// <inheritdoc />
-    public sealed override void RegisterText(Dictionary<string, string> textTable)
+    public override void RegisterText(Dictionary<string, string> textTable)
     {
         foreach (var (tier, index) in Tiers)
         {

@@ -12,6 +12,435 @@ public static class GameObjectExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; GameObjectExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Action)'></a>
+
+## GameObjectExt.AddButton(this GameObject, Info, string, Action) Method
+
+Creates a new ModHelperButton
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperButton AddButton(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, string sprite, System.Action onClick);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Action).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Action).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Action).sprite'></a>
+
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The button's visuals
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,System.Action).onClick'></a>
+
+`onClick` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
+
+What should happen when the button is clicked
+
+#### Returns
+[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int)'></a>
+
+## GameObjectExt.AddCheckbox(this GameObject, Info, bool, string, UnityAction<bool>, string, int) Method
+
+Creates a new ModHelperCheckbox
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityAction<bool> onValueChanged, string checkImage, int padding);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).defaultValue'></a>
+
+`defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+If it starts out checked or not
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background behind the check, or null for nothing
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action to perform when it is checked/unchecked, or null
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).checkImage'></a>
+
+`checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The checkmark itself, or null for the default checkmark
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int).padding'></a>
+
+`padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+How much space around the outside of the check there is
+
+#### Returns
+[ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
+The new ModHelperCheckbox
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string)'></a>
+
+## GameObjectExt.AddCheckbox(this GameObject, Info, bool, string, UnityAction<bool>, string) Method
+
+Creates a new ModHelperCheckbox
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityAction<bool> onValueChanged, string checkImage);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).defaultValue'></a>
+
+`defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+If it starts out checked or not
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background behind the check, or null for nothing
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action to perform when it is checked/unchecked, or null
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string).checkImage'></a>
+
+`checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The checkmark itself, or null for the default checkmark
+
+#### Returns
+[ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
+The new ModHelperCheckbox
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_)'></a>
+
+## GameObjectExt.AddCheckbox(this GameObject, Info, bool, string, UnityAction<bool>) Method
+
+Creates a new ModHelperCheckbox
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background, UnityAction<bool> onValueChanged);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).defaultValue'></a>
+
+`defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+If it starts out checked or not
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background behind the check, or null for nothing
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action to perform when it is checked/unchecked, or null
+
+#### Returns
+[ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
+The new ModHelperCheckbox
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string)'></a>
+
+## GameObjectExt.AddCheckbox(this GameObject, Info, bool, string) Method
+
+Creates a new ModHelperCheckbox
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperCheckbox AddCheckbox(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, bool defaultValue, string background);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string).defaultValue'></a>
+
+`defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+If it starts out checked or not
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background behind the check, or null for nothing
+
+#### Returns
+[ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
+The new ModHelperCheckbox
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float)'></a>
+
+## GameObjectExt.AddDropdown(this GameObject, Info, List<string>, float, UnityAction<int>, string, float) Method
+
+Creates a new ModHelperDropdown
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, List<string> options, float windowHeight, UnityAction<int> onValueChanged, string background, float labelFontSize);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: width/height must be set to actual values
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).options'></a>
+
+`options` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
+The list of options
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).windowHeight'></a>
+
+`windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Height of the created dropdown window
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action that should happen when an option of the given index is selected
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background image
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string,float).labelFontSize'></a>
+
+`labelFontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Text size of label
+
+#### Returns
+[ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
+The created ModHelperDropdown
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string)'></a>
+
+## GameObjectExt.AddDropdown(this GameObject, Info, List<string>, float, UnityAction<int>, string) Method
+
+Creates a new ModHelperDropdown
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, List<string> options, float windowHeight, UnityAction<int> onValueChanged, string background);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: width/height must be set to actual values
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).options'></a>
+
+`options` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
+The list of options
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).windowHeight'></a>
+
+`windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Height of the created dropdown window
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action that should happen when an option of the given index is selected
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_,string).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background image
+
+#### Returns
+[ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
+The created ModHelperDropdown
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_)'></a>
+
+## GameObjectExt.AddDropdown(this GameObject, Info, List<string>, float, UnityAction<int>) Method
+
+Creates a new ModHelperDropdown
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperDropdown AddDropdown(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, List<string> options, float windowHeight, UnityAction<int> onValueChanged);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: width/height must be set to actual values
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).options'></a>
+
+`options` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
+The list of options
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).windowHeight'></a>
+
+`windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Height of the created dropdown window
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddDropdown(thisGameObject,BTD_Mod_Helper.Api.Components.Info,List_string_,float,UnityAction_int_).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action that should happen when an option of the given index is selected
+
+#### Returns
+[ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
+The created ModHelperDropdown
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,Sprite)'></a>
+
+## GameObjectExt.AddImage(this GameObject, Info, Sprite) Method
+
+Creates a new ModHelperImage
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperImage AddImage(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, Sprite sprite);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,Sprite).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,Sprite).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,Sprite).sprite'></a>
+
+`sprite` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+The sprite to display
+
+#### Returns
+[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
+The created ModHelperImage
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string)'></a>
+
+## GameObjectExt.AddImage(this GameObject, Info, string) Method
+
+Creates a new ModHelperImage
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperImage AddImage(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, string sprite);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddImage(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string).sprite'></a>
+
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The sprite to display
+
+#### Returns
+[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
+The created ModHelperImage
+
 <a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperComponent_T_(thisGameObject,T)'></a>
 
 ## GameObjectExt.AddModHelperComponent<T>(this GameObject, T) Method
@@ -41,6 +470,492 @@ public static T AddModHelperComponent<T>(this GameObject gameObject, T modHelper
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.GameObjectExt.md#BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperComponent_T_(thisGameObject,T).T 'BTD_Mod_Helper.Extensions.GameObjectExt.AddModHelperComponent<T>(this GameObject, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float)'></a>
+
+## GameObjectExt.AddSlider(this GameObject, Info, float, float, float, float, Vector2, UnityAction<float>, float, string, float) Method
+
+Creates a new ModHelperSlider
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize, string labelSuffix, float startingValue);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: height must be a set value
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).defaultValue'></a>
+
+`defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The default slider amount
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).minValue'></a>
+
+`minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The minimum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).maxValue'></a>
+
+`maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The maximum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).stepSize'></a>
+
+`stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+What value the slider should increase by per tick
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).handleSize'></a>
+
+`handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
+
+The height and width of the pip
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action should happen when the slider changes value, or null
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).fontSize'></a>
+
+`fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The size of the label text
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).labelSuffix'></a>
+
+`labelSuffix` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+String to add to the end of the label, e.g. "%"
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string,float).startingValue'></a>
+
+`startingValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+If not null, the value that this should start as instead of the default
+
+#### Returns
+[ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string)'></a>
+
+## GameObjectExt.AddSlider(this GameObject, Info, float, float, float, float, Vector2, UnityAction<float>, float, string) Method
+
+Creates a new ModHelperSlider
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize, string labelSuffix);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: height must be a set value
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).defaultValue'></a>
+
+`defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The default slider amount
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).minValue'></a>
+
+`minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The minimum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).maxValue'></a>
+
+`maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The maximum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).stepSize'></a>
+
+`stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+What value the slider should increase by per tick
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).handleSize'></a>
+
+`handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
+
+The height and width of the pip
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action should happen when the slider changes value, or null
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).fontSize'></a>
+
+`fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The size of the label text
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float,string).labelSuffix'></a>
+
+`labelSuffix` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+String to add to the end of the label, e.g. "%"
+
+#### Returns
+[ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float)'></a>
+
+## GameObjectExt.AddSlider(this GameObject, Info, float, float, float, float, Vector2, UnityAction<float>, float) Method
+
+Creates a new ModHelperSlider
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged, float fontSize);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: height must be a set value
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).defaultValue'></a>
+
+`defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The default slider amount
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).minValue'></a>
+
+`minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The minimum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).maxValue'></a>
+
+`maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The maximum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).stepSize'></a>
+
+`stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+What value the slider should increase by per tick
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).handleSize'></a>
+
+`handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
+
+The height and width of the pip
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action should happen when the slider changes value, or null
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_,float).fontSize'></a>
+
+`fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The size of the label text
+
+#### Returns
+[ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_)'></a>
+
+## GameObjectExt.AddSlider(this GameObject, Info, float, float, float, float, Vector2, UnityAction<float>) Method
+
+Creates a new ModHelperSlider
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: height must be a set value
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).defaultValue'></a>
+
+`defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The default slider amount
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).minValue'></a>
+
+`minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The minimum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).maxValue'></a>
+
+`maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The maximum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).stepSize'></a>
+
+`stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+What value the slider should increase by per tick
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).handleSize'></a>
+
+`handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
+
+The height and width of the pip
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2,UnityAction_float_).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action should happen when the slider changes value, or null
+
+#### Returns
+[ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2)'></a>
+
+## GameObjectExt.AddSlider(this GameObject, Info, float, float, float, float, Vector2) Method
+
+Creates a new ModHelperSlider
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperSlider AddSlider(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info. NOTE: height must be a set value
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).defaultValue'></a>
+
+`defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The default slider amount
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).minValue'></a>
+
+`minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The minimum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).maxValue'></a>
+
+`maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The maximum value of the slider
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).stepSize'></a>
+
+`stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+What value the slider should increase by per tick
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddSlider(thisGameObject,BTD_Mod_Helper.Api.Components.Info,float,float,float,float,Vector2).handleSize'></a>
+
+`handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
+
+The height and width of the pip
+
+#### Returns
+[ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions)'></a>
+
+## GameObjectExt.AddText(this GameObject, Info, string, float, TextAlignmentOptions) Method
+
+Creates a new ModHelperText
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperText AddText(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, string text, float fontSize, TextAlignmentOptions align);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The text to display
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).fontSize'></a>
+
+`fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Size of font
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float,TextAlignmentOptions).align'></a>
+
+`align` [Il2CppTMPro.TextAlignmentOptions](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TextAlignmentOptions 'Il2CppTMPro.TextAlignmentOptions')
+
+Alignment of text
+
+#### Returns
+[ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
+The created ModHelperText
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float)'></a>
+
+## GameObjectExt.AddText(this GameObject, Info, string, float) Method
+
+Creates a new ModHelperText
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperText AddText(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, string text, float fontSize);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The text to display
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,float).fontSize'></a>
+
+`fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Size of font
+
+#### Returns
+[ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
+The created ModHelperText
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string)'></a>
+
+## GameObjectExt.AddText(this GameObject, Info, string) Method
+
+Creates a new ModHelperText
+
+```csharp
+public static BTD_Mod_Helper.Api.Components.ModHelperText AddText(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, string text);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+The name/position/size info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddText(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The text to display
+
+#### Returns
+[ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
+The created ModHelperText
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddTSMButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,string,string)'></a>
+
+## GameObjectExt.AddTSMButton(this GameObject, Info, string, string, string) Method
+
+Adds a TSMButton to this with the given buttonId and optional customInputId
+
+```csharp
+public static TSMButton AddTSMButton(this GameObject gameObject, BTD_Mod_Helper.Api.Components.Info info, string sprite, string buttonId, string customInputId=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddTSMButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,string,string).gameObject'></a>
+
+`gameObject` [UnityEngine.GameObject](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.GameObject 'UnityEngine.GameObject')
+
+this
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddTSMButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,string,string).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+Mod Helper Component info
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddTSMButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,string,string).sprite'></a>
+
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+sprite guid for the button
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddTSMButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,string,string).buttonId'></a>
+
+`buttonId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+tsm buttonId
+
+<a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddTSMButton(thisGameObject,BTD_Mod_Helper.Api.Components.Info,string,string,string).customInputId'></a>
+
+`customInputId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+optional tsm customInputId
+
+#### Returns
+[Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes.TSMButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes.TSMButton 'Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes.TSMButton')  
+created TSMButton
 
 <a name='BTD_Mod_Helper.Extensions.GameObjectExt.Destroy(thisGameObject)'></a>
 
