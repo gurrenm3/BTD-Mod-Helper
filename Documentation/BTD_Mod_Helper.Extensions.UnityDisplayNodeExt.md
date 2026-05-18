@@ -86,13 +86,51 @@ public static Renderer GetMeshRenderer(this UnityDisplayNode node, int index=0, 
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
+The UnityDisplayNode
+
 <a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetMeshRenderer(thisUnityDisplayNode,int,bool).index'></a>
 
 `index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+index of renderer to get
+
 <a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetMeshRenderer(thisUnityDisplayNode,int,bool).recalculate'></a>
 
 `recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
+
+#### Returns
+[UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetMeshRenderer(thisUnityDisplayNode,string,bool)'></a>
+
+## UnityDisplayNodeExt.GetMeshRenderer(this UnityDisplayNode, string, bool) Method
+
+Gets the first (or an indexed) MeshRenderer
+
+```csharp
+public static Renderer GetMeshRenderer(this UnityDisplayNode node, string nameContains, bool recalculate=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetMeshRenderer(thisUnityDisplayNode,string,bool).node'></a>
+
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetMeshRenderer(thisUnityDisplayNode,string,bool).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+string the name should contain
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetMeshRenderer(thisUnityDisplayNode,string,bool).recalculate'></a>
+
+`recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
 
 #### Returns
 [UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')
@@ -112,9 +150,13 @@ public static System.Collections.Generic.List<Renderer> GetMeshRenderers(this Un
 
 `node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
 
+The UnityDisplayNode
+
 <a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetMeshRenderers(thisUnityDisplayNode,bool).recalculate'></a>
 
 `recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[UnityEngine.Renderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Renderer 'UnityEngine.Renderer')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
@@ -284,6 +326,96 @@ Whether to recalculate renderers
 
 #### Returns
 [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.md#BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderers_T_(thisUnityDisplayNode,bool).T 'BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetRenderers<T>(this UnityDisplayNode, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderer(thisUnityDisplayNode,int,bool)'></a>
+
+## UnityDisplayNodeExt.GetSpriteRenderer(this UnityDisplayNode, int, bool) Method
+
+Gets the first (or an indexed) SpriteRenderer
+
+```csharp
+public static SpriteRenderer GetSpriteRenderer(this UnityDisplayNode node, int index=0, bool recalculate=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderer(thisUnityDisplayNode,int,bool).node'></a>
+
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderer(thisUnityDisplayNode,int,bool).index'></a>
+
+`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+index of renderer to get
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderer(thisUnityDisplayNode,int,bool).recalculate'></a>
+
+`recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
+
+#### Returns
+[UnityEngine.SpriteRenderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.SpriteRenderer 'UnityEngine.SpriteRenderer')
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderers(thisUnityDisplayNode,bool)'></a>
+
+## UnityDisplayNodeExt.GetSpriteRenderers(this UnityDisplayNode, bool) Method
+
+Gets all renderers that are of type SpriteRenderer
+
+```csharp
+public static System.Collections.Generic.List<SpriteRenderer> GetSpriteRenderers(this UnityDisplayNode node, bool recalculate=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderers(thisUnityDisplayNode,bool).node'></a>
+
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderers(thisUnityDisplayNode,bool).recalculate'></a>
+
+`recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
+
+#### Returns
+[System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[UnityEngine.SpriteRenderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.SpriteRenderer 'UnityEngine.SpriteRenderer')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderers(thisUnityDisplayNode,string,bool)'></a>
+
+## UnityDisplayNodeExt.GetSpriteRenderers(this UnityDisplayNode, string, bool) Method
+
+Gets the first (or an indexed) SpriteRenderer
+
+```csharp
+public static SpriteRenderer GetSpriteRenderers(this UnityDisplayNode node, string nameContains, bool recalculate=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderers(thisUnityDisplayNode,string,bool).node'></a>
+
+`node` [Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode 'Il2CppAssets.Scripts.Unity.Display.UnityDisplayNode')
+
+The UnityDisplayNode
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderers(thisUnityDisplayNode,string,bool).nameContains'></a>
+
+`nameContains` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+string the name should contain
+
+<a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.GetSpriteRenderers(thisUnityDisplayNode,string,bool).recalculate'></a>
+
+`recalculate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to recalculate renderers
+
+#### Returns
+[UnityEngine.SpriteRenderer](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.SpriteRenderer 'UnityEngine.SpriteRenderer')
 
 <a name='BTD_Mod_Helper.Extensions.UnityDisplayNodeExt.PrintInfo(thisUnityDisplayNode)'></a>
 

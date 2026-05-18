@@ -52,26 +52,33 @@ public static partial class UnityDisplayNodeExt
     /// <param name="node">The UnityDisplayNode</param>
     /// <param name="recalculate">Whether to recalculate renderers</param>
     /// <typeparam name="T">The type of Renderer you're looking for</typeparam>
-    /// <returns></returns>
     public static List<T> GetRenderers<T>(this UnityDisplayNode node, bool recalculate = true) where T : Renderer =>
         node.GetRenderers(recalculate).GetItemsOfType<Renderer, T>();
 
     /// <summary>
     /// Gets the first (or an indexed) SkinnedMeshRenderer/MeshRenderer
     /// </summary>
-    /// <param name="node"></param>
-    /// <param name="index"></param>
-    /// <param name="recalculate"></param>
-    /// <returns></returns>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="index">index of renderer to get</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
     public static Renderer GetMeshRenderer(this UnityDisplayNode node, int index = 0, bool recalculate = true) =>
         node.GetMeshRenderers(recalculate)[index];
+
+
+    /// <summary>
+    /// Gets the first (or an indexed) MeshRenderer
+    /// </summary>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="nameContains">string the name should contain</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
+    public static Renderer GetMeshRenderer(this UnityDisplayNode node, string nameContains, bool recalculate = true) =>
+        node.GetMeshRenderers(recalculate).FirstOrDefault(renderer => renderer.name.Contains(nameContains));
 
     /// <summary>
     /// Gets all renderers that are of type SkinnedMeshRenderer or MeshRenderer
     /// </summary>
-    /// <param name="node"></param>
-    /// <param name="recalculate"></param>
-    /// <returns></returns>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
     public static List<Renderer> GetMeshRenderers(this UnityDisplayNode node, bool recalculate = true)
     {
         return node.GetRenderers(recalculate)
@@ -97,10 +104,43 @@ public static partial class UnityDisplayNodeExt
     /// <param name="nameContains">String that renderer name must contain</param>
     /// <param name="recalculate">Whether to recalculate renderers</param>
     /// <typeparam name="T">The type of Renderer you're looking for</typeparam>
-    public static T GetRenderer<T>(this UnityDisplayNode node, string nameContains, bool recalculate = true) where T : Renderer
+    public static T GetRenderer<T>(this UnityDisplayNode node, string nameContains, bool recalculate = true)
+        where T : Renderer
     {
         return node.GetRenderers<T>(recalculate).FirstOrDefault(renderer => renderer.name.Contains(nameContains));
     }
+
+    /// <summary>
+    /// Gets the first (or an indexed) SpriteRenderer
+    /// </summary>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="index">index of renderer to get</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
+    /// <returns></returns>
+    public static SpriteRenderer GetSpriteRenderer(this UnityDisplayNode node, int index = 0, bool recalculate = true) =>
+        node.GetSpriteRenderers(recalculate)[index];
+
+    /// <summary>
+    /// Gets all renderers that are of type SpriteRenderer
+    /// </summary>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
+    /// <returns></returns>
+    public static List<SpriteRenderer> GetSpriteRenderers(this UnityDisplayNode node, bool recalculate = true)
+    {
+        return node.GetRenderers(recalculate).OfIl2CppType<SpriteRenderer>().ToList();
+    }
+
+    /// <summary>
+    /// Gets the first (or an indexed) SpriteRenderer
+    /// </summary>
+    /// <param name="node">The UnityDisplayNode</param>
+    /// <param name="nameContains">string the name should contain</param>
+    /// <param name="recalculate">Whether to recalculate renderers</param>
+    public static SpriteRenderer
+        GetSpriteRenderers(this UnityDisplayNode node, string nameContains, bool recalculate = true) =>
+        node.GetSpriteRenderers(recalculate).FirstOrDefault(renderer => renderer.name.Contains(nameContains));
+
 
     /// <summary>
     /// Prints relevant info about this node to the console

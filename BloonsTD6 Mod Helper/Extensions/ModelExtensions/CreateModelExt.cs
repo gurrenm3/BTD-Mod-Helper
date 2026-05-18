@@ -10458,9 +10458,9 @@ public static partial class CreateDamageInRingRadiusModelExt
         public float innerRingRadius { get; set; } = 0;
         public float damage { get; set; } = 0;
         public float maxDamage { get; set; } = 0;
-        public bool distributeToChildren { get; set; } = default;
+        public bool distributeToChildren { get; set; } = true;
         public bool overrideDistributeBlocker { get; set; } = default;
-        public bool createPopEffect { get; set; } = default;
+        public bool createPopEffect { get; set; } = true;
         public Il2Cpp.BloonProperties immuneBloonProperties { get; set; } = default;
         public Il2Cpp.BloonProperties immuneBloonPropertiesOriginal { get; set; } = default;
         public bool ignoreImmunityDestroy { get; set; } = default;
@@ -10510,9 +10510,9 @@ public static partial class CreateDamageModelExt
     {
         public float damage { get; set; } = 0;
         public float maxDamage { get; set; } = 0;
-        public bool distributeToChildren { get; set; } = default;
+        public bool distributeToChildren { get; set; } = true;
         public bool overrideDistributeBlocker { get; set; } = default;
-        public bool createPopEffect { get; set; } = default;
+        public bool createPopEffect { get; set; } = true;
         public Il2Cpp.BloonProperties immuneBloonProperties { get; set; } = default;
         public Il2Cpp.BloonProperties immuneBloonPropertiesOriginal { get; set; } = default;
         public bool ignoreImmunityDestroy { get; set; } = default;
@@ -10540,7 +10540,7 @@ public static partial class CreateDamageModifierForBloonStateModelExt
     {
         public string bloonState { get; set; } = "";
         public string[] bloonStates { get; set; } = default;
-        public float damageMultiplier { get; set; } = 0;
+        public float damageMultiplier { get; set; } = 1;
         public float damageAdditive { get; set; } = 0;
         public bool mustIncludeAllStates { get; set; } = default;
         public bool applyOverMaxDamage { get; set; } = default;
@@ -10592,7 +10592,7 @@ public static partial class CreateDamageModifierForBloonTypeModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonTypeModel>
     {
         public string bloonId { get; set; } = "";
-        public float damageMultiplier { get; set; } = 0;
+        public float damageMultiplier { get; set; } = 1;
         public float damageAdditive { get; set; } = 0;
         public bool includeChildren { get; set; } = default;
         public int collisionPass { get; set; } = 0;
@@ -10616,7 +10616,7 @@ public static partial class CreateDamageModifierForCashAmountModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForCashAmountModel>
     {
-        public float damageMultiplier { get; set; } = 0;
+        public float damageMultiplier { get; set; } = 1;
         public float damageAdditive { get; set; } = 0;
         public float cashThreshold { get; set; } = 0;
         public string stackId { get; set; } = "";
@@ -10643,7 +10643,7 @@ public static partial class CreateDamageModifierForModifiersModelExt
     {
         public string modifier { get; set; } = "";
         public string[] modifiers { get; set; } = default;
-        public float damageMultiplier { get; set; } = 0;
+        public float damageMultiplier { get; set; } = 1;
         public float damageAddative { get; set; } = 0;
         public int collisionPass { get; set; } = 0;
         
@@ -10715,7 +10715,7 @@ public static partial class CreateDamageModifierForTagModelExt
     {
         public string tag { get; set; } = "";
         public string[] tags { get; set; } = default;
-        public float damageMultiplier { get; set; } = 0;
+        public float damageMultiplier { get; set; } = 1;
         public float damageAddative { get; set; } = 0;
         public bool mustIncludeAllTags { get; set; } = default;
         public bool applyOverMaxDamage { get; set; } = default;
@@ -10766,7 +10766,7 @@ public static partial class CreateDamageModifierPrimordialWrathModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierPrimordialWrathModel>
     {
         public int rbeThreshold { get; set; } = 0;
-        public float damageMultiplier { get; set; } = 0;
+        public float damageMultiplier { get; set; } = 1;
         public float maxDamageMultiplier { get; set; } = 0;
         public int extraRbePerBossSkull { get; set; } = 0;
         public bool active { get; set; } = false;
@@ -13251,7 +13251,7 @@ public static partial class CreateEffectModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Effects.EffectModel>
     {
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public float scale { get; set; } = 0;
+        public float scale { get; set; } = 1;
         public float lifespan { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Effects.Fullscreen fullscreen { get; set; } = default;
         public bool useCenterPosition { get; set; } = default;
@@ -16500,8 +16500,8 @@ public static partial class CreateFrontierBossManagerModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierBossManagerModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierBossManagerModel(args.name, args.upgradeCostMultipliers, args.boss, default, args.isFinalBossGame);
-            if (args.tier != default) result.tier = args.tier;
+            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierBossManagerModel(args.name, args.upgradeCostMultipliers, args.boss, args.tier, args.isFinalBossGame);
+            
             return result;   
         }
     }
@@ -17129,8 +17129,8 @@ public static partial class CreateGlassBloonBehaviorModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.GlassBloonBehaviorModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GlassBloonBehaviorModel(args.name, args.reflectRadius, default);
-            if (args.reflectProjectileSounds != default) result.reflectProjectileSounds = args.reflectProjectileSounds;
+            var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GlassBloonBehaviorModel(args.name, args.reflectRadius, args.reflectProjectileSounds);
+            
             return result;   
         }
     }
@@ -28471,8 +28471,7 @@ public static partial class CreateRemoveableModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.RemoveableModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.RemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, default);
-            if (args.disableInGameTypes != default) result.disableInGameTypes = args.disableInGameTypes;
+            var result = new Il2CppAssets.Scripts.Models.Map.RemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.disableInGameTypes);
             if (args.ids != default) result.ids = args.ids;
             return result;   
         }

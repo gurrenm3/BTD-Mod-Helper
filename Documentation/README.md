@@ -412,6 +412,15 @@
 | [EmissionModelBehaviorExt](BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.EmissionModelBehaviorExt') | Extensions for EmissionModels |
 | [EntityBehaviorExt](BTD_Mod_Helper.Extensions.EntityBehaviorExt.md 'BTD_Mod_Helper.Extensions.EntityBehaviorExt') | Behavior extensions for Entities |
 | [EntityExt](BTD_Mod_Helper.Extensions.EntityExt.md 'BTD_Mod_Helper.Extensions.EntityExt') | Extensions for Entities |
+| [ExtraCreateModelExt](BTD_Mod_Helper.Extensions.ExtraCreateModelExt.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt') | Extra extensions on arguments |
+| [ExtraCreateModelExt.&lt;G&gt;$2FF214071B5F00329EF8F9CE344D4224](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$2FF214071B5F00329EF8F9CE344D4224.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$2FF214071B5F00329EF8F9CE344D4224') | |
+| [ExtraCreateModelExt.&lt;G&gt;$3786E7A506564F67390576C9E349AA55](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$3786E7A506564F67390576C9E349AA55.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$3786E7A506564F67390576C9E349AA55') | |
+| [ExtraCreateModelExt.&lt;G&gt;$3D6E3B782C6103F6AED5425672823EE5](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$3D6E3B782C6103F6AED5425672823EE5.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$3D6E3B782C6103F6AED5425672823EE5') | |
+| [ExtraCreateModelExt.&lt;G&gt;$532BD4DB94AFE6C4AEAC9EA82E6FB579](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$532BD4DB94AFE6C4AEAC9EA82E6FB579.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$532BD4DB94AFE6C4AEAC9EA82E6FB579') | |
+| [ExtraCreateModelExt.&lt;G&gt;$8CF085FB8D38B6602F594366E316F070](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$8CF085FB8D38B6602F594366E316F070.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$8CF085FB8D38B6602F594366E316F070') | |
+| [ExtraCreateModelExt.&lt;G&gt;$9F89A507309547A940AC6A898E7B2A53](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$9F89A507309547A940AC6A898E7B2A53.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$9F89A507309547A940AC6A898E7B2A53') | |
+| [ExtraCreateModelExt.&lt;G&gt;$C285D8D67DCEB54903BA8C0BD98960C7](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$C285D8D67DCEB54903BA8C0BD98960C7.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$C285D8D67DCEB54903BA8C0BD98960C7') | |
+| [ExtraCreateModelExt.&lt;G&gt;$F8497BEABE16EFFAF03F52AE9ACE8794](BTD_Mod_Helper.Extensions.ExtraCreateModelExt._G_$F8497BEABE16EFFAF03F52AE9ACE8794.md 'BTD_Mod_Helper.Extensions.ExtraCreateModelExt.<G>$F8497BEABE16EFFAF03F52AE9ACE8794') | |
 | [FileInfoExt](BTD_Mod_Helper.Extensions.FileInfoExt.md 'BTD_Mod_Helper.Extensions.FileInfoExt') | Extensions for FileInfo |
 | [FunctionExt](BTD_Mod_Helper.Extensions.FunctionExt.md 'BTD_Mod_Helper.Extensions.FunctionExt') | Extensions for Functions |
 | [GameExt](BTD_Mod_Helper.Extensions.GameExt.md 'BTD_Mod_Helper.Extensions.GameExt') | Extensions for Game |
@@ -516,6 +525,7 @@
 | [WeaponBehaviorExt](BTD_Mod_Helper.Extensions.WeaponBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponBehaviorExt') | Behavior extensions for Weapons |
 | [WeaponModelBehaviorExt](BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.WeaponModelBehaviorExt') | Extensions for WeaponModels |
 | [WeaponModelExt](BTD_Mod_Helper.Extensions.WeaponModelExt.md 'BTD_Mod_Helper.Extensions.WeaponModelExt') | Extensions for WeaponModels |
+| [WeaponModelExt.&lt;G&gt;$9FC1183DC8BD50A6740C597D7C887A79](BTD_Mod_Helper.Extensions.WeaponModelExt._G_$9FC1183DC8BD50A6740C597D7C887A79.md 'BTD_Mod_Helper.Extensions.WeaponModelExt.<G>$9FC1183DC8BD50A6740C597D7C887A79') | |
 
 | Delegates | |
 | :--- | :--- |

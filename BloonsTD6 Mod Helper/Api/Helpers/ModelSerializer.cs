@@ -88,7 +88,10 @@ public static class ModelSerializer
         {"disableAutoplay", "settingDisableAutoplay"},
         {"mutator", "_mutator"},
         {"mutatorParam", "mutator"},
-        {"hookId", "name"}
+        {"hookId", "name"},
+        {"absorbProjectileSounds", "reflectProjectileSounds"},
+        {"stage", "tier"},
+        {"disableInGameType", "disableInGameTypes"}
     };
 
     private static object GenerateBaseType(JValue value, Type valueType)

@@ -6,7 +6,9 @@ using System.Reflection;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Effects;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppInterop.Runtime;
@@ -21,6 +23,14 @@ internal static class CreateModelExtGenerator
         "ModelExtensions", "CreateModelExt.cs");
 
     private static readonly Il2CppJsonConvert.Il2CppContractResolver Resolver = new();
+
+    internal static readonly Dictionary<(Type, string), string> DefaultValueOverrides = new()
+    {
+        [(typeof(DamageModel), nameof(DamageModel.distributeToChildren))] = "true",
+        [(typeof(DamageModel), nameof(DamageModel.createPopEffect))] = "true",
+        [(typeof(EffectModel), nameof(EffectModel.scale))] = "1",
+        [(typeof(DamageModifierModel), "damageMultiplier")] = "1"
+    };
 
     public static void Generate()
     {
@@ -173,49 +183,62 @@ internal static class CreateModelExtGenerator
             var defaultValue = "default";
             var propType = prop.PropertyType;
 
-            if (param?.HasDefaultValue == true && !propType.IsIl2CppNullable())
+            var usingOverride = false;
+            foreach (var ((t, key), overrideValue) in DefaultValueOverrides)
             {
-                defaultValue = DefaultValue(param.DefaultValue);
-            }
-            else
-            {
-                if (propType.IsIl2CppNullable())
+                if (type.IsAssignableTo(t) && prop.Name == key)
                 {
-                    propType = propType.GenericTypeArguments.First();
-                }
-
-                if (propType == typeof(string))
-                {
-                    defaultValue = "\"\"";
-                }
-                else if (propType == typeof(int) ||
-                         propType == typeof(int?) ||
-                         propType == typeof(long) ||
-                         propType == typeof(long?) ||
-                         propType == typeof(float) ||
-                         propType == typeof(float?) ||
-                         propType == typeof(double) ||
-                         propType == typeof(double?))
-                {
-                    defaultValue = "0";
-                }
-                else if (propType == typeof(PrefabReference) ||
-                         propType == typeof(AudioClipReference) ||
-                         propType == typeof(SpriteReference) ||
-                         propType == typeof(AudioSourceReference) ||
-                         propType == typeof(AnimationClipReference))
-                {
-                    defaultValue = $"new {propType.RealFullName}(\"\")";
-                }
-                else if (prop.Name == "scale")
-                {
-                    defaultValue = "1";
+                    defaultValue = overrideValue;
+                    usingOverride = true;
                 }
             }
 
-            if (prop.PropertyType.IsIl2CppNullable())
+            if (!usingOverride)
             {
-                defaultValue = $"Il2CppSystem.Nullable<{propType.RealFullName}>.Unbox({defaultValue})";
+                if (param?.HasDefaultValue == true && !propType.IsIl2CppNullable())
+                {
+                    defaultValue = DefaultValue(param.DefaultValue);
+                }
+                else
+                {
+                    if (propType.IsIl2CppNullable())
+                    {
+                        propType = propType.GenericTypeArguments.First();
+                    }
+
+                    if (propType == typeof(string))
+                    {
+                        defaultValue = "\"\"";
+                    }
+                    else if (propType == typeof(int) ||
+                             propType == typeof(int?) ||
+                             propType == typeof(long) ||
+                             propType == typeof(long?) ||
+                             propType == typeof(float) ||
+                             propType == typeof(float?) ||
+                             propType == typeof(double) ||
+                             propType == typeof(double?))
+                    {
+                        defaultValue = "0";
+                    }
+                    else if (propType == typeof(PrefabReference) ||
+                             propType == typeof(AudioClipReference) ||
+                             propType == typeof(SpriteReference) ||
+                             propType == typeof(AudioSourceReference) ||
+                             propType == typeof(AnimationClipReference))
+                    {
+                        defaultValue = $"new {propType.RealFullName}(\"\")";
+                    }
+                    else if (prop.Name == "scale")
+                    {
+                        defaultValue = "1";
+                    }
+                }
+
+                if (prop.PropertyType.IsIl2CppNullable())
+                {
+                    defaultValue = $"Il2CppSystem.Nullable<{propType.RealFullName}>.Unbox({defaultValue})";
+                }
             }
 
             propertyDefaultValues[prop] = defaultValue;

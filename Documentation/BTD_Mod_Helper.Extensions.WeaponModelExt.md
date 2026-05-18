@@ -12,6 +12,42 @@ public static class WeaponModelExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; WeaponModelExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.get_AnimationOffset(WeaponModel)'></a>
+
+## WeaponModelExt.get_AnimationOffset(WeaponModel) Method
+
+Combined getter/setter for animationOffset and animationOffsetFrames
+
+```csharp
+public static float get_AnimationOffset(WeaponModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.get_AnimationOffset(WeaponModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+#### Returns
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.get_CustomStartCooldown(WeaponModel)'></a>
+
+## WeaponModelExt.get_CustomStartCooldown(WeaponModel) Method
+
+Combined getter/setter for customStartCooldown and customStartCooldownFrames
+
+```csharp
+public static float get_CustomStartCooldown(WeaponModel model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.get_CustomStartCooldown(WeaponModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+#### Returns
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='BTD_Mod_Helper.Extensions.WeaponModelExt.GetEject(thisWeaponModel)'></a>
 
 ## WeaponModelExt.GetEject(this WeaponModel) Method
@@ -29,6 +65,44 @@ public static Vector3 GetEject(this WeaponModel weapon);
 
 #### Returns
 [Il2CppAssets.Scripts.Simulation.SMath.Vector3](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.SMath.Vector3 'Il2CppAssets.Scripts.Simulation.SMath.Vector3')
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.set_AnimationOffset(WeaponModel,float)'></a>
+
+## WeaponModelExt.set_AnimationOffset(WeaponModel, float) Method
+
+Combined getter/setter for animationOffset and animationOffsetFrames
+
+```csharp
+public static void set_AnimationOffset(WeaponModel model, float value);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.set_AnimationOffset(WeaponModel,float).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.set_AnimationOffset(WeaponModel,float).value'></a>
+
+`value` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.set_CustomStartCooldown(WeaponModel,float)'></a>
+
+## WeaponModelExt.set_CustomStartCooldown(WeaponModel, float) Method
+
+Combined getter/setter for customStartCooldown and customStartCooldownFrames
+
+```csharp
+public static void set_CustomStartCooldown(WeaponModel model, float value);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.set_CustomStartCooldown(WeaponModel,float).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel 'Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponModel')
+
+<a name='BTD_Mod_Helper.Extensions.WeaponModelExt.set_CustomStartCooldown(WeaponModel,float).value'></a>
+
+`value` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 <a name='BTD_Mod_Helper.Extensions.WeaponModelExt.SetEject(thisWeaponModel,Vector3,bool,bool,bool)'></a>
 

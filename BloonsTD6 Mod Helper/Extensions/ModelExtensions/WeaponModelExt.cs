@@ -9,7 +9,7 @@ namespace BTD_Mod_Helper.Extensions;
 public static class WeaponModelExt
 {
     /// <summary>
-    /// Sets the emission for a WeaponModel, properly handling the child dependents 
+    /// Sets the emission for a WeaponModel, properly handling the child dependents
     /// </summary>
     public static void SetProjectile(this WeaponModel weapon, ProjectileModel projectile)
     {
@@ -19,7 +19,7 @@ public static class WeaponModelExt
     }
 
     /// <summary>
-    /// Sets the emission for a WeaponModel, properly handling the child dependents 
+    /// Sets the emission for a WeaponModel, properly handling the child dependents
     /// </summary>
     public static void SetEmission(this WeaponModel weapon, EmissionModel emission)
     {
@@ -53,4 +53,33 @@ public static class WeaponModelExt
     /// </summary>
     public static Il2CppAssets.Scripts.Simulation.SMath.Vector3 GetEject(this WeaponModel weapon) =>
         new(weapon.ejectX, weapon.ejectY, weapon.ejectZ);
+
+    extension(WeaponModel model)
+    {
+        /// <summary>
+        /// Combined getter/setter for animationOffset and animationOffsetFrames
+        /// </summary>
+        public float AnimationOffset
+        {
+            get => model.animationOffset;
+            set
+            {
+                model.animationOffset = value;
+                model.animationOffsetFrames = (int) (value * 60);
+            }
+        }
+
+        /// <summary>
+        /// Combined getter/setter for customStartCooldown and customStartCooldownFrames
+        /// </summary>
+        public float CustomStartCooldown
+        {
+            get => model.customStartCooldown;
+            set
+            {
+                model.customStartCooldown = value;
+                model.customStartCooldownFrames = (int) (value * 60);
+            }
+        }
+    }
 }
