@@ -29,7 +29,8 @@ internal class TitleScreen_Start
         // Fix some peoples' textTable sometimes not being initialized by this point
         if (LocalizationManager.Instance.textTable == null)
         {
-            ModHelper.Warning("The text table is null, replacing with default. This usually means a mod messed up the game's localization manager somehow");
+            ModHelper.Warning(
+                "The text table is null, replacing with default. This usually means a mod messed up the game's localization manager somehow");
             LocalizationManager.Instance.textTable = LocalizationManager.Instance.defaultTable;
         }
 
@@ -68,5 +69,8 @@ internal class TitleScreen_Start
         gameObject.AddComponent<Lists>();
 
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
+
+        ConsoleHandler.RunCommandsFromArgs();
+        ConsoleHandler.SetupMelonConsole();
     }
 }

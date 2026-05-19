@@ -137,9 +137,38 @@ public abstract class BloonsMod : MelonMod, IModSettings
         content.AddRange(contents);
     }
 
+    internal void CheckCommandLineArgs()
+    {
+        var commandLineArgs = Environment.GetCommandLineArgs();
+        if (commandLineArgs.FirstOrDefault(arg => arg.StartsWith("--modhelper.only")) is { } modHelperOnly)
+        {
+            var allowedModsString = "";
+            if (modHelperOnly.Contains('='))
+            {
+                allowedModsString = modHelperOnly.Split('=').Last();
+            }
+            else if (commandLineArgs.Length > commandLineArgs.IndexOf(modHelperOnly) + 1)
+            {
+                var nextArg = commandLineArgs[commandLineArgs.IndexOf(modHelperOnly) + 1];
+                if (!nextArg.StartsWith("-"))
+                {
+                    allowedModsString = nextArg;
+                }
+            }
+
+            if (!allowedModsString.Split(',').Contains(this.GetModName()))
+            {
+                throw new Exception(
+                    $"Only loading Btd6ModHelper,{allowedModsString} which does not include {this.GetModName()}");
+            }
+        }
+    }
+
     /// <inheritdoc />
     public sealed override void OnEarlyInitializeMelon()
     {
+        if (this is not MelonMain) CheckCommandLineArgs();
+
         ModContentInstances.AddInstance(GetType(), this);
 
         // If they haven't set OptionalPatches to false and haven't already signified they have their own patching plan

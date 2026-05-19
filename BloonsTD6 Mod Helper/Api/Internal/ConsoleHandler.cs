@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Commands;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.UI.Modded;
@@ -71,7 +73,6 @@ internal static class ConsoleHandler
             HistoryDown();
         }
     }
-
 
     public static readonly List<string> ConsoleHistory = [];
     public static int SpotInHistory { get; private set; } = -1;
@@ -218,40 +219,41 @@ internal static class ConsoleHandler
 
     public static void ProcessCommand() => ProcessCommand(Console.Text);
 
-    public static void ProcessCommand(string text)
+    public static bool ProcessCommand(string text)
     {
-        if (string.IsNullOrWhiteSpace(text)) return;
+        if (string.IsNullOrWhiteSpace(text)) return true;
         SpotInHistory = -1;
         ConsoleHistory.Insert(0, text);
-        Console.input.InputField.SetText("");
-        Console.input.InputField.ForceLabelUpdate();
-        Console.Results = "";
+
+        Console?.input.InputField.SetText("");
+        Console?.input.InputField.ForceLabelUpdate();
+        Console?.Results = "";
 
         var tokens = text.SplitRespectingQuotes();
 
         var command = tokens[0];
 
-        if (ModCommand.RootCommands.TryGetValue(command, out var c))
+        if (!ModCommand.RootCommands.TryGetValue(command, out var c))
         {
-            if (c.Parse(tokens[1..], out var parsedCommand, out var errors))
-            {
-                var success = parsedCommand.ExecuteInternal(out var resultText);
-                Highlight(ref resultText, success ? SuccessColor : ErrorColor);
-                Console.Results = resultText;
-            }
-            else
-            {
-                foreach (var error in errors)
-                {
-                    ModHelper.Error(error);
-                    Console.Results += Highlight(error.ToString(), ErrorColor);
-                }
-            }
+            ModHelper.Error("No Command Found");
+            Console?.Results = Highlight("No Command Found", ErrorColor);
+            return false;
         }
-        else
+
+        if (c.Parse(tokens[1..], out var parsedCommand, out var errors))
         {
-            Console.Results = Highlight("No Command Found", ErrorColor);
+            var success = parsedCommand.ExecuteInternal(out var resultText);
+            Highlight(ref resultText, success ? SuccessColor : ErrorColor);
+            Console?.Results = resultText;
+            return success;
         }
+
+        foreach (var error in errors)
+        {
+            ModHelper.Error(error);
+            Console?.Results += Highlight(error.ToString(), ErrorColor);
+        }
+        return false;
     }
 
     public static void UpdateSuggestions()
@@ -350,8 +352,8 @@ internal static class ConsoleHandler
             var lastSpace = Console.Text.LastIndexOf(" ", StringComparison.Ordinal);
 
             Console.Text = lastSpace == -1
-                               ? desiredSuggestion.Text
-                               : Console.Text[..(lastSpace + 1)] + desiredSuggestion.Text;
+                ? desiredSuggestion.Text
+                : Console.Text[..(lastSpace + 1)] + desiredSuggestion.Text;
         }
 
         Console.CaretPosition = Console.Text.Length;
@@ -367,4 +369,111 @@ internal static class ConsoleHandler
 
     public static Suggestion SuggestionLine(this ValueAttribute v) => new("",
         $"[{v.Index}] ({(v.Required ? "required" : "optional")})    {v.HelpText}");
+
+    internal static bool Errors { get; set; }
+
+    internal static void RunCommandsFromArgs()
+    {
+        var args = Environment.GetCommandLineArgs();
+        var modHelper = args.IndexOf("--modhelper.run");
+        if (modHelper < 0) return;
+
+        var remaining = args.Skip(modHelper + 1).ToArray();
+
+        var quitAfter = false;
+        var failFast = false;
+        var commandStart = 0;
+        while (commandStart < remaining.Length &&
+               remaining[commandStart].Length > 1 &&
+               remaining[commandStart][0] == '-' &&
+               remaining[commandStart].Skip(1).All(char.IsLetter))
+        {
+            foreach (var c in remaining[commandStart][1..])
+            {
+                switch (c)
+                {
+                    case 'e': failFast = true; break;
+                    case 'q': quitAfter = true; break;
+                }
+            }
+            commandStart++;
+        }
+
+        foreach (var command in remaining.Skip(commandStart).Join(delimiter: " ").Split(" && "))
+        {
+            Errors = false;
+            var success = false;
+            try
+            {
+                success = ProcessCommand(command);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Error(e);
+            }
+
+            if ((!success || Errors) && failFast)
+            {
+                Application.Quit(1);
+                return;
+            }
+        }
+
+        if (quitAfter)
+        {
+            Application.Quit(0);
+        }
+    }
+
+    private const int STD_INPUT_HANDLE = -10;
+
+    private const uint ENABLE_PROCESSED_INPUT = 0x0001;
+    private const uint ENABLE_LINE_INPUT = 0x0002;
+    private const uint ENABLE_ECHO_INPUT = 0x0004;
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    private static extern IntPtr GetStdHandle(int nStdHandle);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
+
+    internal static void SetupMelonConsole()
+    {
+        if (!MelonMain.UnlockConsoleInput && !Application.isBatchMode) return;
+
+        var consoleHandle = GetStdHandle(STD_INPUT_HANDLE);
+        if (GetConsoleMode(consoleHandle, out var consoleMode))
+        {
+            consoleMode |= ENABLE_PROCESSED_INPUT | ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT;
+            SetConsoleMode(consoleHandle, consoleMode);
+
+            ModHelper.Msg("MelonLoader console input unlocked. You can type stuff here now!");
+        }
+        else
+        {
+            ModHelper.Warning("Couldn't unlock console input");
+            return;
+        }
+
+        Task.Run(() =>
+        {
+            while (true)
+            {
+                try
+                {
+                    var input = System.Console.ReadLine();
+
+                    TaskScheduler.ScheduleTask(() => ProcessCommand(input));
+                }
+                catch (Exception ex)
+                {
+                    ModHelper.Error($"Console Reader Error: {ex.Message}");
+                }
+            }
+        });
+    }
+
 }

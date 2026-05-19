@@ -214,6 +214,7 @@ public static class ModHelper
     /// </summary>
     public static void Error<T>(object obj) where T : BloonsMod
     {
+        ConsoleHandler.Errors = true;
         GetMod<T>().LoggerInstance.Error(obj ?? "null");
     }
 
@@ -252,6 +253,7 @@ public static class ModHelper
     /// </summary>
     internal static void Error(object obj)
     {
+        ConsoleHandler.Errors = true;
         lock (Main.LoggerInstance)
         {
             Main.LoggerInstance.Error(obj ?? "null");

@@ -353,4 +353,11 @@ internal partial class MelonMain
         category = ModMaking,
         description = "Location of Mod Helper Source code for development purposes"
     };
+
+    internal static readonly ModSettingBool UnlockConsoleInput = new(false)
+    {
+        category = ModMaking,
+        description = "Unlocks the MelonLoader console to allow inputting text",
+        requiresRestart = true
+    };
 }
